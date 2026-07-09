@@ -606,8 +606,12 @@ function candidateRecords(records) {
 function requiredProbeCoverage(candidates, records) {
   return requiredProbeTerms.map((probe) => {
     const normalizedProbe = normalizeText(probe);
-    const candidate = candidates.find((entry) => normalizeText(entry.detectedSpanishPhrase) === normalizedProbe);
-    const coveredText = records.find((record) => normalizeText(record.text).includes(normalizedProbe));
+    const candidate = candidates.find(
+      (entry) => entry.sectionId === "ch3-highways" && normalizeText(entry.detectedSpanishPhrase) === normalizedProbe
+    );
+    const coveredText = records.find(
+      (record) => record.sectionId === "ch3-highways" && normalizeText(record.text).includes(normalizedProbe)
+    );
     return {
       probe,
       status: candidate && candidate.disposition !== "unresolved" ? "pass" : "missing",

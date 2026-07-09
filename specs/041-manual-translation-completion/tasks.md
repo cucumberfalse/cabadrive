@@ -234,6 +234,28 @@
   placement data affected by the Introduction wording fingerprint.
 - [x] T087 Run focused and required validations for the
   `discussion_r3546310363` follow-up.
+- [x] T088 Address PR #206 unresolved P2 review thread `PRRT_kwDOSX65IM6PtscM`:
+  constrain `requiredProbeCoverage` in
+  `scripts/manual-guide-translation-completeness-audit.mjs` so both its
+  candidate match and its fallback evidence match are restricted to
+  `sectionId === "ch3-highways"`. A probe passes only when that section has a
+  non-unresolved candidate; do not change the whole-guide residue audit scope,
+  broaden exceptions, or use a matching residue from another manual or
+  Introduction route as substitute coverage. Refresh the committed translation
+  completeness evidence.
+- [x] T089 Add focused regression coverage in
+  `tests/manual-guide-translation-completeness-audit.test.mjs`: prove that all
+  required-probe evidence records point to `ch3-highways`, and that a supported
+  copy of a required phrase in another fixture route cannot make the audit pass
+  when the corresponding `ch3-highways` probe is absent or unresolved. Assert
+  the expected `required-screenshot-probe-missing` failure and retained
+  Chapter 3 scope in its evidence.
+- [x] T090 Run and record the review-follow-up verification: the focused audit
+  test, `node scripts/manual-guide-translation-completeness-audit.mjs --write`,
+  `pnpm run validate:manual-guide`, `pnpm run validate:content`, relevant full
+  tests/build or `pnpm run preflight` as feasible, and `git diff --check`.
+  Route any newly surfaced implementation feedback to Architect before final
+  validation.
 
 ## Decisions
 
@@ -249,6 +271,11 @@
   learner-facing text residues for this audit.
 - Decision: Generic Spanish traffic terms cannot be accepted as untranslated
   exceptions merely because they are official terms.
+- Review-fix decision: P2 thread `PRRT_kwDOSX65IM6PtscM` is valid. The
+  screenshot probes are acceptance probes for `ch3-highways`, not global
+  whole-guide terms. T088--T090 are the required implementation and verification
+  return; the earlier final-validation evidence is stale until this non-evidence
+  behavior/test/evidence change completes and roles revalidate.
 - Implementation decision: Confirmed assigned worktree
   `/Users/chap/devel/cabadrive-worktrees/040-manual-translation-completion`,
   branch/PR slice `codex/040-manual-translation-completion`, verified base
@@ -367,6 +394,10 @@
   manual text edits. This implementation refreshed them mechanically, but future
   manual wording changes should expect the same placement-evidence maintenance.
 - Disposition: accepted as known maintenance and no additional task is required.
+- PR #206 P2 follow-up: no new implementation feedback was surfaced. The
+  section-scoped probe rule uses existing audit inputs only and required no
+  renderer, content, exception-policy, or ticket-placement change; no
+  Architect disposition is needed beyond the assigned T088--T090 scope.
 
 ## Architect Disposition of Implementation Agent Feedback
 
@@ -554,6 +585,27 @@
   - Posted GitHub review-thread reply
     https://github.com/cucumberfalse/cabadrive/pull/206#discussion_r3547222078
     summarizing the fix, coverage counts, refreshed evidence, and validation.
+- PR #206 P2 review-fix verification for `PRRT_kwDOSX65IM6PtscM`,
+  2026-07-09:
+  - `pnpm exec node --test tests/manual-guide-translation-completeness-audit.test.mjs`:
+    passed, 11/11 tests. The new cross-route fixture contains all supported
+    required phrases only in `ch3-speed`; it fails with
+    `required-screenshot-probe-missing`, and its emitted evidence retains
+    `ch3-highways` scope with no fallback field path. The committed-evidence
+    test also requires every passing probe record to name `ch3-highways`.
+  - `node scripts/manual-guide-translation-completeness-audit.mjs --write`:
+    passed and refreshed
+    `content/validation/manual-guide-translation-completeness.evidence.json`.
+    The 11 required probes now all point to `ch3-highways`; this corrected
+    prior cross-route records for `calzada`, `incorporación`, and `autopista`.
+  - `pnpm run validate:manual-guide`: passed; source-fidelity, visual,
+    image-readability/translation, and translation-completeness audits passed.
+  - `pnpm run validate:content`: passed; 50 manual sections, 4 Introduction
+    routes, 3000 inspected strings, 1184 residue records, 189 exceptions, and
+    0 unresolved findings; ticket placement remained 460 questions/placements.
+  - `pnpm run test`: passed, 480/480 tests.
+  - `pnpm run build`: passed and generated a service worker with 2156 cached
+    assets; the existing large Rollup-chunk warnings remained non-blocking.
 
 ## Cycle PR Set
 

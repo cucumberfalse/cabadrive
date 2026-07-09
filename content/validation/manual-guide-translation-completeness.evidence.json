@@ -602,10 +602,10 @@
     {
       "probe": "calzada",
       "status": "pass",
-      "sectionId": "app4-signs-horizontal",
-      "fieldPath": "blocks.3.cards.0.termTranslations.8.termEs",
-      "disposition": "retained-with-structured-adjacent-translation",
-      "textExcerpt": "Líneas de borde de calzada"
+      "sectionId": "ch3-highways",
+      "fieldPath": "blocks.1.itemsRu.0",
+      "disposition": "retained-with-inline-translation",
+      "textExcerpt": "Въезд выполняется через carriles de aceleración (полосы разгона): водитель использует их, чтобы набрать скорость до включения в основную calzada (проезжую часть)."
     },
     {
       "probe": "tránsito de la vía principal",
@@ -626,10 +626,10 @@
     {
       "probe": "incorporación",
       "status": "pass",
-      "sectionId": "app4-signs-warning",
-      "fieldPath": "blocks.3.cards.0.termTranslations.18.termEs",
-      "disposition": "retained-with-structured-adjacent-translation",
-      "textExcerpt": "Incorporación de tránsito lateral"
+      "sectionId": "ch3-highways",
+      "fieldPath": "blocks.1.itemsRu.2",
+      "disposition": "retained-with-inline-translation",
+      "textExcerpt": "Включить luz de giro izquierda (левый указатель поворота), чтобы предупредить об incorporación (включении в поток)."
     },
     {
       "probe": "luz de giro izquierda",
@@ -658,10 +658,10 @@
     {
       "probe": "autopista",
       "status": "pass",
-      "sectionId": "app4-signs-informational",
-      "fieldPath": "blocks.3.cards.0.termTranslations.2.termEs",
-      "disposition": "retained-with-structured-adjacent-translation",
-      "textExcerpt": "Comienzo de autopista"
+      "sectionId": "ch3-highways",
+      "fieldPath": "blocks.1.itemsRu.4",
+      "disposition": "retained-with-inline-translation",
+      "textExcerpt": "К моменту входа в основную полосу выйти на velocidad adecuada del tramo (подходящую скорость для этого участка), согласованную со скоростью движения на этой autopista (автомагистрали) или vía rápida (скоростной дороге)."
     },
     {
       "probe": "vía rápida",

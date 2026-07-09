@@ -87,6 +87,12 @@ export const ch3HighwaysSection: ManualGuideSectionContent = {
 `;
 }
 
+function crossRouteSupportedProbeFixture() {
+  return supportedProbeFixture()
+    .replaceAll("ch3HighwaysSection", "ch3SpeedSection")
+    .replaceAll('sectionId: "ch3-highways"', 'sectionId: "ch3-speed"');
+}
+
 function supportedIntroductionFixture(replacementText = "Дорожная культура начинается с уважения к другим участникам движения.") {
   return `
 export const pandemiaVialSection = {
@@ -180,8 +186,27 @@ test("manual guide translation completeness committed evidence covers screenshot
   assert.equal(evidence.counts.unresolvedFindings, 0);
   assert.equal(evidence.requiredProbeCoverage.length, 11);
   assert.deepEqual(new Set(evidence.requiredProbeCoverage.map((probe) => probe.status)), new Set(["pass"]));
+  assert.deepEqual(new Set(evidence.requiredProbeCoverage.map((probe) => probe.sectionId)), new Set(["ch3-highways"]));
   assert.ok(evidence.requiredProbeCoverage.some((probe) => probe.probe === "Ingreso: carriles de aceleración"));
   assert.ok(evidence.requiredProbeCoverage.some((probe) => probe.probe === "vía rápida"));
+});
+
+test("manual guide translation completeness audit does not use cross-route support for missing Chapter 3 probes", () => {
+  const root = tempRoot("manual-guide-translation-cross-route-probe-");
+  const evidencePath = join(root, "evidence.json");
+  try {
+    writeSection(root, "ch3-speed.ts", crossRouteSupportedProbeFixture());
+    const result = runAudit(root, evidencePath, ["--write"]);
+    assert.notEqual(result.status, 0);
+    assert.match(result.stderr, /required-screenshot-probe-missing/);
+
+    const evidence = JSON.parse(readFileSync(evidencePath, "utf8"));
+    assert.deepEqual(new Set(evidence.requiredProbeCoverage.map((probe) => probe.sectionId)), new Set(["ch3-highways"]));
+    assert.deepEqual(new Set(evidence.requiredProbeCoverage.map((probe) => probe.status)), new Set(["missing"]));
+    assert.deepEqual(new Set(evidence.requiredProbeCoverage.map((probe) => probe.fieldPath)), new Set([null]));
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
 });
 
 test("manual guide translation completeness audit includes rendered Introduction routes", () => {

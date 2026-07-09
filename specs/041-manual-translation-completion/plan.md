@@ -82,6 +82,10 @@ Evidence should include:
   path, text excerpt, detected Spanish phrase, accepted disposition, and
   reviewer note if allowlisted.
 - Required screenshot-probe records for the user-highlighted Chapter 3 terms.
+  Each record must be sourced from `ch3-highways`; the candidate lookup and any
+  fallback evidence lookup must both be constrained to that section, so an
+  identical supported phrase elsewhere in `Руководство` cannot pass a missing
+  Chapter 3 probe.
 - A terminology map for recurring Spanish terms and chosen Russian wording.
 - A narrow allowlist/exception list for acronyms, road names, document names,
   legal references, URLs, hashes, file names, and other non-translated items.
@@ -173,7 +177,9 @@ Add/update tests for:
 - Ignoring `sourceTextEs`, `sourceTitleEs`, asset paths, URLs, hashes, and
   protected-image pixel references.
 - Rejection of broad allowlist entries for generic Spanish terms.
-- Required screenshot-probe coverage for `ch3-highways`.
+- Required screenshot-probe coverage for `ch3-highways`, including a negative
+  regression fixture where an identical supported phrase exists only in another
+  route and the audit still reports the Chapter 3 probe as missing.
 - Existing tests that currently assert Spanish-only residue are updated to
   assert corrected translated forms.
 

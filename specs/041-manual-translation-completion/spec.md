@@ -173,7 +173,9 @@ per-residue dispositions, and representative route/screenshot evidence paths.
    equivalent adjacent Spanish/Russian structured pair in the same logical row,
    card, list item, table cell, or caption.
 3. Given the Chapter 3 highways section is inspected, every screenshot probe is
-   fixed or covered by adjacent Russian translation support:
+   fixed or covered by adjacent Russian translation support in that same
+   `ch3-highways` section; a matching residue, text excerpt, or disposition on
+   any other manual or Introduction route cannot satisfy this criterion:
    `Ingreso: carriles de aceleración`, `carriles de aceleración`, `calzada`,
    `tránsito de la vía principal`, `espejos retrovisores`, `incorporación`,
    `luz de giro izquierda`, `espacio / gap`,
@@ -318,6 +320,10 @@ Focused tests should prove:
   exceptions may remain untranslated.
 - Decision: protected source image pixels remain governed by feature `035` and
   are not edited by this feature.
+- Review-fix decision: required screenshot-probe coverage is section-scoped.
+  For every user-highlighted probe, the audit must find its non-unresolved
+  candidate and report its evidence from `ch3-highways`; matching wording on a
+  different manual or Introduction route is not substitute coverage.
 
 ### Dead Ends
 
@@ -365,3 +371,7 @@ Focused tests should prove:
   or narrow recorded exceptions; protected image and local-first/runtime
   boundaries remain intact; Implementation Agent feedback is dispositioned as
   known future maintenance with no new task required for this feature.
+- Superseded by PR #206 P2 follow-up: the later review finding shows that
+  required-probe resolution was not constrained to `ch3-highways`. The prior
+  Architect pass is stale for the current PR head until the assigned follow-up
+  task is implemented, verified, reviewed, and revalidated.
