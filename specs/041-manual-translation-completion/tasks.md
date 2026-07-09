@@ -626,6 +626,8 @@
 - Current-PR-head read-only guard: current PR head `a43b200eddfd441f70e144cdf177f434546eccf8` references effective content head `950985e84b24081067ef1221e3a09b17b047ae33` on the same line, and later changes are final-validation evidence-only process memory.
 - Current-PR-head read-only guard: current PR head `31084fcfe3870dfe242527254f37c6d926d2c6ef` is the effective content head; any later commit only records final-validation evidence in role-owned process memory.
 - Current-PR-head read-only guard: current PR head `674220be8f7c820363dc585f690ea5ebecca30a0` is the effective content head. Any later commit must be final-validation evidence only in role-owned feature memory, must preserve `674220be8f7c820363dc585f690ea5ebecca30a0` as the effective content head, and must not change code, tests, runtime files, durable docs, validation scripts, content evidence, or review dispositions.
+- Effective content head: 6f82b3eba3e5bce686b6b0fa05c35fb5b16d7049
+- Current-PR-head read-only guard: current PR head `6f82b3eba3e5bce686b6b0fa05c35fb5b16d7049` is the effective content head; it contains only the finalization process-memory repair and preserves the P2 implementation, tests, content evidence, runtime, and durable documentation.
 - Architect validation pass: passed
 - Final Architect validation completed at: 2026-07-09T15:43:28Z
 - Architect validated effective content head: 950985e84b24081067ef1221e3a09b17b047ae33
@@ -654,3 +656,13 @@
 - Architect validation evidence: reviewed the original request; current `spec.md`, `plan.md`, and task log; the P2 scope-fix diff; committed translation-completeness evidence; recorded local verification; the available GitHub check state (`baseline-checks`, `docker-validation`, `guard`, and `osv-scan` successful; `AI Review` cancelled); and the current-head no-findings review for `674220be8f7c820363dc585f690ea5ebecca30a0`.
 - Architect disposition: P1 `PRRT_kwDOSX65IM6Pt7A-` is valid final-validation-evidence work only. It requires refreshed role markers and a current-head guard for `674220be8f7c820363dc585f690ea5ebecca30a0`; it does not require product, content, test, runtime, validation-script, durable-document, or task-scope implementation. The prior Architect validation is superseded because it covered `31084fcfe3870dfe242527254f37c6d926d2c6ef`, not the current effective content head.
 - Architect validation evidence: the P2 change confines every required screenshot-probe candidate and fallback lookup to `ch3-highways`; all 11 committed probe records name that section, and the negative cross-route fixture rejects a supported copy outside Chapter 3. The whole-guide audit remains 54 rendered routes with 0 unresolved learner-facing residues; local-first and protected-image boundaries remain intact; no unresolved Implementation Agent feedback or new Architect task/ticket is required.
+
+## Final Architect Validation Notes
+
+- Architect validation pass: passed
+- Final Architect validation completed at: 2026-07-09T22:26:15Z
+- Architect validated effective content head: 6f82b3eba3e5bce686b6b0fa05c35fb5b16d7049
+- Architect return count: 0
+- Architect disposition: no return-limit escalation is required.
+- Architect disposition: the finalization process-memory repair is accepted as the effective content change; no additional Implementation Agent feedback, task, ticket, or product follow-up is required.
+- Architect validation evidence: reviewed the original request; current `spec.md`, `plan.md`, and task log; the P2 section-scoped probe outcome and committed evidence; prior no-findings review; and the `6f82b3eba3e5bce686b6b0fa05c35fb5b16d7049` repair, which changes only feature-memory finalization evidence and dispositions while preserving the completed P2 implementation, verification, local-first boundary, protected-image boundary, and zero unresolved learner-facing residues.
