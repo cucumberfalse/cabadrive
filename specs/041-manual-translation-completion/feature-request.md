@@ -242,8 +242,8 @@ Architect should plan a whole-`Руководство` translation-completeness 
 - Final Analyst validation completed at: 2026-07-09T22:15:54Z
 - Analyst validated effective content head: 674220be8f7c820363dc585f690ea5ebecca30a0
 - Analyst return count: 1
-- Analyst limit state: within the maximum of 5 returns; no limit escalation.
-- Analyst gaps: none.
-- Validation basis: the final Architect validation for the same effective content head completed first at `2026-07-09T22:14:00Z`; the committed translation-completeness evidence covers 54 rendered `Руководство` routes (50 manual sections and 4 Introduction routes), 3000 inspected learner-facing strings, 1184 candidate residues, 995 retained/translated-with-support records, 189 narrow accepted exceptions, and 0 unresolved findings.
-- Screenshot-probe conclusion: all 11 original screenshot probes pass in `ch3-highways` with inline Russian support. The P2 scope fix prevents a matching supported phrase in another route from satisfying a Chapter 3 probe; the focused negative fixture records `required-screenshot-probe-missing` when the supported phrases exist only in `ch3-speed`.
-- Customer-outcome conclusion: passed. The complete currently rendered native `Руководство` surface is covered rather than only the screenshot area; intentionally retained Spanish has immediate parenthesized or structured adjacent Russian support, the Introduction coverage and `Vision Zero` correction remain included, and the evidence/recorded checks preserve the protected-image and local-first boundaries. No Analyst-blocking gap or further Architect disposition is required.
+- Analyst limit escalation: none; return count is within the maximum of 5.
+- Gaps, if any: none.
+- Analyst validation evidence: final Architect validation for the same effective content head completed first at `2026-07-09T22:14:00Z`; translation-completeness evidence covers 54 rendered `Руководство` routes (50 manual sections and 4 Introduction routes), 3000 inspected learner-facing strings, 1184 candidate residues, 995 retained/translated-with-support records, 189 narrow accepted exceptions, 0 unresolved findings, and 11 passing original screenshot probes in `ch3-highways`, including the focused cross-route negative fixture.
+- Customer intent check: passed; the complete rendered native `Руководство` surface is covered, retained Spanish has immediate Russian support, Introduction coverage and the `Vision Zero` correction remain included, and protected-image and local-first boundaries are preserved.
+- Architect disposition routing: none required; no Analyst-blocking gap remains.

@@ -398,6 +398,8 @@
   section-scoped probe rule uses existing audit inputs only and required no
   renderer, content, exception-policy, or ticket-placement change; no
   Architect disposition is needed beyond the assigned T088--T090 scope.
+  Architect disposition: resolved as no additional Implementation Agent
+  feedback; no additional task or ticket is required.
 
 ## Architect Disposition of Implementation Agent Feedback
 
@@ -648,7 +650,7 @@
 - Final Architect validation completed at: 2026-07-09T22:14:00Z
 - Architect validated effective content head: 674220be8f7c820363dc585f690ea5ebecca30a0
 - Architect return count: 0
-- Architect limit escalation: none
+- Architect disposition: no return-limit escalation is required.
 - Architect validation evidence: reviewed the original request; current `spec.md`, `plan.md`, and task log; the P2 scope-fix diff; committed translation-completeness evidence; recorded local verification; the available GitHub check state (`baseline-checks`, `docker-validation`, `guard`, and `osv-scan` successful; `AI Review` cancelled); and the current-head no-findings review for `674220be8f7c820363dc585f690ea5ebecca30a0`.
-- P1 `PRRT_kwDOSX65IM6Pt7A-` disposition: valid final-validation-evidence work only. It requires refreshed role markers and a current-head guard for `674220be8f7c820363dc585f690ea5ebecca30a0`; it does not require product, content, test, runtime, validation-script, durable-document, or task-scope implementation. The prior Architect validation is superseded because it covered `31084fcfe3870dfe242527254f37c6d926d2c6ef`, not the current effective content head.
-- Architect conclusion: the P2 change now confines every required screenshot-probe candidate and fallback lookup to `ch3-highways`; all 11 committed probe records name that section, and the negative cross-route fixture rejects a supported copy outside Chapter 3. The whole-guide audit remains 54 rendered routes with 0 unresolved learner-facing residues; local-first and protected-image boundaries remain intact; no unresolved Implementation Agent feedback or new Architect task/ticket is required.
+- Architect disposition: P1 `PRRT_kwDOSX65IM6Pt7A-` is valid final-validation-evidence work only. It requires refreshed role markers and a current-head guard for `674220be8f7c820363dc585f690ea5ebecca30a0`; it does not require product, content, test, runtime, validation-script, durable-document, or task-scope implementation. The prior Architect validation is superseded because it covered `31084fcfe3870dfe242527254f37c6d926d2c6ef`, not the current effective content head.
+- Architect validation evidence: the P2 change confines every required screenshot-probe candidate and fallback lookup to `ch3-highways`; all 11 committed probe records name that section, and the negative cross-route fixture rejects a supported copy outside Chapter 3. The whole-guide audit remains 54 rendered routes with 0 unresolved learner-facing residues; local-first and protected-image boundaries remain intact; no unresolved Implementation Agent feedback or new Architect task/ticket is required.
