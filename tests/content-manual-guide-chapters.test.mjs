@@ -60,6 +60,7 @@ const app3SafeDrivingModulePath = "src/data/manual-sections/app3-safe-driving.ts
 const app3SafetyElementsModulePath = "src/data/manual-sections/app3-safety-elements.ts";
 const app3HighwaysModulePath = "src/data/manual-sections/app3-highways.ts";
 const app4SignsRegulatoryModulePath = "src/data/manual-sections/app4-signs-regulatory.ts";
+const app4SignEntriesPath = "src/data/manual-signs/app4SignEntries.json";
 const app4SignsWarningModulePath = "src/data/manual-sections/app4-signs-warning.ts";
 const app4SignsInformationalModulePath = "src/data/manual-sections/app4-signs-informational.ts";
 const app4SignsTemporaryModulePath = "src/data/manual-sections/app4-signs-temporary.ts";
@@ -119,6 +120,7 @@ const registry = JSON.parse(readFileSync(registryPath, "utf8"));
 const evidence = JSON.parse(readFileSync(evidencePath, "utf8"));
 const visualCropEvidence = JSON.parse(readFileSync(visualCropEvidencePath, "utf8"));
 const visualCompletenessEvidence = JSON.parse(readFileSync(visualCompletenessEvidencePath, "utf8"));
+const app4SignEntries = JSON.parse(readFileSync(app4SignEntriesPath, "utf8"));
 const strictRecordedChapter1SectionIds = new Set(["ch1-public-transport-system", "ch1-shared-trip"]);
 const legacyBaselineSectionIds = new Set(["ch1-cities-for-people", "ch1-sustainable-mobility", "ch1-pedestrian-priority", "ch1-bicycle"]);
 const implementedSectionIds = new Set([
@@ -2085,6 +2087,28 @@ test("Appendix IV keeps protected signs, markings, and signals source-as-is with
   assert.match(app4SignsHorizontalModuleSource, /Продольная разметка[\s\S]*Поперечная разметка[\s\S]*Специальная разметка/u);
   assert.match(app4SignsTrafficLightsModuleSource, /Значение огней[\s\S]*Расположение оптических блоков[\s\S]*Специальные светофоры/u);
   assert.match(app4SignsTrafficLightsModuleSource, /цвет, размер и положение/u);
+});
+
+test("Appendix IV keeps R.1 NO AVANZAR distinct from the no-overtaking sign in every learner-facing representation", () => {
+  const focusedCardStart = app4SignsRegulatoryModuleSource.indexOf('id: "app4-regulatory-no-avanzar-source-card"');
+  const focusedCardEnd = app4SignsRegulatoryModuleSource.indexOf("\n      visualNotes:", focusedCardStart);
+  assert.ok(focusedCardStart >= 0 && focusedCardEnd > focusedCardStart, "focused R.1 source card is present");
+  const focusedCard = app4SignsRegulatoryModuleSource.slice(focusedCardStart, focusedCardEnd);
+
+  assert.match(focusedCard, /titleRu:\s*"Проезд запрещен"/u);
+  assert.match(focusedCard, /altRu:\s*"Знак R\.1 NO AVANZAR \(Проезд запрещен\)/u);
+  assert.match(focusedCard, /termEs:\s*"NO AVANZAR",\s*translationRu:\s*"Проезд запрещен"/u);
+  assert.doesNotMatch(focusedCard, /обгон запрещен/iu);
+
+  const noOvertakingPanelStart = app4SignsRegulatoryModuleSource.indexOf('id: "app4-regulatory-anexo-panel-02-source-card"');
+  const noOvertakingPanelEnd = app4SignsRegulatoryModuleSource.indexOf("\n        {", noOvertakingPanelStart);
+  assert.ok(noOvertakingPanelStart >= 0 && noOvertakingPanelEnd > noOvertakingPanelStart, "no-overtaking panel is present");
+  const noOvertakingPanel = app4SignsRegulatoryModuleSource.slice(noOvertakingPanelStart, noOvertakingPanelEnd);
+  assert.match(noOvertakingPanel, /termEs:\s*"PROHIBIDO ADELANTAR",\s*translationRu:\s*"Обгон запрещен"/u);
+
+  const catalogBySpanishLabel = new Map(app4SignEntries.entries.map((entry) => [entry.spanishLabel, entry.russianTranslation]));
+  assert.equal(catalogBySpanishLabel.get("NO AVANZAR"), "Проезд запрещен");
+  assert.equal(catalogBySpanishLabel.get("NO ADELANTAR"), "Обгон запрещен");
 });
 
 test("Manual guide visual content crop evidence covers the whole manual and corrected Appendix IV page sheets", () => {

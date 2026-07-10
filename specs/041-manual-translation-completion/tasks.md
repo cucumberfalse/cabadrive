@@ -298,6 +298,33 @@
   evidence, and regression coverage. Orchestrator then invokes new final
   Architect validation followed by final Analyst validation on the new
   effective content head.
+- [x] T099 Address PR #206 review thread `PRRT_kwDOSX65IM6P8IoE` (comment
+  `3560691165`) as a narrow regulatory-sign meaning correction. In the focused
+  R.1 `NO AVANZAR` source-card learner-facing wording, replace the erroneous
+  parenthesized `обгон запрещен` with `Проезд запрещен`, matching the existing
+  structured translation and catalog record. Preserve `Обгон запрещен` solely
+  for the distinct `PROHIBIDO ADELANTAR` / `NO ADELANTAR` sign and leave all
+  protected source pixels unchanged.
+- [x] T100 Add a focused regression test or deterministic invariant across the
+  R.1 `NO AVANZAR` card's learner-facing alt/caption and structured term
+  translation: it must require `Проезд запрещен` and reject `обгон запрещен`.
+  The same coverage must prove the separate `PROHIBIDO ADELANTAR` / `NO
+  ADELANTAR` record continues to use `Обгон запрещен`.
+- [x] T101 Regenerate
+  `content/validation/manual-guide-translation-completeness.evidence.json` and
+  refresh only source/data fingerprint or visual-completeness artifacts whose
+  checks establish that the corrected learner-facing text made them stale.
+  Record the exact artifacts and reason; do not broaden exceptions or alter
+  unrelated sign/source-image content.
+- [x] T102 Run and record the focused sign/content and translation-audit tests,
+  audit evidence generation, `pnpm run validate:manual-guide`,
+  `pnpm run validate:content`, TypeScript, full tests, build, `git diff
+  --check`, and `pnpm run preflight` when feasible.
+- [ ] T103 Have Review Agent recheck `PRRT_kwDOSX65IM6P8IoE`, the R.1 versus
+  no-overtaking semantic boundary, the regression invariant, and all refreshed
+  deterministic evidence. Only after a passing review may Orchestrator invoke
+  fresh final Architect validation and then final Analyst validation on the new
+  effective content head.
 
 ## Decisions
 
@@ -318,6 +345,14 @@
   whole-guide terms. T088--T090 are the required implementation and verification
   return; the earlier final-validation evidence is stale until this non-evidence
   behavior/test/evidence change completes and roles revalidate.
+- Review-fix decision: P2 thread `PRRT_kwDOSX65IM6P8IoE` is valid. R.1 `NO
+  AVANZAR` has the canonical Russian meaning `Проезд запрещен`; `Обгон
+  запрещен` belongs to the separate `PROHIBIDO ADELANTAR` / `NO ADELANTAR`
+  no-overtaking sign. T099--T103 are the required narrow implementation,
+  evidence, verification, review, and fresh-validation return. Every prior
+  Architect and Analyst final-validation pass is stale because the reported
+  inline text is learner-facing product content, not evidence-only process
+  memory.
 - Implementation decision: Confirmed assigned worktree
   `/Users/chap/devel/cabadrive-worktrees/040-manual-translation-completion`,
   branch/PR slice `codex/040-manual-translation-completion`, verified base
@@ -462,6 +497,12 @@
   recorded in this feature memory.
 
 ## Final Architect Validation
+
+> **Stale as of PR #206 thread `PRRT_kwDOSX65IM6P8IoE` (comment
+> `3560691165`).** The validations recorded below predate the required
+> learner-facing R.1 `NO AVANZAR` correction in T099--T103 and must not be
+> used for merge or completion. Fresh Architect validation followed by Analyst
+> validation is required for the post-fix effective content head.
 
 - Architect validation pass: passed
 - Final Architect validation completed at: 2026-07-09T15:43:28Z
@@ -695,6 +736,45 @@
   - `pnpm run test`: passed, 480/480 tests.
   - `pnpm run build`: passed and generated a service worker with 2156 cached
     assets; the existing large Rollup-chunk warnings remained non-blocking.
+
+- PR #206 P2 R.1 regulatory-sign correction, 2026-07-10:
+  - T099 completed: corrected only the learner-facing R.1 focused-card `altRu`
+    from `NO AVANZAR (обгон запрещен)` to `NO AVANZAR (Проезд запрещен)`.
+    The card title and structured translation already used `Проезд запрещен`.
+    Protected official image pixels were not changed.
+  - T100 completed: added the focused `Appendix IV keeps R.1 NO AVANZAR
+    distinct from the no-overtaking sign in every learner-facing
+    representation` invariant. It requires R.1 card title, alt text, and
+    structured translation to use `Проезд запрещен`, rejects `обгон запрещен`
+    inside that card, and separately requires `PROHIBIDO ADELANTAR` and catalog
+    `NO ADELANTAR` to retain `Обгон запрещен`.
+  - T101 completed: `node scripts/manual-guide-translation-completeness-audit.mjs
+    --write` refreshed only
+    `content/validation/manual-guide-translation-completeness.evidence.json`:
+    the R.1 alt-text excerpt and content fingerprint changed; the audit passed
+    with 50 manual sections, 4 Introduction routes, 3000 inspected strings,
+    1184 candidate residues, 193 accepted exceptions, and 0 unresolved
+    findings. `pnpm run validate:content` then identified only the directly
+    dependent stale manual-ticket-placement source fingerprint. Running
+    `pnpm run generate:manual-ticket-placement` refreshed only
+    `content/manual-ticket-placement/manual-content-baseline.json` for
+    `app4-signs-regulatory.ts`; all 460 placements and their reviewed records
+    remained unchanged.
+  - T102 completed: `pnpm exec node --test
+    tests/content-manual-guide-chapters.test.mjs
+    tests/manual-guide-translation-completeness-audit.test.mjs` passed 112/112;
+    `pnpm run validate:manual-guide`, `pnpm run validate:content`,
+    `pnpm exec tsc --noEmit`, `pnpm run test` (484/484), `pnpm run build`,
+    `git diff --check`, `node scripts/check-feature-memory.mjs --worktree`,
+    and `pnpm run preflight` passed. The existing Rollup chunk-size warnings
+    during build remain non-blocking.
+  - T103 is deliberately pending: an independent Review Agent must recheck the
+    correction and deterministic evidence before Orchestrator starts fresh
+    Architect-then-Analyst final validation. No review thread was replied to or
+    resolved by this Implementation Agent.
+  - Implementation Agent feedback: none beyond the required T103 independent
+    review handoff; no broader content, source-image, runtime, or validator
+    change is needed.
 
 ## Cycle PR Set
 

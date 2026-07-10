@@ -3,7 +3,7 @@
   "featureId": "041-manual-translation-completion",
   "generatedBy": "scripts/manual-guide-translation-completeness-audit.mjs",
   "generatedAt": "1970-01-01T00:00:00.000Z",
-  "contentFingerprint": "87eb23667099b86f453c488e9be20ef0fb58af5b8c63ecf56399539e9d4d965b",
+  "contentFingerprint": "ca347f55b4f681a12ed393d4680eb88b3b90302b3198c87d61698b00139150f2",
   "counts": {
     "implementedSections": 50,
     "introductionRoutes": 4,
@@ -6031,7 +6031,7 @@
       "blockId": "regulatory-focused-signs",
       "blockKind": "source-image-cards",
       "fieldPath": "blocks.3.cards.0.altRu",
-      "textExcerpt": "Знак R.1 NO AVANZAR (обгон запрещен) с испанской подписью под знаком.",
+      "textExcerpt": "Знак R.1 NO AVANZAR (Проезд запрещен) с испанской подписью под знаком.",
       "detectedSpanishPhrase": "NO AVANZAR",
       "disposition": "retained-with-inline-translation",
       "note": "Spanish phrase has immediate parenthesized Russian translation in the same string."

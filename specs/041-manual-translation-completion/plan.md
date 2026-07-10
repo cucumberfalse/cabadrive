@@ -145,6 +145,35 @@ around those names still need Russian translation. Example: an official road
 name may stay as `Autopista 25 de Mayo`, while generic `autopistas` in prose
 should become `autopistas (автомагистрали)` or simply `автомагистрали`.
 
+### PR #206 regulatory-sign meaning follow-up
+
+Keep this as one narrow implementation return on the existing PR. The active
+review finding `PRRT_kwDOSX65IM6P8IoE` (comment `3560691165`) identifies an
+incorrect newly added inline translation on the R.1 source card:
+
+- `NO AVANZAR` is the existing R.1 sign record whose governed Russian meaning
+  is `Проезд запрещен`.
+- `PROHIBIDO ADELANTAR` (and the catalog label `NO ADELANTAR`) is the separate
+  no-overtaking sign and alone maps to `Обгон запрещен`.
+- Correct the conflicting parenthesized/learner-facing R.1 wording to `Проезд
+  запрещен`; preserve the official source image pixels and the separate
+  no-overtaking records unchanged.
+- Add a focused regression test or deterministic invariant that examines every
+  learner-facing R.1 `NO AVANZAR` representation (including the source-card
+  alt text and structured term translation) and rejects `обгон запрещен` for
+  that sign while retaining `Обгон запрещен` for `PROHIBIDO ADELANTAR` / `NO
+  ADELANTAR`.
+- Regenerate translation-completeness evidence and only directly dependent
+  source/data fingerprint artifacts when their validators establish staleness.
+  Do not alter protected source pixels, unrelated sign meanings, generic audit
+  exceptions, or runtime behavior.
+- Run the focused sign/audit tests plus required validation, then have Review
+  Agent recheck this thread before a new final Architect validation and then
+  final Analyst validation.
+
+This is a product-content/test/evidence change, not a final-validation-evidence
+repair. All earlier final validations are stale until the follow-up completes.
+
 ## Content Fix Strategy
 
 For each residue:

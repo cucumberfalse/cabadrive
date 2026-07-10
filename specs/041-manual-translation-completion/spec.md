@@ -143,6 +143,8 @@ specific variant:
 | `banquina` | `обочина` |
 | `carril izquierdo` / `carril derecho` | `левая полоса` / `правая полоса` |
 | `sobrepaso` / `adelantamiento` | preserve the existing distinction where the manual already uses it; translate as `опережение` / `обгон` when context supports it |
+| `NO AVANZAR` (R.1) | `Проезд запрещен`; this is not the no-overtaking sign |
+| `PROHIBIDO ADELANTAR` / `NO ADELANTAR` | `Обгон запрещен`; do not use this meaning for `NO AVANZAR` |
 | `balizas` / `intermitentes` | `аварийная сигнализация` / `мигающие аварийные огни` by context |
 | `auxilio` / `asistencia` | `помощь` / `техническая помощь` by context |
 
@@ -228,6 +230,12 @@ per-residue dispositions, and representative route/screenshot evidence paths.
 11. Given implementation is complete, verification evidence includes the
     screenshot probes, whole-guide audit evidence, focused automated tests, and
     standard local checks recorded in `tasks.md`.
+12. Given the Appendix IV regulatory-sign R.1 source card is rendered or
+    audited, `NO AVANZAR` has the direct Russian support `Проезд запрещен` in
+    every learner-facing caption, alternative text, and structured term record.
+    `Обгон запрещен` is reserved for the distinct `PROHIBIDO ADELANTAR` / `NO
+    ADELANTAR` sign; a parenthesized translation must not override or contradict
+    the card's canonical structured translation.
 
 ## Negative Scenarios
 
@@ -251,6 +259,10 @@ per-residue dispositions, and representative route/screenshot evidence paths.
   non-manual product changes.
 - Declaring completion from an AI-written summary without committed audit/test
   evidence.
+- Treating the Spanish surface form `NO AVANZAR` as if it were the distinct
+  no-overtaking sign, or updating only one of the card caption, alt text,
+  structured translation, catalog data, or evidence while another
+  learner-facing representation still says `обгон запрещен`.
 
 ## Implementation Requirements
 
@@ -375,6 +387,16 @@ Focused tests should prove:
   additional feature task or future ticket required now.
 
 ### Final Architect Validation
+
+> **Stale as of PR #206 review thread `PRRT_kwDOSX65IM6P8IoE` (comment
+> `3560691165`).** The review identified a non-evidence learner-facing content
+> defect after the validations below: R.1 `NO AVANZAR` was parenthesized as
+> `обгон запрещен` even though this feature's existing canonical sign data says
+> `Проезд запрещен`; `PROHIBIDO ADELANTAR` is the separate no-overtaking sign.
+> The prior Architect and Analyst passes therefore cannot authorize completion
+> or merge until the narrow follow-up is implemented, independently reviewed,
+> and revalidated in Architect-then-Analyst order on the resulting effective
+> content head.
 
 - Architect validation pass: passed
 - Final Architect validation completed at: 2026-07-09T15:43:28Z

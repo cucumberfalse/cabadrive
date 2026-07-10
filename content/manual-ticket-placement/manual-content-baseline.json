@@ -73,7 +73,7 @@
     },
     {
       "path": "src/data/manual-sections/app4-signs-regulatory.ts",
-      "sha256": "511955018633772e1070f2ef4721151e958ae8a99ff37c37166d027ec043877f"
+      "sha256": "0a149e80251973fb277ec0bd06fb0dae0d624cfddb49fff669203494e7b6bbe1"
     },
     {
       "path": "src/data/manual-sections/app4-signs-temporary.ts",
@@ -1988,6 +1988,6 @@
       "contentFingerprint": "30b8b2a8c120eaeda3f9127bc34da99597c1116ddd74c135a693b75c15864c0a"
     }
   ],
-  "aggregateSourceFingerprint": "26dabe872c3fee8dbb265a08d48148e1b905921511a95b4abc32f81e2573cc39",
+  "aggregateSourceFingerprint": "09f77586fdaa30c6b9e1c1d7eb06c0ba2076612f82aea1c816223a4d4d0eda97",
   "aggregateImageFingerprint": "dec6dbd54887b1aeb3d0d7bccd88449176fba01178ff3b616669b7f2b82c39a7"
 }
