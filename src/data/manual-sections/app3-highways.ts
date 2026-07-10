@@ -49,7 +49,7 @@ export const app3HighwaysSection: ManualGuideSectionContent = {
       kind: "callout",
       sourceTextEs: "Anexo IV comienza despues de la pagina 183.",
       textRu:
-        "После этой закрывающей страницы начинается Приложение IV о дорожных знаках. Оно не входит в PR по Приложению III (Appendix III PR) и остается отдельной будущей работой."
+        "После этой закрывающей страницы начинается Приложение IV о дорожных знаках. Оно не входит в PR по Приложению III, то есть Appendix III PR (Приложение III в текущей работе), и остается отдельной будущей работой."
     }
   ]
 };

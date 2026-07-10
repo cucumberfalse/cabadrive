@@ -1683,6 +1683,8 @@ test("Chapter 5 sections retain attitude, equality, support-line, and efficient-
 
   assert.match(ch5GenderViolencePreventionModuleSource, /911/u);
   assert.match(ch5GenderViolencePreventionModuleSource, /22676 ACOSO/u);
+  assert.match(ch5GenderViolencePreventionModuleSource, /22676 ACOSO \(линия помощи при домогательствах\)/u);
+  assert.match(ch5GenderViolencePreventionModuleSource, /22676 ACOSO \(линия для сообщений о домогательствах\)/u);
   assert.match(ch5GenderViolencePreventionModuleSource, /24 часа[\s\S]*365 дней/u);
   assert.match(ch5GenderViolencePreventionModuleSource, /SMS[\s\S]*22676/u);
   assert.match(ch5GenderViolencePreventionModuleSource, /reporte - сообщение/u);

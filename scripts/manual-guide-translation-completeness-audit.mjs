@@ -136,6 +136,49 @@ const genericTrafficTerms = new Set(
     .filter((term) => term.length > 0)
 );
 
+const reviewedIdentifierPolicies = [
+  {
+    id: "reviewed-official-system-identifiers",
+    identifiers: [
+      "ABC",
+      "ABS",
+      "ANSV",
+      "AU",
+      "AUSA",
+      "AUSOL",
+      "AYUDA",
+      "BUI",
+      "CABA",
+      "CABA SRI",
+      "CAJ",
+      "CO",
+      "DNI",
+      "DNRPA",
+      "GCBA",
+      "GNC",
+      "GPS",
+      "LiNTI",
+      "MBA",
+      "OFAVYT",
+      "PR",
+      "QR",
+      "RTO",
+      "RUTA",
+      "RVA",
+      "SMS",
+      "SRI",
+      "SUBE",
+      "VTV"
+    ],
+    reason: "reviewed official, technical, or message identifier"
+  },
+  {
+    id: "reviewed-organization-or-brand-identifiers",
+    identifiers: ["GOODYEAR", "RACE"],
+    reason: "reviewed organization or brand identifier"
+  }
+];
+
 const acceptedExceptionPatterns = [
   {
     id: "measurement-unit",
@@ -143,18 +186,8 @@ const acceptedExceptionPatterns = [
     reason: "measurement unit"
   },
   {
-    id: "official-acronym",
-    pattern: /^(?:CABA|GCBA|DNI|BUI|VTV|RTO|RUTA|RVA|ANSV|SRI|SUBE|QR|GNC|DNRPA|AUSA|LiNTI)$/u,
-    reason: "official acronym or system identifier"
-  },
-  {
-    id: "uppercase-acronym",
-    pattern: /^[A-Z0-9]{2,8}(?:\s+[A-Z0-9]{2,8})*$/u,
-    reason: "uppercase acronym or compact official identifier"
-  },
-  {
     id: "address-abbreviation",
-    pattern: /^(?:Av|Pte|Nº)$/u,
+    pattern: /^(?:Av|Pte|Nº|As|Bs)$/u,
     reason: "address abbreviation"
   },
   {
@@ -174,7 +207,7 @@ const acceptedExceptionPatterns = [
   },
   {
     id: "road-place-or-person-name",
-    pattern: /^(?:Alem|Leandro N|San Martin|Mariquita Sanchez de Thompson|Barracas|Uruguay|Callao|Cerrito|Nogoyá|Villa Real|Ramón Lista|Juan E\. Martínez|Irigoyen|Ema Cibotti-Lischinsky|Norma Bonelli|Viviam Perrone|Patricia Pistarini|Teresa Mellano|Cinthya Toledo|Familias Por La Vida ONG|Junín|Libertad|Gral|Paz|Sáenz|Macrocentro|Balbín|Illia|de Julio Sur)$/u,
+    pattern: /^(?:Acceso Norte|Alem|La Plata|Leandro N|San Martin|Mariquita Sanchez de Thompson|Barracas|Uruguay|Callao|Cerrito|Nogoyá|Villa Real|Ramón Lista|Juan E\. Martínez|Irigoyen|Ema Cibotti-Lischinsky|Norma Bonelli|Viviam Perrone|Patricia Pistarini|Teresa Mellano|Cinthya Toledo|Familias Por La Vida ONG|Junín|Libertad|Gral|Paz|Sáenz|Macrocentro|Balbín|Illia|de Julio Sur)$/u,
     reason: "official road, place, program contact, or proper name"
   }
 ];
@@ -502,6 +535,11 @@ function isStructuredPair(record) {
 function isAcceptedException(segment) {
   const trimmed = segment.trim();
   if (genericTrafficTerms.has(normalizeText(trimmed))) return null;
+  for (const policy of reviewedIdentifierPolicies) {
+    if (policy.identifiers.includes(trimmed)) {
+      return { id: policy.id, reason: policy.reason };
+    }
+  }
   return acceptedExceptionPatterns.find((entry) => entry.pattern.test(trimmed)) ?? null;
 }
 
@@ -510,13 +548,28 @@ function phraseHasInlineRussianSupport(text, phrase) {
   if (pattern.test(text)) return true;
   const immediatePairPattern = new RegExp(`${escapeRegExp(phrase)}[»”"']?\\s*(?:[-:–—]|=)\\s*\\p{Script=Cyrillic}`, "iu");
   if (immediatePairPattern.test(text)) return true;
-  const reverseParentheticalPattern = new RegExp(`\\p{Script=Cyrillic}[^()]{0,120}\\([^)]*${escapeRegExp(phrase)}[^)]*\\)`, "iu");
-  if (reverseParentheticalPattern.test(text)) return true;
+  if (phraseHasStructuralReverseParentheticalSupport(text, phrase)) return true;
   const combinedSpanPattern = new RegExp(
     `[\\p{Script=Latin}\\p{Mark} /'’.:-]*${escapeRegExp(phrase)}[\\p{Script=Latin}\\p{Mark} /'’.:-]*[»”"']?\\s*\\([^)]*\\p{Script=Cyrillic}[^)]*\\)`,
     "iu"
   );
   return combinedSpanPattern.test(text);
+}
+
+function phraseHasStructuralReverseParentheticalSupport(text, phrase) {
+  const parentheticalPattern = new RegExp(`\\(\\s*[^)]*${escapeRegExp(phrase)}[^)]*\\)`, "giu");
+  for (const match of text.matchAll(parentheticalPattern)) {
+    const openingParenthesisIndex = match.index;
+    const precedingText = text.slice(0, openingParenthesisIndex);
+    const label = precedingText.split(/[.!?;:()]/u).at(-1)?.trim() ?? "";
+    if (label.length === 0 || !/\p{Script=Cyrillic}/u.test(label)) continue;
+
+    const withoutRomanNumerals = label.replace(/\b[IVXLCDM]+\b/giu, "");
+    if (/\p{Script=Latin}/u.test(withoutRomanNumerals)) continue;
+    if (!/(?:\p{Script=Cyrillic}|[IVXLCDM])$/iu.test(label)) continue;
+    return true;
+  }
+  return false;
 }
 
 function phraseHasAdjacentRussianSupport(record, phrase) {
@@ -632,6 +685,7 @@ function validateEvidenceShape(value) {
   assertCondition(Array.isArray(value.residues), "evidence.residues must be an array");
   assertCondition(Array.isArray(value.requiredProbeCoverage), "evidence.requiredProbeCoverage must be an array");
   assertCondition(Array.isArray(value.exceptions), "evidence.exceptions must be an array");
+  assertCondition(Array.isArray(value.reviewedIdentifierPolicies), "evidence.reviewedIdentifierPolicies must be an array");
   assertCondition(isObject(value.routeInventory), "evidence.routeInventory must be an object");
   assertCondition(isObject(value.routeInventory.counts), "evidence.routeInventory.counts must be an object");
   assertCondition(
@@ -641,6 +695,7 @@ function validateEvidenceShape(value) {
   for (const exception of value.exceptions) {
     assertCondition(exception.disposition === "allowed-narrow-exception", "exceptions must use allowed-narrow-exception disposition", exception);
     assertCondition(!genericTrafficTerms.has(normalizeText(exception.detectedSpanishPhrase)), "generic traffic terms cannot be allowlisted as exceptions", exception);
+    assertCondition(exception.note !== "uppercase acronym or compact official identifier", "generic uppercase exceptions are forbidden", exception);
   }
 }
 
@@ -780,6 +835,7 @@ const document = {
       "Out of scope for this text-surface audit; visible Spanish inside protected source images remains governed by image-readability translation evidence."
   },
   terminologyDecisions,
+  reviewedIdentifierPolicies,
   requiredProbeCoverage: probes,
   exceptions,
   residues

@@ -3,15 +3,15 @@
   "featureId": "041-manual-translation-completion",
   "generatedBy": "scripts/manual-guide-translation-completeness-audit.mjs",
   "generatedAt": "1970-01-01T00:00:00.000Z",
-  "contentFingerprint": "ad414050991b3c1df263f38235ceb6c10a73cb6fc14b76872552856b41bd3289",
+  "contentFingerprint": "87eb23667099b86f453c488e9be20ef0fb58af5b8c63ecf56399539e9d4d965b",
   "counts": {
     "implementedSections": 50,
     "introductionRoutes": 4,
     "renderedGuideRoutes": 54,
     "inspectedStrings": 3000,
     "candidateResidues": 1184,
-    "translatedOrRetainedWithSupport": 995,
-    "acceptedExceptions": 189,
+    "translatedOrRetainedWithSupport": 991,
+    "acceptedExceptions": 193,
     "unresolvedFindings": 0
   },
   "routeInventory": {
@@ -582,6 +582,51 @@
       "translationRu": "велодорожки"
     }
   ],
+  "reviewedIdentifierPolicies": [
+    {
+      "id": "reviewed-official-system-identifiers",
+      "identifiers": [
+        "ABC",
+        "ABS",
+        "ANSV",
+        "AU",
+        "AUSA",
+        "AUSOL",
+        "AYUDA",
+        "BUI",
+        "CABA",
+        "CABA SRI",
+        "CAJ",
+        "CO",
+        "DNI",
+        "DNRPA",
+        "GCBA",
+        "GNC",
+        "GPS",
+        "LiNTI",
+        "MBA",
+        "OFAVYT",
+        "PR",
+        "QR",
+        "RTO",
+        "RUTA",
+        "RVA",
+        "SMS",
+        "SRI",
+        "SUBE",
+        "VTV"
+      ],
+      "reason": "reviewed official, technical, or message identifier"
+    },
+    {
+      "id": "reviewed-organization-or-brand-identifiers",
+      "identifiers": [
+        "GOODYEAR",
+        "RACE"
+      ],
+      "reason": "reviewed organization or brand identifier"
+    }
+  ],
   "requiredProbeCoverage": [
     {
       "probe": "Ingreso: carriles de aceleración",
@@ -683,7 +728,7 @@
       "textExcerpt": "Обязателен огнетушитель 1 kg типа ABC.",
       "detectedSpanishPhrase": "ABC",
       "disposition": "allowed-narrow-exception",
-      "note": "uppercase acronym or compact official identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "app1-other-required-safety-elements",
@@ -707,7 +752,7 @@
       "textExcerpt": "В CABA частному автомобилю запрещено буксировать другой частный автомобиль.",
       "detectedSpanishPhrase": "CABA",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "app1-safety-elements",
@@ -719,7 +764,7 @@
       "textExcerpt": "В Приложении I перечислены элементы безопасности, а также рекомендации по обслуживанию и легкой механике. Износ и срок службы автомобиля повышают риск, в том числе для пешеходов; поэтому важно помнить о периодической VTV как механической...",
       "detectedSpanishPhrase": "VTV",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "app1-safety-elements",
@@ -743,7 +788,7 @@
       "textExcerpt": "По правилу CABA SRI обязателен с рождения до 12 лет, если рост меньше 1.50 m или вес меньше 36 kg; дети в этой группе не едут на переднем сиденье.",
       "detectedSpanishPhrase": "CABA SRI",
       "disposition": "allowed-narrow-exception",
-      "note": "uppercase acronym or compact official identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "app1-safety-elements",
@@ -767,7 +812,7 @@
       "textExcerpt": "Подушка безопасности и SRI",
       "detectedSpanishPhrase": "SRI",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "app1-safety-elements",
@@ -779,7 +824,7 @@
       "textExcerpt": "Схема типов детских удерживающих систем SRI с пиктограммами и номерами групп.",
       "detectedSpanishPhrase": "SRI",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "app1-safety-elements",
@@ -791,7 +836,7 @@
       "textExcerpt": "Виды SRI",
       "detectedSpanishPhrase": "SRI",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "app1-safety-elements",
@@ -863,7 +908,7 @@
       "textExcerpt": "Схема типов SRI",
       "detectedSpanishPhrase": "SRI",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "app1-safety-elements",
@@ -875,7 +920,7 @@
       "textExcerpt": "Виды SRI",
       "detectedSpanishPhrase": "SRI",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "app1-safety-elements",
@@ -887,7 +932,7 @@
       "textExcerpt": "Правильно установленная SRI снижает смертность примерно на 80% у детей и на 70% у младенцев.",
       "detectedSpanishPhrase": "SRI",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "app1-safety-elements",
@@ -899,7 +944,7 @@
       "textExcerpt": "Теплую верхнюю одежду в SRI использовать не рекомендуется.",
       "detectedSpanishPhrase": "SRI",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "app1-safety-elements",
@@ -911,7 +956,7 @@
       "textExcerpt": "SRI снижает силу удара.",
       "detectedSpanishPhrase": "SRI",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "app1-safety-elements",
@@ -923,7 +968,7 @@
       "textExcerpt": "Бывшую в употреблении SRI покупать не рекомендуется.",
       "detectedSpanishPhrase": "SRI",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "app1-safety-elements",
@@ -947,7 +992,7 @@
       "textExcerpt": "SRI меняют, когда превышен максимальный вес или голова выходит выше спинки.",
       "detectedSpanishPhrase": "SRI",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "app1-safety-elements",
@@ -959,7 +1004,7 @@
       "textExcerpt": "Ремни, которыми SRI крепится к автомобилю, должны быть натянуты; их проверяют часто и после длинных поездок.",
       "detectedSpanishPhrase": "SRI",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "app1-safety-elements",
@@ -971,7 +1016,7 @@
       "textExcerpt": "Почему и как использовать SRI",
       "detectedSpanishPhrase": "SRI",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "app1-safety-elements",
@@ -995,7 +1040,7 @@
       "textExcerpt": "Закон CABA 2148 требует передний и задний бамперы в установленной форме и размерах, а также крылья, соответствующие колесам.",
       "detectedSpanishPhrase": "CABA",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "app1-safety-elements",
@@ -1031,7 +1076,7 @@
       "textExcerpt": "ABS не является обязательным элементом, но помогает при блокировке колес: система ограничивает и отпускает давление только в момент блокировки.",
       "detectedSpanishPhrase": "ABS",
       "disposition": "allowed-narrow-exception",
-      "note": "uppercase acronym or compact official identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "app2-driving-factors",
@@ -1043,7 +1088,7 @@
       "textExcerpt": "Водитель отвечает за действия по нормам Кодекса дорожного движения и транспорта CABA, даже если пассажир просит ехать быстрее или остановиться где угодно.",
       "detectedSpanishPhrase": "CABA",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "app2-driving-factors",
@@ -1055,7 +1100,7 @@
       "textExcerpt": "Если аппарат SUBE неисправен или не может списать оплату, пассажиров нужно пропустить, гарантируя выполнение услуги.",
       "detectedSpanishPhrase": "SUBE",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "app2-highways-hospitals",
@@ -1079,7 +1124,7 @@
       "textExcerpt": "Если транспорт не может продолжать нормальное движение, нужно уведомить AUSA; она отбуксирует и уберет транспорт.",
       "detectedSpanishPhrase": "AUSA",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "app2-highways-hospitals",
@@ -1103,7 +1148,7 @@
       "textExcerpt": "Карта больниц CABA",
       "detectedSpanishPhrase": "CABA",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "app2-highways-hospitals",
@@ -1115,7 +1160,7 @@
       "textExcerpt": "Карта общих больниц CABA с испанскими подписями и маркерами H/H1/H2.",
       "detectedSpanishPhrase": "CABA",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "app2-highways-hospitals",
@@ -1139,7 +1184,7 @@
       "textExcerpt": "Карта больниц CABA",
       "detectedSpanishPhrase": "CABA",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "app2-safety-elements",
@@ -1175,7 +1220,7 @@
       "textExcerpt": "В CABA частному транспортному средству запрещено буксировать другое; буксировку выполняет транспорт, уполномоченный для этой цели.",
       "detectedSpanishPhrase": "CABA",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "app3-cargo-driver-profile",
@@ -1247,7 +1292,7 @@
       "textExcerpt": "Также нужны RUTA, сертификат RTO, LiNTI при межюрисдикционной перевозке, документ на груз: remito (товарная накладная), carta de porte (транспортная накладная), guia (путевой/сопроводительный документ) или factura (счет-фактура).",
       "detectedSpanishPhrase": "LiNTI",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "app3-cargo-driver-profile",
@@ -1259,7 +1304,7 @@
       "textExcerpt": "Также нужны RUTA, сертификат RTO, LiNTI при межюрисдикционной перевозке, документ на груз: remito (товарная накладная), carta de porte (транспортная накладная), guia (путевой/сопроводительный документ) или factura (счет-фактура).",
       "detectedSpanishPhrase": "RTO",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "app3-cargo-driver-profile",
@@ -1271,7 +1316,7 @@
       "textExcerpt": "Также нужны RUTA, сертификат RTO, LiNTI при межюрисдикционной перевозке, документ на груз: remito (товарная накладная), carta de porte (транспортная накладная), guia (путевой/сопроводительный документ) или factura (счет-фактура).",
       "detectedSpanishPhrase": "RUTA",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "app3-safe-driving",
@@ -1331,7 +1376,7 @@
       "textExcerpt": "Если транспорт не может продолжить нормальное движение, нужно уведомить AUSA, которая организует буксировку и удаление.",
       "detectedSpanishPhrase": "AUSA",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "app3-safety-elements",
@@ -1343,7 +1388,7 @@
       "textExcerpt": "Любое транспортное средство имеет срок службы и естественный износ. VTV проверяет механическое состояние, чтобы обеспечить соблюдение норм дорожной безопасности, предотвратить и уменьшить дорожные инциденты. Водитель обязан убедиться, чт...",
       "detectedSpanishPhrase": "VTV",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "app3-safety-elements",
@@ -1439,19 +1484,7 @@
       "textExcerpt": "В CABA ее нельзя использовать частному транспортному средству для буксировки другого: услуга должна выполняться уполномоченным транспортом.",
       "detectedSpanishPhrase": "CABA",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
-    },
-    {
-      "sectionId": "app4-signs-regulatory",
-      "sourceKind": "manual-section",
-      "modulePath": "src/data/manual-sections/app4-signs-regulatory.ts",
-      "blockId": "regulatory-focused-signs",
-      "blockKind": "source-image-cards",
-      "fieldPath": "blocks.3.cards.0.altRu",
-      "textExcerpt": "Знак R.1 NO AVANZAR с испанской подписью под знаком.",
-      "detectedSpanishPhrase": "NO AVANZAR",
-      "disposition": "allowed-narrow-exception",
-      "note": "uppercase acronym or compact official identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "app4-signs-regulatory",
@@ -1475,7 +1508,7 @@
       "textExcerpt": "Панель показывает первые запрещающие знаки крупнее обзорного листа CABA. Испанские подписи остаются частью изображения; русская расшифровка дана отдельным текстом ниже.",
       "detectedSpanishPhrase": "CABA",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "app4-signs-regulatory",
@@ -1535,7 +1568,7 @@
       "textExcerpt": "Листы CABA с локальными вариантами",
       "detectedSpanishPhrase": "CABA",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "app4-signs-traffic-lights",
@@ -1595,7 +1628,7 @@
       "textExcerpt": "Для CABA одна из главных задач в организации движения и дорожной безопасности - огромный ежедневный поток: на территории города совершается больше девяти миллионов поездок в день.",
       "detectedSpanishPhrase": "CABA",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch1-pedestrian-priority",
@@ -1643,7 +1676,7 @@
       "textExcerpt": "График основан на воссоздании типичного городского наезда на скорости 40 км/ч, подготовленном RACE и GOODYEAR в 2015 году.",
       "detectedSpanishPhrase": "GOODYEAR",
       "disposition": "allowed-narrow-exception",
-      "note": "uppercase acronym or compact official identifier"
+      "note": "reviewed organization or brand identifier"
     },
     {
       "sectionId": "ch1-pedestrian-priority",
@@ -1655,7 +1688,7 @@
       "textExcerpt": "График основан на воссоздании типичного городского наезда на скорости 40 км/ч, подготовленном RACE и GOODYEAR в 2015 году.",
       "detectedSpanishPhrase": "RACE",
       "disposition": "allowed-narrow-exception",
-      "note": "uppercase acronym or compact official identifier"
+      "note": "reviewed organization or brand identifier"
     },
     {
       "sectionId": "ch1-public-transport-system",
@@ -1667,7 +1700,7 @@
       "textExcerpt": "Общественный транспорт в CABA рассматривается как практический способ уменьшить выбросы CO2 и сделать движение более плавным и здоровым.",
       "detectedSpanishPhrase": "CABA",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch1-public-transport-system",
@@ -1679,7 +1712,7 @@
       "textExcerpt": "Общественный транспорт в CABA рассматривается как практический способ уменьшить выбросы CO2 и сделать движение более плавным и здоровым.",
       "detectedSpanishPhrase": "CO",
       "disposition": "allowed-narrow-exception",
-      "note": "uppercase acronym or compact official identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch1-public-transport-system",
@@ -1691,19 +1724,7 @@
       "textExcerpt": "меньше CO2",
       "detectedSpanishPhrase": "CO",
       "disposition": "allowed-narrow-exception",
-      "note": "uppercase acronym or compact official identifier"
-    },
-    {
-      "sectionId": "ch1-public-transport-system",
-      "sourceKind": "manual-section",
-      "modulePath": "src/data/manual-sections/ch1-public-transport-system.ts",
-      "blockId": "public-transport-infrastructure",
-      "blockKind": "public-transport-infrastructure",
-      "fieldPath": "blocks.3.cards.2.altRu",
-      "textExcerpt": "Фотография эксклюзивной полосы с дорожной надписью BUS.",
-      "detectedSpanishPhrase": "BUS",
-      "disposition": "allowed-narrow-exception",
-      "note": "uppercase acronym or compact official identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch1-public-transport-system",
@@ -1751,7 +1772,7 @@
       "textExcerpt": "Metrobus de Buenos Aires (MBA)",
       "detectedSpanishPhrase": "MBA",
       "disposition": "allowed-narrow-exception",
-      "note": "uppercase acronym or compact official identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch1-public-transport-system",
@@ -1775,7 +1796,7 @@
       "textExcerpt": "На автомагистралях нужно как можно быстрее убрать транспортное средство из полосы движения, не оставаться на проезжей части и использовать аварийные телефоны концессионера: AUSA 140 и AUSOL 0800-999-9999.",
       "detectedSpanishPhrase": "AUSA",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch2-incident-obligations",
@@ -1787,7 +1808,7 @@
       "textExcerpt": "На автомагистралях нужно как можно быстрее убрать транспортное средство из полосы движения, не оставаться на проезжей части и использовать аварийные телефоны концессионера: AUSA 140 и AUSOL 0800-999-9999.",
       "detectedSpanishPhrase": "AUSOL",
       "disposition": "allowed-narrow-exception",
-      "note": "uppercase acronym or compact official identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch2-incident-obligations",
@@ -1799,7 +1820,7 @@
       "textExcerpt": "По водителю: имя, DNI, адрес, телефон и водительское удостоверение.",
       "detectedSpanishPhrase": "DNI",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch2-incident-obligations",
@@ -1811,7 +1832,7 @@
       "textExcerpt": "По застрахованному лицу, если это не водитель на момент инцидента: имя, DNI, адрес и телефон.",
       "detectedSpanishPhrase": "DNI",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch2-incident-obligations",
@@ -1823,7 +1844,7 @@
       "textExcerpt": "По свидетелям: имя, DNI, адрес и телефон; эти данные могут быть важны в судебном процессе.",
       "detectedSpanishPhrase": "DNI",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch2-incident-obligations",
@@ -1835,7 +1856,7 @@
       "textExcerpt": "По пострадавшим: имя, DNI, адрес и телефон.",
       "detectedSpanishPhrase": "DNI",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch2-incident-obligations",
@@ -1847,7 +1868,7 @@
       "textExcerpt": "Unidades de Orientación y Denuncia, Ministerio Público Fiscal de CABA. Сопровождение по уголовным делам в CABA. Тел.: 6089-9114/9135 / Pte. Perón 671 / mpf.gob.ar/dovic",
       "detectedSpanishPhrase": "CABA",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch2-incident-obligations",
@@ -1871,7 +1892,7 @@
       "textExcerpt": "Oficina de Asistencia a la Víctima y Testigo (OFAVYT), Ministerio Público Fiscal de CABA. Помощь людям после физического или эмоционального насилия. Тел.: 4014-1984 / Beruti Nº 3345, 3-й этаж, CABA / mpfciudad.gob.ar",
       "detectedSpanishPhrase": "CABA",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch2-incident-obligations",
@@ -1895,7 +1916,7 @@
       "textExcerpt": "Oficina de Asistencia a la Víctima y Testigo (OFAVYT), Ministerio Público Fiscal de CABA. Помощь людям после физического или эмоционального насилия. Тел.: 4014-1984 / Beruti Nº 3345, 3-й этаж, CABA / mpfciudad.gob.ar",
       "detectedSpanishPhrase": "OFAVYT",
       "disposition": "allowed-narrow-exception",
-      "note": "uppercase acronym or compact official identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch2-incident-obligations",
@@ -1907,7 +1928,7 @@
       "textExcerpt": "Centros de Acceso a la Justicia (CAJ), Ministerio de Justicia y DDHH de la Nación. Юридическая консультация и/или психологическая помощь. Тел.: 0800-222-3425 / argentina.gob.ar/justicia/afianzar/caj",
       "detectedSpanishPhrase": "CAJ",
       "disposition": "allowed-narrow-exception",
-      "note": "uppercase acronym or compact official identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch2-incident-obligations",
@@ -1932,6 +1953,18 @@
       "detectedSpanishPhrase": "Norma Bonelli",
       "disposition": "allowed-narrow-exception",
       "note": "official road, place, program contact, or proper name"
+    },
+    {
+      "sectionId": "ch2-incident-obligations",
+      "sourceKind": "manual-section",
+      "modulePath": "src/data/manual-sections/ch2-incident-obligations.ts",
+      "blockId": "ngo-organizations",
+      "blockKind": "list",
+      "fieldPath": "blocks.7.itemsRu.2",
+      "textExcerpt": "Asociación Civil Madres del Dolor / контакт: Viviam Perrone / тел.: 39684082, 35357569 и 08002229832 (AYUDA) / kevinsedano@yahoo.com.ar / madresdeldolor.org.ar",
+      "detectedSpanishPhrase": "AYUDA",
+      "disposition": "allowed-narrow-exception",
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch2-incident-obligations",
@@ -2015,7 +2048,7 @@
       "textExcerpt": "Этот набор документов требуется для управления любым типом транспортного средства в CABA. Национальный закон 24449 также добавляет подтверждения оплаты налога на регистрацию транспортного средства и, когда применимо, оплаты проезда; для ...",
       "detectedSpanishPhrase": "CABA",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch2-required-documents",
@@ -2027,7 +2060,7 @@
       "textExcerpt": "Пример DNI.",
       "detectedSpanishPhrase": "DNI",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch2-required-documents",
@@ -2039,7 +2072,7 @@
       "textExcerpt": "DNI подтверждает личность гражданина Аргентины или иностранца с местом жительства в стране. Водительское удостоверение не заменяет документ личности; иностранцы должны иметь действующий личный документ.",
       "detectedSpanishPhrase": "DNI",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch2-required-documents",
@@ -2051,7 +2084,7 @@
       "textExcerpt": "DNI",
       "detectedSpanishPhrase": "DNI",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch2-required-documents",
@@ -2063,7 +2096,7 @@
       "textExcerpt": "CABA предоставляет учебную площадку для безопасной практики и обязательные теоретические курсы для получения лицензии; для продления используются обновляющие материалы.",
       "detectedSpanishPhrase": "CABA",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch2-required-documents",
@@ -2075,7 +2108,7 @@
       "textExcerpt": "Cédula (регистрационная карточка), выданная DNRPA, идентифицирует транспортное средство и владельца или уполномоченное лицо. На изображении показаны прежние цветовые варианты; текущая логика раздела объясняется рядом текстом.",
       "detectedSpanishPhrase": "DNRPA",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch2-required-documents",
@@ -2087,7 +2120,7 @@
       "textExcerpt": "Ранее DNRPA выдавала разные cédulas (регистрационные карточки) по типу транспорта и статусу владельца/уполномоченного. Для унификации создана новая cédula (карточка), заменяющая прежние и действующая непрерывно.",
       "detectedSpanishPhrase": "DNRPA",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch2-required-documents",
@@ -2099,7 +2132,7 @@
       "textExcerpt": "Если у автомобиля есть оборудование GNC, нужно иметь cédula de identificación (идентификационную карточку) этого оборудования и действующую обязательную oblea (наклейку/стикер).",
       "detectedSpanishPhrase": "GNC",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch2-required-documents",
@@ -2111,7 +2144,7 @@
       "textExcerpt": "VTV обязательна для транспортных средств и мототранспортных средств, зарегистрированных в CABA или в другой юрисдикции и движущихся по CABA.",
       "detectedSpanishPhrase": "CABA",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch2-required-documents",
@@ -2123,7 +2156,7 @@
       "textExcerpt": "VTV обязательна для транспортных средств и мототранспортных средств, зарегистрированных в CABA или в другой юрисдикции и движущихся по CABA.",
       "detectedSpanishPhrase": "VTV",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch2-required-documents",
@@ -2135,7 +2168,7 @@
       "textExcerpt": "При VTV проводится механический контроль: безопасность, загрязнение, состояние шин, тормозов, световых приборов, аварийного оборудования и документации.",
       "detectedSpanishPhrase": "VTV",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch2-required-documents",
@@ -2147,7 +2180,7 @@
       "textExcerpt": "Первая VTV для частных автомобилей и мототранспортных средств в CABA выполняется с четвертого года от регистрации или при достижении 60 000 км, в зависимости от того, что наступит раньше, с допуском до 4 000 км.",
       "detectedSpanishPhrase": "CABA",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch2-required-documents",
@@ -2159,7 +2192,7 @@
       "textExcerpt": "Первая VTV для частных автомобилей и мототранспортных средств в CABA выполняется с четвертого года от регистрации или при достижении 60 000 км, в зависимости от того, что наступит раньше, с допуском до 4 000 км.",
       "detectedSpanishPhrase": "VTV",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch2-required-documents",
@@ -2171,7 +2204,7 @@
       "textExcerpt": "После первой VTV для частных автомобилей и мототранспортных средств срок действия остается 2 года, пока транспортному средству не исполнится 8 лет или оно не достигнет 80 000 км; если переход связан с пробегом, действует допуск 4 000 км....",
       "detectedSpanishPhrase": "VTV",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch2-required-documents",
@@ -2183,7 +2216,7 @@
       "textExcerpt": "RVA по Закону 3708: все автомобили, зарегистрированные в CABA, включая 0 km, должны выгравировать автозапчасти в течение 30 дней после постановки на учет. После гравировки размещается защитная oblea (наклейка/стикер) на лобовом стекле и ...",
       "detectedSpanishPhrase": "CABA",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch2-required-documents",
@@ -2207,7 +2240,7 @@
       "textExcerpt": "RVA по Закону 3708: все автомобили, зарегистрированные в CABA, включая 0 km, должны выгравировать автозапчасти в течение 30 дней после постановки на учет. После гравировки размещается защитная oblea (наклейка/стикер) на лобовом стекле и ...",
       "detectedSpanishPhrase": "RVA",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch2-required-documents",
@@ -2219,7 +2252,7 @@
       "textExcerpt": "GNC, страховка, VTV, номера и RVA",
       "detectedSpanishPhrase": "GNC",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch2-required-documents",
@@ -2231,7 +2264,7 @@
       "textExcerpt": "GNC, страховка, VTV, номера и RVA",
       "detectedSpanishPhrase": "RVA",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch2-required-documents",
@@ -2243,7 +2276,7 @@
       "textExcerpt": "GNC, страховка, VTV, номера и RVA",
       "detectedSpanishPhrase": "VTV",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch2-required-documents",
@@ -2255,7 +2288,7 @@
       "textExcerpt": "Схема VTV с возрастом, пробегом и месяцем по последней цифре номера.",
       "detectedSpanishPhrase": "VTV",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch2-required-documents",
@@ -2267,7 +2300,7 @@
       "textExcerpt": "Схема показывает первую VTV, renovación (продление) и связь последней цифры номера с месяцем процедуры. Правила рядом изложены русским текстом.",
       "detectedSpanishPhrase": "VTV",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch2-required-documents",
@@ -2279,7 +2312,7 @@
       "textExcerpt": "Первая VTV",
       "detectedSpanishPhrase": "VTV",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch2-required-documents",
@@ -2291,7 +2324,7 @@
       "textExcerpt": "VTV и месяц по номеру",
       "detectedSpanishPhrase": "VTV",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch2-required-documents",
@@ -2303,7 +2336,7 @@
       "textExcerpt": "Визуальные примеры VTV и RVA",
       "detectedSpanishPhrase": "RVA",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch2-required-documents",
@@ -2315,7 +2348,7 @@
       "textExcerpt": "Визуальные примеры VTV и RVA",
       "detectedSpanishPhrase": "VTV",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch2-scoring",
@@ -2339,7 +2372,7 @@
       "textExcerpt": "Хотя снег не характерен для CABA, национальная лицензия позволяет ездить в других регионах Аргентины, где снег бывает часто.",
       "detectedSpanishPhrase": "CABA",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch3-overtaking",
@@ -2363,7 +2396,7 @@
       "textExcerpt": "Если конкретной сигнализации нет, действуют общие нормы. Из-за федеративного устройства Аргентины существуют национальные и провинциальные правила; в CABA применяется Закон 2148, и действия на дороге должны соответствовать именно ему.",
       "detectedSpanishPhrase": "CABA",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch3-speed",
@@ -2375,7 +2408,7 @@
       "textExcerpt": "Автомагистрали CABA",
       "detectedSpanishPhrase": "CABA",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch3-speed",
@@ -2387,7 +2420,7 @@
       "textExcerpt": "для автомагистралей CABA; скоростные дороги и знаки могут уточнять предел",
       "detectedSpanishPhrase": "CABA",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch3-speed",
@@ -2399,7 +2432,7 @@
       "textExcerpt": "Максимальные скорости в CABA для транспорта до 3500 кг",
       "detectedSpanishPhrase": "CABA",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch3-speed",
@@ -2431,11 +2464,83 @@
       "modulePath": "src/data/manual-sections/ch3-speed.ts",
       "blockId": "caba-avenue-exception-speed-table",
       "blockKind": "table",
+      "fieldPath": "blocks.4.rows.1.cellsRu.1",
+      "textExcerpt": "Av. Gral. Paz на calzadas para tránsito pesado (проезжих частях для тяжелого транспорта), участок между Autopista Ingeniero Pascual Palazzo (Acceso Norte) и Av. del Libertador",
+      "detectedSpanishPhrase": "Acceso Norte",
+      "disposition": "allowed-narrow-exception",
+      "note": "official road, place, program contact, or proper name"
+    },
+    {
+      "sectionId": "ch3-speed",
+      "sourceKind": "manual-section",
+      "modulePath": "src/data/manual-sections/ch3-speed.ts",
+      "blockId": "caba-avenue-exception-speed-table",
+      "blockKind": "table",
+      "fieldPath": "blocks.4.rows.3.cellsRu.1",
+      "textExcerpt": "Av. Gral. Paz, центральные проезжие части между Autopista Ingeniero Pascual Palazzo (Acceso Norte) и Av. 27 de Febrero",
+      "detectedSpanishPhrase": "Acceso Norte",
+      "disposition": "allowed-narrow-exception",
+      "note": "official road, place, program contact, or proper name"
+    },
+    {
+      "sectionId": "ch3-speed",
+      "sourceKind": "manual-section",
+      "modulePath": "src/data/manual-sections/ch3-speed.ts",
+      "blockId": "caba-avenue-exception-speed-table",
+      "blockKind": "table",
+      "fieldPath": "blocks.4.rows.4.cellsRu.1",
+      "textExcerpt": "Av. Intendente Cantilo, Av. Leopoldo Lugones, Av. Tte. Gral. Luis J. Dellepiane, Av. Gral. Paz на центральных проезжих частях между Av. Leopoldo Lugones и Autopista Ingeniero Pascual Palazzo (Acceso Norte), Autopista 25 de Mayo, Autopist...",
+      "detectedSpanishPhrase": "Acceso Norte",
+      "disposition": "allowed-narrow-exception",
+      "note": "official road, place, program contact, or proper name"
+    },
+    {
+      "sectionId": "ch3-speed",
+      "sourceKind": "manual-section",
+      "modulePath": "src/data/manual-sections/ch3-speed.ts",
+      "blockId": "caba-avenue-exception-speed-table",
+      "blockKind": "table",
+      "fieldPath": "blocks.4.rows.4.cellsRu.1",
+      "textExcerpt": "Av. Intendente Cantilo, Av. Leopoldo Lugones, Av. Tte. Gral. Luis J. Dellepiane, Av. Gral. Paz на центральных проезжих частях между Av. Leopoldo Lugones и Autopista Ingeniero Pascual Palazzo (Acceso Norte), Autopista 25 de Mayo, Autopist...",
+      "detectedSpanishPhrase": "As",
+      "disposition": "allowed-narrow-exception",
+      "note": "address abbreviation"
+    },
+    {
+      "sectionId": "ch3-speed",
+      "sourceKind": "manual-section",
+      "modulePath": "src/data/manual-sections/ch3-speed.ts",
+      "blockId": "caba-avenue-exception-speed-table",
+      "blockKind": "table",
+      "fieldPath": "blocks.4.rows.4.cellsRu.1",
+      "textExcerpt": "Av. Intendente Cantilo, Av. Leopoldo Lugones, Av. Tte. Gral. Luis J. Dellepiane, Av. Gral. Paz на центральных проезжих частях между Av. Leopoldo Lugones и Autopista Ingeniero Pascual Palazzo (Acceso Norte), Autopista 25 de Mayo, Autopist...",
+      "detectedSpanishPhrase": "Bs",
+      "disposition": "allowed-narrow-exception",
+      "note": "address abbreviation"
+    },
+    {
+      "sectionId": "ch3-speed",
+      "sourceKind": "manual-section",
+      "modulePath": "src/data/manual-sections/ch3-speed.ts",
+      "blockId": "caba-avenue-exception-speed-table",
+      "blockKind": "table",
+      "fieldPath": "blocks.4.rows.4.cellsRu.1",
+      "textExcerpt": "Av. Intendente Cantilo, Av. Leopoldo Lugones, Av. Tte. Gral. Luis J. Dellepiane, Av. Gral. Paz на центральных проезжих частях между Av. Leopoldo Lugones и Autopista Ingeniero Pascual Palazzo (Acceso Norte), Autopista 25 de Mayo, Autopist...",
+      "detectedSpanishPhrase": "La Plata",
+      "disposition": "allowed-narrow-exception",
+      "note": "official road, place, program contact, or proper name"
+    },
+    {
+      "sectionId": "ch3-speed",
+      "sourceKind": "manual-section",
+      "modulePath": "src/data/manual-sections/ch3-speed.ts",
+      "blockId": "caba-avenue-exception-speed-table",
+      "blockKind": "table",
       "fieldPath": "blocks.4.titleRu",
       "textExcerpt": "Исключения на некоторых проспектах и скоростных дорогах CABA",
       "detectedSpanishPhrase": "CABA",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch3-speed",
@@ -2447,7 +2552,7 @@
       "textExcerpt": "Автомагистрали и другие скоростные дороги в CABA",
       "detectedSpanishPhrase": "CABA",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch3-speed",
@@ -2459,7 +2564,7 @@
       "textExcerpt": "Страница 73 показывает именно комбинации типа транспорта и дороги; поэтому вне CABA число выбирается по строке таблицы, а не по одному универсальному максимуму.",
       "detectedSpanishPhrase": "CABA",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch3-speed",
@@ -2471,7 +2576,7 @@
       "textExcerpt": "городской tramo (участок) маршрута вне CABA",
       "detectedSpanishPhrase": "CABA",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch3-speed",
@@ -2483,7 +2588,7 @@
       "textExcerpt": "Максимальные скорости вне CABA по типу дороги и транспорта",
       "detectedSpanishPhrase": "CABA",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch3-stopping-parking",
@@ -2519,7 +2624,7 @@
       "textExcerpt": "Общие запреты парковки в CABA, если знак не говорит иное",
       "detectedSpanishPhrase": "CABA",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch3-stopping-parking",
@@ -2675,7 +2780,7 @@
       "textExcerpt": "Нельзя настраивать или трогать GPS во время движения.",
       "detectedSpanishPhrase": "GPS",
       "disposition": "allowed-narrow-exception",
-      "note": "uppercase acronym or compact official identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch4-distractions",
@@ -2687,7 +2792,7 @@
       "textExcerpt": "Во время движения использовать GPS только чтобы слушать, а не смотреть.",
       "detectedSpanishPhrase": "GPS",
       "disposition": "allowed-narrow-exception",
-      "note": "uppercase acronym or compact official identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch4-distractions",
@@ -2699,7 +2804,7 @@
       "textExcerpt": "GPS",
       "detectedSpanishPhrase": "GPS",
       "disposition": "allowed-narrow-exception",
-      "note": "uppercase acronym or compact official identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch5-anticipatory-efficient-driving",
@@ -2747,7 +2852,7 @@
       "textExcerpt": "Планировать поездку: до начала движения проверить наиболее полезный маршрут; приложения, связанные с GPS, могут быть очень полезны.",
       "detectedSpanishPhrase": "GPS",
       "disposition": "allowed-narrow-exception",
-      "note": "uppercase acronym or compact official identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch5-equal-society",
@@ -2759,7 +2864,7 @@
       "textExcerpt": "Поездки женщин в CABA",
       "detectedSpanishPhrase": "CABA",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch5-equal-society",
@@ -2771,19 +2876,7 @@
       "textExcerpt": "Контекст мобильности в CABA",
       "detectedSpanishPhrase": "CABA",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
-    },
-    {
-      "sectionId": "ch5-gender-violence-prevention",
-      "sourceKind": "manual-section",
-      "modulePath": "src/data/manual-sections/ch5-gender-violence-prevention.ts",
-      "blockId": "support-line",
-      "blockKind": "callout",
-      "fieldPath": "blocks.1.textRu",
-      "textExcerpt": "Линия сообщения и поддержки: 22676 ACOSO. Она доступна 24 часа в сутки, 365 дней в году.",
-      "detectedSpanishPhrase": "ACOSO",
-      "disposition": "allowed-narrow-exception",
-      "note": "uppercase acronym or compact official identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch5-gender-violence-prevention",
@@ -2792,10 +2885,10 @@
       "blockId": "sms-support-flow",
       "blockKind": "list",
       "fieldPath": "blocks.2.itemsRu.0",
-      "textExcerpt": "Через SMS на номер 22676 (ACOSO) люди, пережившие уличное домогательство или ставшие свидетелями такой ситуации, получают немедленную консультацию от команды специалистов.",
+      "textExcerpt": "Через SMS на номер 22676 ACOSO (линия для сообщений о домогательствах) люди, пережившие уличное домогательство или ставшие свидетелями такой ситуации, получают немедленную консультацию от команды специалистов.",
       "detectedSpanishPhrase": "SMS",
       "disposition": "allowed-narrow-exception",
-      "note": "uppercase acronym or compact official identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "front-categories",
@@ -2867,7 +2960,7 @@
       "textExcerpt": "Av. Intendente Cantilo, Av. Leopoldo Lugones, Av. Tte. Gral. Luis J. Dellepiane, Av. Gral. Paz, AU1, AU6, AU7, 9 de Julio Sur, Illia, R. Balbín, Av. 27 de Febrero и Paseo del Bajo.",
       "detectedSpanishPhrase": "AU",
       "disposition": "allowed-narrow-exception",
-      "note": "uppercase acronym or compact official identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "front-glossary",
@@ -2927,7 +3020,7 @@
       "textExcerpt": "В CABA действует Закон 2148 - Кодекс дорожного движения и транспорта.",
       "detectedSpanishPhrase": "CABA",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "intro-road-pandemic",
@@ -2939,7 +3032,7 @@
       "textExcerpt": "Статистика CABA: 96 погибших, типы участников, пол и возрастные группы.",
       "detectedSpanishPhrase": "CABA",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     }
   ],
   "residues": [
@@ -3001,7 +3094,7 @@
       "textExcerpt": "Обязателен огнетушитель 1 kg типа ABC.",
       "detectedSpanishPhrase": "ABC",
       "disposition": "allowed-narrow-exception",
-      "note": "uppercase acronym or compact official identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "app1-other-required-safety-elements",
@@ -3025,7 +3118,7 @@
       "textExcerpt": "В CABA частному автомобилю запрещено буксировать другой частный автомобиль.",
       "detectedSpanishPhrase": "CABA",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "app1-safety-elements",
@@ -3037,7 +3130,7 @@
       "textExcerpt": "В Приложении I перечислены элементы безопасности, а также рекомендации по обслуживанию и легкой механике. Износ и срок службы автомобиля повышают риск, в том числе для пешеходов; поэтому важно помнить о периодической VTV как механической...",
       "detectedSpanishPhrase": "VTV",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "app1-safety-elements",
@@ -3145,7 +3238,7 @@
       "textExcerpt": "По правилу CABA SRI обязателен с рождения до 12 лет, если рост меньше 1.50 m или вес меньше 36 kg; дети в этой группе не едут на переднем сиденье.",
       "detectedSpanishPhrase": "CABA SRI",
       "disposition": "allowed-narrow-exception",
-      "note": "uppercase acronym or compact official identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "app1-safety-elements",
@@ -3169,7 +3262,7 @@
       "textExcerpt": "Подушка безопасности и SRI",
       "detectedSpanishPhrase": "SRI",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "app1-safety-elements",
@@ -3181,7 +3274,7 @@
       "textExcerpt": "Схема типов детских удерживающих систем SRI с пиктограммами и номерами групп.",
       "detectedSpanishPhrase": "SRI",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "app1-safety-elements",
@@ -3193,7 +3286,7 @@
       "textExcerpt": "Виды SRI",
       "detectedSpanishPhrase": "SRI",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "app1-safety-elements",
@@ -3265,7 +3358,7 @@
       "textExcerpt": "Схема типов SRI",
       "detectedSpanishPhrase": "SRI",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "app1-safety-elements",
@@ -3277,7 +3370,7 @@
       "textExcerpt": "Виды SRI",
       "detectedSpanishPhrase": "SRI",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "app1-safety-elements",
@@ -3289,7 +3382,7 @@
       "textExcerpt": "Правильно установленная SRI снижает смертность примерно на 80% у детей и на 70% у младенцев.",
       "detectedSpanishPhrase": "SRI",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "app1-safety-elements",
@@ -3301,7 +3394,7 @@
       "textExcerpt": "Теплую верхнюю одежду в SRI использовать не рекомендуется.",
       "detectedSpanishPhrase": "SRI",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "app1-safety-elements",
@@ -3313,7 +3406,7 @@
       "textExcerpt": "SRI снижает силу удара.",
       "detectedSpanishPhrase": "SRI",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "app1-safety-elements",
@@ -3349,7 +3442,7 @@
       "textExcerpt": "Бывшую в употреблении SRI покупать не рекомендуется.",
       "detectedSpanishPhrase": "SRI",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "app1-safety-elements",
@@ -3373,7 +3466,7 @@
       "textExcerpt": "SRI меняют, когда превышен максимальный вес или голова выходит выше спинки.",
       "detectedSpanishPhrase": "SRI",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "app1-safety-elements",
@@ -3385,7 +3478,7 @@
       "textExcerpt": "Ремни, которыми SRI крепится к автомобилю, должны быть натянуты; их проверяют часто и после длинных поездок.",
       "detectedSpanishPhrase": "SRI",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "app1-safety-elements",
@@ -3397,7 +3490,7 @@
       "textExcerpt": "Почему и как использовать SRI",
       "detectedSpanishPhrase": "SRI",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "app1-safety-elements",
@@ -3421,7 +3514,7 @@
       "textExcerpt": "Закон CABA 2148 требует передний и задний бамперы в установленной форме и размерах, а также крылья, соответствующие колесам.",
       "detectedSpanishPhrase": "CABA",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "app1-safety-elements",
@@ -3457,7 +3550,7 @@
       "textExcerpt": "ABS не является обязательным элементом, но помогает при блокировке колес: система ограничивает и отпускает давление только в момент блокировки.",
       "detectedSpanishPhrase": "ABS",
       "disposition": "allowed-narrow-exception",
-      "note": "uppercase acronym or compact official identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "app1-safety-elements",
@@ -3541,7 +3634,7 @@
       "textExcerpt": "Водитель отвечает за действия по нормам Кодекса дорожного движения и транспорта CABA, даже если пассажир просит ехать быстрее или остановиться где угодно.",
       "detectedSpanishPhrase": "CABA",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "app2-driving-factors",
@@ -3553,7 +3646,7 @@
       "textExcerpt": "Если аппарат SUBE неисправен или не может списать оплату, пассажиров нужно пропустить, гарантируя выполнение услуги.",
       "detectedSpanishPhrase": "SUBE",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "app2-highways-hospitals",
@@ -3577,7 +3670,7 @@
       "textExcerpt": "Если транспорт не может продолжать нормальное движение, нужно уведомить AUSA; она отбуксирует и уберет транспорт.",
       "detectedSpanishPhrase": "AUSA",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "app2-highways-hospitals",
@@ -3601,7 +3694,7 @@
       "textExcerpt": "Карта больниц CABA",
       "detectedSpanishPhrase": "CABA",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "app2-highways-hospitals",
@@ -3613,7 +3706,7 @@
       "textExcerpt": "Карта общих больниц CABA с испанскими подписями и маркерами H/H1/H2.",
       "detectedSpanishPhrase": "CABA",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "app2-highways-hospitals",
@@ -3793,7 +3886,7 @@
       "textExcerpt": "Карта больниц CABA",
       "detectedSpanishPhrase": "CABA",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "app2-safe-driving",
@@ -3925,7 +4018,7 @@
       "textExcerpt": "В CABA частному транспортному средству запрещено буксировать другое; буксировку выполняет транспорт, уполномоченный для этой цели.",
       "detectedSpanishPhrase": "CABA",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "app3-cargo-driver-profile",
@@ -4069,7 +4162,7 @@
       "textExcerpt": "Также нужны RUTA, сертификат RTO, LiNTI при межюрисдикционной перевозке, документ на груз: remito (товарная накладная), carta de porte (транспортная накладная), guia (путевой/сопроводительный документ) или factura (счет-фактура).",
       "detectedSpanishPhrase": "LiNTI",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "app3-cargo-driver-profile",
@@ -4093,7 +4186,7 @@
       "textExcerpt": "Также нужны RUTA, сертификат RTO, LiNTI при межюрисдикционной перевозке, документ на груз: remito (товарная накладная), carta de porte (транспортная накладная), guia (путевой/сопроводительный документ) или factura (счет-фактура).",
       "detectedSpanishPhrase": "RTO",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "app3-cargo-driver-profile",
@@ -4105,7 +4198,7 @@
       "textExcerpt": "Также нужны RUTA, сертификат RTO, LiNTI при межюрисдикционной перевозке, документ на груз: remito (товарная накладная), carta de porte (транспортная накладная), guia (путевой/сопроводительный документ) или factura (счет-фактура).",
       "detectedSpanishPhrase": "RUTA",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "app3-driving-factors",
@@ -4174,7 +4267,7 @@
       "blockId": "appendix-boundary",
       "blockKind": "callout",
       "fieldPath": "blocks.2.textRu",
-      "textExcerpt": "После этой закрывающей страницы начинается Приложение IV о дорожных знаках. Оно не входит в PR по Приложению III (Appendix III PR) и остается отдельной будущей работой.",
+      "textExcerpt": "После этой закрывающей страницы начинается Приложение IV о дорожных знаках. Оно не входит в PR по Приложению III, то есть Appendix III PR (Приложение III в текущей работе), и остается отдельной будущей работой.",
       "detectedSpanishPhrase": "Appendix III PR",
       "disposition": "retained-with-inline-translation",
       "note": "Spanish phrase has immediate parenthesized Russian translation in the same string."
@@ -4186,7 +4279,7 @@
       "blockId": "appendix-boundary",
       "blockKind": "callout",
       "fieldPath": "blocks.2.textRu",
-      "textExcerpt": "После этой закрывающей страницы начинается Приложение IV о дорожных знаках. Оно не входит в PR по Приложению III (Appendix III PR) и остается отдельной будущей работой.",
+      "textExcerpt": "После этой закрывающей страницы начинается Приложение IV о дорожных знаках. Оно не входит в PR по Приложению III, то есть Appendix III PR (Приложение III в текущей работе), и остается отдельной будущей работой.",
       "detectedSpanishPhrase": "PR",
       "disposition": "retained-with-inline-translation",
       "note": "Spanish phrase has immediate parenthesized Russian translation in the same string."
@@ -4333,7 +4426,7 @@
       "textExcerpt": "Если транспорт не может продолжить нормальное движение, нужно уведомить AUSA, которая организует буксировку и удаление.",
       "detectedSpanishPhrase": "AUSA",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "app3-safety-elements",
@@ -4345,7 +4438,7 @@
       "textExcerpt": "Любое транспортное средство имеет срок службы и естественный износ. VTV проверяет механическое состояние, чтобы обеспечить соблюдение норм дорожной безопасности, предотвратить и уменьшить дорожные инциденты. Водитель обязан убедиться, чт...",
       "detectedSpanishPhrase": "VTV",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "app3-safety-elements",
@@ -4477,7 +4570,7 @@
       "textExcerpt": "В CABA ее нельзя использовать частному транспортному средству для буксировки другого: услуга должна выполняться уполномоченным транспортом.",
       "detectedSpanishPhrase": "CABA",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "app3-safety-elements",
@@ -5938,10 +6031,10 @@
       "blockId": "regulatory-focused-signs",
       "blockKind": "source-image-cards",
       "fieldPath": "blocks.3.cards.0.altRu",
-      "textExcerpt": "Знак R.1 NO AVANZAR с испанской подписью под знаком.",
+      "textExcerpt": "Знак R.1 NO AVANZAR (обгон запрещен) с испанской подписью под знаком.",
       "detectedSpanishPhrase": "NO AVANZAR",
-      "disposition": "allowed-narrow-exception",
-      "note": "uppercase acronym or compact official identifier"
+      "disposition": "retained-with-inline-translation",
+      "note": "Spanish phrase has immediate parenthesized Russian translation in the same string."
     },
     {
       "sectionId": "app4-signs-regulatory",
@@ -5977,7 +6070,7 @@
       "textExcerpt": "Панель показывает первые запрещающие знаки крупнее обзорного листа CABA. Испанские подписи остаются частью изображения; русская расшифровка дана отдельным текстом ниже.",
       "detectedSpanishPhrase": "CABA",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "app4-signs-regulatory",
@@ -7213,7 +7306,7 @@
       "textExcerpt": "Листы CABA с локальными вариантами",
       "detectedSpanishPhrase": "CABA",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "app4-signs-temporary",
@@ -9157,7 +9250,7 @@
       "textExcerpt": "Для CABA одна из главных задач в организации движения и дорожной безопасности - огромный ежедневный поток: на территории города совершается больше девяти миллионов поездок в день.",
       "detectedSpanishPhrase": "CABA",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch1-pedestrian-priority",
@@ -9601,7 +9694,7 @@
       "textExcerpt": "График основан на воссоздании типичного городского наезда на скорости 40 км/ч, подготовленном RACE и GOODYEAR в 2015 году.",
       "detectedSpanishPhrase": "GOODYEAR",
       "disposition": "allowed-narrow-exception",
-      "note": "uppercase acronym or compact official identifier"
+      "note": "reviewed organization or brand identifier"
     },
     {
       "sectionId": "ch1-pedestrian-priority",
@@ -9613,7 +9706,7 @@
       "textExcerpt": "График основан на воссоздании типичного городского наезда на скорости 40 км/ч, подготовленном RACE и GOODYEAR в 2015 году.",
       "detectedSpanishPhrase": "RACE",
       "disposition": "allowed-narrow-exception",
-      "note": "uppercase acronym or compact official identifier"
+      "note": "reviewed organization or brand identifier"
     },
     {
       "sectionId": "ch1-pedestrian-priority",
@@ -9733,7 +9826,7 @@
       "textExcerpt": "Общественный транспорт в CABA рассматривается как практический способ уменьшить выбросы CO2 и сделать движение более плавным и здоровым.",
       "detectedSpanishPhrase": "CABA",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch1-public-transport-system",
@@ -9745,7 +9838,7 @@
       "textExcerpt": "Общественный транспорт в CABA рассматривается как практический способ уменьшить выбросы CO2 и сделать движение более плавным и здоровым.",
       "detectedSpanishPhrase": "CO",
       "disposition": "allowed-narrow-exception",
-      "note": "uppercase acronym or compact official identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch1-public-transport-system",
@@ -9757,7 +9850,7 @@
       "textExcerpt": "меньше CO2",
       "detectedSpanishPhrase": "CO",
       "disposition": "allowed-narrow-exception",
-      "note": "uppercase acronym or compact official identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch1-public-transport-system",
@@ -9766,10 +9859,10 @@
       "blockId": "public-transport-infrastructure",
       "blockKind": "public-transport-infrastructure",
       "fieldPath": "blocks.3.cards.2.altRu",
-      "textExcerpt": "Фотография эксклюзивной полосы с дорожной надписью BUS.",
+      "textExcerpt": "Фотография эксклюзивной полосы с дорожной надписью BUS (автобусная полоса).",
       "detectedSpanishPhrase": "BUS",
-      "disposition": "allowed-narrow-exception",
-      "note": "uppercase acronym or compact official identifier"
+      "disposition": "retained-with-inline-translation",
+      "note": "Spanish phrase has immediate parenthesized Russian translation in the same string."
     },
     {
       "sectionId": "ch1-public-transport-system",
@@ -9997,7 +10090,7 @@
       "textExcerpt": "Metrobus de Buenos Aires (MBA)",
       "detectedSpanishPhrase": "MBA",
       "disposition": "allowed-narrow-exception",
-      "note": "uppercase acronym or compact official identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch1-public-transport-system",
@@ -10093,7 +10186,7 @@
       "textExcerpt": "На автомагистралях нужно как можно быстрее убрать транспортное средство из полосы движения, не оставаться на проезжей части и использовать аварийные телефоны концессионера: AUSA 140 и AUSOL 0800-999-9999.",
       "detectedSpanishPhrase": "AUSA",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch2-incident-obligations",
@@ -10105,7 +10198,7 @@
       "textExcerpt": "На автомагистралях нужно как можно быстрее убрать транспортное средство из полосы движения, не оставаться на проезжей части и использовать аварийные телефоны концессионера: AUSA 140 и AUSOL 0800-999-9999.",
       "detectedSpanishPhrase": "AUSOL",
       "disposition": "allowed-narrow-exception",
-      "note": "uppercase acronym or compact official identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch2-incident-obligations",
@@ -10117,7 +10210,7 @@
       "textExcerpt": "По водителю: имя, DNI, адрес, телефон и водительское удостоверение.",
       "detectedSpanishPhrase": "DNI",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch2-incident-obligations",
@@ -10129,7 +10222,7 @@
       "textExcerpt": "По застрахованному лицу, если это не водитель на момент инцидента: имя, DNI, адрес и телефон.",
       "detectedSpanishPhrase": "DNI",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch2-incident-obligations",
@@ -10141,7 +10234,7 @@
       "textExcerpt": "По свидетелям: имя, DNI, адрес и телефон; эти данные могут быть важны в судебном процессе.",
       "detectedSpanishPhrase": "DNI",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch2-incident-obligations",
@@ -10153,7 +10246,7 @@
       "textExcerpt": "По пострадавшим: имя, DNI, адрес и телефон.",
       "detectedSpanishPhrase": "DNI",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch2-incident-obligations",
@@ -10165,7 +10258,7 @@
       "textExcerpt": "Unidades de Orientación y Denuncia, Ministerio Público Fiscal de CABA. Сопровождение по уголовным делам в CABA. Тел.: 6089-9114/9135 / Pte. Perón 671 / mpf.gob.ar/dovic",
       "detectedSpanishPhrase": "CABA",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch2-incident-obligations",
@@ -10189,7 +10282,7 @@
       "textExcerpt": "Oficina de Asistencia a la Víctima y Testigo (OFAVYT), Ministerio Público Fiscal de CABA. Помощь людям после физического или эмоционального насилия. Тел.: 4014-1984 / Beruti Nº 3345, 3-й этаж, CABA / mpfciudad.gob.ar",
       "detectedSpanishPhrase": "CABA",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch2-incident-obligations",
@@ -10213,7 +10306,7 @@
       "textExcerpt": "Oficina de Asistencia a la Víctima y Testigo (OFAVYT), Ministerio Público Fiscal de CABA. Помощь людям после физического или эмоционального насилия. Тел.: 4014-1984 / Beruti Nº 3345, 3-й этаж, CABA / mpfciudad.gob.ar",
       "detectedSpanishPhrase": "OFAVYT",
       "disposition": "allowed-narrow-exception",
-      "note": "uppercase acronym or compact official identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch2-incident-obligations",
@@ -10225,7 +10318,7 @@
       "textExcerpt": "Centros de Acceso a la Justicia (CAJ), Ministerio de Justicia y DDHH de la Nación. Юридическая консультация и/или психологическая помощь. Тел.: 0800-222-3425 / argentina.gob.ar/justicia/afianzar/caj",
       "detectedSpanishPhrase": "CAJ",
       "disposition": "allowed-narrow-exception",
-      "note": "uppercase acronym or compact official identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch2-incident-obligations",
@@ -10272,8 +10365,8 @@
       "fieldPath": "blocks.7.itemsRu.2",
       "textExcerpt": "Asociación Civil Madres del Dolor / контакт: Viviam Perrone / тел.: 39684082, 35357569 и 08002229832 (AYUDA) / kevinsedano@yahoo.com.ar / madresdeldolor.org.ar",
       "detectedSpanishPhrase": "AYUDA",
-      "disposition": "retained-with-inline-translation",
-      "note": "Spanish phrase has immediate parenthesized Russian translation in the same string."
+      "disposition": "allowed-narrow-exception",
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch2-incident-obligations",
@@ -10381,7 +10474,7 @@
       "textExcerpt": "Этот набор документов требуется для управления любым типом транспортного средства в CABA. Национальный закон 24449 также добавляет подтверждения оплаты налога на регистрацию транспортного средства и, когда применимо, оплаты проезда; для ...",
       "detectedSpanishPhrase": "CABA",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch2-required-documents",
@@ -10393,7 +10486,7 @@
       "textExcerpt": "Пример DNI.",
       "detectedSpanishPhrase": "DNI",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch2-required-documents",
@@ -10405,7 +10498,7 @@
       "textExcerpt": "DNI подтверждает личность гражданина Аргентины или иностранца с местом жительства в стране. Водительское удостоверение не заменяет документ личности; иностранцы должны иметь действующий личный документ.",
       "detectedSpanishPhrase": "DNI",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch2-required-documents",
@@ -10441,7 +10534,7 @@
       "textExcerpt": "DNI",
       "detectedSpanishPhrase": "DNI",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch2-required-documents",
@@ -10525,7 +10618,7 @@
       "textExcerpt": "CABA предоставляет учебную площадку для безопасной практики и обязательные теоретические курсы для получения лицензии; для продления используются обновляющие материалы.",
       "detectedSpanishPhrase": "CABA",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch2-required-documents",
@@ -10621,7 +10714,7 @@
       "textExcerpt": "Cédula (регистрационная карточка), выданная DNRPA, идентифицирует транспортное средство и владельца или уполномоченное лицо. На изображении показаны прежние цветовые варианты; текущая логика раздела объясняется рядом текстом.",
       "detectedSpanishPhrase": "DNRPA",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch2-required-documents",
@@ -10849,7 +10942,7 @@
       "textExcerpt": "Ранее DNRPA выдавала разные cédulas (регистрационные карточки) по типу транспорта и статусу владельца/уполномоченного. Для унификации создана новая cédula (карточка), заменяющая прежние и действующая непрерывно.",
       "detectedSpanishPhrase": "DNRPA",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch2-required-documents",
@@ -10993,7 +11086,7 @@
       "textExcerpt": "Если у автомобиля есть оборудование GNC, нужно иметь cédula de identificación (идентификационную карточку) этого оборудования и действующую обязательную oblea (наклейку/стикер).",
       "detectedSpanishPhrase": "GNC",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch2-required-documents",
@@ -11029,7 +11122,7 @@
       "textExcerpt": "VTV обязательна для транспортных средств и мототранспортных средств, зарегистрированных в CABA или в другой юрисдикции и движущихся по CABA.",
       "detectedSpanishPhrase": "CABA",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch2-required-documents",
@@ -11041,7 +11134,7 @@
       "textExcerpt": "VTV обязательна для транспортных средств и мототранспортных средств, зарегистрированных в CABA или в другой юрисдикции и движущихся по CABA.",
       "detectedSpanishPhrase": "VTV",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch2-required-documents",
@@ -11053,7 +11146,7 @@
       "textExcerpt": "При VTV проводится механический контроль: безопасность, загрязнение, состояние шин, тормозов, световых приборов, аварийного оборудования и документации.",
       "detectedSpanishPhrase": "VTV",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch2-required-documents",
@@ -11065,7 +11158,7 @@
       "textExcerpt": "Первая VTV для частных автомобилей и мототранспортных средств в CABA выполняется с четвертого года от регистрации или при достижении 60 000 км, в зависимости от того, что наступит раньше, с допуском до 4 000 км.",
       "detectedSpanishPhrase": "CABA",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch2-required-documents",
@@ -11077,7 +11170,7 @@
       "textExcerpt": "Первая VTV для частных автомобилей и мототранспортных средств в CABA выполняется с четвертого года от регистрации или при достижении 60 000 км, в зависимости от того, что наступит раньше, с допуском до 4 000 км.",
       "detectedSpanishPhrase": "VTV",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch2-required-documents",
@@ -11089,7 +11182,7 @@
       "textExcerpt": "После первой VTV для частных автомобилей и мототранспортных средств срок действия остается 2 года, пока транспортному средству не исполнится 8 лет или оно не достигнет 80 000 км; если переход связан с пробегом, действует допуск 4 000 км....",
       "detectedSpanishPhrase": "VTV",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch2-required-documents",
@@ -11185,7 +11278,7 @@
       "textExcerpt": "RVA по Закону 3708: все автомобили, зарегистрированные в CABA, включая 0 km, должны выгравировать автозапчасти в течение 30 дней после постановки на учет. После гравировки размещается защитная oblea (наклейка/стикер) на лобовом стекле и ...",
       "detectedSpanishPhrase": "CABA",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch2-required-documents",
@@ -11233,7 +11326,7 @@
       "textExcerpt": "RVA по Закону 3708: все автомобили, зарегистрированные в CABA, включая 0 km, должны выгравировать автозапчасти в течение 30 дней после постановки на учет. После гравировки размещается защитная oblea (наклейка/стикер) на лобовом стекле и ...",
       "detectedSpanishPhrase": "RVA",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch2-required-documents",
@@ -11245,7 +11338,7 @@
       "textExcerpt": "GNC, страховка, VTV, номера и RVA",
       "detectedSpanishPhrase": "GNC",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch2-required-documents",
@@ -11257,7 +11350,7 @@
       "textExcerpt": "GNC, страховка, VTV, номера и RVA",
       "detectedSpanishPhrase": "RVA",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch2-required-documents",
@@ -11269,7 +11362,7 @@
       "textExcerpt": "GNC, страховка, VTV, номера и RVA",
       "detectedSpanishPhrase": "VTV",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch2-required-documents",
@@ -11281,7 +11374,7 @@
       "textExcerpt": "Схема VTV с возрастом, пробегом и месяцем по последней цифре номера.",
       "detectedSpanishPhrase": "VTV",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch2-required-documents",
@@ -11305,7 +11398,7 @@
       "textExcerpt": "Схема показывает первую VTV, renovación (продление) и связь последней цифры номера с месяцем процедуры. Правила рядом изложены русским текстом.",
       "detectedSpanishPhrase": "VTV",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch2-required-documents",
@@ -11353,7 +11446,7 @@
       "textExcerpt": "Первая VTV",
       "detectedSpanishPhrase": "VTV",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch2-required-documents",
@@ -11401,7 +11494,7 @@
       "textExcerpt": "VTV и месяц по номеру",
       "detectedSpanishPhrase": "VTV",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch2-required-documents",
@@ -11485,7 +11578,7 @@
       "textExcerpt": "Визуальные примеры VTV и RVA",
       "detectedSpanishPhrase": "RVA",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch2-required-documents",
@@ -11497,7 +11590,7 @@
       "textExcerpt": "Визуальные примеры VTV и RVA",
       "detectedSpanishPhrase": "VTV",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch2-scoring",
@@ -11557,7 +11650,7 @@
       "textExcerpt": "Хотя снег не характерен для CABA, национальная лицензия позволяет ездить в других регионах Аргентины, где снег бывает часто.",
       "detectedSpanishPhrase": "CABA",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch3-highways",
@@ -12745,7 +12838,7 @@
       "textExcerpt": "Если конкретной сигнализации нет, действуют общие нормы. Из-за федеративного устройства Аргентины существуют национальные и провинциальные правила; в CABA применяется Закон 2148, и действия на дороге должны соответствовать именно ему.",
       "detectedSpanishPhrase": "CABA",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch3-priority-of-rules",
@@ -12949,7 +13042,7 @@
       "textExcerpt": "Автомагистрали CABA",
       "detectedSpanishPhrase": "CABA",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch3-speed",
@@ -12961,7 +13054,7 @@
       "textExcerpt": "для автомагистралей CABA; скоростные дороги и знаки могут уточнять предел",
       "detectedSpanishPhrase": "CABA",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch3-speed",
@@ -12973,7 +13066,7 @@
       "textExcerpt": "Максимальные скорости в CABA для транспорта до 3500 кг",
       "detectedSpanishPhrase": "CABA",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch3-speed",
@@ -13044,8 +13137,8 @@
       "fieldPath": "blocks.4.rows.1.cellsRu.1",
       "textExcerpt": "Av. Gral. Paz на calzadas para tránsito pesado (проезжих частях для тяжелого транспорта), участок между Autopista Ingeniero Pascual Palazzo (Acceso Norte) и Av. del Libertador",
       "detectedSpanishPhrase": "Acceso Norte",
-      "disposition": "retained-with-inline-translation",
-      "note": "Spanish phrase has immediate parenthesized Russian translation in the same string."
+      "disposition": "allowed-narrow-exception",
+      "note": "official road, place, program contact, or proper name"
     },
     {
       "sectionId": "ch3-speed",
@@ -13080,8 +13173,8 @@
       "fieldPath": "blocks.4.rows.3.cellsRu.1",
       "textExcerpt": "Av. Gral. Paz, центральные проезжие части между Autopista Ingeniero Pascual Palazzo (Acceso Norte) и Av. 27 de Febrero",
       "detectedSpanishPhrase": "Acceso Norte",
-      "disposition": "retained-with-inline-translation",
-      "note": "Spanish phrase has immediate parenthesized Russian translation in the same string."
+      "disposition": "allowed-narrow-exception",
+      "note": "official road, place, program contact, or proper name"
     },
     {
       "sectionId": "ch3-speed",
@@ -13092,8 +13185,8 @@
       "fieldPath": "blocks.4.rows.4.cellsRu.1",
       "textExcerpt": "Av. Intendente Cantilo, Av. Leopoldo Lugones, Av. Tte. Gral. Luis J. Dellepiane, Av. Gral. Paz на центральных проезжих частях между Av. Leopoldo Lugones и Autopista Ingeniero Pascual Palazzo (Acceso Norte), Autopista 25 de Mayo, Autopist...",
       "detectedSpanishPhrase": "Acceso Norte",
-      "disposition": "retained-with-inline-translation",
-      "note": "Spanish phrase has immediate parenthesized Russian translation in the same string."
+      "disposition": "allowed-narrow-exception",
+      "note": "official road, place, program contact, or proper name"
     },
     {
       "sectionId": "ch3-speed",
@@ -13104,8 +13197,8 @@
       "fieldPath": "blocks.4.rows.4.cellsRu.1",
       "textExcerpt": "Av. Intendente Cantilo, Av. Leopoldo Lugones, Av. Tte. Gral. Luis J. Dellepiane, Av. Gral. Paz на центральных проезжих частях между Av. Leopoldo Lugones и Autopista Ingeniero Pascual Palazzo (Acceso Norte), Autopista 25 de Mayo, Autopist...",
       "detectedSpanishPhrase": "As",
-      "disposition": "retained-with-inline-translation",
-      "note": "Spanish phrase has immediate parenthesized Russian translation in the same string."
+      "disposition": "allowed-narrow-exception",
+      "note": "address abbreviation"
     },
     {
       "sectionId": "ch3-speed",
@@ -13116,8 +13209,8 @@
       "fieldPath": "blocks.4.rows.4.cellsRu.1",
       "textExcerpt": "Av. Intendente Cantilo, Av. Leopoldo Lugones, Av. Tte. Gral. Luis J. Dellepiane, Av. Gral. Paz на центральных проезжих частях между Av. Leopoldo Lugones и Autopista Ingeniero Pascual Palazzo (Acceso Norte), Autopista 25 de Mayo, Autopist...",
       "detectedSpanishPhrase": "Bs",
-      "disposition": "retained-with-inline-translation",
-      "note": "Spanish phrase has immediate parenthesized Russian translation in the same string."
+      "disposition": "allowed-narrow-exception",
+      "note": "address abbreviation"
     },
     {
       "sectionId": "ch3-speed",
@@ -13128,8 +13221,8 @@
       "fieldPath": "blocks.4.rows.4.cellsRu.1",
       "textExcerpt": "Av. Intendente Cantilo, Av. Leopoldo Lugones, Av. Tte. Gral. Luis J. Dellepiane, Av. Gral. Paz на центральных проезжих частях между Av. Leopoldo Lugones и Autopista Ingeniero Pascual Palazzo (Acceso Norte), Autopista 25 de Mayo, Autopist...",
       "detectedSpanishPhrase": "La Plata",
-      "disposition": "retained-with-inline-translation",
-      "note": "Spanish phrase has immediate parenthesized Russian translation in the same string."
+      "disposition": "allowed-narrow-exception",
+      "note": "official road, place, program contact, or proper name"
     },
     {
       "sectionId": "ch3-speed",
@@ -13213,7 +13306,7 @@
       "textExcerpt": "Исключения на некоторых проспектах и скоростных дорогах CABA",
       "detectedSpanishPhrase": "CABA",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch3-speed",
@@ -13225,7 +13318,7 @@
       "textExcerpt": "Автомагистрали и другие скоростные дороги в CABA",
       "detectedSpanishPhrase": "CABA",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch3-speed",
@@ -13237,7 +13330,7 @@
       "textExcerpt": "Страница 73 показывает именно комбинации типа транспорта и дороги; поэтому вне CABA число выбирается по строке таблицы, а не по одному универсальному максимуму.",
       "detectedSpanishPhrase": "CABA",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch3-speed",
@@ -13249,7 +13342,7 @@
       "textExcerpt": "городской tramo (участок) маршрута вне CABA",
       "detectedSpanishPhrase": "CABA",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch3-speed",
@@ -13273,7 +13366,7 @@
       "textExcerpt": "Максимальные скорости вне CABA по типу дороги и транспорта",
       "detectedSpanishPhrase": "CABA",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch3-speed",
@@ -13693,7 +13786,7 @@
       "textExcerpt": "Общие запреты парковки в CABA, если знак не говорит иное",
       "detectedSpanishPhrase": "CABA",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch3-stopping-parking",
@@ -15193,7 +15286,7 @@
       "textExcerpt": "Нельзя настраивать или трогать GPS во время движения.",
       "detectedSpanishPhrase": "GPS",
       "disposition": "allowed-narrow-exception",
-      "note": "uppercase acronym or compact official identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch4-distractions",
@@ -15205,7 +15298,7 @@
       "textExcerpt": "Во время движения использовать GPS только чтобы слушать, а не смотреть.",
       "detectedSpanishPhrase": "GPS",
       "disposition": "allowed-narrow-exception",
-      "note": "uppercase acronym or compact official identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch4-distractions",
@@ -15217,7 +15310,7 @@
       "textExcerpt": "GPS",
       "detectedSpanishPhrase": "GPS",
       "disposition": "allowed-narrow-exception",
-      "note": "uppercase acronym or compact official identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch4-distractions",
@@ -15493,7 +15586,7 @@
       "textExcerpt": "Планировать поездку: до начала движения проверить наиболее полезный маршрут; приложения, связанные с GPS, могут быть очень полезны.",
       "detectedSpanishPhrase": "GPS",
       "disposition": "allowed-narrow-exception",
-      "note": "uppercase acronym or compact official identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch5-anticipatory-efficient-driving",
@@ -15673,7 +15766,7 @@
       "textExcerpt": "Поездки женщин в CABA",
       "detectedSpanishPhrase": "CABA",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch5-equal-society",
@@ -15685,7 +15778,7 @@
       "textExcerpt": "Контекст мобильности в CABA",
       "detectedSpanishPhrase": "CABA",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch5-gender-violence-prevention",
@@ -15694,19 +15787,7 @@
       "blockId": "support-line",
       "blockKind": "callout",
       "fieldPath": "blocks.1.textRu",
-      "textExcerpt": "Линия сообщения и поддержки: 22676 ACOSO. Она доступна 24 часа в сутки, 365 дней в году.",
-      "detectedSpanishPhrase": "ACOSO",
-      "disposition": "allowed-narrow-exception",
-      "note": "uppercase acronym or compact official identifier"
-    },
-    {
-      "sectionId": "ch5-gender-violence-prevention",
-      "sourceKind": "manual-section",
-      "modulePath": "src/data/manual-sections/ch5-gender-violence-prevention.ts",
-      "blockId": "sms-support-flow",
-      "blockKind": "list",
-      "fieldPath": "blocks.2.itemsRu.0",
-      "textExcerpt": "Через SMS на номер 22676 (ACOSO) люди, пережившие уличное домогательство или ставшие свидетелями такой ситуации, получают немедленную консультацию от команды специалистов.",
+      "textExcerpt": "Линия сообщения и поддержки 22676 ACOSO (линия помощи при домогательствах) доступна 24 часа в сутки, 365 дней в году.",
       "detectedSpanishPhrase": "ACOSO",
       "disposition": "retained-with-inline-translation",
       "note": "Spanish phrase has immediate parenthesized Russian translation in the same string."
@@ -15718,10 +15799,22 @@
       "blockId": "sms-support-flow",
       "blockKind": "list",
       "fieldPath": "blocks.2.itemsRu.0",
-      "textExcerpt": "Через SMS на номер 22676 (ACOSO) люди, пережившие уличное домогательство или ставшие свидетелями такой ситуации, получают немедленную консультацию от команды специалистов.",
+      "textExcerpt": "Через SMS на номер 22676 ACOSO (линия для сообщений о домогательствах) люди, пережившие уличное домогательство или ставшие свидетелями такой ситуации, получают немедленную консультацию от команды специалистов.",
+      "detectedSpanishPhrase": "ACOSO",
+      "disposition": "retained-with-inline-translation",
+      "note": "Spanish phrase has immediate parenthesized Russian translation in the same string."
+    },
+    {
+      "sectionId": "ch5-gender-violence-prevention",
+      "sourceKind": "manual-section",
+      "modulePath": "src/data/manual-sections/ch5-gender-violence-prevention.ts",
+      "blockId": "sms-support-flow",
+      "blockKind": "list",
+      "fieldPath": "blocks.2.itemsRu.0",
+      "textExcerpt": "Через SMS на номер 22676 ACOSO (линия для сообщений о домогательствах) люди, пережившие уличное домогательство или ставшие свидетелями такой ситуации, получают немедленную консультацию от команды специалистов.",
       "detectedSpanishPhrase": "SMS",
       "disposition": "allowed-narrow-exception",
-      "note": "uppercase acronym or compact official identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "ch5-gender-violence-prevention",
@@ -16933,7 +17026,7 @@
       "textExcerpt": "Av. Intendente Cantilo, Av. Leopoldo Lugones, Av. Tte. Gral. Luis J. Dellepiane, Av. Gral. Paz, AU1, AU6, AU7, 9 de Julio Sur, Illia, R. Balbín, Av. 27 de Febrero и Paseo del Bajo.",
       "detectedSpanishPhrase": "AU",
       "disposition": "allowed-narrow-exception",
-      "note": "uppercase acronym or compact official identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "front-glossary",
@@ -17125,7 +17218,7 @@
       "textExcerpt": "В CABA действует Закон 2148 - Кодекс дорожного движения и транспорта.",
       "detectedSpanishPhrase": "CABA",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "intro-road-pandemic",
@@ -17137,7 +17230,7 @@
       "textExcerpt": "Статистика CABA: 96 погибших, типы участников, пол и возрастные группы.",
       "detectedSpanishPhrase": "CABA",
       "disposition": "allowed-narrow-exception",
-      "note": "official acronym or system identifier"
+      "note": "reviewed official, technical, or message identifier"
     },
     {
       "sectionId": "intro-road-safety-plan",

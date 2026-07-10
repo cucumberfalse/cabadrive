@@ -49,7 +49,7 @@
     },
     {
       "path": "src/data/manual-sections/app3-highways.ts",
-      "sha256": "a37b8014aade09b0aaf4dd8a0187ddfdb756b3bcec98784cf4c9b5e932f90edc"
+      "sha256": "9fd19d7d877d6a447433adfd150b3e99e65b578016424a8bc300315c1d43627b"
     },
     {
       "path": "src/data/manual-sections/app3-safe-driving.ts",
@@ -73,7 +73,7 @@
     },
     {
       "path": "src/data/manual-sections/app4-signs-regulatory.ts",
-      "sha256": "76ad7aa8edac28b780999adb64f2ce12b8cd61993692728b5ecf4da166f2d91a"
+      "sha256": "511955018633772e1070f2ef4721151e958ae8a99ff37c37166d027ec043877f"
     },
     {
       "path": "src/data/manual-sections/app4-signs-temporary.ts",
@@ -101,7 +101,7 @@
     },
     {
       "path": "src/data/manual-sections/ch1-public-transport-system.ts",
-      "sha256": "3ee0307e2b18f9d0469fa34f9b2cc423fedc366a960583a6654783d33ed4713c"
+      "sha256": "d73be7eab5963cf21111c34f1e1d74f2e5a3288f293d6c30c64d2e0f3b9eb14e"
     },
     {
       "path": "src/data/manual-sections/ch1-shared-trip.ts",
@@ -193,7 +193,7 @@
     },
     {
       "path": "src/data/manual-sections/ch5-gender-violence-prevention.ts",
-      "sha256": "ab869d0e27d61766b8ff7aa6ff570d9082245bd6a6285a074757eb0a94b9c677"
+      "sha256": "1d0a1029948c12ab98a52dba0029babd8e6a382e1dc9cceb2a4e7d9822cbfa4f"
     },
     {
       "path": "src/data/manual-sections/front-categories.ts",
@@ -1813,7 +1813,7 @@
     },
     {
       "pageId": "app3-highways",
-      "contentFingerprint": "8095b01e29f5f5909cc6a1f5ba26990ad4507f0ac718eed0dabcbcc891c5f897"
+      "contentFingerprint": "abfc25b5663d3f426eb72c2e2d3773255b3460015b515a7998e0997b8e394b83"
     },
     {
       "pageId": "app3-safe-driving",
@@ -1957,7 +1957,7 @@
     },
     {
       "pageId": "ch5-gender-violence-prevention",
-      "contentFingerprint": "79704973edc4c1c137b8ef66a10627d7c6034c72b566eb11e39b738740f29cff"
+      "contentFingerprint": "3e39bfc1b259db7f840914a28f083b9e0c2dfaf9e4de1f496869828ac712c402"
     },
     {
       "pageId": "front-categories",
@@ -1988,6 +1988,6 @@
       "contentFingerprint": "30b8b2a8c120eaeda3f9127bc34da99597c1116ddd74c135a693b75c15864c0a"
     }
   ],
-  "aggregateSourceFingerprint": "6ce88d20c50ee4bb491341f521dedacb4cacec42101be2dc84c2b8dce225cc7e",
+  "aggregateSourceFingerprint": "26dabe872c3fee8dbb265a08d48148e1b905921511a95b4abc32f81e2573cc39",
   "aggregateImageFingerprint": "dec6dbd54887b1aeb3d0d7bccd88449176fba01178ff3b616669b7f2b82c39a7"
 }

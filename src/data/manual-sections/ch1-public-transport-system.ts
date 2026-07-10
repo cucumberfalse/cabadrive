@@ -169,7 +169,7 @@ export const ch1PublicTransportSystemSection: ManualGuideSectionContent = {
           },
           assetPath: `${assetRoot}/exclusive-lane-source.jpg`,
           altRu:
-            "Фотография эксклюзивной полосы с дорожной надписью BUS.",
+            "Фотография эксклюзивной полосы с дорожной надписью BUS (автобусная полоса).",
           visibleSpanish: true,
           sourceImageException,
           termTranslations: [

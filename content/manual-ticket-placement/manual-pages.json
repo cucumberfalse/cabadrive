@@ -172,7 +172,7 @@
       "contentSourceIds": [
         "app3-highways-content"
       ],
-      "contentFingerprint": "8095b01e29f5f5909cc6a1f5ba26990ad4507f0ac718eed0dabcbcc891c5f897",
+      "contentFingerprint": "abfc25b5663d3f426eb72c2e2d3773255b3460015b515a7998e0997b8e394b83",
       "review": {
         "status": "derived",
         "generatedAt": "2026-06-24T15:00:00Z"
@@ -748,7 +748,7 @@
       "contentSourceIds": [
         "ch5-gender-violence-prevention-content"
       ],
-      "contentFingerprint": "79704973edc4c1c137b8ef66a10627d7c6034c72b566eb11e39b738740f29cff",
+      "contentFingerprint": "3e39bfc1b259db7f840914a28f083b9e0c2dfaf9e4de1f496869828ac712c402",
       "review": {
         "status": "derived",
         "generatedAt": "2026-06-24T15:00:00Z"

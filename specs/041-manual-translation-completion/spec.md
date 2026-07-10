@@ -97,6 +97,31 @@ learner-facing manual text into one of these outcomes:
 Allowed exceptions must be narrow and auditable. A broad "official Spanish" or
 "known CABA term" exception is not enough when the term is learner-facing prose.
 
+### PR #206 P2 detector follow-up contract
+
+The follow-up for review threads `PRRT_kwDOSX65IM6P7eKS` and
+`PRRT_kwDOSX65IM6P7eKW` is limited to the translation-completeness detector,
+its evidence, the affected Chapter 5 learner text, and regression coverage.
+
+- Reverse parenthetical support (`Russian label (Spanish term)`) is valid only
+  when the Russian label is structurally and immediately paired with that
+  parenthetical term. It must not be inferred from arbitrary Cyrillic context
+  earlier in the same string, particularly across a number, another Latin
+  token, a sentence boundary, or unrelated punctuation/content.
+- The generic two-to-eight-character uppercase exception is forbidden. An
+  uppercase learner-facing token may be an exception only when it matches a
+  finite, reviewed identifier policy (for example, a documented official
+  acronym/system identifier or a standard technical/message abbreviation).
+  Unknown uppercase tokens, including ordinary Spanish words rendered in
+  uppercase, remain candidates and require Russian support.
+- `ACOSO` is not an exception in learner-facing Chapter 5 prose. If it remains
+  for recognition of the official reporting line, each visible occurrence must
+  supply a direct Russian explanation of the line/term in the same logical
+  learner-facing text; a preceding Russian sentence or merely the number
+  `22676` is not that explanation.
+- The regenerated evidence must classify the affected records using the new
+  structural rule and contain no broad uppercase exception.
+
 ## Terminology Requirements
 
 Recurring terms should use consistent Russian wording unless context requires a
@@ -299,6 +324,12 @@ Focused tests should prove:
   `captionRu`, table cells, card text, and equivalent rendered fields when no
   Russian translation is adjacent.
 - The audit rejects over-broad exceptions for generic Spanish traffic terms.
+- The audit rejects a reverse parenthetical false positive where unrelated
+  Russian context precedes `(... ACOSO ...)`, while accepting a genuinely
+  adjacent `Russian explanation (Spanish term)` pair.
+- The audit rejects a generic uppercase learner-facing Spanish word and allows
+  only the reviewed finite identifier set; it requires direct Russian support
+  for retained `ACOSO` in the Chapter 5 reporting-line text.
 - The screenshot probes are present in the audit evidence and pass.
 - The Chapter 3 highways route renders corrected Spanish/Russian support on
   desktop and mobile with no horizontal overflow.
@@ -375,3 +406,10 @@ Focused tests should prove:
   required-probe resolution was not constrained to `ch3-highways`. The prior
   Architect pass is stale for the current PR head until the assigned follow-up
   task is implemented, verified, reviewed, and revalidated.
+- Superseded again by PR #206 detector follow-up: review threads
+  `PRRT_kwDOSX65IM6P7eKS` and `PRRT_kwDOSX65IM6P7eKW` demonstrate that the
+  current reverse-parenthetical and generic-uppercase paths can accept
+  unsupported learner-facing Spanish. Every earlier Architect final-validation
+  pass and corresponding Analyst validation is stale until this follow-up is
+  implemented, verified, reviewed, and revalidated on its new effective
+  content head.

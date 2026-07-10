@@ -257,6 +257,48 @@
   Route any newly surfaced implementation feedback to Architect before final
   validation.
 
+## PR #206 P2 Detector Follow-up Tasks
+
+- [x] T091 Confirm Implementation Agent assignment remains limited to PR #206,
+  this worktree/branch, and this detector follow-up; preserve all parallel
+  worktrees, branches, commits, PRs, dirty diffs, and process memory.
+- [x] T092 Replace reverse-parenthetical support detection with a structural
+  direct-pair rule. It must accept a genuinely adjacent Russian explanation
+  followed by its parenthesized Spanish term, and reject unrelated Cyrillic
+  context before a later `(ACOSO)` parenthesis, including context separated by
+  numbers, Latin tokens, sentence boundaries, or unrelated punctuation.
+- [x] T093 Replace the generic 2--8 character uppercase exception with a
+  finite reviewed identifier policy. Keep only justified exact identifiers or
+  explicit identifier classes; an unknown uppercase token and a learner-facing
+  uppercase Spanish word must remain unresolved without immediate Russian
+  support.
+- [x] T094 Update `src/data/manual-sections/ch5-gender-violence-prevention.ts`
+  so every learner-facing retained `ACOSO` occurrence has a direct Russian
+  explanation of the term/reporting line in the same rendered string or
+  logical item. Do not rely on `22676`, `SMS`, or unrelated preceding Russian
+  prose as translation support; preserve the official number, emergency, and
+  non-911-routing meaning.
+- [x] T095 Add focused audit regressions for invalid and valid reverse
+  parenthetical forms; rejection of generic uppercase Spanish despite its
+  shape; acceptance only of a reviewed explicit identifier; and the concrete
+  Chapter 5 `ACOSO` content/evidence disposition. Update affected content
+  tests only for the supported wording.
+- [x] T096 Regenerate
+  `content/validation/manual-guide-translation-completeness.evidence.json` and
+  refresh only deterministic dependent artifacts whose validators demonstrate
+  staleness. Record the changed counts/dispositions and preserve source-image,
+  local-first, and unrelated-manual boundaries.
+- [x] T097 Run and record `node scripts/check-feature-memory.mjs --worktree`,
+  the focused audit/content tests, the audit `--write`,
+  `pnpm run validate:manual-guide`, `pnpm run validate:content`, TypeScript,
+  full tests, build, `git diff --check`, and `pnpm run preflight` when feasible.
+  Route every newly surfaced Implementation Agent feedback item to Architect.
+- [ ] T098 Have Review Agent recheck both P2 threads, the exact structural
+  detector boundary, finite exception policy, Chapter 5 support, refreshed
+  evidence, and regression coverage. Orchestrator then invokes new final
+  Architect validation followed by final Analyst validation on the new
+  effective content head.
+
 ## Decisions
 
 - Decision: Scope is limited to the native interactive `Руководство` user
@@ -400,6 +442,11 @@
   Architect disposition is needed beyond the assigned T088--T090 scope.
   Architect disposition: resolved as no additional Implementation Agent
   feedback; no additional task or ticket is required.
+- PR #206 P2 detector follow-up: no new Implementation Agent feedback was
+  surfaced. The explicit identifier policy covers only reviewed exact
+  identifiers, the changed Chapter 5 support text remains selectable DOM text,
+  and generated placement/image evidence remains valid. Review and final
+  validation remain the separate T098/Orchestrator stages.
 
 ## Architect Disposition of Implementation Agent Feedback
 
@@ -445,6 +492,46 @@
   known future maintenance with no new task required for this feature.
 
 ## Verification Evidence
+
+- PR #206 P2 detector follow-up implementation, 2026-07-10:
+  - Confirmed the assigned worktree
+    `/Users/chap/devel/cabadrive-worktrees/040-manual-translation-completion`,
+    branch `codex/040-manual-translation-completion`, base head
+    `97be1bf978076547f1723ddc19cea235792b9cb0`, and the parallel-work
+    preservation requirement before edits.
+  - Replaced arbitrary-Cyrillic reverse-parenthetical matching with a direct
+    structural Russian-label/parenthesized-Spanish pair check. The rule rejects
+    number-, Latin-token-, sentence-boundary-, and punctuation-separated
+    `ACOSO` contexts.
+  - Replaced the generic uppercase pattern with two finite reviewed identifier
+    lists recorded in translation-completeness evidence. `ACOSO`, `BUS`, and
+    `NO AVANZAR` are not identifier exceptions; all retained Chapter 5
+    `ACOSO` occurrences now have direct Russian support.
+  - `pnpm exec node --test tests/manual-guide-translation-completeness-audit.test.mjs tests/content-manual-guide-chapters.test.mjs`:
+    passed, 111/111 tests. This includes valid/invalid reverse-parenthetical,
+    generic-uppercase rejection, exact-identifier acceptance, and committed
+    Chapter 5 `ACOSO` evidence fixtures.
+  - `node scripts/manual-guide-translation-completeness-audit.mjs --write`:
+    passed; evidence reports 50 manual sections, 4 Introduction routes, 54
+    rendered routes, 3000 inspected strings, 1184 candidate residues, 991
+    supported records, 193 reviewed exceptions, and 0 unresolved findings.
+  - `pnpm run generate:manual-ticket-placement` and
+    `pnpm run validate:manual-ticket-placement`: passed; refreshed only the
+    dependent manual-pages/baseline data and retained 460 questions, 460
+    placements, 31 destination routes, 85 answer-bearing placements, and 375
+    fallbacks.
+  - `node scripts/manual-guide-image-readability-translations-audit.mjs --write`
+    and `node scripts/manual-guide-visual-completeness-audit.mjs --write`:
+    passed and refreshed their deterministic evidence.
+  - `node scripts/check-feature-memory.mjs --worktree`,
+    `pnpm run validate:manual-guide`, `pnpm run validate:content`, and
+    `pnpm exec tsc --noEmit`: passed.
+  - `pnpm run test`: passed, 483/483 tests. `pnpm run build` passed and
+    regenerated the service worker; existing Rollup chunk-size warnings remain
+    non-blocking. `git diff --check`: passed.
+  - `pnpm run preflight`: passed after the final task-log update, including
+    feature-memory/repository gates, content validation, 483 unit tests,
+    production build, and the full Playwright E2E suite.
 
 - Architect read-only context:
   - Branch/worktree observed as

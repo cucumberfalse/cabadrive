@@ -98,8 +98,9 @@ exception for generic Spanish traffic terms.
 
 Use a layered detector:
 
-1. Latin-script scan over learner-facing fields, excluding numbers, units, and
-   short all-caps acronyms before Spanish-term analysis.
+1. Latin-script scan over learner-facing fields, excluding numbers and units
+   before Spanish-term analysis. A finite reviewed identifier policy, not a
+   generic short-all-caps rule, may classify a specific token as an exception.
 2. Spanish traffic/source term dictionary seeded from the screenshot examples
    and current likely residue families: `autopista`, `vía rápida`, `calzada`,
    `carril`, `banquina`, `velocidad`, `señal`, `tránsito`, `ingreso`,
@@ -112,6 +113,31 @@ Use a layered detector:
    missed by generic heuristics.
 5. Allowlist evaluation only after candidate detection, so exceptions are
    visible in evidence.
+
+### PR #206 P2 detector follow-up
+
+Keep this as a single small implementation follow-up on the existing PR.
+
+- Replace the permissive reverse-parenthetical heuristic with structural
+  adjacency recognition: support must form a direct `Russian explanation
+  (Spanish term)` pair, not merely appear earlier in the string. In particular,
+  an unrelated phrase such as `Через SMS ... (ACOSO)` must not be accepted
+  because it contains Cyrillic somewhere before the parentheses.
+- Replace the broad `/^[A-Z0-9]{2,8}$/`-style exception with an explicit,
+  reviewed finite identifier policy. Preserve legitimate named official
+  identifiers only where evidence justifies them; do not infer that an
+  otherwise ordinary Spanish uppercase word is an acronym.
+- Update the Chapter 5 reporting-line strings so retained `ACOSO` receives
+  direct Russian support in each rendered learner-facing occurrence. A line
+  number, `SMS`, or general Russian surrounding context is insufficient.
+- Regenerate only the translation-completeness evidence required by these
+  changes and refresh any directly dependent deterministic artifacts if their
+  validators prove they are affected. Do not broaden exceptions, change source
+  pixels, or alter unrelated manual text.
+- Add regression fixtures for both invalid and valid reverse-pair forms, an
+  uppercase Spanish word rejected despite its shape, an approved explicit
+  identifier, and the current Chapter 5 `ACOSO` records. Run the focused audit
+  test plus the standard validation/preflight commands and record outcomes.
 
 The implementation may keep official names such as road names, organizations,
 and document/system names in their official form, but generic Spanish words

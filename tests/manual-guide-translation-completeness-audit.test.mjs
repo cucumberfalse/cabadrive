@@ -184,6 +184,9 @@ test("manual guide translation completeness committed evidence covers screenshot
     ["intro-road-pandemic", "intro-ethical-civic-approach", "intro-incident", "intro-road-safety-plan"]
   );
   assert.equal(evidence.counts.unresolvedFindings, 0);
+  assert.ok(evidence.reviewedIdentifierPolicies.every((policy) => Array.isArray(policy.identifiers)));
+  assert.doesNotMatch(JSON.stringify(evidence.reviewedIdentifierPolicies), /uppercase-acronym|2,8/u);
+  assert.doesNotMatch(JSON.stringify(evidence.exceptions), /uppercase acronym or compact official identifier/u);
   assert.equal(evidence.requiredProbeCoverage.length, 11);
   assert.deepEqual(new Set(evidence.requiredProbeCoverage.map((probe) => probe.status)), new Set(["pass"]));
   assert.deepEqual(new Set(evidence.requiredProbeCoverage.map((probe) => probe.sectionId)), new Set(["ch3-highways"]));
@@ -403,4 +406,97 @@ test("manual guide translation completeness audit rejects generic traffic term e
   } finally {
     rmSync(root, { recursive: true, force: true });
   }
+});
+
+test("manual guide translation completeness audit requires a direct structural reverse parenthetical pair", () => {
+  const root = tempRoot("manual-guide-translation-reverse-pair-");
+  const evidencePath = join(root, "evidence.json");
+  try {
+    const directPair = supportedProbeFixture().replace(
+      "espacio / gap (свободный промежуток) нужен перед входом в поток.",
+      "espacio / gap (свободный промежуток) нужен перед входом в поток. Линия помощи при домогательствах (ACOSO) доступна круглосуточно."
+    );
+    writeSection(root, "ch3-highways.ts", directPair);
+    const valid = runAudit(root, evidencePath, ["--write"]);
+    assert.equal(valid.status, 0, valid.stderr);
+    const validEvidence = JSON.parse(readFileSync(evidencePath, "utf8"));
+    assert.equal(
+      validEvidence.residues.some((entry) =>
+        entry.detectedSpanishPhrase === "ACOSO" && entry.disposition === "retained-with-inline-translation"
+      ),
+      true
+    );
+
+    for (const invalidContext of [
+      "Линия помощи 22676 (ACOSO) доступна круглосуточно.",
+      "Линия помощи SMS (ACOSO) доступна круглосуточно.",
+      "Линия помощи доступна круглосуточно. (ACOSO)",
+      "Линия помощи / (ACOSO) доступна круглосуточно."
+    ]) {
+      writeSection(
+        root,
+        "ch3-highways.ts",
+        supportedProbeFixture().replace(
+          "espacio / gap (свободный промежуток) нужен перед входом в поток.",
+          `espacio / gap (свободный промежуток) нужен перед входом в поток. ${invalidContext}`
+        )
+      );
+      const invalid = runAudit(root, evidencePath, ["--write"]);
+      assert.notEqual(invalid.status, 0, invalid.stderr);
+      assert.match(invalid.stderr, /ACOSO/);
+    }
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("manual guide translation completeness audit rejects generic uppercase Spanish but allows reviewed identifiers", () => {
+  const root = tempRoot("manual-guide-translation-uppercase-policy-");
+  const evidencePath = join(root, "evidence.json");
+  try {
+    writeSection(
+      root,
+      "ch3-highways.ts",
+      supportedProbeFixture().replace(
+        "espacio / gap (свободный промежуток) нужен перед входом в поток.",
+        "espacio / gap (свободный промежуток) нужен перед входом в поток. Знак NO AVANZAR остается без перевода."
+      )
+    );
+    const uppercaseSpanish = runAudit(root, evidencePath, ["--write"]);
+    assert.notEqual(uppercaseSpanish.status, 0, uppercaseSpanish.stderr);
+    assert.match(uppercaseSpanish.stderr, /NO AVANZAR/);
+
+    writeSection(
+      root,
+      "ch3-highways.ts",
+      supportedProbeFixture().replace(
+        "espacio / gap (свободный промежуток) нужен перед входом в поток.",
+        "espacio / gap (свободный промежуток) нужен перед входом в поток. Перед поездкой можно настроить GPS."
+      )
+    );
+    const reviewedIdentifier = runAudit(root, evidencePath, ["--write"]);
+    assert.equal(reviewedIdentifier.status, 0, reviewedIdentifier.stderr);
+    const evidence = JSON.parse(readFileSync(evidencePath, "utf8"));
+    assert.equal(
+      evidence.exceptions.some((entry) =>
+        entry.detectedSpanishPhrase === "GPS" && entry.note === "reviewed official, technical, or message identifier"
+      ),
+      true
+    );
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("committed evidence records direct Russian support for every Chapter 5 ACOSO occurrence", () => {
+  const evidence = JSON.parse(readFileSync(committedEvidencePath, "utf8"));
+  const acosoRecords = evidence.residues.filter(
+    (entry) => entry.sectionId === "ch5-gender-violence-prevention" && entry.detectedSpanishPhrase === "ACOSO"
+  );
+  assert.equal(acosoRecords.length, 2);
+  assert.deepEqual(
+    new Set(acosoRecords.map((entry) => entry.disposition)),
+    new Set(["retained-with-inline-translation"])
+  );
+  assert.ok(acosoRecords.every((entry) => /ACOSO \(линия/u.test(entry.textExcerpt)));
 });

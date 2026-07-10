@@ -39,7 +39,7 @@ export const ch5GenderViolencePreventionSection: ManualGuideSectionContent = {
       sourceTextEs:
         "Se encuentra disponible la línea de reporte y contención 22676 ACOSO, las 24 hs, los 365 días del año.",
       textRu:
-        "Линия сообщения и поддержки: 22676 ACOSO. Она доступна 24 часа в сутки, 365 дней в году."
+        "Линия сообщения и поддержки 22676 ACOSO (линия помощи при домогательствах) доступна 24 часа в сутки, 365 дней в году."
     },
     {
       id: "sms-support-flow",
@@ -48,7 +48,7 @@ export const ch5GenderViolencePreventionSection: ManualGuideSectionContent = {
       sourceTextEs:
         "A través del envío de un SMS al número 22676 (ACOSO)... reciben asesoramiento inmediato por parte del equipo de profesionales.",
       itemsRu: [
-        "Через SMS на номер 22676 (ACOSO) люди, пережившие уличное домогательство или ставшие свидетелями такой ситуации, получают немедленную консультацию от команды специалистов.",
+        "Через SMS на номер 22676 ACOSO (линия для сообщений о домогательствах) люди, пережившие уличное домогательство или ставшие свидетелями такой ситуации, получают немедленную консультацию от команды специалистов.",
         "Команда оценивает ситуацию, чтобы предложить соответствующий подход.",
         "Сообщение можно отправить как reporte - сообщение о ситуации для фиксации факта.",
         "Такая фиксация помогает выявлять и картировать места, с которыми нужно работать: например, остановки автобуса, станции метро или конкретное время.",
