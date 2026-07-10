@@ -429,6 +429,68 @@ function sourceImageCardInventory() {
   return cards;
 }
 
+function sourceImageCardTermRows(source) {
+  const rows = [];
+  let cursor = 0;
+  while ((cursor = source.indexOf('kind: "source-image-cards"', cursor)) >= 0) {
+    const cardsIndex = source.indexOf("cards:", cursor);
+    const cardsArrayStart = source.indexOf("[", cardsIndex);
+    const cardsArray = balancedSourceSlice(source, cardsArrayStart, "[", "]");
+    for (const cardSource of topLevelObjectSources(cardsArray)) {
+      const cardId = moduleStringField(cardSource, "id");
+      const termsIndex = cardSource.indexOf("termTranslations:");
+      if (termsIndex < 0) continue;
+      const termsArrayStart = cardSource.indexOf("[", termsIndex);
+      const termsArray = balancedSourceSlice(cardSource, termsArrayStart, "[", "]");
+      for (const termSource of topLevelObjectSources(termsArray)) {
+        rows.push({
+          cardId,
+          termEs: moduleStringField(termSource, "termEs"),
+          translationRu: moduleStringField(termSource, "translationRu")
+        });
+      }
+    }
+    cursor = cardsArrayStart + cardsArray.length;
+  }
+  return rows;
+}
+
+const expectedRenderedNoAvanzarIds = [
+  "app4regulatory-p185-003-no-avanzar-catalog-entry",
+  "app4-regulatory-no-avanzar-source-card",
+  "app4-regulatory-anexo-panel-01-source-card",
+  "app4-regulatory-page-185-source-card"
+].sort();
+
+function normalizedNoAvanzarLabel(value) {
+  return value.trim().replace(/\.+$/u, "").toLocaleUpperCase("es-AR");
+}
+
+function renderedNoAvanzarRows(catalogEntries, sourceCardTerms) {
+  return [
+    ...catalogEntries
+      .filter(
+        (entry) =>
+          entry.sectionId === "app4-signs-regulatory" &&
+          entry.entryKind === "catalog-entry" &&
+          normalizedNoAvanzarLabel(entry.spanishLabel) === "NO AVANZAR"
+      )
+      .map((entry) => ({ id: entry.id, translationRu: entry.russianTranslation, renderer: "manual-sign-catalog" })),
+    ...sourceCardTerms
+      .filter((term) => normalizedNoAvanzarLabel(term.termEs) === "NO AVANZAR")
+      .map((term) => ({ id: term.cardId, translationRu: term.translationRu, renderer: "source-image-cards" }))
+  ];
+}
+
+function assertRenderedNoAvanzarInvariant(rows) {
+  const renderedIds = rows.map((row) => row.id).sort();
+  assert.deepEqual(renderedIds, expectedRenderedNoAvanzarIds, "R.1 rendered inventory is exact and fail-closed");
+  for (const row of rows) {
+    assert.equal(row.translationRu, "Проезд запрещен", `${row.id} uses the R.1 translation`);
+    assert.doesNotMatch(row.translationRu, /обгон запрещен/iu, `${row.id} is not the no-overtaking sign`);
+  }
+}
+
 function visualArtifactHashRecords(value, pathField) {
   const entries = Array.isArray(value) ? value : value && typeof value === "object" ? [value] : [];
   return entries.map((entry, index) => ({
@@ -2090,6 +2152,39 @@ test("Appendix IV keeps protected signs, markings, and signals source-as-is with
 });
 
 test("Appendix IV keeps R.1 NO AVANZAR distinct from the no-overtaking sign in every learner-facing representation", () => {
+  // Both arrays below are consumed by the current renderer: the catalog block
+  // maps manualSignEntriesForSection(), while source-image cards map their
+  // termTranslations through ManualImageTermTranslations.
+  assert.match(appSource, /manualSignEntriesForSection\(block\.sectionId\)[\s\S]*entries\.map/u);
+  assert.match(appSource, /block\.cards\.map[\s\S]*ManualImageTermTranslations terms=\{card\.termTranslations\}/u);
+
+  const r1Rows = renderedNoAvanzarRows(app4SignEntries.entries, sourceImageCardTermRows(app4SignsRegulatoryModuleSource));
+  assertRenderedNoAvanzarInvariant(r1Rows);
+
+  for (const targetId of ["app4-regulatory-anexo-panel-01-source-card", "app4-regulatory-page-185-source-card"]) {
+    assert.throws(
+      () => assertRenderedNoAvanzarInvariant(r1Rows.filter((row) => row.id !== targetId)),
+      /R\.1 rendered inventory is exact and fail-closed/u,
+      `${targetId} cannot be silently removed from the rendered R.1 inventory`
+    );
+    assert.throws(
+      () =>
+        assertRenderedNoAvanzarInvariant(
+          r1Rows.map((row) => (row.id === targetId ? { ...row, translationRu: "Обгон запрещен" } : row))
+        ),
+      /uses the R\.1 translation/u,
+      `${targetId} cannot use the no-overtaking translation`
+    );
+    assert.throws(
+      () =>
+        assertRenderedNoAvanzarInvariant(
+          r1Rows.map((row) => (row.id === targetId ? { ...row, id: `${targetId}-incorrect` } : row))
+        ),
+      /R\.1 rendered inventory is exact and fail-closed/u,
+      `${targetId} cannot satisfy coverage with an incorrect identity`
+    );
+  }
+
   const focusedCardStart = app4SignsRegulatoryModuleSource.indexOf('id: "app4-regulatory-no-avanzar-source-card"');
   const focusedCardEnd = app4SignsRegulatoryModuleSource.indexOf("\n      visualNotes:", focusedCardStart);
   assert.ok(focusedCardStart >= 0 && focusedCardEnd > focusedCardStart, "focused R.1 source card is present");

@@ -122,6 +122,33 @@ its evidence, the affected Chapter 5 learner text, and regression coverage.
 - The regenerated evidence must classify the affected records using the new
   structural rule and contain no broad uppercase exception.
 
+### PR #206 R.1 rendered-row coverage contract
+
+The follow-up for review discussion `discussion_r3560828500` is limited to the
+R.1 semantic invariant and its evidence. The prior semantic correction is
+right, but the invariant must be fail-closed over every *currently rendered*
+learner-facing R.1 representation, not only the focused source card.
+
+- The invariant's expected rendered R.1 ID set must be exactly:
+  - `app4regulatory-p185-003-no-avanzar-catalog-entry` (the individual sign
+    catalog entry);
+  - `app4-regulatory-no-avanzar-source-card` (the focused R.1 source card);
+  - `app4-regulatory-anexo-panel-01-source-card` (the Anexo-panel structured
+    term row); and
+  - `app4-regulatory-page-185-source-card` (the page-185 structured term row).
+- It must derive/collect the current rendered R.1 records from both the
+  individual sign catalog and the regulatory source-card term rows, normalize
+  the Spanish display spelling/case as needed, and assert exact set equality
+  with that expected ID set. A missing row or an unexpected new R.1 row must
+  fail the invariant until it is explicitly reviewed and added to the contract.
+- For every enumerated ID, the learner-facing Russian value for R.1 must be
+  `Проезд запрещен` and must not contain `обгон запрещен`. This coverage is in
+  addition to, not a replacement for, the separate `PROHIBIDO ADELANTAR` / `NO
+  ADELANTAR` assertion requiring `Обгон запрещен`.
+- The invariant must operate on records actually consumed by the current
+  renderer; it must not count protected source-image pixels, source-only
+  metadata, or an unrendered duplicate as coverage.
+
 ## Terminology Requirements
 
 Recurring terms should use consistent Russian wording unless context requires a
@@ -236,6 +263,13 @@ per-residue dispositions, and representative route/screenshot evidence paths.
     `Обгон запрещен` is reserved for the distinct `PROHIBIDO ADELANTAR` / `NO
     ADELANTAR` sign; a parenthesized translation must not override or contradict
     the card's canonical structured translation.
+13. Given the R.1 semantic invariant runs, it proves complete coverage of the
+    four currently rendered learner-facing IDs
+    `app4regulatory-p185-003-no-avanzar-catalog-entry`,
+    `app4-regulatory-no-avanzar-source-card`,
+    `app4-regulatory-anexo-panel-01-source-card`, and
+    `app4-regulatory-page-185-source-card`. The invariant fails if an expected
+    row is absent or an unreviewed rendered R.1 row appears.
 
 ## Negative Scenarios
 
@@ -263,6 +297,10 @@ per-residue dispositions, and representative route/screenshot evidence paths.
   no-overtaking sign, or updating only one of the card caption, alt text,
   structured translation, catalog data, or evidence while another
   learner-facing representation still says `обгон запрещен`.
+- Passing the R.1 invariant by checking only the focused source card while the
+  rendered Anexo-panel row, page-185 row, or individual catalog entry is
+  omitted; or silently allowing a newly rendered R.1 representation without
+  explicit review and invariant coverage.
 
 ## Implementation Requirements
 
@@ -388,15 +426,15 @@ Focused tests should prove:
 
 ### Final Architect Validation
 
-> **Stale as of PR #206 review thread `PRRT_kwDOSX65IM6P8IoE` (comment
-> `3560691165`).** The review identified a non-evidence learner-facing content
-> defect after the validations below: R.1 `NO AVANZAR` was parenthesized as
-> `обгон запрещен` even though this feature's existing canonical sign data says
-> `Проезд запрещен`; `PROHIBIDO ADELANTAR` is the separate no-overtaking sign.
-> The prior Architect and Analyst passes therefore cannot authorize completion
-> or merge until the narrow follow-up is implemented, independently reviewed,
-> and revalidated in Architect-then-Analyst order on the resulting effective
-> content head.
+> **Stale as of PR #206 review discussions `PRRT_kwDOSX65IM6P8IoE` (comment
+> `3560691165`) and `discussion_r3560828500`.** The first review identified a
+> non-evidence learner-facing R.1 translation defect; the later P2 confirms the
+> semantic fix but finds that T100 omits two currently rendered R.1 term rows.
+> The invariant must enumerate all four rendered R.1 learner-facing IDs before
+> it can prove the correction will not regress. The prior Architect and Analyst
+> passes therefore cannot authorize completion or merge until the narrow
+> coverage follow-up is implemented, independently reviewed, and revalidated in
+> Architect-then-Analyst order on the resulting effective content head.
 
 - Architect validation pass: passed
 - Final Architect validation completed at: 2026-07-09T15:43:28Z

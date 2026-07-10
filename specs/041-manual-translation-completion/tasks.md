@@ -325,6 +325,30 @@
   deterministic evidence. Only after a passing review may Orchestrator invoke
   fresh final Architect validation and then final Analyst validation on the new
   effective content head.
+- [x] T104 Address PR #206 P2 discussion `discussion_r3560828500`: replace the
+  focused-card-only T100 R.1 invariant with a fail-closed inventory over every
+  currently rendered learner-facing R.1 ID. The exact expected set is
+  `app4regulatory-p185-003-no-avanzar-catalog-entry`,
+  `app4-regulatory-no-avanzar-source-card`,
+  `app4-regulatory-anexo-panel-01-source-card`, and
+  `app4-regulatory-page-185-source-card`. Collect the catalog record and
+  regulatory source-card term rows from the records used by the renderer,
+  normalize `NO AVANZAR` / `No avanzar` only for matching, and fail on a
+  missing or unexpected rendered R.1 ID. Require `Проезд запрещен` and reject
+  `обгон запрещен` for every ID; preserve the separate no-overtaking contract.
+- [x] T105 Add focused regression coverage proving the exact four-ID inventory
+  passes, and that removal, mistranslation, or incorrect identity of either
+  `app4-regulatory-anexo-panel-01-source-card` or
+  `app4-regulatory-page-185-source-card` fails. Run the focused content and
+  invariant tests plus `pnpm run validate:manual-guide` and `pnpm run
+  validate:content`; refresh only deterministic evidence that the validators
+  report stale, then record all results and any Implementation Agent feedback.
+- [ ] T106 Have Review Agent recheck `discussion_r3560828500`, the exact
+  four-ID inventory/completeness proof, negative regression fixtures, R.1
+  versus no-overtaking semantic boundary, and any refreshed deterministic
+  evidence. Only after passing review may Orchestrator invoke fresh final
+  Architect validation and then final Analyst validation on the new effective
+  content head.
 
 ## Decisions
 
@@ -353,6 +377,15 @@
   Architect and Analyst final-validation pass is stale because the reported
   inline text is learner-facing product content, not evidence-only process
   memory.
+- Review-fix decision: P2 discussion `discussion_r3560828500` is valid. The
+  semantic R.1 correction is correct, but T100 does not enumerate the rendered
+  R.1 term rows `app4-regulatory-anexo-panel-01-source-card` and
+  `app4-regulatory-page-185-source-card`; the individual catalog entry is also
+  learner-facing. T104--T106 require a complete exact four-ID invariant,
+  negative coverage proof, focused validation, independent review, and fresh
+  Architect-then-Analyst validation. Every prior final-validation pass is stale
+  because this changes the durable regression contract, not evidence-only
+  process memory.
 - Implementation decision: Confirmed assigned worktree
   `/Users/chap/devel/cabadrive-worktrees/040-manual-translation-completion`,
   branch/PR slice `codex/040-manual-translation-completion`, verified base
@@ -775,6 +808,32 @@
   - Implementation Agent feedback: none beyond the required T103 independent
     review handoff; no broader content, source-image, runtime, or validator
     change is needed.
+
+- PR #206 P2 R.1 rendered-row coverage follow-up for
+  `discussion_r3560828500`, 2026-07-10:
+  - T104 completed: replaced the focused-card-only assertion with one
+    fail-closed rendered inventory. It collects the individual catalog record
+    and `source-image-cards` structured term rows used by the renderer, then
+    requires exactly `app4regulatory-p185-003-no-avanzar-catalog-entry`,
+    `app4-regulatory-no-avanzar-source-card`,
+    `app4-regulatory-anexo-panel-01-source-card`, and
+    `app4-regulatory-page-185-source-card`. Every row must be exactly
+    `Проезд запрещен` and cannot contain `обгон запрещен`; the separate
+    `PROHIBIDO ADELANTAR` / `NO ADELANTAR` contract remains asserted.
+  - T105 completed: positive exact-set coverage and negative fixtures for
+    removal, mistranslation, and an incorrect identity of both the Anexo panel
+    and page-185 row pass. No content, source-image, or audit evidence changed;
+    `pnpm run validate:manual-guide` and `pnpm run validate:content` confirmed
+    all existing deterministic evidence remains current.
+  - Verification: `pnpm exec node --test tests/content-manual-guide-chapters.test.mjs`
+    passed 98/98; `pnpm run validate:manual-guide`, `pnpm run validate:content`,
+    `pnpm exec tsc --noEmit`, `pnpm run test` (484/484), `pnpm run build`,
+    `node scripts/check-feature-memory.mjs --worktree`, `git diff --check`,
+    and the complete `pnpm run preflight` passed. Existing Rollup chunk-size
+    warnings during build remain non-blocking.
+  - T106 remains pending for an independent Review Agent. Implementation Agent
+    feedback: none; this narrow test/contract change requires no data, audit,
+    runtime, or durable-document follow-up.
 
 ## Cycle PR Set
 

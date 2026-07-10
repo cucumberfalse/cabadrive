@@ -174,6 +174,39 @@ incorrect newly added inline translation on the R.1 source card:
 This is a product-content/test/evidence change, not a final-validation-evidence
 repair. All earlier final validations are stale until the follow-up completes.
 
+### PR #206 R.1 rendered-row coverage follow-up
+
+Keep this as one narrow implementation return on the existing PR for review
+discussion `discussion_r3560828500`. The R.1 semantic correction is correct,
+but its T100 invariant currently checks only the focused card and can miss
+other rendered R.1 term rows.
+
+- Replace the focused-card-only assertion with one deterministic, fail-closed
+  rendered-record inventory. It must collect R.1 `NO AVANZAR`/`No avanzar`
+  learner-facing records from the individual catalog and regulatory
+  source-card term rows, then require exact equality with these four IDs:
+  `app4regulatory-p185-003-no-avanzar-catalog-entry`,
+  `app4-regulatory-no-avanzar-source-card`,
+  `app4-regulatory-anexo-panel-01-source-card`, and
+  `app4-regulatory-page-185-source-card`.
+- Assert `Проезд запрещен` and reject `обгон запрещен` for every member of that
+  inventory. Preserve the existing distinct no-overtaking assertion for
+  `PROHIBIDO ADELANTAR` / `NO ADELANTAR` and do not alter source-image pixels,
+  sign meanings, generic translation exceptions, or runtime behavior.
+- Add regression cases that prove the inventory fails when either the Anexo
+  panel or page-185 R.1 term row is removed, mis-translated, or joined to an
+  incorrect ID. Record the positive exact-set result so coverage completeness
+  is independently reviewable.
+- Run the focused content/invariant tests and the relevant manual/content
+  validators; refresh deterministic evidence only if a validator proves it is
+  stale. Have Review Agent recheck the complete four-ID inventory, the semantic
+  distinction, negative fixtures, and evidence before fresh
+  Architect-then-Analyst final validation.
+
+This is a non-evidence test/contract change. All prior Architect and Analyst
+final validations remain stale until the follow-up passes review and is
+revalidated.
+
 ## Content Fix Strategy
 
 For each residue:
