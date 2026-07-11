@@ -19,7 +19,8 @@ function runAudit(sectionRoot, evidencePath, args = [], options = {}) {
       ...process.env,
       MANUAL_GUIDE_TRANSLATION_COMPLETENESS_SECTION_ROOT: sectionRoot,
       MANUAL_GUIDE_TRANSLATION_COMPLETENESS_EVIDENCE_PATH: evidencePath,
-      MANUAL_GUIDE_TRANSLATION_COMPLETENESS_INTRODUCTION_PATH: options.introductionPath ?? ""
+      MANUAL_GUIDE_TRANSLATION_COMPLETENESS_INTRODUCTION_PATH: options.introductionPath ?? "",
+      MANUAL_GUIDE_TRANSLATION_COMPLETENESS_MANUAL_SIGN_INVENTORY_PATH: options.manualSignInventoryPath ?? ""
     },
     encoding: "utf8"
   });
@@ -91,6 +92,13 @@ function crossRouteSupportedProbeFixture() {
   return supportedProbeFixture()
     .replaceAll("ch3HighwaysSection", "ch3SpeedSection")
     .replaceAll('sectionId: "ch3-highways"', 'sectionId: "ch3-speed"');
+}
+
+function supportedManualSignCatalogFixture() {
+  return supportedProbeFixture().replace(
+    `      assetPath: "content/assets/not-learner-facing-autopista.jpg"\n    },`,
+    `      assetPath: "content/assets/not-learner-facing-autopista.jpg"\n    },\n    {\n      id: "fixture-sign-catalog",\n      kind: "manual-sign-catalog",\n      titleRu: "Каталог знаков",\n      sectionId: "fixture-signs"\n    },`
+  );
 }
 
 function supportedIntroductionFixture(replacementText = "Дорожная культура начинается с уважения к другим участникам движения.") {
@@ -271,6 +279,59 @@ test("manual guide translation completeness audit writes evidence and accepts fr
     assert.equal(evidence.counts.unresolvedFindings, 0);
     assert.equal(evidence.residues.some((entry) => entry.disposition === "retained-with-inline-translation"), true);
     assert.equal(evidence.residues.some((entry) => entry.disposition === "retained-with-structured-adjacent-translation"), true);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("manual guide translation completeness audit covers rendered manual sign catalog captions", () => {
+  const root = tempRoot("manual-guide-translation-sign-catalog-");
+  const evidencePath = join(root, "evidence.json");
+  const inventoryPath = join(root, "app4SignEntries.json");
+  try {
+    writeSection(root, "ch3-highways.ts", supportedManualSignCatalogFixture());
+    writeFileSync(
+      inventoryPath,
+      JSON.stringify({
+        entries: [
+          {
+            id: "fixture-sign-entry",
+            sectionId: "fixture-signs",
+            spanishLabel: "NO AVANZAR",
+            variant: "Señal",
+            russianTranslation: "Проезд запрещен"
+          }
+        ]
+      })
+    );
+
+    const supported = runAudit(root, evidencePath, ["--write"], { manualSignInventoryPath: inventoryPath });
+    assert.equal(supported.status, 0, supported.stderr);
+    const evidence = JSON.parse(readFileSync(evidencePath, "utf8"));
+    const catalogResidue = evidence.residues.find(
+      (entry) => entry.sourceKind === "manual-sign-catalog" && entry.fieldPath.endsWith(".termEs")
+    );
+    assert.equal(catalogResidue?.detectedSpanishPhrase, "NO AVANZAR");
+    assert.equal(catalogResidue?.disposition, "retained-with-structured-adjacent-translation");
+
+    writeFileSync(
+      inventoryPath,
+      JSON.stringify({
+        entries: [
+          {
+            id: "fixture-sign-entry",
+            sectionId: "fixture-signs",
+            spanishLabel: "NO AVANZAR",
+            variant: "Señal",
+            russianTranslation: "NO AVANZAR"
+          }
+        ]
+      })
+    );
+    const unsupported = runAudit(root, evidencePath, ["--write"], { manualSignInventoryPath: inventoryPath });
+    assert.notEqual(unsupported.status, 0);
+    assert.match(unsupported.stderr, /blocks\.1\.entries\.0\.termEs/);
+    assert.match(unsupported.stderr, /NO AVANZAR/);
   } finally {
     rmSync(root, { recursive: true, force: true });
   }

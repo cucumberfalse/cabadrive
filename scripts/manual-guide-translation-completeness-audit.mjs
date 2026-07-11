@@ -6,12 +6,17 @@ import ts from "typescript";
 const defaultEvidencePath = "content/validation/manual-guide-translation-completeness.evidence.json";
 const defaultSectionRoot = "src/data/manual-sections";
 const defaultIntroductionPath = "src/data/pandemiaVialSection.ts";
+const defaultManualSignInventoryPath = "src/data/manual-signs/app4SignEntries.json";
 const evidencePath = process.env.MANUAL_GUIDE_TRANSLATION_COMPLETENESS_EVIDENCE_PATH ?? defaultEvidencePath;
 const sectionRoot = process.env.MANUAL_GUIDE_TRANSLATION_COMPLETENESS_SECTION_ROOT ?? defaultSectionRoot;
 const introductionPathValue = process.env.MANUAL_GUIDE_TRANSLATION_COMPLETENESS_INTRODUCTION_PATH;
 const introductionPath = introductionPathValue === ""
   ? null
   : introductionPathValue ?? (sectionRoot === defaultSectionRoot ? defaultIntroductionPath : null);
+const manualSignInventoryPathValue = process.env.MANUAL_GUIDE_TRANSLATION_COMPLETENESS_MANUAL_SIGN_INVENTORY_PATH;
+const manualSignInventoryPath = manualSignInventoryPathValue === ""
+  ? null
+  : manualSignInventoryPathValue ?? (sectionRoot === defaultSectionRoot ? defaultManualSignInventoryPath : null);
 const featureId = "041-manual-translation-completion";
 
 const args = process.argv.slice(2);
@@ -412,6 +417,63 @@ function loadManualSections() {
   return sections;
 }
 
+function loadRenderedManualSignCatalogRecords(manualSections) {
+  if (!manualSignInventoryPath) return [];
+  assertCondition(existsSync(manualSignInventoryPath), "manual sign inventory is missing", { manualSignInventoryPath });
+
+  const inventory = JSON.parse(readFileSync(manualSignInventoryPath, "utf8"));
+  assertCondition(isObject(inventory) && Array.isArray(inventory.entries), "manual sign inventory entries must be an array", {
+    manualSignInventoryPath
+  });
+
+  const renderedCatalogSections = new Map();
+  for (const sectionMeta of manualSections) {
+    for (const [blockIndex, block] of (sectionMeta.section.blocks ?? []).entries()) {
+      if (!isObject(block) || block.kind !== "manual-sign-catalog") continue;
+      const catalogSectionId = typeof block.sectionId === "string" ? block.sectionId : sectionMeta.section.sectionId;
+      renderedCatalogSections.set(catalogSectionId, {
+        sectionMeta,
+        blockIndex,
+        blockId: block.id ?? null,
+        blockKind: block.kind
+      });
+    }
+  }
+
+  return inventory.entries.flatMap((entry, entryIndex) => {
+    if (!isObject(entry) || typeof entry.sectionId !== "string") return [];
+    const renderedCatalog = renderedCatalogSections.get(entry.sectionId);
+    if (!renderedCatalog) return [];
+    assertCondition(typeof entry.spanishLabel === "string", "manual sign entry spanishLabel must be a string", { entryIndex });
+    assertCondition(typeof entry.russianTranslation === "string", "manual sign entry russianTranslation must be a string", { entryIndex });
+
+    const label = entry.variant ? `${entry.spanishLabel} (${entry.variant})` : entry.spanishLabel;
+    const fieldPrefix = `blocks.${renderedCatalog.blockIndex}.entries.${entryIndex}`;
+    return [
+      {
+        sectionId: renderedCatalog.sectionMeta.section.sectionId,
+        sourceKind: "manual-sign-catalog",
+        modulePath: manualSignInventoryPath,
+        blockId: renderedCatalog.blockId,
+        blockKind: renderedCatalog.blockKind,
+        fieldPath: `${fieldPrefix}.termEs`,
+        key: "termEs",
+        text: label
+      },
+      {
+        sectionId: renderedCatalog.sectionMeta.section.sectionId,
+        sourceKind: "manual-sign-catalog",
+        modulePath: manualSignInventoryPath,
+        blockId: renderedCatalog.blockId,
+        blockKind: renderedCatalog.blockKind,
+        fieldPath: `${fieldPrefix}.translationRu`,
+        key: "translationRu",
+        text: entry.russianTranslation
+      }
+    ];
+  });
+}
+
 function synthesizeIntroductionSections(modulePath, exports) {
   const navigation = exports.get("introductionNavigation");
   const pandemia = exports.get("pandemiaVialSection");
@@ -619,6 +681,10 @@ function isIgnoredLatinSegment(segment) {
 function candidateRecords(records) {
   const candidates = [];
   for (const record of records) {
+    // The Russian catalog caption is support evidence for its paired Spanish
+    // label. It may intentionally retain an official sign token such as STOP
+    // or PARE, so it must not be reclassified as learner-facing Spanish.
+    if (record.sourceKind === "manual-sign-catalog" && record.key === "translationRu") continue;
     const phrases = detectedSpanishPhrases(record.text);
     const segments = latinSegments(textWithoutIgnoredContexts(record.text));
     const explicitSegments = segments.filter((segment) => !isIgnoredLatinSegment(segment));
@@ -744,6 +810,13 @@ for (const section of sections) {
   stringsBySection.set(section.section.sectionId, sectionStrings);
   learnerStrings.push(...sectionStrings);
 }
+const manualSignCatalogStrings = loadRenderedManualSignCatalogRecords(manualSections);
+for (const record of manualSignCatalogStrings) {
+  learnerStrings.push(record);
+  const sectionStrings = stringsBySection.get(record.sectionId) ?? [];
+  sectionStrings.push(record);
+  stringsBySection.set(record.sectionId, sectionStrings);
+}
 for (const record of learnerStrings) {
   record.sectionStrings = stringsBySection.get(record.sectionId) ?? [];
 }
@@ -811,8 +884,10 @@ const document = {
   generatedBy: "scripts/manual-guide-translation-completeness-audit.mjs",
   generatedAt: new Date(0).toISOString(),
   contentFingerprint: sha256Text(
-    sections
-      .map((section) => `${section.modulePath}\n${JSON.stringify(section.section)}`)
+    [
+      ...sections.map((section) => `${section.modulePath}\n${JSON.stringify(section.section)}`),
+      ...(manualSignInventoryPath ? [`${manualSignInventoryPath}\n${readFileSync(manualSignInventoryPath, "utf8")}`] : [])
+    ]
       .join("\n---manual-section---\n")
   ),
   counts: {
@@ -829,6 +904,8 @@ const document = {
   inspectedFieldPolicy: {
     inspected:
       "Learner-facing Russian/manual fields such as titleRu, textRu, itemsRu, columnsRu, cellsRu, captionRu, altRu, card/body/label fields, structured termTranslations, and Introduction route learner text rendered under Руководство.",
+    manualSignCatalog:
+      "Rendered manual-sign-catalog blocks are joined to their section inventory and inspect each displayed spanishLabel/variant caption against the adjacent russianTranslation.",
     ignored:
       "sourceTextEs, sourceTitleEs, source/provenance notes, route hashes, asset paths, URLs, hashes, selectors, source regions, screenshot paths, validation metadata, and protected image pixels.",
     protectedImagePixels:
