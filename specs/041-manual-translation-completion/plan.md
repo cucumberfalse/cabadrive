@@ -1,0 +1,336 @@
+# Plan: Complete Manual Translation Audit
+
+## Summary
+
+Implement this as one content-quality and validation PR slice. The request is a
+single whole-guide defect class: learner-facing Spanish residues in the native
+interactive `Руководство`. A split by chapter is not recommended unless the
+implementation audit reveals a large independent model change or an unusually
+high-risk residue class that cannot be safely reviewed in one PR.
+
+The implementation should preserve the existing manual architecture:
+TypeScript section data, React rendering, local assets, static/offline build,
+existing manual guide validation, and protected image rules. The new durable
+contract is a text-surface translation-completeness audit that distinguishes
+learner-facing manual strings from Spanish source/provenance fields and
+protected source pixels.
+
+## Existing Rails To Reuse
+
+- `src/data/manualGuide.ts` already centralizes manual guide section imports,
+  block types, implemented sections, navigation, and style-token metadata.
+- `src/data/manual-sections/*.ts` is the primary content source for the native
+  manual guide.
+- `src/App.tsx` renders manual guide sections through block-kind branches and
+  reusable helpers such as `ManualImageTermTranslations`.
+- Existing validators are wired through:
+  - `pnpm run validate:manual-guide`
+  - `pnpm run validate:content`
+- Existing manual guide validators use deterministic JSON evidence under
+  `content/validation/` and fail check mode when evidence is stale.
+- Feature `032` established structured glossary rows with
+  `Spanish term (Russian translation): Russian definition`.
+- Feature `035` established structured Spanish/Russian DOM support outside
+  protected images.
+
+## Data And Audit Model
+
+Add a new audit script:
+
+```text
+scripts/manual-guide-translation-completeness-audit.mjs
+```
+
+Recommended evidence file:
+
+```text
+content/validation/manual-guide-translation-completeness.evidence.json
+```
+
+The audit should use TypeScript compiler AST evaluation or a shared structured
+loader similar to the image readability audit. It should inspect section data
+objects rather than raw source lines where practical.
+
+Inspect learner-facing fields, including:
+
+- Section-level `titleRu`.
+- Block `titleRu`, `textRu`, `itemsRu`, `captionRu`, `altRu`, `columnsRu`,
+  `cellsRu`, `bodyRu`, `noticeItemsRu`, `closingRu`, and similarly named
+  Russian-facing fields.
+- Nested card/group/example/benefit/signal/label fields that render to the
+  manual DOM.
+- `termTranslations` as already structured Spanish/Russian pairs.
+- Navigation-visible Russian labels if implementation finds any rendered label
+  outside the section content objects.
+
+Ignore or classify as non-learner-facing by default:
+
+- `sourceTextEs`, `sourceTitleEs`, registry source titles, source boundary
+  evidence, source page pointers, section module paths, source screenshots,
+  Russian screenshot paths, source regions, selectors, route hashes, test IDs,
+  asset paths, URLs, hashes, and validation-only notes.
+- Spanish inside protected image pixels. The audit may check the adjacent DOM
+  translation fields for those images, but must not require pixel edits.
+
+Evidence should include:
+
+- `schemaVersion`, `featureId`, `generatedBy`.
+- Deterministic counts: implemented sections, inspected fields, inspected
+  strings, candidate residues, translated/retained/exception dispositions,
+  validation findings.
+- Per-candidate records with section id, module path, block id/kind, field
+  path, text excerpt, detected Spanish phrase, accepted disposition, and
+  reviewer note if allowlisted.
+- Required screenshot-probe records for the user-highlighted Chapter 3 terms.
+  Each record must be sourced from `ch3-highways`; the candidate lookup and any
+  fallback evidence lookup must both be constrained to that section, so an
+  identical supported phrase elsewhere in `Руководство` cannot pass a missing
+  Chapter 3 probe.
+- A terminology map for recurring Spanish terms and chosen Russian wording.
+- A narrow allowlist/exception list for acronyms, road names, document names,
+  legal references, URLs, hashes, file names, and other non-translated items.
+
+Check mode must fail if committed evidence is missing, malformed, stale, has
+unresolved findings, has missing screenshot probes, or contains an over-broad
+exception for generic Spanish traffic terms.
+
+## Residue Detection Strategy
+
+Use a layered detector:
+
+1. Latin-script scan over learner-facing fields, excluding numbers and units
+   before Spanish-term analysis. A finite reviewed identifier policy, not a
+   generic short-all-caps rule, may classify a specific token as an exception.
+2. Spanish traffic/source term dictionary seeded from the screenshot examples
+   and current likely residue families: `autopista`, `vía rápida`, `calzada`,
+   `carril`, `banquina`, `velocidad`, `señal`, `tránsito`, `ingreso`,
+   `salida`, `incorporación`, `sobrepaso`, `adelantamiento`, `balizas`,
+   `auxilio`, `remolque`, `acarreo`, `vehículo`, `avería`, `emergency`, and
+   analogous accented/unaccented variants found during audit.
+3. Mixed-language pattern checks for Spanish phrases embedded in Russian
+   strings without parentheses or adjacent structured translation.
+4. Explicit required-probe matching for the screenshot terms so they cannot be
+   missed by generic heuristics.
+5. Allowlist evaluation only after candidate detection, so exceptions are
+   visible in evidence.
+
+### PR #206 P2 detector follow-up
+
+Keep this as a single small implementation follow-up on the existing PR.
+
+- Replace the permissive reverse-parenthetical heuristic with structural
+  adjacency recognition: support must form a direct `Russian explanation
+  (Spanish term)` pair, not merely appear earlier in the string. In particular,
+  an unrelated phrase such as `Через SMS ... (ACOSO)` must not be accepted
+  because it contains Cyrillic somewhere before the parentheses.
+- Replace the broad `/^[A-Z0-9]{2,8}$/`-style exception with an explicit,
+  reviewed finite identifier policy. Preserve legitimate named official
+  identifiers only where evidence justifies them; do not infer that an
+  otherwise ordinary Spanish uppercase word is an acronym.
+- Update the Chapter 5 reporting-line strings so retained `ACOSO` receives
+  direct Russian support in each rendered learner-facing occurrence. A line
+  number, `SMS`, or general Russian surrounding context is insufficient.
+- Regenerate only the translation-completeness evidence required by these
+  changes and refresh any directly dependent deterministic artifacts if their
+  validators prove they are affected. Do not broaden exceptions, change source
+  pixels, or alter unrelated manual text.
+- Add regression fixtures for both invalid and valid reverse-pair forms, an
+  uppercase Spanish word rejected despite its shape, an approved explicit
+  identifier, and the current Chapter 5 `ACOSO` records. Run the focused audit
+  test plus the standard validation/preflight commands and record outcomes.
+
+The implementation may keep official names such as road names, organizations,
+and document/system names in their official form, but generic Spanish words
+around those names still need Russian translation. Example: an official road
+name may stay as `Autopista 25 de Mayo`, while generic `autopistas` in prose
+should become `autopistas (автомагистрали)` or simply `автомагистрали`.
+
+### PR #206 regulatory-sign meaning follow-up
+
+Keep this as one narrow implementation return on the existing PR. The active
+review finding `PRRT_kwDOSX65IM6P8IoE` (comment `3560691165`) identifies an
+incorrect newly added inline translation on the R.1 source card:
+
+- `NO AVANZAR` is the existing R.1 sign record whose governed Russian meaning
+  is `Проезд запрещен`.
+- `PROHIBIDO ADELANTAR` (and the catalog label `NO ADELANTAR`) is the separate
+  no-overtaking sign and alone maps to `Обгон запрещен`.
+- Correct the conflicting parenthesized/learner-facing R.1 wording to `Проезд
+  запрещен`; preserve the official source image pixels and the separate
+  no-overtaking records unchanged.
+- Add a focused regression test or deterministic invariant that examines every
+  learner-facing R.1 `NO AVANZAR` representation (including the source-card
+  alt text and structured term translation) and rejects `обгон запрещен` for
+  that sign while retaining `Обгон запрещен` for `PROHIBIDO ADELANTAR` / `NO
+  ADELANTAR`.
+- Regenerate translation-completeness evidence and only directly dependent
+  source/data fingerprint artifacts when their validators establish staleness.
+  Do not alter protected source pixels, unrelated sign meanings, generic audit
+  exceptions, or runtime behavior.
+- Run the focused sign/audit tests plus required validation, then have Review
+  Agent recheck this thread before a new final Architect validation and then
+  final Analyst validation.
+
+This is a product-content/test/evidence change, not a final-validation-evidence
+repair. All earlier final validations are stale until the follow-up completes.
+
+### PR #206 R.1 rendered-row coverage follow-up
+
+Keep this as one narrow implementation return on the existing PR for review
+discussion `discussion_r3560828500`. The R.1 semantic correction is correct,
+but its T100 invariant currently checks only the focused card and can miss
+other rendered R.1 term rows.
+
+- Replace the focused-card-only assertion with one deterministic, fail-closed
+  rendered-record inventory. It must collect R.1 `NO AVANZAR`/`No avanzar`
+  learner-facing records from the individual catalog and regulatory
+  source-card term rows, then require exact equality with these four IDs:
+  `app4regulatory-p185-003-no-avanzar-catalog-entry`,
+  `app4-regulatory-no-avanzar-source-card`,
+  `app4-regulatory-anexo-panel-01-source-card`, and
+  `app4-regulatory-page-185-source-card`.
+- Assert `Проезд запрещен` and reject `обгон запрещен` for every member of that
+  inventory. Preserve the existing distinct no-overtaking assertion for
+  `PROHIBIDO ADELANTAR` / `NO ADELANTAR` and do not alter source-image pixels,
+  sign meanings, generic translation exceptions, or runtime behavior.
+- Add regression cases that prove the inventory fails when either the Anexo
+  panel or page-185 R.1 term row is removed, mis-translated, or joined to an
+  incorrect ID. Record the positive exact-set result so coverage completeness
+  is independently reviewable.
+- Run the focused content/invariant tests and the relevant manual/content
+  validators; refresh deterministic evidence only if a validator proves it is
+  stale. Have Review Agent recheck the complete four-ID inventory, the semantic
+  distinction, negative fixtures, and evidence before fresh
+  Architect-then-Analyst final validation.
+
+This is a non-evidence test/contract change. All prior Architect and Analyst
+final validations remain stale until the follow-up passes review and is
+revalidated.
+
+## Content Fix Strategy
+
+For each residue:
+
+1. Prefer natural Russian-only wording when Spanish recognition is not useful.
+2. Retain Spanish plus parenthesized Russian when the learner benefits from
+   recognizing the official/source term.
+3. Use structured Spanish/Russian pairs for dense term lists, image-adjacent
+   translation lists, glossary rows, and table cells where parentheses would
+   be visually noisy.
+4. Preserve legal, numeric, source-order, document, safety, speed, lane,
+   priority, emergency, and exception details.
+5. Avoid mass replacements without context review, especially for
+   `incorporación`, `vía rápida`, `autopista`, `calzada`, `carril`,
+   `sobrepaso`, and road/street names.
+
+High-priority implementation target:
+
+- `src/data/manual-sections/ch3-highways.ts` must fix the screenshot examples
+  and current tests that assert those Spanish-only strings.
+
+Other likely target files from read-only inspection:
+
+- `src/data/manual-sections/ch3-speed.ts`
+- `src/data/manual-sections/ch3-stopping-parking.ts`
+- `src/data/manual-sections/app1-other-required-safety-elements.ts`
+- `src/data/manual-sections/app3-safe-driving.ts`
+- `src/data/manual-sections/app3-safety-elements.ts`
+- Any additional `src/data/manual-sections/*.ts` surfaced by the audit.
+
+## Renderer And CSS
+
+Most fixes should be content/data changes. Renderer or CSS changes are needed
+only if a block type cannot express adjacent Spanish/Russian support cleanly.
+
+If renderer changes are needed:
+
+- Reuse `ManualImageTermTranslations` or a similarly small reusable structured
+  pair renderer for Spanish/Russian term rows.
+- Use `lang="es"` on retained Spanish terms and `lang="ru"` on Russian
+  translations where feasible.
+- Keep all learner text selectable/copyable DOM text.
+- Avoid badge-like fixed-width labels that clip longer Spanish or Russian text.
+- Ensure parenthesized translations wrap naturally on mobile and do not create
+  document-level overflow.
+
+## Tests
+
+Add/update tests for:
+
+- Audit write/check behavior and stale evidence rejection.
+- Complete enumeration of current implemented manual guide sections.
+- Detection of Spanish residues in representative learner-facing fields:
+  headings, list items, table cells, captions, card body text, alt text, and
+  term translation support.
+- Ignoring `sourceTextEs`, `sourceTitleEs`, asset paths, URLs, hashes, and
+  protected-image pixel references.
+- Rejection of broad allowlist entries for generic Spanish terms.
+- Required screenshot-probe coverage for `ch3-highways`, including a negative
+  regression fixture where an identical supported phrase exists only in another
+  route and the audit still reports the Chapter 3 probe as missing.
+- Existing tests that currently assert Spanish-only residue are updated to
+  assert corrected translated forms.
+
+Focused Playwright or E2E checks should open the Chapter 3 highways route on
+desktop and mobile and verify:
+
+- The screenshot terms render with Russian translation support.
+- Spanish terms retained for recognition have nearby Russian support.
+- Text is selectable DOM text and no document-level horizontal overflow occurs.
+
+## Durable Docs
+
+Update `docs_project/project/frontend/manual-conversion-guidelines.md` only if
+implementation creates a reusable rule beyond this feature memory. A likely
+small update is appropriate if the text audit becomes a durable validator:
+
+- learner-facing Spanish terms must be translated, or retained with immediate
+  Russian support;
+- source/provenance Spanish and protected image pixels are distinct from
+  learner-facing manual strings;
+- broad allowlists for generic traffic terms are forbidden.
+
+Do not update unrelated durable docs.
+
+## Verification Commands
+
+Implementation Agent should run and record exact results in
+`specs/041-manual-translation-completion/tasks.md`:
+
+```bash
+node scripts/check-feature-memory.mjs --worktree
+node scripts/manual-guide-translation-completeness-audit.mjs --write
+pnpm run validate:manual-guide
+pnpm run validate:content
+pnpm exec tsc --noEmit
+pnpm run test
+pnpm run build
+pnpm run test:e2e
+git diff --check
+pnpm run preflight
+```
+
+If full e2e or preflight cannot run, record why, preserve the failing/blocking
+output, and provide focused substitute evidence only with Orchestrator
+coordination.
+
+## PR Slicing
+
+Recommended: one Implementation Agent, one branch, one ready PR.
+
+Reasons:
+
+- The request is one product-quality invariant across one user-facing surface.
+- Current likely changes are content cleanup plus one validator/evidence file.
+- Splitting by chapter would make it easier for residues to remain between PRs
+  and would complicate final acceptance for "all Руководство".
+
+Possible split triggers:
+
+- The audit reveals a separate renderer/model gap that should land before
+  content cleanup.
+- The residue count is large enough that review would be unsafe in one PR.
+- A validator rewrite touches shared infrastructure beyond manual guide scope.
+
+If a split is needed, Implementation Agent must stop and record feedback for
+Orchestrator/Architect disposition before creating unrelated changes.

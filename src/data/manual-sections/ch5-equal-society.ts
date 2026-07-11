@@ -84,7 +84,7 @@ export const ch5EqualSocietySection: ManualGuideSectionContent = {
           sourceRegion: { x: 900, y: 1830, width: 1220, height: 175 },
           assetPath: `${assetRoot}/mobility-context-transferred-infographic.png`,
           altRu:
-            "Визуальная схема Contexto de Ciudad de Buenos Aires с пиктограммами, процентами 54, 50 и 30, и русскими подписями.",
+            "Визуальная схема Contexto de Ciudad de Buenos Aires (контекст города Буэнос-Айрес) с пиктограммами, процентами 54, 50 и 30, и русскими подписями.",
           visibleSpanish: false,
           russianOverlayLabels: [
             { id: "public-transport-label", textRu: "общественный транспорт", xPct: 45.5, yPct: 10.5, widthPct: 25, heightPct: 23, tone: "dark-on-light" },

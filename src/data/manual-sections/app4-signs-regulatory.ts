@@ -87,7 +87,7 @@ export const app4SignsRegulatorySection: ManualGuideSectionContent = {
           sourceRegion: { x: 32, y: 85, width: 200, height: 145 },
           assetPath: `${assetRoot}/no-avanzar-source-as-is.jpg`,
           altRu:
-            "Знак R.1 NO AVANZAR с испанской подписью под знаком.",
+            "Знак R.1 NO AVANZAR (Проезд запрещен) с испанской подписью под знаком.",
           visibleSpanish: true,
           officialSignException,
           termTranslations: [

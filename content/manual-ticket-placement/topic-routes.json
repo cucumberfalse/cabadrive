@@ -10,7 +10,7 @@
         {
           "pageId": "ch3-stopping-parking",
           "routeHash": "#manual-section-ch3-stopping-parking",
-          "pageContentFingerprint": "578d13762e7525047295640fee01392ee6ef88b57d4f1dcc45b49df0f643c5cf",
+          "pageContentFingerprint": "349a719f2d5b65c9bfdbce40f7421a3c5245fa3d40945ffcde32a773005ed408",
           "anchors": [
             {
               "anchor": {
@@ -39,7 +39,7 @@
         {
           "pageId": "ch3-stopping-parking",
           "routeHash": "#manual-section-ch3-stopping-parking",
-          "pageContentFingerprint": "578d13762e7525047295640fee01392ee6ef88b57d4f1dcc45b49df0f643c5cf",
+          "pageContentFingerprint": "349a719f2d5b65c9bfdbce40f7421a3c5245fa3d40945ffcde32a773005ed408",
           "anchors": [
             {
               "anchor": {
@@ -68,7 +68,7 @@
         {
           "pageId": "ch1-bicycle",
           "routeHash": "#manual-section-ch1-bicycle",
-          "pageContentFingerprint": "e0e71c87bbd923b639520b094561701c53a5eafd8321af5ecf686e805cc5d00e",
+          "pageContentFingerprint": "76871fc0f3ab24f84095d604f4c9ffe705ee20a79cd7261396fb913192a9354b",
           "anchors": [
             {
               "anchor": {
@@ -97,7 +97,7 @@
         {
           "pageId": "ch3-lights",
           "routeHash": "#manual-section-ch3-lights",
-          "pageContentFingerprint": "b8273fcd412b93cdfc9d3dda61d0f1c6cc7166dae5acfcca56d0df254467bb57",
+          "pageContentFingerprint": "0680c6704c7fcc3792bbe01931ded07a5b0e50ae5a11ed06004053510baa39be",
           "anchors": [
             {
               "anchor": {
@@ -126,7 +126,7 @@
         {
           "pageId": "app1-safety-elements",
           "routeHash": "#manual-section-app1-safety-elements",
-          "pageContentFingerprint": "8ae62236501e968d02b051f55597acb77e754f491aebe36b6f8a808bd9eeb82a",
+          "pageContentFingerprint": "060c842b82a036c16f979eb1cd5934784d9eac27666d722a1e21ecf7b7a37feb",
           "anchors": [
             {
               "anchor": {
@@ -194,7 +194,7 @@
         {
           "pageId": "ch1-pedestrian-priority",
           "routeHash": "#manual-section-ch1-pedestrian-priority",
-          "pageContentFingerprint": "dc6d89b965be2f6a551042bc74d54d5f8e2a7723951ad3a0e033b27ccce9ce10",
+          "pageContentFingerprint": "1f2c810616557fe295013d0036036b3c26cee6b813dedf7c3e332f30e42098d9",
           "anchors": [
             {
               "anchor": {
@@ -223,7 +223,7 @@
         {
           "pageId": "ch3-speed",
           "routeHash": "#manual-section-ch3-speed",
-          "pageContentFingerprint": "009ea695682908c2d21b4f0eb7d63a894b3f30a903e9470bf1f2dd9096bc9e60",
+          "pageContentFingerprint": "d29be9e73b245e4c3930713a61b21dc4a6ffc084c08e9f09bbbd924fcf6dba1c",
           "anchors": [
             {
               "anchor": {
@@ -252,7 +252,7 @@
         {
           "pageId": "ch3-speed",
           "routeHash": "#manual-section-ch3-speed",
-          "pageContentFingerprint": "009ea695682908c2d21b4f0eb7d63a894b3f30a903e9470bf1f2dd9096bc9e60",
+          "pageContentFingerprint": "d29be9e73b245e4c3930713a61b21dc4a6ffc084c08e9f09bbbd924fcf6dba1c",
           "anchors": [
             {
               "anchor": {
@@ -282,16 +282,16 @@
         {
           "pageId": "ch4-alcohol-drugs",
           "routeHash": "#manual-section-ch4-alcohol-drugs",
-          "pageContentFingerprint": "3e79cf2b0d1d1d0c9d135fd90ba3929415d7e849f5d8f816a229577be5b70d90",
+          "pageContentFingerprint": "e474d9d5abfcf2af791f6b596000d425c331fc1ea2bff277212c796009537ee1",
           "anchors": [
             {
               "anchor": {
                 "kind": "manual-block",
                 "blockId": "legal-and-illegal-substances",
                 "textPath": "textRu",
-                "textFingerprint": "b9c28ad98d68748d06e44e85b4110febd6a98b2ec07c2e63b486f3c6b8e61fc8"
+                "textFingerprint": "e015e3bd1cebaec032239401a46be7eb04864b5c64f3a864398bfc0acf6c9c17"
               },
-              "anchorTextAtReview": "Риск связан не только с нелегальными наркотиками. К нему относятся и легальные вещества, например alcohol и некоторые лекарства: человек под их воздействием теряет часть способности управлять безопасно и подвергает риску себя и окружающих."
+              "anchorTextAtReview": "Риск связан не только с нелегальными наркотиками. К нему относятся и легальные вещества, например alcohol (алкоголь) и некоторые лекарства: человек под их воздействием теряет часть способности управлять безопасно и подвергает риску себя и окружающих."
             }
           ]
         }
@@ -311,7 +311,7 @@
         {
           "pageId": "ch3-adverse-conditions",
           "routeHash": "#manual-section-ch3-adverse-conditions",
-          "pageContentFingerprint": "6813853c2c4f09ac8f8a87fe4a32f50753fc56e0f5187fa1a4fb808ac9fa4ca8",
+          "pageContentFingerprint": "89cdbc038c32bb8cc2563662df08b9f3a951297716276179afa6ddccd2a88a29",
           "anchors": [
             {
               "anchor": {
@@ -340,7 +340,7 @@
         {
           "pageId": "ch4-sleep-fatigue",
           "routeHash": "#manual-section-ch4-sleep-fatigue",
-          "pageContentFingerprint": "05d81cd38155c1ac421c14a9a40e4af9a9960cbd8c9429aaab028044a1d8eb96",
+          "pageContentFingerprint": "14289a5081ef3a05f20a1c53557bec7ff519752756731b90fcd44cdc2148d1b5",
           "anchors": [
             {
               "anchor": {
@@ -369,7 +369,7 @@
         {
           "pageId": "ch3-highways",
           "routeHash": "#manual-section-ch3-highways",
-          "pageContentFingerprint": "af6a1c342f46e45046dc172116637cc337207754e968f9534f31b4fc577bc7aa",
+          "pageContentFingerprint": "fabf64067811ed511fa011933f6392f0a8272fcf6908dad68c590585021eb507",
           "anchors": [
             {
               "anchor": {
@@ -377,9 +377,9 @@
                 "blockId": "highway-towing-guidance",
                 "itemIndex": 0,
                 "textPath": "itemsRu",
-                "textFingerprint": "d5951da4183bb62dafccbd65b8862326579beebf9b3a6071783f28999c6fb5d6"
+                "textFingerprint": "e897918870bd662a60eb736bcffca622710767f1dcfcc1296b6d5584cab78c93"
               },
-              "anchorTextAtReview": "В случае remolque/acarreo ориентироваться на vehículo destinado a ese fin: обычная частная машина не должна импровизированно тянуть аварийный автомобиль на скоростной дороге."
+              "anchorTextAtReview": "В случае remolque/acarreo (буксировки/эвакуации) ориентироваться на vehículo destinado a ese fin (транспорт, предназначенный для этой цели): обычная частная машина не должна импровизированно тянуть аварийный автомобиль на скоростной дороге."
             }
           ]
         }
@@ -457,7 +457,7 @@
         {
           "pageId": "app4-signs-informational",
           "routeHash": "#manual-section-app4-signs-informational",
-          "pageContentFingerprint": "bc34dea9ad61ba5aa52a869fdb8143e9d99f5d114189e040bf1d12ec99de8d50",
+          "pageContentFingerprint": "67af1fdd3cfb2ec4cc8a319ea7922b249108bde464c9f1211adddb64b13c99ac",
           "anchors": [
             {
               "anchor": {
@@ -526,7 +526,7 @@
         {
           "pageId": "ch3-right-of-way",
           "routeHash": "#manual-section-ch3-right-of-way",
-          "pageContentFingerprint": "40b36c76cb8e0d385f06ac81d3a00bf79185e5305f604f35e45fab49f29f974b",
+          "pageContentFingerprint": "e70896f5bd994663e2fbf063e25e02fa2bbffc962616f00ea92ffeba1dfd86e6",
           "anchors": [
             {
               "anchor": {
@@ -556,7 +556,7 @@
         {
           "pageId": "ch3-right-of-way",
           "routeHash": "#manual-section-ch3-right-of-way",
-          "pageContentFingerprint": "40b36c76cb8e0d385f06ac81d3a00bf79185e5305f604f35e45fab49f29f974b",
+          "pageContentFingerprint": "e70896f5bd994663e2fbf063e25e02fa2bbffc962616f00ea92ffeba1dfd86e6",
           "anchors": [
             {
               "anchor": {
@@ -586,7 +586,7 @@
         {
           "pageId": "ch3-right-of-way",
           "routeHash": "#manual-section-ch3-right-of-way",
-          "pageContentFingerprint": "40b36c76cb8e0d385f06ac81d3a00bf79185e5305f604f35e45fab49f29f974b",
+          "pageContentFingerprint": "e70896f5bd994663e2fbf063e25e02fa2bbffc962616f00ea92ffeba1dfd86e6",
           "anchors": [
             {
               "anchor": {
@@ -594,9 +594,9 @@
                 "blockId": "uncontrolled-intersections",
                 "itemIndex": 1,
                 "textPath": "itemsRu",
-                "textFingerprint": "3168d5355fb79f9f3a5b599e76b3758eccf852dff8a1abd2d17c7d732fc12ff9"
+                "textFingerprint": "3d35c60cf4a9b565745381c5fc6bff5c151c1d8c93e1ce12765beb1c5a7dacd7"
               },
-              "anchorTextAtReview": "Исключение 1: знак Pare или Ceda el Paso отменяет приоритет на перекрестке без светофора. Pare требует снизить скорость и полностью остановиться до нуля перед пешеходным переходом; Ceda el Paso требует уступить, но полная остановка обязательна только если она нужна для движения имеющих преимущество."
+              "anchorTextAtReview": "Исключение 1: знак Pare (стоп) или Ceda el Paso (уступите дорогу) отменяет приоритет на перекрестке без светофора. Pare (стоп) требует снизить скорость и полностью остановиться до нуля перед пешеходным переходом; Ceda el Paso (уступите дорогу) требует уступить, но полная остановка обязательна только если она нужна для движения имеющих преимущество."
             }
           ]
         }
@@ -616,7 +616,7 @@
         {
           "pageId": "ch2-required-documents",
           "routeHash": "#manual-section-ch2-required-documents",
-          "pageContentFingerprint": "f43b87862ef7ba34d0e88fccea942ddf577fc04753a9ce09b2408b8c2c29b96e",
+          "pageContentFingerprint": "0ca11e4053986f90be8e7e2af0b91fb0f14a6e67180b070ef7d9c6dea850a9fb",
           "anchors": [
             {
               "anchor": {
@@ -645,7 +645,7 @@
         {
           "pageId": "ch3-priority-of-rules",
           "routeHash": "#manual-section-ch3-priority-of-rules",
-          "pageContentFingerprint": "65514dd65be9047a930aff29c5189229b56468d4fb838cf1e05757b1a72a2815",
+          "pageContentFingerprint": "f021a3208ecfa2c6ab7a5acf3ed457b902a0fdc63f5e7f68a938a98377fb939b",
           "anchors": [
             {
               "anchor": {
@@ -661,16 +661,16 @@
         {
           "pageId": "ch2-scoring",
           "routeHash": "#manual-section-ch2-scoring",
-          "pageContentFingerprint": "1988d63233f3da75fc366d9ffb09674259fa6435314468a886ee5f9c3e8807d7",
+          "pageContentFingerprint": "54dec382ea349fdc89229dea233ebfbb72d5b71e70d1875366de6912fe10345c",
           "anchors": [
             {
               "anchor": {
                 "kind": "manual-block",
                 "blockId": "scoring-definition",
                 "textPath": "textRu",
-                "textFingerprint": "d3d6d3e1eb7f5f0b1d817087c123483971cdd5a1efb835e1dc6a4f18afb80678"
+                "textFingerprint": "890e293d9c9f35e791b17d8d3038c5cbeb63ba7dddbf4c55604eddd0c319f692"
               },
-              "anchorTextAtReview": "Sistema de Evaluación Permanente de Conductores, или Scoring, присваивает каждому человеку с водительским удостоверением баллы. При первом получении лицензии дается 20 баллов; затем из этой базы списываются баллы в зависимости от вида нарушения."
+              "anchorTextAtReview": "Sistema de Evaluación Permanente de Conductores (постоянная система оценки водителей), или Scoring (система баллов), присваивает каждому человеку с водительским удостоверением баллы. При первом получении лицензии дается 20 баллов; затем из этой базы списываются баллы в зависимости от вида нарушения."
             }
           ]
         }
@@ -719,16 +719,16 @@
         {
           "pageId": "ch3-stopping-parking",
           "routeHash": "#manual-section-ch3-stopping-parking",
-          "pageContentFingerprint": "578d13762e7525047295640fee01392ee6ef88b57d4f1dcc45b49df0f643c5cf",
+          "pageContentFingerprint": "349a719f2d5b65c9bfdbce40f7421a3c5245fa3d40945ffcde32a773005ed408",
           "anchors": [
             {
               "anchor": {
                 "kind": "manual-block",
                 "blockId": "detention-definition",
                 "textPath": "textRu",
-                "textFingerprint": "cf48f62816b412e6032cceb36dd2dfa3521304969cd0361b93eaec4f14fcc399"
+                "textFingerprint": "82f9b0bd32e9fcc4896b6a7083726bd6b2fd4334a404bfe232f4169c4ec110fe"
               },
-              "anchorTextAtReview": "Detención - это пребывание автомобиля без движения у бордюра только на строго необходимое время: контроль движения компетентным органом, посадка или высадка пассажиров, погрузка или разгрузка. При другой причине это считается detención, если длится не более 2 минут и водитель не покидает автомобиль."
+              "anchorTextAtReview": "Detención (краткая остановка) - это пребывание автомобиля без движения у бордюра только на строго необходимое время: контроль движения компетентным органом, посадка или высадка пассажиров, погрузка или разгрузка. При другой причине это считается detención (остановкой), если длится не более 2 минут и водитель не покидает автомобиль."
             }
           ]
         }
@@ -807,16 +807,16 @@
         {
           "pageId": "ch3-highways",
           "routeHash": "#manual-section-ch3-highways",
-          "pageContentFingerprint": "af6a1c342f46e45046dc172116637cc337207754e968f9534f31b4fc577bc7aa",
+          "pageContentFingerprint": "fabf64067811ed511fa011933f6392f0a8272fcf6908dad68c590585021eb507",
           "anchors": [
             {
               "anchor": {
                 "kind": "manual-block",
                 "blockId": "highway-lead",
                 "textPath": "textRu",
-                "textFingerprint": "2dd369de1e2c98e0c3b6e4d131a5465674bcfa89243a07626dddd6edc4629e2d"
+                "textFingerprint": "df9fa1b21245766ff9e8c47d80c293f2792f8a2e44a9118f0a6f23148ecb0bcf"
               },
-              "anchorTextAtReview": "Autopistas и другие vías rápidas требуют более строгого планирования: скорость выше, пространство для ошибки меньше, а решения о въезде, выезде, полосе и дистанции нужно принимать заранее."
+              "anchorTextAtReview": "Autopistas (автомагистрали) и vías rápidas (скоростные дороги) требуют более строгого планирования: скорость выше, пространство для ошибки меньше, а решения о въезде, выезде, полосе и дистанции нужно принимать заранее."
             }
           ]
         }
@@ -836,7 +836,7 @@
         {
           "pageId": "ch1-public-transport-system",
           "routeHash": "#manual-section-ch1-public-transport-system",
-          "pageContentFingerprint": "0cc381eae34c1b03f59f5bf0ae5dcf87d4e7e3d825084dd7dbac5cd21f382fdf",
+          "pageContentFingerprint": "05a7f37d169d33aa9375e54faeb35f36164cc44a69b9b1a6b28ac2ac08094659",
           "anchors": [
             {
               "anchor": {
@@ -894,7 +894,7 @@
         {
           "pageId": "ch1-pedestrian-priority",
           "routeHash": "#manual-section-ch1-pedestrian-priority",
-          "pageContentFingerprint": "dc6d89b965be2f6a551042bc74d54d5f8e2a7723951ad3a0e033b27ccce9ce10",
+          "pageContentFingerprint": "1f2c810616557fe295013d0036036b3c26cee6b813dedf7c3e332f30e42098d9",
           "anchors": [
             {
               "anchor": {
@@ -923,7 +923,7 @@
         {
           "pageId": "ch1-bicycle",
           "routeHash": "#manual-section-ch1-bicycle",
-          "pageContentFingerprint": "e0e71c87bbd923b639520b094561701c53a5eafd8321af5ecf686e805cc5d00e",
+          "pageContentFingerprint": "76871fc0f3ab24f84095d604f4c9ffe705ee20a79cd7261396fb913192a9354b",
           "anchors": [
             {
               "anchor": {
@@ -952,7 +952,7 @@
         {
           "pageId": "app1-safety-elements",
           "routeHash": "#manual-section-app1-safety-elements",
-          "pageContentFingerprint": "8ae62236501e968d02b051f55597acb77e754f491aebe36b6f8a808bd9eeb82a",
+          "pageContentFingerprint": "060c842b82a036c16f979eb1cd5934784d9eac27666d722a1e21ecf7b7a37feb",
           "anchors": [
             {
               "anchor": {
@@ -982,7 +982,7 @@
         {
           "pageId": "app1-safety-elements",
           "routeHash": "#manual-section-app1-safety-elements",
-          "pageContentFingerprint": "8ae62236501e968d02b051f55597acb77e754f491aebe36b6f8a808bd9eeb82a",
+          "pageContentFingerprint": "060c842b82a036c16f979eb1cd5934784d9eac27666d722a1e21ecf7b7a37feb",
           "anchors": [
             {
               "anchor": {
@@ -1012,7 +1012,7 @@
         {
           "pageId": "ch2-incident-obligations",
           "routeHash": "#manual-section-ch2-incident-obligations",
-          "pageContentFingerprint": "d0dcc4879ede314f922df7eb18ba8f2b5f3be57b2c3d34717c1afb40c7f20de5",
+          "pageContentFingerprint": "4a8dcb13fb5e5b84d462a63adebde9d3cbea4bbbed2f9bf37841bcfcfa0580f3",
           "anchors": [
             {
               "anchor": {
@@ -1070,7 +1070,7 @@
         {
           "pageId": "ch1-pedestrian-priority",
           "routeHash": "#manual-section-ch1-pedestrian-priority",
-          "pageContentFingerprint": "dc6d89b965be2f6a551042bc74d54d5f8e2a7723951ad3a0e033b27ccce9ce10",
+          "pageContentFingerprint": "1f2c810616557fe295013d0036036b3c26cee6b813dedf7c3e332f30e42098d9",
           "anchors": [
             {
               "anchor": {
@@ -1099,7 +1099,7 @@
         {
           "pageId": "ch3-turns",
           "routeHash": "#manual-section-ch3-turns",
-          "pageContentFingerprint": "aaccd98b82b8e2242079c2109d290cf6381e947d57f858586589cbc0b4fee9d6",
+          "pageContentFingerprint": "b34a84641c645465b5a8a468f5e3e0d4b5c7389faaee836c349b9cfc4bfe1e77",
           "anchors": [
             {
               "anchor": {
@@ -1128,7 +1128,7 @@
         {
           "pageId": "ch3-overtaking",
           "routeHash": "#manual-section-ch3-overtaking",
-          "pageContentFingerprint": "a11c3cc5e7ec0fbb6e29a9f5851d1ceab50841f3f7d9ee183c5ef13dd7dff13e",
+          "pageContentFingerprint": "836c8d3cd1b7b63f6006ce003d4ba52344e28024e8b48b3b8f7799e68a59ff49",
           "anchors": [
             {
               "anchor": {

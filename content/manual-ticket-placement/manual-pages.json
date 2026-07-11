@@ -44,7 +44,7 @@
       "contentSourceIds": [
         "app1-safety-elements-content"
       ],
-      "contentFingerprint": "8ae62236501e968d02b051f55597acb77e754f491aebe36b6f8a808bd9eeb82a",
+      "contentFingerprint": "060c842b82a036c16f979eb1cd5934784d9eac27666d722a1e21ecf7b7a37feb",
       "review": {
         "status": "derived",
         "generatedAt": "2026-06-24T15:00:00Z"
@@ -92,7 +92,7 @@
       "contentSourceIds": [
         "app2-safe-driving-content"
       ],
-      "contentFingerprint": "6c7db5e8282489d1b37fa59d01711cf535f64909a335127e3f8966efdd4dd0b3",
+      "contentFingerprint": "73a824b9575bba6af0017b4c8d16475e68a6606df11fb87b4c354ab97843f971",
       "review": {
         "status": "derived",
         "generatedAt": "2026-06-24T15:00:00Z"
@@ -140,7 +140,7 @@
       "contentSourceIds": [
         "app3-cargo-driver-profile-content"
       ],
-      "contentFingerprint": "4707c217262d73b4d998e30f9d4128276d9174cfa04c9e0fbc36f67f79aefdb2",
+      "contentFingerprint": "2997b90525b059ab3e4111cf49868ef9db14158abb2d90f322f53c1ddb405566",
       "review": {
         "status": "derived",
         "generatedAt": "2026-06-24T15:00:00Z"
@@ -172,7 +172,7 @@
       "contentSourceIds": [
         "app3-highways-content"
       ],
-      "contentFingerprint": "867f3460369c58e04cac26461edfbe80dec667ea1f1b162dac63209ec90aba55",
+      "contentFingerprint": "abfc25b5663d3f426eb72c2e2d3773255b3460015b515a7998e0997b8e394b83",
       "review": {
         "status": "derived",
         "generatedAt": "2026-06-24T15:00:00Z"
@@ -188,7 +188,7 @@
       "contentSourceIds": [
         "app3-safe-driving-content"
       ],
-      "contentFingerprint": "e854ca8d5c6b500b6e1be9adbd047a8b7b63937b9906df5aa86c8031a335e477",
+      "contentFingerprint": "a7b4e55c9bff5c150e8e0cdf674bba85c2ea8d29eb885ac5b5fc4c908e9d0556",
       "review": {
         "status": "derived",
         "generatedAt": "2026-06-24T15:00:00Z"
@@ -204,7 +204,7 @@
       "contentSourceIds": [
         "app3-safety-elements-content"
       ],
-      "contentFingerprint": "b12646c2c619212eebe9dde95fa4f4a82956b8455349ae05a6a71129349c81d9",
+      "contentFingerprint": "fd760218c39a586d2af5aefad7f2f61a81a630b3c4db7b79d5c2e7a61c85a932",
       "review": {
         "status": "derived",
         "generatedAt": "2026-06-24T15:00:00Z"
@@ -252,7 +252,7 @@
       "contentSourceIds": [
         "app4-signs-informational-content"
       ],
-      "contentFingerprint": "bc34dea9ad61ba5aa52a869fdb8143e9d99f5d114189e040bf1d12ec99de8d50",
+      "contentFingerprint": "67af1fdd3cfb2ec4cc8a319ea7922b249108bde464c9f1211adddb64b13c99ac",
       "review": {
         "status": "derived",
         "generatedAt": "2026-06-24T15:00:00Z"
@@ -332,7 +332,7 @@
       "contentSourceIds": [
         "ch1-bicycle-content"
       ],
-      "contentFingerprint": "e0e71c87bbd923b639520b094561701c53a5eafd8321af5ecf686e805cc5d00e",
+      "contentFingerprint": "76871fc0f3ab24f84095d604f4c9ffe705ee20a79cd7261396fb913192a9354b",
       "review": {
         "status": "derived",
         "generatedAt": "2026-06-24T15:00:00Z"
@@ -364,7 +364,7 @@
       "contentSourceIds": [
         "ch1-pedestrian-priority-content"
       ],
-      "contentFingerprint": "dc6d89b965be2f6a551042bc74d54d5f8e2a7723951ad3a0e033b27ccce9ce10",
+      "contentFingerprint": "1f2c810616557fe295013d0036036b3c26cee6b813dedf7c3e332f30e42098d9",
       "review": {
         "status": "derived",
         "generatedAt": "2026-06-24T15:00:00Z"
@@ -380,7 +380,7 @@
       "contentSourceIds": [
         "ch1-public-transport-system-content"
       ],
-      "contentFingerprint": "0cc381eae34c1b03f59f5bf0ae5dcf87d4e7e3d825084dd7dbac5cd21f382fdf",
+      "contentFingerprint": "05a7f37d169d33aa9375e54faeb35f36164cc44a69b9b1a6b28ac2ac08094659",
       "review": {
         "status": "derived",
         "generatedAt": "2026-06-24T15:00:00Z"
@@ -396,7 +396,7 @@
       "contentSourceIds": [
         "ch1-shared-trip-content"
       ],
-      "contentFingerprint": "3c986bc54ff14788464ee2e979c1d9dffb2788c37c4d4a5d5d680d18c6e86c4c",
+      "contentFingerprint": "d17806f784ec9ac703333ed29f9e5a99cdbd53323def652ef934d226bb0021ad",
       "review": {
         "status": "derived",
         "generatedAt": "2026-06-24T15:00:00Z"
@@ -428,7 +428,7 @@
       "contentSourceIds": [
         "ch2-incident-obligations-content"
       ],
-      "contentFingerprint": "d0dcc4879ede314f922df7eb18ba8f2b5f3be57b2c3d34717c1afb40c7f20de5",
+      "contentFingerprint": "4a8dcb13fb5e5b84d462a63adebde9d3cbea4bbbed2f9bf37841bcfcfa0580f3",
       "review": {
         "status": "derived",
         "generatedAt": "2026-06-24T15:00:00Z"
@@ -460,7 +460,7 @@
       "contentSourceIds": [
         "ch2-required-documents-content"
       ],
-      "contentFingerprint": "f43b87862ef7ba34d0e88fccea942ddf577fc04753a9ce09b2408b8c2c29b96e",
+      "contentFingerprint": "0ca11e4053986f90be8e7e2af0b91fb0f14a6e67180b070ef7d9c6dea850a9fb",
       "review": {
         "status": "derived",
         "generatedAt": "2026-06-24T15:00:00Z"
@@ -476,7 +476,7 @@
       "contentSourceIds": [
         "ch2-scoring-content"
       ],
-      "contentFingerprint": "1988d63233f3da75fc366d9ffb09674259fa6435314468a886ee5f9c3e8807d7",
+      "contentFingerprint": "54dec382ea349fdc89229dea233ebfbb72d5b71e70d1875366de6912fe10345c",
       "review": {
         "status": "derived",
         "generatedAt": "2026-06-24T15:00:00Z"
@@ -492,7 +492,7 @@
       "contentSourceIds": [
         "ch3-adverse-conditions-content"
       ],
-      "contentFingerprint": "6813853c2c4f09ac8f8a87fe4a32f50753fc56e0f5187fa1a4fb808ac9fa4ca8",
+      "contentFingerprint": "89cdbc038c32bb8cc2563662df08b9f3a951297716276179afa6ddccd2a88a29",
       "review": {
         "status": "derived",
         "generatedAt": "2026-06-24T15:00:00Z"
@@ -508,7 +508,7 @@
       "contentSourceIds": [
         "ch3-highways-content"
       ],
-      "contentFingerprint": "af6a1c342f46e45046dc172116637cc337207754e968f9534f31b4fc577bc7aa",
+      "contentFingerprint": "fabf64067811ed511fa011933f6392f0a8272fcf6908dad68c590585021eb507",
       "review": {
         "status": "derived",
         "generatedAt": "2026-06-24T15:00:00Z"
@@ -524,7 +524,7 @@
       "contentSourceIds": [
         "ch3-lights-content"
       ],
-      "contentFingerprint": "b8273fcd412b93cdfc9d3dda61d0f1c6cc7166dae5acfcca56d0df254467bb57",
+      "contentFingerprint": "0680c6704c7fcc3792bbe01931ded07a5b0e50ae5a11ed06004053510baa39be",
       "review": {
         "status": "derived",
         "generatedAt": "2026-06-24T15:00:00Z"
@@ -540,7 +540,7 @@
       "contentSourceIds": [
         "ch3-overtaking-content"
       ],
-      "contentFingerprint": "a11c3cc5e7ec0fbb6e29a9f5851d1ceab50841f3f7d9ee183c5ef13dd7dff13e",
+      "contentFingerprint": "836c8d3cd1b7b63f6006ce003d4ba52344e28024e8b48b3b8f7799e68a59ff49",
       "review": {
         "status": "derived",
         "generatedAt": "2026-06-24T15:00:00Z"
@@ -556,7 +556,7 @@
       "contentSourceIds": [
         "ch3-priority-of-rules-content"
       ],
-      "contentFingerprint": "65514dd65be9047a930aff29c5189229b56468d4fb838cf1e05757b1a72a2815",
+      "contentFingerprint": "f021a3208ecfa2c6ab7a5acf3ed457b902a0fdc63f5e7f68a938a98377fb939b",
       "review": {
         "status": "derived",
         "generatedAt": "2026-06-24T15:00:00Z"
@@ -572,7 +572,7 @@
       "contentSourceIds": [
         "ch3-right-of-way-content"
       ],
-      "contentFingerprint": "40b36c76cb8e0d385f06ac81d3a00bf79185e5305f604f35e45fab49f29f974b",
+      "contentFingerprint": "e70896f5bd994663e2fbf063e25e02fa2bbffc962616f00ea92ffeba1dfd86e6",
       "review": {
         "status": "derived",
         "generatedAt": "2026-06-24T15:00:00Z"
@@ -588,7 +588,7 @@
       "contentSourceIds": [
         "ch3-speed-content"
       ],
-      "contentFingerprint": "009ea695682908c2d21b4f0eb7d63a894b3f30a903e9470bf1f2dd9096bc9e60",
+      "contentFingerprint": "d29be9e73b245e4c3930713a61b21dc4a6ffc084c08e9f09bbbd924fcf6dba1c",
       "review": {
         "status": "derived",
         "generatedAt": "2026-06-24T15:00:00Z"
@@ -604,7 +604,7 @@
       "contentSourceIds": [
         "ch3-stopping-parking-content"
       ],
-      "contentFingerprint": "578d13762e7525047295640fee01392ee6ef88b57d4f1dcc45b49df0f643c5cf",
+      "contentFingerprint": "349a719f2d5b65c9bfdbce40f7421a3c5245fa3d40945ffcde32a773005ed408",
       "review": {
         "status": "derived",
         "generatedAt": "2026-06-24T15:00:00Z"
@@ -620,7 +620,7 @@
       "contentSourceIds": [
         "ch3-turns-content"
       ],
-      "contentFingerprint": "aaccd98b82b8e2242079c2109d290cf6381e947d57f858586589cbc0b4fee9d6",
+      "contentFingerprint": "b34a84641c645465b5a8a468f5e3e0d4b5c7389faaee836c349b9cfc4bfe1e77",
       "review": {
         "status": "derived",
         "generatedAt": "2026-06-24T15:00:00Z"
@@ -636,7 +636,7 @@
       "contentSourceIds": [
         "ch4-alcohol-drugs-content"
       ],
-      "contentFingerprint": "3e79cf2b0d1d1d0c9d135fd90ba3929415d7e849f5d8f816a229577be5b70d90",
+      "contentFingerprint": "e474d9d5abfcf2af791f6b596000d425c331fc1ea2bff277212c796009537ee1",
       "review": {
         "status": "derived",
         "generatedAt": "2026-06-24T15:00:00Z"
@@ -652,7 +652,7 @@
       "contentSourceIds": [
         "ch4-distractions-content"
       ],
-      "contentFingerprint": "d4ad7391215fd02c0627da42c7c055f696d08fead0aed5649491cadb61ebd7e5",
+      "contentFingerprint": "8708b57faa1a9770c84ccf5d8a4438b47057114855c74c0411cfe978b60ed1b2",
       "review": {
         "status": "derived",
         "generatedAt": "2026-06-24T15:00:00Z"
@@ -668,7 +668,7 @@
       "contentSourceIds": [
         "ch4-sleep-fatigue-content"
       ],
-      "contentFingerprint": "05d81cd38155c1ac421c14a9a40e4af9a9960cbd8c9429aaab028044a1d8eb96",
+      "contentFingerprint": "14289a5081ef3a05f20a1c53557bec7ff519752756731b90fcd44cdc2148d1b5",
       "review": {
         "status": "derived",
         "generatedAt": "2026-06-24T15:00:00Z"
@@ -716,7 +716,7 @@
       "contentSourceIds": [
         "ch5-attitude-types-content"
       ],
-      "contentFingerprint": "7a41779e38bddd55566cf85159c8d039880cc3fbeb4882157271312733aa4202",
+      "contentFingerprint": "3bb293df6b4ba53d253a7cc06d983809143734f513196f4845c6e0ac08499fd1",
       "review": {
         "status": "derived",
         "generatedAt": "2026-06-24T15:00:00Z"
@@ -748,7 +748,7 @@
       "contentSourceIds": [
         "ch5-gender-violence-prevention-content"
       ],
-      "contentFingerprint": "79704973edc4c1c137b8ef66a10627d7c6034c72b566eb11e39b738740f29cff",
+      "contentFingerprint": "3e39bfc1b259db7f840914a28f083b9e0c2dfaf9e4de1f496869828ac712c402",
       "review": {
         "status": "derived",
         "generatedAt": "2026-06-24T15:00:00Z"
@@ -764,7 +764,7 @@
       "contentSourceIds": [
         "front-categories-content"
       ],
-      "contentFingerprint": "8615cfc92caacba4c5fdcaf9ee867b4e5dc8565024b0a6198de77031caf7a0c2",
+      "contentFingerprint": "c065191b95351bd89bf89ddf3d04717a7fa5bd95869750f9ec68296dc33f9a04",
       "review": {
         "status": "derived",
         "generatedAt": "2026-06-24T15:00:00Z"
@@ -780,7 +780,7 @@
       "contentSourceIds": [
         "front-glossary-content"
       ],
-      "contentFingerprint": "e94d60ae89313c68def61fd4ebda131dbe713b0d5170f29b5d2dc8eff65c77dc",
+      "contentFingerprint": "a19785eb54c1d33e2ee54cab1f0997f07c35f5a70cc14d249b596f8d6849b89b",
       "review": {
         "status": "derived",
         "generatedAt": "2026-06-24T15:00:00Z"
@@ -860,7 +860,7 @@
       "contentSourceIds": [
         "intro-road-safety-plan"
       ],
-      "contentFingerprint": "2a4787682d96edb1d74ed405426558adc555dd4939eb6cc505e84a5d0b88622c",
+      "contentFingerprint": "30b8b2a8c120eaeda3f9127bc34da99597c1116ddd74c135a693b75c15864c0a",
       "review": {
         "status": "derived",
         "generatedAt": "2026-06-24T15:00:00Z"

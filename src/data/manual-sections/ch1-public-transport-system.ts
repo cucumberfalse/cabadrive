@@ -169,7 +169,7 @@ export const ch1PublicTransportSystemSection: ManualGuideSectionContent = {
           },
           assetPath: `${assetRoot}/exclusive-lane-source.jpg`,
           altRu:
-            "Фотография эксклюзивной полосы с дорожной надписью BUS.",
+            "Фотография эксклюзивной полосы с дорожной надписью BUS (автобусная полоса).",
           visibleSpanish: true,
           sourceImageException,
           termTranslations: [
@@ -214,8 +214,8 @@ export const ch1PublicTransportSystemSection: ManualGuideSectionContent = {
           visibleSpanish: true,
           sourceImageException,
           termTranslations: [
-            { termEs: "Metrobus de Buenos Aires", translationRu: "Metrobus Буэнос-Айреса" },
-            { termEs: "MBA", translationRu: "Metrobus de Buenos Aires" },
+            { termEs: "Metrobus de Buenos Aires", translationRu: "метробус Буэнос-Айреса" },
+            { termEs: "MBA", translationRu: "метробус Буэнос-Айреса" },
             { termEs: "Senda peatonal", translationRu: "Пешеходный переход" },
             { termEs: "Carriles exclusivos", translationRu: "Эксклюзивные полосы" },
             { termEs: "Solo líneas autorizadas", translationRu: "Только разрешенные линии" }
@@ -227,7 +227,7 @@ export const ch1PublicTransportSystemSection: ManualGuideSectionContent = {
                 "Metrobus сочетает сочлененные и обычные автобусы с эксклюзивными полосами в центре проезжей части или рядом с бордюром."
             },
             {
-              labelRu: "Красная senda",
+              labelRu: "Красная senda (полоса)",
               textRu:
                 "если перед перекрестком видна красная дорожка, там находится пересечение Metrobus."
             },
@@ -239,7 +239,7 @@ export const ch1PublicTransportSystemSection: ManualGuideSectionContent = {
             {
               labelRu: "Кто может ехать",
               textRu:
-                "по полосам едут только определенные автобусные линии и экстренные службы при исполнении функций; велосипеды, частные автомобили, такси, ремисы, combis и другие исключены."
+                "по полосам едут только определенные автобусные линии и экстренные службы при исполнении функций; велосипеды, частные автомобили, такси, ремисы, combis (микроавтобусы) и другие исключены."
             }
           ],
           noteRu:

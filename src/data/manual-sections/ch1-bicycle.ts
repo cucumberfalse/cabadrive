@@ -626,7 +626,7 @@ export const ch1BicycleSection: ManualGuideSectionContent = {
             },
             {
               labelRu: "Как взять",
-              textRu: "подойти к станции, сгенерировать код в последней версии приложения BA Ecobici by Tembici и ввести его в крепление велосипеда."
+              textRu: "подойти к станции, сгенерировать код в последней версии приложения BA Ecobici by Tembici (городской велопрокат Ecobici от Tembici) и ввести его в крепление велосипеда."
             },
             {
               labelRu: "Как вернуть",

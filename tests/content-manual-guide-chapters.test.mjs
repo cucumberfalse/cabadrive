@@ -60,6 +60,7 @@ const app3SafeDrivingModulePath = "src/data/manual-sections/app3-safe-driving.ts
 const app3SafetyElementsModulePath = "src/data/manual-sections/app3-safety-elements.ts";
 const app3HighwaysModulePath = "src/data/manual-sections/app3-highways.ts";
 const app4SignsRegulatoryModulePath = "src/data/manual-sections/app4-signs-regulatory.ts";
+const app4SignEntriesPath = "src/data/manual-signs/app4SignEntries.json";
 const app4SignsWarningModulePath = "src/data/manual-sections/app4-signs-warning.ts";
 const app4SignsInformationalModulePath = "src/data/manual-sections/app4-signs-informational.ts";
 const app4SignsTemporaryModulePath = "src/data/manual-sections/app4-signs-temporary.ts";
@@ -119,6 +120,7 @@ const registry = JSON.parse(readFileSync(registryPath, "utf8"));
 const evidence = JSON.parse(readFileSync(evidencePath, "utf8"));
 const visualCropEvidence = JSON.parse(readFileSync(visualCropEvidencePath, "utf8"));
 const visualCompletenessEvidence = JSON.parse(readFileSync(visualCompletenessEvidencePath, "utf8"));
+const app4SignEntries = JSON.parse(readFileSync(app4SignEntriesPath, "utf8"));
 const strictRecordedChapter1SectionIds = new Set(["ch1-public-transport-system", "ch1-shared-trip"]);
 const legacyBaselineSectionIds = new Set(["ch1-cities-for-people", "ch1-sustainable-mobility", "ch1-pedestrian-priority", "ch1-bicycle"]);
 const implementedSectionIds = new Set([
@@ -425,6 +427,68 @@ function sourceImageCardInventory() {
     }
   }
   return cards;
+}
+
+function sourceImageCardTermRows(source) {
+  const rows = [];
+  let cursor = 0;
+  while ((cursor = source.indexOf('kind: "source-image-cards"', cursor)) >= 0) {
+    const cardsIndex = source.indexOf("cards:", cursor);
+    const cardsArrayStart = source.indexOf("[", cardsIndex);
+    const cardsArray = balancedSourceSlice(source, cardsArrayStart, "[", "]");
+    for (const cardSource of topLevelObjectSources(cardsArray)) {
+      const cardId = moduleStringField(cardSource, "id");
+      const termsIndex = cardSource.indexOf("termTranslations:");
+      if (termsIndex < 0) continue;
+      const termsArrayStart = cardSource.indexOf("[", termsIndex);
+      const termsArray = balancedSourceSlice(cardSource, termsArrayStart, "[", "]");
+      for (const termSource of topLevelObjectSources(termsArray)) {
+        rows.push({
+          cardId,
+          termEs: moduleStringField(termSource, "termEs"),
+          translationRu: moduleStringField(termSource, "translationRu")
+        });
+      }
+    }
+    cursor = cardsArrayStart + cardsArray.length;
+  }
+  return rows;
+}
+
+const expectedRenderedNoAvanzarIds = [
+  "app4regulatory-p185-003-no-avanzar-catalog-entry",
+  "app4-regulatory-no-avanzar-source-card",
+  "app4-regulatory-anexo-panel-01-source-card",
+  "app4-regulatory-page-185-source-card"
+].sort();
+
+function normalizedNoAvanzarLabel(value) {
+  return value.trim().replace(/\.+$/u, "").toLocaleUpperCase("es-AR");
+}
+
+function renderedNoAvanzarRows(catalogEntries, sourceCardTerms) {
+  return [
+    ...catalogEntries
+      .filter(
+        (entry) =>
+          entry.sectionId === "app4-signs-regulatory" &&
+          entry.entryKind === "catalog-entry" &&
+          normalizedNoAvanzarLabel(entry.spanishLabel) === "NO AVANZAR"
+      )
+      .map((entry) => ({ id: entry.id, translationRu: entry.russianTranslation, renderer: "manual-sign-catalog" })),
+    ...sourceCardTerms
+      .filter((term) => normalizedNoAvanzarLabel(term.termEs) === "NO AVANZAR")
+      .map((term) => ({ id: term.cardId, translationRu: term.translationRu, renderer: "source-image-cards" }))
+  ];
+}
+
+function assertRenderedNoAvanzarInvariant(rows) {
+  const renderedIds = rows.map((row) => row.id).sort();
+  assert.deepEqual(renderedIds, expectedRenderedNoAvanzarIds, "R.1 rendered inventory is exact and fail-closed");
+  for (const row of rows) {
+    assert.equal(row.translationRu, "Проезд запрещен", `${row.id} uses the R.1 translation`);
+    assert.doesNotMatch(row.translationRu, /обгон запрещен/iu, `${row.id} is not the no-overtaking sign`);
+  }
 }
 
 function visualArtifactHashRecords(value, pathField) {
@@ -1279,7 +1343,7 @@ test("Chapter 3 sections retain priority, speed, adverse-condition, and parking 
   assert.match(ch3RightOfWayModuleSource, /Pare/u);
   assert.match(ch3RightOfWayModuleSource, /Ceda el Paso/u);
   assert.match(ch3RightOfWayModuleSource, /rotonda|круговом движении/u);
-  assert.match(ch3RightOfWayModuleSource, /avenida выше calle/u);
+  assert.match(ch3RightOfWayModuleSource, /avenida \(проспект\) выше calle \(улицы\)/u);
 
   assert.match(ch3LightsModuleSource, /Запрещено менять тип и мощность заводских огней/u);
   assert.match(ch3LightsModuleSource, /противотуманные/ui);
@@ -1289,12 +1353,12 @@ test("Chapter 3 sections retain priority, speed, adverse-condition, and parking 
   assert.match(ch3SpeedModuleSource, /примерно 1 секунда/u);
   assert.match(ch3SpeedModuleSource, /минимум 2 секунды/u);
   assert.match(ch3SpeedModuleSource, /kind:\s*"table"/);
-  assert.match(ch3SpeedModuleSource, /Pasajes y calles de convivencia[\s\S]*20 км\/ч/u);
-  assert.match(ch3SpeedModuleSource, /Calles[\s\S]*40 км\/ч/u);
-  assert.match(ch3SpeedModuleSource, /Avenidas[\s\S]*60 км\/ч/u);
-  assert.match(ch3SpeedModuleSource, /Autopistas CABA[\s\S]*100 км\/ч/u);
-  assert.match(ch3SpeedModuleSource, /Исключения в некоторых avenidas/u);
-  assert.match(ch3SpeedModuleSource, /40 км\/ч[\s\S]*Av\. Corrientes[\s\S]*Junín y Libertad/u);
+  assert.match(ch3SpeedModuleSource, /Пассажи и улицы совместного пользования[\s\S]*20 км\/ч/u);
+  assert.match(ch3SpeedModuleSource, /Улицы[\s\S]*40 км\/ч/u);
+  assert.match(ch3SpeedModuleSource, /Проспекты[\s\S]*60 км\/ч/u);
+  assert.match(ch3SpeedModuleSource, /Автомагистрали CABA[\s\S]*100 км\/ч/u);
+  assert.match(ch3SpeedModuleSource, /Исключения на некоторых проспектах и скоростных дорогах CABA/u);
+  assert.match(ch3SpeedModuleSource, /40 км\/ч[\s\S]*Av\. Corrientes[\s\S]*Junín и Libertad/u);
   assert.match(ch3SpeedModuleSource, /60 км\/ч[\s\S]*Av\. Gral\. Paz[\s\S]*calzadas para tránsito pesado[\s\S]*Autopista Ingeniero Pascual Palazzo[\s\S]*Av\. del Libertador/u);
   assert.match(ch3SpeedModuleSource, /Av\. Figueroa Alcorta/u);
   assert.match(ch3SpeedModuleSource, /Av\. Del Libertador/u);
@@ -1304,28 +1368,28 @@ test("Chapter 3 sections retain priority, speed, adverse-condition, and parking 
   assert.match(ch3SpeedModuleSource, /Av\. Intendente Cantilo/u);
   assert.match(ch3SpeedModuleSource, /Av\. Leopoldo Lugones/u);
   assert.match(ch3SpeedModuleSource, /Av\. Tte\. Gral\. Luis J\. Dellepiane/u);
-  assert.match(ch3SpeedModuleSource, /100 км\/ч[\s\S]*Av\. Gral\. Paz en calzadas centrales[\s\S]*Av\. Leopoldo Lugones[\s\S]*Autopista Ingeniero Pascual Palazzo/u);
+  assert.match(ch3SpeedModuleSource, /100 км\/ч[\s\S]*Av\. Gral\. Paz на центральных проезжих частях[\s\S]*Av\. Leopoldo Lugones[\s\S]*Autopista Ingeniero Pascual Palazzo/u);
   assert.match(ch3SpeedModuleSource, /Autopista Presidente Arturo U\. Illia/u);
-  assert.match(ch3SpeedModuleSource, /Maquinaria especial[\s\S]*Calles y avenidas[\s\S]*30 км\/ч/u);
-  assert.match(ch3SpeedModuleSource, /Camiones[\s\S]*transporte colectivo de pasajeros\/as[\s\S]*Calles[\s\S]*40 км\/ч/u);
-  assert.match(ch3SpeedModuleSource, /Escolares y movilidad reducida[\s\S]*Avenidas[\s\S]*45 км\/ч/u);
-  assert.match(ch3SpeedModuleSource, /Camiones y transporte colectivo de pasajeros\/as[\s\S]*Avenidas[\s\S]*50 км\/ч/u);
-  assert.match(ch3SpeedModuleSource, /Autopistas y otras vias rapidas en CABA[\s\S]*60 км\/ч/u);
+  assert.match(ch3SpeedModuleSource, /Спецтехника[\s\S]*Улицы и проспекты[\s\S]*30 км\/ч/u);
+  assert.match(ch3SpeedModuleSource, /Грузовики[\s\S]*коллективный пассажирский транспорт[\s\S]*Улицы[\s\S]*40 км\/ч/u);
+  assert.match(ch3SpeedModuleSource, /Школьный транспорт[\s\S]*транспорт для людей с ограниченной мобильностью[\s\S]*Проспекты[\s\S]*45 км\/ч/u);
+  assert.match(ch3SpeedModuleSource, /Грузовики и коллективный пассажирский транспорт[\s\S]*Проспекты[\s\S]*50 км\/ч/u);
+  assert.match(ch3SpeedModuleSource, /Автомагистрали и другие скоростные дороги в CABA[\s\S]*60 км\/ч/u);
   assert.match(ch3SpeedModuleSource, /Paseo del Bajo[\s\S]*60 км\/ч/u);
-  assert.match(ch3SpeedModuleSource, /Todos los vehiculos[\s\S]*60 км\/ч/u);
-  assert.match(ch3SpeedModuleSource, /cellsRu:\s*\[\s*"Camiones, transporte de sustancias peligrosas, automotores con casa rodante",\s*"80 км\/ч",\s*"rutas, semiautopistas y autopistas nacionales"\s*\]/u);
-  assert.match(ch3SpeedModuleSource, /cellsRu:\s*\[\s*"Microbuses, omnibus y casas rodantes motorizadas",\s*"90 км\/ч",\s*"rutas y semiautopistas"\s*\]/u);
-  assert.match(ch3SpeedModuleSource, /cellsRu:\s*\[\s*"Microbuses, omnibus y casas rodantes motorizadas",\s*"100 км\/ч",\s*"autopistas nacionales"\s*\]/u);
-  assert.match(ch3SpeedModuleSource, /cellsRu:\s*\["Motocicletas y automoviles",\s*"110 км\/ч",\s*"ruta"\]/u);
-  assert.match(ch3SpeedModuleSource, /cellsRu:\s*\[\s*"Camionetas",\s*"110 км\/ч",\s*"rutas, semiautopistas y autopistas nacionales"\s*\]/u);
-  assert.match(ch3SpeedModuleSource, /cellsRu:\s*\["Motocicletas y automoviles",\s*"120 км\/ч",\s*"semiautopistas"\]/u);
-  assert.match(ch3SpeedModuleSource, /cellsRu:\s*\["Motocicletas y automoviles",\s*"130 км\/ч",\s*"autopistas nacionales"\]/u);
+  assert.match(ch3SpeedModuleSource, /Все транспортные средства[\s\S]*60 км\/ч/u);
+  assert.match(ch3SpeedModuleSource, /cellsRu:\s*\[\s*"Грузовики, транспорт опасных веществ, автомобили с жилым прицепом\/домом",\s*"80 км\/ч",\s*"национальные дороги, полуавтомагистрали и автомагистрали"\s*\]/u);
+  assert.match(ch3SpeedModuleSource, /cellsRu:\s*\[\s*"Микроавтобусы, автобусы и моторизованные дома на колесах",\s*"90 км\/ч",\s*"дороги и полуавтомагистрали"\s*\]/u);
+  assert.match(ch3SpeedModuleSource, /cellsRu:\s*\[\s*"Микроавтобусы, автобусы и моторизованные дома на колесах",\s*"100 км\/ч",\s*"национальные автомагистрали"\s*\]/u);
+  assert.match(ch3SpeedModuleSource, /cellsRu:\s*\["Мотоциклы и автомобили",\s*"110 км\/ч",\s*"дорога"\]/u);
+  assert.match(ch3SpeedModuleSource, /cellsRu:\s*\[\s*"Пикапы",\s*"110 км\/ч",\s*"дороги, полуавтомагистрали и национальные автомагистрали"\s*\]/u);
+  assert.match(ch3SpeedModuleSource, /cellsRu:\s*\["Мотоциклы и автомобили",\s*"120 км\/ч",\s*"полуавтомагистрали"\]/u);
+  assert.match(ch3SpeedModuleSource, /cellsRu:\s*\["Мотоциклы и автомобили",\s*"130 км\/ч",\s*"национальные автомагистрали"\]/u);
   assert.doesNotMatch(ch3SpeedModuleSource, /Camionetas, casas rodantes motorizadas, motocicletas/u);
   assert.doesNotMatch(ch3SpeedModuleSource, /Camiones, casas rodantes motorizadas, motocicletas/u);
   assert.doesNotMatch(ch3SpeedModuleSource, /Camionetas y transporte de pasajeros\/as/u);
   assert.match(ch3SpeedModuleSource, /половина соответствующих максимальных лимитов/u);
-  assert.match(ch3SpeedModuleSource, /semiautopistas y rutas - 40 км\/ч/u);
-  assert.match(ch3SpeedModuleSource, /autopistas - 60 км\/ч/u);
+  assert.match(ch3SpeedModuleSource, /semiautopistas y rutas \(полуавтомагистралей и дорог\) - 40 км\/ч/u);
+  assert.match(ch3SpeedModuleSource, /autopistas \(автомагистралей\) - 60 км\/ч/u);
   assert.doesNotMatch(ch3SpeedModuleSource, /На отдельных avenidas источник показывает исключения/u);
   assert.doesNotMatch(ch3SpeedModuleSource, /Для некоторых видов транспорта и участков источник показывает дополнительные специальные пределы/u);
 
@@ -1333,26 +1397,26 @@ test("Chapter 3 sections retain priority, speed, adverse-condition, and parking 
   assert.match(ch3OvertakingModuleSource, /Adelantamiento/u);
   assert.match(ch3OvertakingModuleSource, /Sobrepaso/u);
   assert.match(ch3OvertakingModuleSource, /Ley 24449/u);
-  assert.match(ch3HighwaysModuleSource, /carriles de aceleración/u);
-  assert.match(ch3HighwaysModuleSource, /espejos retrovisores/u);
-  assert.match(ch3HighwaysModuleSource, /luz de giro izquierda/u);
-  assert.match(ch3HighwaysModuleSource, /espacio \/ gap/u);
-  assert.match(ch3HighwaysModuleSource, /velocidad adecuada del tramo/u);
-  assert.match(ch3HighwaysModuleSource, /Carril izquierdo o de sobrepaso/u);
-  assert.match(ch3HighwaysModuleSource, /Carril derecho/u);
+  assert.match(ch3HighwaysModuleSource, /carriles de aceleración \(полосы разгона\)/u);
+  assert.match(ch3HighwaysModuleSource, /espejos retrovisores \(зеркала заднего вида\)/u);
+  assert.match(ch3HighwaysModuleSource, /luz de giro izquierda \(левый указатель поворота\)/u);
+  assert.match(ch3HighwaysModuleSource, /espacio \/ gap \(свободный промежуток\)/u);
+  assert.match(ch3HighwaysModuleSource, /velocidad adecuada del tramo \(подходящую скорость для этого участка\)/u);
+  assert.match(ch3HighwaysModuleSource, /Carril izquierdo o de sobrepaso \(левая полоса или полоса опережения\)/u);
+  assert.match(ch3HighwaysModuleSource, /Carril derecho \(правая полоса\)/u);
   assert.match(ch3HighwaysModuleSource, /транспортные средства более 3500 кг/u);
-  assert.match(ch3HighwaysModuleSource, /Banquina не является полосой обычного движения, остановки или стоянки/u);
-  assert.match(ch3HighwaysModuleSource, /carril de desaceleración/u);
-  assert.match(ch3HighwaysModuleSource, /circular marcha atrás/u);
+  assert.match(ch3HighwaysModuleSource, /Banquina \(обочина\) не является полосой обычного движения, остановки или стоянки/u);
+  assert.match(ch3HighwaysModuleSource, /carril de desaceleración \(полосу замедления\)/u);
+  assert.match(ch3HighwaysModuleSource, /circular marcha atrás \(двигаться задним ходом\)/u);
   assert.match(ch3HighwaysModuleSource, /следующего разрешенного выхода/u);
-  assert.match(ch3HighwaysModuleSource, /señales viales/u);
-  assert.match(ch3HighwaysModuleSource, /vehículo inmovilizado/u);
-  assert.match(ch3HighwaysModuleSource, /balizas\/intermitentes/u);
-  assert.match(ch3HighwaysModuleSource, /auxilio\/asistencia/u);
-  assert.match(ch3HighwaysModuleSource, /postes de auxilio/u);
-  assert.match(ch3HighwaysModuleSource, /auxilio vial/u);
-  assert.match(ch3HighwaysModuleSource, /vehículo destinado a ese fin/u);
-  assert.match(ch3HighwaysModuleSource, /abandonar la autopista en la primera salida posible/u);
+  assert.match(ch3HighwaysModuleSource, /señales viales \(дорожным знакам\)/u);
+  assert.match(ch3HighwaysModuleSource, /vehículo inmovilizado \(обездвиженный автомобиль\)/u);
+  assert.match(ch3HighwaysModuleSource, /balizas\/intermitentes \(аварийной сигнализацией\/мигающими огнями\)/u);
+  assert.match(ch3HighwaysModuleSource, /auxilio\/asistencia \(помощь\/техническую помощь\)/u);
+  assert.match(ch3HighwaysModuleSource, /postes de auxilio \(колонны экстренной помощи\)/u);
+  assert.match(ch3HighwaysModuleSource, /auxilio vial \(дорожную помощь\)/u);
+  assert.match(ch3HighwaysModuleSource, /vehículo destinado a ese fin \(транспорт, предназначенный для этой цели\)/u);
+  assert.match(ch3HighwaysModuleSource, /abandonar la autopista en la primera salida posible \(покинуть автомагистраль на первом возможном съезде\)/u);
   assert.doesNotMatch(ch3HighwaysModuleSource, /Практика движения на скоростных дорогах/u);
 
   assert.match(ch3AdverseModuleSource, /aquaplaning/u);
@@ -1631,8 +1695,8 @@ test("Chapter 4 sections retain alcohol, sleep, stress, and distraction details"
   const phoneRecommendationsItemsRu = itemsRuSourceForBlock(ch4DistractionsModuleSource, "phone-recommendations");
   assert.match(phoneRecommendationsItemsRu, /режим полета[\s\S]*modo avión/u);
   assert.match(phoneRecommendationsItemsRu, /бардачок или багажник[\s\S]*guantera или baúl/u);
-  assert.match(phoneRecommendationsItemsRu, /аварийные огни[\s\S]*balizas/u);
-  assert.doesNotMatch(phoneRecommendationsItemsRu, /Поставить его в modo avión|Убрать его в guantera|включить balizas/u);
+  assert.match(phoneRecommendationsItemsRu, /balizas[\s\S]*аварийные огни/u);
+  assert.doesNotMatch(phoneRecommendationsItemsRu, /Поставить его в modo avión|Убрать его в guantera/u);
   const otherActionsItemsRu = itemsRuSourceForBlock(ch4DistractionsModuleSource, "other-actions");
   assert.match(otherActionsItemsRu, /радио или CD/u);
   assert.match(otherActionsItemsRu, /портативный DVD/u);
@@ -1683,6 +1747,8 @@ test("Chapter 5 sections retain attitude, equality, support-line, and efficient-
 
   assert.match(ch5GenderViolencePreventionModuleSource, /911/u);
   assert.match(ch5GenderViolencePreventionModuleSource, /22676 ACOSO/u);
+  assert.match(ch5GenderViolencePreventionModuleSource, /22676 ACOSO \(линия помощи при домогательствах\)/u);
+  assert.match(ch5GenderViolencePreventionModuleSource, /22676 ACOSO \(линия для сообщений о домогательствах\)/u);
   assert.match(ch5GenderViolencePreventionModuleSource, /24 часа[\s\S]*365 дней/u);
   assert.match(ch5GenderViolencePreventionModuleSource, /SMS[\s\S]*22676/u);
   assert.match(ch5GenderViolencePreventionModuleSource, /reporte - сообщение/u);
@@ -2083,6 +2149,61 @@ test("Appendix IV keeps protected signs, markings, and signals source-as-is with
   assert.match(app4SignsHorizontalModuleSource, /Продольная разметка[\s\S]*Поперечная разметка[\s\S]*Специальная разметка/u);
   assert.match(app4SignsTrafficLightsModuleSource, /Значение огней[\s\S]*Расположение оптических блоков[\s\S]*Специальные светофоры/u);
   assert.match(app4SignsTrafficLightsModuleSource, /цвет, размер и положение/u);
+});
+
+test("Appendix IV keeps R.1 NO AVANZAR distinct from the no-overtaking sign in every learner-facing representation", () => {
+  // Both arrays below are consumed by the current renderer: the catalog block
+  // maps manualSignEntriesForSection(), while source-image cards map their
+  // termTranslations through ManualImageTermTranslations.
+  assert.match(appSource, /manualSignEntriesForSection\(block\.sectionId\)[\s\S]*entries\.map/u);
+  assert.match(appSource, /block\.cards\.map[\s\S]*ManualImageTermTranslations terms=\{card\.termTranslations\}/u);
+
+  const r1Rows = renderedNoAvanzarRows(app4SignEntries.entries, sourceImageCardTermRows(app4SignsRegulatoryModuleSource));
+  assertRenderedNoAvanzarInvariant(r1Rows);
+
+  for (const targetId of ["app4-regulatory-anexo-panel-01-source-card", "app4-regulatory-page-185-source-card"]) {
+    assert.throws(
+      () => assertRenderedNoAvanzarInvariant(r1Rows.filter((row) => row.id !== targetId)),
+      /R\.1 rendered inventory is exact and fail-closed/u,
+      `${targetId} cannot be silently removed from the rendered R.1 inventory`
+    );
+    assert.throws(
+      () =>
+        assertRenderedNoAvanzarInvariant(
+          r1Rows.map((row) => (row.id === targetId ? { ...row, translationRu: "Обгон запрещен" } : row))
+        ),
+      /uses the R\.1 translation/u,
+      `${targetId} cannot use the no-overtaking translation`
+    );
+    assert.throws(
+      () =>
+        assertRenderedNoAvanzarInvariant(
+          r1Rows.map((row) => (row.id === targetId ? { ...row, id: `${targetId}-incorrect` } : row))
+        ),
+      /R\.1 rendered inventory is exact and fail-closed/u,
+      `${targetId} cannot satisfy coverage with an incorrect identity`
+    );
+  }
+
+  const focusedCardStart = app4SignsRegulatoryModuleSource.indexOf('id: "app4-regulatory-no-avanzar-source-card"');
+  const focusedCardEnd = app4SignsRegulatoryModuleSource.indexOf("\n      visualNotes:", focusedCardStart);
+  assert.ok(focusedCardStart >= 0 && focusedCardEnd > focusedCardStart, "focused R.1 source card is present");
+  const focusedCard = app4SignsRegulatoryModuleSource.slice(focusedCardStart, focusedCardEnd);
+
+  assert.match(focusedCard, /titleRu:\s*"Проезд запрещен"/u);
+  assert.match(focusedCard, /altRu:\s*"Знак R\.1 NO AVANZAR \(Проезд запрещен\)/u);
+  assert.match(focusedCard, /termEs:\s*"NO AVANZAR",\s*translationRu:\s*"Проезд запрещен"/u);
+  assert.doesNotMatch(focusedCard, /обгон запрещен/iu);
+
+  const noOvertakingPanelStart = app4SignsRegulatoryModuleSource.indexOf('id: "app4-regulatory-anexo-panel-02-source-card"');
+  const noOvertakingPanelEnd = app4SignsRegulatoryModuleSource.indexOf("\n        {", noOvertakingPanelStart);
+  assert.ok(noOvertakingPanelStart >= 0 && noOvertakingPanelEnd > noOvertakingPanelStart, "no-overtaking panel is present");
+  const noOvertakingPanel = app4SignsRegulatoryModuleSource.slice(noOvertakingPanelStart, noOvertakingPanelEnd);
+  assert.match(noOvertakingPanel, /termEs:\s*"PROHIBIDO ADELANTAR",\s*translationRu:\s*"Обгон запрещен"/u);
+
+  const catalogBySpanishLabel = new Map(app4SignEntries.entries.map((entry) => [entry.spanishLabel, entry.russianTranslation]));
+  assert.equal(catalogBySpanishLabel.get("NO AVANZAR"), "Проезд запрещен");
+  assert.equal(catalogBySpanishLabel.get("NO ADELANTAR"), "Обгон запрещен");
 });
 
 test("Manual guide visual content crop evidence covers the whole manual and corrected Appendix IV page sheets", () => {
@@ -2847,7 +2968,7 @@ test("Appendix I sections retain private-car safety details", () => {
   assert.match(app1SafetyElementsModuleSource, /Только если ребенок одновременно превышает возрастной, ростовой и весовой пороги/u);
   assert.doesNotMatch(app1SafetyElementsModuleSource, /Если ребенок превышает возраст, рост или вес/u);
   assert.match(app1SafetyElementsModuleSource, /80%[\s\S]*70%/u);
-  assert.match(app1SafetyElementsModuleSource, /Isofix или Latch/u);
+  assert.match(app1SafetyElementsModuleSource, /Isofix \(система крепления детского кресла\) или Latch \(система крепления детского кресла\)/u);
   assert.match(app1SafetyElementsModuleSource, /50 km\/h[\s\S]*40-кратного веса/u);
   assert.match(app1SafetyElementsModuleSource, /Закон CABA 2148[\s\S]*бамперы/u);
   assert.match(app1SafetyElementsModuleSource, /Животных нельзя перевозить без фиксации/u);

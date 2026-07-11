@@ -2847,6 +2847,68 @@ test("Introduction index routes open as separate native Russian document pages",
   }
 });
 
+test("Manual guide Chapter 3 highways renders retained Spanish terms with Russian support", async ({ page }) => {
+  for (const viewport of [
+    { name: "desktop", width: 1280, height: 900 },
+    { name: "mobile", width: 390, height: 900 }
+  ]) {
+    await page.setViewportSize({ width: viewport.width, height: viewport.height });
+    await page.goto("/#manual-section-ch3-highways");
+    const section = page.getByTestId("manual-guide-section");
+    await expect(section).toHaveAttribute("data-manual-section-id", "ch3-highways");
+    await expect(section.getByRole("heading", { name: "Движение по автомагистралям и другим скоростным дорогам" })).toBeVisible();
+
+    for (const text of [
+      "Ingreso: carriles de aceleración (въезд: полосы разгона)",
+      "carriles de aceleración (полосы разгона)",
+      "calzada (проезжую часть)",
+      "tránsito de la vía principal (движение по основной дороге)",
+      "espejos retrovisores (зеркала заднего вида)",
+      "luz de giro izquierda (левый указатель поворота)",
+      "incorporación (включении в поток)",
+      "espacio / gap (свободный промежуток)",
+      "velocidad adecuada del tramo (подходящую скорость для этого участка)",
+      "autopista (автомагистрали)",
+      "vía rápida (скоростной дороге)"
+    ]) {
+      await expect(section).toContainText(text);
+    }
+
+    const issues = await section.evaluate((root) => {
+      const tolerance = 2;
+      const viewportWidth = document.documentElement.clientWidth;
+      const problems: string[] = [];
+      if (document.documentElement.scrollWidth > viewportWidth + tolerance) {
+        problems.push(`document horizontal overflow ${document.documentElement.scrollWidth} > ${viewportWidth}`);
+      }
+      const selection = window.getSelection();
+      const firstBlock = root.querySelector('[data-testid="manual-guide-section-block"]');
+      if (!selection || !firstBlock) {
+        problems.push("missing selectable block");
+      } else {
+        const range = document.createRange();
+        range.selectNodeContents(firstBlock);
+        selection.removeAllRanges();
+        selection.addRange(range);
+        const selectedText = selection.toString();
+        selection.removeAllRanges();
+        if (!selectedText.includes("Autopistas")) problems.push("retained Spanish/Russian text is not selectable");
+      }
+      for (const element of Array.from(root.querySelectorAll('[data-testid="manual-guide-section-block"]'))) {
+        const rect = element.getBoundingClientRect();
+        const style = window.getComputedStyle(element);
+        const id = element.getAttribute("data-block-id") ?? "unknown";
+        if (rect.width > 0 && (rect.left < -tolerance || rect.right > viewportWidth + tolerance)) {
+          problems.push(`${id} overflows viewport horizontally`);
+        }
+        if (style.userSelect === "none") problems.push(`${id} disables text selection`);
+      }
+      return problems;
+    });
+    expect(issues, `highways Spanish/Russian support layout on ${viewport.name}`).toEqual([]);
+  }
+});
+
 test("Manual guide exposes implemented Chapter 1, Chapter 2, Chapter 3, Chapter 4, Chapter 5, and Appendix III section pages", async ({ page }, testInfo) => {
   test.setTimeout(60_000);
   await page.goto("/#pandemia-vial");
@@ -4659,7 +4721,7 @@ test("Manual guide opens Chapter 4 stress and distractions from direct routes", 
   await expect(distractionsButton).toHaveAttribute("aria-current", "page");
   await expect(distractionsButton).toHaveAttribute("data-source-pages", "95-97");
   await expect(section).toHaveAttribute("data-manual-section-id", "ch4-distractions");
-  await expect(section.getByRole("heading", { name: "Отвлечения" })).toBeVisible();
+  await expect(section.getByRole("heading", { name: "Отвлечения", exact: true })).toBeVisible();
   await expect(section).toContainText("Еда, питье, мате");
   await expect(section).toContainText("Использование мобильного телефона запрещено");
   await expect(section).toContainText("GPS");
@@ -4991,7 +5053,7 @@ test("Manual guide full-width source image cards stay readable and avoid upscali
   await expectManualImageTermTranslations(
     publicTransportSection.locator('[data-card-id="metrobus"]'),
     [
-      { termEs: "Metrobus de Buenos Aires", translationRu: "Metrobus Буэнос-Айреса" },
+      { termEs: "Metrobus de Buenos Aires", translationRu: "метробус Буэнос-Айреса" },
       { termEs: "Solo líneas autorizadas", translationRu: "Только разрешенные линии" }
     ],
     { minPairs: 5 }

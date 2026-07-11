@@ -804,7 +804,8 @@
             "assetCategory": "native-dom-text-only",
             "containsText": true,
             "visibleSpanish": false,
-            "cleanupScope": "reference-only-not-runtime"
+            "cleanupScope": "reference-only-not-runtime",
+            "sha256": "736ba6dbe231cb6c18a2e352ed5180b19b7a9bb6432ce7b59f36590d663a550a"
           }
         ],
         "visibleSpanishStatus": "none",
@@ -926,7 +927,8 @@
             "assetCategory": "native-dom-text-only",
             "containsText": true,
             "visibleSpanish": false,
-            "cleanupScope": "reference-only-not-runtime"
+            "cleanupScope": "reference-only-not-runtime",
+            "sha256": "7f2ed353343f0163a1b95d1962b6d91a10c8acc8dc179d842de37d2a97601810"
           }
         ],
         "visibleSpanishStatus": "none",
@@ -1208,7 +1210,8 @@
             "assetCategory": "native-dom-text-only",
             "containsText": true,
             "visibleSpanish": false,
-            "cleanupScope": "reference-only-not-runtime"
+            "cleanupScope": "reference-only-not-runtime",
+            "sha256": "51b65f021e2c3f0a11f5d668ad941cc879dfac90a6784a4ad5f1db812d5e5e10"
           }
         ],
         "visibleSpanishStatus": "none",
@@ -1713,7 +1716,7 @@
             "assetKind": "native-dom-text-and-pedestrian-priority-visual-data",
             "width": 760,
             "height": 1800,
-            "sha256": "38c0abac3283f59710741d806469126101d50a59396e941e98918c3a8cc5c0a3",
+            "sha256": "c3e643e9ff5612a668095ca39a48d5e6bda52accfc5fc2238f13b01ddf7b730d",
             "containsText": true,
             "visibleSpanish": false
           },
@@ -3309,7 +3312,8 @@
             "assetCategory": "native-dom-text-only",
             "containsText": true,
             "visibleSpanish": false,
-            "cleanupScope": "reference-only-not-runtime"
+            "cleanupScope": "reference-only-not-runtime",
+            "sha256": "3f11338788df031ff94dc31811f930c9698476c5521dffb2e540915fd2a4681a"
           }
         ],
         "visibleSpanishStatus": "none",
@@ -3747,7 +3751,8 @@
             "assetCategory": "native-dom-text-only",
             "containsText": true,
             "visibleSpanish": false,
-            "cleanupScope": "reference-only-not-runtime"
+            "cleanupScope": "reference-only-not-runtime",
+            "sha256": "672f7e56270ad1e7befb09ea9a41fc0b0a95c00c52ed4862a160619c12353e4b"
           }
         ],
         "visibleSpanishStatus": {
@@ -4038,7 +4043,8 @@
             "assetCategory": "native-dom-text-only",
             "containsText": true,
             "visibleSpanish": false,
-            "cleanupScope": "reference-only-not-runtime"
+            "cleanupScope": "reference-only-not-runtime",
+            "sha256": "776a90b8a4418054baa8524df0ff83b2445362cc4674a125859a7249f4a2e6da"
           }
         ],
         "visibleSpanishStatus": "none",
@@ -4155,7 +4161,8 @@
             "assetCategory": "native-dom-text-only",
             "containsText": true,
             "visibleSpanish": false,
-            "cleanupScope": "reference-only-not-runtime"
+            "cleanupScope": "reference-only-not-runtime",
+            "sha256": "56863360ded8a923f2024c498b2806113c09a74d30625aa52156a0e29bba3515"
           }
         ],
         "visibleSpanishStatus": "none",
@@ -4410,7 +4417,8 @@
             "assetCategory": "native-dom-text-only",
             "containsText": true,
             "visibleSpanish": false,
-            "cleanupScope": "reference-only-not-runtime"
+            "cleanupScope": "reference-only-not-runtime",
+            "sha256": "33a0a85b40ce7e30c53dc3f611e54c2ba967f2fe7593213f090f233718cd3922"
           }
         ],
         "visibleSpanishStatus": "none",
@@ -4568,7 +4576,8 @@
             "assetCategory": "native-dom-text-only",
             "containsText": true,
             "visibleSpanish": false,
-            "cleanupScope": "reference-only-not-runtime"
+            "cleanupScope": "reference-only-not-runtime",
+            "sha256": "c71d52d44c3a56dd08f620055f1f41fe69853e637dd88ddc4715d58ebcf63ba7"
           }
         ],
         "visibleSpanishStatus": "none",
@@ -4694,7 +4703,8 @@
             "assetCategory": "native-dom-text-only",
             "containsText": true,
             "visibleSpanish": false,
-            "cleanupScope": "reference-only-not-runtime"
+            "cleanupScope": "reference-only-not-runtime",
+            "sha256": "1581872fba42b1b301c181f5feaca324945ba4540b214bc824c2ec27c46f143d"
           }
         ],
         "visibleSpanishStatus": "none",
@@ -4948,7 +4958,8 @@
             "assetCategory": "native-dom-text-only",
             "containsText": true,
             "visibleSpanish": false,
-            "cleanupScope": "reference-only-not-runtime"
+            "cleanupScope": "reference-only-not-runtime",
+            "sha256": "72c0f4b223dbc931aa1d00307fd1fa68af1dafbb0281eb29ee8ca90f6066cb7b"
           }
         ],
         "visibleSpanishStatus": "none",
@@ -5042,7 +5053,8 @@
             "assetCategory": "native-dom-text-only",
             "containsText": true,
             "visibleSpanish": false,
-            "cleanupScope": "reference-only-not-runtime"
+            "cleanupScope": "reference-only-not-runtime",
+            "sha256": "506f4176b2cd0fe085edecef4089fb4858329266522c18987712ff2a4f1792ce"
           }
         ],
         "visibleSpanishStatus": "none",
@@ -5168,7 +5180,8 @@
             "assetCategory": "native-dom-text-only",
             "containsText": true,
             "visibleSpanish": false,
-            "cleanupScope": "reference-only-not-runtime"
+            "cleanupScope": "reference-only-not-runtime",
+            "sha256": "73b22ae9af45c2d75ea9e4619c73eec11e5250995a263c1d78d2cc9d694a6e64"
           }
         ],
         "visibleSpanishStatus": "none",
@@ -5262,7 +5275,8 @@
             "assetCategory": "native-dom-text-only",
             "containsText": true,
             "visibleSpanish": false,
-            "cleanupScope": "reference-only-not-runtime"
+            "cleanupScope": "reference-only-not-runtime",
+            "sha256": "e30af068c9ac834d91b5ecd0ef4f5b155901b2973b4751fc415fcd1db2f2df26"
           }
         ],
         "visibleSpanishStatus": "none",
@@ -5452,7 +5466,8 @@
             "assetCategory": "native-dom-text-only",
             "containsText": true,
             "visibleSpanish": false,
-            "cleanupScope": "reference-only-not-runtime"
+            "cleanupScope": "reference-only-not-runtime",
+            "sha256": "3199821ca0f73d0b8369637b54d19841a83f94e0d2f8396dd90b89ad05c5011f"
           }
         ],
         "visibleSpanishStatus": "none",
@@ -5706,7 +5721,8 @@
             "assetCategory": "native-dom-text-only",
             "containsText": true,
             "visibleSpanish": false,
-            "cleanupScope": "reference-only-not-runtime"
+            "cleanupScope": "reference-only-not-runtime",
+            "sha256": "af737414999e41a7117e3f305e60c2cb60352dc2ef72d6eca319a0275b54d753"
           }
         ],
         "visibleSpanishStatus": "none",
@@ -5946,7 +5962,8 @@
             "assetCategory": "native-dom-text-only",
             "containsText": true,
             "visibleSpanish": false,
-            "cleanupScope": "reference-only-not-runtime"
+            "cleanupScope": "reference-only-not-runtime",
+            "sha256": "df4dacf8f63df3ad36046595ea6404dac04ff70b13c42716ac0f4a2261c65b76"
           },
           {
             "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch4-alcohol-drugs/drug-test-source-as-is.jpg",
@@ -6227,7 +6244,8 @@
             "assetCategory": "native-dom-text-only",
             "containsText": true,
             "visibleSpanish": false,
-            "cleanupScope": "reference-only-not-runtime"
+            "cleanupScope": "reference-only-not-runtime",
+            "sha256": "75795f57f759007ab15b6f4bc499597421d99eeb6a9126c32a7bf37756c93b72"
           }
         ],
         "visibleSpanishStatus": "none",
@@ -6421,7 +6439,8 @@
             "assetCategory": "native-dom-text-only",
             "containsText": true,
             "visibleSpanish": false,
-            "cleanupScope": "reference-only-not-runtime"
+            "cleanupScope": "reference-only-not-runtime",
+            "sha256": "12dc71bc427990ae3a1cac55fcc5f8713e1ace28933f4a6c24701d4b6e371a8a"
           }
         ],
         "visibleSpanishStatus": "none",
@@ -6670,7 +6689,8 @@
             "assetCategory": "native-dom-text-only",
             "containsText": true,
             "visibleSpanish": false,
-            "cleanupScope": "reference-only-not-runtime"
+            "cleanupScope": "reference-only-not-runtime",
+            "sha256": "7718d91027514c9202c4479b0b6b41147fea81c4177e734397299ce77c7eb541"
           },
           {
             "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch4-distractions/distraction-panels-transferred-infographic.png",
@@ -6921,7 +6941,8 @@
             "assetCategory": "native-dom-text-only",
             "containsText": true,
             "visibleSpanish": false,
-            "cleanupScope": "reference-only-not-runtime"
+            "cleanupScope": "reference-only-not-runtime",
+            "sha256": "959c9f6f04caa43888701afdc77ab54a65e961d0ba550fac0af1fa0e62dad224"
           }
         ],
         "visibleSpanishStatus": "none",
@@ -7118,7 +7139,8 @@
             "assetCategory": "native-dom-text-only",
             "containsText": true,
             "visibleSpanish": false,
-            "cleanupScope": "reference-only-not-runtime"
+            "cleanupScope": "reference-only-not-runtime",
+            "sha256": "b44b218c0ed7cb657b3bfcc7b22a29189c55b625175bd580bca504c001a26a87"
           },
           {
             "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch5-equal-society/mobility-context-transferred-infographic.png",
@@ -7353,7 +7375,8 @@
             "assetCategory": "native-dom-text-only",
             "containsText": true,
             "visibleSpanish": false,
-            "cleanupScope": "reference-only-not-runtime"
+            "cleanupScope": "reference-only-not-runtime",
+            "sha256": "ab869d0e27d61766b8ff7aa6ff570d9082245bd6a6285a074757eb0a94b9c677"
           }
         ],
         "visibleSpanishStatus": "none",
@@ -7564,7 +7587,8 @@
             "assetCategory": "native-dom-text-only",
             "containsText": true,
             "visibleSpanish": false,
-            "cleanupScope": "reference-only-not-runtime"
+            "cleanupScope": "reference-only-not-runtime",
+            "sha256": "b899b16b3498ca26e7167bbff86e2e277ddeeb8560a1cb55633ba071889e2fd6"
           },
           {
             "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch5-anticipatory-efficient-driving/driving-culture-photo-source-as-is.jpg",
@@ -8291,7 +8315,8 @@
             "assetKind": "native-dom-text-only-private-car-safety-elements",
             "assetCategory": "native-dom-text-only",
             "containsText": true,
-            "visibleSpanish": false
+            "visibleSpanish": false,
+            "sha256": "6350dc85b8d39d39631d08bc44367d3da4775c59d230ec11b98c6bfadd3d96a1"
           },
           {
             "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app1-safety-elements/mirror-orientation-photo-source-as-is.jpg",
@@ -8807,7 +8832,8 @@
             "assetKind": "native-dom-text-only-app1-other-required-safety-elements",
             "assetCategory": "native-dom-text-only",
             "containsText": true,
-            "visibleSpanish": false
+            "visibleSpanish": false,
+            "sha256": "8288ae140752e29b9dbb5c5e03a45698d9c937991a5f039873b3c02ad60ba742"
           },
           {
             "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app1-other-required-safety-elements/matafuegos-source-as-is.jpg",
@@ -9065,7 +9091,8 @@
             "assetKind": "native-dom-text-only-app1-recommended-safety-elements",
             "assetCategory": "native-dom-text-only",
             "containsText": true,
-            "visibleSpanish": false
+            "visibleSpanish": false,
+            "sha256": "2b0bf2cd970c73534fa368a1581c8310a71c0b81780b11820a6f7c7fb1737910"
           }
         ],
         "visibleSpanishStatus": "none",
@@ -9188,7 +9215,8 @@
             "assetKind": "native-dom-text-only-app2-social-responsibility",
             "assetCategory": "native-dom-text-only",
             "containsText": true,
-            "visibleSpanish": false
+            "visibleSpanish": false,
+            "sha256": "4d3a4588b64eac79ec86b83d0384466edb3ee41804a8295a4d54b71a151560d8"
           }
         ],
         "visibleSpanishStatus": "none",
@@ -9706,7 +9734,8 @@
             "assetKind": "native-dom-text-only-app2-safety-elements",
             "assetCategory": "native-dom-text-only",
             "containsText": true,
-            "visibleSpanish": false
+            "visibleSpanish": false,
+            "sha256": "5b0f86a33eec725ed63b81ac45779ba4cf6dba141052a6034ce95ff48a172330"
           },
           {
             "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app2-safety-elements/mirror-orientation-photo-source-as-is.png",
@@ -10138,7 +10167,8 @@
             "assetKind": "native-dom-text-only-app2-driving-factors",
             "assetCategory": "native-dom-text-only",
             "containsText": true,
-            "visibleSpanish": false
+            "visibleSpanish": false,
+            "sha256": "acda78ac197cf74334fd999e2479dd50842c84c9cc477c1185c6d944c3fdc1a9"
           }
         ],
         "visibleSpanishStatus": "none",
@@ -10359,7 +10389,8 @@
             "assetKind": "native-dom-text-only-app2-safe-driving",
             "assetCategory": "native-dom-text-only",
             "containsText": true,
-            "visibleSpanish": false
+            "visibleSpanish": false,
+            "sha256": "ea3ea0d006f3aab09baca24d06173440b46c05e1f0025f78a6e689f45a4a5fbe"
           }
         ],
         "visibleSpanishStatus": "none",
@@ -10555,7 +10586,8 @@
             "assetKind": "selectable-russian-dom-text-and-source-as-is-hospital-map-explanation",
             "assetCategory": "native-dom-text-only",
             "containsText": true,
-            "visibleSpanish": false
+            "visibleSpanish": false,
+            "sha256": "cfaa789a4b5d7c24f525a68530d3bfe6e64aa572d1acab2d85ccf909ab16e2c2"
           },
           {
             "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app2-highways-hospitals/hospital-map-source-as-is.png",
@@ -10751,7 +10783,8 @@
             "assetKind": "selectable-russian-dom-text-app3-cargo-driver-profile",
             "assetCategory": "native-dom-text-only",
             "containsText": true,
-            "visibleSpanish": false
+            "visibleSpanish": false,
+            "sha256": "8f867261613de5c3b4479780fb86fd4d2a1dbffcea74ed5e7c48a57fa4de5010"
           }
         ],
         "visibleSpanishStatus": "none",
@@ -10968,7 +11001,8 @@
             "assetKind": "selectable-russian-dom-text-app3-social-responsibility",
             "assetCategory": "native-dom-text-only",
             "containsText": true,
-            "visibleSpanish": false
+            "visibleSpanish": false,
+            "sha256": "b7719873a0c0d5026e43102bdaf08e66b510a2e879735e40cd52fa0b23b2ec7d"
           }
         ],
         "visibleSpanishStatus": "none",
@@ -11115,7 +11149,8 @@
             "assetKind": "selectable-russian-dom-text-and-source-as-is-body-posture-explanation",
             "assetCategory": "native-dom-text-only",
             "containsText": true,
-            "visibleSpanish": false
+            "visibleSpanish": false,
+            "sha256": "dcef40c609f0559ba54e63759fc184b64a5a7319d93b02734fc98324e99a4eb8"
           },
           {
             "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app3-driving-factors/body-posture-source-as-is.png",
@@ -11449,7 +11484,8 @@
             "assetKind": "selectable-russian-dom-text-app3-safe-driving",
             "assetCategory": "native-dom-text-only",
             "containsText": true,
-            "visibleSpanish": false
+            "visibleSpanish": false,
+            "sha256": "1eced6d1b2853002e8e49f6bc0c96625182455de24c85f8df9e83bd607c743cf"
           }
         ],
         "visibleSpanishStatus": "none",
@@ -11948,7 +11984,8 @@
             "assetKind": "selectable-russian-dom-text-and-source-as-is-seatbelt-explanation",
             "assetCategory": "native-dom-text-only",
             "containsText": true,
-            "visibleSpanish": false
+            "visibleSpanish": false,
+            "sha256": "01f7c3ddc890f2cd0701885cc892275319842462aa5e425f14f9e344182ababe"
           },
           {
             "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app3-safety-elements/seatbelt-source-as-is.png",
@@ -12123,7 +12160,8 @@
             "assetKind": "selectable-russian-dom-text-app3-highways",
             "assetCategory": "native-dom-text-only",
             "containsText": true,
-            "visibleSpanish": false
+            "visibleSpanish": false,
+            "sha256": "a37b8014aade09b0aaf4dd8a0187ddfdb756b3bcec98784cf4c9b5e932f90edc"
           }
         ],
         "visibleSpanishStatus": "none",
@@ -12411,7 +12449,8 @@
             "assetKind": "selectable-russian-dom-text-and-source-as-is-appendix-iv-app4-signs-regulatory",
             "assetCategory": "native-dom-text-only",
             "containsText": true,
-            "visibleSpanish": false
+            "visibleSpanish": false,
+            "sha256": "76ad7aa8edac28b780999adb64f2ce12b8cd61993692728b5ecf4da166f2d91a"
           },
           {
             "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/sign-sheet-185-source-crop-as-is.jpg",
@@ -12927,7 +12966,8 @@
             "assetKind": "selectable-russian-dom-text-and-source-as-is-appendix-iv-app4-signs-warning",
             "assetCategory": "native-dom-text-only",
             "containsText": true,
-            "visibleSpanish": false
+            "visibleSpanish": false,
+            "sha256": "0eab2342df4b1b78d07adcb51398a6702b755ad59e279d19ac76e94b6a3e487a"
           },
           {
             "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/sign-sheet-187-source-crop-as-is.jpg",
@@ -13285,7 +13325,8 @@
             "assetKind": "selectable-russian-dom-text-and-source-as-is-appendix-iv-app4-signs-informational",
             "assetCategory": "native-dom-text-only",
             "containsText": true,
-            "visibleSpanish": false
+            "visibleSpanish": false,
+            "sha256": "d99d1e9906ab1048eb26bd3ddccfc29b07744500d161d0d3a4732737296bb901"
           },
           {
             "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/sign-sheet-189-source-crop-as-is.jpg",
@@ -13669,7 +13710,8 @@
             "assetKind": "selectable-russian-dom-text-and-source-as-is-appendix-iv-app4-signs-temporary",
             "assetCategory": "native-dom-text-only",
             "containsText": true,
-            "visibleSpanish": false
+            "visibleSpanish": false,
+            "sha256": "d6829ef5d116892d3973344e1cca78bce400b9a65f6f70d6d01964c4f3477539"
           },
           {
             "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/sign-sheet-193-source-crop-as-is.jpg",
@@ -13937,7 +13979,8 @@
             "assetKind": "selectable-russian-dom-text-and-source-as-is-appendix-iv-app4-signs-horizontal",
             "assetCategory": "native-dom-text-only",
             "containsText": true,
-            "visibleSpanish": false
+            "visibleSpanish": false,
+            "sha256": "561d2dcaa6b5334be6176e533829880b925ae3a287644b8cde7ae859d2783096"
           },
           {
             "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-horizontal/marking-sheet-195-source-crop-as-is.jpg",
@@ -14301,7 +14344,8 @@
             "assetKind": "selectable-russian-dom-text-and-source-as-is-appendix-iv-app4-signs-traffic-lights",
             "assetCategory": "native-dom-text-only",
             "containsText": true,
-            "visibleSpanish": false
+            "visibleSpanish": false,
+            "sha256": "6eec28f61198d87014fb670d8967ae7d0166c7ea30cac2ef1d75f5d758171e1c"
           },
           {
             "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/signal-sheet-197-source-crop-as-is.jpg",

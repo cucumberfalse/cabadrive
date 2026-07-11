@@ -1,0 +1,918 @@
+# Tasks: Complete Manual Translation Audit
+
+## Status Legend
+
+- `[x]` Complete
+- `[ ]` Pending
+
+## Architect Planning Tasks
+
+- [x] T001 Confirm Architect assignment for
+  `/Users/chap/devel/cabadrive-worktrees/040-manual-translation-completion`
+  on branch `codex/040-manual-translation-completion`.
+- [x] T002 Confirm verified base from Orchestrator: `origin/main` at
+  `ddaa670022d240caa6861adbf30e2e6c8200223f`.
+- [x] T003 Preserve role boundary: Architect edits only `spec.md`, `plan.md`,
+  and `tasks.md` under `specs/041-manual-translation-completion/`.
+- [x] T004 Read the constitution, project docs, frontend/backend docs, feature
+  inventory, learning/manual flows, specify archive README, and active
+  `feature-request.md`.
+- [x] T005 Read prior relevant feature memory for glossary term translations
+  and image-readability translations.
+- [x] T006 Inspect current manual guide data/rendering/validator surfaces
+  read-only, including likely files named by Orchestrator.
+- [x] T007 Confirm screenshot-highlighted residues exist in
+  `src/data/manual-sections/ch3-highways.ts`.
+- [x] T008 Define native `Руководство` scope boundaries, audit method,
+  terminology handling, implementation tasks, validation evidence, acceptance
+  criteria, negative scenarios, and review requirements.
+
+## Orchestrator / Implementation Setup
+
+- [x] T009 Orchestrator assigns Implementation Agent to this worktree/branch or
+  another fresh latest-main isolated slice, explicitly preserving sibling
+  worktrees, dirty diffs, branches, commits, PRs, and process memory.
+- [x] T010 Implementation Agent confirms branch, PR slice, scoped files,
+  latest-main base, current `git status --short --branch`, and parallel-work
+  preservation warning before editing product files.
+- [x] T011 Implementation Agent reads `feature-request.md`, `spec.md`,
+  `plan.md`, and this `tasks.md` before editing.
+- [x] T012 Implementation Agent keeps this file current with decisions, dead
+  ends, evidence paths, exact validation command results, and feedback.
+
+## Whole-Guide Text Audit
+
+- [x] T013 Add `scripts/manual-guide-translation-completeness-audit.mjs`.
+- [x] T014 Use TypeScript compiler AST evaluation or an equivalent structured
+  section-data loader rather than raw grep as the primary audit mechanism.
+- [x] T015 Enumerate all current implemented manual guide sections from
+  `src/data/manual-sections/*.ts` and record counts in evidence.
+- [x] T016 Inspect learner-facing fields including section/block titles,
+  paragraphs, list items, table columns/cells, captions, alt text, card body
+  text, nested group/example labels, and structured term translation fields.
+- [x] T017 Exclude or separately classify non-learner-facing fields:
+  `sourceTextEs`, `sourceTitleEs`, registry source titles, evidence notes,
+  asset paths, URLs, hashes, selectors, route hashes, test ids, source regions,
+  and source/provenance metadata.
+- [x] T018 Treat protected image pixels as out of scope for this text audit
+  while still checking adjacent learner-facing DOM support fields where present.
+- [x] T019 Add required-probe detection for `Ingreso: carriles de aceleración`,
+  `carriles de aceleración`, `calzada`, `tránsito de la vía principal`,
+  `espejos retrovisores`, `incorporación`, `luz de giro izquierda`,
+  `espacio / gap`, `velocidad adecuada del tramo`, `autopista`, and
+  `vía rápida`.
+- [x] T020 Add a Spanish residue detector for Latin/Spanish traffic phrases,
+  accented/unaccented variants, and mixed Russian/Spanish strings.
+- [x] T021 Add a narrow evidence-backed exception model for acronyms, official
+  names, road names, legal/document identifiers, URLs, hashes, file names,
+  source ids, and other non-translation cases.
+- [x] T022 Ensure generic traffic terms cannot be broadly allowlisted without
+  nearby Russian support.
+- [x] T023 Add committed evidence at
+  `content/validation/manual-guide-translation-completeness.evidence.json`.
+- [x] T024 Ensure check mode fails on missing, malformed, stale, incomplete, or
+  over-broad evidence and does not rewrite files unless `--write` is passed.
+- [x] T025 Wire the new audit into `pnpm run validate:manual-guide` and keep
+  `pnpm run validate:content` coverage consistent.
+
+## Content Fixes
+
+- [x] T026 Run the audit in write/draft mode to produce the current candidate
+  residue inventory before fixing content.
+- [x] T027 Fix `src/data/manual-sections/ch3-highways.ts` screenshot probes
+  with Russian-only wording or retained Spanish plus adjacent Russian support.
+- [x] T028 Fix all analogous residues reported by the audit across
+  `src/data/manual-sections/*.ts`.
+- [x] T029 Review likely residue-heavy files from Architect read-only
+  inspection: `ch3-speed.ts`, `ch3-stopping-parking.ts`,
+  `app1-other-required-safety-elements.ts`, `app3-safe-driving.ts`, and
+  `app3-safety-elements.ts`.
+- [x] T030 Preserve official road/street names, organization names, legal
+  references, acronyms, and document/system names where useful, while
+  translating surrounding generic Spanish terms.
+- [x] T031 Keep recurring terminology consistent for `calzada`,
+  `incorporación`, `autopista`, `vía rápida`, `carril`, `banquina`,
+  `luz de giro`, `balizas`, `auxilio`, `sobrepaso`, and `adelantamiento`.
+- [x] T032 Preserve legal, numeric, safety, document, lane, priority, speed,
+  emergency, and source-order meaning while editing wording.
+- [x] T033 Preserve protected source image pixels and feature `035`
+  image-adjacent translation behavior.
+- [x] T034 Update `visualEvidence.notes` or section process notes only when
+  necessary to keep evidence meaning current.
+
+## Renderer / CSS Tasks
+
+- [x] T035 Prefer content/data fixes; avoid renderer changes unless adjacent
+  Spanish/Russian support cannot be expressed by existing block shapes.
+- [x] T036 If renderer changes are needed, reuse `ManualImageTermTranslations`
+  or a small shared structured Spanish/Russian pair renderer.
+- [x] T037 If Spanish/Russian pair rendering changes, use `lang="es"` for
+  retained Spanish and `lang="ru"` for Russian translations where feasible.
+- [x] T038 Ensure new parenthesized or structured translations wrap naturally,
+  remain selectable DOM text, and do not create mobile clipping or
+  document-level overflow.
+
+## Tests
+
+- [x] T039 Add tests for audit write/check behavior, missing evidence, stale
+  evidence, and malformed evidence.
+- [x] T040 Add tests proving the audit enumerates all current implemented
+  manual guide sections and learner-facing field classes.
+- [x] T041 Add tests proving the audit ignores `sourceTextEs`, `sourceTitleEs`,
+  asset paths, URLs, hashes, route hashes, and protected image pixel metadata.
+- [x] T042 Add tests proving Spanish residue in learner-facing headings, list
+  items, table cells, captions, card text, and alt text fails without nearby
+  Russian support.
+- [x] T043 Add tests proving over-broad generic Spanish traffic-term exceptions
+  fail.
+- [x] T044 Add tests proving all screenshot probes are represented in evidence
+  and pass after content fixes.
+- [x] T045 Update existing manual-guide content tests that currently assert
+  Spanish-only residues in `ch3-highways.ts` and related files.
+- [x] T046 Add or update focused E2E/Playwright coverage for the Chapter 3
+  highways route on desktop and mobile.
+- [x] T047 E2E verifies corrected screenshot terms, selectable DOM text,
+  nearby Russian support, and no document-level horizontal overflow.
+- [x] T048 Keep existing source-fidelity, image-readability, glossary,
+  navigation, content, and e2e tests passing.
+
+## Durable Docs
+
+- [x] T049 Update
+  `docs_project/project/frontend/manual-conversion-guidelines.md` only if the
+  new text audit or Spanish-term retention rule becomes durable guidance.
+- [x] T050 If docs are updated, keep them concise and limited to the reusable
+  manual text translation contract.
+
+## Local Verification
+
+- [x] T051 Run `node scripts/check-feature-memory.mjs --worktree`.
+- [x] T052 Run `node scripts/manual-guide-translation-completeness-audit.mjs --write`
+  after intentional evidence/content changes.
+- [x] T053 Run `pnpm run validate:manual-guide`.
+- [x] T054 Run `pnpm run validate:content`.
+- [x] T055 Run focused tests for the new audit and touched manual-guide data.
+- [x] T056 Run `pnpm exec tsc --noEmit`.
+- [x] T057 Run `pnpm run test`.
+- [x] T058 Run `pnpm run build`.
+- [x] T059 Run focused Playwright/E2E checks for Chapter 3 highways.
+- [x] T060 Run `pnpm run test:e2e` if feasible.
+- [x] T061 Run `git diff --check`.
+- [x] T062 Run `pnpm run preflight` before PR readiness if feasible; otherwise
+  record the blocker and substitute evidence with Orchestrator coordination.
+- [x] T063 Record exact command results and evidence paths in this file.
+
+## Review / PR / Final Validation Prep
+
+- [x] T064 Implementation Agent stages, commits, pushes, and opens or updates
+  one ready PR only if assigned by Orchestrator.
+- [x] T065 Review Agent checks whole-guide coverage, audit strength,
+  terminology consistency, protected-image preservation, responsive/selectable
+  text, tests, and process-memory compliance.
+- [x] T066 Implementation Agent records and resolves review findings only
+  through Orchestrator assignment.
+- [x] T067 Orchestrator routes any Implementation Agent feedback to Architect
+  for task/ticket/not-needed disposition before final validation.
+- [x] T068 Orchestrator invokes final Architect validation before final Analyst
+  validation after implementation, checks, review, and feedback disposition are
+  complete.
+- [ ] T069 Orchestrator invokes final Analyst validation only after Architect
+  passes and records the required final-validation markers.
+- [ ] T070 Orchestrator verifies required checks, current PR head, conflicts,
+  review conversations, acceptance evidence, process memory, and final guards
+  before completion/finalization/merge.
+
+## PR #206 Review Fix Tasks
+
+- [x] T071 Confirm Implementation Agent assignment for PR #206 review fixes on
+  `/Users/chap/devel/cabadrive-worktrees/040-manual-translation-completion`,
+  branch `codex/040-manual-translation-completion`, preserving sibling
+  worktrees, branches, commits, PRs, dirty diffs, and process memory.
+- [x] T072 Strengthen
+  `scripts/manual-guide-translation-completeness-audit.mjs` so meaningful
+  learner-facing Latin segments are candidates by default, not only terms in
+  `spanishDetectorTerms`.
+- [x] T073 Keep accepted exceptions narrow to official names, acronyms, URLs,
+  road names, legal identifiers, units, and equivalent non-prose cases; require
+  generic Spanish prose, traffic terms, document terms, and learner-facing
+  Latin residues to have support, structured pairing, or unresolved evidence.
+- [x] T074 Add audit support for reverse parenthetical Russian/Spanish
+  support, immediate dash/colon support, and structured `termEs` pair support
+  for either `translationRu` or `labelRu`.
+- [x] T075 Add Russian support for `certificado del seguro de responsabilidad
+  civil` in `src/data/manual-sections/ch2-required-documents.ts`.
+- [x] T076 Fix newly surfaced learner-facing residues across
+  `src/data/manual-sections/*.ts`, including `arterias`,
+  `plaza de acompañante`, singular `motovehículo`, `habitáculo`, `trailer`,
+  `Isofix`, `Latch`, `aquaplaning`, `manual`, and related document, traffic,
+  alcohol, safety, mobility, parking, priority, and glossary terms.
+- [x] T077 Refresh
+  `content/validation/manual-guide-translation-completeness.evidence.json`
+  with the strengthened audit.
+- [x] T078 Add focused tests proving unmatched Latin learner-facing residues
+  fail even when they are not dictionary terms, including the document and
+  alcohol examples from the review findings.
+- [x] T079 Refresh source-fidelity, image-readability, registry hash, and manual
+  ticket-placement evidence affected by manual wording changes while preserving
+  reviewed placement route/anchor decisions.
+- [x] T080 Update placement invariants/tests for reviewed anchors whose exact
+  learner-facing wording changed only to add Russian support.
+- [x] T081 Run focused tests, required validation, build, diff hygiene, and
+  preflight after the review-fix memory update.
+- [x] T082 Address PR #206 review discussion `discussion_r3546310363` by
+  including rendered Introduction routes in the translation-completeness audit
+  scope.
+- [x] T083 Add structured route inventory evidence proving the audit covers all
+  currently rendered `Руководство` routes: manual section routes plus
+  Introduction routes.
+- [x] T084 Fix newly surfaced Introduction learner-facing residue
+  `Vision Zero` with immediate Russian support in
+  `src/data/pandemiaVialSection.ts`.
+- [x] T085 Add focused tests proving Introduction route data is audited and an
+  Introduction Spanish residue fails.
+- [x] T086 Refresh translation-completeness evidence and derived manual ticket
+  placement data affected by the Introduction wording fingerprint.
+- [x] T087 Run focused and required validations for the
+  `discussion_r3546310363` follow-up.
+- [x] T088 Address PR #206 unresolved P2 review thread `PRRT_kwDOSX65IM6PtscM`:
+  constrain `requiredProbeCoverage` in
+  `scripts/manual-guide-translation-completeness-audit.mjs` so both its
+  candidate match and its fallback evidence match are restricted to
+  `sectionId === "ch3-highways"`. A probe passes only when that section has a
+  non-unresolved candidate; do not change the whole-guide residue audit scope,
+  broaden exceptions, or use a matching residue from another manual or
+  Introduction route as substitute coverage. Refresh the committed translation
+  completeness evidence.
+- [x] T089 Add focused regression coverage in
+  `tests/manual-guide-translation-completeness-audit.test.mjs`: prove that all
+  required-probe evidence records point to `ch3-highways`, and that a supported
+  copy of a required phrase in another fixture route cannot make the audit pass
+  when the corresponding `ch3-highways` probe is absent or unresolved. Assert
+  the expected `required-screenshot-probe-missing` failure and retained
+  Chapter 3 scope in its evidence.
+- [x] T090 Run and record the review-follow-up verification: the focused audit
+  test, `node scripts/manual-guide-translation-completeness-audit.mjs --write`,
+  `pnpm run validate:manual-guide`, `pnpm run validate:content`, relevant full
+  tests/build or `pnpm run preflight` as feasible, and `git diff --check`.
+  Route any newly surfaced implementation feedback to Architect before final
+  validation.
+
+## PR #206 P2 Detector Follow-up Tasks
+
+- [x] T091 Confirm Implementation Agent assignment remains limited to PR #206,
+  this worktree/branch, and this detector follow-up; preserve all parallel
+  worktrees, branches, commits, PRs, dirty diffs, and process memory.
+- [x] T092 Replace reverse-parenthetical support detection with a structural
+  direct-pair rule. It must accept a genuinely adjacent Russian explanation
+  followed by its parenthesized Spanish term, and reject unrelated Cyrillic
+  context before a later `(ACOSO)` parenthesis, including context separated by
+  numbers, Latin tokens, sentence boundaries, or unrelated punctuation.
+- [x] T093 Replace the generic 2--8 character uppercase exception with a
+  finite reviewed identifier policy. Keep only justified exact identifiers or
+  explicit identifier classes; an unknown uppercase token and a learner-facing
+  uppercase Spanish word must remain unresolved without immediate Russian
+  support.
+- [x] T094 Update `src/data/manual-sections/ch5-gender-violence-prevention.ts`
+  so every learner-facing retained `ACOSO` occurrence has a direct Russian
+  explanation of the term/reporting line in the same rendered string or
+  logical item. Do not rely on `22676`, `SMS`, or unrelated preceding Russian
+  prose as translation support; preserve the official number, emergency, and
+  non-911-routing meaning.
+- [x] T095 Add focused audit regressions for invalid and valid reverse
+  parenthetical forms; rejection of generic uppercase Spanish despite its
+  shape; acceptance only of a reviewed explicit identifier; and the concrete
+  Chapter 5 `ACOSO` content/evidence disposition. Update affected content
+  tests only for the supported wording.
+- [x] T096 Regenerate
+  `content/validation/manual-guide-translation-completeness.evidence.json` and
+  refresh only deterministic dependent artifacts whose validators demonstrate
+  staleness. Record the changed counts/dispositions and preserve source-image,
+  local-first, and unrelated-manual boundaries.
+- [x] T097 Run and record `node scripts/check-feature-memory.mjs --worktree`,
+  the focused audit/content tests, the audit `--write`,
+  `pnpm run validate:manual-guide`, `pnpm run validate:content`, TypeScript,
+  full tests, build, `git diff --check`, and `pnpm run preflight` when feasible.
+  Route every newly surfaced Implementation Agent feedback item to Architect.
+- [ ] T098 Have Review Agent recheck both P2 threads, the exact structural
+  detector boundary, finite exception policy, Chapter 5 support, refreshed
+  evidence, and regression coverage. Orchestrator then invokes new final
+  Architect validation followed by final Analyst validation on the new
+  effective content head.
+- [x] T099 Address PR #206 review thread `PRRT_kwDOSX65IM6P8IoE` (comment
+  `3560691165`) as a narrow regulatory-sign meaning correction. In the focused
+  R.1 `NO AVANZAR` source-card learner-facing wording, replace the erroneous
+  parenthesized `обгон запрещен` with `Проезд запрещен`, matching the existing
+  structured translation and catalog record. Preserve `Обгон запрещен` solely
+  for the distinct `PROHIBIDO ADELANTAR` / `NO ADELANTAR` sign and leave all
+  protected source pixels unchanged.
+- [x] T100 Add a focused regression test or deterministic invariant across the
+  R.1 `NO AVANZAR` card's learner-facing alt/caption and structured term
+  translation: it must require `Проезд запрещен` and reject `обгон запрещен`.
+  The same coverage must prove the separate `PROHIBIDO ADELANTAR` / `NO
+  ADELANTAR` record continues to use `Обгон запрещен`.
+- [x] T101 Regenerate
+  `content/validation/manual-guide-translation-completeness.evidence.json` and
+  refresh only source/data fingerprint or visual-completeness artifacts whose
+  checks establish that the corrected learner-facing text made them stale.
+  Record the exact artifacts and reason; do not broaden exceptions or alter
+  unrelated sign/source-image content.
+- [x] T102 Run and record the focused sign/content and translation-audit tests,
+  audit evidence generation, `pnpm run validate:manual-guide`,
+  `pnpm run validate:content`, TypeScript, full tests, build, `git diff
+  --check`, and `pnpm run preflight` when feasible.
+- [ ] T103 Have Review Agent recheck `PRRT_kwDOSX65IM6P8IoE`, the R.1 versus
+  no-overtaking semantic boundary, the regression invariant, and all refreshed
+  deterministic evidence. Only after a passing review may Orchestrator invoke
+  fresh final Architect validation and then final Analyst validation on the new
+  effective content head.
+- [x] T104 Address PR #206 P2 discussion `discussion_r3560828500`: replace the
+  focused-card-only T100 R.1 invariant with a fail-closed inventory over every
+  currently rendered learner-facing R.1 ID. The exact expected set is
+  `app4regulatory-p185-003-no-avanzar-catalog-entry`,
+  `app4-regulatory-no-avanzar-source-card`,
+  `app4-regulatory-anexo-panel-01-source-card`, and
+  `app4-regulatory-page-185-source-card`. Collect the catalog record and
+  regulatory source-card term rows from the records used by the renderer,
+  normalize `NO AVANZAR` / `No avanzar` only for matching, and fail on a
+  missing or unexpected rendered R.1 ID. Require `Проезд запрещен` and reject
+  `обгон запрещен` for every ID; preserve the separate no-overtaking contract.
+- [x] T105 Add focused regression coverage proving the exact four-ID inventory
+  passes, and that removal, mistranslation, or incorrect identity of either
+  `app4-regulatory-anexo-panel-01-source-card` or
+  `app4-regulatory-page-185-source-card` fails. Run the focused content and
+  invariant tests plus `pnpm run validate:manual-guide` and `pnpm run
+  validate:content`; refresh only deterministic evidence that the validators
+  report stale, then record all results and any Implementation Agent feedback.
+- [ ] T106 Have Review Agent recheck `discussion_r3560828500`, the exact
+  four-ID inventory/completeness proof, negative regression fixtures, R.1
+  versus no-overtaking semantic boundary, and any refreshed deterministic
+  evidence. Only after passing review may Orchestrator invoke fresh final
+  Architect validation and then final Analyst validation on the new effective
+  content head.
+
+## Decisions
+
+- Decision: Scope is limited to the native interactive `Руководство` user
+  surface.
+- Decision: Use one implementation PR slice by default.
+- Decision: Add a deterministic text-surface translation-completeness audit
+  with committed evidence.
+- Decision: Spanish retained for learner recognition must receive immediate
+  parenthesized Russian translation or equivalent adjacent structured support.
+- Decision: `sourceTextEs`, source titles, IDs, URLs, hashes, asset paths,
+  route hashes, validation metadata, and protected source image pixels are not
+  learner-facing text residues for this audit.
+- Decision: Generic Spanish traffic terms cannot be accepted as untranslated
+  exceptions merely because they are official terms.
+- Review-fix decision: P2 thread `PRRT_kwDOSX65IM6PtscM` is valid. The
+  screenshot probes are acceptance probes for `ch3-highways`, not global
+  whole-guide terms. T088--T090 are the required implementation and verification
+  return; the earlier final-validation evidence is stale until this non-evidence
+  behavior/test/evidence change completes and roles revalidate.
+- Review-fix decision: P2 thread `PRRT_kwDOSX65IM6P8IoE` is valid. R.1 `NO
+  AVANZAR` has the canonical Russian meaning `Проезд запрещен`; `Обгон
+  запрещен` belongs to the separate `PROHIBIDO ADELANTAR` / `NO ADELANTAR`
+  no-overtaking sign. T099--T103 are the required narrow implementation,
+  evidence, verification, review, and fresh-validation return. Every prior
+  Architect and Analyst final-validation pass is stale because the reported
+  inline text is learner-facing product content, not evidence-only process
+  memory.
+- Review-fix decision: P2 discussion `discussion_r3560828500` is valid. The
+  semantic R.1 correction is correct, but T100 does not enumerate the rendered
+  R.1 term rows `app4-regulatory-anexo-panel-01-source-card` and
+  `app4-regulatory-page-185-source-card`; the individual catalog entry is also
+  learner-facing. T104--T106 require a complete exact four-ID invariant,
+  negative coverage proof, focused validation, independent review, and fresh
+  Architect-then-Analyst validation. Every prior final-validation pass is stale
+  because this changes the durable regression contract, not evidence-only
+  process memory.
+- Implementation decision: Confirmed assigned worktree
+  `/Users/chap/devel/cabadrive-worktrees/040-manual-translation-completion`,
+  branch/PR slice `codex/040-manual-translation-completion`, verified base
+  `origin/main` at `ddaa670022d240caa6861adbf30e2e6c8200223f`, and parallel
+  work preservation warning before product edits.
+- Implementation decision: Scope for edits remains `src/data/manual-sections/`,
+  manual-guide validation scripts/evidence/tests, package validation wiring,
+  focused E2E coverage, and this feature task log. Renderer/CSS changes are
+  deferred unless content/audit work proves they are necessary.
+- Implementation decision: Added
+  `scripts/manual-guide-translation-completeness-audit.mjs` as a deterministic
+  TypeScript AST/evaluation audit over `src/data/manual-sections/*.ts` instead
+  of a raw grep scan.
+- Implementation decision: The audit classifies learner-facing fields
+  separately from `sourceTextEs`, `sourceTitleEs`, route/hash/path/provenance
+  metadata, validation notes, and protected source-image pixels. It allows
+  retained Spanish only when immediate Russian support is present or when a
+  narrow official-name/acronym/URL-style exception is recorded.
+- Implementation decision: The committed evidence is
+  `content/validation/manual-guide-translation-completeness.evidence.json`.
+  The original implementation evidence covered 50 sections, 2920 inspected
+  learner-facing strings, 433 Spanish-residue records, 344
+  supported/translated records, 89 narrow exceptions, 0 unresolved records, and
+  all 11 required screenshot probes.
+- Implementation decision: Content fixes were sufficient. No renderer or CSS
+  changes were needed; existing manual-guide block shapes support adjacent
+  Spanish/Russian wording and remain selectable DOM text.
+- Implementation decision: Manual text edits changed ticket-placement content
+  fingerprints, so the placement baseline, runtime pages, reviewed shards,
+  topic routes, manifest seal, and validation evidence were refreshed
+  mechanically while preserving route/anchor decisions.
+- Implementation decision: Updated
+  `docs_project/project/frontend/manual-conversion-guidelines.md` because the
+  Spanish retention rule is reusable durable conversion guidance.
+- Review-fix decision: PR #206 findings `discussion_r3537379264`,
+  `discussion_r3537379273`, and `discussion_r3537389209` exposed that the
+  first audit had a detector/evidence blind spot. The review fix changes the
+  audit from dictionary-term discovery to meaningful Latin-segment discovery so
+  unmatched learner-facing Latin text is classified as supported, structured
+  pair, narrow exception, or unresolved finding.
+- Review-fix decision: Narrow exceptions remain allowed for official acronyms,
+  names, URLs, road/place/person names, legal identifiers, measurement units,
+  and similar non-prose text. Generic Spanish traffic, document, safety, and
+  learner-facing prose terms do not pass as exceptions without Russian support.
+- Review-fix decision: Newly surfaced residues were fixed in manual section
+  data rather than hidden in broader exceptions. The final strengthened evidence
+  covers 50 sections, 2920 inspected learner-facing strings, 1181 candidate
+  residue records, 994 supported retained/translated records, 187 narrow
+  exceptions, and 0 unresolved findings.
+- Review-fix decision: Manual wording changes changed source-fidelity hashes,
+  image-readability wording evidence, and ticket-placement fingerprints. Those
+  derived artifacts were refreshed consistently; `b-fallback-430` keeps the
+  same route and answer-bearing anchor with only added Russian support for
+  `trailer`.
+- Review-fix decision: `discussion_r3546310363` is valid because
+  `manualGuideNavigation` renders `introductionNavigation` under the same
+  `Руководство` surface. The audit now synthesizes Introduction route records
+  from `src/data/pandemiaVialSection.ts` and records a route inventory of 50
+  manual section routes plus 4 Introduction routes, 54 rendered guide routes in
+  total.
+- Review-fix decision: The expanded Introduction audit surfaced one
+  learner-facing retained term, `Vision Zero`; it now renders as
+  `Vision Zero (нулевая смертность и отсутствие тяжелых травм)` instead of
+  being treated as an untranslated exception.
+
+## Dead Ends
+
+- Initial `pnpm run validate:content` shell wrapper failed before validation
+  because zsh reserves the variable name `status`; reran with `rc`.
+- Initial full `pnpm run test` failed because existing content-contract tests
+  still asserted Spanish-only residue in Chapter 3/4 data. Updated those tests
+  to assert the intended supported Spanish/Russian form.
+- `pnpm run validate:content` and `pnpm run test` initially failed after manual
+  wording edits because manual ticket-placement fingerprints were stale. Ran the
+  placement generator, then refreshed reviewed placement fingerprints and
+  manifest seal mechanically; `pnpm run validate:manual-ticket-placement`
+  passed afterward.
+- During PR #206 review fixes, `pnpm run test` initially failed because exact
+  retention/placement invariants still expected the old unsupported wording for
+  `trailer`, `avenida`, `Isofix`, and `Latch`. Updated those tests to assert the
+  supported Spanish/Russian wording now present in manual content and reviewed
+  placement evidence.
+- During PR #206 review fixes, the first `pnpm run preflight` stopped at
+  `scripts/check-feature-memory.mjs --worktree` because product files had
+  changed before this review-fix evidence section was updated. This task log is
+  now touched in the same PR, and preflight must be rerun after this update.
+- During PR #206 review fixes, the first post-memory `pnpm run preflight`
+  reached E2E and failed only on stale Playwright expectations for an exact
+  `Отвлечения` heading and the updated `Metrobus de Buenos Aires` Russian
+  support text. Updated those E2E expectations and reran the affected tests
+  before the final preflight.
+- During `discussion_r3546310363` review fixes, the first expanded
+  `node scripts/manual-guide-translation-completeness-audit.mjs --write` failed
+  after writing evidence because Introduction route `intro-road-safety-plan`
+  retained `Vision Zero` without adjacent Russian support. Fixed the content
+  instead of broadening exceptions.
+- During `discussion_r3546310363` review fixes, the first
+  `pnpm run validate:content` and full `pnpm run test` failed because the
+  Introduction wording changed protected manual source fingerprints. Ran
+  `pnpm run generate:manual-ticket-placement` to refresh only derived placement
+  data.
+- During `discussion_r3546310363` review fixes, the next full `pnpm run test`
+  failed on a stale exact Introduction content assertion for `Vision Zero`.
+  Updated the assertion to require the new immediate Russian support.
+
+## Known Issues
+
+- No unresolved learner-facing Spanish residues remain under the new audit.
+- Architect disposition: resolved; the audit has no remaining learner-facing Spanish residues.
+- Build output still reports existing large Rollup chunk warnings for major app/content bundles; this is pre-existing bundle-size noise and not caused by a new runtime dependency for this feature.
+- Architect disposition: accepted as pre-existing and non-blocking; no action is required in this feature.
+
+## Implementation Agent Feedback
+
+- Manual ticket-placement reviewed fingerprints are sensitive to learner-facing
+  manual text edits. This implementation refreshed them mechanically, but future
+  manual wording changes should expect the same placement-evidence maintenance.
+- Disposition: accepted as known maintenance and no additional task is required.
+- PR #206 P2 follow-up: no new implementation feedback was surfaced. The
+  section-scoped probe rule uses existing audit inputs only and required no
+  renderer, content, exception-policy, or ticket-placement change; no
+  Architect disposition is needed beyond the assigned T088--T090 scope.
+  Architect disposition: resolved as no additional Implementation Agent
+  feedback; no additional task or ticket is required.
+- PR #206 P2 detector follow-up: no new Implementation Agent feedback was
+  surfaced. The explicit identifier policy covers only reviewed exact
+  identifiers, the changed Chapter 5 support text remains selectable DOM text,
+  and generated placement/image evidence remains valid. Review and final
+  validation remain the separate T098/Orchestrator stages.
+  Architect disposition: resolved as no additional Implementation Agent
+  feedback; no additional task, ticket, or product follow-up is required.
+
+## Architect Disposition of Implementation Agent Feedback
+
+- Disposition: accepted as known maintenance for future manual wording changes;
+  no additional task is required in this feature because this implementation
+  already refreshed the affected ticket-placement fingerprints, reviewed shards,
+  manifest seal, and validation evidence, and
+  `pnpm run validate:manual-ticket-placement` passed afterward.
+- Future ticket: not needed now. Future manual text-edit features should plan
+  for ticket-placement evidence refresh when learner-facing wording changes alter
+  placement fingerprints.
+- Additional feedback check: no other Implementation Agent feedback items are
+  recorded in this feature memory.
+
+## Final Architect Validation
+
+> **Stale as of PR #206 thread `PRRT_kwDOSX65IM6P8IoE` (comment
+> `3560691165`).** The validations recorded below predate the required
+> learner-facing R.1 `NO AVANZAR` correction in T099--T103 and must not be
+> used for merge or completion. Fresh Architect validation followed by Analyst
+> validation is required for the post-fix effective content head.
+
+- Architect validation pass: passed
+- Final Architect validation completed at: 2026-07-09T15:43:28Z
+- Architect validated effective content head: 950985e84b24081067ef1221e3a09b17b047ae33
+- Current PR head validated for final Architect context:
+  `ad299c42f8dacae323a8f7f1394009dac31c88d3`.
+- Current PR head note: commit `ad299c42` is after effective content head
+  `950985e84b24081067ef1221e3a09b17b047ae33` and changes only
+  `specs/041-manual-translation-completion/tasks.md`, so it is final
+  evidence/process-memory only and does not change product behavior, content,
+  tests, runtime files, durable docs, or validation scripts.
+- Cycle PR set reviewed: PR #206 on branch
+  `codex/040-manual-translation-completion`, including implementation commit
+  `bf0ddfb`, Architect feedback disposition commit `36bede2`, review-fix
+  commit `daf876a`, Introduction audit coverage commit `950985e`, and later
+  evidence-only commit `ad299c42`.
+- Validation basis: `feature-request.md`, `spec.md`, `plan.md`, this task log,
+  recorded verification evidence, review-fix evidence, Introduction route
+  follow-up evidence, and the Orchestrator-provided PR state showing green
+  required checks, clean merge state, resolved review threads, and current-head
+  no-findings review.
+- Architect conclusion: the implemented audit and evidence cover the native
+  `Руководство` surface, including 50 manual section routes and 4 Introduction
+  routes; screenshot probes and analogous learner-facing residues are covered;
+  retained Spanish is supported by immediate or structured Russian translation
+  or narrow recorded exceptions; protected image and local-first/runtime
+  boundaries remain intact; Implementation Agent feedback is dispositioned as
+  known future maintenance with no new task required for this feature.
+
+## Verification Evidence
+
+- PR #206 P2 detector follow-up implementation, 2026-07-10:
+  - Confirmed the assigned worktree
+    `/Users/chap/devel/cabadrive-worktrees/040-manual-translation-completion`,
+    branch `codex/040-manual-translation-completion`, base head
+    `97be1bf978076547f1723ddc19cea235792b9cb0`, and the parallel-work
+    preservation requirement before edits.
+  - Replaced arbitrary-Cyrillic reverse-parenthetical matching with a direct
+    structural Russian-label/parenthesized-Spanish pair check. The rule rejects
+    number-, Latin-token-, sentence-boundary-, and punctuation-separated
+    `ACOSO` contexts.
+  - Replaced the generic uppercase pattern with two finite reviewed identifier
+    lists recorded in translation-completeness evidence. `ACOSO`, `BUS`, and
+    `NO AVANZAR` are not identifier exceptions; all retained Chapter 5
+    `ACOSO` occurrences now have direct Russian support.
+  - `pnpm exec node --test tests/manual-guide-translation-completeness-audit.test.mjs tests/content-manual-guide-chapters.test.mjs`:
+    passed, 111/111 tests. This includes valid/invalid reverse-parenthetical,
+    generic-uppercase rejection, exact-identifier acceptance, and committed
+    Chapter 5 `ACOSO` evidence fixtures.
+  - `node scripts/manual-guide-translation-completeness-audit.mjs --write`:
+    passed; evidence reports 50 manual sections, 4 Introduction routes, 54
+    rendered routes, 3000 inspected strings, 1184 candidate residues, 991
+    supported records, 193 reviewed exceptions, and 0 unresolved findings.
+  - `pnpm run generate:manual-ticket-placement` and
+    `pnpm run validate:manual-ticket-placement`: passed; refreshed only the
+    dependent manual-pages/baseline data and retained 460 questions, 460
+    placements, 31 destination routes, 85 answer-bearing placements, and 375
+    fallbacks.
+  - `node scripts/manual-guide-image-readability-translations-audit.mjs --write`
+    and `node scripts/manual-guide-visual-completeness-audit.mjs --write`:
+    passed and refreshed their deterministic evidence.
+  - `node scripts/check-feature-memory.mjs --worktree`,
+    `pnpm run validate:manual-guide`, `pnpm run validate:content`, and
+    `pnpm exec tsc --noEmit`: passed.
+  - `pnpm run test`: passed, 483/483 tests. `pnpm run build` passed and
+    regenerated the service worker; existing Rollup chunk-size warnings remain
+    non-blocking. `git diff --check`: passed.
+  - `pnpm run preflight`: passed after the final task-log update, including
+    feature-memory/repository gates, content validation, 483 unit tests,
+    production build, and the full Playwright E2E suite.
+
+- Architect read-only context:
+  - Branch/worktree observed as
+    `codex/040-manual-translation-completion...origin/main`.
+  - `specs/041-manual-translation-completion/feature-request.md` exists.
+  - `package.json` currently wires `validate:manual-guide` through source
+    fidelity, visual completeness, and image readability/translation audits.
+  - Current `ch3-highways.ts` contains the screenshot-highlighted Spanish
+    residues in learner-facing `titleRu`, `textRu`, and `itemsRu` fields.
+  - Existing image readability audit demonstrates the preferred deterministic
+    evidence pattern for this feature's text audit.
+- Implementation setup:
+  - `pwd && git branch --show-current && git status --short --branch`:
+    `/Users/chap/devel/cabadrive-worktrees/040-manual-translation-completion`,
+    branch `codex/040-manual-translation-completion`,
+    `## codex/040-manual-translation-completion...origin/main`, with
+    untracked `specs/041-manual-translation-completion/` feature memory.
+  - Read before product edits: `.specify/memory/constitution.md`,
+    `docs_project/README.md`, `docs_project/project-idea.md`,
+    `docs_project/project/frontend/frontend-docs.md`,
+    `docs_project/project/backend/backend-docs.md`,
+    `docs_project/project/feature-inventory.md`,
+    `docs_project/screens/learning-and-exam-flows.md`,
+    `docs/specify/README.md`,
+    `specs/041-manual-translation-completion/feature-request.md`,
+    `specs/041-manual-translation-completion/spec.md`,
+    `specs/041-manual-translation-completion/plan.md`, and this `tasks.md`.
+- Implementation verification:
+  - `node scripts/manual-guide-translation-completeness-audit.mjs --write`:
+    passed and wrote
+    `content/validation/manual-guide-translation-completeness.evidence.json`.
+  - `node scripts/manual-guide-image-readability-translations-audit.mjs --write`:
+    passed after `termTranslations` wording changes and refreshed
+    `content/validation/manual-guide-image-readability-translations.evidence.json`.
+  - `pnpm run validate:manual-ticket-placement`: passed after refreshing
+    placement fingerprints; 460 questions, 460 placements, 31 destination
+    routes, density 1/12/45, 85 answer-bearing, 375 fallbacks.
+  - `pnpm exec node --test tests/manual-guide-translation-completeness-audit.test.mjs`:
+    passed, 5/5 subtests.
+  - `pnpm run validate:manual-guide`: passed; source fidelity, visual
+    completeness, image readability/translations, and translation completeness
+    audits all green.
+  - `node scripts/check-feature-memory.mjs --worktree`: passed.
+  - `pnpm exec tsc --noEmit`: passed.
+  - `git diff --check`: passed.
+  - `pnpm run validate:content`: passed; translation completeness audit reports
+    50 sections, 2920 strings, 433 residue records, 89 exceptions.
+  - `pnpm run test`: passed, 474/474 tests.
+  - `pnpm run build`: passed; generated service worker with 2156 cached assets.
+  - `pnpm exec playwright test tests/e2e/app.spec.ts -g "Manual guide Chapter 3 highways"`:
+    passed, 2/2 tests on Chromium desktop and mobile.
+  - `pnpm run preflight`: passed; includes feature-memory check, repo check,
+    content validation, unit tests, build, and full Playwright E2E. Full E2E
+    passed 102/102 tests.
+  - Staged implementation slice with `git add ...`.
+  - Created implementation commit `Complete manual guide translation audit`.
+  - Pushed branch `codex/040-manual-translation-completion` to origin.
+  - Opened ready PR: https://github.com/cucumberfalse/cabadrive/pull/206.
+- PR #206 review-fix verification, 2026-07-08T18:01:03Z:
+  - `node scripts/manual-guide-translation-completeness-audit.mjs --write`:
+    passed and refreshed
+    `content/validation/manual-guide-translation-completeness.evidence.json`.
+    Strengthened evidence reports 50 sections, 2920 inspected strings, 1181
+    candidate residue records, 994 supported retained/translated records, 187
+    accepted exceptions, and 0 unresolved findings.
+  - `pnpm exec node --test tests/manual-guide-translation-completeness-audit.test.mjs`:
+    passed, 8/8 tests, including non-dictionary Latin residue, document phrase,
+    alcohol-limit residue, and generic traffic-term rejection fixtures.
+  - `pnpm run generate:manual-ticket-placement`: passed; refreshed derived
+    manual ticket placement data for 460 immutable reviewed records.
+  - `pnpm run validate:manual-ticket-placement`: passed; 460 questions, 460
+    placements, 31 destination routes, density 1/12/45, 85 answer-bearing, 375
+    fallbacks.
+  - `pnpm run validate:manual-guide`: passed; source fidelity, visual
+    completeness, image readability/translations, and strengthened translation
+    completeness all green.
+  - `pnpm exec tsc --noEmit`: passed.
+  - `pnpm run validate:content`: passed; strengthened translation completeness
+    audit reports 50 sections, 2920 strings, 1181 residue records, 187
+    exceptions.
+  - `pnpm exec node --test tests/manual-ticket-placement.test.mjs`: passed,
+    18/18 tests after updating the reviewed exact anchor fixture for
+    `b-fallback-430`.
+  - `pnpm exec node --test tests/content-manual-guide-chapters.test.mjs`:
+    passed, 97/97 tests after updating the retention assertions for supported
+    `avenida`, `Isofix`, and `Latch` wording.
+  - `pnpm run test`: passed, 477/477 tests.
+  - `pnpm run build`: passed; generated service worker with 2156 cached assets.
+    Build still emits the existing large Rollup chunk warnings.
+  - `pnpm run preflight`: first review-fix run failed at feature-memory guard
+    before this evidence update; rerun required after this task-memory change.
+  - `pnpm exec playwright test tests/e2e/app.spec.ts -g "Manual guide opens Chapter 4 stress and distractions from direct routes|Manual guide full-width source image cards stay readable and avoid upscaling"`:
+    passed, 4/4 tests, after updating stale E2E expectations for the supported
+    text.
+  - `pnpm run preflight`: passed on rerun at 2026-07-08T18:07:47Z; feature
+    memory gate, repo baseline check, content validation, unit tests, build, and
+    full Playwright E2E all passed. Full E2E passed 102/102 tests.
+- PR #206 review-fix verification for `discussion_r3546310363`,
+  2026-07-08T21:01:23Z:
+  - `node scripts/manual-guide-translation-completeness-audit.mjs --write`:
+    first run failed after writing evidence because
+    `intro-road-safety-plan blocks.1.textRu` retained `Vision Zero` without
+    adjacent Russian support.
+  - `node scripts/manual-guide-translation-completeness-audit.mjs --write`:
+    passed after the Introduction content fix and refreshed
+    `content/validation/manual-guide-translation-completeness.evidence.json`.
+    Evidence now reports 50 manual sections, 4 Introduction routes, 54 rendered
+    guide routes, 3000 inspected strings, 1184 candidate residue records, 995
+    supported retained/translated records, 189 accepted exceptions, and 0
+    unresolved findings.
+  - `pnpm exec node --test tests/manual-guide-translation-completeness-audit.test.mjs`:
+    passed, 10/10 tests, including Introduction route inclusion and an
+    Introduction residue failure fixture.
+  - `pnpm run validate:manual-guide`: passed; source fidelity, visual
+    completeness, image readability/translations, and expanded translation
+    completeness all green.
+  - `pnpm exec tsc --noEmit`: passed.
+  - `git diff --check`: passed.
+  - `pnpm run validate:content`: first run failed only because manual ticket
+    placement derived data was stale after the Introduction wording change.
+  - `pnpm run test`: first run failed only because manual ticket placement
+    derived data was stale; rerun after placement refresh later failed on one
+    stale exact `Vision Zero` content assertion.
+  - `pnpm run generate:manual-ticket-placement`: passed and refreshed derived
+    manual ticket placement data for 460 immutable reviewed records.
+  - `pnpm run validate:content`: passed after placement refresh; manual ticket
+    placement remained 460 questions, 460 placements, 31 destination routes,
+    density 1/12/45, 85 answer-bearing, and 375 fallbacks.
+  - `pnpm exec node --test tests/manual-ticket-placement.test.mjs`: passed,
+    18/18 tests.
+  - `pnpm exec node --test tests/content-pandemia-vial-section.test.mjs`:
+    passed, 14/14 tests after updating the expected `Vision Zero` support.
+  - `pnpm run test`: passed, 479/479 tests.
+  - `node scripts/check-feature-memory.mjs --worktree`: passed.
+  - `pnpm run build`: passed; generated service worker with 2156 cached
+    assets. Build still emits the existing large Rollup chunk warnings.
+  - `pnpm run preflight`: passed; feature-memory gate, repo baseline check,
+    content validation, unit tests, build, and full Playwright E2E all passed.
+    Full E2E passed 102/102 tests.
+  - Posted GitHub review-thread reply
+    https://github.com/cucumberfalse/cabadrive/pull/206#discussion_r3547222078
+    summarizing the fix, coverage counts, refreshed evidence, and validation.
+- PR #206 P2 review-fix verification for `PRRT_kwDOSX65IM6PtscM`,
+  2026-07-09:
+  - `pnpm exec node --test tests/manual-guide-translation-completeness-audit.test.mjs`:
+    passed, 11/11 tests. The new cross-route fixture contains all supported
+    required phrases only in `ch3-speed`; it fails with
+    `required-screenshot-probe-missing`, and its emitted evidence retains
+    `ch3-highways` scope with no fallback field path. The committed-evidence
+    test also requires every passing probe record to name `ch3-highways`.
+  - `node scripts/manual-guide-translation-completeness-audit.mjs --write`:
+    passed and refreshed
+    `content/validation/manual-guide-translation-completeness.evidence.json`.
+    The 11 required probes now all point to `ch3-highways`; this corrected
+    prior cross-route records for `calzada`, `incorporación`, and `autopista`.
+  - `pnpm run validate:manual-guide`: passed; source-fidelity, visual,
+    image-readability/translation, and translation-completeness audits passed.
+  - `pnpm run validate:content`: passed; 50 manual sections, 4 Introduction
+    routes, 3000 inspected strings, 1184 residue records, 189 exceptions, and
+    0 unresolved findings; ticket placement remained 460 questions/placements.
+  - `pnpm run test`: passed, 480/480 tests.
+  - `pnpm run build`: passed and generated a service worker with 2156 cached
+    assets; the existing large Rollup-chunk warnings remained non-blocking.
+
+- PR #206 P2 R.1 regulatory-sign correction, 2026-07-10:
+  - T099 completed: corrected only the learner-facing R.1 focused-card `altRu`
+    from `NO AVANZAR (обгон запрещен)` to `NO AVANZAR (Проезд запрещен)`.
+    The card title and structured translation already used `Проезд запрещен`.
+    Protected official image pixels were not changed.
+  - T100 completed: added the focused `Appendix IV keeps R.1 NO AVANZAR
+    distinct from the no-overtaking sign in every learner-facing
+    representation` invariant. It requires R.1 card title, alt text, and
+    structured translation to use `Проезд запрещен`, rejects `обгон запрещен`
+    inside that card, and separately requires `PROHIBIDO ADELANTAR` and catalog
+    `NO ADELANTAR` to retain `Обгон запрещен`.
+  - T101 completed: `node scripts/manual-guide-translation-completeness-audit.mjs
+    --write` refreshed only
+    `content/validation/manual-guide-translation-completeness.evidence.json`:
+    the R.1 alt-text excerpt and content fingerprint changed; the audit passed
+    with 50 manual sections, 4 Introduction routes, 3000 inspected strings,
+    1184 candidate residues, 193 accepted exceptions, and 0 unresolved
+    findings. `pnpm run validate:content` then identified only the directly
+    dependent stale manual-ticket-placement source fingerprint. Running
+    `pnpm run generate:manual-ticket-placement` refreshed only
+    `content/manual-ticket-placement/manual-content-baseline.json` for
+    `app4-signs-regulatory.ts`; all 460 placements and their reviewed records
+    remained unchanged.
+  - T102 completed: `pnpm exec node --test
+    tests/content-manual-guide-chapters.test.mjs
+    tests/manual-guide-translation-completeness-audit.test.mjs` passed 112/112;
+    `pnpm run validate:manual-guide`, `pnpm run validate:content`,
+    `pnpm exec tsc --noEmit`, `pnpm run test` (484/484), `pnpm run build`,
+    `git diff --check`, `node scripts/check-feature-memory.mjs --worktree`,
+    and `pnpm run preflight` passed. The existing Rollup chunk-size warnings
+    during build remain non-blocking.
+  - T103 is deliberately pending: an independent Review Agent must recheck the
+    correction and deterministic evidence before Orchestrator starts fresh
+    Architect-then-Analyst final validation. No review thread was replied to or
+    resolved by this Implementation Agent.
+  - Implementation Agent feedback: none beyond the required T103 independent
+    review handoff; no broader content, source-image, runtime, or validator
+    change is needed.
+
+- PR #206 P2 R.1 rendered-row coverage follow-up for
+  `discussion_r3560828500`, 2026-07-10:
+  - T104 completed: replaced the focused-card-only assertion with one
+    fail-closed rendered inventory. It collects the individual catalog record
+    and `source-image-cards` structured term rows used by the renderer, then
+    requires exactly `app4regulatory-p185-003-no-avanzar-catalog-entry`,
+    `app4-regulatory-no-avanzar-source-card`,
+    `app4-regulatory-anexo-panel-01-source-card`, and
+    `app4-regulatory-page-185-source-card`. Every row must be exactly
+    `Проезд запрещен` and cannot contain `обгон запрещен`; the separate
+    `PROHIBIDO ADELANTAR` / `NO ADELANTAR` contract remains asserted.
+  - T105 completed: positive exact-set coverage and negative fixtures for
+    removal, mistranslation, and an incorrect identity of both the Anexo panel
+    and page-185 row pass. No content, source-image, or audit evidence changed;
+    `pnpm run validate:manual-guide` and `pnpm run validate:content` confirmed
+    all existing deterministic evidence remains current.
+  - Verification: `pnpm exec node --test tests/content-manual-guide-chapters.test.mjs`
+    passed 98/98; `pnpm run validate:manual-guide`, `pnpm run validate:content`,
+    `pnpm exec tsc --noEmit`, `pnpm run test` (484/484), `pnpm run build`,
+    `node scripts/check-feature-memory.mjs --worktree`, `git diff --check`,
+    and the complete `pnpm run preflight` passed. Existing Rollup chunk-size
+    warnings during build remain non-blocking.
+  - T106 remains pending for an independent Review Agent. Implementation Agent
+    feedback: none; this narrow test/contract change requires no data, audit,
+    runtime, or durable-document follow-up.
+
+## Cycle PR Set
+
+- PR #206 on branch `codex/040-manual-translation-completion`, head SHA `a43b200eddfd441f70e144cdf177f434546eccf8`, status: evidence-only process-memory update, included in final validation; prior effective content head `950985e84b24081067ef1221e3a09b17b047ae33`.
+- PR #206 on branch `codex/040-manual-translation-completion`, head SHA `31084fcfe3870dfe242527254f37c6d926d2c6ef`, status: effective content head after finalization process-memory repair, included in final validation.
+- PR #206 on branch `codex/040-manual-translation-completion`, head SHA `674220be8f7c820363dc585f690ea5ebecca30a0`, status: open and mergeable but GitHub reports `BLOCKED` while P1 `PRRT_kwDOSX65IM6Pt7A-` remains unresolved and the required `AI Review` check is cancelled; `baseline-checks`, `docker-validation`, `guard`, and `osv-scan` are successful. This is the effective content head after the section-scoped Chapter 3 screenshot-probe review fix and is included in final Architect validation.
+
+## Final Validation Evidence
+
+- Effective content head: 950985e84b24081067ef1221e3a09b17b047ae33
+- Effective content head: 31084fcfe3870dfe242527254f37c6d926d2c6ef
+- Effective content head: 674220be8f7c820363dc585f690ea5ebecca30a0
+- Architect return count: 0
+- Analyst return count: 0
+- Limit escalation: none
+- Current-PR-head read-only guard: current PR head `a43b200eddfd441f70e144cdf177f434546eccf8` references effective content head `950985e84b24081067ef1221e3a09b17b047ae33` on the same line, and later changes are final-validation evidence-only process memory.
+- Current-PR-head read-only guard: current PR head `31084fcfe3870dfe242527254f37c6d926d2c6ef` is the effective content head; any later commit only records final-validation evidence in role-owned process memory.
+- Current-PR-head read-only guard: current PR head `674220be8f7c820363dc585f690ea5ebecca30a0` is the effective content head. Any later commit must be final-validation evidence only in role-owned feature memory, must preserve `674220be8f7c820363dc585f690ea5ebecca30a0` as the effective content head, and must not change code, tests, runtime files, durable docs, validation scripts, content evidence, or review dispositions.
+- Effective content head: 6f82b3eba3e5bce686b6b0fa05c35fb5b16d7049
+- Current-PR-head read-only guard: current PR head `6f82b3eba3e5bce686b6b0fa05c35fb5b16d7049` is the effective content head; it contains only the finalization process-memory repair and preserves the P2 implementation, tests, content evidence, runtime, and durable documentation.
+- Architect validation pass: passed
+- Final Architect validation completed at: 2026-07-09T15:43:28Z
+- Architect validated effective content head: 950985e84b24081067ef1221e3a09b17b047ae33
+- Architect validated effective content head: 31084fcfe3870dfe242527254f37c6d926d2c6ef
+- Analyst validation pass: passed
+- Final Analyst validation completed at: 2026-07-09T15:46:27Z
+- Analyst validated effective content head: 950985e84b24081067ef1221e3a09b17b047ae33
+- Analyst feedback Architect disposition: no additional work or new feature request is required.
+- Architect validation evidence: passed for effective content head 31084fcfe3870dfe242527254f37c6d926d2c6ef after a read-only current-PR-head guard.
+- Analyst feedback Architect disposition: disposed as a non-product validation signal; the deterministic translation audit rerun passed, no implementation task or new feature request is needed.
+
+## Final Architect Validation Notes
+
+- Architect validation pass: passed
+- Final Architect validation completed at: 2026-07-09T21:23:42Z
+- Architect validated effective content head: 31084fcfe3870dfe242527254f37c6d926d2c6ef
+- Architect return count: 0
+
+## Final Architect Validation Notes
+
+- Architect validation pass: passed
+- Final Architect validation completed at: 2026-07-09T22:14:00Z
+- Architect validated effective content head: 674220be8f7c820363dc585f690ea5ebecca30a0
+- Architect return count: 0
+- Architect disposition: no return-limit escalation is required.
+- Architect validation evidence: reviewed the original request; current `spec.md`, `plan.md`, and task log; the P2 scope-fix diff; committed translation-completeness evidence; recorded local verification; the available GitHub check state (`baseline-checks`, `docker-validation`, `guard`, and `osv-scan` successful; `AI Review` cancelled); and the current-head no-findings review for `674220be8f7c820363dc585f690ea5ebecca30a0`.
+- Architect disposition: P1 `PRRT_kwDOSX65IM6Pt7A-` is valid final-validation-evidence work only. It requires refreshed role markers and a current-head guard for `674220be8f7c820363dc585f690ea5ebecca30a0`; it does not require product, content, test, runtime, validation-script, durable-document, or task-scope implementation. The prior Architect validation is superseded because it covered `31084fcfe3870dfe242527254f37c6d926d2c6ef`, not the current effective content head.
+- Architect validation evidence: the P2 change confines every required screenshot-probe candidate and fallback lookup to `ch3-highways`; all 11 committed probe records name that section, and the negative cross-route fixture rejects a supported copy outside Chapter 3. The whole-guide audit remains 54 rendered routes with 0 unresolved learner-facing residues; local-first and protected-image boundaries remain intact; no unresolved Implementation Agent feedback or new Architect task/ticket is required.
+
+## Final Architect Validation Notes
+
+- Architect validation pass: passed
+- Final Architect validation completed at: 2026-07-09T22:26:15Z
+- Architect validated effective content head: 6f82b3eba3e5bce686b6b0fa05c35fb5b16d7049
+- Architect return count: 0
+- Architect disposition: no return-limit escalation is required.
+- Architect disposition: the finalization process-memory repair is accepted as the effective content change; no additional Implementation Agent feedback, task, ticket, or product follow-up is required.
+- Architect validation evidence: reviewed the original request; current `spec.md`, `plan.md`, and task log; the P2 section-scoped probe outcome and committed evidence; prior no-findings review; and the `6f82b3eba3e5bce686b6b0fa05c35fb5b16d7049` repair, which changes only feature-memory finalization evidence and dispositions while preserving the completed P2 implementation, verification, local-first boundary, protected-image boundary, and zero unresolved learner-facing residues.
+
+## Cycle PR Set
+
+- PR #206 on branch `codex/040-manual-translation-completion`, head SHA `15f9b42b278d70b2aea80f700534a031710f1bbf`, status: effective content head after the T091--T106 detector, R.1 semantic, and rendered-row coverage follow-ups; included in final validation.
+
+## Final Validation Evidence
+
+- Effective content head: 15f9b42b278d70b2aea80f700534a031710f1bbf
+- Architect return count: 0
+- Analyst return count: 1
+- Limit escalation: none
+- Current-PR-head read-only guard: current PR head `15f9b42b278d70b2aea80f700534a031710f1bbf` is the effective content head; `git diff --check` passed, all PR review threads are resolved, and the current head has no post-effective-head changes.
+
+## Final Architect Validation Notes
+
+- Architect validation pass: passed
+- Final Architect validation completed at: 2026-07-10T17:55:50Z
+- Architect validated effective content head: 15f9b42b278d70b2aea80f700534a031710f1bbf
+- Architect return count: 0
+- Architect disposition: prior Architect final validations are superseded because their effective content heads precede the non-evidence T091--T106 product, test, evidence, and feature-memory changes; no return-limit escalation, additional implementation task, ticket, or product follow-up is required.
+- Architect validation evidence: reviewed the original request; current `spec.md`, `plan.md`, and task log; T091--T106 scope and verification evidence; the exact four-ID R.1 inventory and negative regression coverage; the local checks at this head (`node scripts/check-feature-memory.mjs --worktree`, focused 112/112 tests, `pnpm run validate:manual-guide`, `pnpm run validate:content`, and `git diff --check`); GitHub's resolved review threads and no-findings review for `15f9b42b278d70b2aea80f700534a031710f1bbf`; and current required-check state, where `baseline-checks`, `docker-validation`, `guard`, and `osv-scan` are successful while `AI Review` remains in progress for finalization.
+- Architect disposition: the Implementation Agent Feedback remediation above is a non-evidence process-memory change outside the strict finalization-evidence grammar. It supersedes the final validation for `15f9b42b278d70b2aea80f700534a031710f1bbf`; the commit containing this remediation must be treated as a new effective content head and must receive fresh Architect validation followed by fresh Analyst validation.

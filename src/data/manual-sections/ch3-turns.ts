@@ -38,7 +38,7 @@ export const ch3TurnsSection: ManualGuideSectionContent = {
         "Anticipar la maniobra 30 mts. antes con la luz de giro correspondiente. Reducir la velocidad paulatinamente...",
       itemsRu: [
         "Предупредить о маневре за 30 м соответствующим указателем поворота.",
-        "Постепенно снизить скорость до выполнения поворота в bocacalle.",
+        "Постепенно снизить скорость до выполнения поворота в bocacalle (зоне перекрестка/угла).",
         "Выполнять маневр на умеренной скорости.",
         "Сохранять внимание к пешеходам, велосипедистам и транспорту, который уже начал пересечение."
       ]

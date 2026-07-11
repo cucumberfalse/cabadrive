@@ -5,11 +5,11 @@
   "protectedSources": [
     {
       "path": "content/manuals/gcba-manual-vehiculo-4-ruedas-2023/interactive-guide/section-registry.chapters-1-2.json",
-      "sha256": "3484f0b0c1de551504b58079ecfac90c6954f1b5f8afbc2149fd8aaf95249571"
+      "sha256": "6250cd27e225cd56a4ffe83068b448e8d6c17daceeea4e1e8f46f95c308222e8"
     },
     {
       "path": "src/data/manual-sections/app1-other-required-safety-elements.ts",
-      "sha256": "0654c5217414c050a71ee59373c087718fe59e4cabc50f35fb6c7c8d19b45b25"
+      "sha256": "8288ae140752e29b9dbb5c5e03a45698d9c937991a5f039873b3c02ad60ba742"
     },
     {
       "path": "src/data/manual-sections/app1-recommended-safety-elements.ts",
@@ -17,7 +17,7 @@
     },
     {
       "path": "src/data/manual-sections/app1-safety-elements.ts",
-      "sha256": "65bcea35eda9ef2a79104994c3e8bcad0090784f704c1697cbe1dee531f3bca8"
+      "sha256": "6350dc85b8d39d39631d08bc44367d3da4775c59d230ec11b98c6bfadd3d96a1"
     },
     {
       "path": "src/data/manual-sections/app2-driving-factors.ts",
@@ -29,7 +29,7 @@
     },
     {
       "path": "src/data/manual-sections/app2-safe-driving.ts",
-      "sha256": "384f510c913d697bda4df1ab1361a3945e7b15a9b913455a66c9b6ffdab6a908"
+      "sha256": "ea3ea0d006f3aab09baca24d06173440b46c05e1f0025f78a6e689f45a4a5fbe"
     },
     {
       "path": "src/data/manual-sections/app2-safety-elements.ts",
@@ -41,7 +41,7 @@
     },
     {
       "path": "src/data/manual-sections/app3-cargo-driver-profile.ts",
-      "sha256": "af4e88df91b570cfe3c36e034aa5c6a04fba879888c1853d99f684b65320ea72"
+      "sha256": "8f867261613de5c3b4479780fb86fd4d2a1dbffcea74ed5e7c48a57fa4de5010"
     },
     {
       "path": "src/data/manual-sections/app3-driving-factors.ts",
@@ -49,15 +49,15 @@
     },
     {
       "path": "src/data/manual-sections/app3-highways.ts",
-      "sha256": "29281cf4b264e33e889c4c92befb61b5b4960a4570ff1534e83c7fdbcdddb523"
+      "sha256": "9fd19d7d877d6a447433adfd150b3e99e65b578016424a8bc300315c1d43627b"
     },
     {
       "path": "src/data/manual-sections/app3-safe-driving.ts",
-      "sha256": "80c1d9822462ba9629a149415eb363379aed96ff20a9a25ad29462ed7cba1967"
+      "sha256": "1eced6d1b2853002e8e49f6bc0c96625182455de24c85f8df9e83bd607c743cf"
     },
     {
       "path": "src/data/manual-sections/app3-safety-elements.ts",
-      "sha256": "3f12429633376d5538d13cc5a5d4701f430b2363f96427a692b802ee92cab78f"
+      "sha256": "01f7c3ddc890f2cd0701885cc892275319842462aa5e425f14f9e344182ababe"
     },
     {
       "path": "src/data/manual-sections/app3-social-responsibility.ts",
@@ -69,11 +69,11 @@
     },
     {
       "path": "src/data/manual-sections/app4-signs-informational.ts",
-      "sha256": "7651df8fde3c62d6a691c001d2bd72de23ea5ae231dbcb00b07009365e24dd10"
+      "sha256": "d99d1e9906ab1048eb26bd3ddccfc29b07744500d161d0d3a4732737296bb901"
     },
     {
       "path": "src/data/manual-sections/app4-signs-regulatory.ts",
-      "sha256": "76ad7aa8edac28b780999adb64f2ce12b8cd61993692728b5ecf4da166f2d91a"
+      "sha256": "0a149e80251973fb277ec0bd06fb0dae0d624cfddb49fff669203494e7b6bbe1"
     },
     {
       "path": "src/data/manual-sections/app4-signs-temporary.ts",
@@ -89,7 +89,7 @@
     },
     {
       "path": "src/data/manual-sections/ch1-bicycle.ts",
-      "sha256": "0b0c8142596c0278abb765a7b0c0b219d34889263f3323446e899e163594e7db"
+      "sha256": "e072a5c0814b9451d027a192bfb10b09bb89cc82986a4b45aff026071d2fadd6"
     },
     {
       "path": "src/data/manual-sections/ch1-cities-for-people.ts",
@@ -97,15 +97,15 @@
     },
     {
       "path": "src/data/manual-sections/ch1-pedestrian-priority.ts",
-      "sha256": "2b349bb38d176d18cc12778c13eb344fb9f24db87278ceeb93aa615baf7d77c0"
+      "sha256": "c3e643e9ff5612a668095ca39a48d5e6bda52accfc5fc2238f13b01ddf7b730d"
     },
     {
       "path": "src/data/manual-sections/ch1-public-transport-system.ts",
-      "sha256": "d839c06ad6f54d22778076f849fb9c0e499ed8621e02a6f1bbae65dc0c804720"
+      "sha256": "d73be7eab5963cf21111c34f1e1d74f2e5a3288f293d6c30c64d2e0f3b9eb14e"
     },
     {
       "path": "src/data/manual-sections/ch1-shared-trip.ts",
-      "sha256": "1653fe9410d075570023384fec3ffbeb2f6f1afa16ab0d6f1f6e091d933fffd3"
+      "sha256": "0d1548f741e1576f4fa33155f51b4fa8353c162f15ad7149c4e69af1d34fd52c"
     },
     {
       "path": "src/data/manual-sections/ch1-sustainable-mobility.ts",
@@ -113,7 +113,7 @@
     },
     {
       "path": "src/data/manual-sections/ch2-incident-obligations.ts",
-      "sha256": "056c58cb646cff72abc841e14f4b7d8ad44593635d3a6d6d79c9262a61cb5edf"
+      "sha256": "776a90b8a4418054baa8524df0ff83b2445362cc4674a125859a7249f4a2e6da"
     },
     {
       "path": "src/data/manual-sections/ch2-legal-responsibility.ts",
@@ -121,59 +121,59 @@
     },
     {
       "path": "src/data/manual-sections/ch2-required-documents.ts",
-      "sha256": "e7c7db38bb26860ac7b79579da09d8f93fbcf9d9448f4fac2d8c4c0e2b770884"
+      "sha256": "672f7e56270ad1e7befb09ea9a41fc0b0a95c00c52ed4862a160619c12353e4b"
     },
     {
       "path": "src/data/manual-sections/ch2-scoring.ts",
-      "sha256": "be7363beaf045830f690bed4b9c409df695a81a5d3db1d59ec0d08b69ef06b48"
+      "sha256": "56863360ded8a923f2024c498b2806113c09a74d30625aa52156a0e29bba3515"
     },
     {
       "path": "src/data/manual-sections/ch3-adverse-conditions.ts",
-      "sha256": "8dc701cebab46b80e627f3285ea964d6e51adcd80b8684a06f4d7f83fad5f582"
+      "sha256": "3199821ca0f73d0b8369637b54d19841a83f94e0d2f8396dd90b89ad05c5011f"
     },
     {
       "path": "src/data/manual-sections/ch3-highways.ts",
-      "sha256": "bea405b5757e495b491df6c944dc9a279fc4da8519b5f59ed177d2a82019eb5f"
+      "sha256": "e30af068c9ac834d91b5ecd0ef4f5b155901b2973b4751fc415fcd1db2f2df26"
     },
     {
       "path": "src/data/manual-sections/ch3-lights.ts",
-      "sha256": "7e85fb8893ca1037e287f7825cd7aabcd97ec1d941e343e17011684a86c8a302"
+      "sha256": "1581872fba42b1b301c181f5feaca324945ba4540b214bc824c2ec27c46f143d"
     },
     {
       "path": "src/data/manual-sections/ch3-overtaking.ts",
-      "sha256": "63966ddafcaf80018765d6797df25578f81c364eb5ab9859bc4b8429093520ff"
+      "sha256": "73b22ae9af45c2d75ea9e4619c73eec11e5250995a263c1d78d2cc9d694a6e64"
     },
     {
       "path": "src/data/manual-sections/ch3-priority-of-rules.ts",
-      "sha256": "6936ddea7237d4b2626016f03b1cfe380fb06695ce818e0a6c14139ce0110837"
+      "sha256": "33a0a85b40ce7e30c53dc3f611e54c2ba967f2fe7593213f090f233718cd3922"
     },
     {
       "path": "src/data/manual-sections/ch3-right-of-way.ts",
-      "sha256": "335fb012970b3699300a3f5fe1afcd5adb0cfc9aab2ead2f802167645139e1b5"
+      "sha256": "c71d52d44c3a56dd08f620055f1f41fe69853e637dd88ddc4715d58ebcf63ba7"
     },
     {
       "path": "src/data/manual-sections/ch3-speed.ts",
-      "sha256": "3cea5d8501fe9374fd69e74e36ca40bc93d5807b45c7b121e0e8d6eead366452"
+      "sha256": "72c0f4b223dbc931aa1d00307fd1fa68af1dafbb0281eb29ee8ca90f6066cb7b"
     },
     {
       "path": "src/data/manual-sections/ch3-stopping-parking.ts",
-      "sha256": "0d9b471563b829ee2e6024edbb4b309bec9a1ef01d652546266eeecc12465f12"
+      "sha256": "af737414999e41a7117e3f305e60c2cb60352dc2ef72d6eca319a0275b54d753"
     },
     {
       "path": "src/data/manual-sections/ch3-turns.ts",
-      "sha256": "418cb0b79d91a483728cee8955b6483d509e2e4105c634592c425a5d3ac23e6f"
+      "sha256": "506f4176b2cd0fe085edecef4089fb4858329266522c18987712ff2a4f1792ce"
     },
     {
       "path": "src/data/manual-sections/ch4-alcohol-drugs.ts",
-      "sha256": "2a25f4275ab499e2160a99431062f32f10e78c13d66c1fe5c0a51b081961d077"
+      "sha256": "df4dacf8f63df3ad36046595ea6404dac04ff70b13c42716ac0f4a2261c65b76"
     },
     {
       "path": "src/data/manual-sections/ch4-distractions.ts",
-      "sha256": "ef8850f4ef1045f42dafb38311d2d9097ff79163514ce5f6259b4dd560a214cb"
+      "sha256": "7718d91027514c9202c4479b0b6b41147fea81c4177e734397299ce77c7eb541"
     },
     {
       "path": "src/data/manual-sections/ch4-sleep-fatigue.ts",
-      "sha256": "1b2537e5b35cdf26b531c633e4ffa0e34ded94109af280a142ead2352e69f719"
+      "sha256": "75795f57f759007ab15b6f4bc499597421d99eeb6a9126c32a7bf37756c93b72"
     },
     {
       "path": "src/data/manual-sections/ch4-stress.ts",
@@ -185,23 +185,23 @@
     },
     {
       "path": "src/data/manual-sections/ch5-attitude-types.ts",
-      "sha256": "d7488fcc8ee272b1b3b6887f39b7d7bdf2db494a5b15400a875bc2c2991712b3"
+      "sha256": "959c9f6f04caa43888701afdc77ab54a65e961d0ba550fac0af1fa0e62dad224"
     },
     {
       "path": "src/data/manual-sections/ch5-equal-society.ts",
-      "sha256": "aa546603161dcb032d2ffc5f962d668b7b5c9f9ff9f6ca10a8fa4e05c248df20"
+      "sha256": "b44b218c0ed7cb657b3bfcc7b22a29189c55b625175bd580bca504c001a26a87"
     },
     {
       "path": "src/data/manual-sections/ch5-gender-violence-prevention.ts",
-      "sha256": "ab869d0e27d61766b8ff7aa6ff570d9082245bd6a6285a074757eb0a94b9c677"
+      "sha256": "1d0a1029948c12ab98a52dba0029babd8e6a382e1dc9cceb2a4e7d9822cbfa4f"
     },
     {
       "path": "src/data/manual-sections/front-categories.ts",
-      "sha256": "7fc86aa3deae7b51af5b7f65304ae4b9ee9a7d5ec5bd42619b27529094dcdeb5"
+      "sha256": "7f2ed353343f0163a1b95d1962b6d91a10c8acc8dc179d842de37d2a97601810"
     },
     {
       "path": "src/data/manual-sections/front-glossary.ts",
-      "sha256": "c3fb0acbd39fb5e10eb38d6d60f2eb6469eab9eb37cff845e0b7f9b34bd1ce0e"
+      "sha256": "51b65f021e2c3f0a11f5d668ad941cc879dfac90a6784a4ad5f1db812d5e5e10"
     },
     {
       "path": "src/data/manual-sections/front-presentation.ts",
@@ -217,7 +217,7 @@
     },
     {
       "path": "src/data/pandemiaVialSection.ts",
-      "sha256": "47cc297635a60305b476bbc505884f7e80a96ad0416e65b1b9f9ab91c489509e"
+      "sha256": "2aa49c429360ee9a700fe67938758ec5c1db48c1414dddcca1017016446f9c7c"
     }
   ],
   "referencedImages": [
@@ -1781,7 +1781,7 @@
     },
     {
       "pageId": "app1-safety-elements",
-      "contentFingerprint": "8ae62236501e968d02b051f55597acb77e754f491aebe36b6f8a808bd9eeb82a"
+      "contentFingerprint": "060c842b82a036c16f979eb1cd5934784d9eac27666d722a1e21ecf7b7a37feb"
     },
     {
       "pageId": "app2-driving-factors",
@@ -1793,7 +1793,7 @@
     },
     {
       "pageId": "app2-safe-driving",
-      "contentFingerprint": "6c7db5e8282489d1b37fa59d01711cf535f64909a335127e3f8966efdd4dd0b3"
+      "contentFingerprint": "73a824b9575bba6af0017b4c8d16475e68a6606df11fb87b4c354ab97843f971"
     },
     {
       "pageId": "app2-safety-elements",
@@ -1805,7 +1805,7 @@
     },
     {
       "pageId": "app3-cargo-driver-profile",
-      "contentFingerprint": "4707c217262d73b4d998e30f9d4128276d9174cfa04c9e0fbc36f67f79aefdb2"
+      "contentFingerprint": "2997b90525b059ab3e4111cf49868ef9db14158abb2d90f322f53c1ddb405566"
     },
     {
       "pageId": "app3-driving-factors",
@@ -1813,15 +1813,15 @@
     },
     {
       "pageId": "app3-highways",
-      "contentFingerprint": "867f3460369c58e04cac26461edfbe80dec667ea1f1b162dac63209ec90aba55"
+      "contentFingerprint": "abfc25b5663d3f426eb72c2e2d3773255b3460015b515a7998e0997b8e394b83"
     },
     {
       "pageId": "app3-safe-driving",
-      "contentFingerprint": "e854ca8d5c6b500b6e1be9adbd047a8b7b63937b9906df5aa86c8031a335e477"
+      "contentFingerprint": "a7b4e55c9bff5c150e8e0cdf674bba85c2ea8d29eb885ac5b5fc4c908e9d0556"
     },
     {
       "pageId": "app3-safety-elements",
-      "contentFingerprint": "b12646c2c619212eebe9dde95fa4f4a82956b8455349ae05a6a71129349c81d9"
+      "contentFingerprint": "fd760218c39a586d2af5aefad7f2f61a81a630b3c4db7b79d5c2e7a61c85a932"
     },
     {
       "pageId": "app3-social-responsibility",
@@ -1833,7 +1833,7 @@
     },
     {
       "pageId": "app4-signs-informational",
-      "contentFingerprint": "bc34dea9ad61ba5aa52a869fdb8143e9d99f5d114189e040bf1d12ec99de8d50"
+      "contentFingerprint": "67af1fdd3cfb2ec4cc8a319ea7922b249108bde464c9f1211adddb64b13c99ac"
     },
     {
       "pageId": "app4-signs-regulatory",
@@ -1853,7 +1853,7 @@
     },
     {
       "pageId": "ch1-bicycle",
-      "contentFingerprint": "e0e71c87bbd923b639520b094561701c53a5eafd8321af5ecf686e805cc5d00e"
+      "contentFingerprint": "76871fc0f3ab24f84095d604f4c9ffe705ee20a79cd7261396fb913192a9354b"
     },
     {
       "pageId": "ch1-cities-for-people",
@@ -1861,15 +1861,15 @@
     },
     {
       "pageId": "ch1-pedestrian-priority",
-      "contentFingerprint": "dc6d89b965be2f6a551042bc74d54d5f8e2a7723951ad3a0e033b27ccce9ce10"
+      "contentFingerprint": "1f2c810616557fe295013d0036036b3c26cee6b813dedf7c3e332f30e42098d9"
     },
     {
       "pageId": "ch1-public-transport-system",
-      "contentFingerprint": "0cc381eae34c1b03f59f5bf0ae5dcf87d4e7e3d825084dd7dbac5cd21f382fdf"
+      "contentFingerprint": "05a7f37d169d33aa9375e54faeb35f36164cc44a69b9b1a6b28ac2ac08094659"
     },
     {
       "pageId": "ch1-shared-trip",
-      "contentFingerprint": "3c986bc54ff14788464ee2e979c1d9dffb2788c37c4d4a5d5d680d18c6e86c4c"
+      "contentFingerprint": "d17806f784ec9ac703333ed29f9e5a99cdbd53323def652ef934d226bb0021ad"
     },
     {
       "pageId": "ch1-sustainable-mobility",
@@ -1877,7 +1877,7 @@
     },
     {
       "pageId": "ch2-incident-obligations",
-      "contentFingerprint": "d0dcc4879ede314f922df7eb18ba8f2b5f3be57b2c3d34717c1afb40c7f20de5"
+      "contentFingerprint": "4a8dcb13fb5e5b84d462a63adebde9d3cbea4bbbed2f9bf37841bcfcfa0580f3"
     },
     {
       "pageId": "ch2-legal-responsibility",
@@ -1885,59 +1885,59 @@
     },
     {
       "pageId": "ch2-required-documents",
-      "contentFingerprint": "f43b87862ef7ba34d0e88fccea942ddf577fc04753a9ce09b2408b8c2c29b96e"
+      "contentFingerprint": "0ca11e4053986f90be8e7e2af0b91fb0f14a6e67180b070ef7d9c6dea850a9fb"
     },
     {
       "pageId": "ch2-scoring",
-      "contentFingerprint": "1988d63233f3da75fc366d9ffb09674259fa6435314468a886ee5f9c3e8807d7"
+      "contentFingerprint": "54dec382ea349fdc89229dea233ebfbb72d5b71e70d1875366de6912fe10345c"
     },
     {
       "pageId": "ch3-adverse-conditions",
-      "contentFingerprint": "6813853c2c4f09ac8f8a87fe4a32f50753fc56e0f5187fa1a4fb808ac9fa4ca8"
+      "contentFingerprint": "89cdbc038c32bb8cc2563662df08b9f3a951297716276179afa6ddccd2a88a29"
     },
     {
       "pageId": "ch3-highways",
-      "contentFingerprint": "af6a1c342f46e45046dc172116637cc337207754e968f9534f31b4fc577bc7aa"
+      "contentFingerprint": "fabf64067811ed511fa011933f6392f0a8272fcf6908dad68c590585021eb507"
     },
     {
       "pageId": "ch3-lights",
-      "contentFingerprint": "b8273fcd412b93cdfc9d3dda61d0f1c6cc7166dae5acfcca56d0df254467bb57"
+      "contentFingerprint": "0680c6704c7fcc3792bbe01931ded07a5b0e50ae5a11ed06004053510baa39be"
     },
     {
       "pageId": "ch3-overtaking",
-      "contentFingerprint": "a11c3cc5e7ec0fbb6e29a9f5851d1ceab50841f3f7d9ee183c5ef13dd7dff13e"
+      "contentFingerprint": "836c8d3cd1b7b63f6006ce003d4ba52344e28024e8b48b3b8f7799e68a59ff49"
     },
     {
       "pageId": "ch3-priority-of-rules",
-      "contentFingerprint": "65514dd65be9047a930aff29c5189229b56468d4fb838cf1e05757b1a72a2815"
+      "contentFingerprint": "f021a3208ecfa2c6ab7a5acf3ed457b902a0fdc63f5e7f68a938a98377fb939b"
     },
     {
       "pageId": "ch3-right-of-way",
-      "contentFingerprint": "40b36c76cb8e0d385f06ac81d3a00bf79185e5305f604f35e45fab49f29f974b"
+      "contentFingerprint": "e70896f5bd994663e2fbf063e25e02fa2bbffc962616f00ea92ffeba1dfd86e6"
     },
     {
       "pageId": "ch3-speed",
-      "contentFingerprint": "009ea695682908c2d21b4f0eb7d63a894b3f30a903e9470bf1f2dd9096bc9e60"
+      "contentFingerprint": "d29be9e73b245e4c3930713a61b21dc4a6ffc084c08e9f09bbbd924fcf6dba1c"
     },
     {
       "pageId": "ch3-stopping-parking",
-      "contentFingerprint": "578d13762e7525047295640fee01392ee6ef88b57d4f1dcc45b49df0f643c5cf"
+      "contentFingerprint": "349a719f2d5b65c9bfdbce40f7421a3c5245fa3d40945ffcde32a773005ed408"
     },
     {
       "pageId": "ch3-turns",
-      "contentFingerprint": "aaccd98b82b8e2242079c2109d290cf6381e947d57f858586589cbc0b4fee9d6"
+      "contentFingerprint": "b34a84641c645465b5a8a468f5e3e0d4b5c7389faaee836c349b9cfc4bfe1e77"
     },
     {
       "pageId": "ch4-alcohol-drugs",
-      "contentFingerprint": "3e79cf2b0d1d1d0c9d135fd90ba3929415d7e849f5d8f816a229577be5b70d90"
+      "contentFingerprint": "e474d9d5abfcf2af791f6b596000d425c331fc1ea2bff277212c796009537ee1"
     },
     {
       "pageId": "ch4-distractions",
-      "contentFingerprint": "d4ad7391215fd02c0627da42c7c055f696d08fead0aed5649491cadb61ebd7e5"
+      "contentFingerprint": "8708b57faa1a9770c84ccf5d8a4438b47057114855c74c0411cfe978b60ed1b2"
     },
     {
       "pageId": "ch4-sleep-fatigue",
-      "contentFingerprint": "05d81cd38155c1ac421c14a9a40e4af9a9960cbd8c9429aaab028044a1d8eb96"
+      "contentFingerprint": "14289a5081ef3a05f20a1c53557bec7ff519752756731b90fcd44cdc2148d1b5"
     },
     {
       "pageId": "ch4-stress",
@@ -1949,7 +1949,7 @@
     },
     {
       "pageId": "ch5-attitude-types",
-      "contentFingerprint": "7a41779e38bddd55566cf85159c8d039880cc3fbeb4882157271312733aa4202"
+      "contentFingerprint": "3bb293df6b4ba53d253a7cc06d983809143734f513196f4845c6e0ac08499fd1"
     },
     {
       "pageId": "ch5-equal-society",
@@ -1957,15 +1957,15 @@
     },
     {
       "pageId": "ch5-gender-violence-prevention",
-      "contentFingerprint": "79704973edc4c1c137b8ef66a10627d7c6034c72b566eb11e39b738740f29cff"
+      "contentFingerprint": "3e39bfc1b259db7f840914a28f083b9e0c2dfaf9e4de1f496869828ac712c402"
     },
     {
       "pageId": "front-categories",
-      "contentFingerprint": "8615cfc92caacba4c5fdcaf9ee867b4e5dc8565024b0a6198de77031caf7a0c2"
+      "contentFingerprint": "c065191b95351bd89bf89ddf3d04717a7fa5bd95869750f9ec68296dc33f9a04"
     },
     {
       "pageId": "front-glossary",
-      "contentFingerprint": "e94d60ae89313c68def61fd4ebda131dbe713b0d5170f29b5d2dc8eff65c77dc"
+      "contentFingerprint": "a19785eb54c1d33e2ee54cab1f0997f07c35f5a70cc14d249b596f8d6849b89b"
     },
     {
       "pageId": "front-presentation",
@@ -1985,9 +1985,9 @@
     },
     {
       "pageId": "intro-road-safety-plan",
-      "contentFingerprint": "2a4787682d96edb1d74ed405426558adc555dd4939eb6cc505e84a5d0b88622c"
+      "contentFingerprint": "30b8b2a8c120eaeda3f9127bc34da99597c1116ddd74c135a693b75c15864c0a"
     }
   ],
-  "aggregateSourceFingerprint": "10ae22d5b7759d0909adaa1436ad1a4bd5cb2caa5c2233303d1cc3d25e82d9bd",
+  "aggregateSourceFingerprint": "09f77586fdaa30c6b9e1c1d7eb06c0ba2076612f82aea1c816223a4d4d0eda97",
   "aggregateImageFingerprint": "dec6dbd54887b1aeb3d0d7bccd88449176fba01178ff3b616669b7f2b82c39a7"
 }
