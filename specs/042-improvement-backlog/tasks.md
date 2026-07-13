@@ -27,23 +27,29 @@
 - [x] T009 Review Agent independently reviewed current PR head
   `221885b7334746445e873427c884c73e108aa471` and evidence,
   with explicit disposition of the existing P1 and all acceptance/negative
-  cases. The outcome was changes required for the factual/count/acceptance
+  cases. The historical outcome was changes required for the factual/count/acceptance
   contradictions captured in T016--T022; Review Agent did not edit files or
   resolve its own findings.
-- [ ] T010 Orchestrator route each review finding to the proper role, obtain a
-  fresh current-head review after fixes, and resolve/outdate the P1 only after
-  complete memory is independently verified.
-- [ ] T011 Architect dispose every Implementation Agent feedback item as an
-  implementation task, later feature/ticket, or explicit not-needed decision.
-- [ ] T012 Orchestrator verify required checks, conflicts, review conversations,
-  current memory, acceptance evidence, and the complete cycle PR set.
-- [ ] T013 Architect perform final validation first and record pass, timestamp,
-  return count, and validated effective content head.
-- [ ] T014 Analyst, only after T013, perform final validation for the same
-  effective content head and record pass, timestamp, and return count in the
-  Analyst-owned intake artifact.
-- [ ] T015 Orchestrator run the current-head/effective-content-head evidence-only
-  guard, finalization helper, and merge PR #207 when every gate is green.
+- [x] T010 Orchestrator routed every historical review finding, obtained the
+  D-cycle no-findings review, and confirmed the P1/P2 conversations resolved or
+  outdated before the completed D validation cycle.
+- [x] T011 Architect disposed every Implementation Agent feedback item; the
+  explicit `None` item requires no implementation task, later feature, or ticket.
+- [x] T012 Orchestrator verified the D-cycle required checks, conflicts, review
+  conversations, current memory, acceptance evidence, and complete cycle PR set.
+- [x] T013 Historical completion: Architect validated the reviewed D cycle with
+  return count zero. Because later process-memory reconciliation changes the
+  effective head, Architect validation must be rerun and recorded only in the
+  latest append-only notes after current-head checks.
+- [x] T014 Historical completion: Analyst validated after Architect for the D
+  cycle with return count zero. Because later process-memory reconciliation
+  changes the effective head, Analyst validation must be rerun after the latest
+  Architect notes and recorded only in the latest append-only Analyst notes.
+
+Orchestrator finalization action: merge is executed externally only after the
+latest append-only role notes, current-head checks, review state, and explicit
+expected-head guard pass; this action cannot be pre-checked in a pre-merge
+repository commit.
 - [x] T016 Implementation Agent updated `Cycle PR Set`, `Verification Evidence`,
   and review context to identify reviewed current head
   `221885b7334746445e873427c884c73e108aa471`; after the fixes are committed and
@@ -85,10 +91,11 @@
   effective content head A `c248d1e66ef134779bda51a9ba2bd9ea96b73de8`
   and evidence/process head B
   `4691553b98f603ab7abe3812a2313a2f88e08eaf`. The factual/count dispositions,
-  semantic evidence, docs-only scope, and preflight evidence were rechecked,
-  but review outcome remains changes required because P2
-  `PRRT_kwDOSX65IM6Qf71G` found the DSSIM proposal defect assigned in
-  T023--T026. The reviewed-head findings and original P1 remain blockers.
+  semantic evidence, docs-only scope, and preflight evidence were rechecked.
+  Historical review outcome was changes required because P2
+  `PRRT_kwDOSX65IM6Qf71G` found the DSSIM proposal defect; T023--T026 later
+  corrected it, obtained a subsequent no-findings review, and resolved or
+  outdated the P2 and original P1 conversations.
 - [x] T023 Implementation Agent corrected only the DSSIM proposal/acceptance
   guidance in `docs/improvements/priority/03-image-quality.md`. Preferred
   contract: downscale the master/reference to each candidate derivative's own
@@ -108,18 +115,17 @@
   plus one full `pnpm run preflight`. Record exact results against the new
   full effective content head C containing T023--T024, commit/push that head as
   assigned, and do not reuse A/B verification as current evidence.
-- [ ] T026 Implementation Agent make the subsequent tasks/evidence update a
+- [x] T026 Implementation Agent made the subsequent tasks/evidence update a
   separate evidence/process head D, recording full C and D SHAs in
-  `Verification Evidence`, `Cycle PR Set`, and pending validation memory.
-  Orchestrator must guard `C..D` as evidence/process-only and obtain a fresh
-  independent Review Agent review on D that verifies P2, the like-sized DSSIM
-  contract, current evidence, docs-only scope, and all prior findings before
-  any final-validation invocation.
+  `Verification Evidence` and the historical cycle memory. Orchestrator guarded
+  `C..D` as evidence/process-only; independent Review Agent review on D verified
+  the P2 fix, like-sized DSSIM contract, evidence, docs-only scope, and all prior
+  findings with no findings.
 
-T023--T026 are mandatory second review-fix work and block T010--T015. They do not
-constitute final Architect validation; final validation must be invoked anew
-only after head D has fresh checks, a passing independent review, and normal
-GitHub disposition of all blocking conversations.
+T023--T026 are complete. Their DSSIM correction, scoped/full verification,
+evidence-only guard, subsequent no-findings review, and conversation disposition
+complete all review-fix work. Latest-head role validation and external
+Orchestrator finalization follow the canonical policy below.
 
 ## Decisions
 
@@ -133,9 +139,9 @@ GitHub disposition of all blocking conversations.
   governs all repository measurements and names the date and audited revision.
 - D005: Detail heading variations are allowed when the required meaning is
   present; mechanical template normalization is not required.
-- D006: The P1 feature-memory finding is valid. It is not closed by
-  `feature-request.md` alone and remains a blocker until all memory, evidence,
-  current-head independent review, and normal thread disposition are complete.
+- D006: The historical P1 feature-memory finding was valid and was not closed by
+  `feature-request.md` alone; complete memory, evidence, current-head review,
+  and normal thread disposition subsequently addressed and outdated it.
 - D007: The semantic review found two concrete count contradictions and fixed
   only their metadata rows: TЗ-P1 has six themes distributed across eight
   slices, and TЗ-P3 has five implementation stages. No proposal requirements
@@ -143,8 +149,8 @@ GitHub disposition of all blocking conversations.
 - D008: Shorter category/title wording in the README is an intentional index
   summary where it remains semantically equivalent to detail metadata. Detail
   documents retain the authoritative proposal wording.
-- D009: Independent Review Agent outcome for head
-  `221885b7334746445e873427c884c73e108aa471` is changes required, not a final
+- D009: Historical independent Review Agent outcome for head
+  `221885b7334746445e873427c884c73e108aa471` was changes required, not a final
   validation pass. Architect accepts all review findings as in-scope factual and
   internal-consistency defects and assigns exact remediation in T016--T022.
 - D010: Ticket-photo counts must distinguish filesystem identity from content
@@ -158,7 +164,7 @@ GitHub disposition of all blocking conversations.
 - D013: The usability inventory is 18 issues because its supported groups are
   seven plus eleven. README, detail prose, enumeration, and acceptance criteria
   must use that same identity/count.
-- D014: P2 `PRRT_kwDOSX65IM6Qf71G` is valid and blocks A/B. A universal DSSIM
+- D014: P2 `PRRT_kwDOSX65IM6Qf71G` was valid and blocked A/B. A universal DSSIM
   threshold is meaningful only after reference and candidate share dimensions;
   intended 480/800 px downsampling must not be measured by upscaling the
   derivative to master size. The preferred proposal contract is master/reference
@@ -167,6 +173,11 @@ GitHub disposition of all blocking conversations.
   per-class/per-size evidence and acceptance language. They are not permission
   to retain the current upscale-to-master comparison or an unsupported universal
   `<=0.01` bound. This cycle changes proposal documentation only.
+- D016: Canonical reconciliation removes duplicate mutable validation status.
+  The reconciliation commit cannot embed its own SHA; the latest append-only
+  Architect and Analyst notes written after current-head checks are authoritative
+  for role pass, timestamp, effective head, and return evidence, while external
+  expected-head finalization is authoritative for the actual merge head.
 
 ## Dead Ends
 
@@ -192,9 +203,9 @@ GitHub disposition of all blocking conversations.
 - Historical initial-implementation context: checks ran in the assigned worktree on branch
   `docs/improvement-specs`, with checked-out PR head
   `8d2030d646c39b808f3e0ff2ed3f51ac71b7837c` plus the scoped candidate changes
-  recorded by T003--T008. The post-commit/push head must receive fresh GitHub
-  checks and independent review; no result from the checked-out pre-memory head
-  is treated as evidence for the review-fix head.
+  recorded by T003--T008. At that historical stage, the pushed head required
+  fresh GitHub checks and independent review; later cycles supplied them, and no
+  pre-memory result is treated as later-head evidence.
 - `git diff --check` — exit 0, no whitespace errors.
 - `node scripts/check-feature-memory.mjs --worktree` — exit 0:
   `No configured product paths changed; feature-memory gate passes.`
@@ -255,11 +266,9 @@ GitHub disposition of all blocking conversations.
   passed for 460 questions and 276 image references; all 485 Node tests passed;
   production build passed; all 102 Playwright executions passed in 1.1 minutes.
   No new dead end was encountered.
-- The subsequent commit B is intentionally restricted to this `tasks.md`
-  process/evidence update. Its SHA cannot be self-recorded. Orchestrator must
-  read the remote current head and compare
-  `c248d1e66ef134779bda51a9ba2bd9ea96b73de8..HEAD`, confirming the delta is
-  evidence/process-memory-only before using A as the effective content head.
+- Historical head B `4691553b98f603ab7abe3812a2313a2f88e08eaf`
+  was restricted to the `tasks.md` process/evidence update; Orchestrator compared
+  A..B and confirmed that delta before the subsequent review cycle.
 
 ### Fresh second-review-fix candidate C verification
 
@@ -298,12 +307,10 @@ GitHub disposition of all blocking conversations.
   validation passed for 460 questions and 276 image references; all 485 Node
   tests passed; production build passed; all 102 Playwright executions passed
   in 1.1 minutes. No new dead end was encountered.
-- The subsequent head D is intentionally restricted to this `tasks.md`
-  process/evidence update. Its SHA cannot be self-recorded. Orchestrator must
-  read the remote current head and compare
-  `bdda9265d0a7237710cc9c849c053a6ba745f6eb..HEAD`, confirming the delta is
-  evidence/process-memory-only before using C as the effective content head and
-  before obtaining the fresh independent review required by T026.
+- Historical head D `ce2800f55d8d723a430fb515c4a6de60b53a04e6`
+  was restricted to the `tasks.md` process/evidence update; Orchestrator compared
+  C..D, confirmed the evidence/process-only delta, and obtained the T026
+  no-findings review before the completed D validation cycle.
 
 ### Semantic index/detail and minimum-field evidence
 
@@ -340,13 +347,14 @@ extra proposal.
 | 21 | P3 / M / maintainability/title agree; links 18, 20, P2 and stage 4 agree | Complete | Agrees |
 | 22 | P0 / S / legal summary agrees with detailed legal/docs category; links P1, 05 and stage 1 agree | Complete | Intentional shorter index category |
 
-- Pending GitHub evidence: current-head required checks, review-thread state,
-  mergeability, and conflict state are recorded by Orchestrator after review.
+- Subsequent D-cycle GitHub evidence recorded all five required checks successful,
+  all review conversations resolved or outdated, a no-findings review, and
+  CLEAN/MERGEABLE conflict-free state.
 
 ### Review-fix evidence
 
-- Review Agent inspected PR #207 at full head
-  `221885b7334746445e873427c884c73e108aa471` and returned changes required.
+- Review Agent inspected PR #207 at historical full head
+  `221885b7334746445e873427c884c73e108aa471` and historically returned changes required.
 - Accepted findings: cycle/evidence memory still described the pre-memory head;
   ticket photos incorrectly used 322 instead of 275 unique JPG/276 references;
   E2E prose conflicted between 55/project and the verified 51/project (102
@@ -367,7 +375,7 @@ extra proposal.
   `priority/03-image-quality.md:186`. The guidance makes small derivatives
   master-sized before comparison, so its universal threshold includes expected
   resize loss and does not isolate derivative quality.
-- Architect disposition: changes required. T023--T026 require a like-sized
+- Historical Architect disposition: changes required. T023--T026 required a like-sized
   reference/candidate QA contract (preferred), consistent proposal/AC evidence,
   new effective/evidence heads C/D, scoped plus full preflight verification, and
   fresh independent review. This is not final validation.
@@ -377,38 +385,33 @@ extra proposal.
   larger-than-master candidates fail, and `<=0.01` applies only to like-sized
   codec/process comparisons. The correction is committed and pushed in effective
   content head C `bdda9265d0a7237710cc9c849c053a6ba745f6eb`; fresh outcomes are
-  recorded above. P2 `PRRT_kwDOSX65IM6Qf71G` remains pending fresh independent
-  review and normal GitHub disposition on head D.
+  recorded above. Subsequent no-findings review on D accepted the fix, and P2
+  `PRRT_kwDOSX65IM6Qf71G` was resolved and outdated.
 
 ## Cycle PR Set
 
 | Purpose | Branch | PR | Verified base | Current/final head | Status | Included in final validation |
 |---|---|---|---|---|---|---|
-| Audit backlog, focused documentation corrections, and complete feature memory | `docs/improvement-specs` | [#207](https://github.com/cucumberfalse/cabadrive/pull/207) | `bd0ce1dd3e367f07db8528248f9cb00e2b296441` | Effective content head C `bdda9265d0a7237710cc9c849c053a6ba745f6eb`; later current head D is this tasks-only evidence update and must be read/guarded by Orchestrator | Open; T023--T025 complete; T026 fresh review, P2/original P1/AI Review disposition, and final validation remain blockers | Yes |
+| Audit backlog, focused documentation corrections, and complete feature memory | `docs/improvement-specs` | [#207](https://github.com/cucumberfalse/cabadrive/pull/207) | `bd0ce1dd3e367f07db8528248f9cb00e2b296441` | This reconciliation commit cannot embed its own SHA; the latest append-only Architect/Analyst notes plus external expected-head guard authoritatively name the effective and actual current heads | Implementation, review, and process fixes complete; exact latest-head role validation and external finalization are governed by the canonical policy below | Yes |
 
 No second cycle PR is currently authorized. If Orchestrator adds one, append it
 before final validation with purpose, branch, PR, head, status, and inclusion.
 
 ## Final Validation Evidence
 
-- Effective content head: `bdda9265d0a7237710cc9c849c053a6ba745f6eb`
-  (second-review-fix content candidate C; Architect/Analyst final validation
-  pending after T026 and normal review disposition). Prior A/B are superseded
-  for future final validation.
 - Architect return count: 0.
 - Analyst return count: 0.
 - Limit escalation: none.
-- Architect validation pass: pending.
-- Final Architect validation completed at: pending.
-- Architect validated effective content head: pending.
-- Analyst validation pass: pending; must occur after Architect.
-- Final Analyst validation completed at: pending.
-- Analyst validated effective content head: pending.
-- Current-PR-head read-only guard: pending. It must compare the actual PR head
-  with the full effective content SHA and prove every later commit, if any,
-  changes only role-owned final-validation evidence. Any documentation,
-  implementation, review-disposition, task-scope, or other non-evidence change
-  makes both validations stale.
+- Canonical role-validation authority: Architect and Analyst pass markers,
+  timestamps, return counts, and effective content head are authoritative only
+  in the latest append-only role-owned notes written in Architect-then-Analyst
+  order after checks and review for the actual current head.
+- Superseded role evidence: the prior D Architect/Analyst notes predate post-D
+  process-memory changes and do not validate the reconciliation effective head.
+- Current-PR-head guard policy: Orchestrator must compare the effective head in
+  the latest role notes with the actual PR head, prove any later delta is allowed
+  append-only role evidence, recheck current-head gates/review/conflicts, and
+  supply that actual head as the finalizer's explicit expected head.
 
 ## Implementation Agent Feedback
 
@@ -416,14 +419,3 @@ before final validation with purpose, branch, PR, head, status, and inclusion.
   corrections recorded in D007, not new backlog proposals. No unresolved
   improvement or divergence requires Architect disposition.
 - Architect disposition: not needed; no Implementation Agent feedback item exists.
-
-## Final Architect Validation Notes
-
-- Effective content head: ce2800f55d8d723a430fb515c4a6de60b53a04e6
-- Architect validation pass: passed
-- Architect return count: 0
-- Final Architect validation completed at: 2026-07-13T19:05:41Z
-- Architect validated effective content head: ce2800f55d8d723a430fb515c4a6de60b53a04e6
-- Architect validation evidence: Full single-PR cycle, acceptance evidence, tasks, Architect dispositions, Codex and independent no-findings reviews, all five required checks, resolved threads, CLEAN/MERGEABLE state, and customer intent passed with no gaps.
-- Architect validation evidence: current-PR-head guard references effective head ce2800f55d8d723a430fb515c4a6de60b53a04e6; the final evidence commit must be verified as append-only role-owned validation notes from that head before merge.
-- Open Architect dispositions: none
