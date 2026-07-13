@@ -89,7 +89,7 @@
   but review outcome remains changes required because P2
   `PRRT_kwDOSX65IM6Qf71G` found the DSSIM proposal defect assigned in
   T023--T026. The reviewed-head findings and original P1 remain blockers.
-- [ ] T023 Implementation Agent correct only the DSSIM proposal/acceptance
+- [x] T023 Implementation Agent corrected only the DSSIM proposal/acceptance
   guidance in `docs/improvements/priority/03-image-quality.md`. Preferred
   contract: downscale the master/reference to each candidate derivative's own
   width and height using the same documented resampling baseline, then compute
@@ -98,12 +98,12 @@
   A size-scoped threshold is an acceptable fallback only if each derivative
   class/size has an explicit empirically justified threshold and the proposal
   no longer claims one universal bound conflating intended downsampling loss.
-- [ ] T024 Implementation Agent update every dependent P3 QA example, command,
+- [x] T024 Implementation Agent updated every dependent P3 QA example, command,
   test-plan statement, metric target, and acceptance criterion so the chosen
   like-sized comparison contract is unambiguous for all derivative widths.
   Refresh the P3 semantic evidence and record disposition of P2
   `PRRT_kwDOSX65IM6Qf71G`; do not implement an image pipeline or validator.
-- [ ] T025 Implementation Agent rerun all scoped inventory/link/README/snapshot,
+- [x] T025 Implementation Agent reran all scoped inventory/link/README/snapshot,
   feature-memory, scope-only, and `git diff --check` commands from `plan.md`,
   plus one full `pnpm run preflight`. Record exact results against the new
   full effective content head C containing T023--T024, commit/push that head as
@@ -277,6 +277,50 @@ GitHub disposition of all blocking conversations.
   `c248d1e66ef134779bda51a9ba2bd9ea96b73de8..HEAD`, confirming the delta is
   evidence/process-memory-only before using A as the effective content head.
 
+### Fresh second-review-fix candidate C verification
+
+- Effective content head C:
+  `bdda9265d0a7237710cc9c849c053a6ba745f6eb`. This exact commit contains the
+  like-sized DSSIM proposal correction, P2 disposition, and refreshed P3
+  semantic evidence; it was pushed to `origin/docs/improvement-specs` before
+  this process/evidence update.
+- `git diff --check bd0ce1dd3e367f07db8528248f9cb00e2b296441...bdda9265d0a7237710cc9c849c053a6ba745f6eb`
+  — exit 0, no whitespace errors.
+- `node scripts/check-feature-memory.mjs` on C — exit 0:
+  `No configured product paths changed; feature-memory gate passes.`
+- Exact inventory commands from `plan.md` on C — exit 0: 24 Markdown files,
+  three priority files, and one file for every numbered identity `04..22`.
+- Exact local-link command from `plan.md` on C — exit 0:
+  `resolved local Markdown links in 24 files`.
+- Exact README coverage command from `plan.md` on C — exit 0:
+  `README uniquely indexes 22 detail documents`.
+- Exact snapshot `rg` command from `plan.md` on C — exit 0; README and overview
+  retain the 2026-07-11 audit date, full audited revision
+  `bd0ce1dd3e367f07db8528248f9cb00e2b296441`, and central qualification.
+- Exact base-scope guard on C — exit 0: every path changed from the verified
+  base is under `docs/improvements/**` or `specs/042-improvement-backlog/**`.
+  The T023--T025 candidate itself changed only
+  `docs/improvements/priority/03-image-quality.md` plus this `tasks.md`; no
+  image pipeline, validator, runtime, content, tests, scripts, workflows,
+  dependencies, or configuration were implemented.
+- Focused DSSIM contract guard on C — exit 0: FR-7, architecture diagram,
+  manifest schema, §6.5 algorithm/threshold, validator guidance, SVG and AI
+  distinctions, AC-5, unit plan, success metric, and P3 semantic evidence all
+  require like-sized comparison. Master/reference is reduced with explicit
+  `lanczos3` to candidate dimensions, candidate is not resized for QA, and the
+  derivative `<=0.01` threshold applies only to that codec/process pair.
+- `pnpm run preflight` on exact head C — exit 0 on the first second-follow-up
+  attempt: feature-memory and repository-baseline gates passed; content
+  validation passed for 460 questions and 276 image references; all 485 Node
+  tests passed; production build passed; all 102 Playwright executions passed
+  in 1.1 minutes. No new dead end was encountered.
+- The subsequent head D is intentionally restricted to this `tasks.md`
+  process/evidence update. Its SHA cannot be self-recorded. Orchestrator must
+  read the remote current head and compare
+  `bdda9265d0a7237710cc9c849c053a6ba745f6eb..HEAD`, confirming the delta is
+  evidence/process-memory-only before using C as the effective content head and
+  before obtaining the fresh independent review required by T026.
+
 ### Semantic index/detail and minimum-field evidence
 
 All 22 details retain context/problem, goals, actionable requirements/design or
@@ -347,25 +391,26 @@ extra proposal.
   is downscaled with the same explicit `lanczos3` baseline to each derivative's
   actual dimensions, candidate bytes are decoded without resize, mismatched or
   larger-than-master candidates fail, and `<=0.01` applies only to like-sized
-  codec/process comparisons. Exact head C and fresh checks are recorded after
-  the content commit is created and verified.
+  codec/process comparisons. The correction is committed and pushed in effective
+  content head C `bdda9265d0a7237710cc9c849c053a6ba745f6eb`; fresh outcomes are
+  recorded above. P2 `PRRT_kwDOSX65IM6Qf71G` remains pending fresh independent
+  review and normal GitHub disposition on head D.
 
 ## Cycle PR Set
 
 | Purpose | Branch | PR | Verified base | Current/final head | Status | Included in final validation |
 |---|---|---|---|---|---|---|
-| Audit backlog, focused documentation corrections, and complete feature memory | `docs/improvement-specs` | [#207](https://github.com/cucumberfalse/cabadrive/pull/207) | `bd0ce1dd3e367f07db8528248f9cb00e2b296441` | Prior effective content head A `c248d1e66ef134779bda51a9ba2bd9ea96b73de8`; current evidence/process head B `4691553b98f603ab7abe3812a2313a2f88e08eaf`; replace with C/D after T023--T026 | Open; T022 review changes required for P2 `PRRT_kwDOSX65IM6Qf71G`; T023--T026, original P1/AI Review disposition, and fresh review remain blockers | Yes |
+| Audit backlog, focused documentation corrections, and complete feature memory | `docs/improvement-specs` | [#207](https://github.com/cucumberfalse/cabadrive/pull/207) | `bd0ce1dd3e367f07db8528248f9cb00e2b296441` | Effective content head C `bdda9265d0a7237710cc9c849c053a6ba745f6eb`; later current head D is this tasks-only evidence update and must be read/guarded by Orchestrator | Open; T023--T025 complete; T026 fresh review, P2/original P1/AI Review disposition, and final validation remain blockers | Yes |
 
 No second cycle PR is currently authorized. If Orchestrator adds one, append it
 before final validation with purpose, branch, PR, head, status, and inclusion.
 
 ## Final Validation Evidence
 
-- Effective content head: pending replacement C. Prior candidate A
-  `c248d1e66ef134779bda51a9ba2bd9ea96b73de8` is superseded for future final
-  validation because T023--T024 require non-evidence documentation changes;
-  current evidence/process head B is
-  `4691553b98f603ab7abe3812a2313a2f88e08eaf`.
+- Effective content head: `bdda9265d0a7237710cc9c849c053a6ba745f6eb`
+  (second-review-fix content candidate C; Architect/Analyst final validation
+  pending after T026 and normal review disposition). Prior A/B are superseded
+  for future final validation.
 - Architect return count: 0.
 - Analyst return count: 0.
 - Limit escalation: none.
