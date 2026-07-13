@@ -45,7 +45,7 @@ Cabadrive — визуально-нагруженный тренажёр: стр
 ## 3. Не-цели
 
 - Замена стороннего банка фотографий билетов на собственную съёмку (отдельное продуктовое решение).
-- Перевод генерации на Linux (переносимость — [ТЗ-20](../20-cross-platform-asset-generation.md); здесь используем существующие Swift-скрипты, где они уже работают, и добавляем кросс-платформенные инструменты только для НОВЫХ шагов).
+- Перевод всей генерации на Linux (переносимость — [ТЗ-20](../20-cross-platform-asset-generation.md); здесь существующие Swift-скрипты используются только там, где их формат уже соответствует контракту, а JPEG-only рендер страниц требует отдельного будущего lossless-изменения Path A или заменяется сразу доступным Path B).
 - Редизайн вёрстки изображений (размеры контейнеров не меняем).
 - Оптимизация веса git-репозитория (см. [ТЗ-19](../19-repo-size-lfs.md)); здесь только не ухудшаем ситуацию осознанно.
 
@@ -65,7 +65,7 @@ Cabadrive — визуально-нагруженный тренажёр: стр
 - **FR-3**: Все фото билетов (класс c) апскейлены до ширины ≥1200 px с ручной верификацией отсутствия артефактов на выборке и полным журналом обработки.
 - **FR-4**: Для классов a–c генерируются AVIF + WebP + JPEG-фолбэк в наборе ширин; `<img>` в App.tsx переведены на `<picture>`/`srcset` + обязательные `width`/`height`.
 - **FR-5**: SVG (классы d, e) прогнаны через svgo с безопасным конфигом; визуальная идентичность подтверждена QA-гейтом.
-- **FR-6**: Новый скрипт `scripts/build-images.mjs` — единая точка генерации производных изображений + `content/image-derivatives.manifest.json`.
+- **FR-6**: Новый скрипт `scripts/build-images.mjs` — единая точка генерации производных изображений + `content/image-derivatives.manifest.json`; до генерации исполняемый master guard допускает в `content/assets-masters/**` только файлы с расширением `.png`, декодированным форматом PNG и MIME `image/png`, а любой `.jpg`/`.jpeg` или несовпадение extension/format/MIME завершает проверку с ошибкой.
 - **FR-7**: Перцептивный QA-гейт (DSSIM) встроен в `validate:content`: для каждого derivative эталон из мастера уменьшается тем же `lanczos3` до фактических ширины и высоты candidate, после чего сравниваются изображения одинакового размера; провал порога — ошибка CI.
 - **FR-8**: Пути производных изображений содержат контент-хеш (решение кеш-ловушки immutable).
 
@@ -81,9 +81,11 @@ Cabadrive — визуально-нагруженный тренажёр: стр
 
 ```
 content/official-documents/originals/*.pdf          content/assets/questions/*.jpg (574px)
-        │ (1) pdftoppm -r 300 (или Swift --scale 4.2)       │ (2) Real-ESRGAN x4 → PNG
+        │ (1) Path B: pdftoppm -png -r 300                  │ (2) Real-ESRGAN x4 → PNG
+        │     Path A: только будущий Swift --format png     │
         ▼                                                    ▼
-content/assets-masters/**  (PNG-мастера, максимальное разрешение)
+content/assets-masters/**  (только lossless .png, максимальное разрешение)
+        │ master guard: extension .png + format PNG + MIME image/png; reject .jpg/.jpeg
         │ (3) scripts/build-images.mjs  (sharp: resize → AVIF/WebP/JPEG, ширины 480/800/1200/1600/2400)
         ▼
 public/content/img/<class>/<id>-<w>.<hash8>.<ext>  +  content/image-derivatives.manifest.json
@@ -97,18 +99,18 @@ src: assetSrcSet(id) — хелпер собирает srcset/sizes из ман�
 
 ### 6.1. Класс (a): перерендер страниц учебника
 
-Два равнозначных пути; выбрать первый, если регенерацию делает владелец macOS-машины (сегодняшний режим), второй — если сразу закладываем переносимость.
+Path B уже соответствует lossless master-контракту и доступен сразу. Path A разрешается выбрать только после отдельного будущего изменения Swift API/выхода на lossless PNG и успешного прохождения master guard; текущий Swift-скрипт не соответствует контракту.
 
-**Путь A (существующий Swift-скрипт, минимальное изменение):**
+**Путь A (будущий conforming Swift-контракт; сейчас недоступен):**
 ```bash
 swift scripts/render-manual-pdf-pages.swift \
   content/official-documents/originals/gcba-manual-vehiculo-4-ruedas-2023.pdf \
-  content/assets-masters/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages \
-  --scale 4.2 --quality 0.95
+  content/assets-masters/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-%03d.png \
+  --scale 4.2 --format png
 ```
-`--scale 4.2` даёт примерно 2501×3536 (302,4 DPI) и поэтому соответствует порогу FR-1 `≥300 DPI`. Скрипт принимает дробный `Double` для `--scale` (см. `parseArguments`, scripts/render-manual-pdf-pages.swift:33-45). Этот существующий путь сохраняет JPEG-контракт скрипта с quality 0.95; lossless PNG-мастер доступен в целевом пути B.
+`--scale 4.2` даёт примерно 2501×3536 (302,4 DPI) и соответствует порогу FR-1 `≥300 DPI`, но это только часть контракта. Будущее изменение должно добавить явный `--format png`, писать `.png` destinations через `UTType.png` и не принимать/не применять JPEG `--quality` для master output. Текущий `scripts/render-manual-pdf-pages.swift` принимает `--quality`, создаёт `UTType.jpeg` и имена `page-%03d.jpg`; он JPEG-only, не соответствует lossless master-контракту и **не может заполнять `content/assets-masters/**`**. Path A становится selectable только после изменения самого скрипта и прохождения исполняемого extension/format/MIME guard; эта proposal-правка Swift-код не меняет.
 
-**Путь B (кросс-платформенный, рекомендуемый как целевой):** poppler `pdftoppm`.
+**Путь B (сразу conforming, кросс-платформенный):** poppler `pdftoppm`.
 ```bash
 brew install poppler        # Linux: apt install poppler-utils
 pdftoppm -png -r 300 -cropbox \
@@ -117,7 +119,7 @@ pdftoppm -png -r 300 -cropbox \
 ```
 Пояснение флагов: `-png` — lossless-мастер (JPEG-мастер запрещён: перекодирование JPEG→AVIF из уже сжатого источника накапливает артефакты); `-r 300` — 300 DPI (A4 → 2481×3508; для страниц с самым мелким текстом допускается `-r 400`); `-cropbox` — рендер по CropBox, отсекает возможные типографские поля MediaBox; `page` — префикс имён (`page-001.png`, нумерация с ведущими нулями при >99 страниц — в скриптах парсить glob'ом, не хардкодить формат). Быстрая альтернатива для больших батчей — `mutool draw -r 300 -o out/page%03d.png input.pdf` (brew install mupdf-tools); на типографике результат эквивалентен, банding-режим `-B 512` снижает пиковую память.
 
-Мастера кладутся в **новый каталог `content/assets-masters/`** (не в раздаваемый `content/assets/`!), финальные производные для раздачи создаёт build-images (6.4). Важно: JPEG-страницы в `content/assets/.../pages/` сейчас кешируются сервис-воркером лениво и валидируются sha256-пинами — их замена требует синхронного обновления манифестов метаданных (прогнать существующие `--write`-режимы аудитов).
+Мастера кладутся в **новый каталог `content/assets-masters/`** (не в раздаваемый `content/assets/`!) только как проверенные lossless PNG; текущий Swift JPEG-output туда направлять запрещено. Финальные производные для раздачи создаёт build-images (6.4). Важно: JPEG-страницы в `content/assets/.../pages/` сейчас кешируются сервис-воркером лениво и валидируются sha256-пинами — их замена требует синхронного обновления манифестов метаданных (прогнать существующие `--write`-режимы аудитов).
 
 ### 6.2. Класс (b): перегенерация кропов секций
 
@@ -154,7 +156,7 @@ xattr -dr com.apple.quarantine ~/tools/realesrgan && chmod +x ~/tools/realesrgan
 ### 6.4. Сквозной шаг: `scripts/build-images.mjs` (sharp)
 
 ```bash
-pnpm add -D sharp globby p-limit execa   # sharp 0.34.x, пребилды для macOS arm64 и Linux
+pnpm add -D sharp globby p-limit execa file-type   # sharp 0.34.x, пребилды для macOS arm64 и Linux
 # в package.json уже есть pnpm.onlyBuiltDependencies — добавить "sharp"
 ```
 
@@ -193,7 +195,7 @@ brew install dssim      # Rust-реализация kornelski; Linux: cargo inst
 
 Так DSSIM измеряет только потери кодека/обработки относительно like-sized reference, а не неизбежную потерю деталей при переходе master→480/800 px. Шкала: 0 = идентичны; для этих like-sized пар пороги: **< 0.003 отлично, 0.003–0.01 приемлемо, > 0.01 — брак** → автоматический пересжим с quality +5 (одна повторная попытка), после второго провала — ошибка скрипта. Выборочная SSIMULACRA2-проверка использует ту же like-sized reference/candidate пару (`brew install jpeg-xl`, бинарь `ssimulacra2`; шкала: 70+ высокое качество, 80+ практически без потерь): гонять на случайных 5 % вариантов, гейт ≥ 70. Чисто-JS ssim.js не использовать — классический SSIM плохо коррелирует с восприятием на артефактах современных кодеков.
 
-Новый валидатор `scripts/content-image-derivatives.mjs` (по образцу существующих аудитов, с `--write` для evidence): (1) каждый мастер имеет полный набор вариантов; (2) sha мастера совпадает с манифестом; (3) для каждого варианта manifest фиксирует фактические одинаковые candidate/reference dimensions и `kernel: "lanczos3"`, candidate не превышает master, а DSSIM like-sized пары ≤ 0.01; (4) натуральная ширина максимального варианта ≥ целевой ширины класса (FR-1/FR-2 закрепляются навсегда). Подключить в цепочку `validate:content` в package.json.
+Новый валидатор `scripts/content-image-derivatives.mjs` (по образцу существующих аудитов, с `--write` для evidence): (0) до чтения манифеста каждый файл в `content/assets-masters/**` обязан иметь `.png`, `sharp(...).metadata().format === "png"` и определённый по байтам MIME `image/png`; case-insensitive `.jpg`/`.jpeg`, JPEG bytes под `.png` и любой extension/format/MIME mismatch отклоняются; (1) каждый мастер имеет полный набор вариантов; (2) sha мастера совпадает с манифестом; (3) для каждого варианта manifest фиксирует фактические одинаковые candidate/reference dimensions и `kernel: "lanczos3"`, candidate не превышает master, а DSSIM like-sized пары ≤ 0.01; (4) натуральная ширина максимального варианта ≥ целевой ширины класса (FR-1/FR-2 закрепляются навсегда). Path A selectable только если его изменённый Swift output проходит шаг (0); текущий JPEG-only output обязан провалить его. Подключить валидатор в цепочку `validate:content` в package.json.
 
 ### 6.6. SVG (классы d, e): svgo
 
@@ -227,7 +229,7 @@ export function assetSrcSet(sourcePath: string): { srcSet: string; fallbackSrc: 
 
 **Этап 1 — инфраструктура (без визуальных изменений):**
 - [ ] `scripts/build-images.mjs` + sharp + манифест производных + инкрементальность
-- [ ] `scripts/content-image-derivatives.mjs` (валидатор) + подключение в `validate:content`
+- [ ] `scripts/content-image-derivatives.mjs` (lossless master extension/format/MIME guard + derivative validator) + подключение в `validate:content`
 - [ ] `svgo.config.mjs` + прогон SVG-классов + dssim-гейт на выборке
 - [ ] Хелпер `assetSrcSet()` + unit-тест (node --test, по образцу tests/domain.test.mjs)
 
@@ -238,7 +240,8 @@ export function assetSrcSet(sourcePath: string): { srcSet: string; fallbackSrc: 
 - [ ] Обновить sha256-пины question-images; `pnpm run validate:content` зелёный
 
 **Этап 3 — страницы учебника (класс a):**
-- [ ] Перерендер 200 страниц при 300 DPI (путь A или B) в мастера
+- [ ] Выбрать сразу conforming Path B либо сначала реализовать будущий Swift `--format png`/`.png` output без JPEG quality; текущий JPEG-only Path A выбирать и направлять в masters запрещено
+- [ ] Перерендер 200 страниц при ≥300 DPI в lossless `.png` masters и пропустить весь каталог через extension/format/MIME guard
 - [ ] Производные (профиль «текст»: 4:4:4) + srcset в обоих ридерах мануала
 - [ ] Обновить ленивое SW-кеширование под новые пути; проверить оффлайн-e2e (существующий тест офлайн-перезагрузки)
 
@@ -261,10 +264,11 @@ export function assetSrcSet(sourcePath: string): { srcSet: string; fallbackSrc: 
 - **AC-6**: Ни один `<img>` растровых классов без `width`/`height` (grep/e2e-проверка).
 - **AC-7**: Суммарный вес изображений, скачиваемых при первом открытии LearnView на 390 px вьюпорте, снижен ≥ 25 % (замер через Playwright route-логирование до/после).
 - **AC-8**: Повторный запуск `build-images.mjs` без изменений исходников не меняет байты производных (NFR-1, проверка git status).
+- **AC-9**: Исполняемый master guard подтверждает `.png` extension, декодированный PNG format и MIME `image/png` для каждого файла `content/assets-masters/**`; fixtures с `.jpg`, `.jpeg`, JPEG bytes под `.png` и extension/format/MIME mismatch завершаются ошибкой. Текущий JPEG-only Swift output не проходит и не может быть Path A; Path A selectable только после будущего `--format png`/`.png` изменения без JPEG quality, тогда как Path B проходит контракт сразу.
 
 ## 9. План тестирования
 
-- Unit (node --test): `assetSrcSet()` — сборка srcset из фикстурного манифеста; QA-фикстуры 480/800 px подтверждают, что reference уменьшается до фактических dimensions candidate одним `lanczos3`, candidate не ресайзится, like-sized DSSIM ≤ 0.01 проходит, несовпадение dimensions и candidate крупнее master отклоняются; отдельная фикстура с намеренно «плохим» like-sized dssim падает.
+- Unit (node --test): `assetSrcSet()` — сборка srcset из фикстурного манифеста; master fixtures подтверждают `.png` + decoded PNG + MIME `image/png`, отклоняют `.jpg`/`.jpeg`, JPEG bytes под `.png` и прочие extension/format/MIME mismatch, а Path A fixture разрешается только для будущего lossless Swift output; QA-фикстуры 480/800 px подтверждают, что reference уменьшается до фактических dimensions candidate одним `lanczos3`, candidate не ресайзится, like-sized DSSIM ≤ 0.01 проходит, несовпадение dimensions и candidate крупнее master отклоняются; отдельная фикстура с намеренно «плохим» like-sized dssim падает.
 - E2e (Playwright): AVIF-source присутствует; изображение вопроса отдаёт вариант ≤ 800 px на мобильном проекте (Pixel 7) и ≥ 1200 px на десктопе (проверка через request URL); отсутствие layout shift — сравнение boundingBox карточки до/после загрузки изображения.
 - Ручной QA: протокол просмотра апскейленных фото (этап 2); скриншот-сравнение страниц учебника (этап 3).
 - Регрессия: полный `pnpm run preflight` на каждом этапе.
@@ -274,6 +278,7 @@ export function assetSrcSet(sourcePath: string): { srcSet: string; fallbackSrc: 
 | Риск | Вероятн. | Влияние | Мера |
 |---|---|---|---|
 | Real-ESRGAN галлюцинирует текст на знаках/номерах | Высокая | Искажение учебного материала | Обязательный ручной QA текстовых кадров; fallback на бикубик; статус в манифесте |
+| JPEG-only Swift output ошибочно принят за lossless master | Высокая до изменения Path A | Накопление JPEG-артефактов во всех производных | Path B доступен сразу; Path A запрещён до будущего `--format png`/`.png` output без JPEG quality; executable guard отклоняет `.jpg`/`.jpeg` и проверяет decoded format + MIME каждого мастера |
 | Рост git-репо (уже 433 МБ .git) от новых мастеров | Высокая | Замедление клона | Мастера классов a/b НЕ коммитить (воспроизводимы из PDF: команда в манифесте); коммитить только производные; вопрос LFS — ТЗ-19 |
 | AVIF-кодирование медленное → долгий пайплайн | Средняя | DX | Инкрементальность по sha; p-limit; effort 4 (не 9) |
 | Старые клиенты с immutable-кешем не увидят новые пути | Низкая | UX | Новые пути = новые URL — immutable-ловушка не срабатывает по определению |
@@ -287,16 +292,17 @@ export function assetSrcSet(sourcePath: string): { srcSet: string; fallbackSrc: 
 | `scripts/build-images.mjs` | новый |
 | `scripts/content-image-derivatives.mjs` | новый |
 | `svgo.config.mjs` | новый |
-| `content/assets-masters/**` | новый (частично не коммитится) |
+| `content/assets-masters/**` | новый, только lossless `.png` после extension/format/MIME guard (частично не коммитится) |
 | `content/image-derivatives.manifest.json` | новый |
-| `package.json` | скрипты `build:images`, зависимости sharp/svgo/globby/p-limit/execa, цепочка validate:content |
+| `package.json` | скрипты `build:images`, зависимости sharp/svgo/globby/p-limit/execa/file-type, цепочка validate:content |
 | `src/data/content.ts` | хелпер assetSrcSet |
 | `src/App.tsx` | ~25 мест `<img>` → `<picture>`/srcset |
 | `scripts/generate-service-worker.mjs` | правила кеширования новых путей |
 | `scripts/sync-public-assets.mjs` | исключение assets-masters |
+| `scripts/render-manual-pdf-pages.swift` | будущий Path A: явный `--format png`, `.png` output через PNG destination, без JPEG quality для masters; текущий код в этом цикле не меняется |
 | `nginx.conf` | location для хешированных путей |
 | конфиги кропов (content/validation/manual-guide/**) | renderScale |
-| `tests/e2e/app.spec.ts`, новые tests/*.test.mjs | проверки AC |
+| `tests/e2e/app.spec.ts`, новые tests/*.test.mjs | проверки AC, включая lossless master guard и отрицательные JPEG/extension/format/MIME fixtures |
 
 ## 12. Метрики успеха (до/после)
 

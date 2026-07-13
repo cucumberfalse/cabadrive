@@ -10,7 +10,7 @@
 
 ## 1. Контекст и проблема
 
-Тестовая система обширна (31 файл, ~502 test()-вызова + 5348 строк e2e), но **ни одного компонентного React-теста нет**: vitest/jest/@testing-library отсутствуют в devDependencies. App.tsx (4108 строк UI-логики) проверяется только «сверху» (e2e, медленно и крупно) и «сбоку» — хрупкими регэксп-тестами по исходному тексту (tests/manual-ticket-placement.test.mjs:441-494 матчит appSource; аналогично ai-review-workflow, docker-runtime): безобидный рефакторинг их ломает, а семантическую регрессию с другой формулировкой они пропустят. Прямых unit-тестов нет у src/search.ts, src/storage.ts, src/difficulty.tsx. Чистая логика (domain.ts) тестируется через ts.transpileModule + data:-URI — работает, но паттерн не масштабируется на компоненты. Покрытие не измеряется.
+Тестовая система обширна (30 файлов `tests/*.test.mjs` / 485 тестов по `node --test tests/*.test.mjs` на снимке audited revision `bd0ce1dd3e367f07db8528248f9cb00e2b296441`, плюс 5348 строк e2e), но **ни одного компонентного React-теста нет**: vitest/jest/@testing-library отсутствуют в devDependencies. App.tsx (4108 строк UI-логики) проверяется только «сверху» (e2e, медленно и крупно) и «сбоку» — хрупкими регэксп-тестами по исходному тексту (tests/manual-ticket-placement.test.mjs:441-494 матчит appSource; аналогично ai-review-workflow, docker-runtime): безобидный рефакторинг их ломает, а семантическую регрессию с другой формулировкой они пропустят. Прямых unit-тестов нет у src/search.ts, src/storage.ts, src/difficulty.tsx. Чистая логика (domain.ts) тестируется через ts.transpileModule + data:-URI — работает, но паттерн не масштабируется на компоненты. Покрытие не измеряется.
 
 ## 2. Цели
 

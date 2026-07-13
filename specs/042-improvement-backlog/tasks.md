@@ -167,11 +167,39 @@ repository commit.
   `pnpm run preflight`, record exact results, then commit and push the docs-only
   proposal/process-memory fix as assigned.
 - [ ] T035 Orchestrator obtain fresh independent and native Codex review on the
-  new current head, confirm fixed reconciliation P1
-  `PRRT_kwDOSX65IM6Qhvbp` remains resolved and outdated, and complete normal
-  disposition of current P2 `PRRT_kwDOSX65IM6Qhvbt`. Final Architect validation
-  may resume only after current-head checks/reviews pass and GraphQL confirms
-  the P1 state plus resolved or outdated P2 with no unresolved review threads.
+  new current head. P1 `PRRT_kwDOSX65IM6Qhvbp` remained resolved/outdated and
+  progress-history P2 `PRRT_kwDOSX65IM6Qhvbt` was fixed, reviewed, resolved, and
+  outdated, but native current-head review returned changes required for new
+  P2s `PRRT_kwDOSX65IM6QiHKu` and `PRRT_kwDOSX65IM6Qigqq`; T035 remains open
+  through the bounded T036--T040 continuation.
+- [x] T036 Implementation Agent correct every audited Node-test baseline under
+  `docs/improvements/**`, including both occurrences in
+  `00-analysis-overview.md` and proposal 17, to exact reproducible snapshot
+  values `30 tests/*.test.mjs files / 485 tests`. Preserve the separate E2E
+  baseline at 51 tests per project and 102 executions across two projects.
+- [x] T037 Implementation Agent record exact audited-base evidence for
+  `bd0ce1dd3e367f07db8528248f9cb00e2b296441`: a repository-tree command must
+  count 30 `tests/*.test.mjs` files and an isolated checkout/worktree command
+  must run `node --test tests/*.test.mjs` and report 485 passing tests. Scan all
+  `docs/improvements/**` to reject stale `31`/`~502` Node-test baseline claims.
+- [x] T038 Implementation Agent correct the P3 architecture diagram, Path A,
+  implementation stages, acceptance criteria, tests, and risks so the current
+  JPEG-only Swift invocation is explicitly non-conforming and cannot create
+  masters. Preferred future conforming Path A requires changing the Swift
+  script/API to explicit lossless PNG output and extension (for example
+  `--format png`) with no JPEG-quality option; Path B remains immediately
+  conforming. No path may describe JPEG output as a master.
+- [x] T039 Implementation Agent require executable acceptance that every master
+  is lossless and that `.jpg`/`.jpeg` masters fail, then verify proposal/index
+  metadata, links, dependencies, sequence, inventory, and corrected counts are
+  unchanged otherwise. Record focused semantic checks, run all scoped checks
+  plus full `pnpm run preflight`, publish the docs/process-only fix, and update
+  evidence without implementing the image pipeline or Swift change.
+- [ ] T040 Orchestrator obtain fresh independent and native Codex review on the
+  new pushed head, complete normal disposition of P2s
+  `PRRT_kwDOSX65IM6QiHKu` and `PRRT_kwDOSX65IM6Qigqq`, confirm all prior fixed
+  threads remain resolved/outdated, and require GraphQL zero unresolved review
+  threads plus successful current-head checks before final validation resumes.
 
 T023--T026 are complete. Their DSSIM correction, scoped/full verification,
 evidence-only guard, subsequent no-findings review, and conversation disposition
@@ -180,8 +208,12 @@ proposal correction and local verification, and T030 completed independent
 current-head review, required-check, mergeability, and thread disposition. The
 T027--T030 LFS review-fix group is a completed historical reviewed cycle with no
 open task. T031--T034 complete the progress-history proposal correction and
-local verification. T035 remains the external current-head review, fixed-P1
-confirmation, and normal P2 thread-disposition gate before final validation.
+local verification; its P2 is fixed/resolved/outdated, but T035 remains open
+because the native current-head review discovered the two valid P2s routed to
+T036--T040. T036--T039 now complete the bounded docs/process correction,
+audited-base proof, scoped/full verification, and publication; T035 and T040
+remain external review/thread gates, so final validation is still blocked until
+fresh current-head review accepts the correction.
 
 ## Decisions
 
@@ -246,6 +278,18 @@ confirmation, and normal P2 thread-disposition gate before final validation.
   cumulative mistake counts and questions represented only in the pruned prefix.
   T031--T035 require a docs-only v2 aggregate contract that preserves those
   semantics across cap, quota trimming, migration, import/export, and reset.
+- D019: Native Codex P2 `PRRT_kwDOSX65IM6QiHKu` is valid and in scope. Audited
+  base `bd0ce1dd3e367f07db8528248f9cb00e2b296441` reproducibly contains 30
+  `tests/*.test.mjs` files and 485 passing Node tests, so the repeated `31` and
+  `~502` documentation baseline is inaccurate; T036--T037 require one exact
+  snapshot value without changing the separate 51/project, 102-execution E2E
+  baseline.
+- D020: Native Codex P2 `PRRT_kwDOSX65IM6Qigqq` is valid and in scope. A
+  JPEG-only Swift invocation cannot satisfy the proposal's lossless master and
+  JPEG-forbidden contract. T038--T040 require current Path A to be explicitly
+  non-conforming unless a future Swift API produces lossless PNG masters, retain
+  Path B as immediately conforming, and make executable acceptance reject every
+  `.jpg`/`.jpeg` master.
 
 ## Dead Ends
 
@@ -452,10 +496,55 @@ confirmation, and normal P2 thread-disposition gate before final validation.
   Playwright executions passed in 1.1 minutes.
 - No dependency manifest, workflow, product/runtime source, content, test,
   script, or configuration file changed; product behavior remains future
-  proposal scope. This review-fix commit cannot embed its own SHA. T035 fresh
-  independent/native review, confirmation that P1 `PRRT_kwDOSX65IM6Qhvbp`
-  remains resolved/outdated, and normal disposition of P2
-  `PRRT_kwDOSX65IM6Qhvbt` remain external and are not pre-asserted here.
+  proposal scope. Exact pushed head
+  `ffaeb8e63d3b5dfe7897bd2c269375d98b9d12cc` received the T035 review:
+  P1 `PRRT_kwDOSX65IM6Qhvbp` and progress P2 `PRRT_kwDOSX65IM6Qhvbt` are
+  resolved/outdated, while native review returned changes required only for the
+  two new P2s routed through T036--T040.
+
+### Current audit-count and lossless-master review-fix candidate verification
+
+- Candidate base: `ffaeb8e63d3b5dfe7897bd2c269375d98b9d12cc` plus the
+  four-file docs/process candidate. The eventual review-fix commit cannot embed
+  its own SHA; external expected-head verification must name the actual pushed
+  head.
+- Exact audited-base tree proof on
+  `bd0ce1dd3e367f07db8528248f9cb00e2b296441` used
+  `git ls-tree -r --name-only <base> -- tests` filtered to top-level
+  `tests/*.test.mjs` and returned 30 files. An isolated detached worktree at that
+  exact revision ran `node --test tests/*.test.mjs` and reported 485 tests,
+  485 passes, and zero failures. `tests/**`, `package.json`, and
+  `pnpm-lock.yaml` are unchanged from the audited base through this candidate.
+- A scan of every `docs/improvements/**` file rejects the stale `31`/`~502`
+  Node-test baseline. Both overview occurrences and proposal 17 now state the
+  reproducible 30-file/485-test snapshot, while the independent E2E baseline
+  remains 51 tests per project and 102 executions across two projects.
+- Current Swift-source verification found `--quality`, `UTType.jpeg`, and
+  `page-%03d.jpg`; therefore the existing renderer is JPEG-only and cannot
+  produce masters. P3 now permits Path A only after a future explicit lossless
+  PNG API/output change (`--format png`, `.png`, no JPEG-quality option), keeps
+  `pdftoppm -png` Path B immediately conforming, and requires an executable
+  guard to verify `.png` extension, decoded PNG format, and `image/png` MIME
+  while rejecting `.jpg`/`.jpeg`, disguised JPEG bytes, and mismatches.
+- Proposal 3 identity, metadata, dependencies, links, and README sequencing are
+  unchanged. Its five stages, 275 unique JPG/276-reference source inventory,
+  and like-sized DSSIM contract remain intact: each candidate is compared with
+  the master downscaled by `lanczos3` to identical dimensions, without candidate
+  upscaling.
+- Exact scoped commands — exit 0: `git diff --check` and the worktree
+  feature-memory gate passed; inventory remains 24 Markdown files, three
+  priority files, and exactly one top-level identity `04..22`; all local links
+  resolved in 24 files; README uniquely indexes all 22 details; snapshot
+  date/revision markers remain present; base scope contains only improvement
+  docs/feature memory, and candidate scope is exactly the two corrected audit
+  documents, P3, and this file.
+- `pnpm run preflight` — exit 0: feature-memory and repository-baseline gates
+  passed; content validation passed for 460 questions and 276 local image
+  references; all 485 Node tests passed; production build passed; all 102
+  Playwright executions passed in 1.1 minutes.
+- No dependency manifest, workflow, product/runtime or Swift source, content,
+  test, script, or configuration file changed. T036--T039 are complete; T035
+  and T040 remain external current-head review and thread-disposition gates.
 
 ### Semantic index/detail and minimum-field evidence
 
@@ -471,7 +560,7 @@ extra proposal.
 |---|---|---|---|
 | P1 | Priority/category/title agree; 18 issues reconcile as seven higher-severity plus eleven medium/low, effort is six themes across eight slices, and AC-9 agrees with 51 tests/project (102 executions); dependencies and stage 1--3 slices agree | Complete | Corrected counts and acceptance baseline |
 | P2 | Priority/effort/category/title and six stages agree; dependencies and stage 2--3 placement agree | Complete | Agrees |
-| P3 | Priority/category/title agree; five stages, 275 unique JPG/276 references through AC-3, Swift Path A at scale 4.2 (~302.4 DPI), and AC-5/QA/test/metric guidance consistently compare each unchanged candidate with a master reference downscaled by `lanczos3` to identical dimensions; dependencies and stage 2--3/4 linkage agree | Complete | Corrected counts, acceptance baseline, DPI path, and like-sized DSSIM contract |
+| P3 | Priority/category/title agree; five stages and 275 unique JPG/276 references through AC-3 agree; current JPEG-only Swift is explicitly non-conforming, future Swift Path A requires guarded lossless PNG output while `pdftoppm -png` Path B is immediately conforming, and AC-5/QA/test/metric guidance consistently compares each unchanged candidate with a master reference downscaled by `lanczos3` to identical dimensions; dependencies and stage 2--3/4 linkage agree | Complete | Corrected counts, lossless-master acceptance, DPI path, and like-sized DSSIM contract |
 | 04 | P1 / XL / architecture/title agree; links 05, 06, 07, 08, 11, 17, P1 and stage 3 agree | Complete | Agrees |
 | 05 | P1 / M / architecture-UX/title agree; links P1, 04, 08 and stage 2 linkage agree | Complete | Agrees |
 | 06 | P1 / M / data-reliability summary agrees with detailed architecture/reliability category; links P1, 11, 15 and stage 3 agree | Complete | Intentional shorter index category |
@@ -558,14 +647,28 @@ extra proposal.
   preserve `N=5000` and docs-only scope while supplying a durable per-question
   aggregate, complete v2 lifecycle, no-double-count selector merge, full/capped,
   repeated/quota equivalence including a pruned-only question, and scoped/full
-  evidence. T035 fresh current-head review, confirmation that the P1 stays
-  resolved/outdated, and normal disposition of current P2 remain external.
+  evidence. Subsequent current-head review accepted the fix; progress-history P2
+  `PRRT_kwDOSX65IM6Qhvbt` and reconciliation P1 `PRRT_kwDOSX65IM6Qhvbp` are
+  resolved and outdated.
+- Native Codex review on current head
+  `ffaeb8e63d3b5dfe7897bd2c269375d98b9d12cc` returned changes required for two
+  new valid findings: P2 `PRRT_kwDOSX65IM6QiHKu` identifies repeated inaccurate
+  Node-test snapshot claims (`31` files / `~502` tests instead of reproducible
+  `30` / `485`), and P2 `PRRT_kwDOSX65IM6Qigqq` identifies the JPEG-only Swift
+  Path A being incorrectly presented as a conforming lossless-master path.
+- Architect disposition: T036--T039 now supply the corrected and proved audited
+  Node baseline while preserving E2E counts, make current Swift Path A
+  non-conforming unless a future explicit lossless PNG mode exists, retain
+  immediately conforming Path B, executable-reject JPEG masters, preserve
+  metadata/scope, and record passing scoped/full checks. T035 and T040 remain
+  external current-head review and normal thread-disposition gates; this role
+  does not pre-assert their outcome or final validation.
 
 ## Cycle PR Set
 
 | Purpose | Branch | PR | Verified base | Current/final head | Status | Included in final validation |
 |---|---|---|---|---|---|---|
-| Audit backlog, focused documentation corrections, and complete feature memory | `docs/improvement-specs` | [#207](https://github.com/cucumberfalse/cabadrive/pull/207) | `bd0ce1dd3e367f07db8528248f9cb00e2b296441` | This review-fix commit cannot embed its own SHA; the latest append-only Architect/Analyst notes plus external expected-head guard authoritatively name the effective and actual current heads | Historical fixes through T030 complete; progress-history correction and local evidence T031--T034 complete; T035 fresh review, fixed-P1 confirmation, current-P2 disposition, and no-unresolved-thread proof remain external blockers | Yes |
+| Audit backlog, focused documentation corrections, and complete feature memory | `docs/improvement-specs` | [#207](https://github.com/cucumberfalse/cabadrive/pull/207) | `bd0ce1dd3e367f07db8528248f9cb00e2b296441` | This review-fix commit cannot embed its own SHA; the latest append-only Architect/Analyst notes plus external expected-head guard authoritatively name the effective and actual current heads | Historical fixes through T034 and docs/process correction plus evidence T036--T039 are complete; T035 and T040 remain external current-head review/thread-disposition gates before role validation/finalization | Yes |
 
 No second cycle PR is currently authorized. If Orchestrator adds one, append it
 before final validation with purpose, branch, PR, head, status, and inclusion.
