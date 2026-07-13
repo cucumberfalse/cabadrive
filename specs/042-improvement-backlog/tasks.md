@@ -24,9 +24,12 @@
 - [x] T008 Implementation Agent updated all required log sections below,
   including feedback. Commit/push only as assigned by Orchestrator; do not
   resolve review threads, rerun GitHub checks, review, or merge.
-- [ ] T009 Review Agent independently review the current PR head and evidence,
+- [x] T009 Review Agent independently reviewed current PR head
+  `221885b7334746445e873427c884c73e108aa471` and evidence,
   with explicit disposition of the existing P1 and all acceptance/negative
-  cases. Review Agent must not edit files or resolve its own findings.
+  cases. The outcome was changes required for the factual/count/acceptance
+  contradictions captured in T016--T022; Review Agent did not edit files or
+  resolve its own findings.
 - [ ] T010 Orchestrator route each review finding to the proper role, obtain a
   fresh current-head review after fixes, and resolve/outdate the P1 only after
   complete memory is independently verified.
@@ -41,6 +44,52 @@
   Analyst-owned intake artifact.
 - [ ] T015 Orchestrator run the current-head/effective-content-head evidence-only
   guard, finalization helper, and merge PR #207 when every gate is green.
+- [ ] T016 Implementation Agent update `Cycle PR Set`, `Verification Evidence`,
+  and review context to identify reviewed current head
+  `221885b7334746445e873427c884c73e108aa471`; after the fixes are committed and
+  pushed, replace candidate/current-head wording with the new full pushed head
+  SHA and record that older checks/review are historical only.
+- [ ] T017 Implementation Agent correct the ticket-photo inventory in
+  `00-analysis-overview.md` and `priority/03-image-quality.md` from the erroneous
+  322-photo/JPG claim to the verified distinction: 275 unique local JPG files
+  and 276 content references. Update every dependent problem statement, table,
+  batch/QA step, target, and acceptance criterion (including AC-3) so neither
+  unique assets nor references are called 322. Preserve the separately measured
+  `322 PNG` format-inventory value unless new evidence specifically disproves it.
+- [ ] T018 Implementation Agent correct the E2E baseline in
+  `00-analysis-overview.md` and `priority/01-usability.md` from 55 tests per
+  project / `51+4` ambiguity to exactly 51 tests per project and 102 executions
+  across the two configured projects. Update the dependent acceptance criterion
+  (including AC-9) so all overview, proposal, evidence, and total counts agree.
+- [ ] T019 Implementation Agent remove the Path A DPI contradiction in
+  `priority/03-image-quality.md`: raise its render scale/target from the stated
+  ~288 DPI output to a conforming value of at least 300 DPI and update dependent
+  pixel dimensions/commands. Path A must not be described as satisfying FR-1 or
+  the acceptance criteria unless its documented output actually meets `>=300
+  DPI`; if the implementation evidence cannot support the raised parameters,
+  label only a verified >=300-DPI path as conforming and make Path A explicitly
+  non-conforming/exploratory.
+- [ ] T020 Implementation Agent reconcile the usability issue inventory to the
+  verified arithmetic `7 + 11 = 18`: update the README P1 summary, the
+  `priority/01-usability.md` headline/problem lists and count language, and the
+  corresponding acceptance criterion so all references say 18 and the detailed
+  enumeration contains exactly seven higher-severity plus eleven medium/low
+  issues. Do not solve any usability issue in this PR.
+- [ ] T021 Implementation Agent refresh the 22-detail semantic evidence after
+  T017--T020, explicitly recording the corrected P1/P3 counts and AC agreement;
+  rerun the scoped inventory, link, README coverage, snapshot, feature-memory,
+  scope-only, and `git diff --check` commands from `plan.md`, then run one full
+  `pnpm run preflight`. Record exact outcomes and the checked full SHA in
+  `Verification Evidence`; a failed first attempt belongs in `Dead Ends`.
+- [ ] T022 Orchestrator obtain a fresh independent Review Agent review on the
+  new pushed head after T016--T021. The review must verify all six dispositions,
+  current cycle/evidence memory, corrected semantic evidence, docs-only scope,
+  and preflight evidence. The reviewed-head findings and original P1 remain
+  blockers until normal GitHub review disposition on the new current head.
+
+T016--T022 are mandatory review-fix work and block T012--T015. They do not
+constitute final Architect validation; final validation must be invoked anew
+only after the new head has fresh checks and a passing independent review.
 
 ## Decisions
 
@@ -64,6 +113,21 @@
 - D008: Shorter category/title wording in the README is an intentional index
   summary where it remains semantically equivalent to detail metadata. Detail
   documents retain the authoritative proposal wording.
+- D009: Independent Review Agent outcome for head
+  `221885b7334746445e873427c884c73e108aa471` is changes required, not a final
+  validation pass. Architect accepts all review findings as in-scope factual and
+  internal-consistency defects and assigns exact remediation in T016--T022.
+- D010: Ticket-photo counts must distinguish filesystem identity from content
+  usage: 275 unique local JPG files and 276 references. The 322 PNG repository
+  format count is a separate metric and is not changed by this finding.
+- D011: The E2E baseline is 51 tests in each of two projects, totaling 102 test
+  executions; the prior `55 per project` and `51+4` formulations are rejected.
+- D012: A path below 300 DPI cannot satisfy a `>=300 DPI` requirement. The
+  preferred disposition is to raise Path A parameters and dependent dimensions;
+  only a demonstrably conforming path may retain conformance language.
+- D013: The usability inventory is 18 issues because its supported groups are
+  seven plus eleven. README, detail prose, enumeration, and acceptance criteria
+  must use that same identity/count.
 
 ## Dead Ends
 
@@ -83,6 +147,14 @@
   `bd0ce1dd3e367f07db8528248f9cb00e2b296441`; snapshot qualification is required.
 - KI003: The current P1 review discussion/failed AI Review remains a blocker
   until the new head receives independent review and GitHub disposition.
+- KI004: Head `221885b7334746445e873427c884c73e108aa471` has an independent
+  changes-required review covering stale cycle/evidence memory and five
+  documentation consistency defects (photo inventory, E2E count, DPI path,
+  usability count, and resulting semantic evidence). It is not eligible for
+  final validation or merge.
+- KI005: Any local or GitHub results recorded before the T016--T021 fix commit
+  are historical for the next pushed head. Scoped checks, full preflight, and
+  independent review must be fresh for that new SHA.
 
 ## Verification Evidence
 
@@ -132,9 +204,9 @@ extra proposal.
 
 | Identity | Index metadata, dependencies, and sequence | Minimum future-intake content | Disposition |
 |---|---|---|---|
-| P1 | Priority/category/title agree; effort text corrected to six themes across eight slices; dependencies and stage 1--3 slices agree | Complete | Corrected metadata only |
+| P1 | Priority/category/title agree; 18 issues reconcile as seven higher-severity plus eleven medium/low, effort is six themes across eight slices, and AC-9 agrees with 51 tests/project (102 executions); dependencies and stage 1--3 slices agree | Complete | Corrected counts and acceptance baseline |
 | P2 | Priority/effort/category/title and six stages agree; dependencies and stage 2--3 placement agree | Complete | Agrees |
-| P3 | Priority/category/title agree; effort text corrected from six to five stages; dependencies and stage 2--3/4 linkage agree | Complete | Corrected metadata only |
+| P3 | Priority/category/title agree; five stages, 275 unique JPG/276 references through AC-3, and Swift Path A at scale 4.2 (~302.4 DPI) agree with requirements; dependencies and stage 2--3/4 linkage agree | Complete | Corrected counts, acceptance baseline, and DPI path |
 | 04 | P1 / XL / architecture/title agree; links 05, 06, 07, 08, 11, 17, P1 and stage 3 agree | Complete | Agrees |
 | 05 | P1 / M / architecture-UX/title agree; links P1, 04, 08 and stage 2 linkage agree | Complete | Agrees |
 | 06 | P1 / M / data-reliability summary agrees with detailed architecture/reliability category; links P1, 11, 15 and stage 3 agree | Complete | Intentional shorter index category |
@@ -158,11 +230,29 @@ extra proposal.
 - Pending GitHub evidence: current-head required checks, review-thread state,
   mergeability, and conflict state are recorded by Orchestrator after review.
 
+### Review-fix evidence
+
+- Review Agent inspected PR #207 at full head
+  `221885b7334746445e873427c884c73e108aa471` and returned changes required.
+- Accepted findings: cycle/evidence memory still described the pre-memory head;
+  ticket photos incorrectly used 322 instead of 275 unique JPG/276 references;
+  E2E prose conflicted between 55/project and the verified 51/project (102
+  total); Path A called ~288 DPI sufficient for a >=300-DPI requirement; the
+  usability inventory claimed 17 although its groups total 7+11=18; semantic
+  evidence therefore requires refresh after corrections.
+- Architect disposition: all findings become mandatory docs/process-memory
+  tasks T016--T022. No product/runtime implementation and no final validation
+  is authorized by this disposition.
+- Implementation candidate applies the accepted factual corrections consistently
+  through the README/overview, P1/P3 problem statements, plans, targets, and
+  acceptance criteria. Exact candidate SHA and fresh check outcomes are recorded
+  only after content commit A is created and verified.
+
 ## Cycle PR Set
 
 | Purpose | Branch | PR | Verified base | Current/final head | Status | Included in final validation |
 |---|---|---|---|---|---|---|
-| Audit backlog, focused documentation corrections, and complete feature memory | `docs/improvement-specs` | [#207](https://github.com/cucumberfalse/cabadrive/pull/207) | `bd0ce1dd3e367f07db8528248f9cb00e2b296441` | Implementation checks based on pre-memory `8d2030d646c39b808f3e0ff2ed3f51ac71b7837c`; update to pushed head before review/final validation | Implementation complete locally; existing P1/AI Review remains for independent current-head disposition | Yes |
+| Audit backlog, focused documentation corrections, and complete feature memory | `docs/improvement-specs` | [#207](https://github.com/cucumberfalse/cabadrive/pull/207) | `bd0ce1dd3e367f07db8528248f9cb00e2b296441` | Reviewed current head `221885b7334746445e873427c884c73e108aa471`; update to the new pushed review-fix head after T016--T021 | Open; changes required by independent review, original P1/AI Review remains blocked, T016--T022 pending | Yes |
 
 No second cycle PR is currently authorized. If Orchestrator adds one, append it
 before final validation with purpose, branch, PR, head, status, and inclusion.
