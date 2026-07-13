@@ -399,6 +399,7 @@ before final validation with purpose, branch, PR, head, status, and inclusion.
 
 ## Final Validation Evidence
 
+- Limit escalation: none.
 - Canonical role-validation authority: Architect and Analyst pass markers,
   timestamps, return counts, and effective content head are authoritative only
   in the latest append-only role-owned notes written in Architect-then-Analyst
