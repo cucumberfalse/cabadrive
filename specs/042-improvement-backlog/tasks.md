@@ -182,26 +182,33 @@ GitHub disposition of all blocking conversations.
 - KI001: PR #207 was observed at pre-memory head
   `8d2030d646c39b808f3e0ff2ed3f51ac71b7837c`; its green checks are historical
   and cannot satisfy a later current head.
+  Architect disposition: superseded — later current heads and their fresh checks replace the historical pre-memory head; no owner decision remains.
 - KI002: Existing exact audit measurements are time-bound and can drift after
   `bd0ce1dd3e367f07db8528248f9cb00e2b296441`; snapshot qualification is required.
+  Architect disposition: addressed — README and overview centrally qualify measurements by the 2026-07-11 audited snapshot and full audited revision.
 - KI003: The current P1 review discussion/failed AI Review remains a blocker
   until the new head receives independent review and GitHub disposition.
+  Architect disposition: addressed — the P1 is resolved and outdated, all review conversations are resolved, and AI Review is green on the reviewed head.
 - KI004: Head `221885b7334746445e873427c884c73e108aa471` has an independent
   changes-required review covering stale cycle/evidence memory and five
   documentation consistency defects (photo inventory, E2E count, DPI path,
   usability count, and resulting semantic evidence). It is not eligible for
   final validation or merge.
+  Architect disposition: addressed — all five findings were corrected, reverified, and accepted by fresh no-findings review.
 - KI005: Any local or GitHub results recorded before the T016--T021 fix commit
   are historical for the next pushed head. Scoped checks, full preflight, and
   independent review must be fresh for that new SHA.
+  Architect disposition: addressed — current-head gates and evidence are explicitly required and fresh scoped checks, preflight, and review evidence were recorded.
 - KI006: Current head B `4691553b98f603ab7abe3812a2313a2f88e08eaf`
   carries Review Agent P2 `PRRT_kwDOSX65IM6Qf71G`: the P3 DSSIM guidance
   upscales deliberately small derivatives to master size and then imposes a
   universal `<=0.01`, conflating intended downsampling loss with encoding or
   processing degradation. A/B cannot proceed to final validation or merge.
+  Architect disposition: addressed — the DSSIM P2 was fixed with like-sized comparison, independently reviewed, resolved, and outdated.
 - KI007: T023--T024 are non-evidence documentation changes, so prior content
   head A and evidence head B cannot remain the final effective/evidence pair.
   New C/D heads, fresh scoped/full verification, and fresh review are required.
+  Architect disposition: superseded — the required C/D cycle completed with fresh scoped/full verification and no-findings review, and later process-memory heads supersede the provisional pair.
 
 ## Verification Evidence
 
@@ -431,6 +438,7 @@ before final validation with purpose, branch, PR, head, status, and inclusion.
 - None. The two semantic contradictions were concrete in-scope documentation
   corrections recorded in D007, not new backlog proposals. No unresolved
   improvement or divergence requires Architect disposition.
+- Architect disposition: not needed; no Implementation Agent feedback item exists.
 
 ## Final Architect Validation Notes
 
