@@ -25,7 +25,7 @@
 ## 4. Требования
 
 - FR-1: **Аналитический этап (обязательный первый шаг)**: git-объём по классам (git-sizer, `git rev-list --objects` + сортировка по размеру), отчёт «кто растит историю» в docs_project/adr как основа решения.
-- FR-2: **Git LFS для новых бинарей**: .gitattributes с `content/validation/**/*.{jpg,png} filter=lfs`, `content/official-documents/originals/*.pdf filter=lfs`, `content/assets/**/*.{jpg,png} filter=lfs` — существующие объекты остаются в истории (без переписывания), новые версии идут в LFS. Проверить совместимость: sha256-пины считаются по содержимому файла — LFS smudge отдаёт реальные байты, гейты работают; CI (actions/checkout с lfs: true) и Docker-сборка получают правку.
+- FR-2: **Git LFS для новых бинарей**: .gitattributes с отдельными поддерживаемыми Git-шаблонами `content/validation/**/*.jpg filter=lfs diff=lfs merge=lfs -text`, `content/validation/**/*.png filter=lfs diff=lfs merge=lfs -text`, `content/official-documents/originals/*.pdf filter=lfs diff=lfs merge=lfs -text`, `content/assets/**/*.jpg filter=lfs diff=lfs merge=lfs -text` и `content/assets/**/*.png filter=lfs diff=lfs merge=lfs -text` — существующие объекты остаются в истории (без переписывания), новые версии идут в LFS. Проверить совместимость: sha256-пины считаются по содержимому файла — LFS smudge отдаёт реальные байты, гейты работают; CI (actions/checkout с lfs: true) и Docker-сборка получают правку.
 - FR-3: Валидационные evidence-скриншоты (105 МБ, только для аудитов): вынести из истории вперёд — новые evidence идут в LFS (FR-2) ИЛИ в отдельный evidence-репозиторий/релиз-артефакты; решение — ADR по итогам FR-1. Byte-exact сравнение сохраняется в любом варианте.
 - FR-4: Мастера изображений из ТЗ-P3 (`content/assets-masters/`) — сразу LFS либо не коммитятся (воспроизводимы из PDF; команда генерации фиксируется в манифесте).
 - FR-5: Опция полной перезаписи истории (filter-repo путём миграции всех бинарей в LFS, сокращение .git на порядок) описывается в ADR с процедурой и стоимостью (инвалидация всех клонов/PR); исполнение — только по явному решению владельца.
@@ -42,7 +42,7 @@
 ## 6. Критерии приёмки
 
 - AC-1: ADR с данными FR-1 закоммичен.
-- AC-2: Новый тестовый JPEG в content/validation попадает в LFS (git lfs ls-files), гейты зелёные.
+- AC-2: `git check-attr filter` возвращает `lfs` для тестовых JPEG и PNG в `content/validation` и `content/assets`, но не назначает фильтр нетаргетному расширению; добавленные тестовые JPEG/PNG попадают в LFS (`git lfs ls-files`), гейты зелёные.
 - AC-3: CI и docker-validation зелёные с LFS-checkout.
 - AC-4: Через месяц после внедрения прирост .git на контент-PR ≤ 10 % прежнего (метрика в ADR).
 

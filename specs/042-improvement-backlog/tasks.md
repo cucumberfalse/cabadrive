@@ -121,11 +121,30 @@ repository commit.
   `C..D` as evidence/process-only; independent Review Agent review on D verified
   the P2 fix, like-sized DSSIM contract, evidence, docs-only scope, and all prior
   findings with no findings.
+- [x] T027 Implementation Agent correct only the LFS proposal and acceptance
+  criteria in `docs/improvements/19-repo-size-lfs.md`: replace every unsupported
+  brace-form Git attributes glob such as `*.{jpg,png}` with separate explicit
+  Git-understood patterns for `*.jpg` and `*.png`, and expand any other
+  brace-form LFS pair found in that document the same way.
+- [x] T028 Implementation Agent verify the corrected proposal in a temporary Git
+  repository with `git check-attr`: both representative `.jpg` and `.png` paths
+  must receive the proposed LFS attributes, while a representative non-target
+  extension must not. Confirm README/index links, title, priority, effort,
+  category, dependencies, and sequencing for proposal 19 remain unchanged.
+- [x] T029 Implementation Agent update semantic/review evidence, run the scoped
+  inventory, link, README coverage, snapshot, feature-memory, scope-only, and
+  `git diff --check` commands plus one full `pnpm run preflight`, record exact
+  results, then commit and push the docs/process-only review fix as assigned.
+- [ ] T030 Orchestrator obtain independent review on the new current head and
+  complete normal disposition of P2 `PRRT_kwDOSX65IM6Qhcm6`. Final Architect
+  validation may resume only after the explicit patterns, temporary-repository
+  evidence, current-head checks, and review conversation all pass.
 
 T023--T026 are complete. Their DSSIM correction, scoped/full verification,
 evidence-only guard, subsequent no-findings review, and conversation disposition
-complete all review-fix work. Latest-head role validation and external
-Orchestrator finalization follow the canonical policy below.
+complete that historical review-fix group. T027--T029 complete the current LFS
+proposal correction and local verification. T030 remains the external mandatory
+fresh-review and normal GitHub-disposition gate before final validation.
 
 ## Decisions
 
@@ -178,6 +197,11 @@ Orchestrator finalization follow the canonical policy below.
   Architect and Analyst notes written after current-head checks are authoritative
   for role pass, timestamp, effective head, and return evidence, while external
   expected-head finalization is authoritative for the actual merge head.
+- D017: Native Codex P2 `PRRT_kwDOSX65IM6Qhcm6` is valid and in scope. Git
+  attributes do not expand brace expressions, so `*.{jpg,png}` would fail to
+  apply the promised LFS filter to either extension and make the proposal/AC
+  misleading; explicit per-extension patterns plus executable `git check-attr`
+  evidence are required by T027--T030.
 
 ## Dead Ends
 
@@ -312,6 +336,42 @@ Orchestrator finalization follow the canonical policy below.
   C..D, confirmed the evidence/process-only delta, and obtained the T026
   no-findings review before the completed D validation cycle.
 
+### Current LFS review-fix candidate verification
+
+- Candidate base: `2de9fbffeeba51b5a6c0c828584ff9427e4477c7` plus the two-file
+  review-fix candidate. The proposal now uses separate Git-supported
+  `filter=lfs diff=lfs merge=lfs -text` patterns for JPG and PNG under both
+  `content/validation/**` and `content/assets/**`, retains an explicit PDF
+  pattern, and aligns AC-2 with positive JPG/PNG plus negative-extension checks.
+- Temporary repository verification used the exact proposed `.gitattributes`
+  entries and `git check-attr filter -- content/validation/audit/sample.jpg
+  content/validation/audit/sample.png content/assets/pages/sample.jpg
+  content/assets/pages/sample.png content/validation/audit/sample.webp
+  content/official-documents/originals/sample.pdf` — exit 0. The four JPG/PNG
+  paths and PDF reported `filter: lfs`; the WebP non-target reported
+  `filter: unspecified`.
+- Explicit-pattern guard — exit 0: all four required validation/assets JPG/PNG
+  patterns are present and no `*.{...}` brace-form glob remains in proposal 19.
+- Proposal identity guard — exit 0: title, P2 priority, infrastructure category,
+  L effort, proposed status, date, links, dependencies, and README sequencing
+  are unchanged.
+- Exact scoped commands from `plan.md` — exit 0: `git diff --check` and the
+  worktree feature-memory gate passed; inventory remains 24 Markdown files,
+  three priority files, and exactly one top-level identity `04..22`; all local
+  links resolved in 24 files; README uniquely indexes all 22 details; snapshot
+  date/revision markers remain present; base and candidate scope guards list
+  only `docs/improvements/**` and `specs/042-improvement-backlog/**`.
+- `pnpm run preflight` — exit 0: feature-memory and repository-baseline gates
+  passed; content validation passed for 460 questions and 276 local image
+  references; all 485 Node tests passed; production build passed; all 102
+  Playwright executions passed in 1.1 minutes.
+- Candidate scope is exactly `docs/improvements/19-repo-size-lfs.md` plus this
+  role-owned `tasks.md`; no dependency manifest, workflow, runtime, content,
+  test, script, or configuration file changed. This commit cannot embed its own
+  SHA, so the pushed current head is read externally. T030 fresh independent
+  review and normal disposition of P2 `PRRT_kwDOSX65IM6Qhcm6` remain external
+  blockers; this evidence does not pre-assert either outcome.
+
 ### Semantic index/detail and minimum-field evidence
 
 All 22 details retain context/problem, goals, actionable requirements/design or
@@ -387,12 +447,22 @@ extra proposal.
   content head C `bdda9265d0a7237710cc9c849c053a6ba745f6eb`; fresh outcomes are
   recorded above. Subsequent no-findings review on D accepted the fix, and P2
   `PRRT_kwDOSX65IM6Qf71G` was resolved and outdated.
+- Current accepted review finding on reviewed head
+  `2de9fbffeeba51b5a6c0c828584ff9427e4477c7`: native Codex P2
+  `PRRT_kwDOSX65IM6Qhcm6` identifies the unsupported `*.{jpg,png}` Git
+  attributes pattern in `docs/improvements/19-repo-size-lfs.md`, which would
+  leave the proposed JPG/PNG LFS filtering and acceptance criterion ineffective.
+- Architect disposition: changes required through T027--T030. T027--T029 now
+  supply the explicit per-extension Git patterns, positive JPG/PNG and negative
+  non-target `git check-attr` proof, metadata/link consistency, and scoped/full
+  verification. T030 fresh independent current-head review and normal GitHub
+  disposition remain external requirements before final validation.
 
 ## Cycle PR Set
 
 | Purpose | Branch | PR | Verified base | Current/final head | Status | Included in final validation |
 |---|---|---|---|---|---|---|
-| Audit backlog, focused documentation corrections, and complete feature memory | `docs/improvement-specs` | [#207](https://github.com/cucumberfalse/cabadrive/pull/207) | `bd0ce1dd3e367f07db8528248f9cb00e2b296441` | This reconciliation commit cannot embed its own SHA; the latest append-only Architect/Analyst notes plus external expected-head guard authoritatively name the effective and actual current heads | Implementation, review, and process fixes complete; exact latest-head role validation and external finalization are governed by the canonical policy below | Yes |
+| Audit backlog, focused documentation corrections, and complete feature memory | `docs/improvement-specs` | [#207](https://github.com/cucumberfalse/cabadrive/pull/207) | `bd0ce1dd3e367f07db8528248f9cb00e2b296441` | This review-fix commit cannot embed its own SHA; the latest append-only Architect/Analyst notes plus external expected-head guard authoritatively name the effective and actual current heads | LFS correction and local verification T027--T029 are complete and publication-ready; T030 fresh independent review and normal P2 thread disposition remain external blockers | Yes |
 
 No second cycle PR is currently authorized. If Orchestrator adds one, append it
 before final validation with purpose, branch, PR, head, status, and inclusion.
