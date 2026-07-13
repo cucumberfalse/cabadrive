@@ -142,6 +142,36 @@ repository commit.
   `baseline-checks`, `docker-validation`, `guard`, and `osv-scan` all succeeded
   on that exact head, PR #207 was mergeable, the P2 thread was resolved, and
   GraphQL reported zero unresolved review threads.
+- [x] T031 Implementation Agent correct only proposal 06 requirements, solution,
+  acceptance criteria, and risks so the `N=5000` cap and any QuotaExceeded
+  trimming preserve `mistakesFromHistory` semantics. Define a durable
+  per-question pruned-history aggregate containing cumulative incorrect-answer
+  counts and the latest pruned answer data needed when the retained suffix has
+  no answer for that question; do not implement product/runtime behavior.
+- [x] T032 Implementation Agent define the complete v2 lifecycle: migration from
+  existing storage, cap and quota eviction that transfers each removed answer
+  into the aggregate exactly once, import/export validation and round-trip,
+  reset of retained history plus aggregate, and selector integration that adds
+  retained incorrect counts to pruned counts while choosing the latest retained
+  answer or falling back to pruned last-answer data without double-counting.
+- [x] T033 Implementation Agent add proposal-level unit acceptance requiring the
+  exact `mistakesFromHistory` result for a full 6000-answer history to equal its
+  `N=5000` capped representation, including cumulative wrong counts and last
+  answer data; add a separate QuotaExceeded multi-trim case and a question that
+  exists only in the pruned prefix. Migration/import/export/reset and repeated
+  trim fixtures must prove no aggregate double-counting.
+- [x] T034 Implementation Agent confirm proposal 06 identity, README/index links,
+  metadata, dependencies, and sequencing are unchanged; record concrete semantic
+  verification against `src/domain.ts:70-82`; run scoped inventory/link/snapshot,
+  feature-memory, scope-only, and `git diff --check` commands plus full
+  `pnpm run preflight`, record exact results, then commit and push the docs-only
+  proposal/process-memory fix as assigned.
+- [ ] T035 Orchestrator obtain fresh independent and native Codex review on the
+  new current head, confirm fixed reconciliation P1
+  `PRRT_kwDOSX65IM6Qhvbp` remains resolved and outdated, and complete normal
+  disposition of current P2 `PRRT_kwDOSX65IM6Qhvbt`. Final Architect validation
+  may resume only after current-head checks/reviews pass and GraphQL confirms
+  the P1 state plus resolved or outdated P2 with no unresolved review threads.
 
 T023--T026 are complete. Their DSSIM correction, scoped/full verification,
 evidence-only guard, subsequent no-findings review, and conversation disposition
@@ -149,7 +179,9 @@ complete that historical review-fix group. T027--T029 complete the current LFS
 proposal correction and local verification, and T030 completed independent
 current-head review, required-check, mergeability, and thread disposition. The
 T027--T030 LFS review-fix group is a completed historical reviewed cycle with no
-open review-fix task; latest-head role validation remains a separate later step.
+open task. T031--T034 complete the progress-history proposal correction and
+local verification. T035 remains the external current-head review, fixed-P1
+confirmation, and normal P2 thread-disposition gate before final validation.
 
 ## Decisions
 
@@ -207,6 +239,13 @@ open review-fix task; latest-head role validation remains a separate later step.
   apply the promised LFS filter to either extension and make the proposal/AC
   misleading; explicit per-extension patterns plus executable `git check-attr`
   evidence are required by T027--T030.
+- D018: Native Codex P2 `PRRT_kwDOSX65IM6Qhvbt` is valid and in scope. The
+  current proposal incorrectly assumes `mistakesFromHistory` uses only the
+  latest attempt, while `src/domain.ts:70-82` counts every incorrect answer and
+  retains last-answer data; dropping oldest records therefore changes both
+  cumulative mistake counts and questions represented only in the pruned prefix.
+  T031--T035 require a docs-only v2 aggregate contract that preserves those
+  semantics across cap, quota trimming, migration, import/export, and reset.
 
 ## Dead Ends
 
@@ -377,6 +416,47 @@ open review-fix task; latest-head role validation remains a separate later step.
   independent no-findings review, five successful required checks, mergeable
   state, resolved P2 `PRRT_kwDOSX65IM6Qhcm6`, and zero unresolved threads.
 
+### Current progress-history review-fix candidate verification
+
+- Candidate base: `ce560bdf64939f5d274873662d23bf24997f5f4b` plus the two-file
+  docs/process candidate. Proposal 06 now defines v2 ordered per-question
+  `prunedAnswerStats` with cumulative pruned wrong count, complete latest pruned
+  answer fallback, and stable first-seen order; one pruning helper transfers
+  only each newly removed prefix, so retained and aggregate counts combine once.
+- Concrete `src/domain.ts:70-82` verification confirmed that the current function
+  increments `wrong` for every incorrect answer, overwrites `last` for every
+  later answer, filters only `wrong > 0`, and stably sorts descending counts from
+  `Map` insertion order. An executable 6000-answer fixture against the transpiled
+  repository function reported deep equality for full 6000, capped 5000,
+  repeated-trim, and multi-quota-trim representations; equality covered
+  cumulative counts, tie order, every `last` field, and a wrong question
+  represented only by the pruned prefix.
+- The v2 lifecycle and proposal-level unit acceptance now cover lossless v1
+  migration with an initially empty aggregate, repeated cap and multi-quota
+  trims without double-counting, retained-last precedence and pruned fallback,
+  canonical validated import/export round-trip, atomic invalid-import rejection,
+  reset of retained plus aggregate state, and non-crashing corrupted-aggregate
+  backup/warning behavior without fabricated mistakes.
+- Proposal identity guard — exit 0: title, P1 priority, architecture/data-
+  reliability category, M effort, proposed status, date, links, dependencies,
+  README index entry, and README sequencing are unchanged.
+- Exact scoped commands from `plan.md` — exit 0: `git diff --check` and the
+  worktree feature-memory gate passed; inventory remains 24 Markdown files,
+  three priority files, and exactly one top-level identity `04..22`; all local
+  links resolved in 24 files; README uniquely indexes all 22 details; snapshot
+  date/revision markers remain present; base scope contains only improvement
+  docs/feature memory and candidate scope is exactly proposal 06 plus this file.
+- `pnpm run preflight` — exit 0: feature-memory and repository-baseline gates
+  passed; content validation passed for 460 questions and 276 local image
+  references; all 485 Node tests passed; production build passed; all 102
+  Playwright executions passed in 1.1 minutes.
+- No dependency manifest, workflow, product/runtime source, content, test,
+  script, or configuration file changed; product behavior remains future
+  proposal scope. This review-fix commit cannot embed its own SHA. T035 fresh
+  independent/native review, confirmation that P1 `PRRT_kwDOSX65IM6Qhvbp`
+  remains resolved/outdated, and normal disposition of P2
+  `PRRT_kwDOSX65IM6Qhvbt` remain external and are not pre-asserted here.
+
 ### Semantic index/detail and minimum-field evidence
 
 All 22 details retain context/problem, goals, actionable requirements/design or
@@ -465,12 +545,27 @@ extra proposal.
   for reviewed commit `1934877eb8`, all five required checks succeeded, PR #207
   was mergeable, P2 `PRRT_kwDOSX65IM6Qhcm6` was resolved, and GraphQL reported
   zero unresolved review threads.
+- Current review context on head
+  `ce560bdf64939f5d274873662d23bf24997f5f4b`: P1
+  `PRRT_kwDOSX65IM6Qhvbp` was corrected by the reconciliation content and was
+  subsequently resolved and outdated; GraphQL mutation confirmed
+  `isResolved=true` and `isOutdated=true`.
+- Current accepted review finding on the same head: native Codex P2
+  `PRRT_kwDOSX65IM6Qhvbt` identifies that proposal 06 FR-3 falsely treats oldest
+  answer trimming as semantics-neutral even though `src/domain.ts:70-82` counts
+  every incorrect answer and retains the last answer per question.
+- Architect disposition: changes required through T031--T035. T031--T034 now
+  preserve `N=5000` and docs-only scope while supplying a durable per-question
+  aggregate, complete v2 lifecycle, no-double-count selector merge, full/capped,
+  repeated/quota equivalence including a pruned-only question, and scoped/full
+  evidence. T035 fresh current-head review, confirmation that the P1 stays
+  resolved/outdated, and normal disposition of current P2 remain external.
 
 ## Cycle PR Set
 
 | Purpose | Branch | PR | Verified base | Current/final head | Status | Included in final validation |
 |---|---|---|---|---|---|---|
-| Audit backlog, focused documentation corrections, and complete feature memory | `docs/improvement-specs` | [#207](https://github.com/cucumberfalse/cabadrive/pull/207) | `bd0ce1dd3e367f07db8528248f9cb00e2b296441` | This reconciliation commit cannot embed its own SHA; the latest append-only Architect/Analyst notes plus external expected-head guard authoritatively name the effective and actual current heads | Implementation/process fixes and T027--T030 LFS correction/review cycle complete; exact head `1934877eb8a1b7999cae487d3a78162717264737` had no findings, five successful checks, mergeable state, resolved P2, and zero unresolved threads; latest-head role validation and external finalization are separate subsequent actions | Yes |
+| Audit backlog, focused documentation corrections, and complete feature memory | `docs/improvement-specs` | [#207](https://github.com/cucumberfalse/cabadrive/pull/207) | `bd0ce1dd3e367f07db8528248f9cb00e2b296441` | This review-fix commit cannot embed its own SHA; the latest append-only Architect/Analyst notes plus external expected-head guard authoritatively name the effective and actual current heads | Historical fixes through T030 complete; progress-history correction and local evidence T031--T034 complete; T035 fresh review, fixed-P1 confirmation, current-P2 disposition, and no-unresolved-thread proof remain external blockers | Yes |
 
 No second cycle PR is currently authorized. If Orchestrator adds one, append it
 before final validation with purpose, branch, PR, head, status, and inclusion.
