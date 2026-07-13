@@ -192,7 +192,7 @@ Orchestrator finalization follow the canonical policy below.
 
 - KI001: Pre-memory head `8d2030d646c39b808f3e0ff2ed3f51ac71b7837c` and its checks became historical after later heads. Architect disposition: superseded — later current heads received fresh checks and replace the old evidence; no owner decision remains.
 - KI002: Exact audit measurements can drift after audited revision `bd0ce1dd3e367f07db8528248f9cb00e2b296441`. Architect disposition: addressed — README and overview qualify them by the 2026-07-11 snapshot and full audited revision.
-- KI003: The old P1 feature-memory discussion and failed AI Review blocked the earlier head. Architect disposition: addressed — the P1 is resolved and outdated, all review conversations are resolved, and AI Review is green on the reviewed head.
+- KI003: The old P1 feature-memory discussion and failed AI Review blocked the earlier cycle. Architect disposition: addressed — that P1 was resolved and outdated within its completed cycle; current-head conversations and check state are governed externally and are not asserted here.
 - KI004: Head `221885b7334746445e873427c884c73e108aa471` had five findings covering memory, photo inventory, E2E count, DPI path, usability count, and semantic evidence. Architect disposition: addressed — every finding was corrected, reverified, and accepted by fresh no-findings review.
 - KI005: Results before the T016--T021 fix were historical and could not validate later heads. Architect disposition: superseded — fresh-head scoped checks, full preflight, gate evidence, and independent review were required and recorded.
 - KI006: Head B `4691553b98f603ab7abe3812a2313a2f88e08eaf` had DSSIM P2 `PRRT_kwDOSX65IM6Qf71G` because small derivatives were upscaled before a universal threshold. Architect disposition: addressed — like-sized comparison fixed the proposal and the P2 was independently reviewed, resolved, and outdated.
@@ -399,9 +399,6 @@ before final validation with purpose, branch, PR, head, status, and inclusion.
 
 ## Final Validation Evidence
 
-- Architect return count: 0.
-- Analyst return count: 0.
-- Limit escalation: none.
 - Canonical role-validation authority: Architect and Analyst pass markers,
   timestamps, return counts, and effective content head are authoritative only
   in the latest append-only role-owned notes written in Architect-then-Analyst
