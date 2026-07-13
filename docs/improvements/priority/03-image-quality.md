@@ -66,7 +66,7 @@ Cabadrive — визуально-нагруженный тренажёр: стр
 - **FR-4**: Для классов a–c генерируются AVIF + WebP + JPEG-фолбэк в наборе ширин; `<img>` в App.tsx переведены на `<picture>`/`srcset` + обязательные `width`/`height`.
 - **FR-5**: SVG (классы d, e) прогнаны через svgo с безопасным конфигом; визуальная идентичность подтверждена QA-гейтом.
 - **FR-6**: Новый скрипт `scripts/build-images.mjs` — единая точка генерации производных изображений + `content/image-derivatives.manifest.json`.
-- **FR-7**: Перцептивный QA-гейт (DSSIM) встроен в `validate:content`; провал порога — ошибка CI.
+- **FR-7**: Перцептивный QA-гейт (DSSIM) встроен в `validate:content`: для каждого derivative эталон из мастера уменьшается тем же `lanczos3` до фактических ширины и высоты candidate, после чего сравниваются изображения одинакового размера; провал порога — ошибка CI.
 - **FR-8**: Пути производных изображений содержат контент-хеш (решение кеш-ловушки immutable).
 
 Нефункциональные:
@@ -87,7 +87,7 @@ content/assets-masters/**  (PNG-мастера, максимальное раз�
         │ (3) scripts/build-images.mjs  (sharp: resize → AVIF/WebP/JPEG, ширины 480/800/1200/1600/2400)
         ▼
 public/content/img/<class>/<id>-<w>.<hash8>.<ext>  +  content/image-derivatives.manifest.json
-        │ (4) QA-гейт: dssim ≤ 0.01 против мастера; ssimulacra2 ≥ 70 на сэмплах
+        │ (4) QA-гейт: dssim ≤ 0.01 против like-sized reference; ssimulacra2 ≥ 70 на сэмплах
         │ (5) svgo для SVG-классов
         ▼
 src: assetSrcSet(id) — хелпер собирает srcset/sizes из манифеста
@@ -149,7 +149,7 @@ xattr -dr com.apple.quarantine ~/tools/realesrgan && chmod +x ~/tools/realesrgan
 
 **Обязательный приём против артефактов**: финальные производные делать даунскейлом ×4-результата до ×2–2.3 (2296 → 1200–1300 px) — даунскейл после апскейла прячет «пластиковость» и галлюцинации текстур. **Обязательный ручной QA**: Real-ESRGAN может ломать мелкий текст (номерные знаки, надписи на табличках) — метрики этого не ловят. Процедура: (1) прогнать A/B на выборке 15 фото тремя моделями — `realesrgan-x4plus`, `realesrnet-x4plus` (нейтральнее, меньше галлюцинаций), `remacri` (из upscayl-ncnn, часто лучше на уличных сценах); (2) выбранной моделью обработать все 275 уникальных JPG; (3) ручной просмотр каждого уникального фото с текстом/знаками в кадре (фильтр по `content/image-metadata/question-images.manifest.json`) и проверка покрытия всех 276 ссылок; (4) файлы с артефактами — заменить на бикубический ресайз исходника (честное «мыло» лучше галлюцинаций) и пометить в манифесте `"upscale": "rejected"`.
 
-Для апскейла эталона нет, полноссылочные метрики неприменимы напрямую; автогейт: даунскейл результата обратно к 574 px и `dssim ≤ 0.02` против исходника (ловит грубые поломки геометрии/цвета).
+Для апскейла эталона нет, полноссылочные метрики неприменимы напрямую; отдельный sanity-гейт: уменьшить результат обратно до точных размеров исходника через `lanczos3` и сравнить два like-sized изображения с `dssim ≤ 0.02` (ловит грубые поломки геометрии/цвета, но не заменяет ручной QA и не использует derivative-порог `≤0.01`).
 
 ### 6.4. Сквозной шаг: `scripts/build-images.mjs` (sharp)
 
@@ -174,7 +174,7 @@ for (const w of WIDTHS.filter((w) => w <= srcW)) {      // withoutEnlargement �
 ```
 Критичные настройки: `.clone()` обязателен (pipeline нельзя переиспользовать); шкала качества AVIF ≠ JPEG: `avif quality 55` визуально ≈ JPEG 80; **для страниц учебника (текст!)** — отдельный профиль: `webp({ quality: 90 })` и `avif({ quality: 70, chromaSubsampling: "4:4:4" })` — сабсемплинг 4:4:4 убирает цветное мыло на тексте; параллелизм ограничить `p-limit(os.cpus().length)` — AVIF в 5–15 раз медленнее WebP и прожорлив по памяти; sharp по умолчанию стирает EXIF (для веба — плюс) и конвертирует ICC в sRGB.
 
-Имя файла: `<basename>-<w>.<sha256(содержимого).slice(0,8)>.<ext>` → решает FR-8 (иммутабельные пути честны). Манифест `content/image-derivatives.manifest.json`: `{ sourcePath, sourceSha256, variants: [{ width, format, path, bytes, dssim }] }` — канонический JSON тем же `canonicalJson`-хелпером, что в `content-shards.mjs` (не плодить третью копию — см. [ТЗ-21](../21-content-scripts-refactoring.md)).
+Имя файла: `<basename>-<w>.<sha256(содержимого).slice(0,8)>.<ext>` → решает FR-8 (иммутабельные пути честны). Манифест `content/image-derivatives.manifest.json`: `{ sourcePath, sourceSha256, variants: [{ width, height, format, path, bytes, qa: { referenceWidth, referenceHeight, kernel, dssim } }] }`; `referenceWidth`/`referenceHeight` обязаны совпадать с фактическими размерами candidate, а `kernel` равен `lanczos3`. Канонический JSON строится тем же `canonicalJson`-хелпером, что в `content-shards.mjs` (не плодить третью копию — см. [ТЗ-21](../21-content-scripts-refactoring.md)).
 
 Инкрементальность: пропускать мастера, чей `sourceSha256` уже в манифесте и все варианты существуют (NFR-3).
 
@@ -183,9 +183,17 @@ for (const w of WIDTHS.filter((w) => w <= srcW)) {      // withoutEnlargement �
 ```bash
 brew install dssim      # Rust-реализация kornelski; Linux: cargo install dssim
 ```
-В `build-images.mjs` после кодирования каждого варианта: декодировать вариант, привести к размеру эталона (sharp resize) и `execa("dssim", [refPng, candPng])`. Шкала DSSIM: 0 = идентичны; пороги: **< 0.003 отлично, 0.003–0.01 приемлемо, > 0.01 — брак** → автоматический пересжим с quality +5 (одна повторная попытка), после второго провала — ошибка скрипта. Выборочная контрольная метрика точнее — SSIMULACRA2 (`brew install jpeg-xl`, бинарь `ssimulacra2`; шкала: 70+ высокое качество, 80+ практически без потерь): гонять на случайных 5 % вариантов, гейт ≥ 70. Чисто-JS ssim.js не использовать — классический SSIM плохо коррелирует с восприятием на артефактах современных кодеков.
 
-Новый валидатор `scripts/content-image-derivatives.mjs` (по образцу существующих аудитов, с `--write` для evidence): (1) каждый мастер имеет полный набор вариантов; (2) sha мастера совпадает с манифестом; (3) все dssim в манифесте ≤ 0.01; (4) натуральная ширина максимального варианта ≥ целевой ширины класса (FR-1/FR-2 закрепляются навсегда). Подключить в цепочку `validate:content` в package.json.
+В `build-images.mjs` resize derivative и QA-reference используют один явно заданный baseline `sharp.kernel.lanczos3`. После кодирования каждого варианта:
+
+1. Декодировать candidate и прочитать его фактические `width`/`height`; candidate не ресайзить для измерения.
+2. Проверить, что candidate не больше мастера ни по одной оси. Если больше, завершить с ошибкой: QA никогда не апскейлит маленький candidate или reference и не маскирует отсутствие исходных деталей.
+3. Из мастера создать reference PNG строго в фактических размерах candidate через `resize({ width, height, fit: "fill", kernel: sharp.kernel.lanczos3, withoutEnlargement: true })` — тот же baseline, что задан для генерации derivative.
+4. Декодировать candidate в PNG без изменения размеров и выполнить `execa("dssim", [referencePng, candidatePng])`. Перед вызовом assert подтверждает одинаковые `width` и `height`.
+
+Так DSSIM измеряет только потери кодека/обработки относительно like-sized reference, а не неизбежную потерю деталей при переходе master→480/800 px. Шкала: 0 = идентичны; для этих like-sized пар пороги: **< 0.003 отлично, 0.003–0.01 приемлемо, > 0.01 — брак** → автоматический пересжим с quality +5 (одна повторная попытка), после второго провала — ошибка скрипта. Выборочная SSIMULACRA2-проверка использует ту же like-sized reference/candidate пару (`brew install jpeg-xl`, бинарь `ssimulacra2`; шкала: 70+ высокое качество, 80+ практически без потерь): гонять на случайных 5 % вариантов, гейт ≥ 70. Чисто-JS ssim.js не использовать — классический SSIM плохо коррелирует с восприятием на артефактах современных кодеков.
+
+Новый валидатор `scripts/content-image-derivatives.mjs` (по образцу существующих аудитов, с `--write` для evidence): (1) каждый мастер имеет полный набор вариантов; (2) sha мастера совпадает с манифестом; (3) для каждого варианта manifest фиксирует фактические одинаковые candidate/reference dimensions и `kernel: "lanczos3"`, candidate не превышает master, а DSSIM like-sized пары ≤ 0.01; (4) натуральная ширина максимального варианта ≥ целевой ширины класса (FR-1/FR-2 закрепляются навсегда). Подключить в цепочку `validate:content` в package.json.
 
 ### 6.6. SVG (классы d, e): svgo
 
@@ -193,7 +201,7 @@ brew install dssim      # Rust-реализация kornelski; Linux: cargo inst
 pnpm add -D svgo   # v4.x: removeViewBox и removeTitle больше НЕ в дефолтном пресете
 svgo -rf content/assets/learning -o content/assets/learning --multipass
 ```
-Конфиг `svgo.config.mjs`: `multipass: true`; в `preset-default` overrides: `removeViewBox: false` (фиксация намерения), `cleanupIds: false` (если есть `<use href="#...">` — проверить grep'ом до включения), `inlineStyles: false`; плагины `removeDimensions` (width/height → масштабирование через CSS; НЕ сочетать с removeViewBox) и `convertPathData` с `floatPrecision: 2` (точность 1 может исказить мелкие иконки). Гейт: рендер до/после в PNG через sharp + dssim ≤ 0.001 на выборке 30 файлов. Ожидаемая экономия на 1386 SVG — 20–40 % веса класса.
+Конфиг `svgo.config.mjs`: `multipass: true`; в `preset-default` overrides: `removeViewBox: false` (фиксация намерения), `cleanupIds: false` (если есть `<use href="#...">` — проверить grep'ом до включения), `inlineStyles: false`; плагины `removeDimensions` (width/height → масштабирование через CSS; НЕ сочетать с removeViewBox) и `convertPathData` с `floatPrecision: 2` (точность 1 может исказить мелкие иконки). Гейт: рендер до/после через один renderer в PNG с одинаковыми фиксированными dimensions + dssim ≤ 0.001 на выборке 30 файлов. Ожидаемая экономия на 1386 SVG — 20–40 % веса класса.
 
 ### 6.7. Доставка в UI: srcset и `<picture>`
 
@@ -249,14 +257,14 @@ export function assetSrcSet(sourcePath: string): { srcSet: string; fallbackSrc: 
 - **AC-2**: Страница учебника page-069 (таблицы скоростей): текст читается при 100 % зуме на 2× DPR (ручная процедура: открыть раздел «Скорость», сравнить скриншоты до/после).
 - **AC-3**: Все 275 уникальных локальных JPG имеют вариант ≥1200 px, все 276 ссылок разрешаются в эти варианты; в манифесте нет незаполненных upscale-статусов; список `rejected` приложен к PR.
 - **AC-4**: В HTML рендерится `<picture>` с AVIF/WebP source для вопросов и учебника (проверяется новым e2e-шагом: `page.locator('picture source[type="image/avif"]')`).
-- **AC-5**: Все dssim в манифесте ≤ 0.01; выборочные ssimulacra2 ≥ 70.
+- **AC-5**: Для каждого derivative candidate остаётся в своих фактических размерах, master/reference уменьшается до этих же `width`/`height` через зафиксированный `lanczos3`, manifest подтверждает одинаковые dimensions и kernel, и только для такой like-sized пары DSSIM ≤ 0.01; candidate крупнее master или любое увеличение candidate при QA отклоняется. Выборочные like-sized пары имеют SSIMULACRA2 ≥ 70.
 - **AC-6**: Ни один `<img>` растровых классов без `width`/`height` (grep/e2e-проверка).
 - **AC-7**: Суммарный вес изображений, скачиваемых при первом открытии LearnView на 390 px вьюпорте, снижен ≥ 25 % (замер через Playwright route-логирование до/после).
 - **AC-8**: Повторный запуск `build-images.mjs` без изменений исходников не меняет байты производных (NFR-1, проверка git status).
 
 ## 9. План тестирования
 
-- Unit (node --test): `assetSrcSet()` — сборка srcset из фикстурного манифеста; валидатор производных — на фикстурах с намеренно «плохим» dssim.
+- Unit (node --test): `assetSrcSet()` — сборка srcset из фикстурного манифеста; QA-фикстуры 480/800 px подтверждают, что reference уменьшается до фактических dimensions candidate одним `lanczos3`, candidate не ресайзится, like-sized DSSIM ≤ 0.01 проходит, несовпадение dimensions и candidate крупнее master отклоняются; отдельная фикстура с намеренно «плохим» like-sized dssim падает.
 - E2e (Playwright): AVIF-source присутствует; изображение вопроса отдаёт вариант ≤ 800 px на мобильном проекте (Pixel 7) и ≥ 1200 px на десктопе (проверка через request URL); отсутствие layout shift — сравнение boundingBox карточки до/после загрузки изображения.
 - Ручной QA: протокол просмотра апскейленных фото (этап 2); скриншот-сравнение страниц учебника (этап 3).
 - Регрессия: полный `pnpm run preflight` на каждом этапе.
@@ -300,4 +308,4 @@ export function assetSrcSet(sourcePath: string): { srcSet: string; fallbackSrc: 
 | Форматы доставки | JPEG/PNG только | AVIF + WebP + JPEG-фолбэк |
 | `<img>` с srcset | 0 | 100 % растровых классов |
 | Трафик изображений LearnView (mobile) | базовый замер | −25 % и более |
-| Автоматический контроль качества | только sha256 | dssim/ssimulacra2-гейты в CI |
+| Автоматический контроль качества | только sha256 | like-sized dssim/ssimulacra2-гейты в CI; reference downscale до candidate dimensions через `lanczos3`, без candidate upscale |

@@ -81,15 +81,45 @@
   scope-only, and `git diff --check` commands from `plan.md`, then run one full
   `pnpm run preflight`. Record exact outcomes and the checked full SHA in
   `Verification Evidence`; a failed first attempt belongs in `Dead Ends`.
-- [ ] T022 Orchestrator obtain a fresh independent Review Agent review on the
-  new pushed head after T016--T021. The review must verify all six dispositions,
-  current cycle/evidence memory, corrected semantic evidence, docs-only scope,
-  and preflight evidence. The reviewed-head findings and original P1 remain
-  blockers until normal GitHub review disposition on the new current head.
+- [x] T022 Orchestrator obtained fresh independent Review Agent review across
+  effective content head A `c248d1e66ef134779bda51a9ba2bd9ea96b73de8`
+  and evidence/process head B
+  `4691553b98f603ab7abe3812a2313a2f88e08eaf`. The factual/count dispositions,
+  semantic evidence, docs-only scope, and preflight evidence were rechecked,
+  but review outcome remains changes required because P2
+  `PRRT_kwDOSX65IM6Qf71G` found the DSSIM proposal defect assigned in
+  T023--T026. The reviewed-head findings and original P1 remain blockers.
+- [ ] T023 Implementation Agent correct only the DSSIM proposal/acceptance
+  guidance in `docs/improvements/priority/03-image-quality.md`. Preferred
+  contract: downscale the master/reference to each candidate derivative's own
+  width and height using the same documented resampling baseline, then compute
+  DSSIM between those like-sized images. Never upscale a 480/800 px candidate
+  back to master dimensions before applying a universal `<=0.01` threshold.
+  A size-scoped threshold is an acceptable fallback only if each derivative
+  class/size has an explicit empirically justified threshold and the proposal
+  no longer claims one universal bound conflating intended downsampling loss.
+- [ ] T024 Implementation Agent update every dependent P3 QA example, command,
+  test-plan statement, metric target, and acceptance criterion so the chosen
+  like-sized comparison contract is unambiguous for all derivative widths.
+  Refresh the P3 semantic evidence and record disposition of P2
+  `PRRT_kwDOSX65IM6Qf71G`; do not implement an image pipeline or validator.
+- [ ] T025 Implementation Agent rerun all scoped inventory/link/README/snapshot,
+  feature-memory, scope-only, and `git diff --check` commands from `plan.md`,
+  plus one full `pnpm run preflight`. Record exact results against the new
+  full effective content head C containing T023--T024, commit/push that head as
+  assigned, and do not reuse A/B verification as current evidence.
+- [ ] T026 Implementation Agent make the subsequent tasks/evidence update a
+  separate evidence/process head D, recording full C and D SHAs in
+  `Verification Evidence`, `Cycle PR Set`, and pending validation memory.
+  Orchestrator must guard `C..D` as evidence/process-only and obtain a fresh
+  independent Review Agent review on D that verifies P2, the like-sized DSSIM
+  contract, current evidence, docs-only scope, and all prior findings before
+  any final-validation invocation.
 
-T016--T022 are mandatory review-fix work and block T012--T015. They do not
+T023--T026 are mandatory second review-fix work and block T010--T015. They do not
 constitute final Architect validation; final validation must be invoked anew
-only after the new head has fresh checks and a passing independent review.
+only after head D has fresh checks, a passing independent review, and normal
+GitHub disposition of all blocking conversations.
 
 ## Decisions
 
@@ -128,6 +158,15 @@ only after the new head has fresh checks and a passing independent review.
 - D013: The usability inventory is 18 issues because its supported groups are
   seven plus eleven. README, detail prose, enumeration, and acceptance criteria
   must use that same identity/count.
+- D014: P2 `PRRT_kwDOSX65IM6Qf71G` is valid and blocks A/B. A universal DSSIM
+  threshold is meaningful only after reference and candidate share dimensions;
+  intended 480/800 px downsampling must not be measured by upscaling the
+  derivative to master size. The preferred proposal contract is master/reference
+  downscaling to candidate dimensions with the same resampling baseline.
+- D015: Size-scoped DSSIM thresholds are a permitted fallback only with explicit
+  per-class/per-size evidence and acceptance language. They are not permission
+  to retain the current upscale-to-master comparison or an unsupported universal
+  `<=0.01` bound. This cycle changes proposal documentation only.
 
 ## Dead Ends
 
@@ -155,6 +194,14 @@ only after the new head has fresh checks and a passing independent review.
 - KI005: Any local or GitHub results recorded before the T016--T021 fix commit
   are historical for the next pushed head. Scoped checks, full preflight, and
   independent review must be fresh for that new SHA.
+- KI006: Current head B `4691553b98f603ab7abe3812a2313a2f88e08eaf`
+  carries Review Agent P2 `PRRT_kwDOSX65IM6Qf71G`: the P3 DSSIM guidance
+  upscales deliberately small derivatives to master size and then imposes a
+  universal `<=0.01`, conflating intended downsampling loss with encoding or
+  processing degradation. A/B cannot proceed to final validation or merge.
+- KI007: T023--T024 are non-evidence documentation changes, so prior content
+  head A and evidence head B cannot remain the final effective/evidence pair.
+  New C/D heads, fresh scoped/full verification, and fresh review are required.
 
 ## Verification Evidence
 
@@ -244,7 +291,7 @@ extra proposal.
 |---|---|---|---|
 | P1 | Priority/category/title agree; 18 issues reconcile as seven higher-severity plus eleven medium/low, effort is six themes across eight slices, and AC-9 agrees with 51 tests/project (102 executions); dependencies and stage 1--3 slices agree | Complete | Corrected counts and acceptance baseline |
 | P2 | Priority/effort/category/title and six stages agree; dependencies and stage 2--3 placement agree | Complete | Agrees |
-| P3 | Priority/category/title agree; five stages, 275 unique JPG/276 references through AC-3, and Swift Path A at scale 4.2 (~302.4 DPI) agree with requirements; dependencies and stage 2--3/4 linkage agree | Complete | Corrected counts, acceptance baseline, and DPI path |
+| P3 | Priority/category/title agree; five stages, 275 unique JPG/276 references through AC-3, Swift Path A at scale 4.2 (~302.4 DPI), and AC-5/QA/test/metric guidance consistently compare each unchanged candidate with a master reference downscaled by `lanczos3` to identical dimensions; dependencies and stage 2--3/4 linkage agree | Complete | Corrected counts, acceptance baseline, DPI path, and like-sized DSSIM contract |
 | 04 | P1 / XL / architecture/title agree; links 05, 06, 07, 08, 11, 17, P1 and stage 3 agree | Complete | Agrees |
 | 05 | P1 / M / architecture-UX/title agree; links P1, 04, 08 and stage 2 linkage agree | Complete | Agrees |
 | 06 | P1 / M / data-reliability summary agrees with detailed architecture/reliability category; links P1, 11, 15 and stage 3 agree | Complete | Intentional shorter index category |
@@ -286,20 +333,39 @@ extra proposal.
   acceptance criteria. Those corrections are committed and pushed in effective
   content/review-fix head A
   `c248d1e66ef134779bda51a9ba2bd9ea96b73de8`; fresh outcomes are recorded above.
+- Review Agent then reviewed A plus evidence/process head B
+  `4691553b98f603ab7abe3812a2313a2f88e08eaf` and opened valid P2
+  `PRRT_kwDOSX65IM6Qf71G` against the DSSIM guidance near
+  `priority/03-image-quality.md:186`. The guidance makes small derivatives
+  master-sized before comparison, so its universal threshold includes expected
+  resize loss and does not isolate derivative quality.
+- Architect disposition: changes required. T023--T026 require a like-sized
+  reference/candidate QA contract (preferred), consistent proposal/AC evidence,
+  new effective/evidence heads C/D, scoped plus full preflight verification, and
+  fresh independent review. This is not final validation.
+- Implementation candidate adopts the preferred contract: the master/reference
+  is downscaled with the same explicit `lanczos3` baseline to each derivative's
+  actual dimensions, candidate bytes are decoded without resize, mismatched or
+  larger-than-master candidates fail, and `<=0.01` applies only to like-sized
+  codec/process comparisons. Exact head C and fresh checks are recorded after
+  the content commit is created and verified.
 
 ## Cycle PR Set
 
 | Purpose | Branch | PR | Verified base | Current/final head | Status | Included in final validation |
 |---|---|---|---|---|---|---|
-| Audit backlog, focused documentation corrections, and complete feature memory | `docs/improvement-specs` | [#207](https://github.com/cucumberfalse/cabadrive/pull/207) | `bd0ce1dd3e367f07db8528248f9cb00e2b296441` | Effective content/review-fix head A `c248d1e66ef134779bda51a9ba2bd9ea96b73de8`; later current head B is this tasks-only evidence update and must be read/guarded by Orchestrator | Open; T016--T021 complete, fresh independent review T022 and original P1/AI Review disposition remain blockers | Yes |
+| Audit backlog, focused documentation corrections, and complete feature memory | `docs/improvement-specs` | [#207](https://github.com/cucumberfalse/cabadrive/pull/207) | `bd0ce1dd3e367f07db8528248f9cb00e2b296441` | Prior effective content head A `c248d1e66ef134779bda51a9ba2bd9ea96b73de8`; current evidence/process head B `4691553b98f603ab7abe3812a2313a2f88e08eaf`; replace with C/D after T023--T026 | Open; T022 review changes required for P2 `PRRT_kwDOSX65IM6Qf71G`; T023--T026, original P1/AI Review disposition, and fresh review remain blockers | Yes |
 
 No second cycle PR is currently authorized. If Orchestrator adds one, append it
 before final validation with purpose, branch, PR, head, status, and inclusion.
 
 ## Final Validation Evidence
 
-- Effective content head: `c248d1e66ef134779bda51a9ba2bd9ea96b73de8`
-  (review-fix content candidate; Architect/Analyst final validation pending).
+- Effective content head: pending replacement C. Prior candidate A
+  `c248d1e66ef134779bda51a9ba2bd9ea96b73de8` is superseded for future final
+  validation because T023--T024 require non-evidence documentation changes;
+  current evidence/process head B is
+  `4691553b98f603ab7abe3812a2313a2f88e08eaf`.
 - Architect return count: 0.
 - Analyst return count: 0.
 - Limit escalation: none.
