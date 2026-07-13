@@ -44,24 +44,24 @@
   Analyst-owned intake artifact.
 - [ ] T015 Orchestrator run the current-head/effective-content-head evidence-only
   guard, finalization helper, and merge PR #207 when every gate is green.
-- [ ] T016 Implementation Agent update `Cycle PR Set`, `Verification Evidence`,
+- [x] T016 Implementation Agent updated `Cycle PR Set`, `Verification Evidence`,
   and review context to identify reviewed current head
   `221885b7334746445e873427c884c73e108aa471`; after the fixes are committed and
   pushed, replace candidate/current-head wording with the new full pushed head
   SHA and record that older checks/review are historical only.
-- [ ] T017 Implementation Agent correct the ticket-photo inventory in
+- [x] T017 Implementation Agent corrected the ticket-photo inventory in
   `00-analysis-overview.md` and `priority/03-image-quality.md` from the erroneous
   322-photo/JPG claim to the verified distinction: 275 unique local JPG files
   and 276 content references. Update every dependent problem statement, table,
   batch/QA step, target, and acceptance criterion (including AC-3) so neither
   unique assets nor references are called 322. Preserve the separately measured
   `322 PNG` format-inventory value unless new evidence specifically disproves it.
-- [ ] T018 Implementation Agent correct the E2E baseline in
+- [x] T018 Implementation Agent corrected the E2E baseline in
   `00-analysis-overview.md` and `priority/01-usability.md` from 55 tests per
   project / `51+4` ambiguity to exactly 51 tests per project and 102 executions
   across the two configured projects. Update the dependent acceptance criterion
   (including AC-9) so all overview, proposal, evidence, and total counts agree.
-- [ ] T019 Implementation Agent remove the Path A DPI contradiction in
+- [x] T019 Implementation Agent removed the Path A DPI contradiction in
   `priority/03-image-quality.md`: raise its render scale/target from the stated
   ~288 DPI output to a conforming value of at least 300 DPI and update dependent
   pixel dimensions/commands. Path A must not be described as satisfying FR-1 or
@@ -69,13 +69,13 @@
   DPI`; if the implementation evidence cannot support the raised parameters,
   label only a verified >=300-DPI path as conforming and make Path A explicitly
   non-conforming/exploratory.
-- [ ] T020 Implementation Agent reconcile the usability issue inventory to the
+- [x] T020 Implementation Agent reconciled the usability issue inventory to the
   verified arithmetic `7 + 11 = 18`: update the README P1 summary, the
   `priority/01-usability.md` headline/problem lists and count language, and the
   corresponding acceptance criterion so all references say 18 and the detailed
   enumeration contains exactly seven higher-severity plus eleven medium/low
   issues. Do not solve any usability issue in this PR.
-- [ ] T021 Implementation Agent refresh the 22-detail semantic evidence after
+- [x] T021 Implementation Agent refreshed the 22-detail semantic evidence after
   T017--T020, explicitly recording the corrected P1/P3 counts and AC agreement;
   rerun the scoped inventory, link, README coverage, snapshot, feature-memory,
   scope-only, and `git diff --check` commands from `plan.md`, then run one full
@@ -158,12 +158,12 @@ only after the new head has fresh checks and a passing independent review.
 
 ## Verification Evidence
 
-- Verification context: checks ran in the assigned worktree on branch
+- Historical initial-implementation context: checks ran in the assigned worktree on branch
   `docs/improvement-specs`, with checked-out PR head
   `8d2030d646c39b808f3e0ff2ed3f51ac71b7837c` plus the scoped candidate changes
   recorded by T003--T008. The post-commit/push head must receive fresh GitHub
   checks and independent review; no result from the checked-out pre-memory head
-  is treated as final GitHub evidence.
+  is treated as evidence for the review-fix head.
 - `git diff --check` — exit 0, no whitespace errors.
 - `node scripts/check-feature-memory.mjs --worktree` — exit 0:
   `No configured product paths changed; feature-memory gate passes.`
@@ -191,6 +191,44 @@ only after the new head has fresh checks and a passing independent review.
   gates passed; content validation passed for 460 questions/276 local image
   references; 485 Node tests passed; production build passed; 102 Playwright
   tests passed across desktop Chromium and mobile projects.
+
+### Fresh review-fix candidate A verification
+
+- Effective content/review-fix head A:
+  `c248d1e66ef134779bda51a9ba2bd9ea96b73de8`. This exact commit contains all
+  behavioral documentation corrections and the Architect review disposition;
+  it was pushed to `origin/docs/improvement-specs` before this evidence update.
+- `git diff --check bd0ce1dd3e367f07db8528248f9cb00e2b296441...c248d1e66ef134779bda51a9ba2bd9ea96b73de8`
+  — exit 0, no whitespace errors.
+- `node scripts/check-feature-memory.mjs` on A — exit 0:
+  `No configured product paths changed; feature-memory gate passes.`
+- Exact inventory commands from `plan.md` on A — exit 0: 24 Markdown files,
+  three priority files, and one file for each numbered identity `04..22`.
+- Exact local-link command from `plan.md` on A — exit 0:
+  `resolved local Markdown links in 24 files`.
+- Exact README coverage command from `plan.md` on A — exit 0:
+  `README uniquely indexes 22 detail documents`.
+- Exact snapshot `rg` command from `plan.md` on A — exit 0; README and overview
+  retain 2026-07-11 plus full audited revision
+  `bd0ce1dd3e367f07db8528248f9cb00e2b296441` and snapshot qualification.
+- Exact base-scope guard on A — exit 0: every changed path from the verified
+  base is under `docs/improvements/**` or `specs/042-improvement-backlog/**`.
+  The T016--T021 candidate itself changed only the four assigned improvement
+  documents plus this `tasks.md`; no runtime, content, test, script, workflow,
+  dependency, or configuration file changed.
+- Focused source-count guards on A — exit 0: 275 JPG files under the governed
+  question-image directory, 275 manifest image records, 276 manifest usages,
+  and 51 declared Playwright tests (102 executions across two projects).
+- `pnpm run preflight` on exact head A — exit 0 on the first follow-up attempt:
+  feature-memory and repository-baseline gates passed; content validation
+  passed for 460 questions and 276 image references; all 485 Node tests passed;
+  production build passed; all 102 Playwright executions passed in 1.1 minutes.
+  No new dead end was encountered.
+- The subsequent commit B is intentionally restricted to this `tasks.md`
+  process/evidence update. Its SHA cannot be self-recorded. Orchestrator must
+  read the remote current head and compare
+  `c248d1e66ef134779bda51a9ba2bd9ea96b73de8..HEAD`, confirming the delta is
+  evidence/process-memory-only before using A as the effective content head.
 
 ### Semantic index/detail and minimum-field evidence
 
@@ -245,21 +283,23 @@ extra proposal.
   is authorized by this disposition.
 - Implementation candidate applies the accepted factual corrections consistently
   through the README/overview, P1/P3 problem statements, plans, targets, and
-  acceptance criteria. Exact candidate SHA and fresh check outcomes are recorded
-  only after content commit A is created and verified.
+  acceptance criteria. Those corrections are committed and pushed in effective
+  content/review-fix head A
+  `c248d1e66ef134779bda51a9ba2bd9ea96b73de8`; fresh outcomes are recorded above.
 
 ## Cycle PR Set
 
 | Purpose | Branch | PR | Verified base | Current/final head | Status | Included in final validation |
 |---|---|---|---|---|---|---|
-| Audit backlog, focused documentation corrections, and complete feature memory | `docs/improvement-specs` | [#207](https://github.com/cucumberfalse/cabadrive/pull/207) | `bd0ce1dd3e367f07db8528248f9cb00e2b296441` | Reviewed current head `221885b7334746445e873427c884c73e108aa471`; update to the new pushed review-fix head after T016--T021 | Open; changes required by independent review, original P1/AI Review remains blocked, T016--T022 pending | Yes |
+| Audit backlog, focused documentation corrections, and complete feature memory | `docs/improvement-specs` | [#207](https://github.com/cucumberfalse/cabadrive/pull/207) | `bd0ce1dd3e367f07db8528248f9cb00e2b296441` | Effective content/review-fix head A `c248d1e66ef134779bda51a9ba2bd9ea96b73de8`; later current head B is this tasks-only evidence update and must be read/guarded by Orchestrator | Open; T016--T021 complete, fresh independent review T022 and original P1/AI Review disposition remain blockers | Yes |
 
 No second cycle PR is currently authorized. If Orchestrator adds one, append it
 before final validation with purpose, branch, PR, head, status, and inclusion.
 
 ## Final Validation Evidence
 
-- Effective content head: pending.
+- Effective content head: `c248d1e66ef134779bda51a9ba2bd9ea96b73de8`
+  (review-fix content candidate; Architect/Analyst final validation pending).
 - Architect return count: 0.
 - Analyst return count: 0.
 - Limit escalation: none.
