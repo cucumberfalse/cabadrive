@@ -1,0 +1,695 @@
+# Tasks: Improvement Backlog Audit Memory
+
+## Work Items
+
+- [x] T001 Analyst intake created for legacy continuation of PR #207.
+- [x] T002 Architect defined the documentation-only specification, focused
+  plan, acceptance/negative cases, and exact verification commands.
+- [x] T003 Implementation Agent verified the exact 24-file inventory: README,
+  overview, three priority specs, and unique numbered specs `04..22`.
+- [x] T004 Implementation Agent ran the local-link and README unique-coverage
+  commands from `plan.md`; all links/coverage passed and no link correction was
+  needed.
+- [x] T005 Implementation Agent performed and recorded the semantic index↔detail
+  check for titles, priority, effort, category, dependencies, sequence, and
+  minimum future-intake fields across all 22 details.
+- [x] T006 Implementation Agent added central snapshot qualification naming the
+  2026-07-11 audit and audited revision
+  `bd0ce1dd3e367f07db8528248f9cb00e2b296441`, explicitly applying it to
+  repository observations/measurements and distinguishing future targets and
+  estimates from measured current facts.
+- [x] T007 Implementation Agent ran all exact verification commands, recorded
+  results and checked-out SHA, and proved the candidate/base scope contains
+  only `docs/improvements/**` and `specs/042-improvement-backlog/**`.
+- [x] T008 Implementation Agent updated all required log sections below,
+  including feedback. Commit/push only as assigned by Orchestrator; do not
+  resolve review threads, rerun GitHub checks, review, or merge.
+- [x] T009 Review Agent independently reviewed current PR head
+  `221885b7334746445e873427c884c73e108aa471` and evidence,
+  with explicit disposition of the existing P1 and all acceptance/negative
+  cases. The historical outcome was changes required for the factual/count/acceptance
+  contradictions captured in T016--T022; Review Agent did not edit files or
+  resolve its own findings.
+- [x] T010 Orchestrator routed every historical review finding, obtained the
+  D-cycle no-findings review, and confirmed the P1/P2 conversations resolved or
+  outdated before the completed D validation cycle.
+- [x] T011 Architect disposed every Implementation Agent feedback item; the
+  explicit `None` item requires no implementation task, later feature, or ticket.
+- [x] T012 Orchestrator verified the D-cycle required checks, conflicts, review
+  conversations, current memory, acceptance evidence, and complete cycle PR set.
+- [x] T013 Historical completion: Architect validated the reviewed D cycle with
+  return count zero. Because later process-memory reconciliation changes the
+  effective head, Architect validation must be rerun and recorded only in the
+  latest append-only notes after current-head checks.
+- [x] T014 Historical completion: Analyst validated after Architect for the D
+  cycle with return count zero. Because later process-memory reconciliation
+  changes the effective head, Analyst validation must be rerun after the latest
+  Architect notes and recorded only in the latest append-only Analyst notes.
+
+Orchestrator finalization action: merge is executed externally only after the
+latest append-only role notes, current-head checks, review state, and explicit
+expected-head guard pass; this action cannot be pre-checked in a pre-merge
+repository commit.
+- [x] T016 Implementation Agent updated `Cycle PR Set`, `Verification Evidence`,
+  and review context to identify reviewed current head
+  `221885b7334746445e873427c884c73e108aa471`; after the fixes are committed and
+  pushed, replace candidate/current-head wording with the new full pushed head
+  SHA and record that older checks/review are historical only.
+- [x] T017 Implementation Agent corrected the ticket-photo inventory in
+  `00-analysis-overview.md` and `priority/03-image-quality.md` from the erroneous
+  322-photo/JPG claim to the verified distinction: 275 unique local JPG files
+  and 276 content references. Update every dependent problem statement, table,
+  batch/QA step, target, and acceptance criterion (including AC-3) so neither
+  unique assets nor references are called 322. Preserve the separately measured
+  `322 PNG` format-inventory value unless new evidence specifically disproves it.
+- [x] T018 Implementation Agent corrected the E2E baseline in
+  `00-analysis-overview.md` and `priority/01-usability.md` from 55 tests per
+  project / `51+4` ambiguity to exactly 51 tests per project and 102 executions
+  across the two configured projects. Update the dependent acceptance criterion
+  (including AC-9) so all overview, proposal, evidence, and total counts agree.
+- [x] T019 Implementation Agent removed the Path A DPI contradiction in
+  `priority/03-image-quality.md`: raise its render scale/target from the stated
+  ~288 DPI output to a conforming value of at least 300 DPI and update dependent
+  pixel dimensions/commands. Path A must not be described as satisfying FR-1 or
+  the acceptance criteria unless its documented output actually meets `>=300
+  DPI`; if the implementation evidence cannot support the raised parameters,
+  label only a verified >=300-DPI path as conforming and make Path A explicitly
+  non-conforming/exploratory.
+- [x] T020 Implementation Agent reconciled the usability issue inventory to the
+  verified arithmetic `7 + 11 = 18`: update the README P1 summary, the
+  `priority/01-usability.md` headline/problem lists and count language, and the
+  corresponding acceptance criterion so all references say 18 and the detailed
+  enumeration contains exactly seven higher-severity plus eleven medium/low
+  issues. Do not solve any usability issue in this PR.
+- [x] T021 Implementation Agent refreshed the 22-detail semantic evidence after
+  T017--T020, explicitly recording the corrected P1/P3 counts and AC agreement;
+  rerun the scoped inventory, link, README coverage, snapshot, feature-memory,
+  scope-only, and `git diff --check` commands from `plan.md`, then run one full
+  `pnpm run preflight`. Record exact outcomes and the checked full SHA in
+  `Verification Evidence`; a failed first attempt belongs in `Dead Ends`.
+- [x] T022 Orchestrator obtained fresh independent Review Agent review across
+  effective content head A `c248d1e66ef134779bda51a9ba2bd9ea96b73de8`
+  and evidence/process head B
+  `4691553b98f603ab7abe3812a2313a2f88e08eaf`. The factual/count dispositions,
+  semantic evidence, docs-only scope, and preflight evidence were rechecked.
+  Historical review outcome was changes required because P2
+  `PRRT_kwDOSX65IM6Qf71G` found the DSSIM proposal defect; T023--T026 later
+  corrected it, obtained a subsequent no-findings review, and resolved or
+  outdated the P2 and original P1 conversations.
+- [x] T023 Implementation Agent corrected only the DSSIM proposal/acceptance
+  guidance in `docs/improvements/priority/03-image-quality.md`. Preferred
+  contract: downscale the master/reference to each candidate derivative's own
+  width and height using the same documented resampling baseline, then compute
+  DSSIM between those like-sized images. Never upscale a 480/800 px candidate
+  back to master dimensions before applying a universal `<=0.01` threshold.
+  A size-scoped threshold is an acceptable fallback only if each derivative
+  class/size has an explicit empirically justified threshold and the proposal
+  no longer claims one universal bound conflating intended downsampling loss.
+- [x] T024 Implementation Agent updated every dependent P3 QA example, command,
+  test-plan statement, metric target, and acceptance criterion so the chosen
+  like-sized comparison contract is unambiguous for all derivative widths.
+  Refresh the P3 semantic evidence and record disposition of P2
+  `PRRT_kwDOSX65IM6Qf71G`; do not implement an image pipeline or validator.
+- [x] T025 Implementation Agent reran all scoped inventory/link/README/snapshot,
+  feature-memory, scope-only, and `git diff --check` commands from `plan.md`,
+  plus one full `pnpm run preflight`. Record exact results against the new
+  full effective content head C containing T023--T024, commit/push that head as
+  assigned, and do not reuse A/B verification as current evidence.
+- [x] T026 Implementation Agent made the subsequent tasks/evidence update a
+  separate evidence/process head D, recording full C and D SHAs in
+  `Verification Evidence` and the historical cycle memory. Orchestrator guarded
+  `C..D` as evidence/process-only; independent Review Agent review on D verified
+  the P2 fix, like-sized DSSIM contract, evidence, docs-only scope, and all prior
+  findings with no findings.
+- [x] T027 Implementation Agent correct only the LFS proposal and acceptance
+  criteria in `docs/improvements/19-repo-size-lfs.md`: replace every unsupported
+  brace-form Git attributes glob such as `*.{jpg,png}` with separate explicit
+  Git-understood patterns for `*.jpg` and `*.png`, and expand any other
+  brace-form LFS pair found in that document the same way.
+- [x] T028 Implementation Agent verify the corrected proposal in a temporary Git
+  repository with `git check-attr`: both representative `.jpg` and `.png` paths
+  must receive the proposed LFS attributes, while a representative non-target
+  extension must not. Confirm README/index links, title, priority, effort,
+  category, dependencies, and sequencing for proposal 19 remain unchanged.
+- [x] T029 Implementation Agent update semantic/review evidence, run the scoped
+  inventory, link, README coverage, snapshot, feature-memory, scope-only, and
+  `git diff --check` commands plus one full `pnpm run preflight`, record exact
+  results, then commit and push the docs/process-only review fix as assigned.
+- [x] T030 Orchestrator obtained independent no-findings review on exact content/
+  process head `1934877eb8a1b7999cae487d3a78162717264737` and completed normal
+  disposition of P2 `PRRT_kwDOSX65IM6Qhcm6`. Native Codex reported `Didn't find
+  any major issues` for reviewed commit `1934877eb8`; required checks `AI Review`,
+  `baseline-checks`, `docker-validation`, `guard`, and `osv-scan` all succeeded
+  on that exact head, PR #207 was mergeable, the P2 thread was resolved, and
+  GraphQL reported zero unresolved review threads.
+- [x] T031 Implementation Agent correct only proposal 06 requirements, solution,
+  acceptance criteria, and risks so the `N=5000` cap and any QuotaExceeded
+  trimming preserve `mistakesFromHistory` semantics. Define a durable
+  per-question pruned-history aggregate containing cumulative incorrect-answer
+  counts and the latest pruned answer data needed when the retained suffix has
+  no answer for that question; do not implement product/runtime behavior.
+- [x] T032 Implementation Agent define the complete v2 lifecycle: migration from
+  existing storage, cap and quota eviction that transfers each removed answer
+  into the aggregate exactly once, import/export validation and round-trip,
+  reset of retained history plus aggregate, and selector integration that adds
+  retained incorrect counts to pruned counts while choosing the latest retained
+  answer or falling back to pruned last-answer data without double-counting.
+- [x] T033 Implementation Agent add proposal-level unit acceptance requiring the
+  exact `mistakesFromHistory` result for a full 6000-answer history to equal its
+  `N=5000` capped representation, including cumulative wrong counts and last
+  answer data; add a separate QuotaExceeded multi-trim case and a question that
+  exists only in the pruned prefix. Migration/import/export/reset and repeated
+  trim fixtures must prove no aggregate double-counting.
+- [x] T034 Implementation Agent confirm proposal 06 identity, README/index links,
+  metadata, dependencies, and sequencing are unchanged; record concrete semantic
+  verification against `src/domain.ts:70-82`; run scoped inventory/link/snapshot,
+  feature-memory, scope-only, and `git diff --check` commands plus full
+  `pnpm run preflight`, record exact results, then commit and push the docs-only
+  proposal/process-memory fix as assigned.
+- [ ] T035 Orchestrator obtain fresh independent and native Codex review on the
+  new current head. P1 `PRRT_kwDOSX65IM6Qhvbp` remained resolved/outdated and
+  progress-history P2 `PRRT_kwDOSX65IM6Qhvbt` was fixed, reviewed, resolved, and
+  outdated, but native current-head review returned changes required for new
+  P2s `PRRT_kwDOSX65IM6QiHKu` and `PRRT_kwDOSX65IM6Qigqq`; T035 remains open
+  through the bounded T036--T040 continuation.
+- [x] T036 Implementation Agent correct every audited Node-test baseline under
+  `docs/improvements/**`, including both occurrences in
+  `00-analysis-overview.md` and proposal 17, to exact reproducible snapshot
+  values `30 tests/*.test.mjs files / 485 tests`. Preserve the separate E2E
+  baseline at 51 tests per project and 102 executions across two projects.
+- [x] T037 Implementation Agent record exact audited-base evidence for
+  `bd0ce1dd3e367f07db8528248f9cb00e2b296441`: a repository-tree command must
+  count 30 `tests/*.test.mjs` files and an isolated checkout/worktree command
+  must run `node --test tests/*.test.mjs` and report 485 passing tests. Scan all
+  `docs/improvements/**` to reject stale `31`/`~502` Node-test baseline claims.
+- [x] T038 Implementation Agent correct the P3 architecture diagram, Path A,
+  implementation stages, acceptance criteria, tests, and risks so the current
+  JPEG-only Swift invocation is explicitly non-conforming and cannot create
+  masters. Preferred future conforming Path A requires changing the Swift
+  script/API to explicit lossless PNG output and extension (for example
+  `--format png`) with no JPEG-quality option; Path B remains immediately
+  conforming. No path may describe JPEG output as a master.
+- [x] T039 Implementation Agent require executable acceptance that every master
+  is lossless and that `.jpg`/`.jpeg` masters fail, then verify proposal/index
+  metadata, links, dependencies, sequence, inventory, and corrected counts are
+  unchanged otherwise. Record focused semantic checks, run all scoped checks
+  plus full `pnpm run preflight`, publish the docs/process-only fix, and update
+  evidence without implementing the image pipeline or Swift change.
+- [ ] T040 Orchestrator obtain fresh independent and native Codex review on the
+  new pushed head, complete normal disposition of P2s
+  `PRRT_kwDOSX65IM6QiHKu` and `PRRT_kwDOSX65IM6Qigqq`, confirm all prior fixed
+  threads remain resolved/outdated, and require GraphQL zero unresolved review
+  threads plus successful current-head checks before final validation resumes.
+
+T023--T026 are complete. Their DSSIM correction, scoped/full verification,
+evidence-only guard, subsequent no-findings review, and conversation disposition
+complete that historical review-fix group. T027--T029 complete the current LFS
+proposal correction and local verification, and T030 completed independent
+current-head review, required-check, mergeability, and thread disposition. The
+T027--T030 LFS review-fix group is a completed historical reviewed cycle with no
+open task. T031--T034 complete the progress-history proposal correction and
+local verification; its P2 is fixed/resolved/outdated, but T035 remains open
+because the native current-head review discovered the two valid P2s routed to
+T036--T040. T036--T039 now complete the bounded docs/process correction,
+audited-base proof, scoped/full verification, and publication; T035 and T040
+remain external review/thread gates, so final validation is still blocked until
+fresh current-head review accepts the correction.
+
+## Decisions
+
+- D001: Continue the existing branch and PR #207 as the single known cycle PR;
+  feature memory is recovery for the legacy PR, not a replacement audit/PR.
+- D002: The PR is documentation/process-memory only. Backlog proposals are
+  future independently routed features, even when labeled P0.
+- D003: Focused inventory, link, index/detail, semantic, and snapshot checks are
+  sufficient; no full re-audit is required absent a concrete unsupported claim.
+- D004: Snapshot qualification can be central in README/overview when it clearly
+  governs all repository measurements and names the date and audited revision.
+- D005: Detail heading variations are allowed when the required meaning is
+  present; mechanical template normalization is not required.
+- D006: The historical P1 feature-memory finding was valid and was not closed by
+  `feature-request.md` alone; complete memory, evidence, current-head review,
+  and normal thread disposition subsequently addressed and outdated it.
+- D007: The semantic review found two concrete count contradictions and fixed
+  only their metadata rows: TЗ-P1 has six themes distributed across eight
+  slices, and TЗ-P3 has five implementation stages. No proposal requirements
+  or implementation behavior changed.
+- D008: Shorter category/title wording in the README is an intentional index
+  summary where it remains semantically equivalent to detail metadata. Detail
+  documents retain the authoritative proposal wording.
+- D009: Historical independent Review Agent outcome for head
+  `221885b7334746445e873427c884c73e108aa471` was changes required, not a final
+  validation pass. Architect accepts all review findings as in-scope factual and
+  internal-consistency defects and assigns exact remediation in T016--T022.
+- D010: Ticket-photo counts must distinguish filesystem identity from content
+  usage: 275 unique local JPG files and 276 references. The 322 PNG repository
+  format count is a separate metric and is not changed by this finding.
+- D011: The E2E baseline is 51 tests in each of two projects, totaling 102 test
+  executions; the prior `55 per project` and `51+4` formulations are rejected.
+- D012: A path below 300 DPI cannot satisfy a `>=300 DPI` requirement. The
+  preferred disposition is to raise Path A parameters and dependent dimensions;
+  only a demonstrably conforming path may retain conformance language.
+- D013: The usability inventory is 18 issues because its supported groups are
+  seven plus eleven. README, detail prose, enumeration, and acceptance criteria
+  must use that same identity/count.
+- D014: P2 `PRRT_kwDOSX65IM6Qf71G` was valid and blocked A/B. A universal DSSIM
+  threshold is meaningful only after reference and candidate share dimensions;
+  intended 480/800 px downsampling must not be measured by upscaling the
+  derivative to master size. The preferred proposal contract is master/reference
+  downscaling to candidate dimensions with the same resampling baseline.
+- D015: Size-scoped DSSIM thresholds are a permitted fallback only with explicit
+  per-class/per-size evidence and acceptance language. They are not permission
+  to retain the current upscale-to-master comparison or an unsupported universal
+  `<=0.01` bound. This cycle changes proposal documentation only.
+- D016: Canonical reconciliation removes duplicate mutable validation status.
+  The reconciliation commit cannot embed its own SHA; the latest append-only
+  Architect and Analyst notes written after current-head checks are authoritative
+  for role pass, timestamp, effective head, and return evidence, while external
+  expected-head finalization is authoritative for the actual merge head.
+- D017: Native Codex P2 `PRRT_kwDOSX65IM6Qhcm6` is valid and in scope. Git
+  attributes do not expand brace expressions, so `*.{jpg,png}` would fail to
+  apply the promised LFS filter to either extension and make the proposal/AC
+  misleading; explicit per-extension patterns plus executable `git check-attr`
+  evidence are required by T027--T030.
+- D018: Native Codex P2 `PRRT_kwDOSX65IM6Qhvbt` is valid and in scope. The
+  current proposal incorrectly assumes `mistakesFromHistory` uses only the
+  latest attempt, while `src/domain.ts:70-82` counts every incorrect answer and
+  retains last-answer data; dropping oldest records therefore changes both
+  cumulative mistake counts and questions represented only in the pruned prefix.
+  T031--T035 require a docs-only v2 aggregate contract that preserves those
+  semantics across cap, quota trimming, migration, import/export, and reset.
+- D019: Native Codex P2 `PRRT_kwDOSX65IM6QiHKu` is valid and in scope. Audited
+  base `bd0ce1dd3e367f07db8528248f9cb00e2b296441` reproducibly contains 30
+  `tests/*.test.mjs` files and 485 passing Node tests, so the repeated `31` and
+  `~502` documentation baseline is inaccurate; T036--T037 require one exact
+  snapshot value without changing the separate 51/project, 102-execution E2E
+  baseline.
+- D020: Native Codex P2 `PRRT_kwDOSX65IM6Qigqq` is valid and in scope. A
+  JPEG-only Swift invocation cannot satisfy the proposal's lossless master and
+  JPEG-forbidden contract. T038--T040 require current Path A to be explicitly
+  non-conforming unless a future Swift API produces lossless PNG masters, retain
+  Path B as immediately conforming, and make executable acceptance reject every
+  `.jpg`/`.jpeg` master.
+
+## Dead Ends
+
+- DE001: The first `pnpm run preflight` attempt stopped during
+  `validate:content` because this isolated worktree had no `node_modules` and
+  could not load `pdf-parse/lib/pdf-parse.js`. This was an environment-only
+  dead end, not a content failure. `pnpm install --frozen-lockfile` installed
+  the already locked dependencies without changing dependency manifests; the
+  single repeated full preflight passed.
+
+## Known Issues
+
+- KI001: Pre-memory head `8d2030d646c39b808f3e0ff2ed3f51ac71b7837c` and its checks became historical after later heads. Architect disposition: superseded — later current heads received fresh checks and replace the old evidence; no owner decision remains.
+- KI002: Exact audit measurements can drift after audited revision `bd0ce1dd3e367f07db8528248f9cb00e2b296441`. Architect disposition: addressed — README and overview qualify them by the 2026-07-11 snapshot and full audited revision.
+- KI003: The old P1 feature-memory discussion and failed AI Review blocked the earlier cycle. Architect disposition: addressed — that P1 was resolved and outdated within its completed cycle; current-head conversations and check state are governed externally and are not asserted here.
+- KI004: Head `221885b7334746445e873427c884c73e108aa471` had five findings covering memory, photo inventory, E2E count, DPI path, usability count, and semantic evidence. Architect disposition: addressed — every finding was corrected, reverified, and accepted by fresh no-findings review.
+- KI005: Results before the T016--T021 fix were historical and could not validate later heads. Architect disposition: superseded — fresh-head scoped checks, full preflight, gate evidence, and independent review were required and recorded.
+- KI006: Head B `4691553b98f603ab7abe3812a2313a2f88e08eaf` had DSSIM P2 `PRRT_kwDOSX65IM6Qf71G` because small derivatives were upscaled before a universal threshold. Architect disposition: addressed — like-sized comparison fixed the proposal and the P2 was independently reviewed, resolved, and outdated.
+- KI007: Non-evidence T023--T024 changes invalidated the provisional A/B effective/evidence pair and required C/D. Architect disposition: superseded — A/B were replaced and the C/D cycle completed with fresh scoped/full verification and no-findings review.
+
+## Verification Evidence
+
+- Historical initial-implementation context: checks ran in the assigned worktree on branch
+  `docs/improvement-specs`, with checked-out PR head
+  `8d2030d646c39b808f3e0ff2ed3f51ac71b7837c` plus the scoped candidate changes
+  recorded by T003--T008. At that historical stage, the pushed head required
+  fresh GitHub checks and independent review; later cycles supplied them, and no
+  pre-memory result is treated as later-head evidence.
+- `git diff --check` — exit 0, no whitespace errors.
+- `node scripts/check-feature-memory.mjs --worktree` — exit 0:
+  `No configured product paths changed; feature-memory gate passes.`
+- Exact inventory commands from `plan.md` — exit 0: 24 Markdown files total,
+  three priority files, and exactly one top-level numbered file for every
+  identity `04..22`.
+- Exact local-link command from `plan.md` — exit 0:
+  `resolved local Markdown links in 24 files`. No local anchor fragments are
+  present, so there is no separate unresolved anchor target.
+- Exact README coverage command from `plan.md` — exit 0:
+  `README uniquely indexes 22 detail documents`.
+- Exact snapshot `rg` command from `plan.md` — exit 0; both README and overview
+  name 2026-07-11 and full audited revision
+  `bd0ce1dd3e367f07db8528248f9cb00e2b296441`, and the README qualification
+  explicitly governs measurements in the index, overview, and linked details.
+- Exact committed scope commands from `plan.md` — exit 0 on the checked-out
+  pre-memory head and listed only `docs/improvements/**`. Before commit, the
+  candidate was additionally checked with explicit scoped staging/diff guards
+  so the new memory is limited to `specs/042-improvement-backlog/**`; no
+  `src/`, `content/`, `tests/`, scripts, workflows, dependency manifests, or
+  runtime/configuration file is part of the candidate.
+- `pnpm install --frozen-lockfile` — exit 0 after DE001; lockfile was already up
+  to date and no dependency manifest changed.
+- Repeated `pnpm run preflight` — exit 0: feature-memory and repository-baseline
+  gates passed; content validation passed for 460 questions/276 local image
+  references; 485 Node tests passed; production build passed; 102 Playwright
+  tests passed across desktop Chromium and mobile projects.
+
+### Fresh review-fix candidate A verification
+
+- Effective content/review-fix head A:
+  `c248d1e66ef134779bda51a9ba2bd9ea96b73de8`. This exact commit contains all
+  behavioral documentation corrections and the Architect review disposition;
+  it was pushed to `origin/docs/improvement-specs` before this evidence update.
+- `git diff --check bd0ce1dd3e367f07db8528248f9cb00e2b296441...c248d1e66ef134779bda51a9ba2bd9ea96b73de8`
+  — exit 0, no whitespace errors.
+- `node scripts/check-feature-memory.mjs` on A — exit 0:
+  `No configured product paths changed; feature-memory gate passes.`
+- Exact inventory commands from `plan.md` on A — exit 0: 24 Markdown files,
+  three priority files, and one file for each numbered identity `04..22`.
+- Exact local-link command from `plan.md` on A — exit 0:
+  `resolved local Markdown links in 24 files`.
+- Exact README coverage command from `plan.md` on A — exit 0:
+  `README uniquely indexes 22 detail documents`.
+- Exact snapshot `rg` command from `plan.md` on A — exit 0; README and overview
+  retain 2026-07-11 plus full audited revision
+  `bd0ce1dd3e367f07db8528248f9cb00e2b296441` and snapshot qualification.
+- Exact base-scope guard on A — exit 0: every changed path from the verified
+  base is under `docs/improvements/**` or `specs/042-improvement-backlog/**`.
+  The T016--T021 candidate itself changed only the four assigned improvement
+  documents plus this `tasks.md`; no runtime, content, test, script, workflow,
+  dependency, or configuration file changed.
+- Focused source-count guards on A — exit 0: 275 JPG files under the governed
+  question-image directory, 275 manifest image records, 276 manifest usages,
+  and 51 declared Playwright tests (102 executions across two projects).
+- `pnpm run preflight` on exact head A — exit 0 on the first follow-up attempt:
+  feature-memory and repository-baseline gates passed; content validation
+  passed for 460 questions and 276 image references; all 485 Node tests passed;
+  production build passed; all 102 Playwright executions passed in 1.1 minutes.
+  No new dead end was encountered.
+- Historical head B `4691553b98f603ab7abe3812a2313a2f88e08eaf`
+  was restricted to the `tasks.md` process/evidence update; Orchestrator compared
+  A..B and confirmed that delta before the subsequent review cycle.
+
+### Fresh second-review-fix candidate C verification
+
+- Effective content head C:
+  `bdda9265d0a7237710cc9c849c053a6ba745f6eb`. This exact commit contains the
+  like-sized DSSIM proposal correction, P2 disposition, and refreshed P3
+  semantic evidence; it was pushed to `origin/docs/improvement-specs` before
+  this process/evidence update.
+- `git diff --check bd0ce1dd3e367f07db8528248f9cb00e2b296441...bdda9265d0a7237710cc9c849c053a6ba745f6eb`
+  — exit 0, no whitespace errors.
+- `node scripts/check-feature-memory.mjs` on C — exit 0:
+  `No configured product paths changed; feature-memory gate passes.`
+- Exact inventory commands from `plan.md` on C — exit 0: 24 Markdown files,
+  three priority files, and one file for every numbered identity `04..22`.
+- Exact local-link command from `plan.md` on C — exit 0:
+  `resolved local Markdown links in 24 files`.
+- Exact README coverage command from `plan.md` on C — exit 0:
+  `README uniquely indexes 22 detail documents`.
+- Exact snapshot `rg` command from `plan.md` on C — exit 0; README and overview
+  retain the 2026-07-11 audit date, full audited revision
+  `bd0ce1dd3e367f07db8528248f9cb00e2b296441`, and central qualification.
+- Exact base-scope guard on C — exit 0: every path changed from the verified
+  base is under `docs/improvements/**` or `specs/042-improvement-backlog/**`.
+  The T023--T025 candidate itself changed only
+  `docs/improvements/priority/03-image-quality.md` plus this `tasks.md`; no
+  image pipeline, validator, runtime, content, tests, scripts, workflows,
+  dependencies, or configuration were implemented.
+- Focused DSSIM contract guard on C — exit 0: FR-7, architecture diagram,
+  manifest schema, §6.5 algorithm/threshold, validator guidance, SVG and AI
+  distinctions, AC-5, unit plan, success metric, and P3 semantic evidence all
+  require like-sized comparison. Master/reference is reduced with explicit
+  `lanczos3` to candidate dimensions, candidate is not resized for QA, and the
+  derivative `<=0.01` threshold applies only to that codec/process pair.
+- `pnpm run preflight` on exact head C — exit 0 on the first second-follow-up
+  attempt: feature-memory and repository-baseline gates passed; content
+  validation passed for 460 questions and 276 image references; all 485 Node
+  tests passed; production build passed; all 102 Playwright executions passed
+  in 1.1 minutes. No new dead end was encountered.
+- Historical head D `ce2800f55d8d723a430fb515c4a6de60b53a04e6`
+  was restricted to the `tasks.md` process/evidence update; Orchestrator compared
+  C..D, confirmed the evidence/process-only delta, and obtained the T026
+  no-findings review before the completed D validation cycle.
+
+### Current LFS review-fix candidate verification
+
+- Candidate base: `2de9fbffeeba51b5a6c0c828584ff9427e4477c7` plus the two-file
+  review-fix candidate. The proposal now uses separate Git-supported
+  `filter=lfs diff=lfs merge=lfs -text` patterns for JPG and PNG under both
+  `content/validation/**` and `content/assets/**`, retains an explicit PDF
+  pattern, and aligns AC-2 with positive JPG/PNG plus negative-extension checks.
+- Temporary repository verification used the exact proposed `.gitattributes`
+  entries and `git check-attr filter -- content/validation/audit/sample.jpg
+  content/validation/audit/sample.png content/assets/pages/sample.jpg
+  content/assets/pages/sample.png content/validation/audit/sample.webp
+  content/official-documents/originals/sample.pdf` — exit 0. The four JPG/PNG
+  paths and PDF reported `filter: lfs`; the WebP non-target reported
+  `filter: unspecified`.
+- Explicit-pattern guard — exit 0: all four required validation/assets JPG/PNG
+  patterns are present and no `*.{...}` brace-form glob remains in proposal 19.
+- Proposal identity guard — exit 0: title, P2 priority, infrastructure category,
+  L effort, proposed status, date, links, dependencies, and README sequencing
+  are unchanged.
+- Exact scoped commands from `plan.md` — exit 0: `git diff --check` and the
+  worktree feature-memory gate passed; inventory remains 24 Markdown files,
+  three priority files, and exactly one top-level identity `04..22`; all local
+  links resolved in 24 files; README uniquely indexes all 22 details; snapshot
+  date/revision markers remain present; base and candidate scope guards list
+  only `docs/improvements/**` and `specs/042-improvement-backlog/**`.
+- `pnpm run preflight` — exit 0: feature-memory and repository-baseline gates
+  passed; content validation passed for 460 questions and 276 local image
+  references; all 485 Node tests passed; production build passed; all 102
+  Playwright executions passed in 1.1 minutes.
+- Candidate scope is exactly `docs/improvements/19-repo-size-lfs.md` plus this
+  role-owned `tasks.md`; no dependency manifest, workflow, runtime, content,
+  test, script, or configuration file changed. Exact pushed content/process head
+  `1934877eb8a1b7999cae487d3a78162717264737` subsequently received T030
+  independent no-findings review, five successful required checks, mergeable
+  state, resolved P2 `PRRT_kwDOSX65IM6Qhcm6`, and zero unresolved threads.
+
+### Current progress-history review-fix candidate verification
+
+- Candidate base: `ce560bdf64939f5d274873662d23bf24997f5f4b` plus the two-file
+  docs/process candidate. Proposal 06 now defines v2 ordered per-question
+  `prunedAnswerStats` with cumulative pruned wrong count, complete latest pruned
+  answer fallback, and stable first-seen order; one pruning helper transfers
+  only each newly removed prefix, so retained and aggregate counts combine once.
+- Concrete `src/domain.ts:70-82` verification confirmed that the current function
+  increments `wrong` for every incorrect answer, overwrites `last` for every
+  later answer, filters only `wrong > 0`, and stably sorts descending counts from
+  `Map` insertion order. An executable 6000-answer fixture against the transpiled
+  repository function reported deep equality for full 6000, capped 5000,
+  repeated-trim, and multi-quota-trim representations; equality covered
+  cumulative counts, tie order, every `last` field, and a wrong question
+  represented only by the pruned prefix.
+- The v2 lifecycle and proposal-level unit acceptance now cover lossless v1
+  migration with an initially empty aggregate, repeated cap and multi-quota
+  trims without double-counting, retained-last precedence and pruned fallback,
+  canonical validated import/export round-trip, atomic invalid-import rejection,
+  reset of retained plus aggregate state, and non-crashing corrupted-aggregate
+  backup/warning behavior without fabricated mistakes.
+- Proposal identity guard — exit 0: title, P1 priority, architecture/data-
+  reliability category, M effort, proposed status, date, links, dependencies,
+  README index entry, and README sequencing are unchanged.
+- Exact scoped commands from `plan.md` — exit 0: `git diff --check` and the
+  worktree feature-memory gate passed; inventory remains 24 Markdown files,
+  three priority files, and exactly one top-level identity `04..22`; all local
+  links resolved in 24 files; README uniquely indexes all 22 details; snapshot
+  date/revision markers remain present; base scope contains only improvement
+  docs/feature memory and candidate scope is exactly proposal 06 plus this file.
+- `pnpm run preflight` — exit 0: feature-memory and repository-baseline gates
+  passed; content validation passed for 460 questions and 276 local image
+  references; all 485 Node tests passed; production build passed; all 102
+  Playwright executions passed in 1.1 minutes.
+- No dependency manifest, workflow, product/runtime source, content, test,
+  script, or configuration file changed; product behavior remains future
+  proposal scope. Exact pushed head
+  `ffaeb8e63d3b5dfe7897bd2c269375d98b9d12cc` received the T035 review:
+  P1 `PRRT_kwDOSX65IM6Qhvbp` and progress P2 `PRRT_kwDOSX65IM6Qhvbt` are
+  resolved/outdated, while native review returned changes required only for the
+  two new P2s routed through T036--T040.
+
+### Current audit-count and lossless-master review-fix candidate verification
+
+- Candidate base: `ffaeb8e63d3b5dfe7897bd2c269375d98b9d12cc` plus the
+  four-file docs/process candidate. The eventual review-fix commit cannot embed
+  its own SHA; external expected-head verification must name the actual pushed
+  head.
+- Exact audited-base tree proof on
+  `bd0ce1dd3e367f07db8528248f9cb00e2b296441` used
+  `git ls-tree -r --name-only <base> -- tests` filtered to top-level
+  `tests/*.test.mjs` and returned 30 files. An isolated detached worktree at that
+  exact revision ran `node --test tests/*.test.mjs` and reported 485 tests,
+  485 passes, and zero failures. `tests/**`, `package.json`, and
+  `pnpm-lock.yaml` are unchanged from the audited base through this candidate.
+- A scan of every `docs/improvements/**` file rejects the stale `31`/`~502`
+  Node-test baseline. Both overview occurrences and proposal 17 now state the
+  reproducible 30-file/485-test snapshot, while the independent E2E baseline
+  remains 51 tests per project and 102 executions across two projects.
+- Current Swift-source verification found `--quality`, `UTType.jpeg`, and
+  `page-%03d.jpg`; therefore the existing renderer is JPEG-only and cannot
+  produce masters. P3 now permits Path A only after a future explicit lossless
+  PNG API/output change (`--format png`, `.png`, no JPEG-quality option), keeps
+  `pdftoppm -png` Path B immediately conforming, and requires an executable
+  guard to verify `.png` extension, decoded PNG format, and `image/png` MIME
+  while rejecting `.jpg`/`.jpeg`, disguised JPEG bytes, and mismatches.
+- Proposal 3 identity, metadata, dependencies, links, and README sequencing are
+  unchanged. Its five stages, 275 unique JPG/276-reference source inventory,
+  and like-sized DSSIM contract remain intact: each candidate is compared with
+  the master downscaled by `lanczos3` to identical dimensions, without candidate
+  upscaling.
+- Exact scoped commands — exit 0: `git diff --check` and the worktree
+  feature-memory gate passed; inventory remains 24 Markdown files, three
+  priority files, and exactly one top-level identity `04..22`; all local links
+  resolved in 24 files; README uniquely indexes all 22 details; snapshot
+  date/revision markers remain present; base scope contains only improvement
+  docs/feature memory, and candidate scope is exactly the two corrected audit
+  documents, P3, and this file.
+- `pnpm run preflight` — exit 0: feature-memory and repository-baseline gates
+  passed; content validation passed for 460 questions and 276 local image
+  references; all 485 Node tests passed; production build passed; all 102
+  Playwright executions passed in 1.1 minutes.
+- No dependency manifest, workflow, product/runtime or Swift source, content,
+  test, script, or configuration file changed. T036--T039 are complete; T035
+  and T040 remain external current-head review and thread-disposition gates.
+
+### Semantic index/detail and minimum-field evidence
+
+All 22 details retain context/problem, goals, actionable requirements/design or
+plan, acceptance criteria, risks, affected areas, and dependencies where
+relevant. `Не-цели` is explicit in the larger/high-risk proposals and semantic
+scope boundaries are present in the smaller proposals; heading uniformity was
+not imposed. Every linked dependency resolves to an existing backlog identity,
+and the four-stage README sequence covers every identity without creating an
+extra proposal.
+
+| Identity | Index metadata, dependencies, and sequence | Minimum future-intake content | Disposition |
+|---|---|---|---|
+| P1 | Priority/category/title agree; 18 issues reconcile as seven higher-severity plus eleven medium/low, effort is six themes across eight slices, and AC-9 agrees with 51 tests/project (102 executions); dependencies and stage 1--3 slices agree | Complete | Corrected counts and acceptance baseline |
+| P2 | Priority/effort/category/title and six stages agree; dependencies and stage 2--3 placement agree | Complete | Agrees |
+| P3 | Priority/category/title agree; five stages and 275 unique JPG/276 references through AC-3 agree; current JPEG-only Swift is explicitly non-conforming, future Swift Path A requires guarded lossless PNG output while `pdftoppm -png` Path B is immediately conforming, and AC-5/QA/test/metric guidance consistently compares each unchanged candidate with a master reference downscaled by `lanczos3` to identical dimensions; dependencies and stage 2--3/4 linkage agree | Complete | Corrected counts, lossless-master acceptance, DPI path, and like-sized DSSIM contract |
+| 04 | P1 / XL / architecture/title agree; links 05, 06, 07, 08, 11, 17, P1 and stage 3 agree | Complete | Agrees |
+| 05 | P1 / M / architecture-UX/title agree; links P1, 04, 08 and stage 2 linkage agree | Complete | Agrees |
+| 06 | P1 / M / data-reliability summary agrees with detailed architecture/reliability category; links P1, 11, 15 and stage 3 agree | Complete | Intentional shorter index category |
+| 07 | P2 / M / extensibility/title agree; links 04, P2 and stage 3 inclusion agree | Complete | Agrees |
+| 08 | P2 / M / architecture/title agree; links 04, 05, P1 and stage 3 inclusion agree | Complete | Agrees |
+| 09 | P1 / S / performance/title agree; links P1, 17 and stage 2 linkage agree | Complete | Agrees |
+| 10 | P1 / M / performance/title agree; links 04, 13, P3 and stage 3 agree | Complete | Agrees |
+| 11 | P1 / M / correctness/title agree; links P1, 06, 04 and stage 3 agree | Complete | Agrees |
+| 12 | P1 / M / PWA summary agrees with detailed PWA/offline category; links 13, 15 and stage 3 agree | Complete | Intentional shorter index category |
+| 13 | P1 / M / PWA-offline/title agree; links 12, 10, 14, P3 and stage 1/3 split agree | Complete | Agrees |
+| 14 | P1 / S / infrastructure/title agree; links P3, 13 and stage 1 agree | Complete | Agrees |
+| 15 | P2 / M / data-reliability summary agrees with detailed PWA/data category; links 06, 12, P1 and stage 4 agree | Complete | Intentional shorter index category |
+| 16 | P0 / M / code-quality/title agree; links 04, 17, 18 and stage 1 foundation agree | Complete | Agrees |
+| 17 | P1 / L / testing/title agree; links 04, 06, 09, 16 and stage 3 sequencing agree | Complete | Agrees |
+| 18 | P2 / M / DX-CI/title agree; links 16, 21 and stage 4 agree | Complete | Agrees |
+| 19 | P2 / L / infrastructure/title agree; links P3, 18 and stage 4 agree | Complete | Agrees |
+| 20 | P2 / M / pipeline/title agree; links P3, 21 and stage 4 joint wave agree | Complete | Agrees |
+| 21 | P3 / M / maintainability/title agree; links 18, 20, P2 and stage 4 agree | Complete | Agrees |
+| 22 | P0 / S / legal summary agrees with detailed legal/docs category; links P1, 05 and stage 1 agree | Complete | Intentional shorter index category |
+
+- Subsequent D-cycle GitHub evidence recorded all five required checks successful,
+  all review conversations resolved or outdated, a no-findings review, and
+  CLEAN/MERGEABLE conflict-free state.
+
+### Review-fix evidence
+
+- Review Agent inspected PR #207 at historical full head
+  `221885b7334746445e873427c884c73e108aa471` and historically returned changes required.
+- Accepted findings: cycle/evidence memory still described the pre-memory head;
+  ticket photos incorrectly used 322 instead of 275 unique JPG/276 references;
+  E2E prose conflicted between 55/project and the verified 51/project (102
+  total); Path A called ~288 DPI sufficient for a >=300-DPI requirement; the
+  usability inventory claimed 17 although its groups total 7+11=18; semantic
+  evidence therefore requires refresh after corrections.
+- Architect disposition: all findings become mandatory docs/process-memory
+  tasks T016--T022. No product/runtime implementation and no final validation
+  is authorized by this disposition.
+- Implementation candidate applies the accepted factual corrections consistently
+  through the README/overview, P1/P3 problem statements, plans, targets, and
+  acceptance criteria. Those corrections are committed and pushed in effective
+  content/review-fix head A
+  `c248d1e66ef134779bda51a9ba2bd9ea96b73de8`; fresh outcomes are recorded above.
+- Review Agent then reviewed A plus evidence/process head B
+  `4691553b98f603ab7abe3812a2313a2f88e08eaf` and opened valid P2
+  `PRRT_kwDOSX65IM6Qf71G` against the DSSIM guidance near
+  `priority/03-image-quality.md:186`. The guidance makes small derivatives
+  master-sized before comparison, so its universal threshold includes expected
+  resize loss and does not isolate derivative quality.
+- Historical Architect disposition: changes required. T023--T026 required a like-sized
+  reference/candidate QA contract (preferred), consistent proposal/AC evidence,
+  new effective/evidence heads C/D, scoped plus full preflight verification, and
+  fresh independent review. This is not final validation.
+- Implementation candidate adopts the preferred contract: the master/reference
+  is downscaled with the same explicit `lanczos3` baseline to each derivative's
+  actual dimensions, candidate bytes are decoded without resize, mismatched or
+  larger-than-master candidates fail, and `<=0.01` applies only to like-sized
+  codec/process comparisons. The correction is committed and pushed in effective
+  content head C `bdda9265d0a7237710cc9c849c053a6ba745f6eb`; fresh outcomes are
+  recorded above. Subsequent no-findings review on D accepted the fix, and P2
+  `PRRT_kwDOSX65IM6Qf71G` was resolved and outdated.
+- Historical accepted review finding on reviewed head
+  `2de9fbffeeba51b5a6c0c828584ff9427e4477c7`: native Codex P2
+  `PRRT_kwDOSX65IM6Qhcm6` identifies the unsupported `*.{jpg,png}` Git
+  attributes pattern in `docs/improvements/19-repo-size-lfs.md`, which would
+  leave the proposed JPG/PNG LFS filtering and acceptance criterion ineffective.
+- Architect disposition: addressed through completed T027--T030. Exact head
+  `1934877eb8a1b7999cae487d3a78162717264737` contains explicit per-extension
+  Git patterns, positive JPG/PNG and negative non-target `git check-attr` proof,
+  unchanged metadata/links, and scoped/full verification; independent Review
+  Agent found no findings, native Codex reported `Didn't find any major issues`
+  for reviewed commit `1934877eb8`, all five required checks succeeded, PR #207
+  was mergeable, P2 `PRRT_kwDOSX65IM6Qhcm6` was resolved, and GraphQL reported
+  zero unresolved review threads.
+- Current review context on head
+  `ce560bdf64939f5d274873662d23bf24997f5f4b`: P1
+  `PRRT_kwDOSX65IM6Qhvbp` was corrected by the reconciliation content and was
+  subsequently resolved and outdated; GraphQL mutation confirmed
+  `isResolved=true` and `isOutdated=true`.
+- Current accepted review finding on the same head: native Codex P2
+  `PRRT_kwDOSX65IM6Qhvbt` identifies that proposal 06 FR-3 falsely treats oldest
+  answer trimming as semantics-neutral even though `src/domain.ts:70-82` counts
+  every incorrect answer and retains the last answer per question.
+- Architect disposition: changes required through T031--T035. T031--T034 now
+  preserve `N=5000` and docs-only scope while supplying a durable per-question
+  aggregate, complete v2 lifecycle, no-double-count selector merge, full/capped,
+  repeated/quota equivalence including a pruned-only question, and scoped/full
+  evidence. Subsequent current-head review accepted the fix; progress-history P2
+  `PRRT_kwDOSX65IM6Qhvbt` and reconciliation P1 `PRRT_kwDOSX65IM6Qhvbp` are
+  resolved and outdated.
+- Native Codex review on current head
+  `ffaeb8e63d3b5dfe7897bd2c269375d98b9d12cc` returned changes required for two
+  new valid findings: P2 `PRRT_kwDOSX65IM6QiHKu` identifies repeated inaccurate
+  Node-test snapshot claims (`31` files / `~502` tests instead of reproducible
+  `30` / `485`), and P2 `PRRT_kwDOSX65IM6Qigqq` identifies the JPEG-only Swift
+  Path A being incorrectly presented as a conforming lossless-master path.
+- Architect disposition: T036--T039 now supply the corrected and proved audited
+  Node baseline while preserving E2E counts, make current Swift Path A
+  non-conforming unless a future explicit lossless PNG mode exists, retain
+  immediately conforming Path B, executable-reject JPEG masters, preserve
+  metadata/scope, and record passing scoped/full checks. T035 and T040 remain
+  external current-head review and normal thread-disposition gates; this role
+  does not pre-assert their outcome or final validation.
+
+## Cycle PR Set
+
+| Purpose | Branch | PR | Verified base | Current/final head | Status | Included in final validation |
+|---|---|---|---|---|---|---|
+| Audit backlog, focused documentation corrections, and complete feature memory | `docs/improvement-specs` | [#207](https://github.com/cucumberfalse/cabadrive/pull/207) | `bd0ce1dd3e367f07db8528248f9cb00e2b296441` | This review-fix commit cannot embed its own SHA; the latest append-only Architect/Analyst notes plus external expected-head guard authoritatively name the effective and actual current heads | Historical fixes through T034 and docs/process correction plus evidence T036--T039 are complete; T035 and T040 remain external current-head review/thread-disposition gates before role validation/finalization | Yes |
+
+No second cycle PR is currently authorized. If Orchestrator adds one, append it
+before final validation with purpose, branch, PR, head, status, and inclusion.
+
+## Final Validation Evidence
+
+- Limit escalation: none.
+- Canonical role-validation authority: Architect and Analyst pass markers,
+  timestamps, return counts, and effective content head are authoritative only
+  in the latest append-only role-owned notes written in Architect-then-Analyst
+  order after checks and review for the actual current head.
+- Superseded role evidence: the prior D Architect/Analyst notes predate post-D
+  process-memory changes and do not validate the reconciliation effective head.
+- Current-PR-head guard policy: Orchestrator must compare the effective head in
+  the latest role notes with the actual PR head, prove any later delta is allowed
+  append-only role evidence, recheck current-head gates/review/conflicts, and
+  supply that actual head as the finalizer's explicit expected head.
+
+## Implementation Agent Feedback
+
+- None. The two semantic contradictions were concrete in-scope documentation
+  corrections recorded in D007, not new backlog proposals. No unresolved
+  improvement or divergence requires Architect disposition.
+- Architect disposition: not needed; no Implementation Agent feedback item exists.
