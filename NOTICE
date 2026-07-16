@@ -1,0 +1,15 @@
+Cabadrive
+Copyright 2026 Mikhail Orlov
+
+Cabadrive-owned code and documentation are licensed under the Apache License,
+Version 2.0. Bundled third-party and official-source materials keep their own
+licenses, terms, and attribution requirements and are not relicensed by the
+root LICENSE.
+
+The category B practice data is derived from
+bandinopla/simulador-test-de-conducir at commit
+90d17d47864b807415ba505b682710a8f4c441f5, licensed under Apache-2.0. The
+upstream tree contains no NOTICE file.
+
+See licenses/THIRD-PARTY-NOTICES.md for the detailed content inventory,
+provenance, attribution, and unresolved redistribution boundaries.
