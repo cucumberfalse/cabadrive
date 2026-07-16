@@ -306,7 +306,16 @@ implement out-of-scope improvements.
   timeout. `pnpm run validate:attribution` passed; `pnpm run test` passed
   492/492; `pnpm run build` passed with the already-dispositioned bundle-size
   warning and generated the 2,156-asset service worker; `git diff --check`
-  passed. Post-push GitHub Markdown/raw-image verification remains T025 work.
+  passed.
+- Review-fix publication evidence (2026-07-16): candidate commit
+  `5379672efdd95246bfecf947426ae95f0b36a993` was pushed to PR #208. GitHub's
+  GFM renderer returned all three expected repository-relative `<img>` paths.
+  Each branch raw URL returned HTTP 200 and `content-type: image/png`; remote
+  lengths were 280229 (`learn`), 137098 (`materials`), and 145885 (`about`)
+  bytes, and downloaded SHA-256 values exactly matched the committed hashes
+  above. `gh pr view 208` reported the same current head, `OPEN`, ready,
+  `MERGEABLE`. The Implementation portion of T025 is complete; fresh review and
+  thread resolution remain Orchestrator-owned before T025 can close.
 - Isolated Docker smoke: port `5187` had no listener; with
   `COMPOSE_PROJECT_NAME=cabadrive-043-license` and
   `CABADRIVE_HOST_PORT=5187`, `make build` and `make up` passed, HTTP returned
@@ -332,7 +341,7 @@ implement out-of-scope improvements.
 
 | Purpose | Branch | PR | Base | Effective/current head | Status | Included in final validation |
 |---|---|---|---|---|---|---|
-| License, attribution, public docs, About UI, screenshots and tests | `codex/043-license-attribution` | [#208](https://github.com/cucumberfalse/cabadrive/pull/208) | `ca5b5277195cd25d23b25f611dd5a3ac24d54586` | `f6b0214dbd08194c8240434dd57d4828340706ab` effective content head; evidence-only head pending | open, ready, GitHub `MERGEABLE` before evidence update | yes |
+| License, attribution, public docs, About UI, screenshots and tests | `codex/043-license-attribution` | [#208](https://github.com/cucumberfalse/cabadrive/pull/208) | `ca5b5277195cd25d23b25f611dd5a3ac24d54586` | candidate effective content head `5379672efdd95246bfecf947426ae95f0b36a993`; prior effective content head `f6b0214dbd08194c8240434dd57d4828340706ab` is stale pending final validation | open, ready, GitHub `MERGEABLE` at review-fix candidate | yes |
 
 ## Final Architect Validation Notes
 
