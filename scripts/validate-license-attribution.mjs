@@ -1,5 +1,6 @@
 import { createHash } from "node:crypto";
 import { existsSync, readFileSync } from "node:fs";
+import { assertNoOpaqueBlackRegion } from "./png-opaque-black-check.mjs";
 
 const errors = [];
 const read = (path) => {
@@ -74,6 +75,11 @@ for (const path of [
   if (png.subarray(0, 8).toString("hex") !== "89504e470d0a1a0a") errors.push(`${path}: not a PNG`);
   if (png.length >= 24 && (png.readUInt32BE(16) !== 1440 || png.readUInt32BE(20) !== 900)) {
     errors.push(`${path}: expected 1440x900, got ${png.readUInt32BE(16)}x${png.readUInt32BE(20)}`);
+  }
+  try {
+    assertNoOpaqueBlackRegion(path);
+  } catch (error) {
+    errors.push(error.message);
   }
 }
 

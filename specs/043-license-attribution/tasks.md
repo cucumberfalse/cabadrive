@@ -82,6 +82,31 @@
 - [ ] T022 Orchestrator run the current-PR-head/effective-content-head guard,
   prove any later commit is validation-evidence-only, recheck all merge gates,
   and finalize/merge only when the repository completion contract is satisfied.
+- [x] T023 Implementation Agent fix current review P2
+  `PRRT_kwDOSX65IM6RmZBh` / `PRRC_kwDOSX65IM7Wht18`: recapture the affected
+  README product screenshot(s), including `materials.png`, from the final local
+  production UI with the deterministic capture flow. Inspect every committed
+  README PNG at original resolution and with a pixel-level opaque-black-region
+  check; reject large unexplained black rectangles, clipping, transient masks,
+  and hidden content. Replace affected assets, update exact SHA-256/dimensions
+  and visual-QA evidence, and keep README paths/current captions accurate. Do
+  not repair source/manual artwork or broaden this into general image work.
+- [x] T024 Implementation Agent fix current review P2
+  `PRRT_kwDOSX65IM6RmZqj` / `PRRC_kwDOSX65IM7Whu0F`: make preview-process exit
+  observation race-safe in `scripts/capture-readme-screenshots.mjs`. Register
+  one exit promise/listener immediately after spawn, use that same state while
+  waiting for readiness and during teardown, and check already-populated
+  `exitCode`/`signalCode` so an early preview exit fails promptly instead of
+  leaving unsettled top-level await. Add or run a deterministic forced-early-
+  exit regression bounded by a timeout, plus the normal successful capture;
+  do not add a dependency or unrelated process-manager abstraction.
+- [ ] T025 After T023–T024, Implementation Agent rerun screenshot capture and
+  original-resolution visual/pixel inspection, README relative-link and actual
+  GitHub-render checks, `pnpm run validate:attribution`, the focused forced-exit
+  regression, `git diff --check`, and all current-head checks affected by the
+  fixes. Record new asset hashes, exact commands/outcomes and full candidate
+  SHA; commit/push as assigned. Orchestrator obtains fresh thread-aware review
+  on the new head and resolves/outdates both P2 threads only after verification.
 
 ## Decisions
 
@@ -140,6 +165,21 @@ implement out-of-scope improvements.
   reaches its priority; it does not block current verification or final
   validation unless the warning becomes a build failure or evidence shows this
   PR materially increased the affected chunks.
+- Review P2 `PRRT_kwDOSX65IM6RmZBh` / `PRRC_kwDOSX65IM7Wht18` — **accepted as
+  current-feature tasks T023 and T025; blocking**. The committed
+  `materials.png` defect invalidates the claimed screenshot visual-QA evidence
+  and directly violates README screenshot acceptance. The bounded repair is to
+  recapture only affected public screenshots, inspect all README PNGs at source
+  resolution plus an opaque-black-region pixel check, refresh hashes/evidence,
+  and reverify README rendering on the new current head. General image-quality
+  or manual-artwork remediation remains out of scope.
+- Review P2 `PRRT_kwDOSX65IM6RmZqj` / `PRRC_kwDOSX65IM7Whu0F` — **accepted as
+  current-feature tasks T024 and T025; blocking**. The capture helper is part of
+  this feature's reproducible screenshot evidence, so a possible hang after an
+  early preview exit cannot be deferred. The bounded repair is one exit promise
+  registered immediately after spawn, shared by readiness and teardown with
+  already-exited state checks, proven by a timeout-bounded forced-early-exit
+  regression and a normal capture. Broader process supervision is not needed.
 
 ## Dead Ends
 
@@ -160,6 +200,12 @@ implement out-of-scope improvements.
   previous single-row overflow layout. Desktop tabs now wrap while mobile keeps
   the existing horizontal scroller; all three screenshots were recaptured and
   visually rechecked.
+- Review-fix capture diagnosis found that raw Chromium PNG encoding varied by
+  14 antialiased pixels (maximum channel delta 1) on `materials.png`, while one
+  image renderer inconsistently displayed large black masks that were absent
+  from decoded RGB pixels. Fresh browser contexts stabilized application state;
+  deterministic lossless RGB PNG normalization then made two consecutive full
+  captures byte-identical and eliminated the raw-encoding variance.
 
 ## Verification Evidence
 
@@ -237,6 +283,30 @@ implement out-of-scope improvements.
   `about.png` `2d182de9cec8144d3f2152351235737ecd4d1d67365b954f7c8b5e9694964453`.
   Original-resolution visual inspection found the final labels truthful,
   navigation unclipped, content readable, and no personal/transient data.
+- Review-fix screenshot evidence (2026-07-16): the capture helper now creates a
+  fresh browser context for each page, installs fixed randomness before page
+  creation, waits for fonts, visible image decode and two animation frames,
+  disables transient animation/caret paint, losslessly normalizes decoded RGB
+  scanlines, and rejects opaque-black rectangles before accepting each file.
+  Two consecutive `pnpm run screenshots:readme` runs produced identical hashes
+  and 1440×900 RGB PNGs: `learn.png`
+  `c9ea5089ffe789e1592ab053758db9186e7d9beb77c77e41744571dc45051e09`,
+  `materials.png`
+  `0b667ad01e73685a43f5d62e2cbf425b26f903a6b5ededc00a148fcf5eb11233`,
+  and `about.png`
+  `e10c3d0e5e4d85d684c2b0548fa742db75e269b859bfd861fe32d953b72a5d99`.
+  Original-resolution inspection covered all three assets; decoded-pixel checks
+  reported no opaque-black region, clipping, transient masks, hidden content,
+  or personal data.
+- Review-fix process/test evidence (2026-07-16): one preview exit promise is
+  registered immediately after spawn and reused by readiness and teardown;
+  already-populated exit/signal state is checked. `node --test
+  tests/capture-readme-screenshots.test.mjs` passed 3/3, including lossless PNG
+  normalization and forced preview exit code 23 in 404 ms under its 3-second
+  timeout. `pnpm run validate:attribution` passed; `pnpm run test` passed
+  492/492; `pnpm run build` passed with the already-dispositioned bundle-size
+  warning and generated the 2,156-asset service worker; `git diff --check`
+  passed. Post-push GitHub Markdown/raw-image verification remains T025 work.
 - Isolated Docker smoke: port `5187` had no listener; with
   `COMPOSE_PROJECT_NAME=cabadrive-043-license` and
   `CABADRIVE_HOST_PORT=5187`, `make build` and `make up` passed, HTTP returned
@@ -252,7 +322,11 @@ implement out-of-scope improvements.
 
 ## Review Evidence
 
-- Not yet invoked.
+- Review Agent raised two blocking P2 threads on PR #208: corrupted/false
+  screenshot visual-QA evidence (`PRRT_kwDOSX65IM6RmZBh`) and a possible early-
+  preview-exit hang (`PRRT_kwDOSX65IM6RmZqj`). Architect accepted both as T023–
+  T025. Implementation fixes and local evidence are recorded above; fresh
+  current-head review and thread resolution remain Orchestrator-owned.
 
 ## Cycle PR Set
 
