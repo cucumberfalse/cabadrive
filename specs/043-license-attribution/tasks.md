@@ -49,7 +49,7 @@
   upstream/fallback/official/Russian-support boundaries, safe repository link,
   mobile readability, no attribution network requests, and regression of
   existing hash/manual navigation.
-- [ ] T013 Capture three final 1440×900 PNG product screenshots via Playwright
+- [x] T013 Capture three final 1440×900 PNG product screenshots via Playwright
   under `docs_project/screens/readme/`, visually inspect them, link them in
   README, and record capture command, dimensions/signatures/current head. Verify
   actual GitHub rendering after push/PR; do not claim it from local existence.
@@ -60,7 +60,7 @@
   focused gates, content/test/build/E2E/preflight, isolated Docker smoke,
   screenshot/link checks, `git diff --check`, and base scope diff. Fix failures
   only within assigned scope and record dead ends.
-- [ ] T016 Update every process-memory section below with exact evidence and all
+- [x] T016 Update every process-memory section below with exact evidence and all
   Implementation Agent feedback. Commit, push, and open one ready PR only when
   assigned by Orchestrator; never merge or mutate sibling state.
 - [ ] T017 Review Agent independently review the current PR head for exact
@@ -215,7 +215,20 @@ implement out-of-scope improvements.
   passed 104/104 across Chromium and mobile. `pnpm run preflight` then passed
   the feature-memory gate, repository baseline, validation, all 489 Node tests,
   production build, and all 104 E2E tests on the complete candidate tree.
-  GitHub-rendered README evidence remains pending until the candidate PR.
+  GitHub-rendered README evidence was deferred until the candidate PR and is
+  closed by the post-push evidence below.
+- Effective content commit and PR publication: commit
+  `f6b0214dbd08194c8240434dd57d4828340706ab` was created on
+  `codex/043-license-attribution`, pushed to origin, and opened as ready PR
+  [#208](https://github.com/cucumberfalse/cabadrive/pull/208) against `main`.
+  `gh pr view 208` reported `OPEN`, `isDraft:false`, `MERGEABLE`, and the same
+  `headRefOid` before this evidence-only update.
+- GitHub README render evidence: `jq -Rs ... README.md | gh api markdown
+  --input -` returned three `<img>` elements with exact repository-relative
+  paths `docs_project/screens/readme/{learn,materials,about}.png`. Each matching
+  `raw.githubusercontent.com/.../codex/043-license-attribution/...` URL returned
+  HTTP 200, `content-type: image/png` (content lengths 358140, 184891, and
+  192220 bytes respectively). This closes the post-push GitHub render check.
 - Screenshot evidence: `pnpm run screenshots:readme` used local Vite preview,
   Playwright Chromium, reduced motion, `deviceScaleFactor: 1`, and viewport
   1440×900. PNG signatures/dimensions pass the offline validator. Final hashes:
@@ -245,7 +258,7 @@ implement out-of-scope improvements.
 
 | Purpose | Branch | PR | Base | Effective/current head | Status | Included in final validation |
 |---|---|---|---|---|---|---|
-| License, attribution, public docs, About UI, screenshots and tests | `codex/043-license-attribution` | pending | `ca5b5277195cd25d23b25f611dd5a3ac24d54586` | pending | planning | yes |
+| License, attribution, public docs, About UI, screenshots and tests | `codex/043-license-attribution` | [#208](https://github.com/cucumberfalse/cabadrive/pull/208) | `ca5b5277195cd25d23b25f611dd5a3ac24d54586` | `f6b0214dbd08194c8240434dd57d4828340706ab` effective content head; evidence-only head pending | open, ready, GitHub `MERGEABLE` before evidence update | yes |
 
 ## Final Architect Validation Notes
 
