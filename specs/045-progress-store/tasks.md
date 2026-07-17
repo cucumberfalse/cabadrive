@@ -6,10 +6,12 @@
 - Base: verified `origin/main` `830a4336e9d5adc1d1c65517e71084b928e0e914`.
 - Handoff branch/worktree: `codex/045-progress-store` /
   `/Users/chap/devel/cabadrive-worktrees/045-progress-store`.
-- Cycle PR set: pending publication. The Analyst-created handoff is the one
-  implementation PR slice assigned by Orchestrator. Its implementation content
-  head is `f3279152b91f4725b7a2787e1c67c164b8c42705`; later commits before final
-  validation contain process evidence only.
+- Cycle PR set: [PR #210](https://github.com/cucumberfalse/cabadrive/pull/210),
+  branch `codex/045-progress-store`, published evidence head
+  `dc4653f8e79b2d5a7ca4ec7b4bdb931f1e7a0c60`, purpose: implementation plus
+  pre-review process evidence, status: open, included in final validation. Its
+  implementation content head is `f3279152b91f4725b7a2787e1c67c164b8c42705`;
+  later commits before final validation contain process evidence only.
 - Parallel-work rule: preserve all unrelated worktrees, branches, commits,
   PRs, dirty diffs and durable process memory.
 
@@ -54,7 +56,7 @@
   commands, outcomes, candidate SHA, Docker isolation/port and any pre-existing
   non-blocking warnings. Update this file with decisions, dead ends, known
   issues and every Implementation Agent feedback item before PR handoff.
-- [ ] T011 Commit/push/open exactly one implementation PR when explicitly
+- [x] T011 Commit/push/open exactly one implementation PR when explicitly
   assigned. Record its URL, branch, full head SHA and inclusion in the cycle PR
   set; do not merge, rebase siblings or mutate unrelated state.
 
