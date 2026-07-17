@@ -595,6 +595,14 @@ implement out-of-scope improvements.
   memory, full content/attribution, 495/495 Node tests, production build and
   104/104 E2E tests. The Implementation portion of T031 is complete; T031 stays
   open for fresh Orchestrator-owned thread-aware review and disposition.
+- Bootstrap-cycle review-fix publication evidence (2026-07-17): candidate
+  effective content commit `190cbb8f9de6e2f1341b774b478e546f350aacee`
+  was pushed to PR #208. GitHub GFM returned all three expected relative image
+  paths. Branch raw URLs returned HTTP 200 and `content-type: image/png`, with
+  lengths 280229/137096/145885 and downloaded SHA-256 values exactly matching
+  the committed identities above. `gh pr view 208` reported this exact head,
+  `OPEN`, ready and `MERGEABLE`; baseline, OSV, guard and Docker checks passed,
+  while the fresh AI Review remained in progress.
 - Isolated Docker smoke: port `5187` had no listener; with
   `COMPOSE_PROJECT_NAME=cabadrive-043-license` and
   `CABADRIVE_HOST_PORT=5187`, `make build` and `make up` passed, HTTP returned
@@ -637,7 +645,7 @@ implement out-of-scope improvements.
 
 | Purpose | Branch | PR | Base | Effective/current head | Status | Included in final validation |
 |---|---|---|---|---|---|---|
-| License, attribution, public docs, About UI, screenshots and tests | `codex/043-license-attribution` | [#208](https://github.com/cucumberfalse/cabadrive/pull/208) | `ca5b5277195cd25d23b25f611dd5a3ac24d54586` | candidate effective content head `2d8ba7383ce708a50df01e0c6218ab662f2ce500`; prior candidates are stale pending final validation; evidence-only head pending | open, ready, GitHub `MERGEABLE` at third review-fix candidate; checks/review running | yes |
+| License, attribution, public docs, About UI, screenshots and tests | `codex/043-license-attribution` | [#208](https://github.com/cucumberfalse/cabadrive/pull/208) | `ca5b5277195cd25d23b25f611dd5a3ac24d54586` | candidate effective content head `190cbb8f9de6e2f1341b774b478e546f350aacee`; prior candidates are stale pending final validation; evidence-only head pending | open, ready, GitHub `MERGEABLE` at bootstrap-cycle review-fix candidate; required non-review checks passed, fresh review running | yes |
 
 ## Final Architect Validation Notes
 
