@@ -109,6 +109,15 @@ dirty diffs, commits, PR и process memory нельзя переписывать
   `pnpm run typecheck`, requires nonzero exit and the sentinel diagnostic, and
   removes the file on success, failure and signal paths. Final status proves no
   sentinel remains and the positive typecheck passes.
+- Signal cleanup is an executable contract, not an implication of `finally`.
+  Register `SIGINT` and `SIGTERM` handlers before the first sentinel can be
+  created, track only files created by this process, remove them synchronously,
+  detach the active handler and preserve normal terminating-signal semantics
+  rather than converting cancellation into success. Subprocess regressions must
+  wait for a deterministic post-creation readiness marker, send each signal,
+  assert the child terminated by/with the conventional status for that signal,
+  assert every sentinel is absent, and immediately run the helper successfully
+  again to prove cancellation cannot poison the next run.
 - Any discovered type defect receives a minimal tested fix. `strict: false`,
   exclusion globs, `@ts-ignore` and unexplained `@ts-expect-error` are forbidden.
   A truly unavoidable narrow `@ts-expect-error` requires an adjacent reason and
@@ -132,9 +141,14 @@ dirty diffs, commits, PR и process memory нельзя переписывать
    recommended rules with Node globals and no TS-only rules. This deliberately
    covers all current Node validators, workflow helpers and Node tests rather
    than only the older `scripts/*.mjs` estimate.
-3. `vite.config.ts`, `playwright.config.ts` and `tests/e2e/**/*.ts`: typed
-   TypeScript Node/Playwright profile using `tsconfig.eslint.json`; React hooks
-   and refresh rules do not apply here.
+3. `vite.config.ts`, `playwright.config.ts` and `tests/e2e/**/*.ts`: type-aware
+   TypeScript Node/Playwright profile using `tsconfig.eslint.json` and the
+   `typescript-eslint` type-checked recommended preset, not the syntax-only
+   `recommended` preset. React hooks and refresh rules do not apply here.
+   Calculated-config tests must prove at least one genuinely type-aware rule,
+   including `@typescript-eslint/await-thenable` or
+   `@typescript-eslint/no-floating-promises`, is error-level for both an E2E
+   file and `vite.config.ts`; parser/project presence alone is insufficient.
 
 The config must globally ignore at least `node_modules/**`, `dist/**`,
 `coverage/**`, `content/**`, `public/**`, `docs/**`, `docs_project/**`,
@@ -179,6 +193,11 @@ one timeout completion, one persisted attempt and no duplicate finish effect.
   - `scripts/**/*.mjs`;
   - `tests/**/*.mjs` and `tests/e2e/**/*.ts`;
   - `vite.config.ts`, `playwright.config.ts`, `eslint.config.mjs`.
+- Package lint/format/check scripts and the ESLint root/E2E profile must name
+  `vite.config.ts` and `playwright.config.ts` literally. Root `*.config.ts` is
+  forbidden because it silently enrolls future files. The quality test compares
+  the complete tokenized/equivalent expected target list, not merely absence of
+  repository `.`.
 - Its effective source scope is that nominal allowlist minus every governed TS
   path in the committed
   `content/manual-ticket-placement/manual-content-baseline.json`
@@ -275,7 +294,13 @@ new format-only commit referenced by `.git-blame-ignore-revs`.
   repository baseline, its observable gate order is:
   `typecheck → lint → format:check → quality negative contract → unit → build → e2e`.
 - The typecheck+lint CI step measures elapsed wall time around `quality:fast`,
-  prints the seconds and full head SHA, and exits nonzero above 60 seconds.
+  prints the seconds and full source head SHA, and exits nonzero above 60
+  seconds. For pull requests the source identity is
+  `github.event.pull_request.head.sha`; push/workflow fallback is `github.sha`.
+  The emitted value must be validated/printed as the full 40-hex SHA in the
+  timing line so a synthetic Actions merge checkout cannot be mistaken for the
+  reviewed PR source head. Workflow tests assert the event-safe expression and
+  log binding.
   The budget applies to those two commands on GitHub `ubuntu-latest`, not
   install or full preflight. A local result alone cannot satisfy NFR-1.
 - `preflight` preserves `check:feature-memory --worktree`, `check:repo`,

@@ -166,8 +166,42 @@
   `/sw.js` smoke, and always-run teardown all succeeded. Only that pairing may
   close T021 through fallback; missing/queued/stale/cancelled/red GitHub Docker
   evidence remains a merge/final-validation blocker.
+- [ ] T038 Fix P2 `PRRT_kwDOSX65IM6R4bjG` as a bounded current task. Register
+  `SIGINT`/`SIGTERM` cleanup before sentinel creation, track/remove only
+  process-created sentinels, and preserve the terminating signal/conventional
+  exit semantics. Add deterministic subprocess tests that wait until a
+  sentinel-created marker, interrupt separately with both signals, prove all
+  sentinel paths absent, and run the normal helper successfully immediately
+  afterward. Existing stale-file refusal and normal `finally` cleanup must stay
+  fail-closed.
+- [ ] T039 Fix P2 `PRRT_kwDOSX65IM6R4bjJ` as a bounded current task. Export an
+  event-safe full source head using PR `github.event.pull_request.head.sha` with
+  `github.sha` fallback, validate/log the 40-hex value in the same timing line
+  as elapsed seconds and 60-second budget, and strengthen workflow tests to
+  reject synthetic-merge-only or unbound timing evidence. Current-head GitHub
+  logs must show the exact PR head and measured bound.
+- [ ] T040 Fix P2 `PRRT_kwDOSX65IM6R4bjM` as a bounded current task. Replace the
+  syntax-only TypeScript preset for `tests/e2e/**/*.ts`, `vite.config.ts` and
+  `playwright.config.ts` with the compatible type-checked recommended profile
+  backed by `tsconfig.eslint.json`. Resolve resulting real diagnostics narrowly
+  without blanket rule disable. Calculated-config tests must prove error-level
+  `await-thenable`, `no-floating-promises` or equivalent type-information rules
+  for both E2E and Vite representatives, then `lint --max-warnings 0` passes.
+- [ ] T041 Fix P3 `PRRT_kwDOSX65IM6R4bjP` as a current contract task. Replace
+  root `*.config.ts` in `lint`, `format`, `format:check` and the flat-config
+  profile with literal `vite.config.ts` and `playwright.config.ts`. Test the
+  complete exact target list/order for all three scripts and calculated config;
+  a new root config must require an intentional reviewed allowlist change.
+- [ ] T042 After T038–T041, run focused quality-tooling tests, both signal
+  interruption regressions, normal negative helper, calculated-config checks,
+  typecheck/lint/format check, affected full Node/preflight, suppression audit,
+  exact target/scope guard and `git diff --check`. Implementation records the
+  new full head and pushes only under assignment. Review Agent performs fresh
+  thread-aware review on that exact head; Orchestrator resolves/outdates the
+  four threads and rechecks all required checks, including T037 Docker evidence,
+  before final validation.
 - [ ] T027 Architect final validation, invoked only by Orchestrator after T001–
-  T026 and T030–T037 appear complete, must inspect the full cycle PR set,
+  T026 and T030–T042 appear complete, must inspect the full cycle PR set,
   format-only commit,
   feedback dispositions, open tasks, architecture, process memory, checks and
   customer intent. Record pass timestamp/effective content head or gap/return
@@ -239,6 +273,11 @@
   `node:22-alpine` / `nginx:1.29-alpine`; host registry curl succeeded and the
   compose project has no containers. This is not product-failure evidence and
   not a pass; T037 remains blocking until exact-head GitHub Docker success.
+- Review Agent found four unresolved current-head contract gaps on
+  `93897984738a2cb6941f793f81699e61267840ab`: three P2 failures in signal
+  cleanup, source-head timing evidence and typed root/E2E lint coverage, plus
+  one P3 exact-allowlist drift. All are accepted as current T038–T042 work;
+  prior no-findings automation does not close these thread-aware findings.
 
 ## Implementation Agent Feedback
 
@@ -311,6 +350,28 @@ disposition. It must not implement unplanned work silently.
   the required GitHub `docker-validation` to pass on the exact final current
   PR head with successful build/start/HTTP/teardown steps. Any non-green or
   stale-head result blocks Architect validation and merge.
+- Review P2 `PRRT_kwDOSX65IM6R4bjG` — **accepted as bounded current tasks T038
+  and T042; blocking**. A normal `finally` does not execute under Node's default
+  SIGINT/SIGTERM termination, so cancellation can leave a sentinel that poisons
+  the next run. Cleanup must be installed before creation, remove only this
+  process's files, preserve signal semantics and be proven for both signals by
+  deterministic child-process tests plus an immediate clean rerun.
+- Review P2 `PRRT_kwDOSX65IM6R4bjJ` — **accepted as bounded current tasks T039
+  and T042; blocking**. Timing from a synthetic Actions merge checkout is not
+  traceable to the reviewed source unless the log line names the full event PR
+  head. The fix must emit and test an event-safe 40-hex source SHA alongside
+  duration/budget; current-head GitHub logs are required evidence.
+- Review P2 `PRRT_kwDOSX65IM6R4bjM` — **accepted as bounded current tasks T040
+  and T042; blocking**. Parser project configuration without type-information
+  rules is not the specified type-aware profile. Root/E2E TypeScript must use
+  the compatible type-checked preset and calculated-config tests must prove
+  error-level type-aware rules, with only narrow evidence-backed source/rule
+  adjustments if real diagnostics appear.
+- Review P3 `PRRT_kwDOSX65IM6R4bjP` — **accepted as current contract tasks T041
+  and T042; blocking for spec conformance despite advisory severity**. The
+  approved allowlist is intentionally exact, so `*.config.ts` is broader than
+  authorized. Literal Vite/Playwright paths are required in all scripts and the
+  flat profile, with full-list assertions preventing silent future enrollment.
 
 ## Dead Ends
 
@@ -375,6 +436,13 @@ disposition. It must not implement unplanned work silently.
   `830a4336e9d5adc1d1c65517e71084b928e0e914`, `git diff --check`, complete
   feature memory, 8 scoped commits and 113 changed paths before this
   publication-evidence-only update. Implementation Agent did not merge.
+- Review Agent inspected exact PR #209 head
+  `93897984738a2cb6941f793f81699e61267840ab` and opened four unresolved,
+  non-outdated threads: P2 `PRRT_kwDOSX65IM6R4bjG`,
+  `PRRT_kwDOSX65IM6R4bjJ`, `PRRT_kwDOSX65IM6R4bjM` and P3
+  `PRRT_kwDOSX65IM6R4bjP`. Architect accepted them as T038–T042; no thread is
+  considered resolved until new-head implementation evidence, fresh
+  thread-aware review and Orchestrator disposition.
 - Review/current-head evidence: pending T024–T026.
 - Final role/current-head guard evidence: pending T027–T029.
 

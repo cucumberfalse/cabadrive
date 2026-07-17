@@ -151,6 +151,25 @@ project оправдан необходимостью type-aware coverage root/E
       Architect evidence. Orchestrator then performs the current-head guard and
       finalizes only when all merge gates pass.
 
+13. **Bounded PR #209 review fixes**
+    - For `PRRT_kwDOSX65IM6R4bjG`, add pre-creation SIGINT/SIGTERM cleanup with
+      preserved signal semantics and deterministic child-process interruption
+      tests for both signals, sentinel absence and immediate successful rerun.
+    - For `PRRT_kwDOSX65IM6R4bjJ`, bind the CI timing line to the event-safe full
+      PR source head (`pull_request.head.sha`, otherwise `github.sha`) and test
+      both the expression and emitted duration/budget/head line.
+    - For `PRRT_kwDOSX65IM6R4bjM`, apply the type-checked TS preset to root/E2E
+      files. Resolve any real findings narrowly; prove calculated configs enable
+      error-level type-information rules for E2E and Vite representatives.
+    - For `PRRT_kwDOSX65IM6R4bjP`, replace every root `*.config.ts` target with
+      the literal Vite and Playwright paths in scripts and flat config, then
+      assert the complete exact target lists.
+    - Run focused quality/negative/config/workflow tests, positive quality gates,
+      full Node/preflight as affected, suppression/scope guards and
+      `git diff --check`. Commit/push through Implementation Agent, obtain fresh
+      thread-aware Review Agent review on the new exact head, and leave thread
+      resolution/check coordination to Orchestrator.
+
 ## Verification Matrix
 
 | Boundary | Command/evidence | Pass condition |
