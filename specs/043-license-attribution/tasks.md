@@ -168,7 +168,7 @@
   skip-validation flag, hidden/public direct-helper bypass, dependency, or any
   build↔capture recursion. This narrowly supersedes T028's full-`build` wrapper
   preference while preserving its current-source and fail-closed intent.
-- [ ] T031 Add a recovery regression for T030 using backed-up artifacts: remove
+- [x] T031 Add a recovery regression for T030 using backed-up artifacts: remove
   one README PNG and corrupt another, then prove the documented public command
   rebuilds current source, recreates all three valid screenshots, shows the
   current About/version/content contract, and passes post-capture attribution
@@ -593,8 +593,9 @@ implement out-of-scope improvements.
   `pnpm run build` passed the complete attribution/content gate and generated
   2,156 SW assets; unchanged `pnpm run preflight` passed repository/feature
   memory, full content/attribution, 495/495 Node tests, production build and
-  104/104 E2E tests. The Implementation portion of T031 is complete; T031 stays
-  open for fresh Orchestrator-owned thread-aware review and disposition.
+  104/104 E2E tests. The Implementation portion of T031 is complete; the exact-
+  head no-findings review and resolved thread disposition recorded below close
+  the remaining review gate.
 - Bootstrap-cycle review-fix publication evidence (2026-07-17): candidate
   effective content commit `190cbb8f9de6e2f1341b774b478e546f350aacee`
   was pushed to PR #208. GitHub GFM returned all three expected relative image
@@ -638,14 +639,28 @@ implement out-of-scope improvements.
   full attribution validation before capture created a missing/corrupt-PNG
   bootstrap cycle. Architect accepted it as T030–T031. The non-recursive SPA
   build primitive, post-capture validation, backed-up destructive recovery
-  regression and full local evidence are recorded above; fresh current-head
-  review and thread disposition remain Orchestrator-owned.
+  regression and full local evidence are recorded above; the resulting current-
+  head review and thread disposition are recorded next.
+- Exact-head Review Agent evidence (2026-07-17): summary comment
+  [5002053787](https://github.com/cucumberfalse/cabadrive/pull/208#issuecomment-5002053787)
+  reports no findings on reviewed head
+  `9d2afe9da3e2dba830709a53ea64f5ac20423aba` after rechecking the complete
+  screenshot pipeline, all five behavioral P2 repairs, recovery/failure paths,
+  pixel guards, remote identities, GFM paths and the evidence-only delta. All
+  six review threads were resolved: behavioral P2 threads
+  `PRRT_kwDOSX65IM6RmZBh`, `PRRT_kwDOSX65IM6RmZqj`,
+  `PRRT_kwDOSX65IM6Rmyep`, `PRRT_kwDOSX65IM6RoEks`, and
+  `PRRT_kwDOSX65IM6Rpzit`, plus stale-effective-head evidence thread
+  `PRRT_kwDOSX65IM6Rt7Rh`. On that exact reviewed head, AI Review,
+  `baseline-checks`, `osv-scan`, `guard`, and `docker-validation` all completed
+  successfully; PR #208 was open, ready and GitHub `MERGEABLE`. The effective
+  content head remains `190cbb8f9de6e2f1341b774b478e546f350aacee`.
 
 ## Cycle PR Set
 
 | Purpose | Branch | PR | Base | Effective/current head | Status | Included in final validation |
 |---|---|---|---|---|---|---|
-| License, attribution, public docs, About UI, screenshots and tests | `codex/043-license-attribution` | [#208](https://github.com/cucumberfalse/cabadrive/pull/208) | `ca5b5277195cd25d23b25f611dd5a3ac24d54586` | candidate effective content head `190cbb8f9de6e2f1341b774b478e546f350aacee`; prior candidates are stale pending final validation; evidence-only head pending | open, ready, GitHub `MERGEABLE` at bootstrap-cycle review-fix candidate; required non-review checks passed, fresh review running | yes |
+| License, attribution, public docs, About UI, screenshots and tests | `codex/043-license-attribution` | [#208](https://github.com/cucumberfalse/cabadrive/pull/208) | `ca5b5277195cd25d23b25f611dd5a3ac24d54586` | effective content head `190cbb8f9de6e2f1341b774b478e546f350aacee`; exact no-findings reviewed evidence head `9d2afe9da3e2dba830709a53ea64f5ac20423aba`; final review-recording evidence-only head pending | open, ready, GitHub `MERGEABLE` on reviewed head; all required checks green and all six threads resolved | yes |
 
 ## Final Architect Validation Notes
 
