@@ -192,7 +192,7 @@
   profile with literal `vite.config.ts` and `playwright.config.ts`. Test the
   complete exact target list/order for all three scripts and calculated config;
   a new root config must require an intentional reviewed allowlist change.
-- [ ] T043 Verify the disposed T040 legacy-fixture exception before T042. Exact
+- [x] T043 Verify the disposed T040 legacy-fixture exception before T042. Exact
   calculated config for `tests/e2e/app.spec.ts` may disable only
   `no-unsafe-argument`, `no-unsafe-assignment`, `no-unsafe-call`,
   `no-unsafe-member-access` and `no-unsafe-return`; `await-thenable` and
@@ -501,6 +501,17 @@ disposition. It must not implement unplanned work silently.
   `c359350358a82d0250934d627c65b5a5a0de6a8a` still exists, contains exactly 96
   paths and remains the sole `.git-blame-ignore-revs` entry. T042 remains open
   only for push/new-head GitHub timing and fresh thread-aware Review Agent work.
+- T043 evidence at semantic head
+  `2311725724cfffa8c49ecea52c12bba8457116ad`: calculated config proves the
+  five disposed unsafe-family rules are off only for
+  `tests/e2e/app.spec.ts`; all five remain error-level for
+  `tests/e2e/manual-ticket-placement.spec.ts`, `vite.config.ts` and
+  `playwright.config.ts`. `await-thenable` and `no-floating-promises` remain
+  errors for all four representatives. The focused calculated-config test
+  passed, its source audit found no inline/file ESLint disable in E2E or either
+  root config, full lint passed and full build/E2E passed `106/106`. The exact
+  waiver was not broadened and JSON fixture typing/runtime validation remains
+  Architect-disposed later debt for ТЗ-17 intake.
 - Review/current-head evidence: pending T024–T026.
 - Final role/current-head guard evidence: pending T027–T029.
 
