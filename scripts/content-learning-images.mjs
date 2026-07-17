@@ -662,7 +662,7 @@ function main() {
   const topicGuide = readJson("content/guide/topic-study-guide.ru.json");
   const vocabulary = readJson("content/vocabulary/ru.vocabulary.json");
   if (shouldWrite) {
-    const { manifest, runtimeManifest, evidence, units } = writeGeneratedManifest();
+    const { manifest, runtimeManifest, evidence } = writeGeneratedManifest();
     const result = validateLearningImages({ topicGuide, vocabulary, manifest, runtimeManifest, evidence });
     if (result.errors.length) {
       console.error("Learning-image generation produced invalid output:");

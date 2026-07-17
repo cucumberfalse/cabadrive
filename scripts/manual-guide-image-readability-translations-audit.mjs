@@ -113,14 +113,6 @@ if (unknownArgs.length > 0) {
   process.exit(1);
 }
 
-function assertCondition(condition, message, details = {}) {
-  if (!condition) {
-    const error = new Error(message);
-    error.details = details;
-    throw error;
-  }
-}
-
 function isObject(value) {
   return Boolean(value) && typeof value === "object" && !Array.isArray(value);
 }

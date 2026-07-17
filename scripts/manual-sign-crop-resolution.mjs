@@ -82,7 +82,7 @@ function horizontalExpansionPx(row) {
   return defaultHorizontalExpansionPx;
 }
 
-function columnGapPx(row) {
+function columnGapPx() {
   return neighborGapPx;
 }
 
@@ -223,7 +223,7 @@ function candidateSourceRegion(row, cropLayoutIndex) {
   const layout = cropLayoutIndex.get(row.id);
 
   const horizontalExpansion = horizontalExpansionPx(row);
-  const columnGap = columnGapPx(row);
+  const columnGap = columnGapPx();
   let localX = Math.max(0, cropRegion.x - horizontalExpansion);
   let localY = Math.max(0, cropRegion.y - verticalLookbackPx(row));
   let localRight = Math.min(sourceRegion.width, cropRegion.x + cropRegion.width + horizontalExpansion);

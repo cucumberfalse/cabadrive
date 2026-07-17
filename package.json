@@ -28,13 +28,19 @@
     "prepare:assets": "node scripts/sync-public-assets.mjs",
     "generate:sw": "node scripts/generate-service-worker.mjs",
     "screenshots:readme": "node scripts/run-readme-screenshots.mjs",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint --max-warnings 0 \"src/**/*.{ts,tsx}\" \"scripts/**/*.mjs\" \"tests/**/*.mjs\" \"tests/e2e/**/*.ts\" \"*.config.ts\" \"eslint.config.mjs\"",
+    "format": "prettier --write \"src/**/*.{ts,tsx,css}\" \"scripts/**/*.mjs\" \"tests/**/*.mjs\" \"tests/e2e/**/*.ts\" \"*.config.ts\" \"eslint.config.mjs\"",
+    "format:check": "prettier --check \"src/**/*.{ts,tsx,css}\" \"scripts/**/*.mjs\" \"tests/**/*.mjs\" \"tests/e2e/**/*.ts\" \"*.config.ts\" \"eslint.config.mjs\"",
+    "quality:fast": "pnpm run typecheck && pnpm run lint",
+    "verify:quality-negative": "node scripts/verify-quality-negative.mjs",
     "build:app": "pnpm run prepare:assets && vite build && pnpm run generate:sw",
     "build": "pnpm run validate:content && pnpm run build:app",
     "dev": "pnpm run prepare:assets && vite --host 0.0.0.0",
     "preview": "pnpm run prepare:assets && vite preview --host 0.0.0.0 --port 4173",
     "test": "node --test tests/*.test.mjs",
     "test:e2e": "pnpm run build && playwright test",
-    "preflight": "node scripts/check-feature-memory.mjs --worktree && pnpm run check:repo && pnpm run validate:content && pnpm run test && pnpm run build && pnpm run test:e2e",
+    "preflight": "node scripts/check-feature-memory.mjs --worktree && pnpm run check:repo && pnpm run validate:content && pnpm run quality:fast && pnpm run format:check && pnpm run verify:quality-negative && pnpm run test && pnpm run build && pnpm run test:e2e",
     "agent:set": "node scripts/set-implementation-agent.mjs",
     "worktree:new": "node scripts/new-worktree.mjs",
     "pr:publish": "node scripts/publish-branch.mjs",
@@ -49,11 +55,19 @@
     "vite": "^6.4.3"
   },
   "devDependencies": {
+    "@eslint/js": "9.39.4",
     "@playwright/test": "^1.57.0",
+    "@types/node": "20.19.42",
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
+    "eslint": "9.39.4",
+    "eslint-plugin-react-hooks": "7.0.1",
+    "eslint-plugin-react-refresh": "0.5.2",
+    "globals": "17.6.0",
     "pdf-parse": "1.1.1",
-    "typescript": "^5.9.3"
+    "prettier": "3.8.2",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "8.63.0"
   },
   "pnpm": {
     "overrides": {

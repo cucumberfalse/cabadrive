@@ -2,7 +2,7 @@
 
 import { createHash } from "node:crypto";
 import { existsSync, mkdirSync, readdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
-import { extname, join, relative } from "node:path";
+import { extname, join } from "node:path";
 
 const featureId = "037-manual-sign-crop-resolution";
 const baselineEvidencePath = "specs/037-manual-sign-crop-resolution/evidence/baseline/manual-sign-baseline-036.json";

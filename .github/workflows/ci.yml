@@ -55,6 +55,26 @@ jobs:
       - name: Run repository baseline
         run: pnpm run check:repo
 
+      - name: Run typecheck and lint with budget
+        env:
+          QUALITY_FAST_BUDGET_SECONDS: "60"
+        shell: bash
+        run: |
+          start=$(date +%s)
+          pnpm run quality:fast
+          elapsed=$(($(date +%s) - start))
+          echo "quality:fast completed in ${elapsed}s (budget ${QUALITY_FAST_BUDGET_SECONDS}s)"
+          if (( elapsed > QUALITY_FAST_BUDGET_SECONDS )); then
+            echo "quality:fast exceeded the ${QUALITY_FAST_BUDGET_SECONDS}s budget" >&2
+            exit 1
+          fi
+
+      - name: Run format check
+        run: pnpm run format:check
+
+      - name: Run negative quality contracts
+        run: pnpm run verify:quality-negative
+
       - name: Run tests if present
         run: pnpm run --if-present test
 

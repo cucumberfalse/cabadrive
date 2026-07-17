@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 import {
-  extractClaudeOutcome,
   isAcceptableClaudeComment,
   isAcceptableCodexSummaryComment,
   isAcceptableNativeReview,

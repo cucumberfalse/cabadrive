@@ -1014,6 +1014,22 @@ test("exam mode hides translation and explanation during active attempt and stor
   await expect(page.getByText(/Пробный экзамен|Нужно повторить/)).toBeVisible();
 });
 
+test("exam timeout persists exactly one completed attempt", async ({ page }) => {
+  await page.clock.install({ time: new Date("2026-01-01T00:00:00Z") });
+  await page.goto("/");
+  await page.getByRole("button", { name: /Экзамен/ }).click();
+  await expect(page.getByText("45:00")).toBeVisible();
+  await page.clock.runFor(45 * 60 * 1000);
+  await expect(page.getByText(/Пробный экзамен|Нужно повторить/)).toBeVisible();
+  const storedAttempts = () =>
+    page.evaluate(
+      () => JSON.parse(localStorage.getItem("cabadrive.progress.v1") || '{"examAttempts":[]}').examAttempts.length,
+    );
+  await expect.poll(storedAttempts).toBe(1);
+  await page.clock.fastForward(5_000);
+  await expect.poll(storedAttempts).toBe(1);
+});
+
 test("vocabulary and guide are available", async ({ page }) => {
   await page.goto("/");
   await page.getByRole("button", { name: /Словарь/ }).click();

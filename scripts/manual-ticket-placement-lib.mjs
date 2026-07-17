@@ -266,7 +266,8 @@ function imagePaths(value, paths = new Set()) {
 }
 
 function locatorWithoutFingerprint(anchor) {
-  const { textFingerprint: _ignored, ...locator } = anchor;
+  const locator = { ...anchor };
+  delete locator.textFingerprint;
   return locator;
 }
 

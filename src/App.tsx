@@ -1,5 +1,5 @@
 import { BookMarked, BookOpen, CheckCircle2, ChevronLeft, ChevronRight, ClipboardList, ExternalLink, FileText, Flag, Image as ImageIcon, Info, ListTree, MapPinned, RotateCcw, Search, Timer, XCircle } from "lucide-react";
-import { useEffect, useMemo, useRef, useState, type CSSProperties, type KeyboardEvent, type ReactNode } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState, type CSSProperties, type KeyboardEvent, type ReactNode } from "react";
 import packageJson from "../package.json";
 import {
   data,
@@ -12,8 +12,6 @@ import {
   sourceById,
   translationByQuestion,
   type ImageExplanationOverlay,
-  type LearningImageCoverageRecord,
-  type LearningImageRecord,
   type ProgressAnswer,
   type ProcessGuideSection,
   type Question,
@@ -423,8 +421,8 @@ function LearningImageFigure({
   unitId: string;
   compact?: boolean;
 }) {
-  const coverage = learningImageCoverageByUnit.get(unitId) as LearningImageCoverageRecord | undefined;
-  const image = coverage?.imageIds?.[0] ? learningImageById.get(coverage.imageIds[0]) as LearningImageRecord | undefined : undefined;
+  const coverage = learningImageCoverageByUnit.get(unitId);
+  const image = coverage?.imageIds?.[0] ? learningImageById.get(coverage.imageIds[0]) : undefined;
   if (!coverage || coverage.status === "exception" || !image) return null;
 
   return (
@@ -774,6 +772,7 @@ function LearnView({ progress, setProgress }: { progress: StoredProgress; setPro
   const hasResults = results.length > 0;
   const currentIndex = results.length ? Math.min(index, results.length - 1) : 0;
   const question = results[currentIndex];
+  const questionId = question?.id;
   const difficult = question ? progress.difficultQuestionIds.includes(question.id) : false;
   const timerTargetSeconds = learningTicketTargetSeconds(data.examFormat);
   const currentAttemptState = question ? attemptsByQuestion[question.id] : undefined;
@@ -840,28 +839,28 @@ function LearnView({ progress, setProgress }: { progress: StoredProgress; setPro
   }
 
   useEffect(() => {
-    if (!question || !timerTargetSeconds) return;
+    if (!questionId || !timerTargetSeconds) return;
     setTimerStates((current) => {
-      if (current[question.id]) return current;
+      if (current[questionId]) return current;
       return {
         ...current,
-        [question.id]: currentAttemptState?.selectedAnswerId
+        [questionId]: currentAttemptState?.selectedAnswerId
           ? completedLearningTimerState(timerTargetSeconds)
           : initialLearningTimerState(timerTargetSeconds)
       };
     });
-  }, [question?.id, timerTargetSeconds, currentAttemptState?.selectedAnswerId]);
+  }, [questionId, timerTargetSeconds, currentAttemptState?.selectedAnswerId]);
 
   useEffect(() => {
-    if (!question || !timerTargetSeconds || currentTimerState?.status !== "running") return undefined;
+    if (!questionId || !timerTargetSeconds || currentTimerState?.status !== "running") return undefined;
     const timer = window.setInterval(() => {
       setTimerStates((current) => {
-        const state = current[question.id];
+        const state = current[questionId];
         if (!state || state.status !== "running") return current;
         if (state.remainingSeconds <= 1) {
           return {
             ...current,
-            [question.id]: {
+            [questionId]: {
               ...state,
               remainingSeconds: 0,
               status: "expired"
@@ -870,7 +869,7 @@ function LearnView({ progress, setProgress }: { progress: StoredProgress; setPro
         }
         return {
           ...current,
-          [question.id]: {
+          [questionId]: {
             ...state,
             remainingSeconds: state.remainingSeconds - 1
           }
@@ -878,7 +877,7 @@ function LearnView({ progress, setProgress }: { progress: StoredProgress; setPro
       });
     }, 1000);
     return () => window.clearInterval(timer);
-  }, [question?.id, timerTargetSeconds, currentTimerState?.status]);
+  }, [questionId, timerTargetSeconds, currentTimerState?.status]);
 
   return (
     <section className="workspace">
@@ -933,7 +932,26 @@ function ExamView({ progress, setProgress }: { progress: StoredProgress; setProg
   const [finished, setFinished] = useState(false);
   const [timeRemaining, setTimeRemaining] = useState(data.examFormat.timeLimitMinutes * 60);
   const [resultScore, setResultScore] = useState<number | null>(null);
+  const finishGuard = useRef(false);
   const current = examQuestions[position];
+
+  const finish = useCallback((finalAnswers = answers) => {
+    if (finishGuard.current) return;
+    finishGuard.current = true;
+    const finalScore = scorePercent(finalAnswers.filter((answer) => answer.isCorrect).length, examQuestions.length);
+    const attempt = {
+      id: `exam-${Date.now()}`,
+      finishedAt: new Date().toISOString(),
+      score: finalScore,
+      passed: isPassing(finalScore, data.examFormat.passingScore),
+      total: examQuestions.length
+    };
+    const next = { ...progress, answers: [...progress.answers, ...finalAnswers], examAttempts: [...progress.examAttempts, attempt] };
+    setProgress(next);
+    saveProgress(next);
+    setResultScore(finalScore);
+    setFinished(true);
+  }, [answers, examQuestions.length, progress, setProgress]);
 
   useEffect(() => {
     if (finished) return undefined;
@@ -948,7 +966,7 @@ function ExamView({ progress, setProgress }: { progress: StoredProgress; setProg
       });
     }, 1000);
     return () => window.clearInterval(timer);
-  }, [answers, finished]);
+  }, [answers, finish, finished]);
 
   function record(answer: ProgressAnswer) {
     const nextAnswers = [...answers, answer];
@@ -966,23 +984,6 @@ function ExamView({ progress, setProgress }: { progress: StoredProgress; setProg
       answeredAt: new Date().toISOString(),
       mode: "exam"
     });
-  }
-
-  function finish(finalAnswers = answers) {
-    if (finished) return;
-    const finalScore = scorePercent(finalAnswers.filter((answer) => answer.isCorrect).length, examQuestions.length);
-    const attempt = {
-      id: `exam-${Date.now()}`,
-      finishedAt: new Date().toISOString(),
-      score: finalScore,
-      passed: isPassing(finalScore, data.examFormat.passingScore),
-      total: examQuestions.length
-    };
-    const next = { ...progress, answers: [...progress.answers, ...finalAnswers], examAttempts: [...progress.examAttempts, attempt] };
-    setProgress(next);
-    saveProgress(next);
-    setResultScore(finalScore);
-    setFinished(true);
   }
 
   if (finished) {

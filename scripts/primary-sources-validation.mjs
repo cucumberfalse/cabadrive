@@ -358,11 +358,9 @@ function recombineDocumentsByOfficialDocumentId(documents, { label, chunkLabel }
     documents: orderedIds.map((id) => {
       const document = documentsById.get(id);
       if (!isPlainObject(document)) return document;
-      const {
-        __primarySourcesRecompositionMetadata,
-        __primarySourcesRecompositionChunkIds,
-        ...recombinedDocument
-      } = document;
+      const recombinedDocument = { ...document };
+      delete recombinedDocument.__primarySourcesRecompositionMetadata;
+      delete recombinedDocument.__primarySourcesRecompositionChunkIds;
       return recombinedDocument;
     })
   };
