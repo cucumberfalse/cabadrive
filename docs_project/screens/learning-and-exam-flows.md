@@ -12,6 +12,7 @@
 8. CABA vs RF Guide
 9. Complete GCBA 4-wheel manual / `Руководство 4R`
 10. Official Sources / `Источники`
+11. About / `О приложении`
 
 ## Home / Onboarding
 
@@ -122,6 +123,14 @@ The complete manual surface is a dedicated Russian-learning reader for the offic
 5. Treat fees, sedes, turn availability, Boti/miBA screens, and document lists as volatile and verify them on official pages.
 6. Use adjacent-path callouts only as routing hints for renewal, change of jurisdiction, beginner status, prior licenses, and foreigner documentation.
 7. Browse the Spanish administrative glossary for low-Spanish support while keeping official Spanish terms visible.
+
+## About / `О приложении` Flow
+
+1. Open `О приложении` as a top-level keyboard-operable tab; it is state-based and does not add `#/about` routing.
+2. See deterministic package version `0.1.0`, the canonical bundled `unofficial_b_fallback` status, and the boundary that the 460-ticket practice bank is neither official nor complete.
+3. See the bundled `bandinopla/simulador-test-de-conducir` provenance and Apache-2.0 attribution without a runtime fetch.
+4. See that official sources support traceability and study context while Russian translations, explanations, rewrites, and guides remain unofficial learning support.
+5. Follow the explicit external repository or upstream links only by user action; rendering remains fully local/offline.
 
 ## Status Labels
 

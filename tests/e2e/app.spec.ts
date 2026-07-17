@@ -141,6 +141,35 @@ async function openPrimarySources(page: Page) {
   await expect(page.getByLabel("Покрытие корпуса источников").getByText(`${primarySourceManifest.entries.length} документов`, { exact: true })).toBeVisible();
 }
 
+test("О приложении exposes local version and attribution without runtime source requests", async ({ page }) => {
+  const remoteAttributionRequests: string[] = [];
+  page.on("request", (request) => {
+    if (/github\.com|buenosaires\.gob\.ar|argentina\.gob\.ar/.test(request.url())) {
+      remoteAttributionRequests.push(request.url());
+    }
+  });
+
+  await page.goto("/");
+  const aboutTab = page.getByRole("button", { name: "О приложении" });
+  await aboutTab.focus();
+  await expect(aboutTab).toBeFocused();
+  await page.keyboard.press("Enter");
+
+  const about = page.getByTestId("about-view");
+  await expect(about.getByRole("heading", { name: "О приложении" })).toBeVisible();
+  await expect(about).toContainText("0.1.0");
+  await expect(about).toContainText("неофициальная B-практика");
+  await expect(about).toContainText("неофициальная учебная поддержка");
+  await expect(about).toContainText("bandinopla/simulador-test-de-conducir");
+  await expect(about).toContainText("не является официальной или полной базой вопросов GCBA");
+  await expect(about.getByRole("link", { name: "Репозиторий Cabadrive" })).toHaveAttribute(
+    "href",
+    "https://github.com/cucumberfalse/cabadrive"
+  );
+  await expect(aboutTab).toHaveAttribute("aria-pressed", "true");
+  expect(remoteAttributionRequests).toEqual([]);
+});
+
 async function openCompleteManual(page: Page) {
   await page.goto("/?legacyManual=1");
   await expect(page.getByRole("heading", { name: manualManifest.titleRu })).toBeVisible();

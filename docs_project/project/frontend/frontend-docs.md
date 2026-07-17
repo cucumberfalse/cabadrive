@@ -56,6 +56,7 @@ for local builds instead of retagging a shared `cabadrive:local` image.
 Current repository verification commands:
 
 ```bash
+pnpm run validate:attribution
 pnpm run validate:content
 pnpm run test
 pnpm run build
@@ -118,6 +119,7 @@ The current question set is `unofficial_b_fallback`, not an official GCBA questi
 - Feature `026-design-ux-modernization` adds the durable visual system in `docs_project/project/frontend/design-system.md`, local generated learning images for `Материалы` and `Словарь`, and a learning-image validator. Generated learning images are committed local SVG assets under `content/assets/learning/generated/v1/`; they are unofficial support and never replace canonical ticket images.
 - `Материалы` uses explicit Spanish/Russian language-pair controls for Spanish terms and local learning-image figures for governed topic-study coverage units. Active exam attempts continue to hide generated learning images and all support scaffolding.
 - `Руководство` appends reviewed canonical ticket blocks only after the existing content of each eligible substantive route. The appendix joins ticket IDs to canonical questions, governed Russian translations/explanations, correct answers, difficulty, source status, and local images; mapping files cannot override that content.
+- `О приложении` is a top-level state-based view (not a hash route). It renders package version `0.1.0`, the canonical bundled content mode and upstream source record, official/unofficial boundaries, and the canonical repository link without a runtime request. Root `LICENSE`, `NOTICE`, and `licenses/THIRD-PARTY-NOTICES.md` are the distribution-level licensing inventory.
 - Manual placement provenance is fail-closed: runtime consumes only committed ticket-to-page references whose exact visible anchor text and semantic review are sealed by the reviewed manifest. Candidate scoring is development-only and never appears as an approval or runtime content source.
 - Thematic manual placement is routed through a reviewed 38-topic table plus one sealed ticket-topic assignment per canonical ticket. A fallback destination and anchor must belong to that ticket's curated route; global lexical ranking cannot choose runtime destinations.
 - Manual ticket appendices render up to 6 tickets directly. Routes with 7 or more tickets use a collapsed native disclosure and do not mount rich ticket cards until opened. Ticket order is deterministic by canonical ID, images remain local and lazy-loaded, and support pages such as presentation, categories, and glossary never receive appendices.

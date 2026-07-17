@@ -1,5 +1,6 @@
-import { BookMarked, BookOpen, CheckCircle2, ChevronLeft, ChevronRight, ClipboardList, ExternalLink, FileText, Flag, Image as ImageIcon, ListTree, MapPinned, RotateCcw, Search, Timer, XCircle } from "lucide-react";
+import { BookMarked, BookOpen, CheckCircle2, ChevronLeft, ChevronRight, ClipboardList, ExternalLink, FileText, Flag, Image as ImageIcon, Info, ListTree, MapPinned, RotateCcw, Search, Timer, XCircle } from "lucide-react";
 import { useEffect, useMemo, useRef, useState, type CSSProperties, type KeyboardEvent, type ReactNode } from "react";
+import packageJson from "../package.json";
 import {
   data,
   assetUrl,
@@ -48,7 +49,7 @@ import { exactTextStatusKind, exactTextStatusNote } from "./primarySourceStatus"
 import { clearProgress, loadProgress, saveProgress, type StoredProgress } from "./storage";
 import { searchQuestions, searchVocabulary } from "./search";
 
-type View = "learn" | "exam" | "mistakes" | "vocabulary" | "guide" | "materials" | "process" | "sources" | "manual" | "pandemia";
+type View = "learn" | "exam" | "mistakes" | "vocabulary" | "guide" | "materials" | "process" | "sources" | "manual" | "pandemia" | "about";
 type SourceViewMode = "simple" | "full" | "spanish";
 type SourceFilterOption = {
   value: string;
@@ -252,6 +253,67 @@ function primarySourceValidationLabel(status: string) {
   if (status === "passed") return "проверка пройдена";
   if (status === "failed") return "проверка не пройдена";
   return "проверка ожидается";
+}
+
+const repositoryUrl = "https://github.com/cucumberfalse/cabadrive";
+
+function AboutView() {
+  const upstream = sourceById.get("bandinopla-testdeconducir-caba-b-source1-2026-05-08");
+
+  return (
+    <section className="about-view" data-testid="about-view" aria-labelledby="about-title">
+      <header className="about-hero">
+        <div>
+          <p className="eyebrow">Cabadrive · версия {packageJson.version}</p>
+          <h2 id="about-title">О приложении</h2>
+          <p>
+            Локальный тренажёр для подготовки русскоязычных водителей к теоретическому экзамену категории B в CABA.
+          </p>
+        </div>
+        <span className="about-version" aria-label={`Версия приложения ${packageJson.version}`}>v{packageJson.version}</span>
+      </header>
+
+      <div className="about-grid">
+        <article className="about-card">
+          <h3>Статус вопросов</h3>
+          <p><strong>{data.contentMode.mode}</strong></p>
+          <p>Текущий набор — неофициальная B-практика и не является официальной или полной базой вопросов GCBA.</p>
+          <ul>
+            {data.contentMode.notes.map((note) => <li key={note}>{note}</li>)}
+          </ul>
+        </article>
+
+        <article className="about-card">
+          <h3>Источник practice bank</h3>
+          <p>
+            <strong>bandinopla/simulador-test-de-conducir</strong> · Apache-2.0 · category B/CABA fallback.
+          </p>
+          <p>{upstream?.retrievalNote}</p>
+          {upstream && (
+            <a href={upstream.officialUrl} target="_blank" rel="noreferrer noopener">
+              Upstream repository <ExternalLink size={16} aria-hidden="true" />
+            </a>
+          )}
+        </article>
+
+        <article className="about-card">
+          <h3>Официальные источники</h3>
+          <p>
+            Материалы GCBA и национальных органов используются для трассировки, контекста экзамена и учебных материалов. Их наличие не превращает practice bank в официальный.
+          </p>
+          <p>Русские переводы, объяснения, упрощения и комментарии — неофициальная учебная поддержка.</p>
+        </article>
+
+        <article className="about-card">
+          <h3>Код и атрибуция</h3>
+          <p>Cabadrive-owned code: Apache-2.0. Сторонние и официальные материалы сохраняют собственные условия.</p>
+          <a href={repositoryUrl} target="_blank" rel="noreferrer noopener">
+            Репозиторий Cabadrive <ExternalLink size={16} aria-hidden="true" />
+          </a>
+        </article>
+      </div>
+    </section>
+  );
 }
 
 function normalizeSearchText(value: string) {
@@ -4084,6 +4146,7 @@ export function App() {
         <button className={view === "sources" ? "active" : ""} onClick={() => selectView("sources")}><FileText size={18} /> Источники</button>
         <button className={view === "process" ? "active" : ""} onClick={() => selectView("process")}><MapPinned size={18} /> Процесс</button>
         <button className={view === "guide" ? "active" : ""} onClick={() => selectView("guide")}><Flag size={18} /> CABA/RF</button>
+        <button className={view === "about" ? "active" : ""} onClick={() => selectView("about")} aria-pressed={view === "about"}><Info size={18} /> О приложении</button>
       </nav>
 
       {view === "learn" && <LearnView progress={progress} setProgress={setProgress} />}
@@ -4103,6 +4166,7 @@ export function App() {
       {view === "sources" && <PrimarySourcesView />}
       {view === "process" && <ProcessGuideView />}
       {view === "guide" && <GuideView />}
+      {view === "about" && <AboutView />}
     </main>
   );
 }
