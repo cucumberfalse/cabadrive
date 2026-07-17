@@ -230,7 +230,18 @@ test("representative files receive the intended flat-config profiles", async () 
   const script = await eslint.calculateConfigForFile("scripts/shared.mjs");
   const nodeTest = await eslint.calculateConfigForFile("tests/domain.test.mjs");
   const e2e = await eslint.calculateConfigForFile("tests/e2e/app.spec.ts");
+  const manualTicketE2e = await eslint.calculateConfigForFile(
+    "tests/e2e/manual-ticket-placement.spec.ts",
+  );
   const vite = await eslint.calculateConfigForFile("vite.config.ts");
+  const playwright = await eslint.calculateConfigForFile("playwright.config.ts");
+  const unsafeRules = [
+    "@typescript-eslint/no-unsafe-argument",
+    "@typescript-eslint/no-unsafe-assignment",
+    "@typescript-eslint/no-unsafe-call",
+    "@typescript-eslint/no-unsafe-member-access",
+    "@typescript-eslint/no-unsafe-return",
+  ];
 
   for (const config of [app, domain]) {
     assert.equal(config.rules["react-hooks/rules-of-hooks"][0], 2);
@@ -242,10 +253,34 @@ test("representative files receive the intended flat-config profiles", async () 
     assert.equal(config.rules["react-hooks/rules-of-hooks"], undefined);
     assert.equal(config.languageOptions.globals.process, false);
   }
-  for (const config of [e2e, vite]) {
+  for (const config of [e2e, manualTicketE2e, vite, playwright]) {
     assert.match(config.languageOptions.parser.meta.name, /typescript-eslint/);
     assert.equal(config.rules["react-hooks/rules-of-hooks"], undefined);
     assert.equal(config.rules["@typescript-eslint/await-thenable"][0], 2);
     assert.equal(config.rules["@typescript-eslint/no-floating-promises"][0], 2);
+  }
+  for (const rule of unsafeRules) {
+    assert.equal(e2e.rules[rule][0], 0, `${rule} is the disposed app.spec.ts exception`);
+    for (const [file, config] of [
+      ["tests/e2e/manual-ticket-placement.spec.ts", manualTicketE2e],
+      ["vite.config.ts", vite],
+      ["playwright.config.ts", playwright],
+    ]) {
+      assert.equal(config.rules[rule][0], 2, `${rule} must remain an error for ${file}`);
+    }
+  }
+
+  for (const file of [
+    ...readdirSync(new URL("../tests/e2e", import.meta.url))
+      .filter((name) => name.endsWith(".ts"))
+      .map((name) => `tests/e2e/${name}`),
+    "vite.config.ts",
+    "playwright.config.ts",
+  ]) {
+    assert.doesNotMatch(
+      readFileSync(new URL(`../${file}`, import.meta.url), "utf8"),
+      /eslint-(?:disable|enable)/,
+      `${file} must not bypass calculated config with an inline/file disable`,
+    );
   }
 });
