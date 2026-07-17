@@ -123,10 +123,13 @@
 
 Append-only Analyst-owned section используется только после явного вызова Orchestrator и успешной final Architect validation.
 
-- Analyst validation pass: not yet invoked
+- Analyst validation pass: passed
 - Analyst return count for this work cycle: 0
-- Customer intent check: будет проверено по исходному запросу, приоритету ТЗ-22, уточнённому выбору лицензии, assumptions и acceptance expectations.
-- Gaps, if any: отсутствуют на этапе intake; license owner decision получен, оставшиеся verification risks перечислены выше.
+- Final Analyst validation completed at: 2026-07-17T14:34:44Z
+- Analyst validated effective content head: 190cbb8f9de6e2f1341b774b478e546f350aacee
+- Customer intent check: passed. Первый приоритетный срез запроса реализует ТЗ-22 в духе и букве intake: выбранная владельцем Apache-2.0 лицензия, NOTICE и точная upstream-атрибуция отделены от осторожно квалифицированных условий официальных/third-party материалов; актуальный RU+EN README содержит Docker-only quick start, структуру, attribution и три проверенных экрана; CONTRIBUTING и подтверждённый GitHub Private Vulnerability Reporting channel закрывают базовые process/security ожидания; доступная с клавиатуры offline-страница «О приложении» показывает версию, канонический content mode, источник, repository link и неофициальные границы.
+- Outcome evidence: root и pinned upstream Apache texts совпадают побайтно; `pnpm run validate:attribution` прошёл; focused license/screenshot tests прошли 10/10; три committed PNG имеют заявленные 1440×900 identities и GitHub-path evidence, а независимый JPEG decode подтверждает, что наблюдавшиеся только в Codex PNG preview чёрные прямоугольники не являются содержимым `materials.png`; private vulnerability reporting API возвращает `enabled: true`; effective-head-to-current delta содержит только `specs/043-license-attribution/tasks.md`; все семь review threads разрешены. Записанные full preflight, 495/495 Node, 104/104 E2E, Docker smoke и exact-head review evidence покрывают acceptance и review fixes.
+- Gaps, if any: none. README/UI/NOTICE не называют fallback bank официальной или полной базой GCBA, не представляют русскую поддержку официальной и не распространяют root Apache-2.0 на bundled content. Текущие CI checks, перезапущенные evidence-only Architect commit, остаются downstream Orchestrator final-guard gate, а не Analyst content gap.
 - Architect disposition routing: Orchestrator обязан передать любой Analyst feedback Architect для accept/task/ticket/dispose до follow-up development.
 - Analyst limit escalation: если следующий gap превысит 5 возвратов, Analyst создаёт новый feature request в отдельном latest-main branch/worktree и фиксирует handoff.
 - Analyst boundary reminder: не редактировать Architect artifacts, code, reviews, commits, pushes, PR/merge state или файлы вне Analyst-owned intake/final-validation notes, кроме нового feature request при limit-exceeded escalation.
