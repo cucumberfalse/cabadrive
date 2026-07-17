@@ -97,7 +97,10 @@ test("Introduction navigation is driven by four source Index headings, not raw p
     introductionAppSource,
     /data-testid=\{\s*child\.introductionRouteId\s*\?\s*`intro-route-\$\{child\.introductionRouteId\}`/
   );
-  assert.match(introductionAppSource, /const isActiveSection = Boolean\(sectionEntry && selectedManualSection\?\.id === sectionEntry\.id\)/);
+  assert.match(
+    introductionAppSource,
+    /const isActiveSection\s*=\s*Boolean\(\s*sectionEntry\s*&&\s*selectedManualSection\?\.id\s*===\s*sectionEntry\.id\s*\)/,
+  );
   assert.match(introductionAppSource, /aria-current=\{isActiveChild \|\| isActiveSection \? "page" : undefined\}/);
   assert.match(introductionAppSource, /aria-label=\{child\.labelRu\}/);
   assert.doesNotMatch(introductionAppSource, /data-testid="intro-index-nav"/);

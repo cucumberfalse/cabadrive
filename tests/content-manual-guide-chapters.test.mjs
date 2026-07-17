@@ -3876,7 +3876,10 @@ test("Manual guide UI renders pending section entries without opening fake conte
   const renderManualSectionButtonSource = manualGuideAppSource.slice(renderManualSectionButtonStart, renderManualSectionButtonEnd);
   assert.match(renderManualSectionButtonSource, /disabled=\{!isAvailable\}/);
   assert.match(renderManualSectionButtonSource, /const pendingSectionStatusLabel = "ожидает PR"/);
-  assert.match(renderManualSectionButtonSource, /aria-label=\{isAvailable \? section\.labelRu : `\$\{section\.labelRu\}: \$\{pendingSectionStatusLabel\}`\}/);
+  assert.match(
+    renderManualSectionButtonSource,
+    /aria-label=\{\s*isAvailable\s*\?\s*section\.labelRu\s*:\s*`\$\{section\.labelRu\}: \$\{pendingSectionStatusLabel\}`\s*\}/,
+  );
   assert.match(renderManualSectionButtonSource, /\{!isAvailable && <small>\{pendingSectionStatusLabel\}<\/small>\}/);
   assert.doesNotMatch(renderManualSectionButtonSource, /готово/);
   assert.doesNotMatch(renderManualSectionButtonSource, /sectionStatusLabel/);
