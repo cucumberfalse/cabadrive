@@ -166,7 +166,7 @@
   `/sw.js` smoke, and always-run teardown all succeeded. Only that pairing may
   close T021 through fallback; missing/queued/stale/cancelled/red GitHub Docker
   evidence remains a merge/final-validation blocker.
-- [ ] T038 Fix P2 `PRRT_kwDOSX65IM6R4bjG` as a bounded current task. Register
+- [x] T038 Fix P2 `PRRT_kwDOSX65IM6R4bjG` as a bounded current task. Register
   `SIGINT`/`SIGTERM` cleanup before sentinel creation, track/remove only
   process-created sentinels, and preserve the terminating signal/conventional
   exit semantics. Add deterministic subprocess tests that wait until a
@@ -174,20 +174,20 @@
   sentinel paths absent, and run the normal helper successfully immediately
   afterward. Existing stale-file refusal and normal `finally` cleanup must stay
   fail-closed.
-- [ ] T039 Fix P2 `PRRT_kwDOSX65IM6R4bjJ` as a bounded current task. Export an
+- [x] T039 Fix P2 `PRRT_kwDOSX65IM6R4bjJ` as a bounded current task. Export an
   event-safe full source head using PR `github.event.pull_request.head.sha` with
   `github.sha` fallback, validate/log the 40-hex value in the same timing line
   as elapsed seconds and 60-second budget, and strengthen workflow tests to
   reject synthetic-merge-only or unbound timing evidence. Current-head GitHub
   logs must show the exact PR head and measured bound.
-- [ ] T040 Fix P2 `PRRT_kwDOSX65IM6R4bjM` as a bounded current task. Replace the
+- [x] T040 Fix P2 `PRRT_kwDOSX65IM6R4bjM` as a bounded current task. Replace the
   syntax-only TypeScript preset for `tests/e2e/**/*.ts`, `vite.config.ts` and
   `playwright.config.ts` with the compatible type-checked recommended profile
   backed by `tsconfig.eslint.json`. Resolve resulting real diagnostics narrowly
   without blanket rule disable. Calculated-config tests must prove error-level
   `await-thenable`, `no-floating-promises` or equivalent type-information rules
   for both E2E and Vite representatives, then `lint --max-warnings 0` passes.
-- [ ] T041 Fix P3 `PRRT_kwDOSX65IM6R4bjP` as a current contract task. Replace
+- [x] T041 Fix P3 `PRRT_kwDOSX65IM6R4bjP` as a current contract task. Replace
   root `*.config.ts` in `lint`, `format`, `format:check` and the flat-config
   profile with literal `vite.config.ts` and `playwright.config.ts`. Test the
   complete exact target list/order for all three scripts and calculated config;
@@ -443,6 +443,36 @@ disposition. It must not implement unplanned work silently.
   `PRRT_kwDOSX65IM6R4bjP`. Architect accepted them as T038–T042; no thread is
   considered resolved until new-head implementation evidence, fresh
   thread-aware review and Orchestrator disposition.
+- T038–T041 implementation at semantic head
+  `370ffce48948e152199d07371b8647b2a9e79274`: deterministic subprocess tests
+  observed exact `SIGINT` and `SIGTERM` termination after the readiness marker,
+  verified all three sentinels absent and immediately reran the normal helper
+  successfully after each signal. A separate stale-sentinel regression proved
+  refusal preserves the pre-existing file byte-for-byte. Focused quality tests
+  passed `8/8`; normal negative contracts passed with no remaining sentinel.
+- The CI timing contract now validates and prints the event-safe full source SHA
+  from `github.event.pull_request.head.sha || github.sha` in the same line as
+  elapsed seconds and the 60-second budget. Exact workflow-source assertions
+  reject missing validation, missing source binding and synthetic-merge-only
+  evidence; exact-head GitHub log evidence remains part of T042/T026.
+- Root/E2E TypeScript uses `recommendedTypeChecked` and calculated configs for
+  both `tests/e2e/app.spec.ts` and `vite.config.ts` prove error-level
+  `@typescript-eslint/await-thenable` and `no-floating-promises`. Discovery
+  produced 280 findings: 13 concrete unnecessary assertion/async/await/unbound
+  issues were fixed directly; the remaining 267 unsafe-family findings derive
+  from runtime-loaded `JSON.parse` fixtures and are scoped off only for the
+  legacy `tests/e2e/app.spec.ts`, while type-aware control-flow rules stay on.
+- Lint/format/check and flat-config targets now literally name only
+  `vite.config.ts` and `playwright.config.ts`; full-string tests reject root
+  `*.config.ts` drift. Positive typecheck/lint/format passed; current
+  `quality:fast` passed in `real 15.20` seconds; suppression and sentinel audits
+  were empty. Full Node passed `502/502`, build generated `2,156` service-worker
+  assets, E2E passed `106/106`, and full preflight passed through E2E `106/106`.
+- The 2,971-path protected SHA-256 manifest remains byte-identical to the
+  original pre-format manifest; format-only commit
+  `c359350358a82d0250934d627c65b5a5a0de6a8a` still exists, contains exactly 96
+  paths and remains the sole `.git-blame-ignore-revs` entry. T042 remains open
+  only for push/new-head GitHub timing and fresh thread-aware Review Agent work.
 - Review/current-head evidence: pending T024–T026.
 - Final role/current-head guard evidence: pending T027–T029.
 
