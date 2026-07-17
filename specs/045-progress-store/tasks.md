@@ -6,9 +6,10 @@
 - Base: verified `origin/main` `830a4336e9d5adc1d1c65517e71084b928e0e914`.
 - Handoff branch/worktree: `codex/045-progress-store` /
   `/Users/chap/devel/cabadrive-worktrees/045-progress-store`.
-- Cycle PR set: pending. The Analyst-created handoff may be the one
-  implementation PR only if Orchestrator explicitly assigns it; record PR URL,
-  branch, head SHA, purpose, status and final-validation inclusion here.
+- Cycle PR set: pending publication. The Analyst-created handoff is the one
+  implementation PR slice assigned by Orchestrator. Its implementation content
+  head is `f3279152b91f4725b7a2787e1c67c164b8c42705`; later commits before final
+  validation contain process evidence only.
 - Parallel-work rule: preserve all unrelated worktrees, branches, commits,
   PRs, dirty diffs and durable process memory.
 
@@ -132,7 +133,8 @@ reason and evidence.
 
 Implementation content candidate starts from
 `830a4336e9d5adc1d1c65517e71084b928e0e914`; exact committed content head and
-PR metadata are appended after the assigned implementation commit/push.
+PR metadata are appended after publication. Effective implementation content
+head: `f3279152b91f4725b7a2787e1c67c164b8c42705`.
 
 - `node --test tests/progress-store.test.mjs` — pass: 9 deterministic fixtures
   cover v1 backup/migration/idempotence, local recovery, strict import
