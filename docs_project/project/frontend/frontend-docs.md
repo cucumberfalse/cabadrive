@@ -56,6 +56,10 @@ for local builds instead of retagging a shared `cabadrive:local` image.
 Current repository verification commands:
 
 ```bash
+pnpm run typecheck
+pnpm run lint
+pnpm run format:check
+pnpm run quality:fast
 pnpm run validate:attribution
 pnpm run validate:content
 pnpm run test
@@ -63,6 +67,14 @@ pnpm run build
 pnpm run test:e2e
 pnpm run preflight
 ```
+
+Run `pnpm run preflight` before every push. `pnpm run format` writes only the
+explicit code allowlist. Governed manual TypeScript, bundled content,
+documentation, licenses, validation evidence, images, archives, and generated
+artifacts are protected by formatter ignores and remain outside that scope.
+
+For history inspection across the repository-wide mechanical formatting commit,
+use `git blame --ignore-revs-file .git-blame-ignore-revs <path>`.
 
 ## Planned Structure
 

@@ -39,6 +39,12 @@ Claude Code is the default implementation agent unless repository policy says ot
 - If direct edits start before Orchestrator routing or implementation prerequisites are satisfied, stop immediately, report the process failure, preserve user and sibling-agent work, and wait for Orchestrator/user disposition. Do not hide the bypass, silently switch roles, run destructive cleanup, or revert work you did not make without explicit authorization.
 - Completion-time cleanup of agent-created local environments is coordinated by Orchestrator and executed only by an assigned Cleanup Agent. Implementation Agent and other non-cleanup roles do not delete sibling worktrees or local environments; they may coordinate cleanup, request Cleanup Agent assignment, or record evidence only.
 - Before every push, run `pnpm run preflight` (and Docker contract checks for runtime-affecting changes).
+- Use `pnpm run quality:fast` for the fast typecheck/lint gate and
+  `pnpm run format:check` for formatting verification. `pnpm run format` is
+  intentionally limited to its explicit code allowlist; do not widen it to the
+  repository root or governed content/manual sources.
+- Use `git blame --ignore-revs-file .git-blame-ignore-revs <path>` when the
+  mechanical formatting migration obscures code history.
 - Never merge while required checks are queued, running, red, or missing; while blocking review findings or conflicts remain; while process memory is stale; while acceptance evidence is missing; while Implementation Agent feedback lacks Architect disposition; or before required final Architect validation and final Analyst validation have passed.
 - Keep commit subjects short, conventional, and focused.
 - Do not add abstractions for single-use logic without a current need documented in `plan.md`.
@@ -97,6 +103,10 @@ When asked to review, prioritize:
 ## Local Workflow
 
 ```bash
+pnpm run typecheck
+pnpm run lint
+pnpm run format:check
+pnpm run quality:fast
 pnpm run preflight
 node scripts/new-worktree.mjs --slug 001-docs-bootstrap
 node scripts/publish-branch.mjs

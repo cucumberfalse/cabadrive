@@ -42,15 +42,15 @@
   format, make only necessary whitespace-tolerant repairs while preserving the
   original assertions; run focused tests for manual/App/domain/source/screenshot
   workflow contracts and keep changes outside the ignored format revision.
-- [ ] T011 Capture a SHA-256 manifest for tracked `content`, `public/content`,
+- [x] T011 Capture a SHA-256 manifest for tracked `content`, `public/content`,
   `LICENSE`, `NOTICE`, `licenses` and README screenshots plus pre-format status;
   run the exact allowlisted formatter, inspect every path, run it a second time
   and prove idempotence and protected-hash identity.
-- [ ] T012 Create exactly one format-only commit containing only mechanical
+- [x] T012 Create exactly one format-only commit containing only mechanical
   Prettier changes in the approved code allowlist. Run relevant positives before
   commit and report the immutable full commit SHA; no config/docs/test-contract/
   semantic/process-memory change may be included.
-- [ ] T013 In a later normal commit, add the exact T012 SHA to
+- [x] T013 In a later normal commit, add the exact T012 SHA to
   `.git-blame-ignore-revs`, document `git blame --ignore-revs-file`, prove the
   commit exists and is format-only, and do not amend/rebase/force-push it.
 - [x] T014 Wire `quality:fast` and `baseline-checks` so observed order is
@@ -60,7 +60,7 @@
 - [x] T015 Update `preflight` with equivalent quality gates before unit/build/
   E2E while preserving feature-memory, repository, content/attribution and all
   existing validation. Do not implement general ТЗ-18 deduplication.
-- [ ] T016 Update only relevant durable contributor/agent/developer docs with
+- [x] T016 Update only relevant durable contributor/agent/developer docs with
   the new commands, safe formatter scope, ignore-revs usage and pre-push rule;
   preserve README Docker quick start and end-user host-tool independence.
 - [ ] T017 Run focused quality tests and negative contracts; record exact
@@ -147,7 +147,7 @@
   change expected hashes/fingerprints, registry facts, protected validator
   expectations, skip/delete tests or weaken assertions. Commit these repairs
   as semantic pre-format work and rerun focused/full Node tests.
-- [ ] T036 Discard the rejected 148-file discovery diff as a format-commit
+- [x] T036 Discard the rejected 148-file discovery diff as a format-commit
   candidate; after T033–T035 land on a clean semantic head, run a completely
   fresh `pnpm run format`. Capture protected hashes including all 52 governed
   TS sources, prove zero governed diff and passing manual-ticket placement,
