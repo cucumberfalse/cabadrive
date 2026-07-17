@@ -399,6 +399,16 @@ implement out-of-scope improvements.
   readiness/exit timeout handles, a final focused run passed 5/5 and the full
   independent comparison completed in 9.2 seconds. Post-push GFM/raw-image
   verification and the exact candidate SHA remain T027 work.
+- Second review-fix publication evidence (2026-07-16): candidate effective
+  content commit `0457ddc864cc29e04e3fd959601ec66bfcd95d64` was pushed to
+  PR #208. GitHub's GFM renderer returned the three expected repository-relative
+  `<img>` paths. Each branch raw URL returned HTTP 200 and `content-type:
+  image/png`; remote lengths were 280229 (`learn`), 137098 (`materials`), and
+  145885 (`about`) bytes, and downloaded hashes exactly matched the committed
+  SHA-256 identities above. `gh pr view 208` reported the same head, `OPEN`,
+  ready and `MERGEABLE`; required checks and fresh AI review were in progress.
+  The Implementation portion of T027 is complete; T027 remains open for the
+  Orchestrator-owned fresh thread-aware review and thread disposition.
 - Isolated Docker smoke: port `5187` had no listener; with
   `COMPOSE_PROJECT_NAME=cabadrive-043-license` and
   `CABADRIVE_HOST_PORT=5187`, `make build` and `make up` passed, HTTP returned
@@ -429,7 +439,7 @@ implement out-of-scope improvements.
 
 | Purpose | Branch | PR | Base | Effective/current head | Status | Included in final validation |
 |---|---|---|---|---|---|---|
-| License, attribution, public docs, About UI, screenshots and tests | `codex/043-license-attribution` | [#208](https://github.com/cucumberfalse/cabadrive/pull/208) | `ca5b5277195cd25d23b25f611dd5a3ac24d54586` | candidate effective content head `5379672efdd95246bfecf947426ae95f0b36a993`; prior effective content head `f6b0214dbd08194c8240434dd57d4828340706ab` is stale pending final validation | open, ready, GitHub `MERGEABLE` at review-fix candidate | yes |
+| License, attribution, public docs, About UI, screenshots and tests | `codex/043-license-attribution` | [#208](https://github.com/cucumberfalse/cabadrive/pull/208) | `ca5b5277195cd25d23b25f611dd5a3ac24d54586` | candidate effective content head `0457ddc864cc29e04e3fd959601ec66bfcd95d64`; prior candidates are stale pending final validation; evidence-only head pending | open, ready, GitHub `MERGEABLE` at review-fix candidate; checks/review running | yes |
 
 ## Final Architect Validation Notes
 
