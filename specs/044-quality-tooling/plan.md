@@ -161,6 +161,10 @@ project оправдан необходимостью type-aware coverage root/E
     - For `PRRT_kwDOSX65IM6R4bjM`, apply the type-checked TS preset to root/E2E
       files. Resolve any real findings narrowly; prove calculated configs enable
       error-level type-information rules for E2E and Vite representatives.
+      The exact legacy `tests/e2e/app.spec.ts` may retain only the five disposed
+      unsafe-family overrides caused by runtime `JSON.parse`; add negative-scope
+      config assertions proving another E2E file and both root configs keep all
+      five rules at error while control-flow typed rules stay enabled everywhere.
     - For `PRRT_kwDOSX65IM6R4bjP`, replace every root `*.config.ts` target with
       the literal Vite and Playwright paths in scripts and flat config, then
       assert the complete exact target lists.

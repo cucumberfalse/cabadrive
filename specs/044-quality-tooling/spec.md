@@ -150,6 +150,20 @@ dirty diffs, commits, PR и process memory нельзя переписывать
    `@typescript-eslint/no-floating-promises`, is error-level for both an E2E
    file and `vite.config.ts`; parser/project presence alone is insufficient.
 
+One bounded legacy-fixture exception is permitted for exactly
+`tests/e2e/app.spec.ts`: its eleven top-level/runtime `JSON.parse` fixture
+boundaries expose governed external JSON as `any`, producing 267 propagated
+diagnostics after 13 genuine typed/control-flow findings were fixed. Only
+`no-unsafe-argument`, `no-unsafe-assignment`, `no-unsafe-call`,
+`no-unsafe-member-access` and `no-unsafe-return` may be disabled in an exact-file
+flat-config block with an adjacent reason. `await-thenable`,
+`no-floating-promises` and every other type-checked rule remain error-level.
+Calculated-config tests must prove the five-rule exception applies to that file
+only and remains error-level for `tests/e2e/manual-ticket-placement.spec.ts`,
+`vite.config.ts` and `playwright.config.ts`. No inline/file comment disable is
+accepted. Replacing runtime JSON fixtures with typed/validated fixture loaders
+is later testing debt for ТЗ-17 intake, not a 267-edit expansion of ТЗ-16.
+
 The config must globally ignore at least `node_modules/**`, `dist/**`,
 `coverage/**`, `content/**`, `public/**`, `docs/**`, `docs_project/**`,
 `specs/**`, `licenses/**`, root license/notice text and binary/image artifacts.
@@ -162,10 +176,11 @@ It must prove the correct parser/profile and requested rules are enabled at
 error severity, and prove governed paths are not lint targets. A temporary TSX
 fixture with an invalid conditional hook must fail with the expected hooks rule.
 
-No file-wide/blanket disable, unexplained suppression or warning downgrade is
-accepted. Hook dependency fixes are behavioral changes: they require focused
-tests and a semantic commit, or an Architect-routed narrow disposition; they
-must never be hidden in the format-only revision.
+No other file-wide/blanket disable, unexplained suppression or warning downgrade
+is accepted; the exact E2E unsafe-family waiver above is the sole Architect-
+disposed exception. Hook dependency fixes are behavioral changes: they require
+focused tests and a semantic commit, or an Architect-routed narrow disposition;
+they must never be hidden in the format-only revision.
 
 The two current exhaustive-deps findings have bounded required resolutions:
 

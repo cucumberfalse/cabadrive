@@ -192,7 +192,16 @@
   profile with literal `vite.config.ts` and `playwright.config.ts`. Test the
   complete exact target list/order for all three scripts and calculated config;
   a new root config must require an intentional reviewed allowlist change.
-- [ ] T042 After T038–T041, run focused quality-tooling tests, both signal
+- [ ] T043 Verify the disposed T040 legacy-fixture exception before T042. Exact
+  calculated config for `tests/e2e/app.spec.ts` may disable only
+  `no-unsafe-argument`, `no-unsafe-assignment`, `no-unsafe-call`,
+  `no-unsafe-member-access` and `no-unsafe-return`; `await-thenable` and
+  `no-floating-promises` remain errors. Prove all five unsafe rules are errors
+  for `tests/e2e/manual-ticket-placement.spec.ts`, `vite.config.ts` and
+  `playwright.config.ts`; prove no inline/file ESLint disable was added; rerun
+  lint plus the full E2E suite. Record later-ticket disposition to type or
+  runtime-validate legacy JSON fixture loading during ТЗ-17 intake.
+- [ ] T042 After T038–T041 and T043, run focused quality-tooling tests, both signal
   interruption regressions, normal negative helper, calculated-config checks,
   typecheck/lint/format check, affected full Node/preflight, suppression audit,
   exact target/scope guard and `git diff --check`. Implementation records the
@@ -201,7 +210,7 @@
   four threads and rechecks all required checks, including T037 Docker evidence,
   before final validation.
 - [ ] T027 Architect final validation, invoked only by Orchestrator after T001–
-  T026 and T030–T042 appear complete, must inspect the full cycle PR set,
+  T026 and T030–T043 appear complete, must inspect the full cycle PR set,
   format-only commit,
   feedback dispositions, open tasks, architecture, process memory, checks and
   customer intent. Record pass timestamp/effective content head or gap/return
@@ -250,6 +259,10 @@
   base-image fetch stalls with clean empty-project evidence and is conditional
   on successful required `docker-validation` at the exact final PR head. It is
   not a standalone pass and does not weaken the Docker-only runtime contract.
+- T040's sole suppression exception is an exact-file five-rule unsafe-family
+  override for legacy `tests/e2e/app.spec.ts` runtime JSON fixtures. Typed
+  control-flow rules remain errors; all unsafe rules remain errors in other E2E
+  and root config files. Fixture typing/validation is deferred to ТЗ-17 intake.
 
 ## Blockers And Known Issues
 
@@ -278,6 +291,10 @@
   cleanup, source-head timing evidence and typed root/E2E lint coverage, plus
   one P3 exact-allowlist drift. All are accepted as current T038–T042 work;
   prior no-findings automation does not close these thread-aware findings.
+- T040 exposed 280 typed-lint findings in legacy E2E: 13 real assertion/async/
+  await/unbound issues were fixed, while 267 unsafe-family reports propagate
+  from runtime `JSON.parse` fixture roots. The exact-file waiver is accepted
+  conditionally on T043; it must not spread to another rule or file.
 
 ## Implementation Agent Feedback
 
@@ -367,6 +384,17 @@ disposition. It must not implement unplanned work silently.
   the compatible type-checked preset and calculated-config tests must prove
   error-level type-aware rules, with only narrow evidence-backed source/rule
   adjustments if real diagnostics appear.
+- IF-044-005 / T040 unsafe-family diagnostics — **accepted as a bounded
+  exact-file exception plus current verification task T043; later-ticket
+  disposition for ТЗ-17**. Fixing the 13 genuine diagnostics is retained.
+  Expanding this PR into 267 fixture-typing edits would add high-risk test-data
+  refactoring unrelated to the requested gate. The five unsafe-family rules may
+  be off only for `tests/e2e/app.spec.ts`, whose JSON inputs are governed by the
+  existing content validators run in preflight/CI; typed control-flow rules stay
+  errors. T043 must prove every other E2E/root representative retains the five
+  rules at error, no inline blanket disable exists, and full lint/E2E pass.
+  ТЗ-17 intake must record typing or runtime validation of the legacy JSON
+  fixture loader as debt; until T043 passes, this exception remains blocking.
 - Review P3 `PRRT_kwDOSX65IM6R4bjP` — **accepted as current contract tasks T041
   and T042; blocking for spec conformance despite advisory severity**. The
   approved allowlist is intentionally exact, so `*.config.ts` is broader than
