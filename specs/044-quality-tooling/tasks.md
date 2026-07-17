@@ -86,7 +86,7 @@
   exact verification evidence and every Implementation Agent feedback item;
   hand each feedback item to Orchestrator for Architect disposition before
   implementation can be considered complete.
-- [ ] T023 Commit/push/open one ready PR only under Orchestrator assignment,
+- [x] T023 Commit/push/open one ready PR only under Orchestrator assignment,
   update the cycle PR set with branch/PR/current head/status, and run
   `git diff --check` plus base/head scope guards. Implementation Agent does not
   merge or coordinate required-check reruns unless separately assigned.
@@ -366,8 +366,15 @@ disposition. It must not implement unplanned work silently.
   README, licenses, notices, and committed screenshots have no diff from base.
   Full `pnpm run preflight` then passed through all gates and E2E `106/106`.
 - T021 is not passed: IF-044-004 records the daemon metadata/pull stall and
-  clean isolated compose inventory. Orchestrator relayed it to Architect for
-  disposition. T023 publication evidence remains pending.
+  clean isolated compose inventory. Architect accepted conditional fallback
+  task T037; exact-head GitHub Docker evidence remains mandatory.
+- T023 publication evidence: all implementation and role-owned disposition
+  commits were pushed to `origin/codex/044-quality-tooling`; ready PR #209 was
+  opened from the assigned branch to `main`. Pre-push guards confirmed a clean
+  worktree, merge base
+  `830a4336e9d5adc1d1c65517e71084b928e0e914`, `git diff --check`, complete
+  feature memory, 8 scoped commits and 113 changed paths before this
+  publication-evidence-only update. Implementation Agent did not merge.
 - Review/current-head evidence: pending T024–T026.
 - Final role/current-head guard evidence: pending T027–T029.
 
@@ -375,7 +382,7 @@ disposition. It must not implement unplanned work silently.
 
 | Purpose | Branch | PR | Base | Current head | Status | Included in final validation |
 |---|---|---|---|---|---|---|
-| ТЗ-16 tooling, mechanical migration, docs and feature memory | `codex/044-quality-tooling` | Not opened | `830a4336e9d5adc1d1c65517e71084b928e0e914` | `717dc8682ee40eddc3ba0a0226f551dc84b67d2b` before evidence-only update | Implementation verified; Docker T021 feedback pending disposition | Yes |
+| ТЗ-16 tooling, mechanical migration, docs and feature memory | `codex/044-quality-tooling` | [#209](https://github.com/cucumberfalse/cabadrive/pull/209) ready | `830a4336e9d5adc1d1c65517e71084b928e0e914` | `637ef7680994bccc49988410c82e6fb1d9591f4d` before publication-evidence-only update | Implementation verified/published; T037 exact-head GitHub Docker evidence pending | Yes |
 
 Orchestrator/Implementation updates this table when a PR/head exists. Any later
 slice requires its own latest-main isolated context and an additional row.
