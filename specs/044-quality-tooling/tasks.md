@@ -76,7 +76,7 @@
 - [x] T020 Run focused feature-043 regressions for license/About/README image and
   screenshot capture/current-source/recovery/no-recursion contracts; confirm
   public meaning, version, attribution and committed PNG identity are unchanged.
-- [ ] T021 Run isolated Docker `make build`, `make up`, HTTP `/` and `/sw.js`
+- [x] T021 Run isolated Docker `make build`, `make up`, HTTP `/` and `/sw.js`
   smoke, and `make down` in `finally` using a free port/project; preserve sibling
   compose projects and record commands/outcomes. If two bounded attempts stall
   only fetching uncached upstream base-image metadata/layers, stop them cleanly,
@@ -90,15 +90,15 @@
   update the cycle PR set with branch/PR/current head/status, and run
   `git diff --check` plus base/head scope guards. Implementation Agent does not
   merge or coordinate required-check reruns unless separately assigned.
-- [ ] T024 Review Agent perform thread-aware review of dependency/config
+- [x] T024 Review Agent perform thread-aware review of dependency/config
   correctness, target coverage, dangerous ignores/suppressions, source-test
   strength, protected bytes, hidden semantics in the format-only SHA, CI timing/
   order, feature-043/Docker regressions and complete role/process memory.
-- [ ] T025 Orchestrator route every review finding and Implementation feedback
+- [x] T025 Orchestrator route every review finding and Implementation feedback
   to Architect; Architect records each as a current task, later ticket or
   explicit not-needed disposition. Implementation fixes accepted current tasks
   in the assigned slice and Review Agent rechecks the new head.
-- [ ] T026 On the final current PR head, record all five required GitHub checks
+- [x] T026 On the final current PR head, record all five required GitHub checks
   green, measured `quality:fast` ≤60 s on the named GitHub runner/head, no
   unresolved blocking review conversations, no conflicts, current acceptance
   evidence and complete cycle PR set.
@@ -157,7 +157,7 @@
   rerun format for idempotence plus full Node/quality checks, and only then
   create the single T012 format-only commit. Never partially stage/reuse the
   rejected discovery diff or regenerate pins/evidence.
-- [ ] T037 Resolve IF-044-004 infrastructure fallback at final current head.
+- [x] T037 Resolve IF-044-004 infrastructure fallback at final current head.
   Record both bounded local Docker attempts, exact isolated project/port,
   metadata/pull stall points, cancellations, successful host registry curl and
   empty `docker compose ps -a`; confirm no sibling project/container was
@@ -201,7 +201,7 @@
   `playwright.config.ts`; prove no inline/file ESLint disable was added; rerun
   lint plus the full E2E suite. Record later-ticket disposition to type or
   runtime-validate legacy JSON fixture loading during ТЗ-17 intake.
-- [ ] T042 After T038–T041 and T043, run focused quality-tooling tests, both signal
+- [x] T042 After T038–T041 and T043, run focused quality-tooling tests, both signal
   interruption regressions, normal negative helper, calculated-config checks,
   typecheck/lint/format check, affected full Node/preflight, suppression audit,
   exact target/scope guard and `git diff --check`. Implementation records the
@@ -237,7 +237,7 @@
   If either current-head assertion changes, stop and return to Architect; do
   not rewrite commits or replace metadata. Fresh Review Agent confirmation and
   Orchestrator thread disposition are still required.
-- [ ] T047 After T044–T046, run focused workflow/finalizer/quality tests,
+- [x] T047 After T044–T046, run focused workflow/finalizer/quality tests,
   finalizer dry-run for explicit merge, current-head ancestry and representative
   blame checks, affected full Node/preflight, `git diff --check` and all required
   GitHub checks including T037 Docker evidence. Review Agent performs fresh
@@ -612,17 +612,32 @@ disposition. It must not implement unplanned work silently.
   transformed modules/2,156 service-worker assets, and Playwright `106/106`;
   focused workflow/finalizer checks; typecheck, lint and format check;
   `git diff --check`; and byte-identical checksums for all 2,971 protected paths.
-  T047 remains open only for push/new-head GitHub timing/check evidence, fresh
-  thread-aware Review Agent work, Orchestrator thread disposition and merge-
-  commit selection at finalization.
-- Review/current-head evidence: pending T024–T026.
+  The checked PR head is
+  `82069e34c5c035dae4523988736bdbb43191a8b7`; every later commit in this slice
+  is process-evidence-only and preserves effective semantic content head
+  `35da0218a92ce2b6d1a2927374e79a6b6103d2ae`.
+- Exact checked-head GitHub evidence for
+  `82069e34c5c035dae4523988736bdbb43191a8b7`: all five required checks passed —
+  AI Review in 10m12s, baseline in 7m11s, Docker validation in 53s, guard in
+  34s and OSV scan in 25s. The Docker job built the image, started the app,
+  smoked HTTP `/` and `/sw.js`, and completed always-run teardown, satisfying
+  the T037 conditional pairing and closing T021 without reclassifying the two
+  bounded local registry stalls as successful local smoke.
+- At the same exact checked head PR #209 was OPEN, MERGEABLE and CLEAN. All
+  review conversations were resolved, including the three native P2 findings;
+  exact-head native no-findings summary `5007945686` confirmed no remaining
+  findings. This completes T024–T026, T042 and T047 current-head review/check
+  evidence. Finalization must still select guarded `--merge-method merge`, and
+  after merge T029 must prove the format-only commit remains an ancestor of
+  `origin/main` and representative blame still skips it; squash/rebase remains
+  forbidden.
 - Final role/current-head guard evidence: pending T027–T029.
 
 ## Cycle PR Set
 
 | Purpose | Branch | PR | Base | Current head | Status | Included in final validation |
 |---|---|---|---|---|---|---|
-| ТЗ-16 tooling, mechanical migration, docs and feature memory | `codex/044-quality-tooling` | [#209](https://github.com/cucumberfalse/cabadrive/pull/209) ready | `830a4336e9d5adc1d1c65517e71084b928e0e914` | `35da0218a92ce2b6d1a2927374e79a6b6103d2ae` before implementation-evidence-only update | T044–T046 implemented and locally verified; T037 and T047 exact-new-head GitHub/review evidence pending | Yes |
+| ТЗ-16 tooling, mechanical migration, docs and feature memory | `codex/044-quality-tooling` | [#209](https://github.com/cucumberfalse/cabadrive/pull/209) ready | `830a4336e9d5adc1d1c65517e71084b928e0e914` | checked `82069e34c5c035dae4523988736bdbb43191a8b7` before final process-evidence-only update; effective content `35da0218a92ce2b6d1a2927374e79a6b6103d2ae` | All implementation, review and required checks passed; T027–T029 final role validation/finalization pending | Yes |
 
 Orchestrator/Implementation updates this table when a PR/head exists. Any later
 slice requires its own latest-main isolated context and an additional row.
