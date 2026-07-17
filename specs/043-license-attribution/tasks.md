@@ -133,6 +133,28 @@
   larger, darker, or content-region drift fails. Record exact outcomes/full
   candidate SHA, commit/push as assigned, and require fresh thread-aware review
   before resolving/outdating the P2.
+- [x] T028 Implementation Agent fix current review P2
+  `PRRT_kwDOSX65IM6RoEks` / comment `3599810286`: make the public
+  `pnpm run screenshots:readme` path produce or prove a build from current
+  source before spawning preview. Preferred bounded contract is a successful
+  `pnpm run build` phase followed by capture, with preview/capture unreachable
+  when that build fails; `build` must not invoke `screenshots:readme`, directly
+  or indirectly. If tests invoke lower-level capture lifecycle branches without
+  building, that bypass must be explicit and unavailable from the documented
+  default command. Preserve T024/T026 early-exit and occupied-port behavior;
+  add no dependency or general build-cache/fingerprint system.
+- [ ] T029 Add fail-closed stale-dist verification for T028. Seed `dist` with an
+  identifiable unrelated/old UI marker and prove: (1) a forced failed build
+  makes the public screenshot command exit nonzero under a bounded timeout,
+  never starts preview/capture, and leaves committed screenshot hashes/mtimes
+  unchanged; (2) a successful current-source build removes/replaces the stale
+  marker before preview and captures the current About/version/content contract.
+  Assert the package-script graph has no build↔screenshot recursion. Then
+  recapture all README PNGs, rerun early-exit and occupied-port regressions,
+  T027 bounded pixel-equivalence/black-region guards, exact committed hashes,
+  README relative/GitHub-render checks, `pnpm run validate:attribution`, and
+  affected current-head checks. Record exact outcomes/full SHA, commit/push as
+  assigned, and require fresh thread-aware review before resolving the P2.
 
 ## Decisions
 
@@ -230,6 +252,19 @@ implement out-of-scope improvements.
   delta no greater than 1, an explicit coordinate list wholly inside declared
   rounded-corner masks, zero drift elsewhere, and passing black-region guards.
   Each committed PNG still requires its own exact SHA-256 identity record.
+- Review P2 `PRRT_kwDOSX65IM6RoEks` / comment `3599810286` — **accepted as
+  current-feature tasks T028 and T029; blocking**. Causal preview ownership does
+  not prove that the served `dist` represents current source; the documented
+  command can otherwise overwrite public evidence with stale UI and later
+  build/preflight will not regenerate it. The bounded fix makes the public
+  screenshot command require a successful current-source build before preview,
+  with no recursive build/capture edge and no fallback to an existing `dist`
+  after build failure. A stale-dist regression must prove failed build means no
+  preview/capture/mutation, while successful build replaces a known stale marker
+  and captures the current About/version/content contract. All earlier process-
+  exit, occupied-port, bounded-pixel, black-region, README and current-head
+  checks remain required, followed by fresh thread-aware review. This is part
+  of ТЗ-22's public screenshot evidence and cannot be deferred.
 
 ## Dead Ends
 
@@ -338,6 +373,13 @@ implement out-of-scope improvements.
   creation, waits for fonts, visible image decode and two animation frames,
   disables transient animation/caret paint, losslessly normalizes decoded RGB
   scanlines, and rejects opaque-black rectangles before accepting each file.
+- The first T029 bounded cross-process comparison after the build-first public
+  capture correctly failed closed on a single rounded-corner pixel whose blue
+  channel delta was 2 at `(151,695)`, exceeding T027's maximum delta 1. The
+  capture was made deterministic at the browser-rendering boundary with a fixed
+  sRGB color profile, without capture-only CSS or product appearance changes.
+  Three subsequent independent comparisons reported zero changed pixels for all
+  three screenshots.
   Two consecutive `pnpm run screenshots:readme` runs produced identical hashes
   and 1440×900 RGB PNGs: `learn.png`
   `c9ea5089ffe789e1592ab053758db9186e7d9beb77c77e41744571dc45051e09`,
@@ -438,6 +480,33 @@ implement out-of-scope improvements.
   seconds each, focused 5/5, full 494/494, attribution validation and diff check
   passing. T027 remains open only for fresh Orchestrator-owned review/thread
   disposition.
+- Third review-fix local evidence (2026-07-16): the public
+  `pnpm run screenshots:readme` command now invokes the dedicated build-first
+  wrapper, which completes `pnpm run build` before the lower-level capture
+  helper can spawn preview; the package-script graph contains no reverse
+  screenshot edge from `build`. `node
+  scripts/verify-readme-screenshot-build-contract.mjs` passed: a seeded
+  `STALE_DIST_MUST_NOT_BE_CAPTURED` marker survived forced build exit 24 while
+  preview/capture remained unreachable, the temporary failed-output directory
+  was absent, and all committed screenshot hashes/mtimes were unchanged; the
+  successful public path then replaced the marker and captured current source
+  to a temporary output directory after asserting the About heading, exact
+  version `v0.1.0`, and exact `unofficial_b_fallback` content contract.
+- T028–T029 affected-head verification (2026-07-16): final public `pnpm run
+  screenshots:readme` visibly completed the current production build and
+  generated the 2,156-asset service worker before capture. `node --test
+  tests/capture-readme-screenshots.test.mjs` passed 6/6, retaining bounded
+  forced-preview-exit and unrelated-HTTP-200 occupied-port regressions and
+  adding bounded public-build-failure/no-capture proof. `pnpm run test` passed
+  495/495; `pnpm run validate:attribution` and `git diff --check` passed. Three
+  consecutive `node scripts/verify-readme-screenshot-equivalence.mjs` runs
+  passed with identical 1440x900 dimensions, zero differing pixels, and passing
+  opaque-black-region guards. Final committed artifact identities are
+  `learn.png` `c9ea5089ffe789e1592ab053758db9186e7d9beb77c77e41744571dc45051e09`,
+  `materials.png` `f59ac0f61e8bc0613965b8843e900a98a856234763ab75c5fd1c355c12323943`,
+  and `about.png` `e10c3d0e5e4d85d684c2b0548fa742db75e269b859bfd861fe32d953b72a5d99`.
+  The Implementation portion of T029 is complete; T029 remains open for the
+  required fresh Orchestrator-owned thread-aware review and thread disposition.
 - Isolated Docker smoke: port `5187` had no listener; with
   `COMPOSE_PROJECT_NAME=cabadrive-043-license` and
   `CABADRIVE_HOST_PORT=5187`, `make build` and `make up` passed, HTTP returned
@@ -463,6 +532,12 @@ implement out-of-scope improvements.
   child established ownership of the strict port. Architect accepted it as
   T026–T027; the bounded causal-readiness fix and local regression evidence are
   recorded above, while fresh current-head review remains Orchestrator-owned.
+- Review Agent then raised P2 `PRRT_kwDOSX65IM6RoEks` / comment `3599810286`:
+  the public screenshot command could capture an existing stale `dist` without
+  proving a current-source build. Architect accepted it as T028–T029. The
+  build-first public wrapper, fail-closed stale-dist verifier and local evidence
+  are recorded above; fresh current-head review and thread disposition remain
+  Orchestrator-owned.
 
 ## Cycle PR Set
 

@@ -98,6 +98,11 @@ async function capture(browser, tabName, fileName) {
     await page.addStyleTag({ content: "*, *::before, *::after { animation: none !important; transition: none !important; caret-color: transparent !important; }" });
     if (tabName !== "Учить") await page.getByRole("button", { name: tabName, exact: true }).evaluate((button) => button.click());
     await settlePage(page);
+    if (tabName === "О приложении") {
+      await page.getByRole("heading", { name: "О приложении", exact: true }).waitFor();
+      await page.getByText("v0.1.0", { exact: true }).waitFor();
+      await page.getByText("unofficial_b_fallback", { exact: true }).waitFor();
+    }
     const path = `${outputDir}/${fileName}`;
     await page.screenshot({ path });
     writeFileSync(path, encodeRgbPng(decodeRgbPng(readFileSync(path))));
@@ -111,7 +116,7 @@ let browser;
 try {
   await waitForPreview();
   mkdirSync(outputDir, { recursive: true });
-  browser = await chromium.launch();
+  browser = await chromium.launch({ args: ["--force-color-profile=srgb"] });
   await capture(browser, "Учить", "learn.png");
   await capture(browser, "Материалы", "materials.png");
   await capture(browser, "О приложении", "about.png");

@@ -108,3 +108,23 @@ test("capture helper rejects an unrelated HTTP 200 server on the strict port wit
   assert.ok(Date.now() - startedAt < 10_000, "occupied-port failure stays bounded by the regression timeout");
   assert.deepEqual(screenshotState(), before);
 });
+
+test("public screenshot command is build-first and a forced build failure cannot reach capture", async () => {
+  const packageScripts = JSON.parse(readFileSync("package.json", "utf8")).scripts;
+  assert.equal(packageScripts["screenshots:readme"], "node scripts/run-readme-screenshots.mjs");
+  assert.doesNotMatch(packageScripts.build, /screenshots:readme/);
+  const before = screenshotState();
+  await assert.rejects(
+    execFileAsync("pnpm", ["run", "screenshots:readme"], {
+      cwd: process.cwd(),
+      env: { ...process.env, README_SCREENSHOT_FORCE_BUILD_FAILURE: "1" },
+      timeout: 10_000
+    }),
+    (error) => {
+      assert.equal(error.killed, false);
+      assert.doesNotMatch(`${error.stdout}\n${error.stderr}`, /Captured and pixel-checked|Vite preview/);
+      return true;
+    }
+  );
+  assert.deepEqual(screenshotState(), before);
+});
