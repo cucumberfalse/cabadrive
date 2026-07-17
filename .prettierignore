@@ -8,6 +8,9 @@ docs_project/
 specs/
 public/screenshots/
 public/assets/
+src/data/manual-sections/
+src/data/manualGuide.ts
+src/data/pandemiaVialSection.ts
 dist/
 coverage/
 playwright-report/

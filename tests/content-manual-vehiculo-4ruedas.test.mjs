@@ -301,7 +301,10 @@ test("manual 4 ruedas previous-next transition prefers exact-start destination b
   assert.notEqual(exactStartIndex, -1);
   assert.notEqual(currentCoverIndex, -1);
   assert.ok(exactStartIndex < currentCoverIndex);
-  assert.match(selectSource, /manualNavigationEntryForDestinationPage\(manualNavigation\.entries, pageNumber, \{ requestedEntry, currentEntry \}\)/);
+  assert.match(
+    selectSource,
+    /manualNavigationEntryForDestinationPage\(\s*manualNavigation\.entries,\s*pageNumber,\s*\{\s*requestedEntry,\s*currentEntry\s*\},?\s*\)/
+  );
   assert.equal(pageNumberIsCoveredByEntry(93, sleepFatigue), true);
   assert.equal(pageNumberIsCoveredByEntry(94, sleepFatigue), true);
   assert.equal(sleepFatigue.startPage, 93);

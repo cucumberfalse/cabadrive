@@ -3541,7 +3541,10 @@ test("Chapter 2 document visuals are explicit source-as-is document examples wit
   assert.match(manualGuideAppSource, /SourceImageCardsBlockView/);
   assert.match(appSource, /data-official-sign-exception=\{officialSignException\?\.kind\}/);
   assert.match(appSource, /data-source-image-exception=\{sourceImageException\?\.kind\}/);
-  assert.match(appSource, /data-russian-overlay-strategy=\{card\.russianOverlayLabels \? "selectable-dom" : undefined\}/);
+  assert.match(
+    appSource,
+    /data-russian-overlay-strategy=\{\s*card\.russianOverlayLabels\s*\?\s*"selectable-dom"\s*:\s*undefined\s*\}/
+  );
   assert.match(stylesSource, /\.manual-source-image-card-grid/);
   assert.match(stylesSource, /\.manual-source-image-overlay-label/);
 });
@@ -3864,7 +3867,10 @@ test("Manual guide UI renders pending section entries without opening fake conte
   assert.notEqual(introductionGroupFallbackIndex, -1, "active group lookup includes introduction fallback");
   assert.ok(sectionGroupPrecedenceIndex < introductionGroupFallbackIndex, "selected manual section takes precedence over stale selected introduction entry");
   const renderManualSectionButtonStart = manualGuideAppSource.indexOf("function renderManualSectionButton");
-  const renderManualSectionButtonEnd = manualGuideAppSource.indexOf("  return (\n    <section className=\"introduction-reader\"");
+  const renderManualSectionButtonEnd = manualGuideAppSource.indexOf(
+    'className="introduction-reader"',
+    renderManualSectionButtonStart
+  );
   assert.notEqual(renderManualSectionButtonStart, -1, "manual section button renderer is present");
   assert.notEqual(renderManualSectionButtonEnd, -1, "manual section button renderer boundary is present");
   const renderManualSectionButtonSource = manualGuideAppSource.slice(renderManualSectionButtonStart, renderManualSectionButtonEnd);
@@ -4766,7 +4772,10 @@ test("ch1 shared trip section covers source pages 41-42 visuals and no Chapter 2
 });
 
 test("Manual guide source-fidelity checker scans the implemented section renderer", () => {
-  assert.match(checkerSource, /sliceSource\(appSource,\s*"function ManualGuideSectionContentView"/);
+  assert.match(
+    checkerSource,
+    /sliceSource\(\s*appSource,\s*"function ManualGuideSectionContentView"/
+  );
   assert.match(manualGuideAppSource, /function ManualGuideSectionContentView/);
   assert.match(manualGuideAppSource, /assetUrl\(block\.assetPath\)/);
 });

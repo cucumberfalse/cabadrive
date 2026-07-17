@@ -75,9 +75,20 @@ project оправдан необходимостью type-aware coverage root/E
      fixture from the real gate.
 
 6. **Repair format-sensitive tests before migration**
-   - Run Prettier as check/dry discovery and identify source-regex assertions
-     affected by whitespace, especially manual/App/source tooling tests named in
-     the spec.
+   - Treat the first 148-file formatter run as rejected discovery: it changed
+     52 governed manual TS paths and cannot be partially staged as the
+     format-only commit.
+   - Read the exact governed TS inventory from the committed manual-content
+     baseline, cross-check it against tracked manual-section files plus
+     `manualGuide.ts`/`pandemiaVialSection.ts`, and add the directory/two exact
+     paths to Prettier ignores. Automated `--file-info` checks must prove every
+     baseline TS entry is ignored; do not update the baseline or hashes.
+   - After verifying the excluded paths contain only this agent's uncommitted
+     formatter output and no staged/pre-format semantic hunk, restore exactly
+     those paths from current semantic `HEAD`. Preserve every other dirty path.
+   - Rerun the full Node suite before editing tests. Classify failures that
+     vanish as protected-byte failures requiring no test change. Repair only
+     remaining source-regex assertions in the five named test files.
    - Make only the minimal format-tolerant change that preserves each semantic
      assertion. Prefer parsing/balanced-source helpers or whitespace-tolerant
      regex over deleting assertions or matching weaker facts.
@@ -85,7 +96,11 @@ project оправдан необходимостью type-aware coverage root/E
      the later ignored revision, with focused tests.
 
 7. **Create the protected format-only revision**
-   - Capture tracked protected-file SHA-256 manifest and pre-format status.
+   - Start only from the clean semantic head after the protected exclusions and
+     source-test repairs are committed. Do not reuse or partially stage the
+     rejected discovery diff.
+   - Capture tracked protected-file SHA-256 manifest, including every baseline
+     governed TS source, and pre-format status.
    - Run the exact `pnpm run format` allowlist once, inspect every changed path,
      and reject/revert only formatter-caused protected changes without touching
      sibling/user work. Run it again and require zero additional diff.
@@ -147,6 +162,7 @@ project оправдан необходимостью type-aware coverage root/E
 | Negative contracts | dedicated `pnpm run verify:quality-negative` | Intentional type/hooks/format defects fail for expected reasons; sentinels removed; positives pass afterward |
 | Config/scope tests | `node --test tests/quality-tooling.test.mjs` | Scripts, exact globs, rule severity, ignores, CI/preflight ordering and budget are fail-closed |
 | Protected bytes | SHA-256 manifests before/after `pnpm run format`; `git diff --name-status` | Governed content/license/screenshots byte-identical; only allowlisted code changed |
+| Governed manual TS | baseline inventory cross-check; Prettier `--file-info` for all 52 TS records; `pnpm run validate:manual-ticket-placement` | Inventory complete, every path ignored, baseline hashes current |
 | Idempotence | second `pnpm run format`; `git diff` comparison | No second-run changes; check passes |
 | Ignore revision | `git cat-file`, `git show --stat --format=fuller <sha>`, representative `git blame --ignore-revs-file` | Exact existing commit; patch is mechanical-only; blame file works |
 | Attribution/content | `pnpm run validate:attribution`; `pnpm run validate:content`; `pnpm run validate:content:quality` | Feature 043 and governed content remain valid without regenerated masking |
@@ -187,6 +203,10 @@ project оправдан необходимостью type-aware coverage root/E
 - If formatting touches protected bytes, discard only the formatter-caused
   protected edit, investigate the scope bug and add a regression before retry;
   never regenerate pins/evidence as the fix.
+- IF-044-003 authorizes one targeted restore of the 52 baseline-derived TS
+  paths only after proof that their diff is uncommitted formatter-only output
+  against current semantic `HEAD`. Any semantic/staged ambiguity blocks whole-
+  file restore and must return to Orchestrator.
 - If source-shape tests fail, preserve their semantic checks in a non-ignored
   commit. A broad test deletion/skip is not an option.
 - If the mechanical diff conflicts with parallel work, Orchestrator coordinates

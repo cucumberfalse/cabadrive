@@ -1,7 +1,8 @@
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
+import { readFileSync, readdirSync } from "node:fs";
 import test from "node:test";
 import { ESLint } from "eslint";
+import { getFileInfo } from "prettier";
 
 const packageJson = JSON.parse(readFileSync(new URL("../package.json", import.meta.url), "utf8"));
 const ci = readFileSync(new URL("../.github/workflows/ci.yml", import.meta.url), "utf8");
@@ -65,8 +66,38 @@ test("formatter defenses exclude governed and attribution artifacts", () => {
     "docs_project/",
     "specs/",
     "public/screenshots/",
+    "src/data/manual-sections/",
+    "src/data/manualGuide.ts",
+    "src/data/pandemiaVialSection.ts",
   ]) {
     assert.match(ignore, new RegExp(`^${protectedPath.replace(/[.*+?^${}()|[\\]\\]/g, "\\$&")}$`, "m"));
+  }
+});
+
+test("Prettier file-info ignores every governed manual TypeScript source", async () => {
+  const baseline = JSON.parse(
+    readFileSync(
+      new URL("../content/manual-ticket-placement/manual-content-baseline.json", import.meta.url),
+      "utf8"
+    )
+  );
+  const canonicalPaths = baseline.protectedSources
+    .map(({ path }) => path)
+    .filter((path) => path.endsWith(".ts"))
+    .sort();
+  const trackedInventory = [
+    ...readdirSync(new URL("../src/data/manual-sections", import.meta.url))
+      .filter((name) => name.endsWith(".ts"))
+      .map((name) => `src/data/manual-sections/${name}`),
+    "src/data/manualGuide.ts",
+    "src/data/pandemiaVialSection.ts",
+  ].sort();
+
+  assert.equal(canonicalPaths.length, 52);
+  assert.deepEqual(canonicalPaths, trackedInventory);
+  for (const path of canonicalPaths) {
+    const info = await getFileInfo(path, { ignorePath: ".prettierignore" });
+    assert.equal(info.ignored, true, `${path} must remain ignored by Prettier file-info`);
   }
 });
 

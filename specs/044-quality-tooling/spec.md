@@ -174,11 +174,26 @@ one timeout completion, one persisted attempt and no duplicate finish effect.
 
 - Use a repository Prettier config whose only intentional style override is
   `printWidth: 100`; other behavior remains the pinned Prettier default.
-- The exact write/check allowlist is:
+- The nominal write/check allowlist is:
   - `src/**/*.{ts,tsx,css}`;
   - `scripts/**/*.mjs`;
   - `tests/**/*.mjs` and `tests/e2e/**/*.ts`;
   - `vite.config.ts`, `playwright.config.ts`, `eslint.config.mjs`.
+- Its effective source scope is that nominal allowlist minus every governed TS
+  path in the committed
+  `content/manual-ticket-placement/manual-content-baseline.json`
+  `protectedSources` array. On the current baseline this means all 50
+  `src/data/manual-sections/*.ts` files plus `src/data/manualGuide.ts` and
+  `src/data/pandemiaVialSection.ts`. `.prettierignore` must therefore include
+  `src/data/manual-sections/**` and the two exact runtime paths. Lint and
+  typecheck still cover them; only formatter write/check excludes their bytes.
+- The protected list is not copied manually into test code. A quality-tooling
+  test reads the committed baseline, selects every `.ts` entry, independently
+  compares it with the tracked `src/data/manual-sections/*.ts` inventory plus
+  the two exact runtime files, and invokes Prettier `--file-info` with the
+  repository ignore file for every resulting path. Every record must report
+  ignored. The existing manual-ticket-placement validator remains the
+  fail-closed authority for a new/missing governed source and its exact hash.
 - Do not add root Markdown/JSON/YAML, `content`, `public`, docs, specs, license
   files, images or generated build output to the formatter command. A
   `.prettierignore` repeats those exclusions explicitly, including
@@ -191,7 +206,8 @@ one timeout completion, one persisted attempt and no duplicate finish effect.
   `--write`, and be removed in `finally`.
 - Before and after the one-time `pnpm run format`, capture a deterministic hash
   manifest of tracked files selected by
-  `git ls-files -- content public/content LICENSE NOTICE licenses docs_project/screens/readme`.
+  `git ls-files -- content public/content LICENSE NOTICE licenses docs_project/screens/readme`
+  plus every governed TS path selected from the manual-content baseline.
   Manifests must be identical. Also record `git status --short` and
   `git diff --name-status` proving formatter changes only the allowlist; never
   refresh content hashes/evidence to conceal an accidental byte change.
@@ -223,6 +239,36 @@ Any source-regex repair discovered only after formatting must be a separate
 non-ignored commit, keep the original tested contract, and receive full unit
 regression; it cannot be folded into the ignored format revision.
 
+The first formatter discovery run is explicitly rejected as a candidate
+format-only revision because it changed governed manual TS and produced
+`Protected manual source files changed` with 462/500 Node tests passing. Since
+those changes remain uncommitted and are known to be Implementation-owned
+formatter output, Implementation may restore only the 52 newly excluded TS
+paths from current semantic `HEAD`, after proving no staged or pre-format
+semantic hunk exists in them. No other dirty file may be restored. Pins,
+baseline and generated evidence must remain byte-identical.
+
+After that targeted restore, rerun the full Node suite before changing tests.
+Failures that disappear were governance/hash checks and require no test edit.
+Only remaining whitespace-sensitive assertions in
+`tests/ai-review-workflow.test.mjs`,
+`tests/content-manual-guide-chapters.test.mjs`,
+`tests/content-manual-vehiculo-4ruedas.test.mjs`,
+`tests/content-pandemia-vial-section.test.mjs` and
+`tests/manual-ticket-placement.test.mjs` may receive a semantic pre-format
+repair. Repairs must use whitespace-tolerant matching, stable semantic
+boundaries or an existing balanced-source helper while retaining the same
+symbols, JSX props/order, safety condition and negative assertions. Do not
+modify protected-source fingerprints, expected hashes, registry facts or
+fail-closed validator expectations.
+
+A fresh formatter run is mandatory from a clean semantic head after those test
+repairs and protected-ignore tests are committed. The rejected 148-file dirty
+discovery diff cannot become T012 by partial staging. Recreate the mechanical
+diff with the corrected effective scope, rerun it twice for idempotence, pass
+manual-ticket placement/full Node validation, and only then create the single
+new format-only commit referenced by `.git-blame-ignore-revs`.
+
 ## CI, Timing And Runtime Contract
 
 - Keep the required job name `baseline-checks`. After setup/install and the
@@ -253,7 +299,9 @@ regression; it cannot be folded into the ignored format revision.
    hook behavior change is present; every exceptional narrow suppression has a
    recorded Architect disposition.
 5. Prettier uses `printWidth: 100`, is idempotent, and changes only the explicit
-   code allowlist. Protected-file hash manifests match exactly before/after.
+   effective code allowlist. All 52 governed manual TS sources are ignored via
+   the canonical baseline-derived guard; protected-file hash manifests match
+   exactly before/after and manual-ticket placement validation passes.
 6. One exact format-only SHA is present in `.git-blame-ignore-revs`; inspection
    proves the ignored revision contains no semantic/config/test-contract/docs/
    process change and no history rewrite was used.

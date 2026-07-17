@@ -93,7 +93,10 @@ test("Introduction navigation is driven by four source Index headings, not raw p
   assert.match(introductionAppSource, /data-testid="manual-guide-nav"/);
   assert.match(introductionAppSource, /data-active-group-id=\{activeGroupId\}/);
   assert.match(introductionAppSource, /data-active-child-id=\{activeChildId\}/);
-  assert.match(introductionAppSource, /data-testid=\{child\.introductionRouteId \? `intro-route-\$\{child\.introductionRouteId\}`/);
+  assert.match(
+    introductionAppSource,
+    /data-testid=\{\s*child\.introductionRouteId\s*\?\s*`intro-route-\$\{child\.introductionRouteId\}`/
+  );
   assert.match(introductionAppSource, /const isActiveSection = Boolean\(sectionEntry && selectedManualSection\?\.id === sectionEntry\.id\)/);
   assert.match(introductionAppSource, /aria-current=\{isActiveChild \|\| isActiveSection \? "page" : undefined\}/);
   assert.match(introductionAppSource, /aria-label=\{child\.labelRu\}/);
@@ -143,9 +146,9 @@ test("Руководство uses full-document hierarchy and hides duplicate le
   assert.match(manualGuideNavigationSource, /"id":\s*"front-matter"[\s\S]*?"status":\s*"active"/);
   assert.match(introductionAppSource, /disabled=\{isDisabled\}/);
   assert.match(introductionAppSource, /data-source-title-es=\{child\.sourceTitleEs\}/);
-  assert.match(appSource, /> Руководство<\/button>/);
-  assert.doesNotMatch(appSource, /> Руководство 4R<\/button>/);
-  assert.doesNotMatch(appSource, /> Введение<\/button>/);
+  assert.match(appSource, />\s*Руководство\s*<\/button>/);
+  assert.doesNotMatch(appSource, />\s*Руководство 4R\s*<\/button>/);
+  assert.doesNotMatch(appSource, />\s*Введение\s*<\/button>/);
   assert.equal((appSource.match(/data-testid="pandemia-nav-entry"/g) ?? []).length, 1, "one user-facing guide destination");
 });
 
@@ -525,7 +528,10 @@ test("Pandemia vial typography uses the shared Introduction article shell while 
   assert.match(prototypeAppSource, /<header className="intro-document-header">[\s\S]*?<h2 id="pandemia-vial-title">/);
   assert.match(prototypeAppSource, /className="intro-document-flow"/);
   assert.match(prototypeAppSource, /"intro-doc-block"/);
-  assert.match(prototypeStylesSource, /\.pandemia-page[\s\S]*?--pandemia-font-family:\s*system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans", "Helvetica Neue", Arial, sans-serif/);
+  assert.match(
+    prototypeStylesSource,
+    /\.pandemia-page[\s\S]*?--pandemia-font-family:\s*system-ui,\s*-apple-system,\s*BlinkMacSystemFont,\s*"Segoe UI",\s*Roboto,\s*"Noto Sans",\s*"Helvetica Neue",\s*Arial,\s*sans-serif/
+  );
   assert.doesNotMatch(prototypeStylesSource, /--pandemia-font-family:\s*"SFNSRounded"/);
   assert.doesNotMatch(prototypeStylesSource, /--pandemia-font-family:[^;]*(?:"SF Compact Rounded"|"SF Pro Rounded"|"Arial Rounded MT Bold"|"Arial Rounded Bold")/);
   assert.doesNotMatch(prototypeStylesSource, /--pandemia-font-family:\s*"Avenir Next"/);

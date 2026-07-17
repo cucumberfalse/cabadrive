@@ -119,8 +119,43 @@
   refresh rule. Automated config inspection must prove both rules are errors
   and must prove compiler-oriented rules such as `set-state-in-effect` and
   `immutability` are not silently enabled in this cycle.
+- [x] T033 Resolve IF-044-003 protected-scope discovery as a bounded current
+  task. Read every `.ts` path from
+  `content/manual-ticket-placement/manual-content-baseline.json` protected
+  sources; independently cross-check it equals all tracked
+  `src/data/manual-sections/*.ts` plus `src/data/manualGuide.ts` and
+  `src/data/pandemiaVialSection.ts` (52 paths on this head). Add fail-closed
+  Prettier exclusions for the directory and two exact files, and automated
+  `prettier --file-info --ignore-path .prettierignore` assertions proving every
+  canonical path is ignored. Do not update the baseline, pins or evidence.
+- [x] T034 Before touching the rejected mechanical diff, prove the 52 newly
+  excluded files have no staged change and differ from current semantic `HEAD`
+  only by the Implementation Agent's formatter run. Then restore exactly those
+  paths from `HEAD`; this disposition authorizes no restore/revert of any other
+  dirty file. Re-run manual-ticket-placement validation and the full Node suite
+  immediately, record the failure delta, and treat disappeared hash/governance
+  failures as fixed without test changes. Any semantic/staged ambiguity returns
+  to Orchestrator rather than using whole-file restore.
+- [x] T035 Repair only the remaining whitespace-sensitive assertions after
+  T034, limited to `tests/ai-review-workflow.test.mjs`,
+  `tests/content-manual-guide-chapters.test.mjs`,
+  `tests/content-manual-vehiculo-4ruedas.test.mjs`,
+  `tests/content-pandemia-vial-section.test.mjs` and
+  `tests/manual-ticket-placement.test.mjs`. Preserve exact semantic symbols,
+  JSX props/order, source-safety boundaries and negative assertions using
+  whitespace-tolerant regex, stable indices or balanced-source helpers. Do not
+  change expected hashes/fingerprints, registry facts, protected validator
+  expectations, skip/delete tests or weaken assertions. Commit these repairs
+  as semantic pre-format work and rerun focused/full Node tests.
+- [ ] T036 Discard the rejected 148-file discovery diff as a format-commit
+  candidate; after T033–T035 land on a clean semantic head, run a completely
+  fresh `pnpm run format`. Capture protected hashes including all 52 governed
+  TS sources, prove zero governed diff and passing manual-ticket placement,
+  rerun format for idempotence plus full Node/quality checks, and only then
+  create the single T012 format-only commit. Never partially stage/reuse the
+  rejected discovery diff or regenerate pins/evidence.
 - [ ] T027 Architect final validation, invoked only by Orchestrator after T001–
-  T026 and T030–T032 appear complete, must inspect the full cycle PR set,
+  T026 and T030–T036 appear complete, must inspect the full cycle PR set,
   format-only commit,
   feedback dispositions, open tasks, architecture, process memory, checks and
   customer intent. Record pass timestamp/effective content head or gap/return
@@ -161,6 +196,10 @@
   `exhaustive-deps` satisfy ТЗ-16; the plugin's evolving compiler-style
   `set-state-in-effect`/`immutability` preset is not enabled because it would
   force unrelated ТЗ-04/11 refactoring without an owner requirement.
+- Formatter scope is the nominal code allowlist minus the baseline-derived
+  governed manual TS inventory. Current effective exclusions are all
+  `src/data/manual-sections/**`, `src/data/manualGuide.ts` and
+  `src/data/pandemiaVialSection.ts`; lint/typecheck still cover these sources.
 
 ## Blockers And Known Issues
 
@@ -197,6 +236,10 @@ disposition. It must not implement unplanned work silently.
 - Hooks preset scope: the current broad plugin preset also enables compiler-
   oriented rules such as `set-state-in-effect` and `immutability`, which exceed
   the explicit ТЗ-16 hooks requirement and can demand unrelated refactoring.
+- IF-044-003: the first allowlisted formatter discovery changed exactly 52
+  governed manual TS sources. `validate:manual-ticket-placement` failed closed
+  with `Protected manual source files changed`; the full Node suite recorded
+  462 passed / 38 failed. Updating protected hashes/evidence is forbidden.
 
 ## Architect Feedback Dispositions
 
@@ -218,6 +261,18 @@ disposition. It must not implement unplanned work silently.
   refactors into this PR. Do not open a separate ticket solely to enable the
   whole preset; later component/timer cycles may reassess individual rules with
   their own intake and tests.
+- IF-044-003 — **accepted as bounded current tasks T033–T036; blocking**. The
+  formatter must exclude the canonical baseline-derived 52 governed TS paths,
+  while lint/typecheck continue to cover them. Because their current dirty
+  changes are uncommitted Implementation-owned formatter output and current
+  semantic `HEAD` contains no changes to those paths, Implementation may restore
+  exactly that computed path set after staged/semantic guards; no other dirty
+  path is authorized. Hash/pin/evidence refresh is explicitly rejected.
+  Re-run tests after restore, repair only remaining formatting-sensitive source
+  assertions in the five named test files without weakening their contracts,
+  commit those repairs semantically, then regenerate the entire mechanical diff
+  from a clean semantic head. The current 148-file discovery diff is not an
+  acceptable partial-staging source for T012.
 
 ## Dead Ends
 
@@ -230,6 +285,10 @@ disposition. It must not implement unplanned work silently.
   script files and feature 043 adds attribution/screenshot tooling. Planning was
   based on current inventory rather than narrowing the lint scope to the old
   estimate.
+- The first format discovery proved that “all `src`” was not a safe formatter
+  scope even though content JSON was excluded: governed TS bytes are themselves
+  sealed by manual-ticket-placement. The validator's failure is authoritative;
+  regenerating its baseline would erase the protection and is rejected.
 
 ## Verification Evidence
 

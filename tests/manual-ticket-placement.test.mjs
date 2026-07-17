@@ -440,7 +440,10 @@ test("validator rejects stale, reordered, duplicate, incomplete, and governance-
 test("runtime source appends tickets after existing page flows and keeps canonical joins", () => {
   const appSource = readFileSync("src/App.tsx", "utf8");
   const runtimeSource = readFileSync("src/data/manualTicketPlacement.ts", "utf8");
-  assert.match(appSource, /<CanonicalStudyTicketBlock questionId=\{ticket\.questionId\} topicTicket=\{ticket\} testIdPrefix="materials-ticket"/u);
+  assert.match(
+    appSource,
+    /<CanonicalStudyTicketBlock\s+questionId=\{ticket\.questionId\}\s+topicTicket=\{ticket\}\s+testIdPrefix="materials-ticket"/u
+  );
   assert.match(appSource, /<ManualTicketAppendix key="intro-road-pandemic" pageId="intro-road-pandemic" \/>/u);
   assert.match(appSource, /<ManualTicketAppendix key=\{section\.id\} pageId=\{section\.id\} \/>/u);
   assert.match(appSource, /<ManualTicketAppendix key=\{content\.sectionId\} pageId=\{content\.sectionId\} \/>/u);
@@ -490,19 +493,31 @@ test("source-conflict notes derive from topic guide and reject divergent duplica
 test("manual source contract passes note-only prop while Materials keeps topicTicket", () => {
   const appSource = readFileSync("src/App.tsx", "utf8");
   assert.match(appSource, /function buildSourceConflictNoteByQuestionId\(topics: TopicGuideTopic\[\]\)/u);
-  assert.match(appSource, /const manualTicketSourceConflictNoteByQuestionId = buildSourceConflictNoteByQuestionId\(data\.topicStudyGuide\.topics\);/u);
+  assert.match(
+    appSource,
+    /const manualTicketSourceConflictNoteByQuestionId\s*=\s*buildSourceConflictNoteByQuestionId\(\s*data\.topicStudyGuide\.topics,?\s*\);/u
+  );
   assert.match(appSource, /throw new Error\(`Divergent sourceConflictNoteRu for ticket \$\{ticket\.questionId\}`\);/u);
-  assert.match(appSource, /const resolvedSourceConflictNoteRu = sourceConflictNoteRu \?\? topicTicket\?\.sourceConflictNoteRu;/u);
+  assert.match(
+    appSource,
+    /const resolvedSourceConflictNoteRu\s*=\s*sourceConflictNoteRu\s*\?\?\s*topicTicket\?\.sourceConflictNoteRu;/u
+  );
 
   const manualCardsStart = appSource.indexOf("const cards = questionIds.map");
   const manualCardsEnd = appSource.indexOf("  return (", manualCardsStart);
   assert.notEqual(manualCardsStart, -1);
   assert.notEqual(manualCardsEnd, -1);
   const manualCardsSource = appSource.slice(manualCardsStart, manualCardsEnd);
-  assert.match(manualCardsSource, /sourceConflictNoteRu=\{manualTicketSourceConflictNoteByQuestionId\.get\(questionId\)\}/u);
+  assert.match(
+    manualCardsSource,
+    /sourceConflictNoteRu=\{\s*manualTicketSourceConflictNoteByQuestionId\.get\(questionId\)\s*\}/u
+  );
   assert.doesNotMatch(manualCardsSource, /topicTicket=/u);
 
-  assert.match(appSource, /<CanonicalStudyTicketBlock questionId=\{ticket\.questionId\} topicTicket=\{ticket\} testIdPrefix="materials-ticket" \/>/u);
+  assert.match(
+    appSource,
+    /<CanonicalStudyTicketBlock\s+questionId=\{ticket\.questionId\}\s+topicTicket=\{ticket\}\s+testIdPrefix="materials-ticket"\s*\/>/u
+  );
 });
 
 test("clean production bundle excludes manual-placement review and audit markers", async () => {

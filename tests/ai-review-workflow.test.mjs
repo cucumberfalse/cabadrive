@@ -27,5 +27,8 @@ test("AI Review gate handles trigger comment permission denial without a stack t
 test("AI Review gate ignores resolved Codex review threads", () => {
   assert.match(gate, /fetchResolvedCodexReviewCommentIds/);
   assert.match(gate, /reviewThreads\(first: 100/);
-  assert.match(gate, /allReviewComments\.filter\(\(comment\) => !resolvedCommentIds\.has\(comment\.id\)\)/);
+  assert.match(
+    gate,
+    /allReviewComments\.filter\(\s*\(comment\)\s*=>\s*!resolvedCommentIds\.has\(comment\.id\),?\s*\)/
+  );
 });
