@@ -57,11 +57,23 @@ export default tseslint.config(
     },
   },
   {
-    files: ["tests/e2e/**/*.ts", "*.config.ts"],
-    extends: [...tseslint.configs.recommended],
+    files: ["tests/e2e/**/*.ts", "vite.config.ts", "playwright.config.ts"],
+    extends: [...tseslint.configs.recommendedTypeChecked],
     languageOptions: {
       globals: globals.node,
       parserOptions: typedParserOptions,
+    },
+  },
+  {
+    files: ["tests/e2e/app.spec.ts"],
+    rules: {
+      // This legacy integration fixture intentionally loads external JSON through JSON.parse.
+      // Keep type-aware control-flow rules enabled while its runtime-sealed data stays `any`.
+      "@typescript-eslint/no-unsafe-argument": "off",
+      "@typescript-eslint/no-unsafe-assignment": "off",
+      "@typescript-eslint/no-unsafe-call": "off",
+      "@typescript-eslint/no-unsafe-member-access": "off",
+      "@typescript-eslint/no-unsafe-return": "off",
     },
   },
 );

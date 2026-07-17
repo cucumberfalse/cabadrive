@@ -309,11 +309,11 @@ async function expectFullWidthSourceImageCard(
   await expect(card).toHaveAttribute("data-display-mode", "full-width");
   await expectRenderedManualImage(card.locator("img"), cardId);
   const metrics = await card.evaluate((element): ManualSourceImageCardMetrics => {
-    const image = element.querySelector("img") as HTMLImageElement | null;
-    const figure = element.querySelector("figure") as HTMLElement | null;
-    const grid = element.closest(".manual-source-image-card-grid") as HTMLElement | null;
-    const section = element.closest(".manual-source-image-cards") as HTMLElement | null;
-    const guideSection = element.closest(".manual-guide-section") as HTMLElement | null;
+    const image = element.querySelector<HTMLImageElement>("img");
+    const figure = element.querySelector<HTMLElement>("figure");
+    const grid = element.closest<HTMLElement>(".manual-source-image-card-grid");
+    const section = element.closest<HTMLElement>(".manual-source-image-cards");
+    const guideSection = element.closest<HTMLElement>(".manual-guide-section");
     const cardBody = element.querySelector("p") as HTMLElement | null;
     const documentBodySample = guideSection?.querySelector(
       ".intro-doc-lead, .intro-doc-list li, .intro-doc-block",
@@ -1001,7 +1001,7 @@ test("learning flow renders category B image and records a mistake", async ({ pa
   await expect.poll(() => storedAnswerCount(page)).toBe(3);
 });
 
-test("overlay data loads with full current coverage and question-specific reused-image entries", async () => {
+test("overlay data loads with full current coverage and question-specific reused-image entries", () => {
   const imageBackedQuestions = questions.filter((question: { image?: unknown }) => question.image);
   expect(imageOverlays.overlays).toHaveLength(imageBackedQuestions.length);
   expect(
@@ -1766,7 +1766,7 @@ test("non-manual startup defers the manual corpus chunk until the manual view op
   await page.goto("/?legacyManual=1");
   await expect(page.getByRole("heading", { name: manualManifest.titleRu })).toBeVisible();
   await expect(page.getByTestId("manual-page-detail")).toContainText("14 / 200");
-  await expect(manualChunkRequests).toHaveLength(1);
+  expect(manualChunkRequests).toHaveLength(1);
   expect(externalRequests).toEqual([]);
   expect(pdfRequests).toEqual([]);
 });
@@ -5912,10 +5912,8 @@ test("manual route navigation resets stale window scroll on desktop", async ({ p
   await expect(section).toHaveAttribute("data-manual-section-id", "ch3-speed");
 
   const scrollOwnerProbe = await reader.evaluate((root) => {
-    const content = root.querySelector(
-      '[data-testid="manual-guide-content"]',
-    ) as HTMLElement | null;
-    const nav = root.querySelector('[data-testid="manual-guide-nav"]') as HTMLElement | null;
+    const content = root.querySelector<HTMLElement>('[data-testid="manual-guide-content"]');
+    const nav = root.querySelector<HTMLElement>('[data-testid="manual-guide-nav"]');
     return {
       windowScrollY: window.scrollY,
       contentOverflowY: content ? window.getComputedStyle(content).overflowY : null,
@@ -6326,8 +6324,10 @@ test("primary source reader adapts between compact and expanded widths without r
   const compactSearchInput = page.getByTestId("source-search-input");
   await compactSearchInput.evaluate((input) => {
     const searchInput = input as HTMLInputElement;
-    const valueSetter = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, "value")?.set;
-    valueSetter?.call(searchInput, "licencia");
+    Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, "value")?.set?.call(
+      searchInput,
+      "licencia",
+    );
     searchInput.dispatchEvent(new Event("input", { bubbles: true }));
   });
   await expect(page.getByTestId("source-list-pane")).toBeVisible();
@@ -7317,7 +7317,7 @@ test("Manual guide full-width source image cards stay readable and avoid upscali
       expectedHeight: number;
     }> = [];
     for (const [id, size] of expected) {
-      const image = document.querySelector(`[data-card-id="${id}"] img`) as HTMLImageElement | null;
+      const image = document.querySelector<HTMLImageElement>(`[data-card-id="${id}"] img`);
       if (!image) throw new Error(`${id} image is missing`);
       const rect = image.getBoundingClientRect();
       results.push({
@@ -7487,12 +7487,12 @@ test("Manual guide full-width source image cards stay readable and avoid upscali
       if (maxX < minX || maxY < minY) return null;
       return { width: maxX - minX + 1, height: maxY - minY + 1 };
     }
-    const focusedImage = document.querySelector(
+    const focusedImage = document.querySelector<HTMLImageElement>(
       '[data-card-id="app4-regulatory-no-avanzar-source-card"] img',
-    ) as HTMLImageElement | null;
-    const sheetImage = document.querySelector(
+    );
+    const sheetImage = document.querySelector<HTMLImageElement>(
       '[data-card-id="app4-regulatory-page-185-source-card"] img',
-    ) as HTMLImageElement | null;
+    );
     if (!focusedImage || !sheetImage)
       throw new Error("NO AVANZAR focused or overview image is missing");
     const focusedRect = focusedImage.getBoundingClientRect();

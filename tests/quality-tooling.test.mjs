@@ -1,19 +1,46 @@
 import assert from "node:assert/strict";
-import { readFileSync, readdirSync } from "node:fs";
+import { spawn, spawnSync } from "node:child_process";
+import { once } from "node:events";
+import { existsSync, mkdtempSync, readFileSync, readdirSync, rmSync, writeFileSync } from "node:fs";
+import { tmpdir } from "node:os";
+import path from "node:path";
 import test from "node:test";
+import { setTimeout as delay } from "node:timers/promises";
 import { ESLint } from "eslint";
 import { getFileInfo } from "prettier";
 
+const root = new URL("..", import.meta.url).pathname;
 const packageJson = JSON.parse(readFileSync(new URL("../package.json", import.meta.url), "utf8"));
 const ci = readFileSync(new URL("../.github/workflows/ci.yml", import.meta.url), "utf8");
+const eslintConfig = readFileSync(new URL("../eslint.config.mjs", import.meta.url), "utf8");
+const qualitySentinels = [
+  "src/__quality_typecheck_sentinel.ts",
+  "src/__quality_hooks_sentinel.tsx",
+  "scripts/__quality_format_sentinel.mjs",
+];
 
 test("quality scripts use fail-closed explicit allowlists", () => {
   assert.equal(packageJson.scripts.typecheck, "tsc --noEmit");
-  assert.equal(packageJson.scripts.lint.startsWith("eslint --max-warnings 0 "), true);
-  assert.doesNotMatch(packageJson.scripts.lint, /(?:^|\s)\.(?:\s|$)/);
-  assert.equal(packageJson.scripts.format.startsWith("prettier --write "), true);
-  assert.equal(packageJson.scripts["format:check"].startsWith("prettier --check "), true);
-  assert.doesNotMatch(packageJson.scripts.format, /(?:^|\s)\.(?:\s|$)/);
+  const lintTargets =
+    '"src/**/*.{ts,tsx}" "scripts/**/*.mjs" "tests/**/*.mjs" "tests/e2e/**/*.ts" "vite.config.ts" "playwright.config.ts" "eslint.config.mjs"';
+  const formatTargets =
+    '"src/**/*.{ts,tsx,css}" "scripts/**/*.mjs" "tests/**/*.mjs" "tests/e2e/**/*.ts" "vite.config.ts" "playwright.config.ts" "eslint.config.mjs"';
+  assert.equal(packageJson.scripts.lint, `eslint --max-warnings 0 ${lintTargets}`);
+  assert.equal(packageJson.scripts.format, `prettier --write ${formatTargets}`);
+  assert.equal(packageJson.scripts["format:check"], `prettier --check ${formatTargets}`);
+  for (const command of [
+    packageJson.scripts.lint,
+    packageJson.scripts.format,
+    packageJson.scripts["format:check"],
+  ]) {
+    assert.doesNotMatch(command, /(?:^|\s)\.(?:\s|$)/);
+    assert.doesNotMatch(command, /\*\.config\.ts/);
+  }
+  assert.match(
+    eslintConfig,
+    /files:\s*\["tests\/e2e\/\*\*\/\*\.ts", "vite\.config\.ts", "playwright\.config\.ts"\]/,
+  );
+  assert.doesNotMatch(eslintConfig, /"\*\.config\.ts"/);
   assert.equal(packageJson.scripts["quality:fast"], "pnpm run typecheck && pnpm run lint");
   assert.equal(
     packageJson.scripts["verify:quality-negative"],
@@ -54,7 +81,96 @@ test("CI keeps required identity and runs cheap quality gates before tests and b
     cursor = next;
   }
   assert.match(ci, /QUALITY_FAST_BUDGET_SECONDS: "60"/);
+  assert.match(
+    ci,
+    /QUALITY_SOURCE_HEAD:\s*\$\{\{ github\.event\.pull_request\.head\.sha \|\| github\.sha \}\}/,
+  );
+  assert.match(ci, /\[\[ ! "\$QUALITY_SOURCE_HEAD" =~ \^\[0-9a-f\]\{40\}\$ \]\]/);
+  assert.match(
+    ci,
+    /quality:fast completed in \$\{elapsed\}s \(budget \$\{QUALITY_FAST_BUDGET_SECONDS\}s, source \$\{QUALITY_SOURCE_HEAD\}\)/,
+  );
   assert.match(ci, /elapsed > QUALITY_FAST_BUDGET_SECONDS/);
+});
+
+async function waitForFile(file, child) {
+  const deadline = Date.now() + 20_000;
+  while (Date.now() < deadline) {
+    if (existsSync(file)) return;
+    if (child.exitCode !== null || child.signalCode !== null) {
+      throw new Error(
+        `quality helper exited before readiness: ${child.exitCode}/${child.signalCode}`,
+      );
+    }
+    await delay(25);
+  }
+  throw new Error(`timed out waiting for quality helper readiness marker: ${file}`);
+}
+
+test("negative quality helper cleans sentinels and preserves SIGINT/SIGTERM semantics", async () => {
+  for (const signal of ["SIGINT", "SIGTERM"]) {
+    const tempDirectory = mkdtempSync(path.join(tmpdir(), "cabadrive-quality-signal-"));
+    const readyFile = path.join(tempDirectory, "ready");
+    const child = spawn(process.execPath, ["scripts/verify-quality-negative.mjs"], {
+      cwd: root,
+      env: {
+        ...process.env,
+        QUALITY_NEGATIVE_SIGNAL_READY_FILE: readyFile,
+        QUALITY_NEGATIVE_SIGNAL_PAUSE_MS: "30000",
+      },
+      stdio: ["ignore", "pipe", "pipe"],
+    });
+    let output = "";
+    child.stdout.on("data", (chunk) => {
+      output += chunk;
+    });
+    child.stderr.on("data", (chunk) => {
+      output += chunk;
+    });
+
+    try {
+      await waitForFile(readyFile, child);
+      assert.equal(child.kill(signal), true);
+      const [code, terminatingSignal] = await once(child, "exit");
+      assert.equal(code, null, output);
+      assert.equal(terminatingSignal, signal, output);
+      for (const sentinel of qualitySentinels) {
+        assert.equal(
+          existsSync(path.join(root, sentinel)),
+          false,
+          `${sentinel} survived ${signal}`,
+        );
+      }
+
+      const rerun = spawnSync(process.execPath, ["scripts/verify-quality-negative.mjs"], {
+        cwd: root,
+        encoding: "utf8",
+      });
+      assert.equal(rerun.status, 0, `${rerun.stdout}\n${rerun.stderr}`);
+    } finally {
+      if (child.exitCode === null && child.signalCode === null) child.kill("SIGKILL");
+      rmSync(tempDirectory, { force: true, recursive: true });
+    }
+  }
+});
+
+test("negative quality helper refuses and preserves a stale sentinel", () => {
+  const staleSentinel = path.join(root, qualitySentinels[0]);
+  writeFileSync(staleSentinel, "user-owned stale sentinel\n");
+  try {
+    const result = spawnSync(process.execPath, ["scripts/verify-quality-negative.mjs"], {
+      cwd: root,
+      encoding: "utf8",
+    });
+    assert.notEqual(result.status, 0);
+    assert.match(
+      `${result.stdout}\n${result.stderr}`,
+      /Refusing to overwrite existing quality sentinel/,
+    );
+    assert.equal(readFileSync(staleSentinel, "utf8"), "user-owned stale sentinel\n");
+  } finally {
+    rmSync(staleSentinel, { force: true });
+  }
 });
 
 test("formatter defenses exclude governed and attribution artifacts", () => {
@@ -129,5 +245,7 @@ test("representative files receive the intended flat-config profiles", async () 
   for (const config of [e2e, vite]) {
     assert.match(config.languageOptions.parser.meta.name, /typescript-eslint/);
     assert.equal(config.rules["react-hooks/rules-of-hooks"], undefined);
+    assert.equal(config.rules["@typescript-eslint/await-thenable"][0], 2);
+    assert.equal(config.rules["@typescript-eslint/no-floating-promises"][0], 2);
   }
 });

@@ -58,12 +58,17 @@ jobs:
       - name: Run typecheck and lint with budget
         env:
           QUALITY_FAST_BUDGET_SECONDS: "60"
+          QUALITY_SOURCE_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
         shell: bash
         run: |
+          if [[ ! "$QUALITY_SOURCE_HEAD" =~ ^[0-9a-f]{40}$ ]]; then
+            echo "quality:fast source head is not a full SHA: $QUALITY_SOURCE_HEAD" >&2
+            exit 1
+          fi
           start=$(date +%s)
           pnpm run quality:fast
           elapsed=$(($(date +%s) - start))
-          echo "quality:fast completed in ${elapsed}s (budget ${QUALITY_FAST_BUDGET_SECONDS}s)"
+          echo "quality:fast completed in ${elapsed}s (budget ${QUALITY_FAST_BUDGET_SECONDS}s, source ${QUALITY_SOURCE_HEAD})"
           if (( elapsed > QUALITY_FAST_BUDGET_SECONDS )); then
             echo "quality:fast exceeded the ${QUALITY_FAST_BUDGET_SECONDS}s budget" >&2
             exit 1
