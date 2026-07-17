@@ -116,7 +116,7 @@
   check only while that same child remains alive. Preserve T024's prompt early-
   exit/no-unsettled-await behavior and strict-port failure; do not introduce a
   general server manager or dependency.
-- [ ] T027 Add a deterministic occupied-port regression for T026: start an
+- [x] T027 Add a deterministic occupied-port regression for T026: start an
   unrelated local server that returns HTTP 200 on the configured capture port,
   run the screenshot helper under a bounded timeout, and prove it exits nonzero
   without starting capture or changing any committed screenshot hash/mtime.
@@ -143,7 +143,7 @@
   building, that bypass must be explicit and unavailable from the documented
   default command. Preserve T024/T026 early-exit and occupied-port behavior;
   add no dependency or general build-cache/fingerprint system.
-- [ ] T029 Add fail-closed stale-dist verification for T028. Seed `dist` with an
+- [x] T029 Add fail-closed stale-dist verification for T028. Seed `dist` with an
   identifiable unrelated/old UI marker and prove: (1) a forced failed build
   makes the public screenshot command exit nonzero under a bounded timeout,
   never starts preview/capture, and leaves committed screenshot hashes/mtimes
@@ -180,6 +180,20 @@
   bounded-pixel/black-region, exact committed-hash, README local/GitHub-render,
   full build/preflight/current-head checks and fresh thread-aware review before
   resolving the P2.
+- [ ] T032 Implementation Agent perform an evidence-only task-state
+  reconciliation for process P2 `PRRT_kwDOSX65IM6Rv0cZ` / comment
+  `3602709270`. Preserve the now-complete T027/T029 checkboxes and update only
+  stale process-memory sentences that still say those tasks await fresh review
+  or thread disposition: point them to exact no-findings reviewed evidence head
+  `9d2afe9da3e2dba830709a53ea64f5ac20423aba`, summary comment `5002053787`,
+  and the recorded resolution of all six threads. Record pre-reconciliation
+  current head `084c2d293b79c32a3b20e2841e07223ba5b02efe`, prove the resulting diff is
+  feature-043 process memory only, run `git diff --check` and feature-memory/
+  current-PR-head read-only guards, then commit/push only this evidence update
+  as assigned. Do not change product code, tooling, tests, screenshots, README,
+  acceptance evidence, or previously recorded command outcomes. Orchestrator
+  obtains current-head process review/resolves or outdates this P2 before T032
+  and final validation can close.
 
 ## Decisions
 
@@ -303,6 +317,18 @@ implement out-of-scope improvements.
   despite stale `dist`, no script-graph recursion, preservation of all prior
   capture regressions, full gates and fresh review. This bootstrap repair is
   required for ТЗ-22's reproducible public screenshot contract.
+- Process P2 `PRRT_kwDOSX65IM6Rv0cZ` / comment `3602709270` — **accepted as
+  evidence-only reconciliation task T032; blocking until its current-head
+  process review is disposed**. T027 and T029 themselves are complete and are
+  checked above: their implementation evidence, publication/GFM checks, bounded
+  capture regressions and full gates are recorded, and exact-head no-findings
+  review on `9d2afe9da3e2dba830709a53ea64f5ac20423aba` rechecked all five behavioral
+  P2 repairs while all six threads were resolved. No behavioral requirement
+  remains unmet. The defect is limited to older narrative lines that still call
+  the already-satisfied review/thread gates pending. T032 may reconcile only
+  those feature-043 process statements and task state; any product/tool/test/
+  screenshot change would invalidate the evidence-only disposition and require
+  renewed role validation.
 
 ## Dead Ends
 
@@ -512,9 +538,11 @@ implement out-of-scope improvements.
   image/png`; remote lengths were 280229 (`learn`), 137098 (`materials`), and
   145885 (`about`) bytes, and downloaded hashes exactly matched the committed
   SHA-256 identities above. `gh pr view 208` reported the same head, `OPEN`,
-  ready and `MERGEABLE`; required checks and fresh AI review were in progress.
-  The Implementation portion of T027 is complete; T027 remains open for the
-  Orchestrator-owned fresh thread-aware review and thread disposition.
+  ready and `MERGEABLE`; required checks and fresh AI review were in progress
+  at that historical publication point. Exact-head no-findings summary
+  [5002053787](https://github.com/cucumberfalse/cabadrive/pull/208#issuecomment-5002053787)
+  later rechecked T027 on `9d2afe9da3e2dba830709a53ea64f5ac20423aba`,
+  and all six review threads were resolved; T027 is complete.
 - Final second-review-fix publication evidence (2026-07-16): stabilized
   candidate effective content commit
   `431d96846352c77f82009f1044fcead728f7891c` supersedes `0457ddc...` and was
@@ -524,8 +552,8 @@ implement out-of-scope improvements.
   `OPEN`, ready and `MERGEABLE`; required checks were running. Final local stress
   evidence is three consecutive independent comparisons in approximately six
   seconds each, focused 5/5, full 494/494, attribution validation and diff check
-  passing. T027 remains open only for fresh Orchestrator-owned review/thread
-  disposition.
+  passing. The later exact no-findings review on `9d2afe9...` and resolved-six
+  evidence recorded in Review Evidence close T027's review/thread gate.
 - Third review-fix local evidence (2026-07-16): the public
   `pnpm run screenshots:readme` command now invokes the dedicated build-first
   wrapper, which completes `pnpm run build` before the lower-level capture
@@ -551,8 +579,9 @@ implement out-of-scope improvements.
   `learn.png` `c9ea5089ffe789e1592ab053758db9186e7d9beb77c77e41744571dc45051e09`,
   `materials.png` `f59ac0f61e8bc0613965b8843e900a98a856234763ab75c5fd1c355c12323943`,
   and `about.png` `e10c3d0e5e4d85d684c2b0548fa742db75e269b859bfd861fe32d953b72a5d99`.
-  The Implementation portion of T029 is complete; T029 remains open for the
-  required fresh Orchestrator-owned thread-aware review and thread disposition.
+  Exact-head no-findings summary 5002053787 later rechecked the complete
+  screenshot pipeline on `9d2afe9...`, with all six threads resolved; T029 is
+  complete and no longer awaits review/thread disposition.
 - Third review-fix publication evidence (2026-07-16): candidate effective
   content commit `2d8ba7383ce708a50df01e0c6218ab662f2ce500` was pushed to
   PR #208. GitHub GFM returned all three expected repository-relative image
@@ -604,6 +633,19 @@ implement out-of-scope improvements.
   the committed identities above. `gh pr view 208` reported this exact head,
   `OPEN`, ready and `MERGEABLE`; baseline, OSV, guard and Docker checks passed,
   while the fresh AI Review remained in progress.
+- T032 evidence-only reconciliation (2026-07-17): pre-reconciliation current
+  head was `084c2d293b79c32a3b20e2841e07223ba5b02efe`. The Implementation
+  portion updates only feature-043 process memory: it preserves completed T027
+  and T029, replaces their stale pending-review narratives with the exact
+  no-findings review on `9d2afe9da3e2dba830709a53ea64f5ac20423aba`, summary
+  5002053787, and resolved-six evidence, without changing any previously
+  recorded product, command or acceptance outcome. `git diff --check` passed;
+  the worktree feature-memory guard passed because no product path changed; and
+  the current-PR-head guard matched `084c2d293b79c32a3b20e2841e07223ba5b02efe`,
+  `OPEN`, ready and `MERGEABLE`, with baseline, OSV, guard and Docker successful
+  and AI Review failed only on the accepted T032 process P2. The Implementation
+  portion of T032 is complete; T032 remains open only for current-head process
+  review and resolution/outdating of its P2 thread.
 - Isolated Docker smoke: port `5187` had no listener; with
   `COMPOSE_PROJECT_NAME=cabadrive-043-license` and
   `CABADRIVE_HOST_PORT=5187`, `make build` and `make up` passed, HTTP returned
@@ -628,13 +670,14 @@ implement out-of-scope improvements.
   an unrelated HTTP 200 server could satisfy readiness before the spawned Vite
   child established ownership of the strict port. Architect accepted it as
   T026–T027; the bounded causal-readiness fix and local regression evidence are
-  recorded above, while fresh current-head review remains Orchestrator-owned.
+  recorded above. Exact-head no-findings summary 5002053787 rechecked this fix
+  on `9d2afe9...`; all six threads were resolved and T027 is complete.
 - Review Agent then raised P2 `PRRT_kwDOSX65IM6RoEks` / comment `3599810286`:
   the public screenshot command could capture an existing stale `dist` without
   proving a current-source build. Architect accepted it as T028–T029. The
   build-first public wrapper, fail-closed stale-dist verifier and local evidence
-  are recorded above; fresh current-head review and thread disposition remain
-  Orchestrator-owned.
+  are recorded above. Exact-head no-findings summary 5002053787 rechecked this
+  pipeline on `9d2afe9...`; all six threads were resolved and T029 is complete.
 - Review Agent then raised P2 `PRRT_kwDOSX65IM6Rpzit` / comment `3600452108`:
   full attribution validation before capture created a missing/corrupt-PNG
   bootstrap cycle. Architect accepted it as T030–T031. The non-recursive SPA
@@ -655,12 +698,17 @@ implement out-of-scope improvements.
   `baseline-checks`, `osv-scan`, `guard`, and `docker-validation` all completed
   successfully; PR #208 was open, ready and GitHub `MERGEABLE`. The effective
   content head remains `190cbb8f9de6e2f1341b774b478e546f350aacee`.
+- Process Review Agent then raised P2 `PRRT_kwDOSX65IM6Rv0cZ` / comment
+  `3602709270`: T027/T029 checkboxes were complete but older narrative still
+  called their satisfied review gates pending. Architect accepted the evidence-
+  only reconciliation as T032. Its Implementation portion is recorded above;
+  current-head process review and thread resolution/outdating remain open.
 
 ## Cycle PR Set
 
 | Purpose | Branch | PR | Base | Effective/current head | Status | Included in final validation |
 |---|---|---|---|---|---|---|
-| License, attribution, public docs, About UI, screenshots and tests | `codex/043-license-attribution` | [#208](https://github.com/cucumberfalse/cabadrive/pull/208) | `ca5b5277195cd25d23b25f611dd5a3ac24d54586` | effective content head `190cbb8f9de6e2f1341b774b478e546f350aacee`; exact no-findings reviewed evidence head `9d2afe9da3e2dba830709a53ea64f5ac20423aba`; final review-recording evidence-only head pending | open, ready, GitHub `MERGEABLE` on reviewed head; all required checks green and all six threads resolved | yes |
+| License, attribution, public docs, About UI, screenshots and tests | `codex/043-license-attribution` | [#208](https://github.com/cucumberfalse/cabadrive/pull/208) | `ca5b5277195cd25d23b25f611dd5a3ac24d54586` | effective content head `190cbb8f9de6e2f1341b774b478e546f350aacee`; exact no-findings reviewed evidence head `9d2afe9da3e2dba830709a53ea64f5ac20423aba`; pre-reconciliation evidence-only head `084c2d293b79c32a3b20e2841e07223ba5b02efe`; T032 evidence-only head pending | open, ready, GitHub `MERGEABLE`; T027/T029 complete, T032 current-head process review/thread disposition pending | yes |
 
 ## Final Architect Validation Notes
 
