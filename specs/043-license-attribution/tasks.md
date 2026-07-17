@@ -76,7 +76,7 @@
 - [x] T020 Architect perform final validation of the complete cycle PR set and
   effective content head, record pass/timestamp/full SHA only when all tasks and
   feedback dispositions are closed, and increment return count for any gap.
-- [ ] T021 Analyst final validation may run only after T020 passes and must
+- [x] T021 Analyst final validation may run only after T020 passes and must
   validate customer intent against the same effective content head. Any Analyst
   gap returns to Architect disposition before follow-up work.
 - [ ] T022 Orchestrator run the current-PR-head/effective-content-head guard,
@@ -658,6 +658,15 @@ implement out-of-scope improvements.
   UI/styles/version, attribution/screenshot tooling, focused Node/E2E tests,
   three screenshots, the three assigned durable docs, and feature 043 memory.
   CHANGELOG and `#/about` routing remain intentionally out of scope.
+- Final-validation evidence-only handoff: effective content head
+  `190cbb8f9de6e2f1341b774b478e546f350aacee`; Architect passed at
+  `2026-07-17T14:28:36Z`; Analyst passed at `2026-07-17T14:34:44Z` against the
+  same effective head. The current-PR-head read-only guard on parent/current
+  `0727cf41d3022cc0659048a96cd41609a17c57de` confirmed that only role-owned
+  `feature-request.md` and `tasks.md` changed after the effective head, the
+  worktree was clean, `git diff --check` passed, PR #208 was `OPEN`, ready and
+  `MERGEABLE`, and 7/7 review threads were resolved. Checks on the successor
+  evidence-only head remain the final external Orchestrator gate under T022.
 
 ## Review Evidence
 
