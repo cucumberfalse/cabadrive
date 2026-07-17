@@ -1,5 +1,32 @@
-import { BookMarked, BookOpen, CheckCircle2, ChevronLeft, ChevronRight, ClipboardList, ExternalLink, FileText, Flag, Image as ImageIcon, Info, ListTree, MapPinned, RotateCcw, Search, Timer, XCircle } from "lucide-react";
-import { useCallback, useEffect, useMemo, useRef, useState, type CSSProperties, type KeyboardEvent, type ReactNode } from "react";
+import {
+  BookMarked,
+  BookOpen,
+  CheckCircle2,
+  ChevronLeft,
+  ChevronRight,
+  ClipboardList,
+  ExternalLink,
+  FileText,
+  Flag,
+  Image as ImageIcon,
+  Info,
+  ListTree,
+  MapPinned,
+  RotateCcw,
+  Search,
+  Timer,
+  XCircle,
+} from "lucide-react";
+import {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  type CSSProperties,
+  type KeyboardEvent,
+  type ReactNode,
+} from "react";
 import packageJson from "../package.json";
 import {
   data,
@@ -16,9 +43,18 @@ import {
   type ProcessGuideSection,
   type Question,
   type TopicGuideTicket,
-  type TopicGuideTopic
+  type TopicGuideTopic,
 } from "./data/content";
-import type { ManualLayoutBlock, ManualNavigationEntry, ManualLayoutManifest, ManualPage, ManualPageBounds, ManualPageLayout, ManualRuManifest, ManualNavigationManifest } from "./data/manual4Ruedas";
+import type {
+  ManualLayoutBlock,
+  ManualNavigationEntry,
+  ManualLayoutManifest,
+  ManualPage,
+  ManualPageBounds,
+  ManualPageLayout,
+  ManualRuManifest,
+  ManualNavigationManifest,
+} from "./data/manual4Ruedas";
 import {
   introductionArticleSections,
   introductionNavigation,
@@ -28,7 +64,7 @@ import {
   type IntroductionNavigationEntry,
   type IntroductionRouteId,
   type IntroductionSourceArtworkAsset,
-  type PandemiaVialGeometry
+  type PandemiaVialGeometry,
 } from "./data/pandemiaVialSection";
 import {
   manualGuideNavigation,
@@ -36,18 +72,45 @@ import {
   manualGuideSectionById,
   manualGuideSectionContentById,
   type ManualGuideSectionContent,
-  type ManualGuideSectionEntry
+  type ManualGuideSectionEntry,
 } from "./data/manualGuide";
-import { manualSignEntriesForSection, type ManualSignEntry } from "./data/manual-signs/app4SignCatalog";
+import {
+  manualSignEntriesForSection,
+  type ManualSignEntry,
+} from "./data/manual-signs/app4SignCatalog";
 import { manualTicketQuestionIdsByPage } from "./data/manualTicketPlacement";
-import { loadPrimarySources, type PrimarySourceChunk, type PrimarySourceCorpus, type PrimarySourceDocument } from "./data/primarySources";
+import {
+  loadPrimarySources,
+  type PrimarySourceChunk,
+  type PrimarySourceCorpus,
+  type PrimarySourceDocument,
+} from "./data/primarySources";
 import { DifficultyIndicator } from "./difficulty";
-import { formatDuration, isPassing, learningTicketTargetSeconds, mistakesFromHistory, scorePercent, selectExamSet, shuffleQuestions } from "./domain";
+import {
+  formatDuration,
+  isPassing,
+  learningTicketTargetSeconds,
+  mistakesFromHistory,
+  scorePercent,
+  selectExamSet,
+  shuffleQuestions,
+} from "./domain";
 import { exactTextStatusKind, exactTextStatusNote } from "./primarySourceStatus";
 import { clearProgress, loadProgress, saveProgress, type StoredProgress } from "./storage";
 import { searchQuestions, searchVocabulary } from "./search";
 
-type View = "learn" | "exam" | "mistakes" | "vocabulary" | "guide" | "materials" | "process" | "sources" | "manual" | "pandemia" | "about";
+type View =
+  | "learn"
+  | "exam"
+  | "mistakes"
+  | "vocabulary"
+  | "guide"
+  | "materials"
+  | "process"
+  | "sources"
+  | "manual"
+  | "pandemia"
+  | "about";
 type SourceViewMode = "simple" | "full" | "spanish";
 type SourceFilterOption = {
   value: string;
@@ -103,7 +166,7 @@ type QuestionAttemptState = {
 const emptyAttemptState: QuestionAttemptState = {
   selectedAnswerId: undefined,
   showTranslation: false,
-  showExplanation: false
+  showExplanation: false,
 };
 
 function topicLabel(topic: string) {
@@ -117,7 +180,7 @@ function topicLabel(topic: string) {
     signs: "Знаки",
     "vehicle-condition": "Техсостояние",
     "urban-mobility": "Город",
-    general: "Общее"
+    general: "Общее",
   };
   return labels[topic] || topic;
 }
@@ -145,7 +208,8 @@ function sourceStatusLabel(status: string | undefined) {
 
 function processSourceStatusLabel(status: string) {
   if (status === "checked_current") return "проверен как текущий";
-  if (status === "checked_current_with_historico_url") return "проверен как текущий; URL может вести через gcaba_historico";
+  if (status === "checked_current_with_historico_url")
+    return "проверен как текущий; URL может вести через gcaba_historico";
   if (status === "volatile_check_required") return "волатильные данные: проверить перед действием";
   return "статус требует проверки";
 }
@@ -196,7 +260,7 @@ function primarySourceCategoryLabel(category: string) {
     "road-safety": "Безопасность",
     insurance: "Страхование",
     "insurance-legal-duties": "Страхование и обязанности",
-    "legal-duties": "Правовые обязанности"
+    "legal-duties": "Правовые обязанности",
   };
   return labels[category] || category;
 }
@@ -217,7 +281,7 @@ function primarySourceTypeLabel(sourceType: string) {
     national_law_updated_text: "Национальный закон",
     national_road_safety_official_note: "Официальная заметка ANSV",
     national_service_current_material: "Текущий национальный сервис",
-    national_service_topic_current_material: "Текущий национальный справочный материал"
+    national_service_topic_current_material: "Текущий национальный справочный материал",
   };
   if (labels[sourceType]) return labels[sourceType];
   if (sourceType.includes("gcba")) return "GCBA";
@@ -265,26 +329,37 @@ function AboutView() {
           <p className="eyebrow">Cabadrive · версия {packageJson.version}</p>
           <h2 id="about-title">О приложении</h2>
           <p>
-            Локальный тренажёр для подготовки русскоязычных водителей к теоретическому экзамену категории B в CABA.
+            Локальный тренажёр для подготовки русскоязычных водителей к теоретическому экзамену
+            категории B в CABA.
           </p>
         </div>
-        <span className="about-version" aria-label={`Версия приложения ${packageJson.version}`}>v{packageJson.version}</span>
+        <span className="about-version" aria-label={`Версия приложения ${packageJson.version}`}>
+          v{packageJson.version}
+        </span>
       </header>
 
       <div className="about-grid">
         <article className="about-card">
           <h3>Статус вопросов</h3>
-          <p><strong>{data.contentMode.mode}</strong></p>
-          <p>Текущий набор — неофициальная B-практика и не является официальной или полной базой вопросов GCBA.</p>
+          <p>
+            <strong>{data.contentMode.mode}</strong>
+          </p>
+          <p>
+            Текущий набор — неофициальная B-практика и не является официальной или полной базой
+            вопросов GCBA.
+          </p>
           <ul>
-            {data.contentMode.notes.map((note) => <li key={note}>{note}</li>)}
+            {data.contentMode.notes.map((note) => (
+              <li key={note}>{note}</li>
+            ))}
           </ul>
         </article>
 
         <article className="about-card">
           <h3>Источник practice bank</h3>
           <p>
-            <strong>bandinopla/simulador-test-de-conducir</strong> · Apache-2.0 · category B/CABA fallback.
+            <strong>bandinopla/simulador-test-de-conducir</strong> · Apache-2.0 · category B/CABA
+            fallback.
           </p>
           <p>{upstream?.retrievalNote}</p>
           {upstream && (
@@ -297,14 +372,20 @@ function AboutView() {
         <article className="about-card">
           <h3>Официальные источники</h3>
           <p>
-            Материалы GCBA и национальных органов используются для трассировки, контекста экзамена и учебных материалов. Их наличие не превращает practice bank в официальный.
+            Материалы GCBA и национальных органов используются для трассировки, контекста экзамена и
+            учебных материалов. Их наличие не превращает practice bank в официальный.
           </p>
-          <p>Русские переводы, объяснения, упрощения и комментарии — неофициальная учебная поддержка.</p>
+          <p>
+            Русские переводы, объяснения, упрощения и комментарии — неофициальная учебная поддержка.
+          </p>
         </article>
 
         <article className="about-card">
           <h3>Код и атрибуция</h3>
-          <p>Cabadrive-owned code: Apache-2.0. Сторонние и официальные материалы сохраняют собственные условия.</p>
+          <p>
+            Cabadrive-owned code: Apache-2.0. Сторонние и официальные материалы сохраняют
+            собственные условия.
+          </p>
           <a href={repositoryUrl} target="_blank" rel="noreferrer noopener">
             Репозиторий Cabadrive <ExternalLink size={16} aria-hidden="true" />
           </a>
@@ -333,7 +414,7 @@ function initialLearningTimerState(targetSeconds: number): LearningTicketTimerSt
   return {
     remainingSeconds: targetSeconds,
     status: "running",
-    answeredAfterExpiry: false
+    answeredAfterExpiry: false,
   };
 }
 
@@ -341,7 +422,7 @@ function completedLearningTimerState(targetSeconds: number): LearningTicketTimer
   return {
     remainingSeconds: targetSeconds,
     status: "answered",
-    answeredAfterExpiry: false
+    answeredAfterExpiry: false,
   };
 }
 
@@ -349,7 +430,7 @@ function QuestionImageFigure({
   question,
   overlay,
   showOverlay,
-  showFallback
+  showFallback,
 }: {
   question: Question;
   overlay?: ImageExplanationOverlay;
@@ -362,7 +443,7 @@ function QuestionImageFigure({
   const currentNaturalSize = naturalSize?.src === imageSrc ? naturalSize : undefined;
   const imageFrameStyle = currentNaturalSize
     ? ({
-        "--question-image-max-width-by-height": `${(360 * currentNaturalSize.width) / currentNaturalSize.height}px`
+        "--question-image-max-width-by-height": `${(360 * currentNaturalSize.width) / currentNaturalSize.height}px`,
       } as CSSProperties)
     : undefined;
 
@@ -377,13 +458,22 @@ function QuestionImageFigure({
             if (naturalWidth <= 0 || naturalHeight <= 0) return;
             if (event.currentTarget.getAttribute("src") !== imageSrc) return;
             setNaturalSize((current) => {
-              if (current?.src === imageSrc && current.width === naturalWidth && current.height === naturalHeight) return current;
+              if (
+                current?.src === imageSrc &&
+                current.width === naturalWidth &&
+                current.height === naturalHeight
+              )
+                return current;
               return { src: imageSrc, width: naturalWidth, height: naturalHeight };
             });
           }}
         />
         {showOverlay && overlay && (
-          <div className="image-explanation-overlay" data-testid="image-explanation-overlay" aria-hidden="true">
+          <div
+            className="image-explanation-overlay"
+            data-testid="image-explanation-overlay"
+            aria-hidden="true"
+          >
             {overlay.regions.map((region) => (
               <span
                 key={region.overlayRegionId}
@@ -392,7 +482,7 @@ function QuestionImageFigure({
                   left: `${region.rect.x}%`,
                   top: `${region.rect.y}%`,
                   width: `${region.rect.width}%`,
-                  height: `${region.rect.height}%`
+                  height: `${region.rect.height}%`,
                 }}
                 data-overlay-role={region.sourceRole}
                 data-relevance-id={region.relevanceId}
@@ -407,20 +497,15 @@ function QuestionImageFigure({
       </figcaption>
       {showFallback && (
         <p className="image-overlay-fallback" data-testid="image-overlay-fallback">
-          Для этого изображения пока нет проверенного overlay-пояснения; показана обычная локальная картинка без угаданных подсветок.
+          Для этого изображения пока нет проверенного overlay-пояснения; показана обычная локальная
+          картинка без угаданных подсветок.
         </p>
       )}
     </figure>
   );
 }
 
-function LearningImageFigure({
-  unitId,
-  compact = false
-}: {
-  unitId: string;
-  compact?: boolean;
-}) {
+function LearningImageFigure({ unitId, compact = false }: { unitId: string; compact?: boolean }) {
   const coverage = learningImageCoverageByUnit.get(unitId);
   const image = coverage?.imageIds?.[0] ? learningImageById.get(coverage.imageIds[0]) : undefined;
   if (!coverage || coverage.status === "exception" || !image) return null;
@@ -432,7 +517,13 @@ function LearningImageFigure({
       data-learning-unit-id={unitId}
       data-coverage-status={coverage.status}
     >
-      <img src={assetUrl(image.localPath)} alt={image.altRu} width={image.width} height={image.height} loading="lazy" />
+      <img
+        src={assetUrl(image.localPath)}
+        alt={image.altRu}
+        width={image.width}
+        height={image.height}
+        loading="lazy"
+      />
       <figcaption>
         <ImageIcon size={15} aria-hidden="true" />
         <span>{image.captionRu}</span>
@@ -442,17 +533,13 @@ function LearningImageFigure({
   );
 }
 
-function MaterialUnit({
-  unitId,
-  children
-}: {
-  unitId: string;
-  children: ReactNode;
-}) {
+function MaterialUnit({ unitId, children }: { unitId: string; children: ReactNode }) {
   return (
     <div className="material-unit">
       <LearningImageFigure unitId={unitId} compact />
-      <div className="material-unit-copy" lang="ru">{children}</div>
+      <div className="material-unit-copy" lang="ru">
+        {children}
+      </div>
     </div>
   );
 }
@@ -461,7 +548,7 @@ function LanguagePair({
   termEs,
   translationRu,
   meta,
-  defaultOpen = true
+  defaultOpen = true,
 }: {
   termEs: string;
   translationRu: string;
@@ -471,7 +558,9 @@ function LanguagePair({
   return (
     <details className="language-pair" open={defaultOpen}>
       <summary aria-label={`Показать или скрыть русский перевод для ${termEs}`}>
-        <span className="language-pair-es" lang="es">{termEs}</span>
+        <span className="language-pair-es" lang="es">
+          {termEs}
+        </span>
         <span className="language-pair-toggle">ES/RU</span>
       </summary>
       <p lang="ru">{translationRu}</p>
@@ -516,7 +605,7 @@ function QuestionCard({
   footerNavigation,
   revealAfterAnswer = true,
   allowRepeatedAnswers = false,
-  learningTimer
+  learningTimer,
 }: {
   question: Question;
   mode: "learning" | "exam" | "mistakes";
@@ -542,13 +631,21 @@ function QuestionCard({
   const canToggleSupport = mode !== "exam";
   const translationId = `translation-${question.id}`;
   const showImageOverlay = Boolean(canToggleSupport && answered && showExplanation && imageOverlay);
-  const showImageOverlayFallback = Boolean(canToggleSupport && answered && showExplanation && question.image && !imageOverlay);
+  const showImageOverlayFallback = Boolean(
+    canToggleSupport && answered && showExplanation && question.image && !imageOverlay,
+  );
 
   useEffect(() => {
     setSelected(attemptState?.selectedAnswerId);
     setShowTranslation(attemptState?.showTranslation ?? false);
     setShowExplanation(attemptState?.showExplanation ?? false);
-  }, [mode, question.id, attemptState?.selectedAnswerId, attemptState?.showTranslation, attemptState?.showExplanation]);
+  }, [
+    mode,
+    question.id,
+    attemptState?.selectedAnswerId,
+    attemptState?.showTranslation,
+    attemptState?.showExplanation,
+  ]);
 
   function updateAttemptState(nextState: QuestionAttemptState) {
     onAttemptStateChange?.(nextState);
@@ -564,14 +661,14 @@ function QuestionCard({
     updateAttemptState({
       selectedAnswerId: answerId,
       showTranslation: nextShowTranslation,
-      showExplanation: nextShowExplanation
+      showExplanation: nextShowExplanation,
     });
     onAnswered({
       questionId: question.id,
       selectedAnswerId: answerId,
       isCorrect: answerId === question.correctAnswerId,
       answeredAt: new Date().toISOString(),
-      mode
+      mode,
     });
   }
 
@@ -582,7 +679,7 @@ function QuestionCard({
       updateAttemptState({
         selectedAnswerId: selected,
         showTranslation: nextValue,
-        showExplanation
+        showExplanation,
       });
       return nextValue;
     });
@@ -616,8 +713,12 @@ function QuestionCard({
         <span>Категория B</span>
         <span>{question.jurisdiction}</span>
         <span>{question.topics.map(topicLabel).join(", ")}</span>
-        {mode !== "exam" && <DifficultyIndicator level={question.difficulty} label="Сложность билета" />}
-        {mode !== "exam" && question.flags.hasNegationOrException && <span className="warning">есть отрицание/ловушка</span>}
+        {mode !== "exam" && (
+          <DifficultyIndicator level={question.difficulty} label="Сложность билета" />
+        )}
+        {mode !== "exam" && question.flags.hasNegationOrException && (
+          <span className="warning">есть отрицание/ловушка</span>
+        )}
       </div>
 
       {learningTimer && (
@@ -629,7 +730,9 @@ function QuestionCard({
           <div className="learning-timer-main">
             <Timer size={18} aria-hidden="true" />
             <span className="learning-timer-label">Темп билета</span>
-            <strong data-testid="learning-ticket-timer-time">{formatDuration(learningTimer.remainingSeconds)}</strong>
+            <strong data-testid="learning-ticket-timer-time">
+              {formatDuration(learningTimer.remainingSeconds)}
+            </strong>
             <span className="learning-timer-state">{learningTimerStatusText(learningTimer)}</span>
           </div>
           {(learningTimer.status === "running" || learningTimer.status === "paused") && (
@@ -637,7 +740,11 @@ function QuestionCard({
               type="button"
               className="tool-button timer-toggle"
               onClick={learningTimer.onTogglePause}
-              aria-label={learningTimer.status === "running" ? "Поставить таймер билета на паузу" : "Продолжить таймер билета"}
+              aria-label={
+                learningTimer.status === "running"
+                  ? "Поставить таймер билета на паузу"
+                  : "Продолжить таймер билета"
+              }
             >
               {learningTimer.status === "running" ? "Пауза" : "Продолжить"}
             </button>
@@ -649,7 +756,10 @@ function QuestionCard({
 
       {showTranslation && (
         <aside className="support-block translation" id={translationId}>
-          <p lang="ru">{translation?.questionTextRu || "Русский перевод для этого вопроса еще не подготовлен. Ориентируйтесь на испанский текст."}</p>
+          <p lang="ru">
+            {translation?.questionTextRu ||
+              "Русский перевод для этого вопроса еще не подготовлен. Ориентируйтесь на испанский текст."}
+          </p>
         </aside>
       )}
 
@@ -668,19 +778,25 @@ function QuestionCard({
             type="button"
             className="tool-button"
             aria-expanded={showExplanation}
-            onClick={() => setShowExplanation((value) => {
-              const nextValue = !value;
-              updateAttemptState({
-                selectedAnswerId: selected,
-                showTranslation,
-                showExplanation: nextValue
-              });
-              return nextValue;
-            })}
+            onClick={() =>
+              setShowExplanation((value) => {
+                const nextValue = !value;
+                updateAttemptState({
+                  selectedAnswerId: selected,
+                  showTranslation,
+                  showExplanation: nextValue,
+                });
+                return nextValue;
+              })
+            }
           >
             <BookOpen size={18} aria-hidden="true" /> Пояснение
           </button>
-          <button type="button" className={difficult ? "tool-button active" : "tool-button"} onClick={onToggleDifficult}>
+          <button
+            type="button"
+            className={difficult ? "tool-button active" : "tool-button"}
+            onClick={onToggleDifficult}
+          >
             <Flag size={18} aria-hidden="true" /> Сложный
           </button>
         </div>
@@ -709,21 +825,30 @@ function QuestionCard({
       {answered && revealAfterAnswer && (
         <div className={correct ? "result correct-text" : "result incorrect-text"} role="status">
           {correct ? <CheckCircle2 size={20} /> : <XCircle size={20} />}
-          {correct ? "Верно" : "Ошибка"} · правильный ответ: <span lang="es">{question.answers.find((answer) => answer.id === question.correctAnswerId)?.officialTextEs}</span>
+          {correct ? "Верно" : "Ошибка"} · правильный ответ:{" "}
+          <span lang="es">
+            {
+              question.answers.find((answer) => answer.id === question.correctAnswerId)
+                ?.officialTextEs
+            }
+          </span>
         </div>
       )}
 
       {showExplanation && (
         <aside className="support-block explanation">
           <span className="block-label">Учебное пояснение</span>
-          <p lang="ru">{explanation?.textRu || "Пояснение пока не подготовлено для этого вопроса."}</p>
+          <p lang="ru">
+            {explanation?.textRu || "Пояснение пока не подготовлено для этого вопроса."}
+          </p>
         </aside>
       )}
 
       {footerNavigation}
 
       <footer className="source-line">
-        Источник: {source?.title || question.sourceId}. Статус вопроса: неофициальная B-практика, нужна внешняя проверка.
+        Источник: {source?.title || question.sourceId}. Статус вопроса: неофициальная B-практика,
+        нужна внешняя проверка.
       </footer>
     </article>
   );
@@ -734,7 +859,7 @@ function QuestionFlowNavigation({
   total,
   onPrevious,
   onNext,
-  collectionLabel
+  collectionLabel,
 }: {
   position: number;
   total: number;
@@ -747,28 +872,49 @@ function QuestionFlowNavigation({
 
   return (
     <nav className="question-flow-nav" aria-label={`Навигация по ${collectionLabel}`}>
-      <button type="button" className="tool-button" onClick={onPrevious} disabled={isFirst} aria-disabled={isFirst}>
+      <button
+        type="button"
+        className="tool-button"
+        onClick={onPrevious}
+        disabled={isFirst}
+        aria-disabled={isFirst}
+      >
         Предыдущий
       </button>
-      <span aria-live="polite">
-        {total > 0 ? `${position + 1} / ${total}` : "0 / 0"}
-      </span>
-      <button type="button" className="tool-button" onClick={onNext} disabled={isLast} aria-disabled={isLast}>
+      <span aria-live="polite">{total > 0 ? `${position + 1} / ${total}` : "0 / 0"}</span>
+      <button
+        type="button"
+        className="tool-button"
+        onClick={onNext}
+        disabled={isLast}
+        aria-disabled={isLast}
+      >
         Следующий
       </button>
     </nav>
   );
 }
 
-function LearnView({ progress, setProgress }: { progress: StoredProgress; setProgress: (progress: StoredProgress) => void }) {
+function LearnView({
+  progress,
+  setProgress,
+}: {
+  progress: StoredProgress;
+  setProgress: (progress: StoredProgress) => void;
+}) {
   const [query, setQuery] = useState("");
   const [index, setIndex] = useState(0);
   const [timerStates, setTimerStates] = useState<Record<string, LearningTicketTimerState>>({});
-  const [attemptsByQuestion, setAttemptsByQuestion] = useState<Record<string, QuestionAttemptState>>({});
+  const [attemptsByQuestion, setAttemptsByQuestion] = useState<
+    Record<string, QuestionAttemptState>
+  >({});
   const [sessionQuestions] = useState(() => shuffleQuestions(data.questions));
   const normalizedQuery = query.trim();
   const hasActiveSearch = normalizedQuery.length > 0;
-  const results = useMemo(() => hasActiveSearch ? searchQuestions(normalizedQuery) : sessionQuestions, [hasActiveSearch, normalizedQuery, sessionQuestions]);
+  const results = useMemo(
+    () => (hasActiveSearch ? searchQuestions(normalizedQuery) : sessionQuestions),
+    [hasActiveSearch, normalizedQuery, sessionQuestions],
+  );
   const hasResults = results.length > 0;
   const currentIndex = results.length ? Math.min(index, results.length - 1) : 0;
   const question = results[currentIndex];
@@ -776,12 +922,16 @@ function LearnView({ progress, setProgress }: { progress: StoredProgress; setPro
   const difficult = question ? progress.difficultQuestionIds.includes(question.id) : false;
   const timerTargetSeconds = learningTicketTargetSeconds(data.examFormat);
   const currentAttemptState = question ? attemptsByQuestion[question.id] : undefined;
-  const restoredTimerState = timerTargetSeconds && currentAttemptState?.selectedAnswerId
-    ? completedLearningTimerState(timerTargetSeconds)
-    : undefined;
-  const currentTimerState = question && timerTargetSeconds
-    ? timerStates[question.id] ?? restoredTimerState ?? initialLearningTimerState(timerTargetSeconds)
-    : undefined;
+  const restoredTimerState =
+    timerTargetSeconds && currentAttemptState?.selectedAnswerId
+      ? completedLearningTimerState(timerTargetSeconds)
+      : undefined;
+  const currentTimerState =
+    question && timerTargetSeconds
+      ? (timerStates[question.id] ??
+        restoredTimerState ??
+        initialLearningTimerState(timerTargetSeconds))
+      : undefined;
 
   useEffect(() => {
     setIndex(0);
@@ -797,8 +947,11 @@ function LearnView({ progress, setProgress }: { progress: StoredProgress; setPro
           [question.id]: {
             ...state,
             status: "answered",
-            answeredAfterExpiry: state.answeredAfterExpiry || state.status === "expired" || state.remainingSeconds <= 0
-          }
+            answeredAfterExpiry:
+              state.answeredAfterExpiry ||
+              state.status === "expired" ||
+              state.remainingSeconds <= 0,
+          },
         };
       });
     }
@@ -812,7 +965,9 @@ function LearnView({ progress, setProgress }: { progress: StoredProgress; setPro
     const exists = progress.difficultQuestionIds.includes(question.id);
     const next = {
       ...progress,
-      difficultQuestionIds: exists ? progress.difficultQuestionIds.filter((id) => id !== question.id) : [...progress.difficultQuestionIds, question.id]
+      difficultQuestionIds: exists
+        ? progress.difficultQuestionIds.filter((id) => id !== question.id)
+        : [...progress.difficultQuestionIds, question.id],
     };
     setProgress(next);
     saveProgress(next);
@@ -832,8 +987,8 @@ function LearnView({ progress, setProgress }: { progress: StoredProgress; setPro
         ...current,
         [question.id]: {
           ...state,
-          status: state.status === "running" ? "paused" : "running"
-        }
+          status: state.status === "running" ? "paused" : "running",
+        },
       };
     });
   }
@@ -846,13 +1001,14 @@ function LearnView({ progress, setProgress }: { progress: StoredProgress; setPro
         ...current,
         [questionId]: currentAttemptState?.selectedAnswerId
           ? completedLearningTimerState(timerTargetSeconds)
-          : initialLearningTimerState(timerTargetSeconds)
+          : initialLearningTimerState(timerTargetSeconds),
       };
     });
   }, [questionId, timerTargetSeconds, currentAttemptState?.selectedAnswerId]);
 
   useEffect(() => {
-    if (!questionId || !timerTargetSeconds || currentTimerState?.status !== "running") return undefined;
+    if (!questionId || !timerTargetSeconds || currentTimerState?.status !== "running")
+      return undefined;
     const timer = window.setInterval(() => {
       setTimerStates((current) => {
         const state = current[questionId];
@@ -863,16 +1019,16 @@ function LearnView({ progress, setProgress }: { progress: StoredProgress; setPro
             [questionId]: {
               ...state,
               remainingSeconds: 0,
-              status: "expired"
-            }
+              status: "expired",
+            },
           };
         }
         return {
           ...current,
           [questionId]: {
             ...state,
-            remainingSeconds: state.remainingSeconds - 1
-          }
+            remainingSeconds: state.remainingSeconds - 1,
+          },
         };
       });
     }, 1000);
@@ -884,7 +1040,11 @@ function LearnView({ progress, setProgress }: { progress: StoredProgress; setPro
       <div className="toolbar">
         <label className="search-box">
           <Search size={18} aria-hidden="true" />
-          <input value={query} onChange={(event) => updateQuery(event.target.value)} placeholder="Поиск по испанскому, русскому, теме" />
+          <input
+            value={query}
+            onChange={(event) => updateQuery(event.target.value)}
+            placeholder="Поиск по испанскому, русскому, теме"
+          />
         </label>
       </div>
       {hasResults && question ? (
@@ -896,17 +1056,25 @@ function LearnView({ progress, setProgress }: { progress: StoredProgress; setPro
           difficult={difficult}
           onToggleDifficult={toggleDifficult}
           attemptState={attemptsByQuestion[question.id] || emptyAttemptState}
-          onAttemptStateChange={(nextState) => setAttemptsByQuestion((current) => ({ ...current, [question.id]: nextState }))}
-          learningTimer={currentTimerState ? { ...currentTimerState, onTogglePause: toggleCurrentTimer } : undefined}
-          footerNavigation={(
+          onAttemptStateChange={(nextState) =>
+            setAttemptsByQuestion((current) => ({ ...current, [question.id]: nextState }))
+          }
+          learningTimer={
+            currentTimerState
+              ? { ...currentTimerState, onTogglePause: toggleCurrentTimer }
+              : undefined
+          }
+          footerNavigation={
             <QuestionFlowNavigation
               position={currentIndex}
               total={results.length}
               collectionLabel="результатам обучения"
               onPrevious={() => setIndex((value) => Math.max(value - 1, 0))}
-              onNext={() => setIndex((value) => Math.min(value + 1, Math.max(results.length - 1, 0)))}
+              onNext={() =>
+                setIndex((value) => Math.min(value + 1, Math.max(results.length - 1, 0)))
+              }
             />
-          )}
+          }
         />
       ) : (
         <div className="empty-state" role="status">
@@ -922,10 +1090,21 @@ function LearnView({ progress, setProgress }: { progress: StoredProgress; setPro
   );
 }
 
-function ExamView({ progress, setProgress }: { progress: StoredProgress; setProgress: (progress: StoredProgress) => void }) {
+function ExamView({
+  progress,
+  setProgress,
+}: {
+  progress: StoredProgress;
+  setProgress: (progress: StoredProgress) => void;
+}) {
   const examQuestions = useMemo(
-    () => selectExamSet(data.questions, data.examFormat.questionCount, data.examFormat.questionOrderRule),
-    []
+    () =>
+      selectExamSet(
+        data.questions,
+        data.examFormat.questionCount,
+        data.examFormat.questionOrderRule,
+      ),
+    [],
   );
   const [position, setPosition] = useState(0);
   const [answers, setAnswers] = useState<ProgressAnswer[]>([]);
@@ -935,23 +1114,33 @@ function ExamView({ progress, setProgress }: { progress: StoredProgress; setProg
   const finishGuard = useRef(false);
   const current = examQuestions[position];
 
-  const finish = useCallback((finalAnswers = answers) => {
-    if (finishGuard.current) return;
-    finishGuard.current = true;
-    const finalScore = scorePercent(finalAnswers.filter((answer) => answer.isCorrect).length, examQuestions.length);
-    const attempt = {
-      id: `exam-${Date.now()}`,
-      finishedAt: new Date().toISOString(),
-      score: finalScore,
-      passed: isPassing(finalScore, data.examFormat.passingScore),
-      total: examQuestions.length
-    };
-    const next = { ...progress, answers: [...progress.answers, ...finalAnswers], examAttempts: [...progress.examAttempts, attempt] };
-    setProgress(next);
-    saveProgress(next);
-    setResultScore(finalScore);
-    setFinished(true);
-  }, [answers, examQuestions.length, progress, setProgress]);
+  const finish = useCallback(
+    (finalAnswers = answers) => {
+      if (finishGuard.current) return;
+      finishGuard.current = true;
+      const finalScore = scorePercent(
+        finalAnswers.filter((answer) => answer.isCorrect).length,
+        examQuestions.length,
+      );
+      const attempt = {
+        id: `exam-${Date.now()}`,
+        finishedAt: new Date().toISOString(),
+        score: finalScore,
+        passed: isPassing(finalScore, data.examFormat.passingScore),
+        total: examQuestions.length,
+      };
+      const next = {
+        ...progress,
+        answers: [...progress.answers, ...finalAnswers],
+        examAttempts: [...progress.examAttempts, attempt],
+      };
+      setProgress(next);
+      saveProgress(next);
+      setResultScore(finalScore);
+      setFinished(true);
+    },
+    [answers, examQuestions.length, progress, setProgress],
+  );
 
   useEffect(() => {
     if (finished) return undefined;
@@ -982,18 +1171,28 @@ function ExamView({ progress, setProgress }: { progress: StoredProgress; setProg
       selectedAnswerId: "",
       isCorrect: false,
       answeredAt: new Date().toISOString(),
-      mode: "exam"
+      mode: "exam",
     });
   }
 
   if (finished) {
-    const finalScore = resultScore ?? scorePercent(answers.filter((answer) => answer.isCorrect).length, examQuestions.length);
+    const finalScore =
+      resultScore ??
+      scorePercent(answers.filter((answer) => answer.isCorrect).length, examQuestions.length);
     return (
       <section className="workspace result-panel">
-        <h2>{finalScore >= data.examFormat.passingScore ? "Пробный экзамен сдан" : "Нужно повторить"}</h2>
+        <h2>
+          {finalScore >= data.examFormat.passingScore ? "Пробный экзамен сдан" : "Нужно повторить"}
+        </h2>
         <p className="score">{finalScore}%</p>
-        <p>Формат: {data.examFormat.questionCount} вопросов, {data.examFormat.timeLimitMinutes} минут, проходной балл {data.examFormat.passingScore}%.</p>
-        <p className="muted">Источник формата экзамена GCBA подтвержден, но сами вопросы сейчас помечены как неофициальная B-практика.</p>
+        <p>
+          Формат: {data.examFormat.questionCount} вопросов, {data.examFormat.timeLimitMinutes}{" "}
+          минут, проходной балл {data.examFormat.passingScore}%.
+        </p>
+        <p className="muted">
+          Источник формата экзамена GCBA подтвержден, но сами вопросы сейчас помечены как
+          неофициальная B-практика.
+        </p>
       </section>
     );
   }
@@ -1001,9 +1200,15 @@ function ExamView({ progress, setProgress }: { progress: StoredProgress; setProg
   return (
     <section className="workspace">
       <div className="exam-bar">
-        <span><Timer size={18} /> {formatDuration(timeRemaining)}</span>
-        <span>{position + 1} / {examQuestions.length}</span>
-        <span>{data.examFormat.status === "defined" ? "Формат defined" : "approximate practice"}</span>
+        <span>
+          <Timer size={18} /> {formatDuration(timeRemaining)}
+        </span>
+        <span>
+          {position + 1} / {examQuestions.length}
+        </span>
+        <span>
+          {data.examFormat.status === "defined" ? "Формат defined" : "approximate practice"}
+        </span>
       </div>
       {data.examFormat.canSkipQuestion && (
         <div className="toolbar">
@@ -1012,17 +1217,35 @@ function ExamView({ progress, setProgress }: { progress: StoredProgress; setProg
           </button>
         </div>
       )}
-      <QuestionCard key={current.id} question={current} mode="exam" revealAfterAnswer={false} onAnswered={record} difficult={false} onToggleDifficult={() => undefined} />
+      <QuestionCard
+        key={current.id}
+        question={current}
+        mode="exam"
+        revealAfterAnswer={false}
+        onAnswered={record}
+        difficult={false}
+        onToggleDifficult={() => undefined}
+      />
     </section>
   );
 }
 
-function MistakesView({ progress, setProgress }: { progress: StoredProgress; setProgress: (progress: StoredProgress) => void }) {
+function MistakesView({
+  progress,
+  setProgress,
+}: {
+  progress: StoredProgress;
+  setProgress: (progress: StoredProgress) => void;
+}) {
   const [index, setIndex] = useState(0);
-  const [attemptsByQuestion, setAttemptsByQuestion] = useState<Record<string, QuestionAttemptState>>({});
+  const [attemptsByQuestion, setAttemptsByQuestion] = useState<
+    Record<string, QuestionAttemptState>
+  >({});
   const mistakes = mistakesFromHistory(progress.answers);
   const currentIndex = mistakes.length ? Math.min(index, mistakes.length - 1) : 0;
-  const question = mistakes.length ? data.questions.find((item) => item.id === mistakes[currentIndex]?.questionId) : undefined;
+  const question = mistakes.length
+    ? data.questions.find((item) => item.id === mistakes[currentIndex]?.questionId)
+    : undefined;
 
   useEffect(() => {
     setIndex((value) => Math.min(value, Math.max(mistakes.length - 1, 0)));
@@ -1038,18 +1261,31 @@ function MistakesView({ progress, setProgress }: { progress: StoredProgress; set
     <section className="workspace split">
       <aside className="side-list">
         <h2>Ошибки</h2>
-        {mistakes.length ? mistakes.slice(0, 12).map((mistake) => (
-          <button
-            type="button"
-            className={mistake.questionId === question?.id ? "mistake-link active" : "mistake-link"}
-            key={mistake.questionId}
-            onClick={() => setIndex(mistakes.findIndex((item) => item.questionId === mistake.questionId))}
-          >
-            <strong>{mistake.wrong}x</strong>
-            <span>{mistake.questionId}</span>
-            {questionById.get(mistake.questionId) && <DifficultyIndicator level={questionById.get(mistake.questionId)!.difficulty} compact />}
-          </button>
-        )) : <p>Ошибок пока нет. Ответьте на пару вопросов в обучении.</p>}
+        {mistakes.length ? (
+          mistakes.slice(0, 12).map((mistake) => (
+            <button
+              type="button"
+              className={
+                mistake.questionId === question?.id ? "mistake-link active" : "mistake-link"
+              }
+              key={mistake.questionId}
+              onClick={() =>
+                setIndex(mistakes.findIndex((item) => item.questionId === mistake.questionId))
+              }
+            >
+              <strong>{mistake.wrong}x</strong>
+              <span>{mistake.questionId}</span>
+              {questionById.get(mistake.questionId) && (
+                <DifficultyIndicator
+                  level={questionById.get(mistake.questionId)!.difficulty}
+                  compact
+                />
+              )}
+            </button>
+          ))
+        ) : (
+          <p>Ошибок пока нет. Ответьте на пару вопросов в обучении.</p>
+        )}
       </aside>
       {question ? (
         <QuestionCard
@@ -1060,22 +1296,29 @@ function MistakesView({ progress, setProgress }: { progress: StoredProgress; set
           difficult={progress.difficultQuestionIds.includes(question.id)}
           onToggleDifficult={() => undefined}
           attemptState={attemptsByQuestion[question.id] || emptyAttemptState}
-          onAttemptStateChange={(nextState) => setAttemptsByQuestion((current) => ({ ...current, [question.id]: nextState }))}
-          footerNavigation={(
+          onAttemptStateChange={(nextState) =>
+            setAttemptsByQuestion((current) => ({ ...current, [question.id]: nextState }))
+          }
+          footerNavigation={
             <QuestionFlowNavigation
               position={currentIndex}
               total={mistakes.length}
               collectionLabel="ошибкам"
               onPrevious={() => setIndex((value) => Math.max(value - 1, 0))}
-              onNext={() => setIndex((value) => Math.min(value + 1, Math.max(mistakes.length - 1, 0)))}
+              onNext={() =>
+                setIndex((value) => Math.min(value + 1, Math.max(mistakes.length - 1, 0)))
+              }
             />
-          )}
+          }
           allowRepeatedAnswers
         />
       ) : (
         <div className="empty-state" role="status">
           <h2>Ошибок пока нет</h2>
-          <p>Здесь появятся только вопросы, на которые вы уже ответили неверно. Сейчас коллекция ошибок пуста.</p>
+          <p>
+            Здесь появятся только вопросы, на которые вы уже ответили неверно. Сейчас коллекция
+            ошибок пуста.
+          </p>
         </div>
       )}
     </section>
@@ -1089,7 +1332,11 @@ function VocabularyView() {
     <section className="workspace">
       <label className="search-box">
         <Search size={18} aria-hidden="true" />
-        <input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Buscar / искать термин" />
+        <input
+          value={query}
+          onChange={(event) => setQuery(event.target.value)}
+          placeholder="Buscar / искать термин"
+        />
       </label>
       <div className="term-grid">
         {terms.map((term) => (
@@ -1111,7 +1358,9 @@ function GuideView() {
     <section className="workspace guide-list">
       {data.guide.map((item) => (
         <article className="guide-item" key={item.id}>
-          <span>{item.topic} · {item.confidence}</span>
+          <span>
+            {item.topic} · {item.confidence}
+          </span>
           <h2>{item.title}</h2>
           <p>{item.cabaRuleSummaryRu}</p>
           <p>{item.rfContrastRu}</p>
@@ -1148,13 +1397,15 @@ function buildSourceConflictNoteByQuestionId(topics: TopicGuideTopic[]) {
   return notesByQuestionId;
 }
 
-const manualTicketSourceConflictNoteByQuestionId = buildSourceConflictNoteByQuestionId(data.topicStudyGuide.topics);
+const manualTicketSourceConflictNoteByQuestionId = buildSourceConflictNoteByQuestionId(
+  data.topicStudyGuide.topics,
+);
 
 function CanonicalStudyTicketBlock({
   questionId,
   sourceConflictNoteRu,
   topicTicket,
-  testIdPrefix
+  testIdPrefix,
 }: {
   questionId: string;
   sourceConflictNoteRu?: string;
@@ -1174,13 +1425,19 @@ function CanonicalStudyTicketBlock({
     return (
       <article className="materials-ticket missing" data-testid={`${testIdPrefix}-${questionId}`}>
         <h3>Билет {questionId}</h3>
-        <p>Канонический вопрос не найден. Материал не упал, но этот блок требует проверки данных.</p>
+        <p>
+          Канонический вопрос не найден. Материал не упал, но этот блок требует проверки данных.
+        </p>
       </article>
     );
   }
 
   return (
-    <article className="materials-ticket" data-testid={`${testIdPrefix}-${questionId}`} data-question-id={questionId}>
+    <article
+      className="materials-ticket"
+      data-testid={`${testIdPrefix}-${questionId}`}
+      data-question-id={questionId}
+    >
       <div className="question-meta">
         <span>Билет {question.id}</span>
         <span>Категория {question.category}</span>
@@ -1199,12 +1456,18 @@ function CanonicalStudyTicketBlock({
       ) : (
         <aside className="support-block translation materials-translation missing-translation">
           <span className="block-label">Русский перевод</span>
-          <p lang="ru">Русский перевод для этого билета еще не подготовлен; сверяйтесь с испанским текстом.</p>
+          <p lang="ru">
+            Русский перевод для этого билета еще не подготовлен; сверяйтесь с испанским текстом.
+          </p>
         </aside>
       )}
       {localImagePath && (
         <figure className="question-image materials-image">
-          <img loading="lazy" src={assetUrl(localImagePath)} alt={question.image?.altEs || `Изображение билета ${question.id}`} />
+          <img
+            loading="lazy"
+            src={assetUrl(localImagePath)}
+            alt={question.image?.altEs || `Изображение билета ${question.id}`}
+          />
           <figcaption>
             <ImageIcon size={16} aria-hidden="true" /> Локальное изображение вопроса
           </figcaption>
@@ -1224,26 +1487,45 @@ function CanonicalStudyTicketBlock({
             ? canonicalExplanation?.correctAnswerExplanationRu
             : canonicalExplanation?.wrongAnswerExplanations[answer.id];
           return (
-            <div className={isCorrectAnswer ? "material-answer correct" : "material-answer"} role="listitem" key={answer.id}>
+            <div
+              className={isCorrectAnswer ? "material-answer correct" : "material-answer"}
+              role="listitem"
+              key={answer.id}
+            >
               <div>
                 <strong lang="es">{answer.officialTextEs}</strong>
-                {translation?.answerTranslations[answer.id] && <small className="answer-translation" lang="ru">{translation.answerTranslations[answer.id]}</small>}
+                {translation?.answerTranslations[answer.id] && (
+                  <small className="answer-translation" lang="ru">
+                    {translation.answerTranslations[answer.id]}
+                  </small>
+                )}
                 {isCorrectAnswer && <span className="answer-badge">Правильный ответ</span>}
               </div>
-              <p lang="ru">{answerExplanation?.explanationRu || canonicalAnswerExplanation || "Пояснение для этого варианта пока не связано с материалом."}</p>
+              <p lang="ru">
+                {answerExplanation?.explanationRu ||
+                  canonicalAnswerExplanation ||
+                  "Пояснение для этого варианта пока не связано с материалом."}
+              </p>
             </div>
           );
         })}
       </div>
       <footer className="source-line">
-        Источник: {source?.title || question.sourceId}; {sourceStatusLabel(source?.status)}. Правильный ответ: {correctAnswer?.officialTextEs || question.correctAnswerId}.
+        Источник: {source?.title || question.sourceId}; {sourceStatusLabel(source?.status)}.
+        Правильный ответ: {correctAnswer?.officialTextEs || question.correctAnswerId}.
       </footer>
     </article>
   );
 }
 
 function TopicGuideTicketBlock({ ticket }: { ticket: TopicGuideTicket }) {
-  return <CanonicalStudyTicketBlock questionId={ticket.questionId} topicTicket={ticket} testIdPrefix="materials-ticket" />;
+  return (
+    <CanonicalStudyTicketBlock
+      questionId={ticket.questionId}
+      topicTicket={ticket}
+      testIdPrefix="materials-ticket"
+    />
+  );
 }
 
 const manualTicketDirectRenderLimit = 6;
@@ -1264,10 +1546,17 @@ function ManualTicketAppendix({ pageId }: { pageId: string }) {
   ));
 
   return (
-    <section className="manual-ticket-appendix" data-testid="manual-ticket-appendix" data-page-id={pageId} data-ticket-count={questionIds.length}>
+    <section
+      className="manual-ticket-appendix"
+      data-testid="manual-ticket-appendix"
+      data-page-id={pageId}
+      data-ticket-count={questionIds.length}
+    >
       <div className="manual-ticket-appendix-heading">
         <p className="eyebrow">Билеты по теме страницы</p>
-        <h3>{questionIds.length} {questionIds.length === 1 ? "билет" : "билетов"}</h3>
+        <h3>
+          {questionIds.length} {questionIds.length === 1 ? "билет" : "билетов"}
+        </h3>
         <div className="materials-status" aria-label="Статус билетов в приложении к руководству">
           <span>{practiceContentStatusLabel()}</span>
         </div>
@@ -1365,7 +1654,10 @@ function TopicGuideView() {
             <section className="materials-section" aria-labelledby="practical-reasoning-title">
               <h3 id="practical-reasoning-title">Практическая логика</h3>
               {selectedTopic.practicalReasoningRu.map((paragraph, index) => (
-                <MaterialUnit unitId={topicPracticalUnitId(selectedTopic.id, index)} key={paragraph}>
+                <MaterialUnit
+                  unitId={topicPracticalUnitId(selectedTopic.id, index)}
+                  key={paragraph}
+                >
                   <p>{paragraph}</p>
                 </MaterialUnit>
               ))}
@@ -1377,7 +1669,10 @@ function TopicGuideView() {
             <div className="materials-term-grid">
               {selectedTopic.spanishTerms.map((term) => (
                 <div className="materials-term" key={term.id}>
-                  <LearningImageFigure unitId={topicTermUnitId(selectedTopic.id, term.id)} compact />
+                  <LearningImageFigure
+                    unitId={topicTermUnitId(selectedTopic.id, term.id)}
+                    compact
+                  />
                   <LanguagePair
                     termEs={term.termEs}
                     translationRu={term.translationRu}
@@ -1403,9 +1698,14 @@ function TopicGuideView() {
               <div className="trap-list">
                 {selectedTopic.trapNotes.map((note, index) => (
                   <div className="trap-note" key={note.id || `${selectedTopic.id}-trap-${index}`}>
-                    <LearningImageFigure unitId={topicTrapUnitId(selectedTopic.id, note.id, index)} compact />
+                    <LearningImageFigure
+                      unitId={topicTrapUnitId(selectedTopic.id, note.id, index)}
+                      compact
+                    />
                     <p lang="ru">{note.textRu}</p>
-                    {note.sourceQuestionIds?.length ? <small>Связанные билеты: {note.sourceQuestionIds.join(", ")}</small> : null}
+                    {note.sourceQuestionIds?.length ? (
+                      <small>Связанные билеты: {note.sourceQuestionIds.join(", ")}</small>
+                    ) : null}
                   </div>
                 ))}
               </div>
@@ -1421,7 +1721,9 @@ function ProcessGuideView() {
   const guide = data.cabaExamProcessGuide;
   const sourceByProcessId = new Map(guide.sources.map((source) => [source.id, source]));
   const stepSections = guide.sections.filter((section) => section.calloutType === "required_step");
-  const supportingSections = guide.sections.filter((section) => section.calloutType !== "required_step");
+  const supportingSections = guide.sections.filter(
+    (section) => section.calloutType !== "required_step",
+  );
 
   function renderSources(section: ProcessGuideSection) {
     return (
@@ -1432,7 +1734,9 @@ function ProcessGuideView() {
           return (
             <a href={source.url} target="_blank" rel="noreferrer" key={source.id}>
               <span>{source.title}</span>
-              <small>Проверено {source.checkedAt} · {processSourceStatusLabel(source.currentnessStatus)}</small>
+              <small>
+                Проверено {source.checkedAt} · {processSourceStatusLabel(source.currentnessStatus)}
+              </small>
             </a>
           );
         })}
@@ -1442,10 +1746,16 @@ function ProcessGuideView() {
 
   function renderSection(section: ProcessGuideSection, index?: number) {
     return (
-      <article className="process-section" key={section.id} data-testid={`process-section-${section.id}`}>
+      <article
+        className="process-section"
+        key={section.id}
+        data-testid={`process-section-${section.id}`}
+      >
         <div className="process-section-heading">
           <div>
-            <span className="block-label">{index === undefined ? processCalloutLabel(section) : `Шаг ${index + 1}`}</span>
+            <span className="block-label">
+              {index === undefined ? processCalloutLabel(section) : `Шаг ${index + 1}`}
+            </span>
             <h3>{section.titleRu}</h3>
           </div>
           <span>{processCalloutLabel(section)}</span>
@@ -1483,7 +1793,10 @@ function ProcessGuideView() {
         <div className="materials-status" aria-label="Статус процессного гайда">
           <span>{guideContentStatusLabel(guide.contentStatus)}</span>
           <span>Проверено {guide.lastReviewedAt}</span>
-          <span>{guide.primaryScope.jurisdiction} · {guide.primaryScope.category} · {guide.primaryScope.procedure}</span>
+          <span>
+            {guide.primaryScope.jurisdiction} · {guide.primaryScope.category} ·{" "}
+            {guide.primaryScope.procedure}
+          </span>
         </div>
       </header>
 
@@ -1515,16 +1828,27 @@ function ProcessGuideView() {
 
         <aside className="process-aside">
           <section className="process-links" aria-labelledby="official-links-title">
-            <h3 id="official-links-title"><ExternalLink size={18} aria-hidden="true" /> Официальные ссылки</h3>
+            <h3 id="official-links-title">
+              <ExternalLink size={18} aria-hidden="true" /> Официальные ссылки
+            </h3>
             {guide.officialLinks.map((group) => (
               <div className="process-link-group" key={group.id}>
                 <h4>{group.titleRu}</h4>
                 {group.links.map((link) => {
                   const source = sourceByProcessId.get(link.sourceId);
                   return (
-                    <a href={link.url} target="_blank" rel="noreferrer" key={`${group.id}-${link.sourceId}`}>
+                    <a
+                      href={link.url}
+                      target="_blank"
+                      rel="noreferrer"
+                      key={`${group.id}-${link.sourceId}`}
+                    >
                       <span>{link.labelRu}</span>
-                      {source && <small>{source.officialOwner} · проверено {source.checkedAt}</small>}
+                      {source && (
+                        <small>
+                          {source.officialOwner} · проверено {source.checkedAt}
+                        </small>
+                      )}
                     </a>
                   );
                 })}
@@ -1555,7 +1879,9 @@ function ProcessGuideView() {
       </section>
 
       <footer className="source-line process-footnote">
-        <FileText size={16} aria-hidden="true" /> Изображения не включены: для первого slice не было необходимости добавлять официальные изображения; так сохраняется offline/local-first режим без риска устаревших или персональных данных.
+        <FileText size={16} aria-hidden="true" /> Изображения не включены: для первого slice не было
+        необходимости добавлять официальные изображения; так сохраняется offline/local-first режим
+        без риска устаревших или персональных данных.
       </footer>
     </section>
   );
@@ -1571,8 +1897,8 @@ function manualPageSearchText(page: ManualPage) {
       page.translation.sourceTextEs,
       page.translation.headingPathEs.join(" "),
       page.translation.chunkProvenance?.chunkId ?? "",
-      page.sourceTrace.officialDocumentId
-    ].join(" ")
+      page.sourceTrace.officialDocumentId,
+    ].join(" "),
   );
 }
 
@@ -1582,43 +1908,60 @@ function flattenManualNavigation(entries: ManualNavigationEntry[]): ManualNaviga
   return entries.flatMap((entry) => [entry, ...flattenManualNavigation(entry.children ?? [])]);
 }
 
-function manualExactStartNavigationEntryForPage(entries: ManualNavigationEntry[], pageNumber: number): ManualNavigationEntry | undefined {
+function manualExactStartNavigationEntryForPage(
+  entries: ManualNavigationEntry[],
+  pageNumber: number,
+): ManualNavigationEntry | undefined {
   for (const entry of entries) {
     if (pageNumber < entry.startPage || pageNumber > entry.endPage) continue;
-    const childExactStart = manualExactStartNavigationEntryForPage(entry.children ?? [], pageNumber);
+    const childExactStart = manualExactStartNavigationEntryForPage(
+      entry.children ?? [],
+      pageNumber,
+    );
     if (childExactStart) return childExactStart;
     if (entry.startPage === pageNumber) return entry;
   }
   return undefined;
 }
 
-function manualNavigationEntryForPage(entries: ManualNavigationEntry[], pageNumber: number, deepest = false): ManualNavigationEntry | undefined {
+function manualNavigationEntryForPage(
+  entries: ManualNavigationEntry[],
+  pageNumber: number,
+  deepest = false,
+): ManualNavigationEntry | undefined {
   if (deepest) {
     const exactStartEntry = manualExactStartNavigationEntryForPage(entries, pageNumber);
     if (exactStartEntry) return exactStartEntry;
   }
   for (const entry of entries) {
     if (pageNumber < entry.startPage || pageNumber > entry.endPage) continue;
-    if (deepest) return manualNavigationEntryForPage(entry.children ?? [], pageNumber, true) ?? entry;
+    if (deepest)
+      return manualNavigationEntryForPage(entry.children ?? [], pageNumber, true) ?? entry;
     return entry;
   }
   return undefined;
 }
 
-function manualNavigationEntryCoversPage(entry: ManualNavigationEntry | undefined, pageNumber: number) {
+function manualNavigationEntryCoversPage(
+  entry: ManualNavigationEntry | undefined,
+  pageNumber: number,
+) {
   return Boolean(entry && pageNumber >= entry.startPage && pageNumber <= entry.endPage);
 }
 
 function manualNavigationEntryForDestinationPage(
   entries: ManualNavigationEntry[],
   pageNumber: number,
-  options: { requestedEntry?: ManualNavigationEntry; currentEntry?: ManualNavigationEntry } = {}
+  options: { requestedEntry?: ManualNavigationEntry; currentEntry?: ManualNavigationEntry } = {},
 ) {
-  if (manualNavigationEntryCoversPage(options.requestedEntry, pageNumber)) return options.requestedEntry;
+  if (manualNavigationEntryCoversPage(options.requestedEntry, pageNumber))
+    return options.requestedEntry;
 
   const exactStartEntry = manualExactStartNavigationEntryForPage(entries, pageNumber);
   if (manualNavigationEntryCoversPage(options.currentEntry, pageNumber)) {
-    return options.currentEntry?.startPage === pageNumber ? options.currentEntry : exactStartEntry ?? options.currentEntry;
+    return options.currentEntry?.startPage === pageNumber
+      ? options.currentEntry
+      : (exactStartEntry ?? options.currentEntry);
   }
 
   return exactStartEntry ?? manualNavigationEntryForPage(entries, pageNumber, true);
@@ -1642,16 +1985,19 @@ function manualBoundsStyle(bounds: ManualPageBounds): CSSProperties {
     left: `${bounds.x * 100}%`,
     top: `${bounds.y * 100}%`,
     width: `${bounds.width * 100}%`,
-    height: `${bounds.height * 100}%`
+    height: `${bounds.height * 100}%`,
   };
 }
 
-function pandemiaGeometryStyle(geometry: PandemiaVialGeometry, frame: PandemiaVialGeometry = pandemiaVialSection.contentFrame): CSSProperties {
+function pandemiaGeometryStyle(
+  geometry: PandemiaVialGeometry,
+  frame: PandemiaVialGeometry = pandemiaVialSection.contentFrame,
+): CSSProperties {
   return {
     left: `${((geometry.x - frame.x) / frame.width) * 100}%`,
     top: `${((geometry.y - frame.y) / frame.height) * 100}%`,
     width: `${(geometry.width / frame.width) * 100}%`,
-    height: `${(geometry.height / frame.height) * 100}%`
+    height: `${(geometry.height / frame.height) * 100}%`,
   };
 }
 
@@ -1664,18 +2010,66 @@ const pandemiaNativeShapes: Array<{
   kind: "blue-strip" | "blue-cap" | "gray-panel" | "circle-stat";
   geometry: PandemiaVialGeometry;
 }> = [
-  { id: "airplane-strip-panel", kind: "blue-strip", geometry: { x: 386, y: 678, width: 214, height: 31 } },
-  { id: "airplane-strip-cap", kind: "blue-cap", geometry: { x: 438, y: 660, width: 94, height: 49 } },
-  { id: "airplane-card-panel", kind: "gray-panel", geometry: { x: 386, y: 708, width: 214, height: 58 } },
-  { id: "stadium-strip-panel", kind: "blue-strip", geometry: { x: 620, y: 678, width: 214, height: 31 } },
-  { id: "stadium-strip-cap", kind: "blue-cap", geometry: { x: 674, y: 660, width: 94, height: 49 } },
-  { id: "stadium-card-panel", kind: "gray-panel", geometry: { x: 620, y: 708, width: 214, height: 58 } },
-  { id: "fatalities-panel", kind: "gray-panel", geometry: { x: 520, y: 833, width: 266, height: 55 } },
-  { id: "motorcyclists-circle", kind: "circle-stat", geometry: { x: 414, y: 890, width: 118, height: 118 } },
-  { id: "pedestrians-circle", kind: "circle-stat", geometry: { x: 536, y: 890, width: 118, height: 118 } },
-  { id: "car-occupants-circle", kind: "circle-stat", geometry: { x: 658, y: 890, width: 118, height: 118 } },
-  { id: "male-victims-panel", kind: "gray-panel", geometry: { x: 552, y: 1020, width: 234, height: 58 } },
-  { id: "age-range-panel", kind: "gray-panel", geometry: { x: 552, y: 1110, width: 234, height: 56 } }
+  {
+    id: "airplane-strip-panel",
+    kind: "blue-strip",
+    geometry: { x: 386, y: 678, width: 214, height: 31 },
+  },
+  {
+    id: "airplane-strip-cap",
+    kind: "blue-cap",
+    geometry: { x: 438, y: 660, width: 94, height: 49 },
+  },
+  {
+    id: "airplane-card-panel",
+    kind: "gray-panel",
+    geometry: { x: 386, y: 708, width: 214, height: 58 },
+  },
+  {
+    id: "stadium-strip-panel",
+    kind: "blue-strip",
+    geometry: { x: 620, y: 678, width: 214, height: 31 },
+  },
+  {
+    id: "stadium-strip-cap",
+    kind: "blue-cap",
+    geometry: { x: 674, y: 660, width: 94, height: 49 },
+  },
+  {
+    id: "stadium-card-panel",
+    kind: "gray-panel",
+    geometry: { x: 620, y: 708, width: 214, height: 58 },
+  },
+  {
+    id: "fatalities-panel",
+    kind: "gray-panel",
+    geometry: { x: 520, y: 833, width: 266, height: 55 },
+  },
+  {
+    id: "motorcyclists-circle",
+    kind: "circle-stat",
+    geometry: { x: 414, y: 890, width: 118, height: 118 },
+  },
+  {
+    id: "pedestrians-circle",
+    kind: "circle-stat",
+    geometry: { x: 536, y: 890, width: 118, height: 118 },
+  },
+  {
+    id: "car-occupants-circle",
+    kind: "circle-stat",
+    geometry: { x: 658, y: 890, width: 118, height: 118 },
+  },
+  {
+    id: "male-victims-panel",
+    kind: "gray-panel",
+    geometry: { x: 552, y: 1020, width: 234, height: 58 },
+  },
+  {
+    id: "age-range-panel",
+    kind: "gray-panel",
+    geometry: { x: 552, y: 1110, width: 234, height: 56 },
+  },
 ];
 
 function introductionEntryForHash(hash: string) {
@@ -1701,7 +2095,8 @@ function nonIntroductionRouteUrl() {
 }
 
 function realElementAnchorForHash(hash: string) {
-  if (!hash || introductionEntryForHash(hash) || manualGuideSectionByHash.has(hash)) return undefined;
+  if (!hash || introductionEntryForHash(hash) || manualGuideSectionByHash.has(hash))
+    return undefined;
   const rawId = hash.slice(1);
   if (!rawId) return undefined;
   try {
@@ -1721,7 +2116,7 @@ function artworkAssetById(assets: IntroductionSourceArtworkAsset[], id: string) 
 
 function SourceArtworkImage({
   asset,
-  className
+  className,
 }: {
   asset?: IntroductionSourceArtworkAsset;
   className: string;
@@ -1765,13 +2160,18 @@ function PandemiaVialPrototypeView() {
   }, []);
 
   function renderSegment(segment: (typeof pandemiaVialSection.segments)[number]) {
-    const isResponsiveProse = segment.role === "heading" || segment.role === "intro" || segment.role === "body";
+    const isResponsiveProse =
+      segment.role === "heading" || segment.role === "intro" || segment.role === "body";
     const className = [
       "pandemia-segment",
       `pandemia-segment-${segment.role}`,
-      isResponsiveProse && segment.role !== "heading" ? "intro-doc-block" : undefined
-    ].filter(Boolean).join(" ");
-    const style = isResponsiveProse ? undefined : pandemiaGeometryStyle(segment.geometry, pandemiaInfographicFrame);
+      isResponsiveProse && segment.role !== "heading" ? "intro-doc-block" : undefined,
+    ]
+      .filter(Boolean)
+      .join(" ");
+    const style = isResponsiveProse
+      ? undefined
+      : pandemiaGeometryStyle(segment.geometry, pandemiaInfographicFrame);
     const commonProps = {
       key: segment.id,
       className,
@@ -1780,11 +2180,15 @@ function PandemiaVialPrototypeView() {
       "data-segment-id": segment.id,
       "data-segment-role": segment.role,
       "data-prose-role": isResponsiveProse ? "responsive" : undefined,
-      title: segment.fitNote
+      title: segment.fitNote,
     };
 
     if (segment.role === "heading") {
-      return <h2 id="pandemia-vial-title" {...commonProps}>{segment.textRu}</h2>;
+      return (
+        <h2 id="pandemia-vial-title" {...commonProps}>
+          {segment.textRu}
+        </h2>
+      );
     }
     if (segment.role === "context-label") {
       return <h3 {...commonProps}>{segment.textRu}</h3>;
@@ -1792,19 +2196,24 @@ function PandemiaVialPrototypeView() {
     return <p {...commonProps}>{segment.textRu}</p>;
   }
 
-  const responsiveProseSegments = pandemiaVialSection.segments.filter((segment) =>
-    segment.role === "heading" || segment.role === "intro" || segment.role === "body"
+  const responsiveProseSegments = pandemiaVialSection.segments.filter(
+    (segment) => segment.role === "heading" || segment.role === "intro" || segment.role === "body",
   );
   const headingSegment = responsiveProseSegments.find((segment) => segment.role === "heading");
   const introSegments = responsiveProseSegments.filter((segment) => segment.role === "intro");
   const bodySegments = responsiveProseSegments.filter((segment) => segment.role === "body");
-  const infographicSegments = pandemiaVialSection.segments.filter((segment) =>
-    segment.role !== "heading" && segment.role !== "intro" && segment.role !== "body"
+  const infographicSegments = pandemiaVialSection.segments.filter(
+    (segment) => segment.role !== "heading" && segment.role !== "intro" && segment.role !== "body",
   );
 
   return (
     <>
-      <article className="intro-document pandemia-prototype" aria-labelledby="pandemia-vial-title" data-testid="pandemia-prototype" data-intro-section-id="intro-road-pandemic">
+      <article
+        className="intro-document pandemia-prototype"
+        aria-labelledby="pandemia-vial-title"
+        data-testid="pandemia-prototype"
+        data-intro-section-id="intro-road-pandemic"
+      >
         <header className="intro-document-header">
           <h2 id="pandemia-vial-title">
             <span
@@ -1820,61 +2229,69 @@ function PandemiaVialPrototypeView() {
           </h2>
         </header>
         <div className="intro-document-flow">
-        <div className="pandemia-prose pandemia-prose-intro" data-testid="pandemia-responsive-prose">
-          {introSegments.map(renderSegment)}
-        </div>
-        <div className="pandemia-stage-scroll" data-testid="pandemia-stage-scroll" ref={stageRef}>
-          <article
-            className="pandemia-page pandemia-native-page"
-            style={{
-              aspectRatio: `${pandemiaInfographicFrame.width} / ${pandemiaInfographicFrame.height}`,
-              width: pandemiaPagePreviewWidth
-            }}
-            aria-label="Инфографика раздела Дорожная пандемия - нативная русская реконструкция фрагмента GCBA manual page 15"
-            data-rendering="native-html-css-svg"
-            data-testid="pandemia-page"
+          <div
+            className="pandemia-prose pandemia-prose-intro"
+            data-testid="pandemia-responsive-prose"
           >
-            <div className="pandemia-native-layer" data-testid="pandemia-native-layer">
-              {pandemiaNativeShapes.map((shape) => (
-                <span
-                  key={shape.id}
-                  className={`pandemia-native-shape pandemia-native-shape-${shape.kind}`}
-                  style={pandemiaGeometryStyle(shape.geometry, pandemiaInfographicFrame)}
-                  data-testid="pandemia-native-shape"
-                  data-shape-id={shape.id}
-                  aria-hidden="true"
-                />
-              ))}
-              {pandemiaVialSection.assets.map((asset) => (
-                <img
-                  key={asset.id}
-                  className={`pandemia-crop-asset pandemia-crop-asset-${asset.id}`}
-                  src={assetUrl(asset.localPath)}
-                  alt=""
-                  style={pandemiaGeometryStyle(asset.geometry, pandemiaInfographicFrame)}
-                  data-testid="pandemia-crop-asset"
-                  data-asset-id={asset.id}
-                  data-asset-kind={asset.kind}
-                  data-cleanup-status={asset.cleanupStatus}
-                  data-male-count={asset.pictogramSemantics?.maleCount}
-                  data-female-count={asset.pictogramSemantics?.femaleCount}
-                  data-total-count={asset.pictogramSemantics?.totalCount}
-                  data-male-signature={asset.pictogramSemantics?.maleSignature}
-                  data-female-signature={asset.pictogramSemantics?.femaleSignature}
-                  data-male-pictograms-identical={asset.pictogramSemantics?.malePictogramsIdentical}
-                  aria-hidden="true"
-                  draggable={false}
-                />
-              ))}
-            </div>
-            <div className="pandemia-text-layer" data-testid="pandemia-text-layer">
-              {infographicSegments.map(renderSegment)}
-            </div>
-          </article>
-        </div>
-        <div className="pandemia-prose pandemia-prose-conclusion" data-testid="pandemia-responsive-prose">
-          {bodySegments.map(renderSegment)}
-        </div>
+            {introSegments.map(renderSegment)}
+          </div>
+          <div className="pandemia-stage-scroll" data-testid="pandemia-stage-scroll" ref={stageRef}>
+            <article
+              className="pandemia-page pandemia-native-page"
+              style={{
+                aspectRatio: `${pandemiaInfographicFrame.width} / ${pandemiaInfographicFrame.height}`,
+                width: pandemiaPagePreviewWidth,
+              }}
+              aria-label="Инфографика раздела Дорожная пандемия - нативная русская реконструкция фрагмента GCBA manual page 15"
+              data-rendering="native-html-css-svg"
+              data-testid="pandemia-page"
+            >
+              <div className="pandemia-native-layer" data-testid="pandemia-native-layer">
+                {pandemiaNativeShapes.map((shape) => (
+                  <span
+                    key={shape.id}
+                    className={`pandemia-native-shape pandemia-native-shape-${shape.kind}`}
+                    style={pandemiaGeometryStyle(shape.geometry, pandemiaInfographicFrame)}
+                    data-testid="pandemia-native-shape"
+                    data-shape-id={shape.id}
+                    aria-hidden="true"
+                  />
+                ))}
+                {pandemiaVialSection.assets.map((asset) => (
+                  <img
+                    key={asset.id}
+                    className={`pandemia-crop-asset pandemia-crop-asset-${asset.id}`}
+                    src={assetUrl(asset.localPath)}
+                    alt=""
+                    style={pandemiaGeometryStyle(asset.geometry, pandemiaInfographicFrame)}
+                    data-testid="pandemia-crop-asset"
+                    data-asset-id={asset.id}
+                    data-asset-kind={asset.kind}
+                    data-cleanup-status={asset.cleanupStatus}
+                    data-male-count={asset.pictogramSemantics?.maleCount}
+                    data-female-count={asset.pictogramSemantics?.femaleCount}
+                    data-total-count={asset.pictogramSemantics?.totalCount}
+                    data-male-signature={asset.pictogramSemantics?.maleSignature}
+                    data-female-signature={asset.pictogramSemantics?.femaleSignature}
+                    data-male-pictograms-identical={
+                      asset.pictogramSemantics?.malePictogramsIdentical
+                    }
+                    aria-hidden="true"
+                    draggable={false}
+                  />
+                ))}
+              </div>
+              <div className="pandemia-text-layer" data-testid="pandemia-text-layer">
+                {infographicSegments.map(renderSegment)}
+              </div>
+            </article>
+          </div>
+          <div
+            className="pandemia-prose pandemia-prose-conclusion"
+            data-testid="pandemia-responsive-prose"
+          >
+            {bodySegments.map(renderSegment)}
+          </div>
         </div>
       </article>
       <ManualTicketAppendix key="intro-road-pandemic" pageId="intro-road-pandemic" />
@@ -1885,7 +2302,12 @@ function PandemiaVialPrototypeView() {
 function IntroductionArticleBlockView({ block }: { block: IntroductionArticleBlock }) {
   if (block.kind === "list") {
     return (
-      <section className="intro-doc-block intro-doc-list" data-testid="intro-article-block" data-block-kind={block.kind} data-block-id={block.id}>
+      <section
+        className="intro-doc-block intro-doc-list"
+        data-testid="intro-article-block"
+        data-block-kind={block.kind}
+        data-block-id={block.id}
+      >
         {block.titleRu && <h3>{block.titleRu}</h3>}
         <ul>
           {block.itemsRu.map((item) => (
@@ -1898,16 +2320,30 @@ function IntroductionArticleBlockView({ block }: { block: IntroductionArticleBlo
 
   if (block.kind === "risk-factors") {
     return (
-      <section className="intro-doc-block intro-risk-panel" data-testid="intro-article-block" data-block-kind={block.kind} data-block-id={block.id}>
+      <section
+        className="intro-doc-block intro-risk-panel"
+        data-testid="intro-article-block"
+        data-block-kind={block.kind}
+        data-block-id={block.id}
+      >
         <div className="intro-risk-heading-row">
           <h3>{block.headingRu}</h3>
           <p>Риск возникает из взаимодействия этих трех факторов.</p>
         </div>
         <div className="intro-risk-list">
           {block.factors.map((factor) => (
-            <article key={factor.id} className={factor.emphasis === "warning" ? "intro-risk-card warning" : "intro-risk-card"} data-risk-id={factor.id}>
+            <article
+              key={factor.id}
+              className={
+                factor.emphasis === "warning" ? "intro-risk-card warning" : "intro-risk-card"
+              }
+              data-risk-id={factor.id}
+            >
               <span className="intro-risk-lobe" aria-hidden="true">
-                <SourceArtworkImage asset={artworkAssetById(block.artworkAssets, factor.iconAssetId)} className="intro-risk-symbol" />
+                <SourceArtworkImage
+                  asset={artworkAssetById(block.artworkAssets, factor.iconAssetId)}
+                  className="intro-risk-symbol"
+                />
               </span>
               <div>
                 <h4>{factor.titleRu}</h4>
@@ -1926,12 +2362,26 @@ function IntroductionArticleBlockView({ block }: { block: IntroductionArticleBlo
 
   if (block.kind === "consequence-diagram") {
     return (
-      <section className="intro-doc-block intro-consequence" data-testid="intro-article-block" data-block-kind={block.kind} data-block-id={block.id}>
+      <section
+        className="intro-doc-block intro-consequence"
+        data-testid="intro-article-block"
+        data-block-kind={block.kind}
+        data-block-id={block.id}
+      >
         <h3>{block.headingRu}</h3>
         <div className="intro-consequence-diagram" data-testid="intro-consequence-diagram">
-          <SourceArtworkImage asset={block.backgroundAsset} className="intro-consequence-background" />
+          <SourceArtworkImage
+            asset={block.backgroundAsset}
+            className="intro-consequence-background"
+          />
           {block.groups.map((group) => (
-            <article key={group.id} className={group.tone === "dark" ? "intro-consequence-card dark" : "intro-consequence-card"} data-consequence-id={group.id}>
+            <article
+              key={group.id}
+              className={
+                group.tone === "dark" ? "intro-consequence-card dark" : "intro-consequence-card"
+              }
+              data-consequence-id={group.id}
+            >
               <h4>{group.titleRu}</h4>
               <ul>
                 {group.itemsRu.map((item) => (
@@ -1952,14 +2402,22 @@ function IntroductionArticleBlockView({ block }: { block: IntroductionArticleBlo
 
   if (block.kind === "work-axes") {
     return (
-      <section className="intro-doc-block intro-work-axes" data-testid="intro-article-block" data-block-kind={block.kind} data-block-id={block.id}>
+      <section
+        className="intro-doc-block intro-work-axes"
+        data-testid="intro-article-block"
+        data-block-kind={block.kind}
+        data-block-id={block.id}
+      >
         <h3>{block.headingRu}</h3>
         <div className="intro-axis-grid">
           {block.axes.map((axis) => (
             <article key={axis.id} className="intro-axis-card" data-axis-id={axis.id}>
               <h4>{axis.titleRu}</h4>
               <span className="intro-axis-circle" aria-hidden="true">
-                <SourceArtworkImage asset={artworkAssetById(block.artworkAssets, axis.iconAssetId)} className="intro-axis-symbol" />
+                <SourceArtworkImage
+                  asset={artworkAssetById(block.artworkAssets, axis.iconAssetId)}
+                  className="intro-axis-symbol"
+                />
               </span>
               <p>{axis.textRu}</p>
             </article>
@@ -1971,8 +2429,18 @@ function IntroductionArticleBlockView({ block }: { block: IntroductionArticleBlo
 
   if (block.kind === "photo-quote") {
     return (
-      <figure className="intro-photo-quote" data-testid="intro-article-block" data-block-kind={block.kind} data-block-id={block.id}>
-        <img src={assetUrl(block.image.localPath)} alt={block.image.altRu} data-testid="intro-photo-crop" data-cleanup-status={block.image.cleanupStatus} />
+      <figure
+        className="intro-photo-quote"
+        data-testid="intro-article-block"
+        data-block-kind={block.kind}
+        data-block-id={block.id}
+      >
+        <img
+          src={assetUrl(block.image.localPath)}
+          alt={block.image.altRu}
+          data-testid="intro-photo-crop"
+          data-cleanup-status={block.image.cleanupStatus}
+        />
         <blockquote>{block.quoteRu}</blockquote>
       </figure>
     );
@@ -1994,7 +2462,12 @@ function IntroductionArticleBlockView({ block }: { block: IntroductionArticleBlo
 function IntroductionArticleView({ section }: { section: IntroductionArticleSection }) {
   return (
     <>
-      <article className="intro-document" aria-labelledby={`${section.id}-title`} data-testid="intro-article" data-intro-section-id={section.id}>
+      <article
+        className="intro-document"
+        aria-labelledby={`${section.id}-title`}
+        data-testid="intro-article"
+        data-intro-section-id={section.id}
+      >
         <header className="intro-document-header">
           <h2 id={`${section.id}-title`}>{section.titleRu}</h2>
         </header>
@@ -2019,7 +2492,7 @@ function splitManualMobilityStat(text: string) {
   const [value, unit, ...labelParts] = text.split(" ");
   return {
     value: [value, unit].filter(Boolean).join(" "),
-    label: labelParts.join(" ")
+    label: labelParts.join(" "),
   };
 }
 
@@ -2027,10 +2500,17 @@ function manualSpriteBackground(assetPath: string) {
   return { backgroundImage: `url(${assetUrl(assetPath)})` };
 }
 
-function ManualImageTermTranslations({ terms }: { terms?: { termEs: string; translationRu: string }[] }) {
+function ManualImageTermTranslations({
+  terms,
+}: {
+  terms?: { termEs: string; translationRu: string }[];
+}) {
   if (!terms || terms.length === 0) return null;
   return (
-    <dl className="manual-source-image-term-translations" aria-label="Перевод подписей на изображении">
+    <dl
+      className="manual-source-image-term-translations"
+      aria-label="Перевод подписей на изображении"
+    >
       {terms.map((term) => (
         <div className="manual-source-image-term-translation" key={term.termEs}>
           <dt lang="es">{term.termEs}</dt>
@@ -2041,7 +2521,11 @@ function ManualImageTermTranslations({ terms }: { terms?: { termEs: string; tran
   );
 }
 
-function MobilityContextBlockView({ block }: { block: Extract<ManualGuideSectionContent["blocks"][number], { kind: "mobility-context" }> }) {
+function MobilityContextBlockView({
+  block,
+}: {
+  block: Extract<ManualGuideSectionContent["blocks"][number], { kind: "mobility-context" }>;
+}) {
   const interjurisdictional = splitManualMobilityStat(block.trips.interjurisdictionalRu);
   const internal = splitManualMobilityStat(block.trips.internalRu);
 
@@ -2104,7 +2588,10 @@ function MobilityContextBlockView({ block }: { block: Extract<ManualGuideSection
             data-source-as-is={block.space.sourceImageException?.sourceAsIs}
             loading="lazy"
           />
-          <div className="manual-space-labels" aria-label="Русские переводы испанских подписей в визуале">
+          <div
+            className="manual-space-labels"
+            aria-label="Русские переводы испанских подписей в визуале"
+          >
             {block.space.modes.map((mode) => (
               <span key={mode.id}>
                 <strong lang="es">{mode.termEs}</strong>
@@ -2114,9 +2601,17 @@ function MobilityContextBlockView({ block }: { block: Extract<ManualGuideSection
           </div>
           <div className="manual-mobile-pairs manual-space-mobile-pairs">
             {block.space.modes.map((mode) => (
-              <span className="manual-mobile-pair manual-space-mobile-pair" data-mobile-pair-id={mode.id} key={mode.id}>
+              <span
+                className="manual-mobile-pair manual-space-mobile-pair"
+                data-mobile-pair-id={mode.id}
+                key={mode.id}
+              >
                 <span className="manual-mobile-pair-label">{mode.labelRu}</span>
-                <span className={`manual-mobile-pair-icon manual-space-mobile-icon manual-space-mobile-icon-${mode.id}`} style={manualSpriteBackground(block.space.assetPath)} aria-hidden="true" />
+                <span
+                  className={`manual-mobile-pair-icon manual-space-mobile-icon manual-space-mobile-icon-${mode.id}`}
+                  style={manualSpriteBackground(block.space.assetPath)}
+                  aria-hidden="true"
+                />
               </span>
             ))}
           </div>
@@ -2126,7 +2621,11 @@ function MobilityContextBlockView({ block }: { block: Extract<ManualGuideSection
   );
 }
 
-function VulnerabilityRankingBlockView({ block }: { block: Extract<ManualGuideSectionContent["blocks"][number], { kind: "vulnerability-ranking" }> }) {
+function VulnerabilityRankingBlockView({
+  block,
+}: {
+  block: Extract<ManualGuideSectionContent["blocks"][number], { kind: "vulnerability-ranking" }>;
+}) {
   return (
     <section
       className="manual-vulnerability-ranking"
@@ -2150,12 +2649,20 @@ function VulnerabilityRankingBlockView({ block }: { block: Extract<ManualGuideSe
         <img src={assetUrl(block.assetPath)} alt="" data-visible-spanish={false} loading="lazy" />
         <div className="manual-mobile-pairs manual-vulnerability-mobile-pairs">
           {block.levels.map((level, index) => (
-            <span className="manual-mobile-pair manual-vulnerability-mobile-pair" data-mobile-pair-id={String(index + 1)} key={level.labelRu}>
+            <span
+              className="manual-mobile-pair manual-vulnerability-mobile-pair"
+              data-mobile-pair-id={String(index + 1)}
+              key={level.labelRu}
+            >
               <span className="manual-mobile-pair-label">
                 <strong>{level.rankRu}</strong>
                 {level.labelRu}
               </span>
-              <span className={`manual-mobile-pair-icon manual-vulnerability-mobile-icon manual-vulnerability-mobile-icon-${index + 1}`} style={manualSpriteBackground(block.assetPath)} aria-hidden="true" />
+              <span
+                className={`manual-mobile-pair-icon manual-vulnerability-mobile-icon manual-vulnerability-mobile-icon-${index + 1}`}
+                style={manualSpriteBackground(block.assetPath)}
+                aria-hidden="true"
+              />
             </span>
           ))}
         </div>
@@ -2164,7 +2671,14 @@ function VulnerabilityRankingBlockView({ block }: { block: Extract<ManualGuideSe
   );
 }
 
-function PedestrianPhotoComparisonBlockView({ block }: { block: Extract<ManualGuideSectionContent["blocks"][number], { kind: "pedestrian-photo-comparison" }> }) {
+function PedestrianPhotoComparisonBlockView({
+  block,
+}: {
+  block: Extract<
+    ManualGuideSectionContent["blocks"][number],
+    { kind: "pedestrian-photo-comparison" }
+  >;
+}) {
   return (
     <figure
       className="manual-pedestrian-comparison"
@@ -2176,7 +2690,12 @@ function PedestrianPhotoComparisonBlockView({ block }: { block: Extract<ManualGu
     >
       <h3>{block.titleRu}</h3>
       <div className="manual-comparison-frame">
-        <img src={assetUrl(block.assetPath)} alt={block.captionRu} data-visible-spanish={false} loading="lazy" />
+        <img
+          src={assetUrl(block.assetPath)}
+          alt={block.captionRu}
+          data-visible-spanish={false}
+          loading="lazy"
+        />
         <div className="manual-comparison-labels manual-comparison-labels-bottom">
           <span>{block.beforeLabelRu}</span>
           <span>{block.afterLabelRu}</span>
@@ -2187,7 +2706,11 @@ function PedestrianPhotoComparisonBlockView({ block }: { block: Extract<ManualGu
   );
 }
 
-function ImpactDiagramBlockView({ block }: { block: Extract<ManualGuideSectionContent["blocks"][number], { kind: "impact-diagram" }> }) {
+function ImpactDiagramBlockView({
+  block,
+}: {
+  block: Extract<ManualGuideSectionContent["blocks"][number], { kind: "impact-diagram" }>;
+}) {
   return (
     <section
       className="manual-impact-diagram"
@@ -2200,11 +2723,29 @@ function ImpactDiagramBlockView({ block }: { block: Extract<ManualGuideSectionCo
       <h3>{block.titleRu}</h3>
       <div className="manual-impact-layout">
         <div className="manual-impact-art" aria-hidden="true">
-          <img className="manual-impact-body" src={assetUrl(block.bodyAssetPath)} alt="" data-visible-spanish={false} loading="lazy" />
+          <img
+            className="manual-impact-body"
+            src={assetUrl(block.bodyAssetPath)}
+            alt=""
+            data-visible-spanish={false}
+            loading="lazy"
+          />
           <div className="manual-impact-target-wrap">
-            <img className="manual-impact-target" src={assetUrl(block.targetAssetPath)} alt="" data-visible-spanish={false} loading="lazy" />
+            <img
+              className="manual-impact-target"
+              src={assetUrl(block.targetAssetPath)}
+              alt=""
+              data-visible-spanish={false}
+              loading="lazy"
+            />
           </div>
-          <img className="manual-impact-car" src={assetUrl(block.carAssetPath)} alt="" data-visible-spanish={false} loading="lazy" />
+          <img
+            className="manual-impact-car"
+            src={assetUrl(block.carAssetPath)}
+            alt=""
+            data-visible-spanish={false}
+            loading="lazy"
+          />
         </div>
         <ol className="manual-impact-phases">
           {block.phases.map((phase) => (
@@ -2224,14 +2765,18 @@ function ImpactDiagramBlockView({ block }: { block: Extract<ManualGuideSectionCo
 }
 
 function PedestrianInfrastructureVisual({
-  card
+  card,
 }: {
-  card: Extract<ManualGuideSectionContent["blocks"][number], { kind: "pedestrian-infrastructure" }>["cards"][number];
+  card: Extract<
+    ManualGuideSectionContent["blocks"][number],
+    { kind: "pedestrian-infrastructure" }
+  >["cards"][number];
 }) {
   if (card.assetPath) {
     const officialSignException = card.officialSignException;
     const sourceImageException = card.sourceImageException;
-    const visibleSpanishScope = officialSignException?.visibleSpanishScope ?? sourceImageException?.visibleSpanishScope;
+    const visibleSpanishScope =
+      officialSignException?.visibleSpanishScope ?? sourceImageException?.visibleSpanishScope;
     const sourceAsIs = officialSignException?.sourceAsIs ?? sourceImageException?.sourceAsIs;
 
     return (
@@ -2251,9 +2796,21 @@ function PedestrianInfrastructureVisual({
   return null;
 }
 
-function PedestrianInfrastructureBlockView({ block }: { block: Extract<ManualGuideSectionContent["blocks"][number], { kind: "pedestrian-infrastructure" }> }) {
+function PedestrianInfrastructureBlockView({
+  block,
+}: {
+  block: Extract<
+    ManualGuideSectionContent["blocks"][number],
+    { kind: "pedestrian-infrastructure" }
+  >;
+}) {
   return (
-    <section className="manual-pedestrian-infrastructure" data-testid="manual-guide-section-block" data-block-kind={block.kind} data-block-id={block.id}>
+    <section
+      className="manual-pedestrian-infrastructure"
+      data-testid="manual-guide-section-block"
+      data-block-kind={block.kind}
+      data-block-id={block.id}
+    >
       <h3>{block.titleRu}</h3>
       <div className="manual-infrastructure-card-grid">
         {block.cards.map((card) => {
@@ -2268,7 +2825,9 @@ function PedestrianInfrastructureBlockView({ block }: { block: Extract<ManualGui
               data-source-region={`${card.sourceRegion.x},${card.sourceRegion.y},${card.sourceRegion.width},${card.sourceRegion.height}`}
             >
               {hasVisual && (
-                <div className={`manual-infrastructure-visual${card.officialSignException ? " manual-official-sign-visual" : ""}`}>
+                <div
+                  className={`manual-infrastructure-visual${card.officialSignException ? " manual-official-sign-visual" : ""}`}
+                >
                   <PedestrianInfrastructureVisual card={card} />
                 </div>
               )}
@@ -2290,7 +2849,11 @@ function PedestrianInfrastructureBlockView({ block }: { block: Extract<ManualGui
   );
 }
 
-function PriorityAreaMapBlockView({ block }: { block: Extract<ManualGuideSectionContent["blocks"][number], { kind: "priority-area-map" }> }) {
+function PriorityAreaMapBlockView({
+  block,
+}: {
+  block: Extract<ManualGuideSectionContent["blocks"][number], { kind: "priority-area-map" }>;
+}) {
   return (
     <figure
       className="manual-priority-map"
@@ -2316,7 +2879,10 @@ function PriorityAreaMapBlockView({ block }: { block: Extract<ManualGuideSection
           {block.legend.map((entry) => (
             <div key={entry.id}>
               <dt>
-                <span className={`manual-map-key manual-map-key-${entry.color}`} aria-hidden="true" />
+                <span
+                  className={`manual-map-key manual-map-key-${entry.color}`}
+                  aria-hidden="true"
+                />
                 {entry.labelRu}
               </dt>
             </div>
@@ -2329,7 +2895,11 @@ function PriorityAreaMapBlockView({ block }: { block: Extract<ManualGuideSection
   );
 }
 
-function TransportModeIconsBlockView({ block }: { block: Extract<ManualGuideSectionContent["blocks"][number], { kind: "transport-mode-icons" }> }) {
+function TransportModeIconsBlockView({
+  block,
+}: {
+  block: Extract<ManualGuideSectionContent["blocks"][number], { kind: "transport-mode-icons" }>;
+}) {
   return (
     <section
       className="manual-transport-icons"
@@ -2352,7 +2922,11 @@ function TransportModeIconsBlockView({ block }: { block: Extract<ManualGuideSect
   );
 }
 
-function BicycleBenefitsBlockView({ block }: { block: Extract<ManualGuideSectionContent["blocks"][number], { kind: "bicycle-benefits" }> }) {
+function BicycleBenefitsBlockView({
+  block,
+}: {
+  block: Extract<ManualGuideSectionContent["blocks"][number], { kind: "bicycle-benefits" }>;
+}) {
   return (
     <section
       className="manual-bicycle-benefits"
@@ -2378,7 +2952,11 @@ function BicycleBenefitsBlockView({ block }: { block: Extract<ManualGuideSection
   );
 }
 
-function BicycleHelmetFitBlockView({ block }: { block: Extract<ManualGuideSectionContent["blocks"][number], { kind: "bicycle-helmet-fit" }> }) {
+function BicycleHelmetFitBlockView({
+  block,
+}: {
+  block: Extract<ManualGuideSectionContent["blocks"][number], { kind: "bicycle-helmet-fit" }>;
+}) {
   return (
     <section
       className="manual-bicycle-helmet"
@@ -2404,7 +2982,11 @@ function BicycleHelmetFitBlockView({ block }: { block: Extract<ManualGuideSectio
   );
 }
 
-function BicycleGearBlockView({ block }: { block: Extract<ManualGuideSectionContent["blocks"][number], { kind: "bicycle-gear" }> }) {
+function BicycleGearBlockView({
+  block,
+}: {
+  block: Extract<ManualGuideSectionContent["blocks"][number], { kind: "bicycle-gear" }>;
+}) {
   return (
     <section
       className="manual-bicycle-gear"
@@ -2430,7 +3012,11 @@ function BicycleGearBlockView({ block }: { block: Extract<ManualGuideSectionCont
   );
 }
 
-function BicycleSignageBlockView({ block }: { block: Extract<ManualGuideSectionContent["blocks"][number], { kind: "bicycle-signage" }> }) {
+function BicycleSignageBlockView({
+  block,
+}: {
+  block: Extract<ManualGuideSectionContent["blocks"][number], { kind: "bicycle-signage" }>;
+}) {
   return (
     <section
       className="manual-bicycle-signage"
@@ -2451,7 +3037,10 @@ function BicycleSignageBlockView({ block }: { block: Extract<ManualGuideSectionC
           data-source-as-is={block.officialSignException.sourceAsIs}
           loading="lazy"
         />
-        <figcaption>Официальная таблица знаков оставлена без изменений; пояснение ниже не является частью изображения.</figcaption>
+        <figcaption>
+          Официальная таблица знаков оставлена без изменений; пояснение ниже не является частью
+          изображения.
+        </figcaption>
       </figure>
       <ManualImageTermTranslations terms={block.termTranslations} />
       <ul className="manual-bicycle-sign-notes">
@@ -2463,7 +3052,11 @@ function BicycleSignageBlockView({ block }: { block: Extract<ManualGuideSectionC
   );
 }
 
-function BicyclePostureBlockView({ block }: { block: Extract<ManualGuideSectionContent["blocks"][number], { kind: "bicycle-posture" }> }) {
+function BicyclePostureBlockView({
+  block,
+}: {
+  block: Extract<ManualGuideSectionContent["blocks"][number], { kind: "bicycle-posture" }>;
+}) {
   return (
     <section
       className="manual-bicycle-posture"
@@ -2489,7 +3082,11 @@ function BicyclePostureBlockView({ block }: { block: Extract<ManualGuideSectionC
   );
 }
 
-function BicycleDistanceBlockView({ block }: { block: Extract<ManualGuideSectionContent["blocks"][number], { kind: "bicycle-distance" }> }) {
+function BicycleDistanceBlockView({
+  block,
+}: {
+  block: Extract<ManualGuideSectionContent["blocks"][number], { kind: "bicycle-distance" }>;
+}) {
   return (
     <section
       className="manual-bicycle-distance"
@@ -2502,7 +3099,11 @@ function BicycleDistanceBlockView({ block }: { block: Extract<ManualGuideSection
       <h3>{block.titleRu}</h3>
       <div className="manual-bicycle-distance-grid">
         {block.examples.map((example) => (
-          <article key={example.id} data-distance-id={example.id} data-distance-status={example.status}>
+          <article
+            key={example.id}
+            data-distance-id={example.id}
+            data-distance-status={example.status}
+          >
             <div className="manual-bicycle-distance-image">
               <img
                 src={assetUrl(example.assetPath)}
@@ -2525,7 +3126,11 @@ function BicycleDistanceBlockView({ block }: { block: Extract<ManualGuideSection
   );
 }
 
-function BicycleHandSignalsBlockView({ block }: { block: Extract<ManualGuideSectionContent["blocks"][number], { kind: "bicycle-hand-signals" }> }) {
+function BicycleHandSignalsBlockView({
+  block,
+}: {
+  block: Extract<ManualGuideSectionContent["blocks"][number], { kind: "bicycle-hand-signals" }>;
+}) {
   return (
     <section
       className="manual-bicycle-signals"
@@ -2551,7 +3156,14 @@ function BicycleHandSignalsBlockView({ block }: { block: Extract<ManualGuideSect
   );
 }
 
-function PublicTransportComparisonBlockView({ block }: { block: Extract<ManualGuideSectionContent["blocks"][number], { kind: "public-transport-comparison" }> }) {
+function PublicTransportComparisonBlockView({
+  block,
+}: {
+  block: Extract<
+    ManualGuideSectionContent["blocks"][number],
+    { kind: "public-transport-comparison" }
+  >;
+}) {
   return (
     <figure
       className="manual-public-transport-comparison"
@@ -2563,7 +3175,12 @@ function PublicTransportComparisonBlockView({ block }: { block: Extract<ManualGu
     >
       <h3>{block.titleRu}</h3>
       <div className="manual-public-transport-comparison-layout">
-        <img src={assetUrl(block.assetPath)} alt={block.titleRu} data-visible-spanish={block.visibleSpanish} loading="lazy" />
+        <img
+          src={assetUrl(block.assetPath)}
+          alt={block.titleRu}
+          data-visible-spanish={block.visibleSpanish}
+          loading="lazy"
+        />
         <div className="manual-public-transport-facts">
           {block.facts.map((fact) => (
             <article key={fact.id} data-fact-id={fact.id}>
@@ -2578,9 +3195,21 @@ function PublicTransportComparisonBlockView({ block }: { block: Extract<ManualGu
   );
 }
 
-function PublicTransportInfrastructureBlockView({ block }: { block: Extract<ManualGuideSectionContent["blocks"][number], { kind: "public-transport-infrastructure" }> }) {
+function PublicTransportInfrastructureBlockView({
+  block,
+}: {
+  block: Extract<
+    ManualGuideSectionContent["blocks"][number],
+    { kind: "public-transport-infrastructure" }
+  >;
+}) {
   return (
-    <section className="manual-public-transport-infrastructure" data-testid="manual-guide-section-block" data-block-kind={block.kind} data-block-id={block.id}>
+    <section
+      className="manual-public-transport-infrastructure"
+      data-testid="manual-guide-section-block"
+      data-block-kind={block.kind}
+      data-block-id={block.id}
+    >
       <h3>{block.titleRu}</h3>
       <div className="manual-public-transport-card-grid">
         {block.cards.map((card) => (
@@ -2619,7 +3248,11 @@ function PublicTransportInfrastructureBlockView({ block }: { block: Extract<Manu
   );
 }
 
-function SharedTripBenefitsBlockView({ block }: { block: Extract<ManualGuideSectionContent["blocks"][number], { kind: "shared-trip-benefits" }> }) {
+function SharedTripBenefitsBlockView({
+  block,
+}: {
+  block: Extract<ManualGuideSectionContent["blocks"][number], { kind: "shared-trip-benefits" }>;
+}) {
   return (
     <section
       className="manual-shared-trip-benefits"
@@ -2635,7 +3268,12 @@ function SharedTripBenefitsBlockView({ block }: { block: Extract<ManualGuideSect
       </div>
       <div className="manual-shared-trip-benefits-layout">
         <figure className="manual-shared-trip-diagram">
-          <img src={assetUrl(block.assetPath)} alt={block.altRu} data-visible-spanish={block.visibleSpanish} loading="lazy" />
+          <img
+            src={assetUrl(block.assetPath)}
+            alt={block.altRu}
+            data-visible-spanish={block.visibleSpanish}
+            loading="lazy"
+          />
         </figure>
         <div className="manual-shared-trip-benefit-grid">
           {block.benefits.map((benefit) => (
@@ -2650,7 +3288,11 @@ function SharedTripBenefitsBlockView({ block }: { block: Extract<ManualGuideSect
   );
 }
 
-function SharedTripClosingBlockView({ block }: { block: Extract<ManualGuideSectionContent["blocks"][number], { kind: "shared-trip-closing" }> }) {
+function SharedTripClosingBlockView({
+  block,
+}: {
+  block: Extract<ManualGuideSectionContent["blocks"][number], { kind: "shared-trip-closing" }>;
+}) {
   return (
     <figure
       className="manual-shared-trip-closing"
@@ -2682,11 +3324,13 @@ function SharedTripClosingBlockView({ block }: { block: Extract<ManualGuideSecti
 }
 
 function ManualSignImage({ entry }: { entry: ManualSignEntry }) {
-  const spanishCaption = entry.variant ? `${entry.spanishLabel} (${entry.variant})` : entry.spanishLabel;
+  const spanishCaption = entry.variant
+    ? `${entry.spanishLabel} (${entry.variant})`
+    : entry.spanishLabel;
   if (!entry.assetPath || !entry.naturalWidth || !entry.naturalHeight) return null;
   const imageStyle = {
     "--manual-sign-natural-width": `${entry.naturalWidth}px`,
-    "--manual-sign-natural-height": `${entry.naturalHeight}px`
+    "--manual-sign-natural-height": `${entry.naturalHeight}px`,
   } as CSSProperties;
 
   return (
@@ -2721,7 +3365,11 @@ function ManualSignImage({ entry }: { entry: ManualSignEntry }) {
   );
 }
 
-function ManualSignCatalogBlockView({ block }: { block: Extract<ManualGuideSectionContent["blocks"][number], { kind: "manual-sign-catalog" }> }) {
+function ManualSignCatalogBlockView({
+  block,
+}: {
+  block: Extract<ManualGuideSectionContent["blocks"][number], { kind: "manual-sign-catalog" }>;
+}) {
   const entries = manualSignEntriesForSection(block.sectionId);
 
   return (
@@ -2744,7 +3392,9 @@ function ManualSignCatalogBlockView({ block }: { block: Extract<ManualGuideSecti
 }
 
 function ManualSignCatalogEntryCard({ entry }: { entry: ManualSignEntry }) {
-  const spanishCaption = entry.variant ? `${entry.spanishLabel} (${entry.variant})` : entry.spanishLabel;
+  const spanishCaption = entry.variant
+    ? `${entry.spanishLabel} (${entry.variant})`
+    : entry.spanishLabel;
   if (entry.renderMode === "category-heading-dom") {
     return (
       <article
@@ -2786,22 +3436,37 @@ function ManualSignCatalogEntryCard({ entry }: { entry: ManualSignEntry }) {
   );
 }
 
-function SourceImageCardsBlockView({ block }: { block: Extract<ManualGuideSectionContent["blocks"][number], { kind: "source-image-cards" }> }) {
+function SourceImageCardsBlockView({
+  block,
+}: {
+  block: Extract<ManualGuideSectionContent["blocks"][number], { kind: "source-image-cards" }>;
+}) {
   return (
-    <section className="manual-source-image-cards" data-testid="manual-guide-section-block" data-block-kind={block.kind} data-block-id={block.id}>
+    <section
+      className="manual-source-image-cards"
+      data-testid="manual-guide-section-block"
+      data-block-kind={block.kind}
+      data-block-id={block.id}
+    >
       <h3>{block.titleRu}</h3>
       <div className="manual-source-image-card-grid">
         {block.cards.map((card) => {
           const officialSignException = card.officialSignException;
           const sourceImageException = card.sourceImageException;
-          const visibleSpanishScope = officialSignException?.visibleSpanishScope ?? sourceImageException?.visibleSpanishScope;
+          const visibleSpanishScope =
+            officialSignException?.visibleSpanishScope ?? sourceImageException?.visibleSpanishScope;
           const sourceAsIs = officialSignException?.sourceAsIs ?? sourceImageException?.sourceAsIs;
-          const cardStyle = card.maxDisplayWidthPx || card.minDisplayWidthPx
-            ? ({
-                ...(card.maxDisplayWidthPx ? { "--manual-source-image-max-width": `${card.maxDisplayWidthPx}px` } : {}),
-                ...(card.minDisplayWidthPx ? { "--manual-source-image-min-width": `${card.minDisplayWidthPx}px` } : {})
-              } as CSSProperties)
-            : undefined;
+          const cardStyle =
+            card.maxDisplayWidthPx || card.minDisplayWidthPx
+              ? ({
+                  ...(card.maxDisplayWidthPx
+                    ? { "--manual-source-image-max-width": `${card.maxDisplayWidthPx}px` }
+                    : {}),
+                  ...(card.minDisplayWidthPx
+                    ? { "--manual-source-image-min-width": `${card.minDisplayWidthPx}px` }
+                    : {}),
+                } as CSSProperties)
+              : undefined;
 
           return (
             <article
@@ -2816,7 +3481,11 @@ function SourceImageCardsBlockView({ block }: { block: Extract<ManualGuideSectio
               data-source-region={`${card.sourceRegion.x},${card.sourceRegion.y},${card.sourceRegion.width},${card.sourceRegion.height}`}
               style={cardStyle}
             >
-              <figure data-russian-overlay-strategy={card.russianOverlayLabels ? "selectable-dom" : undefined}>
+              <figure
+                data-russian-overlay-strategy={
+                  card.russianOverlayLabels ? "selectable-dom" : undefined
+                }
+              >
                 <img
                   src={assetUrl(card.assetPath)}
                   alt={card.altRu}
@@ -2828,7 +3497,10 @@ function SourceImageCardsBlockView({ block }: { block: Extract<ManualGuideSectio
                   loading="lazy"
                 />
                 {card.russianOverlayLabels && (
-                  <div className="manual-source-image-overlay" aria-label="Русские подписи поверх перенесенного инфографического визуала">
+                  <div
+                    className="manual-source-image-overlay"
+                    aria-label="Русские подписи поверх перенесенного инфографического визуала"
+                  >
                     {card.russianOverlayLabels.map((label) => (
                       <span
                         className={`manual-source-image-overlay-label manual-source-image-overlay-label-${label.tone}`}
@@ -2838,7 +3510,7 @@ function SourceImageCardsBlockView({ block }: { block: Extract<ManualGuideSectio
                           left: `${label.xPct}%`,
                           top: `${label.yPct}%`,
                           width: `${label.widthPct}%`,
-                          height: `max(${label.heightPct}%, 2.1em)`
+                          height: `max(${label.heightPct}%, 2.1em)`,
                         }}
                       >
                         {label.textRu}
@@ -2863,188 +3535,239 @@ function SourceImageCardsBlockView({ block }: { block: Extract<ManualGuideSectio
 function ManualGuideSectionContentView({ content }: { content: ManualGuideSectionContent }) {
   return (
     <>
-      <article className="intro-document manual-guide-section" aria-labelledby={`${content.sectionId}-title`} data-testid="manual-guide-section" data-manual-section-id={content.sectionId}>
+      <article
+        className="intro-document manual-guide-section"
+        aria-labelledby={`${content.sectionId}-title`}
+        data-testid="manual-guide-section"
+        data-manual-section-id={content.sectionId}
+      >
         <header className="intro-document-header">
           <p className="eyebrow">{manualGuideSectionSourceLabel(content.sourcePages)}</p>
           <h2 id={`${content.sectionId}-title`}>{content.titleRu}</h2>
         </header>
         <div className="intro-document-flow">
-        {content.blocks.map((block) => {
-          if (block.kind === "table") {
-            return (
-              <section key={block.id} className="intro-doc-block manual-guide-table-block" data-testid="manual-guide-section-block" data-block-kind={block.kind} data-block-id={block.id}>
-                <h3>{block.titleRu}</h3>
-                <div className="manual-guide-table-scroll">
-                  <table>
-                    <thead>
-                      <tr>
-                        {block.columnsRu.map((column) => (
-                          <th key={column} scope="col">
-                            {column}
-                          </th>
-                        ))}
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {block.rows.map((row) => (
-                        <tr key={row.id}>
-                          {row.cellsRu.map((cell, index) => (
-                            <td key={`${row.id}-${index}`}>{cell}</td>
+          {content.blocks.map((block) => {
+            if (block.kind === "table") {
+              return (
+                <section
+                  key={block.id}
+                  className="intro-doc-block manual-guide-table-block"
+                  data-testid="manual-guide-section-block"
+                  data-block-kind={block.kind}
+                  data-block-id={block.id}
+                >
+                  <h3>{block.titleRu}</h3>
+                  <div className="manual-guide-table-scroll">
+                    <table>
+                      <thead>
+                        <tr>
+                          {block.columnsRu.map((column) => (
+                            <th key={column} scope="col">
+                              {column}
+                            </th>
                           ))}
                         </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-                {block.captionRu && <p className="manual-guide-table-caption">{block.captionRu}</p>}
-              </section>
-            );
-          }
-          if (block.kind === "list") {
+                      </thead>
+                      <tbody>
+                        {block.rows.map((row) => (
+                          <tr key={row.id}>
+                            {row.cellsRu.map((cell, index) => (
+                              <td key={`${row.id}-${index}`}>{cell}</td>
+                            ))}
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                  {block.captionRu && (
+                    <p className="manual-guide-table-caption">{block.captionRu}</p>
+                  )}
+                </section>
+              );
+            }
+            if (block.kind === "list") {
+              return (
+                <section
+                  key={block.id}
+                  className="intro-doc-block intro-doc-list"
+                  data-testid="manual-guide-section-block"
+                  data-block-kind={block.kind}
+                  data-block-id={block.id}
+                >
+                  {block.titleRu && <h3>{block.titleRu}</h3>}
+                  <ul>
+                    {block.itemsRu.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </section>
+              );
+            }
+            if (block.kind === "glossary-list") {
+              return (
+                <section
+                  key={block.id}
+                  className="intro-doc-block intro-doc-list manual-glossary-list"
+                  data-testid="manual-guide-section-block"
+                  data-block-kind={block.kind}
+                  data-block-id={block.id}
+                >
+                  {block.titleRu && <h3>{block.titleRu}</h3>}
+                  <ul>
+                    {block.items.map((item) => (
+                      <li
+                        key={item.id}
+                        className="manual-glossary-item"
+                        data-testid="manual-glossary-item"
+                        data-term-es={item.termEs}
+                      >
+                        <strong
+                          className="manual-glossary-term"
+                          lang="es"
+                          data-testid="manual-glossary-term"
+                        >
+                          {item.termEs}
+                        </strong>{" "}
+                        <span className="manual-glossary-translation" lang="ru">
+                          ({item.translationRu})
+                        </span>
+                        :{" "}
+                        <span className="manual-glossary-definition" lang="ru">
+                          {item.definitionRu}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+              );
+            }
+            if (block.kind === "source-artwork") {
+              return (
+                <figure
+                  key={block.id}
+                  className="manual-guide-source-artwork"
+                  data-testid="manual-guide-section-block"
+                  data-block-kind={block.kind}
+                  data-block-id={block.id}
+                >
+                  {block.titleRu && <h3>{block.titleRu}</h3>}
+                  <img
+                    src={assetUrl(block.assetPath)}
+                    alt={block.altRu}
+                    data-visible-spanish={block.visibleSpanish}
+                    data-cleanup-status={block.cleanupStatus}
+                  />
+                  {block.captionRu && <figcaption>{block.captionRu}</figcaption>}
+                </figure>
+              );
+            }
+            if (block.kind === "principle-pair") {
+              return (
+                <section
+                  key={block.id}
+                  className="manual-principle-pair"
+                  data-testid="manual-guide-section-block"
+                  data-block-kind={block.kind}
+                  data-block-id={block.id}
+                  data-source-page={block.sourcePage}
+                  data-source-region={`${block.sourceRegion.x},${block.sourceRegion.y},${block.sourceRegion.width},${block.sourceRegion.height}`}
+                >
+                  <h3>{block.titleRu}</h3>
+                  <div className="manual-principle-terms" data-testid="manual-principle-terms">
+                    <strong>{block.leftRu}</strong>
+                    <strong>{block.rightRu}</strong>
+                  </div>
+                  {block.closingRu && <p>{block.closingRu}</p>}
+                </section>
+              );
+            }
+            if (block.kind === "principle-note") {
+              return (
+                <p
+                  key={block.id}
+                  className="intro-doc-block manual-principle-note"
+                  data-testid="manual-guide-section-block"
+                  data-block-kind={block.kind}
+                  data-block-id={block.id}
+                >
+                  {block.textRu}
+                </p>
+              );
+            }
+            if (block.kind === "mobility-context") {
+              return <MobilityContextBlockView key={block.id} block={block} />;
+            }
+            if (block.kind === "vulnerability-ranking") {
+              return <VulnerabilityRankingBlockView key={block.id} block={block} />;
+            }
+            if (block.kind === "pedestrian-photo-comparison") {
+              return <PedestrianPhotoComparisonBlockView key={block.id} block={block} />;
+            }
+            if (block.kind === "impact-diagram") {
+              return <ImpactDiagramBlockView key={block.id} block={block} />;
+            }
+            if (block.kind === "pedestrian-infrastructure") {
+              return <PedestrianInfrastructureBlockView key={block.id} block={block} />;
+            }
+            if (block.kind === "priority-area-map") {
+              return <PriorityAreaMapBlockView key={block.id} block={block} />;
+            }
+            if (block.kind === "transport-mode-icons") {
+              return <TransportModeIconsBlockView key={block.id} block={block} />;
+            }
+            if (block.kind === "bicycle-benefits") {
+              return <BicycleBenefitsBlockView key={block.id} block={block} />;
+            }
+            if (block.kind === "bicycle-helmet-fit") {
+              return <BicycleHelmetFitBlockView key={block.id} block={block} />;
+            }
+            if (block.kind === "bicycle-gear") {
+              return <BicycleGearBlockView key={block.id} block={block} />;
+            }
+            if (block.kind === "bicycle-signage") {
+              return <BicycleSignageBlockView key={block.id} block={block} />;
+            }
+            if (block.kind === "bicycle-posture") {
+              return <BicyclePostureBlockView key={block.id} block={block} />;
+            }
+            if (block.kind === "bicycle-distance") {
+              return <BicycleDistanceBlockView key={block.id} block={block} />;
+            }
+            if (block.kind === "bicycle-hand-signals") {
+              return <BicycleHandSignalsBlockView key={block.id} block={block} />;
+            }
+            if (block.kind === "public-transport-comparison") {
+              return <PublicTransportComparisonBlockView key={block.id} block={block} />;
+            }
+            if (block.kind === "public-transport-infrastructure") {
+              return <PublicTransportInfrastructureBlockView key={block.id} block={block} />;
+            }
+            if (block.kind === "shared-trip-benefits") {
+              return <SharedTripBenefitsBlockView key={block.id} block={block} />;
+            }
+            if (block.kind === "shared-trip-closing") {
+              return <SharedTripClosingBlockView key={block.id} block={block} />;
+            }
+            if (block.kind === "manual-sign-catalog") {
+              return <ManualSignCatalogBlockView key={block.id} block={block} />;
+            }
+            if (block.kind === "source-image-cards") {
+              return <SourceImageCardsBlockView key={block.id} block={block} />;
+            }
+
+            const Tag = block.kind === "quote" ? "blockquote" : "p";
             return (
-              <section key={block.id} className="intro-doc-block intro-doc-list" data-testid="manual-guide-section-block" data-block-kind={block.kind} data-block-id={block.id}>
-                {block.titleRu && <h3>{block.titleRu}</h3>}
-                <ul>
-                  {block.itemsRu.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-              </section>
-            );
-          }
-          if (block.kind === "glossary-list") {
-            return (
-              <section key={block.id} className="intro-doc-block intro-doc-list manual-glossary-list" data-testid="manual-guide-section-block" data-block-kind={block.kind} data-block-id={block.id}>
-                {block.titleRu && <h3>{block.titleRu}</h3>}
-                <ul>
-                  {block.items.map((item) => (
-                    <li key={item.id} className="manual-glossary-item" data-testid="manual-glossary-item" data-term-es={item.termEs}>
-                      <strong className="manual-glossary-term" lang="es" data-testid="manual-glossary-term">
-                        {item.termEs}
-                      </strong>{" "}
-                      <span className="manual-glossary-translation" lang="ru">
-                        ({item.translationRu})
-                      </span>
-                      :{" "}
-                      <span className="manual-glossary-definition" lang="ru">
-                        {item.definitionRu}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              </section>
-            );
-          }
-          if (block.kind === "source-artwork") {
-            return (
-              <figure key={block.id} className="manual-guide-source-artwork" data-testid="manual-guide-section-block" data-block-kind={block.kind} data-block-id={block.id}>
-                {block.titleRu && <h3>{block.titleRu}</h3>}
-                <img src={assetUrl(block.assetPath)} alt={block.altRu} data-visible-spanish={block.visibleSpanish} data-cleanup-status={block.cleanupStatus} />
-                {block.captionRu && <figcaption>{block.captionRu}</figcaption>}
-              </figure>
-            );
-          }
-          if (block.kind === "principle-pair") {
-            return (
-              <section
+              <Tag
                 key={block.id}
-                className="manual-principle-pair"
+                className={`intro-doc-block intro-doc-${block.kind}`}
                 data-testid="manual-guide-section-block"
                 data-block-kind={block.kind}
                 data-block-id={block.id}
-                data-source-page={block.sourcePage}
-                data-source-region={`${block.sourceRegion.x},${block.sourceRegion.y},${block.sourceRegion.width},${block.sourceRegion.height}`}
               >
-                <h3>{block.titleRu}</h3>
-                <div className="manual-principle-terms" data-testid="manual-principle-terms">
-                  <strong>{block.leftRu}</strong>
-                  <strong>{block.rightRu}</strong>
-                </div>
-                {block.closingRu && <p>{block.closingRu}</p>}
-              </section>
-            );
-          }
-          if (block.kind === "principle-note") {
-            return (
-              <p key={block.id} className="intro-doc-block manual-principle-note" data-testid="manual-guide-section-block" data-block-kind={block.kind} data-block-id={block.id}>
                 {block.textRu}
-              </p>
+              </Tag>
             );
-          }
-          if (block.kind === "mobility-context") {
-            return <MobilityContextBlockView key={block.id} block={block} />;
-          }
-          if (block.kind === "vulnerability-ranking") {
-            return <VulnerabilityRankingBlockView key={block.id} block={block} />;
-          }
-          if (block.kind === "pedestrian-photo-comparison") {
-            return <PedestrianPhotoComparisonBlockView key={block.id} block={block} />;
-          }
-          if (block.kind === "impact-diagram") {
-            return <ImpactDiagramBlockView key={block.id} block={block} />;
-          }
-          if (block.kind === "pedestrian-infrastructure") {
-            return <PedestrianInfrastructureBlockView key={block.id} block={block} />;
-          }
-          if (block.kind === "priority-area-map") {
-            return <PriorityAreaMapBlockView key={block.id} block={block} />;
-          }
-          if (block.kind === "transport-mode-icons") {
-            return <TransportModeIconsBlockView key={block.id} block={block} />;
-          }
-          if (block.kind === "bicycle-benefits") {
-            return <BicycleBenefitsBlockView key={block.id} block={block} />;
-          }
-          if (block.kind === "bicycle-helmet-fit") {
-            return <BicycleHelmetFitBlockView key={block.id} block={block} />;
-          }
-          if (block.kind === "bicycle-gear") {
-            return <BicycleGearBlockView key={block.id} block={block} />;
-          }
-          if (block.kind === "bicycle-signage") {
-            return <BicycleSignageBlockView key={block.id} block={block} />;
-          }
-          if (block.kind === "bicycle-posture") {
-            return <BicyclePostureBlockView key={block.id} block={block} />;
-          }
-          if (block.kind === "bicycle-distance") {
-            return <BicycleDistanceBlockView key={block.id} block={block} />;
-          }
-          if (block.kind === "bicycle-hand-signals") {
-            return <BicycleHandSignalsBlockView key={block.id} block={block} />;
-          }
-          if (block.kind === "public-transport-comparison") {
-            return <PublicTransportComparisonBlockView key={block.id} block={block} />;
-          }
-          if (block.kind === "public-transport-infrastructure") {
-            return <PublicTransportInfrastructureBlockView key={block.id} block={block} />;
-          }
-          if (block.kind === "shared-trip-benefits") {
-            return <SharedTripBenefitsBlockView key={block.id} block={block} />;
-          }
-          if (block.kind === "shared-trip-closing") {
-            return <SharedTripClosingBlockView key={block.id} block={block} />;
-          }
-          if (block.kind === "manual-sign-catalog") {
-            return <ManualSignCatalogBlockView key={block.id} block={block} />;
-          }
-          if (block.kind === "source-image-cards") {
-            return <SourceImageCardsBlockView key={block.id} block={block} />;
-          }
-
-          const Tag = block.kind === "quote" ? "blockquote" : "p";
-          return (
-            <Tag
-              key={block.id}
-              className={`intro-doc-block intro-doc-${block.kind}`}
-              data-testid="manual-guide-section-block"
-              data-block-kind={block.kind}
-              data-block-id={block.id}
-            >
-              {block.textRu}
-            </Tag>
-          );
-        })}
+          })}
         </div>
       </article>
       <ManualTicketAppendix key={content.sectionId} pageId={content.sectionId} />
@@ -3056,14 +3779,17 @@ function manualGuideSectionIsAvailable(section: ManualGuideSectionEntry) {
   return section.status === "implemented" && manualGuideSectionContentById.has(section.id);
 }
 
-function manualGuideActiveGroupId(selectedEntry: IntroductionNavigationEntry, selectedManualSection?: ManualGuideSectionEntry) {
+function manualGuideActiveGroupId(
+  selectedEntry: IntroductionNavigationEntry,
+  selectedManualSection?: ManualGuideSectionEntry,
+) {
   if (selectedManualSection) {
     return manualGuideNavigation.find((entry) =>
-      entry.children?.some((child) => child.section?.id === selectedManualSection.id)
+      entry.children?.some((child) => child.section?.id === selectedManualSection.id),
     )?.id;
   }
   return manualGuideNavigation.find((entry) =>
-    entry.children?.some((child) => child.introductionRouteId === selectedEntry.id)
+    entry.children?.some((child) => child.introductionRouteId === selectedEntry.id),
   )?.id;
 }
 
@@ -3071,15 +3797,18 @@ function IntroductionSectionsView({
   selectedEntry,
   onSelectEntry,
   selectedManualSection,
-  onSelectManualSection
+  onSelectManualSection,
 }: {
   selectedEntry: IntroductionNavigationEntry;
   onSelectEntry: (entry: IntroductionNavigationEntry) => void;
   selectedManualSection?: ManualGuideSectionEntry;
   onSelectManualSection: (section: ManualGuideSectionEntry) => void;
 }) {
-  const selectedArticle = selectedEntry.renderer === "article" ? introductionArticleById(selectedEntry.id) : undefined;
-  const selectedManualSectionContent = selectedManualSection ? manualGuideSectionContentById.get(selectedManualSection.id) : undefined;
+  const selectedArticle =
+    selectedEntry.renderer === "article" ? introductionArticleById(selectedEntry.id) : undefined;
+  const selectedManualSectionContent = selectedManualSection
+    ? manualGuideSectionContentById.get(selectedManualSection.id)
+    : undefined;
   const activeGroupId = manualGuideActiveGroupId(selectedEntry, selectedManualSection);
   const activeChildId = selectedManualSection?.id ?? selectedEntry.id;
 
@@ -3087,18 +3816,23 @@ function IntroductionSectionsView({
     const isAvailable = manualGuideSectionIsAvailable(section);
     const isActiveSection = selectedManualSection?.id === section.id;
     const pendingSectionStatusLabel = "ожидает PR";
-    const sourcePagesLabel = section.sourcePageRange.start === section.sourcePageRange.end
-      ? String(section.sourcePageRange.start)
-      : `${section.sourcePageRange.start}-${section.sourcePageRange.end}`;
+    const sourcePagesLabel =
+      section.sourcePageRange.start === section.sourcePageRange.end
+        ? String(section.sourcePageRange.start)
+        : `${section.sourcePageRange.start}-${section.sourcePageRange.end}`;
     return (
       <button
         key={section.id}
         type="button"
-        className={isActiveSection ? "manual-guide-section-button active" : "manual-guide-section-button"}
+        className={
+          isActiveSection ? "manual-guide-section-button active" : "manual-guide-section-button"
+        }
         disabled={!isAvailable}
         aria-disabled={!isAvailable}
         aria-current={isActiveSection ? "page" : undefined}
-        aria-label={isAvailable ? section.labelRu : `${section.labelRu}: ${pendingSectionStatusLabel}`}
+        aria-label={
+          isAvailable ? section.labelRu : `${section.labelRu}: ${pendingSectionStatusLabel}`
+        }
         onClick={() => isAvailable && onSelectManualSection(section)}
         data-testid={`manual-guide-pending-section-${section.id}`}
         data-manual-section-id={section.id}
@@ -3117,7 +3851,11 @@ function IntroductionSectionsView({
   }
 
   return (
-    <section className="introduction-reader" aria-labelledby="introduction-reader-title" data-testid="introduction-reader">
+    <section
+      className="introduction-reader"
+      aria-labelledby="introduction-reader-title"
+      data-testid="introduction-reader"
+    >
       <header className="materials-header introduction-header">
         <div>
           <p className="eyebrow">Интерактивное руководство</p>
@@ -3152,16 +3890,27 @@ function IntroductionSectionsView({
                 {entry.children && (
                   <div className="manual-guide-children" role="list">
                     {entry.children.map((child) => {
-                      const introEntry = child.introductionRouteId ? introductionEntryById(child.introductionRouteId) : undefined;
+                      const introEntry = child.introductionRouteId
+                        ? introductionEntryById(child.introductionRouteId)
+                        : undefined;
                       const sectionEntry = child.section;
-                      const isActiveChild = child.introductionRouteId === selectedEntry.id && !selectedManualSection;
-                      const isActiveSection = Boolean(sectionEntry && selectedManualSection?.id === sectionEntry.id);
-                      const isDisabled = sectionEntry ? !manualGuideSectionIsAvailable(sectionEntry) : child.status === "pending" || !introEntry;
+                      const isActiveChild =
+                        child.introductionRouteId === selectedEntry.id && !selectedManualSection;
+                      const isActiveSection = Boolean(
+                        sectionEntry && selectedManualSection?.id === sectionEntry.id,
+                      );
+                      const isDisabled = sectionEntry
+                        ? !manualGuideSectionIsAvailable(sectionEntry)
+                        : child.status === "pending" || !introEntry;
                       return (
                         <div
                           key={child.id}
                           role="listitem"
-                          data-testid={child.introductionRouteId ? `manual-guide-route-item-${child.introductionRouteId}` : `manual-guide-section-item-${child.id}`}
+                          data-testid={
+                            child.introductionRouteId
+                              ? `manual-guide-route-item-${child.introductionRouteId}`
+                              : `manual-guide-section-item-${child.id}`
+                          }
                         >
                           {sectionEntry ? (
                             renderManualSectionButton(sectionEntry)
@@ -3174,7 +3923,11 @@ function IntroductionSectionsView({
                               aria-current={isActiveChild || isActiveSection ? "page" : undefined}
                               aria-label={child.labelRu}
                               onClick={() => introEntry && onSelectEntry(introEntry)}
-                              data-testid={child.introductionRouteId ? `intro-route-${child.introductionRouteId}` : `manual-guide-pending-${child.id}`}
+                              data-testid={
+                                child.introductionRouteId
+                                  ? `intro-route-${child.introductionRouteId}`
+                                  : `manual-guide-pending-${child.id}`
+                              }
                               data-route-hash={child.routeHash}
                               data-source-title-es={child.sourceTitleEs}
                               data-source-page={child.sourcePage}
@@ -3195,9 +3948,15 @@ function IntroductionSectionsView({
         </nav>
 
         <div className="manual-guide-content" data-testid="manual-guide-content">
-          {selectedManualSectionContent && <ManualGuideSectionContentView content={selectedManualSectionContent} />}
-          {!selectedManualSectionContent && selectedEntry.renderer === "pandemia" && <PandemiaVialPrototypeView />}
-          {!selectedManualSectionContent && selectedEntry.renderer === "article" && selectedArticle && <IntroductionArticleView section={selectedArticle} />}
+          {selectedManualSectionContent && (
+            <ManualGuideSectionContentView content={selectedManualSectionContent} />
+          )}
+          {!selectedManualSectionContent && selectedEntry.renderer === "pandemia" && (
+            <PandemiaVialPrototypeView />
+          )}
+          {!selectedManualSectionContent &&
+            selectedEntry.renderer === "article" &&
+            selectedArticle && <IntroductionArticleView section={selectedArticle} />}
         </div>
       </div>
     </section>
@@ -3212,7 +3971,7 @@ function ManualRussianPageCanvas({
   page,
   layout,
   imageLoadFailed,
-  onImageError
+  onImageError,
 }: {
   page: ManualPage;
   layout: ManualPageLayout;
@@ -3260,7 +4019,11 @@ function ManualRussianPageCanvas({
           data-mask-id={mask.id}
           data-mask-role={mask.role}
           data-source-geometry={mask.sourceGeometry}
-          style={{ ...manualBoundsStyle(mask.bounds), backgroundColor: mask.fill, opacity: mask.opacity }}
+          style={{
+            ...manualBoundsStyle(mask.bounds),
+            backgroundColor: mask.fill,
+            opacity: mask.opacity,
+          }}
           aria-hidden="true"
         />
       ))}
@@ -3277,7 +4040,7 @@ function ManualRussianPageCanvas({
               {
                 ...manualBoundsStyle(block.bounds),
                 "--manual-block-font-scale": block.typography.fontScale,
-                "--manual-block-line-height": block.typography.lineHeight
+                "--manual-block-line-height": block.typography.lineHeight,
               } as CSSProperties
             }
           >
@@ -3300,23 +4063,40 @@ function Manual4RuedasView() {
   useEffect(() => {
     let isMounted = true;
     import("./data/manual4Ruedas")
-      .then(({ assertManualLayoutRuntimeShape, manual4RuedasLayoutRu, manual4RuedasNavigationRu, manual4RuedasRu, manualManifestSummary }) => {
-        const { manifest, layout, navigation } = assertManualLayoutRuntimeShape(manual4RuedasRu, manual4RuedasLayoutRu, manual4RuedasNavigationRu);
-        const baseSummary = manualManifestSummary(manifest);
-        const navigationTopics = flattenManualNavigation(navigation.entries).length - navigation.entries.length;
-        const summary: ManualManifestSummary = {
-          ...baseSummary,
-          layoutPages: layout.pages.length,
-          navigationSections: navigation.entries.length,
-          navigationTopics
-        };
-        if (isMounted) setManifestState({ manifest, layout, navigation, summary, isLoading: false });
-      })
+      .then(
+        ({
+          assertManualLayoutRuntimeShape,
+          manual4RuedasLayoutRu,
+          manual4RuedasNavigationRu,
+          manual4RuedasRu,
+          manualManifestSummary,
+        }) => {
+          const { manifest, layout, navigation } = assertManualLayoutRuntimeShape(
+            manual4RuedasRu,
+            manual4RuedasLayoutRu,
+            manual4RuedasNavigationRu,
+          );
+          const baseSummary = manualManifestSummary(manifest);
+          const navigationTopics =
+            flattenManualNavigation(navigation.entries).length - navigation.entries.length;
+          const summary: ManualManifestSummary = {
+            ...baseSummary,
+            layoutPages: layout.pages.length,
+            navigationSections: navigation.entries.length,
+            navigationTopics,
+          };
+          if (isMounted)
+            setManifestState({ manifest, layout, navigation, summary, isLoading: false });
+        },
+      )
       .catch((error: unknown) => {
         if (!isMounted) return;
         setManifestState({
-          error: error instanceof Error ? error.message : "Не удалось загрузить локальный manifest manual.",
-          isLoading: false
+          error:
+            error instanceof Error
+              ? error.message
+              : "Не удалось загрузить локальный manifest manual.",
+          isLoading: false,
         });
       });
 
@@ -3329,73 +4109,114 @@ function Manual4RuedasView() {
   const layout = manifestState.layout;
   const navigation = manifestState.navigation;
   const summary = manifestState.summary;
-  const layoutByPageNumber = useMemo(() => new Map(layout?.pages.map((pageLayout) => [pageLayout.pageNumber, pageLayout]) ?? []), [layout]);
-  const navigationEntries = useMemo(() => (navigation ? flattenManualNavigation(navigation.entries) : []), [navigation]);
-  const navigationEntryById = useMemo(() => new Map(navigationEntries.map((entry) => [entry.id, entry])), [navigationEntries]);
+  const layoutByPageNumber = useMemo(
+    () => new Map(layout?.pages.map((pageLayout) => [pageLayout.pageNumber, pageLayout]) ?? []),
+    [layout],
+  );
+  const navigationEntries = useMemo(
+    () => (navigation ? flattenManualNavigation(navigation.entries) : []),
+    [navigation],
+  );
+  const navigationEntryById = useMemo(
+    () => new Map(navigationEntries.map((entry) => [entry.id, entry])),
+    [navigationEntries],
+  );
   const manualPageIndex = useMemo<ManualSearchIndexEntry[]>(
     () =>
       manifest?.pages.map((page) => {
-        const section = navigation ? manualNavigationEntryForPage(navigation.entries, page.pageNumber, true) : undefined;
+        const section = navigation
+          ? manualNavigationEntryForPage(navigation.entries, page.pageNumber, true)
+          : undefined;
         return {
           page,
           section,
           resultId: `page-${page.pageNumber}`,
-          searchText: normalizeSearchText([manualPageSearchText(page), section?.id ?? "", section?.titleRu ?? "", section?.titleEs ?? ""].join(" "))
+          searchText: normalizeSearchText(
+            [
+              manualPageSearchText(page),
+              section?.id ?? "",
+              section?.titleRu ?? "",
+              section?.titleEs ?? "",
+            ].join(" "),
+          ),
         };
       }) ?? [],
-    [manifest, navigation]
+    [manifest, navigation],
   );
-  const manualSearchIndex = useMemo<ManualSearchIndexEntry[]>(
-    () => {
-      if (!manifest) return [];
-      const semanticEntriesByStartPage = new Map<number, ManualNavigationEntry[]>();
-      for (const entry of navigationEntries) {
-        if (entry.level !== "topic") continue;
-        semanticEntriesByStartPage.set(entry.startPage, [...(semanticEntriesByStartPage.get(entry.startPage) ?? []), entry]);
-      }
+  const manualSearchIndex = useMemo<ManualSearchIndexEntry[]>(() => {
+    if (!manifest) return [];
+    const semanticEntriesByStartPage = new Map<number, ManualNavigationEntry[]>();
+    for (const entry of navigationEntries) {
+      if (entry.level !== "topic") continue;
+      semanticEntriesByStartPage.set(entry.startPage, [
+        ...(semanticEntriesByStartPage.get(entry.startPage) ?? []),
+        entry,
+      ]);
+    }
 
-      return manifest.pages.flatMap((page) => {
-        const pageEntry = manualPageIndex.find((entry) => entry.page.pageNumber === page.pageNumber);
-        const exactStartEntries = semanticEntriesByStartPage.get(page.pageNumber) ?? [];
-        const semanticResults = exactStartEntries.map((section) => ({
-          page,
-          section,
-          resultId: `section-${section.id}`,
-          searchText: normalizeSearchText([manualPageSearchText(page), section.id, section.titleRu, section.titleEs ?? ""].join(" "))
-        }));
-        if (semanticResults.length) return semanticResults;
-        if (pageEntry) return [pageEntry];
-        return {
-          page,
-          resultId: `page-${page.pageNumber}`,
-          searchText: manualPageSearchText(page)
-        };
-      });
-    },
-    [manifest, manualPageIndex, navigationEntries]
-  );
+    return manifest.pages.flatMap((page) => {
+      const pageEntry = manualPageIndex.find((entry) => entry.page.pageNumber === page.pageNumber);
+      const exactStartEntries = semanticEntriesByStartPage.get(page.pageNumber) ?? [];
+      const semanticResults = exactStartEntries.map((section) => ({
+        page,
+        section,
+        resultId: `section-${section.id}`,
+        searchText: normalizeSearchText(
+          [manualPageSearchText(page), section.id, section.titleRu, section.titleEs ?? ""].join(
+            " ",
+          ),
+        ),
+      }));
+      if (semanticResults.length) return semanticResults;
+      if (pageEntry) return [pageEntry];
+      return {
+        page,
+        resultId: `page-${page.pageNumber}`,
+        searchText: manualPageSearchText(page),
+      };
+    });
+  }, [manifest, manualPageIndex, navigationEntries]);
   const query = normalizeSearchText(searchQuery.trim());
   const queryPageNumber = query ? manualQueryPageNumber(query) : undefined;
   const matchingEntries = query
-    ? manualSearchIndex.filter((entry) => (queryPageNumber === undefined ? entry.searchText.includes(query) : entry.page.pageNumber === queryPageNumber))
+    ? manualSearchIndex.filter((entry) =>
+        queryPageNumber === undefined
+          ? entry.searchText.includes(query)
+          : entry.page.pageNumber === queryPageNumber,
+      )
     : manualSearchIndex;
-  const matchingPages = manifest ? (query ? uniqueManualMatchingPages(matchingEntries) : manifest.pages) : [];
+  const matchingPages = manifest
+    ? query
+      ? uniqueManualMatchingPages(matchingEntries)
+      : manifest.pages
+    : [];
   const selectedPage =
     manifest && query
-      ? matchingPages.find((page) => page.pageNumber === selectedPageNumber) ?? matchingPages[0]
-      : manifest?.pages.find((page) => page.pageNumber === selectedPageNumber) ?? manifest?.pages.find((page) => page.pageNumber === DEFAULT_MANUAL_PAGE) ?? manifest?.pages[0];
+      ? (matchingPages.find((page) => page.pageNumber === selectedPageNumber) ?? matchingPages[0])
+      : (manifest?.pages.find((page) => page.pageNumber === selectedPageNumber) ??
+        manifest?.pages.find((page) => page.pageNumber === DEFAULT_MANUAL_PAGE) ??
+        manifest?.pages[0]);
   const selectedLayout = selectedPage ? layoutByPageNumber.get(selectedPage.pageNumber) : undefined;
-  const selectedTopLevelSection = navigation && selectedPage ? manualNavigationEntryForPage(navigation.entries, selectedPage.pageNumber) : undefined;
-  const selectedSemanticEntryById = selectedNavigationEntryId ? navigationEntryById.get(selectedNavigationEntryId) : undefined;
+  const selectedTopLevelSection =
+    navigation && selectedPage
+      ? manualNavigationEntryForPage(navigation.entries, selectedPage.pageNumber)
+      : undefined;
+  const selectedSemanticEntryById = selectedNavigationEntryId
+    ? navigationEntryById.get(selectedNavigationEntryId)
+    : undefined;
   const selectedSemanticEntry =
-    selectedPage && manualNavigationEntryCoversPage(selectedSemanticEntryById, selectedPage.pageNumber)
+    selectedPage &&
+    manualNavigationEntryCoversPage(selectedSemanticEntryById, selectedPage.pageNumber)
       ? selectedSemanticEntryById
       : navigation && selectedPage
         ? manualNavigationEntryForPage(navigation.entries, selectedPage.pageNumber, true)
         : undefined;
-  const selectedPageIndex = matchingPages.findIndex((page) => page.pageNumber === selectedPage?.pageNumber);
+  const selectedPageIndex = matchingPages.findIndex(
+    (page) => page.pageNumber === selectedPage?.pageNumber,
+  );
   const imageLoadFailed = imageLoadFailedPage === selectedPage?.pageNumber;
-  const sourceSha = selectedPage?.sourceTrace.rawOriginalSha256 ?? manifest?.source.rawOriginalSha256 ?? "";
+  const sourceSha =
+    selectedPage?.sourceTrace.rawOriginalSha256 ?? manifest?.source.rawOriginalSha256 ?? "";
 
   if (manifestState.isLoading) {
     return (
@@ -3417,10 +4238,20 @@ function Manual4RuedasView() {
   }
   const manualNavigation = navigation;
 
-  function selectManualPage(pageNumber: number, options: { entryId?: string; preserveCurrentEntry?: boolean } = {}) {
+  function selectManualPage(
+    pageNumber: number,
+    options: { entryId?: string; preserveCurrentEntry?: boolean } = {},
+  ) {
     const requestedEntry = options.entryId ? navigationEntryById.get(options.entryId) : undefined;
-    const currentEntry = options.preserveCurrentEntry && selectedNavigationEntryId ? navigationEntryById.get(selectedNavigationEntryId) : undefined;
-    const destinationEntry = manualNavigationEntryForDestinationPage(manualNavigation.entries, pageNumber, { requestedEntry, currentEntry });
+    const currentEntry =
+      options.preserveCurrentEntry && selectedNavigationEntryId
+        ? navigationEntryById.get(selectedNavigationEntryId)
+        : undefined;
+    const destinationEntry = manualNavigationEntryForDestinationPage(
+      manualNavigation.entries,
+      pageNumber,
+      { requestedEntry, currentEntry },
+    );
     setSelectedPageNumber(pageNumber);
     setSelectedNavigationEntryId(destinationEntry?.id);
     setImageLoadFailedPage(undefined);
@@ -3452,18 +4283,31 @@ function Manual4RuedasView() {
         <div>
           <p className="eyebrow">Manual GCBA</p>
           <h2 id="manual-title">{manifest.titleRu}</h2>
-          <p>Русская веб-страница собирается из локальной визуальной основы, масок и проверенных текстовых блоков, сохраняя порядок, изображения и структуру официального manual.</p>
+          <p>
+            Русская веб-страница собирается из локальной визуальной основы, масок и проверенных
+            текстовых блоков, сохраняя порядок, изображения и структуру официального manual.
+          </p>
         </div>
         <div className="materials-status manual-status" aria-label="Покрытие полного manual">
-          <span>{summary.pages} / {summary.expectedPages} страниц</span>
+          <span>
+            {summary.pages} / {summary.expectedPages} страниц
+          </span>
           <span>{summary.layoutPages} страниц верстки</span>
-          <span>{summary.navigationSections} разделов / {summary.navigationTopics} тем</span>
+          <span>
+            {summary.navigationSections} разделов / {summary.navigationTopics} тем
+          </span>
           <span>{summary.localAssets} локальных изображений</span>
         </div>
       </header>
 
-      <div className={`manual-layout ${isManualListOpen ? "compact-list-open" : "compact-detail-open"}`}>
-        <aside className="manual-page-list" aria-label="Навигация полного manual" data-testid="manual-navigation-panel">
+      <div
+        className={`manual-layout ${isManualListOpen ? "compact-list-open" : "compact-detail-open"}`}
+      >
+        <aside
+          className="manual-page-list"
+          aria-label="Навигация полного manual"
+          data-testid="manual-navigation-panel"
+        >
           <label className="search-box manual-search">
             <Search size={18} aria-hidden="true" />
             <span className="sr-only">Поиск по manual</span>
@@ -3480,16 +4324,26 @@ function Manual4RuedasView() {
             />
           </label>
           <div className="source-results-summary" aria-live="polite">
-            {query ? `Найдено: ${matchingPages.length} страниц` : `${manualNavigation.entries.length} разделов из индекса manual`}
+            {query
+              ? `Найдено: ${matchingPages.length} страниц`
+              : `${manualNavigation.entries.length} разделов из индекса manual`}
           </div>
 
           {query && matchingPages.length ? (
-            <div className="manual-page-buttons manual-search-results" aria-label="Результаты поиска по страницам manual">
+            <div
+              className="manual-page-buttons manual-search-results"
+              aria-label="Результаты поиска по страницам manual"
+            >
               {matchingEntries.map(({ page, section, resultId }) => (
                 <button
                   type="button"
                   key={resultId}
-                  className={page.pageNumber === selectedPage?.pageNumber && (!section || selectedSemanticEntry?.id === section.id) ? "active" : ""}
+                  className={
+                    page.pageNumber === selectedPage?.pageNumber &&
+                    (!section || selectedSemanticEntry?.id === section.id)
+                      ? "active"
+                      : ""
+                  }
                   onClick={() => selectManualPage(page.pageNumber, { entryId: section?.id })}
                   aria-label={`Страница ${page.pageNumber}. ${page.translation.headingRu}`}
                   data-testid={`manual-page-button-${page.pageNumber}`}
@@ -3506,7 +4360,9 @@ function Manual4RuedasView() {
             <div className="source-empty-state" role="status">
               <strong>Ничего не найдено</strong>
               <p>В полном локальном manual нет страницы под такой поиск.</p>
-              <button type="button" className="tool-button" onClick={resetManualControls}>Сбросить поиск</button>
+              <button type="button" className="tool-button" onClick={resetManualControls}>
+                Сбросить поиск
+              </button>
             </div>
           ) : (
             <>
@@ -3515,14 +4371,23 @@ function Manual4RuedasView() {
                   <section key={entry.id} className="manual-toc-section">
                     <button
                       type="button"
-                      className={selectedTopLevelSection?.id === entry.id ? "manual-toc-button active" : "manual-toc-button"}
+                      className={
+                        selectedTopLevelSection?.id === entry.id
+                          ? "manual-toc-button active"
+                          : "manual-toc-button"
+                      }
                       onClick={() => selectManualEntry(entry)}
                       aria-label={`${entry.titleRu}. Страницы ${entry.startPage}-${entry.endPage}`}
                       data-testid={`manual-nav-${entry.id}`}
                     >
-                      <span>{entry.startPage}-{entry.endPage}</span>
+                      <span>
+                        {entry.startPage}-{entry.endPage}
+                      </span>
                       <strong>{entry.titleRu}</strong>
-                      <small>{entry.children?.length ?? 0} тем · {entry.sourceEvidence === "index_pages_11_12" ? "индекс" : "заголовки"}</small>
+                      <small>
+                        {entry.children?.length ?? 0} тем ·{" "}
+                        {entry.sourceEvidence === "index_pages_11_12" ? "индекс" : "заголовки"}
+                      </small>
                     </button>
                     {entry.children?.length ? (
                       <div className="manual-toc-children">
@@ -3530,7 +4395,11 @@ function Manual4RuedasView() {
                           <button
                             type="button"
                             key={child.id}
-                            className={selectedSemanticEntry?.id === child.id ? "manual-topic-button active" : "manual-topic-button"}
+                            className={
+                              selectedSemanticEntry?.id === child.id
+                                ? "manual-topic-button active"
+                                : "manual-topic-button"
+                            }
                             onClick={() => selectManualEntry(child)}
                             aria-label={`${child.titleRu}. Страницы ${child.startPage}-${child.endPage}`}
                             data-testid={`manual-nav-${child.id}`}
@@ -3570,7 +4439,11 @@ function Manual4RuedasView() {
 
         {selectedPage && selectedLayout ? (
           <article className="manual-page-detail" data-testid="manual-page-detail">
-            <button type="button" className="tool-button source-mobile-back" onClick={() => setIsManualListOpen(true)}>
+            <button
+              type="button"
+              className="tool-button source-mobile-back"
+              onClick={() => setIsManualListOpen(true)}
+            >
               <ChevronLeft size={18} aria-hidden="true" /> К навигации
             </button>
             <div className="manual-page-heading">
@@ -3579,7 +4452,9 @@ function Manual4RuedasView() {
                 <h2>{selectedPage.translation.headingRu}</h2>
                 <p data-testid="manual-selected-semantic-label">
                   {selectedTopLevelSection?.titleRu}
-                  {selectedSemanticEntry && selectedSemanticEntry.id !== selectedTopLevelSection?.id ? ` · ${selectedSemanticEntry.titleRu}` : ""}
+                  {selectedSemanticEntry && selectedSemanticEntry.id !== selectedTopLevelSection?.id
+                    ? ` · ${selectedSemanticEntry.titleRu}`
+                    : ""}
                 </p>
               </div>
               <div className="manual-page-counter" aria-label="Позиция страницы">
@@ -3587,7 +4462,10 @@ function Manual4RuedasView() {
               </div>
             </div>
 
-            <div className="source-meta-row manual-meta-row" aria-label="Трассировка официального источника">
+            <div
+              className="source-meta-row manual-meta-row"
+              aria-label="Трассировка официального источника"
+            >
               <span>{selectedPage.sourceTrace.officialDocumentId}</span>
               <span>PDF page {selectedPage.sourcePageNumber}</span>
               <span>PDF SHA {sourceSha.slice(0, 12)}</span>
@@ -3602,11 +4480,23 @@ function Manual4RuedasView() {
             />
 
             <div className="manual-actions">
-              <button type="button" className="tool-button" onClick={() => goToRelativeManualPage(-1)} disabled={selectedPageIndex <= 0}>
+              <button
+                type="button"
+                className="tool-button"
+                onClick={() => goToRelativeManualPage(-1)}
+                disabled={selectedPageIndex <= 0}
+              >
                 <ChevronLeft size={18} aria-hidden="true" /> Предыдущая
               </button>
-              <span>{selectedPageIndex + 1} / {matchingPages.length}</span>
-              <button type="button" className="tool-button" onClick={() => goToRelativeManualPage(1)} disabled={selectedPageIndex < 0 || selectedPageIndex >= matchingPages.length - 1}>
+              <span>
+                {selectedPageIndex + 1} / {matchingPages.length}
+              </span>
+              <button
+                type="button"
+                className="tool-button"
+                onClick={() => goToRelativeManualPage(1)}
+                disabled={selectedPageIndex < 0 || selectedPageIndex >= matchingPages.length - 1}
+              >
                 Следующая <ChevronRight size={18} aria-hidden="true" />
               </button>
             </div>
@@ -3621,15 +4511,22 @@ function Manual4RuedasView() {
                     <span>Shard: {selectedPage.translation.chunkProvenance.shardPath}</span>
                     {selectedPage.translation.chunkProvenance.sourceSpan && (
                       <span>
-                        Archive lines {selectedPage.translation.chunkProvenance.sourceSpan.startLine}-{selectedPage.translation.chunkProvenance.sourceSpan.endLine}
+                        Archive lines{" "}
+                        {selectedPage.translation.chunkProvenance.sourceSpan.startLine}-
+                        {selectedPage.translation.chunkProvenance.sourceSpan.endLine}
                       </span>
                     )}
                   </>
                 ) : (
                   <>
-                    <strong>{selectedPage.translation.visualTextTranslationProvenance?.featureId}</strong>
+                    <strong>
+                      {selectedPage.translation.visualTextTranslationProvenance?.featureId}
+                    </strong>
                     <span>{selectedPage.translation.visualTextTranslationProvenance?.method}</span>
-                    <span>Reviewed {selectedPage.translation.visualTextTranslationProvenance?.reviewedAt}</span>
+                    <span>
+                      Reviewed{" "}
+                      {selectedPage.translation.visualTextTranslationProvenance?.reviewedAt}
+                    </span>
                   </>
                 )}
                 <span>{selectedLayout.blocks.length} layout blocks</span>
@@ -3638,11 +4535,16 @@ function Manual4RuedasView() {
             </details>
 
             <footer className="source-line manual-source-line">
-              Архив: {manifest.source.rawOriginalPath}. Верстка: layout.ru.json. Навигация: navigation.ru.json. Source URL записан только для трассировки.
+              Архив: {manifest.source.rawOriginalPath}. Верстка: layout.ru.json. Навигация:
+              navigation.ru.json. Source URL записан только для трассировки.
             </footer>
           </article>
         ) : (
-          <article className="manual-page-detail source-empty-state" data-testid="manual-empty-detail" role="status">
+          <article
+            className="manual-page-detail source-empty-state"
+            data-testid="manual-empty-detail"
+            role="status"
+          >
             <h2>Страница не выбрана</h2>
             <p>
               {query
@@ -3679,7 +4581,11 @@ function PrimarySourcesView() {
       })
       .catch((error: unknown) => {
         if (!isMounted) return;
-        setLoadError(error instanceof Error ? error.message : "Не удалось загрузить локальный корпус источников.");
+        setLoadError(
+          error instanceof Error
+            ? error.message
+            : "Не удалось загрузить локальный корпус источников.",
+        );
       });
     return () => {
       isMounted = false;
@@ -3687,16 +4593,28 @@ function PrimarySourcesView() {
   }, []);
 
   const documents = corpus?.documents ?? [];
-  const categoryOptions: SourceFilterOption[] = Array.from(new Set(documents.map((document) => document.category)))
-    .sort((a, b) => primarySourceCategoryLabel(a).localeCompare(primarySourceCategoryLabel(b), "ru"))
+  const categoryOptions: SourceFilterOption[] = Array.from(
+    new Set(documents.map((document) => document.category)),
+  )
+    .sort((a, b) =>
+      primarySourceCategoryLabel(a).localeCompare(primarySourceCategoryLabel(b), "ru"),
+    )
     .map((category) => ({ value: category, label: primarySourceCategoryLabel(category) }));
   const sourceOptions: SourceFilterOption[] = [
     ...Array.from(new Set(documents.map((document) => document.jurisdiction)))
-      .sort((a, b) => primarySourceJurisdictionLabel(a).localeCompare(primarySourceJurisdictionLabel(b), "ru"))
-      .map((jurisdiction) => ({ value: `jurisdiction:${jurisdiction}`, label: `Юрисдикция: ${primarySourceJurisdictionLabel(jurisdiction)}` })),
+      .sort((a, b) =>
+        primarySourceJurisdictionLabel(a).localeCompare(primarySourceJurisdictionLabel(b), "ru"),
+      )
+      .map((jurisdiction) => ({
+        value: `jurisdiction:${jurisdiction}`,
+        label: `Юрисдикция: ${primarySourceJurisdictionLabel(jurisdiction)}`,
+      })),
     ...Array.from(new Set(documents.map((document) => document.officialSourceType)))
       .sort((a, b) => primarySourceTypeLabel(a).localeCompare(primarySourceTypeLabel(b), "ru"))
-      .map((sourceType) => ({ value: `type:${sourceType}`, label: `Тип: ${primarySourceTypeLabel(sourceType)}` }))
+      .map((sourceType) => ({
+        value: `type:${sourceType}`,
+        label: `Тип: ${primarySourceTypeLabel(sourceType)}`,
+      })),
   ];
   const query = normalizeSearchText(searchQuery.trim());
   const documentMatches: PrimarySourceDocumentMatch[] = documents
@@ -3713,8 +4631,8 @@ function PrimarySourcesView() {
           document.currentnessStatus,
           document.currentnessValidationStatus,
           document.exactTextValidationStatus,
-          document.retrievalDate
-        ].join(" ")
+          document.retrievalDate,
+        ].join(" "),
       );
       const matchingChunks = query
         ? document.chunks.filter((chunk) =>
@@ -3724,9 +4642,9 @@ function PrimarySourcesView() {
                 chunk.headingPath.join(" "),
                 chunk.simpleRu,
                 chunk.fullTranslationRu,
-                chunk.originalSpanish
-              ].join(" ")
-            ).includes(query)
+                chunk.originalSpanish,
+              ].join(" "),
+            ).includes(query),
           )
         : document.chunks;
       const metadataMatches = !query || metadataText.includes(query);
@@ -3738,26 +4656,43 @@ function PrimarySourcesView() {
       return {
         document,
         matchingChunks,
-        matchCount: query ? (metadataMatches ? 1 : 0) + matchingChunks.length : document.chunks.length,
-        isVisible: categoryMatches && sourceMatches && (!query || metadataMatches || matchingChunks.length > 0)
+        matchCount: query
+          ? (metadataMatches ? 1 : 0) + matchingChunks.length
+          : document.chunks.length,
+        isVisible:
+          categoryMatches &&
+          sourceMatches &&
+          (!query || metadataMatches || matchingChunks.length > 0),
       };
     })
     .filter((entry) => entry.isVisible);
   const selectedDocument =
-    documentMatches.find((entry) => entry.document.officialDocumentId === selectedDocumentId)?.document ??
-    documentMatches[0]?.document;
-  const selectedMatch = documentMatches.find((entry) => entry.document.officialDocumentId === selectedDocument?.officialDocumentId);
-  const tocChunks = query && selectedMatch?.matchingChunks.length ? selectedMatch.matchingChunks : selectedDocument?.chunks ?? [];
+    documentMatches.find((entry) => entry.document.officialDocumentId === selectedDocumentId)
+      ?.document ?? documentMatches[0]?.document;
+  const selectedMatch = documentMatches.find(
+    (entry) => entry.document.officialDocumentId === selectedDocument?.officialDocumentId,
+  );
+  const tocChunks =
+    query && selectedMatch?.matchingChunks.length
+      ? selectedMatch.matchingChunks
+      : (selectedDocument?.chunks ?? []);
   const navigationChunks = tocChunks;
   const selectedChunk =
     navigationChunks.find((chunk) => chunk.chunkId === selectedChunkId) ??
     navigationChunks[0] ??
     selectedDocument?.chunks[0];
-  const selectedChunkIndex = navigationChunks.findIndex((chunk) => chunk.chunkId === selectedChunk?.chunkId);
+  const selectedChunkIndex = navigationChunks.findIndex(
+    (chunk) => chunk.chunkId === selectedChunk?.chunkId,
+  );
   const effectiveSelectedDocumentId = selectedDocument?.officialDocumentId;
-  const firstNavigationChunkId = navigationChunks[0]?.chunkId ?? selectedDocument?.chunks[0]?.chunkId;
-  const selectedExactTextStatusKind = selectedDocument ? exactTextStatusKind(selectedDocument.exactTextValidationStatus) : "pending";
-  const selectedExactTextStatusNote = selectedDocument ? exactTextStatusNote(selectedDocument.exactTextValidationStatus) : undefined;
+  const firstNavigationChunkId =
+    navigationChunks[0]?.chunkId ?? selectedDocument?.chunks[0]?.chunkId;
+  const selectedExactTextStatusKind = selectedDocument
+    ? exactTextStatusKind(selectedDocument.exactTextValidationStatus)
+    : "pending";
+  const selectedExactTextStatusNote = selectedDocument
+    ? exactTextStatusNote(selectedDocument.exactTextValidationStatus)
+    : undefined;
 
   useEffect(() => {
     if (!effectiveSelectedDocumentId) {
@@ -3791,7 +4726,9 @@ function PrimarySourcesView() {
   }
 
   function selectDocument(document: PrimarySourceDocument) {
-    const match = documentMatches.find((entry) => entry.document.officialDocumentId === document.officialDocumentId);
+    const match = documentMatches.find(
+      (entry) => entry.document.officialDocumentId === document.officialDocumentId,
+    );
     setSelectedDocumentId(document.officialDocumentId);
     setSelectedChunkId((match?.matchingChunks[0] ?? document.chunks[0])?.chunkId);
     setIsSourceListOpen(false);
@@ -3834,7 +4771,10 @@ function PrimarySourcesView() {
         <div>
           <p className="eyebrow">Источники</p>
           <h2 id="sources-title">Официальные первоисточники</h2>
-          <p>Испанский архив - официальный слой. Русский текст здесь - неофициальная учебная поддержка Cabadrive.</p>
+          <p>
+            Испанский архив - официальный слой. Русский текст здесь - неофициальная учебная
+            поддержка Cabadrive.
+          </p>
         </div>
         <div className="sources-status" aria-label="Покрытие корпуса источников">
           <span>{corpus.manifestEntryCount} документов</span>
@@ -3843,8 +4783,15 @@ function PrimarySourcesView() {
         </div>
       </header>
 
-      <div className={`sources-layout ${isSourceListOpen ? "compact-list-open" : "compact-detail-open"}`} data-testid="source-reader-layout">
-        <aside className="source-list-pane" aria-label="Поиск и список источников" data-testid="source-list-pane">
+      <div
+        className={`sources-layout ${isSourceListOpen ? "compact-list-open" : "compact-detail-open"}`}
+        data-testid="source-reader-layout"
+      >
+        <aside
+          className="source-list-pane"
+          aria-label="Поиск и список источников"
+          data-testid="source-list-pane"
+        >
           <div className="source-controls" aria-label="Поиск и фильтры источников">
             <label className="search-box source-search">
               <Search size={18} aria-hidden="true" />
@@ -3871,7 +4818,9 @@ function PrimarySourcesView() {
                 >
                   <option value="all">Все категории</option>
                   {categoryOptions.map((option) => (
-                    <option value={option.value} key={option.value}>{option.label}</option>
+                    <option value={option.value} key={option.value}>
+                      {option.label}
+                    </option>
                   ))}
                 </select>
               </label>
@@ -3887,14 +4836,18 @@ function PrimarySourcesView() {
                 >
                   <option value="all">Все юрисдикции и типы</option>
                   {sourceOptions.map((option) => (
-                    <option value={option.value} key={option.value}>{option.label}</option>
+                    <option value={option.value} key={option.value}>
+                      {option.label}
+                    </option>
                   ))}
                 </select>
               </label>
             </div>
             <div className="source-results-summary" aria-live="polite">
               Найдено: {documentMatches.length} документов
-              {query ? `, ${documentMatches.reduce((sum, entry) => sum + entry.matchCount, 0)} совпадений` : ""}
+              {query
+                ? `, ${documentMatches.reduce((sum, entry) => sum + entry.matchCount, 0)} совпадений`
+                : ""}
             </div>
           </div>
 
@@ -3904,16 +4857,24 @@ function PrimarySourcesView() {
                 <button
                   type="button"
                   key={document.officialDocumentId}
-                  className={document.officialDocumentId === selectedDocument?.officialDocumentId ? "active" : ""}
+                  className={
+                    document.officialDocumentId === selectedDocument?.officialDocumentId
+                      ? "active"
+                      : ""
+                  }
                   onClick={() => selectDocument(document)}
                   aria-label={`${document.shortTitleRu}. ${primarySourceCategoryLabel(document.category)}. ${primarySourceJurisdictionLabel(document.jurisdiction)}. Открыть источник`}
                 >
                   <strong>{document.shortTitleRu}</strong>
                   <span>{document.title}</span>
                   <small>
-                    {primarySourceCategoryLabel(document.category)} · {primarySourceJurisdictionLabel(document.jurisdiction)} · {primarySourceTypeLabel(document.officialSourceType)}
+                    {primarySourceCategoryLabel(document.category)} ·{" "}
+                    {primarySourceJurisdictionLabel(document.jurisdiction)} ·{" "}
+                    {primarySourceTypeLabel(document.officialSourceType)}
                   </small>
-                  <small>{query ? `${matchCount} совпадений` : `${document.chunks.length} фрагментов`}</small>
+                  <small>
+                    {query ? `${matchCount} совпадений` : `${document.chunks.length} фрагментов`}
+                  </small>
                   <small>{exactTextLabel(document.exactTextValidationStatus)}</small>
                 </button>
               ))}
@@ -3921,15 +4882,24 @@ function PrimarySourcesView() {
           ) : (
             <div className="source-empty-state" role="status">
               <strong>Ничего не найдено</strong>
-              <p>В локальном корпусе нет источников под такой поиск и фильтры. Интернет здесь не нужен: попробуйте убрать фильтр или ввести другое слово.</p>
-              <button type="button" className="tool-button" onClick={resetSourceControls}>Сбросить поиск и фильтры</button>
+              <p>
+                В локальном корпусе нет источников под такой поиск и фильтры. Интернет здесь не
+                нужен: попробуйте убрать фильтр или ввести другое слово.
+              </p>
+              <button type="button" className="tool-button" onClick={resetSourceControls}>
+                Сбросить поиск и фильтры
+              </button>
             </div>
           )}
         </aside>
 
         {selectedDocument ? (
           <article className="source-detail" data-testid="source-detail-pane">
-            <button type="button" className="tool-button source-mobile-back" onClick={() => setIsSourceListOpen(true)}>
+            <button
+              type="button"
+              className="tool-button source-mobile-back"
+              onClick={() => setIsSourceListOpen(true)}
+            >
               <ChevronLeft size={18} aria-hidden="true" /> К списку источников
             </button>
             <div className="source-detail-heading">
@@ -3938,14 +4908,36 @@ function PrimarySourcesView() {
                 <h2>{selectedDocument.shortTitleRu}</h2>
                 <p>{selectedDocument.title}</p>
               </div>
-              <div className="source-mode-controls" role="group" aria-label="Режим текста источника">
-                <button type="button" className={viewMode === "simple" ? "active" : ""} onClick={() => setViewMode("simple")} aria-pressed={viewMode === "simple"} data-testid="source-mode-simple">
+              <div
+                className="source-mode-controls"
+                role="group"
+                aria-label="Режим текста источника"
+              >
+                <button
+                  type="button"
+                  className={viewMode === "simple" ? "active" : ""}
+                  onClick={() => setViewMode("simple")}
+                  aria-pressed={viewMode === "simple"}
+                  data-testid="source-mode-simple"
+                >
                   Просто
                 </button>
-                <button type="button" className={viewMode === "full" ? "active" : ""} onClick={() => setViewMode("full")} aria-pressed={viewMode === "full"} data-testid="source-mode-full">
+                <button
+                  type="button"
+                  className={viewMode === "full" ? "active" : ""}
+                  onClick={() => setViewMode("full")}
+                  aria-pressed={viewMode === "full"}
+                  data-testid="source-mode-full"
+                >
                   Полный перевод
                 </button>
-                <button type="button" className={viewMode === "spanish" ? "active" : ""} onClick={() => setViewMode("spanish")} aria-pressed={viewMode === "spanish"} data-testid="source-mode-spanish">
+                <button
+                  type="button"
+                  className={viewMode === "spanish" ? "active" : ""}
+                  onClick={() => setViewMode("spanish")}
+                  aria-pressed={viewMode === "spanish"}
+                  data-testid="source-mode-spanish"
+                >
                   Оригинал ES
                 </button>
               </div>
@@ -3955,8 +4947,17 @@ function PrimarySourcesView() {
               <span>{primarySourceCategoryLabel(selectedDocument.category)}</span>
               <span>{primarySourceJurisdictionLabel(selectedDocument.jurisdiction)}</span>
               <span>{primarySourceTypeLabel(selectedDocument.officialSourceType)}</span>
-              <span>{primarySourceCurrentnessLabel(selectedDocument.currentnessStatus)}: {primarySourceValidationLabel(selectedDocument.currentnessValidationStatus)}</span>
-              <span className={selectedExactTextStatusKind === "passed" ? "" : selectedExactTextStatusKind}>{exactTextLabel(selectedDocument.exactTextValidationStatus)}</span>
+              <span>
+                {primarySourceCurrentnessLabel(selectedDocument.currentnessStatus)}:{" "}
+                {primarySourceValidationLabel(selectedDocument.currentnessValidationStatus)}
+              </span>
+              <span
+                className={
+                  selectedExactTextStatusKind === "passed" ? "" : selectedExactTextStatusKind
+                }
+              >
+                {exactTextLabel(selectedDocument.exactTextValidationStatus)}
+              </span>
             </div>
 
             <div className={`source-status-note ${selectedExactTextStatusKind}`} role="status">
@@ -3987,18 +4988,36 @@ function PrimarySourcesView() {
               </nav>
 
               {selectedChunk ? (
-                <section className="source-chunk" key={selectedChunk.chunkId} data-testid="source-chunk-reader">
+                <section
+                  className="source-chunk"
+                  key={selectedChunk.chunkId}
+                  data-testid="source-chunk-reader"
+                >
                   <div className="source-chunk-heading">
                     <span>{selectedChunk.officialLabel || `Фрагмент ${selectedChunk.order}`}</span>
                     <small>{selectedChunk.headingPath.join(" / ")}</small>
                   </div>
                   <p>{chunkText(selectedChunk)}</p>
                   <div className="source-chunk-actions">
-                    <button type="button" className="tool-button" onClick={() => goToRelativeChunk(-1)} disabled={selectedChunkIndex <= 0}>
+                    <button
+                      type="button"
+                      className="tool-button"
+                      onClick={() => goToRelativeChunk(-1)}
+                      disabled={selectedChunkIndex <= 0}
+                    >
                       <ChevronLeft size={18} aria-hidden="true" /> Предыдущий
                     </button>
-                    <span>{selectedChunkIndex + 1} / {navigationChunks.length}</span>
-                    <button type="button" className="tool-button" onClick={() => goToRelativeChunk(1)} disabled={selectedChunkIndex < 0 || selectedChunkIndex >= navigationChunks.length - 1}>
+                    <span>
+                      {selectedChunkIndex + 1} / {navigationChunks.length}
+                    </span>
+                    <button
+                      type="button"
+                      className="tool-button"
+                      onClick={() => goToRelativeChunk(1)}
+                      disabled={
+                        selectedChunkIndex < 0 || selectedChunkIndex >= navigationChunks.length - 1
+                      }
+                    >
                       Следующий <ChevronRight size={18} aria-hidden="true" />
                     </button>
                   </div>
@@ -4023,21 +5042,25 @@ export function App() {
   const [view, setView] = useState<View>(() => {
     if (introductionEntryForHash(window.location.hash)) return "pandemia";
     const manualSectionForHash = manualGuideSectionByHash.get(window.location.hash);
-    if (manualSectionForHash && manualGuideSectionIsAvailable(manualSectionForHash)) return "pandemia";
+    if (manualSectionForHash && manualGuideSectionIsAvailable(manualSectionForHash))
+      return "pandemia";
     if (new URLSearchParams(window.location.search).get("legacyManual") === "1") return "manual";
     return "learn";
   });
-  const [selectedIntroductionId, setSelectedIntroductionId] = useState<IntroductionRouteId>(() =>
-    (introductionEntryForHash(window.location.hash) ?? defaultIntroductionEntry).id
+  const [selectedIntroductionId, setSelectedIntroductionId] = useState<IntroductionRouteId>(
+    () => (introductionEntryForHash(window.location.hash) ?? defaultIntroductionEntry).id,
   );
   const [selectedManualSectionId, setSelectedManualSectionId] = useState<string | undefined>(() => {
     const manualSectionForHash = manualGuideSectionByHash.get(window.location.hash);
-    return manualSectionForHash && manualGuideSectionIsAvailable(manualSectionForHash) ? manualSectionForHash.id : undefined;
+    return manualSectionForHash && manualGuideSectionIsAvailable(manualSectionForHash)
+      ? manualSectionForHash.id
+      : undefined;
   });
   const [progress, setProgress] = useState(loadProgress);
   const routeScrollKey = useMemo(
-    () => `${view}:${view === "pandemia" ? selectedManualSectionId ?? selectedIntroductionId : ""}`,
-    [selectedIntroductionId, selectedManualSectionId, view]
+    () =>
+      `${view}:${view === "pandemia" ? (selectedManualSectionId ?? selectedIntroductionId) : ""}`,
+    [selectedIntroductionId, selectedManualSectionId, view],
   );
 
   useEffect(() => {
@@ -4094,13 +5117,21 @@ export function App() {
   function selectView(nextView: View) {
     setView(nextView);
     if (nextView === "pandemia") {
-      const selectedManualSection = selectedManualSectionId ? manualGuideSectionById.get(selectedManualSectionId) : undefined;
+      const selectedManualSection = selectedManualSectionId
+        ? manualGuideSectionById.get(selectedManualSectionId)
+        : undefined;
       const entry = introductionEntryById(selectedIntroductionId);
       const nextUrl = introductionRouteUrl(selectedManualSection?.routeHash ?? entry.routeHash);
-      if (`${window.location.pathname}${window.location.search}${window.location.hash}` !== nextUrl) window.history.pushState(null, "", nextUrl);
-    } else if (introductionEntryForHash(window.location.hash) || manualGuideSectionByHash.has(window.location.hash) || new URLSearchParams(window.location.search).has("legacyManual")) {
+      if (`${window.location.pathname}${window.location.search}${window.location.hash}` !== nextUrl)
+        window.history.pushState(null, "", nextUrl);
+    } else if (
+      introductionEntryForHash(window.location.hash) ||
+      manualGuideSectionByHash.has(window.location.hash) ||
+      new URLSearchParams(window.location.search).has("legacyManual")
+    ) {
       const nextUrl = nonIntroductionRouteUrl();
-      if (`${window.location.pathname}${window.location.search}${window.location.hash}` !== nextUrl) window.history.pushState(null, "", nextUrl);
+      if (`${window.location.pathname}${window.location.search}${window.location.hash}` !== nextUrl)
+        window.history.pushState(null, "", nextUrl);
     }
   }
 
@@ -4109,7 +5140,8 @@ export function App() {
     setSelectedManualSectionId(undefined);
     setView("pandemia");
     const nextUrl = introductionRouteUrl(entry.routeHash);
-    if (`${window.location.pathname}${window.location.search}${window.location.hash}` !== nextUrl) window.history.pushState(null, "", nextUrl);
+    if (`${window.location.pathname}${window.location.search}${window.location.hash}` !== nextUrl)
+      window.history.pushState(null, "", nextUrl);
   }
 
   function selectManualSection(section: ManualGuideSectionEntry) {
@@ -4117,11 +5149,14 @@ export function App() {
     setSelectedManualSectionId(section.id);
     setView("pandemia");
     const nextUrl = introductionRouteUrl(section.routeHash);
-    if (`${window.location.pathname}${window.location.search}${window.location.hash}` !== nextUrl) window.history.pushState(null, "", nextUrl);
+    if (`${window.location.pathname}${window.location.search}${window.location.hash}` !== nextUrl)
+      window.history.pushState(null, "", nextUrl);
   }
 
   const selectedIntroductionEntry = introductionEntryById(selectedIntroductionId);
-  const selectedManualSection = selectedManualSectionId ? manualGuideSectionById.get(selectedManualSectionId) : undefined;
+  const selectedManualSection = selectedManualSectionId
+    ? manualGuideSectionById.get(selectedManualSectionId)
+    : undefined;
 
   return (
     <main>
@@ -4130,7 +5165,13 @@ export function App() {
           <p className="eyebrow">Cabadrive · CABA categoria B</p>
           <h1>Тренажер теории для категории B</h1>
         </div>
-        <button type="button" className="icon-button" onClick={reset} aria-label="Сбросить прогресс" title="Сбросить прогресс">
+        <button
+          type="button"
+          className="icon-button"
+          onClick={reset}
+          aria-label="Сбросить прогресс"
+          title="Сбросить прогресс"
+        >
           <RotateCcw size={20} />
         </button>
       </header>
@@ -4138,16 +5179,59 @@ export function App() {
       <StatusStrip progress={progress} />
 
       <nav className="tabs" aria-label="Режимы">
-        <button className={view === "learn" ? "active" : ""} onClick={() => selectView("learn")}><BookOpen size={18} /> Учить</button>
-        <button className={view === "exam" ? "active" : ""} onClick={() => selectView("exam")}><ClipboardList size={18} /> Экзамен</button>
-        <button className={view === "mistakes" ? "active" : ""} onClick={() => selectView("mistakes")}><XCircle size={18} /> Ошибки</button>
-        <button className={view === "vocabulary" ? "active" : ""} onClick={() => selectView("vocabulary")}><Search size={18} /> Словарь</button>
-        <button className={view === "materials" ? "active" : ""} onClick={() => selectView("materials")}><BookMarked size={18} /> Материалы</button>
-        <button className={view === "pandemia" ? "active" : ""} onClick={() => selectView("pandemia")} data-testid="pandemia-nav-entry"><ListTree size={18} /> Руководство</button>
-        <button className={view === "sources" ? "active" : ""} onClick={() => selectView("sources")}><FileText size={18} /> Источники</button>
-        <button className={view === "process" ? "active" : ""} onClick={() => selectView("process")}><MapPinned size={18} /> Процесс</button>
-        <button className={view === "guide" ? "active" : ""} onClick={() => selectView("guide")}><Flag size={18} /> CABA/RF</button>
-        <button className={view === "about" ? "active" : ""} onClick={() => selectView("about")} aria-pressed={view === "about"}><Info size={18} /> О приложении</button>
+        <button className={view === "learn" ? "active" : ""} onClick={() => selectView("learn")}>
+          <BookOpen size={18} /> Учить
+        </button>
+        <button className={view === "exam" ? "active" : ""} onClick={() => selectView("exam")}>
+          <ClipboardList size={18} /> Экзамен
+        </button>
+        <button
+          className={view === "mistakes" ? "active" : ""}
+          onClick={() => selectView("mistakes")}
+        >
+          <XCircle size={18} /> Ошибки
+        </button>
+        <button
+          className={view === "vocabulary" ? "active" : ""}
+          onClick={() => selectView("vocabulary")}
+        >
+          <Search size={18} /> Словарь
+        </button>
+        <button
+          className={view === "materials" ? "active" : ""}
+          onClick={() => selectView("materials")}
+        >
+          <BookMarked size={18} /> Материалы
+        </button>
+        <button
+          className={view === "pandemia" ? "active" : ""}
+          onClick={() => selectView("pandemia")}
+          data-testid="pandemia-nav-entry"
+        >
+          <ListTree size={18} /> Руководство
+        </button>
+        <button
+          className={view === "sources" ? "active" : ""}
+          onClick={() => selectView("sources")}
+        >
+          <FileText size={18} /> Источники
+        </button>
+        <button
+          className={view === "process" ? "active" : ""}
+          onClick={() => selectView("process")}
+        >
+          <MapPinned size={18} /> Процесс
+        </button>
+        <button className={view === "guide" ? "active" : ""} onClick={() => selectView("guide")}>
+          <Flag size={18} /> CABA/RF
+        </button>
+        <button
+          className={view === "about" ? "active" : ""}
+          onClick={() => selectView("about")}
+          aria-pressed={view === "about"}
+        >
+          <Info size={18} /> О приложении
+        </button>
       </nav>
 
       {view === "learn" && <LearnView progress={progress} setProgress={setProgress} />}

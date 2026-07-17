@@ -27,7 +27,9 @@ function sha256(value) {
 }
 
 function normalizeLine(value) {
-  return String(value || "").replace(/\s+/g, " ").trim();
+  return String(value || "")
+    .replace(/\s+/g, " ")
+    .trim();
 }
 
 function stripMarkdownHeading(value) {
@@ -67,13 +69,15 @@ function markdownHeadingLevel(line) {
 export function isArticleLine(line) {
   const normalized = normalizeLine(line);
   return /^(?:ART[ÍI]CULO|ART\.|Art[íi]culo|Art\.)\s*\d+(?:\s*(?:[º°]|\(\d+\)|bis|ter|qu[aá]ter|quater|quinque|quinquies|quinto))?(?:\s*(?:[.):]|,?\s*\.?[—-])|\s+[A-ZÁÉÍÓÚÑÜ])/u.test(
-    normalized
+    normalized,
   );
 }
 
 function isHierarchyLine(line) {
   const normalized = normalizeLine(line);
-  return /^(?:ANEXO(?:\s+[A-Z0-9IVXLCDM.-]+)?(?:\s+.*)?|LIBRO\s+.+|T[ÍI]TULO\s+.+|CAP[ÍI]TULO\s+.+|SECCI[ÓO]N\s+.+)$/iu.test(normalized);
+  return /^(?:ANEXO(?:\s+[A-Z0-9IVXLCDM.-]+)?(?:\s+.*)?|LIBRO\s+.+|T[ÍI]TULO\s+.+|CAP[ÍI]TULO\s+.+|SECCI[ÓO]N\s+.+)$/iu.test(
+    normalized,
+  );
 }
 
 function isDottedSectionLine(line) {
@@ -106,42 +110,36 @@ function classifyDocument(documentId, lines) {
   if (pageNumberCount >= 20 || documentId === "gcba-manual-vehiculo-4-ruedas-2023") {
     return {
       strategy: "pdf-page-groups",
-      note:
-        "PDF-converted manual text is chunked by detected page-number groups because page structure is the most stable preserved source boundary."
+      note: "PDF-converted manual text is chunked by detected page-number groups because page structure is the most stable preserved source boundary.",
     };
   }
   if (dottedSectionCount >= 20) {
     return {
       strategy: "dotted-code-sections",
-      note:
-        "CABA code text is chunked by numbered code sections, with titles/chapters retained in heading paths where detectable."
+      note: "CABA code text is chunked by numbered code sections, with titles/chapters retained in heading paths where detectable.",
     };
   }
   if (articleCount >= 3) {
     return {
       strategy: "legal-articles",
-      note:
-        "Law/code text is chunked by article boundaries, with books/titles/chapters/sections retained in heading paths where detectable."
+      note: "Law/code text is chunked by article boundaries, with books/titles/chapters/sections retained in heading paths where detectable.",
     };
   }
   if (documentId.includes("anexo-l") || numberedAnnexCount >= 20) {
     return {
       strategy: "annex-numbered-sections",
-      note:
-        "Signage annex text is chunked by chapter and numbered signal/section boundaries preserved by the HTML-to-Markdown conversion."
+      note: "Signage annex text is chunked by chapter and numbered signal/section boundaries preserved by the HTML-to-Markdown conversion.",
     };
   }
   if (markdownHeadingCount >= 3) {
     return {
       strategy: "markdown-heading-sections",
-      note:
-        "Service/news page text is chunked by Markdown headings generated from the official page structure."
+      note: "Service/news page text is chunked by Markdown headings generated from the official page structure.",
     };
   }
   return {
     strategy: "bounded-paragraph-groups",
-    note:
-      "Weakly structured converted text is chunked into bounded paragraph groups with stable line spans and source hashes."
+    note: "Weakly structured converted text is chunked into bounded paragraph groups with stable line spans and source hashes.",
   };
 }
 
@@ -169,16 +167,20 @@ function paragraphGroupStarts(lines, maxLines = 36) {
 
 function boundaryKind(line, strategy, index, lines) {
   if (isMarkdownHeading(line)) return "markdown-heading";
-  if (strategy === "pdf-page-groups") return isPageNumberLine(line, index, lines) ? "page" : undefined;
+  if (strategy === "pdf-page-groups")
+    return isPageNumberLine(line, index, lines) ? "page" : undefined;
   if (isHierarchyLine(line)) return "hierarchy";
   if (isArticleLine(line)) return "article";
   if (strategy === "dotted-code-sections" && isDottedSectionLine(line)) return "numbered-section";
-  if (strategy === "annex-numbered-sections" && isNumberedAnnexSectionLine(line)) return "numbered-section";
+  if (strategy === "annex-numbered-sections" && isNumberedAnnexSectionLine(line))
+    return "numbered-section";
   return undefined;
 }
 
 function collectBoundaries(lines, decision) {
-  const boundariesByLine = new Map([[1, { line: 1, kind: "document-title", label: labelFromLine(lines[0] || "Document") }]]);
+  const boundariesByLine = new Map([
+    [1, { line: 1, kind: "document-title", label: labelFromLine(lines[0] || "Document") }],
+  ]);
   for (let index = 0; index < lines.length; index += 1) {
     const kind = boundaryKind(lines[index], decision.strategy, index, lines);
     if (!kind) continue;
@@ -188,7 +190,11 @@ function collectBoundaries(lines, decision) {
   if (decision.strategy === "bounded-paragraph-groups") {
     for (const start of paragraphGroupStarts(lines)) {
       if (!boundariesByLine.has(start)) {
-        boundariesByLine.set(start, { line: start, kind: "paragraph-group", label: `Grupo de párrafos línea ${start}` });
+        boundariesByLine.set(start, {
+          line: start,
+          kind: "paragraph-group",
+          label: `Grupo de párrafos línea ${start}`,
+        });
       }
     }
   }
@@ -199,7 +205,8 @@ function collectBoundaries(lines, decision) {
 function updatePathState(state, boundary, lines) {
   const label = boundary.label;
   if (boundary.kind === "markdown-heading" || boundary.kind === "document-title") {
-    const level = boundary.kind === "document-title" ? 1 : markdownHeadingLevel(lines[boundary.line - 1]);
+    const level =
+      boundary.kind === "document-title" ? 1 : markdownHeadingLevel(lines[boundary.line - 1]);
     state.markdown = state.markdown.slice(0, Math.max(0, level - 1));
     state.markdown[level - 1] = label;
     return;
@@ -231,7 +238,8 @@ function headingPathFor(state, boundary, title) {
   if (boundary.kind === "page") return [title, state.page || boundary.label].filter(Boolean);
   const base = state.markdown.length > 0 ? state.markdown : [title];
   const path = [...base, ...state.hierarchy.filter(Boolean)];
-  if (["article", "numbered-section", "paragraph-group"].includes(boundary.kind)) path.push(boundary.label);
+  if (["article", "numbered-section", "paragraph-group"].includes(boundary.kind))
+    path.push(boundary.label);
   return [...new Set(path)].filter(Boolean);
 }
 
@@ -263,10 +271,10 @@ export function generateDocumentCoverageFromText(entry, text) {
       chunkingStrategy: decision.strategy,
       sourceSpan: {
         startLine,
-        endLine
+        endLine,
       },
       sourceTextSha256,
-      sourceFingerprint: `sha256:${sourceTextSha256}`
+      sourceFingerprint: `sha256:${sourceTextSha256}`,
     });
   });
 
@@ -277,7 +285,7 @@ export function generateDocumentCoverageFromText(entry, text) {
     coverageStatus: "generated_inventory",
     chunkingDecision: decision,
     expectedChunkIds: chunks.map((chunk) => chunk.chunkId),
-    chunks
+    chunks,
   };
 }
 
@@ -296,24 +304,27 @@ function generateCoverage() {
       capturedAt: generatedDate,
       manifestPath,
       officialDocumentCount: manifest.entries.length,
-      officialDocumentIds: manifest.entries.map((entry) => entry.id)
+      officialDocumentIds: manifest.entries.map((entry) => entry.id),
     },
     generation: {
       generatedAt: generatedDate,
       generator: "scripts/primary-sources-generate-coverage.mjs",
       source: "content/official-documents/manifest.json",
-      note:
-        "Generated archive chunk inventory. Russian translation, simplification, search projection, and QA approval are validated separately by the strict primary-source gate for the current published reader."
+      note: "Generated archive chunk inventory. Russian translation, simplification, search projection, and QA approval are validated separately by the strict primary-source gate for the current published reader.",
     },
-    documents: manifest.entries.map(generateDocumentCoverage)
+    documents: manifest.entries.map(generateDocumentCoverage),
   };
 }
 
 function printSummary(coverage) {
   const totalChunks = coverage.documents.reduce((sum, document) => sum + document.chunks.length, 0);
-  console.log(`Primary-source coverage: ${coverage.documents.length} documents, ${totalChunks} chunks.`);
+  console.log(
+    `Primary-source coverage: ${coverage.documents.length} documents, ${totalChunks} chunks.`,
+  );
   for (const document of coverage.documents) {
-    console.log(`${document.officialDocumentId}: ${document.chunks.length} chunks (${document.chunkingDecision.strategy})`);
+    console.log(
+      `${document.officialDocumentId}: ${document.chunks.length} chunks (${document.chunkingDecision.strategy})`,
+    );
   }
 }
 
@@ -325,7 +336,9 @@ if (process.argv[1] && resolve(process.argv[1]) === currentFilePath) {
   if (args.has("--check")) {
     const current = readText(coveragePath);
     if (current !== json) {
-      console.error(`${coveragePath} is not up to date. Run scripts/primary-sources-generate-coverage.mjs --write.`);
+      console.error(
+        `${coveragePath} is not up to date. Run scripts/primary-sources-generate-coverage.mjs --write.`,
+      );
       process.exit(1);
     }
   }

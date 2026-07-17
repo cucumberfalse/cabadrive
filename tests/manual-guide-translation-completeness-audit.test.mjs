@@ -6,7 +6,8 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 
 const auditScript = "scripts/manual-guide-translation-completeness-audit.mjs";
-const committedEvidencePath = "content/validation/manual-guide-translation-completeness.evidence.json";
+const committedEvidencePath =
+  "content/validation/manual-guide-translation-completeness.evidence.json";
 
 function tempRoot(prefix) {
   return mkdtempSync(join(tmpdir(), prefix));
@@ -20,9 +21,10 @@ function runAudit(sectionRoot, evidencePath, args = [], options = {}) {
       MANUAL_GUIDE_TRANSLATION_COMPLETENESS_SECTION_ROOT: sectionRoot,
       MANUAL_GUIDE_TRANSLATION_COMPLETENESS_EVIDENCE_PATH: evidencePath,
       MANUAL_GUIDE_TRANSLATION_COMPLETENESS_INTRODUCTION_PATH: options.introductionPath ?? "",
-      MANUAL_GUIDE_TRANSLATION_COMPLETENESS_MANUAL_SIGN_INVENTORY_PATH: options.manualSignInventoryPath ?? ""
+      MANUAL_GUIDE_TRANSLATION_COMPLETENESS_MANUAL_SIGN_INVENTORY_PATH:
+        options.manualSignInventoryPath ?? "",
     },
-    encoding: "utf8"
+    encoding: "utf8",
   });
 }
 
@@ -97,11 +99,13 @@ function crossRouteSupportedProbeFixture() {
 function supportedManualSignCatalogFixture() {
   return supportedProbeFixture().replace(
     `      assetPath: "content/assets/not-learner-facing-autopista.jpg"\n    },`,
-    `      assetPath: "content/assets/not-learner-facing-autopista.jpg"\n    },\n    {\n      id: "fixture-sign-catalog",\n      kind: "manual-sign-catalog",\n      titleRu: "Каталог знаков",\n      sectionId: "fixture-signs"\n    },`
+    `      assetPath: "content/assets/not-learner-facing-autopista.jpg"\n    },\n    {\n      id: "fixture-sign-catalog",\n      kind: "manual-sign-catalog",\n      titleRu: "Каталог знаков",\n      sectionId: "fixture-signs"\n    },`,
   );
 }
 
-function supportedIntroductionFixture(replacementText = "Дорожная культура начинается с уважения к другим участникам движения.") {
+function supportedIntroductionFixture(
+  replacementText = "Дорожная культура начинается с уважения к другим участникам движения.",
+) {
   return `
 export const pandemiaVialSection = {
   id: "pandemia-vial-section",
@@ -189,16 +193,39 @@ test("manual guide translation completeness committed evidence covers screenshot
   assert.equal(evidence.routeInventory.counts.renderedGuideRoutes, 54);
   assert.deepEqual(
     evidence.routeInventory.introductionRoutes.map((route) => route.id),
-    ["intro-road-pandemic", "intro-ethical-civic-approach", "intro-incident", "intro-road-safety-plan"]
+    [
+      "intro-road-pandemic",
+      "intro-ethical-civic-approach",
+      "intro-incident",
+      "intro-road-safety-plan",
+    ],
   );
   assert.equal(evidence.counts.unresolvedFindings, 0);
-  assert.ok(evidence.reviewedIdentifierPolicies.every((policy) => Array.isArray(policy.identifiers)));
-  assert.doesNotMatch(JSON.stringify(evidence.reviewedIdentifierPolicies), /uppercase-acronym|2,8/u);
-  assert.doesNotMatch(JSON.stringify(evidence.exceptions), /uppercase acronym or compact official identifier/u);
+  assert.ok(
+    evidence.reviewedIdentifierPolicies.every((policy) => Array.isArray(policy.identifiers)),
+  );
+  assert.doesNotMatch(
+    JSON.stringify(evidence.reviewedIdentifierPolicies),
+    /uppercase-acronym|2,8/u,
+  );
+  assert.doesNotMatch(
+    JSON.stringify(evidence.exceptions),
+    /uppercase acronym or compact official identifier/u,
+  );
   assert.equal(evidence.requiredProbeCoverage.length, 11);
-  assert.deepEqual(new Set(evidence.requiredProbeCoverage.map((probe) => probe.status)), new Set(["pass"]));
-  assert.deepEqual(new Set(evidence.requiredProbeCoverage.map((probe) => probe.sectionId)), new Set(["ch3-highways"]));
-  assert.ok(evidence.requiredProbeCoverage.some((probe) => probe.probe === "Ingreso: carriles de aceleración"));
+  assert.deepEqual(
+    new Set(evidence.requiredProbeCoverage.map((probe) => probe.status)),
+    new Set(["pass"]),
+  );
+  assert.deepEqual(
+    new Set(evidence.requiredProbeCoverage.map((probe) => probe.sectionId)),
+    new Set(["ch3-highways"]),
+  );
+  assert.ok(
+    evidence.requiredProbeCoverage.some(
+      (probe) => probe.probe === "Ingreso: carriles de aceleración",
+    ),
+  );
   assert.ok(evidence.requiredProbeCoverage.some((probe) => probe.probe === "vía rápida"));
 });
 
@@ -212,9 +239,18 @@ test("manual guide translation completeness audit does not use cross-route suppo
     assert.match(result.stderr, /required-screenshot-probe-missing/);
 
     const evidence = JSON.parse(readFileSync(evidencePath, "utf8"));
-    assert.deepEqual(new Set(evidence.requiredProbeCoverage.map((probe) => probe.sectionId)), new Set(["ch3-highways"]));
-    assert.deepEqual(new Set(evidence.requiredProbeCoverage.map((probe) => probe.status)), new Set(["missing"]));
-    assert.deepEqual(new Set(evidence.requiredProbeCoverage.map((probe) => probe.fieldPath)), new Set([null]));
+    assert.deepEqual(
+      new Set(evidence.requiredProbeCoverage.map((probe) => probe.sectionId)),
+      new Set(["ch3-highways"]),
+    );
+    assert.deepEqual(
+      new Set(evidence.requiredProbeCoverage.map((probe) => probe.status)),
+      new Set(["missing"]),
+    );
+    assert.deepEqual(
+      new Set(evidence.requiredProbeCoverage.map((probe) => probe.fieldPath)),
+      new Set([null]),
+    );
   } finally {
     rmSync(root, { recursive: true, force: true });
   }
@@ -235,7 +271,7 @@ test("manual guide translation completeness audit includes rendered Introduction
     assert.equal(evidence.counts.renderedGuideRoutes, 3);
     assert.deepEqual(
       evidence.routeInventory.introductionRoutes.map((route) => route.id),
-      ["intro-road-pandemic", "intro-ethical-civic-approach"]
+      ["intro-road-pandemic", "intro-ethical-civic-approach"],
     );
     assert.ok(evidence.residues.some((entry) => entry.sectionId === "intro-road-pandemic"));
   } finally {
@@ -251,7 +287,7 @@ test("manual guide translation completeness audit rejects Introduction route Spa
     writeSection(root, "ch3-highways.ts", supportedProbeFixture());
     writeFileSync(
       introductionPath,
-      supportedIntroductionFixture("Введение оставляет calzada без русского пояснения.")
+      supportedIntroductionFixture("Введение оставляет calzada без русского пояснения."),
     );
     const result = runAudit(root, evidencePath, ["--write"], { introductionPath });
     assert.notEqual(result.status, 0);
@@ -277,8 +313,16 @@ test("manual guide translation completeness audit writes evidence and accepts fr
     const evidence = JSON.parse(readFileSync(evidencePath, "utf8"));
     assert.equal(evidence.counts.implementedSections, 1);
     assert.equal(evidence.counts.unresolvedFindings, 0);
-    assert.equal(evidence.residues.some((entry) => entry.disposition === "retained-with-inline-translation"), true);
-    assert.equal(evidence.residues.some((entry) => entry.disposition === "retained-with-structured-adjacent-translation"), true);
+    assert.equal(
+      evidence.residues.some((entry) => entry.disposition === "retained-with-inline-translation"),
+      true,
+    );
+    assert.equal(
+      evidence.residues.some(
+        (entry) => entry.disposition === "retained-with-structured-adjacent-translation",
+      ),
+      true,
+    );
   } finally {
     rmSync(root, { recursive: true, force: true });
   }
@@ -299,17 +343,19 @@ test("manual guide translation completeness audit covers rendered manual sign ca
             sectionId: "fixture-signs",
             spanishLabel: "NO AVANZAR",
             variant: "Señal",
-            russianTranslation: "Проезд запрещен"
-          }
-        ]
-      })
+            russianTranslation: "Проезд запрещен",
+          },
+        ],
+      }),
     );
 
-    const supported = runAudit(root, evidencePath, ["--write"], { manualSignInventoryPath: inventoryPath });
+    const supported = runAudit(root, evidencePath, ["--write"], {
+      manualSignInventoryPath: inventoryPath,
+    });
     assert.equal(supported.status, 0, supported.stderr);
     const evidence = JSON.parse(readFileSync(evidencePath, "utf8"));
     const catalogResidue = evidence.residues.find(
-      (entry) => entry.sourceKind === "manual-sign-catalog" && entry.fieldPath.endsWith(".termEs")
+      (entry) => entry.sourceKind === "manual-sign-catalog" && entry.fieldPath.endsWith(".termEs"),
     );
     assert.equal(catalogResidue?.detectedSpanishPhrase, "NO AVANZAR");
     assert.equal(catalogResidue?.disposition, "retained-with-structured-adjacent-translation");
@@ -323,12 +369,14 @@ test("manual guide translation completeness audit covers rendered manual sign ca
             sectionId: "fixture-signs",
             spanishLabel: "NO AVANZAR",
             variant: "Señal",
-            russianTranslation: "NO AVANZAR"
-          }
-        ]
-      })
+            russianTranslation: "NO AVANZAR",
+          },
+        ],
+      }),
     );
-    const unsupported = runAudit(root, evidencePath, ["--write"], { manualSignInventoryPath: inventoryPath });
+    const unsupported = runAudit(root, evidencePath, ["--write"], {
+      manualSignInventoryPath: inventoryPath,
+    });
     assert.notEqual(unsupported.status, 0);
     assert.match(unsupported.stderr, /blocks\.1\.entries\.0\.termEs/);
     assert.match(unsupported.stderr, /NO AVANZAR/);
@@ -369,8 +417,8 @@ test("manual guide translation completeness audit ignores source fields but reje
       "ch3-highways.ts",
       supportedProbeFixture().replace(
         "carriles de aceleración (полосы разгона) ведут к calzada (проезжей части).",
-        "carriles de aceleración ведут к calzada."
-      )
+        "carriles de aceleración ведут к calzada.",
+      ),
     );
     const result = runAudit(root, evidencePath, ["--write"]);
     assert.notEqual(result.status, 0);
@@ -392,8 +440,8 @@ test("manual guide translation completeness audit rejects unmatched learner-faci
       "ch3-highways.ts",
       supportedProbeFixture().replace(
         "espacio / gap (свободный промежуток) нужен перед входом в поток.",
-        "Первые 6 месяцев нельзя ездить по arterias."
-      )
+        "Первые 6 месяцев нельзя ездить по arterias.",
+      ),
     );
     const result = runAudit(root, evidencePath, ["--write"]);
     assert.notEqual(result.status, 0);
@@ -413,8 +461,8 @@ test("manual guide translation completeness audit rejects document phrases witho
       "ch3-highways.ts",
       supportedProbeFixture().replace(
         "espacio / gap (свободный промежуток) нужен перед входом в поток.",
-        "Для подтверждения страховки обязательно иметь certificado del seguro de responsabilidad civil."
-      )
+        "Для подтверждения страховки обязательно иметь certificado del seguro de responsabilidad civil.",
+      ),
     );
     const result = runAudit(root, evidencePath, ["--write"]);
     assert.notEqual(result.status, 0);
@@ -433,8 +481,8 @@ test("manual guide translation completeness audit rejects alcohol-limit Latin re
       "ch3-highways.ts",
       supportedProbeFixture().replace(
         "espacio / gap (свободный промежуток) нужен перед входом в поток.",
-        "нельзя занимать plaza de acompañante в motovehículo, кроме отдельного habitáculo"
-      )
+        "нельзя занимать plaza de acompañante в motovehículo, кроме отдельного habitáculo",
+      ),
     );
     const result = runAudit(root, evidencePath, ["--write"]);
     assert.notEqual(result.status, 0);
@@ -457,7 +505,7 @@ test("manual guide translation completeness audit rejects generic traffic term e
       sectionId: "ch3-highways",
       fieldPath: "blocks.0.itemsRu.0",
       detectedSpanishPhrase: "calzada",
-      disposition: "allowed-narrow-exception"
+      disposition: "allowed-narrow-exception",
     });
     writeFileSync(evidencePath, `${JSON.stringify(evidence, null, 2)}\n`);
 
@@ -475,32 +523,34 @@ test("manual guide translation completeness audit requires a direct structural r
   try {
     const directPair = supportedProbeFixture().replace(
       "espacio / gap (свободный промежуток) нужен перед входом в поток.",
-      "espacio / gap (свободный промежуток) нужен перед входом в поток. Линия помощи при домогательствах (ACOSO) доступна круглосуточно."
+      "espacio / gap (свободный промежуток) нужен перед входом в поток. Линия помощи при домогательствах (ACOSO) доступна круглосуточно.",
     );
     writeSection(root, "ch3-highways.ts", directPair);
     const valid = runAudit(root, evidencePath, ["--write"]);
     assert.equal(valid.status, 0, valid.stderr);
     const validEvidence = JSON.parse(readFileSync(evidencePath, "utf8"));
     assert.equal(
-      validEvidence.residues.some((entry) =>
-        entry.detectedSpanishPhrase === "ACOSO" && entry.disposition === "retained-with-inline-translation"
+      validEvidence.residues.some(
+        (entry) =>
+          entry.detectedSpanishPhrase === "ACOSO" &&
+          entry.disposition === "retained-with-inline-translation",
       ),
-      true
+      true,
     );
 
     for (const invalidContext of [
       "Линия помощи 22676 (ACOSO) доступна круглосуточно.",
       "Линия помощи SMS (ACOSO) доступна круглосуточно.",
       "Линия помощи доступна круглосуточно. (ACOSO)",
-      "Линия помощи / (ACOSO) доступна круглосуточно."
+      "Линия помощи / (ACOSO) доступна круглосуточно.",
     ]) {
       writeSection(
         root,
         "ch3-highways.ts",
         supportedProbeFixture().replace(
           "espacio / gap (свободный промежуток) нужен перед входом в поток.",
-          `espacio / gap (свободный промежуток) нужен перед входом в поток. ${invalidContext}`
-        )
+          `espacio / gap (свободный промежуток) нужен перед входом в поток. ${invalidContext}`,
+        ),
       );
       const invalid = runAudit(root, evidencePath, ["--write"]);
       assert.notEqual(invalid.status, 0, invalid.stderr);
@@ -520,8 +570,8 @@ test("manual guide translation completeness audit rejects generic uppercase Span
       "ch3-highways.ts",
       supportedProbeFixture().replace(
         "espacio / gap (свободный промежуток) нужен перед входом в поток.",
-        "espacio / gap (свободный промежуток) нужен перед входом в поток. Знак NO AVANZAR остается без перевода."
-      )
+        "espacio / gap (свободный промежуток) нужен перед входом в поток. Знак NO AVANZAR остается без перевода.",
+      ),
     );
     const uppercaseSpanish = runAudit(root, evidencePath, ["--write"]);
     assert.notEqual(uppercaseSpanish.status, 0, uppercaseSpanish.stderr);
@@ -532,17 +582,19 @@ test("manual guide translation completeness audit rejects generic uppercase Span
       "ch3-highways.ts",
       supportedProbeFixture().replace(
         "espacio / gap (свободный промежуток) нужен перед входом в поток.",
-        "espacio / gap (свободный промежуток) нужен перед входом в поток. Перед поездкой можно настроить GPS."
-      )
+        "espacio / gap (свободный промежуток) нужен перед входом в поток. Перед поездкой можно настроить GPS.",
+      ),
     );
     const reviewedIdentifier = runAudit(root, evidencePath, ["--write"]);
     assert.equal(reviewedIdentifier.status, 0, reviewedIdentifier.stderr);
     const evidence = JSON.parse(readFileSync(evidencePath, "utf8"));
     assert.equal(
-      evidence.exceptions.some((entry) =>
-        entry.detectedSpanishPhrase === "GPS" && entry.note === "reviewed official, technical, or message identifier"
+      evidence.exceptions.some(
+        (entry) =>
+          entry.detectedSpanishPhrase === "GPS" &&
+          entry.note === "reviewed official, technical, or message identifier",
       ),
-      true
+      true,
     );
   } finally {
     rmSync(root, { recursive: true, force: true });
@@ -552,12 +604,14 @@ test("manual guide translation completeness audit rejects generic uppercase Span
 test("committed evidence records direct Russian support for every Chapter 5 ACOSO occurrence", () => {
   const evidence = JSON.parse(readFileSync(committedEvidencePath, "utf8"));
   const acosoRecords = evidence.residues.filter(
-    (entry) => entry.sectionId === "ch5-gender-violence-prevention" && entry.detectedSpanishPhrase === "ACOSO"
+    (entry) =>
+      entry.sectionId === "ch5-gender-violence-prevention" &&
+      entry.detectedSpanishPhrase === "ACOSO",
   );
   assert.equal(acosoRecords.length, 2);
   assert.deepEqual(
     new Set(acosoRecords.map((entry) => entry.disposition)),
-    new Set(["retained-with-inline-translation"])
+    new Set(["retained-with-inline-translation"]),
   );
   assert.ok(acosoRecords.every((entry) => /ACOSO \(линия/u.test(entry.textExcerpt)));
 });

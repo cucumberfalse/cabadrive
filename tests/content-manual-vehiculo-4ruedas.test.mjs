@@ -7,19 +7,30 @@ import {
   buildManualManifest,
   buildManualNavigationManifest,
   formatManualValidationSummary,
-  validateManualVehiculo4RuedasRu
+  validateManualVehiculo4RuedasRu,
 } from "../scripts/content-manual-vehiculo-4ruedas.mjs";
 
-const manifest = JSON.parse(readFileSync("content/manuals/gcba-manual-vehiculo-4-ruedas-2023/manual.ru.json", "utf8"));
-const layout = JSON.parse(readFileSync("content/manuals/gcba-manual-vehiculo-4-ruedas-2023/layout.ru.json", "utf8"));
-const navigation = JSON.parse(readFileSync("content/manuals/gcba-manual-vehiculo-4-ruedas-2023/navigation.ru.json", "utf8"));
+const manifest = JSON.parse(
+  readFileSync("content/manuals/gcba-manual-vehiculo-4-ruedas-2023/manual.ru.json", "utf8"),
+);
+const layout = JSON.parse(
+  readFileSync("content/manuals/gcba-manual-vehiculo-4-ruedas-2023/layout.ru.json", "utf8"),
+);
+const navigation = JSON.parse(
+  readFileSync("content/manuals/gcba-manual-vehiculo-4-ruedas-2023/navigation.ru.json", "utf8"),
+);
 
 function clone(value) {
   return JSON.parse(JSON.stringify(value));
 }
 
 function isFullPageBounds(bounds) {
-  return bounds.x <= 0.01 && bounds.y <= 0.01 && bounds.x + bounds.width >= 0.99 && bounds.y + bounds.height >= 0.99;
+  return (
+    bounds.x <= 0.01 &&
+    bounds.y <= 0.01 &&
+    bounds.x + bounds.width >= 0.99 &&
+    bounds.y + bounds.height >= 0.99
+  );
 }
 
 function exactStartEntryForPage(entries, pageNumber) {
@@ -67,8 +78,8 @@ function manualPageSearchText(page) {
       page.translation.sourceTextEs,
       page.translation.headingPathEs.join(" "),
       page.translation.chunkProvenance?.chunkId ?? "",
-      page.sourceTrace.officialDocumentId
-    ].join(" ")
+      page.sourceTrace.officialDocumentId,
+    ].join(" "),
   );
 }
 
@@ -77,7 +88,10 @@ function buildManualSearchIndexEntries() {
   const semanticEntriesByStartPage = new Map();
   for (const entry of navigationEntries) {
     if (entry.level !== "topic") continue;
-    semanticEntriesByStartPage.set(entry.startPage, [...(semanticEntriesByStartPage.get(entry.startPage) ?? []), entry]);
+    semanticEntriesByStartPage.set(entry.startPage, [
+      ...(semanticEntriesByStartPage.get(entry.startPage) ?? []),
+      entry,
+    ]);
   }
 
   return manifest.pages.flatMap((page) => {
@@ -86,13 +100,15 @@ function buildManualSearchIndexEntries() {
       page,
       section,
       resultId: `section-${section.id}`,
-      searchText: normalizeSearchText([manualPageSearchText(page), section.id, section.titleRu, section.titleEs ?? ""].join(" "))
+      searchText: normalizeSearchText(
+        [manualPageSearchText(page), section.id, section.titleRu, section.titleEs ?? ""].join(" "),
+      ),
     }));
     if (semanticResults.length) return semanticResults;
     return {
       page,
       resultId: `page-${page.pageNumber}`,
-      searchText: manualPageSearchText(page)
+      searchText: manualPageSearchText(page),
     };
   });
 }
@@ -107,18 +123,21 @@ function uniqueManualMatchingPages(entries) {
 }
 
 function destinationEntryForPage(entries, pageNumber, { requestedEntry, currentEntry } = {}) {
-  if (requestedEntry && pageNumberIsCoveredByEntry(pageNumber, requestedEntry)) return requestedEntry;
+  if (requestedEntry && pageNumberIsCoveredByEntry(pageNumber, requestedEntry))
+    return requestedEntry;
 
   const exactStartEntry = exactStartEntryForPage(entries, pageNumber);
   if (currentEntry && pageNumberIsCoveredByEntry(pageNumber, currentEntry)) {
-    return currentEntry.startPage === pageNumber ? currentEntry : exactStartEntry ?? currentEntry;
+    return currentEntry.startPage === pageNumber ? currentEntry : (exactStartEntry ?? currentEntry);
   }
 
   return exactStartEntry ?? entries.find((entry) => pageNumberIsCoveredByEntry(pageNumber, entry));
 }
 
 test("manual 4 ruedas validator passes current manifest and reports complete coverage", async () => {
-  const output = execFileSync("node", ["scripts/content-manual-vehiculo-4ruedas.mjs"], { encoding: "utf8" });
+  const output = execFileSync("node", ["scripts/content-manual-vehiculo-4ruedas.mjs"], {
+    encoding: "utf8",
+  });
   const result = await validateManualVehiculo4RuedasRu();
 
   assert.deepEqual(result.errors, []);
@@ -132,7 +151,7 @@ test("manual 4 ruedas validator passes current manifest and reports complete cov
     reusedApprovedChunkPages: 198,
     manualVisualTextPages: 2,
     localVisualAssets: 200,
-    assetDirectory: "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages"
+    assetDirectory: "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages",
   });
 });
 
@@ -148,7 +167,7 @@ test("manual 4 ruedas front-matter navigation keeps source-backed page ranges", 
     ["front-presentation", { startPage: 2, endPage: 2 }],
     ["front-categories", { startPage: 3, endPage: 4 }],
     ["front-glossary", { startPage: 5, endPage: 11 }],
-    ["front-index", { startPage: 12, endPage: 13 }]
+    ["front-index", { startPage: 12, endPage: 13 }],
   ]);
   const generatedNavigation = buildManualNavigationManifest(manifest);
 
@@ -156,12 +175,12 @@ test("manual 4 ruedas front-matter navigation keeps source-backed page ranges", 
     assert.deepEqual(
       pickRange(findNavigationEntryById(generatedNavigation.entries, entryId)),
       expectedRange,
-      `generated ${entryId} range follows front-matter source evidence`
+      `generated ${entryId} range follows front-matter source evidence`,
     );
     assert.deepEqual(
       pickRange(findNavigationEntryById(navigation.entries, entryId)),
       expectedRange,
-      `committed ${entryId} range follows front-matter source evidence`
+      `committed ${entryId} range follows front-matter source evidence`,
     );
   }
 });
@@ -169,7 +188,8 @@ test("manual 4 ruedas front-matter navigation keeps source-backed page ranges", 
 test("manual 4 ruedas view lazy-loads the full layout corpus and computes summary after validation", () => {
   const appSource = readFileSync("src/App.tsx", "utf8");
   const componentStart = appSource.indexOf("function Manual4RuedasView()");
-  const topLevelRuntimeManualImport = /^import\s+(?!type\b)[^;]+from\s+["']\.\/data\/manual4Ruedas["'];/mu;
+  const topLevelRuntimeManualImport =
+    /^import\s+(?!type\b)[^;]+from\s+["']\.\/data\/manual4Ruedas["'];/mu;
   const dynamicImportIndex = appSource.indexOf('import("./data/manual4Ruedas")', componentStart);
   const validationIndex = appSource.indexOf("assertManualLayoutRuntimeShape(", dynamicImportIndex);
   const summaryIndex = appSource.indexOf("manualManifestSummary(manifest)", validationIndex);
@@ -194,9 +214,14 @@ test("manual 4 ruedas view caches normalized page search text outside the filter
   const componentStart = appSource.indexOf("function Manual4RuedasView()");
   const componentEnd = appSource.indexOf("function PrimarySourcesView()", componentStart);
   const componentSource = appSource.slice(componentStart, componentEnd);
-  const indexStart = componentSource.indexOf("const manualSearchIndex = useMemo<ManualSearchIndexEntry[]>");
+  const indexStart = componentSource.indexOf(
+    "const manualSearchIndex = useMemo<ManualSearchIndexEntry[]>",
+  );
   const matchingStart = componentSource.indexOf("const matchingEntries = ");
-  const matchingStatement = componentSource.slice(matchingStart, componentSource.indexOf(";", matchingStart) + 1);
+  const matchingStatement = componentSource.slice(
+    matchingStart,
+    componentSource.indexOf(";", matchingStart) + 1,
+  );
 
   assert.notEqual(componentStart, -1);
   assert.notEqual(componentEnd, -1);
@@ -213,23 +238,35 @@ test("manual 4 ruedas search index preserves same-page semantic entry identity",
   const componentSource = appSource.slice(componentStart, componentEnd);
   const navigationEntries = flattenNavigationEntries(navigation.entries);
   const page100 = manifest.pages.find((page) => page.pageNumber === 100);
-  const samePageTopics = navigationEntries.filter((entry) => entry.level === "topic" && entry.startPage === 100);
+  const samePageTopics = navigationEntries.filter(
+    (entry) => entry.level === "topic" && entry.startPage === 100,
+  );
   const searchIndexEntries = samePageTopics.map((section) => ({
     page: page100,
     section,
     resultId: `section-${section.id}`,
-    searchText: normalizeSearchText([manualPageSearchText(page100), section.id, section.titleRu, section.titleEs ?? ""].join(" "))
+    searchText: normalizeSearchText(
+      [manualPageSearchText(page100), section.id, section.titleRu, section.titleEs ?? ""].join(" "),
+    ),
   }));
-  const genderResult = searchIndexEntries.filter((entry) => entry.searchText.includes(normalizeSearchText("ch5-gender-violence-prevention")));
+  const genderResult = searchIndexEntries.filter((entry) =>
+    entry.searchText.includes(normalizeSearchText("ch5-gender-violence-prevention")),
+  );
 
-  assert.deepEqual(samePageTopics.map((entry) => entry.id), ["ch5-equal-society", "ch5-gender-violence-prevention"]);
+  assert.deepEqual(
+    samePageTopics.map((entry) => entry.id),
+    ["ch5-equal-society", "ch5-gender-violence-prevention"],
+  );
   assert.equal(genderResult.length, 1);
   assert.equal(genderResult[0].page.pageNumber, 100);
   assert.equal(genderResult[0].section.id, "ch5-gender-violence-prevention");
   assert.notEqual(genderResult[0].section.id, "ch5-equal-society");
   assert.match(componentSource, /semanticEntriesByStartPage/);
   assert.match(componentSource, /section\.id/);
-  assert.match(componentSource, /selectManualPage\(page\.pageNumber, \{ entryId: section\?\.id \}\)/);
+  assert.match(
+    componentSource,
+    /selectManualPage\(page\.pageNumber, \{ entryId: section\?\.id \}\)/,
+  );
   assert.match(componentSource, /data-result-entry-id=\{section\?\.id \?\? ""\}/);
   assert.match(componentSource, /data-search-result-id=\{resultId\}/);
 });
@@ -243,7 +280,9 @@ test("manual 4 ruedas page-number search deduplicates matching pages while prese
   const query = normalizeSearchText("100");
   const queryPageNumber = /^\d+$/u.test(query) ? Number(query) : undefined;
   const matchingEntries = searchIndexEntries.filter((entry) =>
-    queryPageNumber === undefined ? entry.searchText.includes(query) : entry.page.pageNumber === queryPageNumber
+    queryPageNumber === undefined
+      ? entry.searchText.includes(query)
+      : entry.page.pageNumber === queryPageNumber,
   );
   const matchingPages = uniqueManualMatchingPages(matchingEntries);
   const selectedPageIndex = matchingPages.findIndex((page) => page.pageNumber === 100);
@@ -251,15 +290,21 @@ test("manual 4 ruedas page-number search deduplicates matching pages while prese
   assert.equal(queryPageNumber, 100);
   assert.deepEqual(
     matchingEntries.map((entry) => entry.section?.id),
-    ["ch5-equal-society", "ch5-gender-violence-prevention"]
+    ["ch5-equal-society", "ch5-gender-violence-prevention"],
   );
-  assert.deepEqual(matchingEntries.map((entry) => entry.resultId), ["section-ch5-equal-society", "section-ch5-gender-violence-prevention"]);
+  assert.deepEqual(
+    matchingEntries.map((entry) => entry.resultId),
+    ["section-ch5-equal-society", "section-ch5-gender-violence-prevention"],
+  );
   assert.equal(matchingPages.length, 1);
   assert.equal(matchingPages[0].pageNumber, 100);
   assert.equal(selectedPageIndex, 0);
   assert.equal(matchingPages[selectedPageIndex - 1], undefined);
   assert.equal(matchingPages[selectedPageIndex + 1], undefined);
-  assert.match(componentSource, /const queryPageNumber = query \? manualQueryPageNumber\(query\) : undefined/);
+  assert.match(
+    componentSource,
+    /const queryPageNumber = query \? manualQueryPageNumber\(query\) : undefined/,
+  );
   assert.match(componentSource, /uniqueManualMatchingPages\(matchingEntries\)/);
   assert.doesNotMatch(componentSource, /matchingEntries\.map\(\(entry\) => entry\.page\)/);
 });
@@ -269,16 +314,23 @@ test("manual 4 ruedas page-only semantic lookup prefers exact topic starts befor
   const lookupStart = appSource.indexOf("function manualNavigationEntryForPage");
   const lookupEnd = appSource.indexOf("function manualNavigationEntryCoversPage", lookupStart);
   const lookupSource = appSource.slice(lookupStart, lookupEnd);
-  const exactStartIndex = lookupSource.indexOf("manualExactStartNavigationEntryForPage(entries, pageNumber)");
+  const exactStartIndex = lookupSource.indexOf(
+    "manualExactStartNavigationEntryForPage(entries, pageNumber)",
+  );
   const coveringFallbackIndex = lookupSource.indexOf("for (const entry of entries)");
-  const chapter4Topics = navigation.entries.find((entry) => entry.id === "chapter-4-natural-capacity").children;
+  const chapter4Topics = navigation.entries.find(
+    (entry) => entry.id === "chapter-4-natural-capacity",
+  ).children;
 
   assert.notEqual(lookupStart, -1);
   assert.notEqual(lookupEnd, -1);
   assert.notEqual(exactStartIndex, -1);
   assert.notEqual(coveringFallbackIndex, -1);
   assert.ok(exactStartIndex < coveringFallbackIndex);
-  assert.equal(chapter4Topics.find((entry) => pageNumberIsCoveredByEntry(94, entry)).id, "ch4-sleep-fatigue");
+  assert.equal(
+    chapter4Topics.find((entry) => pageNumberIsCoveredByEntry(94, entry)).id,
+    "ch4-sleep-fatigue",
+  );
   assert.equal(exactStartEntryForPage(navigation.entries, 94).id, "ch4-stress");
 });
 
@@ -287,14 +339,20 @@ test("manual 4 ruedas previous-next transition prefers exact-start destination b
   const resolverStart = appSource.indexOf("function manualNavigationEntryForDestinationPage");
   const resolverEnd = appSource.indexOf("function manualBoundsStyle", resolverStart);
   const resolverSource = appSource.slice(resolverStart, resolverEnd);
-  const exactStartIndex = resolverSource.indexOf("manualExactStartNavigationEntryForPage(entries, pageNumber)");
-  const currentCoverIndex = resolverSource.indexOf("manualNavigationEntryCoversPage(options.currentEntry, pageNumber)");
+  const exactStartIndex = resolverSource.indexOf(
+    "manualExactStartNavigationEntryForPage(entries, pageNumber)",
+  );
+  const currentCoverIndex = resolverSource.indexOf(
+    "manualNavigationEntryCoversPage(options.currentEntry, pageNumber)",
+  );
   const selectStart = appSource.indexOf("function selectManualPage");
   const selectEnd = appSource.indexOf("function selectManualEntry", selectStart);
   const selectSource = appSource.slice(selectStart, selectEnd);
   const sleepFatigue = findNavigationEntryById(navigation.entries, "ch4-sleep-fatigue");
   const stress = findNavigationEntryById(navigation.entries, "ch4-stress");
-  const nextDestination = destinationEntryForPage(navigation.entries, 94, { currentEntry: sleepFatigue });
+  const nextDestination = destinationEntryForPage(navigation.entries, 94, {
+    currentEntry: sleepFatigue,
+  });
 
   assert.notEqual(resolverStart, -1);
   assert.notEqual(resolverEnd, -1);
@@ -303,7 +361,7 @@ test("manual 4 ruedas previous-next transition prefers exact-start destination b
   assert.ok(exactStartIndex < currentCoverIndex);
   assert.match(
     selectSource,
-    /manualNavigationEntryForDestinationPage\(\s*manualNavigation\.entries,\s*pageNumber,\s*\{\s*requestedEntry,\s*currentEntry\s*\},?\s*\)/
+    /manualNavigationEntryForDestinationPage\(\s*manualNavigation\.entries,\s*pageNumber,\s*\{\s*requestedEntry,\s*currentEntry\s*\},?\s*\)/,
   );
   assert.equal(pageNumberIsCoveredByEntry(93, sleepFatigue), true);
   assert.equal(pageNumberIsCoveredByEntry(94, sleepFatigue), true);
@@ -318,24 +376,40 @@ function pageNumberIsCoveredByEntry(pageNumber, entry) {
 
 test("manual 4 ruedas manifest records complete local source, asset, and translation coverage", () => {
   assert.equal(manifest.schema, "cabadrive-manual-ru.v1");
-  assert.equal(manifest.source.rawOriginalSha256, "69c6e1c582db4f96337fc13db09fffab26f9ce6364279c6beb2abc21d9ad3e8e");
+  assert.equal(
+    manifest.source.rawOriginalSha256,
+    "69c6e1c582db4f96337fc13db09fffab26f9ce6364279c6beb2abc21d9ad3e8e",
+  );
   assert.equal(manifest.source.pageCount, 200);
   assert.equal(manifest.pages.length, 200);
   assert.equal(manifest.translationCoverage.omittedPages, 0);
-  assert.equal(manifest.pages.filter((page) => page.translation.status === "reused_primary_source_chunk").length, 198);
-  assert.equal(manifest.pages.filter((page) => page.translation.status === "manual_visual_text").length, 2);
+  assert.equal(
+    manifest.pages.filter((page) => page.translation.status === "reused_primary_source_chunk")
+      .length,
+    198,
+  );
+  assert.equal(
+    manifest.pages.filter((page) => page.translation.status === "manual_visual_text").length,
+    2,
+  );
 
   for (const [index, page] of manifest.pages.entries()) {
     const pageNumber = index + 1;
     assert.equal(page.pageNumber, pageNumber);
     assert.equal(page.sourcePageNumber, pageNumber);
-    assert.match(page.visualAsset.localPath, /^content\/assets\/manuals\/gcba-manual-vehiculo-4-ruedas-2023\/pages\/page-\d{3}\.jpg$/);
+    assert.match(
+      page.visualAsset.localPath,
+      /^content\/assets\/manuals\/gcba-manual-vehiculo-4-ruedas-2023\/pages\/page-\d{3}\.jpg$/,
+    );
     assert.equal(page.visualAsset.width, 1191);
     assert.equal(page.visualAsset.height, 1684);
     assert.match(page.visualAsset.sha256, /^[a-f0-9]{64}$/);
     assert.equal(page.translation.exactCoverage, true);
     assert.ok(page.translation.sourceTextEs.trim(), `page ${pageNumber} source text is present`);
-    assert.ok(page.translation.fullTranslationRu.trim(), `page ${pageNumber} Russian translation is present`);
+    assert.ok(
+      page.translation.fullTranslationRu.trim(),
+      `page ${pageNumber} Russian translation is present`,
+    );
   }
 });
 
@@ -348,57 +422,125 @@ test("manual 4 ruedas layout and navigation cover all pages and source-derived s
   assert.ok(layout.coverage.blockTypes.label > 0);
   assert.ok(layout.coverage.blockTypes.footnote > 0);
   const page14 = layout.pages[13];
-  assert.equal(page14.blocks.every((block) => block.typography.fit === "absolute-fit"), true);
-  assert.equal(page14.textRegions.every((region) => region.fit === "absolute-positioned-blocks"), true);
-  assert.equal(page14.visualRegions.some((region) => isFullPageBounds(region.bounds)), false);
+  assert.equal(
+    page14.blocks.every((block) => block.typography.fit === "absolute-fit"),
+    true,
+  );
+  assert.equal(
+    page14.textRegions.every((region) => region.fit === "absolute-positioned-blocks"),
+    true,
+  );
+  assert.equal(
+    page14.visualRegions.some((region) => isFullPageBounds(region.bounds)),
+    false,
+  );
   assert.ok(page14.masks.every((mask) => mask.sourceGeometry === "source_page_text_region"));
-  assert.ok(page14.masks.every((mask) => mask.provenance?.method === "structured_source_text_region"));
+  assert.ok(
+    page14.masks.every((mask) => mask.provenance?.method === "structured_source_text_region"),
+  );
 
   const page114 = layout.pages[113];
   assert.ok(page114.blocks.length > 20);
   assert.ok(page114.masks.length >= page114.blocks.length);
-  assert.ok(page114.blocks.some((block) => block.bounds.x > 0.5), "page 114 uses a second column instead of one transcript rail");
-  assert.ok(new Set(page114.blocks.map((block) => `${block.bounds.x}:${block.bounds.y}:${block.bounds.width}:${block.bounds.height}`)).size > page114.blocks.length * 0.8);
-  assert.equal(page114.visualRegions.some((region) => isFullPageBounds(region.bounds)), false);
+  assert.ok(
+    page114.blocks.some((block) => block.bounds.x > 0.5),
+    "page 114 uses a second column instead of one transcript rail",
+  );
+  assert.ok(
+    new Set(
+      page114.blocks.map(
+        (block) =>
+          `${block.bounds.x}:${block.bounds.y}:${block.bounds.width}:${block.bounds.height}`,
+      ),
+    ).size >
+      page114.blocks.length * 0.8,
+  );
+  assert.equal(
+    page114.visualRegions.some((region) => isFullPageBounds(region.bounds)),
+    false,
+  );
   assert.ok(page114.masks.some((mask) => mask.role === "source-list"));
   assert.ok(page114.masks.some((mask) => mask.role === "source-footnote"));
   assert.ok(page114.masks.every((mask) => mask.sourceGeometry === "source_page_text_region"));
-  assert.ok(page114.masks.every((mask) => mask.provenance?.method === "structured_source_text_region"));
+  assert.ok(
+    page114.masks.every((mask) => mask.provenance?.method === "structured_source_text_region"),
+  );
   assert.ok(page114.masks.every((mask) => typeof mask.provenance?.sourceLineStart === "number"));
   assert.ok(page114.masks.every((mask) => typeof mask.provenance?.sourceTextSha256 === "string"));
   assert.ok(page114.masks.some((mask) => mask.sourceTextEs.includes("Airbag")));
 
   for (const pageNumber of [24, 75, 82, 125, 144]) {
     const nonAppendixPage = layout.pages[pageNumber - 1];
-    assert.ok(nonAppendixPage.masks.every((mask) => mask.sourceGeometry?.startsWith("source_page_")), `page ${pageNumber} masks use source geometry`);
     assert.ok(
-      nonAppendixPage.masks.every((mask) => mask.provenance?.method === "structured_source_text_region"),
-      `page ${pageNumber} masks record structured source provenance`
+      nonAppendixPage.masks.every((mask) => mask.sourceGeometry?.startsWith("source_page_")),
+      `page ${pageNumber} masks use source geometry`,
     );
-    assert.ok(nonAppendixPage.masks.every((mask) => typeof mask.provenance?.sourceLineStart === "number"), `page ${pageNumber} masks record source lines`);
+    assert.ok(
+      nonAppendixPage.masks.every(
+        (mask) => mask.provenance?.method === "structured_source_text_region",
+      ),
+      `page ${pageNumber} masks record structured source provenance`,
+    );
+    assert.ok(
+      nonAppendixPage.masks.every((mask) => typeof mask.provenance?.sourceLineStart === "number"),
+      `page ${pageNumber} masks record source lines`,
+    );
   }
 
   const page185 = layout.pages[184];
-  assert.ok(page185.masks.some((mask) => mask.role === "source-heading" && mask.sourceTextEs === "Reglamentarias"));
-  assert.ok(page185.masks.some((mask) => mask.role === "source-heading" && mask.sourceTextEs === "De prohibición"));
+  assert.ok(
+    page185.masks.some(
+      (mask) => mask.role === "source-heading" && mask.sourceTextEs === "Reglamentarias",
+    ),
+  );
+  assert.ok(
+    page185.masks.some(
+      (mask) => mask.role === "source-heading" && mask.sourceTextEs === "De prohibición",
+    ),
+  );
   assert.ok(page185.masks.filter((mask) => mask.role === "sign-caption").length >= 5);
-  assert.ok(page185.masks.every((mask) => mask.sourceGeometry === "source_page_text_region" || mask.sourceGeometry === "source_page_caption_region"));
-  assert.ok(page185.masks.some((mask) => mask.role === "sign-caption" && mask.bounds.y > 0.35 && mask.bounds.y < 0.39));
-  assert.ok(page185.masks.some((mask) => mask.role === "sign-caption" && mask.bounds.y > 0.52 && mask.bounds.y < 0.55));
-  assert.ok(page185.masks.some((mask) => mask.role === "sign-caption" && mask.bounds.y > 0.67 && mask.bounds.y < 0.7));
+  assert.ok(
+    page185.masks.every(
+      (mask) =>
+        mask.sourceGeometry === "source_page_text_region" ||
+        mask.sourceGeometry === "source_page_caption_region",
+    ),
+  );
+  assert.ok(
+    page185.masks.some(
+      (mask) => mask.role === "sign-caption" && mask.bounds.y > 0.35 && mask.bounds.y < 0.39,
+    ),
+  );
+  assert.ok(
+    page185.masks.some(
+      (mask) => mask.role === "sign-caption" && mask.bounds.y > 0.52 && mask.bounds.y < 0.55,
+    ),
+  );
+  assert.ok(
+    page185.masks.some(
+      (mask) => mask.role === "sign-caption" && mask.bounds.y > 0.67 && mask.bounds.y < 0.7,
+    ),
+  );
   assert.equal(page185.blocks.find((block) => block.textRu === "Регулирующие").bounds.y, 0.279);
   assert.equal(page185.blocks.find((block) => block.textRu === "Запрещающие").bounds.y, 0.31);
 
   for (const pageNumber of [186, 187, 193, 197]) {
     const appendixPage = layout.pages[pageNumber - 1];
-    assert.ok(appendixPage.masks.some((mask) => mask.role === "source-heading"), `page ${pageNumber} masks source headings`);
     assert.ok(
-      appendixPage.masks.some((mask) => mask.role === "sign-caption" || mask.role === "instructional-text"),
-      `page ${pageNumber} masks source captions/instructional labels`
+      appendixPage.masks.some((mask) => mask.role === "source-heading"),
+      `page ${pageNumber} masks source headings`,
     );
     assert.ok(
-      appendixPage.masks.every((mask) => mask.provenance?.method === "curated_source_page_geometry"),
-      `page ${pageNumber} masks record curated source geometry provenance`
+      appendixPage.masks.some(
+        (mask) => mask.role === "sign-caption" || mask.role === "instructional-text",
+      ),
+      `page ${pageNumber} masks source captions/instructional labels`,
+    );
+    assert.ok(
+      appendixPage.masks.every(
+        (mask) => mask.provenance?.method === "curated_source_page_geometry",
+      ),
+      `page ${pageNumber} masks record curated source geometry provenance`,
     );
   }
 
@@ -419,34 +561,61 @@ test("manual 4 ruedas layout and navigation cover all pages and source-derived s
     "appendix-1-private-cars",
     "appendix-2-passenger-transport",
     "appendix-3-cargo",
-    "appendix-4-road-signs"
+    "appendix-4-road-signs",
   ]);
-  assert.equal(navigation.entries.find((entry) => entry.id === "appendix-2-passenger-transport").startPage, 123);
+  assert.equal(
+    navigation.entries.find((entry) => entry.id === "appendix-2-passenger-transport").startPage,
+    123,
+  );
   assert.equal(
     navigation.entries
       .find((entry) => entry.id === "appendix-2-passenger-transport")
       .children.find((entry) => entry.id === "app2-social-responsibility").startPage,
-    124
+    124,
   );
-  const appendix2Topics = navigation.entries.find((entry) => entry.id === "appendix-2-passenger-transport").children;
+  const appendix2Topics = navigation.entries.find(
+    (entry) => entry.id === "appendix-2-passenger-transport",
+  ).children;
   assert.equal(appendix2Topics.find((entry) => entry.id === "app2-safe-driving").endPage, 148);
-  assert.equal(appendix2Topics.find((entry) => entry.id === "app2-highways-hospitals").startPage, 149);
-  assert.ok(navigation.entries.flatMap((entry) => entry.children ?? []).some((entry) => entry.id === "app4-signs-regulatory"));
-  const chapter4Topics = navigation.entries.find((entry) => entry.id === "chapter-4-natural-capacity").children;
+  assert.equal(
+    appendix2Topics.find((entry) => entry.id === "app2-highways-hospitals").startPage,
+    149,
+  );
+  assert.ok(
+    navigation.entries
+      .flatMap((entry) => entry.children ?? [])
+      .some((entry) => entry.id === "app4-signs-regulatory"),
+  );
+  const chapter4Topics = navigation.entries.find(
+    (entry) => entry.id === "chapter-4-natural-capacity",
+  ).children;
   assert.equal(chapter4Topics.find((entry) => entry.id === "ch4-sleep-fatigue").endPage, 94);
   assert.equal(chapter4Topics.find((entry) => entry.id === "ch4-stress").startPage, 94);
   assert.equal(chapter4Topics.find((entry) => entry.id === "ch4-stress").endPage, 94);
-  assert.equal(chapter4Topics.find((entry) => entry.id === "ch4-stress").sourceEvidence, "page_heading");
+  assert.equal(
+    chapter4Topics.find((entry) => entry.id === "ch4-stress").sourceEvidence,
+    "page_heading",
+  );
   assert.equal(chapter4Topics.find((entry) => entry.id === "ch4-distractions").startPage, 95);
-  assert.equal(chapter4Topics.find((entry) => entry.id === "ch4-distractions").sourceEvidence, "page_heading");
+  assert.equal(
+    chapter4Topics.find((entry) => entry.id === "ch4-distractions").sourceEvidence,
+    "page_heading",
+  );
   assert.ok(manifest.pages[93].translation.fullTranslationRu.includes("Стресс"));
   assert.ok(manifest.pages[93].translation.fullTranslationRu.includes("ВОЗ определяет"));
   assert.ok(manifest.pages[94].translation.fullTranslationRu.includes("Отвлечения"));
-  assert.ok(manifest.pages[94].translation.fullTranslationRu.includes("Под отвлечением понимается"));
+  assert.ok(
+    manifest.pages[94].translation.fullTranslationRu.includes("Под отвлечением понимается"),
+  );
 
-  const chapter5Topics = navigation.entries.find((entry) => entry.id === "chapter-5-driving-behavior").children;
+  const chapter5Topics = navigation.entries.find(
+    (entry) => entry.id === "chapter-5-driving-behavior",
+  ).children;
   assert.equal(chapter5Topics.find((entry) => entry.id === "ch5-equal-society").startPage, 100);
-  assert.equal(chapter5Topics.find((entry) => entry.id === "ch5-gender-violence-prevention").startPage, 100);
+  assert.equal(
+    chapter5Topics.find((entry) => entry.id === "ch5-gender-violence-prevention").startPage,
+    100,
+  );
 });
 
 test("manual 4 ruedas validator rejects remote assets, omitted translations, and stale counters", async () => {
@@ -457,9 +626,19 @@ test("manual 4 ruedas validator rejects remote assets, omitted translations, and
 
   const result = await validateManualVehiculo4RuedasRu({ manifest: badManifest });
 
-  assert.ok(result.errors.some((error) => error.includes("Manual page 1: visualAsset.localPath must be")));
-  assert.ok(result.errors.some((error) => error.includes("Manual page 1: visualAsset.localPath must be local.")));
-  assert.ok(result.errors.some((error) => error.includes("Manual page 2: fullTranslationRu must not contain placeholder text.")));
+  assert.ok(
+    result.errors.some((error) => error.includes("Manual page 1: visualAsset.localPath must be")),
+  );
+  assert.ok(
+    result.errors.some((error) =>
+      error.includes("Manual page 1: visualAsset.localPath must be local."),
+    ),
+  );
+  assert.ok(
+    result.errors.some((error) =>
+      error.includes("Manual page 2: fullTranslationRu must not contain placeholder text."),
+    ),
+  );
   assert.ok(result.errors.includes("Manual translationCoverage.omittedPages must be 0."));
 });
 
@@ -468,29 +647,79 @@ test("manual 4 ruedas validator rejects missing layout coverage, text drift, and
   badLayout.pages[0].blocks = [];
   badLayout.pages[1].blocks[0].textRu = "Черновик";
   const badNavigation = clone(navigation);
-  badNavigation.entries = badNavigation.entries.filter((entry) => entry.id !== "appendix-4-road-signs");
+  badNavigation.entries = badNavigation.entries.filter(
+    (entry) => entry.id !== "appendix-4-road-signs",
+  );
 
-  const result = await validateManualVehiculo4RuedasRu({ manifest, layout: badLayout, navigation: badNavigation });
+  const result = await validateManualVehiculo4RuedasRu({
+    manifest,
+    layout: badLayout,
+    navigation: badNavigation,
+  });
 
-  assert.ok(result.errors.some((error) => error.includes("page 1 must include ordered Russian layout blocks")));
-  assert.ok(result.errors.some((error) => error.includes("page 2 ordered Russian blocks do not reconstruct fullTranslationRu")));
-  assert.ok(result.errors.some((error) => error.includes("top-level navigation entry count is stale")));
-  assert.ok(result.errors.some((error) => error.includes("required source-index topic app4-signs-regulatory is missing")));
+  assert.ok(
+    result.errors.some((error) =>
+      error.includes("page 1 must include ordered Russian layout blocks"),
+    ),
+  );
+  assert.ok(
+    result.errors.some((error) =>
+      error.includes("page 2 ordered Russian blocks do not reconstruct fullTranslationRu"),
+    ),
+  );
+  assert.ok(
+    result.errors.some((error) => error.includes("top-level navigation entry count is stale")),
+  );
+  assert.ok(
+    result.errors.some((error) =>
+      error.includes("required source-index topic app4-signs-regulatory is missing"),
+    ),
+  );
 });
 
 test("manual 4 ruedas validator rejects stale Chapter 4 Stress and Distractions topic starts", async () => {
   const badNavigation = clone(navigation);
-  const chapter4Topics = badNavigation.entries.find((entry) => entry.id === "chapter-4-natural-capacity").children;
+  const chapter4Topics = badNavigation.entries.find(
+    (entry) => entry.id === "chapter-4-natural-capacity",
+  ).children;
   chapter4Topics.find((entry) => entry.id === "ch4-stress").startPage = 95;
   chapter4Topics.find((entry) => entry.id === "ch4-stress").endPage = 97;
   chapter4Topics.find((entry) => entry.id === "ch4-distractions").startPage = 94;
 
-  const result = await validateManualVehiculo4RuedasRu({ manifest, layout, navigation: badNavigation });
+  const result = await validateManualVehiculo4RuedasRu({
+    manifest,
+    layout,
+    navigation: badNavigation,
+  });
 
-  assert.ok(result.errors.some((error) => error.includes("child ch4-stress must start on page 94 based on page-heading/content evidence")));
-  assert.ok(result.errors.some((error) => error.includes("child ch4-stress start page 95 does not contain required evidence text \"Стресс\"")));
-  assert.ok(result.errors.some((error) => error.includes("child ch4-distractions must start on page 95 based on page-heading/content evidence")));
-  assert.ok(result.errors.some((error) => error.includes("child ch4-distractions start page 94 does not contain required evidence text \"Отвлечения\"")));
+  assert.ok(
+    result.errors.some((error) =>
+      error.includes(
+        "child ch4-stress must start on page 94 based on page-heading/content evidence",
+      ),
+    ),
+  );
+  assert.ok(
+    result.errors.some((error) =>
+      error.includes(
+        'child ch4-stress start page 95 does not contain required evidence text "Стресс"',
+      ),
+    ),
+  );
+  assert.ok(
+    result.errors.some((error) =>
+      error.includes(
+        "child ch4-distractions must start on page 95 based on page-heading/content evidence",
+      ),
+    ),
+  );
+  assert.ok(
+    result.errors.some((error) =>
+      error.includes(
+        'child ch4-distractions start page 94 does not contain required evidence text "Отвлечения"',
+      ),
+    ),
+  );
 });
 
 test("manual 4 ruedas validator rejects generic flow geometry and full-page visual catch-all", async () => {
@@ -498,23 +727,30 @@ test("manual 4 ruedas validator rejects generic flow geometry and full-page visu
   const page = badLayout.pages[113];
   const flowRegion = { x: 0.25, y: 0.22, width: 0.56, height: 0.58 };
   const slot = flowRegion.height / page.blocks.length;
-  page.textRegions = [{ id: "page-114-russian-flow", bounds: flowRegion, fit: "scale-and-scroll-if-needed", fontScale: 0.68 }];
+  page.textRegions = [
+    {
+      id: "page-114-russian-flow",
+      bounds: flowRegion,
+      fit: "scale-and-scroll-if-needed",
+      fontScale: 0.68,
+    },
+  ];
   page.masks = [
     {
       id: "page-114-source-text-mask",
       purpose: "replace_visible_source_text_with_russian_layout",
       bounds: flowRegion,
       fill: "#fffdf8",
-      opacity: 0.985
-    }
+      opacity: 0.985,
+    },
   ];
   page.visualRegions = [
     {
       id: "page-114-visual-context",
       type: "page-composition",
       bounds: { x: 0, y: 0, width: 1, height: 1 },
-      preservedFrom: page.visualBase.localPath
-    }
+      preservedFrom: page.visualBase.localPath,
+    },
   ];
   page.blocks = page.blocks.map((block, index) => ({
     ...block,
@@ -522,9 +758,9 @@ test("manual 4 ruedas validator rejects generic flow geometry and full-page visu
       x: flowRegion.x,
       y: Number((flowRegion.y + slot * index).toFixed(4)),
       width: flowRegion.width,
-      height: Number((slot * 0.92).toFixed(4))
+      height: Number((slot * 0.92).toFixed(4)),
     },
-    typography: { ...block.typography, fit: "flow-scale" }
+    typography: { ...block.typography, fit: "flow-scale" },
   }));
 
   const result = await validateManualVehiculo4RuedasRu({ manifest, layout: badLayout, navigation });
@@ -546,14 +782,26 @@ test("manual 4 ruedas validator rejects Appendix IV masks derived from Russian d
     sourceGeometry: "russian_block_replacement_region",
     bounds: block.bounds,
     fill: "#fffdf8",
-    opacity: 0.985
+    opacity: 0.985,
   }));
 
   const result = await validateManualVehiculo4RuedasRu({ manifest, layout: badLayout, navigation });
 
-  assert.ok(result.errors.some((error) => error.includes("Appendix IV masks must be based on source text/caption geometry")));
-  assert.ok(result.errors.some((error) => error.includes("missing source-heading mask over source Reglamentarias heading")));
-  assert.ok(result.errors.some((error) => error.includes("missing sign-caption mask over source first-row sign caption")));
+  assert.ok(
+    result.errors.some((error) =>
+      error.includes("Appendix IV masks must be based on source text/caption geometry"),
+    ),
+  );
+  assert.ok(
+    result.errors.some((error) =>
+      error.includes("missing source-heading mask over source Reglamentarias heading"),
+    ),
+  );
+  assert.ok(
+    result.errors.some((error) =>
+      error.includes("missing sign-caption mask over source first-row sign caption"),
+    ),
+  );
 });
 
 test("manual 4 ruedas validator rejects non-Appendix masks without source provenance", async () => {
@@ -571,14 +819,38 @@ test("manual 4 ruedas validator rejects non-Appendix masks without source proven
     provenance: {
       method: "destination_russian_block_geometry",
       sourcePageNumber: page.sourcePageNumber,
-      visualAssetPath: page.visualBase.localPath
-    }
+      visualAssetPath: page.visualBase.localPath,
+    },
   }));
 
   const result = await validateManualVehiculo4RuedasRu({ manifest, layout: badLayout, navigation });
 
-  assert.ok(result.errors.some((error) => error.includes("page 114: mask bad-non-appendix-mask-1 must use source text/caption/label geometry")));
-  assert.ok(result.errors.some((error) => error.includes("page 114: mask bad-non-appendix-mask-1 must record structured or curated source-region provenance")));
-  assert.ok(result.errors.some((error) => error.includes("page 114: mask bad-non-appendix-mask-1 must not be derived from destination Russian block placement")));
-  assert.ok(result.errors.some((error) => error.includes("page 114: mask bad-non-appendix-mask-1 bounds match a destination Russian block")));
+  assert.ok(
+    result.errors.some((error) =>
+      error.includes(
+        "page 114: mask bad-non-appendix-mask-1 must use source text/caption/label geometry",
+      ),
+    ),
+  );
+  assert.ok(
+    result.errors.some((error) =>
+      error.includes(
+        "page 114: mask bad-non-appendix-mask-1 must record structured or curated source-region provenance",
+      ),
+    ),
+  );
+  assert.ok(
+    result.errors.some((error) =>
+      error.includes(
+        "page 114: mask bad-non-appendix-mask-1 must not be derived from destination Russian block placement",
+      ),
+    ),
+  );
+  assert.ok(
+    result.errors.some((error) =>
+      error.includes(
+        "page 114: mask bad-non-appendix-mask-1 bounds match a destination Russian block",
+      ),
+    ),
+  );
 });

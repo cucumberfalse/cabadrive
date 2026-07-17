@@ -31,7 +31,8 @@ function paeth(a, b, c) {
 }
 
 export function decodeRgbPng(buffer) {
-  if (buffer.subarray(0, 8).toString("hex") !== "89504e470d0a1a0a") throw new Error("Not a PNG file");
+  if (buffer.subarray(0, 8).toString("hex") !== "89504e470d0a1a0a")
+    throw new Error("Not a PNG file");
   let offset = 8;
   let width;
   let height;
@@ -43,7 +44,8 @@ export function decodeRgbPng(buffer) {
     if (type === "IHDR") {
       width = data.readUInt32BE(0);
       height = data.readUInt32BE(4);
-      if (data[8] !== 8 || data[9] !== 2 || data[12] !== 0) throw new Error("Expected non-interlaced 8-bit RGB PNG");
+      if (data[8] !== 8 || data[9] !== 2 || data[12] !== 0)
+        throw new Error("Expected non-interlaced 8-bit RGB PNG");
     }
     if (type === "IDAT") idat.push(data);
     offset += 12 + length;
@@ -63,7 +65,8 @@ export function decodeRgbPng(buffer) {
       const raw = filtered[inputOffset + x];
       const left = x >= bytesPerPixel ? pixels[y * stride + x - bytesPerPixel] : 0;
       const up = y > 0 ? pixels[(y - 1) * stride + x] : 0;
-      const upperLeft = y > 0 && x >= bytesPerPixel ? pixels[(y - 1) * stride + x - bytesPerPixel] : 0;
+      const upperLeft =
+        y > 0 && x >= bytesPerPixel ? pixels[(y - 1) * stride + x - bytesPerPixel] : 0;
       let value;
       if (filter === 0) value = raw;
       else if (filter === 1) value = raw + left;
@@ -80,9 +83,11 @@ export function decodeRgbPng(buffer) {
 
 export function encodeRgbPng({ width, height, pixels }) {
   const stride = width * 3;
-  if (pixels.length !== stride * height) throw new Error("RGB pixel buffer has an unexpected length");
+  if (pixels.length !== stride * height)
+    throw new Error("RGB pixel buffer has an unexpected length");
   const scanlines = Buffer.alloc((stride + 1) * height);
-  for (let y = 0; y < height; y += 1) pixels.copy(scanlines, y * (stride + 1) + 1, y * stride, (y + 1) * stride);
+  for (let y = 0; y < height; y += 1)
+    pixels.copy(scanlines, y * (stride + 1) + 1, y * stride, (y + 1) * stride);
   const ihdr = Buffer.alloc(13);
   ihdr.writeUInt32BE(width, 0);
   ihdr.writeUInt32BE(height, 4);
@@ -92,11 +97,15 @@ export function encodeRgbPng({ width, height, pixels }) {
     pngSignature,
     pngChunk("IHDR", ihdr),
     pngChunk("IDAT", deflateSync(scanlines, { level: 9 })),
-    pngChunk("IEND", Buffer.alloc(0))
+    pngChunk("IEND", Buffer.alloc(0)),
   ]);
 }
 
-export function findOpaqueBlackRegion({ width, height, pixels }, minimumWidth = 96, minimumHeight = 8) {
+export function findOpaqueBlackRegion(
+  { width, height, pixels },
+  minimumWidth = 96,
+  minimumHeight = 8,
+) {
   const stride = width * 3;
   let consecutiveRows = 0;
   let maxConsecutiveRows = 0;
@@ -114,13 +123,19 @@ export function findOpaqueBlackRegion({ width, height, pixels }, minimumWidth = 
     consecutiveRows = rowMaxRun >= minimumWidth ? consecutiveRows + 1 : 0;
     maxConsecutiveRows = Math.max(maxConsecutiveRows, consecutiveRows);
   }
-  return { found: maxRunWidth >= minimumWidth && maxConsecutiveRows >= minimumHeight, maxRunWidth, maxConsecutiveRows };
+  return {
+    found: maxRunWidth >= minimumWidth && maxConsecutiveRows >= minimumHeight,
+    maxRunWidth,
+    maxConsecutiveRows,
+  };
 }
 
 export function assertNoOpaqueBlackRegion(path) {
   const result = findOpaqueBlackRegion(decodeRgbPng(readFileSync(path)));
   if (result.found) {
-    throw new Error(`${path}: unexplained opaque-black rectangle detected (${result.maxRunWidth}px run across ${result.maxConsecutiveRows} consecutive rows)`);
+    throw new Error(
+      `${path}: unexplained opaque-black rectangle detected (${result.maxRunWidth}px run across ${result.maxConsecutiveRows} consecutive rows)`,
+    );
   }
   return result;
 }

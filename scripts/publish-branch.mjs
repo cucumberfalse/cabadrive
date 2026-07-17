@@ -13,7 +13,7 @@ function run(command, commandArgs, options = {}) {
   return execFileSync(command, commandArgs, {
     cwd: root,
     encoding: "utf8",
-    stdio: options.capture ? ["ignore", "pipe", "pipe"] : "inherit"
+    stdio: options.capture ? ["ignore", "pipe", "pipe"] : "inherit",
   })?.trim();
 }
 
@@ -30,7 +30,9 @@ if (!args["skip-preflight"]) {
 
 run("git", ["push", "-u", "origin", branch]);
 
-const repo = run("gh", ["repo", "view", "--json", "nameWithOwner", "--jq", ".nameWithOwner"], { capture: true });
+const repo = run("gh", ["repo", "view", "--json", "nameWithOwner", "--jq", ".nameWithOwner"], {
+  capture: true,
+});
 const base = args.base || config.defaultBaseBranch || "main";
 const title = args.title || `[agent] ${branch.replace(/^[^/]+\//, "").replaceAll("-", " ")}`;
 const body = [
@@ -41,14 +43,16 @@ const body = [
   "## Validation",
   "",
   args["skip-preflight"] ? "- Preflight skipped by caller." : "- `pnpm run preflight`",
-  ""
+  "",
 ].join("\n");
 
 const bodyFile = join(tmpdir(), `unicorn-pr-${Date.now()}.md`);
 writeFileSync(bodyFile, body);
 
 try {
-  const existing = run("gh", ["pr", "view", branch, "--json", "url", "--jq", ".url"], { capture: true });
+  const existing = run("gh", ["pr", "view", branch, "--json", "url", "--jq", ".url"], {
+    capture: true,
+  });
   console.log(`Existing PR: ${existing}`);
 } catch {
   run("gh", [
@@ -64,7 +68,7 @@ try {
     "--title",
     title,
     "--body-file",
-    bodyFile
+    bodyFile,
   ]);
 } finally {
   unlinkSync(bodyFile);

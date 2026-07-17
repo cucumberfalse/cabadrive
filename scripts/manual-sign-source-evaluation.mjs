@@ -5,7 +5,8 @@ import { existsSync, mkdirSync, readdirSync, readFileSync, statSync, writeFileSy
 import { extname, join } from "node:path";
 
 const featureId = "037-manual-sign-crop-resolution";
-const baselineEvidencePath = "specs/037-manual-sign-crop-resolution/evidence/baseline/manual-sign-baseline-036.json";
+const baselineEvidencePath =
+  "specs/037-manual-sign-crop-resolution/evidence/baseline/manual-sign-baseline-036.json";
 const sourceEvaluationDir = "specs/037-manual-sign-crop-resolution/evidence/source-evaluation";
 const sourceManifestPath = `${sourceEvaluationDir}/source-manifest.json`;
 const rowSourceMappingPath = `${sourceEvaluationDir}/row-source-mapping.json`;
@@ -23,7 +24,7 @@ const sourceIds = [
   "argentina-anexo-art22-archive-pdf",
   "gcba-boletin-anx-58",
   "gcba-boletin-anx-59",
-  "gcba-pliego-signage-pdf"
+  "gcba-pliego-signage-pdf",
 ];
 
 function repoPath(path) {
@@ -35,7 +36,9 @@ function readJson(path) {
 }
 
 function sha256File(path) {
-  return createHash("sha256").update(readFileSync(repoPath(path))).digest("hex");
+  return createHash("sha256")
+    .update(readFileSync(repoPath(path)))
+    .digest("hex");
 }
 
 function fileStats(path) {
@@ -46,7 +49,7 @@ function fileStats(path) {
     path,
     bytes: stats.size,
     mtime: stats.mtime.toISOString(),
-    sha256: sha256File(path)
+    sha256: sha256File(path),
   };
 }
 
@@ -86,7 +89,7 @@ function jpegDimensions(path) {
     if (isStartOfFrame && segmentLength >= 7) {
       return {
         width: bytes.readUInt16BE(offset + 5),
-        height: bytes.readUInt16BE(offset + 3)
+        height: bytes.readUInt16BE(offset + 3),
       };
     }
 
@@ -99,23 +102,33 @@ function jpegDimensions(path) {
 function assetRecords(paths) {
   return paths.map((path) => {
     const stats = fileStats(path);
-    const dimensions = extname(path).toLowerCase() === ".jpg" || extname(path).toLowerCase() === ".jpeg" ? jpegDimensions(path) : null;
+    const dimensions =
+      extname(path).toLowerCase() === ".jpg" || extname(path).toLowerCase() === ".jpeg"
+        ? jpegDimensions(path)
+        : null;
     return {
       path,
       bytes: stats?.bytes ?? null,
       sha256: stats?.sha256 ?? null,
-      dimensions
+      dimensions,
     };
   });
 }
 
 function makeSourceManifest(baseline) {
-  const retainedAnexoLPath = "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images";
+  const retainedAnexoLPath =
+    "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images";
   const argentinaImagesPath = `${archivedSourceRoot}/argentina-gob-ar-anexo-l-images`;
   const argentinaHtmlPath = `${archivedSourceRoot}/argentina-gob-ar-decreto-779-1995-anexo-l.html`;
-  const argentinaHtml = existsSync(repoPath(argentinaHtmlPath)) ? readFileSync(repoPath(argentinaHtmlPath), "utf8") : "";
+  const argentinaHtml = existsSync(repoPath(argentinaHtmlPath))
+    ? readFileSync(repoPath(argentinaHtmlPath), "utf8")
+    : "";
   const argentinaImageUrls = Array.from(
-    new Set(Array.from(argentinaHtml.matchAll(/https?:\/\/[^"'\s)]+?\.(?:jpg|jpeg|png)/gi)).map((match) => match[0]))
+    new Set(
+      Array.from(argentinaHtml.matchAll(/https?:\/\/[^"'\s)]+?\.(?:jpg|jpeg|png)/gi)).map(
+        (match) => match[0],
+      ),
+    ),
   ).sort();
 
   const sources = [
@@ -124,9 +137,11 @@ function makeSourceManifest(baseline) {
       label: "GCBA Manual del Conductor, vehiculo 4 ruedas, Appendix IV source pages",
       issuer: "Gobierno de la Ciudad Autonoma de Buenos Aires",
       sourceType: "retained-official-pdf",
-      sourceUrl: "https://buenosaires.gob.ar/licenciasdeconducir/material-de-estudio-para-el-examen-teorico",
+      sourceUrl:
+        "https://buenosaires.gob.ar/licenciasdeconducir/material-de-estudio-para-el-examen-teorico",
       retainedPath: "content/official-documents/originals/gcba-manual-vehiculo-4-ruedas-2023.pdf",
-      officialStatusBasis: "Existing retained GCBA manual PDF used by the current Appendix IV inventory for source order, caption mapping, and CABA-specific visual intent.",
+      officialStatusBasis:
+        "Existing retained GCBA manual PDF used by the current Appendix IV inventory for source order, caption mapping, and CABA-specific visual intent.",
       pageCount: 200,
       hashAlgorithm: "sha256",
       ...fileStats("content/official-documents/originals/gcba-manual-vehiculo-4-ruedas-2023.pdf"),
@@ -135,9 +150,11 @@ function makeSourceManifest(baseline) {
       rowUseDecision:
         "Chosen as the exact visual-match source for every sign-like baseline row, but only as a source-limited exception candidate until a better exact official 3x source is found.",
       rowCoverage: {
-        signLikeRowsCoveredByExactIntent: baseline.rows.filter((row) => row.entryKind === "catalog-entry" || row.entryKind === "contextual-visual").length,
-        sourcePages: Object.keys(baseline.rowsBySourcePage).map((page) => Number(page))
-      }
+        signLikeRowsCoveredByExactIntent: baseline.rows.filter(
+          (row) => row.entryKind === "catalog-entry" || row.entryKind === "contextual-visual",
+        ).length,
+        sourcePages: Object.keys(baseline.rowsBySourcePage).map((page) => Number(page)),
+      },
     },
     {
       id: "retained-anexo-l-panels",
@@ -151,7 +168,8 @@ function makeSourceManifest(baseline) {
       assets: assetRecords(listFiles(retainedAnexoLPath)),
       nativeResolutionNotes:
         "Panel images are larger than many current row clips, but they are panel-level national material and do not by themselves prove row-level exact equivalence to each CABA learner-facing row, especially CABA-local variants, plates, arrows, embedded labels, and contextual visuals.",
-      rowUseDecision: "Evaluated as official national panels; not selected for final row crops without row-level exact visual proof."
+      rowUseDecision:
+        "Evaluated as official national panels; not selected for final row crops without row-level exact visual proof.",
     },
     {
       id: "argentina-anexo-l-html",
@@ -160,14 +178,16 @@ function makeSourceManifest(baseline) {
       sourceType: "archived-official-html",
       sourceUrl: "https://www.argentina.gob.ar/normativa/recurso/30389/dto779-1995-anexoL/htm",
       archivedPath: argentinaHtmlPath,
-      officialStatusBasis: "Official Argentina.gob.ar Anexo L HTML page archived for source evaluation.",
+      officialStatusBasis:
+        "Official Argentina.gob.ar Anexo L HTML page archived for source evaluation.",
       hashAlgorithm: "sha256",
       ...fileStats(argentinaHtmlPath),
       embeddedImageUrlCount: argentinaImageUrls.length,
       embeddedImageUrls: argentinaImageUrls,
       nativeResolutionNotes:
         "The HTML gives legal text and panel image references, not a deterministic CABA row-level crop mapping.",
-      rowUseDecision: "Evaluated for legal/source coverage; not selected as a direct final crop source."
+      rowUseDecision:
+        "Evaluated for legal/source coverage; not selected as a direct final crop source.",
     },
     {
       id: "argentina-anexo-l-html-images",
@@ -176,27 +196,31 @@ function makeSourceManifest(baseline) {
       sourceType: "archived-official-image-panels",
       sourceUrl: "https://www.argentina.gob.ar/normativa/recurso/30389/dto779-1995-anexoL/htm",
       archivedPath: argentinaImagesPath,
-      officialStatusBasis: "Images referenced by the official Argentina.gob.ar Anexo L HTML and archived locally for evaluation.",
+      officialStatusBasis:
+        "Images referenced by the official Argentina.gob.ar Anexo L HTML and archived locally for evaluation.",
       assetCount: listFiles(argentinaImagesPath).length,
       assets: assetRecords(listFiles(argentinaImagesPath)),
       nativeResolutionNotes:
         "The archived panels are official national source material, but the gate did not establish exact row-level equivalence to all CABA manual rows or 3x effective per-row crop dimensions.",
-      rowUseDecision: "Evaluated as official national panels; not selected without row-level exact visual proof."
+      rowUseDecision:
+        "Evaluated as official national panels; not selected without row-level exact visual proof.",
     },
     {
       id: "argentina-ansv-sign-catalog-pdf",
       label: "ANSV Manual de Senaletica",
       issuer: "Agencia Nacional de Seguridad Vial / Argentina.gob.ar",
       sourceType: "archived-official-pdf",
-      sourceUrl: "https://www.argentina.gob.ar/sites/default/files/2022/02/ansv_licencias_manual_senaletica_2.pdf",
+      sourceUrl:
+        "https://www.argentina.gob.ar/sites/default/files/2022/02/ansv_licencias_manual_senaletica_2.pdf",
       archivedPath: `${archivedSourceRoot}/argentina-gob-ar-ansv-licencias-manual-senaletica-2.pdf`,
-      officialStatusBasis: "Official Argentina.gob.ar hosted ANSV sign catalog PDF archived for evaluation.",
+      officialStatusBasis:
+        "Official Argentina.gob.ar hosted ANSV sign catalog PDF archived for evaluation.",
       pageCount: 27,
       hashAlgorithm: "sha256",
       ...fileStats(`${archivedSourceRoot}/argentina-gob-ar-ansv-licencias-manual-senaletica-2.pdf`),
       nativeResolutionNotes:
         "Catalog may contain nationally defined sign visuals, but this gate did not establish deterministic row-level exact matches and crop coordinates for CABA Appendix IV entries.",
-      rowUseDecision: "Evaluated; not selected without row-level exact visual proof."
+      rowUseDecision: "Evaluated; not selected without row-level exact visual proof.",
     },
     {
       id: "argentina-anexo-art22-archive-pdf",
@@ -208,56 +232,66 @@ function makeSourceManifest(baseline) {
       officialStatusBasis: "Official Argentina.gob.ar legal archive PDF downloaded for evaluation.",
       pageCount: 70,
       hashAlgorithm: "sha256",
-      ...fileStats(`${archivedSourceRoot}/argentina-gob-ar-decreto-779-1995-anexo-articulo-22-archivo.pdf`),
+      ...fileStats(
+        `${archivedSourceRoot}/argentina-gob-ar-decreto-779-1995-anexo-articulo-22-archivo.pdf`,
+      ),
       nativeResolutionNotes:
         "Legal archive source is official but did not produce all-row exact visual matches with CABA learner-facing variants during this gate.",
-      rowUseDecision: "Evaluated; not selected without row-level exact visual proof."
+      rowUseDecision: "Evaluated; not selected without row-level exact visual proof.",
     },
     {
       id: "gcba-boletin-anx-58",
       label: "GCBA Boletin Oficial ANX-58",
       issuer: "Gobierno de la Ciudad Autonoma de Buenos Aires",
       sourceType: "official-gcba-pdf-web-verified-archive-unavailable",
-      sourceUrl: "https://documentosboletinoficial.buenosaires.gob.ar/publico/PE-RES-MIGC-SSPO-18-25-ANX-58.pdf",
-      officialStatusBasis: "Official GCBA Boletin PDF URL opened and page-count verified via web evidence during source evaluation.",
+      sourceUrl:
+        "https://documentosboletinoficial.buenosaires.gob.ar/publico/PE-RES-MIGC-SSPO-18-25-ANX-58.pdf",
+      officialStatusBasis:
+        "Official GCBA Boletin PDF URL opened and page-count verified via web evidence during source evaluation.",
       pageCount: 217,
       archivedPath: null,
       unavailableReason:
         "Repeated local curl attempts stalled at zero transferred bytes and exited with curl (28) timeout/too-slow errors; no local file was retained.",
       nativeResolutionNotes:
         "Potential GCBA local-variant source, but unavailable as a local archived source in this worktree and no exact row-level variant mapping was established.",
-      rowUseDecision: "Evaluated as web-verified candidate; not selected."
+      rowUseDecision: "Evaluated as web-verified candidate; not selected.",
     },
     {
       id: "gcba-boletin-anx-59",
       label: "GCBA Boletin Oficial ANX-59",
       issuer: "Gobierno de la Ciudad Autonoma de Buenos Aires",
       sourceType: "official-gcba-pdf-web-verified-archive-unavailable",
-      sourceUrl: "https://documentosboletinoficial.buenosaires.gob.ar/publico/PE-RES-MIGC-SSPO-18-25-ANX-59.pdf",
-      officialStatusBasis: "Official GCBA Boletin PDF URL opened and page-count verified via web evidence during source evaluation.",
+      sourceUrl:
+        "https://documentosboletinoficial.buenosaires.gob.ar/publico/PE-RES-MIGC-SSPO-18-25-ANX-59.pdf",
+      officialStatusBasis:
+        "Official GCBA Boletin PDF URL opened and page-count verified via web evidence during source evaluation.",
       pageCount: 178,
       archivedPath: null,
       unavailableReason:
         "Repeated local curl attempts stalled at zero transferred bytes and exited with curl (28) timeout/too-slow errors; no local file was retained.",
       nativeResolutionNotes:
         "Potential GCBA local-variant source, but unavailable as a local archived source in this worktree and no exact row-level variant mapping was established.",
-      rowUseDecision: "Evaluated as web-verified candidate; not selected."
+      rowUseDecision: "Evaluated as web-verified candidate; not selected.",
     },
     {
       id: "gcba-pliego-signage-pdf",
       label: "GCBA public pliego/signage PDF candidate",
       issuer: "Gobierno de la Ciudad Autonoma de Buenos Aires",
       sourceType: "archived-official-gcba-pdf",
-      sourceUrl: "https://buenosaires.gob.ar/areas/planeamiento_obras/licitations/web/uploads/82c01107e6211ae413694ce564d255a3.pdf",
+      sourceUrl:
+        "https://buenosaires.gob.ar/areas/planeamiento_obras/licitations/web/uploads/82c01107e6211ae413694ce564d255a3.pdf",
       archivedPath: `${archivedSourceRoot}/gcba-planeamiento-obras-licitations-82c01107e6211ae413694ce564d255a3.pdf`,
-      officialStatusBasis: "Public GCBA-hosted PDF archived for evaluation as a possible local signage variant source.",
+      officialStatusBasis:
+        "Public GCBA-hosted PDF archived for evaluation as a possible local signage variant source.",
       pageCount: 52,
       hashAlgorithm: "sha256",
-      ...fileStats(`${archivedSourceRoot}/gcba-planeamiento-obras-licitations-82c01107e6211ae413694ce564d255a3.pdf`),
+      ...fileStats(
+        `${archivedSourceRoot}/gcba-planeamiento-obras-licitations-82c01107e6211ae413694ce564d255a3.pdf`,
+      ),
       nativeResolutionNotes:
         "Official GCBA candidate, but no deterministic exact row-level mapping was established for the CABA manual sign catalog entries.",
-      rowUseDecision: "Evaluated; not selected without row-level exact visual proof."
-    }
+      rowUseDecision: "Evaluated; not selected without row-level exact visual proof.",
+    },
   ];
 
   return {
@@ -275,8 +309,8 @@ function makeSourceManifest(baseline) {
     previousSourceAttemptEvidence: [
       "specs/037-manual-sign-crop-resolution/evidence/source-attempts/source-attempts-summary.json",
       "specs/037-manual-sign-crop-resolution/evidence/source-attempts/page185-no-estacionar-baseline-x5-crop.jpg",
-      "specs/037-manual-sign-crop-resolution/evidence/source-attempts/page185-no-estacionar-pdf-scale15-scaled-coordinate-probe.png"
-    ]
+      "specs/037-manual-sign-crop-resolution/evidence/source-attempts/page185-no-estacionar-pdf-scale15-scaled-coordinate-probe.png",
+    ],
   };
 }
 
@@ -294,7 +328,7 @@ function sourceCandidate(row, sourceId) {
       sourceNativeHeight: row.baselineCropNaturalHeight,
       decision: "chosen-source-limited-exception-candidate",
       rationale:
-        "The retained CABA manual is the exact row-order and caption source, but current evidence only proves the same effective source detail as the feature-036 sheet clip; the prior high-scale PDF probe did not establish real 3x native detail."
+        "The retained CABA manual is the exact row-order and caption source, but current evidence only proves the same effective source detail as the feature-036 sheet clip; the prior high-scale PDF probe did not establish real 3x native detail.",
     };
   }
 
@@ -311,7 +345,7 @@ function sourceCandidate(row, sourceId) {
       sourceNativeHeight: null,
       decision: "rejected",
       rationale:
-        "Official GCBA PDF URL was web-verified, but local archiving failed with zero-byte curl timeouts and no exact row-level CABA variant mapping was established."
+        "Official GCBA PDF URL was web-verified, but local archiving failed with zero-byte curl timeouts and no exact row-level CABA variant mapping was established.",
     };
   }
 
@@ -328,7 +362,7 @@ function sourceCandidate(row, sourceId) {
       sourceNativeHeight: null,
       decision: "rejected",
       rationale:
-        "This official source family does not provide a proven exact row-level replacement for the retained learner-facing contextual visual."
+        "This official source family does not provide a proven exact row-level replacement for the retained learner-facing contextual visual.",
     };
   }
 
@@ -337,7 +371,7 @@ function sourceCandidate(row, sourceId) {
     "argentina-anexo-l-html",
     "argentina-anexo-l-html-images",
     "argentina-ansv-sign-catalog-pdf",
-    "argentina-anexo-art22-archive-pdf"
+    "argentina-anexo-art22-archive-pdf",
   ]);
 
   if (nationalSourceIds.has(sourceId)) {
@@ -353,7 +387,7 @@ function sourceCandidate(row, sourceId) {
       sourceNativeHeight: null,
       decision: "rejected",
       rationale:
-        "The source is official national material, but the gate did not prove exact visual equivalence for this CABA row, including plates/tablets/arrows/labels/variant meaning, nor deterministic crop coordinates."
+        "The source is official national material, but the gate did not prove exact visual equivalence for this CABA row, including plates/tablets/arrows/labels/variant meaning, nor deterministic crop coordinates.",
     };
   }
 
@@ -369,7 +403,7 @@ function sourceCandidate(row, sourceId) {
     sourceNativeHeight: null,
     decision: "rejected",
     rationale:
-      "The source is official/public, but the gate did not prove exact row-level visual equivalence or usable crop coordinates for this CABA manual row."
+      "The source is official/public, but the gate did not prove exact row-level visual equivalence or usable crop coordinates for this CABA manual row.",
   };
 }
 
@@ -380,7 +414,9 @@ function makeRowMapping(baseline) {
       const requiredMinimumWidth = Math.ceil(3 * row.baselineCropNaturalWidth);
       const requiredMinimumHeight = Math.ceil(3 * row.baselineCropNaturalHeight);
       const evaluatedCandidates = sourceIds.map((sourceId) => sourceCandidate(row, sourceId));
-      const chosen = evaluatedCandidates.find((candidate) => candidate.sourceId === "caba-manual-pdf");
+      const chosen = evaluatedCandidates.find(
+        (candidate) => candidate.sourceId === "caba-manual-pdf",
+      );
 
       return {
         sourceEvaluationId: `source-eval:${row.id}`,
@@ -412,11 +448,15 @@ function makeRowMapping(baseline) {
         effectiveCandidateHeight: row.baselineCropNaturalHeight,
         sourceNativeWidth: row.baselineCropNaturalWidth,
         sourceNativeHeight: row.baselineCropNaturalHeight,
-        qualityScaleRatioWidth: Number((row.baselineCropNaturalWidth / requiredMinimumWidth).toFixed(6)),
-        qualityScaleRatioHeight: Number((row.baselineCropNaturalHeight / requiredMinimumHeight).toFixed(6)),
+        qualityScaleRatioWidth: Number(
+          (row.baselineCropNaturalWidth / requiredMinimumWidth).toFixed(6),
+        ),
+        qualityScaleRatioHeight: Number(
+          (row.baselineCropNaturalHeight / requiredMinimumHeight).toFixed(6),
+        ),
         sourceLimitedReason:
           "No evaluated official alternate source has proven row-level exact visual equivalence and 3x effective protected-content dimensions. The exact CABA manual source remains source-limited to the feature-036 sheet crop detail currently proven by evidence.",
-        evaluatedCandidates
+        evaluatedCandidates,
       };
     });
 
@@ -428,21 +468,26 @@ function makeRowMapping(baseline) {
       sourceLimitedExceptionCandidateRows: 0,
       maxAllowedSourceLimitedRowsAt20Percent: 0,
       sourceLimitedRatio: 0,
-      exceeds20Percent: false
+      exceeds20Percent: false,
     };
     bySection[row.sectionId].totalRows += 1;
     if (row.exactThreeXCandidateFound) bySection[row.sectionId].exactThreeXCandidateRows += 1;
-    if (row.sourceLimitedExceptionCandidate) bySection[row.sectionId].sourceLimitedExceptionCandidateRows += 1;
+    if (row.sourceLimitedExceptionCandidate)
+      bySection[row.sectionId].sourceLimitedExceptionCandidateRows += 1;
   }
 
   for (const section of Object.values(bySection)) {
     section.maxAllowedSourceLimitedRowsAt20Percent = Math.floor(section.totalRows * 0.2);
-    section.sourceLimitedRatio = Number((section.sourceLimitedExceptionCandidateRows / section.totalRows).toFixed(6));
+    section.sourceLimitedRatio = Number(
+      (section.sourceLimitedExceptionCandidateRows / section.totalRows).toFixed(6),
+    );
     section.exceeds20Percent = section.sourceLimitedRatio > 0.2;
   }
 
   const exactThreeXCandidateCount = rows.filter((row) => row.exactThreeXCandidateFound).length;
-  const sourceLimitedExceptionCandidateCount = rows.filter((row) => row.sourceLimitedExceptionCandidate).length;
+  const sourceLimitedExceptionCandidateCount = rows.filter(
+    (row) => row.sourceLimitedExceptionCandidate,
+  ).length;
   const sectionsExceedingLimit = Object.entries(bySection)
     .filter(([, section]) => section.exceeds20Percent)
     .map(([sectionId, section]) => ({
@@ -450,7 +495,7 @@ function makeRowMapping(baseline) {
       sourceLimitedExceptionCandidateRows: section.sourceLimitedExceptionCandidateRows,
       totalRows: section.totalRows,
       sourceLimitedRatio: section.sourceLimitedRatio,
-      maxAllowedSourceLimitedRowsAt20Percent: section.maxAllowedSourceLimitedRowsAt20Percent
+      maxAllowedSourceLimitedRowsAt20Percent: section.maxAllowedSourceLimitedRowsAt20Percent,
     }));
 
   return {
@@ -464,8 +509,10 @@ function makeRowMapping(baseline) {
       signLikeRows: rows.length,
       catalogEntryRows: rows.filter((row) => row.entryKind === "catalog-entry").length,
       contextualVisualRows: rows.filter((row) => row.entryKind === "contextual-visual").length,
-      categoryHeadingRowsExcluded: baseline.rows.filter((row) => row.entryKind === "category-heading").length,
-      mandatorySourceIds: sourceIds
+      categoryHeadingRowsExcluded: baseline.rows.filter(
+        (row) => row.entryKind === "category-heading",
+      ).length,
+      mandatorySourceIds: sourceIds,
     },
     summary: {
       exactThreeXCandidateCount,
@@ -478,9 +525,9 @@ function makeRowMapping(baseline) {
       sectionsExceedingLimit,
       gateStatus: "blocked-source-limited-threshold-exceeded",
       requiredAction:
-        "Stop before final crop generation and route new Implementation Agent feedback to Architect because source-limited exception candidates exceed both the total and per-section thresholds."
+        "Stop before final crop generation and route new Implementation Agent feedback to Architect because source-limited exception candidates exceed both the total and per-section thresholds.",
     },
-    rows
+    rows,
   };
 }
 
@@ -488,30 +535,47 @@ function validateEvidence(sourceManifest, rowMapping) {
   const errors = [];
 
   if (sourceManifest.evaluatedSourceCount !== sourceIds.length) {
-    errors.push(`expected ${sourceIds.length} evaluated sources, found ${sourceManifest.evaluatedSourceCount}`);
+    errors.push(
+      `expected ${sourceIds.length} evaluated sources, found ${sourceManifest.evaluatedSourceCount}`,
+    );
   }
   for (const sourceId of sourceIds) {
-    if (!sourceManifest.sources.some((source) => source.id === sourceId)) errors.push(`missing source manifest entry ${sourceId}`);
+    if (!sourceManifest.sources.some((source) => source.id === sourceId))
+      errors.push(`missing source manifest entry ${sourceId}`);
   }
-  if (rowMapping.rowCoverage.signLikeRows !== 286) errors.push(`expected 286 sign-like rows, found ${rowMapping.rowCoverage.signLikeRows}`);
-  if (rowMapping.rowCoverage.catalogEntryRows !== 283) errors.push(`expected 283 catalog-entry rows, found ${rowMapping.rowCoverage.catalogEntryRows}`);
-  if (rowMapping.rowCoverage.contextualVisualRows !== 3) errors.push(`expected 3 contextual-visual rows, found ${rowMapping.rowCoverage.contextualVisualRows}`);
+  if (rowMapping.rowCoverage.signLikeRows !== 286)
+    errors.push(`expected 286 sign-like rows, found ${rowMapping.rowCoverage.signLikeRows}`);
+  if (rowMapping.rowCoverage.catalogEntryRows !== 283)
+    errors.push(
+      `expected 283 catalog-entry rows, found ${rowMapping.rowCoverage.catalogEntryRows}`,
+    );
+  if (rowMapping.rowCoverage.contextualVisualRows !== 3)
+    errors.push(
+      `expected 3 contextual-visual rows, found ${rowMapping.rowCoverage.contextualVisualRows}`,
+    );
   if (rowMapping.rowCoverage.categoryHeadingRowsExcluded !== 30) {
-    errors.push(`expected 30 excluded category-heading rows, found ${rowMapping.rowCoverage.categoryHeadingRowsExcluded}`);
+    errors.push(
+      `expected 30 excluded category-heading rows, found ${rowMapping.rowCoverage.categoryHeadingRowsExcluded}`,
+    );
   }
 
   for (const row of rowMapping.rows) {
     if (row.evaluatedCandidates.length !== sourceIds.length) {
-      errors.push(`${row.rowId}: expected ${sourceIds.length} evaluated candidates, found ${row.evaluatedCandidates.length}`);
+      errors.push(
+        `${row.rowId}: expected ${sourceIds.length} evaluated candidates, found ${row.evaluatedCandidates.length}`,
+      );
     }
     for (const sourceId of sourceIds) {
       if (!row.evaluatedCandidates.some((candidate) => candidate.sourceId === sourceId)) {
         errors.push(`${row.rowId}: missing candidate ${sourceId}`);
       }
     }
-    if (row.chosenSourceId !== "caba-manual-pdf") errors.push(`${row.rowId}: chosen source must remain the exact CABA manual source`);
-    if (row.exactThreeXCandidateFound !== false) errors.push(`${row.rowId}: exact 3x candidate must be false under this gate result`);
-    if (row.sourceLimitedExceptionCandidate !== true) errors.push(`${row.rowId}: must be marked source-limited candidate`);
+    if (row.chosenSourceId !== "caba-manual-pdf")
+      errors.push(`${row.rowId}: chosen source must remain the exact CABA manual source`);
+    if (row.exactThreeXCandidateFound !== false)
+      errors.push(`${row.rowId}: exact 3x candidate must be false under this gate result`);
+    if (row.sourceLimitedExceptionCandidate !== true)
+      errors.push(`${row.rowId}: must be marked source-limited candidate`);
   }
 
   return errors;
@@ -546,7 +610,9 @@ function main() {
   }
 
   if (summary.exceedsTotalExceptionLimit || summary.sectionsExceedingLimit.length > 0) {
-    console.error("source evaluation gate blocked final crop generation: source-limited candidates exceed feature-037 thresholds");
+    console.error(
+      "source evaluation gate blocked final crop generation: source-limited candidates exceed feature-037 thresholds",
+    );
     process.exitCode = 2;
   }
 }

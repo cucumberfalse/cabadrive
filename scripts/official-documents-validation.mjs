@@ -2,7 +2,12 @@ const DATE_PATTERN = /^\d{4}-\d{2}-\d{2}$/;
 const SHA256_PATTERN = /^[a-f0-9]{64}$/;
 const HTTP_URL_PATTERN = /^https?:\/\/\S+$/;
 const LOSSY_SOURCE_FORMATS = new Set(["pdf", "scan", "image", "doc", "docx", "odt"]);
-const CURRENT_USABLE_STATUSES = new Set(["current", "in_force", "currently_valid", "valid_current_material"]);
+const CURRENT_USABLE_STATUSES = new Set([
+  "current",
+  "in_force",
+  "currently_valid",
+  "valid_current_material",
+]);
 const CURRENTNESS_STATUSES = new Set([
   ...CURRENT_USABLE_STATUSES,
   "historical",
@@ -10,7 +15,7 @@ const CURRENTNESS_STATUSES = new Set([
   "superseded",
   "repealed",
   "not_current",
-  "unknown"
+  "unknown",
 ]);
 const VALIDATION_STATUSES = new Set(["pending", "passed", "failed"]);
 
@@ -76,7 +81,14 @@ function validateDate(errors, value, label) {
   if (!DATE_PATTERN.test(value || "")) errors.push(`${label} must be YYYY-MM-DD.`);
 }
 
-function validateLocalPath(errors, value, label, sectionPath, fileMetadata, { markdown = false } = {}) {
+function validateLocalPath(
+  errors,
+  value,
+  label,
+  sectionPath,
+  fileMetadata,
+  { markdown = false } = {},
+) {
   validateRequiredString(errors, value, label);
   if (!isNonEmptyString(value)) return;
   if (!isLocalSectionPath(value, sectionPath)) {
@@ -85,14 +97,19 @@ function validateLocalPath(errors, value, label, sectionPath, fileMetadata, { ma
   if (markdown && !normalizePath(value).endsWith(".md")) {
     errors.push(`${label} must point to a Markdown file.`);
   }
-  if (!fileExists(fileMetadata, value)) errors.push(`${label} is missing from local file metadata.`);
+  if (!fileExists(fileMetadata, value))
+    errors.push(`${label} is missing from local file metadata.`);
 }
 
 function sourceTraceUsesCurrentClaim(entry) {
   return entry?.claimUse !== "historical_context" && entry?.currentClaim !== false;
 }
 
-export function validateOfficialDocumentsManifest({ manifest, fileMetadata = {}, sourceTrace } = {}) {
+export function validateOfficialDocumentsManifest({
+  manifest,
+  fileMetadata = {},
+  sourceTrace,
+} = {}) {
   const errors = [];
   if (!isPlainObject(manifest)) {
     errors.push("official documents manifest must be an object.");
@@ -106,11 +123,14 @@ export function validateOfficialDocumentsManifest({ manifest, fileMetadata = {},
   if (manifest.schema !== "official-documents-manifest.v1") {
     errors.push("official documents manifest schema must be official-documents-manifest.v1.");
   }
-  const sectionPath = isNonEmptyString(manifest.sectionPath) ? normalizePath(manifest.sectionPath).replace(/\/+$/, "") : "";
+  const sectionPath = isNonEmptyString(manifest.sectionPath)
+    ? normalizePath(manifest.sectionPath).replace(/\/+$/, "")
+    : "";
   if (sectionPath !== "content/official-documents") {
     errors.push("official documents manifest sectionPath must be content/official-documents.");
   }
-  if (!Array.isArray(manifest.entries)) errors.push("official documents manifest entries must be an array.");
+  if (!Array.isArray(manifest.entries))
+    errors.push("official documents manifest entries must be an array.");
 
   const entryById = new Map();
   for (const entry of asArray(manifest.entries)) {
@@ -134,14 +154,26 @@ export function validateOfficialDocumentsManifest({ manifest, fileMetadata = {},
     validateRequiredString(errors, entry.sourceFormat, `${label}.sourceFormat`);
     validateRequiredString(errors, entry.conversionMethod, `${label}.conversionMethod`);
     validateRequiredString(errors, entry.conversionNotes, `${label}.conversionNotes`);
-    validateLocalPath(errors, entry.localPath, `${label}.localPath`, `${sectionPath}/documents`, fileMetadata, {
-      markdown: true
-    });
+    validateLocalPath(
+      errors,
+      entry.localPath,
+      `${label}.localPath`,
+      `${sectionPath}/documents`,
+      fileMetadata,
+      {
+        markdown: true,
+      },
+    );
 
     if (entry.hashAlgorithm !== "sha256") errors.push(`${label}.hashAlgorithm must be sha256.`);
-    if (!SHA256_PATTERN.test(entry.hash || "")) errors.push(`${label}.hash must be a 64-character lowercase sha256 hex digest.`);
+    if (!SHA256_PATTERN.test(entry.hash || ""))
+      errors.push(`${label}.hash must be a 64-character lowercase sha256 hex digest.`);
     const localSha256 = fileSha256(fileMetadata, entry.localPath);
-    if (isNonEmptyString(localSha256) && SHA256_PATTERN.test(entry.hash || "") && entry.hash !== localSha256) {
+    if (
+      isNonEmptyString(localSha256) &&
+      SHA256_PATTERN.test(entry.hash || "") &&
+      entry.hash !== localSha256
+    ) {
       errors.push(`${label}.hash must match local Markdown sha256 metadata.`);
     }
 
@@ -149,9 +181,21 @@ export function validateOfficialDocumentsManifest({ manifest, fileMetadata = {},
       .trim()
       .toLowerCase();
     if (LOSSY_SOURCE_FORMATS.has(sourceFormat)) {
-      validateLocalPath(errors, entry.rawOriginalPath, `${label}.rawOriginalPath`, `${sectionPath}/originals`, fileMetadata);
+      validateLocalPath(
+        errors,
+        entry.rawOriginalPath,
+        `${label}.rawOriginalPath`,
+        `${sectionPath}/originals`,
+        fileMetadata,
+      );
     } else if (isNonEmptyString(entry.rawOriginalPath)) {
-      validateLocalPath(errors, entry.rawOriginalPath, `${label}.rawOriginalPath`, `${sectionPath}/originals`, fileMetadata);
+      validateLocalPath(
+        errors,
+        entry.rawOriginalPath,
+        `${label}.rawOriginalPath`,
+        `${sectionPath}/originals`,
+        fileMetadata,
+      );
     }
 
     if (!isPlainObject(entry.currentness)) {
@@ -159,19 +203,41 @@ export function validateOfficialDocumentsManifest({ manifest, fileMetadata = {},
     } else {
       validateDate(errors, entry.currentness.checkedAt, `${label}.currentness.checkedAt`);
       validateRequiredString(errors, entry.currentness.status, `${label}.currentness.status`);
-      validateRequiredString(errors, entry.currentness.validationStatus, `${label}.currentness.validationStatus`);
-      if (isNonEmptyString(entry.currentness.status) && !CURRENTNESS_STATUSES.has(entry.currentness.status)) {
-        errors.push(`${label}.currentness.status must be one of ${[...CURRENTNESS_STATUSES].join(", ")}.`);
+      validateRequiredString(
+        errors,
+        entry.currentness.validationStatus,
+        `${label}.currentness.validationStatus`,
+      );
+      if (
+        isNonEmptyString(entry.currentness.status) &&
+        !CURRENTNESS_STATUSES.has(entry.currentness.status)
+      ) {
+        errors.push(
+          `${label}.currentness.status must be one of ${[...CURRENTNESS_STATUSES].join(", ")}.`,
+        );
       }
       if (
         isNonEmptyString(entry.currentness.validationStatus) &&
         !VALIDATION_STATUSES.has(entry.currentness.validationStatus)
       ) {
-        errors.push(`${label}.currentness.validationStatus must be one of pending, passed, failed.`);
+        errors.push(
+          `${label}.currentness.validationStatus must be one of pending, passed, failed.`,
+        );
       }
-      validateRequiredString(errors, entry.currentness.statusEvidence, `${label}.currentness.statusEvidence`);
-      validateRequiredString(errors, entry.currentness.amendmentRepealEvidence, `${label}.currentness.amendmentRepealEvidence`);
-      if (!Array.isArray(entry.currentness.evidenceUrls) || entry.currentness.evidenceUrls.length === 0) {
+      validateRequiredString(
+        errors,
+        entry.currentness.statusEvidence,
+        `${label}.currentness.statusEvidence`,
+      );
+      validateRequiredString(
+        errors,
+        entry.currentness.amendmentRepealEvidence,
+        `${label}.currentness.amendmentRepealEvidence`,
+      );
+      if (
+        !Array.isArray(entry.currentness.evidenceUrls) ||
+        entry.currentness.evidenceUrls.length === 0
+      ) {
         errors.push(`${label}.currentness.evidenceUrls must be a non-empty array.`);
       } else {
         for (const url of entry.currentness.evidenceUrls) {
@@ -186,7 +252,11 @@ export function validateOfficialDocumentsManifest({ manifest, fileMetadata = {},
     if (!isPlainObject(entry.exactTextValidation)) {
       errors.push(`${label}.exactTextValidation must be an object.`);
     } else {
-      validateRequiredString(errors, entry.exactTextValidation.status, `${label}.exactTextValidation.status`);
+      validateRequiredString(
+        errors,
+        entry.exactTextValidation.status,
+        `${label}.exactTextValidation.status`,
+      );
       if (
         isNonEmptyString(entry.exactTextValidation.status) &&
         !VALIDATION_STATUSES.has(entry.exactTextValidation.status)
@@ -197,7 +267,9 @@ export function validateOfficialDocumentsManifest({ manifest, fileMetadata = {},
         ["passed", "failed"].includes(entry.exactTextValidation.status) &&
         !DATE_PATTERN.test(entry.exactTextValidation.checkedAt || "")
       ) {
-        errors.push(`${label}.exactTextValidation.checkedAt must be YYYY-MM-DD when exact-text validation has run.`);
+        errors.push(
+          `${label}.exactTextValidation.checkedAt must be YYYY-MM-DD when exact-text validation has run.`,
+        );
       }
     }
   }
@@ -208,14 +280,16 @@ export function validateOfficialDocumentsManifest({ manifest, fileMetadata = {},
     for (const documentId of asArray(traceEntry?.officialDocumentIds)) {
       const document = entryById.get(documentId);
       if (!document) {
-        errors.push(`${traceLabel}: source trace references missing official document ${documentId}.`);
+        errors.push(
+          `${traceLabel}: source trace references missing official document ${documentId}.`,
+        );
         continue;
       }
       const status = document.currentness?.status;
       const validationStatus = document.currentness?.validationStatus;
       if (!CURRENT_USABLE_STATUSES.has(status) || validationStatus !== "passed") {
         errors.push(
-          `${traceLabel}: current guide claims must cite only current official documents; ${documentId} has status ${status || "missing"} and validationStatus ${validationStatus || "missing"}.`
+          `${traceLabel}: current guide claims must cite only current official documents; ${documentId} has status ${status || "missing"} and validationStatus ${validationStatus || "missing"}.`,
         );
       }
     }

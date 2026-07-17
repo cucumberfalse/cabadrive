@@ -5,17 +5,23 @@ import { readFileSync, statSync } from "node:fs";
 import { createServer } from "node:http";
 import test from "node:test";
 import { promisify } from "node:util";
-import { decodeRgbPng, encodeRgbPng, findOpaqueBlackRegion } from "../scripts/png-opaque-black-check.mjs";
+import {
+  decodeRgbPng,
+  encodeRgbPng,
+  findOpaqueBlackRegion,
+} from "../scripts/png-opaque-black-check.mjs";
 import { compareBoundedScreenshotPixels } from "../scripts/verify-readme-screenshot-equivalence.mjs";
 
 const execFileAsync = promisify(execFile);
-const screenshotPaths = ["learn.png", "materials.png", "about.png"].map((name) => `docs_project/screens/readme/${name}`);
+const screenshotPaths = ["learn.png", "materials.png", "about.png"].map(
+  (name) => `docs_project/screens/readme/${name}`,
+);
 
 function screenshotState() {
   return screenshotPaths.map((path) => ({
     path,
     hash: createHash("sha256").update(readFileSync(path)).digest("hex"),
-    mtimeMs: statSync(path).mtimeMs
+    mtimeMs: statSync(path).mtimeMs,
   }));
 }
 
@@ -29,12 +35,16 @@ test("opaque-black pixel guard rejects a large rectangular capture artifact", ()
   assert.deepEqual(findOpaqueBlackRegion({ width, height, pixels }), {
     found: true,
     maxRunWidth: 120,
-    maxConsecutiveRows: 14
+    maxConsecutiveRows: 14,
   });
 });
 
 test("RGB PNG normalization is deterministic and lossless", () => {
-  const source = { width: 2, height: 2, pixels: Buffer.from([0, 1, 2, 3, 4, 5, 6, 7, 8, 250, 251, 252]) };
+  const source = {
+    width: 2,
+    height: 2,
+    pixels: Buffer.from([0, 1, 2, 3, 4, 5, 6, 7, 8, 250, 251, 252]),
+  };
   const first = encodeRgbPng(source);
   const second = encodeRgbPng(source);
   assert.deepEqual(first, second);
@@ -47,16 +57,22 @@ test("bounded screenshot comparison fails closed outside rounded-corner antialia
   second.pixels[0] = 201;
   const masks = [{ name: "test rounded corner", x: 0, y: 0, width: 2, height: 2 }];
   assert.deepEqual(compareBoundedScreenshotPixels(first, second, masks), [
-    { x: 0, y: 0, delta: [1, 0, 0, 0], mask: "test rounded corner" }
+    { x: 0, y: 0, delta: [1, 0, 0, 0], mask: "test rounded corner" },
   ]);
 
   const outside = { ...second, pixels: Buffer.from(second.pixels) };
   outside.pixels[(4 * 5 + 4) * 3] = 201;
-  assert.throws(() => compareBoundedScreenshotPixels(first, outside, masks), /outside declared rounded-corner masks/);
+  assert.throws(
+    () => compareBoundedScreenshotPixels(first, outside, masks),
+    /outside declared rounded-corner masks/,
+  );
 
   const tooDark = { ...first, pixels: Buffer.from(first.pixels) };
   tooDark.pixels[0] = 198;
-  assert.throws(() => compareBoundedScreenshotPixels(first, tooDark, masks), /exceeds per-channel delta 1/);
+  assert.throws(
+    () => compareBoundedScreenshotPixels(first, tooDark, masks),
+    /exceeds per-channel delta 1/,
+  );
 });
 
 test("capture helper fails promptly when preview exits before readiness", async () => {
@@ -64,16 +80,23 @@ test("capture helper fails promptly when preview exits before readiness", async 
   await assert.rejects(
     execFileAsync(process.execPath, ["scripts/capture-readme-screenshots.mjs"], {
       cwd: process.cwd(),
-      env: { ...process.env, README_SCREENSHOT_FORCE_PREVIEW_EXIT: "1", README_SCREENSHOT_PORT: "4398" },
-      timeout: 3_000
+      env: {
+        ...process.env,
+        README_SCREENSHOT_FORCE_PREVIEW_EXIT: "1",
+        README_SCREENSHOT_PORT: "4398",
+      },
+      timeout: 3_000,
     }),
     (error) => {
       assert.equal(error.killed, false);
       assert.match(`${error.stderr}\n${error.message}`, /exited before readiness with code 23/);
       return true;
-    }
+    },
   );
-  assert.ok(Date.now() - startedAt < 3_000, "forced early exit stays bounded by the regression timeout");
+  assert.ok(
+    Date.now() - startedAt < 3_000,
+    "forced early exit stays bounded by the regression timeout",
+  );
 });
 
 test("capture helper rejects an unrelated HTTP 200 server on the strict port without mutating screenshots", async () => {
@@ -93,44 +116,58 @@ test("capture helper rejects an unrelated HTTP 200 server on the strict port wit
       execFileAsync(process.execPath, ["scripts/capture-readme-screenshots.mjs"], {
         cwd: process.cwd(),
         env: { ...process.env, README_SCREENSHOT_PORT: String(port) },
-        timeout: 10_000
+        timeout: 10_000,
       }),
       (error) => {
         assert.equal(error.killed, false);
         assert.doesNotMatch(error.stdout ?? "", /Captured and pixel-checked/);
         assert.match(`${error.stderr}\n${error.message}`, /exited before readiness|already in use/);
         return true;
-      }
+      },
     );
   } finally {
-    await new Promise((resolve, reject) => server.close((error) => error ? reject(error) : resolve()));
+    await new Promise((resolve, reject) =>
+      server.close((error) => (error ? reject(error) : resolve())),
+    );
   }
-  assert.ok(Date.now() - startedAt < 10_000, "occupied-port failure stays bounded by the regression timeout");
+  assert.ok(
+    Date.now() - startedAt < 10_000,
+    "occupied-port failure stays bounded by the regression timeout",
+  );
   assert.deepEqual(screenshotState(), before);
 });
 
 test("public screenshot command uses an acyclic SPA build before capture and post-validates attribution", async () => {
   const packageScripts = JSON.parse(readFileSync("package.json", "utf8")).scripts;
   assert.equal(packageScripts["screenshots:readme"], "node scripts/run-readme-screenshots.mjs");
-  assert.equal(packageScripts["build:app"], "pnpm run prepare:assets && vite build && pnpm run generate:sw");
+  assert.equal(
+    packageScripts["build:app"],
+    "pnpm run prepare:assets && vite build && pnpm run generate:sw",
+  );
   assert.match(packageScripts.build, /validate:content/);
   assert.match(packageScripts.build, /build:app/);
   assert.match(packageScripts.preflight, /validate:content/);
   assert.match(packageScripts.preflight, /pnpm run build/);
-  assert.doesNotMatch(packageScripts["build:app"], /screenshots:readme|validate:attribution|validate:content/);
+  assert.doesNotMatch(
+    packageScripts["build:app"],
+    /screenshots:readme|validate:attribution|validate:content/,
+  );
   assert.doesNotMatch(packageScripts.build, /screenshots:readme/);
   const before = screenshotState();
   await assert.rejects(
     execFileAsync("pnpm", ["run", "screenshots:readme"], {
       cwd: process.cwd(),
       env: { ...process.env, README_SCREENSHOT_FORCE_BUILD_FAILURE: "1" },
-      timeout: 10_000
+      timeout: 10_000,
     }),
     (error) => {
       assert.equal(error.killed, false);
-      assert.doesNotMatch(`${error.stdout}\n${error.stderr}`, /Captured and pixel-checked|Vite preview/);
+      assert.doesNotMatch(
+        `${error.stdout}\n${error.stderr}`,
+        /Captured and pixel-checked|Vite preview/,
+      );
       return true;
-    }
+    },
   );
   assert.deepEqual(screenshotState(), before);
 });

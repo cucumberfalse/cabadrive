@@ -13,24 +13,24 @@ export const difficultyUi: Record<
     shortLabel: "Зеленый",
     label: "Зеленый - легко",
     ariaLabel: "Сложность: зеленый, легко",
-    className: "difficulty-green"
+    className: "difficulty-green",
   },
   blue: {
     shortLabel: "Синий",
     label: "Синий - обычная",
     ariaLabel: "Сложность: синий, обычная",
-    className: "difficulty-blue"
+    className: "difficulty-blue",
   },
   yellow: {
     shortLabel: "Желтый",
     label: "Желтый - внимательно",
     ariaLabel: "Сложность: желтый, разбирать внимательно",
-    className: "difficulty-yellow"
+    className: "difficulty-yellow",
   },
   red: {
     shortLabel: "Красный",
     label: "Красный - целевой повтор",
     ariaLabel: "Сложность: красный, целевой повтор",
-    className: "difficulty-red"
-  }
+    className: "difficulty-red",
+  },
 };

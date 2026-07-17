@@ -7,9 +7,12 @@ import { dirname, join } from "node:path";
 
 const featureId = "037-manual-sign-crop-resolution";
 const repoRoot = process.cwd();
-const baselinePath = "specs/037-manual-sign-crop-resolution/evidence/baseline/manual-sign-baseline-036.json";
-const sourceManifestPath = "specs/037-manual-sign-crop-resolution/evidence/source-evaluation/source-manifest.json";
-const rowSourceMappingPath = "specs/037-manual-sign-crop-resolution/evidence/source-evaluation/row-source-mapping.json";
+const baselinePath =
+  "specs/037-manual-sign-crop-resolution/evidence/baseline/manual-sign-baseline-036.json";
+const sourceManifestPath =
+  "specs/037-manual-sign-crop-resolution/evidence/source-evaluation/source-manifest.json";
+const rowSourceMappingPath =
+  "specs/037-manual-sign-crop-resolution/evidence/source-evaluation/row-source-mapping.json";
 const finalDir = "specs/037-manual-sign-crop-resolution/evidence/final";
 const finalConfigPath = `${finalDir}/manual-sign-crop-resolution-render-config.json`;
 const swiftOutputPath = `${finalDir}/manual-sign-crop-resolution-render-output.json`;
@@ -40,7 +43,9 @@ function writeJson(path, value) {
 }
 
 function sha256File(path) {
-  return createHash("sha256").update(readFileSync(repoPath(path))).digest("hex");
+  return createHash("sha256")
+    .update(readFileSync(repoPath(path)))
+    .digest("hex");
 }
 
 function imageDimensions(path) {
@@ -68,7 +73,11 @@ function sectionAssetPath(row) {
 }
 
 function canSpanNextColumn(row) {
-  return row.sectionId === "app4-signs-horizontal" || row.entryKind === "contextual-visual" || row.baselineCropRegion.width >= 120;
+  return (
+    row.sectionId === "app4-signs-horizontal" ||
+    row.entryKind === "contextual-visual" ||
+    row.baselineCropRegion.width >= 120
+  );
 }
 
 function shouldApplyColumnGuards(row) {
@@ -91,7 +100,9 @@ function regulatoryParkingAttachmentRow(row) {
   return (
     row.sectionId === "app4-signs-regulatory" &&
     (row.baselineCropNaturalHeight >= 110 || /placa|zona-de-caudales|ciclovia/.test(searchable)) &&
-    /no-estacionar|no estacionar|detenerse|ciclovia|zona-de-caudales|caudales|acarreo/.test(searchable)
+    /no-estacionar|no estacionar|detenerse|ciclovia|zona-de-caudales|caudales|acarreo/.test(
+      searchable,
+    )
   );
 }
 
@@ -100,7 +111,9 @@ function regulatoryDetachedLabelAttachmentRow(row) {
   return (
     row.sectionId === "app4-signs-regulatory" &&
     (row.baselineCropNaturalHeight >= 110 ||
-      /placa|zona-de-caudales|ciclovia|exclusivo|discapacitados|ciclistas|peatones|barreras|ferroviarias|cajon|descienda|convivencia|interrupcion|desvio|obra|parada|evento|frentistas/.test(searchable))
+      /placa|zona-de-caudales|ciclovia|exclusivo|discapacitados|ciclistas|peatones|barreras|ferroviarias|cajon|descienda|convivencia|interrupcion|desvio|obra|parada|evento|frentistas/.test(
+        searchable,
+      ))
   );
 }
 
@@ -114,7 +127,9 @@ function tailTrimMode(row) {
   }
   if (
     row.baselineCropNaturalHeight >= 110 ||
-    /placa|zona-de-caudales|ciclovia|exclusivo|discapacitados|ciclistas|peatones|barreras|ferroviarias|cajon|descienda|convivencia|interrupcion|desvio|obra|parada|evento|frentistas/.test(searchable)
+    /placa|zona-de-caudales|ciclovia|exclusivo|discapacitados|ciclistas|peatones|barreras|ferroviarias|cajon|descienda|convivencia|interrupcion|desvio|obra|parada|evento|frentistas/.test(
+      searchable,
+    )
   ) {
     return "preserve-colorless-lower-attachment";
   }
@@ -142,7 +157,9 @@ function bottomLookaheadPx(row) {
 }
 
 function clusterByCoordinate(rows, coordinateKey, tolerance) {
-  const sorted = [...rows].sort((a, b) => a.baselineCropRegion[coordinateKey] - b.baselineCropRegion[coordinateKey]);
+  const sorted = [...rows].sort(
+    (a, b) => a.baselineCropRegion[coordinateKey] - b.baselineCropRegion[coordinateKey],
+  );
   const clusters = [];
   for (const row of sorted) {
     const value = row.baselineCropRegion[coordinateKey];
@@ -174,7 +191,9 @@ function makeCropLayoutIndex(baseline) {
     yClusters.sort((a, b) => a.min - b.min);
     for (let yIndex = 0; yIndex < yClusters.length; yIndex += 1) {
       const yCluster = yClusters[yIndex];
-      const sameVisualRow = [...yCluster.rows].sort((a, b) => a.baselineCropRegion.x - b.baselineCropRegion.x);
+      const sameVisualRow = [...yCluster.rows].sort(
+        (a, b) => a.baselineCropRegion.x - b.baselineCropRegion.x,
+      );
       for (let xIndex = 0; xIndex < sameVisualRow.length; xIndex += 1) {
         const row = sameVisualRow[xIndex];
         const rowLeft = row.baselineCropRegion.x;
@@ -183,7 +202,8 @@ function makeCropLayoutIndex(baseline) {
         for (const earlierCluster of yClusters.slice(0, yIndex).reverse()) {
           const overlappingRows = earlierCluster.rows.filter((earlierRow) => {
             const earlierLeft = earlierRow.baselineCropRegion.x;
-            const earlierRight = earlierRow.baselineCropRegion.x + earlierRow.baselineCropRegion.width;
+            const earlierRight =
+              earlierRow.baselineCropRegion.x + earlierRow.baselineCropRegion.width;
             return earlierLeft < rowRight && earlierRight > rowLeft;
           });
           if (!overlappingRows.length) continue;
@@ -206,9 +226,10 @@ function makeCropLayoutIndex(baseline) {
           nextVisualRowY: nextOverlappingRowY,
           previousVisualColumnRight:
             xIndex > 0
-              ? sameVisualRow[xIndex - 1].baselineCropRegion.x + sameVisualRow[xIndex - 1].baselineCropRegion.width
+              ? sameVisualRow[xIndex - 1].baselineCropRegion.x +
+                sameVisualRow[xIndex - 1].baselineCropRegion.width
               : null,
-          nextVisualColumnX: sameVisualRow[xIndex + 1]?.baselineCropRegion.x ?? null
+          nextVisualColumnX: sameVisualRow[xIndex + 1]?.baselineCropRegion.x ?? null,
         });
       }
     }
@@ -226,8 +247,14 @@ function candidateSourceRegion(row, cropLayoutIndex) {
   const columnGap = columnGapPx();
   let localX = Math.max(0, cropRegion.x - horizontalExpansion);
   let localY = Math.max(0, cropRegion.y - verticalLookbackPx(row));
-  let localRight = Math.min(sourceRegion.width, cropRegion.x + cropRegion.width + horizontalExpansion);
-  let localBottom = Math.min(sourceRegion.height, cropRegion.y + cropRegion.height + bottomLookaheadPx(row));
+  let localRight = Math.min(
+    sourceRegion.width,
+    cropRegion.x + cropRegion.width + horizontalExpansion,
+  );
+  let localBottom = Math.min(
+    sourceRegion.height,
+    cropRegion.y + cropRegion.height + bottomLookaheadPx(row),
+  );
 
   if (
     layout?.previousVisualColumnRight != null &&
@@ -260,7 +287,7 @@ function candidateSourceRegion(row, cropLayoutIndex) {
     x: sourceRegion.x + localX,
     y: sourceRegion.y + localY,
     width: Math.max(1, localRight - localX),
-    height: Math.max(1, localBottom - localY)
+    height: Math.max(1, localBottom - localY),
   };
 }
 
@@ -272,7 +299,7 @@ function makeTargets(baseline) {
       x: row.baselineSourceRegion.x + row.baselineCropRegion.x,
       y: row.baselineSourceRegion.y + row.baselineCropRegion.y,
       width: row.baselineCropRegion.width,
-      height: row.baselineCropRegion.height
+      height: row.baselineCropRegion.height,
     };
     return {
       rowId: row.id,
@@ -286,25 +313,34 @@ function makeTargets(baseline) {
         x: absoluteBaselineCropRegion.x - candidateRegionAtBaseScale.x,
         y: absoluteBaselineCropRegion.y - candidateRegionAtBaseScale.y,
         width: absoluteBaselineCropRegion.width,
-        height: absoluteBaselineCropRegion.height
+        height: absoluteBaselineCropRegion.height,
       },
       tailTrimMode: tailTrimMode(row),
-      cardTrimBoundsAtCardRenderScale: { x: 0, y: 0, width: row.baselineCropRegion.width, height: row.baselineCropRegion.height },
+      cardTrimBoundsAtCardRenderScale: {
+        x: 0,
+        y: 0,
+        width: row.baselineCropRegion.width,
+        height: row.baselineCropRegion.height,
+      },
       cardRenderScale: sourceBaseScale,
       baselineCropNaturalWidth: row.baselineCropNaturalWidth,
       baselineCropNaturalHeight: row.baselineCropNaturalHeight,
       requiredMinimumWidth: Math.ceil(3 * row.baselineCropNaturalWidth),
-      requiredMinimumHeight: Math.ceil(3 * row.baselineCropNaturalHeight)
+      requiredMinimumHeight: Math.ceil(3 * row.baselineCropNaturalHeight),
     };
   });
 }
 
 function runSwiftRenderer() {
-  const result = spawnSync("swift", ["scripts/manual-sign-crop-resolution.swift", finalConfigPath], {
-    cwd: repoRoot,
-    encoding: "utf8",
-    maxBuffer: 1024 * 1024 * 20
-  });
+  const result = spawnSync(
+    "swift",
+    ["scripts/manual-sign-crop-resolution.swift", finalConfigPath],
+    {
+      cwd: repoRoot,
+      encoding: "utf8",
+      maxBuffer: 1024 * 1024 * 20,
+    },
+  );
   if (result.stdout) process.stdout.write(result.stdout);
   if (result.stderr) process.stderr.write(result.stderr);
   if (result.status !== 0) {
@@ -324,7 +360,7 @@ function makeAutomatedCropAudit(row, renderRecord, dimensions) {
     left: trim.x <= 0,
     top: trim.y <= 0,
     right: trim.x + trim.width >= candidate.width,
-    bottom: trim.y + trim.height >= candidate.height
+    bottom: trim.y + trim.height >= candidate.height,
   };
   const edgeContactSides = Object.entries(edgeContact)
     .filter(([, hasContact]) => hasContact)
@@ -332,8 +368,12 @@ function makeAutomatedCropAudit(row, renderRecord, dimensions) {
   const outputPixelTargetPass =
     dimensions.width >= Math.ceil(3 * row.baselineCropNaturalWidth) &&
     dimensions.height >= Math.ceil(3 * row.baselineCropNaturalHeight);
-  const relativeSourceWidthRatio = Number((renderRecord.sourceRegionAtBaseScale.width / row.baselineCropNaturalWidth).toFixed(6));
-  const relativeSourceHeightRatio = Number((renderRecord.sourceRegionAtBaseScale.height / row.baselineCropNaturalHeight).toFixed(6));
+  const relativeSourceWidthRatio = Number(
+    (renderRecord.sourceRegionAtBaseScale.width / row.baselineCropNaturalWidth).toFixed(6),
+  );
+  const relativeSourceHeightRatio = Number(
+    (renderRecord.sourceRegionAtBaseScale.height / row.baselineCropNaturalHeight).toFixed(6),
+  );
   const minimumRelativeSourceWidthRatio = 0.35;
   const minimumRelativeSourceHeightRatio = 0.35;
   const edgeContactMinimumRelativeWidthRatio = 0.25;
@@ -356,7 +396,8 @@ function makeAutomatedCropAudit(row, renderRecord, dimensions) {
     renderRecord.sourceRegionAtBaseScale.width >= 18 &&
     renderRecord.sourceRegionAtBaseScale.height >= 48 &&
     relativeSourceHeightRatio >= 0.6 &&
-    renderRecord.sourceRegionAtBaseScale.width / renderRecord.sourceRegionAtBaseScale.height <= 0.45;
+    renderRecord.sourceRegionAtBaseScale.width / renderRecord.sourceRegionAtBaseScale.height <=
+      0.45;
   const sourceBoundsPass = standardSourceBoundsPass || slenderSourceBoundsPass;
   const horizontalEdgeContact = edgeContact.left || edgeContact.right;
   const warningRightEdgeGuardPass = row.sectionId !== "app4-signs-warning" || !edgeContact.right;
@@ -366,7 +407,8 @@ function makeAutomatedCropAudit(row, renderRecord, dimensions) {
     relativeSourceWidthRatio <= warningHorizontalEdgeMaximumRelativeWidthRatio;
   const regulatoryCaudalesRightEdgeGuardPass = !regulatoryCaudalesParkingRow || !edgeContact.right;
   const regulatoryCaudalesSourceLabelTrimPass =
-    !regulatoryCaudalesParkingRow || renderRecord.sourceRegionAtBaseScale.height <= Math.ceil(row.baselineCropNaturalHeight * 0.72);
+    !regulatoryCaudalesParkingRow ||
+    renderRecord.sourceRegionAtBaseScale.height <= Math.ceil(row.baselineCropNaturalHeight * 0.72);
   const regulatoryDetachedLabelRightEdgeGuardPass =
     !regulatoryDetachedLabelAttachment ||
     !edgeContact.right ||
@@ -380,8 +422,7 @@ function makeAutomatedCropAudit(row, renderRecord, dimensions) {
     !regulatoryDetachedLabelAttachment ||
     relativeSourceHeightRatio <= regulatoryDetachedLabelMaximumRelativeHeightRatio;
   const regulatoryParkingRightEdgeGuardPass =
-    !regulatoryParkingAttachment ||
-    regulatoryDetachedLabelRightEdgeGuardPass;
+    !regulatoryParkingAttachment || regulatoryDetachedLabelRightEdgeGuardPass;
   const regulatoryParkingSourceLabelTrimPass =
     !regulatoryParkingAttachment ||
     renderRecord.sourceRegionAtBaseScale.height <= Math.ceil(row.baselineCropNaturalHeight * 0.72);
@@ -442,7 +483,7 @@ function makeAutomatedCropAudit(row, renderRecord, dimensions) {
     regulatoryParkingRightEdgeMaximumRelativeWidthRatio,
     neighborContaminationGuardPass,
     warningHorizontalEdgeMaximumRelativeWidthRatio,
-    passes
+    passes,
   };
 }
 
@@ -451,19 +492,29 @@ function rowQualityFields(row, renderRecord, sourceMappingById) {
   if (!sourceMapping) throw new Error(`${row.id}: missing source-evaluation row mapping`);
   const dimensions = imageDimensions(renderRecord.outputAssetPath);
   const hash = sha256File(renderRecord.outputAssetPath);
-  if (dimensions.width !== renderRecord.outputDimensions.width || dimensions.height !== renderRecord.outputDimensions.height) {
+  if (
+    dimensions.width !== renderRecord.outputDimensions.width ||
+    dimensions.height !== renderRecord.outputDimensions.height
+  ) {
     throw new Error(`${row.id}: Swift output dimensions disagree with PNG header`);
   }
-  if (hash !== renderRecord.outputSha256) throw new Error(`${row.id}: Swift output hash disagree with PNG bytes`);
+  if (hash !== renderRecord.outputSha256)
+    throw new Error(`${row.id}: Swift output hash disagree with PNG bytes`);
 
   const requiredMinimumWidth = Math.ceil(3 * row.baselineCropNaturalWidth);
   const requiredMinimumHeight = Math.ceil(3 * row.baselineCropNaturalHeight);
   const effectiveFinalNaturalWidth = renderRecord.sourceRegionAtBaseScale.width;
   const effectiveFinalNaturalHeight = renderRecord.sourceRegionAtBaseScale.height;
-  const qualityScaleRatioWidth = Number((effectiveFinalNaturalWidth / requiredMinimumWidth).toFixed(6));
-  const qualityScaleRatioHeight = Number((effectiveFinalNaturalHeight / requiredMinimumHeight).toFixed(6));
+  const qualityScaleRatioWidth = Number(
+    (effectiveFinalNaturalWidth / requiredMinimumWidth).toFixed(6),
+  );
+  const qualityScaleRatioHeight = Number(
+    (effectiveFinalNaturalHeight / requiredMinimumHeight).toFixed(6),
+  );
   const automatedCropAudit = makeAutomatedCropAudit(row, renderRecord, dimensions);
-  const cropAuditStatus = automatedCropAudit.passes ? "reviewed-final-correct" : "pending-crop-audit";
+  const cropAuditStatus = automatedCropAudit.passes
+    ? "reviewed-final-correct"
+    : "pending-crop-audit";
 
   return {
     sourceEvaluationId: sourceMapping.sourceEvaluationId,
@@ -515,12 +566,12 @@ function rowQualityFields(row, renderRecord, sourceMappingById) {
       runtimeDisplayMaxHeight: dimensions.height,
       finalOutputNaturalWidth: dimensions.width,
       finalOutputNaturalHeight: dimensions.height,
-      passes: true
+      passes: true,
     },
     protectedPixelPreservation:
       "Protected official pixels are rendered and cropped from the retained official CABA PDF only, then aspect-fit into the final PNG without stretching. No generated art, unofficial art, redraw, vectorization, cleanup, sharpening, denoise, recolor, retouch, mask, inpaint, OCR/retyping, or embedded-text translation is applied.",
     renderMode,
-    extractionMethod: renderRecord.extractionMethod
+    extractionMethod: renderRecord.extractionMethod,
   };
 }
 
@@ -546,7 +597,7 @@ function makeFinalRows(baseline, renderOutput, rowSourceMapping) {
       baselineCropNaturalHeight: row.baselineCropNaturalHeight,
       baselineRenderMode: row.baselineRenderMode,
       baselineAssetHash: row.baselineAssetHash,
-      baselineExtractionMethod: row.baselineExtractionMethod
+      baselineExtractionMethod: row.baselineExtractionMethod,
     };
 
     if (!signLike(row)) {
@@ -574,11 +625,13 @@ function makeFinalRows(baseline, renderOutput, rowSourceMapping) {
         noUpscale: true,
         noUpscaleProof: {
           passes: true,
-          reason: "Category headings render as selectable DOM text, not learner-facing sign images."
+          reason:
+            "Category headings render as selectable DOM text, not learner-facing sign images.",
         },
-        protectedPixelPreservation: "No protected sign pixels are rendered for category headings; heading text is DOM content.",
+        protectedPixelPreservation:
+          "No protected sign pixels are rendered for category headings; heading text is DOM content.",
         renderMode: "category-heading-dom",
-        extractionMethod: "category-heading-rendered-as-dom-text-no-raster-output"
+        extractionMethod: "category-heading-rendered-as-dom-text-no-raster-output",
       };
     }
 
@@ -588,8 +641,11 @@ function makeFinalRows(baseline, renderOutput, rowSourceMapping) {
 
     return {
       ...baselineFields,
-      disposition: row.entryKind === "contextual-visual" ? "retained-contextual-visual-source-limited-3x-output-crop" : "retained-catalog-entry-source-limited-3x-output-crop",
-      ...qualityFields
+      disposition:
+        row.entryKind === "contextual-visual"
+          ? "retained-contextual-visual-source-limited-3x-output-crop"
+          : "retained-catalog-entry-source-limited-3x-output-crop",
+      ...qualityFields,
     };
   });
 }
@@ -614,7 +670,8 @@ function makeSummary(baseline, finalRows, sourceManifest, rowSourceMapping, rend
     totalRows: finalRows.length,
     signLikeRows: signLikeRows.length,
     catalogEntryRows: signLikeRows.filter((row) => row.entryKind === "catalog-entry").length,
-    contextualVisualRows: signLikeRows.filter((row) => row.entryKind === "contextual-visual").length,
+    contextualVisualRows: signLikeRows.filter((row) => row.entryKind === "contextual-visual")
+      .length,
     categoryHeadingRows: categoryRows.length,
     rowsBySection: countBy(finalRows, "sectionId"),
     rowsByEntryKind: countBy(finalRows, "entryKind"),
@@ -623,10 +680,13 @@ function makeSummary(baseline, finalRows, sourceManifest, rowSourceMapping, rend
         row.finalOutputNaturalWidth >= row.requiredMinimumWidth &&
         row.finalOutputNaturalHeight >= row.requiredMinimumHeight &&
         row.outputPixelScaleRatioWidth >= 3 &&
-        row.outputPixelScaleRatioHeight >= 3
+        row.outputPixelScaleRatioHeight >= 3,
     ).length,
-    trueNativeEffectiveThreeXPassRows: signLikeRows.filter((row) => row.threeXStatus === "passed").length,
-    sourceLimitedExceptionRows: signLikeRows.filter((row) => row.threeXStatus === "source-limited-exception").length,
+    trueNativeEffectiveThreeXPassRows: signLikeRows.filter((row) => row.threeXStatus === "passed")
+      .length,
+    sourceLimitedExceptionRows: signLikeRows.filter(
+      (row) => row.threeXStatus === "source-limited-exception",
+    ).length,
     sourceLimitedDispositionCounts: countBy(signLikeRows, "sourceLimitedDisposition"),
     cropAuditStatusCounts: countBy(finalRows, "cropAuditStatus"),
     renderModeCounts: countBy(finalRows, "renderMode"),
@@ -636,9 +696,10 @@ function makeSummary(baseline, finalRows, sourceManifest, rowSourceMapping, rend
       evaluatedSourceCount: sourceManifest.evaluatedSourceCount,
       mappedSignLikeRows: rowSourceMapping.rowCoverage.signLikeRows,
       exactThreeXCandidateCount: rowSourceMapping.summary.exactThreeXCandidateCount,
-      sourceLimitedExceptionCandidateCount: rowSourceMapping.summary.sourceLimitedExceptionCandidateCount,
+      sourceLimitedExceptionCandidateCount:
+        rowSourceMapping.summary.sourceLimitedExceptionCandidateCount,
       gateStatusBeforeSecondDisposition: rowSourceMapping.summary.gateStatus,
-      architectSecondDispositionAcceptedAt: "2026-06-07T21:36:51Z"
+      architectSecondDispositionAcceptedAt: "2026-06-07T21:36:51Z",
     },
     disclosure:
       "All sign-like rows satisfy 3x output-pixel file dimensions from the retained official CABA manual PDF, but all remain source-limited exceptions for native/effective detail and are not counted as true native/effective 3x passes.",
@@ -647,13 +708,13 @@ function makeSummary(baseline, finalRows, sourceManifest, rowSourceMapping, rend
       remoteAssetsAllowed: false,
       runtimePdfRenderingAllowed: false,
       generatedOrRetouchedArtAllowed: false,
-      categoryHeadingCountedAsSignQuality: false
+      categoryHeadingCountedAsSignQuality: false,
     },
     baselineSummary: {
       totalRows: baseline.totalRows,
       rowsBySection: baseline.rowsBySection,
-      rowsByEntryKind: baseline.rowsByEntryKind
-    }
+      rowsByEntryKind: baseline.rowsByEntryKind,
+    },
   };
 }
 
@@ -661,25 +722,47 @@ function validateFinalRows(finalRows) {
   const errors = [];
   for (const row of finalRows) {
     if (!signLike(row)) continue;
-    if (!existsSync(repoPath(row.finalOutputAssetPath))) errors.push(`${row.id}: final output asset missing`);
-    if (row.finalOutputNaturalWidth < row.requiredMinimumWidth || row.finalOutputNaturalHeight < row.requiredMinimumHeight) {
+    if (!existsSync(repoPath(row.finalOutputAssetPath)))
+      errors.push(`${row.id}: final output asset missing`);
+    if (
+      row.finalOutputNaturalWidth < row.requiredMinimumWidth ||
+      row.finalOutputNaturalHeight < row.requiredMinimumHeight
+    ) {
       errors.push(`${row.id}: final dimensions below required 3x output pixel target`);
     }
-    if (row.threeXStatus !== "source-limited-exception") errors.push(`${row.id}: source-limited row must not be marked as native/effective pass`);
-    if (row.sourceLimitedDisposition !== "best-official-source-3x-output-pixels") errors.push(`${row.id}: missing source-limited disposition`);
-    if (row.cropAuditStatus !== "reviewed-final-correct") errors.push(`${row.id}: crop audit must be reviewed-final-correct`);
+    if (row.threeXStatus !== "source-limited-exception")
+      errors.push(`${row.id}: source-limited row must not be marked as native/effective pass`);
+    if (row.sourceLimitedDisposition !== "best-official-source-3x-output-pixels")
+      errors.push(`${row.id}: missing source-limited disposition`);
+    if (row.cropAuditStatus !== "reviewed-final-correct")
+      errors.push(`${row.id}: crop audit must be reviewed-final-correct`);
     if (row.cropAuditBasis?.passes !== true) errors.push(`${row.id}: crop audit basis must pass`);
-    if (row.cropAuditBasis?.outputPixelTargetPass !== true) errors.push(`${row.id}: crop audit output pixel target must pass`);
-    if (row.cropAuditBasis?.sourceBoundsPass !== true) errors.push(`${row.id}: crop audit source bounds must pass`);
-    if (row.cropAuditBasis?.edgeContactPass !== true) errors.push(`${row.id}: crop audit edge-contact policy must pass`);
-    if (row.cropAuditBasis?.neighborContaminationGuardPass !== true) errors.push(`${row.id}: crop audit neighbor-contamination guard must pass`);
-    if (row.sectionId === "app4-signs-warning" && row.cropAuditBasis?.warningRightEdgeGuardPass !== true) {
+    if (row.cropAuditBasis?.outputPixelTargetPass !== true)
+      errors.push(`${row.id}: crop audit output pixel target must pass`);
+    if (row.cropAuditBasis?.sourceBoundsPass !== true)
+      errors.push(`${row.id}: crop audit source bounds must pass`);
+    if (row.cropAuditBasis?.edgeContactPass !== true)
+      errors.push(`${row.id}: crop audit edge-contact policy must pass`);
+    if (row.cropAuditBasis?.neighborContaminationGuardPass !== true)
+      errors.push(`${row.id}: crop audit neighbor-contamination guard must pass`);
+    if (
+      row.sectionId === "app4-signs-warning" &&
+      row.cropAuditBasis?.warningRightEdgeGuardPass !== true
+    ) {
       errors.push(`${row.id}: warning right-edge contamination guard must pass`);
     }
-    if (row.sectionId === "app4-signs-warning" && row.cropAuditBasis?.warningLeftEdgeGuardPass !== true) {
+    if (
+      row.sectionId === "app4-signs-warning" &&
+      row.cropAuditBasis?.warningLeftEdgeGuardPass !== true
+    ) {
       errors.push(`${row.id}: warning left-edge contamination guard must pass`);
     }
-    if (row.sectionId === "app4-signs-regulatory" && /zona-de-caudales/.test(`${row.id} ${row.spanishLabel ?? ""} ${row.variant ?? ""}`.toLowerCase())) {
+    if (
+      row.sectionId === "app4-signs-regulatory" &&
+      /zona-de-caudales/.test(
+        `${row.id} ${row.spanishLabel ?? ""} ${row.variant ?? ""}`.toLowerCase(),
+      )
+    ) {
       if (row.cropAuditBasis?.regulatoryCaudalesRightEdgeGuardPass !== true) {
         errors.push(`${row.id}: regulatory caudales right-edge contamination guard must pass`);
       }
@@ -697,28 +780,42 @@ function validateFinalRows(finalRows) {
     }
     if (regulatoryDetachedLabelAttachmentRow(row)) {
       if (row.cropAuditBasis?.regulatoryDetachedLabelRightEdgeGuardPass !== true) {
-        errors.push(`${row.id}: regulatory detached-label right-edge contamination guard must pass`);
+        errors.push(
+          `${row.id}: regulatory detached-label right-edge contamination guard must pass`,
+        );
       }
       if (
         row.cropAuditBasis?.edgeContact?.right === true &&
-        row.cropAuditBasis.relativeSourceWidthRatio > row.cropAuditBasis.regulatoryDetachedLabelRightEdgeMaximumRelativeWidthRatio &&
+        row.cropAuditBasis.relativeSourceWidthRatio >
+          row.cropAuditBasis.regulatoryDetachedLabelRightEdgeMaximumRelativeWidthRatio &&
         row.cropAuditBasis?.regulatoryDetachedLabelRightEdgePixelGuardPass !== true
       ) {
-        errors.push(`${row.id}: regulatory detached-label right-edge pixel guard must pass when geometry is wider than the attachment guard`);
+        errors.push(
+          `${row.id}: regulatory detached-label right-edge pixel guard must pass when geometry is wider than the attachment guard`,
+        );
       }
       if (row.cropAuditBasis?.regulatoryDetachedLabelSourceLabelTrimPass !== true) {
         errors.push(`${row.id}: regulatory detached-label source caption trim guard must pass`);
       }
-      if (row.finalTailTrimMode !== "preserve-colorless-lower-attachment-trim-detached-source-label") {
+      if (
+        row.finalTailTrimMode !== "preserve-colorless-lower-attachment-trim-detached-source-label"
+      ) {
         errors.push(`${row.id}: regulatory detached-label row must use detached-label trim mode`);
       }
     }
-    if (typeof row.cropAuditBasis?.relativeSourceWidthRatio !== "number" || typeof row.cropAuditBasis?.relativeSourceHeightRatio !== "number") {
+    if (
+      typeof row.cropAuditBasis?.relativeSourceWidthRatio !== "number" ||
+      typeof row.cropAuditBasis?.relativeSourceHeightRatio !== "number"
+    ) {
       errors.push(`${row.id}: crop audit relative source ratios are required`);
     }
     if (row.renderMode !== renderMode) errors.push(`${row.id}: renderMode must be ${renderMode}`);
-    if (row.outputPixelScaleRatioWidth < 3 || row.outputPixelScaleRatioHeight < 3) errors.push(`${row.id}: output pixel scale ratios must be at least 3`);
-    if (row.qualityScaleRatioWidth >= 1 || row.qualityScaleRatioHeight >= 1) errors.push(`${row.id}: quality ratio should disclose source limitation below native/effective 3x`);
+    if (row.outputPixelScaleRatioWidth < 3 || row.outputPixelScaleRatioHeight < 3)
+      errors.push(`${row.id}: output pixel scale ratios must be at least 3`);
+    if (row.qualityScaleRatioWidth >= 1 || row.qualityScaleRatioHeight >= 1)
+      errors.push(
+        `${row.id}: quality ratio should disclose source limitation below native/effective 3x`,
+      );
     if (row.noUpscaleProof?.passes !== true) errors.push(`${row.id}: no-upscale proof must pass`);
   }
   return errors;
@@ -735,7 +832,7 @@ function main() {
     sourceBaseScale,
     renderScale,
     outputEvidencePath: swiftOutputPath,
-    targets
+    targets,
   };
 
   if (shouldWrite) {
@@ -757,7 +854,7 @@ function main() {
       generatedBy,
       generatedAt,
       summaryPath: finalSummaryPath,
-      rows: finalRows
+      rows: finalRows,
     });
     writeJson(finalSummaryPath, summary);
   }

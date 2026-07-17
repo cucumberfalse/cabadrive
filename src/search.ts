@@ -10,7 +10,7 @@ function haystackFor(question: Question) {
     question.topics.join(" "),
     translation?.questionTextRu,
     translation ? Object.values(translation.answerTranslations).join(" ") : "",
-    explanation?.textRu
+    explanation?.textRu,
   ]
     .filter(Boolean)
     .join(" ")
@@ -31,6 +31,9 @@ export function searchVocabulary(query: string) {
   const normalized = query.trim().toLowerCase();
   if (!normalized) return data.vocabulary;
   return data.vocabulary.filter((term) =>
-    [term.termEs, term.translationRu, term.category, term.explanationRu].join(" ").toLowerCase().includes(normalized)
+    [term.termEs, term.translationRu, term.category, term.explanationRu]
+      .join(" ")
+      .toLowerCase()
+      .includes(normalized),
   );
 }

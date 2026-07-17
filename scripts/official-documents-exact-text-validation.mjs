@@ -17,7 +17,7 @@ function currentLocalIsoDate(date = new Date()) {
   const parts = new Intl.DateTimeFormat("en-CA", {
     year: "numeric",
     month: "2-digit",
-    day: "2-digit"
+    day: "2-digit",
   }).formatToParts(date);
   const values = Object.fromEntries(parts.map((part) => [part.type, part.value]));
   return `${values.year}-${values.month}-${values.day}`;
@@ -34,7 +34,7 @@ function parseArgs(argv, checkedAt) {
     evidencePath: defaultEvidencePath,
     defaultEvidencePath,
     ids: undefined,
-    write: false
+    write: false,
   };
 
   for (let index = 0; index < argv.length; index += 1) {
@@ -42,8 +42,11 @@ function parseArgs(argv, checkedAt) {
     if (arg === "--manifest") args.manifestPath = argv[++index];
     else if (arg === "--evidence") {
       args.evidencePath = argv[++index];
-    }
-    else if (arg === "--ids") args.ids = argv[++index].split(",").map((id) => id.trim()).filter(Boolean);
+    } else if (arg === "--ids")
+      args.ids = argv[++index]
+        .split(",")
+        .map((id) => id.trim())
+        .filter(Boolean);
     else if (arg === "--write") args.write = true;
     else if (arg === "--help") {
       console.log(`Usage: node scripts/official-documents-exact-text-validation.mjs [--ids id1,id2] [--write]
@@ -61,7 +64,7 @@ By default, --write uses ${DEFAULT_EVIDENCE_DIR}/exact-text-validation-<current-
   const writesCanonicalEvidence = resolve(args.evidencePath) === resolve(defaultEvidencePath);
   if (args.write && args.ids && writesCanonicalEvidence) {
     throw new Error(
-      "--ids with --write requires a custom noncanonical --evidence path so partial validation cannot overwrite the canonical whole-manifest evidence file."
+      "--ids with --write requires a custom noncanonical --evidence path so partial validation cannot overwrite the canonical whole-manifest evidence file.",
     );
   }
 
@@ -113,14 +116,14 @@ function decodeHtmlEntities(text) {
     ["Uuml", "Ü"],
     ["ordm", "º"],
     ["deg", "°"],
-    ["quot", "\""],
+    ["quot", '"'],
     ["laquo", "«"],
     ["raquo", "»"],
     ["ldquo", "“"],
     ["rdquo", "”"],
     ["lsquo", "‘"],
     ["rsquo", "’"],
-    ["nbsp", " "]
+    ["nbsp", " "],
   ]);
 
   return String(text)
@@ -168,7 +171,7 @@ function htmlMeaningfulTextCandidates(html) {
     { name: "html-main", html: extractFirstTag(preparedHtml, "main") },
     { name: "html-article", html: extractFirstTag(preparedHtml, "article") },
     { name: "html-body", html: extractFirstTag(preparedHtml, "body") },
-    { name: "html-document", html: preparedHtml }
+    { name: "html-document", html: preparedHtml },
   ].filter((candidate) => candidate.html);
 
   const candidates = [];
@@ -176,7 +179,7 @@ function htmlMeaningfulTextCandidates(html) {
     for (const removeSiteShell of [true, false]) {
       candidates.push({
         name: `${candidate.name}${removeSiteShell ? "-without-site-shell" : "-with-site-shell"}`,
-        text: normalizeComparableText(htmlToText(candidate.html, { removeSiteShell }))
+        text: normalizeComparableText(htmlToText(candidate.html, { removeSiteShell })),
       });
     }
   }
@@ -214,7 +217,7 @@ function removeArchivedPageChrome(markdown) {
     "- Compartir en X",
     "- Compartir en Linkedin",
     "- Compartir en Whatsapp",
-    "- Compartir en Telegram"
+    "- Compartir en Telegram",
   ]);
 
   const gcbaFooterStarts = [
@@ -223,7 +226,7 @@ function removeArchivedPageChrome(markdown) {
     "¿Te fue útil esta página?",
     "Teléfonos útiles",
     "BUENOS AIRES CIUDAD",
-    "Los contenidos de buenosaires.gob.ar"
+    "Los contenidos de buenosaires.gob.ar",
   ];
 
   for (const line of lines) {
@@ -285,12 +288,16 @@ function substantiveArchiveSlices(markdown) {
     "ARTICULO 1",
     "Artículo 1",
     "Artículo 1°",
-    "Art. 1"
+    "Art. 1",
   ];
 
   for (const marker of sliceStarts) {
     const index = markdown.indexOf(marker);
-    if (index > 0) slices.push({ name: `markdown-from-${marker.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`, text: markdown.slice(index) });
+    if (index > 0)
+      slices.push({
+        name: `markdown-from-${marker.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`,
+        text: markdown.slice(index),
+      });
   }
 
   return slices;
@@ -300,7 +307,7 @@ function normalizeComparableText(text) {
   return String(text)
     .normalize("NFKC")
     .replace(/\r/g, "\n")
-    .replace(/[“”]/g, "\"")
+    .replace(/[“”]/g, '"')
     .replace(/[‘’]/g, "'")
     .replace(/\u00a0/g, " ")
     .replace(/&nbsp;/gi, " ")
@@ -322,15 +329,36 @@ function markdownCandidates(markdown) {
   const pageChromeRemoved = removeArchivedPageChrome(markdown);
   const pageChromeAndDateMetadataRemoved = removeArchivedDateMetadata(pageChromeRemoved);
   const candidates = [
-    { name: "markdown-full", text: normalizeComparableText(markdownToText(markdown, { removeFirstHeading: false })) },
-    { name: "markdown-without-title-heading", text: normalizeComparableText(markdownToText(markdown, { removeFirstHeading: true })) },
-    { name: "markdown-without-page-chrome", text: normalizeComparableText(markdownToText(pageChromeRemoved, { removeFirstHeading: false })) },
-    { name: "markdown-without-title-heading-and-page-chrome", text: normalizeComparableText(markdownToText(pageChromeRemoved, { removeFirstHeading: true })) },
-    { name: "markdown-without-title-heading-page-chrome-and-date-metadata", text: normalizeComparableText(markdownToText(pageChromeAndDateMetadataRemoved, { removeFirstHeading: true })) },
+    {
+      name: "markdown-full",
+      text: normalizeComparableText(markdownToText(markdown, { removeFirstHeading: false })),
+    },
+    {
+      name: "markdown-without-title-heading",
+      text: normalizeComparableText(markdownToText(markdown, { removeFirstHeading: true })),
+    },
+    {
+      name: "markdown-without-page-chrome",
+      text: normalizeComparableText(
+        markdownToText(pageChromeRemoved, { removeFirstHeading: false }),
+      ),
+    },
+    {
+      name: "markdown-without-title-heading-and-page-chrome",
+      text: normalizeComparableText(
+        markdownToText(pageChromeRemoved, { removeFirstHeading: true }),
+      ),
+    },
+    {
+      name: "markdown-without-title-heading-page-chrome-and-date-metadata",
+      text: normalizeComparableText(
+        markdownToText(pageChromeAndDateMetadataRemoved, { removeFirstHeading: true }),
+      ),
+    },
     ...substantiveArchiveSlices(markdown).map((slice) => ({
       name: slice.name,
-      text: normalizeComparableText(markdownToText(slice.text, { removeFirstHeading: false }))
-    }))
+      text: normalizeComparableText(markdownToText(slice.text, { removeFirstHeading: false })),
+    })),
   ];
   const seen = new Set();
   return candidates.filter((candidate) => {
@@ -348,7 +376,7 @@ function findTextMatch({ sourceText, archiveCandidates }) {
         matchKind: "normalized_equality",
         archiveCandidate: candidate.name,
         sourcePrefixExtraChars: 0,
-        sourceSuffixExtraChars: 0
+        sourceSuffixExtraChars: 0,
       };
     }
   }
@@ -363,7 +391,7 @@ function findTextMatch({ sourceText, archiveCandidates }) {
         matchKind: "normalized_contiguous_match_with_small_official_wrapper",
         archiveCandidate: candidate.name,
         sourcePrefixExtraChars: start,
-        sourceSuffixExtraChars: suffixChars
+        sourceSuffixExtraChars: suffixChars,
       };
     }
   }
@@ -375,7 +403,7 @@ function findTextMatch({ sourceText, archiveCandidates }) {
       return {
         archiveCandidate: candidate.name,
         archivePrefixExtraChars: start,
-        archiveSuffixExtraChars: candidate.text.length - start - sourceText.length
+        archiveSuffixExtraChars: candidate.text.length - start - sourceText.length,
       };
     })
     .filter(Boolean)
@@ -406,12 +434,17 @@ function findTextMatch({ sourceText, archiveCandidates }) {
     rejectedSubsetMatch: rejectedSubset
       ? {
           ...rejectedSubset,
-          reason: "Live official source text is only a subset of archived Markdown; exact-text validation requires the full archive candidate to match the official source or fit inside bounded official wrapper text."
+          reason:
+            "Live official source text is only a subset of archived Markdown; exact-text validation requires the full archive candidate to match the official source or fit inside bounded official wrapper text.",
         }
       : undefined,
     commonPrefixChars: best?.commonPrefixChars ?? 0,
-    archivePreviewAtMismatch: best?.candidate.text.slice(best.commonPrefixChars, best.commonPrefixChars + 240) ?? "",
-    sourcePreviewAtMismatch: sourceText.slice(best?.commonPrefixChars ?? 0, (best?.commonPrefixChars ?? 0) + 240)
+    archivePreviewAtMismatch:
+      best?.candidate.text.slice(best.commonPrefixChars, best.commonPrefixChars + 240) ?? "",
+    sourcePreviewAtMismatch: sourceText.slice(
+      best?.commonPrefixChars ?? 0,
+      (best?.commonPrefixChars ?? 0) + 240,
+    ),
   };
 }
 
@@ -432,7 +465,8 @@ function decoderForResponse(url, headers) {
   const contentType = headers.get("content-type") ?? "";
   if (/charset\s*=\s*utf-?8/i.test(contentType)) return new TextDecoder("utf-8");
   if (/servicios\.infoleg\.gob\.ar/i.test(url)) return new TextDecoder("windows-1252");
-  if (/charset\s*=\s*(iso-8859-1|windows-1252)/i.test(contentType)) return new TextDecoder("windows-1252");
+  if (/charset\s*=\s*(iso-8859-1|windows-1252)/i.test(contentType))
+    return new TextDecoder("windows-1252");
   return new TextDecoder("utf-8");
 }
 
@@ -445,8 +479,8 @@ async function fetchBytes(url) {
       signal: controller.signal,
       headers: {
         "user-agent": USER_AGENT,
-        accept: "text/html,application/pdf;q=0.9,*/*;q=0.8"
-      }
+        accept: "text/html,application/pdf;q=0.9,*/*;q=0.8",
+      },
     });
     const bytes = Buffer.from(await response.arrayBuffer());
     const finalUrl = response.url;
@@ -456,7 +490,7 @@ async function fetchBytes(url) {
       finalUrl,
       contentType: response.headers.get("content-type"),
       bytes,
-      text: decoderForResponse(finalUrl, response.headers).decode(bytes)
+      text: decoderForResponse(finalUrl, response.headers).decode(bytes),
     };
   } finally {
     clearTimeout(timeout);
@@ -478,7 +512,7 @@ async function validateHtmlEntry(entry, archiveMarkdown) {
           contentType: response.contentType,
           sourceBytesSha256: sha256(response.bytes),
           passed: false,
-          matchKind: "http_not_ok"
+          matchKind: "http_not_ok",
         });
         continue;
       }
@@ -494,11 +528,13 @@ async function validateHtmlEntry(entry, archiveMarkdown) {
           sourceCandidate: sourceCandidate.name,
           normalizedSourceTextSha256: sha256(sourceCandidate.text),
           normalizedSourceLength: sourceCandidate.text.length,
-          ...match
+          ...match,
         };
         attempts.push(attempt);
         if (attempt.passed) {
-          const archiveCandidate = archiveCandidates.find((candidate) => candidate.name === attempt.archiveCandidate);
+          const archiveCandidate = archiveCandidates.find(
+            (candidate) => candidate.name === attempt.archiveCandidate,
+          );
           return {
             outcome: "passed",
             officialInputKind: "live_html",
@@ -506,20 +542,26 @@ async function validateHtmlEntry(entry, archiveMarkdown) {
             sourceCandidate: sourceCandidate.name,
             normalizedArchiveTextSha256: sha256(archiveCandidate.text),
             normalizedArchiveLength: archiveCandidate.text.length,
-            attempts
+            attempts,
           };
         }
       }
     } catch (error) {
-      attempts.push({ url, error: error.message, matchKind: "fetch_or_extract_error", passed: false });
+      attempts.push({
+        url,
+        error: error.message,
+        matchKind: "fetch_or_extract_error",
+        passed: false,
+      });
     }
   }
 
   return {
     outcome: "blocked",
     officialInputKind: "live_html",
-    blocker: "No official HTML candidate from sourceUrl/currentness.evidenceUrls produced a normalized exact archive match.",
-    attempts
+    blocker:
+      "No official HTML candidate from sourceUrl/currentness.evidenceUrls produced a normalized exact archive match.",
+    attempts,
   };
 }
 
@@ -544,7 +586,7 @@ async function validatePdfEntry(entry, archiveMarkdown) {
         contentType: response.contentType,
         sourceBytesSha256,
         localRawOriginalSha256: localPdfSha256,
-        liveBytesMatchLocalRawOriginal: response.ok && sourceBytesSha256 === localPdfSha256
+        liveBytesMatchLocalRawOriginal: response.ok && sourceBytesSha256 === localPdfSha256,
       };
       attempts.push(attempt);
       if (attempt.liveBytesMatchLocalRawOriginal) {
@@ -564,7 +606,7 @@ async function validatePdfEntry(entry, archiveMarkdown) {
       pdfParseVersion: "1.1.1",
       pdfPages: pdfData.numpages,
       blocker: "No live official PDF candidate byte-for-byte matched the local raw original.",
-      attempts
+      attempts,
     };
   }
 
@@ -577,13 +619,16 @@ async function validatePdfEntry(entry, archiveMarkdown) {
       pdfPages: pdfData.numpages,
       normalizedPdfTextSha256: sha256(extractedPdfText),
       normalizedPdfTextLength: extractedPdfText.length,
-      blocker: "The local raw official PDF is authentic, but deterministic pdf-parse extraction does not match archived Markdown exactly.",
+      blocker:
+        "The local raw official PDF is authentic, but deterministic pdf-parse extraction does not match archived Markdown exactly.",
       pdfTextMatch,
-      attempts
+      attempts,
     };
   }
 
-  const archiveCandidate = archiveCandidates.find((candidate) => candidate.name === pdfTextMatch.archiveCandidate);
+  const archiveCandidate = archiveCandidates.find(
+    (candidate) => candidate.name === pdfTextMatch.archiveCandidate,
+  );
   return {
     outcome: "passed",
     officialInputKind: "live_pdf_plus_local_pdf_parse",
@@ -596,13 +641,18 @@ async function validatePdfEntry(entry, archiveMarkdown) {
     normalizedArchiveTextSha256: sha256(archiveCandidate.text),
     normalizedArchiveLength: archiveCandidate.text.length,
     pdfTextMatch,
-    attempts
+    attempts,
   };
 }
 
 async function validateEntry(entry) {
   if (!existsSync(entry.localPath)) {
-    return { id: entry.id, title: entry.title, outcome: "blocked", blocker: "Archived Markdown file is missing." };
+    return {
+      id: entry.id,
+      title: entry.title,
+      outcome: "blocked",
+      blocker: "Archived Markdown file is missing.",
+    };
   }
 
   const archiveMarkdown = readFileSync(entry.localPath, "utf8");
@@ -613,7 +663,7 @@ async function validateEntry(entry) {
     sourceUrl: entry.sourceUrl,
     localPath: entry.localPath,
     rawOriginalPath: entry.rawOriginalPath,
-    archiveMarkdownSha256: sha256(archiveMarkdown)
+    archiveMarkdownSha256: sha256(archiveMarkdown),
   };
 
   if (entry.sourceFormat === "pdf") {
@@ -632,7 +682,9 @@ async function main() {
   const manifest = readJson(args.manifestPath);
   const selectedIds = new Set(args.ids ?? manifest.entries.map((entry) => entry.id));
   const entries = manifest.entries.filter((entry) => selectedIds.has(entry.id));
-  const missingIds = [...selectedIds].filter((id) => !manifest.entries.some((entry) => entry.id === id));
+  const missingIds = [...selectedIds].filter(
+    (id) => !manifest.entries.some((entry) => entry.id === id),
+  );
   if (missingIds.length > 0) throw new Error(`Unknown manifest IDs: ${missingIds.join(", ")}`);
 
   const results = [];
@@ -645,7 +697,7 @@ async function main() {
     total: results.length,
     passed: results.filter((result) => result.outcome === "passed").length,
     blocked: results.filter((result) => result.outcome === "blocked").length,
-    failed: results.filter((result) => result.outcome === "failed").length
+    failed: results.filter((result) => result.outcome === "failed").length,
   };
 
   const evidence = {
@@ -656,20 +708,28 @@ async function main() {
     command: buildCommand(args),
     summary,
     method: {
-      officialInputs: "For each manifest entry, the validator tries sourceUrl followed by currentness.evidenceUrls. HTML entries must match a live official HTML input. PDF entries must first prove live official PDF bytes match rawOriginalPath, then prove pdf-parse 1.1.1 text extraction matches archived Markdown.",
-      htmlExtraction: "Remove script/style/noscript/svg noise, build audited live-source candidates from main/article/body/full document with and without removable site shell, flatten tags to visible text, and decode HTML entities.",
-      markdownNormalization: "Remove Markdown heading markers, local image references, and visible link target annotations; keep official wording order.",
-      comparableNormalization: "NFKC, lowercase, collapse whitespace, trim whitespace before punctuation, normalize curly quotes. This accepts HTML/PDF layout noise but keeps omissions, additions inside the body, and order changes detectable.",
-      archiveCandidates: "Archived Markdown is compared as full text, without the local title heading, without reproducible page-navigation/related-content/feedback/footer chrome, without date-only page metadata, and from stable substantive legal/body markers when an official live mirror omits publication-page metadata but preserves the normative body.",
-      layoutNormalization: "The normalizer also removes Markdown/HTML separator-only lines, duplicate link-target annotations, spaces before parentheticals, whitespace before official B.O. markers, and the audited InfoLeg layout break `ley n° NN.NN D B.O.` before B.O. markers, without changing letters, punctuation, unrelated numbers, or text order.",
-      wrapperTolerance: `A live source may contain the archived body as one contiguous block with at most ${MAX_WRAPPER_CHARS} normalized characters of official wrapper text before/after it. Larger additions remain blocked; live-source-as-subset-of-archive matches are recorded as rejected diagnostics, never as pass evidence.`
+      officialInputs:
+        "For each manifest entry, the validator tries sourceUrl followed by currentness.evidenceUrls. HTML entries must match a live official HTML input. PDF entries must first prove live official PDF bytes match rawOriginalPath, then prove pdf-parse 1.1.1 text extraction matches archived Markdown.",
+      htmlExtraction:
+        "Remove script/style/noscript/svg noise, build audited live-source candidates from main/article/body/full document with and without removable site shell, flatten tags to visible text, and decode HTML entities.",
+      markdownNormalization:
+        "Remove Markdown heading markers, local image references, and visible link target annotations; keep official wording order.",
+      comparableNormalization:
+        "NFKC, lowercase, collapse whitespace, trim whitespace before punctuation, normalize curly quotes. This accepts HTML/PDF layout noise but keeps omissions, additions inside the body, and order changes detectable.",
+      archiveCandidates:
+        "Archived Markdown is compared as full text, without the local title heading, without reproducible page-navigation/related-content/feedback/footer chrome, without date-only page metadata, and from stable substantive legal/body markers when an official live mirror omits publication-page metadata but preserves the normative body.",
+      layoutNormalization:
+        "The normalizer also removes Markdown/HTML separator-only lines, duplicate link-target annotations, spaces before parentheticals, whitespace before official B.O. markers, and the audited InfoLeg layout break `ley n° NN.NN D B.O.` before B.O. markers, without changing letters, punctuation, unrelated numbers, or text order.",
+      wrapperTolerance: `A live source may contain the archived body as one contiguous block with at most ${MAX_WRAPPER_CHARS} normalized characters of official wrapper text before/after it. Larger additions remain blocked; live-source-as-subset-of-archive matches are recorded as rejected diagnostics, never as pass evidence.`,
     },
-    results
+    results,
   };
 
   console.log(JSON.stringify(summary, null, 2));
   for (const result of results.filter((entry) => entry.outcome !== "passed")) {
-    console.log(`${result.id}: ${result.outcome} - ${result.blocker ?? result.matchKind ?? "see evidence"}`);
+    console.log(
+      `${result.id}: ${result.outcome} - ${result.blocker ?? result.matchKind ?? "see evidence"}`,
+    );
   }
 
   if (args.write) {

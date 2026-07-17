@@ -3,7 +3,7 @@ import { readFileSync } from "node:fs";
 import { test } from "node:test";
 import {
   buildExplanationAlignmentEvidenceEntry,
-  validateExplanationAlignment
+  validateExplanationAlignment,
 } from "../scripts/content-explanation-alignment.mjs";
 
 const syntheticQuestion = {
@@ -11,9 +11,9 @@ const syntheticQuestion = {
   officialTextEs: "¿Qué indica esta señal?",
   answers: [
     { id: "q1-a1", officialTextEs: "Opción incorrecta." },
-    { id: "q1-a2", officialTextEs: "Opción correcta." }
+    { id: "q1-a2", officialTextEs: "Opción correcta." },
   ],
-  correctAnswerId: "q1-a2"
+  correctAnswerId: "q1-a2",
 };
 
 function syntheticExplanation(overrides = {}) {
@@ -26,13 +26,13 @@ function syntheticExplanation(overrides = {}) {
       "Правильный вариант соответствует видимому требованию знака и сохраняет смысл исходного билета без расширения правила за пределы показанной ситуации.",
     wrongAnswerExplanations: {
       "q1-a1":
-        "Этот вариант неверен, потому что описывает другое действие и не подтверждается тем визуальным признаком, который проверяет текущий билет."
+        "Этот вариант неверен, потому что описывает другое действие и не подтверждается тем визуальным признаком, который проверяет текущий билет.",
     },
     explanationType: "learning_support",
     claimScope: "direct_ticket",
     relatedSourceIds: ["source-1"],
     disclaimer: "Это учебное пояснение не является официальной формулировкой экзамена.",
-    ...overrides
+    ...overrides,
   };
 }
 
@@ -46,26 +46,51 @@ function syntheticEvidence(explanation) {
         explanation,
         reviewer: "Cabadrive solo self-audit",
         reviewedAt: "2026-05-09",
-        notes: "Synthetic explanation quality fixture."
-      })
-    ]
+        notes: "Synthetic explanation quality fixture.",
+      }),
+    ],
   };
 }
 
 test("current Russian explanations have full approved alignment evidence", () => {
-  const questions = JSON.parse(readFileSync("content/questions/caba-b.unofficial-fallback.questions.json", "utf8"));
-  const explanations = JSON.parse(readFileSync("content/explanations/ru.explanations.json", "utf8"));
-  const imageMetadataManifest = JSON.parse(readFileSync("content/image-metadata/question-images.manifest.json", "utf8"));
-  const evidence = JSON.parse(readFileSync("content/validation/ru-explanation-alignment.evidence.json", "utf8"));
-  assert.deepEqual(validateExplanationAlignment({ questions, explanations, imageMetadataManifest, evidence, locale: "ru" }), []);
+  const questions = JSON.parse(
+    readFileSync("content/questions/caba-b.unofficial-fallback.questions.json", "utf8"),
+  );
+  const explanations = JSON.parse(
+    readFileSync("content/explanations/ru.explanations.json", "utf8"),
+  );
+  const imageMetadataManifest = JSON.parse(
+    readFileSync("content/image-metadata/question-images.manifest.json", "utf8"),
+  );
+  const evidence = JSON.parse(
+    readFileSync("content/validation/ru-explanation-alignment.evidence.json", "utf8"),
+  );
+  assert.deepEqual(
+    validateExplanationAlignment({
+      questions,
+      explanations,
+      imageMetadataManifest,
+      evidence,
+      locale: "ru",
+    }),
+    [],
+  );
 });
 
 test("old b-fallback-001 visual claim fails against approved metadata", () => {
-  const questions = JSON.parse(readFileSync("content/questions/caba-b.unofficial-fallback.questions.json", "utf8"));
-  const imageMetadataManifest = JSON.parse(readFileSync("content/image-metadata/question-images.manifest.json", "utf8"));
-  const currentExplanations = JSON.parse(readFileSync("content/explanations/ru.explanations.json", "utf8"));
+  const questions = JSON.parse(
+    readFileSync("content/questions/caba-b.unofficial-fallback.questions.json", "utf8"),
+  );
+  const imageMetadataManifest = JSON.parse(
+    readFileSync("content/image-metadata/question-images.manifest.json", "utf8"),
+  );
+  const currentExplanations = JSON.parse(
+    readFileSync("content/explanations/ru.explanations.json", "utf8"),
+  );
   const question = questions.find((item) => item.id === "b-fallback-001");
-  const usage = imageMetadataManifest.questionUsages.find((item) => item.questionId === question.id);
+  const usage = imageMetadataManifest.questionUsages.find(
+    (item) => item.questionId === question.id,
+  );
   const image = imageMetadataManifest.images.find((item) => item.imageId === usage.imageId);
   const oldExplanation = {
     ...currentExplanations.find((item) => item.questionId === "b-fallback-001"),
@@ -79,9 +104,9 @@ test("old b-fallback-001 visual claim fails against approved metadata", () => {
         bodyPart: "left_arm",
         pose: "bent_up",
         actorPerspectiveDirection: "left",
-        viewerPerspectiveDirection: "right"
-      }
-    ]
+        viewerPerspectiveDirection: "right",
+      },
+    ],
   };
   const evidence = {
     locale: "ru",
@@ -94,30 +119,48 @@ test("old b-fallback-001 visual claim fails against approved metadata", () => {
         usage,
         reviewer: "Cabadrive solo self-audit",
         reviewedAt: "2026-05-09",
-        notes: "Synthetic stale-defect regression fixture."
-      })
-    ]
+        notes: "Synthetic stale-defect regression fixture.",
+      }),
+    ],
   };
   const errors = validateExplanationAlignment({
     questions: [question],
     explanations: [oldExplanation],
     imageMetadataManifest,
     evidence,
-    locale: "ru"
+    locale: "ru",
   });
-  assert(errors.includes("b-fallback-001: visual claim objectType driver contradicts metadata types cyclist."));
-  assert(errors.includes("b-fallback-001: visual claim bodyPart left_arm contradicts metadata bodyPart right_arm."));
-  assert(errors.includes("b-fallback-001: visual claim pose bent_up contradicts metadata pose extended_straight_horizontal."));
+  assert(
+    errors.includes(
+      "b-fallback-001: visual claim objectType driver contradicts metadata types cyclist.",
+    ),
+  );
+  assert(
+    errors.includes(
+      "b-fallback-001: visual claim bodyPart left_arm contradicts metadata bodyPart right_arm.",
+    ),
+  );
+  assert(
+    errors.includes(
+      "b-fallback-001: visual claim pose bent_up contradicts metadata pose extended_straight_horizontal.",
+    ),
+  );
 });
 
 test("missing wrong-answer rationale fails explanation validation", () => {
-  const questions = JSON.parse(readFileSync("content/questions/caba-b.unofficial-fallback.questions.json", "utf8"));
-  const imageMetadataManifest = JSON.parse(readFileSync("content/image-metadata/question-images.manifest.json", "utf8"));
-  const currentExplanations = JSON.parse(readFileSync("content/explanations/ru.explanations.json", "utf8"));
+  const questions = JSON.parse(
+    readFileSync("content/questions/caba-b.unofficial-fallback.questions.json", "utf8"),
+  );
+  const imageMetadataManifest = JSON.parse(
+    readFileSync("content/image-metadata/question-images.manifest.json", "utf8"),
+  );
+  const currentExplanations = JSON.parse(
+    readFileSync("content/explanations/ru.explanations.json", "utf8"),
+  );
   const question = questions.find((item) => item.id === "b-fallback-003");
   const explanation = {
     ...currentExplanations.find((item) => item.questionId === question.id),
-    wrongAnswerExplanations: {}
+    wrongAnswerExplanations: {},
   };
   const evidence = {
     locale: "ru",
@@ -128,16 +171,16 @@ test("missing wrong-answer rationale fails explanation validation", () => {
         explanation,
         reviewer: "Cabadrive solo self-audit",
         reviewedAt: "2026-05-09",
-        notes: "Synthetic missing-rationale regression fixture."
-      })
-    ]
+        notes: "Synthetic missing-rationale regression fixture.",
+      }),
+    ],
   };
   const errors = validateExplanationAlignment({
     questions: [question],
     explanations: [explanation],
     imageMetadataManifest,
     evidence,
-    locale: "ru"
+    locale: "ru",
   });
   assert(errors.includes("b-fallback-003: missing wrong-answer rationale for b-fallback-003-a2."));
   assert(errors.includes("b-fallback-003: missing wrong-answer rationale for b-fallback-003-a3."));
@@ -148,8 +191,8 @@ test("full-quality explanation gate rejects generic filler and Spanish residue",
     textRu: "Учебное пояснение: cruce de jinetes. Выберите вариант по смыслу билета.",
     correctAnswerExplanationRu: "Правильный вариант - cruce de jinetes.",
     wrongAnswerExplanations: {
-      "q1-a1": "Generic placeholder rationale."
-    }
+      "q1-a1": "Generic placeholder rationale.",
+    },
   });
   const errors = validateExplanationAlignment({
     questions: [syntheticQuestion],
@@ -157,17 +200,21 @@ test("full-quality explanation gate rejects generic filler and Spanish residue",
     imageMetadataManifest: { questionUsages: [], images: [] },
     evidence: syntheticEvidence(explanation),
     locale: "ru",
-    requireFullQuality: true
+    requireFullQuality: true,
   });
-  assert(errors.includes("q1: textRu contains generic filler, untranslated Spanish, transliteration, or unsupported Latin residue."));
   assert(
     errors.includes(
-      "q1: correctAnswerExplanationRu contains generic filler, untranslated Spanish, transliteration, or unsupported Latin residue."
-    )
+      "q1: textRu contains generic filler, untranslated Spanish, transliteration, or unsupported Latin residue.",
+    ),
   );
   assert(
     errors.includes(
-      "q1: wrong-answer rationale for q1-a1 contains generic filler, untranslated Spanish, transliteration, or unsupported Latin residue."
-    )
+      "q1: correctAnswerExplanationRu contains generic filler, untranslated Spanish, transliteration, or unsupported Latin residue.",
+    ),
+  );
+  assert(
+    errors.includes(
+      "q1: wrong-answer rationale for q1-a1 contains generic filler, untranslated Spanish, transliteration, or unsupported Latin residue.",
+    ),
   );
 });

@@ -15,7 +15,10 @@ test("quality scripts use fail-closed explicit allowlists", () => {
   assert.equal(packageJson.scripts["format:check"].startsWith("prettier --check "), true);
   assert.doesNotMatch(packageJson.scripts.format, /(?:^|\s)\.(?:\s|$)/);
   assert.equal(packageJson.scripts["quality:fast"], "pnpm run typecheck && pnpm run lint");
-  assert.equal(packageJson.scripts["verify:quality-negative"], "node scripts/verify-quality-negative.mjs");
+  assert.equal(
+    packageJson.scripts["verify:quality-negative"],
+    "node scripts/verify-quality-negative.mjs",
+  );
 });
 
 test("quality dependencies are exact, compatible toolchain pins", () => {
@@ -70,7 +73,10 @@ test("formatter defenses exclude governed and attribution artifacts", () => {
     "src/data/manualGuide.ts",
     "src/data/pandemiaVialSection.ts",
   ]) {
-    assert.match(ignore, new RegExp(`^${protectedPath.replace(/[.*+?^${}()|[\\]\\]/g, "\\$&")}$`, "m"));
+    assert.match(
+      ignore,
+      new RegExp(`^${protectedPath.replace(/[.*+?^${}()|[\\]\\]/g, "\\$&")}$`, "m"),
+    );
   }
 });
 
@@ -78,8 +84,8 @@ test("Prettier file-info ignores every governed manual TypeScript source", async
   const baseline = JSON.parse(
     readFileSync(
       new URL("../content/manual-ticket-placement/manual-content-baseline.json", import.meta.url),
-      "utf8"
-    )
+      "utf8",
+    ),
   );
   const canonicalPaths = baseline.protectedSources
     .map(({ path }) => path)

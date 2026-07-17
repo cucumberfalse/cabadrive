@@ -9,14 +9,19 @@ const QA_STATUSES = new Set(["draft", "reviewed", "approved"]);
 const STRICT_MODES = new Set(["strict", "final", "release"]);
 const COVERAGE_ONLY_MODES = new Set(["coverage", "coverage-only", "inventory"]);
 const PRIMARY_SOURCES_SECTION_PATH = "content/primary-sources";
-const CURRENT_USABLE_STATUSES = new Set(["current", "in_force", "currently_valid", "valid_current_material"]);
+const CURRENT_USABLE_STATUSES = new Set([
+  "current",
+  "in_force",
+  "currently_valid",
+  "valid_current_material",
+]);
 const FORBIDDEN_SPANISH_SIMPLIFICATION_PATHS = [
   "simplified-spanish",
   "simple-spanish",
   "simplified-es",
   "simple-es",
   "spanish-simplification",
-  "es-simple"
+  "es-simple",
 ];
 const RUSSIAN_TEXT_PATH_KEYS = new Set([
   "translationPath",
@@ -26,7 +31,7 @@ const RUSSIAN_TEXT_PATH_KEYS = new Set([
   "simplificationPath",
   "simplificationRuPath",
   "learnerContentPath",
-  "learnerRussianPath"
+  "learnerRussianPath",
 ]);
 const PLACEHOLDER_PATTERN =
   /(?:^|[^\p{L}\p{N}_])(?:todo|tbd|placeholder|draft|lorem\s+ipsum|чернов\p{L}*|заглушк\p{L}*)(?=$|[^\p{L}\p{N}_])/iu;
@@ -118,8 +123,10 @@ function requireString(errors, value, label) {
 
 function readArchiveText(root, archiveFiles, relativePath) {
   if (!isNonEmptyString(relativePath)) return undefined;
-  if (archiveFiles instanceof Map && archiveFiles.has(relativePath)) return archiveFiles.get(relativePath);
-  if (isPlainObject(archiveFiles) && Object.hasOwn(archiveFiles, relativePath)) return archiveFiles[relativePath];
+  if (archiveFiles instanceof Map && archiveFiles.has(relativePath))
+    return archiveFiles.get(relativePath);
+  if (isPlainObject(archiveFiles) && Object.hasOwn(archiveFiles, relativePath))
+    return archiveFiles[relativePath];
   const absolutePath = join(root, relativePath);
   if (!existsSync(absolutePath)) return undefined;
   return readFileSync(absolutePath, "utf8");
@@ -127,8 +134,10 @@ function readArchiveText(root, archiveFiles, relativePath) {
 
 function readJsonShard(root, shardFiles, relativePath) {
   if (!isNonEmptyString(relativePath)) return undefined;
-  if (shardFiles instanceof Map && shardFiles.has(relativePath)) return shardFiles.get(relativePath);
-  if (isPlainObject(shardFiles) && Object.hasOwn(shardFiles, relativePath)) return shardFiles[relativePath];
+  if (shardFiles instanceof Map && shardFiles.has(relativePath))
+    return shardFiles.get(relativePath);
+  if (isPlainObject(shardFiles) && Object.hasOwn(shardFiles, relativePath))
+    return shardFiles[relativePath];
   const absolutePath = join(root, relativePath);
   if (!existsSync(absolutePath)) return undefined;
   return JSON.parse(readFileSync(absolutePath, "utf8"));
@@ -208,7 +217,15 @@ function optionalArrayField(errors, owner, key, label) {
   return owner[key];
 }
 
-function shardPathReferences({ root, shardFiles, owner, listKey, directoryKey, label, filenameSuffix }) {
+function shardPathReferences({
+  root,
+  shardFiles,
+  owner,
+  listKey,
+  directoryKey,
+  label,
+  filenameSuffix,
+}) {
   const errors = [];
   const references = [];
   const seen = new Set();
@@ -231,7 +248,9 @@ function shardPathReferences({ root, shardFiles, owner, listKey, directoryKey, l
     if (!validateShardDirectoryPath(errors, relativeDirectory, referenceLabel)) return;
     const discovered = discoverShardPaths(root, shardFiles, relativeDirectory, filenameSuffix);
     if (discovered === undefined) {
-      errors.push(`${normalizePath(relativeDirectory).replace(/\/+$/, "")}: shard directory is missing.`);
+      errors.push(
+        `${normalizePath(relativeDirectory).replace(/\/+$/, "")}: shard directory is missing.`,
+      );
       return;
     }
     for (const relativePath of discovered) appendReference(relativePath, referenceLabel);
@@ -249,7 +268,7 @@ function loadShardList({
   label,
   filenameSuffix,
   expectedSchema,
-  extractItems
+  extractItems,
 }) {
   const errors = [];
   const items = [];
@@ -261,7 +280,7 @@ function loadShardList({
     listKey,
     directoryKey,
     label,
-    filenameSuffix
+    filenameSuffix,
   });
   errors.push(...shardReferences.errors);
 
@@ -315,20 +334,22 @@ function recombineDocumentsByOfficialDocumentId(documents, { label, chunkLabel }
       continue;
     }
     if (!Array.isArray(document.chunks)) {
-      errors.push(`${officialDocumentId}: ${label}.chunks must be an array before range-shard recomposition.`);
+      errors.push(
+        `${officialDocumentId}: ${label}.chunks must be an array before range-shard recomposition.`,
+      );
     }
 
-    const metadata = Object.fromEntries(Object.entries(recomposedDocument).filter(([key]) => key !== "chunks"));
+    const metadata = Object.fromEntries(
+      Object.entries(recomposedDocument).filter(([key]) => key !== "chunks"),
+    );
     if (!documentsById.has(officialDocumentId)) {
       orderedIds.push(officialDocumentId);
       documentsById.set(officialDocumentId, {
         ...recomposedDocument,
         __primarySourcesRecompositionMetadata: metadata,
         __primarySourcesRecompositionChunkIds: new Set(
-          recomposedDocument.chunks
-            .map((chunk) => chunk?.chunkId)
-            .filter(isNonEmptyString)
-        )
+          recomposedDocument.chunks.map((chunk) => chunk?.chunkId).filter(isNonEmptyString),
+        ),
       });
       continue;
     }
@@ -336,17 +357,27 @@ function recombineDocumentsByOfficialDocumentId(documents, { label, chunkLabel }
     const existing = documentsById.get(officialDocumentId);
     for (const key of new Set([
       ...Object.keys(existing.__primarySourcesRecompositionMetadata || {}),
-      ...Object.keys(metadata)
+      ...Object.keys(metadata),
     ])) {
-      if (canonicalJson(existing.__primarySourcesRecompositionMetadata?.[key]) !== canonicalJson(metadata[key])) {
-        errors.push(`${officialDocumentId}: ${label} metadata field ${key} must match across range shards.`);
+      if (
+        canonicalJson(existing.__primarySourcesRecompositionMetadata?.[key]) !==
+        canonicalJson(metadata[key])
+      ) {
+        errors.push(
+          `${officialDocumentId}: ${label} metadata field ${key} must match across range shards.`,
+        );
       }
     }
 
     for (const chunk of recomposedDocument.chunks) {
       const chunkId = chunk?.chunkId;
-      if (isNonEmptyString(chunkId) && existing.__primarySourcesRecompositionChunkIds.has(chunkId)) {
-        errors.push(`${chunkId}: duplicate ${chunkLabel} across range shards for ${officialDocumentId}.`);
+      if (
+        isNonEmptyString(chunkId) &&
+        existing.__primarySourcesRecompositionChunkIds.has(chunkId)
+      ) {
+        errors.push(
+          `${chunkId}: duplicate ${chunkLabel} across range shards for ${officialDocumentId}.`,
+        );
       }
       if (isNonEmptyString(chunkId)) existing.__primarySourcesRecompositionChunkIds.add(chunkId);
       existing.chunks.push(chunk);
@@ -362,7 +393,7 @@ function recombineDocumentsByOfficialDocumentId(documents, { label, chunkLabel }
       delete recombinedDocument.__primarySourcesRecompositionMetadata;
       delete recombinedDocument.__primarySourcesRecompositionChunkIds;
       return recombinedDocument;
-    })
+    }),
   };
 }
 
@@ -370,17 +401,24 @@ function validateUniqueDocumentsBeforeRecomposition(errors, documents, label) {
   const seenIds = new Set();
   for (const document of asArray(documents)) {
     if (!isPlainObject(document) || !isNonEmptyString(document.officialDocumentId)) continue;
-    if (seenIds.has(document.officialDocumentId)) errors.push(`${document.officialDocumentId}: duplicate ${label}.`);
+    if (seenIds.has(document.officialDocumentId))
+      errors.push(`${document.officialDocumentId}: duplicate ${label}.`);
     seenIds.add(document.officialDocumentId);
   }
 }
 
-export function combinePrimarySourceShards({ root = defaultRoot, corpus, qa, searchIndex, shardFiles } = {}) {
+export function combinePrimarySourceShards({
+  root = defaultRoot,
+  corpus,
+  qa,
+  searchIndex,
+  shardFiles,
+} = {}) {
   const errors = [];
   const learnerContentPaths = [
     "content/primary-sources/primary-sources.ru.json",
     "content/primary-sources/primary-sources.qa.json",
-    "content/primary-sources/primary-sources.search.json"
+    "content/primary-sources/primary-sources.search.json",
   ];
 
   const corpusShardResult = loadShardList({
@@ -393,10 +431,13 @@ export function combinePrimarySourceShards({ root = defaultRoot, corpus, qa, sea
     filenameSuffix: ".ru.json",
     expectedSchema: "primary-sources-document-shard.v1",
     extractItems: (shard, relativePath, shardErrors) => {
-      const documents = Array.isArray(shard.documents) ? shard.documents : [shard.document].filter(Boolean);
-      if (documents.length === 0) shardErrors.push(`${relativePath}: document shard must contain document or documents.`);
+      const documents = Array.isArray(shard.documents)
+        ? shard.documents
+        : [shard.document].filter(Boolean);
+      if (documents.length === 0)
+        shardErrors.push(`${relativePath}: document shard must contain document or documents.`);
       return documents;
-    }
+    },
   });
   errors.push(...corpusShardResult.errors);
   learnerContentPaths.push(...corpusShardResult.learnerContentPaths);
@@ -411,10 +452,13 @@ export function combinePrimarySourceShards({ root = defaultRoot, corpus, qa, sea
     filenameSuffix: ".qa.json",
     expectedSchema: "primary-sources-qa-shard.v1",
     extractItems: (shard, relativePath, shardErrors) => {
-      const documents = Array.isArray(shard.documents) ? shard.documents : [shard.document].filter(Boolean);
-      if (documents.length === 0) shardErrors.push(`${relativePath}: QA shard must contain document or documents.`);
+      const documents = Array.isArray(shard.documents)
+        ? shard.documents
+        : [shard.document].filter(Boolean);
+      if (documents.length === 0)
+        shardErrors.push(`${relativePath}: QA shard must contain document or documents.`);
       return documents;
-    }
+    },
   });
   errors.push(...qaShardResult.errors);
   learnerContentPaths.push(...qaShardResult.learnerContentPaths);
@@ -429,29 +473,37 @@ export function combinePrimarySourceShards({ root = defaultRoot, corpus, qa, sea
     filenameSuffix: ".search.json",
     expectedSchema: "primary-sources-search-shard.v1",
     extractItems: (shard, relativePath, shardErrors) => {
-      if (!Array.isArray(shard.entries)) shardErrors.push(`${relativePath}: search shard entries must be an array.`);
+      if (!Array.isArray(shard.entries))
+        shardErrors.push(`${relativePath}: search shard entries must be an array.`);
       return asArray(shard.entries);
-    }
+    },
   });
   errors.push(...searchShardResult.errors);
   learnerContentPaths.push(...searchShardResult.learnerContentPaths);
 
-  validateUniqueDocumentsBeforeRecomposition(errors, corpus?.documents, "primary sources corpus document");
+  validateUniqueDocumentsBeforeRecomposition(
+    errors,
+    corpus?.documents,
+    "primary sources corpus document",
+  );
   validateUniqueDocumentsBeforeRecomposition(errors, qa?.documents, "primary sources QA document");
 
   const corpusRecomposition = recombineDocumentsByOfficialDocumentId(
     [...asArray(corpus?.documents), ...corpusShardResult.items],
     {
       label: "primary sources corpus document",
-      chunkLabel: "primary sources corpus chunk"
-    }
+      chunkLabel: "primary sources corpus chunk",
+    },
   );
   errors.push(...corpusRecomposition.errors);
 
-  const qaRecomposition = recombineDocumentsByOfficialDocumentId([...asArray(qa?.documents), ...qaShardResult.items], {
-    label: "primary sources QA document",
-    chunkLabel: "primary sources QA chunk"
-  });
+  const qaRecomposition = recombineDocumentsByOfficialDocumentId(
+    [...asArray(qa?.documents), ...qaShardResult.items],
+    {
+      label: "primary sources QA document",
+      chunkLabel: "primary sources QA chunk",
+    },
+  );
   errors.push(...qaRecomposition.errors);
 
   return {
@@ -459,16 +511,16 @@ export function combinePrimarySourceShards({ root = defaultRoot, corpus, qa, sea
     learnerContentPaths,
     corpus: {
       ...corpus,
-      documents: corpusRecomposition.documents
+      documents: corpusRecomposition.documents,
     },
     qa: {
       ...qa,
-      documents: qaRecomposition.documents
+      documents: qaRecomposition.documents,
     },
     searchIndex: {
       ...searchIndex,
-      entries: [...asArray(searchIndex?.entries), ...searchShardResult.items]
-    }
+      entries: [...asArray(searchIndex?.entries), ...searchShardResult.items],
+    },
   };
 }
 
@@ -476,7 +528,12 @@ function sourceSpanText(text, sourceSpan) {
   if (!isPlainObject(sourceSpan)) return undefined;
   const startLine = sourceSpan.startLine;
   const endLine = sourceSpan.endLine;
-  if (!Number.isInteger(startLine) || !Number.isInteger(endLine) || startLine < 1 || endLine < startLine) {
+  if (
+    !Number.isInteger(startLine) ||
+    !Number.isInteger(endLine) ||
+    startLine < 1 ||
+    endLine < startLine
+  ) {
     return undefined;
   }
   const lines = text.split(/\r?\n/);
@@ -506,17 +563,20 @@ function validateContiguousSourceSpanCoverage(errors, { documentId, chunks, arch
     spans.push({
       chunkId: labelFor(chunk.chunkId, `${documentId}.coverageChunk`),
       startLine: chunk.sourceSpan.startLine,
-      endLine: chunk.sourceSpan.endLine
+      endLine: chunk.sourceSpan.endLine,
     });
   }
   if (spans.length === 0) return;
 
-  spans.sort((a, b) => a.startLine - b.startLine || a.endLine - b.endLine || a.chunkId.localeCompare(b.chunkId));
+  spans.sort(
+    (a, b) =>
+      a.startLine - b.startLine || a.endLine - b.endLine || a.chunkId.localeCompare(b.chunkId),
+  );
   let expectedStartLine = 1;
   for (const span of spans) {
     if (span.startLine !== expectedStartLine) {
       errors.push(
-        `${documentId}: sourceSpan coverage must be contiguous; expected line ${expectedStartLine} but ${span.chunkId} starts at line ${span.startLine}.`
+        `${documentId}: sourceSpan coverage must be contiguous; expected line ${expectedStartLine} but ${span.chunkId} starts at line ${span.startLine}.`,
       );
       return;
     }
@@ -524,14 +584,16 @@ function validateContiguousSourceSpanCoverage(errors, { documentId, chunks, arch
   }
   if (expectedStartLine !== archiveLineCount + 1) {
     errors.push(
-      `${documentId}: sourceSpan coverage must include all archive lines; covered through line ${expectedStartLine - 1} of ${archiveLineCount}.`
+      `${documentId}: sourceSpan coverage must include all archive lines; covered through line ${expectedStartLine - 1} of ${archiveLineCount}.`,
     );
   }
 }
 
 function validateNoForbiddenSpanishSimplification(errors, value, path = "primary sources") {
   if (Array.isArray(value)) {
-    value.forEach((item, index) => validateNoForbiddenSpanishSimplification(errors, item, `${path}[${index}]`));
+    value.forEach((item, index) =>
+      validateNoForbiddenSpanishSimplification(errors, item, `${path}[${index}]`),
+    );
     return;
   }
   if (!isPlainObject(value)) return;
@@ -539,7 +601,11 @@ function validateNoForbiddenSpanishSimplification(errors, value, path = "primary
     if (isForbiddenSpanishSimplificationKey(key)) {
       errors.push(`${path}.${key} is forbidden; simplified Spanish is out of scope.`);
     }
-    if (isNonEmptyString(nested) && key.toLowerCase().includes("path") && isForbiddenSpanishSimplificationPath(nested)) {
+    if (
+      isNonEmptyString(nested) &&
+      key.toLowerCase().includes("path") &&
+      isForbiddenSpanishSimplificationPath(nested)
+    ) {
       errors.push(`${path}.${key} points to forbidden simplified Spanish content.`);
     }
     validateNoForbiddenSpanishSimplification(errors, nested, `${path}.${key}`);
@@ -554,7 +620,9 @@ function validateLearnerRussianPaths(errors, value, path = "primary sources") {
   if (!isPlainObject(value)) return;
   for (const [key, nested] of Object.entries(value)) {
     if (RUSSIAN_TEXT_PATH_KEYS.has(key) && isInsidePath(nested, "content/official-documents")) {
-      errors.push(`${path}.${key} must not store learner Russian content under content/official-documents.`);
+      errors.push(
+        `${path}.${key} must not store learner Russian content under content/official-documents.`,
+      );
     }
     validateLearnerRussianPaths(errors, nested, `${path}.${key}`);
   }
@@ -573,7 +641,9 @@ function validateQaRecord(errors, record, label, { strictMode }) {
   requireString(errors, record.methodNotes, `${label}.methodNotes`);
   const requiresCheckedAt = strictMode || ["reviewed", "approved"].includes(record.status);
   if (requiresCheckedAt && !DATE_PATTERN.test(record.checkedAt || "")) {
-    errors.push(`${label}.checkedAt must be YYYY-MM-DD when QA is reviewed, approved, or running strict mode.`);
+    errors.push(
+      `${label}.checkedAt must be YYYY-MM-DD when QA is reviewed, approved, or running strict mode.`,
+    );
   } else if (isNonEmptyString(record.checkedAt) && !DATE_PATTERN.test(record.checkedAt)) {
     errors.push(`${label}.checkedAt must be YYYY-MM-DD.`);
   }
@@ -598,18 +668,26 @@ function validateManifestReleaseReadiness(errors, entry, label) {
     errors.push(`${label}.currentness must be an object for strict primary-source validation.`);
   } else {
     if (!CURRENT_USABLE_STATUSES.has(currentness.status)) {
-      errors.push(`${label}.currentness.status must be release-ready for strict primary-source validation.`);
+      errors.push(
+        `${label}.currentness.status must be release-ready for strict primary-source validation.`,
+      );
     }
     if (currentness.validationStatus !== "passed") {
-      errors.push(`${label}.currentness.validationStatus must be passed for strict primary-source validation.`);
+      errors.push(
+        `${label}.currentness.validationStatus must be passed for strict primary-source validation.`,
+      );
     }
   }
 
   const exactTextValidation = entry.exactTextValidation;
   if (!isPlainObject(exactTextValidation)) {
-    errors.push(`${label}.exactTextValidation must be an object for strict primary-source validation.`);
+    errors.push(
+      `${label}.exactTextValidation must be an object for strict primary-source validation.`,
+    );
   } else if (exactTextValidation.status !== "passed") {
-    errors.push(`${label}.exactTextValidation.status must be passed for strict primary-source validation.`);
+    errors.push(
+      `${label}.exactTextValidation.status must be passed for strict primary-source validation.`,
+    );
   }
 }
 
@@ -622,7 +700,7 @@ export function validatePrimarySources({
   mode = "draft",
   root = defaultRoot,
   archiveFiles,
-  learnerContentPaths = []
+  learnerContentPaths = [],
 } = {}) {
   const errors = [];
   const strictMode = STRICT_MODES.has(mode);
@@ -645,11 +723,15 @@ export function validatePrimarySources({
     }
     if (corpus?.locale !== "ru") errors.push("primary sources corpus locale must be ru.");
     if (isInsidePath(corpus?.sectionPath, "content/official-documents")) {
-      errors.push("primary sources corpus sectionPath must not be under content/official-documents.");
+      errors.push(
+        "primary sources corpus sectionPath must not be under content/official-documents.",
+      );
     }
     for (const learnerPath of learnerContentPaths) {
       if (isInsidePath(learnerPath, "content/official-documents")) {
-        errors.push(`${learnerPath} must not store learner Russian content under content/official-documents.`);
+        errors.push(
+          `${learnerPath} must not store learner Russian content under content/official-documents.`,
+        );
       }
     }
     validateLearnerRussianPaths(errors, corpus, "primary sources corpus");
@@ -661,14 +743,20 @@ export function validatePrimarySources({
   validateNoForbiddenSpanishSimplification(errors, coverage, "primary sources coverage");
 
   if (strictMode) {
-    if (manifest.status !== "published") errors.push("official documents manifest status must be published in strict mode.");
-    if (coverage?.status !== "published") errors.push("primary sources coverage status must be published in strict mode.");
+    if (manifest.status !== "published")
+      errors.push("official documents manifest status must be published in strict mode.");
+    if (coverage?.status !== "published")
+      errors.push("primary sources coverage status must be published in strict mode.");
     if (!coverageOnlyMode) {
-      if (corpus?.status !== "published") errors.push("primary sources corpus status must be published in strict mode.");
+      if (corpus?.status !== "published")
+        errors.push("primary sources corpus status must be published in strict mode.");
       if (corpus?.contentStatus !== "unofficial_learning_aid") {
-        errors.push("primary sources corpus contentStatus must be unofficial_learning_aid in strict mode.");
+        errors.push(
+          "primary sources corpus contentStatus must be unofficial_learning_aid in strict mode.",
+        );
       }
-      if (qa?.status !== "published") errors.push("primary sources QA status must be published in strict mode.");
+      if (qa?.status !== "published")
+        errors.push("primary sources QA status must be published in strict mode.");
       if (searchIndex?.status !== "published") {
         errors.push("primary sources search index status must be published in strict mode.");
       }
@@ -679,29 +767,38 @@ export function validatePrimarySources({
   const manifestIds = [];
   for (const entry of asArray(manifest.entries)) {
     if (!isPlainObject(entry) || !isNonEmptyString(entry.id)) continue;
-    if (manifestEntryById.has(entry.id)) errors.push(`${entry.id}: duplicate official document id in manifest.`);
+    if (manifestEntryById.has(entry.id))
+      errors.push(`${entry.id}: duplicate official document id in manifest.`);
     manifestEntryById.set(entry.id, entry);
     manifestIds.push(entry.id);
     if (strictMode) validateManifestReleaseReadiness(errors, entry, entry.id);
   }
 
   if (!coverageOnlyMode) {
-    validateUniqueDocumentsBeforeRecomposition(errors, corpus?.documents, "primary sources corpus document");
-    validateUniqueDocumentsBeforeRecomposition(errors, qa?.documents, "primary sources QA document");
+    validateUniqueDocumentsBeforeRecomposition(
+      errors,
+      corpus?.documents,
+      "primary sources corpus document",
+    );
+    validateUniqueDocumentsBeforeRecomposition(
+      errors,
+      qa?.documents,
+      "primary sources QA document",
+    );
   }
 
   const normalizedCorpusDocuments = coverageOnlyMode
     ? []
     : recombineDocumentsByOfficialDocumentId(asArray(corpus?.documents), {
         label: "primary sources corpus document",
-        chunkLabel: "primary sources corpus chunk"
+        chunkLabel: "primary sources corpus chunk",
       });
   if (!coverageOnlyMode) errors.push(...normalizedCorpusDocuments.errors);
   const normalizedQaDocuments = coverageOnlyMode
     ? []
     : recombineDocumentsByOfficialDocumentId(asArray(qa?.documents), {
         label: "primary sources QA document",
-        chunkLabel: "primary sources QA chunk"
+        chunkLabel: "primary sources QA chunk",
       });
   if (!coverageOnlyMode) errors.push(...normalizedQaDocuments.errors);
 
@@ -717,9 +814,15 @@ export function validatePrimarySources({
     if (corpusDocumentById.has(document.officialDocumentId)) {
       errors.push(`${document.officialDocumentId}: duplicate primary sources corpus document.`);
     }
-    if (isNonEmptyString(document.officialDocumentId)) corpusDocumentById.set(document.officialDocumentId, document);
-    if (isNonEmptyString(document.officialDocumentId) && !manifestEntryById.has(document.officialDocumentId)) {
-      errors.push(`${document.officialDocumentId}: learner document is not present in official manifest.`);
+    if (isNonEmptyString(document.officialDocumentId))
+      corpusDocumentById.set(document.officialDocumentId, document);
+    if (
+      isNonEmptyString(document.officialDocumentId) &&
+      !manifestEntryById.has(document.officialDocumentId)
+    ) {
+      errors.push(
+        `${document.officialDocumentId}: learner document is not present in official manifest.`,
+      );
     }
     requireString(errors, document.title, `${documentId}.title`);
     requireString(errors, document.shortTitleRu, `${documentId}.shortTitleRu`);
@@ -737,19 +840,28 @@ export function validatePrimarySources({
       if (document.archiveLocalPath !== manifestEntry.localPath) {
         errors.push(`${documentId}.archiveLocalPath must match official manifest localPath.`);
       }
-      if (document.title !== manifestEntry.title) errors.push(`${documentId}.title must match official manifest title.`);
+      if (document.title !== manifestEntry.title)
+        errors.push(`${documentId}.title must match official manifest title.`);
       if (document.officialSourceType !== manifestEntry.officialSourceType) {
-        errors.push(`${documentId}.officialSourceType must match official manifest officialSourceType.`);
+        errors.push(
+          `${documentId}.officialSourceType must match official manifest officialSourceType.`,
+        );
       }
       if (strictMode) {
         if (document.currentnessStatus !== manifestEntry.currentness?.status) {
-          errors.push(`${documentId}.currentnessStatus must match official manifest currentness.status.`);
+          errors.push(
+            `${documentId}.currentnessStatus must match official manifest currentness.status.`,
+          );
         }
         if (document.currentnessValidationStatus !== manifestEntry.currentness?.validationStatus) {
-          errors.push(`${documentId}.currentnessValidationStatus must match official manifest currentness.validationStatus.`);
+          errors.push(
+            `${documentId}.currentnessValidationStatus must match official manifest currentness.validationStatus.`,
+          );
         }
         if (document.exactTextValidationStatus !== manifestEntry.exactTextValidation?.status) {
-          errors.push(`${documentId}.exactTextValidationStatus must match official manifest exactTextValidation.status.`);
+          errors.push(
+            `${documentId}.exactTextValidationStatus must match official manifest exactTextValidation.status.`,
+          );
         }
       }
     }
@@ -765,15 +877,22 @@ export function validatePrimarySources({
       if (chunk.officialDocumentId !== document.officialDocumentId) {
         errors.push(`${chunkId}.officialDocumentId must match parent document.`);
       }
-      if (!Number.isInteger(chunk.order) || chunk.order < 1) errors.push(`${chunkId}.order must be a positive integer.`);
-      if (!Array.isArray(chunk.headingPath) || chunk.headingPath.some((heading) => !isNonEmptyString(heading))) {
+      if (!Number.isInteger(chunk.order) || chunk.order < 1)
+        errors.push(`${chunkId}.order must be a positive integer.`);
+      if (
+        !Array.isArray(chunk.headingPath) ||
+        chunk.headingPath.some((heading) => !isNonEmptyString(heading))
+      ) {
         errors.push(`${chunkId}.headingPath must be an array of non-empty strings.`);
       }
       requireString(errors, chunk.sourceFingerprint, `${chunkId}.sourceFingerprint`);
       requireString(errors, chunk.originalSpanish, `${chunkId}.originalSpanish`);
-      validateRussianField(errors, chunk.fullTranslationRu, `${chunkId}.fullTranslationRu`, { strictMode });
+      validateRussianField(errors, chunk.fullTranslationRu, `${chunkId}.fullTranslationRu`, {
+        strictMode,
+      });
       validateRussianField(errors, chunk.simpleRu, `${chunkId}.simpleRu`, { strictMode });
-      if (corpusChunksById.has(chunk.chunkId)) errors.push(`${chunk.chunkId}: duplicate primary sources corpus chunk.`);
+      if (corpusChunksById.has(chunk.chunkId))
+        errors.push(`${chunk.chunkId}: duplicate primary sources corpus chunk.`);
       if (isNonEmptyString(chunk.chunkId)) corpusChunksById.set(chunk.chunkId, chunk);
     }
   }
@@ -790,22 +909,38 @@ export function validatePrimarySources({
     if (coverageDocumentById.has(document.officialDocumentId)) {
       errors.push(`${document.officialDocumentId}: duplicate primary sources coverage document.`);
     }
-    if (isNonEmptyString(document.officialDocumentId)) coverageDocumentById.set(document.officialDocumentId, document);
-    if (isNonEmptyString(document.officialDocumentId) && !manifestEntryById.has(document.officialDocumentId)) {
-      errors.push(`${document.officialDocumentId}: coverage document is not present in official manifest.`);
+    if (isNonEmptyString(document.officialDocumentId))
+      coverageDocumentById.set(document.officialDocumentId, document);
+    if (
+      isNonEmptyString(document.officialDocumentId) &&
+      !manifestEntryById.has(document.officialDocumentId)
+    ) {
+      errors.push(
+        `${document.officialDocumentId}: coverage document is not present in official manifest.`,
+      );
     }
     requireString(errors, document.archiveLocalPath, `${documentId}.archiveLocalPath`);
     requireString(errors, document.archiveSha256, `${documentId}.archiveSha256`);
     if (isNonEmptyString(document.archiveSha256) && !SHA256_PATTERN.test(document.archiveSha256)) {
-      errors.push(`${documentId}.archiveSha256 must be a 64-character lowercase sha256 hex digest.`);
+      errors.push(
+        `${documentId}.archiveSha256 must be a 64-character lowercase sha256 hex digest.`,
+      );
     }
     requireArray(errors, document.expectedChunkIds, `${documentId}.expectedChunkIds`);
     requireArray(errors, document.chunks, `${documentId}.chunks`);
-    if (requireCompleteCoverage && Array.isArray(document.expectedChunkIds) && document.expectedChunkIds.length === 0) {
-      errors.push(`${documentId}.expectedChunkIds must include at least one expected chunk ID in ${mode} mode.`);
+    if (
+      requireCompleteCoverage &&
+      Array.isArray(document.expectedChunkIds) &&
+      document.expectedChunkIds.length === 0
+    ) {
+      errors.push(
+        `${documentId}.expectedChunkIds must include at least one expected chunk ID in ${mode} mode.`,
+      );
     }
     if (requireCompleteCoverage && Array.isArray(document.chunks) && document.chunks.length === 0) {
-      errors.push(`${documentId}.chunks must include at least one generated coverage chunk in ${mode} mode.`);
+      errors.push(
+        `${documentId}.chunks must include at least one generated coverage chunk in ${mode} mode.`,
+      );
     }
 
     const manifestEntry = manifestEntryById.get(document.officialDocumentId);
@@ -815,7 +950,10 @@ export function validatePrimarySources({
     const archiveText = readArchiveText(root, archiveFiles, document.archiveLocalPath);
     if (archiveText === undefined) {
       errors.push(`${documentId}.archiveLocalPath is missing from archive files.`);
-    } else if (SHA256_PATTERN.test(document.archiveSha256 || "") && sha256(archiveText) !== document.archiveSha256) {
+    } else if (
+      SHA256_PATTERN.test(document.archiveSha256 || "") &&
+      sha256(archiveText) !== document.archiveSha256
+    ) {
       errors.push(`${documentId}.archiveSha256 must match current archive Markdown.`);
     }
 
@@ -831,8 +969,12 @@ export function validatePrimarySources({
       if (chunk.officialDocumentId !== document.officialDocumentId) {
         errors.push(`${chunkId}.officialDocumentId must match parent coverage document.`);
       }
-      if (!Number.isInteger(chunk.order) || chunk.order < 1) errors.push(`${chunkId}.order must be a positive integer.`);
-      if (!Array.isArray(chunk.headingPath) || chunk.headingPath.some((heading) => !isNonEmptyString(heading))) {
+      if (!Number.isInteger(chunk.order) || chunk.order < 1)
+        errors.push(`${chunkId}.order must be a positive integer.`);
+      if (
+        !Array.isArray(chunk.headingPath) ||
+        chunk.headingPath.some((heading) => !isNonEmptyString(heading))
+      ) {
         errors.push(`${chunkId}.headingPath must be an array of non-empty strings.`);
       }
       if (!isPlainObject(chunk.sourceSpan)) {
@@ -846,23 +988,40 @@ export function validatePrimarySources({
         errors.push(`${chunkId}.sourceSpan must include valid startLine and endLine.`);
       }
       requireString(errors, chunk.sourceTextSha256, `${chunkId}.sourceTextSha256`);
-      if (isNonEmptyString(chunk.sourceTextSha256) && !SHA256_PATTERN.test(chunk.sourceTextSha256)) {
-        errors.push(`${chunkId}.sourceTextSha256 must be a 64-character lowercase sha256 hex digest.`);
+      if (
+        isNonEmptyString(chunk.sourceTextSha256) &&
+        !SHA256_PATTERN.test(chunk.sourceTextSha256)
+      ) {
+        errors.push(
+          `${chunkId}.sourceTextSha256 must be a 64-character lowercase sha256 hex digest.`,
+        );
       }
       requireString(errors, chunk.sourceFingerprint, `${chunkId}.sourceFingerprint`);
-      if (isNonEmptyString(chunk.sourceTextSha256) && chunk.sourceFingerprint !== `sha256:${chunk.sourceTextSha256}`) {
+      if (
+        isNonEmptyString(chunk.sourceTextSha256) &&
+        chunk.sourceFingerprint !== `sha256:${chunk.sourceTextSha256}`
+      ) {
         errors.push(`${chunkId}.sourceFingerprint must match sourceTextSha256.`);
       }
-      if (chunkIdsInDocument.has(chunk.chunkId)) errors.push(`${chunk.chunkId}: duplicate coverage chunk in ${documentId}.`);
+      if (chunkIdsInDocument.has(chunk.chunkId))
+        errors.push(`${chunk.chunkId}: duplicate coverage chunk in ${documentId}.`);
       chunkIdsInDocument.add(chunk.chunkId);
-      if (coverageChunksById.has(chunk.chunkId)) errors.push(`${chunk.chunkId}: duplicate primary sources coverage chunk.`);
-      if (isNonEmptyString(chunk.chunkId)) coverageChunksById.set(chunk.chunkId, { ...chunk, archiveLocalPath: document.archiveLocalPath });
+      if (coverageChunksById.has(chunk.chunkId))
+        errors.push(`${chunk.chunkId}: duplicate primary sources coverage chunk.`);
+      if (isNonEmptyString(chunk.chunkId))
+        coverageChunksById.set(chunk.chunkId, {
+          ...chunk,
+          archiveLocalPath: document.archiveLocalPath,
+        });
 
       if (archiveText !== undefined && isPlainObject(chunk.sourceSpan)) {
         const text = sourceSpanText(archiveText, chunk.sourceSpan);
         if (text === undefined) {
           errors.push(`${chunkId}.sourceSpan does not map to current archive Markdown lines.`);
-        } else if (SHA256_PATTERN.test(chunk.sourceTextSha256 || "") && sha256(text) !== chunk.sourceTextSha256) {
+        } else if (
+          SHA256_PATTERN.test(chunk.sourceTextSha256 || "") &&
+          sha256(text) !== chunk.sourceTextSha256
+        ) {
           errors.push(`${chunkId}.sourceTextSha256 must match current archive Markdown span.`);
         }
         const corpusChunk = corpusChunksById.get(chunk.chunkId);
@@ -881,17 +1040,25 @@ export function validatePrimarySources({
       } else {
         expectedChunkIdsInDocument.add(expectedChunkId);
         if (!chunkIdsInDocument.has(expectedChunkId)) {
-          errors.push(`${documentId}: expected chunk ${expectedChunkId} is missing from coverage chunks.`);
+          errors.push(
+            `${documentId}: expected chunk ${expectedChunkId} is missing from coverage chunks.`,
+          );
         }
       }
     }
     for (const generatedChunkId of chunkIdsInDocument) {
       if (isNonEmptyString(generatedChunkId) && !expectedChunkIdsInDocument.has(generatedChunkId)) {
-        errors.push(`${documentId}: generated coverage chunk ${generatedChunkId} is missing from expectedChunkIds.`);
+        errors.push(
+          `${documentId}: generated coverage chunk ${generatedChunkId} is missing from expectedChunkIds.`,
+        );
       }
     }
     if (requireCompleteCoverage && archiveText !== undefined && Array.isArray(document.chunks)) {
-      validateContiguousSourceSpanCoverage(errors, { documentId, chunks: document.chunks, archiveText });
+      validateContiguousSourceSpanCoverage(errors, {
+        documentId,
+        chunks: document.chunks,
+        archiveText,
+      });
     }
   }
 
@@ -910,17 +1077,27 @@ export function validatePrimarySources({
       errors.push(`${documentId}: learner document is missing generated chunk coverage.`);
       continue;
     }
-    const coveredChunkIds = new Set(asArray(coverageDocument.chunks).map((chunk) => chunk?.chunkId).filter(isNonEmptyString));
+    const coveredChunkIds = new Set(
+      asArray(coverageDocument.chunks)
+        .map((chunk) => chunk?.chunkId)
+        .filter(isNonEmptyString),
+    );
     for (const chunk of asArray(document.chunks)) {
       if (isNonEmptyString(chunk.chunkId) && !coveredChunkIds.has(chunk.chunkId)) {
         errors.push(`${chunk.chunkId}: learner chunk is missing generated chunk coverage.`);
       }
     }
     if (strictMode) {
-      const corpusChunkIds = new Set(asArray(document.chunks).map((chunk) => chunk?.chunkId).filter(isNonEmptyString));
+      const corpusChunkIds = new Set(
+        asArray(document.chunks)
+          .map((chunk) => chunk?.chunkId)
+          .filter(isNonEmptyString),
+      );
       for (const expectedChunkId of asArray(coverageDocument.expectedChunkIds)) {
         if (isNonEmptyString(expectedChunkId) && !corpusChunkIds.has(expectedChunkId)) {
-          errors.push(`${expectedChunkId}: expected chunk is missing from learner corpus in strict mode.`);
+          errors.push(
+            `${expectedChunkId}: expected chunk is missing from learner corpus in strict mode.`,
+          );
         }
       }
     }
@@ -934,7 +1111,10 @@ export function validatePrimarySources({
     }
     const documentId = labelFor(document.officialDocumentId, "primary sources QA document");
     requireString(errors, document.officialDocumentId, `${documentId}.officialDocumentId`);
-    if (isNonEmptyString(document.officialDocumentId) && !corpusDocumentById.has(document.officialDocumentId)) {
+    if (
+      isNonEmptyString(document.officialDocumentId) &&
+      !corpusDocumentById.has(document.officialDocumentId)
+    ) {
       errors.push(`${document.officialDocumentId}: QA document has no learner corpus document.`);
     }
     for (const chunk of asArray(document.chunks)) {
@@ -944,19 +1124,23 @@ export function validatePrimarySources({
       }
       const chunkId = labelFor(chunk.chunkId, `${documentId}.qaChunk`);
       requireString(errors, chunk.chunkId, `${chunkId}.chunkId`);
-      if (qaChunksById.has(chunk.chunkId)) errors.push(`${chunk.chunkId}: duplicate primary sources QA chunk.`);
+      if (qaChunksById.has(chunk.chunkId))
+        errors.push(`${chunk.chunkId}: duplicate primary sources QA chunk.`);
       if (isNonEmptyString(chunk.chunkId)) qaChunksById.set(chunk.chunkId, chunk);
       if (isNonEmptyString(chunk.chunkId) && !corpusChunksById.has(chunk.chunkId)) {
         errors.push(`${chunk.chunkId}: QA chunk has no learner corpus chunk.`);
       }
       validateQaRecord(errors, chunk.translationQa, `${chunkId}.translationQa`, { strictMode });
-      validateQaRecord(errors, chunk.simplificationQa, `${chunkId}.simplificationQa`, { strictMode });
+      validateQaRecord(errors, chunk.simplificationQa, `${chunkId}.simplificationQa`, {
+        strictMode,
+      });
     }
   }
 
   if (!coverageOnlyMode) {
     for (const chunkId of corpusChunksById.keys()) {
-      if (!qaChunksById.has(chunkId)) errors.push(`${chunkId}: learner chunk is missing QA metadata.`);
+      if (!qaChunksById.has(chunkId))
+        errors.push(`${chunkId}: learner chunk is missing QA metadata.`);
     }
   }
 
@@ -972,33 +1156,48 @@ export function validatePrimarySources({
     requireString(errors, entry.officialDocumentId, `${entryId}.officialDocumentId`);
     requireString(errors, entry.chunkId, `${entryId}.chunkId`);
     if (isNonEmptyString(entry.entryId)) {
-      if (searchEntryIds.has(entry.entryId)) errors.push(`${entry.entryId}: duplicate primary sources search entry.`);
+      if (searchEntryIds.has(entry.entryId))
+        errors.push(`${entry.entryId}: duplicate primary sources search entry.`);
       searchEntryIds.add(entry.entryId);
     }
-    if (isNonEmptyString(entry.officialDocumentId) && !corpusDocumentById.has(entry.officialDocumentId)) {
-      errors.push(`${entryId}: search entry references missing learner document ${entry.officialDocumentId}.`);
+    if (
+      isNonEmptyString(entry.officialDocumentId) &&
+      !corpusDocumentById.has(entry.officialDocumentId)
+    ) {
+      errors.push(
+        `${entryId}: search entry references missing learner document ${entry.officialDocumentId}.`,
+      );
     }
     if (isNonEmptyString(entry.chunkId) && !corpusChunksById.has(entry.chunkId)) {
       errors.push(`${entryId}: search entry references missing learner chunk ${entry.chunkId}.`);
     }
-    const corpusChunk = isNonEmptyString(entry.chunkId) ? corpusChunksById.get(entry.chunkId) : undefined;
+    const corpusChunk = isNonEmptyString(entry.chunkId)
+      ? corpusChunksById.get(entry.chunkId)
+      : undefined;
     if (corpusChunk && isNonEmptyString(entry.officialDocumentId)) {
       if (corpusChunk.officialDocumentId !== entry.officialDocumentId) {
         errors.push(`${entryId}.officialDocumentId must match learner chunk officialDocumentId.`);
       } else {
         const projectionKey = `${entry.officialDocumentId}\0${entry.chunkId}`;
         if (searchProjectionKeys.has(projectionKey)) {
-          errors.push(`${entryId}: duplicate primary sources search chunk reference ${entry.officialDocumentId}/${entry.chunkId}.`);
+          errors.push(
+            `${entryId}: duplicate primary sources search chunk reference ${entry.officialDocumentId}/${entry.chunkId}.`,
+          );
         }
         searchProjectionKeys.add(projectionKey);
       }
     }
-    if (!Array.isArray(entry.textFields) || entry.textFields.some((field) => !isNonEmptyString(field))) {
+    if (
+      !Array.isArray(entry.textFields) ||
+      entry.textFields.some((field) => !isNonEmptyString(field))
+    ) {
       errors.push(`${entryId}.textFields must be an array of non-empty strings.`);
     } else {
       for (const field of entry.textFields) {
         if (isForbiddenSpanishSimplificationKey(field)) {
-          errors.push(`${entryId}.textFields must not reference ${field}; simplified Spanish is out of scope.`);
+          errors.push(
+            `${entryId}.textFields must not reference ${field}; simplified Spanish is out of scope.`,
+          );
         }
       }
     }
@@ -1024,7 +1223,7 @@ export function validatePrimarySourcesFromFiles({ root = defaultRoot, mode = "dr
     root,
     corpus: readJson("content/primary-sources/primary-sources.ru.json"),
     qa: readJson("content/primary-sources/primary-sources.qa.json"),
-    searchIndex: readJson("content/primary-sources/primary-sources.search.json")
+    searchIndex: readJson("content/primary-sources/primary-sources.search.json"),
   });
   return [
     ...primarySources.errors,
@@ -1036,7 +1235,7 @@ export function validatePrimarySourcesFromFiles({ root = defaultRoot, mode = "dr
       coverage: readJson("content/primary-sources/primary-sources.coverage.json"),
       qa: primarySources.qa,
       searchIndex: primarySources.searchIndex,
-      learnerContentPaths: primarySources.learnerContentPaths
-    })
+      learnerContentPaths: primarySources.learnerContentPaths,
+    }),
   ];
 }

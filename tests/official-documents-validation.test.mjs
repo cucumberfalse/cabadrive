@@ -13,7 +13,7 @@ function manifest(overrides = {}) {
     schema: "official-documents-manifest.v1",
     sectionPath: "content/official-documents",
     entries: [entry()],
-    ...overrides
+    ...overrides,
   };
 }
 
@@ -35,21 +35,22 @@ function entry(overrides = {}) {
       status: "current",
       validationStatus: "passed",
       statusEvidence: "Official page presented the current consolidated text.",
-      amendmentRepealEvidence: "No repeal or supersession notice observed on the checked official page.",
-      evidenceUrls: ["https://www.argentina.gob.ar/normativa/nacional/ley-24449-818/texto"]
+      amendmentRepealEvidence:
+        "No repeal or supersession notice observed on the checked official page.",
+      evidenceUrls: ["https://www.argentina.gob.ar/normativa/nacional/ley-24449-818/texto"],
     },
     exactTextValidation: {
       status: "pending",
-      notes: "Final exact-text comparison is reserved for the final archive validation slice."
+      notes: "Final exact-text comparison is reserved for the final archive validation slice.",
     },
-    ...overrides
+    ...overrides,
   };
 }
 
 function files(extra = {}) {
   return {
     "content/official-documents/documents/ley-24449.md": { exists: true, sha256 },
-    ...extra
+    ...extra,
   };
 }
 
@@ -57,7 +58,7 @@ function validate({ manifestData = manifest(), fileMetadata = files(), sourceTra
   return validateOfficialDocumentsManifest({
     manifest: manifestData,
     fileMetadata,
-    sourceTrace
+    sourceTrace,
   });
 }
 
@@ -65,18 +66,22 @@ function repositoryFileMetadata(relativePath) {
   const exists = existsSync(relativePath);
   return {
     exists,
-    ...(exists ? { sha256: createHash("sha256").update(readFileSync(relativePath)).digest("hex") } : {})
+    ...(exists
+      ? { sha256: createHash("sha256").update(readFileSync(relativePath)).digest("hex") }
+      : {}),
   };
 }
 
 test("current committed manifest passes validation with repository files and hashes", () => {
-  const currentManifest = JSON.parse(readFileSync("content/official-documents/manifest.json", "utf8"));
+  const currentManifest = JSON.parse(
+    readFileSync("content/official-documents/manifest.json", "utf8"),
+  );
   assert.deepEqual(
     validateOfficialDocumentsManifest({
       manifest: currentManifest,
-      fileMetadata: repositoryFileMetadata
+      fileMetadata: repositoryFileMetadata,
     }),
-    []
+    [],
   );
 });
 
@@ -90,7 +95,7 @@ test("rejects missing required metadata", () => {
     officialSourceType: "",
     sourceUrl: "not-a-url",
     retrievalDate: "09-05-2026",
-    sourceFormat: ""
+    sourceFormat: "",
   });
 
   const errors = validate({ manifestData: manifest({ entries: [document] }) });
@@ -106,16 +111,18 @@ test("rejects local paths outside official-documents", () => {
     manifestData: manifest({
       entries: [
         entry({
-          localPath: "content/sources/originals/ley-24449.md"
-        })
-      ]
+          localPath: "content/sources/originals/ley-24449.md",
+        }),
+      ],
     }),
     fileMetadata: {
-      "content/sources/originals/ley-24449.md": { exists: true }
-    }
+      "content/sources/originals/ley-24449.md": { exists: true },
+    },
   });
 
-  assert(errors.includes("ley-24449.localPath must stay inside content/official-documents/documents."));
+  assert(
+    errors.includes("ley-24449.localPath must stay inside content/official-documents/documents."),
+  );
 });
 
 test("rejects official Markdown local paths outside documents directory", () => {
@@ -123,33 +130,39 @@ test("rejects official Markdown local paths outside documents directory", () => 
     manifestData: manifest({
       entries: [
         entry({
-          localPath: "content/official-documents/validation/fake.md"
-        })
-      ]
+          localPath: "content/official-documents/validation/fake.md",
+        }),
+      ],
     }),
     fileMetadata: {
-      "content/official-documents/validation/fake.md": { exists: true }
-    }
+      "content/official-documents/validation/fake.md": { exists: true },
+    },
   });
 
   assert(
-    validationPathErrors.includes("ley-24449.localPath must stay inside content/official-documents/documents.")
+    validationPathErrors.includes(
+      "ley-24449.localPath must stay inside content/official-documents/documents.",
+    ),
   );
 
   const agentsPathErrors = validate({
     manifestData: manifest({
       entries: [
         entry({
-          localPath: "content/official-documents/AGENTS.md"
-        })
-      ]
+          localPath: "content/official-documents/AGENTS.md",
+        }),
+      ],
     }),
     fileMetadata: {
-      "content/official-documents/AGENTS.md": { exists: true }
-    }
+      "content/official-documents/AGENTS.md": { exists: true },
+    },
   });
 
-  assert(agentsPathErrors.includes("ley-24449.localPath must stay inside content/official-documents/documents."));
+  assert(
+    agentsPathErrors.includes(
+      "ley-24449.localPath must stay inside content/official-documents/documents.",
+    ),
+  );
 });
 
 test("rejects path traversal and non-Markdown archive paths", () => {
@@ -157,16 +170,18 @@ test("rejects path traversal and non-Markdown archive paths", () => {
     manifestData: manifest({
       entries: [
         entry({
-          localPath: "content/official-documents/../sources/ley-24449.txt"
-        })
-      ]
+          localPath: "content/official-documents/../sources/ley-24449.txt",
+        }),
+      ],
     }),
     fileMetadata: {
-      "content/official-documents/../sources/ley-24449.txt": { exists: true }
-    }
+      "content/official-documents/../sources/ley-24449.txt": { exists: true },
+    },
   });
 
-  assert(errors.includes("ley-24449.localPath must stay inside content/official-documents/documents."));
+  assert(
+    errors.includes("ley-24449.localPath must stay inside content/official-documents/documents."),
+  );
   assert(errors.includes("ley-24449.localPath must point to a Markdown file."));
 });
 
@@ -176,10 +191,10 @@ test("rejects missing or invalid sha256 metadata", () => {
       entries: [
         entry({
           hashAlgorithm: "sha1",
-          hash: "not-a-sha"
-        })
-      ]
-    })
+          hash: "not-a-sha",
+        }),
+      ],
+    }),
   });
 
   assert(errors.includes("ley-24449.hashAlgorithm must be sha256."));
@@ -191,10 +206,10 @@ test("rejects stale manifest hash when local sha256 metadata is available", () =
     manifestData: manifest({
       entries: [
         entry({
-          hash: "b".repeat(64)
-        })
-      ]
-    })
+          hash: "b".repeat(64),
+        }),
+      ],
+    }),
   });
 
   assert(errors.includes("ley-24449.hash must match local Markdown sha256 metadata."));
@@ -205,13 +220,13 @@ test("does not require hash comparison when local sha256 metadata is unavailable
     manifestData: manifest({
       entries: [
         entry({
-          hash: "b".repeat(64)
-        })
-      ]
+          hash: "b".repeat(64),
+        }),
+      ],
     }),
     fileMetadata: {
-      "content/official-documents/documents/ley-24449.md": { exists: true }
-    }
+      "content/official-documents/documents/ley-24449.md": { exists: true },
+    },
   });
 
   assert.deepEqual(errors, []);
@@ -223,10 +238,10 @@ test("rejects missing conversion method and notes", () => {
       entries: [
         entry({
           conversionMethod: "",
-          conversionNotes: ""
-        })
-      ]
-    })
+          conversionNotes: "",
+        }),
+      ],
+    }),
   });
 
   assert(errors.includes("ley-24449.conversionMethod must be a non-empty string."));
@@ -244,18 +259,20 @@ test("rejects missing currentness fields", () => {
             validationStatus: "",
             statusEvidence: "",
             amendmentRepealEvidence: "",
-            evidenceUrls: []
-          }
-        })
-      ]
-    })
+            evidenceUrls: [],
+          },
+        }),
+      ],
+    }),
   });
 
   assert(errors.includes("ley-24449.currentness.checkedAt must be YYYY-MM-DD."));
   assert(errors.includes("ley-24449.currentness.status must be a non-empty string."));
   assert(errors.includes("ley-24449.currentness.validationStatus must be a non-empty string."));
   assert(errors.includes("ley-24449.currentness.statusEvidence must be a non-empty string."));
-  assert(errors.includes("ley-24449.currentness.amendmentRepealEvidence must be a non-empty string."));
+  assert(
+    errors.includes("ley-24449.currentness.amendmentRepealEvidence must be a non-empty string."),
+  );
   assert(errors.includes("ley-24449.currentness.evidenceUrls must be a non-empty array."));
 });
 
@@ -270,15 +287,22 @@ test("rejects invalid currentness status enum values", () => {
             validationStatus: "done",
             statusEvidence: "Typo exercise.",
             amendmentRepealEvidence: "Typo exercise.",
-            evidenceUrls: ["https://www.argentina.gob.ar/normativa/nacional/ley-24449-818/texto"]
-          }
-        })
-      ]
-    })
+            evidenceUrls: ["https://www.argentina.gob.ar/normativa/nacional/ley-24449-818/texto"],
+          },
+        }),
+      ],
+    }),
   });
 
-  assert.match(errors.join("\n"), /ley-24449\.currentness\.status must be one of .*current.*not_current.*unknown/);
-  assert(errors.includes("ley-24449.currentness.validationStatus must be one of pending, passed, failed."));
+  assert.match(
+    errors.join("\n"),
+    /ley-24449\.currentness\.status must be one of .*current.*not_current.*unknown/,
+  );
+  assert(
+    errors.includes(
+      "ley-24449.currentness.validationStatus must be one of pending, passed, failed.",
+    ),
+  );
 });
 
 test("rejects missing exact-text validation status", () => {
@@ -287,11 +311,11 @@ test("rejects missing exact-text validation status", () => {
       entries: [
         entry({
           exactTextValidation: {
-            notes: "No status."
-          }
-        })
-      ]
-    })
+            notes: "No status.",
+          },
+        }),
+      ],
+    }),
   });
 
   assert(errors.includes("ley-24449.exactTextValidation.status must be a non-empty string."));
@@ -303,14 +327,16 @@ test("rejects invalid exact-text validation status enum values", () => {
       entries: [
         entry({
           exactTextValidation: {
-            status: "done"
-          }
-        })
-      ]
-    })
+            status: "done",
+          },
+        }),
+      ],
+    }),
   });
 
-  assert(errors.includes("ley-24449.exactTextValidation.status must be one of pending, passed, failed."));
+  assert(
+    errors.includes("ley-24449.exactTextValidation.status must be one of pending, passed, failed."),
+  );
 });
 
 test("requires raw original evidence for PDF and other lossy formats", () => {
@@ -318,10 +344,10 @@ test("requires raw original evidence for PDF and other lossy formats", () => {
     manifestData: manifest({
       entries: [
         entry({
-          sourceFormat: "pdf"
-        })
-      ]
-    })
+          sourceFormat: "pdf",
+        }),
+      ],
+    }),
   });
   assert(missingRawErrors.includes("ley-24449.rawOriginalPath must be a non-empty string."));
 
@@ -329,10 +355,10 @@ test("requires raw original evidence for PDF and other lossy formats", () => {
     manifestData: manifest({
       entries: [
         entry({
-          sourceFormat: "pdf "
-        })
-      ]
-    })
+          sourceFormat: "pdf ",
+        }),
+      ],
+    }),
   });
   assert(spacedFormatErrors.includes("ley-24449.rawOriginalPath must be a non-empty string."));
 
@@ -341,16 +367,18 @@ test("requires raw original evidence for PDF and other lossy formats", () => {
       entries: [
         entry({
           sourceFormat: "pdf",
-          rawOriginalPath: "content/official-documents/documents/source.pdf"
-        })
-      ]
+          rawOriginalPath: "content/official-documents/documents/source.pdf",
+        }),
+      ],
     }),
     fileMetadata: files({
-      "content/official-documents/documents/source.pdf": { exists: true }
-    })
+      "content/official-documents/documents/source.pdf": { exists: true },
+    }),
   });
   assert(
-    documentsRawErrors.includes("ley-24449.rawOriginalPath must stay inside content/official-documents/originals.")
+    documentsRawErrors.includes(
+      "ley-24449.rawOriginalPath must stay inside content/official-documents/originals.",
+    ),
   );
 
   const validationRawErrors = validate({
@@ -358,16 +386,18 @@ test("requires raw original evidence for PDF and other lossy formats", () => {
       entries: [
         entry({
           sourceFormat: "pdf",
-          rawOriginalPath: "content/official-documents/validation/source.pdf"
-        })
-      ]
+          rawOriginalPath: "content/official-documents/validation/source.pdf",
+        }),
+      ],
     }),
     fileMetadata: files({
-      "content/official-documents/validation/source.pdf": { exists: true }
-    })
+      "content/official-documents/validation/source.pdf": { exists: true },
+    }),
   });
   assert(
-    validationRawErrors.includes("ley-24449.rawOriginalPath must stay inside content/official-documents/originals.")
+    validationRawErrors.includes(
+      "ley-24449.rawOriginalPath must stay inside content/official-documents/originals.",
+    ),
   );
 
   const presentRawErrors = validate({
@@ -375,13 +405,13 @@ test("requires raw original evidence for PDF and other lossy formats", () => {
       entries: [
         entry({
           sourceFormat: "pdf",
-          rawOriginalPath: "content/official-documents/originals/ley-24449.pdf"
-        })
-      ]
+          rawOriginalPath: "content/official-documents/originals/ley-24449.pdf",
+        }),
+      ],
     }),
     fileMetadata: files({
-      "content/official-documents/originals/ley-24449.pdf": { exists: true }
-    })
+      "content/official-documents/originals/ley-24449.pdf": { exists: true },
+    }),
   });
   assert.deepEqual(presentRawErrors, []);
 });
@@ -389,8 +419,8 @@ test("requires raw original evidence for PDF and other lossy formats", () => {
 test("rejects duplicate official document IDs", () => {
   const errors = validate({
     manifestData: manifest({
-      entries: [entry(), entry()]
-    })
+      entries: [entry(), entry()],
+    }),
   });
 
   assert(errors.includes("ley-24449: duplicate official document id."));
@@ -402,13 +432,15 @@ test("rejects current source-trace citations to missing official documents", () 
       entries: [
         {
           id: "trace-1",
-          officialDocumentIds: ["missing-doc"]
-        }
-      ]
-    }
+          officialDocumentIds: ["missing-doc"],
+        },
+      ],
+    },
   });
 
-  assert(errors.includes("trace-1: source trace references missing official document missing-doc."));
+  assert(
+    errors.includes("trace-1: source trace references missing official document missing-doc."),
+  );
 });
 
 test("rejects stale or not-current documents for current guide source-trace claims", () => {
@@ -422,25 +454,25 @@ test("rejects stale or not-current documents for current guide source-trace clai
             validationStatus: "passed",
             statusEvidence: "A newer official version exists.",
             amendmentRepealEvidence: "Supersession was detected.",
-            evidenceUrls: ["https://www.argentina.gob.ar/normativa/nacional/ley-24449-818/texto"]
-          }
-        })
-      ]
+            evidenceUrls: ["https://www.argentina.gob.ar/normativa/nacional/ley-24449-818/texto"],
+          },
+        }),
+      ],
     }),
     sourceTrace: {
       entries: [
         {
           id: "trace-stale",
-          officialDocumentIds: ["ley-24449"]
-        }
-      ]
-    }
+          officialDocumentIds: ["ley-24449"],
+        },
+      ],
+    },
   });
 
   assert(
     errors.includes(
-      "trace-stale: current guide claims must cite only current official documents; ley-24449 has status stale and validationStatus passed."
-    )
+      "trace-stale: current guide claims must cite only current official documents; ley-24449 has status stale and validationStatus passed.",
+    ),
   );
 });
 
@@ -455,25 +487,25 @@ test("rejects pending currentness validation for current guide source-trace clai
             validationStatus: "pending",
             statusEvidence: "Source looks current but has not been independently validated.",
             amendmentRepealEvidence: "Pending final currentness pass.",
-            evidenceUrls: ["https://www.argentina.gob.ar/normativa/nacional/ley-24449-818/texto"]
-          }
-        })
-      ]
+            evidenceUrls: ["https://www.argentina.gob.ar/normativa/nacional/ley-24449-818/texto"],
+          },
+        }),
+      ],
     }),
     sourceTrace: {
       entries: [
         {
           id: "trace-pending",
-          officialDocumentIds: ["ley-24449"]
-        }
-      ]
-    }
+          officialDocumentIds: ["ley-24449"],
+        },
+      ],
+    },
   });
 
   assert(
     errors.includes(
-      "trace-pending: current guide claims must cite only current official documents; ley-24449 has status current and validationStatus pending."
-    )
+      "trace-pending: current guide claims must cite only current official documents; ley-24449 has status current and validationStatus pending.",
+    ),
   );
 });
 
@@ -488,20 +520,20 @@ test("allows historical source-trace citations to non-current archived documents
             validationStatus: "passed",
             statusEvidence: "Archived for history only.",
             amendmentRepealEvidence: "Superseded by a newer official source.",
-            evidenceUrls: ["https://www.argentina.gob.ar/normativa/nacional/ley-24449-818/texto"]
-          }
-        })
-      ]
+            evidenceUrls: ["https://www.argentina.gob.ar/normativa/nacional/ley-24449-818/texto"],
+          },
+        }),
+      ],
     }),
     sourceTrace: {
       entries: [
         {
           id: "trace-history",
           claimUse: "historical_context",
-          officialDocumentIds: ["ley-24449"]
-        }
-      ]
-    }
+          officialDocumentIds: ["ley-24449"],
+        },
+      ],
+    },
   });
 
   assert.deepEqual(errors, []);

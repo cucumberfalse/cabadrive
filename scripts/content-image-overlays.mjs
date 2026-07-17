@@ -6,13 +6,22 @@ import {
   imageMetadataFingerprint,
   questionFingerprint,
   questionUsageFingerprint,
-  sha256Canonical
+  sha256Canonical,
 } from "./content-image-metadata.mjs";
 
 const SHA256_PATTERN = /^[a-f0-9]{64}$/;
 const REVIEW_DATE_PATTERN = /^\d{4}-\d{2}-\d{2}$/;
-const ALLOWED_SOURCE_ROLES = new Set(["answer_critical_highlight", "supporting", "distractor_trap", "background_irrelevant_dim"]);
-const NON_CRITICAL_SOURCE_ROLES = new Set(["background_irrelevant_dim", "distractor_trap", "supporting"]);
+const ALLOWED_SOURCE_ROLES = new Set([
+  "answer_critical_highlight",
+  "supporting",
+  "distractor_trap",
+  "background_irrelevant_dim",
+]);
+const NON_CRITICAL_SOURCE_ROLES = new Set([
+  "background_irrelevant_dim",
+  "distractor_trap",
+  "supporting",
+]);
 const FORBIDDEN_UI_SEMANTIC_KEYS = new Set([
   "important",
   "importance",
@@ -23,7 +32,7 @@ const FORBIDDEN_UI_SEMANTIC_KEYS = new Set([
   "role",
   "highlight",
   "dim",
-  "distractor"
+  "distractor",
 ]);
 
 function isPlainObject(value) {
@@ -63,7 +72,11 @@ function collectImageDetailIds(image) {
 
 function collectImageObjectIds(image) {
   const ids = new Set();
-  for (const object of [...(image?.objects || []), ...(image?.roadUsers || []), ...(image?.signsSignalsMarkings || [])]) {
+  for (const object of [
+    ...(image?.objects || []),
+    ...(image?.roadUsers || []),
+    ...(image?.signsSignalsMarkings || []),
+  ]) {
     if (isNonEmptyString(object.id)) ids.add(object.id);
     if (isNonEmptyString(object.objectId)) ids.add(object.objectId);
   }
@@ -97,8 +110,10 @@ function collectImageRegionMappings(image) {
   const objectToRegionIds = new Map();
   for (const region of image?.regions || []) {
     const regionId = region.regionId || region.id;
-    for (const objectId of region.includesObjectIds || []) addToMultimap(objectToRegionIds, objectId, [regionId]);
-    for (const detailId of region.includesDetailIds || []) addToMultimap(detailToRegionIds, detailId, [regionId]);
+    for (const objectId of region.includesObjectIds || [])
+      addToMultimap(objectToRegionIds, objectId, [regionId]);
+    for (const detailId of region.includesDetailIds || [])
+      addToMultimap(detailToRegionIds, detailId, [regionId]);
   }
 
   function mapDetail(detail) {
@@ -111,8 +126,10 @@ function collectImageRegionMappings(image) {
       for (const regionId of objectToRegionIds.get(detail.objectId) || []) regionIds.add(regionId);
     }
     addToMultimap(detailToRegionIds, detailId, [...regionIds]);
-    for (const objectId of detail?.objectIds || []) addToMultimap(objectToRegionIds, objectId, [...regionIds]);
-    if (isNonEmptyString(detail?.objectId)) addToMultimap(objectToRegionIds, detail.objectId, [...regionIds]);
+    for (const objectId of detail?.objectIds || [])
+      addToMultimap(objectToRegionIds, objectId, [...regionIds]);
+    if (isNonEmptyString(detail?.objectId))
+      addToMultimap(objectToRegionIds, detail.objectId, [...regionIds]);
   }
 
   for (const detail of image?.visualDetails || []) mapDetail(detail);
@@ -133,7 +150,8 @@ function collectImageRegionMappings(image) {
       for (const regionId of objectToRegionIds.get(targetId) || []) regionIds.add(regionId);
     }
     addToMultimap(detailToRegionIds, annotation.id || annotation.detailId, [...regionIds]);
-    if (isNonEmptyString(annotation.objectId)) addToMultimap(objectToRegionIds, annotation.objectId, [...regionIds]);
+    if (isNonEmptyString(annotation.objectId))
+      addToMultimap(objectToRegionIds, annotation.objectId, [...regionIds]);
   }
   for (const detail of image?.visibleText || []) mapDetail(detail);
   for (const detail of image?.spatialRelationships || []) mapDetail(detail);
@@ -222,7 +240,7 @@ function clampRect(rect) {
     x: Number(x.toFixed(2)),
     y: Number(y.toFixed(2)),
     width: Number(width.toFixed(2)),
-    height: Number(height.toFixed(2))
+    height: Number(height.toFixed(2)),
   };
 }
 
@@ -237,7 +255,7 @@ function rectFromApproximateBoundingBox(region) {
     x: box.x * scale,
     y: box.y * scale,
     width: box.width * scale,
-    height: box.height * scale
+    height: box.height * scale,
   });
 }
 
@@ -247,7 +265,8 @@ function rectFromSemanticLocation(text) {
   let y = 18;
   let width = 64;
   let height = 64;
-  if (value.includes("entire") || value.includes("whole")) return { x: 0, y: 0, width: 100, height: 100 };
+  if (value.includes("entire") || value.includes("whole"))
+    return { x: 0, y: 0, width: 100, height: 100 };
   if (value.includes("left half")) {
     x = 0;
     width = 50;
@@ -292,7 +311,7 @@ function deterministicRect(seed, sourceRole, index) {
       { x: 0, y: 0, width: 100, height: 28 },
       { x: 0, y: 72, width: 100, height: 28 },
       { x: 0, y: 0, width: 28, height: 100 },
-      { x: 72, y: 0, width: 28, height: 100 }
+      { x: 72, y: 0, width: 28, height: 100 },
     ][band];
   }
   const width = sourceRole === "answer_critical_highlight" ? 24 : 32;
@@ -301,7 +320,7 @@ function deterministicRect(seed, sourceRole, index) {
     x: n(4) % Math.max(1, 100 - width),
     y: n(8) % Math.max(1, 100 - height),
     width,
-    height
+    height,
   });
 }
 
@@ -329,7 +348,7 @@ function nonCriticalCandidateRects(seed, sourceRole) {
     { x: 0, y: 0, width: 34, height: 34 },
     { x: 66, y: 0, width: 34, height: 34 },
     { x: 0, y: 66, width: 34, height: 34 },
-    { x: 66, y: 66, width: 34, height: 34 }
+    { x: 66, y: 66, width: 34, height: 34 },
   ];
   return [...candidates.slice(offset), ...candidates.slice(0, offset)];
 }
@@ -337,19 +356,26 @@ function nonCriticalCandidateRects(seed, sourceRole) {
 function avoidCriticalMaskingRect(rect, relevance, criticalRects, index) {
   if (relevance.role === "answer_critical_highlight") return rect;
   const masksCritical = criticalRects.some((criticalRect) => rectContains(rect, criticalRect));
-  if (!masksCritical && !(relevance.role === "background_irrelevant_dim" && rectIsFullFrame(rect))) return rect;
+  if (!masksCritical && !(relevance.role === "background_irrelevant_dim" && rectIsFullFrame(rect)))
+    return rect;
   const fallback = nonCriticalCandidateRects(relevance.relevanceId, relevance.role).find(
-    (candidate) => !criticalRects.some((criticalRect) => rectContains(candidate, criticalRect))
+    (candidate) => !criticalRects.some((criticalRect) => rectContains(candidate, criticalRect)),
   );
   return fallback || deterministicRect(relevance.relevanceId, relevance.role, index);
 }
 
 function rectForRelevance(relevance, image, index) {
-  const regionsById = new Map((image?.regions || []).map((region) => [region.regionId || region.id, region]));
+  const regionsById = new Map(
+    (image?.regions || []).map((region) => [region.regionId || region.id, region]),
+  );
   const regionIds = inferredRegionIdsForRelevance(relevance, image);
   const rects = regionIds
     .map((regionId) => regionsById.get(regionId))
-    .map((region) => rectFromApproximateBoundingBox(region) || rectFromSemanticLocation(`${region?.semanticLocation || ""} ${region?.label || ""}`))
+    .map(
+      (region) =>
+        rectFromApproximateBoundingBox(region) ||
+        rectFromSemanticLocation(`${region?.semanticLocation || ""} ${region?.label || ""}`),
+    )
     .filter(Boolean);
   if (!rects.length) return deterministicRect(relevance.relevanceId, relevance.role, index);
   const x1 = Math.min(...rects.map((rect) => rect.x));
@@ -364,17 +390,26 @@ function uniqueSorted(values) {
 }
 
 function buildGeneratedOverlay({ question, image, usage, reviewer, reviewedAt }) {
-  const criticalRelevance = (usage.relevanceMap || []).filter((relevance) => relevance.role === "answer_critical_highlight");
-  const nonCriticalRelevance = (usage.relevanceMap || []).filter((relevance) => NON_CRITICAL_SOURCE_ROLES.has(relevance.role));
+  const criticalRelevance = (usage.relevanceMap || []).filter(
+    (relevance) => relevance.role === "answer_critical_highlight",
+  );
+  const nonCriticalRelevance = (usage.relevanceMap || []).filter((relevance) =>
+    NON_CRITICAL_SOURCE_ROLES.has(relevance.role),
+  );
   const selectedRelevance = [...criticalRelevance, ...nonCriticalRelevance];
-  const criticalRects = criticalRelevance.map((relevance, index) => rectForRelevance(relevance, image, index));
+  const criticalRects = criticalRelevance.map((relevance, index) =>
+    rectForRelevance(relevance, image, index),
+  );
   const regions = selectedRelevance.map((relevance, index) => {
     const regionIds = inferredRegionIdsForRelevance(relevance, image);
     const detailIds = detailIdsForRelevance(relevance, image);
     const objectIds = objectIdsForRelevance(relevance, image);
     const sourceRect = rectForRelevance(relevance, image, index);
     return {
-      overlayRegionId: `overlay-${usage.questionId}-${relevance.relevanceId}`.replace(/[^a-zA-Z0-9_-]/g, "-"),
+      overlayRegionId: `overlay-${usage.questionId}-${relevance.relevanceId}`.replace(
+        /[^a-zA-Z0-9_-]/g,
+        "-",
+      ),
       sourceRole: relevance.role,
       relevanceId: relevance.relevanceId,
       detailIds,
@@ -388,7 +423,7 @@ function buildGeneratedOverlay({ question, image, usage, reviewer, reviewedAt })
             ? "Второстепенный фон для этого вопроса"
             : relevance.role === "distractor_trap"
               ? "Отвлекающая деталь в этом вопросе"
-              : "Поддерживающая визуальная деталь"
+              : "Поддерживающая визуальная деталь",
     };
   });
   const overlay = {
@@ -411,15 +446,17 @@ function buildGeneratedOverlay({ question, image, usage, reviewer, reviewedAt })
       reviewer,
       reviewedAt,
       notes:
-        "Generated by scripts/content-image-overlays.mjs from approved 009 per-question usage/relevance; geometry is image-relative presentation data and does not assign independent importance."
-    }
+        "Generated by scripts/content-image-overlays.mjs from approved 009 per-question usage/relevance; geometry is image-relative presentation data and does not assign independent importance.",
+    },
   };
   return overlay;
 }
 
 export function buildCurrentOverlayBundle({ questions, metadataManifest, reviewer, reviewedAt }) {
   const questionById = new Map((questions || []).map((question) => [question.id, question]));
-  const imageById = new Map((metadataManifest?.images || []).map((image) => [image.imageId, image]));
+  const imageById = new Map(
+    (metadataManifest?.images || []).map((image) => [image.imageId, image]),
+  );
   const overlays = (metadataManifest?.questionUsages || [])
     .filter((usage) => {
       const question = questionById.get(usage.questionId);
@@ -429,7 +466,10 @@ export function buildCurrentOverlayBundle({ questions, metadataManifest, reviewe
     .map((usage) => {
       const question = questionById.get(usage.questionId);
       const image = imageById.get(usage.imageId);
-      if (!question || !image) throw new Error(`Cannot generate overlay for ${usage.questionId}: missing question or image metadata.`);
+      if (!question || !image)
+        throw new Error(
+          `Cannot generate overlay for ${usage.questionId}: missing question or image metadata.`,
+        );
       return buildGeneratedOverlay({ question, image, usage, reviewer, reviewedAt });
     });
   const overlayEntries = overlays.map((overlay) => ({
@@ -455,9 +495,10 @@ export function buildCurrentOverlayBundle({ questions, metadataManifest, reviewe
       localAssetOnly: true,
       noInventedRelevance: true,
       staleDataChecksPassed: true,
-      fullCurrentCoverageChecked: true
+      fullCurrentCoverageChecked: true,
     },
-    notes: "Generated evidence for one approved current overlay tied to approved 009 question-specific usage/relevance."
+    notes:
+      "Generated evidence for one approved current overlay tied to approved 009 question-specific usage/relevance.",
   }));
   return {
     overlayManifest: {
@@ -470,15 +511,15 @@ export function buildCurrentOverlayBundle({ questions, metadataManifest, reviewe
         sourceSemantics:
           "Feature 009 per-question image usage owns answer-critical, supporting, distractor, and background relevance roles.",
         overlayPresentation:
-          "Feature 010 owns only image-relative presentation geometry for explanation-time support. This manifest is generated from approved current 009 question usage records."
+          "Feature 010 owns only image-relative presentation geometry for explanation-time support. This manifest is generated from approved current 009 question usage records.",
       },
       generation: {
         method: "scripts/content-image-overlays.mjs --write-current-overlays",
         reviewer,
         reviewedAt,
-        overlayCount: overlays.length
+        overlayCount: overlays.length,
       },
-      overlays
+      overlays,
     },
     overlayEvidence: {
       version: 1,
@@ -486,22 +527,26 @@ export function buildCurrentOverlayBundle({ questions, metadataManifest, reviewe
       reviewedAt,
       generation: {
         method: "scripts/content-image-overlays.mjs --write-current-overlays",
-        overlayCount: overlays.length
+        overlayCount: overlays.length,
       },
-      overlayEntries
-    }
+      overlayEntries,
+    },
   };
 }
 
 function findForbiddenSemanticKeys(value, errors, label, path = label) {
   if (Array.isArray(value)) {
-    value.forEach((item, index) => findForbiddenSemanticKeys(item, errors, label, `${path}[${index}]`));
+    value.forEach((item, index) =>
+      findForbiddenSemanticKeys(item, errors, label, `${path}[${index}]`),
+    );
     return;
   }
   if (!isPlainObject(value)) return;
   for (const [key, child] of Object.entries(value)) {
     if (key !== "sourceRole" && FORBIDDEN_UI_SEMANTIC_KEYS.has(key)) {
-      errors.push(`${label}: overlay must not define UI-side relevance key ${path}.${key}; use sourceRole from 009 usage instead.`);
+      errors.push(
+        `${label}: overlay must not define UI-side relevance key ${path}.${key}; use sourceRole from 009 usage instead.`,
+      );
     }
     findForbiddenSemanticKeys(child, errors, label, `${path}.${key}`);
   }
@@ -522,7 +567,7 @@ export function imageOverlayTuple(overlay) {
     referencedDetailIds: overlay.referencedDetailIds || [],
     referencedObjectIds: overlay.referencedObjectIds || [],
     referencedRegionIds: overlay.referencedRegionIds || [],
-    regions: overlay.regions || []
+    regions: overlay.regions || [],
   };
 }
 
@@ -536,17 +581,28 @@ function requireEvidenceEntry(entry, overlay, errors) {
     errors.push(`${label}: missing approved overlay evidence.`);
     return;
   }
-  if (entry.status !== "approved") errors.push(`${label}: overlay evidence status must be approved.`);
-  if (!isNonEmptyString(entry.reviewer)) errors.push(`${label}: overlay evidence reviewer must be a non-empty string.`);
-  if (!REVIEW_DATE_PATTERN.test(entry.reviewedAt || "")) errors.push(`${label}: overlay evidence reviewedAt must be YYYY-MM-DD.`);
-  if (entry.questionId !== overlay.questionId) errors.push(`${label}: overlay evidence questionId mismatch.`);
-  if (entry.imageId !== overlay.imageId) errors.push(`${label}: overlay evidence imageId mismatch.`);
-  if (entry.localPath !== overlay.localPath) errors.push(`${label}: overlay evidence localPath mismatch.`);
-  if (entry.imageSha256 !== overlay.imageSha256) errors.push(`${label}: overlay evidence imageSha256 mismatch.`);
-  if (entry.questionFingerprint !== overlay.questionFingerprint) errors.push(`${label}: overlay evidence questionFingerprint mismatch.`);
-  if (entry.metadataFingerprint !== overlay.metadataFingerprint) errors.push(`${label}: overlay evidence metadataFingerprint mismatch.`);
-  if (entry.usageFingerprint !== overlay.usageFingerprint) errors.push(`${label}: overlay evidence usageFingerprint mismatch.`);
-  if (entry.overlaySha256 !== imageOverlayFingerprint(overlay)) errors.push(`${label}: overlay evidence overlaySha256 mismatch.`);
+  if (entry.status !== "approved")
+    errors.push(`${label}: overlay evidence status must be approved.`);
+  if (!isNonEmptyString(entry.reviewer))
+    errors.push(`${label}: overlay evidence reviewer must be a non-empty string.`);
+  if (!REVIEW_DATE_PATTERN.test(entry.reviewedAt || ""))
+    errors.push(`${label}: overlay evidence reviewedAt must be YYYY-MM-DD.`);
+  if (entry.questionId !== overlay.questionId)
+    errors.push(`${label}: overlay evidence questionId mismatch.`);
+  if (entry.imageId !== overlay.imageId)
+    errors.push(`${label}: overlay evidence imageId mismatch.`);
+  if (entry.localPath !== overlay.localPath)
+    errors.push(`${label}: overlay evidence localPath mismatch.`);
+  if (entry.imageSha256 !== overlay.imageSha256)
+    errors.push(`${label}: overlay evidence imageSha256 mismatch.`);
+  if (entry.questionFingerprint !== overlay.questionFingerprint)
+    errors.push(`${label}: overlay evidence questionFingerprint mismatch.`);
+  if (entry.metadataFingerprint !== overlay.metadataFingerprint)
+    errors.push(`${label}: overlay evidence metadataFingerprint mismatch.`);
+  if (entry.usageFingerprint !== overlay.usageFingerprint)
+    errors.push(`${label}: overlay evidence usageFingerprint mismatch.`);
+  if (entry.overlaySha256 !== imageOverlayFingerprint(overlay))
+    errors.push(`${label}: overlay evidence overlaySha256 mismatch.`);
   for (const check of [
     "questionUsageCurrent",
     "metadataCurrent",
@@ -557,19 +613,28 @@ function requireEvidenceEntry(entry, overlay, errors) {
     "localAssetOnly",
     "noInventedRelevance",
     "staleDataChecksPassed",
-    "fullCurrentCoverageChecked"
+    "fullCurrentCoverageChecked",
   ]) {
-    if (entry.checks?.[check] !== true) errors.push(`${label}: overlay evidence checks.${check} must be true.`);
+    if (entry.checks?.[check] !== true)
+      errors.push(`${label}: overlay evidence checks.${check} must be true.`);
   }
 }
 
 function requireMetadataEvidence({ image, usage, metadataEvidence, errors, label }) {
-  const imageEntry = (metadataEvidence?.imageEntries || []).find((entry) => entry.imageId === image?.imageId);
-  const usageEntry = (metadataEvidence?.usageEntries || []).find((entry) => entry.questionId === usage?.questionId);
-  if (!imageEntry || imageEntry.status !== "approved") errors.push(`${label}: missing approved 009 image metadata evidence.`);
-  if (!usageEntry || usageEntry.status !== "approved") errors.push(`${label}: missing approved 009 question usage evidence.`);
-  if (imageEntry && imageEntry.metadataSha256 !== imageMetadataFingerprint(image)) errors.push(`${label}: stale 009 metadata evidence fingerprint.`);
-  if (usageEntry && usageEntry.usageSha256 !== questionUsageFingerprint(usage)) errors.push(`${label}: stale 009 usage evidence fingerprint.`);
+  const imageEntry = (metadataEvidence?.imageEntries || []).find(
+    (entry) => entry.imageId === image?.imageId,
+  );
+  const usageEntry = (metadataEvidence?.usageEntries || []).find(
+    (entry) => entry.questionId === usage?.questionId,
+  );
+  if (!imageEntry || imageEntry.status !== "approved")
+    errors.push(`${label}: missing approved 009 image metadata evidence.`);
+  if (!usageEntry || usageEntry.status !== "approved")
+    errors.push(`${label}: missing approved 009 question usage evidence.`);
+  if (imageEntry && imageEntry.metadataSha256 !== imageMetadataFingerprint(image))
+    errors.push(`${label}: stale 009 metadata evidence fingerprint.`);
+  if (usageEntry && usageEntry.usageSha256 !== questionUsageFingerprint(usage))
+    errors.push(`${label}: stale 009 usage evidence fingerprint.`);
 }
 
 export function validateImageExplanationOverlays({
@@ -578,16 +643,21 @@ export function validateImageExplanationOverlays({
   metadataEvidence,
   overlayManifest,
   overlayEvidence,
-  fileExists = () => true
+  fileExists = () => true,
 }) {
   const errors = [];
   const questionById = new Map((questions || []).map((question) => [question.id, question]));
-  const imageById = new Map((metadataManifest?.images || []).map((image) => [image.imageId, image]));
-  const usageByQuestionId = new Map((metadataManifest?.questionUsages || []).map((usage) => [usage.questionId, usage]));
+  const imageById = new Map(
+    (metadataManifest?.images || []).map((image) => [image.imageId, image]),
+  );
+  const usageByQuestionId = new Map(
+    (metadataManifest?.questionUsages || []).map((usage) => [usage.questionId, usage]),
+  );
   const overlayEvidenceById = new Map();
   const overlayEvidenceQuestionIds = new Map();
   for (const entry of overlayEvidence?.overlayEntries || []) {
-    if (overlayEvidenceById.has(entry.overlayId)) errors.push(`${entry.overlayId}: duplicate overlay evidence entry.`);
+    if (overlayEvidenceById.has(entry.overlayId))
+      errors.push(`${entry.overlayId}: duplicate overlay evidence entry.`);
     overlayEvidenceById.set(entry.overlayId, entry);
     if (isNonEmptyString(entry.questionId)) {
       const questionEntries = overlayEvidenceQuestionIds.get(entry.questionId) || [];
@@ -600,17 +670,30 @@ export function validateImageExplanationOverlays({
     errors.push("question image overlay manifest must be an object.");
     return errors;
   }
-  if (overlayManifest.version !== 1) errors.push("question image overlay manifest version must be 1.");
+  if (overlayManifest.version !== 1)
+    errors.push("question image overlay manifest version must be 1.");
   if (overlayManifest.contentKind !== "question-image-explanation-overlays") {
-    errors.push("question image overlay manifest contentKind must be question-image-explanation-overlays.");
+    errors.push(
+      "question image overlay manifest contentKind must be question-image-explanation-overlays.",
+    );
   }
-  if (overlayManifest.questionSourcePath !== "content/questions/caba-b.unofficial-fallback.questions.json") {
-    errors.push("question image overlay manifest questionSourcePath must point to the fallback question file.");
+  if (
+    overlayManifest.questionSourcePath !==
+    "content/questions/caba-b.unofficial-fallback.questions.json"
+  ) {
+    errors.push(
+      "question image overlay manifest questionSourcePath must point to the fallback question file.",
+    );
   }
-  if (overlayManifest.imageMetadataPath !== "content/image-metadata/question-images.manifest.json") {
-    errors.push("question image overlay manifest imageMetadataPath must point to the 009 metadata manifest.");
+  if (
+    overlayManifest.imageMetadataPath !== "content/image-metadata/question-images.manifest.json"
+  ) {
+    errors.push(
+      "question image overlay manifest imageMetadataPath must point to the 009 metadata manifest.",
+    );
   }
-  if (!Array.isArray(overlayManifest.overlays)) errors.push("question image overlay manifest overlays must be an array.");
+  if (!Array.isArray(overlayManifest.overlays))
+    errors.push("question image overlay manifest overlays must be an array.");
   if (!isPlainObject(overlayEvidence)) {
     errors.push("question image overlay evidence must be an object.");
   } else if (overlayEvidence.version !== 1) {
@@ -626,10 +709,13 @@ export function validateImageExplanationOverlays({
       continue;
     }
     findForbiddenSemanticKeys(overlay, errors, label);
-    if (!isNonEmptyString(overlay.overlayId)) errors.push(`${label}: overlayId must be a non-empty string.`);
-    if (overlayIds.has(overlay.overlayId)) errors.push(`${overlay.overlayId}: duplicate overlay id.`);
+    if (!isNonEmptyString(overlay.overlayId))
+      errors.push(`${label}: overlayId must be a non-empty string.`);
+    if (overlayIds.has(overlay.overlayId))
+      errors.push(`${overlay.overlayId}: duplicate overlay id.`);
     overlayIds.add(overlay.overlayId);
-    if (overlay.status !== "approved") errors.push(`${label}: status must be approved before rendering.`);
+    if (overlay.status !== "approved")
+      errors.push(`${label}: status must be approved before rendering.`);
     if (overlay.status === "approved") {
       const questionOverlays = approvedOverlaysByQuestionId.get(overlay.questionId) || [];
       questionOverlays.push(overlay.overlayId);
@@ -641,30 +727,48 @@ export function validateImageExplanationOverlays({
       continue;
     }
     if (!question.image) errors.push(`${label}: references a question without an image.`);
-    if (/^https?:\/\//.test(overlay.localPath || "")) errors.push(`${label}: localPath must be local, not remote.`);
-    if (!isNonEmptyString(overlay.localPath) || !overlay.localPath.startsWith("content/assets/questions/")) {
+    if (/^https?:\/\//.test(overlay.localPath || ""))
+      errors.push(`${label}: localPath must be local, not remote.`);
+    if (
+      !isNonEmptyString(overlay.localPath) ||
+      !overlay.localPath.startsWith("content/assets/questions/")
+    ) {
       errors.push(`${label}: localPath must reference a bundled question asset.`);
     }
-    if (isNonEmptyString(overlay.localPath) && !fileExists(overlay.localPath)) errors.push(`${label}: localPath is missing on disk.`);
-    if (question.image && overlay.localPath !== question.image.localPath) errors.push(`${label}: localPath does not match the current question image.`);
-    if (question.image && overlay.imageSha256 !== question.image.sha256) errors.push(`${label}: imageSha256 does not match the current question image.`);
-    if (!SHA256_PATTERN.test(overlay.imageSha256 || "")) errors.push(`${label}: imageSha256 must be a sha256 hex digest.`);
-    if (overlay.questionFingerprint !== questionFingerprint(question)) errors.push(`${label}: questionFingerprint mismatch.`);
+    if (isNonEmptyString(overlay.localPath) && !fileExists(overlay.localPath))
+      errors.push(`${label}: localPath is missing on disk.`);
+    if (question.image && overlay.localPath !== question.image.localPath)
+      errors.push(`${label}: localPath does not match the current question image.`);
+    if (question.image && overlay.imageSha256 !== question.image.sha256)
+      errors.push(`${label}: imageSha256 does not match the current question image.`);
+    if (!SHA256_PATTERN.test(overlay.imageSha256 || ""))
+      errors.push(`${label}: imageSha256 must be a sha256 hex digest.`);
+    if (overlay.questionFingerprint !== questionFingerprint(question))
+      errors.push(`${label}: questionFingerprint mismatch.`);
 
     const image = imageById.get(overlay.imageId);
     const usage = usageByQuestionId.get(overlay.questionId);
     if (!image) errors.push(`${label}: references missing 009 image metadata ${overlay.imageId}.`);
     if (!usage) errors.push(`${label}: missing 009 question usage for ${overlay.questionId}.`);
-    if (image && image.localPath !== overlay.localPath) errors.push(`${label}: 009 image metadata path mismatch.`);
-    if (image && image.sha256 !== overlay.imageSha256) errors.push(`${label}: 009 image metadata hash mismatch.`);
-    if (usage && usage.imageId !== overlay.imageId) errors.push(`${label}: 009 usage imageId mismatch.`);
-    if (usage && usage.localPath !== overlay.localPath) errors.push(`${label}: 009 usage localPath mismatch.`);
-    if (usage && usage.imageSha256 !== overlay.imageSha256) errors.push(`${label}: 009 usage imageSha256 mismatch.`);
-    if (image && overlay.metadataFingerprint !== imageMetadataFingerprint(image)) errors.push(`${label}: metadataFingerprint mismatch.`);
-    if (usage && overlay.usageFingerprint !== questionUsageFingerprint(usage)) errors.push(`${label}: usageFingerprint mismatch.`);
+    if (image && image.localPath !== overlay.localPath)
+      errors.push(`${label}: 009 image metadata path mismatch.`);
+    if (image && image.sha256 !== overlay.imageSha256)
+      errors.push(`${label}: 009 image metadata hash mismatch.`);
+    if (usage && usage.imageId !== overlay.imageId)
+      errors.push(`${label}: 009 usage imageId mismatch.`);
+    if (usage && usage.localPath !== overlay.localPath)
+      errors.push(`${label}: 009 usage localPath mismatch.`);
+    if (usage && usage.imageSha256 !== overlay.imageSha256)
+      errors.push(`${label}: 009 usage imageSha256 mismatch.`);
+    if (image && overlay.metadataFingerprint !== imageMetadataFingerprint(image))
+      errors.push(`${label}: metadataFingerprint mismatch.`);
+    if (usage && overlay.usageFingerprint !== questionUsageFingerprint(usage))
+      errors.push(`${label}: usageFingerprint mismatch.`);
     if (image && usage) requireMetadataEvidence({ image, usage, metadataEvidence, errors, label });
 
-    const relevanceById = new Map((usage?.relevanceMap || []).map((relevance) => [relevance.relevanceId, relevance]));
+    const relevanceById = new Map(
+      (usage?.relevanceMap || []).map((relevance) => [relevance.relevanceId, relevance]),
+    );
     const imageDetailIds = collectImageDetailIds(image);
     const imageObjectIds = collectImageObjectIds(image);
     const imageRegionIds = collectImageRegionIds(image);
@@ -672,7 +776,8 @@ export function validateImageExplanationOverlays({
     const usageObjectIds = collectUsageObjectIds(usage);
     const usageRegionIds = collectUsageRegionIds(usage);
     for (const relevance of usage?.relevanceMap || []) {
-      for (const regionId of inferredRegionIdsForRelevance(relevance, image)) usageRegionIds.add(regionId);
+      for (const regionId of inferredRegionIdsForRelevance(relevance, image))
+        usageRegionIds.add(regionId);
       for (const detailId of detailIdsForRelevance(relevance, image)) usageDetailIds.add(detailId);
       for (const objectId of objectIdsForRelevance(relevance, image)) usageObjectIds.add(objectId);
     }
@@ -683,111 +788,204 @@ export function validateImageExplanationOverlays({
     const seenRoles = [];
     const checkedRegions = [];
 
-    if (!Array.isArray(overlay.relevanceIds) || overlay.relevanceIds.length < 1) errors.push(`${label}: relevanceIds must include at least one 009 relevanceId.`);
-    if (!Array.isArray(overlay.referencedDetailIds) || overlay.referencedDetailIds.length < 1) errors.push(`${label}: referencedDetailIds must include at least one 009 detailId.`);
-    if (!Array.isArray(overlay.referencedRegionIds) || overlay.referencedRegionIds.length < 1) errors.push(`${label}: referencedRegionIds must include at least one 009 regionId.`);
+    if (!Array.isArray(overlay.relevanceIds) || overlay.relevanceIds.length < 1)
+      errors.push(`${label}: relevanceIds must include at least one 009 relevanceId.`);
+    if (!Array.isArray(overlay.referencedDetailIds) || overlay.referencedDetailIds.length < 1)
+      errors.push(`${label}: referencedDetailIds must include at least one 009 detailId.`);
+    if (!Array.isArray(overlay.referencedRegionIds) || overlay.referencedRegionIds.length < 1)
+      errors.push(`${label}: referencedRegionIds must include at least one 009 regionId.`);
     if (overlay.referencedObjectIds !== undefined && !Array.isArray(overlay.referencedObjectIds)) {
       errors.push(`${label}: referencedObjectIds must be an array when present.`);
     }
 
     for (const relevanceId of overlay.relevanceIds || []) {
-      if (!relevanceById.has(relevanceId)) errors.push(`${label}: relevanceIds references missing 009 relevance ${relevanceId}.`);
+      if (!relevanceById.has(relevanceId))
+        errors.push(`${label}: relevanceIds references missing 009 relevance ${relevanceId}.`);
     }
     for (const detailId of overlay.referencedDetailIds || []) {
-      if (!imageDetailIds.has(detailId)) errors.push(`${label}: referencedDetailIds references missing metadata detail ${detailId}.`);
-      if (!usageDetailIds.has(detailId)) errors.push(`${label}: referencedDetailIds references detail ${detailId} not used by current question usage.`);
+      if (!imageDetailIds.has(detailId))
+        errors.push(
+          `${label}: referencedDetailIds references missing metadata detail ${detailId}.`,
+        );
+      if (!usageDetailIds.has(detailId))
+        errors.push(
+          `${label}: referencedDetailIds references detail ${detailId} not used by current question usage.`,
+        );
     }
     for (const objectId of overlay.referencedObjectIds || []) {
-      if (!imageObjectIds.has(objectId)) errors.push(`${label}: referencedObjectIds references missing metadata object ${objectId}.`);
-      if (!usageObjectIds.has(objectId)) errors.push(`${label}: referencedObjectIds references object ${objectId} not used by current question usage.`);
+      if (!imageObjectIds.has(objectId))
+        errors.push(
+          `${label}: referencedObjectIds references missing metadata object ${objectId}.`,
+        );
+      if (!usageObjectIds.has(objectId))
+        errors.push(
+          `${label}: referencedObjectIds references object ${objectId} not used by current question usage.`,
+        );
     }
     for (const regionId of overlay.referencedRegionIds || []) {
-      if (!imageRegionIds.has(regionId)) errors.push(`${label}: referencedRegionIds references missing metadata region ${regionId}.`);
-      if (!usageRegionIds.has(regionId)) errors.push(`${label}: referencedRegionIds references region ${regionId} not used by current question usage.`);
+      if (!imageRegionIds.has(regionId))
+        errors.push(
+          `${label}: referencedRegionIds references missing metadata region ${regionId}.`,
+        );
+      if (!usageRegionIds.has(regionId))
+        errors.push(
+          `${label}: referencedRegionIds references region ${regionId} not used by current question usage.`,
+        );
     }
 
-    if (!Array.isArray(overlay.regions) || overlay.regions.length < 1) errors.push(`${label}: regions must include at least one overlay region.`);
+    if (!Array.isArray(overlay.regions) || overlay.regions.length < 1)
+      errors.push(`${label}: regions must include at least one overlay region.`);
     for (const region of overlay.regions || []) {
       const regionLabel = `${label}: region ${region?.overlayRegionId || "(missing id)"}`;
       if (!isPlainObject(region)) {
         errors.push(`${label}: overlay regions must be objects.`);
         continue;
       }
-      if (!isNonEmptyString(region.overlayRegionId)) errors.push(`${regionLabel} must have a non-empty overlayRegionId.`);
-      if (!ALLOWED_SOURCE_ROLES.has(region.sourceRole)) errors.push(`${regionLabel} sourceRole is invalid.`);
+      if (!isNonEmptyString(region.overlayRegionId))
+        errors.push(`${regionLabel} must have a non-empty overlayRegionId.`);
+      if (!ALLOWED_SOURCE_ROLES.has(region.sourceRole))
+        errors.push(`${regionLabel} sourceRole is invalid.`);
       seenRoles.push(region.sourceRole);
       const relevance = relevanceById.get(region.relevanceId);
       if (!relevance) {
         errors.push(`${regionLabel} references missing 009 relevance ${region.relevanceId}.`);
       } else if (relevance.role !== region.sourceRole) {
-        errors.push(`${regionLabel} sourceRole ${region.sourceRole} does not match 009 relevance role ${relevance.role}.`);
+        errors.push(
+          `${regionLabel} sourceRole ${region.sourceRole} does not match 009 relevance role ${relevance.role}.`,
+        );
       }
-      if (!overlayRelevanceIds.has(region.relevanceId)) errors.push(`${regionLabel} relevanceId must be listed in overlay.relevanceIds.`);
-      if (!Array.isArray(region.detailIds)) errors.push(`${regionLabel} detailIds must be an array.`);
-      if (!Array.isArray(region.regionIds)) errors.push(`${regionLabel} regionIds must be an array.`);
-      if (region.objectIds !== undefined && !Array.isArray(region.objectIds)) errors.push(`${regionLabel} objectIds must be an array when present.`);
-      if ((region.detailIds || []).length + (region.objectIds || []).length + (region.regionIds || []).length < 1) {
-        errors.push(`${regionLabel} must reference at least one current-question 009 detailId, objectId, or regionId.`);
+      if (!overlayRelevanceIds.has(region.relevanceId))
+        errors.push(`${regionLabel} relevanceId must be listed in overlay.relevanceIds.`);
+      if (!Array.isArray(region.detailIds))
+        errors.push(`${regionLabel} detailIds must be an array.`);
+      if (!Array.isArray(region.regionIds))
+        errors.push(`${regionLabel} regionIds must be an array.`);
+      if (region.objectIds !== undefined && !Array.isArray(region.objectIds))
+        errors.push(`${regionLabel} objectIds must be an array when present.`);
+      if (
+        (region.detailIds || []).length +
+          (region.objectIds || []).length +
+          (region.regionIds || []).length <
+        1
+      ) {
+        errors.push(
+          `${regionLabel} must reference at least one current-question 009 detailId, objectId, or regionId.`,
+        );
       }
       for (const detailId of region.detailIds || []) {
-        if (!imageDetailIds.has(detailId)) errors.push(`${regionLabel} references missing metadata detail ${detailId}.`);
-        if (!usageDetailIds.has(detailId)) errors.push(`${regionLabel} references detail ${detailId} not used by current question usage.`);
-        if (relevance && !(relevance.detailIds || []).includes(detailId) && !detailIdsForRelevance(relevance, image).includes(detailId)) {
-          errors.push(`${regionLabel} detail ${detailId} is not assigned to 009 relevance ${region.relevanceId}.`);
+        if (!imageDetailIds.has(detailId))
+          errors.push(`${regionLabel} references missing metadata detail ${detailId}.`);
+        if (!usageDetailIds.has(detailId))
+          errors.push(
+            `${regionLabel} references detail ${detailId} not used by current question usage.`,
+          );
+        if (
+          relevance &&
+          !(relevance.detailIds || []).includes(detailId) &&
+          !detailIdsForRelevance(relevance, image).includes(detailId)
+        ) {
+          errors.push(
+            `${regionLabel} detail ${detailId} is not assigned to 009 relevance ${region.relevanceId}.`,
+          );
         }
-        if (!overlayDetailIds.has(detailId)) errors.push(`${regionLabel} detail ${detailId} must be listed in overlay.referencedDetailIds.`);
+        if (!overlayDetailIds.has(detailId))
+          errors.push(
+            `${regionLabel} detail ${detailId} must be listed in overlay.referencedDetailIds.`,
+          );
       }
       for (const objectId of region.objectIds || []) {
-        if (!imageObjectIds.has(objectId)) errors.push(`${regionLabel} references missing metadata object ${objectId}.`);
-        if (!usageObjectIds.has(objectId)) errors.push(`${regionLabel} references object ${objectId} not used by current question usage.`);
-        if (relevance && !(relevance.objectIds || []).includes(objectId) && !objectIdsForRelevance(relevance, image).includes(objectId)) {
-          errors.push(`${regionLabel} object ${objectId} is not assigned to 009 relevance ${region.relevanceId}.`);
+        if (!imageObjectIds.has(objectId))
+          errors.push(`${regionLabel} references missing metadata object ${objectId}.`);
+        if (!usageObjectIds.has(objectId))
+          errors.push(
+            `${regionLabel} references object ${objectId} not used by current question usage.`,
+          );
+        if (
+          relevance &&
+          !(relevance.objectIds || []).includes(objectId) &&
+          !objectIdsForRelevance(relevance, image).includes(objectId)
+        ) {
+          errors.push(
+            `${regionLabel} object ${objectId} is not assigned to 009 relevance ${region.relevanceId}.`,
+          );
         }
-        if (!overlayObjectIds.has(objectId)) errors.push(`${regionLabel} object ${objectId} must be listed in overlay.referencedObjectIds.`);
+        if (!overlayObjectIds.has(objectId))
+          errors.push(
+            `${regionLabel} object ${objectId} must be listed in overlay.referencedObjectIds.`,
+          );
       }
       for (const regionId of region.regionIds || []) {
-        if (!imageRegionIds.has(regionId)) errors.push(`${regionLabel} references missing metadata region ${regionId}.`);
-        if (!usageRegionIds.has(regionId)) errors.push(`${regionLabel} references region ${regionId} not used by current question usage.`);
-        if (relevance && !(relevance.regionIds || []).includes(regionId) && !inferredRegionIdsForRelevance(relevance, image).includes(regionId)) {
-          errors.push(`${regionLabel} region ${regionId} is not assigned to 009 relevance ${region.relevanceId}.`);
+        if (!imageRegionIds.has(regionId))
+          errors.push(`${regionLabel} references missing metadata region ${regionId}.`);
+        if (!usageRegionIds.has(regionId))
+          errors.push(
+            `${regionLabel} references region ${regionId} not used by current question usage.`,
+          );
+        if (
+          relevance &&
+          !(relevance.regionIds || []).includes(regionId) &&
+          !inferredRegionIdsForRelevance(relevance, image).includes(regionId)
+        ) {
+          errors.push(
+            `${regionLabel} region ${regionId} is not assigned to 009 relevance ${region.relevanceId}.`,
+          );
         }
-        if (!overlayRegionIds.has(regionId)) errors.push(`${regionLabel} region ${regionId} must be listed in overlay.referencedRegionIds.`);
+        if (!overlayRegionIds.has(regionId))
+          errors.push(
+            `${regionLabel} region ${regionId} must be listed in overlay.referencedRegionIds.`,
+          );
       }
       const rect = region.rect;
       if (!isPlainObject(rect)) {
         errors.push(`${regionLabel} rect must be an object.`);
       } else {
         for (const field of ["x", "y", "width", "height"]) {
-          if (!Number.isFinite(rect[field])) errors.push(`${regionLabel} rect.${field} must be a finite number.`);
+          if (!Number.isFinite(rect[field]))
+            errors.push(`${regionLabel} rect.${field} must be a finite number.`);
         }
-        if (Number.isFinite(rect.x) && rect.x < 0) errors.push(`${regionLabel} rect.x must be within image bounds.`);
-        if (Number.isFinite(rect.y) && rect.y < 0) errors.push(`${regionLabel} rect.y must be within image bounds.`);
-        if (Number.isFinite(rect.width) && rect.width <= 0) errors.push(`${regionLabel} rect.width must be positive.`);
-        if (Number.isFinite(rect.height) && rect.height <= 0) errors.push(`${regionLabel} rect.height must be positive.`);
-        if (Number.isFinite(rect.x) && Number.isFinite(rect.width) && rect.x + rect.width > 100) errors.push(`${regionLabel} rect.x + rect.width must be within 100.`);
-        if (Number.isFinite(rect.y) && Number.isFinite(rect.height) && rect.y + rect.height > 100) errors.push(`${regionLabel} rect.y + rect.height must be within 100.`);
+        if (Number.isFinite(rect.x) && rect.x < 0)
+          errors.push(`${regionLabel} rect.x must be within image bounds.`);
+        if (Number.isFinite(rect.y) && rect.y < 0)
+          errors.push(`${regionLabel} rect.y must be within image bounds.`);
+        if (Number.isFinite(rect.width) && rect.width <= 0)
+          errors.push(`${regionLabel} rect.width must be positive.`);
+        if (Number.isFinite(rect.height) && rect.height <= 0)
+          errors.push(`${regionLabel} rect.height must be positive.`);
+        if (Number.isFinite(rect.x) && Number.isFinite(rect.width) && rect.x + rect.width > 100)
+          errors.push(`${regionLabel} rect.x + rect.width must be within 100.`);
+        if (Number.isFinite(rect.y) && Number.isFinite(rect.height) && rect.y + rect.height > 100)
+          errors.push(`${regionLabel} rect.y + rect.height must be within 100.`);
         if (["x", "y", "width", "height"].every((field) => Number.isFinite(rect[field]))) {
           if (region.sourceRole === "background_irrelevant_dim" && rectIsFullFrame(rect)) {
-            errors.push(`${regionLabel} background_irrelevant_dim must not use a full-frame dim rectangle.`);
+            errors.push(
+              `${regionLabel} background_irrelevant_dim must not use a full-frame dim rectangle.`,
+            );
           }
           checkedRegions.push({ region, regionLabel, rect });
         }
       }
     }
-    const criticalRegions = checkedRegions.filter((entry) => entry.region.sourceRole === "answer_critical_highlight");
-    const nonCriticalRegions = checkedRegions.filter((entry) => NON_CRITICAL_SOURCE_ROLES.has(entry.region.sourceRole));
+    const criticalRegions = checkedRegions.filter(
+      (entry) => entry.region.sourceRole === "answer_critical_highlight",
+    );
+    const nonCriticalRegions = checkedRegions.filter((entry) =>
+      NON_CRITICAL_SOURCE_ROLES.has(entry.region.sourceRole),
+    );
     for (const nonCritical of nonCriticalRegions) {
       for (const critical of criticalRegions) {
         if (rectContains(nonCritical.rect, critical.rect)) {
           errors.push(
-            `${nonCritical.regionLabel} ${nonCritical.region.sourceRole} must not fully cover answer-critical region ${critical.region.overlayRegionId}.`
+            `${nonCritical.regionLabel} ${nonCritical.region.sourceRole} must not fully cover answer-critical region ${critical.region.overlayRegionId}.`,
           );
         }
       }
     }
-    if (!seenRoles.includes("answer_critical_highlight")) errors.push(`${label}: approved overlay must include an answer_critical_highlight region.`);
+    if (!seenRoles.includes("answer_critical_highlight"))
+      errors.push(`${label}: approved overlay must include an answer_critical_highlight region.`);
     if (!seenRoles.some((role) => NON_CRITICAL_SOURCE_ROLES.has(role))) {
-      errors.push(`${label}: approved overlay must include at least one non-critical dim/support region from current question usage.`);
+      errors.push(
+        `${label}: approved overlay must include at least one non-critical dim/support region from current question usage.`,
+      );
     }
     requireEvidenceEntry(overlayEvidenceById.get(overlay.overlayId), overlay, errors);
   }
@@ -795,37 +993,46 @@ export function validateImageExplanationOverlays({
   const approvedUsageQuestionIds = new Set(
     (metadataEvidence?.usageEntries || [])
       .filter((entry) => entry.status === "approved")
-      .map((entry) => entry.questionId)
+      .map((entry) => entry.questionId),
   );
   const approvedImageIds = new Set(
     (metadataEvidence?.imageEntries || [])
       .filter((entry) => entry.status === "approved")
-      .map((entry) => entry.imageId)
+      .map((entry) => entry.imageId),
   );
   const expectedCurrentQuestionIds = new Set();
   for (const question of questions || []) {
     if (!question.image) continue;
     const usage = usageByQuestionId.get(question.id);
     if (!usage || usage.review?.status !== "approved") continue;
-    if (!approvedUsageQuestionIds.has(question.id) || !approvedImageIds.has(usage.imageId)) continue;
+    if (!approvedUsageQuestionIds.has(question.id) || !approvedImageIds.has(usage.imageId))
+      continue;
     expectedCurrentQuestionIds.add(question.id);
   }
   for (const questionId of expectedCurrentQuestionIds) {
     const overlaysForQuestion = approvedOverlaysByQuestionId.get(questionId) || [];
     if (overlaysForQuestion.length !== 1) {
-      errors.push(`${questionId}: expected exactly one approved current overlay, found ${overlaysForQuestion.length}.`);
+      errors.push(
+        `${questionId}: expected exactly one approved current overlay, found ${overlaysForQuestion.length}.`,
+      );
     }
     const evidenceForQuestion = overlayEvidenceQuestionIds.get(questionId) || [];
     if (evidenceForQuestion.length !== 1) {
-      errors.push(`${questionId}: expected exactly one approved overlay evidence entry, found ${evidenceForQuestion.length}.`);
+      errors.push(
+        `${questionId}: expected exactly one approved overlay evidence entry, found ${evidenceForQuestion.length}.`,
+      );
     }
   }
   for (const [questionId, overlaysForQuestion] of approvedOverlaysByQuestionId) {
     if (!expectedCurrentQuestionIds.has(questionId)) {
-      errors.push(`${questionId}: overlay exists for a question without approved current 009 image usage.`);
+      errors.push(
+        `${questionId}: overlay exists for a question without approved current 009 image usage.`,
+      );
     }
     if (overlaysForQuestion.length > 1) {
-      errors.push(`${questionId}: duplicate approved current overlays: ${overlaysForQuestion.join(", ")}.`);
+      errors.push(
+        `${questionId}: duplicate approved current overlays: ${overlaysForQuestion.join(", ")}.`,
+      );
     }
   }
 
@@ -845,24 +1052,27 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
       questions,
       metadataManifest,
       reviewer: "Codex Implementation Agent 010 full overlay coverage",
-      reviewedAt: "2026-05-10"
+      reviewedAt: "2026-05-10",
     });
     writeFileSync(
       join(root, "content/image-overlays/question-explanation-overlays.manifest.json"),
-      `${JSON.stringify(overlayManifest, null, 2)}\n`
+      `${JSON.stringify(overlayManifest, null, 2)}\n`,
     );
     writeFileSync(
       join(root, "content/validation/question-image-overlays.evidence.json"),
-      `${JSON.stringify(overlayEvidence, null, 2)}\n`
+      `${JSON.stringify(overlayEvidence, null, 2)}\n`,
     );
   }
   const errors = validateImageExplanationOverlays({
     questions,
     metadataManifest,
     metadataEvidence: readJson(root, "content/validation/question-image-metadata.evidence.json"),
-    overlayManifest: readJson(root, "content/image-overlays/question-explanation-overlays.manifest.json"),
+    overlayManifest: readJson(
+      root,
+      "content/image-overlays/question-explanation-overlays.manifest.json",
+    ),
     overlayEvidence: readJson(root, "content/validation/question-image-overlays.evidence.json"),
-    fileExists: (relativePath) => existsSync(join(root, relativePath))
+    fileExists: (relativePath) => existsSync(join(root, relativePath)),
   });
   if (errors.length) {
     for (const error of errors) console.error(error);
@@ -872,5 +1082,7 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
     const question = questions.find((item) => item.id === usage.questionId);
     return question?.image && usage.review?.status === "approved";
   }).length;
-  console.log(`Image explanation overlays validated: ${currentUsageCount} approved overlays for ${currentUsageCount} current image-backed question usages.`);
+  console.log(
+    `Image explanation overlays validated: ${currentUsageCount} approved overlays for ${currentUsageCount} current image-backed question usages.`,
+  );
 }

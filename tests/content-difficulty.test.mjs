@@ -7,7 +7,7 @@ import {
   difficultyTopicFingerprint,
   validateDifficultyContent,
   validateQuestionDifficulty,
-  validateTopicDifficulty
+  validateTopicDifficulty,
 } from "../scripts/content-difficulty.mjs";
 
 function question(overrides = {}) {
@@ -20,7 +20,7 @@ function question(overrides = {}) {
     officialTextEs: "¿Qué indica esta seña?",
     answers: [
       { id: "q1-a1", officialTextEs: "Adelantamiento por la derecha." },
-      { id: "q1-a2", officialTextEs: "Giro a la derecha." }
+      { id: "q1-a2", officialTextEs: "Giro a la derecha." },
     ],
     correctAnswerId: "q1-a2",
     topics: ["signs"],
@@ -28,12 +28,12 @@ function question(overrides = {}) {
     flags: { hasImage: true, hasNegationOrException: false },
     status: "needs_review",
     validation: { sourceChecked: true },
-    difficulty: "blue"
+    difficulty: "blue",
   };
   const candidate = { ...base, ...overrides };
   return {
     ...candidate,
-    difficultyMeta: difficultyMeta(candidate, overrides.difficultyMeta)
+    difficultyMeta: difficultyMeta(candidate, overrides.difficultyMeta),
   };
 }
 
@@ -41,14 +41,15 @@ function difficultyMeta(owner, overrides = {}) {
   return {
     rubricVersion: DIFFICULTY_RUBRIC_VERSION,
     dimensions: ["visual_cue_load"],
-    rationaleRu: "Картинка требует распознать жест, но правило остается знакомым опытному водителю.",
+    rationaleRu:
+      "Картинка требует распознать жест, но правило остается знакомым опытному водителю.",
     provenance: {
       method: "manual_rubric_review",
       reviewer: "cabadrive-017",
-      reviewedAt: "2026-05-10"
+      reviewedAt: "2026-05-10",
     },
     sourceFingerprint: difficultyQuestionFingerprint(owner),
-    ...overrides
+    ...overrides,
   };
 }
 
@@ -66,20 +67,26 @@ function topic(overrides = {}, questions = [question()]) {
         id: "term-sena",
         termEs: "seña",
         translationRu: "жест",
-        sourceQuestionIds: ["q1"]
-      }
+        sourceQuestionIds: ["q1"],
+      },
     ],
     tickets: [
       {
         questionId: "q1",
         answerExplanations: [
           { answerId: "q1-a1", verdict: "incorrect", explanationRu: "Это не тот жест." },
-          { answerId: "q1-a2", verdict: "correct", explanationRu: "Жест показывает поворот направо." }
-        ]
-      }
+          {
+            answerId: "q1-a2",
+            verdict: "correct",
+            explanationRu: "Жест показывает поворот направо.",
+          },
+        ],
+      },
     ],
-    trapNotes: [{ id: "trap-sena", textRu: "Seña здесь означает жест.", sourceQuestionIds: ["q1"] }],
-    claims: []
+    trapNotes: [
+      { id: "trap-sena", textRu: "Seña здесь означает жест.", sourceQuestionIds: ["q1"] },
+    ],
+    claims: [],
   };
   const candidate = { ...base, ...overrides };
   const questionById = new Map(questions.map((item) => [item.id, item]));
@@ -89,16 +96,17 @@ function topic(overrides = {}, questions = [question()]) {
     difficultyMeta: {
       rubricVersion: DIFFICULTY_RUBRIC_VERSION,
       dimensions: ["visual_cue_load"],
-      rationaleRu: "Тема опирается на визуальные жесты и одно испанское слово, но без сложной правовой логики.",
+      rationaleRu:
+        "Тема опирается на визуальные жесты и одно испанское слово, но без сложной правовой логики.",
       provenance: {
         method: "manual_rubric_review",
         reviewer: "cabadrive-017",
-        reviewedAt: "2026-05-10"
+        reviewedAt: "2026-05-10",
       },
       sourceFingerprint: difficultyTopicFingerprint(candidate),
       basis: buildTopicDifficultyBasis(candidate, questionById),
-      ...overrides.difficultyMeta
-    }
+      ...overrides.difficultyMeta,
+    },
   };
 }
 
@@ -106,19 +114,30 @@ test("valid question and topic difficulty metadata passes", () => {
   const validQuestion = question();
   const validTopic = topic({}, [validQuestion]);
   assert.deepEqual(validateQuestionDifficulty(validQuestion), []);
-  assert.deepEqual(validateTopicDifficulty(validTopic, new Map([[validQuestion.id, validQuestion]])), []);
+  assert.deepEqual(
+    validateTopicDifficulty(validTopic, new Map([[validQuestion.id, validQuestion]])),
+    [],
+  );
   assert.deepEqual(
     validateDifficultyContent({
       questions: [validQuestion],
-      topicGuide: { topics: [validTopic] }
+      topicGuide: { topics: [validTopic] },
     }).errors,
-    []
+    [],
   );
 });
 
 test("invalid and legacy difficulty enum values fail", () => {
-  assert(validateQuestionDifficulty(question({ difficulty: "medium" })).includes("q1: legacy difficulty medium is not allowed; use green, blue, yellow, or red."));
-  assert(validateQuestionDifficulty(question({ difficulty: "purple" })).includes("q1: unsupported difficulty purple."));
+  assert(
+    validateQuestionDifficulty(question({ difficulty: "medium" })).includes(
+      "q1: legacy difficulty medium is not allowed; use green, blue, yellow, or red.",
+    ),
+  );
+  assert(
+    validateQuestionDifficulty(question({ difficulty: "purple" })).includes(
+      "q1: unsupported difficulty purple.",
+    ),
+  );
 });
 
 test("missing rationale, provenance, and dimensions fail", () => {
@@ -126,8 +145,8 @@ test("missing rationale, provenance, and dimensions fail", () => {
     difficultyMeta: {
       dimensions: [],
       rationaleRu: "",
-      provenance: undefined
-    }
+      provenance: undefined,
+    },
   });
   const errors = validateQuestionDifficulty(invalid);
   assert(errors.includes("q1: difficultyMeta.dimensions must be a non-empty array."));
@@ -138,8 +157,8 @@ test("missing rationale, provenance, and dimensions fail", () => {
 test("duplicate and unsupported dimensions fail", () => {
   const invalid = question({
     difficultyMeta: {
-      dimensions: ["visual_cue_load", "visual_cue_load", "made_up_dimension"]
-    }
+      dimensions: ["visual_cue_load", "visual_cue_load", "made_up_dimension"],
+    },
   });
   const errors = validateQuestionDifficulty(invalid);
   assert(errors.includes("q1: duplicate difficulty dimension visual_cue_load."));
@@ -150,9 +169,11 @@ test("stale question source fingerprint fails", () => {
   const valid = question();
   const changed = {
     ...valid,
-    officialTextEs: "¿Texto cambiado?"
+    officialTextEs: "¿Texto cambiado?",
   };
-  assert(validateQuestionDifficulty(changed).includes("q1: difficultyMeta.sourceFingerprint is stale."));
+  assert(
+    validateQuestionDifficulty(changed).includes("q1: difficultyMeta.sourceFingerprint is stale."),
+  );
 });
 
 test("stale topic basis hash and coverage fail", () => {
@@ -167,14 +188,24 @@ test("stale topic basis hash and coverage fail", () => {
         questionId: "q2",
         answerExplanations: [
           { answerId: "q1-a1", verdict: "incorrect", explanationRu: "Synthetic." },
-          { answerId: "q1-a2", verdict: "correct", explanationRu: "Synthetic." }
-        ]
-      }
-    ]
+          { answerId: "q1-a2", verdict: "correct", explanationRu: "Synthetic." },
+        ],
+      },
+    ],
   };
-  const errors = validateTopicDifficulty(mutatedTopic, new Map([[q1.id, q1], [q2.id, q2]]));
+  const errors = validateTopicDifficulty(
+    mutatedTopic,
+    new Map([
+      [q1.id, q1],
+      [q2.id, q2],
+    ]),
+  );
   assert(errors.includes("signals: difficultyMeta.sourceFingerprint is stale."));
-  assert(errors.includes("signals: difficultyMeta.basis.questionLevelCounts.red must match current topic tickets."));
+  assert(
+    errors.includes(
+      "signals: difficultyMeta.basis.questionLevelCounts.red must match current topic tickets.",
+    ),
+  );
   assert(errors.includes("signals: difficultyMeta.basis.ticketQuestionIdsSha256 is stale."));
 });
 
@@ -187,10 +218,17 @@ test("stale topic dominant dimensions fail", () => {
       ...validTopic.difficultyMeta,
       basis: {
         ...validTopic.difficultyMeta.basis,
-        dominantDimensions: ["trap_negation"]
-      }
-    }
+        dominantDimensions: ["trap_negation"],
+      },
+    },
   };
-  const errors = validateTopicDifficulty(invalidTopic, new Map([[validQuestion.id, validQuestion]]));
-  assert(errors.includes("signals: difficultyMeta.basis.dominantDimensions must match current topic tickets."));
+  const errors = validateTopicDifficulty(
+    invalidTopic,
+    new Map([[validQuestion.id, validQuestion]]),
+  );
+  assert(
+    errors.includes(
+      "signals: difficultyMeta.basis.dominantDimensions must match current topic tickets.",
+    ),
+  );
 });

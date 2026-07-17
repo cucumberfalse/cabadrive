@@ -1,16 +1,27 @@
 import { execFileSync, spawnSync } from "node:child_process";
 import { createHash } from "node:crypto";
-import { existsSync, mkdirSync, mkdtempSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import {
+  existsSync,
+  mkdirSync,
+  mkdtempSync,
+  readdirSync,
+  readFileSync,
+  rmSync,
+  writeFileSync,
+} from "node:fs";
 import { tmpdir } from "node:os";
 import { dirname, join } from "node:path";
 import { test } from "node:test";
 import assert from "node:assert/strict";
 
-const registryPath = "content/manuals/gcba-manual-vehiculo-4-ruedas-2023/interactive-guide/section-registry.chapters-1-2.json";
-const oldPageRegistryPath = "content/manuals/gcba-manual-vehiculo-4-ruedas-2023/interactive-guide/page-registry.chapters-1-2.json";
+const registryPath =
+  "content/manuals/gcba-manual-vehiculo-4-ruedas-2023/interactive-guide/section-registry.chapters-1-2.json";
+const oldPageRegistryPath =
+  "content/manuals/gcba-manual-vehiculo-4-ruedas-2023/interactive-guide/page-registry.chapters-1-2.json";
 const evidencePath = "content/validation/manual-guide-source-fidelity.evidence.json";
 const visualCropEvidencePath = "content/validation/manual-guide-visual-content-crop.evidence.json";
-const visualCompletenessEvidencePath = "content/validation/manual-guide-visual-completeness.evidence.json";
+const visualCompletenessEvidencePath =
+  "content/validation/manual-guide-visual-completeness.evidence.json";
 const manualGuidePath = "src/data/manualGuide.ts";
 const appPath = "src/App.tsx";
 const checkerPath = "scripts/manual-guide-source-fidelity.mjs";
@@ -43,11 +54,15 @@ const ch4StressModulePath = "src/data/manual-sections/ch4-stress.ts";
 const ch4DistractionsModulePath = "src/data/manual-sections/ch4-distractions.ts";
 const ch5AttitudeTypesModulePath = "src/data/manual-sections/ch5-attitude-types.ts";
 const ch5EqualSocietyModulePath = "src/data/manual-sections/ch5-equal-society.ts";
-const ch5GenderViolencePreventionModulePath = "src/data/manual-sections/ch5-gender-violence-prevention.ts";
-const ch5AnticipatoryEfficientDrivingModulePath = "src/data/manual-sections/ch5-anticipatory-efficient-driving.ts";
+const ch5GenderViolencePreventionModulePath =
+  "src/data/manual-sections/ch5-gender-violence-prevention.ts";
+const ch5AnticipatoryEfficientDrivingModulePath =
+  "src/data/manual-sections/ch5-anticipatory-efficient-driving.ts";
 const app1SafetyElementsModulePath = "src/data/manual-sections/app1-safety-elements.ts";
-const app1OtherRequiredSafetyElementsModulePath = "src/data/manual-sections/app1-other-required-safety-elements.ts";
-const app1RecommendedSafetyElementsModulePath = "src/data/manual-sections/app1-recommended-safety-elements.ts";
+const app1OtherRequiredSafetyElementsModulePath =
+  "src/data/manual-sections/app1-other-required-safety-elements.ts";
+const app1RecommendedSafetyElementsModulePath =
+  "src/data/manual-sections/app1-recommended-safety-elements.ts";
 const app2SocialResponsibilityModulePath = "src/data/manual-sections/app2-social-responsibility.ts";
 const app2SafetyElementsModulePath = "src/data/manual-sections/app2-safety-elements.ts";
 const app2DrivingFactorsModulePath = "src/data/manual-sections/app2-driving-factors.ts";
@@ -68,8 +83,10 @@ const app4SignsHorizontalModulePath = "src/data/manual-sections/app4-signs-horiz
 const app4SignsTrafficLightsModulePath = "src/data/manual-sections/app4-signs-traffic-lights.ts";
 const noAvanzarAssetPath =
   "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/no-avanzar-source-as-is.jpg";
-const noAvanzarSourceAssetPath = "content/validation/manual-guide/app4-signs-regulatory/page-185-no-avanzar-source-crop.jpg";
-const noAvanzarCropEvidencePath = "content/validation/manual-guide-no-avanzar-source-crop.evidence.json";
+const noAvanzarSourceAssetPath =
+  "content/validation/manual-guide/app4-signs-regulatory/page-185-no-avanzar-source-crop.jpg";
+const noAvanzarCropEvidencePath =
+  "content/validation/manual-guide-no-avanzar-source-crop.evidence.json";
 const anexoRegulatoryPanels = [
   {
     cardId: "app4-regulatory-anexo-panel-01-source-card",
@@ -78,7 +95,7 @@ const anexoRegulatoryPanels = [
     sourceAssetPath:
       "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-01.jpg",
     dimensions: { width: 615, height: 743 },
-    sha256: "d6a784a157b9f4822dab33a9cd56fb7bda3dfb415283cb5c2acf0a731d7b5ef9"
+    sha256: "d6a784a157b9f4822dab33a9cd56fb7bda3dfb415283cb5c2acf0a731d7b5ef9",
   },
   {
     cardId: "app4-regulatory-anexo-panel-02-source-card",
@@ -87,7 +104,7 @@ const anexoRegulatoryPanels = [
     sourceAssetPath:
       "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-02.jpg",
     dimensions: { width: 618, height: 733 },
-    sha256: "1661401f0b8ce8036cab1e489e67ad29be05bfd78d695b396d18b67083230be6"
+    sha256: "1661401f0b8ce8036cab1e489e67ad29be05bfd78d695b396d18b67083230be6",
   },
   {
     cardId: "app4-regulatory-anexo-panel-03-source-card",
@@ -96,7 +113,7 @@ const anexoRegulatoryPanels = [
     sourceAssetPath:
       "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-03.jpg",
     dimensions: { width: 616, height: 734 },
-    sha256: "ba8b2b3dca9b02e564fe0f4d463d36449b748ddb63e8ad7163eb29624e65eea3"
+    sha256: "ba8b2b3dca9b02e564fe0f4d463d36449b748ddb63e8ad7163eb29624e65eea3",
   },
   {
     cardId: "app4-regulatory-anexo-panel-04-source-card",
@@ -105,8 +122,8 @@ const anexoRegulatoryPanels = [
     sourceAssetPath:
       "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-04.jpg",
     dimensions: { width: 616, height: 694 },
-    sha256: "93a4a1c7267b4ad8122c944c0cfaa420aa3dc7be8b39c6107e72903f77b9c868"
-  }
+    sha256: "93a4a1c7267b4ad8122c944c0cfaa420aa3dc7be8b39c6107e72903f77b9c868",
+  },
 ];
 const anexoRegulatoryPanelCardIds = new Set(anexoRegulatoryPanels.map((panel) => panel.cardId));
 const tireAssetPath =
@@ -121,8 +138,16 @@ const evidence = JSON.parse(readFileSync(evidencePath, "utf8"));
 const visualCropEvidence = JSON.parse(readFileSync(visualCropEvidencePath, "utf8"));
 const visualCompletenessEvidence = JSON.parse(readFileSync(visualCompletenessEvidencePath, "utf8"));
 const app4SignEntries = JSON.parse(readFileSync(app4SignEntriesPath, "utf8"));
-const strictRecordedChapter1SectionIds = new Set(["ch1-public-transport-system", "ch1-shared-trip"]);
-const legacyBaselineSectionIds = new Set(["ch1-cities-for-people", "ch1-sustainable-mobility", "ch1-pedestrian-priority", "ch1-bicycle"]);
+const strictRecordedChapter1SectionIds = new Set([
+  "ch1-public-transport-system",
+  "ch1-shared-trip",
+]);
+const legacyBaselineSectionIds = new Set([
+  "ch1-cities-for-people",
+  "ch1-sustainable-mobility",
+  "ch1-pedestrian-priority",
+  "ch1-bicycle",
+]);
 const implementedSectionIds = new Set([
   "front-presentation",
   "front-categories",
@@ -169,7 +194,7 @@ const implementedSectionIds = new Set([
   "app4-signs-informational",
   "app4-signs-temporary",
   "app4-signs-horizontal",
-  "app4-signs-traffic-lights"
+  "app4-signs-traffic-lights",
 ]);
 const manualGuideSource = readFileSync(manualGuidePath, "utf8");
 const appSource = readFileSync(appPath, "utf8");
@@ -203,18 +228,36 @@ const ch4StressModuleSource = readFileSync(ch4StressModulePath, "utf8");
 const ch4DistractionsModuleSource = readFileSync(ch4DistractionsModulePath, "utf8");
 const ch5AttitudeTypesModuleSource = readFileSync(ch5AttitudeTypesModulePath, "utf8");
 const ch5EqualSocietyModuleSource = readFileSync(ch5EqualSocietyModulePath, "utf8");
-const ch5GenderViolencePreventionModuleSource = readFileSync(ch5GenderViolencePreventionModulePath, "utf8");
-const ch5AnticipatoryEfficientDrivingModuleSource = readFileSync(ch5AnticipatoryEfficientDrivingModulePath, "utf8");
+const ch5GenderViolencePreventionModuleSource = readFileSync(
+  ch5GenderViolencePreventionModulePath,
+  "utf8",
+);
+const ch5AnticipatoryEfficientDrivingModuleSource = readFileSync(
+  ch5AnticipatoryEfficientDrivingModulePath,
+  "utf8",
+);
 const app1SafetyElementsModuleSource = readFileSync(app1SafetyElementsModulePath, "utf8");
-const app1OtherRequiredSafetyElementsModuleSource = readFileSync(app1OtherRequiredSafetyElementsModulePath, "utf8");
-const app1RecommendedSafetyElementsModuleSource = readFileSync(app1RecommendedSafetyElementsModulePath, "utf8");
-const app2SocialResponsibilityModuleSource = readFileSync(app2SocialResponsibilityModulePath, "utf8");
+const app1OtherRequiredSafetyElementsModuleSource = readFileSync(
+  app1OtherRequiredSafetyElementsModulePath,
+  "utf8",
+);
+const app1RecommendedSafetyElementsModuleSource = readFileSync(
+  app1RecommendedSafetyElementsModulePath,
+  "utf8",
+);
+const app2SocialResponsibilityModuleSource = readFileSync(
+  app2SocialResponsibilityModulePath,
+  "utf8",
+);
 const app2SafetyElementsModuleSource = readFileSync(app2SafetyElementsModulePath, "utf8");
 const app2DrivingFactorsModuleSource = readFileSync(app2DrivingFactorsModulePath, "utf8");
 const app2SafeDrivingModuleSource = readFileSync(app2SafeDrivingModulePath, "utf8");
 const app2HighwaysHospitalsModuleSource = readFileSync(app2HighwaysHospitalsModulePath, "utf8");
 const app3CargoDriverProfileModuleSource = readFileSync(app3CargoDriverProfileModulePath, "utf8");
-const app3SocialResponsibilityModuleSource = readFileSync(app3SocialResponsibilityModulePath, "utf8");
+const app3SocialResponsibilityModuleSource = readFileSync(
+  app3SocialResponsibilityModulePath,
+  "utf8",
+);
 const app3DrivingFactorsModuleSource = readFileSync(app3DrivingFactorsModulePath, "utf8");
 const app3SafeDrivingModuleSource = readFileSync(app3SafeDrivingModulePath, "utf8");
 const app3SafetyElementsModuleSource = readFileSync(app3SafetyElementsModulePath, "utf8");
@@ -225,7 +268,10 @@ const app4SignsInformationalModuleSource = readFileSync(app4SignsInformationalMo
 const app4SignsTemporaryModuleSource = readFileSync(app4SignsTemporaryModulePath, "utf8");
 const app4SignsHorizontalModuleSource = readFileSync(app4SignsHorizontalModulePath, "utf8");
 const app4SignsTrafficLightsModuleSource = readFileSync(app4SignsTrafficLightsModulePath, "utf8");
-const manualGuideAppSource = appSource.slice(appSource.indexOf("function ManualGuideSectionContentView"), appSource.indexOf("function manualDisplayText"));
+const manualGuideAppSource = appSource.slice(
+  appSource.indexOf("function ManualGuideSectionContentView"),
+  appSource.indexOf("function manualDisplayText"),
+);
 const fixtureEvidencePaths = new Map();
 
 function sourcePagesForRange(start, end) {
@@ -246,7 +292,9 @@ function duplicatedValues(values) {
 }
 
 function itemsRuSourceForBlock(moduleSource, blockId) {
-  const blockMatch = moduleSource.match(new RegExp(`id:\\s*"${blockId}"[\\s\\S]*?itemsRu:\\s*\\[([\\s\\S]*?)\\]`, "u"));
+  const blockMatch = moduleSource.match(
+    new RegExp(`id:\\s*"${blockId}"[\\s\\S]*?itemsRu:\\s*\\[([\\s\\S]*?)\\]`, "u"),
+  );
   assert.ok(blockMatch, `${blockId} itemsRu block found`);
   return blockMatch[1];
 }
@@ -259,7 +307,9 @@ function sourceBoundaryEvidenceFor(section, sourcePage) {
   if (Array.isArray(section.sourceBoundaryEvidence)) {
     return section.sourceBoundaryEvidence.find((entry) => entry.sharedSourcePage === sourcePage);
   }
-  return section.sourceBoundaryEvidence?.sharedSourcePage === sourcePage ? section.sourceBoundaryEvidence : undefined;
+  return section.sourceBoundaryEvidence?.sharedSourcePage === sourcePage
+    ? section.sourceBoundaryEvidence
+    : undefined;
 }
 
 function sourcePageAssetPath(sourcePage) {
@@ -275,7 +325,9 @@ function sectionById(sectionId) {
 }
 
 function localAssetByPath(section, assetPath) {
-  const asset = section.implementationEvidence.localAssetMetadata.find((entry) => entry.assetPath === assetPath);
+  const asset = section.implementationEvidence.localAssetMetadata.find(
+    (entry) => entry.assetPath === assetPath,
+  );
   assert.ok(asset, `${section.id} records ${assetPath} in localAssetMetadata`);
   return asset;
 }
@@ -324,7 +376,7 @@ function balancedSourceSlice(source, startIndex, openChar, closeChar) {
       else if (char === stringQuote) stringQuote = "";
       continue;
     }
-    if (char === "\"" || char === "'" || char === "`") {
+    if (char === '"' || char === "'" || char === "`") {
       stringQuote = char;
       continue;
     }
@@ -351,7 +403,7 @@ function topLevelObjectSources(arraySource) {
       else if (char === stringQuote) stringQuote = "";
       continue;
     }
-    if (char === "\"" || char === "'" || char === "`") {
+    if (char === '"' || char === "'" || char === "`") {
       stringQuote = char;
       continue;
     }
@@ -376,13 +428,15 @@ function moduleNumberField(source, fieldName) {
 }
 
 function moduleSourceRegion(source) {
-  const match = source.match(/sourceRegion:\s*\{\s*x:\s*(\d+),\s*y:\s*(\d+),\s*width:\s*(\d+),\s*height:\s*(\d+)\s*\}/u);
+  const match = source.match(
+    /sourceRegion:\s*\{\s*x:\s*(\d+),\s*y:\s*(\d+),\s*width:\s*(\d+),\s*height:\s*(\d+)\s*\}/u,
+  );
   return match
     ? {
         x: Number(match[1]),
         y: Number(match[2]),
         width: Number(match[3]),
-        height: Number(match[4])
+        height: Number(match[4]),
       }
     : undefined;
 }
@@ -395,7 +449,9 @@ function moduleAssetPath(source, assetRoot) {
 
 function sourceImageCardInventory() {
   const cards = [];
-  for (const fileName of readdirSync("src/data/manual-sections").filter((name) => name.endsWith(".ts")).sort()) {
+  for (const fileName of readdirSync("src/data/manual-sections")
+    .filter((name) => name.endsWith(".ts"))
+    .sort()) {
     const source = readFileSync(join("src/data/manual-sections", fileName), "utf8");
     const assetRoot = source.match(/const assetRoot =\s*(?:\n\s*)?"([^"]+)"/u)?.[1] ?? "";
     const sectionId = moduleStringField(source, "sectionId");
@@ -420,7 +476,7 @@ function sourceImageCardInventory() {
           assetPath: moduleAssetPath(cardSource, assetRoot),
           hasOfficialSignException: /officialSignException/u.test(cardSource),
           hasSourceImageException: /sourceImageException/u.test(cardSource),
-          hasRussianOverlayLabels: /russianOverlayLabels/u.test(cardSource)
+          hasRussianOverlayLabels: /russianOverlayLabels/u.test(cardSource),
         });
       }
       cursor = arrayStart + cardsArray.length;
@@ -446,7 +502,7 @@ function sourceImageCardTermRows(source) {
         rows.push({
           cardId,
           termEs: moduleStringField(termSource, "termEs"),
-          translationRu: moduleStringField(termSource, "translationRu")
+          translationRu: moduleStringField(termSource, "translationRu"),
         });
       }
     }
@@ -459,7 +515,7 @@ const expectedRenderedNoAvanzarIds = [
   "app4regulatory-p185-003-no-avanzar-catalog-entry",
   "app4-regulatory-no-avanzar-source-card",
   "app4-regulatory-anexo-panel-01-source-card",
-  "app4-regulatory-page-185-source-card"
+  "app4-regulatory-page-185-source-card",
 ].sort();
 
 function normalizedNoAvanzarLabel(value) {
@@ -473,21 +529,37 @@ function renderedNoAvanzarRows(catalogEntries, sourceCardTerms) {
         (entry) =>
           entry.sectionId === "app4-signs-regulatory" &&
           entry.entryKind === "catalog-entry" &&
-          normalizedNoAvanzarLabel(entry.spanishLabel) === "NO AVANZAR"
+          normalizedNoAvanzarLabel(entry.spanishLabel) === "NO AVANZAR",
       )
-      .map((entry) => ({ id: entry.id, translationRu: entry.russianTranslation, renderer: "manual-sign-catalog" })),
+      .map((entry) => ({
+        id: entry.id,
+        translationRu: entry.russianTranslation,
+        renderer: "manual-sign-catalog",
+      })),
     ...sourceCardTerms
       .filter((term) => normalizedNoAvanzarLabel(term.termEs) === "NO AVANZAR")
-      .map((term) => ({ id: term.cardId, translationRu: term.translationRu, renderer: "source-image-cards" }))
+      .map((term) => ({
+        id: term.cardId,
+        translationRu: term.translationRu,
+        renderer: "source-image-cards",
+      })),
   ];
 }
 
 function assertRenderedNoAvanzarInvariant(rows) {
   const renderedIds = rows.map((row) => row.id).sort();
-  assert.deepEqual(renderedIds, expectedRenderedNoAvanzarIds, "R.1 rendered inventory is exact and fail-closed");
+  assert.deepEqual(
+    renderedIds,
+    expectedRenderedNoAvanzarIds,
+    "R.1 rendered inventory is exact and fail-closed",
+  );
   for (const row of rows) {
     assert.equal(row.translationRu, "Проезд запрещен", `${row.id} uses the R.1 translation`);
-    assert.doesNotMatch(row.translationRu, /обгон запрещен/iu, `${row.id} is not the no-overtaking sign`);
+    assert.doesNotMatch(
+      row.translationRu,
+      /обгон запрещен/iu,
+      `${row.id} is not the no-overtaking sign`,
+    );
   }
 }
 
@@ -496,22 +568,36 @@ function visualArtifactHashRecords(value, pathField) {
   return entries.map((entry, index) => ({
     index,
     path: entry[pathField],
-    sha256: fileSha256IfPresent(entry[pathField])
+    sha256: fileSha256IfPresent(entry[pathField]),
   }));
 }
 
-function legacyBaselineStateFingerprint(section, implementedEvidence, moduleRoot = "src/data/manual-sections") {
+function legacyBaselineStateFingerprint(
+  section,
+  implementedEvidence,
+  moduleRoot = "src/data/manual-sections",
+) {
   const modulePath = resolveSectionContentModulePath(section.sectionContentModulePath, moduleRoot);
   const sectionContentModuleSha256 = fileSha256IfPresent(modulePath);
-  const sourceAssetHashes = visualArtifactHashRecords(implementedEvidence.sourceRegionMetadata, "sourceAssetPath");
-  const localAssetHashes = visualArtifactHashRecords(implementedEvidence.localAssetMetadata, "assetPath");
-  if (sectionContentModuleSha256 === null || [...sourceAssetHashes, ...localAssetHashes].some((entry) => entry.sha256 === null)) return null;
+  const sourceAssetHashes = visualArtifactHashRecords(
+    implementedEvidence.sourceRegionMetadata,
+    "sourceAssetPath",
+  );
+  const localAssetHashes = visualArtifactHashRecords(
+    implementedEvidence.localAssetMetadata,
+    "assetPath",
+  );
+  if (
+    sectionContentModuleSha256 === null ||
+    [...sourceAssetHashes, ...localAssetHashes].some((entry) => entry.sha256 === null)
+  )
+    return null;
   return sha256Json({
     implementationEvidence: implementedEvidence,
     sectionContentModulePath: section.sectionContentModulePath,
     sectionContentModuleSha256,
     sourceAssetHashes,
-    localAssetHashes
+    localAssetHashes,
   });
 }
 
@@ -545,7 +631,9 @@ function writeImplementedRegistryFixture(tempDir, moduleSource, mutateEvidence =
   const moduleRoot = join(tempDir, "manual-sections");
   const implementedRegistryPath = join(tempDir, "section-registry.implemented.json");
   const implementedRegistry = JSON.parse(JSON.stringify(registry));
-  const section = implementedRegistry.sections.find((entry) => entry.id === "ch1-pedestrian-priority");
+  const section = implementedRegistry.sections.find(
+    (entry) => entry.id === "ch1-pedestrian-priority",
+  );
   section.status = "implemented";
   section.sourceRegionMetadataStatus = "recorded";
   section.visualEvidenceStatus = "recorded";
@@ -556,48 +644,68 @@ function writeImplementedRegistryFixture(tempDir, moduleSource, mutateEvidence =
       {
         sourcePage: 24,
         sourceRegion: { x: 0, y: 0, width: 120, height: 80 },
-        sourceAssetPath: writePngFixtureFile(join(tempDir, "evidence", "source-crop-24.png"), 120, 80),
+        sourceAssetPath: writePngFixtureFile(
+          join(tempDir, "evidence", "source-crop-24.png"),
+          120,
+          80,
+        ),
         cropDimensions: { width: 120, height: 80 },
         cropSha256: "fixture-source-crop-24-sha",
-        cleanupScope: "none"
+        cleanupScope: "none",
       },
       {
         sourcePage: 29,
         sourceRegion: { x: 10, y: 10, width: 90, height: 60 },
-        sourceAssetPath: writePngFixtureFile(join(tempDir, "evidence", "source-crop-29.png"), 90, 60),
+        sourceAssetPath: writePngFixtureFile(
+          join(tempDir, "evidence", "source-crop-29.png"),
+          90,
+          60,
+        ),
         cropDimensions: { width: 90, height: 60 },
         cropSha256: "fixture-source-crop-29-sha",
-        cleanupScope: "none"
-      }
+        cleanupScope: "none",
+      },
     ],
     localAssetMetadata: [
       {
-        assetPath: writePngFixtureFile(join(tempDir, "assets", "ch1-pedestrian-priority-artwork-1.png"), 120, 80),
+        assetPath: writePngFixtureFile(
+          join(tempDir, "assets", "ch1-pedestrian-priority-artwork-1.png"),
+          120,
+          80,
+        ),
         assetKind: "source-artwork",
         width: 120,
         height: 80,
         sha256: "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
         containsText: false,
-        visibleSpanish: false
+        visibleSpanish: false,
       },
       {
-        assetPath: writePngFixtureFile(join(tempDir, "assets", "ch1-pedestrian-priority-artwork-2.png"), 90, 60),
+        assetPath: writePngFixtureFile(
+          join(tempDir, "assets", "ch1-pedestrian-priority-artwork-2.png"),
+          90,
+          60,
+        ),
         assetKind: "source-artwork",
         width: 90,
         height: 60,
         sha256: "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
         containsText: false,
-        visibleSpanish: false
-      }
+        visibleSpanish: false,
+      },
     ],
     visibleSpanishStatus: "none",
     selectableTextStatus: "pass",
-    desktopScreenshot: writeTempFile(join(tempDir, "screenshots", "ch1-pedestrian-priority-desktop.png")),
-    mobileScreenshot: writeTempFile(join(tempDir, "screenshots", "ch1-pedestrian-priority-mobile.png")),
+    desktopScreenshot: writeTempFile(
+      join(tempDir, "screenshots", "ch1-pedestrian-priority-desktop.png"),
+    ),
+    mobileScreenshot: writeTempFile(
+      join(tempDir, "screenshots", "ch1-pedestrian-priority-mobile.png"),
+    ),
     boundingBoxChecks: [{ id: "fixture", status: "pass" }],
     forbiddenPatternScan: { status: "pass" },
     visualReviewNotes: ["fixture evidence only"],
-    checkerResult: "pass"
+    checkerResult: "pass",
   };
   mutateEvidence(section.implementationEvidence);
   writeTempFile(join(moduleRoot, "front-presentation.ts"), frontPresentationModuleSource);
@@ -609,57 +717,184 @@ function writeImplementedRegistryFixture(tempDir, moduleSource, mutateEvidence =
   writeTempFile(join(moduleRoot, "ch1-bicycle.ts"), ch1BicycleModuleSource);
   writeTempFile(join(moduleRoot, "ch1-public-transport-system.ts"), ch1PublicTransportModuleSource);
   writeTempFile(join(moduleRoot, "ch1-shared-trip.ts"), ch1SharedTripModuleSource);
-  writeTempFile(join(moduleRoot, "ch2-legal-responsibility.ts"), 'export const ch2LegalResponsibilitySection = { sectionId: "ch2-legal-responsibility", blocks: [] };\n');
-  writeTempFile(join(moduleRoot, "ch2-required-documents.ts"), 'export const ch2RequiredDocumentsSection = { sectionId: "ch2-required-documents", blocks: [] };\n');
-  writeTempFile(join(moduleRoot, "ch2-incident-obligations.ts"), 'export const ch2IncidentObligationsSection = { sectionId: "ch2-incident-obligations", blocks: [] };\n');
-  writeTempFile(join(moduleRoot, "ch2-scoring.ts"), 'export const ch2ScoringSection = { sectionId: "ch2-scoring", blocks: [] };\n');
-  writeTempFile(join(moduleRoot, "ch3-priority-of-rules.ts"), 'export const ch3PriorityOfRulesSection = { sectionId: "ch3-priority-of-rules", blocks: [] };\n');
-  writeTempFile(join(moduleRoot, "ch3-right-of-way.ts"), 'export const ch3RightOfWaySection = { sectionId: "ch3-right-of-way", blocks: [] };\n');
-  writeTempFile(join(moduleRoot, "ch3-lights.ts"), 'export const ch3LightsSection = { sectionId: "ch3-lights", blocks: [] };\n');
-  writeTempFile(join(moduleRoot, "ch3-speed.ts"), 'export const ch3SpeedSection = { sectionId: "ch3-speed", blocks: [] };\n');
-  writeTempFile(join(moduleRoot, "ch3-turns.ts"), 'export const ch3TurnsSection = { sectionId: "ch3-turns", blocks: [] };\n');
-  writeTempFile(join(moduleRoot, "ch3-overtaking.ts"), 'export const ch3OvertakingSection = { sectionId: "ch3-overtaking", blocks: [] };\n');
-  writeTempFile(join(moduleRoot, "ch3-highways.ts"), 'export const ch3HighwaysSection = { sectionId: "ch3-highways", blocks: [] };\n');
-  writeTempFile(join(moduleRoot, "ch3-adverse-conditions.ts"), 'export const ch3AdverseConditionsSection = { sectionId: "ch3-adverse-conditions", blocks: [] };\n');
-  writeTempFile(join(moduleRoot, "ch3-stopping-parking.ts"), 'export const ch3StoppingParkingSection = { sectionId: "ch3-stopping-parking", blocks: [] };\n');
-  writeTempFile(join(moduleRoot, "ch4-alcohol-drugs.ts"), 'export const ch4AlcoholDrugsSection = { sectionId: "ch4-alcohol-drugs", blocks: [] };\n');
-  writeTempFile(join(moduleRoot, "ch4-sleep-fatigue.ts"), 'export const ch4SleepFatigueSection = { sectionId: "ch4-sleep-fatigue", blocks: [] };\n');
-  writeTempFile(join(moduleRoot, "ch4-stress.ts"), 'export const ch4StressSection = { sectionId: "ch4-stress", blocks: [] };\n');
-  writeTempFile(join(moduleRoot, "ch4-distractions.ts"), 'export const ch4DistractionsSection = { sectionId: "ch4-distractions", blocks: [] };\n');
-  writeTempFile(join(moduleRoot, "ch5-attitude-types.ts"), 'export const ch5AttitudeTypesSection = { sectionId: "ch5-attitude-types", blocks: [] };\n');
-  writeTempFile(join(moduleRoot, "ch5-equal-society.ts"), 'export const ch5EqualSocietySection = { sectionId: "ch5-equal-society", blocks: [] };\n');
-  writeTempFile(join(moduleRoot, "ch5-gender-violence-prevention.ts"), 'export const ch5GenderViolencePreventionSection = { sectionId: "ch5-gender-violence-prevention", blocks: [] };\n');
-  writeTempFile(join(moduleRoot, "ch5-anticipatory-efficient-driving.ts"), 'export const ch5AnticipatoryEfficientDrivingSection = { sectionId: "ch5-anticipatory-efficient-driving", blocks: [] };\n');
-  writeTempFile(join(moduleRoot, "app1-safety-elements.ts"), 'export const app1SafetyElementsSection = { sectionId: "app1-safety-elements", blocks: [] };\n');
-  writeTempFile(join(moduleRoot, "app1-other-required-safety-elements.ts"), 'export const app1OtherRequiredSafetyElementsSection = { sectionId: "app1-other-required-safety-elements", blocks: [] };\n');
-  writeTempFile(join(moduleRoot, "app1-recommended-safety-elements.ts"), 'export const app1RecommendedSafetyElementsSection = { sectionId: "app1-recommended-safety-elements", blocks: [] };\n');
-  writeTempFile(join(moduleRoot, "app2-social-responsibility.ts"), 'export const app2SocialResponsibilitySection = { sectionId: "app2-social-responsibility", blocks: [] };\n');
-  writeTempFile(join(moduleRoot, "app2-safety-elements.ts"), 'export const app2SafetyElementsSection = { sectionId: "app2-safety-elements", blocks: [] };\n');
-  writeTempFile(join(moduleRoot, "app2-driving-factors.ts"), 'export const app2DrivingFactorsSection = { sectionId: "app2-driving-factors", blocks: [] };\n');
-  writeTempFile(join(moduleRoot, "app2-safe-driving.ts"), 'export const app2SafeDrivingSection = { sectionId: "app2-safe-driving", blocks: [] };\n');
-  writeTempFile(join(moduleRoot, "app2-highways-hospitals.ts"), 'export const app2HighwaysHospitalsSection = { sectionId: "app2-highways-hospitals", blocks: [] };\n');
-  writeTempFile(join(moduleRoot, "app3-cargo-driver-profile.ts"), 'export const app3CargoDriverProfileSection = { sectionId: "app3-cargo-driver-profile", blocks: [] };\n');
-  writeTempFile(join(moduleRoot, "app3-social-responsibility.ts"), 'export const app3SocialResponsibilitySection = { sectionId: "app3-social-responsibility", blocks: [] };\n');
-  writeTempFile(join(moduleRoot, "app3-driving-factors.ts"), 'export const app3DrivingFactorsSection = { sectionId: "app3-driving-factors", blocks: [] };\n');
-  writeTempFile(join(moduleRoot, "app3-safe-driving.ts"), 'export const app3SafeDrivingSection = { sectionId: "app3-safe-driving", blocks: [] };\n');
-  writeTempFile(join(moduleRoot, "app3-safety-elements.ts"), 'export const app3SafetyElementsSection = { sectionId: "app3-safety-elements", blocks: [] };\n');
-  writeTempFile(join(moduleRoot, "app3-highways.ts"), 'export const app3HighwaysSection = { sectionId: "app3-highways", blocks: [] };\n');
-  writeTempFile(join(moduleRoot, "app4-signs-regulatory.ts"), 'export const app4SignsRegulatorySection = { sectionId: "app4-signs-regulatory", blocks: [] };\n');
-  writeTempFile(join(moduleRoot, "app4-signs-warning.ts"), 'export const app4SignsWarningSection = { sectionId: "app4-signs-warning", blocks: [] };\n');
-  writeTempFile(join(moduleRoot, "app4-signs-informational.ts"), 'export const app4SignsInformationalSection = { sectionId: "app4-signs-informational", blocks: [] };\n');
-  writeTempFile(join(moduleRoot, "app4-signs-temporary.ts"), 'export const app4SignsTemporarySection = { sectionId: "app4-signs-temporary", blocks: [] };\n');
-  writeTempFile(join(moduleRoot, "app4-signs-horizontal.ts"), 'export const app4SignsHorizontalSection = { sectionId: "app4-signs-horizontal", blocks: [] };\n');
-  writeTempFile(join(moduleRoot, "app4-signs-traffic-lights.ts"), 'export const app4SignsTrafficLightsSection = { sectionId: "app4-signs-traffic-lights", blocks: [] };\n');
+  writeTempFile(
+    join(moduleRoot, "ch2-legal-responsibility.ts"),
+    'export const ch2LegalResponsibilitySection = { sectionId: "ch2-legal-responsibility", blocks: [] };\n',
+  );
+  writeTempFile(
+    join(moduleRoot, "ch2-required-documents.ts"),
+    'export const ch2RequiredDocumentsSection = { sectionId: "ch2-required-documents", blocks: [] };\n',
+  );
+  writeTempFile(
+    join(moduleRoot, "ch2-incident-obligations.ts"),
+    'export const ch2IncidentObligationsSection = { sectionId: "ch2-incident-obligations", blocks: [] };\n',
+  );
+  writeTempFile(
+    join(moduleRoot, "ch2-scoring.ts"),
+    'export const ch2ScoringSection = { sectionId: "ch2-scoring", blocks: [] };\n',
+  );
+  writeTempFile(
+    join(moduleRoot, "ch3-priority-of-rules.ts"),
+    'export const ch3PriorityOfRulesSection = { sectionId: "ch3-priority-of-rules", blocks: [] };\n',
+  );
+  writeTempFile(
+    join(moduleRoot, "ch3-right-of-way.ts"),
+    'export const ch3RightOfWaySection = { sectionId: "ch3-right-of-way", blocks: [] };\n',
+  );
+  writeTempFile(
+    join(moduleRoot, "ch3-lights.ts"),
+    'export const ch3LightsSection = { sectionId: "ch3-lights", blocks: [] };\n',
+  );
+  writeTempFile(
+    join(moduleRoot, "ch3-speed.ts"),
+    'export const ch3SpeedSection = { sectionId: "ch3-speed", blocks: [] };\n',
+  );
+  writeTempFile(
+    join(moduleRoot, "ch3-turns.ts"),
+    'export const ch3TurnsSection = { sectionId: "ch3-turns", blocks: [] };\n',
+  );
+  writeTempFile(
+    join(moduleRoot, "ch3-overtaking.ts"),
+    'export const ch3OvertakingSection = { sectionId: "ch3-overtaking", blocks: [] };\n',
+  );
+  writeTempFile(
+    join(moduleRoot, "ch3-highways.ts"),
+    'export const ch3HighwaysSection = { sectionId: "ch3-highways", blocks: [] };\n',
+  );
+  writeTempFile(
+    join(moduleRoot, "ch3-adverse-conditions.ts"),
+    'export const ch3AdverseConditionsSection = { sectionId: "ch3-adverse-conditions", blocks: [] };\n',
+  );
+  writeTempFile(
+    join(moduleRoot, "ch3-stopping-parking.ts"),
+    'export const ch3StoppingParkingSection = { sectionId: "ch3-stopping-parking", blocks: [] };\n',
+  );
+  writeTempFile(
+    join(moduleRoot, "ch4-alcohol-drugs.ts"),
+    'export const ch4AlcoholDrugsSection = { sectionId: "ch4-alcohol-drugs", blocks: [] };\n',
+  );
+  writeTempFile(
+    join(moduleRoot, "ch4-sleep-fatigue.ts"),
+    'export const ch4SleepFatigueSection = { sectionId: "ch4-sleep-fatigue", blocks: [] };\n',
+  );
+  writeTempFile(
+    join(moduleRoot, "ch4-stress.ts"),
+    'export const ch4StressSection = { sectionId: "ch4-stress", blocks: [] };\n',
+  );
+  writeTempFile(
+    join(moduleRoot, "ch4-distractions.ts"),
+    'export const ch4DistractionsSection = { sectionId: "ch4-distractions", blocks: [] };\n',
+  );
+  writeTempFile(
+    join(moduleRoot, "ch5-attitude-types.ts"),
+    'export const ch5AttitudeTypesSection = { sectionId: "ch5-attitude-types", blocks: [] };\n',
+  );
+  writeTempFile(
+    join(moduleRoot, "ch5-equal-society.ts"),
+    'export const ch5EqualSocietySection = { sectionId: "ch5-equal-society", blocks: [] };\n',
+  );
+  writeTempFile(
+    join(moduleRoot, "ch5-gender-violence-prevention.ts"),
+    'export const ch5GenderViolencePreventionSection = { sectionId: "ch5-gender-violence-prevention", blocks: [] };\n',
+  );
+  writeTempFile(
+    join(moduleRoot, "ch5-anticipatory-efficient-driving.ts"),
+    'export const ch5AnticipatoryEfficientDrivingSection = { sectionId: "ch5-anticipatory-efficient-driving", blocks: [] };\n',
+  );
+  writeTempFile(
+    join(moduleRoot, "app1-safety-elements.ts"),
+    'export const app1SafetyElementsSection = { sectionId: "app1-safety-elements", blocks: [] };\n',
+  );
+  writeTempFile(
+    join(moduleRoot, "app1-other-required-safety-elements.ts"),
+    'export const app1OtherRequiredSafetyElementsSection = { sectionId: "app1-other-required-safety-elements", blocks: [] };\n',
+  );
+  writeTempFile(
+    join(moduleRoot, "app1-recommended-safety-elements.ts"),
+    'export const app1RecommendedSafetyElementsSection = { sectionId: "app1-recommended-safety-elements", blocks: [] };\n',
+  );
+  writeTempFile(
+    join(moduleRoot, "app2-social-responsibility.ts"),
+    'export const app2SocialResponsibilitySection = { sectionId: "app2-social-responsibility", blocks: [] };\n',
+  );
+  writeTempFile(
+    join(moduleRoot, "app2-safety-elements.ts"),
+    'export const app2SafetyElementsSection = { sectionId: "app2-safety-elements", blocks: [] };\n',
+  );
+  writeTempFile(
+    join(moduleRoot, "app2-driving-factors.ts"),
+    'export const app2DrivingFactorsSection = { sectionId: "app2-driving-factors", blocks: [] };\n',
+  );
+  writeTempFile(
+    join(moduleRoot, "app2-safe-driving.ts"),
+    'export const app2SafeDrivingSection = { sectionId: "app2-safe-driving", blocks: [] };\n',
+  );
+  writeTempFile(
+    join(moduleRoot, "app2-highways-hospitals.ts"),
+    'export const app2HighwaysHospitalsSection = { sectionId: "app2-highways-hospitals", blocks: [] };\n',
+  );
+  writeTempFile(
+    join(moduleRoot, "app3-cargo-driver-profile.ts"),
+    'export const app3CargoDriverProfileSection = { sectionId: "app3-cargo-driver-profile", blocks: [] };\n',
+  );
+  writeTempFile(
+    join(moduleRoot, "app3-social-responsibility.ts"),
+    'export const app3SocialResponsibilitySection = { sectionId: "app3-social-responsibility", blocks: [] };\n',
+  );
+  writeTempFile(
+    join(moduleRoot, "app3-driving-factors.ts"),
+    'export const app3DrivingFactorsSection = { sectionId: "app3-driving-factors", blocks: [] };\n',
+  );
+  writeTempFile(
+    join(moduleRoot, "app3-safe-driving.ts"),
+    'export const app3SafeDrivingSection = { sectionId: "app3-safe-driving", blocks: [] };\n',
+  );
+  writeTempFile(
+    join(moduleRoot, "app3-safety-elements.ts"),
+    'export const app3SafetyElementsSection = { sectionId: "app3-safety-elements", blocks: [] };\n',
+  );
+  writeTempFile(
+    join(moduleRoot, "app3-highways.ts"),
+    'export const app3HighwaysSection = { sectionId: "app3-highways", blocks: [] };\n',
+  );
+  writeTempFile(
+    join(moduleRoot, "app4-signs-regulatory.ts"),
+    'export const app4SignsRegulatorySection = { sectionId: "app4-signs-regulatory", blocks: [] };\n',
+  );
+  writeTempFile(
+    join(moduleRoot, "app4-signs-warning.ts"),
+    'export const app4SignsWarningSection = { sectionId: "app4-signs-warning", blocks: [] };\n',
+  );
+  writeTempFile(
+    join(moduleRoot, "app4-signs-informational.ts"),
+    'export const app4SignsInformationalSection = { sectionId: "app4-signs-informational", blocks: [] };\n',
+  );
+  writeTempFile(
+    join(moduleRoot, "app4-signs-temporary.ts"),
+    'export const app4SignsTemporarySection = { sectionId: "app4-signs-temporary", blocks: [] };\n',
+  );
+  writeTempFile(
+    join(moduleRoot, "app4-signs-horizontal.ts"),
+    'export const app4SignsHorizontalSection = { sectionId: "app4-signs-horizontal", blocks: [] };\n',
+  );
+  writeTempFile(
+    join(moduleRoot, "app4-signs-traffic-lights.ts"),
+    'export const app4SignsTrafficLightsSection = { sectionId: "app4-signs-traffic-lights", blocks: [] };\n',
+  );
   writeFileSync(implementedRegistryPath, JSON.stringify(implementedRegistry, null, 2));
   const fixtureEvidencePath = join(tempDir, "manual-guide-source-fidelity.fixture.evidence.json");
   const fixtureEvidence = JSON.parse(JSON.stringify(evidence));
   fixtureEvidence.strictVisualRulePolicy.legacyBaselineEvidenceFingerprints = {
     ...fixtureEvidence.strictVisualRulePolicy.legacyBaselineEvidenceFingerprints,
-    "ch1-pedestrian-priority": sha256Json(section.implementationEvidence)
+    "ch1-pedestrian-priority": sha256Json(section.implementationEvidence),
   };
   fixtureEvidence.strictVisualRulePolicy.legacyBaselineStateFingerprints = {
     ...fixtureEvidence.strictVisualRulePolicy.legacyBaselineStateFingerprints,
-    "ch1-pedestrian-priority": legacyBaselineStateFingerprint(section, section.implementationEvidence, moduleRoot)
+    "ch1-pedestrian-priority": legacyBaselineStateFingerprint(
+      section,
+      section.implementationEvidence,
+      moduleRoot,
+    ),
   };
   writeFileSync(fixtureEvidencePath, JSON.stringify(fixtureEvidence, null, 2));
   fixtureEvidencePaths.set(implementedRegistryPath, fixtureEvidencePath);
@@ -667,15 +902,16 @@ function writeImplementedRegistryFixture(tempDir, moduleSource, mutateEvidence =
 }
 
 function runCheckerWithFixture(registryFixturePath, moduleRoot, evidenceFixturePath) {
-  const resolvedEvidencePath = evidenceFixturePath ?? fixtureEvidencePaths.get(registryFixturePath) ?? evidencePath;
+  const resolvedEvidencePath =
+    evidenceFixturePath ?? fixtureEvidencePaths.get(registryFixturePath) ?? evidencePath;
   return spawnSync(process.execPath, ["scripts/manual-guide-source-fidelity.mjs"], {
     encoding: "utf8",
     env: {
       ...process.env,
       MANUAL_GUIDE_REGISTRY_PATH: registryFixturePath,
       MANUAL_GUIDE_EVIDENCE_PATH: resolvedEvidencePath,
-      MANUAL_GUIDE_SECTION_MODULE_ROOT: moduleRoot
-    }
+      MANUAL_GUIDE_SECTION_MODULE_ROOT: moduleRoot,
+    },
   });
 }
 
@@ -689,7 +925,7 @@ function addStrictVisualEvidenceFields(implementationEvidence) {
     sourceRegion.extractionScaleEvidence = {
       target: "x5-zoom-source-export",
       method: "fixture x5 zoom/source export",
-      outputDimensions: sourceRegion.cropDimensions
+      outputDimensions: sourceRegion.cropDimensions,
     };
   }
   implementationEvidence.localAssetMetadata[0] = {
@@ -702,13 +938,13 @@ function addStrictVisualEvidenceFields(implementationEvidence) {
       method: "fixture x5 zoom/source export",
       outputDimensions: {
         width: implementationEvidence.localAssetMetadata[0].width,
-        height: implementationEvidence.localAssetMetadata[0].height
-      }
+        height: implementationEvidence.localAssetMetadata[0].height,
+      },
     },
     runtimeDisplaySize: {
       maxWidthCssPx: 60,
       maxHeightCssPx: 40,
-      noUpscale: true
+      noUpscale: true,
     },
     sha256: sha256File(implementationEvidence.localAssetMetadata[0].assetPath),
     infographicTransfer: {
@@ -728,10 +964,10 @@ function addStrictVisualEvidenceFields(implementationEvidence) {
           xPct: 10,
           yPct: 12,
           widthPct: 40,
-          heightPct: 12
-        }
-      ]
-    }
+          heightPct: 12,
+        },
+      ],
+    },
   };
   implementationEvidence.localAssetMetadata[1] = {
     ...implementationEvidence.localAssetMetadata[1],
@@ -745,13 +981,13 @@ function addStrictVisualEvidenceFields(implementationEvidence) {
       method: "fixture source-native crop",
       outputDimensions: {
         width: implementationEvidence.localAssetMetadata[1].width,
-        height: implementationEvidence.localAssetMetadata[1].height
-      }
+        height: implementationEvidence.localAssetMetadata[1].height,
+      },
     },
     runtimeDisplaySize: {
       maxWidthCssPx: 45,
       maxHeightCssPx: 30,
-      noUpscale: true
+      noUpscale: true,
     },
     sha256: sha256File(implementationEvidence.localAssetMetadata[1].assetPath),
     sourceIntegrity: {
@@ -759,14 +995,14 @@ function addStrictVisualEvidenceFields(implementationEvidence) {
       sourceAssetPath: implementationEvidence.sourceRegionMetadata[1].sourceAssetPath,
       noTranslationOrRelabeling: true,
       noRedrawRecolorCleanupRetouchMaskInpaint: true,
-      russianExplanationOutsideImage: true
+      russianExplanationOutsideImage: true,
     },
     sourceImageException: {
       kind: "source-image-original-visible-text",
       visibleSpanishScope: "source-image-only",
       sourceAsIs: true,
-      russianExplanationOutsideImage: true
-    }
+      russianExplanationOutsideImage: true,
+    },
   };
   implementationEvidence.visibleSpanishStatus = {
     status: "source_image_exceptions_only",
@@ -777,9 +1013,9 @@ function addStrictVisualEvidenceFields(implementationEvidence) {
         kind: "source-image-original-visible-text",
         visibleSpanishScope: "source-image-only",
         sourceAsIs: true,
-        russianExplanationOutsideImage: true
-      }
-    ]
+        russianExplanationOutsideImage: true,
+      },
+    ],
   };
 }
 
@@ -790,7 +1026,7 @@ function writeStrictFutureRegistryFixture(tempDir, mutateEvidence = () => {}) {
     (implementationEvidence) => {
       addStrictVisualEvidenceFields(implementationEvidence);
       mutateEvidence(implementationEvidence);
-    }
+    },
   );
   const strictRegistry = JSON.parse(readFileSync(implementedRegistryPath, "utf8"));
   strictRegistry.featureId = "031-manual-document-completion";
@@ -812,10 +1048,13 @@ function writeStrictFutureRegistryFixture(tempDir, mutateEvidence = () => {}) {
   return { implementedRegistryPath, moduleRoot, strictEvidencePath };
 }
 
-function writeChapter2LegalResponsibilityFixture(tempDir, { strict = false, mutateEvidence = () => {} } = {}) {
+function writeChapter2LegalResponsibilityFixture(
+  tempDir,
+  { strict = false, mutateEvidence = () => {} } = {},
+) {
   const { implementedRegistryPath, moduleRoot } = writeImplementedRegistryFixture(
     tempDir,
-    'export const ch1PedestrianPriority = { sectionId: "ch1-pedestrian-priority", blocks: [] };\n'
+    'export const ch1PedestrianPriority = { sectionId: "ch1-pedestrian-priority", blocks: [] };\n',
   );
   const fixtureRegistry = JSON.parse(readFileSync(implementedRegistryPath, "utf8"));
   const section = fixtureRegistry.sections.find((entry) => entry.id === "ch2-legal-responsibility");
@@ -829,11 +1068,15 @@ function writeChapter2LegalResponsibilityFixture(tempDir, { strict = false, muta
       {
         sourcePage: 44,
         sourceRegion: { x: 0, y: 0, width: 120, height: 80 },
-        sourceAssetPath: writePngFixtureFile(join(tempDir, "evidence", "source-crop-44.png"), 120, 80),
+        sourceAssetPath: writePngFixtureFile(
+          join(tempDir, "evidence", "source-crop-44.png"),
+          120,
+          80,
+        ),
         cropDimensions: { width: 120, height: 80 },
         cropSha256: "fixture-source-crop-44-sha",
-        cleanupScope: "reference-only source crop"
-      }
+        cleanupScope: "reference-only source crop",
+      },
     ],
     localAssetMetadata: [
       {
@@ -841,10 +1084,14 @@ function writeChapter2LegalResponsibilityFixture(tempDir, { strict = false, muta
         assetKind: "native-dom-text-only",
         assetCategory: "native-dom-text-only",
         containsText: true,
-        visibleSpanish: false
+        visibleSpanish: false,
       },
       {
-        assetPath: writePngFixtureFile(join(tempDir, "assets", "ch2-legal-responsibility-reference.png"), 120, 80),
+        assetPath: writePngFixtureFile(
+          join(tempDir, "assets", "ch2-legal-responsibility-reference.png"),
+          120,
+          80,
+        ),
         assetKind: "source-transferred-diagram",
         assetCategory: "source-transferred-diagram",
         width: 120,
@@ -857,40 +1104,49 @@ function writeChapter2LegalResponsibilityFixture(tempDir, { strict = false, muta
           method: "fixture x5 zoom/source export",
           outputDimensions: {
             width: 120,
-            height: 80
-          }
+            height: 80,
+          },
         },
         runtimeDisplaySize: {
           maxWidthCssPx: 60,
           maxHeightCssPx: 40,
-          noUpscale: true
-        }
-      }
+          noUpscale: true,
+        },
+      },
     ],
     visibleSpanishStatus: "none",
     selectableTextStatus: "pass",
-    desktopScreenshot: writeTempFile(join(tempDir, "screenshots", "ch2-legal-responsibility-desktop.png")),
-    mobileScreenshot: writeTempFile(join(tempDir, "screenshots", "ch2-legal-responsibility-mobile.png")),
+    desktopScreenshot: writeTempFile(
+      join(tempDir, "screenshots", "ch2-legal-responsibility-desktop.png"),
+    ),
+    mobileScreenshot: writeTempFile(
+      join(tempDir, "screenshots", "ch2-legal-responsibility-mobile.png"),
+    ),
     boundingBoxChecks: [{ id: "fixture", status: "pass" }],
     forbiddenPatternScan: { status: "pass" },
     visualReviewNotes: ["fixture evidence only"],
-    checkerResult: "pass"
+    checkerResult: "pass",
   };
   if (strict) {
     section.implementationEvidence.visualEvidenceSchemaVersion = 3;
     section.implementationEvidence.visualRulePolicyId = "031-strict-source-fidelity";
-    section.implementationEvidence.highResolutionEvidenceStatus = "x5-or-equivalent-no-upscale-recorded";
+    section.implementationEvidence.highResolutionEvidenceStatus =
+      "x5-or-equivalent-no-upscale-recorded";
     section.implementationEvidence.localAssetMetadata[1].cleanupScope = "none-source-as-is";
-    section.implementationEvidence.localAssetMetadata[1].sha256 = sha256File(section.implementationEvidence.localAssetMetadata[1].assetPath);
+    section.implementationEvidence.localAssetMetadata[1].sha256 = sha256File(
+      section.implementationEvidence.localAssetMetadata[1].assetPath,
+    );
     section.implementationEvidence.localAssetMetadata[1].diagramTransfer = {
       sourceDiagramTransfer: true,
       sourceAssetPath: section.implementationEvidence.sourceRegionMetadata[0].sourceAssetPath,
-      sourceCropSha256: sha256File(section.implementationEvidence.sourceRegionMetadata[0].sourceAssetPath),
+      sourceCropSha256: sha256File(
+        section.implementationEvidence.sourceRegionMetadata[0].sourceAssetPath,
+      ),
       sourceCropDimensions: section.implementationEvidence.sourceRegionMetadata[0].cropDimensions,
       noApproximateRedraw: true,
       noReconstruction: true,
       noGenericIconReplacement: true,
-      broadMaskPlatePatchStatus: "none"
+      broadMaskPlatePatchStatus: "none",
     };
     for (const sourceRegion of section.implementationEvidence.sourceRegionMetadata) {
       sourceRegion.cleanupScope = "glyph-level-spanish-cleanup";
@@ -898,51 +1154,75 @@ function writeChapter2LegalResponsibilityFixture(tempDir, { strict = false, muta
       sourceRegion.extractionScaleEvidence = {
         target: "x5-zoom-source-export",
         method: "fixture x5 zoom/source export",
-        outputDimensions: sourceRegion.cropDimensions
+        outputDimensions: sourceRegion.cropDimensions,
       };
     }
   }
   mutateEvidence(section.implementationEvidence);
-  writeTempFile(join(moduleRoot, "ch2-legal-responsibility.ts"), "export const ch2LegalResponsibilitySection = { sectionId: \"ch2-legal-responsibility\", blocks: [] };\n");
+  writeTempFile(
+    join(moduleRoot, "ch2-legal-responsibility.ts"),
+    'export const ch2LegalResponsibilitySection = { sectionId: "ch2-legal-responsibility", blocks: [] };\n',
+  );
   writeFileSync(implementedRegistryPath, JSON.stringify(fixtureRegistry, null, 2));
   return { implementedRegistryPath, moduleRoot };
 }
 
 test("Front matter, Chapter 1, 2, 3, 4, 5, Appendix I, Appendix II, Appendix III, and Appendix IV registry contains source Índice sections and skipped divider metadata", () => {
-  assert.equal(existsSync(oldPageRegistryPath), false, "page-based Chapter 1/2 registry was removed");
+  assert.equal(
+    existsSync(oldPageRegistryPath),
+    false,
+    "page-based Chapter 1/2 registry was removed",
+  );
   assert.equal(registry.schemaVersion, 2);
   assert.equal(registry.manualId, "gcba-manual-vehiculo-4-ruedas-2023");
   assert.equal(registry.featureId, "031-manual-document-completion");
   assert.deepEqual(registry.sourcePageRange, { start: 1, end: 200 });
-  assert.equal(Object.hasOwn(registry, "pages"), false, "registry must not expose raw PDF page entries");
-  assert.deepEqual(registry.skippedSourcePages.map((entry) => entry.sourcePage), [1, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 43, 56, 57, 89, 98, 104, 152, 184]);
-  assert.deepEqual(registry.skippedSourcePages.map((entry) => entry.reason), [
-    "front-title-navigation-only",
-    "front-index-navigation-only",
-    "front-index-navigation-only",
-    "introduction-owned-by-existing-runtime",
-    "introduction-owned-by-existing-runtime",
-    "introduction-owned-by-existing-runtime",
-    "introduction-owned-by-existing-runtime",
-    "introduction-owned-by-existing-runtime",
-    "introduction-owned-by-existing-runtime",
-    "introduction-owned-by-existing-runtime",
-    "chapter-divider-only",
-    "chapter-divider-only",
-    "chapter-closing-slogan-only",
-    "chapter-divider-only",
-    "chapter-divider-only",
-    "chapter-divider-only",
-    "chapter-divider-only",
-    "chapter-divider-only",
-    "chapter-divider-only"
-  ]);
+  assert.equal(
+    Object.hasOwn(registry, "pages"),
+    false,
+    "registry must not expose raw PDF page entries",
+  );
+  assert.deepEqual(
+    registry.skippedSourcePages.map((entry) => entry.sourcePage),
+    [1, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 43, 56, 57, 89, 98, 104, 152, 184],
+  );
+  assert.deepEqual(
+    registry.skippedSourcePages.map((entry) => entry.reason),
+    [
+      "front-title-navigation-only",
+      "front-index-navigation-only",
+      "front-index-navigation-only",
+      "introduction-owned-by-existing-runtime",
+      "introduction-owned-by-existing-runtime",
+      "introduction-owned-by-existing-runtime",
+      "introduction-owned-by-existing-runtime",
+      "introduction-owned-by-existing-runtime",
+      "introduction-owned-by-existing-runtime",
+      "introduction-owned-by-existing-runtime",
+      "chapter-divider-only",
+      "chapter-divider-only",
+      "chapter-closing-slogan-only",
+      "chapter-divider-only",
+      "chapter-divider-only",
+      "chapter-divider-only",
+      "chapter-divider-only",
+      "chapter-divider-only",
+      "chapter-divider-only",
+    ],
+  );
 
-  assert.deepEqual(registry.sections.map((section) => section.id), evidence.expectedSectionIds);
+  assert.deepEqual(
+    registry.sections.map((section) => section.id),
+    evidence.expectedSectionIds,
+  );
   for (const section of registry.sections) {
     const expectedRange = evidence.expectedSectionRanges[section.id];
     const sourcePages = sourcePagesForRange(expectedRange.start, expectedRange.end);
-    assert.deepEqual(section.sourcePageRange, expectedRange, `${section.id} source range follows source Índice`);
+    assert.deepEqual(
+      section.sourcePageRange,
+      expectedRange,
+      `${section.id} source range follows source Índice`,
+    );
     assert.equal(section.routeHash, `#manual-section-${section.id}`);
     assert.equal(section.sectionContentModulePath, `src/data/manual-sections/${section.id}.ts`);
     if (implementedSectionIds.has(section.id)) {
@@ -951,9 +1231,17 @@ test("Front matter, Chapter 1, 2, 3, 4, 5, Appendix I, Appendix II, Appendix III
       assert.equal(section.visualEvidenceStatus, "recorded");
       assert.equal(section.implementationEvidence.sectionId, section.id);
       assert.deepEqual(section.implementationEvidence.sourcePages, sourcePages);
-      assert.equal(existsSync(section.sectionContentModulePath), true, `${section.id} section module exists`);
+      assert.equal(
+        existsSync(section.sectionContentModulePath),
+        true,
+        `${section.id} section module exists`,
+      );
     } else {
-      assert.equal(section.status, "pending", `${section.id} remains pending for a later section PR`);
+      assert.equal(
+        section.status,
+        "pending",
+        `${section.id} remains pending for a later section PR`,
+      );
       assert.equal(section.sourceRegionMetadataStatus, "pending_until_section_pr");
       assert.equal(section.visualEvidenceStatus, "pending_until_section_pr");
     }
@@ -961,40 +1249,101 @@ test("Front matter, Chapter 1, 2, 3, 4, 5, Appendix I, Appendix II, Appendix III
     assert.doesNotMatch(section.routeHash, /^#manual-page-/u);
     assert.doesNotMatch(section.sectionContentModulePath, /src\/data\/manual-pages\//u);
 
-    assert.deepEqual(section.sourcePages.map((entry) => entry.sourcePage), sourcePages);
-    assert.equal(sourcePages.includes(1), false, `${section.id} does not include title-only front-matter page 1`);
-    assert.equal(sourcePages.includes(12), false, `${section.id} does not include source-index page 12`);
-    assert.equal(sourcePages.includes(13), false, `${section.id} does not include source-index page 13`);
+    assert.deepEqual(
+      section.sourcePages.map((entry) => entry.sourcePage),
+      sourcePages,
+    );
+    assert.equal(
+      sourcePages.includes(1),
+      false,
+      `${section.id} does not include title-only front-matter page 1`,
+    );
+    assert.equal(
+      sourcePages.includes(12),
+      false,
+      `${section.id} does not include source-index page 12`,
+    );
+    assert.equal(
+      sourcePages.includes(13),
+      false,
+      `${section.id} does not include source-index page 13`,
+    );
     assert.equal(sourcePages.includes(21), false, `${section.id} does not include divider page 21`);
     assert.equal(sourcePages.includes(43), false, `${section.id} does not include divider page 43`);
-    assert.equal(sourcePages.includes(56), false, `${section.id} does not include page 56 closing slogan as section content`);
+    assert.equal(
+      sourcePages.includes(56),
+      false,
+      `${section.id} does not include page 56 closing slogan as section content`,
+    );
     assert.equal(sourcePages.includes(57), false, `${section.id} does not include divider page 57`);
     assert.equal(sourcePages.includes(89), false, `${section.id} does not include divider page 89`);
     assert.equal(sourcePages.includes(98), false, `${section.id} does not include divider page 98`);
-    assert.equal(sourcePages.includes(104), false, `${section.id} does not include Appendix I divider page 104`);
-    assert.equal(sourcePages.includes(152), false, `${section.id} does not include Appendix III divider page 152`);
-    assert.equal(sourcePages.includes(184), false, `${section.id} does not include Appendix IV divider page 184`);
+    assert.equal(
+      sourcePages.includes(104),
+      false,
+      `${section.id} does not include Appendix I divider page 104`,
+    );
+    assert.equal(
+      sourcePages.includes(152),
+      false,
+      `${section.id} does not include Appendix III divider page 152`,
+    );
+    assert.equal(
+      sourcePages.includes(184),
+      false,
+      `${section.id} does not include Appendix IV divider page 184`,
+    );
     if (section.id === "app2-social-responsibility") {
-      assert.equal(sourcePages.includes(123), true, "app2-social-responsibility owns Appendix II page 123 content");
+      assert.equal(
+        sourcePages.includes(123),
+        true,
+        "app2-social-responsibility owns Appendix II page 123 content",
+      );
     } else {
-      assert.equal(sourcePages.includes(123), false, `${section.id} does not include Appendix II page 123 content`);
+      assert.equal(
+        sourcePages.includes(123),
+        false,
+        `${section.id} does not include Appendix II page 123 content`,
+      );
     }
     if (Object.hasOwn(section, "topicNavigationStartPage")) {
       assert.ok(
-        section.topicNavigationStartPage >= section.sourcePageRange.start && section.topicNavigationStartPage <= section.sourcePageRange.end,
-        `${section.id} topic navigation start override stays inside its source range`
+        section.topicNavigationStartPage >= section.sourcePageRange.start &&
+          section.topicNavigationStartPage <= section.sourcePageRange.end,
+        `${section.id} topic navigation start override stays inside its source range`,
       );
     }
 
     for (const sourcePageEntry of section.sourcePages) {
-      assert.equal(sourcePageEntry.manualManifestPointer, `/pages/${sourcePageEntry.sourcePage - 1}`);
-      assert.equal(sourcePageEntry.layoutManifestPointer, `/pages/${sourcePageEntry.sourcePage - 1}`);
+      assert.equal(
+        sourcePageEntry.manualManifestPointer,
+        `/pages/${sourcePageEntry.sourcePage - 1}`,
+      );
+      assert.equal(
+        sourcePageEntry.layoutManifestPointer,
+        `/pages/${sourcePageEntry.sourcePage - 1}`,
+      );
       assert.equal(sourcePageEntry.referenceAsset, sourcePageAssetPath(sourcePageEntry.sourcePage));
-      assert.equal(existsSync(sourcePageEntry.referenceAsset), true, `${section.id} local source render exists for ${sourcePageEntry.sourcePage}`);
+      assert.equal(
+        existsSync(sourcePageEntry.referenceAsset),
+        true,
+        `${section.id} local source render exists for ${sourcePageEntry.sourcePage}`,
+      );
     }
 
-    for (const forbiddenField of ["blocks", "bodyRu", "contentRu", "implementedContentPath", "screenshotPath", "sourceCropPath"]) {
-      assert.equal(Object.hasOwn(section, forbiddenField), false, `${section.id} must not carry fake section content field ${forbiddenField}`);
+    for (const forbiddenField of [
+      "blocks",
+      "bodyRu",
+      "contentRu",
+      "implementedContentPath",
+      "screenshotPath",
+      "sourceCropPath",
+    ]) {
+      assert.equal(
+        Object.hasOwn(section, forbiddenField),
+        false,
+        `${section.id} must not carry fake section content field ${forbiddenField}`,
+      );
     }
   }
 });
@@ -1013,31 +1362,43 @@ test("Front matter, Chapter 1, 2, 3, 4, 5, Appendix I, Appendix II, Appendix III
       "appendix-1-private-cars",
       "appendix-2-passenger-transport",
       "appendix-3-cargo",
-      "appendix-4-road-signs"
-    ]
+      "appendix-4-road-signs",
+    ],
   );
   assert.deepEqual(registry.chapters[0].sectionIds, [
     "front-presentation",
     "front-categories",
-    "front-glossary"
+    "front-glossary",
   ]);
-  assert.equal(registry.chapters[0].status, "active", "Front matter is active after learner-useful support sections are implemented");
+  assert.equal(
+    registry.chapters[0].status,
+    "active",
+    "Front matter is active after learner-useful support sections are implemented",
+  );
   assert.deepEqual(registry.chapters[1].sectionIds, [
     "ch1-cities-for-people",
     "ch1-sustainable-mobility",
     "ch1-pedestrian-priority",
     "ch1-bicycle",
     "ch1-public-transport-system",
-    "ch1-shared-trip"
+    "ch1-shared-trip",
   ]);
-  assert.equal(registry.chapters[1].status, "active", "Chapter 1 is active after every Chapter 1 section is implemented");
+  assert.equal(
+    registry.chapters[1].status,
+    "active",
+    "Chapter 1 is active after every Chapter 1 section is implemented",
+  );
   assert.deepEqual(registry.chapters[2].sectionIds, [
     "ch2-legal-responsibility",
     "ch2-required-documents",
     "ch2-incident-obligations",
-    "ch2-scoring"
+    "ch2-scoring",
   ]);
-  assert.equal(registry.chapters[2].status, "active", "Chapter 2 is active after every Chapter 2 section is implemented");
+  assert.equal(
+    registry.chapters[2].status,
+    "active",
+    "Chapter 2 is active after every Chapter 2 section is implemented",
+  );
   assert.deepEqual(registry.chapters[3].sectionIds, [
     "ch3-priority-of-rules",
     "ch3-right-of-way",
@@ -1047,88 +1408,189 @@ test("Front matter, Chapter 1, 2, 3, 4, 5, Appendix I, Appendix II, Appendix III
     "ch3-overtaking",
     "ch3-highways",
     "ch3-adverse-conditions",
-    "ch3-stopping-parking"
+    "ch3-stopping-parking",
   ]);
-  assert.equal(registry.chapters[3].status, "active", "Chapter 3 is active after every Chapter 3 section is implemented");
+  assert.equal(
+    registry.chapters[3].status,
+    "active",
+    "Chapter 3 is active after every Chapter 3 section is implemented",
+  );
   assert.deepEqual(registry.chapters[4].sectionIds, [
     "ch4-alcohol-drugs",
     "ch4-sleep-fatigue",
     "ch4-stress",
-    "ch4-distractions"
+    "ch4-distractions",
   ]);
-  assert.equal(registry.chapters[4].status, "active", "Chapter 4 is active after every Chapter 4 section is implemented");
+  assert.equal(
+    registry.chapters[4].status,
+    "active",
+    "Chapter 4 is active after every Chapter 4 section is implemented",
+  );
   assert.deepEqual(registry.chapters[5].sectionIds, [
     "ch5-attitude-types",
     "ch5-equal-society",
     "ch5-gender-violence-prevention",
-    "ch5-anticipatory-efficient-driving"
+    "ch5-anticipatory-efficient-driving",
   ]);
-  assert.equal(registry.chapters[5].status, "active", "Chapter 5 is active after every Chapter 5 section is implemented");
+  assert.equal(
+    registry.chapters[5].status,
+    "active",
+    "Chapter 5 is active after every Chapter 5 section is implemented",
+  );
   assert.deepEqual(registry.chapters[6].sectionIds, [
     "app1-safety-elements",
     "app1-other-required-safety-elements",
-    "app1-recommended-safety-elements"
+    "app1-recommended-safety-elements",
   ]);
-  assert.equal(registry.chapters[6].status, "active", "Appendix I is active after every Appendix I section is implemented");
+  assert.equal(
+    registry.chapters[6].status,
+    "active",
+    "Appendix I is active after every Appendix I section is implemented",
+  );
   assert.deepEqual(registry.chapters[7].sectionIds, [
     "app2-social-responsibility",
     "app2-safety-elements",
     "app2-driving-factors",
     "app2-safe-driving",
-    "app2-highways-hospitals"
+    "app2-highways-hospitals",
   ]);
-  assert.equal(registry.chapters[7].status, "active", "Appendix II is active after every Appendix II section is implemented");
+  assert.equal(
+    registry.chapters[7].status,
+    "active",
+    "Appendix II is active after every Appendix II section is implemented",
+  );
   assert.deepEqual(registry.chapters[8].sectionIds, [
     "app3-cargo-driver-profile",
     "app3-social-responsibility",
     "app3-driving-factors",
     "app3-safe-driving",
     "app3-safety-elements",
-    "app3-highways"
+    "app3-highways",
   ]);
-  assert.equal(registry.chapters[8].status, "active", "Appendix III is active after every Appendix III section is implemented");
+  assert.equal(
+    registry.chapters[8].status,
+    "active",
+    "Appendix III is active after every Appendix III section is implemented",
+  );
   assert.deepEqual(registry.chapters[9].sectionIds, [
     "app4-signs-regulatory",
     "app4-signs-warning",
     "app4-signs-informational",
     "app4-signs-temporary",
     "app4-signs-horizontal",
-    "app4-signs-traffic-lights"
+    "app4-signs-traffic-lights",
   ]);
-  assert.equal(registry.chapters[9].status, "active", "Appendix IV is active after every Appendix IV section is implemented");
+  assert.equal(
+    registry.chapters[9].status,
+    "active",
+    "Appendix IV is active after every Appendix IV section is implemented",
+  );
 
-  const sectionStatusById = new Map(registry.sections.map((section) => [section.id, section.status]));
-  assert.ok(registry.chapters[0].sectionIds.every((sectionId) => sectionStatusById.get(sectionId) === "implemented"), "all front-matter support child sections are implemented");
-  assert.ok(registry.chapters[1].sectionIds.every((sectionId) => sectionStatusById.get(sectionId) === "implemented"), "all Chapter 1 child sections are implemented");
-  assert.ok(registry.chapters[2].sectionIds.every((sectionId) => sectionStatusById.get(sectionId) === "implemented"), "all Chapter 2 child sections are implemented");
-  assert.ok(registry.chapters[3].sectionIds.every((sectionId) => sectionStatusById.get(sectionId) === "implemented"), "all Chapter 3 child sections are implemented");
-  assert.ok(registry.chapters[4].sectionIds.every((sectionId) => sectionStatusById.get(sectionId) === "implemented"), "all Chapter 4 child sections are implemented");
-  assert.ok(registry.chapters[5].sectionIds.every((sectionId) => sectionStatusById.get(sectionId) === "implemented"), "all Chapter 5 child sections are implemented");
-  assert.ok(registry.chapters[6].sectionIds.every((sectionId) => sectionStatusById.get(sectionId) === "implemented"), "all Appendix I child sections are implemented");
-  assert.ok(registry.chapters[7].sectionIds.every((sectionId) => sectionStatusById.get(sectionId) === "implemented"), "all Appendix II child sections are implemented");
-  assert.ok(registry.chapters[8].sectionIds.every((sectionId) => sectionStatusById.get(sectionId) === "implemented"), "all Appendix III child sections are implemented");
-  assert.ok(registry.chapters[9].sectionIds.every((sectionId) => sectionStatusById.get(sectionId) === "implemented"), "all Appendix IV child sections are implemented");
+  const sectionStatusById = new Map(
+    registry.sections.map((section) => [section.id, section.status]),
+  );
+  assert.ok(
+    registry.chapters[0].sectionIds.every(
+      (sectionId) => sectionStatusById.get(sectionId) === "implemented",
+    ),
+    "all front-matter support child sections are implemented",
+  );
+  assert.ok(
+    registry.chapters[1].sectionIds.every(
+      (sectionId) => sectionStatusById.get(sectionId) === "implemented",
+    ),
+    "all Chapter 1 child sections are implemented",
+  );
+  assert.ok(
+    registry.chapters[2].sectionIds.every(
+      (sectionId) => sectionStatusById.get(sectionId) === "implemented",
+    ),
+    "all Chapter 2 child sections are implemented",
+  );
+  assert.ok(
+    registry.chapters[3].sectionIds.every(
+      (sectionId) => sectionStatusById.get(sectionId) === "implemented",
+    ),
+    "all Chapter 3 child sections are implemented",
+  );
+  assert.ok(
+    registry.chapters[4].sectionIds.every(
+      (sectionId) => sectionStatusById.get(sectionId) === "implemented",
+    ),
+    "all Chapter 4 child sections are implemented",
+  );
+  assert.ok(
+    registry.chapters[5].sectionIds.every(
+      (sectionId) => sectionStatusById.get(sectionId) === "implemented",
+    ),
+    "all Chapter 5 child sections are implemented",
+  );
+  assert.ok(
+    registry.chapters[6].sectionIds.every(
+      (sectionId) => sectionStatusById.get(sectionId) === "implemented",
+    ),
+    "all Appendix I child sections are implemented",
+  );
+  assert.ok(
+    registry.chapters[7].sectionIds.every(
+      (sectionId) => sectionStatusById.get(sectionId) === "implemented",
+    ),
+    "all Appendix II child sections are implemented",
+  );
+  assert.ok(
+    registry.chapters[8].sectionIds.every(
+      (sectionId) => sectionStatusById.get(sectionId) === "implemented",
+    ),
+    "all Appendix III child sections are implemented",
+  );
+  assert.ok(
+    registry.chapters[9].sectionIds.every(
+      (sectionId) => sectionStatusById.get(sectionId) === "implemented",
+    ),
+    "all Appendix IV child sections are implemented",
+  );
 
   for (const chapter of registry.chapters) {
-    assert.equal(Object.hasOwn(chapter, "chapterPageIds"), false, `${chapter.id} skips divider-only page ids`);
-    assert.equal(Object.hasOwn(chapter, "topics"), false, `${chapter.id} no longer stores page-based topic records`);
+    assert.equal(
+      Object.hasOwn(chapter, "chapterPageIds"),
+      false,
+      `${chapter.id} skips divider-only page ids`,
+    );
+    assert.equal(
+      Object.hasOwn(chapter, "topics"),
+      false,
+      `${chapter.id} no longer stores page-based topic records`,
+    );
   }
 
-  const topicSourceTitles = new Map(registry.sections.map((section) => [section.id, section.sourceTitleEs]));
+  const topicSourceTitles = new Map(
+    registry.sections.map((section) => [section.id, section.sourceTitleEs]),
+  );
   assert.equal(topicSourceTitles.get("front-presentation"), "Presentación");
   assert.equal(topicSourceTitles.get("front-categories"), "Material por categorías");
   assert.equal(topicSourceTitles.get("front-glossary"), "Glosario");
   const inPageLegalHeading = ["Responsabilidad", "jurídica"].join(" ");
   assert.equal(topicSourceTitles.get("ch2-legal-responsibility"), "Responsabilidades legales");
-  assert.equal(topicSourceTitles.get("app1-recommended-safety-elements"), "Elementos de seguridad recomendables");
-  assert.equal(topicSourceTitles.get("app2-driving-factors"), "Factores que intervienen en la conduccion");
+  assert.equal(
+    topicSourceTitles.get("app1-recommended-safety-elements"),
+    "Elementos de seguridad recomendables",
+  );
+  assert.equal(
+    topicSourceTitles.get("app2-driving-factors"),
+    "Factores que intervienen en la conduccion",
+  );
   assert.equal(topicSourceTitles.get("app2-safe-driving"), "Conduccion segura");
   assert.equal([...topicSourceTitles.values()].includes("Presentacion"), false);
   assert.equal([...topicSourceTitles.values()].includes("Material por categorias"), false);
-  assert.equal([...topicSourceTitles.values()].includes("Elementos de seguridad recomendados"), false);
+  assert.equal(
+    [...topicSourceTitles.values()].includes("Elementos de seguridad recomendados"),
+    false,
+  );
   assert.equal([...topicSourceTitles.values()].includes(inPageLegalHeading), false);
 
-  const coveredSourcePages = registry.sections.flatMap((section) => section.sourcePages.map((entry) => entry.sourcePage));
+  const coveredSourcePages = registry.sections.flatMap((section) =>
+    section.sourcePages.map((entry) => entry.sourcePage),
+  );
   assert.deepEqual(
     uniqueInOrder(coveredSourcePages),
     sourcePagesForRange(2, 11).concat(
@@ -1140,29 +1602,48 @@ test("Front matter, Chapter 1, 2, 3, 4, 5, Appendix I, Appendix II, Appendix III
       sourcePagesForRange(105, 122),
       sourcePagesForRange(123, 151),
       sourcePagesForRange(153, 183),
-      sourcePagesForRange(185, 200)
-    )
+      sourcePagesForRange(185, 200),
+    ),
   );
   assert.deepEqual(duplicatedValues(coveredSourcePages), [55, 93, 94, 95, 99, 100, 101, 119]);
 });
 
 test("Front glossary rows use structured Spanish terms, Russian translations, and definitions", () => {
-  const glossaryBlockIds = ["glossary-a-b", "glossary-b-c", "glossary-d-i", "glossary-m-p", "glossary-r-v"];
-  assert.equal((frontGlossaryModuleSource.match(/kind:\s*"glossary-list"/gu) ?? []).length, glossaryBlockIds.length);
-  assert.doesNotMatch(frontGlossaryModuleSource, /itemsRu:\s*\[/u, "front glossary no longer stores colon-delimited list rows");
+  const glossaryBlockIds = [
+    "glossary-a-b",
+    "glossary-b-c",
+    "glossary-d-i",
+    "glossary-m-p",
+    "glossary-r-v",
+  ];
+  assert.equal(
+    (frontGlossaryModuleSource.match(/kind:\s*"glossary-list"/gu) ?? []).length,
+    glossaryBlockIds.length,
+  );
+  assert.doesNotMatch(
+    frontGlossaryModuleSource,
+    /itemsRu:\s*\[/u,
+    "front glossary no longer stores colon-delimited list rows",
+  );
 
   for (const blockId of glossaryBlockIds) {
     assert.match(
       frontGlossaryModuleSource,
-      new RegExp(`id:\\s*"${blockId}"[\\s\\S]*?kind:\\s*"glossary-list"[\\s\\S]*?items:\\s*\\[`, "u"),
-      `${blockId} is a structured glossary block`
+      new RegExp(
+        `id:\\s*"${blockId}"[\\s\\S]*?kind:\\s*"glossary-list"[\\s\\S]*?items:\\s*\\[`,
+        "u",
+      ),
+      `${blockId} is a structured glossary block`,
     );
   }
 
   assert.equal((frontGlossaryModuleSource.match(/\btermEs:\s*"/gu) ?? []).length, 75);
   assert.equal((frontGlossaryModuleSource.match(/\btranslationRu:\s*"/gu) ?? []).length, 75);
   assert.equal((frontGlossaryModuleSource.match(/\bdefinitionRu:\s*"/gu) ?? []).length, 75);
-  assert.doesNotMatch(frontGlossaryModuleSource, /\btermEs:\s*""|\btranslationRu:\s*""|\bdefinitionRu:\s*""/u);
+  assert.doesNotMatch(
+    frontGlossaryModuleSource,
+    /\btermEs:\s*""|\btranslationRu:\s*""|\bdefinitionRu:\s*""/u,
+  );
 
   for (const [termEs, translationRu] of [
     ["Accidente de tránsito", "дорожное происшествие"],
@@ -1182,21 +1663,41 @@ test("Front glossary rows use structured Spanish terms, Russian translations, an
     ["Estacionamiento", "стоянка"],
     ["Sobrepaso", "обгон"],
     ["Tránsito", "дорожное движение"],
-    ["Vía rápida", "скоростная дорога"]
+    ["Vía rápida", "скоростная дорога"],
   ]) {
     assert.match(
       frontGlossaryModuleSource,
-      new RegExp(`termEs:\\s*"${escapeRegExp(termEs)}"[\\s\\S]*?translationRu:\\s*"${escapeRegExp(translationRu)}"[\\s\\S]*?definitionRu:\\s*"[^"]+"`, "u"),
-      `${termEs} has a structured Russian translation and definition`
+      new RegExp(
+        `termEs:\\s*"${escapeRegExp(termEs)}"[\\s\\S]*?translationRu:\\s*"${escapeRegExp(translationRu)}"[\\s\\S]*?definitionRu:\\s*"[^"]+"`,
+        "u",
+      ),
+      `${termEs} has a structured Russian translation and definition`,
     );
   }
 
-  for (const retainedDetail of ["13 м", "17,32 м", "до 2 минут", "50 см3", "4 кВт", "50 км/ч", "Av. Intendente Cantilo"]) {
-    assert.ok(frontGlossaryModuleSource.includes(retainedDetail), `front glossary keeps legal/numeric/source detail ${retainedDetail}`);
+  for (const retainedDetail of [
+    "13 м",
+    "17,32 м",
+    "до 2 минут",
+    "50 см3",
+    "4 кВт",
+    "50 км/ч",
+    "Av. Intendente Cantilo",
+  ]) {
+    assert.ok(
+      frontGlossaryModuleSource.includes(retainedDetail),
+      `front glossary keeps legal/numeric/source detail ${retainedDetail}`,
+    );
   }
 
-  assert.ok(frontGlossaryModuleSource.includes("manual-glossary"), "front glossary declares the durable glossary style family");
-  assert.ok(frontGlossaryModuleSource.includes("Russian translations in parentheses"), "visual evidence notes mention the new term/translation treatment");
+  assert.ok(
+    frontGlossaryModuleSource.includes("manual-glossary"),
+    "front glossary declares the durable glossary style family",
+  );
+  assert.ok(
+    frontGlossaryModuleSource.includes("Russian translations in parentheses"),
+    "visual evidence notes mention the new term/translation treatment",
+  );
 });
 
 test("Manual guide renderer has a dedicated structured glossary branch without colon parsing", () => {
@@ -1210,7 +1711,11 @@ test("Manual guide renderer has a dedicated structured glossary branch without c
   assert.match(manualGuideAppSource, /data-term-es=\{item\.termEs\}/);
   assert.match(manualGuideAppSource, /lang="es"/);
   assert.match(manualGuideAppSource, /lang="ru"/);
-  assert.doesNotMatch(manualGuideAppSource, /split\s*\(\s*["']:/u, "manual glossary renderer must not split strings on colon");
+  assert.doesNotMatch(
+    manualGuideAppSource,
+    /split\s*\(\s*["']:/u,
+    "manual glossary renderer must not split strings on colon",
+  );
   assert.match(stylesSource, /\.manual-glossary-item[\s\S]*?overflow-wrap:\s*anywhere/);
   assert.match(stylesSource, /\.manual-glossary-item[\s\S]*?user-select:\s*text/);
 });
@@ -1223,12 +1728,26 @@ test("Chapter 2 page 55 sharing is explicit and page 56 is book-only closing mat
 
   assert.deepEqual(incident.sourcePageRange, { start: 51, end: 55 });
   assert.deepEqual(scoring.sourcePageRange, { start: 55, end: 55 });
-  assert.deepEqual(scoring.sourcePages.map((entry) => entry.sourcePage), [55]);
+  assert.deepEqual(
+    scoring.sourcePages.map((entry) => entry.sourcePage),
+    [55],
+  );
   assert.equal(scoring.sourcePages[0].referenceAsset, sourcePageAssetPath(55));
-  assert.equal(registry.sections.flatMap((section) => section.sourcePages.map((entry) => entry.sourcePage)).includes(56), false);
+  assert.equal(
+    registry.sections
+      .flatMap((section) => section.sourcePages.map((entry) => entry.sourcePage))
+      .includes(56),
+    false,
+  );
   assert.doesNotMatch(ch2ScoringModuleSource, /page-56-disposition/);
-  assert.doesNotMatch(ch2ScoringModuleSource, /Respetar las normas de tránsito implica salvar vidas/u);
-  assert.doesNotMatch(ch2ScoringModuleSource, /Соблюдать правила дорожного движения означает спасать жизни/u);
+  assert.doesNotMatch(
+    ch2ScoringModuleSource,
+    /Respetar las normas de tránsito implica salvar vidas/u,
+  );
+  assert.doesNotMatch(
+    ch2ScoringModuleSource,
+    /Соблюдать правила дорожного движения означает спасать жизни/u,
+  );
 
   const closing = registry.skippedSourcePages.find((entry) => entry.sourcePage === 56);
   assert.equal(closing?.reason, "chapter-closing-slogan-only");
@@ -1237,11 +1756,14 @@ test("Chapter 2 page 55 sharing is explicit and page 56 is book-only closing mat
   assert.deepEqual(
     registry.sharedSourcePageOwnership.map((entry) => entry.sourcePage),
     [55, 93, 94, 95, 99, 100, 101, 119],
-    "source pages 55, 93, 94, 95, 99, 100, 101, and 119 are intentionally shared between section topics"
+    "source pages 55, 93, 94, 95, 99, 100, 101, and 119 are intentionally shared between section topics",
   );
   const sharedPage55 = registry.sharedSourcePageOwnership.find((entry) => entry.sourcePage === 55);
   assert.equal(sharedPage55.referenceAsset, sourcePageAssetPath(55));
-  assert.deepEqual(sharedPage55.sectionBoundaries.map((boundary) => boundary.sectionId), ["ch2-incident-obligations", "ch2-scoring"]);
+  assert.deepEqual(
+    sharedPage55.sectionBoundaries.map((boundary) => boundary.sectionId),
+    ["ch2-incident-obligations", "ch2-scoring"],
+  );
 
   assert.deepEqual(incident.sourceBoundaryEvidence.ownedLayoutBlockIdsOnSharedPage, [
     "page-055-block-02",
@@ -1249,24 +1771,42 @@ test("Chapter 2 page 55 sharing is explicit and page 56 is book-only closing mat
     "page-055-block-04",
     "page-055-block-05",
     "page-055-block-06",
-    "page-055-block-07"
+    "page-055-block-07",
   ]);
   assert.equal(incident.sourceBoundaryEvidence.endsBeforeLayoutBlockId, "page-055-block-08");
   assert.equal(incident.sourceBoundaryEvidence.excludesSectionId, "ch2-scoring");
 
   assert.equal(scoring.sourceBoundaryEvidence.startsAtLayoutBlockId, "page-055-block-08");
-  assert.match(scoring.sourceBoundaryEvidence.startsAtSourceTextEs, /Sistema de Evaluación Permanente de Conductores o Scoring/);
+  assert.match(
+    scoring.sourceBoundaryEvidence.startsAtSourceTextEs,
+    /Sistema de Evaluación Permanente de Conductores o Scoring/,
+  );
   assert.equal(scoring.sourceBoundaryEvidence.omittedClosingSourcePage, 56);
-  assert.deepEqual(scoring.sourceBoundaryEvidence.ownedLayoutBlockIdsOnSharedPage.slice(0, 2), ["page-055-block-08", "page-055-block-09"]);
+  assert.deepEqual(scoring.sourceBoundaryEvidence.ownedLayoutBlockIdsOnSharedPage.slice(0, 2), [
+    "page-055-block-08",
+    "page-055-block-09",
+  ]);
 });
 
 test("Chapter 2 sections retain legal, document, incident, and scoring details", () => {
-  for (const sectionId of ["ch2-legal-responsibility", "ch2-required-documents", "ch2-incident-obligations", "ch2-scoring"]) {
+  for (const sectionId of [
+    "ch2-legal-responsibility",
+    "ch2-required-documents",
+    "ch2-incident-obligations",
+    "ch2-scoring",
+  ]) {
     const section = registry.sections.find((entry) => entry.id === sectionId);
     assert.equal(section.status, "implemented", `${sectionId} is implemented in the Chapter 2 PR`);
-    assert.equal(section.implementationEvidence.visualEvidenceSchemaVersion, 3, `${sectionId} uses strict visual evidence`);
+    assert.equal(
+      section.implementationEvidence.visualEvidenceSchemaVersion,
+      3,
+      `${sectionId} uses strict visual evidence`,
+    );
     assert.equal(section.implementationEvidence.visualRulePolicyId, "031-strict-source-fidelity");
-    assert.equal(section.implementationEvidence.highResolutionEvidenceStatus, "x5-or-equivalent-no-upscale-recorded");
+    assert.equal(
+      section.implementationEvidence.highResolutionEvidenceStatus,
+      "x5-or-equivalent-no-upscale-recorded",
+    );
   }
 
   assert.match(ch2LegalModuleSource, /Закон 2148/);
@@ -1284,7 +1824,10 @@ test("Chapter 2 sections retain legal, document, incident, and scoring details",
   assert.match(ch2RequiredDocumentsModuleSource, /8 лет/u);
   assert.match(ch2RequiredDocumentsModuleSource, /80 000 км/u);
   assert.match(ch2RequiredDocumentsModuleSource, /допуск 4 000 км/u);
-  assert.doesNotMatch(ch2RequiredDocumentsModuleSource, /После первого прохождения срок становится ежегодным/u);
+  assert.doesNotMatch(
+    ch2RequiredDocumentsModuleSource,
+    /После первого прохождения срок становится ежегодным/u,
+  );
   assert.match(ch2RequiredDocumentsModuleSource, /RVA/);
   assert.match(ch2RequiredDocumentsModuleSource, /source-image-cards/);
   assert.match(ch2RequiredDocumentsModuleSource, /source-document-example-original-visible-text/);
@@ -1302,7 +1845,10 @@ test("Chapter 2 sections retain legal, document, incident, and scoring details",
   assert.match(ch2IncidentModuleSource, /149, опция 2/u);
   assert.match(ch2IncidentModuleSource, /0800-222-3425/);
   assert.match(ch2IncidentModuleSource, /1558125022/);
-  assert.match(ch2IncidentModuleSource, /на странице 55 после списка НКО начинается отдельный раздел Scoring/u);
+  assert.match(
+    ch2IncidentModuleSource,
+    /на странице 55 после списка НКО начинается отдельный раздел Scoring/u,
+  );
 
   assert.match(ch2ScoringModuleSource, /20 баллов/);
   assert.match(ch2ScoringModuleSource, /4 балла/);
@@ -1323,19 +1869,29 @@ test("Chapter 3 sections retain priority, speed, adverse-condition, and parking 
     "ch3-overtaking",
     "ch3-highways",
     "ch3-adverse-conditions",
-    "ch3-stopping-parking"
+    "ch3-stopping-parking",
   ]) {
     const section = registry.sections.find((entry) => entry.id === sectionId);
     assert.equal(section.status, "implemented", `${sectionId} is implemented in the Chapter 3 PR`);
-    assert.equal(section.implementationEvidence.visualEvidenceSchemaVersion, 3, `${sectionId} uses strict visual evidence`);
+    assert.equal(
+      section.implementationEvidence.visualEvidenceSchemaVersion,
+      3,
+      `${sectionId} uses strict visual evidence`,
+    );
     assert.equal(section.implementationEvidence.visualRulePolicyId, "031-strict-source-fidelity");
-    assert.equal(section.implementationEvidence.highResolutionEvidenceStatus, "x5-or-equivalent-no-upscale-recorded");
-    assert.equal(section.implementationEvidence.localAssetMetadata[0].assetCategory, "native-dom-text-only");
+    assert.equal(
+      section.implementationEvidence.highResolutionEvidenceStatus,
+      "x5-or-equivalent-no-upscale-recorded",
+    );
+    assert.equal(
+      section.implementationEvidence.localAssetMetadata[0].assetCategory,
+      "native-dom-text-only",
+    );
   }
 
   assert.match(ch3PriorityModuleSource, /Сигналы и распоряжения контролирующего органа/u);
   assert.match(ch3PriorityModuleSource, /Временная сигнализация/u);
-  assert.match(ch3PriorityModuleSource, /светофор/ui);
+  assert.match(ch3PriorityModuleSource, /светофор/iu);
   assert.match(ch3PriorityModuleSource, /Закон 2148/u);
   assert.match(ch3PriorityModuleSource, /экстренных служб/u);
 
@@ -1346,7 +1902,7 @@ test("Chapter 3 sections retain priority, speed, adverse-condition, and parking 
   assert.match(ch3RightOfWayModuleSource, /avenida \(проспект\) выше calle \(улицы\)/u);
 
   assert.match(ch3LightsModuleSource, /Запрещено менять тип и мощность заводских огней/u);
-  assert.match(ch3LightsModuleSource, /противотуманные/ui);
+  assert.match(ch3LightsModuleSource, /противотуманные/iu);
   assert.match(ch3LightsModuleSource, /звуковая сигнализация/u);
 
   assert.match(ch3SpeedModuleSource, /эффекта туннеля/u);
@@ -1357,41 +1913,98 @@ test("Chapter 3 sections retain priority, speed, adverse-condition, and parking 
   assert.match(ch3SpeedModuleSource, /Улицы[\s\S]*40 км\/ч/u);
   assert.match(ch3SpeedModuleSource, /Проспекты[\s\S]*60 км\/ч/u);
   assert.match(ch3SpeedModuleSource, /Автомагистрали CABA[\s\S]*100 км\/ч/u);
-  assert.match(ch3SpeedModuleSource, /Исключения на некоторых проспектах и скоростных дорогах CABA/u);
+  assert.match(
+    ch3SpeedModuleSource,
+    /Исключения на некоторых проспектах и скоростных дорогах CABA/u,
+  );
   assert.match(ch3SpeedModuleSource, /40 км\/ч[\s\S]*Av\. Corrientes[\s\S]*Junín и Libertad/u);
-  assert.match(ch3SpeedModuleSource, /60 км\/ч[\s\S]*Av\. Gral\. Paz[\s\S]*calzadas para tránsito pesado[\s\S]*Autopista Ingeniero Pascual Palazzo[\s\S]*Av\. del Libertador/u);
+  assert.match(
+    ch3SpeedModuleSource,
+    /60 км\/ч[\s\S]*Av\. Gral\. Paz[\s\S]*calzadas para tránsito pesado[\s\S]*Autopista Ingeniero Pascual Palazzo[\s\S]*Av\. del Libertador/u,
+  );
   assert.match(ch3SpeedModuleSource, /Av\. Figueroa Alcorta/u);
   assert.match(ch3SpeedModuleSource, /Av\. Del Libertador/u);
   assert.match(ch3SpeedModuleSource, /Av\. 27 de Febrero/u);
   assert.match(ch3SpeedModuleSource, /Av\. Costanera Rafael Obligado/u);
-  assert.match(ch3SpeedModuleSource, /80 км\/ч[\s\S]*Av\. Gral\. Paz[\s\S]*Autopista Ingeniero Pascual Palazzo[\s\S]*Av\. 27 de Febrero/u);
+  assert.match(
+    ch3SpeedModuleSource,
+    /80 км\/ч[\s\S]*Av\. Gral\. Paz[\s\S]*Autopista Ingeniero Pascual Palazzo[\s\S]*Av\. 27 de Febrero/u,
+  );
   assert.match(ch3SpeedModuleSource, /Av\. Intendente Cantilo/u);
   assert.match(ch3SpeedModuleSource, /Av\. Leopoldo Lugones/u);
   assert.match(ch3SpeedModuleSource, /Av\. Tte\. Gral\. Luis J\. Dellepiane/u);
-  assert.match(ch3SpeedModuleSource, /100 км\/ч[\s\S]*Av\. Gral\. Paz на центральных проезжих частях[\s\S]*Av\. Leopoldo Lugones[\s\S]*Autopista Ingeniero Pascual Palazzo/u);
+  assert.match(
+    ch3SpeedModuleSource,
+    /100 км\/ч[\s\S]*Av\. Gral\. Paz на центральных проезжих частях[\s\S]*Av\. Leopoldo Lugones[\s\S]*Autopista Ingeniero Pascual Palazzo/u,
+  );
   assert.match(ch3SpeedModuleSource, /Autopista Presidente Arturo U\. Illia/u);
   assert.match(ch3SpeedModuleSource, /Спецтехника[\s\S]*Улицы и проспекты[\s\S]*30 км\/ч/u);
-  assert.match(ch3SpeedModuleSource, /Грузовики[\s\S]*коллективный пассажирский транспорт[\s\S]*Улицы[\s\S]*40 км\/ч/u);
-  assert.match(ch3SpeedModuleSource, /Школьный транспорт[\s\S]*транспорт для людей с ограниченной мобильностью[\s\S]*Проспекты[\s\S]*45 км\/ч/u);
-  assert.match(ch3SpeedModuleSource, /Грузовики и коллективный пассажирский транспорт[\s\S]*Проспекты[\s\S]*50 км\/ч/u);
-  assert.match(ch3SpeedModuleSource, /Автомагистрали и другие скоростные дороги в CABA[\s\S]*60 км\/ч/u);
+  assert.match(
+    ch3SpeedModuleSource,
+    /Грузовики[\s\S]*коллективный пассажирский транспорт[\s\S]*Улицы[\s\S]*40 км\/ч/u,
+  );
+  assert.match(
+    ch3SpeedModuleSource,
+    /Школьный транспорт[\s\S]*транспорт для людей с ограниченной мобильностью[\s\S]*Проспекты[\s\S]*45 км\/ч/u,
+  );
+  assert.match(
+    ch3SpeedModuleSource,
+    /Грузовики и коллективный пассажирский транспорт[\s\S]*Проспекты[\s\S]*50 км\/ч/u,
+  );
+  assert.match(
+    ch3SpeedModuleSource,
+    /Автомагистрали и другие скоростные дороги в CABA[\s\S]*60 км\/ч/u,
+  );
   assert.match(ch3SpeedModuleSource, /Paseo del Bajo[\s\S]*60 км\/ч/u);
   assert.match(ch3SpeedModuleSource, /Все транспортные средства[\s\S]*60 км\/ч/u);
-  assert.match(ch3SpeedModuleSource, /cellsRu:\s*\[\s*"Грузовики, транспорт опасных веществ, автомобили с жилым прицепом\/домом",\s*"80 км\/ч",\s*"национальные дороги, полуавтомагистрали и автомагистрали"\s*\]/u);
-  assert.match(ch3SpeedModuleSource, /cellsRu:\s*\[\s*"Микроавтобусы, автобусы и моторизованные дома на колесах",\s*"90 км\/ч",\s*"дороги и полуавтомагистрали"\s*\]/u);
-  assert.match(ch3SpeedModuleSource, /cellsRu:\s*\[\s*"Микроавтобусы, автобусы и моторизованные дома на колесах",\s*"100 км\/ч",\s*"национальные автомагистрали"\s*\]/u);
-  assert.match(ch3SpeedModuleSource, /cellsRu:\s*\["Мотоциклы и автомобили",\s*"110 км\/ч",\s*"дорога"\]/u);
-  assert.match(ch3SpeedModuleSource, /cellsRu:\s*\[\s*"Пикапы",\s*"110 км\/ч",\s*"дороги, полуавтомагистрали и национальные автомагистрали"\s*\]/u);
-  assert.match(ch3SpeedModuleSource, /cellsRu:\s*\["Мотоциклы и автомобили",\s*"120 км\/ч",\s*"полуавтомагистрали"\]/u);
-  assert.match(ch3SpeedModuleSource, /cellsRu:\s*\["Мотоциклы и автомобили",\s*"130 км\/ч",\s*"национальные автомагистрали"\]/u);
-  assert.doesNotMatch(ch3SpeedModuleSource, /Camionetas, casas rodantes motorizadas, motocicletas/u);
+  assert.match(
+    ch3SpeedModuleSource,
+    /cellsRu:\s*\[\s*"Грузовики, транспорт опасных веществ, автомобили с жилым прицепом\/домом",\s*"80 км\/ч",\s*"национальные дороги, полуавтомагистрали и автомагистрали"\s*\]/u,
+  );
+  assert.match(
+    ch3SpeedModuleSource,
+    /cellsRu:\s*\[\s*"Микроавтобусы, автобусы и моторизованные дома на колесах",\s*"90 км\/ч",\s*"дороги и полуавтомагистрали"\s*\]/u,
+  );
+  assert.match(
+    ch3SpeedModuleSource,
+    /cellsRu:\s*\[\s*"Микроавтобусы, автобусы и моторизованные дома на колесах",\s*"100 км\/ч",\s*"национальные автомагистрали"\s*\]/u,
+  );
+  assert.match(
+    ch3SpeedModuleSource,
+    /cellsRu:\s*\["Мотоциклы и автомобили",\s*"110 км\/ч",\s*"дорога"\]/u,
+  );
+  assert.match(
+    ch3SpeedModuleSource,
+    /cellsRu:\s*\[\s*"Пикапы",\s*"110 км\/ч",\s*"дороги, полуавтомагистрали и национальные автомагистрали"\s*\]/u,
+  );
+  assert.match(
+    ch3SpeedModuleSource,
+    /cellsRu:\s*\["Мотоциклы и автомобили",\s*"120 км\/ч",\s*"полуавтомагистрали"\]/u,
+  );
+  assert.match(
+    ch3SpeedModuleSource,
+    /cellsRu:\s*\["Мотоциклы и автомобили",\s*"130 км\/ч",\s*"национальные автомагистрали"\]/u,
+  );
+  assert.doesNotMatch(
+    ch3SpeedModuleSource,
+    /Camionetas, casas rodantes motorizadas, motocicletas/u,
+  );
   assert.doesNotMatch(ch3SpeedModuleSource, /Camiones, casas rodantes motorizadas, motocicletas/u);
   assert.doesNotMatch(ch3SpeedModuleSource, /Camionetas y transporte de pasajeros\/as/u);
   assert.match(ch3SpeedModuleSource, /половина соответствующих максимальных лимитов/u);
-  assert.match(ch3SpeedModuleSource, /semiautopistas y rutas \(полуавтомагистралей и дорог\) - 40 км\/ч/u);
+  assert.match(
+    ch3SpeedModuleSource,
+    /semiautopistas y rutas \(полуавтомагистралей и дорог\) - 40 км\/ч/u,
+  );
   assert.match(ch3SpeedModuleSource, /autopistas \(автомагистралей\) - 60 км\/ч/u);
-  assert.doesNotMatch(ch3SpeedModuleSource, /На отдельных avenidas источник показывает исключения/u);
-  assert.doesNotMatch(ch3SpeedModuleSource, /Для некоторых видов транспорта и участков источник показывает дополнительные специальные пределы/u);
+  assert.doesNotMatch(
+    ch3SpeedModuleSource,
+    /На отдельных avenidas источник показывает исключения/u,
+  );
+  assert.doesNotMatch(
+    ch3SpeedModuleSource,
+    /Для некоторых видов транспорта и участков источник показывает дополнительные специальные пределы/u,
+  );
 
   assert.match(ch3TurnsModuleSource, /за 30 м/u);
   assert.match(ch3OvertakingModuleSource, /Adelantamiento/u);
@@ -1401,22 +2014,40 @@ test("Chapter 3 sections retain priority, speed, adverse-condition, and parking 
   assert.match(ch3HighwaysModuleSource, /espejos retrovisores \(зеркала заднего вида\)/u);
   assert.match(ch3HighwaysModuleSource, /luz de giro izquierda \(левый указатель поворота\)/u);
   assert.match(ch3HighwaysModuleSource, /espacio \/ gap \(свободный промежуток\)/u);
-  assert.match(ch3HighwaysModuleSource, /velocidad adecuada del tramo \(подходящую скорость для этого участка\)/u);
-  assert.match(ch3HighwaysModuleSource, /Carril izquierdo o de sobrepaso \(левая полоса или полоса опережения\)/u);
+  assert.match(
+    ch3HighwaysModuleSource,
+    /velocidad adecuada del tramo \(подходящую скорость для этого участка\)/u,
+  );
+  assert.match(
+    ch3HighwaysModuleSource,
+    /Carril izquierdo o de sobrepaso \(левая полоса или полоса опережения\)/u,
+  );
   assert.match(ch3HighwaysModuleSource, /Carril derecho \(правая полоса\)/u);
   assert.match(ch3HighwaysModuleSource, /транспортные средства более 3500 кг/u);
-  assert.match(ch3HighwaysModuleSource, /Banquina \(обочина\) не является полосой обычного движения, остановки или стоянки/u);
+  assert.match(
+    ch3HighwaysModuleSource,
+    /Banquina \(обочина\) не является полосой обычного движения, остановки или стоянки/u,
+  );
   assert.match(ch3HighwaysModuleSource, /carril de desaceleración \(полосу замедления\)/u);
   assert.match(ch3HighwaysModuleSource, /circular marcha atrás \(двигаться задним ходом\)/u);
   assert.match(ch3HighwaysModuleSource, /следующего разрешенного выхода/u);
   assert.match(ch3HighwaysModuleSource, /señales viales \(дорожным знакам\)/u);
   assert.match(ch3HighwaysModuleSource, /vehículo inmovilizado \(обездвиженный автомобиль\)/u);
-  assert.match(ch3HighwaysModuleSource, /balizas\/intermitentes \(аварийной сигнализацией\/мигающими огнями\)/u);
+  assert.match(
+    ch3HighwaysModuleSource,
+    /balizas\/intermitentes \(аварийной сигнализацией\/мигающими огнями\)/u,
+  );
   assert.match(ch3HighwaysModuleSource, /auxilio\/asistencia \(помощь\/техническую помощь\)/u);
   assert.match(ch3HighwaysModuleSource, /postes de auxilio \(колонны экстренной помощи\)/u);
   assert.match(ch3HighwaysModuleSource, /auxilio vial \(дорожную помощь\)/u);
-  assert.match(ch3HighwaysModuleSource, /vehículo destinado a ese fin \(транспорт, предназначенный для этой цели\)/u);
-  assert.match(ch3HighwaysModuleSource, /abandonar la autopista en la primera salida posible \(покинуть автомагистраль на первом возможном съезде\)/u);
+  assert.match(
+    ch3HighwaysModuleSource,
+    /vehículo destinado a ese fin \(транспорт, предназначенный для этой цели\)/u,
+  );
+  assert.match(
+    ch3HighwaysModuleSource,
+    /abandonar la autopista en la primera salida posible \(покинуть автомагистраль на первом возможном съезде\)/u,
+  );
   assert.doesNotMatch(ch3HighwaysModuleSource, /Практика движения на скоростных дорогах/u);
 
   assert.match(ch3AdverseModuleSource, /aquaplaning/u);
@@ -1454,19 +2085,36 @@ test("Chapter 4 divider, page 93 alcohol/sleep split, page 94 stress boundary, a
   assert.deepEqual(distractions.sourcePageRange, { start: 95, end: 97 });
   assert.equal(stress.routeHash, "#manual-section-ch4-stress");
   assert.equal(distractions.routeHash, "#manual-section-ch4-distractions");
-  assert.equal(stress.sourcePages[0].sourcePage, 94, "direct stress navigation opens at source page 94");
-  assert.equal(distractions.sourcePages[0].sourcePage, 95, "direct distractions navigation opens at source page 95");
+  assert.equal(
+    stress.sourcePages[0].sourcePage,
+    94,
+    "direct stress navigation opens at source page 94",
+  );
+  assert.equal(
+    distractions.sourcePages[0].sourcePage,
+    95,
+    "direct distractions navigation opens at source page 95",
+  );
 
   assert.deepEqual(
     registry.sharedSourcePageOwnership.map((entry) => entry.sourcePage),
-    [55, 93, 94, 95, 99, 100, 101, 119]
+    [55, 93, 94, 95, 99, 100, 101, 119],
   );
   const sharedPage93 = registry.sharedSourcePageOwnership.find((entry) => entry.sourcePage === 93);
   const sharedPage94 = registry.sharedSourcePageOwnership.find((entry) => entry.sourcePage === 94);
   const sharedPage95 = registry.sharedSourcePageOwnership.find((entry) => entry.sourcePage === 95);
-  assert.deepEqual(sharedPage93.sectionBoundaries.map((boundary) => boundary.sectionId), ["ch4-alcohol-drugs", "ch4-sleep-fatigue"]);
-  assert.deepEqual(sharedPage94.sectionBoundaries.map((boundary) => boundary.sectionId), ["ch4-sleep-fatigue", "ch4-stress"]);
-  assert.deepEqual(sharedPage95.sectionBoundaries.map((boundary) => boundary.sectionId), ["ch4-stress", "ch4-distractions"]);
+  assert.deepEqual(
+    sharedPage93.sectionBoundaries.map((boundary) => boundary.sectionId),
+    ["ch4-alcohol-drugs", "ch4-sleep-fatigue"],
+  );
+  assert.deepEqual(
+    sharedPage94.sectionBoundaries.map((boundary) => boundary.sectionId),
+    ["ch4-sleep-fatigue", "ch4-stress"],
+  );
+  assert.deepEqual(
+    sharedPage95.sectionBoundaries.map((boundary) => boundary.sectionId),
+    ["ch4-stress", "ch4-distractions"],
+  );
 
   const alcoholPage93Boundary = sourceBoundaryEvidenceFor(alcoholDrugs, 93);
   const sleepPage93Boundary = sourceBoundaryEvidenceFor(sleepFatigue, 93);
@@ -1474,14 +2122,32 @@ test("Chapter 4 divider, page 93 alcohol/sleep split, page 94 stress boundary, a
   const stressPage94Boundary = sourceBoundaryEvidenceFor(stress, 94);
   const stressPage95Boundary = sourceBoundaryEvidenceFor(stress, 95);
   const distractionsBoundary = sourceBoundaryEvidenceFor(distractions, 95);
-  assert.equal(alcoholPage93Boundary.ownedRegion, "responsible-driver-and-alcoholemia-toxicology-hangover");
-  assert.equal(alcoholPage93Boundary.ownedLayoutBlockIdsOnSharedPage.includes("page-093-source-line-mask-03"), true);
-  assert.equal(alcoholPage93Boundary.ownedLayoutBlockIdsOnSharedPage.includes("page-093-source-line-mask-16"), true);
-  assert.equal(alcoholPage93Boundary.ownedLayoutBlockIdsOnSharedPage.includes("page-093-source-line-mask-23"), true);
+  assert.equal(
+    alcoholPage93Boundary.ownedRegion,
+    "responsible-driver-and-alcoholemia-toxicology-hangover",
+  );
+  assert.equal(
+    alcoholPage93Boundary.ownedLayoutBlockIdsOnSharedPage.includes("page-093-source-line-mask-03"),
+    true,
+  );
+  assert.equal(
+    alcoholPage93Boundary.ownedLayoutBlockIdsOnSharedPage.includes("page-093-source-line-mask-16"),
+    true,
+  );
+  assert.equal(
+    alcoholPage93Boundary.ownedLayoutBlockIdsOnSharedPage.includes("page-093-source-line-mask-23"),
+    true,
+  );
   assert.equal(sleepPage93Boundary.startsAtLayoutBlockId, "page-093-source-line-mask-02");
   assert.match(sleepPage93Boundary.startsAtSourceTextEs, /Sueño y fatiga/u);
-  assert.equal(sleepPage93Boundary.ownedLayoutBlockIdsOnSharedPage.includes("page-093-source-line-mask-10"), true);
-  assert.equal(sleepPage93Boundary.ownedLayoutBlockIdsOnSharedPage.includes("page-093-source-line-mask-24"), true);
+  assert.equal(
+    sleepPage93Boundary.ownedLayoutBlockIdsOnSharedPage.includes("page-093-source-line-mask-10"),
+    true,
+  );
+  assert.equal(
+    sleepPage93Boundary.ownedLayoutBlockIdsOnSharedPage.includes("page-093-source-line-mask-24"),
+    true,
+  );
   assert.equal(sleepBoundary.endsBeforeLayoutBlockId, "page-094-source-line-mask-31");
   assert.equal(stressPage94Boundary.startsAtLayoutBlockId, "page-094-source-line-mask-31");
   assert.match(stressPage94Boundary.startsAtSourceTextEs, /Estrés/u);
@@ -1489,8 +2155,14 @@ test("Chapter 4 divider, page 93 alcohol/sleep split, page 94 stress boundary, a
   assert.match(stressPage95Boundary.startsAtSourceTextEs, /Prestar atención al contexto/u);
   assert.equal(distractionsBoundary.startsAtLayoutBlockId, "page-095-source-line-mask-02");
   assert.match(distractionsBoundary.startsAtSourceTextEs, /Distracciones/u);
-  assert.equal(stressPage95Boundary.ownedLayoutBlockIdsOnSharedPage.includes("page-095-source-line-mask-14"), true);
-  assert.equal(distractionsBoundary.ownedLayoutBlockIdsOnSharedPage.includes("page-095-source-line-mask-15"), true);
+  assert.equal(
+    stressPage95Boundary.ownedLayoutBlockIdsOnSharedPage.includes("page-095-source-line-mask-14"),
+    true,
+  );
+  assert.equal(
+    distractionsBoundary.ownedLayoutBlockIdsOnSharedPage.includes("page-095-source-line-mask-15"),
+    true,
+  );
 });
 
 test("Chapter 5 divider and page 99, 100, and 101 source-topic boundaries are explicit", () => {
@@ -1501,8 +2173,12 @@ test("Chapter 5 divider and page 99, 100, and 101 source-topic boundaries are ex
 
   const attitudeTypes = registry.sections.find((section) => section.id === "ch5-attitude-types");
   const equalSociety = registry.sections.find((section) => section.id === "ch5-equal-society");
-  const genderViolence = registry.sections.find((section) => section.id === "ch5-gender-violence-prevention");
-  const anticipatoryEfficient = registry.sections.find((section) => section.id === "ch5-anticipatory-efficient-driving");
+  const genderViolence = registry.sections.find(
+    (section) => section.id === "ch5-gender-violence-prevention",
+  );
+  const anticipatoryEfficient = registry.sections.find(
+    (section) => section.id === "ch5-anticipatory-efficient-driving",
+  );
   assert.ok(attitudeTypes, "attitude types section exists");
   assert.ok(equalSociety, "equal society section exists");
   assert.ok(genderViolence, "gender violence support section exists");
@@ -1514,14 +2190,30 @@ test("Chapter 5 divider and page 99, 100, and 101 source-topic boundaries are ex
   assert.deepEqual(anticipatoryEfficient.sourcePageRange, { start: 101, end: 103 });
   assert.equal(equalSociety.routeHash, "#manual-section-ch5-equal-society");
   assert.equal(genderViolence.routeHash, "#manual-section-ch5-gender-violence-prevention");
-  assert.equal(anticipatoryEfficient.routeHash, "#manual-section-ch5-anticipatory-efficient-driving");
+  assert.equal(
+    anticipatoryEfficient.routeHash,
+    "#manual-section-ch5-anticipatory-efficient-driving",
+  );
 
   const sharedPage99 = registry.sharedSourcePageOwnership.find((entry) => entry.sourcePage === 99);
-  const sharedPage100 = registry.sharedSourcePageOwnership.find((entry) => entry.sourcePage === 100);
-  const sharedPage101 = registry.sharedSourcePageOwnership.find((entry) => entry.sourcePage === 101);
-  assert.deepEqual(sharedPage99.sectionBoundaries.map((boundary) => boundary.sectionId), ["ch5-attitude-types", "ch5-equal-society"]);
-  assert.deepEqual(sharedPage100.sectionBoundaries.map((boundary) => boundary.sectionId), ["ch5-equal-society", "ch5-gender-violence-prevention"]);
-  assert.deepEqual(sharedPage101.sectionBoundaries.map((boundary) => boundary.sectionId), ["ch5-gender-violence-prevention", "ch5-anticipatory-efficient-driving"]);
+  const sharedPage100 = registry.sharedSourcePageOwnership.find(
+    (entry) => entry.sourcePage === 100,
+  );
+  const sharedPage101 = registry.sharedSourcePageOwnership.find(
+    (entry) => entry.sourcePage === 101,
+  );
+  assert.deepEqual(
+    sharedPage99.sectionBoundaries.map((boundary) => boundary.sectionId),
+    ["ch5-attitude-types", "ch5-equal-society"],
+  );
+  assert.deepEqual(
+    sharedPage100.sectionBoundaries.map((boundary) => boundary.sectionId),
+    ["ch5-equal-society", "ch5-gender-violence-prevention"],
+  );
+  assert.deepEqual(
+    sharedPage101.sectionBoundaries.map((boundary) => boundary.sectionId),
+    ["ch5-gender-violence-prevention", "ch5-anticipatory-efficient-driving"],
+  );
 
   const attitudePage99Boundary = sourceBoundaryEvidenceFor(attitudeTypes, 99);
   const equalityPage99Boundary = sourceBoundaryEvidenceFor(equalSociety, 99);
@@ -1530,32 +2222,75 @@ test("Chapter 5 divider and page 99, 100, and 101 source-topic boundaries are ex
   const genderPage101Boundary = sourceBoundaryEvidenceFor(genderViolence, 101);
   const anticipatoryPage101Boundary = sourceBoundaryEvidenceFor(anticipatoryEfficient, 101);
   assert.equal(attitudePage99Boundary.endsBeforeLayoutBlockId, "page-099-source-line-mask-17");
-  assert.equal(attitudePage99Boundary.ownedLayoutBlockIdsOnSharedPage.includes("page-099-source-line-mask-29"), true);
+  assert.equal(
+    attitudePage99Boundary.ownedLayoutBlockIdsOnSharedPage.includes("page-099-source-line-mask-29"),
+    true,
+  );
   assert.equal(equalityPage99Boundary.startsAtLayoutBlockId, "page-099-source-line-mask-17");
   assert.match(equalityPage99Boundary.startsAtSourceTextEs, /Hacia una sociedad igualitaria/u);
   assert.equal(equalityPage100Boundary.endsBeforeLayoutBlockId, "page-100-source-line-mask-19");
-  assert.equal(equalityPage100Boundary.ownedLayoutBlockIdsOnSharedPage.includes("page-100-source-line-mask-17"), true);
+  assert.equal(
+    equalityPage100Boundary.ownedLayoutBlockIdsOnSharedPage.includes(
+      "page-100-source-line-mask-17",
+    ),
+    true,
+  );
   assert.equal(genderPage100Boundary.startsAtLayoutBlockId, "page-100-source-line-mask-19");
   assert.match(genderPage100Boundary.startsAtSourceTextEs, /Prevenci[oó]n y asistencia/u);
   assert.equal(genderPage101Boundary.endsBeforeLayoutBlockId, undefined);
-  assert.equal(genderPage101Boundary.ownedLayoutBlockIdsOnSharedPage.includes("page-101-source-line-mask-11"), true);
-  assert.equal(genderPage101Boundary.ownedLayoutBlockIdsOnSharedPage.includes("page-101-source-line-mask-24"), true);
-  assert.equal(genderPage101Boundary.ownedLayoutBlockIdsOnSharedPage.includes("page-101-source-line-mask-25"), true);
-  assert.match(genderPage101Boundary.boundaryEvidence, /continues the gender-violence support[\s\S]*masks 11-25/u);
+  assert.equal(
+    genderPage101Boundary.ownedLayoutBlockIdsOnSharedPage.includes("page-101-source-line-mask-11"),
+    true,
+  );
+  assert.equal(
+    genderPage101Boundary.ownedLayoutBlockIdsOnSharedPage.includes("page-101-source-line-mask-24"),
+    true,
+  );
+  assert.equal(
+    genderPage101Boundary.ownedLayoutBlockIdsOnSharedPage.includes("page-101-source-line-mask-25"),
+    true,
+  );
+  assert.match(
+    genderPage101Boundary.boundaryEvidence,
+    /continues the gender-violence support[\s\S]*masks 11-25/u,
+  );
   assert.equal(genderPage101Boundary.excludesSectionId, "ch5-anticipatory-efficient-driving");
   assert.equal(anticipatoryPage101Boundary.startsAtLayoutBlockId, "page-101-source-line-mask-09");
-  assert.match(anticipatoryPage101Boundary.startsAtSourceTextEs, /Conducci[oó]n preventiva y eficiente/u);
-  assert.equal(anticipatoryPage101Boundary.ownedLayoutBlockIdsOnSharedPage.includes("page-101-source-line-mask-34"), true);
+  assert.match(
+    anticipatoryPage101Boundary.startsAtSourceTextEs,
+    /Conducci[oó]n preventiva y eficiente/u,
+  );
+  assert.equal(
+    anticipatoryPage101Boundary.ownedLayoutBlockIdsOnSharedPage.includes(
+      "page-101-source-line-mask-34",
+    ),
+    true,
+  );
 });
 
 test("Chapter 4 sections retain alcohol, sleep, stress, and distraction details", () => {
-  for (const sectionId of ["ch4-alcohol-drugs", "ch4-sleep-fatigue", "ch4-stress", "ch4-distractions"]) {
+  for (const sectionId of [
+    "ch4-alcohol-drugs",
+    "ch4-sleep-fatigue",
+    "ch4-stress",
+    "ch4-distractions",
+  ]) {
     const section = registry.sections.find((entry) => entry.id === sectionId);
     assert.equal(section.status, "implemented", `${sectionId} is implemented in the Chapter 4 PR`);
-    assert.equal(section.implementationEvidence.visualEvidenceSchemaVersion, 3, `${sectionId} uses strict visual evidence`);
+    assert.equal(
+      section.implementationEvidence.visualEvidenceSchemaVersion,
+      3,
+      `${sectionId} uses strict visual evidence`,
+    );
     assert.equal(section.implementationEvidence.visualRulePolicyId, "031-strict-source-fidelity");
-    assert.equal(section.implementationEvidence.highResolutionEvidenceStatus, "x5-or-equivalent-no-upscale-recorded");
-    assert.equal(section.implementationEvidence.localAssetMetadata[0].assetCategory, "native-dom-text-only");
+    assert.equal(
+      section.implementationEvidence.highResolutionEvidenceStatus,
+      "x5-or-equivalent-no-upscale-recorded",
+    );
+    assert.equal(
+      section.implementationEvidence.localAssetMetadata[0].assetCategory,
+      "native-dom-text-only",
+    );
   }
 
   assert.match(ch4AlcoholDrugsModuleSource, /центральной нервной системы/u);
@@ -1564,15 +2299,30 @@ test("Chapter 4 sections retain alcohol, sleep, stress, and distraction details"
   assert.match(ch4AlcoholDrugsModuleSource, /medicamentos/u);
   assert.match(ch4AlcoholDrugsModuleSource, /седативным эффектом[\s\S]*sedantes/u);
   assert.match(ch4AlcoholDrugsModuleSource, /контакте со слюной/u);
-  const alcoholImpairingFactorsItemsRu = itemsRuSourceForBlock(ch4AlcoholDrugsModuleSource, "factors-that-impair-driving");
+  const alcoholImpairingFactorsItemsRu = itemsRuSourceForBlock(
+    ch4AlcoholDrugsModuleSource,
+    "factors-that-impair-driving",
+  );
   assert.match(alcoholImpairingFactorsItemsRu, /Употребление алкоголя и наркотиков/u);
   assert.match(alcoholImpairingFactorsItemsRu, /Сонливость и усталость/u);
-  assert.doesNotMatch(alcoholImpairingFactorsItemsRu, /^\s*"Ingesta de alcohol y drogas|^\s*"Sueño y fatiga|^\s*"Estrés|^\s*"Distracciones/um);
-  const medicationsItemsRu = itemsRuSourceForBlock(ch4AlcoholDrugsModuleSource, "medications-and-sedatives");
+  assert.doesNotMatch(
+    alcoholImpairingFactorsItemsRu,
+    /^\s*"Ingesta de alcohol y drogas|^\s*"Sueño y fatiga|^\s*"Estrés|^\s*"Distracciones/mu,
+  );
+  const medicationsItemsRu = itemsRuSourceForBlock(
+    ch4AlcoholDrugsModuleSource,
+    "medications-and-sedatives",
+  );
   assert.match(medicationsItemsRu, /листок-вкладыш[\s\S]*prospecto explicativo/u);
   assert.match(medicationsItemsRu, /наркотические вещества[\s\S]*estupefacientes/u);
-  assert.doesNotMatch(medicationsItemsRu, /читать prospecto explicativo|проверке на estupefacientes/u);
-  const alcoholEffectsItemsRu = itemsRuSourceForBlock(ch4AlcoholDrugsModuleSource, "alcohol-effects");
+  assert.doesNotMatch(
+    medicationsItemsRu,
+    /читать prospecto explicativo|проверке на estupefacientes/u,
+  );
+  const alcoholEffectsItemsRu = itemsRuSourceForBlock(
+    ch4AlcoholDrugsModuleSource,
+    "alcohol-effects",
+  );
   assert.match(alcoholEffectsItemsRu, /скорость реакции/u);
   assert.match(alcoholEffectsItemsRu, /периферическое зрение/u);
   assert.match(alcoholEffectsItemsRu, /устойчивость к ослеплению/u);
@@ -1580,7 +2330,7 @@ test("Chapter 4 sections retain alcohol, sleep, stress, and distraction details"
   assert.match(alcoholEffectsItemsRu, /связность мышления/u);
   assert.doesNotMatch(
     alcoholEffectsItemsRu,
-    /capacidad de reacción|visión periférica|resistencia al deslumbramiento|viso-motor coordination|motor coordination|asociación de ideas|exceso de confianza en uno mismo|inhibition|somnolencia/u
+    /capacidad de reacción|visión periférica|resistencia al deslumbramiento|viso-motor coordination|motor coordination|asociación de ideas|exceso de confianza en uno mismo|inhibition|somnolencia/u,
   );
   assert.match(ch4AlcoholDrugsModuleSource, /Ley 2148/u);
   assert.match(ch4AlcoholDrugsModuleSource, /0,5 gramos/u);
@@ -1589,26 +2339,44 @@ test("Chapter 4 sections retain alcohol, sleep, stress, and distraction details"
   assert.match(ch4AlcoholDrugsModuleSource, /Motociclistas[\s\S]*0\.20 g\/l/u);
   assert.match(ch4AlcoholDrugsModuleSource, /Acompañantes en motovehículos[\s\S]*0\.50 g\/l/u);
   assert.match(ch4AlcoholDrugsModuleSource, /plaza de acompañante en motovehículos/u);
-  assert.match(ch4AlcoholDrugsModuleSource, /это не общий предел для всех сопровождающих в автомобиле/u);
+  assert.match(
+    ch4AlcoholDrugsModuleSource,
+    /это не общий предел для всех сопровождающих в автомобиле/u,
+  );
   assert.doesNotMatch(ch4AlcoholDrugsModuleSource, /Acompañantes - сопровождающие/u);
-  assert.doesNotMatch(ch4AlcoholDrugsModuleSource, /эта категория из таблицы источника сохраняется отдельно/u);
+  assert.doesNotMatch(
+    ch4AlcoholDrugsModuleSource,
+    /эта категория из таблицы источника сохраняется отдельно/u,
+  );
   assert.match(ch4AlcoholDrugsModuleSource, /Particulares[\s\S]*0\.50 g\/l/u);
   assert.match(ch4AlcoholDrugsModuleSource, /Tipo de bebida|Тип напитка/u);
   assert.match(ch4AlcoholDrugsModuleSource, /Funcionamiento hepático|Работа печени/u);
   assert.match(ch4AlcoholDrugsModuleSource, /Si tomaste alcohol, no manejes|Если пил алкоголь/u);
-  const alcoholMetabolismItemsRu = itemsRuSourceForBlock(ch4AlcoholDrugsModuleSource, "metabolism-and-next-day-risk");
+  const alcoholMetabolismItemsRu = itemsRuSourceForBlock(
+    ch4AlcoholDrugsModuleSource,
+    "metabolism-and-next-day-risk",
+  );
   assert.match(alcoholMetabolismItemsRu, /в течение первого часа/u);
   assert.doesNotMatch(alcoholMetabolismItemsRu, /durante la primera hora/u);
-  const positiveAndRefusalItemsRu = itemsRuSourceForBlock(ch4AlcoholDrugsModuleSource, "positive-and-refusal-procedure");
+  const positiveAndRefusalItemsRu = itemsRuSourceForBlock(
+    ch4AlcoholDrugsModuleSource,
+    "positive-and-refusal-procedure",
+  );
   assert.match(positiveAndRefusalItemsRu, /удерживают водительское удостоверение/u);
-  assert.doesNotMatch(positiveAndRefusalItemsRu, /contravencional sanction|retenеr la licencia|autoridad de control должна/u);
+  assert.doesNotMatch(
+    positiveAndRefusalItemsRu,
+    /contravencional sanction|retenеr la licencia|autoridad de control должна/u,
+  );
   assert.match(ch4AlcoholDrugsModuleSource, /remitir el vehículo[\s\S]*(направить|эвакуировать)/u);
   assert.match(ch4AlcoholDrugsModuleSource, /se presume positivo|считается положительным/u);
   assert.doesNotMatch(ch4AlcoholDrugsModuleSource, /removal of vehicle|presumed positive/u);
   assert.match(ch4AlcoholDrugsModuleSource, /id:\s*"responsible-driver"/u);
   assert.match(ch4AlcoholDrugsModuleSource, /conductor\/a responsable|ответственного водителя/u);
   assert.match(ch4AlcoholDrugsModuleSource, /id:\s*"test-instruments-and-hangover"/u);
-  assert.match(ch4AlcoholDrugsModuleSource, /сертифицированы и откалиброваны[\s\S]*certificados y calibrados/u);
+  assert.match(
+    ch4AlcoholDrugsModuleSource,
+    /сертифицированы и откалиброваны[\s\S]*certificados y calibrados/u,
+  );
   assert.doesNotMatch(ch4AlcoholDrugsModuleSource, /должным образом certificados y calibrados/u);
   assert.match(ch4AlcoholDrugsModuleSource, /veisalgia/u);
   assert.match(ch4AlcoholDrugsModuleSource, /обычным русским текстом/u);
@@ -1616,22 +2384,37 @@ test("Chapter 4 sections retain alcohol, sleep, stress, and distraction details"
   assert.doesNotMatch(ch4AlcoholDrugsModuleSource, /selectable DOM text|selectable Russian table/u);
 
   assert.doesNotMatch(ch4SleepFatigueModuleSource, /id:\s*"responsible-driver"/u);
-  assert.doesNotMatch(ch4SleepFatigueModuleSource, /conductor\/a responsable|ответственного водителя/u);
+  assert.doesNotMatch(
+    ch4SleepFatigueModuleSource,
+    /conductor\/a responsable|ответственного водителя/u,
+  );
   assert.doesNotMatch(ch4SleepFatigueModuleSource, /id:\s*"test-instruments-and-hangover"/u);
-  assert.doesNotMatch(ch4SleepFatigueModuleSource, /certificados y calibrados|сертифицированными и калиброванными/u);
+  assert.doesNotMatch(
+    ch4SleepFatigueModuleSource,
+    /certificados y calibrados|сертифицированными и калиброванными/u,
+  );
   assert.doesNotMatch(ch4SleepFatigueModuleSource, /veisalgia/u);
   assert.match(ch4SleepFatigueModuleSource, /биологическая потребность/u);
   assert.doesNotMatch(ch4SleepFatigueModuleSource, /biological need/u);
   assert.match(ch4SleepFatigueModuleSource, /время ответа/u);
-  const fewHoursSleepItemsRu = itemsRuSourceForBlock(ch4SleepFatigueModuleSource, "few-hours-sleep-effects");
+  const fewHoursSleepItemsRu = itemsRuSourceForBlock(
+    ch4SleepFatigueModuleSource,
+    "few-hours-sleep-effects",
+  );
   assert.match(fewHoursSleepItemsRu, /скорость реакции/u);
   assert.match(fewHoursSleepItemsRu, /бдительность/u);
   assert.doesNotMatch(fewHoursSleepItemsRu, /capacidad de reacción|estado de alerta/u);
   assert.match(ch4SleepFatigueModuleSource, /работоспособность/u);
   assert.match(ch4SleepFatigueModuleSource, /Усталость может усиливаться/u);
-  assert.doesNotMatch(ch4SleepFatigueModuleSource, /снижается rendimiento|cansancio может усиливаться/u);
+  assert.doesNotMatch(
+    ch4SleepFatigueModuleSource,
+    /снижается rendimiento|cansancio может усиливаться/u,
+  );
   assert.match(ch4SleepFatigueModuleSource, /microsueños - микросон/u);
-  const fatiguePreventionItemsRu = itemsRuSourceForBlock(ch4SleepFatigueModuleSource, "fatigue-prevention");
+  const fatiguePreventionItemsRu = itemsRuSourceForBlock(
+    ch4SleepFatigueModuleSource,
+    "fatigue-prevention",
+  );
   assert.match(fatiguePreventionItemsRu, /примерно 8 часов/u);
   assert.match(fatiguePreventionItemsRu, /каждые 200 км/u);
   assert.match(fatiguePreventionItemsRu, /каждые 2 часа/u);
@@ -1644,59 +2427,92 @@ test("Chapter 4 sections retain alcohol, sleep, stress, and distraction details"
   assert.match(fatiguePreventionItemsRu, /новичков[\s\S]*principiantes/u);
   assert.doesNotMatch(
     fatiguePreventionItemsRu,
-    /aproximadamente 8 horas|cada 200 kilometros|cada 100 kilómetros|ventilación|comidas ligeras|al anochecer y al amanecer|predisposición a sufrir fatiga/u
+    /aproximadamente 8 horas|cada 200 kilometros|cada 100 kilómetros|ventilación|comidas ligeras|al anochecer y al amanecer|predisposición a sufrir fatiga/u,
   );
   assert.match(ch4SleepFatigueModuleSource, /17 часов/u);
-  const sleepVsFatigueRemediesItemsRu = itemsRuSourceForBlock(ch4SleepFatigueModuleSource, "sleep-vs-fatigue-remedies");
+  const sleepVsFatigueRemediesItemsRu = itemsRuSourceForBlock(
+    ch4SleepFatigueModuleSource,
+    "sleep-vs-fatigue-remedies",
+  );
   assert.match(sleepVsFatigueRemediesItemsRu, /усталости и недосыпе/u);
   assert.match(sleepVsFatigueRemediesItemsRu, /сонливостью[\s\S]*поспать/u);
   assert.match(sleepVsFatigueRemediesItemsRu, /прервать поездку[\s\S]*остановку для отдыха/u);
   assert.doesNotMatch(
     sleepVsFatigueRemediesItemsRu,
-    /fatigue\/cansancio|sueño|dormir|tratar la fatiga|interrumpir el viaje|parada de descanso/u
+    /fatigue\/cansancio|sueño|dormir|tratar la fatiga|interrumpir el viaje|parada de descanso/u,
   );
 
   assert.match(ch4StressModuleSource, /ВОЗ \(OMS\) определяет/u);
   assert.match(ch4StressModuleSource, /физиологических реакций/u);
   assert.match(ch4StressModuleSource, /двойная связь/u);
   assert.match(ch4StressModuleSource, /безрассудным[\s\S]*temeraria/u);
-  assert.match(ch4StressModuleSource, /Prestar atención al contexto|Обращать внимание на дорожный контекст/u);
+  assert.match(
+    ch4StressModuleSource,
+    /Prestar atención al contexto|Обращать внимание на дорожный контекст/u,
+  );
   assert.match(ch4StressModuleSource, /переживания и споры/u);
-  const stressRecommendationsItemsRu = itemsRuSourceForBlock(ch4StressModuleSource, "stress-recommendations");
+  const stressRecommendationsItemsRu = itemsRuSourceForBlock(
+    ch4StressModuleSource,
+    "stress-recommendations",
+  );
   assert.match(stressRecommendationsItemsRu, /Планировать поездку/u);
   assert.match(ch4StressModuleSource, /достаточным запасом времени/u);
   assert.match(ch4StressModuleSource, /чрезмерная жара и холод/u);
-  assert.match(stressRecommendationsItemsRu, /терпеливое и терпимое отношение[\s\S]*actitud tolerante y paciente/u);
+  assert.match(
+    stressRecommendationsItemsRu,
+    /терпеливое и терпимое отношение[\s\S]*actitud tolerante y paciente/u,
+  );
   assert.doesNotMatch(ch4StressModuleSource, /worries and discussions|adopting an/u);
-  assert.doesNotMatch(stressRecommendationsItemsRu, /Planificar el viaje|adoptar una actitud tolerante y paciente/u);
+  assert.doesNotMatch(
+    stressRecommendationsItemsRu,
+    /Planificar el viaje|adoptar una actitud tolerante y paciente/u,
+  );
 
   assert.match(ch4DistractionsModuleSource, /Distracción/u);
   assert.match(ch4DistractionsModuleSource, /conducir/u);
   assert.match(ch4DistractionsModuleSource, /Еда, питье, мате/u);
-  const eatingDistractionItemsRu = itemsRuSourceForBlock(ch4DistractionsModuleSource, "eating-drinking-mate-smoking");
+  const eatingDistractionItemsRu = itemsRuSourceForBlock(
+    ch4DistractionsModuleSource,
+    "eating-drinking-mate-smoking",
+  );
   assert.match(eatingDistractionItemsRu, /проливания жидкости/u);
   assert.match(eatingDistractionItemsRu, /горящей золы/u);
   assert.match(eatingDistractionItemsRu, /манипуляций руками/u);
   assert.match(eatingDistractionItemsRu, /руки не могут уверенно оставаться на руле/u);
-  assert.doesNotMatch(eatingDistractionItemsRu, /Comer, beber, tomar mate|fumar|cuidado|derrames|encendida ceniza|manipulación/u);
-  const cellPhoneRiskItemsRu = itemsRuSourceForBlock(ch4DistractionsModuleSource, "cell-phone-risk");
+  assert.doesNotMatch(
+    eatingDistractionItemsRu,
+    /Comer, beber, tomar mate|fumar|cuidado|derrames|encendida ceniza|manipulación/u,
+  );
+  const cellPhoneRiskItemsRu = itemsRuSourceForBlock(
+    ch4DistractionsModuleSource,
+    "cell-phone-risk",
+  );
   assert.match(cellPhoneRiskItemsRu, /Использование мобильного телефона запрещено/u);
   assert.match(cellPhoneRiskItemsRu, /Громкая связь[\s\S]*altavoz/u);
   assert.match(cellPhoneRiskItemsRu, /наушники[\s\S]*auriculares/u);
   assert.doesNotMatch(cellPhoneRiskItemsRu, /Usar telefonía celular|Altavoz или auriculares/u);
   assert.match(ch4DistractionsModuleSource, /время реакции на стимул/u);
   assert.match(ch4DistractionsModuleSource, /мысленного представления/u);
-  assert.doesNotMatch(ch4DistractionsModuleSource, /selectable text|response time|mental representation/u);
+  assert.doesNotMatch(
+    ch4DistractionsModuleSource,
+    /selectable text|response time|mental representation/u,
+  );
   assert.match(ch4DistractionsModuleSource, /GPS/u);
   const gpsRiskItemsRu = itemsRuSourceForBlock(ch4DistractionsModuleSource, "gps-risk");
   assert.match(gpsRiskItemsRu, /настраивать или трогать GPS/u);
   assert.match(gpsRiskItemsRu, /запрограммировать заранее/u);
   assert.doesNotMatch(gpsRiskItemsRu, /manipular GPS|programar con anterioridad/u);
-  const phoneRecommendationsItemsRu = itemsRuSourceForBlock(ch4DistractionsModuleSource, "phone-recommendations");
+  const phoneRecommendationsItemsRu = itemsRuSourceForBlock(
+    ch4DistractionsModuleSource,
+    "phone-recommendations",
+  );
   assert.match(phoneRecommendationsItemsRu, /режим полета[\s\S]*modo avión/u);
   assert.match(phoneRecommendationsItemsRu, /бардачок или багажник[\s\S]*guantera или baúl/u);
   assert.match(phoneRecommendationsItemsRu, /balizas[\s\S]*аварийные огни/u);
-  assert.doesNotMatch(phoneRecommendationsItemsRu, /Поставить его в modo avión|Убрать его в guantera/u);
+  assert.doesNotMatch(
+    phoneRecommendationsItemsRu,
+    /Поставить его в modo avión|Убрать его в guantera/u,
+  );
   const otherActionsItemsRu = itemsRuSourceForBlock(ch4DistractionsModuleSource, "other-actions");
   assert.match(otherActionsItemsRu, /радио или CD/u);
   assert.match(otherActionsItemsRu, /портативный DVD/u);
@@ -1704,7 +2520,10 @@ test("Chapter 4 sections retain alcohol, sleep, stress, and distraction details"
   assert.match(otherActionsItemsRu, /верхнюю одежду/u);
   assert.match(otherActionsItemsRu, /зеркало заднего вида/u);
   assert.match(otherActionsItemsRu, /пунктом оплаты проезда/u);
-  assert.doesNotMatch(otherActionsItemsRu, /radio или CD|DVD portátil|occupants|abrigo|cinturón de seguridad|espejo retrovisor|peaje/u);
+  assert.doesNotMatch(
+    otherActionsItemsRu,
+    /radio или CD|DVD portátil|occupants|abrigo|cinturón de seguridad|espejo retrovisor|peaje/u,
+  );
   assert.match(ch4DistractionsModuleSource, /100% внимания/u);
 });
 
@@ -1713,14 +2532,24 @@ test("Chapter 5 sections retain attitude, equality, support-line, and efficient-
     "ch5-attitude-types",
     "ch5-equal-society",
     "ch5-gender-violence-prevention",
-    "ch5-anticipatory-efficient-driving"
+    "ch5-anticipatory-efficient-driving",
   ]) {
     const section = registry.sections.find((entry) => entry.id === sectionId);
     assert.equal(section.status, "implemented", `${sectionId} is implemented in the Chapter 5 PR`);
-    assert.equal(section.implementationEvidence.visualEvidenceSchemaVersion, 3, `${sectionId} uses strict visual evidence`);
+    assert.equal(
+      section.implementationEvidence.visualEvidenceSchemaVersion,
+      3,
+      `${sectionId} uses strict visual evidence`,
+    );
     assert.equal(section.implementationEvidence.visualRulePolicyId, "031-strict-source-fidelity");
-    assert.equal(section.implementationEvidence.highResolutionEvidenceStatus, "x5-or-equivalent-no-upscale-recorded");
-    assert.equal(section.implementationEvidence.localAssetMetadata[0].assetCategory, "native-dom-text-only");
+    assert.equal(
+      section.implementationEvidence.highResolutionEvidenceStatus,
+      "x5-or-equivalent-no-upscale-recorded",
+    );
+    assert.equal(
+      section.implementationEvidence.localAssetMetadata[0].assetCategory,
+      "native-dom-text-only",
+    );
   }
 
   assert.match(ch5AttitudeTypesModuleSource, /actitud[\s\S]*установка или отношение/u);
@@ -1741,38 +2570,89 @@ test("Chapter 5 sections retain attitude, equality, support-line, and efficient-
   assert.match(ch5EqualSocietyModuleSource, /30%[\s\S]*задачам ухода/u);
   assert.match(ch5EqualSocietyModuleSource, /право жить свободно/u);
   assert.match(ch5EqualSocietyModuleSource, /от девочек до пожилых женщин/u);
-  assert.match(ch5EqualSocietyModuleSource, /russianOverlayLabels[\s\S]*общественный транспорт[\s\S]*работа \/ учеба[\s\S]*задачи ухода/u);
-  const mobilityPatternsItemsRu = itemsRuSourceForBlock(ch5EqualSocietyModuleSource, "mobility-patterns");
-  assert.doesNotMatch(mobilityPatternsItemsRu, /son en transporte publico|por trabajo\/estudio|tareas de cuidado/u);
+  assert.match(
+    ch5EqualSocietyModuleSource,
+    /russianOverlayLabels[\s\S]*общественный транспорт[\s\S]*работа \/ учеба[\s\S]*задачи ухода/u,
+  );
+  const mobilityPatternsItemsRu = itemsRuSourceForBlock(
+    ch5EqualSocietyModuleSource,
+    "mobility-patterns",
+  );
+  assert.doesNotMatch(
+    mobilityPatternsItemsRu,
+    /son en transporte publico|por trabajo\/estudio|tareas de cuidado/u,
+  );
 
   assert.match(ch5GenderViolencePreventionModuleSource, /911/u);
   assert.match(ch5GenderViolencePreventionModuleSource, /22676 ACOSO/u);
-  assert.match(ch5GenderViolencePreventionModuleSource, /22676 ACOSO \(линия помощи при домогательствах\)/u);
-  assert.match(ch5GenderViolencePreventionModuleSource, /22676 ACOSO \(линия для сообщений о домогательствах\)/u);
+  assert.match(
+    ch5GenderViolencePreventionModuleSource,
+    /22676 ACOSO \(линия помощи при домогательствах\)/u,
+  );
+  assert.match(
+    ch5GenderViolencePreventionModuleSource,
+    /22676 ACOSO \(линия для сообщений о домогательствах\)/u,
+  );
   assert.match(ch5GenderViolencePreventionModuleSource, /24 часа[\s\S]*365 дней/u);
   assert.match(ch5GenderViolencePreventionModuleSource, /SMS[\s\S]*22676/u);
   assert.match(ch5GenderViolencePreventionModuleSource, /reporte - сообщение/u);
-  assert.match(ch5GenderViolencePreventionModuleSource, /contención\/asesoramiento - запрос поддержки/u);
-  assert.match(ch5GenderViolencePreventionModuleSource, /не работает как центр переадресации вызовов на 911/u);
-  const smsSupportItemsRu = itemsRuSourceForBlock(ch5GenderViolencePreventionModuleSource, "sms-support-flow");
-  const activeListeningItemsRu = itemsRuSourceForBlock(ch5GenderViolencePreventionModuleSource, "active-listening-and-limits");
+  assert.match(
+    ch5GenderViolencePreventionModuleSource,
+    /contención\/asesoramiento - запрос поддержки/u,
+  );
+  assert.match(
+    ch5GenderViolencePreventionModuleSource,
+    /не работает как центр переадресации вызовов на 911/u,
+  );
+  const smsSupportItemsRu = itemsRuSourceForBlock(
+    ch5GenderViolencePreventionModuleSource,
+    "sms-support-flow",
+  );
+  const activeListeningItemsRu = itemsRuSourceForBlock(
+    ch5GenderViolencePreventionModuleSource,
+    "active-listening-and-limits",
+  );
   assert.doesNotMatch(smsSupportItemsRu, /paradas de colectivo|estaciones de subte/u);
   assert.doesNotMatch(activeListeningItemsRu, /escucha activa/u);
 
-  assert.match(ch5AnticipatoryEfficientDrivingModuleSource, /titleRu: "Предупредительное вождение"/u);
-  assert.doesNotMatch(ch5AnticipatoryEfficientDrivingModuleSource, /anticipada-вождение|Предупредительное или anticipada/u);
-  assert.match(ch5AnticipatoryEfficientDrivingModuleSource, /предвидеть все, ожидать все, предполагать все/u);
+  assert.match(
+    ch5AnticipatoryEfficientDrivingModuleSource,
+    /titleRu: "Предупредительное вождение"/u,
+  );
+  assert.doesNotMatch(
+    ch5AnticipatoryEfficientDrivingModuleSource,
+    /anticipada-вождение|Предупредительное или anticipada/u,
+  );
+  assert.match(
+    ch5AnticipatoryEfficientDrivingModuleSource,
+    /предвидеть все, ожидать все, предполагать все/u,
+  );
   assert.match(ch5AnticipatoryEfficientDrivingModuleSource, /80 km\/h/u);
   assert.match(ch5AnticipatoryEfficientDrivingModuleSource, /19 и 24 ºC/u);
   assert.match(ch5AnticipatoryEfficientDrivingModuleSource, /12 000 km/u);
   assert.match(ch5AnticipatoryEfficientDrivingModuleSource, /20% расхода топлива/u);
   assert.match(ch5AnticipatoryEfficientDrivingModuleSource, /5 минут/u);
-  assert.match(ch5AnticipatoryEfficientDrivingModuleSource, /тормозов[\s\S]*воздушного, масляного и топливного фильтров/u);
-  assert.match(ch5AnticipatoryEfficientDrivingModuleSource, /давление должно соответствовать загрузке/u);
+  assert.match(
+    ch5AnticipatoryEfficientDrivingModuleSource,
+    /тормозов[\s\S]*воздушного, масляного и топливного фильтров/u,
+  );
+  assert.match(
+    ch5AnticipatoryEfficientDrivingModuleSource,
+    /давление должно соответствовать загрузке/u,
+  );
   assert.match(ch5AnticipatoryEfficientDrivingModuleSource, /более 3 минут/u);
-  assert.match(ch5AnticipatoryEfficientDrivingModuleSource, /дорожное движение[\s\S]*городской культуры/u);
-  const efficientMeasuresItemsRu = itemsRuSourceForBlock(ch5AnticipatoryEfficientDrivingModuleSource, "efficient-driving-measures");
-  assert.doesNotMatch(efficientMeasuresItemsRu, /ralenti|baja revoluciones|velocidad constante|vehículo detenido/u);
+  assert.match(
+    ch5AnticipatoryEfficientDrivingModuleSource,
+    /дорожное движение[\s\S]*городской культуры/u,
+  );
+  const efficientMeasuresItemsRu = itemsRuSourceForBlock(
+    ch5AnticipatoryEfficientDrivingModuleSource,
+    "efficient-driving-measures",
+  );
+  assert.doesNotMatch(
+    efficientMeasuresItemsRu,
+    /ralenti|baja revoluciones|velocidad constante|vehículo detenido/u,
+  );
 });
 
 test("Appendix I divider and private-car safety section boundaries are explicit", () => {
@@ -1788,7 +2668,7 @@ test("Appendix I divider and private-car safety section boundaries are explicit"
   assert.deepEqual(appendix.sectionIds, [
     "app1-safety-elements",
     "app1-other-required-safety-elements",
-    "app1-recommended-safety-elements"
+    "app1-recommended-safety-elements",
   ]);
 
   const safety = sectionById("app1-safety-elements");
@@ -1798,19 +2678,33 @@ test("Appendix I divider and private-car safety section boundaries are explicit"
   assert.deepEqual(otherRequired.sourcePageRange, { start: 119, end: 120 });
   assert.deepEqual(recommended.sourcePageRange, { start: 121, end: 122 });
   assert.equal(safety.sourceBoundaryEvidence.sharedSourcePage, 119);
-  assert.equal(safety.sourceBoundaryEvidence.endsBeforeLayoutBlockId, "page-119-source-line-mask-10");
-  assert.match(safety.sourceBoundaryEvidence.boundaryEvidence, /Equipaje[\s\S]*Otros elementos de seguridad obligatorios/u);
+  assert.equal(
+    safety.sourceBoundaryEvidence.endsBeforeLayoutBlockId,
+    "page-119-source-line-mask-10",
+  );
+  assert.match(
+    safety.sourceBoundaryEvidence.boundaryEvidence,
+    /Equipaje[\s\S]*Otros elementos de seguridad obligatorios/u,
+  );
   assert.equal(otherRequired.sourceBoundaryEvidence.sharedSourcePage, 119);
-  assert.equal(otherRequired.sourceBoundaryEvidence.startsAtLayoutBlockId, "page-119-source-line-mask-10");
-  assert.equal(otherRequired.sourceBoundaryEvidence.startsAtSourceTextEs, "Otros elementos de seguridad obligatorios");
+  assert.equal(
+    otherRequired.sourceBoundaryEvidence.startsAtLayoutBlockId,
+    "page-119-source-line-mask-10",
+  );
+  assert.equal(
+    otherRequired.sourceBoundaryEvidence.startsAtSourceTextEs,
+    "Otros elementos de seguridad obligatorios",
+  );
   assert.match(otherRequired.sourceBoundaryEvidence.boundaryEvidence, /preceding Equipaje/u);
-  const sharedPage119 = registry.sharedSourcePageOwnership.find((entry) => entry.sourcePage === 119);
+  const sharedPage119 = registry.sharedSourcePageOwnership.find(
+    (entry) => entry.sourcePage === 119,
+  );
   assert.ok(sharedPage119, "page 119 is declared in top-level shared source-page ownership");
   assert.equal(sharedPage119.referenceAsset, sourcePageAssetPath(119));
-  assert.deepEqual(sharedPage119.sectionBoundaries.map((boundary) => boundary.sectionId), [
-    "app1-safety-elements",
-    "app1-other-required-safety-elements"
-  ]);
+  assert.deepEqual(
+    sharedPage119.sectionBoundaries.map((boundary) => boundary.sectionId),
+    ["app1-safety-elements", "app1-other-required-safety-elements"],
+  );
   assert.deepEqual(sharedPage119.sectionBoundaries[0].ownedLayoutBlockIdsOnSharedPage, [
     "page-119-source-line-mask-02",
     "page-119-source-line-mask-03",
@@ -1819,9 +2713,12 @@ test("Appendix I divider and private-car safety section boundaries are explicit"
     "page-119-source-line-mask-06",
     "page-119-source-line-mask-07",
     "page-119-source-line-mask-08",
-    "page-119-source-line-mask-09"
+    "page-119-source-line-mask-09",
   ]);
-  assert.equal(sharedPage119.sectionBoundaries[0].endsBeforeLayoutBlockId, "page-119-source-line-mask-10");
+  assert.equal(
+    sharedPage119.sectionBoundaries[0].endsBeforeLayoutBlockId,
+    "page-119-source-line-mask-10",
+  );
   assert.deepEqual(sharedPage119.sectionBoundaries[1].ownedLayoutBlockIdsOnSharedPage, [
     "page-119-source-line-mask-10",
     "page-119-source-line-mask-11",
@@ -1829,15 +2726,25 @@ test("Appendix I divider and private-car safety section boundaries are explicit"
     "page-119-source-line-mask-13",
     "page-119-source-line-mask-14",
     "page-119-source-line-mask-15",
-    "page-119-source-line-mask-16"
+    "page-119-source-line-mask-16",
   ]);
-  assert.equal(sharedPage119.sectionBoundaries[1].startsAtLayoutBlockId, "page-119-source-line-mask-10");
-  assert.equal(registry.sections.some((section) => section.sourcePages.some((page) => page.sourcePage === 104)), false);
+  assert.equal(
+    sharedPage119.sectionBoundaries[1].startsAtLayoutBlockId,
+    "page-119-source-line-mask-10",
+  );
+  assert.equal(
+    registry.sections.some((section) =>
+      section.sourcePages.some((page) => page.sourcePage === 104),
+    ),
+    false,
+  );
   assert.doesNotMatch(manualGuideSource, /annex-1-safety|annex-1-required|annex-1-recommended/u);
 });
 
 test("Appendix II divider and passenger-transport section boundaries are explicit", () => {
-  const appendix = registry.chapters.find((chapter) => chapter.id === "appendix-2-passenger-transport");
+  const appendix = registry.chapters.find(
+    (chapter) => chapter.id === "appendix-2-passenger-transport",
+  );
   assert.ok(appendix, "Appendix II parent exists");
   assert.deepEqual(appendix.sourcePageRange, { start: 123, end: 151 });
   assert.equal(appendix.requiredPrintedPage, 122);
@@ -1846,60 +2753,88 @@ test("Appendix II divider and passenger-transport section boundaries are explici
     "app2-safety-elements",
     "app2-driving-factors",
     "app2-safe-driving",
-    "app2-highways-hospitals"
+    "app2-highways-hospitals",
   ]);
 
-  assert.equal(registry.skippedSourcePages.some((entry) => entry.sourcePage === 123), false);
+  assert.equal(
+    registry.skippedSourcePages.some((entry) => entry.sourcePage === 123),
+    false,
+  );
 
   const socialResponsibility = sectionById("app2-social-responsibility");
   assert.deepEqual(socialResponsibility.sourcePageRange, { start: 123, end: 124 });
-  assert.deepEqual(socialResponsibility.sourcePages.map((entry) => entry.sourcePage), [123, 124]);
+  assert.deepEqual(
+    socialResponsibility.sourcePages.map((entry) => entry.sourcePage),
+    [123, 124],
+  );
   assert.equal(socialResponsibility.topicNavigationStartPage, 124);
   assert.equal(
     socialResponsibility.topicNavigationStartPage ?? socialResponsibility.sourcePageRange.start,
     124,
-    "derived manualGuideNavigation child sourcePage/display start is page 124"
+    "derived manualGuideNavigation child sourcePage/display start is page 124",
   );
-  assert.match(manualGuideSource, /sourcePage:\s*section\.topicNavigationStartPage\s*\?\?\s*section\.sourcePageRange\.start/u);
+  assert.match(
+    manualGuideSource,
+    /sourcePage:\s*section\.topicNavigationStartPage\s*\?\?\s*section\.sourcePageRange\.start/u,
+  );
   assert.deepEqual(sectionById("app2-safety-elements").sourcePageRange, { start: 125, end: 136 });
   assert.deepEqual(sectionById("app2-driving-factors").sourcePageRange, { start: 137, end: 143 });
   const safeDriving = sectionById("app2-safe-driving");
   const highwaysHospitals = sectionById("app2-highways-hospitals");
   assert.deepEqual(safeDriving.sourcePageRange, { start: 144, end: 148 });
-  assert.deepEqual(safeDriving.sourcePages.map((entry) => entry.sourcePage), [144, 145, 146, 147, 148]);
+  assert.deepEqual(
+    safeDriving.sourcePages.map((entry) => entry.sourcePage),
+    [144, 145, 146, 147, 148],
+  );
   assert.deepEqual(safeDriving.implementationEvidence.sourcePages, [144, 145, 146, 147, 148]);
   assert.deepEqual(highwaysHospitals.sourcePageRange, { start: 149, end: 151 });
-  assert.deepEqual(highwaysHospitals.sourcePages.map((entry) => entry.sourcePage), [149, 150, 151]);
+  assert.deepEqual(
+    highwaysHospitals.sourcePages.map((entry) => entry.sourcePage),
+    [149, 150, 151],
+  );
   assert.deepEqual(highwaysHospitals.implementationEvidence.sourcePages, [149, 150, 151]);
-  assert.equal(highwaysHospitals.topicNavigationStartPage ?? highwaysHospitals.sourcePageRange.start, 149);
+  assert.equal(
+    highwaysHospitals.topicNavigationStartPage ?? highwaysHospitals.sourcePageRange.start,
+    149,
+  );
   assert.equal(
     safeDriving.implementationEvidence.sourceRegionMetadata.some(
       (entry) =>
         entry.sourcePage === 148 &&
         entry.sourceAssetPath ===
           "content/validation/manual-guide/app2-safe-driving/page-148-safe-driving-source-crop.jpg" &&
-        entry.cropSha256 === "e1fe1bce0876304faf48e99cd8b44c0aa2a6017fc4a9e7d74039985945fde2a4"
+        entry.cropSha256 === "e1fe1bce0876304faf48e99cd8b44c0aa2a6017fc4a9e7d74039985945fde2a4",
     ),
     true,
-    "page 148 source crop provenance belongs to app2-safe-driving under local sourcePage convention"
+    "page 148 source crop provenance belongs to app2-safe-driving under local sourcePage convention",
   );
   assert.equal(
-    highwaysHospitals.implementationEvidence.sourceRegionMetadata.some((entry) => entry.sourcePage === 148),
+    highwaysHospitals.implementationEvidence.sourceRegionMetadata.some(
+      (entry) => entry.sourcePage === 148,
+    ),
     false,
-    "page 148 source crop provenance no longer belongs to app2-highways-hospitals"
+    "page 148 source crop provenance no longer belongs to app2-highways-hospitals",
   );
   assert.equal(
-    sha256File("content/validation/manual-guide/app2-safe-driving/page-148-safe-driving-source-crop.jpg"),
+    sha256File(
+      "content/validation/manual-guide/app2-safe-driving/page-148-safe-driving-source-crop.jpg",
+    ),
     "e1fe1bce0876304faf48e99cd8b44c0aa2a6017fc4a9e7d74039985945fde2a4",
-    "restored page 148 x5 source crop bytes are preserved"
+    "restored page 148 x5 source crop bytes are preserved",
   );
   assert.equal(
-    registry.sections.filter((section) => section.sourcePages.some((page) => page.sourcePage === 123)).map((section) => section.id).join(","),
-    "app2-social-responsibility"
+    registry.sections
+      .filter((section) => section.sourcePages.some((page) => page.sourcePage === 123))
+      .map((section) => section.id)
+      .join(","),
+    "app2-social-responsibility",
   );
   assert.equal(
-    registry.sections.filter((section) => section.sourcePages.some((page) => page.sourcePage === 148)).map((section) => section.id).join(","),
-    "app2-safe-driving"
+    registry.sections
+      .filter((section) => section.sourcePages.some((page) => page.sourcePage === 148))
+      .map((section) => section.id)
+      .join(","),
+    "app2-safe-driving",
   );
 });
 
@@ -1914,22 +2849,37 @@ test("Appendix III divider and cargo section boundaries are explicit", () => {
     "app3-driving-factors",
     "app3-safe-driving",
     "app3-safety-elements",
-    "app3-highways"
+    "app3-highways",
   ]);
 
   const divider = registry.skippedSourcePages.find((entry) => entry.sourcePage === 152);
   assert.ok(divider, "Appendix III divider page is explicitly skipped");
   assert.equal(divider.reason, "chapter-divider-only");
   assert.equal(divider.parentChapterId, "appendix-3-cargo");
-  assert.equal(registry.sections.some((section) => section.sourcePages.some((page) => page.sourcePage === 152)), false);
+  assert.equal(
+    registry.sections.some((section) =>
+      section.sourcePages.some((page) => page.sourcePage === 152),
+    ),
+    false,
+  );
 
-  assert.deepEqual(sectionById("app3-cargo-driver-profile").sourcePageRange, { start: 153, end: 154 });
-  assert.deepEqual(sectionById("app3-social-responsibility").sourcePageRange, { start: 155, end: 159 });
+  assert.deepEqual(sectionById("app3-cargo-driver-profile").sourcePageRange, {
+    start: 153,
+    end: 154,
+  });
+  assert.deepEqual(sectionById("app3-social-responsibility").sourcePageRange, {
+    start: 155,
+    end: 159,
+  });
   assert.deepEqual(sectionById("app3-driving-factors").sourcePageRange, { start: 160, end: 161 });
   assert.deepEqual(sectionById("app3-safe-driving").sourcePageRange, { start: 162, end: 168 });
   assert.deepEqual(sectionById("app3-safety-elements").sourcePageRange, { start: 169, end: 181 });
   assert.deepEqual(sectionById("app3-highways").sourcePageRange, { start: 182, end: 183 });
-  assert.equal(registry.sections.some((section) => /^app4-/u.test(section.id)), true, "Appendix IV content is implemented in its own PR");
+  assert.equal(
+    registry.sections.some((section) => /^app4-/u.test(section.id)),
+    true,
+    "Appendix IV content is implemented in its own PR",
+  );
 });
 
 test("Appendix III sections retain cargo-driver legal, safety, equipment, and highway details", () => {
@@ -1939,14 +2889,28 @@ test("Appendix III sections retain cargo-driver legal, safety, equipment, and hi
     "app3-driving-factors",
     "app3-safe-driving",
     "app3-safety-elements",
-    "app3-highways"
+    "app3-highways",
   ]) {
     const section = sectionById(sectionId);
-    assert.equal(section.status, "implemented", `${sectionId} is implemented in the Appendix III PR`);
-    assert.equal(section.implementationEvidence.visualEvidenceSchemaVersion, 3, `${sectionId} uses strict visual evidence`);
+    assert.equal(
+      section.status,
+      "implemented",
+      `${sectionId} is implemented in the Appendix III PR`,
+    );
+    assert.equal(
+      section.implementationEvidence.visualEvidenceSchemaVersion,
+      3,
+      `${sectionId} uses strict visual evidence`,
+    );
     assert.equal(section.implementationEvidence.visualRulePolicyId, "031-strict-source-fidelity");
-    assert.equal(section.implementationEvidence.highResolutionEvidenceStatus, "x5-or-equivalent-no-upscale-recorded");
-    assert.equal(section.implementationEvidence.localAssetMetadata[0].assetCategory, "native-dom-text-only");
+    assert.equal(
+      section.implementationEvidence.highResolutionEvidenceStatus,
+      "x5-or-equivalent-no-upscale-recorded",
+    );
+    assert.equal(
+      section.implementationEvidence.localAssetMetadata[0].assetCategory,
+      "native-dom-text-only",
+    );
   }
 
   assert.match(app3CargoDriverProfileModuleSource, /категорий C, D и E/u);
@@ -1959,11 +2923,17 @@ test("Appendix III sections retain cargo-driver legal, safety, equipment, and hi
   assert.match(app3SocialResponsibilityModuleSource, /Питание должно планироваться/u);
   assert.match(app3DrivingFactorsModuleSource, /body-posture-source-as-is\.png/u);
   assert.match(app3DrivingFactorsModuleSource, /source-image-original-visible-text/u);
-  assert.match(app3DrivingFactorsModuleSource, /Испанские подписи внутри изображения не переводятся/u);
+  assert.match(
+    app3DrivingFactorsModuleSource,
+    /Испанские подписи внутри изображения не переводятся/u,
+  );
   assert.match(app3SafeDrivingModuleSource, /1,5 m/u);
   assert.match(app3SafeDrivingModuleSource, /более 12 t/u);
   assert.match(app3SafeDrivingModuleSource, /205 km[\s\S]*95 улиц[\s\S]*39 из 48 районов/u);
-  assert.match(app3SafeDrivingModuleSource, /грузовиков и прицепов[\s\S]*индивидуальной массой 12 t[\s\S]*междугородних пассажирских автобусов[\s\S]*19 мест/u);
+  assert.match(
+    app3SafeDrivingModuleSource,
+    /грузовиков и прицепов[\s\S]*индивидуальной массой 12 t[\s\S]*междугородних пассажирских автобусов[\s\S]*19 мест/u,
+  );
   assert.match(app3SafeDrivingModuleSource, /Paseo del Bajo[\s\S]*60 km\/h/u);
   assert.match(app3SafeDrivingModuleSource, /Велосипеды, мотоциклы, автомобили, такси/u);
   assert.match(app3SafetyElementsModuleSource, /1,6 mm/u);
@@ -1971,7 +2941,10 @@ test("Appendix III sections retain cargo-driver legal, safety, equipment, and hi
   assert.match(app3SafetyElementsModuleSource, /10% задней части/u);
   assert.match(app3SafetyElementsModuleSource, /25 cm/u);
   assert.match(app3SafetyElementsModuleSource, /Av\. Paseo Colon[\s\S]*Av\. San Juan/u);
-  assert.match(app3SafetyElementsModuleSource, /Av\. Elvira Rawson de Dellepiane[\s\S]*Av\. Ing\. Huergo/u);
+  assert.match(
+    app3SafetyElementsModuleSource,
+    /Av\. Elvira Rawson de Dellepiane[\s\S]*Av\. Ing\. Huergo/u,
+  );
   assert.match(app3SafetyElementsModuleSource, /seatbelt-source-as-is\.png/u);
   assert.match(app3SafetyElementsModuleSource, /Как читать фото/u);
   assert.match(app3SafetyElementsModuleSource, /больше 1 kg/u);
@@ -1991,21 +2964,32 @@ test("Appendix IV divider and traffic-sign section boundaries are explicit", () 
     "app4-signs-informational",
     "app4-signs-temporary",
     "app4-signs-horizontal",
-    "app4-signs-traffic-lights"
+    "app4-signs-traffic-lights",
   ]);
 
   const divider = registry.skippedSourcePages.find((entry) => entry.sourcePage === 184);
   assert.ok(divider, "Appendix IV divider page is explicitly skipped");
   assert.equal(divider.reason, "chapter-divider-only");
   assert.equal(divider.parentChapterId, "appendix-4-road-signs");
-  assert.equal(registry.sections.some((section) => section.sourcePages.some((page) => page.sourcePage === 184)), false);
+  assert.equal(
+    registry.sections.some((section) =>
+      section.sourcePages.some((page) => page.sourcePage === 184),
+    ),
+    false,
+  );
 
   assert.deepEqual(sectionById("app4-signs-regulatory").sourcePageRange, { start: 185, end: 186 });
   assert.deepEqual(sectionById("app4-signs-warning").sourcePageRange, { start: 187, end: 188 });
-  assert.deepEqual(sectionById("app4-signs-informational").sourcePageRange, { start: 189, end: 192 });
+  assert.deepEqual(sectionById("app4-signs-informational").sourcePageRange, {
+    start: 189,
+    end: 192,
+  });
   assert.deepEqual(sectionById("app4-signs-temporary").sourcePageRange, { start: 193, end: 194 });
   assert.deepEqual(sectionById("app4-signs-horizontal").sourcePageRange, { start: 195, end: 196 });
-  assert.deepEqual(sectionById("app4-signs-traffic-lights").sourcePageRange, { start: 197, end: 200 });
+  assert.deepEqual(sectionById("app4-signs-traffic-lights").sourcePageRange, {
+    start: 197,
+    end: 200,
+  });
 });
 
 test("Appendix IV keeps protected signs, markings, and signals source-as-is with Russian explanations outside images", () => {
@@ -2015,22 +2999,43 @@ test("Appendix IV keeps protected signs, markings, and signals source-as-is with
     "app4-signs-informational",
     "app4-signs-temporary",
     "app4-signs-horizontal",
-    "app4-signs-traffic-lights"
+    "app4-signs-traffic-lights",
   ]) {
     const section = sectionById(sectionId);
-    assert.equal(section.status, "implemented", `${sectionId} is implemented in the Appendix IV PR`);
-    assert.equal(section.implementationEvidence.visualEvidenceSchemaVersion, 3, `${sectionId} uses strict visual evidence`);
+    assert.equal(
+      section.status,
+      "implemented",
+      `${sectionId} is implemented in the Appendix IV PR`,
+    );
+    assert.equal(
+      section.implementationEvidence.visualEvidenceSchemaVersion,
+      3,
+      `${sectionId} uses strict visual evidence`,
+    );
     assert.equal(section.implementationEvidence.visualRulePolicyId, "031-strict-source-fidelity");
-    assert.equal(section.implementationEvidence.highResolutionEvidenceStatus, "x5-or-equivalent-no-upscale-recorded");
-    assert.equal(section.implementationEvidence.localAssetMetadata[0].assetCategory, "native-dom-text-only");
+    assert.equal(
+      section.implementationEvidence.highResolutionEvidenceStatus,
+      "x5-or-equivalent-no-upscale-recorded",
+    );
+    assert.equal(
+      section.implementationEvidence.localAssetMetadata[0].assetCategory,
+      "native-dom-text-only",
+    );
     for (const entry of section.implementationEvidence.sourceRegionMetadata) {
       const cropRecord = visualCropEvidence.targets.find(
-        (record) => record.sectionId === sectionId && record.outputSourceAssetPath === entry.sourceAssetPath
+        (record) =>
+          record.sectionId === sectionId && record.outputSourceAssetPath === entry.sourceAssetPath,
       );
       if (!cropRecord) {
-        const anexoPanel = anexoRegulatoryPanels.find((panel) => panel.sourceAssetPath === entry.sourceAssetPath);
+        const anexoPanel = anexoRegulatoryPanels.find(
+          (panel) => panel.sourceAssetPath === entry.sourceAssetPath,
+        );
         if (anexoPanel) {
-          assert.equal(sectionId, "app4-signs-regulatory", `${anexoPanel.cardId} belongs to regulatory signs`);
+          assert.equal(
+            sectionId,
+            "app4-signs-regulatory",
+            `${anexoPanel.cardId} belongs to regulatory signs`,
+          );
           assert.deepEqual(entry.cropDimensions, anexoPanel.dimensions);
           assert.equal(entry.cropSha256, anexoPanel.sha256);
           assert.deepEqual(entry.sourceRegion, {
@@ -2038,18 +3043,31 @@ test("Appendix IV keeps protected signs, markings, and signals source-as-is with
             x: 0,
             y: 0,
             width: anexoPanel.dimensions.width,
-            height: anexoPanel.dimensions.height
+            height: anexoPanel.dimensions.height,
           });
-          assert.equal(entry.extractionScaleEvidence.target, "retained-official-original-image-copy");
+          assert.equal(
+            entry.extractionScaleEvidence.target,
+            "retained-official-original-image-copy",
+          );
           assert.equal(sha256File(anexoPanel.assetPath), anexoPanel.sha256);
           assert.equal(sha256File(anexoPanel.sourceAssetPath), anexoPanel.sha256);
           continue;
         }
-        assert.equal(entry.sourceAssetPath, noAvanzarSourceAssetPath, `${sectionId} extra source region is the focused NO AVANZAR crop`);
+        assert.equal(
+          entry.sourceAssetPath,
+          noAvanzarSourceAssetPath,
+          `${sectionId} extra source region is the focused NO AVANZAR crop`,
+        );
         assert.deepEqual(entry.cropDimensions, { width: 200, height: 145 });
-        assert.equal(entry.cropSha256, "037f998385ae004aeb7bf4ece381ea6cf4e6b0eaec77d8c2a2f5816cb783afba");
+        assert.equal(
+          entry.cropSha256,
+          "037f998385ae004aeb7bf4ece381ea6cf4e6b0eaec77d8c2a2f5816cb783afba",
+        );
         assert.equal(entry.extractionScaleEvidence.target, "higher-resolution-direct-export");
-        assert.match(entry.extractionScaleEvidence.externalCaptionBoundary, /external catalog caption/u);
+        assert.match(
+          entry.extractionScaleEvidence.externalCaptionBoundary,
+          /external catalog caption/u,
+        );
         continue;
       }
       assert.notDeepEqual(entry.sourceRegion, { x: 0, y: 0, width: 2976, height: 4209 });
@@ -2067,18 +3085,34 @@ test("Appendix IV keeps protected signs, markings, and signals source-as-is with
     "app4-signs-warning",
     "app4-signs-informational",
     "app4-signs-temporary",
-    "app4-signs-traffic-lights"
+    "app4-signs-traffic-lights",
   ]) {
     const section = sectionById(sectionId);
-    const imageAssets = section.implementationEvidence.localAssetMetadata.filter((entry) => entry.assetCategory === "source-as-is-traffic-sign");
-    assert.ok(imageAssets.length > 0, `${sectionId} records source-as-is traffic sign/signal assets`);
+    const imageAssets = section.implementationEvidence.localAssetMetadata.filter(
+      (entry) => entry.assetCategory === "source-as-is-traffic-sign",
+    );
+    assert.ok(
+      imageAssets.length > 0,
+      `${sectionId} records source-as-is traffic sign/signal assets`,
+    );
     for (const asset of imageAssets) {
-      const cropRecord = visualCropEvidence.targets.find((record) => record.outputAssetPath === asset.assetPath);
+      const cropRecord = visualCropEvidence.targets.find(
+        (record) => record.outputAssetPath === asset.assetPath,
+      );
       if (!cropRecord) {
-        const anexoPanel = anexoRegulatoryPanels.find((panel) => panel.assetPath === asset.assetPath);
+        const anexoPanel = anexoRegulatoryPanels.find(
+          (panel) => panel.assetPath === asset.assetPath,
+        );
         if (anexoPanel) {
-          assert.equal(sectionId, "app4-signs-regulatory", `${anexoPanel.cardId} belongs to regulatory signs`);
-          assert.equal(asset.assetKind, `official-traffic-sign-source-as-is-anexo-regulatory-panel-${anexoPanel.cardId.match(/panel-(\d+)/u)[1]}`);
+          assert.equal(
+            sectionId,
+            "app4-signs-regulatory",
+            `${anexoPanel.cardId} belongs to regulatory signs`,
+          );
+          assert.equal(
+            asset.assetKind,
+            `official-traffic-sign-source-as-is-anexo-regulatory-panel-${anexoPanel.cardId.match(/panel-(\d+)/u)[1]}`,
+          );
           assert.equal(asset.width, anexoPanel.dimensions.width);
           assert.equal(asset.height, anexoPanel.dimensions.height);
           assert.equal(asset.sha256, anexoPanel.sha256);
@@ -2092,11 +3126,18 @@ test("Appendix IV keeps protected signs, markings, and signals source-as-is with
           assert.equal(asset.officialSignException.kind, "official-traffic-sign-source-as-is");
           continue;
         }
-        assert.equal(asset.assetPath, noAvanzarAssetPath, `${asset.assetPath} is the focused NO AVANZAR official-source crop`);
+        assert.equal(
+          asset.assetPath,
+          noAvanzarAssetPath,
+          `${asset.assetPath} is the focused NO AVANZAR official-source crop`,
+        );
         assert.equal(asset.assetKind, "official-traffic-sign-source-as-is-no-avanzar");
         assert.equal(asset.width, 200);
         assert.equal(asset.height, 145);
-        assert.equal(asset.sha256, "037f998385ae004aeb7bf4ece381ea6cf4e6b0eaec77d8c2a2f5816cb783afba");
+        assert.equal(
+          asset.sha256,
+          "037f998385ae004aeb7bf4ece381ea6cf4e6b0eaec77d8c2a2f5816cb783afba",
+        );
         assert.equal(asset.runtimeDisplaySize.maxWidthCssPx, 200);
         assert.equal(asset.runtimeDisplaySize.noUpscale, true);
         assert.equal(asset.sourceIntegrity.sourceAssetPath, noAvanzarSourceAssetPath);
@@ -2122,11 +3163,18 @@ test("Appendix IV keeps protected signs, markings, and signals source-as-is with
   }
 
   const horizontal = sectionById("app4-signs-horizontal");
-  const markingAssets = horizontal.implementationEvidence.localAssetMetadata.filter((entry) => entry.assetCategory === "source-as-is-road-marking");
+  const markingAssets = horizontal.implementationEvidence.localAssetMetadata.filter(
+    (entry) => entry.assetCategory === "source-as-is-road-marking",
+  );
   assert.equal(markingAssets.length, 2);
-  assert.equal(horizontal.implementationEvidence.visibleSpanishStatus.status, "source_image_exceptions_only");
+  assert.equal(
+    horizontal.implementationEvidence.visibleSpanishStatus.status,
+    "source_image_exceptions_only",
+  );
   for (const asset of markingAssets) {
-    const cropRecord = visualCropEvidence.targets.find((record) => record.outputAssetPath === asset.assetPath);
+    const cropRecord = visualCropEvidence.targets.find(
+      (record) => record.outputAssetPath === asset.assetPath,
+    );
     assert.ok(cropRecord, `${asset.assetPath} has feature 034 crop evidence`);
     assert.equal(asset.cleanupScope, "none-source-as-is");
     assert.equal(asset.sourceIntegrity.noTranslationOrRelabeling, true);
@@ -2139,15 +3187,27 @@ test("Appendix IV keeps protected signs, markings, and signals source-as-is with
     assert.equal(sha256File(asset.sourceIntegrity.sourceAssetPath), asset.sha256);
   }
 
-  assert.match(app4SignsRegulatoryModuleSource, /Запрещающие[\s\S]*Ограничивающие[\s\S]*приоритет/u);
+  assert.match(
+    app4SignsRegulatoryModuleSource,
+    /Запрещающие[\s\S]*Ограничивающие[\s\S]*приоритет/u,
+  );
   assert.match(app4SignsRegulatoryModuleSource, /app4-regulatory-no-avanzar-source-card/);
   assert.match(app4SignsRegulatoryModuleSource, /NO AVANZAR[\s\S]*Проезд запрещен/u);
   assert.doesNotMatch(app4SignsRegulatoryModuleSource, /Движение прямо запрещено/u);
   assert.match(app4SignsWarningModuleSource, /Предупреждение не всегда запрещает действие/u);
-  assert.match(app4SignsInformationalModuleSource, /Желтая звезда[\s\S]*estrellasamarillas@buenosaires\.gob\.ar/u);
+  assert.match(
+    app4SignsInformationalModuleSource,
+    /Желтая звезда[\s\S]*estrellasamarillas@buenosaires\.gob\.ar/u,
+  );
   assert.match(app4SignsTemporaryModuleSource, /Временные дорожные знаки имеют приоритет/u);
-  assert.match(app4SignsHorizontalModuleSource, /Продольная разметка[\s\S]*Поперечная разметка[\s\S]*Специальная разметка/u);
-  assert.match(app4SignsTrafficLightsModuleSource, /Значение огней[\s\S]*Расположение оптических блоков[\s\S]*Специальные светофоры/u);
+  assert.match(
+    app4SignsHorizontalModuleSource,
+    /Продольная разметка[\s\S]*Поперечная разметка[\s\S]*Специальная разметка/u,
+  );
+  assert.match(
+    app4SignsTrafficLightsModuleSource,
+    /Значение огней[\s\S]*Расположение оптических блоков[\s\S]*Специальные светофоры/u,
+  );
   assert.match(app4SignsTrafficLightsModuleSource, /цвет, размер и положение/u);
 });
 
@@ -2156,38 +3216,59 @@ test("Appendix IV keeps R.1 NO AVANZAR distinct from the no-overtaking sign in e
   // maps manualSignEntriesForSection(), while source-image cards map their
   // termTranslations through ManualImageTermTranslations.
   assert.match(appSource, /manualSignEntriesForSection\(block\.sectionId\)[\s\S]*entries\.map/u);
-  assert.match(appSource, /block\.cards\.map[\s\S]*ManualImageTermTranslations terms=\{card\.termTranslations\}/u);
+  assert.match(
+    appSource,
+    /block\.cards\.map[\s\S]*ManualImageTermTranslations terms=\{card\.termTranslations\}/u,
+  );
 
-  const r1Rows = renderedNoAvanzarRows(app4SignEntries.entries, sourceImageCardTermRows(app4SignsRegulatoryModuleSource));
+  const r1Rows = renderedNoAvanzarRows(
+    app4SignEntries.entries,
+    sourceImageCardTermRows(app4SignsRegulatoryModuleSource),
+  );
   assertRenderedNoAvanzarInvariant(r1Rows);
 
-  for (const targetId of ["app4-regulatory-anexo-panel-01-source-card", "app4-regulatory-page-185-source-card"]) {
+  for (const targetId of [
+    "app4-regulatory-anexo-panel-01-source-card",
+    "app4-regulatory-page-185-source-card",
+  ]) {
     assert.throws(
       () => assertRenderedNoAvanzarInvariant(r1Rows.filter((row) => row.id !== targetId)),
       /R\.1 rendered inventory is exact and fail-closed/u,
-      `${targetId} cannot be silently removed from the rendered R.1 inventory`
+      `${targetId} cannot be silently removed from the rendered R.1 inventory`,
     );
     assert.throws(
       () =>
         assertRenderedNoAvanzarInvariant(
-          r1Rows.map((row) => (row.id === targetId ? { ...row, translationRu: "Обгон запрещен" } : row))
+          r1Rows.map((row) =>
+            row.id === targetId ? { ...row, translationRu: "Обгон запрещен" } : row,
+          ),
         ),
       /uses the R\.1 translation/u,
-      `${targetId} cannot use the no-overtaking translation`
+      `${targetId} cannot use the no-overtaking translation`,
     );
     assert.throws(
       () =>
         assertRenderedNoAvanzarInvariant(
-          r1Rows.map((row) => (row.id === targetId ? { ...row, id: `${targetId}-incorrect` } : row))
+          r1Rows.map((row) =>
+            row.id === targetId ? { ...row, id: `${targetId}-incorrect` } : row,
+          ),
         ),
       /R\.1 rendered inventory is exact and fail-closed/u,
-      `${targetId} cannot satisfy coverage with an incorrect identity`
+      `${targetId} cannot satisfy coverage with an incorrect identity`,
     );
   }
 
-  const focusedCardStart = app4SignsRegulatoryModuleSource.indexOf('id: "app4-regulatory-no-avanzar-source-card"');
-  const focusedCardEnd = app4SignsRegulatoryModuleSource.indexOf("\n      visualNotes:", focusedCardStart);
-  assert.ok(focusedCardStart >= 0 && focusedCardEnd > focusedCardStart, "focused R.1 source card is present");
+  const focusedCardStart = app4SignsRegulatoryModuleSource.indexOf(
+    'id: "app4-regulatory-no-avanzar-source-card"',
+  );
+  const focusedCardEnd = app4SignsRegulatoryModuleSource.indexOf(
+    "\n      visualNotes:",
+    focusedCardStart,
+  );
+  assert.ok(
+    focusedCardStart >= 0 && focusedCardEnd > focusedCardStart,
+    "focused R.1 source card is present",
+  );
   const focusedCard = app4SignsRegulatoryModuleSource.slice(focusedCardStart, focusedCardEnd);
 
   assert.match(focusedCard, /titleRu:\s*"Проезд запрещен"/u);
@@ -2195,13 +3276,29 @@ test("Appendix IV keeps R.1 NO AVANZAR distinct from the no-overtaking sign in e
   assert.match(focusedCard, /termEs:\s*"NO AVANZAR",\s*translationRu:\s*"Проезд запрещен"/u);
   assert.doesNotMatch(focusedCard, /обгон запрещен/iu);
 
-  const noOvertakingPanelStart = app4SignsRegulatoryModuleSource.indexOf('id: "app4-regulatory-anexo-panel-02-source-card"');
-  const noOvertakingPanelEnd = app4SignsRegulatoryModuleSource.indexOf("\n        {", noOvertakingPanelStart);
-  assert.ok(noOvertakingPanelStart >= 0 && noOvertakingPanelEnd > noOvertakingPanelStart, "no-overtaking panel is present");
-  const noOvertakingPanel = app4SignsRegulatoryModuleSource.slice(noOvertakingPanelStart, noOvertakingPanelEnd);
-  assert.match(noOvertakingPanel, /termEs:\s*"PROHIBIDO ADELANTAR",\s*translationRu:\s*"Обгон запрещен"/u);
+  const noOvertakingPanelStart = app4SignsRegulatoryModuleSource.indexOf(
+    'id: "app4-regulatory-anexo-panel-02-source-card"',
+  );
+  const noOvertakingPanelEnd = app4SignsRegulatoryModuleSource.indexOf(
+    "\n        {",
+    noOvertakingPanelStart,
+  );
+  assert.ok(
+    noOvertakingPanelStart >= 0 && noOvertakingPanelEnd > noOvertakingPanelStart,
+    "no-overtaking panel is present",
+  );
+  const noOvertakingPanel = app4SignsRegulatoryModuleSource.slice(
+    noOvertakingPanelStart,
+    noOvertakingPanelEnd,
+  );
+  assert.match(
+    noOvertakingPanel,
+    /termEs:\s*"PROHIBIDO ADELANTAR",\s*translationRu:\s*"Обгон запрещен"/u,
+  );
 
-  const catalogBySpanishLabel = new Map(app4SignEntries.entries.map((entry) => [entry.spanishLabel, entry.russianTranslation]));
+  const catalogBySpanishLabel = new Map(
+    app4SignEntries.entries.map((entry) => [entry.spanishLabel, entry.russianTranslation]),
+  );
   assert.equal(catalogBySpanishLabel.get("NO AVANZAR"), "Проезд запрещен");
   assert.equal(catalogBySpanishLabel.get("NO ADELANTAR"), "Обгон запрещен");
 });
@@ -2209,7 +3306,10 @@ test("Appendix IV keeps R.1 NO AVANZAR distinct from the no-overtaking sign in e
 test("Manual guide visual content crop evidence covers the whole manual and corrected Appendix IV page sheets", () => {
   assert.equal(visualCropEvidence.schemaVersion, 1);
   assert.equal(visualCropEvidence.featureId, "034-manual-visual-content-crop");
-  assert.equal(visualCropEvidence.sourcePdfPath, "content/official-documents/originals/gcba-manual-vehiculo-4-ruedas-2023.pdf");
+  assert.equal(
+    visualCropEvidence.sourcePdfPath,
+    "content/official-documents/originals/gcba-manual-vehiculo-4-ruedas-2023.pdf",
+  );
   assert.equal(visualCropEvidence.whiteThreshold, 245);
   assert.match(visualCropEvidence.nonWhiteRule, /any RGB channel below threshold/u);
   assert.equal(visualCropEvidence.paddingPxAtSourceBaseScale, 80);
@@ -2219,22 +3319,43 @@ test("Manual guide visual content crop evidence covers the whole manual and corr
   assert.equal(visualCropEvidence.targets.length, 16);
 
   for (const record of visualCropEvidence.targets) {
-    assert.ok(existsSync(record.currentAssetPath), `${record.currentAssetPath} remains available as prior-state evidence`);
+    assert.ok(
+      existsSync(record.currentAssetPath),
+      `${record.currentAssetPath} remains available as prior-state evidence`,
+    );
     assert.ok(existsSync(record.outputAssetPath), `${record.outputAssetPath} exists`);
     assert.ok(existsSync(record.outputSourceAssetPath), `${record.outputSourceAssetPath} exists`);
     assert.equal(sha256File(record.outputAssetPath), record.outputSha256);
     assert.equal(sha256File(record.outputSourceAssetPath), record.outputSha256);
     assert.equal(record.beforeDimensions.width, 2976);
     assert.equal(record.beforeDimensions.height, 4209);
-    assert.ok(record.beforeUsefulRatios.areaRatio < 0.05, `${record.cardId} starts as an excessive-margin useful-content island`);
-    assert.ok(record.beforeUsefulRatios.widthRatio < 0.21, `${record.cardId} starts below the major-visual width threshold`);
-    assert.ok(record.outputUsefulRatios.areaRatio >= 0.55, `${record.cardId} corrected crop useful area ratio`);
-    assert.ok(record.outputUsefulRatios.widthRatio >= 0.75, `${record.cardId} corrected crop useful width ratio`);
-    assert.ok(record.outputUsefulRatios.heightRatio >= 0.75, `${record.cardId} corrected crop useful height ratio`);
+    assert.ok(
+      record.beforeUsefulRatios.areaRatio < 0.05,
+      `${record.cardId} starts as an excessive-margin useful-content island`,
+    );
+    assert.ok(
+      record.beforeUsefulRatios.widthRatio < 0.21,
+      `${record.cardId} starts below the major-visual width threshold`,
+    );
+    assert.ok(
+      record.outputUsefulRatios.areaRatio >= 0.55,
+      `${record.cardId} corrected crop useful area ratio`,
+    );
+    assert.ok(
+      record.outputUsefulRatios.widthRatio >= 0.75,
+      `${record.cardId} corrected crop useful width ratio`,
+    );
+    assert.ok(
+      record.outputUsefulRatios.heightRatio >= 0.75,
+      `${record.cardId} corrected crop useful height ratio`,
+    );
     assert.notDeepEqual(record.sourceRegionAtBaseScale, { x: 0, y: 0, width: 2976, height: 4209 });
     assert.match(record.outputAssetPath, /-source-crop-as-is\.jpg$/u);
     assert.match(record.sourceQualityDisposition, /source-limited-native-raster-in-official-pdf/u);
-    assert.ok(record.renderedUsefulWidthScaleRatio < 1.1, `${record.cardId} records the official PDF source-quality limitation`);
+    assert.ok(
+      record.renderedUsefulWidthScaleRatio < 1.1,
+      `${record.cardId} records the official PDF source-quality limitation`,
+    );
   }
 
   const summary = visualCropEvidence.wholeManualInventory.summary;
@@ -2244,7 +3365,10 @@ test("Manual guide visual content crop evidence covers the whole manual and corr
   assert.equal(summary.correctedAppendixIvCount, 16);
   assert.deepEqual(summary.appendixIvPagesCovered, sourcePagesForRange(185, 200));
   assert.equal(summary.compactSourceImageCardCount, 5);
-  assert.deepEqual(summary.acceptableContrastExamples, ["app2-hospital-map-source-card", "app3-body-posture-source-card"]);
+  assert.deepEqual(summary.acceptableContrastExamples, [
+    "app2-hospital-map-source-card",
+    "app3-body-posture-source-card",
+  ]);
   assert.equal(visualCropEvidence.wholeManualInventory.sourceImageCards.length, 46);
   assert.equal(visualCropEvidence.wholeManualInventory.sourceArtwork.length, 2);
   assert.ok(visualCropEvidence.wholeManualInventory.sectionAssetFiles.length >= 100);
@@ -2255,45 +3379,107 @@ test("Manual guide visual content crop evidence covers the whole manual and corr
   assert.deepEqual(readability.officialBetterSourceAudit.widthRangePx, { min: 613, max: 620 });
   assert.equal(readability.sourceImageCardRelevanceCounts.required, 24);
   assert.equal(readability.sourceImageCardRelevanceCounts.supporting, 10);
-  assert.equal(readability.sourceImageCardDispositionCounts["implemented-source-limited-blind-spot-crop"], 1);
-  assert.equal(readability.sourceImageCardDispositionCounts["implemented-tire-manufacturing-tread-life-source-crop"], 1);
-  assert.equal(readability.sourceImageCardDispositionCounts["implemented-representative-focused-official-sign-crop"], 1);
-  assert.equal(readability.sourceImageCardDispositionCounts["implemented-regulatory-panels-with-caba-overview"], 4);
+  assert.equal(
+    readability.sourceImageCardDispositionCounts["implemented-source-limited-blind-spot-crop"],
+    1,
+  );
+  assert.equal(
+    readability.sourceImageCardDispositionCounts[
+      "implemented-tire-manufacturing-tread-life-source-crop"
+    ],
+    1,
+  );
+  assert.equal(
+    readability.sourceImageCardDispositionCounts[
+      "implemented-representative-focused-official-sign-crop"
+    ],
+    1,
+  );
+  assert.equal(
+    readability.sourceImageCardDispositionCounts[
+      "implemented-regulatory-panels-with-caba-overview"
+    ],
+    4,
+  );
   assert.equal(readability.sourceImageCardDispositionCounts["source-limited-exception"], 16);
   assert.equal(readability.sourceImageCardDispositionTotal, 46);
   assert.match(readability.officialBetterSourceAudit.result, /Panels 01-04/u);
-  assert.match(readability.officialBetterSourceAudit.nonSelectedPanel05Disposition, /warning-sign/u);
-  assert.deepEqual(
-    readability.officialBetterSourceAudit.selectedRegulatoryPanels.map((panel) => `${panel.cardId}:${panel.dimensions.width}x${panel.dimensions.height}:${panel.sha256}`),
-    anexoRegulatoryPanels.map((panel) => `${panel.cardId}:${panel.dimensions.width}x${panel.dimensions.height}:${panel.sha256}`)
+  assert.match(
+    readability.officialBetterSourceAudit.nonSelectedPanel05Disposition,
+    /warning-sign/u,
   );
-  assert.deepEqual(readability.sourceLimitedExceptionCardIds, sourcePagesForRange(185, 200).map((page) => visualCropEvidence.targets.find((record) => record.sourcePage === page).cardId).sort());
-  assert.deepEqual(readability.ownerDispositionRequiredCardIds, readability.sourceLimitedExceptionCardIds);
+  assert.deepEqual(
+    readability.officialBetterSourceAudit.selectedRegulatoryPanels.map(
+      (panel) =>
+        `${panel.cardId}:${panel.dimensions.width}x${panel.dimensions.height}:${panel.sha256}`,
+    ),
+    anexoRegulatoryPanels.map(
+      (panel) =>
+        `${panel.cardId}:${panel.dimensions.width}x${panel.dimensions.height}:${panel.sha256}`,
+    ),
+  );
+  assert.deepEqual(
+    readability.sourceLimitedExceptionCardIds,
+    sourcePagesForRange(185, 200)
+      .map((page) => visualCropEvidence.targets.find((record) => record.sourcePage === page).cardId)
+      .sort(),
+  );
+  assert.deepEqual(
+    readability.ownerDispositionRequiredCardIds,
+    readability.sourceLimitedExceptionCardIds,
+  );
   assert.deepEqual(readability.architectDispositionRequiredCardIds, ["cedulas-source-card"]);
   assert.deepEqual(readability.followUpFeedbackCardIds, ["cedulas-source-card"]);
   assert.equal(readability.requiredCardIds.includes("app2-hospital-map-source-card"), true);
-  assert.ok(readability.representativeNonAppendixReadableCardIds.includes("app3-body-posture-source-card"));
+  assert.ok(
+    readability.representativeNonAppendixReadableCardIds.includes("app3-body-posture-source-card"),
+  );
   assert.ok(readability.representativeNonAppendixReadableCardIds.includes("cedulas-source-card"));
   assert.equal(readability.splitSubcropAudit.attempted, true);
-  assert.match(readability.splitSubcropAudit.conclusion, /Splitting the same source-limited raster would not increase embedded glyph pixels/u);
+  assert.match(
+    readability.splitSubcropAudit.conclusion,
+    /Splitting the same source-limited raster would not increase embedded glyph pixels/u,
+  );
 
-  const inventoryByCardId = new Map(visualCropEvidence.wholeManualInventory.sourceImageCards.map((entry) => [entry.cardId, entry]));
+  const inventoryByCardId = new Map(
+    visualCropEvidence.wholeManualInventory.sourceImageCards.map((entry) => [entry.cardId, entry]),
+  );
   for (const entry of visualCropEvidence.wholeManualInventory.sourceImageCards) {
     assert.ok(entry.textReadability, `${entry.cardId} records text-readability evidence`);
     assert.match(entry.textReadability.relevance, /^(none|supporting|required)$/u);
-    assert.ok(entry.textReadability.disposition.length > 0, `${entry.cardId} records a text-readability disposition`);
-    assert.equal(entry.textReadability.bodyTextBaselinePx, 16, `${entry.cardId} records the body-text baseline`);
-    assert.ok(Array.isArray(entry.textReadability.viewportComparisons), `${entry.cardId} records viewport comparison evidence`);
+    assert.ok(
+      entry.textReadability.disposition.length > 0,
+      `${entry.cardId} records a text-readability disposition`,
+    );
+    assert.equal(
+      entry.textReadability.bodyTextBaselinePx,
+      16,
+      `${entry.cardId} records the body-text baseline`,
+    );
+    assert.ok(
+      Array.isArray(entry.textReadability.viewportComparisons),
+      `${entry.cardId} records viewport comparison evidence`,
+    );
     if (entry.textReadability.relevance !== "none") {
-      assert.ok(entry.textReadability.viewportComparisons.length >= 2, `${entry.cardId} records desktop/mobile readability comparisons`);
+      assert.ok(
+        entry.textReadability.viewportComparisons.length >= 2,
+        `${entry.cardId} records desktop/mobile readability comparisons`,
+      );
     }
   }
   for (const entry of visualCropEvidence.wholeManualInventory.sourceArtwork) {
-    assert.ok(entry.textReadability, `${entry.blockId} records source-artwork text-readability evidence`);
+    assert.ok(
+      entry.textReadability,
+      `${entry.blockId} records source-artwork text-readability evidence`,
+    );
     assert.equal(entry.textReadability.relevance, "none");
     assert.equal(entry.textReadability.bodyTextBaselinePx, 16);
   }
-  for (const cardId of ["app4-regulatory-page-185-source-card", "app4-regulatory-page-186-source-card", "app4-horizontal-page-195-source-card"]) {
+  for (const cardId of [
+    "app4-regulatory-page-185-source-card",
+    "app4-regulatory-page-186-source-card",
+    "app4-horizontal-page-195-source-card",
+  ]) {
     const entry = inventoryByCardId.get(cardId);
     assert.ok(entry, `${cardId} exists in whole-manual inventory`);
     assert.equal(entry.disposition, "corrected-source-limited-crop");
@@ -2301,21 +3487,38 @@ test("Manual guide visual content crop evidence covers the whole manual and corr
     assert.ok(entry.afterUsefulRatios.areaRatio >= 0.55);
     assert.equal(entry.textReadability.relevance, "required");
     assert.equal(entry.textReadability.disposition, "source-limited-exception");
-    assert.equal(entry.textReadability.comparisonToBodyText, "below-body-text-at-natural-source-width");
+    assert.equal(
+      entry.textReadability.comparisonToBodyText,
+      "below-body-text-at-natural-source-width",
+    );
     assert.equal(entry.textReadability.requiresOwnerDisposition, true);
-    assert.ok(entry.textReadability.viewportComparisons.every((comparison) => comparison.passesBodyTextSizeTarget === false));
+    assert.ok(
+      entry.textReadability.viewportComparisons.every(
+        (comparison) => comparison.passesBodyTextSizeTarget === false,
+      ),
+    );
     assert.match(entry.textReadability.routeDisposition, /Orchestrator\/user disposition/u);
     assert.deepEqual(
       entry.textReadability.attemptedAlternatives.map((alternative) => alternative.id),
-      ["gcba-manual-pdf-render-scale-12", "decreto-779-1995-anexo-l-official-images", "source-faithful-split-subcrop-presentation"]
+      [
+        "gcba-manual-pdf-render-scale-12",
+        "decreto-779-1995-anexo-l-official-images",
+        "source-faithful-split-subcrop-presentation",
+      ],
     );
   }
   const noAvanzarInventory = inventoryByCardId.get("app4-regulatory-no-avanzar-source-card");
   assert.ok(noAvanzarInventory, "focused NO AVANZAR card exists in whole-manual inventory");
-  assert.equal(noAvanzarInventory.disposition, "implemented-representative-focused-official-sign-crop");
+  assert.equal(
+    noAvanzarInventory.disposition,
+    "implemented-representative-focused-official-sign-crop",
+  );
   assert.deepEqual(noAvanzarInventory.dimensions, { width: 200, height: 145 });
   assert.equal(noAvanzarInventory.textReadability.relevance, "required");
-  assert.equal(noAvanzarInventory.textReadability.disposition, "implemented-representative-focused-official-sign-crop");
+  assert.equal(
+    noAvanzarInventory.textReadability.disposition,
+    "implemented-representative-focused-official-sign-crop",
+  );
   assert.equal(noAvanzarInventory.textReadability.requiresOwnerDisposition, false);
   assert.match(noAvanzarInventory.textReadability.intendedReadableText, /DOM text/u);
   assert.ok(existsSync(noAvanzarCropEvidencePath), "focused NO AVANZAR crop evidence exists");
@@ -2325,7 +3528,10 @@ test("Manual guide visual content crop evidence covers the whole manual and corr
     assert.equal(panelInventory.disposition, "implemented-regulatory-panels-with-caba-overview");
     assert.deepEqual(panelInventory.dimensions, panel.dimensions);
     assert.equal(panelInventory.textReadability.relevance, "required");
-    assert.equal(panelInventory.textReadability.disposition, "implemented-regulatory-panels-with-caba-overview");
+    assert.equal(
+      panelInventory.textReadability.disposition,
+      "implemented-regulatory-panels-with-caba-overview",
+    );
     assert.equal(panelInventory.textReadability.requiresOwnerDisposition, false);
     assert.match(panelInventory.textReadability.sourceIntegrity, /byte-identical/u);
     assert.equal(sha256File(panel.assetPath), panel.sha256);
@@ -2339,7 +3545,10 @@ test("Manual guide visual content crop evidence covers the whole manual and corr
   assert.deepEqual(blindSpotInventory.dimensions, { width: 546, height: 440 });
   assert.equal(blindSpotInventory.afterUsefulRatios.areaRatio, 0.7726648351648352);
   assert.equal(blindSpotInventory.textReadability.relevance, "required");
-  assert.equal(blindSpotInventory.textReadability.disposition, "implemented-source-limited-blind-spot-crop");
+  assert.equal(
+    blindSpotInventory.textReadability.disposition,
+    "implemented-source-limited-blind-spot-crop",
+  );
   assert.equal(blindSpotInventory.textReadability.renderedImageWidthPx, 546);
   assert.equal(blindSpotInventory.textReadability.requiresOwnerDisposition, false);
   assert.match(blindSpotInventory.textReadability.sourceLimitation, /x5 produced a 546x440 crop/u);
@@ -2350,51 +3559,73 @@ test("Manual guide visual content crop evidence covers the whole manual and corr
   assert.deepEqual(tireInventory.dimensions, { width: 760, height: 995 });
   assert.equal(tireInventory.afterUsefulRatios.areaRatio, 0.594234329542449);
   assert.equal(tireInventory.textReadability.relevance, "required");
-  assert.equal(tireInventory.textReadability.disposition, "implemented-tire-manufacturing-tread-life-source-crop");
+  assert.equal(
+    tireInventory.textReadability.disposition,
+    "implemented-tire-manufacturing-tread-life-source-crop",
+  );
   assert.equal(tireInventory.textReadability.renderedImageWidthPx, 760);
   assert.equal(tireInventory.textReadability.requiresOwnerDisposition, false);
   assert.match(tireInventory.textReadability.strategyApplied, /natural 760px width/u);
   assert.ok(existsSync(tireCropEvidencePath), "tire manufacturing/tread-life crop evidence exists");
-  assert.equal(inventoryByCardId.get("cedulas-source-card").textReadability.disposition, "implementation-feedback-needs-source-region-verification");
+  assert.equal(
+    inventoryByCardId.get("cedulas-source-card").textReadability.disposition,
+    "implementation-feedback-needs-source-region-verification",
+  );
   const hospitalMapInventory = inventoryByCardId.get("app2-hospital-map-source-card");
   assert.equal(hospitalMapInventory.disposition, "corrected-best-official-map-only-crop");
   assert.deepEqual(hospitalMapInventory.dimensions, { width: 440, height: 380 });
-  assert.equal(hospitalMapInventory.outputSha256, "742f7e66213866c7e07861b9a93ab7fdd8c00e8b384e96a239b1b1cb712ca1d0");
+  assert.equal(
+    hospitalMapInventory.outputSha256,
+    "742f7e66213866c7e07861b9a93ab7fdd8c00e8b384e96a239b1b1cb712ca1d0",
+  );
   assert.equal(hospitalMapInventory.beforeUsefulRatios.areaRatio, 0.4205128205128205);
   assert.ok(hospitalMapInventory.afterUsefulRatios.areaRatio > 0.71);
   assert.equal(hospitalMapInventory.textReadability.relevance, "required");
-  assert.equal(hospitalMapInventory.textReadability.disposition, "implemented-best-official-map-only-crop-with-source-limited-label-detail");
+  assert.equal(
+    hospitalMapInventory.textReadability.disposition,
+    "implemented-best-official-map-only-crop-with-source-limited-label-detail",
+  );
   assert.match(hospitalMapInventory.textReadability.sourceLimitation, /native[- ]raster/u);
-  assert.equal(inventoryByCardId.get("app3-body-posture-source-card").disposition, "acceptable-tight-crop");
-  assert.equal(inventoryByCardId.get("app3-body-posture-source-card").measuredUsefulRatios.areaRatio, 0.3652);
+  assert.equal(
+    inventoryByCardId.get("app3-body-posture-source-card").disposition,
+    "acceptable-tight-crop",
+  );
+  assert.equal(
+    inventoryByCardId.get("app3-body-posture-source-card").measuredUsefulRatios.areaRatio,
+    0.3652,
+  );
 });
 
 test("Manual guide visual completeness audit records user examples and blocks learner-facing provenance copy", () => {
   assert.equal(visualCompletenessEvidence.schemaVersion, 1);
   assert.equal(visualCompletenessEvidence.featureId, "034-manual-visual-content-crop");
-  assert.equal(visualCompletenessEvidence.generatedBy, "scripts/manual-guide-visual-completeness-audit.mjs");
+  assert.equal(
+    visualCompletenessEvidence.generatedBy,
+    "scripts/manual-guide-visual-completeness-audit.mjs",
+  );
   assert.equal(visualCompletenessEvidence.scopeStatus, "first-controlled-batch-partial");
   assert.equal(visualCompletenessEvidence.copyAudit.status, "pass");
   assert.equal(visualCompletenessEvidence.copyAudit.findingCount, 0);
-  assert.deepEqual(
-    visualCompletenessEvidence.copyAudit.deniedPatternIds,
-    [
-      "source-family-provenance",
-      "main-source-takeaway",
-      "source-quote-card-title",
-      "raw-working-fragment",
-      "saved-as-source",
-      "transferred-visual-meta"
-    ]
-  );
-  assert.deepEqual(visualCompletenessEvidence.copyAudit.allowlistPatternIds, ["stress-cause-source"]);
+  assert.deepEqual(visualCompletenessEvidence.copyAudit.deniedPatternIds, [
+    "source-family-provenance",
+    "main-source-takeaway",
+    "source-quote-card-title",
+    "raw-working-fragment",
+    "saved-as-source",
+    "transferred-visual-meta",
+  ]);
+  assert.deepEqual(visualCompletenessEvidence.copyAudit.allowlistPatternIds, [
+    "stress-cause-source",
+  ]);
   assert.equal(visualCompletenessEvidence.copyAudit.allowlistedCount, 1);
   assert.equal(
     visualCompletenessEvidence.copyAudit.allowlistedOccurrences[0].text,
-    "Постоянно принимать решения о маневрах, что создает значимый источник стресса и усталости."
+    "Постоянно принимать решения о маневрах, что создает значимый источник стресса и усталости.",
   );
 
-  const examplesById = new Map(visualCompletenessEvidence.userExamples.map((entry) => [entry.id, entry]));
+  const examplesById = new Map(
+    visualCompletenessEvidence.userExamples.map((entry) => [entry.id, entry]),
+  );
   for (const requiredExampleId of [
     "appendix-iv-regulatory-signs-no-avanzar",
     "app2-hospital-map-source-card",
@@ -2404,85 +3635,131 @@ test("Manual guide visual completeness audit records user examples and blocks le
     "matafuegos-chaleco-reflectivo",
     "headrest-combined-diagram",
     "mobility-space-50-people",
-    "whole-guide-source-wording-copy-audit"
+    "whole-guide-source-wording-copy-audit",
   ]) {
-    assert.ok(examplesById.has(requiredExampleId), `${requiredExampleId} appears in user-example audit evidence`);
-    assert.match(examplesById.get(requiredExampleId).status, /^(implemented|implemented-[a-z0-9-]+|needs-implementation|blocked)$/u);
+    assert.ok(
+      examplesById.has(requiredExampleId),
+      `${requiredExampleId} appears in user-example audit evidence`,
+    );
+    assert.match(
+      examplesById.get(requiredExampleId).status,
+      /^(implemented|implemented-[a-z0-9-]+|needs-implementation|blocked)$/u,
+    );
   }
 
-  const mobilityRecord = visualCompletenessEvidence.visualRecords.find((entry) => entry.id === "mobility-space-50-people");
+  const mobilityRecord = visualCompletenessEvidence.visualRecords.find(
+    (entry) => entry.id === "mobility-space-50-people",
+  );
   assert.ok(mobilityRecord, "mobility-space visual has a concrete evidence record");
   assert.equal(mobilityRecord.status, "implemented");
-  assert.equal(mobilityRecord.assetPath, "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-sustainable-mobility/space-comparison-50-people-source.jpg");
-  assert.equal(mobilityRecord.sourceAssetPath, "content/validation/manual-guide/ch1-sustainable-mobility/page-023-space-comparison-50-people-source-crop.jpg");
+  assert.equal(
+    mobilityRecord.assetPath,
+    "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-sustainable-mobility/space-comparison-50-people-source.jpg",
+  );
+  assert.equal(
+    mobilityRecord.sourceAssetPath,
+    "content/validation/manual-guide/ch1-sustainable-mobility/page-023-space-comparison-50-people-source-crop.jpg",
+  );
   assert.deepEqual(mobilityRecord.dimensions, { width: 585, height: 125 });
-  assert.equal(mobilityRecord.sha256, "72598aaf807780e1745a1ce3fc5ab0f307bd2703b23f53ecbf499457cf3eba6e");
+  assert.equal(
+    mobilityRecord.sha256,
+    "72598aaf807780e1745a1ce3fc5ab0f307bd2703b23f53ecbf499457cf3eba6e",
+  );
   assert.equal(mobilityRecord.runtimeDisplay.noUpscale, true);
   assert.deepEqual(
     mobilityRecord.terms.map((entry) => `${entry.termEs}:${entry.translationRu}`),
-    ["En colectivo:На автобусе", "A pie:Пешком", "En bicicleta:На велосипеде", "En auto:На автомобиле"]
+    [
+      "En colectivo:На автобусе",
+      "A pie:Пешком",
+      "En bicicleta:На велосипеде",
+      "En auto:На автомобиле",
+    ],
   );
 
   assert.equal(examplesById.get("mobility-space-50-people").status, "implemented");
-  assert.equal(examplesById.get("appendix-iv-regulatory-signs-no-avanzar").status, "implemented-regulatory-panels-with-caba-overview");
+  assert.equal(
+    examplesById.get("appendix-iv-regulatory-signs-no-avanzar").status,
+    "implemented-regulatory-panels-with-caba-overview",
+  );
   assert.equal(examplesById.get("app2-hospital-map-source-card").status, "implemented");
   assert.equal(examplesById.get("seatbelt-headrest-copy-problems").status, "implemented");
-  assert.equal(examplesById.get("tire-manufacturing-tread-life").status, "implemented-app1-canonical");
+  assert.equal(
+    examplesById.get("tire-manufacturing-tread-life").status,
+    "implemented-app1-canonical",
+  );
   assert.equal(examplesById.get("blind-spot-visual").status, "implemented");
   assert.equal(examplesById.get("matafuegos-chaleco-reflectivo").status, "implemented-app1-only");
   assert.equal(examplesById.get("headrest-combined-diagram").status, "implemented");
-  const blindSpotRecord = visualCompletenessEvidence.visualRecords.find((entry) => entry.id === "blind-spot-visual");
+  const blindSpotRecord = visualCompletenessEvidence.visualRecords.find(
+    (entry) => entry.id === "blind-spot-visual",
+  );
   assert.ok(blindSpotRecord, "blind-spot visual has a concrete evidence record");
   assert.equal(blindSpotRecord.status, "implemented");
   assert.equal(blindSpotRecord.sourcePage, 108);
   assert.equal(blindSpotRecord.pdfPage, 109);
   assert.equal(
     blindSpotRecord.assetPath,
-    "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app1-safety-elements/blind-spot-source-as-is.jpg"
+    "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app1-safety-elements/blind-spot-source-as-is.jpg",
   );
   assert.equal(
     blindSpotRecord.sourceAssetPath,
-    "content/validation/manual-guide/app1-safety-elements/page-108-blind-spot-source-crop.jpg"
+    "content/validation/manual-guide/app1-safety-elements/page-108-blind-spot-source-crop.jpg",
   );
   assert.deepEqual(blindSpotRecord.dimensions, { width: 546, height: 440 });
-  assert.equal(blindSpotRecord.sha256, "b5457a99da41bbb3f46985072e39641c20ee408844bd34f83051eefa55e2ed35");
+  assert.equal(
+    blindSpotRecord.sha256,
+    "b5457a99da41bbb3f46985072e39641c20ee408844bd34f83051eefa55e2ed35",
+  );
   assert.equal(blindSpotRecord.runtimeDisplay.cardId, "app1-blind-spot-source-card");
   assert.equal(blindSpotRecord.runtimeDisplay.maxDisplayWidthPx, 546);
   assert.equal(blindSpotRecord.runtimeDisplay.noUpscale, true);
   assert.match(blindSpotRecord.sourceQualityDisposition, /source-limited-native-raster/u);
   assert.match(blindSpotRecord.protectedImagePolicy, /PUNTO CIEGO AUTOS\/MOTOS/u);
-  assert.deepEqual(blindSpotRecord.terms.map((entry) => `${entry.termEs}:${entry.translationRu}`), [
-    "PUNTO CIEGO AUTOS:Слепая зона автомобилей",
-    "PUNTO CIEGO MOTOS:Слепая зона мотоциклов",
-    "CAMIONES Y COLECTIVOS:Грузовики и автобусы",
-    "Cuanto más grande es el vehículo, mayor es el punto ciego.:Чем больше транспортное средство, тем больше слепая зона."
-  ]);
-  const tireRecord = visualCompletenessEvidence.visualRecords.find((entry) => entry.id === "tire-manufacturing-tread-life");
+  assert.deepEqual(
+    blindSpotRecord.terms.map((entry) => `${entry.termEs}:${entry.translationRu}`),
+    [
+      "PUNTO CIEGO AUTOS:Слепая зона автомобилей",
+      "PUNTO CIEGO MOTOS:Слепая зона мотоциклов",
+      "CAMIONES Y COLECTIVOS:Грузовики и автобусы",
+      "Cuanto más grande es el vehículo, mayor es el punto ciego.:Чем больше транспортное средство, тем больше слепая зона.",
+    ],
+  );
+  const tireRecord = visualCompletenessEvidence.visualRecords.find(
+    (entry) => entry.id === "tire-manufacturing-tread-life",
+  );
   assert.ok(tireRecord, "tire manufacturing/tread-life visual has a concrete evidence record");
   assert.equal(tireRecord.status, "implemented-app1-canonical");
   assert.equal(tireRecord.sourcePage, 108);
   assert.equal(tireRecord.assetPath, tireAssetPath);
   assert.equal(tireRecord.sourceAssetPath, tireSourceAssetPath);
   assert.deepEqual(tireRecord.dimensions, { width: 760, height: 995 });
-  assert.equal(tireRecord.sha256, "1ee27aab0a0def7d6b0cd859adabb5f604889e1da604db54bf5cb0d8de7bdbf9");
+  assert.equal(
+    tireRecord.sha256,
+    "1ee27aab0a0def7d6b0cd859adabb5f604889e1da604db54bf5cb0d8de7bdbf9",
+  );
   assert.equal(tireRecord.runtimeDisplay.cardId, "app1-tire-manufacturing-tread-life-source-card");
   assert.equal(tireRecord.runtimeDisplay.maxDisplayWidthPx, 760);
   assert.equal(tireRecord.runtimeDisplay.noUpscale, true);
   assert.match(tireRecord.protectedImagePolicy, /Fecha de Fabricación/u);
   assert.match(tireRecord.relatedScopeDisposition, /App II\/App III/u);
-  const headrestRecord = visualCompletenessEvidence.visualRecords.find((entry) => entry.id === "headrest-combined-diagram");
+  const headrestRecord = visualCompletenessEvidence.visualRecords.find(
+    (entry) => entry.id === "headrest-combined-diagram",
+  );
   assert.ok(headrestRecord, "headrest combined diagram has a concrete evidence record");
   assert.equal(headrestRecord.status, "implemented-app2-only");
   assert.equal(
     headrestRecord.assetPath,
-    "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app2-safety-elements/headrest-combined-diagram-source-as-is.jpg"
+    "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app2-safety-elements/headrest-combined-diagram-source-as-is.jpg",
   );
   assert.equal(
     headrestRecord.sourceAssetPath,
-    "content/validation/manual-guide/app2-safety-elements/page-132-headrest-combined-diagram-source-crop.jpg"
+    "content/validation/manual-guide/app2-safety-elements/page-132-headrest-combined-diagram-source-crop.jpg",
   );
   assert.deepEqual(headrestRecord.dimensions, { width: 820, height: 600 });
-  assert.equal(headrestRecord.sha256, "cd08c88256c94afec04b3a9b601d56d9c71743702e7d17106af2d918946b174c");
+  assert.equal(
+    headrestRecord.sha256,
+    "cd08c88256c94afec04b3a9b601d56d9c71743702e7d17106af2d918946b174c",
+  );
   assert.equal(headrestRecord.runtimeDisplay.noUpscale, true);
   assert.equal(headrestRecord.runtimeDisplay.cardId, "app2-headrest-combined-source-card");
   assert.match(headrestRecord.remainingScopeNote, /App1 page 113/u);
@@ -2495,33 +3772,46 @@ test("Manual guide visual completeness audit records user examples and blocks le
       "Aceptable:Допустимо",
       "Regular:Средне",
       "Malo:Плохо",
-      "Botón de desbloqueo:Кнопка разблокировки"
-    ]
+      "Botón de desbloqueo:Кнопка разблокировки",
+    ],
   );
 
-  const hospitalMapRecord = visualCompletenessEvidence.visualRecords.find((entry) => entry.id === "app2-hospital-map-source-card");
+  const hospitalMapRecord = visualCompletenessEvidence.visualRecords.find(
+    (entry) => entry.id === "app2-hospital-map-source-card",
+  );
   assert.ok(hospitalMapRecord, "hospital map has a concrete evidence record");
   assert.equal(hospitalMapRecord.status, "implemented");
   assert.deepEqual(hospitalMapRecord.dimensions, { width: 440, height: 380 });
-  assert.equal(hospitalMapRecord.sha256, "742f7e66213866c7e07861b9a93ab7fdd8c00e8b384e96a239b1b1cb712ca1d0");
+  assert.equal(
+    hospitalMapRecord.sha256,
+    "742f7e66213866c7e07861b9a93ab7fdd8c00e8b384e96a239b1b1cb712ca1d0",
+  );
   assert.equal(hospitalMapRecord.runtimeDisplay.maxDisplayWidthPx, 440);
   assert.equal(hospitalMapRecord.runtimeDisplay.minDisplayWidthPx, 440);
   assert.equal(hospitalMapRecord.runtimeDisplay.noUpscale, true);
   assert.equal(hospitalMapRecord.runtimeDisplay.mobileContainedScroll, true);
   assert.match(hospitalMapRecord.extractionMethod, /map-only trim/u);
   assert.match(hospitalMapRecord.sourceLimitation, /native raster/u);
-  const equipmentRecord = visualCompletenessEvidence.visualRecords.find((entry) => entry.id === "matafuegos-chaleco-reflectivo");
-  assert.ok(equipmentRecord, "Matafuegos and Chaleco reflectivo have a concrete app1 evidence record");
+  const equipmentRecord = visualCompletenessEvidence.visualRecords.find(
+    (entry) => entry.id === "matafuegos-chaleco-reflectivo",
+  );
+  assert.ok(
+    equipmentRecord,
+    "Matafuegos and Chaleco reflectivo have a concrete app1 evidence record",
+  );
   assert.equal(equipmentRecord.status, "implemented-app1-only");
   assert.equal(equipmentRecord.runtimeDisplay.noUpscale, true);
   assert.equal(equipmentRecord.runtimeDisplay.maxDisplayWidthPx, 340);
   assert.match(equipmentRecord.remainingScopeNote, /App2\/app3/u);
   assert.deepEqual(
-    equipmentRecord.cards.map((entry) => `${entry.cardId}:${entry.termEs}:${entry.translationRu}:${entry.dimensions.width}x${entry.dimensions.height}:${entry.sha256}`),
+    equipmentRecord.cards.map(
+      (entry) =>
+        `${entry.cardId}:${entry.termEs}:${entry.translationRu}:${entry.dimensions.width}x${entry.dimensions.height}:${entry.sha256}`,
+    ),
     [
       "app1-matafuegos-source-card:Matafuegos:Огнетушитель:340x330:b8e5bb0ccea12bf6b4be881fff17cd4da3c935557cfa670d8e39cf49ea05376e",
-      "app1-chaleco-reflectivo-source-card:Chaleco reflectivo:Световозвращающий жилет:340x340:f4935b08d31512a4b06e39b00766cc3a5036c9f9cab4be3442ab7a83a7904581"
-    ]
+      "app1-chaleco-reflectivo-source-card:Chaleco reflectivo:Световозвращающий жилет:340x340:f4935b08d31512a4b06e39b00766cc3a5036c9f9cab4be3442ab7a83a7904581",
+    ],
   );
   assert.deepEqual(equipmentRecord.cards[0].sourceRegion, {
     coordinateSystem:
@@ -2529,7 +3819,7 @@ test("Manual guide visual completeness audit records user examples and blocks le
     x: 1060,
     y: 1660,
     width: 340,
-    height: 330
+    height: 330,
   });
   assert.deepEqual(equipmentRecord.cards[1].sourceRegion, {
     coordinateSystem:
@@ -2537,29 +3827,37 @@ test("Manual guide visual completeness audit records user examples and blocks le
     x: 1060,
     y: 1990,
     width: 340,
-    height: 340
+    height: 340,
   });
 
-  const noAvanzarRecord = visualCompletenessEvidence.visualRecords.find((entry) => entry.id === "appendix-iv-regulatory-signs-no-avanzar");
+  const noAvanzarRecord = visualCompletenessEvidence.visualRecords.find(
+    (entry) => entry.id === "appendix-iv-regulatory-signs-no-avanzar",
+  );
   assert.ok(noAvanzarRecord, "NO AVANZAR has a concrete representative evidence record");
   assert.equal(noAvanzarRecord.status, "implemented-regulatory-panels-with-caba-overview");
   assert.equal(noAvanzarRecord.assetPath, noAvanzarAssetPath);
   assert.equal(noAvanzarRecord.sourceAssetPath, noAvanzarSourceAssetPath);
   assert.equal(
     noAvanzarRecord.officialSourceAsset,
-    "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-01.jpg"
+    "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-01.jpg",
   );
   assert.deepEqual(noAvanzarRecord.dimensions, { width: 200, height: 145 });
-  assert.equal(noAvanzarRecord.sha256, "037f998385ae004aeb7bf4ece381ea6cf4e6b0eaec77d8c2a2f5816cb783afba");
+  assert.equal(
+    noAvanzarRecord.sha256,
+    "037f998385ae004aeb7bf4ece381ea6cf4e6b0eaec77d8c2a2f5816cb783afba",
+  );
   assert.equal(noAvanzarRecord.runtimeDisplay.cardId, "app4-regulatory-no-avanzar-source-card");
   assert.equal(noAvanzarRecord.runtimeDisplay.maxDisplayWidthPx, 200);
   assert.equal(noAvanzarRecord.runtimeDisplay.noUpscale, true);
   assert.match(noAvanzarRecord.externalCaptionBoundary, /not part of the sign body/u);
-  assert.deepEqual(noAvanzarRecord.terms.map((entry) => `${entry.termEs}:${entry.translationRu}`), [
-    "NO AVANZAR:Проезд запрещен"
-  ]);
+  assert.deepEqual(
+    noAvanzarRecord.terms.map((entry) => `${entry.termEs}:${entry.translationRu}`),
+    ["NO AVANZAR:Проезд запрещен"],
+  );
   assert.match(noAvanzarRecord.remainingScopeNote, /Broad regulatory readability/u);
-  const anexoPanelsRecord = visualCompletenessEvidence.visualRecords.find((entry) => entry.id === "appendix-iv-regulatory-anexo-panels");
+  const anexoPanelsRecord = visualCompletenessEvidence.visualRecords.find(
+    (entry) => entry.id === "appendix-iv-regulatory-anexo-panels",
+  );
   assert.ok(anexoPanelsRecord, "Anexo L regulatory panels have concrete evidence");
   assert.equal(anexoPanelsRecord.status, "implemented-regulatory-panels-with-caba-overview");
   assert.match(anexoPanelsRecord.extractionMethod, /Byte-identical copies/u);
@@ -2567,24 +3865,35 @@ test("Manual guide visual completeness audit records user examples and blocks le
   assert.match(anexoPanelsRecord.nonSelectedPanel05Disposition, /warning-sign P\.\*/u);
   assert.match(anexoPanelsRecord.cabaOverviewDisposition, /overview\/local variants/u);
   assert.deepEqual(
-    anexoPanelsRecord.panels.map((panel) => `${panel.cardId}:${panel.dimensions.width}x${panel.dimensions.height}:${panel.sha256}:${panel.byteIdenticalToSource}`),
-    anexoRegulatoryPanels.map((panel) => `${panel.cardId}:${panel.dimensions.width}x${panel.dimensions.height}:${panel.sha256}:true`)
+    anexoPanelsRecord.panels.map(
+      (panel) =>
+        `${panel.cardId}:${panel.dimensions.width}x${panel.dimensions.height}:${panel.sha256}:${panel.byteIdenticalToSource}`,
+    ),
+    anexoRegulatoryPanels.map(
+      (panel) =>
+        `${panel.cardId}:${panel.dimensions.width}x${panel.dimensions.height}:${panel.sha256}:true`,
+    ),
   );
   for (const panel of anexoPanelsRecord.panels) {
     assert.equal(panel.runtimeDisplay.maxDisplayWidthPx, panel.dimensions.width);
     assert.equal(panel.runtimeDisplay.minDisplayWidthPx, panel.dimensions.width);
     assert.equal(panel.runtimeDisplay.noUpscale, true);
   }
-  const remainingExampleIds = visualCompletenessEvidence.remainingRequiredExamples.map((entry) => entry.id);
+  const remainingExampleIds = visualCompletenessEvidence.remainingRequiredExamples.map(
+    (entry) => entry.id,
+  );
   assert.equal(remainingExampleIds.includes("appendix-iv-regulatory-signs-no-avanzar"), false);
   assert.equal(remainingExampleIds.includes("blind-spot-visual"), false);
   assert.equal(remainingExampleIds.includes("tire-manufacturing-tread-life"), false);
   assert.equal(remainingExampleIds.includes("matafuegos-chaleco-reflectivo"), true);
   const remainingEquipmentExample = visualCompletenessEvidence.remainingRequiredExamples.find(
-    (entry) => entry.id === "matafuegos-chaleco-reflectivo"
+    (entry) => entry.id === "matafuegos-chaleco-reflectivo",
   );
   assert.equal(remainingEquipmentExample.status, "implemented-app1-only");
-  assert.match(remainingEquipmentExample.notes, /App2\/app3 equipment visuals remain outside this slice/u);
+  assert.match(
+    remainingEquipmentExample.notes,
+    /App2\/app3 equipment visuals remain outside this slice/u,
+  );
 });
 
 test("Appendix III keeps Paseo del Bajo page 169 carryover in the page-169 owner", () => {
@@ -2592,25 +3901,49 @@ test("Appendix III keeps Paseo del Bajo page 169 carryover in the page-169 owner
   const safetyElements = sectionById("app3-safety-elements");
 
   assert.deepEqual(safeDriving.sourcePageRange, { start: 162, end: 168 });
-  assert.deepEqual(safeDriving.sourcePages.map((page) => page.sourcePage), [162, 163, 164, 165, 166, 167, 168]);
+  assert.deepEqual(
+    safeDriving.sourcePages.map((page) => page.sourcePage),
+    [162, 163, 164, 165, 166, 167, 168],
+  );
   assert.deepEqual(safetyElements.sourcePageRange, { start: 169, end: 181 });
-  assert.equal(safetyElements.sourcePages.some((page) => page.sourcePage === 169), true);
+  assert.equal(
+    safetyElements.sourcePages.some((page) => page.sourcePage === 169),
+    true,
+  );
 
-  assert.match(app3SafeDrivingModuleSource, /Red de transito pesado[\s\S]*205 km[\s\S]*95 улиц[\s\S]*39 из 48 районов/u);
-  assert.match(app3SafeDrivingModuleSource, /грузовиков и прицепов[\s\S]*индивидуальной массой 12 t[\s\S]*междугородних пассажирских автобусов[\s\S]*19 мест/u);
+  assert.match(
+    app3SafeDrivingModuleSource,
+    /Red de transito pesado[\s\S]*205 km[\s\S]*95 улиц[\s\S]*39 из 48 районов/u,
+  );
+  assert.match(
+    app3SafeDrivingModuleSource,
+    /грузовиков и прицепов[\s\S]*индивидуальной массой 12 t[\s\S]*междугородних пассажирских автобусов[\s\S]*19 мест/u,
+  );
   assert.match(app3SafeDrivingModuleSource, /Paseo del Bajo[\s\S]*60 km\/h/u);
   assert.match(app3SafeDrivingModuleSource, /Велосипеды, мотоциклы, автомобили, такси/u);
-  assert.match(app3SafeDrivingModuleSource, /Экстренные транспортные средства[\s\S]*Autopistas Urbanas S\.A\./u);
-  assert.match(app3SafeDrivingModuleSource, /Исключительные и неделимые грузы[\s\S]*разрешение у компетентного органа/u);
+  assert.match(
+    app3SafeDrivingModuleSource,
+    /Экстренные транспортные средства[\s\S]*Autopistas Urbanas S\.A\./u,
+  );
+  assert.match(
+    app3SafeDrivingModuleSource,
+    /Исключительные и неделимые грузы[\s\S]*разрешение у компетентного органа/u,
+  );
 
   assert.match(app3SafetyElementsModuleSource, /paseo-del-bajo-page-169-carryover/u);
   assert.match(app3SafetyElementsModuleSource, /Av\. Paseo Colon[\s\S]*Av\. San Juan/u);
-  assert.match(app3SafetyElementsModuleSource, /дорожная непредвиденная ситуация[\s\S]*полностью исключает движение через Paseo del Bajo/u);
-  assert.match(app3SafetyElementsModuleSource, /Av\. Elvira Rawson de Dellepiane[\s\S]*Av\. Ing\. Huergo/u);
+  assert.match(
+    app3SafetyElementsModuleSource,
+    /дорожная непредвиденная ситуация[\s\S]*полностью исключает движение через Paseo del Bajo/u,
+  );
+  assert.match(
+    app3SafetyElementsModuleSource,
+    /Av\. Elvira Rawson de Dellepiane[\s\S]*Av\. Ing\. Huergo/u,
+  );
 
   assert.doesNotMatch(
     app3SafeDrivingModuleSource,
-    /Av\. Paseo Colon|Av\. San Juan|обозначенную центральную зону|дорожная ситуация полностью блокирует Paseo del Bajo|исключительные альтернативные маршруты|permisos para area delimitada|contingencias/u
+    /Av\. Paseo Colon|Av\. San Juan|обозначенную центральную зону|дорожная ситуация полностью блокирует Paseo del Bajo|исключительные альтернативные маршруты|permisos para area delimitada|contingencias/u,
   );
 });
 
@@ -2620,14 +3953,28 @@ test("Appendix II sections retain passenger-transport legal, safety, health, and
     "app2-safety-elements",
     "app2-driving-factors",
     "app2-safe-driving",
-    "app2-highways-hospitals"
+    "app2-highways-hospitals",
   ]) {
     const section = sectionById(sectionId);
-    assert.equal(section.status, "implemented", `${sectionId} is implemented in the Appendix II PR`);
-    assert.equal(section.implementationEvidence.visualEvidenceSchemaVersion, 3, `${sectionId} uses strict visual evidence`);
+    assert.equal(
+      section.status,
+      "implemented",
+      `${sectionId} is implemented in the Appendix II PR`,
+    );
+    assert.equal(
+      section.implementationEvidence.visualEvidenceSchemaVersion,
+      3,
+      `${sectionId} uses strict visual evidence`,
+    );
     assert.equal(section.implementationEvidence.visualRulePolicyId, "031-strict-source-fidelity");
-    assert.equal(section.implementationEvidence.highResolutionEvidenceStatus, "x5-or-equivalent-no-upscale-recorded");
-    assert.equal(section.implementationEvidence.localAssetMetadata[0].assetCategory, "native-dom-text-only");
+    assert.equal(
+      section.implementationEvidence.highResolutionEvidenceStatus,
+      "x5-or-equivalent-no-upscale-recorded",
+    );
+    assert.equal(
+      section.implementationEvidence.localAssetMetadata[0].assetCategory,
+      "native-dom-text-only",
+    );
     if (sectionId === "app2-safety-elements") {
       assert.deepEqual(section.implementationEvidence.visibleSpanishStatus, {
         status: "source_image_exceptions_only",
@@ -2641,9 +3988,9 @@ test("Appendix II sections retain passenger-transport legal, safety, health, and
             sourceAsIs: true,
             russianExplanationOutsideImage: true,
             ownerDecisionDate: "2026-06-05",
-            scope: "app2-page-132-headrest-combined-diagram-only"
-          }
-        ]
+            scope: "app2-page-132-headrest-combined-diagram-only",
+          },
+        ],
       });
     } else if (sectionId === "app2-highways-hospitals") {
       assert.deepEqual(section.implementationEvidence.visibleSpanishStatus, {
@@ -2658,9 +4005,9 @@ test("Appendix II sections retain passenger-transport legal, safety, health, and
             sourceAsIs: true,
             russianExplanationOutsideImage: true,
             ownerDecisionDate: "2026-06-04",
-            scope: "page-150-hospital-map-only"
-          }
-        ]
+            scope: "page-150-hospital-map-only",
+          },
+        ],
       });
     } else {
       assert.equal(section.implementationEvidence.visibleSpanishStatus, "none");
@@ -2668,9 +4015,18 @@ test("Appendix II sections retain passenger-transport legal, safety, health, and
   }
 
   assert.match(app2SocialResponsibilityModuleSource, /Минимальный возраст[\s\S]*21 год/u);
-  assert.match(app2SocialResponsibilityModuleSource, /Общественный транспорт поддерживает почти все повседневные действия общества/u);
-  assert.match(app2SocialResponsibilityModuleSource, /устойчивой и безопасной мобильности[\s\S]*право на мобильность|устойчивой и безопасной мобильности[\s\S]*альтернативы частному автомобилю/u);
-  assert.match(app2SocialResponsibilityModuleSource, /Профессиональный водитель[\s\S]*вождение является профессией/u);
+  assert.match(
+    app2SocialResponsibilityModuleSource,
+    /Общественный транспорт поддерживает почти все повседневные действия общества/u,
+  );
+  assert.match(
+    app2SocialResponsibilityModuleSource,
+    /устойчивой и безопасной мобильности[\s\S]*право на мобильность|устойчивой и безопасной мобильности[\s\S]*альтернативы частному автомобилю/u,
+  );
+  assert.match(
+    app2SocialResponsibilityModuleSource,
+    /Профессиональный водитель[\s\S]*вождение является профессией/u,
+  );
   assert.match(app2SocialResponsibilityModuleSource, /категорий C, D и E/u);
   assert.match(app2SocialResponsibilityModuleSource, /стаж больше 1 года в классе B/u);
   assert.match(app2SocialResponsibilityModuleSource, /старше 65 лет[\s\S]*практический экзамен/u);
@@ -2679,50 +4035,90 @@ test("Appendix II sections retain passenger-transport legal, safety, health, and
   assert.match(app2SafetyElementsModuleSource, /каждые 6 месяцев/u);
   assert.match(app2SafetyElementsModuleSource, /тормозной путь может увеличиться на 10%/u);
   assert.match(app2SafetyElementsModuleSource, /2 mm/u);
-  assert.match(app2SafetyElementsModuleSource, /[Вв]осстановленные шины запрещены на передних осях/u);
+  assert.match(
+    app2SafetyElementsModuleSource,
+    /[Вв]осстановленные шины запрещены на передних осях/u,
+  );
   assert.match(app2SafetyElementsModuleSource, /примерно 3 метра/u);
   assert.match(app2SafetyElementsModuleSource, /максимум 10% задней части/u);
   assert.match(app2SafetyElementsModuleSource, /врачи или парамедики[\s\S]*пожарные/u);
   assert.match(app2SafetyElementsModuleSource, /25 cm/u);
   assert.match(app2SafetyElementsModuleSource, /50 km\/h[\s\S]*до 40 раз/u);
-  assert.match(app2SafetyElementsModuleSource, /[Ии]нвалидные кресла[\s\S]*соответствующие крепления/u);
+  assert.match(
+    app2SafetyElementsModuleSource,
+    /[Ии]нвалидные кресла[\s\S]*соответствующие крепления/u,
+  );
   assert.match(app2SafetyElementsModuleSource, /минимум два/u);
   assert.match(app2SafetyElementsModuleSource, /эластичный хомут запрещен/u);
   assert.match(app2SafetyElementsModuleSource, /форс-мажоре на автомагистралях/u);
   assert.match(app2SafetyElementsModuleSource, /[Сс]терильные гидрофильн/u);
   assert.match(app2DrivingFactorsModuleSource, /Сидячий образ жизни[\s\S]*дефициту витамина D/u);
-  assert.match(app2DrivingFactorsModuleSource, /SUBE неисправен[\s\S]*пассажиров нужно пропустить/u);
+  assert.match(
+    app2DrivingFactorsModuleSource,
+    /SUBE неисправен[\s\S]*пассажиров нужно пропустить/u,
+  );
   assert.match(app2DrivingFactorsModuleSource, /22:00 до 6:00/u);
   assert.match(app2DrivingFactorsModuleSource, /вместимости больше 15 мест/u);
-  assert.match(app2DrivingFactorsModuleSource, /ремни на всех сиденьях[\s\S]*крепления инвалидных кресел/u);
+  assert.match(
+    app2DrivingFactorsModuleSource,
+    /ремни на всех сиденьях[\s\S]*крепления инвалидных кресел/u,
+  );
   assert.match(app2SafeDrivingModuleSource, /1,5 m/u);
   assert.match(app2SafeDrivingModuleSource, /off-tracking/u);
   assert.match(app2SafeDrivingModuleSource, /задние колеса идут по дуге меньшего радиуса/u);
   assert.match(app2HighwaysHospitalsModuleSource, /12 t/u);
   assert.match(app2HighwaysHospitalsModuleSource, /больше 19 мест/u);
-  assert.match(app2HighwaysHospitalsModuleSource, /Paseo del Bajo[\s\S]*исключительным и обязательным[\s\S]*не просто предпочтительным/u);
-  assert.match(app2HighwaysHospitalsModuleSource, /исключительным и обязательным[\s\S]*грузовиков и прицепов[\s\S]*12 t/u);
-  assert.match(app2HighwaysHospitalsModuleSource, /исключительным и обязательным[\s\S]*междугородних пассажирских автобусов[\s\S]*больше 19 мест[\s\S]*с пассажирами или без них/u);
+  assert.match(
+    app2HighwaysHospitalsModuleSource,
+    /Paseo del Bajo[\s\S]*исключительным и обязательным[\s\S]*не просто предпочтительным/u,
+  );
+  assert.match(
+    app2HighwaysHospitalsModuleSource,
+    /исключительным и обязательным[\s\S]*грузовиков и прицепов[\s\S]*12 t/u,
+  );
+  assert.match(
+    app2HighwaysHospitalsModuleSource,
+    /исключительным и обязательным[\s\S]*междугородних пассажирских автобусов[\s\S]*больше 19 мест[\s\S]*с пассажирами или без них/u,
+  );
   assert.match(app2HighwaysHospitalsModuleSource, /60 km\/h/u);
   assert.match(app2HighwaysHospitalsModuleSource, /AUSA/u);
   assert.match(app2HighwaysHospitalsModuleSource, /Карта больниц/u);
   assert.match(app2HighwaysHospitalsModuleSource, /kind:\s*"source-image-cards"/u);
   assert.match(app2HighwaysHospitalsModuleSource, /hospital-map-source-as-is\.png/u);
-  assert.match(app2HighwaysHospitalsModuleSource, /sourceImageException[\s\S]*source-image-original-visible-text/u);
-  assert.doesNotMatch(app2HighwaysHospitalsModuleSource, /hospital-map-transferred-infographic\.png|russianOverlayLabels/u);
+  assert.match(
+    app2HighwaysHospitalsModuleSource,
+    /sourceImageException[\s\S]*source-image-original-visible-text/u,
+  );
+  assert.doesNotMatch(
+    app2HighwaysHospitalsModuleSource,
+    /hospital-map-transferred-infographic\.png|russianOverlayLabels/u,
+  );
   assert.match(app2HighwaysHospitalsModuleSource, /Доктор И\. Пировано[\s\S]*Сесилия Гриерсон/u);
-  assert.match(app2HighwaysHospitalsModuleSource, /[Ии]спанские подписи остаются только внутри самой карты/u);
-  assert.doesNotMatch(app2HighwaysHospitalsModuleSource, /удалены на уровне букв|glyph-local|inpainting|source evidence only/u);
-  assert.doesNotMatch(app2HighwaysHospitalsModuleSource, /assetPath:\s*"content\/assets\/manuals\/gcba-manual-vehiculo-4-ruedas-2023\/pages\/page-150\.jpg/u);
+  assert.match(
+    app2HighwaysHospitalsModuleSource,
+    /[Ии]спанские подписи остаются только внутри самой карты/u,
+  );
+  assert.doesNotMatch(
+    app2HighwaysHospitalsModuleSource,
+    /удалены на уровне букв|glyph-local|inpainting|source evidence only/u,
+  );
+  assert.doesNotMatch(
+    app2HighwaysHospitalsModuleSource,
+    /assetPath:\s*"content\/assets\/manuals\/gcba-manual-vehiculo-4-ruedas-2023\/pages\/page-150\.jpg/u,
+  );
 });
 
 test("Appendix II hospital map renders as an owner-approved source-as-is map with Russian text outside the image", () => {
   const highwaysHospitals = sectionById("app2-highways-hospitals");
   const safetyElements = sectionById("app2-safety-elements");
-  const sourceCropPath = "content/validation/manual-guide/app2-highways-hospitals/page-150-hospital-map-source-crop.png";
-  const textCleanupMaskPath = "content/validation/manual-guide/app2-highways-hospitals/page-150-hospital-map-text-cleanup-mask.png";
-  const fullPanelSourcePath = "content/validation/manual-guide/app2-highways-hospitals/page-150-hospital-map-panel-source-crop.png";
-  const runtimeAssetPath = "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app2-highways-hospitals/hospital-map-source-as-is.png";
+  const sourceCropPath =
+    "content/validation/manual-guide/app2-highways-hospitals/page-150-hospital-map-source-crop.png";
+  const textCleanupMaskPath =
+    "content/validation/manual-guide/app2-highways-hospitals/page-150-hospital-map-text-cleanup-mask.png";
+  const fullPanelSourcePath =
+    "content/validation/manual-guide/app2-highways-hospitals/page-150-hospital-map-panel-source-crop.png";
+  const runtimeAssetPath =
+    "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app2-highways-hospitals/hospital-map-source-as-is.png";
   const oldTransferredAssetPath =
     "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app2-highways-hospitals/hospital-map-transferred-infographic.png";
   const sourceCropSha256 = "742f7e66213866c7e07861b9a93ab7fdd8c00e8b384e96a239b1b1cb712ca1d0";
@@ -2730,40 +4126,49 @@ test("Appendix II hospital map renders as an owner-approved source-as-is map wit
   assert.equal(sha256File(sourceCropPath), sourceCropSha256);
   assert.equal(sha256File(runtimeAssetPath), sourceCropSha256);
   assert.equal(sha256File(runtimeAssetPath), sha256File(sourceCropPath));
-  assert.equal(sha256File(fullPanelSourcePath), "6df8225c42b792a1d47d2d600f36a0ded89278952041fb809b866b3f86392454");
+  assert.equal(
+    sha256File(fullPanelSourcePath),
+    "6df8225c42b792a1d47d2d600f36a0ded89278952041fb809b866b3f86392454",
+  );
   assert.equal(existsSync(textCleanupMaskPath), false);
   assert.equal(existsSync(oldTransferredAssetPath), false);
   assert.equal(
     highwaysHospitals.implementationEvidence.localAssetMetadata[0].assetKind,
-    "selectable-russian-dom-text-and-source-as-is-hospital-map-explanation"
+    "selectable-russian-dom-text-and-source-as-is-hospital-map-explanation",
   );
   assert.doesNotMatch(
-    JSON.stringify([highwaysHospitals.implementationEvidence, safetyElements.implementationEvidence]),
-    /hospital map transfer|hospital-map-transfer|glyph-level Spanish cleanup|selectable Russian DOM overlay labels|text-cleanup mask/u
+    JSON.stringify([
+      highwaysHospitals.implementationEvidence,
+      safetyElements.implementationEvidence,
+    ]),
+    /hospital map transfer|hospital-map-transfer|glyph-level Spanish cleanup|selectable Russian DOM overlay labels|text-cleanup mask/u,
   );
   assert.match(
     JSON.stringify(safetyElements.implementationEvidence.visualReviewNotes),
-    /owner-approved source-as-is visible-Spanish exception[\s\S]*reused byte-identically[\s\S]*Russian title\/list translations/u
+    /owner-approved source-as-is visible-Spanish exception[\s\S]*reused byte-identically[\s\S]*Russian title\/list translations/u,
   );
 
   assert.ok(
-    highwaysHospitals.implementationEvidence.sourceRegionMetadata.some((entry) =>
-      entry.sourceAssetPath === sourceCropPath &&
-      entry.cleanupScope === "source-as-is runtime hospital map-only crop; no Spanish cleanup or pixel modification" &&
-      entry.cropSha256 === sourceCropSha256 &&
-      entry.sourceRegion.x === 1332 &&
-      entry.sourceRegion.y === 2050 &&
-      entry.sourceRegion.width === 780 &&
-      entry.sourceRegion.height === 335 &&
-      entry.cropDimensions.width === 440 &&
-      entry.cropDimensions.height === 380 &&
-      entry.extractionScaleEvidence.target === "direct-pdf-region-render-scale-36-map-only-lossless-png" &&
-      entry.extractionScaleEvidence.outputDimensions.width === 440 &&
-      entry.extractionScaleEvidence.outputDimensions.height === 380 &&
-      /map-only/.test(entry.extractionScaleEvidence.method) &&
-      /native-raster limited/.test(entry.extractionScaleEvidence.mapReadabilityDisposition)
+    highwaysHospitals.implementationEvidence.sourceRegionMetadata.some(
+      (entry) =>
+        entry.sourceAssetPath === sourceCropPath &&
+        entry.cleanupScope ===
+          "source-as-is runtime hospital map-only crop; no Spanish cleanup or pixel modification" &&
+        entry.cropSha256 === sourceCropSha256 &&
+        entry.sourceRegion.x === 1332 &&
+        entry.sourceRegion.y === 2050 &&
+        entry.sourceRegion.width === 780 &&
+        entry.sourceRegion.height === 335 &&
+        entry.cropDimensions.width === 440 &&
+        entry.cropDimensions.height === 380 &&
+        entry.extractionScaleEvidence.target ===
+          "direct-pdf-region-render-scale-36-map-only-lossless-png" &&
+        entry.extractionScaleEvidence.outputDimensions.width === 440 &&
+        entry.extractionScaleEvidence.outputDimensions.height === 380 &&
+        /map-only/.test(entry.extractionScaleEvidence.method) &&
+        /native-raster limited/.test(entry.extractionScaleEvidence.mapReadabilityDisposition),
     ),
-    "hospital map x36 map-only source crop provenance is recorded"
+    "hospital map x36 map-only source crop provenance is recorded",
   );
 
   const asset = localAssetByPath(highwaysHospitals, runtimeAssetPath);
@@ -2779,7 +4184,10 @@ test("Appendix II hospital map renders as an owner-approved source-as-is map wit
   assert.equal(asset.runtimeDisplaySize.minWidthCssPx, 440);
   assert.equal(asset.runtimeDisplaySize.noUpscale, true);
   assert.equal(asset.runtimeDisplaySize.mobileContainedScroll, true);
-  assert.equal(asset.extractionScaleEvidence.target, "direct-pdf-region-render-scale-36-map-only-lossless-png");
+  assert.equal(
+    asset.extractionScaleEvidence.target,
+    "direct-pdf-region-render-scale-36-map-only-lossless-png",
+  );
   assert.match(asset.extractionScaleEvidence.method, /map-only/);
   assert.match(asset.extractionScaleEvidence.mapReadabilityDisposition, /native-raster limited/);
   assert.equal(asset.sourceIntegrity.sourceAsIs, true);
@@ -2805,9 +4213,9 @@ test("Appendix II hospital map renders as an owner-approved source-as-is map wit
         sourceAsIs: true,
         russianExplanationOutsideImage: true,
         ownerDecisionDate: "2026-06-04",
-        scope: "page-150-hospital-map-only"
-      }
-    ]
+        scope: "page-150-hospital-map-only",
+      },
+    ],
   });
 });
 
@@ -2815,29 +4223,35 @@ test("Appendix II safety visuals render as preserved source images with provenan
   const safety = sectionById("app2-safety-elements");
   const sourceAsIs = [
     {
-      assetPath: "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app2-safety-elements/mirror-orientation-photo-source-as-is.png",
-      sourceAssetPath: "content/validation/manual-guide/app2-safety-elements/page-130-mirror-orientation-source-crop.png",
+      assetPath:
+        "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app2-safety-elements/mirror-orientation-photo-source-as-is.png",
+      sourceAssetPath:
+        "content/validation/manual-guide/app2-safety-elements/page-130-mirror-orientation-source-crop.png",
       assetKind: "high-resolution-original-source-photo-app2-mirror-orientation",
       width: 1260,
       height: 125,
-      sha256: "d9ca7e643deb5f90a0e3f2f292f3782fa9beea7ddd1cf389052350cb53150787"
+      sha256: "d9ca7e643deb5f90a0e3f2f292f3782fa9beea7ddd1cf389052350cb53150787",
     },
     {
-      assetPath: "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app2-safety-elements/seatbelt-use-photo-source-as-is.png",
-      sourceAssetPath: "content/validation/manual-guide/app2-safety-elements/page-131-seatbelt-use-source-crop.png",
+      assetPath:
+        "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app2-safety-elements/seatbelt-use-photo-source-as-is.png",
+      sourceAssetPath:
+        "content/validation/manual-guide/app2-safety-elements/page-131-seatbelt-use-source-crop.png",
       assetKind: "high-resolution-original-source-photo-app2-seatbelt-use",
       width: 1060,
       height: 285,
-      sha256: "4646bf488a80173353615c03fab752b18ec992a2a505e7e12d214dbcf44be203"
-    }
+      sha256: "4646bf488a80173353615c03fab752b18ec992a2a505e7e12d214dbcf44be203",
+    },
   ];
   const headrestDiagram = {
-    assetPath: "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app2-safety-elements/headrest-combined-diagram-source-as-is.jpg",
-    sourceAssetPath: "content/validation/manual-guide/app2-safety-elements/page-132-headrest-combined-diagram-source-crop.jpg",
+    assetPath:
+      "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app2-safety-elements/headrest-combined-diagram-source-as-is.jpg",
+    sourceAssetPath:
+      "content/validation/manual-guide/app2-safety-elements/page-132-headrest-combined-diagram-source-crop.jpg",
     assetKind: "high-resolution-original-source-diagram-app2-headrest-combined",
     width: 820,
     height: 600,
-    sha256: "cd08c88256c94afec04b3a9b601d56d9c71743702e7d17106af2d918946b174c"
+    sha256: "cd08c88256c94afec04b3a9b601d56d9c71743702e7d17106af2d918946b174c",
   };
 
   assert.match(app2SafetyElementsModuleSource, /kind:\s*"source-image-cards"/u);
@@ -2845,23 +4259,47 @@ test("Appendix II safety visuals render as preserved source images with provenan
   assert.match(app2SafetyElementsModuleSource, /seatbelt-use-photo-source-as-is\.png/u);
   assert.match(app2SafetyElementsModuleSource, /headrest-combined-diagram-source-as-is\.jpg/u);
   assert.doesNotMatch(app2SafetyElementsModuleSource, /headrest-height-diagram-source-as-is\.png/u);
-  assert.doesNotMatch(app2SafetyElementsModuleSource, /headrest-distance-diagram-source-as-is\.png/u);
-  assert.match(app2SafetyElementsModuleSource, /app2-headrest-combined-source-card[\s\S]*displayMode:\s*"full-width"[\s\S]*maxDisplayWidthPx:\s*820/u);
-  assert.match(app2SafetyElementsModuleSource, /sourceImageException[\s\S]*source-image-original-visible-text/u);
-  assert.match(app2SafetyElementsModuleSource, /termTranslations[\s\S]*Altura apoyacabeza[\s\S]*Высота подголовника[\s\S]*Botón de desbloqueo[\s\S]*Кнопка разблокировки/u);
+  assert.doesNotMatch(
+    app2SafetyElementsModuleSource,
+    /headrest-distance-diagram-source-as-is\.png/u,
+  );
+  assert.match(
+    app2SafetyElementsModuleSource,
+    /app2-headrest-combined-source-card[\s\S]*displayMode:\s*"full-width"[\s\S]*maxDisplayWidthPx:\s*820/u,
+  );
+  assert.match(
+    app2SafetyElementsModuleSource,
+    /sourceImageException[\s\S]*source-image-original-visible-text/u,
+  );
+  assert.match(
+    app2SafetyElementsModuleSource,
+    /termTranslations[\s\S]*Altura apoyacabeza[\s\S]*Высота подголовника[\s\S]*Botón de desbloqueo[\s\S]*Кнопка разблокировки/u,
+  );
   assert.match(appSource, /manual-source-image-term-translations/u);
-  assert.doesNotMatch(app2SafetyElementsModuleSource, /headrest-position-transferred-infographic\.png/u);
+  assert.doesNotMatch(
+    app2SafetyElementsModuleSource,
+    /headrest-position-transferred-infographic\.png/u,
+  );
   assert.match(app2SafetyElementsModuleSource, /manual-source-artwork/u);
-  assert.doesNotMatch(app2SafetyElementsModuleSource, /safety, mirror, seat belt, headrest, and equipment visuals are retained as x5 source evidence only/u);
+  assert.doesNotMatch(
+    app2SafetyElementsModuleSource,
+    /safety, mirror, seat belt, headrest, and equipment visuals are retained as x5 source evidence only/u,
+  );
   assert.doesNotMatch(app2SafetyElementsModuleSource, /source-as-is изображ|runtime-crop/u);
   assert.match(
     app2SafetyElementsModuleSource,
-    /app2-mirror-orientation-source-card[\s\S]*displayMode:\s*"full-width"[\s\S]*maxDisplayWidthPx:\s*1260[\s\S]*minDisplayWidthPx:\s*760/u
+    /app2-mirror-orientation-source-card[\s\S]*displayMode:\s*"full-width"[\s\S]*maxDisplayWidthPx:\s*1260[\s\S]*minDisplayWidthPx:\s*760/u,
   );
   assert.match(appSource, /data-min-display-width-px=\{card\.minDisplayWidthPx\}/u);
   assert.match(stylesSource, /--manual-source-image-min-width/u);
-  assert.match(stylesSource, /\.manual-source-image-card\[data-display-mode="full-width"\][\s\S]*grid-column:\s*1 \/ -1/u);
-  assert.doesNotMatch(stylesSource, /\.manual-source-image-card\[data-card-id="app2-mirror-orientation-source-card"\]/u);
+  assert.match(
+    stylesSource,
+    /\.manual-source-image-card\[data-display-mode="full-width"\][\s\S]*grid-column:\s*1 \/ -1/u,
+  );
+  assert.doesNotMatch(
+    stylesSource,
+    /\.manual-source-image-card\[data-card-id="app2-mirror-orientation-source-card"\]/u,
+  );
 
   for (const expectation of sourceAsIs) {
     const asset = localAssetByPath(safety, expectation.assetPath);
@@ -2909,7 +4347,10 @@ test("Appendix II safety visuals render as preserved source images with provenan
   assert.equal(headrestAsset.sourceIntegrity.russianExplanationOutsideImage, true);
   assert.equal(headrestAsset.sourceImageException.kind, "source-image-original-visible-text");
   assert.equal(headrestAsset.sourceImageException.visibleSpanishScope, "source-image-only");
-  assert.equal(headrestAsset.sourceImageException.scope, "app2-page-132-headrest-combined-diagram-only");
+  assert.equal(
+    headrestAsset.sourceImageException.scope,
+    "app2-page-132-headrest-combined-diagram-only",
+  );
   assert.deepEqual(
     headrestAsset.termTranslations.map((entry) => `${entry.termEs}:${entry.translationRu}`),
     [
@@ -2919,16 +4360,21 @@ test("Appendix II safety visuals render as preserved source images with provenan
       "Aceptable:Допустимо",
       "Regular:Средне",
       "Malo:Плохо",
-      "Botón de desbloqueo:Кнопка разблокировки"
-    ]
+      "Botón de desbloqueo:Кнопка разблокировки",
+    ],
   );
   assert.equal(sha256File(headrestAsset.assetPath), headrestDiagram.sha256);
   assert.equal(sha256File(headrestDiagram.sourceAssetPath), headrestDiagram.sha256);
 
-  for (const sourceAssetPath of [...sourceAsIs.map((entry) => entry.sourceAssetPath), headrestDiagram.sourceAssetPath]) {
+  for (const sourceAssetPath of [
+    ...sourceAsIs.map((entry) => entry.sourceAssetPath),
+    headrestDiagram.sourceAssetPath,
+  ]) {
     assert.ok(
-      safety.implementationEvidence.sourceRegionMetadata.some((entry) => entry.sourceAssetPath === sourceAssetPath),
-      `${sourceAssetPath} is recorded in Appendix II safety sourceRegionMetadata`
+      safety.implementationEvidence.sourceRegionMetadata.some(
+        (entry) => entry.sourceAssetPath === sourceAssetPath,
+      ),
+      `${sourceAssetPath} is recorded in Appendix II safety sourceRegionMetadata`,
     );
   }
 });
@@ -2937,86 +4383,170 @@ test("Appendix I sections retain private-car safety details", () => {
   for (const sectionId of [
     "app1-safety-elements",
     "app1-other-required-safety-elements",
-    "app1-recommended-safety-elements"
+    "app1-recommended-safety-elements",
   ]) {
     const section = sectionById(sectionId);
     assert.equal(section.status, "implemented", `${sectionId} is implemented in the Appendix I PR`);
-    assert.equal(section.implementationEvidence.visualEvidenceSchemaVersion, 3, `${sectionId} uses strict visual evidence`);
+    assert.equal(
+      section.implementationEvidence.visualEvidenceSchemaVersion,
+      3,
+      `${sectionId} uses strict visual evidence`,
+    );
     assert.equal(section.implementationEvidence.visualRulePolicyId, "031-strict-source-fidelity");
-    assert.equal(section.implementationEvidence.highResolutionEvidenceStatus, "x5-or-equivalent-no-upscale-recorded");
-    assert.equal(section.implementationEvidence.localAssetMetadata[0].assetCategory, "native-dom-text-only");
+    assert.equal(
+      section.implementationEvidence.highResolutionEvidenceStatus,
+      "x5-or-equivalent-no-upscale-recorded",
+    );
+    assert.equal(
+      section.implementationEvidence.localAssetMetadata[0].assetCategory,
+      "native-dom-text-only",
+    );
   }
 
   assert.match(app1SafetyElementsModuleSource, /периодической VTV/u);
   assert.match(app1SafetyElementsModuleSource, /Амортизаторы[\s\S]*10%/u);
   assert.match(app1SafetyElementsModuleSource, /50 000 km/u);
   assert.match(app1SafetyElementsModuleSource, /25 000 km/u);
-  assert.match(app1SafetyElementsModuleSource, /mecánica[\s\S]*hidráulica[\s\S]*electrohidráulica/u);
+  assert.match(
+    app1SafetyElementsModuleSource,
+    /mecánica[\s\S]*hidráulica[\s\S]*electrohidráulica/u,
+  );
   assert.match(app1SafetyElementsModuleSource, /ABS[\s\S]*блокировке колес/u);
   assert.match(app1SafetyElementsModuleSource, /1\.6 mm/u);
   assert.match(app1SafetyElementsModuleSource, /аквапланирования/u);
   assert.match(app1SafetyElementsModuleSource, /Шины старше 5 лет лучше не использовать/u);
   assert.match(app1SafetyElementsModuleSource, /Если во время движения шина лопнула/u);
-  assert.match(app1SafetyElementsModuleSource, /не тормозите сразу[\s\S]*постепенно снижать скорость/u);
-  assert.match(app1SafetyElementsModuleSource, /Pinchaduras[\s\S]*no frenar inmediatamente[\s\S]*desacelerar lentamente/u);
+  assert.match(
+    app1SafetyElementsModuleSource,
+    /не тормозите сразу[\s\S]*постепенно снижать скорость/u,
+  );
+  assert.match(
+    app1SafetyElementsModuleSource,
+    /Pinchaduras[\s\S]*no frenar inmediatamente[\s\S]*desacelerar lentamente/u,
+  );
   assert.match(app1SafetyElementsModuleSource, /не больше 10% задней части/u);
   assert.match(app1SafetyElementsModuleSource, /Сигнал в 90 dB[\s\S]*65 dB/u);
   assert.match(app1SafetyElementsModuleSource, /врачи или фельдшеры[\s\S]*пожарные/u);
   assert.match(app1SafetyElementsModuleSource, /25 cm/u);
   assert.match(app1SafetyElementsModuleSource, /Подголовник[\s\S]*хлыстовой травмы/u);
   assert.match(app1SafetyElementsModuleSource, /1\.50 m[\s\S]*36 kg/u);
-  assert.match(app1SafetyElementsModuleSource, /Только если ребенок одновременно превышает возрастной, ростовой и весовой пороги/u);
-  assert.doesNotMatch(app1SafetyElementsModuleSource, /Если ребенок превышает возраст, рост или вес/u);
+  assert.match(
+    app1SafetyElementsModuleSource,
+    /Только если ребенок одновременно превышает возрастной, ростовой и весовой пороги/u,
+  );
+  assert.doesNotMatch(
+    app1SafetyElementsModuleSource,
+    /Если ребенок превышает возраст, рост или вес/u,
+  );
   assert.match(app1SafetyElementsModuleSource, /80%[\s\S]*70%/u);
-  assert.match(app1SafetyElementsModuleSource, /Isofix \(система крепления детского кресла\) или Latch \(система крепления детского кресла\)/u);
+  assert.match(
+    app1SafetyElementsModuleSource,
+    /Isofix \(система крепления детского кресла\) или Latch \(система крепления детского кресла\)/u,
+  );
   assert.match(app1SafetyElementsModuleSource, /50 km\/h[\s\S]*40-кратного веса/u);
   assert.match(app1SafetyElementsModuleSource, /Закон CABA 2148[\s\S]*бамперы/u);
   assert.match(app1SafetyElementsModuleSource, /Животных нельзя перевозить без фиксации/u);
   assert.match(app1SafetyElementsModuleSource, /Максимальная загрузка/u);
   assert.match(app1SafetyElementsModuleSource, /Багажник на крыше/u);
   assert.match(app1SafetyElementsModuleSource, /устойчивости направления[\s\S]*поворотах/u);
-  assert.doesNotMatch(app1SafetyElementsModuleSource, /periodic VTV|warning triangles, reflective vest|wheel wrench|hydroplaning или aquaplaning|peripheral vision|Homologated convex mirrors разрешены|90 dB horn|удар о windshield|врачи или paramedics|abdomen и chest|excessive fatigue|clavicle|pelvis ниже abdomen|риск whiplash|occupants|integrated или height adjustable|Airbag поглощает|Airbag бывает|curtain|child seats и homologated devices|abdominal two-point belt|DOM text|babies|international standards и иметь label|читать manual автомобиля|used SRI|rear-facing|head, neck and spine|maximum weight|должны быть tight|удержан harness|deformation zones|cabin должна|protective и undeformable|из-за inertia|40 times|bumper поглощает|уменьшает damage|сам impact|Ley 2148[\s\S]*bumpers|fenders|visibility, aerodynamics|rain, wind, dust and insects|laminated или tempered|occupants должны различаться на short distance|Pets нельзя перевозить loose|appropriate harness/u);
-  assert.doesNotMatch(app1SafetyElementsModuleSource, /Appendix II|Appendix III|Appendix IV|TRANSPORTE DE PASAJEROS|TRANSPORTE DE CARGA|SEÑALES VIALES/u);
+  assert.doesNotMatch(
+    app1SafetyElementsModuleSource,
+    /periodic VTV|warning triangles, reflective vest|wheel wrench|hydroplaning или aquaplaning|peripheral vision|Homologated convex mirrors разрешены|90 dB horn|удар о windshield|врачи или paramedics|abdomen и chest|excessive fatigue|clavicle|pelvis ниже abdomen|риск whiplash|occupants|integrated или height adjustable|Airbag поглощает|Airbag бывает|curtain|child seats и homologated devices|abdominal two-point belt|DOM text|babies|international standards и иметь label|читать manual автомобиля|used SRI|rear-facing|head, neck and spine|maximum weight|должны быть tight|удержан harness|deformation zones|cabin должна|protective и undeformable|из-за inertia|40 times|bumper поглощает|уменьшает damage|сам impact|Ley 2148[\s\S]*bumpers|fenders|visibility, aerodynamics|rain, wind, dust and insects|laminated или tempered|occupants должны различаться на short distance|Pets нельзя перевозить loose|appropriate harness/u,
+  );
+  assert.doesNotMatch(
+    app1SafetyElementsModuleSource,
+    /Appendix II|Appendix III|Appendix IV|TRANSPORTE DE PASAJEROS|TRANSPORTE DE CARGA|SEÑALES VIALES/u,
+  );
 
-  assert.doesNotMatch(app1OtherRequiredSafetyElementsModuleSource, /Максимальная загрузка|Багажник на крыше|устойчивости направления/u);
+  assert.doesNotMatch(
+    app1OtherRequiredSafetyElementsModuleSource,
+    /Максимальная загрузка|Багажник на крыше|устойчивости направления/u,
+  );
   assert.match(app1OtherRequiredSafetyElementsModuleSource, /минимум два аварийных треугольника/u);
   assert.match(app1OtherRequiredSafetyElementsModuleSource, /огнетушитель 1 kg типа ABC/u);
   assert.match(app1OtherRequiredSafetyElementsModuleSource, /эластичный зажим не допускается/u);
-  assert.doesNotMatch(app1OtherRequiredSafetyElementsModuleSource, /эластичный зажим источник запрещает/u);
+  assert.doesNotMatch(
+    app1OtherRequiredSafetyElementsModuleSource,
+    /эластичный зажим источник запрещает/u,
+  );
   assert.match(app1OtherRequiredSafetyElementsModuleSource, /Световозвращающий жилет/u);
-  assert.match(app1OtherRequiredSafetyElementsModuleSource, /вынужденной остановки[\s\S]*автомагистралях и скоростных дорогах/u);
+  assert.match(
+    app1OtherRequiredSafetyElementsModuleSource,
+    /вынужденной остановки[\s\S]*автомагистралях и скоростных дорогах/u,
+  );
   assert.match(app1OtherRequiredSafetyElementsModuleSource, /kind:\s*"source-image-cards"/u);
-  assert.match(app1OtherRequiredSafetyElementsModuleSource, /app1-matafuegos-source-card[\s\S]*sourceRegion:\s*\{\s*x:\s*1060,\s*y:\s*1660,\s*width:\s*340,\s*height:\s*330\s*\}/u);
-  assert.match(app1OtherRequiredSafetyElementsModuleSource, /app1-chaleco-reflectivo-source-card[\s\S]*sourceRegion:\s*\{\s*x:\s*1060,\s*y:\s*1990,\s*width:\s*340,\s*height:\s*340\s*\}/u);
+  assert.match(
+    app1OtherRequiredSafetyElementsModuleSource,
+    /app1-matafuegos-source-card[\s\S]*sourceRegion:\s*\{\s*x:\s*1060,\s*y:\s*1660,\s*width:\s*340,\s*height:\s*330\s*\}/u,
+  );
+  assert.match(
+    app1OtherRequiredSafetyElementsModuleSource,
+    /app1-chaleco-reflectivo-source-card[\s\S]*sourceRegion:\s*\{\s*x:\s*1060,\s*y:\s*1990,\s*width:\s*340,\s*height:\s*340\s*\}/u,
+  );
   assert.match(app1OtherRequiredSafetyElementsModuleSource, /matafuegos-source-as-is\.jpg/u);
-  assert.match(app1OtherRequiredSafetyElementsModuleSource, /chaleco-reflectivo-source-as-is\.jpg/u);
-  assert.match(app1OtherRequiredSafetyElementsModuleSource, /sourceImageException[\s\S]*source-image-original-visible-text/u);
-  assert.match(app1OtherRequiredSafetyElementsModuleSource, /termTranslations[\s\S]*Matafuegos[\s\S]*Огнетушитель[\s\S]*Chaleco reflectivo[\s\S]*Световозвращающий жилет/u);
-  const app1EquipmentBlockStart = app1OtherRequiredSafetyElementsModuleSource.indexOf('id: "mandatory-equipment-source-visuals"');
+  assert.match(
+    app1OtherRequiredSafetyElementsModuleSource,
+    /chaleco-reflectivo-source-as-is\.jpg/u,
+  );
+  assert.match(
+    app1OtherRequiredSafetyElementsModuleSource,
+    /sourceImageException[\s\S]*source-image-original-visible-text/u,
+  );
+  assert.match(
+    app1OtherRequiredSafetyElementsModuleSource,
+    /termTranslations[\s\S]*Matafuegos[\s\S]*Огнетушитель[\s\S]*Chaleco reflectivo[\s\S]*Световозвращающий жилет/u,
+  );
+  const app1EquipmentBlockStart = app1OtherRequiredSafetyElementsModuleSource.indexOf(
+    'id: "mandatory-equipment-source-visuals"',
+  );
   assert.ok(app1EquipmentBlockStart > 0, "app1 equipment source-image block exists");
   const app1EquipmentBlockSource = balancedSourceSlice(
     app1OtherRequiredSafetyElementsModuleSource,
     app1OtherRequiredSafetyElementsModuleSource.lastIndexOf("{", app1EquipmentBlockStart),
     "{",
-    "}"
+    "}",
   );
   const app1EquipmentVisibleRuStrings = Array.from(
     app1EquipmentBlockSource.matchAll(/(?:titleRu|bodyRu|altRu|translationRu):\s*"([^"]+)"/gu),
-    (match) => match[1]
+    (match) => match[1],
   );
-  assert.ok(app1EquipmentVisibleRuStrings.length >= 6, "app1 equipment block visible Russian strings are inspected");
-  assert.doesNotMatch(app1EquipmentVisibleRuStrings.join("\n"), /источник|исходн|фрагмент|source/iu);
-  assert.doesNotMatch(app1OtherRequiredSafetyElementsModuleSource, /указана в manual|в trunk|Roof rack должен|aerodynamics, visibility|закрывать lights|установленные limits|hazard triangles|accessible|stopped vehicle|открытии valve|через hose|base of fire|extinguisher 1 kg|wood, plastics and rubber|petroleum|flammable liquids|electric risk|motors and panels|within driver's reach|metal securing system|elastic clamp|collision or rollover|Reflective vest|внутри cabin|roadway|force majeure|highways и fast roads/u);
+  assert.ok(
+    app1EquipmentVisibleRuStrings.length >= 6,
+    "app1 equipment block visible Russian strings are inspected",
+  );
+  assert.doesNotMatch(
+    app1EquipmentVisibleRuStrings.join("\n"),
+    /источник|исходн|фрагмент|source/iu,
+  );
+  assert.doesNotMatch(
+    app1OtherRequiredSafetyElementsModuleSource,
+    /указана в manual|в trunk|Roof rack должен|aerodynamics, visibility|закрывать lights|установленные limits|hazard triangles|accessible|stopped vehicle|открытии valve|через hose|base of fire|extinguisher 1 kg|wood, plastics and rubber|petroleum|flammable liquids|electric risk|motors and panels|within driver's reach|metal securing system|elastic clamp|collision or rollover|Reflective vest|внутри cabin|roadway|force majeure|highways и fast roads/u,
+  );
 
   assert.match(app1RecommendedSafetyElementsModuleSource, /Стерильная гидрофильная марля/u);
   assert.match(app1RecommendedSafetyElementsModuleSource, /Перекись водорода/u);
   assert.match(app1RecommendedSafetyElementsModuleSource, /Фонарик с запасными батарейками/u);
-  assert.match(app1RecommendedSafetyElementsModuleSource, /Рекомендуется сертифицированная телескопическая буксировочная штанга/u);
-  assert.doesNotMatch(app1RecommendedSafetyElementsModuleSource, /Источник рекомендует сертифицированную телескопическую буксировочную штангу/u);
-  assert.match(app1RecommendedSafetyElementsModuleSource, /В CABA частному автомобилю запрещено буксировать/u);
+  assert.match(
+    app1RecommendedSafetyElementsModuleSource,
+    /Рекомендуется сертифицированная телескопическая буксировочная штанга/u,
+  );
+  assert.doesNotMatch(
+    app1RecommendedSafetyElementsModuleSource,
+    /Источник рекомендует сертифицированную телескопическую буксировочную штангу/u,
+  );
+  assert.match(
+    app1RecommendedSafetyElementsModuleSource,
+    /В CABA частному автомобилю запрещено буксировать/u,
+  );
   assert.match(app1RecommendedSafetyElementsModuleSource, /уполномоченным автомобилем/u);
-  assert.match(app1RecommendedSafetyElementsModuleSource, /состояния автомобиля и его элементов безопасности/u);
-  assert.doesNotMatch(app1RecommendedSafetyElementsModuleSource, /обозначается cross|secure fixed place|sterile hydrophilic gauze|Bandages or dressings|Hypoallergenic tape|Hydrogen peroxide|Iodine solution|latex or vinyl gloves|Burn cream|Antidiarrheal charcoal tablets|Analgesics and anti-inflammatory medicine|Insect-bite cream|Tweezers and scissors|Flashlight with spare batteries|homologated telescopic tow bar|ropes, cables and other flexible means|factory towing points|private vehicle|authorized vehicle/u);
+  assert.match(
+    app1RecommendedSafetyElementsModuleSource,
+    /состояния автомобиля и его элементов безопасности/u,
+  );
+  assert.doesNotMatch(
+    app1RecommendedSafetyElementsModuleSource,
+    /обозначается cross|secure fixed place|sterile hydrophilic gauze|Bandages or dressings|Hypoallergenic tape|Hydrogen peroxide|Iodine solution|latex or vinyl gloves|Burn cream|Antidiarrheal charcoal tablets|Analgesics and anti-inflammatory medicine|Insect-bite cream|Tweezers and scissors|Flashlight with spare batteries|homologated telescopic tow bar|ropes, cables and other flexible means|factory towing points|private vehicle|authorized vehicle/u,
+  );
 });
 
 test("Appendix I other required safety equipment restores official source images with external translations", () => {
@@ -3033,7 +4563,7 @@ test("Appendix I other required safety equipment restores official source images
       sha256: "b8e5bb0ccea12bf6b4be881fff17cd4da3c935557cfa670d8e39cf49ea05376e",
       term: "Matafuegos:Огнетушитель",
       scope: "app1-page-120-matafuegos-only",
-      sourceRegion: { x: 1060, y: 1660, width: 340, height: 330 }
+      sourceRegion: { x: 1060, y: 1660, width: 340, height: 330 },
     },
     {
       assetPath:
@@ -3046,18 +4576,26 @@ test("Appendix I other required safety equipment restores official source images
       sha256: "f4935b08d31512a4b06e39b00766cc3a5036c9f9cab4be3442ab7a83a7904581",
       term: "Chaleco reflectivo:Световозвращающий жилет",
       scope: "app1-page-120-chaleco-reflectivo-only",
-      sourceRegion: { x: 1060, y: 1990, width: 340, height: 340 }
-    }
+      sourceRegion: { x: 1060, y: 1990, width: 340, height: 340 },
+    },
   ];
 
-  assert.equal(otherRequired.implementationEvidence.visibleSpanishStatus.status, "source_image_exceptions_only");
-  assert.equal(otherRequired.implementationEvidence.visibleSpanishStatus.nonSignVisibleSpanishStatus, "source-image-only");
+  assert.equal(
+    otherRequired.implementationEvidence.visibleSpanishStatus.status,
+    "source_image_exceptions_only",
+  );
+  assert.equal(
+    otherRequired.implementationEvidence.visibleSpanishStatus.nonSignVisibleSpanishStatus,
+    "source-image-only",
+  );
   assert.deepEqual(
-    otherRequired.implementationEvidence.visibleSpanishStatus.exceptions.map((entry) => `${entry.scope}:${entry.visibleSpanishScope}:${entry.sourceAsIs}`),
+    otherRequired.implementationEvidence.visibleSpanishStatus.exceptions.map(
+      (entry) => `${entry.scope}:${entry.visibleSpanishScope}:${entry.sourceAsIs}`,
+    ),
     [
       "app1-page-120-matafuegos-only:source-image-only:true",
-      "app1-page-120-chaleco-reflectivo-only:source-image-only:true"
-    ]
+      "app1-page-120-chaleco-reflectivo-only:source-image-only:true",
+    ],
   );
 
   for (const expectation of expectations) {
@@ -3079,16 +4617,25 @@ test("Appendix I other required safety equipment restores official source images
     assert.equal(asset.sourceImageException.kind, "source-image-original-visible-text");
     assert.equal(asset.sourceImageException.visibleSpanishScope, "source-image-only");
     assert.equal(asset.sourceImageException.scope, expectation.scope);
-    assert.equal(asset.termTranslations.map((entry) => `${entry.termEs}:${entry.translationRu}`).join(","), expectation.term);
+    assert.equal(
+      asset.termTranslations.map((entry) => `${entry.termEs}:${entry.translationRu}`).join(","),
+      expectation.term,
+    );
     assert.equal(sha256File(asset.assetPath), expectation.sha256);
     assert.equal(sha256File(expectation.sourceAssetPath), expectation.sha256);
 
     const sourceRegion = otherRequired.implementationEvidence.sourceRegionMetadata.find(
-      (entry) => entry.sourceAssetPath === expectation.sourceAssetPath
+      (entry) => entry.sourceAssetPath === expectation.sourceAssetPath,
     );
-    assert.ok(sourceRegion, `${expectation.sourceAssetPath} is recorded in Appendix I other-required sourceRegionMetadata`);
+    assert.ok(
+      sourceRegion,
+      `${expectation.sourceAssetPath} is recorded in Appendix I other-required sourceRegionMetadata`,
+    );
     assert.deepEqual(sourceRegion.sourceRegion, expectation.sourceRegion);
-    assert.deepEqual(sourceRegion.cropDimensions, { width: expectation.width, height: expectation.height });
+    assert.deepEqual(sourceRegion.cropDimensions, {
+      width: expectation.width,
+      height: expectation.height,
+    });
     assert.equal(sourceRegion.cropSha256, expectation.sha256);
   }
 });
@@ -3096,21 +4643,25 @@ test("Appendix I other required safety equipment restores official source images
 test("Appendix I visuals render source-as-is and transferred infographics with provenance evidence", () => {
   const safety = sectionById("app1-safety-elements");
   const sourceAsIsMirror = {
-    assetPath: "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app1-safety-elements/mirror-orientation-photo-source-as-is.jpg",
-    sourceAssetPath: "content/validation/manual-guide/app1-safety-elements/page-110-mirror-orientation-source-crop.jpg",
+    assetPath:
+      "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app1-safety-elements/mirror-orientation-photo-source-as-is.jpg",
+    sourceAssetPath:
+      "content/validation/manual-guide/app1-safety-elements/page-110-mirror-orientation-source-crop.jpg",
     assetKind: "high-resolution-original-source-photo-mirror-orientation",
     width: 495,
     height: 163,
-    sha256: "97482f9f579ce4a8e0fede2789a20466319adaf7004680497c58411d995bee48"
+    sha256: "97482f9f579ce4a8e0fede2789a20466319adaf7004680497c58411d995bee48",
   };
   const blindSpot = {
-    assetPath: "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app1-safety-elements/blind-spot-source-as-is.jpg",
-    sourceAssetPath: "content/validation/manual-guide/app1-safety-elements/page-108-blind-spot-source-crop.jpg",
+    assetPath:
+      "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app1-safety-elements/blind-spot-source-as-is.jpg",
+    sourceAssetPath:
+      "content/validation/manual-guide/app1-safety-elements/page-108-blind-spot-source-crop.jpg",
     cropEvidencePath: "content/validation/manual-guide-blind-spot-source-crop.evidence.json",
     assetKind: "high-resolution-original-source-diagram-blind-spot-page-108",
     width: 546,
     height: 440,
-    sha256: "b5457a99da41bbb3f46985072e39641c20ee408844bd34f83051eefa55e2ed35"
+    sha256: "b5457a99da41bbb3f46985072e39641c20ee408844bd34f83051eefa55e2ed35",
   };
   const tire = {
     assetPath: tireAssetPath,
@@ -3119,43 +4670,70 @@ test("Appendix I visuals render source-as-is and transferred infographics with p
     assetKind: "high-resolution-original-source-diagram-tire-manufacturing-tread-life-page-108",
     width: 760,
     height: 995,
-    sha256: "1ee27aab0a0def7d6b0cd859adabb5f604889e1da604db54bf5cb0d8de7bdbf9"
+    sha256: "1ee27aab0a0def7d6b0cd859adabb5f604889e1da604db54bf5cb0d8de7bdbf9",
   };
   const transferred = [
     {
-      assetPath: "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app1-safety-elements/headrest-position-transferred-infographic.png",
-      sourceAssetPath: "content/validation/manual-guide/app1-safety-elements/page-113-headrest-position-source-crop.jpg",
+      assetPath:
+        "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app1-safety-elements/headrest-position-transferred-infographic.png",
+      sourceAssetPath:
+        "content/validation/manual-guide/app1-safety-elements/page-113-headrest-position-source-crop.jpg",
       assetKind: "high-resolution-transferred-source-infographic-headrest-position",
       width: 1190,
       height: 185,
       sha256: "e1d0495817ba757b9d4f5acd1862ddb911170ee0094859f19548910e61edf066",
       sourceSha256: "837206121af108c0ca93ae8d4730b1c7a15270e51eab162eafde8bf19ceb6aaf",
-      expectedLabels: ["Высота подголовника", "Дистанция подголовника", "хорошо", "допустимо", "средне", "плохо"]
+      expectedLabels: [
+        "Высота подголовника",
+        "Дистанция подголовника",
+        "хорошо",
+        "допустимо",
+        "средне",
+        "плохо",
+      ],
     },
     {
-      assetPath: "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app1-safety-elements/sri-types-transferred-infographic.png",
-      sourceAssetPath: "content/validation/manual-guide/app1-safety-elements/page-115-sri-types-source-crop.jpg",
+      assetPath:
+        "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app1-safety-elements/sri-types-transferred-infographic.png",
+      sourceAssetPath:
+        "content/validation/manual-guide/app1-safety-elements/page-115-sri-types-source-crop.jpg",
       assetKind: "high-resolution-transferred-source-infographic-sri-types",
       width: 1220,
       height: 260,
       sha256: "9df0c6892d1b78aa14bc04915125070b4679c93885fc09194f4476ee751d087b",
       sourceSha256: "5d28a11f1a15db90531119cdde12980929dfd36dd82917d150a82fe27525d9a6",
-      expectedLabels: ["Виды SRI", "Новорожденные и малыши до 1 года / 10 kg", "1-15 месяцев, 0-13 kg", "9 месяцев - 4 года, 9-18 kg", "4-8 лет, 15-25 kg", "8-12 лет, 22-36 kg"]
-    }
+      expectedLabels: [
+        "Виды SRI",
+        "Новорожденные и малыши до 1 года / 10 kg",
+        "1-15 месяцев, 0-13 kg",
+        "9 месяцев - 4 года, 9-18 kg",
+        "4-8 лет, 15-25 kg",
+        "8-12 лет, 22-36 kg",
+      ],
+    },
   ];
 
   assert.match(app1SafetyElementsModuleSource, /mirror-orientation-photo-source-as-is\.jpg/u);
   assert.match(app1SafetyElementsModuleSource, /blind-spot-source-as-is\.jpg/u);
   assert.match(app1SafetyElementsModuleSource, /tire-manufacturing-tread-life-source-as-is\.jpg/u);
   assert.match(app1SafetyElementsModuleSource, /source-image-original-visible-text/u);
-  assert.doesNotMatch(app1SafetyElementsModuleSource, /испанские подписи внутри изображения не переводятся/u);
+  assert.doesNotMatch(
+    app1SafetyElementsModuleSource,
+    /испанские подписи внутри изображения не переводятся/u,
+  );
   assert.match(app1SafetyElementsModuleSource, /headrest-position-transferred-infographic\.png/u);
   assert.match(app1SafetyElementsModuleSource, /sri-types-transferred-infographic\.png/u);
   assert.doesNotMatch(app1SafetyElementsModuleSource, /1 год, 10-18 kg/u);
   assert.doesNotMatch(app1SafetyElementsModuleSource, /sri-group-0-plus[\s\S]*1-4 года, 10-18 kg/u);
-  assert.match(app1SafetyElementsModuleSource, /russianOverlayLabels[\s\S]*Высота подголовника[\s\S]*Виды SRI/u);
+  assert.match(
+    app1SafetyElementsModuleSource,
+    /russianOverlayLabels[\s\S]*Высота подголовника[\s\S]*Виды SRI/u,
+  );
 
-  const exceptionPaths = safety.implementationEvidence.visibleSpanishStatus.exceptions?.map((entry) => entry.assetPath) ?? [];
+  const exceptionPaths =
+    safety.implementationEvidence.visibleSpanishStatus.exceptions?.map(
+      (entry) => entry.assetPath,
+    ) ?? [];
   const mirrorAsset = localAssetByPath(safety, sourceAsIsMirror.assetPath);
   assert.equal(exceptionPaths.includes(sourceAsIsMirror.assetPath), false);
   assert.equal(mirrorAsset.assetCategory, "source-as-is-photo");
@@ -3177,8 +4755,14 @@ test("Appendix I visuals render source-as-is and transferred infographics with p
 
   const blindSpotAsset = localAssetByPath(safety, blindSpot.assetPath);
   assert.equal(exceptionPaths.includes(blindSpot.assetPath), true);
-  assert.equal(safety.implementationEvidence.visibleSpanishStatus.status, "source_image_exceptions_only");
-  assert.equal(safety.implementationEvidence.visibleSpanishStatus.nonSignVisibleSpanishStatus, "source-image-only");
+  assert.equal(
+    safety.implementationEvidence.visibleSpanishStatus.status,
+    "source_image_exceptions_only",
+  );
+  assert.equal(
+    safety.implementationEvidence.visibleSpanishStatus.nonSignVisibleSpanishStatus,
+    "source-image-only",
+  );
   assert.equal(blindSpotAsset.assetCategory, "source-as-is-diagram");
   assert.equal(blindSpotAsset.assetKind, blindSpot.assetKind);
   assert.equal(blindSpotAsset.containsText, true);
@@ -3200,27 +4784,55 @@ test("Appendix I visuals render source-as-is and transferred infographics with p
   assert.equal(blindSpotAsset.sourceImageException.scope, "app1-page-108-blind-spot-visual-only");
   assert.deepEqual(
     blindSpotAsset.termTranslations?.map((entry) => `${entry.termEs}:${entry.translationRu}`),
-    undefined
+    undefined,
   );
   assert.equal(sha256File(blindSpotAsset.assetPath), blindSpot.sha256);
   assert.equal(sha256File(blindSpot.sourceAssetPath), blindSpot.sha256);
 
   const blindSpotSourceRegion = safety.implementationEvidence.sourceRegionMetadata.find(
-    (entry) => entry.sourceAssetPath === blindSpot.sourceAssetPath
+    (entry) => entry.sourceAssetPath === blindSpot.sourceAssetPath,
   );
-  assert.ok(blindSpotSourceRegion, `${blindSpot.sourceAssetPath} is recorded in Appendix I safety sourceRegionMetadata`);
+  assert.ok(
+    blindSpotSourceRegion,
+    `${blindSpot.sourceAssetPath} is recorded in Appendix I safety sourceRegionMetadata`,
+  );
   assert.equal(blindSpotSourceRegion.sourcePage, 108);
   assert.equal(blindSpotSourceRegion.extractionScaleEvidence.pdfPage, 109);
-  assert.deepEqual(blindSpotSourceRegion.sourceRegion, { x: 838, y: 1100, width: 1525, height: 1100 });
-  assert.deepEqual(blindSpotSourceRegion.cropDimensions, { width: blindSpot.width, height: blindSpot.height });
+  assert.deepEqual(blindSpotSourceRegion.sourceRegion, {
+    x: 838,
+    y: 1100,
+    width: 1525,
+    height: 1100,
+  });
+  assert.deepEqual(blindSpotSourceRegion.cropDimensions, {
+    width: blindSpot.width,
+    height: blindSpot.height,
+  });
   assert.equal(blindSpotSourceRegion.cropSha256, blindSpot.sha256);
-  assert.match(blindSpotSourceRegion.extractionScaleEvidence.sourceQualityDisposition, /source-limited-native-raster/u);
+  assert.match(
+    blindSpotSourceRegion.extractionScaleEvidence.sourceQualityDisposition,
+    /source-limited-native-raster/u,
+  );
   const blindSpotCropEvidence = JSON.parse(readFileSync(blindSpot.cropEvidencePath, "utf8"));
-  const blindSpotCropTarget = blindSpotCropEvidence.targets.find((entry) => entry.cardId === "app1-blind-spot-source-card");
-  assert.equal(blindSpotCropTarget.sourcePage, 108, "crop evidence names the official printed/manual page");
+  const blindSpotCropTarget = blindSpotCropEvidence.targets.find(
+    (entry) => entry.cardId === "app1-blind-spot-source-card",
+  );
+  assert.equal(
+    blindSpotCropTarget.sourcePage,
+    108,
+    "crop evidence names the official printed/manual page",
+  );
   assert.equal(blindSpotCropTarget.pdfPage, 109, "direct PDF render uses PDF page/render file 109");
-  assert.equal(blindSpotCropTarget.renderPage, 109, "render asset keeps the PDF/page image offset explicit");
-  assert.equal(blindSpotSourceRegion.sourcePage, 108, "runtime evidence names the printed/manual page shown in the official crop");
+  assert.equal(
+    blindSpotCropTarget.renderPage,
+    109,
+    "render asset keeps the PDF/page image offset explicit",
+  );
+  assert.equal(
+    blindSpotSourceRegion.sourcePage,
+    108,
+    "runtime evidence names the printed/manual page shown in the official crop",
+  );
 
   const tireAsset = localAssetByPath(safety, tire.assetPath);
   assert.equal(exceptionPaths.includes(tire.assetPath), true);
@@ -3242,21 +4854,32 @@ test("Appendix I visuals render source-as-is and transferred infographics with p
   assert.equal(tireAsset.sourceIntegrity.unrelatedPageContentExcluded, true);
   assert.equal(tireAsset.sourceImageException.kind, "source-image-original-visible-text");
   assert.equal(tireAsset.sourceImageException.visibleSpanishScope, "source-image-only");
-  assert.equal(tireAsset.sourceImageException.scope, "app1-page-108-tire-manufacturing-tread-life-visual-only");
+  assert.equal(
+    tireAsset.sourceImageException.scope,
+    "app1-page-108-tire-manufacturing-tread-life-visual-only",
+  );
   assert.equal(sha256File(tireAsset.assetPath), tire.sha256);
   assert.equal(sha256File(tire.sourceAssetPath), tire.sha256);
 
   const tireSourceRegion = safety.implementationEvidence.sourceRegionMetadata.find(
-    (entry) => entry.sourceAssetPath === tire.sourceAssetPath
+    (entry) => entry.sourceAssetPath === tire.sourceAssetPath,
   );
-  assert.ok(tireSourceRegion, `${tire.sourceAssetPath} is recorded in Appendix I safety sourceRegionMetadata`);
+  assert.ok(
+    tireSourceRegion,
+    `${tire.sourceAssetPath} is recorded in Appendix I safety sourceRegionMetadata`,
+  );
   assert.equal(tireSourceRegion.sourcePage, 108);
   assert.deepEqual(tireSourceRegion.sourceRegion, { x: 1115, y: 1635, width: 760, height: 995 });
   assert.deepEqual(tireSourceRegion.cropDimensions, { width: tire.width, height: tire.height });
   assert.equal(tireSourceRegion.cropSha256, tire.sha256);
-  assert.match(tireSourceRegion.extractionScaleEvidence.sourceQualityDisposition, /retained-official-x5-render-crop/u);
+  assert.match(
+    tireSourceRegion.extractionScaleEvidence.sourceQualityDisposition,
+    /retained-official-x5-render-crop/u,
+  );
   const tireCropEvidence = JSON.parse(readFileSync(tire.cropEvidencePath, "utf8"));
-  const tireCropTarget = tireCropEvidence.targets.find((entry) => entry.cardId === "app1-tire-manufacturing-tread-life-source-card");
+  const tireCropTarget = tireCropEvidence.targets.find(
+    (entry) => entry.cardId === "app1-tire-manufacturing-tread-life-source-card",
+  );
   assert.equal(tireCropTarget.sourcePage, 108);
   assert.deepEqual(tireCropTarget.outputDimensions, { width: tire.width, height: tire.height });
   assert.equal(tireCropTarget.outputSha256, tire.sha256);
@@ -3275,13 +4898,22 @@ test("Appendix I visuals render source-as-is and transferred infographics with p
     assert.equal(asset.infographicTransfer.sourceImageTransfer, true);
     assert.equal(asset.infographicTransfer.sourceAssetPath, expectation.sourceAssetPath);
     assert.equal(asset.infographicTransfer.sourceCropSha256, expectation.sourceSha256);
-    assert.deepEqual(asset.infographicTransfer.sourceCropDimensions, { width: expectation.width, height: expectation.height });
+    assert.deepEqual(asset.infographicTransfer.sourceCropDimensions, {
+      width: expectation.width,
+      height: expectation.height,
+    });
     assert.equal(asset.infographicTransfer.noApproximateRedraw, true);
     assert.equal(asset.infographicTransfer.broadMaskPlatePatchStatus, "none");
-    assert.equal(asset.infographicTransfer.cleanupMethod, "glyph-letter-level-background-restoration");
+    assert.equal(
+      asset.infographicTransfer.cleanupMethod,
+      "glyph-letter-level-background-restoration",
+    );
     assert.equal(asset.infographicTransfer.russianOverlayStrategy, "selectable-dom");
     assert.equal(asset.infographicTransfer.overlayTextSelectability, "selectable-dom-text");
-    assert.deepEqual(asset.infographicTransfer.russianOverlayLabels.map((label) => label.textRu), expectation.expectedLabels);
+    assert.deepEqual(
+      asset.infographicTransfer.russianOverlayLabels.map((label) => label.textRu),
+      expectation.expectedLabels,
+    );
     assert.equal(sha256File(asset.assetPath), expectation.sha256);
     assert.equal(sha256File(expectation.sourceAssetPath), expectation.sourceSha256);
     assert.notEqual(sha256File(asset.assetPath), sha256File(expectation.sourceAssetPath));
@@ -3293,53 +4925,63 @@ test("Chapter 4 runtime renders protected photos and transferred infographics wi
     {
       sectionId: "ch4-alcohol-drugs",
       moduleSource: ch4AlcoholDrugsModuleSource,
-      assetPath: "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch4-alcohol-drugs/drug-test-source-as-is.jpg",
-      sourceAssetPath: "content/validation/manual-guide/ch4-alcohol-drugs/page-090-drug-test-source-crop.jpg",
+      assetPath:
+        "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch4-alcohol-drugs/drug-test-source-as-is.jpg",
+      sourceAssetPath:
+        "content/validation/manual-guide/ch4-alcohol-drugs/page-090-drug-test-source-crop.jpg",
       assetCategory: "source-as-is-photo",
       assetKind: "high-resolution-original-source-photo-drug-test-device",
       width: 820,
       height: 300,
-      sha256: "a0ea059e6819b48027877b2ff349c77589878f5b912bd77e4e220e579a4e27a3"
+      sha256: "a0ea059e6819b48027877b2ff349c77589878f5b912bd77e4e220e579a4e27a3",
     },
     {
       sectionId: "ch4-distractions",
       moduleSource: ch4DistractionsModuleSource,
-      assetPath: "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch4-distractions/attention-photo-source-as-is.jpg",
-      sourceAssetPath: "content/validation/manual-guide/ch4-distractions/page-097-attention-photo-source-crop.jpg",
+      assetPath:
+        "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch4-distractions/attention-photo-source-as-is.jpg",
+      sourceAssetPath:
+        "content/validation/manual-guide/ch4-distractions/page-097-attention-photo-source-crop.jpg",
       assetCategory: "source-as-is-photo",
       assetKind: "high-resolution-original-source-photo-attention-quote",
       width: 720,
       height: 900,
-      sha256: "91389610896484f41ba060c8b531077031f9e849b2087c4a21fa7f389fb08338"
-    }
+      sha256: "91389610896484f41ba060c8b531077031f9e849b2087c4a21fa7f389fb08338",
+    },
   ];
   const transferredInfographicExpectations = [
     {
       sectionId: "ch4-alcohol-drugs",
       moduleSource: ch4AlcoholDrugsModuleSource,
-      assetPath: "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch4-alcohol-drugs/alcohol-limits-transferred-infographic.png",
-      removedAssetPath: "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch4-alcohol-drugs/alcohol-limits-source-as-is.jpg",
-      sourceAssetPath: "content/validation/manual-guide/ch4-alcohol-drugs/page-091-alcohol-limits-source-crop.jpg",
+      assetPath:
+        "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch4-alcohol-drugs/alcohol-limits-transferred-infographic.png",
+      removedAssetPath:
+        "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch4-alcohol-drugs/alcohol-limits-source-as-is.jpg",
+      sourceAssetPath:
+        "content/validation/manual-guide/ch4-alcohol-drugs/page-091-alcohol-limits-source-crop.jpg",
       assetKind: "high-resolution-transferred-source-infographic-alcohol-limits",
       width: 850,
       height: 430,
       sha256: "012e5486c56a8b25174019e53d4fab66599adf58cc920136fd9f447e0e8b3251",
       sourceSha256: "1793e4e77b2549c5b7e6aed931bc0c606b6ae7bc34eec4a2fd5d22e11a49c613",
-      expectedLabels: ["Нович.", "Проф.", "Мото", "Пасс. мото", "Частн."]
+      expectedLabels: ["Нович.", "Проф.", "Мото", "Пасс. мото", "Частн."],
     },
     {
       sectionId: "ch4-distractions",
       moduleSource: ch4DistractionsModuleSource,
-      assetPath: "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch4-distractions/distraction-panels-transferred-infographic.png",
-      removedAssetPath: "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch4-distractions/distraction-panels-source-as-is.jpg",
-      sourceAssetPath: "content/validation/manual-guide/ch4-distractions/page-095-distraction-panels-source-crop.jpg",
+      assetPath:
+        "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch4-distractions/distraction-panels-transferred-infographic.png",
+      removedAssetPath:
+        "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch4-distractions/distraction-panels-source-as-is.jpg",
+      sourceAssetPath:
+        "content/validation/manual-guide/ch4-distractions/page-095-distraction-panels-source-crop.jpg",
       assetKind: "high-resolution-transferred-source-infographic-distraction-panels",
       width: 860,
       height: 260,
       sha256: "878c270c90a550c3ee6c45d6d13f28592dc05338599029046ab1c5d193fc502c",
       sourceSha256: "1723e149dfbbf839bdf9674183e0feec53693f574899a2f7cd039d7e46dac354",
-      expectedLabels: ["Еда / мате", "Предмет", "Нет обзора"]
-    }
+      expectedLabels: ["Еда / мате", "Предмет", "Нет обзора"],
+    },
   ];
 
   assert.match(ch4AlcoholDrugsModuleSource, /kind:\s*"source-image-cards"/u);
@@ -3366,10 +5008,22 @@ test("Chapter 4 runtime renders protected photos and transferred infographics wi
     const section = sectionById(expectation.sectionId);
     assert.ok(section, `${expectation.sectionId} exists`);
     const asset = localAssetByPath(section, expectation.assetPath);
-    const exceptionPaths = section.implementationEvidence.visibleSpanishStatus.exceptions.map((entry) => entry.assetPath);
-    assert.equal(section.implementationEvidence.visibleSpanishStatus.status, "source_image_exceptions_only");
-    assert.equal(section.implementationEvidence.visibleSpanishStatus.nonSignVisibleSpanishStatus, "source-image-only");
-    assert.equal(exceptionPaths.includes(expectation.assetPath), true, `${expectation.assetPath} has visible-Spanish exception evidence`);
+    const exceptionPaths = section.implementationEvidence.visibleSpanishStatus.exceptions.map(
+      (entry) => entry.assetPath,
+    );
+    assert.equal(
+      section.implementationEvidence.visibleSpanishStatus.status,
+      "source_image_exceptions_only",
+    );
+    assert.equal(
+      section.implementationEvidence.visibleSpanishStatus.nonSignVisibleSpanishStatus,
+      "source-image-only",
+    );
+    assert.equal(
+      exceptionPaths.includes(expectation.assetPath),
+      true,
+      `${expectation.assetPath} has visible-Spanish exception evidence`,
+    );
     assert.equal(asset.assetCategory, expectation.assetCategory);
     assert.equal(asset.assetKind, expectation.assetKind);
     assert.equal(asset.visibleSpanish, true);
@@ -3392,8 +5046,14 @@ test("Chapter 4 runtime renders protected photos and transferred infographics wi
     const section = sectionById(expectation.sectionId);
     assert.ok(section, `${expectation.sectionId} exists`);
     const asset = localAssetByPath(section, expectation.assetPath);
-    const exceptionPaths = section.implementationEvidence.visibleSpanishStatus.exceptions.map((entry) => entry.assetPath);
-    assert.equal(exceptionPaths.includes(expectation.assetPath), false, `${expectation.assetPath} must not use a visible-Spanish source-as-is exception`);
+    const exceptionPaths = section.implementationEvidence.visibleSpanishStatus.exceptions.map(
+      (entry) => entry.assetPath,
+    );
+    assert.equal(
+      exceptionPaths.includes(expectation.assetPath),
+      false,
+      `${expectation.assetPath} must not use a visible-Spanish source-as-is exception`,
+    );
     assert.equal(asset.assetCategory, "source-transferred-infographic");
     assert.equal(asset.assetKind, expectation.assetKind);
     assert.equal(asset.visibleSpanish, false);
@@ -3407,14 +5067,20 @@ test("Chapter 4 runtime renders protected photos and transferred infographics wi
     assert.equal(asset.infographicTransfer.sourceCropSha256, expectation.sourceSha256);
     assert.deepEqual(asset.infographicTransfer.sourceCropDimensions, {
       width: expectation.width,
-      height: expectation.height
+      height: expectation.height,
     });
     assert.equal(asset.infographicTransfer.noApproximateRedraw, true);
     assert.equal(asset.infographicTransfer.broadMaskPlatePatchStatus, "none");
-    assert.equal(asset.infographicTransfer.cleanupMethod, "glyph-letter-level-background-restoration");
+    assert.equal(
+      asset.infographicTransfer.cleanupMethod,
+      "glyph-letter-level-background-restoration",
+    );
     assert.equal(asset.infographicTransfer.russianOverlayStrategy, "selectable-dom");
     assert.equal(asset.infographicTransfer.overlayTextSelectability, "selectable-dom-text");
-    assert.deepEqual(asset.infographicTransfer.russianOverlayLabels.map((label) => label.textRu), expectation.expectedLabels);
+    assert.deepEqual(
+      asset.infographicTransfer.russianOverlayLabels.map((label) => label.textRu),
+      expectation.expectedLabels,
+    );
     for (const label of asset.infographicTransfer.russianOverlayLabels) {
       assert.match(label.textRu, /[А-Яа-яЁё]/u);
       assert.equal(label.xPct + label.widthPct <= 100, true);
@@ -3430,36 +5096,49 @@ test("Chapter 5 runtime renders transferred infographic and protected photo with
   const transferredInfographicExpectation = {
     sectionId: "ch5-equal-society",
     moduleSource: ch5EqualSocietyModuleSource,
-    assetPath: "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch5-equal-society/mobility-context-transferred-infographic.png",
-    sourceAssetPath: "content/validation/manual-guide/ch5-equal-society/page-100-mobility-context-source-crop.jpg",
+    assetPath:
+      "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch5-equal-society/mobility-context-transferred-infographic.png",
+    sourceAssetPath:
+      "content/validation/manual-guide/ch5-equal-society/page-100-mobility-context-source-crop.jpg",
     assetKind: "high-resolution-transferred-source-infographic-mobility-context",
     width: 1220,
     height: 175,
     sha256: "78f0e1d73d8db71e71c4b553ff9b91ece6fbfaeeed052df66f2854d793fb2846",
     sourceSha256: "d4c13162206fbaa15881b98eafc527985717ac1cabc98201c7834d530c719633",
-    expectedLabels: ["общественный транспорт", "работа / учеба", "задачи ухода"]
+    expectedLabels: ["общественный транспорт", "работа / учеба", "задачи ухода"],
   };
   const sourceAsIsPhotoExpectation = {
     sectionId: "ch5-anticipatory-efficient-driving",
     moduleSource: ch5AnticipatoryEfficientDrivingModuleSource,
-    assetPath: "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch5-anticipatory-efficient-driving/driving-culture-photo-source-as-is.jpg",
-    sourceAssetPath: "content/validation/manual-guide/ch5-anticipatory-efficient-driving/page-103-driving-culture-photo-source-crop.jpg",
+    assetPath:
+      "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch5-anticipatory-efficient-driving/driving-culture-photo-source-as-is.jpg",
+    sourceAssetPath:
+      "content/validation/manual-guide/ch5-anticipatory-efficient-driving/page-103-driving-culture-photo-source-crop.jpg",
     assetCategory: "source-as-is-photo",
     assetKind: "high-resolution-original-source-photo-driving-culture-quote",
     width: 1500,
     height: 2200,
-    sha256: "e0d17ff71479ddf0042720439bf4ff6c21ea156a71b561e5a59a4efa9baee4d6"
+    sha256: "e0d17ff71479ddf0042720439bf4ff6c21ea156a71b561e5a59a4efa9baee4d6",
   };
 
   assert.match(ch5EqualSocietyModuleSource, /kind:\s*"source-image-cards"/u);
   assert.match(ch5EqualSocietyModuleSource, /mobility-context-transferred-infographic\.png/u);
-  assert.match(ch5EqualSocietyModuleSource, /russianOverlayLabels[\s\S]*общественный транспорт[\s\S]*работа \/ учеба[\s\S]*задачи ухода/u);
+  assert.match(
+    ch5EqualSocietyModuleSource,
+    /russianOverlayLabels[\s\S]*общественный транспорт[\s\S]*работа \/ учеба[\s\S]*задачи ухода/u,
+  );
   assert.doesNotMatch(ch5EqualSocietyModuleSource, /source-as-is-infographic/u);
-  assert.match(ch5AnticipatoryEfficientDrivingModuleSource, /driving-culture-photo-source-as-is\.jpg/u);
+  assert.match(
+    ch5AnticipatoryEfficientDrivingModuleSource,
+    /driving-culture-photo-source-as-is\.jpg/u,
+  );
   assert.match(ch5AnticipatoryEfficientDrivingModuleSource, /source-image-original-visible-text/u);
 
   const infographicSection = sectionById(transferredInfographicExpectation.sectionId);
-  const infographicAsset = localAssetByPath(infographicSection, transferredInfographicExpectation.assetPath);
+  const infographicAsset = localAssetByPath(
+    infographicSection,
+    transferredInfographicExpectation.assetPath,
+  );
   assert.equal(infographicSection.implementationEvidence.visibleSpanishStatus, "none");
   assert.equal(infographicAsset.assetCategory, "source-transferred-infographic");
   assert.equal(infographicAsset.assetKind, transferredInfographicExpectation.assetKind);
@@ -3470,27 +5149,56 @@ test("Chapter 5 runtime renders transferred infographic and protected photo with
   assert.equal(infographicAsset.sha256, transferredInfographicExpectation.sha256);
   assert.equal(infographicAsset.runtimeDisplaySize.noUpscale, true);
   assert.equal(infographicAsset.infographicTransfer.sourceImageTransfer, true);
-  assert.equal(infographicAsset.infographicTransfer.sourceAssetPath, transferredInfographicExpectation.sourceAssetPath);
-  assert.equal(infographicAsset.infographicTransfer.sourceCropSha256, transferredInfographicExpectation.sourceSha256);
+  assert.equal(
+    infographicAsset.infographicTransfer.sourceAssetPath,
+    transferredInfographicExpectation.sourceAssetPath,
+  );
+  assert.equal(
+    infographicAsset.infographicTransfer.sourceCropSha256,
+    transferredInfographicExpectation.sourceSha256,
+  );
   assert.deepEqual(infographicAsset.infographicTransfer.sourceCropDimensions, {
     width: transferredInfographicExpectation.width,
-    height: transferredInfographicExpectation.height
+    height: transferredInfographicExpectation.height,
   });
   assert.equal(infographicAsset.infographicTransfer.noApproximateRedraw, true);
   assert.equal(infographicAsset.infographicTransfer.broadMaskPlatePatchStatus, "none");
-  assert.equal(infographicAsset.infographicTransfer.cleanupMethod, "glyph-letter-level-background-restoration");
+  assert.equal(
+    infographicAsset.infographicTransfer.cleanupMethod,
+    "glyph-letter-level-background-restoration",
+  );
   assert.equal(infographicAsset.infographicTransfer.russianOverlayStrategy, "selectable-dom");
-  assert.equal(infographicAsset.infographicTransfer.overlayTextSelectability, "selectable-dom-text");
-  assert.deepEqual(infographicAsset.infographicTransfer.russianOverlayLabels.map((label) => label.textRu), transferredInfographicExpectation.expectedLabels);
+  assert.equal(
+    infographicAsset.infographicTransfer.overlayTextSelectability,
+    "selectable-dom-text",
+  );
+  assert.deepEqual(
+    infographicAsset.infographicTransfer.russianOverlayLabels.map((label) => label.textRu),
+    transferredInfographicExpectation.expectedLabels,
+  );
   assert.equal(sha256File(infographicAsset.assetPath), transferredInfographicExpectation.sha256);
-  assert.equal(sha256File(transferredInfographicExpectation.sourceAssetPath), transferredInfographicExpectation.sourceSha256);
-  assert.notEqual(sha256File(infographicAsset.assetPath), sha256File(transferredInfographicExpectation.sourceAssetPath));
+  assert.equal(
+    sha256File(transferredInfographicExpectation.sourceAssetPath),
+    transferredInfographicExpectation.sourceSha256,
+  );
+  assert.notEqual(
+    sha256File(infographicAsset.assetPath),
+    sha256File(transferredInfographicExpectation.sourceAssetPath),
+  );
 
   const photoSection = sectionById(sourceAsIsPhotoExpectation.sectionId);
   const photoAsset = localAssetByPath(photoSection, sourceAsIsPhotoExpectation.assetPath);
-  const exceptionPaths = photoSection.implementationEvidence.visibleSpanishStatus.exceptions.map((entry) => entry.assetPath);
-  assert.equal(photoSection.implementationEvidence.visibleSpanishStatus.status, "source_image_exceptions_only");
-  assert.equal(photoSection.implementationEvidence.visibleSpanishStatus.nonSignVisibleSpanishStatus, "source-image-only");
+  const exceptionPaths = photoSection.implementationEvidence.visibleSpanishStatus.exceptions.map(
+    (entry) => entry.assetPath,
+  );
+  assert.equal(
+    photoSection.implementationEvidence.visibleSpanishStatus.status,
+    "source_image_exceptions_only",
+  );
+  assert.equal(
+    photoSection.implementationEvidence.visibleSpanishStatus.nonSignVisibleSpanishStatus,
+    "source-image-only",
+  );
   assert.equal(exceptionPaths.includes(sourceAsIsPhotoExpectation.assetPath), true);
   assert.equal(photoAsset.assetCategory, sourceAsIsPhotoExpectation.assetCategory);
   assert.equal(photoAsset.assetKind, sourceAsIsPhotoExpectation.assetKind);
@@ -3501,22 +5209,36 @@ test("Chapter 5 runtime renders transferred infographic and protected photo with
   assert.equal(photoAsset.sha256, sourceAsIsPhotoExpectation.sha256);
   assert.equal(photoAsset.runtimeDisplaySize.noUpscale, true);
   assert.equal(photoAsset.sourceIntegrity.sourceAsIs, true);
-  assert.equal(photoAsset.sourceIntegrity.sourceAssetPath, sourceAsIsPhotoExpectation.sourceAssetPath);
+  assert.equal(
+    photoAsset.sourceIntegrity.sourceAssetPath,
+    sourceAsIsPhotoExpectation.sourceAssetPath,
+  );
   assert.equal(photoAsset.sourceIntegrity.noTranslationOrRelabeling, true);
   assert.equal(photoAsset.sourceIntegrity.noRedrawRecolorCleanupRetouchMaskInpaint, true);
   assert.equal(photoAsset.sourceIntegrity.russianExplanationOutsideImage, true);
   assert.equal(sha256File(photoAsset.assetPath), sourceAsIsPhotoExpectation.sha256);
-  assert.equal(sha256File(sourceAsIsPhotoExpectation.sourceAssetPath), sourceAsIsPhotoExpectation.sha256);
+  assert.equal(
+    sha256File(sourceAsIsPhotoExpectation.sourceAssetPath),
+    sourceAsIsPhotoExpectation.sha256,
+  );
 });
 
 test("Chapter 2 document visuals are explicit source-as-is document examples with Russian explanation outside", () => {
   const section = registry.sections.find((entry) => entry.id === "ch2-required-documents");
   const evidenceRecord = section.implementationEvidence;
-  const visualAssets = evidenceRecord.localAssetMetadata.filter((asset) => asset.assetCategory === "source-as-is-document-example");
+  const visualAssets = evidenceRecord.localAssetMetadata.filter(
+    (asset) => asset.assetCategory === "source-as-is-document-example",
+  );
   assert.equal(visualAssets.length, 6);
   assert.equal(evidenceRecord.visibleSpanishStatus.status, "source_image_exceptions_only");
   assert.equal(evidenceRecord.visibleSpanishStatus.exceptions.length, 6);
-  assert.equal(evidenceRecord.localAssetMetadata.filter((asset) => asset.assetCategory === "source-as-is-photo" && asset.assetKind.includes("document-image")).length, 0);
+  assert.equal(
+    evidenceRecord.localAssetMetadata.filter(
+      (asset) =>
+        asset.assetCategory === "source-as-is-photo" && asset.assetKind.includes("document-image"),
+    ).length,
+    0,
+  );
   for (const exception of evidenceRecord.visibleSpanishStatus.exceptions) {
     assert.equal(exception.kind, "source-document-example-original-visible-text");
     assert.equal(exception.visibleSpanishScope, "source-document-example-image-only");
@@ -3534,8 +5256,15 @@ test("Chapter 2 document visuals are explicit source-as-is document examples wit
     assert.equal(asset.runtimeDisplaySize.noUpscale, true);
     assert.ok(asset.width >= asset.runtimeDisplaySize.maxWidthCssPx);
     assert.ok(existsSync(asset.assetPath), `${asset.assetPath} exists`);
-    assert.ok(existsSync(asset.sourceIntegrity.sourceAssetPath), `${asset.sourceIntegrity.sourceAssetPath} exists`);
-    assert.equal(sha256File(asset.assetPath), sha256File(asset.sourceIntegrity.sourceAssetPath), `${asset.assetPath} matches source crop bytes`);
+    assert.ok(
+      existsSync(asset.sourceIntegrity.sourceAssetPath),
+      `${asset.sourceIntegrity.sourceAssetPath} exists`,
+    );
+    assert.equal(
+      sha256File(asset.assetPath),
+      sha256File(asset.sourceIntegrity.sourceAssetPath),
+      `${asset.assetPath} matches source crop bytes`,
+    );
   }
 
   assert.match(manualGuideAppSource, /SourceImageCardsBlockView/);
@@ -3543,7 +5272,7 @@ test("Chapter 2 document visuals are explicit source-as-is document examples wit
   assert.match(appSource, /data-source-image-exception=\{sourceImageException\?\.kind\}/);
   assert.match(
     appSource,
-    /data-russian-overlay-strategy=\{\s*card\.russianOverlayLabels\s*\?\s*"selectable-dom"\s*:\s*undefined\s*\}/
+    /data-russian-overlay-strategy=\{\s*card\.russianOverlayLabels\s*\?\s*"selectable-dom"\s*:\s*undefined\s*\}/,
   );
   assert.match(stylesSource, /\.manual-source-image-card-grid/);
   assert.match(stylesSource, /\.manual-source-image-overlay-label/);
@@ -3593,14 +5322,14 @@ test("Manual guide source image cards declare reusable full-width or compact dis
     "distraction-panels-source-card",
     "attention-photo-source-card",
     "driving-culture-photo-source-card",
-    "mobility-context-transferred-card"
+    "mobility-context-transferred-card",
   ]);
   const expectedCompactCardIds = new Set([
     "mirror-orientation-source-card",
     "dni-source-card",
     "license-source-card",
     "beginner-sign-source-card",
-    "rva-source-card"
+    "rva-source-card",
   ]);
   const expectedMinWidthByCardId = new Map([
     ["app1-tire-manufacturing-tread-life-source-card", 760],
@@ -3627,18 +5356,36 @@ test("Manual guide source image cards declare reusable full-width or compact dis
     ["app4-traffic-lights-page-199-source-card", 757],
     ["app4-traffic-lights-page-200-source-card", 757],
     ["app4-warning-page-187-source-card", 672],
-    ["app4-warning-page-188-source-card", 705]
+    ["app4-warning-page-188-source-card", 705],
   ]);
 
   assert.equal(cards.length, 46);
-  assert.equal(cards.filter((card) => card.displayMode === "full-width").length, expectedFullWidthCardIds.size);
-  assert.equal(cards.filter((card) => card.displayMode === "compact").length, expectedCompactCardIds.size);
-  assert.deepEqual(
-    cards.filter((card) => !["full-width", "compact"].includes(card.displayMode)).map((card) => card.cardId),
-    []
+  assert.equal(
+    cards.filter((card) => card.displayMode === "full-width").length,
+    expectedFullWidthCardIds.size,
   );
-  assert.deepEqual(cards.filter((card) => card.displayMode === "full-width" && !expectedFullWidthCardIds.has(card.cardId)), []);
-  assert.deepEqual(cards.filter((card) => card.displayMode === "compact" && !expectedCompactCardIds.has(card.cardId)), []);
+  assert.equal(
+    cards.filter((card) => card.displayMode === "compact").length,
+    expectedCompactCardIds.size,
+  );
+  assert.deepEqual(
+    cards
+      .filter((card) => !["full-width", "compact"].includes(card.displayMode))
+      .map((card) => card.cardId),
+    [],
+  );
+  assert.deepEqual(
+    cards.filter(
+      (card) => card.displayMode === "full-width" && !expectedFullWidthCardIds.has(card.cardId),
+    ),
+    [],
+  );
+  assert.deepEqual(
+    cards.filter(
+      (card) => card.displayMode === "compact" && !expectedCompactCardIds.has(card.cardId),
+    ),
+    [],
+  );
 
   for (const cardId of expectedFullWidthCardIds) {
     const card = byId.get(cardId);
@@ -3648,12 +5395,29 @@ test("Manual guide source image cards declare reusable full-width or compact dis
     const section = sectionById(card.sectionId);
     const asset = localAssetByPath(section, card.assetPath);
     assert.equal(asset.runtimeDisplaySize.noUpscale, true, `${cardId} keeps no-upscale evidence`);
-    assert.equal(asset.runtimeDisplaySize.maxWidthCssPx, card.maxDisplayWidthPx, `${cardId} evidence matches display metadata`);
-    assert.ok(asset.width >= card.maxDisplayWidthPx, `${cardId} max display width does not exceed natural/source asset width`);
+    assert.equal(
+      asset.runtimeDisplaySize.maxWidthCssPx,
+      card.maxDisplayWidthPx,
+      `${cardId} evidence matches display metadata`,
+    );
+    assert.ok(
+      asset.width >= card.maxDisplayWidthPx,
+      `${cardId} max display width does not exceed natural/source asset width`,
+    );
     if (card.minDisplayWidthPx !== undefined) {
-      assert.equal(card.minDisplayWidthPx, expectedMinWidthByCardId.get(cardId), `${cardId} records the expected readable minimum width`);
-      assert.ok(card.minDisplayWidthPx <= card.maxDisplayWidthPx, `${cardId} readable minimum width respects max display width`);
-      assert.ok(card.minDisplayWidthPx <= asset.width, `${cardId} readable minimum width does not exceed natural/source asset width`);
+      assert.equal(
+        card.minDisplayWidthPx,
+        expectedMinWidthByCardId.get(cardId),
+        `${cardId} records the expected readable minimum width`,
+      );
+      assert.ok(
+        card.minDisplayWidthPx <= card.maxDisplayWidthPx,
+        `${cardId} readable minimum width respects max display width`,
+      );
+      assert.ok(
+        card.minDisplayWidthPx <= asset.width,
+        `${cardId} readable minimum width does not exceed natural/source asset width`,
+      );
     }
   }
 
@@ -3661,14 +5425,24 @@ test("Manual guide source image cards declare reusable full-width or compact dis
     const card = byId.get(cardId);
     assert.ok(card, `${cardId} exists`);
     assert.equal(card.displayMode, "compact", `${cardId} remains compact`);
-    assert.equal(card.maxDisplayWidthPx, undefined, `${cardId} does not opt into full-width no-upscale sizing`);
-    assert.equal(card.minDisplayWidthPx, undefined, `${cardId} does not opt into panoramic minimum sizing`);
+    assert.equal(
+      card.maxDisplayWidthPx,
+      undefined,
+      `${cardId} does not opt into full-width no-upscale sizing`,
+    );
+    assert.equal(
+      card.minDisplayWidthPx,
+      undefined,
+      `${cardId} does not opt into panoramic minimum sizing`,
+    );
   }
 
   assert.deepEqual(
-    cards.filter((card) => card.minDisplayWidthPx !== undefined).map((card) => [card.cardId, card.minDisplayWidthPx]),
+    cards
+      .filter((card) => card.minDisplayWidthPx !== undefined)
+      .map((card) => [card.cardId, card.minDisplayWidthPx]),
     [...expectedMinWidthByCardId],
-    "only explicit panoramic or source-limited text-readability source cards opt into visual-only scroll minimums"
+    "only explicit panoramic or source-limited text-readability source cards opt into visual-only scroll minimums",
   );
 
   const appendixCards = cards
@@ -3676,19 +5450,40 @@ test("Manual guide source image cards declare reusable full-width or compact dis
       (card) =>
         card.cardId.startsWith("app4-") &&
         card.cardId !== "app4-regulatory-no-avanzar-source-card" &&
-        !anexoRegulatoryPanelCardIds.has(card.cardId)
+        !anexoRegulatoryPanelCardIds.has(card.cardId),
     )
     .sort((a, b) => a.sourcePage - b.sourcePage || a.cardId.localeCompare(b.cardId));
-  assert.deepEqual(appendixCards.map((card) => card.sourcePage), sourcePagesForRange(185, 200));
-  assert.equal(appendixCards.every((card) => card.displayMode === "full-width"), true);
-  assert.equal(appendixCards.every((card) => card.hasOfficialSignException || card.hasSourceImageException), true);
+  assert.deepEqual(
+    appendixCards.map((card) => card.sourcePage),
+    sourcePagesForRange(185, 200),
+  );
+  assert.equal(
+    appendixCards.every((card) => card.displayMode === "full-width"),
+    true,
+  );
+  assert.equal(
+    appendixCards.every((card) => card.hasOfficialSignException || card.hasSourceImageException),
+    true,
+  );
   for (const card of appendixCards) {
     const section = sectionById(card.sectionId);
     const asset = localAssetByPath(section, card.assetPath);
     const cropRecord = visualCropRecordByCardId(card.cardId);
-    assert.equal(card.maxDisplayWidthPx, asset.width, `${card.cardId} display cap matches corrected crop width`);
-    assert.equal(card.maxDisplayWidthPx, cropRecord.outputDimensions.width, `${card.cardId} display cap matches crop evidence`);
-    assert.equal(card.minDisplayWidthPx, card.maxDisplayWidthPx, `${card.cardId} keeps source-limited embedded text at natural crop width on narrow screens`);
+    assert.equal(
+      card.maxDisplayWidthPx,
+      asset.width,
+      `${card.cardId} display cap matches corrected crop width`,
+    );
+    assert.equal(
+      card.maxDisplayWidthPx,
+      cropRecord.outputDimensions.width,
+      `${card.cardId} display cap matches crop evidence`,
+    );
+    assert.equal(
+      card.minDisplayWidthPx,
+      card.maxDisplayWidthPx,
+      `${card.cardId} keeps source-limited embedded text at natural crop width on narrow screens`,
+    );
     assert.notDeepEqual(card.sourceRegion, { x: 0, y: 0, width: 2976, height: 4209 });
     assert.match(card.assetPath, /-source-crop-as-is\.jpg$/u);
   }
@@ -3704,7 +5499,12 @@ test("Manual guide source image cards declare reusable full-width or compact dis
     assert.equal(card.maxDisplayWidthPx, panel.dimensions.width);
     assert.equal(card.minDisplayWidthPx, panel.dimensions.width);
     assert.equal(card.assetPath, panel.assetPath);
-    assert.deepEqual(card.sourceRegion, { x: 0, y: 0, width: panel.dimensions.width, height: panel.dimensions.height });
+    assert.deepEqual(card.sourceRegion, {
+      x: 0,
+      y: 0,
+      width: panel.dimensions.width,
+      height: panel.dimensions.height,
+    });
     assert.equal(card.hasOfficialSignException, true);
     assert.equal(sha256File(panel.assetPath), panel.sha256);
     assert.equal(sha256File(panel.sourceAssetPath), panel.sha256);
@@ -3715,7 +5515,7 @@ test("Manual guide source image cards declare reusable full-width or compact dis
   assert.equal(blindSpotCard.minDisplayWidthPx, 546);
   assert.equal(
     blindSpotCard.assetPath,
-    "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app1-safety-elements/blind-spot-source-as-is.jpg"
+    "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app1-safety-elements/blind-spot-source-as-is.jpg",
   );
   assert.equal(blindSpotCard.sourcePage, 108);
   assert.deepEqual(blindSpotCard.sourceRegion, { x: 838, y: 1100, width: 1525, height: 1100 });
@@ -3752,11 +5552,26 @@ test("Manual guide source image cards declare reusable full-width or compact dis
   assert.match(appSource, /data-min-display-width-px=\{card\.minDisplayWidthPx\}/u);
   assert.match(appSource, /--manual-source-image-max-width/u);
   assert.match(appSource, /--manual-source-image-min-width/u);
-  assert.match(stylesSource, /\.manual-source-image-card\[data-display-mode="full-width"\][\s\S]*grid-column:\s*1 \/ -1/u);
-  assert.match(stylesSource, /\.manual-source-image-card\[data-display-mode="full-width"\] figure[\s\S]*--manual-source-image-max-width/u);
-  assert.match(stylesSource, /\.manual-source-image-card\[data-display-mode="full-width"\]\[data-min-display-width-px\] figure[\s\S]*overflow-x:\s*auto/u);
-  assert.match(stylesSource, /\.manual-source-image-card\[data-display-mode="full-width"\]\[data-min-display-width-px\] img[\s\S]*--manual-source-image-min-width/u);
-  assert.match(stylesSource, /\.manual-source-image-card\[data-display-mode="full-width"\] img[\s\S]*max-width:\s*none/u);
+  assert.match(
+    stylesSource,
+    /\.manual-source-image-card\[data-display-mode="full-width"\][\s\S]*grid-column:\s*1 \/ -1/u,
+  );
+  assert.match(
+    stylesSource,
+    /\.manual-source-image-card\[data-display-mode="full-width"\] figure[\s\S]*--manual-source-image-max-width/u,
+  );
+  assert.match(
+    stylesSource,
+    /\.manual-source-image-card\[data-display-mode="full-width"\]\[data-min-display-width-px\] figure[\s\S]*overflow-x:\s*auto/u,
+  );
+  assert.match(
+    stylesSource,
+    /\.manual-source-image-card\[data-display-mode="full-width"\]\[data-min-display-width-px\] img[\s\S]*--manual-source-image-min-width/u,
+  );
+  assert.match(
+    stylesSource,
+    /\.manual-source-image-card\[data-display-mode="full-width"\] img[\s\S]*max-width:\s*none/u,
+  );
   assert.doesNotMatch(stylesSource, /\.manual-source-image-card\[data-card-id=/u);
 });
 
@@ -3770,9 +5585,13 @@ test("Manual guide schema prepares section-local implementation and reusable sty
     "implementedManualGuideSections",
     "manualGuideChapter12SectionSummary",
     "manualGuideDocumentStyleTokens",
-    "manualGuideVisualFidelityEvidenceFormat"
+    "manualGuideVisualFidelityEvidenceFormat",
   ]) {
-    assert.match(manualGuideSource, new RegExp(requiredSymbol), `manual guide source exposes ${requiredSymbol}`);
+    assert.match(
+      manualGuideSource,
+      new RegExp(requiredSymbol),
+      `manual guide source exposes ${requiredSymbol}`,
+    );
   }
 
   for (const requiredToken of [
@@ -3790,9 +5609,12 @@ test("Manual guide schema prepares section-local implementation and reusable sty
     "manual-shared-trip-visuals",
     "manual-legal-detail",
     "manual-glossary",
-    "introductionDocumentStyleGuide.tokens"
+    "introductionDocumentStyleGuide.tokens",
   ]) {
-    assert.ok(manualGuideSource.includes(requiredToken), `manual guide style token registry includes ${requiredToken}`);
+    assert.ok(
+      manualGuideSource.includes(requiredToken),
+      `manual guide style token registry includes ${requiredToken}`,
+    );
   }
 
   assert.match(manualGuideSource, /import \{ frontPresentationSection \}/);
@@ -3847,50 +5669,101 @@ test("Manual guide schema prepares section-local implementation and reusable sty
   assert.match(manualGuideSource, /import \{ app4SignsTrafficLightsSection \}/);
   assert.match(
     manualGuideSource,
-    /implementedManualGuideSections:\s*ManualGuideSectionContent\[\]\s*=\s*\[\s*frontPresentationSection,\s*frontCategoriesSection,\s*frontGlossarySection,\s*ch1CitiesForPeopleSection,\s*ch1SustainableMobilitySection,\s*ch1PedestrianPrioritySection,\s*ch1BicycleSection,\s*ch1PublicTransportSystemSection,\s*ch1SharedTripSection,\s*ch2LegalResponsibilitySection,\s*ch2RequiredDocumentsSection,\s*ch2IncidentObligationsSection,\s*ch2ScoringSection,\s*ch3PriorityOfRulesSection,\s*ch3RightOfWaySection,\s*ch3LightsSection,\s*ch3SpeedSection,\s*ch3TurnsSection,\s*ch3OvertakingSection,\s*ch3HighwaysSection,\s*ch3AdverseConditionsSection,\s*ch3StoppingParkingSection,\s*ch4AlcoholDrugsSection,\s*ch4SleepFatigueSection,\s*ch4StressSection,\s*ch4DistractionsSection,\s*ch5AttitudeTypesSection,\s*ch5EqualSocietySection,\s*ch5GenderViolencePreventionSection,\s*ch5AnticipatoryEfficientDrivingSection,\s*app1SafetyElementsSection,\s*app1OtherRequiredSafetyElementsSection,\s*app1RecommendedSafetyElementsSection,\s*app2SocialResponsibilitySection,\s*app2SafetyElementsSection,\s*app2DrivingFactorsSection,\s*app2SafeDrivingSection,\s*app2HighwaysHospitalsSection,\s*app3CargoDriverProfileSection,\s*app3SocialResponsibilitySection,\s*app3DrivingFactorsSection,\s*app3SafeDrivingSection,\s*app3SafetyElementsSection,\s*app3HighwaysSection,\s*app4SignsRegulatorySection,\s*app4SignsWarningSection,\s*app4SignsInformationalSection,\s*app4SignsTemporarySection,\s*app4SignsHorizontalSection,\s*app4SignsTrafficLightsSection\s*\]/
+    /implementedManualGuideSections:\s*ManualGuideSectionContent\[\]\s*=\s*\[\s*frontPresentationSection,\s*frontCategoriesSection,\s*frontGlossarySection,\s*ch1CitiesForPeopleSection,\s*ch1SustainableMobilitySection,\s*ch1PedestrianPrioritySection,\s*ch1BicycleSection,\s*ch1PublicTransportSystemSection,\s*ch1SharedTripSection,\s*ch2LegalResponsibilitySection,\s*ch2RequiredDocumentsSection,\s*ch2IncidentObligationsSection,\s*ch2ScoringSection,\s*ch3PriorityOfRulesSection,\s*ch3RightOfWaySection,\s*ch3LightsSection,\s*ch3SpeedSection,\s*ch3TurnsSection,\s*ch3OvertakingSection,\s*ch3HighwaysSection,\s*ch3AdverseConditionsSection,\s*ch3StoppingParkingSection,\s*ch4AlcoholDrugsSection,\s*ch4SleepFatigueSection,\s*ch4StressSection,\s*ch4DistractionsSection,\s*ch5AttitudeTypesSection,\s*ch5EqualSocietySection,\s*ch5GenderViolencePreventionSection,\s*ch5AnticipatoryEfficientDrivingSection,\s*app1SafetyElementsSection,\s*app1OtherRequiredSafetyElementsSection,\s*app1RecommendedSafetyElementsSection,\s*app2SocialResponsibilitySection,\s*app2SafetyElementsSection,\s*app2DrivingFactorsSection,\s*app2SafeDrivingSection,\s*app2HighwaysHospitalsSection,\s*app3CargoDriverProfileSection,\s*app3SocialResponsibilitySection,\s*app3DrivingFactorsSection,\s*app3SafeDrivingSection,\s*app3SafetyElementsSection,\s*app3HighwaysSection,\s*app4SignsRegulatorySection,\s*app4SignsWarningSection,\s*app4SignsInformationalSection,\s*app4SignsTemporarySection,\s*app4SignsHorizontalSection,\s*app4SignsTrafficLightsSection\s*\]/,
   );
   assert.match(manualGuideSource, /manualGuideSectionContentById = new Map/);
   assert.match(manualGuideSource, /kind:\s*"table"/);
   assert.match(appSource, /manual-guide-table-scroll/);
   assert.match(stylesSource, /\.manual-guide-table-block/);
-  assert.doesNotMatch(manualGuideSource, /chapter12ManualGuidePages|manualGuidePageByHash|manualGuidePageContentById|implementedManualGuidePages/);
+  assert.doesNotMatch(
+    manualGuideSource,
+    /chapter12ManualGuidePages|manualGuidePageByHash|manualGuidePageContentById|implementedManualGuidePages/,
+  );
 });
 
 test("Manual guide UI renders pending section entries without opening fake content", () => {
   assert.match(manualGuideAppSource, /function ManualGuideSectionContentView/);
   assert.match(manualGuideAppSource, /manualGuideSectionIsAvailable/);
   assert.match(manualGuideAppSource, /function manualGuideActiveGroupId/);
-  assert.match(manualGuideAppSource, /const activeGroupId = manualGuideActiveGroupId\(selectedEntry, selectedManualSection\)/);
-  const sectionGroupPrecedenceIndex = manualGuideAppSource.indexOf("child.section?.id === selectedManualSection.id");
-  const introductionGroupFallbackIndex = manualGuideAppSource.indexOf("child.introductionRouteId === selectedEntry.id");
-  assert.notEqual(sectionGroupPrecedenceIndex, -1, "active group lookup includes selected manual section");
-  assert.notEqual(introductionGroupFallbackIndex, -1, "active group lookup includes introduction fallback");
-  assert.ok(sectionGroupPrecedenceIndex < introductionGroupFallbackIndex, "selected manual section takes precedence over stale selected introduction entry");
-  const renderManualSectionButtonStart = manualGuideAppSource.indexOf("function renderManualSectionButton");
+  assert.match(
+    manualGuideAppSource,
+    /const activeGroupId = manualGuideActiveGroupId\(selectedEntry, selectedManualSection\)/,
+  );
+  const sectionGroupPrecedenceIndex = manualGuideAppSource.indexOf(
+    "child.section?.id === selectedManualSection.id",
+  );
+  const introductionGroupFallbackIndex = manualGuideAppSource.indexOf(
+    "child.introductionRouteId === selectedEntry.id",
+  );
+  assert.notEqual(
+    sectionGroupPrecedenceIndex,
+    -1,
+    "active group lookup includes selected manual section",
+  );
+  assert.notEqual(
+    introductionGroupFallbackIndex,
+    -1,
+    "active group lookup includes introduction fallback",
+  );
+  assert.ok(
+    sectionGroupPrecedenceIndex < introductionGroupFallbackIndex,
+    "selected manual section takes precedence over stale selected introduction entry",
+  );
+  const renderManualSectionButtonStart = manualGuideAppSource.indexOf(
+    "function renderManualSectionButton",
+  );
   const renderManualSectionButtonEnd = manualGuideAppSource.indexOf(
     'className="introduction-reader"',
-    renderManualSectionButtonStart
+    renderManualSectionButtonStart,
   );
   assert.notEqual(renderManualSectionButtonStart, -1, "manual section button renderer is present");
-  assert.notEqual(renderManualSectionButtonEnd, -1, "manual section button renderer boundary is present");
-  const renderManualSectionButtonSource = manualGuideAppSource.slice(renderManualSectionButtonStart, renderManualSectionButtonEnd);
+  assert.notEqual(
+    renderManualSectionButtonEnd,
+    -1,
+    "manual section button renderer boundary is present",
+  );
+  const renderManualSectionButtonSource = manualGuideAppSource.slice(
+    renderManualSectionButtonStart,
+    renderManualSectionButtonEnd,
+  );
   assert.match(renderManualSectionButtonSource, /disabled=\{!isAvailable\}/);
   assert.match(renderManualSectionButtonSource, /const pendingSectionStatusLabel = "ожидает PR"/);
   assert.match(
     renderManualSectionButtonSource,
     /aria-label=\{\s*isAvailable\s*\?\s*section\.labelRu\s*:\s*`\$\{section\.labelRu\}: \$\{pendingSectionStatusLabel\}`\s*\}/,
   );
-  assert.match(renderManualSectionButtonSource, /\{!isAvailable && <small>\{pendingSectionStatusLabel\}<\/small>\}/);
+  assert.match(
+    renderManualSectionButtonSource,
+    /\{!isAvailable && <small>\{pendingSectionStatusLabel\}<\/small>\}/,
+  );
   assert.doesNotMatch(renderManualSectionButtonSource, /готово/);
   assert.doesNotMatch(renderManualSectionButtonSource, /sectionStatusLabel/);
-  assert.match(renderManualSectionButtonSource, /data-testid=\{`manual-guide-pending-section-\$\{section\.id\}`\}/);
-  assert.match(renderManualSectionButtonSource, /data-source-region-metadata-status=\{section\.sourceRegionMetadataStatus\}/);
-  assert.match(renderManualSectionButtonSource, /data-visual-evidence-status=\{section\.visualEvidenceStatus\}/);
-  assert.doesNotMatch(manualGuideAppSource, /manual-guide-pending-manual-page-0\d{2}|manualGuidePage|ManualGuidePage/);
+  assert.match(
+    renderManualSectionButtonSource,
+    /data-testid=\{`manual-guide-pending-section-\$\{section\.id\}`\}/,
+  );
+  assert.match(
+    renderManualSectionButtonSource,
+    /data-source-region-metadata-status=\{section\.sourceRegionMetadataStatus\}/,
+  );
+  assert.match(
+    renderManualSectionButtonSource,
+    /data-visual-evidence-status=\{section\.visualEvidenceStatus\}/,
+  );
+  assert.doesNotMatch(
+    manualGuideAppSource,
+    /manual-guide-pending-manual-page-0\d{2}|manualGuidePage|ManualGuidePage/,
+  );
   assert.doesNotMatch(manualGuideAppSource, /#manual-page-0\d{2}|src\/data\/manual-pages\//);
   assert.doesNotMatch(stylesSource, /\.manual-guide-pages/);
-  assert.doesNotMatch(manualGuideAppSource, /page-02[1-9]\.jpg|page-03\d\.jpg|page-04\d\.jpg|page-05[0-6]\.jpg/);
-  assert.doesNotMatch(manualGuideAppSource, /placeholder body|coming soon article|fake content|lorem/iu);
+  assert.doesNotMatch(
+    manualGuideAppSource,
+    /page-02[1-9]\.jpg|page-03\d\.jpg|page-04\d\.jpg|page-05[0-6]\.jpg/,
+  );
+  assert.doesNotMatch(
+    manualGuideAppSource,
+    /placeholder body|coming soon article|fake content|lorem/iu,
+  );
 });
 
 test("ch1 cities section content covers source page 22 and no unrelated section content", () => {
@@ -3900,7 +5773,10 @@ test("ch1 cities section content covers source page 22 and no unrelated section 
   assert.equal(section.sourceRegionMetadataStatus, "recorded");
   assert.equal(section.visualEvidenceStatus, "recorded");
   assert.equal(section.implementationEvidence.checkerResult, "pass");
-  assert.equal(existsSync(section.implementationEvidence.sourceRegionMetadata[0].sourceAssetPath), true);
+  assert.equal(
+    existsSync(section.implementationEvidence.sourceRegionMetadata[0].sourceAssetPath),
+    true,
+  );
   assert.equal(existsSync(section.implementationEvidence.desktopScreenshot), true);
   assert.equal(existsSync(section.implementationEvidence.mobileScreenshot), true);
 
@@ -3918,9 +5794,12 @@ test("ch1 cities section content covers source page 22 and no unrelated section 
     "Чем больше моторизованных транспортных средств",
     "больше девяти миллионов поездок в день",
     "общим пространством здорового сосуществования",
-    "поддерживают устойчивую мобильность"
+    "поддерживают устойчивую мобильность",
   ]) {
-    assert.ok(ch1CitiesModuleSource.includes(requiredText), `missing page 22 learner text: ${requiredText}`);
+    assert.ok(
+      ch1CitiesModuleSource.includes(requiredText),
+      `missing page 22 learner text: ${requiredText}`,
+    );
   }
 
   assert.match(ch1CitiesModuleSource, /kind:\s*"principle-pair"/);
@@ -3938,7 +5817,7 @@ test("ch1 cities section content covers source page 22 and no unrelated section 
     "motorized-crash-likelihood",
     "nine-million-trips",
     "streets-as-shared-space",
-    "connectivity-sustainable-mobility"
+    "connectivity-sustainable-mobility",
   ];
   let previousBlockIndex = -1;
   for (const blockId of orderedBlockIds) {
@@ -3946,8 +5825,14 @@ test("ch1 cities section content covers source page 22 and no unrelated section 
     assert.ok(blockIndex > previousBlockIndex, `${blockId} follows source page 22 order`);
     previousBlockIndex = blockIndex;
   }
-  assert.doesNotMatch(ch1CitiesModuleSource, /Что такое устойчивая мобильность|Пешеходный приоритет|Велосипед|Система общественного транспорта|Совместная поездка/u);
-  assert.doesNotMatch(ch1CitiesModuleSource, /page-021|page-022\.jpg|manual-page-021|#manual-page/u);
+  assert.doesNotMatch(
+    ch1CitiesModuleSource,
+    /Что такое устойчивая мобильность|Пешеходный приоритет|Велосипед|Система общественного транспорта|Совместная поездка/u,
+  );
+  assert.doesNotMatch(
+    ch1CitiesModuleSource,
+    /page-021|page-022\.jpg|manual-page-021|#manual-page/u,
+  );
 });
 
 test("ch1 sustainable mobility section covers source page 23 infographics and no unrelated section content", () => {
@@ -3961,24 +5846,50 @@ test("ch1 sustainable mobility section covers source page 23 infographics and no
   assert.equal(existsSync(section.implementationEvidence.desktopScreenshot), true);
   assert.equal(existsSync(section.implementationEvidence.mobileScreenshot), true);
   for (const sourceRegion of section.implementationEvidence.sourceRegionMetadata) {
-    assert.equal(existsSync(sourceRegion.sourceAssetPath), true, `${sourceRegion.sourceAssetPath} exists`);
+    assert.equal(
+      existsSync(sourceRegion.sourceAssetPath),
+      true,
+      `${sourceRegion.sourceAssetPath} exists`,
+    );
   }
   for (const asset of section.implementationEvidence.localAssetMetadata) {
     assert.equal(existsSync(asset.assetPath), true, `${asset.assetPath} exists`);
   }
-  const exceptionPaths = section.implementationEvidence.visibleSpanishStatus.exceptions.map((entry) => entry.assetPath);
-  assert.equal(section.implementationEvidence.visibleSpanishStatus.status, "source_image_exceptions_only");
-  assert.equal(section.implementationEvidence.visibleSpanishStatus.nonSignVisibleSpanishStatus, "source-image-only");
+  const exceptionPaths = section.implementationEvidence.visibleSpanishStatus.exceptions.map(
+    (entry) => entry.assetPath,
+  );
+  assert.equal(
+    section.implementationEvidence.visibleSpanishStatus.status,
+    "source_image_exceptions_only",
+  );
+  assert.equal(
+    section.implementationEvidence.visibleSpanishStatus.nonSignVisibleSpanishStatus,
+    "source-image-only",
+  );
 
-  const spaceAsset = section.implementationEvidence.localAssetMetadata.find((asset) => asset.assetKind === "high-resolution-original-source-50-person-space-comparison-row");
-  const vulnerabilityAsset = section.implementationEvidence.localAssetMetadata.find((asset) => asset.assetKind === "source-derived-nontext-vulnerability-pictogram-row");
+  const spaceAsset = section.implementationEvidence.localAssetMetadata.find(
+    (asset) => asset.assetKind === "high-resolution-original-source-50-person-space-comparison-row",
+  );
+  const vulnerabilityAsset = section.implementationEvidence.localAssetMetadata.find(
+    (asset) => asset.assetKind === "source-derived-nontext-vulnerability-pictogram-row",
+  );
   assert.ok(spaceAsset, "space comparison runtime crop metadata exists");
   assert.ok(vulnerabilityAsset, "vulnerability runtime crop metadata exists");
-  assert.equal(spaceAsset.assetPath, "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-sustainable-mobility/space-comparison-50-people-source.jpg");
-  assert.equal(exceptionPaths.includes(spaceAsset.assetPath), true, "space comparison records visible-Spanish source-image exception");
+  assert.equal(
+    spaceAsset.assetPath,
+    "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-sustainable-mobility/space-comparison-50-people-source.jpg",
+  );
+  assert.equal(
+    exceptionPaths.includes(spaceAsset.assetPath),
+    true,
+    "space comparison records visible-Spanish source-image exception",
+  );
   assert.equal(spaceAsset.width, 585);
   assert.equal(spaceAsset.height, 125);
-  assert.equal(spaceAsset.sha256, "72598aaf807780e1745a1ce3fc5ab0f307bd2703b23f53ecbf499457cf3eba6e");
+  assert.equal(
+    spaceAsset.sha256,
+    "72598aaf807780e1745a1ce3fc5ab0f307bd2703b23f53ecbf499457cf3eba6e",
+  );
   assert.equal(spaceAsset.containsText, true);
   assert.equal(spaceAsset.visibleSpanish, true);
   assert.equal(spaceAsset.sourceImageException.kind, "source-image-original-visible-text");
@@ -3987,16 +5898,41 @@ test("ch1 sustainable mobility section covers source page 23 infographics and no
   assert.equal(spaceAsset.sourceImageException.russianExplanationOutsideImage, true);
   assert.equal(spaceAsset.runtimeDisplaySize.maxWidthCssPx, 585);
   assert.equal(spaceAsset.runtimeDisplaySize.noUpscale, true);
-  assert.equal(spaceAsset.sourceIntegrity.sourceAssetPath, "content/validation/manual-guide/ch1-sustainable-mobility/page-023-space-comparison-50-people-source-crop.jpg");
-  assert.equal(sha256File(spaceAsset.assetPath), spaceAsset.sha256, "space comparison crop bytes match the recorded 50-person row hash");
-  assert.equal(sha256File(spaceAsset.sourceIntegrity.sourceAssetPath), spaceAsset.sha256, "space comparison runtime image matches source crop bytes");
+  assert.equal(
+    spaceAsset.sourceIntegrity.sourceAssetPath,
+    "content/validation/manual-guide/ch1-sustainable-mobility/page-023-space-comparison-50-people-source-crop.jpg",
+  );
+  assert.equal(
+    sha256File(spaceAsset.assetPath),
+    spaceAsset.sha256,
+    "space comparison crop bytes match the recorded 50-person row hash",
+  );
+  assert.equal(
+    sha256File(spaceAsset.sourceIntegrity.sourceAssetPath),
+    spaceAsset.sha256,
+    "space comparison runtime image matches source crop bytes",
+  );
   assert.equal(vulnerabilityAsset.visibleSpanish, false);
-  assert.equal(vulnerabilityAsset.assetPath, "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-sustainable-mobility/vulnerability-icons-source.jpg");
+  assert.equal(
+    vulnerabilityAsset.assetPath,
+    "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-sustainable-mobility/vulnerability-icons-source.jpg",
+  );
   assert.equal(vulnerabilityAsset.width, 590);
   assert.equal(vulnerabilityAsset.height, 115);
-  assert.equal(vulnerabilityAsset.sha256, "016d48984bc5b463de8539e63f7608b0b6d227997d3aca84ee17da2f3edb91c5");
-  assert.equal(sha256File(vulnerabilityAsset.assetPath), vulnerabilityAsset.sha256, "vulnerability strip bytes match its recorded hash");
-  assert.notEqual(spaceAsset.sha256, vulnerabilityAsset.sha256, "space comparison must not reuse the vulnerability strip asset");
+  assert.equal(
+    vulnerabilityAsset.sha256,
+    "016d48984bc5b463de8539e63f7608b0b6d227997d3aca84ee17da2f3edb91c5",
+  );
+  assert.equal(
+    sha256File(vulnerabilityAsset.assetPath),
+    vulnerabilityAsset.sha256,
+    "vulnerability strip bytes match its recorded hash",
+  );
+  assert.notEqual(
+    spaceAsset.sha256,
+    vulnerabilityAsset.sha256,
+    "space comparison must not reuse the vulnerability strip asset",
+  );
 
   for (const requiredText of [
     "Что такое устойчивая мобильность?",
@@ -4025,26 +5961,46 @@ test("ch1 sustainable mobility section covers source page 23 infographics and no
     "Пешеходы",
     "Велосипедисты",
     "Такси / автомобиль",
-    "Грузовик"
+    "Грузовик",
   ]) {
-    assert.ok(ch1SustainableModuleSource.includes(requiredText), `missing page 23 learner text: ${requiredText}`);
+    assert.ok(
+      ch1SustainableModuleSource.includes(requiredText),
+      `missing page 23 learner text: ${requiredText}`,
+    );
   }
 
   assert.match(ch1SustainableModuleSource, /kind:\s*"mobility-context"/);
   assert.match(ch1SustainableModuleSource, /kind:\s*"vulnerability-ranking"/);
   assert.match(appSource, /function MobilityContextBlockView/);
-  assert.match(appSource, /data-source-image-exception=\{block\.space\.sourceImageException\?\.kind\}/);
+  assert.match(
+    appSource,
+    /data-source-image-exception=\{block\.space\.sourceImageException\?\.kind\}/,
+  );
   assert.match(appSource, /function VulnerabilityRankingBlockView/);
   assert.match(stylesSource, /\.manual-mobility-context[\s\S]*?user-select:\s*text/);
   assert.match(stylesSource, /\.manual-source-row-scroll[\s\S]*?overflow-x:\s*auto/);
-  assert.match(stylesSource, /\.manual-space-labels[\s\S]*?grid-template-columns:\s*1fr 1\.15fr 1\.15fr 2\.35fr/u);
+  assert.match(
+    stylesSource,
+    /\.manual-space-labels[\s\S]*?grid-template-columns:\s*1fr 1\.15fr 1\.15fr 2\.35fr/u,
+  );
   assert.match(stylesSource, /\.manual-space-mobile-pairs[\s\S]*?display:\s*none/u);
   assert.match(ch1SustainableModuleSource, /space-comparison-50-people-source\.jpg/);
   assert.doesNotMatch(ch1SustainableModuleSource, /space-comparison-icons-source\.jpg/);
   assert.match(ch1SustainableModuleSource, /vulnerability-icons-source\.jpg/);
-  assert.doesNotMatch(ch1SustainableModuleSource, /content\/assets\/manuals\/gcba-manual-vehiculo-4-ruedas-2023\/pages\/page-023\.jpg/u);
-  for (const outOfScopeText of ["Пешеходный приоритет", "Система общественного транспорта", "Совместная поездка"]) {
-    assert.equal(ch1SustainableModuleSource.includes(outOfScopeText), false, `${outOfScopeText} stays out of the page 23 section slice`);
+  assert.doesNotMatch(
+    ch1SustainableModuleSource,
+    /content\/assets\/manuals\/gcba-manual-vehiculo-4-ruedas-2023\/pages\/page-023\.jpg/u,
+  );
+  for (const outOfScopeText of [
+    "Пешеходный приоритет",
+    "Система общественного транспорта",
+    "Совместная поездка",
+  ]) {
+    assert.equal(
+      ch1SustainableModuleSource.includes(outOfScopeText),
+      false,
+      `${outOfScopeText} stays out of the page 23 section slice`,
+    );
   }
 
   const orderedBlockIds = [
@@ -4053,7 +6009,7 @@ test("ch1 sustainable mobility section covers source page 23 infographics and no
     "mobility-right-and-limits",
     "individual-choice",
     "intermodality-vulnerable-groups",
-    "vulnerability-order"
+    "vulnerability-order",
   ];
   let previousBlockIndex = -1;
   for (const blockId of orderedBlockIds) {
@@ -4076,82 +6032,150 @@ test("ch1 pedestrian priority section covers source pages 24-29 visuals and no u
   assert.equal(existsSync(section.implementationEvidence.mobileScreenshot), true);
 
   for (const sourceRegion of section.implementationEvidence.sourceRegionMetadata) {
-    assert.equal(existsSync(sourceRegion.sourceAssetPath), true, `${sourceRegion.sourceAssetPath} exists`);
-    assert.ok([24, 25, 26, 27, 28, 29].includes(sourceRegion.sourcePage), `${sourceRegion.sourceAssetPath} belongs to the assigned source range`);
+    assert.equal(
+      existsSync(sourceRegion.sourceAssetPath),
+      true,
+      `${sourceRegion.sourceAssetPath} exists`,
+    );
+    assert.ok(
+      [24, 25, 26, 27, 28, 29].includes(sourceRegion.sourcePage),
+      `${sourceRegion.sourceAssetPath} belongs to the assigned source range`,
+    );
   }
 
   const expectedAssets = new Map([
     [
       "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/before-after-photos-source.jpg",
-      { sha256: "21ad238fb1622c84899a7c0b65b2f24487c8a0a516bb66d637620d60d283d02a", visibleSpanish: false }
+      {
+        sha256: "21ad238fb1622c84899a7c0b65b2f24487c8a0a516bb66d637620d60d283d02a",
+        visibleSpanish: false,
+      },
     ],
     [
       "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/impact-body-source.jpg",
-      { sha256: "42c864bfc9df2b2d824165a8127ef3c1a4b407fe2109314b4b171790407eb101", visibleSpanish: false }
+      {
+        sha256: "42c864bfc9df2b2d824165a8127ef3c1a4b407fe2109314b4b171790407eb101",
+        visibleSpanish: false,
+      },
     ],
     [
       "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/impact-car-source.jpg",
-      { sha256: "6741d5921e347984d56b08b38ac147e4d8a365328363edf313db83a9b1deef8c", visibleSpanish: false }
+      {
+        sha256: "6741d5921e347984d56b08b38ac147e4d8a365328363edf313db83a9b1deef8c",
+        visibleSpanish: false,
+      },
     ],
     [
       "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/impact-target-source.jpg",
-      { sha256: "4f46f2a52c919015cb6b258a21563ae0e4f02f8a58e37fc0541b800fe31da1d4", visibleSpanish: false }
+      {
+        sha256: "4f46f2a52c919015cb6b258a21563ae0e4f02f8a58e37fc0541b800fe31da1d4",
+        visibleSpanish: false,
+      },
     ],
     [
       "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/priority-street-source.jpg",
-      { sha256: "508dec0e2948e13aacd9980dc51946a8af79aad03f5ca1c3ca9bc40161782cc9", visibleSpanish: true, assetKind: "high-resolution-original-source-priority-street-photo" }
+      {
+        sha256: "508dec0e2948e13aacd9980dc51946a8af79aad03f5ca1c3ca9bc40161782cc9",
+        visibleSpanish: true,
+        assetKind: "high-resolution-original-source-priority-street-photo",
+      },
     ],
     [
       "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/pedestrian-street-source.jpg",
-      { sha256: "8113005c51dd845f4b42ba6621fea12b5d900548774dc2130d3811fa3908ea9f", visibleSpanish: true, assetKind: "high-resolution-original-source-pedestrian-street-photo" }
+      {
+        sha256: "8113005c51dd845f4b42ba6621fea12b5d900548774dc2130d3811fa3908ea9f",
+        visibleSpanish: true,
+        assetKind: "high-resolution-original-source-pedestrian-street-photo",
+      },
     ],
     [
       "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/wayfinding-source.jpg",
-      { sha256: "c708f1d34803a7b2d905998d90f97334aba498f893c295300a907333fd5da732", visibleSpanish: true, assetKind: "high-resolution-original-source-wayfinding-photo" }
+      {
+        sha256: "c708f1d34803a7b2d905998d90f97334aba498f893c295300a907333fd5da732",
+        visibleSpanish: true,
+        assetKind: "high-resolution-original-source-wayfinding-photo",
+      },
     ],
     [
       "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/school-routes-source.jpg",
-      { sha256: "829a25bda728e6352c363c81c126915d015bf91621c64e8ed7cc8dad38c8a7bb", visibleSpanish: true, assetKind: "high-resolution-original-source-school-route-photo" }
+      {
+        sha256: "829a25bda728e6352c363c81c126915d015bf91621c64e8ed7cc8dad38c8a7bb",
+        visibleSpanish: true,
+        assetKind: "high-resolution-original-source-school-route-photo",
+      },
     ],
     [
       "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/sube-y-baja-source.jpg",
-      { sha256: "9173c0d979968dc60b661cb5d796f5f75d7d02b76c1031828639d0cad28211e1", visibleSpanish: true, assetKind: "high-resolution-original-source-sube-y-baja-road-marking" }
+      {
+        sha256: "9173c0d979968dc60b661cb5d796f5f75d7d02b76c1031828639d0cad28211e1",
+        visibleSpanish: true,
+        assetKind: "high-resolution-original-source-sube-y-baja-road-marking",
+      },
     ],
     [
       "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/intervention-street-source.jpg",
-      { sha256: "c3012aca894e6d05b4ec0f94030291e653befe7da9bdd6c21ae1bd3212dd6146", visibleSpanish: true, assetKind: "high-resolution-original-source-pedestrian-intervention-photo" }
+      {
+        sha256: "c3012aca894e6d05b4ec0f94030291e653befe7da9bdd6c21ae1bd3212dd6146",
+        visibleSpanish: true,
+        assetKind: "high-resolution-original-source-pedestrian-intervention-photo",
+      },
     ],
     [
       "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/priority-area-map-source.jpg",
-      { sha256: "d88ecd0fc39dac7f9c0227894794ef648cb7327b1ff229508787ce1f5222056b", visibleSpanish: true, assetKind: "high-resolution-original-source-priority-area-map" }
+      {
+        sha256: "d88ecd0fc39dac7f9c0227894794ef648cb7327b1ff229508787ce1f5222056b",
+        visibleSpanish: true,
+        assetKind: "high-resolution-original-source-priority-area-map",
+      },
     ],
     [
       "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/zone30-photo-source.jpg",
-      { sha256: "8035cdc4f94cdf7f92560e84ce9f0fa6828c56af250a6feb5130c710290e8e93", visibleSpanish: true, assetKind: "high-resolution-original-source-zone30-photo" }
+      {
+        sha256: "8035cdc4f94cdf7f92560e84ce9f0fa6828c56af250a6feb5130c710290e8e93",
+        visibleSpanish: true,
+        assetKind: "high-resolution-original-source-zone30-photo",
+      },
     ],
     [
       "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/circulation-icons-source.jpg",
-      { sha256: "bed15de5034b89eb332f64e937cb90024304cfdda9d7a2f6952dcbd7c286e2a1", visibleSpanish: false }
+      {
+        sha256: "bed15de5034b89eb332f64e937cb90024304cfdda9d7a2f6952dcbd7c286e2a1",
+        visibleSpanish: false,
+      },
     ],
     [
       "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/restriction-signs-source-as-is.png",
       {
         sha256: "03c8354fc44acff48de3fb0d40aa49757254f047b44de79179ec7f3b168e3f71",
         visibleSpanish: true,
-        assetKind: "official-traffic-sign-source-as-is"
-      }
-    ]
+        assetKind: "official-traffic-sign-source-as-is",
+      },
+    ],
   ]);
 
   for (const [assetPath, expectation] of expectedAssets) {
-    const asset = section.implementationEvidence.localAssetMetadata.find((entry) => entry.assetPath === assetPath);
+    const asset = section.implementationEvidence.localAssetMetadata.find(
+      (entry) => entry.assetPath === assetPath,
+    );
     assert.ok(asset, `${assetPath} local asset metadata exists`);
     assert.equal(existsSync(assetPath), true, `${assetPath} exists`);
-    assert.equal(asset.visibleSpanish, expectation.visibleSpanish, `${assetPath} visible-Spanish evidence matches policy`);
+    assert.equal(
+      asset.visibleSpanish,
+      expectation.visibleSpanish,
+      `${assetPath} visible-Spanish evidence matches policy`,
+    );
     assert.equal(asset.sha256, expectation.sha256, `${assetPath} registry hash is stable`);
-    assert.equal(sha256File(assetPath), expectation.sha256, `${assetPath} bytes match registry hash`);
+    assert.equal(
+      sha256File(assetPath),
+      expectation.sha256,
+      `${assetPath} bytes match registry hash`,
+    );
     if (expectation.visibleSpanish) {
-      assert.equal(asset.assetKind, expectation.assetKind, `${assetPath} exception asset kind is stable`);
+      assert.equal(
+        asset.assetKind,
+        expectation.assetKind,
+        `${assetPath} exception asset kind is stable`,
+      );
       if (expectation.assetKind === "official-traffic-sign-source-as-is") {
         assert.equal(asset.officialSignException.kind, "official-traffic-sign-source-as-is");
         assert.equal(asset.officialSignException.visibleSpanishScope, "official-sign-image-only");
@@ -4165,8 +6189,14 @@ test("ch1 pedestrian priority section covers source pages 24-29 visuals and no u
     }
   }
 
-  assert.equal(section.implementationEvidence.visibleSpanishStatus.status, "source_image_exceptions_only");
-  assert.equal(section.implementationEvidence.visibleSpanishStatus.nonSignVisibleSpanishStatus, "source-image-only");
+  assert.equal(
+    section.implementationEvidence.visibleSpanishStatus.status,
+    "source_image_exceptions_only",
+  );
+  assert.equal(
+    section.implementationEvidence.visibleSpanishStatus.nonSignVisibleSpanishStatus,
+    "source-image-only",
+  );
   assert.deepEqual(
     section.implementationEvidence.visibleSpanishStatus.exceptions.map((entry) => entry.assetPath),
     [
@@ -4178,8 +6208,8 @@ test("ch1 pedestrian priority section covers source pages 24-29 visuals and no u
       "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/intervention-street-source.jpg",
       "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/priority-area-map-source.jpg",
       "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/restriction-signs-source-as-is.png",
-      "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/zone30-photo-source.jpg"
-    ]
+      "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/zone30-photo-source.jpg",
+    ],
   );
 
   for (const requiredText of [
@@ -4214,9 +6244,12 @@ test("ch1 pedestrian priority section covers source pages 24-29 visuals and no u
     "Зона 30",
     "5% может уменьшить количество погибших",
     "30%",
-    "Ramón Lista, Nogoyá, Juan E. Martínez и Irigoyen"
+    "Ramón Lista, Nogoyá, Juan E. Martínez и Irigoyen",
   ]) {
-    assert.ok(ch1PedestrianPriorityModuleSource.includes(requiredText), `missing pedestrian-priority learner text: ${requiredText}`);
+    assert.ok(
+      ch1PedestrianPriorityModuleSource.includes(requiredText),
+      `missing pedestrian-priority learner text: ${requiredText}`,
+    );
   }
 
   for (const requiredKind of [
@@ -4224,9 +6257,13 @@ test("ch1 pedestrian priority section covers source pages 24-29 visuals and no u
     "impact-diagram",
     "pedestrian-infrastructure",
     "priority-area-map",
-    "transport-mode-icons"
+    "transport-mode-icons",
   ]) {
-    assert.match(ch1PedestrianPriorityModuleSource, new RegExp(`kind:\\s*"${requiredKind}"`), `${requiredKind} block is present`);
+    assert.match(
+      ch1PedestrianPriorityModuleSource,
+      new RegExp(`kind:\\s*"${requiredKind}"`),
+      `${requiredKind} block is present`,
+    );
   }
 
   assert.match(appSource, /function PedestrianPhotoComparisonBlockView/);
@@ -4245,13 +6282,22 @@ test("ch1 pedestrian priority section covers source pages 24-29 visuals and no u
   assert.match(ch1PedestrianPriorityModuleSource, /sube-y-baja-source\.jpg/);
   assert.match(ch1PedestrianPriorityModuleSource, /priority-area-map-source\.jpg/);
   assert.match(ch1PedestrianPriorityModuleSource, /restriction-signs-source-as-is\.png/);
-  assert.doesNotMatch(ch1PedestrianPriorityModuleSource, /visualKind:\s*"wayfinding-sign"|visualKind:\s*"school-road-marking"/);
+  assert.doesNotMatch(
+    ch1PedestrianPriorityModuleSource,
+    /visualKind:\s*"wayfinding-sign"|visualKind:\s*"school-road-marking"/,
+  );
   assert.doesNotMatch(appSource, /manual-wayfinding-sign|manual-school-road-marking/);
   assert.match(ch1PedestrianPriorityModuleSource, /official-traffic-sign-source-as-is/);
   assert.match(ch1PedestrianPriorityModuleSource, /circulation-icons-source\.jpg/);
-  assert.doesNotMatch(ch1PedestrianPriorityModuleSource, /content\/assets\/manuals\/gcba-manual-vehiculo-4-ruedas-2023\/pages\/page-02[4-9]\.jpg/u);
+  assert.doesNotMatch(
+    ch1PedestrianPriorityModuleSource,
+    /content\/assets\/manuals\/gcba-manual-vehiculo-4-ruedas-2023\/pages\/page-02[4-9]\.jpg/u,
+  );
   assert.doesNotMatch(ch1PedestrianPriorityModuleSource, /https?:\/\//u);
-  assert.doesNotMatch(ch1PedestrianPriorityModuleSource, /Bicicleta|Sistema de transporte público|Viaje compartido|Юридическая ответственность|Обязательные документы/u);
+  assert.doesNotMatch(
+    ch1PedestrianPriorityModuleSource,
+    /Bicicleta|Sistema de transporte público|Viaje compartido|Юридическая ответственность|Обязательные документы/u,
+  );
 
   const orderedBlockIds = [
     "pedestrian-priority-intro",
@@ -4266,7 +6312,7 @@ test("ch1 pedestrian priority section covers source pages 24-29 visuals and no u
     "priority-areas-map",
     "priority-area-restrictions",
     "priority-area-circulation",
-    "zone-30"
+    "zone-30",
   ];
   let previousBlockIndex = -1;
   for (const blockId of orderedBlockIds) {
@@ -4283,101 +6329,162 @@ test("ch1 bicycle section covers source pages 30-38 visuals and no unrelated sec
   assert.equal(section.sourceRegionMetadataStatus, "recorded");
   assert.equal(section.visualEvidenceStatus, "recorded");
   assert.equal(section.implementationEvidence.checkerResult, "pass");
-  assert.deepEqual(section.implementationEvidence.sourcePages, [30, 31, 32, 33, 34, 35, 36, 37, 38]);
+  assert.deepEqual(
+    section.implementationEvidence.sourcePages,
+    [30, 31, 32, 33, 34, 35, 36, 37, 38],
+  );
   assert.equal(existsSync(section.sectionContentModulePath), true);
   assert.equal(existsSync(section.implementationEvidence.desktopScreenshot), true);
   assert.equal(existsSync(section.implementationEvidence.mobileScreenshot), true);
 
   for (const sourceRegion of section.implementationEvidence.sourceRegionMetadata) {
-    assert.equal(existsSync(sourceRegion.sourceAssetPath), true, `${sourceRegion.sourceAssetPath} exists`);
-    assert.ok([30, 31, 32, 33, 34, 35, 36, 37, 38].includes(sourceRegion.sourcePage), `${sourceRegion.sourceAssetPath} belongs to the assigned source range`);
+    assert.equal(
+      existsSync(sourceRegion.sourceAssetPath),
+      true,
+      `${sourceRegion.sourceAssetPath} exists`,
+    );
+    assert.ok(
+      [30, 31, 32, 33, 34, 35, 36, 37, 38].includes(sourceRegion.sourcePage),
+      `${sourceRegion.sourceAssetPath} belongs to the assigned source range`,
+    );
   }
 
   const expectedAssets = new Map([
     [
       "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/bicycle-change-cyclists-source.jpg",
-      { sha256: "1a888b8936c2ec987f8a4c2fa92bd9f2b07b0a61f9749f69fc9e597af062b33b", visibleSpanish: false }
+      {
+        sha256: "1a888b8936c2ec987f8a4c2fa92bd9f2b07b0a61f9749f69fc9e597af062b33b",
+        visibleSpanish: false,
+      },
     ],
     [
       "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/helmet-fit-source.jpg",
-      { sha256: "59b5dde3ced464cf10760d4b7acfff4fcd1345ad49a1ba1424b348544bc07391", visibleSpanish: false }
+      {
+        sha256: "59b5dde3ced464cf10760d4b7acfff4fcd1345ad49a1ba1424b348544bc07391",
+        visibleSpanish: false,
+      },
     ],
     [
       "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/cyclist-gear-source.jpg",
-      { sha256: "872fd40c00cddc2afa9d5489574b87e605802d7e95a582d2922c36a9c3964edd", visibleSpanish: false }
+      {
+        sha256: "872fd40c00cddc2afa9d5489574b87e605802d7e95a582d2922c36a9c3964edd",
+        visibleSpanish: false,
+      },
     ],
     [
       "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/bicycle-signs-source-as-is.jpg",
       {
         sha256: "4dfcbefd5731a4a9677e9b66beab652e7bdb0c8db1fcdc6794d4aa97c0f9ac65",
         visibleSpanish: true,
-        assetKind: "official-traffic-sign-source-as-is"
-      }
+        assetKind: "official-traffic-sign-source-as-is",
+      },
     ],
     [
       "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/posture-cyclist-source.jpg",
-      { sha256: "3da169144ff919429503b14c7c764e45e663ec76b564d4e39ee7da812533c587", visibleSpanish: false }
+      {
+        sha256: "3da169144ff919429503b14c7c764e45e663ec76b564d4e39ee7da812533c587",
+        visibleSpanish: false,
+      },
     ],
     [
       "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/safe-distance-source.jpg",
       {
         sha256: "8ad1706e10ffe13e394c113c921cf14735feb0ec0da8ea3e5c69a6a1bf160595",
         visibleSpanish: true,
-        assetKind: "high-resolution-original-source-safe-distance-road-panel"
-      }
+        assetKind: "high-resolution-original-source-safe-distance-road-panel",
+      },
     ],
     [
       "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/unsafe-distance-source.jpg",
       {
         sha256: "e219de23c7855483e274057ac9627dcbc0129c90dd83b95786a0a0a06de1c8b9",
         visibleSpanish: true,
-        assetKind: "high-resolution-original-source-unsafe-distance-road-panel"
-      }
+        assetKind: "high-resolution-original-source-unsafe-distance-road-panel",
+      },
     ],
     [
       "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/offtracking-bus-source.jpg",
-      { sha256: "98b4e0867f96ed3bb6671c4d0aa5dfde145d43c5bbc42cbc10d798a3f76ffac0", visibleSpanish: false }
+      {
+        sha256: "98b4e0867f96ed3bb6671c4d0aa5dfde145d43c5bbc42cbc10d798a3f76ffac0",
+        visibleSpanish: false,
+      },
     ],
     [
       "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/hand-signals-source.jpg",
-      { sha256: "dcbe4cf381e85536b609bf467cf225d1c77fef6ae16826c1022c583b3a2b4379", visibleSpanish: false }
+      {
+        sha256: "dcbe4cf381e85536b609bf467cf225d1c77fef6ae16826c1022c583b3a2b4379",
+        visibleSpanish: false,
+      },
     ],
     [
       "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/bicisenda-photo-source.jpg",
-      { sha256: "d0719bf65fb4d5b2df0f695879b5793046750d443c465e9daa73fa96a98d6d6f", visibleSpanish: false }
+      {
+        sha256: "d0719bf65fb4d5b2df0f695879b5793046750d443c465e9daa73fa96a98d6d6f",
+        visibleSpanish: false,
+      },
     ],
     [
       "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/ciclovia-photo-source.jpg",
-      { sha256: "7b2e404dd7365ffe41a0c559a9accb1fa13f74c378174ac13feef3717f1aeb8d", visibleSpanish: false }
+      {
+        sha256: "7b2e404dd7365ffe41a0c559a9accb1fa13f74c378174ac13feef3717f1aeb8d",
+        visibleSpanish: false,
+      },
     ],
     [
       "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/bicycle-parking-source.jpg",
-      { sha256: "91a078759ad9d42691029fb7b379b09120351b4bb48cf20c0ddf98ac33145a7d", visibleSpanish: false }
+      {
+        sha256: "91a078759ad9d42691029fb7b379b09120351b4bb48cf20c0ddf98ac33145a7d",
+        visibleSpanish: false,
+      },
     ],
     [
       "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/ecobici-source.jpg",
-      { sha256: "8e361a5e391e5de186247a3164fe1ad76f42ef2cd6917a9a30b9e14ba8647781", visibleSpanish: false }
+      {
+        sha256: "8e361a5e391e5de186247a3164fe1ad76f42ef2cd6917a9a30b9e14ba8647781",
+        visibleSpanish: false,
+      },
     ],
     [
       "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/scooter-source.jpg",
-      { sha256: "a8983da5902a66d9ed54252087f7228242a43f243775a1453770d1b53bc56962", visibleSpanish: false }
-    ]
+      {
+        sha256: "a8983da5902a66d9ed54252087f7228242a43f243775a1453770d1b53bc56962",
+        visibleSpanish: false,
+      },
+    ],
   ]);
 
   for (const [assetPath, expectation] of expectedAssets) {
-    const asset = section.implementationEvidence.localAssetMetadata.find((entry) => entry.assetPath === assetPath);
+    const asset = section.implementationEvidence.localAssetMetadata.find(
+      (entry) => entry.assetPath === assetPath,
+    );
     assert.ok(asset, `${assetPath} local asset metadata exists`);
     assert.equal(existsSync(assetPath), true, `${assetPath} exists`);
-    assert.equal(asset.visibleSpanish, expectation.visibleSpanish, `${assetPath} visible-Spanish evidence matches policy`);
+    assert.equal(
+      asset.visibleSpanish,
+      expectation.visibleSpanish,
+      `${assetPath} visible-Spanish evidence matches policy`,
+    );
     assert.equal(asset.sha256, expectation.sha256, `${assetPath} registry hash is stable`);
-    assert.equal(sha256File(assetPath), expectation.sha256, `${assetPath} bytes match registry hash`);
+    assert.equal(
+      sha256File(assetPath),
+      expectation.sha256,
+      `${assetPath} bytes match registry hash`,
+    );
     if (expectation.assetKind === "official-traffic-sign-source-as-is") {
-      assert.equal(asset.assetKind, expectation.assetKind, `${assetPath} is the official sign exception asset`);
+      assert.equal(
+        asset.assetKind,
+        expectation.assetKind,
+        `${assetPath} is the official sign exception asset`,
+      );
       assert.equal(asset.officialSignException.kind, "official-traffic-sign-source-as-is");
       assert.equal(asset.officialSignException.visibleSpanishScope, "official-sign-image-only");
       assert.equal(asset.officialSignException.sourceAsIs, true);
     } else if (expectation.visibleSpanish) {
-      assert.equal(asset.assetKind, expectation.assetKind, `${assetPath} source-image exception asset kind is stable`);
+      assert.equal(
+        asset.assetKind,
+        expectation.assetKind,
+        `${assetPath} source-image exception asset kind is stable`,
+      );
       assert.equal(asset.sourceImageException.kind, "source-image-original-visible-text");
       assert.equal(asset.sourceImageException.visibleSpanishScope, "source-image-only");
       assert.equal(asset.sourceImageException.sourceAsIs, true);
@@ -4385,15 +6492,21 @@ test("ch1 bicycle section covers source pages 30-38 visuals and no unrelated sec
     }
   }
 
-  assert.equal(section.implementationEvidence.visibleSpanishStatus.status, "source_image_exceptions_only");
-  assert.equal(section.implementationEvidence.visibleSpanishStatus.nonSignVisibleSpanishStatus, "source-image-only");
+  assert.equal(
+    section.implementationEvidence.visibleSpanishStatus.status,
+    "source_image_exceptions_only",
+  );
+  assert.equal(
+    section.implementationEvidence.visibleSpanishStatus.nonSignVisibleSpanishStatus,
+    "source-image-only",
+  );
   assert.deepEqual(
     section.implementationEvidence.visibleSpanishStatus.exceptions.map((entry) => entry.assetPath),
     [
       "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/bicycle-signs-source-as-is.jpg",
       "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/safe-distance-source.jpg",
-      "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/unsafe-distance-source.jpg"
-    ]
+      "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/unsafe-distance-source.jpg",
+    ],
   );
 
   for (const requiredText of [
@@ -4441,9 +6554,12 @@ test("ch1 bicycle section covers source pages 30-38 visuals and no unrelated sec
     "25 км/ч",
     "16 лет",
     "Av. 9 de Julio",
-    "нельзя перевозить пассажира"
+    "нельзя перевозить пассажира",
   ]) {
-    assert.ok(ch1BicycleModuleSource.includes(requiredText), `missing bicycle learner text: ${requiredText}`);
+    assert.ok(
+      ch1BicycleModuleSource.includes(requiredText),
+      `missing bicycle learner text: ${requiredText}`,
+    );
   }
 
   for (const requiredKind of [
@@ -4455,9 +6571,13 @@ test("ch1 bicycle section covers source pages 30-38 visuals and no unrelated sec
     "bicycle-distance",
     "bicycle-hand-signals",
     "pedestrian-infrastructure",
-    "source-artwork"
+    "source-artwork",
   ]) {
-    assert.match(ch1BicycleModuleSource, new RegExp(`kind:\\s*"${requiredKind}"`), `${requiredKind} block is present`);
+    assert.match(
+      ch1BicycleModuleSource,
+      new RegExp(`kind:\\s*"${requiredKind}"`),
+      `${requiredKind} block is present`,
+    );
   }
 
   assert.match(appSource, /function BicycleBenefitsBlockView/);
@@ -4489,17 +6609,36 @@ test("ch1 bicycle section covers source pages 30-38 visuals and no unrelated sec
     "ciclovia-photo-source.jpg",
     "bicycle-parking-source.jpg",
     "ecobici-source.jpg",
-    "scooter-source.jpg"
+    "scooter-source.jpg",
   ]) {
-    assert.match(ch1BicycleModuleSource, new RegExp(assetFilename.replaceAll(".", "\\.")), `${assetFilename} is used by the bicycle module`);
+    assert.match(
+      ch1BicycleModuleSource,
+      new RegExp(assetFilename.replaceAll(".", "\\.")),
+      `${assetFilename} is used by the bicycle module`,
+    );
   }
 
-  assert.doesNotMatch(ch1BicycleModuleSource, /content\/assets\/manuals\/gcba-manual-vehiculo-4-ruedas-2023\/pages\/page-03[0-8]\.jpg/u);
+  assert.doesNotMatch(
+    ch1BicycleModuleSource,
+    /content\/assets\/manuals\/gcba-manual-vehiculo-4-ruedas-2023\/pages\/page-03[0-8]\.jpg/u,
+  );
   assert.doesNotMatch(ch1BicycleModuleSource, /https?:\/\//u);
-  assert.doesNotMatch(ch1BicycleModuleSource, /Система общественного транспорта|Совместная поездка|Юридическая ответственность|Обязательные документы/u);
-  assert.doesNotMatch(ch1BicycleModuleSource, /bike-station|Стоянка или станция велосипедов|markerRu|manual-bicycle-sign-grid|manual-bicycle-sign-marker/u);
-  assert.doesNotMatch(appSource, /manual-bicycle-sign-grid|manual-bicycle-sign-marker|data-sign-kind/u);
-  assert.doesNotMatch(stylesSource, /manual-bicycle-sign-grid|manual-bicycle-sign-marker|data-sign-kind/u);
+  assert.doesNotMatch(
+    ch1BicycleModuleSource,
+    /Система общественного транспорта|Совместная поездка|Юридическая ответственность|Обязательные документы/u,
+  );
+  assert.doesNotMatch(
+    ch1BicycleModuleSource,
+    /bike-station|Стоянка или станция велосипедов|markerRu|manual-bicycle-sign-grid|manual-bicycle-sign-marker/u,
+  );
+  assert.doesNotMatch(
+    appSource,
+    /manual-bicycle-sign-grid|manual-bicycle-sign-marker|data-sign-kind/u,
+  );
+  assert.doesNotMatch(
+    stylesSource,
+    /manual-bicycle-sign-grid|manual-bicycle-sign-marker|data-sign-kind/u,
+  );
 
   const orderedBlockIds = [
     "bicycle-intro-growth",
@@ -4527,7 +6666,7 @@ test("ch1 bicycle section covers source pages 30-38 visuals and no unrelated sec
     "parking-and-ecobici",
     "electric-scooter-photo",
     "electric-scooter-requirements",
-    "electric-scooter-prohibitions"
+    "electric-scooter-prohibitions",
   ];
   let previousBlockIndex = -1;
   for (const blockId of orderedBlockIds) {
@@ -4550,54 +6689,87 @@ test("ch1 public transport section covers source pages 39-40 visuals and no unre
   assert.equal(existsSync(section.implementationEvidence.mobileScreenshot), true);
 
   for (const sourceRegion of section.implementationEvidence.sourceRegionMetadata) {
-    assert.equal(existsSync(sourceRegion.sourceAssetPath), true, `${sourceRegion.sourceAssetPath} exists`);
-    assert.ok([39, 40].includes(sourceRegion.sourcePage), `${sourceRegion.sourceAssetPath} belongs to the assigned source range`);
+    assert.equal(
+      existsSync(sourceRegion.sourceAssetPath),
+      true,
+      `${sourceRegion.sourceAssetPath} exists`,
+    );
+    assert.ok(
+      [39, 40].includes(sourceRegion.sourcePage),
+      `${sourceRegion.sourceAssetPath} belongs to the assigned source range`,
+    );
   }
 
   const expectedAssets = new Map([
     [
       "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-public-transport-system/avenue-comparison-source.jpg",
-      { sha256: "9de57b9a15546910585ff23ec253cf06aa585f53f71c68551cb0508d51e48600", visibleSpanish: false }
+      {
+        sha256: "9de57b9a15546910585ff23ec253cf06aa585f53f71c68551cb0508d51e48600",
+        visibleSpanish: false,
+      },
     ],
     [
       "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-public-transport-system/yellow-box-source.jpg",
-      { sha256: "235efcd971e7523907d0e90bb5c426f373b148e8dd94684c6ef9af1d49fe21d5", visibleSpanish: false }
+      {
+        sha256: "235efcd971e7523907d0e90bb5c426f373b148e8dd94684c6ef9af1d49fe21d5",
+        visibleSpanish: false,
+      },
     ],
     [
       "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-public-transport-system/bus-platform-source.jpg",
-      { sha256: "9f3b5b111b6bc948e33c60db3d88cac5e641592570ec5a0f7ebd7515aaf77e8d", visibleSpanish: false }
+      {
+        sha256: "9f3b5b111b6bc948e33c60db3d88cac5e641592570ec5a0f7ebd7515aaf77e8d",
+        visibleSpanish: false,
+      },
     ],
     [
       "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-public-transport-system/exclusive-lane-source.jpg",
       {
         sha256: "12d9b8e69b463b9e7c5e4b5729d8fdc6c3bf44595373d5fbc0b9912f6b513258",
         visibleSpanish: true,
-        assetKind: "high-resolution-original-source-exclusive-lane-bus-marking-photo"
-      }
+        assetKind: "high-resolution-original-source-exclusive-lane-bus-marking-photo",
+      },
     ],
     [
       "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-public-transport-system/metrobus-source.jpg",
       {
         sha256: "d54e4519912634abfd34e196bc283e112dbbffa5eaed86d035dc3edf8dbbad85",
         visibleSpanish: true,
-        assetKind: "high-resolution-original-source-metrobus-station-photo"
-      }
+        assetKind: "high-resolution-original-source-metrobus-station-photo",
+      },
     ],
     [
       "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-public-transport-system/transport-center-source.jpg",
-      { sha256: "c0eb116ddde111639c4c76bf0f917ce842c956b35e66cc13bc9f2e3ab797c6e1", visibleSpanish: false }
-    ]
+      {
+        sha256: "c0eb116ddde111639c4c76bf0f917ce842c956b35e66cc13bc9f2e3ab797c6e1",
+        visibleSpanish: false,
+      },
+    ],
   ]);
 
   for (const [assetPath, expectation] of expectedAssets) {
-    const asset = section.implementationEvidence.localAssetMetadata.find((entry) => entry.assetPath === assetPath);
+    const asset = section.implementationEvidence.localAssetMetadata.find(
+      (entry) => entry.assetPath === assetPath,
+    );
     assert.ok(asset, `${assetPath} local asset metadata exists`);
     assert.equal(existsSync(assetPath), true, `${assetPath} exists`);
-    assert.equal(asset.visibleSpanish, expectation.visibleSpanish, `${assetPath} visible-Spanish evidence matches policy`);
+    assert.equal(
+      asset.visibleSpanish,
+      expectation.visibleSpanish,
+      `${assetPath} visible-Spanish evidence matches policy`,
+    );
     assert.equal(asset.sha256, expectation.sha256, `${assetPath} registry hash is stable`);
-    assert.equal(sha256File(assetPath), expectation.sha256, `${assetPath} bytes match registry hash`);
+    assert.equal(
+      sha256File(assetPath),
+      expectation.sha256,
+      `${assetPath} bytes match registry hash`,
+    );
     if (expectation.visibleSpanish) {
-      assert.equal(asset.assetKind, expectation.assetKind, `${assetPath} source-image exception asset kind is stable`);
+      assert.equal(
+        asset.assetKind,
+        expectation.assetKind,
+        `${assetPath} source-image exception asset kind is stable`,
+      );
       assert.equal(asset.sourceImageException.kind, "source-image-original-visible-text");
       assert.equal(asset.sourceImageException.visibleSpanishScope, "source-image-only");
       assert.equal(asset.sourceImageException.sourceAsIs, true);
@@ -4605,14 +6777,20 @@ test("ch1 public transport section covers source pages 39-40 visuals and no unre
     }
   }
 
-  assert.equal(section.implementationEvidence.visibleSpanishStatus.status, "source_image_exceptions_only");
-  assert.equal(section.implementationEvidence.visibleSpanishStatus.nonSignVisibleSpanishStatus, "source-image-only");
+  assert.equal(
+    section.implementationEvidence.visibleSpanishStatus.status,
+    "source_image_exceptions_only",
+  );
+  assert.equal(
+    section.implementationEvidence.visibleSpanishStatus.nonSignVisibleSpanishStatus,
+    "source-image-only",
+  );
   assert.deepEqual(
     section.implementationEvidence.visibleSpanishStatus.exceptions.map((entry) => entry.assetPath),
     [
       "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-public-transport-system/exclusive-lane-source.jpg",
-      "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-public-transport-system/metrobus-source.jpg"
-    ]
+      "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-public-transport-system/metrobus-source.jpg",
+    ],
   );
 
   for (const requiredText of [
@@ -4635,28 +6813,41 @@ test("ch1 public transport section covers source pages 39-40 visuals and no unre
     "source-image-original-visible-text",
     "avenue-comparison-source.jpg",
     "exclusive-lane-source.jpg",
-    "metrobus-source.jpg"
+    "metrobus-source.jpg",
   ]) {
-    assert.ok(ch1PublicTransportModuleSource.includes(requiredText), `missing public transport learner text: ${requiredText}`);
+    assert.ok(
+      ch1PublicTransportModuleSource.includes(requiredText),
+      `missing public transport learner text: ${requiredText}`,
+    );
   }
 
   for (const requiredKind of ["public-transport-comparison", "public-transport-infrastructure"]) {
-    assert.match(ch1PublicTransportModuleSource, new RegExp(`kind:\\s*"${requiredKind}"`), `${requiredKind} block is present`);
+    assert.match(
+      ch1PublicTransportModuleSource,
+      new RegExp(`kind:\\s*"${requiredKind}"`),
+      `${requiredKind} block is present`,
+    );
   }
 
   assert.match(appSource, /function PublicTransportComparisonBlockView/);
   assert.match(appSource, /function PublicTransportInfrastructureBlockView/);
   assert.match(stylesSource, /\.manual-public-transport-comparison[\s\S]*?user-select:\s*text/);
   assert.match(stylesSource, /\.manual-public-transport-infrastructure[\s\S]*?user-select:\s*text/);
-  assert.doesNotMatch(ch1PublicTransportModuleSource, /content\/assets\/manuals\/gcba-manual-vehiculo-4-ruedas-2023\/pages\/page-0(?:39|40)\.jpg/u);
+  assert.doesNotMatch(
+    ch1PublicTransportModuleSource,
+    /content\/assets\/manuals\/gcba-manual-vehiculo-4-ruedas-2023\/pages\/page-0(?:39|40)\.jpg/u,
+  );
   assert.doesNotMatch(ch1PublicTransportModuleSource, /https?:\/\//u);
-  assert.doesNotMatch(ch1PublicTransportModuleSource, /Совместная поездка|Юридическая ответственность|Обязательные документы|Scoring/u);
+  assert.doesNotMatch(
+    ch1PublicTransportModuleSource,
+    /Совместная поездка|Юридическая ответственность|Обязательные документы|Scoring/u,
+  );
 
   const orderedBlockIds = [
     "public-transport-intro",
     "public-transport-capacity-comparison",
     "city-supports-public-transport",
-    "public-transport-infrastructure"
+    "public-transport-infrastructure",
   ];
   let previousBlockIndex = -1;
   for (const blockId of orderedBlockIds) {
@@ -4679,8 +6870,15 @@ test("ch1 shared trip section covers source pages 41-42 visuals and no Chapter 2
   assert.equal(existsSync(section.implementationEvidence.mobileScreenshot), true);
 
   for (const sourceRegion of section.implementationEvidence.sourceRegionMetadata) {
-    assert.equal(existsSync(sourceRegion.sourceAssetPath), true, `${sourceRegion.sourceAssetPath} exists`);
-    assert.ok([41, 42].includes(sourceRegion.sourcePage), `${sourceRegion.sourceAssetPath} belongs to the assigned source range`);
+    assert.equal(
+      existsSync(sourceRegion.sourceAssetPath),
+      true,
+      `${sourceRegion.sourceAssetPath} exists`,
+    );
+    assert.ok(
+      [41, 42].includes(sourceRegion.sourcePage),
+      `${sourceRegion.sourceAssetPath} belongs to the assigned source range`,
+    );
   }
 
   const expectedAssets = new Map([
@@ -4689,27 +6887,37 @@ test("ch1 shared trip section covers source pages 41-42 visuals and no Chapter 2
       {
         sha256: "59fc44938f1ff3adde5fe911cbaf50c27cf7f4231529f64231425a1b42f7b948",
         visibleSpanish: false,
-        assetKind: "high-resolution-original-source-carpool-benefit-diagram"
-      }
+        assetKind: "high-resolution-original-source-carpool-benefit-diagram",
+      },
     ],
     [
       "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-shared-trip/mobility-priority-photo-source.jpg",
       {
         sha256: "1b385683e748596097a5f5e24b886a221daa0377dc675397e70cea9511865725",
         visibleSpanish: true,
-        assetKind: "high-resolution-original-source-mobility-priority-photo"
-      }
-    ]
+        assetKind: "high-resolution-original-source-mobility-priority-photo",
+      },
+    ],
   ]);
 
   for (const [assetPath, expectation] of expectedAssets) {
-    const asset = section.implementationEvidence.localAssetMetadata.find((entry) => entry.assetPath === assetPath);
+    const asset = section.implementationEvidence.localAssetMetadata.find(
+      (entry) => entry.assetPath === assetPath,
+    );
     assert.ok(asset, `${assetPath} local asset metadata exists`);
     assert.equal(existsSync(assetPath), true, `${assetPath} exists`);
     assert.equal(asset.assetKind, expectation.assetKind, `${assetPath} asset kind is stable`);
-    assert.equal(asset.visibleSpanish, expectation.visibleSpanish, `${assetPath} visible-Spanish evidence matches policy`);
+    assert.equal(
+      asset.visibleSpanish,
+      expectation.visibleSpanish,
+      `${assetPath} visible-Spanish evidence matches policy`,
+    );
     assert.equal(asset.sha256, expectation.sha256, `${assetPath} registry hash is stable`);
-    assert.equal(sha256File(assetPath), expectation.sha256, `${assetPath} bytes match registry hash`);
+    assert.equal(
+      sha256File(assetPath),
+      expectation.sha256,
+      `${assetPath} bytes match registry hash`,
+    );
     if (expectation.visibleSpanish) {
       assert.equal(asset.sourceImageException.kind, "source-image-original-visible-text");
       assert.equal(asset.sourceImageException.visibleSpanishScope, "source-image-only");
@@ -4718,11 +6926,19 @@ test("ch1 shared trip section covers source pages 41-42 visuals and no Chapter 2
     }
   }
 
-  assert.equal(section.implementationEvidence.visibleSpanishStatus.status, "source_image_exceptions_only");
-  assert.equal(section.implementationEvidence.visibleSpanishStatus.nonSignVisibleSpanishStatus, "source-image-only");
+  assert.equal(
+    section.implementationEvidence.visibleSpanishStatus.status,
+    "source_image_exceptions_only",
+  );
+  assert.equal(
+    section.implementationEvidence.visibleSpanishStatus.nonSignVisibleSpanishStatus,
+    "source-image-only",
+  );
   assert.deepEqual(
     section.implementationEvidence.visibleSpanishStatus.exceptions.map((entry) => entry.assetPath),
-    ["content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-shared-trip/mobility-priority-photo-source.jpg"]
+    [
+      "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-shared-trip/mobility-priority-photo-source.jpg",
+    ],
   );
 
   for (const requiredText of [
@@ -4743,28 +6959,41 @@ test("ch1 shared trip section covers source pages 41-42 visuals and no Chapter 2
     "Отдавать приоритет устойчивой мобильности",
     "source-image-original-visible-text",
     "carpool-diagram-source.jpg",
-    "mobility-priority-photo-source.jpg"
+    "mobility-priority-photo-source.jpg",
   ]) {
-    assert.ok(ch1SharedTripModuleSource.includes(requiredText), `missing shared-trip learner text: ${requiredText}`);
+    assert.ok(
+      ch1SharedTripModuleSource.includes(requiredText),
+      `missing shared-trip learner text: ${requiredText}`,
+    );
   }
 
   for (const requiredKind of ["shared-trip-benefits", "shared-trip-closing"]) {
-    assert.match(ch1SharedTripModuleSource, new RegExp(`kind:\\s*"${requiredKind}"`), `${requiredKind} block is present`);
+    assert.match(
+      ch1SharedTripModuleSource,
+      new RegExp(`kind:\\s*"${requiredKind}"`),
+      `${requiredKind} block is present`,
+    );
   }
 
   assert.match(appSource, /function SharedTripBenefitsBlockView/);
   assert.match(appSource, /function SharedTripClosingBlockView/);
   assert.match(stylesSource, /\.manual-shared-trip-benefits[\s\S]*?user-select:\s*text/);
   assert.match(stylesSource, /\.manual-shared-trip-closing[\s\S]*?user-select:\s*text/);
-  assert.doesNotMatch(ch1SharedTripModuleSource, /content\/assets\/manuals\/gcba-manual-vehiculo-4-ruedas-2023\/pages\/page-0(?:41|42)\.jpg/u);
+  assert.doesNotMatch(
+    ch1SharedTripModuleSource,
+    /content\/assets\/manuals\/gcba-manual-vehiculo-4-ruedas-2023\/pages\/page-0(?:41|42)\.jpg/u,
+  );
   assert.doesNotMatch(ch1SharedTripModuleSource, /https?:\/\//u);
-  assert.doesNotMatch(ch1SharedTripModuleSource, /Юридическая ответственность|Обязательные документы|Scoring|Ответственность/u);
+  assert.doesNotMatch(
+    ch1SharedTripModuleSource,
+    /Юридическая ответственность|Обязательные документы|Scoring|Ответственность/u,
+  );
 
   const orderedBlockIds = [
     "shared-trip-public-space-context",
     "shared-trip-definition",
     "shared-trip-benefits",
-    "shared-trip-mobility-priority"
+    "shared-trip-mobility-priority",
   ];
   let previousBlockIndex = -1;
   for (const blockId of orderedBlockIds) {
@@ -4777,7 +7006,7 @@ test("ch1 shared trip section covers source pages 41-42 visuals and no Chapter 2
 test("Manual guide source-fidelity checker scans the implemented section renderer", () => {
   assert.match(
     checkerSource,
-    /sliceSource\(\s*appSource,\s*"function ManualGuideSectionContentView"/
+    /sliceSource\(\s*appSource,\s*"function ManualGuideSectionContentView"/,
   );
   assert.match(manualGuideAppSource, /function ManualGuideSectionContentView/);
   assert.match(manualGuideAppSource, /assetUrl\(block\.assetPath\)/);
@@ -4787,33 +7016,54 @@ test("Manual guide source-fidelity evidence schema records strict full-manual vi
   assert.equal(evidence.strictVisualRulePolicy.id, "031-strict-source-fidelity");
   assert.equal(evidence.strictVisualRulePolicy.schemaVersion, 3);
   assert.equal(evidence.strictVisualRulePolicy.enforcement, "all-new-manual-units");
-  assert.deepEqual(evidence.strictVisualRulePolicy.legacyBaselineFeatureIds, ["030-manual-chapters-1-2"]);
+  assert.deepEqual(evidence.strictVisualRulePolicy.legacyBaselineFeatureIds, [
+    "030-manual-chapters-1-2",
+  ]);
   assert.deepEqual(evidence.strictVisualRulePolicy.legacyBaselineSectionIds, [
     "ch1-cities-for-people",
     "ch1-sustainable-mobility",
     "ch1-pedestrian-priority",
-    "ch1-bicycle"
+    "ch1-bicycle",
   ]);
-  assert.deepEqual(Object.keys(evidence.strictVisualRulePolicy.legacyBaselineEvidenceFingerprints).sort(), [...legacyBaselineSectionIds].sort());
-  assert.deepEqual(Object.keys(evidence.strictVisualRulePolicy.legacyBaselineStateFingerprints).sort(), [...legacyBaselineSectionIds].sort());
+  assert.deepEqual(
+    Object.keys(evidence.strictVisualRulePolicy.legacyBaselineEvidenceFingerprints).sort(),
+    [...legacyBaselineSectionIds].sort(),
+  );
+  assert.deepEqual(
+    Object.keys(evidence.strictVisualRulePolicy.legacyBaselineStateFingerprints).sort(),
+    [...legacyBaselineSectionIds].sort(),
+  );
   for (const id of legacyBaselineSectionIds) {
     const section = registry.sections.find((entry) => entry.id === id);
-    const evidenceFingerprint = evidence.strictVisualRulePolicy.legacyBaselineEvidenceFingerprints[id];
+    const evidenceFingerprint =
+      evidence.strictVisualRulePolicy.legacyBaselineEvidenceFingerprints[id];
     const stateFingerprint = evidence.strictVisualRulePolicy.legacyBaselineStateFingerprints[id];
-    assert.match(evidenceFingerprint, /^[a-f0-9]{64}$/u, `${id} legacy baseline evidence fingerprint must be a SHA-256 hash`);
-    assert.equal(evidenceFingerprint, sha256Json(section.implementationEvidence), `${id} legacy baseline fingerprint must match current merged evidence`);
-    assert.match(stateFingerprint, /^[a-f0-9]{64}$/u, `${id} legacy baseline state fingerprint must be a SHA-256 hash`);
+    assert.match(
+      evidenceFingerprint,
+      /^[a-f0-9]{64}$/u,
+      `${id} legacy baseline evidence fingerprint must be a SHA-256 hash`,
+    );
+    assert.equal(
+      evidenceFingerprint,
+      sha256Json(section.implementationEvidence),
+      `${id} legacy baseline fingerprint must match current merged evidence`,
+    );
+    assert.match(
+      stateFingerprint,
+      /^[a-f0-9]{64}$/u,
+      `${id} legacy baseline state fingerprint must be a SHA-256 hash`,
+    );
     assert.equal(
       stateFingerprint,
       legacyBaselineStateFingerprint(section, section.implementationEvidence),
-      `${id} legacy baseline state fingerprint must match current merged module and visual asset bytes`
+      `${id} legacy baseline state fingerprint must match current merged module and visual asset bytes`,
     );
   }
   assert.deepEqual(evidence.strictVisualRulePolicy.highResolutionEvidence.allowedTargets, [
     "x5-zoom-source-export",
     "source-native-equivalent-or-better",
     "higher-resolution-direct-export",
-    "direct-pdf-region-render-scale-36-map-only-lossless-png"
+    "direct-pdf-region-render-scale-36-map-only-lossless-png",
   ]);
   for (const requiredCategory of [
     "source-as-is-photo",
@@ -4824,34 +7074,42 @@ test("Manual guide source-fidelity evidence schema records strict full-manual vi
     "source-as-is-document-example",
     "source-transferred-infographic",
     "source-transferred-diagram",
-    "native-dom-text-only"
+    "native-dom-text-only",
   ]) {
-    assert.ok(evidence.strictVisualRulePolicy.assetCategories.includes(requiredCategory), `strict schema includes ${requiredCategory}`);
+    assert.ok(
+      evidence.strictVisualRulePolicy.assetCategories.includes(requiredCategory),
+      `strict schema includes ${requiredCategory}`,
+    );
   }
-  assert.equal(evidence.strictVisualRulePolicy.assetCategories.includes("source-as-is-infographic"), false);
+  assert.equal(
+    evidence.strictVisualRulePolicy.assetCategories.includes("source-as-is-infographic"),
+    false,
+  );
   assert.deepEqual(evidence.strictVisualRulePolicy.protectedSourceAsIsCategories, [
     "source-as-is-photo",
     "source-as-is-diagram",
     "source-as-is-traffic-sign",
-    "source-as-is-road-marking"
+    "source-as-is-road-marking",
   ]);
   assert.deepEqual(evidence.strictVisualRulePolicy.scopedSourceAsIsMapExceptions, [
     {
       sectionId: "app2-highways-hospitals",
       sourcePage: 150,
-      assetPath: "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app2-highways-hospitals/hospital-map-source-as-is.png",
-      sourceAssetPath: "content/validation/manual-guide/app2-highways-hospitals/page-150-hospital-map-source-crop.png",
+      assetPath:
+        "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app2-highways-hospitals/hospital-map-source-as-is.png",
+      sourceAssetPath:
+        "content/validation/manual-guide/app2-highways-hospitals/page-150-hospital-map-source-crop.png",
       ownerDecisionDate: "2026-06-04",
       scope: "page-150-hospital-map-only",
       sourceRegion: {
         height: 335,
         width: 780,
         x: 1332,
-        y: 2050
+        y: 2050,
       },
       cropDimensions: {
         height: 380,
-        width: 440
+        width: 440,
       },
       cropSha256: "742f7e66213866c7e07861b9a93ab7fdd8c00e8b384e96a239b1b1cb712ca1d0",
       extractionScaleEvidence: {
@@ -4860,7 +7118,7 @@ test("Manual guide source-fidelity evidence schema records strict full-manual vi
           "Focused hospital-map crop rendered from the official PDF page 150 region at scale 36 with Swift manual-visual-content-crops. The first direct-region attempt using the old retained-page y coordinate produced a blank crop and was rejected; the committed map-only trim keeps the colored map and barrio labels, excludes the separate title/list panel, and does not translate, redraw, clean, mask, retouch, inpaint, relabel, or otherwise modify map pixels.",
         outputDimensions: {
           height: 380,
-          width: 440
+          width: 440,
         },
         sha256: "742f7e66213866c7e07861b9a93ab7fdd8c00e8b384e96a239b1b1cb712ca1d0",
         probeEvidencePath: "content/validation/manual-guide-hospital-map-source-crop.evidence.json",
@@ -4870,18 +7128,18 @@ test("Manual guide source-fidelity evidence schema records strict full-manual vi
           before: {
             areaRatio: 0.4205128205128205,
             widthRatio: 0.4205128205128205,
-            heightRatio: 1
+            heightRatio: 1,
           },
           after: {
             areaRatio: 0.7142763157894737,
             widthRatio: 0.7477272727272727,
-            heightRatio: 0.9552631578947368
-          }
+            heightRatio: 0.9552631578947368,
+          },
         },
         mapReadabilityDisposition:
-          "Official PDF appears native-raster limited for barrio label glyph detail: high-scale probes increased render canvas size but did not materially increase the dark map-label glyph bbox beyond the prior 328px useful width. Runtime therefore uses the tightest source-faithful map-only crop, plus minDisplayWidthPx so mobile does not shrink the map below natural size."
-      }
-    }
+          "Official PDF appears native-raster limited for barrio label glyph detail: high-scale probes increased render canvas size but did not materially increase the dark map-label glyph bbox beyond the prior 328px useful width. Runtime therefore uses the tightest source-faithful map-only crop, plus minDisplayWidthPx so mobile does not shrink the map below natural size.",
+      },
+    },
   ]);
   assert.deepEqual(evidence.strictVisualRulePolicy.protectedSourceAsIsRequiredFields, [
     "sourceIntegrity.sourceAsIs",
@@ -4890,9 +7148,11 @@ test("Manual guide source-fidelity evidence schema records strict full-manual vi
     "sourceIntegrity.noRedrawRecolorCleanupRetouchMaskInpaint",
     "sourceIntegrity.russianExplanationOutsideImage",
     "cleanupScope=none-source-as-is",
-    "visibleSpanishStatus.status=source_image_exceptions_only for source-image or mixed source-image/sign exceptions, or official_traffic_sign_exception_only for sign-only exceptions, with exceptions.assetPath matching assetPath when visibleSpanish=true"
+    "visibleSpanishStatus.status=source_image_exceptions_only for source-image or mixed source-image/sign exceptions, or official_traffic_sign_exception_only for sign-only exceptions, with exceptions.assetPath matching assetPath when visibleSpanish=true",
   ]);
-  assert.deepEqual(evidence.strictVisualRulePolicy.documentExampleSourceAsIsCategories, ["source-as-is-document-example"]);
+  assert.deepEqual(evidence.strictVisualRulePolicy.documentExampleSourceAsIsCategories, [
+    "source-as-is-document-example",
+  ]);
   assert.deepEqual(evidence.strictVisualRulePolicy.documentExampleSourceAsIsRequiredFields, [
     "assetCategory=source-as-is-document-example",
     "assetKind starts with high-resolution-original-source-document-image-",
@@ -4903,7 +7163,7 @@ test("Manual guide source-fidelity evidence schema records strict full-manual vi
     "sourceIntegrity.russianExplanationOutsideImage",
     "cleanupScope=none-source-as-is",
     "visibleSpanishStatus.status=source_image_exceptions_only with exceptions.kind=source-document-example-original-visible-text and exceptions.assetPath matching assetPath when visibleSpanish=true",
-    "Russian explanation remains outside the source-as-is document example image"
+    "Russian explanation remains outside the source-as-is document example image",
   ]);
   assert.deepEqual(evidence.strictVisualRulePolicy.infographicRequiredFields, [
     "assetCategory=source-transferred-infographic",
@@ -4918,7 +7178,7 @@ test("Manual guide source-fidelity evidence schema records strict full-manual vi
     "infographicTransfer.cleanupMethod=glyph-letter-level-background-restoration when Spanish is removed",
     "infographicTransfer.russianOverlayStrategy=selectable-dom or selectable-svg",
     "infographicTransfer.russianOverlayLabels nonempty with percentage placement over cleaned infographic surface",
-    "infographicTransfer.overlayTextSelectability=selectable-dom-text or selectable-svg-text"
+    "infographicTransfer.overlayTextSelectability=selectable-dom-text or selectable-svg-text",
   ]);
   assert.deepEqual(evidence.strictVisualRulePolicy.diagramRequiredFields, [
     "assetCategory=source-transferred-diagram",
@@ -4932,7 +7192,7 @@ test("Manual guide source-fidelity evidence schema records strict full-manual vi
     "diagramTransfer.noGenericIconReplacement",
     "diagramTransfer.broadMaskPlatePatchStatus=none",
     "cleanupScope=glyph-level-spanish-cleanup or none-source-as-is",
-    "diagramTransfer.cleanupMethod=glyph-letter-level-background-restoration when Spanish is removed"
+    "diagramTransfer.cleanupMethod=glyph-letter-level-background-restoration when Spanish is removed",
   ]);
   for (const forbiddenTerm of [
     "approximate-redraw",
@@ -4948,52 +7208,97 @@ test("Manual guide source-fidelity evidence schema records strict full-manual vi
     "color-matched-plate",
     "opaque-rectangle",
     "opaque-label-background",
-    "backing-rectangle"
+    "backing-rectangle",
   ]) {
-    assert.ok(evidence.strictVisualRulePolicy.forbiddenStrictVisualTerms.includes(forbiddenTerm), `strict schema forbids ${forbiddenTerm}`);
+    assert.ok(
+      evidence.strictVisualRulePolicy.forbiddenStrictVisualTerms.includes(forbiddenTerm),
+      `strict schema forbids ${forbiddenTerm}`,
+    );
   }
   assert.equal(
     evidence.strictVisualRulePolicy.forbiddenStrictVisualTermMatching,
-    "case-insensitive canonical term matching across hyphen, space, and underscore separators; semantic kind/category/approach metadata is scanned while path/hash/id fields are excluded"
+    "case-insensitive canonical term matching across hyphen, space, and underscore separators; semantic kind/category/approach metadata is scanned while path/hash/id fields are excluded",
   );
 });
 
 test("Manual guide source-fidelity checker passes the section registry with front matter, Chapter 1, 2, 3, 4, 5, Appendix I, Appendix II, Appendix III, and Appendix IV implemented sections", () => {
   assert.equal(evidence.checkerId, "manual-guide-source-fidelity");
   assert.deepEqual(evidence.requiredSourcePageRange, { start: 1, end: 200 });
-  assert.deepEqual(evidence.sharedSourcePageOwnership.map((entry) => entry.sourcePage), [55, 93, 94, 95, 99, 100, 101, 119]);
-  assert.deepEqual(evidence.sharedPrereqExpectedOutput.skippedSourcePages, [1, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 43, 56, 57, 89, 98, 104, 152, 184]);
-  assert.deepEqual(evidence.sharedPrereqExpectedOutput.skippedDividerPages, [21, 43, 57, 89, 98, 104, 152, 184]);
+  assert.deepEqual(
+    evidence.sharedSourcePageOwnership.map((entry) => entry.sourcePage),
+    [55, 93, 94, 95, 99, 100, 101, 119],
+  );
+  assert.deepEqual(
+    evidence.sharedPrereqExpectedOutput.skippedSourcePages,
+    [1, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 43, 56, 57, 89, 98, 104, 152, 184],
+  );
+  assert.deepEqual(
+    evidence.sharedPrereqExpectedOutput.skippedDividerPages,
+    [21, 43, 57, 89, 98, 104, 152, 184],
+  );
   assert.deepEqual(evidence.sharedPrereqExpectedOutput.omittedBookOnlyPages, [56]);
-  assert.deepEqual(evidence.sharedPrereqExpectedOutput.sharedSourcePages, [55, 93, 94, 95, 99, 100, 101, 119]);
+  assert.deepEqual(
+    evidence.sharedPrereqExpectedOutput.sharedSourcePages,
+    [55, 93, 94, 95, 99, 100, 101, 119],
+  );
   assert.equal(evidence.sharedPrereqExpectedOutput.pendingSections, 0);
   assert.equal(evidence.sharedPrereqExpectedOutput.implementedSections, 50);
-  const output = execFileSync(process.execPath, ["scripts/manual-guide-source-fidelity.mjs"], { encoding: "utf8" });
+  const output = execFileSync(process.execPath, ["scripts/manual-guide-source-fidelity.mjs"], {
+    encoding: "utf8",
+  });
   const result = JSON.parse(output);
   assert.equal(result.status, "pass");
   assert.equal(result.pendingSections, 0);
   assert.deepEqual(result.sharedSourcePages, [55, 93, 94, 95, 99, 100, 101, 119]);
   assert.equal(result.implementedSections, 50);
-  assert.deepEqual(result.skippedSourcePages, [1, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 43, 56, 57, 89, 98, 104, 152, 184]);
+  assert.deepEqual(
+    result.skippedSourcePages,
+    [1, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 43, 56, 57, 89, 98, 104, 152, 184],
+  );
   assert.deepEqual(result.skippedDividerPages, [21, 43, 57, 89, 98, 104, 152, 184]);
   assert.deepEqual(result.omittedBookOnlyPages, [56]);
   assert.deepEqual(result.sharedSourcePages, [55, 93, 94, 95, 99, 100, 101, 119]);
-  assert.equal(result.screenshotEvidence, "recorded_for_complete_front_matter_chapters_1_through_5_and_appendices_1_through_4_sections");
+  assert.equal(
+    result.screenshotEvidence,
+    "recorded_for_complete_front_matter_chapters_1_through_5_and_appendices_1_through_4_sections",
+  );
   assert.equal(result.strictVisualRulePolicy, "031-strict-source-fidelity");
 });
 
 test("Manual guide source-fidelity checker keeps already-merged Chapter 1 legacy baseline evidence allowed", () => {
   for (const id of legacyBaselineSectionIds) {
-    const implementedEvidence = registry.sections.find((entry) => entry.id === id).implementationEvidence;
-    assert.equal("visualEvidenceSchemaVersion" in implementedEvidence, false, `${id} baseline evidence remains legacy before planned audit`);
-    assert.equal("visualRulePolicyId" in implementedEvidence, false, `${id} baseline evidence remains legacy before planned audit`);
+    const implementedEvidence = registry.sections.find(
+      (entry) => entry.id === id,
+    ).implementationEvidence;
+    assert.equal(
+      "visualEvidenceSchemaVersion" in implementedEvidence,
+      false,
+      `${id} baseline evidence remains legacy before planned audit`,
+    );
+    assert.equal(
+      "visualRulePolicyId" in implementedEvidence,
+      false,
+      `${id} baseline evidence remains legacy before planned audit`,
+    );
   }
   for (const id of strictRecordedChapter1SectionIds) {
-    const implementedEvidence = registry.sections.find((entry) => entry.id === id).implementationEvidence;
-    assert.equal(implementedEvidence.visualEvidenceSchemaVersion, 3, `${id} evidence has graduated from legacy baseline to strict schema`);
-    assert.equal(implementedEvidence.visualRulePolicyId, "031-strict-source-fidelity", `${id} evidence uses strict source-fidelity policy`);
+    const implementedEvidence = registry.sections.find(
+      (entry) => entry.id === id,
+    ).implementationEvidence;
+    assert.equal(
+      implementedEvidence.visualEvidenceSchemaVersion,
+      3,
+      `${id} evidence has graduated from legacy baseline to strict schema`,
+    );
+    assert.equal(
+      implementedEvidence.visualRulePolicyId,
+      "031-strict-source-fidelity",
+      `${id} evidence uses strict source-fidelity policy`,
+    );
   }
-  const output = execFileSync(process.execPath, ["scripts/manual-guide-source-fidelity.mjs"], { encoding: "utf8" });
+  const output = execFileSync(process.execPath, ["scripts/manual-guide-source-fidelity.mjs"], {
+    encoding: "utf8",
+  });
   const result = JSON.parse(output);
   assert.equal(result.status, "pass");
   assert.equal(result.implementedSections, 50);
@@ -5002,14 +7307,22 @@ test("Manual guide source-fidelity checker keeps already-merged Chapter 1 legacy
 test("Manual guide source-fidelity checker requires strict visual evidence for future manual units", () => {
   const tempDir = mkdtempSync(join(tmpdir(), "manual-guide-strict-missing-"));
   try {
-    const { implementedRegistryPath, moduleRoot, strictEvidencePath } = writeStrictFutureRegistryFixture(tempDir, (implementationEvidence) => {
-      delete implementationEvidence.visualEvidenceSchemaVersion;
-    });
+    const { implementedRegistryPath, moduleRoot, strictEvidencePath } =
+      writeStrictFutureRegistryFixture(tempDir, (implementationEvidence) => {
+        delete implementationEvidence.visualEvidenceSchemaVersion;
+      });
     const failure = runCheckerWithFixture(implementedRegistryPath, moduleRoot, strictEvidencePath);
-    assert.notEqual(failure.status, 0, "checker must fail when a future manual unit omits strict schema version evidence");
+    assert.notEqual(
+      failure.status,
+      0,
+      "checker must fail when a future manual unit omits strict schema version evidence",
+    );
     const result = JSON.parse(failure.stderr);
     assert.equal(result.status, "fail");
-    assert.equal(result.message, "ch1-pedestrian-priority implementationEvidence.visualEvidenceSchemaVersion must be 3 for new manual units");
+    assert.equal(
+      result.message,
+      "ch1-pedestrian-priority implementationEvidence.visualEvidenceSchemaVersion must be 3 for new manual units",
+    );
   } finally {
     rmSync(tempDir, { recursive: true, force: true });
   }
@@ -5018,17 +7331,29 @@ test("Manual guide source-fidelity checker requires strict visual evidence for f
 test("Manual guide source-fidelity checker rejects future Chapter 1 legacy-section changes without strict v3 evidence", () => {
   const tempDir = mkdtempSync(join(tmpdir(), "manual-guide-ch1-legacy-reimplementation-"));
   try {
-    const implementedRegistryPath = join(tempDir, "section-registry.ch1-legacy-reimplementation.json");
+    const implementedRegistryPath = join(
+      tempDir,
+      "section-registry.ch1-legacy-reimplementation.json",
+    );
     const changedRegistry = JSON.parse(JSON.stringify(registry));
-    const section = changedRegistry.sections.find((entry) => entry.id === "ch1-pedestrian-priority");
+    const section = changedRegistry.sections.find(
+      (entry) => entry.id === "ch1-pedestrian-priority",
+    );
     section.implementationEvidence.checkerRunAt = "future-audit-or-correction-without-strict-v3";
     writeFileSync(implementedRegistryPath, JSON.stringify(changedRegistry, null, 2));
 
     const failure = runCheckerWithFixture(implementedRegistryPath, "src/data/manual-sections");
-    assert.notEqual(failure.status, 0, "checker must fail when a legacy Chapter 1 section changes evidence without strict v3 markers");
+    assert.notEqual(
+      failure.status,
+      0,
+      "checker must fail when a legacy Chapter 1 section changes evidence without strict v3 markers",
+    );
     const result = JSON.parse(failure.stderr);
     assert.equal(result.status, "fail");
-    assert.equal(result.message, "ch1-pedestrian-priority implementationEvidence.visualEvidenceSchemaVersion must be 3 for new manual units");
+    assert.equal(
+      result.message,
+      "ch1-pedestrian-priority implementationEvidence.visualEvidenceSchemaVersion must be 3 for new manual units",
+    );
   } finally {
     rmSync(tempDir, { recursive: true, force: true });
   }
@@ -5039,15 +7364,25 @@ test("Manual guide source-fidelity checker rejects changed legacy Chapter 1 modu
   try {
     const { implementedRegistryPath, moduleRoot } = writeImplementedRegistryFixture(
       tempDir,
-      'export const ch1PedestrianPriority = { sectionId: "ch1-pedestrian-priority", blocks: [] };\n'
+      'export const ch1PedestrianPriority = { sectionId: "ch1-pedestrian-priority", blocks: [] };\n',
     );
-    writeFileSync(join(moduleRoot, "ch1-pedestrian-priority.ts"), 'export const ch1PedestrianPriority = { sectionId: "ch1-pedestrian-priority", blocks: ["changed"] };\n');
+    writeFileSync(
+      join(moduleRoot, "ch1-pedestrian-priority.ts"),
+      'export const ch1PedestrianPriority = { sectionId: "ch1-pedestrian-priority", blocks: ["changed"] };\n',
+    );
 
     const failure = runCheckerWithFixture(implementedRegistryPath, moduleRoot);
-    assert.notEqual(failure.status, 0, "checker must fail when legacy module bytes change without strict v3 markers");
+    assert.notEqual(
+      failure.status,
+      0,
+      "checker must fail when legacy module bytes change without strict v3 markers",
+    );
     const result = JSON.parse(failure.stderr);
     assert.equal(result.status, "fail");
-    assert.equal(result.message, "ch1-pedestrian-priority implementationEvidence.visualEvidenceSchemaVersion must be 3 for new manual units");
+    assert.equal(
+      result.message,
+      "ch1-pedestrian-priority implementationEvidence.visualEvidenceSchemaVersion must be 3 for new manual units",
+    );
   } finally {
     rmSync(tempDir, { recursive: true, force: true });
   }
@@ -5058,17 +7393,29 @@ test("Manual guide source-fidelity checker rejects changed legacy Chapter 1 visu
   try {
     const { implementedRegistryPath, moduleRoot } = writeImplementedRegistryFixture(
       tempDir,
-      'export const ch1PedestrianPriority = { sectionId: "ch1-pedestrian-priority", blocks: [] };\n'
+      'export const ch1PedestrianPriority = { sectionId: "ch1-pedestrian-priority", blocks: [] };\n',
     );
     const fixtureRegistry = JSON.parse(readFileSync(implementedRegistryPath, "utf8"));
-    const section = fixtureRegistry.sections.find((entry) => entry.id === "ch1-pedestrian-priority");
-    writeFileSync(section.implementationEvidence.localAssetMetadata[0].assetPath, "changed visual asset bytes");
+    const section = fixtureRegistry.sections.find(
+      (entry) => entry.id === "ch1-pedestrian-priority",
+    );
+    writeFileSync(
+      section.implementationEvidence.localAssetMetadata[0].assetPath,
+      "changed visual asset bytes",
+    );
 
     const failure = runCheckerWithFixture(implementedRegistryPath, moduleRoot);
-    assert.notEqual(failure.status, 0, "checker must fail when legacy visual asset bytes change without strict v3 markers");
+    assert.notEqual(
+      failure.status,
+      0,
+      "checker must fail when legacy visual asset bytes change without strict v3 markers",
+    );
     const result = JSON.parse(failure.stderr);
     assert.equal(result.status, "fail");
-    assert.equal(result.message, "ch1-pedestrian-priority implementationEvidence.visualEvidenceSchemaVersion must be 3 for new manual units");
+    assert.equal(
+      result.message,
+      "ch1-pedestrian-priority implementationEvidence.visualEvidenceSchemaVersion must be 3 for new manual units",
+    );
   } finally {
     rmSync(tempDir, { recursive: true, force: true });
   }
@@ -5077,12 +7424,20 @@ test("Manual guide source-fidelity checker rejects changed legacy Chapter 1 visu
 test("Manual guide source-fidelity checker requires strict evidence for newly implemented Chapter 2 sections in the legacy registry", () => {
   const tempDir = mkdtempSync(join(tmpdir(), "manual-guide-ch2-legacy-evidence-"));
   try {
-    const { implementedRegistryPath, moduleRoot } = writeChapter2LegalResponsibilityFixture(tempDir);
+    const { implementedRegistryPath, moduleRoot } =
+      writeChapter2LegalResponsibilityFixture(tempDir);
     const failure = runCheckerWithFixture(implementedRegistryPath, moduleRoot);
-    assert.notEqual(failure.status, 0, "checker must fail when a pending Chapter 2 section is newly implemented with legacy evidence");
+    assert.notEqual(
+      failure.status,
+      0,
+      "checker must fail when a pending Chapter 2 section is newly implemented with legacy evidence",
+    );
     const result = JSON.parse(failure.stderr);
     assert.equal(result.status, "fail");
-    assert.equal(result.message, "ch2-legal-responsibility implementationEvidence.visualEvidenceSchemaVersion must be 3 for new manual units");
+    assert.equal(
+      result.message,
+      "ch2-legal-responsibility implementationEvidence.visualEvidenceSchemaVersion must be 3 for new manual units",
+    );
   } finally {
     rmSync(tempDir, { recursive: true, force: true });
   }
@@ -5091,7 +7446,10 @@ test("Manual guide source-fidelity checker requires strict evidence for newly im
 test("Manual guide source-fidelity checker accepts newly implemented Chapter 2 sections only with strict v3 evidence", () => {
   const tempDir = mkdtempSync(join(tmpdir(), "manual-guide-ch2-strict-evidence-"));
   try {
-    const { implementedRegistryPath, moduleRoot } = writeChapter2LegalResponsibilityFixture(tempDir, { strict: true });
+    const { implementedRegistryPath, moduleRoot } = writeChapter2LegalResponsibilityFixture(
+      tempDir,
+      { strict: true },
+    );
     const result = runCheckerWithFixture(implementedRegistryPath, moduleRoot);
     assert.equal(result.status, 0, result.stderr);
     const output = JSON.parse(result.stdout);
@@ -5103,14 +7461,27 @@ test("Manual guide source-fidelity checker accepts newly implemented Chapter 2 s
 });
 
 test("Manual guide source-fidelity checker accepts strict transferred artwork with source-region linkage", () => {
-  const infographicTempDir = mkdtempSync(join(tmpdir(), "manual-guide-strict-infographic-source-link-pass-"));
-  const diagramTempDir = mkdtempSync(join(tmpdir(), "manual-guide-strict-diagram-source-link-pass-"));
+  const infographicTempDir = mkdtempSync(
+    join(tmpdir(), "manual-guide-strict-infographic-source-link-pass-"),
+  );
+  const diagramTempDir = mkdtempSync(
+    join(tmpdir(), "manual-guide-strict-diagram-source-link-pass-"),
+  );
   try {
     const infographicFixture = writeStrictFutureRegistryFixture(infographicTempDir);
-    const infographicResult = runCheckerWithFixture(infographicFixture.implementedRegistryPath, infographicFixture.moduleRoot, infographicFixture.strictEvidencePath);
+    const infographicResult = runCheckerWithFixture(
+      infographicFixture.implementedRegistryPath,
+      infographicFixture.moduleRoot,
+      infographicFixture.strictEvidencePath,
+    );
     assert.equal(infographicResult.status, 0, infographicResult.stderr);
-    const diagramFixture = writeChapter2LegalResponsibilityFixture(diagramTempDir, { strict: true });
-    const diagramResult = runCheckerWithFixture(diagramFixture.implementedRegistryPath, diagramFixture.moduleRoot);
+    const diagramFixture = writeChapter2LegalResponsibilityFixture(diagramTempDir, {
+      strict: true,
+    });
+    const diagramResult = runCheckerWithFixture(
+      diagramFixture.implementedRegistryPath,
+      diagramFixture.moduleRoot,
+    );
     assert.equal(diagramResult.status, 0, diagramResult.stderr);
   } finally {
     rmSync(infographicTempDir, { recursive: true, force: true });
@@ -5121,17 +7492,27 @@ test("Manual guide source-fidelity checker accepts strict transferred artwork wi
 test("Manual guide source-fidelity checker rejects strict source-transferred diagrams without transfer proof", () => {
   const tempDir = mkdtempSync(join(tmpdir(), "manual-guide-ch2-diagram-missing-transfer-"));
   try {
-    const { implementedRegistryPath, moduleRoot } = writeChapter2LegalResponsibilityFixture(tempDir, {
-      strict: true,
-      mutateEvidence: (implementationEvidence) => {
-        delete implementationEvidence.localAssetMetadata[1].diagramTransfer;
-      }
-    });
+    const { implementedRegistryPath, moduleRoot } = writeChapter2LegalResponsibilityFixture(
+      tempDir,
+      {
+        strict: true,
+        mutateEvidence: (implementationEvidence) => {
+          delete implementationEvidence.localAssetMetadata[1].diagramTransfer;
+        },
+      },
+    );
     const failure = runCheckerWithFixture(implementedRegistryPath, moduleRoot);
-    assert.notEqual(failure.status, 0, "checker must fail when a strict transferred diagram omits source-transfer proof");
+    assert.notEqual(
+      failure.status,
+      0,
+      "checker must fail when a strict transferred diagram omits source-transfer proof",
+    );
     const result = JSON.parse(failure.stderr);
     assert.equal(result.status, "fail");
-    assert.equal(result.message, "ch2-legal-responsibility implementationEvidence localAssetMetadata[1].diagramTransfer must be an object");
+    assert.equal(
+      result.message,
+      "ch2-legal-responsibility implementationEvidence localAssetMetadata[1].diagramTransfer must be an object",
+    );
   } finally {
     rmSync(tempDir, { recursive: true, force: true });
   }
@@ -5140,14 +7521,23 @@ test("Manual guide source-fidelity checker rejects strict source-transferred dia
 test("Manual guide source-fidelity checker rejects transferred infographics without Russian overlay labels", () => {
   const tempDir = mkdtempSync(join(tmpdir(), "manual-guide-infographic-missing-russian-overlay-"));
   try {
-    const { implementedRegistryPath, moduleRoot, strictEvidencePath } = writeStrictFutureRegistryFixture(tempDir, (implementationEvidence) => {
-      delete implementationEvidence.localAssetMetadata[0].infographicTransfer.russianOverlayLabels;
-    });
+    const { implementedRegistryPath, moduleRoot, strictEvidencePath } =
+      writeStrictFutureRegistryFixture(tempDir, (implementationEvidence) => {
+        delete implementationEvidence.localAssetMetadata[0].infographicTransfer
+          .russianOverlayLabels;
+      });
     const failure = runCheckerWithFixture(implementedRegistryPath, moduleRoot, strictEvidencePath);
-    assert.notEqual(failure.status, 0, "checker must fail when a strict transferred infographic omits Russian overlay labels");
+    assert.notEqual(
+      failure.status,
+      0,
+      "checker must fail when a strict transferred infographic omits Russian overlay labels",
+    );
     const result = JSON.parse(failure.stderr);
     assert.equal(result.status, "fail");
-    assert.equal(result.message, "ch1-pedestrian-priority implementationEvidence localAssetMetadata[0].infographicTransfer is missing russianOverlayLabels");
+    assert.equal(
+      result.message,
+      "ch1-pedestrian-priority implementationEvidence localAssetMetadata[0].infographicTransfer is missing russianOverlayLabels",
+    );
   } finally {
     rmSync(tempDir, { recursive: true, force: true });
   }
@@ -5161,7 +7551,8 @@ test("Manual guide source-fidelity checker rejects strict transferred artwork wi
         writeStrictFutureRegistryFixture(tempDir, (implementationEvidence) => {
           delete implementationEvidence.localAssetMetadata[0].infographicTransfer.sourceAssetPath;
         }),
-      expectedMessage: "ch1-pedestrian-priority implementationEvidence localAssetMetadata[0].infographicTransfer is missing sourceAssetPath"
+      expectedMessage:
+        "ch1-pedestrian-priority implementationEvidence localAssetMetadata[0].infographicTransfer is missing sourceAssetPath",
     },
     {
       name: "diagram",
@@ -5170,18 +7561,30 @@ test("Manual guide source-fidelity checker rejects strict transferred artwork wi
           strict: true,
           mutateEvidence: (implementationEvidence) => {
             delete implementationEvidence.localAssetMetadata[1].diagramTransfer.sourceAssetPath;
-          }
+          },
         }),
-      expectedMessage: "ch2-legal-responsibility implementationEvidence localAssetMetadata[1].diagramTransfer is missing sourceAssetPath"
-    }
+      expectedMessage:
+        "ch2-legal-responsibility implementationEvidence localAssetMetadata[1].diagramTransfer is missing sourceAssetPath",
+    },
   ];
 
   for (const testCase of cases) {
-    const tempDir = mkdtempSync(join(tmpdir(), `manual-guide-strict-${testCase.name}-source-link-missing-`));
+    const tempDir = mkdtempSync(
+      join(tmpdir(), `manual-guide-strict-${testCase.name}-source-link-missing-`),
+    );
     try {
-      const { implementedRegistryPath, moduleRoot, strictEvidencePath } = testCase.writeFixture(tempDir);
-      const failure = runCheckerWithFixture(implementedRegistryPath, moduleRoot, strictEvidencePath);
-      assert.notEqual(failure.status, 0, `checker must fail when strict transferred ${testCase.name} omits source linkage`);
+      const { implementedRegistryPath, moduleRoot, strictEvidencePath } =
+        testCase.writeFixture(tempDir);
+      const failure = runCheckerWithFixture(
+        implementedRegistryPath,
+        moduleRoot,
+        strictEvidencePath,
+      );
+      assert.notEqual(
+        failure.status,
+        0,
+        `checker must fail when strict transferred ${testCase.name} omits source linkage`,
+      );
       const result = JSON.parse(failure.stderr);
       assert.equal(result.status, "fail");
       assert.equal(result.message, testCase.expectedMessage);
@@ -5194,23 +7597,28 @@ test("Manual guide source-fidelity checker rejects strict transferred artwork wi
 test("Manual guide source-fidelity checker rejects self-certified transferred artwork without a source crop", () => {
   const tempDir = mkdtempSync(join(tmpdir(), "manual-guide-strict-transfer-self-certified-"));
   try {
-    const { implementedRegistryPath, moduleRoot, strictEvidencePath } = writeStrictFutureRegistryFixture(tempDir, (implementationEvidence) => {
-      const transferredAsset = implementationEvidence.localAssetMetadata[0];
-      transferredAsset.assetKind = "generated-but-self-certified-infographic";
-      transferredAsset.infographicTransfer.sourceAssetPath = transferredAsset.assetPath;
-      transferredAsset.infographicTransfer.sourceCropSha256 = transferredAsset.sha256;
-      transferredAsset.infographicTransfer.sourceCropDimensions = {
-        width: transferredAsset.width,
-        height: transferredAsset.height
-      };
-    });
+    const { implementedRegistryPath, moduleRoot, strictEvidencePath } =
+      writeStrictFutureRegistryFixture(tempDir, (implementationEvidence) => {
+        const transferredAsset = implementationEvidence.localAssetMetadata[0];
+        transferredAsset.assetKind = "generated-but-self-certified-infographic";
+        transferredAsset.infographicTransfer.sourceAssetPath = transferredAsset.assetPath;
+        transferredAsset.infographicTransfer.sourceCropSha256 = transferredAsset.sha256;
+        transferredAsset.infographicTransfer.sourceCropDimensions = {
+          width: transferredAsset.width,
+          height: transferredAsset.height,
+        };
+      });
     const failure = runCheckerWithFixture(implementedRegistryPath, moduleRoot, strictEvidencePath);
-    assert.notEqual(failure.status, 0, "checker must fail when transferred artwork links only to its own generated runtime asset");
+    assert.notEqual(
+      failure.status,
+      0,
+      "checker must fail when transferred artwork links only to its own generated runtime asset",
+    );
     const result = JSON.parse(failure.stderr);
     assert.equal(result.status, "fail");
     assert.equal(
       result.message,
-      "ch1-pedestrian-priority implementationEvidence localAssetMetadata[0].infographicTransfer.sourceAssetPath must reference sourceRegionMetadata"
+      "ch1-pedestrian-priority implementationEvidence localAssetMetadata[0].infographicTransfer.sourceAssetPath must reference sourceRegionMetadata",
     );
   } finally {
     rmSync(tempDir, { recursive: true, force: true });
@@ -5220,41 +7628,48 @@ test("Manual guide source-fidelity checker rejects self-certified transferred ar
 test("Manual guide source-fidelity checker rejects strict source-transferred diagrams with visible Spanish", () => {
   const tempDir = mkdtempSync(join(tmpdir(), "manual-guide-ch2-diagram-visible-spanish-"));
   try {
-    const { implementedRegistryPath, moduleRoot } = writeChapter2LegalResponsibilityFixture(tempDir, {
-      strict: true,
-      mutateEvidence: (implementationEvidence) => {
-        const diagramAsset = implementationEvidence.localAssetMetadata[1];
-        diagramAsset.assetKind = "high-resolution-original-source-diagram";
-        diagramAsset.containsText = true;
-        diagramAsset.visibleSpanish = true;
-        diagramAsset.sourceImageException = {
-          kind: "source-image-original-visible-text",
-          visibleSpanishScope: "source-image-only",
-          sourceAsIs: true,
-          russianExplanationOutsideImage: true
-        };
-        implementationEvidence.visibleSpanishStatus = {
-          status: "source_image_exceptions_only",
-          nonSignVisibleSpanishStatus: "source-image-only",
-          exceptions: [
-            {
-              assetPath: diagramAsset.assetPath,
-              kind: "source-image-original-visible-text",
-              visibleSpanishScope: "source-image-only",
-              sourceAsIs: true,
-              russianExplanationOutsideImage: true
-            }
-          ]
-        };
-      }
-    });
+    const { implementedRegistryPath, moduleRoot } = writeChapter2LegalResponsibilityFixture(
+      tempDir,
+      {
+        strict: true,
+        mutateEvidence: (implementationEvidence) => {
+          const diagramAsset = implementationEvidence.localAssetMetadata[1];
+          diagramAsset.assetKind = "high-resolution-original-source-diagram";
+          diagramAsset.containsText = true;
+          diagramAsset.visibleSpanish = true;
+          diagramAsset.sourceImageException = {
+            kind: "source-image-original-visible-text",
+            visibleSpanishScope: "source-image-only",
+            sourceAsIs: true,
+            russianExplanationOutsideImage: true,
+          };
+          implementationEvidence.visibleSpanishStatus = {
+            status: "source_image_exceptions_only",
+            nonSignVisibleSpanishStatus: "source-image-only",
+            exceptions: [
+              {
+                assetPath: diagramAsset.assetPath,
+                kind: "source-image-original-visible-text",
+                visibleSpanishScope: "source-image-only",
+                sourceAsIs: true,
+                russianExplanationOutsideImage: true,
+              },
+            ],
+          };
+        },
+      },
+    );
     const failure = runCheckerWithFixture(implementedRegistryPath, moduleRoot);
-    assert.notEqual(failure.status, 0, "checker must fail when a strict transferred diagram keeps visible Spanish");
+    assert.notEqual(
+      failure.status,
+      0,
+      "checker must fail when a strict transferred diagram keeps visible Spanish",
+    );
     const result = JSON.parse(failure.stderr);
     assert.equal(result.status, "fail");
     assert.equal(
       result.message,
-      "ch2-legal-responsibility implementationEvidence localAssetMetadata[1].visibleSpanish must be false for transferred diagram artwork"
+      "ch2-legal-responsibility implementationEvidence localAssetMetadata[1].visibleSpanish must be false for transferred diagram artwork",
     );
   } finally {
     rmSync(tempDir, { recursive: true, force: true });
@@ -5264,14 +7679,22 @@ test("Manual guide source-fidelity checker rejects strict source-transferred dia
 test("Manual guide source-fidelity checker rejects future image assets without no-upscale evidence", () => {
   const tempDir = mkdtempSync(join(tmpdir(), "manual-guide-strict-upscale-"));
   try {
-    const { implementedRegistryPath, moduleRoot, strictEvidencePath } = writeStrictFutureRegistryFixture(tempDir, (implementationEvidence) => {
-      implementationEvidence.localAssetMetadata[0].runtimeDisplaySize.noUpscale = false;
-    });
+    const { implementedRegistryPath, moduleRoot, strictEvidencePath } =
+      writeStrictFutureRegistryFixture(tempDir, (implementationEvidence) => {
+        implementationEvidence.localAssetMetadata[0].runtimeDisplaySize.noUpscale = false;
+      });
     const failure = runCheckerWithFixture(implementedRegistryPath, moduleRoot, strictEvidencePath);
-    assert.notEqual(failure.status, 0, "checker must fail when future image metadata allows runtime upscaling");
+    assert.notEqual(
+      failure.status,
+      0,
+      "checker must fail when future image metadata allows runtime upscaling",
+    );
     const result = JSON.parse(failure.stderr);
     assert.equal(result.status, "fail");
-    assert.equal(result.message, "ch1-pedestrian-priority implementationEvidence localAssetMetadata[0].runtimeDisplaySize.noUpscale must be true");
+    assert.equal(
+      result.message,
+      "ch1-pedestrian-priority implementationEvidence localAssetMetadata[0].runtimeDisplaySize.noUpscale must be true",
+    );
   } finally {
     rmSync(tempDir, { recursive: true, force: true });
   }
@@ -5280,14 +7703,22 @@ test("Manual guide source-fidelity checker rejects future image assets without n
 test("Manual guide source-fidelity checker rejects strict image assets with bogus sha256 metadata", () => {
   const tempDir = mkdtempSync(join(tmpdir(), "manual-guide-strict-bogus-sha-"));
   try {
-    const { implementedRegistryPath, moduleRoot, strictEvidencePath } = writeStrictFutureRegistryFixture(tempDir, (implementationEvidence) => {
-      implementationEvidence.localAssetMetadata[0].sha256 = "fixture-artwork-1-sha";
-    });
+    const { implementedRegistryPath, moduleRoot, strictEvidencePath } =
+      writeStrictFutureRegistryFixture(tempDir, (implementationEvidence) => {
+        implementationEvidence.localAssetMetadata[0].sha256 = "fixture-artwork-1-sha";
+      });
     const failure = runCheckerWithFixture(implementedRegistryPath, moduleRoot, strictEvidencePath);
-    assert.notEqual(failure.status, 0, "checker must fail when strict image metadata uses a placeholder hash");
+    assert.notEqual(
+      failure.status,
+      0,
+      "checker must fail when strict image metadata uses a placeholder hash",
+    );
     const result = JSON.parse(failure.stderr);
     assert.equal(result.status, "fail");
-    assert.equal(result.message, "ch1-pedestrian-priority implementationEvidence localAssetMetadata[0].sha256 must be a SHA-256 hash");
+    assert.equal(
+      result.message,
+      "ch1-pedestrian-priority implementationEvidence localAssetMetadata[0].sha256 must be a SHA-256 hash",
+    );
   } finally {
     rmSync(tempDir, { recursive: true, force: true });
   }
@@ -5296,14 +7727,23 @@ test("Manual guide source-fidelity checker rejects strict image assets with bogu
 test("Manual guide source-fidelity checker rejects strict image assets with stale sha256 metadata", () => {
   const tempDir = mkdtempSync(join(tmpdir(), "manual-guide-strict-stale-sha-"));
   try {
-    const { implementedRegistryPath, moduleRoot, strictEvidencePath } = writeStrictFutureRegistryFixture(tempDir, (implementationEvidence) => {
-      implementationEvidence.localAssetMetadata[0].sha256 = "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff";
-    });
+    const { implementedRegistryPath, moduleRoot, strictEvidencePath } =
+      writeStrictFutureRegistryFixture(tempDir, (implementationEvidence) => {
+        implementationEvidence.localAssetMetadata[0].sha256 =
+          "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff";
+      });
     const failure = runCheckerWithFixture(implementedRegistryPath, moduleRoot, strictEvidencePath);
-    assert.notEqual(failure.status, 0, "checker must fail when strict image metadata hash does not match asset bytes");
+    assert.notEqual(
+      failure.status,
+      0,
+      "checker must fail when strict image metadata hash does not match asset bytes",
+    );
     const result = JSON.parse(failure.stderr);
     assert.equal(result.status, "fail");
-    assert.equal(result.message, "ch1-pedestrian-priority implementationEvidence localAssetMetadata[0].sha256 must match referenced artifact bytes");
+    assert.equal(
+      result.message,
+      "ch1-pedestrian-priority implementationEvidence localAssetMetadata[0].sha256 must match referenced artifact bytes",
+    );
   } finally {
     rmSync(tempDir, { recursive: true, force: true });
   }
@@ -5312,32 +7752,50 @@ test("Manual guide source-fidelity checker rejects strict image assets with stal
 test("Manual guide source-fidelity checker rejects strict image assets with overclaimed dimensions", () => {
   const tempDir = mkdtempSync(join(tmpdir(), "manual-guide-strict-overclaimed-dimensions-"));
   try {
-    const { implementedRegistryPath, moduleRoot, strictEvidencePath } = writeStrictFutureRegistryFixture(tempDir, (implementationEvidence) => {
-      implementationEvidence.localAssetMetadata[0].width += 1;
-    });
+    const { implementedRegistryPath, moduleRoot, strictEvidencePath } =
+      writeStrictFutureRegistryFixture(tempDir, (implementationEvidence) => {
+        implementationEvidence.localAssetMetadata[0].width += 1;
+      });
     const failure = runCheckerWithFixture(implementedRegistryPath, moduleRoot, strictEvidencePath);
-    assert.notEqual(failure.status, 0, "checker must fail when strict image metadata overstates the referenced image width");
+    assert.notEqual(
+      failure.status,
+      0,
+      "checker must fail when strict image metadata overstates the referenced image width",
+    );
     const result = JSON.parse(failure.stderr);
     assert.equal(result.status, "fail");
-    assert.equal(result.message, "ch1-pedestrian-priority implementationEvidence localAssetMetadata[0].width must match referenced image width");
+    assert.equal(
+      result.message,
+      "ch1-pedestrian-priority implementationEvidence localAssetMetadata[0].width must match referenced image width",
+    );
   } finally {
     rmSync(tempDir, { recursive: true, force: true });
   }
 });
 
 test("Manual guide source-fidelity checker rejects strict image assets with overclaimed extraction output dimensions", () => {
-  const tempDir = mkdtempSync(join(tmpdir(), "manual-guide-strict-overclaimed-extraction-dimensions-"));
+  const tempDir = mkdtempSync(
+    join(tmpdir(), "manual-guide-strict-overclaimed-extraction-dimensions-"),
+  );
   try {
-    const { implementedRegistryPath, moduleRoot, strictEvidencePath } = writeStrictFutureRegistryFixture(tempDir, (implementationEvidence) => {
-      implementationEvidence.localAssetMetadata[0].extractionScaleEvidence.outputDimensions = { width: 121, height: 80 };
-    });
+    const { implementedRegistryPath, moduleRoot, strictEvidencePath } =
+      writeStrictFutureRegistryFixture(tempDir, (implementationEvidence) => {
+        implementationEvidence.localAssetMetadata[0].extractionScaleEvidence.outputDimensions = {
+          width: 121,
+          height: 80,
+        };
+      });
     const failure = runCheckerWithFixture(implementedRegistryPath, moduleRoot, strictEvidencePath);
-    assert.notEqual(failure.status, 0, "checker must fail when strict extraction metadata overstates referenced image dimensions");
+    assert.notEqual(
+      failure.status,
+      0,
+      "checker must fail when strict extraction metadata overstates referenced image dimensions",
+    );
     const result = JSON.parse(failure.stderr);
     assert.equal(result.status, "fail");
     assert.equal(
       result.message,
-      "ch1-pedestrian-priority implementationEvidence localAssetMetadata[0].extractionScaleEvidence.outputDimensions.width must match referenced image width"
+      "ch1-pedestrian-priority implementationEvidence localAssetMetadata[0].extractionScaleEvidence.outputDimensions.width must match referenced image width",
     );
   } finally {
     rmSync(tempDir, { recursive: true, force: true });
@@ -5347,17 +7805,24 @@ test("Manual guide source-fidelity checker rejects strict image assets with over
 test("Manual guide source-fidelity checker rejects strict image assets with non-image bytes", () => {
   const tempDir = mkdtempSync(join(tmpdir(), "manual-guide-strict-non-image-bytes-"));
   try {
-    const { implementedRegistryPath, moduleRoot, strictEvidencePath } = writeStrictFutureRegistryFixture(tempDir, (implementationEvidence) => {
-      writeFileSync(implementationEvidence.localAssetMetadata[0].assetPath, "not image bytes");
-      implementationEvidence.localAssetMetadata[0].sha256 = sha256File(implementationEvidence.localAssetMetadata[0].assetPath);
-    });
+    const { implementedRegistryPath, moduleRoot, strictEvidencePath } =
+      writeStrictFutureRegistryFixture(tempDir, (implementationEvidence) => {
+        writeFileSync(implementationEvidence.localAssetMetadata[0].assetPath, "not image bytes");
+        implementationEvidence.localAssetMetadata[0].sha256 = sha256File(
+          implementationEvidence.localAssetMetadata[0].assetPath,
+        );
+      });
     const failure = runCheckerWithFixture(implementedRegistryPath, moduleRoot, strictEvidencePath);
-    assert.notEqual(failure.status, 0, "checker must fail when strict image metadata references non-image bytes");
+    assert.notEqual(
+      failure.status,
+      0,
+      "checker must fail when strict image metadata references non-image bytes",
+    );
     const result = JSON.parse(failure.stderr);
     assert.equal(result.status, "fail");
     assert.equal(
       result.message,
-      "ch1-pedestrian-priority implementationEvidence localAssetMetadata[0].assetPath must reference a supported image with readable dimensions"
+      "ch1-pedestrian-priority implementationEvidence localAssetMetadata[0].assetPath must reference a supported image with readable dimensions",
     );
   } finally {
     rmSync(tempDir, { recursive: true, force: true });
@@ -5367,17 +7832,27 @@ test("Manual guide source-fidelity checker rejects strict image assets with non-
 test("Manual guide source-fidelity checker rejects strict source crops with non-image bytes", () => {
   const tempDir = mkdtempSync(join(tmpdir(), "manual-guide-strict-source-crop-non-image-bytes-"));
   try {
-    const { implementedRegistryPath, moduleRoot, strictEvidencePath } = writeStrictFutureRegistryFixture(tempDir, (implementationEvidence) => {
-      writeFileSync(implementationEvidence.sourceRegionMetadata[0].sourceAssetPath, "not image bytes");
-      implementationEvidence.sourceRegionMetadata[0].cropSha256 = sha256File(implementationEvidence.sourceRegionMetadata[0].sourceAssetPath);
-    });
+    const { implementedRegistryPath, moduleRoot, strictEvidencePath } =
+      writeStrictFutureRegistryFixture(tempDir, (implementationEvidence) => {
+        writeFileSync(
+          implementationEvidence.sourceRegionMetadata[0].sourceAssetPath,
+          "not image bytes",
+        );
+        implementationEvidence.sourceRegionMetadata[0].cropSha256 = sha256File(
+          implementationEvidence.sourceRegionMetadata[0].sourceAssetPath,
+        );
+      });
     const failure = runCheckerWithFixture(implementedRegistryPath, moduleRoot, strictEvidencePath);
-    assert.notEqual(failure.status, 0, "checker must fail when strict source crop metadata references non-image bytes");
+    assert.notEqual(
+      failure.status,
+      0,
+      "checker must fail when strict source crop metadata references non-image bytes",
+    );
     const result = JSON.parse(failure.stderr);
     assert.equal(result.status, "fail");
     assert.equal(
       result.message,
-      "ch1-pedestrian-priority implementationEvidence sourceRegionMetadata[0].sourceAssetPath must reference a supported image with readable dimensions"
+      "ch1-pedestrian-priority implementationEvidence sourceRegionMetadata[0].sourceAssetPath must reference a supported image with readable dimensions",
     );
   } finally {
     rmSync(tempDir, { recursive: true, force: true });
@@ -5387,14 +7862,22 @@ test("Manual guide source-fidelity checker rejects strict source crops with non-
 test("Manual guide source-fidelity checker rejects strict source crops with bogus cropSha256 metadata", () => {
   const tempDir = mkdtempSync(join(tmpdir(), "manual-guide-strict-bogus-crop-sha-"));
   try {
-    const { implementedRegistryPath, moduleRoot, strictEvidencePath } = writeStrictFutureRegistryFixture(tempDir, (implementationEvidence) => {
-      implementationEvidence.sourceRegionMetadata[0].cropSha256 = "fixture-source-crop-24-sha";
-    });
+    const { implementedRegistryPath, moduleRoot, strictEvidencePath } =
+      writeStrictFutureRegistryFixture(tempDir, (implementationEvidence) => {
+        implementationEvidence.sourceRegionMetadata[0].cropSha256 = "fixture-source-crop-24-sha";
+      });
     const failure = runCheckerWithFixture(implementedRegistryPath, moduleRoot, strictEvidencePath);
-    assert.notEqual(failure.status, 0, "checker must fail when strict source crop metadata uses a placeholder hash");
+    assert.notEqual(
+      failure.status,
+      0,
+      "checker must fail when strict source crop metadata uses a placeholder hash",
+    );
     const result = JSON.parse(failure.stderr);
     assert.equal(result.status, "fail");
-    assert.equal(result.message, "ch1-pedestrian-priority implementationEvidence sourceRegionMetadata[0].cropSha256 must be a SHA-256 hash");
+    assert.equal(
+      result.message,
+      "ch1-pedestrian-priority implementationEvidence sourceRegionMetadata[0].cropSha256 must be a SHA-256 hash",
+    );
   } finally {
     rmSync(tempDir, { recursive: true, force: true });
   }
@@ -5403,14 +7886,23 @@ test("Manual guide source-fidelity checker rejects strict source crops with bogu
 test("Manual guide source-fidelity checker rejects strict source crops with stale cropSha256 metadata", () => {
   const tempDir = mkdtempSync(join(tmpdir(), "manual-guide-strict-stale-crop-sha-"));
   try {
-    const { implementedRegistryPath, moduleRoot, strictEvidencePath } = writeStrictFutureRegistryFixture(tempDir, (implementationEvidence) => {
-      implementationEvidence.sourceRegionMetadata[0].cropSha256 = "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff";
-    });
+    const { implementedRegistryPath, moduleRoot, strictEvidencePath } =
+      writeStrictFutureRegistryFixture(tempDir, (implementationEvidence) => {
+        implementationEvidence.sourceRegionMetadata[0].cropSha256 =
+          "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff";
+      });
     const failure = runCheckerWithFixture(implementedRegistryPath, moduleRoot, strictEvidencePath);
-    assert.notEqual(failure.status, 0, "checker must fail when strict crop hash does not match source crop artifact bytes");
+    assert.notEqual(
+      failure.status,
+      0,
+      "checker must fail when strict crop hash does not match source crop artifact bytes",
+    );
     const result = JSON.parse(failure.stderr);
     assert.equal(result.status, "fail");
-    assert.equal(result.message, "ch1-pedestrian-priority implementationEvidence sourceRegionMetadata[0].cropSha256 must match referenced artifact bytes");
+    assert.equal(
+      result.message,
+      "ch1-pedestrian-priority implementationEvidence sourceRegionMetadata[0].cropSha256 must match referenced artifact bytes",
+    );
   } finally {
     rmSync(tempDir, { recursive: true, force: true });
   }
@@ -5419,16 +7911,21 @@ test("Manual guide source-fidelity checker rejects strict source crops with stal
 test("Manual guide source-fidelity checker rejects strict source crops with mismatched cropDimensions", () => {
   const tempDir = mkdtempSync(join(tmpdir(), "manual-guide-strict-crop-dimensions-mismatch-"));
   try {
-    const { implementedRegistryPath, moduleRoot, strictEvidencePath } = writeStrictFutureRegistryFixture(tempDir, (implementationEvidence) => {
-      implementationEvidence.sourceRegionMetadata[0].cropDimensions = { width: 121, height: 80 };
-    });
+    const { implementedRegistryPath, moduleRoot, strictEvidencePath } =
+      writeStrictFutureRegistryFixture(tempDir, (implementationEvidence) => {
+        implementationEvidence.sourceRegionMetadata[0].cropDimensions = { width: 121, height: 80 };
+      });
     const failure = runCheckerWithFixture(implementedRegistryPath, moduleRoot, strictEvidencePath);
-    assert.notEqual(failure.status, 0, "checker must fail when strict cropDimensions do not match source crop artifact bytes");
+    assert.notEqual(
+      failure.status,
+      0,
+      "checker must fail when strict cropDimensions do not match source crop artifact bytes",
+    );
     const result = JSON.parse(failure.stderr);
     assert.equal(result.status, "fail");
     assert.equal(
       result.message,
-      "ch1-pedestrian-priority implementationEvidence sourceRegionMetadata[0].cropDimensions.width must match referenced image width"
+      "ch1-pedestrian-priority implementationEvidence sourceRegionMetadata[0].cropDimensions.width must match referenced image width",
     );
   } finally {
     rmSync(tempDir, { recursive: true, force: true });
@@ -5436,18 +7933,28 @@ test("Manual guide source-fidelity checker rejects strict source crops with mism
 });
 
 test("Manual guide source-fidelity checker rejects strict source crops with overclaimed extraction output dimensions", () => {
-  const tempDir = mkdtempSync(join(tmpdir(), "manual-guide-strict-source-crop-extraction-dimensions-"));
+  const tempDir = mkdtempSync(
+    join(tmpdir(), "manual-guide-strict-source-crop-extraction-dimensions-"),
+  );
   try {
-    const { implementedRegistryPath, moduleRoot, strictEvidencePath } = writeStrictFutureRegistryFixture(tempDir, (implementationEvidence) => {
-      implementationEvidence.sourceRegionMetadata[0].extractionScaleEvidence.outputDimensions = { width: 121, height: 80 };
-    });
+    const { implementedRegistryPath, moduleRoot, strictEvidencePath } =
+      writeStrictFutureRegistryFixture(tempDir, (implementationEvidence) => {
+        implementationEvidence.sourceRegionMetadata[0].extractionScaleEvidence.outputDimensions = {
+          width: 121,
+          height: 80,
+        };
+      });
     const failure = runCheckerWithFixture(implementedRegistryPath, moduleRoot, strictEvidencePath);
-    assert.notEqual(failure.status, 0, "checker must fail when strict source crop extraction dimensions do not match artifact bytes");
+    assert.notEqual(
+      failure.status,
+      0,
+      "checker must fail when strict source crop extraction dimensions do not match artifact bytes",
+    );
     const result = JSON.parse(failure.stderr);
     assert.equal(result.status, "fail");
     assert.equal(
       result.message,
-      "ch1-pedestrian-priority implementationEvidence sourceRegionMetadata[0].extractionScaleEvidence.outputDimensions.width must match referenced image width"
+      "ch1-pedestrian-priority implementationEvidence sourceRegionMetadata[0].extractionScaleEvidence.outputDimensions.width must match referenced image width",
     );
   } finally {
     rmSync(tempDir, { recursive: true, force: true });
@@ -5457,25 +7964,26 @@ test("Manual guide source-fidelity checker rejects strict source crops with over
 test("Manual guide source-fidelity checker accepts strict non-image asset categories without image sizing metadata", () => {
   const tempDir = mkdtempSync(join(tmpdir(), "manual-guide-strict-non-image-"));
   try {
-    const { implementedRegistryPath, moduleRoot, strictEvidencePath } = writeStrictFutureRegistryFixture(tempDir, (implementationEvidence) => {
-      implementationEvidence.localAssetMetadata = [
-        {
-          assetPath: writeTempFile(join(tempDir, "assets", "native-dom-text-only.txt")),
-          assetKind: "native-dom-text-only",
-          assetCategory: "native-dom-text-only",
-          containsText: true,
-          visibleSpanish: false
-        },
-        {
-          assetPath: writeTempFile(join(tempDir, "assets", "reference-only-not-runtime.txt")),
-          assetKind: "reference-only-not-runtime",
-          assetCategory: "reference-only-not-runtime",
-          containsText: false,
-          visibleSpanish: false
-        }
-      ];
-      implementationEvidence.visibleSpanishStatus = "none";
-    });
+    const { implementedRegistryPath, moduleRoot, strictEvidencePath } =
+      writeStrictFutureRegistryFixture(tempDir, (implementationEvidence) => {
+        implementationEvidence.localAssetMetadata = [
+          {
+            assetPath: writeTempFile(join(tempDir, "assets", "native-dom-text-only.txt")),
+            assetKind: "native-dom-text-only",
+            assetCategory: "native-dom-text-only",
+            containsText: true,
+            visibleSpanish: false,
+          },
+          {
+            assetPath: writeTempFile(join(tempDir, "assets", "reference-only-not-runtime.txt")),
+            assetKind: "reference-only-not-runtime",
+            assetCategory: "reference-only-not-runtime",
+            containsText: false,
+            visibleSpanish: false,
+          },
+        ];
+        implementationEvidence.visibleSpanishStatus = "none";
+      });
     const result = runCheckerWithFixture(implementedRegistryPath, moduleRoot, strictEvidencePath);
     assert.equal(result.status, 0, result.stderr);
     const output = JSON.parse(result.stdout);
@@ -5488,18 +7996,23 @@ test("Manual guide source-fidelity checker accepts strict non-image asset catego
 test("Manual guide source-fidelity checker rejects future source-as-is assets with visual edits", () => {
   const tempDir = mkdtempSync(join(tmpdir(), "manual-guide-strict-source-as-is-edit-"));
   try {
-    const { implementedRegistryPath, moduleRoot, strictEvidencePath } = writeStrictFutureRegistryFixture(tempDir, (implementationEvidence) => {
-      implementationEvidence.localAssetMetadata[1].visibleSpanish = false;
-      implementationEvidence.visibleSpanishStatus = "none";
-      implementationEvidence.localAssetMetadata[1].sourceIntegrity.noRedrawRecolorCleanupRetouchMaskInpaint = false;
-    });
+    const { implementedRegistryPath, moduleRoot, strictEvidencePath } =
+      writeStrictFutureRegistryFixture(tempDir, (implementationEvidence) => {
+        implementationEvidence.localAssetMetadata[1].visibleSpanish = false;
+        implementationEvidence.visibleSpanishStatus = "none";
+        implementationEvidence.localAssetMetadata[1].sourceIntegrity.noRedrawRecolorCleanupRetouchMaskInpaint = false;
+      });
     const failure = runCheckerWithFixture(implementedRegistryPath, moduleRoot, strictEvidencePath);
-    assert.notEqual(failure.status, 0, "checker must fail when protected source-as-is photos/signs/markings are edited");
+    assert.notEqual(
+      failure.status,
+      0,
+      "checker must fail when protected source-as-is photos/signs/markings are edited",
+    );
     const result = JSON.parse(failure.stderr);
     assert.equal(result.status, "fail");
     assert.equal(
       result.message,
-      "ch1-pedestrian-priority implementationEvidence localAssetMetadata[1].sourceIntegrity.noRedrawRecolorCleanupRetouchMaskInpaint must be true"
+      "ch1-pedestrian-priority implementationEvidence localAssetMetadata[1].sourceIntegrity.noRedrawRecolorCleanupRetouchMaskInpaint must be true",
     );
   } finally {
     rmSync(tempDir, { recursive: true, force: true });
@@ -5507,9 +8020,12 @@ test("Manual guide source-fidelity checker rejects future source-as-is assets wi
 });
 
 test("Manual guide source-fidelity checker accepts strict source-as-is visible Spanish only with matching exception evidence", () => {
-  const tempDir = mkdtempSync(join(tmpdir(), "manual-guide-strict-source-as-is-visible-exception-"));
+  const tempDir = mkdtempSync(
+    join(tmpdir(), "manual-guide-strict-source-as-is-visible-exception-"),
+  );
   try {
-    const { implementedRegistryPath, moduleRoot, strictEvidencePath } = writeStrictFutureRegistryFixture(tempDir);
+    const { implementedRegistryPath, moduleRoot, strictEvidencePath } =
+      writeStrictFutureRegistryFixture(tempDir);
     const result = runCheckerWithFixture(implementedRegistryPath, moduleRoot, strictEvidencePath);
     assert.equal(result.status, 0, result.stderr);
     const output = JSON.parse(result.stdout);
@@ -5521,26 +8037,29 @@ test("Manual guide source-fidelity checker accepts strict source-as-is visible S
 });
 
 test("Manual guide source-fidelity checker accepts explicit source-as-is document examples", () => {
-  const tempDir = mkdtempSync(join(tmpdir(), "manual-guide-strict-document-example-visible-exception-"));
+  const tempDir = mkdtempSync(
+    join(tmpdir(), "manual-guide-strict-document-example-visible-exception-"),
+  );
   try {
-    const { implementedRegistryPath, moduleRoot, strictEvidencePath } = writeStrictFutureRegistryFixture(tempDir, (implementationEvidence) => {
-      const documentAsset = implementationEvidence.localAssetMetadata[1];
-      documentAsset.assetKind = "high-resolution-original-source-document-image-fixture";
-      documentAsset.assetCategory = "source-as-is-document-example";
-      implementationEvidence.visibleSpanishStatus = {
-        status: "source_image_exceptions_only",
-        nonSignVisibleSpanishStatus: "source-image-only",
-        exceptions: [
-          {
-            assetPath: documentAsset.assetPath,
-            kind: "source-document-example-original-visible-text",
-            visibleSpanishScope: "source-document-example-image-only",
-            sourceAsIs: true,
-            russianExplanationOutsideImage: true
-          }
-        ]
-      };
-    });
+    const { implementedRegistryPath, moduleRoot, strictEvidencePath } =
+      writeStrictFutureRegistryFixture(tempDir, (implementationEvidence) => {
+        const documentAsset = implementationEvidence.localAssetMetadata[1];
+        documentAsset.assetKind = "high-resolution-original-source-document-image-fixture";
+        documentAsset.assetCategory = "source-as-is-document-example";
+        implementationEvidence.visibleSpanishStatus = {
+          status: "source_image_exceptions_only",
+          nonSignVisibleSpanishStatus: "source-image-only",
+          exceptions: [
+            {
+              assetPath: documentAsset.assetPath,
+              kind: "source-document-example-original-visible-text",
+              visibleSpanishScope: "source-document-example-image-only",
+              sourceAsIs: true,
+              russianExplanationOutsideImage: true,
+            },
+          ],
+        };
+      });
     const result = runCheckerWithFixture(implementedRegistryPath, moduleRoot, strictEvidencePath);
     assert.equal(result.status, 0, result.stderr);
   } finally {
@@ -5551,31 +8070,36 @@ test("Manual guide source-fidelity checker accepts explicit source-as-is documen
 test("Manual guide source-fidelity checker rejects source-as-is document examples with non-document asset kinds", () => {
   const tempDir = mkdtempSync(join(tmpdir(), "manual-guide-strict-document-example-wrong-kind-"));
   try {
-    const { implementedRegistryPath, moduleRoot, strictEvidencePath } = writeStrictFutureRegistryFixture(tempDir, (implementationEvidence) => {
-      const documentAsset = implementationEvidence.localAssetMetadata[1];
-      documentAsset.assetKind = "high-resolution-original-source-wayfinding-photo";
-      documentAsset.assetCategory = "source-as-is-document-example";
-      implementationEvidence.visibleSpanishStatus = {
-        status: "source_image_exceptions_only",
-        nonSignVisibleSpanishStatus: "source-image-only",
-        exceptions: [
-          {
-            assetPath: documentAsset.assetPath,
-            kind: "source-document-example-original-visible-text",
-            visibleSpanishScope: "source-document-example-image-only",
-            sourceAsIs: true,
-            russianExplanationOutsideImage: true
-          }
-        ]
-      };
-    });
+    const { implementedRegistryPath, moduleRoot, strictEvidencePath } =
+      writeStrictFutureRegistryFixture(tempDir, (implementationEvidence) => {
+        const documentAsset = implementationEvidence.localAssetMetadata[1];
+        documentAsset.assetKind = "high-resolution-original-source-wayfinding-photo";
+        documentAsset.assetCategory = "source-as-is-document-example";
+        implementationEvidence.visibleSpanishStatus = {
+          status: "source_image_exceptions_only",
+          nonSignVisibleSpanishStatus: "source-image-only",
+          exceptions: [
+            {
+              assetPath: documentAsset.assetPath,
+              kind: "source-document-example-original-visible-text",
+              visibleSpanishScope: "source-document-example-image-only",
+              sourceAsIs: true,
+              russianExplanationOutsideImage: true,
+            },
+          ],
+        };
+      });
     const failure = runCheckerWithFixture(implementedRegistryPath, moduleRoot, strictEvidencePath);
-    assert.notEqual(failure.status, 0, "checker must fail when document-example category is applied to non-document artwork");
+    assert.notEqual(
+      failure.status,
+      0,
+      "checker must fail when document-example category is applied to non-document artwork",
+    );
     const result = JSON.parse(failure.stderr);
     assert.equal(result.status, "fail");
     assert.equal(
       result.message,
-      "ch1-pedestrian-priority implementationEvidence localAssetMetadata[1].assetKind must identify a high-resolution original source document image"
+      "ch1-pedestrian-priority implementationEvidence localAssetMetadata[1].assetKind must identify a high-resolution original source document image",
     );
   } finally {
     rmSync(tempDir, { recursive: true, force: true });
@@ -5583,47 +8107,50 @@ test("Manual guide source-fidelity checker rejects source-as-is document example
 });
 
 test("Manual guide source-fidelity checker accepts strict mixed source-image and sign visible Spanish exceptions", () => {
-  const tempDir = mkdtempSync(join(tmpdir(), "manual-guide-strict-mixed-source-sign-visible-exception-"));
+  const tempDir = mkdtempSync(
+    join(tmpdir(), "manual-guide-strict-mixed-source-sign-visible-exception-"),
+  );
   try {
-    const { implementedRegistryPath, moduleRoot, strictEvidencePath } = writeStrictFutureRegistryFixture(tempDir, (implementationEvidence) => {
-      const signAsset = implementationEvidence.localAssetMetadata[0];
-      signAsset.assetKind = "official-traffic-sign-source-as-is";
-      signAsset.assetCategory = "source-as-is-traffic-sign";
-      signAsset.cleanupScope = "none-source-as-is";
-      signAsset.containsText = true;
-      signAsset.visibleSpanish = true;
-      signAsset.sourceIntegrity = {
-        sourceAsIs: true,
-        sourceAssetPath: implementationEvidence.sourceRegionMetadata[0].sourceAssetPath,
-        noTranslationOrRelabeling: true,
-        noRedrawRecolorCleanupRetouchMaskInpaint: true,
-        russianExplanationOutsideImage: true
-      };
-      signAsset.officialSignException = {
-        kind: "official-traffic-sign-source-as-is",
-        visibleSpanishScope: "official-sign-image-only",
-        sourceAsIs: true
-      };
-      implementationEvidence.visibleSpanishStatus = {
-        status: "source_image_exceptions_only",
-        nonSignVisibleSpanishStatus: "source-image-only",
-        exceptions: [
-          {
-            assetPath: signAsset.assetPath,
-            kind: "official-traffic-sign-source-as-is",
-            visibleSpanishScope: "official-sign-image-only",
-            sourceAsIs: true
-          },
-          {
-            assetPath: implementationEvidence.localAssetMetadata[1].assetPath,
-            kind: "source-image-original-visible-text",
-            visibleSpanishScope: "source-image-only",
-            sourceAsIs: true,
-            russianExplanationOutsideImage: true
-          }
-        ]
-      };
-    });
+    const { implementedRegistryPath, moduleRoot, strictEvidencePath } =
+      writeStrictFutureRegistryFixture(tempDir, (implementationEvidence) => {
+        const signAsset = implementationEvidence.localAssetMetadata[0];
+        signAsset.assetKind = "official-traffic-sign-source-as-is";
+        signAsset.assetCategory = "source-as-is-traffic-sign";
+        signAsset.cleanupScope = "none-source-as-is";
+        signAsset.containsText = true;
+        signAsset.visibleSpanish = true;
+        signAsset.sourceIntegrity = {
+          sourceAsIs: true,
+          sourceAssetPath: implementationEvidence.sourceRegionMetadata[0].sourceAssetPath,
+          noTranslationOrRelabeling: true,
+          noRedrawRecolorCleanupRetouchMaskInpaint: true,
+          russianExplanationOutsideImage: true,
+        };
+        signAsset.officialSignException = {
+          kind: "official-traffic-sign-source-as-is",
+          visibleSpanishScope: "official-sign-image-only",
+          sourceAsIs: true,
+        };
+        implementationEvidence.visibleSpanishStatus = {
+          status: "source_image_exceptions_only",
+          nonSignVisibleSpanishStatus: "source-image-only",
+          exceptions: [
+            {
+              assetPath: signAsset.assetPath,
+              kind: "official-traffic-sign-source-as-is",
+              visibleSpanishScope: "official-sign-image-only",
+              sourceAsIs: true,
+            },
+            {
+              assetPath: implementationEvidence.localAssetMetadata[1].assetPath,
+              kind: "source-image-original-visible-text",
+              visibleSpanishScope: "source-image-only",
+              sourceAsIs: true,
+              russianExplanationOutsideImage: true,
+            },
+          ],
+        };
+      });
     const result = runCheckerWithFixture(implementedRegistryPath, moduleRoot, strictEvidencePath);
     assert.equal(result.status, 0, result.stderr);
     const output = JSON.parse(result.stdout);
@@ -5636,16 +8163,21 @@ test("Manual guide source-fidelity checker accepts strict mixed source-image and
 test("Manual guide source-fidelity checker rejects strict source-as-is visible Spanish hidden by none status", () => {
   const tempDir = mkdtempSync(join(tmpdir(), "manual-guide-strict-source-as-is-visible-none-"));
   try {
-    const { implementedRegistryPath, moduleRoot, strictEvidencePath } = writeStrictFutureRegistryFixture(tempDir, (implementationEvidence) => {
-      implementationEvidence.visibleSpanishStatus = "none";
-    });
+    const { implementedRegistryPath, moduleRoot, strictEvidencePath } =
+      writeStrictFutureRegistryFixture(tempDir, (implementationEvidence) => {
+        implementationEvidence.visibleSpanishStatus = "none";
+      });
     const failure = runCheckerWithFixture(implementedRegistryPath, moduleRoot, strictEvidencePath);
-    assert.notEqual(failure.status, 0, "checker must fail when a strict source-as-is asset keeps Spanish but top-level status claims none");
+    assert.notEqual(
+      failure.status,
+      0,
+      "checker must fail when a strict source-as-is asset keeps Spanish but top-level status claims none",
+    );
     const result = JSON.parse(failure.stderr);
     assert.equal(result.status, "fail");
     assert.equal(
       result.message,
-      "ch1-pedestrian-priority implementationEvidence localAssetMetadata[1].visibleSpanish=true must be recorded in visibleSpanishStatus.exceptions"
+      "ch1-pedestrian-priority implementationEvidence localAssetMetadata[1].visibleSpanish=true must be recorded in visibleSpanishStatus.exceptions",
     );
   } finally {
     rmSync(tempDir, { recursive: true, force: true });
@@ -5653,29 +8185,36 @@ test("Manual guide source-fidelity checker rejects strict source-as-is visible S
 });
 
 test("Manual guide source-fidelity checker rejects strict source-as-is visible Spanish with none status object", () => {
-  const tempDir = mkdtempSync(join(tmpdir(), "manual-guide-strict-source-as-is-visible-none-object-"));
+  const tempDir = mkdtempSync(
+    join(tmpdir(), "manual-guide-strict-source-as-is-visible-none-object-"),
+  );
   try {
-    const { implementedRegistryPath, moduleRoot, strictEvidencePath } = writeStrictFutureRegistryFixture(tempDir, (implementationEvidence) => {
-      implementationEvidence.visibleSpanishStatus = {
-        status: "none",
-        exceptions: [
-          {
-            assetPath: implementationEvidence.localAssetMetadata[1].assetPath,
-            kind: "source-image-original-visible-text",
-            visibleSpanishScope: "source-image-only",
-            sourceAsIs: true,
-            russianExplanationOutsideImage: true
-          }
-        ]
-      };
-    });
+    const { implementedRegistryPath, moduleRoot, strictEvidencePath } =
+      writeStrictFutureRegistryFixture(tempDir, (implementationEvidence) => {
+        implementationEvidence.visibleSpanishStatus = {
+          status: "none",
+          exceptions: [
+            {
+              assetPath: implementationEvidence.localAssetMetadata[1].assetPath,
+              kind: "source-image-original-visible-text",
+              visibleSpanishScope: "source-image-only",
+              sourceAsIs: true,
+              russianExplanationOutsideImage: true,
+            },
+          ],
+        };
+      });
     const failure = runCheckerWithFixture(implementedRegistryPath, moduleRoot, strictEvidencePath);
-    assert.notEqual(failure.status, 0, "checker must fail when exceptions are paired with a non-exception visible-Spanish status");
+    assert.notEqual(
+      failure.status,
+      0,
+      "checker must fail when exceptions are paired with a non-exception visible-Spanish status",
+    );
     const result = JSON.parse(failure.stderr);
     assert.equal(result.status, "fail");
     assert.equal(
       result.message,
-      "ch1-pedestrian-priority implementationEvidence localAssetMetadata[1].visibleSpanish=true must be recorded in visibleSpanishStatus.exceptions"
+      "ch1-pedestrian-priority implementationEvidence localAssetMetadata[1].visibleSpanish=true must be recorded in visibleSpanishStatus.exceptions",
     );
   } finally {
     rmSync(tempDir, { recursive: true, force: true });
@@ -5683,18 +8222,26 @@ test("Manual guide source-fidelity checker rejects strict source-as-is visible S
 });
 
 test("Manual guide source-fidelity checker rejects strict source-as-is visible Spanish with mismatched exception path", () => {
-  const tempDir = mkdtempSync(join(tmpdir(), "manual-guide-strict-source-as-is-visible-wrong-path-"));
+  const tempDir = mkdtempSync(
+    join(tmpdir(), "manual-guide-strict-source-as-is-visible-wrong-path-"),
+  );
   try {
-    const { implementedRegistryPath, moduleRoot, strictEvidencePath } = writeStrictFutureRegistryFixture(tempDir, (implementationEvidence) => {
-      implementationEvidence.visibleSpanishStatus.exceptions[0].assetPath = implementationEvidence.localAssetMetadata[0].assetPath;
-    });
+    const { implementedRegistryPath, moduleRoot, strictEvidencePath } =
+      writeStrictFutureRegistryFixture(tempDir, (implementationEvidence) => {
+        implementationEvidence.visibleSpanishStatus.exceptions[0].assetPath =
+          implementationEvidence.localAssetMetadata[0].assetPath;
+      });
     const failure = runCheckerWithFixture(implementedRegistryPath, moduleRoot, strictEvidencePath);
-    assert.notEqual(failure.status, 0, "checker must fail when a strict source-as-is visible-Spanish exception names another asset");
+    assert.notEqual(
+      failure.status,
+      0,
+      "checker must fail when a strict source-as-is visible-Spanish exception names another asset",
+    );
     const result = JSON.parse(failure.stderr);
     assert.equal(result.status, "fail");
     assert.equal(
       result.message,
-      "ch1-pedestrian-priority implementationEvidence localAssetMetadata[1].visibleSpanish=true must be recorded in visibleSpanishStatus.exceptions"
+      "ch1-pedestrian-priority implementationEvidence localAssetMetadata[1].visibleSpanish=true must be recorded in visibleSpanishStatus.exceptions",
     );
   } finally {
     rmSync(tempDir, { recursive: true, force: true });
@@ -5704,18 +8251,29 @@ test("Manual guide source-fidelity checker rejects strict source-as-is visible S
 test("Manual guide source-fidelity checker rejects strict source-as-is assets that do not match source crop bytes", () => {
   const tempDir = mkdtempSync(join(tmpdir(), "manual-guide-strict-source-as-is-byte-mismatch-"));
   try {
-    const { implementedRegistryPath, moduleRoot, strictEvidencePath } = writeStrictFutureRegistryFixture(tempDir, (implementationEvidence) => {
-      const protectedAsset = implementationEvidence.localAssetMetadata[1];
-      writeFileSync(protectedAsset.assetPath, Buffer.concat([pngBytesWithDimensions(protectedAsset.width, protectedAsset.height), Buffer.from("retouched-source-as-is")]));
-      protectedAsset.sha256 = sha256File(protectedAsset.assetPath);
-    });
+    const { implementedRegistryPath, moduleRoot, strictEvidencePath } =
+      writeStrictFutureRegistryFixture(tempDir, (implementationEvidence) => {
+        const protectedAsset = implementationEvidence.localAssetMetadata[1];
+        writeFileSync(
+          protectedAsset.assetPath,
+          Buffer.concat([
+            pngBytesWithDimensions(protectedAsset.width, protectedAsset.height),
+            Buffer.from("retouched-source-as-is"),
+          ]),
+        );
+        protectedAsset.sha256 = sha256File(protectedAsset.assetPath);
+      });
     const failure = runCheckerWithFixture(implementedRegistryPath, moduleRoot, strictEvidencePath);
-    assert.notEqual(failure.status, 0, "checker must fail when a strict source-as-is asset differs from its source crop bytes");
+    assert.notEqual(
+      failure.status,
+      0,
+      "checker must fail when a strict source-as-is asset differs from its source crop bytes",
+    );
     const result = JSON.parse(failure.stderr);
     assert.equal(result.status, "fail");
     assert.equal(
       result.message,
-      "ch1-pedestrian-priority implementationEvidence localAssetMetadata[1].sha256 must match source-as-is source crop bytes"
+      "ch1-pedestrian-priority implementationEvidence localAssetMetadata[1].sha256 must match source-as-is source crop bytes",
     );
   } finally {
     rmSync(tempDir, { recursive: true, force: true });
@@ -5725,20 +8283,25 @@ test("Manual guide source-fidelity checker rejects strict source-as-is assets th
 test("Manual guide source-fidelity checker rejects source-as-is infographic as a strict category", () => {
   const tempDir = mkdtempSync(join(tmpdir(), "manual-guide-strict-source-as-is-infographic-"));
   try {
-    const { implementedRegistryPath, moduleRoot, strictEvidencePath } = writeStrictFutureRegistryFixture(tempDir, (implementationEvidence) => {
-      const infographicAsset = implementationEvidence.localAssetMetadata[0];
-      infographicAsset.assetKind = "high-resolution-original-source-infographic";
-      infographicAsset.assetCategory = "source-as-is-infographic";
-      infographicAsset.visibleSpanish = true;
-      infographicAsset.cleanupScope = "none-source-as-is";
-    });
+    const { implementedRegistryPath, moduleRoot, strictEvidencePath } =
+      writeStrictFutureRegistryFixture(tempDir, (implementationEvidence) => {
+        const infographicAsset = implementationEvidence.localAssetMetadata[0];
+        infographicAsset.assetKind = "high-resolution-original-source-infographic";
+        infographicAsset.assetCategory = "source-as-is-infographic";
+        infographicAsset.visibleSpanish = true;
+        infographicAsset.cleanupScope = "none-source-as-is";
+      });
     const failure = runCheckerWithFixture(implementedRegistryPath, moduleRoot, strictEvidencePath);
-    assert.notEqual(failure.status, 0, "checker must fail when an infographic tries to use a source-as-is category");
+    assert.notEqual(
+      failure.status,
+      0,
+      "checker must fail when an infographic tries to use a source-as-is category",
+    );
     const result = JSON.parse(failure.stderr);
     assert.equal(result.status, "fail");
     assert.equal(
       result.message,
-      "ch1-pedestrian-priority implementationEvidence localAssetMetadata[0].assetCategory must use the strict full-manual visual vocabulary"
+      "ch1-pedestrian-priority implementationEvidence localAssetMetadata[0].assetCategory must use the strict full-manual visual vocabulary",
     );
   } finally {
     rmSync(tempDir, { recursive: true, force: true });
@@ -5748,14 +8311,23 @@ test("Manual guide source-fidelity checker rejects source-as-is infographic as a
 test("Manual guide source-fidelity checker rejects future infographic broad patch cleanup", () => {
   const tempDir = mkdtempSync(join(tmpdir(), "manual-guide-strict-infographic-patch-"));
   try {
-    const { implementedRegistryPath, moduleRoot, strictEvidencePath } = writeStrictFutureRegistryFixture(tempDir, (implementationEvidence) => {
-      implementationEvidence.localAssetMetadata[0].infographicTransfer.broadMaskPlatePatchStatus = "large-patch";
-    });
+    const { implementedRegistryPath, moduleRoot, strictEvidencePath } =
+      writeStrictFutureRegistryFixture(tempDir, (implementationEvidence) => {
+        implementationEvidence.localAssetMetadata[0].infographicTransfer.broadMaskPlatePatchStatus =
+          "large-patch";
+      });
     const failure = runCheckerWithFixture(implementedRegistryPath, moduleRoot, strictEvidencePath);
-    assert.notEqual(failure.status, 0, "checker must fail when infographic cleanup uses broad patches");
+    assert.notEqual(
+      failure.status,
+      0,
+      "checker must fail when infographic cleanup uses broad patches",
+    );
     const result = JSON.parse(failure.stderr);
     assert.equal(result.status, "fail");
-    assert.match(result.message, /forbidden visual-edit term large-patch|broadMaskPlatePatchStatus must be none/u);
+    assert.match(
+      result.message,
+      /forbidden visual-edit term large-patch|broadMaskPlatePatchStatus must be none/u,
+    );
   } finally {
     rmSync(tempDir, { recursive: true, force: true });
   }
@@ -5764,45 +8336,50 @@ test("Manual guide source-fidelity checker rejects future infographic broad patc
 test("Manual guide source-fidelity checker rejects future infographic transferred artwork with visible Spanish", () => {
   const tempDir = mkdtempSync(join(tmpdir(), "manual-guide-strict-infographic-visible-spanish-"));
   try {
-    const { implementedRegistryPath, moduleRoot, strictEvidencePath } = writeStrictFutureRegistryFixture(tempDir, (implementationEvidence) => {
-      const infographicAsset = implementationEvidence.localAssetMetadata[0];
-      infographicAsset.assetKind = "high-resolution-original-source-infographic";
-      infographicAsset.containsText = true;
-      infographicAsset.visibleSpanish = true;
-      infographicAsset.sourceImageException = {
-        kind: "source-image-original-visible-text",
-        visibleSpanishScope: "source-image-only",
-        sourceAsIs: true,
-        russianExplanationOutsideImage: true
-      };
-      implementationEvidence.visibleSpanishStatus = {
-        status: "source_image_exceptions_only",
-        nonSignVisibleSpanishStatus: "source-image-only",
-        exceptions: [
-          {
-            assetPath: infographicAsset.assetPath,
-            kind: "source-image-original-visible-text",
-            visibleSpanishScope: "source-image-only",
-            sourceAsIs: true,
-            russianExplanationOutsideImage: true
-          },
-          {
-            assetPath: implementationEvidence.localAssetMetadata[1].assetPath,
-            kind: "source-image-original-visible-text",
-            visibleSpanishScope: "source-image-only",
-            sourceAsIs: true,
-            russianExplanationOutsideImage: true
-          }
-        ]
-      };
-    });
+    const { implementedRegistryPath, moduleRoot, strictEvidencePath } =
+      writeStrictFutureRegistryFixture(tempDir, (implementationEvidence) => {
+        const infographicAsset = implementationEvidence.localAssetMetadata[0];
+        infographicAsset.assetKind = "high-resolution-original-source-infographic";
+        infographicAsset.containsText = true;
+        infographicAsset.visibleSpanish = true;
+        infographicAsset.sourceImageException = {
+          kind: "source-image-original-visible-text",
+          visibleSpanishScope: "source-image-only",
+          sourceAsIs: true,
+          russianExplanationOutsideImage: true,
+        };
+        implementationEvidence.visibleSpanishStatus = {
+          status: "source_image_exceptions_only",
+          nonSignVisibleSpanishStatus: "source-image-only",
+          exceptions: [
+            {
+              assetPath: infographicAsset.assetPath,
+              kind: "source-image-original-visible-text",
+              visibleSpanishScope: "source-image-only",
+              sourceAsIs: true,
+              russianExplanationOutsideImage: true,
+            },
+            {
+              assetPath: implementationEvidence.localAssetMetadata[1].assetPath,
+              kind: "source-image-original-visible-text",
+              visibleSpanishScope: "source-image-only",
+              sourceAsIs: true,
+              russianExplanationOutsideImage: true,
+            },
+          ],
+        };
+      });
     const failure = runCheckerWithFixture(implementedRegistryPath, moduleRoot, strictEvidencePath);
-    assert.notEqual(failure.status, 0, "checker must fail when a strict transferred infographic keeps visible Spanish");
+    assert.notEqual(
+      failure.status,
+      0,
+      "checker must fail when a strict transferred infographic keeps visible Spanish",
+    );
     const result = JSON.parse(failure.stderr);
     assert.equal(result.status, "fail");
     assert.equal(
       result.message,
-      "ch1-pedestrian-priority implementationEvidence localAssetMetadata[0].visibleSpanish must be false for transferred infographic artwork"
+      "ch1-pedestrian-priority implementationEvidence localAssetMetadata[0].visibleSpanish must be false for transferred infographic artwork",
     );
   } finally {
     rmSync(tempDir, { recursive: true, force: true });
@@ -5814,57 +8391,68 @@ test("Manual guide source-fidelity checker rejects strict non-protected categori
     {
       name: "native-dom-text-only",
       assetCategory: "native-dom-text-only",
-      assetKind: "high-resolution-original-source-native-dom-text"
+      assetKind: "high-resolution-original-source-native-dom-text",
     },
     {
       name: "reference-only-not-runtime",
       assetCategory: "reference-only-not-runtime",
-      assetKind: "high-resolution-original-source-reference-only"
-    }
+      assetKind: "high-resolution-original-source-reference-only",
+    },
   ];
   for (const testCase of cases) {
-    const tempDir = mkdtempSync(join(tmpdir(), `manual-guide-strict-${testCase.name}-visible-spanish-`));
+    const tempDir = mkdtempSync(
+      join(tmpdir(), `manual-guide-strict-${testCase.name}-visible-spanish-`),
+    );
     try {
-      const { implementedRegistryPath, moduleRoot, strictEvidencePath } = writeStrictFutureRegistryFixture(tempDir, (implementationEvidence) => {
-        const nonProtectedAsset = implementationEvidence.localAssetMetadata[0];
-        nonProtectedAsset.assetKind = testCase.assetKind;
-        nonProtectedAsset.assetCategory = testCase.assetCategory;
-        nonProtectedAsset.containsText = true;
-        nonProtectedAsset.visibleSpanish = true;
-        nonProtectedAsset.sourceImageException = {
-          kind: "source-image-original-visible-text",
-          visibleSpanishScope: "source-image-only",
-          sourceAsIs: true,
-          russianExplanationOutsideImage: true
-        };
-        implementationEvidence.visibleSpanishStatus = {
-          status: "source_image_exceptions_only",
-          nonSignVisibleSpanishStatus: "source-image-only",
-          exceptions: [
-            {
-              assetPath: nonProtectedAsset.assetPath,
-              kind: "source-image-original-visible-text",
-              visibleSpanishScope: "source-image-only",
-              sourceAsIs: true,
-              russianExplanationOutsideImage: true
-            },
-            {
-              assetPath: implementationEvidence.localAssetMetadata[1].assetPath,
-              kind: "source-image-original-visible-text",
-              visibleSpanishScope: "source-image-only",
-              sourceAsIs: true,
-              russianExplanationOutsideImage: true
-            }
-          ]
-        };
-      });
-      const failure = runCheckerWithFixture(implementedRegistryPath, moduleRoot, strictEvidencePath);
-      assert.notEqual(failure.status, 0, `checker must fail when strict ${testCase.assetCategory} keeps visible Spanish`);
+      const { implementedRegistryPath, moduleRoot, strictEvidencePath } =
+        writeStrictFutureRegistryFixture(tempDir, (implementationEvidence) => {
+          const nonProtectedAsset = implementationEvidence.localAssetMetadata[0];
+          nonProtectedAsset.assetKind = testCase.assetKind;
+          nonProtectedAsset.assetCategory = testCase.assetCategory;
+          nonProtectedAsset.containsText = true;
+          nonProtectedAsset.visibleSpanish = true;
+          nonProtectedAsset.sourceImageException = {
+            kind: "source-image-original-visible-text",
+            visibleSpanishScope: "source-image-only",
+            sourceAsIs: true,
+            russianExplanationOutsideImage: true,
+          };
+          implementationEvidence.visibleSpanishStatus = {
+            status: "source_image_exceptions_only",
+            nonSignVisibleSpanishStatus: "source-image-only",
+            exceptions: [
+              {
+                assetPath: nonProtectedAsset.assetPath,
+                kind: "source-image-original-visible-text",
+                visibleSpanishScope: "source-image-only",
+                sourceAsIs: true,
+                russianExplanationOutsideImage: true,
+              },
+              {
+                assetPath: implementationEvidence.localAssetMetadata[1].assetPath,
+                kind: "source-image-original-visible-text",
+                visibleSpanishScope: "source-image-only",
+                sourceAsIs: true,
+                russianExplanationOutsideImage: true,
+              },
+            ],
+          };
+        });
+      const failure = runCheckerWithFixture(
+        implementedRegistryPath,
+        moduleRoot,
+        strictEvidencePath,
+      );
+      assert.notEqual(
+        failure.status,
+        0,
+        `checker must fail when strict ${testCase.assetCategory} keeps visible Spanish`,
+      );
       const result = JSON.parse(failure.stderr);
       assert.equal(result.status, "fail");
       assert.equal(
         result.message,
-        "ch1-pedestrian-priority localAssetMetadata[0].visibleSpanish=true requires an explicit source-image-only exception"
+        "ch1-pedestrian-priority localAssetMetadata[0].visibleSpanish=true requires an explicit source-image-only exception",
       );
     } finally {
       rmSync(tempDir, { recursive: true, force: true });
@@ -5877,60 +8465,82 @@ test("Manual guide source-fidelity checker rejects forbidden strict visual terms
     {
       name: "broad-mask-space",
       mutateEvidence: (implementationEvidence) => {
-        implementationEvidence.localAssetMetadata[0].infographicTransfer.cleanupMethod = "broad mask over the source background";
+        implementationEvidence.localAssetMetadata[0].infographicTransfer.cleanupMethod =
+          "broad mask over the source background";
       },
-      expectedMessage: "ch1-pedestrian-priority implementationEvidence localAssetMetadata[0] must not record forbidden visual-edit term broad-mask"
+      expectedMessage:
+        "ch1-pedestrian-priority implementationEvidence localAssetMetadata[0] must not record forbidden visual-edit term broad-mask",
     },
     {
       name: "approximate-redraw-space",
       mutateEvidence: (implementationEvidence) => {
-        implementationEvidence.visualReviewNotes = ["approximate redraw was used for this strict fixture"];
+        implementationEvidence.visualReviewNotes = [
+          "approximate redraw was used for this strict fixture",
+        ];
       },
-      expectedMessage: "ch1-pedestrian-priority implementationEvidence.visualReviewNotes must not record forbidden visual-edit term approximate-redraw"
+      expectedMessage:
+        "ch1-pedestrian-priority implementationEvidence.visualReviewNotes must not record forbidden visual-edit term approximate-redraw",
     },
     {
       name: "large-patch-underscore",
       mutateEvidence: (implementationEvidence) => {
         implementationEvidence.sourceRegionMetadata[0].cleanupScope = "large_patch cleanup";
       },
-      expectedMessage: "ch1-pedestrian-priority implementationEvidence sourceRegionMetadata[0] must not record forbidden visual-edit term large-patch"
+      expectedMessage:
+        "ch1-pedestrian-priority implementationEvidence sourceRegionMetadata[0] must not record forbidden visual-edit term large-patch",
     },
     {
       name: "square-patch-space",
       mutateEvidence: (implementationEvidence) => {
-        implementationEvidence.localAssetMetadata[0].infographicTransfer.cleanupMethod = "square patch cleanup over Spanish glyphs";
+        implementationEvidence.localAssetMetadata[0].infographicTransfer.cleanupMethod =
+          "square patch cleanup over Spanish glyphs";
       },
-      expectedMessage: "ch1-pedestrian-priority implementationEvidence localAssetMetadata[0] must not record forbidden visual-edit term square-patch"
+      expectedMessage:
+        "ch1-pedestrian-priority implementationEvidence localAssetMetadata[0] must not record forbidden visual-edit term square-patch",
     },
     {
       name: "color-matched-plate-underscore",
       mutateEvidence: (implementationEvidence) => {
-        implementationEvidence.localAssetMetadata[0].infographicTransfer.cleanupMethod = "color_matched_plate cleanup";
+        implementationEvidence.localAssetMetadata[0].infographicTransfer.cleanupMethod =
+          "color_matched_plate cleanup";
       },
-      expectedMessage: "ch1-pedestrian-priority implementationEvidence localAssetMetadata[0] must not record forbidden visual-edit term color-matched-plate"
+      expectedMessage:
+        "ch1-pedestrian-priority implementationEvidence localAssetMetadata[0] must not record forbidden visual-edit term color-matched-plate",
     },
     {
       name: "opaque-rectangle-case",
       mutateEvidence: (implementationEvidence) => {
         implementationEvidence.visualReviewNotes = ["Opaque Rectangle was applied behind labels"];
       },
-      expectedMessage: "ch1-pedestrian-priority implementationEvidence.visualReviewNotes must not record forbidden visual-edit term opaque-rectangle"
+      expectedMessage:
+        "ch1-pedestrian-priority implementationEvidence.visualReviewNotes must not record forbidden visual-edit term opaque-rectangle",
     },
     {
       name: "broad-box-space",
       mutateEvidence: (implementationEvidence) => {
-        implementationEvidence.localAssetMetadata[0].infographicTransfer.cleanupMethod = "broad box behind Russian overlay";
+        implementationEvidence.localAssetMetadata[0].infographicTransfer.cleanupMethod =
+          "broad box behind Russian overlay";
       },
-      expectedMessage: "ch1-pedestrian-priority implementationEvidence localAssetMetadata[0] must not record forbidden visual-edit term broad-box"
-    }
+      expectedMessage:
+        "ch1-pedestrian-priority implementationEvidence localAssetMetadata[0] must not record forbidden visual-edit term broad-box",
+    },
   ];
 
   for (const testCase of cases) {
     const tempDir = mkdtempSync(join(tmpdir(), `manual-guide-strict-${testCase.name}-`));
     try {
-      const { implementedRegistryPath, moduleRoot, strictEvidencePath } = writeStrictFutureRegistryFixture(tempDir, testCase.mutateEvidence);
-      const failure = runCheckerWithFixture(implementedRegistryPath, moduleRoot, strictEvidencePath);
-      assert.notEqual(failure.status, 0, `checker must fail when strict metadata records ${testCase.name}`);
+      const { implementedRegistryPath, moduleRoot, strictEvidencePath } =
+        writeStrictFutureRegistryFixture(tempDir, testCase.mutateEvidence);
+      const failure = runCheckerWithFixture(
+        implementedRegistryPath,
+        moduleRoot,
+        strictEvidencePath,
+      );
+      assert.notEqual(
+        failure.status,
+        0,
+        `checker must fail when strict metadata records ${testCase.name}`,
+      );
       const result = JSON.parse(failure.stderr);
       assert.equal(result.status, "fail");
       assert.equal(result.message, testCase.expectedMessage);
@@ -5947,23 +8557,34 @@ test("Manual guide source-fidelity checker rejects forbidden strict assetKind va
       mutateEvidence: (implementationEvidence) => {
         implementationEvidence.localAssetMetadata[0].assetKind = "generic-icon-replacement";
       },
-      expectedMessage: "ch1-pedestrian-priority implementationEvidence localAssetMetadata[0] must not record forbidden visual-edit term generic-icon-replacement"
+      expectedMessage:
+        "ch1-pedestrian-priority implementationEvidence localAssetMetadata[0] must not record forbidden visual-edit term generic-icon-replacement",
     },
     {
       name: "redrawn-diagram-kind",
       mutateEvidence: (implementationEvidence) => {
         implementationEvidence.localAssetMetadata[1].assetKind = "redrawn-diagram";
       },
-      expectedMessage: "ch1-pedestrian-priority implementationEvidence localAssetMetadata[1] must not record forbidden visual-edit term redrawn-diagram"
-    }
+      expectedMessage:
+        "ch1-pedestrian-priority implementationEvidence localAssetMetadata[1] must not record forbidden visual-edit term redrawn-diagram",
+    },
   ];
 
   for (const testCase of cases) {
     const tempDir = mkdtempSync(join(tmpdir(), `manual-guide-strict-${testCase.name}-`));
     try {
-      const { implementedRegistryPath, moduleRoot, strictEvidencePath } = writeStrictFutureRegistryFixture(tempDir, testCase.mutateEvidence);
-      const failure = runCheckerWithFixture(implementedRegistryPath, moduleRoot, strictEvidencePath);
-      assert.notEqual(failure.status, 0, `checker must fail when strict assetKind records ${testCase.name}`);
+      const { implementedRegistryPath, moduleRoot, strictEvidencePath } =
+        writeStrictFutureRegistryFixture(tempDir, testCase.mutateEvidence);
+      const failure = runCheckerWithFixture(
+        implementedRegistryPath,
+        moduleRoot,
+        strictEvidencePath,
+      );
+      assert.notEqual(
+        failure.status,
+        0,
+        `checker must fail when strict assetKind records ${testCase.name}`,
+      );
       const result = JSON.parse(failure.stderr);
       assert.equal(result.status, "fail");
       assert.equal(result.message, testCase.expectedMessage);
@@ -5976,7 +8597,8 @@ test("Manual guide source-fidelity checker rejects forbidden strict assetKind va
 test("Manual guide source-fidelity checker accepts future strict visual evidence", () => {
   const tempDir = mkdtempSync(join(tmpdir(), "manual-guide-strict-pass-"));
   try {
-    const { implementedRegistryPath, moduleRoot, strictEvidencePath } = writeStrictFutureRegistryFixture(tempDir);
+    const { implementedRegistryPath, moduleRoot, strictEvidencePath } =
+      writeStrictFutureRegistryFixture(tempDir);
     const result = runCheckerWithFixture(implementedRegistryPath, moduleRoot, strictEvidencePath);
     assert.equal(result.status, 0, result.stderr);
     const output = JSON.parse(result.stdout);
@@ -6000,11 +8622,15 @@ test("Manual guide source-fidelity checker rejects duplicate hierarchy section r
       encoding: "utf8",
       env: {
         ...process.env,
-        MANUAL_GUIDE_REGISTRY_PATH: duplicateRegistryPath
-      }
+        MANUAL_GUIDE_REGISTRY_PATH: duplicateRegistryPath,
+      },
     });
 
-    assert.notEqual(failure.status, 0, "checker must fail when a section is referenced twice in the source hierarchy");
+    assert.notEqual(
+      failure.status,
+      0,
+      "checker must fail when a section is referenced twice in the source hierarchy",
+    );
     const result = JSON.parse(failure.stderr);
     assert.equal(result.status, "fail");
     assert.equal(result.message, "Chapter hierarchy must not duplicate section references");
@@ -6025,7 +8651,7 @@ test("Manual guide source-fidelity checker rejects skipped divider pages inside 
       sourcePage: 21,
       manualManifestPointer: "/pages/20",
       layoutManifestPointer: "/pages/20",
-      referenceAsset: sourcePageAssetPath(21)
+      referenceAsset: sourcePageAssetPath(21),
     });
     writeFileSync(badRegistryPath, JSON.stringify(badRegistry, null, 2));
 
@@ -6033,14 +8659,21 @@ test("Manual guide source-fidelity checker rejects skipped divider pages inside 
       encoding: "utf8",
       env: {
         ...process.env,
-        MANUAL_GUIDE_REGISTRY_PATH: badRegistryPath
-      }
+        MANUAL_GUIDE_REGISTRY_PATH: badRegistryPath,
+      },
     });
 
-    assert.notEqual(failure.status, 0, "checker must fail when divider-only page 21 becomes section content");
+    assert.notEqual(
+      failure.status,
+      0,
+      "checker must fail when divider-only page 21 becomes section content",
+    );
     const result = JSON.parse(failure.stderr);
     assert.equal(result.status, "fail");
-    assert.match(result.message, /ch1-cities-for-people sourcePageRange must match source Índice metadata|must not include skipped non-section source page 21/u);
+    assert.match(
+      result.message,
+      /ch1-cities-for-people sourcePageRange must match source Índice metadata|must not include skipped non-section source page 21/u,
+    );
   } finally {
     rmSync(tempDir, { recursive: true, force: true });
   }
@@ -6059,11 +8692,15 @@ test("Manual guide source-fidelity checker rejects accidental shared page duplic
       encoding: "utf8",
       env: {
         ...process.env,
-        MANUAL_GUIDE_REGISTRY_PATH: badRegistryPath
-      }
+        MANUAL_GUIDE_REGISTRY_PATH: badRegistryPath,
+      },
     });
 
-    assert.notEqual(failure.status, 0, "checker must fail when shared page 55 lacks section boundary evidence");
+    assert.notEqual(
+      failure.status,
+      0,
+      "checker must fail when shared page 55 lacks section boundary evidence",
+    );
     const result = JSON.parse(failure.stderr);
     assert.equal(result.status, "fail");
     assert.equal(result.message, "ch2-scoring sourceBoundaryEvidence must be an object");
@@ -6077,7 +8714,7 @@ test("Manual guide source-fidelity checker accepts implemented sections with mul
   try {
     const { implementedRegistryPath, moduleRoot } = writeImplementedRegistryFixture(
       tempDir,
-      'export const ch1PedestrianPriority = { sectionId: "ch1-pedestrian-priority", blocks: [] };\n'
+      'export const ch1PedestrianPriority = { sectionId: "ch1-pedestrian-priority", blocks: [] };\n',
     );
     const result = runCheckerWithFixture(implementedRegistryPath, moduleRoot);
     assert.equal(result.status, 0, result.stderr);
@@ -6101,10 +8738,14 @@ test("Manual guide source-fidelity checker rejects failing implemented evidence 
         implementationEvidence.selectableTextStatus = "fail";
         implementationEvidence.boundingBoxChecks = [{ id: "fixture", status: "fail" }];
         implementationEvidence.checkerResult = "pass";
-      }
+      },
     );
     const failure = runCheckerWithFixture(implementedRegistryPath, moduleRoot);
-    assert.notEqual(failure.status, 0, "checker must fail when implemented-section evidence records failing statuses");
+    assert.notEqual(
+      failure.status,
+      0,
+      "checker must fail when implemented-section evidence records failing statuses",
+    );
     const result = JSON.parse(failure.stderr);
     assert.equal(result.status, "fail");
     assert.equal(result.message, "ch1-pedestrian-priority selectableTextStatus must be pass");
@@ -6121,13 +8762,20 @@ test("Manual guide source-fidelity checker rejects failing forbidden-pattern sca
       'export const ch1PedestrianPriority = { sectionId: "ch1-pedestrian-priority", blocks: [] };\n',
       (implementationEvidence) => {
         implementationEvidence.forbiddenPatternScan = { status: "fail", note: "previous pass" };
-      }
+      },
     );
     const failure = runCheckerWithFixture(implementedRegistryPath, moduleRoot);
-    assert.notEqual(failure.status, 0, "checker must fail when forbiddenPatternScan.status is fail despite containing the word pass");
+    assert.notEqual(
+      failure.status,
+      0,
+      "checker must fail when forbiddenPatternScan.status is fail despite containing the word pass",
+    );
     const result = JSON.parse(failure.stderr);
     assert.equal(result.status, "fail");
-    assert.equal(result.message, "ch1-pedestrian-priority forbiddenPatternScan.status must be pass");
+    assert.equal(
+      result.message,
+      "ch1-pedestrian-priority forbiddenPatternScan.status must be pass",
+    );
   } finally {
     rmSync(tempDir, { recursive: true, force: true });
   }
@@ -6141,13 +8789,20 @@ test("Manual guide source-fidelity checker rejects visible Spanish status failur
       'export const ch1PedestrianPriority = { sectionId: "ch1-pedestrian-priority", blocks: [] };\n',
       (implementationEvidence) => {
         implementationEvidence.visibleSpanishStatus = "fail";
-      }
+      },
     );
     const failure = runCheckerWithFixture(implementedRegistryPath, moduleRoot);
-    assert.notEqual(failure.status, 0, "checker must fail when visibleSpanishStatus records a failure");
+    assert.notEqual(
+      failure.status,
+      0,
+      "checker must fail when visibleSpanishStatus records a failure",
+    );
     const result = JSON.parse(failure.stderr);
     assert.equal(result.status, "fail");
-    assert.equal(result.message, "ch1-pedestrian-priority visibleSpanishStatus must record no visible Spanish text or source-image-only exceptions");
+    assert.equal(
+      result.message,
+      "ch1-pedestrian-priority visibleSpanishStatus must record no visible Spanish text or source-image-only exceptions",
+    );
   } finally {
     rmSync(tempDir, { recursive: true, force: true });
   }
@@ -6161,13 +8816,20 @@ test("Manual guide source-fidelity checker rejects local assets with visible Spa
       'export const ch1PedestrianPriority = { sectionId: "ch1-pedestrian-priority", blocks: [] };\n',
       (implementationEvidence) => {
         implementationEvidence.localAssetMetadata[0].visibleSpanish = true;
-      }
+      },
     );
     const failure = runCheckerWithFixture(implementedRegistryPath, moduleRoot);
-    assert.notEqual(failure.status, 0, "checker must fail when local asset evidence keeps visible Spanish text");
+    assert.notEqual(
+      failure.status,
+      0,
+      "checker must fail when local asset evidence keeps visible Spanish text",
+    );
     const result = JSON.parse(failure.stderr);
     assert.equal(result.status, "fail");
-    assert.equal(result.message, "ch1-pedestrian-priority localAssetMetadata[0].visibleSpanish=true requires an explicit source-image-only exception");
+    assert.equal(
+      result.message,
+      "ch1-pedestrian-priority localAssetMetadata[0].visibleSpanish=true requires an explicit source-image-only exception",
+    );
   } finally {
     rmSync(tempDir, { recursive: true, force: true });
   }
@@ -6187,7 +8849,7 @@ test("Manual guide source-fidelity checker allows only explicit official traffic
         signAsset.officialSignException = {
           kind: "official-traffic-sign-source-as-is",
           visibleSpanishScope: "official-sign-image-only",
-          sourceAsIs: true
+          sourceAsIs: true,
         };
         implementationEvidence.visibleSpanishStatus = {
           status: "official_traffic_sign_exception_only",
@@ -6197,11 +8859,11 @@ test("Manual guide source-fidelity checker allows only explicit official traffic
               assetPath: signAsset.assetPath,
               kind: "official-traffic-sign-source-as-is",
               visibleSpanishScope: "official-sign-image-only",
-              sourceAsIs: true
-            }
-          ]
+              sourceAsIs: true,
+            },
+          ],
         };
-      }
+      },
     );
     const result = runCheckerWithFixture(implementedRegistryPath, moduleRoot);
     assert.equal(result.status, 0, result.stderr);
@@ -6224,7 +8886,7 @@ test("Manual guide source-fidelity checker rejects source-image exceptions under
         signAsset.officialSignException = {
           kind: "official-traffic-sign-source-as-is",
           visibleSpanishScope: "official-sign-image-only",
-          sourceAsIs: true
+          sourceAsIs: true,
         };
         implementationEvidence.visibleSpanishStatus = {
           status: "official_traffic_sign_exception_only",
@@ -6235,19 +8897,23 @@ test("Manual guide source-fidelity checker rejects source-image exceptions under
               kind: "source-image-original-visible-text",
               visibleSpanishScope: "source-image-only",
               sourceAsIs: true,
-              russianExplanationOutsideImage: true
-            }
-          ]
+              russianExplanationOutsideImage: true,
+            },
+          ],
         };
-      }
+      },
     );
     const failure = runCheckerWithFixture(implementedRegistryPath, moduleRoot);
-    assert.notEqual(failure.status, 0, "checker must fail when official-sign-only status lists a source-image exception");
+    assert.notEqual(
+      failure.status,
+      0,
+      "checker must fail when official-sign-only status lists a source-image exception",
+    );
     const result = JSON.parse(failure.stderr);
     assert.equal(result.status, "fail");
     assert.equal(
       result.message,
-      "ch1-pedestrian-priority visibleSpanishStatus.exceptions[0].kind must be official-traffic-sign-source-as-is"
+      "ch1-pedestrian-priority visibleSpanishStatus.exceptions[0].kind must be official-traffic-sign-source-as-is",
     );
   } finally {
     rmSync(tempDir, { recursive: true, force: true });
@@ -6269,7 +8935,7 @@ test("Manual guide source-fidelity checker allows explicit original source-image
           kind: "source-image-original-visible-text",
           visibleSpanishScope: "source-image-only",
           sourceAsIs: true,
-          russianExplanationOutsideImage: true
+          russianExplanationOutsideImage: true,
         };
         implementationEvidence.visibleSpanishStatus = {
           status: "source_image_exceptions_only",
@@ -6280,11 +8946,11 @@ test("Manual guide source-fidelity checker allows explicit original source-image
               kind: "source-image-original-visible-text",
               visibleSpanishScope: "source-image-only",
               sourceAsIs: true,
-              russianExplanationOutsideImage: true
-            }
-          ]
+              russianExplanationOutsideImage: true,
+            },
+          ],
         };
-      }
+      },
     );
     const result = runCheckerWithFixture(implementedRegistryPath, moduleRoot);
     assert.equal(result.status, 0, result.stderr);
@@ -6296,37 +8962,42 @@ test("Manual guide source-fidelity checker allows explicit original source-image
 test("Manual guide source-fidelity checker rejects unapproved source-as-is map Spanish exceptions", () => {
   const tempDir = mkdtempSync(join(tmpdir(), "manual-guide-unapproved-source-map-exception-"));
   try {
-    const { implementedRegistryPath, moduleRoot, strictEvidencePath } = writeStrictFutureRegistryFixture(tempDir, (implementationEvidence) => {
-      const mapAsset = implementationEvidence.localAssetMetadata[1];
-      mapAsset.assetKind = "high-resolution-original-source-future-map";
-      mapAsset.assetCategory = "source-as-is-map";
-      mapAsset.sourceImageException = {
-        kind: "source-image-original-visible-text",
-        visibleSpanishScope: "source-image-only",
-        sourceAsIs: true,
-        russianExplanationOutsideImage: true,
-        ownerDecisionDate: "2026-06-04",
-        scope: "page-150-hospital-map-only"
-      };
-      implementationEvidence.visibleSpanishStatus.exceptions = [
-        {
-          assetPath: mapAsset.assetPath,
+    const { implementedRegistryPath, moduleRoot, strictEvidencePath } =
+      writeStrictFutureRegistryFixture(tempDir, (implementationEvidence) => {
+        const mapAsset = implementationEvidence.localAssetMetadata[1];
+        mapAsset.assetKind = "high-resolution-original-source-future-map";
+        mapAsset.assetCategory = "source-as-is-map";
+        mapAsset.sourceImageException = {
           kind: "source-image-original-visible-text",
           visibleSpanishScope: "source-image-only",
           sourceAsIs: true,
           russianExplanationOutsideImage: true,
           ownerDecisionDate: "2026-06-04",
-          scope: "page-150-hospital-map-only"
-        }
-      ];
-    });
+          scope: "page-150-hospital-map-only",
+        };
+        implementationEvidence.visibleSpanishStatus.exceptions = [
+          {
+            assetPath: mapAsset.assetPath,
+            kind: "source-image-original-visible-text",
+            visibleSpanishScope: "source-image-only",
+            sourceAsIs: true,
+            russianExplanationOutsideImage: true,
+            ownerDecisionDate: "2026-06-04",
+            scope: "page-150-hospital-map-only",
+          },
+        ];
+      });
     const failure = runCheckerWithFixture(implementedRegistryPath, moduleRoot, strictEvidencePath);
-    assert.notEqual(failure.status, 0, "checker must fail when an unrelated map self-certifies the page-150 exception");
+    assert.notEqual(
+      failure.status,
+      0,
+      "checker must fail when an unrelated map self-certifies the page-150 exception",
+    );
     const result = JSON.parse(failure.stderr);
     assert.equal(result.status, "fail");
     assert.equal(
       result.message,
-      "ch1-pedestrian-priority implementationEvidence localAssetMetadata[1].assetPath must match an approved source-as-is map exception"
+      "ch1-pedestrian-priority implementationEvidence localAssetMetadata[1].assetPath must match an approved source-as-is map exception",
     );
   } finally {
     rmSync(tempDir, { recursive: true, force: true });
@@ -6338,35 +9009,47 @@ test("Manual guide source-fidelity checker rejects approved source-as-is map evi
     {
       name: "page",
       mutate: (implementationEvidence) => {
-        const sourceRegion = implementationEvidence.sourceRegionMetadata.find((entry) =>
-          entry.sourceAssetPath === "content/validation/manual-guide/app2-highways-hospitals/page-150-hospital-map-source-crop.png"
+        const sourceRegion = implementationEvidence.sourceRegionMetadata.find(
+          (entry) =>
+            entry.sourceAssetPath ===
+            "content/validation/manual-guide/app2-highways-hospitals/page-150-hospital-map-source-crop.png",
         );
         sourceRegion.sourcePage = 149;
       },
       expectedMessage:
-        "app2-highways-hospitals implementationEvidence localAssetMetadata[1].sourceRegionMetadata.sourcePage must match approved source-as-is map page"
+        "app2-highways-hospitals implementationEvidence localAssetMetadata[1].sourceRegionMetadata.sourcePage must match approved source-as-is map page",
     },
     {
       name: "scope",
       mutate: (implementationEvidence) => {
-        const mapAsset = implementationEvidence.localAssetMetadata.find((entry) => entry.assetCategory === "source-as-is-map");
+        const mapAsset = implementationEvidence.localAssetMetadata.find(
+          (entry) => entry.assetCategory === "source-as-is-map",
+        );
         mapAsset.sourceImageException.scope = "future-map-self-certified";
       },
       expectedMessage:
-        "app2-highways-hospitals implementationEvidence localAssetMetadata[1].sourceImageException.scope must match approved source-as-is map scope"
-    }
+        "app2-highways-hospitals implementationEvidence localAssetMetadata[1].sourceImageException.scope must match approved source-as-is map scope",
+    },
   ];
 
   for (const testCase of cases) {
-    const tempDir = mkdtempSync(join(tmpdir(), `manual-guide-approved-source-map-${testCase.name}-mismatch-`));
+    const tempDir = mkdtempSync(
+      join(tmpdir(), `manual-guide-approved-source-map-${testCase.name}-mismatch-`),
+    );
     try {
       const registryFixture = JSON.parse(JSON.stringify(registry));
-      const app2HighwaysHospitals = registryFixture.sections.find((entry) => entry.id === "app2-highways-hospitals");
+      const app2HighwaysHospitals = registryFixture.sections.find(
+        (entry) => entry.id === "app2-highways-hospitals",
+      );
       testCase.mutate(app2HighwaysHospitals.implementationEvidence);
       const implementedRegistryPath = join(tempDir, "section-registry.map-scope-fixture.json");
       writeFileSync(implementedRegistryPath, JSON.stringify(registryFixture, null, 2));
       const failure = runCheckerWithFixture(implementedRegistryPath, "src/data/manual-sections");
-      assert.notEqual(failure.status, 0, `checker must fail when approved map ${testCase.name} evidence mismatches`);
+      assert.notEqual(
+        failure.status,
+        0,
+        `checker must fail when approved map ${testCase.name} evidence mismatches`,
+      );
       const result = JSON.parse(failure.stderr);
       assert.equal(result.status, "fail");
       assert.equal(result.message, testCase.expectedMessage);
@@ -6391,7 +9074,7 @@ test("Manual guide source-fidelity checker rejects reconstructed source-image Sp
           kind: "source-image-original-visible-text",
           visibleSpanishScope: "source-image-only",
           sourceAsIs: true,
-          russianExplanationOutsideImage: true
+          russianExplanationOutsideImage: true,
         };
         implementationEvidence.visibleSpanishStatus = {
           status: "source_image_exceptions_only",
@@ -6402,17 +9085,24 @@ test("Manual guide source-fidelity checker rejects reconstructed source-image Sp
               kind: "source-image-original-visible-text",
               visibleSpanishScope: "source-image-only",
               sourceAsIs: true,
-              russianExplanationOutsideImage: true
-            }
-          ]
+              russianExplanationOutsideImage: true,
+            },
+          ],
         };
-      }
+      },
     );
     const failure = runCheckerWithFixture(implementedRegistryPath, moduleRoot);
-    assert.notEqual(failure.status, 0, "checker must fail when a source-image exception lacks original-source provenance");
+    assert.notEqual(
+      failure.status,
+      0,
+      "checker must fail when a source-image exception lacks original-source provenance",
+    );
     const result = JSON.parse(failure.stderr);
     assert.equal(result.status, "fail");
-    assert.equal(result.message, "ch1-pedestrian-priority localAssetMetadata[0].visibleSpanish=true requires an explicit source-image-only exception");
+    assert.equal(
+      result.message,
+      "ch1-pedestrian-priority localAssetMetadata[0].visibleSpanish=true requires an explicit source-image-only exception",
+    );
   } finally {
     rmSync(tempDir, { recursive: true, force: true });
   }
@@ -6423,10 +9113,14 @@ test("Manual guide source-fidelity checker scans section content modules for for
   try {
     const { implementedRegistryPath, moduleRoot } = writeImplementedRegistryFixture(
       tempDir,
-      'export const ch1PedestrianPriority = { assetPath: "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-024.jpg" };\n'
+      'export const ch1PedestrianPriority = { assetPath: "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-024.jpg" };\n',
     );
     const failure = runCheckerWithFixture(implementedRegistryPath, moduleRoot);
-    assert.notEqual(failure.status, 0, "checker must fail when section content data references a full-page source render");
+    assert.notEqual(
+      failure.status,
+      0,
+      "checker must fail when section content data references a full-page source render",
+    );
     const result = JSON.parse(failure.stderr);
     assert.equal(result.status, "fail");
     assert.match(result.message, /Forbidden manual guide pattern 'page-024\.jpg'/);

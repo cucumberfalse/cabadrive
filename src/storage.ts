@@ -19,7 +19,7 @@ export type StoredProgress = {
 const emptyProgress: StoredProgress = {
   answers: [],
   difficultQuestionIds: [],
-  examAttempts: []
+  examAttempts: [],
 };
 
 export function loadProgress(): StoredProgress {
@@ -29,8 +29,10 @@ export function loadProgress(): StoredProgress {
     const parsed = JSON.parse(raw) as StoredProgress;
     return {
       answers: Array.isArray(parsed.answers) ? parsed.answers : [],
-      difficultQuestionIds: Array.isArray(parsed.difficultQuestionIds) ? parsed.difficultQuestionIds : [],
-      examAttempts: Array.isArray(parsed.examAttempts) ? parsed.examAttempts : []
+      difficultQuestionIds: Array.isArray(parsed.difficultQuestionIds)
+        ? parsed.difficultQuestionIds
+        : [],
+      examAttempts: Array.isArray(parsed.examAttempts) ? parsed.examAttempts : [],
     };
   } catch {
     return emptyProgress;

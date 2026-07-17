@@ -28,8 +28,8 @@ async function request(path) {
     headers: {
       authorization: `Bearer ${token}`,
       accept: "application/vnd.github+json",
-      "x-github-api-version": "2022-11-28"
-    }
+      "x-github-api-version": "2022-11-28",
+    },
   });
   if (!response.ok) {
     throw new Error(`${response.status} ${response.statusText}: ${await response.text()}`);
@@ -48,11 +48,16 @@ const output = {
   pr_number: String(pull.number),
   head_sha: pull.head.sha,
   base_ref: pull.base.ref,
-  head_ref: pull.head.ref
+  head_ref: pull.head.ref,
 };
 
 if (process.env.GITHUB_OUTPUT) {
-  appendFileSync(process.env.GITHUB_OUTPUT, Object.entries(output).map(([key, value]) => `${key}=${value}`).join("\n") + "\n");
+  appendFileSync(
+    process.env.GITHUB_OUTPUT,
+    Object.entries(output)
+      .map(([key, value]) => `${key}=${value}`)
+      .join("\n") + "\n",
+  );
 } else {
   console.log(JSON.stringify(output, null, 2));
 }

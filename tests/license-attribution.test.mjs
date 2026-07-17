@@ -8,7 +8,7 @@ const upstreamCommit = "90d17d47864b807415ba505b682710a8f4c441f5";
 const screenshots = [
   "docs_project/screens/readme/learn.png",
   "docs_project/screens/readme/materials.png",
-  "docs_project/screens/readme/about.png"
+  "docs_project/screens/readme/about.png",
 ];
 
 test("root and pinned upstream Apache licenses are exact copies", () => {
