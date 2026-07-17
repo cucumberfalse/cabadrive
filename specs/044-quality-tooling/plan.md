@@ -174,6 +174,30 @@ project оправдан необходимостью type-aware coverage root/E
       thread-aware Review Agent review on the new exact head, and leave thread
       resolution/check coordination to Orchestrator.
 
+14. **Bind new review evidence and preserve the ignored revision on landing**
+    - For `PRRT_kwDOSX65IM6R44d7`, retain the pull-request merge checkout but
+      capture `git rev-parse HEAD` after checkout. Validate and print both this
+      measured SHA and the event-safe source SHA with elapsed seconds/budget;
+      never describe a synthetic merge measurement as a source-head result.
+    - For `PRRT_kwDOSX65IM6R5NtC`, add an explicit guarded `merge` option to
+      `scripts/finalize-pr.mjs` while preserving `squash` as the default and all
+      expected-head/check/review/conflict/process-evidence/auto-merge behavior.
+      Update focused finalizer tests and durable workflow documentation. PR
+      #209 must be finalized with merge commit because squash loses the ignored
+      SHA and rebase rewrites it; a follow-up that ignores the mixed squash
+      revision is forbidden.
+    - For `PRRT_kwDOSX65IM6R5f6z`, treat the claimed `7fd66ff` review head as
+      stale/mismatched evidence unless a current-head guard disproves it. Before
+      fresh review, compare the GitHub API head and PR commit list with local
+      ancestry for `c359350358a82d0250934d627c65b5a5a0de6a8a`. If the format
+      commit is not an ancestor of the exact new head, stop for Architect
+      disposition; do not rewrite history or replace the ignore SHA silently.
+    - Prove the repository still permits merge commits; run focused finalizer,
+      workflow and blame/ancestry tests plus affected full gates. Obtain fresh
+      thread-aware review on the exact new head. Orchestrator alone resolves or
+      outdates threads, runs final guards and invokes guarded merge-commit
+      finalization; afterward it verifies the ignored SHA on `origin/main`.
+
 ## Verification Matrix
 
 | Boundary | Command/evidence | Pass condition |
@@ -187,7 +211,7 @@ project оправдан необходимостью type-aware coverage root/E
 | Protected bytes | SHA-256 manifests before/after `pnpm run format`; `git diff --name-status` | Governed content/license/screenshots byte-identical; only allowlisted code changed |
 | Governed manual TS | baseline inventory cross-check; Prettier `--file-info` for all 52 TS records; `pnpm run validate:manual-ticket-placement` | Inventory complete, every path ignored, baseline hashes current |
 | Idempotence | second `pnpm run format`; `git diff` comparison | No second-run changes; check passes |
-| Ignore revision | `git cat-file`, `git show --stat --format=fuller <sha>`, representative `git blame --ignore-revs-file` | Exact existing commit; patch is mechanical-only; blame file works |
+| Ignore revision | `git cat-file`, `git show --stat --format=fuller <sha>`, current-head/default-branch ancestry, representative `git blame --ignore-revs-file` | Exact reachable commit; patch is mechanical-only; merge-commit landing preserves SHA; blame file works |
 | Attribution/content | `pnpm run validate:attribution`; `pnpm run validate:content`; `pnpm run validate:content:quality` | Feature 043 and governed content remain valid without regenerated masking |
 | Node tests | `pnpm run test` | Full suite passes, including all source-shape assertions |
 | Production/offline | `pnpm run build` and service-worker tests | Bundle and offline asset generation pass; existing warning only if unchanged |
@@ -195,7 +219,8 @@ project оправдан необходимостью type-aware coverage root/E
 | Screenshot contracts | focused license/screenshot/capture Node tests and documented public capture validation without necessarily recapturing committed PNGs | README PNG identity/integrity, current-source build, recovery and no-recursion contracts remain green |
 | Preflight | `pnpm run preflight` | Complete repository gate passes in required order |
 | Docker | isolated free port/project: `make build`, `make up`, curl `/` and `/sw.js`, `make down` in `finally`; bounded pull diagnostics if unavailable | Local smoke passes, or two documented external-fetch stalls leave no containers and exact-final-head GitHub `docker-validation` proves build/start/HTTP/teardown; no sibling project touched |
-| CI timing | current-head `baseline-checks` logs/step timestamps | `quality:fast` typecheck+lint ≤60 s on GitHub runner and head is named |
+| CI timing | current-head `baseline-checks` logs/step timestamps | `quality:fast` typecheck+lint ≤60 s on GitHub runner; event source and actual measured checkout are both named |
+| Finalizer method | focused `tests/finalize-pr.test.mjs`, dry-run, repository merge settings | Default remains squash; explicit merge preserves every guard; PR #209 selects merge commit |
 | Required GitHub gates | `baseline-checks`, `docker-validation`, `guard`, `AI Review`, `osv-scan`; thread/conflict inspection | All green on current head, no unresolved blocking thread/conflict |
 | Final scope | `git diff --check`; base/head name-status; suppression audit | Only ТЗ-16 plus current feature memory, no hidden semantic/protected content change |
 
@@ -204,6 +229,8 @@ project оправдан необходимостью type-aware coverage root/E
 - Tooling/semantic commits are reviewable and retain focused evidence.
 - Exactly one commit is declared format-only; it contains only formatter output.
 - `.git-blame-ignore-revs` is added later and references the immutable full SHA.
+- PR #209 uses guarded merge-commit finalization so that immutable SHA reaches
+  `main`; squash/rebase and ignoring a mixed squash revision are forbidden.
 - No force-push/rebase/amend is used after SHA publication.
 - `content`, official archives, generated indexes/evidence, license texts and
   README screenshots have identical pre/post formatter hashes.
@@ -223,6 +250,9 @@ project оправдан необходимостью type-aware coverage root/E
 - If current-head combined GitHub timing exceeds 60 seconds, treat it as an
   acceptance gap. Optimize config/cache within ТЗ-16 without dropping coverage,
   or route an explicit blocker; do not defer the measured failure silently.
+- If merge commits cease to be allowed or the explicit merge mode cannot retain
+  the finalizer's gates, stop finalization. Do not squash/rebase, rewrite the
+  branch stack, or add the eventual mixed merge revision to ignore metadata.
 - If formatting touches protected bytes, discard only the formatter-caused
   protected edit, investigate the scope bug and add a regression before retry;
   never regenerate pins/evidence as the fix.

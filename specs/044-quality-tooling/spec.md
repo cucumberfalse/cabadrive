@@ -269,6 +269,17 @@ diff with no gate. Preserve reviewability through commit topology:
    format commit afterward; if its SHA changes before publication, update the
    metadata through a normal later commit and reverify.
 
+The ignored SHA must remain reachable from the landed default-branch history.
+Because a squash or rebase merge would discard or rewrite the recorded
+format-only commit identity, PR #209 must use an explicit merge commit. Extend
+the existing guarded finalizer with an opt-in `merge` method while retaining
+`squash` as its default; the expected-head, review, check, conflict and process-
+evidence gates apply identically to both methods. The repository must allow
+merge commits before final validation. If it does not, stop as a finalization
+blocker rather than recording the squash revision: that revision also contains
+semantic work and therefore must not be ignored. After landing, prove the exact
+format-only SHA is an ancestor of `origin/main` and rerun representative blame.
+
 Any source-regex repair discovered only after formatting must be a separate
 non-ignored commit, keep the original tested contract, and receive full unit
 regression; it cannot be folded into the ignored format revision.
@@ -309,13 +320,18 @@ new format-only commit referenced by `.git-blame-ignore-revs`.
   repository baseline, its observable gate order is:
   `typecheck → lint → format:check → quality negative contract → unit → build → e2e`.
 - The typecheck+lint CI step measures elapsed wall time around `quality:fast`,
-  prints the seconds and full source head SHA, and exits nonzero above 60
-  seconds. For pull requests the source identity is
+  prints the seconds, full event source head SHA and full actually checked-out
+  measurement SHA, and exits nonzero above 60 seconds. For pull requests the
+  event source identity is
   `github.event.pull_request.head.sha`; push/workflow fallback is `github.sha`.
-  The emitted value must be validated/printed as the full 40-hex SHA in the
-  timing line so a synthetic Actions merge checkout cannot be mistaken for the
-  reviewed PR source head. Workflow tests assert the event-safe expression and
-  log binding.
+  The measurement identity is captured after checkout with
+  `git rev-parse HEAD`. Both values must be validated and printed as full
+  40-hex SHAs in the timing line. They need not be equal for a pull-request
+  synthetic merge checkout, but the result must be explicitly bound to the
+  measured checkout rather than claimed for the event source. Workflow tests
+  assert the event-safe expression, checkout-derived measurement and log
+  binding. Current-head evidence must also prove the check suite belongs to the
+  unchanged event source head.
   The budget applies to those two commands on GitHub `ubuntu-latest`, not
   install or full preflight. A local result alone cannot satisfy NFR-1.
 - `preflight` preserves `check:feature-memory --worktree`, `check:repo`,
@@ -354,9 +370,12 @@ new format-only commit referenced by `.git-blame-ignore-revs`.
    exactly before/after and manual-ticket placement validation passes.
 6. One exact format-only SHA is present in `.git-blame-ignore-revs`; inspection
    proves the ignored revision contains no semantic/config/test-contract/docs/
-   process change and no history rewrite was used.
+   process change and no history rewrite was used. Guarded finalization uses a
+   merge commit, not squash/rebase, and post-merge evidence proves that exact
+   SHA remains reachable from `origin/main` and representative blame skips it.
 7. CI and preflight preserve required validation while enforcing fast-fail
-   ordering. Current-head GitHub timing proves combined typecheck+lint ≤60 s.
+   ordering. Current-head GitHub timing proves combined typecheck+lint ≤60 s
+   and names both the event source and actual measured checkout SHAs.
 8. Full unit/build/offline/service-worker/E2E/preflight pass. Isolated local
    Docker smoke passes, or its documented external-fetch fallback is paired
    with successful required `docker-validation` on the exact final current PR
@@ -382,7 +401,9 @@ new format-only commit referenced by `.git-blame-ignore-revs`.
   or an accidental protected-byte change is hidden by regenerated hashes.
 - Semantic/type/hook/test-contract changes are included in the ignored
   format-only commit, or `.git-blame-ignore-revs` contains a placeholder,
-  nonexistent or later-amended SHA.
+  nonexistent, unreachable or later-amended SHA; squash/rebase finalization
+  discards or rewrites the ignored commit; or a mixed semantic squash revision
+  is added to the ignore file through a follow-up.
 - Source-shape tests are deleted/weakened because whitespace changed, or hook
   arrays are auto-fixed without behavioral evidence.
 - CI quality gates run after unit/build/E2E, combined CI timing exceeds 60 s,
@@ -404,7 +425,10 @@ Every recorded command must name outcome and full checked SHA. Evidence includes
 - protected-file pre/post hash manifests, allowlist-only name-status diff,
   formatter idempotence and exact format-only commit inspection;
 - `.git-blame-ignore-revs` SHA existence/content proof and blame command check;
-- exact CI/preflight order test and GitHub runner ≤60 s timing on current head;
+- exact CI/preflight order test and GitHub runner ≤60 s timing bound to both the
+  event source and actual measured checkout on current head;
+- finalizer default/opt-in merge-method tests, current repository merge-method
+  capability, and post-merge ancestry/blame proof for the ignored SHA;
 - `validate:attribution`, `validate:content`, full unit, build, E2E, preflight,
   service-worker/offline and isolated Docker results; if local Docker is
   infrastructure-blocked, two bounded-attempt records, empty-project cleanup

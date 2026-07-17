@@ -209,8 +209,44 @@
   thread-aware review on that exact head; Orchestrator resolves/outdates the
   four threads and rechecks all required checks, including T037 Docker evidence,
   before final validation.
+- [ ] T044 Fix P2 `PRRT_kwDOSX65IM6R44d7` as a bounded current task. Keep the
+  integration-preserving pull-request checkout, capture the actual measured
+  checkout with `git rev-parse HEAD` after checkout, validate both it and the
+  event-safe source SHA as full 40-hex values, and print both with duration and
+  the 60-second budget. Workflow tests must reject a missing/invalid measured
+  SHA and wording that attributes synthetic-merge timing to the source head.
+  Exact-current-head GitHub evidence must bind the check suite to the unchanged
+  PR source and the timing to the logged measured checkout.
+- [ ] T045 Fix P2 `PRRT_kwDOSX65IM6R5NtC` as a bounded current task. Extend
+  `scripts/finalize-pr.mjs` with explicit opt-in `--merge-method merge`, retain
+  `squash` as the default, reject unsupported values, expose the selected
+  method in dry-run output and preserve expected-head, required-check, review-
+  thread, conflict, process-evidence and auto-merge gates. Add focused
+  `tests/finalize-pr.test.mjs` coverage and update
+  `docs_project/project/devops/ai-pr-workflow.md`. Record read-only proof that
+  GitHub permits merge commits. PR #209 must select merge, never squash/rebase;
+  a follow-up ignore entry for the mixed squash revision is explicitly rejected.
+- [ ] T046 Dispose P2 `PRRT_kwDOSX65IM6R5f6z` with an exact-new-head ancestry
+  guard before T047. Record GitHub API PR head/commit-list evidence and run
+  `git merge-base --is-ancestor c359350358a82d0250934d627c65b5a5a0de6a8a
+  <exact-head>`. The cited
+  `7fd66ff` is neither current API head nor a current PR commit in the evidence
+  captured at disposition, while `c359350…` is an ancestor of current head
+  `f3a96b078762ac6f3982f3de749d0a7489566562`; therefore the finding is treated
+  as stale/mismatched-review-head evidence, not a valid current topology claim.
+  If either current-head assertion changes, stop and return to Architect; do
+  not rewrite commits or replace metadata. Fresh Review Agent confirmation and
+  Orchestrator thread disposition are still required.
+- [ ] T047 After T044–T046, run focused workflow/finalizer/quality tests,
+  finalizer dry-run for explicit merge, current-head ancestry and representative
+  blame checks, affected full Node/preflight, `git diff --check` and all required
+  GitHub checks including T037 Docker evidence. Review Agent performs fresh
+  thread-aware review on that exact head. Orchestrator resolves/outdates all
+  three current threads only from current evidence, confirms the earlier four
+  remain resolved/outdated, and records merge-commit selection before final
+  role validation.
 - [ ] T027 Architect final validation, invoked only by Orchestrator after T001–
-  T026 and T030–T043 appear complete, must inspect the full cycle PR set,
+  T026 and T030–T047 appear complete, must inspect the full cycle PR set,
   format-only commit,
   feedback dispositions, open tasks, architecture, process memory, checks and
   customer intent. Record pass timestamp/effective content head or gap/return
@@ -221,7 +257,11 @@
 - [ ] T029 Orchestrator run the current-PR-head/effective-content-head read-only
   guard, prove every later commit is validation-evidence-only, recheck checks,
   review threads, conflicts, acceptance, process memory and blocker exceptions,
-  then finalize/merge only when the completion contract is satisfied.
+  then finalize PR #209 with the guarded explicit merge-commit method only when
+  the completion contract is satisfied. After landing, fetch `origin/main`,
+  prove `c359350358a82d0250934d627c65b5a5a0de6a8a` remains its ancestor and
+  rerun representative `git blame --ignore-revs-file`; squash/rebase or a mixed
+  squash-SHA follow-up is not an allowed fallback.
 
 ## Decisions
 
@@ -242,9 +282,12 @@
 - Failure behavior uses temporary sentinels with mandatory cleanup rather than
   committing invalid fixtures outside the real gate.
 - CI enforces and measures the combined positive typecheck+lint budget; a local
-  fast run cannot replace GitHub runner evidence.
+  fast run cannot replace GitHub runner evidence. The log names both event
+  source head and actual checkout measured by `git rev-parse HEAD`.
 - `.git-blame-ignore-revs` is necessarily a later metadata commit because a
-  commit cannot contain its own final SHA. No history rewrite is needed.
+  commit cannot contain its own final SHA. No history rewrite is needed. PR
+  #209 uses guarded merge-commit finalization so the referenced commit reaches
+  `main`; the finalizer's default remains squash for unrelated PRs.
 - General CI deduplication remains owned by future ТЗ-18; this cycle preserves
   existing validation even when nested commands repeat work.
 - React hooks scope is intentionally explicit: error-level `rules-of-hooks` and
@@ -291,6 +334,13 @@
   cleanup, source-head timing evidence and typed root/E2E lint coverage, plus
   one P3 exact-allowlist drift. All are accepted as current T038–T042 work;
   prior no-findings automation does not close these thread-aware findings.
+- A later native review added three unresolved P2 threads. The measured-checkout
+  identity gap and squash-loss of the ignored SHA are accepted as blocking
+  T044–T045/T047 work. The third thread cites `7fd66ff`, which is absent from
+  the current PR commit list; local and GitHub evidence instead show
+  `c359350…` in the PR stack and ancestral to current API head `f3a96b0…`.
+  T046 therefore treats only that topology claim as stale/mismatched while
+  still requiring exact-new-head guard and fresh review.
 - T040 exposed 280 typed-lint findings in legacy E2E: 13 real assertion/async/
   await/unbound issues were fixed, while 267 unsafe-family reports propagate
   from runtime `JSON.parse` fixture roots. The exact-file waiver is accepted
@@ -400,6 +450,27 @@ disposition. It must not implement unplanned work silently.
   approved allowlist is intentionally exact, so `*.config.ts` is broader than
   authorized. Literal Vite/Playwright paths are required in all scripts and the
   flat profile, with full-list assertions preventing silent future enrollment.
+- Review P2 `PRRT_kwDOSX65IM6R44d7` — **accepted as bounded current tasks T044
+  and T047; blocking**. Naming only `pull_request.head.sha` does not identify
+  the commit actually timed under the default synthetic merge checkout. Keep
+  integration checkout semantics and bind the measurement explicitly to
+  `git rev-parse HEAD`, while retaining the event source as separate context.
+- Review P2 `PRRT_kwDOSX65IM6R5NtC` — **accepted as bounded current tasks T045,
+  T047 and T029; blocking**. The finalizer currently hard-codes squash, which
+  would make `c359350…` unreachable from `main`. Ignoring the eventual squash
+  revision is rejected because it also contains semantic changes. GitHub
+  currently reports `mergeCommitAllowed: true`; the bounded solution is an
+  opt-in guarded merge method with default squash unchanged, followed by
+  post-merge ancestry/blame proof.
+- Review P2 `PRRT_kwDOSX65IM6R5f6z` — **current topology claim not reproduced;
+  accepted as verification/disposition tasks T046–T047, blocking until fresh
+  review**. On 2026-07-17 GitHub reported PR head
+  `f3a96b078762ac6f3982f3de749d0a7489566562` and its commit list included
+  `c359350358a82d0250934d627c65b5a5a0de6a8a`; local
+  `git merge-base --is-ancestor` returned 0. The cited `7fd66ff` was neither
+  current head nor listed PR commit. Do not implement a topology rewrite from
+  mismatched evidence; re-run the exact guard after T044–T045 and require a
+  Review Agent result on that head before Orchestrator disposes the thread.
 
 ## Dead Ends
 
