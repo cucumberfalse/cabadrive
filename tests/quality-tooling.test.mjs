@@ -86,10 +86,13 @@ test("CI keeps required identity and runs cheap quality gates before tests and b
     /QUALITY_SOURCE_HEAD:\s*\$\{\{ github\.event\.pull_request\.head\.sha \|\| github\.sha \}\}/,
   );
   assert.match(ci, /\[\[ ! "\$QUALITY_SOURCE_HEAD" =~ \^\[0-9a-f\]\{40\}\$ \]\]/);
+  assert.match(ci, /QUALITY_MEASURED_HEAD=\$\(git rev-parse HEAD\)/);
+  assert.match(ci, /\[\[ ! "\$QUALITY_MEASURED_HEAD" =~ \^\[0-9a-f\]\{40\}\$ \]\]/);
   assert.match(
     ci,
-    /quality:fast completed in \$\{elapsed\}s \(budget \$\{QUALITY_FAST_BUDGET_SECONDS\}s, source \$\{QUALITY_SOURCE_HEAD\}\)/,
+    /quality:fast completed in \$\{elapsed\}s \(budget \$\{QUALITY_FAST_BUDGET_SECONDS\}s, event source \$\{QUALITY_SOURCE_HEAD\}, measured checkout \$\{QUALITY_MEASURED_HEAD\}\)/,
   );
+  assert.doesNotMatch(ci, /measured source \$\{QUALITY_SOURCE_HEAD\}/);
   assert.match(ci, /elapsed > QUALITY_FAST_BUDGET_SECONDS/);
 });
 

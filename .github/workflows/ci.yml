@@ -61,14 +61,19 @@ jobs:
           QUALITY_SOURCE_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
         shell: bash
         run: |
+          QUALITY_MEASURED_HEAD=$(git rev-parse HEAD)
           if [[ ! "$QUALITY_SOURCE_HEAD" =~ ^[0-9a-f]{40}$ ]]; then
             echo "quality:fast source head is not a full SHA: $QUALITY_SOURCE_HEAD" >&2
+            exit 1
+          fi
+          if [[ ! "$QUALITY_MEASURED_HEAD" =~ ^[0-9a-f]{40}$ ]]; then
+            echo "quality:fast measured checkout is not a full SHA: $QUALITY_MEASURED_HEAD" >&2
             exit 1
           fi
           start=$(date +%s)
           pnpm run quality:fast
           elapsed=$(($(date +%s) - start))
-          echo "quality:fast completed in ${elapsed}s (budget ${QUALITY_FAST_BUDGET_SECONDS}s, source ${QUALITY_SOURCE_HEAD})"
+          echo "quality:fast completed in ${elapsed}s (budget ${QUALITY_FAST_BUDGET_SECONDS}s, event source ${QUALITY_SOURCE_HEAD}, measured checkout ${QUALITY_MEASURED_HEAD})"
           if (( elapsed > QUALITY_FAST_BUDGET_SECONDS )); then
             echo "quality:fast exceeded the ${QUALITY_FAST_BUDGET_SECONDS}s budget" >&2
             exit 1

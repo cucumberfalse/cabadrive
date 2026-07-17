@@ -7,11 +7,14 @@ import { test } from "node:test";
 import {
   collectBlockingFindings,
   collectPaginationFindings,
+  buildMergeArgs,
+  buildDryRunSummary,
   evaluatePostEffectiveHeadChangedFiles,
   evaluateFinalizationGates,
   hasImplementationFeedbackDisposition,
   isFinalValidationEvidencePath,
   normalizeCheckState,
+  resolveMergeMethod,
   readProcessEvidence,
   readProcessEvidenceFromHead,
   verifyPostEffectiveHeadChanges,
@@ -197,6 +200,66 @@ test("finalization gate passes only with current head, green required checks, an
   assert.equal(result.ready, true);
   assert.equal(result.action, "merge");
   assert.deepEqual(result.blockers, []);
+});
+
+test("finalizer defaults to squash and accepts only explicit squash or merge methods", () => {
+  assert.equal(resolveMergeMethod(), "squash");
+  assert.equal(resolveMergeMethod("squash"), "squash");
+  assert.equal(resolveMergeMethod("merge"), "merge");
+  assert.throws(() => resolveMergeMethod("rebase"), /Unsupported merge method: rebase/);
+  assert.throws(() => resolveMergeMethod(""), /Unsupported merge method/);
+});
+
+test("merge argument builder preserves head guard and selected method", () => {
+  const common = {
+    prNumber: "209",
+    repo: "cucumberfalse/cabadrive",
+    headSha: "a".repeat(40),
+  };
+  assert.deepEqual(buildMergeArgs({ ...common, mergeMethod: "squash" }), [
+    "pr",
+    "merge",
+    "209",
+    "--repo",
+    "cucumberfalse/cabadrive",
+    "--squash",
+    "--match-head-commit",
+    "a".repeat(40),
+  ]);
+  assert.deepEqual(buildMergeArgs({ ...common, mergeMethod: "merge", auto: true }), [
+    "pr",
+    "merge",
+    "209",
+    "--repo",
+    "cucumberfalse/cabadrive",
+    "--merge",
+    "--match-head-commit",
+    "a".repeat(40),
+    "--auto",
+  ]);
+});
+
+test("dry-run summary exposes the selected merge method", () => {
+  assert.deepEqual(
+    buildDryRunSummary({
+      action: "merge",
+      repo: "cucumberfalse/cabadrive",
+      prNumber: "209",
+      headSha: "b".repeat(40),
+      mergeMethod: "merge",
+      featurePath: "specs/044-quality-tooling",
+      pendingChecks: [],
+    }),
+    {
+      action: "merge",
+      repo: "cucumberfalse/cabadrive",
+      pr: 209,
+      headSha: "b".repeat(40),
+      mergeMethod: "merge",
+      featurePath: "specs/044-quality-tooling",
+      pendingChecks: [],
+    },
+  );
 });
 
 test("required checks are sourced from .unicorn-hub config and missing checks block", () => {

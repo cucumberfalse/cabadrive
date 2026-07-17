@@ -377,7 +377,11 @@ terminal state. Orchestrator should run the finalization helper, for example
 after final validation and current-head guards are recorded. The helper reads
 required checks from `.unicorn-hub/config.json`, verifies the current head,
 review resolution, blocking findings, mergeability, process evidence, and then
-uses GitHub squash merge. Process evidence must include
+uses GitHub squash merge by default. A feature that must preserve individual
+commit identities may explicitly select merge commit with
+`--merge-method merge`; unsupported values, including `rebase`, fail closed and
+all existing expected-head/check/review/conflict/process-evidence gates remain
+mandatory. Process evidence must include
 `Effective content head: <40-hex-sha>`,
 `Architect validated effective content head: <40-hex-sha>`, and
 `Analyst validated effective content head: <40-hex-sha>` for the same SHA, and
@@ -394,6 +398,10 @@ current PR head returned by GitHub. Dry-run inspection may omit the expected
 head. The helper provides no direct-push, force, or admin-bypass path. With
 `--auto-merge-pending`, pending required checks may enable GitHub protected
 auto-merge instead of immediate merge; without that flag they remain blockers.
+PR #209 must be finalized with
+`pnpm run pr:finalize -- --pr 209 --expected-head <sha> --feature specs/044-quality-tooling --merge-method merge`
+so its recorded format-only commit remains reachable from `main`. Squash or
+rebase finalization is not an allowed fallback for that PR.
 
 Current executable feature-memory checks, including local preflight and the CI
 guard script, still validate the existing `spec.md`, `plan.md`, and `tasks.md`

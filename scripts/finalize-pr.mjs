@@ -25,6 +25,50 @@ const pendingValues = new Set([
   "WAITING",
   "pending",
 ]);
+const supportedMergeMethods = new Set(["squash", "merge"]);
+
+export function resolveMergeMethod(value = "squash") {
+  if (!supportedMergeMethods.has(value)) {
+    throw new Error(`Unsupported merge method: ${value || "(empty)"}. Expected squash or merge.`);
+  }
+  return value;
+}
+
+export function buildMergeArgs({ prNumber, repo, headSha, mergeMethod = "squash", auto = false }) {
+  const selectedMethod = resolveMergeMethod(mergeMethod);
+  const args = [
+    "pr",
+    "merge",
+    String(prNumber),
+    "--repo",
+    repo,
+    `--${selectedMethod}`,
+    "--match-head-commit",
+    headSha,
+  ];
+  if (auto) args.push("--auto");
+  return args;
+}
+
+export function buildDryRunSummary({
+  action,
+  repo,
+  prNumber,
+  headSha,
+  mergeMethod,
+  featurePath,
+  pendingChecks,
+}) {
+  return {
+    action,
+    repo,
+    pr: Number(prNumber),
+    headSha,
+    mergeMethod: resolveMergeMethod(mergeMethod),
+    featurePath: featurePath || null,
+    pendingChecks,
+  };
+}
 const validationCompletedAtMarkers = {
   architect: /Final\s+Architect\s+validation\s+completed\s+at:\s*([^\r\n]+)/gi,
   analyst: /Final\s+Analyst\s+validation\s+completed\s+at:\s*([^\r\n]+)/gi,
@@ -1510,6 +1554,7 @@ async function fetchPullRequestState(root, repo, prNumber) {
 
 async function main() {
   const args = parseArgs();
+  const mergeMethod = resolveMergeMethod(args["merge-method"]);
   const root = findRepoRoot();
   const config = readConfig(root);
   const repo = resolveRepo(root, args);
@@ -1565,33 +1610,26 @@ async function main() {
     process.exit(1);
   }
 
-  const mergeArgs = [
-    "pr",
-    "merge",
+  const mergeArgs = buildMergeArgs({
     prNumber,
-    "--repo",
     repo,
-    "--squash",
-    "--match-head-commit",
-    state.pr.headSha,
-  ];
-
-  if (result.action === "enable-auto-merge") {
-    mergeArgs.push("--auto");
-  }
+    headSha: state.pr.headSha,
+    mergeMethod,
+    auto: result.action === "enable-auto-merge",
+  });
 
   if (args["dry-run"]) {
     console.log(
       JSON.stringify(
-        {
+        buildDryRunSummary({
           action: result.action,
           repo,
-          pr: Number(prNumber),
+          prNumber,
           headSha: state.pr.headSha,
-          mergeMethod: "squash",
-          featurePath: featurePath || null,
+          mergeMethod,
+          featurePath,
           pendingChecks: result.pendingChecks,
-        },
+        }),
         null,
         2,
       ),
