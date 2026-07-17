@@ -8,7 +8,7 @@
   `/Users/chap/devel/cabadrive-worktrees/045-progress-store`.
 - Cycle PR set: [PR #210](https://github.com/cucumberfalse/cabadrive/pull/210),
   branch `codex/045-progress-store`, published evidence head
-  `dc4653f8e79b2d5a7ca4ec7b4bdb931f1e7a0c60`, purpose: implementation plus
+  `dc4653f29fca172e65bc2ab4f1610343d80135f0`, purpose: implementation plus
   pre-review process evidence, status: open, included in final validation. Its
   implementation content head is `f3279152b91f4725b7a2787e1c67c164b8c42705`;
   later commits before final validation contain process evidence only.
