@@ -109,9 +109,15 @@ test("capture helper rejects an unrelated HTTP 200 server on the strict port wit
   assert.deepEqual(screenshotState(), before);
 });
 
-test("public screenshot command is build-first and a forced build failure cannot reach capture", async () => {
+test("public screenshot command uses an acyclic SPA build before capture and post-validates attribution", async () => {
   const packageScripts = JSON.parse(readFileSync("package.json", "utf8")).scripts;
   assert.equal(packageScripts["screenshots:readme"], "node scripts/run-readme-screenshots.mjs");
+  assert.equal(packageScripts["build:app"], "pnpm run prepare:assets && vite build && pnpm run generate:sw");
+  assert.match(packageScripts.build, /validate:content/);
+  assert.match(packageScripts.build, /build:app/);
+  assert.match(packageScripts.preflight, /validate:content/);
+  assert.match(packageScripts.preflight, /pnpm run build/);
+  assert.doesNotMatch(packageScripts["build:app"], /screenshots:readme|validate:attribution|validate:content/);
   assert.doesNotMatch(packageScripts.build, /screenshots:readme/);
   const before = screenshotState();
   await assert.rejects(

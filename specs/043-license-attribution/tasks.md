@@ -155,6 +155,31 @@
   README relative/GitHub-render checks, `pnpm run validate:attribution`, and
   affected current-head checks. Record exact outcomes/full SHA, commit/push as
   assigned, and require fresh thread-aware review before resolving the P2.
+- [x] T030 Implementation Agent fix current review P2
+  `PRRT_kwDOSX65IM6Rpzit` / comment `3600452108` by breaking the screenshot
+  bootstrap cycle without weakening release gates. Extract a non-recursive
+  current-source SPA build primitive (for example `build:app`: prepare local
+  assets, Vite production build, service-worker generation) that does not run
+  screenshot-artifact validation. The public `screenshots:readme` wrapper must
+  require that primitive to succeed before preview/capture, then run full
+  `validate:attribution` after regenerating the PNGs. Normal `pnpm run build`
+  and `pnpm run preflight` must continue to run full content/attribution
+  validation, including required README PNG existence/integrity. Do not add a
+  skip-validation flag, hidden/public direct-helper bypass, dependency, or any
+  build↔capture recursion. This narrowly supersedes T028's full-`build` wrapper
+  preference while preserving its current-source and fail-closed intent.
+- [ ] T031 Add a recovery regression for T030 using backed-up artifacts: remove
+  one README PNG and corrupt another, then prove the documented public command
+  rebuilds current source, recreates all three valid screenshots, shows the
+  current About/version/content contract, and passes post-capture attribution
+  validation without invoking a direct helper. Separately force the SPA build
+  primitive to fail with stale `dist` present and prove bounded nonzero exit,
+  no preview/capture, and unchanged screenshot state. Assert the package-script
+  graph has no cycle and normal `build`/`preflight` still include the full
+  attribution gate. Rerun prior early-exit, occupied-port, stale-dist,
+  bounded-pixel/black-region, exact committed-hash, README local/GitHub-render,
+  full build/preflight/current-head checks and fresh thread-aware review before
+  resolving the P2.
 
 ## Decisions
 
@@ -265,6 +290,19 @@ implement out-of-scope improvements.
   exit, occupied-port, bounded-pixel, black-region, README and current-head
   checks remain required, followed by fresh thread-aware review. This is part
   of ТЗ-22's public screenshot evidence and cannot be deferred.
+- Review P2 `PRRT_kwDOSX65IM6Rpzit` / comment `3600452108` — **accepted as
+  current-feature tasks T030 and T031; blocking**. Running full `build` before
+  capture is circular because its attribution gate requires the very PNGs the
+  public command must be able to regenerate. T030 supersedes only T028's choice
+  of full `build` inside the wrapper: use a non-recursive current-source SPA
+  build primitive before capture and full attribution validation immediately
+  after capture, while ordinary `build` and `preflight` retain the complete
+  pre-existing attribution gate. No skip flag or documented/hidden helper
+  bypass is accepted. Verification must prove public-command recovery from one
+  missing and one corrupt PNG, fail-closed behavior when the SPA build fails
+  despite stale `dist`, no script-graph recursion, preservation of all prior
+  capture regressions, full gates and fresh review. This bootstrap repair is
+  required for ТЗ-22's reproducible public screenshot contract.
 
 ## Dead Ends
 
@@ -291,6 +329,14 @@ implement out-of-scope improvements.
   from decoded RGB pixels. Fresh browser contexts stabilized application state;
   deterministic lossless RGB PNG normalization then made two consecutive full
   captures byte-identical and eliminated the raw-encoding variance.
+- The first T030 full `pnpm run test` attempt under heavily contended default
+  file-level concurrency ended 494/495 after approximately 33 minutes; the
+  truncated output did not retain the failing assertion. Every test file then
+  passed sequentially, including all 495 tests, showing no reproducible
+  contract failure. The unchanged repository `pnpm run preflight` subsequently
+  passed its normal concurrent 495/495 Node gate and 104/104 E2E gate, so no
+  test-runner or production behavior was changed for the transient resource
+  failure.
 
 ## Verification Evidence
 
@@ -515,6 +561,40 @@ implement out-of-scope improvements.
   (`about`) bytes, and downloaded SHA-256 values exactly matched the committed
   identities above. `gh pr view 208` reported this exact head, `OPEN`, ready and
   `MERGEABLE`; required checks and fresh AI review were in progress.
+- Bootstrap-cycle review-fix local evidence (2026-07-17): package scripts now
+  expose an acyclic `build:app` primitive containing only `prepare:assets`, Vite
+  production build and service-worker generation. Ordinary `build` remains
+  `validate:content && build:app`, and unchanged `preflight` retains both its
+  explicit full content/attribution validation and normal `build` gate. The
+  sole public screenshot script still targets the wrapper; no package script
+  exposes the lower-level capture helper. The wrapper requires `build:app`, then
+  capture, then full `validate:attribution`, with no skip flag, dependency or
+  reverse build/capture edge.
+- `node scripts/verify-readme-screenshot-build-contract.mjs` passed its backed-
+  up recovery contract. With stale `dist` seeded, forced SPA-build exit 24 was
+  bounded below 10 seconds, never started preview/capture, created no output and
+  left every screenshot hash/mtime unchanged. The verifier then removed
+  `learn.png`, replaced `materials.png` with corrupt bytes, and invoked only the
+  documented public command. It rebuilt current source, replaced stale `dist`,
+  recreated all three exact PNGs, satisfied the capture helper's current About
+  heading / `v0.1.0` / `unofficial_b_fallback` assertions, and completed post-
+  capture attribution validation; `finally` restored the backed-up artifacts.
+- T030–T031 affected-head verification (2026-07-17): focused capture tests
+  passed 6/6, retaining forced-preview-exit, occupied unrelated HTTP 200,
+  bounded comparison/black-region and forced SPA-build-failure coverage. A
+  final public `pnpm run screenshots:readme` completed `build:app`, generated
+  the 2,156-asset service worker, captured all three images, and passed full
+  post-capture attribution. Three consecutive independent comparisons passed
+  at 1440x900 with zero changed pixels and passing opaque-black guards. Exact
+  identities remain `learn.png`
+  `c9ea5089ffe789e1592ab053758db9186e7d9beb77c77e41744571dc45051e09`,
+  `materials.png` `f59ac0f61e8bc0613965b8843e900a98a856234763ab75c5fd1c355c12323943`,
+  and `about.png` `e10c3d0e5e4d85d684c2b0548fa742db75e269b859bfd861fe32d953b72a5d99`.
+  `pnpm run build` passed the complete attribution/content gate and generated
+  2,156 SW assets; unchanged `pnpm run preflight` passed repository/feature
+  memory, full content/attribution, 495/495 Node tests, production build and
+  104/104 E2E tests. The Implementation portion of T031 is complete; T031 stays
+  open for fresh Orchestrator-owned thread-aware review and disposition.
 - Isolated Docker smoke: port `5187` had no listener; with
   `COMPOSE_PROJECT_NAME=cabadrive-043-license` and
   `CABADRIVE_HOST_PORT=5187`, `make build` and `make up` passed, HTTP returned
@@ -546,6 +626,12 @@ implement out-of-scope improvements.
   build-first public wrapper, fail-closed stale-dist verifier and local evidence
   are recorded above; fresh current-head review and thread disposition remain
   Orchestrator-owned.
+- Review Agent then raised P2 `PRRT_kwDOSX65IM6Rpzit` / comment `3600452108`:
+  full attribution validation before capture created a missing/corrupt-PNG
+  bootstrap cycle. Architect accepted it as T030–T031. The non-recursive SPA
+  build primitive, post-capture validation, backed-up destructive recovery
+  regression and full local evidence are recorded above; fresh current-head
+  review and thread disposition remain Orchestrator-owned.
 
 ## Cycle PR Set
 

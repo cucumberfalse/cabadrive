@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { execFile } from "node:child_process";
 import { createHash } from "node:crypto";
-import { existsSync, mkdtempSync, mkdirSync, readFileSync, rmSync, statSync, writeFileSync } from "node:fs";
+import { copyFileSync, existsSync, mkdtempSync, mkdirSync, readFileSync, rmSync, statSync, writeFileSync } from "node:fs";
 import { createServer } from "node:http";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
@@ -41,9 +41,12 @@ async function runPublicCommand(env, timeout) {
 
 const root = mkdtempSync(join(tmpdir(), "cabadrive-readme-build-contract-"));
 const failedOutput = join(root, "failed");
-const successfulOutput = join(root, "successful");
+const backupDir = join(root, "backup");
 const before = screenshotState();
 try {
+  mkdirSync(backupDir);
+  for (const path of committedScreenshots) copyFileSync(path, join(backupDir, path.split("/").at(-1)));
+
   mkdirSync("dist", { recursive: true });
   writeFileSync("dist/index.html", marker);
   const failedAt = Date.now();
@@ -64,18 +67,33 @@ try {
   assert.equal(existsSync(failedOutput), false);
   assert.deepEqual(screenshotState(), before);
 
-  await runPublicCommand({
-    README_SCREENSHOT_OUTPUT_DIR: successfulOutput,
+  rmSync(committedScreenshots[0]);
+  writeFileSync(committedScreenshots[1], "corrupt screenshot fixture");
+  const recovered = await runPublicCommand({
     README_SCREENSHOT_PORT: String(await availablePort())
   }, 180_000);
   assert.doesNotMatch(readFileSync("dist/index.html", "utf8"), new RegExp(marker));
-  for (const name of ["learn.png", "materials.png", "about.png"]) assert.equal(existsSync(join(successfulOutput, name)), true);
-  assert.deepEqual(screenshotState(), before);
+  assert.match(`${recovered.stdout}\n${recovered.stderr}`, /Attribution validation passed/);
+  assert.deepEqual(screenshotState().map(({ path, hash }) => ({ path, hash })), before.map(({ path, hash }) => ({ path, hash })));
 
   const scripts = JSON.parse(readFileSync("package.json", "utf8")).scripts;
+  const wrapper = readFileSync("scripts/run-readme-screenshots.mjs", "utf8");
   assert.doesNotMatch(scripts.build, /screenshots:readme/);
+  assert.match(scripts.build, /validate:content/);
+  assert.match(scripts.build, /build:app/);
+  assert.match(scripts.preflight, /validate:content/);
+  assert.match(scripts.preflight, /pnpm run build/);
+  assert.equal(scripts["build:app"], "pnpm run prepare:assets && vite build && pnpm run generate:sw");
+  assert.doesNotMatch(scripts["build:app"], /screenshots:readme|validate:attribution|validate:content/);
   assert.equal(scripts["screenshots:readme"], "node scripts/run-readme-screenshots.mjs");
-  console.log("README screenshot build contract passed: failed build preserved stale dist/no capture; successful current build replaced it and captured current About/version/content to temp output.");
+  assert.equal(Object.values(scripts).some((command) => command.includes("capture-readme-screenshots.mjs")), false);
+  assert.ok(wrapper.indexOf('["run", "build:app"]') < wrapper.indexOf('["scripts/capture-readme-screenshots.mjs"]'));
+  assert.ok(wrapper.indexOf('["scripts/capture-readme-screenshots.mjs"]') < wrapper.indexOf('["run", "validate:attribution"]'));
+  console.log("README screenshot bootstrap contract passed: failed SPA build preserved stale dist/no capture; public command recovered missing/corrupt artifacts from current source and post-validated attribution.");
 } finally {
+  for (const path of committedScreenshots) {
+    const backup = join(backupDir, path.split("/").at(-1));
+    if (existsSync(backup)) copyFileSync(backup, path);
+  }
   rmSync(root, { recursive: true, force: true });
 }

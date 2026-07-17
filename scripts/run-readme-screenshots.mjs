@@ -12,9 +12,10 @@ function run(command, args, label) {
 }
 
 if (process.env.README_SCREENSHOT_FORCE_BUILD_FAILURE === "1") {
-  await run(process.execPath, ["-e", "process.exit(24)"], "forced README screenshot build");
+  await run(process.execPath, ["-e", "process.exit(24)"], "forced README screenshot SPA build");
 } else {
-  await run("pnpm", ["run", "build"], "README screenshot build");
+  await run("pnpm", ["run", "build:app"], "README screenshot SPA build");
 }
 
 await run(process.execPath, ["scripts/capture-readme-screenshots.mjs"], "README screenshot capture");
+await run("pnpm", ["run", "validate:attribution"], "README screenshot attribution validation");
