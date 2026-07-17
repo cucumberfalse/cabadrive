@@ -107,6 +107,32 @@
   fixes. Record new asset hashes, exact commands/outcomes and full candidate
   SHA; commit/push as assigned. Orchestrator obtains fresh thread-aware review
   on the new head and resolves/outdates both P2 threads only after verification.
+- [x] T026 Implementation Agent fix current review P2
+  `PRRT_kwDOSX65IM6Rmyep` / comment `3599312529`: make screenshot-helper
+  readiness causally depend on the Vite preview process it spawned. An HTTP 200
+  from the configured port is insufficient. Require a positive readiness signal
+  from that child (for example its piped Vite readiness output) while racing the
+  already-registered child exit promise, then perform the HTTP availability
+  check only while that same child remains alive. Preserve T024's prompt early-
+  exit/no-unsettled-await behavior and strict-port failure; do not introduce a
+  general server manager or dependency.
+- [ ] T027 Add a deterministic occupied-port regression for T026: start an
+  unrelated local server that returns HTTP 200 on the configured capture port,
+  run the screenshot helper under a bounded timeout, and prove it exits nonzero
+  without starting capture or changing any committed screenshot hash/mtime.
+  Rerun the forced-early-exit regression, normal capture, bounded cross-process
+  pixel-equivalence comparison, original-resolution visual/pixel guards, README
+  relative/GitHub-render checks, `pnpm run validate:attribution`, and affected
+  current-head checks. Cross-process acceptance requires identical dimensions;
+  at most 16 differing pixels per image; maximum absolute delta 1 in every RGBA
+  channel; every differing coordinate explicitly recorded and contained only
+  in the declared CSS rounded-corner antialias masks; zero differences outside
+  those masks; and passing opaque-black-region guards. Record an exact SHA-256
+  for each committed artifact as identity evidence, but do not require a fresh
+  independent Chromium process to reproduce the encoded bytes/hash. Any wider,
+  larger, darker, or content-region drift fails. Record exact outcomes/full
+  candidate SHA, commit/push as assigned, and require fresh thread-aware review
+  before resolving/outdating the P2.
 
 ## Decisions
 
@@ -180,6 +206,30 @@ implement out-of-scope improvements.
   registered immediately after spawn, shared by readiness and teardown with
   already-exited state checks, proven by a timeout-bounded forced-early-exit
   regression and a normal capture. Broader process supervision is not needed.
+- Review P2 `PRRT_kwDOSX65IM6Rmyep` / comment `3599312529` — **accepted as
+  current-feature tasks T026 and T027; blocking**. The helper's current HTTP-200
+  readiness test can mistake an unrelated process on the strict port for the
+  spawned preview and capture stale UI, invalidating reproducibility and the
+  public screenshot evidence. Readiness must first be positively tied to the
+  spawned child while racing that child's exit, with HTTP used only as the
+  subsequent availability check. Verification must include an unrelated 200
+  server occupying the port and prove bounded nonzero failure with no capture
+  or screenshot mutation, while retaining the prior early-exit/no-hang repair
+  and successful bounded-pixel-equivalent/pixel-guarded normal capture. This
+  belongs to ТЗ-22's capture evidence and cannot be deferred.
+- Cross-process capture determinism feedback — **accepted as a T027 acceptance
+  clarification; no new product task or later ticket**. Independent
+  Chromium/Skia processes differ only at rounded-corner antialias pixels
+  (`learn`: 8; `materials`: 14; observed maximum channel delta: 1), while the
+  images remain visually identical, original-resolution inspection is clean,
+  and opaque-black guards pass. Exact byte/hash equality across processes is
+  therefore not required: enforcing it with capture-only square-corner CSS
+  would change the production appearance, and further normalization attempts
+  are disproportionate. Determinism is accepted only under T027's fail-closed
+  bounds: same dimensions, no more than 16 changed pixels per image, per-channel
+  delta no greater than 1, an explicit coordinate list wholly inside declared
+  rounded-corner masks, zero drift elsewhere, and passing black-region guards.
+  Each committed PNG still requires its own exact SHA-256 identity record.
 
 ## Dead Ends
 
@@ -316,6 +366,39 @@ implement out-of-scope improvements.
   above. `gh pr view 208` reported the same current head, `OPEN`, ready,
   `MERGEABLE`. The Implementation portion of T025 is complete; fresh review and
   thread resolution remain Orchestrator-owned before T025 can close.
+- Second review-fix local evidence (2026-07-16): readiness now first requires
+  the configured `baseURL` in the spawned Vite child's piped stdout while
+  concurrently racing that child's immediately registered exit promise. Only
+  after that positive child signal does the helper race HTTP availability
+  against the same exit promise and recheck populated exit/signal state before
+  capture. Strict-port behavior remains enabled. `node --test
+  tests/capture-readme-screenshots.test.mjs` passed 5/5: forced exit code 23
+  failed in 380 ms, and an unrelated HTTP 200 server occupying the configured
+  port caused nonzero failure in 924 ms under the 3-second limit, emitted no
+  capture-success marker, and left every screenshot SHA-256 and mtime unchanged.
+  The fifth focused test proves that outside-mask drift and channel deltas above
+  1 fail closed.
+- `pnpm run screenshots:readme:verify` captured two independent temporary sets
+  without modifying committed screenshots. Both sets were 1440×900 and passed
+  opaque-black guards. `about.png` had no changed pixels. `learn.png` had eight,
+  all in declared rounded-corner masks: `(146,556)`, `(147,556)`, `(146,557)`,
+  `(147,557)`, `(147,558)`, `(146,699)`, `(147,699)`, `(146,700)`.
+  `materials.png` had fourteen: `(457,633)`, `(458,633)`, `(601,633)`,
+  `(457,634)`, `(602,634)`, `(452,638)`, `(606,638)`, `(452,639)`,
+  `(606,639)`, `(607,742)`, `(452,743)`, `(607,743)`, `(452,744)`,
+  `(607,744)`. Every RGB channel delta was at most 1 (implicit opaque alpha
+  delta 0), no coordinate differed outside the masks, and visual inspection
+  found the normal production-appearance captures readable, unclipped and free
+  of masks or hidden content. The exact committed SHA-256 identities are
+  `learn.png` `56116116ab65e57ba1e9a8f668df174fbaec142db19e6cb899dfa1210519bda2`,
+  `materials.png` `0b667ad01e73685a43f5d62e2cbf425b26f903a6b5ededc00a148fcf5eb11233`,
+  and `about.png` `e10c3d0e5e4d85d684c2b0548fa742db75e269b859bfd861fe32d953b72a5d99`.
+  `pnpm run validate:attribution` and `git diff --check` passed. `pnpm run test`
+  passed 494/494; `pnpm run build` passed with the already-dispositioned chunk
+  warning and generated the 2,156-asset service worker. After cancelling settled
+  readiness/exit timeout handles, a final focused run passed 5/5 and the full
+  independent comparison completed in 9.2 seconds. Post-push GFM/raw-image
+  verification and the exact candidate SHA remain T027 work.
 - Isolated Docker smoke: port `5187` had no listener; with
   `COMPOSE_PROJECT_NAME=cabadrive-043-license` and
   `CABADRIVE_HOST_PORT=5187`, `make build` and `make up` passed, HTTP returned
@@ -336,6 +419,11 @@ implement out-of-scope improvements.
   preview-exit hang (`PRRT_kwDOSX65IM6RmZqj`). Architect accepted both as T023–
   T025. Implementation fixes and local evidence are recorded above; fresh
   current-head review and thread resolution remain Orchestrator-owned.
+- Review Agent then raised P2 `PRRT_kwDOSX65IM6Rmyep` / comment `3599312529`:
+  an unrelated HTTP 200 server could satisfy readiness before the spawned Vite
+  child established ownership of the strict port. Architect accepted it as
+  T026–T027; the bounded causal-readiness fix and local regression evidence are
+  recorded above, while fresh current-head review remains Orchestrator-owned.
 
 ## Cycle PR Set
 

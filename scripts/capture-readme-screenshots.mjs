@@ -5,7 +5,7 @@ import { assertNoOpaqueBlackRegion, decodeRgbPng, encodeRgbPng } from "./png-opa
 
 const port = Number(process.env.README_SCREENSHOT_PORT || 4399);
 const baseURL = `http://127.0.0.1:${port}`;
-const outputDir = "docs_project/screens/readme";
+const outputDir = process.env.README_SCREENSHOT_OUTPUT_DIR || "docs_project/screens/readme";
 const forcePreviewExit = process.env.README_SCREENSHOT_FORCE_PREVIEW_EXIT === "1";
 const previewCommand = forcePreviewExit ? process.execPath : "pnpm";
 const previewArgs = forcePreviewExit
@@ -14,8 +14,15 @@ const previewArgs = forcePreviewExit
 const preview = spawn(previewCommand, previewArgs, { stdio: ["ignore", "pipe", "pipe"] });
 let previewExitState;
 let previewStderr = "";
+let previewStdout = "";
 preview.stderr.on("data", (chunk) => { previewStderr += chunk.toString(); });
-preview.stdout.resume();
+
+const previewReadyPromise = new Promise((resolve) => {
+  preview.stdout.on("data", (chunk) => {
+    previewStdout += chunk.toString();
+    if (previewStdout.includes(baseURL)) resolve();
+  });
+});
 
 const previewExitPromise = new Promise((resolve, reject) => {
   preview.once("error", reject);
@@ -40,12 +47,29 @@ function earlyExitError(state) {
 }
 
 async function waitForPreview() {
+  let readinessTimer;
+  try {
+    await Promise.race([
+      previewReadyPromise,
+      previewExitPromise.then((state) => { throw earlyExitError(state); }),
+      new Promise((_, reject) => { readinessTimer = setTimeout(() => reject(new Error(`Vite preview did not report readiness at ${baseURL}`)), 10_000); })
+    ]);
+  } finally {
+    clearTimeout(readinessTimer);
+  }
   for (let attempt = 0; attempt < 50; attempt += 1) {
     const exited = currentExitState();
     if (exited) throw earlyExitError(exited);
     try {
-      const response = await fetch(baseURL);
-      if (response.ok) return;
+      const response = await Promise.race([
+        fetch(baseURL),
+        previewExitPromise.then((state) => { throw earlyExitError(state); })
+      ]);
+      if (response.ok) {
+        const exitedAfterResponse = currentExitState();
+        if (exitedAfterResponse) throw earlyExitError(exitedAfterResponse);
+        return;
+      }
     } catch {
       // The preview server is still starting.
     }
@@ -95,8 +119,13 @@ try {
 } finally {
   if (browser) await browser.close();
   if (!currentExitState()) preview.kill("SIGTERM");
-  await Promise.race([
-    previewExitPromise,
-    new Promise((_, reject) => setTimeout(() => reject(new Error("Timed out waiting for Vite preview to exit")), 5_000))
-  ]);
+  let exitTimer;
+  try {
+    await Promise.race([
+      previewExitPromise,
+      new Promise((_, reject) => { exitTimer = setTimeout(() => reject(new Error("Timed out waiting for Vite preview to exit")), 5_000); })
+    ]);
+  } finally {
+    clearTimeout(exitTimer);
+  }
 }

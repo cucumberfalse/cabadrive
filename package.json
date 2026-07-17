@@ -28,6 +28,7 @@
     "prepare:assets": "node scripts/sync-public-assets.mjs",
     "generate:sw": "node scripts/generate-service-worker.mjs",
     "screenshots:readme": "node scripts/capture-readme-screenshots.mjs",
+    "screenshots:readme:verify": "node scripts/verify-readme-screenshot-equivalence.mjs",
     "build": "pnpm run validate:content && pnpm run prepare:assets && vite build && pnpm run generate:sw",
     "dev": "pnpm run prepare:assets && vite --host 0.0.0.0",
     "preview": "pnpm run prepare:assets && vite preview --host 0.0.0.0 --port 4173",
