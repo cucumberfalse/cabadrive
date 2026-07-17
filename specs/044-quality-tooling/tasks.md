@@ -209,7 +209,7 @@
   thread-aware review on that exact head; Orchestrator resolves/outdates the
   four threads and rechecks all required checks, including T037 Docker evidence,
   before final validation.
-- [ ] T044 Fix P2 `PRRT_kwDOSX65IM6R44d7` as a bounded current task. Keep the
+- [x] T044 Fix P2 `PRRT_kwDOSX65IM6R44d7` as a bounded current task. Keep the
   integration-preserving pull-request checkout, capture the actual measured
   checkout with `git rev-parse HEAD` after checkout, validate both it and the
   event-safe source SHA as full 40-hex values, and print both with duration and
@@ -217,7 +217,7 @@
   SHA and wording that attributes synthetic-merge timing to the source head.
   Exact-current-head GitHub evidence must bind the check suite to the unchanged
   PR source and the timing to the logged measured checkout.
-- [ ] T045 Fix P2 `PRRT_kwDOSX65IM6R5NtC` as a bounded current task. Extend
+- [x] T045 Fix P2 `PRRT_kwDOSX65IM6R5NtC` as a bounded current task. Extend
   `scripts/finalize-pr.mjs` with explicit opt-in `--merge-method merge`, retain
   `squash` as the default, reject unsupported values, expose the selected
   method in dry-run output and preserve expected-head, required-check, review-
@@ -226,7 +226,7 @@
   `docs_project/project/devops/ai-pr-workflow.md`. Record read-only proof that
   GitHub permits merge commits. PR #209 must select merge, never squash/rebase;
   a follow-up ignore entry for the mixed squash revision is explicitly rejected.
-- [ ] T046 Dispose P2 `PRRT_kwDOSX65IM6R5f6z` with an exact-new-head ancestry
+- [x] T046 Dispose P2 `PRRT_kwDOSX65IM6R5f6z` with an exact-new-head ancestry
   guard before T047. Record GitHub API PR head/commit-list evidence and run
   `git merge-base --is-ancestor c359350358a82d0250934d627c65b5a5a0de6a8a
   <exact-head>`. The cited
@@ -583,6 +583,38 @@ disposition. It must not implement unplanned work silently.
   root config, full lint passed and full build/E2E passed `106/106`. The exact
   waiver was not broadened and JSON fixture typing/runtime validation remains
   Architect-disposed later debt for ТЗ-17 intake.
+- T044–T046 implementation evidence at semantic head
+  `35da0218a92ce2b6d1a2927374e79a6b6103d2ae`: CI preserves the synthetic
+  pull-request merge checkout, separately validates the event source and
+  measured `git rev-parse HEAD` as full 40-hex SHAs, and logs both identities
+  with elapsed time and the 60-second budget. Focused workflow assertions reject
+  missing measured-checkout capture/validation and source-attributed synthetic
+  timing wording.
+- The finalizer retains guarded squash as its default and accepts only the
+  explicit `--merge-method merge` opt-in required for PR #209. Focused finalizer
+  tests passed `60/60`, including default/explicit method selection, unsupported
+  and empty rejection, match-head/auto argument preservation, and dry-run method
+  reporting. The documented merge-method command was exercised against the
+  pre-push PR head and failed closed on the expected unresolved review/check and
+  final-validation gates. GitHub repository API evidence reports
+  `allow_merge_commit: true`.
+- Pre-push GitHub API evidence bound PR #209 to
+  `f3a96b078762ac6f3982f3de749d0a7489566562`; its API commit list includes the
+  immutable format-only commit
+  `c359350358a82d0250934d627c65b5a5a0de6a8a` and contains no `7fd66ff`
+  revision. Local history likewise contains no `7fd66ff`, while
+  `git merge-base --is-ancestor c359350358a82d0250934d627c65b5a5a0de6a8a
+  35da0218a92ce2b6d1a2927374e79a6b6103d2ae` passed. Representative
+  `playwright.config.ts` blame with `.git-blame-ignore-revs` skips the format
+  commit to prior semantic commits.
+- Final local T047 implementation checks passed: standalone Node `506/506`;
+  full `pnpm run preflight` through Node `506/506`, production build with 1,828
+  transformed modules/2,156 service-worker assets, and Playwright `106/106`;
+  focused workflow/finalizer checks; typecheck, lint and format check;
+  `git diff --check`; and byte-identical checksums for all 2,971 protected paths.
+  T047 remains open only for push/new-head GitHub timing/check evidence, fresh
+  thread-aware Review Agent work, Orchestrator thread disposition and merge-
+  commit selection at finalization.
 - Review/current-head evidence: pending T024–T026.
 - Final role/current-head guard evidence: pending T027–T029.
 
@@ -590,7 +622,7 @@ disposition. It must not implement unplanned work silently.
 
 | Purpose | Branch | PR | Base | Current head | Status | Included in final validation |
 |---|---|---|---|---|---|---|
-| ТЗ-16 tooling, mechanical migration, docs and feature memory | `codex/044-quality-tooling` | [#209](https://github.com/cucumberfalse/cabadrive/pull/209) ready | `830a4336e9d5adc1d1c65517e71084b928e0e914` | `637ef7680994bccc49988410c82e6fb1d9591f4d` before publication-evidence-only update | Implementation verified/published; T037 exact-head GitHub Docker evidence pending | Yes |
+| ТЗ-16 tooling, mechanical migration, docs and feature memory | `codex/044-quality-tooling` | [#209](https://github.com/cucumberfalse/cabadrive/pull/209) ready | `830a4336e9d5adc1d1c65517e71084b928e0e914` | `35da0218a92ce2b6d1a2927374e79a6b6103d2ae` before implementation-evidence-only update | T044–T046 implemented and locally verified; T037 and T047 exact-new-head GitHub/review evidence pending | Yes |
 
 Orchestrator/Implementation updates this table when a PR/head exists. Any later
 slice requires its own latest-main isolated context and an additional row.
