@@ -399,6 +399,24 @@ implement out-of-scope improvements.
   readiness/exit timeout handles, a final focused run passed 5/5 and the full
   independent comparison completed in 9.2 seconds. Post-push GFM/raw-image
   verification and the exact candidate SHA remain T027 work.
+- A post-push focused guard exposed an overly tight test-harness timeout: under
+  transient process-startup load, the occupied-port child was killed at 3
+  seconds before reporting its own strict-port exit. No capture occurred. The
+  regression bound was widened to 10 seconds while retaining nonzero/no-kill,
+  no-capture, unchanged SHA/mtime, and fail-closed assertions; normal measured
+  failure remains far below the bound. This test-only correction requires a new
+  candidate content head and supersedes the publication evidence immediately
+  below.
+- Independent verification also exposed that Playwright `networkidle` could
+  consume most of the verifier's 30-second child bound despite a fully loaded
+  local page. Navigation now waits for the deterministic `load` event; the
+  existing font, visible-image decode, two-frame settle, pixel guard and bounded
+  comparison remain authoritative for capture readiness and visual stability.
+- A subsequent stress run exposed Playwright actionability waiting after the
+  target tab button was already resolved, visible, enabled and stable. Capture
+  now invokes that same button's DOM `click()` and relies on the existing
+  two-frame settle for the React state update, avoiding an unrelated synthetic-
+  action navigation wait without changing application behavior or appearance.
 - Second review-fix publication evidence (2026-07-16): candidate effective
   content commit `0457ddc864cc29e04e3fd959601ec66bfcd95d64` was pushed to
   PR #208. GitHub's GFM renderer returned the three expected repository-relative

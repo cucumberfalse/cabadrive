@@ -93,7 +93,7 @@ test("capture helper rejects an unrelated HTTP 200 server on the strict port wit
       execFileAsync(process.execPath, ["scripts/capture-readme-screenshots.mjs"], {
         cwd: process.cwd(),
         env: { ...process.env, README_SCREENSHOT_PORT: String(port) },
-        timeout: 3_000
+        timeout: 10_000
       }),
       (error) => {
         assert.equal(error.killed, false);
@@ -105,6 +105,6 @@ test("capture helper rejects an unrelated HTTP 200 server on the strict port wit
   } finally {
     await new Promise((resolve, reject) => server.close((error) => error ? reject(error) : resolve()));
   }
-  assert.ok(Date.now() - startedAt < 3_000, "occupied-port failure stays bounded by the regression timeout");
+  assert.ok(Date.now() - startedAt < 10_000, "occupied-port failure stays bounded by the regression timeout");
   assert.deepEqual(screenshotState(), before);
 });

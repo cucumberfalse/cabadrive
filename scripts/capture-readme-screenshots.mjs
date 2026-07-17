@@ -94,9 +94,9 @@ async function capture(browser, tabName, fileName) {
   await context.addInitScript(() => { Math.random = () => 0.3141592653589793; });
   const page = await context.newPage();
   try {
-    await page.goto(baseURL, { waitUntil: "networkidle" });
+    await page.goto(baseURL, { waitUntil: "load" });
     await page.addStyleTag({ content: "*, *::before, *::after { animation: none !important; transition: none !important; caret-color: transparent !important; }" });
-    if (tabName !== "Учить") await page.getByRole("button", { name: tabName, exact: true }).click();
+    if (tabName !== "Учить") await page.getByRole("button", { name: tabName, exact: true }).evaluate((button) => button.click());
     await settlePage(page);
     const path = `${outputDir}/${fileName}`;
     await page.screenshot({ path });
