@@ -99,7 +99,7 @@ test("Introduction navigation is driven by four source Index headings, not raw p
   );
   assert.match(
     introductionAppSource,
-    /const isActiveSection\s*=\s*Boolean\(\s*sectionEntry\s*&&\s*selectedManualSection\?\.id\s*===\s*sectionEntry\.id\s*\)/,
+    /const isActiveSection\s*=\s*Boolean\(\s*sectionEntry\s*&&\s*selectedManualSection\?\.id\s*===\s*sectionEntry\.id\s*,?\s*\)/,
   );
   assert.match(introductionAppSource, /aria-current=\{isActiveChild \|\| isActiveSection \? "page" : undefined\}/);
   assert.match(introductionAppSource, /aria-label=\{child\.labelRu\}/);
