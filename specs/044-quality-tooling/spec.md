@@ -285,6 +285,16 @@ new format-only commit referenced by `.git-blame-ignore-revs`.
 - Keep `docker-validation`, `guard`, `AI Review` and `osv-scan` identities and
   behavior. End users still need only `make build`, `make up`, `make down`;
   host Node/pnpm remains developer/CI tooling.
+- A local Docker smoke may use an infrastructure fallback only when repeated
+  bounded attempts cannot fetch uncached base-image metadata/layers and leave
+  no project containers. The fallback is evidence, not a local pass: record the
+  exact compose project/port, commands, timestamps/durations, last pull stage,
+  cancellation, registry reachability check and empty `docker compose ps -a`.
+  It becomes acceptance-equivalent only after the required GitHub
+  `docker-validation` succeeds on the exact final current PR head, including
+  image build, app start, HTTP `/` and `/sw.js` smoke, and always-run teardown.
+  Missing, queued, stale-head, cancelled or failed GitHub Docker validation is a
+  blocker; local standalone build/E2E success cannot replace it.
 
 ## Acceptance Criteria
 
@@ -307,9 +317,11 @@ new format-only commit referenced by `.git-blame-ignore-revs`.
    process change and no history rewrite was used.
 7. CI and preflight preserve required validation while enforcing fast-fail
    ordering. Current-head GitHub timing proves combined typecheck+lint ≤60 s.
-8. Full unit/build/offline/service-worker/E2E/preflight and isolated Docker
-   checks pass. Feature 043 license/attribution/About/README screenshot tests
-   and capture/build contracts remain green with the same public meaning.
+8. Full unit/build/offline/service-worker/E2E/preflight pass. Isolated local
+   Docker smoke passes, or its documented external-fetch fallback is paired
+   with successful required `docker-validation` on the exact final current PR
+   head. Feature 043 license/attribution/About/README screenshot tests and
+   capture/build contracts remain green with the same public meaning.
 9. Contributor/agent docs name the new commands, safe formatter scope,
    ignore-revs use and pre-push expectation without changing Docker quick start.
 10. Final diff contains only ТЗ-16 and current feature memory. Decisions, dead
@@ -354,7 +366,9 @@ Every recorded command must name outcome and full checked SHA. Evidence includes
 - `.git-blame-ignore-revs` SHA existence/content proof and blame command check;
 - exact CI/preflight order test and GitHub runner ≤60 s timing on current head;
 - `validate:attribution`, `validate:content`, full unit, build, E2E, preflight,
-  service-worker/offline and isolated Docker results;
+  service-worker/offline and isolated Docker results; if local Docker is
+  infrastructure-blocked, two bounded-attempt records, empty-project cleanup
+  evidence and exact-current-head GitHub `docker-validation` success;
 - focused feature-043 license/About/screenshot/capture regressions;
 - dependency security result, `git diff --check`, final scope diff, Review Agent
   thread-aware result, required checks/thread/conflict state;

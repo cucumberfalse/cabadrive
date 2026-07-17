@@ -78,7 +78,10 @@
   public meaning, version, attribution and committed PNG identity are unchanged.
 - [ ] T021 Run isolated Docker `make build`, `make up`, HTTP `/` and `/sw.js`
   smoke, and `make down` in `finally` using a free port/project; preserve sibling
-  compose projects and record commands/outcomes.
+  compose projects and record commands/outcomes. If two bounded attempts stall
+  only fetching uncached upstream base-image metadata/layers, stop them cleanly,
+  prove the isolated project has no containers, record exact durations/stage and
+  route through T037 instead of calling the local smoke passed.
 - [x] T022 Update this feature memory with decisions, dead ends, known issues,
   exact verification evidence and every Implementation Agent feedback item;
   hand each feedback item to Orchestrator for Architect disposition before
@@ -154,8 +157,17 @@
   rerun format for idempotence plus full Node/quality checks, and only then
   create the single T012 format-only commit. Never partially stage/reuse the
   rejected discovery diff or regenerate pins/evidence.
+- [ ] T037 Resolve IF-044-004 infrastructure fallback at final current head.
+  Record both bounded local Docker attempts, exact isolated project/port,
+  metadata/pull stall points, cancellations, successful host registry curl and
+  empty `docker compose ps -a`; confirm no sibling project/container was
+  touched. Then require GitHub `docker-validation` green on the exact full PR
+  head and inspect evidence that its Docker build, app start, HTTP `/` and
+  `/sw.js` smoke, and always-run teardown all succeeded. Only that pairing may
+  close T021 through fallback; missing/queued/stale/cancelled/red GitHub Docker
+  evidence remains a merge/final-validation blocker.
 - [ ] T027 Architect final validation, invoked only by Orchestrator after T001–
-  T026 and T030–T036 appear complete, must inspect the full cycle PR set,
+  T026 and T030–T037 appear complete, must inspect the full cycle PR set,
   format-only commit,
   feedback dispositions, open tasks, architecture, process memory, checks and
   customer intent. Record pass timestamp/effective content head or gap/return
@@ -200,6 +212,10 @@
   governed manual TS inventory. Current effective exclusions are all
   `src/data/manual-sections/**`, `src/data/manualGuide.ts` and
   `src/data/pandemiaVialSection.ts`; lint/typecheck still cover these sources.
+- Local Docker infrastructure fallback is permitted only for bounded external
+  base-image fetch stalls with clean empty-project evidence and is conditional
+  on successful required `docker-validation` at the exact final PR head. It is
+  not a standalone pass and does not weaken the Docker-only runtime contract.
 
 ## Blockers And Known Issues
 
@@ -218,6 +234,11 @@
 - Cleanup is not assigned in this task list. The active worktree remains
   protected; any later cleanup requires a separately assigned Cleanup Agent and
   positive-proof evidence/refusal record.
+- Local Docker is currently environment-blocked before repository build steps:
+  two bounded isolated attempts stalled fetching metadata/layers for uncached
+  `node:22-alpine` / `nginx:1.29-alpine`; host registry curl succeeded and the
+  compose project has no containers. This is not product-failure evidence and
+  not a pass; T037 remains blocking until exact-head GitHub Docker success.
 
 ## Implementation Agent Feedback
 
@@ -281,6 +302,15 @@ disposition. It must not implement unplanned work silently.
   commit those repairs semantically, then regenerate the entire mechanical diff
   from a clean semantic head. The current 148-file discovery diff is not an
   acceptable partial-staging source for T012.
+- IF-044-004 — **accepted as a conditional local-infrastructure fallback task
+  T037; blocking until GitHub evidence**. A third unbounded local pull is not
+  required and would add no product evidence. The recorded stalls occurred
+  before Cabadrive Dockerfile execution, were bounded/cancelled, and left no
+  containers, so lack of a local smoke is not itself a product defect. However,
+  standalone Node/build/E2E/preflight cannot validate Docker. Closure requires
+  the required GitHub `docker-validation` to pass on the exact final current
+  PR head with successful build/start/HTTP/teardown steps. Any non-green or
+  stale-head result blocks Architect validation and merge.
 
 ## Dead Ends
 

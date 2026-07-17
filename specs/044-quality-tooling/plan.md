@@ -171,7 +171,7 @@ project оправдан необходимостью type-aware coverage root/E
 | E2E | `pnpm run test:e2e` | Desktop/mobile flows, About and manual behavior pass |
 | Screenshot contracts | focused license/screenshot/capture Node tests and documented public capture validation without necessarily recapturing committed PNGs | README PNG identity/integrity, current-source build, recovery and no-recursion contracts remain green |
 | Preflight | `pnpm run preflight` | Complete repository gate passes in required order |
-| Docker | isolated free port/project: `make build`, `make up`, curl `/` and `/sw.js`, `make down` in `finally` | Docker-only runtime remains healthy; no sibling compose project touched |
+| Docker | isolated free port/project: `make build`, `make up`, curl `/` and `/sw.js`, `make down` in `finally`; bounded pull diagnostics if unavailable | Local smoke passes, or two documented external-fetch stalls leave no containers and exact-final-head GitHub `docker-validation` proves build/start/HTTP/teardown; no sibling project touched |
 | CI timing | current-head `baseline-checks` logs/step timestamps | `quality:fast` typecheck+lint ≤60 s on GitHub runner and head is named |
 | Required GitHub gates | `baseline-checks`, `docker-validation`, `guard`, `AI Review`, `osv-scan`; thread/conflict inspection | All green on current head, no unresolved blocking thread/conflict |
 | Final scope | `git diff --check`; base/head name-status; suppression audit | Only ТЗ-16 plus current feature memory, no hidden semantic/protected content change |
@@ -211,3 +211,8 @@ project оправдан необходимостью type-aware coverage root/E
   commit. A broad test deletion/skip is not an option.
 - If the mechanical diff conflicts with parallel work, Orchestrator coordinates
   the safe landing order. Implementation does not rebase/overwrite sibling work.
+- If local Docker repeatedly stalls only while fetching uncached upstream base
+  images, bound/cancel attempts and prove the isolated project is empty. This is
+  a documented local-environment fallback, not a green Docker result; final
+  validation remains blocked until required GitHub `docker-validation` is green
+  on the exact current head and its build/start/smoke/teardown steps are visible.
