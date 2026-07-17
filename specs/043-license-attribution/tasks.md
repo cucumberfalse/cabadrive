@@ -427,6 +427,17 @@ implement out-of-scope improvements.
   ready and `MERGEABLE`; required checks and fresh AI review were in progress.
   The Implementation portion of T027 is complete; T027 remains open for the
   Orchestrator-owned fresh thread-aware review and thread disposition.
+- Final second-review-fix publication evidence (2026-07-16): stabilized
+  candidate effective content commit
+  `431d96846352c77f82009f1044fcead728f7891c` supersedes `0457ddc...` and was
+  pushed to PR #208. GitHub GFM again returned all three expected relative image
+  paths; raw URLs returned HTTP 200, `image/png`, lengths 280229/137098/145885,
+  and exact local/remote hashes recorded above. The PR reported this exact head,
+  `OPEN`, ready and `MERGEABLE`; required checks were running. Final local stress
+  evidence is three consecutive independent comparisons in approximately six
+  seconds each, focused 5/5, full 494/494, attribution validation and diff check
+  passing. T027 remains open only for fresh Orchestrator-owned review/thread
+  disposition.
 - Isolated Docker smoke: port `5187` had no listener; with
   `COMPOSE_PROJECT_NAME=cabadrive-043-license` and
   `CABADRIVE_HOST_PORT=5187`, `make build` and `make up` passed, HTTP returned
@@ -457,7 +468,7 @@ implement out-of-scope improvements.
 
 | Purpose | Branch | PR | Base | Effective/current head | Status | Included in final validation |
 |---|---|---|---|---|---|---|
-| License, attribution, public docs, About UI, screenshots and tests | `codex/043-license-attribution` | [#208](https://github.com/cucumberfalse/cabadrive/pull/208) | `ca5b5277195cd25d23b25f611dd5a3ac24d54586` | candidate effective content head `0457ddc864cc29e04e3fd959601ec66bfcd95d64`; prior candidates are stale pending final validation; evidence-only head pending | open, ready, GitHub `MERGEABLE` at review-fix candidate; checks/review running | yes |
+| License, attribution, public docs, About UI, screenshots and tests | `codex/043-license-attribution` | [#208](https://github.com/cucumberfalse/cabadrive/pull/208) | `ca5b5277195cd25d23b25f611dd5a3ac24d54586` | candidate effective content head `431d96846352c77f82009f1044fcead728f7891c`; prior candidates are stale pending final validation; evidence-only head pending | open, ready, GitHub `MERGEABLE` at stabilized review-fix candidate; checks/review running | yes |
 
 ## Final Architect Validation Notes
 
