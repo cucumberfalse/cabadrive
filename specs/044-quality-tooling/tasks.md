@@ -63,23 +63,23 @@
 - [x] T016 Update only relevant durable contributor/agent/developer docs with
   the new commands, safe formatter scope, ignore-revs usage and pre-push rule;
   preserve README Docker quick start and end-user host-tool independence.
-- [ ] T017 Run focused quality tests and negative contracts; record exact
+- [x] T017 Run focused quality tests and negative contracts; record exact
   command outputs, full candidate SHA, config profile/rule evidence, suppression
   audit, temporary-file cleanup and positive reruns.
-- [ ] T018 Run protected-byte/idempotence/format-commit verification and record
+- [x] T018 Run protected-byte/idempotence/format-commit verification and record
   both hash manifests, allowlist-only diff, exact ignored SHA inspection and
   representative blame result. Any protected drift blocks completion.
-- [ ] T019 Run `validate:attribution`, `validate:content`,
+- [x] T019 Run `validate:attribution`, `validate:content`,
   `validate:content:quality`, full Node suite, build/service-worker checks, full
   E2E and `preflight`; record exact outcomes/full candidate SHA and do not weaken
   repeated validation as an optimization.
-- [ ] T020 Run focused feature-043 regressions for license/About/README image and
+- [x] T020 Run focused feature-043 regressions for license/About/README image and
   screenshot capture/current-source/recovery/no-recursion contracts; confirm
   public meaning, version, attribution and committed PNG identity are unchanged.
 - [ ] T021 Run isolated Docker `make build`, `make up`, HTTP `/` and `/sw.js`
   smoke, and `make down` in `finally` using a free port/project; preserve sibling
   compose projects and record commands/outcomes.
-- [ ] T022 Update this feature memory with decisions, dead ends, known issues,
+- [x] T022 Update this feature memory with decisions, dead ends, known issues,
   exact verification evidence and every Implementation Agent feedback item;
   hand each feedback item to Orchestrator for Architect disposition before
   implementation can be considered complete.
@@ -240,6 +240,14 @@ disposition. It must not implement unplanned work silently.
   governed manual TS sources. `validate:manual-ticket-placement` failed closed
   with `Protected manual source files changed`; the full Node suite recorded
   462 passed / 38 failed. Updating protected hashes/evidence is forbidden.
+- IF-044-004: isolated Docker validation could not start because the local
+  Docker daemon stalled indefinitely while loading metadata or explicitly
+  pulling uncached `node:22-alpine` and `nginx:1.29-alpine` images. Host `curl`
+  reached `registry-1.docker.io/v2/` immediately with the expected HTTP 401,
+  so repository behavior was not exercised. Two bounded attempts were
+  cancelled; `cabadrive-044-quality` has no containers. T021 remains open for
+  Architect/Orchestrator disposition or an environment with working daemon
+  registry access; no further retry is justified in this implementation turn.
 
 ## Architect Feedback Dispositions
 
@@ -289,6 +297,10 @@ disposition. It must not implement unplanned work silently.
   scope even though content JSON was excluded: governed TS bytes are themselves
   sealed by manual-ticket-placement. The validator's failure is authoritative;
   regenerating its baseline would erase the protection and is rejected.
+- Docker `make build` and direct `docker pull node:22-alpine` both stalled with
+  no layer progress in the local daemon although host registry connectivity was
+  healthy. The cleanup trap ran after cancellation and the isolated compose
+  inventory is empty. This is recorded as IF-044-004, not as a passing T021.
 
 ## Verification Evidence
 
@@ -298,7 +310,34 @@ disposition. It must not implement unplanned work silently.
   `codex/044-quality-tooling`; `pnpm install --frozen-lockfile` succeeded without
   lockfile drift; `/usr/bin/time -p pnpm exec tsc --noEmit` passed with
   `real 5.42`. These are not final-head acceptance results.
-- Implementation evidence: pending T001–T023.
+- Implementation candidate evidence at
+  `717dc8682ee40eddc3ba0a0226f551dc84b67d2b`: focused quality tests passed
+  `6/6`; the negative type/hook/format contracts passed and removed every
+  sentinel; the suppression audit found no `eslint-disable`, `@ts-ignore`, or
+  `@ts-expect-error`; positive `quality:fast` passed in `real 14.26` seconds;
+  `format:check` passed.
+- Fresh formatter evidence: exactly 96 approved code paths changed; none of the
+  2,971 protected tracked paths changed. Before/after protected manifest hashes
+  both equal `2d13535f60020ea9933212a69295d30b74c1d3ea897be239fe2236f383693caa`;
+  first/second format patch hashes both equal
+  `7e2137f42ddd51344497f9df4ffb64057e50248f1dcffcf0e5ab48eff80d46a2`.
+  Manual-ticket placement and full Node/quality checks passed before commit.
+- The only format-only commit is
+  `c359350358a82d0250934d627c65b5a5a0de6a8a` (96 approved paths, 24,081
+  insertions/9,603 deletions). It exists, is listed exactly in
+  `.git-blame-ignore-revs`, and representative `src/App.tsx` blame skips it to
+  prior commits `b0b3506c`/`09e29be1`. No amend, rebase, or force-push occurred.
+- Full standalone verification passed: attribution; complete content; full
+  content-quality gate; Node `501/501`; production build (`1,828` transformed
+  modules and `2,156` generated service-worker assets); Playwright `106/106` on
+  Chromium/mobile, including the accelerated exam-timeout exactly-once test.
+  The known pre-existing large-chunk warning remained non-fatal.
+- Feature-043 regressions passed `10/10`; About ran in full E2E on both projects;
+  README, licenses, notices, and committed screenshots have no diff from base.
+  Full `pnpm run preflight` then passed through all gates and E2E `106/106`.
+- T021 is not passed: IF-044-004 records the daemon metadata/pull stall and
+  clean isolated compose inventory. Orchestrator relayed it to Architect for
+  disposition. T023 publication evidence remains pending.
 - Review/current-head evidence: pending T024–T026.
 - Final role/current-head guard evidence: pending T027–T029.
 
@@ -306,7 +345,7 @@ disposition. It must not implement unplanned work silently.
 
 | Purpose | Branch | PR | Base | Current head | Status | Included in final validation |
 |---|---|---|---|---|---|---|
-| ТЗ-16 tooling, mechanical migration, docs and feature memory | `codex/044-quality-tooling` | Not opened | `830a4336e9d5adc1d1c65517e71084b928e0e914` | starts at base; feature memory uncommitted | Architect planning | Yes |
+| ТЗ-16 tooling, mechanical migration, docs and feature memory | `codex/044-quality-tooling` | Not opened | `830a4336e9d5adc1d1c65517e71084b928e0e914` | `717dc8682ee40eddc3ba0a0226f551dc84b67d2b` before evidence-only update | Implementation verified; Docker T021 feedback pending disposition | Yes |
 
 Orchestrator/Implementation updates this table when a PR/head exists. Any later
 slice requires its own latest-main isolated context and an additional row.
