@@ -419,10 +419,11 @@ export function createProgressStore(storage: StorageLike) {
       state = empty();
       pendingV1Backup = undefined;
       try {
+        storage.removeItem(PROGRESS_KEY);
         storage.removeItem(PROGRESS_BACKUP_KEY);
         storage.removeItem(PROGRESS_RECOVERY_KEY);
       } catch {
-        /* auxiliary key cleanup is best effort */
+        /* key cleanup is best effort; the empty payload is rewritten below */
       }
     }
     persist(action.type);

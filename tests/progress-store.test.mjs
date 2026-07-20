@@ -218,6 +218,14 @@ test("reset clears the primary, migration backup, and recovery diagnostic keys",
   assert.deepEqual(store.getSnapshot(), emptyProgress());
 });
 
+test("reset removes the primary key even when the follow-up empty write fails", () => {
+  const storage = new FakeStorage({ [PROGRESS_KEY]: JSON.stringify(v2()) }, [new Error("disk")]);
+  const store = createProgressStore(storage);
+  store.dispatch({ type: "reset" });
+  assert.equal(storage.getItem(PROGRESS_KEY), null);
+  assert.deepEqual(store.getSnapshot(), emptyProgress());
+});
+
 test("rejects zero-wrong aggregate whose last pruned answer is incorrect", () => {
   const badStat = {
     questionId: "q-9",
