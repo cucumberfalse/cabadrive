@@ -207,6 +207,14 @@ test("import/export is canonical and invalid input is atomic", () => {
   assert.deepEqual(imported.getSnapshot(), emptyProgress());
 });
 
+test("diagnostic-copy failure is surfaced in the recovery event detail", () => {
+  const storage = new FakeStorage({ [PROGRESS_KEY]: "{not valid json" }, [new Error("blocked")]);
+  const store = createProgressStore(storage);
+  const last = store.getLastRecovery();
+  assert.equal(last.code, "localDataRecovered");
+  assert.match(last.detail, /diagnostic copy could not be written/);
+});
+
 test("reset clears the primary, migration backup, and recovery diagnostic keys", () => {
   const raw = JSON.stringify({ answers: [answer(1)], difficultQuestionIds: [], examAttempts: [] });
   const storage = new FakeStorage({ [PROGRESS_KEY]: raw, [PROGRESS_RECOVERY_KEY]: "{}" });

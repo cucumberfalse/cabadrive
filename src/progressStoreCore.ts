@@ -332,10 +332,13 @@ export function createProgressStore(storage: StorageLike) {
   const diagnostic = (raw: string, detail: string) => {
     try {
       storage.setItem(PROGRESS_RECOVERY_KEY, JSON.stringify({ reason: detail, raw }));
+      return true;
     } catch {
-      /* diagnostic storage is best effort */
+      return false;
     }
   };
+  const withDiagnostic = (message: string, saved: boolean) =>
+    saved ? message : `${message}; diagnostic copy could not be written`;
 
   try {
     const raw = storage.getItem(PROGRESS_KEY);
@@ -345,12 +348,16 @@ export function createProgressStore(storage: StorageLike) {
         state = loaded.state;
         if (loaded.migrated) pendingV1Backup = raw;
         if (loaded.recovered) {
-          diagnostic(raw, "invalid-local-progress");
-          recover("localDataRecovered", "load", "invalid local fragments were discarded");
+          const saved = diagnostic(raw, "invalid-local-progress");
+          recover(
+            "localDataRecovered",
+            "load",
+            withDiagnostic("invalid local fragments were discarded", saved),
+          );
         }
       } catch {
-        diagnostic(raw, "invalid-json");
-        recover("localDataRecovered", "load", "invalid JSON");
+        const saved = diagnostic(raw, "invalid-json");
+        recover("localDataRecovered", "load", withDiagnostic("invalid JSON", saved));
       }
     }
   } catch {
