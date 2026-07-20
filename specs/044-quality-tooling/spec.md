@@ -1,5 +1,14 @@
 # Specification: Typecheck, ESLint и Prettier как обязательные quality gates
 
+> **Scope amendment (2026-07-20, squash-only landing).** The repository ruleset
+> and `scripts/finalize-pr.mjs` merge exclusively via squash, so a preserved
+> format-only commit cannot remain reachable from `main`. Every requirement in
+> this document to add, preserve, reference, or prove `.git-blame-ignore-revs`
+> or the format-only commit `c359350358a82d0250934d627c65b5a5a0de6a8a` is
+> **withdrawn**; the tracked file was removed and the formatting is folded into
+> the single squash commit. Passages below that assume a preserved format-only
+> commit describe the superseded merge-commit approach.
+
 ## Goal
 
 Реализовать P0 ТЗ-16 как фундаментальный quality-tooling slice: strict TypeScript,
@@ -262,12 +271,10 @@ diff with no gate. Preserve reviewability through commit topology:
    its diff may contain only mechanical changes in the allowlist. No config,
    docs, test-contract rewrite, semantic fix, generated file or process-memory
    change may be mixed into this revision.
-3. **Post-format metadata/evidence commit:** after the format commit SHA exists,
-   add that exact full SHA to `.git-blame-ignore-revs` with a short comment and
-   document `git blame --ignore-revs-file .git-blame-ignore-revs`. Verify the
-   referenced commit exists and its diff is format-only. Do not amend/rebase the
-   format commit afterward; if its SHA changes before publication, update the
-   metadata through a normal later commit and reverify.
+3. **Post-format metadata/evidence commit:** _Withdrawn — see the scope
+   amendment in `tasks.md`._ Because the repository lands this feature via a
+   single squash commit, no reachable format-only commit and no
+   `.git-blame-ignore-revs` entry are preserved; the tracked file was removed.
 
 The ignored SHA must remain reachable from the landed default-branch history.
 Because a squash or rebase merge would discard or rewrite the recorded
@@ -368,11 +375,11 @@ new format-only commit referenced by `.git-blame-ignore-revs`.
    effective code allowlist. All 52 governed manual TS sources are ignored via
    the canonical baseline-derived guard; protected-file hash manifests match
    exactly before/after and manual-ticket placement validation passes.
-6. One exact format-only SHA is present in `.git-blame-ignore-revs`; inspection
-   proves the ignored revision contains no semantic/config/test-contract/docs/
-   process change and no history rewrite was used. Guarded finalization uses a
-   merge commit, not squash/rebase, and post-merge evidence proves that exact
-   SHA remains reachable from `origin/main` and representative blame skips it.
+6. _Withdrawn — see the scope amendment in `tasks.md`._ The
+   `.git-blame-ignore-revs` file was removed for squash-only landing, so no
+   ignored format-only SHA is preserved. Finalization uses the repository's
+   standard squash merge; the mechanical formatting is folded into the single
+   squash commit and no blame-ignore reachability proof applies.
 7. CI and preflight preserve required validation while enforcing fast-fail
    ordering. Current-head GitHub timing proves combined typecheck+lint ≤60 s
    and names both the event source and actual measured checkout SHAs.
@@ -422,13 +429,12 @@ Every recorded command must name outcome and full checked SHA. Evidence includes
 - initial positive baselines and failing-first quality configuration tests;
 - positive and negative type/lint/format outputs with temporary-file cleanup;
 - ESLint `--print-config` representative-path evidence and suppression audit;
-- protected-file pre/post hash manifests, allowlist-only name-status diff,
-  formatter idempotence and exact format-only commit inspection;
-- `.git-blame-ignore-revs` SHA existence/content proof and blame command check;
+- protected-file pre/post hash manifests, allowlist-only name-status diff, and
+  formatter idempotence;
 - exact CI/preflight order test and GitHub runner ≤60 s timing bound to both the
   event source and actual measured checkout on current head;
-- finalizer default/opt-in merge-method tests, current repository merge-method
-  capability, and post-merge ancestry/blame proof for the ignored SHA;
+- finalizer squash merge-method test and current repository merge-method
+  capability (blame-ignore/format-only-commit proofs withdrawn per amendment);
 - `validate:attribution`, `validate:content`, full unit, build, E2E, preflight,
   service-worker/offline and isolated Docker results; if local Docker is
   infrastructure-blocked, two bounded-attempt records, empty-project cleanup

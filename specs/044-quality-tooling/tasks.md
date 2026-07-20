@@ -1,5 +1,15 @@
 # Tasks: Typecheck, ESLint и Prettier quality gates
 
+> **Scope amendment (2026-07-20, squash-only landing).** The repository ruleset
+> and `scripts/finalize-pr.mjs` merge exclusively via squash, so a preserved
+> format-only commit can never remain reachable from `main`. The
+> `.git-blame-ignore-revs` mechanism and every task/criterion below that requires
+> preserving, referencing, or proving the format-only commit
+> `c359350358a82d0250934d627c65b5a5a0de6a8a` is therefore **withdrawn**. This
+> feature lands as a single squash commit; the tracked `.git-blame-ignore-revs`
+> file was removed. Historical evidence lines that describe the file as present
+> document the superseded merge-commit approach, not the landed state.
+
 ## Task List
 
 - [x] T001 Implementation Agent confirm assigned worktree/branch/base/scope,
@@ -512,11 +522,12 @@ disposition. It must not implement unplanned work silently.
   first/second format patch hashes both equal
   `7e2137f42ddd51344497f9df4ffb64057e50248f1dcffcf0e5ab48eff80d46a2`.
   Manual-ticket placement and full Node/quality checks passed before commit.
-- The only format-only commit is
+- (Superseded by the scope amendment above.) At the time this evidence was
+  recorded the branch retained a single format-only commit
   `c359350358a82d0250934d627c65b5a5a0de6a8a` (96 approved paths, 24,081
-  insertions/9,603 deletions). It exists, is listed exactly in
-  `.git-blame-ignore-revs`, and representative `src/App.tsx` blame skips it to
-  prior commits `b0b3506c`/`09e29be1`. No amend, rebase, or force-push occurred.
+  insertions/9,603 deletions) listed in a tracked `.git-blame-ignore-revs`. That
+  file was removed for squash-only landing, so it no longer exists on the branch
+  or on `main`; the formatting is folded into the single squash commit.
 - Full standalone verification passed: attribution; complete content; full
   content-quality gate; Node `501/501`; production build (`1,828` transformed
   modules and `2,156` generated service-worker assets); Playwright `106/106` on
