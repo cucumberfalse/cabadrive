@@ -57,7 +57,13 @@ const empty = (): ProgressV2 => ({
   examAttempts: [],
   prunedAnswerStats: [],
 });
-const cloneAnswer = (answer: ProgressAnswer): ProgressAnswer => ({ ...answer });
+const cloneAnswer = (answer: ProgressAnswer): ProgressAnswer => ({
+  questionId: answer.questionId,
+  selectedAnswerId: answer.selectedAnswerId,
+  isCorrect: answer.isCorrect,
+  answeredAt: answer.answeredAt,
+  mode: answer.mode,
+});
 const clone = (state: ProgressV2): ProgressV2 => ({
   version: 2,
   answers: state.answers.map(cloneAnswer),

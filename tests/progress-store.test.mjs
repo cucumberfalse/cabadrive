@@ -206,6 +206,23 @@ test("import/export is canonical and invalid input is atomic", () => {
   assert.deepEqual(imported.getSnapshot(), emptyProgress());
 });
 
+test("persisted answers are canonicalized and extra enumerable fields are dropped", () => {
+  const polluted = { ...answer(1), injectedField: "should-not-survive", bloat: [1, 2, 3] };
+  const raw = JSON.stringify(v2({ answers: [polluted] }));
+  const store = createProgressStore(new FakeStorage({ [PROGRESS_KEY]: raw }));
+  const exported = store.exportProgress();
+  assert.equal(exported.includes("injectedField"), false);
+  assert.equal(exported.includes("bloat"), false);
+  const [stored] = JSON.parse(exported).answers;
+  assert.deepEqual(Object.keys(stored).sort(), [
+    "answeredAt",
+    "isCorrect",
+    "mode",
+    "questionId",
+    "selectedAnswerId",
+  ]);
+});
+
 test("all reducer actions are immutable and the source confines storage writes to the boundary", () => {
   const store = createProgressStore(new FakeStorage());
   const before = store.getSnapshot();
