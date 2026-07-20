@@ -90,13 +90,17 @@ import {
   formatDuration,
   isPassing,
   learningTicketTargetSeconds,
-  mistakesFromHistory,
   scorePercent,
   selectExamSet,
   shuffleQuestions,
 } from "./domain";
 import { exactTextStatusKind, exactTextStatusNote } from "./primarySourceStatus";
-import { clearProgress, loadProgress, saveProgress, type StoredProgress } from "./storage";
+import {
+  dispatchProgress,
+  mistakesFromProgress,
+  useProgress,
+  type ProgressV2,
+} from "./progressStore";
 import { searchQuestions, searchVocabulary } from "./search";
 
 type View =
@@ -569,8 +573,8 @@ function LanguagePair({
   );
 }
 
-function StatusStrip({ progress }: { progress: StoredProgress }) {
-  const wrong = mistakesFromHistory(progress.answers).length;
+function StatusStrip({ progress }: { progress: ProgressV2 }) {
+  const wrong = mistakesFromProgress(progress).length;
   const lastAttempt = progress.examAttempts.at(-1);
   return (
     <section className="status-strip" aria-label="Статус набора">
@@ -895,13 +899,7 @@ function QuestionFlowNavigation({
   );
 }
 
-function LearnView({
-  progress,
-  setProgress,
-}: {
-  progress: StoredProgress;
-  setProgress: (progress: StoredProgress) => void;
-}) {
+function LearnView({ progress }: { progress: ProgressV2 }) {
   const [query, setQuery] = useState("");
   const [index, setIndex] = useState(0);
   const [timerStates, setTimerStates] = useState<Record<string, LearningTicketTimerState>>({});
@@ -955,22 +953,12 @@ function LearnView({
         };
       });
     }
-    const next = { ...progress, answers: [...progress.answers, answer] };
-    setProgress(next);
-    saveProgress(next);
+    dispatchProgress({ type: "recordAnswer", answer });
   }
 
   function toggleDifficult() {
     if (!question) return;
-    const exists = progress.difficultQuestionIds.includes(question.id);
-    const next = {
-      ...progress,
-      difficultQuestionIds: exists
-        ? progress.difficultQuestionIds.filter((id) => id !== question.id)
-        : [...progress.difficultQuestionIds, question.id],
-    };
-    setProgress(next);
-    saveProgress(next);
+    dispatchProgress({ type: "toggleDifficult", questionId: question.id });
   }
 
   function updateQuery(nextQuery: string) {
@@ -1090,13 +1078,7 @@ function LearnView({
   );
 }
 
-function ExamView({
-  progress,
-  setProgress,
-}: {
-  progress: StoredProgress;
-  setProgress: (progress: StoredProgress) => void;
-}) {
+function ExamView() {
   const examQuestions = useMemo(
     () =>
       selectExamSet(
@@ -1129,17 +1111,11 @@ function ExamView({
         passed: isPassing(finalScore, data.examFormat.passingScore),
         total: examQuestions.length,
       };
-      const next = {
-        ...progress,
-        answers: [...progress.answers, ...finalAnswers],
-        examAttempts: [...progress.examAttempts, attempt],
-      };
-      setProgress(next);
-      saveProgress(next);
+      dispatchProgress({ type: "finishExam", answers: finalAnswers, attempt });
       setResultScore(finalScore);
       setFinished(true);
     },
-    [answers, examQuestions.length, progress, setProgress],
+    [answers, examQuestions.length],
   );
 
   useEffect(() => {
@@ -1230,18 +1206,12 @@ function ExamView({
   );
 }
 
-function MistakesView({
-  progress,
-  setProgress,
-}: {
-  progress: StoredProgress;
-  setProgress: (progress: StoredProgress) => void;
-}) {
+function MistakesView({ progress }: { progress: ProgressV2 }) {
   const [index, setIndex] = useState(0);
   const [attemptsByQuestion, setAttemptsByQuestion] = useState<
     Record<string, QuestionAttemptState>
   >({});
-  const mistakes = mistakesFromHistory(progress.answers);
+  const mistakes = mistakesFromProgress(progress);
   const currentIndex = mistakes.length ? Math.min(index, mistakes.length - 1) : 0;
   const question = mistakes.length
     ? data.questions.find((item) => item.id === mistakes[currentIndex]?.questionId)
@@ -1252,9 +1222,7 @@ function MistakesView({
   }, [mistakes.length]);
 
   function record(answer: ProgressAnswer) {
-    const next = { ...progress, answers: [...progress.answers, answer] };
-    setProgress(next);
-    saveProgress(next);
+    dispatchProgress({ type: "recordAnswer", answer });
   }
 
   return (
@@ -5056,7 +5024,7 @@ export function App() {
       ? manualSectionForHash.id
       : undefined;
   });
-  const [progress, setProgress] = useState(loadProgress);
+  const progress = useProgress();
   const routeScrollKey = useMemo(
     () =>
       `${view}:${view === "pandemia" ? (selectedManualSectionId ?? selectedIntroductionId) : ""}`,
@@ -5110,8 +5078,7 @@ export function App() {
   }, [routeScrollKey]);
 
   function reset() {
-    clearProgress();
-    setProgress(loadProgress());
+    dispatchProgress({ type: "reset" });
   }
 
   function selectView(nextView: View) {
@@ -5234,9 +5201,9 @@ export function App() {
         </button>
       </nav>
 
-      {view === "learn" && <LearnView progress={progress} setProgress={setProgress} />}
-      {view === "exam" && <ExamView progress={progress} setProgress={setProgress} />}
-      {view === "mistakes" && <MistakesView progress={progress} setProgress={setProgress} />}
+      {view === "learn" && <LearnView progress={progress} />}
+      {view === "exam" && <ExamView />}
+      {view === "mistakes" && <MistakesView progress={progress} />}
       {view === "vocabulary" && <VocabularyView />}
       {view === "materials" && <TopicGuideView />}
       {view === "pandemia" && (

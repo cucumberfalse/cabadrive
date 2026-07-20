@@ -11,7 +11,7 @@ Implemented stack:
 - TypeScript
 - React
 - Vite
-- localStorage-backed progress adapter for progress/statistics
+- versioned localStorage progress store for progress/statistics, with safe v1-to-v2 migration, a 5,000-answer retained-history cap, aggregate mistake preservation and recoverable quota diagnostics
 - local in-memory search index over bundled content
 - bundled topic study guide data rendered as local learning materials
 - bundled CABA exam-process guide data rendered as an unofficial Russian procedural guide
@@ -87,7 +87,7 @@ content/
 tests/
 ```
 
-Current implementation keeps the app under `src/` with domain helpers in `src/domain.ts`, storage in `src/storage.ts`, search in `src/search.ts`, and imported bundled content in `src/data/content.ts`.
+Current implementation keeps the app under `src/` with domain helpers in `src/domain.ts`, the `useSyncExternalStore`-backed progress boundary in `src/progressStore.ts` (and deterministic core in `src/progressStoreCore.ts`), search in `src/search.ts`, and imported bundled content in `src/data/content.ts`. Views dispatch named progress actions; they do not write browser storage directly. The store exposes canonical export/import APIs and recovery events for a later UI slice, but this release adds no export/import controls, backend, remote sync or IndexedDB.
 
 ## Content Mode
 

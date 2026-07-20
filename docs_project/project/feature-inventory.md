@@ -53,3 +53,4 @@
 - Practical driving instruction workflows.
 - User accounts and cloud sync.
 - Always-on backend services.
+- Progress synchronization, cloud backups and IndexedDB persistence; current progress remains a versioned, capped localStorage store with a future-facing export/import API only.
