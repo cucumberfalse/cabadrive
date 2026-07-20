@@ -1,10 +1,9 @@
 #!/usr/bin/env node
 import {
-  extractClaudeOutcome,
   isAcceptableClaudeComment,
   isAcceptableCodexSummaryComment,
   isAcceptableNativeReview,
-  latestCodexNativeReviewResult
+  latestCodexNativeReviewResult,
 } from "./ai-review-helpers.mjs";
 import { readConfig } from "./shared.mjs";
 
@@ -20,7 +19,9 @@ const maxPollMs = Number(process.env.AI_REVIEW_MAX_POLL_MS || 120000);
 const config = readConfig();
 
 if (!token || !repository || !prNumber || !headSha) {
-  console.error("GITHUB_TOKEN, GITHUB_REPOSITORY, AI_REVIEW_PR_NUMBER, and AI_REVIEW_HEAD_SHA are required.");
+  console.error(
+    "GITHUB_TOKEN, GITHUB_REPOSITORY, AI_REVIEW_PR_NUMBER, and AI_REVIEW_HEAD_SHA are required.",
+  );
   process.exit(1);
 }
 
@@ -43,8 +44,8 @@ async function request(path, options = {}) {
       authorization: `Bearer ${token}`,
       accept: "application/vnd.github+json",
       "x-github-api-version": "2022-11-28",
-      ...(options.headers || {})
-    }
+      ...(options.headers || {}),
+    },
   });
   if (!response.ok) {
     const error = new Error(`${response.status} ${response.statusText}: ${await response.text()}`);
@@ -61,9 +62,9 @@ async function graphqlRequest(query, variables = {}) {
     headers: {
       authorization: `Bearer ${token}`,
       accept: "application/vnd.github+json",
-      "content-type": "application/json"
+      "content-type": "application/json",
     },
-    body: JSON.stringify({ query, variables })
+    body: JSON.stringify({ query, variables }),
   });
   if (!response.ok) {
     const error = new Error(`${response.status} ${response.statusText}: ${await response.text()}`);
@@ -91,7 +92,8 @@ async function fetchResolvedCodexReviewCommentIds() {
   const ids = new Set();
   let cursor = null;
   do {
-    const data = await graphqlRequest(`
+    const data = await graphqlRequest(
+      `
       query($owner: String!, $repo: String!, $number: Int!, $cursor: String) {
         repository(owner: $owner, name: $repo) {
           pullRequest(number: $number) {
@@ -112,7 +114,9 @@ async function fetchResolvedCodexReviewCommentIds() {
           }
         }
       }
-    `, { owner, repo, number: Number(prNumber), cursor });
+    `,
+      { owner, repo, number: Number(prNumber), cursor },
+    );
     const threads = data.repository.pullRequest.reviewThreads;
     for (const thread of threads.nodes) {
       if (!thread.isResolved) continue;
@@ -129,7 +133,7 @@ async function createComment(body) {
   await request(`/repos/${owner}/${repo}/issues/${prNumber}/comments`, {
     method: "POST",
     headers: { "content-type": "application/json" },
-    body: JSON.stringify({ body })
+    body: JSON.stringify({ body }),
   });
 }
 
@@ -138,19 +142,23 @@ async function maybePostTriggerComment() {
   const triggers = {
     codex: "@codex review",
     claude: "@claude review once",
-    gemini: "/gemini review"
+    gemini: "/gemini review",
   };
   try {
-    await createComment([
-      triggers[selectedAgent],
-      "",
-      "_Administrative trigger posted by the AI Review workflow. Prefer a trusted human-authored trigger if the native backend ignores bot comments._"
-    ].join("\n"));
+    await createComment(
+      [
+        triggers[selectedAgent],
+        "",
+        "_Administrative trigger posted by the AI Review workflow. Prefer a trusted human-authored trigger if the native backend ignores bot comments._",
+      ].join("\n"),
+    );
     console.log(`Posted AI Review trigger comment for ${selectedAgent}.`);
   } catch (error) {
     if (error.status === 403) {
       console.warn(`Could not post AI Review trigger comment: ${error.message}`);
-      console.warn("GitHub denied issue-comment write access for this workflow token; waiting for existing or human-triggered review evidence instead.");
+      console.warn(
+        "GitHub denied issue-comment write access for this workflow token; waiting for existing or human-triggered review evidence instead.",
+      );
       return;
     }
     throw error;
@@ -172,10 +180,17 @@ async function fetchEvidence() {
   if (selectedAgent === "codex") {
     const [allReviewComments, resolvedCommentIds] = await Promise.all([
       listPaginated(`/repos/${owner}/${repo}/pulls/${prNumber}/comments`),
-      fetchResolvedCodexReviewCommentIds()
+      fetchResolvedCodexReviewCommentIds(),
     ]);
-    const reviewComments = allReviewComments.filter((comment) => !resolvedCommentIds.has(comment.id));
-    const latestCodexResult = latestCodexNativeReviewResult(reviews, reviewComments, headSha, config);
+    const reviewComments = allReviewComments.filter(
+      (comment) => !resolvedCommentIds.has(comment.id),
+    );
+    const latestCodexResult = latestCodexNativeReviewResult(
+      reviews,
+      reviewComments,
+      headSha,
+      config,
+    );
     if (latestCodexResult === "pass") return true;
     if (latestCodexResult === "fail") return false;
   }
@@ -189,7 +204,7 @@ async function fetchEvidence() {
   const headCommittedAt = await fetchHeadCommittedAt();
   const comments = await listPaginated(`/repos/${owner}/${repo}/issues/${prNumber}/comments`);
   return comments.some((comment) =>
-    isAcceptableCodexSummaryComment(comment, headSha, headCommittedAt, config)
+    isAcceptableCodexSummaryComment(comment, headSha, headCommittedAt, config),
   );
 }
 
@@ -220,11 +235,12 @@ if (accepted) {
 }
 
 const detail = lastError ? ` Last API error: ${lastError.message}` : "";
-const reviewHint = selectedAgent === "claude"
-  ? "Claude must post AI_REVIEW_OUTCOME: pass for the current head SHA."
-  : selectedAgent === "codex"
-    ? "Codex must provide an acceptable native review for the current head SHA or a fresh no-findings Codex Review summary comment."
-    : `${selectedAgent} must provide an acceptable native review for the current head SHA.`;
+const reviewHint =
+  selectedAgent === "claude"
+    ? "Claude must post AI_REVIEW_OUTCOME: pass for the current head SHA."
+    : selectedAgent === "codex"
+      ? "Codex must provide an acceptable native review for the current head SHA or a fresh no-findings Codex Review summary comment."
+      : `${selectedAgent} must provide an acceptable native review for the current head SHA.`;
 
 const failureComment = [
   "AI Review gate failed.",
@@ -232,8 +248,10 @@ const failureComment = [
   `- agent: ${selectedAgent}`,
   `- head SHA: ${headSha}`,
   `- expected: ${reviewHint}`,
-  detail ? `- detail: ${detail}` : ""
-].filter(Boolean).join("\n");
+  detail ? `- detail: ${detail}` : "",
+]
+  .filter(Boolean)
+  .join("\n");
 
 try {
   await createComment(failureComment);

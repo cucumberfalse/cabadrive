@@ -1,7 +1,11 @@
 import { spawn } from "node:child_process";
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { chromium } from "@playwright/test";
-import { assertNoOpaqueBlackRegion, decodeRgbPng, encodeRgbPng } from "./png-opaque-black-check.mjs";
+import {
+  assertNoOpaqueBlackRegion,
+  decodeRgbPng,
+  encodeRgbPng,
+} from "./png-opaque-black-check.mjs";
 
 const port = Number(process.env.README_SCREENSHOT_PORT || 4399);
 const baseURL = `http://127.0.0.1:${port}`;
@@ -15,7 +19,9 @@ const preview = spawn(previewCommand, previewArgs, { stdio: ["ignore", "pipe", "
 let previewExitState;
 let previewStderr = "";
 let previewStdout = "";
-preview.stderr.on("data", (chunk) => { previewStderr += chunk.toString(); });
+preview.stderr.on("data", (chunk) => {
+  previewStderr += chunk.toString();
+});
 
 const previewReadyPromise = new Promise((resolve) => {
   preview.stdout.on("data", (chunk) => {
@@ -43,7 +49,9 @@ function currentExitState() {
 function earlyExitError(state) {
   const detail = state.signal ? `signal ${state.signal}` : `code ${state.code}`;
   const stderr = previewStderr.trim();
-  return new Error(`Vite preview exited before readiness with ${detail}${stderr ? `: ${stderr}` : ""}`);
+  return new Error(
+    `Vite preview exited before readiness with ${detail}${stderr ? `: ${stderr}` : ""}`,
+  );
 }
 
 async function waitForPreview() {
@@ -51,8 +59,15 @@ async function waitForPreview() {
   try {
     await Promise.race([
       previewReadyPromise,
-      previewExitPromise.then((state) => { throw earlyExitError(state); }),
-      new Promise((_, reject) => { readinessTimer = setTimeout(() => reject(new Error(`Vite preview did not report readiness at ${baseURL}`)), 10_000); })
+      previewExitPromise.then((state) => {
+        throw earlyExitError(state);
+      }),
+      new Promise((_, reject) => {
+        readinessTimer = setTimeout(
+          () => reject(new Error(`Vite preview did not report readiness at ${baseURL}`)),
+          10_000,
+        );
+      }),
     ]);
   } finally {
     clearTimeout(readinessTimer);
@@ -63,7 +78,9 @@ async function waitForPreview() {
     try {
       const response = await Promise.race([
         fetch(baseURL),
-        previewExitPromise.then((state) => { throw earlyExitError(state); })
+        previewExitPromise.then((state) => {
+          throw earlyExitError(state);
+        }),
       ]);
       if (response.ok) {
         const exitedAfterResponse = currentExitState();
@@ -75,7 +92,9 @@ async function waitForPreview() {
     }
     await Promise.race([
       new Promise((resolve) => setTimeout(resolve, 200)),
-      previewExitPromise.then((state) => { throw earlyExitError(state); })
+      previewExitPromise.then((state) => {
+        throw earlyExitError(state);
+      }),
     ]);
   }
   throw new Error(`Vite preview did not become ready at ${baseURL}`);
@@ -84,19 +103,35 @@ async function waitForPreview() {
 async function settlePage(page) {
   await page.evaluate(async () => {
     await document.fonts.ready;
-    await Promise.all(Array.from(document.images).filter((image) => image.getBoundingClientRect().top < innerHeight).map((image) => image.decode()));
+    await Promise.all(
+      Array.from(document.images)
+        .filter((image) => image.getBoundingClientRect().top < innerHeight)
+        .map((image) => image.decode()),
+    );
     await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
   });
 }
 
 async function capture(browser, tabName, fileName) {
-  const context = await browser.newContext({ viewport: { width: 1440, height: 900 }, deviceScaleFactor: 1, reducedMotion: "reduce" });
-  await context.addInitScript(() => { Math.random = () => 0.3141592653589793; });
+  const context = await browser.newContext({
+    viewport: { width: 1440, height: 900 },
+    deviceScaleFactor: 1,
+    reducedMotion: "reduce",
+  });
+  await context.addInitScript(() => {
+    Math.random = () => 0.3141592653589793;
+  });
   const page = await context.newPage();
   try {
     await page.goto(baseURL, { waitUntil: "load" });
-    await page.addStyleTag({ content: "*, *::before, *::after { animation: none !important; transition: none !important; caret-color: transparent !important; }" });
-    if (tabName !== "Учить") await page.getByRole("button", { name: tabName, exact: true }).evaluate((button) => button.click());
+    await page.addStyleTag({
+      content:
+        "*, *::before, *::after { animation: none !important; transition: none !important; caret-color: transparent !important; }",
+    });
+    if (tabName !== "Учить")
+      await page
+        .getByRole("button", { name: tabName, exact: true })
+        .evaluate((button) => button.click());
     await settlePage(page);
     if (tabName === "О приложении") {
       await page.getByRole("heading", { name: "О приложении", exact: true }).waitFor();
@@ -128,7 +163,12 @@ try {
   try {
     await Promise.race([
       previewExitPromise,
-      new Promise((_, reject) => { exitTimer = setTimeout(() => reject(new Error("Timed out waiting for Vite preview to exit")), 5_000); })
+      new Promise((_, reject) => {
+        exitTimer = setTimeout(
+          () => reject(new Error("Timed out waiting for Vite preview to exit")),
+          5_000,
+        );
+      }),
     ]);
   } finally {
     clearTimeout(exitTimer);

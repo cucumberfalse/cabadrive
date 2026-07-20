@@ -16,7 +16,8 @@ const anexoRegulatoryPanels = [
     fileName: "dec196AnexoIII-01.jpg",
     assetPath:
       "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/anexo-regulatory-panel-01-source-as-is.jpg",
-    captionScope: "R.1-R.3(10) prohibition signs: no entry, wrong way, and vehicle/user circulation prohibitions."
+    captionScope:
+      "R.1-R.3(10) prohibition signs: no entry, wrong way, and vehicle/user circulation prohibitions.",
   },
   {
     panelNumber: 2,
@@ -25,7 +26,8 @@ const anexoRegulatoryPanels = [
     fileName: "dec196AnexoIII-02.jpg",
     assetPath:
       "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/anexo-regulatory-panel-02-source-as-is.jpg",
-    captionScope: "R.4-R.16 turning, overtaking, parking, weight, dimension, and speed restrictions."
+    captionScope:
+      "R.4-R.16 turning, overtaking, parking, weight, dimension, and speed restrictions.",
   },
   {
     panelNumber: 3,
@@ -34,7 +36,7 @@ const anexoRegulatoryPanels = [
     fileName: "dec196AnexoIII-03.jpg",
     assetPath:
       "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/anexo-regulatory-panel-03-source-as-is.jpg",
-    captionScope: "R.17-R.22 exclusive circulation and mandatory-direction signs."
+    captionScope: "R.17-R.22 exclusive circulation and mandatory-direction signs.",
   },
   {
     panelNumber: 4,
@@ -43,11 +45,11 @@ const anexoRegulatoryPanels = [
     fileName: "dec196AnexoIII-04.jpg",
     assetPath:
       "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/anexo-regulatory-panel-04-source-as-is.jpg",
-    captionScope: "R.23-R.32 priority, control, railway-barrier, and end-of-prescription material."
-  }
+    captionScope: "R.23-R.32 priority, control, railway-barrier, and end-of-prescription material.",
+  },
 ].map((record) => ({
   ...record,
-  sourceAssetPath: join(officialAnnexImageRoot, record.fileName)
+  sourceAssetPath: join(officialAnnexImageRoot, record.fileName),
 }));
 const noAvanzarAssetPath =
   "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/no-avanzar-source-as-is.jpg";
@@ -70,51 +72,45 @@ const bodyTextBaseline = {
   runtimeEvidencePath:
     "tests/e2e/app.spec.ts::Manual guide full-width source image cards stay readable and avoid upscaling",
   source:
-    "Manual guide runtime CSS uses 1rem document body text and 0.93rem source-card body text; focused Playwright follow-up captures these computed values next to representative source images."
+    "Manual guide runtime CSS uses 1rem document body text and 0.93rem source-card body text; focused Playwright follow-up captures these computed values next to representative source images.",
 };
 
 const readabilityScreenshotEvidence = [
   {
     sectionId: "app4-signs-regulatory",
     viewport: "desktop",
-    path:
-      "test-results/app-Manual-guide-full-widt-84d9e-eadable-and-avoid-upscaling-chromium/manual-source-full-width-app4-signs-regulatory-desktop-chromium.png"
+    path: "test-results/app-Manual-guide-full-widt-84d9e-eadable-and-avoid-upscaling-chromium/manual-source-full-width-app4-signs-regulatory-desktop-chromium.png",
   },
   {
     sectionId: "app4-signs-regulatory",
     viewport: "mobile",
-    path:
-      "test-results/app-Manual-guide-full-widt-84d9e-eadable-and-avoid-upscaling-chromium/manual-source-full-width-app4-signs-regulatory-mobile-chromium.png"
+    path: "test-results/app-Manual-guide-full-widt-84d9e-eadable-and-avoid-upscaling-chromium/manual-source-full-width-app4-signs-regulatory-mobile-chromium.png",
   },
   {
     sectionId: "app4-signs-horizontal",
     viewport: "desktop",
-    path:
-      "test-results/app-Manual-guide-full-widt-84d9e-eadable-and-avoid-upscaling-chromium/manual-source-full-width-app4-signs-horizontal-desktop-chromium.png"
+    path: "test-results/app-Manual-guide-full-widt-84d9e-eadable-and-avoid-upscaling-chromium/manual-source-full-width-app4-signs-horizontal-desktop-chromium.png",
   },
   {
     sectionId: "app4-signs-horizontal",
     viewport: "mobile",
-    path:
-      "test-results/app-Manual-guide-full-widt-84d9e-eadable-and-avoid-upscaling-chromium/manual-source-full-width-app4-signs-horizontal-mobile-chromium.png"
+    path: "test-results/app-Manual-guide-full-widt-84d9e-eadable-and-avoid-upscaling-chromium/manual-source-full-width-app4-signs-horizontal-mobile-chromium.png",
   },
   {
     sectionId: "app2-highways-hospitals",
     viewport: "desktop/mobile",
-    path:
-      "test-results/app-Manual-guide-full-widt-84d9e-eadable-and-avoid-upscaling-chromium/manual-source-full-width-app2-highways-hospitals-*-chromium.png"
+    path: "test-results/app-Manual-guide-full-widt-84d9e-eadable-and-avoid-upscaling-chromium/manual-source-full-width-app2-highways-hospitals-*-chromium.png",
   },
   {
     sectionId: "app3-driving-factors",
     viewport: "desktop/mobile",
-    path:
-      "test-results/app-Manual-guide-full-widt-84d9e-eadable-and-avoid-upscaling-chromium/manual-source-full-width-app3-driving-factors-*-chromium.png"
+    path: "test-results/app-Manual-guide-full-widt-84d9e-eadable-and-avoid-upscaling-chromium/manual-source-full-width-app3-driving-factors-*-chromium.png",
   },
   {
     sectionId: "ch2-required-documents",
     viewport: "manual-inventory",
-    path: "content/validation/manual-guide-visual-content-crop.evidence.json"
-  }
+    path: "content/validation/manual-guide-visual-content-crop.evidence.json",
+  },
 ];
 
 const domSupportedReadableCardIds = new Set([
@@ -122,7 +118,7 @@ const domSupportedReadableCardIds = new Set([
   "sri-types-source-card",
   "alcohol-limits-source-card",
   "distraction-panels-source-card",
-  "mobility-context-transferred-card"
+  "mobility-context-transferred-card",
 ]);
 
 const sourceTextSupportingCardIds = new Set([
@@ -132,17 +128,22 @@ const sourceTextSupportingCardIds = new Set([
   "app3-seatbelt-source-card",
   "cedulas-source-card",
   "vtv-source-card",
-  "drug-test-device-source-card"
+  "drug-test-device-source-card",
 ]);
 
 const suspectCropCardIds = new Set(["cedulas-source-card"]);
 const focusedOfficialSignCardIds = new Set(["app4-regulatory-no-avanzar-source-card"]);
 const anexoRegulatoryPanelCardIds = new Set(anexoRegulatoryPanels.map((panel) => panel.cardId));
 
-function readabilityViewportComparisons(card, renderedImageWidthPx, estimatedSmallestTextHeightPx, disposition) {
+function readabilityViewportComparisons(
+  card,
+  renderedImageWidthPx,
+  estimatedSmallestTextHeightPx,
+  disposition,
+) {
   const renderedSize = {
     width: renderedImageWidthPx,
-    height: card.dimensions?.height ?? null
+    height: card.dimensions?.height ?? null,
   };
   return [
     {
@@ -151,9 +152,11 @@ function readabilityViewportComparisons(card, renderedImageWidthPx, estimatedSma
       estimatedSmallestTextHeightPx,
       bodyTextBaselinePx: bodyTextBaseline.documentBodyTextFontSizePx,
       passesBodyTextSizeTarget:
-        typeof estimatedSmallestTextHeightPx === "number" ? estimatedSmallestTextHeightPx >= bodyTextBaseline.documentBodyTextFontSizePx : null,
+        typeof estimatedSmallestTextHeightPx === "number"
+          ? estimatedSmallestTextHeightPx >= bodyTextBaseline.documentBodyTextFontSizePx
+          : null,
       disposition,
-      evidencePath: "focused Playwright desktop screenshot for the same source-image-card scenario"
+      evidencePath: "focused Playwright desktop screenshot for the same source-image-card scenario",
     },
     {
       viewport: "mobile-contained-scroll-natural-width",
@@ -161,10 +164,13 @@ function readabilityViewportComparisons(card, renderedImageWidthPx, estimatedSma
       estimatedSmallestTextHeightPx,
       bodyTextBaselinePx: bodyTextBaseline.documentBodyTextFontSizePx,
       passesBodyTextSizeTarget:
-        typeof estimatedSmallestTextHeightPx === "number" ? estimatedSmallestTextHeightPx >= bodyTextBaseline.documentBodyTextFontSizePx : null,
+        typeof estimatedSmallestTextHeightPx === "number"
+          ? estimatedSmallestTextHeightPx >= bodyTextBaseline.documentBodyTextFontSizePx
+          : null,
       disposition,
-      evidencePath: "focused Playwright mobile screenshot plus minDisplayWidthPx/no-upscale assertions"
-    }
+      evidencePath:
+        "focused Playwright mobile screenshot plus minDisplayWidthPx/no-upscale assertions",
+    },
   ];
 }
 
@@ -195,7 +201,12 @@ function readImageDimensions(path) {
       if (offset + 2 > bytes.length) break;
       const segmentLength = bytes.readUInt16BE(offset);
       if (segmentLength < 2 || offset + segmentLength > bytes.length) break;
-      if ((marker >= 0xc0 && marker <= 0xc3) || (marker >= 0xc5 && marker <= 0xc7) || (marker >= 0xc9 && marker <= 0xcb) || (marker >= 0xcd && marker <= 0xcf)) {
+      if (
+        (marker >= 0xc0 && marker <= 0xc3) ||
+        (marker >= 0xc5 && marker <= 0xc7) ||
+        (marker >= 0xc9 && marker <= 0xcb) ||
+        (marker >= 0xcd && marker <= 0xcf)
+      ) {
         return { width: bytes.readUInt16BE(offset + 5), height: bytes.readUInt16BE(offset + 3) };
       }
       offset += segmentLength;
@@ -215,7 +226,7 @@ function officialAnnexImageAudit() {
   if (!existsSync(officialAnnexImageRoot)) {
     return {
       status: "not-found",
-      root: officialAnnexImageRoot
+      root: officialAnnexImageRoot,
     };
   }
   const records = readdirSync(officialAnnexImageRoot)
@@ -225,8 +236,12 @@ function officialAnnexImageAudit() {
       const path = join(officialAnnexImageRoot, fileName);
       return { path, dimensions: readImageDimensions(path) };
     });
-  const widths = records.map((record) => record.dimensions?.width).filter((width) => typeof width === "number");
-  const heights = records.map((record) => record.dimensions?.height).filter((height) => typeof height === "number");
+  const widths = records
+    .map((record) => record.dimensions?.width)
+    .filter((width) => typeof width === "number");
+  const heights = records
+    .map((record) => record.dimensions?.height)
+    .filter((height) => typeof height === "number");
   return {
     status: "checked",
     root: officialAnnexImageRoot,
@@ -240,11 +255,11 @@ function officialAnnexImageAudit() {
       sourceAssetPath: panel.sourceAssetPath,
       runtimeAssetPath: panel.assetPath,
       dimensions: readImageDimensions(panel.assetPath),
-      sha256: existsSync(panel.assetPath) ? sha256File(panel.assetPath) : null
+      sha256: existsSync(panel.assetPath) ? sha256File(panel.assetPath) : null,
     })),
     nonSelectedPanel05Disposition:
       "dec196AnexoIII-05.jpg starts P.* warning-sign material, not the page-186 regulatory end-of-prescription material; regulatory panels 01-04 are the selected scope.",
-    samplePaths: records.slice(0, 4).map((record) => record.path)
+    samplePaths: records.slice(0, 4).map((record) => record.path),
   };
 }
 
@@ -260,7 +275,7 @@ function balancedSourceSlice(source, startIndex, openChar, closeChar) {
       else if (char === stringQuote) stringQuote = "";
       continue;
     }
-    if (char === "\"" || char === "'" || char === "`") {
+    if (char === '"' || char === "'" || char === "`") {
       stringQuote = char;
       continue;
     }
@@ -287,7 +302,7 @@ function topLevelObjectSources(arraySource) {
       else if (char === stringQuote) stringQuote = "";
       continue;
     }
-    if (char === "\"" || char === "'" || char === "`") {
+    if (char === '"' || char === "'" || char === "`") {
       stringQuote = char;
       continue;
     }
@@ -312,13 +327,15 @@ function moduleNumberField(source, fieldName) {
 }
 
 function moduleSourceRegion(source) {
-  const match = source.match(/sourceRegion:\s*\{\s*x:\s*(\d+),\s*y:\s*(\d+),\s*width:\s*(\d+),\s*height:\s*(\d+)\s*\}/u);
+  const match = source.match(
+    /sourceRegion:\s*\{\s*x:\s*(\d+),\s*y:\s*(\d+),\s*width:\s*(\d+),\s*height:\s*(\d+)\s*\}/u,
+  );
   return match
     ? {
         x: Number(match[1]),
         y: Number(match[2]),
         width: Number(match[3]),
-        height: Number(match[4])
+        height: Number(match[4]),
       }
     : undefined;
 }
@@ -336,7 +353,7 @@ function sectionSourceFiles() {
     .map((fileName) => ({
       fileName,
       path: join("src/data/manual-sections", fileName),
-      source: readFileSync(join("src/data/manual-sections", fileName), "utf8")
+      source: readFileSync(join("src/data/manual-sections", fileName), "utf8"),
     }));
 }
 
@@ -372,7 +389,7 @@ function sourceImageCardInventory() {
             : /sourceImageException/u.test(cardSource)
               ? "source-image-source-as-is"
               : "not-protected",
-          hasRussianOverlayLabels: /russianOverlayLabels/u.test(cardSource)
+          hasRussianOverlayLabels: /russianOverlayLabels/u.test(cardSource),
         });
       }
       cursor = arrayStart + cardsArray.length;
@@ -400,7 +417,8 @@ function sourceArtworkInventory() {
         assetPath,
         dimensions: existsSync(assetPath) ? readImageDimensions(assetPath) : null,
         disposition: "not-affected",
-        reason: "source-artwork blocks do not use the source-image-card page-sheet raster display path and were not observed with the Appendix IV tiny-island defect"
+        reason:
+          "source-artwork blocks do not use the source-image-card page-sheet raster display path and were not observed with the Appendix IV tiny-island defect",
       });
       cursor += objectSource.length;
     }
@@ -424,25 +442,27 @@ function dispositionForCard(card, cropRecord) {
         "Prior full-page source-as-is asset had excessive blank margins; corrected runtime asset is a tight official-source crop with useful-content ratio evidence and no browser upscaling.",
       beforeUsefulRatios: cropRecord.beforeUsefulRatios,
       afterUsefulRatios: cropRecord.outputUsefulRatios,
-      sourceQualityDisposition: cropRecord.sourceQualityDisposition
+      sourceQualityDisposition: cropRecord.sourceQualityDisposition,
     };
   }
   if (focusedOfficialSignCardIds.has(card.cardId)) {
     return {
       disposition: "implemented-representative-focused-official-sign-crop",
       reason:
-        "Focused official Anexo L crop covers the reported NO AVANZAR example at native asset size, while Appendix IV whole sheets remain overview/source-limited context."
+        "Focused official Anexo L crop covers the reported NO AVANZAR example at native asset size, while Appendix IV whole sheets remain overview/source-limited context.",
     };
   }
   if (anexoRegulatoryPanelCardIds.has(card.cardId)) {
     return {
       disposition: "implemented-regulatory-panels-with-caba-overview",
       reason:
-        "Byte-identical retained official Anexo L regulatory panel is displayed as a protected large source-as-is image before the CABA overview sheets; CABA sheets remain for local/manual variants."
+        "Byte-identical retained official Anexo L regulatory panel is displayed as a protected large source-as-is image before the CABA overview sheets; CABA sheets remain for local/manual variants.",
     };
   }
   if (card.cardId === "app1-blind-spot-source-card") {
-    const cropEvidence = existsSync(blindSpotCropEvidencePath) ? readJson(blindSpotCropEvidencePath) : null;
+    const cropEvidence = existsSync(blindSpotCropEvidencePath)
+      ? readJson(blindSpotCropEvidencePath)
+      : null;
     const target = cropEvidence?.targets?.find((entry) => entry.cardId === card.cardId);
     return {
       disposition: "implemented-source-limited-blind-spot-crop",
@@ -452,7 +472,7 @@ function dispositionForCard(card, cropRecord) {
       pdfPage: target?.pdfPage ?? target?.renderPage ?? 109,
       beforeUsefulRatios: target?.beforeUsefulRatios ?? null,
       afterUsefulRatios: target?.outputUsefulRatios ?? null,
-      sourceQualityDisposition: target?.sourceQualityDisposition ?? null
+      sourceQualityDisposition: target?.sourceQualityDisposition ?? null,
     };
   }
   if (card.cardId === "app1-tire-manufacturing-tread-life-source-card") {
@@ -463,9 +483,14 @@ function dispositionForCard(card, cropRecord) {
       reason:
         "User-reported App I page-108 tire manufacturing/date and tread-life visual was restored as a tight source-as-is x5 crop. The card preserves internal Spanish pixels, caps display at the natural crop width, and renders Russian explanation/term translations outside the image.",
       sourcePage: 108,
-      sourceRegion: target?.sourceRegionAtBaseScale ?? { x: 1115, y: 1635, width: 760, height: 995 },
+      sourceRegion: target?.sourceRegionAtBaseScale ?? {
+        x: 1115,
+        y: 1635,
+        width: 760,
+        height: 995,
+      },
       afterUsefulRatios: target?.outputUsefulRatios ?? null,
-      sourceQualityDisposition: target?.sourceQualityDisposition ?? null
+      sourceQualityDisposition: target?.sourceQualityDisposition ?? null,
     };
   }
   if (card.cardId === "app2-hospital-map-source-card") {
@@ -476,31 +501,34 @@ function dispositionForCard(card, cropRecord) {
       dimensions: { width: 440, height: 380 },
       outputSha256: "742f7e66213866c7e07861b9a93ab7fdd8c00e8b384e96a239b1b1cb712ca1d0",
       beforeUsefulRatios: { areaRatio: 0.4205128205128205 },
-      afterUsefulRatios: { areaRatio: 0.7142763157894737 }
+      afterUsefulRatios: { areaRatio: 0.7142763157894737 },
     };
   }
   if (card.cardId === "app3-body-posture-source-card") {
     return {
       disposition: "acceptable-tight-crop",
-      reason: "Contrast example from feature 034 intake: useful bbox area ratio 0.3652 and no-upscale cap 1350px; not blindly recropped.",
-      measuredUsefulRatios: { areaRatio: 0.3652 }
+      reason:
+        "Contrast example from feature 034 intake: useful bbox area ratio 0.3652 and no-upscale cap 1350px; not blindly recropped.",
+      measuredUsefulRatios: { areaRatio: 0.3652 },
     };
   }
   if (card.displayMode === "compact") {
     return {
       disposition: "compact-not-affected",
-      reason: "Feature 032 inventory records this as a genuinely compact snippet; no excessive full-page margin symptom is present."
+      reason:
+        "Feature 032 inventory records this as a genuinely compact snippet; no excessive full-page margin symptom is present.",
     };
   }
   return {
     disposition: "not-affected-reviewer-disposition",
     reason:
-      "Whole-manual inventory reviewed this source-image card; it is not an Appendix IV full-page sheet with a measured below-threshold useful-content island and remains governed by existing no-upscale/source-fidelity evidence."
+      "Whole-manual inventory reviewed this source-image card; it is not an Appendix IV full-page sheet with a measured below-threshold useful-content island and remains governed by existing no-upscale/source-fidelity evidence.",
   };
 }
 
 function textReadabilityForCard(card, cropRecord) {
-  const renderedImageWidthPx = card.minDisplayWidthPx ?? card.maxDisplayWidthPx ?? card.dimensions?.width ?? null;
+  const renderedImageWidthPx =
+    card.minDisplayWidthPx ?? card.maxDisplayWidthPx ?? card.dimensions?.width ?? null;
   const baseline = bodyTextBaseline;
   if (cropRecord) {
     return {
@@ -514,7 +542,12 @@ function textReadabilityForCard(card, cropRecord) {
       estimatedSmallestTextHeightPx: 6,
       bodyTextBaselinePx: baseline.documentBodyTextFontSizePx,
       comparisonToBodyText: "below-body-text-at-natural-source-width",
-      viewportComparisons: readabilityViewportComparisons(card, renderedImageWidthPx, 6, "source-limited-exception"),
+      viewportComparisons: readabilityViewportComparisons(
+        card,
+        renderedImageWidthPx,
+        6,
+        "source-limited-exception",
+      ),
       strategyApplied:
         "Natural-width minimum display equals the no-upscale max display width, so narrow viewports use contained figure scrolling rather than shrinking source-limited labels further.",
       evidencePath:
@@ -523,23 +556,23 @@ function textReadabilityForCard(card, cropRecord) {
         {
           id: "gcba-manual-pdf-render-scale-12",
           result: `High-scale canonical PDF render produced rendered useful-width scale ratio ${cropRecord.renderedUsefulWidthScaleRatio.toFixed(
-            3
-          )}; this is near 1.0 rather than the expected 2.4x, proving the official PDF embeds a source-limited raster for this sheet.`
+            3,
+          )}; this is near 1.0 rather than the expected 2.4x, proving the official PDF embeds a source-limited raster for this sheet.`,
         },
         {
           id: "decreto-779-1995-anexo-l-official-images",
           result:
-            "Retained official Anexo L image assets were checked as a better-source candidate, but their widths are about 613-620px, not better than the corrected manual crops."
+            "Retained official Anexo L image assets were checked as a better-source candidate, but their widths are about 613-620px, not better than the corrected manual crops.",
         },
         {
           id: "source-faithful-split-subcrop-presentation",
           result:
-            "Explored before declaring the exception. Because the full corrected sheets already render at natural crop width on desktop and now keep that width on mobile, splitting the same source-limited raster would not increase glyph pixels without browser upscaling; it would only remove context or multiply panels. Not selected."
-        }
+            "Explored before declaring the exception. Because the full corrected sheets already render at natural crop width on desktop and now keep that width on mobile, splitting the same source-limited raster would not increase glyph pixels without browser upscaling; it would only remove context or multiply panels. Not selected.",
+        },
       ],
       requiresOwnerDisposition: true,
       routeDisposition:
-        "Requires Orchestrator/user disposition before final validation because the user text-size target cannot be met from verified official source pixels without upscaling or protected-pixel reconstruction."
+        "Requires Orchestrator/user disposition before final validation because the user text-size target cannot be met from verified official source pixels without upscaling or protected-pixel reconstruction.",
     };
   }
   if (focusedOfficialSignCardIds.has(card.cardId)) {
@@ -548,16 +581,18 @@ function textReadabilityForCard(card, cropRecord) {
       disposition: "implemented-representative-focused-official-sign-crop",
       intendedReadableText:
         "R.1 NO AVANZAR external catalog caption below the protected official sign image, with Russian learner wording rendered below as selectable DOM text.",
-      inspectedSample: "R.1 NO AVANZAR focused crop from retained official Anexo L image dec196AnexoIII-01.jpg.",
+      inspectedSample:
+        "R.1 NO AVANZAR focused crop from retained official Anexo L image dec196AnexoIII-01.jpg.",
       renderedImageWidthPx,
       estimatedSmallestTextHeightPx: 10,
       bodyTextBaselinePx: baseline.documentBodyTextFontSizePx,
-      comparisonToBodyText: "source-caption-below-body-text-but-separate-dom-translation-carries-learning",
+      comparisonToBodyText:
+        "source-caption-below-body-text-but-separate-dom-translation-carries-learning",
       viewportComparisons: readabilityViewportComparisons(
         card,
         renderedImageWidthPx,
         10,
-        "implemented-representative-focused-official-sign-crop"
+        "implemented-representative-focused-official-sign-crop",
       ),
       strategyApplied:
         "Use the retained official Anexo L R.1 crop rather than relying only on the smaller CABA Appendix IV whole-sheet label.",
@@ -566,15 +601,15 @@ function textReadabilityForCard(card, cropRecord) {
         {
           id: "gcba-appendix-iv-page-185-whole-sheet",
           result:
-            "Kept only as overview because the CABA page-sheet raster leaves NO AVANZAR too small when treated as the only representation."
+            "Kept only as overview because the CABA page-sheet raster leaves NO AVANZAR too small when treated as the only representation.",
         },
         {
           id: "decreto-779-1995-anexo-l-dec196AnexoIII-01",
           result:
-            "Selected as retained official original-image source for a focused R.1 NO AVANZAR crop with protected sign pixels and a separate Russian DOM translation."
-        }
+            "Selected as retained official original-image source for a focused R.1 NO AVANZAR crop with protected sign pixels and a separate Russian DOM translation.",
+        },
       ],
-      requiresOwnerDisposition: false
+      requiresOwnerDisposition: false,
     };
   }
   if (anexoRegulatoryPanelCardIds.has(card.cardId)) {
@@ -594,14 +629,14 @@ function textReadabilityForCard(card, cropRecord) {
         card,
         renderedImageWidthPx,
         8,
-        "implemented-regulatory-panels-with-caba-overview"
+        "implemented-regulatory-panels-with-caba-overview",
       ),
       strategyApplied:
         "Use retained official Anexo L panel images 01-04 as large source-as-is cards before the CABA overview sheets. Runtime max/min width equals natural panel width, so the browser does not upscale and mobile uses contained scrolling instead of shrinking the panels below source width.",
       evidencePath: "content/validation/manual-guide-visual-completeness.evidence.json",
       sourceIntegrity:
         "Runtime panel is a byte-identical copy of the retained official Anexo L JPG; no translation, cleanup, redraw, retouch, masking, recoloring, inpainting, or pixel modification was performed.",
-      requiresOwnerDisposition: false
+      requiresOwnerDisposition: false,
     };
   }
   if (card.cardId === "app1-blind-spot-source-card") {
@@ -616,13 +651,19 @@ function textReadabilityForCard(card, cropRecord) {
       bodyTextBaselinePx: baseline.documentBodyTextFontSizePx,
       comparisonToBodyText:
         "The smallest embedded labels remain below body-text height because the official PDF embeds the visual as a source-limited raster; the crop is capped at natural width and is not browser-upscaled.",
-      viewportComparisons: readabilityViewportComparisons(card, renderedImageWidthPx, 10, "implemented-source-limited-blind-spot-crop"),
+      viewportComparisons: readabilityViewportComparisons(
+        card,
+        renderedImageWidthPx,
+        10,
+        "implemented-source-limited-blind-spot-crop",
+      ),
       strategyApplied:
         "The runtime card uses maxDisplayWidthPx/minDisplayWidthPx equal to the natural 546px asset width, so desktop avoids upscaling and mobile uses contained figure scrolling instead of shrinking the source-limited visual.",
-      evidencePath: "content/validation/manual-guide-blind-spot-source-crop.evidence.json plus focused Playwright checks for app1-blind-spot-source-card",
+      evidencePath:
+        "content/validation/manual-guide-blind-spot-source-crop.evidence.json plus focused Playwright checks for app1-blind-spot-source-card",
       sourceLimitation:
         "Direct official PDF region rendering at x5 produced a 546x440 crop; higher-scale raster enlargement was intentionally not committed because it would not add official source detail.",
-      requiresOwnerDisposition: false
+      requiresOwnerDisposition: false,
     };
   }
   if (card.cardId === "app1-tire-manufacturing-tread-life-source-card") {
@@ -631,7 +672,8 @@ function textReadabilityForCard(card, cropRecord) {
       disposition: "implemented-tire-manufacturing-tread-life-source-crop",
       intendedReadableText:
         "Official Spanish headings, tire date callout, tread-life chart labels, bullet text, Recomendaciones heading, and pressure labels remain protected source pixels; Russian explanation and term translations are rendered separately.",
-      inspectedSample: "App1 printed page 108 tire manufacturing/date and tread-life crop from the retained x5 render.",
+      inspectedSample:
+        "App1 printed page 108 tire manufacturing/date and tread-life crop from the retained x5 render.",
       renderedImageWidthPx,
       estimatedSmallestTextHeightPx: 10,
       bodyTextBaselinePx: baseline.documentBodyTextFontSizePx,
@@ -641,14 +683,15 @@ function textReadabilityForCard(card, cropRecord) {
         card,
         renderedImageWidthPx,
         10,
-        "implemented-tire-manufacturing-tread-life-source-crop"
+        "implemented-tire-manufacturing-tread-life-source-crop",
       ),
       strategyApplied:
         "Use the retained official page-108 x5 crop at its natural 760px width with minDisplayWidthPx matching maxDisplayWidthPx, so desktop avoids upscaling and mobile uses contained figure scrolling instead of shrinking the official text further.",
-      evidencePath: "content/validation/manual-guide-tire-manufacturing-tread-life-source-crop.evidence.json",
+      evidencePath:
+        "content/validation/manual-guide-tire-manufacturing-tread-life-source-crop.evidence.json",
       sourceLimitation:
         "The committed crop uses the best retained official x5 page render and is not browser-upscaled; Russian term translations outside the image carry the learner-facing wording.",
-      requiresOwnerDisposition: false
+      requiresOwnerDisposition: false,
     };
   }
   if (card.cardId === "app2-hospital-map-source-card") {
@@ -661,17 +704,18 @@ function textReadabilityForCard(card, cropRecord) {
       renderedImageWidthPx,
       estimatedSmallestTextHeightPx: 10,
       bodyTextBaselinePx: baseline.documentBodyTextFontSizePx,
-      comparisonToBodyText: "map-labels-source-limited-but-map-crop-is-tight-and-dom-text-carries-learning",
+      comparisonToBodyText:
+        "map-labels-source-limited-but-map-crop-is-tight-and-dom-text-carries-learning",
       viewportComparisons: readabilityViewportComparisons(
         card,
         renderedImageWidthPx,
         10,
-        "implemented-best-official-map-only-crop-with-source-limited-label-detail"
+        "implemented-best-official-map-only-crop-with-source-limited-label-detail",
       ),
       evidencePath: "content/validation/manual-guide-hospital-map-source-crop.evidence.json",
       sourceLimitation:
         "Official PDF appears native-raster limited for barrio-label glyph detail; implementation uses the tightest map-only crop plus natural-width mobile containment.",
-      requiresOwnerDisposition: false
+      requiresOwnerDisposition: false,
     };
   }
   if (suspectCropCardIds.has(card.cardId)) {
@@ -689,24 +733,24 @@ function textReadabilityForCard(card, cropRecord) {
         card,
         renderedImageWidthPx,
         null,
-        "implementation-feedback-needs-source-region-verification"
+        "implementation-feedback-needs-source-region-verification",
       ),
       evidencePath: "content/validation/manual-guide-visual-content-crop.evidence.json",
       attemptedAlternatives: [
         {
           id: "page-047-trimmed-page-probe",
           result:
-            "Local page-image probe found a better source-faithful row crop, but it is lower resolution than the x5/high-DPI contract."
+            "Local page-image probe found a better source-faithful row crop, but it is lower resolution than the x5/high-DPI contract.",
         },
         {
           id: "canonical-pdf-explicit-region-probe",
           result:
-            "Scale-2 PDF explicit-region probe rendered the intended cédula row, but scale-5/scale-12 probes produced bad or blank crops, so Implementation did not replace the committed source asset without a reliable high-DPI path."
-        }
+            "Scale-2 PDF explicit-region probe rendered the intended cédula row, but scale-5/scale-12 probes produced bad or blank crops, so Implementation did not replace the committed source asset without a reliable high-DPI path.",
+        },
       ],
       requiresArchitectDisposition: true,
       routeDisposition:
-        "Implementation Agent feedback for Architect/Orchestrator disposition; not fixed in this Appendix IV readability follow-up."
+        "Implementation Agent feedback for Architect/Orchestrator disposition; not fixed in this Appendix IV readability follow-up.",
     };
   }
   if (domSupportedReadableCardIds.has(card.cardId)) {
@@ -720,8 +764,13 @@ function textReadabilityForCard(card, cropRecord) {
       estimatedSmallestTextHeightPx: 14,
       bodyTextBaselinePx: baseline.documentBodyTextFontSizePx,
       comparisonToBodyText: "learner-facing-dom-text-is-comparable",
-      viewportComparisons: readabilityViewportComparisons(card, renderedImageWidthPx, 14, "readable-via-selectable-dom-overlay"),
-      evidencePath: "content/validation/manual-guide-source-fidelity.evidence.json"
+      viewportComparisons: readabilityViewportComparisons(
+        card,
+        renderedImageWidthPx,
+        14,
+        "readable-via-selectable-dom-overlay",
+      ),
+      evidencePath: "content/validation/manual-guide-source-fidelity.evidence.json",
     };
   }
   if (sourceTextSupportingCardIds.has(card.cardId)) {
@@ -730,13 +779,19 @@ function textReadabilityForCard(card, cropRecord) {
       disposition: "readable-with-adjacent-dom-text",
       intendedReadableText:
         "Embedded source text is preserved as official context; learner-critical content is repeated or explained in nearby selectable Russian DOM text.",
-      inspectedSample: "Representative source labels in maps, diagrams, document examples, or source-as-is photos.",
+      inspectedSample:
+        "Representative source labels in maps, diagrams, document examples, or source-as-is photos.",
       renderedImageWidthPx,
       estimatedSmallestTextHeightPx: 10,
       bodyTextBaselinePx: baseline.documentBodyTextFontSizePx,
       comparisonToBodyText: "source-text-supporting-dom-text-carries-learning",
-      viewportComparisons: readabilityViewportComparisons(card, renderedImageWidthPx, 10, "readable-with-adjacent-dom-text"),
-      evidencePath: "content/validation/manual-guide-visual-content-crop.evidence.json"
+      viewportComparisons: readabilityViewportComparisons(
+        card,
+        renderedImageWidthPx,
+        10,
+        "readable-with-adjacent-dom-text",
+      ),
+      evidencePath: "content/validation/manual-guide-visual-content-crop.evidence.json",
     };
   }
   if (card.displayMode === "compact") {
@@ -751,7 +806,7 @@ function textReadabilityForCard(card, cropRecord) {
       bodyTextBaselinePx: baseline.documentBodyTextFontSizePx,
       comparisonToBodyText: "not-applicable",
       viewportComparisons: [],
-      evidencePath: "content/validation/manual-guide-visual-content-crop.evidence.json"
+      evidencePath: "content/validation/manual-guide-visual-content-crop.evidence.json",
     };
   }
   return {
@@ -765,7 +820,7 @@ function textReadabilityForCard(card, cropRecord) {
     bodyTextBaselinePx: baseline.documentBodyTextFontSizePx,
     comparisonToBodyText: "not-applicable",
     viewportComparisons: [],
-    evidencePath: "content/validation/manual-guide-visual-content-crop.evidence.json"
+    evidencePath: "content/validation/manual-guide-visual-content-crop.evidence.json",
   };
 }
 
@@ -780,7 +835,7 @@ function textReadabilityForArtwork(entry) {
     estimatedSmallestTextHeightPx: null,
     bodyTextBaselinePx: bodyTextBaseline.documentBodyTextFontSizePx,
     comparisonToBodyText: "not-applicable",
-    evidencePath: "content/validation/manual-guide-visual-content-crop.evidence.json"
+    evidencePath: "content/validation/manual-guide-visual-content-crop.evidence.json",
   };
 }
 
@@ -790,23 +845,25 @@ function updateRegistryFromCropEvidence(registry, cropEvidence) {
     x: region.x,
     y: region.y,
     width: region.width,
-    height: region.height
+    height: region.height,
   });
   const orderedDimensions = (dimensions) => ({
     width: dimensions.width,
-    height: dimensions.height
+    height: dimensions.height,
   });
   const orderedRatios = (ratios) => ({
     areaRatio: ratios.areaRatio,
     widthRatio: ratios.widthRatio,
-    heightRatio: ratios.heightRatio
+    heightRatio: ratios.heightRatio,
   });
   for (const record of byCardId.values()) {
     const section = registry.sections.find((entry) => entry.id === record.sectionId);
     if (!section) throw new Error(`Missing registry section ${record.sectionId}`);
     const implementation = section.implementationEvidence;
     const sourceRegion = implementation.sourceRegionMetadata.find(
-      (entry) => entry.sourcePage === record.sourcePage && entry.sourceAssetPath === record.outputSourceAssetPath
+      (entry) =>
+        entry.sourcePage === record.sourcePage &&
+        entry.sourceAssetPath === record.outputSourceAssetPath,
     );
     if (!sourceRegion) throw new Error(`Missing source region metadata for ${record.cardId}`);
     sourceRegion.sourceRegion = orderedSourceRegion(record.sourceRegionAtBaseScale);
@@ -823,12 +880,14 @@ function updateRegistryFromCropEvidence(registry, cropEvidence) {
       sourceQualityDisposition: record.sourceQualityDisposition,
       usefulContentRatios: {
         before: orderedRatios(record.beforeUsefulRatios),
-        after: orderedRatios(record.outputUsefulRatios)
-      }
+        after: orderedRatios(record.outputUsefulRatios),
+      },
     };
 
     const localAsset = implementation.localAssetMetadata.find(
-      (entry) => entry.assetPath === record.currentAssetPath || entry.assetKind?.endsWith(`page-${record.sourcePage}`)
+      (entry) =>
+        entry.assetPath === record.currentAssetPath ||
+        entry.assetKind?.endsWith(`page-${record.sourcePage}`),
     );
     if (!localAsset) throw new Error(`Missing local asset metadata for ${record.cardId}`);
     localAsset.assetPath = record.outputAssetPath;
@@ -837,7 +896,7 @@ function updateRegistryFromCropEvidence(registry, cropEvidence) {
     localAsset.sha256 = record.outputSha256;
     localAsset.runtimeDisplaySize = {
       maxWidthCssPx: record.outputDimensions.width,
-      noUpscale: true
+      noUpscale: true,
     };
     localAsset.extractionScaleEvidence = {
       target: "source-native-equivalent-or-better",
@@ -848,25 +907,28 @@ function updateRegistryFromCropEvidence(registry, cropEvidence) {
       sourceQualityDisposition: record.sourceQualityDisposition,
       usefulContentRatios: {
         before: orderedRatios(record.beforeUsefulRatios),
-        after: orderedRatios(record.outputUsefulRatios)
-      }
+        after: orderedRatios(record.outputUsefulRatios),
+      },
     };
     localAsset.sourceIntegrity.sourceAssetPath = record.outputSourceAssetPath;
-    if (localAsset.officialSignException) localAsset.officialSignException.assetPath = record.outputAssetPath;
+    if (localAsset.officialSignException)
+      localAsset.officialSignException.assetPath = record.outputAssetPath;
 
     if (implementation.visibleSpanishStatus?.exceptions) {
-      const visibleException = implementation.visibleSpanishStatus.exceptions.find((entry) => entry.assetPath === record.currentAssetPath);
+      const visibleException = implementation.visibleSpanishStatus.exceptions.find(
+        (entry) => entry.assetPath === record.currentAssetPath,
+      );
       if (visibleException) visibleException.assetPath = record.outputAssetPath;
     }
     implementation.boundingBoxChecks = {
       status: "pass",
       evidence:
-        "Feature 034 records before/after useful-content bbox ratios and Playwright useful-content width checks for corrected Appendix IV crops; corrected assets render at natural width with no browser upscaling."
+        "Feature 034 records before/after useful-content bbox ratios and Playwright useful-content width checks for corrected Appendix IV crops; corrected assets render at natural width with no browser upscaling.",
     };
     implementation.visualReviewNotes = [
       "Feature 034 replaces excessive-margin Appendix IV page-sheet runtime assets with tight official-source crops and records before/after useful-content bbox evidence.",
       "The official PDF source is source-limited for useful sign/sheet pixel detail; corrected assets therefore cap runtime display at natural crop width instead of stretching or browser-upscaling.",
-      "Protected signs, road markings, traffic-light/signal visuals, and closing source visuals are left unchanged except for removing empty outer page margins; Russian explanations remain adjacent or below as selectable DOM text."
+      "Protected signs, road markings, traffic-light/signal visuals, and closing source visuals are left unchanged except for removing empty outer page margins; Russian explanations remain adjacent or below as selectable DOM text.",
     ];
   }
 }
@@ -877,10 +939,12 @@ function upsertFocusedNoAvanzarEvidence(registry) {
   const implementation = section.implementationEvidence;
   const dimensions = readImageDimensions(noAvanzarAssetPath);
   const sourceDimensions = readImageDimensions(noAvanzarSourceAssetPath);
-  if (!dimensions || !sourceDimensions) throw new Error("Missing focused NO AVANZAR image dimensions");
+  if (!dimensions || !sourceDimensions)
+    throw new Error("Missing focused NO AVANZAR image dimensions");
   const sha256 = sha256File(noAvanzarAssetPath);
   const sourceSha256 = sha256File(noAvanzarSourceAssetPath);
-  if (sha256 !== sourceSha256) throw new Error("Focused NO AVANZAR runtime asset must match validation crop bytes");
+  if (sha256 !== sourceSha256)
+    throw new Error("Focused NO AVANZAR runtime asset must match validation crop bytes");
 
   const sourceRegionEntry = {
     sourcePage: 185,
@@ -890,7 +954,7 @@ function upsertFocusedNoAvanzarEvidence(registry) {
       x: 32,
       y: 85,
       width: 200,
-      height: 145
+      height: 145,
     },
     sourceAssetPath: noAvanzarSourceAssetPath,
     cropDimensions: sourceDimensions,
@@ -905,13 +969,14 @@ function upsertFocusedNoAvanzarEvidence(registry) {
       sourceQualityDisposition:
         "retained-official-anexo-l-original-image-selected-for-focused-no-avanzar-card-after-caba-page-185-sheet-probes-remained-source-limited",
       externalCaptionBoundary:
-        "R.1 NO AVANZAR is printed below the sign as the external catalog caption, not inside the sign body or a supplementary plate."
-    }
+        "R.1 NO AVANZAR is printed below the sign as the external catalog caption, not inside the sign body or a supplementary plate.",
+    },
   };
   const existingSourceRegionIndex = implementation.sourceRegionMetadata.findIndex(
-    (entry) => entry.sourceAssetPath === noAvanzarSourceAssetPath
+    (entry) => entry.sourceAssetPath === noAvanzarSourceAssetPath,
   );
-  if (existingSourceRegionIndex >= 0) implementation.sourceRegionMetadata[existingSourceRegionIndex] = sourceRegionEntry;
+  if (existingSourceRegionIndex >= 0)
+    implementation.sourceRegionMetadata[existingSourceRegionIndex] = sourceRegionEntry;
   else implementation.sourceRegionMetadata.push(sourceRegionEntry);
 
   const exception = {
@@ -920,7 +985,7 @@ function upsertFocusedNoAvanzarEvidence(registry) {
     sourceAsIs: true,
     assetPath: noAvanzarAssetPath,
     reason:
-      "Focused official R.1 NO AVANZAR sign crop is protected source-as-is; Russian explanation is outside the image."
+      "Focused official R.1 NO AVANZAR sign crop is protected source-as-is; Russian explanation is outside the image.",
   };
   const localAsset = {
     assetPath: noAvanzarAssetPath,
@@ -934,7 +999,7 @@ function upsertFocusedNoAvanzarEvidence(registry) {
     sha256,
     runtimeDisplaySize: {
       maxWidthCssPx: dimensions.width,
-      noUpscale: true
+      noUpscale: true,
     },
     extractionScaleEvidence: {
       target: "higher-resolution-direct-export",
@@ -943,31 +1008,35 @@ function upsertFocusedNoAvanzarEvidence(registry) {
       outputDimensions: dimensions,
       sha256,
       externalCaptionBoundary:
-        "NO AVANZAR is translated only as separate DOM text because the printed Spanish words are an external catalog caption below the sign."
+        "NO AVANZAR is translated only as separate DOM text because the printed Spanish words are an external catalog caption below the sign.",
     },
     sourceIntegrity: {
       sourceAsIs: true,
       sourceAssetPath: noAvanzarSourceAssetPath,
       noTranslationOrRelabeling: true,
       noRedrawRecolorCleanupRetouchMaskInpaint: true,
-      russianExplanationOutsideImage: true
+      russianExplanationOutsideImage: true,
     },
-    officialSignException: exception
+    officialSignException: exception,
   };
-  const existingLocalAssetIndex = implementation.localAssetMetadata.findIndex((entry) => entry.assetPath === noAvanzarAssetPath);
-  if (existingLocalAssetIndex >= 0) implementation.localAssetMetadata[existingLocalAssetIndex] = localAsset;
+  const existingLocalAssetIndex = implementation.localAssetMetadata.findIndex(
+    (entry) => entry.assetPath === noAvanzarAssetPath,
+  );
+  if (existingLocalAssetIndex >= 0)
+    implementation.localAssetMetadata[existingLocalAssetIndex] = localAsset;
   else implementation.localAssetMetadata.push(localAsset);
 
   if (implementation.visibleSpanishStatus?.exceptions) {
-    implementation.visibleSpanishStatus.exceptions = implementation.visibleSpanishStatus.exceptions.filter(
-      (entry) => entry.assetPath !== noAvanzarAssetPath
-    );
+    implementation.visibleSpanishStatus.exceptions =
+      implementation.visibleSpanishStatus.exceptions.filter(
+        (entry) => entry.assetPath !== noAvanzarAssetPath,
+      );
     implementation.visibleSpanishStatus.exceptions.push(exception);
   }
 
   implementation.visualReviewNotes = [
     ...implementation.visualReviewNotes.filter((note) => !note.includes("NO AVANZAR")),
-    "Focused NO AVANZAR card uses retained official Anexo L R.1 image pixels and translates only the proven external catalog caption as separate DOM text."
+    "Focused NO AVANZAR card uses retained official Anexo L R.1 image pixels and translates only the proven external catalog caption as separate DOM text.",
   ];
 }
 
@@ -980,10 +1049,14 @@ function upsertAnexoRegulatoryPanelEvidence(registry) {
   for (const panel of anexoRegulatoryPanels) {
     const dimensions = readImageDimensions(panel.assetPath);
     const sourceDimensions = readImageDimensions(panel.sourceAssetPath);
-    if (!dimensions || !sourceDimensions) throw new Error(`Missing Anexo L panel dimensions for ${panel.cardId}`);
+    if (!dimensions || !sourceDimensions)
+      throw new Error(`Missing Anexo L panel dimensions for ${panel.cardId}`);
     const sha256 = sha256File(panel.assetPath);
     const sourceSha256 = sha256File(panel.sourceAssetPath);
-    if (sha256 !== sourceSha256) throw new Error(`${panel.cardId} runtime asset must be byte-identical to retained official source`);
+    if (sha256 !== sourceSha256)
+      throw new Error(
+        `${panel.cardId} runtime asset must be byte-identical to retained official source`,
+      );
 
     const sourceRegionEntry = {
       sourcePage: panel.sourcePage,
@@ -992,12 +1065,13 @@ function upsertAnexoRegulatoryPanelEvidence(registry) {
         x: 0,
         y: 0,
         width: sourceDimensions.width,
-        height: sourceDimensions.height
+        height: sourceDimensions.height,
       },
       sourceAssetPath: panel.sourceAssetPath,
       cropDimensions: sourceDimensions,
       cropSha256: sourceSha256,
-      cleanupScope: "source-as-is full retained official Anexo L regulatory panel; no protected-pixel modification",
+      cleanupScope:
+        "source-as-is full retained official Anexo L regulatory panel; no protected-pixel modification",
       extractionScaleEvidence: {
         target: "retained-official-original-image-copy",
         method:
@@ -1006,13 +1080,14 @@ function upsertAnexoRegulatoryPanelEvidence(registry) {
         sha256: sourceSha256,
         sourceQualityDisposition:
           "retained-official-anexo-l-regulatory-panel-selected-for-large-readable-regulatory-sign-presentation",
-        captionScope: panel.captionScope
-      }
+        captionScope: panel.captionScope,
+      },
     };
     const existingSourceRegionIndex = implementation.sourceRegionMetadata.findIndex(
-      (entry) => entry.sourceAssetPath === panel.sourceAssetPath
+      (entry) => entry.sourceAssetPath === panel.sourceAssetPath,
     );
-    if (existingSourceRegionIndex >= 0) implementation.sourceRegionMetadata[existingSourceRegionIndex] = sourceRegionEntry;
+    if (existingSourceRegionIndex >= 0)
+      implementation.sourceRegionMetadata[existingSourceRegionIndex] = sourceRegionEntry;
     else implementation.sourceRegionMetadata.push(sourceRegionEntry);
 
     const exception = {
@@ -1021,7 +1096,7 @@ function upsertAnexoRegulatoryPanelEvidence(registry) {
       sourceAsIs: true,
       assetPath: panel.assetPath,
       reason:
-        "Official Anexo L regulatory panel is protected source-as-is; Russian translations are outside the image."
+        "Official Anexo L regulatory panel is protected source-as-is; Russian translations are outside the image.",
     };
     panelExceptions.push(exception);
     const localAsset = {
@@ -1038,7 +1113,7 @@ function upsertAnexoRegulatoryPanelEvidence(registry) {
         maxWidthCssPx: dimensions.width,
         minWidthCssPx: dimensions.width,
         noUpscale: true,
-        mobileContainedScroll: true
+        mobileContainedScroll: true,
       },
       extractionScaleEvidence: {
         target: "retained-official-original-image-copy",
@@ -1048,7 +1123,7 @@ function upsertAnexoRegulatoryPanelEvidence(registry) {
         sha256,
         sourceQualityDisposition:
           "retained-official-anexo-l-regulatory-panel-selected-for-large-readable-regulatory-sign-presentation",
-        captionScope: panel.captionScope
+        captionScope: panel.captionScope,
       },
       sourceIntegrity: {
         sourceAsIs: true,
@@ -1056,25 +1131,31 @@ function upsertAnexoRegulatoryPanelEvidence(registry) {
         noTranslationOrRelabeling: true,
         noRedrawRecolorCleanupRetouchMaskInpaint: true,
         russianExplanationOutsideImage: true,
-        byteIdenticalCopy: true
+        byteIdenticalCopy: true,
       },
-      officialSignException: exception
+      officialSignException: exception,
     };
-    const existingLocalAssetIndex = implementation.localAssetMetadata.findIndex((entry) => entry.assetPath === panel.assetPath);
-    if (existingLocalAssetIndex >= 0) implementation.localAssetMetadata[existingLocalAssetIndex] = localAsset;
+    const existingLocalAssetIndex = implementation.localAssetMetadata.findIndex(
+      (entry) => entry.assetPath === panel.assetPath,
+    );
+    if (existingLocalAssetIndex >= 0)
+      implementation.localAssetMetadata[existingLocalAssetIndex] = localAsset;
     else implementation.localAssetMetadata.push(localAsset);
   }
 
   if (implementation.visibleSpanishStatus?.exceptions) {
-    implementation.visibleSpanishStatus.exceptions = implementation.visibleSpanishStatus.exceptions.filter(
-      (entry) => !anexoRegulatoryPanels.some((panel) => panel.assetPath === entry.assetPath)
-    );
+    implementation.visibleSpanishStatus.exceptions =
+      implementation.visibleSpanishStatus.exceptions.filter(
+        (entry) => !anexoRegulatoryPanels.some((panel) => panel.assetPath === entry.assetPath),
+      );
     implementation.visibleSpanishStatus.exceptions.push(...panelExceptions);
   }
 
   implementation.visualReviewNotes = [
-    ...implementation.visualReviewNotes.filter((note) => !note.includes("Anexo L regulatory panel")),
-    "Anexo L regulatory panels 01-04 are displayed as protected byte-identical official images before the CABA overview sheets; panel 05 starts warning signs and is outside this regulatory scope."
+    ...implementation.visualReviewNotes.filter(
+      (note) => !note.includes("Anexo L regulatory panel"),
+    ),
+    "Anexo L regulatory panels 01-04 are displayed as protected byte-identical official images before the CABA overview sheets; panel 05 starts warning signs and is outside this regulatory scope.",
   ];
 }
 
@@ -1084,10 +1165,12 @@ function upsertTireEvidence(registry) {
   const implementation = section.implementationEvidence;
   const dimensions = readImageDimensions(tireAssetPath);
   const sourceDimensions = readImageDimensions(tireSourceAssetPath);
-  if (!dimensions || !sourceDimensions) throw new Error("Missing tire manufacturing/tread-life image dimensions");
+  if (!dimensions || !sourceDimensions)
+    throw new Error("Missing tire manufacturing/tread-life image dimensions");
   const sha256 = sha256File(tireAssetPath);
   const sourceSha256 = sha256File(tireSourceAssetPath);
-  if (sha256 !== sourceSha256) throw new Error("Tire runtime asset must match validation crop bytes");
+  if (sha256 !== sourceSha256)
+    throw new Error("Tire runtime asset must match validation crop bytes");
 
   const exception = {
     assetPath: tireAssetPath,
@@ -1096,7 +1179,7 @@ function upsertTireEvidence(registry) {
     sourceAsIs: true,
     russianExplanationOutsideImage: true,
     ownerDecisionDate: "2026-06-05",
-    scope: "app1-page-108-tire-manufacturing-tread-life-visual-only"
+    scope: "app1-page-108-tire-manufacturing-tread-life-visual-only",
   };
   const sourceRegionEntry = {
     sourcePage: 108,
@@ -1104,7 +1187,7 @@ function upsertTireEvidence(registry) {
       x: 1115,
       y: 1635,
       width: 760,
-      height: 995
+      height: 995,
     },
     sourceAssetPath: tireSourceAssetPath,
     cropDimensions: sourceDimensions,
@@ -1117,13 +1200,14 @@ function upsertTireEvidence(registry) {
       outputDimensions: sourceDimensions,
       sha256: sourceSha256,
       sourceQualityDisposition:
-        "retained-official-x5-render-crop; display capped at natural 760px width with no browser upscaling"
-    }
+        "retained-official-x5-render-crop; display capped at natural 760px width with no browser upscaling",
+    },
   };
   const existingSourceRegionIndex = implementation.sourceRegionMetadata.findIndex(
-    (entry) => entry.sourceAssetPath === tireSourceAssetPath
+    (entry) => entry.sourceAssetPath === tireSourceAssetPath,
   );
-  if (existingSourceRegionIndex >= 0) implementation.sourceRegionMetadata[existingSourceRegionIndex] = sourceRegionEntry;
+  if (existingSourceRegionIndex >= 0)
+    implementation.sourceRegionMetadata[existingSourceRegionIndex] = sourceRegionEntry;
   else implementation.sourceRegionMetadata.push(sourceRegionEntry);
 
   const localAsset = {
@@ -1143,13 +1227,13 @@ function upsertTireEvidence(registry) {
       outputDimensions: dimensions,
       sha256,
       sourceQualityDisposition:
-        "retained-official-x5-render-crop; display capped at natural 760px width with no browser upscaling"
+        "retained-official-x5-render-crop; display capped at natural 760px width with no browser upscaling",
     },
     runtimeDisplaySize: {
       maxWidthCssPx: dimensions.width,
       minWidthCssPx: dimensions.width,
       noUpscale: true,
-      mobileContainedScroll: true
+      mobileContainedScroll: true,
     },
     sourceIntegrity: {
       sourceAsIs: true,
@@ -1159,24 +1243,28 @@ function upsertTireEvidence(registry) {
       russianExplanationOutsideImage: true,
       surroundingSpanishBodyTextIncludedBecauseItIsPartOfTheOfficialVisual: true,
       unrelatedPageContentExcluded: true,
-      tightCropRemovesOuterWhitespaceOnly: true
+      tightCropRemovesOuterWhitespaceOnly: true,
     },
-    sourceImageException: exception
+    sourceImageException: exception,
   };
-  const existingLocalAssetIndex = implementation.localAssetMetadata.findIndex((entry) => entry.assetPath === tireAssetPath);
-  if (existingLocalAssetIndex >= 0) implementation.localAssetMetadata[existingLocalAssetIndex] = localAsset;
+  const existingLocalAssetIndex = implementation.localAssetMetadata.findIndex(
+    (entry) => entry.assetPath === tireAssetPath,
+  );
+  if (existingLocalAssetIndex >= 0)
+    implementation.localAssetMetadata[existingLocalAssetIndex] = localAsset;
   else implementation.localAssetMetadata.push(localAsset);
 
   if (implementation.visibleSpanishStatus?.exceptions) {
-    implementation.visibleSpanishStatus.exceptions = implementation.visibleSpanishStatus.exceptions.filter(
-      (entry) => entry.assetPath !== tireAssetPath
-    );
+    implementation.visibleSpanishStatus.exceptions =
+      implementation.visibleSpanishStatus.exceptions.filter(
+        (entry) => entry.assetPath !== tireAssetPath,
+      );
     implementation.visibleSpanishStatus.exceptions.push(exception);
   }
 
   implementation.visualReviewNotes = [
     ...implementation.visualReviewNotes.filter((note) => !note.includes("tire manufacturing")),
-    "App I tire manufacturing/date and tread-life card uses the retained official page-108 x5 crop as source pixels, with Russian explanation and term translations outside the protected image."
+    "App I tire manufacturing/date and tread-life card uses the retained official page-108 x5 crop as source pixels, with Russian explanation and term translations outside the protected image.",
   ];
 }
 
@@ -1194,14 +1282,17 @@ const sourceImageCards = cards.map((card) => {
   return {
     ...card,
     ...dispositionForCard(card, cropRecord),
-    textReadability: textReadabilityForCard(card, cropRecord)
+    textReadability: textReadabilityForCard(card, cropRecord),
   };
 });
 const artwork = sourceArtworkInventory().map((entry) => ({
   ...entry,
-  textReadability: textReadabilityForArtwork(entry)
+  textReadability: textReadabilityForArtwork(entry),
 }));
-const referencedAssetPaths = new Set([...cards.map((card) => card.assetPath), ...artwork.map((entry) => entry.assetPath)]);
+const referencedAssetPaths = new Set([
+  ...cards.map((card) => card.assetPath),
+  ...artwork.map((entry) => entry.assetPath),
+]);
 const sectionAssetFiles = walkFiles(sectionAssetRoot)
   .filter((path) => /\.(?:png|jpe?g|svg)$/iu.test(path))
   .sort()
@@ -1209,7 +1300,9 @@ const sectionAssetFiles = walkFiles(sectionAssetRoot)
     assetPath,
     referencedByManualData: referencedAssetPaths.has(assetPath),
     dimensions: /\.(?:png|jpe?g)$/iu.test(assetPath) ? readImageDimensions(assetPath) : null,
-    disposition: referencedAssetPaths.has(assetPath) ? "referenced-current-manual-visual" : "unreferenced-or-superseded-local-asset-file"
+    disposition: referencedAssetPaths.has(assetPath)
+      ? "referenced-current-manual-visual"
+      : "unreferenced-or-superseded-local-asset-file",
   }));
 
 cropEvidence.wholeManualInventory = {
@@ -1221,8 +1314,12 @@ cropEvidence.wholeManualInventory = {
   textReadability: {
     baseline: bodyTextBaseline,
     officialBetterSourceAudit: officialAnnexImageAudit(),
-    sourceImageCardRelevanceCounts: countBy(sourceImageCards.map((card) => card.textReadability.relevance)),
-    sourceImageCardDispositionCounts: countBy(sourceImageCards.map((card) => card.textReadability.disposition)),
+    sourceImageCardRelevanceCounts: countBy(
+      sourceImageCards.map((card) => card.textReadability.relevance),
+    ),
+    sourceImageCardDispositionCounts: countBy(
+      sourceImageCards.map((card) => card.textReadability.disposition),
+    ),
     sourceImageCardDispositionTotal: sourceImageCards.length,
     requiredCardIds: sourceImageCards
       .filter((card) => card.textReadability.relevance === "required")
@@ -1261,8 +1358,8 @@ cropEvidence.wholeManualInventory = {
       conclusion:
         "Not selected for Appendix IV because the full corrected sheets already display at natural source width on desktop and now keep that width on mobile through contained figure scrolling. Splitting the same source-limited raster would not increase embedded glyph pixels without browser upscaling or protected-pixel reconstruction; it would only remove context or create more panels.",
       selectedMitigation:
-        "Set minDisplayWidthPx equal to maxDisplayWidthPx for Appendix IV page-sheet cards so mobile never shrinks below natural crop width."
-    }
+        "Set minDisplayWidthPx equal to maxDisplayWidthPx for Appendix IV page-sheet cards so mobile never shrinks below natural crop width.",
+    },
   },
   summary: {
     sourceImageCardCount: cards.length,
@@ -1271,13 +1368,13 @@ cropEvidence.wholeManualInventory = {
     correctedAppendixIvCount: cropEvidence.targets.length,
     appendixIvPagesCovered: cropEvidence.targets.map((record) => record.sourcePage),
     compactSourceImageCardCount: cards.filter((card) => card.displayMode === "compact").length,
-    acceptableContrastExamples: ["app2-hospital-map-source-card", "app3-body-posture-source-card"]
-  }
+    acceptableContrastExamples: ["app2-hospital-map-source-card", "app3-body-posture-source-card"],
+  },
 };
 
 writeJson(cropEvidencePath, cropEvidence);
 writeJson(registryPath, registry);
 
 console.log(
-  `manual visual crop inventory updated: ${cards.length} source-image cards, ${artwork.length} source-artwork blocks, ${cropEvidence.targets.length} corrected Appendix IV crops`
+  `manual visual crop inventory updated: ${cards.length} source-image cards, ${artwork.length} source-artwork blocks, ${cropEvidence.targets.length} corrected Appendix IV crops`,
 );

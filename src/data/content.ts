@@ -136,7 +136,10 @@ export type ProcessGuideSource = {
   url: string;
   checkedAt: string;
   officialOwner: "GCBA" | "ANSV" | "Gobierno Argentino";
-  currentnessStatus: "checked_current" | "checked_current_with_historico_url" | "volatile_check_required";
+  currentnessStatus:
+    | "checked_current"
+    | "checked_current_with_historico_url"
+    | "volatile_check_required";
   resultRu: string;
 };
 
@@ -148,7 +151,12 @@ export type ProcessGuideSection = {
   spanishTerms?: string[];
   sourceIds: string[];
   calloutType: "required_step" | "optional_preparation" | "adjacent_path" | "warning";
-  volatility?: "stable_procedure" | "volatile_fee" | "volatile_location" | "volatile_screen" | "volatile_document_list";
+  volatility?:
+    | "stable_procedure"
+    | "volatile_fee"
+    | "volatile_location"
+    | "volatile_screen"
+    | "volatile_document_list";
   volatilityWarningRu?: string;
 };
 
@@ -211,13 +219,21 @@ export type Explanation = {
   correctAnswerExplanationRu: string;
   wrongAnswerExplanations: Record<string, string>;
   explanationType: string;
-  claimScope?: "direct_ticket" | "direct_image" | "ticket_specific_fallback" | "current_official_source";
+  claimScope?:
+    | "direct_ticket"
+    | "direct_image"
+    | "ticket_specific_fallback"
+    | "current_official_source";
   relatedSourceIds: string[];
   imageDetailReferences?: string[];
   disclaimer: string;
 };
 
-export type OverlaySourceRole = "answer_critical_highlight" | "supporting" | "distractor_trap" | "background_irrelevant_dim";
+export type OverlaySourceRole =
+  | "answer_critical_highlight"
+  | "supporting"
+  | "distractor_trap"
+  | "background_irrelevant_dim";
 
 export type ImageExplanationOverlayRegion = {
   overlayRegionId: string;
@@ -270,7 +286,13 @@ export type LearningImageRecord = {
 
 export type LearningImageCoverageRecord = {
   unitId: string;
-  unitKind: "topicSummary" | "learningMaterial" | "practicalReasoning" | "trapNote" | "topicTerm" | "vocabularyTerm";
+  unitKind:
+    | "topicSummary"
+    | "learningMaterial"
+    | "practicalReasoning"
+    | "trapNote"
+    | "topicTerm"
+    | "vocabularyTerm";
   status: "direct" | "shared" | "exception";
   imageIds?: string[];
   exceptionReason?: string;
@@ -316,11 +338,11 @@ function collectShardEntries<T>(modules: Record<string, unknown>, label: string)
 
 const translations = collectShardEntries<Translation>(
   import.meta.glob("../../content/translations/ru/*.json", { eager: true }),
-  "Russian translation"
+  "Russian translation",
 );
 const explanations = collectShardEntries<Explanation>(
   import.meta.glob("../../content/explanations/ru/*.json", { eager: true }),
-  "Russian explanation"
+  "Russian explanation",
 );
 
 export const data = {
@@ -328,21 +350,33 @@ export const data = {
   examFormat,
   sources,
   questions: questions as Question[],
-  translations: translations as Translation[],
-  explanations: explanations as Explanation[],
+  translations,
+  explanations,
   imageOverlays: (imageOverlaysJson as ImageOverlayManifest).overlays,
   learningImages: learningImagesJson as LearningImageManifest,
   vocabulary,
   guide,
   cabaExamProcessGuide: cabaExamProcessGuideJson as CabaExamProcessGuide,
-  topicStudyGuide: topicStudyGuideJson as TopicStudyGuide
+  topicStudyGuide: topicStudyGuideJson as TopicStudyGuide,
 };
 
-export const translationByQuestion = new Map(data.translations.map((item) => [item.questionId, item]));
-export const explanationByQuestion = new Map(data.explanations.map((item) => [item.questionId, item]));
-export const imageOverlayByQuestion = new Map(data.imageOverlays.filter((item) => item.status === "approved").map((item) => [item.questionId, item]));
-export const learningImageById = new Map(data.learningImages.images.map((item) => [item.imageId, item]));
-export const learningImageCoverageByUnit = new Map(data.learningImages.coverage.map((item) => [item.unitId, item]));
+export const translationByQuestion = new Map(
+  data.translations.map((item) => [item.questionId, item]),
+);
+export const explanationByQuestion = new Map(
+  data.explanations.map((item) => [item.questionId, item]),
+);
+export const imageOverlayByQuestion = new Map(
+  data.imageOverlays
+    .filter((item) => item.status === "approved")
+    .map((item) => [item.questionId, item]),
+);
+export const learningImageById = new Map(
+  data.learningImages.images.map((item) => [item.imageId, item]),
+);
+export const learningImageCoverageByUnit = new Map(
+  data.learningImages.coverage.map((item) => [item.unitId, item]),
+);
 export const sourceById = new Map(data.sources.map((source) => [source.id, source]));
 export const questionById = new Map(data.questions.map((question) => [question.id, question]));
 

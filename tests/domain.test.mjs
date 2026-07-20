@@ -9,12 +9,21 @@ const domainJavaScript = ts.transpileModule(domainSource, {
     module: ts.ModuleKind.ESNext,
     target: ts.ScriptTarget.ES2022,
     moduleResolution: ts.ModuleResolutionKind.Bundler,
-    isolatedModules: true
+    isolatedModules: true,
   },
-  fileName: "src/domain.ts"
+  fileName: "src/domain.ts",
 }).outputText;
-const domain = await import(`data:text/javascript;base64,${Buffer.from(domainJavaScript).toString("base64")}`);
-const { formatDuration, learningTicketTargetSeconds, mistakesFromHistory, scorePercent, selectExamSet, shuffleQuestions } = domain;
+const domain = await import(
+  `data:text/javascript;base64,${Buffer.from(domainJavaScript).toString("base64")}`
+);
+const {
+  formatDuration,
+  learningTicketTargetSeconds,
+  mistakesFromHistory,
+  scorePercent,
+  selectExamSet,
+  shuffleQuestions,
+} = domain;
 
 test("scoring floors percentage for official exam threshold comparison", () => {
   assert.equal(scorePercent(34, 40), 85);
@@ -26,7 +35,7 @@ test("mistake history prioritizes repeated wrong answers", () => {
     { questionId: "b-fallback-001", isCorrect: false },
     { questionId: "b-fallback-002", isCorrect: false },
     { questionId: "b-fallback-001", isCorrect: false },
-    { questionId: "b-fallback-003", isCorrect: true }
+    { questionId: "b-fallback-003", isCorrect: true },
   ]);
   assert.equal(mistakes[0].questionId, "b-fallback-001");
   assert.equal(mistakes[0].wrong, 2);
@@ -35,10 +44,20 @@ test("mistake history prioritizes repeated wrong answers", () => {
 test("exam selection honors random order rule from the configured pool", () => {
   const questions = ["q1", "q2", "q3", "q4", "q5"].map((id, index) => ({
     id,
-    flags: { hasImage: index % 2 === 0 }
+    flags: { hasImage: index % 2 === 0 },
   }));
-  const lowShuffle = selectExamSet(questions, 3, "random_questions_from_available_validated_pool", () => 0).map((question) => question.id);
-  const highShuffle = selectExamSet(questions, 3, "random_questions_from_available_validated_pool", () => 0.99).map((question) => question.id);
+  const lowShuffle = selectExamSet(
+    questions,
+    3,
+    "random_questions_from_available_validated_pool",
+    () => 0,
+  ).map((question) => question.id);
+  const highShuffle = selectExamSet(
+    questions,
+    3,
+    "random_questions_from_available_validated_pool",
+    () => 0.99,
+  ).map((question) => question.id);
 
   assert.notDeepEqual(lowShuffle, highShuffle);
   assert.equal(new Set(lowShuffle).size, 3);
@@ -50,7 +69,10 @@ test("learning shuffle returns every question once without mutating input", () =
   const originalOrder = questions.map((question) => question.id);
   const shuffled = shuffleQuestions(questions, () => 0).map((question) => question.id);
 
-  assert.deepEqual(questions.map((question) => question.id), originalOrder);
+  assert.deepEqual(
+    questions.map((question) => question.id),
+    originalOrder,
+  );
   assert.deepEqual([...shuffled].sort(), [...originalOrder].sort());
   assert.equal(new Set(shuffled).size, questions.length);
 });
@@ -59,15 +81,23 @@ test("learning shuffle supports deterministic random streams", () => {
   const questions = ["q1", "q2", "q3", "q4", "q5"].map((id) => ({ id }));
   const lowShuffle = shuffleQuestions(questions, () => 0).map((question) => question.id);
   const highShuffle = shuffleQuestions(questions, () => 0.999999).map((question) => question.id);
-  const streamedShuffle = shuffleQuestions(questions, sequenceRandom([0.2, 0.7, 0.1, 0.9])).map((question) => question.id);
+  const streamedShuffle = shuffleQuestions(questions, sequenceRandom([0.2, 0.7, 0.1, 0.9])).map(
+    (question) => question.id,
+  );
 
   assert.notDeepEqual(lowShuffle, highShuffle);
   assert.notDeepEqual(streamedShuffle, highShuffle);
-  assert.deepEqual(highShuffle, questions.map((question) => question.id));
+  assert.deepEqual(
+    highShuffle,
+    questions.map((question) => question.id),
+  );
 });
 
 test("learning shuffle handles an empty input", () => {
-  assert.deepEqual(shuffleQuestions([], () => 0.5), []);
+  assert.deepEqual(
+    shuffleQuestions([], () => 0.5),
+    [],
+  );
 });
 
 function sequenceRandom(values) {
@@ -103,5 +133,8 @@ test("learning ticket target rounds alternate valid formats to nearest 15 second
 test("learning ticket target fails closed for invalid exam format metadata", () => {
   assert.equal(learningTicketTargetSeconds({ timeLimitMinutes: 45, questionCount: 0 }), undefined);
   assert.equal(learningTicketTargetSeconds({ timeLimitMinutes: 0, questionCount: 40 }), undefined);
-  assert.equal(learningTicketTargetSeconds({ timeLimitMinutes: Number.NaN, questionCount: 40 }), undefined);
+  assert.equal(
+    learningTicketTargetSeconds({ timeLimitMinutes: Number.NaN, questionCount: 40 }),
+    undefined,
+  );
 });

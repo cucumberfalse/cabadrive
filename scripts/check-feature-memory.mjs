@@ -17,7 +17,7 @@ function git(commandArgs, options = {}) {
   return execFileSync("git", commandArgs, {
     cwd: repoRoot,
     encoding: "utf8",
-    stdio: ["ignore", "pipe", options.quiet ? "ignore" : "pipe"]
+    stdio: ["ignore", "pipe", options.quiet ? "ignore" : "pipe"],
   }).trim();
 }
 
@@ -28,8 +28,10 @@ function changedFiles() {
       "--modified",
       "--others",
       "--deleted",
-      "--exclude-standard"
-    ]).split("\n").filter(Boolean);
+      "--exclude-standard",
+    ])
+      .split("\n")
+      .filter(Boolean);
     const stagedFiles = git(["diff", "--name-only", "--cached"]).split("\n").filter(Boolean);
     return [...new Set([...worktreeFiles, ...stagedFiles])];
   }
@@ -43,7 +45,7 @@ function hasFileAtRef(ref, path) {
   try {
     execFileSync("git", ["cat-file", "-e", `${ref}:${path}`], {
       cwd: repoRoot,
-      stdio: "ignore"
+      stdio: "ignore",
     });
     return true;
   } catch {
@@ -62,12 +64,16 @@ if (!productChanges.length) {
 
 const featureIds = new Set();
 for (const file of files) {
-  const match = file.match(new RegExp(`^${specsDir.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\/([^/]+)\\/`));
+  const match = file.match(
+    new RegExp(`^${specsDir.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\/([^/]+)\\/`),
+  );
   if (match) featureIds.add(match[1]);
 }
 
 for (const featureId of featureIds) {
-  const required = ["spec.md", "plan.md", "tasks.md"].map((name) => `${specsDir}/${featureId}/${name}`);
+  const required = ["spec.md", "plan.md", "tasks.md"].map(
+    (name) => `${specsDir}/${featureId}/${name}`,
+  );
   if (required.every((path) => hasFileAtRef(headRef, path))) {
     console.log(`Feature-memory gate passed via ${specsDir}/${featureId}/{spec,plan,tasks}.md`);
     process.exit(0);
@@ -76,5 +82,7 @@ for (const featureId of featureIds) {
 
 console.error("Product paths changed without a complete feature-memory update.");
 console.error(`Product changes: ${productChanges.join(", ")}`);
-console.error(`Touch one ${specsDir}/<feature-id>/ folder with spec.md, plan.md, and tasks.md in the same PR.`);
+console.error(
+  `Touch one ${specsDir}/<feature-id>/ folder with spec.md, plan.md, and tasks.md in the same PR.`,
+);
 process.exit(1);

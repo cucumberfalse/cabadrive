@@ -4,7 +4,8 @@ import assert from "node:assert/strict";
 
 const dataPath = "src/data/pandemiaVialSection.ts";
 const manualGuideDataPath = "src/data/manualGuide.ts";
-const manualGuideRegistryPath = "content/manuals/gcba-manual-vehiculo-4-ruedas-2023/interactive-guide/section-registry.chapters-1-2.json";
+const manualGuideRegistryPath =
+  "content/manuals/gcba-manual-vehiculo-4-ruedas-2023/interactive-guide/section-registry.chapters-1-2.json";
 const appPath = "src/App.tsx";
 const stylesPath = "src/styles.css";
 const dataSource = readFileSync(dataPath, "utf8");
@@ -14,16 +15,24 @@ const appSource = readFileSync(appPath, "utf8");
 const stylesSource = readFileSync(stylesPath, "utf8");
 const prototypeAppSource = appSource.slice(
   appSource.indexOf("const pandemiaPagePreviewWidth"),
-  appSource.indexOf("function manualDisplayText")
+  appSource.indexOf("function manualDisplayText"),
 );
-const prototypeStylesSource = stylesSource.slice(
-  stylesSource.indexOf(".pandemia-prototype")
+const prototypeStylesSource = stylesSource.slice(stylesSource.indexOf(".pandemia-prototype"));
+const introductionDataSource = dataSource.slice(
+  dataSource.indexOf("export const introductionNavigation"),
 );
-const introductionDataSource = dataSource.slice(dataSource.indexOf("export const introductionNavigation"));
 const manualGuideNavigationSource = `${manualGuideSource.slice(manualGuideSource.indexOf("export const manualGuideNavigation"))}\n${manualGuideRegistrySource}`;
-const roadSafetyPlanArticleSource = introductionDataSource.slice(introductionDataSource.lastIndexOf('id: "intro-road-safety-plan"'));
-const introductionAppSource = appSource.slice(appSource.indexOf("function IntroductionArticleBlockView"), appSource.indexOf("function manualDisplayText"));
-const pandemiaOnlyDataSource = dataSource.slice(0, dataSource.indexOf("export const introductionNavigation"));
+const roadSafetyPlanArticleSource = introductionDataSource.slice(
+  introductionDataSource.lastIndexOf('id: "intro-road-safety-plan"'),
+);
+const introductionAppSource = appSource.slice(
+  appSource.indexOf("function IntroductionArticleBlockView"),
+  appSource.indexOf("function manualDisplayText"),
+);
+const pandemiaOnlyDataSource = dataSource.slice(
+  0,
+  dataSource.indexOf("export const introductionNavigation"),
+);
 
 function escapeRegExp(value) {
   return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
@@ -34,7 +43,7 @@ function readPngSize(path) {
   assert.equal(buffer.toString("ascii", 1, 4), "PNG", `${path} is a PNG`);
   return {
     width: buffer.readUInt32BE(16),
-    height: buffer.readUInt32BE(20)
+    height: buffer.readUInt32BE(20),
   };
 }
 
@@ -46,7 +55,7 @@ test("Introduction navigation is driven by four source Index headings, not raw p
       titleRu: "Дорожная пандемия",
       titleEs: "Pandemia vial",
       startPage: 15,
-      endPage: 15
+      endPage: 15,
     },
     {
       id: "intro-ethical-civic-approach",
@@ -54,7 +63,7 @@ test("Introduction navigation is driven by four source Index headings, not raw p
       titleRu: "Этико-гражданский подход в дорожной культуре",
       titleEs: "Enfoque ético - ciudadano en la cultura vial",
       startPage: 16,
-      endPage: 16
+      endPage: 16,
     },
     {
       id: "intro-incident",
@@ -62,7 +71,7 @@ test("Introduction navigation is driven by four source Index headings, not raw p
       titleRu: "Авария или дорожный инцидент?",
       titleEs: "¿Accidente o incidente de tránsito?",
       startPage: 17,
-      endPage: 17
+      endPage: 17,
     },
     {
       id: "intro-road-safety-plan",
@@ -70,8 +79,8 @@ test("Introduction navigation is driven by four source Index headings, not raw p
       titleRu: "План дорожной безопасности города Буэнос-Айрес",
       titleEs: "Plan de seguridad vial de la Ciudad de Buenos Aires",
       startPage: 18,
-      endPage: 20
-    }
+      endPage: 20,
+    },
   ];
 
   let lastIndex = -1;
@@ -79,26 +88,63 @@ test("Introduction navigation is driven by four source Index headings, not raw p
     const index = introductionDataSource.indexOf(`id: "${route.id}"`);
     assert.ok(index > lastIndex, `${route.id} appears in source Index order`);
     lastIndex = index;
-    assert.match(introductionDataSource, new RegExp(`id:\\s*"${route.id}"[\\s\\S]*?routeHash:\\s*"${route.hash}"`, "u"));
-    assert.match(introductionDataSource, new RegExp(`id:\\s*"${route.id}"[\\s\\S]*?titleRu:\\s*"${route.titleRu.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}"`, "u"));
-    assert.ok(introductionDataSource.includes(`titleEs: "${route.titleEs}"`), `${route.id} keeps internal source heading traceability`);
-    assert.match(introductionDataSource, new RegExp(`id:\\s*"${route.id}"[\\s\\S]*?startPage:\\s*${route.startPage}[\\s\\S]*?endPage:\\s*${route.endPage}`, "u"));
+    assert.match(
+      introductionDataSource,
+      new RegExp(`id:\\s*"${route.id}"[\\s\\S]*?routeHash:\\s*"${route.hash}"`, "u"),
+    );
+    assert.match(
+      introductionDataSource,
+      new RegExp(
+        `id:\\s*"${route.id}"[\\s\\S]*?titleRu:\\s*"${route.titleRu.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}"`,
+        "u",
+      ),
+    );
+    assert.ok(
+      introductionDataSource.includes(`titleEs: "${route.titleEs}"`),
+      `${route.id} keeps internal source heading traceability`,
+    );
+    assert.match(
+      introductionDataSource,
+      new RegExp(
+        `id:\\s*"${route.id}"[\\s\\S]*?startPage:\\s*${route.startPage}[\\s\\S]*?endPage:\\s*${route.endPage}`,
+        "u",
+      ),
+    );
   }
 
-  assert.match(introductionDataSource, /id:\s*"intro-road-safety-plan"[\s\S]*?startPage:\s*18[\s\S]*?endPage:\s*20/);
-  assert.equal((introductionDataSource.match(/id:\s*"intro-road-safety-plan"/g) ?? []).length >= 2, true, "plan appears in navigation and article data");
+  assert.match(
+    introductionDataSource,
+    /id:\s*"intro-road-safety-plan"[\s\S]*?startPage:\s*18[\s\S]*?endPage:\s*20/,
+  );
+  assert.equal(
+    (introductionDataSource.match(/id:\s*"intro-road-safety-plan"/g) ?? []).length >= 2,
+    true,
+    "plan appears in navigation and article data",
+  );
   assert.doesNotMatch(introductionDataSource, /routeHash:\s*"#(?:page|manual|p)-?\d+/u);
   assert.match(manualGuideSource, /export const manualGuideNavigation/);
   assert.match(introductionAppSource, /data-testid="manual-guide-shell"/);
   assert.match(introductionAppSource, /data-testid="manual-guide-nav"/);
   assert.match(introductionAppSource, /data-active-group-id=\{activeGroupId\}/);
   assert.match(introductionAppSource, /data-active-child-id=\{activeChildId\}/);
-  assert.match(introductionAppSource, /data-testid=\{child\.introductionRouteId \? `intro-route-\$\{child\.introductionRouteId\}`/);
-  assert.match(introductionAppSource, /const isActiveSection = Boolean\(sectionEntry && selectedManualSection\?\.id === sectionEntry\.id\)/);
-  assert.match(introductionAppSource, /aria-current=\{isActiveChild \|\| isActiveSection \? "page" : undefined\}/);
+  assert.match(
+    introductionAppSource,
+    /data-testid=\{\s*child\.introductionRouteId\s*\?\s*`intro-route-\$\{child\.introductionRouteId\}`/,
+  );
+  assert.match(
+    introductionAppSource,
+    /const isActiveSection\s*=\s*Boolean\(\s*sectionEntry\s*&&\s*selectedManualSection\?\.id\s*===\s*sectionEntry\.id\s*,?\s*\)/,
+  );
+  assert.match(
+    introductionAppSource,
+    /aria-current=\{isActiveChild \|\| isActiveSection \? "page" : undefined\}/,
+  );
   assert.match(introductionAppSource, /aria-label=\{child\.labelRu\}/);
   assert.doesNotMatch(introductionAppSource, /data-testid="intro-index-nav"/);
-  assert.doesNotMatch(introductionAppSource, /manual-page-button-\$\{entry\.startPage\}|pageNumber|raw page/u);
+  assert.doesNotMatch(
+    introductionAppSource,
+    /manual-page-button-\$\{entry\.startPage\}|pageNumber|raw page/u,
+  );
 });
 
 test("Руководство uses full-document hierarchy and hides duplicate legacy manual destination", () => {
@@ -114,9 +160,12 @@ test("Руководство uses full-document hierarchy and hides duplicate le
     "Приложение I. Частные автомобили",
     "Приложение II. Пассажирский транспорт",
     "Приложение III. Перевозка грузов и товаров",
-    "Приложение IV. Дорожные знаки и сигналы"
+    "Приложение IV. Дорожные знаки и сигналы",
   ]) {
-    assert.ok(manualGuideNavigationSource.includes(requiredEntry), `full Indice navigation includes ${requiredEntry}`);
+    assert.ok(
+      manualGuideNavigationSource.includes(requiredEntry),
+      `full Indice navigation includes ${requiredEntry}`,
+    );
   }
 
   for (const sourceMetadata of [
@@ -125,28 +174,41 @@ test("Руководство uses full-document hierarchy and hides duplicate le
     "CAPÍTULO 3: NORMAS BÁSICAS DE CONDUCCIÓN",
     "CAPÍTULO 4: CAPACIDAD NATURAL",
     "CAPÍTULO 5: ACTITUD AL CONDUCIR",
-    "ANEXO IV SEÑALES VIALES"
+    "ANEXO IV SEÑALES VIALES",
   ]) {
-    assert.ok(manualGuideNavigationSource.includes(sourceMetadata), `Spanish source metadata retained internally: ${sourceMetadata}`);
+    assert.ok(
+      manualGuideNavigationSource.includes(sourceMetadata),
+      `Spanish source metadata retained internally: ${sourceMetadata}`,
+    );
   }
 
-  for (const implementedFrontMatterSection of ["front-presentation", "front-categories", "front-glossary"]) {
+  for (const implementedFrontMatterSection of [
+    "front-presentation",
+    "front-categories",
+    "front-glossary",
+  ]) {
     assert.ok(
       manualGuideNavigationSource.includes(`"id": "${implementedFrontMatterSection}"`),
-      `front matter registry includes implemented section ${implementedFrontMatterSection}`
+      `front matter registry includes implemented section ${implementedFrontMatterSection}`,
     );
     assert.ok(
-      manualGuideNavigationSource.includes(`"routeHash": "#manual-section-${implementedFrontMatterSection}"`),
-      `front matter registry includes route for ${implementedFrontMatterSection}`
+      manualGuideNavigationSource.includes(
+        `"routeHash": "#manual-section-${implementedFrontMatterSection}"`,
+      ),
+      `front matter registry includes route for ${implementedFrontMatterSection}`,
     );
   }
   assert.match(manualGuideNavigationSource, /"id":\s*"front-matter"[\s\S]*?"status":\s*"active"/);
   assert.match(introductionAppSource, /disabled=\{isDisabled\}/);
   assert.match(introductionAppSource, /data-source-title-es=\{child\.sourceTitleEs\}/);
-  assert.match(appSource, /> Руководство<\/button>/);
-  assert.doesNotMatch(appSource, /> Руководство 4R<\/button>/);
-  assert.doesNotMatch(appSource, /> Введение<\/button>/);
-  assert.equal((appSource.match(/data-testid="pandemia-nav-entry"/g) ?? []).length, 1, "one user-facing guide destination");
+  assert.match(appSource, />\s*Руководство\s*<\/button>/);
+  assert.doesNotMatch(appSource, />\s*Руководство 4R\s*<\/button>/);
+  assert.doesNotMatch(appSource, />\s*Введение\s*<\/button>/);
+  assert.equal(
+    (appSource.match(/data-testid="pandemia-nav-entry"/g) ?? []).length,
+    1,
+    "one user-facing guide destination",
+  );
 });
 
 test("Introduction article pages use native Russian DOM content without visible Spanish UI text", () => {
@@ -160,9 +222,12 @@ test("Introduction article pages use native Russian DOM content without visible 
     "Последствия дорожных инцидентов",
     "Безопасная инфраструктура",
     "Коммуникация, обучение и осведомление",
-    "Дорожное движение - это система, которую строят все граждане"
+    "Дорожное движение - это система, которую строят все граждане",
   ]) {
-    assert.ok(introductionDataSource.includes(requiredText), `missing new intro content: ${requiredText}`);
+    assert.ok(
+      introductionDataSource.includes(requiredText),
+      `missing new intro content: ${requiredText}`,
+    );
   }
 
   for (const visibleSpanish of [
@@ -172,9 +237,13 @@ test("Introduction article pages use native Russian DOM content without visible 
     "Ejes de trabajo",
     "Consecuencias de los",
     "Victimas fatales",
-    "En CABA rige"
+    "En CABA rige",
   ]) {
-    assert.doesNotMatch(introductionAppSource, new RegExp(visibleSpanish, "iu"), `runtime article renderer must not contain visible Spanish: ${visibleSpanish}`);
+    assert.doesNotMatch(
+      introductionAppSource,
+      new RegExp(visibleSpanish, "iu"),
+      `runtime article renderer must not contain visible Spanish: ${visibleSpanish}`,
+    );
   }
 
   assert.match(introductionAppSource, /data-testid="intro-article"/);
@@ -184,23 +253,26 @@ test("Introduction article pages use native Russian DOM content without visible 
   assert.match(stylesSource, /\.intro-photo-quote blockquote/);
   assert.doesNotMatch(
     introductionAppSource,
-    /<iframe|<object|<embed|pdfjs|PDFViewer|pandemia-source-mask|source-mask|intro-[\w-]*overlay|pandemia-[\w-]*overlay/i
+    /<iframe|<object|<embed|pdfjs|PDFViewer|pandemia-source-mask|source-mask|intro-[\w-]*overlay|pandemia-[\w-]*overlay/i,
   );
-  assert.doesNotMatch(stylesSource, /\.intro-document[\s\S]*?background-image:\s*url\([^)]*page-0(?:16|17|18|19|20)\.jpg/);
+  assert.doesNotMatch(
+    stylesSource,
+    /\.intro-document[\s\S]*?background-image:\s*url\([^)]*page-0(?:16|17|18|19|20)\.jpg/,
+  );
 });
 
 test("Road safety plan opening uses simplified Russian while preserving ticket-critical details", () => {
   const oldFormalParagraphs = [
     "Дорожная безопасность - общая ответственность во всем мире. В городе Буэнос-Айрес план строится на тех же принципах, что и в городах и странах, которые добились лучших результатов.",
     "Программа Vision Zero основана на этическом принципе: никто не должен погибать или получать постоянные травмы в дорожных инцидентах. Она появилась в 1997 году в Швеции, стране, которая более трех десятилетий считается ориентиром в этой сфере.",
-    "Транспортная система должна быть спроектирована так, чтобы сдерживать и уменьшать последствия человеческих ошибок и создавать безопасную систему."
+    "Транспортная система должна быть спроектирована так, чтобы сдерживать и уменьшать последствия человеческих ошибок и создавать безопасную систему.",
   ];
 
   for (const oldParagraph of oldFormalParagraphs) {
     assert.doesNotMatch(
       roadSafetyPlanArticleSource,
       new RegExp(escapeRegExp(oldParagraph), "u"),
-      `old literal Plan wording must not remain: ${oldParagraph}`
+      `old literal Plan wording must not remain: ${oldParagraph}`,
     );
   }
 
@@ -217,30 +289,45 @@ test("Road safety plan opening uses simplified Russian while preserving ticket-c
     /ориентир/u,
     /транспортную систему нужно проектировать/u,
     /сдерживала и уменьшала последствия человеческих ошибок/u,
-    /делать движение безопасным/u
+    /делать движение безопасным/u,
   ]) {
-    assert.match(roadSafetyPlanArticleSource, requiredDetail, `Plan opening lost required detail: ${requiredDetail}`);
+    assert.match(
+      roadSafetyPlanArticleSource,
+      requiredDetail,
+      `Plan opening lost required detail: ${requiredDetail}`,
+    );
   }
 
   assert.ok(
-    roadSafetyPlanArticleSource.indexOf("Безопасность на дорогах") < roadSafetyPlanArticleSource.indexOf('titleRu: "Основные принципы"'),
-    "simplified Plan opening stays before the principles list"
+    roadSafetyPlanArticleSource.indexOf("Безопасность на дорогах") <
+      roadSafetyPlanArticleSource.indexOf('titleRu: "Основные принципы"'),
+    "simplified Plan opening stays before the principles list",
   );
   assert.match(
     roadSafetyPlanArticleSource,
     /Идея Vision Zero \(нулевая смертность и отсутствие тяжелых травм\) простая и этическая/u,
-    "local simplification keeps immediate Russian support for retained Vision Zero wording"
+    "local simplification keeps immediate Russian support for retained Vision Zero wording",
   );
 });
 
 test("Introduction visual assets avoid full-page raster and Spanish quote text", () => {
-  const photoAsset = "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/intro-road-safety-plan/child-seat-photo-source.jpg";
-  assert.ok(introductionDataSource.includes(photoAsset), "plan final photo uses a section crop asset");
+  const photoAsset =
+    "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/intro-road-safety-plan/child-seat-photo-source.jpg";
+  assert.ok(
+    introductionDataSource.includes(photoAsset),
+    "plan final photo uses a section crop asset",
+  );
   assert.equal(existsSync(photoAsset), true, `${photoAsset} exists`);
   assert.match(introductionDataSource, /source photo crop excludes the Spanish quote/);
-  assert.doesNotMatch(introductionDataSource, /image:\s*\{[\s\S]*?localPath:\s*"content\/assets\/manuals\/gcba-manual-vehiculo-4-ruedas-2023\/pages\/page-020\.jpg"/u);
+  assert.doesNotMatch(
+    introductionDataSource,
+    /image:\s*\{[\s\S]*?localPath:\s*"content\/assets\/manuals\/gcba-manual-vehiculo-4-ruedas-2023\/pages\/page-020\.jpg"/u,
+  );
   assert.match(introductionAppSource, /assetUrl\(block\.image\.localPath\)/);
-  assert.doesNotMatch(introductionAppSource, /page-016\.jpg|page-017\.jpg|page-018\.jpg|page-019\.jpg|page-020\.jpg/u);
+  assert.doesNotMatch(
+    introductionAppSource,
+    /page-016\.jpg|page-017\.jpg|page-018\.jpg|page-019\.jpg|page-020\.jpg/u,
+  );
 });
 
 test("Introduction source-fidelity checker data rejects generic page 17-19 artwork replacements", () => {
@@ -252,27 +339,44 @@ test("Introduction source-fidelity checker data rejects generic page 17-19 artwo
     "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/intro-road-safety-plan/page-019/icon-axis-infrastructure-source.png",
     "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/intro-road-safety-plan/page-019/icon-axis-education-source.png",
     "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/intro-road-safety-plan/page-019/icon-axis-control-source.png",
-    "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/intro-road-safety-plan/page-019/icon-axis-participation-source.png"
+    "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/intro-road-safety-plan/page-019/icon-axis-participation-source.png",
   ]) {
-    assert.ok(introductionDataSource.includes(assetPath), `source-derived visual asset recorded: ${assetPath}`);
+    assert.ok(
+      introductionDataSource.includes(assetPath),
+      `source-derived visual asset recorded: ${assetPath}`,
+    );
     assert.equal(existsSync(assetPath), true, `${assetPath} exists`);
   }
   for (const assetPath of [
     "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/intro-incident/icon-risk-ambiental-source.png",
     "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/intro-incident/icon-risk-vehicular-source.png",
-    "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/intro-incident/icon-risk-humano-source.png"
+    "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/intro-incident/icon-risk-humano-source.png",
   ]) {
-    assert.deepEqual(readPngSize(assetPath), { width: 512, height: 512 }, `${assetPath} uses high-DPI padded 512x512 bounds, not the stale 78x78/256x256 tight or under-resolution source crop`);
+    assert.deepEqual(
+      readPngSize(assetPath),
+      { width: 512, height: 512 },
+      `${assetPath} uses high-DPI padded 512x512 bounds, not the stale 78x78/256x256 tight or under-resolution source crop`,
+    );
   }
-  assert.doesNotMatch(introductionDataSource, /recommendationIconAssetId|recommendation-clipboard|icon-recommendation-clipboard/u);
-  assert.doesNotMatch(introductionAppSource, /intro-recommendation-icon|recommendationIconAssetId|recommendation-clipboard/u);
+  assert.doesNotMatch(
+    introductionDataSource,
+    /recommendationIconAssetId|recommendation-clipboard|icon-recommendation-clipboard/u,
+  );
+  assert.doesNotMatch(
+    introductionAppSource,
+    /intro-recommendation-icon|recommendationIconAssetId|recommendation-clipboard/u,
+  );
   for (const assetPath of [
     "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/intro-road-safety-plan/page-019/icon-axis-infrastructure-source.png",
     "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/intro-road-safety-plan/page-019/icon-axis-education-source.png",
     "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/intro-road-safety-plan/page-019/icon-axis-control-source.png",
-    "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/intro-road-safety-plan/page-019/icon-axis-participation-source.png"
+    "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/intro-road-safety-plan/page-019/icon-axis-participation-source.png",
   ]) {
-    assert.deepEqual(readPngSize(assetPath), { width: 192, height: 192 }, `${assetPath} uses high-DPI padded 192x192 bounds, not the stale 96x96 source crop`);
+    assert.deepEqual(
+      readPngSize(assetPath),
+      { width: 192, height: 192 },
+      `${assetPath} uses high-DPI padded 192x192 bounds, not the stale 96x96 source crop`,
+    );
   }
 
   for (const requiredEvidence of [
@@ -300,11 +404,17 @@ test("Introduction source-fidelity checker data rejects generic page 17-19 artwo
     "full walking/pedestrian extents are centered with alpha padding, no browser upscaling, and no tight crop box",
     "page 19 citizen participation pictogram",
     "visibleSpanish: false",
-    "containsText: false"
+    "containsText: false",
   ]) {
-    assert.ok(introductionDataSource.includes(requiredEvidence), `fidelity evidence includes ${requiredEvidence}`);
+    assert.ok(
+      introductionDataSource.includes(requiredEvidence),
+      `fidelity evidence includes ${requiredEvidence}`,
+    );
   }
-  assert.ok(!introductionDataSource.includes("clean source-faithful native reconstruction"), "page 18 must not claim native reconstruction");
+  assert.ok(
+    !introductionDataSource.includes("clean source-faithful native reconstruction"),
+    "page 18 must not claim native reconstruction",
+  );
 
   assert.match(appSource, /data-testid="intro-source-artwork"/);
   assert.match(appSource, /data-fidelity-role=\{asset\.fidelityRole\}/);
@@ -317,113 +427,288 @@ test("Introduction source-fidelity checker data rejects generic page 17-19 artwo
   assert.doesNotMatch(
     introductionDataSource,
     /sourceRegion:\s*\{\s*x:\s*345,\s*y:\s*545,\s*width:\s*525,\s*height:\s*285\s*\}/,
-    "page 18 must not keep the old partial reconstruction crop metadata"
+    "page 18 must not keep the old partial reconstruction crop metadata",
   );
   assert.doesNotMatch(
     introductionDataSource,
     /sourceRegion:\s*\{\s*x:\s*345,\s*y:\s*480,\s*width:\s*500,\s*height:\s*350\s*\}/,
-    "page 18 must not keep the rejected 500x350 partial/reconstructed crop metadata"
+    "page 18 must not keep the rejected 500x350 partial/reconstructed crop metadata",
   );
   assert.doesNotMatch(
     introductionDataSource,
     /intrinsicSize:\s*\{\s*width:\s*525,\s*height:\s*285\s*\}/,
-    "page 18 must not keep old partial reconstruction dimensions"
+    "page 18 must not keep old partial reconstruction dimensions",
   );
   assert.doesNotMatch(
     introductionDataSource,
     /intrinsicSize:\s*\{\s*width:\s*500,\s*height:\s*350\s*\}/,
-    "page 18 must not keep rejected 500x350 dimensions"
+    "page 18 must not keep rejected 500x350 dimensions",
   );
   assert.doesNotMatch(
     introductionDataSource,
     /intrinsicSize:\s*\{\s*width:\s*620,\s*height:\s*260\s*\}/,
-    "page 18 must not keep the low-resolution 620x260 crop as the runtime intrinsic asset"
+    "page 18 must not keep the low-resolution 620x260 crop as the runtime intrinsic asset",
   );
   assert.match(
     introductionDataSource,
     /sourceRegion:\s*\{\s*x:\s*280,\s*y:\s*560,\s*width:\s*620,\s*height:\s*260\s*\}/,
-    "page 18 records the complete original source crop region"
+    "page 18 records the complete original source crop region",
   );
-  assert.match(introductionDataSource, /sourceRenderScale:\s*6/, "source artwork records high-DPI PDF render scale evidence");
+  assert.match(
+    introductionDataSource,
+    /sourceRenderScale:\s*6/,
+    "source artwork records high-DPI PDF render scale evidence",
+  );
   assert.match(
     introductionDataSource,
     /intrinsicSize:\s*\{\s*width:\s*3720,\s*height:\s*1560\s*\}/,
-    "page 18 records the high-DPI source crop intrinsic size"
+    "page 18 records the high-DPI source crop intrinsic size",
   );
   assert.deepEqual(
-    readPngSize("content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/intro-road-safety-plan/page-018/diagram-consequences-clean-source.png"),
+    readPngSize(
+      "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/intro-road-safety-plan/page-018/diagram-consequences-clean-source.png",
+    ),
     { width: 3720, height: 1560 },
-    "page 18 cleaned source crop PNG is the high-DPI 3720x1560 asset"
+    "page 18 cleaned source crop PNG is the high-DPI 3720x1560 asset",
   );
-  assert.doesNotMatch(introductionDataSource, /page-018\/icon-[^"]+source\.jpg/, "page 18 must not keep component icon crop metadata as the accepted diagram strategy");
-  const consequenceCenterRule = stylesSource.match(/\.intro-consequence-center\s*\{[\s\S]*?\n\}/)?.[0] ?? "";
-  assert.match(consequenceCenterRule, /border:\s*0/, "center incident DOM layer must not redraw the source center ring");
-  assert.match(consequenceCenterRule, /background:\s*transparent/, "center incident DOM layer keeps a transparent background");
-  assert.match(consequenceCenterRule, /background-image:\s*none/, "center incident DOM layer has no image backing");
-  assert.match(consequenceCenterRule, /box-shadow:\s*none/, "center incident DOM layer has no rectangular shadow backing");
+  assert.doesNotMatch(
+    introductionDataSource,
+    /page-018\/icon-[^"]+source\.jpg/,
+    "page 18 must not keep component icon crop metadata as the accepted diagram strategy",
+  );
+  const consequenceCenterRule =
+    stylesSource.match(/\.intro-consequence-center\s*\{[\s\S]*?\n\}/)?.[0] ?? "";
+  assert.match(
+    consequenceCenterRule,
+    /border:\s*0/,
+    "center incident DOM layer must not redraw the source center ring",
+  );
+  assert.match(
+    consequenceCenterRule,
+    /background:\s*transparent/,
+    "center incident DOM layer keeps a transparent background",
+  );
+  assert.match(
+    consequenceCenterRule,
+    /background-image:\s*none/,
+    "center incident DOM layer has no image backing",
+  );
+  assert.match(
+    consequenceCenterRule,
+    /box-shadow:\s*none/,
+    "center incident DOM layer has no rectangular shadow backing",
+  );
   assert.match(
     stylesSource,
     /\.intro-consequence-center::before,\n\.intro-consequence-center::after\s*\{[\s\S]*?content:\s*none/,
-    "center incident DOM layer has no pseudo-element backing rectangle"
+    "center incident DOM layer has no pseudo-element backing rectangle",
   );
   const consequenceCardHeadingRule =
     [...stylesSource.matchAll(/^\.intro-consequence-card h4\s*\{[\s\S]*?\n\}/gm)].at(-1)?.[0] ?? "";
-  assert.match(consequenceCardHeadingRule, /align-items:\s*center/, "page 18 category label text is vertically centered");
-  assert.match(consequenceCardHeadingRule, /background:\s*transparent/, "page 18 category label DOM text does not add source-mismatched backing plates");
-  assert.match(consequenceCardHeadingRule, /border-radius:\s*0/, "page 18 category label corners come from the cleaned source asset, not DOM plates");
-  assert.match(consequenceCardHeadingRule, /box-shadow:\s*none/, "page 18 category label DOM text has no backing rectangle");
-  assert.match(consequenceCardHeadingRule, /position:\s*relative/, "page 18 category label text can receive optical centering offsets without drawing a backing");
-  assert.match(consequenceCardHeadingRule, /top:\s*var\(--label-optical-y\)/, "page 18 category label text uses vertical offsets only for optical centering");
-  assert.match(consequenceCardHeadingRule, /min-width:\s*calc\(var\(--label-source-width\) \/ 620 \* 100cqw\)/, "page 18 DOM label text wrapper keeps at least source label width");
-  assert.match(consequenceCardHeadingRule, /width:\s*max-content/, "page 18 DOM label text wrapper may widen only as needed for Russian text");
-  assert.match(consequenceCardHeadingRule, /padding:\s*0 var\(--label-padding-inline\)/, "page 18 label text keeps only inline measurement padding for centering over source backings");
-  assert.match(consequenceCardHeadingRule, /height:\s*calc\(var\(--label-source-height\) \/ 620 \* 100cqw\)/, "page 18 labels scale to source box height from diagram width");
-  assert.match(consequenceCardHeadingRule, /font-size:\s*clamp\(0\.35rem, 1\.65cqw, 0\.78rem\)/, "page 18 category labels use one readable fitting size");
-  assert.match(consequenceCardHeadingRule, /font-weight:\s*800/, "page 18 category labels share a strong uppercase style");
-  assert.doesNotMatch(stylesSource, /--label-background:/, "page 18 DOM label layer must not keep a CSS backing color token");
-  assert.doesNotMatch(stylesSource, /--label-radius:/, "page 18 DOM label layer must not keep a CSS backing radius token");
-  assert.match(stylesSource, /\.intro-consequence-card\[data-consequence-id="health"\]\s*\{[\s\S]*?--label-source-width:\s*96/, "health label uses the widened cleaned-source backing needed for Russian fitting");
-  assert.match(stylesSource, /\.intro-consequence-card\[data-consequence-id="institutions"\]\s*\{[\s\S]*?--label-source-width:\s*130/, "institutions label keeps its source backing width");
-  assert.match(stylesSource, /\.intro-consequence-card\[data-consequence-id="institutions"\]\s*\{[\s\S]*?--label-optical-y:\s*calc\(-1\.2 \/ 620 \* 100cqw\)/, "institutions label has a named optical vertical-centering correction");
-  assert.match(stylesSource, /\.intro-consequence-card\.dark\s*\{[\s\S]*?--label-source-height:\s*12/, "fatality label preserves its shorter source label-box height");
-  assert.match(stylesSource, /\.intro-consequence-card\.dark\s*\{[\s\S]*?--label-source-width:\s*115/, "fatality label backing keeps the source black label width");
-  assert.match(stylesSource, /\.intro-consequence-card\.dark\s*\{[\s\S]*?--label-optical-y:\s*calc\(-0\.9 \/ 620 \* 100cqw\)/, "fatality label has a named optical vertical-centering correction");
-  const consequenceDarkHeadingRule = stylesSource.match(/\.intro-consequence-card\.dark h4\s*\{[^}]*\}/u)?.[0] ?? "";
-  assert.doesNotMatch(consequenceDarkHeadingRule, /font-size:/, "fatality label must not use a visibly different tiny font-size");
+  assert.match(
+    consequenceCardHeadingRule,
+    /align-items:\s*center/,
+    "page 18 category label text is vertically centered",
+  );
+  assert.match(
+    consequenceCardHeadingRule,
+    /background:\s*transparent/,
+    "page 18 category label DOM text does not add source-mismatched backing plates",
+  );
+  assert.match(
+    consequenceCardHeadingRule,
+    /border-radius:\s*0/,
+    "page 18 category label corners come from the cleaned source asset, not DOM plates",
+  );
+  assert.match(
+    consequenceCardHeadingRule,
+    /box-shadow:\s*none/,
+    "page 18 category label DOM text has no backing rectangle",
+  );
+  assert.match(
+    consequenceCardHeadingRule,
+    /position:\s*relative/,
+    "page 18 category label text can receive optical centering offsets without drawing a backing",
+  );
+  assert.match(
+    consequenceCardHeadingRule,
+    /top:\s*var\(--label-optical-y\)/,
+    "page 18 category label text uses vertical offsets only for optical centering",
+  );
+  assert.match(
+    consequenceCardHeadingRule,
+    /min-width:\s*calc\(var\(--label-source-width\) \/ 620 \* 100cqw\)/,
+    "page 18 DOM label text wrapper keeps at least source label width",
+  );
+  assert.match(
+    consequenceCardHeadingRule,
+    /width:\s*max-content/,
+    "page 18 DOM label text wrapper may widen only as needed for Russian text",
+  );
+  assert.match(
+    consequenceCardHeadingRule,
+    /padding:\s*0 var\(--label-padding-inline\)/,
+    "page 18 label text keeps only inline measurement padding for centering over source backings",
+  );
+  assert.match(
+    consequenceCardHeadingRule,
+    /height:\s*calc\(var\(--label-source-height\) \/ 620 \* 100cqw\)/,
+    "page 18 labels scale to source box height from diagram width",
+  );
+  assert.match(
+    consequenceCardHeadingRule,
+    /font-size:\s*clamp\(0\.35rem, 1\.65cqw, 0\.78rem\)/,
+    "page 18 category labels use one readable fitting size",
+  );
+  assert.match(
+    consequenceCardHeadingRule,
+    /font-weight:\s*800/,
+    "page 18 category labels share a strong uppercase style",
+  );
+  assert.doesNotMatch(
+    stylesSource,
+    /--label-background:/,
+    "page 18 DOM label layer must not keep a CSS backing color token",
+  );
+  assert.doesNotMatch(
+    stylesSource,
+    /--label-radius:/,
+    "page 18 DOM label layer must not keep a CSS backing radius token",
+  );
+  assert.match(
+    stylesSource,
+    /\.intro-consequence-card\[data-consequence-id="health"\]\s*\{[\s\S]*?--label-source-width:\s*96/,
+    "health label uses the widened cleaned-source backing needed for Russian fitting",
+  );
+  assert.match(
+    stylesSource,
+    /\.intro-consequence-card\[data-consequence-id="institutions"\]\s*\{[\s\S]*?--label-source-width:\s*130/,
+    "institutions label keeps its source backing width",
+  );
+  assert.match(
+    stylesSource,
+    /\.intro-consequence-card\[data-consequence-id="institutions"\]\s*\{[\s\S]*?--label-optical-y:\s*calc\(-1\.2 \/ 620 \* 100cqw\)/,
+    "institutions label has a named optical vertical-centering correction",
+  );
+  assert.match(
+    stylesSource,
+    /\.intro-consequence-card\.dark\s*\{[\s\S]*?--label-source-height:\s*12/,
+    "fatality label preserves its shorter source label-box height",
+  );
+  assert.match(
+    stylesSource,
+    /\.intro-consequence-card\.dark\s*\{[\s\S]*?--label-source-width:\s*115/,
+    "fatality label backing keeps the source black label width",
+  );
+  assert.match(
+    stylesSource,
+    /\.intro-consequence-card\.dark\s*\{[\s\S]*?--label-optical-y:\s*calc\(-0\.9 \/ 620 \* 100cqw\)/,
+    "fatality label has a named optical vertical-centering correction",
+  );
+  const consequenceDarkHeadingRule =
+    stylesSource.match(/\.intro-consequence-card\.dark h4\s*\{[^}]*\}/u)?.[0] ?? "";
+  assert.doesNotMatch(
+    consequenceDarkHeadingRule,
+    /font-size:/,
+    "fatality label must not use a visibly different tiny font-size",
+  );
   assert.match(stylesSource, /\.intro-risk-lobe/);
   assert.match(stylesSource, /\.intro-risk-list\s*\{[\s\S]*?gap:\s*18px/);
   const riskCardRule = stylesSource.match(/\.intro-risk-card\s*\{[\s\S]*?\n\}/)?.[0] ?? "";
-  const riskCardBeforeRule = stylesSource.match(/\.intro-risk-card::before\s*\{[\s\S]*?\n\}/)?.[0] ?? "";
+  const riskCardBeforeRule =
+    stylesSource.match(/\.intro-risk-card::before\s*\{[\s\S]*?\n\}/)?.[0] ?? "";
   const riskLobeRule = stylesSource.match(/\.intro-risk-lobe\s*\{[\s\S]*?\n\}/)?.[0] ?? "";
-  assert.match(riskCardRule, /--risk-panel-bg:\s*#e7e8e6/, "risk rows keep a shared source-gray panel color token");
-  assert.match(riskCardRule, /background:\s*transparent/, "risk card container must not paint a full-height rectangle behind the lobe");
-  assert.match(riskCardBeforeRule, /height:\s*100px/, "risk-card right rectangle is explicitly shorter than the larger desktop circular lobe");
-  assert.match(riskCardBeforeRule, /left:\s*36px/, "risk-card right rectangle starts inside the circle so the lobe masks seam corners");
-  assert.match(riskCardBeforeRule, /background:\s*var\(--risk-panel-bg\)/, "risk-card right rectangle uses the same source row color as the lobe");
-  assert.match(riskLobeRule, /width:\s*116px;[\s\S]*height:\s*116px/, "desktop risk lobe remains source-like and larger than the right rectangle");
-  assert.match(riskLobeRule, /background:\s*var\(--risk-panel-bg\)/, "risk lobe shares the source row color with the inset rectangle");
-  assert.match(stylesSource, /\.intro-risk-card\.warning\s*\{[\s\S]*?--risk-panel-bg:\s*#f5e51f/, "human risk row keeps the source yellow color token");
+  assert.match(
+    riskCardRule,
+    /--risk-panel-bg:\s*#e7e8e6/,
+    "risk rows keep a shared source-gray panel color token",
+  );
+  assert.match(
+    riskCardRule,
+    /background:\s*transparent/,
+    "risk card container must not paint a full-height rectangle behind the lobe",
+  );
+  assert.match(
+    riskCardBeforeRule,
+    /height:\s*100px/,
+    "risk-card right rectangle is explicitly shorter than the larger desktop circular lobe",
+  );
+  assert.match(
+    riskCardBeforeRule,
+    /left:\s*36px/,
+    "risk-card right rectangle starts inside the circle so the lobe masks seam corners",
+  );
+  assert.match(
+    riskCardBeforeRule,
+    /background:\s*var\(--risk-panel-bg\)/,
+    "risk-card right rectangle uses the same source row color as the lobe",
+  );
+  assert.match(
+    riskLobeRule,
+    /width:\s*116px;[\s\S]*height:\s*116px/,
+    "desktop risk lobe remains source-like and larger than the right rectangle",
+  );
+  assert.match(
+    riskLobeRule,
+    /background:\s*var\(--risk-panel-bg\)/,
+    "risk lobe shares the source row color with the inset rectangle",
+  );
+  assert.match(
+    stylesSource,
+    /\.intro-risk-card\.warning\s*\{[\s\S]*?--risk-panel-bg:\s*#f5e51f/,
+    "human risk row keeps the source yellow color token",
+  );
   assert.match(stylesSource, /\.intro-axis-circle/);
   const axisGridRule = stylesSource.match(/\.intro-axis-grid\s*\{[\s\S]*?\n\}/)?.[0] ?? "";
   assert.match(
     axisGridRule,
     /grid-template-columns:\s*repeat\(auto-fit, minmax\(min\(220px, 100%\), 1fr\)\)/,
-    "page 19 work-axis grid keeps two columns when 220px columns fit and collapses by available width"
+    "page 19 work-axis grid keeps two columns when 220px columns fit and collapses by available width",
   );
-  assert.match(axisGridRule, /gap:\s*38px clamp\(28px, 8vw, 76px\)/, "page 19 work-axis grid keeps source-like desktop gap with a narrower responsive floor");
-  assert.match(axisGridRule, /max-width:\s*100%/, "page 19 work-axis grid cannot exceed its content column");
+  assert.match(
+    axisGridRule,
+    /gap:\s*38px clamp\(28px, 8vw, 76px\)/,
+    "page 19 work-axis grid keeps source-like desktop gap with a narrower responsive floor",
+  );
+  assert.match(
+    axisGridRule,
+    /max-width:\s*100%/,
+    "page 19 work-axis grid cannot exceed its content column",
+  );
   assert.match(
     stylesSource,
     /@media \(max-width: 380px\)\s*\{[\s\S]*?\.intro-axis-grid\s*\{[\s\S]*?grid-template-columns:\s*minmax\(0, 1fr\)/,
-    "page 19 work-axis grid has an explicit 320px-safe single-column collapse"
+    "page 19 work-axis grid has an explicit 320px-safe single-column collapse",
   );
-  assert.match(stylesSource, /\.intro-axis-card\s*\{[\s\S]*?min-width:\s*0/, "page 19 work-axis cards cannot force horizontal overflow");
-  assert.match(stylesSource, /\.intro-axis-card p\s*\{[\s\S]*?overflow-wrap:\s*anywhere/, "page 19 work-axis body text wraps instead of clipping on mobile");
-  assert.match(stylesSource, /\.intro-axis-card\s*\{[\s\S]*?grid-template-rows:\s*2\.9rem 82px auto/);
+  assert.match(
+    stylesSource,
+    /\.intro-axis-card\s*\{[\s\S]*?min-width:\s*0/,
+    "page 19 work-axis cards cannot force horizontal overflow",
+  );
+  assert.match(
+    stylesSource,
+    /\.intro-axis-card p\s*\{[\s\S]*?overflow-wrap:\s*anywhere/,
+    "page 19 work-axis body text wraps instead of clipping on mobile",
+  );
+  assert.match(
+    stylesSource,
+    /\.intro-axis-card\s*\{[\s\S]*?grid-template-rows:\s*2\.9rem 82px auto/,
+  );
   assert.match(stylesSource, /\.intro-axis-card h4\s*\{[\s\S]*?min-height:\s*2\.9rem/);
-  assert.match(stylesSource, /\.intro-axis-card h4\s*\{[\s\S]*?overflow-wrap:\s*anywhere/, "page 19 work-axis titles wrap instead of clipping on mobile");
-  assert.match(stylesSource, /\.intro-axis-symbol\s*\{[\s\S]*?width:\s*66px;[\s\S]*?height:\s*66px;[\s\S]*?object-fit:\s*contain/);
-  assert.match(stylesSource, /\.intro-recommendation strong\s*\{[\s\S]*?left:\s*18px/, "recommendation tab is aligned to the border without reserving icon space");
+  assert.match(
+    stylesSource,
+    /\.intro-axis-card h4\s*\{[\s\S]*?overflow-wrap:\s*anywhere/,
+    "page 19 work-axis titles wrap instead of clipping on mobile",
+  );
+  assert.match(
+    stylesSource,
+    /\.intro-axis-symbol\s*\{[\s\S]*?width:\s*66px;[\s\S]*?height:\s*66px;[\s\S]*?object-fit:\s*contain/,
+  );
+  assert.match(
+    stylesSource,
+    /\.intro-recommendation strong\s*\{[\s\S]*?left:\s*18px/,
+    "recommendation tab is aligned to the border without reserving icon space",
+  );
   assert.doesNotMatch(stylesSource, /\.intro-recommendation-icon/);
   assert.doesNotMatch(introductionAppSource, /intro-risk-symbol"\s+aria-hidden="true"\s*\/>/);
   assert.doesNotMatch(introductionAppSource, /intro-axis-symbol"\s+aria-hidden="true"\s*\/>/);
@@ -434,10 +719,22 @@ test("Introduction recurring style guide guards blue callout drift", () => {
   assert.match(introductionDataSource, /calloutBackground:\s*"#e9f5f8"/);
   assert.match(introductionDataSource, /calloutAccent:\s*"#2787a6"/);
   assert.match(introductionDataSource, /calloutTextAlign:\s*"left"/);
-  assert.match(stylesSource, /\.intro-doc-callout,\n\.intro-doc-quote\s*\{[\s\S]*?background:\s*#e9f5f8/);
-  assert.match(stylesSource, /\.intro-doc-callout,\n\.intro-doc-quote\s*\{[\s\S]*?border-left:\s*6px solid #2787a6/);
-  assert.match(stylesSource, /\.intro-doc-callout,\n\.intro-doc-quote\s*\{[\s\S]*?text-align:\s*left/);
-  assert.doesNotMatch(stylesSource.match(/\.intro-doc-quote\s*\{[^}]*\}/u)?.[0] ?? "", /text-align:\s*center/);
+  assert.match(
+    stylesSource,
+    /\.intro-doc-callout,\n\.intro-doc-quote\s*\{[\s\S]*?background:\s*#e9f5f8/,
+  );
+  assert.match(
+    stylesSource,
+    /\.intro-doc-callout,\n\.intro-doc-quote\s*\{[\s\S]*?border-left:\s*6px solid #2787a6/,
+  );
+  assert.match(
+    stylesSource,
+    /\.intro-doc-callout,\n\.intro-doc-quote\s*\{[\s\S]*?text-align:\s*left/,
+  );
+  assert.doesNotMatch(
+    stylesSource.match(/\.intro-doc-quote\s*\{[^}]*\}/u)?.[0] ?? "",
+    /text-align:\s*center/,
+  );
 });
 
 test("Pandemia vial prototype data names the exact source and reference-only asset", () => {
@@ -471,7 +768,7 @@ test("Pandemia vial prototype covers required Russian text and visual-only infog
     "11%\\nв авто",
     "8 из 10",
     "49%\\nот 25 до 54 лет",
-    "Это показывает: чтобы дороги стали безопаснее"
+    "Это показывает: чтобы дороги стали безопаснее",
   ]) {
     assert.ok(dataSource.includes(requiredText), `missing required text: ${requiredText}`);
   }
@@ -480,9 +777,13 @@ test("Pandemia vial prototype covers required Russian text and visual-only infog
     "Эти данные взяты из статистического отчета о погибших",
     "Отчет подготовила Обсерватория",
     "Больше статистических отчетов",
-    "1/ Больше"
+    "1/ Больше",
   ]) {
-    assert.doesNotMatch(dataSource, new RegExp(removedVisibleText, "u"), `visible non-ticket source text should be removed: ${removedVisibleText}`);
+    assert.doesNotMatch(
+      dataSource,
+      new RegExp(removedVisibleText, "u"),
+      `visible non-ticket source text should be removed: ${removedVisibleText}`,
+    );
   }
 
   for (const sourceText of [
@@ -490,15 +791,20 @@ test("Pandemia vial prototype covers required Russian text and visual-only infog
     "= 715 ESTADIOS LLENOS",
     "VICTIMAS FATALES",
     "OCUPANTES DE AUTOMÓVIL",
-    "25 A 54 AÑOS DE EDAD"
+    "25 A 54 AÑOS DE EDAD",
   ]) {
-    assert.ok(dataSource.normalize("NFC").includes(sourceText.normalize("NFC")), `missing source reference: ${sourceText}`);
+    assert.ok(
+      dataSource.normalize("NFC").includes(sourceText.normalize("NFC")),
+      `missing source reference: ${sourceText}`,
+    );
   }
 });
 
 test("Pandemia vial ordinary paragraphs use adaptive text without forced line breaks", () => {
   for (const segmentId of ["intro", "body"]) {
-    const match = dataSource.match(new RegExp(`id:\\s*"${segmentId}"[\\s\\S]*?textRu:\\s*"([^"]*)"`, "u"));
+    const match = dataSource.match(
+      new RegExp(`id:\\s*"${segmentId}"[\\s\\S]*?textRu:\\s*"([^"]*)"`, "u"),
+    );
     assert.ok(match, `missing ${segmentId} text segment`);
     assert.doesNotMatch(match[1], /\\n|\n/u, `${segmentId} must not force PDF-style line breaks`);
   }
@@ -513,46 +819,105 @@ test("Pandemia vial ordinary paragraphs use adaptive text without forced line br
   assert.match(prototypeAppSource, /className="intro-document pandemia-prototype"/);
   assert.match(prototypeAppSource, /className="intro-document-flow"/);
   assert.match(prototypeAppSource, /"intro-doc-block"/);
-  assert.match(prototypeStylesSource, /\.pandemia-prose \.pandemia-segment[\s\S]*?position:\s*static/);
-  assert.match(prototypeStylesSource, /\.pandemia-text-layer \.pandemia-segment[\s\S]*?position:\s*absolute/);
+  assert.match(
+    prototypeStylesSource,
+    /\.pandemia-prose \.pandemia-segment[\s\S]*?position:\s*static/,
+  );
+  assert.match(
+    prototypeStylesSource,
+    /\.pandemia-text-layer \.pandemia-segment[\s\S]*?position:\s*absolute/,
+  );
   assert.match(prototypeStylesSource, /\.pandemia-segment[\s\S]*?pointer-events:\s*auto/);
   assert.match(prototypeStylesSource, /\.pandemia-segment[\s\S]*?user-select:\s*text/);
-  assert.doesNotMatch(prototypeStylesSource, /\.pandemia-text-layer\s*\{[^}]*pointer-events:\s*none/u);
+  assert.doesNotMatch(
+    prototypeStylesSource,
+    /\.pandemia-text-layer\s*\{[^}]*pointer-events:\s*none/u,
+  );
 });
 
 test("Pandemia vial typography uses the shared Introduction article shell while preserving infographic typography", () => {
   assert.match(prototypeAppSource, /className="intro-document pandemia-prototype"/);
-  assert.match(prototypeAppSource, /<header className="intro-document-header">[\s\S]*?<h2 id="pandemia-vial-title">/);
+  assert.match(
+    prototypeAppSource,
+    /<header className="intro-document-header">[\s\S]*?<h2 id="pandemia-vial-title">/,
+  );
   assert.match(prototypeAppSource, /className="intro-document-flow"/);
   assert.match(prototypeAppSource, /"intro-doc-block"/);
-  assert.match(prototypeStylesSource, /\.pandemia-page[\s\S]*?--pandemia-font-family:\s*system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans", "Helvetica Neue", Arial, sans-serif/);
+  assert.match(
+    prototypeStylesSource,
+    /\.pandemia-page[\s\S]*?--pandemia-font-family:\s*system-ui,\s*-apple-system,\s*BlinkMacSystemFont,\s*"Segoe UI",\s*Roboto,\s*"Noto Sans",\s*"Helvetica Neue",\s*Arial,\s*sans-serif/,
+  );
   assert.doesNotMatch(prototypeStylesSource, /--pandemia-font-family:\s*"SFNSRounded"/);
-  assert.doesNotMatch(prototypeStylesSource, /--pandemia-font-family:[^;]*(?:"SF Compact Rounded"|"SF Pro Rounded"|"Arial Rounded MT Bold"|"Arial Rounded Bold")/);
+  assert.doesNotMatch(
+    prototypeStylesSource,
+    /--pandemia-font-family:[^;]*(?:"SF Compact Rounded"|"SF Pro Rounded"|"Arial Rounded MT Bold"|"Arial Rounded Bold")/,
+  );
   assert.doesNotMatch(prototypeStylesSource, /--pandemia-font-family:\s*"Avenir Next"/);
-  assert.doesNotMatch(prototypeStylesSource.match(/\.pandemia-prototype\s*\{[\s\S]*?\}/u)?.[0] ?? "", /font-family:\s*var\(--pandemia-font-family\)/);
-  assert.match(prototypeStylesSource, /\.pandemia-segment[\s\S]*?font-family:\s*var\(--pandemia-font-family\)/);
-  assert.doesNotMatch(prototypeStylesSource.match(/\.pandemia-segment\s*\{[\s\S]*?\}/u)?.[0] ?? "", /Inter/u);
+  assert.doesNotMatch(
+    prototypeStylesSource.match(/\.pandemia-prototype\s*\{[\s\S]*?\}/u)?.[0] ?? "",
+    /font-family:\s*var\(--pandemia-font-family\)/,
+  );
+  assert.match(
+    prototypeStylesSource,
+    /\.pandemia-segment[\s\S]*?font-family:\s*var\(--pandemia-font-family\)/,
+  );
+  assert.doesNotMatch(
+    prototypeStylesSource.match(/\.pandemia-segment\s*\{[\s\S]*?\}/u)?.[0] ?? "",
+    /Inter/u,
+  );
   assert.match(prototypeStylesSource, /\.pandemia-segment-heading[\s\S]*?font-weight:\s*700/);
   assert.match(prototypeStylesSource, /\.pandemia-segment-heading[\s\S]*?line-height:\s*1\.12/);
-  assert.doesNotMatch(prototypeStylesSource, /\.pandemia-prose \.pandemia-segment-heading\s*\{[\s\S]*?max-width:\s*16ch/);
+  assert.doesNotMatch(
+    prototypeStylesSource,
+    /\.pandemia-prose \.pandemia-segment-heading\s*\{[\s\S]*?max-width:\s*16ch/,
+  );
   assert.match(prototypeStylesSource, /\.pandemia-segment-intro,[\s\S]*?font-weight:\s*400/);
   assert.match(prototypeStylesSource, /\.pandemia-segment-intro,[\s\S]*?line-height:\s*1\.62/);
-  assert.match(prototypeStylesSource, /\.pandemia-segment-context-label\s*\{[\s\S]*?font-weight:\s*700/);
-  assert.match(prototypeStylesSource, /\.pandemia-segment-stat-strip\s*\{[\s\S]*?font-weight:\s*700/);
+  assert.match(
+    prototypeStylesSource,
+    /\.pandemia-segment-context-label\s*\{[\s\S]*?font-weight:\s*700/,
+  );
+  assert.match(
+    prototypeStylesSource,
+    /\.pandemia-segment-stat-strip\s*\{[\s\S]*?font-weight:\s*700/,
+  );
   assert.match(prototypeStylesSource, /\.pandemia-segment-stat-card,[\s\S]*?font-weight:\s*700/);
-  assert.match(prototypeStylesSource, /\.pandemia-prose \.pandemia-segment-intro,[\s\S]*?width:\s*auto/);
-  assert.doesNotMatch(prototypeStylesSource.match(new RegExp(String.raw`^\.pandemia-prose\s*\{[\s\S]*?^\}`, "mu"))?.[0] ?? "", /(?:max-width|margin):/u);
+  assert.match(
+    prototypeStylesSource,
+    /\.pandemia-prose \.pandemia-segment-intro,[\s\S]*?width:\s*auto/,
+  );
+  assert.doesNotMatch(
+    prototypeStylesSource.match(
+      new RegExp(String.raw`^\.pandemia-prose\s*\{[\s\S]*?^\}`, "mu"),
+    )?.[0] ?? "",
+    /(?:max-width|margin):/u,
+  );
   assert.doesNotMatch(prototypeStylesSource, /\.pandemia-segment-context-label::first-line/u);
   assert.doesNotMatch(prototypeStylesSource, /letter-spacing:\s*-/u);
-  assert.doesNotMatch(prototypeStylesSource, /@import\s+url|https?:\/\/|fonts\.googleapis|fonts\.gstatic/u);
+  assert.doesNotMatch(
+    prototypeStylesSource,
+    /@import\s+url|https?:\/\/|fonts\.googleapis|fonts\.gstatic/u,
+  );
 });
 
 test("Pandemia vial geometry records native regions and Russian fitting notes", () => {
-  for (const role of ["heading", "intro", "context-label", "stat-strip", "stat-card", "city-stat", "body"]) {
+  for (const role of [
+    "heading",
+    "intro",
+    "context-label",
+    "stat-strip",
+    "stat-card",
+    "city-stat",
+    "body",
+  ]) {
     assert.match(dataSource, new RegExp(`role:\\s*"${role}"`), `missing geometry role ${role}`);
   }
   for (const removedRole of ["page-marker", "footnote"]) {
-    assert.doesNotMatch(dataSource, new RegExp(`role:\\s*"${removedRole}"`), `book-only role should not be visible: ${removedRole}`);
+    assert.doesNotMatch(
+      dataSource,
+      new RegExp(`role:\\s*"${removedRole}"`),
+      `book-only role should not be visible: ${removedRole}`,
+    );
   }
   assert.match(dataSource, /id:\s*"global-context"/);
   assert.match(dataSource, /id:\s*"city-context"/);
@@ -562,24 +927,67 @@ test("Pandemia vial geometry records native regions and Russian fitting notes", 
   assert.match(dataSource, /bottomContentMargin:\s*38/);
   assert.match(appSource, /pandemiaVialSection\.contentFrame/);
   assert.match(prototypeAppSource, /pandemiaInfographicFrame/);
-  assert.match(prototypeAppSource, /id:\s*"airplane-strip-panel"[\s\S]*?kind:\s*"blue-strip"[\s\S]*?y:\s*678[\s\S]*?height:\s*31/);
-  assert.match(prototypeAppSource, /id:\s*"airplane-strip-cap"[\s\S]*?kind:\s*"blue-cap"[\s\S]*?x:\s*438[\s\S]*?width:\s*94[\s\S]*?height:\s*49/);
-  assert.match(prototypeAppSource, /id:\s*"airplane-card-panel"[\s\S]*?x:\s*386,\s*y:\s*708,\s*width:\s*214,\s*height:\s*58/);
-  assert.match(prototypeAppSource, /id:\s*"stadium-strip-panel"[\s\S]*?kind:\s*"blue-strip"[\s\S]*?y:\s*678[\s\S]*?height:\s*31/);
-  assert.match(prototypeAppSource, /id:\s*"stadium-strip-cap"[\s\S]*?kind:\s*"blue-cap"[\s\S]*?x:\s*674[\s\S]*?width:\s*94[\s\S]*?height:\s*49/);
-  assert.match(prototypeAppSource, /id:\s*"stadium-card-panel"[\s\S]*?x:\s*620,\s*y:\s*708,\s*width:\s*214,\s*height:\s*58/);
-  assert.match(prototypeAppSource, /id:\s*"male-victims-panel"[\s\S]*?x:\s*552[\s\S]*?height:\s*58/);
+  assert.match(
+    prototypeAppSource,
+    /id:\s*"airplane-strip-panel"[\s\S]*?kind:\s*"blue-strip"[\s\S]*?y:\s*678[\s\S]*?height:\s*31/,
+  );
+  assert.match(
+    prototypeAppSource,
+    /id:\s*"airplane-strip-cap"[\s\S]*?kind:\s*"blue-cap"[\s\S]*?x:\s*438[\s\S]*?width:\s*94[\s\S]*?height:\s*49/,
+  );
+  assert.match(
+    prototypeAppSource,
+    /id:\s*"airplane-card-panel"[\s\S]*?x:\s*386,\s*y:\s*708,\s*width:\s*214,\s*height:\s*58/,
+  );
+  assert.match(
+    prototypeAppSource,
+    /id:\s*"stadium-strip-panel"[\s\S]*?kind:\s*"blue-strip"[\s\S]*?y:\s*678[\s\S]*?height:\s*31/,
+  );
+  assert.match(
+    prototypeAppSource,
+    /id:\s*"stadium-strip-cap"[\s\S]*?kind:\s*"blue-cap"[\s\S]*?x:\s*674[\s\S]*?width:\s*94[\s\S]*?height:\s*49/,
+  );
+  assert.match(
+    prototypeAppSource,
+    /id:\s*"stadium-card-panel"[\s\S]*?x:\s*620,\s*y:\s*708,\s*width:\s*214,\s*height:\s*58/,
+  );
+  assert.match(
+    prototypeAppSource,
+    /id:\s*"male-victims-panel"[\s\S]*?x:\s*552[\s\S]*?height:\s*58/,
+  );
   assert.match(prototypeAppSource, /id:\s*"age-range-panel"[\s\S]*?x:\s*552[\s\S]*?height:\s*56/);
-  assert.match(dataSource, /id:\s*"people-grid-icon"[\s\S]*?geometry:\s*\{\s*x:\s*424,\s*y:\s*1020,\s*width:\s*104,\s*height:\s*58\s*\}/);
-  assert.match(dataSource, /id:\s*"people-pair-icon"[\s\S]*?geometry:\s*\{\s*x:\s*452,\s*y:\s*1110,\s*width:\s*72,\s*height:\s*56\s*\}/);
-  assert.match(dataSource, /id:\s*"airplane-card"[\s\S]*?geometry:\s*\{\s*x:\s*398,\s*y:\s*718,\s*width:\s*190,\s*height:\s*38\s*\}/);
-  assert.match(dataSource, /id:\s*"stadium-card"[\s\S]*?geometry:\s*\{\s*x:\s*630,\s*y:\s*712,\s*width:\s*194,\s*height:\s*50\s*\}/);
-  assert.match(dataSource, /id:\s*"male-victims"[\s\S]*?geometry:\s*\{\s*x:\s*570,\s*y:\s*1026,\s*width:\s*198,\s*height:\s*46\s*\}/);
-  assert.match(dataSource, /id:\s*"age-range"[\s\S]*?geometry:\s*\{\s*x:\s*572,\s*y:\s*1116,\s*width:\s*190,\s*height:\s*42\s*\}/);
-  const blueStripRule = prototypeStylesSource.match(/\.pandemia-native-shape-blue-strip\s*\{[^}]*\}/u)?.[0] ?? "";
+  assert.match(
+    dataSource,
+    /id:\s*"people-grid-icon"[\s\S]*?geometry:\s*\{\s*x:\s*424,\s*y:\s*1020,\s*width:\s*104,\s*height:\s*58\s*\}/,
+  );
+  assert.match(
+    dataSource,
+    /id:\s*"people-pair-icon"[\s\S]*?geometry:\s*\{\s*x:\s*452,\s*y:\s*1110,\s*width:\s*72,\s*height:\s*56\s*\}/,
+  );
+  assert.match(
+    dataSource,
+    /id:\s*"airplane-card"[\s\S]*?geometry:\s*\{\s*x:\s*398,\s*y:\s*718,\s*width:\s*190,\s*height:\s*38\s*\}/,
+  );
+  assert.match(
+    dataSource,
+    /id:\s*"stadium-card"[\s\S]*?geometry:\s*\{\s*x:\s*630,\s*y:\s*712,\s*width:\s*194,\s*height:\s*50\s*\}/,
+  );
+  assert.match(
+    dataSource,
+    /id:\s*"male-victims"[\s\S]*?geometry:\s*\{\s*x:\s*570,\s*y:\s*1026,\s*width:\s*198,\s*height:\s*46\s*\}/,
+  );
+  assert.match(
+    dataSource,
+    /id:\s*"age-range"[\s\S]*?geometry:\s*\{\s*x:\s*572,\s*y:\s*1116,\s*width:\s*190,\s*height:\s*42\s*\}/,
+  );
+  const blueStripRule =
+    prototypeStylesSource.match(/\.pandemia-native-shape-blue-strip\s*\{[^}]*\}/u)?.[0] ?? "";
   assert.match(blueStripRule, /border-radius:\s*0/);
   assert.doesNotMatch(blueStripRule, /border-radius:\s*999px 999px 0 0/u);
-  assert.match(prototypeStylesSource, /\.pandemia-native-shape-blue-cap\s*\{[\s\S]*?border-radius:\s*999px 999px 0 0/);
+  assert.match(
+    prototypeStylesSource,
+    /\.pandemia-native-shape-blue-cap\s*\{[\s\S]*?border-radius:\s*999px 999px 0 0/,
+  );
   assert.match(dataSource, /rendering:\s*"native-html-css-svg"/);
   assert.match(dataSource, /source-derived icon crops/);
   assert.match(dataSource, /fittingDeviations/);
@@ -598,12 +1006,20 @@ test("Pandemia vial uses local cleaned visual assets and simple Russian wording"
   assert.match(dataSource, /sourceArtworkMode:\s*"cleaned-original"/);
   assert.match(dataSource, /bundled PDF-renderer\/canvas render of PDF page 15 at scale 4/);
   assert.match(dataSource, /fidelityEvidence/);
-  const assetPaths = [...dataSource.matchAll(/localPath:\s*"(content\/assets\/manuals\/gcba-manual-vehiculo-4-ruedas-2023\/sections\/pandemia-vial\/[^"]+\.png)"/g)].map((match) => match[1]);
+  const assetPaths = [
+    ...dataSource.matchAll(
+      /localPath:\s*"(content\/assets\/manuals\/gcba-manual-vehiculo-4-ruedas-2023\/sections\/pandemia-vial\/[^"]+\.png)"/g,
+    ),
+  ].map((match) => match[1]);
   for (const assetPath of assetPaths) {
     assert.equal(existsSync(assetPath), true, `${assetPath} exists`);
     assert.doesNotMatch(assetPath, /pages\/page-015\.jpg/);
     assert.doesNotMatch(assetPath, /-clean\.svg|icon-people-grid-8m-2f\.svg/);
-    assert.match(assetPath, /-source\.png$/, `${assetPath} is a source-derived crop, not a generic generated icon`);
+    assert.match(
+      assetPath,
+      /-source\.png$/,
+      `${assetPath} is a source-derived crop, not a generic generated icon`,
+    );
   }
   assert.equal(assetPaths.length, 7, "seven isolated visual assets are recorded");
   for (const sourceAsset of [
@@ -613,26 +1029,47 @@ test("Pandemia vial uses local cleaned visual assets and simple Russian wording"
     "icon-pedestrian-source.png",
     "icon-car-source.png",
     "icon-people-grid-source.png",
-    "icon-people-pair-source.png"
+    "icon-people-pair-source.png",
   ]) {
-    assert.ok(dataSource.includes(sourceAsset), `accepted artwork uses source-derived asset: ${sourceAsset}`);
+    assert.ok(
+      dataSource.includes(sourceAsset),
+      `accepted artwork uses source-derived asset: ${sourceAsset}`,
+    );
   }
   for (const rejectedAsset of [
     "clean-vector-asset",
     "icon-motorcyclist-clean.svg",
     "icon-pedestrian-clean.svg",
     "icon-car-clean.svg",
-    "icon-people-grid-8m-2f.svg"
+    "icon-people-grid-8m-2f.svg",
   ]) {
-    assert.doesNotMatch(dataSource, new RegExp(rejectedAsset.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "u"), `runtime data must not reference rejected artwork: ${rejectedAsset}`);
-    assert.doesNotMatch(prototypeAppSource, new RegExp(rejectedAsset.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "u"), `runtime app must not reference rejected artwork: ${rejectedAsset}`);
+    assert.doesNotMatch(
+      dataSource,
+      new RegExp(rejectedAsset.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "u"),
+      `runtime data must not reference rejected artwork: ${rejectedAsset}`,
+    );
+    assert.doesNotMatch(
+      prototypeAppSource,
+      new RegExp(rejectedAsset.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "u"),
+      `runtime app must not reference rejected artwork: ${rejectedAsset}`,
+    );
   }
   assert.match(dataSource, /id:\s*"people-grid-icon"[\s\S]*?maleCount:\s*8/);
   assert.match(dataSource, /id:\s*"people-grid-icon"[\s\S]*?femaleCount:\s*2/);
   assert.match(dataSource, /maleSignature:\s*"source-pdf-male-silhouette"/);
   assert.match(dataSource, /malePictogramsIdentical:\s*true/);
-  for (const formalResidue of ["классифицировала", "вследствие", "инцидентов", "травмированных", "каждых"]) {
-    assert.doesNotMatch(pandemiaOnlyDataSource, new RegExp(formalResidue, "u"), `Pandemia wording should be simplified: ${formalResidue}`);
+  for (const formalResidue of [
+    "классифицировала",
+    "вследствие",
+    "инцидентов",
+    "травмированных",
+    "каждых",
+  ]) {
+    assert.doesNotMatch(
+      pandemiaOnlyDataSource,
+      new RegExp(formalResidue, "u"),
+      `Pandemia wording should be simplified: ${formalResidue}`,
+    );
   }
 });
 
@@ -663,7 +1100,7 @@ test("Pandemia vial prototype files require native composition and avoid forbidd
     /data-testid=\{`pandemia-focus-\$\{region\.id\}`\}/,
     /pandemia-focus-frame/,
     /source-colored mask/,
-    /закрыт[а-я\s]+маск/ui,
+    /закрыт[а-я\s]+маск/iu,
     /manual-page-grid/,
     /manual-visual/,
     /manual-translation/,
@@ -672,7 +1109,7 @@ test("Pandemia vial prototype files require native composition and avoid forbidd
     /pandemia-native-shape-corner/,
     /data-testid="pandemia-provenance"/,
     /Источник и реконструкция/,
-    /pandemia-controls/
+    /pandemia-controls/,
   ]) {
     assert.doesNotMatch(scanned, forbidden, `forbidden prototype pattern: ${forbidden}`);
   }
@@ -681,15 +1118,23 @@ test("Pandemia vial prototype files require native composition and avoid forbidd
     /localPath:\s*"[^"]*icon-pedestrian-clean\.svg"/,
     /localPath:\s*"[^"]*icon-car-clean\.svg"/,
     /localPath:\s*"[^"]*icon-people-grid-8m-2f\.svg"/,
-    /kind:\s*"clean-vector-asset"/
+    /kind:\s*"clean-vector-asset"/,
   ]) {
-    assert.doesNotMatch(scanned, rejectedFinalArtwork, `rejected final artwork pattern: ${rejectedFinalArtwork}`);
+    assert.doesNotMatch(
+      scanned,
+      rejectedFinalArtwork,
+      `rejected final artwork pattern: ${rejectedFinalArtwork}`,
+    );
   }
   for (const forbiddenRuntime of [
     /source\.referenceAsset\.localPath/,
-    /assetUrl\s*\(\s*pandemiaVialSection\.source\.referenceAsset/
+    /assetUrl\s*\(\s*pandemiaVialSection\.source\.referenceAsset/,
   ]) {
-    assert.doesNotMatch(runtimeScanned, forbiddenRuntime, `forbidden runtime reference: ${forbiddenRuntime}`);
+    assert.doesNotMatch(
+      runtimeScanned,
+      forbiddenRuntime,
+      `forbidden runtime reference: ${forbiddenRuntime}`,
+    );
   }
 
   assert.match(prototypeAppSource, /data-testid="pandemia-page"/);

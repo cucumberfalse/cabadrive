@@ -32,12 +32,17 @@ export function readJson(path) {
 export function findRepoRoot(start = process.cwd()) {
   let current = resolve(start);
   while (current !== dirname(current)) {
-    if (existsSync(join(current, ".git")) || existsSync(join(current, ".unicorn-hub/config.json"))) {
+    if (
+      existsSync(join(current, ".git")) ||
+      existsSync(join(current, ".unicorn-hub/config.json"))
+    ) {
       return current;
     }
     current = dirname(current);
   }
-  throw new Error(`Could not find repository root from ${resolve(start)}. Expected a .git directory or .unicorn-hub/config.json.`);
+  throw new Error(
+    `Could not find repository root from ${resolve(start)}. Expected a .git directory or .unicorn-hub/config.json.`,
+  );
 }
 
 export function readConfig(root = findRepoRoot()) {
@@ -49,7 +54,7 @@ export function readConfig(root = findRepoRoot()) {
       productPaths: ["src/", "app/", "index.html"],
       requiredChecks: ["baseline-checks", "guard", "AI Review"],
       defaultBaseBranch: "main",
-      defaultReviewAgent: "codex"
+      defaultReviewAgent: "codex",
     };
   }
   return readJson(configPath);
@@ -67,7 +72,7 @@ export function walkFiles(root, options = {}) {
     "coverage",
     ".next",
     ".turbo",
-    ".vercel"
+    ".vercel",
   ]);
   const files = [];
   const visit = (dir) => {
@@ -88,9 +93,11 @@ export function walkFiles(root, options = {}) {
 }
 
 export function isTextFile(path) {
-  return /\.(c?js|mjs|json|md|ya?ml|txt|toml|html|css|ts|tsx|jsx|sh|gitignore)$/.test(path) ||
+  return (
+    /\.(c?js|mjs|json|md|ya?ml|txt|toml|html|css|ts|tsx|jsx|sh|gitignore)$/.test(path) ||
     /^[A-Z_]+$/.test(path) ||
-    path.includes(".github/workflows/");
+    path.includes(".github/workflows/")
+  );
 }
 
 export function pathMatches(file, patterns = []) {

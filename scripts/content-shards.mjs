@@ -11,7 +11,7 @@ export const CONTENT_SHARD_RANGES = [
   { id: "093-184", start: 93, end: 184 },
   { id: "185-276", start: 185, end: 276 },
   { id: "277-368", start: 277, end: 368 },
-  { id: "369-460", start: 369, end: 460 }
+  { id: "369-460", start: 369, end: 460 },
 ];
 
 export const CONTENT_SHARD_CONFIG = {
@@ -19,20 +19,20 @@ export const CONTENT_SHARD_CONFIG = {
     contentKind: "ru-translations",
     directory: "content/translations/ru",
     generatedPath: "content/translations/ru.translations.json",
-    collectionFields: ["entries"]
+    collectionFields: ["entries"],
   },
   explanations: {
     contentKind: "ru-explanations",
     directory: "content/explanations/ru",
     generatedPath: "content/explanations/ru.explanations.json",
-    collectionFields: ["entries"]
+    collectionFields: ["entries"],
   },
   imageMetadata: {
     contentKind: "question-image-metadata",
     directory: "content/image-metadata/question-images",
     generatedPath: "content/image-metadata/question-images.manifest.json",
-    collectionFields: ["images", "questionUsages"]
-  }
+    collectionFields: ["images", "questionUsages"],
+  },
 };
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
@@ -74,7 +74,8 @@ export function rangeForQuestionId(questionId) {
 function compareQuestionIds(a, b) {
   const aNumber = questionNumber(a.questionId || a.id);
   const bNumber = questionNumber(b.questionId || b.id);
-  if (aNumber !== undefined && bNumber !== undefined && aNumber !== bNumber) return aNumber - bNumber;
+  if (aNumber !== undefined && bNumber !== undefined && aNumber !== bNumber)
+    return aNumber - bNumber;
   return String(a.questionId || a.id).localeCompare(String(b.questionId || b.id));
 }
 
@@ -93,11 +94,17 @@ function validateShardEnvelope({ shard, config, range, relativePath }) {
     return [`${label}: shard must be an object.`];
   }
   if (shard.version !== 1) errors.push(`${label}: version must be 1.`);
-  if (shard.contentKind !== config.contentKind) errors.push(`${label}: contentKind must be ${config.contentKind}.`);
+  if (shard.contentKind !== config.contentKind)
+    errors.push(`${label}: contentKind must be ${config.contentKind}.`);
   if (shard.sourceQuestionPath !== QUESTION_SOURCE_PATH) {
     errors.push(`${label}: sourceQuestionPath must be ${QUESTION_SOURCE_PATH}.`);
   }
-  if (!shard.range || shard.range.id !== range.id || shard.range.start !== range.start || shard.range.end !== range.end) {
+  if (
+    !shard.range ||
+    shard.range.id !== range.id ||
+    shard.range.start !== range.start ||
+    shard.range.end !== range.end
+  ) {
     errors.push(`${label}: range must match ${range.id}.`);
   }
   if (!QUALITY_STATUSES.has(shard.qualityStatus)) {
@@ -134,7 +141,8 @@ export function loadContentShards({ rootPath = root, config }) {
   if (existsSync(extraDirectory)) {
     const expected = new Set(CONTENT_SHARD_RANGES.map((range) => `${range.id}.json`));
     for (const filename of readdirSync(extraDirectory).filter((name) => name.endsWith(".json"))) {
-      if (!expected.has(filename)) errors.push(`${join(config.directory, filename)}: unexpected shard file.`);
+      if (!expected.has(filename))
+        errors.push(`${join(config.directory, filename)}: unexpected shard file.`);
     }
   }
 
@@ -146,7 +154,9 @@ function enforceQuestionRange({ questionId, range, label, errors }) {
   if (!entryRange) {
     errors.push(`${label}: questionId ${questionId} is not a supported fallback question id.`);
   } else if (entryRange.id !== range.id) {
-    errors.push(`${label}: questionId ${questionId} belongs in shard ${entryRange.id}, not ${range.id}.`);
+    errors.push(
+      `${label}: questionId ${questionId} belongs in shard ${entryRange.id}, not ${range.id}.`,
+    );
   }
 }
 
@@ -176,7 +186,7 @@ export function loadTranslationsFromShards(rootPath = root) {
   const result = combineQuestionEntryShards({
     rootPath,
     config: CONTENT_SHARD_CONFIG.translations,
-    entryLabel: "translation"
+    entryLabel: "translation",
   });
   return { translations: result.entries, shards: result.shards, errors: result.errors };
 }
@@ -185,7 +195,7 @@ export function loadExplanationsFromShards(rootPath = root) {
   const result = combineQuestionEntryShards({
     rootPath,
     config: CONTENT_SHARD_CONFIG.explanations,
-    entryLabel: "explanation"
+    entryLabel: "explanation",
   });
   return { explanations: result.entries, shards: result.shards, errors: result.errors };
 }
@@ -231,7 +241,8 @@ export function loadQuestionImageMetadataFromShards(rootPath = root) {
         continue;
       }
       enforceQuestionRange({ questionId, range, label, errors });
-      if (usageByQuestionId.has(questionId)) errors.push(`${label}: duplicate question image usage.`);
+      if (usageByQuestionId.has(questionId))
+        errors.push(`${label}: duplicate question image usage.`);
       usageByQuestionId.set(questionId, usage);
       questionUsages.push(usage);
     }
@@ -255,18 +266,22 @@ export function loadQuestionImageMetadataFromShards(rootPath = root) {
   for (const { image, range, label } of imageShardEntries) {
     const candidateUsages = [
       ...(usagesByImageId.get(image.imageId) || []),
-      ...(usagesByLocalPath.get(image.localPath) || [])
+      ...(usagesByLocalPath.get(image.localPath) || []),
     ];
-    const uniqueUsages = [...new Map(candidateUsages.map((usage) => [usage.questionId, usage])).values()];
+    const uniqueUsages = [
+      ...new Map(candidateUsages.map((usage) => [usage.questionId, usage])).values(),
+    ];
     const ownerUsage = uniqueUsages.sort(compareQuestionIds)[0];
     if (!ownerUsage) {
-      errors.push(`${label}: image metadata must have at least one question usage to determine owning shard.`);
+      errors.push(
+        `${label}: image metadata must have at least one question usage to determine owning shard.`,
+      );
       continue;
     }
     const ownerRange = rangeForQuestionId(ownerUsage.questionId);
     if (ownerRange && ownerRange.id !== range.id) {
       errors.push(
-        `${label}: image metadata belongs in shard ${ownerRange.id} because ${ownerUsage.questionId} is the lowest-numbered usage, not ${range.id}.`
+        `${label}: image metadata belongs in shard ${ownerRange.id} because ${ownerUsage.questionId} is the lowest-numbered usage, not ${range.id}.`,
       );
     }
   }
@@ -278,24 +293,28 @@ export function loadQuestionImageMetadataFromShards(rootPath = root) {
       questionSourcePath: QUESTION_SOURCE_PATH,
       baseline: undefined,
       images,
-      questionUsages
+      questionUsages,
     },
     shards,
-    errors
+    errors,
   };
 }
 
 function manifestWithBaseline({ rootPath, manifest }) {
   const questions = readJson(relativeFilePath(rootPath, QUESTION_SOURCE_PATH));
   let existingBaseline = {};
-  const existingManifestPath = relativeFilePath(rootPath, CONTENT_SHARD_CONFIG.imageMetadata.generatedPath);
+  const existingManifestPath = relativeFilePath(
+    rootPath,
+    CONTENT_SHARD_CONFIG.imageMetadata.generatedPath,
+  );
   if (existsSync(existingManifestPath)) {
     existingBaseline = readJson(existingManifestPath).baseline || {};
   }
   const imageBackedQuestions = questions.filter((question) => question.image);
   const uniqueByPath = new Map();
   for (const question of imageBackedQuestions) {
-    if (!uniqueByPath.has(question.image.localPath)) uniqueByPath.set(question.image.localPath, question.image);
+    if (!uniqueByPath.has(question.image.localPath))
+      uniqueByPath.set(question.image.localPath, question.image);
   }
   return {
     ...manifest,
@@ -309,28 +328,32 @@ function manifestWithBaseline({ rootPath, manifest }) {
           officialTextEs: question.officialTextEs,
           answers: (question.answers || []).map((answer) => ({
             id: answer.id,
-            officialTextEs: answer.officialTextEs
+            officialTextEs: answer.officialTextEs,
           })),
           correctAnswerId: question.correctAnswerId,
           image: question.image
             ? {
                 localPath: question.image.localPath || null,
-                sha256: question.image.sha256
+                sha256: question.image.sha256,
               }
-            : null
-        }))
+            : null,
+        })),
       ),
       imageReferenceFingerprint: sha256Canonical(
         imageBackedQuestions.map((question) => ({
           questionId: question.id,
           localPath: question.image.localPath,
           sha256: question.image.sha256,
-          originalUrl: question.image.originalUrl || null
-        }))
+          originalUrl: question.image.originalUrl || null,
+        })),
       ),
-      ...(typeof existingBaseline.createdAt === "string" ? { createdAt: existingBaseline.createdAt } : {}),
-      ...(typeof existingBaseline.reviewedAt === "string" ? { reviewedAt: existingBaseline.reviewedAt } : {})
-    }
+      ...(typeof existingBaseline.createdAt === "string"
+        ? { createdAt: existingBaseline.createdAt }
+        : {}),
+      ...(typeof existingBaseline.reviewedAt === "string"
+        ? { reviewedAt: existingBaseline.reviewedAt }
+        : {}),
+    },
   };
 }
 
@@ -346,9 +369,9 @@ export function combinedContentFromShards(rootPath = root) {
     shards: {
       translations: translations.shards,
       explanations: explanations.shards,
-      imageMetadata: imageMetadata.shards
+      imageMetadata: imageMetadata.shards,
     },
-    errors
+    errors,
   };
 }
 
@@ -358,7 +381,7 @@ export function assertGeneratedContentIndexesFresh(rootPath = root) {
   for (const [label, config, generated] of [
     ["translations", CONTENT_SHARD_CONFIG.translations, combined.translations],
     ["explanations", CONTENT_SHARD_CONFIG.explanations, combined.explanations],
-    ["question image metadata", CONTENT_SHARD_CONFIG.imageMetadata, combined.imageMetadataManifest]
+    ["question image metadata", CONTENT_SHARD_CONFIG.imageMetadata, combined.imageMetadataManifest],
   ]) {
     const existingPath = relativeFilePath(rootPath, config.generatedPath);
     if (!existsSync(existingPath)) {
@@ -367,7 +390,9 @@ export function assertGeneratedContentIndexesFresh(rootPath = root) {
     }
     const existing = readJson(existingPath);
     if (canonicalJson(existing) !== canonicalJson(generated)) {
-      errors.push(`${config.generatedPath}: generated ${label} index is stale; run node scripts/content-shards.mjs --write-indexes.`);
+      errors.push(
+        `${config.generatedPath}: generated ${label} index is stale; run node scripts/content-shards.mjs --write-indexes.`,
+      );
     }
   }
   return errors;
@@ -378,9 +403,18 @@ function writeGeneratedContentIndexes(rootPath = root) {
   if (combined.errors.length) {
     throw new Error(combined.errors.join("\n"));
   }
-  writeJson(relativeFilePath(rootPath, CONTENT_SHARD_CONFIG.translations.generatedPath), combined.translations);
-  writeJson(relativeFilePath(rootPath, CONTENT_SHARD_CONFIG.explanations.generatedPath), combined.explanations);
-  writeJson(relativeFilePath(rootPath, CONTENT_SHARD_CONFIG.imageMetadata.generatedPath), combined.imageMetadataManifest);
+  writeJson(
+    relativeFilePath(rootPath, CONTENT_SHARD_CONFIG.translations.generatedPath),
+    combined.translations,
+  );
+  writeJson(
+    relativeFilePath(rootPath, CONTENT_SHARD_CONFIG.explanations.generatedPath),
+    combined.explanations,
+  );
+  writeJson(
+    relativeFilePath(rootPath, CONTENT_SHARD_CONFIG.imageMetadata.generatedPath),
+    combined.imageMetadataManifest,
+  );
 }
 
 function rangeShardBase({ contentKind, range }) {
@@ -391,14 +425,20 @@ function rangeShardBase({ contentKind, range }) {
     range,
     qualityStatus: "needs_full_content_review",
     workerInstructions:
-      "This range shard is the source of truth for its ticket range. Content workers may edit only their assigned shard files."
+      "This range shard is the source of truth for its ticket range. Content workers may edit only their assigned shard files.",
   };
 }
 
 function initializeShardsFromCurrent(rootPath = root) {
-  const translations = readJson(relativeFilePath(rootPath, CONTENT_SHARD_CONFIG.translations.generatedPath));
-  const explanations = readJson(relativeFilePath(rootPath, CONTENT_SHARD_CONFIG.explanations.generatedPath));
-  const imageMetadata = readJson(relativeFilePath(rootPath, CONTENT_SHARD_CONFIG.imageMetadata.generatedPath));
+  const translations = readJson(
+    relativeFilePath(rootPath, CONTENT_SHARD_CONFIG.translations.generatedPath),
+  );
+  const explanations = readJson(
+    relativeFilePath(rootPath, CONTENT_SHARD_CONFIG.explanations.generatedPath),
+  );
+  const imageMetadata = readJson(
+    relativeFilePath(rootPath, CONTENT_SHARD_CONFIG.imageMetadata.generatedPath),
+  );
   const usageByImageId = new Map();
   for (const usage of imageMetadata.questionUsages || []) {
     const current = usageByImageId.get(usage.imageId) || [];
@@ -410,12 +450,16 @@ function initializeShardsFromCurrent(rootPath = root) {
     const translationShard = {
       ...rangeShardBase({ contentKind: CONTENT_SHARD_CONFIG.translations.contentKind, range }),
       locale: "ru",
-      entries: translations.filter((entry) => rangeForQuestionId(entry.questionId)?.id === range.id).sort(compareQuestionIds)
+      entries: translations
+        .filter((entry) => rangeForQuestionId(entry.questionId)?.id === range.id)
+        .sort(compareQuestionIds),
     };
     const explanationShard = {
       ...rangeShardBase({ contentKind: CONTENT_SHARD_CONFIG.explanations.contentKind, range }),
       locale: "ru",
-      entries: explanations.filter((entry) => rangeForQuestionId(entry.questionId)?.id === range.id).sort(compareQuestionIds)
+      entries: explanations
+        .filter((entry) => rangeForQuestionId(entry.questionId)?.id === range.id)
+        .sort(compareQuestionIds),
     };
     const usageShard = (imageMetadata.questionUsages || [])
       .filter((entry) => rangeForQuestionId(entry.questionId)?.id === range.id)
@@ -423,19 +467,29 @@ function initializeShardsFromCurrent(rootPath = root) {
     const ownedImageIds = new Set();
     for (const image of imageMetadata.images || []) {
       const ownerUsage = (usageByImageId.get(image.imageId) || []).sort(compareQuestionIds)[0];
-      if (ownerUsage && rangeForQuestionId(ownerUsage.questionId)?.id === range.id) ownedImageIds.add(image.imageId);
+      if (ownerUsage && rangeForQuestionId(ownerUsage.questionId)?.id === range.id)
+        ownedImageIds.add(image.imageId);
     }
     const imageMetadataShard = {
       ...rangeShardBase({ contentKind: CONTENT_SHARD_CONFIG.imageMetadata.contentKind, range }),
       imageOwnership:
         "images contains records owned by the lowest-numbered question usage for that image; questionUsages contains records for this range only.",
       images: (imageMetadata.images || []).filter((image) => ownedImageIds.has(image.imageId)),
-      questionUsages: usageShard
+      questionUsages: usageShard,
     };
 
-    writeJson(relativeFilePath(rootPath, expectedShardPath(CONTENT_SHARD_CONFIG.translations, range)), translationShard);
-    writeJson(relativeFilePath(rootPath, expectedShardPath(CONTENT_SHARD_CONFIG.explanations, range)), explanationShard);
-    writeJson(relativeFilePath(rootPath, expectedShardPath(CONTENT_SHARD_CONFIG.imageMetadata, range)), imageMetadataShard);
+    writeJson(
+      relativeFilePath(rootPath, expectedShardPath(CONTENT_SHARD_CONFIG.translations, range)),
+      translationShard,
+    );
+    writeJson(
+      relativeFilePath(rootPath, expectedShardPath(CONTENT_SHARD_CONFIG.explanations, range)),
+      explanationShard,
+    );
+    writeJson(
+      relativeFilePath(rootPath, expectedShardPath(CONTENT_SHARD_CONFIG.imageMetadata, range)),
+      imageMetadataShard,
+    );
   }
 }
 
@@ -458,7 +512,9 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
     if (errors.length) printErrorsAndExit(errors);
     console.log("Generated content indexes are fresh.");
   } else {
-    console.error("Usage: node scripts/content-shards.mjs --init-from-current | --write-indexes | --check-indexes");
+    console.error(
+      "Usage: node scripts/content-shards.mjs --init-from-current | --write-indexes | --check-indexes",
+    );
     process.exit(2);
   }
 }

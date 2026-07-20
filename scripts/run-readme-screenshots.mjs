@@ -6,7 +6,8 @@ function run(command, args, label) {
     child.once("error", reject);
     child.once("exit", (code, signal) => {
       if (code === 0) resolve();
-      else reject(new Error(`${label} failed with ${signal ? `signal ${signal}` : `code ${code}`}`));
+      else
+        reject(new Error(`${label} failed with ${signal ? `signal ${signal}` : `code ${code}`}`));
     });
   });
 }
@@ -17,5 +18,9 @@ if (process.env.README_SCREENSHOT_FORCE_BUILD_FAILURE === "1") {
   await run("pnpm", ["run", "build:app"], "README screenshot SPA build");
 }
 
-await run(process.execPath, ["scripts/capture-readme-screenshots.mjs"], "README screenshot capture");
+await run(
+  process.execPath,
+  ["scripts/capture-readme-screenshots.mjs"],
+  "README screenshot capture",
+);
 await run("pnpm", ["run", "validate:attribution"], "README screenshot attribution validation");

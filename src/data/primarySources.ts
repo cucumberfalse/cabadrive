@@ -66,15 +66,20 @@ function isSourceDocumentPayload(value: unknown): value is SourceDocumentPayload
   return Boolean(document?.officialDocumentId && Array.isArray(document.chunks));
 }
 
-export function normalizeSourceDocumentShard(modulePath: string, value: unknown): SourceDocumentShard {
+export function normalizeSourceDocumentShard(
+  modulePath: string,
+  value: unknown,
+): SourceDocumentShard {
   const shard = (value as { default?: unknown }).default as
     | { document?: unknown; documents?: unknown }
     | undefined;
   const pluralDocuments = Array.isArray(shard?.documents) ? shard.documents : [];
-  const hasMalformedPluralDocument = pluralDocuments.some((document) => !isSourceDocumentPayload(document));
+  const hasMalformedPluralDocument = pluralDocuments.some(
+    (document) => !isSourceDocumentPayload(document),
+  );
   const documents = [
     ...(isSourceDocumentPayload(shard?.document) ? [shard.document] : []),
-    ...pluralDocuments.filter(isSourceDocumentPayload)
+    ...pluralDocuments.filter(isSourceDocumentPayload),
   ];
 
   if (documents.length === 0 || hasMalformedPluralDocument) {
@@ -87,11 +92,14 @@ function manifestEntryStatus(entry: ManifestEntry) {
   return {
     currentnessStatus: entry.currentness?.status ?? "unknown",
     currentnessValidationStatus: entry.currentness?.validationStatus ?? "pending",
-    exactTextValidationStatus: entry.exactTextValidation?.status ?? "pending"
+    exactTextValidationStatus: entry.exactTextValidation?.status ?? "pending",
   };
 }
 
-export function mergeDocumentShards(entries: ManifestEntry[], shards: SourceDocumentShard[]): PrimarySourceDocument[] {
+export function mergeDocumentShards(
+  entries: ManifestEntry[],
+  shards: SourceDocumentShard[],
+): PrimarySourceDocument[] {
   const shardsByDocument = new Map<string, SourceDocumentPayload[]>();
 
   for (const shard of shards) {
@@ -124,7 +132,7 @@ export function mergeDocumentShards(entries: ManifestEntry[], shards: SourceDocu
       currentnessStatus: status.currentnessStatus,
       currentnessValidationStatus: status.currentnessValidationStatus,
       exactTextValidationStatus: status.exactTextValidationStatus,
-      chunks
+      chunks,
     };
   });
 }
@@ -135,9 +143,9 @@ async function readPrimarySources(): Promise<PrimarySourceCorpus> {
     Promise.all(
       Object.entries(documentShardModules).map(async ([path, loadModule]) => ({
         path,
-        module: await loadModule()
-      }))
-    )
+        module: await loadModule(),
+      })),
+    ),
   ]);
   const manifest = manifestModuleResult.default as OfficialManifest;
   const shards = shardModules
@@ -145,7 +153,9 @@ async function readPrimarySources(): Promise<PrimarySourceCorpus> {
     .sort((a, b) => {
       const documentA = a.documents[0];
       const documentB = b.documents[0];
-      const documentCompare = documentA.officialDocumentId.localeCompare(documentB.officialDocumentId);
+      const documentCompare = documentA.officialDocumentId.localeCompare(
+        documentB.officialDocumentId,
+      );
       if (documentCompare) return documentCompare;
       return (documentA.chunks[0]?.order ?? 0) - (documentB.chunks[0]?.order ?? 0);
     });
@@ -155,7 +165,7 @@ async function readPrimarySources(): Promise<PrimarySourceCorpus> {
   return {
     documents,
     manifestEntryCount: manifest.entries.length,
-    chunkCount
+    chunkCount,
   };
 }
 

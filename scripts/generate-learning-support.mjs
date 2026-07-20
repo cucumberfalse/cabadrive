@@ -6,7 +6,7 @@ import {
   buildQuestionUsageEvidenceEntry,
   imageReferenceFingerprint,
   questionFingerprint,
-  questionSetFingerprint
+  questionSetFingerprint,
 } from "./content-image-metadata.mjs";
 import { buildExplanationAlignmentEvidenceEntry } from "./content-explanation-alignment.mjs";
 import { buildTranslationAlignmentEvidenceEntry } from "./content-translation-alignment.mjs";
@@ -21,8 +21,8 @@ if (!process.argv.includes("--allow-draft-overwrite")) {
     [
       "scripts/generate-learning-support.mjs creates draft scaffold content and must not overwrite completed feature 009 shards/indexes.",
       "Use `pnpm run generate:content-indexes` and `pnpm run refresh:content-evidence` for reviewed shard integration.",
-      "Pass --allow-draft-overwrite only for an explicit Architect-approved draft reset."
-    ].join("\n")
+      "Pass --allow-draft-overwrite only for an explicit Architect-approved draft reset.",
+    ].join("\n"),
   );
   process.exit(2);
 }
@@ -37,7 +37,9 @@ function writeJson(path, data) {
 }
 
 function titleCaseId(localPath) {
-  return basename(localPath, ".jpg").replace(/[^a-z0-9]+/gi, "-").toLowerCase();
+  return basename(localPath, ".jpg")
+    .replace(/[^a-z0-9]+/gi, "-")
+    .toLowerCase();
 }
 
 const glossary = [
@@ -82,7 +84,7 @@ const glossary = [
   [/\bdías hábiles\b/gi, "рабочие дни"],
   [/\bhoras\b/gi, "часы"],
   [/\bmetros\b/gi, "метры"],
-  [/\bmetro\b/gi, "метр"]
+  [/\bmetro\b/gi, "метр"],
 ];
 
 function glossaryDraft(text) {
@@ -100,10 +102,13 @@ function draftAnswerTranslation(text) {
 }
 
 function imageKindForQuestion(question) {
-  const text = `${question.officialTextEs} ${(question.answers || []).map((answer) => answer.officialTextEs).join(" ")}`.toLowerCase();
-  if (/(señal|cartel|prohibici[oó]n|altura|t[uú]nel|puente|aeropuerto)/i.test(text)) return "traffic_sign";
+  const text =
+    `${question.officialTextEs} ${(question.answers || []).map((answer) => answer.officialTextEs).join(" ")}`.toLowerCase();
+  if (/(señal|cartel|prohibici[oó]n|altura|t[uú]nel|puente|aeropuerto)/i.test(text))
+    return "traffic_sign";
   if (/(marca|cruce verde|senda|ciclov[ií]a|bicisenda|calzada)/i.test(text)) return "road_marking";
-  if (/(luces|veh[ií]culo|auto|camioneta|motocicleta|colectivo)/i.test(text)) return "vehicle_photo";
+  if (/(luces|veh[ií]culo|auto|camioneta|motocicleta|colectivo)/i.test(text))
+    return "vehicle_photo";
   return "street_photo";
 }
 
@@ -127,7 +132,7 @@ function genericImageMetadata({ localPath, sha256, originalUrl, sourceIds }) {
       cameraView: "unknown",
       framing: "source image frame",
       lighting: "unknown",
-      weatherOrSurface: "unknown"
+      weatherOrSurface: "unknown",
     },
     roadLayout: {
       roadType: "unknown",
@@ -135,7 +140,7 @@ function genericImageMetadata({ localPath, sha256, originalUrl, sourceIds }) {
       laneDirections: [],
       markings: [],
       crossings: [],
-      curbsOrShoulders: []
+      curbsOrShoulders: [],
     },
     objects: [
       {
@@ -144,8 +149,8 @@ function genericImageMetadata({ localPath, sha256, originalUrl, sourceIds }) {
         label: "Full referenced source image",
         description:
           "The complete local image file used by the current fallback question. Specific visual objects are not asserted in this deterministic baseline entry.",
-        confidence: "low"
-      }
+        confidence: "low",
+      },
     ],
     roadUsers: [],
     signsSignalsMarkings: [],
@@ -156,17 +161,16 @@ function genericImageMetadata({ localPath, sha256, originalUrl, sourceIds }) {
       {
         id: "manual-review-required",
         field: "objects",
-        note:
-          "This entry preserves deterministic coverage and stale-file validation, but detailed object-level semantics require manual review before being used as a precise image-generation prompt.",
-        impact: "low-confidence visual facts"
-      }
+        note: "This entry preserves deterministic coverage and stale-file validation, but detailed object-level semantics require manual review before being used as a precise image-generation prompt.",
+        impact: "low-confidence visual facts",
+      },
     ],
     review: {
       status: "approved",
       reviewer: REVIEWER,
       reviewedAt: REVIEWED_AT,
-      evidenceEntryId: `image-evidence-question-image-${idPart}`
-    }
+      evidenceEntryId: `image-evidence-question-image-${idPart}`,
+    },
   };
 }
 
@@ -189,25 +193,28 @@ function b001ImageMetadata() {
       cameraView: "front-facing street-level view toward cyclist",
       framing: "cyclist centered in the foreground with roadway receding behind",
       lighting: "daylight",
-      weatherOrSurface: "dry paved roadway"
+      weatherOrSurface: "dry paved roadway",
     },
     roadLayout: {
       roadType: "multi-lane urban avenue",
       laneCount: 4,
-      laneDirections: ["same-direction lanes visible in foreground", "opposing or distant lanes in background are visually ambiguous"],
+      laneDirections: [
+        "same-direction lanes visible in foreground",
+        "opposing or distant lanes in background are visually ambiguous",
+      ],
       markings: [
         {
           id: "dashed-lane-markings",
-          description: "White dashed lane markings divide the roadway."
-        }
+          description: "White dashed lane markings divide the roadway.",
+        },
       ],
       crossings: [
         {
           id: "background-zebra-crossings",
-          description: "Two zebra-style pedestrian crossings are visible behind the cyclist."
-        }
+          description: "Two zebra-style pedestrian crossings are visible behind the cyclist.",
+        },
       ],
-      curbsOrShoulders: []
+      curbsOrShoulders: [],
     },
     objects: [
       {
@@ -215,27 +222,28 @@ function b001ImageMetadata() {
         type: "roadway",
         label: "wide city road",
         description: "Wide paved roadway occupying most of the image.",
-        confidence: "high"
+        confidence: "high",
       },
       {
         id: "background-cars",
         type: "vehicles",
         label: "distant cars",
         description: "Several cars are visible in the distance behind the cyclist.",
-        confidence: "medium"
-      }
+        confidence: "medium",
+      },
     ],
     roadUsers: [
       {
         id: "cyclist-foreground",
         type: "cyclist",
         label: "foreground cyclist",
-        description: "A cyclist riding a bicycle in the foreground, facing roughly toward the viewer.",
+        description:
+          "A cyclist riding a bicycle in the foreground, facing roughly toward the viewer.",
         confidence: "high",
         attributes: {
           helmet: true,
           clothing: ["white T-shirt", "shorts"],
-          facing: "roughly_toward_viewer"
+          facing: "roughly_toward_viewer",
         },
         gestures: [
           {
@@ -245,10 +253,10 @@ function b001ImageMetadata() {
             actorPerspectiveDirection: "right",
             viewerPerspectiveDirection: "left",
             description:
-              "The cyclist's right arm is extended straight and horizontally to the cyclist's right side; due to perspective it points toward the viewer's left."
-          }
-        ]
-      }
+              "The cyclist's right arm is extended straight and horizontally to the cyclist's right side; due to perspective it points toward the viewer's left.",
+          },
+        ],
+      },
     ],
     signsSignalsMarkings: [],
     annotations: [
@@ -257,8 +265,8 @@ function b001ImageMetadata() {
         type: "red_oval",
         label: "red oval annotation",
         description: "A red oval overlay highlights the cyclist's extended right arm.",
-        targetIds: ["right-arm-straight-horizontal"]
-      }
+        targetIds: ["right-arm-straight-horizontal"],
+      },
     ],
     visibleText: [],
     spatialRelationships: [
@@ -267,30 +275,31 @@ function b001ImageMetadata() {
         subjectId: "cyclist-foreground",
         relation: "foreground_center",
         objectId: "roadway",
-        description: "The cyclist is centered in the foreground on the roadway."
+        description: "The cyclist is centered in the foreground on the roadway.",
       },
       {
         id: "gesture-viewer-perspective",
         subjectId: "right-arm-straight-horizontal",
         relation: "actor_right_viewer_left",
         objectId: "cyclist-foreground",
-        description: "The arm is the cyclist's right arm, although it appears on the viewer's left side."
-      }
+        description:
+          "The arm is the cyclist's right arm, although it appears on the viewer's left side.",
+      },
     ],
     uncertainties: [
       {
         id: "distant-lane-directions-ambiguous",
         field: "roadLayout.laneDirections",
         note: "Distant lane directions are partially obscured by perspective and parked/moving cars.",
-        impact: "not answer-critical for b-fallback-001"
-      }
+        impact: "not answer-critical for b-fallback-001",
+      },
     ],
     review: {
       status: "approved",
       reviewer: REVIEWER,
       reviewedAt: REVIEWED_AT,
-      evidenceEntryId: "image-evidence-question-image-b13"
-    }
+      evidenceEntryId: "image-evidence-question-image-b13",
+    },
   };
 }
 
@@ -311,7 +320,7 @@ function buildQuestionUsage({ question, image }) {
           supportsAnswerIds: [question.correctAnswerId],
           rejectsAnswerIds: [],
           criticality: "required",
-          confidence: "high"
+          confidence: "high",
         },
         {
           detailId: "right-arm-straight-horizontal",
@@ -319,18 +328,20 @@ function buildQuestionUsage({ question, image }) {
           description:
             "The cyclist's right arm is extended straight and horizontally to the cyclist's right, with viewer-perspective left/right distinction recorded.",
           supportsAnswerIds: [question.correctAnswerId],
-          rejectsAnswerIds: question.answers.filter((answer) => answer.id !== question.correctAnswerId).map((answer) => answer.id),
+          rejectsAnswerIds: question.answers
+            .filter((answer) => answer.id !== question.correctAnswerId)
+            .map((answer) => answer.id),
           criticality: "required",
-          confidence: "high"
-        }
+          confidence: "high",
+        },
       ],
       imageRole: "answer_critical",
       review: {
         status: "approved",
         reviewer: REVIEWER,
         reviewedAt: REVIEWED_AT,
-        evidenceEntryId: `usage-evidence-${question.id}`
-      }
+        evidenceEntryId: `usage-evidence-${question.id}`,
+      },
     };
   }
 
@@ -350,16 +361,16 @@ function buildQuestionUsage({ question, image }) {
         supportsAnswerIds: [question.correctAnswerId],
         rejectsAnswerIds: [],
         criticality: "required",
-        confidence: "low"
-      }
+        confidence: "low",
+      },
     ],
     imageRole: "contextual_with_critical_detail",
     review: {
       status: "approved",
       reviewer: REVIEWER,
       reviewedAt: REVIEWED_AT,
-      evidenceEntryId: `usage-evidence-${question.id}`
-    }
+      evidenceEntryId: `usage-evidence-${question.id}`,
+    },
   };
 }
 
@@ -381,18 +392,26 @@ function buildTranslations(questions, existingTranslations) {
     return {
       questionId: question.id,
       questionTextRu: draftQuestionTranslation(question.officialTextEs),
-      answerTranslations: Object.fromEntries(question.answers.map((answer) => [answer.id, draftAnswerTranslation(answer.officialTextEs)])),
+      answerTranslations: Object.fromEntries(
+        question.answers.map((answer) => [
+          answer.id,
+          draftAnswerTranslation(answer.officialTextEs),
+        ]),
+      ),
       method: "deterministic_glossary_draft",
       reviewer: REVIEWER,
       reviewedAt: REVIEWED_AT,
-      disclaimer: "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса."
+      disclaimer:
+        "Неофициальный учебный перевод Cabadrive. Он помогает понять смысл, но не заменяет испанский текст вопроса.",
     };
   });
 }
 
 function buildExplanation({ question, topicTicket, usage }) {
   const answersById = new Map(question.answers.map((answer) => [answer.id, answer]));
-  const explanationByAnswer = new Map((topicTicket?.answerExplanations || []).map((item) => [item.answerId, item]));
+  const explanationByAnswer = new Map(
+    (topicTicket?.answerExplanations || []).map((item) => [item.answerId, item]),
+  );
   const correct = explanationByAnswer.get(question.correctAnswerId);
   const wrongAnswerExplanations = {};
   for (const answer of question.answers) {
@@ -430,13 +449,14 @@ function buildExplanation({ question, topicTicket, usage }) {
           bodyPart: "right_arm",
           pose: "extended_straight_horizontal",
           actorPerspectiveDirection: "right",
-          viewerPerspectiveDirection: "left"
-        }
+          viewerPerspectiveDirection: "left",
+        },
       ],
       method: "human_reviewed_machine",
       reviewer: REVIEWER,
       reviewedAt: REVIEWED_AT,
-      disclaimer: "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+      disclaimer:
+        "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала.",
     };
   }
 
@@ -453,7 +473,8 @@ function buildExplanation({ question, topicTicket, usage }) {
     method: "topic_guide_reused_or_deterministic_draft",
     reviewer: REVIEWER,
     reviewedAt: REVIEWED_AT,
-    disclaimer: "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала."
+    disclaimer:
+      "Это учебное пояснение проекта. Оно не заменяет официальный источник и не является официальной формулировкой экзаменационного материала.",
   };
 }
 
@@ -476,21 +497,28 @@ for (const question of questions.filter((item) => item.image)) {
       originalUrl: question.image.originalUrl || null,
       sha256: question.image.sha256,
       sourceIds: new Set([question.sourceId]),
-      questionIds: [question.id]
+      questionIds: [question.id],
     });
   }
 }
 
 const images = [...imageReferencesByPath.values()].map((ref) => {
   const sourceIds = [...ref.sourceIds].sort();
-  if (ref.localPath === "content/assets/questions/source-bandinopla-testdeconducir-b/b13.jpg") return b001ImageMetadata();
+  if (ref.localPath === "content/assets/questions/source-bandinopla-testdeconducir-b/b13.jpg")
+    return b001ImageMetadata();
   return {
     ...genericImageMetadata({ ...ref, sourceIds }),
-    kind: imageKindForQuestion(questions.find((question) => question.image?.localPath === ref.localPath))
+    kind: imageKindForQuestion(
+      questions.find((question) => question.image?.localPath === ref.localPath),
+    ),
   };
 });
 const imageByPath = new Map(images.map((image) => [image.localPath, image]));
-const questionUsages = questions.filter((question) => question.image).map((question) => buildQuestionUsage({ question, image: imageByPath.get(question.image.localPath) }));
+const questionUsages = questions
+  .filter((question) => question.image)
+  .map((question) =>
+    buildQuestionUsage({ question, image: imageByPath.get(question.image.localPath) }),
+  );
 
 const imageMetadataManifest = {
   version: 1,
@@ -502,10 +530,10 @@ const imageMetadataManifest = {
     questionSetFingerprint: questionSetFingerprint(questions),
     imageReferenceFingerprint: imageReferenceFingerprint(questions),
     createdAt: REVIEWED_AT,
-    reviewedAt: REVIEWED_AT
+    reviewedAt: REVIEWED_AT,
   },
   images,
-  questionUsages
+  questionUsages,
 };
 
 const imageMetadataEvidence = {
@@ -520,8 +548,8 @@ const imageMetadataEvidence = {
       notes:
         image.imageId === "question-image-b13"
           ? "Manual visual self-audit for b-fallback-001 cyclist/right-arm regression."
-          : "Deterministic baseline metadata: path/hash and uncertainty reviewed; object-level visual facts intentionally not asserted."
-    })
+          : "Deterministic baseline metadata: path/hash and uncertainty reviewed; object-level visual facts intentionally not asserted.",
+    }),
   ),
   usageEntries: questionUsages.map((usage) =>
     buildQuestionUsageEvidenceEntry({
@@ -531,9 +559,9 @@ const imageMetadataEvidence = {
       notes:
         usage.questionId === "b-fallback-001"
           ? "Manual visual self-audit links cyclist and straight right-arm signal to the correct answer."
-          : "Deterministic baseline usage mapping marks image as answer-critical with low confidence and explicit uncertainty."
-    })
-  )
+          : "Deterministic baseline usage mapping marks image as answer-critical with low confidence and explicit uncertainty.",
+    }),
+  ),
 };
 
 const translations = buildTranslations(questions, existingTranslations);
@@ -549,9 +577,9 @@ const translationEvidence = {
       notes:
         translation.method === "deterministic_glossary_draft"
           ? "Deterministic glossary-assisted draft aligned to current Spanish question and answer IDs."
-          : "Existing reviewed translation aligned to current Spanish question and answer IDs."
-    })
-  )
+          : "Existing reviewed translation aligned to current Spanish question and answer IDs.",
+    }),
+  ),
 };
 
 const usageByQuestionId = new Map(questionUsages.map((usage) => [usage.questionId, usage]));
@@ -560,8 +588,8 @@ const explanations = questions.map((question) =>
   buildExplanation({
     question,
     topicTicket: topicTicketById.get(question.id),
-    usage: usageByQuestionId.get(question.id)
-  })
+    usage: usageByQuestionId.get(question.id),
+  }),
 );
 const explanationEvidence = {
   locale: "ru",
@@ -580,9 +608,9 @@ const explanationEvidence = {
       notes:
         question.id === "b-fallback-001"
           ? "Corrected image-aware explanation addresses cyclist/right-arm gesture and rejects the old left-arm/bent-arm wording."
-          : "Question-card explanation aligned to topic-guide answer rationales or deterministic ticket-specific fallback wording."
+          : "Question-card explanation aligned to topic-guide answer rationales or deterministic ticket-specific fallback wording.",
     });
-  })
+  }),
 };
 
 writeJson("content/image-metadata/question-images.manifest.json", imageMetadataManifest);
@@ -593,5 +621,5 @@ writeJson("content/explanations/ru.explanations.json", explanations);
 writeJson("content/validation/ru-explanation-alignment.evidence.json", explanationEvidence);
 
 console.log(
-  `Generated learning support: ${images.length} images, ${questionUsages.length} usages, ${translations.length} translations, ${explanations.length} explanations.`
+  `Generated learning support: ${images.length} images, ${questionUsages.length} usages, ${translations.length} translations, ${explanations.length} explanations.`,
 );

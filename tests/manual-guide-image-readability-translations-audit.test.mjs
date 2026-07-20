@@ -1,6 +1,14 @@
 import assert from "node:assert/strict";
 import { execFile } from "node:child_process";
-import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, unlinkSync, writeFileSync } from "node:fs";
+import {
+  existsSync,
+  mkdirSync,
+  mkdtempSync,
+  readFileSync,
+  rmSync,
+  unlinkSync,
+  writeFileSync,
+} from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { promisify } from "node:util";
@@ -14,9 +22,9 @@ async function runAudit(evidencePath, args = [], env = {}) {
     env: {
       ...process.env,
       ...env,
-      MANUAL_GUIDE_IMAGE_READABILITY_TRANSLATIONS_EVIDENCE_PATH: evidencePath
+      MANUAL_GUIDE_IMAGE_READABILITY_TRANSLATIONS_EVIDENCE_PATH: evidencePath,
     },
-    maxBuffer: 1024 * 1024 * 16
+    maxBuffer: 1024 * 1024 * 16,
   });
 }
 
@@ -27,7 +35,7 @@ async function assertAuditFails(evidencePath, expectedMessage, args = [], env = 
       assert.equal(error.code, 1);
       assert.match(error.stderr, expectedMessage);
       return true;
-    }
+    },
   );
 }
 
@@ -45,16 +53,28 @@ test("manual guide image readability/translations audit requires explicit write 
 
     const checkResult = await runAudit(evidencePath);
     assert.match(checkResult.stdout, /manual guide image readability\/translations audit checked/u);
-    assert.equal(readFileSync(evidencePath, "utf8"), writtenEvidence, "check mode leaves current evidence unchanged");
+    assert.equal(
+      readFileSync(evidencePath, "utf8"),
+      writtenEvidence,
+      "check mode leaves current evidence unchanged",
+    );
 
     const staleEvidence = writtenEvidence.replace('"schemaVersion": 1', '"schemaVersion": 999');
     writeFileSync(evidencePath, staleEvidence);
     await assertAuditFails(evidencePath, /committed evidence is stale or different/u);
-    assert.equal(readFileSync(evidencePath, "utf8"), staleEvidence, "check mode does not rewrite stale evidence");
+    assert.equal(
+      readFileSync(evidencePath, "utf8"),
+      staleEvidence,
+      "check mode does not rewrite stale evidence",
+    );
 
     writeFileSync(evidencePath, "{not-json}\n");
     await assertAuditFails(evidencePath, /committed evidence file is malformed JSON/u);
-    assert.equal(readFileSync(evidencePath, "utf8"), "{not-json}\n", "check mode does not rewrite malformed evidence");
+    assert.equal(
+      readFileSync(evidencePath, "utf8"),
+      "{not-json}\n",
+      "check mode does not rewrite malformed evidence",
+    );
 
     unlinkSync(evidencePath);
     await assertAuditFails(evidencePath, /committed evidence file is missing/u);
@@ -77,44 +97,76 @@ test("manual guide image readability/translations evidence covers current whole-
     assert.equal(evidence.counts.visibleSpanishImagesWithStructuredRussianSupport, 54);
     assert.equal(evidence.counts.acceptedCoverageExceptions, 16);
     assert.equal(evidence.counts.validationFindings, 0);
-    assert.equal(evidence.requiredExampleCoverage.every((entry) => entry.status === "pass"), true);
-    assert.equal(evidence.readabilityEvidenceGroups.every((entry) => entry.status === "pass"), true);
-    assert.equal(evidence.inventory.filter((record) => record.visibleSpanish && !record.textReadabilityEvidence).length, 0);
     assert.equal(
-      evidence.inventory.filter((record) =>
-        record.visibleSpanish &&
-        record.structuredRussianSupport.items.some((item) => item.learnerRelevant !== false && !item.termEs)
+      evidence.requiredExampleCoverage.every((entry) => entry.status === "pass"),
+      true,
+    );
+    assert.equal(
+      evidence.readabilityEvidenceGroups.every((entry) => entry.status === "pass"),
+      true,
+    );
+    assert.equal(
+      evidence.inventory.filter(
+        (record) => record.visibleSpanish && !record.textReadabilityEvidence,
       ).length,
-      0
+      0,
     );
     assert.equal(
-      evidence.inventory.filter((record) =>
-        record.visibleSpanish &&
-        record.structuredRussianSupport.items.some((item) => item.learnerRelevant !== false && !item.translationRu)
+      evidence.inventory.filter(
+        (record) =>
+          record.visibleSpanish &&
+          record.structuredRussianSupport.items.some(
+            (item) => item.learnerRelevant !== false && !item.termEs,
+          ),
       ).length,
-      0
+      0,
     );
     assert.equal(
-      evidence.inventory.find((record) => record.imageId === "app4-warning-page-187-source-card").textReadabilityEvidence.status,
-      "source-limited-with-structured-dom-support"
+      evidence.inventory.filter(
+        (record) =>
+          record.visibleSpanish &&
+          record.structuredRussianSupport.items.some(
+            (item) => item.learnerRelevant !== false && !item.translationRu,
+          ),
+      ).length,
+      0,
     );
-    const app4WarningReview = evidence.inventory.find((record) => record.imageId === "app4-warning-page-187-source-card").textReadabilityEvidence.sourceLimitedException.officialSourceAlternativeReview;
+    assert.equal(
+      evidence.inventory.find((record) => record.imageId === "app4-warning-page-187-source-card")
+        .textReadabilityEvidence.status,
+      "source-limited-with-structured-dom-support",
+    );
+    const app4WarningReview = evidence.inventory.find(
+      (record) => record.imageId === "app4-warning-page-187-source-card",
+    ).textReadabilityEvidence.sourceLimitedException.officialSourceAlternativeReview;
     assert.equal(app4WarningReview.status, "concrete-official-source-alternatives-reviewed");
     assert.equal(app4WarningReview.officialPageAsset.exists, true);
     assert.equal(app4WarningReview.retainedFullSheetAsset.exists, true);
     assert.equal(app4WarningReview.currentTightCropAsset.exists, true);
-    assert.equal(app4WarningReview.currentTightCropAsset.sourceRegionToCropDeltaPx.width <= 8, true);
-    assert.equal(app4WarningReview.currentTightCropAsset.sourceRegionToCropDeltaPx.height <= 8, true);
-    assert.equal(app4WarningReview.exactEvidencePaths.every((evidencePath) => existsSync(evidencePath)), true);
-    const app4HorizontalPage195 = evidence.inventory.find((record) => record.imageId === "app4-horizontal-page-195-source-card");
+    assert.equal(
+      app4WarningReview.currentTightCropAsset.sourceRegionToCropDeltaPx.width <= 8,
+      true,
+    );
+    assert.equal(
+      app4WarningReview.currentTightCropAsset.sourceRegionToCropDeltaPx.height <= 8,
+      true,
+    );
+    assert.equal(
+      app4WarningReview.exactEvidencePaths.every((evidencePath) => existsSync(evidencePath)),
+      true,
+    );
+    const app4HorizontalPage195 = evidence.inventory.find(
+      (record) => record.imageId === "app4-horizontal-page-195-source-card",
+    );
     const circulationDirectionLine = app4HorizontalPage195.structuredRussianSupport.items.find(
-      (item) => item.termEs === "Línea de separación de sentido de circulación"
+      (item) => item.termEs === "Línea de separación de sentido de circulación",
     );
     assert.equal(circulationDirectionLine.translationRu, "Линия разделения направления движения");
     assert.doesNotMatch(circulationDirectionLine.translationRu, /пересеч/u);
     assert.equal(
-      evidence.inventory.find((record) => record.imageId === "traffic-rules-signs").translationDomSelector,
-      ".manual-source-image-term-translations"
+      evidence.inventory.find((record) => record.imageId === "traffic-rules-signs")
+        .translationDomSelector,
+      ".manual-source-image-term-translations",
     );
     assert.equal(evidence.blockKindCounts["source-image-cards"], 46);
     assert.equal(evidence.blockKindCounts["impact-diagram.body"], 1);
@@ -169,14 +221,14 @@ test("manual guide image readability/translations audit rejects App IV source-li
     }],
     visualNotes: []
   }]
-};\n`
+};\n`,
     );
 
     await assertAuditFails(
       evidencePath,
       /source-limited-tight-crop-delta-too-large: app4-warning-page-187-source-card/u,
       ["--write"],
-      { MANUAL_GUIDE_IMAGE_READABILITY_SECTION_ROOT: sectionRoot }
+      { MANUAL_GUIDE_IMAGE_READABILITY_SECTION_ROOT: sectionRoot },
     );
   } finally {
     rmSync(tempRoot, { force: true, recursive: true });
@@ -184,7 +236,9 @@ test("manual guide image readability/translations audit rejects App IV source-li
 });
 
 test("manual guide image readability/translations audit rejects empty Russian glossary definitions", async () => {
-  const tempRoot = mkdtempSync(join(tmpdir(), "cabadrive-manual-image-readability-russian-translation-"));
+  const tempRoot = mkdtempSync(
+    join(tmpdir(), "cabadrive-manual-image-readability-russian-translation-"),
+  );
   const sectionRoot = join(tempRoot, "manual-sections");
   const evidencePath = join(tempRoot, "manual-guide-image-readability-translations.evidence.json");
   mkdirSync(sectionRoot);
@@ -225,21 +279,26 @@ test("manual guide image readability/translations audit rejects empty Russian gl
     }],
     visualNotes: []
   }]
-};\n`
+};\n`,
     );
 
     await assertAuditFails(
       evidencePath,
       /structured-russian-support-missing-russian-translation: fixture-empty-russian-card/u,
       ["--write"],
-      { MANUAL_GUIDE_IMAGE_READABILITY_SECTION_ROOT: sectionRoot }
+      { MANUAL_GUIDE_IMAGE_READABILITY_SECTION_ROOT: sectionRoot },
     );
 
     const failedEvidence = JSON.parse(readFileSync(evidencePath, "utf8"));
-    const record = failedEvidence.inventory.find((entry) => entry.imageId === "fixture-empty-russian-card");
+    const record = failedEvidence.inventory.find(
+      (entry) => entry.imageId === "fixture-empty-russian-card",
+    );
     assert.equal(record.translationDomSelector, ".manual-source-image-term-translations");
     assert.equal(record.structuredRussianSupport.itemCount, 1);
-    assert.equal(record.structuredRussianSupport.items[0].termEs, "Documento Nacional de Identidad");
+    assert.equal(
+      record.structuredRussianSupport.items[0].termEs,
+      "Documento Nacional de Identidad",
+    );
     assert.equal(record.structuredRussianSupport.items[0].translationRu, "");
   } finally {
     rmSync(tempRoot, { force: true, recursive: true });
@@ -290,18 +349,20 @@ test("manual guide image readability/translations audit rejects minDisplayWidth-
     }],
     visualNotes: []
   }]
-};\n`
+};\n`,
     );
 
     await assertAuditFails(
       evidencePath,
       /visible-spanish-missing-text-readability-evidence: fixture-min-width-card/u,
       ["--write"],
-      { MANUAL_GUIDE_IMAGE_READABILITY_SECTION_ROOT: sectionRoot }
+      { MANUAL_GUIDE_IMAGE_READABILITY_SECTION_ROOT: sectionRoot },
     );
 
     const failedEvidence = JSON.parse(readFileSync(evidencePath, "utf8"));
-    const record = failedEvidence.inventory.find((entry) => entry.imageId === "fixture-min-width-card");
+    const record = failedEvidence.inventory.find(
+      (entry) => entry.imageId === "fixture-min-width-card",
+    );
     assert.equal(record.display.minDisplayWidthPx, 440);
     assert.equal(record.structuredRussianSupport.itemCount, 1);
     assert.equal(record.textReadabilityEvidence, null);
@@ -311,7 +372,9 @@ test("manual guide image readability/translations audit rejects minDisplayWidth-
 });
 
 test("manual guide image readability/translations audit rejects visible Spanish non-source-card prose without Spanish source terms", async () => {
-  const tempRoot = mkdtempSync(join(tmpdir(), "cabadrive-manual-image-readability-infrastructure-terms-"));
+  const tempRoot = mkdtempSync(
+    join(tmpdir(), "cabadrive-manual-image-readability-infrastructure-terms-"),
+  );
   const sectionRoot = join(tempRoot, "manual-sections");
   const evidencePath = join(tempRoot, "manual-guide-image-readability-translations.evidence.json");
   mkdirSync(sectionRoot);
@@ -354,14 +417,14 @@ test("manual guide image readability/translations audit rejects visible Spanish 
     }],
     visualNotes: []
   }]
-};\n`
+};\n`,
     );
 
     await assertAuditFails(
       evidencePath,
       /structured-russian-support-missing-source-spanish: priority-street/u,
       ["--write"],
-      { MANUAL_GUIDE_IMAGE_READABILITY_SECTION_ROOT: sectionRoot }
+      { MANUAL_GUIDE_IMAGE_READABILITY_SECTION_ROOT: sectionRoot },
     );
   } finally {
     rmSync(tempRoot, { force: true, recursive: true });
@@ -408,18 +471,20 @@ test("manual guide image readability/translations audit rejects bicycle sign sup
     noticeItemsRu: ["Generic grouped prose is not enough for this user-named image."],
     visualNotes: []
   }]
-};\n`
+};\n`,
     );
 
     await assertAuditFails(
       evidencePath,
       /structured-russian-support-missing-source-spanish: traffic-rules-signs/u,
       ["--write"],
-      { MANUAL_GUIDE_IMAGE_READABILITY_SECTION_ROOT: sectionRoot }
+      { MANUAL_GUIDE_IMAGE_READABILITY_SECTION_ROOT: sectionRoot },
     );
 
     const failedEvidence = JSON.parse(readFileSync(evidencePath, "utf8"));
-    const record = failedEvidence.inventory.find((entry) => entry.imageId === "traffic-rules-signs");
+    const record = failedEvidence.inventory.find(
+      (entry) => entry.imageId === "traffic-rules-signs",
+    );
     assert.equal(record.translationDomSelector, ".manual-source-image-term-translations");
     assert.equal(record.structuredRussianSupport.itemCount, 1);
     assert.equal(record.structuredRussianSupport.items[0].termEs, "");
@@ -468,22 +533,23 @@ test("manual guide image readability/translations audit rejects visible Spanish 
     }],
     visualNotes: []
   }]
-};\n`
+};\n`,
     );
 
     await assertAuditFails(
       evidencePath,
       /visible-spanish-missing-structured-russian-support: fixture-body-only-card/u,
       ["--write"],
-      { MANUAL_GUIDE_IMAGE_READABILITY_SECTION_ROOT: sectionRoot }
+      { MANUAL_GUIDE_IMAGE_READABILITY_SECTION_ROOT: sectionRoot },
     );
 
     const failedEvidence = JSON.parse(readFileSync(evidencePath, "utf8"));
     assert.equal(failedEvidence.counts.visibleSpanishImages, 1);
     assert.equal(failedEvidence.counts.visibleSpanishImagesWithStructuredRussianSupport, 0);
     assert.equal(
-      failedEvidence.inventory.find((record) => record.imageId === "fixture-body-only-card").structuredRussianSupport.itemCount,
-      0
+      failedEvidence.inventory.find((record) => record.imageId === "fixture-body-only-card")
+        .structuredRussianSupport.itemCount,
+      0,
     );
   } finally {
     rmSync(tempRoot, { force: true, recursive: true });

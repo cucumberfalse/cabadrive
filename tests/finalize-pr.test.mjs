@@ -7,14 +7,17 @@ import { test } from "node:test";
 import {
   collectBlockingFindings,
   collectPaginationFindings,
+  buildMergeArgs,
+  buildDryRunSummary,
   evaluatePostEffectiveHeadChangedFiles,
   evaluateFinalizationGates,
   hasImplementationFeedbackDisposition,
   isFinalValidationEvidencePath,
   normalizeCheckState,
+  resolveMergeMethod,
   readProcessEvidence,
   readProcessEvidenceFromHead,
-  verifyPostEffectiveHeadChanges
+  verifyPostEffectiveHeadChanges,
 } from "../scripts/finalize-pr.mjs";
 
 const requiredChecks = JSON.parse(readFileSync(".unicorn-hub/config.json", "utf8")).requiredChecks;
@@ -27,7 +30,7 @@ function successfulInput(overrides = {}) {
       headSha: "abc123",
       isDraft: false,
       mergeable: "MERGEABLE",
-      mergeStateStatus: "CLEAN"
+      mergeStateStatus: "CLEAN",
     },
     requiredChecks,
     checks: requiredChecks.map((name) => ({ name, status: "COMPLETED", conclusion: "SUCCESS" })),
@@ -44,9 +47,9 @@ function successfulInput(overrides = {}) {
       effectiveContentHeadValidation: true,
       postEffectiveHeadEvidenceOnly: true,
       currentHeadGuardEvidence: true,
-      acceptedKnownIssueDecisionPending: false
+      acceptedKnownIssueDecisionPending: false,
     },
-    ...overrides
+    ...overrides,
   };
 }
 
@@ -63,17 +66,28 @@ function initGitRepo(root) {
 function writeMinimalFeatureMemory(root, featurePath, tasksExtra = "") {
   const featureRoot = join(root, featurePath);
   mkdirSync(featureRoot, { recursive: true });
-  writeFileSync(join(featureRoot, "feature-request.md"), `# Feature Request
+  writeFileSync(
+    join(featureRoot, "feature-request.md"),
+    `# Feature Request
 
 ## Final Analyst Validation Notes
-`);
-  writeFileSync(join(featureRoot, "spec.md"), `# Specification
+`,
+  );
+  writeFileSync(
+    join(featureRoot, "spec.md"),
+    `# Specification
 
 ## Final Architect Validation Notes
-`);
-  writeFileSync(join(featureRoot, "plan.md"), `# Plan
-`);
-  writeFileSync(join(featureRoot, "tasks.md"), `# Tasks
+`,
+  );
+  writeFileSync(
+    join(featureRoot, "plan.md"),
+    `# Plan
+`,
+  );
+  writeFileSync(
+    join(featureRoot, "tasks.md"),
+    `# Tasks
 
 ## Task List
 - [x] Existing task.
@@ -92,32 +106,49 @@ function writeMinimalFeatureMemory(root, featurePath, tasksExtra = "") {
 
 ## Verification Evidence
 - Existing evidence.
-${tasksExtra}`);
+${tasksExtra}`,
+  );
 }
 
 function writeFinalValidationFeatureMemory(root, featurePath, effectiveContentHead, options = {}) {
-  const { includeRoleReturnCounts = true, taskOverrides = {}, validatedEffectiveContentHead = effectiveContentHead } = options;
+  const {
+    includeRoleReturnCounts = true,
+    taskOverrides = {},
+    validatedEffectiveContentHead = effectiveContentHead,
+  } = options;
   const featureRoot = join(root, featurePath);
   mkdirSync(featureRoot, { recursive: true });
-  writeFileSync(join(featureRoot, "feature-request.md"), `# Feature Request
+  writeFileSync(
+    join(featureRoot, "feature-request.md"),
+    `# Feature Request
 
 ## Final Analyst Validation Notes
 - Analyst validation pass: passed
 - Final Analyst validation completed at: 2026-05-10T13:00:01Z
 - Analyst validated effective content head: ${validatedEffectiveContentHead}
 ${includeRoleReturnCounts ? "- Analyst return count for this work cycle: 0.\n" : ""}
-`);
-  writeFileSync(join(featureRoot, "spec.md"), `# Specification
+`,
+  );
+  writeFileSync(
+    join(featureRoot, "spec.md"),
+    `# Specification
 
 ## Final Architect Validation Notes
 - Architect validation pass: passed
 - Final Architect validation completed at: 2026-05-10T13:00:00Z
 - Architect validated effective content head: ${validatedEffectiveContentHead}
 ${includeRoleReturnCounts ? "- Architect return count for this work cycle: 0.\n" : ""}
-`);
-  writeFileSync(join(featureRoot, "plan.md"), `# Plan
-`);
-  writeFileSync(join(featureRoot, "tasks.md"), buildCompleteTasks(effectiveContentHead, taskOverrides));
+`,
+  );
+  writeFileSync(
+    join(featureRoot, "plan.md"),
+    `# Plan
+`,
+  );
+  writeFileSync(
+    join(featureRoot, "tasks.md"),
+    buildCompleteTasks(effectiveContentHead, taskOverrides),
+  );
 }
 
 function buildCompleteTasks(effectiveContentHead, overrides = {}) {
@@ -128,7 +159,7 @@ function buildCompleteTasks(effectiveContentHead, overrides = {}) {
     includeLimitEscalation = true,
     knownIssues = "- None.\n",
     verificationEvidence = `- Existing evidence.
-- current-PR-head guard compared the current PR head with effective content head ${effectiveContentHead.slice(0, 12)} and found only final-validation evidence changes.`
+- current-PR-head guard compared the current PR head with effective content head ${effectiveContentHead.slice(0, 12)} and found only final-validation evidence changes.`,
   } = overrides;
 
   return `# Tasks
@@ -152,9 +183,13 @@ ${knownIssues.trimEnd()}
 ## Verification Evidence
 ${verificationEvidence.trimEnd()}
 
-${includeCyclePrSet ? `## Cycle PR Set
+${
+  includeCyclePrSet
+    ? `## Cycle PR Set
 - Purpose: finalize PR automation; branch: codex/999-finalize-test; PR: #999; head SHA: ${effectiveContentHead}; status: ready for final validation; final-validation inclusion: included.
-` : ""}
+`
+    : ""
+}
 ## Final Validation Evidence
 ${includeArchitectReturnCount ? "- Architect return count: 0\n" : ""}${includeAnalystReturnCount ? "- Analyst return count: 0\n" : ""}${includeLimitEscalation ? "- Limit escalation: none\n" : ""}`;
 }
@@ -167,6 +202,70 @@ test("finalization gate passes only with current head, green required checks, an
   assert.deepEqual(result.blockers, []);
 });
 
+test("finalizer accepts only the repository squash merge method", () => {
+  assert.equal(resolveMergeMethod(), "squash");
+  assert.equal(resolveMergeMethod("squash"), "squash");
+  assert.throws(() => resolveMergeMethod("merge"), /Unsupported merge method: merge/);
+  assert.throws(() => resolveMergeMethod("rebase"), /Unsupported merge method: rebase/);
+  assert.throws(() => resolveMergeMethod(""), /Unsupported merge method/);
+});
+
+test("merge argument builder preserves head guard and selected method", () => {
+  const common = {
+    prNumber: "209",
+    repo: "cucumberfalse/cabadrive",
+    headSha: "a".repeat(40),
+  };
+  assert.deepEqual(buildMergeArgs({ ...common, mergeMethod: "squash" }), [
+    "pr",
+    "merge",
+    "209",
+    "--repo",
+    "cucumberfalse/cabadrive",
+    "--squash",
+    "--match-head-commit",
+    "a".repeat(40),
+  ]);
+  assert.deepEqual(buildMergeArgs({ ...common, auto: true }), [
+    "pr",
+    "merge",
+    "209",
+    "--repo",
+    "cucumberfalse/cabadrive",
+    "--squash",
+    "--match-head-commit",
+    "a".repeat(40),
+    "--auto",
+  ]);
+  assert.throws(
+    () => buildMergeArgs({ ...common, mergeMethod: "merge" }),
+    /Unsupported merge method: merge/,
+  );
+});
+
+test("dry-run summary exposes the selected merge method", () => {
+  assert.deepEqual(
+    buildDryRunSummary({
+      action: "merge",
+      repo: "cucumberfalse/cabadrive",
+      prNumber: "209",
+      headSha: "b".repeat(40),
+      mergeMethod: "squash",
+      featurePath: "specs/044-quality-tooling",
+      pendingChecks: [],
+    }),
+    {
+      action: "merge",
+      repo: "cucumberfalse/cabadrive",
+      pr: 209,
+      headSha: "b".repeat(40),
+      mergeMethod: "squash",
+      featurePath: "specs/044-quality-tooling",
+      pendingChecks: [],
+    },
+  );
+});
+
 test("required checks are sourced from .unicorn-hub config and missing checks block", () => {
   const checks = requiredChecks
     .filter((name) => name !== "AI Review")
@@ -175,23 +274,27 @@ test("required checks are sourced from .unicorn-hub config and missing checks bl
   const result = evaluateFinalizationGates(successfulInput({ checks }));
 
   assert.equal(result.action, "block");
-  assert.ok(result.blockers.some((blocker) =>
-    blocker.code === "missing-required-check" &&
-    blocker.message.includes("AI Review")
-  ));
+  assert.ok(
+    result.blockers.some(
+      (blocker) =>
+        blocker.code === "missing-required-check" && blocker.message.includes("AI Review"),
+    ),
+  );
 });
 
 test("stale head, draft PRs, and conflicts block finalization", () => {
-  const result = evaluateFinalizationGates(successfulInput({
-    suppliedHeadSha: "oldsha",
-    pr: {
-      number: 12,
-      headSha: "abc123",
-      isDraft: true,
-      mergeable: "CONFLICTING",
-      mergeStateStatus: "DIRTY"
-    }
-  }));
+  const result = evaluateFinalizationGates(
+    successfulInput({
+      suppliedHeadSha: "oldsha",
+      pr: {
+        number: 12,
+        headSha: "abc123",
+        isDraft: true,
+        mergeable: "CONFLICTING",
+        mergeStateStatus: "DIRTY",
+      },
+    }),
+  );
 
   assert.ok(result.blockers.some((blocker) => blocker.code === "stale-head"));
   assert.ok(result.blockers.some((blocker) => blocker.code === "draft-pr"));
@@ -200,16 +303,22 @@ test("stale head, draft PRs, and conflicts block finalization", () => {
 });
 
 test("mutating finalization requires an explicit expected head", () => {
-  const missingExpectedHead = evaluateFinalizationGates(successfulInput({
-    requireExpectedHead: true
-  }));
+  const missingExpectedHead = evaluateFinalizationGates(
+    successfulInput({
+      requireExpectedHead: true,
+    }),
+  );
   assert.equal(missingExpectedHead.action, "block");
-  assert.ok(missingExpectedHead.blockers.some((blocker) => blocker.code === "missing-expected-head"));
+  assert.ok(
+    missingExpectedHead.blockers.some((blocker) => blocker.code === "missing-expected-head"),
+  );
 
-  const suppliedExpectedHead = evaluateFinalizationGates(successfulInput({
-    requireExpectedHead: true,
-    suppliedHeadSha: "abc123"
-  }));
+  const suppliedExpectedHead = evaluateFinalizationGates(
+    successfulInput({
+      requireExpectedHead: true,
+      suppliedHeadSha: "abc123",
+    }),
+  );
   assert.equal(suppliedExpectedHead.ready, true);
   assert.equal(suppliedExpectedHead.action, "merge");
 });
@@ -218,7 +327,7 @@ test("pending required checks block by default", () => {
   const checks = requiredChecks.map((name) => ({
     name,
     status: name === "guard" ? "IN_PROGRESS" : "COMPLETED",
-    conclusion: name === "guard" ? null : "SUCCESS"
+    conclusion: name === "guard" ? null : "SUCCESS",
   }));
 
   const result = evaluateFinalizationGates(successfulInput({ checks }));
@@ -232,20 +341,22 @@ test("pending required checks may enable protected auto-merge only with explicit
   const checks = requiredChecks.map((name) => ({
     name,
     status: name === "guard" ? "QUEUED" : "COMPLETED",
-    conclusion: name === "guard" ? null : "SUCCESS"
+    conclusion: name === "guard" ? null : "SUCCESS",
   }));
 
-  const result = evaluateFinalizationGates(successfulInput({
-    autoMergePending: true,
-    checks,
-    pr: {
-      number: 12,
-      headSha: "abc123",
-      isDraft: false,
-      mergeable: "MERGEABLE",
-      mergeStateStatus: "BLOCKED"
-    }
-  }));
+  const result = evaluateFinalizationGates(
+    successfulInput({
+      autoMergePending: true,
+      checks,
+      pr: {
+        number: 12,
+        headSha: "abc123",
+        isDraft: false,
+        mergeable: "MERGEABLE",
+        mergeStateStatus: "BLOCKED",
+      },
+    }),
+  );
 
   assert.equal(result.ready, false);
   assert.equal(result.action, "enable-auto-merge");
@@ -257,20 +368,22 @@ test("pending required checks stay blocked with auto-merge flag when GitHub repo
   const checks = requiredChecks.map((name) => ({
     name,
     status: name === "guard" ? "QUEUED" : "COMPLETED",
-    conclusion: name === "guard" ? null : "SUCCESS"
+    conclusion: name === "guard" ? null : "SUCCESS",
   }));
 
-  const result = evaluateFinalizationGates(successfulInput({
-    autoMergePending: true,
-    checks,
-    pr: {
-      number: 12,
-      headSha: "abc123",
-      isDraft: false,
-      mergeable: "MERGEABLE",
-      mergeStateStatus: "CLEAN"
-    }
-  }));
+  const result = evaluateFinalizationGates(
+    successfulInput({
+      autoMergePending: true,
+      checks,
+      pr: {
+        number: 12,
+        headSha: "abc123",
+        isDraft: false,
+        mergeable: "MERGEABLE",
+        mergeStateStatus: "CLEAN",
+      },
+    }),
+  );
 
   assert.equal(result.ready, false);
   assert.equal(result.action, "block");
@@ -279,29 +392,33 @@ test("pending required checks stay blocked with auto-merge flag when GitHub repo
 });
 
 test("unresolved review state and blocking findings block finalization", () => {
-  const result = evaluateFinalizationGates(successfulInput({
-    reviewThreads: [{ isResolved: false, comments: [] }],
-    blockingFindings: [{ message: "Unresolved Codex P1 finding remains." }]
-  }));
+  const result = evaluateFinalizationGates(
+    successfulInput({
+      reviewThreads: [{ isResolved: false, comments: [] }],
+      blockingFindings: [{ message: "Unresolved Codex P1 finding remains." }],
+    }),
+  );
 
   assert.ok(result.blockers.some((blocker) => blocker.code === "unresolved-review-thread"));
   assert.ok(result.blockers.some((blocker) => blocker.code === "blocking-review-finding"));
 });
 
 test("missing final validation and process evidence block finalization", () => {
-  const result = evaluateFinalizationGates(successfulInput({
-    processEvidence: {
-      finalArchitectValidation: false,
-      finalAnalystValidation: false,
-      finalValidationOrder: false,
-      acceptanceEvidence: false,
-      currentProcessMemory: false,
-      feedbackDisposition: false,
-      effectiveContentHead: null,
-      currentHeadGuardEvidence: false,
-      acceptedKnownIssueDecisionPending: true
-    }
-  }));
+  const result = evaluateFinalizationGates(
+    successfulInput({
+      processEvidence: {
+        finalArchitectValidation: false,
+        finalAnalystValidation: false,
+        finalValidationOrder: false,
+        acceptanceEvidence: false,
+        currentProcessMemory: false,
+        feedbackDisposition: false,
+        effectiveContentHead: null,
+        currentHeadGuardEvidence: false,
+        acceptedKnownIssueDecisionPending: true,
+      },
+    }),
+  );
 
   assert.ok(result.blockers.some((blocker) => blocker.code === "missing-architect-validation"));
   assert.ok(result.blockers.some((blocker) => blocker.code === "missing-analyst-validation"));
@@ -317,48 +434,57 @@ test("role-owned validated effective head markers must match the latest effectiv
   const effectiveContentHead = "b".repeat(40);
 
   writeFinalValidationFeatureMemory(root, featurePath, effectiveContentHead, {
-    validatedEffectiveContentHead: validatedHead
+    validatedEffectiveContentHead: validatedHead,
   });
   const mismatchedEvidence = readProcessEvidence(root, featurePath, effectiveContentHead);
-  const mismatchedResult = evaluateFinalizationGates(successfulInput({
-    suppliedHeadSha: effectiveContentHead,
-    pr: {
-      number: 12,
-      headSha: effectiveContentHead,
-      isDraft: false,
-      mergeable: "MERGEABLE",
-      mergeStateStatus: "CLEAN"
-    },
-    processEvidence: mismatchedEvidence
-  }));
+  const mismatchedResult = evaluateFinalizationGates(
+    successfulInput({
+      suppliedHeadSha: effectiveContentHead,
+      pr: {
+        number: 12,
+        headSha: effectiveContentHead,
+        isDraft: false,
+        mergeable: "MERGEABLE",
+        mergeStateStatus: "CLEAN",
+      },
+      processEvidence: mismatchedEvidence,
+    }),
+  );
 
   assert.equal(mismatchedEvidence.effectiveContentHead, effectiveContentHead);
   assert.equal(mismatchedEvidence.architectValidatedEffectiveContentHead, validatedHead);
   assert.equal(mismatchedEvidence.analystValidatedEffectiveContentHead, validatedHead);
   assert.equal(mismatchedEvidence.effectiveContentHeadValidation, false);
-  assert.ok(mismatchedResult.blockers.some((blocker) =>
-    blocker.code === "unvalidated-effective-content-head" &&
-    blocker.message.includes(`Effective content head ${effectiveContentHead}`)
-  ));
+  assert.ok(
+    mismatchedResult.blockers.some(
+      (blocker) =>
+        blocker.code === "unvalidated-effective-content-head" &&
+        blocker.message.includes(`Effective content head ${effectiveContentHead}`),
+    ),
+  );
 
   writeFinalValidationFeatureMemory(root, featurePath, effectiveContentHead);
   const matchingEvidence = readProcessEvidence(root, featurePath, effectiveContentHead);
-  const matchingResult = evaluateFinalizationGates(successfulInput({
-    suppliedHeadSha: effectiveContentHead,
-    pr: {
-      number: 12,
-      headSha: effectiveContentHead,
-      isDraft: false,
-      mergeable: "MERGEABLE",
-      mergeStateStatus: "CLEAN"
-    },
-    processEvidence: matchingEvidence
-  }));
+  const matchingResult = evaluateFinalizationGates(
+    successfulInput({
+      suppliedHeadSha: effectiveContentHead,
+      pr: {
+        number: 12,
+        headSha: effectiveContentHead,
+        isDraft: false,
+        mergeable: "MERGEABLE",
+        mergeStateStatus: "CLEAN",
+      },
+      processEvidence: matchingEvidence,
+    }),
+  );
 
   assert.equal(matchingEvidence.effectiveContentHeadValidation, true);
   assert.equal(
-    matchingResult.blockers.some((blocker) => blocker.code === "unvalidated-effective-content-head"),
-    false
+    matchingResult.blockers.some(
+      (blocker) => blocker.code === "unvalidated-effective-content-head",
+    ),
+    false,
   );
   assert.equal(matchingResult.action, "merge");
 });
@@ -371,25 +497,30 @@ test("accepted known issue owner decisions do not block finalization", () => {
     taskOverrides: {
       knownIssues: `- Remaining accepted known issue: minor manual merge delay.
 - Owner decision: accepted.
-`
-    }
+`,
+    },
   });
 
   const evidence = readProcessEvidence(root, featurePath, effectiveContentHead);
-  const result = evaluateFinalizationGates(successfulInput({
-    suppliedHeadSha: effectiveContentHead,
-    pr: {
-      number: 12,
-      headSha: effectiveContentHead,
-      isDraft: false,
-      mergeable: "MERGEABLE",
-      mergeStateStatus: "CLEAN"
-    },
-    processEvidence: evidence
-  }));
+  const result = evaluateFinalizationGates(
+    successfulInput({
+      suppliedHeadSha: effectiveContentHead,
+      pr: {
+        number: 12,
+        headSha: effectiveContentHead,
+        isDraft: false,
+        mergeable: "MERGEABLE",
+        mergeStateStatus: "CLEAN",
+      },
+      processEvidence: evidence,
+    }),
+  );
 
   assert.equal(evidence.acceptedKnownIssueDecisionPending, false);
-  assert.equal(result.blockers.some((blocker) => blocker.code === "human-known-issue-decision"), false);
+  assert.equal(
+    result.blockers.some((blocker) => blocker.code === "human-known-issue-decision"),
+    false,
+  );
 });
 
 test("generic known issues without final disposition block finalization", () => {
@@ -398,22 +529,24 @@ test("generic known issues without final disposition block finalization", () => 
   const effectiveContentHead = "0123456789abcdef0123456789abcdef01234567";
   writeFinalValidationFeatureMemory(root, featurePath, effectiveContentHead, {
     taskOverrides: {
-      knownIssues: "- Search index is stale.\n"
-    }
+      knownIssues: "- Search index is stale.\n",
+    },
   });
 
   const evidence = readProcessEvidence(root, featurePath, effectiveContentHead);
-  const result = evaluateFinalizationGates(successfulInput({
-    suppliedHeadSha: effectiveContentHead,
-    pr: {
-      number: 12,
-      headSha: effectiveContentHead,
-      isDraft: false,
-      mergeable: "MERGEABLE",
-      mergeStateStatus: "CLEAN"
-    },
-    processEvidence: evidence
-  }));
+  const result = evaluateFinalizationGates(
+    successfulInput({
+      suppliedHeadSha: effectiveContentHead,
+      pr: {
+        number: 12,
+        headSha: effectiveContentHead,
+        isDraft: false,
+        mergeable: "MERGEABLE",
+        mergeStateStatus: "CLEAN",
+      },
+      processEvidence: evidence,
+    }),
+  );
 
   assert.equal(evidence.acceptedKnownIssueDecisionPending, true);
   assert.ok(result.blockers.some((blocker) => blocker.code === "human-known-issue-decision"));
@@ -430,28 +563,30 @@ test("architect-disposed known issues do not block finalization", () => {
       taskOverrides: {
         knownIssues: `- Search index is stale.
 - Architect disposition: ${finalDisposition}.
-`
-      }
+`,
+      },
     });
 
     const evidence = readProcessEvidence(root, featurePath, effectiveContentHead);
-    const result = evaluateFinalizationGates(successfulInput({
-      suppliedHeadSha: effectiveContentHead,
-      pr: {
-        number: 12,
-        headSha: effectiveContentHead,
-        isDraft: false,
-        mergeable: "MERGEABLE",
-        mergeStateStatus: "CLEAN"
-      },
-      processEvidence: evidence
-    }));
+    const result = evaluateFinalizationGates(
+      successfulInput({
+        suppliedHeadSha: effectiveContentHead,
+        pr: {
+          number: 12,
+          headSha: effectiveContentHead,
+          isDraft: false,
+          mergeable: "MERGEABLE",
+          mergeStateStatus: "CLEAN",
+        },
+        processEvidence: evidence,
+      }),
+    );
 
     assert.equal(evidence.acceptedKnownIssueDecisionPending, false, finalDisposition);
     assert.equal(
       result.blockers.some((blocker) => blocker.code === "human-known-issue-decision"),
       false,
-      finalDisposition
+      finalDisposition,
     );
   }
 });
@@ -464,22 +599,24 @@ test("pending known issue owner decisions block finalization", () => {
     taskOverrides: {
       knownIssues: `- Remaining accepted known issue needs owner decision.
 - Owner decision: pending.
-`
-    }
+`,
+    },
   });
 
   const evidence = readProcessEvidence(root, featurePath, effectiveContentHead);
-  const result = evaluateFinalizationGates(successfulInput({
-    suppliedHeadSha: effectiveContentHead,
-    pr: {
-      number: 12,
-      headSha: effectiveContentHead,
-      isDraft: false,
-      mergeable: "MERGEABLE",
-      mergeStateStatus: "CLEAN"
-    },
-    processEvidence: evidence
-  }));
+  const result = evaluateFinalizationGates(
+    successfulInput({
+      suppliedHeadSha: effectiveContentHead,
+      pr: {
+        number: 12,
+        headSha: effectiveContentHead,
+        isDraft: false,
+        mergeable: "MERGEABLE",
+        mergeStateStatus: "CLEAN",
+      },
+      processEvidence: evidence,
+    }),
+  );
 
   assert.equal(evidence.acceptedKnownIssueDecisionPending, true);
   assert.ok(result.blockers.some((blocker) => blocker.code === "human-known-issue-decision"));
@@ -491,22 +628,24 @@ test("verification evidence placeholders do not satisfy acceptance evidence", ()
   const effectiveContentHead = "0123456789abcdef0123456789abcdef01234567";
   writeFinalValidationFeatureMemory(root, featurePath, effectiveContentHead, {
     taskOverrides: {
-      verificationEvidence: "- [Command/check and result]\n- Pending implementation."
-    }
+      verificationEvidence: "- [Command/check and result]\n- Pending implementation.",
+    },
   });
 
   const evidence = readProcessEvidence(root, featurePath, effectiveContentHead);
-  const result = evaluateFinalizationGates(successfulInput({
-    suppliedHeadSha: effectiveContentHead,
-    pr: {
-      number: 12,
-      headSha: effectiveContentHead,
-      isDraft: false,
-      mergeable: "MERGEABLE",
-      mergeStateStatus: "CLEAN"
-    },
-    processEvidence: evidence
-  }));
+  const result = evaluateFinalizationGates(
+    successfulInput({
+      suppliedHeadSha: effectiveContentHead,
+      pr: {
+        number: 12,
+        headSha: effectiveContentHead,
+        isDraft: false,
+        mergeable: "MERGEABLE",
+        mergeStateStatus: "CLEAN",
+      },
+      processEvidence: evidence,
+    }),
+  );
 
   assert.equal(evidence.acceptanceEvidence, false);
   assert.ok(result.blockers.some((blocker) => blocker.code === "missing-acceptance-evidence"));
@@ -520,22 +659,24 @@ test("substantive verification evidence satisfies acceptance evidence", () => {
     taskOverrides: {
       verificationEvidence: `- [Command/check and result]
 - node --test tests/finalize-pr.test.mjs: passed.
-- current-PR-head guard compared the current PR head with effective content head ${effectiveContentHead.slice(0, 12)} and found only final-validation evidence changes.`
-    }
+- current-PR-head guard compared the current PR head with effective content head ${effectiveContentHead.slice(0, 12)} and found only final-validation evidence changes.`,
+    },
   });
 
   const evidence = readProcessEvidence(root, featurePath, effectiveContentHead);
-  const result = evaluateFinalizationGates(successfulInput({
-    suppliedHeadSha: effectiveContentHead,
-    pr: {
-      number: 12,
-      headSha: effectiveContentHead,
-      isDraft: false,
-      mergeable: "MERGEABLE",
-      mergeStateStatus: "CLEAN"
-    },
-    processEvidence: evidence
-  }));
+  const result = evaluateFinalizationGates(
+    successfulInput({
+      suppliedHeadSha: effectiveContentHead,
+      pr: {
+        number: 12,
+        headSha: effectiveContentHead,
+        isDraft: false,
+        mergeable: "MERGEABLE",
+        mergeStateStatus: "CLEAN",
+      },
+      processEvidence: evidence,
+    }),
+  );
 
   assert.equal(evidence.acceptanceEvidence, true);
   assert.equal(result.ready, true);
@@ -543,12 +684,14 @@ test("substantive verification evidence satisfies acceptance evidence", () => {
 });
 
 test("unreadable PR-head process evidence source blocks finalization", () => {
-  const result = evaluateFinalizationGates(successfulInput({
-    processEvidence: {
-      ...successfulInput().processEvidence,
-      processEvidenceSourceError: "fatal: bad object abc123"
-    }
-  }));
+  const result = evaluateFinalizationGates(
+    successfulInput({
+      processEvidence: {
+        ...successfulInput().processEvidence,
+        processEvidenceSourceError: "fatal: bad object abc123",
+      },
+    }),
+  );
 
   assert.equal(result.action, "block");
   assert.ok(result.blockers.some((blocker) => blocker.code === "unverified-process-evidence"));
@@ -572,18 +715,20 @@ test("dirty local-only process evidence is ignored when reading from the PR head
   assert.equal(headEvidence.finalArchitectValidation, false);
   assert.equal(headEvidence.finalAnalystValidation, false);
 
-  const result = evaluateFinalizationGates(successfulInput({
-    requireExpectedHead: true,
-    suppliedHeadSha: prHead,
-    pr: {
-      number: 12,
-      headSha: prHead,
-      isDraft: false,
-      mergeable: "MERGEABLE",
-      mergeStateStatus: "CLEAN"
-    },
-    processEvidence: headEvidence
-  }));
+  const result = evaluateFinalizationGates(
+    successfulInput({
+      requireExpectedHead: true,
+      suppliedHeadSha: prHead,
+      pr: {
+        number: 12,
+        headSha: prHead,
+        isDraft: false,
+        mergeable: "MERGEABLE",
+        mergeStateStatus: "CLEAN",
+      },
+      processEvidence: headEvidence,
+    }),
+  );
 
   assert.equal(result.action, "block");
   assert.ok(result.blockers.some((blocker) => blocker.code === "missing-architect-validation"));
@@ -611,18 +756,20 @@ test("process evidence from a checkout that is not the PR head is ignored", () =
   assert.equal(localEvidence.finalValidationOrder, true);
   assert.equal(headEvidence.finalValidationOrder, false);
 
-  const result = evaluateFinalizationGates(successfulInput({
-    requireExpectedHead: true,
-    suppliedHeadSha: prHead,
-    pr: {
-      number: 12,
-      headSha: prHead,
-      isDraft: false,
-      mergeable: "MERGEABLE",
-      mergeStateStatus: "CLEAN"
-    },
-    processEvidence: headEvidence
-  }));
+  const result = evaluateFinalizationGates(
+    successfulInput({
+      requireExpectedHead: true,
+      suppliedHeadSha: prHead,
+      pr: {
+        number: 12,
+        headSha: prHead,
+        isDraft: false,
+        mergeable: "MERGEABLE",
+        mergeStateStatus: "CLEAN",
+      },
+      processEvidence: headEvidence,
+    }),
+  );
 
   assert.equal(result.action, "block");
   assert.ok(result.blockers.some((blocker) => blocker.code === "missing-validation-order"));
@@ -644,20 +791,22 @@ test("clean exact PR head process evidence can satisfy merge gates", () => {
 
   const evidence = {
     ...readProcessEvidenceFromHead(root, featurePath, prHead),
-    ...verifyPostEffectiveHeadChanges(root, featurePath, effectiveContentHead, prHead)
+    ...verifyPostEffectiveHeadChanges(root, featurePath, effectiveContentHead, prHead),
   };
-  const result = evaluateFinalizationGates(successfulInput({
-    requireExpectedHead: true,
-    suppliedHeadSha: prHead,
-    pr: {
-      number: 12,
-      headSha: prHead,
-      isDraft: false,
-      mergeable: "MERGEABLE",
-      mergeStateStatus: "CLEAN"
-    },
-    processEvidence: evidence
-  }));
+  const result = evaluateFinalizationGates(
+    successfulInput({
+      requireExpectedHead: true,
+      suppliedHeadSha: prHead,
+      pr: {
+        number: 12,
+        headSha: prHead,
+        isDraft: false,
+        mergeable: "MERGEABLE",
+        mergeStateStatus: "CLEAN",
+      },
+      processEvidence: evidence,
+    }),
+  );
 
   assert.equal(result.ready, true);
   assert.equal(result.action, "merge");
@@ -666,23 +815,25 @@ test("clean exact PR head process evidence can satisfy merge gates", () => {
 test("post-effective-head non-evidence paths block finalization", () => {
   const effectiveContentHead = "a".repeat(40);
   const currentHead = "b".repeat(40);
-  const result = evaluateFinalizationGates(successfulInput({
-    pr: {
-      number: 12,
-      headSha: currentHead,
-      isDraft: false,
-      mergeable: "MERGEABLE",
-      mergeStateStatus: "CLEAN"
-    },
-    suppliedHeadSha: currentHead,
-    processEvidence: {
-      ...successfulInput().processEvidence,
-      effectiveContentHead,
-      currentHeadGuardEvidence: true,
-      postEffectiveHeadEvidenceOnly: false,
-      postEffectiveHeadInvalidPaths: ["scripts/finalize-pr.mjs"]
-    }
-  }));
+  const result = evaluateFinalizationGates(
+    successfulInput({
+      pr: {
+        number: 12,
+        headSha: currentHead,
+        isDraft: false,
+        mergeable: "MERGEABLE",
+        mergeStateStatus: "CLEAN",
+      },
+      suppliedHeadSha: currentHead,
+      processEvidence: {
+        ...successfulInput().processEvidence,
+        effectiveContentHead,
+        currentHeadGuardEvidence: true,
+        postEffectiveHeadEvidenceOnly: false,
+        postEffectiveHeadInvalidPaths: ["scripts/finalize-pr.mjs"],
+      },
+    }),
+  );
 
   assert.equal(result.action, "block");
   assert.ok(result.blockers.some((blocker) => blocker.code === "post-effective-head-non-evidence"));
@@ -697,7 +848,9 @@ test("post-effective-head non-evidence edits inside allowed memory files block f
   git(root, ["commit", "-qm", "effective content"]);
   const effectiveContentHead = git(root, ["rev-parse", "HEAD"]);
 
-  writeFileSync(join(root, featurePath, "tasks.md"), `# Tasks
+  writeFileSync(
+    join(root, featurePath, "tasks.md"),
+    `# Tasks
 
 ## Task List
 - [x] Existing task.
@@ -717,15 +870,25 @@ test("post-effective-head non-evidence edits inside allowed memory files block f
 
 ## Verification Evidence
 - Existing evidence.
-`);
+`,
+  );
   git(root, ["add", "."]);
   git(root, ["commit", "-qm", "non evidence edit"]);
   const currentHead = git(root, ["rev-parse", "HEAD"]);
 
-  const result = verifyPostEffectiveHeadChanges(root, featurePath, effectiveContentHead, currentHead);
+  const result = verifyPostEffectiveHeadChanges(
+    root,
+    featurePath,
+    effectiveContentHead,
+    currentHead,
+  );
 
   assert.equal(result.postEffectiveHeadEvidenceOnly, false);
-  assert.ok(result.postEffectiveHeadInvalidPaths.some((path) => path.startsWith(`${featurePath}/tasks.md:`)));
+  assert.ok(
+    result.postEffectiveHeadInvalidPaths.some((path) =>
+      path.startsWith(`${featurePath}/tasks.md:`),
+    ),
+  );
 });
 
 test("post-effective-head deletions of allowed memory files block finalization", () => {
@@ -741,10 +904,17 @@ test("post-effective-head deletions of allowed memory files block finalization",
   git(root, ["commit", "-qm", "delete allowed memory file"]);
   const currentHead = git(root, ["rev-parse", "HEAD"]);
 
-  const result = verifyPostEffectiveHeadChanges(root, featurePath, effectiveContentHead, currentHead);
+  const result = verifyPostEffectiveHeadChanges(
+    root,
+    featurePath,
+    effectiveContentHead,
+    currentHead,
+  );
 
   assert.equal(result.postEffectiveHeadEvidenceOnly, false);
-  assert.ok(result.postEffectiveHeadInvalidPaths.some((path) => path.startsWith(`${featurePath}/plan.md:`)));
+  assert.ok(
+    result.postEffectiveHeadInvalidPaths.some((path) => path.startsWith(`${featurePath}/plan.md:`)),
+  );
 });
 
 test("post-effective-head final-validation and guard evidence additions pass", () => {
@@ -756,21 +926,29 @@ test("post-effective-head final-validation and guard evidence additions pass", (
   git(root, ["commit", "-qm", "effective content"]);
   const effectiveContentHead = git(root, ["rev-parse", "HEAD"]);
 
-  writeFileSync(join(root, featurePath, "feature-request.md"), `# Feature Request
+  writeFileSync(
+    join(root, featurePath, "feature-request.md"),
+    `# Feature Request
 
 ## Final Analyst Validation Notes
 - Analyst validation pass: passed
 - Final Analyst validation completed at: 2026-05-10T13:00:01Z
 - Analyst validated effective content head: ${effectiveContentHead}
-`);
-  writeFileSync(join(root, featurePath, "spec.md"), `# Specification
+`,
+  );
+  writeFileSync(
+    join(root, featurePath, "spec.md"),
+    `# Specification
 
 ## Final Architect Validation Notes
 - Architect validation pass: passed
 - Final Architect validation completed at: 2026-05-10T13:00:00Z
 - Architect validated effective content head: ${effectiveContentHead}
-`);
-  writeFileSync(join(root, featurePath, "tasks.md"), `# Tasks
+`,
+  );
+  writeFileSync(
+    join(root, featurePath, "tasks.md"),
+    `# Tasks
 
 ## Task List
 - [x] Existing task.
@@ -791,12 +969,18 @@ test("post-effective-head final-validation and guard evidence additions pass", (
 ## Verification Evidence
 - Existing evidence.
 - current-PR-head guard compared the current PR head with effective content head ${effectiveContentHead.slice(0, 12)} and found only final-validation evidence changes.
-`);
+`,
+  );
   git(root, ["add", "."]);
   git(root, ["commit", "-qm", "final validation evidence"]);
   const currentHead = git(root, ["rev-parse", "HEAD"]);
 
-  const result = verifyPostEffectiveHeadChanges(root, featurePath, effectiveContentHead, currentHead);
+  const result = verifyPostEffectiveHeadChanges(
+    root,
+    featurePath,
+    effectiveContentHead,
+    currentHead,
+  );
 
   assert.equal(result.postEffectiveHeadEvidenceOnly, true);
   assert.deepEqual(result.postEffectiveHeadInvalidPaths, []);
@@ -808,31 +992,45 @@ test("post-effective-head final-validation note headings can be added in role-ow
   const featureRoot = join(root, featurePath);
   initGitRepo(root);
   mkdirSync(featureRoot, { recursive: true });
-  writeFileSync(join(featureRoot, "feature-request.md"), `# Feature Request
+  writeFileSync(
+    join(featureRoot, "feature-request.md"),
+    `# Feature Request
 
 ## Context
 - Existing intake context.
-`);
-  writeFileSync(join(featureRoot, "spec.md"), `# Specification
+`,
+  );
+  writeFileSync(
+    join(featureRoot, "spec.md"),
+    `# Specification
 
 ## Scope
 - Existing scope.
-`);
-  writeFileSync(join(featureRoot, "plan.md"), `# Plan
+`,
+  );
+  writeFileSync(
+    join(featureRoot, "plan.md"),
+    `# Plan
 
 ## Strategy
 - Existing strategy.
-`);
-  writeFileSync(join(featureRoot, "tasks.md"), `# Tasks
+`,
+  );
+  writeFileSync(
+    join(featureRoot, "tasks.md"),
+    `# Tasks
 
 ## Verification Evidence
 - Existing evidence.
-`);
+`,
+  );
   git(root, ["add", "."]);
   git(root, ["commit", "-qm", "effective content"]);
   const effectiveContentHead = git(root, ["rev-parse", "HEAD"]);
 
-  writeFileSync(join(featureRoot, "feature-request.md"), `# Feature Request
+  writeFileSync(
+    join(featureRoot, "feature-request.md"),
+    `# Feature Request
 
 ## Context
 - Existing intake context.
@@ -840,8 +1038,11 @@ test("post-effective-head final-validation note headings can be added in role-ow
 ## Final Analyst Validation Notes
 - Analyst validation pass: passed
 - Final Analyst validation completed at: 2026-05-10T13:00:01Z
-`);
-  writeFileSync(join(featureRoot, "spec.md"), `# Specification
+`,
+  );
+  writeFileSync(
+    join(featureRoot, "spec.md"),
+    `# Specification
 
 ## Scope
 - Existing scope.
@@ -849,28 +1050,40 @@ test("post-effective-head final-validation note headings can be added in role-ow
 ## Final Architect Validation Notes
 - Architect validation pass: passed
 - Final Architect validation completed at: 2026-05-10T13:00:00Z
-`);
-  writeFileSync(join(featureRoot, "plan.md"), `# Plan
+`,
+  );
+  writeFileSync(
+    join(featureRoot, "plan.md"),
+    `# Plan
 
 ## Strategy
 - Existing strategy.
 
 ## Final Architect Validation Notes
 - Architect validation evidence: plan evidence recorded.
-`);
-  writeFileSync(join(featureRoot, "tasks.md"), `# Tasks
+`,
+  );
+  writeFileSync(
+    join(featureRoot, "tasks.md"),
+    `# Tasks
 
 ## Verification Evidence
 - Existing evidence.
 
 ## Final Architect Validation Notes
 - Open Architect dispositions: none.
-`);
+`,
+  );
   git(root, ["add", "."]);
   git(root, ["commit", "-qm", "final validation headings"]);
   const currentHead = git(root, ["rev-parse", "HEAD"]);
 
-  const result = verifyPostEffectiveHeadChanges(root, featurePath, effectiveContentHead, currentHead);
+  const result = verifyPostEffectiveHeadChanges(
+    root,
+    featurePath,
+    effectiveContentHead,
+    currentHead,
+  );
 
   assert.equal(result.postEffectiveHeadEvidenceOnly, true);
   assert.deepEqual(result.postEffectiveHeadInvalidPaths, []);
@@ -890,25 +1103,42 @@ test("post-effective-head final-validation note headings in wrong role files rem
   git(root, ["commit", "-qm", "effective content"]);
   const effectiveContentHead = git(root, ["rev-parse", "HEAD"]);
 
-  writeFileSync(join(featureRoot, "feature-request.md"), `# Feature Request
+  writeFileSync(
+    join(featureRoot, "feature-request.md"),
+    `# Feature Request
 
 ## Final Architect Validation Notes
 - Architect validation pass: passed
-`);
-  writeFileSync(join(featureRoot, "plan.md"), `# Plan
+`,
+  );
+  writeFileSync(
+    join(featureRoot, "plan.md"),
+    `# Plan
 
 ## Final Analyst Validation Notes
 - Analyst validation pass: passed
-`);
+`,
+  );
   git(root, ["add", "."]);
   git(root, ["commit", "-qm", "wrong role final validation headings"]);
   const currentHead = git(root, ["rev-parse", "HEAD"]);
 
-  const result = verifyPostEffectiveHeadChanges(root, featurePath, effectiveContentHead, currentHead);
+  const result = verifyPostEffectiveHeadChanges(
+    root,
+    featurePath,
+    effectiveContentHead,
+    currentHead,
+  );
 
   assert.equal(result.postEffectiveHeadEvidenceOnly, false);
-  assert.ok(result.postEffectiveHeadInvalidPaths.some((path) => path.startsWith(`${featurePath}/feature-request.md:`)));
-  assert.ok(result.postEffectiveHeadInvalidPaths.some((path) => path.startsWith(`${featurePath}/plan.md:`)));
+  assert.ok(
+    result.postEffectiveHeadInvalidPaths.some((path) =>
+      path.startsWith(`${featurePath}/feature-request.md:`),
+    ),
+  );
+  assert.ok(
+    result.postEffectiveHeadInvalidPaths.some((path) => path.startsWith(`${featurePath}/plan.md:`)),
+  );
 });
 
 test("post-effective-head template verification evidence additions pass", () => {
@@ -917,7 +1147,9 @@ test("post-effective-head template verification evidence additions pass", () => 
   const featureRoot = join(root, featurePath);
   initGitRepo(root);
   writeMinimalFeatureMemory(root, featurePath);
-  writeFileSync(join(featureRoot, "tasks.md"), `# Tasks
+  writeFileSync(
+    join(featureRoot, "tasks.md"),
+    `# Tasks
 
 ## Task List
 - [x] Existing task.
@@ -938,12 +1170,15 @@ test("post-effective-head template verification evidence additions pass", () => 
 
 ### Cycle PR Set
 - Existing cycle evidence.
-`);
+`,
+  );
   git(root, ["add", "."]);
   git(root, ["commit", "-qm", "effective content"]);
   const effectiveContentHead = git(root, ["rev-parse", "HEAD"]);
 
-  writeFileSync(join(featureRoot, "tasks.md"), `# Tasks
+  writeFileSync(
+    join(featureRoot, "tasks.md"),
+    `# Tasks
 
 ## Task List
 - [x] Existing task.
@@ -966,12 +1201,18 @@ test("post-effective-head template verification evidence additions pass", () => 
 
 ### Cycle PR Set
 - Existing cycle evidence.
-`);
+`,
+  );
   git(root, ["add", "."]);
   git(root, ["commit", "-qm", "template verification evidence"]);
   const currentHead = git(root, ["rev-parse", "HEAD"]);
 
-  const result = verifyPostEffectiveHeadChanges(root, featurePath, effectiveContentHead, currentHead);
+  const result = verifyPostEffectiveHeadChanges(
+    root,
+    featurePath,
+    effectiveContentHead,
+    currentHead,
+  );
 
   assert.equal(result.postEffectiveHeadEvidenceOnly, true);
   assert.deepEqual(result.postEffectiveHeadInvalidPaths, []);
@@ -983,7 +1224,9 @@ test("post-effective-head template peer sections are not verification evidence",
   const featureRoot = join(root, featurePath);
   initGitRepo(root);
   writeMinimalFeatureMemory(root, featurePath);
-  writeFileSync(join(featureRoot, "tasks.md"), `# Tasks
+  writeFileSync(
+    join(featureRoot, "tasks.md"),
+    `# Tasks
 
 ## Task List
 - [x] Existing task.
@@ -1003,12 +1246,15 @@ test("post-effective-head template peer sections are not verification evidence",
 - Existing evidence.
 
 ### Cycle PR Set
-`);
+`,
+  );
   git(root, ["add", "."]);
   git(root, ["commit", "-qm", "effective content"]);
   const effectiveContentHead = git(root, ["rev-parse", "HEAD"]);
 
-  writeFileSync(join(featureRoot, "tasks.md"), `# Tasks
+  writeFileSync(
+    join(featureRoot, "tasks.md"),
+    `# Tasks
 
 ## Task List
 - [x] Existing task.
@@ -1030,15 +1276,25 @@ test("post-effective-head template peer sections are not verification evidence",
 
 ### Cycle PR Set
 - current-PR-head guard compared the current PR head with effective content head ${effectiveContentHead.slice(0, 12)} and found only final-validation evidence changes.
-`);
+`,
+  );
   git(root, ["add", "."]);
   git(root, ["commit", "-qm", "template peer section edit"]);
   const currentHead = git(root, ["rev-parse", "HEAD"]);
 
-  const result = verifyPostEffectiveHeadChanges(root, featurePath, effectiveContentHead, currentHead);
+  const result = verifyPostEffectiveHeadChanges(
+    root,
+    featurePath,
+    effectiveContentHead,
+    currentHead,
+  );
 
   assert.equal(result.postEffectiveHeadEvidenceOnly, false);
-  assert.ok(result.postEffectiveHeadInvalidPaths.some((path) => path.startsWith(`${featurePath}/tasks.md:`)));
+  assert.ok(
+    result.postEffectiveHeadInvalidPaths.some((path) =>
+      path.startsWith(`${featurePath}/tasks.md:`),
+    ),
+  );
 });
 
 test("blocking review finding collection detects current-head blocker signals", () => {
@@ -1046,20 +1302,26 @@ test("blocking review finding collection detects current-head blocker signals", 
   const findings = collectBlockingFindings({
     headSha,
     config: { trustedReviewLoginsByAgent: { codex: ["codex-bot"], claude: ["claude-bot"] } },
-    reviewThreads: [{
-      isResolved: false,
-      comments: [{ body: "[P2] Fix this before merge", author: { login: "codex-bot" } }]
-    }],
-    reviews: [{
-      state: "CHANGES_REQUESTED",
-      body: "",
-      author: { login: "reviewer" },
-      commit: { oid: headSha }
-    }],
-    issueComments: [{
-      body: `AI_REVIEW_AGENT: claude\nAI_REVIEW_SHA: ${headSha}\nAI_REVIEW_OUTCOME: block`,
-      author: { login: "claude-bot" }
-    }]
+    reviewThreads: [
+      {
+        isResolved: false,
+        comments: [{ body: "[P2] Fix this before merge", author: { login: "codex-bot" } }],
+      },
+    ],
+    reviews: [
+      {
+        state: "CHANGES_REQUESTED",
+        body: "",
+        author: { login: "reviewer" },
+        commit: { oid: headSha },
+      },
+    ],
+    issueComments: [
+      {
+        body: `AI_REVIEW_AGENT: claude\nAI_REVIEW_SHA: ${headSha}\nAI_REVIEW_OUTCOME: block`,
+        author: { login: "claude-bot" },
+      },
+    ],
   });
 
   assert.equal(findings.length, 3);
@@ -1071,10 +1333,12 @@ test("Claude current-head outcome lookup is case-insensitive for head SHA", () =
   const findings = collectBlockingFindings({
     headSha: mixedCaseHeadSha,
     config: { trustedReviewLoginsByAgent: { claude: ["claude-bot"] } },
-    issueComments: [{
-      body: `AI_REVIEW_AGENT: claude\nAI_REVIEW_SHA: ${lowerHeadSha}\nAI_REVIEW_OUTCOME: block`,
-      author: { login: "claude-bot" }
-    }]
+    issueComments: [
+      {
+        body: `AI_REVIEW_AGENT: claude\nAI_REVIEW_SHA: ${lowerHeadSha}\nAI_REVIEW_OUTCOME: block`,
+        author: { login: "claude-bot" },
+      },
+    ],
   });
 
   assert.equal(findings.filter((finding) => finding.source === "claude-comment").length, 1);
@@ -1085,10 +1349,12 @@ test("Claude current-head outcome lookup accepts abbreviated head SHA prefixes",
   const findings = collectBlockingFindings({
     headSha,
     config: { trustedReviewLoginsByAgent: { claude: ["claude-bot"] } },
-    issueComments: [{
-      body: "AI_REVIEW_AGENT: claude\nAI_REVIEW_SHA: abcdef123456\nAI_REVIEW_OUTCOME: block",
-      author: { login: "claude-bot" }
-    }]
+    issueComments: [
+      {
+        body: "AI_REVIEW_AGENT: claude\nAI_REVIEW_SHA: abcdef123456\nAI_REVIEW_OUTCOME: block",
+        author: { login: "claude-bot" },
+      },
+    ],
   });
 
   assert.equal(findings.filter((finding) => finding.source === "claude-comment").length, 1);
@@ -1099,22 +1365,28 @@ test("later trusted Codex approval clears stale current-head review-body blocker
   const findings = collectBlockingFindings({
     headSha,
     config: { trustedReviewLoginsByAgent: { codex: ["codex-bot"] } },
-    reviews: [{
-      state: "COMMENTED",
-      body: "[P2] Fix this before merge",
-      submittedAt: "2026-05-10T13:00:00Z",
-      author: { login: "codex-bot" },
-      commit: { oid: headSha }
-    }, {
-      state: "APPROVED",
-      body: "",
-      submittedAt: "2026-05-10T13:01:00Z",
-      author: { login: "codex-bot" },
-      commit: { oid: headSha }
-    }]
+    reviews: [
+      {
+        state: "COMMENTED",
+        body: "[P2] Fix this before merge",
+        submittedAt: "2026-05-10T13:00:00Z",
+        author: { login: "codex-bot" },
+        commit: { oid: headSha },
+      },
+      {
+        state: "APPROVED",
+        body: "",
+        submittedAt: "2026-05-10T13:01:00Z",
+        author: { login: "codex-bot" },
+        commit: { oid: headSha },
+      },
+    ],
   });
 
-  assert.equal(findings.some((finding) => finding.source === "codex-review"), false);
+  assert.equal(
+    findings.some((finding) => finding.source === "codex-review"),
+    false,
+  );
 });
 
 test("later trusted Codex dismissal clears stale current-head review-body blockers", () => {
@@ -1122,22 +1394,28 @@ test("later trusted Codex dismissal clears stale current-head review-body blocke
   const findings = collectBlockingFindings({
     headSha,
     config: { trustedReviewLoginsByAgent: { codex: ["codex-bot"] } },
-    reviews: [{
-      state: "COMMENTED",
-      body: "[P2] Fix this before merge",
-      submittedAt: "2026-05-10T13:00:00Z",
-      author: { login: "codex-bot" },
-      commit: { oid: headSha }
-    }, {
-      state: "DISMISSED",
-      body: "",
-      submittedAt: "2026-05-10T13:01:00Z",
-      author: { login: "codex-bot" },
-      commit: { oid: headSha }
-    }]
+    reviews: [
+      {
+        state: "COMMENTED",
+        body: "[P2] Fix this before merge",
+        submittedAt: "2026-05-10T13:00:00Z",
+        author: { login: "codex-bot" },
+        commit: { oid: headSha },
+      },
+      {
+        state: "DISMISSED",
+        body: "",
+        submittedAt: "2026-05-10T13:01:00Z",
+        author: { login: "codex-bot" },
+        commit: { oid: headSha },
+      },
+    ],
   });
 
-  assert.equal(findings.some((finding) => finding.source === "codex-review"), false);
+  assert.equal(
+    findings.some((finding) => finding.source === "codex-review"),
+    false,
+  );
 });
 
 test("latest trusted Gemini review body with blocking severity still blocks", () => {
@@ -1145,19 +1423,22 @@ test("latest trusted Gemini review body with blocking severity still blocks", ()
   const findings = collectBlockingFindings({
     headSha,
     config: { trustedReviewLoginsByAgent: { gemini: ["gemini-bot"] } },
-    reviews: [{
-      state: "APPROVED",
-      body: "",
-      submittedAt: "2026-05-10T13:00:00Z",
-      author: { login: "gemini-bot" },
-      commit: { oid: headSha }
-    }, {
-      state: "COMMENTED",
-      body: "High severity: this still blocks finalization",
-      submittedAt: "2026-05-10T13:01:00Z",
-      author: { login: "gemini-bot" },
-      commit: { oid: headSha }
-    }]
+    reviews: [
+      {
+        state: "APPROVED",
+        body: "",
+        submittedAt: "2026-05-10T13:00:00Z",
+        author: { login: "gemini-bot" },
+        commit: { oid: headSha },
+      },
+      {
+        state: "COMMENTED",
+        body: "High severity: this still blocks finalization",
+        submittedAt: "2026-05-10T13:01:00Z",
+        author: { login: "gemini-bot" },
+        commit: { oid: headSha },
+      },
+    ],
   });
 
   assert.equal(findings.filter((finding) => finding.source === "gemini-review").length, 1);
@@ -1168,22 +1449,28 @@ test("later trusted Codex non-severity comment clears stale review-body blocker 
   const findings = collectBlockingFindings({
     headSha,
     config: { trustedReviewLoginsByAgent: { codex: ["codex-bot"] } },
-    reviews: [{
-      state: "CHANGES_REQUESTED",
-      body: "[P2] Fix this before merge",
-      submittedAt: "2026-05-10T13:00:00Z",
-      author: { login: "codex-bot" },
-      commit: { oid: headSha }
-    }, {
-      state: "COMMENTED",
-      body: "Thanks, this looks addressed.",
-      submittedAt: "2026-05-10T13:01:00Z",
-      author: { login: "codex-bot" },
-      commit: { oid: headSha }
-    }]
+    reviews: [
+      {
+        state: "CHANGES_REQUESTED",
+        body: "[P2] Fix this before merge",
+        submittedAt: "2026-05-10T13:00:00Z",
+        author: { login: "codex-bot" },
+        commit: { oid: headSha },
+      },
+      {
+        state: "COMMENTED",
+        body: "Thanks, this looks addressed.",
+        submittedAt: "2026-05-10T13:01:00Z",
+        author: { login: "codex-bot" },
+        commit: { oid: headSha },
+      },
+    ],
   });
 
-  assert.equal(findings.some((finding) => finding.source === "codex-review"), false);
+  assert.equal(
+    findings.some((finding) => finding.source === "codex-review"),
+    false,
+  );
   assert.equal(findings.filter((finding) => finding.source === "native-review").length, 1);
 });
 
@@ -1192,13 +1479,15 @@ test("trusted review bodies from older commits do not block current-head finaliz
   const findings = collectBlockingFindings({
     headSha,
     config: { trustedReviewLoginsByAgent: { codex: ["codex-bot"] } },
-    reviews: [{
-      state: "COMMENTED",
-      body: "[P2] Fix this before merge",
-      submittedAt: "2026-05-10T13:00:00Z",
-      author: { login: "codex-bot" },
-      commit: { oid: "oldsha" }
-    }]
+    reviews: [
+      {
+        state: "COMMENTED",
+        body: "[P2] Fix this before merge",
+        submittedAt: "2026-05-10T13:00:00Z",
+        author: { login: "codex-bot" },
+        commit: { oid: "oldsha" },
+      },
+    ],
   });
 
   assert.deepEqual(findings, []);
@@ -1208,41 +1497,50 @@ test("older same-reviewer changes-requested review is superseded by approval on 
   const headSha = "abc1234";
   const findings = collectBlockingFindings({
     headSha,
-    reviews: [{
-      state: "CHANGES_REQUESTED",
-      body: "",
-      submittedAt: "2026-05-10T13:00:00Z",
-      author: { login: "reviewer" },
-      commit: { oid: headSha }
-    }, {
-      state: "APPROVED",
-      body: "",
-      submittedAt: "2026-05-10T13:01:00Z",
-      author: { login: "reviewer" },
-      commit: { oid: headSha }
-    }]
+    reviews: [
+      {
+        state: "CHANGES_REQUESTED",
+        body: "",
+        submittedAt: "2026-05-10T13:00:00Z",
+        author: { login: "reviewer" },
+        commit: { oid: headSha },
+      },
+      {
+        state: "APPROVED",
+        body: "",
+        submittedAt: "2026-05-10T13:01:00Z",
+        author: { login: "reviewer" },
+        commit: { oid: headSha },
+      },
+    ],
   });
 
-  assert.equal(findings.some((finding) => finding.source === "native-review"), false);
+  assert.equal(
+    findings.some((finding) => finding.source === "native-review"),
+    false,
+  );
 });
 
 test("later same-reviewer commented review does not clear changes-requested on the same head", () => {
   const headSha = "abc1234";
   const findings = collectBlockingFindings({
     headSha,
-    reviews: [{
-      state: "CHANGES_REQUESTED",
-      body: "",
-      submittedAt: "2026-05-10T13:00:00Z",
-      author: { login: "reviewer" },
-      commit: { oid: headSha }
-    }, {
-      state: "COMMENTED",
-      body: "",
-      submittedAt: "2026-05-10T13:01:00Z",
-      author: { login: "reviewer" },
-      commit: { oid: headSha }
-    }]
+    reviews: [
+      {
+        state: "CHANGES_REQUESTED",
+        body: "",
+        submittedAt: "2026-05-10T13:00:00Z",
+        author: { login: "reviewer" },
+        commit: { oid: headSha },
+      },
+      {
+        state: "COMMENTED",
+        body: "",
+        submittedAt: "2026-05-10T13:01:00Z",
+        author: { login: "reviewer" },
+        commit: { oid: headSha },
+      },
+    ],
   });
 
   assert.equal(findings.filter((finding) => finding.source === "native-review").length, 1);
@@ -1252,41 +1550,50 @@ test("dismissed same-reviewer changes-requested review clears the native blocker
   const headSha = "abc1234";
   const findings = collectBlockingFindings({
     headSha,
-    reviews: [{
-      state: "CHANGES_REQUESTED",
-      body: "",
-      submittedAt: "2026-05-10T13:00:00Z",
-      author: { login: "reviewer" },
-      commit: { oid: headSha }
-    }, {
-      state: "DISMISSED",
-      body: "",
-      submittedAt: "2026-05-10T13:01:00Z",
-      author: { login: "reviewer" },
-      commit: { oid: headSha }
-    }]
+    reviews: [
+      {
+        state: "CHANGES_REQUESTED",
+        body: "",
+        submittedAt: "2026-05-10T13:00:00Z",
+        author: { login: "reviewer" },
+        commit: { oid: headSha },
+      },
+      {
+        state: "DISMISSED",
+        body: "",
+        submittedAt: "2026-05-10T13:01:00Z",
+        author: { login: "reviewer" },
+        commit: { oid: headSha },
+      },
+    ],
   });
 
-  assert.equal(findings.some((finding) => finding.source === "native-review"), false);
+  assert.equal(
+    findings.some((finding) => finding.source === "native-review"),
+    false,
+  );
 });
 
 test("latest same-reviewer changes-requested review still blocks on the current head", () => {
   const headSha = "abc1234";
   const findings = collectBlockingFindings({
     headSha,
-    reviews: [{
-      state: "APPROVED",
-      body: "",
-      submittedAt: "2026-05-10T13:00:00Z",
-      author: { login: "reviewer" },
-      commit: { oid: headSha }
-    }, {
-      state: "CHANGES_REQUESTED",
-      body: "",
-      submittedAt: "2026-05-10T13:01:00Z",
-      author: { login: "reviewer" },
-      commit: { oid: headSha }
-    }]
+    reviews: [
+      {
+        state: "APPROVED",
+        body: "",
+        submittedAt: "2026-05-10T13:00:00Z",
+        author: { login: "reviewer" },
+        commit: { oid: headSha },
+      },
+      {
+        state: "CHANGES_REQUESTED",
+        body: "",
+        submittedAt: "2026-05-10T13:01:00Z",
+        author: { login: "reviewer" },
+        commit: { oid: headSha },
+      },
+    ],
   });
 
   assert.equal(findings.filter((finding) => finding.source === "native-review").length, 1);
@@ -1296,25 +1603,29 @@ test("different reviewer latest changes-requested review still blocks current-he
   const headSha = "abc1234";
   const findings = collectBlockingFindings({
     headSha,
-    reviews: [{
-      state: "CHANGES_REQUESTED",
-      body: "",
-      submittedAt: "2026-05-10T13:00:00Z",
-      author: { login: "reviewer-a" },
-      commit: { oid: headSha }
-    }, {
-      state: "APPROVED",
-      body: "",
-      submittedAt: "2026-05-10T13:01:00Z",
-      author: { login: "reviewer-a" },
-      commit: { oid: headSha }
-    }, {
-      state: "CHANGES_REQUESTED",
-      body: "",
-      submittedAt: "2026-05-10T13:02:00Z",
-      author: { login: "reviewer-b" },
-      commit: { oid: headSha }
-    }]
+    reviews: [
+      {
+        state: "CHANGES_REQUESTED",
+        body: "",
+        submittedAt: "2026-05-10T13:00:00Z",
+        author: { login: "reviewer-a" },
+        commit: { oid: headSha },
+      },
+      {
+        state: "APPROVED",
+        body: "",
+        submittedAt: "2026-05-10T13:01:00Z",
+        author: { login: "reviewer-a" },
+        commit: { oid: headSha },
+      },
+      {
+        state: "CHANGES_REQUESTED",
+        body: "",
+        submittedAt: "2026-05-10T13:02:00Z",
+        author: { login: "reviewer-b" },
+        commit: { oid: headSha },
+      },
+    ],
   });
 
   assert.equal(findings.filter((finding) => finding.source === "native-review").length, 1);
@@ -1325,15 +1636,20 @@ test("truncated native review data fails closed before finalization", () => {
   assert.equal(findings.length, 1);
   assert.equal(findings[0].source, "review-pagination");
 
-  const result = evaluateFinalizationGates(successfulInput({
-    blockingFindings: findings
-  }));
+  const result = evaluateFinalizationGates(
+    successfulInput({
+      blockingFindings: findings,
+    }),
+  );
 
   assert.equal(result.action, "block");
-  assert.ok(result.blockers.some((blocker) =>
-    blocker.code === "blocking-review-finding" &&
-    blocker.message.includes("Native PR reviews are paginated")
-  ));
+  assert.ok(
+    result.blockers.some(
+      (blocker) =>
+        blocker.code === "blocking-review-finding" &&
+        blocker.message.includes("Native PR reviews are paginated"),
+    ),
+  );
 });
 
 test("truncated PR conversation comments fail closed before finalization", () => {
@@ -1341,21 +1657,29 @@ test("truncated PR conversation comments fail closed before finalization", () =>
   assert.equal(findings.length, 1);
   assert.equal(findings[0].source, "review-pagination");
 
-  const result = evaluateFinalizationGates(successfulInput({
-    blockingFindings: findings
-  }));
+  const result = evaluateFinalizationGates(
+    successfulInput({
+      blockingFindings: findings,
+    }),
+  );
 
   assert.equal(result.action, "block");
-  assert.ok(result.blockers.some((blocker) =>
-    blocker.code === "blocking-review-finding" &&
-    blocker.message.includes("PR conversation comments are paginated")
-  ));
+  assert.ok(
+    result.blockers.some(
+      (blocker) =>
+        blocker.code === "blocking-review-finding" &&
+        blocker.message.includes("PR conversation comments are paginated"),
+    ),
+  );
 });
 
 test("skipped or neutral required checks are not treated as green", () => {
   assert.equal(normalizeCheckState({ status: "COMPLETED", conclusion: "SUCCESS" }), "success");
   assert.equal(normalizeCheckState({ status: "IN_PROGRESS", conclusion: null }), "pending");
-  assert.equal(normalizeCheckState({ status: "COMPLETED", conclusion: "ACTION_REQUIRED" }), "failed");
+  assert.equal(
+    normalizeCheckState({ status: "COMPLETED", conclusion: "ACTION_REQUIRED" }),
+    "failed",
+  );
   assert.equal(normalizeCheckState({ status: "COMPLETED", conclusion: "SKIPPED" }), "failed");
   assert.equal(normalizeCheckState({ state: "NEUTRAL" }), "failed");
 });
@@ -1385,7 +1709,9 @@ test("process evidence orders final validation by explicit role-owned timestamps
 - current-PR-head guard evidence recorded by the helper's match-head-commit check.
 `;
 
-  writeFileSync(join(featureRoot, "feature-request.md"), `# Feature Request
+  writeFileSync(
+    join(featureRoot, "feature-request.md"),
+    `# Feature Request
 
 ## Final Analyst Validation Notes
 - Analyst validation pass: passed
@@ -1393,13 +1719,17 @@ test("process evidence orders final validation by explicit role-owned timestamps
 
 ## Analyst Documentation
 - Placeholder example: Final Analyst validation completed at: <ISO 8601 timestamp>
-`);
-  writeFileSync(join(featureRoot, "spec.md"), `# Specification
+`,
+  );
+  writeFileSync(
+    join(featureRoot, "spec.md"),
+    `# Specification
 
 ## Final Architect Validation Notes
 - Architect validation pass: passed
 - Final Architect validation completed at: 2026-05-10T13:00:00Z
-`);
+`,
+  );
   writeFileSync(join(featureRoot, "plan.md"), "");
   writeFileSync(join(featureRoot, "tasks.md"), tasks);
 
@@ -1408,41 +1738,56 @@ test("process evidence orders final validation by explicit role-owned timestamps
   assert.equal(ordered.finalAnalystValidation, true);
   assert.equal(ordered.finalValidationOrder, true);
 
-  writeFileSync(join(featureRoot, "spec.md"), `# Specification
+  writeFileSync(
+    join(featureRoot, "spec.md"),
+    `# Specification
 
 ## Final Architect Validation Notes
 - Architect validation pass: passed
 - Final Architect validation completed at: 2026-05-10T13:00:02Z
-`);
+`,
+  );
   assert.equal(readProcessEvidence(root, featurePath, "abc123def456").finalValidationOrder, false);
 
-  writeFileSync(join(featureRoot, "feature-request.md"), `# Feature Request
+  writeFileSync(
+    join(featureRoot, "feature-request.md"),
+    `# Feature Request
 
 ## Final Analyst Validation Notes
 - Analyst validation pass: passed
 - Final Analyst validation completed at: <ISO 8601 timestamp>
-`);
-  writeFileSync(join(featureRoot, "spec.md"), `# Specification
+`,
+  );
+  writeFileSync(
+    join(featureRoot, "spec.md"),
+    `# Specification
 
 ## Final Architect Validation Notes
 - Architect validation pass: passed
 - Final Architect validation completed at: <ISO 8601 timestamp>
-`);
+`,
+  );
   const placeholderOnly = readProcessEvidence(root, featurePath, "abc123def456");
   assert.equal(placeholderOnly.finalArchitectValidation, true);
   assert.equal(placeholderOnly.finalAnalystValidation, true);
   assert.equal(placeholderOnly.finalValidationOrder, false);
 
-  writeFileSync(join(featureRoot, "feature-request.md"), `# Feature Request
+  writeFileSync(
+    join(featureRoot, "feature-request.md"),
+    `# Feature Request
 
 ## Final Analyst Validation Notes
 - Analyst validation pass: passed
-`);
-  writeFileSync(join(featureRoot, "spec.md"), `# Specification
+`,
+  );
+  writeFileSync(
+    join(featureRoot, "spec.md"),
+    `# Specification
 
 ## Final Architect Validation Notes
 - Architect validation pass: passed
-`);
+`,
+  );
   const missingMarkers = readProcessEvidence(root, featurePath, "abc123def456");
   assert.equal(missingMarkers.finalArchitectValidation, true);
   assert.equal(missingMarkers.finalAnalystValidation, true);
@@ -1455,22 +1800,30 @@ test("process evidence uses the latest role-owned validation result marker", () 
   const featureRoot = join(root, featurePath);
   mkdirSync(featureRoot, { recursive: true });
 
-  writeFileSync(join(featureRoot, "feature-request.md"), `# Feature Request
+  writeFileSync(
+    join(featureRoot, "feature-request.md"),
+    `# Feature Request
 
 ## Final Analyst Validation Notes
 - Analyst validation pass: passed
 - Final Analyst validation completed at: 2026-05-10T13:00:01Z
-`);
-  writeFileSync(join(featureRoot, "spec.md"), `# Specification
+`,
+  );
+  writeFileSync(
+    join(featureRoot, "spec.md"),
+    `# Specification
 
 ## Final Architect Validation Notes
 - Architect validation pass: passed
 - Final Architect validation completed at: 2026-05-10T13:00:00Z
 - Architect validation pass: failed
 - Final Architect validation completed at: 2026-05-10T13:00:02Z
-`);
+`,
+  );
   writeFileSync(join(featureRoot, "plan.md"), "");
-  writeFileSync(join(featureRoot, "tasks.md"), `# Tasks
+  writeFileSync(
+    join(featureRoot, "tasks.md"),
+    `# Tasks
 
 ## Decisions
 - Decision recorded.
@@ -1486,27 +1839,34 @@ test("process evidence uses the latest role-owned validation result marker", () 
 
 ## Verification Evidence
 - Existing evidence.
-`);
+`,
+  );
 
   const architectFailed = readProcessEvidence(root, featurePath, "abc123def456");
   assert.equal(architectFailed.finalArchitectValidation, false);
   assert.equal(architectFailed.finalAnalystValidation, true);
   assert.equal(architectFailed.finalValidationOrder, false);
 
-  writeFileSync(join(featureRoot, "feature-request.md"), `# Feature Request
+  writeFileSync(
+    join(featureRoot, "feature-request.md"),
+    `# Feature Request
 
 ## Final Analyst Validation Notes
 - Analyst validation pass: passed
 - Final Analyst validation completed at: 2026-05-10T13:00:01Z
 - Analyst validation pass: failed
 - Final Analyst validation completed at: 2026-05-10T13:00:03Z
-`);
-  writeFileSync(join(featureRoot, "spec.md"), `# Specification
+`,
+  );
+  writeFileSync(
+    join(featureRoot, "spec.md"),
+    `# Specification
 
 ## Final Architect Validation Notes
 - Architect validation pass: passed
 - Final Architect validation completed at: 2026-05-10T13:00:00Z
-`);
+`,
+  );
 
   const analystFailed = readProcessEvidence(root, featurePath, "abc123def456");
   assert.equal(analystFailed.finalArchitectValidation, true);
@@ -1520,20 +1880,28 @@ test("process evidence chooses validation result by role-owned timestamp across 
   const featureRoot = join(root, featurePath);
   mkdirSync(featureRoot, { recursive: true });
 
-  writeFileSync(join(featureRoot, "feature-request.md"), `# Feature Request
+  writeFileSync(
+    join(featureRoot, "feature-request.md"),
+    `# Feature Request
 
 ## Final Analyst Validation Notes
 - Analyst validation pass: passed
 - Final Analyst validation completed at: 2026-05-10T13:00:03Z
-`);
-  writeFileSync(join(featureRoot, "spec.md"), `# Specification
+`,
+  );
+  writeFileSync(
+    join(featureRoot, "spec.md"),
+    `# Specification
 
 ## Final Architect Validation Notes
 - Architect validation pass: passed
 - Final Architect validation completed at: 2026-05-10T13:00:02Z
-`);
+`,
+  );
   writeFileSync(join(featureRoot, "plan.md"), "");
-  writeFileSync(join(featureRoot, "tasks.md"), `# Tasks
+  writeFileSync(
+    join(featureRoot, "tasks.md"),
+    `# Tasks
 
 ## Decisions
 - Decision recorded.
@@ -1553,19 +1921,25 @@ test("process evidence chooses validation result by role-owned timestamp across 
 ## Final Architect Validation Notes
 - Architect validation pass: failed
 - Final Architect validation completed at: 2026-05-10T13:00:00Z
-`);
+`,
+  );
 
   const laterSpecPass = readProcessEvidence(root, featurePath, "abc123def456");
   assert.equal(laterSpecPass.finalArchitectValidation, true);
   assert.equal(laterSpecPass.finalValidationOrder, true);
 
-  writeFileSync(join(featureRoot, "spec.md"), `# Specification
+  writeFileSync(
+    join(featureRoot, "spec.md"),
+    `# Specification
 
 ## Final Architect Validation Notes
 - Architect validation pass: passed
 - Final Architect validation completed at: 2026-05-10T13:00:00Z
-`);
-  writeFileSync(join(featureRoot, "tasks.md"), `# Tasks
+`,
+  );
+  writeFileSync(
+    join(featureRoot, "tasks.md"),
+    `# Tasks
 
 ## Decisions
 - Decision recorded.
@@ -1585,7 +1959,8 @@ test("process evidence chooses validation result by role-owned timestamp across 
 ## Final Architect Validation Notes
 - Architect validation pass: failed
 - Final Architect validation completed at: 2026-05-10T13:00:02Z
-`);
+`,
+  );
 
   const laterTasksFailure = readProcessEvidence(root, featurePath, "abc123def456");
   assert.equal(laterTasksFailure.finalArchitectValidation, false);
@@ -1597,14 +1972,20 @@ test("process evidence rejects generic current-head guard marker without effecti
   const featurePath = "specs/999-finalize-test";
   const featureRoot = join(root, featurePath);
   mkdirSync(featureRoot, { recursive: true });
-  writeFileSync(join(featureRoot, "feature-request.md"), `Analyst validation pass: passed
+  writeFileSync(
+    join(featureRoot, "feature-request.md"),
+    `Analyst validation pass: passed
 Final Analyst validation completed at: 2026-05-10T13:00:01Z
 Analyst return count: 0
-`);
-  writeFileSync(join(featureRoot, "spec.md"), `Architect validation pass: passed
+`,
+  );
+  writeFileSync(
+    join(featureRoot, "spec.md"),
+    `Architect validation pass: passed
 Final Architect validation completed at: 2026-05-10T13:00:00Z
 Architect return count: 0
-`);
+`,
+  );
   writeFileSync(join(featureRoot, "plan.md"), "");
 
   const baseTasks = `# Tasks
@@ -1631,66 +2012,108 @@ Architect return count: 0
   assert.equal(genericEvidence.feedbackDisposition, true);
   assert.equal(genericEvidence.currentHeadGuardEvidence, false);
 
-  writeFileSync(join(featureRoot, "tasks.md"), `${baseTasks}- None yet.
+  writeFileSync(
+    join(featureRoot, "tasks.md"),
+    `${baseTasks}- None yet.
 - Follow-up concern needs Architect review.
-${evidenceTasks}`);
+${evidenceTasks}`,
+  );
   assert.equal(readProcessEvidence(root, featurePath, "abc123def456").feedbackDisposition, false);
 
-  writeFileSync(join(featureRoot, "tasks.md"), `${baseTasks}- Follow-up concern needs Architect review.
+  writeFileSync(
+    join(featureRoot, "tasks.md"),
+    `${baseTasks}- Follow-up concern needs Architect review.
 - Architect disposition: not needed because covered by existing task.
-${evidenceTasks}`);
+${evidenceTasks}`,
+  );
   assert.equal(readProcessEvidence(root, featurePath, "abc123def456").feedbackDisposition, true);
 
-  writeFileSync(join(featureRoot, "tasks.md"), `${baseTasks}- Follow-up concern needs Architect review.
+  writeFileSync(
+    join(featureRoot, "tasks.md"),
+    `${baseTasks}- Follow-up concern needs Architect review.
 - Architect disposition: not needed because covered by existing task.
 - Second follow-up concern still needs Architect review.
-${evidenceTasks}`);
+${evidenceTasks}`,
+  );
   assert.equal(readProcessEvidence(root, featurePath, "abc123def456").feedbackDisposition, false);
 
-  writeFileSync(join(featureRoot, "tasks.md"), `${baseTasks}- None yet.
+  writeFileSync(
+    join(featureRoot, "tasks.md"),
+    `${baseTasks}- None yet.
 
 ## Verification Evidence
 - Required checks passed.
-`);
-  assert.equal(readProcessEvidence(root, featurePath, "abc123def456").currentHeadGuardEvidence, false);
+`,
+  );
+  assert.equal(
+    readProcessEvidence(root, featurePath, "abc123def456").currentHeadGuardEvidence,
+    false,
+  );
 });
 
 test("feedback disposition parsing rejects pending or unresolved disposition wording", () => {
-  assert.equal(hasImplementationFeedbackDisposition(`- Follow-up concern needs Architect review.
+  assert.equal(
+    hasImplementationFeedbackDisposition(`- Follow-up concern needs Architect review.
 - Disposition: pending
-`), false);
+`),
+    false,
+  );
 
-  assert.equal(hasImplementationFeedbackDisposition(`- Follow-up concern needs Architect review.
+  assert.equal(
+    hasImplementationFeedbackDisposition(`- Follow-up concern needs Architect review.
 - Architect disposition: unresolved
-`), false);
+`),
+    false,
+  );
 
-  assert.equal(hasImplementationFeedbackDisposition(`- Follow-up concern needs Architect review. Disposition: needs review by Architect.
-`), false);
+  assert.equal(
+    hasImplementationFeedbackDisposition(`- Follow-up concern needs Architect review. Disposition: needs review by Architect.
+`),
+    false,
+  );
 
-  assert.equal(hasImplementationFeedbackDisposition(`- Follow-up concern needs Architect review.
+  assert.equal(
+    hasImplementationFeedbackDisposition(`- Follow-up concern needs Architect review.
 - Architect disposition: open pending review.
-`), false);
+`),
+    false,
+  );
 
-  assert.equal(hasImplementationFeedbackDisposition(`- Follow-up concern needs Architect review.
+  assert.equal(
+    hasImplementationFeedbackDisposition(`- Follow-up concern needs Architect review.
 - Architect disposition: requires Architect disposition.
-`), false);
+`),
+    false,
+  );
 });
 
 test("feedback disposition parsing accepts final disposition wording", () => {
-  assert.equal(hasImplementationFeedbackDisposition(`- Follow-up concern needs Architect review.
+  assert.equal(
+    hasImplementationFeedbackDisposition(`- Follow-up concern needs Architect review.
 - Disposition: not needed because existing tasks cover it.
-`), true);
+`),
+    true,
+  );
 
-  assert.equal(hasImplementationFeedbackDisposition(`- Follow-up concern needs Architect review. Architect disposition: accepted and addressed in this slice.
-`), true);
+  assert.equal(
+    hasImplementationFeedbackDisposition(`- Follow-up concern needs Architect review. Architect disposition: accepted and addressed in this slice.
+`),
+    true,
+  );
 
-  assert.equal(hasImplementationFeedbackDisposition(`- Follow-up concern needs Architect review.
+  assert.equal(
+    hasImplementationFeedbackDisposition(`- Follow-up concern needs Architect review.
 - No unresolved Implementation Agent feedback remains.
-`), true);
+`),
+    true,
+  );
 
-  assert.equal(hasImplementationFeedbackDisposition(`- Follow-up concern needs Architect review.
+  assert.equal(
+    hasImplementationFeedbackDisposition(`- Follow-up concern needs Architect review.
 - Disposition: superseded by the final validation evidence task.
-`), true);
+`),
+    true,
+  );
 });
 
 test("process evidence accepts effective-head marker plus guard reference", () => {
@@ -1699,14 +2122,22 @@ test("process evidence accepts effective-head marker plus guard reference", () =
   const featureRoot = join(root, featurePath);
   const effectiveContentHead = "0123456789abcdef0123456789abcdef01234567";
   mkdirSync(featureRoot, { recursive: true });
-  writeFileSync(join(featureRoot, "feature-request.md"), `Analyst validation pass: passed
+  writeFileSync(
+    join(featureRoot, "feature-request.md"),
+    `Analyst validation pass: passed
 Final Analyst validation completed at: 2026-05-10T13:00:01Z
-`);
-  writeFileSync(join(featureRoot, "spec.md"), `Architect validation pass: passed
+`,
+  );
+  writeFileSync(
+    join(featureRoot, "spec.md"),
+    `Architect validation pass: passed
 Final Architect validation completed at: 2026-05-10T13:00:00Z
-`);
+`,
+  );
   writeFileSync(join(featureRoot, "plan.md"), "");
-  writeFileSync(join(featureRoot, "tasks.md"), `# Tasks
+  writeFileSync(
+    join(featureRoot, "tasks.md"),
+    `# Tasks
 
 ## Decisions
 - Effective content head: ${effectiveContentHead}
@@ -1722,7 +2153,8 @@ Final Architect validation completed at: 2026-05-10T13:00:00Z
 
 ## Verification Evidence
 - current-PR-head guard compared the current PR head with effective content head ${effectiveContentHead.slice(0, 12)} and found only final-validation evidence changes.
-`);
+`,
+  );
 
   const evidence = readProcessEvidence(root, featurePath, effectiveContentHead);
   assert.equal(evidence.effectiveContentHead, effectiveContentHead);
@@ -1736,18 +2168,20 @@ test("process evidence blocks when cycle PR set evidence is missing", () => {
   const featurePath = "specs/999-finalize-test";
   const effectiveContentHead = "0123456789abcdef0123456789abcdef01234567";
   writeFinalValidationFeatureMemory(root, featurePath, effectiveContentHead, {
-    taskOverrides: { includeCyclePrSet: false }
+    taskOverrides: { includeCyclePrSet: false },
   });
 
   const evidence = readProcessEvidence(root, featurePath, effectiveContentHead);
   assert.equal(evidence.currentProcessMemory, false);
 
-  const result = evaluateFinalizationGates(successfulInput({
-    processEvidence: {
-      ...successfulInput().processEvidence,
-      ...evidence
-    }
-  }));
+  const result = evaluateFinalizationGates(
+    successfulInput({
+      processEvidence: {
+        ...successfulInput().processEvidence,
+        ...evidence,
+      },
+    }),
+  );
   assert.ok(result.blockers.some((blocker) => blocker.code === "stale-process-memory"));
 });
 
@@ -1759,19 +2193,21 @@ test("process evidence blocks when validation return counts are missing", () => 
     includeRoleReturnCounts: false,
     taskOverrides: {
       includeArchitectReturnCount: false,
-      includeAnalystReturnCount: false
-    }
+      includeAnalystReturnCount: false,
+    },
   });
 
   const evidence = readProcessEvidence(root, featurePath, effectiveContentHead);
   assert.equal(evidence.currentProcessMemory, false);
 
-  const result = evaluateFinalizationGates(successfulInput({
-    processEvidence: {
-      ...successfulInput().processEvidence,
-      ...evidence
-    }
-  }));
+  const result = evaluateFinalizationGates(
+    successfulInput({
+      processEvidence: {
+        ...successfulInput().processEvidence,
+        ...evidence,
+      },
+    }),
+  );
   assert.ok(result.blockers.some((blocker) => blocker.code === "stale-process-memory"));
 });
 
@@ -1780,18 +2216,20 @@ test("process evidence blocks when limit escalation state is missing", () => {
   const featurePath = "specs/999-finalize-test";
   const effectiveContentHead = "0123456789abcdef0123456789abcdef01234567";
   writeFinalValidationFeatureMemory(root, featurePath, effectiveContentHead, {
-    taskOverrides: { includeLimitEscalation: false }
+    taskOverrides: { includeLimitEscalation: false },
   });
 
   const evidence = readProcessEvidence(root, featurePath, effectiveContentHead);
   assert.equal(evidence.currentProcessMemory, false);
 
-  const result = evaluateFinalizationGates(successfulInput({
-    processEvidence: {
-      ...successfulInput().processEvidence,
-      ...evidence
-    }
-  }));
+  const result = evaluateFinalizationGates(
+    successfulInput({
+      processEvidence: {
+        ...successfulInput().processEvidence,
+        ...evidence,
+      },
+    }),
+  );
   assert.ok(result.blockers.some((blocker) => blocker.code === "stale-process-memory"));
 });
 
@@ -1802,17 +2240,19 @@ test("process evidence with full workflow markers can satisfy merge gates", () =
   writeFinalValidationFeatureMemory(root, featurePath, effectiveContentHead);
 
   const evidence = readProcessEvidence(root, featurePath, effectiveContentHead);
-  const result = evaluateFinalizationGates(successfulInput({
-    suppliedHeadSha: effectiveContentHead,
-    pr: {
-      number: 12,
-      headSha: effectiveContentHead,
-      isDraft: false,
-      mergeable: "MERGEABLE",
-      mergeStateStatus: "CLEAN"
-    },
-    processEvidence: evidence
-  }));
+  const result = evaluateFinalizationGates(
+    successfulInput({
+      suppliedHeadSha: effectiveContentHead,
+      pr: {
+        number: 12,
+        headSha: effectiveContentHead,
+        isDraft: false,
+        mergeable: "MERGEABLE",
+        mergeStateStatus: "CLEAN",
+      },
+      processEvidence: evidence,
+    }),
+  );
 
   assert.equal(evidence.currentProcessMemory, true);
   assert.equal(result.ready, true);
@@ -1825,14 +2265,22 @@ test("process evidence accepts template process-memory heading levels", () => {
   const featureRoot = join(root, featurePath);
   const effectiveContentHead = "0123456789abcdef0123456789abcdef01234567";
   mkdirSync(featureRoot, { recursive: true });
-  writeFileSync(join(featureRoot, "feature-request.md"), `Analyst validation pass: passed
+  writeFileSync(
+    join(featureRoot, "feature-request.md"),
+    `Analyst validation pass: passed
 Final Analyst validation completed at: 2026-05-10T13:00:01Z
-`);
-  writeFileSync(join(featureRoot, "spec.md"), `Architect validation pass: passed
+`,
+  );
+  writeFileSync(
+    join(featureRoot, "spec.md"),
+    `Architect validation pass: passed
 Final Architect validation completed at: 2026-05-10T13:00:00Z
-`);
+`,
+  );
   writeFileSync(join(featureRoot, "plan.md"), "");
-  writeFileSync(join(featureRoot, "tasks.md"), `# Tasks
+  writeFileSync(
+    join(featureRoot, "tasks.md"),
+    `# Tasks
 
 ## Process Memory
 
@@ -1859,7 +2307,8 @@ Final Architect validation completed at: 2026-05-10T13:00:00Z
 
 ## Implementation Agent Feedback
 - None yet.
-`);
+`,
+  );
 
   const evidence = readProcessEvidence(root, featurePath, effectiveContentHead);
   assert.equal(evidence.acceptanceEvidence, true);
@@ -1873,17 +2322,26 @@ test("post-effective-head path helper allows only role process evidence files", 
     "specs/999-finalize-test/feature-request.md",
     "specs/999-finalize-test/spec.md",
     "specs/999-finalize-test/plan.md",
-    "specs/999-finalize-test/tasks.md"
+    "specs/999-finalize-test/tasks.md",
   ];
 
-  assert.equal(isFinalValidationEvidencePath("specs/999-finalize-test/tasks.md", featurePath), true);
-  assert.equal(isFinalValidationEvidencePath("specs/999-finalize-test/notes.md", featurePath), false);
+  assert.equal(
+    isFinalValidationEvidencePath("specs/999-finalize-test/tasks.md", featurePath),
+    true,
+  );
+  assert.equal(
+    isFinalValidationEvidencePath("specs/999-finalize-test/notes.md", featurePath),
+    false,
+  );
   assert.equal(isFinalValidationEvidencePath("scripts/finalize-pr.mjs", featurePath), false);
 
   const allowed = evaluatePostEffectiveHeadChangedFiles(changedFiles, featurePath);
   assert.equal(allowed.postEffectiveHeadEvidenceOnly, true);
 
-  const blocked = evaluatePostEffectiveHeadChangedFiles([...changedFiles, "scripts/finalize-pr.mjs"], featurePath);
+  const blocked = evaluatePostEffectiveHeadChangedFiles(
+    [...changedFiles, "scripts/finalize-pr.mjs"],
+    featurePath,
+  );
   assert.equal(blocked.postEffectiveHeadEvidenceOnly, false);
   assert.deepEqual(blocked.postEffectiveHeadInvalidPaths, ["scripts/finalize-pr.mjs"]);
 });

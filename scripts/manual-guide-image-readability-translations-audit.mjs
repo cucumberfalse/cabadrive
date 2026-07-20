@@ -3,9 +3,12 @@ import { existsSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import ts from "typescript";
 
-const defaultEvidencePath = "content/validation/manual-guide-image-readability-translations.evidence.json";
-const evidencePath = process.env.MANUAL_GUIDE_IMAGE_READABILITY_TRANSLATIONS_EVIDENCE_PATH ?? defaultEvidencePath;
-const sectionRoot = process.env.MANUAL_GUIDE_IMAGE_READABILITY_SECTION_ROOT ?? "src/data/manual-sections";
+const defaultEvidencePath =
+  "content/validation/manual-guide-image-readability-translations.evidence.json";
+const evidencePath =
+  process.env.MANUAL_GUIDE_IMAGE_READABILITY_TRANSLATIONS_EVIDENCE_PATH ?? defaultEvidencePath;
+const sectionRoot =
+  process.env.MANUAL_GUIDE_IMAGE_READABILITY_SECTION_ROOT ?? "src/data/manual-sections";
 const featureId = "035-manual-image-readability-translations";
 const minimumReadableTextHeightPx = 14;
 const bodyTextParityTargetPercent = 90;
@@ -17,7 +20,7 @@ const denseApp4SheetSectionIds = new Set([
   "app4-signs-temporary",
   "app4-signs-horizontal",
   "app4-signs-traffic-lights",
-  "app4-signs-regulatory"
+  "app4-signs-regulatory",
 ]);
 const denseApp4SheetImageIds = new Set([
   "app4-warning-page-187-source-card",
@@ -35,13 +38,13 @@ const denseApp4SheetImageIds = new Set([
   "app4-traffic-lights-page-199-source-card",
   "app4-traffic-lights-page-200-source-card",
   "app4-regulatory-page-185-source-card",
-  "app4-regulatory-page-186-source-card"
+  "app4-regulatory-page-186-source-card",
 ]);
 const denseApp4SheetAttemptedAlternatives = [
   "official-page-and-retained-source-sheet-assets-reviewed",
   "current-runtime-asset-is-a-tighter-official-source-crop",
   "split-panel-card-strategy-reviewed-without-source-pixel-upscaling",
-  "contained-natural-width-display-plus-itemized-dom-glossary-kept"
+  "contained-natural-width-display-plus-itemized-dom-glossary-kept",
 ];
 const denseApp4SheetGroupDefinition = {
   id: denseApp4SheetReadabilityGroupId,
@@ -57,10 +60,10 @@ const denseApp4SheetGroupDefinition = {
     "exactEvidencePaths",
     "higherQualityOfficialSourceSearch",
     "tighterCropEvaluation",
-    "splitPanelCardEvaluation"
+    "splitPanelCardEvaluation",
   ],
   acceptance:
-    "Dense official sign/marking/signal sheets are accepted only with protected source-as-is pixels, no upscaling, contained natural-width scrolling on mobile, and itemized Russian DOM translations for visible Spanish catalog captions."
+    "Dense official sign/marking/signal sheets are accepted only with protected source-as-is pixels, no upscaling, contained natural-width scrolling on mobile, and itemized Russian DOM translations for visible Spanish catalog captions.",
 };
 const manualReviewedReadabilityRecordKeys = new Set([
   "app1-other-required-safety-elements:app1-matafuegos-source-card",
@@ -100,7 +103,7 @@ const manualReviewedReadabilityRecordKeys = new Set([
   "ch2-required-documents:rva-source-card",
   "ch4-alcohol-drugs:drug-test-device-source-card",
   "ch4-distractions:attention-photo-source-card",
-  "ch5-anticipatory-efficient-driving:driving-culture-photo-source-card"
+  "ch5-anticipatory-efficient-driving:driving-culture-photo-source-card",
 ]);
 
 const args = process.argv.slice(2);
@@ -109,16 +112,10 @@ const unknownArgs = args.filter((arg) => arg !== "--write");
 
 if (unknownArgs.length > 0) {
   console.error(`Unknown argument(s): ${unknownArgs.join(", ")}`);
-  console.error("Usage: node scripts/manual-guide-image-readability-translations-audit.mjs [--write]");
+  console.error(
+    "Usage: node scripts/manual-guide-image-readability-translations-audit.mjs [--write]",
+  );
   process.exit(1);
-}
-
-function assertCondition(condition, message, details = {}) {
-  if (!condition) {
-    const error = new Error(message);
-    error.details = details;
-    throw error;
-  }
 }
 
 function isObject(value) {
@@ -138,7 +135,7 @@ function assetEvidence(path) {
     path,
     exists: nonEmptyString(path) && existsSync(path),
     dimensions: nonEmptyString(path) && existsSync(path) ? readImageDimensions(path) : null,
-    sha256: nonEmptyString(path) && existsSync(path) ? sha256File(path) : null
+    sha256: nonEmptyString(path) && existsSync(path) ? sha256File(path) : null,
   };
 }
 
@@ -152,7 +149,11 @@ function retainedFullSheetAssetPath(assetPath) {
 
 function sourceScreenshotPathFor(sectionMeta, sourcePage) {
   const pageToken = `page-${String(sourcePage).padStart(3, "0")}-`;
-  return sectionMeta.section.visualEvidence?.sourceScreenshots?.find((path) => path.includes(pageToken)) ?? null;
+  return (
+    sectionMeta.section.visualEvidence?.sourceScreenshots?.find((path) =>
+      path.includes(pageToken),
+    ) ?? null
+  );
 }
 
 function focusedApp4PanelAssets(sectionId) {
@@ -162,7 +163,7 @@ function focusedApp4PanelAssets(sectionId) {
     "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/anexo-regulatory-panel-01-source-as-is.jpg",
     "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/anexo-regulatory-panel-02-source-as-is.jpg",
     "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/anexo-regulatory-panel-03-source-as-is.jpg",
-    "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/anexo-regulatory-panel-04-source-as-is.jpg"
+    "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/anexo-regulatory-panel-04-source-as-is.jpg",
   ];
 }
 
@@ -190,7 +191,12 @@ function readImageDimensions(path) {
       if (marker === 0xd9 || marker === 0xda) break;
       const segmentLength = bytes.readUInt16BE(offset);
       if (segmentLength < 2 || offset + segmentLength > bytes.length) break;
-      if ((marker >= 0xc0 && marker <= 0xc3) || (marker >= 0xc5 && marker <= 0xc7) || (marker >= 0xc9 && marker <= 0xcb) || (marker >= 0xcd && marker <= 0xcf)) {
+      if (
+        (marker >= 0xc0 && marker <= 0xc3) ||
+        (marker >= 0xc5 && marker <= 0xc7) ||
+        (marker >= 0xc9 && marker <= 0xcb) ||
+        (marker >= 0xcd && marker <= 0xcf)
+      ) {
         return { width: bytes.readUInt16BE(offset + 5), height: bytes.readUInt16BE(offset + 3) };
       }
       offset += segmentLength;
@@ -222,9 +228,10 @@ function evaluateExpression(node, env) {
     const value = {};
     for (const property of node.properties) {
       if (ts.isPropertyAssignment(property)) {
-        const key = ts.isIdentifier(property.name) || ts.isStringLiteralLike(property.name)
-          ? property.name.text
-          : property.name.getText();
+        const key =
+          ts.isIdentifier(property.name) || ts.isStringLiteralLike(property.name)
+            ? property.name.text
+            : property.name.getText();
         value[key] = evaluateExpression(property.initializer, env);
       } else if (ts.isShorthandPropertyAssignment(property)) {
         value[property.name.text] = env.get(property.name.text);
@@ -242,14 +249,20 @@ function sectionFiles() {
     .map((fileName) => ({
       fileName,
       path: join(sectionRoot, fileName),
-      source: readFileSync(join(sectionRoot, fileName), "utf8")
+      source: readFileSync(join(sectionRoot, fileName), "utf8"),
     }));
 }
 
 function loadSections() {
   const sections = [];
   for (const file of sectionFiles()) {
-    const sourceFile = ts.createSourceFile(file.path, file.source, ts.ScriptTarget.Latest, true, ts.ScriptKind.TS);
+    const sourceFile = ts.createSourceFile(
+      file.path,
+      file.source,
+      ts.ScriptTarget.Latest,
+      true,
+      ts.ScriptKind.TS,
+    );
     const env = new Map();
 
     for (const statement of sourceFile.statements) {
@@ -262,7 +275,11 @@ function loadSections() {
     }
 
     for (const statement of sourceFile.statements) {
-      if (!ts.isVariableStatement(statement) || !statement.modifiers?.some((modifier) => modifier.kind === ts.SyntaxKind.ExportKeyword)) continue;
+      if (
+        !ts.isVariableStatement(statement) ||
+        !statement.modifiers?.some((modifier) => modifier.kind === ts.SyntaxKind.ExportKeyword)
+      )
+        continue;
       for (const declaration of statement.declarationList.declarations) {
         if (!ts.isIdentifier(declaration.name)) continue;
         const value = evaluateExpression(declaration.initializer, env);
@@ -271,7 +288,7 @@ function loadSections() {
             exportName: declaration.name.text,
             modulePath: file.path,
             sourceFile: file.fileName,
-            section: value
+            section: value,
           });
         }
       }
@@ -285,7 +302,11 @@ function visibleSpanishExceptionFor(image) {
 }
 
 function isDenseApp4SheetRecord(sectionId, imageKind, imageId) {
-  return imageKind === "source-image-cards" && denseApp4SheetSectionIds.has(sectionId) && denseApp4SheetImageIds.has(imageId);
+  return (
+    imageKind === "source-image-cards" &&
+    denseApp4SheetSectionIds.has(sectionId) &&
+    denseApp4SheetImageIds.has(imageId)
+  );
 }
 
 function translationItemsFor(block, image, imageKind) {
@@ -295,7 +316,7 @@ function translationItemsFor(block, image, imageKind) {
       translationRu: term.translationRu,
       role: "term-translation",
       learnerRelevant: true,
-      coverageStatus: "covered"
+      coverageStatus: "covered",
     }));
   }
   if (imageKind === "mobility-context.space" && Array.isArray(image.modes)) {
@@ -304,28 +325,38 @@ function translationItemsFor(block, image, imageKind) {
       translationRu: mode.labelRu,
       role: "mode-label",
       learnerRelevant: true,
-      coverageStatus: "covered"
+      coverageStatus: "covered",
     }));
   }
-  if ((imageKind === "pedestrian-infrastructure" || imageKind === "public-transport-infrastructure") && Array.isArray(image.details)) {
+  if (
+    (imageKind === "pedestrian-infrastructure" ||
+      imageKind === "public-transport-infrastructure") &&
+    Array.isArray(image.details)
+  ) {
     return image.details.map((detail) => ({
       termEs: null,
       translationRu: `${detail.labelRu}: ${detail.textRu}`,
       role: "structured-russian-detail",
       learnerRelevant: true,
-      coverageStatus: "covered"
+      coverageStatus: "covered",
     }));
   }
   if (imageKind === "priority-area-map") {
     return [
-      { termEs: "Áreas con prioridad peatonal", translationRu: block.areasRu, role: "map-area-label", learnerRelevant: true, coverageStatus: "covered" },
+      {
+        termEs: "Áreas con prioridad peatonal",
+        translationRu: block.areasRu,
+        role: "map-area-label",
+        learnerRelevant: true,
+        coverageStatus: "covered",
+      },
       ...(block.legend ?? []).map((entry) => ({
         termEs: null,
         translationRu: entry.labelRu,
         role: "map-legend",
         learnerRelevant: true,
-        coverageStatus: "covered"
-      }))
+        coverageStatus: "covered",
+      })),
     ];
   }
   if (imageKind === "public-transport-comparison" && Array.isArray(block.facts)) {
@@ -334,7 +365,7 @@ function translationItemsFor(block, image, imageKind) {
       translationRu: `${fact.valueRu} ${fact.labelRu}`,
       role: "stat-label",
       learnerRelevant: true,
-      coverageStatus: "covered"
+      coverageStatus: "covered",
     }));
   }
   return [];
@@ -351,7 +382,8 @@ function runtimeSelectorFor(imageKind, block, image) {
 }
 
 function translationDomSelectorFor(imageKind, block, image) {
-  if (Array.isArray(image.termTranslations) && image.termTranslations.length > 0) return ".manual-source-image-term-translations";
+  if (Array.isArray(image.termTranslations) && image.termTranslations.length > 0)
+    return ".manual-source-image-term-translations";
   if (imageKind === "mobility-context.space") return ".manual-space-labels";
   if (imageKind === "pedestrian-infrastructure") return ".manual-infrastructure-copy";
   if (imageKind === "public-transport-infrastructure") return ".manual-public-transport-copy";
@@ -374,7 +406,7 @@ function displayRecordFor(imageKind, image, dimensions) {
       mobileContainedScroll: Boolean(minDisplayWidthPx),
       readabilityDisposition: minDisplayWidthPx
         ? "no-upscale-contained-natural-width-display"
-        : "no-upscale-source-card-display"
+        : "no-upscale-source-card-display",
     };
   }
   return {
@@ -383,18 +415,26 @@ function displayRecordFor(imageKind, image, dimensions) {
     minDisplayWidthPx: null,
     noUpscale: true,
     mobileContainedScroll: false,
-    readabilityDisposition: "existing-renderer-display"
+    readabilityDisposition: "existing-renderer-display",
   };
 }
 
 function reviewedEvidencePathsFor(sectionMeta) {
   return [
     ...(sectionMeta.section.visualEvidence?.sourceScreenshots ?? []),
-    ...(sectionMeta.section.visualEvidence?.russianScreenshots ?? [])
+    ...(sectionMeta.section.visualEvidence?.russianScreenshots ?? []),
   ];
 }
 
-function denseApp4SourceAlternativeReviewFor(sectionMeta, image, imageId, assetPath, dimensions, display, translationItems) {
+function denseApp4SourceAlternativeReviewFor(
+  sectionMeta,
+  image,
+  imageId,
+  assetPath,
+  dimensions,
+  display,
+  translationItems,
+) {
   const officialPageAsset = assetEvidence(manualPageAssetPath(image.sourcePage));
   const retainedFullSheetAsset = assetEvidence(retainedFullSheetAssetPath(assetPath));
   const currentTightCropAsset = {
@@ -404,9 +444,9 @@ function denseApp4SourceAlternativeReviewFor(sectionMeta, image, imageId, assetP
       dimensions && image.sourceRegion
         ? {
             width: Math.abs(dimensions.width - image.sourceRegion.width),
-            height: Math.abs(dimensions.height - image.sourceRegion.height)
+            height: Math.abs(dimensions.height - image.sourceRegion.height),
           }
-        : null
+        : null,
   };
   const sourceScreenshotPath = sourceScreenshotPathFor(sectionMeta, image.sourcePage);
   const exactEvidencePaths = [
@@ -414,9 +454,11 @@ function denseApp4SourceAlternativeReviewFor(sectionMeta, image, imageId, assetP
     ...(sectionMeta.section.visualEvidence?.russianScreenshots ?? []),
     officialPageAsset.path,
     retainedFullSheetAsset.path,
-    currentTightCropAsset.path
+    currentTightCropAsset.path,
   ].filter(nonEmptyString);
-  const focusedPanelAssets = focusedApp4PanelAssets(sectionMeta.section.sectionId).map(assetEvidence);
+  const focusedPanelAssets = focusedApp4PanelAssets(sectionMeta.section.sectionId).map(
+    assetEvidence,
+  );
 
   return {
     status: "concrete-official-source-alternatives-reviewed",
@@ -429,18 +471,18 @@ function denseApp4SourceAlternativeReviewFor(sectionMeta, image, imageId, assetP
     higherQualityOfficialSourceSearch: {
       status: "reviewed-existing-official-page-and-retained-full-sheet-assets",
       conclusion:
-        "The repository contains the official page JPEG and retained full-sheet source-as-is image for this page. The runtime asset is a crop from those official pixels; no alternate higher-resolution official asset is present in the committed source set for this section."
+        "The repository contains the official page JPEG and retained full-sheet source-as-is image for this page. The runtime asset is a crop from those official pixels; no alternate higher-resolution official asset is present in the committed source set for this section.",
     },
     tighterCropEvaluation: {
       status: "already-tight-source-sheet-crop",
       conclusion:
-        "The runtime crop removes the outer full-page margins and its natural dimensions match the recorded source region within the audit tolerance. Further tightening would remove catalog items or headings from the protected sheet."
+        "The runtime crop removes the outer full-page margins and its natural dimensions match the recorded source region within the audit tolerance. Further tightening would remove catalog items or headings from the protected sheet.",
     },
     splitPanelCardEvaluation: {
       status: "reviewed-not-a-text-height-fix-without-upscaling",
       conclusion:
         "Splitting these protected sheet pixels into per-item panels would not increase the source pixel height of embedded captions unless the browser upscaled the crop. The accepted learner support is therefore no-upscale natural-width display plus itemized Russian DOM translations for every recorded catalog caption.",
-      existingFocusedPanelAssets: focusedPanelAssets
+      existingFocusedPanelAssets: focusedPanelAssets,
     },
     runtimeDisplayDecision: {
       minDisplayWidthPx: display.minDisplayWidthPx,
@@ -448,12 +490,20 @@ function denseApp4SourceAlternativeReviewFor(sectionMeta, image, imageId, assetP
       noUpscale: display.noUpscale,
       mobileContainedScroll: display.mobileContainedScroll,
       translationDomSelector: ".manual-source-image-term-translations",
-      translationItemCount: translationItems.length
-    }
+      translationItemCount: translationItems.length,
+    },
   };
 }
 
-function textReadabilityEvidenceFor(sectionMeta, imageKind, image, imageId, display, translationItems, visibleSpanish) {
+function textReadabilityEvidenceFor(
+  sectionMeta,
+  imageKind,
+  image,
+  imageId,
+  display,
+  translationItems,
+  visibleSpanish,
+) {
   if (!visibleSpanish) return null;
   if (isObject(image.textReadabilityEvidence)) return image.textReadabilityEvidence;
 
@@ -466,7 +516,7 @@ function textReadabilityEvidenceFor(sectionMeta, imageKind, image, imageId, disp
       image.assetPath,
       assetEvidence(image.assetPath).dimensions,
       display,
-      translationItems
+      translationItems,
     );
     return {
       status: "source-limited-with-structured-dom-support",
@@ -480,7 +530,7 @@ function textReadabilityEvidenceFor(sectionMeta, imageKind, image, imageId, disp
         reason:
           "The official Appendix IV catalog sheets contain many small protected sign/marking/signal captions inside source pixels. The source raster remains below the 14px embedded-text target for some labels when treated as a whole sheet, so comprehension is provided by itemized Russian DOM translations while the image stays source-as-is.",
         attemptedAlternatives: denseApp4SheetAttemptedAlternatives,
-        officialSourceAlternativeReview
+        officialSourceAlternativeReview,
       },
       structuredDomSupportRequired: true,
       translationItemCount: translationItems.length,
@@ -488,13 +538,14 @@ function textReadabilityEvidenceFor(sectionMeta, imageKind, image, imageId, disp
         minDisplayWidthPx: display.minDisplayWidthPx,
         maxDisplayWidthPx: display.maxDisplayWidthPx,
         noUpscale: display.noUpscale,
-        mobileContainedScroll: display.mobileContainedScroll
-      }
+        mobileContainedScroll: display.mobileContainedScroll,
+      },
     };
   }
 
   if (reviewedEvidencePaths.length === 0) return null;
-  if (!manualReviewedReadabilityRecordKeys.has(`${sectionMeta.section.sectionId}:${imageId}`)) return null;
+  if (!manualReviewedReadabilityRecordKeys.has(`${sectionMeta.section.sectionId}:${imageId}`))
+    return null;
   return {
     status: "manual-reviewed-pass",
     basis: "manual-screenshot-review",
@@ -509,8 +560,8 @@ function textReadabilityEvidenceFor(sectionMeta, imageKind, image, imageId, disp
       minDisplayWidthPx: display.minDisplayWidthPx,
       maxDisplayWidthPx: display.maxDisplayWidthPx,
       noUpscale: display.noUpscale,
-      mobileContainedScroll: display.mobileContainedScroll
-    }
+      mobileContainedScroll: display.mobileContainedScroll,
+    },
   };
 }
 
@@ -520,7 +571,15 @@ function createImageRecord(sectionMeta, block, image, imageKind, imageId, assetP
   const translationItems = translationItemsFor(block, image, imageKind);
   const visibleSpanish = image.visibleSpanish === true;
   const exception = visibleSpanishExceptionFor(image);
-  const textReadabilityEvidence = textReadabilityEvidenceFor(sectionMeta, imageKind, image, imageId, display, translationItems, visibleSpanish);
+  const textReadabilityEvidence = textReadabilityEvidenceFor(
+    sectionMeta,
+    imageKind,
+    image,
+    imageId,
+    display,
+    translationItems,
+    visibleSpanish,
+  );
   return {
     sectionId: sectionMeta.section.sectionId,
     sectionTitleRu: sectionMeta.section.titleRu,
@@ -545,21 +604,21 @@ function createImageRecord(sectionMeta, block, image, imageKind, imageId, assetP
           kind: exception.kind,
           visibleSpanishScope: exception.visibleSpanishScope,
           sourceAsIs: exception.sourceAsIs,
-          russianExplanationOutsideImage: exception.russianExplanationOutsideImage ?? null
+          russianExplanationOutsideImage: exception.russianExplanationOutsideImage ?? null,
         }
       : null,
     structuredRussianSupport: {
       status: !visibleSpanish || translationItems.length > 0 ? "pass" : "fail",
       itemCount: translationItems.length,
-      items: translationItems
+      items: translationItems,
     },
     display,
     textReadabilityEvidence,
     visualEvidence: {
       sourceScreenshots: sectionMeta.section.visualEvidence?.sourceScreenshots ?? [],
-      russianScreenshots: sectionMeta.section.visualEvidence?.russianScreenshots ?? []
+      russianScreenshots: sectionMeta.section.visualEvidence?.russianScreenshots ?? [],
     },
-    ...extra
+    ...extra,
   };
 }
 
@@ -569,24 +628,79 @@ function collectImageRecords(sections) {
     for (const block of sectionMeta.section.blocks ?? []) {
       if (block.kind === "source-image-cards") {
         for (const card of block.cards ?? []) {
-          records.push(createImageRecord(sectionMeta, block, card, block.kind, card.id, card.assetPath));
+          records.push(
+            createImageRecord(sectionMeta, block, card, block.kind, card.id, card.assetPath),
+          );
         }
       } else if (block.kind === "mobility-context") {
-        records.push(createImageRecord(sectionMeta, block, block.space, "mobility-context.space", block.space.id ?? block.id, block.space.assetPath));
-      } else if (block.kind === "pedestrian-infrastructure" || block.kind === "public-transport-infrastructure") {
+        records.push(
+          createImageRecord(
+            sectionMeta,
+            block,
+            block.space,
+            "mobility-context.space",
+            block.space.id ?? block.id,
+            block.space.assetPath,
+          ),
+        );
+      } else if (
+        block.kind === "pedestrian-infrastructure" ||
+        block.kind === "public-transport-infrastructure"
+      ) {
         for (const card of block.cards ?? []) {
-          if (card.assetPath) records.push(createImageRecord(sectionMeta, block, card, block.kind, card.id, card.assetPath));
+          if (card.assetPath)
+            records.push(
+              createImageRecord(sectionMeta, block, card, block.kind, card.id, card.assetPath),
+            );
         }
       } else if (block.kind === "bicycle-distance") {
         for (const example of block.examples ?? []) {
-          records.push(createImageRecord(sectionMeta, block, example, block.kind, example.id, example.assetPath));
+          records.push(
+            createImageRecord(
+              sectionMeta,
+              block,
+              example,
+              block.kind,
+              example.id,
+              example.assetPath,
+            ),
+          );
         }
       } else if (block.kind === "impact-diagram") {
-        records.push(createImageRecord(sectionMeta, block, { assetPath: block.bodyAssetPath, visibleSpanish: false }, "impact-diagram.body", `${block.id}:body`, block.bodyAssetPath));
-        records.push(createImageRecord(sectionMeta, block, { assetPath: block.carAssetPath, visibleSpanish: false }, "impact-diagram.car", `${block.id}:car`, block.carAssetPath));
-        records.push(createImageRecord(sectionMeta, block, { assetPath: block.targetAssetPath, visibleSpanish: false }, "impact-diagram.target", `${block.id}:target`, block.targetAssetPath));
+        records.push(
+          createImageRecord(
+            sectionMeta,
+            block,
+            { assetPath: block.bodyAssetPath, visibleSpanish: false },
+            "impact-diagram.body",
+            `${block.id}:body`,
+            block.bodyAssetPath,
+          ),
+        );
+        records.push(
+          createImageRecord(
+            sectionMeta,
+            block,
+            { assetPath: block.carAssetPath, visibleSpanish: false },
+            "impact-diagram.car",
+            `${block.id}:car`,
+            block.carAssetPath,
+          ),
+        );
+        records.push(
+          createImageRecord(
+            sectionMeta,
+            block,
+            { assetPath: block.targetAssetPath, visibleSpanish: false },
+            "impact-diagram.target",
+            `${block.id}:target`,
+            block.targetAssetPath,
+          ),
+        );
       } else if (block.assetPath) {
-        records.push(createImageRecord(sectionMeta, block, block, block.kind, block.id, block.assetPath));
+        records.push(
+          createImageRecord(sectionMeta, block, block, block.kind, block.id, block.assetPath),
+        );
       }
     }
   }
@@ -595,13 +709,41 @@ function collectImageRecords(sections) {
 
 function requiredExampleCoverage(records) {
   const groups = [
-    { id: "app4-signs-warning", label: "Appendix IV warning sign sheets", sectionIds: ["app4-signs-warning"] },
-    { id: "app4-signs-informational", label: "Appendix IV informational sign sheets", sectionIds: ["app4-signs-informational"] },
-    { id: "app4-signs-temporary", label: "Appendix IV temporary sign sheets", sectionIds: ["app4-signs-temporary"] },
-    { id: "app4-signs-horizontal", label: "Appendix IV horizontal marking sheets", sectionIds: ["app4-signs-horizontal"] },
-    { id: "app4-signs-traffic-lights", label: "Appendix IV traffic light and closing sheets", sectionIds: ["app4-signs-traffic-lights"] },
-    { id: "app4-signs-regulatory", label: "Appendix IV regulatory panels and CABA overview sheets", sectionIds: ["app4-signs-regulatory"] },
-    { id: "app3-body-posture", label: "App III body posture source card", imageIds: ["app3-body-posture-source-card"] },
+    {
+      id: "app4-signs-warning",
+      label: "Appendix IV warning sign sheets",
+      sectionIds: ["app4-signs-warning"],
+    },
+    {
+      id: "app4-signs-informational",
+      label: "Appendix IV informational sign sheets",
+      sectionIds: ["app4-signs-informational"],
+    },
+    {
+      id: "app4-signs-temporary",
+      label: "Appendix IV temporary sign sheets",
+      sectionIds: ["app4-signs-temporary"],
+    },
+    {
+      id: "app4-signs-horizontal",
+      label: "Appendix IV horizontal marking sheets",
+      sectionIds: ["app4-signs-horizontal"],
+    },
+    {
+      id: "app4-signs-traffic-lights",
+      label: "Appendix IV traffic light and closing sheets",
+      sectionIds: ["app4-signs-traffic-lights"],
+    },
+    {
+      id: "app4-signs-regulatory",
+      label: "Appendix IV regulatory panels and CABA overview sheets",
+      sectionIds: ["app4-signs-regulatory"],
+    },
+    {
+      id: "app3-body-posture",
+      label: "App III body posture source card",
+      imageIds: ["app3-body-posture-source-card"],
+    },
     {
       id: "safety-elements",
       label: "App I/App II/App III tire, blind spot, headrest, and seatbelt visuals",
@@ -610,18 +752,41 @@ function requiredExampleCoverage(records) {
         "app1-blind-spot-source-card",
         "headrest-position-source-card",
         "app2-headrest-combined-source-card",
-        "app3-seatbelt-source-card"
-      ]
+        "app3-seatbelt-source-card",
+      ],
     },
-    { id: "app2-hospital-map", label: "App II hospital map", imageIds: ["app2-hospital-map-source-card"] },
+    {
+      id: "app2-hospital-map",
+      label: "App II hospital map",
+      imageIds: ["app2-hospital-map-source-card"],
+    },
     {
       id: "ch2-required-documents",
       label: "Chapter 2 document cards",
-      imageIds: ["dni-source-card", "license-source-card", "beginner-sign-source-card", "cedulas-source-card", "vtv-source-card", "rva-source-card"]
+      imageIds: [
+        "dni-source-card",
+        "license-source-card",
+        "beginner-sign-source-card",
+        "cedulas-source-card",
+        "vtv-source-card",
+        "rva-source-card",
+      ],
     },
-    { id: "ch1-bicycle", label: "Chapter 1 bicycle sign and distance visuals", imageIds: ["traffic-rules-signs", "safe-doors", "unsafe-line"] },
-    { id: "ch4-distractions", label: "Chapter 4 distractions quote/photo", imageIds: ["attention-photo-source-card"] },
-    { id: "ch5-anticipatory-efficient-driving", label: "Chapter 5 anticipatory/efficient driving quote/photo", imageIds: ["driving-culture-photo-source-card"] }
+    {
+      id: "ch1-bicycle",
+      label: "Chapter 1 bicycle sign and distance visuals",
+      imageIds: ["traffic-rules-signs", "safe-doors", "unsafe-line"],
+    },
+    {
+      id: "ch4-distractions",
+      label: "Chapter 4 distractions quote/photo",
+      imageIds: ["attention-photo-source-card"],
+    },
+    {
+      id: "ch5-anticipatory-efficient-driving",
+      label: "Chapter 5 anticipatory/efficient driving quote/photo",
+      imageIds: ["driving-culture-photo-source-card"],
+    },
   ];
 
   return groups.map((group) => {
@@ -631,10 +796,11 @@ function requiredExampleCoverage(records) {
       return false;
     });
     const visibleMatches = matches.filter((record) => record.visibleSpanish);
-    const coveredMatches = matches.filter((record) =>
-      !record.visibleSpanish ||
-      record.structuredRussianSupport.status === "pass" ||
-      record.imageId === "headrest-position-source-card"
+    const coveredMatches = matches.filter(
+      (record) =>
+        !record.visibleSpanish ||
+        record.structuredRussianSupport.status === "pass" ||
+        record.imageId === "headrest-position-source-card",
     );
     return {
       id: group.id,
@@ -642,27 +808,36 @@ function requiredExampleCoverage(records) {
       status: matches.length > 0 && coveredMatches.length === matches.length ? "pass" : "fail",
       matchedImageIds: matches.map((record) => record.imageId),
       visibleSpanishImageCount: visibleMatches.length,
-      structuredSupportItemCount: matches.reduce((sum, record) => sum + record.structuredRussianSupport.itemCount, 0)
+      structuredSupportItemCount: matches.reduce(
+        (sum, record) => sum + record.structuredRussianSupport.itemCount,
+        0,
+      ),
     };
   });
 }
 
 function readabilityEvidenceGroupCoverage(records) {
-  const expectedRecords = records.filter((record) => isDenseApp4SheetRecord(record.sectionId, record.imageKind, record.imageId));
+  const expectedRecords = records.filter((record) =>
+    isDenseApp4SheetRecord(record.sectionId, record.imageKind, record.imageId),
+  );
   const coveredRecords = expectedRecords.filter(
     (record) =>
       record.textReadabilityEvidence?.groupId === denseApp4SheetReadabilityGroupId &&
       record.textReadabilityEvidence?.status === "source-limited-with-structured-dom-support" &&
-      record.structuredRussianSupport.itemCount > 0
+      record.structuredRussianSupport.itemCount > 0,
   );
   return [
     {
       ...denseApp4SheetGroupDefinition,
-      status: expectedRecords.length === denseApp4SheetImageIds.size && coveredRecords.length === expectedRecords.length ? "pass" : "fail",
+      status:
+        expectedRecords.length === denseApp4SheetImageIds.size &&
+        coveredRecords.length === expectedRecords.length
+          ? "pass"
+          : "fail",
       matchedImageIds: expectedRecords.map((record) => record.imageId),
       coveredImageIds: coveredRecords.map((record) => record.imageId),
-      sourceLimitedExceptionCount: coveredRecords.length
-    }
+      sourceLimitedExceptionCount: coveredRecords.length,
+    },
   ];
 }
 
@@ -673,69 +848,117 @@ function validateTextReadabilityEvidence(record, findings) {
     findings.push({
       ruleId: "visible-spanish-missing-text-readability-evidence",
       message: `${record.imageId} visibleSpanish=true requires text readability evidence beyond display width metadata`,
-      record
+      record,
     });
     return;
   }
-  if (!["manual-reviewed-pass", "source-limited-with-structured-dom-support"].includes(evidence.status)) {
-    findings.push({ ruleId: "invalid-text-readability-status", message: `${record.imageId} has invalid text readability status`, record });
+  if (
+    !["manual-reviewed-pass", "source-limited-with-structured-dom-support"].includes(
+      evidence.status,
+    )
+  ) {
+    findings.push({
+      ruleId: "invalid-text-readability-status",
+      message: `${record.imageId} has invalid text readability status`,
+      record,
+    });
   }
   if (!nonEmptyString(evidence.basis)) {
-    findings.push({ ruleId: "missing-text-readability-basis", message: `${record.imageId} text readability evidence needs a review basis`, record });
+    findings.push({
+      ruleId: "missing-text-readability-basis",
+      message: `${record.imageId} text readability evidence needs a review basis`,
+      record,
+    });
   }
-  if (!Array.isArray(evidence.reviewedEvidencePaths) || evidence.reviewedEvidencePaths.length === 0) {
-    findings.push({ ruleId: "missing-text-readability-evidence-paths", message: `${record.imageId} text readability evidence needs screenshot/source evidence paths`, record });
+  if (
+    !Array.isArray(evidence.reviewedEvidencePaths) ||
+    evidence.reviewedEvidencePaths.length === 0
+  ) {
+    findings.push({
+      ruleId: "missing-text-readability-evidence-paths",
+      message: `${record.imageId} text readability evidence needs screenshot/source evidence paths`,
+      record,
+    });
   } else {
     for (const path of evidence.reviewedEvidencePaths) {
       if (!nonEmptyString(path) || !existsSync(path)) {
-        findings.push({ ruleId: "missing-text-readability-evidence-path", message: `${record.imageId} text readability evidence path is missing: ${path}`, record });
+        findings.push({
+          ruleId: "missing-text-readability-evidence-path",
+          message: `${record.imageId} text readability evidence path is missing: ${path}`,
+          record,
+        });
       }
     }
   }
   if (evidence.status === "manual-reviewed-pass") {
-    if (typeof evidence.minimumReadableTextHeightPx !== "number" || evidence.minimumReadableTextHeightPx < minimumReadableTextHeightPx) {
+    if (
+      typeof evidence.minimumReadableTextHeightPx !== "number" ||
+      evidence.minimumReadableTextHeightPx < minimumReadableTextHeightPx
+    ) {
       findings.push({
         ruleId: "manual-reviewed-text-height-below-policy",
         message: `${record.imageId} manual review must record embedded text height >= ${minimumReadableTextHeightPx}px`,
-        record
+        record,
       });
     }
-    if (typeof evidence.bodyTextComparisonPercent !== "number" || evidence.bodyTextComparisonPercent < bodyTextParityTargetPercent) {
+    if (
+      typeof evidence.bodyTextComparisonPercent !== "number" ||
+      evidence.bodyTextComparisonPercent < bodyTextParityTargetPercent
+    ) {
       findings.push({
         ruleId: "manual-reviewed-body-text-parity-below-policy",
         message: `${record.imageId} manual review must record >= ${bodyTextParityTargetPercent}% nearby body-text parity`,
-        record
+        record,
       });
     }
   }
   if (evidence.status === "source-limited-with-structured-dom-support") {
     if (!isObject(evidence.sourceLimitedException)) {
-      findings.push({ ruleId: "source-limited-missing-exception", message: `${record.imageId} source-limited readability needs an explicit exception`, record });
+      findings.push({
+        ruleId: "source-limited-missing-exception",
+        message: `${record.imageId} source-limited readability needs an explicit exception`,
+        record,
+      });
     } else {
       if (!nonEmptyString(evidence.sourceLimitedException.reason)) {
-        findings.push({ ruleId: "source-limited-missing-reason", message: `${record.imageId} source-limited exception needs a reason`, record });
+        findings.push({
+          ruleId: "source-limited-missing-reason",
+          message: `${record.imageId} source-limited exception needs a reason`,
+          record,
+        });
       }
-      if (!Array.isArray(evidence.sourceLimitedException.attemptedAlternatives) || evidence.sourceLimitedException.attemptedAlternatives.length < 3) {
+      if (
+        !Array.isArray(evidence.sourceLimitedException.attemptedAlternatives) ||
+        evidence.sourceLimitedException.attemptedAlternatives.length < 3
+      ) {
         findings.push({
           ruleId: "source-limited-missing-attempted-alternatives",
           message: `${record.imageId} source-limited exception needs attempted alternatives`,
-          record
+          record,
         });
       }
-      validateOfficialSourceAlternativeReview(record, evidence.sourceLimitedException.officialSourceAlternativeReview, findings);
+      validateOfficialSourceAlternativeReview(
+        record,
+        evidence.sourceLimitedException.officialSourceAlternativeReview,
+        findings,
+      );
     }
-    if (evidence.structuredDomSupportRequired !== true || evidence.translationItemCount <= 0 || record.structuredRussianSupport.itemCount <= 0) {
+    if (
+      evidence.structuredDomSupportRequired !== true ||
+      evidence.translationItemCount <= 0 ||
+      record.structuredRussianSupport.itemCount <= 0
+    ) {
       findings.push({
         ruleId: "source-limited-missing-dom-support",
         message: `${record.imageId} source-limited readability requires structured DOM translations`,
-        record
+        record,
       });
     }
     if (evidence.basis === "representative-group-review" && !nonEmptyString(evidence.groupId)) {
       findings.push({
         ruleId: "source-limited-missing-readability-group",
         message: `${record.imageId} representative source-limited review needs a group id`,
-        record
+        record,
       });
     }
   }
@@ -743,11 +966,24 @@ function validateTextReadabilityEvidence(record, findings) {
 
 function validateEvidenceAsset(record, asset, label, findings) {
   if (!isObject(asset)) {
-    findings.push({ ruleId: "source-limited-missing-official-alternative-asset", message: `${record.imageId} ${label} evidence is missing`, record });
+    findings.push({
+      ruleId: "source-limited-missing-official-alternative-asset",
+      message: `${record.imageId} ${label} evidence is missing`,
+      record,
+    });
     return;
   }
-  if (asset.exists !== true || !nonEmptyString(asset.path) || !asset.dimensions || !nonEmptyString(asset.sha256)) {
-    findings.push({ ruleId: "source-limited-official-alternative-asset-missing", message: `${record.imageId} ${label} must exist with dimensions and sha256`, record });
+  if (
+    asset.exists !== true ||
+    !nonEmptyString(asset.path) ||
+    !asset.dimensions ||
+    !nonEmptyString(asset.sha256)
+  ) {
+    findings.push({
+      ruleId: "source-limited-official-alternative-asset-missing",
+      message: `${record.imageId} ${label} must exist with dimensions and sha256`,
+      record,
+    });
   }
 }
 
@@ -756,12 +992,16 @@ function validateOfficialSourceAlternativeReview(record, review, findings) {
     findings.push({
       ruleId: "source-limited-missing-official-alternative-review",
       message: `${record.imageId} source-limited exception must record concrete official-source alternatives reviewed`,
-      record
+      record,
     });
     return;
   }
   if (review.status !== "concrete-official-source-alternatives-reviewed") {
-    findings.push({ ruleId: "source-limited-invalid-official-alternative-review", message: `${record.imageId} official-source alternative review has invalid status`, record });
+    findings.push({
+      ruleId: "source-limited-invalid-official-alternative-review",
+      message: `${record.imageId} official-source alternative review has invalid status`,
+      record,
+    });
   }
   validateEvidenceAsset(record, review.officialPageAsset, "officialPageAsset", findings);
   validateEvidenceAsset(record, review.retainedFullSheetAsset, "retainedFullSheetAsset", findings);
@@ -771,30 +1011,53 @@ function validateOfficialSourceAlternativeReview(record, review, findings) {
     findings.push({
       ruleId: "source-limited-tight-crop-delta-too-large",
       message: `${record.imageId} current crop must match the recorded source region within 8px`,
-      record
+      record,
     });
   }
   if (!Array.isArray(review.exactEvidencePaths) || review.exactEvidencePaths.length < 5) {
-    findings.push({ ruleId: "source-limited-missing-exact-evidence-paths", message: `${record.imageId} alternative review needs exact evidence paths`, record });
+    findings.push({
+      ruleId: "source-limited-missing-exact-evidence-paths",
+      message: `${record.imageId} alternative review needs exact evidence paths`,
+      record,
+    });
   } else {
     for (const path of review.exactEvidencePaths) {
       if (!existsSync(path)) {
-        findings.push({ ruleId: "source-limited-exact-evidence-path-missing", message: `${record.imageId} exact evidence path is missing: ${path}`, record });
+        findings.push({
+          ruleId: "source-limited-exact-evidence-path-missing",
+          message: `${record.imageId} exact evidence path is missing: ${path}`,
+          record,
+        });
       }
     }
   }
   for (const [field, expectedStatus] of [
-    ["higherQualityOfficialSourceSearch", "reviewed-existing-official-page-and-retained-full-sheet-assets"],
+    [
+      "higherQualityOfficialSourceSearch",
+      "reviewed-existing-official-page-and-retained-full-sheet-assets",
+    ],
     ["tighterCropEvaluation", "already-tight-source-sheet-crop"],
-    ["splitPanelCardEvaluation", "reviewed-not-a-text-height-fix-without-upscaling"]
+    ["splitPanelCardEvaluation", "reviewed-not-a-text-height-fix-without-upscaling"],
   ]) {
     const value = review[field];
     if (!isObject(value) || value.status !== expectedStatus || !nonEmptyString(value.conclusion)) {
-      findings.push({ ruleId: "source-limited-official-alternative-step-incomplete", message: `${record.imageId} ${field} must record a concrete conclusion`, record });
+      findings.push({
+        ruleId: "source-limited-official-alternative-step-incomplete",
+        message: `${record.imageId} ${field} must record a concrete conclusion`,
+        record,
+      });
     }
   }
-  if (!isObject(review.runtimeDisplayDecision) || review.runtimeDisplayDecision.noUpscale !== true || review.runtimeDisplayDecision.translationItemCount <= 0) {
-    findings.push({ ruleId: "source-limited-runtime-display-decision-incomplete", message: `${record.imageId} source-limited review must record no-upscale DOM support decision`, record });
+  if (
+    !isObject(review.runtimeDisplayDecision) ||
+    review.runtimeDisplayDecision.noUpscale !== true ||
+    review.runtimeDisplayDecision.translationItemCount <= 0
+  ) {
+    findings.push({
+      ruleId: "source-limited-runtime-display-decision-incomplete",
+      message: `${record.imageId} source-limited review must record no-upscale DOM support decision`,
+      record,
+    });
   }
 }
 
@@ -803,51 +1066,104 @@ function validateRecords(records, requiredExamples, readabilityGroups) {
   const imageKeys = new Set();
   for (const record of records) {
     const key = `${record.sectionId}:${record.blockId}:${record.imageId}:${record.assetPath}`;
-    if (imageKeys.has(key)) findings.push({ ruleId: "duplicate-image-record", message: `${key} is duplicated` });
+    if (imageKeys.has(key))
+      findings.push({ ruleId: "duplicate-image-record", message: `${key} is duplicated` });
     imageKeys.add(key);
 
-    if (!record.assetExists) findings.push({ ruleId: "missing-asset", message: `${record.imageId} asset does not exist`, record });
-    if (!record.naturalDimensions) findings.push({ ruleId: "missing-image-dimensions", message: `${record.imageId} dimensions could not be read`, record });
+    if (!record.assetExists)
+      findings.push({
+        ruleId: "missing-asset",
+        message: `${record.imageId} asset does not exist`,
+        record,
+      });
+    if (!record.naturalDimensions)
+      findings.push({
+        ruleId: "missing-image-dimensions",
+        message: `${record.imageId} dimensions could not be read`,
+        record,
+      });
     if (record.visibleSpanish && !record.visibleSpanishException) {
-      findings.push({ ruleId: "visible-spanish-missing-exception", message: `${record.imageId} visibleSpanish=true requires source/official exception metadata`, record });
+      findings.push({
+        ruleId: "visible-spanish-missing-exception",
+        message: `${record.imageId} visibleSpanish=true requires source/official exception metadata`,
+        record,
+      });
     }
     if (record.visibleSpanish && record.structuredRussianSupport.itemCount === 0) {
-      findings.push({ ruleId: "visible-spanish-missing-structured-russian-support", message: `${record.imageId} visibleSpanish=true requires structured Russian support near the image`, record });
+      findings.push({
+        ruleId: "visible-spanish-missing-structured-russian-support",
+        message: `${record.imageId} visibleSpanish=true requires structured Russian support near the image`,
+        record,
+      });
     }
-    if (record.visibleSpanish && record.structuredRussianSupport.items.some((item) => item.learnerRelevant !== false && !nonEmptyString(item.termEs))) {
+    if (
+      record.visibleSpanish &&
+      record.structuredRussianSupport.items.some(
+        (item) => item.learnerRelevant !== false && !nonEmptyString(item.termEs),
+      )
+    ) {
       findings.push({
         ruleId: "structured-russian-support-missing-source-spanish",
         message: `${record.imageId} learner-relevant image translations require non-empty Spanish source terms`,
-        record
+        record,
       });
     }
-    if (record.visibleSpanish && record.structuredRussianSupport.items.some((item) => item.learnerRelevant !== false && !nonEmptyString(item.translationRu))) {
+    if (
+      record.visibleSpanish &&
+      record.structuredRussianSupport.items.some(
+        (item) => item.learnerRelevant !== false && !nonEmptyString(item.translationRu),
+      )
+    ) {
       findings.push({
         ruleId: "structured-russian-support-missing-russian-translation",
         message: `${record.imageId} learner-relevant image translations require non-empty Russian translation text`,
-        record
+        record,
       });
     }
-    if (record.visibleSpanish && record.imageKind === "source-image-cards" && record.structuredRussianSupport.itemCount === 0) {
-      findings.push({ ruleId: "generic-body-only-coverage", message: `${record.imageId} cannot be covered only by bodyRu`, record });
+    if (
+      record.visibleSpanish &&
+      record.imageKind === "source-image-cards" &&
+      record.structuredRussianSupport.itemCount === 0
+    ) {
+      findings.push({
+        ruleId: "generic-body-only-coverage",
+        message: `${record.imageId} cannot be covered only by bodyRu`,
+        record,
+      });
     }
     if (record.visibleSpanish && record.display.noUpscale !== true) {
-      findings.push({ ruleId: "image-upscale-risk", message: `${record.imageId} display width must not exceed natural asset width`, record });
+      findings.push({
+        ruleId: "image-upscale-risk",
+        message: `${record.imageId} display width must not exceed natural asset width`,
+        record,
+      });
     }
     if (record.visibleSpanish && !record.display.readabilityDisposition) {
-      findings.push({ ruleId: "missing-readability-disposition", message: `${record.imageId} needs a readability disposition`, record });
+      findings.push({
+        ruleId: "missing-readability-disposition",
+        message: `${record.imageId} needs a readability disposition`,
+        record,
+      });
     }
     validateTextReadabilityEvidence(record, findings);
   }
 
   for (const example of requiredExamples) {
     if (example.status !== "pass") {
-      findings.push({ ruleId: "required-example-missing-or-uncovered", message: `${example.id} is not fully covered`, example });
+      findings.push({
+        ruleId: "required-example-missing-or-uncovered",
+        message: `${example.id} is not fully covered`,
+        example,
+      });
     }
   }
   for (const group of readabilityGroups) {
     if (group.status !== "pass") {
-      findings.push({ ruleId: "readability-evidence-group-incomplete", message: `${group.id} representative readability evidence group is incomplete`, group });
+      findings.push({
+        ruleId: "readability-evidence-group-incomplete",
+        message: `${group.id} representative readability evidence group is incomplete`,
+        group,
+      });
     }
   }
 
@@ -861,9 +1177,16 @@ const readabilityEvidenceGroups = readabilityEvidenceGroupCoverage(inventoryReco
 const findings = validateRecords(inventoryRecords, requiredExamples, readabilityEvidenceGroups);
 
 const visibleSpanishRecords = inventoryRecords.filter((record) => record.visibleSpanish);
-const structuredVisibleRecords = visibleSpanishRecords.filter((record) => record.structuredRussianSupport.status === "pass");
-const protectedSourceAsIsRecords = visibleSpanishRecords.filter((record) => record.protectedSourceAsIs);
-const acceptedCoverageExceptionRecords = visibleSpanishRecords.filter((record) => record.textReadabilityEvidence?.status === "source-limited-with-structured-dom-support");
+const structuredVisibleRecords = visibleSpanishRecords.filter(
+  (record) => record.structuredRussianSupport.status === "pass",
+);
+const protectedSourceAsIsRecords = visibleSpanishRecords.filter(
+  (record) => record.protectedSourceAsIs,
+);
+const acceptedCoverageExceptionRecords = visibleSpanishRecords.filter(
+  (record) =>
+    record.textReadabilityEvidence?.status === "source-limited-with-structured-dom-support",
+);
 
 const document = {
   schemaVersion: 1,
@@ -875,8 +1198,7 @@ const document = {
     imageReferences: 82,
     visibleSpanishImages: 54,
     problematicImages: 33,
-    note:
-      "The audit refreshes counts from current implemented section data. Current image references include all rendered image-bearing block shapes, including multi-image impact diagrams."
+    note: "The audit refreshes counts from current implemented section data. Current image references include all rendered image-bearing block shapes, including multi-image impact diagrams.",
   },
   counts: {
     implementedSections: sections.length,
@@ -885,7 +1207,7 @@ const document = {
     visibleSpanishImagesWithStructuredRussianSupport: structuredVisibleRecords.length,
     protectedSourceAsIsVisibleSpanishImages: protectedSourceAsIsRecords.length,
     acceptedCoverageExceptions: acceptedCoverageExceptionRecords.length,
-    validationFindings: findings.length
+    validationFindings: findings.length,
   },
   blockKindCounts: inventoryRecords.reduce((counts, record) => {
     counts[record.imageKind] = (counts[record.imageKind] ?? 0) + 1;
@@ -900,9 +1222,12 @@ const document = {
       "Source-image-card display caps must not exceed natural asset width. A minDisplayWidthPx or contained scrolling entry is display evidence only and is never sufficient without textReadabilityEvidence.",
     textReadabilityEvidenceRule:
       "Every visible-Spanish intended-readable image record must include textReadabilityEvidence with manual-reviewed text height/body-text parity or a source-limited exception with attempted alternatives and structured Russian DOM support.",
-    acceptedReadabilityStatuses: ["manual-reviewed-pass", "source-limited-with-structured-dom-support"],
+    acceptedReadabilityStatuses: [
+      "manual-reviewed-pass",
+      "source-limited-with-structured-dom-support",
+    ],
     protectedPixelRule:
-      "Protected source pixels remain Spanish/source-as-is. Russian translations are rendered only as selectable DOM text near the image."
+      "Protected source pixels remain Spanish/source-as-is. Russian translations are rendered only as selectable DOM text near the image.",
   },
   exceptions: acceptedCoverageExceptionRecords.map((record) => ({
     sectionId: record.sectionId,
@@ -911,10 +1236,13 @@ const document = {
     groupId: record.textReadabilityEvidence.groupId ?? null,
     status: record.textReadabilityEvidence.status,
     reason: record.textReadabilityEvidence.sourceLimitedException?.reason ?? null,
-    attemptedAlternatives: record.textReadabilityEvidence.sourceLimitedException?.attemptedAlternatives ?? [],
-    officialSourceAlternativeReview: record.textReadabilityEvidence.sourceLimitedException?.officialSourceAlternativeReview ?? null
+    attemptedAlternatives:
+      record.textReadabilityEvidence.sourceLimitedException?.attemptedAlternatives ?? [],
+    officialSourceAlternativeReview:
+      record.textReadabilityEvidence.sourceLimitedException?.officialSourceAlternativeReview ??
+      null,
   })),
-  inventory: inventoryRecords
+  inventory: inventoryRecords,
 };
 
 function evidenceString(value) {
@@ -930,7 +1258,7 @@ function firstDifferentLine(actual, expected) {
       return {
         line: index + 1,
         actual: actualLines[index] ?? "<missing>",
-        expected: expectedLines[index] ?? "<missing>"
+        expected: expectedLines[index] ?? "<missing>",
       };
     }
   }
@@ -941,12 +1269,16 @@ function reportEvidenceMismatch(reason, detail) {
   console.error(`manual guide image readability/translations audit failed: ${reason}`);
   if (detail) console.error(detail);
   console.error(`Expected committed evidence to match ${evidencePath}.`);
-  console.error("Run `node scripts/manual-guide-image-readability-translations-audit.mjs --write` to intentionally regenerate it.");
+  console.error(
+    "Run `node scripts/manual-guide-image-readability-translations-audit.mjs --write` to intentionally regenerate it.",
+  );
 }
 
 function reportValidationFindings(findingsToReport) {
   if (findingsToReport.length === 0) return;
-  console.error(`manual guide image readability/translations audit found ${findingsToReport.length} validation finding(s):`);
+  console.error(
+    `manual guide image readability/translations audit found ${findingsToReport.length} validation finding(s):`,
+  );
   for (const finding of findingsToReport.slice(0, 20)) {
     console.error(`- ${finding.ruleId}: ${finding.message}`);
   }
@@ -990,7 +1322,7 @@ if (!existsSync(evidencePath)) {
       "committed evidence is stale or different",
       difference
         ? `First difference at line ${difference.line}.\nCommitted: ${difference.actual}\nExpected: ${difference.expected}`
-        : undefined
+        : undefined,
     );
     failed = true;
   }

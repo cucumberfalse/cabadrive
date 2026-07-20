@@ -1,14 +1,17 @@
 import { expect, test } from "@playwright/test";
 
-const practiceStatusLabel = "Текущие билеты: неофициальная B-практика, не полная официальная база GCBA";
+const practiceStatusLabel =
+  "Текущие билеты: неофициальная B-практика, не полная официальная база GCBA";
 const conflictNoteFixtures = [
   ["b-fallback-024", "cédula azul no es exigible"],
   ["b-fallback-135", "36 месяцев/60.000 km"],
   ["b-fallback-309", "количество cédula azul"],
-  ["b-fallback-456", "изображением cédula"]
+  ["b-fallback-456", "изображением cédula"],
 ] as const;
 
-test("manual route appends canonical tickets and mounts dense cards only after opening", async ({ page }, testInfo) => {
+test("manual route appends canonical tickets and mounts dense cards only after opening", async ({
+  page,
+}, testInfo) => {
   test.setTimeout(60_000);
   await page.goto("/#manual-section-ch3-right-of-way");
   const manual = page.getByTestId("manual-guide-section");
@@ -26,13 +29,19 @@ test("manual route appends canonical tickets and mounts dense cards only after o
     const article = element.querySelector('[data-testid="manual-guide-section"]');
     const appendixElement = element.querySelector('[data-testid="manual-ticket-appendix"]');
     const children = Array.from(element.children);
-    return Boolean(article && appendixElement && children.indexOf(appendixElement) > children.indexOf(article));
+    return Boolean(
+      article && appendixElement && children.indexOf(appendixElement) > children.indexOf(article),
+    );
   });
   expect(ordering).toBe(true);
 
-  const overflow = await page.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth);
+  const overflow = await page.evaluate(
+    () => document.documentElement.scrollWidth > document.documentElement.clientWidth,
+  );
   expect(overflow).toBe(false);
-  await appendix.screenshot({ path: testInfo.outputPath(`manual-ticket-dense-${testInfo.project.name}.png`) });
+  await appendix.screenshot({
+    path: testInfo.outputPath(`manual-ticket-dense-${testInfo.project.name}.png`),
+  });
 
   await page.evaluate(() => {
     const win = window as typeof window & {
@@ -43,13 +52,19 @@ test("manual route appends canonical tickets and mounts dense cards only after o
     const observer = new MutationObserver(() => {
       for (const pageId of ["app1-safety-elements", "ch3-right-of-way"]) {
         const destinationAppendix = document.querySelector(
-          `[data-testid="manual-ticket-appendix"][data-page-id="${pageId}"]`
+          `[data-testid="manual-ticket-appendix"][data-page-id="${pageId}"]`,
         );
-        const destinationDisclosure = destinationAppendix?.querySelector('[data-testid="manual-ticket-disclosure"]');
-        const isDestinationClosed = destinationDisclosure && !destinationDisclosure.hasAttribute("open");
-        const destinationMountedCards = destinationAppendix?.querySelectorAll(".materials-ticket").length ?? 0;
+        const destinationDisclosure = destinationAppendix?.querySelector(
+          '[data-testid="manual-ticket-disclosure"]',
+        );
+        const isDestinationClosed =
+          destinationDisclosure && !destinationDisclosure.hasAttribute("open");
+        const destinationMountedCards =
+          destinationAppendix?.querySelectorAll(".materials-ticket").length ?? 0;
         if (isDestinationClosed && destinationMountedCards > 0) {
-          win.__manualTicketTransientMounts?.push(`${pageId} closed disclosure mounted ${destinationMountedCards} rich cards`);
+          win.__manualTicketTransientMounts?.push(
+            `${pageId} closed disclosure mounted ${destinationMountedCards} rich cards`,
+          );
         }
       }
     });
@@ -125,18 +140,27 @@ test("manual required-documents tickets surface topic-guide conflict notes", asy
   const noNoteTicket = page.getByTestId("manual-ticket-b-fallback-027");
   await expect(noNoteTicket).toBeVisible();
   await expect(noNoteTicket.getByText("Заметка о старой формулировке")).toHaveCount(0);
-  await expect(noNoteTicket.locator(".support-block.explanation").filter({ hasText: "Заметка о старой формулировке" })).toHaveCount(0);
+  await expect(
+    noNoteTicket
+      .locator(".support-block.explanation")
+      .filter({ hasText: "Заметка о старой формулировке" }),
+  ).toHaveCount(0);
 
   await page.getByRole("button", { name: /Материалы/ }).click();
   await expect(page.locator('[data-testid^="materials-ticket-"]').first()).toBeVisible();
 });
 
-test("unused introduction, sign appendix, and materials adapter remain available", async ({ page }) => {
+test("unused introduction, sign appendix, and materials adapter remain available", async ({
+  page,
+}) => {
   await page.goto("/#intro-accidente-incidente");
   await expect(page.getByTestId("manual-ticket-appendix")).toHaveCount(0);
 
   await page.goto("/#manual-section-app4-signs-regulatory");
-  await expect(page.getByTestId("manual-ticket-appendix")).toHaveAttribute("data-page-id", "app4-signs-regulatory");
+  await expect(page.getByTestId("manual-ticket-appendix")).toHaveAttribute(
+    "data-page-id",
+    "app4-signs-regulatory",
+  );
 
   await page.getByRole("button", { name: /Материалы/ }).click();
   await expect(page.locator('[data-testid^="materials-ticket-"]').first()).toBeVisible();

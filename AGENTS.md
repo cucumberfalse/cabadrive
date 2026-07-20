@@ -182,6 +182,10 @@ If an agent realizes it has started direct repository changes before the require
 - Repository-changing work lands through pull requests; do not push directly to `main`.
 - Required checks for this repository are defined in `.unicorn-hub/config.json` (`requiredChecks`) and applied to branch protection via `scripts/apply-branch-protection.mjs`.
 - Run local preflight before pushing.
+- The focused quality commands are `pnpm run typecheck`, `pnpm run lint`,
+  `pnpm run format:check`, and `pnpm run quality:fast`. The write formatter uses
+  an explicit code allowlist and must not be widened to governed content,
+  manual sources, docs, licenses, evidence, images, or generated artifacts.
 - Follow the Docker-only contract for runtime-affecting work (`make build`, `make up`, `make down`) once runtime scaffolding is present.
 - Before completion or finalization/merge, Orchestrator verifies the cycle PR set, final Architect validation, final Analyst validation, validation return counts, and any new-feature-request escalation state.
 - For Orchestrator-managed PRs, routine final human approval is not the terminal state after objective gates pass. Orchestrator finalizes and merges once the current PR head is merge-ready, unless a narrow exceptional human blocker is recorded.
