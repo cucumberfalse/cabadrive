@@ -138,12 +138,14 @@ Implementation content candidate starts from
 PR metadata are appended after publication. Effective implementation content
 head: `f3279152b91f4725b7a2787e1c67c164b8c42705`.
 
-- `node --test tests/progress-store.test.mjs` — pass: 9 deterministic fixtures
+- `node --test tests/progress-store.test.mjs` — pass: 14 deterministic fixtures
   cover v1 backup/migration/idempotence, local recovery, strict import
   atomicity, 6,000-answer selector equivalence, repeated folding, quota retries
-  and exhaustion, reset/actions, and the static write boundary.
+  and exhaustion, reset/actions, the static write boundary, answer
+  canonicalization, reset key purging (including failed-rewrite safety),
+  zero-wrong aggregate rejection, and mode-scoped empty-answer-ID validation.
 - `pnpm exec tsc --noEmit` — pass.
-- `pnpm run test` — pass: 504 tests.
+- `pnpm run test` — pass: 520 tests.
 - `pnpm run build` — pass; existing large-chunk warning only.
 - `pnpm run test:e2e` — pass: 104 Chromium/mobile scenarios, including learning,
   exam score persistence, and mistake-review flows.

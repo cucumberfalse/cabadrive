@@ -252,6 +252,11 @@ test("empty selectedAnswerId is accepted only for exam skips, not learning or mi
   assert.equal(parseImportedProgress(JSON.stringify(v2({ answers: [learningEmpty] }))), undefined);
   const examSkip = { ...answer(2), selectedAnswerId: "", mode: "exam", isCorrect: false };
   assert.notEqual(parseImportedProgress(JSON.stringify(v2({ answers: [examSkip] }))), undefined);
+  const examCorrectEmpty = { ...answer(2), selectedAnswerId: "", mode: "exam", isCorrect: true };
+  assert.equal(
+    parseImportedProgress(JSON.stringify(v2({ answers: [examCorrectEmpty] }))),
+    undefined,
+  );
 });
 
 test("persisted answers are canonicalized and extra enumerable fields are dropped", () => {
