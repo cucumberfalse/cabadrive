@@ -16,11 +16,15 @@ const requireMatch = (value, pattern, label) => {
   if (!pattern.test(value)) errors.push(`${label}: missing ${pattern}`);
 };
 
-const canonicalLicense = read("content/sources/originals/bandinopla-simulador-test-de-conducir/LICENSE");
+const canonicalLicense = read(
+  "content/sources/originals/bandinopla-simulador-test-de-conducir/LICENSE",
+);
 const rootLicense = read("LICENSE");
 const upstreamLicense = read("licenses/bandinopla-simulador-test-de-conducir-Apache-2.0.txt");
-if (!rootLicense.equals(canonicalLicense)) errors.push("LICENSE: must be byte-identical to canonical Apache-2.0 text");
-if (!upstreamLicense.equals(canonicalLicense)) errors.push("upstream license copy: must be byte-identical to archived upstream LICENSE");
+if (!rootLicense.equals(canonicalLicense))
+  errors.push("LICENSE: must be byte-identical to canonical Apache-2.0 text");
+if (!upstreamLicense.equals(canonicalLicense))
+  errors.push("upstream license copy: must be byte-identical to archived upstream LICENSE");
 
 const expectedApacheSha256 = "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4";
 if (createHash("sha256").update(canonicalLicense).digest("hex") !== expectedApacheSha256) {
@@ -41,15 +45,23 @@ for (const [label, pattern] of [
   ["Boletín Oficial", /Bolet[ií]n Oficial/],
   ["national sources", /Argentina\.gob\.ar \/ InfoLEG \/ ANSV \/ DNRPA/],
   ["marks", /Governmental names, logos, marks, and third-party artwork/],
-  ["legal review boundary", /owner\/legal review required before broader redistribution/]
-]) requireMatch(inventory, pattern, `third-party inventory ${label}`);
+  ["legal review boundary", /owner\/legal review required before broader redistribution/],
+])
+  requireMatch(inventory, pattern, `third-party inventory ${label}`);
 
 const sources = JSON.parse(text("content/sources/sources.json") || "[]");
-const upstreamSource = sources.find((source) => source.id === "bandinopla-testdeconducir-caba-b-source1-2026-05-08");
+const upstreamSource = sources.find(
+  (source) => source.id === "bandinopla-testdeconducir-caba-b-source1-2026-05-08",
+);
 if (!upstreamSource) errors.push("sources.json: pinned upstream source is missing");
 else {
-  requireMatch(upstreamSource.retrievalNote || "", /90d17d47864b807415ba505b682710a8f4c441f5/, "upstream source retrievalNote");
-  if (upstreamSource.officialUrl !== "https://github.com/bandinopla/simulador-test-de-conducir") errors.push("sources.json: unexpected upstream URL");
+  requireMatch(
+    upstreamSource.retrievalNote || "",
+    /90d17d47864b807415ba505b682710a8f4c441f5/,
+    "upstream source retrievalNote",
+  );
+  if (upstreamSource.officialUrl !== "https://github.com/bandinopla/simulador-test-de-conducir")
+    errors.push("sources.json: unexpected upstream URL");
 }
 
 const packageJson = JSON.parse(text("package.json") || "{}");
@@ -58,13 +70,18 @@ if (packageJson.version !== "0.1.0") errors.push("package.json: version must be 
 const readme = text("README.md");
 requireMatch(readme, /https:\/\/github\.com\/cucumberfalse\/cabadrive/, "README repository URL");
 requireMatch(readme, /неофициальн/i, "README unofficial boundary");
-requireMatch(readme, /not an official or complete GCBA|неофициальный и неполный fallback|не официальная или полная база/i, "README fallback boundary");
-if (/No product runtime scaffold is committed yet/.test(readme)) errors.push("README: stale runtime claim remains");
+requireMatch(
+  readme,
+  /not an official or complete GCBA|неофициальный и неполный fallback|не официальная или полная база/i,
+  "README fallback boundary",
+);
+if (/No product runtime scaffold is committed yet/.test(readme))
+  errors.push("README: stale runtime claim remains");
 
 for (const path of [
   "docs_project/screens/readme/learn.png",
   "docs_project/screens/readme/materials.png",
-  "docs_project/screens/readme/about.png"
+  "docs_project/screens/readme/about.png",
 ]) {
   requireMatch(readme, new RegExp(path.replaceAll("/", "\\/")), `README screenshot link ${path}`);
   if (!existsSync(path)) {
@@ -93,4 +110,6 @@ if (errors.length) {
   process.exit(1);
 }
 
-console.log("Attribution validation passed: exact licenses, inventory, public docs, screenshots, and About boundaries are current.");
+console.log(
+  "Attribution validation passed: exact licenses, inventory, public docs, screenshots, and About boundaries are current.",
+);

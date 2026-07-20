@@ -1,10 +1,7 @@
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { test } from "node:test";
-import {
-  topicGuideQuestionBaseline,
-  validateTopicGuide
-} from "../scripts/content-topic-guide.mjs";
+import { topicGuideQuestionBaseline, validateTopicGuide } from "../scripts/content-topic-guide.mjs";
 
 const questions = [
   {
@@ -13,19 +10,19 @@ const questions = [
     answers: [
       { id: "q1-a1", officialTextEs: "Adelantamiento por la derecha." },
       { id: "q1-a2", officialTextEs: "Giro a la derecha." },
-      { id: "q1-a3", officialTextEs: "Detenerse." }
+      { id: "q1-a3", officialTextEs: "Detenerse." },
     ],
-    correctAnswerId: "q1-a2"
+    correctAnswerId: "q1-a2",
   },
   {
     id: "q2",
     officialTextEs: "¿Qué debe hacer ante una señal de pare?",
     answers: [
       { id: "q2-a1", officialTextEs: "Detenerse totalmente." },
-      { id: "q2-a2", officialTextEs: "Continuar sin mirar." }
+      { id: "q2-a2", officialTextEs: "Continuar sin mirar." },
     ],
-    correctAnswerId: "q2-a1"
-  }
+    correctAnswerId: "q2-a1",
+  },
 ];
 
 function clone(value) {
@@ -39,7 +36,9 @@ function renderedTopicGuideText(topic) {
     ...(topic.practicalReasoningRu || []),
     ...(topic.spanishTerms || []).map((term) => `${term.termEs} ${term.translationRu}`),
     ...(topic.trapNotes || []).map((note) => note.textRu),
-    ...(topic.tickets || []).flatMap((ticket) => ticket.answerExplanations.map((explanation) => explanation.explanationRu))
+    ...(topic.tickets || []).flatMap((ticket) =>
+      ticket.answerExplanations.map((explanation) => explanation.explanationRu),
+    ),
   ].join("\n");
 }
 
@@ -63,8 +62,8 @@ function guide(overrides = {}) {
             id: "term-sena",
             termEs: "seña",
             translationRu: "жест",
-            sourceQuestionIds: ["q1"]
-          }
+            sourceQuestionIds: ["q1"],
+          },
         ],
         tickets: [
           {
@@ -73,32 +72,32 @@ function guide(overrides = {}) {
               {
                 answerId: "q1-a1",
                 verdict: "incorrect",
-                explanationRu: "Это обгон справа, а не показанный жест."
+                explanationRu: "Это обгон справа, а не показанный жест.",
               },
               {
                 answerId: "q1-a2",
                 verdict: "correct",
-                explanationRu: "Этот ответ совпадает с жестом поворота направо."
+                explanationRu: "Этот ответ совпадает с жестом поворота направо.",
               },
               {
                 answerId: "q1-a3",
                 verdict: "incorrect",
-                explanationRu: "Это остановка, а не показанный жест."
-              }
-            ]
-          }
+                explanationRu: "Это остановка, а не показанный жест.",
+              },
+            ],
+          },
         ],
         trapNotes: [
           {
             id: "trap-sena",
             textRu: "Seña в этом билете означает жест, а не дорожный знак.",
-            sourceQuestionIds: ["q1"]
-          }
+            sourceQuestionIds: ["q1"],
+          },
         ],
-        claims: []
-      }
+        claims: [],
+      },
     ],
-    ...overrides
+    ...overrides,
   };
 }
 
@@ -126,27 +125,27 @@ function coverage(overrides = {}) {
     baseline: {
       questionFile: "content/questions/caba-b.unofficial-fallback.questions.json",
       capturedAt: "2026-05-09",
-      ...topicGuideQuestionBaseline(questions)
+      ...topicGuideQuestionBaseline(questions),
     },
     topics: [
       {
         topicId: "signals",
         phase: "content_ready",
         status: "draft",
-        titleRu: "Жесты"
+        titleRu: "Жесты",
       },
       {
         topicId: "stop-signs",
         phase: "planned",
         status: "draft",
-        titleRu: "Знаки остановки и приоритета"
-      }
+        titleRu: "Знаки остановки и приоритета",
+      },
     ],
     assignments: [
       { questionId: "q1", topicIds: ["signals"], phase: "content_ready", ownerSlice: "test" },
-      { questionId: "q2", topicIds: ["stop-signs"], phase: "planned", ownerSlice: "test" }
+      { questionId: "q2", topicIds: ["stop-signs"], phase: "planned", ownerSlice: "test" },
     ],
-    ...overrides
+    ...overrides,
   };
 }
 
@@ -156,7 +155,7 @@ function sourceTrace(overrides = {}) {
     guideId: "topic-study-guide",
     status: "draft",
     entries: [],
-    ...overrides
+    ...overrides,
   };
 }
 
@@ -164,13 +163,13 @@ function validate({
   guideContent = guide(),
   coverageManifest = coverage(),
   trace = sourceTrace(),
-  questionSet = questions
+  questionSet = questions,
 } = {}) {
   return validateTopicGuide({
     questions: questionSet,
     guide: guideContent,
     coverage: coverageManifest,
-    sourceTrace: trace
+    sourceTrace: trace,
   });
 }
 
@@ -181,32 +180,42 @@ function q2Ticket() {
       {
         answerId: "q2-a1",
         verdict: "correct",
-        explanationRu: "Pare требует полной остановки."
+        explanationRu: "Pare требует полной остановки.",
       },
       {
         answerId: "q2-a2",
         verdict: "incorrect",
-        explanationRu: "Продолжать без проверки нельзя."
-      }
-    ]
+        explanationRu: "Продолжать без проверки нельзя.",
+      },
+    ],
   };
 }
 
 test("current topic guide and manifests pass published validation", () => {
-  const currentQuestions = JSON.parse(readFileSync("content/questions/caba-b.unofficial-fallback.questions.json", "utf8"));
+  const currentQuestions = JSON.parse(
+    readFileSync("content/questions/caba-b.unofficial-fallback.questions.json", "utf8"),
+  );
   const currentGuide = JSON.parse(readFileSync("content/guide/topic-study-guide.ru.json", "utf8"));
-  const currentCoverage = JSON.parse(readFileSync("content/guide/topic-study-guide.coverage.json", "utf8"));
-  const currentTrace = JSON.parse(readFileSync("content/guide/topic-study-guide.source-trace.json", "utf8"));
+  const currentCoverage = JSON.parse(
+    readFileSync("content/guide/topic-study-guide.coverage.json", "utf8"),
+  );
+  const currentTrace = JSON.parse(
+    readFileSync("content/guide/topic-study-guide.source-trace.json", "utf8"),
+  );
 
   assert.equal(currentGuide.status, "published");
   assert(currentGuide.topics.every((topic) => topic.status === "published"));
   assert.equal(currentCoverage.status, "published");
-  assert(currentCoverage.topics.every((topic) => topic.phase === "published" && topic.status === "published"));
+  assert(
+    currentCoverage.topics.every(
+      (topic) => topic.phase === "published" && topic.status === "published",
+    ),
+  );
   assert(currentCoverage.assignments.every((assignment) => assignment.phase === "published"));
   assert(
     currentCoverage.assignments.every((assignment) =>
-      Object.values(assignment.placementPhases || {}).every((phase) => phase === "published")
-    )
+      Object.values(assignment.placementPhases || {}).every((phase) => phase === "published"),
+    ),
   );
   assert.equal(currentTrace.status, "published");
   assert.deepEqual(
@@ -214,21 +223,29 @@ test("current topic guide and manifests pass published validation", () => {
       questions: currentQuestions,
       guide: currentGuide,
       coverage: currentCoverage,
-      sourceTrace: currentTrace
+      sourceTrace: currentTrace,
     }),
-    []
+    [],
   );
 });
 
 test("parking clearance material teaches hospital ten-meter rule, five-meter trap, and institution timing contrast", () => {
   const currentGuide = JSON.parse(readFileSync("content/guide/topic-study-guide.ru.json", "utf8"));
-  const parkingTopic = currentGuide.topics.find((topic) => topic.id === "parking-clearances-and-corners");
+  const parkingTopic = currentGuide.topics.find(
+    (topic) => topic.id === "parking-clearances-and-corners",
+  );
   assert(parkingTopic, "Expected parking-clearances-and-corners topic to exist.");
 
   const topicText = renderedTopicGuideText(parkingTopic);
 
-  assert.match(topicText, /hospital\/centro de salud -> 10 metros de cada lado de la entrada|hospital\/centro de salud .*10 metros de cada lado de la entrada/s);
-  assert.match(topicText, /5 metros de cada lado de la entrada .*trap|5 metros de cada lado de la entrada .*falso|5 metros de cada lado de la entrada .*wrong/s);
+  assert.match(
+    topicText,
+    /hospital\/centro de salud -> 10 metros de cada lado de la entrada|hospital\/centro de salud .*10 metros de cada lado de la entrada/s,
+  );
+  assert.match(
+    topicText,
+    /5 metros de cada lado de la entrada .*trap|5 metros de cada lado de la entrada .*falso|5 metros de cada lado de la entrada .*wrong/s,
+  );
   assert.match(topicText, /en horas de clase/);
   assert.match(topicText, /oficios.*ceremonias|ceremonias.*oficios/s);
   assert.match(topicText, /horario de atención al público/);
@@ -242,13 +259,17 @@ test("content-ready assignments require rendered guide content", () => {
   const coverageManifest = coverage({
     assignments: [
       { questionId: "q1", topicIds: ["signals"], phase: "content_ready" },
-      { questionId: "q2", topicIds: ["stop-signs"], phase: "content_ready" }
-    ]
+      { questionId: "q2", topicIds: ["stop-signs"], phase: "content_ready" },
+    ],
   });
   const errors = validate({ coverageManifest });
 
   assert(errors.includes("q2: rendered assignment references missing guide topic stop-signs."));
-  assert(errors.includes("q2: content-ready or published coverage assignment is missing from guide content."));
+  assert(
+    errors.includes(
+      "q2: content-ready or published coverage assignment is missing from guide content.",
+    ),
+  );
 });
 
 test("placementPhases allow one rendered topic in a dual-assigned row", () => {
@@ -263,10 +284,10 @@ test("placementPhases allow one rendered topic in a dual-assigned row", () => {
         phase: "planned",
         placementPhases: {
           signals: "content_ready",
-          "stop-signs": "planned"
-        }
-      }
-    ]
+          "stop-signs": "planned",
+        },
+      },
+    ],
   });
 
   assert.deepEqual(validate({ guideContent, coverageManifest }), []);
@@ -282,15 +303,15 @@ test("rejects invalid placementPhases values and keys", () => {
         phase: "planned",
         placementPhases: {
           signals: "contentready",
-          "stop-signs": "planned"
-        }
-      }
-    ]
+          "stop-signs": "planned",
+        },
+      },
+    ],
   });
   assert(
     validate({ coverageManifest: invalidValueCoverage }).includes(
-      "q2/signals: assignment placement phase must be planned, content_ready, or published."
-    )
+      "q2/signals: assignment placement phase must be planned, content_ready, or published.",
+    ),
   );
 
   const extraKeyCoverage = coverage({
@@ -303,12 +324,16 @@ test("rejects invalid placementPhases values and keys", () => {
         placementPhases: {
           signals: "content_ready",
           "stop-signs": "planned",
-          extra: "planned"
-        }
-      }
-    ]
+          extra: "planned",
+        },
+      },
+    ],
   });
-  assert(validate({ coverageManifest: extraKeyCoverage }).includes("q2: assignment placementPhases references topic extra not present in topicIds."));
+  assert(
+    validate({ coverageManifest: extraKeyCoverage }).includes(
+      "q2: assignment placementPhases references topic extra not present in topicIds.",
+    ),
+  );
 
   const missingKeyCoverage = coverage({
     assignments: [
@@ -318,12 +343,16 @@ test("rejects invalid placementPhases values and keys", () => {
         topicIds: ["signals", "stop-signs"],
         phase: "planned",
         placementPhases: {
-          signals: "content_ready"
-        }
-      }
-    ]
+          signals: "content_ready",
+        },
+      },
+    ],
   });
-  assert(validate({ coverageManifest: missingKeyCoverage }).includes("q2: assignment placementPhases missing topic stop-signs."));
+  assert(
+    validate({ coverageManifest: missingKeyCoverage }).includes(
+      "q2: assignment placementPhases missing topic stop-signs.",
+    ),
+  );
 });
 
 test("published mode rejects planned-only assignments", () => {
@@ -333,7 +362,7 @@ test("published mode rejects planned-only assignments", () => {
   const errors = validate({
     guideContent,
     coverageManifest,
-    trace: sourceTrace({ status: "published" })
+    trace: sourceTrace({ status: "published" }),
   });
 
   assert(errors.includes("q2: published guide assignment phase must be published."));
@@ -352,15 +381,15 @@ test("published mode rejects planned placements inside a dual-assigned row", () 
         phase: "published",
         placementPhases: {
           signals: "published",
-          "stop-signs": "planned"
-        }
-      }
-    ]
+          "stop-signs": "planned",
+        },
+      },
+    ],
   });
   const errors = validate({
     guideContent,
     coverageManifest,
-    trace: sourceTrace({ status: "published" })
+    trace: sourceTrace({ status: "published" }),
   });
 
   assert(errors.includes("q2: published guide assignment placement phases must be published."));
@@ -376,7 +405,7 @@ test("published mode rejects draft topic and coverage states", () => {
   const errors = validate({
     guideContent,
     coverageManifest,
-    trace: sourceTrace({ status: "published" })
+    trace: sourceTrace({ status: "published" }),
   });
 
   assert(errors.includes("signals: published guide topic status must be published."));
@@ -391,7 +420,7 @@ test("published mode rejects missing coverage topic status", () => {
   const errors = validate({
     guideContent: publishedGuide(),
     coverageManifest,
-    trace: sourceTrace({ status: "published" })
+    trace: sourceTrace({ status: "published" }),
   });
 
   assert(errors.includes("signals: published guide coverage topic status must be published."));
@@ -403,13 +432,13 @@ test("published mode rejects English scaffold residue in Russian learner prose",
   const errors = validate({
     guideContent,
     coverageManifest: publishedCoverage(),
-    trace: sourceTrace({ status: "published" })
+    trace: sourceTrace({ status: "published" }),
   });
 
   assert(
     errors.includes(
-      'topics.0.summaryRu: published topic guide Russian learner prose must not contain English scaffold residue "current-system".'
-    )
+      'topics.0.summaryRu: published topic guide Russian learner prose must not contain English scaffold residue "current-system".',
+    ),
   );
 });
 
@@ -419,13 +448,13 @@ test("published mode rejects English scaffold residue inside Russian prose array
   const errors = validate({
     guideContent,
     coverageManifest: publishedCoverage(),
-    trace: sourceTrace({ status: "published" })
+    trace: sourceTrace({ status: "published" }),
   });
 
   assert(
     errors.includes(
-      'topics.0.learningMaterialRu.0: published topic guide Russian learner prose must not contain English scaffold residue "current-system".'
-    )
+      'topics.0.learningMaterialRu.0: published topic guide Russian learner prose must not contain English scaffold residue "current-system".',
+    ),
   );
 });
 
@@ -436,21 +465,21 @@ test("published mode rejects review-cited English scaffold classes in Russian le
         topic.learningMaterialRu[0] = "Правильно: lowering speed helps avoid aquaplaning.";
       },
       expected:
-        'topics.0.learningMaterialRu.0: published topic guide Russian learner prose must not contain English scaffold residue "lowering".'
+        'topics.0.learningMaterialRu.0: published topic guide Russian learner prose must not contain English scaffold residue "lowering".',
     },
     {
       mutate(topic) {
         topic.practicalReasoningRu = ["H.8 isletas: they guide traffic around obstacles."];
       },
       expected:
-        'topics.0.practicalReasoningRu.0: published topic guide Russian learner prose must not contain English scaffold residue "they".'
+        'topics.0.practicalReasoningRu.0: published topic guide Russian learner prose must not contain English scaffold residue "they".',
     },
     {
       mutate(topic) {
         topic.summaryRu = "Red cordón; yellow cordón.";
       },
       expected:
-        'topics.0.summaryRu: published topic guide Russian learner prose must not contain English scaffold residue "Red cordón".'
+        'topics.0.summaryRu: published topic guide Russian learner prose must not contain English scaffold residue "Red cordón".',
     },
     {
       mutate(topic) {
@@ -459,12 +488,12 @@ test("published mode rejects review-cited English scaffold classes in Russian le
             id: "claim-crosswalk",
             textRu:
               "CABA and Anexo L prohibit estacionar/detenerse on horizontal demarcation of sendas peatonales.",
-            requiresOfficialSource: false
-          }
+            requiresOfficialSource: false,
+          },
         ];
       },
       expected:
-        'topics.0.claims.0.textRu: published topic guide Russian learner prose must not contain English scaffold residue "and".'
+        'topics.0.claims.0.textRu: published topic guide Russian learner prose must not contain English scaffold residue "and".',
     },
     {
       mutate(topic) {
@@ -473,27 +502,29 @@ test("published mode rejects review-cited English scaffold classes in Russian le
             id: "claim-bikes",
             textRu:
               "Ley 2148 поддерживает allowed/forbidden arterias, under-12 и assisted ciclorrodados перед turning automotores.",
-            requiresOfficialSource: false
-          }
+            requiresOfficialSource: false,
+          },
         ];
       },
       expected:
-        'topics.0.claims.0.textRu: published topic guide Russian learner prose must not contain English scaffold residue "allowed/forbidden".'
+        'topics.0.claims.0.textRu: published topic guide Russian learner prose must not contain English scaffold residue "allowed/forbidden".',
     },
     {
       mutate(topic) {
         topic.learningMaterialRu[0] = "Ориентир ограничен reserved/authorized use в этом билете.";
       },
       expected:
-        'topics.0.learningMaterialRu.0: published topic guide Russian learner prose must not contain English scaffold residue "reserved/authorized use".'
+        'topics.0.learningMaterialRu.0: published topic guide Russian learner prose must not contain English scaffold residue "reserved/authorized use".',
     },
     {
       mutate(topic) {
-        topic.practicalReasoningRu = ["Используйте acceleration/deceleration/right полосы только по назначению."];
+        topic.practicalReasoningRu = [
+          "Используйте acceleration/deceleration/right полосы только по назначению.",
+        ];
       },
       expected:
-        'topics.0.practicalReasoningRu.0: published topic guide Russian learner prose must not contain English scaffold residue "acceleration/deceleration/right".'
-    }
+        'topics.0.practicalReasoningRu.0: published topic guide Russian learner prose must not contain English scaffold residue "acceleration/deceleration/right".',
+    },
   ];
 
   for (const testCase of cases) {
@@ -502,16 +533,19 @@ test("published mode rejects review-cited English scaffold classes in Russian le
     const errors = validate({
       guideContent,
       coverageManifest: publishedCoverage(),
-      trace: sourceTrace({ status: "published" })
+      trace: sourceTrace({ status: "published" }),
     });
-    assert(errors.includes(testCase.expected), `expected error ${testCase.expected}; got ${errors.join("\n")}`);
+    assert(
+      errors.includes(testCase.expected),
+      `expected error ${testCase.expected}; got ${errors.join("\n")}`,
+    );
   }
 });
 
 test("rejects missing current question IDs even in draft planned coverage", () => {
   const coverageManifest = coverage({
     topics: [{ topicId: "signals", phase: "content_ready", status: "draft", titleRu: "Жесты" }],
-    assignments: [{ questionId: "q1", topicIds: ["signals"], phase: "content_ready" }]
+    assignments: [{ questionId: "q1", topicIds: ["signals"], phase: "content_ready" }],
   });
 
   const errors = validate({ coverageManifest });
@@ -524,8 +558,8 @@ test("rejects duplicate topic IDs", () => {
   const coverageManifest = coverage({
     topics: [
       { topicId: "signals", phase: "content_ready", status: "draft", titleRu: "Жесты" },
-      { topicId: "signals", phase: "content_ready", status: "draft", titleRu: "Жесты снова" }
-    ]
+      { topicId: "signals", phase: "content_ready", status: "draft", titleRu: "Жесты снова" },
+    ],
   });
 
   const errors = validate({ guideContent, coverageManifest });
@@ -538,7 +572,11 @@ test("rejects invalid coverage topic phase", () => {
   coverageManifest.topics[1].phase = "planend";
 
   const errors = validate({ coverageManifest });
-  assert(errors.includes("stop-signs: coverage topic phase must be planned, content_ready, or published."));
+  assert(
+    errors.includes(
+      "stop-signs: coverage topic phase must be planned, content_ready, or published.",
+    ),
+  );
 });
 
 test("rejects invalid question IDs in guide tickets and coverage", () => {
@@ -547,8 +585,8 @@ test("rejects invalid question IDs in guide tickets and coverage", () => {
   const coverageManifest = coverage({
     assignments: [
       { questionId: "missing-question", topicIds: ["signals"], phase: "content_ready" },
-      { questionId: "q2", topicIds: ["stop-signs"], phase: "planned" }
-    ]
+      { questionId: "q2", topicIds: ["stop-signs"], phase: "planned" },
+    ],
   });
 
   const errors = validate({ guideContent, coverageManifest });
@@ -576,8 +614,8 @@ test("rejects missing explanations for correct and incorrect answers", () => {
     {
       answerId: "q1-a2",
       verdict: "incorrect",
-      explanationRu: "Неверный статус для правильного ответа."
-    }
+      explanationRu: "Неверный статус для правильного ответа.",
+    },
   ];
 
   const errors = validate({ guideContent });
@@ -591,20 +629,32 @@ test("rejects vocabulary terms not found in assigned ticket wording", () => {
   guideContent.topics[0].spanishTerms[0].termEs = "autopista fantasma";
 
   const errors = validate({ guideContent });
-  assert(errors.includes("signals/term-sena: termEs must come from assigned ticket or answer wording."));
+  assert(
+    errors.includes("signals/term-sena: termEs must come from assigned ticket or answer wording."),
+  );
 });
 
 test("rejects coverage/content assignment mismatch", () => {
   const coverageManifest = coverage({
     topics: [
       { topicId: "signals", phase: "content_ready", status: "draft", titleRu: "Жесты" },
-      { topicId: "missing-topic", phase: "content_ready", status: "draft", titleRu: "Несуществующая тема" },
-      { topicId: "stop-signs", phase: "planned", status: "draft", titleRu: "Знаки остановки и приоритета" }
+      {
+        topicId: "missing-topic",
+        phase: "content_ready",
+        status: "draft",
+        titleRu: "Несуществующая тема",
+      },
+      {
+        topicId: "stop-signs",
+        phase: "planned",
+        status: "draft",
+        titleRu: "Знаки остановки и приоритета",
+      },
     ],
     assignments: [
       { questionId: "q1", topicIds: ["missing-topic"], phase: "content_ready" },
-      { questionId: "q2", topicIds: ["stop-signs"], phase: "planned" }
-    ]
+      { questionId: "q2", topicIds: ["stop-signs"], phase: "planned" },
+    ],
   });
 
   const errors = validate({ coverageManifest });
@@ -619,13 +669,17 @@ test("rejects stale coverage baseline", () => {
       questionFile: "content/questions/caba-b.unofficial-fallback.questions.json",
       expectedQuestionCount: 999,
       questionIdsSha256: "0".repeat(64),
-      capturedAt: "2026-05-09"
-    }
+      capturedAt: "2026-05-09",
+    },
   });
 
   const errors = validate({ coverageManifest });
   assert.match(errors.join("\n"), /expectedQuestionCount 999 does not match current 2/);
-  assert(errors.includes("topic guide coverage baseline questionIdsSha256 does not match current question IDs."));
+  assert(
+    errors.includes(
+      "topic guide coverage baseline questionIdsSha256 does not match current question IDs.",
+    ),
+  );
 });
 
 test("rejects more than two topic assignments", () => {
@@ -638,12 +692,17 @@ test("rejects more than two topic assignments", () => {
       { topicId: "signals", phase: "content_ready", status: "draft", titleRu: "Жесты" },
       { topicId: "rules", phase: "content_ready", status: "draft", titleRu: "Правила" },
       { topicId: "extra", phase: "content_ready", status: "draft", titleRu: "Еще правила" },
-      { topicId: "stop-signs", phase: "planned", status: "draft", titleRu: "Знаки остановки и приоритета" }
+      {
+        topicId: "stop-signs",
+        phase: "planned",
+        status: "draft",
+        titleRu: "Знаки остановки и приоритета",
+      },
     ],
     assignments: [
       { questionId: "q1", topicIds: ["signals", "rules", "extra"], phase: "content_ready" },
-      { questionId: "q2", topicIds: ["stop-signs"], phase: "planned" }
-    ]
+      { questionId: "q2", topicIds: ["stop-signs"], phase: "planned" },
+    ],
   });
 
   const errors = validate({ guideContent, coverageManifest });
@@ -658,8 +717,8 @@ test("requires source trace entries for claims marked as official-source-backed"
       id: "claim-1",
       textRu: "Официально проверяемое утверждение.",
       requiresOfficialSource: true,
-      sourceTraceId: "trace-1"
-    }
+      sourceTraceId: "trace-1",
+    },
   ];
 
   const missingTraceErrors = validate({ guideContent });
@@ -673,12 +732,16 @@ test("requires source trace entries for claims marked as official-source-backed"
         claimId: "claim-1",
         claimSummaryRu: "Проверяемое утверждение.",
         officialDocumentIds: [],
-        checkedAt: "2026-05-09"
-      }
-    ]
+        checkedAt: "2026-05-09",
+      },
+    ],
   });
   const emptyDocumentErrors = validate({ guideContent, trace: emptyDocumentTrace });
-  assert(emptyDocumentErrors.includes("trace-1: source trace officialDocumentIds must be a non-empty array."));
+  assert(
+    emptyDocumentErrors.includes(
+      "trace-1: source trace officialDocumentIds must be a non-empty array.",
+    ),
+  );
 
   const trace = sourceTrace({
     entries: [
@@ -688,9 +751,9 @@ test("requires source trace entries for claims marked as official-source-backed"
         claimId: "claim-1",
         claimSummaryRu: "Проверяемое утверждение.",
         officialDocumentIds: ["official-doc-1"],
-        checkedAt: "2026-05-09"
-      }
-    ]
+        checkedAt: "2026-05-09",
+      },
+    ],
   });
   assert.deepEqual(validate({ guideContent, trace }), []);
 });
@@ -704,13 +767,17 @@ test("rejects source trace entries with blank official document IDs", () => {
         claimId: "claim-1",
         claimSummaryRu: "Проверяемое утверждение.",
         officialDocumentIds: ["official-doc-1", " "],
-        checkedAt: "2026-05-09"
-      }
-    ]
+        checkedAt: "2026-05-09",
+      },
+    ],
   });
 
   const errors = validate({ trace });
-  assert(errors.includes("trace-blank-doc: source trace officialDocumentIds must contain only non-empty strings."));
+  assert(
+    errors.includes(
+      "trace-blank-doc: source trace officialDocumentIds must contain only non-empty strings.",
+    ),
+  );
 });
 
 test("rejects guideId mismatches across topic guide manifests", () => {
@@ -732,6 +799,10 @@ test("rejects manifest status disagreement that could hide strict validation", (
   assert(guideCoverageErrors.includes("signals: published guide topic status must be published."));
 
   const sourceTraceErrors = validate({ trace: sourceTrace({ status: "published" }) });
-  assert(sourceTraceErrors.includes("topic guide source trace status must match topic guide and coverage status."));
+  assert(
+    sourceTraceErrors.includes(
+      "topic guide source trace status must match topic guide and coverage status.",
+    ),
+  );
   assert(sourceTraceErrors.includes("signals: published guide topic status must be published."));
 });

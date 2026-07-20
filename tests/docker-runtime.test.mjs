@@ -6,11 +6,11 @@ const compose = readFileSync(new URL("../docker-compose.yml", import.meta.url), 
 const makefile = readFileSync(new URL("../Makefile", import.meta.url), "utf8");
 const dockerDocs = readFileSync(
   new URL("../docs_project/project/devops/docker-runtime.md", import.meta.url),
-  "utf8"
+  "utf8",
 );
 const frontendDocs = readFileSync(
   new URL("../docs_project/project/frontend/frontend-docs.md", import.meta.url),
-  "utf8"
+  "utf8",
 );
 
 test("Docker compose uses project-scoped containers and configurable host port", () => {
@@ -33,9 +33,21 @@ test("Makefile reports the configured Docker URL while keeping project-scoped ta
 
 test("Docker runtime docs cover default and isolated agent smoke flows", () => {
   assert.match(dockerDocs, /http:\/\/localhost:5173/);
-  assert.match(dockerDocs, /COMPOSE_PROJECT_NAME=cabadrive-021-isolation CABADRIVE_HOST_PORT=5175 make up/);
-  assert.match(dockerDocs, /Compose auto-tags the built image\s+from the compose project and service name/);
-  assert.match(dockerDocs, /must not stop, remove, rename, or otherwise mutate containers from\s+another compose project/);
-  assert.match(frontendDocs, /COMPOSE_PROJECT_NAME=cabadrive-021-isolation CABADRIVE_HOST_PORT=5175 make up/);
+  assert.match(
+    dockerDocs,
+    /COMPOSE_PROJECT_NAME=cabadrive-021-isolation CABADRIVE_HOST_PORT=5175 make up/,
+  );
+  assert.match(
+    dockerDocs,
+    /Compose auto-tags the built image\s+from the compose project and service name/,
+  );
+  assert.match(
+    dockerDocs,
+    /must not stop, remove, rename, or otherwise mutate containers from\s+another compose project/,
+  );
+  assert.match(
+    frontendDocs,
+    /COMPOSE_PROJECT_NAME=cabadrive-021-isolation CABADRIVE_HOST_PORT=5175 make up/,
+  );
   assert.match(frontendDocs, /project-scoped image name/);
 });

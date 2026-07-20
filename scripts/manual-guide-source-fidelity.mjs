@@ -2,11 +2,16 @@ import { createHash } from "node:crypto";
 import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import { join } from "node:path";
 
-const registryPath = process.env.MANUAL_GUIDE_REGISTRY_PATH ?? "content/manuals/gcba-manual-vehiculo-4-ruedas-2023/interactive-guide/section-registry.chapters-1-2.json";
-const evidencePath = process.env.MANUAL_GUIDE_EVIDENCE_PATH ?? "content/validation/manual-guide-source-fidelity.evidence.json";
+const registryPath =
+  process.env.MANUAL_GUIDE_REGISTRY_PATH ??
+  "content/manuals/gcba-manual-vehiculo-4-ruedas-2023/interactive-guide/section-registry.chapters-1-2.json";
+const evidencePath =
+  process.env.MANUAL_GUIDE_EVIDENCE_PATH ??
+  "content/validation/manual-guide-source-fidelity.evidence.json";
 const appPath = "src/App.tsx";
 const manualGuidePath = process.env.MANUAL_GUIDE_DATA_PATH ?? "src/data/manualGuide.ts";
-const sectionModuleRoot = process.env.MANUAL_GUIDE_SECTION_MODULE_ROOT ?? "src/data/manual-sections";
+const sectionModuleRoot =
+  process.env.MANUAL_GUIDE_SECTION_MODULE_ROOT ?? "src/data/manual-sections";
 const stylesPath = "src/styles.css";
 
 function readJson(path) {
@@ -33,7 +38,10 @@ function sliceSource(source, startMarker, endMarker, sourcePath) {
   const startIndex = source.indexOf(startMarker);
   const endIndex = source.indexOf(endMarker);
   assertCondition(startIndex >= 0, `${sourcePath} is missing scan start marker ${startMarker}`);
-  assertCondition(endIndex > startIndex, `${sourcePath} is missing scan end marker ${endMarker} after ${startMarker}`);
+  assertCondition(
+    endIndex > startIndex,
+    `${sourcePath} is missing scan end marker ${endMarker} after ${startMarker}`,
+  );
   return source.slice(startIndex, endIndex);
 }
 
@@ -49,7 +57,11 @@ function assertRequiredFields(value, fields, messagePrefix) {
 }
 
 function assertLocalPathExists(path, message, details = {}) {
-  assertCondition(typeof path === "string" && path.length > 0, `${message} must be a non-empty path`, details);
+  assertCondition(
+    typeof path === "string" && path.length > 0,
+    `${message} must be a non-empty path`,
+    details,
+  );
   assertCondition(existsSync(path), `${message} must exist locally`, { ...details, path });
 }
 
@@ -77,7 +89,12 @@ function readImageDimensions(path) {
       if (marker === 0xd9 || marker === 0xda) break;
       const segmentLength = bytes.readUInt16BE(offset);
       if (segmentLength < 2 || offset + segmentLength > bytes.length) break;
-      if ((marker >= 0xc0 && marker <= 0xc3) || (marker >= 0xc5 && marker <= 0xc7) || (marker >= 0xc9 && marker <= 0xcb) || (marker >= 0xcd && marker <= 0xcf)) {
+      if (
+        (marker >= 0xc0 && marker <= 0xc3) ||
+        (marker >= 0xc5 && marker <= 0xc7) ||
+        (marker >= 0xc9 && marker <= 0xcb) ||
+        (marker >= 0xcd && marker <= 0xcf)
+      ) {
         return { width: bytes.readUInt16BE(offset + 5), height: bytes.readUInt16BE(offset + 3) };
       }
       offset += segmentLength;
@@ -137,32 +154,80 @@ function isOriginalSourceImageVisibleTextException(entry) {
 
 function validateVisibleSpanishException(exception, messagePrefix) {
   if (exception.kind === "official-traffic-sign-source-as-is") {
-    assertCondition(exception.visibleSpanishScope === "official-sign-image-only", `${messagePrefix}.visibleSpanishScope must be official-sign-image-only`, exception);
-    assertCondition(exception.sourceAsIs === true, `${messagePrefix}.sourceAsIs must be true`, exception);
+    assertCondition(
+      exception.visibleSpanishScope === "official-sign-image-only",
+      `${messagePrefix}.visibleSpanishScope must be official-sign-image-only`,
+      exception,
+    );
+    assertCondition(
+      exception.sourceAsIs === true,
+      `${messagePrefix}.sourceAsIs must be true`,
+      exception,
+    );
     assertLocalPathExists(exception.assetPath, `${messagePrefix}.assetPath`, exception);
     return;
   }
   if (exception.kind === "source-image-original-visible-text") {
-    assertCondition(exception.visibleSpanishScope === "source-image-only", `${messagePrefix}.visibleSpanishScope must be source-image-only`, exception);
-    assertCondition(exception.sourceAsIs === true, `${messagePrefix}.sourceAsIs must be true`, exception);
-    assertCondition(exception.russianExplanationOutsideImage === true, `${messagePrefix}.russianExplanationOutsideImage must be true`, exception);
+    assertCondition(
+      exception.visibleSpanishScope === "source-image-only",
+      `${messagePrefix}.visibleSpanishScope must be source-image-only`,
+      exception,
+    );
+    assertCondition(
+      exception.sourceAsIs === true,
+      `${messagePrefix}.sourceAsIs must be true`,
+      exception,
+    );
+    assertCondition(
+      exception.russianExplanationOutsideImage === true,
+      `${messagePrefix}.russianExplanationOutsideImage must be true`,
+      exception,
+    );
     assertLocalPathExists(exception.assetPath, `${messagePrefix}.assetPath`, exception);
     return;
   }
   if (exception.kind === "source-document-example-original-visible-text") {
-    assertCondition(exception.visibleSpanishScope === "source-document-example-image-only", `${messagePrefix}.visibleSpanishScope must be source-document-example-image-only`, exception);
-    assertCondition(exception.sourceAsIs === true, `${messagePrefix}.sourceAsIs must be true`, exception);
-    assertCondition(exception.russianExplanationOutsideImage === true, `${messagePrefix}.russianExplanationOutsideImage must be true`, exception);
+    assertCondition(
+      exception.visibleSpanishScope === "source-document-example-image-only",
+      `${messagePrefix}.visibleSpanishScope must be source-document-example-image-only`,
+      exception,
+    );
+    assertCondition(
+      exception.sourceAsIs === true,
+      `${messagePrefix}.sourceAsIs must be true`,
+      exception,
+    );
+    assertCondition(
+      exception.russianExplanationOutsideImage === true,
+      `${messagePrefix}.russianExplanationOutsideImage must be true`,
+      exception,
+    );
     assertLocalPathExists(exception.assetPath, `${messagePrefix}.assetPath`, exception);
     return;
   }
-  assertCondition(false, `${messagePrefix}.kind must be an allowed visible-Spanish source-image exception`, exception);
+  assertCondition(
+    false,
+    `${messagePrefix}.kind must be an allowed visible-Spanish source-image exception`,
+    exception,
+  );
 }
 
 function validateOfficialTrafficSignException(exception, messagePrefix) {
-  assertCondition(exception.kind === "official-traffic-sign-source-as-is", `${messagePrefix}.kind must be official-traffic-sign-source-as-is`, exception);
-  assertCondition(exception.visibleSpanishScope === "official-sign-image-only", `${messagePrefix}.visibleSpanishScope must be official-sign-image-only`, exception);
-  assertCondition(exception.sourceAsIs === true, `${messagePrefix}.sourceAsIs must be true`, exception);
+  assertCondition(
+    exception.kind === "official-traffic-sign-source-as-is",
+    `${messagePrefix}.kind must be official-traffic-sign-source-as-is`,
+    exception,
+  );
+  assertCondition(
+    exception.visibleSpanishScope === "official-sign-image-only",
+    `${messagePrefix}.visibleSpanishScope must be official-sign-image-only`,
+    exception,
+  );
+  assertCondition(
+    exception.sourceAsIs === true,
+    `${messagePrefix}.sourceAsIs must be true`,
+    exception,
+  );
   assertLocalPathExists(exception.assetPath, `${messagePrefix}.assetPath`, exception);
 }
 
@@ -170,7 +235,7 @@ const legacyVisualEvidenceSectionIds = new Set([
   "ch1-cities-for-people",
   "ch1-sustainable-mobility",
   "ch1-pedestrian-priority",
-  "ch1-bicycle"
+  "ch1-bicycle",
 ]);
 const strictImageAssetCategories = new Set([
   "source-as-is-photo",
@@ -180,33 +245,38 @@ const strictImageAssetCategories = new Set([
   "source-as-is-map",
   "source-as-is-document-example",
   "source-transferred-infographic",
-  "source-transferred-diagram"
+  "source-transferred-diagram",
 ]);
 const protectedSourceAsIsCategories = new Set([
   "source-as-is-photo",
   "source-as-is-diagram",
   "source-as-is-traffic-sign",
-  "source-as-is-road-marking"
+  "source-as-is-road-marking",
 ]);
 const documentExampleSourceAsIsCategories = new Set(["source-as-is-document-example"]);
 const scopedSourceAsIsMapCategories = new Set(["source-as-is-map"]);
 const approvedSourceAsIsMapExceptions = [
   {
     sectionId: "app2-highways-hospitals",
-    assetPath: "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app2-highways-hospitals/hospital-map-source-as-is.png",
-    sourceAssetPath: "content/validation/manual-guide/app2-highways-hospitals/page-150-hospital-map-source-crop.png",
+    assetPath:
+      "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app2-highways-hospitals/hospital-map-source-as-is.png",
+    sourceAssetPath:
+      "content/validation/manual-guide/app2-highways-hospitals/page-150-hospital-map-source-crop.png",
     sourcePage: 150,
     ownerDecisionDate: "2026-06-04",
-    scope: "page-150-hospital-map-only"
-  }
+    scope: "page-150-hospital-map-only",
+  },
 ];
-const strictNonImageAssetCategories = new Set(["native-dom-text-only", "reference-only-not-runtime"]);
+const strictNonImageAssetCategories = new Set([
+  "native-dom-text-only",
+  "reference-only-not-runtime",
+]);
 const highResolutionTargets = new Set([
   "x5-zoom-source-export",
   "source-native-equivalent-or-better",
   "higher-resolution-direct-export",
   "retained-official-original-image-copy",
-  "direct-pdf-region-render-scale-36-map-only-lossless-png"
+  "direct-pdf-region-render-scale-36-map-only-lossless-png",
 ]);
 const forbiddenStrictVisualTerms = [
   "approximate-redraw",
@@ -229,7 +299,7 @@ const forbiddenStrictVisualTerms = [
   "opaque-rectangle",
   "opaque-label-background",
   "dom-plate",
-  "backing-rectangle"
+  "backing-rectangle",
 ];
 
 function escapeRegExp(value) {
@@ -242,7 +312,7 @@ function forbiddenStrictVisualTermPattern(term) {
 
 const forbiddenStrictVisualTermPatterns = forbiddenStrictVisualTerms.map((term) => ({
   term,
-  pattern: forbiddenStrictVisualTermPattern(term)
+  pattern: forbiddenStrictVisualTermPattern(term),
 }));
 const forbiddenStrictVisualTermIgnoredKeys = new Set([
   "assetPath",
@@ -252,34 +322,49 @@ const forbiddenStrictVisualTermIgnoredKeys = new Set([
   "sha256",
   "cropSha256",
   "id",
-  "sectionId"
+  "sectionId",
 ]);
 
 function isLegacyVisualEvidenceAllowed(section, evidence, implementedEvidence) {
   const policy = evidence.strictVisualRulePolicy;
-  if (policy?.legacyBaselineSectionIds?.includes(section.id) !== true || !legacyVisualEvidenceSectionIds.has(section.id)) return false;
+  if (
+    policy?.legacyBaselineSectionIds?.includes(section.id) !== true ||
+    !legacyVisualEvidenceSectionIds.has(section.id)
+  )
+    return false;
   const expectedEvidenceFingerprint = policy.legacyBaselineEvidenceFingerprints?.[section.id];
   const expectedStateFingerprint = policy.legacyBaselineStateFingerprints?.[section.id];
-  if (typeof expectedEvidenceFingerprint !== "string" || typeof expectedStateFingerprint !== "string") return false;
-  return sha256Json(implementedEvidence) === expectedEvidenceFingerprint && legacyBaselineStateFingerprint(section, implementedEvidence) === expectedStateFingerprint;
+  if (
+    typeof expectedEvidenceFingerprint !== "string" ||
+    typeof expectedStateFingerprint !== "string"
+  )
+    return false;
+  return (
+    sha256Json(implementedEvidence) === expectedEvidenceFingerprint &&
+    legacyBaselineStateFingerprint(section, implementedEvidence) === expectedStateFingerprint
+  );
 }
 
 function isStrictVisualEvidenceRequired(section, evidence, implementedEvidence) {
-  return evidence.strictVisualRulePolicy?.enforcement === "all-new-manual-units" && !isLegacyVisualEvidenceAllowed(section, evidence, implementedEvidence);
+  return (
+    evidence.strictVisualRulePolicy?.enforcement === "all-new-manual-units" &&
+    !isLegacyVisualEvidenceAllowed(section, evidence, implementedEvidence)
+  );
 }
 
 function isStrictVisualEvidenceOptIn(implementedEvidence) {
-  return implementedEvidence.visualEvidenceSchemaVersion === 3 || implementedEvidence.visualRulePolicyId === "031-strict-source-fidelity";
+  return (
+    implementedEvidence.visualEvidenceSchemaVersion === 3 ||
+    implementedEvidence.visualRulePolicyId === "031-strict-source-fidelity"
+  );
 }
 
 function isStrictProtectedSourceAsIsException(entry) {
   return (
     entry.visibleSpanish === true &&
-    (
-      protectedSourceAsIsCategories.has(entry.assetCategory) ||
+    (protectedSourceAsIsCategories.has(entry.assetCategory) ||
       documentExampleSourceAsIsCategories.has(entry.assetCategory) ||
-      isApprovedSourceAsIsMapExceptionAsset(entry)
-    ) &&
+      isApprovedSourceAsIsMapExceptionAsset(entry)) &&
     isObject(entry.sourceIntegrity) &&
     entry.sourceIntegrity.sourceAsIs === true &&
     entry.sourceIntegrity.noTranslationOrRelabeling === true &&
@@ -290,51 +375,71 @@ function isStrictProtectedSourceAsIsException(entry) {
 
 function isApprovedSourceAsIsMapExceptionAsset(asset) {
   if (asset.assetCategory !== "source-as-is-map") return false;
-  return approvedSourceAsIsMapExceptions.some((approved) =>
-    asset.assetPath === approved.assetPath &&
-    asset.sourceIntegrity?.sourceAssetPath === approved.sourceAssetPath &&
-    asset.sourceImageException?.ownerDecisionDate === approved.ownerDecisionDate &&
-    asset.sourceImageException?.scope === approved.scope
+  return approvedSourceAsIsMapExceptions.some(
+    (approved) =>
+      asset.assetPath === approved.assetPath &&
+      asset.sourceIntegrity?.sourceAssetPath === approved.sourceAssetPath &&
+      asset.sourceImageException?.ownerDecisionDate === approved.ownerDecisionDate &&
+      asset.sourceImageException?.scope === approved.scope,
   );
 }
 
 function requiresSourceAsIsValidation(assetCategory) {
-  return protectedSourceAsIsCategories.has(assetCategory) ||
+  return (
+    protectedSourceAsIsCategories.has(assetCategory) ||
     documentExampleSourceAsIsCategories.has(assetCategory) ||
-    scopedSourceAsIsMapCategories.has(assetCategory);
+    scopedSourceAsIsMapCategories.has(assetCategory)
+  );
 }
 
 function visibleSpanishStatusExceptionAssetPaths(value, assetCategory) {
   if (!isObject(value) || !Array.isArray(value.exceptions)) return new Set();
   const isTrafficSign = assetCategory === "source-as-is-traffic-sign";
   const isDocumentExample = documentExampleSourceAsIsCategories.has(assetCategory);
-  const allowedStatuses = isTrafficSign ? new Set(["official_traffic_sign_exception_only", "source_image_exceptions_only"]) : new Set(["source_image_exceptions_only"]);
+  const allowedStatuses = isTrafficSign
+    ? new Set(["official_traffic_sign_exception_only", "source_image_exceptions_only"])
+    : new Set(["source_image_exceptions_only"]);
   if (!allowedStatuses.has(value.status)) return new Set();
-  const expectedKind = isTrafficSign ? "official-traffic-sign-source-as-is" : isDocumentExample ? "source-document-example-original-visible-text" : "source-image-original-visible-text";
+  const expectedKind = isTrafficSign
+    ? "official-traffic-sign-source-as-is"
+    : isDocumentExample
+      ? "source-document-example-original-visible-text"
+      : "source-image-original-visible-text";
   return new Set(
     value.exceptions
       .filter((exception) => exception.kind === expectedKind)
       .map((exception) => exception.assetPath)
-      .filter((assetPath) => typeof assetPath === "string" && assetPath.length > 0)
+      .filter((assetPath) => typeof assetPath === "string" && assetPath.length > 0),
   );
 }
 
 function collectForbiddenStrictVisualText(value, key = "") {
-  if (typeof value === "string") return forbiddenStrictVisualTermIgnoredKeys.has(key) ? [] : [value];
-  if (Array.isArray(value)) return value.flatMap((entry) => collectForbiddenStrictVisualText(entry));
-  if (isObject(value)) return Object.entries(value).flatMap(([entryKey, entryValue]) => collectForbiddenStrictVisualText(entryValue, entryKey));
+  if (typeof value === "string")
+    return forbiddenStrictVisualTermIgnoredKeys.has(key) ? [] : [value];
+  if (Array.isArray(value))
+    return value.flatMap((entry) => collectForbiddenStrictVisualText(entry));
+  if (isObject(value))
+    return Object.entries(value).flatMap(([entryKey, entryValue]) =>
+      collectForbiddenStrictVisualText(entryValue, entryKey),
+    );
   return [];
 }
 
 function assertNoForbiddenStrictVisualTerms(value, messagePrefix) {
   const serialized = collectForbiddenStrictVisualText(value).join("\n");
   for (const { term, pattern } of forbiddenStrictVisualTermPatterns) {
-    assertCondition(!pattern.test(serialized), `${messagePrefix} must not record forbidden visual-edit term ${term}`, value);
+    assertCondition(
+      !pattern.test(serialized),
+      `${messagePrefix} must not record forbidden visual-edit term ${term}`,
+      value,
+    );
   }
 }
 
 function validateSha256(value, messagePrefix) {
-  assertCondition(/^[a-f0-9]{64}$/u.test(value), `${messagePrefix} must be a SHA-256 hash`, { value });
+  assertCondition(/^[a-f0-9]{64}$/u.test(value), `${messagePrefix} must be a SHA-256 hash`, {
+    value,
+  });
 }
 
 function sha256File(path) {
@@ -345,12 +450,16 @@ function validateFileSha256(path, expectedSha256, messagePrefix, details = {}) {
   validateSha256(expectedSha256, messagePrefix);
   assertLocalPathExists(path, `${messagePrefix} referenced artifact`, details);
   const actualSha256 = sha256File(path);
-  assertCondition(actualSha256 === expectedSha256, `${messagePrefix} must match referenced artifact bytes`, {
-    ...details,
-    path,
-    actualSha256,
-    expectedSha256
-  });
+  assertCondition(
+    actualSha256 === expectedSha256,
+    `${messagePrefix} must match referenced artifact bytes`,
+    {
+      ...details,
+      path,
+      actualSha256,
+      expectedSha256,
+    },
+  );
 }
 
 function fileSha256IfPresent(path) {
@@ -363,40 +472,74 @@ function visualArtifactHashRecords(value, pathField) {
   return entries.map((entry, index) => ({
     index,
     path: entry[pathField],
-    sha256: fileSha256IfPresent(entry[pathField])
+    sha256: fileSha256IfPresent(entry[pathField]),
   }));
 }
 
 function legacyBaselineStateFingerprint(section, implementedEvidence) {
   const modulePath = resolveSectionContentModulePath(section.sectionContentModulePath);
   const sectionContentModuleSha256 = fileSha256IfPresent(modulePath);
-  const sourceAssetHashes = visualArtifactHashRecords(implementedEvidence.sourceRegionMetadata, "sourceAssetPath");
-  const localAssetHashes = visualArtifactHashRecords(implementedEvidence.localAssetMetadata, "assetPath");
-  if (sectionContentModuleSha256 === null || [...sourceAssetHashes, ...localAssetHashes].some((entry) => entry.sha256 === null)) return null;
+  const sourceAssetHashes = visualArtifactHashRecords(
+    implementedEvidence.sourceRegionMetadata,
+    "sourceAssetPath",
+  );
+  const localAssetHashes = visualArtifactHashRecords(
+    implementedEvidence.localAssetMetadata,
+    "assetPath",
+  );
+  if (
+    sectionContentModuleSha256 === null ||
+    [...sourceAssetHashes, ...localAssetHashes].some((entry) => entry.sha256 === null)
+  )
+    return null;
   return sha256Json({
     implementationEvidence: implementedEvidence,
     sectionContentModulePath: section.sectionContentModulePath,
     sectionContentModuleSha256,
     sourceAssetHashes,
-    localAssetHashes
+    localAssetHashes,
   });
 }
 
 function validateExtractionScaleEvidence(value, messagePrefix, actualDimensions = null) {
   assertRequiredFields(value, ["target", "method", "outputDimensions"], messagePrefix);
-  assertCondition(highResolutionTargets.has(value.target), `${messagePrefix}.target must be x5 or equivalent/better`, value);
-  assertCondition(typeof value.method === "string" && value.method.length > 0, `${messagePrefix}.method must describe the export method`, value);
-  assertRequiredFields(value.outputDimensions, ["width", "height"], `${messagePrefix}.outputDimensions`);
-  assertCondition(value.outputDimensions.width > 0 && value.outputDimensions.height > 0, `${messagePrefix}.outputDimensions must be positive`, value);
+  assertCondition(
+    highResolutionTargets.has(value.target),
+    `${messagePrefix}.target must be x5 or equivalent/better`,
+    value,
+  );
+  assertCondition(
+    typeof value.method === "string" && value.method.length > 0,
+    `${messagePrefix}.method must describe the export method`,
+    value,
+  );
+  assertRequiredFields(
+    value.outputDimensions,
+    ["width", "height"],
+    `${messagePrefix}.outputDimensions`,
+  );
+  assertCondition(
+    value.outputDimensions.width > 0 && value.outputDimensions.height > 0,
+    `${messagePrefix}.outputDimensions must be positive`,
+    value,
+  );
   if (actualDimensions !== null) {
-    assertCondition(value.outputDimensions.width === actualDimensions.width, `${messagePrefix}.outputDimensions.width must match referenced image width`, {
-      ...value,
-      actualDimensions
-    });
-    assertCondition(value.outputDimensions.height === actualDimensions.height, `${messagePrefix}.outputDimensions.height must match referenced image height`, {
-      ...value,
-      actualDimensions
-    });
+    assertCondition(
+      value.outputDimensions.width === actualDimensions.width,
+      `${messagePrefix}.outputDimensions.width must match referenced image width`,
+      {
+        ...value,
+        actualDimensions,
+      },
+    );
+    assertCondition(
+      value.outputDimensions.height === actualDimensions.height,
+      `${messagePrefix}.outputDimensions.height must match referenced image height`,
+      {
+        ...value,
+        actualDimensions,
+      },
+    );
   }
   if ("sha256" in value) {
     validateSha256(value.sha256, `${messagePrefix}.sha256`);
@@ -405,142 +548,303 @@ function validateExtractionScaleEvidence(value, messagePrefix, actualDimensions 
 
 function validateStrictSourceRegionDimensions(entry, messagePrefix) {
   const dimensions = readImageDimensions(entry.sourceAssetPath);
-  assertCondition(dimensions !== null, `${messagePrefix}.sourceAssetPath must reference a supported image with readable dimensions`, entry);
-  assertRequiredFields(entry.cropDimensions, ["width", "height"], `${messagePrefix}.cropDimensions`);
-  assertCondition(entry.cropDimensions.width === dimensions.width, `${messagePrefix}.cropDimensions.width must match referenced image width`, {
-    ...entry,
-    actualDimensions: dimensions
-  });
-  assertCondition(entry.cropDimensions.height === dimensions.height, `${messagePrefix}.cropDimensions.height must match referenced image height`, {
-    ...entry,
-    actualDimensions: dimensions
-  });
+  assertCondition(
+    dimensions !== null,
+    `${messagePrefix}.sourceAssetPath must reference a supported image with readable dimensions`,
+    entry,
+  );
+  assertRequiredFields(
+    entry.cropDimensions,
+    ["width", "height"],
+    `${messagePrefix}.cropDimensions`,
+  );
+  assertCondition(
+    entry.cropDimensions.width === dimensions.width,
+    `${messagePrefix}.cropDimensions.width must match referenced image width`,
+    {
+      ...entry,
+      actualDimensions: dimensions,
+    },
+  );
+  assertCondition(
+    entry.cropDimensions.height === dimensions.height,
+    `${messagePrefix}.cropDimensions.height must match referenced image height`,
+    {
+      ...entry,
+      actualDimensions: dimensions,
+    },
+  );
   return dimensions;
 }
 
 function validateStrictImageAssetDimensions(asset, messagePrefix) {
   const dimensions = readImageDimensions(asset.assetPath);
-  assertCondition(dimensions !== null, `${messagePrefix}.assetPath must reference a supported image with readable dimensions`, asset);
-  assertCondition(asset.width === dimensions.width, `${messagePrefix}.width must match referenced image width`, { ...asset, actualDimensions: dimensions });
-  assertCondition(asset.height === dimensions.height, `${messagePrefix}.height must match referenced image height`, { ...asset, actualDimensions: dimensions });
+  assertCondition(
+    dimensions !== null,
+    `${messagePrefix}.assetPath must reference a supported image with readable dimensions`,
+    asset,
+  );
+  assertCondition(
+    asset.width === dimensions.width,
+    `${messagePrefix}.width must match referenced image width`,
+    { ...asset, actualDimensions: dimensions },
+  );
+  assertCondition(
+    asset.height === dimensions.height,
+    `${messagePrefix}.height must match referenced image height`,
+    { ...asset, actualDimensions: dimensions },
+  );
   return dimensions;
 }
 
 function validateRuntimeDisplaySize(asset, messagePrefix, actualDimensions) {
-  assertRequiredFields(asset.runtimeDisplaySize, ["maxWidthCssPx", "noUpscale"], `${messagePrefix}.runtimeDisplaySize`);
-  assertCondition(asset.runtimeDisplaySize.noUpscale === true, `${messagePrefix}.runtimeDisplaySize.noUpscale must be true`, asset);
-  assertCondition(asset.runtimeDisplaySize.maxWidthCssPx > 0, `${messagePrefix}.runtimeDisplaySize.maxWidthCssPx must be positive`, asset);
-  assertCondition(actualDimensions.width >= asset.runtimeDisplaySize.maxWidthCssPx, `${messagePrefix}.actualWidth must be at least runtime max display width`, {
-    ...asset,
-    actualDimensions
-  });
-  if ("maxHeightCssPx" in asset.runtimeDisplaySize) {
-    assertCondition(asset.runtimeDisplaySize.maxHeightCssPx > 0, `${messagePrefix}.runtimeDisplaySize.maxHeightCssPx must be positive`, asset);
-    assertCondition(actualDimensions.height >= asset.runtimeDisplaySize.maxHeightCssPx, `${messagePrefix}.actualHeight must be at least runtime max display height`, {
+  assertRequiredFields(
+    asset.runtimeDisplaySize,
+    ["maxWidthCssPx", "noUpscale"],
+    `${messagePrefix}.runtimeDisplaySize`,
+  );
+  assertCondition(
+    asset.runtimeDisplaySize.noUpscale === true,
+    `${messagePrefix}.runtimeDisplaySize.noUpscale must be true`,
+    asset,
+  );
+  assertCondition(
+    asset.runtimeDisplaySize.maxWidthCssPx > 0,
+    `${messagePrefix}.runtimeDisplaySize.maxWidthCssPx must be positive`,
+    asset,
+  );
+  assertCondition(
+    actualDimensions.width >= asset.runtimeDisplaySize.maxWidthCssPx,
+    `${messagePrefix}.actualWidth must be at least runtime max display width`,
+    {
       ...asset,
-      actualDimensions
-    });
+      actualDimensions,
+    },
+  );
+  if ("maxHeightCssPx" in asset.runtimeDisplaySize) {
+    assertCondition(
+      asset.runtimeDisplaySize.maxHeightCssPx > 0,
+      `${messagePrefix}.runtimeDisplaySize.maxHeightCssPx must be positive`,
+      asset,
+    );
+    assertCondition(
+      actualDimensions.height >= asset.runtimeDisplaySize.maxHeightCssPx,
+      `${messagePrefix}.actualHeight must be at least runtime max display height`,
+      {
+        ...asset,
+        actualDimensions,
+      },
+    );
   }
 }
 
 function validateSourceAsIsAsset(asset, messagePrefix, sourceRegionRecords, actualDimensions) {
   assertRequiredFields(
     asset.sourceIntegrity,
-    ["sourceAsIs", "sourceAssetPath", "noTranslationOrRelabeling", "noRedrawRecolorCleanupRetouchMaskInpaint", "russianExplanationOutsideImage"],
-    `${messagePrefix}.sourceIntegrity`
+    [
+      "sourceAsIs",
+      "sourceAssetPath",
+      "noTranslationOrRelabeling",
+      "noRedrawRecolorCleanupRetouchMaskInpaint",
+      "russianExplanationOutsideImage",
+    ],
+    `${messagePrefix}.sourceIntegrity`,
   );
-  assertCondition(asset.sourceIntegrity.sourceAsIs === true, `${messagePrefix}.sourceIntegrity.sourceAsIs must be true`, asset);
+  assertCondition(
+    asset.sourceIntegrity.sourceAsIs === true,
+    `${messagePrefix}.sourceIntegrity.sourceAsIs must be true`,
+    asset,
+  );
   assertCondition(
     sourceRegionRecords.has(asset.sourceIntegrity.sourceAssetPath),
     `${messagePrefix}.sourceIntegrity.sourceAssetPath must reference sourceRegionMetadata`,
-    asset
+    asset,
   );
   const sourceRegionRecord = sourceRegionRecords.get(asset.sourceIntegrity.sourceAssetPath);
-  assertCondition(asset.sha256 === sourceRegionRecord.sha256, `${messagePrefix}.sha256 must match source-as-is source crop bytes`, {
-    ...asset,
-    sourceRegionRecord
-  });
-  assertCondition(actualDimensions.width === sourceRegionRecord.dimensions.width, `${messagePrefix}.width must match source-as-is source crop width`, {
-    ...asset,
-    actualDimensions,
-    sourceRegionRecord
-  });
-  assertCondition(actualDimensions.height === sourceRegionRecord.dimensions.height, `${messagePrefix}.height must match source-as-is source crop height`, {
-    ...asset,
-    actualDimensions,
-    sourceRegionRecord
-  });
-  assertCondition(asset.sourceIntegrity.noTranslationOrRelabeling === true, `${messagePrefix}.sourceIntegrity.noTranslationOrRelabeling must be true`, asset);
+  assertCondition(
+    asset.sha256 === sourceRegionRecord.sha256,
+    `${messagePrefix}.sha256 must match source-as-is source crop bytes`,
+    {
+      ...asset,
+      sourceRegionRecord,
+    },
+  );
+  assertCondition(
+    actualDimensions.width === sourceRegionRecord.dimensions.width,
+    `${messagePrefix}.width must match source-as-is source crop width`,
+    {
+      ...asset,
+      actualDimensions,
+      sourceRegionRecord,
+    },
+  );
+  assertCondition(
+    actualDimensions.height === sourceRegionRecord.dimensions.height,
+    `${messagePrefix}.height must match source-as-is source crop height`,
+    {
+      ...asset,
+      actualDimensions,
+      sourceRegionRecord,
+    },
+  );
+  assertCondition(
+    asset.sourceIntegrity.noTranslationOrRelabeling === true,
+    `${messagePrefix}.sourceIntegrity.noTranslationOrRelabeling must be true`,
+    asset,
+  );
   assertCondition(
     asset.sourceIntegrity.noRedrawRecolorCleanupRetouchMaskInpaint === true,
     `${messagePrefix}.sourceIntegrity.noRedrawRecolorCleanupRetouchMaskInpaint must be true`,
-    asset
+    asset,
   );
-  assertCondition(asset.sourceIntegrity.russianExplanationOutsideImage === true, `${messagePrefix}.sourceIntegrity.russianExplanationOutsideImage must be true`, asset);
-  assertCondition(asset.cleanupScope === "none-source-as-is", `${messagePrefix}.cleanupScope must be none-source-as-is`, asset);
+  assertCondition(
+    asset.sourceIntegrity.russianExplanationOutsideImage === true,
+    `${messagePrefix}.sourceIntegrity.russianExplanationOutsideImage must be true`,
+    asset,
+  );
+  assertCondition(
+    asset.cleanupScope === "none-source-as-is",
+    `${messagePrefix}.cleanupScope must be none-source-as-is`,
+    asset,
+  );
   if (documentExampleSourceAsIsCategories.has(asset.assetCategory)) {
     assertCondition(
-      typeof asset.assetKind === "string" && asset.assetKind.startsWith("high-resolution-original-source-document-image-"),
+      typeof asset.assetKind === "string" &&
+        asset.assetKind.startsWith("high-resolution-original-source-document-image-"),
       `${messagePrefix}.assetKind must identify a high-resolution original source document image`,
-      asset
+      asset,
     );
   }
 }
 
 function validateScopedSourceAsIsMapAsset(sectionId, asset, messagePrefix, sourceRegionRecords) {
-  const approved = approvedSourceAsIsMapExceptions.find((entry) => entry.assetPath === asset.assetPath);
-  assertCondition(Boolean(approved), `${messagePrefix}.assetPath must match an approved source-as-is map exception`, asset);
-  assertCondition(sectionId === approved.sectionId, `${messagePrefix}.sectionId must match approved source-as-is map exception`, {
-    sectionId,
+  const approved = approvedSourceAsIsMapExceptions.find(
+    (entry) => entry.assetPath === asset.assetPath,
+  );
+  assertCondition(
+    Boolean(approved),
+    `${messagePrefix}.assetPath must match an approved source-as-is map exception`,
     asset,
-    approved
-  });
-  assertCondition(asset.sourceIntegrity.sourceAssetPath === approved.sourceAssetPath, `${messagePrefix}.sourceIntegrity.sourceAssetPath must match approved source-as-is map source path`, {
-    asset,
-    approved
-  });
+  );
+  assertCondition(
+    sectionId === approved.sectionId,
+    `${messagePrefix}.sectionId must match approved source-as-is map exception`,
+    {
+      sectionId,
+      asset,
+      approved,
+    },
+  );
+  assertCondition(
+    asset.sourceIntegrity.sourceAssetPath === approved.sourceAssetPath,
+    `${messagePrefix}.sourceIntegrity.sourceAssetPath must match approved source-as-is map source path`,
+    {
+      asset,
+      approved,
+    },
+  );
   const sourceRegionRecord = sourceRegionRecords.get(asset.sourceIntegrity.sourceAssetPath);
-  assertCondition(sourceRegionRecord?.sourcePage === approved.sourcePage, `${messagePrefix}.sourceRegionMetadata.sourcePage must match approved source-as-is map page`, {
+  assertCondition(
+    sourceRegionRecord?.sourcePage === approved.sourcePage,
+    `${messagePrefix}.sourceRegionMetadata.sourcePage must match approved source-as-is map page`,
+    {
+      asset,
+      sourceRegionRecord,
+      approved,
+    },
+  );
+  assertCondition(
+    isObject(asset.sourceImageException),
+    `${messagePrefix}.sourceImageException must record approved source-as-is map owner decision`,
     asset,
-    sourceRegionRecord,
-    approved
-  });
-  assertCondition(isObject(asset.sourceImageException), `${messagePrefix}.sourceImageException must record approved source-as-is map owner decision`, asset);
-  assertCondition(asset.sourceImageException.kind === "source-image-original-visible-text", `${messagePrefix}.sourceImageException.kind must be source-image-original-visible-text`, asset);
-  assertCondition(asset.sourceImageException.visibleSpanishScope === "source-image-only", `${messagePrefix}.sourceImageException.visibleSpanishScope must be source-image-only`, asset);
-  assertCondition(asset.sourceImageException.sourceAsIs === true, `${messagePrefix}.sourceImageException.sourceAsIs must be true`, asset);
-  assertCondition(asset.sourceImageException.russianExplanationOutsideImage === true, `${messagePrefix}.sourceImageException.russianExplanationOutsideImage must be true`, asset);
-  assertCondition(asset.sourceImageException.ownerDecisionDate === approved.ownerDecisionDate, `${messagePrefix}.sourceImageException.ownerDecisionDate must match approved source-as-is map owner decision`, {
+  );
+  assertCondition(
+    asset.sourceImageException.kind === "source-image-original-visible-text",
+    `${messagePrefix}.sourceImageException.kind must be source-image-original-visible-text`,
     asset,
-    approved
-  });
-  assertCondition(asset.sourceImageException.scope === approved.scope, `${messagePrefix}.sourceImageException.scope must match approved source-as-is map scope`, {
+  );
+  assertCondition(
+    asset.sourceImageException.visibleSpanishScope === "source-image-only",
+    `${messagePrefix}.sourceImageException.visibleSpanishScope must be source-image-only`,
     asset,
-    approved
-  });
+  );
+  assertCondition(
+    asset.sourceImageException.sourceAsIs === true,
+    `${messagePrefix}.sourceImageException.sourceAsIs must be true`,
+    asset,
+  );
+  assertCondition(
+    asset.sourceImageException.russianExplanationOutsideImage === true,
+    `${messagePrefix}.sourceImageException.russianExplanationOutsideImage must be true`,
+    asset,
+  );
+  assertCondition(
+    asset.sourceImageException.ownerDecisionDate === approved.ownerDecisionDate,
+    `${messagePrefix}.sourceImageException.ownerDecisionDate must match approved source-as-is map owner decision`,
+    {
+      asset,
+      approved,
+    },
+  );
+  assertCondition(
+    asset.sourceImageException.scope === approved.scope,
+    `${messagePrefix}.sourceImageException.scope must match approved source-as-is map scope`,
+    {
+      asset,
+      approved,
+    },
+  );
 }
 
 function validateSourceTransferProvenance(value, messagePrefix, sourceRegionRecords) {
-  assertRequiredFields(value, ["sourceAssetPath", "sourceCropSha256", "sourceCropDimensions"], messagePrefix);
-  assertCondition(sourceRegionRecords.has(value.sourceAssetPath), `${messagePrefix}.sourceAssetPath must reference sourceRegionMetadata`, value);
+  assertRequiredFields(
+    value,
+    ["sourceAssetPath", "sourceCropSha256", "sourceCropDimensions"],
+    messagePrefix,
+  );
+  assertCondition(
+    sourceRegionRecords.has(value.sourceAssetPath),
+    `${messagePrefix}.sourceAssetPath must reference sourceRegionMetadata`,
+    value,
+  );
   const sourceRegionRecord = sourceRegionRecords.get(value.sourceAssetPath);
-  assertCondition(value.sourceCropSha256 === sourceRegionRecord.sha256, `${messagePrefix}.sourceCropSha256 must match sourceRegionMetadata cropSha256`, {
-    ...value,
-    sourceRegionRecord
-  });
-  assertRequiredFields(value.sourceCropDimensions, ["width", "height"], `${messagePrefix}.sourceCropDimensions`);
-  assertCondition(value.sourceCropDimensions.width === sourceRegionRecord.dimensions.width, `${messagePrefix}.sourceCropDimensions.width must match sourceRegionMetadata width`, {
-    ...value,
-    sourceRegionRecord
-  });
-  assertCondition(value.sourceCropDimensions.height === sourceRegionRecord.dimensions.height, `${messagePrefix}.sourceCropDimensions.height must match sourceRegionMetadata height`, {
-    ...value,
-    sourceRegionRecord
-  });
+  assertCondition(
+    value.sourceCropSha256 === sourceRegionRecord.sha256,
+    `${messagePrefix}.sourceCropSha256 must match sourceRegionMetadata cropSha256`,
+    {
+      ...value,
+      sourceRegionRecord,
+    },
+  );
+  assertRequiredFields(
+    value.sourceCropDimensions,
+    ["width", "height"],
+    `${messagePrefix}.sourceCropDimensions`,
+  );
+  assertCondition(
+    value.sourceCropDimensions.width === sourceRegionRecord.dimensions.width,
+    `${messagePrefix}.sourceCropDimensions.width must match sourceRegionMetadata width`,
+    {
+      ...value,
+      sourceRegionRecord,
+    },
+  );
+  assertCondition(
+    value.sourceCropDimensions.height === sourceRegionRecord.dimensions.height,
+    `${messagePrefix}.sourceCropDimensions.height must match sourceRegionMetadata height`,
+    {
+      ...value,
+      sourceRegionRecord,
+    },
+  );
 }
 
 function validateTransferredInfographicAsset(asset, messagePrefix, sourceRegionRecords) {
-  assertCondition(asset.visibleSpanish === false, `${messagePrefix}.visibleSpanish must be false for transferred infographic artwork`, asset);
+  assertCondition(
+    asset.visibleSpanish === false,
+    `${messagePrefix}.visibleSpanish must be false for transferred infographic artwork`,
+    asset,
+  );
   assertRequiredFields(
     asset.infographicTransfer,
     [
@@ -552,98 +856,213 @@ function validateTransferredInfographicAsset(asset, messagePrefix, sourceRegionR
       "broadMaskPlatePatchStatus",
       "russianOverlayStrategy",
       "russianOverlayLabels",
-      "overlayTextSelectability"
+      "overlayTextSelectability",
     ],
-    `${messagePrefix}.infographicTransfer`
+    `${messagePrefix}.infographicTransfer`,
   );
-  validateSourceTransferProvenance(asset.infographicTransfer, `${messagePrefix}.infographicTransfer`, sourceRegionRecords);
-  assertCondition(asset.infographicTransfer.sourceImageTransfer === true, `${messagePrefix}.infographicTransfer.sourceImageTransfer must be true`, asset);
-  assertCondition(asset.infographicTransfer.noApproximateRedraw === true, `${messagePrefix}.infographicTransfer.noApproximateRedraw must be true`, asset);
-  assertCondition(asset.infographicTransfer.broadMaskPlatePatchStatus === "none", `${messagePrefix}.infographicTransfer.broadMaskPlatePatchStatus must be none`, asset);
+  validateSourceTransferProvenance(
+    asset.infographicTransfer,
+    `${messagePrefix}.infographicTransfer`,
+    sourceRegionRecords,
+  );
   assertCondition(
-    asset.infographicTransfer.russianOverlayStrategy === "selectable-dom" || asset.infographicTransfer.russianOverlayStrategy === "selectable-svg",
+    asset.infographicTransfer.sourceImageTransfer === true,
+    `${messagePrefix}.infographicTransfer.sourceImageTransfer must be true`,
+    asset,
+  );
+  assertCondition(
+    asset.infographicTransfer.noApproximateRedraw === true,
+    `${messagePrefix}.infographicTransfer.noApproximateRedraw must be true`,
+    asset,
+  );
+  assertCondition(
+    asset.infographicTransfer.broadMaskPlatePatchStatus === "none",
+    `${messagePrefix}.infographicTransfer.broadMaskPlatePatchStatus must be none`,
+    asset,
+  );
+  assertCondition(
+    asset.infographicTransfer.russianOverlayStrategy === "selectable-dom" ||
+      asset.infographicTransfer.russianOverlayStrategy === "selectable-svg",
     `${messagePrefix}.infographicTransfer.russianOverlayStrategy must be selectable DOM/SVG`,
-    asset
+    asset,
   );
   assertCondition(
-    asset.infographicTransfer.overlayTextSelectability === "selectable-dom-text" || asset.infographicTransfer.overlayTextSelectability === "selectable-svg-text",
+    asset.infographicTransfer.overlayTextSelectability === "selectable-dom-text" ||
+      asset.infographicTransfer.overlayTextSelectability === "selectable-svg-text",
     `${messagePrefix}.infographicTransfer.overlayTextSelectability must be selectable DOM/SVG text`,
-    asset
+    asset,
   );
-  assertCondition(Array.isArray(asset.infographicTransfer.russianOverlayLabels), `${messagePrefix}.infographicTransfer.russianOverlayLabels must be an array`, asset);
-  assertCondition(asset.infographicTransfer.russianOverlayLabels.length > 0, `${messagePrefix}.infographicTransfer.russianOverlayLabels must not be empty`, asset);
+  assertCondition(
+    Array.isArray(asset.infographicTransfer.russianOverlayLabels),
+    `${messagePrefix}.infographicTransfer.russianOverlayLabels must be an array`,
+    asset,
+  );
+  assertCondition(
+    asset.infographicTransfer.russianOverlayLabels.length > 0,
+    `${messagePrefix}.infographicTransfer.russianOverlayLabels must not be empty`,
+    asset,
+  );
   asset.infographicTransfer.russianOverlayLabels.forEach((label, index) => {
     const labelPrefix = `${messagePrefix}.infographicTransfer.russianOverlayLabels[${index}]`;
-    assertRequiredFields(label, ["id", "textRu", "xPct", "yPct", "widthPct", "heightPct"], labelPrefix);
-    assertCondition(typeof label.id === "string" && label.id.length > 0, `${labelPrefix}.id must be a non-empty string`, label);
-    assertCondition(typeof label.textRu === "string" && /[А-Яа-яЁё]/u.test(label.textRu), `${labelPrefix}.textRu must contain Russian text`, label);
+    assertRequiredFields(
+      label,
+      ["id", "textRu", "xPct", "yPct", "widthPct", "heightPct"],
+      labelPrefix,
+    );
+    assertCondition(
+      typeof label.id === "string" && label.id.length > 0,
+      `${labelPrefix}.id must be a non-empty string`,
+      label,
+    );
+    assertCondition(
+      typeof label.textRu === "string" && /[А-Яа-яЁё]/u.test(label.textRu),
+      `${labelPrefix}.textRu must contain Russian text`,
+      label,
+    );
     for (const field of ["xPct", "yPct", "widthPct", "heightPct"]) {
-      assertCondition(typeof label[field] === "number" && label[field] >= 0 && label[field] <= 100, `${labelPrefix}.${field} must be a percentage from 0 to 100`, label);
+      assertCondition(
+        typeof label[field] === "number" && label[field] >= 0 && label[field] <= 100,
+        `${labelPrefix}.${field} must be a percentage from 0 to 100`,
+        label,
+      );
     }
-    assertCondition(label.xPct + label.widthPct <= 100, `${labelPrefix} horizontal placement must stay within the image`, label);
-    assertCondition(label.yPct + label.heightPct <= 100, `${labelPrefix} vertical placement must stay within the image`, label);
+    assertCondition(
+      label.xPct + label.widthPct <= 100,
+      `${labelPrefix} horizontal placement must stay within the image`,
+      label,
+    );
+    assertCondition(
+      label.yPct + label.heightPct <= 100,
+      `${labelPrefix} vertical placement must stay within the image`,
+      label,
+    );
   });
-  assertCondition(asset.cleanupScope === "glyph-level-spanish-cleanup", `${messagePrefix}.cleanupScope must be glyph-level-spanish-cleanup`, asset);
+  assertCondition(
+    asset.cleanupScope === "glyph-level-spanish-cleanup",
+    `${messagePrefix}.cleanupScope must be glyph-level-spanish-cleanup`,
+    asset,
+  );
   assertCondition(
     asset.infographicTransfer.cleanupMethod === "glyph-letter-level-background-restoration",
     `${messagePrefix}.infographicTransfer.cleanupMethod must be glyph-letter-level-background-restoration`,
-    asset
+    asset,
   );
 }
 
 function validateTransferredDiagramAsset(asset, messagePrefix, sourceRegionRecords) {
-  assertCondition(asset.visibleSpanish === false, `${messagePrefix}.visibleSpanish must be false for transferred diagram artwork`, asset);
+  assertCondition(
+    asset.visibleSpanish === false,
+    `${messagePrefix}.visibleSpanish must be false for transferred diagram artwork`,
+    asset,
+  );
   assertRequiredFields(
     asset.diagramTransfer,
-    ["sourceDiagramTransfer", "sourceAssetPath", "sourceCropSha256", "sourceCropDimensions", "noApproximateRedraw", "noReconstruction", "noGenericIconReplacement", "broadMaskPlatePatchStatus"],
-    `${messagePrefix}.diagramTransfer`
+    [
+      "sourceDiagramTransfer",
+      "sourceAssetPath",
+      "sourceCropSha256",
+      "sourceCropDimensions",
+      "noApproximateRedraw",
+      "noReconstruction",
+      "noGenericIconReplacement",
+      "broadMaskPlatePatchStatus",
+    ],
+    `${messagePrefix}.diagramTransfer`,
   );
-  validateSourceTransferProvenance(asset.diagramTransfer, `${messagePrefix}.diagramTransfer`, sourceRegionRecords);
-  assertCondition(asset.diagramTransfer.sourceDiagramTransfer === true, `${messagePrefix}.diagramTransfer.sourceDiagramTransfer must be true`, asset);
-  assertCondition(asset.diagramTransfer.noApproximateRedraw === true, `${messagePrefix}.diagramTransfer.noApproximateRedraw must be true`, asset);
-  assertCondition(asset.diagramTransfer.noReconstruction === true, `${messagePrefix}.diagramTransfer.noReconstruction must be true`, asset);
-  assertCondition(asset.diagramTransfer.noGenericIconReplacement === true, `${messagePrefix}.diagramTransfer.noGenericIconReplacement must be true`, asset);
-  assertCondition(asset.diagramTransfer.broadMaskPlatePatchStatus === "none", `${messagePrefix}.diagramTransfer.broadMaskPlatePatchStatus must be none`, asset);
+  validateSourceTransferProvenance(
+    asset.diagramTransfer,
+    `${messagePrefix}.diagramTransfer`,
+    sourceRegionRecords,
+  );
   assertCondition(
-    asset.cleanupScope === "glyph-level-spanish-cleanup" || asset.cleanupScope === "none-source-as-is",
+    asset.diagramTransfer.sourceDiagramTransfer === true,
+    `${messagePrefix}.diagramTransfer.sourceDiagramTransfer must be true`,
+    asset,
+  );
+  assertCondition(
+    asset.diagramTransfer.noApproximateRedraw === true,
+    `${messagePrefix}.diagramTransfer.noApproximateRedraw must be true`,
+    asset,
+  );
+  assertCondition(
+    asset.diagramTransfer.noReconstruction === true,
+    `${messagePrefix}.diagramTransfer.noReconstruction must be true`,
+    asset,
+  );
+  assertCondition(
+    asset.diagramTransfer.noGenericIconReplacement === true,
+    `${messagePrefix}.diagramTransfer.noGenericIconReplacement must be true`,
+    asset,
+  );
+  assertCondition(
+    asset.diagramTransfer.broadMaskPlatePatchStatus === "none",
+    `${messagePrefix}.diagramTransfer.broadMaskPlatePatchStatus must be none`,
+    asset,
+  );
+  assertCondition(
+    asset.cleanupScope === "glyph-level-spanish-cleanup" ||
+      asset.cleanupScope === "none-source-as-is",
     `${messagePrefix}.cleanupScope must be glyph-level-spanish-cleanup or none-source-as-is`,
-    asset
+    asset,
   );
   if (asset.cleanupScope === "glyph-level-spanish-cleanup") {
     assertCondition(
       asset.diagramTransfer.cleanupMethod === "glyph-letter-level-background-restoration",
       `${messagePrefix}.diagramTransfer.cleanupMethod must be glyph-letter-level-background-restoration`,
-      asset
+      asset,
     );
   }
 }
 
 function validateStrictVisualEvidence(implementedEvidence, messagePrefix) {
-  assertCondition(implementedEvidence.visualEvidenceSchemaVersion === 3, `${messagePrefix}.visualEvidenceSchemaVersion must be 3 for new manual units`, implementedEvidence);
-  assertCondition(implementedEvidence.visualRulePolicyId === "031-strict-source-fidelity", `${messagePrefix}.visualRulePolicyId must be 031-strict-source-fidelity`, implementedEvidence);
+  assertCondition(
+    implementedEvidence.visualEvidenceSchemaVersion === 3,
+    `${messagePrefix}.visualEvidenceSchemaVersion must be 3 for new manual units`,
+    implementedEvidence,
+  );
+  assertCondition(
+    implementedEvidence.visualRulePolicyId === "031-strict-source-fidelity",
+    `${messagePrefix}.visualRulePolicyId must be 031-strict-source-fidelity`,
+    implementedEvidence,
+  );
   assertCondition(
     implementedEvidence.highResolutionEvidenceStatus === "x5-or-equivalent-no-upscale-recorded",
     `${messagePrefix}.highResolutionEvidenceStatus must prove x5/equivalent extraction and no runtime upscaling`,
-    implementedEvidence
+    implementedEvidence,
   );
-  assertNoForbiddenStrictVisualTerms(implementedEvidence.visualReviewNotes, `${messagePrefix}.visualReviewNotes`);
+  assertNoForbiddenStrictVisualTerms(
+    implementedEvidence.visualReviewNotes,
+    `${messagePrefix}.visualReviewNotes`,
+  );
 
   const sourceRegionRecords = new Map();
   validateObjectOrArray(
     implementedEvidence.sourceRegionMetadata,
-    ["sourcePage", "sourceRegion", "sourceAssetPath", "cropDimensions", "cropSha256", "cleanupScope", "extractionScaleEvidence"],
+    [
+      "sourcePage",
+      "sourceRegion",
+      "sourceAssetPath",
+      "cropDimensions",
+      "cropSha256",
+      "cleanupScope",
+      "extractionScaleEvidence",
+    ],
     `${messagePrefix} sourceRegionMetadata`,
     (entry, label) => {
       validateFileSha256(entry.sourceAssetPath, entry.cropSha256, `${label}.cropSha256`, entry);
       const actualDimensions = validateStrictSourceRegionDimensions(entry, label);
-      validateExtractionScaleEvidence(entry.extractionScaleEvidence, `${label}.extractionScaleEvidence`, actualDimensions);
+      validateExtractionScaleEvidence(
+        entry.extractionScaleEvidence,
+        `${label}.extractionScaleEvidence`,
+        actualDimensions,
+      );
       assertNoForbiddenStrictVisualTerms(entry, label);
       sourceRegionRecords.set(entry.sourceAssetPath, {
         sha256: entry.cropSha256,
         dimensions: actualDimensions,
-        sourcePage: entry.sourcePage
+        sourcePage: entry.sourcePage,
       });
-    }
+    },
   );
 
   validateObjectOrArray(
@@ -651,33 +1070,54 @@ function validateStrictVisualEvidence(implementedEvidence, messagePrefix) {
     ["assetPath", "assetKind", "assetCategory", "containsText", "visibleSpanish"],
     `${messagePrefix} localAssetMetadata`,
     (asset, label) => {
-      const allowedCategory = strictImageAssetCategories.has(asset.assetCategory) || strictNonImageAssetCategories.has(asset.assetCategory);
-      assertCondition(allowedCategory, `${label}.assetCategory must use the strict full-manual visual vocabulary`, asset);
+      const allowedCategory =
+        strictImageAssetCategories.has(asset.assetCategory) ||
+        strictNonImageAssetCategories.has(asset.assetCategory);
+      assertCondition(
+        allowedCategory,
+        `${label}.assetCategory must use the strict full-manual visual vocabulary`,
+        asset,
+      );
       assertNoForbiddenStrictVisualTerms(asset, label);
       if (strictImageAssetCategories.has(asset.assetCategory)) {
         assertRequiredFields(asset, ["width", "height", "sha256", "runtimeDisplaySize"], label);
         validateFileSha256(asset.assetPath, asset.sha256, `${label}.sha256`, asset);
         const actualDimensions = validateStrictImageAssetDimensions(asset, label);
-        validateExtractionScaleEvidence(asset.extractionScaleEvidence, `${label}.extractionScaleEvidence`, actualDimensions);
+        validateExtractionScaleEvidence(
+          asset.extractionScaleEvidence,
+          `${label}.extractionScaleEvidence`,
+          actualDimensions,
+        );
         validateRuntimeDisplaySize(asset, label, actualDimensions);
         if (requiresSourceAsIsValidation(asset.assetCategory)) {
           validateSourceAsIsAsset(asset, label, sourceRegionRecords, actualDimensions);
-          if (asset.assetCategory === "source-as-is-map") validateScopedSourceAsIsMapAsset(implementedEvidence.sectionId, asset, label, sourceRegionRecords);
+          if (asset.assetCategory === "source-as-is-map")
+            validateScopedSourceAsIsMapAsset(
+              implementedEvidence.sectionId,
+              asset,
+              label,
+              sourceRegionRecords,
+            );
         }
       }
       if (requiresSourceAsIsValidation(asset.assetCategory)) {
         if (asset.visibleSpanish === true) {
-          const visibleSpanishExceptionAssetPaths = visibleSpanishStatusExceptionAssetPaths(implementedEvidence.visibleSpanishStatus, asset.assetCategory);
+          const visibleSpanishExceptionAssetPaths = visibleSpanishStatusExceptionAssetPaths(
+            implementedEvidence.visibleSpanishStatus,
+            asset.assetCategory,
+          );
           assertCondition(
             visibleSpanishExceptionAssetPaths.has(asset.assetPath),
             `${label}.visibleSpanish=true must be recorded in visibleSpanishStatus.exceptions`,
-            asset
+            asset,
           );
         }
       }
-      if (asset.assetCategory === "source-transferred-infographic") validateTransferredInfographicAsset(asset, label, sourceRegionRecords);
-      if (asset.assetCategory === "source-transferred-diagram") validateTransferredDiagramAsset(asset, label, sourceRegionRecords);
-    }
+      if (asset.assetCategory === "source-transferred-infographic")
+        validateTransferredInfographicAsset(asset, label, sourceRegionRecords);
+      if (asset.assetCategory === "source-transferred-diagram")
+        validateTransferredDiagramAsset(asset, label, sourceRegionRecords);
+    },
   );
 }
 
@@ -686,20 +1126,48 @@ function validateNoVisibleSpanishStatus(value, messagePrefix) {
   const status = isObject(value) && "status" in value ? value.status : value;
   if (allowedStatuses.has(status)) return;
   if (status === "official_traffic_sign_exception_only") {
-    assertCondition(isObject(value), `${messagePrefix} official traffic sign exception must be an object`, { value });
-    assertCondition(value.nonSignVisibleSpanishStatus === "none", `${messagePrefix}.nonSignVisibleSpanishStatus must be none`, { value });
-    assertCondition(Array.isArray(value.exceptions) && value.exceptions.length > 0, `${messagePrefix}.exceptions must name the official sign exception`, { value });
-    for (const [index, exception] of value.exceptions.entries()) validateOfficialTrafficSignException(exception, `${messagePrefix}.exceptions[${index}]`);
+    assertCondition(
+      isObject(value),
+      `${messagePrefix} official traffic sign exception must be an object`,
+      { value },
+    );
+    assertCondition(
+      value.nonSignVisibleSpanishStatus === "none",
+      `${messagePrefix}.nonSignVisibleSpanishStatus must be none`,
+      { value },
+    );
+    assertCondition(
+      Array.isArray(value.exceptions) && value.exceptions.length > 0,
+      `${messagePrefix}.exceptions must name the official sign exception`,
+      { value },
+    );
+    for (const [index, exception] of value.exceptions.entries())
+      validateOfficialTrafficSignException(exception, `${messagePrefix}.exceptions[${index}]`);
     return;
   }
   if (status === "source_image_exceptions_only") {
-    assertCondition(isObject(value), `${messagePrefix} source-image exception must be an object`, { value });
-    assertCondition(value.nonSignVisibleSpanishStatus === "source-image-only", `${messagePrefix}.nonSignVisibleSpanishStatus must be source-image-only`, { value });
-    assertCondition(Array.isArray(value.exceptions) && value.exceptions.length > 0, `${messagePrefix}.exceptions must name the source-image exceptions`, { value });
-    for (const [index, exception] of value.exceptions.entries()) validateVisibleSpanishException(exception, `${messagePrefix}.exceptions[${index}]`);
+    assertCondition(isObject(value), `${messagePrefix} source-image exception must be an object`, {
+      value,
+    });
+    assertCondition(
+      value.nonSignVisibleSpanishStatus === "source-image-only",
+      `${messagePrefix}.nonSignVisibleSpanishStatus must be source-image-only`,
+      { value },
+    );
+    assertCondition(
+      Array.isArray(value.exceptions) && value.exceptions.length > 0,
+      `${messagePrefix}.exceptions must name the source-image exceptions`,
+      { value },
+    );
+    for (const [index, exception] of value.exceptions.entries())
+      validateVisibleSpanishException(exception, `${messagePrefix}.exceptions[${index}]`);
     return;
   }
-  assertCondition(false, `${messagePrefix} must record no visible Spanish text or source-image-only exceptions`, { value });
+  assertCondition(
+    false,
+    `${messagePrefix} must record no visible Spanish text or source-image-only exceptions`,
+    { value },
+  );
 }
 
 function resolveSectionContentModulePath(modulePath) {
@@ -718,14 +1186,19 @@ function collectFiles(rootPath) {
 }
 
 function assertNoForbiddenPatterns(scanTargets, evidence, extraPatterns = []) {
-  const configuredPatterns = evidence.forbiddenPatterns.flatMap((rule) => rule.patterns.map((pattern) => ({ id: rule.id, pattern })));
-  const generatedPatterns = extraPatterns.map((pattern) => ({ id: "full-page-raster-base", pattern }));
+  const configuredPatterns = evidence.forbiddenPatterns.flatMap((rule) =>
+    rule.patterns.map((pattern) => ({ id: rule.id, pattern })),
+  );
+  const generatedPatterns = extraPatterns.map((pattern) => ({
+    id: "full-page-raster-base",
+    pattern,
+  }));
   for (const { label, source } of scanTargets) {
     const lowerSource = source.toLocaleLowerCase("en-US");
     for (const { id, pattern } of [...configuredPatterns, ...generatedPatterns]) {
       assertCondition(
         !lowerSource.includes(pattern.toLocaleLowerCase("en-US")),
-        `Forbidden manual guide pattern '${pattern}' from ${id} found in ${label}`
+        `Forbidden manual guide pattern '${pattern}' from ${id} found in ${label}`,
       );
     }
   }
@@ -766,65 +1239,149 @@ function sha256Json(value) {
 }
 
 function compareJson(actual, expected, message, details = {}) {
-  assertCondition(JSON.stringify(actual) === JSON.stringify(expected), message, { ...details, actual, expected });
+  assertCondition(JSON.stringify(actual) === JSON.stringify(expected), message, {
+    ...details,
+    actual,
+    expected,
+  });
 }
 
 function validatePendingSection(section, evidence, id) {
-  assertCondition(section.status === evidence.pendingSectionExpectations.status, `${id} pending entry must keep pending status`, section);
-  assertCondition(section.sourceRegionMetadataStatus === evidence.pendingSectionExpectations.sourceRegionMetadataStatus, `${id} must not invent source-region metadata before implementation`, section);
-  assertCondition(section.visualEvidenceStatus === evidence.pendingSectionExpectations.visualEvidenceStatus, `${id} must not invent visual evidence before implementation`, section);
-  for (const forbiddenField of ["blocks", "bodyRu", "contentRu", "implementedContentPath", "screenshotPath", "sourceCropPath", "implementationEvidence", "implementedSectionEvidence", "implementedPageEvidence"]) {
-    assertCondition(!(forbiddenField in section), `${id} pending entry must not contain fake implemented content field ${forbiddenField}`, section);
+  assertCondition(
+    section.status === evidence.pendingSectionExpectations.status,
+    `${id} pending entry must keep pending status`,
+    section,
+  );
+  assertCondition(
+    section.sourceRegionMetadataStatus ===
+      evidence.pendingSectionExpectations.sourceRegionMetadataStatus,
+    `${id} must not invent source-region metadata before implementation`,
+    section,
+  );
+  assertCondition(
+    section.visualEvidenceStatus === evidence.pendingSectionExpectations.visualEvidenceStatus,
+    `${id} must not invent visual evidence before implementation`,
+    section,
+  );
+  for (const forbiddenField of [
+    "blocks",
+    "bodyRu",
+    "contentRu",
+    "implementedContentPath",
+    "screenshotPath",
+    "sourceCropPath",
+    "implementationEvidence",
+    "implementedSectionEvidence",
+    "implementedPageEvidence",
+  ]) {
+    assertCondition(
+      !(forbiddenField in section),
+      `${id} pending entry must not contain fake implemented content field ${forbiddenField}`,
+      section,
+    );
   }
 }
 
 function validateImplementedSection(section, evidence, id) {
-  assertCondition(section.sourceRegionMetadataStatus === "recorded", `${id} implemented entry must record source-region metadata`, section);
-  assertCondition(section.visualEvidenceStatus === "recorded", `${id} implemented entry must record visual evidence`, section);
-  assertLocalPathExists(resolveSectionContentModulePath(section.sectionContentModulePath), `${id} implemented section content module`, section);
+  assertCondition(
+    section.sourceRegionMetadataStatus === "recorded",
+    `${id} implemented entry must record source-region metadata`,
+    section,
+  );
+  assertCondition(
+    section.visualEvidenceStatus === "recorded",
+    `${id} implemented entry must record visual evidence`,
+    section,
+  );
+  assertLocalPathExists(
+    resolveSectionContentModulePath(section.sectionContentModulePath),
+    `${id} implemented section content module`,
+    section,
+  );
 
   const implementedEvidence = section.implementationEvidence ?? section.implementedSectionEvidence;
   const format = evidence.implementedSectionEvidenceFormat;
   assertRequiredFields(implementedEvidence, format.requiredFields, `${id} implementationEvidence`);
-  const validateStrictEvidence = isStrictVisualEvidenceRequired(section, evidence, implementedEvidence) || isStrictVisualEvidenceOptIn(implementedEvidence);
-  assertCondition(implementedEvidence.sectionId === id, `${id} implementationEvidence.sectionId must match the registry entry`, implementedEvidence);
+  const validateStrictEvidence =
+    isStrictVisualEvidenceRequired(section, evidence, implementedEvidence) ||
+    isStrictVisualEvidenceOptIn(implementedEvidence);
+  assertCondition(
+    implementedEvidence.sectionId === id,
+    `${id} implementationEvidence.sectionId must match the registry entry`,
+    implementedEvidence,
+  );
   assertCondition(
     JSON.stringify(implementedEvidence.sourcePages) === JSON.stringify(sectionSourcePages(section)),
     `${id} implementationEvidence.sourcePages must match the registry entry`,
-    implementedEvidence
+    implementedEvidence,
   );
-  assertCondition(implementedEvidence.checkerResult === "pass", `${id} implementationEvidence.checkerResult must be pass`, implementedEvidence);
+  assertCondition(
+    implementedEvidence.checkerResult === "pass",
+    `${id} implementationEvidence.checkerResult must be pass`,
+    implementedEvidence,
+  );
   if (validateStrictEvidence) {
     validateStrictVisualEvidence(implementedEvidence, `${id} implementationEvidence`);
   }
 
   const allowedSourcePages = new Set(sectionSourcePages(section));
-  validateObjectOrArray(implementedEvidence.sourceRegionMetadata, format.sourceRegionMetadataFields, `${id} sourceRegionMetadata`, (entry, label) => {
-    assertCondition(allowedSourcePages.has(entry.sourcePage), `${label}.sourcePage must belong to the section source range`, entry);
-    assertLocalPathExists(entry.sourceAssetPath, `${label}.sourceAssetPath`, entry);
-  });
+  validateObjectOrArray(
+    implementedEvidence.sourceRegionMetadata,
+    format.sourceRegionMetadataFields,
+    `${id} sourceRegionMetadata`,
+    (entry, label) => {
+      assertCondition(
+        allowedSourcePages.has(entry.sourcePage),
+        `${label}.sourcePage must belong to the section source range`,
+        entry,
+      );
+      assertLocalPathExists(entry.sourceAssetPath, `${label}.sourceAssetPath`, entry);
+    },
+  );
   const localAssetMetadataFields = validateStrictEvidence
     ? ["assetPath", "assetKind", "assetCategory", "containsText", "visibleSpanish"]
     : format.localAssetMetadataFields;
-  validateObjectOrArray(implementedEvidence.localAssetMetadata, localAssetMetadataFields, `${id} localAssetMetadata`, (entry, label) => {
-    assertLocalPathExists(entry.assetPath, `${label}.assetPath`, entry);
-    if (entry.visibleSpanish === false) return;
-    const allowsVisibleSpanish = validateStrictEvidence
-      ? isStrictProtectedSourceAsIsException(entry)
-      : isOfficialTrafficSignSourceAsIsException(entry) || isOriginalSourceImageVisibleTextException(entry);
-    assertCondition(
-      allowsVisibleSpanish,
-      `${label}.visibleSpanish=true requires an explicit source-image-only exception`,
-      entry
-    );
-  });
-  assertLocalPathExists(implementedEvidence.desktopScreenshot, `${id} desktopScreenshot`, implementedEvidence);
-  assertLocalPathExists(implementedEvidence.mobileScreenshot, `${id} mobileScreenshot`, implementedEvidence);
-  validateNoVisibleSpanishStatus(implementedEvidence.visibleSpanishStatus, `${id} visibleSpanishStatus`);
+  validateObjectOrArray(
+    implementedEvidence.localAssetMetadata,
+    localAssetMetadataFields,
+    `${id} localAssetMetadata`,
+    (entry, label) => {
+      assertLocalPathExists(entry.assetPath, `${label}.assetPath`, entry);
+      if (entry.visibleSpanish === false) return;
+      const allowsVisibleSpanish = validateStrictEvidence
+        ? isStrictProtectedSourceAsIsException(entry)
+        : isOfficialTrafficSignSourceAsIsException(entry) ||
+          isOriginalSourceImageVisibleTextException(entry);
+      assertCondition(
+        allowsVisibleSpanish,
+        `${label}.visibleSpanish=true requires an explicit source-image-only exception`,
+        entry,
+      );
+    },
+  );
+  assertLocalPathExists(
+    implementedEvidence.desktopScreenshot,
+    `${id} desktopScreenshot`,
+    implementedEvidence,
+  );
+  assertLocalPathExists(
+    implementedEvidence.mobileScreenshot,
+    `${id} mobileScreenshot`,
+    implementedEvidence,
+  );
+  validateNoVisibleSpanishStatus(
+    implementedEvidence.visibleSpanishStatus,
+    `${id} visibleSpanishStatus`,
+  );
   validateStatusObject(implementedEvidence.selectableTextStatus, `${id} selectableTextStatus`);
-  validateObjectOrArray(implementedEvidence.boundingBoxChecks, ["status"], `${id} boundingBoxChecks`, (entry, label) => {
-    assertPassStatus(entry.status, `${label}.status`, entry);
-  });
+  validateObjectOrArray(
+    implementedEvidence.boundingBoxChecks,
+    ["status"],
+    `${id} boundingBoxChecks`,
+    (entry, label) => {
+      assertPassStatus(entry.status, `${label}.status`, entry);
+    },
+  );
   validateStatusObject(implementedEvidence.forbiddenPatternScan, `${id} forbiddenPatternScan`);
 }
 
@@ -832,38 +1389,77 @@ function validateSharedSourcePageOwnership(registry, evidence, coveredSourcePage
   compareJson(
     registry.sharedSourcePageOwnership ?? [],
     evidence.sharedSourcePageOwnership ?? [],
-    "Registry top-level shared source-page ownership must match source-fidelity evidence"
+    "Registry top-level shared source-page ownership must match source-fidelity evidence",
   );
 
   const sharedOwnership = evidence.sharedSourcePageOwnership ?? [];
-  const expectedSharedSourcePages = sharedOwnership.map((entry) => entry.sourcePage).sort((a, b) => a - b);
+  const expectedSharedSourcePages = sharedOwnership
+    .map((entry) => entry.sourcePage)
+    .sort((a, b) => a - b);
   const duplicateCoveredSourcePages = duplicatedValues(coveredSourcePages);
   compareJson(
     duplicateCoveredSourcePages,
     expectedSharedSourcePages,
     "Duplicate section source pages must be explicitly declared as shared source-page ownership",
-    { duplicateCoveredSourcePages }
+    { duplicateCoveredSourcePages },
   );
 
   for (const sharedEntry of sharedOwnership) {
-    assertRequiredFields(sharedEntry, ["sourcePage", "referenceAsset", "reason", "sectionBoundaries"], `sharedSourcePageOwnership ${sharedEntry.sourcePage}`);
-    assertLocalPathExists(sharedEntry.referenceAsset, `shared source page ${sharedEntry.sourcePage} referenceAsset`, sharedEntry);
-    assertCondition(sharedEntry.reason === "source-page-contains-two-source-index-topics", `shared source page ${sharedEntry.sourcePage} must explain the Índice-topic split`, sharedEntry);
-    assertCondition(Array.isArray(sharedEntry.sectionBoundaries) && sharedEntry.sectionBoundaries.length > 1, `shared source page ${sharedEntry.sourcePage} must name all owning sections`, sharedEntry);
+    assertRequiredFields(
+      sharedEntry,
+      ["sourcePage", "referenceAsset", "reason", "sectionBoundaries"],
+      `sharedSourcePageOwnership ${sharedEntry.sourcePage}`,
+    );
+    assertLocalPathExists(
+      sharedEntry.referenceAsset,
+      `shared source page ${sharedEntry.sourcePage} referenceAsset`,
+      sharedEntry,
+    );
+    assertCondition(
+      sharedEntry.reason === "source-page-contains-two-source-index-topics",
+      `shared source page ${sharedEntry.sourcePage} must explain the Índice-topic split`,
+      sharedEntry,
+    );
+    assertCondition(
+      Array.isArray(sharedEntry.sectionBoundaries) && sharedEntry.sectionBoundaries.length > 1,
+      `shared source page ${sharedEntry.sourcePage} must name all owning sections`,
+      sharedEntry,
+    );
 
     const actualSectionIds = registry.sections
       .filter((section) => sectionSourcePages(section).includes(sharedEntry.sourcePage))
       .map((section) => section.id);
     const expectedSectionIds = sharedEntry.sectionBoundaries.map((boundary) => boundary.sectionId);
-    compareJson(actualSectionIds, expectedSectionIds, `shared source page ${sharedEntry.sourcePage} owning sections must match evidence`);
+    compareJson(
+      actualSectionIds,
+      expectedSectionIds,
+      `shared source page ${sharedEntry.sourcePage} owning sections must match evidence`,
+    );
 
     for (const boundary of sharedEntry.sectionBoundaries) {
-      assertRequiredFields(boundary, ["sectionId", "ownedRegion", "ownedLayoutBlockIdsOnSharedPage"], `sharedSourcePageOwnership ${sharedEntry.sourcePage} boundary`);
-      assertCondition(Array.isArray(boundary.ownedLayoutBlockIdsOnSharedPage) && boundary.ownedLayoutBlockIdsOnSharedPage.length > 0, `${boundary.sectionId} shared-page boundary must name owned layout blocks`, boundary);
+      assertRequiredFields(
+        boundary,
+        ["sectionId", "ownedRegion", "ownedLayoutBlockIdsOnSharedPage"],
+        `sharedSourcePageOwnership ${sharedEntry.sourcePage} boundary`,
+      );
+      assertCondition(
+        Array.isArray(boundary.ownedLayoutBlockIdsOnSharedPage) &&
+          boundary.ownedLayoutBlockIdsOnSharedPage.length > 0,
+        `${boundary.sectionId} shared-page boundary must name owned layout blocks`,
+        boundary,
+      );
 
       const section = registry.sections.find((entry) => entry.id === boundary.sectionId);
-      assertCondition(Boolean(section), `${boundary.sectionId} shared-page boundary must reference an existing section`, boundary);
-      assertCondition(sectionSourcePages(section).includes(sharedEntry.sourcePage), `${boundary.sectionId} must include shared source page ${sharedEntry.sourcePage}`, section);
+      assertCondition(
+        Boolean(section),
+        `${boundary.sectionId} shared-page boundary must reference an existing section`,
+        boundary,
+      );
+      assertCondition(
+        sectionSourcePages(section).includes(sharedEntry.sourcePage),
+        `${boundary.sectionId} must include shared source page ${sharedEntry.sourcePage}`,
+        section,
+      );
 
       const sectionBoundaryEvidence = section.sourceBoundaryEvidence;
       const sectionBoundary = Array.isArray(sectionBoundaryEvidence)
@@ -872,73 +1468,175 @@ function validateSharedSourcePageOwnership(registry, evidence, coveredSourcePage
       assertRequiredFields(
         sectionBoundary,
         ["sharedSourcePage", "ownedRegion", "ownedLayoutBlockIdsOnSharedPage", "boundaryEvidence"],
-        `${boundary.sectionId} sourceBoundaryEvidence`
+        `${boundary.sectionId} sourceBoundaryEvidence`,
       );
-      assertCondition(sectionBoundary.sharedSourcePage === sharedEntry.sourcePage, `${boundary.sectionId} sourceBoundaryEvidence.sharedSourcePage must match shared ownership`, sectionBoundary);
-      assertCondition(sectionBoundary.ownedRegion === boundary.ownedRegion, `${boundary.sectionId} sourceBoundaryEvidence.ownedRegion must match shared ownership`, sectionBoundary);
+      assertCondition(
+        sectionBoundary.sharedSourcePage === sharedEntry.sourcePage,
+        `${boundary.sectionId} sourceBoundaryEvidence.sharedSourcePage must match shared ownership`,
+        sectionBoundary,
+      );
+      assertCondition(
+        sectionBoundary.ownedRegion === boundary.ownedRegion,
+        `${boundary.sectionId} sourceBoundaryEvidence.ownedRegion must match shared ownership`,
+        sectionBoundary,
+      );
       compareJson(
         sectionBoundary.ownedLayoutBlockIdsOnSharedPage,
         boundary.ownedLayoutBlockIdsOnSharedPage,
-        `${boundary.sectionId} sourceBoundaryEvidence owned blocks must match shared ownership`
+        `${boundary.sectionId} sourceBoundaryEvidence owned blocks must match shared ownership`,
       );
-      for (const optionalBoundaryField of ["startsAtLayoutBlockId", "startsAtSourceTextEs", "endsBeforeLayoutBlockId", "excludesSectionId", "omittedClosingSourcePage"]) {
+      for (const optionalBoundaryField of [
+        "startsAtLayoutBlockId",
+        "startsAtSourceTextEs",
+        "endsBeforeLayoutBlockId",
+        "excludesSectionId",
+        "omittedClosingSourcePage",
+      ]) {
         if (optionalBoundaryField in boundary) {
           assertCondition(
             sectionBoundary[optionalBoundaryField] === boundary[optionalBoundaryField],
             `${boundary.sectionId} sourceBoundaryEvidence.${optionalBoundaryField} must match shared ownership`,
-            { sectionBoundary, boundary }
+            { sectionBoundary, boundary },
           );
         }
       }
-      assertCondition(typeof sectionBoundary.boundaryEvidence === "string" && sectionBoundary.boundaryEvidence.length > 0, `${boundary.sectionId} sourceBoundaryEvidence must include a source-backed note`, sectionBoundary);
+      assertCondition(
+        typeof sectionBoundary.boundaryEvidence === "string" &&
+          sectionBoundary.boundaryEvidence.length > 0,
+        `${boundary.sectionId} sourceBoundaryEvidence must include a source-backed note`,
+        sectionBoundary,
+      );
     }
   }
 }
 
 function validateSectionRegistry(registry, evidence) {
-  assertCondition(registry.schemaVersion === 2, "Manual guide section registry schemaVersion must be 2");
-  assertCondition(registry.manualId === "gcba-manual-vehiculo-4-ruedas-2023", "Manual guide registry must target the GCBA 4-wheel manual");
-  assertCondition(registry.featureId === evidence.featureId, "Manual guide registry and evidence feature ids must match");
-  compareJson(registry.sourcePageRange, evidence.requiredSourcePageRange, "Manual guide source page range must match evidence");
+  assertCondition(
+    registry.schemaVersion === 2,
+    "Manual guide section registry schemaVersion must be 2",
+  );
+  assertCondition(
+    registry.manualId === "gcba-manual-vehiculo-4-ruedas-2023",
+    "Manual guide registry must target the GCBA 4-wheel manual",
+  );
+  assertCondition(
+    registry.featureId === evidence.featureId,
+    "Manual guide registry and evidence feature ids must match",
+  );
+  compareJson(
+    registry.sourcePageRange,
+    evidence.requiredSourcePageRange,
+    "Manual guide source page range must match evidence",
+  );
 
-  assertCondition(!("pages" in registry), "Manual guide registry must not expose a raw source-PDF-page pages array");
-  assertCondition(registry.sections.length === evidence.expectedSectionIds.length, "Manual guide registry must contain exactly one entry per expected source Índice section", {
-    expected: evidence.expectedSectionIds.length,
-    actual: registry.sections.length
-  });
+  assertCondition(
+    !("pages" in registry),
+    "Manual guide registry must not expose a raw source-PDF-page pages array",
+  );
+  assertCondition(
+    registry.sections.length === evidence.expectedSectionIds.length,
+    "Manual guide registry must contain exactly one entry per expected source Índice section",
+    {
+      expected: evidence.expectedSectionIds.length,
+      actual: registry.sections.length,
+    },
+  );
 
   const skippedSourcePages = new Set(evidence.skippedSourcePages.map((entry) => entry.sourcePage));
   compareJson(
-    registry.skippedSourcePages.map((entry) => ({ sourcePage: entry.sourcePage, reason: entry.reason })).sort((a, b) => a.sourcePage - b.sourcePage),
-    evidence.skippedSourcePages.map((entry) => ({ sourcePage: entry.sourcePage, reason: entry.reason })).sort((a, b) => a.sourcePage - b.sourcePage),
-    "Skipped source pages must match evidence"
+    registry.skippedSourcePages
+      .map((entry) => ({ sourcePage: entry.sourcePage, reason: entry.reason }))
+      .sort((a, b) => a.sourcePage - b.sourcePage),
+    evidence.skippedSourcePages
+      .map((entry) => ({ sourcePage: entry.sourcePage, reason: entry.reason }))
+      .sort((a, b) => a.sourcePage - b.sourcePage),
+    "Skipped source pages must match evidence",
   );
 
   const sectionIds = registry.sections.map((section) => section.id);
-  compareJson(sectionIds, evidence.expectedSectionIds, "Manual guide sections must stay in source Índice order");
+  compareJson(
+    sectionIds,
+    evidence.expectedSectionIds,
+    "Manual guide sections must stay in source Índice order",
+  );
 
   const coveredSourcePages = [];
   for (const section of registry.sections) {
     const id = section.id;
     const expectedRange = evidence.expectedSectionRanges[id];
-    assertCondition(Boolean(expectedRange), `${id} must be an expected source Índice section`, section);
-    compareJson(section.sourcePageRange, expectedRange, `${id} sourcePageRange must match source Índice metadata`);
-    assertCondition(section.routeHash === `#manual-section-${id}`, `${id} must reserve a section route hash, not a raw page hash`, section);
-    assertCondition(section.sectionContentModulePath === `src/data/manual-sections/${id}.ts`, `${id} must reserve a section-local future content module path`, section);
-    assertCondition(!/^manual-page-\d{3}$/u.test(id), `${id} must not use a raw source PDF page id`, section);
-    assertCondition(!section.routeHash.startsWith("#manual-page-"), `${id} routeHash must not expose a raw source PDF page route`, section);
-    assertCondition(!section.sectionContentModulePath.includes("src/data/manual-pages/"), `${id} module path must not use the page-local module namespace`, section);
+    assertCondition(
+      Boolean(expectedRange),
+      `${id} must be an expected source Índice section`,
+      section,
+    );
+    compareJson(
+      section.sourcePageRange,
+      expectedRange,
+      `${id} sourcePageRange must match source Índice metadata`,
+    );
+    assertCondition(
+      section.routeHash === `#manual-section-${id}`,
+      `${id} must reserve a section route hash, not a raw page hash`,
+      section,
+    );
+    assertCondition(
+      section.sectionContentModulePath === `src/data/manual-sections/${id}.ts`,
+      `${id} must reserve a section-local future content module path`,
+      section,
+    );
+    assertCondition(
+      !/^manual-page-\d{3}$/u.test(id),
+      `${id} must not use a raw source PDF page id`,
+      section,
+    );
+    assertCondition(
+      !section.routeHash.startsWith("#manual-page-"),
+      `${id} routeHash must not expose a raw source PDF page route`,
+      section,
+    );
+    assertCondition(
+      !section.sectionContentModulePath.includes("src/data/manual-pages/"),
+      `${id} module path must not use the page-local module namespace`,
+      section,
+    );
 
-    const sourcePages = sourcePagesForRange(section.sourcePageRange.start, section.sourcePageRange.end);
-    compareJson(sectionSourcePages(section), sourcePages, `${id} sourcePages must enumerate the full source range`);
+    const sourcePages = sourcePagesForRange(
+      section.sourcePageRange.start,
+      section.sourcePageRange.end,
+    );
+    compareJson(
+      sectionSourcePages(section),
+      sourcePages,
+      `${id} sourcePages must enumerate the full source range`,
+    );
     for (const sourcePage of sourcePages) {
-      assertCondition(!skippedSourcePages.has(sourcePage), `${id} must not include skipped non-section source page ${sourcePage}`, section);
+      assertCondition(
+        !skippedSourcePages.has(sourcePage),
+        `${id} must not include skipped non-section source page ${sourcePage}`,
+        section,
+      );
     }
     section.sourcePages.forEach((sourcePageEntry) => {
-      assertCondition(sourcePageEntry.manualManifestPointer === `/pages/${sourcePageEntry.sourcePage - 1}`, `${id} manual manifest pointer must target the source page`, sourcePageEntry);
-      assertCondition(sourcePageEntry.layoutManifestPointer === `/pages/${sourcePageEntry.sourcePage - 1}`, `${id} layout manifest pointer must target the source page`, sourcePageEntry);
-      assertCondition(sourcePageEntry.referenceAsset === sourcePageAssetPath(sourcePageEntry.sourcePage), `${id} must reference the local source page render only as evidence metadata`, sourcePageEntry);
-      assertCondition(existsSync(sourcePageEntry.referenceAsset), `${id} reference asset for source page ${sourcePageEntry.sourcePage} must exist locally`, sourcePageEntry);
+      assertCondition(
+        sourcePageEntry.manualManifestPointer === `/pages/${sourcePageEntry.sourcePage - 1}`,
+        `${id} manual manifest pointer must target the source page`,
+        sourcePageEntry,
+      );
+      assertCondition(
+        sourcePageEntry.layoutManifestPointer === `/pages/${sourcePageEntry.sourcePage - 1}`,
+        `${id} layout manifest pointer must target the source page`,
+        sourcePageEntry,
+      );
+      assertCondition(
+        sourcePageEntry.referenceAsset === sourcePageAssetPath(sourcePageEntry.sourcePage),
+        `${id} must reference the local source page render only as evidence metadata`,
+        sourcePageEntry,
+      );
+      assertCondition(
+        existsSync(sourcePageEntry.referenceAsset),
+        `${id} reference asset for source page ${sourcePageEntry.sourcePage} must exist locally`,
+        sourcePageEntry,
+      );
       coveredSourcePages.push(sourcePageEntry.sourcePage);
     });
 
@@ -948,18 +1646,36 @@ function validateSectionRegistry(registry, evidence) {
   }
 
   const duplicateSectionIds = sectionIds.filter((id, index) => sectionIds.indexOf(id) !== index);
-  assertCondition(duplicateSectionIds.length === 0, "Manual guide section ids must be unique", { duplicateSectionIds });
-
-  const expectedCoveredPages = sourcePagesForRange(evidence.requiredSourcePageRange.start, evidence.requiredSourcePageRange.end).filter((sourcePage) => !skippedSourcePages.has(sourcePage));
-  compareJson(uniqueInOrder(coveredSourcePages), expectedCoveredPages, "Section registry must cover every non-skipped source page in the required range as section source metadata", {
-    coveredSourcePages,
-    expectedCoveredPages
+  assertCondition(duplicateSectionIds.length === 0, "Manual guide section ids must be unique", {
+    duplicateSectionIds,
   });
+
+  const expectedCoveredPages = sourcePagesForRange(
+    evidence.requiredSourcePageRange.start,
+    evidence.requiredSourcePageRange.end,
+  ).filter((sourcePage) => !skippedSourcePages.has(sourcePage));
+  compareJson(
+    uniqueInOrder(coveredSourcePages),
+    expectedCoveredPages,
+    "Section registry must cover every non-skipped source page in the required range as section source metadata",
+    {
+      coveredSourcePages,
+      expectedCoveredPages,
+    },
+  );
   validateSharedSourcePageOwnership(registry, evidence, coveredSourcePages);
 
   const rawReferencedSectionIds = registry.chapters.flatMap((chapter) => {
-    assertCondition(!("chapterPageIds" in chapter), `${chapter.id} must not keep raw chapter page ids`, chapter);
-    assertCondition(!("topics" in chapter), `${chapter.id} must not keep page-based topic records`, chapter);
+    assertCondition(
+      !("chapterPageIds" in chapter),
+      `${chapter.id} must not keep raw chapter page ids`,
+      chapter,
+    );
+    assertCondition(
+      !("topics" in chapter),
+      `${chapter.id} must not keep page-based topic records`,
+      chapter,
+    );
     return chapter.sectionIds;
   });
   const sectionReferenceCounts = new Map();
@@ -969,24 +1685,55 @@ function validateSectionRegistry(registry, evidence) {
   const duplicateSectionReferences = [...sectionReferenceCounts.entries()]
     .filter(([, count]) => count > 1)
     .map(([id, count]) => ({ id, count }));
-  assertCondition(duplicateSectionReferences.length === 0, "Chapter hierarchy must not duplicate section references", {
-    duplicates: duplicateSectionReferences
-  });
+  assertCondition(
+    duplicateSectionReferences.length === 0,
+    "Chapter hierarchy must not duplicate section references",
+    {
+      duplicates: duplicateSectionReferences,
+    },
+  );
 
   const expectedSectionIdSet = new Set(evidence.expectedSectionIds);
-  const unknownSectionIds = [...new Set(rawReferencedSectionIds.filter((id) => !expectedSectionIdSet.has(id)))];
-  assertCondition(unknownSectionIds.length === 0, "Chapter hierarchy must not reference unknown sections", { unknownSectionIds });
-  const missingSectionIds = evidence.expectedSectionIds.filter((id) => !sectionReferenceCounts.has(id));
-  assertCondition(missingSectionIds.length === 0, "Chapter hierarchy must reference every expected section", { missingSectionIds });
+  const unknownSectionIds = [
+    ...new Set(rawReferencedSectionIds.filter((id) => !expectedSectionIdSet.has(id))),
+  ];
+  assertCondition(
+    unknownSectionIds.length === 0,
+    "Chapter hierarchy must not reference unknown sections",
+    { unknownSectionIds },
+  );
+  const missingSectionIds = evidence.expectedSectionIds.filter(
+    (id) => !sectionReferenceCounts.has(id),
+  );
+  assertCondition(
+    missingSectionIds.length === 0,
+    "Chapter hierarchy must reference every expected section",
+    { missingSectionIds },
+  );
 }
 
 function validateSourceWiring(registry, evidence) {
   const appSource = readFileSync(appPath, "utf8");
   const manualGuideSource = readFileSync(manualGuidePath, "utf8");
   const stylesSource = readFileSync(stylesPath, "utf8");
-  const manualGuideAppSource = sliceSource(appSource, "function ManualGuideSectionContentView", "function manualDisplayText", appPath);
-  const manualGuideContentDataSource = sliceSource(manualGuideSource, "export const implementedManualGuideSections", "export const manualGuideDocumentStyleTokens", manualGuidePath);
-  const manualGuideStylesSource = sliceSource(stylesSource, ".manual-guide-shell", ".intro-document", stylesPath);
+  const manualGuideAppSource = sliceSource(
+    appSource,
+    "function ManualGuideSectionContentView",
+    "function manualDisplayText",
+    appPath,
+  );
+  const manualGuideContentDataSource = sliceSource(
+    manualGuideSource,
+    "export const implementedManualGuideSections",
+    "export const manualGuideDocumentStyleTokens",
+    manualGuidePath,
+  );
+  const manualGuideStylesSource = sliceSource(
+    stylesSource,
+    ".manual-guide-shell",
+    ".intro-document",
+    stylesPath,
+  );
 
   for (const requiredSymbol of [
     "manualGuideChapter12Registry",
@@ -996,42 +1743,85 @@ function validateSourceWiring(registry, evidence) {
     "manualGuideChapter12SectionSummary",
     "manualGuideDocumentStyleTokens",
     "manualGuideVisualFidelityEvidenceFormat",
-    "implementedManualGuideSections"
+    "implementedManualGuideSections",
   ]) {
-    assertCondition(manualGuideSource.includes(requiredSymbol), `manual guide schema/source is missing ${requiredSymbol}`);
+    assertCondition(
+      manualGuideSource.includes(requiredSymbol),
+      `manual guide schema/source is missing ${requiredSymbol}`,
+    );
   }
 
-  assertCondition(manualGuideAppSource.includes("`manual-guide-pending-section-${section.id}`"), "manual guide renderer must expose pending section test ids");
-  assertCondition(manualGuideAppSource.includes("function ManualGuideSectionContentView"), "manual guide forbidden-pattern scan must include the implemented section renderer");
-  assertCondition(manualGuideAppSource.includes("disabled={!isAvailable}"), "Pending sections must render as disabled buttons until implemented content exists");
-  assertCondition(manualGuideAppSource.includes("assetUrl(block.assetPath)"), "manual guide forbidden-pattern scan must include future section artwork rendering");
-  assertCondition(manualGuideAppSource.includes("data-source-region-metadata-status"), "Pending section buttons must expose source-region metadata status");
-  assertCondition(manualGuideAppSource.includes("data-visual-evidence-status"), "Pending section buttons must expose visual evidence status");
-  assertCondition(manualGuideStylesSource.includes(".manual-guide-children"), "Manual guide pending section list styles must exist");
-  assertCondition(!manualGuideStylesSource.includes(".manual-guide-pages"), "Manual guide styles must not keep raw page-list styles for Chapter 1/2 section inventory");
-  assertCondition(!manualGuideAppSource.includes("manualGuidePage"), "Manual guide renderer must not keep page-based guide state names");
-  assertCondition(!manualGuideSource.includes("chapter12ManualGuidePages"), "Manual guide data must not export Chapter 1/2 page registry concepts");
-  assertCondition(!manualGuideSource.includes("src/data/manual-pages/"), "Manual guide data must not reserve page-local module paths for Chapter 1/2");
+  assertCondition(
+    manualGuideAppSource.includes("`manual-guide-pending-section-${section.id}`"),
+    "manual guide renderer must expose pending section test ids",
+  );
+  assertCondition(
+    manualGuideAppSource.includes("function ManualGuideSectionContentView"),
+    "manual guide forbidden-pattern scan must include the implemented section renderer",
+  );
+  assertCondition(
+    manualGuideAppSource.includes("disabled={!isAvailable}"),
+    "Pending sections must render as disabled buttons until implemented content exists",
+  );
+  assertCondition(
+    manualGuideAppSource.includes("assetUrl(block.assetPath)"),
+    "manual guide forbidden-pattern scan must include future section artwork rendering",
+  );
+  assertCondition(
+    manualGuideAppSource.includes("data-source-region-metadata-status"),
+    "Pending section buttons must expose source-region metadata status",
+  );
+  assertCondition(
+    manualGuideAppSource.includes("data-visual-evidence-status"),
+    "Pending section buttons must expose visual evidence status",
+  );
+  assertCondition(
+    manualGuideStylesSource.includes(".manual-guide-children"),
+    "Manual guide pending section list styles must exist",
+  );
+  assertCondition(
+    !manualGuideStylesSource.includes(".manual-guide-pages"),
+    "Manual guide styles must not keep raw page-list styles for Chapter 1/2 section inventory",
+  );
+  assertCondition(
+    !manualGuideAppSource.includes("manualGuidePage"),
+    "Manual guide renderer must not keep page-based guide state names",
+  );
+  assertCondition(
+    !manualGuideSource.includes("chapter12ManualGuidePages"),
+    "Manual guide data must not export Chapter 1/2 page registry concepts",
+  );
+  assertCondition(
+    !manualGuideSource.includes("src/data/manual-pages/"),
+    "Manual guide data must not reserve page-local module paths for Chapter 1/2",
+  );
 
-  const fullPageRasterPatterns = sourcePagesForRange(evidence.requiredSourcePageRange.start, evidence.requiredSourcePageRange.end)
-    .map((number) => `page-${String(number).padStart(3, "0")}.jpg`);
-  const sectionModulePaths = new Set(collectFiles(sectionModuleRoot).filter((path) => /\.(?:ts|tsx|mjs|js|json)$/u.test(path)));
+  const fullPageRasterPatterns = sourcePagesForRange(
+    evidence.requiredSourcePageRange.start,
+    evidence.requiredSourcePageRange.end,
+  ).map((number) => `page-${String(number).padStart(3, "0")}.jpg`);
+  const sectionModulePaths = new Set(
+    collectFiles(sectionModuleRoot).filter((path) => /\.(?:ts|tsx|mjs|js|json)$/u.test(path)),
+  );
   for (const section of registry.sections.filter((section) => section.status === "implemented")) {
     sectionModulePaths.add(resolveSectionContentModulePath(section.sectionContentModulePath));
   }
   const sectionModuleScanTargets = [...sectionModulePaths].map((path) => ({
     label: path,
-    source: readFileSync(path, "utf8")
+    source: readFileSync(path, "utf8"),
   }));
   assertNoForbiddenPatterns(
     [
       { label: `${appPath}:manual guide renderer`, source: manualGuideAppSource },
       { label: `${stylesPath}:manual guide styles`, source: manualGuideStylesSource },
-      { label: `${manualGuidePath}:implemented section data`, source: manualGuideContentDataSource },
-      ...sectionModuleScanTargets
+      {
+        label: `${manualGuidePath}:implemented section data`,
+        source: manualGuideContentDataSource,
+      },
+      ...sectionModuleScanTargets,
     ],
     evidence,
-    fullPageRasterPatterns
+    fullPageRasterPatterns,
   );
 }
 
@@ -1047,15 +1837,20 @@ function main() {
     mode: evidence.mode,
     sectionsChecked: registry.sections.length,
     pendingSections: registry.sections.filter((section) => section.status === "pending").length,
-    implementedSections: registry.sections.filter((section) => section.status === "implemented").length,
+    implementedSections: registry.sections.filter((section) => section.status === "implemented")
+      .length,
     skippedSourcePages: registry.skippedSourcePages.map((entry) => entry.sourcePage),
-    skippedDividerPages: registry.skippedSourcePages.filter((entry) => entry.reason === "chapter-divider-only").map((entry) => entry.sourcePage),
-    omittedBookOnlyPages: registry.skippedSourcePages.filter((entry) => entry.reason === "chapter-closing-slogan-only").map((entry) => entry.sourcePage),
+    skippedDividerPages: registry.skippedSourcePages
+      .filter((entry) => entry.reason === "chapter-divider-only")
+      .map((entry) => entry.sourcePage),
+    omittedBookOnlyPages: registry.skippedSourcePages
+      .filter((entry) => entry.reason === "chapter-closing-slogan-only")
+      .map((entry) => entry.sourcePage),
     sharedSourcePages: (evidence.sharedSourcePageOwnership ?? []).map((entry) => entry.sourcePage),
     forbiddenPatternRules: evidence.forbiddenPatterns.length,
     screenshotEvidence: evidence.sharedPrereqExpectedOutput.screenshotEvidence,
     sourceCropEvidence: evidence.sharedPrereqExpectedOutput.sourceCropEvidence,
-    strictVisualRulePolicy: evidence.strictVisualRulePolicy?.id ?? null
+    strictVisualRulePolicy: evidence.strictVisualRulePolicy?.id ?? null,
   };
   console.log(JSON.stringify(result, null, 2));
 }
@@ -1069,11 +1864,11 @@ try {
         checkerId: "manual-guide-source-fidelity",
         status: "fail",
         message: error instanceof Error ? error.message : String(error),
-        details: error?.details ?? undefined
+        details: error?.details ?? undefined,
       },
       null,
-      2
-    )
+      2,
+    ),
   );
   process.exitCode = 1;
 }

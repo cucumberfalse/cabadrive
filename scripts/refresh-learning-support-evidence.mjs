@@ -4,7 +4,7 @@ import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import {
   buildImageMetadataEvidenceEntry,
-  buildQuestionUsageEvidenceEntry
+  buildQuestionUsageEvidenceEntry,
 } from "./content-image-metadata.mjs";
 import { buildExplanationAlignmentEvidenceEntry } from "./content-explanation-alignment.mjs";
 import { combinedContentFromShards, QUESTION_SOURCE_PATH } from "./content-shards.mjs";
@@ -49,9 +49,11 @@ if (combined.errors.length) {
   process.exit(1);
 }
 
-const imageById = new Map(combined.imageMetadataManifest.images.map((image) => [image.imageId, image]));
+const imageById = new Map(
+  combined.imageMetadataManifest.images.map((image) => [image.imageId, image]),
+);
 const usageByQuestionId = new Map(
-  combined.imageMetadataManifest.questionUsages.map((usage) => [usage.questionId, usage])
+  combined.imageMetadataManifest.questionUsages.map((usage) => [usage.questionId, usage]),
 );
 
 const imageEvidence = {
@@ -63,17 +65,17 @@ const imageEvidence = {
       image,
       reviewer: reviewerFor(image),
       reviewedAt: reviewedAtFor(image),
-      notes: `Evidence refreshed from completed feature 009 shard content for ${image.imageId}.`
-    })
+      notes: `Evidence refreshed from completed feature 009 shard content for ${image.imageId}.`,
+    }),
   ),
   usageEntries: combined.imageMetadataManifest.questionUsages.map((usage) =>
     buildQuestionUsageEvidenceEntry({
       usage,
       reviewer: reviewerFor(usage),
       reviewedAt: reviewedAtFor(usage),
-      notes: `Evidence refreshed from completed feature 009 shard ${rangeForQuestionId(usage.questionId)} for ${usage.questionId}.`
-    })
-  )
+      notes: `Evidence refreshed from completed feature 009 shard ${rangeForQuestionId(usage.questionId)} for ${usage.questionId}.`,
+    }),
+  ),
 };
 
 const translationEvidence = {
@@ -81,16 +83,17 @@ const translationEvidence = {
   version: 1,
   generatedAt: "2026-05-10",
   evidenceType: "translation_alignment_fingerprints",
-  description: "Deterministic offline evidence that each reviewed Russian translation entry matches the current Spanish question tuple and answer ids.",
+  description:
+    "Deterministic offline evidence that each reviewed Russian translation entry matches the current Spanish question tuple and answer ids.",
   entries: combined.translations.map((translation) =>
     buildTranslationAlignmentEvidenceEntry({
       question: questionById.get(translation.questionId),
       translation,
       reviewer: reviewerFor(translation),
       reviewedAt: reviewedAtFor(translation),
-      notes: `Evidence refreshed from completed feature 009 translation shard ${rangeForQuestionId(translation.questionId)}.`
-    })
-  )
+      notes: `Evidence refreshed from completed feature 009 translation shard ${rangeForQuestionId(translation.questionId)}.`,
+    }),
+  ),
 };
 
 const explanationEvidence = {
@@ -107,9 +110,9 @@ const explanationEvidence = {
       usage,
       reviewer: reviewerFor(explanation),
       reviewedAt: reviewedAtFor(explanation),
-      notes: `Evidence refreshed from completed feature 009 explanation shard ${rangeForQuestionId(explanation.questionId)}.`
+      notes: `Evidence refreshed from completed feature 009 explanation shard ${rangeForQuestionId(explanation.questionId)}.`,
     });
-  })
+  }),
 };
 
 writeJson("content/validation/question-image-metadata.evidence.json", imageEvidence);
@@ -117,5 +120,5 @@ writeJson("content/validation/ru-translation-alignment.evidence.json", translati
 writeJson("content/validation/ru-explanation-alignment.evidence.json", explanationEvidence);
 
 console.log(
-  `Refreshed learning-support evidence: ${imageEvidence.imageEntries.length} images, ${imageEvidence.usageEntries.length} usages, ${translationEvidence.entries.length} translations, ${explanationEvidence.entries.length} explanations.`
+  `Refreshed learning-support evidence: ${imageEvidence.imageEntries.length} images, ${imageEvidence.usageEntries.length} usages, ${translationEvidence.entries.length} translations, ${explanationEvidence.entries.length} explanations.`,
 );

@@ -14,7 +14,7 @@ export const DIFFICULTY_DIMENSIONS = [
   "numbers_thresholds",
   "trap_negation",
   "visual_cue_load",
-  "cross_topic_dependence"
+  "cross_topic_dependence",
 ];
 
 const DATE_PATTERN = /^\d{4}-\d{2}-\d{2}$/;
@@ -62,21 +62,21 @@ function questionDifficultySource(question) {
     officialTextEs: question?.officialTextEs,
     answers: asArray(question?.answers).map((answer) => ({
       id: answer?.id,
-      officialTextEs: answer?.officialTextEs
+      officialTextEs: answer?.officialTextEs,
     })),
     correctAnswerId: question?.correctAnswerId,
     image: question?.image
       ? {
           localPath: question.image.localPath,
           sha256: question.image.sha256,
-          altEs: question.image.altEs
+          altEs: question.image.altEs,
         }
       : undefined,
     topics: asArray(question?.topics),
     vocabularyTermIds: asArray(question?.vocabularyTermIds),
     flags: question?.flags,
     status: question?.status,
-    validation: question?.validation
+    validation: question?.validation,
   };
 }
 
@@ -93,7 +93,7 @@ function topicDifficultySource(topic) {
       id: term?.id,
       termEs: term?.termEs,
       translationRu: term?.translationRu,
-      sourceQuestionIds: asArray(term?.sourceQuestionIds)
+      sourceQuestionIds: asArray(term?.sourceQuestionIds),
     })),
     tickets: asArray(topic?.tickets).map((ticket) => ({
       questionId: ticket?.questionId,
@@ -102,20 +102,20 @@ function topicDifficultySource(topic) {
       answerExplanations: asArray(ticket?.answerExplanations).map((explanation) => ({
         answerId: explanation?.answerId,
         verdict: explanation?.verdict,
-        explanationRu: explanation?.explanationRu
-      }))
+        explanationRu: explanation?.explanationRu,
+      })),
     })),
     trapNotes: asArray(topic?.trapNotes).map((note) => ({
       id: note?.id,
       textRu: note?.textRu,
-      sourceQuestionIds: asArray(note?.sourceQuestionIds)
+      sourceQuestionIds: asArray(note?.sourceQuestionIds),
     })),
     claims: asArray(topic?.claims).map((claim) => ({
       id: claim?.id,
       textRu: claim?.textRu,
       requiresOfficialSource: claim?.requiresOfficialSource,
-      sourceTraceId: claim?.sourceTraceId
-    }))
+      sourceTraceId: claim?.sourceTraceId,
+    })),
   };
 }
 
@@ -128,7 +128,13 @@ export function difficultyTopicFingerprint(topic) {
 }
 
 export function ticketQuestionIdsSha256(topic) {
-  return sha256Canonical(uniqueSorted(asArray(topic?.tickets).map((ticket) => ticket?.questionId).filter(isNonEmptyString)));
+  return sha256Canonical(
+    uniqueSorted(
+      asArray(topic?.tickets)
+        .map((ticket) => ticket?.questionId)
+        .filter(isNonEmptyString),
+    ),
+  );
 }
 
 export function buildTopicDifficultyBasis(topic, questionById) {
@@ -137,7 +143,8 @@ export function buildTopicDifficultyBasis(topic, questionById) {
 
   for (const ticket of asArray(topic?.tickets)) {
     const question = questionById.get(ticket?.questionId);
-    if (question && LEVEL_SET.has(question.difficulty)) questionLevelCounts[question.difficulty] += 1;
+    if (question && LEVEL_SET.has(question.difficulty))
+      questionLevelCounts[question.difficulty] += 1;
     for (const dimension of asArray(question?.difficultyMeta?.dimensions)) {
       if (!DIMENSION_SET.has(dimension)) continue;
       dimensionCounts.set(dimension, (dimensionCounts.get(dimension) || 0) + 1);
@@ -152,15 +159,24 @@ export function buildTopicDifficultyBasis(topic, questionById) {
   return {
     questionLevelCounts,
     ticketQuestionIdsSha256: ticketQuestionIdsSha256(topic),
-    dominantDimensions
+    dominantDimensions,
   };
 }
 
-function validateDifficultyCore({ owner, value, meta, expectedFingerprint, errors, requireBasis = false }) {
+function validateDifficultyCore({
+  owner,
+  value,
+  meta,
+  expectedFingerprint,
+  errors,
+  requireBasis = false,
+}) {
   if (!isNonEmptyString(value)) {
     errors.push(`${owner}: difficulty must be one of ${DIFFICULTY_LEVELS.join(", ")}.`);
   } else if (LEGACY_LEVEL_SET.has(value)) {
-    errors.push(`${owner}: legacy difficulty ${value} is not allowed; use green, blue, yellow, or red.`);
+    errors.push(
+      `${owner}: legacy difficulty ${value} is not allowed; use green, blue, yellow, or red.`,
+    );
   } else if (!LEVEL_SET.has(value)) {
     errors.push(`${owner}: unsupported difficulty ${value}.`);
   }
@@ -169,7 +185,8 @@ function validateDifficultyCore({ owner, value, meta, expectedFingerprint, error
     errors.push(`${owner}: difficultyMeta must be an object.`);
     return;
   }
-  if (Object.hasOwn(meta, "level")) errors.push(`${owner}: difficultyMeta must not duplicate the difficulty level.`);
+  if (Object.hasOwn(meta, "level"))
+    errors.push(`${owner}: difficultyMeta must not duplicate the difficulty level.`);
   if (meta.rubricVersion !== DIFFICULTY_RUBRIC_VERSION) {
     errors.push(`${owner}: difficultyMeta.rubricVersion must be ${DIFFICULTY_RUBRIC_VERSION}.`);
   }
@@ -178,19 +195,25 @@ function validateDifficultyCore({ owner, value, meta, expectedFingerprint, error
   } else {
     const seen = new Set();
     for (const dimension of meta.dimensions) {
-      if (!DIMENSION_SET.has(dimension)) errors.push(`${owner}: unsupported difficulty dimension ${dimension}.`);
-      if (seen.has(dimension)) errors.push(`${owner}: duplicate difficulty dimension ${dimension}.`);
+      if (!DIMENSION_SET.has(dimension))
+        errors.push(`${owner}: unsupported difficulty dimension ${dimension}.`);
+      if (seen.has(dimension))
+        errors.push(`${owner}: duplicate difficulty dimension ${dimension}.`);
       seen.add(dimension);
     }
   }
-  if (!isNonEmptyString(meta.rationaleRu)) errors.push(`${owner}: difficultyMeta.rationaleRu must be a non-empty string.`);
+  if (!isNonEmptyString(meta.rationaleRu))
+    errors.push(`${owner}: difficultyMeta.rationaleRu must be a non-empty string.`);
   if (!isPlainObject(meta.provenance)) {
     errors.push(`${owner}: difficultyMeta.provenance must be an object.`);
   } else {
     if (meta.provenance.method !== DIFFICULTY_PROVENANCE_METHOD) {
-      errors.push(`${owner}: difficultyMeta.provenance.method must be ${DIFFICULTY_PROVENANCE_METHOD}.`);
+      errors.push(
+        `${owner}: difficultyMeta.provenance.method must be ${DIFFICULTY_PROVENANCE_METHOD}.`,
+      );
     }
-    if (!isNonEmptyString(meta.provenance.reviewer)) errors.push(`${owner}: difficultyMeta.provenance.reviewer must be a non-empty string.`);
+    if (!isNonEmptyString(meta.provenance.reviewer))
+      errors.push(`${owner}: difficultyMeta.provenance.reviewer must be a non-empty string.`);
     if (!DATE_PATTERN.test(meta.provenance.reviewedAt || "")) {
       errors.push(`${owner}: difficultyMeta.provenance.reviewedAt must be YYYY-MM-DD.`);
     }
@@ -213,7 +236,7 @@ export function validateQuestionDifficulty(question) {
     value: question?.difficulty,
     meta: question?.difficultyMeta,
     expectedFingerprint: difficultyQuestionFingerprint(question),
-    errors
+    errors,
   });
   return errors;
 }
@@ -227,7 +250,7 @@ export function validateTopicDifficulty(topic, questionById) {
     meta: topic?.difficultyMeta,
     expectedFingerprint: difficultyTopicFingerprint(topic),
     errors,
-    requireBasis: true
+    requireBasis: true,
   });
 
   const basis = topic?.difficultyMeta?.basis;
@@ -238,11 +261,16 @@ export function validateTopicDifficulty(topic, questionById) {
     } else {
       for (const level of DIFFICULTY_LEVELS) {
         if (basis.questionLevelCounts[level] !== expectedBasis.questionLevelCounts[level]) {
-          errors.push(`${owner}: difficultyMeta.basis.questionLevelCounts.${level} must match current topic tickets.`);
+          errors.push(
+            `${owner}: difficultyMeta.basis.questionLevelCounts.${level} must match current topic tickets.`,
+          );
         }
       }
       for (const level of Object.keys(basis.questionLevelCounts)) {
-        if (!LEVEL_SET.has(level)) errors.push(`${owner}: difficultyMeta.basis.questionLevelCounts has unsupported level ${level}.`);
+        if (!LEVEL_SET.has(level))
+          errors.push(
+            `${owner}: difficultyMeta.basis.questionLevelCounts has unsupported level ${level}.`,
+          );
       }
     }
 
@@ -255,12 +283,16 @@ export function validateTopicDifficulty(topic, questionById) {
     } else {
       const seen = new Set();
       for (const dimension of basis.dominantDimensions) {
-        if (!DIMENSION_SET.has(dimension)) errors.push(`${owner}: unsupported basis dominant dimension ${dimension}.`);
-        if (seen.has(dimension)) errors.push(`${owner}: duplicate basis dominant dimension ${dimension}.`);
+        if (!DIMENSION_SET.has(dimension))
+          errors.push(`${owner}: unsupported basis dominant dimension ${dimension}.`);
+        if (seen.has(dimension))
+          errors.push(`${owner}: duplicate basis dominant dimension ${dimension}.`);
         seen.add(dimension);
       }
       if (basis.dominantDimensions.join(",") !== expectedBasis.dominantDimensions.join(",")) {
-        errors.push(`${owner}: difficultyMeta.basis.dominantDimensions must match current topic tickets.`);
+        errors.push(
+          `${owner}: difficultyMeta.basis.dominantDimensions must match current topic tickets.`,
+        );
       }
     }
   }
@@ -288,6 +320,6 @@ export function validateDifficultyContent({ questions, topicGuide }) {
   return {
     errors,
     questionCount: questionList.length,
-    topicCount: topicList.length
+    topicCount: topicList.length,
   };
 }

@@ -6,7 +6,7 @@ import {
   buildQuestionUsageEvidenceEntry,
   imageMetadataFingerprint,
   questionFingerprint,
-  validateQuestionImageMetadata
+  validateQuestionImageMetadata,
 } from "../scripts/content-image-metadata.mjs";
 
 const reviewer = "Cabadrive solo self-audit";
@@ -18,14 +18,14 @@ const baseQuestion = {
   officialTextEs: "¿Qué indica esta señal?",
   answers: [
     { id: "q1-a1", officialTextEs: "Opción incorrecta." },
-    { id: "q1-a2", officialTextEs: "Opción correcta." }
+    { id: "q1-a2", officialTextEs: "Opción correcta." },
   ],
   correctAnswerId: "q1-a2",
   image: {
     localPath: "content/assets/questions/example.jpg",
     originalUrl: "https://example.invalid/example.jpg",
-    sha256: "1".repeat(64)
-  }
+    sha256: "1".repeat(64),
+  },
 };
 
 function baseImage() {
@@ -41,10 +41,24 @@ function baseImage() {
     generationPromptSummary: "Synthetic sign image prompt.",
     scene: { setting: "synthetic" },
     objects: [{ id: "sign", type: "traffic_sign", label: "sign", confidence: "high" }],
-    regions: [{ regionId: "sign-region", label: "sign region", semanticLocation: "center", localizationConfidence: "high" }],
+    regions: [
+      {
+        regionId: "sign-region",
+        label: "sign region",
+        semanticLocation: "center",
+        localizationConfidence: "high",
+      },
+    ],
     roadUsers: [],
     signsSignalsMarkings: [],
-    visualDetails: [{ id: "sign-shape", objectIds: ["sign"], regionIds: ["sign-region"], description: "The sign shape is visible and answer-critical." }],
+    visualDetails: [
+      {
+        id: "sign-shape",
+        objectIds: ["sign"],
+        regionIds: ["sign-region"],
+        description: "The sign shape is visible and answer-critical.",
+      },
+    ],
     annotations: [],
     visibleText: [],
     spatialRelationships: [],
@@ -52,8 +66,8 @@ function baseImage() {
     review: {
       status: "approved",
       reviewer,
-      reviewedAt
-    }
+      reviewedAt,
+    },
   };
 }
 
@@ -74,8 +88,8 @@ function baseUsage() {
         supportsAnswerIds: ["q1-a2"],
         rejectsAnswerIds: ["q1-a1"],
         criticality: "required",
-        confidence: "high"
-      }
+        confidence: "high",
+      },
     ],
     imageRole: "answer_critical",
     relevanceMap: [
@@ -89,7 +103,7 @@ function baseUsage() {
         supportsAnswerIds: ["q1-a2"],
         rejectsAnswerIds: ["q1-a1"],
         displayIntent: "highlight",
-        confidence: "high"
+        confidence: "high",
       },
       {
         relevanceId: "sign-background-context",
@@ -99,14 +113,14 @@ function baseUsage() {
         role: "supporting",
         rationaleRuOrEn: "The visible sign panel should remain visible as supporting context.",
         displayIntent: "keep_visible",
-        confidence: "high"
-      }
+        confidence: "high",
+      },
     ],
     review: {
       status: "approved",
       reviewer,
-      reviewedAt
-    }
+      reviewedAt,
+    },
   };
 }
 
@@ -119,15 +133,15 @@ function manifestAndEvidence({ image = baseImage(), usage = baseUsage() } = {}) 
       imageReferenceCount: 1,
       uniqueImageCount: 1,
       questionSetFingerprint: "placeholder",
-      imageReferenceFingerprint: "placeholder"
+      imageReferenceFingerprint: "placeholder",
     },
     images: [image],
-    questionUsages: [usage]
+    questionUsages: [usage],
   };
   const evidence = {
     version: 1,
     imageEntries: [buildImageMetadataEvidenceEntry({ image, reviewer, reviewedAt })],
-    usageEntries: [buildQuestionUsageEvidenceEntry({ usage, reviewer, reviewedAt })]
+    usageEntries: [buildQuestionUsageEvidenceEntry({ usage, reviewer, reviewedAt })],
   };
   return { manifest, evidence };
 }
@@ -140,8 +154,12 @@ function validateSynthetic(input = {}) {
     questions: [baseQuestion],
     manifest,
     evidence,
-    strictCoverage: false
-  }).filter((error) => !error.includes("baseline.questionSetFingerprint") && !error.includes("baseline.imageReferenceFingerprint"));
+    strictCoverage: false,
+  }).filter(
+    (error) =>
+      !error.includes("baseline.questionSetFingerprint") &&
+      !error.includes("baseline.imageReferenceFingerprint"),
+  );
 }
 
 function validateSyntheticFullQuality(input = {}) {
@@ -155,9 +173,9 @@ function validateSyntheticFullQuality(input = {}) {
         reviewerNotes: "Synthetic reviewed sign fixture with a visible answer-critical sign shape.",
         sceneCoverage: true,
         objectCoverage: true,
-        answerCriticalCoverage: true
-      }
-    }
+        answerCriticalCoverage: true,
+      },
+    },
   };
   const usage = input.usage || baseUsage();
   const { manifest, evidence } = manifestAndEvidence({ image, usage });
@@ -168,14 +186,24 @@ function validateSyntheticFullQuality(input = {}) {
     manifest,
     evidence,
     strictCoverage: false,
-    requireFullQuality: true
-  }).filter((error) => !error.includes("baseline.questionSetFingerprint") && !error.includes("baseline.imageReferenceFingerprint"));
+    requireFullQuality: true,
+  }).filter(
+    (error) =>
+      !error.includes("baseline.questionSetFingerprint") &&
+      !error.includes("baseline.imageReferenceFingerprint"),
+  );
 }
 
 test("current question image metadata has approved fresh coverage", () => {
-  const questions = JSON.parse(readFileSync("content/questions/caba-b.unofficial-fallback.questions.json", "utf8"));
-  const manifest = JSON.parse(readFileSync("content/image-metadata/question-images.manifest.json", "utf8"));
-  const evidence = JSON.parse(readFileSync("content/validation/question-image-metadata.evidence.json", "utf8"));
+  const questions = JSON.parse(
+    readFileSync("content/questions/caba-b.unofficial-fallback.questions.json", "utf8"),
+  );
+  const manifest = JSON.parse(
+    readFileSync("content/image-metadata/question-images.manifest.json", "utf8"),
+  );
+  const evidence = JSON.parse(
+    readFileSync("content/validation/question-image-metadata.evidence.json", "utf8"),
+  );
   assert.deepEqual(validateQuestionImageMetadata({ questions, manifest, evidence }), []);
 });
 
@@ -200,24 +228,31 @@ test("image metadata fingerprint includes regions and visualDetails", () => {
     regions: [
       {
         ...image.regions[0],
-        semanticLocation: "upper left instead of center"
-      }
-    ]
+        semanticLocation: "upper left instead of center",
+      },
+    ],
   };
   const changedVisualDetail = {
     ...image,
     visualDetails: [
       {
         ...image.visualDetails[0],
-        description: "The sign shape changed to a different inspected visual fact."
-      }
-    ]
+        description: "The sign shape changed to a different inspected visual fact.",
+      },
+    ],
   };
 
   assert.notEqual(imageMetadataFingerprint(changedRegion), originalFingerprint);
   assert.notEqual(imageMetadataFingerprint(changedVisualDetail), originalFingerprint);
-  assert.notEqual(buildImageMetadataEvidenceEntry({ image: changedRegion, reviewer, reviewedAt }).metadataSha256, originalMetadataSha256);
-  assert.notEqual(buildImageMetadataEvidenceEntry({ image: changedVisualDetail, reviewer, reviewedAt }).metadataSha256, originalMetadataSha256);
+  assert.notEqual(
+    buildImageMetadataEvidenceEntry({ image: changedRegion, reviewer, reviewedAt }).metadataSha256,
+    originalMetadataSha256,
+  );
+  assert.notEqual(
+    buildImageMetadataEvidenceEntry({ image: changedVisualDetail, reviewer, reviewedAt })
+      .metadataSha256,
+    originalMetadataSha256,
+  );
 
   for (const changedImage of [changedRegion, changedVisualDetail]) {
     const { manifest, evidence } = manifestAndEvidence({ image: changedImage });
@@ -228,8 +263,12 @@ test("image metadata fingerprint includes regions and visualDetails", () => {
       questions: [baseQuestion],
       manifest,
       evidence,
-      strictCoverage: false
-    }).filter((error) => !error.includes("baseline.questionSetFingerprint") && !error.includes("baseline.imageReferenceFingerprint"));
+      strictCoverage: false,
+    }).filter(
+      (error) =>
+        !error.includes("baseline.questionSetFingerprint") &&
+        !error.includes("baseline.imageReferenceFingerprint"),
+    );
     assert(errors.includes("question-image-example: evidence metadataSha256 mismatch."));
   }
 });
@@ -237,10 +276,24 @@ test("image metadata fingerprint includes regions and visualDetails", () => {
 test("full-quality image gate rejects placeholder metadata and generic source-image details", () => {
   const image = {
     ...baseImage(),
-    visualSummary: "Deterministic baseline metadata for a source image frame pending manual review required.",
-    objects: [{ id: "source-image-frame", type: "source_image_frame", label: "source image", confidence: "low" }],
+    visualSummary:
+      "Deterministic baseline metadata for a source image frame pending manual review required.",
+    objects: [
+      {
+        id: "source-image-frame",
+        type: "source_image_frame",
+        label: "source image",
+        confidence: "low",
+      },
+    ],
     visualDetails: [],
-    uncertainties: [{ id: "manual-review-required", field: "objects", note: "object-level detail remains uncertain" }]
+    uncertainties: [
+      {
+        id: "manual-review-required",
+        field: "objects",
+        note: "object-level detail remains uncertain",
+      },
+    ],
   };
   const usage = {
     ...baseUsage(),
@@ -252,20 +305,20 @@ test("full-quality image gate rejects placeholder metadata and generic source-im
         supportsAnswerIds: ["q1-a2"],
         rejectsAnswerIds: [],
         criticality: "required",
-        confidence: "low"
-      }
-    ]
+        confidence: "low",
+      },
+    ],
   };
   const errors = validateSyntheticFullQuality({ image, usage });
   assert(
     errors.includes(
-      "question-image-example: full-quality image metadata must not contain placeholder, baseline, source-image-frame, or manual-review-required wording."
-    )
+      "question-image-example: full-quality image metadata must not contain placeholder, baseline, source-image-frame, or manual-review-required wording.",
+    ),
   );
   assert(
     errors.includes(
-      "q1: critical detail q1-critical-source-image must name actual visible answer-critical facts, not source-image or answer-cue placeholders."
-    )
+      "q1: critical detail q1-critical-source-image must name actual visible answer-critical facts, not source-image or answer-cue placeholders.",
+    ),
   );
 });
 
@@ -282,13 +335,19 @@ test("full-quality usage gate requires question-scoped relevance mapping", () =>
         rationaleRuOrEn: "Only the critical cue is mapped.",
         supportsAnswerIds: ["q1-a2"],
         displayIntent: "highlight",
-        confidence: "high"
-      }
-    ]
+        confidence: "high",
+      },
+    ],
   };
   const errors = validateSyntheticFullQuality({ usage });
-  assert(errors.includes("q1: full-quality usage must include non-critical supporting, distractor, or background relevance context."));
-  assert(errors.includes("q1: full-quality usage must not mark every relevance entry answer-critical."));
+  assert(
+    errors.includes(
+      "q1: full-quality usage must include non-critical supporting, distractor, or background relevance context.",
+    ),
+  );
+  assert(
+    errors.includes("q1: full-quality usage must not mark every relevance entry answer-critical."),
+  );
 });
 
 test("full-quality usage gate rejects relevance entries without real ids", () => {
@@ -296,11 +355,15 @@ test("full-quality usage gate rejects relevance entries without real ids", () =>
   delete firstRelevance.relevanceId;
   const usage = {
     ...baseUsage(),
-    relevanceMap: [firstRelevance, baseUsage().relevanceMap[1]]
+    relevanceMap: [firstRelevance, baseUsage().relevanceMap[1]],
   };
   const errors = validateSyntheticFullQuality({ usage });
   assert(errors.includes("q1: relevance sign-shape must have a non-empty relevanceId."));
-  assert(errors.includes("q1: relevance sign-shape must use detailIds, objectIds, or regionIds instead of legacy targetId."));
+  assert(
+    errors.includes(
+      "q1: relevance sign-shape must use detailIds, objectIds, or regionIds instead of legacy targetId.",
+    ),
+  );
 });
 
 test("full-quality usage gate rejects relevance entries without confidence", () => {
@@ -308,29 +371,54 @@ test("full-quality usage gate rejects relevance entries without confidence", () 
   delete firstRelevance.confidence;
   const usage = {
     ...baseUsage(),
-    relevanceMap: [firstRelevance, baseUsage().relevanceMap[1]]
+    relevanceMap: [firstRelevance, baseUsage().relevanceMap[1]],
   };
   const errors = validateSyntheticFullQuality({ usage });
-  assert(errors.includes("q1: relevance sign-shape-highlight must include confidence for the full-quality gate."));
+  assert(
+    errors.includes(
+      "q1: relevance sign-shape-highlight must include confidence for the full-quality gate.",
+    ),
+  );
 });
 
 test("full-quality usage gate rejects relevance entries without grounded references", () => {
-  const firstRelevance = { ...baseUsage().relevanceMap[0], detailIds: [], objectIds: [], regionIds: [] };
+  const firstRelevance = {
+    ...baseUsage().relevanceMap[0],
+    detailIds: [],
+    objectIds: [],
+    regionIds: [],
+  };
   const usage = {
     ...baseUsage(),
-    relevanceMap: [firstRelevance, baseUsage().relevanceMap[1]]
+    relevanceMap: [firstRelevance, baseUsage().relevanceMap[1]],
   };
   const errors = validateSyntheticFullQuality({ usage });
-  assert(errors.includes("q1: relevance sign-shape-highlight must reference at least one detail, object, or region id."));
+  assert(
+    errors.includes(
+      "q1: relevance sign-shape-highlight must reference at least one detail, object, or region id.",
+    ),
+  );
 });
 
 test("shared image metadata rejects global relevance keys", () => {
   const image = {
     ...baseImage(),
-    objects: [{ id: "sign", type: "traffic_sign", label: "sign", confidence: "high", criticality: "required" }]
+    objects: [
+      {
+        id: "sign",
+        type: "traffic_sign",
+        label: "sign",
+        confidence: "high",
+        criticality: "required",
+      },
+    ],
   };
   const errors = validateSyntheticFullQuality({ image });
-  assert(errors.includes("question-image-example: shared image metadata must not contain question-scoped relevance key question-image-example.objects[0].criticality."));
+  assert(
+    errors.includes(
+      "question-image-example: shared image metadata must not contain question-scoped relevance key question-image-example.objects[0].criticality.",
+    ),
+  );
 });
 
 test("relevance mappings must reference existing stable ids", () => {
@@ -341,15 +429,21 @@ test("relevance mappings must reference existing stable ids", () => {
         ...baseUsage().relevanceMap[0],
         detailIds: ["missing-detail"],
         objectIds: ["missing-object"],
-        regionIds: ["missing-region"]
+        regionIds: ["missing-region"],
       },
-      baseUsage().relevanceMap[1]
-    ]
+      baseUsage().relevanceMap[1],
+    ],
   };
   const errors = validateSyntheticFullQuality({ usage });
-  assert(errors.includes("q1: relevance sign-shape-highlight references missing detail missing-detail."));
-  assert(errors.includes("q1: relevance sign-shape-highlight references missing object missing-object."));
-  assert(errors.includes("q1: relevance sign-shape-highlight references missing region missing-region."));
+  assert(
+    errors.includes("q1: relevance sign-shape-highlight references missing detail missing-detail."),
+  );
+  assert(
+    errors.includes("q1: relevance sign-shape-highlight references missing object missing-object."),
+  );
+  assert(
+    errors.includes("q1: relevance sign-shape-highlight references missing region missing-region."),
+  );
 });
 
 test("full-quality usage gate rejects answer-critical details not defined in shared image metadata", () => {
@@ -359,12 +453,17 @@ test("full-quality usage gate rejects answer-critical details not defined in sha
       {
         ...baseUsage().answerCriticalDetails[0],
         detailId: "invented-usage-only-detail",
-        description: "The invented detail is described only in usage and is not grounded in shared metadata."
-      }
-    ]
+        description:
+          "The invented detail is described only in usage and is not grounded in shared metadata.",
+      },
+    ],
   };
   const errors = validateSyntheticFullQuality({ usage });
-  assert(errors.includes("q1: critical detail invented-usage-only-detail is not present in the metadata detail set."));
+  assert(
+    errors.includes(
+      "q1: critical detail invented-usage-only-detail is not present in the metadata detail set.",
+    ),
+  );
 });
 
 test("stale question fingerprint fails image usage validation", () => {
@@ -377,18 +476,20 @@ test("stale question fingerprint fails image usage validation", () => {
       baseline: {
         ...manifest.baseline,
         questionSetFingerprint: "skip",
-        imageReferenceFingerprint: "skip"
-      }
+        imageReferenceFingerprint: "skip",
+      },
     },
     evidence,
-    strictCoverage: false
+    strictCoverage: false,
   });
   assert(errors.includes("q1: usage questionFingerprint mismatch."));
   assert(errors.includes("q1: evidence questionFingerprint mismatch."));
 });
 
 test("b-fallback-001 metadata records cyclist and straight right-arm gesture", () => {
-  const manifest = JSON.parse(readFileSync("content/image-metadata/question-images.manifest.json", "utf8"));
+  const manifest = JSON.parse(
+    readFileSync("content/image-metadata/question-images.manifest.json", "utf8"),
+  );
   const usage = manifest.questionUsages.find((item) => item.questionId === "b-fallback-001");
   const image = manifest.images.find((item) => item.imageId === usage.imageId);
   const cyclist = image.roadUsers.find((item) => item.id === "cyclist-foreground");
@@ -399,5 +500,11 @@ test("b-fallback-001 metadata records cyclist and straight right-arm gesture", (
   assert.equal(gesture.pose, "extended_straight_horizontal");
   assert.equal(gesture.actorPerspectiveDirection, "right");
   assert.equal(gesture.viewerPerspectiveDirection, "left");
-  assert(usage.answerCriticalDetails.some((detail) => detail.detailId === "right-arm-straight-horizontal" && detail.supportsAnswerIds.includes("b-fallback-001-a2")));
+  assert(
+    usage.answerCriticalDetails.some(
+      (detail) =>
+        detail.detailId === "right-arm-straight-horizontal" &&
+        detail.supportsAnswerIds.includes("b-fallback-001-a2"),
+    ),
+  );
 });

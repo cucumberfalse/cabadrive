@@ -1,7 +1,15 @@
 :root {
   color: #17211f;
   background: #eef3f1;
-  font-family: "Inter", "Segoe UI", "Noto Sans", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family:
+    "Inter",
+    "Segoe UI",
+    "Noto Sans",
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   --ink: #17211f;
@@ -30,8 +38,7 @@ body {
   min-width: 320px;
   min-height: 100vh;
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(238, 243, 241, 0.78) 280px),
-    #eef3f1;
+    linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(238, 243, 241, 0.78) 280px), #eef3f1;
 }
 
 button,
@@ -976,7 +983,16 @@ small,
 
 .introduction-reader {
   margin-top: 14px;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans", "Helvetica Neue", Arial, sans-serif;
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    "Noto Sans",
+    "Helvetica Neue",
+    Arial,
+    sans-serif;
 }
 
 .introduction-header {
@@ -2542,7 +2558,9 @@ small,
   background: #e4e1d9;
 }
 
-.manual-bicycle-distance-grid article[data-distance-status="unsafe"] .manual-bicycle-distance-image {
+.manual-bicycle-distance-grid
+  article[data-distance-status="unsafe"]
+  .manual-bicycle-distance-image {
   width: min(100%, 250px);
 }
 
@@ -3185,7 +3203,9 @@ small,
 }
 
 .pandemia-prototype {
-  --pandemia-font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans", "Helvetica Neue", Arial, sans-serif;
+  --pandemia-font-family:
+    system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans", "Helvetica Neue",
+    Arial, sans-serif;
   margin-top: 14px;
 }
 
@@ -3204,7 +3224,9 @@ small,
 
 .pandemia-page {
   position: relative;
-  --pandemia-font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans", "Helvetica Neue", Arial, sans-serif;
+  --pandemia-font-family:
+    system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans", "Helvetica Neue",
+    Arial, sans-serif;
   width: 1280px;
   max-width: none;
   margin: 0 auto;
@@ -3681,7 +3703,9 @@ small,
 
 .image-overlay-region.critical {
   border: 3px solid #ffd166;
-  box-shadow: 0 0 0 999px rgba(22, 32, 29, 0.16), 0 0 0 2px rgba(22, 32, 29, 0.72);
+  box-shadow:
+    0 0 0 999px rgba(22, 32, 29, 0.16),
+    0 0 0 2px rgba(22, 32, 29, 0.72);
 }
 
 .image-overlay-region.supporting {

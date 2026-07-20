@@ -15,19 +15,19 @@ export default defineConfig({
   testDir: "tests/e2e",
   timeout: 30_000,
   expect: {
-    timeout: 10_000
+    timeout: 10_000,
   },
   webServer: {
     command: `pnpm exec vite preview --host 0.0.0.0 --port ${port} --strictPort`,
     url: baseURL,
-    reuseExistingServer: !process.env.CI && process.env.PLAYWRIGHT_REUSE_EXISTING_SERVER === "1"
+    reuseExistingServer: !process.env.CI && process.env.PLAYWRIGHT_REUSE_EXISTING_SERVER === "1",
   },
   use: {
     baseURL,
-    trace: "on-first-retry"
+    trace: "on-first-retry",
   },
   projects: [
     { name: "chromium", use: { ...devices["Desktop Chrome"] } },
-    { name: "mobile", use: { ...devices["Pixel 7"] } }
-  ]
+    { name: "mobile", use: { ...devices["Pixel 7"] } },
+  ],
 });

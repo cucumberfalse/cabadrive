@@ -12,7 +12,9 @@ export function isManualDynamicChunk(path) {
 }
 
 export function isManualPageImageAsset(path) {
-  return /^\/content\/assets\/manuals\/gcba-manual-vehiculo-4-ruedas-2023\/pages\/page-\d{3}\.jpg$/u.test(path);
+  return /^\/content\/assets\/manuals\/gcba-manual-vehiculo-4-ruedas-2023\/pages\/page-\d{3}\.jpg$/u.test(
+    path,
+  );
 }
 
 export function shouldInstallPrecacheAsset(path) {

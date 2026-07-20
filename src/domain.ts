@@ -20,7 +20,10 @@ export function formatDuration(totalSeconds: number) {
   return `${minutes}:${String(seconds).padStart(2, "0")}`;
 }
 
-export function learningTicketTargetSeconds(examFormat: ExamFormatTiming, roundingStepSeconds = 15) {
+export function learningTicketTargetSeconds(
+  examFormat: ExamFormatTiming,
+  roundingStepSeconds = 15,
+) {
   const { questionCount, timeLimitMinutes } = examFormat;
   if (
     !Number.isFinite(questionCount) ||
@@ -35,16 +38,20 @@ export function learningTicketTargetSeconds(examFormat: ExamFormatTiming, roundi
     return undefined;
   }
 
-  return Math.ceil(((timeLimitMinutes * 60) / questionCount) / roundingStepSeconds) * roundingStepSeconds;
+  return (
+    Math.ceil((timeLimitMinutes * 60) / questionCount / roundingStepSeconds) * roundingStepSeconds
+  );
 }
 
 function sortedExamSet(questions: Question[], count: number) {
-  return [...questions].sort((a, b) => {
-    if (Number(b.flags.hasImage) !== Number(a.flags.hasImage)) {
-      return Number(b.flags.hasImage) - Number(a.flags.hasImage);
-    }
-    return a.id.localeCompare(b.id);
-  }).slice(0, Math.min(count, questions.length));
+  return [...questions]
+    .sort((a, b) => {
+      if (Number(b.flags.hasImage) !== Number(a.flags.hasImage)) {
+        return Number(b.flags.hasImage) - Number(a.flags.hasImage);
+      }
+      return a.id.localeCompare(b.id);
+    })
+    .slice(0, Math.min(count, questions.length));
 }
 
 export function shuffleQuestions(questions: Question[], random = Math.random) {
@@ -60,7 +67,12 @@ function randomExamSet(questions: Question[], count: number, random: () => numbe
   return shuffleQuestions(questions, random).slice(0, Math.min(count, questions.length));
 }
 
-export function selectExamSet(questions: Question[], count: number, questionOrderRule: string, random = Math.random) {
+export function selectExamSet(
+  questions: Question[],
+  count: number,
+  questionOrderRule: string,
+  random = Math.random,
+) {
   if (questionOrderRule === "random_questions_from_available_validated_pool") {
     return randomExamSet(questions, count, random);
   }

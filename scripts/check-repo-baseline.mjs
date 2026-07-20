@@ -33,7 +33,7 @@ if (config.blueprint) {
     "scripts/sync-workflows.mjs",
     "scripts/sanitize-blueprint.mjs",
     "profiles/generic.json",
-    "tests/sanitizer.test.mjs"
+    "tests/sanitizer.test.mjs",
   ]) {
     requirePath(path);
   }
@@ -53,7 +53,7 @@ if (config.blueprint) {
     ".github/workflows/ci.yml",
     ".github/workflows/pr-guard.yml",
     ".github/workflows/ai-review.yml",
-    ".github/workflows/ai-command-policy.yml"
+    ".github/workflows/ai-command-policy.yml",
   ]) {
     if (excluded.has(path)) continue;
     requirePath(path);

@@ -21,15 +21,17 @@ export function normalizeLogin(login) {
 const defaultTrustedReviewLogins = {
   codex: ["chatgpt-codex-connector[bot]", "chatgpt-codex-connector"],
   claude: ["claude[bot]"],
-  gemini: ["gemini-code-assist[bot]"]
+  gemini: ["gemini-code-assist[bot]"],
 };
 
 export function trustedReviewLoginsForAgent(agent, config = {}) {
-  return new Set([
-    ...(defaultTrustedReviewLogins[agent] || []),
-    ...(config.trustedReviewLogins || []),
-    ...(config.trustedReviewLoginsByAgent?.[agent] || [])
-  ].map(normalizeLogin));
+  return new Set(
+    [
+      ...(defaultTrustedReviewLogins[agent] || []),
+      ...(config.trustedReviewLogins || []),
+      ...(config.trustedReviewLoginsByAgent?.[agent] || []),
+    ].map(normalizeLogin),
+  );
 }
 
 export function isTrustedReviewLogin(login, agent, config = {}) {
@@ -37,8 +39,9 @@ export function isTrustedReviewLogin(login, agent, config = {}) {
 }
 
 function extractShaLikeMarkers(body) {
-  return [...String(body || "").matchAll(/(?:^|[^A-Za-z0-9])([A-Fa-f0-9]{7,40})(?![A-Za-z0-9])/g)]
-    .map((match) => match[1].toLowerCase());
+  return [
+    ...String(body || "").matchAll(/(?:^|[^A-Za-z0-9])([A-Fa-f0-9]{7,40})(?![A-Za-z0-9])/g),
+  ].map((match) => match[1].toLowerCase());
 }
 
 export function containsBlockingSeverity(body, agent) {
@@ -57,7 +60,12 @@ export function extractCodexPriority(body) {
   return match ? Number(match[1]) : null;
 }
 
-export function isAcceptableCodexSummaryComment(comment, headSha, headCommittedAt = null, config = {}) {
+export function isAcceptableCodexSummaryComment(
+  comment,
+  headSha,
+  headCommittedAt = null,
+  config = {},
+) {
   const body = String(comment?.body || "").trim();
   const login = normalizeLogin(comment?.user?.login);
   if (!isTrustedReviewLogin(login, "codex", config)) return false;
@@ -86,9 +94,10 @@ export function classifyCodexNativeReview(review, reviewComments = [], headSha, 
   if (review.state === "CHANGES_REQUESTED") return "fail";
   if (review.state !== "COMMENTED") return null;
 
-  const commentsForReview = reviewComments.filter((comment) =>
-    comment.pull_request_review_id === review.id &&
-    isTrustedReviewLogin(comment.user?.login, "codex", config)
+  const commentsForReview = reviewComments.filter(
+    (comment) =>
+      comment.pull_request_review_id === review.id &&
+      isTrustedReviewLogin(comment.user?.login, "codex", config),
   );
   if (commentsForReview.length === 0) return "pass";
 
@@ -97,16 +106,24 @@ export function classifyCodexNativeReview(review, reviewComments = [], headSha, 
   return Math.min(...priorities) <= 2 ? "fail" : "pass";
 }
 
-export function latestCodexNativeReviewResult(reviews = [], reviewComments = [], headSha, config = {}) {
-  return reviews
-    .map((review) => ({
-      review,
-      result: classifyCodexNativeReview(review, reviewComments, headSha, config)
-    }))
-    .filter((entry) => entry.result !== null)
-    .sort((left, right) =>
-      Date.parse(right.review.submitted_at || "") - Date.parse(left.review.submitted_at || "")
-    )[0]?.result || null;
+export function latestCodexNativeReviewResult(
+  reviews = [],
+  reviewComments = [],
+  headSha,
+  config = {},
+) {
+  return (
+    reviews
+      .map((review) => ({
+        review,
+        result: classifyCodexNativeReview(review, reviewComments, headSha, config),
+      }))
+      .filter((entry) => entry.result !== null)
+      .sort(
+        (left, right) =>
+          Date.parse(right.review.submitted_at || "") - Date.parse(left.review.submitted_at || ""),
+      )[0]?.result || null
+  );
 }
 
 export function isAcceptableNativeReview(review, agent, headSha, config = {}) {
@@ -116,9 +133,11 @@ export function isAcceptableNativeReview(review, agent, headSha, config = {}) {
   const body = review.body || "";
 
   if (agent === "codex") {
-    return isTrustedReviewLogin(login, agent, config) &&
+    return (
+      isTrustedReviewLogin(login, agent, config) &&
       review.state === "APPROVED" &&
-      !containsBlockingSeverity(body, agent);
+      !containsBlockingSeverity(body, agent)
+    );
   }
 
   if (agent === "gemini") {

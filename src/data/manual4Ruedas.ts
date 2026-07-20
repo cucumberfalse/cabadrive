@@ -67,7 +67,16 @@ export type ManualPageBounds = {
   height: number;
 };
 
-export type ManualLayoutBlockType = "heading" | "body" | "list" | "tableCell" | "caption" | "callout" | "footnote" | "pageNumber" | "label";
+export type ManualLayoutBlockType =
+  | "heading"
+  | "body"
+  | "list"
+  | "tableCell"
+  | "caption"
+  | "callout"
+  | "footnote"
+  | "pageNumber"
+  | "label";
 
 export type ManualLayoutBlock = {
   id: string;
@@ -107,7 +116,10 @@ export type ManualPageLayout = {
     id: string;
     purpose: "replace_visible_source_text_with_russian_layout";
     role?: string;
-    sourceGeometry?: "source_page_text_region" | "source_page_caption_region" | "source_page_label_region";
+    sourceGeometry?:
+      | "source_page_text_region"
+      | "source_page_caption_region"
+      | "source_page_label_region";
     bounds: ManualPageBounds;
     fill: string;
     opacity: number;
@@ -250,9 +262,15 @@ export function manualManifestSummary(manifest: ManualRuManifest = manual4Ruedas
   return {
     pages: manifest.pages.length,
     expectedPages: manifest.source.pageCount,
-    localAssets: manifest.pages.filter((page) => page.visualAsset.localPath.startsWith("content/assets/")).length,
-    reusedTranslations: manifest.pages.filter((page) => page.translation.status === "reused_primary_source_chunk").length,
-    visualTextTranslations: manifest.pages.filter((page) => page.translation.status === "manual_visual_text").length
+    localAssets: manifest.pages.filter((page) =>
+      page.visualAsset.localPath.startsWith("content/assets/"),
+    ).length,
+    reusedTranslations: manifest.pages.filter(
+      (page) => page.translation.status === "reused_primary_source_chunk",
+    ).length,
+    visualTextTranslations: manifest.pages.filter(
+      (page) => page.translation.status === "manual_visual_text",
+    ).length,
   };
 }
 
@@ -272,7 +290,9 @@ export function assertManualManifestRuntimeShape(manifest: ManualRuManifest = ma
       throw new Error(`Manual page ${expectedPageNumber} is out of order.`);
     }
     if (!page.visualAsset.localPath.startsWith("content/assets/")) {
-      throw new Error(`Manual page ${expectedPageNumber} visual asset is not a local content asset.`);
+      throw new Error(
+        `Manual page ${expectedPageNumber} visual asset is not a local content asset.`,
+      );
     }
     if (!page.translation.fullTranslationRu.trim()) {
       throw new Error(`Manual page ${expectedPageNumber} Russian translation is missing.`);
@@ -284,7 +304,7 @@ export function assertManualManifestRuntimeShape(manifest: ManualRuManifest = ma
 export function assertManualLayoutRuntimeShape(
   manifest: ManualRuManifest = manual4RuedasRu,
   layout: ManualLayoutManifest = manual4RuedasLayoutRu,
-  navigation: ManualNavigationManifest = manual4RuedasNavigationRu
+  navigation: ManualNavigationManifest = manual4RuedasNavigationRu,
 ) {
   assertManualManifestRuntimeShape(manifest);
   if (layout.schema !== "cabadrive-manual-layout-ru.v1" || layout.locale !== "ru") {
