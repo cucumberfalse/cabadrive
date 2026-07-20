@@ -20,6 +20,7 @@ const {
   ANSWER_LIMIT,
   PROGRESS_BACKUP_KEY,
   PROGRESS_KEY,
+  PROGRESS_RECOVERY_KEY,
   createProgressStore,
   emptyProgress,
   mistakesFromProgress,
@@ -204,6 +205,38 @@ test("import/export is canonical and invalid input is atomic", () => {
   );
   imported.dispatch({ type: "reset" });
   assert.deepEqual(imported.getSnapshot(), emptyProgress());
+});
+
+test("reset clears the primary, migration backup, and recovery diagnostic keys", () => {
+  const raw = JSON.stringify({ answers: [answer(1)], difficultQuestionIds: [], examAttempts: [] });
+  const storage = new FakeStorage({ [PROGRESS_KEY]: raw, [PROGRESS_RECOVERY_KEY]: "{}" });
+  const store = createProgressStore(storage);
+  assert.equal(storage.getItem(PROGRESS_BACKUP_KEY), raw);
+  store.dispatch({ type: "reset" });
+  assert.equal(storage.getItem(PROGRESS_BACKUP_KEY), null);
+  assert.equal(storage.getItem(PROGRESS_RECOVERY_KEY), null);
+  assert.deepEqual(store.getSnapshot(), emptyProgress());
+});
+
+test("rejects zero-wrong aggregate whose last pruned answer is incorrect", () => {
+  const badStat = {
+    questionId: "q-9",
+    wrong: 0,
+    firstSeenOrder: 0,
+    lastPrunedAnswer: { ...answer(9), questionId: "q-9", isCorrect: false },
+  };
+  assert.equal(
+    parseImportedProgress(JSON.stringify(v2({ prunedAnswerStats: [badStat] }))),
+    undefined,
+  );
+  const goodStat = {
+    ...badStat,
+    lastPrunedAnswer: { ...badStat.lastPrunedAnswer, isCorrect: true },
+  };
+  assert.notEqual(
+    parseImportedProgress(JSON.stringify(v2({ prunedAnswerStats: [goodStat] }))),
+    undefined,
+  );
 });
 
 test("persisted answers are canonicalized and extra enumerable fields are dropped", () => {

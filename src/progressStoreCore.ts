@@ -116,7 +116,8 @@ function stat(value: unknown): value is PrunedAnswerStat {
     Number.isSafeInteger(item.firstSeenOrder) &&
     item.firstSeenOrder! >= 0 &&
     answer(item.lastPrunedAnswer) &&
-    item.lastPrunedAnswer!.questionId === item.questionId,
+    item.lastPrunedAnswer!.questionId === item.questionId &&
+    (item.wrong! > 0 || item.lastPrunedAnswer!.isCorrect),
   );
 }
 function sortedStats(stats: PrunedAnswerStat[]) {
@@ -414,7 +415,16 @@ export function createProgressStore(storage: StorageLike) {
         answers: [...state.answers, ...action.answers.map(cloneAnswer)],
         examAttempts: [...state.examAttempts, { ...action.attempt }],
       });
-    if (action.type === "reset") state = empty();
+    if (action.type === "reset") {
+      state = empty();
+      pendingV1Backup = undefined;
+      try {
+        storage.removeItem(PROGRESS_BACKUP_KEY);
+        storage.removeItem(PROGRESS_RECOVERY_KEY);
+      } catch {
+        /* auxiliary key cleanup is best effort */
+      }
+    }
     persist(action.type);
     notify();
     return true;
