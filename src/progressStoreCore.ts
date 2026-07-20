@@ -87,6 +87,7 @@ function answer(value: unknown): value is ProgressAnswer {
     item &&
     nonEmpty(item.questionId) &&
     typeof item.selectedAnswerId === "string" &&
+    (item.selectedAnswerId.length > 0 || item.mode === "exam") &&
     typeof item.isCorrect === "boolean" &&
     nonEmpty(item.answeredAt) &&
     (item.mode === "learning" || item.mode === "exam" || item.mode === "mistakes"),

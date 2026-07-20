@@ -247,6 +247,13 @@ test("rejects zero-wrong aggregate whose last pruned answer is incorrect", () =>
   );
 });
 
+test("empty selectedAnswerId is accepted only for exam skips, not learning or mistakes", () => {
+  const learningEmpty = { ...answer(1), selectedAnswerId: "", mode: "learning" };
+  assert.equal(parseImportedProgress(JSON.stringify(v2({ answers: [learningEmpty] }))), undefined);
+  const examSkip = { ...answer(2), selectedAnswerId: "", mode: "exam", isCorrect: false };
+  assert.notEqual(parseImportedProgress(JSON.stringify(v2({ answers: [examSkip] }))), undefined);
+});
+
 test("persisted answers are canonicalized and extra enumerable fields are dropped", () => {
   const polluted = { ...answer(1), injectedField: "should-not-survive", bloat: [1, 2, 3] };
   const raw = JSON.stringify(v2({ answers: [polluted] }));
