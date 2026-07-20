@@ -25,11 +25,11 @@ const pendingValues = new Set([
   "WAITING",
   "pending",
 ]);
-const supportedMergeMethods = new Set(["squash", "merge"]);
+const supportedMergeMethods = new Set(["squash"]);
 
 export function resolveMergeMethod(value = "squash") {
   if (!supportedMergeMethods.has(value)) {
-    throw new Error(`Unsupported merge method: ${value || "(empty)"}. Expected squash or merge.`);
+    throw new Error(`Unsupported merge method: ${value || "(empty)"}. Expected squash.`);
   }
   return value;
 }

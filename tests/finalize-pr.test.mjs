@@ -202,10 +202,10 @@ test("finalization gate passes only with current head, green required checks, an
   assert.deepEqual(result.blockers, []);
 });
 
-test("finalizer defaults to squash and accepts only explicit squash or merge methods", () => {
+test("finalizer accepts only the repository squash merge method", () => {
   assert.equal(resolveMergeMethod(), "squash");
   assert.equal(resolveMergeMethod("squash"), "squash");
-  assert.equal(resolveMergeMethod("merge"), "merge");
+  assert.throws(() => resolveMergeMethod("merge"), /Unsupported merge method: merge/);
   assert.throws(() => resolveMergeMethod("rebase"), /Unsupported merge method: rebase/);
   assert.throws(() => resolveMergeMethod(""), /Unsupported merge method/);
 });
@@ -226,17 +226,21 @@ test("merge argument builder preserves head guard and selected method", () => {
     "--match-head-commit",
     "a".repeat(40),
   ]);
-  assert.deepEqual(buildMergeArgs({ ...common, mergeMethod: "merge", auto: true }), [
+  assert.deepEqual(buildMergeArgs({ ...common, auto: true }), [
     "pr",
     "merge",
     "209",
     "--repo",
     "cucumberfalse/cabadrive",
-    "--merge",
+    "--squash",
     "--match-head-commit",
     "a".repeat(40),
     "--auto",
   ]);
+  assert.throws(
+    () => buildMergeArgs({ ...common, mergeMethod: "merge" }),
+    /Unsupported merge method: merge/,
+  );
 });
 
 test("dry-run summary exposes the selected merge method", () => {
@@ -246,7 +250,7 @@ test("dry-run summary exposes the selected merge method", () => {
       repo: "cucumberfalse/cabadrive",
       prNumber: "209",
       headSha: "b".repeat(40),
-      mergeMethod: "merge",
+      mergeMethod: "squash",
       featurePath: "specs/044-quality-tooling",
       pendingChecks: [],
     }),
@@ -255,7 +259,7 @@ test("dry-run summary exposes the selected merge method", () => {
       repo: "cucumberfalse/cabadrive",
       pr: 209,
       headSha: "b".repeat(40),
-      mergeMethod: "merge",
+      mergeMethod: "squash",
       featurePath: "specs/044-quality-tooling",
       pendingChecks: [],
     },
