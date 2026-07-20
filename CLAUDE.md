@@ -43,8 +43,6 @@ Claude Code is the default implementation agent unless repository policy says ot
   `pnpm run format:check` for formatting verification. `pnpm run format` is
   intentionally limited to its explicit code allowlist; do not widen it to the
   repository root or governed content/manual sources.
-- Use `git blame --ignore-revs-file .git-blame-ignore-revs <path>` when the
-  mechanical formatting migration obscures code history.
 - Never merge while required checks are queued, running, red, or missing; while blocking review findings or conflicts remain; while process memory is stale; while acceptance evidence is missing; while Implementation Agent feedback lacks Architect disposition; or before required final Architect validation and final Analyst validation have passed.
 - Keep commit subjects short, conventional, and focused.
 - Do not add abstractions for single-use logic without a current need documented in `plan.md`.

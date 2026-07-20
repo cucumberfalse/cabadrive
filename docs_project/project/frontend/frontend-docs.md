@@ -73,9 +73,6 @@ explicit code allowlist. Governed manual TypeScript, bundled content,
 documentation, licenses, validation evidence, images, archives, and generated
 artifacts are protected by formatter ignores and remain outside that scope.
 
-For history inspection across the repository-wide mechanical formatting commit,
-use `git blame --ignore-revs-file .git-blame-ignore-revs <path>`.
-
 ## Planned Structure
 
 ```text

@@ -16,9 +16,3 @@ Use `pnpm run typecheck`, `pnpm run lint`, and `pnpm run format:check` for focus
 checks. `pnpm run quality:fast` combines typecheck and lint. `pnpm run format`
 formats only the explicit code allowlist; governed manual sources, content,
 documentation, licenses, evidence, images, and generated artifacts are excluded.
-
-When investigating history across the mechanical formatting migration, use:
-
-```bash
-git blame --ignore-revs-file .git-blame-ignore-revs <path>
-```
