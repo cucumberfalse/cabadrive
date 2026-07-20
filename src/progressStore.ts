@@ -1,11 +1,21 @@
 import { useSyncExternalStore } from "react";
-import { createProgressStore, type ProgressAction, type RecoveryEvent } from "./progressStoreCore";
+import {
+  createProgressStore,
+  type ProgressAction,
+  type RecoveryEvent,
+  type StorageLike,
+} from "./progressStoreCore";
 
 export * from "./progressStoreCore";
 
-const unavailableStorage = {
+// When the browser has no usable localStorage (disabled by privacy/sandbox
+// settings), writes must fail so the store surfaces a storageWriteFailed
+// recovery event instead of silently reporting success and losing data on reload.
+const unavailableStorage: StorageLike = {
   getItem: () => null,
-  setItem: () => undefined,
+  setItem: () => {
+    throw new Error("Browser storage is unavailable");
+  },
   removeItem: () => undefined,
 };
 function currentBrowserStorage() {
