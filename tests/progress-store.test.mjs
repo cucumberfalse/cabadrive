@@ -259,20 +259,44 @@ test("empty selectedAnswerId is accepted only for exam skips, not learning or mi
   );
 });
 
-test("persisted answers are canonicalized and extra enumerable fields are dropped", () => {
+test("persisted answers, attempts, and aggregates are canonicalized and extra fields dropped", () => {
   const polluted = { ...answer(1), injectedField: "should-not-survive", bloat: [1, 2, 3] };
-  const raw = JSON.stringify(v2({ answers: [polluted] }));
+  const pollutedAttempt = { ...attempt, injectedAttempt: "nope" };
+  const pollutedStat = {
+    questionId: "q-5",
+    wrong: 1,
+    firstSeenOrder: 0,
+    lastPrunedAnswer: { ...answer(5), questionId: "q-5", isCorrect: false },
+    injectedStat: "nope",
+  };
+  const raw = JSON.stringify(
+    v2({ answers: [polluted], examAttempts: [pollutedAttempt], prunedAnswerStats: [pollutedStat] }),
+  );
   const store = createProgressStore(new FakeStorage({ [PROGRESS_KEY]: raw }));
   const exported = store.exportProgress();
-  assert.equal(exported.includes("injectedField"), false);
-  assert.equal(exported.includes("bloat"), false);
-  const [stored] = JSON.parse(exported).answers;
-  assert.deepEqual(Object.keys(stored).sort(), [
+  for (const leaked of ["injectedField", "bloat", "injectedAttempt", "injectedStat"]) {
+    assert.equal(exported.includes(leaked), false);
+  }
+  const parsed = JSON.parse(exported);
+  assert.deepEqual(Object.keys(parsed.answers[0]).sort(), [
     "answeredAt",
     "isCorrect",
     "mode",
     "questionId",
     "selectedAnswerId",
+  ]);
+  assert.deepEqual(Object.keys(parsed.examAttempts[0]).sort(), [
+    "finishedAt",
+    "id",
+    "passed",
+    "score",
+    "total",
+  ]);
+  assert.deepEqual(Object.keys(parsed.prunedAnswerStats[0]).sort(), [
+    "firstSeenOrder",
+    "lastPrunedAnswer",
+    "questionId",
+    "wrong",
   ]);
 });
 

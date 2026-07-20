@@ -64,15 +64,25 @@ const cloneAnswer = (answer: ProgressAnswer): ProgressAnswer => ({
   answeredAt: answer.answeredAt,
   mode: answer.mode,
 });
+const cloneAttempt = (attempt: ExamAttempt): ExamAttempt => ({
+  id: attempt.id,
+  finishedAt: attempt.finishedAt,
+  score: attempt.score,
+  passed: attempt.passed,
+  total: attempt.total,
+});
+const cloneStat = (stat: PrunedAnswerStat): PrunedAnswerStat => ({
+  questionId: stat.questionId,
+  wrong: stat.wrong,
+  lastPrunedAnswer: cloneAnswer(stat.lastPrunedAnswer),
+  firstSeenOrder: stat.firstSeenOrder,
+});
 const clone = (state: ProgressV2): ProgressV2 => ({
   version: 2,
   answers: state.answers.map(cloneAnswer),
   difficultQuestionIds: [...state.difficultQuestionIds],
-  examAttempts: state.examAttempts.map((attempt) => ({ ...attempt })),
-  prunedAnswerStats: state.prunedAnswerStats.map((stat) => ({
-    ...stat,
-    lastPrunedAnswer: cloneAnswer(stat.lastPrunedAnswer),
-  })),
+  examAttempts: state.examAttempts.map(cloneAttempt),
+  prunedAnswerStats: state.prunedAnswerStats.map(cloneStat),
 });
 
 export function emptyProgress(): ProgressV2 {
@@ -146,10 +156,7 @@ export function foldPrefix(state: ProgressV2, count: number): ProgressV2 {
   const removed = state.answers.slice(0, Math.max(0, Math.min(count, state.answers.length)));
   if (!removed.length) return clone(state);
   const stats = new Map(
-    sortedStats(state.prunedAnswerStats).map((item) => [
-      item.questionId,
-      { ...item, lastPrunedAnswer: cloneAnswer(item.lastPrunedAnswer) },
-    ]),
+    sortedStats(state.prunedAnswerStats).map((item) => [item.questionId, cloneStat(item)]),
   );
   let nextOrder = Math.max(-1, ...[...stats.values()].map((item) => item.firstSeenOrder)) + 1;
   for (const item of removed) {
@@ -221,11 +228,8 @@ function strictV2(value: unknown): ProgressV2 | undefined {
     version: 2,
     answers: item.answers.map(cloneAnswer),
     difficultQuestionIds: [...item.difficultQuestionIds],
-    examAttempts: item.examAttempts.map((entry) => ({ ...entry })),
-    prunedAnswerStats: item.prunedAnswerStats.map((entry) => ({
-      ...entry,
-      lastPrunedAnswer: cloneAnswer(entry.lastPrunedAnswer),
-    })),
+    examAttempts: item.examAttempts.map(cloneAttempt),
+    prunedAnswerStats: item.prunedAnswerStats.map(cloneStat),
   });
 }
 
@@ -245,13 +249,10 @@ function recoverLocal(value: unknown): {
           .filter((id, index, all) => all.indexOf(id) === index)
       : [];
     const attempts = Array.isArray(item.examAttempts)
-      ? item.examAttempts.filter(attempt).map((entry) => ({ ...entry }))
+      ? item.examAttempts.filter(attempt).map(cloneAttempt)
       : [];
     const aggregate = validStats(item.prunedAnswerStats)
-      ? item.prunedAnswerStats.map((entry) => ({
-          ...entry,
-          lastPrunedAnswer: cloneAnswer(entry.lastPrunedAnswer),
-        }))
+      ? item.prunedAnswerStats.map(cloneStat)
       : [];
     const state = pruneToLimit({
       version: 2,
@@ -271,7 +272,7 @@ function recoverLocal(value: unknown): {
         .filter((id, index, all) => all.indexOf(id) === index)
     : [];
   const attempts = Array.isArray(item.examAttempts)
-    ? item.examAttempts.filter(attempt).map((entry) => ({ ...entry }))
+    ? item.examAttempts.filter(attempt).map(cloneAttempt)
     : [];
   const recovered =
     !Array.isArray(item.answers) ||
@@ -414,7 +415,7 @@ export function createProgressStore(storage: StorageLike) {
       state = pruneToLimit({
         ...clone(state),
         answers: [...state.answers, ...action.answers.map(cloneAnswer)],
-        examAttempts: [...state.examAttempts, { ...action.attempt }],
+        examAttempts: [...state.examAttempts, cloneAttempt(action.attempt)],
       });
     if (action.type === "reset") {
       state = empty();
