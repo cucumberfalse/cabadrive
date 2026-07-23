@@ -1517,6 +1517,63 @@ test("an attempt that expires before the exam tab opens clears the leave guard a
   expect(prevented).toBe(false);
 });
 
+test("resetting progress during an exam clears the attempt and disarms the guard", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await page.getByRole("button", { name: /Экзамен/ }).click();
+  await page.getByRole("button", { name: "Начать" }).click();
+  await page.getByRole("button", { name: "Пропустить" }).click();
+  await expect(page.getByText("2 / 40")).toBeVisible();
+  expect(
+    await page.evaluate(() => localStorage.getItem("cabadrive.exam-attempt.v1")),
+  ).not.toBeNull();
+  // Reset progress from the header while mid-attempt.
+  await confirmProgressReset(page);
+  // ExamView remounts to a clean start screen and the exam-attempt key is gone.
+  await expect(page.getByRole("button", { name: "Начать" })).toBeVisible();
+  await expect(page.getByText("2 / 40")).toHaveCount(0);
+  expect(await page.evaluate(() => localStorage.getItem("cabadrive.exam-attempt.v1"))).toBeNull();
+  // Leaving no longer prompts and beforeunload is disarmed.
+  await page.getByRole("button", { name: /Ошибки/ }).click();
+  await expect(page.getByRole("heading", { name: "Прервать экзамен?" })).toHaveCount(0);
+  await expect(page.getByRole("heading", { name: "Ошибки", exact: true })).toBeVisible();
+  const prevented = await page.evaluate(() => {
+    const event = new Event("beforeunload", { cancelable: true });
+    window.dispatchEvent(event);
+    return event.defaultPrevented;
+  });
+  expect(prevented).toBe(false);
+});
+
+test("resuming after the deadline discards the attempt instead of grading it", async ({ page }) => {
+  await page.clock.install({ time: new Date("2026-01-01T00:00:00Z") });
+  await page.goto("/");
+  await page.getByRole("button", { name: /Экзамен/ }).click();
+  await page.getByRole("button", { name: "Начать" }).click();
+  await page.getByRole("button", { name: "Пропустить" }).click();
+  await expect(page.getByText("2 / 40")).toBeVisible();
+  await page.reload();
+  await page.getByRole("button", { name: /Экзамен/ }).click();
+  await expect(page.getByText(/Продолжить попытку/)).toBeVisible();
+  // Leave the resume prompt open until the saved deadline passes.
+  await page.clock.runFor(46 * 60 * 1000);
+  await page.getByRole("button", { name: "Продолжить" }).click();
+  // The expired snapshot is discarded: clean start screen, no graded result
+  // (the result screen would say "…сдан"/"Нужно повторить"; the start screen's
+  // "Пробный экзамен" heading must not be mistaken for it).
+  await expect(page.getByRole("button", { name: "Начать" })).toBeVisible();
+  await expect(page.getByText(/Пробный экзамен сдан|Нужно повторить/)).toHaveCount(0);
+  await expect(page.locator(".result-panel")).toHaveCount(0);
+  expect(await page.evaluate(() => localStorage.getItem("cabadrive.exam-attempt.v1"))).toBeNull();
+  const finishedAttempts = await page.evaluate(
+    () =>
+      JSON.parse(localStorage.getItem("cabadrive.progress.v1") || '{"examAttempts":[]}')
+        .examAttempts.length,
+  );
+  expect(finishedAttempts).toBe(0);
+});
+
 test("vocabulary and guide are available", async ({ page }) => {
   await page.goto("/");
   await page.getByRole("button", { name: /Словарь/ }).click();

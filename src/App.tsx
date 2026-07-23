@@ -1209,6 +1209,17 @@ function ExamView({
 
   function resume() {
     if (!savedAttempt) return;
+    // The resume prompt may have sat open past the deadline: re-check before
+    // entering the active phase, otherwise the timer effect would immediately
+    // grade a "finished" attempt from only the partial saved answers. An expired
+    // snapshot is discarded exactly like the on-mount path.
+    if (savedAttempt.deadline <= Date.now()) {
+      if (storage) clearExamAttempt(storage);
+      setSavedAttempt(null);
+      onAttemptActiveChange(false);
+      setPhase("idle");
+      return;
+    }
     const questions = savedAttempt.questionIds.map((id) => questionById.get(id)!);
     finishGuard.current = false;
     setExamQuestions(questions);
@@ -5227,6 +5238,9 @@ export function App() {
     return readExamAttempt(storage, { now: Date.now(), validQuestionIds }) !== null;
   });
   const [pendingLeaveView, setPendingLeaveView] = useState<View | undefined>(undefined);
+  // Bumped whenever progress is reset/replaced so a mounted ExamView remounts and
+  // stops running (or re-persisting) an attempt that belonged to the old profile.
+  const [examResetNonce, setExamResetNonce] = useState(0);
   const routeScrollKey = useMemo(
     () =>
       `${view}:${view === "pandemia" ? (selectedManualSectionId ?? selectedIntroductionId) : ""}`,
@@ -5308,10 +5322,21 @@ export function App() {
     setResetDialogOpen(true);
   }
 
+  // Resetting or replacing the progress store invalidates any active exam
+  // attempt (it belongs to the old profile): drop its dedicated key + guard flag
+  // and remount ExamView so a reload never offers to resume a deleted attempt and
+  // the mounted view stops persisting into the new profile.
+  function discardActiveExamAttempt() {
+    if (examStorage) clearExamAttempt(examStorage);
+    setExamAttemptActive(false);
+    setExamResetNonce((nonce) => nonce + 1);
+  }
+
   function confirmReset() {
     const session = safeSessionStorage();
     const undoSaved = session ? saveUndoSnapshot(session, exportProgress()) : false;
     dispatchProgress({ type: "reset" });
+    discardActiveExamAttempt();
     setResetDialogOpen(false);
     setHeaderNotice({ kind: undoSaved ? "undo" : "undoUnavailable" });
   }
@@ -5325,6 +5350,7 @@ export function App() {
     }
     if (dispatchProgress({ type: "importProgress", raw: snapshot })) {
       clearUndoSnapshot(session);
+      discardActiveExamAttempt();
       setHeaderNotice({ kind: "restored" });
     } else {
       setHeaderNotice({ kind: "importError" });
@@ -5382,6 +5408,7 @@ export function App() {
     const imported = dispatchProgress({ type: "importProgress", raw: importCandidate.raw });
     setImportCandidate(undefined);
     if (imported) {
+      discardActiveExamAttempt();
       setHeaderNotice({ kind: undoSaved ? "undo" : "undoUnavailable" });
       return;
     }
@@ -5647,7 +5674,11 @@ export function App() {
 
       {view === "learn" && <LearnView progress={progress} />}
       {view === "exam" && (
-        <ExamView onAttemptActiveChange={setExamAttemptActive} storage={examStorage} />
+        <ExamView
+          key={examResetNonce}
+          onAttemptActiveChange={setExamAttemptActive}
+          storage={examStorage}
+        />
       )}
       {view === "mistakes" && <MistakesView progress={progress} />}
       {view === "vocabulary" && <VocabularyView />}

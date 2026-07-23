@@ -165,6 +165,48 @@ test("parseExamAttempt rejects more answers than questions", () => {
   assert.equal(parseExamAttempt(raw, opts), null);
 });
 
+test("parseExamAttempt rejects answers that do not line up with the question sequence", () => {
+  // An answer for q-2 sitting at index 0 (where q-1 is expected) would skip a real
+  // question on resume and let finishExam record a foreign answer into progress.
+  const misaligned = JSON.stringify(
+    validSnapshot({ questionIds: ["q-1", "q-2", "q-3"], answers: [examAnswer("q-2", true)] }),
+  );
+  assert.equal(parseExamAttempt(misaligned, opts), null);
+  // The second answer is out of order.
+  const secondOutOfOrder = JSON.stringify(
+    validSnapshot({
+      questionIds: ["q-1", "q-2", "q-3"],
+      answers: [examAnswer("q-1", true), examAnswer("q-3", false)],
+    }),
+  );
+  assert.equal(parseExamAttempt(secondOutOfOrder, opts), null);
+  // A non-exam-mode answer in the sequence is rejected (persisted exam answers are
+  // always exam-mode).
+  const learningInSequence = JSON.stringify(
+    validSnapshot({
+      questionIds: ["q-1", "q-2", "q-3"],
+      answers: [
+        {
+          questionId: "q-1",
+          selectedAnswerId: "a-1",
+          isCorrect: true,
+          answeredAt: "2026-01-01T00:00:05.000Z",
+          mode: "learning",
+        },
+      ],
+    }),
+  );
+  assert.equal(parseExamAttempt(learningInSequence, opts), null);
+  // In-sequence exam answers are accepted.
+  const aligned = JSON.stringify(
+    validSnapshot({
+      questionIds: ["q-1", "q-2", "q-3"],
+      answers: [examAnswer("q-1", true), examAnswer("q-2", false)],
+    }),
+  );
+  assert.notEqual(parseExamAttempt(aligned, opts), null);
+});
+
 test("parseExamAttempt rejects a terminal snapshot (every question already answered)", () => {
   // A finished attempt whose key survived (clear failed / tab killed after the
   // last answer) must not be resumable: restoring position = answers.length would

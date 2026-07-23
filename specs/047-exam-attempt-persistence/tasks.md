@@ -315,6 +315,57 @@ Implementation Agent добавляет feedback-пункты сюда; Architec
     слайса; поведенческая гарантия A7 (миграция без ослабления) соблюдена. Никакой
     отдельной задачи/тикета не требуется — принято как есть.
 
+- **[Codex P2 findings on PR #212 — dispositions; fixed at content head
+  `15ad01ac`]** Four AI-review findings from Codex, dispositioned here; the fix
+  commit `15ad01ac` supersedes the prior effective content head `1a3a532b`.
+
+  - **Finding A / Codex #1+#3 (ExamView mount — parent leave-guard flag lingered
+    on a clean start screen): ACCEPT-FIXED.** Root cause: `App` lazily seeds
+    `examAttemptActive=true` from a valid-at-load saved attempt, but that attempt
+    can expire (or be terminal/broken) between App's seed read and ExamView's
+    mount; the old mount effect only cleared the storage key, never the parent
+    flag, so the leave guard + `beforeunload` stayed armed on the idle start
+    screen. Fix (verified `git diff 6eb02897..15ad01ac -- src/App.tsx`): the
+    mount effect now calls `onAttemptActiveChange(true)` when a resumable attempt
+    is present and `onAttemptActiveChange(false)` (plus `clearExamAttempt`) when
+    it is absent/broken/expired/terminal — reconciling the parent flag with the
+    resolved phase (FR-A5: guard only while an attempt is genuinely live). Codex
+    #1 and #3 share this single root cause. New e2e "an attempt that expires
+    before the exam tab opens clears the leave guard and beforeunload" proves it
+    in both projects. No task/ticket needed — fixed in this cycle.
+
+  - **Finding B / Codex #2 (`parseExamAttempt` resumed a terminal snapshot →
+    `current.id` crash): ACCEPT-FIXED.** A fully-answered-but-uncleared snapshot
+    (clear failed / tab killed in the window between the last `record` persist and
+    `finish`'s `clearExamAttempt`) would resume with `position = answers.length =
+    questionIds.length`, so `current = examQuestions[position]` is `undefined` and
+    the next render dereferences `current.id`. Fix (verified `git diff
+    6eb02897..15ad01ac -- src/examAttemptStorage.ts`): the resumability invariant
+    tightened from `answers.length > questionIds.length` to `answers.length >=
+    questionIds.length`, so a terminal snapshot is discarded (→ clean start
+    screen) instead of resumed. New unit test "parseExamAttempt rejects a terminal
+    snapshot" plus its just-below-terminal boundary (still resumable) prove it.
+    Coherent with persist-then-finish ordering. No task/ticket needed — fixed in
+    this cycle.
+
+  - **Finding 4 (tasks.md T018 checkbox — final Analyst validation shown both done
+    and pending): ACCEPT — reconciled.** The Analyst DID run and recorded
+    `Analyst validated effective content head: 1a3a532b...` in
+    `feature-request.md:176`, while the T018 checkbox here read `[ ]` — the
+    contradiction Codex flagged. Reconciliation: **both** the prior Architect
+    (T017) and Analyst (T018) validations were against `1a3a532b`, which the
+    `15ad01ac` behavioral fix now **supersedes**, so both prior passes are STALE.
+    T017 is re-run against `15ad01ac` in this pass (see Final Architect
+    Validation). T018 is left **`[ ]` (pending)** — and that is now the *correct,
+    non-contradictory* state: a fresh Analyst pass against the current head
+    `15ad01ac` is genuinely required (Orchestrator to route it); the `1a3a532b`
+    Analyst record in `feature-request.md` is documented below as superseded.
+    (feature-request.md is Analyst-owned — not edited here; the fresh Analyst pass
+    will update it.) No other tasks.md checkbox contradicts reality:
+    T001–T012 stay `[x]` (Impl done); T013–T015 stay `[ ]` (review/follow-up folded
+    into these Codex dispositions and the Impl fixes); T016 and T019 stay `[ ]`
+    (cycle-set record + merge/finalization — Orchestrator-owned, not yet done).
+
 ## Verification Evidence (Evidence Log)
 
 Implementation Agent записывает команду → фактический результат → SHA кандидата.
@@ -327,10 +378,11 @@ Cycle PR set.
 
 - `node --test tests/exam-attempt.test.mjs` — test-first: **fail** до реализации
   модуля (`ERR_MODULE_NOT_FOUND` / `ERR_TEST_FAILURE`, tests 1 / fail 1). После
-  реализации `src/examAttemptStorage.ts`: **pass 18 / fail 0** (18 test(); 17
-  исходных + 1 terminal-snapshot rejection из Codex-фикса Finding B).
-- `pnpm run test` — `node --test tests/*.test.mjs`: **tests 549, pass 549,
-  fail 0** (базис до слайса: **531**; после: **549** = +18 из
+  реализации `src/examAttemptStorage.ts`: **pass 19 / fail 0** (19 test(); 17
+  исходных + terminal-snapshot rejection (Codex Finding B) + answer-sequence
+  rejection (Codex Finding C)).
+- `pnpm run test` — `node --test tests/*.test.mjs`: **tests 550, pass 550,
+  fail 0** (базис до слайса: **531**; после: **550** = +19 из
   `tests/exam-attempt.test.mjs`).
 - `pnpm run quality:fast` — typecheck (`tsc --noEmit`) + eslint
   (`--max-warnings 0`): **pass** (0 ошибок, 0 предупреждений).
@@ -338,11 +390,13 @@ Cycle PR set.
 - `pnpm run build:app` — **pass** (vite build `✓ built in ~4s`; service worker
   сгенерирован); новых зависимостей нет.
 - `pnpm run test:e2e` (эквивалент: `build:app` + `playwright test`, оба проекта)
-  — **134 passed, 0 failed** (базис 120 = 60×2; после: **134 = 67×2**, +14 =
-  7 новых test() × 2 проекта). Разбивка: Desktop Chromium **67** + Pixel 7 **67**.
+  — **138 passed, 0 failed** (базис 120 = 60×2; после: **138 = 69×2**, +18 =
+  9 новых test() × 2 проекта). Разбивка: Desktop Chromium **69** + Pixel 7 **69**.
   Мигрированные экзамен-тесты (`:1273`, `:1301`, `~:6194`) и новые (start-screen,
-  AC-2 resume, guard, decline, beforeunload, negative, и Codex-фикс Finding A:
-  attempt-expires-before-exam-tab очищает guard/beforeunload) зелёные в обоих
+  AC-2 resume, guard, decline, beforeunload, negative, Codex Finding A:
+  attempt-expires-before-exam-tab очищает guard/beforeunload, Codex Finding D:
+  reset-во-время-экзамена очищает ключ/guard, Codex Finding E:
+  resume-после-дедлайна отбрасывает попытку без grading) зелёные в обоих
   проектах.
 - **Негативный сценарий (обязателен):** unit `parseExamAttempt` — битый/не-JSON,
   `version!=1`, дубли/пустые/неизвестные `questionIds`, невалидные `answers`,
@@ -383,16 +437,73 @@ Cycle PR set.
 - **Deviation (feedback выше, ожидается disposition):** в мигрированном e2e
   `~:6194` добавлен один шаг `click("Выйти")` после `click("Материалы")`, т.к.
   активная попытка теперь перехватывается guard'ом FR-A5; проверка не ослаблена.
+- **Codex review round 2 (findings C/D/E) — исправлено:** (C) `parseExamAttempt`
+  дополнительно требует, чтобы каждый сохранённый ответ соответствовал своей
+  позиции в `questionIds` (exam-mode + `answers[i].questionId===questionIds[i]`),
+  иначе `null`; (D) сброс/импорт прогресса (`confirmReset`, `confirmImport`,
+  `restoreFromUndo`) теперь вызывают `discardActiveExamAttempt` — очистка
+  `cabadrive.exam-attempt.v1` + `examAttemptActive=false` + remount `ExamView`
+  через `key={examResetNonce}`, чтобы смонтированная попытка не переживала сброс и
+  не переписывала ключ на следующем ответе; (E) `resume()` перепроверяет
+  `deadline > Date.now()` и отбрасывает просроченный снапшот (как on-mount) вместо
+  мгновенного grading по таймеру.
+- **Proactive audit (drift двух ключей / действия над degenerate-снапшотом):**
+  прочёсаны все точки, где могут разойтись `cabadrive.progress.v1` и
+  `cabadrive.exam-attempt.v1` либо где просроченный/вырожденный снапшот может быть
+  обработан: mount (idle/expired/broken/terminal → clear+flag false), `resume`
+  (revalidate deadline), `record` (re-persist только в active), `finish`
+  (clear+flag false), reset/import/undo (discardActiveExamAttempt). Дополнительных
+  расхождений не найдено; ничего не отложено на будущий слайс. `popstate`/
+  `hashchange` остаётся сознательным известным ограничением (см. выше).
 - Иных dead ends / accepted known issues нет.
 
 ## Final Architect Validation (Architect-owned)
 
-- **Architect validation pass: passed** — 2026-07-23T21:53:31Z (T017).
+### Current validated head (T017, re-run after Codex fix)
+
+- **Architect validation pass: passed** — 2026-07-23T22:30:54Z (T017, re-run).
+- Current effective content head: `15ad01acca6df24ae73544b6ba3a397498db5d84`
+  (PR #212 fix commit `fix(exam): clear leave-guard flag and reject terminal saved
+  attempt`, resolving Codex findings A/#1+#3 and B/#2). This SUPERSEDES the prior
+  validated head `1a3a532b` (behavioral change → prior pass stale).
+- **Architect validated effective content head: 15ad01acca6df24ae73544b6ba3a397498db5d84**
+- Incremental review `git diff 6eb02897..15ad01ac` (behavioral fix only):
+  - `src/App.tsx` — ExamView mount effect now reconciles the parent
+    `examAttemptActive` flag (`onAttemptActiveChange(true)` when a resumable
+    attempt is present, `(false)` + `clearExamAttempt` otherwise). Correct fix for
+    Finding A; guard/beforeunload no longer linger on a clean start screen.
+  - `src/examAttemptStorage.ts` — resumability invariant tightened to
+    `answers.length >= questionIds.length` → terminal snapshots discarded. Correct
+    fix for Finding B; no `current.id` crash on a resumed terminal attempt.
+  - Tests: +1 unit (terminal-rejection + boundary), +1 e2e (attempt expires before
+    exam tab → guard/beforeunload cleared). Both meaningful and targeted.
+- Whole-slice re-conformance on `ae5f9804..15ad01ac`: **FR-B1/FR-A4/FR-A5 hold**
+  (same as prior pass, unchanged by the fix except FR-A5 is now *stronger* — the
+  guard/beforeunload are correctly disarmed when no live attempt exists). Scope
+  guard intact: `git diff --stat src/progressStoreCore.ts src/progressStore.ts`
+  empty, `package.json` empty, exam-attempt key only in `examAttemptStorage.ts`,
+  no slice-3 items, pinned «Руководства» hash e2e untouched.
+- Evidence counts (updated by Impl, confirmed against reality): unit
+  `tests/exam-attempt.test.mjs` **18 `test()`**; `pnpm run test` **549**; e2e
+  `app.spec.ts` **63 `test()`** → total **67×2 = 134** scenarios. All consistent.
+- Return count unchanged (no gap): Architect return count stays 0.
+- **Reconciliation of prior stale validations (Codex Finding 4):** the prior
+  Architect (T017) and Analyst (T018) passes were both against `1a3a532b` and are
+  now **superseded**. T017 re-validated above against `15ad01ac`. T018 remains
+  pending: a **fresh Analyst pass against `15ad01ac` is required** (Orchestrator to
+  route); the superseded `1a3a532b` Analyst record in `feature-request.md:176` will
+  be updated by that fresh pass (Analyst-owned; not edited here).
+
+### Superseded — prior validated head `1a3a532b` (STALE, kept for history)
+
+- **Architect validation pass: passed** — 2026-07-23T21:53:31Z (T017, superseded
+  by the `15ad01ac` re-run above; retained as history).
 - Effective content head: `1a3a532bcb8718f0797ef8562a909a7ec3a6cfcc` (PR #212;
   branch tip `cdd922e5` is a final-validation evidence-only commit that touches
   only the Cycle PR set line in `tasks.md` — verified `git diff 1a3a532b..cdd922e5`
   changes no code/tests/behaviour, so it skips recursive role validation).
-- **Architect validated effective content head: 1a3a532bcb8718f0797ef8562a909a7ec3a6cfcc**
+- ~~**Architect validated effective content head: 1a3a532bcb8718f0797ef8562a909a7ec3a6cfcc**~~
+  (SUPERSEDED — see current validated head `15ad01ac` above).
 - Scope of validation: single-PR cycle set (PR #212), all Architect tasks and
   dispositions, guidance, open task state, process memory, and customer intent
   (FR-B1/FR-A4/FR-A5 of ТЗ-P1 usability slice 2).
