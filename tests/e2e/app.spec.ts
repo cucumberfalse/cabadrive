@@ -7537,3 +7537,248 @@ test("Manual guide full-width source image cards stay readable and avoid upscali
     "focused NO AVANZAR sign is substantially wider than the same sign inside the overview sheet",
   ).toBeGreaterThan(noAvanzarSizing.overviewFirstSignRedBounds!.width * 1.45);
 });
+
+async function storedProgressRaw(page: Page) {
+  return page.evaluate(() => localStorage.getItem("cabadrive.progress.v1"));
+}
+
+async function storedUndoSnapshot(page: Page) {
+  return page.evaluate(() => sessionStorage.getItem("cabadrive.progress.reset-undo.v1"));
+}
+
+function reviewTopicsCounter(page: Page) {
+  return page.locator(".status-strip div", { hasText: "тем для повторения" }).locator("strong");
+}
+
+function headerNotice(page: Page) {
+  return page.locator("section.progress-notice");
+}
+
+async function answerFirstQuestionWrong(page: Page) {
+  await page.goto("/");
+  await page.locator(".answer").nth(firstQuestionWrongAnswerIndex).click();
+  await expect.poll(() => storedAnswerCount(page)).toBe(1);
+  await expect(reviewTopicsCounter(page)).toHaveText("1");
+}
+
+async function confirmProgressReset(page: Page) {
+  await page.getByRole("button", { name: "Сбросить прогресс" }).click();
+  const resetDialog = page.getByRole("dialog", { name: "Сбросить прогресс?" });
+  await expect(resetDialog).toBeVisible();
+  await resetDialog.getByRole("checkbox").check();
+  await resetDialog.getByRole("button", { name: "Удалить прогресс" }).click();
+  await expect(resetDialog).not.toBeVisible();
+  await expect.poll(() => storedAnswerCount(page)).toBe(0);
+}
+
+async function importProgressFile(page: Page, contents: string, name = "progress.json") {
+  await page.locator("input[type='file']").setInputFiles({
+    name,
+    mimeType: "application/json",
+    buffer: Buffer.from(contents),
+  });
+}
+
+test("сброс прогресса без подтверждения ничего не удаляет: Отмена, Esc и клик по фону", async ({
+  page,
+}) => {
+  await answerFirstQuestionWrong(page);
+  const before = await storedProgressRaw(page);
+  expect(before).not.toBeNull();
+
+  await page.getByRole("button", { name: "Сбросить прогресс" }).click();
+  const resetDialog = page.getByRole("dialog", { name: "Сбросить прогресс?" });
+  await expect(resetDialog).toBeVisible();
+  await expect(resetDialog).toContainText("сохранённых ответов: 1");
+  await expect(resetDialog).toContainText("вопросов с ошибками: 1");
+  await expect(resetDialog).toContainText("попыток экзамена: 0");
+  await expect(resetDialog.getByRole("button", { name: "Удалить прогресс" })).toBeDisabled();
+  await resetDialog.getByRole("button", { name: "Отмена" }).click();
+  await expect(resetDialog).not.toBeVisible();
+  expect(await storedProgressRaw(page)).toBe(before);
+
+  await page.getByRole("button", { name: "Сбросить прогресс" }).click();
+  await expect(resetDialog).toBeVisible();
+  await expect(resetDialog.getByRole("checkbox")).not.toBeChecked();
+  await page.keyboard.press("Escape");
+  await expect(resetDialog).not.toBeVisible();
+  expect(await storedProgressRaw(page)).toBe(before);
+
+  await page.getByRole("button", { name: "Сбросить прогресс" }).click();
+  await expect(resetDialog).toBeVisible();
+  await page.mouse.click(2, 2);
+  await expect(resetDialog).not.toBeVisible();
+  expect(await storedProgressRaw(page)).toBe(before);
+  await expect.poll(() => storedAnswerCount(page)).toBe(1);
+  await expect(reviewTopicsCounter(page)).toHaveText("1");
+  expect(await storedUndoSnapshot(page)).toBeNull();
+});
+
+test("подтверждённый сброс очищает прогресс, а «Вернуть» восстанавливает его один раз", async ({
+  page,
+}) => {
+  await answerFirstQuestionWrong(page);
+  const before = await storedProgressRaw(page);
+  await confirmProgressReset(page);
+  await expect(reviewTopicsCounter(page)).toHaveText("0");
+
+  const notice = headerNotice(page);
+  await expect(notice).toHaveAttribute("role", "status");
+  await expect(notice).toContainText(
+    "Предыдущий прогресс сохранён — его можно вернуть до конца сессии.",
+  );
+  await notice.getByRole("button", { name: "Вернуть" }).click();
+  await expect.poll(() => storedAnswerCount(page)).toBe(1);
+  await expect(reviewTopicsCounter(page)).toHaveText("1");
+  expect(await storedProgressRaw(page)).toBe(before);
+  await expect(headerNotice(page)).toContainText("Прогресс восстановлен.");
+  await expect(page.getByRole("button", { name: "Вернуть" })).toHaveCount(0);
+  expect(await storedUndoSnapshot(page)).toBeNull();
+  await headerNotice(page).getByRole("button", { name: "Скрыть" }).click();
+  await expect(headerNotice(page)).toHaveCount(0);
+});
+
+test("перезагрузка страницы после сброса сохраняет доступность «Вернуть» в той же вкладке", async ({
+  page,
+}) => {
+  await answerFirstQuestionWrong(page);
+  await confirmProgressReset(page);
+  await page.reload();
+  await expect.poll(() => storedAnswerCount(page)).toBe(0);
+  const notice = headerNotice(page);
+  await expect(notice).toContainText(
+    "Предыдущий прогресс сохранён — его можно вернуть до конца сессии.",
+  );
+  await notice.getByRole("button", { name: "Вернуть" }).click();
+  await expect.poll(() => storedAnswerCount(page)).toBe(1);
+  await expect(reviewTopicsCounter(page)).toHaveText("1");
+});
+
+test("экспорт, сброс и импорт файла полностью восстанавливают прогресс", async ({ page }) => {
+  await answerFirstQuestionWrong(page);
+  const before = await storedProgressRaw(page);
+
+  const downloadPromise = page.waitForEvent("download");
+  await page.getByRole("button", { name: "Экспортировать прогресс" }).click();
+  const download = await downloadPromise;
+  expect(download.suggestedFilename()).toMatch(/^cabadrive-progress-\d{4}-\d{2}-\d{2}\.json$/);
+  const exported = readFileSync(await download.path(), "utf8");
+  expect(JSON.parse(exported).answers).toHaveLength(1);
+
+  await confirmProgressReset(page);
+  await headerNotice(page).getByRole("button", { name: "Скрыть" }).click();
+  await expect(reviewTopicsCounter(page)).toHaveText("0");
+
+  await importProgressFile(page, exported, download.suggestedFilename());
+  const importDialog = page.getByRole("dialog", { name: "Импортировать прогресс?" });
+  await expect(importDialog).toBeVisible();
+  await expect(importDialog).toContainText("Сейчас: 0 сохранённых ответов");
+  await expect(importDialog).toContainText("В файле: 1 сохранённых ответов");
+  await importDialog.getByRole("button", { name: "Импортировать" }).click();
+  await expect(importDialog).not.toBeVisible();
+  await expect.poll(() => storedAnswerCount(page)).toBe(1);
+  await expect(reviewTopicsCounter(page)).toHaveText("1");
+  expect(await storedProgressRaw(page)).toBe(before);
+  await expect(headerNotice(page)).toContainText(
+    "Предыдущий прогресс сохранён — его можно вернуть до конца сессии.",
+  );
+});
+
+test("импорт битого или чужого JSON не меняет прогресс и показывает понятную ошибку", async ({
+  page,
+}) => {
+  await answerFirstQuestionWrong(page);
+  const before = await storedProgressRaw(page);
+
+  await importProgressFile(page, "{broken json", "broken.json");
+  const alertNotice = headerNotice(page);
+  await expect(alertNotice).toHaveAttribute("role", "alert");
+  await expect(alertNotice).toContainText(
+    "Не удалось импортировать файл: это не корректный экспорт прогресса Cabadrive. Текущий прогресс не изменён.",
+  );
+  expect(await storedProgressRaw(page)).toBe(before);
+  await expect(page.getByRole("dialog", { name: "Импортировать прогресс?" })).not.toBeVisible();
+  await alertNotice.getByRole("button", { name: "Скрыть" }).click();
+  await expect(headerNotice(page)).toHaveCount(0);
+
+  await importProgressFile(
+    page,
+    JSON.stringify({
+      version: 99,
+      answers: [],
+      difficultQuestionIds: [],
+      examAttempts: [],
+      prunedAnswerStats: [],
+    }),
+    "foreign.json",
+  );
+  await expect(headerNotice(page)).toContainText("Не удалось импортировать файл");
+  expect(await storedProgressRaw(page)).toBe(before);
+  await headerNotice(page).getByRole("button", { name: "Скрыть" }).click();
+  await expect(headerNotice(page)).toHaveCount(0);
+  await expect.poll(() => storedAnswerCount(page)).toBe(1);
+  await expect(reviewTopicsCounter(page)).toHaveText("1");
+  await page.getByRole("button", { name: /Ошибки/ }).click();
+  await expect(page.getByRole("heading", { name: "Ошибки" })).toBeVisible();
+});
+
+test("отклонённый импорт не прячет ожидающую отмену: «Вернуть» остаётся доступной", async ({
+  page,
+}) => {
+  await answerFirstQuestionWrong(page);
+  const before = await storedProgressRaw(page);
+  await confirmProgressReset(page);
+  await expect(headerNotice(page)).toHaveAttribute("role", "status");
+  await expect(headerNotice(page).getByRole("button", { name: "Вернуть" })).toBeVisible();
+  const undoSnapshot = await storedUndoSnapshot(page);
+  expect(undoSnapshot).not.toBeNull();
+
+  // A rejected import must not destroy the pending undo affordance.
+  await importProgressFile(page, "{broken json", "broken.json");
+  await expect(headerNotice(page)).toHaveAttribute("role", "alert");
+  await expect(headerNotice(page)).toContainText("Не удалось импортировать файл");
+  expect(await storedUndoSnapshot(page)).toBe(undoSnapshot);
+  await expect.poll(() => storedAnswerCount(page)).toBe(0);
+
+  await headerNotice(page).getByRole("button", { name: "Скрыть" }).click();
+  await expect(headerNotice(page)).toHaveAttribute("role", "status");
+  const undoAfterError = headerNotice(page).getByRole("button", { name: "Вернуть" });
+  await expect(undoAfterError).toBeVisible();
+  await undoAfterError.click();
+  await expect.poll(() => storedAnswerCount(page)).toBe(1);
+  await expect(reviewTopicsCounter(page)).toHaveText("1");
+  expect(await storedProgressRaw(page)).toBe(before);
+  expect(await storedUndoSnapshot(page)).toBeNull();
+});
+
+test("диалог сброса доступен: автофокус на «Отмена», фокус заперт, Esc возвращает фокус", async ({
+  page,
+}) => {
+  await answerFirstQuestionWrong(page);
+  await page.getByRole("button", { name: "Сбросить прогресс" }).click();
+  const resetDialog = page.getByRole("dialog", { name: "Сбросить прогресс?" });
+  await expect(resetDialog).toBeVisible();
+  await expect(resetDialog.getByRole("button", { name: "Отмена" })).toBeFocused();
+  const visitedFocusStops: string[] = [];
+  for (let step = 0; step < 6; step += 1) {
+    await page.keyboard.press("Tab");
+    visitedFocusStops.push(
+      await page.evaluate(() => {
+        const active = document.activeElement;
+        if (active === document.body) return "body";
+        return active?.closest("dialog") === null
+          ? `escaped:${active?.tagName}`
+          : (active?.tagName ?? "none");
+      }),
+    );
+  }
+  // Chromium parks focus on <body> between modal wrap cycles; the trap holds as
+  // long as no interactive element outside the dialog ever receives focus.
+  expect(visitedFocusStops.filter((stop) => stop.startsWith("escaped:"))).toEqual([]);
+  expect(visitedFocusStops).toContain("INPUT");
+  expect(visitedFocusStops).toContain("BUTTON");
+  await page.keyboard.press("Escape");
+  await expect(resetDialog).not.toBeVisible();
+  await expect(page.getByRole("button", { name: "Сбросить прогресс" })).toBeFocused();
+  await expect.poll(() => storedAnswerCount(page)).toBe(1);
+});

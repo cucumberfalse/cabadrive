@@ -14,6 +14,34 @@
 10. Official Sources / `Источники`
 11. About / `О приложении`
 
+## Progress Safety Controls
+
+The app header exposes three progress-safety icon actions next to the title:
+`Экспортировать прогресс`, `Импортировать прогресс`, and `Сбросить прогресс`.
+
+- Reset never fires from a single tap. The header button opens a modal
+  confirmation dialog that lists the real counters from the current store
+  snapshot: retained saved answers (N), questions with mistakes (M — the same
+  metric as `тем для повторения` in the status strip), and exam attempts (K).
+  The destructive `Удалить прогресс` button stays disabled until the
+  `Я понимаю, что данные будут удалены` checkbox is ticked; the checkbox
+  resets every time the dialog opens. `Отмена` (autofocused), Esc, and a
+  backdrop click all close the dialog without touching stored data.
+- After a confirmed reset (or import) the previous state is written as an
+  undo snapshot to sessionStorage (`cabadrive.progress.reset-undo.v1`). A
+  status panel under the header offers `Вернуть` (one-shot restore through the
+  store import path) and `Скрыть` (explicitly discards the snapshot). The
+  snapshot survives a reload of the same tab and expires with the browser
+  session. If sessionStorage is unavailable, the reset still completes and the
+  panel explains that undo is not available.
+- Export downloads the canonical progress JSON as
+  `cabadrive-progress-<YYYY-MM-DD>.json` (local date) without confirmation.
+  Import accepts a JSON file, strictly validates it through the store's
+  import parser, and shows a replacement-confirmation dialog with current and
+  file counters before applying. An invalid or foreign file never changes the
+  current progress and produces a human-readable error panel; a valid import
+  replaces progress after confirmation and keeps the undo path available.
+
 ## Home / Onboarding
 
 - Clarifies: official Spanish text is unchanged.

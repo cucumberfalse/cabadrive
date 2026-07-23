@@ -5,6 +5,7 @@ import {
   ChevronLeft,
   ChevronRight,
   ClipboardList,
+  Download,
   ExternalLink,
   FileText,
   Flag,
@@ -15,6 +16,7 @@ import {
   RotateCcw,
   Search,
   Timer,
+  Upload,
   XCircle,
 } from "lucide-react";
 import {
@@ -95,11 +97,23 @@ import {
   shuffleQuestions,
 } from "./domain";
 import { exactTextStatusKind, exactTextStatusNote } from "./primarySourceStatus";
+import { ConfirmDialog } from "./components/ConfirmDialog";
+import {
+  IMPORT_REJECTED_MESSAGE,
+  UNDO_UNAVAILABLE_MESSAGE,
+  clearUndoSnapshot,
+  exportFileName,
+  readUndoSnapshot,
+  saveUndoSnapshot,
+} from "./progressResetSafety";
 import {
   dispatchProgress,
+  exportProgress,
   mistakesFromProgress,
+  parseImportedProgress,
   useProgress,
   type ProgressV2,
+  type StorageLike,
 } from "./progressStore";
 import { searchQuestions, searchVocabulary } from "./search";
 
@@ -5006,6 +5020,26 @@ function PrimarySourcesView() {
   );
 }
 
+// The only sessionStorage access point outside src/progressResetSafety.ts:
+// privacy modes may throw on the property read itself, so the adapter guards it.
+function safeSessionStorage(): StorageLike | undefined {
+  try {
+    return typeof window === "undefined" ? undefined : window.sessionStorage;
+  } catch {
+    return undefined;
+  }
+}
+
+type ProgressNotice = { kind: "undo" | "undoUnavailable" | "restored" | "importError" };
+
+function progressNoticeText(notice: ProgressNotice) {
+  if (notice.kind === "undo")
+    return "Предыдущий прогресс сохранён — его можно вернуть до конца сессии.";
+  if (notice.kind === "undoUnavailable") return UNDO_UNAVAILABLE_MESSAGE;
+  if (notice.kind === "restored") return "Прогресс восстановлен.";
+  return IMPORT_REJECTED_MESSAGE;
+}
+
 export function App() {
   const [view, setView] = useState<View>(() => {
     if (introductionEntryForHash(window.location.hash)) return "pandemia";
@@ -5077,8 +5111,101 @@ export function App() {
     return () => window.cancelAnimationFrame(frame);
   }, [routeScrollKey]);
 
-  function reset() {
+  const [resetDialogOpen, setResetDialogOpen] = useState(false);
+  const [resetAcknowledged, setResetAcknowledged] = useState(false);
+  const [importCandidate, setImportCandidate] = useState<
+    { raw: string; parsed: ProgressV2 } | undefined
+  >();
+  const [headerNotice, setHeaderNotice] = useState<ProgressNotice | undefined>(() => {
+    const session = safeSessionStorage();
+    return session && readUndoSnapshot(session) !== null ? { kind: "undo" } : undefined;
+  });
+  const importInputRef = useRef<HTMLInputElement>(null);
+
+  function requestReset() {
+    setResetAcknowledged(false);
+    setResetDialogOpen(true);
+  }
+
+  function confirmReset() {
+    const session = safeSessionStorage();
+    const undoSaved = session ? saveUndoSnapshot(session, exportProgress()) : false;
     dispatchProgress({ type: "reset" });
+    setResetDialogOpen(false);
+    setHeaderNotice({ kind: undoSaved ? "undo" : "undoUnavailable" });
+  }
+
+  function restoreFromUndo() {
+    const session = safeSessionStorage();
+    const snapshot = session ? readUndoSnapshot(session) : null;
+    if (!session || snapshot === null) {
+      setHeaderNotice(undefined);
+      return;
+    }
+    if (dispatchProgress({ type: "importProgress", raw: snapshot })) {
+      clearUndoSnapshot(session);
+      setHeaderNotice({ kind: "restored" });
+    } else {
+      setHeaderNotice({ kind: "importError" });
+    }
+  }
+
+  function dismissHeaderNotice() {
+    const session = safeSessionStorage();
+    if (headerNotice?.kind === "undo") {
+      // Explicit user opt-out of undo: drop the snapshot with the panel.
+      if (session) clearUndoSnapshot(session);
+      setHeaderNotice(undefined);
+      return;
+    }
+    if (headerNotice?.kind === "importError") {
+      // A rejected import never touches the snapshot; closing the error must
+      // re-surface a still-pending undo affordance rather than hide it until
+      // reload (FR-A2 undo-to-end-of-session must not be buried by an import).
+      setHeaderNotice(session && readUndoSnapshot(session) !== null ? { kind: "undo" } : undefined);
+      return;
+    }
+    setHeaderNotice(undefined);
+  }
+
+  function exportProgressFile() {
+    const blob = new Blob([exportProgress()], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = exportFileName(new Date());
+    link.click();
+    URL.revokeObjectURL(url);
+  }
+
+  async function reviewImportFile(file: File) {
+    let parsed: ProgressV2 | undefined;
+    let raw = "";
+    try {
+      raw = await file.text();
+      parsed = parseImportedProgress(raw);
+    } catch {
+      parsed = undefined;
+    }
+    if (!parsed) {
+      setHeaderNotice({ kind: "importError" });
+      return;
+    }
+    setImportCandidate({ raw, parsed });
+  }
+
+  function confirmImport() {
+    if (!importCandidate) return;
+    const session = safeSessionStorage();
+    const undoSaved = session ? saveUndoSnapshot(session, exportProgress()) : false;
+    const imported = dispatchProgress({ type: "importProgress", raw: importCandidate.raw });
+    setImportCandidate(undefined);
+    if (imported) {
+      setHeaderNotice({ kind: undoSaved ? "undo" : "undoUnavailable" });
+      return;
+    }
+    if (undoSaved && session) clearUndoSnapshot(session);
+    setHeaderNotice({ kind: "importError" });
   }
 
   function selectView(nextView: View) {
@@ -5132,16 +5259,118 @@ export function App() {
           <p className="eyebrow">Cabadrive · CABA categoria B</p>
           <h1>Тренажер теории для категории B</h1>
         </div>
-        <button
-          type="button"
-          className="icon-button"
-          onClick={reset}
-          aria-label="Сбросить прогресс"
-          title="Сбросить прогресс"
-        >
-          <RotateCcw size={20} />
-        </button>
+        <div className="header-actions">
+          <button
+            type="button"
+            className="icon-button"
+            onClick={exportProgressFile}
+            aria-label="Экспортировать прогресс"
+            title="Экспортировать прогресс"
+          >
+            <Download size={20} />
+          </button>
+          <button
+            type="button"
+            className="icon-button"
+            onClick={() => importInputRef.current?.click()}
+            aria-label="Импортировать прогресс"
+            title="Импортировать прогресс"
+          >
+            <Upload size={20} />
+          </button>
+          <button
+            type="button"
+            className="icon-button"
+            onClick={requestReset}
+            aria-label="Сбросить прогресс"
+            title="Сбросить прогресс"
+          >
+            <RotateCcw size={20} />
+          </button>
+          <input
+            ref={importInputRef}
+            type="file"
+            accept="application/json,.json"
+            hidden
+            aria-hidden="true"
+            tabIndex={-1}
+            onChange={(event) => {
+              const file = event.currentTarget.files?.[0];
+              event.currentTarget.value = "";
+              if (file) void reviewImportFile(file);
+            }}
+          />
+        </div>
       </header>
+
+      {headerNotice && (
+        <section
+          className={
+            headerNotice.kind === "importError"
+              ? "progress-notice progress-notice-error"
+              : "progress-notice"
+          }
+          role={headerNotice.kind === "importError" ? "alert" : "status"}
+        >
+          <p>{progressNoticeText(headerNotice)}</p>
+          <div className="progress-notice-actions">
+            {headerNotice.kind === "undo" && (
+              <button type="button" className="tool-button" onClick={restoreFromUndo}>
+                Вернуть
+              </button>
+            )}
+            <button type="button" className="tool-button" onClick={dismissHeaderNotice}>
+              Скрыть
+            </button>
+          </div>
+        </section>
+      )}
+
+      <ConfirmDialog
+        open={resetDialogOpen}
+        title="Сбросить прогресс?"
+        confirmLabel="Удалить прогресс"
+        onConfirm={confirmReset}
+        onCancel={() => setResetDialogOpen(false)}
+        confirmDisabled={!resetAcknowledged}
+        danger
+      >
+        <p>Будут удалены:</p>
+        <ul>
+          <li>сохранённых ответов: {progress.answers.length}</li>
+          <li>вопросов с ошибками: {mistakesFromProgress(progress).length}</li>
+          <li>попыток экзамена: {progress.examAttempts.length}</li>
+        </ul>
+        <label className="confirm-dialog-check">
+          <input
+            type="checkbox"
+            checked={resetAcknowledged}
+            onChange={(event) => setResetAcknowledged(event.currentTarget.checked)}
+          />
+          Я понимаю, что данные будут удалены
+        </label>
+      </ConfirmDialog>
+
+      <ConfirmDialog
+        open={importCandidate !== undefined}
+        title="Импортировать прогресс?"
+        confirmLabel="Импортировать"
+        onConfirm={confirmImport}
+        onCancel={() => setImportCandidate(undefined)}
+      >
+        <p>Текущий прогресс будет заменён данными из файла. До конца сессии его можно вернуть.</p>
+        <ul>
+          <li>
+            Сейчас: {progress.answers.length} сохранённых ответов,{" "}
+            {mistakesFromProgress(progress).length} вопросов с ошибками,{" "}
+            {progress.examAttempts.length} попыток экзамена
+          </li>
+          <li>
+            В файле: {importCandidate?.parsed.answers.length ?? 0} сохранённых ответов,{" "}
+            {importCandidate?.parsed.examAttempts.length ?? 0} попыток экзамена
+          </li>
+        </ul>
+      </ConfirmDialog>
 
       <StatusStrip progress={progress} />
 
