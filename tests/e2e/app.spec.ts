@@ -7722,6 +7722,35 @@ test("импорт битого или чужого JSON не меняет пр�
   await expect(page.getByRole("heading", { name: "Ошибки" })).toBeVisible();
 });
 
+test("отклонённый импорт не прячет ожидающую отмену: «Вернуть» остаётся доступной", async ({
+  page,
+}) => {
+  await answerFirstQuestionWrong(page);
+  const before = await storedProgressRaw(page);
+  await confirmProgressReset(page);
+  await expect(headerNotice(page)).toHaveAttribute("role", "status");
+  await expect(headerNotice(page).getByRole("button", { name: "Вернуть" })).toBeVisible();
+  const undoSnapshot = await storedUndoSnapshot(page);
+  expect(undoSnapshot).not.toBeNull();
+
+  // A rejected import must not destroy the pending undo affordance.
+  await importProgressFile(page, "{broken json", "broken.json");
+  await expect(headerNotice(page)).toHaveAttribute("role", "alert");
+  await expect(headerNotice(page)).toContainText("Не удалось импортировать файл");
+  expect(await storedUndoSnapshot(page)).toBe(undoSnapshot);
+  await expect.poll(() => storedAnswerCount(page)).toBe(0);
+
+  await headerNotice(page).getByRole("button", { name: "Скрыть" }).click();
+  await expect(headerNotice(page)).toHaveAttribute("role", "status");
+  const undoAfterError = headerNotice(page).getByRole("button", { name: "Вернуть" });
+  await expect(undoAfterError).toBeVisible();
+  await undoAfterError.click();
+  await expect.poll(() => storedAnswerCount(page)).toBe(1);
+  await expect(reviewTopicsCounter(page)).toHaveText("1");
+  expect(await storedProgressRaw(page)).toBe(before);
+  expect(await storedUndoSnapshot(page)).toBeNull();
+});
+
 test("диалог сброса доступен: автофокус на «Отмена», фокус заперт, Esc возвращает фокус", async ({
   page,
 }) => {

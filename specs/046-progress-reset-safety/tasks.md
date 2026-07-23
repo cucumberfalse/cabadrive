@@ -188,6 +188,18 @@
   переиспользуется и для подтверждённого импорта при недоступном
   sessionStorage — отдельная формулировка для этого угла не заводилась
   (see Known issues).
+- (Implementation, P2-фикс Codex AI Review на `52c0d318`) «Preserve undo
+  notice after rejected imports»: отклонённый импорт (битый/чужой JSON через
+  `reviewImportFile`) НЕ трогает undo-снапшот, но раньше затирал undo-notice
+  на `importError`, из-за чего после «Скрыть» кнопка «Вернуть» исчезала до
+  reload — обещанный FR-A2 undo-to-end-of-session прятался. Решение (выбран
+  вариант «восстановление после закрытия ошибки»): `dismissHeaderNotice`
+  при `kind === "importError"` не очищает снапшот, а перечитывает
+  sessionStorage и, если снапшот жив, возвращает `{ kind: "undo" }` (иначе
+  — `undefined`). Единичный notice-слот и существующая семантика
+  (успех/сброс, «Скрыть» для undo = явный отказ, недоступный sessionStorage)
+  сохранены; store не тронут. Регрессия — e2e «отклонённый импорт не прячет
+  ожидающую отмену…».
 
 ## Architect Feedback Dispositions
 
@@ -343,5 +355,31 @@ committed content head и PR-метаданные добавляются пос�
   результатом.
 - PR URL / head SHA / состояние checks и review threads — PR #211,
   <https://github.com/cucumberfalse/cabadrive/pull/211>, head
-  `24426edcba823761caa39cffc5139f8a3577ab7c`, state OPEN, mergeable=MERGEABLE;
-  чеки/threads ведёт Orchestrator (не мержу, не резолвлю).
+  `24426edcba823761caa39cffc5139f8a3577ab7c` (до P2-фикса), state OPEN,
+  mergeable=MERGEABLE; чеки/threads ведёт Orchestrator (не мержу, не резолвлю).
+
+### Evidence Log — P2 review-fix (Codex «Preserve undo notice after rejected imports»)
+
+Прогон 2026-07-23 в том же worktree после фикса `dismissHeaderNotice`
+(`src/App.tsx`) и добавления регрессионного e2e (`tests/e2e/app.spec.ts`).
+Счётчики обновлены тем же push:
+
+- Регрессия test-first: e2e «отклонённый импорт не прячет ожидающую отмену:
+  «Вернуть» остаётся доступной» — падал бы без фикса (после «Скрыть» кнопка
+  «Вернуть» отсутствует), с фиксом — зелёный в обоих проектах.
+- `grep -cE "^\s*test\(" tests/e2e/app.spec.ts` = 56 (было 55; +1 новый);
+  `manual-ticket-placement.spec.ts` = 4 → итого 60 `test()` на проект =
+  **120 e2e-сценариев** в двух проектах (было 118).
+- `pnpm run test` (unit) — **529, без изменений** (P2-фикс покрыт e2e, не
+  unit).
+- `pnpm run quality:fast` — typecheck + eslint (`--max-warnings 0`) зелёные.
+- `pnpm run format:check` — «All matched files use Prettier code style!».
+- `pnpm run build:app` — успешно (service worker, 2156 assets).
+- `playwright test` (таргетно новый + смежный import-негатив, оба проекта) —
+  4 passed.
+- `pnpm run preflight` — PREFLIGHT_EXIT=0 (зелёный целиком, включая
+  feature-memory gate после включения этого обновления specs/ в change,
+  `test`=529, `test:e2e`=120). Прогон в форграунде.
+- Новый head SHA после push — записывается Orchestrator в Cycle PR set;
+  effective content head сдвигается на коммит `fix(progress): keep undo
+  affordance after rejected import`.

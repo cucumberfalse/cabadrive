@@ -5151,9 +5151,19 @@ export function App() {
   }
 
   function dismissHeaderNotice() {
+    const session = safeSessionStorage();
     if (headerNotice?.kind === "undo") {
-      const session = safeSessionStorage();
+      // Explicit user opt-out of undo: drop the snapshot with the panel.
       if (session) clearUndoSnapshot(session);
+      setHeaderNotice(undefined);
+      return;
+    }
+    if (headerNotice?.kind === "importError") {
+      // A rejected import never touches the snapshot; closing the error must
+      // re-surface a still-pending undo affordance rather than hide it until
+      // reload (FR-A2 undo-to-end-of-session must not be buried by an import).
+      setHeaderNotice(session && readUndoSnapshot(session) !== null ? { kind: "undo" } : undefined);
+      return;
     }
     setHeaderNotice(undefined);
   }
