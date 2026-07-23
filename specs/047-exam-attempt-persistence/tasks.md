@@ -209,7 +209,7 @@
   required checks/head, resolved threads, конфликты, acceptance evidence,
   диспозиции feedback и effective content head.
 
-- [ ] **T017** Финальная Architect-валидация: все задачи/диспозиции, guidance,
+- [x] **T017** Финальная Architect-валидация: все задачи/диспозиции, guidance,
   process memory, customer intent. При pass — `Architect validation pass:
   passed`, ISO-timestamp и `Architect validated effective content head:
   <40-hex-sha>` в Architect-owned памяти; gaps — через role-appropriate
@@ -301,6 +301,20 @@ Implementation Agent добавляет feedback-пункты сюда; Architec
   дословной A7 обусловлено самим FR-A5; запрашивается disposition (ожидается
   accept). См. Decisions ниже.
 
+  - **[Architect disposition: ACCEPT]** Отклонение — прямое и необходимое
+    следствие FR-A5, который сам Architect предписал в этом же слайсе: как только
+    попытка активна, любой уход с вкладки «Экзамен» через top-nav обязан пройти
+    guard, поэтому исходный `click(Материалы)` теперь открывает `ConfirmDialog`, а
+    не мгновенно переходит. Добавленный `click("Выйти")` — минимальный шаг
+    подтверждения ухода; исходные ассерты (переход на «Материалы», заголовок
+    `topicGuide.titleRu`) сохранены дословно и вдобавок тест теперь проходит через
+    сам guard-путь. Проверено на effective content head `1a3a532b`
+    (`tests/e2e/app.spec.ts` ~:6354): `Начать` + `Выйти` добавлены, финальный
+    `expect(heading topicGuide.titleRu)` не изменён. Дословная формулировка A7
+    («только шаг Начать») не могла предвидеть взаимодействие с FR-A5 того же
+    слайса; поведенческая гарантия A7 (миграция без ослабления) соблюдена. Никакой
+    отдельной задачи/тикета не требуется — принято как есть.
+
 ## Verification Evidence (Evidence Log)
 
 Implementation Agent записывает команду → фактический результат → SHA кандидата.
@@ -367,6 +381,50 @@ Cycle PR set.
   `~:6194` добавлен один шаг `click("Выйти")` после `click("Материалы")`, т.к.
   активная попытка теперь перехватывается guard'ом FR-A5; проверка не ослаблена.
 - Иных dead ends / accepted known issues нет.
+
+## Final Architect Validation (Architect-owned)
+
+- **Architect validation pass: passed** — 2026-07-23T21:53:31Z (T017).
+- Effective content head: `1a3a532bcb8718f0797ef8562a909a7ec3a6cfcc` (PR #212;
+  branch tip `cdd922e5` is a final-validation evidence-only commit that touches
+  only the Cycle PR set line in `tasks.md` — verified `git diff 1a3a532b..cdd922e5`
+  changes no code/tests/behaviour, so it skips recursive role validation).
+- **Architect validated effective content head: 1a3a532bcb8718f0797ef8562a909a7ec3a6cfcc**
+- Scope of validation: single-PR cycle set (PR #212), all Architect tasks and
+  dispositions, guidance, open task state, process memory, and customer intent
+  (FR-B1/FR-A4/FR-A5 of ТЗ-P1 usability slice 2).
+- Conformance checked against diff `ae5f9804..1a3a532b`:
+  - **FR-B1** — start screen (`.exam-start`, phase `idle`) renders format entirely
+    from `data.examFormat` (`questionCount`/`timeLimitMinutes`/`passingScore`/
+    `canSkipQuestion`/`status`); no hardcoded 40/45/85 in source; no set selection /
+    `startedAt` / timer before «Начать» (`selectExamSet` + `startedAt`/`deadline`
+    live inside `start()`).
+  - **FR-A4** — key `cabadrive.exam-attempt.v1` (only in `examAttemptStorage.ts`);
+    absolute `deadline`; `remaining = remainingSeconds(deadline, now)` recomputed
+    from deadline each tick; `persist` on start and every answer/skip (`record`,
+    and `skipCurrent` routes through `record`); cleared on `finish` and `decline`;
+    `parseExamAttempt` discards broken/expired (`deadline <= now`)/foreign-id
+    snapshots; localStorage in `src/` goes only through `safeLocalStorage`
+    adapter + `StorageLike`.
+  - **FR-A5** — guard reuses the existing `ConfirmDialog` unchanged («Прервать
+    экзамен?»/«Выйти»/«Остаться»); confirm-leave calls `selectView` only and does
+    NOT clear the attempt (verified in code + e2e); `beforeunload` effect armed
+    only while `examAttemptActive`.
+  - **Scope guard** — `git diff --stat src/progressStoreCore.ts src/progressStore.ts`
+    empty; `package.json` unchanged; no slice-3 items (skip-queue / `skipped`
+    status / timer colors / result rework); pinned «Руководства» hash e2e mechanics
+    untouched; diff tightly scoped (App phase model + new module + styles + tests +
+    docs).
+  - **Tests** — 17 unit `test()` in `tests/exam-attempt.test.mjs` (meaningful:
+    valid snapshot + full negative matrix incl. `deadline===now` boundary and
+    fault-injection); 6 new e2e `test()` (start-screen, AC-2 resume, guard, decline,
+    beforeunload, negative broken/expired) × 2 projects; 3 migrated e2e
+    (`:1276`, `:1305`, `~:6354`) add «Начать»/«Выйти» without weakening assertions.
+    AC-2 test proves deadline-based remaining (`45:00` gone, `44:` shown after
+    resume) and preserved answers (`2 / 40` after reload). Counts in tasks.md match
+    reality: unit 17, e2e `app.spec.ts` now 62 `test()` (56 base + 6).
+- Deviation disposition: the `~:6354` guard-confirm step is **ACCEPTED** (see
+  Architect Feedback Dispositions); no task/ticket needed.
 
 ## Return Counts
 
