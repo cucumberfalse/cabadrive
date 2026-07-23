@@ -139,6 +139,111 @@ p {
   width: 44px;
 }
 
+.header-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.progress-notice {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 12px 0 0;
+  padding: 12px 14px;
+  border: 1px solid var(--line-strong);
+  border-radius: 8px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.progress-notice p {
+  margin: 0;
+}
+
+.progress-notice-error {
+  border-color: var(--danger);
+  background: var(--danger-soft);
+}
+
+.progress-notice-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.progress-notice-actions .tool-button {
+  padding: 0 14px;
+}
+
+dialog.confirm-dialog {
+  width: min(460px, calc(100% - 32px));
+  padding: 0;
+  border: 1px solid var(--line-strong);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--ink);
+  box-shadow: var(--shadow);
+}
+
+dialog.confirm-dialog::backdrop {
+  background: rgba(23, 33, 31, 0.45);
+}
+
+.confirm-dialog-inner {
+  display: grid;
+  gap: 12px;
+  padding: 20px;
+}
+
+.confirm-dialog-inner h2,
+.confirm-dialog-inner p,
+.confirm-dialog-inner ul {
+  margin: 0;
+}
+
+.confirm-dialog-inner ul {
+  padding-left: 22px;
+  display: grid;
+  gap: 4px;
+}
+
+.confirm-dialog-check {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 42px;
+  cursor: pointer;
+}
+
+.confirm-dialog-check input {
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  accent-color: var(--danger);
+}
+
+.confirm-dialog-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.confirm-dialog-actions .tool-button {
+  padding: 0 14px;
+}
+
+.tool-button.danger-button {
+  border-color: var(--danger);
+  background: var(--danger-soft);
+  color: var(--danger);
+  font-weight: 700;
+}
+
 .status-strip {
   display: grid;
   grid-template-columns: minmax(280px, 2fr) repeat(3, minmax(150px, 1fr));
