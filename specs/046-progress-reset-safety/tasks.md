@@ -137,11 +137,12 @@
 - [ ] T016 Orchestrator: зафиксировать полный cycle PR set, состояние
   required checks/head, resolved threads, конфликты, acceptance evidence,
   диспозиции feedback и effective content head.
-- [ ] T017 Финальная Architect-валидация: все задачи/диспозиции, guidance,
+- [x] T017 Финальная Architect-валидация: все задачи/диспозиции, guidance,
   process memory, customer intent. При pass — `Architect validation pass:
   passed`, ISO-timestamp и `Architect validated effective content head:
   <40-hex-sha>` в Architect-owned памяти; gaps — через role-appropriate
-  follow-up, максимум 10 возвратов.
+  follow-up, максимум 10 возвратов. Факт: PASS — см. секцию «Final Architect
+  validation» ниже.
 - [ ] T018 Финальная Analyst-валидация только после T017: Analyst-owned
   маркеры в `feature-request.md` или возврат gap'ов на Architect-диспозицию,
   максимум 5 возвратов.
@@ -303,6 +304,83 @@ not-needed с обоснованием и свидетельством.
   Agent. Все диспозиции — accept / ticket / not-needed; единственная правка —
   Architect-owned коррекция счётчика в `spec.md`. Гэпов, требующих возврата
   другой роли на доработку кода, нет.
+
+## Final Architect validation
+
+Architect validation pass: passed
+Final Architect validation completed at: 2026-07-23T20:38:05Z
+Architect validated effective content head: e0c9eff740abd451c98c69e8d545d4401d66ace8
+
+Финальная Architect-валидация слайса 1 `ТЗ-P1` (FR-A1..A3), cycle PR set = один
+PR #211. Проверка по фактическому состоянию worktree (HEAD `e0c9eff7`, дерево
+чистое), а не по сводкам:
+
+1. **Cycle PR set покрыт, реализация соответствует spec.md.** Прочитаны
+   `src/progressResetSafety.ts`, `src/components/ConfirmDialog.tsx`,
+   `src/App.tsx` (обвязка reset/undo/import/export).
+   - FR-A1: клик по «Сбросить прогресс» (`requestReset`) открывает
+     `ConfirmDialog` через `showModal()`; N/M/K берутся из единого
+     `useProgress()`-снапшота (`progress.answers.length`,
+     `mistakesFromProgress(progress).length`, `progress.examAttempts.length`);
+     чекбокс `resetAcknowledged` гейтит «Удалить прогресс» (`confirmDisabled`),
+     сбрасывается при каждом открытии; Отмена/Esc/backdrop — noop (store и
+     localStorage не трогаются).
+   - FR-A2: `saveUndoSnapshot(session, exportProgress())` перед `reset`;
+     `.progress-notice` `role="status"` с «Вернуть»/«Скрыть»; `restoreFromUndo`
+     одноразовый (`clearUndoSnapshot` после успеха); `dismissHeaderNotice`
+     удаляет снапшот на явный «Скрыть»; панель инициализируется из
+     `readUndoSnapshot` в useState-инициализаторе (переживает reload);
+     `undoUnavailable`-вариант при недоступном sessionStorage без падений.
+   - FR-A3: три icon-кнопки (Download/Upload/RotateCcw, русские
+     aria-label/title); экспорт Blob → objectURL → `<a download=exportFileName>`
+     → revoke; импорт через скрытый `input[type=file]` (value сбрасывается) →
+     `parseImportedProgress`; невалидный → `role="alert"` с
+     `IMPORT_REJECTED_MESSAGE`; валидный → ConfirmDialog замещения с текущими
+     N/M/K и N′/K′ файла; `false`-после-предвалидации → та же ошибка без
+     изменения состояния.
+   - NFR-3 (a11y): `ConfirmDialog` на нативном `<dialog>` — фокус-ловушка,
+     Esc через `cancel`-событие, автофокус на `cancelButtonRef`, backdrop-клик
+     как отмена, возврат фокуса на opener (нативно).
+   - Негативные сценарии spec.md (одиночный тап, битый/чужой JSON, отказ
+     диалога, недоступный sessionStorage, reload-до-undo, повторное «Вернуть»,
+     `importProgress`=false) — покрыты кодом и e2e.
+2. **Task/disposition state согласован.** T001–T012 закрыты; T014-диспозиции
+   (FB-1 ACCEPT, FB-2 TICKET, KI-1/KI-2) записаны; T017 закрыт этой секцией.
+   T013/T015/T016/T018/T019 остаются open — это Review/Implementation/
+   Orchestrator/Analyst-owned задачи, не Architect-owned; их существо (Codex
+   AI Review PASS, P2-фиксы, evidence) отражено в Cycle Context/Evidence Log,
+   финализацию ведёт Orchestrator. Architect чужие чекбоксы не переключает.
+3. **Процессная память актуальна и не противоречит коду; счётчики совпадают
+   с фактическими** (перепроверено на HEAD `e0c9eff7`):
+   - `node --test tests/*.test.mjs` → **531 pass / 0 fail** (совпадает с
+     Evidence Log P2-фикс #2 «531»).
+   - `node --test tests/progress-reset-safety.test.mjs` → **10 pass / 0 fail**.
+   - `grep -cE "^\s*test\(" tests/e2e/app.spec.ts` → **56**;
+     `tests/e2e/manual-ticket-placement.spec.ts` → **4** → **60 `test()` на
+     проект × 2 (chromium+mobile) = 120 e2e-сценариев**. Совпадает с Evidence
+     Log P2-фикс #1/#2. (Замечание к промпту Orchestrator «ожидается 60 в
+     app.spec.ts»: 60 — это per-project ИТОГ 56+4; в самом `app.spec.ts` — 56,
+     как и записано в памяти. Расхождения с фактом нет.)
+   - Storage-границы: `grep -rn sessionStorage src/` → только адаптер в
+     App.tsx + комментарий в `progressResetSafety.ts`; `localStorage` →
+     только `progressStore.ts`. Совпадает с T009/Evidence Log.
+4. **Customer intent «в духе».** Слайс реально устраняет критическую
+   безвозвратную потерю прогресса, обещанную ТЗ-P1 слайс 1: одиночный тап по
+   RotateCcw больше ничего не удаляет (подтверждение+чекбокс), любой сброс/
+   импорт отменяем «Вернуть» до конца сессии (переживает reload), а
+   экспорт/импорт JSON даёт полный round-trip восстановления.
+5. **Оба P2-фикса корректны и покрыты тестами; store не изменён.**
+   - P2 #1 (`2c0b6393`): `dismissHeaderNotice` при `importError` перечитывает
+     sessionStorage и восстанавливает `{ kind: "undo" }`, если снапшот жив —
+     undo не хоронится отклонённым импортом. Покрыт e2e-регрессией.
+   - P2 #2 (`e0c9eff7`): `saveUndoSnapshot` в catch вызывает
+     `clearUndoSnapshot` — устаревший/чужой снапшот не переживает неудачную
+     запись (data-corruption риск закрыт). Покрыт 2 unit-регрессиями (10 pass).
+   - `git diff 3fed47cc..HEAD -- src/progressStore.ts src/progressStoreCore.ts`
+     — пусто; store-контракт ТЗ-06 не тронут.
+
+Architect return count: НЕ инкрементируется (PASS, гэпов нет). Управление
+возвращается Orchestrator для финальной Analyst-валидации (T018).
 
 ## Dead Ends And Known Issues
 

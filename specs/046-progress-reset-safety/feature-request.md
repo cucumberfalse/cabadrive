@@ -148,3 +148,30 @@ Cabadrive — статический local-first React/Vite тренажёр т�
 ## Final Analyst Validation Notes
 
 Append-only секция Analyst; заполняется только по явному запросу Orchestrator после прохождения финальной валидации Architect.
+
+### Финальная Analyst-валидация цикла 046 (слайс 1 ТЗ-P1)
+
+Analyst validation pass: passed
+Final Analyst validation completed at: 2026-07-23T20:40:46Z
+Analyst validated effective content head: e0c9eff740abd451c98c69e8d545d4401d66ace8
+
+Вызвана Orchestrator явно после прохождения финальной Architect-валидации (PASS на том же effective content head e0c9eff7, см. `tasks.md` «Final Architect validation»). Проверен PR #211, ветка `claude/046-progress-reset-safety`, дерево чистое (единственное незакоммиченное — Architect-маркеры в `tasks.md`, их не трогал).
+
+**Результат против желаемого исхода заказчика — в духе и букве:**
+
+Главная цель intake достигнута — ноль сценариев безвозвратной потери прогресса без явного подтверждения:
+- **FR-A1** (буква): кнопка сброса больше не вызывает `reset` напрямую — открывает `ConfirmDialog` (`src/App.tsx:5125-5136, 5329-5352`) с реальными счётчиками из одного снапшота `useProgress()` (N ответов / M вопросов с ошибками через `mistakesFromProgress` / K попыток экзамена) и двойным подтверждением через чекбокс «Я понимаю…», деструктивная кнопка disabled до отметки. Совпадает с допущением A1 (двойное подтверждение, mobile-first).
+- **FR-A2** (буква и дух): undo-снапшот `exportProgress()` в sessionStorage (`cabadrive.progress.reset-undo.v1`, `src/progressResetSafety.ts`) перед деструктивной операцией; панель «Вернуть» с восстановлением через строгий `importProgress` (допущение A3); переживает reload той же вкладки; при недоступном sessionStorage сброс не блокируется, показывается предупреждение об отсутствии undo. Совпадает с A2.
+- **FR-A3** (буква): экспорт Blob-download с именем `cabadrive-progress-<YYYY-MM-DD>.json` (A5), импорт через файловый input с предвалидацией `parseImportedProgress`; валидный импорт замещает состояние только после подтверждения И undo-снапшота (допущение A4).
+
+**Главный негативный сценарий цикла выполняется:** импорт битого/чужого/неизвестной version JSON атомарно отклоняется через store-валидацию, текущий прогресс не меняется, показывается человекочитаемая ошибка (`role="alert"`, `IMPORT_REJECTED_MESSAGE`). Покрыт e2e (`tests/e2e/app.spec.ts:7693, 7704`).
+
+**Прочие негативные сценарии** (отмена/Esc/backdrop = noop, reload сохраняет «Вернуть», недоступный sessionStorage, повторное «Вернуть» невозможно, `importProgress`=false после предвалидации) — покрыты кодом и e2e/unit.
+
+**Два P2 от Codex AI Review** (undo-notice не хоронится отклонённым импортом; очистка устаревшего снапшота при сбое `saveUndoSnapshot`) исправлены с регрессионными тестами и, что важно для духа заказчика, закрывают именно риск потери/недостижимости пути отмены.
+
+**AC-1 ТЗ-P1** (дословно применимый к слайсу) выполнен полностью: тап по сбросу без подтверждения не удаляет данные; после подтверждения доступна «Вернуть» до конца сессии; экспортированный JSON импортируется на чистом профиле с полным восстановлением — e2e-round-trip `export → reset → import`.
+
+**Свидетельства** (effective head e0c9eff7, Evidence Log в `tasks.md`): unit 531 pass / 0 fail, `progress-reset-safety.test.mjs` 10 pass, e2e 120 сценариев (60 `test()` × 2 проекта Desktop+Pixel 7) зелёные, `quality:fast`/`format:check`/`build:app`/`preflight` зелёные, AI Review PASS, 0 открытых review threads, границы хранилищ подтверждены grep-ом (единственный `saveProgress` в store; sessionStorage вне `progressResetSafety.ts` не используется).
+
+Scope соблюдён строго: слайс 1 (FR-A1/A2/A3); контракт store ТЗ-06 не пересматривался; FR-A4+ и группы Б–Е вне цикла. Гэпов нет. Analyst return count НЕ инкрементируется. Управление возвращается Orchestrator.
