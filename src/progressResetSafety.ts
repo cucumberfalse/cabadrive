@@ -15,6 +15,10 @@ export function saveUndoSnapshot(storage: StorageLike, snapshot: string): boolea
     storage.setItem(RESET_UNDO_KEY, snapshot);
     return true;
   } catch {
+    // A failed write (e.g. quota with a larger current export) leaves any
+    // previous snapshot untouched; drop it so a later reload never offers to
+    // restore stale/foreign progress. Best effort — clearUndoSnapshot swallows.
+    clearUndoSnapshot(storage);
     return false;
   }
 }

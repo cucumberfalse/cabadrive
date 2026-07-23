@@ -86,6 +86,25 @@ test("saveUndoSnapshot returns false without throwing when storage rejects the w
   assert.equal(saveUndoSnapshot(exhausted, "snapshot"), false);
 });
 
+test("saveUndoSnapshot clears any stale snapshot when the new write fails", () => {
+  const staged = new FakeStorage(
+    { [RESET_UNDO_KEY]: "stale-previous-snapshot" },
+    { setFailures: [quota()] },
+  );
+  assert.equal(saveUndoSnapshot(staged, "new-snapshot"), false);
+  // The failed write must not leave the previous session's snapshot behind,
+  // or a later reload would offer to restore stale/foreign progress.
+  assert.equal(readUndoSnapshot(staged), null);
+});
+
+test("saveUndoSnapshot still returns false without throwing when the stale cleanup also fails", () => {
+  const staged = new FakeStorage(
+    { [RESET_UNDO_KEY]: "stale-previous-snapshot" },
+    { setFailures: [quota()], removeFailures: [new Error("remove blocked")] },
+  );
+  assert.equal(saveUndoSnapshot(staged, "new-snapshot"), false);
+});
+
 test("readUndoSnapshot returns the stored value, null when absent, and null on read failure", () => {
   const storage = new FakeStorage({ [RESET_UNDO_KEY]: "snapshot" });
   assert.equal(readUndoSnapshot(storage), "snapshot");

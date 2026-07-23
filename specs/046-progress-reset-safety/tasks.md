@@ -188,6 +188,20 @@
   переиспользуется и для подтверждённого импорта при недоступном
   sessionStorage — отдельная формулировка для этого угла не заводилась
   (see Known issues).
+- (Implementation, P2-фикс #2 Codex AI Review на `2c0b6393`,
+  src/progressResetSafety.ts:18) «Clear stale undo snapshots when saving a new
+  one fails»: при исключении `storage.setItem` (например quota при большем
+  текущем экспорте) Web Storage оставляет ПРЕДЫДУЩЕЕ значение
+  `RESET_UNDO_KEY` нетронутым; старый код просто возвращал `false`, из-за чего
+  после reload читался устаревший/чужой снапшот и приложение предлагало его
+  восстановить (data-corruption риск). Фикс: в catch-ветке `saveUndoSnapshot`
+  перед `return false` вызывается `clearUndoSnapshot(storage)` (best-effort,
+  свой try/catch внутри) — устаревший ключ вычищается. Успешный путь и
+  сигнатура не изменены; store не тронут. Регрессия — два unit-теста:
+  (1) при `setItem`-исключении и уже существующем `RESET_UNDO_KEY`
+  `readUndoSnapshot` после `saveUndoSnapshot=false` даёт `null`;
+  (2) если и `removeItem` бросает — функция всё равно возвращает `false` без
+  throw.
 - (Implementation, P2-фикс Codex AI Review на `52c0d318`) «Preserve undo
   notice after rejected imports»: отклонённый импорт (битый/чужой JSON через
   `reviewImportFile`) НЕ трогает undo-снапшот, но раньше затирал undo-notice
@@ -383,3 +397,23 @@ committed content head и PR-метаданные добавляются пос�
 - Новый head SHA после push — записывается Orchestrator в Cycle PR set;
   effective content head сдвигается на коммит `fix(progress): keep undo
   affordance after rejected import`.
+
+### Evidence Log — P2 review-fix #2 (Codex «Clear stale undo snapshots when saving a new one fails»)
+
+Прогон 2026-07-23 в том же worktree после фикса `saveUndoSnapshot`
+(`src/progressResetSafety.ts`) и +2 unit-тестов
+(`tests/progress-reset-safety.test.mjs`). Счётчики обновлены тем же push:
+
+- Регрессия test-first: `node --test tests/progress-reset-safety.test.mjs`
+  до фикса — fail 1 (`saveUndoSnapshot clears any stale snapshot when the
+  new write fails`: старый снапшот оставался); после фикса — 10 pass / 0 fail
+  (было 8).
+- `pnpm run test` (unit, весь набор) — **531, fail 0** (было 529; +2 в
+  `progress-reset-safety.test.mjs`).
+- `pnpm run quality:fast` / `format:check` / `build:app` — зелёные.
+- e2e без изменений — **120** (60 `test()` на проект × 2).
+- `pnpm run preflight` — PREFLIGHT_EXIT=0 (зелёный целиком, `test`=531,
+  `test:e2e`=120). Прогон в форграунде.
+- Новый head SHA после push — Orchestrator фиксирует в Cycle PR set;
+  effective content head сдвигается на коммит `fix(progress): clear stale
+  undo snapshot on save failure`.
