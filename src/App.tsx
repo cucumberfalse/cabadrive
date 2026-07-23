@@ -99,6 +99,13 @@ import {
 import { exactTextStatusKind, exactTextStatusNote } from "./primarySourceStatus";
 import { ConfirmDialog } from "./components/ConfirmDialog";
 import {
+  clearExamAttempt,
+  readExamAttempt,
+  remainingSeconds,
+  saveExamAttempt,
+  type ExamAttemptSnapshot,
+} from "./examAttemptStorage";
+import {
   IMPORT_REJECTED_MESSAGE,
   UNDO_UNAVAILABLE_MESSAGE,
   clearUndoSnapshot,
@@ -1092,66 +1099,130 @@ function LearnView({ progress }: { progress: ProgressV2 }) {
   );
 }
 
-function ExamView() {
-  const examQuestions = useMemo(
-    () =>
-      selectExamSet(
-        data.questions,
-        data.examFormat.questionCount,
-        data.examFormat.questionOrderRule,
-      ),
+type ExamPhase = "idle" | "resumePrompt" | "active" | "finished";
+
+function ExamView({
+  onAttemptActiveChange,
+  storage,
+}: {
+  onAttemptActiveChange: (active: boolean) => void;
+  storage: StorageLike | undefined;
+}) {
+  // The set of ids currently resolvable to a question; a saved attempt whose ids
+  // fall outside this pool is discarded rather than resumed into a broken state.
+  const validQuestionIds = useMemo(
+    () => new Set(data.questions.map((question) => question.id)),
     [],
   );
-  const [position, setPosition] = useState(0);
+  // Read once on mount (pure): a valid, unexpired attempt puts us in the resume
+  // prompt; anything else (absent/broken/expired) leaves us on the idle start
+  // screen and the stale key is cleared by the mount effect below.
+  const [savedAttempt, setSavedAttempt] = useState<ExamAttemptSnapshot | null>(() =>
+    storage ? readExamAttempt(storage, { now: Date.now(), validQuestionIds }) : null,
+  );
+  const [phase, setPhase] = useState<ExamPhase>(() => (savedAttempt ? "resumePrompt" : "idle"));
+  const [examQuestions, setExamQuestions] = useState<Question[]>([]);
   const [answers, setAnswers] = useState<ProgressAnswer[]>([]);
-  const [finished, setFinished] = useState(false);
-  const [timeRemaining, setTimeRemaining] = useState(data.examFormat.timeLimitMinutes * 60);
+  const [startedAt, setStartedAt] = useState(0);
+  const [deadline, setDeadline] = useState(0);
+  const [now, setNow] = useState(0);
   const [resultScore, setResultScore] = useState<number | null>(null);
   const finishGuard = useRef(false);
+  const position = answers.length;
   const current = examQuestions[position];
 
+  useEffect(() => {
+    // Absent/broken/expired saved attempt: ensure the key is gone so a later
+    // reload starts clean. A valid attempt (resumePrompt) keeps its key until the
+    // user resumes, declines, or finishes.
+    if (!savedAttempt && storage) clearExamAttempt(storage);
+    // Mount-only: the initial phase decision must not re-run on later renders.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const persist = useCallback(
+    (questions: Question[], nextAnswers: ProgressAnswer[], started: number, dl: number) => {
+      if (!storage) return;
+      saveExamAttempt(storage, {
+        version: 1,
+        questionIds: questions.map((question) => question.id),
+        answers: nextAnswers,
+        startedAt: started,
+        deadline: dl,
+      });
+    },
+    [storage],
+  );
+
   const finish = useCallback(
-    (finalAnswers = answers) => {
+    (questions: Question[], finalAnswers: ProgressAnswer[]) => {
       if (finishGuard.current) return;
       finishGuard.current = true;
       const finalScore = scorePercent(
         finalAnswers.filter((answer) => answer.isCorrect).length,
-        examQuestions.length,
+        questions.length,
       );
       const attempt = {
         id: `exam-${Date.now()}`,
         finishedAt: new Date().toISOString(),
         score: finalScore,
         passed: isPassing(finalScore, data.examFormat.passingScore),
-        total: examQuestions.length,
+        total: questions.length,
       };
       dispatchProgress({ type: "finishExam", answers: finalAnswers, attempt });
+      if (storage) clearExamAttempt(storage);
+      onAttemptActiveChange(false);
+      setAnswers(finalAnswers);
       setResultScore(finalScore);
-      setFinished(true);
+      setPhase("finished");
     },
-    [answers, examQuestions.length],
+    [onAttemptActiveChange, storage],
   );
 
-  useEffect(() => {
-    if (finished) return undefined;
-    const timer = window.setInterval(() => {
-      setTimeRemaining((value) => {
-        if (value <= 1) {
-          window.clearInterval(timer);
-          finish(answers);
-          return 0;
-        }
-        return value - 1;
-      });
-    }, 1000);
-    return () => window.clearInterval(timer);
-  }, [answers, finish, finished]);
+  function start() {
+    const questions = selectExamSet(
+      data.questions,
+      data.examFormat.questionCount,
+      data.examFormat.questionOrderRule,
+    );
+    const started = Date.now();
+    const dl = started + data.examFormat.timeLimitMinutes * 60_000;
+    finishGuard.current = false;
+    setExamQuestions(questions);
+    setAnswers([]);
+    setStartedAt(started);
+    setDeadline(dl);
+    setNow(started);
+    persist(questions, [], started, dl);
+    onAttemptActiveChange(true);
+    setPhase("active");
+  }
+
+  function resume() {
+    if (!savedAttempt) return;
+    const questions = savedAttempt.questionIds.map((id) => questionById.get(id)!);
+    finishGuard.current = false;
+    setExamQuestions(questions);
+    setAnswers(savedAttempt.answers);
+    setStartedAt(savedAttempt.startedAt);
+    setDeadline(savedAttempt.deadline);
+    setNow(Date.now());
+    onAttemptActiveChange(true);
+    setPhase("active");
+  }
+
+  function decline() {
+    if (storage) clearExamAttempt(storage);
+    setSavedAttempt(null);
+    onAttemptActiveChange(false);
+    setPhase("idle");
+  }
 
   function record(answer: ProgressAnswer) {
     const nextAnswers = [...answers, answer];
-    setAnswers(nextAnswers);
-    if (position + 1 >= examQuestions.length) finish(nextAnswers);
-    else setPosition((value) => value + 1);
+    persist(examQuestions, nextAnswers, startedAt, deadline);
+    if (nextAnswers.length >= examQuestions.length) finish(examQuestions, nextAnswers);
+    else setAnswers(nextAnswers);
   }
 
   function skipCurrent() {
@@ -1165,7 +1236,73 @@ function ExamView() {
     });
   }
 
-  if (finished) {
+  // Timer tick: recompute `now` each second; the remaining seconds are derived
+  // from the absolute deadline in render, so a resumed attempt counts down
+  // correctly regardless of any interruption.
+  useEffect(() => {
+    if (phase !== "active") return undefined;
+    const timer = window.setInterval(() => setNow(Date.now()), 1000);
+    return () => window.clearInterval(timer);
+  }, [phase]);
+
+  const remaining = remainingSeconds(deadline, now);
+
+  // Time-out finish runs outside the setState updater (removes the fragile
+  // "finish inside a setTimeRemaining updater" pattern, ТЗ-11).
+  useEffect(() => {
+    if (phase !== "active") return;
+    if (remaining <= 0 && !finishGuard.current) finish(examQuestions, answers);
+  }, [phase, remaining, examQuestions, answers, finish]);
+
+  if (phase === "idle") {
+    return (
+      <section className="workspace exam-start">
+        <h2>Пробный экзамен</h2>
+        <p>Формат экзамена CABA категории B. Таймер начнётся только после нажатия «Начать».</p>
+        <ul className="exam-start-format">
+          <li>Вопросов: {data.examFormat.questionCount}</li>
+          <li>Лимит времени: {data.examFormat.timeLimitMinutes} минут</li>
+          <li>Проходной балл: {data.examFormat.passingScore}%</li>
+          <li>
+            {data.examFormat.canSkipQuestion
+              ? "Вопросы можно пропускать"
+              : "Пропуск вопросов недоступен"}
+          </li>
+          <li>
+            {data.examFormat.status === "defined" ? "Формат defined" : "approximate practice"}
+          </li>
+        </ul>
+        <p className="muted">
+          Источник формата экзамена GCBA подтвержден, но сами вопросы сейчас помечены как
+          неофициальная B-практика.
+        </p>
+        <button type="button" className="tool-button" onClick={start}>
+          Начать
+        </button>
+      </section>
+    );
+  }
+
+  if (phase === "resumePrompt" && savedAttempt) {
+    return (
+      <section className="workspace exam-resume" role="status">
+        <p>
+          Продолжить попытку (осталось{" "}
+          {formatDuration(remainingSeconds(savedAttempt.deadline, Date.now()))})?
+        </p>
+        <div className="exam-resume-actions">
+          <button type="button" className="tool-button" onClick={resume}>
+            Продолжить
+          </button>
+          <button type="button" className="tool-button" onClick={decline}>
+            Отменить
+          </button>
+        </div>
+      </section>
+    );
+  }
+
+  if (phase === "finished") {
     const finalScore =
       resultScore ??
       scorePercent(answers.filter((answer) => answer.isCorrect).length, examQuestions.length);
@@ -1191,7 +1328,7 @@ function ExamView() {
     <section className="workspace">
       <div className="exam-bar">
         <span>
-          <Timer size={18} /> {formatDuration(timeRemaining)}
+          <Timer size={18} /> {formatDuration(remaining)}
         </span>
         <span>
           {position + 1} / {examQuestions.length}
@@ -5030,6 +5167,17 @@ function safeSessionStorage(): StorageLike | undefined {
   }
 }
 
+// Sole localStorage entry point for the active-exam key; the string key itself
+// lives only inside examAttemptStorage.ts. Returns undefined when localStorage is
+// unavailable (private mode / sandbox) so the exam degrades to in-memory only.
+function safeLocalStorage(): StorageLike | undefined {
+  try {
+    return typeof window === "undefined" ? undefined : window.localStorage;
+  } catch {
+    return undefined;
+  }
+}
+
 type ProgressNotice = { kind: "undo" | "undoUnavailable" | "restored" | "importError" };
 
 function progressNoticeText(notice: ProgressNotice) {
@@ -5059,6 +5207,17 @@ export function App() {
       : undefined;
   });
   const progress = useProgress();
+  const examStorage = useMemo(() => safeLocalStorage(), []);
+  // Single source of truth for the leave guard and beforeunload. Lazily seeded
+  // from a persisted attempt so a reload straight into a non-exam tab still arms
+  // the guard; ExamView keeps it in sync via onAttemptActiveChange.
+  const [examAttemptActive, setExamAttemptActive] = useState<boolean>(() => {
+    const storage = safeLocalStorage();
+    if (!storage) return false;
+    const validQuestionIds = new Set(data.questions.map((question) => question.id));
+    return readExamAttempt(storage, { now: Date.now(), validQuestionIds }) !== null;
+  });
+  const [pendingLeaveView, setPendingLeaveView] = useState<View | undefined>(undefined);
   const routeScrollKey = useMemo(
     () =>
       `${view}:${view === "pandemia" ? (selectedManualSectionId ?? selectedIntroductionId) : ""}`,
@@ -5098,6 +5257,19 @@ export function App() {
       window.history.scrollRestoration = previousScrollRestoration;
     };
   }, []);
+
+  // Native close/reload warning while an attempt is live. This is a best-effort
+  // backstop (unreliable on mobile, ТЗ-P1 §10); the real guarantee is the
+  // persisted attempt (FR-A4). Only armed while active, removed otherwise.
+  useEffect(() => {
+    if (!examAttemptActive) return undefined;
+    const handler = (event: BeforeUnloadEvent) => {
+      event.preventDefault();
+      event.returnValue = "";
+    };
+    window.addEventListener("beforeunload", handler);
+    return () => window.removeEventListener("beforeunload", handler);
+  }, [examAttemptActive]);
 
   useEffect(() => {
     const frame = window.requestAnimationFrame(() => {
@@ -5227,6 +5399,16 @@ export function App() {
       if (`${window.location.pathname}${window.location.search}${window.location.hash}` !== nextUrl)
         window.history.pushState(null, "", nextUrl);
     }
+  }
+
+  // Top-nav guard: leaving the exam tab with a live attempt asks for confirmation
+  // first (the persisted attempt is kept either way, so a later return resumes).
+  function guardedSelectView(nextView: View) {
+    if (view === "exam" && examAttemptActive && nextView !== "exam") {
+      setPendingLeaveView(nextView);
+      return;
+    }
+    selectView(nextView);
   }
 
   function selectIntroductionEntry(entry: IntroductionNavigationEntry) {
@@ -5372,58 +5554,82 @@ export function App() {
         </ul>
       </ConfirmDialog>
 
+      <ConfirmDialog
+        open={pendingLeaveView !== undefined}
+        title="Прервать экзамен?"
+        confirmLabel="Выйти"
+        cancelLabel="Остаться"
+        onConfirm={() => {
+          const target = pendingLeaveView;
+          setPendingLeaveView(undefined);
+          if (target) selectView(target);
+        }}
+        onCancel={() => setPendingLeaveView(undefined)}
+      >
+        <p>Попытка сохранена — вы сможете продолжить её позже.</p>
+      </ConfirmDialog>
+
       <StatusStrip progress={progress} />
 
       <nav className="tabs" aria-label="Режимы">
-        <button className={view === "learn" ? "active" : ""} onClick={() => selectView("learn")}>
+        <button
+          className={view === "learn" ? "active" : ""}
+          onClick={() => guardedSelectView("learn")}
+        >
           <BookOpen size={18} /> Учить
         </button>
-        <button className={view === "exam" ? "active" : ""} onClick={() => selectView("exam")}>
+        <button
+          className={view === "exam" ? "active" : ""}
+          onClick={() => guardedSelectView("exam")}
+        >
           <ClipboardList size={18} /> Экзамен
         </button>
         <button
           className={view === "mistakes" ? "active" : ""}
-          onClick={() => selectView("mistakes")}
+          onClick={() => guardedSelectView("mistakes")}
         >
           <XCircle size={18} /> Ошибки
         </button>
         <button
           className={view === "vocabulary" ? "active" : ""}
-          onClick={() => selectView("vocabulary")}
+          onClick={() => guardedSelectView("vocabulary")}
         >
           <Search size={18} /> Словарь
         </button>
         <button
           className={view === "materials" ? "active" : ""}
-          onClick={() => selectView("materials")}
+          onClick={() => guardedSelectView("materials")}
         >
           <BookMarked size={18} /> Материалы
         </button>
         <button
           className={view === "pandemia" ? "active" : ""}
-          onClick={() => selectView("pandemia")}
+          onClick={() => guardedSelectView("pandemia")}
           data-testid="pandemia-nav-entry"
         >
           <ListTree size={18} /> Руководство
         </button>
         <button
           className={view === "sources" ? "active" : ""}
-          onClick={() => selectView("sources")}
+          onClick={() => guardedSelectView("sources")}
         >
           <FileText size={18} /> Источники
         </button>
         <button
           className={view === "process" ? "active" : ""}
-          onClick={() => selectView("process")}
+          onClick={() => guardedSelectView("process")}
         >
           <MapPinned size={18} /> Процесс
         </button>
-        <button className={view === "guide" ? "active" : ""} onClick={() => selectView("guide")}>
+        <button
+          className={view === "guide" ? "active" : ""}
+          onClick={() => guardedSelectView("guide")}
+        >
           <Flag size={18} /> CABA/RF
         </button>
         <button
           className={view === "about" ? "active" : ""}
-          onClick={() => selectView("about")}
+          onClick={() => guardedSelectView("about")}
           aria-pressed={view === "about"}
         >
           <Info size={18} /> О приложении
@@ -5431,7 +5637,9 @@ export function App() {
       </nav>
 
       {view === "learn" && <LearnView progress={progress} />}
-      {view === "exam" && <ExamView />}
+      {view === "exam" && (
+        <ExamView onAttemptActiveChange={setExamAttemptActive} storage={examStorage} />
+      )}
       {view === "mistakes" && <MistakesView progress={progress} />}
       {view === "vocabulary" && <VocabularyView />}
       {view === "materials" && <TopicGuideView />}

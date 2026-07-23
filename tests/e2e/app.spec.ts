@@ -1275,6 +1275,7 @@ test("exam mode hides translation and explanation during active attempt and stor
 }) => {
   await page.goto("/");
   await page.getByRole("button", { name: /Экзамен/ }).click();
+  await page.getByRole("button", { name: "Начать" }).click();
   await expect(page.getByText(/45:00|44:59/)).toBeVisible();
   await expect(page.getByText(/Формат defined/)).toBeVisible();
   await expect(page.getByText("Темп билета")).toHaveCount(0);
@@ -1301,6 +1302,7 @@ test("exam timeout persists exactly one completed attempt", async ({ page }) => 
   await page.clock.install({ time: new Date("2026-01-01T00:00:00Z") });
   await page.goto("/");
   await page.getByRole("button", { name: /Экзамен/ }).click();
+  await page.getByRole("button", { name: "Начать" }).click();
   await expect(page.getByText("45:00")).toBeVisible();
   await page.clock.runFor(45 * 60 * 1000);
   await expect(page.getByText(/Пробный экзамен|Нужно повторить/)).toBeVisible();
@@ -1313,6 +1315,166 @@ test("exam timeout persists exactly one completed attempt", async ({ page }) => 
   await expect.poll(storedAttempts).toBe(1);
   await page.clock.fastForward(5_000);
   await expect.poll(storedAttempts).toBe(1);
+});
+
+test("exam start screen shows the format and holds the timer until Начать (FR-B1)", async ({
+  page,
+}) => {
+  await page.clock.install({ time: new Date("2026-01-01T00:00:00Z") });
+  await page.goto("/");
+  await page.getByRole("button", { name: /Экзамен/ }).click();
+  // Format card from data.examFormat (never hardcoded 40/45/85) + Начать button.
+  await expect(page.getByRole("button", { name: "Начать" })).toBeVisible();
+  await expect(page.getByText("Вопросов: 40")).toBeVisible();
+  await expect(page.getByText("Лимит времени: 45 минут")).toBeVisible();
+  await expect(page.getByText("Проходной балл: 85%")).toBeVisible();
+  // No question and no running countdown before Начать.
+  await expect(page.getByTestId("question-card")).toHaveCount(0);
+  await expect(page.getByText("45:00")).toHaveCount(0);
+  // The timer must not advance while idle.
+  await page.clock.runFor(90_000);
+  await expect(page.getByTestId("question-card")).toHaveCount(0);
+  await expect(page.getByText("45:00")).toHaveCount(0);
+  // Начать → first question and a running countdown.
+  await page.getByRole("button", { name: "Начать" }).click();
+  await expect(page.getByText("45:00")).toBeVisible();
+  await expect(page.getByTestId("question-card")).toBeVisible();
+  await page.clock.runFor(2_000);
+  await expect(page.getByText(/44:5\d/)).toBeVisible();
+});
+
+test("reloading mid-exam offers to resume with saved answers and deadline-based time (AC-2)", async ({
+  page,
+}) => {
+  await page.clock.install({ time: new Date("2026-01-01T00:00:00Z") });
+  await page.goto("/");
+  await page.getByRole("button", { name: /Экзамен/ }).click();
+  await page.getByRole("button", { name: "Начать" }).click();
+  await expect(page.getByText("45:00")).toBeVisible();
+  await page.getByRole("button", { name: "Пропустить" }).click();
+  await expect(page.getByText("2 / 40")).toBeVisible();
+  // Consume a minute of the attempt, then reload mid-exam.
+  await page.clock.runFor(60_000);
+  const stored = await page.evaluate(() =>
+    JSON.parse(localStorage.getItem("cabadrive.exam-attempt.v1") || "null"),
+  );
+  expect(stored?.deadline - stored?.startedAt).toBe(45 * 60_000);
+  expect(stored?.answers.length).toBe(1);
+  await page.reload();
+  await page.getByRole("button", { name: /Экзамен/ }).click();
+  // Resume prompt with remaining time recomputed from the absolute deadline.
+  await expect(page.getByText(/Продолжить попытку \(осталось 44:/)).toBeVisible();
+  await page.getByRole("button", { name: "Продолжить" }).click();
+  // Preserved position (answers restored) and the countdown resumes below 45:00.
+  await expect(page.getByText("2 / 40")).toBeVisible();
+  await expect(page.getByText("45:00")).toHaveCount(0);
+  await expect(page.getByText(/44:/)).toBeVisible();
+  // The resumed attempt finishes normally and clears its key.
+  for (let i = 0; i < 40; i += 1) {
+    const skip = page.getByRole("button", { name: "Пропустить" });
+    if (await skip.isVisible()) await skip.click();
+  }
+  await expect(page.getByText(/Пробный экзамен|Нужно повторить/)).toBeVisible();
+  const clearedAfterFinish = await page.evaluate(() =>
+    localStorage.getItem("cabadrive.exam-attempt.v1"),
+  );
+  expect(clearedAfterFinish).toBeNull();
+});
+
+test("leaving an active exam confirms first and keeps the attempt for resume (FR-A5)", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await page.getByRole("button", { name: /Экзамен/ }).click();
+  await page.getByRole("button", { name: "Начать" }).click();
+  await expect(page.getByText(/45:00|44:59/)).toBeVisible();
+  await page.getByRole("button", { name: "Пропустить" }).click();
+  await expect(page.getByText("2 / 40")).toBeVisible();
+  // Attempt to leave → guard dialog; "Остаться" keeps us on the exam.
+  await page.getByRole("button", { name: /Ошибки/ }).click();
+  await expect(page.getByRole("heading", { name: "Прервать экзамен?" })).toBeVisible();
+  await page.getByRole("button", { name: "Остаться" }).click();
+  await expect(page.getByText("2 / 40")).toBeVisible();
+  // Leave for real → confirm; the saved attempt is not cleared.
+  await page.getByRole("button", { name: /Ошибки/ }).click();
+  await page.getByRole("button", { name: "Выйти" }).click();
+  await expect(page.getByRole("heading", { name: "Ошибки", exact: true })).toBeVisible();
+  const preserved = await page.evaluate(() => localStorage.getItem("cabadrive.exam-attempt.v1"));
+  expect(preserved).not.toBeNull();
+  // Returning to the exam offers to resume.
+  await page.getByRole("button", { name: /Экзамен/ }).click();
+  await expect(page.getByText(/Продолжить попытку/)).toBeVisible();
+});
+
+test("declining resume clears the saved attempt and shows a fresh start screen", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await page.getByRole("button", { name: /Экзамен/ }).click();
+  await page.getByRole("button", { name: "Начать" }).click();
+  await page.getByRole("button", { name: "Пропустить" }).click();
+  await expect(page.getByText("2 / 40")).toBeVisible();
+  await page.reload();
+  await page.getByRole("button", { name: /Экзамен/ }).click();
+  await expect(page.getByText(/Продолжить попытку/)).toBeVisible();
+  await page.getByRole("button", { name: "Отменить" }).click();
+  // Key cleared and a clean start screen is shown.
+  await expect(page.getByRole("button", { name: "Начать" })).toBeVisible();
+  const cleared = await page.evaluate(() => localStorage.getItem("cabadrive.exam-attempt.v1"));
+  expect(cleared).toBeNull();
+  // A subsequent return is a fresh start, not a resume.
+  await page.getByRole("button", { name: /Ошибки/ }).click();
+  await page.getByRole("button", { name: /Экзамен/ }).click();
+  await expect(page.getByRole("button", { name: "Начать" })).toBeVisible();
+  await expect(page.getByText(/Продолжить попытку/)).toHaveCount(0);
+});
+
+test("beforeunload is armed only while an exam attempt is active (FR-A5)", async ({ page }) => {
+  const dispatchBeforeUnload = () =>
+    page.evaluate(() => {
+      const event = new Event("beforeunload", { cancelable: true });
+      window.dispatchEvent(event);
+      return event.defaultPrevented;
+    });
+  await page.goto("/");
+  // No attempt → no handler.
+  expect(await dispatchBeforeUnload()).toBe(false);
+  await page.getByRole("button", { name: /Экзамен/ }).click();
+  await page.getByRole("button", { name: "Начать" }).click();
+  await expect(page.getByText(/45:00|44:59/)).toBeVisible();
+  // Active attempt → handler prevents the unload.
+  expect(await dispatchBeforeUnload()).toBe(true);
+});
+
+test("a broken or expired saved attempt is discarded for a clean start screen", async ({
+  page,
+}) => {
+  await page.addInitScript(() => {
+    localStorage.setItem("cabadrive.exam-attempt.v1", "not-json{ broken");
+  });
+  await page.goto("/");
+  await page.getByRole("button", { name: /Экзамен/ }).click();
+  await expect(page.getByRole("button", { name: "Начать" })).toBeVisible();
+  await expect(page.getByText(/Продолжить попытку/)).toHaveCount(0);
+  expect(await page.evaluate(() => localStorage.getItem("cabadrive.exam-attempt.v1"))).toBeNull();
+  // A well-formed but expired attempt (deadline in the past) is discarded too.
+  await page.addInitScript(() => {
+    localStorage.setItem(
+      "cabadrive.exam-attempt.v1",
+      JSON.stringify({
+        version: 1,
+        questionIds: ["never-a-real-id"],
+        answers: [],
+        startedAt: 1,
+        deadline: 2,
+      }),
+    );
+  });
+  await page.reload();
+  await page.getByRole("button", { name: /Экзамен/ }).click();
+  await expect(page.getByRole("button", { name: "Начать" })).toBeVisible();
+  await expect(page.getByText(/Продолжить попытку/)).toHaveCount(0);
+  expect(await page.evaluate(() => localStorage.getItem("cabadrive.exam-attempt.v1"))).toBeNull();
 });
 
 test("vocabulary and guide are available", async ({ page }) => {
@@ -6192,8 +6354,11 @@ test("primary source reader opens, preserves app flows, and switches Russian/Spa
   await page.getByRole("button", { name: /Учить/ }).click();
   await expect(page.getByTestId("question-card")).toBeVisible();
   await page.getByRole("button", { name: /Экзамен/ }).click();
+  await page.getByRole("button", { name: "Начать" }).click();
   await expect(page.getByText(/45:00|44:59/)).toBeVisible();
   await page.getByRole("button", { name: /Материалы/ }).click();
+  // Leaving an active exam attempt opens the leave guard; confirm to navigate away.
+  await page.getByRole("button", { name: "Выйти" }).click();
   await expect(page.getByRole("heading", { name: topicGuide.titleRu })).toBeVisible();
 });
 

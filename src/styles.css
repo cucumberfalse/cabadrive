@@ -3958,6 +3958,60 @@ small,
   text-align: center;
 }
 
+.exam-start {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.exam-start h2 {
+  margin: 0;
+}
+
+.exam-start p {
+  margin: 0;
+}
+
+.exam-start-format {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 4px 0;
+  padding-left: 20px;
+}
+
+.exam-start .tool-button {
+  align-self: flex-start;
+  padding: 0 18px;
+}
+
+.exam-resume {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border: 1px solid var(--line-strong);
+  border-radius: 8px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.exam-resume p {
+  margin: 0;
+}
+
+.exam-resume-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.exam-resume-actions .tool-button {
+  padding: 0 14px;
+}
+
 .score {
   margin-bottom: 8px;
   font-size: 4rem;
