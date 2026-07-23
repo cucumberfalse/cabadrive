@@ -570,6 +570,41 @@ Cycle PR set.
   `bf028a76` pass records `Analyst validated effective content head: bf028a76…`.
   (feature-request.md is Analyst-owned — not edited here.)
 
+### Merge guard: effective content head vs current PR head
+
+This block is SHA-agnostic so it certifies the current PR head AND any later
+final-validation evidence-only commit, without re-triggering on each new evidence
+commit.
+
+- **Effective content head** (last behaviorally meaningful commit; Architect- and
+  Analyst-validated at the SAME SHA — see the "Current validated head" section
+  above and `feature-request.md`): `bf028a76fdc6cb923e77a6111b5e0316088afed8`.
+- **Evidence-only definition:** a commit on `claude/047-exam-attempt-persistence`
+  after `bf028a76` counts as a final-validation evidence-only commit iff it
+  modifies ONLY `specs/047-exam-attempt-persistence/tasks.md` and/or
+  `specs/047-exam-attempt-persistence/feature-request.md` (validation notes,
+  dispositions, Cycle PR set, this guard block) and touches nothing under `src/`,
+  `tests/`, `index.html`, `docs_project/`, build/lint/CI config, or workflows.
+- **Verification (read-only, re-runnable at any head):**
+  `git diff bf028a76..<current PR head> --name-only` must list only those two
+  evidence files. Confirmed at current PR head `2ad7f71f`
+  (`docs(exam): record final Architect+Analyst validation for bf028a76`): the
+  name-only delta is exactly `tasks.md` + `feature-request.md` — evidence-only.
+  Per AGENTS.md L192–194 (CLAUDE.md "Final Architect and Analyst validation …
+  A later commit may skip recursive role validation only when it is a
+  final-validation evidence-only commit"), such commits skip recursive role
+  validation, and the `bf028a76` Architect/Analyst validation remains current for
+  the current PR head. **Conditional, not a blanket promise:** if the name-only
+  check ever lists anything outside those two files, that commit is NOT
+  evidence-only — the prior validation is stale and must be routed back through
+  role-appropriate final validation before merge.
+- **Merge mechanics:** squash-merge collapses all branch commits into one on
+  `main`; because evidence commits add no `src/`/`tests/`/behavior change, the
+  merged diff equals the validated `bf028a76` content diff. The Orchestrator merge
+  pins to the reviewed/validated head via `--match-head-commit <current PR head>`
+  so a race that pushes a new commit mid-merge aborts rather than merging an
+  unvalidated head.
+
 ### Superseded — prior validated head `15ad01ac` (STALE, kept for history)
 
 - **Architect validation pass: passed** — 2026-07-23T22:30:54Z (T017, superseded
