@@ -1477,6 +1477,46 @@ test("a broken or expired saved attempt is discarded for a clean start screen", 
   expect(await page.evaluate(() => localStorage.getItem("cabadrive.exam-attempt.v1"))).toBeNull();
 });
 
+test("an attempt that expires before the exam tab opens clears the leave guard and beforeunload", async ({
+  page,
+}) => {
+  // App seeds examAttemptActive=true from a valid attempt at load, but it expires
+  // before the user opens the exam tab. On mount ExamView must clear the parent
+  // flag so the guard dialog and beforeunload do not linger on a clean start
+  // screen (FR-A5: guard only while an attempt is genuinely live).
+  await page.clock.install({ time: new Date("2026-01-01T00:00:00Z") });
+  await page.addInitScript((questionId) => {
+    localStorage.setItem(
+      "cabadrive.exam-attempt.v1",
+      JSON.stringify({
+        version: 1,
+        questionIds: [questionId],
+        answers: [],
+        startedAt: Date.now(),
+        deadline: Date.now() + 30_000,
+      }),
+    );
+  }, questions[0].id);
+  await page.goto("/");
+  // The attempt was valid at load (App arms the flag) — now let it expire.
+  await page.clock.runFor(60_000);
+  await page.getByRole("button", { name: /Экзамен/ }).click();
+  // Clean start screen, no resume offer.
+  await expect(page.getByRole("button", { name: "Начать" })).toBeVisible();
+  await expect(page.getByText(/Продолжить попытку/)).toHaveCount(0);
+  // Leaving must NOT trigger the guard dialog now that the flag is cleared.
+  await page.getByRole("button", { name: /Ошибки/ }).click();
+  await expect(page.getByRole("heading", { name: "Прервать экзамен?" })).toHaveCount(0);
+  await expect(page.getByRole("heading", { name: "Ошибки", exact: true })).toBeVisible();
+  // And beforeunload is no longer armed.
+  const prevented = await page.evaluate(() => {
+    const event = new Event("beforeunload", { cancelable: true });
+    window.dispatchEvent(event);
+    return event.defaultPrevented;
+  });
+  expect(prevented).toBe(false);
+});
+
 test("vocabulary and guide are available", async ({ page }) => {
   await page.goto("/");
   await page.getByRole("button", { name: /Словарь/ }).click();

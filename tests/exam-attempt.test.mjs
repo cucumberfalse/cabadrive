@@ -165,6 +165,24 @@ test("parseExamAttempt rejects more answers than questions", () => {
   assert.equal(parseExamAttempt(raw, opts), null);
 });
 
+test("parseExamAttempt rejects a terminal snapshot (every question already answered)", () => {
+  // A finished attempt whose key survived (clear failed / tab killed after the
+  // last answer) must not be resumable: restoring position = answers.length would
+  // put the active render past the last question and dereference undefined.
+  const terminal = JSON.stringify(
+    validSnapshot({
+      questionIds: ["q-1", "q-2"],
+      answers: [examAnswer("q-1", true), examAnswer("q-2", false)],
+    }),
+  );
+  assert.equal(parseExamAttempt(terminal, opts), null);
+  // The boundary just below (one answer short of terminal) is still resumable.
+  const resumable = JSON.stringify(
+    validSnapshot({ questionIds: ["q-1", "q-2"], answers: [examAnswer("q-1", true)] }),
+  );
+  assert.notEqual(parseExamAttempt(resumable, opts), null);
+});
+
 test("parseExamAttempt rejects non-finite startedAt/deadline", () => {
   assert.equal(parseExamAttempt(JSON.stringify(validSnapshot({ startedAt: "x" })), opts), null);
   assert.equal(parseExamAttempt(JSON.stringify(validSnapshot({ deadline: null })), opts), null);

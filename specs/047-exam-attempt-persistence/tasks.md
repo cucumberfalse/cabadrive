@@ -327,9 +327,10 @@ Cycle PR set.
 
 - `node --test tests/exam-attempt.test.mjs` — test-first: **fail** до реализации
   модуля (`ERR_MODULE_NOT_FOUND` / `ERR_TEST_FAILURE`, tests 1 / fail 1). После
-  реализации `src/examAttemptStorage.ts`: **pass 17 / fail 0** (17 test()).
-- `pnpm run test` — `node --test tests/*.test.mjs`: **tests 548, pass 548,
-  fail 0** (базис до слайса: **531**; после: **548** = +17 из
+  реализации `src/examAttemptStorage.ts`: **pass 18 / fail 0** (18 test(); 17
+  исходных + 1 terminal-snapshot rejection из Codex-фикса Finding B).
+- `pnpm run test` — `node --test tests/*.test.mjs`: **tests 549, pass 549,
+  fail 0** (базис до слайса: **531**; после: **549** = +18 из
   `tests/exam-attempt.test.mjs`).
 - `pnpm run quality:fast` — typecheck (`tsc --noEmit`) + eslint
   (`--max-warnings 0`): **pass** (0 ошибок, 0 предупреждений).
@@ -337,10 +338,12 @@ Cycle PR set.
 - `pnpm run build:app` — **pass** (vite build `✓ built in ~4s`; service worker
   сгенерирован); новых зависимостей нет.
 - `pnpm run test:e2e` (эквивалент: `build:app` + `playwright test`, оба проекта)
-  — **132 passed, 0 failed** (базис 120 = 60×2; после: **132 = 66×2**, +12 =
-  6 новых test() × 2 проекта). Разбивка: Desktop Chromium **66** + Pixel 7 **66**.
+  — **134 passed, 0 failed** (базис 120 = 60×2; после: **134 = 67×2**, +14 =
+  7 новых test() × 2 проекта). Разбивка: Desktop Chromium **67** + Pixel 7 **67**.
   Мигрированные экзамен-тесты (`:1273`, `:1301`, `~:6194`) и новые (start-screen,
-  AC-2 resume, guard, decline, beforeunload, negative) зелёные в обоих проектах.
+  AC-2 resume, guard, decline, beforeunload, negative, и Codex-фикс Finding A:
+  attempt-expires-before-exam-tab очищает guard/beforeunload) зелёные в обоих
+  проектах.
 - **Негативный сценарий (обязателен):** unit `parseExamAttempt` — битый/не-JSON,
   `version!=1`, дубли/пустые/неизвестные `questionIds`, невалидные `answers`,
   `answers>questionIds`, нечисловые `startedAt/deadline`, `deadline<=now` (и

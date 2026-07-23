@@ -1132,10 +1132,19 @@ function ExamView({
   const current = examQuestions[position];
 
   useEffect(() => {
-    // Absent/broken/expired saved attempt: ensure the key is gone so a later
-    // reload starts clean. A valid attempt (resumePrompt) keeps its key until the
-    // user resumes, declines, or finishes.
-    if (!savedAttempt && storage) clearExamAttempt(storage);
+    // Reconcile the parent's leave-guard flag with what this mount actually
+    // resolved to. App lazily seeds examAttemptActive from storage, but the
+    // attempt can expire (or be terminal/broken) between that read and this
+    // mount; without this the guard/beforeunload would stay armed on a clean
+    // start screen (FR-A5: guard only while an attempt is genuinely live).
+    if (savedAttempt) {
+      onAttemptActiveChange(true);
+    } else {
+      // Absent/broken/expired/terminal saved attempt: drop the key so a later
+      // reload starts clean, and clear the parent flag.
+      if (storage) clearExamAttempt(storage);
+      onAttemptActiveChange(false);
+    }
     // Mount-only: the initial phase decision must not re-run on later renders.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
