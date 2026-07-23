@@ -8,9 +8,18 @@
   (merge PR #211, слайс 1).
 - Handoff branch/worktree: `claude/047-exam-attempt-persistence` /
   `/Users/chap/devel/cabadrive-claude/repo/.claude/worktrees/047-exam-attempt-persistence`.
-- Cycle PR set: заполняется Implementation Agent/Orchestrator после публикации
-  (PR URL, ветка, head SHA, state, mergeable, назначение
-  `feat(exam): start screen + attempt persistence + leave guard`).
+- Cycle PR set:
+  - Slice 2 (this cycle): **PR #212** —
+    https://github.com/cucumberfalse/cabadrive/pull/212 ; branch
+    `claude/047-exam-attempt-persistence` → base `main`; state OPEN, ready (not
+    draft), mergeable MERGEABLE at publish; subject `feat(exam): start screen,
+    attempt persistence, leave guard`. Implementation content head (all
+    behaviour + code + tests + docs): `1a3a532bcb8718f0797ef8562a909a7ec3a6cfcc`.
+    A single evidence-only follow-up commit adds this Cycle PR set line — it
+    changes no behaviour; the current branch tip is that evidence commit
+    (`git rev-parse HEAD`). Required checks / AI Review (Codex) / final
+    Architect+Analyst validation / merge — Orchestrator. Do NOT merge
+    (squash-only ruleset + Codex gate).
 - Базис счётчиков на `ae5f9804` (перепроверить на HEAD): e2e —
   `app.spec.ts` 56 `test()` + `manual-ticket-placement.spec.ts` 4 = 60 на проект
   × 2 (chromium+mobile) = **120 сценариев**; unit `pnpm run test` — точное число
