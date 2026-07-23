@@ -174,3 +174,53 @@ Append-only секция Analyst; заполняется только по яв�
 Analyst return count в этом work cycle: 0 (гэпов против пользовательского намерения не найдено; счётчик не инкрементируется).
 
 Analyst validated effective content head: 1a3a532bcb8718f0797ef8562a909a7ec3a6cfcc
+
+### Финальная валидация Analyst (СВЕЖАЯ, суперсед) — 2026-07-23, head `15ad01ac`
+
+Предыдущая валидация против `1a3a532b` СУПЕРСЕДИРОВАНА: на PR #212 приземлились два Codex-P2 фикса, effective content head теперь `15ad01acca6df24ae73544b6ba3a397498db5d84`; финальная валидация Architect повторно ПРОШЛА на этом head. Инспектирован реальный diff `6eb02897..15ad01ac` (единственный коммит `15ad01ac` «fix(exam): clear leave-guard flag and reject terminal saved attempt»), а не только резюме.
+
+**Вердикт: PASS.** Оба фикса подтверждены против пользовательского намерения, оба — усиление гарантий без регресса:
+
+- **Фикс 1 — FR-A5 дефект устранён (`src/App.tsx`, mount-effect ExamView).** Раньше эффект только чистил ключ при отсутствии `savedAttempt`, но НЕ синхронизировал родительский `examAttemptActive`. App лениво сидит `examAttemptActive` из storage; если попытка ПРОСРОЧИЛАСЬ, пока приложение оставалось открытым, возврат на вкладку «Экзамен» показывал чистый стартовый экран, НО leave-guard-диалог и `beforeunload` оставались навешенными (родительский флаг «завис» на `true`). Теперь эффект вызывает `onAttemptActiveChange(true)` при наличии резюмируемой попытки и `onAttemptActiveChange(false)` (+ `clearExamAttempt`) при absent/broken/expired/terminal. Пользовательская гарантия восстановлена: guard-диалог и `beforeunload` вооружены ТОЛЬКО пока попытка реально активна/резюмируема — на чистом стартовом экране случайный уход на другую вкладку больше не даёт ложный «Прервать экзамен?» и ложный нативный prompt. Цепочка сидирования (родитель `readExamAttempt` → mount-effect reconcile → `start/resume/decline/finish`) идемпотентна и когерентна.
+- **Фикс 2 — негативный сценарий усилен (`src/examAttemptStorage.ts`, `parseExamAttempt`).** Порог сменён с `answers.length > questionIds.length` на `answers.length >= questionIds.length`: терминальный снапшот (все вопросы отвечены, но ключ выжил — clear не сработал / вкладку убили после последнего ответа) теперь ОТБРАСЫВАЕТСЯ. Раньше такой снапшот проходил валидацию и на `resume()` давал `position = answers.length === questionIds.length` → `examQuestions[position] === undefined` → падение на `current.id`. Теперь — чистый стартовый экран вместо краша. Обещание «битая/терминальная сохранённая попытка никогда не восстанавливается в сломанное состояние» держится и стало строже. Unit-тест «rejects a terminal snapshot (every question already answered)» покрывает отбрасывание + граничный случай (на один ответ меньше терминала — по-прежнему резюмируется).
+
+**Регресса нет — базовые обещания без изменений подтверждены на `15ad01ac`:**
+- **FR-B1 (осознанный старт).** Логика idle-экрана и старта таймера только по «Начать» этими фиксами не тронута; таймер до «Начать» не идёт.
+- **FR-A4 / AC-2 (reload-resume с корректным остатком и сохранёнными ответами).** Персист/резюме/`deadline`-логика не тронута; более строгий терминальный reject НЕ ломает легитимный resume — e2e AC-2 перезагружается при 1 ответе из 40 (далеко ниже терминала), а штатный последний ответ проходит через `record()`→`finish()` с очисткой ключа ДО любой перезагрузки, поэтому терминальный снапшот в норме на resume не попадает.
+- **Private mode / недоступный localStorage.** `safeLocalStorage()` и `try/catch`-обёртки не тронуты; экзамен деградирует мягко, без краша.
+
+**Сверка свидетельств:** unit 18 `test()` (подтверждено прямым grep `tests/exam-attempt.test.mjs`); e2e 67 `test()` = `app.spec.ts` 63 + `manual-ticket-placement.spec.ts` 4, ×2 проекта Playwright = 134 (сверено прямым grep). Гейты зелёные + preflight exit 0 — по свидетельству Orchestrator/Architect (гейты вне scope Analyst; повторно не гонял).
+
+**Две известные ограниченности прежней записи (popstate/hashchange обходят guard-диалог; `beforeunload` ненадёжен на мобильных) остаются в силе и остаются приемлемыми в духе** — настоящая страховка сохранности была и остаётся персист FR-A4; фикс 1 дополнительно устраняет ложное срабатывание guard, но не меняет статус этих ограничений.
+
+Analyst return count в этом work cycle: 0 (гэпов против пользовательского намерения не найдено ни в суперсед-валидации, ни в этой свежей; счётчик не инкрементируется).
+
+Настоящая строка суперседирует более раннюю `Analyst validated effective content head: 1a3a532bcb8718f0797ef8562a909a7ec3a6cfcc`.
+
+Analyst validated effective content head: 15ad01acca6df24ae73544b6ba3a397498db5d84
+
+### Финальная валидация Analyst (СВЕЖАЯ, суперсед round-3) — 2026-07-23, head `bf028a76`
+
+Валидация против `15ad01ac` СУПЕРСЕДИРОВАНА повторно: приземлились ещё три Codex-P2 фикса (Findings C/D/E), effective content head теперь `bf028a76fdc6cb923e77a6111b5e0316088afed8`. Финальная валидация Architect повторно ПРОШЛА на `bf028a76`; Codex перепроверил `bf028a76` и новых проблем кода не нашёл. Обе роли обязаны сойтись на одном SHA — эта валидация приводит Analyst на `bf028a76`. Инспектирован реальный diff `15ad01ac..bf028a76` (единственный коммит `bf028a76`), а не только резюме.
+
+**Вердикт: PASS.** Все три фикса подтверждены против пользовательского намерения — каждый закрывает реальный сценарий тихой порчи/некорректного восстановления, без регресса базовых гарантий:
+
+- **Finding C — рассинхрон сохранённых ответов отбрасывается (`src/examAttemptStorage.ts` `parseExamAttempt`).** Добавлена проверка: `answers.every((answer, index) => answer.mode === "exam" && answer.questionId === questionIds[index])`. Т.к. `position` выводится из `answers.length`, устаревший/чужой снапшот с несовпадающей последовательностью раньше мог резюмироваться на НЕВЕРНОЙ позиции и через `finishExam` записать ЧУЖОЙ ответ в прогресс пользователя. Теперь такой снапшот отбрасывается → чистый стартовый экран. Пропуски (skipped exam answer: пустой `selectedAnswerId`, `mode==="exam"`, `isCorrect false`) проверку проходят — легитимные попытки не ломаются. Негативная гарантия усилена. Unit-тест «rejects answers that do not line up with the question sequence» покрывает mismatch, отклонение non-exam-mode ответа и приём in-sequence.
+- **Finding D — попытка аннулируется при reset/import/undo (`src/App.tsx` `discardActiveExamAttempt()`).** Сброс/замена прогресс-store делает активную попытку принадлежащей «старому профилю». Новая функция чистит выделенный ключ + сбрасывает `examAttemptActive` + бампит `examResetNonce`; `key={examResetNonce}` на `<ExamView>` форсирует remount, чтобы смонтированный экзамен перестал тикать/переписывать попытку в новый профиль. Вызовы вставлены во все три пути замены прогресса: `confirmReset`, import-путь header-notice и `restoreFromUndo`/import-candidate confirm. Закрыта реальная кросс-фичевая дыра консистентности со слайсом 1: после «Сбросить прогресс» (или импорта, или undo-restore) во время/после экзамена перезагрузка больше НЕ предлагает продолжить удалённую попытку, а leave-guard/`beforeunload` разоружены. e2e «resetting progress during an exam clears the attempt and disarms the guard».
+- **Finding E — дедлайн перепроверяется на resume (`src/App.tsx` `resume()`).** Если промпт «Продолжить» провисел открытым дольше дедлайна, клик «Продолжить» раньше входил в active-фазу и timer-effect немедленно «финишировал» попытку по ЧАСТИЧНЫМ сохранённым ответам (некорректная оценка завершённой попытки). Теперь `resume()` при `savedAttempt.deadline <= Date.now()` отбрасывает попытку (clear + idle) ровно как on-mount путь → чистый стартовый экран вместо выставления оценки. e2e «resuming after the deadline discards the attempt instead of grading it».
+
+**Регресса нет — базовые обещания без изменений подтверждены на `bf028a76`:**
+- **FR-B1 (осознанный старт).** Логика idle-экрана/старта таймера только по «Начать» не тронута.
+- **FR-A4 / AC-2 (reload-resume, корректный остаток + сохранённые ответы).** Персист/`deadline`-восстановление не тронуты; новая seq-проверка не затрагивает легитимный снапшот (ответы всегда в порядке `record()`), а recheck дедлайна на resume для непросроченной попытки — no-op; штатный resume проходит как раньше.
+- **FR-A5 (guard/beforeunload только пока попытка реально активна).** Усилено: к mount-reconcile (round-2) добавлено аннулирование при reset/import/undo.
+- **Private mode / недоступный localStorage.** `safeLocalStorage()`/`try/catch` не тронуты; `discardActiveExamAttempt` защищён `if (examStorage)`; экзамен деградирует мягко.
+
+**Сверка свидетельств (прямой grep):** unit 19 `test()` (`tests/exam-attempt.test.mjs`); e2e 69 `test()` = `app.spec.ts` 65 + `manual-ticket-placement.spec.ts` 4, ×2 проекта Playwright = 138. Гейты зелёные + preflight exit 0 — по свидетельству Orchestrator/Architect (гейты вне scope Analyst; повторно не гонял).
+
+**Две известные ограниченности (popstate/hashchange обходят guard-диалог; `beforeunload` ненадёжен на мобильных) остаются в силе и приемлемы в духе** — настоящая страховка сохранности остаётся персист FR-A4.
+
+Analyst return count в этом work cycle: 0 (гэпов против пользовательского намерения не найдено ни в одной из валидаций; счётчик не инкрементируется).
+
+Настоящая строка суперседирует более ранние `Analyst validated effective content head: 15ad01acca6df24ae73544b6ba3a397498db5d84` и `Analyst validated effective content head: 1a3a532bcb8718f0797ef8562a909a7ec3a6cfcc`.
+
+Analyst validated effective content head: bf028a76fdc6cb923e77a6111b5e0316088afed8

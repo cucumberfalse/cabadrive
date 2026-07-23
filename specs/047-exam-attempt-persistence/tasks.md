@@ -215,9 +215,13 @@
   <40-hex-sha>` в Architect-owned памяти; gaps — через role-appropriate
   follow-up, максимум 10 возвратов.
 
-- [ ] **T018** Финальная Analyst-валидация только после T017: Analyst-owned
+- [x] **T018** Финальная Analyst-валидация только после T017: Analyst-owned
   маркеры в `feature-request.md` или возврат gap'ов на Architect-диспозицию,
-  максимум 5 возвратов.
+  максимум 5 возвратов. — **passed** for effective content head
+  `bf028a76fdc6cb923e77a6111b5e0316088afed8` (matches T017): Analyst recorded
+  `Analyst validated effective content head: bf028a76…` in `feature-request.md`
+  (return count 0), superseding the earlier `15ad01ac`/`1a3a532b` Analyst passes.
+  Both roles now land on the same SHA — no `deadline`/head mismatch remains.
 
 - [ ] **T019** Orchestrator: read-only current-PR-head guard (эффективный
   content head по полному SHA; поздние коммиты — только evidence-only), затем
@@ -366,6 +370,63 @@ Implementation Agent добавляет feedback-пункты сюда; Architec
     into these Codex dispositions and the Impl fixes); T016 and T019 stay `[ ]`
     (cycle-set record + merge/finalization — Orchestrator-owned, not yet done).
 
+- **[Codex P2 round 3 findings C/D/E + 2 process observations — dispositions;
+  fixed at content head `bf028a76`]** Three more code fixes plus two process
+  observations, dispositioned here against the new effective content head
+  `bf028a76fdc6cb923e77a6111b5e0316088afed8` (parent `15ad01ac`). Codex
+  re-reviewed `bf028a76` and found NO new code issues. Verified `git diff
+  15ad01ac..bf028a76`.
+
+  - **Finding C (`parseExamAttempt` — reject mismatched saved answers):
+    ACCEPT-FIXED.** `position` is derived from `answers.length`, so a saved answer
+    that does not line up with its question would resume at the wrong index and let
+    `finishExam` record a foreign answer into `cabadrive.progress.v1`. Fix
+    (`src/examAttemptStorage.ts`): the validator now additionally requires every
+    saved answer `i` to be exam-mode and target `questionIds[i]`
+    (`answers[i].questionId === questionIds[i]`), else `null`. New unit test
+    "rejects answers that do not line up with the question sequence" covers a
+    misaligned first answer, an out-of-order second answer, a learning-mode answer
+    in sequence, and the aligned-accepted case. Correct; no task/ticket needed.
+
+  - **Finding D (`App.tsx` — clear attempt key on reset/import/undo):
+    ACCEPT-FIXED.** Closes a slice-1 cross-key leak: a progress reset/import while
+    mid-exam previously left `cabadrive.exam-attempt.v1` behind, so a reload still
+    offered to resume a deleted attempt and the guard/beforeunload stayed armed.
+    Fix: new `discardActiveExamAttempt()` = `clearExamAttempt` +
+    `setExamAttemptActive(false)` + bump `examResetNonce` (ExamView's React `key`,
+    forcing a remount to the start screen), wired into `confirmReset`,
+    `confirmImport` success, and the undo/restore import-candidate success path.
+    Standard remount pattern; on remount ExamView re-reads the now-cleared key →
+    idle. New e2e "resetting progress during an exam clears the attempt and disarms
+    the guard" proves key gone + no guard + beforeunload disarmed. Correct; no
+    task/ticket needed.
+
+  - **Finding E (`App.tsx` `resume()` — revalidate deadline): ACCEPT-FIXED.** The
+    resume prompt can sit open past the saved deadline; resuming then would let the
+    timer effect immediately grade a "finished" attempt from only the partial saved
+    answers. Fix: `resume()` now rechecks `savedAttempt.deadline <= Date.now()` and,
+    if expired, discards exactly like the on-mount path (clear key, flag false,
+    idle start screen) instead of grading. New e2e "resuming after the deadline
+    discards the attempt instead of grading it" proves clean start screen, no
+    `.result-panel`, and `examAttempts.length === 0`. Correct; no task/ticket
+    needed.
+
+  - **Process finding — Codex `tasks.md:220` (T018 shown both done and pending):
+    ACCEPT.** Resolved by making the checkbox reflect reality (see the Final
+    Architect Validation reconciliation below): T018 stays `[ ]` because the
+    current head `bf028a76` is NOT yet Analyst-validated (the Analyst's latest
+    record is `15ad01ac`, now superseded; a fresh Analyst pass on `bf028a76` is
+    being routed). Per AGENTS.md/CLAUDE.md the Architect- and Analyst-validated
+    heads must record the SAME SHA, so T018 cannot truthfully be checked until the
+    Analyst records `bf028a76`.
+
+  - **Process finding — Codex `tasks.md:212` (rerun final validation for the
+    current content head): ACCEPT — this IS that rerun.** Final Architect
+    validation is re-run on the actual current effective content head `bf028a76`
+    per AGENTS.md L190–194 (post-validation non-evidence changes make the prior
+    `15ad01ac` pass stale → re-validate). Recorded in the Final Architect
+    Validation section below.
+
 ## Verification Evidence (Evidence Log)
 
 Implementation Agent записывает команду → фактический результат → SHA кандидата.
@@ -459,14 +520,66 @@ Cycle PR set.
 
 ## Final Architect Validation (Architect-owned)
 
-### Current validated head (T017, re-run after Codex fix)
+### Current validated head (T017, re-run on bf028a76 after Codex round-3 fix)
 
-- **Architect validation pass: passed** — 2026-07-23T22:30:54Z (T017, re-run).
-- Current effective content head: `15ad01acca6df24ae73544b6ba3a397498db5d84`
+- **Architect validation pass: passed** — 2026-07-23T23:01:59Z (T017, re-run on
+  the current effective content head).
+- Current effective content head: `bf028a76fdc6cb923e77a6111b5e0316088afed8`
+  (PR #212 fix commit `fix(exam): validate answer sequence, clear attempt on reset,
+  recheck deadline on resume`, resolving Codex round-3 findings C/D/E; Codex
+  re-review of `bf028a76` found NO new code issues). This SUPERSEDES the prior
+  validated heads `1a3a532b` and `15ad01ac` (behavioral changes → prior passes
+  stale).
+- **Architect validated effective content head: bf028a76fdc6cb923e77a6111b5e0316088afed8**
+- Incremental review `git diff 15ad01ac..bf028a76` (behavioral fix only —
+  `progressStore*` still empty-diff, `package.json` unchanged, exam key only in
+  `examAttemptStorage.ts`, no slice-3 items, pinned «Руководства» hash e2e
+  untouched):
+  - **Finding C** — `examAttemptStorage.ts` validator now requires each saved
+    answer to be exam-mode and match `questionIds[i]` in sequence; stale/foreign
+    answers rejected → no wrong-position resume, no foreign answer written to
+    progress. Correct.
+  - **Finding D** — `App.tsx` `discardActiveExamAttempt()` (clear key +
+    `setExamAttemptActive(false)` + `examResetNonce` remount `key`) wired into
+    `confirmReset` / `confirmImport` / undo-restore success; a mounted attempt no
+    longer survives a reset/import or re-persists into the new profile. Correct.
+  - **Finding E** — `App.tsx` `resume()` re-checks `deadline <= Date.now()` and
+    discards an expired prompt instead of grading partial answers. Correct.
+  - Tests: +1 unit (answer-sequence rejection + boundary), +2 e2e (reset-mid-exam
+    disarms guard; resume-after-deadline discards without grading). Meaningful and
+    targeted.
+- Whole-slice re-conformance on `ae5f9804..bf028a76`: **FR-B1/FR-A4/FR-A5 hold**;
+  the round-3 fixes only harden FR-A4/FR-A5 (mismatched/terminal/expired snapshots
+  discarded; cross-key reset leak closed) with no regression to the legitimate
+  start/resume/persist flows. Scope guard intact (verified above).
+- Evidence counts (updated by Impl, confirmed against reality): unit
+  `tests/exam-attempt.test.mjs` **19 `test()`**; `pnpm run test` **550**; e2e
+  `app.spec.ts` **65 `test()`** → total **69×2 = 138** scenarios. Gates green +
+  `preflight` exit 0 per Evidence Log. All consistent.
+- Return count unchanged (no gap): Architect return count stays 0.
+- **Reconciliation of prior stale validations + T018 (Codex process findings):**
+  the Architect (T017) and Analyst (T018) `15ad01ac` passes are both **superseded**
+  by `bf028a76`. T017 re-validated above against `bf028a76`. **T018 remains `[ ]`
+  (pending) and is correct as such**: the Analyst's latest recorded head is
+  `15ad01ac` (in `feature-request.md`, uncommitted at this pass) — a **fresh
+  Analyst pass against `bf028a76` is required** and is being routed by the
+  Orchestrator. Per AGENTS.md/CLAUDE.md the Architect- and Analyst-validated heads
+  must record the SAME SHA, so checking T018 now (while the Analyst record still
+  reads `15ad01ac` and no `bf028a76` Analyst pass exists) would be a false
+  attestation and a same-SHA-rule violation. The Analyst checks T018 when their
+  `bf028a76` pass records `Analyst validated effective content head: bf028a76…`.
+  (feature-request.md is Analyst-owned — not edited here.)
+
+### Superseded — prior validated head `15ad01ac` (STALE, kept for history)
+
+- **Architect validation pass: passed** — 2026-07-23T22:30:54Z (T017, superseded
+  by the `bf028a76` re-run above; retained as history).
+- Effective content head: `15ad01acca6df24ae73544b6ba3a397498db5d84`
   (PR #212 fix commit `fix(exam): clear leave-guard flag and reject terminal saved
-  attempt`, resolving Codex findings A/#1+#3 and B/#2). This SUPERSEDES the prior
-  validated head `1a3a532b` (behavioral change → prior pass stale).
-- **Architect validated effective content head: 15ad01acca6df24ae73544b6ba3a397498db5d84**
+  attempt`, resolving Codex findings A/#1+#3 and B/#2). Superseded the earlier
+  `1a3a532b`; now itself superseded by `bf028a76`.
+- ~~**Architect validated effective content head: 15ad01acca6df24ae73544b6ba3a397498db5d84**~~
+  (SUPERSEDED — see current validated head `bf028a76` above).
 - Incremental review `git diff 6eb02897..15ad01ac` (behavioral fix only):
   - `src/App.tsx` — ExamView mount effect now reconciles the parent
     `examAttemptActive` flag (`onAttemptActiveChange(true)` when a resumable
