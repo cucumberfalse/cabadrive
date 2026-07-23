@@ -7,8 +7,13 @@
   (merge PR #210).
 - Handoff branch/worktree: `claude/046-progress-reset-safety` /
   `/Users/chap/devel/cabadrive-claude/repo/.claude/worktrees/046-progress-reset-safety`.
-- Cycle PR set: PR ещё не создан; после публикации записать сюда URL, ветку,
-  полный head SHA, назначение, статус и включение в финальную валидацию.
+- Cycle PR set: единственный PR слайса — #211
+  <https://github.com/cucumberfalse/cabadrive/pull/211>, ветка
+  `claude/046-progress-reset-safety`, base `main`, head SHA
+  `24426edcba823761caa39cffc5139f8a3577ab7c`, state OPEN, mergeable=MERGEABLE.
+  Назначение: feat(progress) reset confirmation/undo/export-import (FR-A1..A3).
+  Включён в финальную валидацию. (Данная запись PR-метаданных —
+  evidence-only коммит поверх effective content head.)
 - Parallel-work rule: сохранять все чужие worktree, ветки, коммиты, PR,
   dirty diffs и процессную память; не изменять `feature-request.md` вне
   Analyst-owned секций.
@@ -267,5 +272,7 @@ committed content head и PR-метаданные добавляются пос�
   verify:quality-negative, `test` (529), `build`, `test:e2e` (118 passed,
   1.3m). Прогон в форграунде из worktree, дважды подряд с одинаковым
   результатом.
-- PR URL / head SHA / состояние checks и review threads — (после публикации,
-  ниже в Cycle PR set)
+- PR URL / head SHA / состояние checks и review threads — PR #211,
+  <https://github.com/cucumberfalse/cabadrive/pull/211>, head
+  `24426edcba823761caa39cffc5139f8a3577ab7c`, state OPEN, mergeable=MERGEABLE;
+  чеки/threads ведёт Orchestrator (не мержу, не резолвлю).
