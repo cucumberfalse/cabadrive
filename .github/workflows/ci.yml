@@ -140,7 +140,7 @@ jobs:
           curl -sI "http://localhost:${CABADRIVE_HOST_PORT}/" | grep -qi 'x-content-type-options: nosniff'
           curl -sI "http://localhost:${CABADRIVE_HOST_PORT}/" | grep -qi 'content-security-policy: default-src'
           # FR-1 (NS-2): non-hashed /content/assets/ must NOT be immutable, must carry max-age=86400
-          img=$(find content/assets -type f \( -name '*.jpg' -o -name '*.png' -o -name '*.webp' \) | head -1)
+          img=$(find content/assets -type f \( -name '*.jpg' -o -name '*.png' -o -name '*.webp' \) -print -quit)
           test -n "$img"
           curl -sI "http://localhost:${CABADRIVE_HOST_PORT}/${img}" | grep -qi 'cache-control: public, max-age=86400, stale-while-revalidate=604800'
           ! curl -sI "http://localhost:${CABADRIVE_HOST_PORT}/${img}" | grep -qi 'immutable'

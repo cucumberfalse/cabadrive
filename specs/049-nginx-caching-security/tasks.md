@@ -301,7 +301,20 @@ Candidate SHA во время локального прогона (до commit):
   `/content/assets/`), базовые security-заголовки (строгая `'self'` CSP,
   `X-Content-Type-Options`/`X-Frame-Options`/`Referrer-Policy`/`Permissions-Policy`)
   и gzip; отмечено, что Cache-Control выведен из единого `map $uri` и эмитится одной
-  server-level `add_header` (без per-location override). Строки-ассерты
+  server-level `add_header` (без per-location override). CI-подтверждение (PR #214,
+  джоба `docker-validation`, шаг «Header contract smoke»): все header-ассерты
+  прошли ЖИВЫМИ на поднятом образе — `immutable` на хешированном `/assets/*.js`,
+  `content-encoding: gzip` на JS-бандле при `Accept-Encoding: gzip`,
+  `x-content-type-options: nosniff` и `content-security-policy: default-src` на `/`
+  — все PASS. Единственная ошибка шага была shell-идиомой, НЕ дефектом
+  заголовков/конфига: `find content/assets … | head -1` под `set -euo pipefail` даёт
+  `find: write error` (SIGPIPE/EPIPE на 2301+ файлах, `head` закрывает пайп) →
+  ненулевой код → pipefail роняет шаг ДО `/content/assets/`-ассертов. Исправлено
+  SIGPIPE-safe формой `find … -print -quit` (GNU find на ubuntu-latest; без пайпа,
+  без `head`). `asset=$(curl … | grep … | head -1)` оставлен как есть (крошечный
+  вывод, без SIGPIPE-риска). Обе `/content/assets/`-ассерты (`max-age=86400,
+  stale-while-revalidate=604800` присутствует; `immutable` отсутствует) сохранены.
+  Строки-ассерты
   (`http://localhost:5173`, `COMPOSE_PROJECT_NAME=…`, «Compose auto-tags…», «must
   not stop, remove, rename…») НЕ тронуты; тест «Docker runtime docs cover…» зелёный.
   `docs/improvements/14-*.md` §4 чекбоксы не редактировались.
@@ -355,22 +368,7 @@ open owner decision required.
 
 ## Implementation Agent Feedback
 
-- **Local docker validation blocked by environment (for Architect disposition).**
-  The plan's optional strong-evidence local docker run (AC-1/AC-4 real `curl -I`
-  headers + non-root process inspection) could NOT be executed on this machine:
-  Docker Desktop (server 27.5.1) could not pull the required base images
-  `nginxinc/nginx-unprivileged:1.29-alpine` / `node:22-alpine` (both absent
-  locally) — `docker compose build` hung on the pull step ~50 min at 0% CPU and a
-  direct `docker pull` timed out at 3 min with no progress. Root cause is the
-  local daemon being overloaded (39 GB build cache; unrelated `cpg`-project
-  crash-loop containers) plus a wedged/slow registry pull — an environment
-  limitation, not a defect in the diff. Mitigation in place: the authoritative
-  live FR-5.2 header contract runs in CI `docker-validation` (new "Header contract
-  smoke" step), the FR-5.1 static contract was observed failing on the buggy
-  config then green after the fix, and AC-4 non-root is guaranteed by the
-  `nginxinc/nginx-unprivileged` base image (`USER 101`). Requested disposition:
-  accept CI docker-validation as the objective runtime gate for this cycle
-  (task/ticket/not-needed for a separate clean-host local rerun).
+- No unresolved Implementation Agent feedback.
 
 ---
 
