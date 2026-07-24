@@ -330,3 +330,31 @@ Analyst return count в этом work cycle: 0 (гэпов против поль
 Analyst validation pass: passed
 Final Analyst validation completed at: 2026-07-24T04:01:00Z
 Analyst validated effective content head: 9711abe9a0042b89adcc9a4510e475478e821f40
+
+### Финальная валидация Analyst (СВЕЖАЯ, суперсед round-8, merge-gate markers) — 2026-07-24, head `19ef6427`
+
+Валидация против `9711abe9` СУПЕРСЕДИРОВАНА: приземлился финальный Codex-фикс (Finding J), effective content head теперь `19ef6427572179163e6d12e63e1dbbe615741028` (parent `857f17a3`). Финальная валидация Architect повторно ПРОШЛА на `19ef6427` (`Final Architect validation completed at: 2026-07-24T04:30:00Z`); обе роли сходятся на этом SHA. Инспектирован реальный diff `857f17a3..19ef6427` (единственный коммит `19ef6427` «fix(exam): reject truncated saved exam attempts»).
+
+**Вердикт: PASS.** Finding J подтверждён против пользовательского намерения — закрывает возможность оценить фиктивный укороченный экзамен из битого/устаревшего ключа, без регресса нормального потока:
+
+- **Finding J — `parseExamAttempt` отбрасывает усечённые/раздутые снапшоты (`src/examAttemptStorage.ts`).** Сигнатура `parseExamAttempt`/`readExamAttempt` получила `questionCount`; добавлены проверки `questionIds.length !== opts.questionCount` (усечённый ИЛИ раздутый набор → reject) и `answers.length > opts.questionCount` (→ reject). Все ЧЕТЫРЕ call-site `readExamAttempt` в `App.tsx` (строки 1128, 5266, 5352, 5377) передают `questionCount: data.examFormat.questionCount`. Пользовательская гарантия: повреждённый/старого-формата/усечённый `cabadrive.exam-attempt.v1` (например 1 `questionId`, когда экзамен ждёт 40) теперь ОТБРАСЫВАЕТСЯ → чистый стартовый экран; он НИКОГДА не оценит фиктивный экзамен из 1 вопроса и не запишет некорректный total завершённой попытки в прогресс через `finishExam`. e2e «a truncated saved attempt (fewer questions than the exam) is discarded, not graded» (1 из 40 → чистый старт, ключ очищен, ноль ложных `examAttempts`) + unit «rejects a truncated or oversized questionIds set (Finding J)» (усечённый/раздутый reject, full-length accept) + unit «rejects more answers than the expected question count».
+
+Когерентность: легитимная попытка всегда персистит полный набор из `start()` (`selectExamSet` возвращает `questionCount` вопросов), поэтому у активной in-progress попытки `questionIds.length === questionCount` — новая проверка её не задевает; AC-2 reload-resume работает. Существующий unit-набор адаптирован к `optsFor(questionCount)` (дефолтный снапшот на 3 questionId) — это адаптация теста под новую сигнатуру, не изменение поведения.
+
+**Регресса нет — базовые обещания без изменений подтверждены на `19ef6427`:**
+- **FR-B1 (осознанный старт).** idle/старт по «Начать» не тронуты.
+- **FR-A4 / AC-2 (reload-resume, корректный остаток + сохранённые ответы).** Полноразмерная in-progress попытка проходит валидацию как раньше; resume/`deadline`-восстановление не тронуты.
+- **FR-A5 — честный + чистый guard только пока попытка реально активна:** honest wording (F), discard-on-guard-leave (G), clear-stale-on-failed-write (H), disarm-on-expiry-while-away (I) — все в силе.
+- **Graceful degradation + защита от усечения/порчи (J):** экзамен идёт в памяти без падения; ни битый, ни усечённый, ни раздутый снапшот не восстанавливаются в сломанное/фиктивное состояние.
+
+**Сверка свидетельств (прямой grep):** unit 22 `test()` (`tests/exam-attempt.test.mjs`; 553 суб-ассерта total по прогону); e2e 75 `test()` = `app.spec.ts` 71 + `manual-ticket-placement.spec.ts` 4, ×2 проекта = 150. Гейты зелёные + preflight exit 0 — по свидетельству Orchestrator/Architect (гейты вне scope Analyst; повторно не гонял).
+
+**Две известные ограниченности (popstate/hashchange обходят guard-диалог; `beforeunload` ненадёжен на мобильных) остаются в силе и приемлемы в духе** — настоящая страховка сохранности остаётся персист FR-A4.
+
+Analyst return count в этом work cycle: 0 (гэпов против пользовательского намерения не найдено ни в одной из валидаций; счётчик не инкрементируется).
+
+Настоящая запись суперседирует ВСЕ более ранние Analyst-пассы (`9711abe9`, `be445839`, `bcec92ee`, `6e4aca12`, `bf028a76`, `15ad01ac`, `1a3a532b`).
+
+Analyst validation pass: passed
+Final Analyst validation completed at: 2026-07-24T04:53:30Z
+Analyst validated effective content head: 19ef6427572179163e6d12e63e1dbbe615741028
