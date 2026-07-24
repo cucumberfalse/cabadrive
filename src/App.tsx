@@ -5627,6 +5627,12 @@ export function App() {
         onConfirm={() => {
           const target = pendingLeaveView;
           setPendingLeaveView(undefined);
+          // A persisted attempt survives the leave and resumes on return (FR-A5).
+          // An unpersisted attempt (storage unavailable / failed write) is already
+          // gone the moment ExamView unmounts, so discard its key + guard flag —
+          // otherwise a stale older snapshot could offer a misleading resume and
+          // beforeunload would keep firing until the exam tab is reopened.
+          if (!examAttemptPersisted) discardActiveExamAttempt();
           if (target) selectView(target);
         }}
         onCancel={() => setPendingLeaveView(undefined)}

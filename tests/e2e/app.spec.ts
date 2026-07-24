@@ -1514,6 +1514,80 @@ test("when the browser cannot save exam progress, the leave guard warns honestly
   await expect(page.getByText("2 / 40")).toBeVisible();
 });
 
+test("leaving an unsaved exam via the guard discards it — no stale resume, beforeunload disarmed", async ({
+  page,
+}) => {
+  await page.addInitScript(() => {
+    const proto = Object.getPrototypeOf(window.localStorage);
+    proto.setItem = () => {
+      throw new Error("QuotaExceededError");
+    };
+  });
+  await page.goto("/");
+  await page.getByRole("button", { name: /Экзамен/ }).click();
+  await page.getByRole("button", { name: "Начать" }).click();
+  await page.getByRole("button", { name: "Пропустить" }).click();
+  await expect(page.getByText("2 / 40")).toBeVisible();
+  // Leave via the guard (honest wording) — the in-memory attempt is unrecoverable.
+  await page.getByRole("button", { name: /Ошибки/ }).click();
+  const dialog = page.getByRole("dialog", { name: "Прервать экзамен?" });
+  await expect(dialog).toContainText("Этот браузер не сохраняет прогресс экзамена");
+  await dialog.getByRole("button", { name: "Выйти" }).click();
+  await expect(page.getByRole("heading", { name: "Ошибки", exact: true })).toBeVisible();
+  // (b) beforeunload no longer prevents unload after leaving.
+  const preventedAfterLeave = await page.evaluate(() => {
+    const event = new Event("beforeunload", { cancelable: true });
+    window.dispatchEvent(event);
+    return event.defaultPrevented;
+  });
+  expect(preventedAfterLeave).toBe(false);
+  // (a) Returning to the exam shows a clean start screen — no stale resume.
+  await page.getByRole("button", { name: /Экзамен/ }).click();
+  await expect(page.getByRole("button", { name: "Начать" })).toBeVisible();
+  await expect(page.getByText(/Продолжить попытку/)).toHaveCount(0);
+});
+
+test("leaving after a failed re-save discards the older saved snapshot (no stale resume)", async ({
+  page,
+}) => {
+  // Allow the first exam-key write (start) to succeed, then fail every later one:
+  // an older snapshot lands in storage while the live attempt becomes unsaved.
+  await page.addInitScript(() => {
+    const proto = Object.getPrototypeOf(window.localStorage);
+    const realSet = proto.setItem;
+    let allowed = 1;
+    proto.setItem = function (key: string, value: string) {
+      if (key === "cabadrive.exam-attempt.v1") {
+        if (allowed <= 0) throw new Error("QuotaExceededError");
+        allowed -= 1;
+      }
+      return realSet.call(this, key, value);
+    };
+  });
+  await page.goto("/");
+  await page.getByRole("button", { name: /Экзамен/ }).click();
+  await page.getByRole("button", { name: "Начать" }).click();
+  // The start save succeeded, so an older 0-answer snapshot is now in storage.
+  expect(
+    await page.evaluate(() => window.localStorage.getItem("cabadrive.exam-attempt.v1")),
+  ).not.toBeNull();
+  // This answer's re-save fails → the live attempt is no longer persisted.
+  await page.getByRole("button", { name: "Пропустить" }).click();
+  await expect(page.getByText("2 / 40")).toBeVisible();
+  // Leaving via the guard must drop the stale older snapshot, not offer it back.
+  await page.getByRole("button", { name: /Ошибки/ }).click();
+  const dialog = page.getByRole("dialog", { name: "Прервать экзамен?" });
+  await expect(dialog).toContainText("Этот браузер не сохраняет прогресс экзамена");
+  await dialog.getByRole("button", { name: "Выйти" }).click();
+  await expect(page.getByRole("heading", { name: "Ошибки", exact: true })).toBeVisible();
+  expect(
+    await page.evaluate(() => window.localStorage.getItem("cabadrive.exam-attempt.v1")),
+  ).toBeNull();
+  await page.getByRole("button", { name: /Экзамен/ }).click();
+  await expect(page.getByRole("button", { name: "Начать" })).toBeVisible();
+  await expect(page.getByText(/Продолжить попытку/)).toHaveCount(0);
+});
+
 test("an attempt that expires before the exam tab opens clears the leave guard and beforeunload", async ({
   page,
 }) => {

@@ -477,15 +477,17 @@ Cycle PR set.
 - `pnpm run build:app` — **pass** (vite build `✓ built in ~4s`; service worker
   сгенерирован); новых зависимостей нет.
 - `pnpm run test:e2e` (эквивалент: `build:app` + `playwright test`, оба проекта)
-  — **140 passed, 0 failed** (базис 120 = 60×2; после: **140 = 70×2**, +20 =
-  10 новых test() × 2 проекта). Разбивка: Desktop Chromium **70** + Pixel 7 **70**.
+  — **144 passed, 0 failed** (базис 120 = 60×2; после: **144 = 72×2**, +24 =
+  12 новых test() × 2 проекта). Разбивка: Desktop Chromium **72** + Pixel 7 **72**.
   Мигрированные экзамен-тесты (`:1273`, `:1301`, `~:6194`) и новые (start-screen,
   AC-2 resume, guard, decline, beforeunload, negative, Codex Finding A:
   attempt-expires-before-exam-tab очищает guard/beforeunload, Codex Finding D:
   reset-во-время-экзамена очищает ключ/guard, Codex Finding E:
   resume-после-дедлайна отбрасывает попытку без grading, Codex Finding F:
   недоступный localStorage → guard предупреждает честно «не сохраняется/будет
-  потеряно») зелёные в обоих проектах.
+  потеряно», Codex Finding G: уход по «Выйти» при несохранённой попытке
+  отбрасывает её (нет ложного resume, `beforeunload` разоружён) + случай
+  older-snapshot-then-failed-resave) зелёные в обоих проектах.
 - **Негативный сценарий (обязателен):** unit `parseExamAttempt` — битый/не-JSON,
   `version!=1`, дубли/пустые/неизвестные `questionIds`, невалидные `answers`,
   `answers>questionIds`, нечисловые `startedAt/deadline`, `deadline<=now` (и
@@ -558,6 +560,22 @@ Cycle PR set.
   localStorage-double (`setItem` throws): экзамен идёт, guard вооружён, текст
   честный; существующий положительный guard-тест дополнительно проверяет
   «Попытка сохранена».
+- **Codex review round 4 (finding G, follow-on от F) — исправлено:** обработчик
+  подтверждения guard («Выйти») теперь ветвится по `examAttemptPersisted`. Для
+  сохранённой попытки (`true`) поведение прежнее — НЕ очищаем, попытка
+  резюмируется на возврате (дизайн FR-A5). Для несохранённой (`false`: недоступный
+  localStorage / упавшая запись) уход по «Выйти» вызывает
+  `discardActiveExamAttempt()` (очистка `cabadrive.exam-attempt.v1` +
+  `examAttemptActive=false` + `examAttemptPersisted=false`) — иначе (1) более
+  старый снапшот от прошлой успешной записи предложил бы ложный/устаревший resume
+  и (2) `beforeunload` продолжал бы срабатывать, пока пользователь снова не зайдёт
+  на «Экзамен». In-memory-попытка при размонтировании `ExamView` уже потеряна,
+  поэтому отбрасывание корректно. Scope: только confirm-leave-обработчик в App
+  (переиспользован существующий `discardActiveExamAttempt`); persisted-путь не
+  тронут; схема store не тронута. Покрыто двумя e2e (несохранённый уход → чистый
+  старт + `beforeunload` разоружён; older-snapshot-then-failed-resave → нет
+  устаревшего resume, ключ очищен); положительный тест «leaving an active
+  exam…keeps the attempt for resume» остаётся зелёным.
 - Иных dead ends / accepted known issues нет.
 
 ## Final Architect Validation (Architect-owned)
