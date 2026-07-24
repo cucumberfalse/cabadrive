@@ -1317,6 +1317,35 @@ test("exam timeout persists exactly one completed attempt", async ({ page }) => 
   await expect.poll(storedAttempts).toBe(1);
 });
 
+test("an answer submitted after the deadline is rejected and not counted", async ({ page }) => {
+  await page.clock.install({ time: new Date("2026-01-01T00:00:00Z") });
+  await page.goto("/");
+  await page.getByRole("button", { name: /Экзамен/ }).click();
+  await page.getByRole("button", { name: "Начать" }).click();
+  // One in-time answer (skip q1).
+  await page.getByRole("button", { name: "Пропустить" }).click();
+  await expect(page.getByText("2 / 40")).toBeVisible();
+  // Jump Date past the 45-min deadline WITHOUT advancing the fake-timer queue, so
+  // the interval-driven finish has NOT fired yet (suspended/throttled-tab case).
+  await page.clock.setFixedTime(new Date("2026-01-01T00:46:00Z"));
+  // Attempt a late skip: record() must reject it and grade on the in-time answer.
+  await page.getByRole("button", { name: "Пропустить" }).click();
+  await expect(page.getByText(/Пробный экзамен сдан|Нужно повторить/)).toBeVisible();
+  // Only the single in-time answer was recorded; the post-deadline skip was dropped.
+  const recordedAnswers = await page.evaluate(
+    () =>
+      JSON.parse(localStorage.getItem("cabadrive.progress.v1") || '{"answers":[]}').answers.length,
+  );
+  expect(recordedAnswers).toBe(1);
+  const attempts = await page.evaluate(
+    () =>
+      JSON.parse(localStorage.getItem("cabadrive.progress.v1") || '{"examAttempts":[]}')
+        .examAttempts.length,
+  );
+  expect(attempts).toBe(1);
+  expect(await page.evaluate(() => localStorage.getItem("cabadrive.exam-attempt.v1"))).toBeNull();
+});
+
 test("exam start screen shows the format and holds the timer until Начать (FR-B1)", async ({
   page,
 }) => {

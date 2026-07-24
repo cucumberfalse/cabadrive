@@ -1258,6 +1258,16 @@ function ExamView({
   }
 
   function record(answer: ProgressAnswer) {
+    // Enforce the absolute deadline at submission time. A suspended/throttled tab
+    // (or an answer in the gap before the next 1s tick) could otherwise slip a
+    // post-deadline answer/skip into the score before the interval-driven finish
+    // runs. If already expired, reject the late input and grade on what was
+    // submitted in time — the interval effect becomes a backstop. finish() is
+    // idempotent via finishGuard, so this never double-finishes.
+    if (Date.now() >= deadline) {
+      finish(examQuestions, answers);
+      return;
+    }
     const nextAnswers = [...answers, answer];
     const persisted = persist(examQuestions, nextAnswers, startedAt, deadline);
     if (nextAnswers.length >= examQuestions.length) finish(examQuestions, nextAnswers);
