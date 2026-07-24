@@ -1,0 +1,162 @@
+# Feature Request: Корректность fetch-обработчика service worker + unit-тесты текста SW (ТЗ-13, шаг 1)
+
+## Intake Metadata
+
+- Feature ID: `048-service-worker-fetch-correctness`
+- Роль intake: Analyst
+- Назначенный worktree: `/Users/chap/devel/cabadrive-claude/repo/.claude/worktrees/048-service-worker-fetch-correctness`
+- Назначенная ветка: `claude/048-service-worker-fetch-correctness`
+- Verified base от Orchestrator: `origin/main` = `9de3d419772cb9b971cc01299fa4f251b86c08a9` (merge PR #212 «feat(exam): start screen + active-attempt persistence + leave guard» — слайс 2 ТЗ-P1).
+- Подтверждение базы при intake: локальный `HEAD` worktree = `9de3d419772cb9b971cc01299fa4f251b86c08a9` = назначенный base; дерево чистое до записи этого артефакта (`git status --short` пуст).
+- Дата intake: 2026-07-24
+- Parallel-work warning: возможна параллельная работа других агентов в соседних worktree/ветках/PR. Их dirty diffs, ветки, коммиты, PR и процессную память сохранять; не мутировать.
+- Scope Analyst: только этот intake-артефакт. Никаких `spec.md`, `plan.md`, `tasks.md`, кода, тестов, коммитов, push, PR, ревью, мержей.
+
+## Исходный запрос и выбор приоритета
+
+Владелец репозитория попросил (по-русски): «Выбери в improvements в порядке приоритета самую важную нереализованную доработку и реализуй». Значит — взять высший по приоритету нереализованный пункт `docs/improvements/` в рекомендованном порядке и реализовать его по гайдлайнам проекта.
+
+По «Рекомендуемой последовательности» этапа 1 (`docs/improvements/README.md`, строки 45–46: «…ТЗ-P1 слайсы 1–2 (потеря данных, поверх store), **ТЗ-13 шаг 1 (баги fetch SW)**, ТЗ-14 (nginx)») уже реализованы: ТЗ-22 (#208), ТЗ-16 (#209), ТЗ-06 (#210), ТЗ-P1 слайс 1 (#211), ТЗ-P1 слайс 2 (#212). Следующий нереализованный пункт этапа 1 — **ТЗ-13 шаг 1** — «маленький безопасный PR» из плана `docs/improvements/13-service-worker-reliability.md` §4 (строка 40): **FR-4 (корректность fetch-обработчика) + FR-7 (unit-тесты текста генерируемого SW)**.
+
+Данный intake оформляет ровно **ТЗ-13, шаг 1 плана: FR-4 + FR-7** как один work cycle: одна ветка, один PR. Шаги 2/3/4 того же ТЗ-13 (цикл обновления + баннер = FR-3; двухфазный прекеш + reuse = FR-1/FR-2/FR-5; тонкий no-op `public/sw.js` + guard-тест = FR-6) и все прочие требования ТЗ-13 — **вне scope** и оформляются отдельными циклами.
+
+## Контекст продукта и проблема
+
+Cabadrive — статический local-first React/Vite тренажёр теории вождения CABA для русскоязычных пользователей; бэкенда нет, приложение спроектировано как оффлайн-способная PWA. Service worker не пишется вручную, а **генерируется поверх собранного `dist`** скриптом `scripts/generate-service-worker.mjs` (функция `createServiceWorkerBody` собирает текст SW, `generateServiceWorker` пишет `dist/sw.js`). ТЗ-13 фиксирует четыре связанные проблемы надёжности SW; настоящий слайс закрывает ровно **проблему №3 — баги fetch-обработчика** (`docs/improvements/13-service-worker-reliability.md` §1, строка 17), которая ломает оффлайн-корректность независимо от прекеша и цикла обновления.
+
+Факты по текущему коду (проверены на base `9de3d419`; номера строк актуальны на этом HEAD — исполнитель обязан перепроверять их на своём HEAD):
+
+- **`createServiceWorkerBody` формирует fetch-обработчик по шаблону (`scripts/generate-service-worker.mjs:54-70`).** GET-запросы обслуживаются из кеша (`caches.match(event.request)`, строка 57); при промахе идёт `fetch(event.request)` с записью успешного ответа в кеш (строки 59-66), а при сетевой ошибке срабатывает catch-ветка (строка 67).
+- **Баг 1 — мёртвый правый операнд `||`.** `.catch(() => caches.match("/") || caches.match("/index.html"))` (строка 67): `caches.match("/")` возвращает `Promise`, а `Promise` всегда truthy → правый операнд `caches.match("/index.html")` **недостижим** (мёртвый код). Фолбэк на `/index.html` не работает никогда.
+- **Баг 2 — `respondWith(undefined)` → TypeError, когда «/» не в кеше.** Если прекеш «/» не установился (например, install оборвался — проблема №1 ТЗ-13), `caches.match("/")` резолвится в `undefined`; `respondWith` получает `Promise`, резолвящийся в `undefined` → `TypeError` в SW, запрос падает без валидного `Response`.
+- **Баг 3 — HTML-фолбэк применяется ко ВСЕМ упавшим GET без различия destination/mode.** Оффлайн-запрос картинки или JS-чанка (например, динамический `import("./data/manual4Ruedas")`) при сетевой ошибке получает **HTML** страницы с неверным MIME-типом. Для JS-чанка это даёт классическую ошибку «Failed to fetch dynamically imported module» / отказ парсинга модуля; для картинки — битый ресурс. HTML-фолбэк уместен только для навигаций (документов), а не для субресурсов.
+- **Баг 4 — нет `ignoreSearch` для навигаций.** `caches.match(event.request)` без опций (строка 57): навигация на `/?legacyManual=1` или любой `/?x=1` **не матчит** прекешированный ключ «/» (query участвует в сравнении) → оффлайн-навигация с query-параметром промахивается мимо app shell.
+- **Целевая форма (FR-4, `docs/improvements/13-service-worker-reliability.md` §3 строка 32).** Поиск в кеше: `caches.match(request, { ignoreSearch: request.mode === "navigate" })`. Catch-ветка: для навигаций (`request.mode === "navigate"`) → `(await caches.match("/")) ?? (await caches.match("/index.html")) ?? Response.error()`; для остальных destination → `Response.error()`. То есть навигация оффлайн получает app shell (или явную сетевую ошибку, если shell не закеширован), а упавший субресурс получает **сетевую ошибку `Response.error()`**, а не HTML с чужим MIME.
+- **Текущие unit-тесты текста SW узкие (`tests/service-worker-generation.test.mjs:113-149`).** Тест «generated service worker keeps runtime GET caching for the manual chunk» проверяет только присутствие `cache.addAll(ASSETS)` (строка 136), `fetch(event.request)` (строка 137), `cache.put(event.request, copy)` (строка 138) и отсутствие отложенных ассетов в тексте. **Ни одна** проверка не покрывает фолбэк-ветки, `ignoreSearch` или navigate-only-различие — FR-7 (§3 строка 35) требует их добавить, иначе регресс fetch-логики пройдёт незамеченным.
+- **AC-3 ТЗ-13 (§5 строка 49):** «Оффлайн-запрос отсутствующей картинки возвращает сетевую ошибку, не HTML (unit текста SW + e2e)». Unit-часть AC-3 закрывается в этом слайсе тестами текста SW; полноценный e2e-прогон с реальным SW относится к более широким шагам ТЗ-13 (регистрация/установка SW) и в этот минимальный безопасный слайс не входит — способ верификации фиксирует Architect.
+- Гайды качества: `pnpm run quality:fast`, `pnpm run format:check`, `pnpm run preflight` перед push (CLAUDE.md, процессная память quality gates). Unit-тесты — `node --test` над `tests/*.test.mjs`.
+
+## Цель
+
+Сгенерированный service worker перестаёт отдавать некорректные ответы при оффлайне: навигации получают закешированный app shell (с матчингом, игнорирующим query), а упавшие субресурсы (картинки, JS-чанки) получают **явную сетевую ошибку `Response.error()`**, а не HTML-документ с неверным MIME; мёртвая `||`-ветка и путь к `respondWith(undefined)`/`TypeError` устранены. Unit-тесты текста генерируемого SW расширены так, что фолбэк-ветки, `ignoreSearch` и navigate-only-различие проверяются и защищены от регресса. Прекеш, цикл обновления, баннер и `public/sw.js` в этом слайсе не трогаются.
+
+## Scope
+
+В scope (ровно шаг 1 плана ТЗ-13: FR-4 + FR-7):
+
+- **FR-4 (корректность fetch-обработчика в `createServiceWorkerBody`).** Переписать fetch-обработчик генерируемого SW так, чтобы:
+  1. поиск в кеше использовал `caches.match(request, { ignoreSearch: request.mode === "navigate" })` — навигации матчат прекешированный app shell даже при наличии query-параметров;
+  2. в catch-ветке (сетевая ошибка) для навигаций (`request.mode === "navigate"`) возвращался `(await caches.match("/")) ?? (await caches.match("/index.html")) ?? Response.error()` — рабочий двойной фолбэк с явной сетевой ошибкой как последним средством (устраняет мёртвый `||`-операнд и `respondWith(undefined)`/`TypeError`);
+  3. в catch-ветке для всех остальных destination возвращался `Response.error()` — упавший субресурс получает сетевую ошибку, а не HTML с неверным MIME.
+  Существующее поведение «кеш-фёрст, затем сеть, запись только `response.ok`» для успешных ответов сохраняется; меняется только форма поиска в кеше и catch-ветка.
+- **FR-7 (расширение unit-тестов текста SW).** Дополнить `tests/service-worker-generation.test.mjs` проверками того, что текст генерируемого SW содержит: обе фолбэк-ветки навигации (`caches.match("/")` и `caches.match("/index.html")`), `Response.error()` как терминальный фолбэк, `ignoreSearch`, привязку `ignoreSearch`/HTML-фолбэка к `request.mode === "navigate"` (navigate-only), и `Response.error()` для не-навигационной ветки. Существующие проверки (`addAll`, `fetch`, `put`, отсутствие отложенных ассетов) сохраняются.
+- Точная формулировка/структура нового fetch-обработчика (async/await против `.then`-цепочки, вспомогательные функции внутри тела SW) — за Architect, при условии, что итоговый **текст** генерируемого SW удовлетворяет FR-4 и проверяемым инвариантам FR-7.
+- Тесты на новое поведение (unit текста SW) и прогон существующего unit-набора `node --test`.
+
+Вне scope (явно исключается из этого слайса):
+
+- **FR-1 / FR-2 / FR-5** — двухфазный прекеш (критичный app shell атомарно + контент-ассеты `Promise.allSettled`), reuse из предыдущего кеша, статус установки оффлайна в UI (StatusStrip). `cache.addAll(ASSETS)` и логика `collectInstallPrecacheAssets`/`shouldInstallPrecacheAsset`/имя кеша в этом слайсе **не меняются**.
+- **FR-3** — цикл обновления (убрать безусловный `skipWaiting`, `onupdatefound`/`controllerchange`, баннер «Доступна новая версия», периодический `registration.update()`). `src/main.tsx` и `src/App.tsx` в этом слайсе **не трогаются**.
+- **FR-6** — замена `public/sw.js` тонким no-op SW и guard-тест «`dist/sw.js` после сборки ≠ `public/sw.js`». `public/sw.js` в этом слайсе **не меняется**.
+- Полноценный e2e с реальной регистрацией/установкой SW (e2e-часть AC-1/AC-2/AC-3/AC-4/AC-5). В этом слайсе — только unit-проверки текста генерируемого SW.
+- Оценка/внедрение Workbox (NFR-1) — решение об архитектуре генератора остаётся за более широкими шагами ТЗ-13.
+- Любые изменения UI, новые зависимости, изменения сборки/деплоя, роутинга, схемы кеша или прогресс-store.
+
+## Функциональные требования
+
+1. Генерируемый service worker (`createServiceWorkerBody` в `scripts/generate-service-worker.mjs`) ищет ответ в кеше через `caches.match(request, { ignoreSearch: request.mode === "navigate" })`: навигации матчат прекешированный app shell независимо от query-строки, для не-навигационных запросов `ignoreSearch` не применяется.
+2. При сетевой ошибке (catch) для навигационного запроса (`request.mode === "navigate"`) SW возвращает первый доступный из `caches.match("/")`, затем `caches.match("/index.html")`, и только если оба отсутствуют — `Response.error()`. Использование `??` гарантирует, что `undefined`-результаты корректно проваливаются к следующему варианту, а `respondWith` никогда не получает `undefined`.
+3. При сетевой ошибке (catch) для любого не-навигационного запроса (субресурс: картинка, скрипт, стиль, шрифт и т. п.) SW возвращает `Response.error()` — сетевую ошибку, а не HTML-документ.
+4. Мёртвый оператор `caches.match("/") || caches.match("/index.html")` устранён: правый операнд больше не недостижим, а фолбэк на `/index.html` реально срабатывает, когда «/» отсутствует в кеше.
+5. Успешный сетевой путь для GET сохраняется без изменений: `response.ok` кешируется через `caches.open(CACHE_NAME).then((cache) => cache.put(...))`, не-GET запросы по-прежнему не перехватываются (`event.request.method !== "GET"` → ранний выход).
+6. Прекеш (`ASSETS`, `cache.addAll`), имя кеша, обработчики `install`/`activate` и генерация списка ассетов в этом слайсе не меняются функционально.
+7. `tests/service-worker-generation.test.mjs` расширен проверками текста сгенерированного SW: наличие `ignoreSearch`, привязки к `request.mode === "navigate"`, обеих навигационных фолбэк-веток (`caches.match("/")`, `caches.match("/index.html")`), `Response.error()` в терминальной навигационной и в не-навигационной ветке. Существующие проверки (`addAll`, `fetch`, `put`, отсутствие отложенных ассетов) остаются зелёными.
+8. Никакие литералы MIME-типов, ручной `new Response(...)` с HTML или иные обходные конструкции не вводятся — фолбэк субресурса это ровно `Response.error()`.
+
+## Ожидания приёмки
+
+- **AC-3 (из ТЗ-13, unit-часть, дословно применимо к слайсу):** оффлайн-запрос отсутствующей картинки/субресурса возвращает сетевую ошибку (`Response.error()`), не HTML — проверяется через инварианты текста генерируемого SW (unit). E2e-часть AC-3 (реальный SW в браузере) — вне scope этого слайса, но unit-проверка обязана явно закрывать navigate-vs-subresource-различие.
+- **FR-4 (unit текста SW):** сгенерированный текст SW содержит `caches.match(<request>, { ignoreSearch: <request>.mode === "navigate" })`; catch-ветка навигации содержит цепочку `?? (await caches.match("/")) ?? (await caches.match("/index.html")) ?? Response.error()` (или эквивалентную по смыслу форму, дающую тот же порядок фолбэков без мёртвого кода); не-навигационная catch-ветка возвращает `Response.error()`.
+- **FR-7 (unit):** новые ассерты в `tests/service-worker-generation.test.mjs` падают на текущем (баговом) тексте SW и проходят на исправленном — то есть реально защищают от регресса fetch-логики, а не дублируют существующие `addAll/fetch/put`-проверки.
+- **Негативный сценарий (unit, обязателен):** см. раздел ниже — оффлайн-запрос отсутствующего субресурса даёт `Response.error()`, а не HTML; отсутствие «/» в кеше при навигации не приводит к `respondWith(undefined)`/`TypeError`, а проваливается к `/index.html` и затем к `Response.error()`.
+- Существующие unit-тесты `tests/service-worker-generation.test.mjs` (проверка исключения отложенных ассетов, равенства `body === generated`, наличия `addAll/fetch/put`) остаются зелёными; весь `node --test` зелёный.
+- Гейты `pnpm run quality:fast`, `pnpm run format:check`, `pnpm run preflight` зелёные; в PR записаны фактические свидетельства (verification evidence), а не только AI-резюме. Свидетельства верификации фиксируются последующими ролями (Implementation/Architect), не Analyst-intake.
+- Прекеш, `install`/`activate`, `public/sw.js`, `src/main.tsx`, `src/App.tsx` не изменены; диф ограничен `scripts/generate-service-worker.mjs` (тело fetch-обработчика) и `tests/service-worker-generation.test.mjs` (+ при необходимости синхронизация durable-доков SW, если таковые описывают fetch-поведение).
+
+## Негативные сценарии (обязательные для feature memory)
+
+- **Оффлайн-запрос отсутствующего субресурса (картинка / JS-чанк) — главный негативный сценарий цикла.** При сетевой ошибке для не-навигационного запроса SW обязан вернуть **сетевую ошибку (`Response.error()`)**, а **НЕ** HTML app shell с неверным MIME-типом. Прежнее поведение (HTML-фолбэк для всех GET) приводило к «Failed to fetch dynamically imported module» для JS-чанка и к битым картинкам; после FR-4 упавший субресурс детерминированно получает сетевую ошибку, и вызывающий код (динамический `import`, `<img>`) обрабатывает её как отказ ресурса, а не как подменённый документ.
+- **Навигация оффлайн при отсутствии «/» в кеше.** Если прекеш «/» не установился, навигационный catch не должен упасть в `respondWith(undefined)`/`TypeError` (баг мёртвого `||`): цепочка `?? ` обязана провалиться к `caches.match("/index.html")`, а при его отсутствии — к `Response.error()`. Пользователь получает валидный `Response` (app shell либо явную сетевую ошибку), но никогда — необработанный `TypeError` в SW.
+- **Навигация с query-параметром оффлайн (`/?legacyManual=1`).** Без `ignoreSearch` такой запрос промахивался мимо прекешированного «/»; с `ignoreSearch: request.mode === "navigate"` навигация корректно матчит app shell. Для не-навигационных запросов `ignoreSearch` не включается — субресурсы с разными query остаются разными ключами кеша (регресса кеш-матчинга субресурсов нет).
+- **Регресс fetch-логики.** Новые unit-ассерты FR-7 обязаны падать на исходном баговом тексте SW — то есть служить реальным сторожем, а не проходить одинаково на старом и новом коде.
+
+## Допущения и default-ответы на открытые вопросы
+
+Пользователь недоступен для Q&A; зафиксированы явные допущения. Architect может уточнить их в `spec.md` без изменения пользовательских гарантий; конфликт с гарантиями — блокер через Orchestrator.
+
+- **A1. Форма реализации fetch-обработчика.** Default: переписать тело обработчика на `async`-функцию внутри `event.respondWith(...)` (или сохранить `.then`-цепочку с эквивалентной семантикой), чтобы `await caches.match(...)` и оператор `??` читались прямо по §3 ТЗ-13. Точная синтаксическая форма — за Architect, при условии, что итоговый текст SW удовлетворяет FR-4 и проверяемым инвариантам FR-7.
+- **A2. Проверяемые инварианты FR-7.** Default: тесты матчат по тексту генерируемого SW (как уже делают существующие проверки через `assert.match(generated, /.../)`), а не исполняют SW в реальном ServiceWorker-рантайме. Набор инвариантов: `ignoreSearch`, `request.mode === "navigate"` в позиции опции матча и в позиции ветвления фолбэка, `caches.match("/")`, `caches.match("/index.html")`, `Response.error()`. Точные регэкспы — за Architect; они должны падать на текущем баговом тексте.
+- **A3. Терминальный фолбэк субресурса.** Default: строго `Response.error()` (непрозрачно-ошибочный `Response`, дающий вызывающему коду сетевую ошибку). Не `new Response(null, { status: 504 })` и не HTML — чтобы поведение точно соответствовало §3 ТЗ-13 и AC-3. Возможная альтернатива — только с явным обоснованием Architect, не ослабляющим гарантию «не HTML для субресурса».
+- **A4. Определение «навигации».** Default: критерий — `request.mode === "navigate"` (как в §3 ТЗ-13), а не эвристика по `Accept: text/html` или `destination === "document"`. Это единый предикат и для `ignoreSearch`, и для выбора HTML-фолбэк-ветки.
+- **A5. `install`/`activate`/прекеш.** Default: не трогать. Баги прекеша и цикла обновления (проблемы №1/№2 ТЗ-13) закрываются шагами 2–3, не этим слайсом; смешивание расширит площадь дифа и нарушит «маленький безопасный PR».
+- **A6. Синхронизация durable-документации.** Default: если в `docs_project/` есть durable-описание fetch-поведения SW/оффлайна, затрагиваемое этим изменением, синхронизировать его в рамках слайса; иначе — правок доков нет. Отметка выполненности шага 1 в чекбоксе плана `docs/improvements/13-service-worker-reliability.md` §4 — на усмотрение Architect (в предыдущих циклах статус-поля/чекбоксы ТЗ не всегда обновлялись — зафиксировать решение).
+- **A7. Номера строк.** Все ссылки на строки в этом документе проверены на base `9de3d419`; исполнитель обязан перепроверять их на своём HEAD.
+
+## Риски и меры
+
+| Риск | Вероятн. | Влияние | Мера |
+|---|---|---|---|
+| Новый fetch-обработчик ломает успешный кеш-фёрст/сетевой путь или кеширование `response.ok` | Низкая | Регресс оффлайна | Менять только форму поиска в кеше и catch-ветку; сохранить `method !== "GET"` ранний выход и `cache.put` для `response.ok`; existing unit-проверки `addAll/fetch/put` остаются зелёными |
+| Unit-тесты FR-7 «косметические» — проходят и на баговом, и на исправленном тексте | Средняя | Ложное чувство защиты | Требование: новые ассерты обязаны падать на текущем тексте SW (мёртвый `||`, отсутствие `ignoreSearch`/`Response.error()`); зафиксировать это в spec как критерий приёмки FR-7 |
+| `ignoreSearch` включён для субресурсов и рушит матчинг разных query-версий | Низкая | Отдача не того ассета | `ignoreSearch` строго завязан на `request.mode === "navigate"`; для субресурсов остаётся `false`; покрыть инвариантом FR-7 |
+| Скоуп «расползается» в прекеш/цикл обновления/`public/sw.js` | Средняя | Нарушение «маленького безопасного PR», рост риска | Явные Вне-scope границы (A5); диф ограничен `generate-service-worker.mjs` fetch-телом + тестом |
+| `Response.error()` недоступен/ведёт себя иначе в целевых браузерах | Низкая | Неверный фолбэк | `Response.error()` — стандартный статический метод, поддержан в актуальных браузерах и SW-контексте; это ровно форма из §3 ТЗ-13 |
+| Конфликт с параллельными шагами ТЗ-13 или другими P1-циклами | Низкая | Merge-конфликты | Площадь минимальна (одно тело функции + один тест-файл); порядок «шаг 1 отдельным PR» зафиксирован планом §4 |
+
+## Источники
+
+- `docs/improvements/13-service-worker-reliability.md` — проблема №3 fetch-обработчика (§1 строка 17), FR-4 (§3 строка 32), FR-7 (§3 строка 35), AC-3 (§5 строка 49), план шаг 1 (§4 строка 40), затрагиваемые файлы (§7 строка 63), риски (§6).
+- `docs/improvements/README.md` — «Рекомендуемая последовательность» этапа 1 (строки 45–46): ТЗ-13 шаг 1 идёт после ТЗ-P1 слайсов 1–2 и до ТЗ-14.
+- `scripts/generate-service-worker.mjs` — `createServiceWorkerBody` (38-72), текущий fetch-обработчик (54-70), баговая catch-ветка `.catch(() => caches.match("/") || caches.match("/index.html"))` (67); `install`/`activate`/прекеш (42-52), не трогаются.
+- `tests/service-worker-generation.test.mjs` — текущие проверки текста SW (113-149), узкие ассерты `addAll/fetch/put` (136-138), расширяемые под FR-7.
+- `specs/047-exam-attempt-persistence/feature-request.md` — образец формата intake предыдущего цикла (структура секций, строгость, границы scope/вне-scope, negative-сценарий).
+- `.specify/memory/constitution.md`, `AGENTS.md` (раздел Analyst), `CLAUDE.md` — процессные границы, гейты качества (`quality:fast`, `format:check`, `preflight`).
+- Внешние исследования не требовались: требования полностью определены в авторизованной владельцем durable-спецификации улучшений (ТЗ-13). `Response.error()`/`ignoreSearch`/`request.mode` — стандартные примитивы Service Worker/Fetch API, заданные прямо в §3 ТЗ-13.
+
+## Границы ролей и handoff
+
+- Analyst создал только этот intake-артефакт и передаёт управление Orchestrator.
+- Architect создаёт `spec.md`, `plan.md`, `tasks.md`: финализирует форму нового fetch-обработчика (A1), набор проверяемых инвариантов и регэкспов FR-7 (A2), форму терминального фолбэка субресурса (A3), предикат навигации (A4), решение по durable-докам/чекбоксу плана (A6), матрицу верификации и cycle PR set. Architect подтверждает, что новые unit-ассерты падают на текущем баговом тексте SW.
+- Implementation Agent работает только по полной feature memory в назначенном worktree/ветке/PR-слайсе; меняет тело fetch-обработчика в `scripts/generate-service-worker.mjs` и расширяет `tests/service-worker-generation.test.mjs`; фиксирует фактические свидетельства (`node --test`, гейты) и feedback для диспозиции Architect.
+- Review Agent проверяет диф и соответствие feature memory без правок кода: корректность FR-4 (навигация vs субресурс, `ignoreSearch`, устранение мёртвого `||`/`respondWith(undefined)`), реальную сторожевую силу тестов FR-7, отсутствие расползания scope в прекеш/цикл обновления/`public/sw.js`.
+- Orchestrator ведёт PR, проверки, финальные валидации Architect→Analyst, guard текущего/effective head и merge; cleanup — только назначенный Cleanup Agent.
+
+## Initial Cycle Context
+
+На момент intake PR по этому фичеру не существует. Handoff-контекст Analyst: ветка `claude/048-service-worker-fetch-correctness` в `/Users/chap/devel/cabadrive-claude/repo/.claude/worktrees/048-service-worker-fetch-correctness` от verified `origin/main` `9de3d419772cb9b971cc01299fa4f251b86c08a9` (= merge PR #212, слайс 2 ТЗ-P1 уже смержен). Локальный HEAD worktree подтверждён равным этому base, дерево чистое. Orchestrator может явно продолжить этот latest-main контекст как единственный implementation PR slice либо назначить отдельный свежий worktree; любой дополнительный слайс фиксируется в feature memory. Шаги 2/3/4 ТЗ-13 остаются нереализованными и оформляются отдельными work cycle'ами после этого слайса.
+
+## Final Analyst Validation Notes
+
+Append-only секция Analyst; заполняется только по явному запросу Orchestrator после прохождения финальной валидации Architect.
+
+### Финальная валидация Analyst — 2026-07-24 (после PASS финальной валидации Architect, head `55a81366`)
+
+Финальная валидация Architect ПРОШЛА на effective content head `55a813666ca68989f7d9cb010c8e42979fb5865b` (записано Architect в `2026-07-24T11:54:30Z`); Codex AI Review прошёл первым раундом без findings/threads; все CI зелёные; `mergeStateStatus: CLEAN`. Обе роли обязаны сойтись на одном SHA — эта Analyst-валидация приводит роль на `55a81366`. Инспектирован реальный код на HEAD (`scripts/generate-service-worker.mjs` fetch-обработчик, `tests/service-worker-generation.test.mjs`), а не только резюме; unit-набор `service-worker-generation.test.mjs` прогнан прямо (3 `test()`, все зелёные). Единственная незакоммиченная правка в дереве — `M specs/048-service-worker-fetch-correctness/tasks.md` (Architect-owned, не трогается Analyst; коммит делает Orchestrator).
+
+**Вердикт: PASS.** Пользовательские гарантии слайса (ТЗ-13 шаг 1: FR-4 + FR-7) подтверждены как реально поставленные, а не заявленные:
+
+- **FR-4.1 — `ignoreSearch` для навигаций.** `createServiceWorkerBody` теперь ищет в кеше через `caches.match(event.request, { ignoreSearch: event.request.mode === "navigate" })` (`scripts/generate-service-worker.mjs`, тело fetch-обработчика ~57-61). Оффлайн-навигация на `/?x=1` матчит прекешированный «/» app shell; для не-навигационных запросов `ignoreSearch` остаётся `false` — субресурсы с разными query остаются разными ключами кеша (регресса кеш-матчинга нет).
+- **FR-4.2 — рабочая двойная фолбэк-цепочка навигации без мёртвого кода.** Обработчик переписан на `async`-IIFE в `event.respondWith(...)`; catch-ветка навигации возвращает `(await caches.match("/")) ?? (await caches.match("/index.html")) ?? Response.error()` (~70-72). Мёртвый правый операнд `caches.match("/") || caches.match("/index.html")` устранён (оператор `??` корректно проваливает `undefined` к следующему варианту); `respondWith` больше не может получить `undefined`/`TypeError`, когда «/» отсутствует в кеше — фолбэк проваливается к `/index.html`, затем к явной сетевой ошибке `Response.error()`.
+- **FR-4.3 — упавший субресурс получает сетевую ошибку, не HTML.** Не-навигационная ветка catch возвращает `return Response.error();` (~73). Оффлайн-запрос отсутствующей картинки/JS-чанка резолвится в сетевую ошибку, а НЕ в HTML app shell с неверным MIME — устранён прежний баг «Failed to fetch dynamically imported module» / битые картинки (главный негативный сценарий цикла закрыт в букве и духе).
+- **Успешный путь и границы scope сохранены.** Ранний выход `if (event.request.method !== "GET") return;` на месте; успешный `response.ok` по-прежнему кешируется через `caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy))`. `install`/`activate`/прекеш (`cache.addAll(ASSETS)`, имя кеша, `collectInstallPrecacheAssets`) не тронуты; `public/sw.js`, `src/main.tsx`, `src/App.tsx` не изменены — расползания scope в FR-1/2/3/5/6 нет.
+- **FR-7 — тесты реально сторожат fetch-логику.** Добавлен третий `test()` «generated service worker fetch handler has correct offline fallbacks» (`tests/service-worker-generation.test.mjs` ~151-178): `assert.match` на `ignoreSearch: event.request.mode === "navigate"`, на полную navigate-цепочку `?? ... ?? Response.error()`, на navigate-only ветвление `if (event.request.mode === "navigate")`, на `return Response.error();`; `assert.doesNotMatch` на мёртвый `caches.match("/") || caches.match` и на старый optionless `caches.match(event.request).then` — то есть новые ассерты падали бы на баговом тексте и служат реальным guard'ом, а не дублируют существующие `addAll/fetch/put`. Существующие два теста (исключение отложенных ассетов, runtime GET-кеширование) остаются зелёными.
+
+**Customer intent check.** Владелец просил взять высший по приоритету нереализованный пункт `docs/improvements/` в порядке рекомендованной последовательности и реализовать по гайдлайнам проекта. Доставленное = **ТЗ-13 шаг 1** — верх этапа 1 «критическое» после ТЗ-P1 слайсов 1–2 (`docs/improvements/README.md` §«Рекомендуемая последовательность», строки 45–46), ровно «маленький безопасный PR» из плана ТЗ-13 §4 item 1 (FR-4 + FR-7). Scope выдержан строго: диф ограничен телом fetch-обработчика в `generate-service-worker.mjs` и новым тестом в `service-worker-generation.test.mjs`; шаги 2/3/4 (цикл обновления+баннер, двухфазный прекеш+reuse, no-op `public/sw.js`) корректно оставлены на будущие слайсы. Цель / Ожидания приёмки / Негативные сценарии intake выполнены; главный негативный сценарий (оффлайн-запрос отсутствующего субресурса → `Response.error()`, не HTML) закрыт кодом и unit-guard'ом. Гэпов против пользовательского намерения — в букве и духе — не найдено.
+
+**Известная граница (в духе приемлема):** unit-часть AC-3 закрыта проверкой текста генерируемого SW; полноценный e2e с реальным SW-рантаймом относится к более широким шагам ТЗ-13 и явно вне scope этого «маленького безопасного PR» (зафиксировано в Scope/Ожиданиях приёмки intake). Это не гэп против запроса заказчика, а согласованная граница минимального слайса.
+
+Analyst return count в этом work cycle: 0 (гэпов против пользовательского намерения не найдено; счётчик не инкрементируется; в пределах лимита 5).
+
+Analyst validation pass: passed
+Final Analyst validation completed at: 2026-07-24T11:57:30Z
+Analyst validated effective content head: 55a813666ca68989f7d9cb010c8e42979fb5865b
