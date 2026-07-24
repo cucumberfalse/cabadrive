@@ -678,8 +678,8 @@ Cycle PR set.
 - `pnpm run build:app` — **pass** (vite build `✓ built in ~4s`; service worker
   сгенерирован); новых зависимостей нет.
 - `pnpm run test:e2e` (эквивалент: `build:app` + `playwright test`, оба проекта)
-  — **150 passed, 0 failed** (базис 120 = 60×2; после: **150 = 75×2**, +30 =
-  15 новых test() × 2 проекта). Разбивка: Desktop Chromium **75** + Pixel 7 **75**.
+  — **152 passed, 0 failed** (базис 120 = 60×2; после: **152 = 76×2**, +32 =
+  16 новых test() × 2 проекта). Разбивка: Desktop Chromium **76** + Pixel 7 **76**.
   ПРИМЕЧАНИЕ по флейкам: на нагруженной машине (параллельный VM, load ~5) полный
   прогон в 2 воркера иногда даёт 1–2 нестабильных падения в РАЗНЫХ несвязанных
   тестах (exam-timeout с 45-мин виртуальными часами, offline-reload, manual-guide,
@@ -847,6 +847,29 @@ Cycle PR set.
   oversized `>` questionCount → null; полный in-progress принят; answers >
   questionCount → null) и e2e (засеянный усечённый ключ с 1 вопросом → чистый
   старт, ключ очищен, ноль завершённых попыток).
+- **Codex review round 8 (finding K — устаревший resume-prompt) — исправлено:**
+  при перезагрузке в resume-prompt (`phase === "resumePrompt"`) и оставлении его
+  открытым ПОСЛЕ дедлайна ничто не переводило состояние: остаток считался только
+  на первом рендере, интервала в этой фазе нет, а App-level away-expiry-эффект
+  (Finding I) отключён при `view === "exam"`. Итог: prompt продолжал рекламировать
+  резюмируемую попытку, а guard + `beforeunload` оставались навешенными, пока
+  пользователь не нажмёт «Продолжить» (который просроченную отбрасывает через
+  recheck Finding E). Фикс (scope: только `ExamView` в `src/App.tsx`): эффект,
+  работающий пока `phase === "resumePrompt"`, планирует
+  `setTimeout(savedAttempt.deadline − Date.now())` (срабатывает немедленно, если
+  уже прошло) → discard (`clearExamAttempt` + `onAttemptStateChange(false,false)` +
+  `setSavedAttempt(null)` + `phase = "idle"`), автоматически переводя на чистый
+  стартовый экран без действий пользователя и разоружая guard/beforeunload; таймаут
+  очищается на cleanup / смене фазы. Не даблфайрит: active-phase-таймер — другая
+  фаза; App away-expiry — `view !== "exam"`, а resumePrompt на вкладке «Экзамен»,
+  так что новый эффект закрывает ровно непокрытый случай. Recheck в `resume()`
+  (Finding E) и active-таймер не изменены; F/G/H/I/J без регресса. Тест Finding E
+  адаптирован под `page.clock.setFixedTime` (Date прыгает за дедлайн БЕЗ продвижения
+  очереди таймеров → auto-expire не срабатывает, «Продолжить» кликабелен → проверяет
+  recheck), новый e2e Finding K через `runFor` проверяет авто-истечение. Покрыто
+  e2e: resume-prompt открыт → прокрутка часов за дедлайн без клика → чистый старт,
+  ключ очищен, guard/beforeunload разоружены; AC-2 (нормальный resume) и Finding E
+  зелёные.
 - Иных dead ends / accepted known issues нет.
 
 ## Known Issues

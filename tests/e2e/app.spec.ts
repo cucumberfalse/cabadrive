@@ -1770,8 +1770,11 @@ test("resuming after the deadline discards the attempt instead of grading it", a
   await page.reload();
   await page.getByRole("button", { name: /Экзамен/ }).click();
   await expect(page.getByText(/Продолжить попытку/)).toBeVisible();
-  // Leave the resume prompt open until the saved deadline passes.
-  await page.clock.runFor(46 * 60 * 1000);
+  // Jump Date past the deadline WITHOUT advancing the fake-timer queue
+  // (setFixedTime), so the resume-prompt auto-expire timeout (Finding K) has not
+  // fired and «Продолжить» is still clickable — this exercises resume()'s own
+  // deadline recheck (Finding E), the belt-and-suspenders path.
+  await page.clock.setFixedTime(new Date("2026-01-01T00:46:00Z"));
   await page.getByRole("button", { name: "Продолжить" }).click();
   // The expired snapshot is discarded: clean start screen, no graded result
   // (the result screen would say "…сдан"/"Нужно повторить"; the start screen's
@@ -1786,6 +1789,38 @@ test("resuming after the deadline discards the attempt instead of grading it", a
         .examAttempts.length,
   );
   expect(finishedAttempts).toBe(0);
+});
+
+test("a resume prompt left open past the deadline auto-expires to a clean start (FR-A5)", async ({
+  page,
+}) => {
+  await page.clock.install({ time: new Date("2026-01-01T00:00:00Z") });
+  await page.goto("/");
+  await page.getByRole("button", { name: /Экзамен/ }).click();
+  await page.getByRole("button", { name: "Начать" }).click();
+  await page.getByRole("button", { name: "Пропустить" }).click();
+  await expect(page.getByText("2 / 40")).toBeVisible();
+  await page.reload();
+  await page.getByRole("button", { name: /Экзамен/ }).click();
+  await expect(page.getByText(/Продолжить попытку/)).toBeVisible();
+  // Leave the prompt open past the 45-minute deadline WITHOUT clicking «Продолжить»:
+  // advancing the fake-timer queue fires the auto-expire timeout.
+  await page.clock.runFor(46 * 60 * 1000);
+  // It auto-transitions to a clean start screen (no user action); key cleared.
+  await expect(page.getByRole("button", { name: "Начать" })).toBeVisible();
+  await expect(page.getByText(/Продолжить попытку/)).toHaveCount(0);
+  await expect(page.locator(".result-panel")).toHaveCount(0);
+  expect(await page.evaluate(() => localStorage.getItem("cabadrive.exam-attempt.v1"))).toBeNull();
+  // Guard + beforeunload are disarmed once the attempt expired.
+  const prevented = await page.evaluate(() => {
+    const event = new Event("beforeunload", { cancelable: true });
+    window.dispatchEvent(event);
+    return event.defaultPrevented;
+  });
+  expect(prevented).toBe(false);
+  await page.getByRole("button", { name: /Ошибки/ }).click();
+  await expect(page.getByRole("heading", { name: "Прервать экзамен?" })).toHaveCount(0);
+  await expect(page.getByRole("heading", { name: "Ошибки", exact: true })).toBeVisible();
 });
 
 test("vocabulary and guide are available", async ({ page }) => {

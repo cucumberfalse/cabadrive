@@ -1298,6 +1298,29 @@ function ExamView({
     if (remaining <= 0 && !finishGuard.current) finish(examQuestions, answers);
   }, [phase, remaining, examQuestions, answers, finish]);
 
+  // Auto-expire a resume prompt left open past the deadline. No interval runs in
+  // this phase and the App-level away-expiry effect is disabled on the exam view,
+  // so without this the prompt would keep advertising a resumable attempt (and
+  // keep the guard/beforeunload armed) until the user acts. Fires immediately if
+  // already past; the active-phase timer and the click-«Продолжить» recheck (which
+  // covers a manual resume of an expired prompt) are unchanged.
+  useEffect(() => {
+    if (phase !== "resumePrompt" || !savedAttempt) return undefined;
+    const expire = () => {
+      if (storage) clearExamAttempt(storage);
+      setSavedAttempt(null);
+      onAttemptStateChange(false, false);
+      setPhase("idle");
+    };
+    const msUntilExpiry = savedAttempt.deadline - Date.now();
+    if (msUntilExpiry <= 0) {
+      expire();
+      return undefined;
+    }
+    const timer = window.setTimeout(expire, msUntilExpiry);
+    return () => window.clearTimeout(timer);
+  }, [phase, savedAttempt, storage, onAttemptStateChange]);
+
   if (phase === "idle") {
     return (
       <section className="workspace exam-start">
