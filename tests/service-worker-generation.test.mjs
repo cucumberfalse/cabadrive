@@ -147,3 +147,32 @@ test("generated service worker keeps runtime GET caching for the manual chunk", 
     );
   });
 });
+
+test("generated service worker fetch handler has correct offline fallbacks", () => {
+  withTempDist((dist) => {
+    const { body } = generateServiceWorker({ dist, timestamp: 12345 });
+    const generated = readFileSync(join(dist, "sw.js"), "utf8");
+
+    assert.equal(body, generated);
+
+    // FR-4.1: cache-first lookup keys ignoreSearch on navigation mode.
+    assert.match(
+      generated,
+      /caches\.match\(event\.request, \{\s*ignoreSearch: event\.request\.mode === "navigate",?\s*\}\)/,
+    );
+    // FR-4.2: full navigate fallback chain with ?? and terminal Response.error().
+    assert.match(
+      generated,
+      /\(await caches\.match\("\/"\)\) \?\? \(await caches\.match\("\/index\.html"\)\) \?\? Response\.error\(\)/,
+    );
+    // navigate-only branching of the HTML fallback inside catch.
+    assert.match(generated, /if \(event\.request\.mode === "navigate"\)/);
+    // FR-4.3: non-navigation subresource branch returns Response.error(), not HTML.
+    assert.match(generated, /return Response\.error\(\);/);
+
+    // FR-7 guard: dead `||` operand removed.
+    assert.doesNotMatch(generated, /caches\.match\("\/"\) \|\| caches\.match/);
+    // FR-7 guard: old optionless cache match replaced.
+    assert.doesNotMatch(generated, /caches\.match\(event\.request\)\.then/);
+  });
+});
