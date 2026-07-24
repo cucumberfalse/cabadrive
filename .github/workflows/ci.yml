@@ -144,6 +144,11 @@ jobs:
           test -n "$img"
           curl -sI "http://localhost:${CABADRIVE_HOST_PORT}/${img}" | grep -qi 'cache-control: public, max-age=86400, stale-while-revalidate=604800'
           ! curl -sI "http://localhost:${CABADRIVE_HOST_PORT}/${img}" | grep -qi 'immutable'
+          # NS-8: an /assets/* miss (404) must NOT be cached as immutable, else the
+          # failure is pinned in browsers even after the file is restored.
+          missing_headers=$(curl -sI "http://localhost:${CABADRIVE_HOST_PORT}/assets/does-not-exist.js")
+          echo "$missing_headers" | grep -qi '^HTTP/[0-9.]* 404'
+          ! echo "$missing_headers" | grep -qi 'cache-control'
 
       - name: Stop Docker app
         if: always()

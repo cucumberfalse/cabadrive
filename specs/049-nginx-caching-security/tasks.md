@@ -48,9 +48,10 @@
     gzip`: позитивные `assert.match` (`map $uri $cache_control`; `~^/assets/`
     immutable; `~^/content/assets/` `max-age=86400, stale-while-revalidate=604800`;
     все 5 `add_header` security + точная CSP; `add_header Cache-Control
-    $cache_control always;`; `gzip on`; `gzip_types … text/javascript`); негативные
-    `assert.doesNotMatch` (`/content/assets/…immutable` в строке маппинга;
-    `gzip_types … text/html`);
+    $cache_control;` (БЕЗ `always` — NS-8); `gzip on`;
+    `gzip_types … text/javascript`); негативные `assert.doesNotMatch`
+    (`/content/assets/…immutable` в строке маппинга; `gzip_types … text/html`;
+    `add_header Cache-Control $cache_control always;` — NS-8 regression guard);
   - блок 2 `Dockerfile runtime uses unprivileged nginx base image`:
     `assert.match(/FROM nginxinc\/nginx-unprivileged:1\.29-alpine/)`,
     `assert.doesNotMatch(/FROM nginx:1\.29-alpine/)`, инвариант
@@ -62,8 +63,8 @@
 
 - [x] **T003** Реализовать FR-1/FR-2/FR-3: заменить `nginx.conf` ЦЕЛИКОМ на
   эталон из plan.md (Design — `map $uri $cache_control` + `server{}` с gzip,
-  security-заголовками, единой server-level `add_header Cache-Control
-  $cache_control always;`, `location /`/`/assets/`/`/content/assets/`/`= /sw.js`
+  security-заголовками (`always`), единой server-level `add_header Cache-Control
+  $cache_control;` (БЕЗ `always` — NS-8), `location /`/`/assets/`/`/content/assets/`/`= /sw.js`
   с `try_files`, БЕЗ per-location `add_header`). Символ-в-символ (детерминизм
   FR-5.1 регэкспов). Довести блок 1 FR-5.1 до зелёного; сверить литералы на HEAD.
 
@@ -163,18 +164,29 @@
 ## Decisions
 
 - **Header-inheritance approach (главное решение — NS-7): `map $uri $cache_control`
-  + единственная server-level `add_header Cache-Control $cache_control always;`.**
+  + единственная server-level `add_header Cache-Control $cache_control;`.**
   В nginx `add_header` в `location`-блоке ОТМЕНЯЕТ наследование всех server-level
   `add_header` для этого location. Наивная схема (security в `server{}`,
   Cache-Control в `location /assets/`) молча уронила бы security-заголовки на всех
   ассет-ответах. Выбрана схема с `map`: Cache-Control выведен из `$uri` и эмитится
   ОДНОЙ server-level `add_header` рядом с security-заголовками; ни в одном
   `location` НЕТ `add_header` → все server-level заголовки наследуются каждым
-  ответом (`/`, `/assets/`, `/content/assets/`, `/sw.js`, 404). Пустой default
+  2xx/3xx-ответом (`/`, `/assets/`, `/content/assets/`, `/sw.js`). Пустой default
   `map` → `add_header Cache-Control ""` не добавляет заголовок (nginx ≥1.7.5).
   Альтернативы (повтор заголовков в каждом location / include-сниппет) отвергнуты
   как многословные и хрупкие. `map` валиден: `conf.d/default.conf` включается в
   `http{}`.
+- **Cache-Control БЕЗ `always`, security-заголовки С `always` — осознанная
+  асимметрия (NS-8).** `always` на 5 security-заголовках (+CSP) гарантирует их
+  эмиссию на error-ответах (например, 404 от `try_files … =404`) — это FR-2.1.
+  Cache-Control, напротив, `add_header … $cache_control;` БЕЗ `always`: nginx
+  выставит его только на 2xx/3xx, поэтому immutable-политика НЕ применится к 404
+  ассетов. Иначе транзиентный `/assets/*` 404 ушёл бы как `max-age=31536000,
+  immutable` и «запинал» бы сбой в браузерах даже после восстановления файла.
+  FR-1.1 не страдает: все реальные 200-ответы ассетов получают Cache-Control из
+  `map`. Проверяемо: статик `assert.doesNotMatch(nginx, /add_header Cache-Control
+  \$cache_control always;/)` + runtime `! grep cache-control` на `/assets/`-404
+  (security-заголовки на нём присутствуют).
 - **CSP → enforce сразу, без committed report-only (A2).** Финальный образ несёт
   `Content-Security-Policy` (enforce), не `-Report-Only`. «Report-режим» ТЗ-14 §4 —
   локальная верификация (browser console + e2e AC-2), а не отдельный заголовок/
@@ -267,7 +279,9 @@ Candidate SHA во время локального прогона (до commit):
   `Content-Encoding: gzip` при `Accept-Encoding: gzip` на JS; `nosniff` + CSP
   (`content-security-policy: default-src`) на `/`; `max-age=86400,
   stale-while-revalidate=604800` и ОТСУТСТВИЕ `immutable` на картинке из
-  `content/assets/`; сохранены существующие `curl /` (grep Cabadrive) + `curl /sw.js`.
+  `content/assets/`; NS-8 — `/assets/does-not-exist.js` отдаёт `HTTP/… 404` и НЕ
+  несёт `cache-control` (immutable-политика не пинит 404 в браузерах); сохранены
+  существующие `curl /` (grep Cabadrive) + `curl /sw.js`.
   Реальный live-прогон header-контракта выполняется в CI (docker required).
   **Локальный docker-прогон: НЕ ВЫПОЛНЕН — заблокирован окружением.** Локальный
   Docker Desktop (server 27.5.1) не смог спуллить базовые образы
@@ -328,8 +342,14 @@ Candidate SHA во время локального прогона (до commit):
   (статик-контракт падал на баговом конфиге — зафиксировано fail→pass) — OK; NS-6
   (`gzip on` + `text/javascript` в gzip_types; `doesNotMatch text/html`; CI curl
   gzip) — OK; NS-7 (map-подход, 0 per-location `add_header`, единая server-level
-  `add_header Cache-Control $cache_control always;`; CI curl -I на `/assets/`
-  покажет security+cache вместе) — OK.
+  `add_header Cache-Control $cache_control;` (БЕЗ `always`); CI curl -I на `/assets/`
+  покажет security+cache вместе) — OK; NS-8 (Cache-Control БЕЗ `always`, чтобы
+  immutable-политика НЕ применялась к 404-ответам `/assets/*` и не пинила отказ в
+  браузерах; 5 security-заголовков сохраняют `always` для error-страниц) — статик
+  `assert.match(/add_header Cache-Control \$cache_control;/)` +
+  `assert.doesNotMatch(/add_header Cache-Control \$cache_control always;/)` зелёные;
+  CI runtime smoke: `/assets/does-not-exist.js` → `HTTP/… 404` и `! grep cache-control`
+  (заголовок Cache-Control отсутствует на miss) — OK.
 - `git diff --check` — clean (нет whitespace/conflict-маркеров).
 - PR URL / head SHA / состояние checks и review threads — ведёт Orchestrator (см.
   `## Cycle PR Set`).

@@ -76,7 +76,10 @@ test("nginx.conf splits cache policy, sets security headers, and enables gzip", 
     /add_header Content-Security-Policy "default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; base-uri 'none'; frame-ancestors 'none'" always;/,
   );
   // NS-7: single server-level Cache-Control from the map (no per-location add_header).
-  assert.match(nginx, /add_header Cache-Control \$cache_control always;/);
+  assert.match(nginx, /add_header Cache-Control \$cache_control;/);
+  // NS-8 regression guard: Cache-Control must NOT carry `always`, else the
+  // immutable policy would apply to /assets/* 404s and pin failures in browsers.
+  assert.doesNotMatch(nginx, /add_header Cache-Control \$cache_control always;/);
   // FR-3 (NS-6): gzip enabled and text/javascript in the type list.
   assert.match(nginx, /gzip on;/);
   assert.match(nginx, /gzip_types[^;]*text\/javascript/);

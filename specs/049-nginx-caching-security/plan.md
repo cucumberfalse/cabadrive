@@ -42,7 +42,8 @@ server {
   add_header Referrer-Policy "strict-origin-when-cross-origin" always;
   add_header Permissions-Policy "camera=(), microphone=(), geolocation=()" always;
   add_header Content-Security-Policy "default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; base-uri 'none'; frame-ancestors 'none'" always;
-  add_header Cache-Control $cache_control always;
+  # NS-8: без `always` — Cache-Control выставляется только на 2xx/3xx, не на 404 ассетов (immutable не «залипает» на error-ответах)
+  add_header Cache-Control $cache_control;
 
   location / {
     try_files $uri $uri/ /index.html;
@@ -64,11 +65,11 @@ server {
 
 ### Обоснование формы (Decisions)
 
-- **`map $uri $cache_control` + единственный server-level `add_header Cache-Control $cache_control always;` (решает `add_header`-inheritance trap — NS-7).** В nginx `add_header` в `location`-блоке ОТМЕНЯЕТ наследование ВСЕХ server-level `add_header` для ответов этого location. Наивная схема (security-заголовки в `server{}`, `Cache-Control` в `location /assets/`) молча уронила бы security-заголовки на всех ассет-ответах. Здесь Cache-Control выведен из `map` по `$uri`, а эмитится ОДНОЙ server-level `add_header` вместе с security-заголовками; ни в одном `location` НЕТ `add_header` → все server-level заголовки (security + Cache-Control) наследуются каждым ответом (`/`, `/assets/`, `/content/assets/`, `/sw.js`, 404). `map` — http-context-директива; `nginx.conf` копируется в `/etc/nginx/conf.d/default.conf`, который `include`-ится внутри `http{}`, поэтому `map` перед `server{}` в этом файле валиден.
+- **`map $uri $cache_control` + единственный server-level `add_header Cache-Control $cache_control;` (решает `add_header`-inheritance trap — NS-7).** В nginx `add_header` в `location`-блоке ОТМЕНЯЕТ наследование ВСЕХ server-level `add_header` для ответов этого location. Наивная схема (security-заголовки в `server{}`, `Cache-Control` в `location /assets/`) молча уронила бы security-заголовки на всех ассет-ответах. Здесь Cache-Control выведен из `map` по `$uri`, а эмитится ОДНОЙ server-level `add_header` вместе с security-заголовками; ни в одном `location` НЕТ `add_header` → все server-level заголовки (security + Cache-Control) наследуются каждым 2xx/3xx-ответом (`/`, `/assets/`, `/content/assets/`, `/sw.js`). Эта Cache-Control-`add_header` намеренно БЕЗ `always` (NS-8), чтобы immutable-политика не применялась к 404 ассетов; security-заголовки сохраняют `always` и потому покрывают и error-ответы. `map` — http-context-директива; `nginx.conf` копируется в `/etc/nginx/conf.d/default.conf`, который `include`-ится внутри `http{}`, поэтому `map` перед `server{}` в этом файле валиден.
   - Когда `$cache_control` = `""` (default: `/`, `/index.html`), nginx НЕ добавляет заголовок `Cache-Control` (штатное поведение `add_header` с пустым значением, начиная с nginx 1.7.5) — на HTML-shell Cache-Control не навязывается, что корректно.
   - `map` использует точное сопоставление для `/sw.js` (exact-string ключи в `map` имеют приоритет над regex независимо от порядка) и regex `~^/assets/` / `~^/content/assets/` для префиксов. `$uri` — нормализованный путь без query-строки.
   - Альтернативы отвергнуты: (б) повтор полного набора заголовков в каждом `location` — многословно и хрупко (легко забыть заголовок в одном location → дыра); (в) `include`-сниппет общих заголовков в каждом location — тоже требует per-location `add_header` (или `include` внутри location) и не даёт выигрыша над `map` при нашей простой матрице путей. `map`-подход — идиоматичный, единая точка правды, нулевой риск inheritance-trap.
-- **`always` на всех `add_header` (NS-1/NS-2 на ошибочных ответах).** Гарантирует эмиссию security-заголовков и Cache-Control на error-ответах (например, 404 от `try_files … =404`), а не только на 2xx/3xx.
+- **`always` на security-заголовках, но НЕ на Cache-Control — осознанная асимметрия (NS-8).** `always` стоит на 5 security-заголовках (`X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`, `Permissions-Policy`, CSP), чтобы гарантировать их эмиссию на error-ответах (например, 404 от `try_files … =404`), а не только на 2xx/3xx — это выполняет FR-2.1. Cache-Control, напротив, эмитится `add_header` БЕЗ `always`: nginx выставит его только на 2xx/3xx, и immutable-политика НЕ применится к 404 ассетов (иначе транзиентный `/assets/*` 404 ушёл бы как `max-age=31536000, immutable` и «запинал» бы сбой в браузерах после восстановления файла — NS-8). FR-1.1 не страдает: все реальные 200-ответы ассетов по-прежнему получают свой Cache-Control из `map`.
 - **`location /assets/` и `location /content/assets/` с `try_files $uri =404;` (без `add_header`).** Нужны, чтобы отсутствующий ассет отдавал 404, а не проваливался в SPA-фолбэк `location /` → `/index.html` (200 HTML с чужим MIME). Cache-Control для них приходит из `map`, поэтому `add_header` в этих блоках НЕТ (иначе сломается наследование security-заголовков — NS-7). `location = /sw.js` (exact match) — тем же приёмом, cache-control `no-cache` из `map`.
 - **`gzip_types` включает `text/javascript` (NS-6, ключевое).** nginx 1.29 mime.types мапит `.js`/`.mjs` → `text/javascript` (не `application/javascript`, как в старых версиях). Без `text/javascript` в списке Vite-JS-бандлы отдавались бы НЕсжатыми. Список: `application/javascript application/json image/svg+xml text/css text/javascript` — `text/javascript` (фактический тип .js в 1.29) + `application/javascript` (страховка) + JSON/CSS/SVG. `text/html` НЕ перечислен: он всегда сжимается неявно, а явное перечисление вызвало бы warning «duplicate MIME type text/html». `gzip_vary on` добавляет `Vary: Accept-Encoding`. `gzip_min_length 1024`, `gzip_comp_level 6` дословно по ТЗ-14 §3.
 - **CSP символ-в-символ по ТЗ-14/A3.** `default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; base-uri 'none'; frame-ancestors 'none'`. `'self'`-only (+`data:` img) → не вводит внешний origin (NS-4). `script-src 'self'` без `'unsafe-inline'` безопасен: build-вывод `dist/index.html` не содержит инлайн-скриптов (только module-`<script src="/assets/…js">` + линкованный `<link … /assets/…css>`); modulepreload-polyfill Vite инжектится module-импортом внутри entry-чанка, а не инлайн в HTML. `style-src 'unsafe-inline'` покрывает рантайм-инлайн-стили React/Vite; линкованный CSS покрыт `'self'` (NS-1). `object-src`/`form-action` не добавляются (A3).
@@ -123,13 +124,14 @@ CMD ["nginx", "-g", "daemon off;"]
 - `assert.match(nginx, /add_header X-Content-Type-Options "nosniff" always;/)` — текущий без security-заголовков → FAIL.
 - `assert.match(nginx, /add_header X-Frame-Options "DENY" always;/)`, `Referrer-Policy "strict-origin-when-cross-origin"`, `Permissions-Policy "camera=\(\), microphone=\(\), geolocation=\(\)"` → FAIL на текущем.
 - `assert.match(nginx, /add_header Content-Security-Policy "default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; base-uri 'none'; frame-ancestors 'none'" always;/)` — точная CSP; текущий без CSP → FAIL.
-- `assert.match(nginx, /add_header Cache-Control \$cache_control always;/)` — единая server-level Cache-Control из map → FAIL на текущем.
+- `assert.match(nginx, /add_header Cache-Control \$cache_control;/)` — единая server-level Cache-Control из map, БЕЗ `always` (NS-8) → FAIL на текущем (нет строки вовсе).
 - `assert.match(nginx, /gzip on;/)` и `assert.match(nginx, /gzip_types[^;]*text\/javascript/)` — **NS-6 guard**: gzip включён и `text/javascript` в типах; текущий без gzip → FAIL.
 
 Негативные (гарантируют устранение бага; на текущем — FAIL, потому что содержит запрещённый паттерн):
 
 - `assert.doesNotMatch(nginx, /\/content\/assets\/[^\n]*immutable/)` — на нехешированном пути нет immutable в одной строке маппинга (текущий баговый маппинг `/content/assets/ … immutable` — но он в двухстрочном location; этот ассерт держится за строку `map`; на новом конфиге строка `~^/content/assets/ "public, max-age=86400, …"` не содержит immutable → PASS). Основной NS-2-guard — позитивный ассерт `max-age=86400` выше.
 - `assert.doesNotMatch(nginx, /gzip_types[^;]*text\/html/)` — text/html не в явном списке (иначе warning duplicate); PASS на новом.
+- `assert.doesNotMatch(nginx, /add_header Cache-Control \$cache_control always;/)` — **NS-8 regression guard**: Cache-Control-`add_header` НЕ несёт `always` (иначе immutable «залипнет» на 404 ассетов); PASS на новом.
 
 Блок 2 — `test("Dockerfile runtime uses unprivileged nginx base image", …)`:
 
@@ -154,6 +156,10 @@ curl -sI -H 'Accept-Encoding: gzip' "http://localhost:${CABADRIVE_HOST_PORT}${as
 # FR-2: security headers on the app shell
 curl -sI "http://localhost:${CABADRIVE_HOST_PORT}/" | grep -qi 'x-content-type-options: nosniff'
 curl -sI "http://localhost:${CABADRIVE_HOST_PORT}/" | grep -qi 'content-security-policy: default-src'
+# FR-2/NS-8: missing /assets/ 404 keeps security headers (always) but carries NO Cache-Control (immutable must not stick to error responses)
+missing="/assets/__ns8-nonexistent__.js"
+curl -sI "http://localhost:${CABADRIVE_HOST_PORT}${missing}" | grep -qi 'x-content-type-options: nosniff'
+! curl -sI "http://localhost:${CABADRIVE_HOST_PORT}${missing}" | grep -qi 'cache-control'
 # FR-1 (NS-2): non-hashed /content/assets/ must NOT be immutable, must carry max-age=86400
 img=$(find content/assets -type f \( -name '*.jpg' -o -name '*.png' -o -name '*.webp' \) | head -1)
 test -n "$img"
@@ -166,6 +172,7 @@ curl -sI "http://localhost:${CABADRIVE_HOST_PORT}/${img}" | grep -qi 'cache-cont
 - Хешированное имя `/assets/*.js` меняется каждую сборку → извлекается из `/index.html` grep-ом, не хардкодится.
 - Путь картинки берётся из checked-out `content/assets/` (репозиторий на runner-е); served-URL = `/${img}` (dist зеркалит `content/assets`). Проверенный Architect пример: `/content/assets/primary-sources/…/dec196AnexoIII-01.jpg`.
 - `! curl … | grep -qi immutable` — сторож NS-2 на живом образе (падает, если `/content/assets/` вернул immutable).
+- Запрос к несуществующему `/assets/`-пути возвращает 404 (`try_files $uri =404`); проверяется, что security-заголовки на нём присутствуют (`always`), а заголовка `Cache-Control` НЕТ — сторож NS-8 (immutable не эмитится на error-ответах, потому что Cache-Control-`add_header` без `always`).
 - `docker-validation` — CI-only (требует docker); локально Implementation Agent фиксирует, что реальный `curl -I` прогоняется в CI, и опционально прогоняет docker локально при наличии окружения.
 
 ## Design — durable-документация (A8)
@@ -205,6 +212,7 @@ curl -sI "http://localhost:${CABADRIVE_HOST_PORT}/${img}" | grep -qi 'cache-cont
 | NFR-1 no external / offline | preflight e2e | `tests/e2e/app.spec.ts` зелёные |
 | NS-2 (`/content/assets/` не immutable) | статик + runtime | test блок 1 (`max-age=86400`) + CI `! grep immutable` |
 | NS-7 (inheritance trap) | архитектура + runtime | map-подход (0 per-location add_header) + CI curl -I на `/assets/` показывает и security, и cache |
+| NS-8 (immutable не «залипает» на 404 ассетов) | статик + runtime | test блок 1 `doesNotMatch(… Cache-Control … always)` + CI `! grep cache-control` на `/assets/`-404 (security-заголовки при этом присутствуют) |
 
 ## Risks & Mitigations
 
@@ -220,3 +228,4 @@ curl -sI "http://localhost:${CABADRIVE_HOST_PORT}/${img}" | grep -qi 'cache-cont
 | Эталонный текст расходится с регэкспами (пробелы) | Средняя | Красные тесты | `nginx.conf`/`Dockerfile` зафиксированы символ-в-символ; регэкспы с гибкими `\s*` в маппингах; сверка на HEAD |
 | Скоуп расползается в приложение/SW/хешированные пути | Средняя | Нарушение атомарности PR | Явные Out-of-scope границы; `git diff --name-only` контроль (AC-6) |
 | Duplicate MIME warning от `text/html` в gzip_types | Низкая | Шумный лог nginx | `text/html` НЕ перечислен явно (сжимается неявно); ассерт `doesNotMatch(gzip_types … text/html)` |
+| immutable Cache-Control «залипает» на 404 ассетов (NS-8) | Средняя | Транзиентный `/assets/*` 404 запинается в браузере как immutable даже после восстановления файла | Cache-Control-`add_header` БЕЗ `always` (эмиссия только на 2xx/3xx); security-заголовки сохраняют `always`; статик `doesNotMatch(… Cache-Control … always)` + runtime `! grep cache-control` на `/assets/`-404 |
