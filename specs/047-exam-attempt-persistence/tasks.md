@@ -13,13 +13,19 @@
     https://github.com/cucumberfalse/cabadrive/pull/212 ; branch
     `claude/047-exam-attempt-persistence` → base `main`; state OPEN, ready (not
     draft), mergeable MERGEABLE at publish; subject `feat(exam): start screen,
-    attempt persistence, leave guard`. Implementation content head (all
-    behaviour + code + tests + docs): `1a3a532bcb8718f0797ef8562a909a7ec3a6cfcc`.
-    A single evidence-only follow-up commit adds this Cycle PR set line — it
-    changes no behaviour; the current branch tip is that evidence commit
-    (`git rev-parse HEAD`). Required checks / AI Review (Codex) / final
-    Architect+Analyst validation / merge — Orchestrator. Do NOT merge
-    (squash-only ruleset + Codex gate).
+    attempt persistence, leave guard`. Effective content head (all behaviour +
+    code + tests + docs): `4f8492ca37d50b526960ab720c0da1216b6cfd44`. The PR
+    contains MULTIPLE behavioral commits — the reset-safety base plus the
+    AI-review (Codex) fix rounds 1–10 (Findings A/B, C/D/E, F, G, H, I, J, K, L,
+    each superseding the prior effective content head from `1a3a532b` →
+    `15ad01ac` → `bf028a76` → `6e4aca12` → `bcec92ee` → `be445839` → `9711abe9`
+    → `19ef6427` → `01bacf12` → `4f8492ca`) — followed by final-validation
+    evidence-only commits (validation notes / dispositions / this Cycle PR set
+    line) that change no behaviour; the current branch tip is `4f8492ca` (the
+    effective content head, `git rev-parse HEAD`), Architect+Analyst validated.
+    It is NOT "a single evidence-only follow-up." Required checks / AI Review
+    (Codex) / final Architect+Analyst validation / merge — Orchestrator. Do NOT
+    merge (squash-only ruleset + Codex gate).
 - Базис счётчиков на `ae5f9804` (перепроверить на HEAD): e2e —
   `app.spec.ts` 56 `test()` + `manual-ticket-placement.spec.ts` 4 = 60 на проект
   × 2 (chromium+mobile) = **120 сценариев**; unit `pnpm run test` — точное число
@@ -218,11 +224,12 @@
 - [x] **T018** Финальная Analyst-валидация только после T017: Analyst-owned
   маркеры в `feature-request.md` или возврат gap'ов на Architect-диспозицию,
   максимум 5 возвратов. — **passed** for effective content head
-  `6e4aca1276a9a202aef50db2e354eea71d657af6` (matches T017): Analyst recorded
-  `Analyst validated effective content head: 6e4aca12…` in `feature-request.md`
-  (return count 0), superseding the earlier `bf028a76`/`15ad01ac`/`1a3a532b`
-  Analyst passes. Both roles now land on the same SHA `6e4aca12` — no head
-  mismatch remains.
+  `4f8492ca37d50b526960ab720c0da1216b6cfd44` (matches T017): Analyst recorded
+  `Analyst validated effective content head: 4f8492ca…` in `feature-request.md`
+  (return count 0), superseding the earlier `01bacf12`/`19ef6427`/`9711abe9`/
+  `be445839`/`bcec92ee`/`6e4aca12`/`bf028a76`/`15ad01ac`/`1a3a532b` Analyst
+  passes. Both roles now land on the same SHA `4f8492ca` — no head mismatch
+  remains.
 
 - [ ] **T019** Orchestrator: read-only current-PR-head guard (эффективный
   content head по полному SHA; поздние коммиты — только evidence-only), затем
