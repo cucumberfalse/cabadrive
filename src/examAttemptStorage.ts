@@ -49,9 +49,12 @@ function cloneAnswer(answer: ProgressAnswer): ProgressAnswer {
 /**
  * PURE validator/parser. Returns the snapshot only when it is safe to resume,
  * otherwise `null`. Rejects: null/non-JSON raw, `version !== 1`, `questionIds`
- * that are not unique non-empty strings, any id outside the current pool,
- * `answers` that are not valid `ProgressAnswer[]`, answers that do not line up
- * with the saved question sequence (each answer `i` must be exam-mode and target
+ * that are not unique non-empty strings, any id outside the current pool, a
+ * `questionIds` length that does not equal the expected exam question count
+ * (`opts.questionCount`) — a truncated/stale snapshot would otherwise grade a
+ * bogus short exam and store an incorrect completed-attempt total — `answers`
+ * that are not valid `ProgressAnswer[]`, answers that do not line up with the
+ * saved question sequence (each answer `i` must be exam-mode and target
  * `questionIds[i]`, since `position` is derived from `answers.length`), a
  * terminal attempt with as many (or more) answers as questions — that attempt is
  * finished, not resumable, and resuming it would leave `position` past the last
@@ -60,7 +63,7 @@ function cloneAnswer(answer: ProgressAnswer): ProgressAnswer {
  */
 export function parseExamAttempt(
   raw: string | null,
-  opts: { now: number; validQuestionIds: ReadonlySet<string> },
+  opts: { now: number; validQuestionIds: ReadonlySet<string>; questionCount: number },
 ): ExamAttemptSnapshot | null {
   if (raw === null) return null;
   let parsed: unknown;
@@ -77,7 +80,11 @@ export function parseExamAttempt(
   if (!questionIds.every(isNonEmptyString)) return null;
   if (new Set(questionIds).size !== questionIds.length) return null;
   if (!questionIds.every((id) => opts.validQuestionIds.has(id))) return null;
+  // A legitimate attempt persists the full set from start(); a shorter/longer set
+  // is a truncated/corrupt snapshot and must be discarded, not graded.
+  if (questionIds.length !== opts.questionCount) return null;
   if (!Array.isArray(answers) || !answers.every(isProgressAnswer)) return null;
+  if (answers.length > opts.questionCount) return null;
   if (answers.length >= questionIds.length) return null;
   // Each saved answer must correspond to its question in sequence: position is
   // derived from answers.length, so a mismatched/stale answer would silently skip
@@ -127,7 +134,7 @@ export function saveExamAttempt(storage: StorageLike, snapshot: ExamAttemptSnaps
  * validation failure (including an expired or foreign attempt). */
 export function readExamAttempt(
   storage: StorageLike,
-  opts: { now: number; validQuestionIds: ReadonlySet<string> },
+  opts: { now: number; validQuestionIds: ReadonlySet<string>; questionCount: number },
 ): ExamAttemptSnapshot | null {
   let raw: string | null;
   try {

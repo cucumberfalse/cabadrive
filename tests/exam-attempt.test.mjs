@@ -68,7 +68,9 @@ const validSnapshot = (overrides = {}) => ({
   ...overrides,
 });
 const now = 1_000_000 + 5_000;
-const opts = { now, validQuestionIds: validIds };
+// The default snapshot carries 3 questionIds, so the expected exam length is 3.
+const optsFor = (questionCount) => ({ now, validQuestionIds: validIds, questionCount });
+const opts = optsFor(3);
 
 test("EXAM_ATTEMPT_KEY matches the versioned cabadrive namespace", () => {
   assert.equal(EXAM_ATTEMPT_KEY, "cabadrive.exam-attempt.v1");
@@ -162,7 +164,7 @@ test("parseExamAttempt rejects more answers than questions", () => {
       answers: [examAnswer("q-1", true), examAnswer("q-1", true)],
     }),
   );
-  assert.equal(parseExamAttempt(raw, opts), null);
+  assert.equal(parseExamAttempt(raw, optsFor(1)), null);
 });
 
 test("parseExamAttempt rejects answers that do not line up with the question sequence", () => {
@@ -217,22 +219,50 @@ test("parseExamAttempt rejects a terminal snapshot (every question already answe
       answers: [examAnswer("q-1", true), examAnswer("q-2", false)],
     }),
   );
-  assert.equal(parseExamAttempt(terminal, opts), null);
+  assert.equal(parseExamAttempt(terminal, optsFor(2)), null);
   // The boundary just below (one answer short of terminal) is still resumable.
   const resumable = JSON.stringify(
     validSnapshot({ questionIds: ["q-1", "q-2"], answers: [examAnswer("q-1", true)] }),
   );
-  assert.notEqual(parseExamAttempt(resumable, opts), null);
+  assert.notEqual(parseExamAttempt(resumable, optsFor(2)), null);
+});
+
+test("parseExamAttempt rejects a truncated or oversized questionIds set (Finding J)", () => {
+  // Truncated: fewer saved questions than the exam expects (corrupt/old snapshot).
+  // Grading against this shortened set would store a bogus completed-attempt total.
+  const truncated = JSON.stringify(validSnapshot({ questionIds: ["q-1"], answers: [] }));
+  assert.equal(parseExamAttempt(truncated, optsFor(3)), null);
+  // Oversized: more saved questions than expected.
+  const oversized = JSON.stringify(
+    validSnapshot({ questionIds: ["q-1", "q-2", "q-3"], answers: [examAnswer("q-1", true)] }),
+  );
+  assert.equal(parseExamAttempt(oversized, optsFor(2)), null);
+  // A full-length in-progress snapshot (length === questionCount) is still accepted.
+  const full = JSON.stringify(
+    validSnapshot({ questionIds: ["q-1", "q-2", "q-3"], answers: [examAnswer("q-1", true)] }),
+  );
+  assert.notEqual(parseExamAttempt(full, optsFor(3)), null);
+});
+
+test("parseExamAttempt rejects more answers than the expected question count", () => {
+  // questionIds matches the expected count, but there are more answers than that.
+  const raw = JSON.stringify(
+    validSnapshot({
+      questionIds: ["q-1", "q-2"],
+      answers: [examAnswer("q-1", true), examAnswer("q-2", true), examAnswer("q-1", true)],
+    }),
+  );
+  assert.equal(parseExamAttempt(raw, optsFor(2)), null);
 });
 
 test("parseExamAttempt rejects non-finite startedAt/deadline", () => {
   assert.equal(parseExamAttempt(JSON.stringify(validSnapshot({ startedAt: "x" })), opts), null);
   assert.equal(parseExamAttempt(JSON.stringify(validSnapshot({ deadline: null })), opts), null);
-  // JSON cannot carry Infinity/NaN literally; a string field must still be rejected.
+  // JSON cannot carry Infinity/NaN literally; 1e999 parses to Infinity (not finite).
   assert.equal(
     parseExamAttempt(
       '{"version":1,"questionIds":["q-1"],"answers":[],"startedAt":1,"deadline":1e999}',
-      opts,
+      optsFor(1),
     ),
     null,
   );

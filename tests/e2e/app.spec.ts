@@ -1480,6 +1480,38 @@ test("a broken or expired saved attempt is discarded for a clean start screen", 
   expect(await page.evaluate(() => localStorage.getItem("cabadrive.exam-attempt.v1"))).toBeNull();
 });
 
+test("a truncated saved attempt (fewer questions than the exam) is discarded, not graded", async ({
+  page,
+}) => {
+  // A well-formed but truncated snapshot (1 questionId; the exam expects 40) must
+  // not resume into a bogus 1-question exam that would store an incorrect total.
+  await page.addInitScript((questionId) => {
+    localStorage.setItem(
+      "cabadrive.exam-attempt.v1",
+      JSON.stringify({
+        version: 1,
+        questionIds: [questionId],
+        answers: [],
+        startedAt: Date.now(),
+        deadline: Date.now() + 45 * 60_000,
+      }),
+    );
+  }, questions[0].id);
+  await page.goto("/");
+  await page.getByRole("button", { name: /Экзамен/ }).click();
+  // Clean start screen, no 1-question resume; the truncated key is cleared.
+  await expect(page.getByRole("button", { name: "Начать" })).toBeVisible();
+  await expect(page.getByText(/Продолжить попытку/)).toHaveCount(0);
+  expect(await page.evaluate(() => localStorage.getItem("cabadrive.exam-attempt.v1"))).toBeNull();
+  // No bogus completed attempt was recorded into the progress store.
+  const finishedAttempts = await page.evaluate(
+    () =>
+      JSON.parse(localStorage.getItem("cabadrive.progress.v1") || '{"examAttempts":[]}')
+        .examAttempts.length,
+  );
+  expect(finishedAttempts).toBe(0);
+});
+
 test("when the browser cannot save exam progress, the leave guard warns honestly", async ({
   page,
 }) => {

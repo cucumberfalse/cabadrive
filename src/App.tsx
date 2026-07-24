@@ -1121,7 +1121,13 @@ function ExamView({
   // prompt; anything else (absent/broken/expired) leaves us on the idle start
   // screen and the stale key is cleared by the mount effect below.
   const [savedAttempt, setSavedAttempt] = useState<ExamAttemptSnapshot | null>(() =>
-    storage ? readExamAttempt(storage, { now: Date.now(), validQuestionIds }) : null,
+    storage
+      ? readExamAttempt(storage, {
+          now: Date.now(),
+          validQuestionIds,
+          questionCount: data.examFormat.questionCount,
+        })
+      : null,
   );
   const [phase, setPhase] = useState<ExamPhase>(() => (savedAttempt ? "resumePrompt" : "idle"));
   const [examQuestions, setExamQuestions] = useState<Question[]>([]);
@@ -5253,7 +5259,13 @@ export function App() {
     const storage = safeLocalStorage();
     if (!storage) return false;
     const validQuestionIds = new Set(data.questions.map((question) => question.id));
-    return readExamAttempt(storage, { now: Date.now(), validQuestionIds }) !== null;
+    return (
+      readExamAttempt(storage, {
+        now: Date.now(),
+        validQuestionIds,
+        questionCount: data.examFormat.questionCount,
+      }) !== null
+    );
   });
   // Whether the active attempt is actually saved. A resumable attempt read from
   // storage is persisted; a fresh attempt is persisted only if the write worked.
@@ -5337,6 +5349,7 @@ export function App() {
           ? readExamAttempt(examStorage, {
               now: Date.now(),
               validQuestionIds: examValidQuestionIds,
+              questionCount: data.examFormat.questionCount,
             })
           : null;
         if (!saved) {
@@ -5358,7 +5371,11 @@ export function App() {
   useEffect(() => {
     if (!examAttemptActive || view === "exam") return undefined;
     const saved = examStorage
-      ? readExamAttempt(examStorage, { now: Date.now(), validQuestionIds: examValidQuestionIds })
+      ? readExamAttempt(examStorage, {
+          now: Date.now(),
+          validQuestionIds: examValidQuestionIds,
+          questionCount: data.examFormat.questionCount,
+        })
       : null;
     if (!saved) {
       // No resumable attempt is actually stored (already expired/absent): disarm now.

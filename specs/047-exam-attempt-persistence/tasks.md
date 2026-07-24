@@ -560,12 +560,13 @@ Cycle PR set.
 
 - `node --test tests/exam-attempt.test.mjs` — test-first: **fail** до реализации
   модуля (`ERR_MODULE_NOT_FOUND` / `ERR_TEST_FAILURE`, tests 1 / fail 1). После
-  реализации `src/examAttemptStorage.ts`: **pass 20 / fail 0** (20 test(); 17
+  реализации `src/examAttemptStorage.ts`: **pass 22 / fail 0** (22 test(); 17
   исходных + terminal-snapshot rejection (Codex Finding B) + answer-sequence
   rejection (Codex Finding C) + stale-snapshot-cleared-on-failed-write (Codex
-  Finding H)).
-- `pnpm run test` — `node --test tests/*.test.mjs`: **tests 551, pass 551,
-  fail 0** (базис до слайса: **531**; после: **551** = +20 из
+  Finding H) + truncated/oversized-questionIds + answers>questionCount rejection
+  (Codex Finding J)).
+- `pnpm run test` — `node --test tests/*.test.mjs`: **tests 553, pass 553,
+  fail 0** (базис до слайса: **531**; после: **553** = +22 из
   `tests/exam-attempt.test.mjs`).
 - `pnpm run quality:fast` — typecheck (`tsc --noEmit`) + eslint
   (`--max-warnings 0`): **pass** (0 ошибок, 0 предупреждений).
@@ -573,8 +574,8 @@ Cycle PR set.
 - `pnpm run build:app` — **pass** (vite build `✓ built in ~4s`; service worker
   сгенерирован); новых зависимостей нет.
 - `pnpm run test:e2e` (эквивалент: `build:app` + `playwright test`, оба проекта)
-  — **148 passed, 0 failed** (базис 120 = 60×2; после: **148 = 74×2**, +28 =
-  14 новых test() × 2 проекта). Разбивка: Desktop Chromium **74** + Pixel 7 **74**.
+  — **150 passed, 0 failed** (базис 120 = 60×2; после: **150 = 75×2**, +30 =
+  15 новых test() × 2 проекта). Разбивка: Desktop Chromium **75** + Pixel 7 **75**.
   ПРИМЕЧАНИЕ по флейкам: на нагруженной машине (параллельный VM, load ~5) полный
   прогон в 2 воркера иногда даёт 1–2 нестабильных падения в РАЗНЫХ несвязанных
   тестах (exam-timeout с 45-мин виртуальными часами, offline-reload, manual-guide,
@@ -720,6 +721,28 @@ Cycle PR set.
   до дедлайна `beforeunload` предупреждает (no regression) → прокрутка часов за
   дедлайн → (a) `beforeunload` больше не блокирует, (b) возврат на «Экзамен» —
   чистый старт, ключ очищен.
+- **Codex review round 7 (finding J — truncated saved попытка) — исправлено:**
+  `parseExamAttempt` проверял, что `questionIds` — непустое множество разрешимых
+  id, но НЕ сверял их количество с ожидаемой длиной экзамена. Хорошо
+  сформированный, но усечённый/устаревший снапшот (например `questionIds` длины
+  1–2 из повреждённого ключа или старого формата) считался резюмируемым; `resume()`
+  оценивал против укороченного `questions.length`, давая фиктивный «экзамен из
+  1 вопроса» и записывая НЕКОРРЕКТНЫЙ завершённый total вместо отбрасывания. Фикс:
+  в опции `parseExamAttempt`/`readExamAttempt` добавлено поле `questionCount`
+  (протянуто из `data.examFormat.questionCount` на всех 4 call-site App —
+  savedAttempt-init ExamView, lazy-init `examAttemptActive`, beforeunload-recheck,
+  expiry-таймер); отбрасывание (→ null → discard+clear+чистый старт) при
+  `questionIds.length !== questionCount`; плюс sanity-guard `answers.length >
+  questionCount` (в паре с существующим terminal `>=` фиксирует валидный
+  in-progress диапазон). Все прежние проверки (version, resolvable ids,
+  answer-sequence, deadline, terminal) сохранены. Легитимная активная попытка
+  всегда персистит полный набор из `start()` (length === questionCount), поэтому
+  отбрасываются только реально усечённые/битые снапшоты (подтверждено: e2e AC-2
+  resume зелёный). Scope: `src/examAttemptStorage.ts` + call-site wiring в
+  `src/App.tsx` + тесты; схема store не тронута. Покрыто unit (truncated `<` /
+  oversized `>` questionCount → null; полный in-progress принят; answers >
+  questionCount → null) и e2e (засеянный усечённый ключ с 1 вопросом → чистый
+  старт, ключ очищен, ноль завершённых попыток).
 - Иных dead ends / accepted known issues нет.
 
 ## Final Architect Validation (Architect-owned)
