@@ -70,13 +70,16 @@ The app header exposes three progress-safety icon actions next to the title:
 
 ## Exam Simulation Flow
 
-1. Start exam with parameters from `content/config/caba-exam-format.json`.
-2. Use the exam-wide timer only; do not show learning per-ticket timer controls during an active attempt.
-3. Hide translation/explanation during active attempt.
-4. Do not show difficulty rationale, dimensions, or study hints during active attempt; current active exam UI also omits compact difficulty chips.
-5. Record timing and selected answers.
-6. Complete exam and show score.
-7. Generate weak-topic and mistake review recommendations.
+1. Open the exam tab to a start screen that lists the format from `content/config/caba-exam-format.json` (question count, time limit, passing score, skip rule, status). No exam question set is selected, no `startedAt` is fixed, and no timer runs until the user presses «Начать».
+2. On «Начать», fix the question set, record `startedAt`, and derive an absolute `deadline = startedAt + timeLimitMinutes * 60_000`. The exam-wide timer recomputes remaining time from `deadline - now`; do not show learning per-ticket timer controls during an active attempt.
+3. Persist the active attempt to a dedicated localStorage key `cabadrive.exam-attempt.v1` (`{ version, questionIds, answers, startedAt, deadline }`) on start and on every answer/skip. This is separate from the progress store (`cabadrive.progress.v1`, completed attempts only) and degrades silently (try/catch) when localStorage is unavailable — the exam still runs in memory.
+4. On returning to the exam tab or after a reload, a valid unexpired saved attempt offers «Продолжить попытку (осталось MM:SS)» / «Отменить», where the remaining time is recomputed from the absolute `deadline`. «Продолжить» restores the question set, answers, position, and countdown; «Отменить» and finishing both clear the key. A broken, expired (`deadline <= now`), or unresolvable saved attempt is discarded and the key cleared, showing a clean start screen.
+5. While an attempt is active, leaving the exam tab for another top-nav view asks for confirmation via `ConfirmDialog` (the persisted attempt is kept for later resume); closing/reloading the browser tab arms a best-effort `beforeunload` warning (unreliable on mobile — the persisted attempt is the real guarantee).
+6. Hide translation/explanation during active attempt.
+7. Do not show difficulty rationale, dimensions, or study hints during active attempt; current active exam UI also omits compact difficulty chips.
+8. Record timing and selected answers.
+9. Complete exam and show score.
+10. Generate weak-topic and mistake review recommendations.
 
 ## Mistake Review Flow
 
