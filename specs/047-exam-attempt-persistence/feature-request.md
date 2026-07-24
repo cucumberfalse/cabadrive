@@ -302,3 +302,31 @@ Analyst return count в этом work cycle: 0 (гэпов против поль
 Analyst validation pass: passed
 Final Analyst validation completed at: 2026-07-24T03:09:30Z
 Analyst validated effective content head: be445839ddf4fbdb6f25aa5e16fd0cee7aa27a7e
+
+### Финальная валидация Analyst (СВЕЖАЯ, суперсед round-7, merge-gate markers) — 2026-07-24, head `9711abe9`
+
+Валидация против `be445839` СУПЕРСЕДИРОВАНА: приземлился финальный Codex-фикс (Finding I), effective content head теперь `9711abe9a0042b89adcc9a4510e475478e821f40` (parent `d0a26b67`). Финальная валидация Architect повторно ПРОШЛА на `9711abe9` (`Final Architect validation completed at: 2026-07-24T03:45:00Z`); обе роли сходятся на этом SHA. Инспектирован реальный diff `d0a26b67..9711abe9` (единственный коммит `9711abe9` «fix(exam): disarm leave guard when a saved attempt expires while away»).
+
+**Вердикт: PASS.** Finding I подтверждён против пользовательского намерения — доводит FR-A5 до полноты: guard применяется ТОЛЬКО к реально активной, непросроченной попытке, без регресса:
+
+- **Finding I — разоружение guard + beforeunload при истечении попытки, пока пользователь ушёл (`src/App.tsx`).** Пока пользователь на Learn/Mistakes, ExamView размонтирован и не может заметить прохождение дедлайна, поэтому `examAttemptActive` иначе оставался бы `true` (guard + beforeunload вооружены), хотя сохранённая попытка уже нерезюмируема. Теперь: (1) App-level effect планирует `discardActiveExamAttempt` через `setTimeout` ровно на сохранённый `deadline` (а если снапшот уже просрочен/отсутствует — разоружает немедленно); (2) `beforeunload`-обработчик перепроверяет валидность в момент срабатывания — вне вкладки экзамена блокирует уход только если ещё лежит непросроченный снапшот, иначе не мешает выгрузке и best-effort чистит устаревший ключ; на самой вкладке экзамена (ExamView смонтирован, попытка реально идёт) всегда предупреждает. Пользовательский исход: когда ПЕРСИСТИРОВАННАЯ попытка, покинутая через guard, истекает, пока пользователь на другой вкладке, leave-guard и нативное beforeunload-предупреждение разоружаются в момент истечения (вместо назойливого предупреждения о нерезюмируемой попытке); возврат на вкладку экзамена даёт чистый стартовый экран. e2e «a saved attempt that expires while away disarms the guard and beforeunload (FR-A5)» (перед дедлайном beforeunload всё ещё вооружён — нет регресса; после истечения — не блокирует выгрузку; возврат — без «Продолжить попытку»).
+
+Когерентность: `discardActiveExamAttempt` поднят из обычной функции в `useCallback` (тело неизменно — clear key + `examAttemptActive`/`examAttemptPersisted` false + `examResetNonce` bump), чтобы стать зависимостью нового effect; существующие вызовы (confirmReset/import/undo) не затронуты. Новый scheduled-disarm effect работает только при `view !== "exam"`, поэтому не конфликтует с собственным таймером ExamView на активной вкладке (при возврате cleanup снимает таймаут).
+
+**Регресса нет — базовые обещания без изменений подтверждены на `9711abe9`:**
+- **FR-B1 (осознанный старт).** idle/старт по «Начать» не тронуты.
+- **FR-A4 / AC-2 (reload-resume, корректный остаток + сохранённые ответы).** Логика away-from-exam не трогает путь резюме; на вкладке экзамена всё как раньше.
+- **FR-A5 — активный guard непросроченной попытки по-прежнему предупреждает при уходе/закрытии** (e2e подтверждает before-deadline arming), + честная формулировка (F), + отбрасывание несохранённой попытки при уходе (G), + очистка устаревшего снапшота при сбойной записи (H), + разоружение при истечении вне вкладки (I) — все пять согласованы.
+- **Graceful degradation.** Экзамен идёт в памяти без падения; ни один путь не оставляет вооружённый guard/предупреждение для нерезюмируемой попытки.
+
+**Сверка свидетельств (прямой grep):** unit 20 `test()` (`tests/exam-attempt.test.mjs`; 551 суб-ассерт total по прогону); e2e 74 `test()` = `app.spec.ts` 70 + `manual-ticket-placement.spec.ts` 4, ×2 проекта = 148. Гейты зелёные + preflight exit 0 (чистый прогон) — по свидетельству Orchestrator/Architect (гейты вне scope Analyst; повторно не гонял).
+
+**Две известные ограниченности (popstate/hashchange обходят guard-диалог; `beforeunload` ненадёжен на мобильных) остаются в силе и приемлемы в духе** — настоящая страховка сохранности остаётся персист FR-A4.
+
+Analyst return count в этом work cycle: 0 (гэпов против пользовательского намерения не найдено ни в одной из валидаций; счётчик не инкрементируется).
+
+Настоящая запись суперседирует более ранние Analyst-пассы `be445839`, `bcec92ee`, `6e4aca12`, `bf028a76`, `15ad01ac` и `1a3a532b`.
+
+Analyst validation pass: passed
+Final Analyst validation completed at: 2026-07-24T04:01:00Z
+Analyst validated effective content head: 9711abe9a0042b89adcc9a4510e475478e821f40
