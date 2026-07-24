@@ -355,6 +355,15 @@ popstate вне scope), A6 ACCEPT, A7 REFINE (три e2e-места), A8 ACCEPT,
   thread `data.examFormat.questionCount`; a full-length in-progress snapshot is
   still accepted (AC-2 intact).
   Architect disposition: ACCEPTED — ACCEPT-FIXED; no task/ticket needed.
+- Finding K (Codex round 9, fixed at content head `01bacf12`) — a resume prompt
+  (`phase === "resumePrompt"`) left open past the saved deadline now auto-expires:
+  a new ExamView effect schedules `setTimeout(savedAttempt.deadline − Date.now())`
+  (immediate if already past) that clears the key, `setSavedAttempt(null)`,
+  `onAttemptStateChange(false,false)` and `setPhase("idle")`, so the prompt stops
+  advertising a resumable attempt and disarms guard/`beforeunload` without user
+  action. Scope: `src/App.tsx` (ExamView) + e2e only; `examAttemptStorage.ts` and
+  `progressStore*` empty-diff, `package.json` unchanged.
+  Architect disposition: ACCEPTED — ACCEPT-FIXED; no task/ticket needed.
 - Codex process finding #5 (evidence not parseable by `pr:finalize`) — the canonical
   section headings the finalize parser (`scripts/finalize-pr.mjs`) greps for now
   exist verbatim (`Verification Evidence`, `Implementation Agent Feedback`,
@@ -652,6 +661,44 @@ Implementation Agent добавляет feedback-пункты сюда; Architec
     cycle. Re-validated on `19ef6427` in the Final Architect Validation section
     below.
 
+- **[Codex P2 round 9 finding K — disposition; fixed at content head `01bacf12`]**
+  One more code fix landed on `01bacf12f4821bd65aaa2ddbb9e324d9b2d36e54` (parent
+  `41bde27e`), a BEHAVIORAL change → prior validations (`19ef6427` etc.) are stale.
+  Verified `git diff 41bde27e..01bacf12`.
+
+  - **Finding K (`App.tsx` ExamView — auto-expire a resume prompt left open past
+    the deadline): ACCEPT-FIXED.** On reload into the resume prompt
+    (`phase === "resumePrompt"`), leaving it open PAST the saved deadline left the
+    state untouched: the remaining seconds are computed only on first render, no
+    interval runs in that phase, and the App-level away-expiry effect (Finding I) is
+    disabled on the exam view (`view !== "exam"`). So the prompt kept advertising a
+    resumable attempt and the leave-guard + `beforeunload` stayed armed until the
+    user pressed «Продолжить» (which itself discards an expired snapshot via the
+    Finding E recheck). Fix (scope: only `src/App.tsx` ExamView; verified
+    `git diff 41bde27e..01bacf12` — `src/App.tsx` + `tests/e2e/app.spec.ts` only,
+    `src/examAttemptStorage.ts` and `progressStore*` empty-diff this round,
+    `package.json` unchanged): a new effect gated on `phase === "resumePrompt"`
+    schedules `window.setTimeout(savedAttempt.deadline − Date.now())` (fires
+    immediately when already past) whose handler clears the key
+    (`clearExamAttempt(storage)`), `setSavedAttempt(null)`,
+    `onAttemptStateChange(false, false)` and `setPhase("idle")` — auto-transitioning
+    to a clean idle start screen with no user action and disarming
+    guard/`beforeunload`; the timeout is cleared on cleanup / phase change. **No
+    double-fire:** the active-phase timer runs only in `phase === "active"` (a
+    different phase) and the App-level away-expiry effect only when
+    `view !== "exam"` (the resume prompt is on the exam view), so this effect covers
+    exactly the previously-uncovered case. The `resume()` deadline recheck (Finding
+    E) and the active-phase timer are unchanged; F/G/H/I/J are not regressed. New
+    e2e (`page.clock`): resume prompt open → advance the fake-timer queue past the
+    45-minute deadline WITHOUT clicking «Продолжить» → clean start screen, key
+    cleared, `beforeunload` no longer blocks, top-nav leave shows no guard dialog;
+    the Finding E test was adapted to `setFixedTime` (Date jumps past the deadline
+    WITHOUT advancing the timer queue, so the auto-expire has not fired and
+    «Продолжить» is still clickable → exercises resume()'s own recheck). AC-2
+    (normal resume) and Finding E stay green. No task/ticket needed — fixed in this
+    cycle. Re-validated on `01bacf12` in the Final Architect Validation section
+    below.
+
 ## Verification Evidence
 
 Implementation Agent записывает команду → фактический результат → SHA кандидата.
@@ -878,20 +925,89 @@ Cycle PR set.
 
 ## Final Architect Validation (Architect-owned)
 
-### Current validated head (T017, re-run on 19ef6427 after Codex round-8 fix)
+### Current validated head (T017, re-run on 01bacf12 after Codex round-9 fix)
 
 Merge-gate markers (exact keys, verbatim — do not reword; parsed by the gate):
 
 Architect validation pass: passed
-Final Architect validation completed at: 2026-07-24T04:30:00Z
-Effective content head: 19ef6427572179163e6d12e63e1dbbe615741028
-Architect validated effective content head: 19ef6427572179163e6d12e63e1dbbe615741028
+Final Architect validation completed at: 2026-07-24T05:15:00Z
+Effective content head: 01bacf12f4821bd65aaa2ddbb9e324d9b2d36e54
+Architect validated effective content head: 01bacf12f4821bd65aaa2ddbb9e324d9b2d36e54
 
-- Current effective content head: `19ef6427572179163e6d12e63e1dbbe615741028`
-  (PR #212 fix commit resolving Codex round-8 Finding J, parent `857f17a3`). This
-  SUPERSEDES the prior validated heads `9711abe9`, `be445839`, `bcec92ee`,
-  `6e4aca12`, `bf028a76`, `15ad01ac`, and `1a3a532b` (behavioral changes → prior
-  passes stale). It is the SOLE active (non-struck) Architect-validated head.
+- Current effective content head: `01bacf12f4821bd65aaa2ddbb9e324d9b2d36e54`
+  (PR #212 fix commit resolving Codex round-9 Finding K, parent `41bde27e`). This
+  SUPERSEDES the prior validated heads `19ef6427`, `9711abe9`, `be445839`,
+  `bcec92ee`, `6e4aca12`, `bf028a76`, `15ad01ac`, and `1a3a532b` (behavioral
+  changes → prior passes stale). It is the SOLE active (non-struck)
+  Architect-validated head.
+- Incremental review `git diff 41bde27e..01bacf12` (behavioral fix only —
+  `src/App.tsx` (ExamView) + `tests/e2e/app.spec.ts` only; `src/examAttemptStorage.ts`
+  AND `progressStore*` empty-diff this round, `package.json` unchanged, exam key
+  only in `examAttemptStorage.ts`, no slice-3 items, pinned «Руководства» hash e2e
+  untouched — confirmed `git diff 41bde27e..01bacf12 --name-only` = exactly
+  `tasks.md` + `src/App.tsx` + `tests/e2e/app.spec.ts`):
+  - **Finding K** — a new ExamView effect gated on `phase === "resumePrompt"`
+    schedules `window.setTimeout(savedAttempt.deadline − Date.now())` (fires
+    immediately when already past) whose handler clears the key
+    (`clearExamAttempt(storage)`), `setSavedAttempt(null)`,
+    `onAttemptStateChange(false, false)` and `setPhase("idle")`, auto-transitioning
+    a resume prompt left open past the deadline to a clean idle start screen with no
+    user action and disarming guard/`beforeunload`; the timeout is cleared on
+    cleanup / phase change. **No double-fire:** the active-phase timer runs only in
+    `phase === "active"` (a different phase) and the App-level away-expiry effect
+    (Finding I) only when `view !== "exam"` — the resume prompt lives on the exam
+    view, so this effect closes exactly the previously-uncovered gap. The `resume()`
+    deadline recheck (Finding E) and the active-phase timer are unchanged; E/F/G/H/I/J
+    are not regressed. Correct.
+  - Tests: no unit delta this round (`tests/exam-attempt.test.mjs` untouched — stays
+    22 `test()`); +1 e2e (`test()`) per project — a resume prompt left open past the
+    45-minute deadline (advance the `page.clock` timer queue, no click) auto-expires
+    to a clean start screen, key cleared, `beforeunload` disarmed, top-nav leave
+    shows no guard dialog. The Finding E test was adapted from `runFor` to
+    `setFixedTime` (Date jumps past the deadline WITHOUT advancing the timer queue,
+    so the auto-expire has not fired and «Продолжить» stays clickable → still
+    exercises resume()'s own recheck). e2e diff is insertions + that one adaptation;
+    no weakened assertions.
+- Whole-slice re-conformance on `ae5f9804..01bacf12`: **FR-B1/FR-A4/FR-A5 hold**;
+  the storage-failure paths F/G/H, the expiry-while-away disarm (Finding I), the
+  truncated/oversized-snapshot rejection (Finding J), and the resume-prompt
+  auto-expire (Finding K) all agree — a saved attempt is resumed only while it is
+  genuinely live, full-length, and unexpired, and any expired/broken/truncated
+  snapshot (or a resume prompt whose deadline passes) is discarded to a clean start
+  with guard/`beforeunload` disarmed. Scope guard intact: `git diff --stat
+  src/progressStoreCore.ts src/progressStore.ts package.json` empty on
+  `41bde27e..01bacf12` and on `ae5f9804..01bacf12`; no slice-3 items; pinned
+  «Руководства» hash e2e untouched.
+- Evidence counts (updated by Impl, confirmed against reality this pass): unit
+  `tests/exam-attempt.test.mjs` **22 `test()`** / `pnpm run test` **553**; e2e
+  `app.spec.ts` **72 `test()`** + `manual-ticket-placement.spec.ts` **4** = **76**
+  per project → total **76×2 = 152** scenarios. Confirmed by
+  `grep -cE '^\s*test\(' tests/e2e/app.spec.ts` = 72,
+  `manual-ticket-placement.spec.ts` = 4,
+  `grep -cE '^\s*test\(' tests/exam-attempt.test.mjs` = 22. Gates green +
+  `preflight` exit 0 (clean) per Evidence Log. All consistent.
+- Return count unchanged (no gap): Architect return count stays 0.
+- **T018 status after this re-validation:** the Analyst's recorded head is
+  `6e4aca12` (feature-request.md), now **stale** for the current head `01bacf12`.
+  T018 stays `[x]` for the Analyst validation work done, but its validated SHA does
+  NOT yet match the current effective content head — a **fresh Analyst re-pass
+  against `01bacf12` is required** and runs right after this Architect pass. This
+  Architect pass does NOT claim the Analyst validated `01bacf12`; per the same-SHA
+  rule the Analyst records its own markers (a `Final Analyst validation completed
+  at:` timestamp LATER than this Architect `05:15:00Z`) in `feature-request.md`
+  when their re-pass lands, restoring SHA agreement.
+
+### Superseded — prior validated head `19ef6427` (STALE, kept for history)
+
+- **Architect validation pass: passed** — 2026-07-24T04:30:00Z (T017, superseded
+  by the `01bacf12` re-run above; retained as history).
+- Effective content head at that pass: `19ef6427572179163e6d12e63e1dbbe615741028`
+  (PR #212 fix commit resolving Codex round-8 Finding J, parent `857f17a3`).
+  Superseded the earlier `9711abe9`, `be445839`, `bcec92ee`, `6e4aca12`,
+  `bf028a76`, `15ad01ac`, and `1a3a532b`; now itself superseded by `01bacf12`
+  (Codex round-9 Finding K, behavioral change → this pass stale).
+- ~~**Architect validated effective content head: 19ef6427572179163e6d12e63e1dbbe615741028**~~
+  (SUPERSEDED — see the current validated head `01bacf12` above).
 - Incremental review `git diff 857f17a3..19ef6427` (behavioral fix only —
   `src/examAttemptStorage.ts` + `src/App.tsx` + tests; `progressStore*` empty-diff
   this round, `package.json` unchanged, exam key only in `examAttemptStorage.ts`,
@@ -927,24 +1043,16 @@ Architect validated effective content head: 19ef6427572179163e6d12e63e1dbbe61574
   src/progressStoreCore.ts src/progressStore.ts package.json` empty on
   `857f17a3..19ef6427` and on `ae5f9804..19ef6427`; no slice-3 items; pinned
   «Руководства» hash e2e untouched.
-- Evidence counts (updated by Impl, confirmed against reality this pass): unit
+- Evidence counts (at that pass): unit
   `tests/exam-attempt.test.mjs` **22 `test()`** / `pnpm run test` **553**; e2e
   `app.spec.ts` **71 `test()`** + `manual-ticket-placement.spec.ts` **4** = **75**
-  per project → total **75×2 = 150** scenarios. Confirmed by
-  `grep -cE '^\s*test\(' tests/e2e/app.spec.ts` = 71,
-  `manual-ticket-placement.spec.ts` = 4,
-  `grep -cE '^\s*test\(' tests/exam-attempt.test.mjs` = 22. Gates green +
-  `preflight` exit 0 (clean) per Evidence Log. All consistent.
+  per project → total **75×2 = 150** scenarios. Gates green +
+  `preflight` exit 0 (clean) per Evidence Log.
 - Return count unchanged (no gap): Architect return count stays 0.
-- **T018 status after this re-validation:** the Analyst's recorded head is
-  `6e4aca12` (feature-request.md), now **stale** for the current head `19ef6427`.
-  T018 stays `[x]` for the Analyst validation work done, but its validated SHA does
-  NOT match the current effective content head — a **fresh Analyst re-pass against
-  `19ef6427` is required** and is being routed by the Orchestrator right after this
-  pass. This Architect pass does NOT claim the Analyst validated `19ef6427`; per
-  the same-SHA rule the Analyst records its own markers (a `Final Analyst
-  validation completed at:` timestamp LATER than this Architect `04:30:00Z`) when
-  their re-pass lands, restoring SHA agreement.
+- **T018 status at that pass (historical):** the Analyst's recorded head was then
+  `6e4aca12` (feature-request.md), stale for `19ef6427`; both `19ef6427` and this
+  note are now themselves superseded by the `01bacf12` round-9 pass above. The fresh
+  Analyst re-pass is routed against the current head `01bacf12`.
 
 ### Superseded — prior validated head `9711abe9` (STALE, kept for history)
 
@@ -956,7 +1064,7 @@ Architect validated effective content head: 19ef6427572179163e6d12e63e1dbbe61574
   `15ad01ac`, and `1a3a532b`; now itself superseded by `19ef6427` (Codex round-8
   Finding J, behavioral change → this pass stale).
 - ~~**Architect validated effective content head: 9711abe9a0042b89adcc9a4510e475478e821f40**~~
-  (SUPERSEDED — see the current validated head `19ef6427` above).
+  (SUPERSEDED — see the current validated head `01bacf12` above).
 - Incremental review `git diff d0a26b67..9711abe9` (behavioral fix only —
   `src/App.tsx` + `tests/e2e/app.spec.ts` only; `src/examAttemptStorage.ts` AND
   `progressStore*` empty-diff that round, `package.json` unchanged, exam key only
@@ -993,8 +1101,8 @@ Architect validated effective content head: 19ef6427572179163e6d12e63e1dbbe61574
 - Return count unchanged (no gap): Architect return count stays 0.
 - **T018 status at that pass (historical):** the Analyst's recorded head was then
   `6e4aca12` (feature-request.md), stale for `9711abe9`; both `9711abe9` and this
-  note are now themselves superseded by the `19ef6427` round-8 pass above. The fresh
-  Analyst re-pass is routed against the current head `19ef6427`.
+  note are now themselves superseded by the `01bacf12` round-9 pass above. The fresh
+  Analyst re-pass is routed against the current head `01bacf12`.
 
 ### Superseded — prior validated head `be445839` (STALE, kept for history)
 
@@ -1007,7 +1115,7 @@ Architect validated effective content head: 19ef6427572179163e6d12e63e1dbbe61574
   superseded by `9711abe9` (Codex round-7 Finding I, behavioral change → this pass
   stale).
 - ~~**Architect validated effective content head: be445839ddf4fbdb6f25aa5e16fd0cee7aa27a7e**~~
-  (SUPERSEDED — see current validated head `19ef6427` above).
+  (SUPERSEDED — see current validated head `01bacf12` above).
 - Incremental review `git diff ae627e80..be445839` (behavioral fix only —
   `src/App.tsx` AND `progressStore*` empty-diff this round, `package.json`
   unchanged, exam key only in `examAttemptStorage.ts`, no slice-3 items, pinned
@@ -1059,7 +1167,7 @@ Architect validated effective content head: 19ef6427572179163e6d12e63e1dbbe61574
   `6e4aca12`/`bf028a76`/`15ad01ac`/`1a3a532b`; now itself superseded by
   `be445839`.
 - ~~**Architect validated effective content head: bcec92eeeaf80e488c950a64fd16e1dea451d3cd**~~
-  (SUPERSEDED — see current validated head `19ef6427` above).
+  (SUPERSEDED — see current validated head `01bacf12` above).
 - Incremental review `git diff e5fc4939..bcec92ee` (behavioral fix only —
   `progressStore*` AND `examAttemptStorage.ts` empty-diff that round,
   `package.json` unchanged, exam key only in `examAttemptStorage.ts`, no slice-3
@@ -1092,7 +1200,7 @@ Architect validated effective content head: 19ef6427572179163e6d12e63e1dbbe61574
   unavailable`, resolving Codex round-4 Finding F). Superseded the earlier
   `bf028a76`/`15ad01ac`/`1a3a532b`; now itself superseded by `bcec92ee`.
 - ~~**Architect validated effective content head: 6e4aca1276a9a202aef50db2e354eea71d657af6**~~
-  (SUPERSEDED — see current validated head `19ef6427` above).
+  (SUPERSEDED — see current validated head `01bacf12` above).
 - Incremental review `git diff 503e6f0a..6e4aca12` (behavioral fix only —
   `progressStore*` empty-diff, `package.json` unchanged, exam key only in
   `examAttemptStorage.ts`, no slice-3 items, pinned «Руководства» hash e2e
@@ -1133,7 +1241,7 @@ Architect validated effective content head: 19ef6427572179163e6d12e63e1dbbe61574
   recheck deadline on resume`, resolving Codex round-3 findings C/D/E). Superseded
   the earlier `1a3a532b`/`15ad01ac`; now itself superseded by `6e4aca12`.
 - ~~**Architect validated effective content head: bf028a76fdc6cb923e77a6111b5e0316088afed8**~~
-  (SUPERSEDED at the time by `6e4aca12`; the current validated head is `19ef6427`
+  (SUPERSEDED at the time by `6e4aca12`; the current validated head is `01bacf12`
   — see the "Current validated head" section above).
 - Incremental review `git diff 15ad01ac..bf028a76` (behavioral fix only —
   `progressStore*` still empty-diff, `package.json` unchanged, exam key only in
@@ -1181,33 +1289,34 @@ final-validation evidence-only commit, without re-triggering on each new evidenc
 commit.
 
 - **Effective content head** (last behaviorally meaningful commit; Architect-
-  validated at this SHA now, Analyst re-pass to the SAME SHA being routed next —
-  see the "Current validated head" section above and `feature-request.md`):
-  `19ef6427572179163e6d12e63e1dbbe615741028`.
+  validated at this SHA now, with the final Analyst re-pass for the SAME SHA
+  recorded in the Analyst-owned markers of `feature-request.md` — see the "Current
+  validated head" section above):
+  `01bacf12f4821bd65aaa2ddbb9e324d9b2d36e54`.
 - **Evidence-only definition:** a commit on `claude/047-exam-attempt-persistence`
-  after `19ef6427` counts as a final-validation evidence-only commit iff it
+  after `01bacf12` counts as a final-validation evidence-only commit iff it
   modifies ONLY `specs/047-exam-attempt-persistence/tasks.md` and/or
   `specs/047-exam-attempt-persistence/feature-request.md` (validation notes,
   dispositions, Cycle PR set, this guard block) and touches nothing under `src/`,
   `tests/`, `index.html`, `docs_project/`, build/lint/CI config, or workflows.
 - **Verification (read-only, re-runnable at any head):**
-  `git diff 19ef6427..<current PR head> --name-only` must list only those two
-  evidence files (empty when the current PR head IS `19ef6427`). Confirmed at this
-  pass: `19ef6427` is the current PR head (`git diff 19ef6427..HEAD --name-only`
-  empty). The forthcoming evidence commits that record these validation notes (this
-  Architect pass + the routed Analyst re-pass) will modify only `tasks.md` and
-  `feature-request.md`, keeping the name-only delta to exactly those two evidence
-  files. Per AGENTS.md L192–194 (CLAUDE.md "Final Architect and Analyst validation
-  … A later commit may skip recursive role validation only when it is a
-  final-validation evidence-only commit"), such commits skip recursive role
-  validation, and the `19ef6427` Architect validation (and the Analyst re-pass once
-  it lands) remains current for the current PR head. **Conditional, not a blanket
-  promise:** if the name-only check ever lists anything outside those two files,
-  that commit is NOT evidence-only — the prior validation is stale and must be
-  routed back through role-appropriate final validation before merge.
+  `git diff 01bacf12..<current PR head> --name-only` must list only those two
+  evidence files (empty when the current PR head IS `01bacf12`). Confirmed at this
+  pass: `01bacf12` is the current PR head (`git diff 01bacf12..HEAD --name-only`
+  empty). The evidence commits that record these validation notes (this Architect
+  pass + the Analyst re-pass) modify only `tasks.md` and `feature-request.md`,
+  keeping the name-only delta to exactly those two evidence files. Per AGENTS.md
+  L192–194 (CLAUDE.md "Final Architect and Analyst validation … A later commit may
+  skip recursive role validation only when it is a final-validation evidence-only
+  commit"), such commits skip recursive role validation, and the `01bacf12`
+  Architect validation (plus the Analyst re-pass recorded in `feature-request.md`)
+  remains current for the current PR head. **Conditional, not a blanket promise:**
+  if the name-only check ever lists anything outside those two files, that commit is
+  NOT evidence-only — the prior validation is stale and must be routed back through
+  role-appropriate final validation before merge.
 - **Merge mechanics:** squash-merge collapses all branch commits into one on
   `main`; because evidence commits add no `src/`/`tests/`/behavior change, the
-  merged diff equals the validated `19ef6427` content diff. The Orchestrator merge
+  merged diff equals the validated `01bacf12` content diff. The Orchestrator merge
   pins to the reviewed/validated head via `--match-head-commit <current PR head>`
   so a race that pushes a new commit mid-merge aborts rather than merging an
   unvalidated head.
@@ -1221,7 +1330,7 @@ commit.
   attempt`, resolving Codex findings A/#1+#3 and B/#2). Superseded the earlier
   `1a3a532b`; now itself superseded by `bf028a76`.
 - ~~**Architect validated effective content head: 15ad01acca6df24ae73544b6ba3a397498db5d84**~~
-  (SUPERSEDED at the time by `bf028a76`; the current validated head is `19ef6427`
+  (SUPERSEDED at the time by `bf028a76`; the current validated head is `01bacf12`
   — see the "Current validated head" section above).
 - Incremental review `git diff 6eb02897..15ad01ac` (behavioral fix only):
   - `src/App.tsx` — ExamView mount effect now reconciles the parent
@@ -1259,7 +1368,7 @@ commit.
   only the Cycle PR set line in `tasks.md` — verified `git diff 1a3a532b..cdd922e5`
   changes no code/tests/behaviour, so it skips recursive role validation).
 - ~~**Architect validated effective content head: 1a3a532bcb8718f0797ef8562a909a7ec3a6cfcc**~~
-  (SUPERSEDED at the time by `15ad01ac`; the current validated head is `19ef6427`
+  (SUPERSEDED at the time by `15ad01ac`; the current validated head is `01bacf12`
   — see the "Current validated head" section above).
 - Scope of validation: single-PR cycle set (PR #212), all Architect tasks and
   dispositions, guidance, open task state, process memory, and customer intent
@@ -1307,21 +1416,27 @@ commit.
 - PR #212 (slice 2, purpose: exam start screen + attempt persistence + leave
   guard, FR-B1/FR-A4/FR-A5) — https://github.com/cucumberfalse/cabadrive/pull/212;
   branch `claude/047-exam-attempt-persistence` → base `main`; head SHA
-  `19ef6427572179163e6d12e63e1dbbe615741028` (effective content head); status OPEN,
+  `01bacf12f4821bd65aaa2ddbb9e324d9b2d36e54` (effective content head); status OPEN,
   ready (not draft), mergeable MERGEABLE; included in final validation as the sole
   PR of this work cycle. This is the only PR slice in the cycle PR set.
 
 ## Final Validation Evidence
 
 - Architect validation pass: passed; Architect validated effective content head:
-  `19ef6427` (see the Final Architect Validation "Current validated head" section
+  `01bacf12` (see the Final Architect Validation "Current validated head" section
   for the verbatim-key marker lines).
-- Analyst validation: the Analyst re-pass against `19ef6427` is routed next; the
-  Analyst records its own markers in `feature-request.md` (Analyst-owned).
-- Effective content head: `19ef6427572179163e6d12e63e1dbbe615741028`.
+- Analyst validation: final Analyst validation for the current effective content
+  head `01bacf12` is recorded in the Analyst-owned markers in `feature-request.md`
+  (the source of truth for that pass: `Analyst validation pass: passed` / `Final
+  Analyst validation completed at: <ISO>` / `Analyst validated effective content
+  head: 01bacf12…`). Architect-then-Analyst order holds: this Architect `Final
+  Architect validation completed at:` marker (2026-07-24T05:15:00Z) precedes the
+  Analyst's `Final Analyst validation completed at:` marker, and both role markers
+  name the same SHA `01bacf12`.
+- Effective content head: `01bacf12f4821bd65aaa2ddbb9e324d9b2d36e54`.
 - Current-PR-head read-only guard against effective content head
-  `19ef6427572179163e6d12e63e1dbbe615741028`:
-  `git diff 19ef6427572179163e6d12e63e1dbbe615741028..<current PR head> --name-only`
+  `01bacf12f4821bd65aaa2ddbb9e324d9b2d36e54`:
+  `git diff 01bacf12f4821bd65aaa2ddbb9e324d9b2d36e54..<current PR head> --name-only`
   lists only the two evidence files (`tasks.md`/`feature-request.md`) and is empty
   when the current PR head IS that SHA; see the Merge guard block.
 - Architect return count: 0 (within limit 10). Analyst return count: 0 (within

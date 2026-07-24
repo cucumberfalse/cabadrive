@@ -358,3 +358,31 @@ Analyst return count в этом work cycle: 0 (гэпов против поль
 Analyst validation pass: passed
 Final Analyst validation completed at: 2026-07-24T04:53:30Z
 Analyst validated effective content head: 19ef6427572179163e6d12e63e1dbbe615741028
+
+### Финальная валидация Analyst (СВЕЖАЯ, суперсед round-9, merge-gate markers) — 2026-07-24, head `01bacf12`
+
+Валидация против `19ef6427` СУПЕРСЕДИРОВАНА: приземлился финальный Codex-фикс (Finding K), effective content head теперь `01bacf12f4821bd65aaa2ddbb9e324d9b2d36e54` (parent `41bde27e`). Финальная валидация Architect повторно ПРОШЛА на `01bacf12` (`Final Architect validation completed at: 2026-07-24T05:15:00Z`); обе роли сходятся на этом SHA. Инспектирован реальный diff `41bde27e..01bacf12` (единственный коммит `01bacf12` «fix(exam): auto-expire the resume prompt at the deadline»).
+
+**Вердикт: PASS.** Finding K подтверждён против пользовательского намерения — закрывает последнюю непокрытую фазу истечения (resume-prompt), без регресса:
+
+- **Finding K — resume-prompt авто-истекает на дедлайне (`src/App.tsx`, ExamView).** Единственное изменение — новый effect: пока `phase === "resumePrompt"` и есть `savedAttempt`, на `savedAttempt.deadline` (немедленно, если уже прошёл) чистит ключ, сбрасывает active/persisted флаги через `onAttemptStateChange(false,false)` и переводит `phase` в `idle`. В этой фазе не идёт интервал, а App-level away-expiry effect (Finding I) на вкладке экзамена отключён, поэтому без этого фикса промпт «Продолжить попытку (осталось MM:SS)» продолжал бы рекламировать резюмируемую попытку (и держать guard/beforeunload вооружёнными), пока пользователь не кликнет. Пользовательская гарантия: если пользователь перезагрузился в промпт и просто оставил его открытым дольше дедлайна, теперь он БЕЗ действий пользователя авто-переходит на чистый стартовый экран (нет залипшего вводящего в заблуждение «резюмируемого» промпта), а leave-guard + нативное beforeunload-предупреждение разоружаются. e2e «a resume prompt left open past the deadline auto-expires to a clean start (FR-A5)» (промпт открыт дольше 45-мин дедлайна без клика → чистый старт, ключ очищен, guard + beforeunload разоружены).
+
+Полнота покрытия истечения — теперь ВСЕ фазы: активная на вкладке экзамена (собственный таймер ExamView, finish при remaining<=0); активная/персистированная вне вкладки (Finding I scheduled-disarm); resume-prompt (Finding K); ручной клик «Продолжить» после истечения (Finding E recheck). FR-A5 guard применяется только к реально активной + непросроченной попытке во всех фазах. Существующий e2e Finding E переработан, чтобы отдельно упражнять именно recheck в `resume()` (прыжок Date за дедлайн без прокрутки fake-timer) — belt-and-suspenders путь сохранён отдельно от авто-истечения K.
+
+**Регресса нет — базовые обещания без изменений подтверждены на `01bacf12`:**
+- **FR-B1 (осознанный старт).** idle/старт по «Начать» не тронуты.
+- **FR-A4 / AC-2 (reload-resume, корректный остаток + сохранённые ответы).** Клик «Продолжить» ДО истечения по-прежнему резюмирует; логика persist/`deadline`/resume не тронута.
+- **FR-A5 — честный + чистый guard только пока попытка реально активна и непросрочена во ВСЕХ фазах:** honest wording (F), discard-on-guard-leave (G), clear-stale-on-failed-write (H), disarm-on-expiry-while-away (I), reject-truncated/oversized (J), auto-expire-resume-prompt (K) — все в силе.
+- **Graceful degradation + защита от порчи/усечения.** Экзамен идёт в памяти без падения; ни один снапшот и ни одна истёкшая фаза не оставляют вооружённый guard/предупреждение или ложное восстановление.
+
+**Сверка свидетельств (прямой grep):** unit 22 `test()` (`tests/exam-attempt.test.mjs`; 553 суб-ассерта total по прогону — модуль не менялся в этом коммите); e2e 76 `test()` = `app.spec.ts` 72 + `manual-ticket-placement.spec.ts` 4, ×2 проекта = 152. Гейты зелёные + preflight exit 0 — по свидетельству Orchestrator/Architect (гейты вне scope Analyst; повторно не гонял).
+
+**Две известные ограниченности (popstate/hashchange обходят guard-диалог; `beforeunload` ненадёжен на мобильных) остаются в силе и приемлемы в духе** — настоящая страховка сохранности остаётся персист FR-A4.
+
+Analyst return count в этом work cycle: 0 (гэпов против пользовательского намерения не найдено ни в одной из валидаций; счётчик не инкрементируется).
+
+Настоящая запись суперседирует ВСЕ более ранние Analyst-пассы (`19ef6427`, `9711abe9`, `be445839`, `bcec92ee`, `6e4aca12`, `bf028a76`, `15ad01ac`, `1a3a532b`).
+
+Analyst validation pass: passed
+Final Analyst validation completed at: 2026-07-24T05:35:00Z
+Analyst validated effective content head: 01bacf12f4821bd65aaa2ddbb9e324d9b2d36e54
