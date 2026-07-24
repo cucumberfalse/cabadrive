@@ -491,6 +491,30 @@ Implementation Agent добавляет feedback-пункты сюда; Architec
     `Analyst validated effective content head: bcec92ee…` markers in
     `feature-request.md`).
 
+- **[Codex P2 round 6 finding H — disposition; fixed at content head `be445839`]**
+  One more code fix landed on `be445839ddf4fbdb6f25aa5e16fd0cee7aa27a7e` (parent
+  `ae627e80`), a BEHAVIORAL change → prior validations (`bcec92ee` etc.) are stale.
+  Verified `git diff ae627e80..be445839`.
+
+  - **Finding H (`examAttemptStorage.ts` `saveExamAttempt` — clear stale snapshot
+    on write failure): ACCEPT-FIXED.** Completes the storage-failure invariant that
+    F and G started. On a failed write, `saveExamAttempt` now best-effort
+    `clearExamAttempt(storage)` before returning `false`, so `cabadrive.exam-attempt.v1`
+    always reflects the current attempt or is absent — never a stale older
+    snapshot. This closes the **plain reload/close** data-loss path that G's
+    top-nav leave-handler fix did not cover: a mid-attempt quota failure (after an
+    earlier successful save) previously left an older snapshot that, on reload,
+    offered a stale resume and silently dropped every answer made after the failed
+    write. `parseExamAttempt`/`readExamAttempt`/`clearExamAttempt` semantics
+    unchanged; `clearExamAttempt` is a hoisted function declaration so the
+    intra-module call is safe; store schema untouched. The F+G+H storage-failure
+    paths now agree (honest copy + clean top-nav leave + clean reload/close). New
+    unit ("saveExamAttempt clears a previously stored snapshot when a later write
+    fails" → key null, read null) and new e2e ("a failed mid-exam save clears the
+    stale snapshot so a plain reload starts clean"). Correct; no task/ticket needed
+    — fixed in this cycle. Re-validated on `be445839` in the Final Architect
+    Validation section below.
+
 ## Verification Evidence (Evidence Log)
 
 Implementation Agent записывает команду → фактический результат → SHA кандидата.
@@ -640,22 +664,80 @@ Cycle PR set.
 
 ## Final Architect Validation (Architect-owned)
 
-### Current validated head (T017, re-run on bcec92ee after Codex round-5 fix)
+### Current validated head (T017, re-run on be445839 after Codex round-6 fix)
 
 Merge-gate markers (exact keys, verbatim — do not reword; parsed by the gate):
 
 Architect validation pass: passed
-Final Architect validation completed at: 2026-07-24T00:52:24Z
-Effective content head: bcec92eeeaf80e488c950a64fd16e1dea451d3cd
-Architect validated effective content head: bcec92eeeaf80e488c950a64fd16e1dea451d3cd
+Final Architect validation completed at: 2026-07-24T01:25:00Z
+Effective content head: be445839ddf4fbdb6f25aa5e16fd0cee7aa27a7e
+Architect validated effective content head: be445839ddf4fbdb6f25aa5e16fd0cee7aa27a7e
 
-- Current effective content head: `bcec92eeeaf80e488c950a64fd16e1dea451d3cd`
+- Current effective content head: `be445839ddf4fbdb6f25aa5e16fd0cee7aa27a7e`
+  (PR #212 fix commit `fix(exam): clear stale snapshot when a save fails`,
+  parent `ae627e80`, resolving Codex round-6 Finding H). This SUPERSEDES the prior
+  validated heads `bcec92ee`, `6e4aca12`, `bf028a76`, `15ad01ac`, and `1a3a532b`
+  (behavioral changes → prior passes stale).
+- Incremental review `git diff ae627e80..be445839` (behavioral fix only —
+  `src/App.tsx` AND `progressStore*` empty-diff this round, `package.json`
+  unchanged, exam key only in `examAttemptStorage.ts`, no slice-3 items, pinned
+  «Руководства» hash e2e untouched):
+  - **Finding H** — `saveExamAttempt` now best-effort `clearExamAttempt(storage)`
+    in its write-failure branch before returning `false`, so
+    `cabadrive.exam-attempt.v1` reflects the current attempt or is absent — never a
+    STALE older snapshot. Closes the plain reload/close data-loss path that G's
+    top-nav leave-handler fix did not cover: a mid-attempt quota failure after an
+    earlier successful save previously left an older snapshot that offered a stale
+    resume on reload and silently dropped every answer made after the failed write.
+    `parseExamAttempt` / `readExamAttempt` / `clearExamAttempt` semantics
+    unchanged; `clearExamAttempt` is a hoisted `function` declaration (line 142) so
+    the intra-module call is safe; store schema untouched. The F+G+H
+    storage-failure paths now agree (honest copy + clean top-nav leave + clean
+    reload/close). Correct.
+  - Tests: +1 unit ("saveExamAttempt clears a previously stored snapshot when a
+    later write fails" → key null, read null) and +1 e2e ("a failed mid-exam save
+    clears the stale snapshot so a plain reload starts clean"). Meaningful and
+    targeted. No `App.tsx`/store delta this round.
+- Whole-slice re-conformance on `ae5f9804..be445839`: **FR-B1/FR-A4/FR-A5 hold**;
+  the storage-failure paths F (honest guard copy), G (discard unsaved attempt on
+  top-nav leave) and H (module-level clear on failed write) now agree, so no path
+  leaves a stale snapshot or a dishonest guarantee. Scope guard intact (this round
+  touches only `src/examAttemptStorage.ts` + tests; `git diff --stat
+  src/progressStoreCore.ts src/progressStore.ts package.json` empty on both
+  `ae627e80..be445839` and `ae5f9804..be445839`).
+- Evidence counts (updated by Impl, confirmed against reality): unit
+  `tests/exam-attempt.test.mjs` **20 `test()`** / `pnpm run test` **551**; e2e
+  `app.spec.ts` **69 `test()`** + `manual-ticket-placement.spec.ts` **4** = **73**
+  per project → total **73×2 = 146** scenarios. Gates green + `preflight` exit 0
+  per Evidence Log. A transient e2e-flakiness-under-load note (1–2 unrelated tests
+  under machine contention, all green in isolation) is recorded as a known
+  non-blocking environment observation, not a code regression. All consistent.
+- Return count unchanged (no gap): Architect return count stays 0.
+- **T018 status after this re-validation:** the Analyst's recorded head is
+  `6e4aca12` (feature-request.md), now **stale** for the current head `be445839`.
+  T018 stays `[x]` for the Analyst validation work done, but its validated SHA
+  (`6e4aca12`) does NOT match the current effective content head — a **fresh
+  Analyst re-pass against `be445839` is required** and is being routed by the
+  Orchestrator right after this pass. This Architect pass does NOT claim the
+  Analyst validated `be445839`; per the same-SHA rule the Analyst records
+  `Analyst validated effective content head: be445839…` (with its own `Analyst
+  validation pass: passed` / `Final Analyst validation completed at:` markers, a
+  timestamp LATER than this Architect `01:25:00Z`) when their re-pass lands,
+  restoring SHA agreement.
+
+### Superseded — prior validated head `bcec92ee` (STALE, kept for history)
+
+- **Architect validation pass: passed** — 2026-07-24T00:52:24Z (T017, superseded
+  by the `be445839` re-run above; retained as history).
+- Effective content head: `bcec92eeeaf80e488c950a64fd16e1dea451d3cd`
   (PR #212 fix commit `fix(exam): discard unsaved attempt when leaving via guard`,
-  parent `e5fc4939`, resolving Codex round-5 Finding G). This SUPERSEDES the prior
-  validated heads `6e4aca12`, `bf028a76`, `15ad01ac`, and `1a3a532b` (behavioral
-  changes → prior passes stale).
+  parent `e5fc4939`, resolving Codex round-5 Finding G). Superseded the earlier
+  `6e4aca12`/`bf028a76`/`15ad01ac`/`1a3a532b`; now itself superseded by
+  `be445839`.
+- ~~**Architect validated effective content head: bcec92eeeaf80e488c950a64fd16e1dea451d3cd**~~
+  (SUPERSEDED — see current validated head `be445839` above).
 - Incremental review `git diff e5fc4939..bcec92ee` (behavioral fix only —
-  `progressStore*` AND `examAttemptStorage.ts` empty-diff this round,
+  `progressStore*` AND `examAttemptStorage.ts` empty-diff that round,
   `package.json` unchanged, exam key only in `examAttemptStorage.ts`, no slice-3
   items, pinned «Руководства» hash e2e untouched):
   - **Finding G** — the leave-guard confirm handler now branches on
@@ -668,24 +750,14 @@ Architect validated effective content head: bcec92eeeaf80e488c950a64fd16e1dea451
     older-snapshot-then-failed-re-save → stale key dropped on leave); positive
     persisted-leave test stays green. No unit delta.
 - Whole-slice re-conformance on `ae5f9804..bcec92ee`: **FR-B1/FR-A4/FR-A5 hold**;
-  FR-A5 is now both honest (Finding F) AND clean (Finding G) under the
+  FR-A5 is both honest (Finding F) AND clean (Finding G) under the
   storage-unavailable path — no misleading resume, no lingering `beforeunload` —
-  with the persisted-attempt design path unchanged. Scope guard intact (this round
-  touches only `src/App.tsx` + e2e; verified above).
-- Evidence counts (updated by Impl, confirmed against reality): unit
-  `tests/exam-attempt.test.mjs` **19 `test()`** / `pnpm run test` **550**; e2e
-  `app.spec.ts` **68 `test()`** → total **72×2 = 144** scenarios. Gates green +
-  `preflight` exit 0 per Evidence Log. All consistent.
+  with the persisted-attempt design path unchanged. Scope guard intact (that round
+  touched only `src/App.tsx` + e2e).
+- Evidence counts (at that pass): unit `tests/exam-attempt.test.mjs`
+  **19 `test()`** / `pnpm run test` **550**; e2e `app.spec.ts` **68 `test()`** →
+  total **72×2 = 144** scenarios. Gates green + `preflight` exit 0.
 - Return count unchanged (no gap): Architect return count stays 0.
-- **T018 status after this re-validation:** the Analyst's recorded head is
-  `6e4aca12` (feature-request.md), now **superseded** by `bcec92ee`. T018 stays
-  `[x]` for the validation work done, but its validated SHA (`6e4aca12`) is now
-  **stale for the current head** — a **fresh Analyst re-pass against `bcec92ee` is
-  required** and is being routed by the Orchestrator right after this pass. This
-  Architect pass does NOT claim the Analyst validated `bcec92ee`; per the same-SHA
-  rule the Analyst records `Analyst validated effective content head: bcec92ee…`
-  (with its own `Analyst validation pass: passed` / `Final Analyst validation
-  completed at:` markers) when their re-pass lands, restoring SHA agreement.
 
 ### Superseded — prior validated head `6e4aca12` (STALE, kept for history)
 
@@ -787,31 +859,31 @@ commit.
 - **Effective content head** (last behaviorally meaningful commit; Architect-
   validated at this SHA now, Analyst re-pass to the SAME SHA being routed next —
   see the "Current validated head" section above and `feature-request.md`):
-  `bcec92eeeaf80e488c950a64fd16e1dea451d3cd`.
+  `be445839ddf4fbdb6f25aa5e16fd0cee7aa27a7e`.
 - **Evidence-only definition:** a commit on `claude/047-exam-attempt-persistence`
-  after `bcec92ee` counts as a final-validation evidence-only commit iff it
+  after `be445839` counts as a final-validation evidence-only commit iff it
   modifies ONLY `specs/047-exam-attempt-persistence/tasks.md` and/or
   `specs/047-exam-attempt-persistence/feature-request.md` (validation notes,
   dispositions, Cycle PR set, this guard block) and touches nothing under `src/`,
   `tests/`, `index.html`, `docs_project/`, build/lint/CI config, or workflows.
 - **Verification (read-only, re-runnable at any head):**
-  `git diff bcec92ee..<current PR head> --name-only` must list only those two
-  evidence files (empty when the current PR head IS `bcec92ee`). Confirmed at this
-  pass: `bcec92ee` is the current PR head (`git diff bcec92ee..HEAD --name-only`
+  `git diff be445839..<current PR head> --name-only` must list only those two
+  evidence files (empty when the current PR head IS `be445839`). Confirmed at this
+  pass: `be445839` is the current PR head (`git diff be445839..HEAD --name-only`
   empty). The forthcoming evidence commits that record these validation notes (this
   Architect pass + the routed Analyst re-pass) will modify only `tasks.md` and
   `feature-request.md`, keeping the name-only delta to exactly those two evidence
   files. Per AGENTS.md L192–194 (CLAUDE.md "Final Architect and Analyst validation
   … A later commit may skip recursive role validation only when it is a
   final-validation evidence-only commit"), such commits skip recursive role
-  validation, and the `bcec92ee` Architect validation (and the Analyst re-pass once
+  validation, and the `be445839` Architect validation (and the Analyst re-pass once
   it lands) remains current for the current PR head. **Conditional, not a blanket
   promise:** if the name-only check ever lists anything outside those two files,
   that commit is NOT evidence-only — the prior validation is stale and must be
   routed back through role-appropriate final validation before merge.
 - **Merge mechanics:** squash-merge collapses all branch commits into one on
   `main`; because evidence commits add no `src/`/`tests/`/behavior change, the
-  merged diff equals the validated `bcec92ee` content diff. The Orchestrator merge
+  merged diff equals the validated `be445839` content diff. The Orchestrator merge
   pins to the reviewed/validated head via `--match-head-commit <current PR head>`
   so a race that pushes a new commit mid-merge aborts rather than merging an
   unvalidated head.
