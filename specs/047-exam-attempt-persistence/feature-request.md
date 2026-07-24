@@ -250,3 +250,29 @@ Analyst return count в этом work cycle: 0 (гэпов против поль
 Настоящая строка суперседирует более ранние `Analyst validated effective content head: bf028a76fdc6cb923e77a6111b5e0316088afed8`, `... 15ad01acca6df24ae73544b6ba3a397498db5d84` и `... 1a3a532bcb8718f0797ef8562a909a7ec3a6cfcc`.
 
 Analyst validated effective content head: 6e4aca1276a9a202aef50db2e354eea71d657af6
+
+### Финальная валидация Analyst (СВЕЖАЯ, суперсед round-5, merge-gate markers) — 2026-07-24, head `bcec92ee`
+
+Валидация против `6e4aca12` СУПЕРСЕДИРОВАНА: приземлился ещё один Codex-фикс (Finding G), effective content head теперь `bcec92eeeaf80e488c950a64fd16e1dea451d3cd` (parent `e5fc4939`). Финальная валидация Architect повторно ПРОШЛА на `bcec92ee` (`Final Architect validation completed at: 2026-07-24T00:52:24Z`); обе роли сходятся на этом SHA. Инспектирован реальный diff `e5fc4939..bcec92ee` (единственный коммит `bcec92ee` «fix(exam): discard unsaved attempt when leaving via guard»).
+
+**Вердикт: PASS.** Finding G подтверждён против пользовательского намерения — устраняет ложное «Продолжить попытку» и залипший `beforeunload` для неперсистированной попытки, без регресса нормального (персистированного) потока:
+
+- **Finding G — при уходе через guard неперсистированная попытка отбрасывается (`src/App.tsx`, `onConfirm` leave-guard).** Обработчик подтверждения теперь ветвится по персисту: ПЕРСИСТИРОВАННАЯ попытка сохраняется и резюмируется при возврате (FR-A5, без изменений); НЕПЕРСИСТИРОВАННАЯ (storage недоступен / запись упала — private/sandbox/quota) отбрасывается через `discardActiveExamAttempt()` ПЕРЕД `selectView(target)`. Пользовательский исход: в private mode, подтвердив уход, пользователь больше НЕ получает вводящее в заблуждение «Продолжить попытку» для данных, которые никогда не сохранялись (в т. ч. отбрасывается и устаревший старый снапшот, случайно осевший в storage), а `beforeunload` перестаёт срабатывать после ухода (нет залипшего вооружённого guard — разоружение keyed на `examAttemptActive`, который `discardActiveExamAttempt` сбрасывает). e2e «leaving an unsaved exam via the guard discards it — no stale resume, beforeunload disarmed» и «leaving after a failed re-save discards the older saved snapshot (no stale resume)».
+
+**Регресса нет — базовые обещания без изменений подтверждены на `bcec92ee`:**
+- **FR-B1 (осознанный старт).** idle/старт по «Начать» не тронуты.
+- **FR-A4 / AC-2 (reload-resume, корректный остаток + сохранённые ответы).** Персистированный путь ухода не изменён — попытка остаётся и резюмируется; персист/`deadline`-восстановление не тронуты.
+- **FR-A5 (guard только пока попытка реально активна) — честная формулировка (Finding F) И чистое отбрасывание несохранённой попытки при уходе (Finding G).**
+- **Graceful degradation (private mode / недоступный localStorage).** Экзамен идёт в памяти без падения; при уходе несохранённая попытка честно отбрасывается, ложного обещания продолжения нет.
+
+**Сверка свидетельств (прямой grep):** unit 19 `test()` (`tests/exam-attempt.test.mjs`; 550 суб-ассертов total по прогону); e2e 72 `test()` = `app.spec.ts` 68 + `manual-ticket-placement.spec.ts` 4, ×2 проекта = 144. Гейты зелёные + preflight exit 0 — по свидетельству Orchestrator/Architect (гейты вне scope Analyst; повторно не гонял).
+
+**Две известные ограниченности (popstate/hashchange обходят guard-диалог; `beforeunload` ненадёжен на мобильных) остаются в силе и приемлемы в духе** — настоящая страховка сохранности остаётся персист FR-A4; при его недоступности пользователь честно предупреждён (F) и несохранённая попытка чисто отбрасывается при уходе (G).
+
+Analyst return count в этом work cycle: 0 (гэпов против пользовательского намерения не найдено ни в одной из валидаций; счётчик не инкрементируется).
+
+Настоящая запись суперседирует более ранние Analyst-пассы `6e4aca12`, `bf028a76`, `15ad01ac` и `1a3a532b`.
+
+Analyst validation pass: passed
+Final Analyst validation completed at: 2026-07-24T00:56:00Z
+Analyst validated effective content head: bcec92eeeaf80e488c950a64fd16e1dea451d3cd
