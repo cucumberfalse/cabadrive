@@ -386,3 +386,32 @@ Analyst return count в этом work cycle: 0 (гэпов против поль
 Analyst validation pass: passed
 Final Analyst validation completed at: 2026-07-24T05:35:00Z
 Analyst validated effective content head: 01bacf12f4821bd65aaa2ddbb9e324d9b2d36e54
+
+### Финальная валидация Analyst (СВЕЖАЯ, суперсед round-10, merge-gate markers) — 2026-07-24, head `4f8492ca`
+
+Валидация против `01bacf12` СУПЕРСЕДИРОВАНА: приземлился финальный Codex-фикс (Finding L), effective content head теперь `4f8492ca37d50b526960ab720c0da1216b6cfd44` (parent `6c35bc91`). Финальная валидация Architect повторно ПРОШЛА на `4f8492ca` (`Final Architect validation completed at: 2026-07-24T06:00:00Z`); обе роли сходятся на этом SHA. Инспектирован реальный diff `6c35bc91..4f8492ca` (единственный коммит `4f8492ca` «fix(exam): reject answers submitted after the deadline»).
+
+**Вердикт: PASS.** Finding L подтверждён против пользовательского намерения — целостность экзамена: ответ после дедлайна не попадает в оценку, без регресса in-time игры:
+
+- **Finding L — `record()` перепроверяет дедлайн в момент отправки (`src/App.tsx`, ExamView).** Единственное изменение: перед append/persist добавлено `if (Date.now() >= deadline) { finish(examQuestions, answers); return; }`. Приостановленная/throttled вкладка (или клик в промежутке до следующего 1s-тика) мог иначе просунуть ответ/скип ПОСЛЕ дедлайна в счёт до срабатывания interval-driven finish. Теперь поздний ввод отклоняется, а попытка оценивается по тому, что отправлено ВОВРЕМЯ; interval-effect становится backstop. `finish()` идемпотентен через `finishGuard`, поэтому двойного финиша нет. `skipCurrent()` идёт через `record()`, поэтому поздние скипы тоже покрыты. Пользовательская гарантия: ответ или скип после дедлайна не засчитывается. e2e «an answer submitted after the deadline is rejected and not counted» (один in-time скип, затем Date за 45-мин дедлайн БЕЗ прокрутки fake-timer — interval finish ещё не сработал, кейс suspended/throttled tab; поздний скип отклонён, оценка по единственному in-time ответу).
+
+Когерентность: in-time путь (`Date.now() < deadline`) неизменён — append/persist/finish-если-полный работают как раньше; ранний return только при истечении. Коммит трогает лишь guard в `record()`; E/F/G/H/I/J/K не затронуты.
+
+**Регресса нет — базовые обещания без изменений подтверждены на `4f8492ca`:**
+- **FR-B1 (осознанный старт).** idle/старт по «Начать» не тронуты.
+- **FR-A4 / AC-2 (reload-resume, корректный остаток + сохранённые ответы).** In-time запись/персист не тронуты; resume/`deadline`-восстановление как раньше.
+- **FR-A5 — честный + чистый guard только пока попытка реально активна и непросрочена во всех фазах** (F/G/H/I/J/K) — в силе.
+- **Целостность дедлайна в момент записи (L):** ни один пост-дедлайн ввод не достигает счёта; истечение согласованно обрабатывается на записи (L), в active-таймере, в resume-prompt (K), вне вкладки (I) и при ручном resume (E).
+- **Graceful degradation + защита от порчи/усечения.** Экзамен идёт в памяти без падения; никакой ложной оценки/восстановления.
+
+**Сверка свидетельств (прямой grep):** unit 22 `test()` (`tests/exam-attempt.test.mjs`; 553 суб-ассерта total — модуль не менялся в этом коммите); e2e 77 `test()` = `app.spec.ts` 73 + `manual-ticket-placement.spec.ts` 4, ×2 проекта = 154. Гейты зелёные + preflight exit 0 — по свидетельству Orchestrator/Architect (гейты вне scope Analyst; повторно не гонял).
+
+**Две известные ограниченности (popstate/hashchange обходят guard-диалог; `beforeunload` ненадёжен на мобильных) остаются в силе и приемлемы в духе** — настоящая страховка сохранности остаётся персист FR-A4.
+
+Analyst return count в этом work cycle: 0 (гэпов против пользовательского намерения не найдено ни в одной из валидаций; счётчик не инкрементируется).
+
+Настоящая запись суперседирует ВСЕ более ранние Analyst-пассы (`01bacf12`, `19ef6427`, `9711abe9`, `be445839`, `bcec92ee`, `6e4aca12`, `bf028a76`, `15ad01ac`, `1a3a532b`).
+
+Analyst validation pass: passed
+Final Analyst validation completed at: 2026-07-24T06:16:30Z
+Analyst validated effective content head: 4f8492ca37d50b526960ab720c0da1216b6cfd44
