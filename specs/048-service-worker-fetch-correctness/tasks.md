@@ -234,19 +234,11 @@ Candidate SHA во время локального прогона (до commit):
 
 ## Known Issues
 
-- Нерешённых known issues нет. Осознанные ограничения этого слайса —
-  задокументированы и приняты в Decisions: e2e-часть AC-3 (реальный SW в браузере)
-  отложена на шаги 2–4 ТЗ-13; прекеш/цикл обновления/`public/sw.js` (проблемы
-  №1/№2/№4 ТЗ-13) — вне scope; чекбоксы `docs/improvements/13-*.md` не
-  редактируются по прецеденту. Ни одно ограничение не требует открытого решения
-  владельца.
+- No unresolved known issues; the accepted limitations of this slice — AC-3's in-browser e2e part is deferred to ТЗ-13 steps 2–4; precache/update-cycle/public/sw.js (ТЗ-13 problems #1/#2/#4) are out of scope; the docs/improvements/13-*.md checkboxes are not edited (slice 1–2 precedent) — are all documented and Architect-ACCEPTED under Decisions, with no open owner decision required.
 
 ## Implementation Agent Feedback
 
-- Реализация прошла без отклонений от plan.md: эталонный emitted-обработчик
-  воспроизведён символ-в-символ, FR-7 регэкспы совпали с новым текстом на HEAD без
-  корректировок `\s*`, test-first FAIL→PASS наблюдён как спроектировано. Новых
-  feedback-пунктов, требующих Architect-диспозиции, нет.
+- No unresolved Implementation Agent feedback.
 
 ---
 
@@ -256,33 +248,101 @@ Candidate SHA во время локального прогона (до commit):
 
 ## Final Architect Validation (Architect-owned)
 
-_To be completed at final validation (invoked later by Orchestrator)._
+Merge-gate markers (exact keys, verbatim — do not reword; parsed by
+`scripts/finalize-pr.mjs`):
 
-При pass Architect записывает сюда merge-gate-маркеры (точные ключи, дословно —
-парсятся `scripts/finalize-pr.mjs`):
+Architect validation pass: passed
+Final Architect validation completed at: 2026-07-24T11:54:30Z
+Effective content head: 55a813666ca68989f7d9cb010c8e42979fb5865b
+Architect validated effective content head: 55a813666ca68989f7d9cb010c8e42979fb5865b
 
-```
-Architect validation pass: <passed|…>
-Final Architect validation completed at: <ISO-8601>
-Effective content head: <40-hex-sha>
-Architect validated effective content head: <40-hex-sha>
-```
+Current effective content head: `55a813666ca68989f7d9cb010c8e42979fb5865b` (PR
+#213, sole PR of this work cycle). Incremental review basis `git diff
+9de3d419..55a81366`: exactly `scripts/generate-service-worker.mjs` (fetch-handler
+body ONLY) + `tests/service-worker-generation.test.mjs` (one new focused `test()`
+block) + `specs/048-service-worker-fetch-correctness/*` feature memory —
+confirmed via `git diff --name-only` (no `public/sw.js`, `src/main.tsx`,
+`src/App.tsx`, `package.json`, or precache-logic changes; no new dependencies).
+
+Re-verification against tasks/dispositions, architectural guidance, process
+memory, and customer intent (in spirit and letter):
+
+- **FR-4 emitted handler matches plan.md Design exactly** — `caches.match(event.request,
+  { ignoreSearch: event.request.mode === "navigate" })`; navigate catch returns
+  `(await caches.match("/")) ?? (await caches.match("/index.html")) ?? Response.error()`;
+  non-navigate catch returns `Response.error()`; async-IIFE inside `respondWith`
+  with `catch {`; dead `||` operand and the `respondWith(undefined)`/`TypeError`
+  path removed. Verified by reading `scripts/generate-service-worker.mjs:54–77`.
+- **install/activate/precache unchanged** — `git diff 9de3d419..55a81366 --
+  scripts/generate-service-worker.mjs` touches only the `fetch` listener body;
+  `CACHE_NAME`, `ASSETS`, `cache.addAll(ASSETS)`, `install`/`activate`,
+  `collectInstallPrecacheAssets`/`shouldInstallPrecacheAsset`/`isManual*`,
+  `generateServiceWorker` untouched. `method !== "GET"` early-return, cache-first,
+  and `response.ok`→`cache.put` preserved verbatim.
+- **FR-7 tests present and green** — new `test()` block "generated service worker
+  fetch handler has correct offline fallbacks" carries all six planned assertions
+  (ignoreSearch-keyed-on-navigate; full `?? … ?? Response.error()` chain;
+  navigate-only branching; non-navigate `return Response.error();`; and two
+  `doesNotMatch` guards for the dead `||` and the old optionless
+  `caches.match(event.request).then`) — genuine regression guards that fail on the
+  old buggy text. Impl recorded test-first FAIL→PASS (Implementation Agent
+  Feedback / Verification Evidence).
+- **Gates re-run on effective head `55a81366`** (Architect re-verification):
+  `node --test tests/service-worker-generation.test.mjs` → tests 3 / pass 3;
+  `pnpm run test` → tests 554 / pass 554 (baseline 553 → +1 focused `test()`,
+  matching the plan); `pnpm run quality:fast` → pass (0 errors/0 warnings);
+  `pnpm run format:check` → pass. AI Review (Codex) passed first round with zero
+  findings/threads; all CI green; `mergeStateStatus: CLEAN` (Orchestrator report).
+- **Diff limited to the two code files + specs/048 memory; no new deps** —
+  confirmed. Negative scenarios NS-1..NS-4 closed by the text invariants; e2e/AC-3
+  e2e-part correctly deferred per Decisions (non-goal for this slice).
+
+Architect return count: **0** (within limit 10). No gaps; no follow-up required.
 
 ## Cycle PR Set
 
-_To be completed by Orchestrator._ На момент Architect-записи PR по этому фичеру не
-существует. Слоты (Orchestrator/Implementation Agent заполняют при открытии PR):
-
-- Slice 1 (this cycle): **PR #_<num>_** — _<url>_; branch
-  `claude/048-service-worker-fetch-correctness` → base `main`; state _<OPEN/…>_;
-  subject _<conventional subject>_; effective content head: `<40-hex-sha>`;
-  purpose: ТЗ-13 шаг 1 (FR-4 + FR-7). Required checks / AI Review (Codex) / final
-  Architect+Analyst validation / merge — Orchestrator. Do NOT merge вручную
-  (squash-only ruleset + Codex gate).
+- Slice 1 (this cycle, SOLE PR): **PR #213** —
+  https://github.com/cucumberfalse/cabadrive/pull/213 ; branch
+  `claude/048-service-worker-fetch-correctness` → base `main`; status OPEN, ready
+  (not draft), MERGEABLE, `mergeStateStatus: CLEAN`; effective content head:
+  `55a813666ca68989f7d9cb010c8e42979fb5865b`; purpose: ТЗ-13 шаг 1 — SW
+  fetch-handler correctness (FR-4) + расширение unit-тестов текста SW (FR-7). AI
+  Review (Codex) passed first round with zero findings and zero review threads;
+  all CI checks green (AI Review, baseline-checks, docker-validation, guard,
+  osv-scan). The PR is a single behavioral commit (base `9de3d419` →
+  `55a81366`); a later evidence-only validation commit (this Final Architect
+  Validation + Cycle PR Set + Final Validation Evidence, then Analyst notes) is
+  permitted — it records role-owned validation evidence and changes no behavior.
+  Included in final validation as the sole PR of this work cycle. Required checks
+  / AI Review (Codex) / final Architect+Analyst validation / current-head guard /
+  merge — Orchestrator. Do NOT merge manually (squash-only ruleset + Codex gate).
 
 ## Final Validation Evidence
 
-_To be completed at final validation (invoked later by Orchestrator)._ Здесь
-фиксируются: read-only current-PR-head guard (effective content head по полному
-SHA), совпадение Architect- и Analyst-валидированных head, состояние required
-checks, resolved threads, отсутствие конфликтов, итоговая merge-readiness.
+- **Architect final validation: PASS** on effective content head
+  `55a813666ca68989f7d9cb010c8e42979fb5865b` — see the verbatim merge-gate marker
+  lines in `## Final Architect Validation (Architect-owned)` above
+  (`Architect validation pass: passed`, `Final Architect validation completed at:
+  2026-07-24T11:54:30Z`, `Architect validated effective content head: 55a81366…`).
+  Architect return count 0 (limit 10); no gaps, no limit escalation.
+- **Analyst final validation: PASSED (Analyst-owned).** Recorded in
+  `feature-request.md` with a LATER `Final Analyst validation completed at:
+  2026-07-24T11:57:30Z` timestamp (after the Architect's 11:54:30Z, per the
+  Architect-then-Analyst order) and
+  `Analyst validated effective content head: 55a813666ca68989f7d9cb010c8e42979fb5865b`
+  (same SHA as Architect).
+- Architect return count: 0 (within limit 10). Analyst return count: 0 (within limit 5).
+- Limit escalation: none (no return-count limit breach; no new feature request required).
+- **Current-head guard / required checks / resolved threads / conflicts / merge:**
+  Orchestrator-owned. At Architect validation time: PR #213 OPEN/ready,
+  `mergeStateStatus: CLEAN`, MERGEABLE, all CI green, AI Review (Codex) passed
+  round 1 with zero threads. Any post-validation NON-evidence change to PR #213
+  makes this Architect pass stale and must be routed back through role-appropriate
+  final validation before merge.
+- Current-PR-head guard against effective content head 55a813666ca68989f7d9cb010c8e42979fb5865b: git diff 55a813666ca68989f7d9cb010c8e42979fb5865b..<current PR head> --name-only lists only the two evidence files (tasks.md / feature-request.md) and is empty when the current PR head IS that SHA.
+- **Permitted later commit:** a single evidence-only validation commit recording
+  this Architect validation evidence (and the subsequent Analyst notes in
+  `feature-request.md`) is allowed without recursive role re-validation, as it
+  changes no behavior. Orchestrator performs the read-only current-PR-head guard
+  (effective content head `55a81366` by full SHA) before conservative
+  finalization/merge.
