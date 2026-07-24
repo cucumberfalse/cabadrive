@@ -224,3 +224,29 @@ Analyst return count в этом work cycle: 0 (гэпов против поль
 Настоящая строка суперседирует более ранние `Analyst validated effective content head: 15ad01acca6df24ae73544b6ba3a397498db5d84` и `Analyst validated effective content head: 1a3a532bcb8718f0797ef8562a909a7ec3a6cfcc`.
 
 Analyst validated effective content head: bf028a76fdc6cb923e77a6111b5e0316088afed8
+
+### Финальная валидация Analyst (СВЕЖАЯ, суперсед round-4) — 2026-07-23, head `6e4aca12`
+
+Валидация против `bf028a76` СУПЕРСЕДИРОВАНА: приземлился ещё один Codex-фикс (Finding F), effective content head теперь `6e4aca1276a9a202aef50db2e354eea71d657af6` (parent `503e6f0a`). Финальная валидация Architect повторно ПРОШЛА на `6e4aca12`; обе роли обязаны сойтись на одном SHA. Инспектирован реальный diff `503e6f0a..6e4aca12` (единственный коммит `6e4aca12` «fix(exam): warn honestly when attempt persistence is unavailable»).
+
+**Вердикт: PASS.** Finding F подтверждён против пользовательского намерения — закрывает реальную нечестность guard в негативном сценарии, без регресса нормального потока:
+
+- **Finding F — честный FR-A5 guard при недоступном localStorage.** Раньше в private/sandbox/quota экзамен помечал попытку активной, а leave-guard-диалог обещал «Попытка сохранена…», хотя НИЧЕГО не персистилось — подтверждение ухода теряло ответы из памяти, а пользователю было сказано обратное. Теперь: `persist()` возвращает реальный результат записи (`false`, если нет storage или `setItem` бросил); ExamView репортит `onAttemptStateChange(active, persisted)`; App держит отдельный `examAttemptPersisted`; копия `ConfirmDialog` условная — persisted → «Попытка сохранена — вы сможете продолжить её позже.»; НЕ persisted → «Этот браузер не сохраняет прогресс экзамена: при уходе текущая попытка будет потеряна.». Guard по-прежнему показывается (предупреждение сохранено, уход всё так же требует подтверждения), экзамен продолжает работать в памяти без краха. Гэп закрыт в духе: в private mode пользователю говорят правду вместо ложного обещания сохранения. Дополнительно `record()` переотправляет `(true, persisted)` на каждом ответе, поэтому если запись начнёт падать по quota в середине — копия честно переключается. e2e «when the browser cannot save exam progress, the leave guard warns honestly» (симулирует бросающий `setItem` при рабочих чтениях, ассертит отсутствие персиста и текст «Этот браузер не сохраняет прогресс экзамена»).
+
+**Когерентность сидирования:** `examAttemptPersisted` инициализируется `examStorage !== undefined && examAttemptActive` (reload прямо в резюмируемую персистированную попытку → true; нет storage → false); `handleExamAttemptStateChange` синхронно ставит оба флага; ExamView репортит `(true,true)` для mount-with-savedAttempt/resume, `(true, persisted)` на start и каждом record, `(false,false)` на finish/decline/expired-resume/пустой mount; `discardActiveExamAttempt` теперь также сбрасывает `examAttemptPersisted=false`. Разоружение guard/beforeunload по-прежнему keyed на `examAttemptActive` — не изменено.
+
+**Регресса нет — базовые обещания без изменений подтверждены на `6e4aca12`:**
+- **FR-B1 (осознанный старт).** idle/старт по «Начать» не тронуты.
+- **FR-A4 / AC-2 (reload-resume, корректный остаток + сохранённые ответы).** `persist()` теперь возвращает bool, но пишет тот же снапшот; resume/`deadline`-восстановление не изменены; при рабочем storage `persisted=true`, копия «Попытка сохранена…» — прежнее поведение.
+- **FR-A5 (guard/beforeunload только пока попытка реально активна) — теперь с честной формулировкой.**
+- **Graceful degradation (private mode / недоступный localStorage) — усилена:** честно, а не вводя в заблуждение; экзамен идёт в памяти без падения (`saveExamAttempt`/`persist` возвращают `false` без throw).
+
+**Сверка свидетельств (прямой grep):** unit 19 `test()` (`tests/exam-attempt.test.mjs`; 550 суб-ассертов total по свидетельству прогона); e2e 70 `test()` = `app.spec.ts` 66 + `manual-ticket-placement.spec.ts` 4, ×2 проекта = 140. Гейты зелёные + preflight exit 0 — по свидетельству Orchestrator/Architect (гейты вне scope Analyst; повторно не гонял).
+
+**Две известные ограниченности (popstate/hashchange обходят guard-диалог; `beforeunload` ненадёжен на мобильных) остаются в силе и приемлемы в духе** — настоящая страховка сохранности остаётся персист FR-A4 (а при его недоступности пользователь теперь честно предупреждён — Finding F).
+
+Analyst return count в этом work cycle: 0 (гэпов против пользовательского намерения не найдено ни в одной из валидаций; счётчик не инкрементируется).
+
+Настоящая строка суперседирует более ранние `Analyst validated effective content head: bf028a76fdc6cb923e77a6111b5e0316088afed8`, `... 15ad01acca6df24ae73544b6ba3a397498db5d84` и `... 1a3a532bcb8718f0797ef8562a909a7ec3a6cfcc`.
+
+Analyst validated effective content head: 6e4aca1276a9a202aef50db2e354eea71d657af6

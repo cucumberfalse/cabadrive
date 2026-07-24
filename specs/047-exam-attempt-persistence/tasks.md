@@ -218,10 +218,11 @@
 - [x] **T018** Финальная Analyst-валидация только после T017: Analyst-owned
   маркеры в `feature-request.md` или возврат gap'ов на Architect-диспозицию,
   максимум 5 возвратов. — **passed** for effective content head
-  `bf028a76fdc6cb923e77a6111b5e0316088afed8` (matches T017): Analyst recorded
-  `Analyst validated effective content head: bf028a76…` in `feature-request.md`
-  (return count 0), superseding the earlier `15ad01ac`/`1a3a532b` Analyst passes.
-  Both roles now land on the same SHA — no `deadline`/head mismatch remains.
+  `6e4aca1276a9a202aef50db2e354eea71d657af6` (matches T017): Analyst recorded
+  `Analyst validated effective content head: 6e4aca12…` in `feature-request.md`
+  (return count 0), superseding the earlier `bf028a76`/`15ad01ac`/`1a3a532b`
+  Analyst passes. Both roles now land on the same SHA `6e4aca12` — no head
+  mismatch remains.
 
 - [ ] **T019** Orchestrator: read-only current-PR-head guard (эффективный
   content head по полному SHA; поздние коммиты — только evidence-only), затем
@@ -427,6 +428,31 @@ Implementation Agent добавляет feedback-пункты сюда; Architec
     `15ad01ac` pass stale → re-validate). Recorded in the Final Architect
     Validation section below.
 
+- **[Codex P2 round 4 finding F — disposition; fixed at content head `6e4aca12`]**
+  One more code fix landed on `6e4aca1276a9a202aef50db2e354eea71d657af6` (parent
+  `503e6f0a`), a BEHAVIORAL change → prior validations (`bf028a76` etc.) are stale.
+  Verified `git diff 503e6f0a..6e4aca12`.
+
+  - **Finding F (`App.tsx` — don't treat failed persistence as saved):
+    ACCEPT-FIXED.** Under the localStorage-unavailable negative scenario (private /
+    sandbox / quota → `setItem` throws), the FR-A5 leave-guard previously still
+    promised «Попытка сохранена — вы сможете продолжить её позже», even though
+    nothing was persisted and confirming the leave lost the in-memory attempt — a
+    dishonest guarantee. Fix: `persist()` now returns the real `saveExamAttempt`
+    boolean; the ExamView callback became `onAttemptStateChange(active, persisted)`;
+    App tracks `examAttemptPersisted` and the guard `ConfirmDialog` copy is
+    conditional — persisted → the "saved / continue later" copy (unchanged),
+    NOT persisted → «Этот браузер не сохраняет прогресс экзамена: при уходе текущая
+    попытка будет потеряна». The guard is still SHOWN (warning preserved), the exam
+    still runs fully in-memory without crashing, and `record()` re-signals
+    `persisted` on each answer so a mid-exam quota failure keeps the copy honest.
+    Store schema untouched (`saveExamAttempt` already returned a boolean — only the
+    signal was threaded through). New e2e proves the honest wording under a
+    `setItem`-throwing localStorage double, and the existing positive guard e2e now
+    also asserts the "Попытка сохранена" copy. Correct; no task/ticket needed —
+    fixed in this cycle. Re-validated on `6e4aca12` in the Final Architect
+    Validation section below.
+
 ## Verification Evidence (Evidence Log)
 
 Implementation Agent записывает команду → фактический результат → SHA кандидата.
@@ -536,17 +562,57 @@ Cycle PR set.
 
 ## Final Architect Validation (Architect-owned)
 
-### Current validated head (T017, re-run on bf028a76 after Codex round-3 fix)
+### Current validated head (T017, re-run on 6e4aca12 after Codex round-4 fix)
 
-- **Architect validation pass: passed** — 2026-07-23T23:01:59Z (T017, re-run on
+- **Architect validation pass: passed** — 2026-07-24T00:11:32Z (T017, re-run on
   the current effective content head).
-- Current effective content head: `bf028a76fdc6cb923e77a6111b5e0316088afed8`
+- Current effective content head: `6e4aca1276a9a202aef50db2e354eea71d657af6`
+  (PR #212 fix commit `fix(exam): warn honestly when attempt persistence is
+  unavailable`, parent `503e6f0a`, resolving Codex round-4 Finding F). This
+  SUPERSEDES the prior validated heads `bf028a76`, `15ad01ac`, and `1a3a532b`
+  (behavioral changes → prior passes stale).
+- **Architect validated effective content head: 6e4aca1276a9a202aef50db2e354eea71d657af6**
+- Incremental review `git diff 503e6f0a..6e4aca12` (behavioral fix only —
+  `progressStore*` empty-diff, `package.json` unchanged, exam key only in
+  `examAttemptStorage.ts`, no slice-3 items, pinned «Руководства» hash e2e
+  untouched):
+  - **Finding F** — `persist()` returns the real save result;
+    `onAttemptStateChange(active, persisted)` threads it to App's
+    `examAttemptPersisted`; the FR-A5 guard `ConfirmDialog` copy is conditional
+    (persisted → «Попытка сохранена…»; not persisted → «Этот браузер не сохраняет
+    прогресс экзамена: при уходе текущая попытка будет потеряна»). Guard still
+    shown, exam still in-memory, `record()` keeps the copy honest on each answer.
+    Store schema untouched. Correct.
+  - Tests: +1 e2e (`setItem`-throwing localStorage → in-memory exam, nothing
+    persisted, guard armed with honest "will be lost" copy, NOT "Попытка
+    сохранена"); the positive guard e2e now also asserts "Попытка сохранена". No
+    unit delta (the persistence signal was already boolean).
+- Whole-slice re-conformance on `ae5f9804..6e4aca12`: **FR-B1/FR-A4/FR-A5 hold**;
+  FR-A5 is now honest under the localStorage-unavailable negative scenario (the
+  guard no longer promises a save that did not happen) with no regression to the
+  legitimate persisted flow. Scope guard intact (verified above).
+- Evidence counts (updated by Impl, confirmed against reality): unit
+  `tests/exam-attempt.test.mjs` **19 `test()`** / `pnpm run test` **550**; e2e
+  `app.spec.ts` **66 `test()`** → total **70×2 = 140** scenarios. Gates green +
+  `preflight` exit 0 per Evidence Log. All consistent.
+- Return count unchanged (no gap): Architect return count stays 0.
+- **T018 status after this re-validation:** the fresh Analyst re-pass has landed —
+  `feature-request.md` now records `Analyst validated effective content head:
+  6e4aca12…` (return 0), superseding the earlier `bf028a76`/`15ad01ac`/`1a3a532b`
+  Analyst passes. **Both roles now land on the SAME SHA `6e4aca12`** (T017 and
+  T018), satisfying the AGENTS.md/CLAUDE.md same-SHA rule. T018 stays `[x]`,
+  current for the effective content head.
+
+### Superseded — prior validated head `bf028a76` (STALE, kept for history)
+
+- **Architect validation pass: passed** — 2026-07-23T23:01:59Z (T017, superseded
+  by the `6e4aca12` re-run above; retained as history).
+- Effective content head: `bf028a76fdc6cb923e77a6111b5e0316088afed8`
   (PR #212 fix commit `fix(exam): validate answer sequence, clear attempt on reset,
-  recheck deadline on resume`, resolving Codex round-3 findings C/D/E; Codex
-  re-review of `bf028a76` found NO new code issues). This SUPERSEDES the prior
-  validated heads `1a3a532b` and `15ad01ac` (behavioral changes → prior passes
-  stale).
-- **Architect validated effective content head: bf028a76fdc6cb923e77a6111b5e0316088afed8**
+  recheck deadline on resume`, resolving Codex round-3 findings C/D/E). Superseded
+  the earlier `1a3a532b`/`15ad01ac`; now itself superseded by `6e4aca12`.
+- ~~**Architect validated effective content head: bf028a76fdc6cb923e77a6111b5e0316088afed8**~~
+  (SUPERSEDED — see current validated head `6e4aca12` above).
 - Incremental review `git diff 15ad01ac..bf028a76` (behavioral fix only —
   `progressStore*` still empty-diff, `package.json` unchanged, exam key only in
   `examAttemptStorage.ts`, no slice-3 items, pinned «Руководства» hash e2e
@@ -592,31 +658,33 @@ This block is SHA-agnostic so it certifies the current PR head AND any later
 final-validation evidence-only commit, without re-triggering on each new evidence
 commit.
 
-- **Effective content head** (last behaviorally meaningful commit; Architect- and
+- **Effective content head** (last behaviorally meaningful commit; Architect- AND
   Analyst-validated at the SAME SHA — see the "Current validated head" section
-  above and `feature-request.md`): `bf028a76fdc6cb923e77a6111b5e0316088afed8`.
+  above and `feature-request.md`):
+  `6e4aca1276a9a202aef50db2e354eea71d657af6`.
 - **Evidence-only definition:** a commit on `claude/047-exam-attempt-persistence`
-  after `bf028a76` counts as a final-validation evidence-only commit iff it
+  after `6e4aca12` counts as a final-validation evidence-only commit iff it
   modifies ONLY `specs/047-exam-attempt-persistence/tasks.md` and/or
   `specs/047-exam-attempt-persistence/feature-request.md` (validation notes,
   dispositions, Cycle PR set, this guard block) and touches nothing under `src/`,
   `tests/`, `index.html`, `docs_project/`, build/lint/CI config, or workflows.
 - **Verification (read-only, re-runnable at any head):**
-  `git diff bf028a76..<current PR head> --name-only` must list only those two
-  evidence files. Confirmed at current PR head `2ad7f71f`
-  (`docs(exam): record final Architect+Analyst validation for bf028a76`): the
-  name-only delta is exactly `tasks.md` + `feature-request.md` — evidence-only.
-  Per AGENTS.md L192–194 (CLAUDE.md "Final Architect and Analyst validation …
-  A later commit may skip recursive role validation only when it is a
-  final-validation evidence-only commit"), such commits skip recursive role
-  validation, and the `bf028a76` Architect/Analyst validation remains current for
-  the current PR head. **Conditional, not a blanket promise:** if the name-only
-  check ever lists anything outside those two files, that commit is NOT
-  evidence-only — the prior validation is stale and must be routed back through
-  role-appropriate final validation before merge.
+  `git diff 6e4aca12..<current PR head> --name-only` must list only those two
+  evidence files (empty when the current PR head IS `6e4aca12`). Confirmed at this
+  pass: `6e4aca12` is the current PR head (`git diff 6e4aca12..HEAD --name-only`
+  empty). The forthcoming single evidence commit that records these validation
+  notes will modify only `tasks.md` and `feature-request.md`, keeping the
+  name-only delta to exactly those two evidence files. Per AGENTS.md L192–194
+  (CLAUDE.md "Final Architect and Analyst validation … A later commit may skip
+  recursive role validation only when it is a final-validation evidence-only
+  commit"), such commits skip recursive role validation, and the `6e4aca12`
+  Architect AND Analyst validations remain current for the current PR head. **Conditional, not a blanket promise:** if the name-only check
+  ever lists anything outside those two files, that commit is NOT evidence-only —
+  the prior validation is stale and must be routed back through role-appropriate
+  final validation before merge.
 - **Merge mechanics:** squash-merge collapses all branch commits into one on
   `main`; because evidence commits add no `src/`/`tests/`/behavior change, the
-  merged diff equals the validated `bf028a76` content diff. The Orchestrator merge
+  merged diff equals the validated `6e4aca12` content diff. The Orchestrator merge
   pins to the reviewed/validated head via `--match-head-commit <current PR head>`
   so a race that pushes a new commit mid-merge aborts rather than merging an
   unvalidated head.
