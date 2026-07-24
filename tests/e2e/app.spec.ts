@@ -1665,6 +1665,40 @@ test("an attempt that expires before the exam tab opens clears the leave guard a
   expect(prevented).toBe(false);
 });
 
+test("a saved attempt that expires while away disarms the guard and beforeunload (FR-A5)", async ({
+  page,
+}) => {
+  const dispatchBeforeUnload = () =>
+    page.evaluate(() => {
+      const event = new Event("beforeunload", { cancelable: true });
+      window.dispatchEvent(event);
+      return event.defaultPrevented;
+    });
+  await page.clock.install({ time: new Date("2026-01-01T00:00:00Z") });
+  await page.goto("/");
+  await page.getByRole("button", { name: /Экзамен/ }).click();
+  await page.getByRole("button", { name: "Начать" }).click();
+  await page.getByRole("button", { name: "Пропустить" }).click();
+  await expect(page.getByText("2 / 40")).toBeVisible();
+  // Leave via the guard — the persisted attempt is kept for resume.
+  await page.getByRole("button", { name: /Ошибки/ }).click();
+  const dialog = page.getByRole("dialog", { name: "Прервать экзамен?" });
+  await expect(dialog).toContainText("Попытка сохранена");
+  await dialog.getByRole("button", { name: "Выйти" }).click();
+  await expect(page.getByRole("heading", { name: "Ошибки", exact: true })).toBeVisible();
+  // No regression: before the deadline, leaving still arms beforeunload.
+  expect(await dispatchBeforeUnload()).toBe(true);
+  // Stay on Mistakes past the 45-minute deadline — ExamView is unmounted.
+  await page.clock.runFor(46 * 60 * 1000);
+  // (a) beforeunload no longer prevents unload once the attempt has expired.
+  expect(await dispatchBeforeUnload()).toBe(false);
+  // (b) Returning to the exam shows a clean start screen — expired attempt discarded.
+  await page.getByRole("button", { name: /Экзамен/ }).click();
+  await expect(page.getByRole("button", { name: "Начать" })).toBeVisible();
+  await expect(page.getByText(/Продолжить попытку/)).toHaveCount(0);
+  expect(await page.evaluate(() => localStorage.getItem("cabadrive.exam-attempt.v1"))).toBeNull();
+});
+
 test("resetting progress during an exam clears the attempt and disarms the guard", async ({
   page,
 }) => {

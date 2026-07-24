@@ -5269,6 +5269,19 @@ export function App() {
   // Bumped whenever progress is reset/replaced so a mounted ExamView remounts and
   // stops running (or re-persisting) an attempt that belonged to the old profile.
   const [examResetNonce, setExamResetNonce] = useState(0);
+  const examValidQuestionIds = useMemo(
+    () => new Set(data.questions.map((question) => question.id)),
+    [],
+  );
+  // Resetting/replacing progress — or a saved attempt expiring while away — drops
+  // the active attempt: clear its key + guard flag + persisted flag and remount
+  // ExamView so no reload offers a stale/expired resume and beforeunload disarms.
+  const discardActiveExamAttempt = useCallback(() => {
+    if (examStorage) clearExamAttempt(examStorage);
+    setExamAttemptActive(false);
+    setExamAttemptPersisted(false);
+    setExamResetNonce((nonce) => nonce + 1);
+  }, [examStorage]);
   const routeScrollKey = useMemo(
     () =>
       `${view}:${view === "pandemia" ? (selectedManualSectionId ?? selectedIntroductionId) : ""}`,
@@ -5315,12 +5328,51 @@ export function App() {
   useEffect(() => {
     if (!examAttemptActive) return undefined;
     const handler = (event: BeforeUnloadEvent) => {
+      // Belt-and-suspenders re-check at fire time. On the exam tab the attempt is
+      // genuinely running (ExamView mounted) — always warn. Away from it, only a
+      // still-stored, unexpired snapshot is at risk; if it expired or vanished,
+      // don't block the unload and best-effort drop the stale key.
+      if (view !== "exam") {
+        const saved = examStorage
+          ? readExamAttempt(examStorage, {
+              now: Date.now(),
+              validQuestionIds: examValidQuestionIds,
+            })
+          : null;
+        if (!saved) {
+          if (examStorage) clearExamAttempt(examStorage);
+          return;
+        }
+      }
       event.preventDefault();
       event.returnValue = "";
     };
     window.addEventListener("beforeunload", handler);
     return () => window.removeEventListener("beforeunload", handler);
-  }, [examAttemptActive]);
+  }, [examAttemptActive, view, examStorage, examValidQuestionIds]);
+
+  // While away from the exam tab, ExamView is unmounted and cannot notice the
+  // deadline passing, so examAttemptActive would otherwise stay true (guard +
+  // beforeunload armed) even though the stored attempt is no longer resumable.
+  // Schedule the disarm at the stored deadline so it fires exactly at expiry.
+  useEffect(() => {
+    if (!examAttemptActive || view === "exam") return undefined;
+    const saved = examStorage
+      ? readExamAttempt(examStorage, { now: Date.now(), validQuestionIds: examValidQuestionIds })
+      : null;
+    if (!saved) {
+      // No resumable attempt is actually stored (already expired/absent): disarm now.
+      discardActiveExamAttempt();
+      return undefined;
+    }
+    const msUntilExpiry = saved.deadline - Date.now();
+    if (msUntilExpiry <= 0) {
+      discardActiveExamAttempt();
+      return undefined;
+    }
+    const timer = window.setTimeout(discardActiveExamAttempt, msUntilExpiry);
+    return () => window.clearTimeout(timer);
+  }, [examAttemptActive, view, examStorage, examValidQuestionIds, discardActiveExamAttempt]);
 
   useEffect(() => {
     const frame = window.requestAnimationFrame(() => {
@@ -5348,17 +5400,6 @@ export function App() {
   function requestReset() {
     setResetAcknowledged(false);
     setResetDialogOpen(true);
-  }
-
-  // Resetting or replacing the progress store invalidates any active exam
-  // attempt (it belongs to the old profile): drop its dedicated key + guard flag
-  // and remount ExamView so a reload never offers to resume a deleted attempt and
-  // the mounted view stops persisting into the new profile.
-  function discardActiveExamAttempt() {
-    if (examStorage) clearExamAttempt(examStorage);
-    setExamAttemptActive(false);
-    setExamAttemptPersisted(false);
-    setExamResetNonce((nonce) => nonce + 1);
   }
 
   function confirmReset() {
