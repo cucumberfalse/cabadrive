@@ -107,12 +107,18 @@ export function remainingSeconds(deadline: number, now: number): number {
 }
 
 /** Best effort — returns false (never throws) when storage is unavailable or the
- * quota is exhausted, so the exam keeps running in memory. */
+ * quota is exhausted, so the exam keeps running in memory. On a failed write it
+ * also drops any previously-stored snapshot: otherwise a mid-attempt failure
+ * (e.g. quota exhaustion after an earlier successful save) would leave a STALE
+ * older snapshot under the key, and a plain reload/close would silently resume
+ * from it — losing every answer made after the failed write. The invariant is:
+ * the key reflects the current attempt or is absent, never a stale prior state. */
 export function saveExamAttempt(storage: StorageLike, snapshot: ExamAttemptSnapshot): boolean {
   try {
     storage.setItem(EXAM_ATTEMPT_KEY, JSON.stringify(snapshot));
     return true;
   } catch {
+    clearExamAttempt(storage);
     return false;
   }
 }

@@ -503,11 +503,12 @@ Cycle PR set.
 
 - `node --test tests/exam-attempt.test.mjs` — test-first: **fail** до реализации
   модуля (`ERR_MODULE_NOT_FOUND` / `ERR_TEST_FAILURE`, tests 1 / fail 1). После
-  реализации `src/examAttemptStorage.ts`: **pass 19 / fail 0** (19 test(); 17
+  реализации `src/examAttemptStorage.ts`: **pass 20 / fail 0** (20 test(); 17
   исходных + terminal-snapshot rejection (Codex Finding B) + answer-sequence
-  rejection (Codex Finding C)).
-- `pnpm run test` — `node --test tests/*.test.mjs`: **tests 550, pass 550,
-  fail 0** (базис до слайса: **531**; после: **550** = +19 из
+  rejection (Codex Finding C) + stale-snapshot-cleared-on-failed-write (Codex
+  Finding H)).
+- `pnpm run test` — `node --test tests/*.test.mjs`: **tests 551, pass 551,
+  fail 0** (базис до слайса: **531**; после: **551** = +20 из
   `tests/exam-attempt.test.mjs`).
 - `pnpm run quality:fast` — typecheck (`tsc --noEmit`) + eslint
   (`--max-warnings 0`): **pass** (0 ошибок, 0 предупреждений).
@@ -515,8 +516,14 @@ Cycle PR set.
 - `pnpm run build:app` — **pass** (vite build `✓ built in ~4s`; service worker
   сгенерирован); новых зависимостей нет.
 - `pnpm run test:e2e` (эквивалент: `build:app` + `playwright test`, оба проекта)
-  — **144 passed, 0 failed** (базис 120 = 60×2; после: **144 = 72×2**, +24 =
-  12 новых test() × 2 проекта). Разбивка: Desktop Chromium **72** + Pixel 7 **72**.
+  — **146 passed, 0 failed** (базис 120 = 60×2; после: **146 = 73×2**, +26 =
+  13 новых test() × 2 проекта). Разбивка: Desktop Chromium **73** + Pixel 7 **73**.
+  ПРИМЕЧАНИЕ по флейкам: на нагруженной машине (параллельный VM, load ~5) полный
+  прогон в 2 воркера иногда даёт 1–2 нестабильных падения в РАЗНЫХ несвязанных
+  тестах (exam-timeout с 45-мин виртуальными часами, offline-reload, manual-guide,
+  intro-plan grid @320px) — все проходят в изоляции; это контеншн окружения, не
+  регресс кода (правка Finding H изолирована в ветке отказа записи
+  `saveExamAttempt`). Полный набор зелёный при отсутствии контеншна.
   Мигрированные экзамен-тесты (`:1273`, `:1301`, `~:6194`) и новые (start-screen,
   AC-2 resume, guard, decline, beforeunload, negative, Codex Finding A:
   attempt-expires-before-exam-tab очищает guard/beforeunload, Codex Finding D:
@@ -614,6 +621,21 @@ Cycle PR set.
   старт + `beforeunload` разоружён; older-snapshot-then-failed-resave → нет
   устаревшего resume, ключ очищен); положительный тест «leaving an active
   exam…keeps the attempt for resume» остаётся зелёным.
+- **Codex review round 5 (finding H — reload/close путь, глубже G) — исправлено:**
+  `saveExamAttempt` при неудачной записи (`setItem` бросает — quota/private после
+  ранее успешного сохранения) теперь дополнительно вызывает `clearExamAttempt`
+  (best-effort `removeItem` в своём try/catch, не бросает) и возвращает `false`.
+  Инвариант: `cabadrive.exam-attempt.v1` отражает ТЕКУЩУЮ попытку либо отсутствует
+  — никогда устаревшее прежнее состояние. G закрывал только top-nav «Выйти», но на
+  обычной перезагрузке/закрытии его очистка не срабатывала, и приложение
+  предлагало resume из УСТАРЕВШЕГО снапшота, молча теряя ответы после упавшей
+  записи — ровно тот класс молчаливой потери, который устраняет слайс. Три пути F
+  (честный guard), G (discard при уходе) и H (очистка на уровне модуля) теперь
+  согласованы. Scope: `src/examAttemptStorage.ts` (только ветка отказа записи) +
+  тесты; `parseExamAttempt`/read/clear-семантика без изменений; схема store не
+  тронута. Покрыто unit (после успешного сохранения `setItem` бросает →
+  `saveExamAttempt` false И ключ пуст) и e2e (успешный старт → упавшая пере-запись
+  → обычная перезагрузка → чистый старт, нет устаревшего resume).
 - Иных dead ends / accepted known issues нет.
 
 ## Final Architect Validation (Architect-owned)

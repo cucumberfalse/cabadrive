@@ -271,6 +271,21 @@ test("saveExamAttempt returns false without throwing when the write is rejected"
   assert.equal(saveExamAttempt(exhausted, validSnapshot()), false);
 });
 
+test("saveExamAttempt clears a previously stored snapshot when a later write fails", () => {
+  // A snapshot was saved earlier, then a mid-attempt write starts failing (quota).
+  const storage = new FakeStorage(
+    { [EXAM_ATTEMPT_KEY]: JSON.stringify(validSnapshot()) },
+    { setFailures: [quota()] },
+  );
+  // The older snapshot is readable before the failing write.
+  assert.notEqual(readExamAttempt(storage, opts), null);
+  // The failing save returns false AND removes the stale snapshot, so a reload
+  // cannot silently resume from stale answers.
+  assert.equal(saveExamAttempt(storage, validSnapshot({ answers: [] })), false);
+  assert.equal(storage.getItem(EXAM_ATTEMPT_KEY), null);
+  assert.equal(readExamAttempt(storage, opts), null);
+});
+
 test("readExamAttempt returns null on read failure and for a stored broken/expired value", () => {
   assert.equal(
     readExamAttempt(new FakeStorage({}, { getFailures: [new Error("denied")] }), opts),

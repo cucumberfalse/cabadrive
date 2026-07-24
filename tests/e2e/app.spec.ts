@@ -1588,6 +1588,43 @@ test("leaving after a failed re-save discards the older saved snapshot (no stale
   await expect(page.getByText(/Продолжить попытку/)).toHaveCount(0);
 });
 
+test("a failed mid-exam save clears the stale snapshot so a plain reload starts clean", async ({
+  page,
+}) => {
+  // Allow the first exam-key write (start), then fail every later one.
+  await page.addInitScript(() => {
+    const proto = Object.getPrototypeOf(window.localStorage);
+    const realSet = proto.setItem;
+    let allowed = 1;
+    proto.setItem = function (key: string, value: string) {
+      if (key === "cabadrive.exam-attempt.v1") {
+        if (allowed <= 0) throw new Error("QuotaExceededError");
+        allowed -= 1;
+      }
+      return realSet.call(this, key, value);
+    };
+  });
+  await page.goto("/");
+  await page.getByRole("button", { name: /Экзамен/ }).click();
+  await page.getByRole("button", { name: "Начать" }).click();
+  // The start save succeeded → an older 0-answer snapshot is in storage.
+  expect(
+    await page.evaluate(() => window.localStorage.getItem("cabadrive.exam-attempt.v1")),
+  ).not.toBeNull();
+  // This answer's re-save fails; saveExamAttempt must drop the stale snapshot so a
+  // reload cannot resume from it (silently losing the answers after the failure).
+  await page.getByRole("button", { name: "Пропустить" }).click();
+  await expect(page.getByText("2 / 40")).toBeVisible();
+  expect(
+    await page.evaluate(() => window.localStorage.getItem("cabadrive.exam-attempt.v1")),
+  ).toBeNull();
+  // Plain reload (not the top-nav leave path): clean start, no stale resume.
+  await page.reload();
+  await page.getByRole("button", { name: /Экзамен/ }).click();
+  await expect(page.getByRole("button", { name: "Начать" })).toBeVisible();
+  await expect(page.getByText(/Продолжить попытку/)).toHaveCount(0);
+});
+
 test("an attempt that expires before the exam tab opens clears the leave guard and beforeunload", async ({
   page,
 }) => {
