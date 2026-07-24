@@ -1102,10 +1102,13 @@ function LearnView({ progress }: { progress: ProgressV2 }) {
 type ExamPhase = "idle" | "resumePrompt" | "active" | "finished";
 
 function ExamView({
-  onAttemptActiveChange,
+  onAttemptStateChange,
   storage,
 }: {
-  onAttemptActiveChange: (active: boolean) => void;
+  // (active, persisted): `persisted` is false when localStorage is unavailable or
+  // the last write failed, so App's leave-guard copy can warn honestly instead of
+  // promising a recoverable attempt (FR-A5 under the storage-unavailable path).
+  onAttemptStateChange: (active: boolean, persisted: boolean) => void;
   storage: StorageLike | undefined;
 }) {
   // The set of ids currently resolvable to a question; a saved attempt whose ids
@@ -1138,21 +1141,30 @@ function ExamView({
     // mount; without this the guard/beforeunload would stay armed on a clean
     // start screen (FR-A5: guard only while an attempt is genuinely live).
     if (savedAttempt) {
-      onAttemptActiveChange(true);
+      // A resumable attempt was read back from storage, so it is persisted.
+      onAttemptStateChange(true, true);
     } else {
       // Absent/broken/expired/terminal saved attempt: drop the key so a later
       // reload starts clean, and clear the parent flag.
       if (storage) clearExamAttempt(storage);
-      onAttemptActiveChange(false);
+      onAttemptStateChange(false, false);
     }
     // Mount-only: the initial phase decision must not re-run on later renders.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // Returns whether the attempt is actually persisted right now: false when there
+  // is no storage or the write failed (private mode / quota). The exam keeps
+  // running in memory either way; the boolean only drives the honest guard copy.
   const persist = useCallback(
-    (questions: Question[], nextAnswers: ProgressAnswer[], started: number, dl: number) => {
-      if (!storage) return;
-      saveExamAttempt(storage, {
+    (
+      questions: Question[],
+      nextAnswers: ProgressAnswer[],
+      started: number,
+      dl: number,
+    ): boolean => {
+      if (!storage) return false;
+      return saveExamAttempt(storage, {
         version: 1,
         questionIds: questions.map((question) => question.id),
         answers: nextAnswers,
@@ -1180,12 +1192,12 @@ function ExamView({
       };
       dispatchProgress({ type: "finishExam", answers: finalAnswers, attempt });
       if (storage) clearExamAttempt(storage);
-      onAttemptActiveChange(false);
+      onAttemptStateChange(false, false);
       setAnswers(finalAnswers);
       setResultScore(finalScore);
       setPhase("finished");
     },
-    [onAttemptActiveChange, storage],
+    [onAttemptStateChange, storage],
   );
 
   function start() {
@@ -1202,8 +1214,8 @@ function ExamView({
     setStartedAt(started);
     setDeadline(dl);
     setNow(started);
-    persist(questions, [], started, dl);
-    onAttemptActiveChange(true);
+    const persisted = persist(questions, [], started, dl);
+    onAttemptStateChange(true, persisted);
     setPhase("active");
   }
 
@@ -1216,7 +1228,7 @@ function ExamView({
     if (savedAttempt.deadline <= Date.now()) {
       if (storage) clearExamAttempt(storage);
       setSavedAttempt(null);
-      onAttemptActiveChange(false);
+      onAttemptStateChange(false, false);
       setPhase("idle");
       return;
     }
@@ -1227,22 +1239,28 @@ function ExamView({
     setStartedAt(savedAttempt.startedAt);
     setDeadline(savedAttempt.deadline);
     setNow(Date.now());
-    onAttemptActiveChange(true);
+    // The snapshot was read from storage, so the resumed attempt is persisted.
+    onAttemptStateChange(true, true);
     setPhase("active");
   }
 
   function decline() {
     if (storage) clearExamAttempt(storage);
     setSavedAttempt(null);
-    onAttemptActiveChange(false);
+    onAttemptStateChange(false, false);
     setPhase("idle");
   }
 
   function record(answer: ProgressAnswer) {
     const nextAnswers = [...answers, answer];
-    persist(examQuestions, nextAnswers, startedAt, deadline);
+    const persisted = persist(examQuestions, nextAnswers, startedAt, deadline);
     if (nextAnswers.length >= examQuestions.length) finish(examQuestions, nextAnswers);
-    else setAnswers(nextAnswers);
+    else {
+      setAnswers(nextAnswers);
+      // Keep the guard's honesty current: a mid-exam write can start failing
+      // (e.g. quota) even if the first save succeeded.
+      onAttemptStateChange(true, persisted);
+    }
   }
 
   function skipCurrent() {
@@ -5230,13 +5248,23 @@ export function App() {
   const examStorage = useMemo(() => safeLocalStorage(), []);
   // Single source of truth for the leave guard and beforeunload. Lazily seeded
   // from a persisted attempt so a reload straight into a non-exam tab still arms
-  // the guard; ExamView keeps it in sync via onAttemptActiveChange.
+  // the guard; ExamView keeps it in sync via onAttemptStateChange.
   const [examAttemptActive, setExamAttemptActive] = useState<boolean>(() => {
     const storage = safeLocalStorage();
     if (!storage) return false;
     const validQuestionIds = new Set(data.questions.map((question) => question.id));
     return readExamAttempt(storage, { now: Date.now(), validQuestionIds }) !== null;
   });
+  // Whether the active attempt is actually saved. A resumable attempt read from
+  // storage is persisted; a fresh attempt is persisted only if the write worked.
+  // Drives honest guard copy when localStorage is unavailable (FR-A5).
+  const [examAttemptPersisted, setExamAttemptPersisted] = useState<boolean>(
+    () => examStorage !== undefined && examAttemptActive,
+  );
+  const handleExamAttemptStateChange = useCallback((active: boolean, persisted: boolean) => {
+    setExamAttemptActive(active);
+    setExamAttemptPersisted(persisted);
+  }, []);
   const [pendingLeaveView, setPendingLeaveView] = useState<View | undefined>(undefined);
   // Bumped whenever progress is reset/replaced so a mounted ExamView remounts and
   // stops running (or re-persisting) an attempt that belonged to the old profile.
@@ -5329,6 +5357,7 @@ export function App() {
   function discardActiveExamAttempt() {
     if (examStorage) clearExamAttempt(examStorage);
     setExamAttemptActive(false);
+    setExamAttemptPersisted(false);
     setExamResetNonce((nonce) => nonce + 1);
   }
 
@@ -5602,7 +5631,11 @@ export function App() {
         }}
         onCancel={() => setPendingLeaveView(undefined)}
       >
-        <p>Попытка сохранена — вы сможете продолжить её позже.</p>
+        <p>
+          {examAttemptPersisted
+            ? "Попытка сохранена — вы сможете продолжить её позже."
+            : "Этот браузер не сохраняет прогресс экзамена: при уходе текущая попытка будет потеряна."}
+        </p>
       </ConfirmDialog>
 
       <StatusStrip progress={progress} />
@@ -5676,7 +5709,7 @@ export function App() {
       {view === "exam" && (
         <ExamView
           key={examResetNonce}
-          onAttemptActiveChange={setExamAttemptActive}
+          onAttemptStateChange={handleExamAttemptStateChange}
           storage={examStorage}
         />
       )}

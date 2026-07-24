@@ -1392,7 +1392,10 @@ test("leaving an active exam confirms first and keeps the attempt for resume (FR
   await expect(page.getByText("2 / 40")).toBeVisible();
   // Attempt to leave → guard dialog; "Остаться" keeps us on the exam.
   await page.getByRole("button", { name: /Ошибки/ }).click();
-  await expect(page.getByRole("heading", { name: "Прервать экзамен?" })).toBeVisible();
+  const guardDialog = page.getByRole("dialog", { name: "Прервать экзамен?" });
+  await expect(guardDialog).toBeVisible();
+  // Persistence works here, so the copy promises the attempt is recoverable.
+  await expect(guardDialog).toContainText("Попытка сохранена");
   await page.getByRole("button", { name: "Остаться" }).click();
   await expect(page.getByText("2 / 40")).toBeVisible();
   // Leave for real → confirm; the saved attempt is not cleared.
@@ -1475,6 +1478,40 @@ test("a broken or expired saved attempt is discarded for a clean start screen", 
   await expect(page.getByRole("button", { name: "Начать" })).toBeVisible();
   await expect(page.getByText(/Продолжить попытку/)).toHaveCount(0);
   expect(await page.evaluate(() => localStorage.getItem("cabadrive.exam-attempt.v1"))).toBeNull();
+});
+
+test("when the browser cannot save exam progress, the leave guard warns honestly", async ({
+  page,
+}) => {
+  // Simulate private mode / quota: every localStorage write throws, reads still work.
+  await page.addInitScript(() => {
+    const proto = Object.getPrototypeOf(window.localStorage);
+    proto.setItem = () => {
+      throw new Error("QuotaExceededError");
+    };
+  });
+  await page.goto("/");
+  await page.getByRole("button", { name: /Экзамен/ }).click();
+  await page.getByRole("button", { name: "Начать" }).click();
+  // (a) The exam still runs fully in memory and never crashes.
+  await expect(page.getByText(/45:00|44:59/)).toBeVisible();
+  await expect(page.getByTestId("question-card")).toBeVisible();
+  await page.getByRole("button", { name: "Пропустить" }).click();
+  await expect(page.getByText("2 / 40")).toBeVisible();
+  // Nothing was persisted (the write threw).
+  expect(
+    await page.evaluate(() => window.localStorage.getItem("cabadrive.exam-attempt.v1")),
+  ).toBeNull();
+  // (b) The guard still arms, and (c) with the honest "will be lost" wording —
+  // not the "saved / continue later" promise the persistence layer can't keep.
+  await page.getByRole("button", { name: /Ошибки/ }).click();
+  const dialog = page.getByRole("dialog", { name: "Прервать экзамен?" });
+  await expect(dialog).toBeVisible();
+  await expect(dialog).toContainText("Этот браузер не сохраняет прогресс экзамена");
+  await expect(dialog).not.toContainText("Попытка сохранена");
+  // Staying keeps the in-memory attempt.
+  await dialog.getByRole("button", { name: "Остаться" }).click();
+  await expect(page.getByText("2 / 40")).toBeVisible();
 });
 
 test("an attempt that expires before the exam tab opens clears the leave guard and beforeunload", async ({

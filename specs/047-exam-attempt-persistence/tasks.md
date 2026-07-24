@@ -451,14 +451,15 @@ Cycle PR set.
 - `pnpm run build:app` — **pass** (vite build `✓ built in ~4s`; service worker
   сгенерирован); новых зависимостей нет.
 - `pnpm run test:e2e` (эквивалент: `build:app` + `playwright test`, оба проекта)
-  — **138 passed, 0 failed** (базис 120 = 60×2; после: **138 = 69×2**, +18 =
-  9 новых test() × 2 проекта). Разбивка: Desktop Chromium **69** + Pixel 7 **69**.
+  — **140 passed, 0 failed** (базис 120 = 60×2; после: **140 = 70×2**, +20 =
+  10 новых test() × 2 проекта). Разбивка: Desktop Chromium **70** + Pixel 7 **70**.
   Мигрированные экзамен-тесты (`:1273`, `:1301`, `~:6194`) и новые (start-screen,
   AC-2 resume, guard, decline, beforeunload, negative, Codex Finding A:
   attempt-expires-before-exam-tab очищает guard/beforeunload, Codex Finding D:
   reset-во-время-экзамена очищает ключ/guard, Codex Finding E:
-  resume-после-дедлайна отбрасывает попытку без grading) зелёные в обоих
-  проектах.
+  resume-после-дедлайна отбрасывает попытку без grading, Codex Finding F:
+  недоступный localStorage → guard предупреждает честно «не сохраняется/будет
+  потеряно») зелёные в обоих проектах.
 - **Негативный сценарий (обязателен):** unit `parseExamAttempt` — битый/не-JSON,
   `version!=1`, дубли/пустые/неизвестные `questionIds`, невалидные `answers`,
   `answers>questionIds`, нечисловые `startedAt/deadline`, `deadline<=now` (и
@@ -516,6 +517,21 @@ Cycle PR set.
   (clear+flag false), reset/import/undo (discardActiveExamAttempt). Дополнительных
   расхождений не найдено; ничего не отложено на будущий слайс. `popstate`/
   `hashchange` остаётся сознательным известным ограничением (см. выше).
+- **Codex review round 3 (finding F) — исправлено:** при недоступном localStorage
+  (`setItem` бросает / private / quota) `saveExamAttempt` возвращает `false`;
+  раньше guard-диалог всё равно обещал «Попытка сохранена — продолжите позже»,
+  хотя восстановить попытку было нельзя (при подтверждении ухода in-memory-ответы
+  терялись). Фикс (scope: `src/App.tsx` + e2e; `saveExamAttempt` уже возвращал
+  boolean — сигнал протянут, схема store не тронута): `persist()` возвращает
+  фактический результат записи; `ExamView` сообщает App пару `(active, persisted)`
+  через `onAttemptStateChange`; App хранит `examAttemptPersisted` и показывает в
+  guard честный текст — при `persisted=false` «Этот браузер не сохраняет прогресс
+  экзамена: при уходе текущая попытка будет потеряна». Guard НЕ подавляется
+  (предупредить — весь смысл), нормальный текст при `persisted=true` не изменён;
+  экзамен по-прежнему полностью работает в памяти без краша. Покрыто e2e с
+  localStorage-double (`setItem` throws): экзамен идёт, guard вооружён, текст
+  честный; существующий положительный guard-тест дополнительно проверяет
+  «Попытка сохранена».
 - Иных dead ends / accepted known issues нет.
 
 ## Final Architect Validation (Architect-owned)
