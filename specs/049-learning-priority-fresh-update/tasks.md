@@ -105,10 +105,47 @@
   access) before finalization. A functional failure there must be routed as a
   follow-up task; recurrence of only the same external registry outage is a
   documented external blocker, not an implementation task.
+- F049-GATE-001 — **ticket: separate prerequisite security-baseline work cycle
+  and PR; not a feature 049 implementation task**. Required `osv-scan` failed
+  on PR #215 because the unchanged repository lockfile resolves 13 fixable
+  transitive vulnerabilities: `baseline-browser-mapping` 2.10.25,
+  `brace-expansion` 1.1.16 and 5.0.7, `browserslist` 4.28.2, `js-yaml` 4.3.0,
+  `nanoid` 3.3.12, and `postcss` 8.5.15. Read-only dependency tracing confirms
+  they arrive through the existing Vite/Babel/ESLint/TypeScript-ESLint graph;
+  feature 049 changed neither `package.json` nor `pnpm-lock.yaml`, and sibling PR
+  #214 fails the same baseline gate. Orchestrator must open a separate
+  latest-verified-main feature intake and dependency-only prerequisite PR. Its
+  safe scope is limited to resolving every named package to at least the OSV
+  fixed versions (`baseline-browser-mapping >=2.11.0`, `brace-expansion` 1.x
+  `>=1.1.18` and 5.x `>=5.0.9`, `browserslist >=4.28.7`, `js-yaml >=4.3.2`,
+  `nanoid` 3.x `>=3.3.18`, `postcss` 8.5.x `>=8.5.23`) using pnpm 10.33.0.
+  Prefer a deterministic lockfile refresh within existing parent semver ranges;
+  add only narrowly targeted `pnpm.overrides` when a vulnerable transitive
+  resolution cannot otherwise advance. Do not use force/major upgrades, change
+  application code, or bundle unrelated dependency updates. Verification must
+  include a reviewed manifest/lock diff, `pnpm install --frozen-lockfile`,
+  `pnpm why` evidence for all seven package names and both brace-expansion
+  lines, the repository's full preflight, and a green required `osv-scan` on
+  the prerequisite PR exact head.
+- F049-GATE-001 ordering — the prerequisite PR must merge to `main` first.
+  Orchestrator must then assign role-appropriate synchronization of PR #215
+  with verified updated `origin/main` while preserving its history and all
+  sibling work, obtain a new exact head, rerun every required check including
+  `osv-scan`, and refresh affected evidence before final Architect validation.
+  PR #214 needs the same independent prerequisite/synchronization but is not
+  part of feature 049. A functional or quality failure after the dependency
+  refresh becomes a scoped follow-up; waiving the required OSV gate is not an
+  allowed disposition.
 
 ## Cycle PR Set
 
 - Slice 1 / sole implementation PR: purpose `feature 049 complete implementation`; branch `codex/049-learning-priority-fresh-update`; PR [#215](https://github.com/cucumberfalse/cabadrive/pull/215); effective content head `55fdbc0fdf889d1dbb6062b5616581c111cc6f42`; process-evidence head before this disposition `559021c7a7b1e4fec6bfed3fde32d4113566984f`; status ready/open with only subsequent process-memory evidence; included in final validation: yes.
+- External prerequisite (F049-GATE-001): dependency-security baseline PR and
+  feature folder are pending Orchestrator creation from latest verified main.
+  That PR belongs to its own work cycle and is **not** included in feature 049's
+  cycle PR set. It must merge before PR #215 is synchronized and rechecked; the
+  synchronized PR #215 head, not the pre-prerequisite head, will be the candidate
+  effective content head for feature 049 final validation.
 
 ## Final Architect Validation (Architect-owned)
 
