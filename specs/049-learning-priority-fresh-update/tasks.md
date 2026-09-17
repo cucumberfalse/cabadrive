@@ -7,7 +7,7 @@
 - Analyst/Architect handoff: `codex/049-learning-priority-fresh-update` in `/Users/chap/devel/cabadrive-worktrees/049-learning-priority-fresh-update`.
 - Delivery decision: one implementation PR slice continuing this handoff only after explicit Orchestrator assignment and latest-main re-verification.
 - Parallel work: preserve all sibling state. PR #214 `claude/049-nginx-caching-security` owns nginx/Docker/CI and is excluded.
-- Cycle PR set: implementation PR metadata pending. Required fields: purpose, branch, PR URL/number, full head SHA, status, and final-validation inclusion.
+- Cycle PR set: sole implementation PR [#215](https://github.com/cucumberfalse/cabadrive/pull/215), branch `codex/049-learning-priority-fresh-update`, ready/open, included in final validation. Effective product content head is `55fdbc0fdf889d1dbb6062b5616581c111cc6f42`; PR creation head was `376e8eff13370876131aecee0c347eccdd0f0faa`, followed only by this publication-metadata evidence update.
 - Cleanup: not applicable during implementation; post-completion environment cleanup, if assigned, belongs only to Cleanup Agent.
 
 ## Setup And Test-First
@@ -85,6 +85,7 @@
 - Final scope inspection (2026-09-17): `git diff --check`, `node scripts/check-feature-memory.mjs --worktree`, and `pnpm run check:repo` passed; changed/untracked paths are limited to feature 049 memory, progress/Learn/SW implementation and tests, and directly affected durable docs. No `nginx.conf`, Docker/compose, workflow/CI, dependency, sibling-memory, governed content, or source-mode change exists; Learn dispatches store actions and has no direct progress `localStorage` write; disposable A/B artifacts remain outside Git tracking.
 - Docker evidence: project/port and exact registry limitation are recorded under Known Issues and Implementation Agent Feedback. No sibling runtime was stopped or modified.
 - Candidate/full-preflight/head SHA evidence: effective implementation content commit `55fdbc0fdf889d1dbb6062b5616581c111cc6f42`; the authoritative final preflight result recorded above validates this content state. This later tasks-only entry is process evidence and does not alter product behavior.
+- Publication evidence (2026-09-17): pushed `codex/049-learning-priority-fresh-update` and opened ready PR [#215](https://github.com/cucumberfalse/cabadrive/pull/215) against `main`; GitHub reported open/non-draft creation head `376e8eff13370876131aecee0c347eccdd0f0faa`. No merge was performed.
 
 ## Implementation Agent Feedback
 
@@ -96,7 +97,7 @@
 
 ## Cycle PR Set
 
-- Slice 1 / sole implementation PR: purpose `feature 049 complete implementation`; branch expected `codex/049-learning-priority-fresh-update`; PR URL/number/head/status pending Implementation Agent publication; included in final validation: yes.
+- Slice 1 / sole implementation PR: purpose `feature 049 complete implementation`; branch `codex/049-learning-priority-fresh-update`; PR [#215](https://github.com/cucumberfalse/cabadrive/pull/215); effective content head `55fdbc0fdf889d1dbb6062b5616581c111cc6f42`; PR creation head `376e8eff13370876131aecee0c347eccdd0f0faa`; status ready/open with only subsequent tasks-only publication evidence; included in final validation: yes.
 
 ## Final Architect Validation (Architect-owned)
 
