@@ -84,7 +84,7 @@
 - Authoritative final preflight (Orchestrator, 2026-09-17): authorized `pnpm run preflight` exited `0`; Node tests passed `565/565`; Playwright passed `158` with `2` intentional mobile skips. This run also covered feature-memory/repository gates, content validation, typecheck, lint, format check, negative quality contracts, production build, and the complete E2E matrix.
 - Final scope inspection (2026-09-17): `git diff --check`, `node scripts/check-feature-memory.mjs --worktree`, and `pnpm run check:repo` passed; changed/untracked paths are limited to feature 049 memory, progress/Learn/SW implementation and tests, and directly affected durable docs. No `nginx.conf`, Docker/compose, workflow/CI, dependency, sibling-memory, governed content, or source-mode change exists; Learn dispatches store actions and has no direct progress `localStorage` write; disposable A/B artifacts remain outside Git tracking.
 - Docker evidence: project/port and exact registry limitation are recorded under Known Issues and Implementation Agent Feedback. No sibling runtime was stopped or modified.
-- Candidate/full-preflight/head SHA evidence: the authoritative final preflight result is recorded above; the exact effective content SHA will be added immediately after the implementation commit.
+- Candidate/full-preflight/head SHA evidence: effective implementation content commit `55fdbc0fdf889d1dbb6062b5616581c111cc6f42`; the authoritative final preflight result recorded above validates this content state. This later tasks-only entry is process evidence and does not alter product behavior.
 
 ## Implementation Agent Feedback
 
