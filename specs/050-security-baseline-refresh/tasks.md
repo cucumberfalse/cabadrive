@@ -32,7 +32,7 @@
 
 - [x] **T010 — Run full local verification.** `corepack pnpm@10.33.0 run preflight` passed on the final graph: repository/feature-memory checks, attribution/content/manual validation, TypeScript, ESLint, Prettier, negative-quality sentinels, `554` Node tests, production builds/service-worker generation, and `154` Playwright tests (`1.6m`) all passed. Existing Vite large-chunk warnings remained non-blocking and unchanged in character.
 
-- [ ] **T011 — Publish one ready PR.** Under Implementation Agent authority, commit, push, and open exactly one ready PR. Record PR number/URL, branch, purpose, and full head SHA in the Cycle PR Set. Do not merge or synchronize siblings.
+- [x] **T011 — Publish one ready PR.** Committed and pushed the implementation as `44189024867c12267b264bcaf0cec8ceadf52a5e`, then opened the single non-draft PR [#216](https://github.com/cucumberfalse/cabadrive/pull/216) from `codex/050-security-baseline-refresh` to `main`. Initial GitHub state was open and mergeable, with all five required checks started. No merge or sibling synchronization was performed.
 
 ## Review And Follow-up Tasks
 
@@ -90,14 +90,14 @@ Populate before PR. Name every changed importer/package/dependency snapshot, che
 - `git diff --check`: passed.
 - Changed-file scope: lockfile plus the four feature-050 memory files only.
 - `pnpm run preflight`: passed; `554` Node tests and `154` Playwright tests passed.
-- Exact-head required checks: pending.
+- Exact-head required checks: all five required checks started on implementation head `44189024867c12267b264bcaf0cec8ceadf52a5e`; they were initially in progress. Orchestrator must verify the final evidence/current head after this process-memory commit.
 - Review: pending.
 
 ## Cycle PR Set
 
 | Purpose | Branch | PR | Head SHA | Status | Included in final validation |
 |---|---|---|---|---|---|
-| Security baseline refresh | `codex/050-security-baseline-refresh` | pending | pending | not opened | yes |
+| Security baseline refresh | `codex/050-security-baseline-refresh` | [#216](https://github.com/cucumberfalse/cabadrive/pull/216) | implementation head `44189024867c12267b264bcaf0cec8ceadf52a5e` | open, ready; exact-head checks running at publication | yes |
 
 PR #214 and PR #215 are sequencing dependencies only and are not part of this cycle PR set.
 
