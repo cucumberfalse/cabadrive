@@ -181,3 +181,24 @@ At intake, no PR exists for feature 050. The Analyst handoff context is branch `
 ## Final Analyst Validation Notes
 
 Append-only Analyst section. Populate only when Orchestrator explicitly invokes final Analyst validation after final Architect validation passes.
+
+### Final Analyst validation — 2026-09-17
+
+Orchestrator explicitly invoked this validation after final Architect validation passed at `2026-09-17T18:16:53Z` for effective content head `44189024867c12267b264bcaf0cec8ceadf52a5e`. Analyst inspected the real lockfile/content diff and current process evidence, not only implementation summaries. Before this Analyst-owned note, PR #216 current head was `99766e3568b960e12e4e889d2a39afa6f77b6daf`; the full diff from effective content head to that current head changed only Architect-owned `specs/050-security-baseline-refresh/tasks.md`, so both later commits were process-evidence-only and did not stale content validation.
+
+**Verdict: PASS.** The independent prerequisite satisfies the original security-baseline request in spirit and letter:
+
+- The only behaviorally meaningful repository change is `pnpm-lock.yaml`; `package.json` is byte-identical to base, the existing `@babel/core` override and `pnpm@10.33.0` contract are unchanged, and no app, test, content, service-worker, workflow, feature-049, PR #214, or PR #215 file changed.
+- Every supplied fixed threshold is met in both package and resolved snapshots, with no vulnerable duplicate left: `baseline-browser-mapping 2.11.22`, `brace-expansion 1.1.18` and `5.0.9`, `browserslist 4.28.9`, `js-yaml 4.3.2`, `nanoid 3.3.18`, and `postcss 8.5.28`.
+- The additional lock movement (`caniuse-lite`, `electron-to-chromium`, `node-releases`, `update-browserslist-db`) is confined to the coherent compatible `browserslist` transitive set. Ordinary compatible resolution succeeded; no new override, forced resolution, major upgrade, or unrelated modernization was introduced.
+- Recorded `pnpm why` evidence covers all affected names and both brace major lines. A `corepack pnpm@10.33.0 install --frozen-lockfile` left the manifest and lock hashes unchanged. Full local preflight passed with `554` Node tests and `154` Playwright tests.
+- On exact pre-validation current head `99766e3568b960e12e4e889d2a39afa6f77b6daf`, all five required checks passed: `baseline-checks`, `docker-validation`, `guard`, `AI Review`, and `osv-scan`. AI Review completed without findings; the PR remained an independent, conflict-free prerequisite.
+- The cycle PR set contains only PR #216. PR #214 and feature 049 / PR #215 remain external sequencing dependants and are not feature-050 contributors or part of feature 049's cycle PR set. Their synchronization remains an Orchestrator action only after this prerequisite merges.
+
+No customer-intent gap, accepted known issue, unresolved feedback item, dependency conflict, or scope expansion was found. The later Analyst-validation evidence commit remains subject to Orchestrator's current-head evidence-only guard and fresh required-check verification.
+
+Analyst return count: 0
+
+Analyst validation pass: passed
+Final Analyst validation completed at: 2026-09-17T18:26:01Z
+Analyst validated effective content head: 44189024867c12267b264bcaf0cec8ceadf52a5e
