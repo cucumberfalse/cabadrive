@@ -7,7 +7,7 @@
 - Analyst/Architect handoff: `codex/049-learning-priority-fresh-update` in `/Users/chap/devel/cabadrive-worktrees/049-learning-priority-fresh-update`.
 - Delivery decision: one implementation PR slice continuing this handoff only after explicit Orchestrator assignment and latest-main re-verification.
 - Parallel work: preserve all sibling state. PR #214 `claude/049-nginx-caching-security` owns nginx/Docker/CI and is excluded.
-- Cycle PR set: sole implementation PR [#215](https://github.com/cucumberfalse/cabadrive/pull/215), branch `codex/049-learning-priority-fresh-update`, ready/open, included in final validation. Effective product content head is `55fdbc0fdf889d1dbb6062b5616581c111cc6f42`; PR creation head was `376e8eff13370876131aecee0c347eccdd0f0faa`, followed only by this publication-metadata evidence update.
+- Cycle PR set: sole implementation PR [#215](https://github.com/cucumberfalse/cabadrive/pull/215), branch `codex/049-learning-priority-fresh-update`, ready/open, included in final validation. Effective product content head is `55fdbc0fdf889d1dbb6062b5616581c111cc6f42`; PR publication-evidence head was `559021c7a7b1e4fec6bfed3fde32d4113566984f`, followed only by this Architect disposition/process-memory evidence update.
 - Cleanup: not applicable during implementation; post-completion environment cleanup, if assigned, belongs only to Cleanup Agent.
 
 ## Setup And Test-First
@@ -93,11 +93,22 @@
 
 ## Architect Dispositions
 
-- None at Architect handoff.
+- F049-IA-001 — **not-needed (no product task or ticket)**. The recorded
+  `DeadlineExceeded` occurred while Docker fetched metadata for uncached
+  upstream base images, before a feature image or runtime could be built; it
+  provides no evidence of a feature 049 code, Docker-contract, or architecture
+  defect. The isolated attempt used the assigned project/port and preserved all
+  sibling containers, while the authoritative host preflight, production build,
+  Node suite, and browser matrix passed. This disposition does not waive Docker
+  as a merge-readiness gate: Orchestrator must obtain a green GitHub
+  `docker-validation` check (or equivalent rerun in an environment with registry
+  access) before finalization. A functional failure there must be routed as a
+  follow-up task; recurrence of only the same external registry outage is a
+  documented external blocker, not an implementation task.
 
 ## Cycle PR Set
 
-- Slice 1 / sole implementation PR: purpose `feature 049 complete implementation`; branch `codex/049-learning-priority-fresh-update`; PR [#215](https://github.com/cucumberfalse/cabadrive/pull/215); effective content head `55fdbc0fdf889d1dbb6062b5616581c111cc6f42`; PR creation head `376e8eff13370876131aecee0c347eccdd0f0faa`; status ready/open with only subsequent tasks-only publication evidence; included in final validation: yes.
+- Slice 1 / sole implementation PR: purpose `feature 049 complete implementation`; branch `codex/049-learning-priority-fresh-update`; PR [#215](https://github.com/cucumberfalse/cabadrive/pull/215); effective content head `55fdbc0fdf889d1dbb6062b5616581c111cc6f42`; process-evidence head before this disposition `559021c7a7b1e4fec6bfed3fde32d4113566984f`; status ready/open with only subsequent process-memory evidence; included in final validation: yes.
 
 ## Final Architect Validation (Architect-owned)
 
