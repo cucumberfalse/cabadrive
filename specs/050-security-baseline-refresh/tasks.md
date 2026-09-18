@@ -7,9 +7,9 @@
 - Branch/worktree: `codex/050-security-baseline-refresh` / `/Users/chap/devel/cabadrive-worktrees/050-security-baseline-refresh`
 - Delivery: one independent prerequisite PR
 - Parallel preservation: PR #214 and feature 049 / PR #215 are external sibling cycles and must not be mutated.
-- Effective content head: `44189024867c12267b264bcaf0cec8ceadf52a5e`
+- Previous effective content head before review follow-up: `44189024867c12267b264bcaf0cec8ceadf52a5e`; its Architect and Analyst passes are stale.
 - Current PR head at final Architect validation: `e8b788aa797909e8ff0ffee63af63a736c199d7a` (`tasks.md` process-evidence-only commit relative to the effective content head)
-- Architect return count: `0 / 10`
+- Architect return count: `1 / 10`
 - Analyst return count: `0 / 5`
 
 ## Implementation Tasks
@@ -42,17 +42,19 @@
 
 - [x] **T013 — Review Agent inspection.** Independent Codex review on exact head `e8b788aa797909e8ff0ffee63af63a736c199d7a` reported no findings. The review evidence covers the complete lock/memory diff, all seven thresholds, both brace lines, duplicate absence, unchanged manifest/override, coherent `browserslist` transitive set, frozen-install/ownership/preflight evidence, and sibling-preservation boundary.
 
-- [x] **T014 — Feedback disposition.** No Implementation Agent feedback and no Review Agent finding exist. Architect disposition: `not-needed` — there is no follow-up item to task or ticket.
+- [x] **T014 — Initial feedback disposition.** No Implementation Agent feedback existed. The later native AI Review on head `03a865683f8dfbad63e0dbb8a4db7002960fc2bf` opened four process-memory/finalizer findings; all four are accepted as R050-001 through R050-004 below.
 
-- [x] **T015 — Follow-up implementation if required.** Not needed: review passed without findings and all exact-head gates are green; no dependency or behavior change followed effective content head `44189024867c12267b264bcaf0cec8ceadf52a5e`.
+- [ ] **T015 — Implement accepted review corrections.** Under Implementation Agent authority, preserve the lock graph and edit only assigned feature-050 process memory: apply R050-001 through R050-004, commit/push the correction, and record that correction commit as the new effective content head in a later additive evidence commit. Reply to and resolve each matching review thread only after its correction is present on the PR.
+- [ ] **T015a — Verify parser compatibility.** Run focused finalizer/parser tests if available, `git diff --check`, the repository feature-memory checks, and `pnpm run pr:finalize -- --pr 216 --expected-head <exact-current-head> --feature specs/050-security-baseline-refresh --dry-run`. Record exact output; remaining process-evidence blockers are failures, not accepted limitations.
+- [ ] **T015b — Refresh exact-head review and checks.** Obtain fresh Review Agent/native review evidence and green `baseline-checks`, `docker-validation`, `guard`, `AI Review`, and `osv-scan` for the follow-up head before fresh final validation.
 
 ## Final Validation And Completion Tasks
 
-- [x] **T016 — Freeze cycle evidence.** Independent cycle PR set is PR #216 only. Effective content head is `44189024867c12267b264bcaf0cec8ceadf52a5e`; current head `e8b788aa797909e8ff0ffee63af63a736c199d7a` changes only `tasks.md` publication/check evidence relative to it. Acceptance evidence is complete, exact-head checks are green, review has no findings, PR is conflict-free/mergeable, feedback is fully disposed, and process memory is current. Cleanup remains an Orchestrator completion-time disposition and does not alter validated content.
+- [ ] **T016 — Re-freeze cycle evidence.** PR #216 remains the only cycle PR. After T015, record the new effective content head, exact current head, acceptance/check/review/conflict evidence, all four resolved review threads, feedback disposition, process-memory currency, and cleanup disposition. The earlier freeze at `e8b788aa797909e8ff0ffee63af63a736c199d7a` is historical and cannot support fresh validation.
 
-- [x] **T017 — Final Architect validation.** Passed for effective content head `44189024867c12267b264bcaf0cec8ceadf52a5e` after validating the full cycle PR set, all tasks/dispositions, ordinary-first resolution with no override, complete lock diff, determinism/ownership/preflight evidence, exact-head review/checks, process memory, and requested security outcome. Current PR head `e8b788aa797909e8ff0ffee63af63a736c199d7a` is process-evidence-only relative to the effective content head.
+- [ ] **T017 — Fresh final Architect validation.** The pass for `44189024867c12267b264bcaf0cec8ceadf52a5e` is stale because native review exposed missing machine-readable dispositions/guards after both role validations. After T015–T016 are current, Architect validates the new effective content head and appends a later pass under `## Final Architect Validation Notes`; maximum 10 returns.
 
-- [ ] **T018 — Final Analyst validation after T017.** Analyst validates customer intent only after Architect passes, then writes matching effective-head markers in `feature-request.md`. Gaps return to Architect disposition; maximum 5 returns.
+- [ ] **T018 — Fresh final Analyst validation after T017.** The prior Analyst pass is stale. Analyst validates customer intent only after the fresh Architect pass, then appends matching effective-head markers in `feature-request.md`. Gaps return to Architect disposition; maximum 5 returns.
 
 - [ ] **T019 — Current-head guard and merge.** Orchestrator proves any later commit is validation-evidence-only; rechecks all required checks on current head, review threads, conflicts, evidence, process memory, feedback, validation ordering, and cleanup evidence/refusal. Any dependency/non-evidence change invalidates validation. Merge only when all gates are current and green.
 
@@ -92,14 +94,14 @@ Populate before PR. Name every changed importer/package/dependency snapshot, che
 - `git diff --check`: passed.
 - Changed-file scope: lockfile plus the four feature-050 memory files only.
 - `pnpm run preflight`: passed; `554` Node tests and `154` Playwright tests passed.
-- Exact-head required checks: all five required checks passed on current head `e8b788aa797909e8ff0ffee63af63a736c199d7a`: `baseline-checks`, `docker-validation`, `guard`, `AI Review`, and `osv-scan`.
-- Review: independent Codex review passed with no findings on exact head `e8b788aa797909e8ff0ffee63af63a736c199d7a`.
+- Historical exact-head required checks: all five required checks passed on head `e8b788aa797909e8ff0ffee63af63a736c199d7a`; T015b requires a fresh result after follow-up.
+- Historical review: independent Codex review passed on `e8b788aa797909e8ff0ffee63af63a736c199d7a`; native AI Review later opened R050-001 through R050-004 on `03a865683f8dfbad63e0dbb8a4db7002960fc2bf`, so fresh review is required.
 
 ## Cycle PR Set
 
 | Purpose | Branch | PR | Head SHA | Status | Included in final validation |
 |---|---|---|---|---|---|
-| Security baseline refresh | `codex/050-security-baseline-refresh` | [#216](https://github.com/cucumberfalse/cabadrive/pull/216) | effective content `44189024867c12267b264bcaf0cec8ceadf52a5e`; current evidence head `e8b788aa797909e8ff0ffee63af63a736c199d7a` | open, ready, mergeable/CLEAN; all five current-head checks green; review passed | yes |
+| Security baseline refresh | `codex/050-security-baseline-refresh` | [#216](https://github.com/cucumberfalse/cabadrive/pull/216) | previous effective content `44189024867c12267b264bcaf0cec8ceadf52a5e`; review-finding head `03a865683f8dfbad63e0dbb8a4db7002960fc2bf`; new effective head pending T015 | open; four accepted review threads require correction and fresh exact-head gates | yes, after fresh validation |
 
 PR #214 and PR #215 are sequencing dependencies only and are not part of this cycle PR set.
 
@@ -116,18 +118,35 @@ PR #214 and PR #215 are sequencing dependencies only and are not part of this cy
 
 ## Known Issues
 
-- None accepted. Exact-head checks and review passed; final Analyst validation and Orchestrator current-head/merge guards remain workflow steps, not known issues.
+- None.
 
-## Implementation Agent Feedback And Architect Disposition
+## Implementation Agent Feedback
 
-- Implementation feedback: none. Ordinary compatible resolution met the complete scope without an exception or proposed follow-up.
-- Review feedback: none. Architect disposition: `not-needed`; no follow-up task or ticket exists.
+- No Implementation Agent feedback.
 
-## Final Architect Validation
+## Architect Dispositions
 
-Populate only when Orchestrator explicitly invokes final Architect validation after implementation, review, checks, and feedback disposition are current.
+- **R050-001 / thread r4040207480 — accepted.** The backtick-wrapped effective-head marker is not parsed. T015 must make the reviewed line no longer claim to be the active marker; after the correction commit exists, add a standalone bare `Effective content head: <40-hex-sha>` line for that new correction head. The matching Architect and Analyst markers must use the same bare SHA.
+- **R050-002 / thread r4040207488 — accepted.** T019 remains open until after the fresh Analyst evidence commit. Re-run exact-head checks/review and record a `Current-PR-head read-only guard:` line that explicitly references the new effective content head, identifies the exact checked PR head, confirms the intervening diff is final-validation evidence only, and states mergeability/thread/check status. Then require a no-blocker exact-head finalizer dry run.
+- **R050-003 / thread r4040207495 — accepted.** The empty known-issues section uses the exact recognized marker `None`; explanatory workflow text belongs in tasks/decisions, not in the marker.
+- **R050-004 / thread r4040207504 — accepted.** Use the exact heading `## Implementation Agent Feedback` and the exact recognized marker `No Implementation Agent feedback.` Keep review dispositions in this separate Architect-owned section.
 
-- Architect validation pass: passed
-- Architect return count: 0
-- Final Architect validation completed at: 2026-09-17T18:16:53Z
-- Architect validated effective content head: 44189024867c12267b264bcaf0cec8ceadf52a5e
+## Final Validation Evidence
+
+- Architect validation: stale after accepted review/process-memory corrections; fresh validation required for the new effective content head.
+- Architect return count: 1
+- Analyst validation: stale after accepted review/process-memory corrections; fresh validation required after Architect passes.
+- Analyst return count: 0
+- Final-validation evidence-only commit: the earlier evidence chain is superseded; reassess from the new correction effective content head.
+- Current-PR-head read-only guard: not satisfied for the post-review current head; T019 remains open.
+- Analyst feedback Architect disposition: none.
+- Limit escalation: none.
+
+## Final Architect Validation Notes
+
+The prior pass below is superseded. Populate a later pass only when Orchestrator explicitly re-invokes final Architect validation after T015–T016, review, checks, and feedback dispositions are current.
+
+- Architect validation pass: failed
+- Architect return count: 1
+- Final Architect validation completed at: 2026-09-18T19:05:50Z
+- Architect gaps: R050-001 through R050-004 require implementation and fresh exact-head evidence before revalidation.

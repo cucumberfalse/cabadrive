@@ -57,6 +57,7 @@ Produce the smallest deterministic pnpm lock-graph refresh that removes every re
 8. **FR-8 — ownership proof.** Final `pnpm why` evidence covers all six names and both installed `brace-expansion` major lines, with resolved versions and owning paths.
 9. **FR-9 — diff boundary.** No application, test, content, service-worker, Docker, workflow, or sibling feature changes. Only `pnpm-lock.yaml`, an approved minimal `package.json` exception if necessary, and feature-050 process memory may change.
 10. **FR-10 — gates.** Full `pnpm run preflight` passes locally. GitHub `baseline-checks`, `docker-validation`, `guard`, `AI Review`, and `osv-scan` are green on the exact current PR head.
+11. **FR-11 — machine-readable completion evidence.** Feature memory uses the exact headings and bare-SHA markers consumed by `scripts/finalize-pr.mjs`: `Effective content head: <40-hex-sha>` without Markdown code formatting, `## Implementation Agent Feedback` with a recognized no-feedback marker or fully disposed items, `## Known Issues` with `None`/`No known issues` when empty, and `## Final Validation Evidence` with return counts, limit state, evidence-only scope, and current-head guard evidence. Exact-head checks and review must be re-recorded after the last validation-evidence commit before merge.
 
 ## Acceptance Criteria
 
@@ -68,6 +69,7 @@ Produce the smallest deterministic pnpm lock-graph refresh that removes every re
 - **AC-6:** Required `osv-scan` and all other required checks are green for the exact current PR head; a local scan alone is insufficient.
 - **AC-7:** No out-of-scope or sibling-cycle file appears in the implementation diff.
 - **AC-8:** Review, feedback dispositions, cycle PR set, effective content head, final Architect validation, later final Analyst validation, and current-head guard are recorded before merge.
+- **AC-9:** `pnpm run pr:finalize -- --pr 216 --expected-head <current-head> --feature specs/050-security-baseline-refresh --dry-run` reports no process-evidence blocker on the exact current head before mutating finalization.
 
 ## Negative Scenarios
 
@@ -78,6 +80,7 @@ Produce the smallest deterministic pnpm lock-graph refresh that removes every re
 - Frozen install rewrites the final manifest or lockfile.
 - Local preflight is green but exact-head `osv-scan` is red, missing, pending, or stale.
 - A non-evidence change lands after final validation without restarting validation.
+- A human-readable variant of a required marker or heading is not recognized by the finalizer, or exact-head guard evidence is left pending after the Analyst-validation commit.
 - This cycle mutates feature 049 or PR #214/#215 state.
 
 ## Architectural Decisions

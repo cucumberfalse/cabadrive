@@ -95,12 +95,15 @@ Every implementation/review feedback item is routed by Orchestrator to Architect
 
 ## Final Validation And Merge Sequence
 
-1. Orchestrator records the independent cycle PR set and current PR head, required checks, review threads, conflicts, acceptance evidence, feedback dispositions, and effective content head.
-2. Architect validates the effective content head, full PR slice, tasks/dispositions, process memory, guidance, and security-baseline intent.
-3. Analyst validates customer intent only after Architect passes and records matching effective-content-head evidence in `feature-request.md`.
-4. If a later commit is evidence-only, Orchestrator proves no dependency/non-evidence content changed. Any graph/content change invalidates both validations.
-5. Orchestrator verifies exact-head green `baseline-checks`, `docker-validation`, `guard`, `AI Review`, and `osv-scan`, no unresolved findings/conflicts, current process memory, cleanup evidence/disposition, then finalizes and merges.
-6. Only after merge may Orchestrator synchronize PR #215 and independently PR #214 with updated `main`; those actions are outside this implementation slice.
+1. Implementation Agent applies the accepted R050-001 through R050-004 process-memory corrections in `tasks.md`, preserving the lock graph and every sibling. The commit containing those corrections is a new effective content head because it changes review dispositions/completion evidence after the prior role validations.
+2. In a later evidence-only addition, record that new commit as a bare, standalone `Effective content head: <40-hex-sha>` marker. Do not wrap the SHA in backticks and do not replace/remove the marker after it becomes the effective head.
+3. Orchestrator records the independent cycle PR set and current PR head, required checks, review threads, conflicts, acceptance evidence, feedback dispositions, and the new effective content head. Resolve the four accepted review threads only after the corresponding correction is pushed.
+4. Architect performs fresh final validation for the new effective content head, full PR slice, tasks/dispositions, process memory, guidance, and security-baseline intent. The prior Architect pass for `44189024867c12267b264bcaf0cec8ceadf52a5e` is stale; return count is `1 / 10`.
+5. Analyst performs fresh customer-intent validation only after the new Architect pass and records the same effective-content-head marker in `feature-request.md`. The prior Analyst pass is stale because the review-disposition/process correction followed it.
+6. After the Analyst evidence commit, Orchestrator rechecks all five required checks, review state, mergeability, and the diff from the new effective content head. Implementation Agent records exact-head verification and a parser-compatible `Current-PR-head read-only guard:` line that explicitly references the new effective content head and states that every later change is final-validation evidence only.
+7. Run the finalizer in dry-run mode with PR #216, the exact current head, and `specs/050-security-baseline-refresh`. Any missing marker, unresolved thread, stale check, non-evidence diff, or other blocker returns to the appropriate role; do not merge.
+8. When dry-run and all objective gates pass on the exact current head, Orchestrator performs expected-head protected finalization and merge.
+9. Only after merge may Orchestrator synchronize PR #215 and independently PR #214 with updated `main`; those actions are outside this implementation slice.
 
 ## Risks And Stop Conditions
 
