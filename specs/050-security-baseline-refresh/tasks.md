@@ -45,7 +45,7 @@ Effective content head: e7cd034ff6826a39be50547a2c4f4cacee3a27b1
 
 - [x] **T014 — Initial feedback disposition.** No Implementation Agent feedback existed. The later native AI Review on head `03a865683f8dfbad63e0dbb8a4db7002960fc2bf` opened four process-memory/finalizer findings; all four are accepted as R050-001 through R050-004 below.
 
-- [x] **T015 — Implement accepted review corrections.** Commit `e7cd034ff6826a39be50547a2c4f4cacee3a27b1` applies R050-001 through R050-004 only in Architect-owned `spec.md`, `plan.md`, and `tasks.md`; it is the new effective content head because the corrections change durable review disposition and completion semantics. This later additive evidence commit changes only `tasks.md` to record the bare effective-head marker and exact correction classification. The lockfile, manifest, product, tests, workflows, and sibling cycles are unchanged. Thread replies/resolution follow after parser verification confirms the fixes are present.
+- [ ] **T015 — Implement accepted review corrections.** Under Implementation Agent authority, preserve the lock graph and edit only assigned feature-050 process memory: apply R050-001 through R050-004, commit/push the correction, and record that correction commit as the new effective content head in a later additive evidence commit. Reply to and resolve each matching review thread only after its correction is present on the PR.
 - [ ] **T015a — Verify parser compatibility.** Run focused finalizer/parser tests if available, `git diff --check`, the repository feature-memory checks, and `pnpm run pr:finalize -- --pr 216 --expected-head <exact-current-head> --feature specs/050-security-baseline-refresh --dry-run`. Record exact output; remaining process-evidence blockers are failures, not accepted limitations.
 - [ ] **T015b — Refresh exact-head review and checks.** Obtain fresh Review Agent/native review evidence and green `baseline-checks`, `docker-validation`, `guard`, `AI Review`, and `osv-scan` for the follow-up head before fresh final validation.
 
@@ -102,7 +102,7 @@ Populate before PR. Name every changed importer/package/dependency snapshot, che
 
 | Purpose | Branch | PR | Head SHA | Status | Included in final validation |
 |---|---|---|---|---|---|
-| Security baseline refresh | `codex/050-security-baseline-refresh` | [#216](https://github.com/cucumberfalse/cabadrive/pull/216) | new effective content `e7cd034ff6826a39be50547a2c4f4cacee3a27b1`; later current head is evidence-only from this marker commit onward | open; four accepted corrections pushed; parser verification, thread resolution, and fresh exact-head gates pending | yes, after fresh validation |
+| Security baseline refresh | `codex/050-security-baseline-refresh` | [#216](https://github.com/cucumberfalse/cabadrive/pull/216) | previous effective content `44189024867c12267b264bcaf0cec8ceadf52a5e`; review-finding head `03a865683f8dfbad63e0dbb8a4db7002960fc2bf`; new effective head pending T015 | open; four accepted review threads require correction and fresh exact-head gates | yes, after fresh validation |
 
 PR #214 and PR #215 are sequencing dependencies only and are not part of this cycle PR set.
 
@@ -138,7 +138,9 @@ PR #214 and PR #215 are sequencing dependencies only and are not part of this cy
 - Architect return count: 1
 - Analyst validation: stale after accepted review/process-memory corrections; fresh validation required after Architect passes.
 - Analyst return count: 0
-- Final-validation evidence-only commit: relative to `e7cd034ff6826a39be50547a2c4f4cacee3a27b1`, this later commit adds only `tasks.md` evidence for the bare effective-head marker and correction classification; it changes no dependency graph, product behavior, validation disposition, or acceptance requirement.
+- Final-validation evidence-only commit: the earlier evidence chain is superseded; reassess from the new correction effective content head.
+- Review-correction evidence: commit `e7cd034ff6826a39be50547a2c4f4cacee3a27b1` applies R050-001 through R050-004 only in Architect-owned `spec.md`, `plan.md`, and `tasks.md`; it is the new effective content head because it changes durable review disposition and completion semantics.
+- Post-effective-head classification: every later net change is additive role-owned process evidence in `tasks.md`; the lockfile, manifest, product, tests, workflows, validation disposition, acceptance requirements, and sibling cycles are unchanged.
 - Current-PR-head read-only guard: not satisfied for the post-review current head; T019 remains open.
 - Analyst feedback Architect disposition: none.
 - Limit escalation: none.
