@@ -139,8 +139,7 @@ PR #214 and PR #215 are sequencing dependencies only and are not part of this cy
 - Analyst validation: stale after accepted review/process-memory corrections; fresh validation required after Architect passes.
 - Analyst return count: 0
 - Final-validation evidence-only commit: the earlier evidence chain is superseded; reassess from the new correction effective content head.
-- Review-correction evidence: commit `e7cd034ff6826a39be50547a2c4f4cacee3a27b1` applies R050-001 through R050-004 only in Architect-owned `spec.md`, `plan.md`, and `tasks.md`; it is the new effective content head because it changes durable review disposition and completion semantics.
-- Post-effective-head classification: every later net change is additive role-owned process evidence in `tasks.md`; the lockfile, manifest, product, tests, workflows, validation disposition, acceptance requirements, and sibling cycles are unchanged.
+- Final-validation evidence-only commit: commit `e7cd034ff6826a39be50547a2c4f4cacee3a27b1` applies R050-001 through R050-004 and is the new effective content head; every later net change is additive role-owned process evidence in `tasks.md`, with no lockfile, manifest, product, test, workflow, validation-disposition, acceptance-requirement, or sibling-cycle change.
 - Current-PR-head read-only guard: not satisfied for the post-review current head; T019 remains open.
 - Analyst feedback Architect disposition: none.
 - Limit escalation: none.
