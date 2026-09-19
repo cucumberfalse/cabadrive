@@ -41,9 +41,34 @@
 
 ## Review And Follow-up
 
-- [ ] T021 Review Agent review exact PR head for data loss/migration, strict import/recovery, exact-once streak/cap, StrictMode exposure, comparator precedence/session stability, SW freshness/offline/open-tab safety, feature-048 regression, two-build evidence, docs, PR #214 exclusion, and role/process compliance. Findings are review threads; reviewer edits nothing.
-- [ ] T022 Orchestrator route every review and Implementation Agent feedback item to Architect. Architect records task/ticket/not-needed disposition below; no silent deferral.
+- [x] T021 Review Agent review exact PR head for data loss/migration, strict import/recovery, exact-once streak/cap, StrictMode exposure, comparator precedence/session stability, SW freshness/offline/open-tab safety, feature-048 regression, two-build evidence, docs, PR #214 exclusion, and role/process compliance. Review of product head `390f6c87e1cc16c0ac01a2657732726d771df74b` produced four unique SW/update-manager findings across five open threads and no Progress/Learn findings; reviewer edited nothing.
+- [x] T022 Orchestrator route every review and Implementation Agent feedback item to Architect. Architect disposition accepts all four unique review findings as tasks R049-001..R049-004; `r4037167293` duplicates primary `r4037166445`. Existing Implementation Agent and OSV-gate dispositions remain unchanged.
 - [ ] T023 Implementation Agent complete accepted follow-ups in the assigned PR slice, refresh affected evidence/process memory, and obtain fresh review/check results.
+- [ ] T023a R049-001: make install precache requests explicitly bypass/revalidate
+  the browser HTTP cache while preserving all-or-nothing installation. Add a
+  generated-SW regression and change the A/B server fixture so shell A is
+  cacheable; prove activated B returns shell B on offline reload and a broken B
+  still leaves A usable.
+- [ ] T023b R049-002: make `currentCache.put` best-effort after a successful
+  runtime fetch. Add an executable test where `put` rejects and the original
+  successful response/status/body is still returned; actual fetch rejection
+  must continue to yield `Response.error()`.
+- [ ] T023c R049-003: immediately observe a worker already present in
+  `registration.installing` as well as future `updatefound` workers. Add a test
+  that starts mid-install and publishes `{available: true, applying: false}` on
+  installation completion without invoking the hourly poll.
+- [ ] T023d R049-004: on external `controllerchange`, clear/reinspect stale
+  availability in a non-initiating tab without reloading it; keep exactly-one
+  reload for the initiating tab. Add a multi-tab-equivalent regression and use
+  it to resolve primary thread `r4037166445` plus duplicate `r4037167293`.
+- [ ] T023e Run focused service-worker generation/update-manager tests, the
+  two-build Chromium matrix, full preflight, feature-memory/repository/scope
+  guards, and fresh exact-head Review Agent review. Record results/head and
+  resolve all five threads only after the corresponding evidence is green.
+- [ ] T023f After separate feature 050 merges, synchronize PR #215 with
+  verified updated `origin/main` under Orchestrator assignment, preserve all
+  parallel work, rerun every required check including `osv-scan`, and refresh
+  exact-head review/evidence before T024/T025.
 
 ## Final Validation And Completion
 
@@ -93,6 +118,31 @@
 
 ## Architect Dispositions
 
+- R049-001 / thread `r4037166609` — **accepted task (P1)**. Default
+  `cache.addAll(ASSETS)` can reuse stale same-URL shell bytes from the browser
+  HTTP cache and falsely label them as the new version cache. Implement the
+  explicit fresh/revalidated atomic precache and cacheable-A/offline-B browser
+  regression specified by T023a. This is required by FR-001 and the
+  last-completely-installed-build guarantee; it is not covered by the current
+  fixture because that fixture sends `no-store` for every non-SW response.
+- R049-002 / thread `r4037167276` — **accepted task (P1)**. A failed
+  `currentCache.put` must not discard a valid online response. Separate the
+  best-effort cache-write failure from the fetch failure and add the executable
+  regression in T023b. Do not weaken the offline error distinction from feature
+  048.
+- R049-003 / thread `r4037167285` — **accepted task (P2)**. Attach to
+  `registration.installing` immediately after registration so a tab that joins
+  an update already in progress observes its completion without an hourly
+  delay. Preserve observation of future `updatefound` workers and add T023c.
+- R049-004 / primary thread `r4037166445` — **accepted task (P2)**. An external
+  activation must clear/reinspect stale banner state in non-initiating tabs
+  without forcing their reload, while the initiating tab reloads once. Add the
+  multi-tab-equivalent regression in T023d.
+- Thread `r4037167293` — **not-needed as a separate task (duplicate)**. It
+  describes the same stale non-initiating-tab banner defect, root cause, and
+  required outcome as R049-004/`r4037166445`. Resolve it with the same code and
+  T023d evidence; do not implement a second behavior path.
+
 - F049-IA-001 — **not-needed (no product task or ticket)**. The recorded
   `DeadlineExceeded` occurred while Docker fetched metadata for uncached
   upstream base images, before a feature image or runtime could be built; it
@@ -136,6 +186,14 @@
   part of feature 049. A functional or quality failure after the dependency
   refresh becomes a scoped follow-up; waiving the required OSV gate is not an
   allowed disposition.
+
+- Follow-up ordering — R049-001..R049-004 are feature 049 product fixes and
+  must land in PR #215 before final validation. Feature 050 remains a separate
+  prerequisite PR and must merge first; PR #215 then synchronizes from verified
+  updated `origin/main`, reruns all required gates and exact-head review, and
+  only afterward proceeds to T024/T025. The current head
+  `0fd52a859b7df1e33f71c80038ee1feb53525db3` is therefore not eligible for
+  final Architect validation.
 
 ## Cycle PR Set
 

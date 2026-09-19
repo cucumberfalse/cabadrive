@@ -48,6 +48,36 @@ The implementation slice must re-fetch/verify latest `origin/main` immediately b
    - Run focused tests, full gates, real browser matrix, and isolated Docker smoke without disturbing siblings. Record exact commands/results and candidate SHA in `tasks.md`.
    - Commit/push/open one ready PR only under Implementation Agent assignment. Review/follow-ups/final validations follow repository role boundaries.
 
+7. **Accepted review follow-up implementation**
+   - Replace default-cache install precaching with an atomic request set that
+     explicitly bypasses/revalidates the browser HTTP cache. Update the A/B
+     fixture to cache shell A at the HTTP layer and prove activated B serves B
+     offline; keep failed-install preservation evidence.
+   - Isolate runtime `currentCache.put` failure from the successful network
+     fetch path and add an executable rejection regression that still returns
+     the fetched response.
+   - Make the update manager observe both an already-present
+     `registration.installing` worker and later `updatefound` workers. Add a
+     deterministic state-transition test.
+   - On every `controllerchange`, clear/reinspect availability in
+     non-initiating tabs without reloading them; preserve exactly-one reload for
+     the initiator. Add a multi-manager/shared-registration regression. Treat
+     review thread `r4037167293` as a duplicate of primary thread
+     `r4037166445`, not a fifth task.
+   - Run focused SW/update-manager tests, the A/B Chromium matrix, full
+     preflight, and scope checks. Record the new implementation head and review
+     evidence in `tasks.md`; only then may Orchestrator resolve the five review
+     threads and request fresh exact-head review.
+
+8. **Security prerequisite and final-validation ordering**
+   - Preserve feature 050 as a separate latest-main work cycle and PR. Do not
+     copy its dependency edits into feature 049 manually.
+   - After feature 050 merges, Orchestrator assigns role-appropriate sync of PR
+     #215 to verified updated `origin/main`. The synchronized head must rerun all
+     required checks, including `osv-scan`, and receive fresh review before
+     final Architect validation. Any product/process change after validation
+     makes that validation stale under the existing contract.
+
 ## Key Design Decisions
 
 - **Schema bump to v3:** new canonical durable data is not optional v2 decoration. Explicit v2 migration avoids treating existing payloads as corrupt and makes import/export version semantics honest.

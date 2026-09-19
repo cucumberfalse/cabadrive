@@ -114,10 +114,61 @@ Migration and recovery:
 9. Export -> reset -> import and reset -> undo restore v3 statistics. Invalid/foreign stats reject import atomically; local corrupt stats create conservative recovery, never invented counts.
 10. A lower show count is never displaced by error priority; the current card never jumps after recording its own exposure/answer; clearing search never reshuffles.
 
+## Accepted Review Follow-ups
+
+The exact-head review of PR #215 found four unique service-worker/update-manager
+gaps. All four are accepted as required follow-up work in the existing feature
+049 PR; none is deferred to a later ticket.
+
+- **R049-001 — fresh install precache (P1, thread `r4037166609`).** The install
+  transaction must fetch the versioned precache, including both `/` and
+  `/index.html`, with explicit HTTP-cache bypass/revalidation semantics. A new
+  `cabadrive-static-*` cache must never be populated with a prior build's shell
+  merely because the browser HTTP cache still considers that same-URL response
+  fresh. Preserve atomic install: any required precache fetch failure rejects
+  the install and leaves the previously active worker/cache usable. Extend the
+  generated-SW assertion and change the A/B browser fixture so shell A is
+  genuinely HTTP-cacheable (not globally masked by `no-store`); after B installs
+  and activates, an offline reload must read visible shell B from B's cache.
+- **R049-002 — best-effort runtime cache write (P1, thread `r4037167276`).** For
+  a cache miss followed by a successful network response, failure of
+  `currentCache.put(request, response.clone())` must not replace that response
+  with `Response.error()`. Await/catch the cache write separately, return the
+  valid network response unchanged, and retain `Response.error()` only for an
+  actual fetch failure. Add an executable regression that forces `put()` to
+  reject and proves the response body/status still reach the caller.
+- **R049-003 — already-installing worker observation (P2, thread
+  `r4037167285`).** Immediately after registration, subscribe to the worker
+  already present in `registration.installing`, in addition to future
+  `updatefound` events. Its transition to `installed`/`waiting` must publish
+  update availability without waiting for the hourly poll. The manager test
+  must start with a non-null installing worker, emit its state transition, and
+  prove the banner state becomes available.
+- **R049-004 — stale banner in non-initiating tabs (P2, primary thread
+  `r4037166445`; duplicate thread `r4037167293`).** On `controllerchange`, a tab
+  that did not call `apply()` must clear/reinspect stale availability while not
+  reloading. The initiating tab must still reload exactly once and retain its
+  loop guard. Add a two-manager/shared-registration or equivalent multi-tab
+  regression proving only the initiator reloads, the other tab's banner clears,
+  and its former `Обновить` control cannot remain as a dead no-op. Thread
+  `r4037167293` is a duplicate of this same accepted task and receives no
+  separate implementation.
+
+These fixes preserve the existing decisions: no automatic activation, no
+forced reload of non-initiating tabs, no deletion of retained Cabadrive caches,
+no change to localStorage, and no nginx/Docker/CI scope expansion.
+
 ## Review And Completion Requirements
 
 - Implementation starts only after Orchestrator explicitly assigns this complete feature memory and the single PR slice. Test-first failures must be recorded before fixes.
 - Review Agent checks schema/migration loss, exact-once derived updates, StrictMode exposure, pure comparator, session stability, SW last-known-good/open-tab behavior, feature-048 invariants, scope exclusion of PR #214, docs, and workflow boundaries.
 - Every Implementation Agent feedback item receives Architect task/ticket/not-needed disposition. Normal post-intake requirement questions are not reopened; only documented blocker exceptions return to Orchestrator.
+- The four accepted review follow-ups R049-001 through R049-004 and their
+  regression tests must be implemented before review threads are resolved or
+  final validation begins. The duplicate thread is resolved against R049-004.
+- Feature 050 is a separate dependency-security prerequisite, not part of this
+  cycle PR set. It must merge first; then PR #215 must be synchronized with the
+  verified updated `origin/main`, receive a new exact head, and rerun all
+  required checks and review before final Architect validation.
 - Orchestrator records the complete cycle PR set and invokes final Architect validation before final Analyst validation. Both validate the same effective content head; later non-evidence changes make validation stale. Architect return limit is 10 and Analyst return limit is 5.
 - Merge still requires green configured checks, no blocking review threads/conflicts, acceptance evidence, current process memory, feedback dispositions, current-head guard, and no exceptional human blocker.
