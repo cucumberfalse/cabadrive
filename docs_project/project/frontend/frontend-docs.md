@@ -18,7 +18,7 @@ Implemented stack:
 - bundled complete RU 4-wheel GCBA manual surface backed by local translation, layout, navigation, and page-faithful visual manifests
 - interactive Russian `Руководство` document surface for source-`Índice` manual fragments, with conversion rules in [`manual-conversion-guidelines.md`](./manual-conversion-guidelines.md)
 - validated four-level learner difficulty metadata for every bundled question and topic material
-- native service worker generated after production build, with network-first online navigation, last-ready offline fallback, retained version caches for old open tabs, and an explicit update banner/lifecycle
+- native service worker generated after production build, with revalidated atomic precaching, network-first online navigation, last-ready offline fallback, retained version caches for old open tabs, and an explicit update banner/lifecycle; tabs opened mid-install observe the active installation, and activation clears stale banners in other tabs without forcing them to reload
 - Node test runner + Playwright for testing
 
 ## Runtime Contract

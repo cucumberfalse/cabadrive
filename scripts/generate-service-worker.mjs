@@ -41,7 +41,8 @@ const CACHE_NAME = CACHE_PREFIX + "${timestamp}";
 const ASSETS = ${JSON.stringify(assets, null, 2)};
 
 self.addEventListener("install", (event) => {
-  event.waitUntil(caches.open(CACHE_NAME).then((cache) => cache.addAll(ASSETS)));
+  const requests = ASSETS.map((asset) => new Request(asset, { cache: "reload" }));
+  event.waitUntil(caches.open(CACHE_NAME).then((cache) => cache.addAll(requests)));
 });
 
 self.addEventListener("activate", (event) => {
@@ -87,13 +88,20 @@ self.addEventListener("fetch", (event) => {
       if (current) return current;
       const retained = await matchRetainedCabadriveCache(event.request);
       if (retained) return retained;
+      let response;
       try {
-        const response = await fetch(event.request);
-        if (response.ok) await currentCache.put(event.request, response.clone());
-        return response;
+        response = await fetch(event.request);
       } catch {
         return Response.error();
       }
+      if (response.ok) {
+        try {
+          await currentCache.put(event.request, response.clone());
+        } catch {
+          // A cache quota/write failure must not hide a valid network response.
+        }
+      }
+      return response;
     })(),
   );
 });

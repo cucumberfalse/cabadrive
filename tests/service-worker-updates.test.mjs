@@ -94,3 +94,65 @@ test("update manager dismisses the same waiting worker and keeps failures non-fa
   manager.dismiss();
   assert.deepEqual(manager.getSnapshot(), { available: false, applying: false });
 });
+
+test("update manager observes an installation already in progress at startup", async () => {
+  const container = new Emitter();
+  const installing = Object.assign(new Emitter(), { state: "installing" });
+  const registration = Object.assign(new Emitter(), {
+    waiting: null,
+    installing,
+    update: async () => undefined,
+  });
+  container.register = async () => registration;
+  const manager = createServiceWorkerUpdateManager(
+    container,
+    () => {},
+    () => {},
+  );
+
+  await manager.start();
+  const waiting = { postMessage() {} };
+  registration.waiting = waiting;
+  installing.state = "installed";
+  installing.emit("statechange");
+
+  assert.deepEqual(manager.getSnapshot(), { available: true, applying: false });
+});
+
+test("controller change reloads only the initiator and clears the other tab banner", async () => {
+  const container = new Emitter();
+  const waiting = { postMessage() {} };
+  const registration = Object.assign(new Emitter(), {
+    waiting,
+    installing: null,
+    update: async () => undefined,
+  });
+  container.register = async () => registration;
+  let initiatorReloads = 0;
+  let observerReloads = 0;
+  const initiator = createServiceWorkerUpdateManager(
+    container,
+    () => {
+      initiatorReloads += 1;
+    },
+    () => {},
+  );
+  const observer = createServiceWorkerUpdateManager(
+    container,
+    () => {
+      observerReloads += 1;
+    },
+    () => {},
+  );
+
+  await Promise.all([initiator.start(), observer.start()]);
+  assert.equal(observer.getSnapshot().available, true);
+  initiator.apply();
+  registration.waiting = null;
+  container.emit("controllerchange");
+  container.emit("controllerchange");
+
+  assert.equal(initiatorReloads, 1);
+  assert.equal(observerReloads, 0);
+  assert.deepEqual(observer.getSnapshot(), { available: false, applying: false });
+});

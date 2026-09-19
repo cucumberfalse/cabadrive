@@ -33,9 +33,11 @@ export function createServiceWorkerUpdateManager(
   const observeInstalling = () => {
     const installing = registration?.installing;
     if (!installing) return;
-    installing.addEventListener("statechange", () => {
+    const inspectInstalled = () => {
       if (installing.state === "installed") inspectWaiting();
-    });
+    };
+    installing.addEventListener("statechange", inspectInstalled);
+    inspectInstalled();
   };
   const check = async () => {
     try {
@@ -56,13 +58,20 @@ export function createServiceWorkerUpdateManager(
       if (started) return;
       started = true;
       serviceWorker.addEventListener("controllerchange", () => {
-        if (!reloadOnControllerChange || reloadHandled) return;
-        reloadHandled = true;
-        reload();
+        if (reloadOnControllerChange) {
+          if (reloadHandled) return;
+          reloadHandled = true;
+          reload();
+          return;
+        }
+        dismissedWorker = null;
+        publish(initialState);
+        inspectWaiting();
       });
       try {
         registration = await serviceWorker.register("/sw.js", { updateViaCache: "none" });
         registration.addEventListener("updatefound", observeInstalling);
+        observeInstalling();
         inspectWaiting();
         await check();
         scheduleInterval(() => void check(), 60 * 60 * 1000);

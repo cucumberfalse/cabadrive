@@ -73,7 +73,7 @@ test.beforeAll(async () => {
       if (!statSync(path).isFile()) throw new Error("not a file");
       response.writeHead(200, {
         "content-type": contentType(path),
-        "cache-control": pathname === "/sw.js" ? "no-cache" : "no-store",
+        "cache-control": pathname === "/sw.js" ? "no-cache" : "public, max-age=3600",
       });
       response.end(readFileSync(path));
     } catch {

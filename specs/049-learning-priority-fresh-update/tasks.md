@@ -44,20 +44,20 @@
 - [x] T021 Review Agent review exact PR head for data loss/migration, strict import/recovery, exact-once streak/cap, StrictMode exposure, comparator precedence/session stability, SW freshness/offline/open-tab safety, feature-048 regression, two-build evidence, docs, PR #214 exclusion, and role/process compliance. Review of product head `390f6c87e1cc16c0ac01a2657732726d771df74b` produced four unique SW/update-manager findings across five open threads and no Progress/Learn findings; reviewer edited nothing.
 - [x] T022 Orchestrator route every review and Implementation Agent feedback item to Architect. Architect disposition accepts all four unique review findings as tasks R049-001..R049-004; `r4037167293` duplicates primary `r4037166445`. Existing Implementation Agent and OSV-gate dispositions remain unchanged.
 - [ ] T023 Implementation Agent complete accepted follow-ups in the assigned PR slice, refresh affected evidence/process memory, and obtain fresh review/check results.
-- [ ] T023a R049-001: make install precache requests explicitly bypass/revalidate
+- [x] T023a R049-001: make install precache requests explicitly bypass/revalidate
   the browser HTTP cache while preserving all-or-nothing installation. Add a
   generated-SW regression and change the A/B server fixture so shell A is
   cacheable; prove activated B returns shell B on offline reload and a broken B
   still leaves A usable.
-- [ ] T023b R049-002: make `currentCache.put` best-effort after a successful
+- [x] T023b R049-002: make `currentCache.put` best-effort after a successful
   runtime fetch. Add an executable test where `put` rejects and the original
   successful response/status/body is still returned; actual fetch rejection
   must continue to yield `Response.error()`.
-- [ ] T023c R049-003: immediately observe a worker already present in
+- [x] T023c R049-003: immediately observe a worker already present in
   `registration.installing` as well as future `updatefound` workers. Add a test
   that starts mid-install and publishes `{available: true, applying: false}` on
   installation completion without invoking the hourly poll.
-- [ ] T023d R049-004: on external `controllerchange`, clear/reinspect stale
+- [x] T023d R049-004: on external `controllerchange`, clear/reinspect stale
   availability in a non-initiating tab without reloading it; keep exactly-one
   reload for the initiating tab. Add a multi-tab-equivalent regression and use
   it to resolve primary thread `r4037166445` plus duplicate `r4037167293`.
@@ -65,7 +65,7 @@
   two-build Chromium matrix, full preflight, feature-memory/repository/scope
   guards, and fresh exact-head Review Agent review. Record results/head and
   resolve all five threads only after the corresponding evidence is green.
-- [ ] T023f After separate feature 050 merges, synchronize PR #215 with
+- [x] T023f After separate feature 050 merges, synchronize PR #215 with
   verified updated `origin/main` under Orchestrator assignment, preserve all
   parallel work, rerun every required check including `osv-scan`, and refresh
   exact-head review/evidence before T024/T025.
@@ -87,6 +87,16 @@
 - D049-005: Learn order is a mount snapshot. Exposure/answers affect only the next Learn mount.
 - D049-006: navigation is network-first and never overwrites an old build's installed shell; old Cabadrive caches are retained for active-tab chunks. Bounded reuse/cleanup remains later ТЗ-13 work.
 - D049-007: no Workbox/new runtime dependency and no nginx/Docker/CI edits.
+- D049-008: install keeps Cache API `addAll` as the atomic transaction, but
+  supplies `Request` objects with `cache: "reload"`; this revalidates every
+  same-URL build asset without exposing a partially fetched build as ready.
+- D049-009: a successful runtime fetch and its optional cache write have
+  separate failure boundaries. Cache quota/write failure is ignored after the
+  response has been obtained; only the network fetch failure produces
+  `Response.error()`.
+- D049-010: `controllerchange` reload ownership stays local to the manager that
+  invoked `apply()`. Every other manager clears and reinspects its waiting state
+  without reloading, preventing a dead cross-tab banner.
 
 ## Dead Ends And Known Issues
 
@@ -111,6 +121,32 @@
 - Docker evidence: project/port and exact registry limitation are recorded under Known Issues and Implementation Agent Feedback. No sibling runtime was stopped or modified.
 - Candidate/full-preflight/head SHA evidence: effective implementation content commit `55fdbc0fdf889d1dbb6062b5616581c111cc6f42`; the authoritative final preflight result recorded above validates this content state. This later tasks-only entry is process evidence and does not alter product behavior.
 - Publication evidence (2026-09-17): pushed `codex/049-learning-priority-fresh-update` and opened ready PR [#215](https://github.com/cucumberfalse/cabadrive/pull/215) against `main`; GitHub reported open/non-draft creation head `376e8eff13370876131aecee0c347eccdd0f0faa`. No merge was performed.
+- Review-follow-up sync evidence (2026-09-19): Architect disposition was
+  committed as `044e3b0a3480ca258b1da22ee9be188ab00cff4d`, then verified
+  `origin/main` `2a92bcfcb7638d1094f33b28e4c2932fb2e4121e` (merged feature
+  050) was merged non-destructively without rebase as
+  `1f5ea3cef936d2be9b9179842fd897fa76ed93bd`; no conflict or sibling mutation
+  occurred.
+- Review-follow-up test-first evidence (2026-09-19): before the fixes,
+  `pnpm exec node --test tests/service-worker-generation.test.mjs
+  tests/service-worker-updates.test.mjs` failed the new explicit-revalidation,
+  cache-write-rejection, already-installing-worker, and cross-tab banner
+  assertions while all pre-existing focused cases passed. After implementation,
+  the focused suite passed `9/9`, including distinct cache-write and true
+  network-failure outcomes.
+- Review-follow-up browser/build evidence (2026-09-19): `pnpm run
+  format:check`, `pnpm run quality:fast`, and `pnpm run build` passed; the
+  cacheable-shell A/B fixture (`public, max-age=3600`) passed Chromium `2/2`,
+  proving online B publication and offline B fallback, failed B preservation of
+  A, later retry, retained A-only chunk, persisted progress, and exactly-one
+  initiating-tab reload.
+- Review-follow-up full preflight evidence (2026-09-19): authorized `pnpm run
+  preflight` exited `0`. Feature-memory and repository gates, all content
+  validation, typecheck, lint, format, negative quality contracts, production
+  build, and the complete test matrix passed: Node `569/569`; Playwright `158`
+  passed with the two intentional mobile skips for the single-run A/B harness.
+  `git diff --check` also passed. Fresh GitHub checks, exact-head review, and
+  thread resolution remain Orchestrator-owned gates under T023e.
 
 ## Implementation Agent Feedback
 

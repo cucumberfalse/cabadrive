@@ -3,6 +3,7 @@ import { mkdtempSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "nod
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { test } from "node:test";
+import vm from "node:vm";
 import {
   collectInstallPrecacheAssets,
   generateServiceWorker,
@@ -133,7 +134,8 @@ test("generated service worker keeps runtime GET caching for the manual chunk", 
       true,
     );
     assert.equal(body, generated);
-    assert.match(generated, /cache\.addAll\(ASSETS\)/);
+    assert.match(generated, /new Request\(asset, \{ cache: "reload" \}\)/);
+    assert.match(generated, /cache\.addAll\(requests\)/);
     assert.match(generated, /fetch\(event\.request\)/);
     assert.match(generated, /currentCache\.put\(event\.request, response\.clone\(\)\)/);
     assert.doesNotMatch(generated, /\/assets\/manual4Ruedas-def456\.js/);
@@ -146,6 +148,84 @@ test("generated service worker keeps runtime GET caching for the manual chunk", 
       /\/content\/assets\/manuals\/gcba-manual-vehiculo-4-ruedas-2023\/pages\/page-200\.jpg/,
     );
   });
+});
+
+test("runtime cache write failure does not discard a successful network response", async () => {
+  let body;
+  withTempDist((dist) => {
+    body = generateServiceWorker({ dist, timestamp: 12345 }).body;
+  });
+  const handlers = new Map();
+  const networkResponse = new Response("fresh runtime asset", { status: 200 });
+  const context = vm.createContext({
+    Request,
+    Response,
+    fetch: async () => networkResponse,
+    caches: {
+      keys: async () => [],
+      open: async () => ({
+        match: async () => undefined,
+        put: async () => {
+          throw new Error("quota exceeded");
+        },
+      }),
+    },
+    self: {
+      addEventListener: (name, handler) => handlers.set(name, handler),
+      clients: { claim: async () => undefined },
+      skipWaiting: () => undefined,
+    },
+  });
+  vm.runInContext(body, context);
+
+  let responsePromise;
+  handlers.get("fetch")({
+    request: new Request("https://example.test/runtime.js"),
+    respondWith: (promise) => {
+      responsePromise = promise;
+    },
+  });
+  const response = await responsePromise;
+
+  assert.equal(response.status, 200);
+  assert.equal(await response.text(), "fresh runtime asset");
+});
+
+test("runtime network failure still returns an error response", async () => {
+  let body;
+  withTempDist((dist) => {
+    body = generateServiceWorker({ dist, timestamp: 12345 }).body;
+  });
+  const handlers = new Map();
+  const context = vm.createContext({
+    Request,
+    Response,
+    fetch: async () => {
+      throw new Error("offline");
+    },
+    caches: {
+      keys: async () => [],
+      open: async () => ({ match: async () => undefined, put: async () => undefined }),
+    },
+    self: {
+      addEventListener: (name, handler) => handlers.set(name, handler),
+      clients: { claim: async () => undefined },
+      skipWaiting: () => undefined,
+    },
+  });
+  vm.runInContext(body, context);
+
+  let responsePromise;
+  handlers.get("fetch")({
+    request: new Request("https://example.test/runtime.js"),
+    respondWith: (promise) => {
+      responsePromise = promise;
+    },
+  });
+  const response = await responsePromise;
+
+  assert.equal(response.type, "error");
+  assert.equal(response.status, 0);
 });
 
 test("generated service worker fetch handler has correct offline fallbacks", () => {
