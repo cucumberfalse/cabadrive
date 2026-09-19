@@ -222,3 +222,10 @@ Analyst return count: 0
 Analyst validation pass: passed
 Final Analyst validation completed at: 2026-09-19T03:24:21Z
 Analyst validated effective content head: eaf6ab20713a9b723b1094c6966a9d1f5a3cd126
+Analyst validation evidence: effective content head 2dcd03788eb28d977ce7c631b9f467751c051c65 contains the minimal lockfile-only security refresh, all terminal process corrections, and the prior Analyst narrative; current head 1ac365d09c0f8ebda6530ee64d146812b075e261 adds only parser-recognized effective-head and Architect validation evidence.
+Analyst validation evidence: all five required checks passed on exact reviewed head 17d7888e95f1173ec099ebb91a5da22a16b620ad, independent and native review passed with no findings, all ten review threads are resolved, and the manifest and lock hashes remain unchanged.
+Customer intent check: passed; all seven vulnerable version lines are fixed without manifest, product, sibling, override, security-policy, or unrelated dependency expansion, and PR #216 remains the sole independent prerequisite cycle.
+Analyst validation pass: passed
+Analyst return count: 0
+Final Analyst validation completed at: 2026-09-19T04:02:46Z
+Analyst validated effective content head: 2dcd03788eb28d977ce7c631b9f467751c051c65
