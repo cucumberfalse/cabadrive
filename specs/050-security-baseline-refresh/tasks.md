@@ -116,6 +116,8 @@ Populate before PR. Name every changed importer/package/dependency snapshot, che
 
 - PR #216 cycle update: branch `codex/050-security-baseline-refresh`; effective head `eaf6ab20713a9b723b1094c6966a9d1f5a3cd126`; current head `6dbc295300615c2a50cc9de006297ae39a26481b`; status open, non-draft, mergeable/CLEAN, five required checks passed, independent/native review passed, seven threads resolved/outdated; included in final validation: yes.
 
+- PR #216 cycle update: branch `codex/050-security-baseline-refresh`; effective head `2dcd03788eb28d977ce7c631b9f467751c051c65`; current head SHA `077af6e1b4344b4645a058b8b5377455d44bab94`; status open with `osv-scan`, `guard`, and `docker-validation` passed while `baseline-checks` and `AI Review` are pending, R050-010 accepted, and all earlier threads resolved/outdated; included in final validation: yes, after fresh Architect then Analyst validation.
+
 PR #214 and PR #215 are sequencing dependencies only and are not part of this cycle PR set.
 
 ## Decisions
@@ -193,3 +195,9 @@ The prior pass below is superseded. Populate a later pass only when Orchestrator
 - Architect return count: 4
 - Final Architect validation completed at: 2026-09-19T04:00:22Z
 - Architect validated effective content head: 2dcd03788eb28d977ce7c631b9f467751c051c65
+- Architect disposition: R050-010 / thread r4052151575 is accepted; the additive Cycle PR Set evidence now names PR #216, branch codex/050-security-baseline-refresh, effective head 2dcd03788eb28d977ce7c631b9f467751c051c65, current head 077af6e1b4344b4645a058b8b5377455d44bab94, current status, and final-validation inclusion without changing the effective content head.
+- Architect validation evidence: the Architect pass completed at 2026-09-19T04:00:22Z and Analyst pass completed at 2026-09-19T04:02:46Z are superseded for merge readiness by R050-010; after this additive correction is pushed, checks/review and fresh Architect then Analyst validation must run again for effective head 2dcd03788eb28d977ce7c631b9f467751c051c65.
+- Architect validation pass: failed
+- Architect return count: 5
+- Final Architect validation completed at: 2026-09-19T04:05:40Z
+- Architect gaps: push and resolve R050-010, obtain fresh exact-head checks/review, then repeat append-only Architect and Analyst validation before the current-head guard and finalizer.
