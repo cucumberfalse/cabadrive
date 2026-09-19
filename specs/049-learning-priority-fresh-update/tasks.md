@@ -7,7 +7,7 @@
 - Analyst/Architect handoff: `codex/049-learning-priority-fresh-update` in `/Users/chap/devel/cabadrive-worktrees/049-learning-priority-fresh-update`.
 - Delivery decision: one implementation PR slice continuing this handoff only after explicit Orchestrator assignment and latest-main re-verification.
 - Parallel work: preserve all sibling state. PR #214 `claude/049-nginx-caching-security` owns nginx/Docker/CI and is excluded.
-- Cycle PR set: sole implementation PR [#215](https://github.com/cucumberfalse/cabadrive/pull/215), branch `codex/049-learning-priority-fresh-update`, ready/open, included in final validation. Effective product content head is `55fdbc0fdf889d1dbb6062b5616581c111cc6f42`; PR publication-evidence head was `559021c7a7b1e4fec6bfed3fde32d4113566984f`, followed only by this Architect disposition/process-memory evidence update.
+- Cycle PR set: sole implementation PR [#215](https://github.com/cucumberfalse/cabadrive/pull/215), branch `codex/049-learning-priority-fresh-update`, ready/open, included in final validation. Current PR head before this Architect disposition is `ec2f7c8f939ac40246c3d5c05cc19766e5f00c67`; effective product content head is `602f80beb98bc53d354d71303a39c147c438827b`. R049-005 remains open, so neither SHA is a final-validation candidate.
 - Cleanup: not applicable during implementation; post-completion environment cleanup, if assigned, belongs only to Cleanup Agent.
 
 ## Setup And Test-First
@@ -64,11 +64,26 @@
 - [ ] T023e Run focused service-worker generation/update-manager tests, the
   two-build Chromium matrix, full preflight, feature-memory/repository/scope
   guards, and fresh exact-head Review Agent review. Record results/head and
-  resolve all five threads only after the corresponding evidence is green.
+  resolve the corresponding original review threads only after their evidence
+  is green.
 - [x] T023f After separate feature 050 merges, synchronize PR #215 with
   verified updated `origin/main` under Orchestrator assignment, preserve all
   parallel work, rerun every required check including `osv-scan`, and refresh
   exact-head review/evidence before T024/T025.
+- [ ] T023g R049-005 / thread `r4039940004`: test-first replace implicit-locale
+  learning-stat ID ordering with one shared locale-independent ordinal
+  comparator used by serialization and strict validation. Add contrasting-locale
+  non-ASCII unknown-ID fixtures proving byte-stable `z` before `ä`, lossless
+  export/import, and atomic rejection of reverse/noncanonical order. Preserve
+  storage key/version/schema plus v1/v2 migration/backup, local recovery,
+  reset/undo, unknown retention, cap/quota, and pruning behavior.
+- [ ] T023h Re-run the focused progress-store suite, typecheck, lint/format,
+  repository/feature-memory/scope guards, full preflight, every required GitHub
+  check, and fresh exact-head Review Agent review after T023g. Record the new
+  effective content head and evidence before resolving `r4039940004`. Resolve
+  `r4053153086` without a new product task as an already-fixed duplicate of
+  R049-001, citing current `cache: "reload"`, atomic `addAll`, generated-worker,
+  and cacheable-A/offline-B/failed-B evidence.
 
 ## Final Validation And Completion
 
@@ -97,6 +112,11 @@
 - D049-010: `controllerchange` reload ownership stays local to the manager that
   invoked `apply()`. Every other manager clears and reinspects its waiting state
   without reloading, preventing a dead cross-tab banner.
+- D049-011: persisted learning-stat IDs use one ordinal comparator based on
+  direct string relational comparison for both canonical serialization and
+  strict validation. Locale/ICU collation is never part of the storage contract;
+  the key, v3 schema, migration, backup, recovery, and pruning contracts remain
+  unchanged.
 
 ## Dead Ends And Known Issues
 
@@ -182,6 +202,21 @@
   describes the same stale non-initiating-tab banner defect, root cause, and
   required outcome as R049-004/`r4037166445`. Resolve it with the same code and
   T023d evidence; do not implement a second behavior path.
+- R049-005 / thread `r4039940004` — **accepted task (P2)**. Implicit-locale
+  `localeCompare()` can serialize valid unknown IDs in one order and reject that
+  same payload under another locale. Implement the single ordinal comparator
+  and the cross-locale, non-ASCII, negative-order, and compatibility evidence in
+  T023g/T023h. This is required for canonical export/import and unknown-ID
+  retention; it does not change the storage schema or Learn-session priority
+  comparator.
+- Thread `r4053153086` — **not-needed as a separate task
+  (duplicate/already-fixed R049-001)**. The comment targets old commit
+  `044e3b018df382b710bd1507ea13a2a9f4e1e18f`; effective product head
+  `602f80beb98bc53d354d71303a39c147c438827b` already uses
+  `new Request(asset, { cache: "reload" })` with atomic `cache.addAll(requests)`
+  and records generated-worker plus cacheable-A/offline-B and failed-install
+  regressions. Use that evidence to resolve the duplicate; do not add another
+  service-worker task.
 
 - F049-IA-001 — **not-needed (no product task or ticket)**. The recorded
   `DeadlineExceeded` occurred while Docker fetched metadata for uncached
@@ -234,16 +269,22 @@
   only afterward proceeds to T024/T025. The current head
   `0fd52a859b7df1e33f71c80038ee1feb53525db3` is therefore not eligible for
   final Architect validation.
+- Subsequent-review ordering — R049-005 is accepted and remains open. Current PR
+  head `ec2f7c8f939ac40246c3d5c05cc19766e5f00c67` is **not ready for final
+  Architect validation**. Implementation Agent must complete T023g, then
+  Orchestrator must obtain T023h evidence and a fresh exact-head review before
+  T024/T025. `r4053153086` adds no implementation work because it duplicates the
+  already-completed R049-001 at the current product head.
 
 ## Cycle PR Set
 
-- Slice 1 / sole implementation PR: purpose `feature 049 complete implementation`; branch `codex/049-learning-priority-fresh-update`; PR [#215](https://github.com/cucumberfalse/cabadrive/pull/215); effective content head `55fdbc0fdf889d1dbb6062b5616581c111cc6f42`; process-evidence head before this disposition `559021c7a7b1e4fec6bfed3fde32d4113566984f`; status ready/open with only subsequent process-memory evidence; included in final validation: yes.
+- Slice 1 / sole implementation PR: purpose `feature 049 complete implementation`; branch `codex/049-learning-priority-fresh-update`; PR [#215](https://github.com/cucumberfalse/cabadrive/pull/215); effective product content head before R049-005 `602f80beb98bc53d354d71303a39c147c438827b`; current PR head before this disposition `ec2f7c8f939ac40246c3d5c05cc19766e5f00c67`; status ready/open with accepted implementation follow-up R049-005 pending; included in final validation: yes, only after a new implementation head, checks, and exact-head review.
 - External prerequisite (F049-GATE-001): dependency-security baseline PR and
-  feature folder are pending Orchestrator creation from latest verified main.
-  That PR belongs to its own work cycle and is **not** included in feature 049's
-  cycle PR set. It must merge before PR #215 is synchronized and rechecked; the
-  synchronized PR #215 head, not the pre-prerequisite head, will be the candidate
-  effective content head for feature 049 final validation.
+  feature 050 PR #216 merged separately to `main` as
+  `2a92bcfcb7638d1094f33b28e4c2932fb2e4121e` and is **not** included in feature
+  049's cycle PR set. PR #215 already synchronized that verified main through
+  merge commit `1f5ea3cef936d2be9b9179842fd897fa76ed93bd`; R049-005 and the
+  subsequent exact-head gates are the remaining pre-validation work.
 
 ## Final Architect Validation (Architect-owned)
 

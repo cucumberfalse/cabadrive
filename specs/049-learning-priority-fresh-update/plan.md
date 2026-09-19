@@ -78,6 +78,27 @@ The implementation slice must re-fetch/verify latest `origin/main` immediately b
      final Architect validation. Any product/process change after validation
      makes that validation stale under the existing contract.
 
+9. **Subsequent exact-head review follow-up**
+   - Add a failing progress-store regression proving that canonical v3
+     `learningQuestionStats` order cannot change when export and import run under
+     contrasting locale-collation behavior. Include non-ASCII valid unknown IDs
+     such as `z` and `ä`, an ordinal byte-order assertion, a lossless round trip,
+     and atomic rejection of the reverse/noncanonical order.
+   - Introduce one narrow locale-independent ordinal string comparator using
+     direct relational comparison and reuse it in both learning-stat sorting and
+     strict sorted-order validation. Do not use an implicit or explicit
+     human-language collator for persisted identifiers.
+   - Keep `cabadrive.progress.v1`, payload version 3, all fields, backups,
+     migration and recovery policy unchanged. Re-run the complete focused
+     progress-store suite so existing ASCII v3, v1/v2 migration/backup,
+     corrupt-local recovery, unknown-ID retention, reset/undo, cap/quota, and
+     pruning cases prove compatibility.
+   - Run typecheck, lint/format and repository guards, full preflight, all
+     configured GitHub checks, and a fresh exact-head Review Agent pass. Only
+     after green evidence may Orchestrator resolve `r4039940004` and the
+     already-fixed R049-001 duplicate `r4053153086`, then return to final
+     validation.
+
 ## Key Design Decisions
 
 - **Schema bump to v3:** new canonical durable data is not optional v2 decoration. Explicit v2 migration avoids treating existing payloads as corrupt and makes import/export version semantics honest.

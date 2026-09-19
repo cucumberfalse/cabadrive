@@ -54,7 +54,12 @@ type ProgressV3 = {
 
 Invariants:
 
-- Statistics are unique by non-empty `questionId` and serialize in ascending `questionId` order. `showCount` is a non-negative safe integer.
+- Statistics are unique by non-empty `questionId` and serialize in ascending,
+  locale-independent ordinal `questionId` order. One shared comparator based on
+  direct string relational comparison (`<` / `>`, returning `-1 / 0 / 1`) is
+  used by both serialization and strict validation; ambient locale, ICU data,
+  and `String.prototype.localeCompare` must not affect the persisted bytes or
+  whether a payload is accepted. `showCount` is a non-negative safe integer.
 - `activeMistakePriority=true` permits streak `0..3`; an inactive recovered record may carry saturated streak `4`; an inactive never-wrong/exposure-only record carries streak `0`.
 - Missing current-bank records mean `{showCount: 0, activeMistakePriority: false}`.
 - Valid unknown question IDs are retained unchanged across load/export/import/content updates and ignored by current-bank ordering. Only reset removes them; there is no opportunistic garbage collection.
@@ -70,6 +75,11 @@ Migration and recovery:
 - A successfully migrated local payload is persisted as v3 so the next load is idempotent. Strict import accepts canonical v3 and supported strict v2; v2 import migrates deterministically. Invalid import is atomic. Invalid local v3 learning statistics are not trusted: discard that statistical set, reconstruct conservative mistake state from valid pruned/retained history, use zero show counts, and emit recovery evidence.
 - Quota trimming folds answer prefixes only; it never replays them into `learningQuestionStats`. Thus repeated prune/retry cannot double-count streak transitions. If statistics themselves cannot persist, existing memory-preserving recovery semantics apply.
 - Reset clears v3 statistics and v2 backup along with current progress keys. Existing session undo uses canonical v3 export/import and therefore restores them.
+- The ordinal-order correction does not change the storage key, payload version,
+  fields, v1/v2 migration, backup, reset, recovery, or pruning behavior. Existing
+  canonical ASCII question IDs retain the same byte order. Valid non-ASCII
+  unknown IDs remain retained, but canonical v3 input must place them in the
+  shared ordinal order.
 
 ## Learn Session And Exposure Contract
 
@@ -113,6 +123,12 @@ Migration and recovery:
 8. Production-shaped v2 migrates without corruption or loss and reloads idempotently. Ambiguous pruned wrong stays active until four trustworthy correct answers. More than 5,000 answers and repeated quota retries do not double-apply learning state.
 9. Export -> reset -> import and reset -> undo restore v3 statistics. Invalid/foreign stats reject import atomically; local corrupt stats create conservative recovery, never invented counts.
 10. A lower show count is never displaced by error priority; the current card never jumps after recording its own exposure/answer; clearing search never reshuffles.
+11. Canonical export and strict validation agree for non-ASCII unknown IDs even
+    when executed under environments with opposing locale collation. A fixture
+    such as `z` and `ä` serializes in ordinal order (`z`, then `ä`), round-trips
+    without loss in either environment, and the reversed/noncanonical payload is
+    rejected atomically. Existing ASCII v3, v2 migration/backup, and local
+    recovery fixtures remain unchanged and green.
 
 ## Accepted Review Follow-ups
 
@@ -158,6 +174,29 @@ These fixes preserve the existing decisions: no automatic activation, no
 forced reload of non-initiating tabs, no deletion of retained Cabadrive caches,
 no change to localStorage, and no nginx/Docker/CI scope expansion.
 
+## Subsequent Exact-Head Review Dispositions
+
+- **R049-005 — locale-independent canonical question-ID order (P2, thread
+  `r4039940004`) — accepted.** The current use of `localeCompare()` without an
+  explicit locale makes canonical serialization and strict validation depend on
+  the host locale. Replace both call sites with one locale-independent ordinal
+  comparator and reuse it everywhere `learningQuestionStats` canonical order is
+  produced or checked. Add test-first regressions with valid non-ASCII unknown
+  IDs that simulate contrasting locale collation for export and import, prove a
+  byte-stable ordinal export and lossless round trip, and prove a deliberately
+  reversed ordinal payload is rejected atomically. Re-run existing v1/v2/v3
+  migration, backup, corrupt-local-recovery, reset/undo, unknown-retention, and
+  quota/pruning tests to demonstrate that the key/schema/version and recovery
+  contracts did not change.
+- **Thread `r4053153086` — not-needed as a separate task (duplicate/already
+  fixed).** It repeats R049-001 against old commit
+  `044e3b018df382b710bd1507ea13a2a9f4e1e18f`. Effective product head
+  `602f80beb98bc53d354d71303a39c147c438827b` already constructs every precache
+  entry as `new Request(asset, { cache: "reload" })`, passes those requests to
+  atomic `cache.addAll`, and has generated-worker plus cacheable-A/offline-B and
+  failed-B-preserves-A evidence. Resolve it with R049-001 evidence; do not add a
+  second service-worker behavior path.
+
 ## Review And Completion Requirements
 
 - Implementation starts only after Orchestrator explicitly assigns this complete feature memory and the single PR slice. Test-first failures must be recorded before fixes.
@@ -166,6 +205,11 @@ no change to localStorage, and no nginx/Docker/CI scope expansion.
 - The four accepted review follow-ups R049-001 through R049-004 and their
   regression tests must be implemented before review threads are resolved or
   final validation begins. The duplicate thread is resolved against R049-004.
+- Accepted follow-up R049-005 must be implemented test-first and receive focused
+  plus full verification and fresh exact-head review. Until then current PR head
+  `ec2f7c8f939ac40246c3d5c05cc19766e5f00c67` is not ready for final Architect
+  validation. Thread `r4053153086` is resolved as already-fixed duplicate of
+  R049-001 only after Orchestrator verifies the cited current-head evidence.
 - Feature 050 is a separate dependency-security prerequisite, not part of this
   cycle PR set. It must merge first; then PR #215 must be synchronized with the
   verified updated `origin/main`, receive a new exact head, and rerun all
