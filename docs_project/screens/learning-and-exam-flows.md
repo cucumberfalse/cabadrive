@@ -53,20 +53,21 @@ The app header exposes three progress-safety icon actions next to the title:
 
 ## Learn Questions Flow
 
-1. Load question card (Spanish official text + answer options).
-2. Show the ticket ID in the metadata row for reporting and cross-reference.
-3. Show compact static difficulty metadata near the question metadata as `Уровень`/`Сложность билета`; it is a study-planning signal, not correctness or the user `Сложный` flag.
-4. Start a soft per-ticket pacing timer derived from the exam format average rounded up to a readable training target.
-5. Allow the learner to pause and resume that timer for the current ticket without disabling timers globally.
-6. Keep Russian question and answer translations hidden on initial render.
-7. Reveal or hide the Russian question translation by activating the Spanish question text area; when revealed, it appears directly under the Spanish question text before the image and answer options.
-8. Show answer-choice translations only while the same translation reveal state is active.
-9. Show the local question image when the source question includes one.
-10. Optional toggle for explanation.
-11. If the timer expires before answer selection, show the current ticket as unresolved in-session without recording an answer or moving to mistake review.
-12. Submit answer; answering after the timer expires remains possible and records a normal learning answer with visible after-limit status.
-13. Show correctness, key terms, and related weak-topic links.
-14. Optional mark as difficult.
+1. On each opening/mount, snapshot all current tickets in priority order: fewer recorded displays first, then active prior-error priority, then a session-random tie order. Search filters this snapshot and clearing search restores it.
+2. Load the active question card (Spanish official text + answer options) and record one durable display only when its identity becomes visibly committed. Rerenders, timer ticks, answer feedback, and StrictMode effect replay do not add displays; navigating away and genuinely returning does.
+3. Show the ticket ID in the metadata row for reporting and cross-reference.
+4. Show compact static difficulty metadata near the question metadata as `Уровень`/`Сложность билета`; it is a study-planning signal, not correctness or the user `Сложный` flag.
+5. Start a soft per-ticket pacing timer derived from the exam format average rounded up to a readable training target.
+6. Allow the learner to pause and resume that timer for the current ticket without disabling timers globally.
+7. Keep Russian question and answer translations hidden on initial render.
+8. Reveal or hide the Russian question translation by activating the Spanish question text area; when revealed, it appears directly under the Spanish question text before the image and answer options.
+9. Show answer-choice translations only while the same translation reveal state is active.
+10. Show the local question image when the source question includes one.
+11. Optional toggle for explanation.
+12. If the timer expires before answer selection, show the current ticket as unresolved in-session without recording an answer or moving to mistake review.
+13. Submit answer; answering after the timer expires remains possible and records a normal learning answer with visible after-limit status. A wrong answer activates prior-error priority; four consecutive correct answers after the latest wrong clear it, and a later wrong resets the streak.
+14. Show correctness, key terms, and related weak-topic links.
+15. Optional mark as difficult.
 
 ## Exam Simulation Flow
 

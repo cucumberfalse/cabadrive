@@ -20,10 +20,52 @@ const {
   formatDuration,
   learningTicketTargetSeconds,
   mistakesFromHistory,
+  orderLearningQuestions,
   scorePercent,
   selectExamSet,
   shuffleQuestions,
 } = domain;
+
+test("learning order uses exposure count before active mistake priority and stable random ties", () => {
+  const questions = ["q4", "q2", "q1", "q3"].map((id) => ({ id }));
+  const stats = [
+    { questionId: "q1", showCount: 1, activeMistakePriority: true, correctStreakAfterLastError: 0 },
+    {
+      questionId: "q2",
+      showCount: 0,
+      activeMistakePriority: false,
+      correctStreakAfterLastError: 0,
+    },
+    {
+      questionId: "q3",
+      showCount: 1,
+      activeMistakePriority: false,
+      correctStreakAfterLastError: 0,
+    },
+    { questionId: "q4", showCount: 1, activeMistakePriority: true, correctStreakAfterLastError: 0 },
+  ];
+  const ordered = orderLearningQuestions(questions, stats, sequenceRandom([0.9, 0.1, 0.8, 0.2]));
+
+  assert.deepEqual(
+    ordered.map(({ id }) => id),
+    ["q2", "q1", "q4", "q3"],
+  );
+  assert.deepEqual(
+    questions.map(({ id }) => id),
+    ["q4", "q2", "q1", "q3"],
+  );
+});
+
+test("learning order produces a deterministic tie order for injected randomness and retains full coverage", () => {
+  const questions = ["q3", "q1", "q2"].map((id) => ({ id }));
+  const ordered = orderLearningQuestions(questions, [], () => 0.5);
+
+  assert.deepEqual(
+    ordered.map(({ id }) => id),
+    ["q3", "q2", "q1"],
+  );
+  assert.equal(new Set(ordered.map(({ id }) => id)).size, questions.length);
+});
 
 test("scoring floors percentage for official exam threshold comparison", () => {
   assert.equal(scorePercent(34, 40), 85);

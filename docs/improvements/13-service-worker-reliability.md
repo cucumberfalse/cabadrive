@@ -5,7 +5,7 @@
 | Приоритет | P1 |
 | Категория | PWA / оффлайн-корректность |
 | Оценка трудоёмкости | M |
-| Статус | Предложено |
+| Статус | Частично реализовано: FR-3/FR-4 закрыты; FR-1/FR-2/FR-5/FR-6 остаются |
 | Дата | 2026-07-11 |
 
 ## 1. Контекст и проблема
@@ -13,8 +13,8 @@
 SW генерируется [generate-service-worker.mjs](../../scripts/generate-service-worker.mjs) поверх dist. Четыре связанные проблемы (все строки проверены):
 
 1. **Монолитный атомарный прекеш ~40 МБ.** `cache.addAll(ASSETS)` одним куском (строка 41); исключены только 3 паттерна (строки 10-20: sw.js, чанк manual4Ruedas, постраничные JPG). Замер: в прекеш попадают sections-кропы 24 МБ, questions 9,6 МБ, learning 5,4 МБ + JS-бандл. addAll атомарен: обрыв ЛЮБОГО запроса на мобильной сети отменяет установку всего кеша, а `register(...).catch(() => {})` (main.tsx:14-16) молча глотает провал — пользователь остаётся без оффлайна и не знает об этом. Имя кеша `cabadrive-static-<Date.now()>` (строка 37) меняется каждой сборкой, activate удаляет старый кеш (45-50), install ничего не переиспользует — **каждый деплой перекачивает все ~40 МБ**, даже если изменился один файл.
-2. **Обновление ломает открытые вкладки.** skipWaiting на install (42) + clients.claim и удаление чужих кешей на activate (45-50): вкладка со старым index.html ссылается на `manual4Ruedas-<старый hash>.js`, который исключён из прекеша и жил только в runtime-кеше; после деплоя старый кеш удалён, на сервере файла нет — динамический `import("./data/manual4Ruedas")` (App.tsx:3239) падает навсегда до ручной перезагрузки. UI обновления нет: в src ни onupdatefound, ни controllerchange, ни периодического registration.update().
-3. **Баги fetch-обработчика.** Строка 65: `.catch(() => caches.match("/") || caches.match("/index.html"))` — caches.match возвращает Promise (всегда truthy), правый операнд недостижим; если «/» нет в кеше, respondWith получает undefined → TypeError. Фолбэк применяется ко всем упавшим GET без различия destination: оффлайн-запрос картинки/JS-чанка получает HTML с неверным MIME («Failed to fetch dynamically imported module»). caches.match без ignoreSearch: навигация на `/?legacyManual=1` не матчит прекешированный «/».
+2. **Обновление открытых вкладок (исходный риск, закрыт feature 049).** Раньше `skipWaiting` на install и удаление старых кешей могли лишить старую вкладку lazy-чанка. Теперь install ждёт явного действия, старые Cabadrive version caches сохраняются, UI предлагает `Обновить`/`Позже`, а инициирующая вкладка делает один reload на `controllerchange`. Неограниченное хранение старых version caches принято как временный correctness-first компромисс до FR-1/FR-2.
+3. **Fetch-обработчик (исходные баги закрыты features 048/049).** Навигация теперь идёт network-first с `cache: "no-store"`, а при сбое/неуспешном ответе использует только полностью установленный shell текущего worker с query-insensitive fallback. Субресурсы никогда не получают HTML fallback: current cache → retained Cabadrive cache → network → `Response.error()`.
 4. **Закоммиченный public/sw.js расходится с генерируемым**: кладёт в кеш любой GET-ответ без проверки response.ok (public/sw.js:22-24 — закешированный 404 отдаётся вечно), прекеш только ["/", "/index.html"], имя кеша v1 навсегда. Если dist задеплоят без шага generate:sw — в прод молча уйдёт деградированный SW; ни один тест не сверяет два SW.
 
 ## 2. Цели
@@ -37,8 +37,8 @@ SW генерируется [generate-service-worker.mjs](../../scripts/generate
 
 ## 4. План
 
-- [ ] 1. FR-4 (баги fetch) + FR-7 (тесты) — маленький безопасный PR
-- [ ] 2. FR-3 (цикл обновления + баннер) — чинит сценарий сломанного lazy-чанка
+- [x] 1. FR-4 (баги fetch) + FR-7 (тесты) — реализовано features 048/049
+- [x] 2. FR-3 (цикл обновления + баннер) — реализовано feature 049; two-build browser evidence покрывает обычный online reload, explicit activation, offline fallback, failed install и старый lazy chunk
 - [ ] 3. FR-1/FR-2 (двухфазный прекеш + reuse) + FR-5 (статус в UI)
 - [ ] 4. FR-6 (public/sw.js + guard-тест)
 
