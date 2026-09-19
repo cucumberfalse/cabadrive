@@ -70,7 +70,7 @@
   verified updated `origin/main` under Orchestrator assignment, preserve all
   parallel work, rerun every required check including `osv-scan`, and refresh
   exact-head review/evidence before T024/T025.
-- [ ] T023g R049-005 / thread `r4039940004`: test-first replace implicit-locale
+- [x] T023g R049-005 / thread `r4039940004`: test-first replace implicit-locale
   learning-stat ID ordering with one shared locale-independent ordinal
   comparator used by serialization and strict validation. Add contrasting-locale
   non-ASCII unknown-ID fixtures proving byte-stable `z` before `ä`, lossless
@@ -171,6 +171,22 @@
   `602f80beb98bc53d354d71303a39c147c438827b`. This subsequent tasks-only
   commit records the exact SHA and does not alter product behavior, tests,
   durable runtime documentation, or review dispositions.
+- R049-005 test-first evidence (2026-09-19): with the new contrasting-collation
+  fixture in place, `pnpm exec node --test tests/progress-store.test.mjs` failed
+  only the new non-ASCII round-trip assertion (`false !== true`) while the 22
+  existing progress-store cases passed. After replacing both persisted-stat
+  ordering call sites with one direct `<`/`>` ordinal comparator, the suite
+  passed `23/23`. The regression proves ordinal `z` before `ä`, byte-stable
+  export across opposite simulated locale order, lossless import, and atomic
+  rejection of reversed input; existing migration, backup, recovery,
+  reset/undo, unknown-ID retention, and quota/pruning coverage stayed green.
+- R049-005 full preflight evidence (2026-09-19): authorized `pnpm run preflight`
+  exited `0`; feature-memory/repository gates, content validation, typecheck,
+  lint, format, negative quality contracts, production build, and full suites
+  passed. Node reported `570/570`; Playwright reported `158` passed with the two
+  intentional mobile skips for the single-run A/B service-worker harness.
+  Exact-head GitHub checks/review and thread resolution remain pending portions
+  of T023h owned by Orchestrator coordination.
 
 ## Implementation Agent Feedback
 

@@ -240,6 +240,52 @@ test("exposures persist exactly and unknown question statistics survive canonica
   ]);
 });
 
+test("non-ASCII unknown IDs export and validate in locale-independent ordinal order", () => {
+  const originalLocaleCompare = String.prototype.localeCompare;
+  const ordinalFallback = (left, right) => (left < right ? -1 : left > right ? 1 : 0);
+  const setContrastingLocale = (zBeforeUmlaut) => {
+    String.prototype.localeCompare = function localeCompare(other) {
+      const left = String(this);
+      const right = String(other);
+      if (left === "z" && right === "ä") return zBeforeUmlaut ? -1 : 1;
+      if (left === "ä" && right === "z") return zBeforeUmlaut ? 1 : -1;
+      return ordinalFallback(left, right);
+    };
+  };
+
+  try {
+    setContrastingLocale(true);
+    const source = createProgressStore(new FakeStorage());
+    source.dispatch({ type: "recordQuestionExposure", questionId: "ä" });
+    source.dispatch({ type: "recordQuestionExposure", questionId: "z" });
+    const exported = source.exportProgress();
+    assert.deepEqual(
+      JSON.parse(exported).learningQuestionStats.map(({ questionId }) => questionId),
+      ["z", "ä"],
+    );
+
+    setContrastingLocale(false);
+    const restored = createProgressStore(new FakeStorage());
+    assert.equal(restored.dispatch({ type: "importProgress", raw: exported }), true);
+    assert.equal(restored.exportProgress(), exported);
+    assert.deepEqual(
+      restored.getSnapshot().learningQuestionStats,
+      source.getSnapshot().learningQuestionStats,
+    );
+
+    const before = restored.exportProgress();
+    const reversed = JSON.parse(exported);
+    reversed.learningQuestionStats.reverse();
+    assert.equal(
+      restored.dispatch({ type: "importProgress", raw: JSON.stringify(reversed) }),
+      false,
+    );
+    assert.equal(restored.exportProgress(), before);
+  } finally {
+    String.prototype.localeCompare = originalLocaleCompare;
+  }
+});
+
 test("quota pruning never reapplies derived learning transitions", () => {
   const storage = new FakeStorage({}, [quota(), quota(), null]);
   const store = createProgressStore(storage);

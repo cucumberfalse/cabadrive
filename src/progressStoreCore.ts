@@ -186,8 +186,12 @@ function learningStat(value: unknown): value is LearningQuestionStat {
   );
 }
 
+function compareQuestionIdsOrdinal(left: string, right: string) {
+  return left < right ? -1 : left > right ? 1 : 0;
+}
+
 function sortedLearningStats(stats: LearningQuestionStat[]) {
-  return [...stats].sort((a, b) => a.questionId.localeCompare(b.questionId));
+  return [...stats].sort((a, b) => compareQuestionIdsOrdinal(a.questionId, b.questionId));
 }
 
 function validLearningStats(stats: unknown): stats is LearningQuestionStat[] {
@@ -198,7 +202,8 @@ function validLearningStats(stats: unknown): stats is LearningQuestionStat[] {
     ids.add(item.questionId);
   }
   return stats.every(
-    (item, index) => index === 0 || stats[index - 1].questionId.localeCompare(item.questionId) < 0,
+    (item, index) =>
+      index === 0 || compareQuestionIdsOrdinal(stats[index - 1].questionId, item.questionId) < 0,
   );
 }
 
