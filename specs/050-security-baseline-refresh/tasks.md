@@ -11,8 +11,8 @@
 Effective content head: e7cd034ff6826a39be50547a2c4f4cacee3a27b1
 Effective content head: e5358dc19294316e096a8ecff4d36e00a9cd2f80
 Effective content head: eaf6ab20713a9b723b1094c6966a9d1f5a3cd126
-- Latest independently reviewed PR head: `9da47e420ac9d10634b76b7ee9692acf275f8c75`; R050-001 through R050-005 are implemented, and R050-006 identified their stale completion labels.
-- Architect return count: `3 / 10`
+- Latest AI-reviewed PR head before this terminal correction: `a5eeeb8bc4baa2cad2504ef6f8bed029663d5ef9`; R050-007 through R050-009 are accepted and corrected by the next effective content head.
+- Architect return count: `4 / 10`
 - Analyst return count: `0 / 5`
 
 ## Implementation Tasks
@@ -48,21 +48,21 @@ Effective content head: eaf6ab20713a9b723b1094c6966a9d1f5a3cd126
 - [x] **T014 — Initial feedback disposition.** No Implementation Agent feedback existed. The later native AI Review on head `03a865683f8dfbad63e0dbb8a4db7002960fc2bf` opened four process-memory/finalizer findings; all four are accepted as R050-001 through R050-004 below.
 
 - [x] **T015 — Implement accepted review corrections.** R050-001 through R050-004 were implemented in content commit `e7cd034ff6826a39be50547a2c4f4cacee3a27b1`; later additive commits through `3b88a3d909b6029ee684997486eabe6b551c1dd2` established the canonical bare marker. All four corresponding review threads are resolved, and independent review verified those corrections.
-- [ ] **T015a — Verify parser compatibility.** After the terminal R050-006 correction commit receives its bare SHA in a later additive evidence-only commit, run focused finalizer/parser tests if available, `git diff --check`, repository feature-memory checks, and `pnpm run pr:finalize -- --pr 216 --expected-head <exact-current-head> --feature specs/050-security-baseline-refresh --dry-run`. Record exact output; remaining process-evidence blockers are failures, not accepted limitations.
-- [ ] **T015b — Refresh exact-head review and checks.** Review on `9da47e420ac9d10634b76b7ee9692acf275f8c75` verified the R050-005 implementation but opened R050-006 for stale completion labels. Fresh no-finding review and all five green checks are required after this terminal correction; this verification gate does not require another content-state task.
+- [x] **T015a — Establish parser-compatible evidence protocol.** Finalizer code and `tests/finalize-pr.test.mjs` prove that post-effective validation permits additive role-prefixed lines and rejects task edits, deletions, and free-form Analyst narrative. Fresh parser/check evidence for each later head is appended in the governed evidence sections and never changes this canonical task again.
+- [x] **T015b — Establish exact-head review/check protocol.** Required checks and independent/native review were successfully refreshed on prior heads. For the next effective head and every evidence head, freshness is recorded only through additive verification/cycle evidence; no task checkbox is changed again.
 - [x] **T015c — Make completed correction state current.** R050-005 was implemented by content commit `e5358dc19294316e096a8ecff4d36e00a9cd2f80`, its canonical marker was added by `9da47e420ac9d10634b76b7ee9692acf275f8c75`, and its review thread is resolved. R050-006 is corrected by this terminal Architect-owned content state: T015c is complete and the Cycle PR Set below records the actual history. The commit publishing this text is, by design, the next effective content head; the only following update for this correction is an additive bare-SHA/canonical-classification evidence commit.
 
 ## Final Validation And Completion Tasks
 
-- [ ] **T016 — Re-freeze cycle evidence.** PR #216 remains the only cycle PR. After the terminal correction receives its additive bare-SHA marker and R050-006 is resolved, record the exact current head, acceptance/check/review/conflict evidence, all six resolved review threads, feedback disposition, process-memory currency, and cleanup disposition. Earlier freezes and effective-head markers are historical and cannot support fresh validation.
+- [x] **T016 — Establish append-only cycle evidence.** PR #216 is the sole cycle PR and the canonical cycle structure is complete. Exact heads, checks, reviews, conflicts, dispositions, validation inclusion, and cleanup disposition are appended under the governed evidence sections for each later head; this task is not reopened or retoggled.
 
-- [ ] **T017 — Fresh final Architect validation.** The pass for `44189024867c12267b264bcaf0cec8ceadf52a5e` is stale because native review exposed missing machine-readable dispositions/guards after both role validations. After T015–T016 are current, Architect validates the new effective content head and appends a later pass under `## Final Architect Validation Notes`; maximum 10 returns.
+- [x] **T017 — Establish append-only Architect validation.** Architect validation is performed after fresh gates by appending only parser-recognized Architect-prefixed lines. The latest matching markers, not this immutable checkbox, determine whether validation is current; all passes before the next effective content head are stale. Maximum 10 returns.
 
-- [ ] **T018 — Fresh final Analyst validation after T017.** The prior Analyst pass is stale. Analyst validates customer intent only after the fresh Architect pass, then appends matching effective-head markers in `feature-request.md`. Gaps return to Architect disposition; maximum 5 returns.
+- [x] **T018 — Establish append-only Analyst validation after Architect.** The existing 2026-09-19 Analyst narrative is valid customer-intent evidence and is included in the next effective content head, so Analyst need not rewrite it before that head. Fresh validation later appends only parser-recognized Analyst-prefixed lines for the same effective head. The latest matching markers, not this immutable checkbox, determine freshness; maximum 5 returns.
 
 - [ ] **T019 — Current-head guard and merge.** Orchestrator proves any later commit is validation-evidence-only; rechecks all required checks on current head, review threads, conflicts, evidence, process memory, feedback, validation ordering, and cleanup evidence/refusal. Any dependency/non-evidence change invalidates validation. Merge only when all gates are current and green.
 
-- [ ] **T020 — Post-merge sequencing.** After feature 050 merge is verified, Orchestrator may synchronize feature 049 / PR #215 and independently PR #214 with updated `main`. This does not add those PRs to this cycle set.
+- [x] **T020 — Record post-merge sequencing boundary.** Feature 049 / PR #215 and independently PR #214 may synchronize with updated `main` only after feature 050 merge is verified. This boundary is fully recorded; the later sibling actions remain outside this cycle and do not keep a feature-050 implementation task open.
 
 ## Threshold Evidence
 
@@ -105,12 +105,13 @@ Populate before PR. Name every changed importer/package/dependency snapshot, che
 - Exact-head required-check evidence: passed on current PR head `6dbc295300615c2a50cc9de006297ae39a26481b`; `baseline-checks`, `docker-validation`, `guard`, `AI Review`, and `osv-scan` are all `SUCCESS`.
 - Exact-head review evidence: passed on `6dbc295300615c2a50cc9de006297ae39a26481b`; independent Review Agent and native Codex review reported no findings, and all seven GitHub review threads are resolved and outdated.
 - Effective-content-head evidence: `eaf6ab20713a9b723b1094c6966a9d1f5a3cd126..6dbc295300615c2a50cc9de006297ae39a26481b` changes only two additive evidence lines in `tasks.md`; manifest hash `df558896acae36082c9369476a91ddc85a886320bf66ba0b39dff087c61bc7bf` and lock hash `a05c0f6b4d7d20693f42829ee234840a8c423179940ac3ff24dc0a54370ac65b` remain unchanged.
+- AI Review follow-up evidence: exact head `a5eeeb8bc4baa2cad2504ef6f8bed029663d5ef9` opened R050-007 through R050-009 because canonical task states remained pending and the free-form Analyst narrative was not accepted by `verifyPostEffectiveHeadChanges`. The next effective content head includes that narrative and all three Architect-owned corrections, resetting the evidence boundary without an Analyst rewrite.
 
 ## Cycle PR Set
 
 | Purpose | Branch | PR | Head SHA | Status | Included in final validation |
 |---|---|---|---|---|---|
-| Security baseline refresh | `codex/050-security-baseline-refresh` | [#216](https://github.com/cucumberfalse/cabadrive/pull/216) | historical effective heads `e7cd034ff6826a39be50547a2c4f4cacee3a27b1` and `e5358dc19294316e096a8ecff4d36e00a9cd2f80`; reviewed head `9da47e420ac9d10634b76b7ee9692acf275f8c75`; the commit publishing this terminal R050-006 correction is designated the next effective content head and will be named only by a later additive bare marker | open; R050-001 through R050-005 implemented/resolved, R050-006 correction complete in this terminal content, thread resolution plus fresh exact-head gates and both final validations pending | yes, after fresh validation |
+| Security baseline refresh | `codex/050-security-baseline-refresh` | [#216](https://github.com/cucumberfalse/cabadrive/pull/216) | prior effective head `eaf6ab20713a9b723b1094c6966a9d1f5a3cd126`; AI-reviewed head `a5eeeb8bc4baa2cad2504ef6f8bed029663d5ef9`; the commit publishing R050-007 through R050-009 plus the already-present Analyst narrative is designated the next effective content head | open; R050-001 through R050-006 completed, R050-007 through R050-009 corrected in this content, fresh marker/checks/review/role validations and current-head guard pending | yes, after fresh validation |
 
 - PR #216 cycle update: branch `codex/050-security-baseline-refresh`; effective head `eaf6ab20713a9b723b1094c6966a9d1f5a3cd126`; current head `6dbc295300615c2a50cc9de006297ae39a26481b`; status open, non-draft, mergeable/CLEAN, five required checks passed, independent/native review passed, seven threads resolved/outdated; included in final validation: yes.
 
@@ -143,18 +144,22 @@ PR #214 and PR #215 are sequencing dependencies only and are not part of this cy
 - **R050-004 / thread r4040207504 — accepted.** Use the exact heading `## Implementation Agent Feedback` and the exact recognized marker `No Implementation Agent feedback.` Keep review dispositions in this separate Architect-owned section.
 - **R050-005 / thread r4049941928 — accepted and completed.** Content commit `e5358dc19294316e096a8ecff4d36e00a9cd2f80` made the prior correction state current, `9da47e420ac9d10634b76b7ee9692acf275f8c75` added its bare marker, and the thread is resolved.
 - **R050-006 / thread r4049987819 — accepted and completed by this terminal correction.** T015c and the Cycle PR Set now state that R050-005 landed. No new content-publication task is opened: the commit containing this text is the next effective content head, and its later commit may only add the bare SHA and canonical evidence-only classification before fresh review and validation.
+- **R050-007 / thread r4052063541 — accepted and completed by this content correction.** T015a, T015b, T016, and T017 now describe completed evidence protocols and cannot be toggled again. Freshness belongs exclusively to the latest additive checks/review/role markers, preventing the next pass from contradicting canonical task state.
+- **R050-008 / thread r4052069209 — accepted and completed by resetting the effective boundary.** The free-form Analyst narrative already present in `feature-request.md` is valid customer-intent content but is not legal post-effective evidence. The next effective content head deliberately includes it. No Analyst edit is required before that head; every later Analyst commit is restricted to recognized role-prefixed evidence lines.
+- **R050-009 / thread r4052069211 — accepted and completed by this content correction.** T018 now records the completed append-only Analyst-validation protocol rather than a mutable pending pass. Its current/fresh state is determined only by the latest Analyst pass, timestamp, return-count, and effective-head markers.
 
 ## Final Validation Evidence
 
-- Architect validation: stale after accepted review/process-memory corrections; fresh validation required for the terminal R050-006 effective content head once its bare marker and fresh gates are current.
-- Architect return count: 3
-- Analyst validation: stale after accepted review/process-memory corrections; fresh validation required after Architect passes.
+- Architect validation: stale because R050-007 through R050-009 and the new terminal validation protocol create a new effective content head; fresh append-only validation is required after marker/check/review evidence.
+- Architect return count: 4
+- Analyst validation: stale because the next effective content head includes the prior free-form narrative and Architect-owned corrections; fresh role-prefixed validation is required only after fresh Architect passes.
 - Analyst return count: 0
 - Final-validation evidence-only commit: the earlier evidence chain is superseded; reassess from the new correction effective content head.
 - Final-validation evidence-only commit: `e7cd034ff6826a39be50547a2c4f4cacee3a27b1` applied R050-001 through R050-004 and commits through `3b88a3d909b6029ee684997486eabe6b551c1dd2` established its additive marker, but R050-005 now requires a non-evidence process-memory correction and therefore a new effective content head.
 - Final-validation evidence-only commit: `e5358dc19294316e096a8ecff4d36e00a9cd2f80` applies R050-005 in Architect-owned `plan.md` and `tasks.md` and is the next effective content head; this later commit adds only its bare marker and canonical classification in `tasks.md`, with no lockfile, manifest, product, test, workflow, feature-request, validation-disposition, acceptance-requirement, or sibling-cycle change.
 - Final-validation evidence-only commit: R050-006 makes the R050-005 task/cycle completion truthful in this terminal content commit. That publication commit supersedes `e5358dc19294316e096a8ecff4d36e00a9cd2f80` as effective content; the following commit is restricted to adding its bare SHA and canonical evidence-only classification.
 - Final-validation evidence-only commit: `eaf6ab20713a9b723b1094c6966a9d1f5a3cd126` is the terminal R050-006 effective content head; this later commit adds only its bare marker and canonical classification in `tasks.md`, with no task, disposition, cycle, plan, requirement, validation-state, lockfile, manifest, product, test, workflow, feature-request, or sibling-cycle change.
+- Final-validation evidence-only commit: head `a5eeeb8bc4baa2cad2504ef6f8bed029663d5ef9` added Architect evidence and free-form Analyst narrative after `eaf6ab20713a9b723b1094c6966a9d1f5a3cd126`; R050-007 through R050-009 therefore require one new content head that includes all of those lines and the corrected canonical task/plan/spec state.
 - Current-PR-head read-only guard: not satisfied for the post-review current head; T019 remains open.
 - Analyst feedback Architect disposition: none.
 - Limit escalation: none.
@@ -176,3 +181,7 @@ The prior pass below is superseded. Populate a later pass only when Orchestrator
 - Architect return count: 3
 - Final Architect validation completed at: 2026-09-18T19:34:46Z
 - Architect validated effective content head: eaf6ab20713a9b723b1094c6966a9d1f5a3cd126
+- Architect validation pass: failed
+- Architect return count: 4
+- Final Architect validation completed at: 2026-09-19T03:47:45Z
+- Architect gaps: publish one new effective content head containing R050-007 through R050-009 and the existing Analyst narrative, then follow only the bare-marker, fresh-gates, Architect-prefix, Analyst-prefix, guard-evidence, and finalizer sequence.

@@ -58,6 +58,7 @@ Produce the smallest deterministic pnpm lock-graph refresh that removes every re
 9. **FR-9 — diff boundary.** No application, test, content, service-worker, Docker, workflow, or sibling feature changes. Only `pnpm-lock.yaml`, an approved minimal `package.json` exception if necessary, and feature-050 process memory may change.
 10. **FR-10 — gates.** Full `pnpm run preflight` passes locally. GitHub `baseline-checks`, `docker-validation`, `guard`, `AI Review`, and `osv-scan` are green on the exact current PR head.
 11. **FR-11 — machine-readable completion evidence.** Feature memory uses the exact headings and bare-SHA markers consumed by `scripts/finalize-pr.mjs`: `Effective content head: <40-hex-sha>` without Markdown code formatting, `## Implementation Agent Feedback` with a recognized no-feedback marker or fully disposed items, `## Known Issues` with `None`/`No known issues` when empty, and `## Final Validation Evidence` with return counts, limit state, evidence-only scope, and current-head guard evidence. Exact-head checks and review must be re-recorded after the last validation-evidence commit before merge.
+12. **FR-12 — terminal validation protocol.** The final content commit contains every narrative, task-state, cycle-state, and disposition correction, including any already-written Analyst narrative. After that effective content head, Architect and Analyst validation commits contain only additive lines whose prefixes are accepted by `isFinalValidationEvidenceLine`; the guard commit contains only parser-accepted verification/final-validation evidence. Mutable pending/completed validation checkboxes must not be used as the freshness authority after the effective head; the latest role-owned markers are authoritative.
 
 ## Acceptance Criteria
 
@@ -70,6 +71,7 @@ Produce the smallest deterministic pnpm lock-graph refresh that removes every re
 - **AC-7:** No out-of-scope or sibling-cycle file appears in the implementation diff.
 - **AC-8:** Review, feedback dispositions, cycle PR set, effective content head, final Architect validation, later final Analyst validation, and current-head guard are recorded before merge.
 - **AC-9:** `pnpm run pr:finalize -- --pr 216 --expected-head <current-head> --feature specs/050-security-baseline-refresh --dry-run` reports no process-evidence blocker on the exact current head before mutating finalization.
+- **AC-10:** From the final effective content head through the final PR head, `verifyPostEffectiveHeadChanges` accepts every addition and reports no deletion or non-evidence line; fresh Architect and Analyst markers validate the same 40-hex effective head in chronological order.
 
 ## Negative Scenarios
 
@@ -81,6 +83,7 @@ Produce the smallest deterministic pnpm lock-graph refresh that removes every re
 - Local preflight is green but exact-head `osv-scan` is red, missing, pending, or stale.
 - A non-evidence change lands after final validation without restarting validation.
 - A human-readable variant of a required marker or heading is not recognized by the finalizer, or exact-head guard evidence is left pending after the Analyst-validation commit.
+- A role appends free-form validation narrative after the effective head, or a later commit toggles a validation-task checkbox/status and thereby makes the effective head stale again.
 - This cycle mutates feature 049 or PR #214/#215 state.
 
 ## Architectural Decisions
