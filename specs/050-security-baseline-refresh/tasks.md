@@ -187,3 +187,9 @@ The prior pass below is superseded. Populate a later pass only when Orchestrator
 - Architect return count: 4
 - Final Architect validation completed at: 2026-09-19T03:47:45Z
 - Architect gaps: publish one new effective content head containing R050-007 through R050-009 and the existing Analyst narrative, then follow only the bare-marker, fresh-gates, Architect-prefix, Analyst-prefix, guard-evidence, and finalizer sequence.
+- Architect validation evidence: effective head 2dcd03788eb28d977ce7c631b9f467751c051c65 contains the complete lock refresh, R050-001 through R050-009 dispositions, terminal protocol corrections, and existing Analyst narrative; current head 17d7888e95f1173ec099ebb91a5da22a16b620ad adds exactly two parser-compatible evidence lines.
+- Architect validation evidence: all five required checks passed on exact head 17d7888e95f1173ec099ebb91a5da22a16b620ad, independent and native review passed with no findings, all ten threads are resolved, PR #216 is mergeable/CLEAN, all 60 finalizer tests passed, and manifest/lock security evidence remains unchanged.
+- Architect validation pass: passed
+- Architect return count: 4
+- Final Architect validation completed at: 2026-09-19T04:00:22Z
+- Architect validated effective content head: 2dcd03788eb28d977ce7c631b9f467751c051c65
