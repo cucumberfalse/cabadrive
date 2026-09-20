@@ -8,7 +8,7 @@
 - Structured image metadata and per-question image usage validation for the current image-backed fallback questions, including answer-critical/highlight, supporting, distractor/trap, background/irrelevant/dim mappings and stale image/question fingerprint checks.
 - Category B practice question presentation in Spanish with source traceability, ticket IDs in learning mode, and non-official fallback labeling.
 - Complete current-bank unofficial Russian translation and explanation layers, clarified at product/status level, revealed intentionally inside question practice instead of shown by default, and protected by deterministic alignment evidence.
-- Learning mode with answer feedback and linked weak-topic hints.
+- Learning mode with answer feedback, linked weak-topic hints, durable per-ticket display counts, and session-stable priority ordering by least shown then active prior error. Error priority clears after four consecutive correct answers following the latest wrong answer.
 - Exam mode driven by `content/config/caba-exam-format.json` with approximate/exact status labeling.
 - Mistake tracking and repeated-error review loop.
 - Exam-oriented vocabulary module with topic grouping and search.
@@ -20,7 +20,7 @@
 - Dedicated complete RU 4-wheel GCBA manual surface for `gcba-manual-vehiculo-4-ruedas-2023`: 200 page/content units, local page-faithful JPEG renders with checksum and dimension manifest records, exact Russian page translations, committed per-block Russian layout data for every page, source-text/source-caption/source-label mask provenance across the full manual, source-derived semantic navigation across front matter/chapters/appendices/topics including Chapter 4 `Стресс` on page 94 and `Отвлечения` on page 95, mobile page-canvas readability protection through a minimum readable layout width, per-page official source traceability, and validation that blocks runtime PDF viewers, remote manual assets, runtime fetches, missing page assets, stale layout/navigation/text coverage, stale checksums, omitted translations, generic flow geometry, destination-Russian-block-derived masks without source provenance, full-page visual catch-all regions, and the old side-by-side transcript UI.
 - `Источники` / official primary-source reader from feature `019-primary-sources-section`: exposes every current official manifest entry as a local reference surface, defaults to simple Russian, allows full Russian translation and original Spanish views, and keeps all Russian source-reader content outside `content/official-documents/`. The learner corpus, currentness gate, and exact-text gate are complete for the current 19-entry manifest.
 - Guide module focused on CABA-vs-RF differences that matter for exam outcomes, including compact parking-clearance contrast notes where source-supported by the current fallback practice set.
-- Offline-capable local-first behavior after build.
+- Offline-capable local-first behavior after build, with online navigation preferring the currently deployed app, last-ready shell fallback offline, and a compact explicit update banner for long-lived tabs.
 - Docker-only local runtime with `make build`, `make up`, and `make down`.
 - Public project entry point with Apache-2.0 licensing for Cabadrive-owned work, separate third-party/official-source attribution, Docker quick start, contribution/security policies, and three current product screenshots.
 - Top-level `О приложении` view with deterministic package version, canonical local content-mode and community-source attribution, official-source boundary, repository link, and no runtime network dependency.
@@ -42,7 +42,7 @@
 ## Future Candidates
 
 - Spaced-repetition scheduling.
-- Progress import/export.
+- Optional cross-device packaging around the existing local progress import/export flow.
 - Additional jurisdictions outside CABA.
 - Additional translation languages.
 - Alternative frontend framework evaluation.
@@ -53,4 +53,4 @@
 - Practical driving instruction workflows.
 - User accounts and cloud sync.
 - Always-on backend services.
-- Progress synchronization, cloud backups and IndexedDB persistence; current progress remains a versioned, capped localStorage store with a future-facing export/import API only.
+- Progress synchronization, cloud backups and IndexedDB persistence; current progress remains a versioned, capped localStorage v3 store with local export/import only.

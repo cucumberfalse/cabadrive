@@ -11,14 +11,14 @@ Implemented stack:
 - TypeScript
 - React
 - Vite
-- versioned localStorage progress store for progress/statistics, with safe v1-to-v2 migration, a 5,000-answer retained-history cap, aggregate mistake preservation and recoverable quota diagnostics
+- versioned localStorage progress store for progress/statistics, with safe v1/v2-to-v3 migration and exact raw backups, a 5,000-answer retained-history cap, aggregate mistake preservation, durable per-ticket learning statistics, canonical export/import, and recoverable quota/corruption diagnostics
 - local in-memory search index over bundled content
 - bundled topic study guide data rendered as local learning materials
 - bundled CABA exam-process guide data rendered as an unofficial Russian procedural guide
 - bundled complete RU 4-wheel GCBA manual surface backed by local translation, layout, navigation, and page-faithful visual manifests
 - interactive Russian `Руководство` document surface for source-`Índice` manual fragments, with conversion rules in [`manual-conversion-guidelines.md`](./manual-conversion-guidelines.md)
 - validated four-level learner difficulty metadata for every bundled question and topic material
-- native service worker generated after production build
+- native service worker generated after production build, with revalidated atomic precaching of every hashed build dependency, network-first online navigation, last-ready offline fallback, and retained version caches so an old tab can first-load its old lazy chunk after deployment; a durable one-time marker safely activates the first upgrade from the legacy worker, while every subsequent version uses the explicit update banner/lifecycle; tabs opened mid-install observe the active installation, and activation clears stale banners in other tabs without forcing them to reload
 - Node test runner + Playwright for testing
 
 ## Runtime Contract
@@ -87,7 +87,7 @@ content/
 tests/
 ```
 
-Current implementation keeps the app under `src/` with domain helpers in `src/domain.ts`, the `useSyncExternalStore`-backed progress boundary in `src/progressStore.ts` (and deterministic core in `src/progressStoreCore.ts`), search in `src/search.ts`, and imported bundled content in `src/data/content.ts`. Views dispatch named progress actions; they do not write browser storage directly. The store exposes canonical export/import APIs and recovery events for a later UI slice, but this release adds no export/import controls, backend, remote sync or IndexedDB.
+Current implementation keeps the app under `src/` with domain helpers in `src/domain.ts`, the `useSyncExternalStore`-backed progress boundary in `src/progressStore.ts` (and deterministic core in `src/progressStoreCore.ts`), search in `src/search.ts`, and imported bundled content in `src/data/content.ts`. Views dispatch named progress actions; they do not write browser storage directly. The v3 store exposes canonical export/import and reset/undo controls plus recovery events; there is no backend, remote sync or IndexedDB.
 
 ## Content Mode
 
@@ -103,6 +103,9 @@ The current question set is `unofficial_b_fallback`, not an official GCBA questi
 - Official Spanish text stays primary.
 - Russian translations and explanations are unofficial learning aids; product-level onboarding, content-mode/status surfaces, and source/status footers carry that clarity instead of repeating long disclaimer paragraphs inside every question card.
 - Learning and mistake review start with Russian translation hidden.
+- Each new `Учить` mount snapshots a full-bank order by durable show count ascending, then active mistake priority, then a session-random tie order. Search filters that snapshot without reshuffling it.
+- A show is recorded only when a question becomes the committed active card. StrictMode replay and ordinary rerenders do not add shows; leaving and genuinely returning to a ticket does.
+- A wrong canonical answer in learning, exam, or mistake mode activates the ticket's error priority. Four consecutive correct answers to that ticket after the latest wrong answer deactivate it; a new wrong answer resets the streak.
 - Learn question cards show the ticket ID in the metadata row for reporting and cross-reference.
 - Learning, mistake review, and materials surfaces show a compact static difficulty indicator (`green`, `blue`, `yellow`, `red`) as unofficial study-planning metadata. Difficulty is not correctness, source confidence, progress, or the user-controlled `Сложный` mark.
 - The Spanish question text area reveals or hides the question translation and answer-choice translations with the same shared state; the revealed question translation appears directly under the Spanish question text before images and answer choices.

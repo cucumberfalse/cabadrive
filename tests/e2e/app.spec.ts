@@ -185,6 +185,17 @@ async function storedAnswerCount(page: Page) {
   );
 }
 
+async function storedLearningStat(page: Page, questionId: string) {
+  return page.evaluate((id) => {
+    const progress = JSON.parse(
+      localStorage.getItem("cabadrive.progress.v1") || '{"learningQuestionStats":[]}',
+    );
+    return progress.learningQuestionStats?.find(
+      (item: { questionId: string }) => item.questionId === id,
+    );
+  }, questionId);
+}
+
 async function openPrimarySources(page: Page) {
   await page.goto("/");
   await page.getByRole("button", { name: /Источники/ }).click();
@@ -889,6 +900,35 @@ test("default Learn exposes all questions and uses session-stable controlled shu
   const reshuffledOrder = await firstVisibleTicketIds(reshuffledPage, 3);
   expect(reshuffledOrder).not.toEqual(canonicalOrder);
   await reshuffledPage.close();
+});
+
+test("Learn counts committed card transitions once and persists them without rerender inflation", async ({
+  page,
+}) => {
+  await page.goto("/");
+  const firstId = await visibleTicketId(page);
+  const card = page.getByTestId("question-card");
+  const nav = card.locator(".question-flow-nav");
+  await expect.poll(async () => (await storedLearningStat(page, firstId))?.showCount).toBe(1);
+
+  await card.getByRole("button", { name: /¿Qué indica esta seña/ }).click();
+  await page.getByRole("button", { name: /Сложный/ }).click();
+  await page.locator(".answer").nth(firstQuestionWrongAnswerIndex).click();
+  await expect.poll(async () => (await storedLearningStat(page, firstId))?.showCount).toBe(1);
+
+  await nav.getByRole("button", { name: "Следующий" }).click();
+  const secondId = await visibleTicketId(page);
+  await expect.poll(async () => (await storedLearningStat(page, secondId))?.showCount).toBe(1);
+  await nav.getByRole("button", { name: "Предыдущий" }).click();
+  await expect.poll(async () => (await storedLearningStat(page, firstId))?.showCount).toBe(2);
+
+  const search = page.getByPlaceholder("Поиск по испанскому, русскому, теме");
+  await search.fill("zzzz-no-local-ticket-match");
+  await expect(page.getByRole("heading", { name: "Ничего не найдено" })).toBeVisible();
+  await search.fill(firstId);
+  await expect.poll(async () => (await storedLearningStat(page, firstId))?.showCount).toBe(3);
+  await page.reload();
+  await expect.poll(async () => (await storedLearningStat(page, firstId))?.showCount).toBe(3);
 });
 
 test("learning flow renders category B image and records a mistake", async ({ page }) => {
