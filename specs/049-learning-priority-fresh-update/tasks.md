@@ -7,7 +7,7 @@
 - Analyst/Architect handoff: `codex/049-learning-priority-fresh-update` in `/Users/chap/devel/cabadrive-worktrees/049-learning-priority-fresh-update`.
 - Delivery decision: one implementation PR slice continuing this handoff only after explicit Orchestrator assignment and latest-main re-verification.
 - Parallel work: preserve all sibling state. PR #214 `claude/049-nginx-caching-security` owns nginx/Docker/CI and is excluded.
-- Cycle PR set: sole implementation PR [#215](https://github.com/cucumberfalse/cabadrive/pull/215), branch `codex/049-learning-priority-fresh-update`, ready/open and included in final validation. At the terminal implementation checkpoint, current PR head `7cfe29a3286f36500cae563e399e8fb9ab5023f0` contains effective product head `054cdca609cb57ddf3e42efc669e8105600893cf`; every accepted follow-up is complete, all eight review threads are resolved, exact-head review passed with no findings, all five required checks passed, and GitHub reports the PR mergeable without conflicts. Final Architect and Analyst validation remain pending.
+- Cycle PR set: sole implementation PR [#215](https://github.com/cucumberfalse/cabadrive/pull/215), branch `codex/049-learning-priority-fresh-update`, ready/open and included in final validation. At the terminal implementation checkpoint, current PR head `7cfe29a3286f36500cae563e399e8fb9ab5023f0` contains effective product head `054cdca609cb57ddf3e42efc669e8105600893cf`; every accepted product follow-up was complete, all nine then-existing review threads were resolved, exact-head review passed with no findings, all five required checks passed, and GitHub reported the PR mergeable without conflicts. Fresh review at current head `e817ab69ff61306de6815bdf3da80f059683f440` then created tenth thread `r4056768455`; the current authoritative state is `9/10` resolved with that thread solely unresolved, so final Architect and Analyst validation are not ready.
 - Effective content head: `51cb103e7818cbc36eeff60e4c0d15408a2e9f5b`.
 - Cleanup: not applicable during implementation; post-completion environment cleanup, if assigned, belongs only to Cleanup Agent.
 
@@ -111,6 +111,15 @@
   regression. Update affected durable docs; run focused tests, Chromium A/B/C,
   full preflight, every required check, and fresh exact-head review before
   resolving either thread.
+- [ ] T023l R049-008 / thread `r4056768455`: keep the five corrected historical
+  checkpoint counts at `9/9`/nine, record the distinct current state as `9/10`
+  with only this new thread unresolved, and publish the bounded process-evidence
+  correction without product/test/runtime/dependency/sibling changes. Then
+  enumerate the exact-head GitHub thread inventory, obtain fresh exact-head
+  Review Agent evidence, resolve `r4056768455` only after the corrected evidence
+  is visible, refresh the resulting `10/10` thread state and effective-content-
+  head/current-head guard evidence, and rerun applicable feature-memory,
+  repository, diff, and required GitHub gates before T024/T025.
 
 ## Final Validation And Completion
 
@@ -120,7 +129,7 @@
   evidence. At the terminal implementation checkpoint
   `7cfe29a3286f36500cae563e399e8fb9ab5023f0`, required checks `AI Review`,
   `baseline-checks`, `docker-validation`, `guard`, and `osv-scan` all passed;
-  exact-head review reported PASS/no findings; all `8/8` review threads were
+  exact-head review reported PASS/no findings; all `9/9` review threads were
   resolved; GitHub reported the open PR mergeable without conflicts; acceptance
   evidence and all Architect dispositions were current; no Implementation Agent
   feedback remained unresolved; and cleanup was not assigned/applicable before
@@ -271,13 +280,21 @@
 - Terminal implementation/checkpoint evidence (2026-09-20): on exact PR head
   `7cfe29a3286f36500cae563e399e8fb9ab5023f0`, GitHub checks `AI Review`,
   `baseline-checks`, `docker-validation`, `guard`, and `osv-scan` all passed;
-  exact-head Review Agent outcome was PASS with no findings; all `8/8` review
+  exact-head Review Agent outcome was PASS with no findings; all `9/9` review
   threads were resolved; and GitHub reported PR #215 open and mergeable without
   conflicts. The full local evidence remained green (`572/572` Node; `158`
   Playwright passed with two intentional skips), every acceptance criterion has
   executable or durable evidence above, F049-IA-001 and F049-GATE-001 have
   Architect dispositions, no feedback remains unresolved, and no cleanup scope
   was assigned before final validation.
+- R049-008 discovery evidence (2026-09-20): fresh exact-head review at
+  `e817ab69ff61306de6815bdf3da80f059683f440` found that GitHub contained nine
+  resolved threads before the new finding, while five canonical checkpoint
+  statements said eight/eight. The new P1 thread `r4056768455` is now the sole
+  unresolved thread, making current state `9/10`. This disposition corrects the
+  five historical statements to nine/nine but does not resolve the new thread;
+  T023l exact-head publication, inventory, review, resolution, and refreshed
+  effective-head evidence remain pending.
 
 ## Implementation Agent Feedback
 
@@ -328,6 +345,13 @@
   T023j/T023k: atomically precache all hashed build assets and prove a generated,
   never-application-loaded A chunk survives B deployment through retained A
   cache. Keep only the documented large unhashed page images excluded.
+- R049-008 / thread `r4056768455` — **accepted task (P1 process evidence)**.
+  Five canonical checkpoint statements undercounted GitHub review threads as
+  eight/eight; the authoritative pre-finding state was nine/nine. Correct all
+  five consistently and preserve a separate post-finding state of nine/ten with
+  this thread solely unresolved. Complete bounded task T023l; do not change
+  product behavior or claim ten/ten until GitHub confirms resolution on the
+  corrected exact head.
 - Thread `r4053153086` — **not-needed as a separate task
   (duplicate/already-fixed R049-001)**. The comment targets old commit
   `044e3b018df382b710bd1507ea13a2a9f4e1e18f`; effective product head
@@ -384,14 +408,15 @@
 - Final-validation ordering — R049-001..R049-007 are implemented and verified;
   both duplicate dispositions are complete; prerequisite feature 050 / PR #216
   merged and PR #215 synchronized it without rebase; all required checks and the
-  fresh exact-head review passed; and all eight review threads are resolved.
-  The open, conflict-free, mergeable PR is ready for Orchestrator-invoked final
-  Architect validation followed by Analyst validation. No merge is authorized
-  before those role-owned validations and the final current-head guard.
+  earlier exact-head review passed; and all nine review threads then present
+  were resolved. R049-008 is now accepted/open: current state is `9/10` with
+  `r4056768455` solely unresolved. The PR is not ready for final validation
+  until T023l publishes and verifies the correction, resolves the new thread,
+  refreshes exact-head/effective-head evidence, and confirms `10/10` resolved.
 
 ## Cycle PR Set
 
-- Slice 1 / sole implementation PR: purpose `feature 049 complete implementation`; branch `codex/049-learning-priority-fresh-update`; PR [#215](https://github.com/cucumberfalse/cabadrive/pull/215); effective product head `054cdca609cb57ddf3e42efc669e8105600893cf`; terminal implementation/checkpoint head `7cfe29a3286f36500cae563e399e8fb9ab5023f0`; status ready/open, mergeable without conflicts, all five required checks passed, exact-head review PASS/no findings, `8/8` threads resolved, no accepted follow-up or feedback open; included in final validation: yes.
+- Slice 1 / sole implementation PR: purpose `feature 049 complete implementation`; branch `codex/049-learning-priority-fresh-update`; PR [#215](https://github.com/cucumberfalse/cabadrive/pull/215); effective product head `054cdca609cb57ddf3e42efc669e8105600893cf`; historical terminal implementation/checkpoint head `7cfe29a3286f36500cae563e399e8fb9ab5023f0`; historical status ready/open, mergeable without conflicts, all five required checks passed, exact-head review PASS/no findings, `9/9` threads resolved, and no accepted product follow-up or feedback open. Fresh-review head `e817ab69ff61306de6815bdf3da80f059683f440` has accepted process follow-up R049-008 open and `9/10` threads resolved; refreshed effective content head and final-validation inclusion remain pending T023l exact-head evidence.
 - External prerequisite (F049-GATE-001): dependency-security baseline PR and
   feature 050 PR #216 merged separately to `main` as
   `2a92bcfcb7638d1094f33b28e4c2932fb2e4121e` and is **not** included in feature
@@ -402,11 +427,11 @@
 
 ## Final Architect Validation (Architect-owned)
 
-- Architect validation pass: not yet invoked.
+- Architect validation pass: not ready.
 - Final Architect validation completed at: pending.
-- Invocation state: implementation/process evidence is ready; only Orchestrator
-  may invoke this role-owned validation and record a pass or return.
-- Architect return count: 1 / 10.
+- Invocation state: R049-008/T023l and thread `r4056768455` remain open; final
+  validation must not be invoked until corrected exact-head evidence is current.
+- Architect return count: 2 / 10.
 - Required pass markers when invoked:
   - `Architect validation pass: passed`
   - `Final Architect validation completed at: <ISO 8601 timestamp>`

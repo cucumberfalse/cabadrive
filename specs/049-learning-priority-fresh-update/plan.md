@@ -135,6 +135,24 @@ The implementation slice must re-fetch/verify latest `origin/main` immediately b
      full preflight, all required GitHub checks, and fresh exact-head review
      before either thread is resolved or final validation resumes.
 
+11. **Canonical review-thread evidence correction**
+   - Treat GitHub's review-thread inventory, including duplicate/not-needed
+     threads, as authoritative. The checkpoint before review thread
+     `r4056768455` contained nine total threads and all nine were resolved; do
+     not derive this count from R049 task numbering.
+   - Correct the five stale canonical checkpoint statements from eight/eight to
+     nine/nine (or “nine”), then add a distinct current-state record showing ten
+     total, nine resolved, and `r4056768455` as the sole unresolved thread. A
+     global replacement to ten/ten is forbidden because it would falsify both
+     the historical checkpoint and current state.
+   - Keep the change bounded to feature-memory/process evidence. It must not
+     alter product code, tests, runtime docs, dependencies, or sibling PR #214.
+     Once committed under the assigned implementation/process slice, inspect
+     the exact-head GitHub thread list, obtain fresh exact-head review, resolve
+     the new thread against the corrected evidence, and record the resulting
+     ten/ten state plus the new effective content/current head before returning
+     to final Architect validation.
+
 ## Key Design Decisions
 
 - **Schema bump to v3:** new canonical durable data is not optional v2 decoration. Explicit v2 migration avoids treating existing payloads as corrupt and makes import/export version semantics honest.
@@ -175,6 +193,7 @@ The implementation slice must re-fetch/verify latest `origin/main` immediately b
 | Full quality | `pnpm run typecheck`, `lint`, `format:check`, `test`, `build`, `test:e2e`, `preflight` | all pass on candidate head or exact unrelated blocker recorded |
 | Runtime | isolated `make build/up/down` on free project/port | HTTP smoke, offline-capable app, no sibling compose mutation |
 | Scope/process | `git diff --check`, scoped diff, feature-memory check, PR/review evidence | no nginx/Docker/CI/sibling mutation; docs/tasks/evidence current |
+| Review-thread ledger | exact-head GitHub thread inventory + canonical-memory scan | historical checkpoint is consistently 9/9; post-finding state is 9/10 with only `r4056768455` open until resolution; final refreshed state is 10/10 with no unresolved ID |
 
 ## Risks And Mitigations
 
@@ -191,6 +210,9 @@ The implementation slice must re-fetch/verify latest `origin/main` immediately b
 - Retained cache growth: documented accepted limitation, owned by later ТЗ-13 reuse/cleanup work; correctness wins in this feature.
 - SW browser tests are flaky: use deterministic local same-origin server, explicit worker states, unique temporary build IDs, bounded waits, and clean test-owned browser context/cache only.
 - PR #214 conflict: never edit its files; if merged main moves, Orchestrator decides fresh-base/update handling before implementation.
+- Review evidence undercounts duplicate threads: enumerate GitHub threads rather
+  than deriving a count from Architect dispositions, scan every canonical count,
+  and preserve separate historical and current-state ledgers.
 
 ## Finalization
 

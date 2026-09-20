@@ -269,6 +269,19 @@ no change to localStorage; and no nginx/Docker/CI scope expansion.
   manual page images excluded. The higher install/storage cost is accepted to
   preserve local-first executable integrity; a quota/fetch failure must abort
   the new install and keep the previous ready build.
+- **R049-008 — canonical review-thread evidence count (P1, thread
+  `r4056768455`) — accepted as a bounded process-evidence task.** GitHub's
+  authoritative review-thread inventory contained nine resolved threads before
+  this new review finding, while five canonical `tasks.md` statements reported
+  eight/eight. Correct those five historical checkpoint statements to
+  nine/nine (or “nine”), then separately record the post-finding state as ten
+  total threads with nine resolved and only `r4056768455` unresolved. Do not
+  rewrite the historical checkpoint as ten/ten and do not infer totals from the
+  number of accepted Architect tasks, because duplicate/not-needed review
+  threads still exist in GitHub. After the evidence-only correction is
+  committed, obtain a fresh exact-head thread inventory and Review Agent pass,
+  resolve `r4056768455` only against that corrected head, and refresh the
+  effective-content-head/current-head evidence before final validation.
 
 ## Review And Completion Requirements
 
@@ -289,9 +302,22 @@ no change to localStorage; and no nginx/Docker/CI scope expansion.
   `da8cfe14a92a3b8bc0e4bd20a0a450853671a225` and effective product head
   `24e3ddae9f04a7da22974b3e5b7cdd6be0f0822f` are not final-validation
   candidates while either accepted task or either review thread remains open.
+- Accepted follow-up R049-008 is limited to canonical process-memory accuracy:
+  the pre-finding checkpoint must consistently state nine of nine resolved,
+  while the current post-finding checkpoint must state nine of ten resolved
+  until `r4056768455` is resolved. Final validation is prohibited while any of
+  the five stale counts remains, the new thread is unresolved, or fresh
+  exact-head inventory/review and effective-head evidence are absent.
 - Feature 050 is a separate dependency-security prerequisite, not part of this
   cycle PR set. It must merge first; then PR #215 must be synchronized with the
   verified updated `origin/main`, receive a new exact head, and rerun all
   required checks and review before final Architect validation.
 - Orchestrator records the complete cycle PR set and invokes final Architect validation before final Analyst validation. Both validate the same effective content head; later non-evidence changes make validation stale. Architect return limit is 10 and Analyst return limit is 5.
 - Merge still requires green configured checks, no blocking review threads/conflicts, acceptance evidence, current process memory, feedback dispositions, current-head guard, and no exceptional human blocker.
+
+Negative evidence scenario: a local count based only on accepted findings, or a
+blanket text replacement that labels the new thread resolved before its fix,
+must fail review. Verification must enumerate the authoritative GitHub thread
+inventory on the corrected exact head, assert its total and resolved/unresolved
+partition, identify every unresolved thread ID, and reconcile those values with
+all canonical cycle/checkpoint statements.
