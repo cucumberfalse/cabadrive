@@ -7,7 +7,7 @@
 - Analyst/Architect handoff: `codex/049-learning-priority-fresh-update` in `/Users/chap/devel/cabadrive-worktrees/049-learning-priority-fresh-update`.
 - Delivery decision: one implementation PR slice continuing this handoff only after explicit Orchestrator assignment and latest-main re-verification.
 - Parallel work: preserve all sibling state. PR #214 `claude/049-nginx-caching-security` owns nginx/Docker/CI and is excluded.
-- Cycle PR set: sole implementation PR [#215](https://github.com/cucumberfalse/cabadrive/pull/215), branch `codex/049-learning-priority-fresh-update`, ready/open, included in final validation. Current PR head before this Architect disposition is `da8cfe14a92a3b8bc0e4bd20a0a450853671a225`; effective product content head is `24e3ddae9f04a7da22974b3e5b7cdd6be0f0822f`. R049-006 and R049-007 are accepted/open, so neither SHA is a final-validation candidate.
+- Cycle PR set: sole implementation PR [#215](https://github.com/cucumberfalse/cabadrive/pull/215), branch `codex/049-learning-priority-fresh-update`, ready/open and included in final validation. At the terminal implementation checkpoint, current PR head `7cfe29a3286f36500cae563e399e8fb9ab5023f0` contains effective product head `054cdca609cb57ddf3e42efc669e8105600893cf`; every accepted follow-up is complete, all eight review threads are resolved, exact-head review passed with no findings, all five required checks passed, and GitHub reports the PR mergeable without conflicts. Final Architect and Analyst validation remain pending.
 - Cleanup: not applicable during implementation; post-completion environment cleanup, if assigned, belongs only to Cleanup Agent.
 
 ## Setup And Test-First
@@ -43,7 +43,7 @@
 
 - [x] T021 Review Agent review exact PR head for data loss/migration, strict import/recovery, exact-once streak/cap, StrictMode exposure, comparator precedence/session stability, SW freshness/offline/open-tab safety, feature-048 regression, two-build evidence, docs, PR #214 exclusion, and role/process compliance. Review of product head `390f6c87e1cc16c0ac01a2657732726d771df74b` produced four unique SW/update-manager findings across five open threads and no Progress/Learn findings; reviewer edited nothing.
 - [x] T022 Orchestrator route every review and Implementation Agent feedback item to Architect. Architect disposition accepts all four unique review findings as tasks R049-001..R049-004; `r4037167293` duplicates primary `r4037166445`. Existing Implementation Agent and OSV-gate dispositions remain unchanged.
-- [ ] T023 Implementation Agent complete accepted follow-ups in the assigned PR slice, refresh affected evidence/process memory, and obtain fresh review/check results.
+- [x] T023 Implementation Agent complete accepted follow-ups in the assigned PR slice, refresh affected evidence/process memory, and obtain fresh review/check results.
 - [x] T023a R049-001: make install precache requests explicitly bypass/revalidate
   the browser HTTP cache while preserving all-or-nothing installation. Add a
   generated-SW regression and change the A/B server fixture so shell A is
@@ -61,7 +61,7 @@
   availability in a non-initiating tab without reloading it; keep exactly-one
   reload for the initiating tab. Add a multi-tab-equivalent regression and use
   it to resolve primary thread `r4037166445` plus duplicate `r4037167293`.
-- [ ] T023e Run focused service-worker generation/update-manager tests, the
+- [x] T023e Run focused service-worker generation/update-manager tests, the
   two-build Chromium matrix, full preflight, feature-memory/repository/scope
   guards, and fresh exact-head Review Agent review. Record results/head and
   resolve the corresponding original review threads only after their evidence
@@ -77,7 +77,7 @@
   export/import, and atomic rejection of reverse/noncanonical order. Preserve
   storage key/version/schema plus v1/v2 migration/backup, local recovery,
   reset/undo, unknown retention, cap/quota, and pruning behavior.
-- [ ] T023h Re-run the focused progress-store suite, typecheck, lint/format,
+- [x] T023h Re-run the focused progress-store suite, typecheck, lint/format,
   repository/feature-memory/scope guards, full preflight, every required GitHub
   check, and fresh exact-head Review Agent review after T023g. Record the new
   effective content head and evidence before resolving `r4039940004`. Resolve
@@ -98,7 +98,7 @@
   runtime path. Update collector/generator tests and preserve all-or-nothing
   install failure, retained version caches, current-first lookup, and feature
   048 error semantics.
-- [ ] T023k Replace/extend the synthetic A/B fixture with executable A/B/C
+- [x] T023k Replace/extend the synthetic A/B fixture with executable A/B/C
   evidence. A is the legacy cache-first/no-banner worker; complete B activates
   through the verified missing marker without a page message; marked B keeps C
   waiting until the banner applies it. Generate A's unique hashed lazy chunk via
@@ -113,7 +113,17 @@
 
 ## Final Validation And Completion
 
-- [ ] T024 Orchestrator record the complete cycle PR set, current head/checks/reviews/conflicts, acceptance evidence, feedback dispositions, effective content head, and cleanup applicability/refusal evidence.
+- [x] T024 Under Orchestrator coordination, record the complete cycle PR set,
+  current head/checks/reviews/conflicts, acceptance evidence, feedback
+  dispositions, effective content head, and cleanup applicability/refusal
+  evidence. At the terminal implementation checkpoint
+  `7cfe29a3286f36500cae563e399e8fb9ab5023f0`, required checks `AI Review`,
+  `baseline-checks`, `docker-validation`, `guard`, and `osv-scan` all passed;
+  exact-head review reported PASS/no findings; all `8/8` review threads were
+  resolved; GitHub reported the open PR mergeable without conflicts; acceptance
+  evidence and all Architect dispositions were current; no Implementation Agent
+  feedback remained unresolved; and cleanup was not assigned/applicable before
+  final validation.
 - [ ] T025 Architect final validation (only when invoked): inspect the entire cycle PR set, all tasks/dispositions/guidance/open state/process memory/evidence/docs and customer intent in spirit. On pass append exact marker lines and full effective SHA below. Architect return count maximum: 10.
 - [ ] T026 Analyst final validation only after T025 passes: validate the original outcome in spirit and letter and append Analyst-owned markers to `feature-request.md`. Analyst gaps return to Architect disposition; maximum 5 returns.
 - [ ] T027 Orchestrator run current-PR-head read-only guard. Any later non-evidence content change makes role validation stale; an evidence-only commit must be proven against the same effective content SHA.
@@ -199,8 +209,9 @@
   validation, typecheck, lint, format, negative quality contracts, production
   build, and the complete test matrix passed: Node `569/569`; Playwright `158`
   passed with the two intentional mobile skips for the single-run A/B harness.
-  `git diff --check` also passed. Fresh GitHub checks, exact-head review, and
-  thread resolution remain Orchestrator-owned gates under T023e.
+  `git diff --check` also passed. The later terminal checkpoint below records
+  completion of the Orchestrator-owned checks, exact-head review, and thread
+  resolution required by T023e.
 - Review-follow-up effective implementation content head:
   `602f80beb98bc53d354d71303a39c147c438827b`. This subsequent tasks-only
   commit records the exact SHA and does not alter product behavior, tests,
@@ -219,8 +230,8 @@
   lint, format, negative quality contracts, production build, and full suites
   passed. Node reported `570/570`; Playwright reported `158` passed with the two
   intentional mobile skips for the single-run A/B service-worker harness.
-  Exact-head GitHub checks/review and thread resolution remain pending portions
-  of T023h owned by Orchestrator coordination.
+  The later terminal checkpoint below records completion of T023h's exact-head
+  GitHub checks, review, and thread resolution under Orchestrator coordination.
 - R049-005 effective implementation content head:
   `24e3ddae9f04a7da22974b3e5b7cdd6be0f0822f`. This subsequent tasks-only
   commit records the exact SHA and does not alter product behavior or tests.
@@ -250,12 +261,22 @@
   validation, typecheck, lint, format, negative quality contracts, production
   build, and full suites passed. Node reported `572/572`; Playwright reported
   `158` passed with the two intentional mobile skips for the single-run service
-  worker harness. Exact-head GitHub checks/review remain pending portions of
-  T023k under Orchestrator coordination.
+  worker harness. The later terminal checkpoint below records completion of
+  T023k's exact-head GitHub checks/review under Orchestrator coordination.
 - R049-006/R049-007 effective implementation content head:
   `054cdca609cb57ddf3e42efc669e8105600893cf`. This subsequent tasks-only
   commit records the exact SHA and does not alter product behavior, tests, or
   durable runtime documentation.
+- Terminal implementation/checkpoint evidence (2026-09-20): on exact PR head
+  `7cfe29a3286f36500cae563e399e8fb9ab5023f0`, GitHub checks `AI Review`,
+  `baseline-checks`, `docker-validation`, `guard`, and `osv-scan` all passed;
+  exact-head Review Agent outcome was PASS with no findings; all `8/8` review
+  threads were resolved; and GitHub reported PR #215 open and mergeable without
+  conflicts. The full local evidence remained green (`572/572` Node; `158`
+  Playwright passed with two intentional skips), every acceptance criterion has
+  executable or durable evidence above, F049-IA-001 and F049-GATE-001 have
+  Architect dispositions, no feedback remains unresolved, and no cleanup scope
+  was assigned before final validation.
 
 ## Implementation Agent Feedback
 
@@ -359,43 +380,31 @@
   refresh becomes a scoped follow-up; waiving the required OSV gate is not an
   allowed disposition.
 
-- Follow-up ordering — R049-001..R049-004 are feature 049 product fixes and
-  must land in PR #215 before final validation. Feature 050 remains a separate
-  prerequisite PR and must merge first; PR #215 then synchronizes from verified
-  updated `origin/main`, reruns all required gates and exact-head review, and
-  only afterward proceeds to T024/T025. The current head
-  `0fd52a859b7df1e33f71c80038ee1feb53525db3` is therefore not eligible for
-  final Architect validation.
-- Subsequent-review ordering — R049-005 is accepted and remains open. Current PR
-  head `ec2f7c8f939ac40246c3d5c05cc19766e5f00c67` is **not ready for final
-  Architect validation**. Implementation Agent must complete T023g, then
-  Orchestrator must obtain T023h evidence and a fresh exact-head review before
-  T024/T025. `r4053153086` adds no implementation work because it duplicates the
-  already-completed R049-001 at the current product head.
-- Latest-review ordering — R049-006 and R049-007 are accepted and open. Current
-  PR head `da8cfe14a92a3b8bc0e4bd20a0a450853671a225` and effective product head
-  `24e3ddae9f04a7da22974b3e5b7cdd6be0f0822f` are **not ready for final
-  Architect validation**. Implementation Agent must complete T023i-T023k;
-  Orchestrator must then obtain all focused/full/required-check evidence, resolve
-  both threads only against the new exact head, and commission fresh review
-  before T024/T025.
+- Final-validation ordering — R049-001..R049-007 are implemented and verified;
+  both duplicate dispositions are complete; prerequisite feature 050 / PR #216
+  merged and PR #215 synchronized it without rebase; all required checks and the
+  fresh exact-head review passed; and all eight review threads are resolved.
+  The open, conflict-free, mergeable PR is ready for Orchestrator-invoked final
+  Architect validation followed by Analyst validation. No merge is authorized
+  before those role-owned validations and the final current-head guard.
 
 ## Cycle PR Set
 
-- Slice 1 / sole implementation PR: purpose `feature 049 complete implementation`; branch `codex/049-learning-priority-fresh-update`; PR [#215](https://github.com/cucumberfalse/cabadrive/pull/215); effective product content head before this disposition `24e3ddae9f04a7da22974b3e5b7cdd6be0f0822f`; current PR head before this disposition `da8cfe14a92a3b8bc0e4bd20a0a450853671a225`; status ready/open with accepted implementation follow-ups R049-006/R049-007 pending; included in final validation: yes, only after a new implementation head, checks, thread resolution, and fresh exact-head review.
+- Slice 1 / sole implementation PR: purpose `feature 049 complete implementation`; branch `codex/049-learning-priority-fresh-update`; PR [#215](https://github.com/cucumberfalse/cabadrive/pull/215); effective product head `054cdca609cb57ddf3e42efc669e8105600893cf`; terminal implementation/checkpoint head `7cfe29a3286f36500cae563e399e8fb9ab5023f0`; status ready/open, mergeable without conflicts, all five required checks passed, exact-head review PASS/no findings, `8/8` threads resolved, no accepted follow-up or feedback open; included in final validation: yes.
 - External prerequisite (F049-GATE-001): dependency-security baseline PR and
   feature 050 PR #216 merged separately to `main` as
   `2a92bcfcb7638d1094f33b28e4c2932fb2e4121e` and is **not** included in feature
   049's cycle PR set. PR #215 already synchronized that verified main through
   merge commit `1f5ea3cef936d2be9b9179842fd897fa76ed93bd`; R049-005 and the
-  subsequent exact-head gates are the remaining pre-validation work.
+  all subsequent implementation, thread-resolution, required-check, and
+  exact-head-review gates are complete.
 
 ## Final Architect Validation (Architect-owned)
 
-- Architect validation pass: not ready.
+- Architect validation pass: not yet invoked.
 - Final Architect validation completed at: pending.
-- Return reason: accepted review findings R049-006/R049-007 require
-  role-appropriate implementation and fresh exact-head evidence before a pass.
+- Invocation state: implementation/process evidence is ready; only Orchestrator
+  may invoke this role-owned validation and record a pass or return.
 - Architect return count: 1 / 10.
 - Required pass markers when invoked:
   - `Architect validation pass: passed`
