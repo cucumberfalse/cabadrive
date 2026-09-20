@@ -7,7 +7,6 @@ import vm from "node:vm";
 import {
   collectInstallPrecacheAssets,
   generateServiceWorker,
-  isManualDynamicChunk,
   isManualPageImageAsset,
   shouldInstallPrecacheAsset,
 } from "../scripts/generate-service-worker.mjs";
@@ -48,11 +47,10 @@ function withTempDist(callback) {
   }
 }
 
-test("service worker install precache excludes deferred manual assets only", () => {
+test("service worker precaches hashed deferred assets but excludes manual page images", () => {
   withTempDist((dist) => {
     const assets = collectInstallPrecacheAssets(dist);
 
-    assert.equal(isManualDynamicChunk("/assets/manual4Ruedas-def456.js"), true);
     assert.equal(
       isManualPageImageAsset(
         "/content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-001.jpg",
@@ -75,7 +73,7 @@ test("service worker install precache excludes deferred manual assets only", () 
       isManualPageImageAsset("/content/assets/manuals/other-local-guide/pages/page-001.jpg"),
       false,
     );
-    assert.equal(shouldInstallPrecacheAsset("/assets/manual4Ruedas-def456.js"), false);
+    assert.equal(shouldInstallPrecacheAsset("/assets/manual4Ruedas-def456.js"), true);
     assert.equal(shouldInstallPrecacheAsset("/assets/manual4Ruedas-def456.css"), true);
     assert.equal(
       shouldInstallPrecacheAsset(
@@ -104,6 +102,7 @@ test("service worker install precache excludes deferred manual assets only", () 
       "/assets/index-abc123.js",
       "/assets/manifest-xyz789.js",
       "/assets/manual4Ruedas-def456.css",
+      "/assets/manual4Ruedas-def456.js",
       "/content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/cover.jpg",
       "/content/assets/manuals/other-local-guide/pages/page-001.jpg",
       "/index.html",
@@ -111,12 +110,12 @@ test("service worker install precache excludes deferred manual assets only", () 
   });
 });
 
-test("generated service worker keeps runtime GET caching for the manual chunk", () => {
+test("generated service worker precaches manual JS and keeps runtime GET caching", () => {
   withTempDist((dist) => {
     const { assets, body } = generateServiceWorker({ dist, timestamp: 12345 });
     const generated = readFileSync(join(dist, "sw.js"), "utf8");
 
-    assert.equal(assets.includes("/assets/manual4Ruedas-def456.js"), false);
+    assert.equal(assets.includes("/assets/manual4Ruedas-def456.js"), true);
     assert.equal(
       assets.includes(
         "/content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-001.jpg",
@@ -138,7 +137,7 @@ test("generated service worker keeps runtime GET caching for the manual chunk", 
     assert.match(generated, /cache\.addAll\(requests\)/);
     assert.match(generated, /fetch\(event\.request\)/);
     assert.match(generated, /currentCache\.put\(event\.request, response\.clone\(\)\)/);
-    assert.doesNotMatch(generated, /\/assets\/manual4Ruedas-def456\.js/);
+    assert.match(generated, /\/assets\/manual4Ruedas-def456\.js/);
     assert.doesNotMatch(
       generated,
       /\/content\/assets\/manuals\/gcba-manual-vehiculo-4-ruedas-2023\/pages\/page-001\.jpg/,
@@ -238,8 +237,12 @@ test("generated service worker fetch handler has correct offline fallbacks", () 
     const installHandler = generated.match(
       /self\.addEventListener\("install",[\s\S]*?\n\}\);/,
     )?.[0];
-    assert.doesNotMatch(installHandler, /skipWaiting/);
+    assert.match(installHandler, /if \(existingMarker\) return;/u);
+    assert.match(installHandler, /await self\.skipWaiting\(\)/u);
+    assert.doesNotMatch(installHandler, /event\.waitUntil\(self\.skipWaiting/u);
     assert.match(generated, /event\.data\?\.type === "SKIP_WAITING"/u);
+    assert.match(generated, /cabadrive-update-protocol-v1/u);
+    assert.match(generated, /prompted-activation-v1/u);
     assert.doesNotMatch(generated, /caches\.delete/);
     assert.match(generated, /new Request\(event\.request, \{ cache: "no-store" \}\)/);
     assert.match(generated, /currentCache\.match\(event\.request, \{ ignoreSearch: true \}\)/);
@@ -251,4 +254,116 @@ test("generated service worker fetch handler has correct offline fallbacks", () 
     assert.match(generated, /await matchRetainedCabadriveCache\(event\.request\)/);
     assert.match(generated, /return Response\.error\(\);/);
   });
+});
+
+test("first prompted worker persists its fixed marker before compatibility activation", async () => {
+  let body;
+  withTempDist((dist) => {
+    body = generateServiceWorker({ dist, timestamp: 12345 }).body;
+  });
+  const handlers = new Map();
+  const protocolEntries = new Map();
+  let skipWaitingCalls = 0;
+  const context = vm.createContext({
+    Request: class Request {
+      constructor(input, options = {}) {
+        this.input = input;
+        this.cache = options.cache;
+      }
+    },
+    Response,
+    fetch: async () => new Response("ok"),
+    caches: {
+      open: async (name) =>
+        name === "cabadrive-update-protocol-v1"
+          ? {
+              match: async (key) => protocolEntries.get(key)?.clone(),
+              put: async (key, response) => protocolEntries.set(key, response.clone()),
+              delete: async (key) => protocolEntries.delete(key),
+            }
+          : { addAll: async () => undefined },
+    },
+    self: {
+      addEventListener: (name, handler) => handlers.set(name, handler),
+      clients: { claim: async () => undefined },
+      skipWaiting: async () => {
+        skipWaitingCalls += 1;
+      },
+    },
+  });
+  vm.runInContext(body, context);
+
+  let installPromise;
+  handlers.get("install")({ waitUntil: (promise) => (installPromise = promise) });
+  await installPromise;
+
+  assert.equal(skipWaitingCalls, 1);
+  assert.equal(protocolEntries.size, 1);
+  assert.equal(await [...protocolEntries.values()][0].text(), "prompted-activation-v1");
+});
+
+test("marked workers stay waiting and marker failures abort compatibility activation", async () => {
+  let body;
+  withTempDist((dist) => {
+    body = generateServiceWorker({ dist, timestamp: 12345 }).body;
+  });
+  const runInstall = async ({ marked = false, failPrecache = false, failMarker = false } = {}) => {
+    const handlers = new Map();
+    let skipWaitingCalls = 0;
+    let protocolOpenCalls = 0;
+    const marker = marked ? new Response("prompted-activation-v1") : undefined;
+    const context = vm.createContext({
+      Request: class Request {
+        constructor(input, options = {}) {
+          this.input = input;
+          this.cache = options.cache;
+        }
+      },
+      Response,
+      fetch: async () => new Response("ok"),
+      caches: {
+        open: async (name) => {
+          if (name !== "cabadrive-update-protocol-v1")
+            return {
+              addAll: async () => {
+                if (failPrecache) throw new Error("precache failed");
+              },
+            };
+          protocolOpenCalls += 1;
+          return {
+            match: async () => marker?.clone(),
+            put: async () => {
+              if (failMarker) throw new Error("marker failed");
+            },
+            delete: async () => true,
+          };
+        },
+      },
+      self: {
+        addEventListener: (name, handler) => handlers.set(name, handler),
+        clients: { claim: async () => undefined },
+        skipWaiting: async () => {
+          skipWaitingCalls += 1;
+        },
+      },
+    });
+    vm.runInContext(body, context);
+    let installPromise;
+    handlers.get("install")({ waitUntil: (promise) => (installPromise = promise) });
+    const result = await Promise.allSettled([installPromise]);
+    return { result: result[0], skipWaitingCalls, protocolOpenCalls };
+  };
+
+  assert.deepEqual(await runInstall({ marked: true }), {
+    result: { status: "fulfilled", value: undefined },
+    skipWaitingCalls: 0,
+    protocolOpenCalls: 1,
+  });
+  const precacheFailure = await runInstall({ failPrecache: true });
+  assert.equal(precacheFailure.result.status, "rejected");
+  assert.equal(precacheFailure.skipWaitingCalls, 0);
+  assert.equal(precacheFailure.protocolOpenCalls, 0);
+  const markerFailure = await runInstall({ failMarker: true });
+  assert.equal(markerFailure.result.status, "rejected");
+  assert.equal(markerFailure.skipWaitingCalls, 0);
 });

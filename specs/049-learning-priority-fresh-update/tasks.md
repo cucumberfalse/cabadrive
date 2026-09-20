@@ -84,7 +84,7 @@
   `r4053153086` without a new product task as an already-fixed duplicate of
   R049-001, citing current `cache: "reload"`, atomic `addAll`, generated-worker,
   and cacheable-A/offline-B/failed-B evidence.
-- [ ] T023i R049-006 / thread `r4053176084`: test-first implement a fixed
+- [x] T023i R049-006 / thread `r4053176084`: test-first implement a fixed
   `cabadrive-update-protocol-v1` cache plus `prompted-activation-v1` sentinel.
   After and only after the complete install precache succeeds, an absent marker
   must be written and read back before the worker invokes `skipWaiting()` for
@@ -92,7 +92,7 @@
   failure rejects install and preserves the active legacy build; an existing
   marker must never invoke automatic activation. The marker is build-independent,
   outside `cabadrive-static-*`, retained, and excluded from runtime matching.
-- [ ] T023j R049-007 / thread `r4053196269`: remove the special exclusion for
+- [x] T023j R049-007 / thread `r4053196269`: remove the special exclusion for
   deferred `manual4Ruedas-*.js` and atomically precache every emitted hashed
   `/assets/` dependency. Keep the large unhashed manual page-image corpus on the
   runtime path. Update collector/generator tests and preserve all-or-nothing
@@ -224,6 +224,34 @@
 - R049-005 effective implementation content head:
   `24e3ddae9f04a7da22974b3e5b7cdd6be0f0822f`. This subsequent tasks-only
   commit records the exact SHA and does not alter product behavior or tests.
+- R049-006/R049-007 test-first evidence (2026-09-20): after adding the marker,
+  hashed-manual-asset, and negative install regressions but before product
+  changes, `pnpm exec node --test tests/service-worker-generation.test.mjs`
+  failed five new/updated assertions while the two unchanged executable fetch
+  cases passed. After implementation the generated-worker suite passed `7/7`:
+  first unmarked install writes/verifies the fixed sentinel before one
+  `skipWaiting`, a marked install never auto-activates, precache failure never
+  opens/marks the protocol cache, marker-write failure rejects, and the real
+  deferred manual JS is part of the atomic asset list while page JPGs remain
+  excluded.
+- R049-006/R049-007 browser evidence (2026-09-20): production build passed and
+  the rewritten Chromium fixture passed `2/2`. It invokes the production asset
+  collector, asserts generated A contains a unique never-loaded lazy hash, and
+  never edits the generated `ASSETS` list. Legacy cache-first A transitions to
+  complete B without a page message; B writes the fixed marker; C remains
+  waiting until the banner applies it with exactly one initiating navigation;
+  the old A document first-loads its removed hash from retained A cache. A
+  naturally generated then deleted required asset proves a failed compatibility
+  install leaves A offline-ready and leaves the marker absent before valid B
+  retries successfully. VM evidence separately forces marker persistence
+  failure and proves no activation.
+- R049-006/R049-007 full preflight evidence (2026-09-20): authorized
+  `pnpm run preflight` exited `0`; feature-memory/repository guards, content
+  validation, typecheck, lint, format, negative quality contracts, production
+  build, and full suites passed. Node reported `572/572`; Playwright reported
+  `158` passed with the two intentional mobile skips for the single-run service
+  worker harness. Exact-head GitHub checks/review remain pending portions of
+  T023k under Orchestrator coordination.
 
 ## Implementation Agent Feedback
 

@@ -1,6 +1,15 @@
 import { expect, test } from "@playwright/test";
+import { execFileSync } from "node:child_process";
 import { createServer, type Server } from "node:http";
-import { cpSync, mkdtempSync, readFileSync, rmSync, statSync, writeFileSync } from "node:fs";
+import {
+  cpSync,
+  mkdtempSync,
+  readFileSync,
+  rmSync,
+  statSync,
+  unlinkSync,
+  writeFileSync,
+} from "node:fs";
 import { tmpdir } from "node:os";
 import { extname, join } from "node:path";
 
@@ -13,40 +22,63 @@ let origin = "";
 let root = "";
 let activeBuild = "A";
 let navigationRequests = 0;
+const legacyLazyPath = "/assets/manual4Ruedas-a-legacy-only.js";
 
-function prepareBuild(name: "A" | "B" | "broken") {
+function generateProductionWorker(target: string, timestamp: string) {
+  execFileSync(
+    process.execPath,
+    [
+      "--input-type=module",
+      "--eval",
+      'import { generateServiceWorker } from "./scripts/generate-service-worker.mjs"; generateServiceWorker({ dist: process.argv[1], timestamp: process.argv[2] });',
+      target,
+      timestamp,
+    ],
+    { cwd: process.cwd() },
+  );
+}
+
+function makeLegacyWorker(generated: string) {
+  const assets = generated.match(/const ASSETS = \[[\s\S]*?\];/u)?.[0];
+  if (!assets?.includes(legacyLazyPath)) throw new Error("generated A precache omitted lazy chunk");
+  return `const CACHE_NAME = "cabadrive-static-test-A";
+${assets}
+self.addEventListener("install", (event) => {
+  event.waitUntil(caches.open(CACHE_NAME).then((cache) => cache.addAll(ASSETS)).then(() => self.skipWaiting()));
+});
+self.addEventListener("activate", (event) => event.waitUntil(self.clients.claim()));
+self.addEventListener("fetch", (event) => {
+  if (event.request.method !== "GET") return;
+  event.respondWith(
+    caches.match(event.request, { ignoreSearch: event.request.mode === "navigate" }).then(
+      (cached) => cached ?? fetch(event.request),
+    ),
+  );
+});
+`;
+}
+
+function prepareBuild(name: "A" | "B" | "C" | "broken") {
   const target = join(root, name);
   cpSync("dist", target, { recursive: true });
+  rmSync(join(target, "content"), { recursive: true, force: true });
   const marker = name === "broken" ? "BROKEN" : name;
   const indexPath = join(target, "index.html");
   const originalIndex = readFileSync(indexPath, "utf8");
-  const shellAssets = [
-    "/",
-    "/index.html",
-    ...[...originalIndex.matchAll(/(?:src|href)="([^"]+)"/gu)]
-      .map((match) => match[1])
-      .filter((path) => path.startsWith("/")),
-  ];
   const index = originalIndex.replace(
     "<body>",
     `<body><div id="build-marker" style="position:fixed;z-index:9999">Build ${marker}</div>`,
   );
   writeFileSync(indexPath, index);
-  const swPath = join(target, "sw.js");
-  let sw = readFileSync(swPath, "utf8").replace(
-    /CACHE_PREFIX \+ "[^"]+"/,
-    `CACHE_PREFIX + "test-${name}"`,
-  );
   if (name === "A") {
-    writeFileSync(join(target, "assets", "a-only.js"), "globalThis.aOnlyLoaded = true;");
-    shellAssets.push("/assets/a-only.js");
+    writeFileSync(join(target, legacyLazyPath.slice(1)), "globalThis.aOnlyLoaded = true;");
   }
-  if (name === "broken") shellAssets.push("/missing-install.js");
-  sw = sw.replace(
-    /const ASSETS = \[[\s\S]*?\];/u,
-    `const ASSETS = ${JSON.stringify(shellAssets)};`,
-  );
-  writeFileSync(swPath, sw);
+  const missingPath = join(target, "assets", "missing-install.js");
+  if (name === "broken") writeFileSync(missingPath, "missing after generation");
+  generateProductionWorker(target, `test-${name}`);
+  const swPath = join(target, "sw.js");
+  if (name === "A") writeFileSync(swPath, makeLegacyWorker(readFileSync(swPath, "utf8")));
+  if (name === "broken") unlinkSync(missingPath);
 }
 
 function contentType(path: string) {
@@ -62,6 +94,7 @@ test.beforeAll(async () => {
   root = mkdtempSync(join(tmpdir(), "cabadrive-two-build-"));
   prepareBuild("A");
   prepareBuild("B");
+  prepareBuild("C");
   prepareBuild("broken");
   server = createServer((request, response) => {
     const pathname = new URL(request.url ?? "/", "http://localhost").pathname;
@@ -99,7 +132,7 @@ test.beforeEach(() => {
   navigationRequests = 0;
 });
 
-test("ordinary online reload gets B, apply reloads once, progress and old chunks survive", async ({
+test("legacy A auto-activates complete B once, then C waits for the prompt", async ({
   page,
   context,
 }) => {
@@ -110,6 +143,9 @@ test("ordinary online reload gets B, apply reloads once, progress and old chunks
   await expect
     .poll(() => page.evaluate(() => navigator.serviceWorker.controller !== null))
     .toBe(true);
+  const oldATab = await context.newPage();
+  await oldATab.goto(origin);
+  await expect(oldATab.locator("#build-marker")).toHaveText("Build A");
   await page.evaluate(() => {
     const progress = JSON.parse(localStorage.getItem("cabadrive.progress.v1")!) as unknown as {
       learningQuestionStats: Array<{
@@ -132,6 +168,13 @@ test("ordinary online reload gets B, apply reloads once, progress and old chunks
   });
 
   activeBuild = "B";
+  await page.evaluate(async () => {
+    const registration = await navigator.serviceWorker.getRegistration();
+    await registration?.update();
+  });
+  await expect
+    .poll(() => page.evaluate(() => caches.has("cabadrive-update-protocol-v1")))
+    .toBe(true);
   await page.reload();
   await expect(page.locator("#build-marker")).toHaveText("Build B");
   expect(
@@ -143,29 +186,38 @@ test("ordinary online reload gets B, apply reloads once, progress and old chunks
       ).learningQuestionStats.find((item) => item.questionId === "future-content-ticket"),
     ),
   ).toEqual(expect.objectContaining({ showCount: 7, activeMistakePriority: true }));
-  await expect(page.getByText("Доступна новая версия приложения.")).toBeVisible();
+  const retainedChunk = await oldATab.evaluate(async (path) => {
+    const response = await fetch(path);
+    return { ok: response.ok, body: await response.text() };
+  }, legacyLazyPath);
+  expect(retainedChunk).toEqual({ ok: true, body: "globalThis.aOnlyLoaded = true;" });
 
+  activeBuild = "C";
+  await page.evaluate(async () => {
+    const registration = await navigator.serviceWorker.getRegistration();
+    await registration?.update();
+  });
+  await expect
+    .poll(() =>
+      page.evaluate(async () =>
+        Boolean((await navigator.serviceWorker.getRegistration())?.waiting),
+      ),
+    )
+    .toBe(true);
+  await expect(page.getByText("Доступна новая версия приложения.")).toBeVisible();
   navigationRequests = 0;
   await page.getByRole("button", { name: "Обновить" }).click();
-  await expect(page.locator("#build-marker")).toHaveText("Build B");
+  await expect(page.locator("#build-marker")).toHaveText("Build C");
   await expect.poll(() => navigationRequests).toBe(1);
-  const retainedChunk = await page.evaluate(async () => {
-    const response = await fetch("/assets/a-only.js");
-    return { ok: response.ok, body: await response.text() };
-  });
-  expect(retainedChunk).toEqual({ ok: true, body: "globalThis.aOnlyLoaded = true;" });
 
   await context.setOffline(true);
   await page.reload();
-  await expect(page.locator("#build-marker")).toHaveText("Build B");
+  await expect(page.locator("#build-marker")).toHaveText("Build C");
   await expect(page.getByRole("button", { name: /^Учить$/ })).toBeVisible();
   await context.setOffline(false);
 });
 
-test("failed B install keeps A active offline and a later valid update remains retryable", async ({
-  page,
-  context,
-}) => {
+test("failed compatibility install cannot mark or replace legacy A", async ({ page, context }) => {
   await page.goto(origin);
   await page.evaluate(() => navigator.serviceWorker.ready);
   await page.reload();
@@ -176,6 +228,7 @@ test("failed B install keeps A active offline and a later valid update remains r
     await new Promise((resolve) => setTimeout(resolve, 500));
   });
   await expect(page.getByText("Доступна новая версия приложения.")).toHaveCount(0);
+  expect(await page.evaluate(() => caches.has("cabadrive-update-protocol-v1"))).toBe(false);
 
   await context.setOffline(true);
   await page.reload();
@@ -187,5 +240,9 @@ test("failed B install keeps A active offline and a later valid update remains r
     const registration = await navigator.serviceWorker.getRegistration();
     await registration?.update();
   });
-  await expect(page.getByText("Доступна новая версия приложения.")).toBeVisible();
+  await expect
+    .poll(() => page.evaluate(() => caches.has("cabadrive-update-protocol-v1")))
+    .toBe(true);
+  await page.reload();
+  await expect(page.locator("#build-marker")).toHaveText("Build B");
 });
