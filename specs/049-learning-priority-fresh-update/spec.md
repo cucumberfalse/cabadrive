@@ -120,6 +120,18 @@ Migration and recovery:
   This deliberately increases install bandwidth and retained-cache storage;
   any required hashed-asset failure rejects the whole new install, preserving
   the prior ready worker instead of publishing a partial build.
+- That complete-precache guarantee applies only to workers generated with the
+  corrected collector. It cannot retroactively populate the cache of a legacy
+  A worker that excluded `manual4Ruedas-*.js`. For the first legacy transition,
+  the deployment origin must therefore preserve outgoing hashed `/assets/`
+  paths before switching mutable shell files to B. Publication is ordered:
+  capture/stage A's hashed assets into an append-only origin namespace; add all
+  B hashed assets with a fail-closed same-path/same-bytes collision check; then
+  atomically publish B's `index.html`/`sw.js`. Historical hashes are not deleted
+  by later releases until a separately specified bounded-client/cache migration
+  exists. This requirement applies to Docker-first and optional static hosting.
+  B's runtime current-cache miss may fetch the preserved A hash and cache it;
+  no service-worker code is claimed to reconstruct a missing server artifact.
 - A testable `serviceWorkerUpdates` browser boundary registers `/sw.js` with `updateViaCache: "none"`, checks immediately, checks at most hourly for a long-lived SPA, observes `updatefound`/waiting state, and exposes `available/applying` state plus `apply/dismiss` actions to React. Registration/update failure remains non-fatal and must not block study.
 - The compact banner offers `Обновить` and `Позже`. Apply posts `SKIP_WAITING`; exactly the initiating tab reloads once on `controllerchange`, guarded against loops. Other old tabs are not forcibly reloaded and continue through retained-cache fallback.
 - The banner is not the online-reload freshness mechanism: build A's network-first navigation makes an ordinary online reload render deployed build B. Offline reload continues to render the last fully installed current cache.
@@ -143,6 +155,11 @@ Migration and recovery:
 - FR-011: All emitted hashed `/assets/` dependencies are atomically available
   in their build cache before activation, so an old open tab can first-load its
   old lazy chunk after a later build has replaced the origin files.
+- FR-012: The first rollout from the deployed legacy worker preserves its
+  outgoing hashed `/assets/` files at their original URLs before publishing the
+  new shell. A legacy tab whose worker never cached its deferred manual hash can
+  therefore first-load it from the origin after B deployment; destructive
+  replacement that removes that hash is a blocked deployment.
 
 ## Acceptance Criteria And Negative Scenarios
 
@@ -177,6 +194,16 @@ Migration and recovery:
     that chunk from A's generated precache makes the regression fail. Generated
     worker tests also prove all hashed `/assets/` files are included while the
     documented manual page-image exclusion and all-or-nothing install remain.
+14. A migration deployment test uses a faithful legacy A collector that
+    excludes the manual lazy hash and proves Cache Storage has no entry for it
+    before B. The release staging path preserves A's hash at the origin without
+    inserting it into A or B's generated precache. After B controls, the still
+    open A document first-loads that URL successfully from the retained origin;
+    request evidence distinguishes network-origin retention from Cache Storage.
+    A negative destructive B deployment with the A hash absent must fail the
+    staging/deployment gate before shell switch (and the unguarded fixture must
+    demonstrate the otherwise unavoidable 404). Same-path/different-byte
+    collision and incomplete staging also fail closed.
 
 ## Accepted Review Follow-ups
 
@@ -282,6 +309,31 @@ no change to localStorage; and no nginx/Docker/CI scope expansion.
   committed, obtain a fresh exact-head thread inventory and Review Agent pass,
   resolve `r4056768455` only against that corrected head, and refresh the
   effective-content-head/current-head evidence before final validation.
+- **R049-009 — final role validations and current-head guard (P1, thread
+  `r4056774421`) — accepted as a required workflow gate, not a code task.** The
+  finding accurately restates T025-T027 and the repository completion contract:
+  final Architect validation must pass first, final Analyst validation must pass
+  second on the same effective content head, and Orchestrator must then prove any
+  later commit evidence-only and run the current-head guard. This thread remains
+  unresolved while those steps are pending and does not itself require product,
+  test, or runtime changes. Once all implementation/process blockers other than
+  this expected gate are closed, its open state does not prevent Orchestrator
+  from invoking T025/T026; it blocks merge and may be resolved only after T027
+  evidence is recorded.
+- **R049-010 — deployed legacy A lacks the lazy hash (P2, thread
+  `r4056774425`) — accepted; external deployment prerequisite required.** The
+  current test rewrites A from the new collector, so A already precaches the
+  synthetic manual hash. A genuinely deployed legacy worker excluded that hash;
+  after a destructive B deploy neither B nor the browser can recreate bytes that
+  are absent from both A cache and the origin. The viable correction is the
+  append-only hashed-asset publication contract above, with an outgoing-A seed
+  before shell switch. This expands into release staging, Docker/static hosting,
+  and likely nginx/compose/runtime tests that feature 049 explicitly excluded
+  and PR #214 may overlap. Orchestrator must route a separate latest-main Analyst
+  intake and prerequisite PR, coordinate rather than mutate #214, merge that
+  prerequisite first, then synchronize PR #215 and replace the false-positive
+  fixture with the faithful legacy-A/retained-origin regression. No client-only
+  implementation or known-issue waiver is accepted.
 
 ## Review And Completion Requirements
 
@@ -304,10 +356,19 @@ no change to localStorage; and no nginx/Docker/CI scope expansion.
   candidates while either accepted task or either review thread remains open.
 - Accepted follow-up R049-008 is limited to canonical process-memory accuracy:
   the pre-finding checkpoint must consistently state nine of nine resolved,
-  while the current post-finding checkpoint must state nine of ten resolved
-  until `r4056768455` is resolved. Final validation is prohibited while any of
-  the five stale counts remains, the new thread is unresolved, or fresh
+  while its historical post-finding checkpoint must state nine of ten resolved.
+  Replacement review expanded the live ledger to nine of twelve with the three
+  explicitly named unresolved IDs. Final validation is prohibited while any of
+  the five stale counts remains, R049-008/R049-010 remains unresolved, or fresh
   exact-head inventory/review and effective-head evidence are absent.
+- R049-010 and its deployment prerequisite must be complete before final
+  validation. Required evidence includes the faithful legacy cache miss, retained
+  origin hit after B, fail-closed destructive-deploy negative, Docker/static
+  publication documentation, prerequisite merge, PR #215 synchronization, all
+  checks, and fresh exact-head review. R049-009 intentionally remains open until
+  final Architect then Analyst validation and the current-head guard complete;
+  it is a merge gate rather than an implementation blocker once R049-008 and
+  R049-010 are closed.
 - Feature 050 is a separate dependency-security prerequisite, not part of this
   cycle PR set. It must merge first; then PR #215 must be synchronized with the
   verified updated `origin/main`, receive a new exact head, and rerun all
@@ -315,9 +376,13 @@ no change to localStorage; and no nginx/Docker/CI scope expansion.
 - Orchestrator records the complete cycle PR set and invokes final Architect validation before final Analyst validation. Both validate the same effective content head; later non-evidence changes make validation stale. Architect return limit is 10 and Analyst return limit is 5.
 - Merge still requires green configured checks, no blocking review threads/conflicts, acceptance evidence, current process memory, feedback dispositions, current-head guard, and no exceptional human blocker.
 
-Negative evidence scenario: a local count based only on accepted findings, or a
+Negative evidence scenarios: a local count based only on accepted findings, or a
 blanket text replacement that labels the new thread resolved before its fix,
 must fail review. Verification must enumerate the authoritative GitHub thread
 inventory on the corrected exact head, assert its total and resolved/unresolved
 partition, identify every unresolved thread ID, and reconcile those values with
-all canonical cycle/checkpoint statements.
+all canonical cycle/checkpoint statements. A legacy fixture generated with the
+new collector, a test that manually injects the lazy hash into A cache, or a B
+fixture that serves the hash without exercising release staging is not evidence
+for R049-010. Claiming client-only recovery after both cache and origin miss is
+invalid and must block validation.

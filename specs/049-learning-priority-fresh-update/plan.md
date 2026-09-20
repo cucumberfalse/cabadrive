@@ -147,11 +147,48 @@ The implementation slice must re-fetch/verify latest `origin/main` immediately b
      the historical checkpoint and current state.
    - Keep the change bounded to feature-memory/process evidence. It must not
      alter product code, tests, runtime docs, dependencies, or sibling PR #214.
-     Once committed under the assigned implementation/process slice, inspect
-     the exact-head GitHub thread list, obtain fresh exact-head review, resolve
-     the new thread against the corrected evidence, and record the resulting
-     ten/ten state plus the new effective content/current head before returning
-     to final Architect validation.
+     Replacement review subsequently raised two additional threads, so the live
+     ledger is now 9/12. After the correction is published, inspect the exact-head
+     GitHub list and resolve `r4056768455` against that evidence, producing 10/12
+     while R049-009/R049-010 remain open; never rewrite the historical 9/10
+     checkpoint as if all twelve threads existed then.
+
+12. **Legacy-origin hashed-asset retention prerequisite**
+   - Record that current B code cannot recover a legacy A lazy chunk absent from
+     both A Cache Storage and B's origin. Do not add another client cache search,
+     fabricate the old bytes, or treat the new collector as a migration for a
+     worker already deployed.
+   - Orchestrator routes a separate latest-main Analyst intake and prerequisite
+     PR for release staging. Coordinate explicitly with PR #214; do not edit,
+     merge, rebase, or overwrite its nginx/Docker/CI work from this slice.
+   - The prerequisite stages deployments in three ordered phases: snapshot or
+     otherwise seed outgoing A `/assets/` hashes into an append-only served
+     store; add B hashes while rejecting same-path/different-byte collisions or
+     incomplete copies; only then switch mutable B shell/service-worker files.
+     Historical hashes remain served indefinitely until a future bounded-client
+     migration defines a safe deletion point. The Docker-first `make` workflow
+     and optional static-hosting instructions must implement equivalent
+     no-delete semantics, including the first upgrade from a container/site that
+     predates the retained store.
+   - Add deployment-level tests for legacy seeding, ordered shell switch,
+     collision/incomplete-copy failure, repeated idempotent publication, and
+     preservation across restart/update. A destructive deploy that lacks the
+     outgoing hash must be rejected before B is visible.
+   - After the prerequisite merges, synchronize PR #215 with verified main and
+     rewrite the A/B/C browser fixture: generate A with the historical exclusion;
+     assert its cache lacks the lazy hash; stage B while retaining A's origin
+     asset without adding it to generated precache; activate B; first-load the
+     hash from the old A document; prove the request came from retained origin.
+     Include the unretained 404 negative, rerun full local/required checks, and
+     obtain fresh exact-head review.
+
+13. **Final-validation review gate**
+   - Preserve `r4056774421` as an expected unresolved workflow thread until all
+     other accepted work is complete. It requires no code change.
+   - Orchestrator invokes final Architect validation, then final Analyst
+     validation on the same effective content head, then runs the read-only
+     current-PR-head guard and proves any later commit is evidence-only. Only
+     after that evidence exists may the thread be resolved and merge considered.
 
 ## Key Design Decisions
 
@@ -193,7 +230,9 @@ The implementation slice must re-fetch/verify latest `origin/main` immediately b
 | Full quality | `pnpm run typecheck`, `lint`, `format:check`, `test`, `build`, `test:e2e`, `preflight` | all pass on candidate head or exact unrelated blocker recorded |
 | Runtime | isolated `make build/up/down` on free project/port | HTTP smoke, offline-capable app, no sibling compose mutation |
 | Scope/process | `git diff --check`, scoped diff, feature-memory check, PR/review evidence | no nginx/Docker/CI/sibling mutation; docs/tasks/evidence current |
-| Review-thread ledger | exact-head GitHub thread inventory + canonical-memory scan | historical checkpoint is consistently 9/9; post-finding state is 9/10 with only `r4056768455` open until resolution; final refreshed state is 10/10 with no unresolved ID |
+| Review-thread ledger | exact-head GitHub thread inventory + canonical-memory scan | historical checkpoints remain 9/9 then 9/10; current state is 9/12 with the three named IDs; expected sequence is 10/12 after R049-008, 11/12 after R049-010, and 12/12 only after the final-role gate R049-009 |
+| Legacy deploy retention | deployment integration + faithful A/B browser | legacy A cache lacks its lazy hash; staged B origin retains exact A bytes before shell switch; old A document first-loads after B; destructive/collision/incomplete staging fails closed |
+| Final role gate | role-owned markers + read-only current-head guard | Architect passes before Analyst on one effective head; later diff is evidence-only; guard passes before `r4056774421` resolution/merge |
 
 ## Risks And Mitigations
 
@@ -213,6 +252,11 @@ The implementation slice must re-fetch/verify latest `origin/main` immediately b
 - Review evidence undercounts duplicate threads: enumerate GitHub threads rather
   than deriving a count from Architect dispositions, scan every canonical count,
   and preserve separate historical and current-state ledgers.
+- Legacy A never cached its lazy chunk: an append-only origin seeded before shell
+  switch is the only general recovery path; a client-side-only fix is impossible
+  once destructive deployment removes the bytes.
+- Deployment work overlaps PR #214: isolate it in a new latest-main prerequisite,
+  inspect #214 status, and coordinate integration without mutating sibling state.
 
 ## Finalization
 

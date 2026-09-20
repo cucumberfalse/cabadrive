@@ -7,8 +7,8 @@
 - Analyst/Architect handoff: `codex/049-learning-priority-fresh-update` in `/Users/chap/devel/cabadrive-worktrees/049-learning-priority-fresh-update`.
 - Delivery decision: one implementation PR slice continuing this handoff only after explicit Orchestrator assignment and latest-main re-verification.
 - Parallel work: preserve all sibling state. PR #214 `claude/049-nginx-caching-security` owns nginx/Docker/CI and is excluded.
-- Cycle PR set: sole implementation PR [#215](https://github.com/cucumberfalse/cabadrive/pull/215), branch `codex/049-learning-priority-fresh-update`, ready/open and included in final validation. At the terminal implementation checkpoint, current PR head `7cfe29a3286f36500cae563e399e8fb9ab5023f0` contains effective product head `054cdca609cb57ddf3e42efc669e8105600893cf`; every accepted product follow-up was complete, all nine then-existing review threads were resolved, exact-head review passed with no findings, all five required checks passed, and GitHub reported the PR mergeable without conflicts. Fresh review at current head `e817ab69ff61306de6815bdf3da80f059683f440` then created tenth thread `r4056768455`; the current authoritative state is `9/10` resolved with that thread solely unresolved, so final Architect and Analyst validation are not ready.
-- Effective content head: `51cb103e7818cbc36eeff60e4c0d15408a2e9f5b`.
+- Cycle PR set: sole implementation PR [#215](https://github.com/cucumberfalse/cabadrive/pull/215), branch `codex/049-learning-priority-fresh-update`, open and included in final validation only after all blockers close. The historical checkpoint at `7cfe29a3286f36500cae563e399e8fb9ab5023f0` had `9/9` resolved. Exact inventory after replacement review now contains 12 total threads, 9 resolved and three unresolved: `r4056768455` (R049-008 ledger), `r4056774421` (R049-009 final role validations/current-head guard), and `r4056774425` (R049-010 real deployed legacy lazy hash). Final validation is not ready.
+- Effective content head: pending after R049-008/R049-010 correction and prerequisite synchronization; prior marker `51cb103e7818cbc36eeff60e4c0d15408a2e9f5b` is stale.
 - Cleanup: not applicable during implementation; post-completion environment cleanup, if assigned, belongs only to Cleanup Agent.
 
 ## Setup And Test-First
@@ -113,17 +113,34 @@
   resolving either thread.
 - [ ] T023l R049-008 / thread `r4056768455`: keep the five corrected historical
   checkpoint counts at `9/9`/nine, record the distinct current state as `9/10`
-  with only this new thread unresolved, and publish the bounded process-evidence
-  correction without product/test/runtime/dependency/sibling changes. Then
+  with only this thread unresolved at that historical checkpoint, and publish
+  the bounded process-evidence correction without product/test/runtime/dependency/sibling changes. Then
   enumerate the exact-head GitHub thread inventory, obtain fresh exact-head
   Review Agent evidence, resolve `r4056768455` only after the corrected evidence
-  is visible, refresh the resulting `10/10` thread state and effective-content-
-  head/current-head guard evidence, and rerun applicable feature-memory,
-  repository, diff, and required GitHub gates before T024/T025.
+  is visible, refresh the resulting live state from `9/12` to `10/12` while
+  R049-009/R049-010 remain open, and rerun applicable feature-memory, repository,
+  diff, and required GitHub gates before T024/T025.
+- [ ] T023m R049-010 / thread `r4056774425`: Orchestrator create a separate
+  latest-main Analyst intake/prerequisite PR for append-only hashed-asset release
+  staging, explicitly coordinating with and preserving PR #214. Before mutable
+  B shell publication, seed the outgoing legacy A `/assets/` set into the served
+  retained store; add B hashes with same-path/same-byte validation; reject
+  collisions, incomplete staging, or a destructive switch; retain historical
+  hashes until a future bounded migration. Cover Docker-first upgrade/restart
+  and equivalent static-host no-delete instructions/tests, merge the prerequisite,
+  then synchronize PR #215 from verified main.
+- [ ] T023n In PR #215, replace the false-positive legacy fixture: A must use the
+  historical collector exclusion and its Cache Storage must lack the manual lazy
+  hash. Stage B through the merged retention mechanism without injecting that
+  hash into either generated precache; after B activation prove the old A
+  document's first request is served from retained origin. Add the destructive
+  no-retention 404/gate negative, refresh durable docs, run full preflight and all
+  required checks, obtain fresh exact-head review, and resolve `r4056774425` only
+  on that evidence.
 
 ## Final Validation And Completion
 
-- [x] T024 Under Orchestrator coordination, record the complete cycle PR set,
+- [ ] T024 Under Orchestrator coordination, refresh the complete cycle PR set,
   current head/checks/reviews/conflicts, acceptance evidence, feedback
   dispositions, effective content head, and cleanup applicability/refusal
   evidence. At the terminal implementation checkpoint
@@ -137,6 +154,10 @@
 - [ ] T025 Architect final validation (only when invoked): inspect the entire cycle PR set, all tasks/dispositions/guidance/open state/process memory/evidence/docs and customer intent in spirit. On pass append exact marker lines and full effective SHA below. Architect return count maximum: 10.
 - [ ] T026 Analyst final validation only after T025 passes: validate the original outcome in spirit and letter and append Analyst-owned markers to `feature-request.md`. Analyst gaps return to Architect disposition; maximum 5 returns.
 - [ ] T027 Orchestrator run current-PR-head read-only guard. Any later non-evidence content change makes role validation stale; an evidence-only commit must be proven against the same effective content SHA.
+- [ ] T027a R049-009 / thread `r4056774421`: after T025 then T026 pass on the
+  same effective content head and T027 proves the current head/evidence-only
+  delta, record the guard evidence and only then resolve this expected workflow
+  thread. It requires no product implementation but blocks merge.
 - [ ] T028 Orchestrator finalize/merge only with green required checks, no blocking/unresolved review, no conflicts, complete acceptance/process/feedback evidence, matching validation markers, final guards, and no exceptional human blocker. Cleanup, if any, is separately assigned.
 
 ## Decisions
@@ -295,6 +316,13 @@
   five historical statements to nine/nine but does not resolve the new thread;
   T023l exact-head publication, inventory, review, resolution, and refreshed
   effective-head evidence remain pending.
+- Replacement inventory evidence (2026-09-20): authoritative GitHub inspection
+  found 12 total threads, 9 resolved and exactly three unresolved:
+  `r4056768455`, `r4056774421`, and `r4056774425`. The latter demonstrates that
+  the rewritten fixture generated A with the corrected collector and therefore
+  prepopulated the lazy hash; it is not evidence for an already-deployed legacy
+  A whose cache omitted that path. No client-only recovery exists after the
+  origin also removes the bytes.
 
 ## Implementation Agent Feedback
 
@@ -348,10 +376,23 @@
 - R049-008 / thread `r4056768455` — **accepted task (P1 process evidence)**.
   Five canonical checkpoint statements undercounted GitHub review threads as
   eight/eight; the authoritative pre-finding state was nine/nine. Correct all
-  five consistently and preserve a separate post-finding state of nine/ten with
-  this thread solely unresolved. Complete bounded task T023l; do not change
-  product behavior or claim ten/ten until GitHub confirms resolution on the
-  corrected exact head.
+  five consistently and preserve a separate historical post-finding state of
+  nine/ten where this thread was solely unresolved. Replacement review made the
+  live state nine/twelve; complete bounded task T023l without product behavior
+  changes and record ten/twelve after GitHub confirms this thread's resolution.
+- R049-009 / thread `r4056774421` — **accepted workflow gate (P1; no code
+  task)**. Keep open through T025 Architect validation, T026 Analyst validation,
+  and T027 current-head/evidence-only guard; resolve only under T027a. Its
+  expected open state does not block invoking the ordered role validations once
+  R049-008/R049-010 and all other implementation/process work are closed, but it
+  blocks merge.
+- R049-010 / thread `r4056774425` — **accepted task (P2) with external
+  prerequisite**. The current A fixture is generated by the new collector and
+  cannot model deployed legacy A. B cannot retroactively cache an old hash absent
+  from both A cache and B origin. Complete T023m/T023n's outgoing-origin
+  append-only retention, faithful legacy fixture, negative destructive deploy,
+  prerequisite merge/sync, full gates, and fresh review. Do not silently expand
+  PR #215 into PR #214's nginx/Docker/CI scope and do not waive the defect.
 - Thread `r4053153086` — **not-needed as a separate task
   (duplicate/already-fixed R049-001)**. The comment targets old commit
   `044e3b018df382b710bd1507ea13a2a9f4e1e18f`; effective product head
@@ -409,14 +450,14 @@
   both duplicate dispositions are complete; prerequisite feature 050 / PR #216
   merged and PR #215 synchronized it without rebase; all required checks and the
   earlier exact-head review passed; and all nine review threads then present
-  were resolved. R049-008 is now accepted/open: current state is `9/10` with
-  `r4056768455` solely unresolved. The PR is not ready for final validation
-  until T023l publishes and verifies the correction, resolves the new thread,
-  refreshes exact-head/effective-head evidence, and confirms `10/10` resolved.
+  were resolved. Current inventory is `9/12`: R049-008 and R049-010 require
+  T023l/T023m/T023n plus refreshed exact-head/effective-head evidence. R049-009
+  remains intentionally open through the subsequent ordered final validations
+  and current-head guard. The PR is not ready for final validation now.
 
 ## Cycle PR Set
 
-- Slice 1 / sole implementation PR: purpose `feature 049 complete implementation`; branch `codex/049-learning-priority-fresh-update`; PR [#215](https://github.com/cucumberfalse/cabadrive/pull/215); effective product head `054cdca609cb57ddf3e42efc669e8105600893cf`; historical terminal implementation/checkpoint head `7cfe29a3286f36500cae563e399e8fb9ab5023f0`; historical status ready/open, mergeable without conflicts, all five required checks passed, exact-head review PASS/no findings, `9/9` threads resolved, and no accepted product follow-up or feedback open. Fresh-review head `e817ab69ff61306de6815bdf3da80f059683f440` has accepted process follow-up R049-008 open and `9/10` threads resolved; refreshed effective content head and final-validation inclusion remain pending T023l exact-head evidence.
+- Slice 1 / sole implementation PR: purpose `feature 049 complete implementation`; branch `codex/049-learning-priority-fresh-update`; PR [#215](https://github.com/cucumberfalse/cabadrive/pull/215); historical terminal implementation/checkpoint head `7cfe29a3286f36500cae563e399e8fb9ab5023f0` had `9/9` threads resolved. Current inventory is `9/12`, with R049-008/R049-009/R049-010 open; effective content head, prerequisite-sync head, checks, review, and final-validation inclusion are pending.
 - External prerequisite (F049-GATE-001): dependency-security baseline PR and
   feature 050 PR #216 merged separately to `main` as
   `2a92bcfcb7638d1094f33b28e4c2932fb2e4121e` and is **not** included in feature
@@ -424,14 +465,21 @@
   merge commit `1f5ea3cef936d2be9b9179842fd897fa76ed93bd`; R049-005 and the
   all subsequent implementation, thread-resolution, required-check, and
   exact-head-review gates are complete.
+- External prerequisite (F049-GATE-002): a new latest-main work cycle/PR must
+  implement the append-only `/assets/` deployment staging contract for the first
+  legacy upgrade and durable Docker/static-host publication. It is not part of
+  feature 049's cycle PR set, must preserve/coordinate with PR #214, must merge
+  before T023n final evidence, and requires PR #215 synchronization afterward.
 
 ## Final Architect Validation (Architect-owned)
 
 - Architect validation pass: not ready.
 - Final Architect validation completed at: pending.
-- Invocation state: R049-008/T023l and thread `r4056768455` remain open; final
-  validation must not be invoked until corrected exact-head evidence is current.
-- Architect return count: 2 / 10.
+- Invocation state: R049-008/T023l and R049-010/T023m-T023n remain open;
+  R049-009/T027a is the later expected final-role/current-head gate. Final
+  validation must not be invoked until the implementation/prerequisite work and
+  corrected exact-head evidence are current.
+- Architect return count: 3 / 10.
 - Required pass markers when invoked:
   - `Architect validation pass: passed`
   - `Final Architect validation completed at: <ISO 8601 timestamp>`
