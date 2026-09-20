@@ -7,7 +7,7 @@
 - Analyst/Architect handoff: `codex/049-learning-priority-fresh-update` in `/Users/chap/devel/cabadrive-worktrees/049-learning-priority-fresh-update`.
 - Delivery decision: one implementation PR slice continuing this handoff only after explicit Orchestrator assignment and latest-main re-verification.
 - Parallel work: preserve all sibling state. PR #214 `claude/049-nginx-caching-security` owns nginx/Docker/CI and is excluded.
-- Cycle PR set: sole implementation PR [#215](https://github.com/cucumberfalse/cabadrive/pull/215), branch `codex/049-learning-priority-fresh-update`, ready/open, included in final validation. Current PR head before this Architect disposition is `ec2f7c8f939ac40246c3d5c05cc19766e5f00c67`; effective product content head is `602f80beb98bc53d354d71303a39c147c438827b`. R049-005 remains open, so neither SHA is a final-validation candidate.
+- Cycle PR set: sole implementation PR [#215](https://github.com/cucumberfalse/cabadrive/pull/215), branch `codex/049-learning-priority-fresh-update`, ready/open, included in final validation. Current PR head before this Architect disposition is `da8cfe14a92a3b8bc0e4bd20a0a450853671a225`; effective product content head is `24e3ddae9f04a7da22974b3e5b7cdd6be0f0822f`. R049-006 and R049-007 are accepted/open, so neither SHA is a final-validation candidate.
 - Cleanup: not applicable during implementation; post-completion environment cleanup, if assigned, belongs only to Cleanup Agent.
 
 ## Setup And Test-First
@@ -84,6 +84,32 @@
   `r4053153086` without a new product task as an already-fixed duplicate of
   R049-001, citing current `cache: "reload"`, atomic `addAll`, generated-worker,
   and cacheable-A/offline-B/failed-B evidence.
+- [ ] T023i R049-006 / thread `r4053176084`: test-first implement a fixed
+  `cabadrive-update-protocol-v1` cache plus `prompted-activation-v1` sentinel.
+  After and only after the complete install precache succeeds, an absent marker
+  must be written and read back before the worker invokes `skipWaiting()` for
+  the one legacy/fresh-install transition. Marker read/write/verification
+  failure rejects install and preserves the active legacy build; an existing
+  marker must never invoke automatic activation. The marker is build-independent,
+  outside `cabadrive-static-*`, retained, and excluded from runtime matching.
+- [ ] T023j R049-007 / thread `r4053196269`: remove the special exclusion for
+  deferred `manual4Ruedas-*.js` and atomically precache every emitted hashed
+  `/assets/` dependency. Keep the large unhashed manual page-image corpus on the
+  runtime path. Update collector/generator tests and preserve all-or-nothing
+  install failure, retained version caches, current-first lookup, and feature
+  048 error semantics.
+- [ ] T023k Replace/extend the synthetic A/B fixture with executable A/B/C
+  evidence. A is the legacy cache-first/no-banner worker; complete B activates
+  through the verified missing marker without a page message; marked B keeps C
+  waiting until the banner applies it. Generate A's unique hashed lazy chunk via
+  the production asset collector, never splice it into `ASSETS`, never load it
+  in application code before B, remove it from B's server, and prove the old A
+  document first-loads it from retained A cache after B controls. Cover failed
+  B precache and failed marker persistence, exactly-once initiator reload,
+  non-initiator behavior, offline last-known-good, and a negative omission
+  regression. Update affected durable docs; run focused tests, Chromium A/B/C,
+  full preflight, every required check, and fresh exact-head review before
+  resolving either thread.
 
 ## Final Validation And Completion
 
@@ -117,6 +143,14 @@
   strict validation. Locale/ICU collation is never part of the storage contract;
   the key, v3 schema, migration, backup, recovery, and pruning contracts remain
   unchanged.
+- D049-012: a fixed, non-build-specific Cache Storage protocol sentinel is the
+  only compatibility signal for automatic activation. It is persisted and
+  verified after complete precache; its presence permanently restores prompted
+  activation for subsequent releases unless the user/browser clears site data.
+- D049-013: every emitted hashed `/assets/` dependency is an atomic install
+  requirement, including deferred manual JavaScript. The extra install and
+  retained-cache cost is accepted for old-tab/local-first integrity; large
+  unhashed manual page images remain runtime-cached.
 
 ## Dead Ends And Known Issues
 
@@ -228,6 +262,18 @@
   T023g/T023h. This is required for canonical export/import and unknown-ID
   retention; it does not change the storage schema or Learn-session priority
   comparator.
+- R049-006 / thread `r4053176084` — **accepted task (P1)**. The legacy
+  cache-first page cannot display the new prompt or send `SKIP_WAITING`, so the
+  first prompted worker may remain waiting forever in normal continued use.
+  Implement T023i/T023k's durable one-time marker protocol and A/B/C regression.
+  This is a compatibility exception only for an unmarked legacy/fresh install;
+  a marked subsequent worker must wait for explicit activation.
+- R049-007 / thread `r4053196269` — **accepted task (P2)**. The existing test
+  manually precaches its synthetic `a-only.js`, while production excludes a
+  real deferred JS chunk, so it masks the reported old-tab failure. Implement
+  T023j/T023k: atomically precache all hashed build assets and prove a generated,
+  never-application-loaded A chunk survives B deployment through retained A
+  cache. Keep only the documented large unhashed page images excluded.
 - Thread `r4053153086` — **not-needed as a separate task
   (duplicate/already-fixed R049-001)**. The comment targets old commit
   `044e3b018df382b710bd1507ea13a2a9f4e1e18f`; effective product head
@@ -294,10 +340,17 @@
   Orchestrator must obtain T023h evidence and a fresh exact-head review before
   T024/T025. `r4053153086` adds no implementation work because it duplicates the
   already-completed R049-001 at the current product head.
+- Latest-review ordering — R049-006 and R049-007 are accepted and open. Current
+  PR head `da8cfe14a92a3b8bc0e4bd20a0a450853671a225` and effective product head
+  `24e3ddae9f04a7da22974b3e5b7cdd6be0f0822f` are **not ready for final
+  Architect validation**. Implementation Agent must complete T023i-T023k;
+  Orchestrator must then obtain all focused/full/required-check evidence, resolve
+  both threads only against the new exact head, and commission fresh review
+  before T024/T025.
 
 ## Cycle PR Set
 
-- Slice 1 / sole implementation PR: purpose `feature 049 complete implementation`; branch `codex/049-learning-priority-fresh-update`; PR [#215](https://github.com/cucumberfalse/cabadrive/pull/215); effective product content head before R049-005 `602f80beb98bc53d354d71303a39c147c438827b`; current PR head before this disposition `ec2f7c8f939ac40246c3d5c05cc19766e5f00c67`; status ready/open with accepted implementation follow-up R049-005 pending; included in final validation: yes, only after a new implementation head, checks, and exact-head review.
+- Slice 1 / sole implementation PR: purpose `feature 049 complete implementation`; branch `codex/049-learning-priority-fresh-update`; PR [#215](https://github.com/cucumberfalse/cabadrive/pull/215); effective product content head before this disposition `24e3ddae9f04a7da22974b3e5b7cdd6be0f0822f`; current PR head before this disposition `da8cfe14a92a3b8bc0e4bd20a0a450853671a225`; status ready/open with accepted implementation follow-ups R049-006/R049-007 pending; included in final validation: yes, only after a new implementation head, checks, thread resolution, and fresh exact-head review.
 - External prerequisite (F049-GATE-001): dependency-security baseline PR and
   feature 050 PR #216 merged separately to `main` as
   `2a92bcfcb7638d1094f33b28e4c2932fb2e4121e` and is **not** included in feature
@@ -307,8 +360,11 @@
 
 ## Final Architect Validation (Architect-owned)
 
-- Not yet invoked.
-- Architect return count: 0 / 10.
+- Architect validation pass: not ready.
+- Final Architect validation completed at: pending.
+- Return reason: accepted review findings R049-006/R049-007 require
+  role-appropriate implementation and fresh exact-head evidence before a pass.
+- Architect return count: 1 / 10.
 - Required pass markers when invoked:
   - `Architect validation pass: passed`
   - `Final Architect validation completed at: <ISO 8601 timestamp>`

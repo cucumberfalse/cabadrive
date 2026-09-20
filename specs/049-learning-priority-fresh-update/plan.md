@@ -99,6 +99,42 @@ The implementation slice must re-fetch/verify latest `origin/main` immediately b
      already-fixed R049-001 duplicate `r4053153086`, then return to final
      validation.
 
+10. **Legacy-transition and complete hashed-asset follow-up**
+   - Add failing generated-worker and browser regressions before product edits.
+     Model A as the prior cache-first/unconditional-activation worker with no
+     update UI or protocol marker, B as the first prompted-lifecycle build, and
+     C as the next prompted-lifecycle build.
+   - Add a fixed `cabadrive-update-protocol-v1` metadata cache and fixed
+     `prompted-activation-v1` sentinel. Only after B's complete precache passes,
+     atomically persist and verify the missing sentinel, then invoke
+     `skipWaiting()` for that one compatibility transition. Treat marker
+     read/write/verification failure as install failure. Never derive the
+     protocol key from a build timestamp, never put it under the static-cache
+     prefix, and never auto-activate when the sentinel already exists.
+   - Prove A->B without a legacy page message: B claims, an ordinary reload
+     renders B, and last-known-good A survives any failed B precache/marker
+     write. Then publish C and prove it stays waiting with B controlling until
+     B's banner applies it; preserve exactly-one initiator reload and the
+     non-initiating-tab behavior.
+   - Remove the production exclusion for deferred hashed manual JavaScript and
+     include every emitted `/assets/` file in the same `cache.addAll` install
+     transaction. Keep only the documented large unhashed manual page-image
+     corpus outside install precache. Do not introduce per-file best-effort
+     installation or weaken last-known-good atomicity.
+   - In the browser fixture, create A's uniquely hashed lazy chunk before
+     invoking the production service-worker generator. Do not manually append
+     the chunk to a replacement `ASSETS` array. Never application-load the chunk
+     until B has replaced server files and controls; then request it from the
+     still-open A document and prove retained A cache supplies it. Add a negative
+     fixture/assertion that fails when the chunk is omitted from generated A
+     precache.
+   - Update the affected durable frontend/backend and service-worker reliability
+     docs for the one-time marker protocol, subsequent prompted activation,
+     complete hashed-asset precache, atomic failure semantics, and deliberate
+     bandwidth/storage tradeoff. Run focused SW/update tests, A/B/C Chromium,
+     full preflight, all required GitHub checks, and fresh exact-head review
+     before either thread is resolved or final validation resumes.
+
 ## Key Design Decisions
 
 - **Schema bump to v3:** new canonical durable data is not optional v2 decoration. Explicit v2 migration avoids treating existing payloads as corrupt and makes import/export version semantics honest.
@@ -108,6 +144,15 @@ The implementation slice must re-fetch/verify latest `origin/main` immediately b
 - **Native SW retained:** feature 048 already established a small tested generator. Workbox would be unjustified dependency/rewriting for this scope.
 - **Network-first navigation, immutable offline shell:** live B HTML is never persisted into A cache. This is the key to both first ordinary online reload freshness and failed-update offline safety.
 - **Retain version caches:** activation cannot safely know which old tab may later request an excluded lazy chunk. This feature retains Cabadrive version caches and uses current-first matching; reuse/bounded cleanup is explicitly left to ТЗ-13 FR-1/FR-2.
+- **One fixed protocol marker:** a stable metadata-cache sentinel distinguishes
+  the single legacy/fresh-install transition from every later release. It is
+  written and verified after successful shell precache, so compatibility cannot
+  publish a partial build; a versioned/build-specific marker would incorrectly
+  force every release and is forbidden.
+- **Precache all hashed build dependencies:** executable integrity for an open
+  old tab takes precedence over deferred-chunk install savings. The added
+  bandwidth/storage is explicit, and atomic installation fails closed on quota
+  or fetch errors. Large unhashed manual page images stay on the runtime path.
 - **Single PR:** separate test/commit sections maintain reviewability; no cross-PR schema intermediate state or partial user outcome is created.
 
 ## Verification Matrix
@@ -125,6 +170,8 @@ The implementation slice must re-fetch/verify latest `origin/main` immediately b
 | Two-build online | real browser A/B same origin | ordinary reload shows visible B marker and persisted stats without hard reload/clear |
 | Offline/failed update | real browser | offline reload uses last ready build; aborted B install keeps A; retry succeeds |
 | Open tab/update UI | real browser | A-only lazy chunk loads after B activation; compact banner applies once; no reload loop; B opens correctly |
+| Legacy transition | generated-worker + real A/B/C browser | unmarked legacy A needs no banner/message to activate complete B; stable marker survives; marked B keeps C waiting until explicit apply; failed precache/marker leaves A |
+| Never-loaded lazy chunk | asset-collector test + real browser | generated A precaches every hashed `/assets/` dependency without test list injection; old A document first-loads removed A hash after B via retained A cache |
 | Full quality | `pnpm run typecheck`, `lint`, `format:check`, `test`, `build`, `test:e2e`, `preflight` | all pass on candidate head or exact unrelated blocker recorded |
 | Runtime | isolated `make build/up/down` on free project/port | HTTP smoke, offline-capable app, no sibling compose mutation |
 | Scope/process | `git diff --check`, scoped diff, feature-memory check, PR/review evidence | no nginx/Docker/CI/sibling mutation; docs/tasks/evidence current |
@@ -136,6 +183,11 @@ The implementation slice must re-fetch/verify latest `origin/main` immediately b
 - Store notification reorders Learn: initialize order once, never derive it on render from live progress.
 - Fresh navigation damages A offline: do not runtime-cache navigation response into A; install B atomically in its own cache.
 - Old tab loses chunk: no old-cache deletion; current-first then retained version lookup.
+- Legacy worker cannot trigger prompted activation: one post-precache,
+  persist-and-verify protocol marker enables only the unmarked transition;
+  A/B/C regression proves later updates remain prompted.
+- Deferred chunk was never runtime-cached: all hashed `/assets/` dependencies
+  are install-precache requirements; any failure leaves the prior worker ready.
 - Retained cache growth: documented accepted limitation, owned by later ТЗ-13 reuse/cleanup work; correctness wins in this feature.
 - SW browser tests are flaky: use deterministic local same-origin server, explicit worker states, unique temporary build IDs, bounded waits, and clean test-owned browser context/cache only.
 - PR #214 conflict: never edit its files; if merged main moves, Orchestrator decides fresh-base/update handling before implementation.

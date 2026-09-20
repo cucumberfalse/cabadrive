@@ -93,7 +93,33 @@ Migration and recovery:
 - Keep feature 048's navigate/subresource error distinction. Navigation becomes network-first with an explicit no-store/revalidation request. A successful online navigation response is returned but is not written into the controlling old build's app-shell cache; this prevents build-B HTML from corrupting build A's last-known-good offline shell. On network failure/non-success, fall back only to the controlling worker's fully installed current cache (`/` then `/index.html`, `ignoreSearch` semantics preserved).
 - Subresources remain current-cache-first, then retained Cabadrive-version-cache fallback (needed by an old open tab requesting an old hashed lazy chunk), then network with successful responses written only to the current cache. Unrelated origin caches are never searched or deleted.
 - Install remains atomic for the current precache. Remove unconditional install-time `skipWaiting`; a failed/partial B install cannot activate or delete A. Add only an explicit `{type: "SKIP_WAITING"}` message handler.
+- One compatibility exception is required for the first transition from the
+  legacy worker, whose cache-first page has neither the update manager nor a
+  `SKIP_WAITING` sender. After the new worker has completed its full atomic
+  precache, it opens a dedicated, non-versioned metadata cache such as
+  `cabadrive-update-protocol-v1` and checks a fixed
+  `prompted-activation-v1` sentinel. If the sentinel is absent, the worker must
+  write it, read it back successfully, and only then call `skipWaiting()` once.
+  Marker read/write/verification failure rejects that installation and leaves
+  the legacy worker/cache active; it must never activate an unmarked worker.
+  The fixed protocol cache/key is not derived from the build timestamp, is not
+  a `cabadrive-static-*` cache, is never searched for runtime responses, and is
+  retained by later workers. A fresh install may take the same harmless
+  first-install path. Every later B->C (and subsequent) update sees the durable
+  sentinel and remains waiting for the normal `Обновить` action. Clearing site
+  storage remains outside the persistence guarantee.
 - Activation may claim clients but must not delete prior `cabadrive-static-*` caches. Retaining old version caches is the deliberate safety choice for old tabs in this feature; bounded/reuse cleanup remains FR-1/FR-2 follow-up. Current-cache-first prevents retained same-path entries from superseding the installed build.
+- Every emitted hashed build asset under `/assets/`, including deferred
+  `manual4Ruedas-*.js` and any future lazy JS/CSS dependency, belongs to the
+  atomic install precache. The generator must not exclude an executable chunk
+  merely because it is normally loaded behind a UI boundary. Thus an A tab can
+  request a previously never-loaded A hash after B replaces the server files
+  and receive it from retained A cache. The large, unhashed manual page-image
+  corpus may remain runtime-cached/excluded: it is not an executable build
+  dependency and its broader same-path lifecycle remains outside this feature.
+  This deliberately increases install bandwidth and retained-cache storage;
+  any required hashed-asset failure rejects the whole new install, preserving
+  the prior ready worker instead of publishing a partial build.
 - A testable `serviceWorkerUpdates` browser boundary registers `/sw.js` with `updateViaCache: "none"`, checks immediately, checks at most hourly for a long-lived SPA, observes `updatefound`/waiting state, and exposes `available/applying` state plus `apply/dismiss` actions to React. Registration/update failure remains non-fatal and must not block study.
 - The compact banner offers `Обновить` and `Позже`. Apply posts `SKIP_WAITING`; exactly the initiating tab reloads once on `controllerchange`, guarded against loops. Other old tabs are not forcibly reloaded and continue through retained-cache fallback.
 - The banner is not the online-reload freshness mechanism: build A's network-first navigation makes an ordinary online reload render deployed build B. Offline reload continues to render the last fully installed current cache.
@@ -110,6 +136,13 @@ Migration and recovery:
 - FR-007: Four, not three, consecutive correct answers after the latest wrong deactivate priority; any new wrong resets it; other-question events do not affect it.
 - FR-008: v1/v2/v3 load, cap/quota, strict import, canonical export, reset, and undo preserve existing progress and the new statistics according to this contract.
 - FR-009: Durable docs describe v3 browser storage, Learn ordering/exposure, and fresh-online/offline-safe update behavior.
+- FR-010: The first detected legacy-worker -> prompted-worker transition
+  activates automatically only after atomic shell installation and durable
+  protocol-marker verification; all subsequent releases remain waiting for
+  explicit user activation.
+- FR-011: All emitted hashed `/assets/` dependencies are atomically available
+  in their build cache before activation, so an old open tab can first-load its
+  old lazy chunk after a later build has replaced the origin files.
 
 ## Acceptance Criteria And Negative Scenarios
 
@@ -129,6 +162,21 @@ Migration and recovery:
     without loss in either environment, and the reversed/noncanonical payload is
     rejected atomically. Existing ASCII v3, v2 migration/backup, and local
     recovery fixtures remain unchanged and green.
+12. A real three-build A/B/C browser fixture starts with a legacy cache-first A
+    worker and no update manager/marker. A discovered B writes and verifies the
+    fixed protocol marker, activates without a page message, and makes ordinary
+    reload show B. Publishing C does not auto-activate: B remains controlling,
+    C is waiting, the banner appears, and only `Обновить` activates C with the
+    existing exactly-once initiating-tab reload. A failed B precache or failed
+    marker persistence leaves A active and cannot mark a partial transition.
+13. The A fixture creates a uniquely hashed lazy JS chunk before generating its
+    worker, relies on the production asset collector to precache it (the test
+    must not splice it into `ASSETS`), and never application-loads it before B
+    deploys. After A's file is absent from the B server and B controls, the old
+    A tab's first request for that hash succeeds from retained A cache. Removing
+    that chunk from A's generated precache makes the regression fail. Generated
+    worker tests also prove all hashed `/assets/` files are included while the
+    documented manual page-image exclusion and all-or-nothing install remain.
 
 ## Accepted Review Follow-ups
 
@@ -170,9 +218,10 @@ gaps. All four are accepted as required follow-up work in the existing feature
   `r4037167293` is a duplicate of this same accepted task and receives no
   separate implementation.
 
-These fixes preserve the existing decisions: no automatic activation, no
-forced reload of non-initiating tabs, no deletion of retained Cabadrive caches,
-no change to localStorage, and no nginx/Docker/CI scope expansion.
+These fixes preserve the existing decisions: no automatic activation except
+the later-specified, persist-and-verify one-time legacy compatibility path; no
+forced reload of non-initiating tabs; no deletion of retained Cabadrive caches;
+no change to localStorage; and no nginx/Docker/CI scope expansion.
 
 ## Subsequent Exact-Head Review Dispositions
 
@@ -196,6 +245,30 @@ no change to localStorage, and no nginx/Docker/CI scope expansion.
   atomic `cache.addAll`, and has generated-worker plus cacheable-A/offline-B and
   failed-B-preserves-A evidence. Resolve it with R049-001 evidence; do not add a
   second service-worker behavior path.
+- **R049-006 — one-time legacy-worker transition (P1, thread
+  `r4053176084`) — accepted.** The currently specified prompted worker can
+  install behind the legacy cache-first worker, but legacy application code has
+  no banner and never sends `SKIP_WAITING`; ordinary reload can therefore stay
+  on A until every legacy client closes. Implement the fixed, durable
+  `prompted-activation-v1` protocol sentinel and first-transition-only
+  activation described above. The sentinel must be persisted and verified only
+  after the full B precache succeeds, and failure must preserve A. Add an
+  executable legacy A -> compatibility B -> prompted C test proving B activates
+  without legacy UI while C cannot auto-activate. This narrow compatibility
+  path supersedes the prior absolute "no automatic activation" statement only
+  for the unmarked legacy/fresh-install transition; later releases retain the
+  explicit prompt contract.
+- **R049-007 — never-loaded old lazy chunk (P2, thread `r4053196269`) —
+  accepted.** The current browser fixture manually appends `a-only.js` to A's
+  synthetic shell list, while production deliberately excludes the deferred
+  manual chunk. It therefore does not prove that an old tab can first-load a
+  real uncached-at-runtime chunk after deployment removes A's hash. Precache all
+  emitted hashed `/assets/` dependencies atomically, remove the special dynamic
+  manual-JS exclusion, and replace the synthetic assertion with a generated A
+  lazy asset that is never application-loaded before B. Keep the large unhashed
+  manual page images excluded. The higher install/storage cost is accepted to
+  preserve local-first executable integrity; a quota/fetch failure must abort
+  the new install and keep the previous ready build.
 
 ## Review And Completion Requirements
 
@@ -210,6 +283,12 @@ no change to localStorage, and no nginx/Docker/CI scope expansion.
   `ec2f7c8f939ac40246c3d5c05cc19766e5f00c67` is not ready for final Architect
   validation. Thread `r4053153086` is resolved as already-fixed duplicate of
   R049-001 only after Orchestrator verifies the cited current-head evidence.
+- Accepted follow-ups R049-006 and R049-007 must be implemented test-first and
+  receive generated-worker, update-manager, real A/B/C browser, full-preflight,
+  required-check, and fresh exact-head review evidence. Current PR head
+  `da8cfe14a92a3b8bc0e4bd20a0a450853671a225` and effective product head
+  `24e3ddae9f04a7da22974b3e5b7cdd6be0f0822f` are not final-validation
+  candidates while either accepted task or either review thread remains open.
 - Feature 050 is a separate dependency-security prerequisite, not part of this
   cycle PR set. It must merge first; then PR #215 must be synchronized with the
   verified updated `origin/main`, receive a new exact head, and rerun all
