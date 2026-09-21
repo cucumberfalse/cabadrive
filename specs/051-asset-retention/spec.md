@@ -82,6 +82,7 @@ The canonical release state is project-scoped and contains:
 ```text
 state/
   assets/                       # append-only immutable namespace
+  retained-assets.json          # canonical complete retained inventory
   releases/<release-id>/        # candidate tree plus .release-state.json
   current -> releases/<release-id>
   metadata/<release-id>.json    # canonical inventory/evidence
@@ -110,15 +111,25 @@ Transaction order:
 6. Atomically rename verified new immutable files into `state/assets/`. A crash
    may leave unreferenced B hashes, which is safe; it must never overwrite an A
    hash or change `current`, and a retry is idempotent.
-7. Write `.release-state.json` containing schema version, `release-id`, and
+7. Re-inventory the complete retained namespace and require exact equality with
+   the prior canonical retained inventory plus validated outgoing/candidate
+   additions. Atomically publish `retained-assets.json`; missing, corrupt, or
+   unexpected historical files fail before activation.
+8. Write `.release-state.json` containing schema version, `release-id`, and
    manifest digest inside the verified transaction release. Atomically rename
    the release directory and metadata into their final paths, then read back and
    verify the marker, release tree, metadata, and retained inventory.
-8. Create `current.next` pointing only to that fully verified final release,
+9. Establish a durability barrier before activation: fsync every newly written
+   asset, mutable file, marker, cumulative inventory and metadata file, then
+   fsync every affected parent directory after file/directory renames. Any fsync
+   or close failure aborts without changing `current`; the Docker/Linux state
+   filesystem must support these durability operations.
+10. Create `current.next` pointing only to that fully verified final release,
    then atomically rename the symlink over `current`. This symlink rename is the
-   sole commit point and last publication step. Only the resolved complete tuple
-   is authoritative for future capture skipping.
-9. Release the lock. Failed transactions retain the previously selected shell
+   sole commit point and last publication step. Fsync the state directory after
+   the rename before reporting success. Only the resolved complete tuple is
+   authoritative for future capture skipping.
+11. Release the lock. Failed transactions retain the previously selected shell
    and valid assets; cleanup is limited to the exact transaction directory and
    may never delete retained assets or an active release.
 
@@ -143,6 +154,10 @@ Resumption is part of the transaction contract, not an error shortcut:
   already-current candidate with newly available legacy assets must append those
   exact assets before returning `changed: false`; the shortcut may not omit a
   later authoritative handoff.
+- Activation and committed-state verification compare the exact complete
+  `state/assets` walk against `retained-assets.json`, not only the new/current
+  candidate manifest. Corruption, deletion, or an untracked extra in any older A
+  asset blocks B activation and makes committed-state verification fail closed.
 
 The current release directory contains mutable entry points and a stable
 `assets` symlink to `state/assets`, or nginx serves `state/assets` via an exact
@@ -165,7 +180,8 @@ asset union is verified.
   build/update aborts; it must not silently proceed as a first install.
 - Capture may skip outgoing export only after executable read-only validation of
   `current`, the resolved release's `.release-state.json`, matching metadata,
-  release tree, and retained assets in the exact project volume. Successful
+  release tree, canonical cumulative inventory, and exact retained assets in the
+  project volume. Successful
   `docker volume inspect` alone is insufficient. Empty/incomplete state falls
   through to running-container or prior-image capture; if that fallback cannot
   be read, update aborts.
@@ -241,8 +257,8 @@ pointer-for-pointer unchanged.
   synchronizes the resulting main, replaces its false-positive legacy fixture,
   reruns affected/full checks and review, and repeats final validation.
 - FR-009: Interrupted state creation is safely resumable. Volume existence is
-  not authority; only a verified marker/current/release/metadata/assets tuple
-  permits legacy capture to be skipped.
+  not authority; only a verified marker/current/release/metadata/cumulative-
+  inventory/assets tuple permits legacy capture to be skipped.
 - FR-010: Tests and scripts are checkout-independent. They resolve repository
   files from `import.meta.url` or their script directory and contain no
   developer/worktree absolute path.
@@ -256,6 +272,17 @@ pointer-for-pointer unchanged.
   preserved handoff or baked pre-feature source may recover it.
 - FR-014: A pre-existing static publish destination is rejected before any
   release-state mutation.
+- FR-015: Before `current` activation, all promoted asset/release/metadata/
+  inventory bytes and affected directories are durably synced; durability
+  failure preserves the previous pointer.
+- FR-016: A canonical cumulative inventory covers every retained historical and
+  candidate asset. Activation and authority require exact full-store equality.
+- FR-017: The legacy-origin browser regression installs and controls a real
+  historical A service worker whose generated precache excludes the lazy hash;
+  a handwritten cache probe or request handler alone is insufficient.
+- FR-018: The executable Docker lifecycle proves candidate B activation, not
+  merely A retention: B shell and `sw.js` exact bytes are selected and B's
+  service worker reaches activated/controlling state.
 
 ## Acceptance Criteria And Negative Scenarios
 
@@ -323,6 +350,25 @@ pointer-for-pointer unchanged.
 18. Given an existing static publish output of any filesystem type, publish
     fails before staging. `current`, releases, metadata, retained assets, and the
     pre-existing output remain exactly unchanged.
+19. An operation trace/fault harness proves file fsync precedes the relevant
+    rename, directory fsync follows promotion/metadata/release renames, and the
+    final state-directory fsync follows `current` rename. Injected sync/close
+    failure at every pre-activation barrier leaves the old pointer selected and
+    retry safely completes.
+20. Stage A with at least two historical assets, then corrupt/delete one old A
+    asset that B does not reference. B staging and committed-state verification
+    fail before selecting B. An untracked retained file also fails until it is
+    admitted through the validated append-only union and cumulative ledger.
+21. The browser fixture registers an actual generated historical A worker,
+    reloads until A controls the document, proves its precache omits the deferred
+    A hash, deploys B without updating the controlled tab, and shows the first
+    controlled fetch reaches retained origin with exact A bytes. The destructive
+    variant under the same real controller returns 404.
+22. The isolated Docker running- and stopped-A lifecycle records exact candidate
+    B `index.html` and `sw.js` bytes, then after B deploy, restart and `down/up`
+    proves those bytes are served from the active release. A headless browser
+    additionally proves B's worker is activated and controls B; retained A alone
+    cannot pass the test.
 
 ## Review And Completion Requirements
 
@@ -369,3 +415,18 @@ pointer-for-pointer unchanged.
 - **R051-008 (P2) — static publish checks output after staging: accepted.**
   Validate/reject the destination before staging and prove the full release
   state remains unchanged on the negative path.
+- **R051-009 (P2) — activation lacks a durable fsync barrier: accepted.** Fsync
+  all promoted files and affected directories before the pointer swap, fsync the
+  state directory after it, and fail closed on any sync/close error. Add ordered
+  operation-trace and injected-failure coverage.
+- **R051-010 (P1) — verification covers only current B assets: accepted.** Add a
+  canonical cumulative retained inventory and require exact full-store equality
+  before activation and for committed-state authority. Corrupt/missing/extra old
+  A assets must block B.
+- **R051-011 (P2) — browser proof has no actual legacy worker: accepted.** Use a
+  registered, controlling worker produced by the historical A generator/policy,
+  prove the lazy hash is excluded, and run both safe-origin and 404 controls
+  through that worker.
+- **R051-012 (P2) — Docker proof checks only the retained asset: accepted.** Add
+  exact B shell/SW selection checks plus browser evidence that B's worker is
+  activated and controlling across restart and `down/up`.

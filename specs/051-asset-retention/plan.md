@@ -56,6 +56,12 @@ or PR #215 directly from this worktree.
      `EEXIST`. A mismatched partial state fails closed and leaves A selected.
    - Validate and promote newly authoritative legacy assets before the
      complete-release/idempotent shortcut; test late handoff append and collision.
+   - Maintain a canonical cumulative retained inventory and compare it against
+     the exact full `/assets` walk before activation and during authority checks;
+     historical corruption/deletion/extra files fail closed.
+   - Add an explicit durability barrier: fsync promoted files and affected parent
+     directories before `current`, then fsync the state directory after pointer
+     rename. Injected sync/close failures must preserve the old pointer.
    - Preserve A on every failure. Make retries idempotent; never add asset GC.
 
 4. **Docker-only migration and serving**
@@ -95,7 +101,8 @@ or PR #215 directly from this worktree.
 6. **Executable migration evidence**
    - Build deterministic A/B fixture files with distinct markers and bytes.
    - A uses the historical exclusion and never application-loads the disputed
-     hash before deploy; assert Cache Storage miss.
+     hash before deploy. Register the generated historical A worker, reload until
+     it controls the document, and assert its Cache Storage miss.
    - Stage B safely and prove the old A request hits retained origin with exact
      bytes/MIME. Run the candidate-only destructive control and prove 404.
    - Exercise collision, interrupted stage, retry, Docker running/stopped legacy
@@ -104,6 +111,9 @@ or PR #215 directly from this worktree.
      validation command: deploy legacy A, capture/stage B, prove the never-loaded
      A hash, restart, perform `down/up`, exercise the stopped-image path, verify a
      sibling sentinel, and clean up only its unique project/volume/port.
+   - Capture candidate B shell/SW identities before deployment; in the Docker
+     lifecycle prove exact B files are active and a headless browser reports B's
+     worker activated/controlling after deploy, restart, and `down/up`.
 
 7. **Documentation and full verification**
    - Update durable runtime/deployment docs and status without claiming asset
@@ -137,8 +147,9 @@ or PR #215 directly from this worktree.
 - A project-scoped persistent state volume preserves assets across container
   replacement and `make down/up`. Normal workflows never remove it.
 - Authority requires `current` to resolve to a verified per-release marker plus
-  matching release tree, metadata, and immutable assets; volume existence is
-  never proof and `current` remains the only activation commit point.
+  matching release tree, metadata, cumulative retained inventory, and immutable
+  assets; volume existence is never proof and `current` remains the only
+  activation commit point.
 - Exact partial transaction state is resumable. Byte/manifest disagreement in
   partial state fails closed without selecting B or recapturing over known data.
 - Idempotence is evaluated only after this invocation's candidate plus legacy
@@ -147,6 +158,12 @@ or PR #215 directly from this worktree.
   recovery authority must be independent and handoff replacement is atomic.
 - Compose identity is one explicit/default key shared by every migration path,
   never a mixture of cwd basename and configuration fallback.
+- `retained-assets.json` is the canonical cumulative ledger; candidate-only
+  membership checks cannot establish historical-store integrity.
+- `current` is a crash-durable commit only after file and directory fsync ordering
+  completes; unsupported/failed durability operations abort the activation.
+- Browser evidence uses real service-worker lifecycle/control from the historical
+  generator and current candidate, not a synthetic cache/request approximation.
 - A pre-build capture bridges the first upgrade from a legacy image that had no
   state volume. Detectable-but-unreadable prior state fails closed.
 - A Docker staging service preserves the host Docker-only contract; host Node or
@@ -163,16 +180,20 @@ or PR #215 directly from this worktree.
 | Manifest/path | focused Node tests | ordinal exact inventory; SHA/size stable; traversal, alias, symlink, duplicate, mutation, missing/extra rejected |
 | Collision/idempotence | focused Node tests | equal bytes retry; unequal bytes abort; retained bytes unchanged |
 | Transaction | fault-injected tests | every boundary before pointer rename leaves A current; retry succeeds; no retained deletion |
+| Durable activation | injected filesystem-operation trace | every new file and rename parent is fsynced before `current`; state dir fsynced after; sync/close failure preserves old pointer |
+| Cumulative retained integrity | focused staging/verifier tests | every A+B retained entry exactly matches canonical ledger; corrupt/missing/extra old A blocks B and authority |
 | State authority | focused capture/staging tests | empty/incomplete volume does not suppress legacy capture; corrupt or mismatched committed state fails closed |
 | Late legacy union | focused staging tests | identical candidate plus newly available legacy asset appends before idempotent return; collision changes nothing |
 | Project identity | contract + isolated Docker tests | unset and explicit keys agree across Compose, capture, volume, image, handoff, and stager; sibling untouched |
 | Rejected-state source | focused capture + Docker negative | rejected volume is never copied through attached `/state`; preserved handoff/baked root works, no independent source fails unchanged |
 | Partial release resume | fault-injected tests | crash after release rename and before metadata resumes without `EEXIST`; exact bytes become one committed tuple |
 | Legacy browser | real Chromium A/B | A cache miss proven; safe B stage; old path 200 JS with exact A bytes from origin |
+| Legacy worker fidelity | real Chromium + generated A worker | A worker controls page, lazy hash absent from its real precache, controlled safe fetch hits origin, controlled destructive fetch is 404 |
 | Destructive negative | isolated browser/server | candidate-only B yields old-path 404 and production staging rejects switch |
 | Docker first migration | isolated Compose project | running and stopped legacy A captured before build replacement; B staged before nginx replacement |
 | Docker persistence | isolated Compose project | A URL survives B, restart, and `make down/up`; project-scoped sibling untouched |
 | Docker lifecycle gate | executable Docker validation | real legacy A -> B capture, cache-miss origin fetch, restart/down-up, stopped-image path, sibling sentinel, exact cleanup all pass |
+| Docker B activation | Docker + headless browser | exact candidate B shell/SW served and B worker activated/controlling after deploy, restart, and down/up |
 | Portability | temporary-CWD focused/CI test | no checkout-specific absolute paths; capture fixture locates scripts from module/repository root |
 | Static publish | focused integration | output contains A+B assets/B shell; collision and incomplete stage fail |
 | Existing publish destination | state snapshot integration | pre-existing output fails before stage and leaves pointer/releases/metadata/assets/output byte-identical |
@@ -194,6 +215,14 @@ or PR #215 directly from this worktree.
   before returning unchanged.
 - Existing publish output is discovered after activation: validate it before any
   staging mutation and snapshot the negative result.
+- Buffered writes survive process tests but not host crash: require file and
+  directory fsync ordering before/after the atomic pointer and fail on sync error.
+- Current-candidate-only verification misses corrupt older A: bind authority to
+  an exact cumulative ledger and negatively mutate an unreferenced historical file.
+- Synthetic fetch/cache fixture bypasses legacy worker semantics: install and
+  control the generated historical worker for both safe and destructive cases.
+- Retained A success can hide failed B activation: assert exact B shell/SW plus
+  B worker control throughout the real Docker lifecycle.
 - Crash after release rename but before metadata: classify and resume exact
   release-only state; reject mismatches and never retry a blind rename over it.
 - Concurrent update: exclusive fail-closed lock; no implicit stale-lock removal.
@@ -212,7 +241,7 @@ or PR #215 directly from this worktree.
 ## Handoff Status
 
 Architect follow-up disposition is complete, but the feature is not ready for
-final validation. R051-005 through R051-008 require implementation and focused/
-full verification; all eleven unresolved review threads require current-head
-evidence and resolution followed by fresh exact-head review before final
-validation may be invoked.
+final validation. R051-009 through R051-012 require implementation and focused/
+full verification; all fourteen open review threads require current-head evidence
+and resolution followed by fresh exact-head review before final validation may
+be invoked.

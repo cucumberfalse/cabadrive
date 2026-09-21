@@ -14,10 +14,11 @@
 - Cycle PR set: PR #217, `codex/051-asset-retention`, purpose `append-only
   static asset retention and shell-last Docker/static deployment`; initial
   product head `c55dee242989b222e0092953721915ea8784275b`; reviewed current head
-  `f032d80b8cf59eb562b28cc30d5c7c96f57d26cf` implements R051-001 through
-  R051-004 but has accepted follow-up work R051-005 through R051-008 and is not
-  a final-validation candidate. It is included in final validation only after
-  implementation, verification, thread resolution, and fresh exact-head review.
+  `a7cc88320c24b051bc28b01122e5c9c0e032abaa` implements the ten older accepted
+  review fixes represented by R051-001 through R051-008, but has accepted
+  follow-up work R051-009 through R051-012 and is not a final-validation
+  candidate. It is included only after implementation, verification, resolution
+  of all fourteen open threads, and fresh exact-head review.
 - Dependency: feature 051 must merge first. PR #215 is then synchronized to the
   merged main and independently retested/reviewed/revalidated.
 
@@ -35,7 +36,7 @@
 - [x] T004 Add failing stage tests: equal-byte idempotence, unequal-byte
   collision, lock contention, partial-copy fault points, immutable preservation,
   atomic current pointer, and retry.
-- [x] T005 Add failing real-browser A/B fixture where faithful legacy A excludes
+- [ ] T005 Add failing real-browser A/B fixture where faithful legacy A excludes
   and never loads its lazy hash, Cache Storage miss is explicit, destructive B
   returns 404, and safe retained-origin behavior is initially absent.
 - [x] T006 Add failing executable Docker integration cases for pre-build running
@@ -47,12 +48,13 @@
 
 - [x] T007 Implement canonical complete candidate manifest and safe filesystem
   walk with schema/path/size/SHA-256 validation and no symlink/escape surface.
-- [x] T008 Implement exclusive locking and transactional state layout. Stage and
+- [ ] T008 Implement exclusive locking and transactional state layout. Stage and
   rehash outgoing/candidate bytes; fail on collision; atomically promote new
   immutable files, release metadata/tree, and finally `current`. Preserve A and
   support idempotent retry at every fault boundary, including after release-tree
   promotion and before metadata promotion; promote any late authoritative legacy
-  union before an idempotent return; add no GC.
+  union before an idempotent return; require exact cumulative retained inventory
+  and crash-durable file/directory sync ordering before activation; add no GC.
 - [x] T009 Implement a static publish command that consumes current + candidate
   roots and emits a complete A+B `/assets/`, B-only mutable shell tree suitable
   for one atomic host publication. Reject candidate-only/destructive semantics
@@ -73,8 +75,9 @@
 - [x] T013 Serve retained `/assets/` from shared state and HTML/SW from atomic
   `current`; keep `/assets/` immutable, `sw.js`/HTML current, and missing hashed
   assets as 404 rather than SPA HTML. Preserve any merged-main PR #214 policy.
-- [x] T014 Update the real browser fixture: safe B staging gives the old A tab
-  exact retained-origin bytes/MIME while A cache remains initially missing;
+- [ ] T014 Update the real browser fixture: install/control the generated legacy
+  A worker and prove safe B staging gives the old A tab exact retained-origin
+  bytes/MIME while its real precache remains missing;
   destructive control remains a demonstrated 404 and production gate failure.
 - [x] T015 Update Docker/static-host/runtime/frontend/backend/feature-inventory
   and service-worker reliability docs for append-only retention, shell-last
@@ -83,20 +86,21 @@
 
 ## Verification And Publication
 
-- [x] T016 Run focused manifest/staging/fault/path/static-publish tests and
+- [ ] T016 Run focused manifest/staging/fault/path/static-publish tests and
   record test-first FAIL->PASS evidence.
-- [x] T017 Run the Chromium safe A->B origin-hit test and destructive control;
-  record cache-miss proof, request source, status, MIME, exact bytes/SHA, and
-  absence of HTML fallback.
-- [x] T018 Run an executable isolated Docker running-legacy and stopped-legacy
+- [ ] T017 Run the real-worker Chromium safe A->B origin-hit test and destructive
+  control; record cache-miss proof, request source, status, MIME, exact bytes/SHA,
+  and absence of HTML fallback.
+- [ ] T018 Run an executable isolated Docker running-legacy and stopped-legacy
   A->B regression in the normal Docker validation gate, plus
   initial install, restart and `make down/up`; smoke current HTML/SW and retained
-  A hash. Use unique Compose project/port and leave sibling projects untouched.
-- [x] T019 Run `pnpm run typecheck`, `pnpm run lint`, `pnpm run format:check`,
+  A hash. Also prove exact B shell/SW selection and B worker activation/control.
+  Use unique Compose project/port and leave sibling projects untouched.
+- [ ] T019 Run `pnpm run typecheck`, `pnpm run lint`, `pnpm run format:check`,
   `pnpm run test`, `pnpm run build`, `pnpm run test:e2e`, full `pnpm run
   preflight`, `node scripts/check-feature-memory.mjs --worktree`, `pnpm run
   check:repo`, and `git diff --check`.
-- [x] T020 Inspect final scope: no feature-049 product behavior or sibling
+- [ ] T020 Inspect final scope: no feature-049 product behavior or sibling
   feature-memory edits, no PR #214/#215 mutation, no host Node requirement, no
   unsafe deletion/overwrite, no broad path, and no committed runtime state/temp
   artifacts.
@@ -146,6 +150,23 @@
 - [x] T022h Implement R051-008: validate an existing static-publish destination
   before calling stage. Snapshot `current`, releases, metadata, retained assets,
   and output; prove the negative leaves all of them byte-identical.
+- [ ] T022i Implement R051-009: add crash-durable activation ordering. Fsync all
+  newly written/promoted assets, mutable files, release marker, cumulative ledger,
+  and metadata; fsync affected directories after renames; fsync state after the
+  `current` rename. Add ordered operation tracing and injected fsync/close-failure
+  tests proving the old pointer remains selected and retry succeeds.
+- [ ] T022j Implement R051-010: add canonical `retained-assets.json` for the exact
+  cumulative namespace. Stage/authority checks compare the complete filesystem
+  walk, not only B's manifest. Test corrupt, deleted, and unexpected old A assets
+  that B does not reference; each must block B before `current` changes.
+- [ ] T022k Implement R051-011: replace the synthetic-only browser proof with a
+  worker generated from the historical A policy. Register/reload until it controls
+  the page, prove its real precache excludes the lazy A hash, keep that A-controlled
+  tab through B deploy, and run safe-origin plus destructive-404 fetches through it.
+- [ ] T022l Implement R051-012: strengthen the real Docker lifecycle by recording
+  candidate B `index.html`/`sw.js` identities, proving their exact served bytes and
+  committed B release, and using a headless browser to prove B's worker is
+  activated/controlling after deploy, restart, and `down/up` for running/stopped A.
 - [ ] T023 Orchestrator route every finding/feedback to the proper role; all
   blocking threads are fixed/resolved or explicitly disposed, checks rerun, and
   process memory refreshed.
@@ -193,6 +214,13 @@
   seed recovery, and handoff replacement is atomic.
 - D051-012: candidate idempotence follows full invocation-union promotion, and a
   pre-existing publish output fails before any release-state mutation.
+- D051-013: `retained-assets.json` is the cumulative integrity authority for the
+  entire append-only namespace; current-candidate membership is insufficient.
+- D051-014: atomic rename becomes a durable activation only after required file
+  and directory fsync ordering; sync/close failure blocks the pointer change.
+- D051-015: acceptance evidence exercises actual A and B service-worker
+  lifecycle/control and exact B shell/SW activation, not synthetic handlers or a
+  retained-A-only Docker smoke.
 
 ## Evidence And Feedback
 
@@ -247,16 +275,17 @@
   candidate shortcut can omit newly available legacy bytes (R051-006); rejected
   state can be laundered through attached-container `/state/assets` (R051-007);
   and static publish mutates release state before rejecting existing output
-  (R051-008). The seven earlier review threads remain unresolved pending evidence;
-  these four new threads also remain unresolved.
+  (R051-008). Those review threads remained unresolved pending evidence; the
+  authoritative current inventory is the fourteen-thread ledger below.
 - Historical Implementation Agent feedback through R051-004: none; no
   out-of-spec product decision was required.
 - Publication: PR #217 is open; the exact head reviewed for this disposition is
-  `f032d80b8cf59eb562b28cc30d5c7c96f57d26cf`.
-- Review evidence: R051-001 through R051-004 are implemented at `f032d80`, but
-  their seven original threads remain unresolved pending evidence. Exact-head
-  review added four unresolved actionable threads disposed as R051-005 through
-  R051-008. No thread was resolved by this Architect pass.
+  `a7cc88320c24b051bc28b01122e5c9c0e032abaa`.
+- Review evidence: GitHub inventory contains exactly fourteen open review
+  threads. Ten older threads have accepted fixes implemented through R051-001—
+  R051-008 but remain open pending evidence. Four new actionable threads are
+  disposed as R051-009 through R051-012. No thread was resolved by this
+  Architect pass.
 - Follow-up Implementation Agent feedback/evidence for T022e through T022h:
   the Compose file and Makefile now declare/export the same `cabadrive`
   default while an explicit `COMPOSE_PROJECT_NAME` overrides every consumer;
@@ -278,6 +307,12 @@
   --check` passed. `pnpm run test:docker-retention` passed the real isolated
   running-A capture, old-hash request, restart, down/up, stopped-image capture,
   sibling sentinel, and scoped cleanup lifecycle.
+- Exact-head implementation evidence at
+  `a7cc88320c24b051bc28b01122e5c9c0e032abaa`: focused tests passed 22/22, the
+  real Docker lifecycle passed, and full preflight passed. This confirms the
+  older accepted fixes but does not close the four new gaps: durable sync
+  ordering, cumulative historical integrity, a controlling legacy A worker, and
+  positive B shell/SW/worker activation.
 - Effective content head: pending final process-memory and validation guards.
 - Cleanup: not assigned; any later environment cleanup requires separate
   Cleanup Agent scope/evidence.
@@ -286,10 +321,10 @@
 
 - Architect validation pass: not ready; final validation was not invoked.
 - Final Architect validation completed at: pending.
-- Architect return reason: R051-005 through R051-008 require follow-up
+- Architect return reason: R051-009 through R051-012 require follow-up
   implementation, focused/full verification, current-head checks, resolution of
-  all eleven review threads, and fresh exact-head review.
-- Architect return count: 2 / 10.
+  all fourteen review threads, and fresh exact-head review.
+- Architect return count: 3 / 10.
 - Architect validated effective content head: pending.
 
 ## Final Analyst Validation
