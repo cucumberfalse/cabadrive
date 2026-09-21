@@ -13,9 +13,10 @@
 - Parallel work: preserve all sibling state. Never mutate PR #214 or PR #215.
 - Cycle PR set: PR #217, `codex/051-asset-retention`, purpose `append-only
   static asset retention and shell-last Docker/static deployment`; initial
-  product head `c55dee242989b222e0092953721915ea8784275b` is followed only by
-  implementation process-memory evidence until review/final validation. It is
-  included in final validation after implementation/review/check completion.
+  product head `c55dee242989b222e0092953721915ea8784275b`; reviewed current head
+  `4835f66` has accepted follow-up work R051-001 through R051-004 and is not a
+  final-validation candidate. It is included in final validation only after
+  implementation, verification, and fresh exact-head review complete.
 - Dependency: feature 051 must merge first. PR #215 is then synchronized to the
   merged main and independently retested/reviewed/revalidated.
 
@@ -36,27 +37,31 @@
 - [x] T005 Add failing real-browser A/B fixture where faithful legacy A excludes
   and never loads its lazy hash, Cache Storage miss is explicit, destructive B
   returns 404, and safe retained-origin behavior is initially absent.
-- [x] T006 Add failing Docker contract/integration cases for pre-build running
+- [ ] T006 Add failing executable Docker integration cases for pre-build running
   and stopped legacy capture, project-scoped volume, stage-before-nginx,
-  restart/down-up persistence, initial install, and sibling isolation.
+  restart/down-up persistence, initial install, and sibling isolation. Config
+  assertions or recorded manual commands alone do not complete this task.
 
 ## Implementation
 
 - [x] T007 Implement canonical complete candidate manifest and safe filesystem
   walk with schema/path/size/SHA-256 validation and no symlink/escape surface.
-- [x] T008 Implement exclusive locking and transactional state layout. Stage and
+- [ ] T008 Implement exclusive locking and transactional state layout. Stage and
   rehash outgoing/candidate bytes; fail on collision; atomically promote new
   immutable files, release metadata/tree, and finally `current`. Preserve A and
-  support idempotent retry at every fault boundary; add no GC.
+  support idempotent retry at every fault boundary, including after release-tree
+  promotion and before metadata promotion; add no GC.
 - [x] T009 Implement a static publish command that consumes current + candidate
   roots and emits a complete A+B `/assets/`, B-only mutable shell tree suitable
   for one atomic host publication. Reject candidate-only/destructive semantics.
 - [x] T010 Add Docker candidate/stager targets and project-scoped persistent
   release-state volume. Keep runtime nginx-only and end-user host Node-free.
-- [x] T011 Add safe pre-build legacy capture for the exact Compose project. Use
+- [ ] T011 Add safe pre-build legacy capture for the exact Compose project. Use
   the running container when present or the prior Compose image when stopped;
   record source identity and fail if detected prior assets cannot be exported.
-  Never inspect/mutate another project or broad host directory.
+  Skip only for a validated committed-state tuple, never merely because its
+  volume/directories exist. Never inspect/mutate another project or broad host
+  directory.
 - [x] T012 Make `make build` capture before image replacement and `make up` run
   the stager before replacing/starting nginx. Preserve volume on `make down` and
   keep default URL plus isolated project/port behavior.
@@ -78,10 +83,11 @@
 - [x] T017 Run the Chromium safe A->B origin-hit test and destructive control;
   record cache-miss proof, request source, status, MIME, exact bytes/SHA, and
   absence of HTML fallback.
-- [x] T018 Run isolated Docker running-legacy and stopped-legacy A->B upgrades,
+- [ ] T018 Run an executable isolated Docker running-legacy and stopped-legacy
+  A->B regression in the normal Docker validation gate, plus
   initial install, restart and `make down/up`; smoke current HTML/SW and retained
   A hash. Use unique Compose project/port and leave sibling projects untouched.
-- [x] T019 Run `pnpm run typecheck`, `pnpm run lint`, `pnpm run format:check`,
+- [ ] T019 Run `pnpm run typecheck`, `pnpm run lint`, `pnpm run format:check`,
   `pnpm run test`, `pnpm run build`, `pnpm run test:e2e`, full `pnpm run
   preflight`, `node scripts/check-feature-memory.mjs --worktree`, `pnpm run
   check:repo`, and `git diff --check`.
@@ -96,10 +102,28 @@
 
 ## Review, Final Validation, And Merge
 
-- [ ] T022 Review Agent inspect exact PR head for transaction atomicity,
+- [x] T022 Review Agent inspect exact PR head for transaction atomicity,
   path/symlink/race safety, byte collision, first legacy capture, project
   isolation, browser origin proof, destructive negative, Docker/static contract,
   docs, tests, sibling preservation, and role/process compliance.
+- [ ] T022a Implement R051-001: add a durable per-release marker and validate
+  `current`/marker/release/metadata/assets as one tuple before suppressing legacy
+  capture, with `current` still the final commit point. Prove an empty or
+  incomplete release-state volume still captures a running/stopped A; corrupt or
+  contradictory state fails closed without unsafe fallback or mutation.
+- [ ] T022b Implement R051-002: classify release-only, metadata-only,
+  complete-inactive, and committed states; resume only exact partial state. Add a
+  fault immediately after release-tree rename and before metadata publication,
+  then prove retry succeeds without `EEXIST`, preserves A until commit, and
+  rejects byte/manifest mismatch unchanged.
+- [ ] T022c Implement R051-003: make the normal Docker validation command execute
+  a real isolated lifecycle using a unique project and port: legacy A, B capture
+  and stage, never-loaded retained A request, restart, `down/up`, stopped-image
+  capture, sibling sentinel verification, and exact scoped cleanup.
+- [ ] T022d Implement R051-004: replace the checkout-specific absolute fixture
+  path with module/repository-relative resolution (for example `import.meta.url`),
+  execute the focused test from an unrelated temporary working directory, scan
+  governed fixtures for checkout paths, and rerun the exact failing CI baseline.
 - [ ] T023 Orchestrator route every finding/feedback to the proper role; all
   blocking threads are fixed/resolved or explicitly disposed, checks rerun, and
   process memory refreshed.
@@ -159,16 +183,24 @@
   `tests/capture-legacy-assets.test.mjs`; it verifies the first `/state/assets`
   attempt falls back to the stopped legacy image's original
   `/usr/share/nginx/html/assets`, retaining exact bytes and source identity.
+- Review at head `4835f66` invalidated that evidence as merge-ready proof: the
+  Docker lifecycle is not an executable regression, an empty/failed-created
+  volume can suppress required legacy capture, and a crash after release rename
+  makes retry fail on an existing destination.
+- CI baseline at head `4835f66` failed because
+  `tests/capture-legacy-assets.test.mjs` invoked a checkout-specific absolute
+  script path. The earlier local pass is not portable evidence.
 - Dead end fixed: nginx initially returned 500 because staged directories were
   mode 0700. The stager now creates/traverses serving directories at 0755;
-  isolated Docker smoke then passed. A preserved state volume is now recognised
-  as authoritative so an already-migrated project never tries to recapture its
-  intentionally empty runtime image.
+  isolated Docker smoke then passed. The implementation then treated any
+  preserved state volume as authoritative; R051-001 records why that shortcut
+  is unsafe and replaces it with complete-tuple validation.
 - Implementation Agent feedback: none; no out-of-spec product decision was
   required.
 - Publication: committed and pushed `c55dee242989b222e0092953721915ea8784275b`
   (`feat: retain immutable assets across static releases`); PR #217 is open.
-- Review evidence: pending.
+- Review evidence: exact-head review at `4835f66` produced accepted findings
+  R051-001 through R051-003; CI portability failure is accepted as R051-004.
 - Implementation Agent feedback: pending; every item requires Architect
   disposition.
 - Effective content head: pending final process-memory and validation guards.
@@ -177,9 +209,12 @@
 
 ## Final Architect Validation
 
-- Architect validation pass: not invoked; planning ready for implementation.
+- Architect validation pass: not ready; final validation was not invoked.
 - Final Architect validation completed at: pending.
-- Architect return count: 0 / 10.
+- Architect return reason: R051-001 through R051-004 require follow-up
+  implementation, executable/portable verification, green current-head checks,
+  and fresh exact-head review.
+- Architect return count: 1 / 10.
 - Architect validated effective content head: pending.
 
 ## Final Analyst Validation

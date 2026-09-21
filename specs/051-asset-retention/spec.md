@@ -82,7 +82,7 @@ The canonical release state is project-scoped and contains:
 ```text
 state/
   assets/                       # append-only immutable namespace
-  releases/<release-id>/        # complete mutable candidate tree, no /assets copy
+  releases/<release-id>/        # candidate tree plus .release-state.json
   current -> releases/<release-id>
   metadata/<release-id>.json    # canonical inventory/evidence
   transactions/<transaction-id>/
@@ -110,12 +110,34 @@ Transaction order:
 6. Atomically rename verified new immutable files into `state/assets/`. A crash
    may leave unreferenced B hashes, which is safe; it must never overwrite an A
    hash or change `current`, and a retry is idempotent.
-7. Atomically rename the verified candidate release directory and metadata into
-   their final paths. Create `current.next` pointing only to that final release,
-   then atomically rename the symlink over `current`.
-8. Release the lock. Failed transactions retain the previously selected shell
+7. Write `.release-state.json` containing schema version, `release-id`, and
+   manifest digest inside the verified transaction release. Atomically rename
+   the release directory and metadata into their final paths, then read back and
+   verify the marker, release tree, metadata, and retained inventory.
+8. Create `current.next` pointing only to that fully verified final release,
+   then atomically rename the symlink over `current`. This symlink rename is the
+   sole commit point and last publication step. Only the resolved complete tuple
+   is authoritative for future capture skipping.
+9. Release the lock. Failed transactions retain the previously selected shell
    and valid assets; cleanup is limited to the exact transaction directory and
    may never delete retained assets or an active release.
+
+Resumption is part of the transaction contract, not an error shortcut:
+
+- Merely existing state volume/directories or retained `assets/` are never
+  authoritative. Empty state, a missing/invalid marker, marker/current mismatch,
+  missing metadata, or incomplete release is non-authoritative and must not make
+  legacy capture return early.
+- Retry classifies release/metadata state before creating final paths. Exact
+  release-only state reconstructs metadata atomically; exact metadata-only state
+  rebuilds and promotes the release; exact complete state proceeds to current
+  and marker verification. Any mismatch is ambiguous and fails closed without
+  deleting or overwriting the partial state.
+- A dedicated fault boundary after final release-directory rename and before
+  metadata publication must be executable. Retrying it must complete safely
+  rather than raising `EEXIST`; the same requirement applies to every boundary
+  before the final `current` rename. A selected release can therefore never lack
+  its verified marker or metadata under the defined publisher.
 
 The current release directory contains mutable entry points and a stable
 `assets` symlink to `state/assets`, or nginx serves `state/assets` via an exact
@@ -136,6 +158,12 @@ asset union is verified.
   release's `/assets/` into a narrowly scoped handoff directory. It records the
   source container/image ID. If an old release exists but cannot be exported,
   build/update aborts; it must not silently proceed as a first install.
+- Capture may skip outgoing export only after executable read-only validation of
+  `current`, the resolved release's `.release-state.json`, matching metadata,
+  release tree, and retained assets in the exact project volume. Successful
+  `docker volume inspect` alone is insufficient. Empty/incomplete state falls
+  through to running-container or prior-image capture; if that fallback cannot
+  be read, update aborts.
 - `make up` runs the staging service against the project-scoped volume and the
   exact captured handoff, then starts/replaces nginx only after staging exits
   zero. Initial install without any prior project container/image is allowed and
@@ -185,6 +213,12 @@ safe-update guarantee.
 - FR-008: Feature 051 merges and passes its own final validation before PR #215
   synchronizes the resulting main, replaces its false-positive legacy fixture,
   reruns affected/full checks and review, and repeats final validation.
+- FR-009: Interrupted state creation is safely resumable. Volume existence is
+  not authority; only a verified marker/current/release/metadata/assets tuple
+  permits legacy capture to be skipped.
+- FR-010: Tests and scripts are checkout-independent. They resolve repository
+  files from `import.meta.url` or their script directory and contain no
+  developer/worktree absolute path.
 
 ## Acceptance Criteria And Negative Scenarios
 
@@ -222,6 +256,20 @@ safe-update guarantee.
     synchronizes PR #215 through its role-appropriate agent, and obtains the
     faithful legacy-origin browser evidence plus fresh checks/review/final
     Architect then Analyst validation before PR #215 merge.
+11. An empty project volume or failed first stage does not suppress capture of a
+    still-running legacy A. Capture continues and preserves A bytes; incomplete
+    state without a valid fallback fails closed.
+12. Faulting after final release promotion but before metadata leaves A selected.
+    Exact retry reuses the release, restores metadata, selects B once, and
+    publishes the marker without `EEXIST`; mismatched partial state is preserved
+    and rejected.
+13. An executable Docker lifecycle test uses an isolated project/port to run A,
+    capture/stage B, verify B plus exact A asset, restart, `make down/up`, and
+    verify again. It covers stopped-image capture, touches only test-owned
+    resources, and proves a sibling sentinel remains untouched.
+14. Capture tests derive script paths from their module/repository and run from
+    an unrelated temporary cwd. CI rejects `/Users/...`, worktree-specific, or
+    other developer absolute fixture paths.
 
 ## Review And Completion Requirements
 
@@ -239,3 +287,19 @@ safe-update guarantee.
 - Merge requires green required checks, no conflicts/blocking threads, current
   evidence/docs, matching final-validation markers, and current-head guard.
 
+## Review Follow-Up Dispositions
+
+- **R051-001 (P1) — empty/incomplete state treated as authoritative: accepted.**
+  Implement the committed marker/full validation above. Empty or failed-created
+  state must continue capture from running legacy A or prior image; add missing-
+  fallback negatives.
+- **R051-002 (P1) — release published before metadata is not retryable:
+  accepted.** Add the exact fault boundary and partial-state reconciliation.
+  Exact partials resume; mismatched partials remain unchanged and fail closed;
+  retry must not hit `EEXIST`.
+- **R051-003 (P2) — Docker lifecycle evidence is textual: accepted.** Add an
+  executable isolated Docker A->B capture/stage/restart/down-up test to the
+  Docker validation path. Source/config regex assertions are supplemental.
+- **R051-004 (CI baseline) — absolute worktree path in capture test: accepted.**
+  Resolve the script module-relatively, run from temp cwd, and add an absolute-
+  path negative scan. This is a portability failure, not an environment waiver.

@@ -48,6 +48,12 @@ or PR #215 directly from this worktree.
      collisions before promotion.
    - Stage and rehash transaction bytes, atomically promote new immutable files,
      atomically promote the complete release, then atomically replace `current`.
+   - Embed the committed-state marker in the release transaction, publish and
+     verify release/metadata/assets first, and keep `current` as the only and
+     final atomic activation point.
+   - Reconcile exact partial states, including a release promoted before its
+     metadata; add a fault point at that boundary and prove retry cannot fail on
+     `EEXIST`. A mismatched partial state fails closed and leaves A selected.
    - Preserve A on every failure. Make retries idempotent; never add asset GC.
 
 4. **Docker-only migration and serving**
@@ -59,6 +65,9 @@ or PR #215 directly from this worktree.
      `/assets/` to the exact project handoff. Support running container and
      stopped-container/prior-image paths; fail if a detected prior release cannot
      be captured. Record source identity.
+   - Skip legacy capture only after validating the committed-state marker and
+     its complete current/release/metadata/assets tuple. Mere volume or directory
+     existence, including an empty/incomplete state, is never authoritative.
    - `make up` runs the stager successfully before replacing/starting nginx.
      Nginx serves shared retained `/assets/` and atomic current shell. `make down`
      preserves the volume. Never inspect/stop/remove another project.
@@ -78,6 +87,10 @@ or PR #215 directly from this worktree.
      bytes/MIME. Run the candidate-only destructive control and prove 404.
    - Exercise collision, interrupted stage, retry, Docker running/stopped legacy
      capture, restart persistence, project isolation, and HTTP smoke.
+   - Add an executable isolated Docker lifecycle runner to the normal Docker
+     validation command: deploy legacy A, capture/stage B, prove the never-loaded
+     A hash, restart, perform `down/up`, exercise the stopped-image path, verify a
+     sibling sentinel, and clean up only its unique project/volume/port.
 
 7. **Documentation and full verification**
    - Update durable runtime/deployment docs and status without claiming asset
@@ -87,6 +100,9 @@ or PR #215 directly from this worktree.
      guards, full preflight, and all required GitHub checks.
    - Record exact commands/results, effective content head, known limitations,
      feedback, cycle PR metadata, and cleanup applicability in `tasks.md`.
+   - Resolve every fixture/tool path relative to the checked-out module or
+     repository root, execute focused coverage from a temporary unrelated
+     working directory, and reject committed checkout-specific absolute paths.
 
 8. **Review, final validation, merge, and dependent handoff**
    - Obtain independent exact-head review and resolve every blocking finding
@@ -107,6 +123,11 @@ or PR #215 directly from this worktree.
   is safe; publishing B shell early is not.
 - A project-scoped persistent state volume preserves assets across container
   replacement and `make down/up`. Normal workflows never remove it.
+- Authority requires `current` to resolve to a verified per-release marker plus
+  matching release tree, metadata, and immutable assets; volume existence is
+  never proof and `current` remains the only activation commit point.
+- Exact partial transaction state is resumable. Byte/manifest disagreement in
+  partial state fails closed without selecting B or recapturing over known data.
 - A pre-build capture bridges the first upgrade from a legacy image that had no
   state volume. Detectable-but-unreadable prior state fails closed.
 - A Docker staging service preserves the host Docker-only contract; host Node or
@@ -123,10 +144,14 @@ or PR #215 directly from this worktree.
 | Manifest/path | focused Node tests | ordinal exact inventory; SHA/size stable; traversal, alias, symlink, duplicate, mutation, missing/extra rejected |
 | Collision/idempotence | focused Node tests | equal bytes retry; unequal bytes abort; retained bytes unchanged |
 | Transaction | fault-injected tests | every boundary before pointer rename leaves A current; retry succeeds; no retained deletion |
+| State authority | focused capture/staging tests | empty/incomplete volume does not suppress legacy capture; corrupt or mismatched committed state fails closed |
+| Partial release resume | fault-injected tests | crash after release rename and before metadata resumes without `EEXIST`; exact bytes become one committed tuple |
 | Legacy browser | real Chromium A/B | A cache miss proven; safe B stage; old path 200 JS with exact A bytes from origin |
 | Destructive negative | isolated browser/server | candidate-only B yields old-path 404 and production staging rejects switch |
 | Docker first migration | isolated Compose project | running and stopped legacy A captured before build replacement; B staged before nginx replacement |
 | Docker persistence | isolated Compose project | A URL survives B, restart, and `make down/up`; project-scoped sibling untouched |
+| Docker lifecycle gate | executable Docker validation | real legacy A -> B capture, cache-miss origin fetch, restart/down-up, stopped-image path, sibling sentinel, exact cleanup all pass |
+| Portability | temporary-CWD focused/CI test | no checkout-specific absolute paths; capture fixture locates scripts from module/repository root |
 | Static publish | focused integration | output contains A+B assets/B shell; collision and incomplete stage fail |
 | HTTP policy | curl/tests | `/assets/` immutable and exact; `sw.js`/HTML current; no HTML fallback for missing hashed asset |
 | Quality | repo commands | focused tests, full preflight, build/e2e, Docker smoke, and all required GitHub checks green |
@@ -136,6 +161,10 @@ or PR #215 directly from this worktree.
 
 - Crash during append: stage and hash in transaction, atomic file rename, old
   pointer unchanged, safe idempotent retry.
+- Empty/failed-created volume masks legacy A: do not treat storage existence as
+  authority; require the validated committed-state tuple before skipping capture.
+- Crash after release rename but before metadata: classify and resume exact
+  release-only state; reject mismatches and never retry a blind rename over it.
 - Concurrent update: exclusive fail-closed lock; no implicit stale-lock removal.
 - Hash-looking collision: verify bytes, never trust the name.
 - First upgrade after legacy container was removed and old image overwritten:
@@ -151,8 +180,7 @@ or PR #215 directly from this worktree.
 
 ## Handoff Status
 
-Architect planning is complete and ready for Orchestrator assignment to an
-Implementation Agent. This is not final Architect validation. Final validation
-occurs only after implementation, review, checks, dispositions, and evidence are
-complete.
-
+Architect review disposition is complete, but the feature is not ready for final
+validation. R051-001 through R051-004 require implementation, focused and full
+verification including the executable Docker lifecycle gate, green current-head
+CI, and fresh exact-head review before final validation may be invoked.
