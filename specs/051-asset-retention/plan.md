@@ -1,0 +1,158 @@
+# Implementation Plan: Append-Only Static Asset Retention
+
+## Delivery Shape
+
+Use the Analyst-created latest-main handoff as one branch and one PR after
+explicit Orchestrator assignment. Staging core, Docker wiring, tests, and docs
+must land atomically because any partial adoption would claim safe deployment
+without enforcing shell-last retention. Before implementation, Orchestrator
+re-verifies `origin/main`; if PR #214 has merged, integrate its main result
+role-appropriately and preserve its cache/security choices. Never modify PR #214
+or PR #215 directly from this worktree.
+
+## Expected Files
+
+- Staging/inventory: narrow modules under `scripts/`, with a Docker-facing CLI
+  and test-only fault-injection seams that are unavailable from normal flags.
+- Runtime: `Dockerfile`, `docker-compose.yml`, `Makefile`, `nginx.conf`, a narrow
+  container entrypoint/config if required, and a narrowly scoped ignored local
+  handoff path.
+- Tests: focused staging tests, Docker contract tests, a real A/B retained-origin
+  browser test, and a destructive-deploy control.
+- Docs: Docker runtime, frontend/backend deployment notes, feature inventory,
+  and relevant service-worker reliability status. Do not edit feature 049 memory
+  or sibling feature folders.
+- No new production dependency, backend, cloud provider SDK, or remote service.
+
+## Implementation Sequence
+
+1. **Baseline and red tests**
+   - Confirm exact branch/base/status, complete feature memory, single PR slice,
+     and parallel-work warning.
+   - Add failing inventory/path/collision/idempotence/lock/fault-boundary tests.
+   - Add failing browser fixture where legacy A Cache Storage lacks the lazy
+     hash and destructive B returns 404.
+   - Add failing Docker-contract tests for project-scoped retained state,
+     outgoing capture-before-build, stage-before-nginx, and preserved volume.
+
+2. **Canonical inventory and safe path boundary**
+   - Implement ordinal normalized manifests with size/SHA-256 and exact walks.
+   - Reject symlinks, non-regular files, escape/alias/duplicate paths, mutations
+     during hashing, missing/extra files, and unsafe roots.
+   - Expose pure/testable functions plus one CLI; avoid shell parsing of
+     untrusted paths.
+
+3. **Transactional release staging**
+   - Implement the exact state layout and exclusive lock from `spec.md`.
+   - Validate outgoing/current/candidate immutable unions and fail on byte
+     collisions before promotion.
+   - Stage and rehash transaction bytes, atomically promote new immutable files,
+     atomically promote the complete release, then atomically replace `current`.
+   - Preserve A on every failure. Make retries idempotent; never add asset GC.
+
+4. **Docker-only migration and serving**
+   - Add a dedicated stager target/service with Node and candidate `dist`; nginx
+     remains the runtime server.
+   - Add a project-scoped release-state volume. Resolve the exact Compose project
+     and only its `cabadrive` container/image.
+   - Before Compose build replaces an existing legacy image, export its
+     `/assets/` to the exact project handoff. Support running container and
+     stopped-container/prior-image paths; fail if a detected prior release cannot
+     be captured. Record source identity.
+   - `make up` runs the stager successfully before replacing/starting nginx.
+     Nginx serves shared retained `/assets/` and atomic current shell. `make down`
+     preserves the volume. Never inspect/stop/remove another project.
+
+5. **Static publish output**
+   - Reuse the same core to create a complete next publish tree from current +
+     candidate. It contains retained A+B immutable assets and only B mutable
+     files.
+   - Document atomic deploy/no-delete requirements and unsupported destructive
+     hosts. Do not add a provider-specific adapter.
+
+6. **Executable migration evidence**
+   - Build deterministic A/B fixture files with distinct markers and bytes.
+   - A uses the historical exclusion and never application-loads the disputed
+     hash before deploy; assert Cache Storage miss.
+   - Stage B safely and prove the old A request hits retained origin with exact
+     bytes/MIME. Run the candidate-only destructive control and prove 404.
+   - Exercise collision, interrupted stage, retry, Docker running/stopped legacy
+     capture, restart persistence, project isolation, and HTTP smoke.
+
+7. **Documentation and full verification**
+   - Update durable runtime/deployment docs and status without claiming asset
+     pruning or provider guarantees.
+   - Run focused tests, typecheck/lint/format, complete Node/browser suites,
+     production build, isolated Docker A->B/restart smoke, repository/feature
+     guards, full preflight, and all required GitHub checks.
+   - Record exact commands/results, effective content head, known limitations,
+     feedback, cycle PR metadata, and cleanup applicability in `tasks.md`.
+
+8. **Review, final validation, merge, and dependent handoff**
+   - Obtain independent exact-head review and resolve every blocking finding
+     through role-appropriate follow-up.
+   - Orchestrator invokes final Architect validation, then final Analyst
+     validation, then current-head guard and conservative merge.
+   - Only after verified merge does Orchestrator synchronize PR #215 with the
+     new main and require its corrected faithful fixture, checks, review, and
+     fresh final validations.
+
+## Key Decisions
+
+- The entire real `/assets/` namespace is immutable; filename shape is not an
+  integrity primitive.
+- SHA-256 plus byte length is canonical; same path with different bytes fails.
+- Candidate shell selection is an atomic same-filesystem symlink rename after
+  asset/release verification. Appending unreferenced B hashes before activation
+  is safe; publishing B shell early is not.
+- A project-scoped persistent state volume preserves assets across container
+  replacement and `make down/up`. Normal workflows never remove it.
+- A pre-build capture bridges the first upgrade from a legacy image that had no
+  state volume. Detectable-but-unreadable prior state fails closed.
+- A Docker staging service preserves the host Docker-only contract; host Node or
+  pnpm is not required.
+- Static hosting consumes a complete merged publish tree and atomic/equivalent
+  shell switch. Candidate-only destructive upload is unsupported.
+- Retention is indefinite in this feature. Storage reclamation is a separate
+  correctness problem.
+
+## Verification Matrix
+
+| Boundary | Evidence | Pass condition |
+|---|---|---|
+| Manifest/path | focused Node tests | ordinal exact inventory; SHA/size stable; traversal, alias, symlink, duplicate, mutation, missing/extra rejected |
+| Collision/idempotence | focused Node tests | equal bytes retry; unequal bytes abort; retained bytes unchanged |
+| Transaction | fault-injected tests | every boundary before pointer rename leaves A current; retry succeeds; no retained deletion |
+| Legacy browser | real Chromium A/B | A cache miss proven; safe B stage; old path 200 JS with exact A bytes from origin |
+| Destructive negative | isolated browser/server | candidate-only B yields old-path 404 and production staging rejects switch |
+| Docker first migration | isolated Compose project | running and stopped legacy A captured before build replacement; B staged before nginx replacement |
+| Docker persistence | isolated Compose project | A URL survives B, restart, and `make down/up`; project-scoped sibling untouched |
+| Static publish | focused integration | output contains A+B assets/B shell; collision and incomplete stage fail |
+| HTTP policy | curl/tests | `/assets/` immutable and exact; `sw.js`/HTML current; no HTML fallback for missing hashed asset |
+| Quality | repo commands | focused tests, full preflight, build/e2e, Docker smoke, and all required GitHub checks green |
+| Process | diff/feature-memory/review | one PR; no sibling memory/state mutation; evidence/docs/current cycle set complete |
+
+## Risks And Mitigations
+
+- Crash during append: stage and hash in transaction, atomic file rename, old
+  pointer unchanged, safe idempotent retry.
+- Concurrent update: exclusive fail-closed lock; no implicit stale-lock removal.
+- Hash-looking collision: verify bytes, never trust the name.
+- First upgrade after legacy container was removed and old image overwritten:
+  impossible to recover; capture is ordered before build replacement and aborts
+  when detected prior state cannot be read.
+- Volume growth: accepted indefinite retention; no unsafe GC.
+- PR #214 overlap: inspect only merged main, preserve sibling PR, and let
+  Orchestrator coordinate any conflict.
+- Fixture cheats: assert A Cache Storage miss and server-side retained-origin
+  request evidence; destructive control must 404.
+- Static host lacks atomic/no-delete behavior: mark unsupported, do not soften
+  the guarantee.
+
+## Handoff Status
+
+Architect planning is complete and ready for Orchestrator assignment to an
+Implementation Agent. This is not final Architect validation. Final validation
+occurs only after implementation, review, checks, dispositions, and evidence are
+complete.
+

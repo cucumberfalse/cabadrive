@@ -1,6 +1,7 @@
-.PHONY: build up down logs
+.PHONY: build up down logs stage
 
 build:
+	./scripts/capture-legacy-assets.sh
 	docker compose build
 
 up:
@@ -12,3 +13,6 @@ down:
 
 logs:
 	docker compose logs -f cabadrive
+
+stage:
+	docker compose run --rm stager

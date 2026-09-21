@@ -49,6 +49,13 @@ Planned deployment shapes:
 - Local Docker-served build for end-user study.
 - Optional static hosting of build artifacts (while preserving offline behavior after first load).
 
+Static delivery retains immutable `/assets/` bytes append-only across releases.
+The local Docker release state validates SHA-256/size inventories, rejects
+path escapes, symlinks and same-path byte collisions, and selects a new
+HTML/service-worker shell only after its complete asset union is staged. A
+static host must provide the equivalent atomic shell-last/no-delete contract;
+destructive build-directory replacement is not compatible with old open tabs.
+
 ## Future Backend Triggers
 
 Backend should only be introduced with an explicit feature spec if requirements add multi-user accounts, sync, remote analytics, or managed content delivery.

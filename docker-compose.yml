@@ -1,7 +1,25 @@
 services:
+  stager:
+    build:
+      context: .
+      target: stager
+    volumes:
+      - release-state:/state
+      - ./.cabadrive-release-handoff/${COMPOSE_PROJECT_NAME:-cabadrive}:/legacy:ro
+    restart: "no"
+
   cabadrive:
     build:
       context: .
+      target: runtime
     ports:
       - "${CABADRIVE_HOST_PORT:-5173}:8080"
+    volumes:
+      - release-state:/state:ro
+    depends_on:
+      stager:
+        condition: service_completed_successfully
     restart: unless-stopped
+
+volumes:
+  release-state:

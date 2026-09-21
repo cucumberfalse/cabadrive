@@ -22,6 +22,17 @@ test("Docker compose does not require a shared local image tag for isolated smok
   assert.doesNotMatch(compose, /^\s*image:\s*cabadrive:local\s*$/m);
 });
 
+test("Docker stages a persistent project-scoped release store before nginx", () => {
+  assert.match(compose, /stager:/);
+  assert.match(compose, /release-state:\/state/);
+  assert.match(compose, /condition:\s*service_completed_successfully/);
+  assert.match(compose, /release-state:/);
+  assert.match(compose, /target:\s*stager/);
+  assert.match(compose, /target:\s*runtime/);
+  assert.match(makefile, /\.\/scripts\/capture-legacy-assets\.sh/);
+  assert.match(makefile, /docker compose run --rm stager/);
+});
+
 test("Makefile reports the configured Docker URL while keeping project-scoped targets", () => {
   assert.match(makefile, /docker compose build/);
   assert.match(makefile, /docker compose up -d/);

@@ -10,6 +10,27 @@ make up
 make down
 ```
 
+Each update uses an append-only, project-scoped `release-state` Docker volume.
+Before a new shell becomes live, the `stager` verifies the candidate build and
+adds its `/assets/` files beside every retained historical asset. It switches
+the HTML and `sw.js` release pointer only after that stage succeeds. `make
+build` captures `/assets/` from the prior container (or its prior Compose image
+when stopped) before replacement; a detected release that cannot be captured
+fails instead of being treated as a first install. `make down` intentionally
+keeps the release-state volume, so a later `make up` retains old hashes.
+
+No host Node.js or pnpm is required: the candidate build and staging command
+run in Docker. The scoped handoff under `.cabadrive-release-handoff/` is local
+deployment state and is not committed. Historical `/assets/` retention is
+indefinite in this release; do not use `docker compose down -v` for a safe
+upgrade path.
+
+Optional static hosts must publish the complete merged tree atomically (or
+upload and verify immutable assets without deletion, then switch HTML and
+`sw.js` last). A candidate-only replacement or destructive sync is unsupported
+for safe update continuity because an older open tab may request a lazy hash
+that its cache has never loaded.
+
 After `make up`, the app is available at:
 
 ```text
