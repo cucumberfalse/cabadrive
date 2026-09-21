@@ -20,13 +20,16 @@ test("the stager is Docker-contained and nginx exposes retained immutable assets
 });
 
 test("legacy capture is exact-project, supports container and prior image, and records identity", () => {
-  assert.match(capture, /docker compose ps -aq --all cabadrive/);
+  assert.match(capture, /COMPOSE_PROJECT_NAME="\$project" docker compose -f/);
+  assert.match(capture, /project="\$\{COMPOSE_PROJECT_NAME:-cabadrive\}"/);
   assert.match(capture, /docker image inspect --format/);
   assert.match(capture, /\$\{project\}-cabadrive/);
   assert.match(capture, /docker volume inspect/);
-  assert.match(capture, /docker cp .*\/state\/assets/);
   assert.match(capture, /docker cp .*\/usr\/share\/nginx\/html\/assets/);
   assert.match(capture, /source-id/);
+  assert.match(capture, /source-kind/);
+  assert.match(capture, /legacy-verify/);
+  assert.match(capture, /legacy-write/);
   assert.match(capture, /\.cabadrive-release-handoff/);
   assert.doesNotMatch(capture, /docker (?:stop|rm)\s+cabadrive/);
 });

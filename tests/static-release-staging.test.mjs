@@ -1,8 +1,10 @@
 import assert from "node:assert/strict";
 import {
   existsSync,
+  lstatSync,
   mkdirSync,
   readFileSync,
+  readdirSync,
   readlinkSync,
   rmSync,
   symlinkSync,
@@ -17,6 +19,8 @@ import {
   stageStaticRelease,
   verifyCommittedState,
   verifyCandidateManifest,
+  verifyLegacyHandoff,
+  writeLegacyHandoffManifest,
 } from "../scripts/stage-static-release.mjs";
 
 function withFixture(callback) {
@@ -44,6 +48,48 @@ function release(root, name, assets, shell = `<!doctype html><title>${name}</tit
 
 function currentShell(state) {
   return readFileSync(join(state, readlinkSync(join(state, "current")), "index.html"), "utf8");
+}
+
+function legacyHandoff(root, sourceId, assets) {
+  mkdirSync(join(root, "assets"), { recursive: true });
+  for (const [path, bytes] of Object.entries(assets)) {
+    const target = join(root, "assets", path);
+    mkdirSync(join(target, ".."), { recursive: true });
+    writeFileSync(target, bytes);
+  }
+  writeLegacyHandoffManifest({
+    legacyRoot: root,
+    sourceId,
+    sourceKind: "baked-legacy-root",
+  });
+  return root;
+}
+
+function snapshotState(state) {
+  const current = readlinkSync(join(state, "current"));
+  const releases = Object.fromEntries(
+    ["assets", "releases", "metadata"].flatMap((part) => {
+      const root = join(state, part);
+      const visit = (directory, prefix = "") =>
+        readdirSync(directory)
+          .sort()
+          .flatMap((name) => {
+            const path = join(directory, name);
+            const relative = prefix ? `${prefix}/${name}` : name;
+            const stat = lstatSync(path);
+            return stat.isDirectory()
+              ? visit(path, relative)
+              : [
+                  [
+                    `${part}/${relative}`,
+                    stat.isSymbolicLink() ? readlinkSync(path) : readFileSync(path, "utf8"),
+                  ],
+                ];
+          });
+      return visit(root);
+    }),
+  );
+  return { current, releases };
 }
 
 test("canonical manifest is ordinal, complete and digest-backed", () => {
@@ -117,14 +163,56 @@ test("collision, unsafe input and injected partial stages preserve A", () => {
 test("legacy assets seed the append-only namespace and stay byte-identical", () => {
   withFixture((root) => {
     const state = join(root, "state");
-    const legacy = join(root, "legacy");
-    mkdirSync(join(legacy, "assets"), { recursive: true });
-    writeFileSync(join(legacy, "assets/a-lazy-old.js"), "legacy exact bytes");
+    const legacy = legacyHandoff(join(root, "legacy"), "legacy-image", {
+      "a-lazy-old.js": "legacy exact bytes",
+    });
     const b = release(root, "b", { "b.js": "B" });
 
     stageStaticRelease({ stateRoot: state, candidateRoot: b, legacyRoot: legacy });
 
     assert.equal(readFileSync(join(state, "assets/a-lazy-old.js"), "utf8"), "legacy exact bytes");
+  });
+});
+
+test("a late authoritative legacy union is promoted before an idempotent candidate return", () => {
+  withFixture((root) => {
+    const state = join(root, "state");
+    const b = release(root, "b", { "b.js": "B" }, "B shell");
+    stageStaticRelease({ stateRoot: state, candidateRoot: b });
+    const legacy = legacyHandoff(join(root, "legacy"), "legacy-A", { "a-lazy.js": "A" });
+
+    const retry = stageStaticRelease({ stateRoot: state, candidateRoot: b, legacyRoot: legacy });
+    assert.equal(retry.changed, false);
+    assert.equal(readFileSync(join(state, "assets/a-lazy.js"), "utf8"), "A");
+
+    const collision = legacyHandoff(join(root, "collision"), "legacy-collision", {
+      "b.js": "not B",
+    });
+    const before = snapshotState(state);
+    assert.throws(
+      () => stageStaticRelease({ stateRoot: state, candidateRoot: b, legacyRoot: collision }),
+      /collision/i,
+    );
+    assert.deepEqual(snapshotState(state), before);
+  });
+});
+
+test("a malformed legacy handoff is never treated as authoritative", () => {
+  withFixture((root) => {
+    const legacy = join(root, "legacy");
+    mkdirSync(join(legacy, "assets"), { recursive: true });
+    writeFileSync(join(legacy, "assets/a.js"), "A");
+    assert.equal(verifyLegacyHandoff(legacy).valid, false);
+    const b = release(root, "b", { "b.js": "B" });
+    assert.throws(
+      () =>
+        stageStaticRelease({
+          stateRoot: join(root, "state"),
+          candidateRoot: b,
+          legacyRoot: legacy,
+        }),
+      /not authoritative/i,
+    );
   });
 });
 
@@ -144,6 +232,26 @@ test("static publish emits retained assets with only the B mutable shell", () =>
       () => buildStaticPublish({ stateRoot: state, candidateRoot: b, outputRoot: output }),
       /refusing destructive replacement/i,
     );
+  });
+});
+
+test("an existing publish output is rejected before staging mutates release state", () => {
+  withFixture((root) => {
+    const state = join(root, "state");
+    const output = join(root, "publish");
+    const a = release(root, "a", { "a.js": "A" }, "A shell");
+    const b = release(root, "b", { "b.js": "B" }, "B shell");
+    stageStaticRelease({ stateRoot: state, candidateRoot: a });
+    mkdirSync(output, { recursive: true });
+    writeFileSync(join(output, "user-owned.txt"), "do not touch");
+    const before = snapshotState(state);
+
+    assert.throws(
+      () => buildStaticPublish({ stateRoot: state, candidateRoot: b, outputRoot: output }),
+      /publish output already exists/i,
+    );
+    assert.deepEqual(snapshotState(state), before);
+    assert.equal(readFileSync(join(output, "user-owned.txt"), "utf8"), "do not touch");
   });
 });
 

@@ -27,6 +27,8 @@ import { fileURLToPath } from "node:url";
 
 const SCHEMA_VERSION = 1;
 const RELEASE_MARKER = ".release-state.json";
+const LEGACY_HANDOFF_MARKER = ".legacy-handoff.json";
+const LEGACY_SOURCE_KIND = "baked-legacy-root";
 
 function fail(message) {
   throw new Error(`Static release staging: ${message}`);
@@ -178,6 +180,15 @@ function sameEntries(left, right) {
   );
 }
 
+function sameLegacyManifest(left, right) {
+  return (
+    left?.schemaVersion === right?.schemaVersion &&
+    left?.sourceId === right?.sourceId &&
+    left?.sourceKind === right?.sourceKind &&
+    sameEntries(left?.assets || [], right?.assets || [])
+  );
+}
+
 function readJson(path, label) {
   try {
     return JSON.parse(readFileSync(path, "utf8"));
@@ -238,6 +249,64 @@ function inventoryForAssets(root, label) {
   const assets = join(root, "assets");
   if (!existsSync(assets)) return [];
   return walkRegularFiles(assets, label);
+}
+
+function requireLegacySource(value, label) {
+  if (typeof value !== "string" || !value.trim()) fail(`${label} must be a nonempty string`);
+  return value.trim();
+}
+
+export function createLegacyHandoffManifest({ legacyRoot, sourceId, sourceKind } = {}) {
+  if (!legacyRoot) fail("legacy root is required");
+  const root = realpathSync(legacyRoot);
+  assertDirectory(root, "legacy handoff root");
+  const kind = requireLegacySource(sourceKind, "legacy source kind");
+  if (kind !== LEGACY_SOURCE_KIND) fail(`unsupported legacy source kind ${JSON.stringify(kind)}`);
+  return {
+    schemaVersion: SCHEMA_VERSION,
+    sourceId: requireLegacySource(sourceId, "legacy source id"),
+    sourceKind: kind,
+    assets: inventoryForAssets(root, "legacy handoff assets"),
+  };
+}
+
+export function writeLegacyHandoffManifest({ legacyRoot, sourceId, sourceKind } = {}) {
+  const root = realpathSync(legacyRoot);
+  const manifest = createLegacyHandoffManifest({ legacyRoot: root, sourceId, sourceKind });
+  const temporary = join(root, `${LEGACY_HANDOFF_MARKER}.next-${process.pid}-${randomUUID()}`);
+  writeFileSync(join(root, "source-id"), `${manifest.sourceId}\n`);
+  writeFileSync(join(root, "source-kind"), `${manifest.sourceKind}\n`);
+  writeFileSync(temporary, `${JSON.stringify(manifest, null, 2)}\n`);
+  renameSync(temporary, join(root, LEGACY_HANDOFF_MARKER));
+  return manifest;
+}
+
+export function verifyLegacyHandoff(legacyRoot) {
+  try {
+    const root = realpathSync(legacyRoot);
+    assertDirectory(root, "legacy handoff root");
+    const markerPath = join(root, LEGACY_HANDOFF_MARKER);
+    const sourceIdPath = join(root, "source-id");
+    const sourceKindPath = join(root, "source-kind");
+    if (!existsSync(markerPath) || !existsSync(sourceIdPath) || !existsSync(sourceKindPath)) {
+      return { valid: false, reason: "legacy handoff marker is incomplete" };
+    }
+    const marker = readJson(markerPath, "legacy handoff marker");
+    const actual = createLegacyHandoffManifest({
+      legacyRoot: root,
+      sourceId: readFileSync(sourceIdPath, "utf8"),
+      sourceKind: readFileSync(sourceKindPath, "utf8"),
+    });
+    if (!sameLegacyManifest(marker, actual)) {
+      return { valid: false, reason: "legacy handoff inventory does not match" };
+    }
+    return { valid: true, manifest: actual };
+  } catch (error) {
+    return {
+      valid: false,
+      reason: error instanceof Error ? error.message : "legacy handoff validation failed",
+    };
+  }
 }
 
 function assertNoCollision(...groups) {
@@ -388,15 +457,32 @@ export function stageStaticRelease({ stateRoot, candidateRoot, legacyRoot, fault
   try {
     const candidate = realpathSync(candidateRoot);
     const existing = inventoryForAssets(state, "retained assets");
-    const legacy =
-      legacyRoot && existsSync(join(legacyRoot, "assets"))
-        ? inventoryForAssets(resolve(legacyRoot), "legacy assets")
-        : [];
-    const legacySource =
-      legacyRoot && existsSync(join(legacyRoot, "source-id"))
-        ? readFileSync(join(legacyRoot, "source-id"), "utf8").trim()
-        : undefined;
+    const suppliedLegacyRoot = legacyRoot ? resolve(legacyRoot) : undefined;
+    const hasLegacyAssets = suppliedLegacyRoot && existsSync(join(suppliedLegacyRoot, "assets"));
+    const legacyValidation = hasLegacyAssets ? verifyLegacyHandoff(suppliedLegacyRoot) : undefined;
+    if (legacyValidation && !legacyValidation.valid) {
+      fail(`legacy handoff is not authoritative: ${legacyValidation.reason}`);
+    }
+    const legacy = legacyValidation?.manifest.assets || [];
+    const legacySource = legacyValidation?.manifest.sourceId;
     assertNoCollision(existing, legacy, release.assets);
+
+    // Do this before the complete-release shortcut: a handoff can arrive after
+    // the candidate was first staged, and immutable A bytes are still owed.
+    mkdirSync(transaction, { recursive: true, mode: 0o755 });
+    const transactionAssets = join(transaction, "assets");
+    const transactionRelease = join(transaction, "release");
+    mkdirSync(transactionAssets, { recursive: true, mode: 0o755 });
+    mkdirSync(transactionRelease, { recursive: true, mode: 0o755 });
+    fault({ faultAt }, "after-validation");
+    if (legacy.length) {
+      copyInventory(suppliedLegacyRoot, legacy, transactionAssets, sourceAsset);
+    }
+    copyInventory(candidate, release.assets, transactionAssets, sourceAsset);
+    fault({ faultAt }, "during-assets");
+    promoteFiles(transactionAssets, join(state, "assets"), [...legacy, ...release.assets]);
+    fault({ faultAt }, "after-assets");
+
     if (existsSync(releaseDir) && existsSync(metadataPath)) {
       if (
         !metadataMatches(metadataPath, release) ||
@@ -420,21 +506,6 @@ export function stageStaticRelease({ stateRoot, candidateRoot, legacyRoot, fault
     if (existsSync(metadataPath) && !metadataMatches(metadataPath, release)) {
       fail("existing metadata-only partial state does not match candidate");
     }
-
-    mkdirSync(transaction, { recursive: true, mode: 0o755 });
-    const transactionAssets = join(transaction, "assets");
-    const transactionRelease = join(transaction, "release");
-    mkdirSync(transactionAssets, { recursive: true, mode: 0o755 });
-    mkdirSync(transactionRelease, { recursive: true, mode: 0o755 });
-    fault({ faultAt }, "after-validation");
-
-    if (legacyRoot && legacy.length) {
-      copyInventory(resolve(legacyRoot), legacy, transactionAssets, sourceAsset);
-    }
-    copyInventory(candidate, release.assets, transactionAssets, sourceAsset);
-    fault({ faultAt }, "during-assets");
-    promoteFiles(transactionAssets, join(state, "assets"), [...legacy, ...release.assets]);
-    fault({ faultAt }, "after-assets");
 
     copyInventory(candidate, release.mutable, transactionRelease, sourceMutable);
     const stagedMutable = walkRegularFiles(transactionRelease, "transaction release");
@@ -471,10 +542,10 @@ export function stageStaticRelease({ stateRoot, candidateRoot, legacyRoot, fault
 
 export function buildStaticPublish({ stateRoot, candidateRoot, outputRoot }) {
   if (!outputRoot) fail("--output is required");
-  const staged = stageStaticRelease({ stateRoot, candidateRoot });
-  const state = resolve(stateRoot);
   const output = resolve(outputRoot);
   if (existsSync(output)) fail("publish output already exists; refusing destructive replacement");
+  const staged = stageStaticRelease({ stateRoot, candidateRoot });
+  const state = resolve(stateRoot);
   mkdirSync(output, { recursive: true, mode: 0o755 });
   const release = join(state, readlinkSync(join(state, "current")));
   for (const entry of walkRegularFiles(join(state, "assets"), "retained assets")) {
@@ -519,10 +590,20 @@ if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.ur
         ? buildStaticPublish({ ...options, outputRoot: values.output })
         : command === "verify"
           ? verifyCommittedState(values.state)
-          : fail(`unknown command ${command}`);
-  if (command === "verify") {
+          : command === "legacy-write"
+            ? writeLegacyHandoffManifest({
+                legacyRoot: values.legacy,
+                sourceId: values["source-id"],
+                sourceKind: values["source-kind"],
+              })
+            : command === "legacy-verify"
+              ? verifyLegacyHandoff(values.legacy)
+              : fail(`unknown command ${command}`);
+  if (command === "verify" || command === "legacy-verify") {
     process.stdout.write(`${JSON.stringify(result)}\n`);
     if (!result.valid) process.exitCode = 1;
+  } else if (command === "legacy-write") {
+    process.stdout.write(`${JSON.stringify(result)}\n`);
   } else {
     process.stdout.write(
       `${JSON.stringify({

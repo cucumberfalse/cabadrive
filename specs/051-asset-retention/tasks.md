@@ -47,26 +47,26 @@
 
 - [x] T007 Implement canonical complete candidate manifest and safe filesystem
   walk with schema/path/size/SHA-256 validation and no symlink/escape surface.
-- [ ] T008 Implement exclusive locking and transactional state layout. Stage and
+- [x] T008 Implement exclusive locking and transactional state layout. Stage and
   rehash outgoing/candidate bytes; fail on collision; atomically promote new
   immutable files, release metadata/tree, and finally `current`. Preserve A and
   support idempotent retry at every fault boundary, including after release-tree
   promotion and before metadata promotion; promote any late authoritative legacy
   union before an idempotent return; add no GC.
-- [ ] T009 Implement a static publish command that consumes current + candidate
+- [x] T009 Implement a static publish command that consumes current + candidate
   roots and emits a complete A+B `/assets/`, B-only mutable shell tree suitable
   for one atomic host publication. Reject candidate-only/destructive semantics
   and pre-existing output before any staging mutation.
 - [x] T010 Add Docker candidate/stager targets and project-scoped persistent
   release-state volume. Keep runtime nginx-only and end-user host Node-free.
-- [ ] T011 Add safe pre-build legacy capture for the exact Compose project. Use
+- [x] T011 Add safe pre-build legacy capture for the exact Compose project. Use
   the running container when present or the prior Compose image when stopped;
   record source identity and fail if detected prior assets cannot be exported.
   Skip only for a validated committed-state tuple, never merely because its
   volume/directories exist. Never inspect/mutate another project or broad host
   directory. A verifier-rejected volume may not be copied through an attached
   container; preserve only independently validated handoff/baked legacy sources.
-- [ ] T012 Make `make build` capture before image replacement and `make up` run
+- [x] T012 Make `make build` capture before image replacement and `make up` run
   the stager before replacing/starting nginx. Preserve volume on `make down` and
   keep default URL plus isolated project/port behavior. Compose, capture, lookup,
   handoff, and bind mount must share one effective project key.
@@ -83,20 +83,20 @@
 
 ## Verification And Publication
 
-- [ ] T016 Run focused manifest/staging/fault/path/static-publish tests and
+- [x] T016 Run focused manifest/staging/fault/path/static-publish tests and
   record test-first FAIL->PASS evidence.
 - [x] T017 Run the Chromium safe A->B origin-hit test and destructive control;
   record cache-miss proof, request source, status, MIME, exact bytes/SHA, and
   absence of HTML fallback.
-- [ ] T018 Run an executable isolated Docker running-legacy and stopped-legacy
+- [x] T018 Run an executable isolated Docker running-legacy and stopped-legacy
   A->B regression in the normal Docker validation gate, plus
   initial install, restart and `make down/up`; smoke current HTML/SW and retained
   A hash. Use unique Compose project/port and leave sibling projects untouched.
-- [ ] T019 Run `pnpm run typecheck`, `pnpm run lint`, `pnpm run format:check`,
+- [x] T019 Run `pnpm run typecheck`, `pnpm run lint`, `pnpm run format:check`,
   `pnpm run test`, `pnpm run build`, `pnpm run test:e2e`, full `pnpm run
   preflight`, `node scripts/check-feature-memory.mjs --worktree`, `pnpm run
   check:repo`, and `git diff --check`.
-- [ ] T020 Inspect final scope: no feature-049 product behavior or sibling
+- [x] T020 Inspect final scope: no feature-049 product behavior or sibling
   feature-memory edits, no PR #214/#215 mutation, no host Node requirement, no
   unsafe deletion/overwrite, no broad path, and no committed runtime state/temp
   artifacts.
@@ -129,21 +129,21 @@
   path with module/repository-relative resolution (for example `import.meta.url`),
   execute the focused test from an unrelated temporary working directory, scan
   governed fixtures for checkout paths, and rerun the exact failing CI baseline.
-- [ ] T022e Implement R051-005: establish one effective Compose project key used
+- [x] T022e Implement R051-005: establish one effective Compose project key used
   by Compose itself, capture, volume/image/container discovery, handoff path, and
   stager bind. Add contract and executable tests with the variable unset from a
   non-`cabadrive` cwd and with an explicit sibling-isolated value.
-- [ ] T022f Implement R051-006: collision-check and promote newly supplied legacy
+- [x] T022f Implement R051-006: collision-check and promote newly supplied legacy
   assets before the existing complete-release shortcut. Test B staged without a
   handoff then identical B with legacy A appended; test legacy collision leaves
   assets/releases/metadata/current unchanged.
-- [ ] T022g Implement R051-007: when project state verification fails, never use
+- [x] T022g Implement R051-007: when project state verification fails, never use
   `/state/assets` from a container attached to that state as legacy authority.
   Preserve an existing handoff only when its canonical asset manifest, source ID,
   and independent source kind revalidate; atomically replace it only from an
   independently baked legacy root, and fail closed unchanged without either.
   Include readable rejected `/state` and corrupt-handoff negatives.
-- [ ] T022h Implement R051-008: validate an existing static-publish destination
+- [x] T022h Implement R051-008: validate an existing static-publish destination
   before calling stage. Snapshot `current`, releases, metadata, retained assets,
   and output; prove the negative leaves all of them byte-identical.
 - [ ] T023 Orchestrator route every finding/feedback to the proper role; all
@@ -258,7 +258,26 @@
   review added four unresolved actionable threads disposed as R051-005 through
   R051-008. No thread was resolved by this Architect pass.
 - Follow-up Implementation Agent feedback/evidence for T022e through T022h:
-  pending; every new item remains subject to Architect disposition.
+  the Compose file and Makefile now declare/export the same `cabadrive`
+  default while an explicit `COMPOSE_PROJECT_NAME` overrides every consumer;
+  the capture wrapper uses repository-relative handoff state and a single
+  project key. A canonical handoff has immutable path/size/SHA-256 inventory,
+  source ID, and `baked-legacy-root` kind; capture preserves a revalidated
+  pointer or atomically publishes a new pointer only after copying the baked
+  root, never `/state/assets`. Stage validates and promotes the full legacy plus
+  candidate union before returning an existing candidate as idempotent. Static
+  publish rejects an existing destination before calling stage. No additional
+  out-of-scope feedback or owner decision was required.
+- Follow-up focused verification: `node --test
+  tests/static-release-staging.test.mjs tests/capture-legacy-assets.test.mjs
+  tests/static-release-docker-contract.test.mjs tests/docker-runtime.test.mjs`
+  passed 22/22; it includes unset-cwd/default-project, explicit fixture,
+  rejected-state no-`/state` copy, malformed handoff, late legacy append,
+  collision/no-mutation, and pre-existing-output snapshot negatives.
+  `pnpm run typecheck`, `pnpm run lint`, `pnpm run format:check`, and `git diff
+  --check` passed. `pnpm run test:docker-retention` passed the real isolated
+  running-A capture, old-hash request, restart, down/up, stopped-image capture,
+  sibling sentinel, and scoped cleanup lifecycle.
 - Effective content head: pending final process-memory and validation guards.
 - Cleanup: not assigned; any later environment cleanup requires separate
   Cleanup Agent scope/evidence.

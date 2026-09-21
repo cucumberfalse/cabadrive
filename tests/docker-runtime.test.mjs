@@ -14,6 +14,7 @@ const frontendDocs = readFileSync(
 );
 
 test("Docker compose uses project-scoped containers and configurable host port", () => {
+  assert.match(compose, /^name:\s*\$\{COMPOSE_PROJECT_NAME:-cabadrive\}/m);
   assert.doesNotMatch(compose, /^\s*container_name:\s*cabadrive\s*$/m);
   assert.match(compose, /\$\{CABADRIVE_HOST_PORT:-5173\}:8080/);
 });
@@ -30,6 +31,7 @@ test("Docker stages a persistent project-scoped release store before nginx", () 
   assert.match(compose, /target:\s*stager/);
   assert.match(compose, /target:\s*runtime/);
   assert.match(makefile, /\.\/scripts\/capture-legacy-assets\.sh/);
+  assert.match(makefile, /COMPOSE_PROJECT_NAME \?= cabadrive/);
   assert.match(makefile, /docker compose run --rm stager/);
 });
 

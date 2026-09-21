@@ -19,6 +19,16 @@ when stopped) before replacement; a detected release that cannot be captured
 fails instead of being treated as a first install. `make down` intentionally
 keeps the release-state volume, so a later `make up` retains old hashes.
 
+The default Compose project is always `cabadrive`, even when the command is run
+from a differently named checkout. Supplying `COMPOSE_PROJECT_NAME` changes the
+same single identity for Compose, its volume/image/container discovery, the
+handoff bind, and the stager. During a migration, a rejected release-state
+volume is never copied back through an attached container: only a separately
+validated handoff (canonical path/size/SHA-256 inventory plus source identity)
+or the pre-feature image's baked asset root may seed retained assets. The
+handoff publishes its `current` pointer atomically and remains local deployment
+state.
+
 No host Node.js or pnpm is required: the candidate build and staging command
 run in Docker. The scoped handoff under `.cabadrive-release-handoff/` is local
 deployment state and is not committed. Historical `/assets/` retention is
@@ -30,6 +40,8 @@ upload and verify immutable assets without deletion, then switch HTML and
 `sw.js` last). A candidate-only replacement or destructive sync is unsupported
 for safe update continuity because an older open tab may request a lazy hash
 that its cache has never loaded.
+The target publish path must be new: an existing destination is rejected before
+any release-state staging or pointer change.
 
 After `make up`, the app is available at:
 

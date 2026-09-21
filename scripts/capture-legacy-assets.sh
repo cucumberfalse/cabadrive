@@ -3,18 +3,48 @@
 # `docker compose build` can replace its image.  No host Node/pnpm is needed.
 set -eu
 
-project="${COMPOSE_PROJECT_NAME:-$(basename "$PWD")}"
-handoff=".cabadrive-release-handoff/$project"
-assets="$handoff/assets"
+project="${COMPOSE_PROJECT_NAME:-cabadrive}"
+export COMPOSE_PROJECT_NAME="$project"
+script_dir="$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)"
+repo_root="${CABADRIVE_REPOSITORY_ROOT:-$(CDPATH= cd -- "$script_dir/.." && pwd)}"
+handoff_base="$repo_root/.cabadrive-release-handoff/$project"
+handoff="$handoff_base/current"
 state_volume="${project}_release-state"
-container="$(docker compose ps -aq --all cabadrive | sed -n '1p')"
+container="$(COMPOSE_PROJECT_NAME="$project" docker compose -f "$repo_root/docker-compose.yml" ps -aq --all cabadrive | sed -n '1p')"
 image=""
 source=""
 invalid_state=""
-script_dir="$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)"
+source_kind="baked-legacy-root"
 
-mkdir -p "$handoff"
-rm -rf "$assets"
+mkdir -p "$handoff_base/releases"
+
+verify_handoff() {
+  test -L "$handoff" || return 1
+  docker run --rm \
+    --mount "type=bind,source=$script_dir,target=/app,readonly" \
+    --mount "type=bind,source=$handoff_base,target=/handoff,readonly" \
+    node:22-alpine node /app/stage-static-release.mjs legacy-verify --legacy /handoff/current
+}
+
+publish_handoff() {
+  temporary="$handoff_base/releases/capture-$(date +%s)-$$"
+  mkdir -p "$temporary/assets"
+  if ! copy_legacy_assets "$temporary/assets"; then
+    rm -rf "$temporary"
+    return 1
+  fi
+  printf '%s\n' "$source" >"$temporary/source-id"
+  printf '%s\n' "$source_kind" >"$temporary/source-kind"
+  docker run --rm \
+    --mount "type=bind,source=$script_dir,target=/app,readonly" \
+    --mount "type=bind,source=$handoff_base,target=/handoff" \
+    node:22-alpine node /app/stage-static-release.mjs legacy-write \
+      --legacy "/handoff/releases/$(basename "$temporary")" \
+      --source-id "$source" --source-kind "$source_kind"
+  next="$handoff_base/current.next-$$"
+  ln -s "releases/$(basename "$temporary")" "$next"
+  mv -f "$next" "$handoff"
+}
 
 # A volume name is not evidence of a completed release: failed first stages can
 # leave it empty. Validate the exact committed tuple in a throwaway Node
@@ -31,21 +61,36 @@ if docker volume inspect "$state_volume" >/dev/null 2>&1; then
   printf '%s\n' 'project release-state is incomplete; legacy capture remains required' >&2
 fi
 
+# A handoff is authoritative only when its independently generated canonical
+# inventory, source identity, and source kind all revalidate. Preserve it
+# rather than laundering rejected /state bytes through a mounted container.
+if verify_handoff >/dev/null 2>&1; then
+  printf '%s\n' 'validated independent legacy handoff is the retained source'
+  exit 0
+fi
+
+copy_legacy_assets() {
+  destination="$1"
+  if [ -n "$container" ]; then
+    # Never read /state from a container once the state verifier has rejected
+    # that volume; only the baked pre-feature root is an independent source.
+    docker cp "$container:/usr/share/nginx/html/assets/." "$destination"
+  else
+    docker cp "$temporary_container:/usr/share/nginx/html/assets/." "$destination"
+  fi
+}
+
 if [ -n "$container" ]; then
   source="$container"
-  if docker cp "$container:/state/assets/." "$assets" 2>/dev/null; then :; else
-    docker cp "$container:/usr/share/nginx/html/assets/." "$assets"
-  fi
 elif image="$(docker image inspect --format '{{.Id}}' "${project}-cabadrive" 2>/dev/null || true)"; [ -n "$image" ]; then
-  temporary="$(docker create "$image")"
-  trap 'docker rm -f "$temporary" >/dev/null 2>&1 || true' EXIT
+  temporary_container="$(docker create "$image")"
+  trap 'docker rm -f "$temporary_container" >/dev/null 2>&1 || true' EXIT
   source="$image"
-  if docker cp "$temporary:/state/assets/." "$assets" 2>/dev/null; then :; else
-    # Pre-feature images contain the original build rather than release state.
-    docker cp "$temporary:/usr/share/nginx/html/assets/." "$assets"
-  fi
-  docker rm -f "$temporary" >/dev/null
+  publish_handoff
+  docker rm -f "$temporary_container" >/dev/null
   trap - EXIT
+  printf '%s\n' "captured legacy assets from $source"
+  exit 0
 else
   if [ -n "$invalid_state" ]; then
     printf '%s\n' 'incomplete project release-state has no readable legacy source' >&2
@@ -55,6 +100,5 @@ else
   exit 0
 fi
 
-test -d "$assets" || { printf '%s\n' "legacy capture failed for $source" >&2; exit 1; }
-printf '%s\n' "$source" >"$handoff/source-id"
+publish_handoff || { printf '%s\n' "legacy capture failed for $source" >&2; exit 1; }
 printf '%s\n' "captured legacy assets from $source"

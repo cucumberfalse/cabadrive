@@ -16,7 +16,7 @@ WORKDIR /app
 COPY scripts/stage-static-release.mjs ./scripts/stage-static-release.mjs
 COPY --from=build /app/dist /candidate
 
-CMD ["node", "/app/scripts/stage-static-release.mjs", "stage", "--state", "/state", "--candidate", "/candidate", "--legacy", "/legacy"]
+CMD ["node", "/app/scripts/stage-static-release.mjs", "stage", "--state", "/state", "--candidate", "/candidate", "--legacy", "/legacy-handoff/current"]
 
 FROM nginx:1.29-alpine AS runtime
 

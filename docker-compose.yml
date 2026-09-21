@@ -1,3 +1,5 @@
+name: ${COMPOSE_PROJECT_NAME:-cabadrive}
+
 services:
   stager:
     build:
@@ -5,7 +7,7 @@ services:
       target: stager
     volumes:
       - release-state:/state
-      - ./.cabadrive-release-handoff/${COMPOSE_PROJECT_NAME:-cabadrive}:/legacy:ro
+      - ./.cabadrive-release-handoff/${COMPOSE_PROJECT_NAME:-cabadrive}:/legacy-handoff:ro
     restart: "no"
 
   cabadrive:
