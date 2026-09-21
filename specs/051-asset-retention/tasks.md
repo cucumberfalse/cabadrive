@@ -12,9 +12,10 @@
   Orchestrator assignment and latest-main re-verification.
 - Parallel work: preserve all sibling state. Never mutate PR #214 or PR #215.
 - Cycle PR set: PR #217, `codex/051-asset-retention`, purpose `append-only
-  static asset retention and shell-last Docker/static deployment`, current head
-  `c55dee242989b222e0092953721915ea8784275b`, included in final validation
-  after implementation/review/check completion.
+  static asset retention and shell-last Docker/static deployment`; initial
+  product head `c55dee242989b222e0092953721915ea8784275b` is followed only by
+  implementation process-memory evidence until review/final validation. It is
+  included in final validation after implementation/review/check completion.
 - Dependency: feature 051 must merge first. PR #215 is then synchronized to the
   merged main and independently retested/reviewed/revalidated.
 
@@ -170,7 +171,7 @@
 - Review evidence: pending.
 - Implementation Agent feedback: pending; every item requires Architect
   disposition.
-- Effective content head: pending commit/push.
+- Effective content head: pending final process-memory and validation guards.
 - Cleanup: not assigned; any later environment cleanup requires separate
   Cleanup Agent scope/evidence.
 
