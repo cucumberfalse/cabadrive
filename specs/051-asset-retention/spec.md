@@ -263,10 +263,13 @@ Static publish uses a prepare/output/commit transaction under the release lock:
    no final output; prepared append-only state may remain unreferenced.
 4. If fault injection stops after output rename but before `current`, retry may
    resume only when the durable pending journal identifies the same transaction
-   and the output exactly matches its expected inventory; it
-   then commits B and clears the journal durably. Any arbitrary, missing-journal,
-   stale-journal, or byte-mismatched existing output fails unchanged. No command
-   deletes or overwrites an existing output.
+   and the output exactly matches its expected inventory **and** the current
+   canonical retained-assets ledger and exact `/assets/` walk still match the
+   journal's retained-assets digest. It then commits B and clears the journal
+   durably. A later C stage, ledger drift, arbitrary output, missing journal,
+   stale journal, or byte-mismatched existing output fails unchanged; in
+   particular, an old A+B output must never be selected after C was appended.
+   No command deletes or overwrites an existing output.
 5. A crash after `current` commits but before journal removal is also idempotent:
    retry requires matching B current, journal and exact output, then only clears
    the journal. Any mismatch fails closed without changing output or state.
@@ -324,6 +327,18 @@ Static publish uses a prepare/output/commit transaction under the release lock:
   output artifact before state activation. Failed output construction cannot
   select B; only a pending-journal-bound exact post-output/pre-current retry is
   resumable.
+- FR-021: A pending static-publish journal is authoritative only while its
+  retained-assets digest equals both the current canonical ledger and the exact
+  current retained filesystem inventory. An unrelated later promotion makes an
+  older output non-resumable and cannot select its stale shell.
+- FR-022: Legacy-handoff publication replaces `current` with a no-follow,
+  same-directory atomic rename. A pre-existing `current` symlink, including one
+  to a directory outside the handoff tree, is replaced as a link and is never
+  traversed or written through.
+- FR-023: Every legacy-handoff publication prerequisite is checked explicitly;
+  a failed copy, marker write, symlink creation, or pointer rename returns
+  failure and publishes no new authority. Shell conditional/error semantics may
+  not convert a failed marker write into a successful capture.
 
 ## Acceptance Criteria And Negative Scenarios
 
@@ -424,6 +439,17 @@ Static publish uses a prepare/output/commit transaction under the release lock:
     destination, transaction identity, or output bytes fails unchanged.
     A post-current/pre-journal-clear fault resumes only by verifying exact B
     current/output/journal and durably clearing the journal.
+25. Fault after B output rename and before B `current`, then independently stage
+    C with an additional immutable C asset. Retrying the old B publication must
+    compare its journal digest to both the current retained ledger and exact
+    asset walk, reject without changing C `current`, C ledger, B output, or the
+    journal, and never publish an A+B tree that omits C. The unchanged A+B
+    retry still resumes when no later retained-state mutation occurred.
+26. A malicious or malformed handoff `current` symlink to an external directory
+    is atomically replaced as a link while the external directory/sentinel stays
+    unchanged. Inject failure of the handoff marker writer and of every pointer
+    publication prerequisite; capture exits nonzero, does not create/select a
+    new `current`, and never reports or uses an incomplete handoff as authority.
 
 ## Review And Completion Requirements
 
@@ -493,3 +519,18 @@ Static publish uses a prepare/output/commit transaction under the release lock:
   Split preparation from activation, build/verify/fsync/atomically rename output
   first, then commit `current`. Bind the only resumable crash window to a matching
   durable pending journal; add failures at every output boundary.
+- **R051-015 (P1) — stale pending journal can publish an output that omits a
+  later retained asset: accepted.** Require the journaled retained-assets digest
+  to equal both the canonical ledger and a fresh exact `/assets/` inventory at
+  retry time, in addition to the existing output/release checks. A C promotion
+  after B output but before B pointer activation invalidates B's retry; it must
+  fail closed without changing C state, the stale B output, or the journal.
+- **R051-016 (P2) — `mv` can follow a handoff `current` directory symlink:
+  accepted.** Replace the shell `mv` pointer handoff with a no-follow atomic
+  rename executed by the repository-owned Node helper. Constrain/validate the
+  handoff base and prove an external symlink target is not traversed or mutated.
+- **R051-017 (P2) — shell conditional invocation suppresses `set -e` within
+  `publish_handoff`: accepted.** Make every publication step explicitly checked
+  and cleanup-safe, particularly the marker writer, temporary link creation,
+  and pointer rename. A marker-write failure must return nonzero before a
+  `current` pointer can be published; add an executable failure-injection test.

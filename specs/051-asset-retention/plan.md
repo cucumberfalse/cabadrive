@@ -88,6 +88,11 @@ or PR #215 directly from this worktree.
      independent baked legacy root into a temporary replacement, or fail closed.
      Bind handoff authority to canonical asset inventory, source ID, and source
      kind, all revalidated before reuse.
+   - Publish a newly captured handoff only through a repository-owned no-follow
+     atomic rename of a temporary `current` link. Do not use shell `mv` against
+     an existing symlink/directory target. Explicitly check every copy, marker,
+     link, and rename result so POSIX `set -e`/conditional behavior cannot turn
+     a failed marker write into a usable handoff.
    - `make up` runs the stager successfully before replacing/starting nginx.
      Nginx serves shared retained `/assets/` and atomic current shell. `make down`
      preserves the volume. Never inspect/stop/remove another project.
@@ -102,8 +107,11 @@ or PR #215 directly from this worktree.
    - Split state preparation from pointer commit. Build, rehash, fsync, and
      atomically rename a temporary sibling output first; only then activate B.
      Pre-output failures keep A/no final output. Exact complete output may resume
-     a post-output/pre-current fault only with a matching durable state journal;
-     arbitrary/mismatched existing output never resumes.
+     a post-output/pre-current fault only with a matching durable state journal
+     whose retained-assets digest still equals both the canonical ledger and a
+     fresh exact retained-assets walk; arbitrary/mismatched/stale existing output
+     never resumes. A C promotion after B output invalidates B's retry rather
+     than selecting a stale A+B output.
    - Document atomic deploy/no-delete requirements and unsupported destructive
      hosts. Do not add a provider-specific adapter.
 
@@ -213,6 +221,8 @@ or PR #215 directly from this worktree.
 | Static publish | focused integration | output contains A+B assets/B shell; collision and incomplete stage fail |
 | Existing publish destination | state snapshot integration | pre-existing output fails before stage and leaves pointer/releases/metadata/assets/output byte-identical |
 | Static output transaction | fault-injected integration | copy/hash/fsync/rename failure leaves A and no final output; complete-output/pre-current fault resumes only with matching journal and exact output |
+| Pending-journal freshness | fault-injected A/B/C integration | B output journal resumes only against the identical retained ledger/assets; a later C asset blocks stale B activation unchanged |
+| Handoff pointer safety | focused capture failure/symlink tests | external `current` symlink target is never traversed; marker/copy/link/rename failures publish no incomplete handoff |
 | HTTP policy | curl/tests | `/assets/` immutable and exact; `sw.js`/HTML current; no HTML fallback for missing hashed asset |
 | Quality | repo commands | focused tests, full preflight, build/e2e, Docker smoke, and all required GitHub checks green |
 | Process | diff/feature-memory/review | one PR; no sibling memory/state mutation; evidence/docs/current cycle set complete |
@@ -244,6 +254,13 @@ or PR #215 directly from this worktree.
 - Static output copy can fail after state activation: prepare without pointer
   commit, atomically publish verified output first, then activate B with an exact
   resume rule for the intervening crash window.
+- A later stage changes retained assets while an older output journal remains:
+  require fresh ledger plus exact-store equality at retry and fail closed rather
+  than publishing an output that lacks the later asset.
+- A shell `mv` may treat a `current` symlink to a directory as a destination:
+  use a no-follow Node rename and test an external sentinel remains untouched.
+- POSIX `set -e` is suppressed for functions used in conditional lists: make
+  each handoff publication command return-checked and test marker-write failure.
 - Crash after release rename but before metadata: classify and resume exact
   release-only state; reject mismatches and never retry a blind rename over it.
 - Concurrent update: exclusive fail-closed lock; no implicit stale-lock removal.
@@ -262,7 +279,7 @@ or PR #215 directly from this worktree.
 ## Handoff Status
 
 Architect follow-up disposition is complete, but the feature is not ready for
-final validation. R051-013 and R051-014 require implementation and focused/full
-verification; all eighteen unresolved review threads require current-head
+final validation. R051-015 through R051-017 require implementation and
+focused/full verification; all unresolved review threads require current-head
 evidence and resolution followed by fresh exact-head review before final
 validation may be invoked.

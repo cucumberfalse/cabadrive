@@ -14,9 +14,9 @@
 - Cycle PR set: PR #217, `codex/051-asset-retention`, purpose `append-only
   static asset retention and shell-last Docker/static deployment`; initial
   product head `c55dee242989b222e0092953721915ea8784275b`; reviewed current head
-  `3ea6fec3e20466f933e0fb87ffec0d4556b6519f` implements sixteen older accepted
-  review-thread fixes represented by R051-001 through R051-012, but has accepted
-  follow-up work R051-013 and R051-014 and is not a final-validation candidate.
+  `a921eeac5dc70a0f0f71c4d84968dd3ebaee6b88` implements R051-013 and R051-014,
+  but has accepted follow-up work R051-015 through R051-017 and is not a
+  final-validation candidate.
   It is included only after implementation, verification, resolution of all
   eighteen open threads, and fresh exact-head review.
 - Dependency: feature 051 must merge first. PR #215 is then synchronized to the
@@ -187,6 +187,21 @@
   journal plus exact bytes resume B. Missing/stale/mismatched journal,
   destination, transaction, or output fails unchanged. Also inject after-current/
   before-journal-clear and prove exact retry performs cleanup only.
+- [ ] T022o Implement R051-015: treat a static-publish pending journal as valid
+  only when its retained-assets digest equals both the current canonical ledger
+  and a fresh exact retained `/assets/` inventory. Add an A/B/C fault regression:
+  leave B output/journal after `after-output`, promote C with a new asset, then
+  prove B retry fails unchanged and cannot select A+B output; retain a no-C
+  exact-retry control that succeeds.
+- [ ] T022p Implement R051-016: replace handoff pointer publication with a
+  repository-owned no-follow atomic rename, not shell `mv`. Validate/constrain
+  the handoff root and test a malicious existing `current` link to an external
+  directory leaves its sentinel untouched while the handoff pointer is safely
+  replaced.
+- [ ] T022q Implement R051-017: explicitly check every `publish_handoff`
+  prerequisite and fail/cleanup before pointer publication on copy, marker,
+  link, or rename failure. Add executable marker-writer failure injection proving
+  the capture exits nonzero with no new authoritative `current` handoff.
 - [ ] T023 Orchestrator route every finding/feedback to the proper role; all
   blocking threads are fixed/resolved or explicitly disposed, checks rerun, and
   process memory refreshed.
@@ -247,6 +262,14 @@
 - D051-017: static publication is prepare-output-commit. Complete durable output
   precedes `current`; only an exact artifact bound to the same durable pending
   journal can resume the post-output/pre-current window.
+- D051-018: a pending static-publish journal is a snapshot of the complete
+  retained namespace, not merely B's candidate manifest. It expires when the
+  canonical ledger or exact retained walk changes; an older output is never
+  selected after a later C asset promotion.
+- D051-019: handoff `current` is an atomic link replacement performed with a
+  no-follow rename; an existing link is never interpreted as a directory
+  destination. Publication commands are explicitly checked rather than relying
+  on shell `errexit` semantics in conditional invocation.
 
 ## Evidence And Feedback
 
@@ -381,6 +404,15 @@
   CI-only test setup, not a host runtime requirement. `pnpm run preflight`,
   `pnpm run test:docker-retention`, explicit Prettier checks for the workflow and
   corrected test, and `git diff --check` passed after the update.
+- Exact-head review at `a921eeac5dc70a0f0f71c4d84968dd3ebaee6b88` found three
+  new actionable gaps: a P1 permits an old B pending journal to resume after C
+  changed the retained ledger, selecting A+B output that omits C; one P2 uses
+  shell `mv` against a potentially directory-valued handoff link; and another
+  P2 relies on POSIX `set -e` inside a function invoked through `||`, allowing a
+  failed marker write to continue. Architect accepts them as R051-015,
+  R051-016, and R051-017 respectively. No owner decision or scope expansion is
+  required; implementation must add the stated fail-closed A/B/C,
+  external-symlink, and marker-write failure tests.
 - Effective content head: pending final process-memory and validation guards.
 - Cleanup: not assigned; any later environment cleanup requires separate
   Cleanup Agent scope/evidence.
@@ -389,10 +421,10 @@
 
 - Architect validation pass: not ready; final validation was not invoked.
 - Final Architect validation completed at: pending.
-- Architect return reason: R051-013 and R051-014 require follow-up implementation,
-  focused/full verification, current-head checks, resolution of all eighteen
-  review threads, and fresh exact-head review.
-- Architect return count: 4 / 10.
+- Architect return reason: R051-015 through R051-017 require follow-up
+  implementation, focused/full verification, current-head checks, resolution of
+  all open review threads, and fresh exact-head review.
+- Architect return count: 5 / 10.
 - Architect validated effective content head: pending.
 
 ## Final Analyst Validation
