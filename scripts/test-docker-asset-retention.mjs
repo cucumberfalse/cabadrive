@@ -5,6 +5,7 @@ import { mkdtempSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { chromium } from "@playwright/test";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const suffix = `${process.pid}-${Date.now()}`;
@@ -79,6 +80,40 @@ function assertExactLegacyAsset() {
     throw new Error("retained legacy asset bytes changed or were not served");
 }
 
+function candidateFile(selectedProject, path) {
+  return run("docker", ["run", "--rm", `${selectedProject}-stager`, "cat", `/candidate/${path}`]);
+}
+
+function assertExactCandidateShellAndWorker(selectedProject) {
+  const expectedShell = candidateFile(selectedProject, "index.html");
+  const expectedWorker = candidateFile(selectedProject, "sw.js");
+  const actualShell = run("curl", ["--fail", "--silent", `http://localhost:${port}/`]);
+  const actualWorker = run("curl", ["--fail", "--silent", `http://localhost:${port}/sw.js`]);
+  if (actualShell !== expectedShell)
+    throw new Error("B index.html is not served from the committed candidate release");
+  if (actualWorker !== expectedWorker)
+    throw new Error("B sw.js is not served from the committed candidate release");
+}
+
+async function assertCandidateWorkerControls() {
+  const browser = await chromium.launch({ headless: true });
+  try {
+    const page = await browser.newPage();
+    await page.goto(`http://localhost:${port}/`, { waitUntil: "networkidle" });
+    await page.waitForFunction(() =>
+      navigator.serviceWorker.ready.then(() => Boolean(navigator.serviceWorker.controller)),
+    );
+    await page.reload({ waitUntil: "networkidle" });
+    const controlled = await page.evaluate(
+      () => navigator.serviceWorker.controller?.scriptURL.endsWith("/sw.js") === true,
+    );
+    if (!controlled)
+      throw new Error("candidate B service worker did not activate and control the browser");
+  } finally {
+    await browser.close();
+  }
+}
+
 function cleanupProject(selectedProject) {
   spawnSync("docker", ["compose", "-p", selectedProject, "down"], { cwd: root, stdio: "ignore" });
   spawnSync("docker", ["rm", "-f", `${selectedProject}-legacy-a`], { stdio: "ignore" });
@@ -96,9 +131,13 @@ try {
   make(["up"], project);
   await waitFor(`http://localhost:${port}/`);
   assertExactLegacyAsset();
+  assertExactCandidateShellAndWorker(project);
+  await assertCandidateWorkerControls();
   compose(["restart", "cabadrive"], project);
   await waitFor(`http://localhost:${port}/`);
   assertExactLegacyAsset();
+  assertExactCandidateShellAndWorker(project);
+  await assertCandidateWorkerControls();
 
   // A sibling test-owned volume is never read or changed by this project.
   run("docker", ["volume", "create", `${siblingProject}_release-state`]);
@@ -116,6 +155,8 @@ try {
   make(["up"], project);
   await waitFor(`http://localhost:${port}/`);
   assertExactLegacyAsset();
+  assertExactCandidateShellAndWorker(project);
+  await assertCandidateWorkerControls();
   const sibling = run("docker", [
     "run",
     "--rm",
@@ -139,6 +180,8 @@ try {
     `http://localhost:${port}/assets/lazy-a.js`,
   ]);
   if (stoppedBody !== legacyBytes) throw new Error("stopped legacy image was not retained");
+  assertExactCandidateShellAndWorker(stoppedProject);
+  await assertCandidateWorkerControls();
 
   process.stdout.write(`Docker asset-retention lifecycle passed for ${project}\n`);
 } finally {

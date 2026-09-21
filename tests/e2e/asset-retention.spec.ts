@@ -5,8 +5,13 @@ import { mkdtempSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "nod
 import { tmpdir } from "node:os";
 import { join, normalize } from "node:path";
 import { test, expect } from "@playwright/test";
+import { createServiceWorkerBody } from "../../scripts/generate-service-worker.mjs";
 
 const stager = new URL("../../scripts/stage-static-release.mjs", import.meta.url).pathname;
+const generateHistoricalWorker = createServiceWorkerBody as unknown as (
+  assets: string[],
+  timestamp: number,
+) => string;
 
 function stage(state: string, candidate: string) {
   execFileSync(process.execPath, [stager, "stage", "--state", state, "--candidate", candidate], {
@@ -14,7 +19,12 @@ function stage(state: string, candidate: string) {
   });
 }
 
-function release(root: string, name: string, assets: Record<string, string>) {
+function release(
+  root: string,
+  name: string,
+  assets: Record<string, string>,
+  { historicalWorker = false }: { historicalWorker?: boolean } = {},
+) {
   const output = join(root, name);
   mkdirSync(join(output, "assets"), { recursive: true });
   for (const [path, body] of Object.entries(assets)) {
@@ -22,8 +32,16 @@ function release(root: string, name: string, assets: Record<string, string>) {
     mkdirSync(join(target, ".."), { recursive: true });
     writeFileSync(target, body);
   }
-  writeFileSync(join(output, "index.html"), `<!doctype html><title>${name}</title>`);
-  writeFileSync(join(output, "sw.js"), `self.release = ${JSON.stringify(name)};`);
+  writeFileSync(
+    join(output, "index.html"),
+    `<!doctype html><title>${name}</title>${historicalWorker ? '<script>navigator.serviceWorker.register("/sw.js")</script>' : ""}`,
+  );
+  writeFileSync(
+    join(output, "sw.js"),
+    historicalWorker
+      ? generateHistoricalWorker(["/", "/index.html", "/sw.js", "/assets/main-a.js"], 1700000000000)
+      : `self.release = ${JSON.stringify(name)};`,
+  );
   return output;
 }
 
@@ -75,21 +93,37 @@ test("legacy cache miss fetches exact retained A lazy bytes from origin after B"
   const oldBytes = "export const legacyLazy = 'A exact';";
   try {
     const state = join(root, "state");
-    const a = release(root, "a", { "lazy-a-2f7d.js": oldBytes });
+    const a = release(
+      root,
+      "a",
+      { "main-a.js": "export const shell = 'A';", "manual4Ruedas-deferred-a.js": oldBytes },
+      { historicalWorker: true },
+    );
     const b = release(root, "b", { "main-b-8c19.js": "export const current = 'B';" });
     stage(state, a);
     const server = await startStateServer(state);
     try {
       await page.goto(server.baseUrl);
+      await page.waitForFunction(() =>
+        navigator.serviceWorker.ready.then(() => Boolean(navigator.serviceWorker.controller)),
+      );
+      await page.reload();
+      await page.waitForFunction(() => Boolean(navigator.serviceWorker.controller));
       const cacheMiss = await page.evaluate(async () => {
-        const cache = await caches.open("legacy-a-shell");
-        return (await cache.match("/assets/lazy-a-2f7d.js")) === undefined;
+        const registrations = await navigator.serviceWorker.getRegistrations();
+        return {
+          controlled: navigator.serviceWorker.controller !== null,
+          generatedWorker: registrations.some((registration) =>
+            registration.active?.scriptURL.endsWith("/sw.js"),
+          ),
+          missing: (await caches.match("/assets/manual4Ruedas-deferred-a.js")) === undefined,
+        };
       });
-      expect(cacheMiss).toBe(true);
+      expect(cacheMiss).toEqual({ controlled: true, generatedWorker: true, missing: true });
 
       stage(state, b);
       const response = await page.evaluate(async () => {
-        const value = await fetch("/assets/lazy-a-2f7d.js");
+        const value = await fetch("/assets/manual4Ruedas-deferred-a.js");
         return {
           status: value.status,
           type: value.headers.get("content-type"),
@@ -102,7 +136,7 @@ test("legacy cache miss fetches exact retained A lazy bytes from origin after B"
       expect(createHash("sha256").update(response.body).digest("hex")).toBe(
         createHash("sha256").update(oldBytes).digest("hex"),
       );
-      expect(server.hits).toContain("/assets/lazy-a-2f7d.js");
+      expect(server.hits).toContain("/assets/manual4Ruedas-deferred-a.js");
     } finally {
       await server.close();
     }
@@ -111,13 +145,32 @@ test("legacy cache miss fetches exact retained A lazy bytes from origin after B"
   }
 });
 
-test("candidate-only destructive replacement leaves the old lazy URL at 404", async ({ page }) => {
+test("the generated A controller returns 404 after destructive replacement", async ({ page }) => {
   const root = mkdtempSync(join(tmpdir(), "cabadrive-destructive-origin-"));
   try {
-    const candidate = release(root, "b", { "main-b.js": "B" });
-    const server = await startStateServer(candidate);
+    const state = join(root, "state");
+    const a = release(
+      root,
+      "a",
+      { "main-a.js": "A", "lazy-a-does-not-exist.js": "export const lazy = 'A';" },
+      { historicalWorker: true },
+    );
+    const b = release(root, "b", { "main-b.js": "B" });
+    stage(state, a);
+    const server = await startStateServer(state);
     try {
       await page.goto(server.baseUrl);
+      await page.waitForFunction(() =>
+        navigator.serviceWorker.ready.then(() => Boolean(navigator.serviceWorker.controller)),
+      );
+      await page.reload();
+      await page.waitForFunction(() => Boolean(navigator.serviceWorker.controller));
+      const cacheMiss = await page.evaluate(
+        async () => (await caches.match("/assets/lazy-a-does-not-exist.js")) === undefined,
+      );
+      expect(cacheMiss).toBe(true);
+      stage(state, b);
+      rmSync(join(state, "assets", "lazy-a-does-not-exist.js"));
       const response = await page.evaluate(async () => {
         const value = await fetch("/assets/lazy-a-does-not-exist.js");
         return { status: value.status, body: await value.text() };

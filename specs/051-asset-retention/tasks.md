@@ -36,7 +36,7 @@
 - [x] T004 Add failing stage tests: equal-byte idempotence, unequal-byte
   collision, lock contention, partial-copy fault points, immutable preservation,
   atomic current pointer, and retry.
-- [ ] T005 Add failing real-browser A/B fixture where faithful legacy A excludes
+- [x] T005 Add failing real-browser A/B fixture where faithful legacy A excludes
   and never loads its lazy hash, Cache Storage miss is explicit, destructive B
   returns 404, and safe retained-origin behavior is initially absent.
 - [x] T006 Add failing executable Docker integration cases for pre-build running
@@ -48,7 +48,7 @@
 
 - [x] T007 Implement canonical complete candidate manifest and safe filesystem
   walk with schema/path/size/SHA-256 validation and no symlink/escape surface.
-- [ ] T008 Implement exclusive locking and transactional state layout. Stage and
+- [x] T008 Implement exclusive locking and transactional state layout. Stage and
   rehash outgoing/candidate bytes; fail on collision; atomically promote new
   immutable files, release metadata/tree, and finally `current`. Preserve A and
   support idempotent retry at every fault boundary, including after release-tree
@@ -75,7 +75,7 @@
 - [x] T013 Serve retained `/assets/` from shared state and HTML/SW from atomic
   `current`; keep `/assets/` immutable, `sw.js`/HTML current, and missing hashed
   assets as 404 rather than SPA HTML. Preserve any merged-main PR #214 policy.
-- [ ] T014 Update the real browser fixture: install/control the generated legacy
+- [x] T014 Update the real browser fixture: install/control the generated legacy
   A worker and prove safe B staging gives the old A tab exact retained-origin
   bytes/MIME while its real precache remains missing;
   destructive control remains a demonstrated 404 and production gate failure.
@@ -86,12 +86,12 @@
 
 ## Verification And Publication
 
-- [ ] T016 Run focused manifest/staging/fault/path/static-publish tests and
+- [x] T016 Run focused manifest/staging/fault/path/static-publish tests and
   record test-first FAIL->PASS evidence.
-- [ ] T017 Run the real-worker Chromium safe A->B origin-hit test and destructive
+- [x] T017 Run the real-worker Chromium safe A->B origin-hit test and destructive
   control; record cache-miss proof, request source, status, MIME, exact bytes/SHA,
   and absence of HTML fallback.
-- [ ] T018 Run an executable isolated Docker running-legacy and stopped-legacy
+- [x] T018 Run an executable isolated Docker running-legacy and stopped-legacy
   A->B regression in the normal Docker validation gate, plus
   initial install, restart and `make down/up`; smoke current HTML/SW and retained
   A hash. Also prove exact B shell/SW selection and B worker activation/control.
@@ -150,20 +150,20 @@
 - [x] T022h Implement R051-008: validate an existing static-publish destination
   before calling stage. Snapshot `current`, releases, metadata, retained assets,
   and output; prove the negative leaves all of them byte-identical.
-- [ ] T022i Implement R051-009: add crash-durable activation ordering. Fsync all
+- [x] T022i Implement R051-009: add crash-durable activation ordering. Fsync all
   newly written/promoted assets, mutable files, release marker, cumulative ledger,
   and metadata; fsync affected directories after renames; fsync state after the
   `current` rename. Add ordered operation tracing and injected fsync/close-failure
   tests proving the old pointer remains selected and retry succeeds.
-- [ ] T022j Implement R051-010: add canonical `retained-assets.json` for the exact
+- [x] T022j Implement R051-010: add canonical `retained-assets.json` for the exact
   cumulative namespace. Stage/authority checks compare the complete filesystem
   walk, not only B's manifest. Test corrupt, deleted, and unexpected old A assets
   that B does not reference; each must block B before `current` changes.
-- [ ] T022k Implement R051-011: replace the synthetic-only browser proof with a
+- [x] T022k Implement R051-011: replace the synthetic-only browser proof with a
   worker generated from the historical A policy. Register/reload until it controls
   the page, prove its real precache excludes the lazy A hash, keep that A-controlled
   tab through B deploy, and run safe-origin plus destructive-404 fetches through it.
-- [ ] T022l Implement R051-012: strengthen the real Docker lifecycle by recording
+- [x] T022l Implement R051-012: strengthen the real Docker lifecycle by recording
   candidate B `index.html`/`sw.js` identities, proving their exact served bytes and
   committed B release, and using a headless browser to prove B's worker is
   activated/controlling after deploy, restart, and `down/up` for running/stopped A.
@@ -223,6 +223,22 @@
   retained-A-only Docker smoke.
 
 ## Evidence And Feedback
+
+- R051-009 through R051-012 implementation evidence (2026-09-21):
+  `node --test tests/static-release-staging.test.mjs` passed 12/12, including
+  canonical retained-ledger corruption/missing/extra negatives and ordered
+  fsync/close fault recovery. `pnpm exec playwright test
+  tests/e2e/asset-retention.spec.ts --project=chromium --reporter=list` passed
+  2/2: a generated historical A worker controls the page, its excluded deferred
+  manual hash is absent from Cache Storage, then after B staging the first
+  controlled fetch is an origin hit with exact A bytes; the matched destructive
+  case is 404. `node scripts/test-docker-asset-retention.mjs` completed the
+  isolated running/stopped-A lifecycle, exact B shell/SW comparisons, worker
+  activation/control, restart and down/up persistence, and scoped cleanup.
+- Implementation feedback: no scope divergence. R051-009 recovery permits only
+  the exact pending candidate/legacy immutable union after a pre-pointer
+  durability failure; all other historical drift remains fail-closed against
+  `retained-assets.json`.
 
 - Startup evidence: verified base and assigned worktree/branch are recorded
   above; only Analyst `feature-request.md` existed before Architect planning;

@@ -27,6 +27,7 @@ import { fileURLToPath } from "node:url";
 
 const SCHEMA_VERSION = 1;
 const RELEASE_MARKER = ".release-state.json";
+const RETAINED_INVENTORY = "retained-assets.json";
 const LEGACY_HANDOFF_MARKER = ".legacy-handoff.json";
 const LEGACY_SOURCE_KIND = "baked-legacy-root";
 
@@ -322,11 +323,60 @@ function assertNoCollision(...groups) {
   }
 }
 
-function copyAndVerify(source, destination, expected) {
+function invokeDurability(options, operation, path) {
+  options?.onDurabilityOperation?.({ operation, path });
+  if (options?.faultAt === `durability:${operation}`) {
+    fail(`durability fault injection at ${operation}`);
+  }
+}
+
+function syncFile(path, options) {
+  let descriptor;
+  try {
+    descriptor = openSync(path, "r");
+    invokeDurability(options, "fsync-file", path);
+    fsyncSync(descriptor);
+    invokeDurability(options, "close-file", path);
+  } finally {
+    if (descriptor !== undefined) closeSync(descriptor);
+  }
+}
+
+function syncDirectory(path, options) {
+  let descriptor;
+  try {
+    descriptor = openSync(path, "r");
+    invokeDurability(options, "fsync-directory", path);
+    fsyncSync(descriptor);
+    invokeDurability(options, "close-directory", path);
+  } finally {
+    if (descriptor !== undefined) closeSync(descriptor);
+  }
+}
+
+function writeAtomically(directory, path, contents, options) {
+  const temporary = join(directory, `.${randomUUID()}.next`);
+  let descriptor;
+  try {
+    descriptor = openSync(temporary, "wx", 0o644);
+    writeFileSync(descriptor, contents);
+    invokeDurability(options, "fsync-file", temporary);
+    fsyncSync(descriptor);
+    invokeDurability(options, "close-file", temporary);
+  } finally {
+    if (descriptor !== undefined) closeSync(descriptor);
+  }
+  renameSync(temporary, path);
+  invokeDurability(options, "rename", path);
+  syncDirectory(directory, options);
+}
+
+function copyAndVerify(source, destination, expected, options) {
   mkdirSync(dirname(destination), { recursive: true, mode: 0o755 });
   copyFileSync(source, destination);
   const actual = sha256(destination);
   if (!equalEntry(actual, expected)) fail(`staged digest mismatch: ${destination}`);
+  syncFile(destination, options);
 }
 
 function sourceAsset(candidateRoot, path) {
@@ -341,17 +391,18 @@ function fault(options, point) {
   if (options.faultAt === point) fail(`fault injection at ${point}`);
 }
 
-function copyInventory(candidateRoot, inventory, target, sourceFor) {
+function copyInventory(candidateRoot, inventory, target, sourceFor, options) {
   for (const entry of inventory) {
     copyAndVerify(
       sourceFor(candidateRoot, entry.path),
       join(target, ...entry.path.split("/")),
       entry,
+      options,
     );
   }
 }
 
-function promoteFiles(from, to, inventory) {
+function promoteFiles(from, to, inventory, options) {
   for (const entry of inventory) {
     const source = join(from, ...entry.path.split("/"));
     const destination = join(to, ...entry.path.split("/"));
@@ -361,15 +412,34 @@ function promoteFiles(from, to, inventory) {
       continue;
     }
     mkdirSync(dirname(destination), { recursive: true, mode: 0o755 });
+    syncFile(source, options);
     renameSync(source, destination);
+    invokeDurability(options, "rename", destination);
+    syncDirectory(dirname(destination), options);
   }
 }
 
-function makeCurrent(state, releaseId) {
+function makeCurrent(state, releaseId, options) {
   const current = join(state, "current");
   const next = join(state, `current.next-${process.pid}-${randomUUID()}`);
+  const previous =
+    existsSync(current) && lstatSync(current).isSymbolicLink() ? readlinkSync(current) : undefined;
   symlinkSync(join("releases", releaseId), next);
-  renameSync(next, current);
+  try {
+    renameSync(next, current);
+    invokeDurability(options, "rename-current", current);
+    syncDirectory(state, options);
+  } catch (error) {
+    // A failed post-rename durability barrier must not leave a newly selected
+    // release advertised by this process. Restore the prior pointer before
+    // surfacing the failure; a retry can then safely re-run the transaction.
+    if (existsSync(current)) rmSync(current, { force: true });
+    if (previous) {
+      symlinkSync(previous, current);
+      syncDirectory(state, undefined);
+    }
+    throw error;
+  }
 }
 
 function releaseFilesMatch(releaseDirectory, release) {
@@ -383,10 +453,79 @@ function releaseFilesMatch(releaseDirectory, release) {
   return sameEntries(files, release.mutable);
 }
 
-function assetsMatch(state, release) {
+function retainedLedgerPath(state) {
+  return join(state, RETAINED_INVENTORY);
+}
+
+function retainedInventoryPayload(assets) {
+  return { schemaVersion: SCHEMA_VERSION, assets };
+}
+
+function assetsMatch(state, release, expectedRetained) {
   const retained = inventoryForAssets(state, "retained assets");
+  if (expectedRetained && !sameEntries(retained, expectedRetained)) return false;
   const byPath = new Map(retained.map((entry) => [entry.path, entry]));
-  return release.assets.every((entry) => equalEntry(byPath.get(entry.path) || {}, entry));
+  if (!release.assets.every((entry) => equalEntry(byPath.get(entry.path) || {}, entry)))
+    return false;
+  const path = retainedLedgerPath(state);
+  if (!existsSync(path)) return false;
+  try {
+    const ledger = readJson(path, "retained asset inventory");
+    return ledger.schemaVersion === SCHEMA_VERSION && sameEntries(ledger.assets || [], retained);
+  } catch {
+    return false;
+  }
+}
+
+function mergeInventories(...groups) {
+  const merged = new Map();
+  for (const group of groups) {
+    for (const entry of group) merged.set(entry.path, entry);
+  }
+  return [...merged.values()].sort((left, right) => ordinal(left.path, right.path));
+}
+
+function readRetainedInventory(state) {
+  const path = retainedLedgerPath(state);
+  if (!existsSync(path)) return undefined;
+  const ledger = readJson(path, "retained asset inventory");
+  if (ledger.schemaVersion !== SCHEMA_VERSION || !Array.isArray(ledger.assets)) {
+    fail("retained asset inventory has an unsupported schema");
+  }
+  const canonical = [...ledger.assets].sort((left, right) => ordinal(left.path, right.path));
+  if (!sameEntries(ledger.assets, canonical)) fail("retained asset inventory is not canonical");
+  return canonical;
+}
+
+function assertExistingRetainedAuthority(state, existing, additions) {
+  const ledger = readRetainedInventory(state);
+  if (!ledger) {
+    if (existing.length === 0) return [];
+    fail("retained assets do not match canonical cumulative inventory");
+  }
+  const expected = mergeInventories(ledger, additions);
+  const expectedByPath = new Map(expected.map((entry) => [entry.path, entry]));
+  const actualByPath = new Map(existing.map((entry) => [entry.path, entry]));
+  for (const entry of ledger) {
+    if (!equalEntry(actualByPath.get(entry.path) || {}, entry)) {
+      fail("retained assets do not match canonical cumulative inventory");
+    }
+  }
+  for (const entry of existing) {
+    if (!equalEntry(expectedByPath.get(entry.path) || {}, entry)) {
+      fail("retained assets do not match canonical cumulative inventory");
+    }
+  }
+  return ledger;
+}
+
+function writeRetainedInventory(state, assets, options) {
+  writeAtomically(
+    state,
+    retainedLedgerPath(state),
+    `${JSON.stringify(retainedInventoryPayload(assets), null, 2)}\n`,
+    options,
+  );
 }
 
 function metadataMatches(path, release) {
@@ -403,10 +542,13 @@ function metadataMatches(path, release) {
   }
 }
 
-function writeMetadataAtomically(state, path, release, legacySource) {
-  const temporary = join(state, `metadata.next-${process.pid}-${randomUUID()}.json`);
-  writeFileSync(temporary, `${JSON.stringify({ ...release, legacySource }, null, 2)}\n`);
-  renameSync(temporary, path);
+function writeMetadataAtomically(state, path, release, legacySource, options) {
+  writeAtomically(
+    dirname(path),
+    path,
+    `${JSON.stringify({ ...release, legacySource }, null, 2)}\n`,
+    options,
+  );
 }
 
 export function verifyCommittedState(stateRoot) {
@@ -446,7 +588,13 @@ export function verifyCommittedState(stateRoot) {
   }
 }
 
-export function stageStaticRelease({ stateRoot, candidateRoot, legacyRoot, faultAt } = {}) {
+export function stageStaticRelease({
+  stateRoot,
+  candidateRoot,
+  legacyRoot,
+  faultAt,
+  onDurabilityOperation,
+} = {}) {
   if (!stateRoot || !candidateRoot) fail("--state and --candidate are required");
   const state = ensureStateLayout(stateRoot);
   const release = createCandidateManifest(candidateRoot);
@@ -466,6 +614,10 @@ export function stageStaticRelease({ stateRoot, candidateRoot, legacyRoot, fault
     const legacy = legacyValidation?.manifest.assets || [];
     const legacySource = legacyValidation?.manifest.sourceId;
     assertNoCollision(existing, legacy, release.assets);
+    const priorRetained = assertExistingRetainedAuthority(state, existing, [
+      ...legacy,
+      ...release.assets,
+    ]);
 
     // Do this before the complete-release shortcut: a handoff can arrive after
     // the candidate was first staged, and immutable A bytes are still owed.
@@ -476,38 +628,61 @@ export function stageStaticRelease({ stateRoot, candidateRoot, legacyRoot, fault
     mkdirSync(transactionRelease, { recursive: true, mode: 0o755 });
     fault({ faultAt }, "after-validation");
     if (legacy.length) {
-      copyInventory(suppliedLegacyRoot, legacy, transactionAssets, sourceAsset);
+      copyInventory(suppliedLegacyRoot, legacy, transactionAssets, sourceAsset, {
+        faultAt,
+        onDurabilityOperation,
+      });
     }
-    copyInventory(candidate, release.assets, transactionAssets, sourceAsset);
+    copyInventory(candidate, release.assets, transactionAssets, sourceAsset, {
+      faultAt,
+      onDurabilityOperation,
+    });
     fault({ faultAt }, "during-assets");
-    promoteFiles(transactionAssets, join(state, "assets"), [...legacy, ...release.assets]);
+    const expectedRetained = mergeInventories(priorRetained, legacy, release.assets);
+    promoteFiles(transactionAssets, join(state, "assets"), [...legacy, ...release.assets], {
+      faultAt,
+      onDurabilityOperation,
+    });
+    if (!sameEntries(inventoryForAssets(state, "retained assets"), expectedRetained)) {
+      fail("promoted retained assets do not match cumulative inventory");
+    }
+    writeRetainedInventory(state, expectedRetained, { faultAt, onDurabilityOperation });
     fault({ faultAt }, "after-assets");
 
     if (existsSync(releaseDir) && existsSync(metadataPath)) {
       if (
         !metadataMatches(metadataPath, release) ||
         !releaseFilesMatch(releaseDir, release) ||
-        !assetsMatch(state, release)
+        !assetsMatch(state, release, expectedRetained)
       ) {
         fail("existing complete release is not a verified committed tuple");
       }
-      makeCurrent(state, release.releaseId);
+      makeCurrent(state, release.releaseId, { faultAt, onDurabilityOperation });
       return { changed: false, releaseId: release.releaseId, manifest: release };
     }
     if (existsSync(releaseDir)) {
-      if (!releaseFilesMatch(releaseDir, release) || !assetsMatch(state, release)) {
+      if (
+        !releaseFilesMatch(releaseDir, release) ||
+        !assetsMatch(state, release, expectedRetained)
+      ) {
         fail("existing release-only partial state does not match candidate");
       }
-      writeMetadataAtomically(state, metadataPath, release, legacySource);
+      writeMetadataAtomically(state, metadataPath, release, legacySource, {
+        faultAt,
+        onDurabilityOperation,
+      });
       fault({ faultAt }, "before-current");
-      makeCurrent(state, release.releaseId);
+      makeCurrent(state, release.releaseId, { faultAt, onDurabilityOperation });
       return { changed: true, releaseId: release.releaseId, manifest: release };
     }
     if (existsSync(metadataPath) && !metadataMatches(metadataPath, release)) {
       fail("existing metadata-only partial state does not match candidate");
     }
 
-    copyInventory(candidate, release.mutable, transactionRelease, sourceMutable);
+    copyInventory(candidate, release.mutable, transactionRelease, sourceMutable, {
+      faultAt,
+      onDurabilityOperation,
+    });
     const stagedMutable = walkRegularFiles(transactionRelease, "transaction release");
     if (!sameEntries(stagedMutable, release.mutable))
       fail("transaction mutable inventory is incomplete");
@@ -516,23 +691,31 @@ export function stageStaticRelease({ stateRoot, candidateRoot, legacyRoot, fault
       join(transactionRelease, RELEASE_MARKER),
       `${JSON.stringify(markerForRelease(release), null, 2)}\n`,
     );
+    syncFile(join(transactionRelease, RELEASE_MARKER), { faultAt, onDurabilityOperation });
     if (!releaseFilesMatch(transactionRelease, release)) {
       fail("transaction release marker/tree does not match candidate");
     }
-    writeFileSync(
+    writeAtomically(
+      transaction,
       join(transaction, "manifest.json"),
       `${JSON.stringify({ ...release, legacySource }, null, 2)}\n`,
+      { faultAt, onDurabilityOperation },
     );
+    syncDirectory(transactionRelease, { faultAt, onDurabilityOperation });
     renameSync(transactionRelease, releaseDir);
+    invokeDurability({ faultAt, onDurabilityOperation }, "rename", releaseDir);
+    syncDirectory(dirname(releaseDir), { faultAt, onDurabilityOperation });
     fault({ faultAt }, "after-release");
     if (!existsSync(metadataPath)) {
       renameSync(join(transaction, "manifest.json"), metadataPath);
+      invokeDurability({ faultAt, onDurabilityOperation }, "rename", metadataPath);
+      syncDirectory(dirname(metadataPath), { faultAt, onDurabilityOperation });
     }
     if (!metadataMatches(metadataPath, release) || !releaseFilesMatch(releaseDir, release)) {
       fail("promoted release tuple does not match candidate");
     }
     fault({ faultAt }, "before-current");
-    makeCurrent(state, release.releaseId);
+    makeCurrent(state, release.releaseId, { faultAt, onDurabilityOperation });
     return { changed: true, releaseId: release.releaseId, manifest: release };
   } finally {
     if (existsSync(transaction)) rmSync(transaction, { recursive: true, force: true });

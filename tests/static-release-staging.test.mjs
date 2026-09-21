@@ -295,3 +295,91 @@ test("only a full marker/current/release/metadata/assets tuple is authoritative"
     assert.equal(verifyCommittedState(state).valid, false, "corrupt marker fails closed");
   });
 });
+
+test("cumulative retained ledger rejects corrupt, missing, and untracked historical assets", () => {
+  withFixture((root) => {
+    const state = join(root, "state");
+    const a = release(root, "a", { "old-a.js": "A", "old-unreferenced.js": "still A" });
+    const b = release(root, "b", { "new-b.js": "B" }, "B shell");
+    stageStaticRelease({ stateRoot: state, candidateRoot: a });
+    const before = readlinkSync(join(state, "current"));
+
+    writeFileSync(join(state, "assets", "old-unreferenced.js"), "corrupt");
+    assert.throws(() => stageStaticRelease({ stateRoot: state, candidateRoot: b }), /cumulative/i);
+    assert.equal(readlinkSync(join(state, "current")), before);
+
+    writeFileSync(join(state, "assets", "old-unreferenced.js"), "still A");
+    rmSync(join(state, "retained-assets.json"));
+    assert.throws(() => stageStaticRelease({ stateRoot: state, candidateRoot: b }), /cumulative/i);
+    assert.equal(readlinkSync(join(state, "current")), before, "ledger refuses a silent repair");
+
+    writeFileSync(
+      join(state, "retained-assets.json"),
+      JSON.stringify({
+        schemaVersion: 1,
+        assets: createCandidateManifest(a).assets,
+      }),
+    );
+    stageStaticRelease({ stateRoot: state, candidateRoot: b });
+    assert.match(currentShell(state), /B shell/);
+    writeFileSync(join(state, "assets", "unexpected.js"), "unexpected");
+    assert.equal(verifyCommittedState(state).valid, false, "extra old bytes fail authority");
+  });
+});
+
+test("durability barriers precede activation and failure leaves the old pointer selected", () => {
+  withFixture((root) => {
+    const state = join(root, "state");
+    const a = release(root, "a", { "a.js": "A" }, "A shell");
+    const b = release(root, "b", { "b.js": "B" }, "B shell");
+    const c = release(root, "c", { "c.js": "C" }, "C shell");
+    const d = release(root, "d", { "d.js": "D" }, "D shell");
+    stageStaticRelease({ stateRoot: state, candidateRoot: a });
+    const before = readlinkSync(join(state, "current"));
+    const trace = [];
+    assert.throws(
+      () =>
+        stageStaticRelease({
+          stateRoot: state,
+          candidateRoot: b,
+          faultAt: "durability:fsync-directory",
+          onDurabilityOperation: ({ operation, path }) => trace.push(`${operation}:${path}`),
+        }),
+      /durability fault injection/i,
+    );
+    assert.equal(readlinkSync(join(state, "current")), before);
+    assert.equal(
+      trace.some((entry) => entry.startsWith("rename-current:")),
+      false,
+    );
+    stageStaticRelease({ stateRoot: state, candidateRoot: b });
+    assert.match(currentShell(state), /B shell/);
+
+    const bCurrent = readlinkSync(join(state, "current"));
+    assert.throws(
+      () =>
+        stageStaticRelease({
+          stateRoot: state,
+          candidateRoot: c,
+          faultAt: "durability:close-file",
+        }),
+      /durability fault injection/i,
+    );
+    assert.equal(readlinkSync(join(state, "current")), bCurrent, "close failure preserves B");
+    stageStaticRelease({ stateRoot: state, candidateRoot: c });
+
+    const cCurrent = readlinkSync(join(state, "current"));
+    assert.throws(
+      () =>
+        stageStaticRelease({
+          stateRoot: state,
+          candidateRoot: d,
+          faultAt: "durability:rename-current",
+        }),
+      /durability fault injection/i,
+    );
+    assert.equal(readlinkSync(join(state, "current")), cCurrent, "post-rename sync failure restores C");
+    stageStaticRelease({ stateRoot: state, candidateRoot: d });
+    assert.match(currentShell(state), /D shell/);
+  });
+});
