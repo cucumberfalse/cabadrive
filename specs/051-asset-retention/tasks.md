@@ -14,9 +14,10 @@
 - Cycle PR set: PR #217, `codex/051-asset-retention`, purpose `append-only
   static asset retention and shell-last Docker/static deployment`; initial
   product head `c55dee242989b222e0092953721915ea8784275b`; reviewed current head
-  `4835f66` has accepted follow-up work R051-001 through R051-004 and is not a
-  final-validation candidate. It is included in final validation only after
-  implementation, verification, and fresh exact-head review complete.
+  `f032d80b8cf59eb562b28cc30d5c7c96f57d26cf` implements R051-001 through
+  R051-004 but has accepted follow-up work R051-005 through R051-008 and is not
+  a final-validation candidate. It is included in final validation only after
+  implementation, verification, thread resolution, and fresh exact-head review.
 - Dependency: feature 051 must merge first. PR #215 is then synchronized to the
   merged main and independently retested/reviewed/revalidated.
 
@@ -46,25 +47,29 @@
 
 - [x] T007 Implement canonical complete candidate manifest and safe filesystem
   walk with schema/path/size/SHA-256 validation and no symlink/escape surface.
-- [x] T008 Implement exclusive locking and transactional state layout. Stage and
+- [ ] T008 Implement exclusive locking and transactional state layout. Stage and
   rehash outgoing/candidate bytes; fail on collision; atomically promote new
   immutable files, release metadata/tree, and finally `current`. Preserve A and
   support idempotent retry at every fault boundary, including after release-tree
-  promotion and before metadata promotion; add no GC.
-- [x] T009 Implement a static publish command that consumes current + candidate
+  promotion and before metadata promotion; promote any late authoritative legacy
+  union before an idempotent return; add no GC.
+- [ ] T009 Implement a static publish command that consumes current + candidate
   roots and emits a complete A+B `/assets/`, B-only mutable shell tree suitable
-  for one atomic host publication. Reject candidate-only/destructive semantics.
+  for one atomic host publication. Reject candidate-only/destructive semantics
+  and pre-existing output before any staging mutation.
 - [x] T010 Add Docker candidate/stager targets and project-scoped persistent
   release-state volume. Keep runtime nginx-only and end-user host Node-free.
-- [x] T011 Add safe pre-build legacy capture for the exact Compose project. Use
+- [ ] T011 Add safe pre-build legacy capture for the exact Compose project. Use
   the running container when present or the prior Compose image when stopped;
   record source identity and fail if detected prior assets cannot be exported.
   Skip only for a validated committed-state tuple, never merely because its
   volume/directories exist. Never inspect/mutate another project or broad host
-  directory.
-- [x] T012 Make `make build` capture before image replacement and `make up` run
+  directory. A verifier-rejected volume may not be copied through an attached
+  container; preserve only independently validated handoff/baked legacy sources.
+- [ ] T012 Make `make build` capture before image replacement and `make up` run
   the stager before replacing/starting nginx. Preserve volume on `make down` and
-  keep default URL plus isolated project/port behavior.
+  keep default URL plus isolated project/port behavior. Compose, capture, lookup,
+  handoff, and bind mount must share one effective project key.
 - [x] T013 Serve retained `/assets/` from shared state and HTML/SW from atomic
   `current`; keep `/assets/` immutable, `sw.js`/HTML current, and missing hashed
   assets as 404 rather than SPA HTML. Preserve any merged-main PR #214 policy.
@@ -78,24 +83,24 @@
 
 ## Verification And Publication
 
-- [x] T016 Run focused manifest/staging/fault/path/static-publish tests and
+- [ ] T016 Run focused manifest/staging/fault/path/static-publish tests and
   record test-first FAIL->PASS evidence.
 - [x] T017 Run the Chromium safe A->B origin-hit test and destructive control;
   record cache-miss proof, request source, status, MIME, exact bytes/SHA, and
   absence of HTML fallback.
-- [x] T018 Run an executable isolated Docker running-legacy and stopped-legacy
+- [ ] T018 Run an executable isolated Docker running-legacy and stopped-legacy
   A->B regression in the normal Docker validation gate, plus
   initial install, restart and `make down/up`; smoke current HTML/SW and retained
   A hash. Use unique Compose project/port and leave sibling projects untouched.
-- [x] T019 Run `pnpm run typecheck`, `pnpm run lint`, `pnpm run format:check`,
+- [ ] T019 Run `pnpm run typecheck`, `pnpm run lint`, `pnpm run format:check`,
   `pnpm run test`, `pnpm run build`, `pnpm run test:e2e`, full `pnpm run
   preflight`, `node scripts/check-feature-memory.mjs --worktree`, `pnpm run
   check:repo`, and `git diff --check`.
-- [x] T020 Inspect final scope: no feature-049 product behavior or sibling
+- [ ] T020 Inspect final scope: no feature-049 product behavior or sibling
   feature-memory edits, no PR #214/#215 mutation, no host Node requirement, no
   unsafe deletion/overwrite, no broad path, and no committed runtime state/temp
   artifacts.
-- [x] T021 Record exact results, release-state decisions, dead ends, known
+- [ ] T021 Record exact results, release-state decisions, dead ends, known
   issues, all Implementation Agent feedback, effective content head, and cycle
   PR metadata. Commit/push/open exactly one ready PR under assignment; never
   merge as Implementation Agent.
@@ -124,6 +129,23 @@
   path with module/repository-relative resolution (for example `import.meta.url`),
   execute the focused test from an unrelated temporary working directory, scan
   governed fixtures for checkout paths, and rerun the exact failing CI baseline.
+- [ ] T022e Implement R051-005: establish one effective Compose project key used
+  by Compose itself, capture, volume/image/container discovery, handoff path, and
+  stager bind. Add contract and executable tests with the variable unset from a
+  non-`cabadrive` cwd and with an explicit sibling-isolated value.
+- [ ] T022f Implement R051-006: collision-check and promote newly supplied legacy
+  assets before the existing complete-release shortcut. Test B staged without a
+  handoff then identical B with legacy A appended; test legacy collision leaves
+  assets/releases/metadata/current unchanged.
+- [ ] T022g Implement R051-007: when project state verification fails, never use
+  `/state/assets` from a container attached to that state as legacy authority.
+  Preserve an existing handoff only when its canonical asset manifest, source ID,
+  and independent source kind revalidate; atomically replace it only from an
+  independently baked legacy root, and fail closed unchanged without either.
+  Include readable rejected `/state` and corrupt-handoff negatives.
+- [ ] T022h Implement R051-008: validate an existing static-publish destination
+  before calling stage. Snapshot `current`, releases, metadata, retained assets,
+  and output; prove the negative leaves all of them byte-identical.
 - [ ] T023 Orchestrator route every finding/feedback to the proper role; all
   blocking threads are fixed/resolved or explicitly disposed, checks rerun, and
   process memory refreshed.
@@ -163,6 +185,14 @@
 - D051-008: retention is indefinite; cleanup is a separate future feature.
 - D051-009: feature 051 is a prerequisite PR. It never mutates PR #214/#215;
   #215 synchronizes/retests/revalidates only after 051 merges.
+- D051-010: the effective Compose project identity has one default/override
+  derivation shared by every lifecycle component; cwd basename is not a second
+  source of truth.
+- D051-011: verifier-rejected state has no recovery authority through an attached
+  mount. Only an independently validated handoff or baked pre-feature root may
+  seed recovery, and handoff replacement is atomic.
+- D051-012: candidate idempotence follows full invocation-union promotion, and a
+  pre-existing publish output fails before any release-state mutation.
 
 ## Evidence And Feedback
 
@@ -211,14 +241,24 @@
   volume sentinel. The lifecycle script is called from the `docker-validation`
   CI job. Final `pnpm run preflight`, final lifecycle run and `git diff --check`
   passed after this process-memory update.
-- Implementation Agent feedback: none; no out-of-spec product decision was
-  required.
-- Publication: committed and pushed `c55dee242989b222e0092953721915ea8784275b`
-  (`feat: retain immutable assets across static releases`); PR #217 is open.
-- Review evidence: exact-head review at `4835f66` produced accepted findings
-  R051-001 through R051-003; CI portability failure is accepted as R051-004.
-- Implementation Agent feedback: pending; every item requires Architect
-  disposition.
+- Fresh exact-head review at
+  `f032d80b8cf59eb562b28cc30d5c7c96f57d26cf` accepted four additional gaps:
+  Compose and capture disagree on the unset project key (R051-005); the complete
+  candidate shortcut can omit newly available legacy bytes (R051-006); rejected
+  state can be laundered through attached-container `/state/assets` (R051-007);
+  and static publish mutates release state before rejecting existing output
+  (R051-008). The seven earlier review threads remain unresolved pending evidence;
+  these four new threads also remain unresolved.
+- Historical Implementation Agent feedback through R051-004: none; no
+  out-of-spec product decision was required.
+- Publication: PR #217 is open; the exact head reviewed for this disposition is
+  `f032d80b8cf59eb562b28cc30d5c7c96f57d26cf`.
+- Review evidence: R051-001 through R051-004 are implemented at `f032d80`, but
+  their seven original threads remain unresolved pending evidence. Exact-head
+  review added four unresolved actionable threads disposed as R051-005 through
+  R051-008. No thread was resolved by this Architect pass.
+- Follow-up Implementation Agent feedback/evidence for T022e through T022h:
+  pending; every new item remains subject to Architect disposition.
 - Effective content head: pending final process-memory and validation guards.
 - Cleanup: not assigned; any later environment cleanup requires separate
   Cleanup Agent scope/evidence.
@@ -227,10 +267,10 @@
 
 - Architect validation pass: not ready; final validation was not invoked.
 - Final Architect validation completed at: pending.
-- Architect return reason: R051-001 through R051-004 require follow-up
-  implementation, executable/portable verification, green current-head checks,
-  and fresh exact-head review.
-- Architect return count: 1 / 10.
+- Architect return reason: R051-005 through R051-008 require follow-up
+  implementation, focused/full verification, current-head checks, resolution of
+  all eleven review threads, and fresh exact-head review.
+- Architect return count: 2 / 10.
 - Architect validated effective content head: pending.
 
 ## Final Analyst Validation

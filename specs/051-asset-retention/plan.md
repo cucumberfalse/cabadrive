@@ -54,6 +54,8 @@ or PR #215 directly from this worktree.
    - Reconcile exact partial states, including a release promoted before its
      metadata; add a fault point at that boundary and prove retry cannot fail on
      `EEXIST`. A mismatched partial state fails closed and leaves A selected.
+   - Validate and promote newly authoritative legacy assets before the
+     complete-release/idempotent shortcut; test late handoff append and collision.
    - Preserve A on every failure. Make retries idempotent; never add asset GC.
 
 4. **Docker-only migration and serving**
@@ -61,6 +63,9 @@ or PR #215 directly from this worktree.
      remains the runtime server.
    - Add a project-scoped release-state volume. Resolve the exact Compose project
      and only its `cabadrive` container/image.
+   - Define one cwd-independent project key for Compose, capture, volume/image/
+     container lookup, handoff, and stager bind. Test unset default and explicit
+     isolated values; declare the same default/override as Compose project name.
    - Before Compose build replaces an existing legacy image, export its
      `/assets/` to the exact project handoff. Support running container and
      stopped-container/prior-image paths; fail if a detected prior release cannot
@@ -68,11 +73,19 @@ or PR #215 directly from this worktree.
    - Skip legacy capture only after validating the committed-state marker and
      its complete current/release/metadata/assets tuple. Mere volume or directory
      existence, including an empty/incomplete state, is never authoritative.
+   - After verifier rejection, forbid `/state/assets` fallback through a
+     container attached to that volume. Preserve a validated handoff, capture an
+     independent baked legacy root into a temporary replacement, or fail closed.
+     Bind handoff authority to canonical asset inventory, source ID, and source
+     kind, all revalidated before reuse.
    - `make up` runs the stager successfully before replacing/starting nginx.
      Nginx serves shared retained `/assets/` and atomic current shell. `make down`
      preserves the volume. Never inspect/stop/remove another project.
 
 5. **Static publish output**
+   - Resolve and reject an existing output destination before staging can mutate
+     retained assets, metadata, releases, or `current`; snapshot the full state
+     in the negative regression.
    - Reuse the same core to create a complete next publish tree from current +
      candidate. It contains retained A+B immutable assets and only B mutable
      files.
@@ -128,6 +141,12 @@ or PR #215 directly from this worktree.
   never proof and `current` remains the only activation commit point.
 - Exact partial transaction state is resumable. Byte/manifest disagreement in
   partial state fails closed without selecting B or recapturing over known data.
+- Idempotence is evaluated only after this invocation's candidate plus legacy
+  union has been collision-checked and promoted.
+- Rejected state is not an alternate legacy source through an attached container;
+  recovery authority must be independent and handoff replacement is atomic.
+- Compose identity is one explicit/default key shared by every migration path,
+  never a mixture of cwd basename and configuration fallback.
 - A pre-build capture bridges the first upgrade from a legacy image that had no
   state volume. Detectable-but-unreadable prior state fails closed.
 - A Docker staging service preserves the host Docker-only contract; host Node or
@@ -145,6 +164,9 @@ or PR #215 directly from this worktree.
 | Collision/idempotence | focused Node tests | equal bytes retry; unequal bytes abort; retained bytes unchanged |
 | Transaction | fault-injected tests | every boundary before pointer rename leaves A current; retry succeeds; no retained deletion |
 | State authority | focused capture/staging tests | empty/incomplete volume does not suppress legacy capture; corrupt or mismatched committed state fails closed |
+| Late legacy union | focused staging tests | identical candidate plus newly available legacy asset appends before idempotent return; collision changes nothing |
+| Project identity | contract + isolated Docker tests | unset and explicit keys agree across Compose, capture, volume, image, handoff, and stager; sibling untouched |
+| Rejected-state source | focused capture + Docker negative | rejected volume is never copied through attached `/state`; preserved handoff/baked root works, no independent source fails unchanged |
 | Partial release resume | fault-injected tests | crash after release rename and before metadata resumes without `EEXIST`; exact bytes become one committed tuple |
 | Legacy browser | real Chromium A/B | A cache miss proven; safe B stage; old path 200 JS with exact A bytes from origin |
 | Destructive negative | isolated browser/server | candidate-only B yields old-path 404 and production staging rejects switch |
@@ -153,6 +175,7 @@ or PR #215 directly from this worktree.
 | Docker lifecycle gate | executable Docker validation | real legacy A -> B capture, cache-miss origin fetch, restart/down-up, stopped-image path, sibling sentinel, exact cleanup all pass |
 | Portability | temporary-CWD focused/CI test | no checkout-specific absolute paths; capture fixture locates scripts from module/repository root |
 | Static publish | focused integration | output contains A+B assets/B shell; collision and incomplete stage fail |
+| Existing publish destination | state snapshot integration | pre-existing output fails before stage and leaves pointer/releases/metadata/assets/output byte-identical |
 | HTTP policy | curl/tests | `/assets/` immutable and exact; `sw.js`/HTML current; no HTML fallback for missing hashed asset |
 | Quality | repo commands | focused tests, full preflight, build/e2e, Docker smoke, and all required GitHub checks green |
 | Process | diff/feature-memory/review | one PR; no sibling memory/state mutation; evidence/docs/current cycle set complete |
@@ -163,6 +186,14 @@ or PR #215 directly from this worktree.
   pointer unchanged, safe idempotent retry.
 - Empty/failed-created volume masks legacy A: do not treat storage existence as
   authority; require the validated committed-state tuple before skipping capture.
+- Mixed Compose defaults split handoff from the actual volume: use one effective
+  project key and cover unset/custom execution outside the canonical directory.
+- Rejected volume is re-imported through its attached container: forbid `/state`
+  fallback after verifier rejection and preserve only independent authority.
+- Idempotent shortcut skips late legacy input: promote the validated full union
+  before returning unchanged.
+- Existing publish output is discovered after activation: validate it before any
+  staging mutation and snapshot the negative result.
 - Crash after release rename but before metadata: classify and resume exact
   release-only state; reject mismatches and never retry a blind rename over it.
 - Concurrent update: exclusive fail-closed lock; no implicit stale-lock removal.
@@ -180,7 +211,8 @@ or PR #215 directly from this worktree.
 
 ## Handoff Status
 
-Architect review disposition is complete, but the feature is not ready for final
-validation. R051-001 through R051-004 require implementation, focused and full
-verification including the executable Docker lifecycle gate, green current-head
-CI, and fresh exact-head review before final validation may be invoked.
+Architect follow-up disposition is complete, but the feature is not ready for
+final validation. R051-005 through R051-008 require implementation and focused/
+full verification; all eleven unresolved review threads require current-head
+evidence and resolution followed by fresh exact-head review before final
+validation may be invoked.

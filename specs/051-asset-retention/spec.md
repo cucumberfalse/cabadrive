@@ -138,6 +138,11 @@ Resumption is part of the transaction contract, not an error shortcut:
   rather than raising `EEXIST`; the same requirement applies to every boundary
   before the final `current` rename. A selected release can therefore never lack
   its verified marker or metadata under the defined publisher.
+- Legacy handoff inventory participates in collision validation and append-only
+  promotion before every complete-release/idempotent shortcut. Re-staging an
+  already-current candidate with newly available legacy assets must append those
+  exact assets before returning `changed: false`; the shortcut may not omit a
+  later authoritative handoff.
 
 The current release directory contains mutable entry points and a stable
 `assets` symlink to `state/assets`, or nginx serves `state/assets` via an exact
@@ -164,6 +169,23 @@ asset union is verified.
   `docker volume inspect` alone is insufficient. Empty/incomplete state falls
   through to running-container or prior-image capture; if that fallback cannot
   be read, update aborts.
+- One effective Compose project key governs Compose itself, container/image and
+  volume discovery, handoff path, and the stager bind. With no explicit
+  `COMPOSE_PROJECT_NAME`, both Compose and capture use the same repository
+  default (`cabadrive`), independent of checkout basename; with an explicit
+  value, every consumer uses that exact value. Compose declares that same
+  default/override as its project `name`; the wrapper must not derive a second
+  fallback from `$PWD`.
+- A verifier-rejected project volume is never an outgoing source indirectly via
+  `/state/assets` on a container attached to that volume. Capture preserves any
+  independently validated existing handoff, captures a replacement into a
+  temporary sibling, and atomically replaces the handoff only after validation.
+  An authoritative handoff contains a canonical path/size/SHA-256 inventory,
+  nonempty source identity and independent source kind; reuse recomputes and
+  exactly matches that inventory.
+  After state rejection, allowed recovery sources are the preserved handoff or
+  independently baked pre-feature `/usr/share/nginx/html/assets`; absence of
+  either fails closed.
 - `make up` runs the staging service against the project-scoped volume and the
   exact captured handoff, then starts/replaces nginx only after staging exits
   zero. Initial install without any prior project container/image is allowed and
@@ -194,6 +216,11 @@ sync (`--delete`, replacement of the whole build with candidate-only assets) or
 without an atomic/equivalent final switch is documented as unsupported for the
 safe-update guarantee.
 
+The publish destination is resolved and rejected if it already exists before
+candidate staging, asset promotion, metadata creation, or `current` switching.
+This fail-fast path leaves release state and the destination byte-for-byte and
+pointer-for-pointer unchanged.
+
 ## Functional Requirements
 
 - FR-001: A->B staging preserves every valid A `/assets/` byte and adds every B
@@ -219,6 +246,16 @@ safe-update guarantee.
 - FR-010: Tests and scripts are checkout-independent. They resolve repository
   files from `import.meta.url` or their script directory and contain no
   developer/worktree absolute path.
+- FR-011: Compose and every migration component derive one identical effective
+  project key. Default operation is cwd-independent and explicit project names
+  remain isolated.
+- FR-012: Newly supplied authoritative legacy assets are collision-checked and
+  promoted before an existing-candidate idempotent return.
+- FR-013: Rejected release-state cannot be laundered into an authoritative
+  legacy handoff through a container mount. Only an independently validated
+  preserved handoff or baked pre-feature source may recover it.
+- FR-014: A pre-existing static publish destination is rejected before any
+  release-state mutation.
 
 ## Acceptance Criteria And Negative Scenarios
 
@@ -270,6 +307,22 @@ safe-update guarantee.
 14. Capture tests derive script paths from their module/repository and run from
     an unrelated temporary cwd. CI rejects `/Users/...`, worktree-specific, or
     other developer absolute fixture paths.
+15. With `COMPOSE_PROJECT_NAME` unset from a checkout whose basename is not
+    `cabadrive`, capture, Compose discovery, handoff bind, and stager all use
+    `cabadrive`. With an explicit key, they all use that key and never touch the
+    default or a sibling project.
+16. Stage B once without a legacy handoff, then stage identical B with a newly
+    available legacy A asset. The second invocation appends exact A bytes before
+    its idempotent return. A same-path/different-byte legacy collision fails
+    before mutation.
+17. Given a verifier-rejected volume whose attached container exposes readable
+    `/state/assets`, capture must not copy those bytes. It reuses an independently
+    validated handoff or captures the baked pre-feature path into a temporary
+    replacement; without either, it fails closed and preserves the handoff.
+    A corrupt/missing handoff manifest or source identity is non-authoritative.
+18. Given an existing static publish output of any filesystem type, publish
+    fails before staging. `current`, releases, metadata, retained assets, and the
+    pre-existing output remain exactly unchanged.
 
 ## Review And Completion Requirements
 
@@ -303,3 +356,16 @@ safe-update guarantee.
 - **R051-004 (CI baseline) — absolute worktree path in capture test: accepted.**
   Resolve the script module-relatively, run from temp cwd, and add an absolute-
   path negative scan. This is a portability failure, not an environment waiver.
+- **R051-005 (P1) — Compose project identity mismatch: accepted.** Replace the
+  cwd-basename fallback with the same effective key Compose uses and prove
+  default/custom project agreement from an unrelated checkout basename.
+- **R051-006 (P1) — idempotent candidate omits later legacy assets: accepted.**
+  Move legacy-union validation and promotion before the complete-release
+  shortcut; add exact append and collision/no-mutation regressions.
+- **R051-007 (P1) — rejected state reused through attached container: accepted.**
+  Rejected volume data cannot become a source under another path. Preserve and
+  validate independent handoff state, use only a baked pre-feature fallback,
+  and fail closed when neither is available.
+- **R051-008 (P2) — static publish checks output after staging: accepted.**
+  Validate/reject the destination before staging and prove the full release
+  state remains unchanged on the negative path.
