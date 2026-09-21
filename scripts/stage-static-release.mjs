@@ -738,7 +738,11 @@ function pendingPublishMatches(pending, output, release, inventory) {
   return (
     pending?.schemaVersion === SCHEMA_VERSION &&
     pending.output === output &&
+    typeof pending.transactionId === "string" &&
+    pending.transactionId.startsWith(".") &&
     pending.releaseId === release.releaseId &&
+    pending.manifestSha256 === manifestDigest(release) &&
+    typeof pending.retainedAssetsSha256 === "string" &&
     sameEntries(pending.inventory || [], inventory)
   );
 }
@@ -796,7 +800,10 @@ function copyPublishTree({ state, candidate, temporary, options }) {
   if (!sameEntries(inventory, expected))
     fail("static publish output inventory does not match candidate");
   syncTree(temporary, options);
-  return inventory;
+  return {
+    inventory,
+    retainedAssetsSha256: manifestDigest(retainedInventoryPayload(retained)),
+  };
 }
 
 // Publication deliberately happens before state activation.  The journal turns
@@ -852,13 +859,19 @@ export function buildStaticPublish({
     let journalWritten = false;
     try {
       mkdirSync(temporary, { recursive: false, mode: 0o755 });
-      const inventory = copyPublishTree({ state, candidate, temporary, options });
+      const { inventory, retainedAssetsSha256 } = copyPublishTree({
+        state,
+        candidate,
+        temporary,
+        options,
+      });
       const pending = {
         schemaVersion: SCHEMA_VERSION,
         output,
         transactionId: basename(temporary),
         releaseId: manifest.releaseId,
         manifestSha256: manifestDigest(manifest),
+        retainedAssetsSha256,
         inventory,
       };
       writeAtomically(

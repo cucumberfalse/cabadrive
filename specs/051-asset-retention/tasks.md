@@ -276,7 +276,8 @@
   resolves then exports that same key. Static publish holds the release lock
   through a temporary sibling output, exact rehash/fsync, durable pending
   journal, atomic output rename, and only then the `current` commit. A matching
-  post-output journal is the sole resumable state. `node --test
+  post-output journal (destination, transaction, release/manifest and retained
+  inventory digests, exact output inventory) is the sole resumable state. `node --test
   tests/static-release-staging.test.mjs tests/capture-legacy-assets.test.mjs
   tests/static-release-docker-contract.test.mjs tests/docker-runtime.test.mjs`
   passed 25/25; it includes output-before-current, pre-rename failure, and
