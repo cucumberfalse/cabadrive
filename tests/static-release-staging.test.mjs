@@ -15,6 +15,7 @@ import {
   buildStaticPublish,
   createCandidateManifest,
   stageStaticRelease,
+  verifyCommittedState,
   verifyCandidateManifest,
 } from "../scripts/stage-static-release.mjs";
 
@@ -143,5 +144,46 @@ test("static publish emits retained assets with only the B mutable shell", () =>
       () => buildStaticPublish({ stateRoot: state, candidateRoot: b, outputRoot: output }),
       /refusing destructive replacement/i,
     );
+  });
+});
+
+test("release-only partial state resumes after metadata boundary without selecting B early", () => {
+  withFixture((root) => {
+    const state = join(root, "state");
+    const a = release(root, "a", { "a.js": "A" }, "A shell");
+    const b = release(root, "b", { "b.js": "B" }, "B shell");
+    stageStaticRelease({ stateRoot: state, candidateRoot: a });
+    const aShell = currentShell(state);
+
+    assert.throws(
+      () => stageStaticRelease({ stateRoot: state, candidateRoot: b, faultAt: "after-release" }),
+      /fault injection/i,
+    );
+    assert.equal(currentShell(state), aShell);
+    const releaseId = createCandidateManifest(b).releaseId;
+    assert.equal(existsSync(join(state, "releases", releaseId)), true);
+    assert.equal(existsSync(join(state, "metadata", `${releaseId}.json`)), false);
+
+    stageStaticRelease({ stateRoot: state, candidateRoot: b });
+    assert.match(currentShell(state), /B shell/);
+    assert.equal(verifyCommittedState(state).valid, true);
+  });
+});
+
+test("only a full marker/current/release/metadata/assets tuple is authoritative", () => {
+  withFixture((root) => {
+    const state = join(root, "state");
+    assert.equal(
+      verifyCommittedState(state).valid,
+      false,
+      "empty state is not an installed release",
+    );
+    const a = release(root, "a", { "a.js": "A" });
+    stageStaticRelease({ stateRoot: state, candidateRoot: a });
+    assert.equal(verifyCommittedState(state).valid, true);
+
+    const releaseId = createCandidateManifest(a).releaseId;
+    writeFileSync(join(state, "releases", releaseId, ".release-state.json"), "{}\n");
+    assert.equal(verifyCommittedState(state).valid, false, "corrupt marker fails closed");
   });
 });

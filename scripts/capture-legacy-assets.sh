@@ -10,16 +10,25 @@ state_volume="${project}_release-state"
 container="$(docker compose ps -aq --all cabadrive | sed -n '1p')"
 image=""
 source=""
+invalid_state=""
+script_dir="$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)"
 
 mkdir -p "$handoff"
 rm -rf "$assets"
 
-# Once this feature has staged a release, the project-scoped volume is the
-# authoritative append-only source. It survives `make down`, so an image alone
-# must never be mistaken for a legacy release on later updates.
+# A volume name is not evidence of a completed release: failed first stages can
+# leave it empty. Validate the exact committed tuple in a throwaway Node
+# container, so the end-user path still has no host Node/pnpm dependency.
 if docker volume inspect "$state_volume" >/dev/null 2>&1; then
-  printf '%s\n' 'existing project release-state volume is the retained source'
-  exit 0
+  if docker run --rm \
+    --mount "type=volume,source=$state_volume,target=/state,readonly" \
+    --mount "type=bind,source=$script_dir/stage-static-release.mjs,target=/app/stage-static-release.mjs,readonly" \
+    node:22-alpine node /app/stage-static-release.mjs verify --state /state; then
+    printf '%s\n' 'validated project release-state volume is the retained source'
+    exit 0
+  fi
+  invalid_state=1
+  printf '%s\n' 'project release-state is incomplete; legacy capture remains required' >&2
 fi
 
 if [ -n "$container" ]; then
@@ -38,6 +47,10 @@ elif image="$(docker image inspect --format '{{.Id}}' "${project}-cabadrive" 2>/
   docker rm -f "$temporary" >/dev/null
   trap - EXIT
 else
+  if [ -n "$invalid_state" ]; then
+    printf '%s\n' 'incomplete project release-state has no readable legacy source' >&2
+    exit 1
+  fi
   printf '%s\n' 'initial-install: no project-scoped legacy release found'
   exit 0
 fi

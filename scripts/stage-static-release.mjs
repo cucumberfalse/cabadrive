@@ -26,6 +26,7 @@ import { dirname, isAbsolute, join, resolve, sep } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const SCHEMA_VERSION = 1;
+const RELEASE_MARKER = ".release-state.json";
 
 function fail(message) {
   throw new Error(`Static release staging: ${message}`);
@@ -132,6 +133,18 @@ function manifestDigest(payload) {
   return createHash("sha256").update(JSON.stringify(payload)).digest("hex");
 }
 
+function markerForRelease(release) {
+  return {
+    schemaVersion: SCHEMA_VERSION,
+    releaseId: release.releaseId,
+    manifestSha256: manifestDigest({
+      schemaVersion: release.schemaVersion,
+      assets: release.assets,
+      mutable: release.mutable,
+    }),
+  };
+}
+
 export function createCandidateManifest(candidateRoot) {
   assertDirectory(candidateRoot, "candidate root");
   const root = realpathSync(candidateRoot);
@@ -163,6 +176,14 @@ function sameEntries(left, right) {
       (entry, index) => entry.path === right[index].path && equalEntry(entry, right[index]),
     )
   );
+}
+
+function readJson(path, label) {
+  try {
+    return JSON.parse(readFileSync(path, "utf8"));
+  } catch {
+    fail(`invalid ${label}: ${path}`);
+  }
 }
 
 export function verifyCandidateManifest(candidateRoot, manifest) {
@@ -282,6 +303,80 @@ function makeCurrent(state, releaseId) {
   renameSync(next, current);
 }
 
+function releaseFilesMatch(releaseDirectory, release) {
+  const markerPath = join(releaseDirectory, RELEASE_MARKER);
+  if (!existsSync(markerPath)) return false;
+  const marker = readJson(markerPath, "release marker");
+  if (JSON.stringify(marker) !== JSON.stringify(markerForRelease(release))) return false;
+  const files = walkRegularFiles(releaseDirectory, "release tree").filter(
+    (entry) => entry.path !== RELEASE_MARKER,
+  );
+  return sameEntries(files, release.mutable);
+}
+
+function assetsMatch(state, release) {
+  const retained = inventoryForAssets(state, "retained assets");
+  const byPath = new Map(retained.map((entry) => [entry.path, entry]));
+  return release.assets.every((entry) => equalEntry(byPath.get(entry.path) || {}, entry));
+}
+
+function metadataMatches(path, release) {
+  if (!existsSync(path)) return false;
+  try {
+    const metadata = readJson(path, "release metadata");
+    return (
+      metadata.releaseId === release.releaseId &&
+      sameEntries(metadata.assets || [], release.assets) &&
+      sameEntries(metadata.mutable || [], release.mutable)
+    );
+  } catch {
+    return false;
+  }
+}
+
+function writeMetadataAtomically(state, path, release, legacySource) {
+  const temporary = join(state, `metadata.next-${process.pid}-${randomUUID()}.json`);
+  writeFileSync(temporary, `${JSON.stringify({ ...release, legacySource }, null, 2)}\n`);
+  renameSync(temporary, path);
+}
+
+export function verifyCommittedState(stateRoot) {
+  try {
+    const state = resolve(stateRoot);
+    assertDirectory(state, "state root");
+    const current = join(state, "current");
+    if (!existsSync(current) || !lstatSync(current).isSymbolicLink()) {
+      return { valid: false, reason: "current pointer is missing" };
+    }
+    const target = readlinkSync(current);
+    if (!/^releases\/[a-f0-9]{64}$/.test(target)) {
+      return { valid: false, reason: "current pointer is unsafe" };
+    }
+    const releaseId = target.slice("releases/".length);
+    const releaseDirectory = join(state, target);
+    const metadataPath = join(state, "metadata", `${releaseId}.json`);
+    if (!existsSync(releaseDirectory) || !existsSync(metadataPath)) {
+      return { valid: false, reason: "current tuple is incomplete" };
+    }
+    const metadata = readJson(metadataPath, "release metadata");
+    if (metadata.releaseId !== releaseId || !metadataMatches(metadataPath, metadata)) {
+      return { valid: false, reason: "current metadata does not match" };
+    }
+    if (!releaseFilesMatch(releaseDirectory, metadata)) {
+      return { valid: false, reason: "current release marker/tree does not match" };
+    }
+    if (!assetsMatch(state, metadata)) {
+      return { valid: false, reason: "retained assets do not match metadata" };
+    }
+    return { valid: true, releaseId };
+  } catch (error) {
+    return {
+      valid: false,
+      reason: error instanceof Error ? error.message : "state validation failed",
+    };
+  }
+}
+
 export function stageStaticRelease({ stateRoot, candidateRoot, legacyRoot, faultAt } = {}) {
   if (!stateRoot || !candidateRoot) fail("--state and --candidate are required");
   const state = ensureStateLayout(stateRoot);
@@ -303,9 +398,27 @@ export function stageStaticRelease({ stateRoot, candidateRoot, legacyRoot, fault
         : undefined;
     assertNoCollision(existing, legacy, release.assets);
     if (existsSync(releaseDir) && existsSync(metadataPath)) {
-      verifyCandidateManifest(candidate, JSON.parse(readFileSync(metadataPath, "utf8")));
+      if (
+        !metadataMatches(metadataPath, release) ||
+        !releaseFilesMatch(releaseDir, release) ||
+        !assetsMatch(state, release)
+      ) {
+        fail("existing complete release is not a verified committed tuple");
+      }
       makeCurrent(state, release.releaseId);
       return { changed: false, releaseId: release.releaseId, manifest: release };
+    }
+    if (existsSync(releaseDir)) {
+      if (!releaseFilesMatch(releaseDir, release) || !assetsMatch(state, release)) {
+        fail("existing release-only partial state does not match candidate");
+      }
+      writeMetadataAtomically(state, metadataPath, release, legacySource);
+      fault({ faultAt }, "before-current");
+      makeCurrent(state, release.releaseId);
+      return { changed: true, releaseId: release.releaseId, manifest: release };
+    }
+    if (existsSync(metadataPath) && !metadataMatches(metadataPath, release)) {
+      fail("existing metadata-only partial state does not match candidate");
     }
 
     mkdirSync(transaction, { recursive: true, mode: 0o755 });
@@ -329,11 +442,24 @@ export function stageStaticRelease({ stateRoot, candidateRoot, legacyRoot, fault
       fail("transaction mutable inventory is incomplete");
     fault({ faultAt }, "during-mutable");
     writeFileSync(
+      join(transactionRelease, RELEASE_MARKER),
+      `${JSON.stringify(markerForRelease(release), null, 2)}\n`,
+    );
+    if (!releaseFilesMatch(transactionRelease, release)) {
+      fail("transaction release marker/tree does not match candidate");
+    }
+    writeFileSync(
       join(transaction, "manifest.json"),
       `${JSON.stringify({ ...release, legacySource }, null, 2)}\n`,
     );
     renameSync(transactionRelease, releaseDir);
-    renameSync(join(transaction, "manifest.json"), metadataPath);
+    fault({ faultAt }, "after-release");
+    if (!existsSync(metadataPath)) {
+      renameSync(join(transaction, "manifest.json"), metadataPath);
+    }
+    if (!metadataMatches(metadataPath, release) || !releaseFilesMatch(releaseDir, release)) {
+      fail("promoted release tuple does not match candidate");
+    }
     fault({ faultAt }, "before-current");
     makeCurrent(state, release.releaseId);
     return { changed: true, releaseId: release.releaseId, manifest: release };
@@ -391,13 +517,20 @@ if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.ur
       ? stageStaticRelease(options)
       : command === "publish"
         ? buildStaticPublish({ ...options, outputRoot: values.output })
-        : fail(`unknown command ${command}`);
-  process.stdout.write(
-    `${JSON.stringify({
-      changed: result.changed,
-      releaseId: result.releaseId,
-      assets: result.manifest.assets.length,
-      mutable: result.manifest.mutable.length,
-    })}\n`,
-  );
+        : command === "verify"
+          ? verifyCommittedState(values.state)
+          : fail(`unknown command ${command}`);
+  if (command === "verify") {
+    process.stdout.write(`${JSON.stringify(result)}\n`);
+    if (!result.valid) process.exitCode = 1;
+  } else {
+    process.stdout.write(
+      `${JSON.stringify({
+        changed: result.changed,
+        releaseId: result.releaseId,
+        assets: result.manifest.assets.length,
+        mutable: result.manifest.mutable.length,
+      })}\n`,
+    );
+  }
 }

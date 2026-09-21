@@ -37,7 +37,7 @@
 - [x] T005 Add failing real-browser A/B fixture where faithful legacy A excludes
   and never loads its lazy hash, Cache Storage miss is explicit, destructive B
   returns 404, and safe retained-origin behavior is initially absent.
-- [ ] T006 Add failing executable Docker integration cases for pre-build running
+- [x] T006 Add failing executable Docker integration cases for pre-build running
   and stopped legacy capture, project-scoped volume, stage-before-nginx,
   restart/down-up persistence, initial install, and sibling isolation. Config
   assertions or recorded manual commands alone do not complete this task.
@@ -46,7 +46,7 @@
 
 - [x] T007 Implement canonical complete candidate manifest and safe filesystem
   walk with schema/path/size/SHA-256 validation and no symlink/escape surface.
-- [ ] T008 Implement exclusive locking and transactional state layout. Stage and
+- [x] T008 Implement exclusive locking and transactional state layout. Stage and
   rehash outgoing/candidate bytes; fail on collision; atomically promote new
   immutable files, release metadata/tree, and finally `current`. Preserve A and
   support idempotent retry at every fault boundary, including after release-tree
@@ -56,7 +56,7 @@
   for one atomic host publication. Reject candidate-only/destructive semantics.
 - [x] T010 Add Docker candidate/stager targets and project-scoped persistent
   release-state volume. Keep runtime nginx-only and end-user host Node-free.
-- [ ] T011 Add safe pre-build legacy capture for the exact Compose project. Use
+- [x] T011 Add safe pre-build legacy capture for the exact Compose project. Use
   the running container when present or the prior Compose image when stopped;
   record source identity and fail if detected prior assets cannot be exported.
   Skip only for a validated committed-state tuple, never merely because its
@@ -83,11 +83,11 @@
 - [x] T017 Run the Chromium safe A->B origin-hit test and destructive control;
   record cache-miss proof, request source, status, MIME, exact bytes/SHA, and
   absence of HTML fallback.
-- [ ] T018 Run an executable isolated Docker running-legacy and stopped-legacy
+- [x] T018 Run an executable isolated Docker running-legacy and stopped-legacy
   A->B regression in the normal Docker validation gate, plus
   initial install, restart and `make down/up`; smoke current HTML/SW and retained
   A hash. Use unique Compose project/port and leave sibling projects untouched.
-- [ ] T019 Run `pnpm run typecheck`, `pnpm run lint`, `pnpm run format:check`,
+- [x] T019 Run `pnpm run typecheck`, `pnpm run lint`, `pnpm run format:check`,
   `pnpm run test`, `pnpm run build`, `pnpm run test:e2e`, full `pnpm run
   preflight`, `node scripts/check-feature-memory.mjs --worktree`, `pnpm run
   check:repo`, and `git diff --check`.
@@ -106,21 +106,21 @@
   path/symlink/race safety, byte collision, first legacy capture, project
   isolation, browser origin proof, destructive negative, Docker/static contract,
   docs, tests, sibling preservation, and role/process compliance.
-- [ ] T022a Implement R051-001: add a durable per-release marker and validate
+- [x] T022a Implement R051-001: add a durable per-release marker and validate
   `current`/marker/release/metadata/assets as one tuple before suppressing legacy
   capture, with `current` still the final commit point. Prove an empty or
   incomplete release-state volume still captures a running/stopped A; corrupt or
   contradictory state fails closed without unsafe fallback or mutation.
-- [ ] T022b Implement R051-002: classify release-only, metadata-only,
+- [x] T022b Implement R051-002: classify release-only, metadata-only,
   complete-inactive, and committed states; resume only exact partial state. Add a
   fault immediately after release-tree rename and before metadata publication,
   then prove retry succeeds without `EEXIST`, preserves A until commit, and
   rejects byte/manifest mismatch unchanged.
-- [ ] T022c Implement R051-003: make the normal Docker validation command execute
+- [x] T022c Implement R051-003: make the normal Docker validation command execute
   a real isolated lifecycle using a unique project and port: legacy A, B capture
   and stage, never-loaded retained A request, restart, `down/up`, stopped-image
   capture, sibling sentinel verification, and exact scoped cleanup.
-- [ ] T022d Implement R051-004: replace the checkout-specific absolute fixture
+- [x] T022d Implement R051-004: replace the checkout-specific absolute fixture
   path with module/repository-relative resolution (for example `import.meta.url`),
   execute the focused test from an unrelated temporary working directory, scan
   governed fixtures for checkout paths, and rerun the exact failing CI baseline.
@@ -195,6 +195,22 @@
   isolated Docker smoke then passed. The implementation then treated any
   preserved state volume as authoritative; R051-001 records why that shortcut
   is unsafe and replaces it with complete-tuple validation.
+- Follow-up implementation: a `.release-state.json` marker now binds every
+  release ID to its canonical manifest. `verifyCommittedState` accepts only a
+  complete current/marker/release/metadata/assets tuple. The capture wrapper
+  invokes that read-only verifier inside a throwaway Node Docker container;
+  empty/corrupt state continues to running/stopped legacy capture and no-source
+  state fails closed. The new `after-release` fault leaves A current and an
+  exact retry reconstructs metadata without `EEXIST` before the final pointer
+  rename.
+- Follow-up focused evidence: typecheck and lint passed; 17 focused tests
+  passed (staging marker/retry, capture incomplete/running and stopped-image
+  paths, Docker contract). `pnpm run test:docker-retention` passed: it runs an
+  isolated, test-owned running legacy A -> candidate B capture, exact old lazy
+  asset fetch, restart, `down/up`, stopped-image capture and untouched sibling
+  volume sentinel. The lifecycle script is called from the `docker-validation`
+  CI job. Final `pnpm run preflight`, final lifecycle run and `git diff --check`
+  passed after this process-memory update.
 - Implementation Agent feedback: none; no out-of-spec product decision was
   required.
 - Publication: committed and pushed `c55dee242989b222e0092953721915ea8784275b`

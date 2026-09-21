@@ -124,6 +124,9 @@ jobs:
           grep -q "Cabadrive" /tmp/cabadrive-home.html
           curl --fail --silent --show-error "http://localhost:${CABADRIVE_HOST_PORT}/sw.js" >/dev/null
 
+      - name: Verify retained legacy assets across Docker releases
+        run: node scripts/test-docker-asset-retention.mjs
+
       - name: Stop Docker app
         if: always()
         run: make down
