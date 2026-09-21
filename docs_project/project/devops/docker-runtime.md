@@ -37,7 +37,18 @@ shared `cabadrive:local` image.
 ## Implementation
 
 - `Dockerfile` builds the Vite app in a Node 22 Alpine stage.
-- Runtime is nginx on port `8080` inside the container.
+- Runtime is nginx on port `8080` inside the container, served from the
+  `nginxinc/nginx-unprivileged:1.29-alpine` image so the nginx master runs as a
+  non-root user (uid 101) rather than root.
+- `nginx.conf` applies a split cache policy (immutable, one-year
+  `Cache-Control` on hashed `/assets/` bundles; `max-age=86400` plus
+  `stale-while-revalidate` on non-hashed `/content/assets/` media), baseline
+  security headers (including a strict `'self'` Content-Security-Policy,
+  `X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`, and
+  `Permissions-Policy`), and gzip for text responses. Cache-Control is derived
+  from a single `map $uri` and emitted with the security headers via one
+  server-level `add_header`, so no `location` block overrides header
+  inheritance.
 - `docker-compose.yml` maps host `${CABADRIVE_HOST_PORT:-5173}` to container
   `8080`.
 - Compose owns container naming so container identity is scoped by the compose
