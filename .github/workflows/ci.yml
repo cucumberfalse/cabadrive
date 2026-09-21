@@ -104,6 +104,24 @@ jobs:
       - name: Checkout
         uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
 
+      # The lifecycle assertion starts a real browser to verify that the staged
+      # service worker becomes the controller. Keep those test dependencies in
+      # this job rather than weakening the Docker contract to an HTTP-only test.
+      - name: Setup pnpm
+        uses: pnpm/action-setup@b906affcce14559ad1aafd4ab0e942779e9f58b1 # v4
+
+      - name: Setup Node
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: "20"
+          cache: "pnpm"
+
+      - name: Install test dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Install Playwright browser
+        run: pnpm exec playwright install --with-deps chromium
+
       - name: Build Docker image
         run: make build
 

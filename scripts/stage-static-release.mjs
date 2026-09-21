@@ -20,9 +20,10 @@ import {
   rmSync,
   statSync,
   symlinkSync,
+  unlinkSync,
   writeFileSync,
 } from "node:fs";
-import { dirname, isAbsolute, join, resolve, sep } from "node:path";
+import { basename, dirname, isAbsolute, join, resolve, sep } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const SCHEMA_VERSION = 1;
@@ -30,6 +31,7 @@ const RELEASE_MARKER = ".release-state.json";
 const RETAINED_INVENTORY = "retained-assets.json";
 const LEGACY_HANDOFF_MARKER = ".legacy-handoff.json";
 const LEGACY_SOURCE_KIND = "baked-legacy-root";
+const PUBLISH_PENDING = "publish-pending.json";
 
 function fail(message) {
   throw new Error(`Static release staging: ${message}`);
@@ -594,13 +596,14 @@ export function stageStaticRelease({
   legacyRoot,
   faultAt,
   onDurabilityOperation,
+  lockHeld = false,
 } = {}) {
   if (!stateRoot || !candidateRoot) fail("--state and --candidate are required");
   const state = ensureStateLayout(stateRoot);
   const release = createCandidateManifest(candidateRoot);
   const releaseDir = join(state, "releases", release.releaseId);
   const metadataPath = join(state, "metadata", `${release.releaseId}.json`);
-  const unlock = acquireLock(state);
+  const unlock = lockHeld ? () => {} : acquireLock(state);
   const transaction = join(state, "transactions", `${release.releaseId}-${randomUUID()}`);
   try {
     const candidate = realpathSync(candidateRoot);
@@ -723,29 +726,175 @@ export function stageStaticRelease({
   }
 }
 
-export function buildStaticPublish({ stateRoot, candidateRoot, outputRoot }) {
-  if (!outputRoot) fail("--output is required");
+function publishPendingPath(state) {
+  return join(state, PUBLISH_PENDING);
+}
+
+function outputInventory(root) {
+  return walkRegularFiles(root, "static publish output");
+}
+
+function pendingPublishMatches(pending, output, release, inventory) {
+  return (
+    pending?.schemaVersion === SCHEMA_VERSION &&
+    pending.output === output &&
+    pending.releaseId === release.releaseId &&
+    sameEntries(pending.inventory || [], inventory)
+  );
+}
+
+function readPendingPublish(state) {
+  const path = publishPendingPath(state);
+  return existsSync(path) ? readJson(path, "static publish pending journal") : undefined;
+}
+
+function clearPendingPublish(state, options) {
+  const path = publishPendingPath(state);
+  if (!existsSync(path)) return;
+  unlinkSync(path);
+  invokeDurability(options, "unlink-publish-pending", path);
+  syncDirectory(state, options);
+}
+
+function syncTree(root, options) {
+  const visit = (directory) => {
+    for (const name of requireDirectoryNames(directory).sort(ordinal)) {
+      const path = join(directory, name);
+      const stat = lstatSync(path);
+      if (stat.isDirectory()) visit(path);
+      else if (stat.isFile()) syncFile(path, options);
+      else fail(`static publish output has non-regular entry: ${path}`);
+    }
+    syncDirectory(directory, options);
+  };
+  visit(root);
+}
+
+function copyPublishTree({ state, candidate, temporary, options }) {
+  const existing = inventoryForAssets(state, "retained assets");
+  const ledger = readRetainedInventory(state);
+  if (existing.length && !ledger)
+    fail("retained assets do not match canonical cumulative inventory");
+  if (ledger && !sameEntries(existing, ledger)) {
+    fail("retained assets do not match canonical cumulative inventory");
+  }
+  assertNoCollision(existing, candidate.manifest.assets);
+  const byExistingPath = new Map(existing.map((entry) => [entry.path, entry]));
+  const retained = mergeInventories(existing, candidate.manifest.assets);
+  for (const entry of retained) {
+    const source = byExistingPath.has(entry.path)
+      ? join(state, "assets", ...entry.path.split("/"))
+      : sourceAsset(candidate.root, entry.path);
+    copyAndVerify(source, join(temporary, "assets", ...entry.path.split("/")), entry, options);
+  }
+  copyInventory(candidate.root, candidate.manifest.mutable, temporary, sourceMutable, options);
+  const inventory = outputInventory(temporary);
+  const expected = [
+    ...retained.map((entry) => ({ ...entry, path: `assets/${entry.path}` })),
+    ...candidate.manifest.mutable,
+  ].sort((left, right) => ordinal(left.path, right.path));
+  if (!sameEntries(inventory, expected))
+    fail("static publish output inventory does not match candidate");
+  syncTree(temporary, options);
+  return inventory;
+}
+
+// Publication deliberately happens before state activation.  The journal turns
+// the only unavoidable crash window (output renamed, current not yet changed)
+// into an exact, byte-verified retry rather than permission to adopt arbitrary
+// pre-existing output.
+export function buildStaticPublish({
+  stateRoot,
+  candidateRoot,
+  outputRoot,
+  faultAt,
+  onDurabilityOperation,
+} = {}) {
+  if (!stateRoot || !candidateRoot || !outputRoot)
+    fail("--state, --candidate and --output are required");
+  const state = ensureStateLayout(stateRoot);
   const output = resolve(outputRoot);
-  if (existsSync(output)) fail("publish output already exists; refusing destructive replacement");
-  const staged = stageStaticRelease({ stateRoot, candidateRoot });
-  const state = resolve(stateRoot);
-  mkdirSync(output, { recursive: true, mode: 0o755 });
-  const release = join(state, readlinkSync(join(state, "current")));
-  for (const entry of walkRegularFiles(join(state, "assets"), "retained assets")) {
-    copyAndVerify(
-      join(state, "assets", ...entry.path.split("/")),
-      join(output, "assets", ...entry.path.split("/")),
-      entry,
-    );
+  const candidateRootReal = realpathSync(candidateRoot);
+  const manifest = createCandidateManifest(candidateRootReal);
+  const candidate = { root: candidateRootReal, manifest };
+  const options = { faultAt, onDurabilityOperation };
+  const existingPending = readPendingPublish(state);
+  const unlock = acquireLock(state);
+
+  try {
+    if (existsSync(output)) {
+      const inventory = outputInventory(output);
+      if (
+        !existingPending ||
+        !pendingPublishMatches(existingPending, output, manifest, inventory)
+      ) {
+        fail("publish output already exists without an exact pending transaction");
+      }
+      const staged = stageStaticRelease({
+        stateRoot: state,
+        candidateRoot: candidateRootReal,
+        faultAt,
+        onDurabilityOperation,
+        lockHeld: true,
+      });
+      if (staged.releaseId !== manifest.releaseId || !verifyCommittedState(state).valid) {
+        fail("static publish activation did not commit the journaled candidate");
+      }
+      clearPendingPublish(state, options);
+      return staged;
+    }
+    if (existingPending) fail("static publish pending journal has no matching output");
+
+    const parent = dirname(output);
+    assertDirectory(parent, "static publish output parent");
+    const temporary = join(parent, `.${basename(output)}.publish-${process.pid}-${randomUUID()}`);
+    let renamed = false;
+    let journalWritten = false;
+    try {
+      mkdirSync(temporary, { recursive: false, mode: 0o755 });
+      const inventory = copyPublishTree({ state, candidate, temporary, options });
+      const pending = {
+        schemaVersion: SCHEMA_VERSION,
+        output,
+        transactionId: basename(temporary),
+        releaseId: manifest.releaseId,
+        manifestSha256: manifestDigest(manifest),
+        inventory,
+      };
+      writeAtomically(
+        state,
+        publishPendingPath(state),
+        `${JSON.stringify(pending, null, 2)}\n`,
+        options,
+      );
+      journalWritten = true;
+      fault(options, "before-output-rename");
+      renameSync(temporary, output);
+      renamed = true;
+      invokeDurability(options, "rename-output", output);
+      syncDirectory(parent, options);
+      fault(options, "after-output");
+      const staged = stageStaticRelease({
+        stateRoot: state,
+        candidateRoot: candidateRootReal,
+        faultAt,
+        onDurabilityOperation,
+        lockHeld: true,
+      });
+      if (staged.releaseId !== manifest.releaseId || !verifyCommittedState(state).valid) {
+        fail("static publish activation did not commit the candidate");
+      }
+      clearPendingPublish(state, options);
+      return staged;
+    } finally {
+      if (!renamed && existsSync(temporary)) rmSync(temporary, { recursive: true, force: true });
+      // The journal may survive only after the final output becomes observable.
+      // A pre-rename failure is not resumable and must not poison a future run.
+      if (!renamed && journalWritten) clearPendingPublish(state, undefined);
+    }
+  } finally {
+    unlock();
   }
-  for (const entry of walkRegularFiles(release, "current release")) {
-    copyAndVerify(
-      join(release, ...entry.path.split("/")),
-      join(output, ...entry.path.split("/")),
-      entry,
-    );
-  }
-  return staged;
 }
 
 function parseCli(argv) {

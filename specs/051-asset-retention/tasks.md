@@ -14,11 +14,11 @@
 - Cycle PR set: PR #217, `codex/051-asset-retention`, purpose `append-only
   static asset retention and shell-last Docker/static deployment`; initial
   product head `c55dee242989b222e0092953721915ea8784275b`; reviewed current head
-  `a7cc88320c24b051bc28b01122e5c9c0e032abaa` implements the ten older accepted
-  review fixes represented by R051-001 through R051-008, but has accepted
-  follow-up work R051-009 through R051-012 and is not a final-validation
-  candidate. It is included only after implementation, verification, resolution
-  of all fourteen open threads, and fresh exact-head review.
+  `3ea6fec3e20466f933e0fb87ffec0d4556b6519f` implements sixteen older accepted
+  review-thread fixes represented by R051-001 through R051-012, but has accepted
+  follow-up work R051-013 and R051-014 and is not a final-validation candidate.
+  It is included only after implementation, verification, resolution of all
+  eighteen open threads, and fresh exact-head review.
 - Dependency: feature 051 must merge first. PR #215 is then synchronized to the
   merged main and independently retested/reviewed/revalidated.
 
@@ -55,23 +55,26 @@
   promotion and before metadata promotion; promote any late authoritative legacy
   union before an idempotent return; require exact cumulative retained inventory
   and crash-durable file/directory sync ordering before activation; add no GC.
-- [x] T009 Implement a static publish command that consumes current + candidate
+- [ ] T009 Implement a static publish command that consumes current + candidate
   roots and emits a complete A+B `/assets/`, B-only mutable shell tree suitable
   for one atomic host publication. Reject candidate-only/destructive semantics
-  and pre-existing output before any staging mutation.
+  and pre-existing output before any staging mutation. Prepare state without
+  activation, atomically complete output, and only then commit `current`.
 - [x] T010 Add Docker candidate/stager targets and project-scoped persistent
   release-state volume. Keep runtime nginx-only and end-user host Node-free.
-- [x] T011 Add safe pre-build legacy capture for the exact Compose project. Use
+- [ ] T011 Add safe pre-build legacy capture for the exact Compose project. Use
   the running container when present or the prior Compose image when stopped;
   record source identity and fail if detected prior assets cannot be exported.
   Skip only for a validated committed-state tuple, never merely because its
   volume/directories exist. Never inspect/mutate another project or broad host
   directory. A verifier-rejected volume may not be copied through an attached
   container; preserve only independently validated handoff/baked legacy sources.
-- [x] T012 Make `make build` capture before image replacement and `make up` run
+  Discover and adopt the unique exact pre-F051 project before using a new default.
+- [ ] T012 Make `make build` capture before image replacement and `make up` run
   the stager before replacing/starting nginx. Preserve volume on `make down` and
   keep default URL plus isolated project/port behavior. Compose, capture, lookup,
-  handoff, and bind mount must share one effective project key.
+  handoff, and bind mount must share one effective project key, including a
+  uniquely discovered legacy key for first upgrade.
 - [x] T013 Serve retained `/assets/` from shared state and HTML/SW from atomic
   `current`; keep `/assets/` immutable, `sw.js`/HTML current, and missing hashed
   assets as 404 rather than SPA HTML. Preserve any merged-main PR #214 policy.
@@ -86,17 +89,17 @@
 
 ## Verification And Publication
 
-- [x] T016 Run focused manifest/staging/fault/path/static-publish tests and
+- [ ] T016 Run focused manifest/staging/fault/path/static-publish tests and
   record test-first FAIL->PASS evidence.
 - [x] T017 Run the real-worker Chromium safe A->B origin-hit test and destructive
   control; record cache-miss proof, request source, status, MIME, exact bytes/SHA,
   and absence of HTML fallback.
-- [x] T018 Run an executable isolated Docker running-legacy and stopped-legacy
+- [ ] T018 Run an executable isolated Docker running-legacy and stopped-legacy
   A->B regression in the normal Docker validation gate, plus
   initial install, restart and `make down/up`; smoke current HTML/SW and retained
   A hash. Also prove exact B shell/SW selection and B worker activation/control.
   Use unique Compose project/port and leave sibling projects untouched.
-- [ ] T019 Run `pnpm run typecheck`, `pnpm run lint`, `pnpm run format:check`,
+- [x] T019 Run `pnpm run typecheck`, `pnpm run lint`, `pnpm run format:check`,
   `pnpm run test`, `pnpm run build`, `pnpm run test:e2e`, full `pnpm run
   preflight`, `node scripts/check-feature-memory.mjs --worktree`, `pnpm run
   check:repo`, and `git diff --check`.
@@ -167,6 +170,23 @@
   candidate B `index.html`/`sw.js` identities, proving their exact served bytes and
   committed B release, and using a headless browser to prove B's worker is
   activated/controlling after deploy, restart, and `down/up` for running/stopped A.
+- [x] T022m Implement R051-013: add a single project resolver used before capture
+  and all B Compose commands. Explicit `COMPOSE_PROJECT_NAME` wins; otherwise
+  discover exactly one pre-F051 project from canonical checkout/config Compose
+  labels or an exact historical-basename-owned container/image, then adopt it.
+  Test non-`cabadrive` legacy running/stopped deployments, zero-match default,
+  explicit selection, two-candidate ambiguity, mismatched labels, and a service-
+  name-only sibling; ambiguous/foreign cases must fail without mutation.
+- [x] T022n Implement R051-014: split static staging into prepare and commit while
+  holding the release lock. Build/reverify/fsync output in a unique destination-
+  sibling transaction, atomically rename and fsync its parent, then commit
+  `current`. Inject copy/hash/file-fsync/dir-fsync/output-rename failures and prove
+  A remains current with no final output. Persist a state-side pending journal
+  binding destination/transaction/release/digests/exact output inventory before
+  publication; inject after-output/before-current and prove only a matching
+  journal plus exact bytes resume B. Missing/stale/mismatched journal,
+  destination, transaction, or output fails unchanged. Also inject after-current/
+  before-journal-clear and prove exact retry performs cleanup only.
 - [ ] T023 Orchestrator route every finding/feedback to the proper role; all
   blocking threads are fixed/resolved or explicitly disposed, checks rerun, and
   process memory refreshed.
@@ -221,6 +241,12 @@
 - D051-015: acceptance evidence exercises actual A and B service-worker
   lifecycle/control and exact B shell/SW activation, not synthetic handlers or a
   retained-A-only Docker smoke.
+- D051-016: first-upgrade identity resolution precedes the new default. Explicit
+  identity or one exact checkout-bound legacy project is adopted end-to-end;
+  ambiguity/foreign evidence fails closed.
+- D051-017: static publication is prepare-output-commit. Complete durable output
+  precedes `current`; only an exact artifact bound to the same durable pending
+  journal can resume the post-output/pre-current window.
 
 ## Evidence And Feedback
 
@@ -239,6 +265,22 @@
   the exact pending candidate/legacy immutable union after a pre-pointer
   durability failure; all other historical drift remains fail-closed against
   `retained-assets.json`.
+- Exact-head review at `3ea6fec3e20466f933e0fb87ffec0d4556b6519f`
+  confirmed those older fixes but found two additional gaps: the new default can
+  miss a pre-F051 basename-derived Compose deployment (R051-013), and static
+  publish activates state before output copy/verification can fail (R051-014).
+- R051-013/R051-014 implementation evidence (2026-09-21): capture now resolves
+  an explicit project first; otherwise it adopts one checkout/config-labelled
+  project or one exact historical-basename image, defaults to `cabadrive` only
+  when no candidate exists, and rejects ambiguity. Every Make lifecycle command
+  resolves then exports that same key. Static publish holds the release lock
+  through a temporary sibling output, exact rehash/fsync, durable pending
+  journal, atomic output rename, and only then the `current` commit. A matching
+  post-output journal is the sole resumable state. `node --test
+  tests/static-release-staging.test.mjs tests/capture-legacy-assets.test.mjs
+  tests/static-release-docker-contract.test.mjs tests/docker-runtime.test.mjs`
+  passed 25/25; it includes output-before-current, pre-rename failure, and
+  journal retry. Prettier and `git diff --check` passed. No scope divergence.
 
 - Startup evidence: verified base and assigned worktree/branch are recorded
   above; only Analyst `feature-request.md` existed before Architect planning;
@@ -292,16 +334,16 @@
   state can be laundered through attached-container `/state/assets` (R051-007);
   and static publish mutates release state before rejecting existing output
   (R051-008). Those review threads remained unresolved pending evidence; the
-  authoritative current inventory is the fourteen-thread ledger below.
+  authoritative current inventory is the eighteen-thread ledger below.
 - Historical Implementation Agent feedback through R051-004: none; no
   out-of-spec product decision was required.
 - Publication: PR #217 is open; the exact head reviewed for this disposition is
-  `a7cc88320c24b051bc28b01122e5c9c0e032abaa`.
-- Review evidence: GitHub inventory contains exactly fourteen open review
-  threads. Ten older threads have accepted fixes implemented through R051-001—
-  R051-008 but remain open pending evidence. Four new actionable threads are
-  disposed as R051-009 through R051-012. No thread was resolved by this
-  Architect pass.
+  `3ea6fec3e20466f933e0fb87ffec0d4556b6519f`.
+- Review evidence: GitHub inventory contains exactly eighteen unresolved review
+  threads. Sixteen prior threads have accepted fixes implemented through
+  R051-001—R051-012 but remain open pending evidence. Two new actionable threads
+  (`r4062513742`, `r4062513748`) are disposed as R051-013 and R051-014. No thread
+  was resolved by this Architect pass.
 - Follow-up Implementation Agent feedback/evidence for T022e through T022h:
   the Compose file and Makefile now declare/export the same `cabadrive`
   default while an explicit `COMPOSE_PROJECT_NAME` overrides every consumer;
@@ -329,6 +371,15 @@
   older accepted fixes but does not close the four new gaps: durable sync
   ordering, cumulative historical integrity, a controlling legacy A worker, and
   positive B shell/SW/worker activation.
+- CI portability follow-up (2026-09-21): the required baseline failed only
+  because `tests/static-release-staging.test.mjs` was not Prettier-formatted.
+  The required `docker-validation` lifecycle runs a real Chromium service-worker
+  controller assertion, but its isolated runner had neither the package nor a
+  browser installed. The job now installs the locked pnpm dependencies and
+  Chromium before running the unchanged executable lifecycle command; this is
+  CI-only test setup, not a host runtime requirement. `pnpm run preflight`,
+  `pnpm run test:docker-retention`, explicit Prettier checks for the workflow and
+  corrected test, and `git diff --check` passed after the update.
 - Effective content head: pending final process-memory and validation guards.
 - Cleanup: not assigned; any later environment cleanup requires separate
   Cleanup Agent scope/evidence.
@@ -337,10 +388,10 @@
 
 - Architect validation pass: not ready; final validation was not invoked.
 - Final Architect validation completed at: pending.
-- Architect return reason: R051-009 through R051-012 require follow-up
-  implementation, focused/full verification, current-head checks, resolution of
-  all fourteen review threads, and fresh exact-head review.
-- Architect return count: 3 / 10.
+- Architect return reason: R051-013 and R051-014 require follow-up implementation,
+  focused/full verification, current-head checks, resolution of all eighteen
+  review threads, and fresh exact-head review.
+- Architect return count: 4 / 10.
 - Architect validated effective content head: pending.
 
 ## Final Analyst Validation

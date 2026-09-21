@@ -230,8 +230,56 @@ test("static publish emits retained assets with only the B mutable shell", () =>
     assert.equal(readFileSync(join(output, "index.html"), "utf8"), "B shell");
     assert.throws(
       () => buildStaticPublish({ stateRoot: state, candidateRoot: b, outputRoot: output }),
-      /refusing destructive replacement/i,
+      /already exists without an exact pending transaction/i,
     );
+  });
+});
+
+test("static publish writes and verifies output before B activation and resumes only its exact journal", () => {
+  withFixture((root) => {
+    const state = join(root, "state");
+    const output = join(root, "publish");
+    const a = release(root, "a", { "a.js": "A" }, "A shell");
+    const b = release(root, "b", { "b.js": "B" }, "B shell");
+    stageStaticRelease({ stateRoot: state, candidateRoot: a });
+    const aCurrent = readlinkSync(join(state, "current"));
+
+    assert.throws(
+      () =>
+        buildStaticPublish({
+          stateRoot: state,
+          candidateRoot: b,
+          outputRoot: output,
+          faultAt: "after-output",
+        }),
+      /fault injection/i,
+    );
+    assert.equal(readlinkSync(join(state, "current")), aCurrent, "A stays current after output");
+    assert.equal(readFileSync(join(output, "index.html"), "utf8"), "B shell");
+    assert.equal(readFileSync(join(output, "assets/a.js"), "utf8"), "A");
+    assert.equal(existsSync(join(state, "publish-pending.json")), true);
+
+    buildStaticPublish({ stateRoot: state, candidateRoot: b, outputRoot: output });
+    assert.match(currentShell(state), /B shell/);
+    assert.equal(existsSync(join(state, "publish-pending.json")), false);
+
+    const state2 = join(root, "state-pre-rename");
+    const output2 = join(root, "publish-pre-rename");
+    stageStaticRelease({ stateRoot: state2, candidateRoot: a });
+    const before = readlinkSync(join(state2, "current"));
+    assert.throws(
+      () =>
+        buildStaticPublish({
+          stateRoot: state2,
+          candidateRoot: b,
+          outputRoot: output2,
+          faultAt: "before-output-rename",
+        }),
+      /fault injection/i,
+    );
+    assert.equal(readlinkSync(join(state2, "current")), before);
+    assert.equal(existsSync(output2), false, "failed preparation exposes no output");
+    assert.equal(existsSync(join(state2, "publish-pending.json")), false);
   });
 });
 
@@ -378,7 +426,11 @@ test("durability barriers precede activation and failure leaves the old pointer 
         }),
       /durability fault injection/i,
     );
-    assert.equal(readlinkSync(join(state, "current")), cCurrent, "post-rename sync failure restores C");
+    assert.equal(
+      readlinkSync(join(state, "current")),
+      cCurrent,
+      "post-rename sync failure restores C",
+    );
     stageStaticRelease({ stateRoot: state, candidateRoot: d });
     assert.match(currentShell(state), /D shell/);
   });

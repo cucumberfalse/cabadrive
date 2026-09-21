@@ -87,6 +87,7 @@ state/
   current -> releases/<release-id>
   metadata/<release-id>.json    # canonical inventory/evidence
   transactions/<transaction-id>/
+  publish-pending.json          # static-output crash journal; absent normally
   stage.lock
 ```
 
@@ -192,6 +193,16 @@ asset union is verified.
   value, every consumer uses that exact value. Compose declares that same
   default/override as its project `name`; the wrapper must not derive a second
   fallback from `$PWD`.
+- Migration must first resolve the project identity used by an existing
+  pre-feature deployment. An explicit `COMPOSE_PROJECT_NAME` wins. Otherwise a
+  repository-owned resolver examines running/stopped Compose service containers
+  and Compose-labelled images whose canonical working-directory/config-file
+  labels match this exact checkout; it also checks the historical checkout-
+  basename project only when an exact project-owned container/image exists.
+  Exactly one legacy key is adopted for capture and all subsequent B Compose
+  operations. Zero matches uses the new `cabadrive` default; multiple/conflicting
+  matches fail closed and require an explicit key. Service name alone, unrelated
+  label matches, and sibling project resources are never sufficient authority.
 - A verifier-rejected project volume is never an outgoing source indirectly via
   `/state/assets` on a container attached to that volume. Capture preserves any
   independently validated existing handoff, captures a replacement into a
@@ -236,6 +247,29 @@ The publish destination is resolved and rejected if it already exists before
 candidate staging, asset promotion, metadata creation, or `current` switching.
 This fail-fast path leaves release state and the destination byte-for-byte and
 pointer-for-pointer unchanged.
+
+Static publish uses a prepare/output/commit transaction under the release lock:
+
+1. Prepare and durably verify candidate assets, cumulative inventory, release,
+   and metadata without changing `current`.
+2. Build the complete publish artifact in a unique temporary sibling of the
+   destination, rehash its exact A+B assets and B-only mutable tree, fsync its
+   files/directories, then persist a state-side pending journal binding
+   destination, transaction ID, release ID, candidate/cumulative-ledger digests,
+   and exact output inventory. Atomically rename the output to the absent
+   destination and fsync the output parent.
+3. Only after the final output is complete and durable may the state `current`
+   pointer commit B. A copy/hash/fsync/output-rename failure leaves A current and
+   no final output; prepared append-only state may remain unreferenced.
+4. If fault injection stops after output rename but before `current`, retry may
+   resume only when the durable pending journal identifies the same transaction
+   and the output exactly matches its expected inventory; it
+   then commits B and clears the journal durably. Any arbitrary, missing-journal,
+   stale-journal, or byte-mismatched existing output fails unchanged. No command
+   deletes or overwrites an existing output.
+5. A crash after `current` commits but before journal removal is also idempotent:
+   retry requires matching B current, journal and exact output, then only clears
+   the journal. Any mismatch fails closed without changing output or state.
 
 ## Functional Requirements
 
@@ -283,6 +317,13 @@ pointer-for-pointer unchanged.
 - FR-018: The executable Docker lifecycle proves candidate B activation, not
   merely A retention: B shell and `sw.js` exact bytes are selected and B's
   service worker reaches activated/controlling state.
+- FR-019: First upgrade discovers and adopts the unique project identity of an
+  existing pre-F051 Compose deployment before applying the new default. Ambiguous
+  discovery fails closed; explicit identity remains authoritative.
+- FR-020: Static publication completes and durably atomically publishes the
+  output artifact before state activation. Failed output construction cannot
+  select B; only a pending-journal-bound exact post-output/pre-current retry is
+  resumable.
 
 ## Acceptance Criteria And Negative Scenarios
 
@@ -369,6 +410,20 @@ pointer-for-pointer unchanged.
     proves those bytes are served from the active release. A headless browser
     additionally proves B's worker is activated and controls B; retained A alone
     cannot pass the test.
+23. Create a real/simulated pre-F051 Compose deployment in a checkout whose
+    basename is not `cabadrive`, with no explicit project variable. The resolver
+    selects its label-bound historical key, capture retains exact A bytes, and B
+    continues on that same project/volume. Two plausible legacy keys, mismatched
+    working-dir/config labels, or service-name-only siblings abort without
+    capture/build; an explicit key deterministically selects only its project.
+24. Inject failure during every static-output copy, hash, fsync and final rename.
+    Each pre-output failure leaves A current, no final output, and no mutation
+    outside exact unreferenced prepared state. Inject failure after atomic output
+    rename but before `current`: output is complete B while A remains current;
+    matching pending-journal retry activates B. Missing/stale/mismatched journal,
+    destination, transaction identity, or output bytes fails unchanged.
+    A post-current/pre-journal-clear fault resumes only by verifying exact B
+    current/output/journal and durably clearing the journal.
 
 ## Review And Completion Requirements
 
@@ -430,3 +485,11 @@ pointer-for-pointer unchanged.
 - **R051-012 (P2) — Docker proof checks only the retained asset: accepted.** Add
   exact B shell/SW selection checks plus browser evidence that B's worker is
   activated and controlling across restart and `down/up`.
+- **R051-013 (P1) — new default misses a pre-feature Compose project: accepted.**
+  Resolve a unique prior project from explicit identity or exact checkout-bound
+  Compose labels/historical basename evidence before defaulting, and carry that
+  key through capture and B lifecycle. Add ambiguity/sibling negatives.
+- **R051-014 (P2) — static state activates before output completion: accepted.**
+  Split preparation from activation, build/verify/fsync/atomically rename output
+  first, then commit `current`. Bind the only resumable crash window to a matching
+  durable pending journal; add failures at every output boundary.

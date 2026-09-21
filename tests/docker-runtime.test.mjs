@@ -31,7 +31,8 @@ test("Docker stages a persistent project-scoped release store before nginx", () 
   assert.match(compose, /target:\s*stager/);
   assert.match(compose, /target:\s*runtime/);
   assert.match(makefile, /\.\/scripts\/capture-legacy-assets\.sh/);
-  assert.match(makefile, /COMPOSE_PROJECT_NAME \?= cabadrive/);
+  assert.match(makefile, /capture-legacy-assets\.sh --resolve-project/);
+  assert.match(makefile, /export COMPOSE_PROJECT_NAME="\$\$project"/);
   assert.match(makefile, /docker compose run --rm stager/);
 });
 

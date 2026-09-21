@@ -72,6 +72,10 @@ or PR #215 directly from this worktree.
    - Define one cwd-independent project key for Compose, capture, volume/image/
      container lookup, handoff, and stager bind. Test unset default and explicit
      isolated values; declare the same default/override as Compose project name.
+   - Before choosing that new default, resolve a unique pre-F051 deployment key
+     from explicit input or exact checkout-bound Compose labels/historical-name
+     resources. Adopt it for capture and B; ambiguity or sibling-only evidence
+     fails closed.
    - Before Compose build replaces an existing legacy image, export its
      `/assets/` to the exact project handoff. Support running container and
      stopped-container/prior-image paths; fail if a detected prior release cannot
@@ -95,6 +99,11 @@ or PR #215 directly from this worktree.
    - Reuse the same core to create a complete next publish tree from current +
      candidate. It contains retained A+B immutable assets and only B mutable
      files.
+   - Split state preparation from pointer commit. Build, rehash, fsync, and
+     atomically rename a temporary sibling output first; only then activate B.
+     Pre-output failures keep A/no final output. Exact complete output may resume
+     a post-output/pre-current fault only with a matching durable state journal;
+     arbitrary/mismatched existing output never resumes.
    - Document atomic deploy/no-delete requirements and unsupported destructive
      hosts. Do not add a provider-specific adapter.
 
@@ -158,12 +167,17 @@ or PR #215 directly from this worktree.
   recovery authority must be independent and handoff replacement is atomic.
 - Compose identity is one explicit/default key shared by every migration path,
   never a mixture of cwd basename and configuration fallback.
+- The new default applies only after unique legacy-project discovery. Exact
+  checkout/config labels or historical-name owned resources establish ancestry;
+  ambiguous or sibling-only discovery is a blocker, not an initial install.
 - `retained-assets.json` is the canonical cumulative ledger; candidate-only
   membership checks cannot establish historical-store integrity.
 - `current` is a crash-durable commit only after file and directory fsync ordering
   completes; unsupported/failed durability operations abort the activation.
 - Browser evidence uses real service-worker lifecycle/control from the historical
   generator and current candidate, not a synthetic cache/request approximation.
+- Static output publication precedes state activation. Prepared append-only state
+  can survive failure, but B `current` cannot precede a complete durable output.
 - A pre-build capture bridges the first upgrade from a legacy image that had no
   state volume. Detectable-but-unreadable prior state fails closed.
 - A Docker staging service preserves the host Docker-only contract; host Node or
@@ -185,6 +199,7 @@ or PR #215 directly from this worktree.
 | State authority | focused capture/staging tests | empty/incomplete volume does not suppress legacy capture; corrupt or mismatched committed state fails closed |
 | Late legacy union | focused staging tests | identical candidate plus newly available legacy asset appends before idempotent return; collision changes nothing |
 | Project identity | contract + isolated Docker tests | unset and explicit keys agree across Compose, capture, volume, image, handoff, and stager; sibling untouched |
+| Legacy project discovery | resolver unit + Docker migration | non-default pre-F051 project is uniquely adopted for A capture and B; ambiguity/mismatched labels/service-only sibling fail untouched |
 | Rejected-state source | focused capture + Docker negative | rejected volume is never copied through attached `/state`; preserved handoff/baked root works, no independent source fails unchanged |
 | Partial release resume | fault-injected tests | crash after release rename and before metadata resumes without `EEXIST`; exact bytes become one committed tuple |
 | Legacy browser | real Chromium A/B | A cache miss proven; safe B stage; old path 200 JS with exact A bytes from origin |
@@ -197,6 +212,7 @@ or PR #215 directly from this worktree.
 | Portability | temporary-CWD focused/CI test | no checkout-specific absolute paths; capture fixture locates scripts from module/repository root |
 | Static publish | focused integration | output contains A+B assets/B shell; collision and incomplete stage fail |
 | Existing publish destination | state snapshot integration | pre-existing output fails before stage and leaves pointer/releases/metadata/assets/output byte-identical |
+| Static output transaction | fault-injected integration | copy/hash/fsync/rename failure leaves A and no final output; complete-output/pre-current fault resumes only with matching journal and exact output |
 | HTTP policy | curl/tests | `/assets/` immutable and exact; `sw.js`/HTML current; no HTML fallback for missing hashed asset |
 | Quality | repo commands | focused tests, full preflight, build/e2e, Docker smoke, and all required GitHub checks green |
 | Process | diff/feature-memory/review | one PR; no sibling memory/state mutation; evidence/docs/current cycle set complete |
@@ -209,6 +225,8 @@ or PR #215 directly from this worktree.
   authority; require the validated committed-state tuple before skipping capture.
 - Mixed Compose defaults split handoff from the actual volume: use one effective
   project key and cover unset/custom execution outside the canonical directory.
+- Applying the new default hides an old basename-derived deployment: resolve and
+  adopt one exact legacy project before defaulting; reject multiple candidates.
 - Rejected volume is re-imported through its attached container: forbid `/state`
   fallback after verifier rejection and preserve only independent authority.
 - Idempotent shortcut skips late legacy input: promote the validated full union
@@ -223,6 +241,9 @@ or PR #215 directly from this worktree.
   control the generated historical worker for both safe and destructive cases.
 - Retained A success can hide failed B activation: assert exact B shell/SW plus
   B worker control throughout the real Docker lifecycle.
+- Static output copy can fail after state activation: prepare without pointer
+  commit, atomically publish verified output first, then activate B with an exact
+  resume rule for the intervening crash window.
 - Crash after release rename but before metadata: classify and resume exact
   release-only state; reject mismatches and never retry a blind rename over it.
 - Concurrent update: exclusive fail-closed lock; no implicit stale-lock removal.
@@ -241,7 +262,7 @@ or PR #215 directly from this worktree.
 ## Handoff Status
 
 Architect follow-up disposition is complete, but the feature is not ready for
-final validation. R051-009 through R051-012 require implementation and focused/
-full verification; all fourteen open review threads require current-head evidence
-and resolution followed by fresh exact-head review before final validation may
-be invoked.
+final validation. R051-013 and R051-014 require implementation and focused/full
+verification; all eighteen unresolved review threads require current-head
+evidence and resolution followed by fresh exact-head review before final
+validation may be invoked.

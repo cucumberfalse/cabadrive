@@ -3,10 +3,77 @@
 # `docker compose build` can replace its image.  No host Node/pnpm is needed.
 set -eu
 
-project="${COMPOSE_PROJECT_NAME:-cabadrive}"
-export COMPOSE_PROJECT_NAME="$project"
 script_dir="$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)"
 repo_root="${CABADRIVE_REPOSITORY_ROOT:-$(CDPATH= cd -- "$script_dir/.." && pwd)}"
+repo_root="$(CDPATH= cd -- "$repo_root" && pwd -P)"
+historical_basename="$(basename "$repo_root")"
+
+# An explicit project name always wins.  On the first upgrade however an older
+# Compose installation may have used the checkout basename rather than the new
+# cabadrive default.  Discover only resources that carry an exact Compose
+# ancestry label for this checkout (or the exact historical image name); a
+# service-name match by itself is deliberately not enough authority.
+resolve_project() {
+  if [ -n "${COMPOSE_PROJECT_NAME:-}" ]; then
+    printf '%s\n' "$COMPOSE_PROJECT_NAME"
+    return 0
+  fi
+
+  candidates=""
+  add_candidate() {
+    candidate="$1"
+    [ -n "$candidate" ] || return 0
+    case "|$candidates|" in
+      *"|$candidate|"*) ;;
+      *) candidates="${candidates}${candidates:+|}$candidate" ;;
+    esac
+  }
+
+  containers="$(docker ps -aq --all --filter label=com.docker.compose.service=cabadrive 2>/dev/null || true)"
+  for candidate_container in $containers; do
+    labels="$(docker inspect --format '{{ index .Config.Labels "com.docker.compose.project" }}|{{ index .Config.Labels "com.docker.compose.project.working_dir" }}|{{ index .Config.Labels "com.docker.compose.project.config_files" }}' "$candidate_container" 2>/dev/null || true)"
+    candidate_project="${labels%%|*}"
+    remaining="${labels#*|}"
+    candidate_workdir="${remaining%%|*}"
+    candidate_config="${remaining#*|}"
+    owned=""
+    if [ "$candidate_workdir" = "$repo_root" ]; then
+      owned=1
+    else
+      case "$candidate_config" in
+        *"$repo_root/docker-compose.yml"*) owned=1 ;;
+      esac
+    fi
+    if [ -n "$owned" ]; then
+      add_candidate "$candidate_project"
+    fi
+  done
+
+  # Pre-F051 images have no dependable label.  The exact checkout basename is
+  # nevertheless the historical Compose name, but only if its exact image
+  # exists.  Do not scan arbitrary similarly named images.
+  if docker image inspect --format '{{.Id}}' "${historical_basename}-cabadrive" >/dev/null 2>&1; then
+    add_candidate "$historical_basename"
+  fi
+
+  candidate_count="$(printf '%s\n' "$candidates" | tr '|' '\n' | sed '/^$/d' | wc -l | tr -d ' ')"
+  case "$candidate_count" in
+    0) printf '%s\n' cabadrive ;;
+    1) printf '%s\n' "$candidates" ;;
+    *)
+      printf '%s\n' 'ambiguous pre-feature Compose project; set COMPOSE_PROJECT_NAME explicitly' >&2
+      return 1
+      ;;
+  esac
+}
+
+if [ "${1:-}" = "--resolve-project" ]; then
+  resolve_project
+  exit 0
+fi
+
+project="$(resolve_project)"
+export COMPOSE_PROJECT_NAME="$project"
 handoff_base="$repo_root/.cabadrive-release-handoff/$project"
 handoff="$handoff_base/current"
 state_volume="${project}_release-state"
