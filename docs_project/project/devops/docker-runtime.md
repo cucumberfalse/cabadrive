@@ -30,6 +30,9 @@ handoff publishes its `current` pointer atomically and remains local deployment
 state. Capture failure stops `make build` before any image build starts. A
 handoff is eligible for that pointer switch only after all captured files and
 the complete directory ancestry have crossed their durability barriers.
+The stager omits its legacy argument only when `current` is genuinely absent on
+a clean install. Any supplied, dangling, incomplete, or inventory-mismatched
+handoff is mandatory input and fails before release-state mutation.
 
 The stager's exclusive publication lock is also project-scoped. Its durable
 execution domain lives in `release-state`, so recreating the disposable stager
@@ -51,6 +54,10 @@ for safe update continuity because an older open tab may request a lazy hash
 that its cache has never loaded.
 The target publish path must be new: an existing destination is rejected before
 any release-state staging or pointer change.
+A crash after the durable output journal but before its final rename resumes
+only the exact journal-bound temporary sibling with unchanged prior state; an
+ambiguous, hostile, drifted, or simultaneous temporary/final relation fails
+closed.
 
 After `make up`, the app is available at:
 

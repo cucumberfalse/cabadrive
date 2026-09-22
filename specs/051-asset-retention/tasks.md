@@ -268,14 +268,14 @@
   winner. Add deterministic adversarial tests for two paused reclaimers and for
   release/reacquire between inspection and transfer, asserting no live
   replacement is quarantined and maximum critical-section concurrency is one.
-- [ ] T022ab Implement R051-028: validate every supplied legacy handoff before
+- [x] T022ab Implement R051-028: validate every supplied legacy handoff before
   state mutation, whether or not `assets/` exists. Require a regular contained
   handoff root, required regular-directory `assets/`, complete marker/source
   fields and an exact inventory; missing, wrong-type, unreadable, incomplete or
   mismatched state fails closed. Add byte/pointer snapshots proving no retained
   assets, journal, release, metadata or `current` changes, plus an omitted-
   handoff clean-install control.
-- [ ] T022ac Implement R051-029: make `publish-pending.json` recover the exact
+- [x] T022ac Implement R051-029: make `publish-pending.json` recover the exact
   pre-output-rename state as well as the existing post-rename state. Constrain
   the transaction ID to one basename under the exact output parent; with output
   absent, require one no-follow regular-directory temporary tree whose complete
@@ -639,6 +639,23 @@
   all identified implications in one last implementation return. Fresh focused
   and full evidence, thread resolution, required checks and exact-head review
   remain mandatory before final validation.
+- R051-028/R051-029 implementation evidence (2026-09-22): staging now validates
+  any supplied legacy root and its required regular `assets/` directory before
+  creating or locking release state; missing, wrong-type, symlinked, incomplete,
+  and inventory-mismatched handoffs preserve the prior tuple, while omission is
+  the explicit clean-install control. Docker's stager entry point now omits the
+  argument only when `current` is genuinely absent and still passes a dangling
+  link so it fails closed. Static publication now distinguishes journal-bound
+  pre-rename temporary and post-rename final states. It validates a canonical
+  contained temporary basename, unique no-follow directory relation, exact
+  candidate/output inventory, and unchanged prior current/ledger/store; then it
+  re-fsyncs the tree and renames once. Missing, extra, mutated, symlinked,
+  escaped, both-present/occupied, candidate-drifted, and A/B/C state-drifted
+  states preserve journal/output/state evidence and fail closed. Focused
+  staging/capture/Docker tests pass `45/45`; lint passes. The integrated audit
+  found and fixed the clean-install Docker argument implication before push.
+  Implementation feedback: no scope divergence or additional Architect
+  disposition is required.
 
 ## Final Architect Validation
 

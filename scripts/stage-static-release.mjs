@@ -456,6 +456,7 @@ export function createLegacyHandoffManifest({ legacyRoot, sourceId, sourceKind }
   if (!legacyRoot) fail("legacy root is required");
   const root = realpathSync(legacyRoot);
   assertDirectory(root, "legacy handoff root");
+  assertDirectory(join(root, "assets"), "legacy handoff assets directory");
   const kind = requireLegacySource(sourceKind, "legacy source kind");
   if (kind !== LEGACY_SOURCE_KIND) fail(`unsupported legacy source kind ${JSON.stringify(kind)}`);
   return {
@@ -993,6 +994,12 @@ export function stageStaticRelease({
   lockHeld = false,
 } = {}) {
   if (!stateRoot || !candidateRoot) fail("--state and --candidate are required");
+  const suppliedLegacyRoot =
+    legacyRoot === undefined || legacyRoot === null ? undefined : resolve(legacyRoot);
+  const legacyValidation = suppliedLegacyRoot ? verifyLegacyHandoff(suppliedLegacyRoot) : undefined;
+  if (suppliedLegacyRoot && !legacyValidation?.valid) {
+    fail(`legacy handoff is not authoritative: ${legacyValidation?.reason || "invalid"}`);
+  }
   const state = ensureStateLayout(stateRoot);
   const release = createCandidateManifest(candidateRoot);
   const releaseDir = join(state, "releases", release.releaseId);
@@ -1004,12 +1011,6 @@ export function stageStaticRelease({
   try {
     const candidate = realpathSync(candidateRoot);
     const existing = inventoryForAssets(state, "retained assets");
-    const suppliedLegacyRoot = legacyRoot ? resolve(legacyRoot) : undefined;
-    const hasLegacyAssets = suppliedLegacyRoot && existsSync(join(suppliedLegacyRoot, "assets"));
-    const legacyValidation = hasLegacyAssets ? verifyLegacyHandoff(suppliedLegacyRoot) : undefined;
-    if (legacyValidation && !legacyValidation.valid) {
-      fail(`legacy handoff is not authoritative: ${legacyValidation.reason}`);
-    }
     const legacy = legacyValidation?.manifest.assets || [];
     const legacySource = legacyValidation?.manifest.sourceId;
     assertNoCollision(existing, legacy, release.assets);
@@ -1211,20 +1212,67 @@ function exactInventory(value) {
   );
 }
 
-function pendingPublishMatches(pending, output, release, inventory) {
+function validPublishTransactionId(transactionId, output) {
+  const prefix = `.${basename(output)}.publish-`;
+  return (
+    typeof transactionId === "string" &&
+    transactionId === basename(transactionId) &&
+    transactionId.startsWith(prefix) &&
+    transactionId.length > prefix.length &&
+    !transactionId.includes("\\") &&
+    !transactionId.includes("\0")
+  );
+}
+
+function pendingPublishIdentityMatches(pending, output, release) {
   return (
     pending?.schemaVersion === SCHEMA_VERSION &&
     pending.output === output &&
-    typeof pending.transactionId === "string" &&
-    pending.transactionId.startsWith(".") &&
+    validPublishTransactionId(pending.transactionId, output) &&
     pending.releaseId === release.releaseId &&
     pending.manifestSha256 === manifestDigest(release) &&
     (pending.priorCurrentReleaseId === null || typeof pending.priorCurrentReleaseId === "string") &&
     exactInventory(pending.priorAssets) &&
     exactInventory(pending.expectedAssets) &&
+    exactInventory(pending.inventory) &&
     pending.priorAssetsSha256 === inventoryDigest(pending.priorAssets) &&
-    pending.expectedAssetsSha256 === inventoryDigest(pending.expectedAssets) &&
-    sameEntries(pending.inventory || [], inventory)
+    pending.expectedAssetsSha256 === inventoryDigest(pending.expectedAssets)
+  );
+}
+
+function pendingPublishMatches(pending, output, release, inventory) {
+  return (
+    pendingPublishIdentityMatches(pending, output, release) &&
+    sameEntries(pending.inventory, inventory)
+  );
+}
+
+function pendingInventoryMatchesCandidate(pending, release) {
+  const expected = [
+    ...pending.expectedAssets.map((entry) => ({ ...entry, path: `assets/${entry.path}` })),
+    ...release.mutable,
+  ].sort((left, right) => ordinal(left.path, right.path));
+  return sameEntries(pending.inventory, expected);
+}
+
+function pendingPriorStateMatchesCurrentState(state, pending) {
+  const ledger = readRetainedInventory(state);
+  const retained = inventoryForAssets(state, "retained assets");
+  const current = currentReleaseId(state);
+  if (!ledger) {
+    return (
+      pending.priorCurrentReleaseId === null &&
+      current === null &&
+      pending.priorAssets.length === 0 &&
+      retained.length === 0
+    );
+  }
+  if (!sameEntries(ledger, retained) || !sameEntries(ledger, pending.priorAssets)) return false;
+  const committed = verifyCommittedState(state);
+  return (
+    pending.priorCurrentReleaseId !== null &&
+    committed.valid &&
+    committed.releaseId === pending.priorCurrentReleaseId
   );
 }
 
@@ -1370,7 +1418,6 @@ export function buildStaticPublish({
   const manifest = createCandidateManifest(candidateRootReal);
   const candidate = { root: candidateRootReal, manifest };
   const options = { faultAt, onDurabilityOperation };
-  const existingPending = readPendingPublish(state);
   const unlock = acquireLock(state, {
     ownerInspector,
     projectKey,
@@ -1379,15 +1426,23 @@ export function buildStaticPublish({
   });
 
   try {
+    const existingPending = readPendingPublish(state);
+    const parent = dirname(output);
+    assertDirectory(parent, "static publish output parent");
     const outputEntry = noFollowEntry(output);
     if (outputEntry) {
       if (outputEntry.isSymbolicLink() || !outputEntry.isDirectory()) {
         fail("publish output already exists without an exact pending transaction");
       }
       const inventory = outputInventory(output);
+      const pendingTemporary = existingPending
+        ? join(parent, existingPending.transactionId || "invalid")
+        : undefined;
       if (
         !existingPending ||
+        noFollowEntry(pendingTemporary) ||
         !pendingPublishMatches(existingPending, output, manifest, inventory) ||
+        !pendingInventoryMatchesCandidate(existingPending, manifest) ||
         !pendingRetainedAssetsMatchCurrentState(state, existingPending)
       ) {
         fail("publish output already exists without an exact pending transaction");
@@ -1410,10 +1465,56 @@ export function buildStaticPublish({
       clearPendingPublish(state, options);
       return staged;
     }
-    if (existingPending) fail("static publish pending journal has no matching output");
+    if (existingPending) {
+      if (
+        !pendingPublishIdentityMatches(existingPending, output, manifest) ||
+        !pendingInventoryMatchesCandidate(existingPending, manifest) ||
+        !pendingPriorStateMatchesCurrentState(state, existingPending)
+      ) {
+        fail("static publish pending journal has no matching pre-output transaction");
+      }
+      const temporary = join(parent, existingPending.transactionId);
+      const prefix = `.${basename(output)}.publish-`;
+      const related = requireDirectoryNames(parent).filter((name) => name.startsWith(prefix));
+      if (related.length !== 1 || related[0] !== existingPending.transactionId) {
+        fail("static publish pending journal has ambiguous temporary state");
+      }
+      const temporaryEntry = noFollowEntry(temporary);
+      if (!temporaryEntry || temporaryEntry.isSymbolicLink() || !temporaryEntry.isDirectory()) {
+        fail("static publish pending journal has no exact temporary directory");
+      }
+      assertInside(parent, temporary, "static publish temporary output");
+      const inventory = outputInventory(temporary);
+      if (!pendingPublishMatches(existingPending, output, manifest, inventory)) {
+        fail("static publish temporary output does not match pending journal");
+      }
+      syncTree(temporary, options);
+      if (noFollowEntry(output)) {
+        fail("static publish destination changed during pre-output recovery");
+      }
+      renameSync(temporary, output);
+      invokeDurability(options, "rename-output", output);
+      syncDirectory(parent, options);
+      fault(options, "after-output");
+      const staged = stageStaticRelease({
+        stateRoot: state,
+        candidateRoot: candidateRootReal,
+        faultAt,
+        onDurabilityOperation,
+        ownerInspector,
+        projectKey,
+        onLockOperation,
+        diagnosticHost,
+        lockHeld: true,
+      });
+      if (staged.releaseId !== manifest.releaseId || !verifyCommittedState(state).valid) {
+        fail("static publish activation did not commit recovered candidate");
+      }
+      fault(options, "before-publish-journal-clear");
+      clearPendingPublish(state, options);
+      return staged;
+    }
 
-    const parent = dirname(output);
-    assertDirectory(parent, "static publish output parent");
     const temporary = join(parent, `.${basename(output)}.publish-${process.pid}-${randomUUID()}`);
     let renamed = false;
     let journalWritten = false;
@@ -1454,6 +1555,7 @@ export function buildStaticPublish({
         options,
       );
       journalWritten = true;
+      fault(options, "crash-before-output-rename");
       fault(options, "before-output-rename");
       renameSync(temporary, output);
       renamed = true;
@@ -1478,10 +1580,15 @@ export function buildStaticPublish({
       clearPendingPublish(state, options);
       return staged;
     } finally {
-      if (!renamed && existsSync(temporary)) rmSync(temporary, { recursive: true, force: true });
+      const simulatedPreRenameCrash = faultAt === "crash-before-output-rename";
+      if (!renamed && !simulatedPreRenameCrash && existsSync(temporary)) {
+        rmSync(temporary, { recursive: true, force: true });
+      }
       // The journal may survive only after the final output becomes observable.
       // A pre-rename failure is not resumable and must not poison a future run.
-      if (!renamed && journalWritten) clearPendingPublish(state, undefined);
+      if (!renamed && !simulatedPreRenameCrash && journalWritten) {
+        clearPendingPublish(state, undefined);
+      }
     }
   } finally {
     unlock();

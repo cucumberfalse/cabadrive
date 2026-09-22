@@ -13,6 +13,11 @@ test("the stager is Docker-contained and nginx exposes retained immutable assets
   assert.match(dockerfile, /FROM node:22-alpine AS stager/);
   assert.match(dockerfile, /\/candidate/);
   assert.match(dockerfile, /stage-static-release\.mjs/);
+  assert.match(
+    dockerfile,
+    /\[ -e \/legacy-handoff\/current \] \|\| \[ -L \/legacy-handoff\/current \]/,
+  );
+  assert.match(dockerfile, /--legacy \/legacy-handoff\/current; else exec node/);
   assert.match(nginx, /root \/state\/current/);
   assert.match(nginx, /alias \/state\/assets\//);
   assert.match(nginx, /location \/assets\//);

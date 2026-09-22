@@ -219,6 +219,51 @@ test("a malformed legacy handoff is never treated as authoritative", () => {
   });
 });
 
+test("every supplied legacy handoff is mandatory and fails before state mutation", () => {
+  withFixture((root) => {
+    const state = join(root, "state");
+    const a = release(root, "a", { "a.js": "A" }, "A shell");
+    const b = release(root, "b", { "b.js": "B" }, "B shell");
+    stageStaticRelease({ stateRoot: state, candidateRoot: a });
+    const before = snapshotState(state);
+
+    const missingAssets = join(root, "missing-assets");
+    mkdirSync(missingAssets);
+    const wrongType = join(root, "wrong-type");
+    mkdirSync(wrongType);
+    writeFileSync(join(wrongType, "assets"), "not a directory");
+    const incomplete = legacyHandoff(join(root, "incomplete"), "legacy", {
+      "lost.js": "lost",
+    });
+    unlinkSync(join(incomplete, "assets", "lost.js"));
+    const external = join(root, "external-assets");
+    mkdirSync(external);
+    writeFileSync(join(external, "sentinel"), "external");
+    const hostile = join(root, "hostile");
+    mkdirSync(hostile);
+    symlinkSync(external, join(hostile, "assets"));
+
+    for (const legacyRoot of [
+      join(root, "absent-handoff"),
+      missingAssets,
+      wrongType,
+      incomplete,
+      hostile,
+    ]) {
+      assert.throws(
+        () => stageStaticRelease({ stateRoot: state, candidateRoot: b, legacyRoot }),
+        /legacy handoff is not authoritative/i,
+      );
+      assert.deepEqual(snapshotState(state), before);
+      assert.equal(existsSync(join(state, "publish-pending.json")), false);
+    }
+    assert.equal(readFileSync(join(external, "sentinel"), "utf8"), "external");
+
+    assert.doesNotThrow(() => stageStaticRelease({ stateRoot: state, candidateRoot: b }));
+    assert.match(currentShell(state), /B shell/);
+  });
+});
+
 test("static publish emits retained assets with only the B mutable shell", () => {
   withFixture((root) => {
     const state = join(root, "state");
@@ -283,6 +328,165 @@ test("static publish writes and verifies output before B activation and resumes 
     assert.equal(readlinkSync(join(state2, "current")), before);
     assert.equal(existsSync(output2), false, "failed preparation exposes no output");
     assert.equal(existsSync(join(state2, "publish-pending.json")), false);
+  });
+});
+
+test("static publish recovers only an exact durable pre-rename temporary transaction", () => {
+  withFixture((root) => {
+    const a = release(root, "pre-a", { "a.js": "A" }, "A shell");
+    const b = release(root, "pre-b", { "b.js": "B" }, "B shell");
+    const c = release(root, "pre-c", { "c.js": "C" }, "C shell");
+    const crash = (name) => {
+      const state = join(root, `${name}-state`);
+      const output = join(root, `${name}-output`);
+      stageStaticRelease({ stateRoot: state, candidateRoot: a });
+      assert.throws(
+        () =>
+          buildStaticPublish({
+            stateRoot: state,
+            candidateRoot: b,
+            outputRoot: output,
+            faultAt: "crash-before-output-rename",
+          }),
+        /crash-before-output-rename/i,
+      );
+      const pendingPath = join(state, "publish-pending.json");
+      const pendingBytes = readFileSync(pendingPath, "utf8");
+      const pending = JSON.parse(pendingBytes);
+      const temporary = join(root, pending.transactionId);
+      assert.equal(existsSync(output), false);
+      assert.equal(lstatSync(temporary).isDirectory(), true);
+      return { state, output, pendingPath, pendingBytes, pending, temporary };
+    };
+    const unchanged = (fixture, before) => {
+      assert.deepEqual(snapshotState(fixture.state), before);
+      assert.equal(readFileSync(fixture.pendingPath, "utf8"), fixture.pendingBytes);
+    };
+
+    const exact = crash("exact");
+    const trace = [];
+    buildStaticPublish({
+      stateRoot: exact.state,
+      candidateRoot: b,
+      outputRoot: exact.output,
+      onDurabilityOperation: ({ operation, path }) => trace.push(`${operation}:${path}`),
+    });
+    const temporarySync = trace.findIndex(
+      (entry) => entry.startsWith("fsync-file:") && entry.includes(exact.pending.transactionId),
+    );
+    const outputRename = trace.findIndex((entry) => entry.startsWith("rename-output:"));
+    assert.ok(temporarySync >= 0 && temporarySync < outputRename);
+    assert.equal(existsSync(exact.temporary), false);
+    assert.equal(existsSync(exact.pendingPath), false);
+    assert.equal(readFileSync(join(exact.output, "index.html"), "utf8"), "B shell");
+    assert.match(currentShell(exact.state), /B shell/);
+
+    const missing = crash("missing");
+    const missingBefore = snapshotState(missing.state);
+    rmSync(missing.temporary, { recursive: true, force: true });
+    assert.throws(
+      () =>
+        buildStaticPublish({
+          stateRoot: missing.state,
+          candidateRoot: b,
+          outputRoot: missing.output,
+        }),
+      /ambiguous temporary state/i,
+    );
+    unchanged(missing, missingBefore);
+
+    const mutated = crash("mutated");
+    const mutatedBefore = snapshotState(mutated.state);
+    writeFileSync(join(mutated.temporary, "extra.js"), "foreign");
+    assert.throws(
+      () =>
+        buildStaticPublish({
+          stateRoot: mutated.state,
+          candidateRoot: b,
+          outputRoot: mutated.output,
+        }),
+      /does not match pending journal/i,
+    );
+    unchanged(mutated, mutatedBefore);
+
+    const linked = crash("linked");
+    const linkedBefore = snapshotState(linked.state);
+    const external = join(root, "external-transaction");
+    mkdirSync(external);
+    writeFileSync(join(external, "sentinel"), "untouched");
+    rmSync(linked.temporary, { recursive: true, force: true });
+    symlinkSync(external, linked.temporary);
+    assert.throws(
+      () =>
+        buildStaticPublish({
+          stateRoot: linked.state,
+          candidateRoot: b,
+          outputRoot: linked.output,
+        }),
+      /no exact temporary directory/i,
+    );
+    unchanged(linked, linkedBefore);
+    assert.equal(readFileSync(join(external, "sentinel"), "utf8"), "untouched");
+
+    const escaped = crash("escaped");
+    const escapedBefore = snapshotState(escaped.state);
+    const escapedJournal = { ...escaped.pending, transactionId: "../foreign" };
+    writeFileSync(escaped.pendingPath, `${JSON.stringify(escapedJournal)}\n`);
+    escaped.pendingBytes = readFileSync(escaped.pendingPath, "utf8");
+    assert.throws(
+      () =>
+        buildStaticPublish({
+          stateRoot: escaped.state,
+          candidateRoot: b,
+          outputRoot: escaped.output,
+        }),
+      /no matching pre-output transaction/i,
+    );
+    unchanged(escaped, escapedBefore);
+
+    const occupied = crash("occupied");
+    const occupiedBefore = snapshotState(occupied.state);
+    mkdirSync(occupied.output);
+    writeFileSync(join(occupied.output, "sentinel"), "user");
+    assert.throws(
+      () =>
+        buildStaticPublish({
+          stateRoot: occupied.state,
+          candidateRoot: b,
+          outputRoot: occupied.output,
+        }),
+      /exact pending transaction/i,
+    );
+    unchanged(occupied, occupiedBefore);
+    assert.equal(readFileSync(join(occupied.output, "sentinel"), "utf8"), "user");
+
+    const candidateDrift = crash("candidate-drift");
+    const candidateBefore = snapshotState(candidateDrift.state);
+    assert.throws(
+      () =>
+        buildStaticPublish({
+          stateRoot: candidateDrift.state,
+          candidateRoot: c,
+          outputRoot: candidateDrift.output,
+        }),
+      /no matching pre-output transaction/i,
+    );
+    unchanged(candidateDrift, candidateBefore);
+
+    const stateDrift = crash("state-drift");
+    stageStaticRelease({ stateRoot: stateDrift.state, candidateRoot: c });
+    const afterC = snapshotState(stateDrift.state);
+    assert.throws(
+      () =>
+        buildStaticPublish({
+          stateRoot: stateDrift.state,
+          candidateRoot: b,
+          outputRoot: stateDrift.output,
+        }),
+      /no matching pre-output transaction/i,
+    );
+    unchanged(stateDrift, afterC);
+    assert.match(currentShell(stateDrift.state), /C shell/);
   });
 });
 
