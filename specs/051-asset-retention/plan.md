@@ -100,6 +100,13 @@ or PR #215 directly from this worktree.
      an existing symlink/directory target. Explicitly check every copy, marker,
      link, and rename result so POSIX `set -e`/conditional behavior cannot turn
      a failed marker write into a usable handoff.
+   - Before pointer publication, close/fsync every captured file and marker and
+     fsync every changed handoff directory bottom-up through the handoff root.
+     Fsync the root again after the atomic pointer rename; any unsupported or
+     failed barrier leaves the prior handoff authoritative.
+   - Make capture and image build distinct fail-fast steps. A nonzero capture
+     result must short-circuit the build/replacement command rather than being
+     hidden by a shell command list.
    - `make up` runs the stager successfully before replacing/starting nginx.
      Nginx serves shared retained `/assets/` and atomic current shell. `make down`
      preserves the volume. Never inspect/stop/remove another project.
@@ -211,8 +218,11 @@ or PR #215 directly from this worktree.
 - Publish destination admission is no-follow. `lstat` rather than `exists` is
   the authority, so a dangling symlink is protected user state.
 - Stale-lock recovery needs a durable, non-reusable owner identity and atomic
-  quarantine. Clock-only leases and blind unlink are unsafe because they can
-  create two publishers; unsupported identity checks fail closed.
+  compare-and-reclaim transfer. Its execution domain is the durable effective
+  Compose project identity, not a disposable container hostname. Clock-only
+  leases, blind unlink, and read-then-rename quarantine are unsafe because a
+  newer live generation can replace the inspected stale record; unsupported
+  identity/CAS checks fail closed.
 - Recovered byte-identical promoted assets still need their file and full
   ancestor durability barriers rerun. Existence is integrity evidence, not
   evidence that directory entries survived a crash.
@@ -247,9 +257,13 @@ or PR #215 directly from this worktree.
 | Pending-journal freshness | fault-injected A/B/C integration | B output journal resumes only against the identical retained ledger/assets; a later C asset blocks stale B activation unchanged |
 | Pending own-promotion recovery | fault-injected A/B integration | exact journal-known A+B state and prior current resume after B pre-current failure; foreign asset/current/request drift stays unchanged |
 | No-follow publish destination | focused static-publish tests | dangling/live symlink, file, and directory are rejected before stage; external sentinel is untouched |
-| Crash-stale lock recovery | owner-identity tests | proven-dead/reused-PID-start-mismatch owner is atomically quarantined/reclaimed; live matching, malformed, inaccessible, or unsupported owner fails closed |
+| Crash-stale lock recovery | owner-identity tests | proven-dead/reused-PID-start-mismatch owner is reclaimed only by exact-generation atomic transfer; live matching, malformed, inaccessible, or unsupported owner fails closed |
+| Lock identity across recreation | isolated Compose + owner tests | same project keeps its durable execution domain across stager hostnames; acquisition/start identities remain unique; sibling project is foreign |
+| Concurrent stale reclaim | adversarial deterministic interleaving | exact-generation CAS admits one reclaimer; stale observer cannot move a replacement lock; maximum critical-section concurrency is one |
 | Recovery durability barrier | nested fault/retry trace | existing journal-known promoted file is fsynced and `assets/x` → `assets` → `state` is repeated before ledger/release/current |
 | Handoff pointer safety | focused capture failure/symlink tests | external `current` symlink target is never traversed; marker/copy/link/rename failures publish no incomplete handoff |
+| Handoff durability | ordered capture trace + injected failures | every file/marker and directory through handoff root is fsynced before pointer publication; any close/sync failure leaves old authority |
+| Build short-circuit | Make wrapper integration | capture nonzero prevents any image build/replacement invocation and propagates failure |
 | HTTP policy | curl/tests | `/assets/` immutable and exact; `sw.js`/HTML current; no HTML fallback for missing hashed asset |
 | Quality | repo commands | focused tests, full preflight, build/e2e, Docker smoke, and all required GitHub checks green |
 | Process | diff/feature-memory/review | one PR; no sibling memory/state mutation; evidence/docs/current cycle set complete |
@@ -302,13 +316,23 @@ or PR #215 directly from this worktree.
   classification so publishing never replaces a user-owned dangling link.
 - A crash can leave a stale lock forever, while a clock lease can steal a live
   publisher: reclaim only a proven-dead owner with a non-reusable start identity
-  and atomically quarantine the old record; ambiguity stays locked.
+  and exact-generation atomic compare-and-reclaim; ambiguity stays locked and a
+  losing stale observer cannot quarantine a replacement owner.
+- A recreated stager changes hostname even within the same project: derive the
+  execution domain from durable project state and the effective Compose key;
+  keep hostname non-authoritative.
+- Capture can fail before `docker compose build` while a shell `;` returns the
+  later build status: short-circuit and test the real Make target with a build
+  sentinel.
+- A handoff pointer can become durable while nested captured entries are not:
+  apply the complete file/directory fsync barrier before pointer publication.
 - A failed ancestor fsync followed by a matching destination on retry can skip
   durability: rerun file and ancestor sync for every journal-known promotion
   before any pointer can move.
 - Crash after release rename but before metadata: classify and resume exact
   release-only state; reject mismatches and never retry a blind rename over it.
-- Concurrent update: exclusive fail-closed lock; no implicit stale-lock removal.
+- Concurrent update: exclusive fail-closed lock; stale recovery only through
+  exact-generation atomic compare-and-reclaim.
 - Hash-looking collision: verify bytes, never trust the name.
 - First upgrade after legacy container was removed and old image overwritten:
   impossible to recover; capture is ordered before build replacement and aborts
@@ -324,7 +348,6 @@ or PR #215 directly from this worktree.
 ## Handoff Status
 
 Architect follow-up disposition is complete, but the feature is not ready for
-final validation. R051-020 through R051-023 require implementation and
-focused/full verification; all unresolved review threads require current-head
-evidence and resolution followed by fresh exact-head review before final
-validation may be invoked.
+final validation. R051-024 through R051-027 require one batched implementation,
+focused/full verification, current-head resolution of all review threads, and
+fresh exact-head review before final validation may be invoked.

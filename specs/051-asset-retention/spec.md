@@ -99,14 +99,20 @@ to remain on one filesystem.
 Transaction order:
 
 1. Acquire an exclusive `stage.lock`. The durable lock record binds a schema,
-   host-local PID, and a non-reusable process-start identity, and the holder
-   retains ownership until its transaction ends. A live, malformed,
-   permission-denied, cross-host, or otherwise ambiguous record fails closed.
-   Only an unambiguously dead owner (including a PID-reuse identity mismatch)
-   may be atomically quarantined and replaced; the stale record is never
-   unlinked in place. The production Docker/Linux implementation must use an
-   executable process-start identity; platforms unable to establish that
-   identity fail closed rather than reclaiming a lock.
+   the effective Compose project identity, a durable project-scoped execution
+   domain stored outside the disposable stager container, a unique acquisition
+   token, and an executable non-reusable owner identity. Container hostname is
+   diagnostic only and may never decide ownership or staleness because Compose
+   recreates stager containers. The holder retains ownership until its
+   transaction ends. A live, malformed, permission-denied, foreign-domain, or
+   otherwise ambiguous record fails closed. Only a record whose exact owner is
+   unambiguously dead may be replaced. Replacement must use an operating-system
+   lock/CAS primitive that atomically proves the canonical lock still denotes
+   the inspected token while transferring ownership; a read-then-rename or
+   read-then-unlink sequence is forbidden. A losing reclaimer retries from a
+   fresh canonical read and may not enter the critical section. Production
+   Docker/Linux must support this primitive and executable identity check;
+   unsupported platforms fail closed.
 2. Validate the candidate and its canonical inventory without touching
    `current`.
 3. If this is the first migration from a pre-feature Docker release, validate
@@ -387,11 +393,28 @@ Static publish uses a prepare/output/commit transaction under the release lock:
   durable owner identity proves the recorded owner is dead. A live matching
   identity, malformed, inaccessible, or unsupported check fails closed; a
   reused PID with a different recorded process-start identity proves the old
-  owner is dead and is safely reclaimable.
+  owner is dead and is reclaimable only through the exact-generation atomic
+  transfer required by FR-033.
 - FR-029: On recovery after an immutable rename but before its durability
   barrier, every journal-known promoted destination must be re-fsynced and its
   full ancestor chain re-synced before any ledger, release, or `current` step.
   Equal destination bytes alone do not prove durability.
+- FR-030: The build/update wrapper propagates legacy-capture failure before any
+  image build or replacement command can run. Shell command grouping may not
+  mask the capture exit status.
+- FR-031: Lock owner classification uses the stable project-scoped execution
+  domain supplied through Compose and durable state, never the recreated
+  container hostname. Recreating a stager preserves the domain while retaining
+  distinct acquisition and process-start identities.
+- FR-032: A captured handoff is not publishable until every copied file and
+  marker is closed and fsynced and every created/renamed directory is fsynced
+  bottom-up through the handoff transaction root. Only after that barrier may
+  `current` be atomically replaced and its parent fsynced.
+- FR-033: Stale-lock recovery is a compare-and-reclaim operation on the exact
+  inspected lock generation. If another owner releases/reacquires or another
+  reclaimer wins between inspection and transfer, the loser cannot quarantine
+  the newer record or enter staging. At most one contender may cross the lock
+  boundary.
 
 ## Acceptance Criteria And Negative Scenarios
 
@@ -513,15 +536,31 @@ Static publish uses a prepare/output/commit transaction under the release lock:
     the link itself and its external sentinel/target, state, and current pointer
     remain unchanged.
 29. Simulate a dead stage owner and prove a later invocation atomically
-    quarantines/reclaims its lock and safely resumes, including a reused PID
-    with a different start identity. A live matching owner, malformed record,
-    inaccessible, or unsupported process identity fails closed without
+    compares-and-reclaims its exact lock generation and safely resumes, including a
+    reused PID with a different start identity. A live matching owner, malformed
+    record, inaccessible, or unsupported process identity fails closed without
     releasing or stealing a live lock. Assert no two staging calls can pass the
     lock boundary.
 30. Inject a fault after renaming nested `assets/x/y.js` and before each
     destination ancestor fsync. Retry must re-fsync the existing matching file
     and record `assets/x`, `assets`, and `state` in order before ledger/release/
     `current`; it may not skip the barrier merely because the destination exists.
+31. Force legacy capture to exit nonzero through the real `make build` path and
+    prove the image build/replacement command is never invoked and its sentinel
+    remains absent.
+32. Recreate the stager container for the same explicit and default Compose
+    project. Prove the project-scoped lock domain remains stable while hostname,
+    acquisition token, and process-start identity change; a sibling project is
+    foreign and cannot classify or reclaim its lock.
+33. Inject close/fsync failure for a nested captured handoff file, its leaf
+    directory, each ancestor, marker directory, and handoff root. No failed
+    attempt may publish `current`; exact retry must repeat the complete ordered
+    barrier before pointer replacement.
+34. Pause two reclaimers after both inspect the same stale generation, let one
+    atomically acquire, then let the loser continue while a live replacement is
+    canonical. The loser must not move/quarantine that live lock or enter the
+    critical section. Repeat with release/reacquire between inspection and CAS
+    and assert a maximum critical-section concurrency of one.
 
 ## Review And Completion Requirements
 
@@ -633,8 +672,8 @@ Static publish uses a prepare/output/commit transaction under the release lock:
   untrusted destination.
 - **R051-022 (P2, r4072969633) — crash-stale stage lock blocks recovery:
   accepted.** Implement a durable owner identity and safe stale-lock protocol:
-  prove the owner dead using a non-reusable process-start identity, atomically
-  quarantine rather than unlink the stale record, then acquire a new lock. A
+  prove the owner dead using a non-reusable process-start identity, then acquire
+  through the exact-generation atomic transfer refined by R051-027. A
   live matching identity, malformed, inaccessible, cross-host, or unsupported
   record is ambiguous and fails closed; a reused PID with a different start
   identity is proof the recorded owner is dead. Include deterministic
@@ -646,3 +685,25 @@ Static publish uses a prepare/output/commit transaction under the release lock:
   the ledger, release, or `current`, fsync each exact existing promoted file and
   rerun its full destination ancestor barrier. A byte-equal `exists` branch is
   not a durability shortcut; foreign/unjournaled entries remain fail-closed.
+- **R051-024 (P1, r4073145646) — build continues after failed capture:
+  accepted.** Make capture and build separate fail-fast steps (or an explicit
+  short-circuit chain) so capture's status is the build target's status until it
+  succeeds. Add a real wrapper regression with a failing capture and a build
+  sentinel proving no image mutation command starts.
+- **R051-025 (P2, r4076148834) — container hostname is not a stable lock
+  identity: accepted.** Replace hostname authority with the effective Compose
+  project plus durable project-scoped execution domain. Keep every acquisition
+  token and owner start identity unique. Cover same-project stager recreation,
+  default/explicit project keys, and foreign sibling rejection.
+- **R051-026 (P2, r4076148843) — captured handoff lacks a complete durability
+  barrier: accepted.** Fsync every captured file and marker and every changed
+  directory bottom-up through the handoff root before publishing `current`, then
+  fsync the pointer parent. Inject each file/directory sync and close failure;
+  none may create a new authoritative handoff.
+- **R051-027 (P1) — stale-lock reclaim has a read/rename TOCTOU: accepted.**
+  Replace inspection followed by unconditional quarantine with an atomic
+  compare-and-reclaim protocol bound to the exact observed generation. A
+  losing reclaimer or stale observer must restart without touching a newer live
+  generation. Add adversarial interleavings for two reclaimers and for
+  release/reacquire between observation and transfer, proving at most one
+  critical-section entrant.

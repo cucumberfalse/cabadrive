@@ -14,9 +14,9 @@
 - Cycle PR set: PR #217, `codex/051-asset-retention`, purpose `append-only
   static asset retention and shell-last Docker/static deployment`; initial
   product head `c55dee242989b222e0092953721915ea8784275b`; reviewed current head
-  `bb1b51e8b4668c7da861059c9750b2e5f1a4c6d6` implements R051-018 and
-  R051-019, but has accepted follow-up work R051-020 through R051-023 and is
-  not a final-validation candidate.
+  `b8cac66c10826bc5f36ee934c6c67641987bd254` contains the integrated prior
+  fixes but has accepted follow-up work R051-024 through R051-027 and is not a
+  final-validation candidate.
   It is included only after implementation, verification, resolution of all
   open threads, and fresh exact-head review.
 - Dependency: feature 051 must merge first. PR #215 is then synchronized to the
@@ -246,6 +246,28 @@
   `assets/x`, `assets`, and `state` syncs before ledger/release/current. Foreign
   or non-journaled existing bytes remain collisions/fail-closed, not candidates
   for recovery.
+- [ ] T022x Implement R051-024: make the real `make build` path stop immediately
+  when legacy capture fails. Remove status-masking command sequencing and add a
+  wrapper integration test that forces capture nonzero, asserts the same failure
+  propagates, and proves a build/replacement sentinel is never created.
+- [ ] T022y Implement R051-025: replace container-hostname lock authority with
+  the effective Compose project key plus a durable project-scoped execution
+  domain stored in retained state. Preserve unique per-acquisition token and
+  non-reusable owner-start identity. Test default/explicit project stager
+  recreation, changed hostname, stable domain, and sibling-project rejection.
+- [ ] T022z Implement R051-026: make capture handoff publication crash-durable.
+  Close/fsync every copied file and marker, fsync every changed directory
+  bottom-up through the handoff transaction root, then atomically replace
+  `current` and fsync its parent. Add ordered trace and injected close/file/
+  leaf/ancestor/root sync failures; each must retain the prior authority and an
+  exact retry must repeat the full barrier.
+- [ ] T022aa Implement R051-027: replace stale-record read then quarantine with
+  exact-generation atomic compare-and-reclaim. A contender may enter only after
+  it atomically proves the canonical generation is the inspected dead one and
+  transfers ownership; a loser restarts from a fresh read without touching the
+  winner. Add deterministic adversarial tests for two paused reclaimers and for
+  release/reacquire between inspection and transfer, asserting no live
+  replacement is quarantined and maximum critical-section concurrency is one.
 - [ ] T023 Orchestrator route every finding/feedback to the proper role; all
   blocking threads are fixed/resolved or explicitly disposed, checks rerun, and
   process memory refreshed.
@@ -553,15 +575,24 @@
 - Effective content head: pending final process-memory and validation guards.
 - Cleanup: not assigned; any later environment cleanup requires separate
   Cleanup Agent scope/evidence.
+- Exact-head review ledger at
+  `b8cac66c10826bc5f36ee934c6c67641987bd254`: ten GitHub review threads are
+  unresolved. Six older threads are fixed by the current implementation and are
+  resolution-eligible after current-head evidence is attached. Four current
+  defects remain blocking: R051-024 (`r4073145646`, P1), R051-025
+  (`r4076148834`, P2), R051-026 (`r4076148843`, P2), and R051-027 (P1 stale-lock
+  compare/reclaim TOCTOU from the final integrated review). They are accepted as
+  the single bounded T022x–T022aa implementation batch; no owner decision or
+  product-scope expansion is required.
 
 ## Final Architect Validation
 
 - Architect validation pass: not ready; final validation was not invoked.
 - Final Architect validation completed at: pending.
-- Architect return reason: R051-020 through R051-023 require follow-up
-  implementation, focused/full verification, current-head checks, resolution of
-  all open review threads, and fresh exact-head review.
-- Architect return count: 7 / 10.
+- Architect return reason: R051-024 through R051-027 require one batched
+  implementation, focused/full verification, current-head resolution of all ten
+  open review threads, and fresh exact-head review.
+- Architect return count: 8 / 10.
 - Architect validated effective content head: pending.
 
 ## Final Analyst Validation
