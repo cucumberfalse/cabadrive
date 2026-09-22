@@ -187,6 +187,12 @@ Resumption is part of the transaction contract, not an error shortcut:
   already-current candidate with newly available legacy assets must append those
   exact assets before returning `changed: false`; the shortcut may not omit a
   later authoritative handoff.
+- Supplying a legacy handoff is an assertion that legacy authority exists. The
+  stager must validate the handoff root, required `assets/` directory, marker,
+  source fields, and exact inventory before treating it as input. A missing,
+  incomplete, unreadable, wrong-type, or inventory-mismatched supplied handoff
+  fails closed; it is never silently converted to "no legacy input". Only an
+  invocation that does not supply a handoff may take the no-legacy path.
 - Activation and committed-state verification compare the exact complete
   `state/assets` walk against `retained-assets.json`, not only the new/current
   candidate manifest. Corruption, deletion, or an untracked extra in any older A
@@ -245,6 +251,11 @@ asset union is verified.
   After state rejection, allowed recovery sources are the preserved handoff or
   independently baked pre-feature `/usr/share/nginx/html/assets`; absence of
   either fails closed.
+- Once capture or orchestration supplies a handoff path to staging, that path is
+  mandatory authority for the invocation. A present pointer whose target lacks
+  `assets/`, required metadata, or any inventoried byte is corruption and aborts
+  staging before retained state changes; optional legacy absence is represented
+  only by omitting the handoff argument on a verified clean initial install.
 - `make up` runs the staging service against the project-scoped volume and the
   exact captured handoff, then starts/replaces nginx only after staging exits
   zero. Initial install without any prior project container/image is allowed and
@@ -288,12 +299,24 @@ Static publish uses a prepare/output/commit transaction under the release lock:
    destination, rehash its exact A+B assets and B-only mutable tree, fsync its
    files/directories, then persist a state-side pending journal binding
    destination, transaction ID, release ID, candidate/cumulative-ledger digests,
-   and exact output inventory. Atomically rename the output to the absent
+   and exact output inventory. The transaction ID is a canonical basename under
+   the destination's exact parent and binds the still-temporary tree as well as
+   the final destination state. Atomically rename the output to the absent
    destination and fsync the output parent.
 3. Only after the final output is complete and durable may the state `current`
    pointer commit B. A copy/hash/fsync/output-rename failure leaves A current and
    no final output; prepared append-only state may remain unreferenced.
-4. If fault injection stops after output rename but before `current`, retry may
+4. A durable journal with no final output is not automatically stale. Retry may
+   resume the pre-rename window only when the journal names one canonical,
+   no-follow regular-directory temporary sibling, that tree exactly matches the
+   journal inventory and candidate, the final destination remains absent, and
+   current/ledger/store still equal the recorded pre-stage state. It repeats the
+   temporary-tree durability barrier, performs the one output rename, syncs the
+   parent, and continues normally. Missing/extra temporary state, a symlink or
+   non-directory transaction, both temporary and output present, path escape,
+   byte drift, candidate drift, or any retained/current drift fails unchanged;
+   retry never deletes the journal or guesses whether a rename occurred.
+5. If fault injection stops after output rename but before `current`, retry may
    resume only when the durable pending journal identifies the same transaction
    and the output exactly matches its expected inventory. The journal binds the
    prior current release plus both the pre-stage and exact expected A+B retained
@@ -307,7 +330,7 @@ Static publish uses a prepare/output/commit transaction under the release lock:
    with no-follow `lstat`: a regular file, directory, live symlink, or dangling
    symlink is pre-existing state and is rejected unless it is the journal-bound
    completed regular-directory output from this exact transaction.
-5. A crash after `current` commits but before journal removal is also idempotent:
+6. A crash after `current` commits but before journal removal is also idempotent:
    retry requires matching B current, journal and exact output, then only clears
    the journal. Any mismatch fails closed without changing output or state.
 
@@ -561,6 +584,19 @@ Static publish uses a prepare/output/commit transaction under the release lock:
     canonical. The loser must not move/quarantine that live lock or enter the
     critical section. Repeat with release/reacquire between inspection and CAS
     and assert a maximum critical-section concurrency of one.
+35. Supply a legacy handoff path whose `assets/` directory is missing, wrong
+    type, incomplete relative to its marker, or unreadable. Each case fails
+    before asset promotion, ledger/release publication, or `current` change and
+    preserves the prior state byte-for-byte. An invocation with no handoff
+    argument remains the explicit clean-install control.
+36. Crash after durable `publish-pending.json` publication and before output
+    rename, leaving the exact temporary sibling in place. An exact retry
+    validates and re-syncs that tree, renames it once, activates B, and clears
+    the journal. Missing/mutated/extra/symlinked transaction state, path escape,
+    an occupied destination, candidate/current/ledger drift, or simultaneous
+    temporary and final output fails closed without deleting or overwriting any
+    evidence. The existing post-rename and post-current retry controls continue
+    to pass.
 
 ## Review And Completion Requirements
 
@@ -707,3 +743,19 @@ Static publish uses a prepare/output/commit transaction under the release lock:
   generation. Add adversarial interleavings for two reclaimers and for
   release/reacquire between observation and transfer, proving at most one
   critical-section entrant.
+- **R051-028 (P1, r4076551228) — incomplete supplied legacy handoff is treated
+  as absent: accepted.** Validate every supplied handoff unconditionally,
+  including the required `assets/` directory and exact marker inventory, before
+  any retained-state mutation. Missing, unreadable, wrong-type, incomplete, or
+  mismatched handoff state fails closed; only an omitted handoff argument is the
+  explicit no-legacy case. Add no-mutation negatives and a clean-install
+  control.
+- **R051-029 (P2, r4076551237) — pre-rename durable publish journal poisons
+  retry: accepted.** Make the journal describe both allowed output relations:
+  exact temporary sibling before rename or exact final directory after rename.
+  Recover the former only with canonical contained transaction identity, absent
+  destination, exact bytes/candidate and unchanged pre-stage state; re-run the
+  durability barrier and rename once. Ambiguous, missing, hostile, or drifted
+  state stays untouched and fails closed. Exercise crash-style pre-rename
+  recovery plus every mismatch and preserve existing post-rename/post-current
+  coverage.

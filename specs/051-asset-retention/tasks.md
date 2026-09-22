@@ -14,8 +14,8 @@
 - Cycle PR set: PR #217, `codex/051-asset-retention`, purpose `append-only
   static asset retention and shell-last Docker/static deployment`; initial
   product head `c55dee242989b222e0092953721915ea8784275b`; reviewed current head
-  `b8cac66c10826bc5f36ee934c6c67641987bd254` contains the integrated prior
-  fixes but has accepted follow-up work R051-024 through R051-027 and is not a
+  `4f620d8a9c9909b77b841de1f3f24a018f7deade` contains all earlier accepted
+  fixes but has accepted follow-up work R051-028 and R051-029 and is not a
   final-validation candidate.
   It is included only after implementation, verification, resolution of all
   open threads, and fresh exact-head review.
@@ -268,6 +268,23 @@
   winner. Add deterministic adversarial tests for two paused reclaimers and for
   release/reacquire between inspection and transfer, asserting no live
   replacement is quarantined and maximum critical-section concurrency is one.
+- [ ] T022ab Implement R051-028: validate every supplied legacy handoff before
+  state mutation, whether or not `assets/` exists. Require a regular contained
+  handoff root, required regular-directory `assets/`, complete marker/source
+  fields and an exact inventory; missing, wrong-type, unreadable, incomplete or
+  mismatched state fails closed. Add byte/pointer snapshots proving no retained
+  assets, journal, release, metadata or `current` changes, plus an omitted-
+  handoff clean-install control.
+- [ ] T022ac Implement R051-029: make `publish-pending.json` recover the exact
+  pre-output-rename state as well as the existing post-rename state. Constrain
+  the transaction ID to one basename under the exact output parent; with output
+  absent, require one no-follow regular-directory temporary tree whose complete
+  inventory/candidate and journal-bound prior current/ledger/store all match,
+  re-sync its full durability barrier, rename once, then use the existing stage
+  and clear path. Add crash-style recovery and missing/extra/mutated/symlinked/
+  escaped transaction, occupied/both-present destination, changed request and
+  A/B/C state-drift negatives. Preserve the post-output and post-current retry
+  regressions.
 - [ ] T023 Orchestrator route every finding/feedback to the proper role; all
   blocking threads are fixed/resolved or explicitly disposed, checks rerun, and
   process memory refreshed.
@@ -575,15 +592,14 @@
 - Effective content head: pending final process-memory and validation guards.
 - Cleanup: not assigned; any later environment cleanup requires separate
   Cleanup Agent scope/evidence.
-- Exact-head review ledger at
-  `b8cac66c10826bc5f36ee934c6c67641987bd254`: ten GitHub review threads are
-  unresolved. Six older threads are fixed by the current implementation and are
-  resolution-eligible after current-head evidence is attached. Four current
-  defects remain blocking: R051-024 (`r4073145646`, P1), R051-025
-  (`r4076148834`, P2), R051-026 (`r4076148843`, P2), and R051-027 (P1 stale-lock
-  compare/reclaim TOCTOU from the final integrated review). They are accepted as
-  the single bounded T022x–T022aa implementation batch; no owner decision or
-  product-scope expansion is required.
+- Historical exact-head review at
+  `b8cac66c10826bc5f36ee934c6c67641987bd254` reported ten threads. All ten
+  prior threads are fixed and resolved on the current PR. Exact-head review at
+  `4f620d8a9c9909b77b841de1f3f24a018f7deade` reports exactly two current
+  unresolved findings: R051-028 (`r4076551228`, P1) and R051-029
+  (`r4076551237`, P2). They are accepted together as the final bounded
+  T022ab–T022ac implementation batch; no owner decision, product-scope expansion,
+  or workflow relaxation is required.
 - R051-024 through R051-027 implementation evidence (2026-09-22): `make build`
   now runs capture and image build as separate fail-fast recipes, with a real
   wrapper test proving a failed capture never reaches the build sentinel. The
@@ -613,15 +629,25 @@
   and clean initial install. Deterministic concurrent exact-generation coverage
   is included in the 593-test suite because its forced paused interleaving is
   stronger and repeatable compared with scheduler-dependent Docker overlap.
+- Architect disposition at exact head
+  `4f620d8a9c9909b77b841de1f3f24a018f7deade`: the ten earlier fixed review
+  threads are resolved; two fresh threads remain open. R051-028 requires
+  fail-closed validation of any supplied legacy handoff even when its assets
+  directory is missing/incomplete. R051-029 requires exact crash recovery from
+  the durable-journal/pre-output-rename window, with the temporary and final
+  output relations mutually exclusive and fully bound. T022ab–T022ac capture
+  all identified implications in one last implementation return. Fresh focused
+  and full evidence, thread resolution, required checks and exact-head review
+  remain mandatory before final validation.
 
 ## Final Architect Validation
 
 - Architect validation pass: not ready; final validation was not invoked.
 - Final Architect validation completed at: pending.
-- Architect return reason: R051-024 through R051-027 require one batched
-  implementation, focused/full verification, current-head resolution of all ten
-  open review threads, and fresh exact-head review.
-- Architect return count: 8 / 10.
+- Architect return reason: R051-028 and R051-029 require the final bounded
+  T022ab–T022ac implementation batch, focused/full verification, resolution of
+  the two current review threads, required checks, and fresh exact-head review.
+- Architect return count: 9 / 10.
 - Architect validated effective content head: pending.
 
 ## Final Analyst Validation

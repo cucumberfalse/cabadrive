@@ -95,6 +95,10 @@ or PR #215 directly from this worktree.
      independent baked legacy root into a temporary replacement, or fail closed.
      Bind handoff authority to canonical asset inventory, source ID, and source
      kind, all revalidated before reuse.
+   - Treat a supplied legacy handoff as mandatory input, not a probe. Validate
+     its root, required `assets/` directory, marker/source fields and exact walk
+     even when `assets/` is missing or malformed; only omission of the argument
+     denotes a clean-install/no-legacy invocation.
    - Publish a newly captured handoff only through a repository-owned no-follow
      atomic rename of a temporary `current` link. Do not use shell `mv` against
      an existing symlink/directory target. Explicitly check every copy, marker,
@@ -126,6 +130,12 @@ or PR #215 directly from this worktree.
      fresh exact retained-assets walk; arbitrary/mismatched/stale existing output
      never resumes. A C promotion after B output invalidates B's retry rather
      than selecting a stale A+B output.
+   - Make the pre-output durable journal recoverable as a two-state protocol.
+     Before rename it must bind one contained canonical temporary sibling and
+     exact pre-stage state; after rename it binds the exact final output. On a
+     pre-rename retry, require absent destination, exact temporary inventory and
+     unchanged candidate/current/ledger/store, repeat durability synchronization,
+     then rename once. Any ambiguous or hostile relation fails unchanged.
    - Apply the same recursive ancestor sync barrier to newly created temporary
      and final publish directories; publishing a nested retained hash may not
      treat a synced leaf directory as durable while its parents are unsynced.
@@ -242,6 +252,7 @@ or PR #215 directly from this worktree.
 | Project identity | contract + isolated Docker tests | unset and explicit keys agree across Compose, capture, volume, image, handoff, and stager; sibling untouched |
 | Legacy project discovery | resolver unit + Docker migration | non-default pre-F051 project is uniquely adopted for A capture and B; ambiguity/mismatched labels/service-only sibling fail untouched |
 | Rejected-state source | focused capture + Docker negative | rejected volume is never copied through attached `/state`; preserved handoff/baked root works, no independent source fails unchanged |
+| Supplied handoff authority | focused staging negatives | every supplied handoff is validated even when `assets/` is missing/wrong-type/incomplete; failure precedes mutation and omission alone means no legacy input |
 | Partial release resume | fault-injected tests | crash after release rename and before metadata resumes without `EEXIST`; exact bytes become one committed tuple |
 | Legacy browser | real Chromium A/B | A cache miss proven; safe B stage; old path 200 JS with exact A bytes from origin |
 | Legacy worker fidelity | real Chromium + generated A worker | A worker controls page, lazy hash absent from its real precache, controlled safe fetch hits origin, controlled destructive fetch is 404 |
@@ -254,6 +265,7 @@ or PR #215 directly from this worktree.
 | Static publish | focused integration | output contains A+B assets/B shell; collision and incomplete stage fail |
 | Existing publish destination | state snapshot integration | pre-existing output fails before stage and leaves pointer/releases/metadata/assets/output byte-identical |
 | Static output transaction | fault-injected integration | copy/hash/fsync/rename failure leaves A and no final output; complete-output/pre-current fault resumes only with matching journal and exact output |
+| Pre-rename output recovery | crash-style fault integration | exact journal + contained temporary tree + unchanged pre-stage state re-syncs/renames once; missing, hostile, ambiguous, byte/state-drifted relations fail unchanged |
 | Pending-journal freshness | fault-injected A/B/C integration | B output journal resumes only against the identical retained ledger/assets; a later C asset blocks stale B activation unchanged |
 | Pending own-promotion recovery | fault-injected A/B integration | exact journal-known A+B state and prior current resume after B pre-current failure; foreign asset/current/request drift stays unchanged |
 | No-follow publish destination | focused static-publish tests | dangling/live symlink, file, and directory are rejected before stage; external sentinel is untouched |
@@ -305,6 +317,13 @@ or PR #215 directly from this worktree.
 - A later stage changes retained assets while an older output journal remains:
   require fresh ledger plus exact-store equality at retry and fail closed rather
   than publishing an output that lacks the later asset.
+- A supplied handoff loses `assets/` and is mistaken for optional absence:
+  validate any supplied handoff unconditionally and reserve no-legacy behavior
+  for an omitted argument.
+- A crash persists the publish journal before output rename and leaves a valid
+  temporary tree that ordinary retry rejects forever: bind both pre/post-rename
+  relations, resume only the exact contained temporary transaction, and fail
+  closed on ambiguity or state drift.
 - A shell `mv` may treat a `current` symlink to a directory as a destination:
   use a no-follow Node rename and test an external sentinel remains untouched.
 - POSIX `set -e` is suppressed for functions used in conditional lists: make
@@ -348,6 +367,6 @@ or PR #215 directly from this worktree.
 ## Handoff Status
 
 Architect follow-up disposition is complete, but the feature is not ready for
-final validation. R051-024 through R051-027 require one batched implementation,
-focused/full verification, current-head resolution of all review threads, and
-fresh exact-head review before final validation may be invoked.
+final validation. R051-028 and R051-029 require one final bounded implementation
+batch, focused/full verification, resolution of the two current review threads,
+and fresh exact-head review before final validation may be invoked.
