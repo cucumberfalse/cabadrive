@@ -202,7 +202,7 @@
   prerequisite and fail/cleanup before pointer publication on copy, marker,
   link, or rename failure. Add executable marker-writer failure injection proving
   the capture exits nonzero with no new authoritative `current` handoff.
-- [ ] T022r Implement R051-018: before the first immutable asset rename,
+- [x] T022r Implement R051-018: before the first immutable asset rename,
   durably publish a canonical asset-promotion recovery journal that binds the
   release/candidate/legacy inputs, prior ledger/store digest, additions, and
   exact expected cumulative inventory. After a fault following any asset rename
@@ -213,7 +213,7 @@
   stale/request-mismatched journals, unexpected partial assets, ledger-write and
   journal-clear failures. Every mismatch must leave retained bytes and the prior
   pointer unchanged; no retry may infer, delete, or overwrite assets.
-- [ ] T022s Implement R051-019: make durability synchronization recursive and
+- [x] T022s Implement R051-019: make durability synchronization recursive and
   ordered for every newly created/renamed directory entry through the state or
   static-publish transaction root. Add operation-trace and fault coverage for a
   nested `assets/x/y.js` proving `assets/x`, `assets`, and `state` are synced in
@@ -464,6 +464,18 @@
   accepted; implementation must add the exact journaled recovery and ordered
   ancestor-sync contracts in T022r/T022s. No owner decision or scope expansion
   is required. Review threads remain unresolved pending implementation evidence.
+- R051-018/R051-019 implementation: before any immutable asset rename, the
+  stager writes and fsyncs `retained-assets-pending.json` binding the exact
+  release, authoritative legacy source, prior inventory, additions and expected
+  cumulative inventory. An exact prior-plus-subset retry alone may finish the
+  ledger and remove the journal; missing, corrupt, unexpected, or request-stale
+  state remains unchanged and fails closed. Every copied or renamed nested entry
+  now syncs directory ancestors innermost-first through its transaction/state
+  root before `current`. Focused Node suites passed 31/31
+  (`static-release-staging`, `capture-legacy-assets`, static Docker contract,
+  Docker runtime); `pnpm run test:docker-retention` passed with the isolated
+  real Docker A/B retained-asset lifecycle; `pnpm run preflight` passed. No
+  scope divergence or new implementation feedback.
 - Effective content head: pending final process-memory and validation guards.
 - Cleanup: not assigned; any later environment cleanup requires separate
   Cleanup Agent scope/evidence.

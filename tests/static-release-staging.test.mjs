@@ -5,6 +5,7 @@ import {
   mkdirSync,
   readFileSync,
   readdirSync,
+  realpathSync,
   readlinkSync,
   rmSync,
   symlinkSync,
@@ -489,6 +490,181 @@ test("cumulative retained ledger rejects corrupt, missing, and untracked histori
     assert.match(currentShell(state), /B shell/);
     writeFileSync(join(state, "assets", "unexpected.js"), "unexpected");
     assert.equal(verifyCommittedState(state).valid, false, "extra old bytes fail authority");
+  });
+});
+
+test("an exact durable asset-promotion journal alone resumes an unledgered subset", () => {
+  withFixture((root) => {
+    const initialState = join(root, "initial-state");
+    const initial = release(root, "initial", { "x/y.js": "initial nested" }, "initial shell");
+    assert.throws(
+      () =>
+        stageStaticRelease({
+          stateRoot: initialState,
+          candidateRoot: initial,
+          faultAt: "after-asset-rename",
+        }),
+      /fault injection/i,
+    );
+    assert.equal(existsSync(join(initialState, "retained-assets.json")), false);
+    assert.equal(existsSync(join(initialState, "retained-assets-pending.json")), true);
+    assert.doesNotThrow(() =>
+      stageStaticRelease({ stateRoot: initialState, candidateRoot: initial }),
+    );
+    assert.match(currentShell(initialState), /initial shell/);
+
+    const state = join(root, "state");
+    const a = release(root, "a", { "a.js": "A" }, "A shell");
+    const b = release(root, "b", { "x/y.js": "B nested" }, "B shell");
+    stageStaticRelease({ stateRoot: state, candidateRoot: a });
+    const aCurrent = readlinkSync(join(state, "current"));
+    assert.throws(
+      () =>
+        stageStaticRelease({ stateRoot: state, candidateRoot: b, faultAt: "after-asset-rename" }),
+      /fault injection/i,
+    );
+    assert.equal(readlinkSync(join(state, "current")), aCurrent);
+    assert.equal(existsSync(join(state, "retained-assets-pending.json")), true);
+    assert.doesNotThrow(() => stageStaticRelease({ stateRoot: state, candidateRoot: b }));
+    assert.match(currentShell(state), /B shell/);
+    assert.equal(existsSync(join(state, "retained-assets-pending.json")), false);
+
+    const afterLedger = join(root, "after-ledger-state");
+    stageStaticRelease({ stateRoot: afterLedger, candidateRoot: a });
+    const afterLedgerCurrent = readlinkSync(join(afterLedger, "current"));
+    assert.throws(
+      () =>
+        stageStaticRelease({ stateRoot: afterLedger, candidateRoot: b, faultAt: "after-assets" }),
+      /fault injection/i,
+    );
+    assert.equal(readlinkSync(join(afterLedger, "current")), afterLedgerCurrent);
+    assert.equal(existsSync(join(afterLedger, "retained-assets-pending.json")), true);
+    assert.doesNotThrow(() => stageStaticRelease({ stateRoot: afterLedger, candidateRoot: b }));
+    assert.match(currentShell(afterLedger), /B shell/);
+
+    const rejected = join(root, "rejected-state");
+    stageStaticRelease({ stateRoot: rejected, candidateRoot: a });
+    const rejectedCurrent = readlinkSync(join(rejected, "current"));
+    assert.throws(
+      () =>
+        stageStaticRelease({
+          stateRoot: rejected,
+          candidateRoot: b,
+          faultAt: "after-asset-rename",
+        }),
+      /fault injection/i,
+    );
+    rmSync(join(rejected, "retained-assets-pending.json"));
+    assert.throws(
+      () => stageStaticRelease({ stateRoot: rejected, candidateRoot: b }),
+      /cumulative/i,
+    );
+    assert.equal(readlinkSync(join(rejected, "current")), rejectedCurrent);
+
+    const unexpected = join(root, "unexpected-state");
+    stageStaticRelease({ stateRoot: unexpected, candidateRoot: a });
+    const unexpectedCurrent = readlinkSync(join(unexpected, "current"));
+    assert.throws(
+      () =>
+        stageStaticRelease({
+          stateRoot: unexpected,
+          candidateRoot: b,
+          faultAt: "after-asset-rename",
+        }),
+      /fault injection/i,
+    );
+    writeFileSync(join(unexpected, "assets", "unexpected.js"), "unexpected");
+    assert.throws(
+      () => stageStaticRelease({ stateRoot: unexpected, candidateRoot: b }),
+      /promotion journal/i,
+    );
+    assert.equal(readlinkSync(join(unexpected, "current")), unexpectedCurrent);
+
+    const mismatched = join(root, "mismatched-state");
+    const c = release(root, "c", { "c.js": "C" }, "C shell");
+    stageStaticRelease({ stateRoot: mismatched, candidateRoot: a });
+    const mismatchedCurrent = readlinkSync(join(mismatched, "current"));
+    assert.throws(
+      () =>
+        stageStaticRelease({
+          stateRoot: mismatched,
+          candidateRoot: b,
+          faultAt: "after-asset-rename",
+        }),
+      /fault injection/i,
+    );
+    assert.throws(
+      () => stageStaticRelease({ stateRoot: mismatched, candidateRoot: c }),
+      /journal does not match this exact request/i,
+    );
+    assert.equal(readlinkSync(join(mismatched, "current")), mismatchedCurrent);
+
+    const corrupt = join(root, "corrupt-state");
+    stageStaticRelease({ stateRoot: corrupt, candidateRoot: a });
+    const corruptCurrent = readlinkSync(join(corrupt, "current"));
+    assert.throws(
+      () =>
+        stageStaticRelease({ stateRoot: corrupt, candidateRoot: b, faultAt: "after-asset-rename" }),
+      /fault injection/i,
+    );
+    writeFileSync(join(corrupt, "retained-assets-pending.json"), "not json\n");
+    assert.throws(
+      () => stageStaticRelease({ stateRoot: corrupt, candidateRoot: b }),
+      /invalid asset promotion journal/i,
+    );
+    assert.equal(readlinkSync(join(corrupt, "current")), corruptCurrent);
+  });
+});
+
+test("nested retained-asset fsync barriers reach assets and state before current", () => {
+  withFixture((root) => {
+    const state = join(root, "state");
+    const a = release(root, "a", { "a.js": "A" }, "A shell");
+    const b = release(root, "b", { "x/y.js": "B nested" }, "B shell");
+    stageStaticRelease({ stateRoot: state, candidateRoot: a });
+    const trace = [];
+    stageStaticRelease({
+      stateRoot: state,
+      candidateRoot: b,
+      onDurabilityOperation: ({ operation, path }) => trace.push(`${operation}:${path}`),
+    });
+    const beforeCurrent = trace.findIndex((entry) => entry.startsWith("rename-current:"));
+    const durableState = realpathSync(state);
+    const nested = join(durableState, "assets", "x");
+    const assets = join(durableState, "assets");
+    const nestedIndex = trace.lastIndexOf(`fsync-directory:${nested}`);
+    const assetsIndex = trace.lastIndexOf(`fsync-directory:${assets}`);
+    const stateIndex = trace.findIndex(
+      (entry, index) => index > assetsIndex && entry === `fsync-directory:${durableState}`,
+    );
+    assert.ok(
+      nestedIndex >= 0 && nestedIndex < assetsIndex && assetsIndex < stateIndex,
+      trace.join("\n"),
+    );
+    assert.ok(stateIndex < beforeCurrent);
+
+    for (const relative of [join("assets", "x"), "assets", ""]) {
+      const retryState = join(root, `retry-${relative.replaceAll("/", "-") || "state"}`);
+      stageStaticRelease({ stateRoot: retryState, candidateRoot: a });
+      const before = readlinkSync(join(retryState, "current"));
+      const durableRetryState = realpathSync(retryState);
+      const target = relative ? join(durableRetryState, relative) : durableRetryState;
+      assert.throws(
+        () =>
+          stageStaticRelease({
+            stateRoot: retryState,
+            candidateRoot: b,
+            onDurabilityOperation: ({ operation, path }) => {
+              if (operation === "fsync-directory" && path === target) {
+                throw new Error("targeted ancestor durability failure");
+              }
+            },
+          }),
+        /targeted ancestor durability failure/i,
+      );
+      assert.equal(readlinkSync(join(retryState, "current")), before);
+      assert.doesNotThrow(() => stageStaticRelease({ stateRoot: retryState, candidateRoot: b }));
+    }
   });
 });
 

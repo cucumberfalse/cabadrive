@@ -32,6 +32,7 @@ const RETAINED_INVENTORY = "retained-assets.json";
 const LEGACY_HANDOFF_MARKER = ".legacy-handoff.json";
 const LEGACY_SOURCE_KIND = "baked-legacy-root";
 const PUBLISH_PENDING = "publish-pending.json";
+const ASSET_PROMOTION_PENDING = "retained-assets-pending.json";
 
 function fail(message) {
   throw new Error(`Static release staging: ${message}`);
@@ -391,7 +392,25 @@ function syncDirectory(path, options) {
   }
 }
 
-function writeAtomically(directory, path, contents, options) {
+// Directory entries become durable only when every ancestor that records the
+// entry is synced.  Keep the ordering innermost-first so a nested asset is
+// never advertised through a synced parent before its own name is durable.
+function syncDirectoryAncestors(directory, root, options) {
+  const resolvedRoot = realpathSync(root);
+  let current = realpathSync(directory);
+  if (current !== resolvedRoot && !current.startsWith(`${resolvedRoot}${sep}`)) {
+    fail(`durability directory escapes declared root: ${directory}`);
+  }
+  while (true) {
+    syncDirectory(current, options);
+    if (current === resolvedRoot) return;
+    const parent = dirname(current);
+    if (parent === current) fail(`durability root is unreachable: ${root}`);
+    current = parent;
+  }
+}
+
+function writeAtomically(directory, path, contents, options, durabilityRoot = directory) {
   const temporary = join(directory, `.${randomUUID()}.next`);
   let descriptor;
   try {
@@ -405,15 +424,16 @@ function writeAtomically(directory, path, contents, options) {
   }
   renameSync(temporary, path);
   invokeDurability(options, "rename", path);
-  syncDirectory(directory, options);
+  syncDirectoryAncestors(directory, durabilityRoot, options);
 }
 
-function copyAndVerify(source, destination, expected, options) {
+function copyAndVerify(source, destination, expected, options, durabilityRoot) {
   mkdirSync(dirname(destination), { recursive: true, mode: 0o755 });
   copyFileSync(source, destination);
   const actual = sha256(destination);
   if (!equalEntry(actual, expected)) fail(`staged digest mismatch: ${destination}`);
   syncFile(destination, options);
+  if (durabilityRoot) syncDirectoryAncestors(dirname(destination), durabilityRoot, options);
 }
 
 function sourceAsset(candidateRoot, path) {
@@ -428,18 +448,19 @@ function fault(options, point) {
   if (options.faultAt === point) fail(`fault injection at ${point}`);
 }
 
-function copyInventory(candidateRoot, inventory, target, sourceFor, options) {
+function copyInventory(candidateRoot, inventory, target, sourceFor, options, durabilityRoot) {
   for (const entry of inventory) {
     copyAndVerify(
       sourceFor(candidateRoot, entry.path),
       join(target, ...entry.path.split("/")),
       entry,
       options,
+      durabilityRoot,
     );
   }
 }
 
-function promoteFiles(from, to, inventory, options) {
+function promoteFiles(from, to, inventory, options, { sourceRoot, destinationRoot }) {
   for (const entry of inventory) {
     const source = join(from, ...entry.path.split("/"));
     const destination = join(to, ...entry.path.split("/"));
@@ -452,7 +473,9 @@ function promoteFiles(from, to, inventory, options) {
     syncFile(source, options);
     renameSync(source, destination);
     invokeDurability(options, "rename", destination);
-    syncDirectory(dirname(destination), options);
+    syncDirectoryAncestors(dirname(source), sourceRoot, options);
+    syncDirectoryAncestors(dirname(destination), destinationRoot, options);
+    fault(options, "after-asset-rename");
   }
 }
 
@@ -534,25 +557,14 @@ function readRetainedInventory(state) {
   return canonical;
 }
 
-function assertExistingRetainedAuthority(state, existing, additions) {
+function assertExistingRetainedAuthority(state, existing) {
   const ledger = readRetainedInventory(state);
   if (!ledger) {
     if (existing.length === 0) return [];
     fail("retained assets do not match canonical cumulative inventory");
   }
-  const expected = mergeInventories(ledger, additions);
-  const expectedByPath = new Map(expected.map((entry) => [entry.path, entry]));
-  const actualByPath = new Map(existing.map((entry) => [entry.path, entry]));
-  for (const entry of ledger) {
-    if (!equalEntry(actualByPath.get(entry.path) || {}, entry)) {
-      fail("retained assets do not match canonical cumulative inventory");
-    }
-  }
-  for (const entry of existing) {
-    if (!equalEntry(expectedByPath.get(entry.path) || {}, entry)) {
-      fail("retained assets do not match canonical cumulative inventory");
-    }
-  }
+  if (!sameEntries(ledger, existing))
+    fail("retained assets do not match canonical cumulative inventory");
   return ledger;
 }
 
@@ -563,6 +575,125 @@ function writeRetainedInventory(state, assets, options) {
     `${JSON.stringify(retainedInventoryPayload(assets), null, 2)}\n`,
     options,
   );
+}
+
+function assetPromotionPendingPath(state) {
+  return join(state, ASSET_PROMOTION_PENDING);
+}
+
+function inventoryDigest(assets) {
+  return manifestDigest(retainedInventoryPayload(assets));
+}
+
+function inventoryAdditions(prior, expected) {
+  const priorByPath = new Map(prior.map((entry) => [entry.path, entry]));
+  return expected.filter((entry) => !priorByPath.has(entry.path));
+}
+
+function legacyRequest(legacyValidation) {
+  if (!legacyValidation) return null;
+  const manifest = legacyValidation.manifest;
+  return {
+    sourceId: manifest.sourceId,
+    sourceKind: manifest.sourceKind,
+    manifestSha256: manifestDigest(manifest),
+  };
+}
+
+function assetPromotionJournal({ release, legacyValidation, prior, expected }) {
+  return {
+    schemaVersion: SCHEMA_VERSION,
+    releaseId: release.releaseId,
+    manifestSha256: manifestDigest(release),
+    legacy: legacyRequest(legacyValidation),
+    priorAssetsSha256: inventoryDigest(prior),
+    priorAssets: prior,
+    additions: inventoryAdditions(prior, expected),
+    expectedAssetsSha256: inventoryDigest(expected),
+    expectedAssets: expected,
+  };
+}
+
+function pendingJournalMatchesRequest(pending, release, legacyValidation, expected) {
+  const prior = pending?.priorAssets;
+  const additions = pending?.additions;
+  return (
+    pending?.schemaVersion === SCHEMA_VERSION &&
+    pending.releaseId === release.releaseId &&
+    pending.manifestSha256 === manifestDigest(release) &&
+    JSON.stringify(pending.legacy) === JSON.stringify(legacyRequest(legacyValidation)) &&
+    Array.isArray(prior) &&
+    Array.isArray(additions) &&
+    Array.isArray(pending.expectedAssets) &&
+    sameEntries(
+      prior,
+      [...prior].sort((left, right) => ordinal(left.path, right.path)),
+    ) &&
+    pending.priorAssetsSha256 === inventoryDigest(prior) &&
+    pending.expectedAssetsSha256 === inventoryDigest(pending.expectedAssets) &&
+    sameEntries(pending.expectedAssets, expected) &&
+    sameEntries(additions, inventoryAdditions(prior, expected))
+  );
+}
+
+function actualIsPriorPlusSubset(actual, prior, additions) {
+  const priorByPath = new Map(prior.map((entry) => [entry.path, entry]));
+  const additionsByPath = new Map(additions.map((entry) => [entry.path, entry]));
+  for (const entry of prior) {
+    const current = actual.find((candidate) => candidate.path === entry.path);
+    if (!equalEntry(current || {}, entry)) return false;
+  }
+  return actual.every((entry) => {
+    const priorEntry = priorByPath.get(entry.path);
+    const addition = additionsByPath.get(entry.path);
+    return (
+      (priorEntry && equalEntry(priorEntry, entry)) || (addition && equalEntry(addition, entry))
+    );
+  });
+}
+
+function readAssetPromotionJournal(state) {
+  const path = assetPromotionPendingPath(state);
+  return existsSync(path) ? readJson(path, "asset promotion journal") : undefined;
+}
+
+function writeAssetPromotionJournal(state, journal, options) {
+  writeAtomically(
+    state,
+    assetPromotionPendingPath(state),
+    `${JSON.stringify(journal, null, 2)}\n`,
+    options,
+  );
+}
+
+function clearAssetPromotionJournal(state, options) {
+  const path = assetPromotionPendingPath(state);
+  if (!existsSync(path)) return;
+  unlinkSync(path);
+  invokeDurability(options, "unlink-asset-promotion-pending", path);
+  syncDirectoryAncestors(state, state, options);
+}
+
+function recoverAssetPromotion({ state, existing, release, legacyValidation, expected }) {
+  const pending = readAssetPromotionJournal(state);
+  if (!pending) return undefined;
+  if (!pendingJournalMatchesRequest(pending, release, legacyValidation, expected)) {
+    fail("asset promotion journal does not match this exact request");
+  }
+  if (!actualIsPriorPlusSubset(existing, pending.priorAssets, pending.additions)) {
+    fail("asset promotion journal does not match the retained asset store");
+  }
+  const ledger = readRetainedInventory(state);
+  // The durable journal carries the prior ledger itself.  A crash that loses
+  // the old directory entry must not turn an otherwise exact journaled subset
+  // into an unrecoverable store; any non-journaled missing ledger still fails.
+  const ledgerIsPrior = !ledger || sameEntries(ledger, pending.priorAssets);
+  const ledgerIsExpected =
+    ledger && sameEntries(ledger, expected) && sameEntries(existing, expected);
+  if (!ledgerIsPrior && !ledgerIsExpected) {
+    fail("asset promotion journal does not match the retained ledger");
+  }
+  return { pending, ledgerIsExpected };
 }
 
 function metadataMatches(path, release) {
@@ -585,6 +716,7 @@ function writeMetadataAtomically(state, path, release, legacySource, options) {
     path,
     `${JSON.stringify({ ...release, legacySource }, null, 2)}\n`,
     options,
+    state,
   );
 }
 
@@ -652,10 +784,27 @@ export function stageStaticRelease({
     const legacy = legacyValidation?.manifest.assets || [];
     const legacySource = legacyValidation?.manifest.sourceId;
     assertNoCollision(existing, legacy, release.assets);
-    const priorRetained = assertExistingRetainedAuthority(state, existing, [
-      ...legacy,
-      ...release.assets,
-    ]);
+    const pendingAssetPromotion = readAssetPromotionJournal(state);
+    let priorRetained;
+    let expectedRetained;
+    let assetPromotionRecovery;
+    if (pendingAssetPromotion) {
+      if (!Array.isArray(pendingAssetPromotion.priorAssets)) {
+        fail("asset promotion journal has no prior retained inventory");
+      }
+      priorRetained = pendingAssetPromotion.priorAssets;
+      expectedRetained = mergeInventories(priorRetained, legacy, release.assets);
+      assetPromotionRecovery = recoverAssetPromotion({
+        state,
+        existing,
+        release,
+        legacyValidation,
+        expected: expectedRetained,
+      });
+    } else {
+      priorRetained = assertExistingRetainedAuthority(state, existing);
+      expectedRetained = mergeInventories(priorRetained, legacy, release.assets);
+    }
 
     // Do this before the complete-release shortcut: a handoff can arrive after
     // the candidate was first staged, and immutable A bytes are still owed.
@@ -664,28 +813,63 @@ export function stageStaticRelease({
     const transactionRelease = join(transaction, "release");
     mkdirSync(transactionAssets, { recursive: true, mode: 0o755 });
     mkdirSync(transactionRelease, { recursive: true, mode: 0o755 });
+    syncDirectoryAncestors(transaction, state, { faultAt, onDurabilityOperation });
     fault({ faultAt }, "after-validation");
     if (legacy.length) {
-      copyInventory(suppliedLegacyRoot, legacy, transactionAssets, sourceAsset, {
+      copyInventory(
+        suppliedLegacyRoot,
+        legacy,
+        transactionAssets,
+        sourceAsset,
+        {
+          faultAt,
+          onDurabilityOperation,
+        },
+        transaction,
+      );
+    }
+    copyInventory(
+      candidate,
+      release.assets,
+      transactionAssets,
+      sourceAsset,
+      {
         faultAt,
         onDurabilityOperation,
-      });
-    }
-    copyInventory(candidate, release.assets, transactionAssets, sourceAsset, {
-      faultAt,
-      onDurabilityOperation,
-    });
+      },
+      transaction,
+    );
     fault({ faultAt }, "during-assets");
-    const expectedRetained = mergeInventories(priorRetained, legacy, release.assets);
-    promoteFiles(transactionAssets, join(state, "assets"), [...legacy, ...release.assets], {
-      faultAt,
-      onDurabilityOperation,
-    });
+    if (!assetPromotionRecovery) {
+      writeAssetPromotionJournal(
+        state,
+        assetPromotionJournal({
+          release,
+          legacyValidation,
+          prior: priorRetained,
+          expected: expectedRetained,
+        }),
+        { faultAt, onDurabilityOperation },
+      );
+    }
+    promoteFiles(
+      transactionAssets,
+      join(state, "assets"),
+      [...legacy, ...release.assets],
+      {
+        faultAt,
+        onDurabilityOperation,
+      },
+      { sourceRoot: transaction, destinationRoot: state },
+    );
     if (!sameEntries(inventoryForAssets(state, "retained assets"), expectedRetained)) {
       fail("promoted retained assets do not match cumulative inventory");
     }
-    writeRetainedInventory(state, expectedRetained, { faultAt, onDurabilityOperation });
+    if (!assetPromotionRecovery?.ledgerIsExpected) {
+      writeRetainedInventory(state, expectedRetained, { faultAt, onDurabilityOperation });
+    }
     fault({ faultAt }, "after-assets");
+    clearAssetPromotionJournal(state, { faultAt, onDurabilityOperation });
 
     if (existsSync(releaseDir) && existsSync(metadataPath)) {
       if (
@@ -717,10 +901,17 @@ export function stageStaticRelease({
       fail("existing metadata-only partial state does not match candidate");
     }
 
-    copyInventory(candidate, release.mutable, transactionRelease, sourceMutable, {
-      faultAt,
-      onDurabilityOperation,
-    });
+    copyInventory(
+      candidate,
+      release.mutable,
+      transactionRelease,
+      sourceMutable,
+      {
+        faultAt,
+        onDurabilityOperation,
+      },
+      transaction,
+    );
     const stagedMutable = walkRegularFiles(transactionRelease, "transaction release");
     if (!sameEntries(stagedMutable, release.mutable))
       fail("transaction mutable inventory is incomplete");
@@ -739,15 +930,15 @@ export function stageStaticRelease({
       `${JSON.stringify({ ...release, legacySource }, null, 2)}\n`,
       { faultAt, onDurabilityOperation },
     );
-    syncDirectory(transactionRelease, { faultAt, onDurabilityOperation });
+    syncDirectoryAncestors(transactionRelease, transaction, { faultAt, onDurabilityOperation });
     renameSync(transactionRelease, releaseDir);
     invokeDurability({ faultAt, onDurabilityOperation }, "rename", releaseDir);
-    syncDirectory(dirname(releaseDir), { faultAt, onDurabilityOperation });
+    syncDirectoryAncestors(dirname(releaseDir), state, { faultAt, onDurabilityOperation });
     fault({ faultAt }, "after-release");
     if (!existsSync(metadataPath)) {
       renameSync(join(transaction, "manifest.json"), metadataPath);
       invokeDurability({ faultAt, onDurabilityOperation }, "rename", metadataPath);
-      syncDirectory(dirname(metadataPath), { faultAt, onDurabilityOperation });
+      syncDirectoryAncestors(dirname(metadataPath), state, { faultAt, onDurabilityOperation });
     }
     if (!metadataMatches(metadataPath, release) || !releaseFilesMatch(releaseDir, release)) {
       fail("promoted release tuple does not match candidate");
@@ -834,9 +1025,22 @@ function copyPublishTree({ state, candidate, temporary, options }) {
     const source = byExistingPath.has(entry.path)
       ? join(state, "assets", ...entry.path.split("/"))
       : sourceAsset(candidate.root, entry.path);
-    copyAndVerify(source, join(temporary, "assets", ...entry.path.split("/")), entry, options);
+    copyAndVerify(
+      source,
+      join(temporary, "assets", ...entry.path.split("/")),
+      entry,
+      options,
+      temporary,
+    );
   }
-  copyInventory(candidate.root, candidate.manifest.mutable, temporary, sourceMutable, options);
+  copyInventory(
+    candidate.root,
+    candidate.manifest.mutable,
+    temporary,
+    sourceMutable,
+    options,
+    temporary,
+  );
   const inventory = outputInventory(temporary);
   const expected = [
     ...retained.map((entry) => ({ ...entry, path: `assets/${entry.path}` })),
