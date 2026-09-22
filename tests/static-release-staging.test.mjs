@@ -20,6 +20,7 @@ import {
   verifyCommittedState,
   verifyCandidateManifest,
   verifyLegacyHandoff,
+  publishLegacyHandoffPointer,
   writeLegacyHandoffManifest,
 } from "../scripts/stage-static-release.mjs";
 
@@ -280,6 +281,122 @@ test("static publish writes and verifies output before B activation and resumes 
     assert.equal(readlinkSync(join(state2, "current")), before);
     assert.equal(existsSync(output2), false, "failed preparation exposes no output");
     assert.equal(existsSync(join(state2, "publish-pending.json")), false);
+  });
+});
+
+test("a pending B publish expires after an independent C retained-asset promotion", () => {
+  withFixture((root) => {
+    const state = join(root, "state");
+    const output = join(root, "publish-b");
+    const a = release(root, "a", { "a.js": "A" }, "A shell");
+    const b = release(root, "b", { "b.js": "B" }, "B shell");
+    const c = release(root, "c", { "c.js": "C" }, "C shell");
+    stageStaticRelease({ stateRoot: state, candidateRoot: a });
+
+    assert.throws(
+      () =>
+        buildStaticPublish({
+          stateRoot: state,
+          candidateRoot: b,
+          outputRoot: output,
+          faultAt: "after-output",
+        }),
+      /fault injection/i,
+    );
+    const staleOutput = readFileSync(join(output, "index.html"), "utf8");
+    const staleJournal = readFileSync(join(state, "publish-pending.json"), "utf8");
+
+    stageStaticRelease({ stateRoot: state, candidateRoot: c });
+    const afterC = snapshotState(state);
+    assert.match(currentShell(state), /C shell/);
+    assert.equal(readFileSync(join(state, "assets", "c.js"), "utf8"), "C");
+
+    assert.throws(
+      () => buildStaticPublish({ stateRoot: state, candidateRoot: b, outputRoot: output }),
+      /exact pending transaction/i,
+    );
+    assert.deepEqual(snapshotState(state), afterC, "stale B cannot alter C state");
+    assert.equal(readFileSync(join(output, "index.html"), "utf8"), staleOutput);
+    assert.equal(readFileSync(join(state, "publish-pending.json"), "utf8"), staleJournal);
+
+    const controlState = join(root, "control-state");
+    const controlOutput = join(root, "control-output");
+    stageStaticRelease({ stateRoot: controlState, candidateRoot: a });
+    assert.throws(
+      () =>
+        buildStaticPublish({
+          stateRoot: controlState,
+          candidateRoot: b,
+          outputRoot: controlOutput,
+          faultAt: "after-output",
+        }),
+      /fault injection/i,
+    );
+    assert.doesNotThrow(() =>
+      buildStaticPublish({ stateRoot: controlState, candidateRoot: b, outputRoot: controlOutput }),
+    );
+    assert.match(currentShell(controlState), /B shell/);
+  });
+});
+
+test("legacy handoff pointer replaces a hostile current symlink without following it", () => {
+  withFixture((root) => {
+    const handoff = join(root, "handoff");
+    const external = join(root, "external");
+    const releaseRoot = legacyHandoff(join(handoff, "releases", "capture"), "legacy-A", {
+      "a.js": "A",
+    });
+    mkdirSync(external, { recursive: true });
+    writeFileSync(join(external, "sentinel"), "do not touch");
+    symlinkSync(external, join(handoff, "current"));
+
+    publishLegacyHandoffPointer({ handoffRoot: handoff, release: "releases/capture" });
+    assert.equal(readlinkSync(join(handoff, "current")), "releases/capture");
+    assert.equal(readFileSync(join(external, "sentinel"), "utf8"), "do not touch");
+    assert.equal(verifyLegacyHandoff(releaseRoot).valid, true);
+  });
+});
+
+test("legacy handoff marker and pointer failures leave the prior authority untouched", () => {
+  withFixture((root) => {
+    const handoff = join(root, "handoff");
+    const external = join(root, "external");
+    const releaseRoot = join(handoff, "releases", "capture");
+    mkdirSync(join(releaseRoot, "assets"), { recursive: true });
+    writeFileSync(join(releaseRoot, "assets", "a.js"), "A");
+    assert.throws(
+      () =>
+        writeLegacyHandoffManifest({
+          legacyRoot: releaseRoot,
+          sourceId: "legacy-A",
+          sourceKind: "baked-legacy-root",
+          faultAt: "legacy-marker-write",
+        }),
+      /marker write/i,
+    );
+    assert.equal(existsSync(join(releaseRoot, ".legacy-handoff.json")), false);
+
+    writeLegacyHandoffManifest({
+      legacyRoot: releaseRoot,
+      sourceId: "legacy-A",
+      sourceKind: "baked-legacy-root",
+    });
+    mkdirSync(external, { recursive: true });
+    writeFileSync(join(external, "sentinel"), "do not touch");
+    symlinkSync(external, join(handoff, "current"));
+    for (const faultAt of ["legacy-pointer-link", "legacy-pointer-rename"]) {
+      assert.throws(
+        () =>
+          publishLegacyHandoffPointer({
+            handoffRoot: handoff,
+            release: "releases/capture",
+            faultAt,
+          }),
+        /pointer (link|rename)/i,
+      );
+      assert.equal(readlinkSync(join(handoff, "current")), external);
+      assert.equal(readFileSync(join(external, "sentinel"), "utf8"), "do not touch");
+    }
   });
 });
 

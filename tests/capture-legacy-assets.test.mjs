@@ -1,5 +1,13 @@
 import assert from "node:assert/strict";
-import { chmodSync, existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import {
+  chmodSync,
+  existsSync,
+  mkdirSync,
+  readFileSync,
+  readdirSync,
+  rmSync,
+  writeFileSync,
+} from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { spawnSync } from "node:child_process";
@@ -22,7 +30,16 @@ set -eu
 if [ "$1" = compose ] && [ "$2" = ps ]; then exit 0; fi
 if [ "$1" = volume ] && [ "$2" = inspect ]; then exit 1; fi
 if [ "$1" = image ] && [ "$2" = inspect ]; then printf '%s\\n' legacy-image-id; exit 0; fi
-if [ "$1" = run ]; then exit 0; fi
+if [ "$1" = run ]; then
+  case "$*" in
+    *legacy-publish-pointer*)
+      release="$(find "${root}/.cabadrive-release-handoff/fixture/releases" -mindepth 1 -maxdepth 1 -type d | sed -n '1p')"
+      ln -s "releases/$(basename "$release")" "${root}/.cabadrive-release-handoff/fixture/current"
+      exit 0
+      ;;
+  esac
+  exit 0
+fi
 if [ "$1" = create ]; then printf '%s\\n' temporary-container; exit 0; fi
 if [ "$1" = cp ]; then
   case "$2" in
@@ -78,7 +95,15 @@ set -eu
 if [ "$1" = compose ]; then printf '%s\\n' running-legacy; exit 0; fi
 if [ "$1" = volume ] && [ "$2" = inspect ]; then exit 0; fi
 if [ "$1" = run ]; then
-  case "$*" in *source=fixture_release-state*) exit 1 ;; *) exit 0 ;; esac
+  case "$*" in
+    *source=fixture_release-state*) exit 1 ;;
+    *legacy-publish-pointer*)
+      release="$(find "${root}/.cabadrive-release-handoff/fixture/releases" -mindepth 1 -maxdepth 1 -type d | sed -n '1p')"
+      ln -s "releases/$(basename "$release")" "${root}/.cabadrive-release-handoff/fixture/current"
+      exit 0
+      ;;
+    *) exit 0 ;;
+  esac
 fi
 if [ "$1" = cp ]; then
   case "$2" in
@@ -127,7 +152,15 @@ set -eu
 if [ "$1" = compose ]; then printf '%s\\n' rejected-state-container; exit 0; fi
 if [ "$1" = volume ] && [ "$2" = inspect ]; then exit 0; fi
 if [ "$1" = run ]; then
-  case "$*" in *source=fixture_release-state*) exit 1 ;; *) exit 0 ;; esac
+  case "$*" in
+    *source=fixture_release-state*) exit 1 ;;
+    *legacy-publish-pointer*)
+      release="$(find "${root}/.cabadrive-release-handoff/fixture/releases" -mindepth 1 -maxdepth 1 -type d | sed -n '1p')"
+      ln -s "releases/$(basename "$release")" "${root}/.cabadrive-release-handoff/fixture/current"
+      exit 0
+      ;;
+    *) exit 0 ;;
+  esac
 fi
 if [ "$1" = cp ]; then
   case "$2" in
@@ -179,7 +212,16 @@ if [ "$1" = compose ] && [ "$2" = ps ]; then exit 0; fi
 if [ "$1" = volume ] && [ "$2" = inspect ]; then exit 1; fi
 if [ "$1" = image ] && [ "$2" = inspect ]; then printf '%s\\n' default-image; exit 0; fi
 if [ "$1" = create ]; then printf '%s\\n' temporary-container; exit 0; fi
-if [ "$1" = run ]; then exit 0; fi
+if [ "$1" = run ]; then
+  case "$*" in
+    *legacy-publish-pointer*)
+      release="$(find "${root}/.cabadrive-release-handoff/cabadrive/releases" -mindepth 1 -maxdepth 1 -type d | sed -n '1p')"
+      ln -s "releases/$(basename "$release")" "${root}/.cabadrive-release-handoff/cabadrive/current"
+      exit 0
+      ;;
+  esac
+  exit 0
+fi
 if [ "$1" = cp ]; then mkdir -p "$3"; printf '%s' default-bytes >"$3/lazy-a.js"; exit 0; fi
 if [ "$1" = rm ]; then exit 0; fi
 exit 90
@@ -207,6 +249,68 @@ exit 90
     );
   } finally {
     if (existsSync(root)) rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("every legacy-handoff publication failure leaves no authoritative current pointer", () => {
+  for (const fault of ["copy", "marker", "link", "rename"]) {
+    const root = join(tmpdir(), `cabadrive-capture-failure-${fault}-${process.pid}-${Date.now()}`);
+    const bin = join(root, "bin");
+    mkdirSync(bin, { recursive: true });
+    const docker = join(bin, "docker");
+    writeFileSync(
+      docker,
+      `#!/bin/sh
+set -eu
+if [ "$1" = compose ] && [ "$2" = ps ]; then exit 0; fi
+if [ "$1" = volume ] && [ "$2" = inspect ]; then exit 1; fi
+if [ "$1" = image ] && [ "$2" = inspect ]; then printf '%s\\n' legacy-image-id; exit 0; fi
+if [ "$1" = create ]; then printf '%s\\n' temporary-container; exit 0; fi
+if [ "$1" = cp ]; then
+  [ "$CABADRIVE_CAPTURE_FAULT" = legacy-copy ] && exit 1
+  mkdir -p "$3"; printf '%s' legacy-bytes >"$3/lazy-a.js"; exit 0
+fi
+if [ "$1" = run ]; then
+  case "$*" in
+    *legacy-verify*) exit 1 ;;
+    *legacy-write*) [ "$CABADRIVE_CAPTURE_FAULT" = legacy-marker-write ] && exit 1; exit 0 ;;
+    *legacy-publish-pointer*)
+      case "$CABADRIVE_CAPTURE_FAULT" in legacy-pointer-link|legacy-pointer-rename) exit 1 ;; esac
+      exit 0
+      ;;
+  esac
+fi
+if [ "$1" = rm ]; then exit 0; fi
+exit 90
+`,
+    );
+    chmodSync(docker, 0o755);
+    try {
+      const result = spawnSync("sh", [captureScript], {
+        cwd: root,
+        encoding: "utf8",
+        env: {
+          ...process.env,
+          COMPOSE_PROJECT_NAME: "fixture",
+          CABADRIVE_CAPTURE_FAULT:
+            fault === "copy"
+              ? "legacy-copy"
+              : fault === "marker"
+                ? "legacy-marker-write"
+                : `legacy-pointer-${fault}`,
+          CABADRIVE_REPOSITORY_ROOT: root,
+          PATH: `${bin}:${process.env.PATH}`,
+        },
+      });
+      // The mock distinguishes the underlying operation from the helper's
+      // fault name so each checked branch is exercised without host Docker.
+      assert.equal(result.status, 1, `${fault}: ${result.stderr}`);
+      const handoff = join(root, ".cabadrive-release-handoff/fixture");
+      assert.equal(existsSync(join(handoff, "current")), false, `${fault} published current`);
+      assert.deepEqual(readdirSync(join(handoff, "releases")), [], `${fault} left capture bytes`);
+    } finally {
+      if (existsSync(root)) rmSync(root, { recursive: true, force: true });
+    }
   }
 });
 

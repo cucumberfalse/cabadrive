@@ -273,15 +273,50 @@ export function createLegacyHandoffManifest({ legacyRoot, sourceId, sourceKind }
   };
 }
 
-export function writeLegacyHandoffManifest({ legacyRoot, sourceId, sourceKind } = {}) {
+export function writeLegacyHandoffManifest({ legacyRoot, sourceId, sourceKind, faultAt } = {}) {
   const root = realpathSync(legacyRoot);
   const manifest = createLegacyHandoffManifest({ legacyRoot: root, sourceId, sourceKind });
   const temporary = join(root, `${LEGACY_HANDOFF_MARKER}.next-${process.pid}-${randomUUID()}`);
   writeFileSync(join(root, "source-id"), `${manifest.sourceId}\n`);
   writeFileSync(join(root, "source-kind"), `${manifest.sourceKind}\n`);
+  // This point is deliberately injectable so the capture wrapper can prove a
+  // half-written handoff never becomes authoritative.
+  if (faultAt === "legacy-marker-write") fail("fault injection at legacy marker write");
   writeFileSync(temporary, `${JSON.stringify(manifest, null, 2)}\n`);
   renameSync(temporary, join(root, LEGACY_HANDOFF_MARKER));
   return manifest;
+}
+
+// The capture shell deliberately delegates the pointer commit to this helper.
+// POSIX rename replaces a symlink itself; unlike `mv`, it never interprets a
+// symlink-to-directory as a destination directory.  Keeping the link creation
+// and rename in one repository-owned helper also makes the exact failure
+// boundary testable without relying on shell errexit semantics.
+export function publishLegacyHandoffPointer({ handoffRoot, release, faultAt } = {}) {
+  if (!handoffRoot || !release) fail("legacy handoff root and release are required");
+  const suppliedRoot = resolve(handoffRoot);
+  assertDirectory(suppliedRoot, "legacy handoff base");
+  const root = realpathSync(suppliedRoot);
+  const relative = normalizeRelative(release);
+  if (!relative.startsWith("releases/")) fail("legacy handoff release must be under releases");
+  const releaseRoot = join(root, ...relative.split("/"));
+  assertDirectory(releaseRoot, "legacy handoff release");
+  assertInside(root, releaseRoot, "legacy handoff release");
+  if (!verifyLegacyHandoff(releaseRoot).valid) {
+    fail("legacy handoff release is not authoritative");
+  }
+
+  const current = join(root, "current");
+  const next = join(root, `current.next-${process.pid}-${randomUUID()}`);
+  try {
+    if (faultAt === "legacy-pointer-link") fail("fault injection at legacy pointer link");
+    symlinkSync(relative, next);
+    if (faultAt === "legacy-pointer-rename") fail("fault injection at legacy pointer rename");
+    renameSync(next, current);
+    syncDirectory(root, undefined);
+  } finally {
+    if (existsSync(next)) rmSync(next, { force: true });
+  }
 }
 
 export function verifyLegacyHandoff(legacyRoot) {
@@ -747,6 +782,16 @@ function pendingPublishMatches(pending, output, release, inventory) {
   );
 }
 
+function pendingRetainedAssetsMatchCurrentState(state, pending) {
+  const ledger = readRetainedInventory(state);
+  if (!ledger) return false;
+  const retained = inventoryForAssets(state, "retained assets");
+  return (
+    sameEntries(ledger, retained) &&
+    pending.retainedAssetsSha256 === manifestDigest(retainedInventoryPayload(ledger))
+  );
+}
+
 function readPendingPublish(state) {
   const path = publishPendingPath(state);
   return existsSync(path) ? readJson(path, "static publish pending journal") : undefined;
@@ -802,7 +847,10 @@ function copyPublishTree({ state, candidate, temporary, options }) {
   syncTree(temporary, options);
   return {
     inventory,
-    retainedAssetsSha256: manifestDigest(retainedInventoryPayload(retained)),
+    // This is the retained namespace that existed before B activation.  It
+    // permits an exact B retry while A remains committed, but becomes stale as
+    // soon as any independent C promotion changes the ledger or asset walk.
+    retainedAssetsSha256: manifestDigest(retainedInventoryPayload(existing)),
   };
 }
 
@@ -833,7 +881,8 @@ export function buildStaticPublish({
       const inventory = outputInventory(output);
       if (
         !existingPending ||
-        !pendingPublishMatches(existingPending, output, manifest, inventory)
+        !pendingPublishMatches(existingPending, output, manifest, inventory) ||
+        !pendingRetainedAssetsMatchCurrentState(state, existingPending)
       ) {
         fail("publish output already exists without an exact pending transaction");
       }
@@ -940,14 +989,21 @@ if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.ur
                 legacyRoot: values.legacy,
                 sourceId: values["source-id"],
                 sourceKind: values["source-kind"],
+                faultAt: values.fault,
               })
-            : command === "legacy-verify"
-              ? verifyLegacyHandoff(values.legacy)
-              : fail(`unknown command ${command}`);
+            : command === "legacy-publish-pointer"
+              ? publishLegacyHandoffPointer({
+                  handoffRoot: values.handoff,
+                  release: values.release,
+                  faultAt: values.fault,
+                })
+              : command === "legacy-verify"
+                ? verifyLegacyHandoff(values.legacy)
+                : fail(`unknown command ${command}`);
   if (command === "verify" || command === "legacy-verify") {
     process.stdout.write(`${JSON.stringify(result)}\n`);
     if (!result.valid) process.exitCode = 1;
-  } else if (command === "legacy-write") {
+  } else if (command === "legacy-write" || command === "legacy-publish-pointer") {
     process.stdout.write(`${JSON.stringify(result)}\n`);
   } else {
     process.stdout.write(

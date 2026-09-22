@@ -187,18 +187,18 @@
   journal plus exact bytes resume B. Missing/stale/mismatched journal,
   destination, transaction, or output fails unchanged. Also inject after-current/
   before-journal-clear and prove exact retry performs cleanup only.
-- [ ] T022o Implement R051-015: treat a static-publish pending journal as valid
+- [x] T022o Implement R051-015: treat a static-publish pending journal as valid
   only when its retained-assets digest equals both the current canonical ledger
   and a fresh exact retained `/assets/` inventory. Add an A/B/C fault regression:
   leave B output/journal after `after-output`, promote C with a new asset, then
   prove B retry fails unchanged and cannot select A+B output; retain a no-C
   exact-retry control that succeeds.
-- [ ] T022p Implement R051-016: replace handoff pointer publication with a
+- [x] T022p Implement R051-016: replace handoff pointer publication with a
   repository-owned no-follow atomic rename, not shell `mv`. Validate/constrain
   the handoff root and test a malicious existing `current` link to an external
   directory leaves its sentinel untouched while the handoff pointer is safely
   replaced.
-- [ ] T022q Implement R051-017: explicitly check every `publish_handoff`
+- [x] T022q Implement R051-017: explicitly check every `publish_handoff`
   prerequisite and fail/cleanup before pointer publication on copy, marker,
   link, or rename failure. Add executable marker-writer failure injection proving
   the capture exits nonzero with no new authoritative `current` handoff.
@@ -413,6 +413,24 @@
   R051-016, and R051-017 respectively. No owner decision or scope expansion is
   required; implementation must add the stated fail-closed A/B/C,
   external-symlink, and marker-write failure tests.
+- R051-015 through R051-017 implementation: a pending static output journal
+  now records the pre-activation retained namespace and may resume only while
+  both the current canonical ledger and fresh retained-assets walk still digest
+  to that snapshot. The focused A/B/C fault test proves C makes B's output
+  non-resumable without altering C state, while the no-C retry remains valid.
+  Legacy capture now delegates pointer publication to a Node no-follow atomic
+  rename helper; an external-directory `current` link is replaced as a link,
+  never traversed. Every capture copy/source/marker/pointer step is explicitly
+  checked and cleans its unselected temporary handoff on failure. Focused
+  `node --test tests/static-release-staging.test.mjs
+  tests/capture-legacy-assets.test.mjs` passed 22/22, followed by Prettier and
+  `git diff --check`; the first real lifecycle replay exposed an empty optional
+  `--fault` argument, which made the CLI reject normal capture before pointer
+  publication. Capture now omits that option outside injected-fault cases; an
+  isolated real handoff replay and `pnpm run test:docker-retention` both passed,
+  including running and stopped A migration. Full preflight was green before
+  this correction and is rerun for the final commit before review/final
+  validation.
 - Effective content head: pending final process-memory and validation guards.
 - Cleanup: not assigned; any later environment cleanup requires separate
   Cleanup Agent scope/evidence.

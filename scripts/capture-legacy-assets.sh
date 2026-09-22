@@ -82,6 +82,7 @@ image=""
 source=""
 invalid_state=""
 source_kind="baked-legacy-root"
+capture_fault="${CABADRIVE_CAPTURE_FAULT:-}"
 
 mkdir -p "$handoff_base/releases"
 
@@ -95,22 +96,52 @@ verify_handoff() {
 
 publish_handoff() {
   temporary="$handoff_base/releases/capture-$(date +%s)-$$"
-  mkdir -p "$temporary/assets"
-  if ! copy_legacy_assets "$temporary/assets"; then
-    rm -rf "$temporary"
+  if [ -n "$capture_fault" ]; then
+    set -- --fault "$capture_fault"
+  else
+    set --
+  fi
+  cleanup_capture() {
+    if [ -n "${temporary:-}" ] && [ -e "$temporary" ]; then
+      rm -rf -- "$temporary" || return 1
+    fi
+    return 0
+  }
+
+  if ! mkdir -p "$temporary/assets"; then
+    cleanup_capture || true
     return 1
   fi
-  printf '%s\n' "$source" >"$temporary/source-id"
-  printf '%s\n' "$source_kind" >"$temporary/source-kind"
-  docker run --rm \
+  if ! copy_legacy_assets "$temporary/assets"; then
+    cleanup_capture || true
+    return 1
+  fi
+  if ! printf '%s\n' "$source" >"$temporary/source-id"; then
+    cleanup_capture || true
+    return 1
+  fi
+  if ! printf '%s\n' "$source_kind" >"$temporary/source-kind"; then
+    cleanup_capture || true
+    return 1
+  fi
+  if ! docker run --rm \
     --mount "type=bind,source=$script_dir,target=/app,readonly" \
     --mount "type=bind,source=$handoff_base,target=/handoff" \
     node:22-alpine node /app/stage-static-release.mjs legacy-write \
       --legacy "/handoff/releases/$(basename "$temporary")" \
-      --source-id "$source" --source-kind "$source_kind"
-  next="$handoff_base/current.next-$$"
-  ln -s "releases/$(basename "$temporary")" "$next"
-  mv -f "$next" "$handoff"
+      --source-id "$source" --source-kind "$source_kind" "$@"; then
+    cleanup_capture || true
+    return 1
+  fi
+  if ! docker run --rm \
+    --mount "type=bind,source=$script_dir,target=/app,readonly" \
+    --mount "type=bind,source=$handoff_base,target=/handoff" \
+    node:22-alpine node /app/stage-static-release.mjs legacy-publish-pointer \
+      --handoff /handoff --release "releases/$(basename "$temporary")" \
+      "$@"; then
+    cleanup_capture || true
+    return 1
+  fi
 }
 
 # A volume name is not evidence of a completed release: failed first stages can
