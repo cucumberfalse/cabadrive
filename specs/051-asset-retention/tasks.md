@@ -602,6 +602,17 @@
   and confirmed no sibling project, external symlink target, or newer lock
   generation can be mutated. Implementation feedback: no scope divergence or
   further Architect disposition is required.
+- Integrated verification at product head
+  `a2e538a79e1da61966b060220f42c5a0812e185a`: `pnpm run preflight` passed
+  repository/content/type/lint/format/negative gates, `593/593` Node tests, two
+  production builds, and `158/158` Playwright tests. The executable
+  `pnpm run test:docker-retention` A→B lifecycle also passed for isolated project
+  `cabadrive-retention-43496-1790112058866`, including running-container and
+  stopped-image migration, recreated stager/runtime use of retained state,
+  exact old asset/current shell/service-worker bytes, sibling-volume isolation,
+  and clean initial install. Deterministic concurrent exact-generation coverage
+  is included in the 593-test suite because its forced paused interleaving is
+  stronger and repeatable compared with scheduler-dependent Docker overlap.
 
 ## Final Architect Validation
 
