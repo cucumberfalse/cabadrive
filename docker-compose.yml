@@ -8,6 +8,8 @@ services:
     volumes:
       - release-state:/state
       - ./.cabadrive-release-handoff/${COMPOSE_PROJECT_NAME:-cabadrive}:/legacy-handoff:ro
+    environment:
+      CABADRIVE_COMPOSE_PROJECT: ${COMPOSE_PROJECT_NAME:-cabadrive}
     restart: "no"
 
   cabadrive:

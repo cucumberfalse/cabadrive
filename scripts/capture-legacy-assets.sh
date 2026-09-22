@@ -129,6 +129,7 @@ publish_handoff() {
     --mount "type=bind,source=$handoff_base,target=/handoff" \
     node:22-alpine node /app/stage-static-release.mjs legacy-write \
       --legacy "/handoff/releases/$(basename "$temporary")" \
+      --handoff /handoff \
       --source-id "$source" --source-kind "$source_kind" "$@"; then
     cleanup_capture || true
     return 1

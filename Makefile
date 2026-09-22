@@ -5,7 +5,8 @@
 resolve_project = $$(./scripts/capture-legacy-assets.sh --resolve-project)
 
 build:
-	@project="$(resolve_project)"; export COMPOSE_PROJECT_NAME="$$project"; ./scripts/capture-legacy-assets.sh; docker compose build
+	@project="$(resolve_project)"; export COMPOSE_PROJECT_NAME="$$project"; ./scripts/capture-legacy-assets.sh
+	@project="$(resolve_project)"; export COMPOSE_PROJECT_NAME="$$project"; docker compose build
 
 up:
 	@project="$(resolve_project)"; export COMPOSE_PROJECT_NAME="$$project"; docker compose up -d

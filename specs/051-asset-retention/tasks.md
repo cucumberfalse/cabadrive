@@ -246,22 +246,22 @@
   `assets/x`, `assets`, and `state` syncs before ledger/release/current. Foreign
   or non-journaled existing bytes remain collisions/fail-closed, not candidates
   for recovery.
-- [ ] T022x Implement R051-024: make the real `make build` path stop immediately
+- [x] T022x Implement R051-024: make the real `make build` path stop immediately
   when legacy capture fails. Remove status-masking command sequencing and add a
   wrapper integration test that forces capture nonzero, asserts the same failure
   propagates, and proves a build/replacement sentinel is never created.
-- [ ] T022y Implement R051-025: replace container-hostname lock authority with
+- [x] T022y Implement R051-025: replace container-hostname lock authority with
   the effective Compose project key plus a durable project-scoped execution
   domain stored in retained state. Preserve unique per-acquisition token and
   non-reusable owner-start identity. Test default/explicit project stager
   recreation, changed hostname, stable domain, and sibling-project rejection.
-- [ ] T022z Implement R051-026: make capture handoff publication crash-durable.
+- [x] T022z Implement R051-026: make capture handoff publication crash-durable.
   Close/fsync every copied file and marker, fsync every changed directory
   bottom-up through the handoff transaction root, then atomically replace
   `current` and fsync its parent. Add ordered trace and injected close/file/
   leaf/ancestor/root sync failures; each must retain the prior authority and an
   exact retry must repeat the full barrier.
-- [ ] T022aa Implement R051-027: replace stale-record read then quarantine with
+- [x] T022aa Implement R051-027: replace stale-record read then quarantine with
   exact-generation atomic compare-and-reclaim. A contender may enter only after
   it atomically proves the canonical generation is the inspected dead one and
   transfers ownership; a loser restarts from a fresh read without touching the
@@ -584,6 +584,24 @@
   compare/reclaim TOCTOU from the final integrated review). They are accepted as
   the single bounded T022x–T022aa implementation batch; no owner decision or
   product-scope expansion is required.
+- R051-024 through R051-027 implementation evidence (2026-09-22): `make build`
+  now runs capture and image build as separate fail-fast recipes, with a real
+  wrapper test proving a failed capture never reaches the build sentinel. The
+  retained state stores one Compose-project-bound execution domain while every
+  stager incarnation and acquisition keeps distinct diagnostic/start/token
+  identity. Stale recovery pins the exact canonical lock inode with an exclusive
+  hard-link guard, rechecks its complete generation, and atomically renames a
+  durable replacement over it without an unlocked name gap; deterministic
+  release/reacquire and nested two-reclaimer interleavings leave the live
+  replacement untouched and observe maximum critical-section concurrency one.
+  Legacy capture now fsyncs/closes every captured file and marker, then syncs
+  directories bottom-up through the release, `releases`, and handoff roots
+  before the independent pointer commit. Focused staging/capture/Docker contract
+  tests pass `43/43`. An integrated adjacent-regression audit also replaced the
+  quarantine filename's untrusted acquisition component with a digest plus UUID
+  and confirmed no sibling project, external symlink target, or newer lock
+  generation can be mutated. Implementation feedback: no scope divergence or
+  further Architect disposition is required.
 
 ## Final Architect Validation
 

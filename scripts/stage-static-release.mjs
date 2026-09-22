@@ -11,6 +11,7 @@ import {
   existsSync,
   fsyncSync,
   lstatSync,
+  linkSync,
   mkdirSync,
   openSync,
   readFileSync,
@@ -34,7 +35,10 @@ const LEGACY_HANDOFF_MARKER = ".legacy-handoff.json";
 const LEGACY_SOURCE_KIND = "baked-legacy-root";
 const PUBLISH_PENDING = "publish-pending.json";
 const ASSET_PROMOTION_PENDING = "retained-assets-pending.json";
-const LOCK_SCHEMA_VERSION = 1;
+const LOCK_SCHEMA_VERSION = 2;
+const EXECUTION_DOMAIN_SCHEMA_VERSION = 1;
+const EXECUTION_DOMAIN_RECORD = "stage-execution-domain.json";
+const RECLAIM_GUARD = "stage.lock.reclaim";
 
 function fail(message) {
   throw new Error(`Static release staging: ${message}`);
@@ -252,11 +256,53 @@ function processStartIdentity(pid) {
   }
 }
 
-function lockOwnerRecord() {
+function effectiveProjectKey(projectKey) {
+  const value = projectKey || process.env.CABADRIVE_COMPOSE_PROJECT || "cabadrive";
+  if (typeof value !== "string" || !/^[a-zA-Z0-9][a-zA-Z0-9_.-]*$/u.test(value)) {
+    fail("Compose project identity is missing or unsafe");
+  }
+  return value;
+}
+
+function executionDomain(state, projectKey) {
+  const project = effectiveProjectKey(projectKey);
+  const path = join(state, EXECUTION_DOMAIN_RECORD);
+  const created = {
+    schemaVersion: EXECUTION_DOMAIN_SCHEMA_VERSION,
+    project,
+    domain: randomUUID(),
+  };
+  let descriptor;
+  try {
+    descriptor = openSync(path, "wx", 0o600);
+    writeFileSync(descriptor, `${JSON.stringify(created)}\n`);
+    fsyncSync(descriptor);
+  } catch (error) {
+    if (error?.code !== "EEXIST") throw error;
+  } finally {
+    if (descriptor !== undefined) closeSync(descriptor);
+  }
+  if (descriptor !== undefined) syncDirectory(state, undefined);
+  const recorded = readJson(path, "stage execution domain");
+  if (
+    recorded?.schemaVersion !== EXECUTION_DOMAIN_SCHEMA_VERSION ||
+    recorded.project !== project ||
+    typeof recorded.domain !== "string" ||
+    !/^[a-f0-9-]{36}$/u.test(recorded.domain)
+  ) {
+    fail("stage execution domain is malformed or belongs to another Compose project");
+  }
+  return recorded;
+}
+
+function lockOwnerRecord(context, diagnosticHost = hostname()) {
   const startIdentity = processStartIdentity(process.pid);
   return {
     schemaVersion: LOCK_SCHEMA_VERSION,
-    host: hostname(),
+    project: context.project,
+    domain: context.domain,
+    acquisition: randomUUID(),
+    diagnosticHost,
     pid: process.pid,
     // Local developer platforms without Linux's executable /proc starttime
     // may create a unique lock, but may never reclaim one: inspection below
@@ -265,11 +311,14 @@ function lockOwnerRecord() {
   };
 }
 
-function inspectLockOwner(owner) {
+function inspectLockOwner(owner, context) {
   if (
     !owner ||
     owner.schemaVersion !== LOCK_SCHEMA_VERSION ||
-    typeof owner.host !== "string" ||
+    owner.project !== context.project ||
+    owner.domain !== context.domain ||
+    typeof owner.acquisition !== "string" ||
+    typeof owner.diagnosticHost !== "string" ||
     !Number.isInteger(owner.pid) ||
     owner.pid <= 0 ||
     typeof owner.startIdentity !== "string" ||
@@ -277,7 +326,6 @@ function inspectLockOwner(owner) {
   ) {
     return "ambiguous";
   }
-  if (owner.host !== hostname()) return "ambiguous";
   const actual = processStartIdentity(owner.pid);
   if (!actual) {
     // `/proc` can be unavailable or denied even while a publisher is alive.
@@ -297,9 +345,11 @@ function sameLockOwner(left, right) {
   return JSON.stringify(left) === JSON.stringify(right);
 }
 
-function acquireLock(state, { ownerInspector } = {}) {
+function acquireLock(state, { ownerInspector, projectKey, onLockOperation, diagnosticHost } = {}) {
   const lock = join(state, "stage.lock");
-  const owner = lockOwnerRecord();
+  const context = executionDomain(state, projectKey);
+  const owner = lockOwnerRecord(context, diagnosticHost);
+  const reclaim = join(state, RECLAIM_GUARD);
   let acquired = false;
   while (!acquired) {
     let descriptor;
@@ -318,24 +368,65 @@ function acquireLock(state, { ownerInspector } = {}) {
       }
       let status;
       try {
-        status = (ownerInspector || inspectLockOwner)(recorded);
+        status = ownerInspector
+          ? ownerInspector(recorded, context)
+          : inspectLockOwner(recorded, context);
       } catch {
         status = "ambiguous";
       }
       if (status !== "dead") fail("another stage holds the exclusive lock");
-      const quarantine = join(state, `stage.lock.stale-${randomUUID()}`);
+      onLockOperation?.({ operation: "stale-inspected", owner: recorded });
+      let guarded = false;
+      const replacement = join(state, `stage.lock.next-${owner.acquisition}`);
       try {
-        renameSync(lock, quarantine);
+        // `link` is the compare-and-reclaim primitive: the fixed guard can be
+        // created by only one contender and pins the exact inode inspected.
+        // If release/reacquire won first, the linked contents no longer match
+        // and the newer canonical lock is left untouched.
+        linkSync(lock, reclaim);
+        guarded = true;
+        const guardedOwner = readJson(reclaim, "stage reclaim guard");
+        const canonicalOwner = readJson(lock, "stage lock owner");
+        if (!sameLockOwner(guardedOwner, recorded) || !sameLockOwner(canonicalOwner, recorded)) {
+          continue;
+        }
+        onLockOperation?.({ operation: "reclaim-guarded", owner: recorded });
+        const confirmedOwner = readJson(lock, "stage lock owner");
+        if (!sameLockOwner(confirmedOwner, recorded)) continue;
+        const nextDescriptor = openSync(replacement, "wx", 0o600);
+        try {
+          writeFileSync(nextDescriptor, `${JSON.stringify(owner)}\n`);
+          fsyncSync(nextDescriptor);
+        } finally {
+          closeSync(nextDescriptor);
+        }
+        // The canonical name changes from the pinned stale inode to our fully
+        // durable owner record in one rename; there is no unlocked name gap.
+        renameSync(replacement, lock);
         syncDirectory(state, undefined);
-      } catch (renameError) {
-        if (renameError?.code === "ENOENT") continue;
-        throw renameError;
+        const staleDigest = createHash("sha256")
+          .update(JSON.stringify(recorded))
+          .digest("hex")
+          .slice(0, 16);
+        const quarantine = join(state, `stage.lock.stale-${staleDigest}-${randomUUID()}`);
+        renameSync(reclaim, quarantine);
+        guarded = false;
+        syncDirectory(state, undefined);
+        acquired = true;
+      } catch (reclaimError) {
+        if (reclaimError?.code === "ENOENT") continue;
+        if (reclaimError?.code === "EEXIST") fail("another stage holds the exclusive lock");
+        throw reclaimError;
+      } finally {
+        if (existsSync(replacement)) rmSync(replacement, { force: true });
+        if (guarded && existsSync(reclaim)) unlinkSync(reclaim);
       }
     } finally {
       if (descriptor !== undefined) closeSync(descriptor);
     }
   }
   syncDirectory(state, undefined);
+  onLockOperation?.({ operation: "lock-acquired", owner });
   return () => {
     let recorded;
     try {
@@ -346,6 +437,7 @@ function acquireLock(state, { ownerInspector } = {}) {
     if (!sameLockOwner(recorded, owner)) fail("stage lock ownership changed before release");
     unlinkSync(lock);
     syncDirectory(state, undefined);
+    onLockOperation?.({ operation: "lock-released", owner });
   };
 }
 
@@ -374,8 +466,16 @@ export function createLegacyHandoffManifest({ legacyRoot, sourceId, sourceKind }
   };
 }
 
-export function writeLegacyHandoffManifest({ legacyRoot, sourceId, sourceKind, faultAt } = {}) {
+export function writeLegacyHandoffManifest({
+  legacyRoot,
+  handoffRoot,
+  sourceId,
+  sourceKind,
+  faultAt,
+  onDurabilityOperation,
+} = {}) {
   const root = realpathSync(legacyRoot);
+  const options = { faultAt, onDurabilityOperation };
   const manifest = createLegacyHandoffManifest({ legacyRoot: root, sourceId, sourceKind });
   const temporary = join(root, `${LEGACY_HANDOFF_MARKER}.next-${process.pid}-${randomUUID()}`);
   writeFileSync(join(root, "source-id"), `${manifest.sourceId}\n`);
@@ -385,6 +485,16 @@ export function writeLegacyHandoffManifest({ legacyRoot, sourceId, sourceKind, f
   if (faultAt === "legacy-marker-write") fail("fault injection at legacy marker write");
   writeFileSync(temporary, `${JSON.stringify(manifest, null, 2)}\n`);
   renameSync(temporary, join(root, LEGACY_HANDOFF_MARKER));
+  // This is the handoff commit barrier. The independent pointer command is
+  // allowed to publish only after every captured byte and every directory entry
+  // through the release root has reached durable storage.
+  syncTree(root, options);
+  if (handoffRoot) {
+    const durableHandoff = realpathSync(handoffRoot);
+    assertDirectory(durableHandoff, "legacy handoff base");
+    assertInside(durableHandoff, root, "legacy handoff release");
+    syncDirectoryAncestors(dirname(root), durableHandoff, options);
+  }
   return manifest;
 }
 
@@ -877,6 +987,9 @@ export function stageStaticRelease({
   faultAt,
   onDurabilityOperation,
   ownerInspector,
+  projectKey,
+  onLockOperation,
+  diagnosticHost,
   lockHeld = false,
 } = {}) {
   if (!stateRoot || !candidateRoot) fail("--state and --candidate are required");
@@ -884,7 +997,9 @@ export function stageStaticRelease({
   const release = createCandidateManifest(candidateRoot);
   const releaseDir = join(state, "releases", release.releaseId);
   const metadataPath = join(state, "metadata", `${release.releaseId}.json`);
-  const unlock = lockHeld ? () => {} : acquireLock(state, { ownerInspector });
+  const unlock = lockHeld
+    ? () => {}
+    : acquireLock(state, { ownerInspector, projectKey, onLockOperation, diagnosticHost });
   const transaction = join(state, "transactions", `${release.releaseId}-${randomUUID()}`);
   try {
     const candidate = realpathSync(candidateRoot);
@@ -1243,6 +1358,9 @@ export function buildStaticPublish({
   faultAt,
   onDurabilityOperation,
   ownerInspector,
+  projectKey,
+  onLockOperation,
+  diagnosticHost,
 } = {}) {
   if (!stateRoot || !candidateRoot || !outputRoot)
     fail("--state, --candidate and --output are required");
@@ -1253,7 +1371,12 @@ export function buildStaticPublish({
   const candidate = { root: candidateRootReal, manifest };
   const options = { faultAt, onDurabilityOperation };
   const existingPending = readPendingPublish(state);
-  const unlock = acquireLock(state, { ownerInspector });
+  const unlock = acquireLock(state, {
+    ownerInspector,
+    projectKey,
+    onLockOperation,
+    diagnosticHost,
+  });
 
   try {
     const outputEntry = noFollowEntry(output);
@@ -1275,6 +1398,9 @@ export function buildStaticPublish({
         faultAt,
         onDurabilityOperation,
         ownerInspector,
+        projectKey,
+        onLockOperation,
+        diagnosticHost,
         lockHeld: true,
       });
       if (staged.releaseId !== manifest.releaseId || !verifyCommittedState(state).valid) {
@@ -1340,6 +1466,9 @@ export function buildStaticPublish({
         faultAt,
         onDurabilityOperation,
         ownerInspector,
+        projectKey,
+        onLockOperation,
+        diagnosticHost,
         lockHeld: true,
       });
       if (staged.releaseId !== manifest.releaseId || !verifyCommittedState(state).valid) {
@@ -1387,6 +1516,7 @@ if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.ur
           : command === "legacy-write"
             ? writeLegacyHandoffManifest({
                 legacyRoot: values.legacy,
+                handoffRoot: values.handoff,
                 sourceId: values["source-id"],
                 sourceKind: values["source-kind"],
                 faultAt: values.fault,

@@ -32,6 +32,7 @@ test("legacy capture is exact-project, supports container and prior image, and r
   assert.match(capture, /source-kind/);
   assert.match(capture, /legacy-verify/);
   assert.match(capture, /legacy-write/);
+  assert.match(capture, /legacy-write[\s\S]*--handoff \/handoff/);
   assert.match(capture, /\.cabadrive-release-handoff/);
   assert.doesNotMatch(capture, /docker (?:stop|rm)\s+cabadrive/);
 });

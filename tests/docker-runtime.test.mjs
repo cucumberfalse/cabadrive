@@ -36,6 +36,10 @@ test("Docker stages a persistent project-scoped release store before nginx", () 
   assert.match(makefile, /docker compose run --rm stager/);
 });
 
+test("Docker gives recreated stagers a stable project-scoped lock domain", () => {
+  assert.match(compose, /CABADRIVE_COMPOSE_PROJECT:\s*\$\{COMPOSE_PROJECT_NAME:-cabadrive\}/);
+});
+
 test("Makefile reports the configured Docker URL while keeping project-scoped targets", () => {
   assert.match(makefile, /docker compose build/);
   assert.match(makefile, /docker compose up -d/);

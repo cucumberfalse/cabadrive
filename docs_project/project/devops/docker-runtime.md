@@ -27,7 +27,16 @@ volume is never copied back through an attached container: only a separately
 validated handoff (canonical path/size/SHA-256 inventory plus source identity)
 or the pre-feature image's baked asset root may seed retained assets. The
 handoff publishes its `current` pointer atomically and remains local deployment
-state.
+state. Capture failure stops `make build` before any image build starts. A
+handoff is eligible for that pointer switch only after all captured files and
+the complete directory ancestry have crossed their durability barriers.
+
+The stager's exclusive publication lock is also project-scoped. Its durable
+execution domain lives in `release-state`, so recreating the disposable stager
+container does not change lock authority. A crashed owner can be reclaimed only
+after its process incarnation is proven dead and the exact observed lock
+generation is atomically pinned and replaced; a concurrent or newly acquired
+lock is left untouched.
 
 No host Node.js or pnpm is required: the candidate build and staging command
 run in Docker. The scoped handoff under `.cabadrive-release-handoff/` is local

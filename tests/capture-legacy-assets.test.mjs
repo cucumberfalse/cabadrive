@@ -17,6 +17,44 @@ import test from "node:test";
 const captureScript = fileURLToPath(
   new URL("../scripts/capture-legacy-assets.sh", import.meta.url),
 );
+const repositoryRoot = fileURLToPath(new URL("..", import.meta.url));
+
+test("make build propagates capture failure before starting an image build", () => {
+  const root = join(tmpdir(), `cabadrive-build-short-circuit-${process.pid}-${Date.now()}`);
+  const bin = join(root, "bin");
+  const sentinel = join(root, "build-started");
+  mkdirSync(bin, { recursive: true });
+  const docker = join(bin, "docker");
+  writeFileSync(
+    docker,
+    `#!/bin/sh
+set -eu
+if [ "$1" = compose ] && [ "\${4:-}" = ps ]; then printf '%s\\n' legacy-container; exit 0; fi
+if [ "$1" = volume ] && [ "$2" = inspect ]; then exit 1; fi
+if [ "$1" = cp ]; then exit 73; fi
+if [ "$1" = compose ] && [ "$2" = build ]; then : >"$CABADRIVE_BUILD_SENTINEL"; exit 0; fi
+exit 0
+`,
+  );
+  chmodSync(docker, 0o755);
+  try {
+    const result = spawnSync("make", ["build"], {
+      cwd: repositoryRoot,
+      encoding: "utf8",
+      env: {
+        ...process.env,
+        COMPOSE_PROJECT_NAME: "fixture",
+        CABADRIVE_REPOSITORY_ROOT: root,
+        CABADRIVE_BUILD_SENTINEL: sentinel,
+        PATH: `${bin}:${process.env.PATH}`,
+      },
+    });
+    assert.notEqual(result.status, 0, result.stdout + result.stderr);
+    assert.equal(existsSync(sentinel), false);
+  } finally {
+    if (existsSync(root)) rmSync(root, { recursive: true, force: true });
+  }
+});
 
 test("stopped legacy Compose image is exported before a build can replace it", () => {
   const root = join(tmpdir(), `cabadrive-capture-${process.pid}-${Date.now()}`);

@@ -9,6 +9,7 @@ import {
   readlinkSync,
   rmSync,
   symlinkSync,
+  unlinkSync,
   writeFileSync,
 } from "node:fs";
 import { tmpdir } from "node:os";
@@ -578,6 +579,137 @@ test("only a proven-dead lock owner is quarantined and reclaimed", () => {
   });
 });
 
+test("lock authority survives stager recreation and rejects a sibling Compose project", () => {
+  withFixture((root) => {
+    const state = join(root, "state");
+    const a = release(root, "a", { "a.js": "A" }, "A shell");
+    const b = release(root, "b", { "b.js": "B" }, "B shell");
+    const owners = [];
+    const observe = ({ operation, owner }) => {
+      if (operation === "lock-acquired") owners.push(owner);
+    };
+    stageStaticRelease({
+      stateRoot: state,
+      candidateRoot: a,
+      projectKey: "stable-project",
+      diagnosticHost: "stager-one",
+      onLockOperation: observe,
+    });
+    const firstDomain = JSON.parse(
+      readFileSync(join(state, "stage-execution-domain.json"), "utf8"),
+    );
+    stageStaticRelease({
+      stateRoot: state,
+      candidateRoot: b,
+      projectKey: "stable-project",
+      diagnosticHost: "stager-two",
+      onLockOperation: observe,
+    });
+    const secondDomain = JSON.parse(
+      readFileSync(join(state, "stage-execution-domain.json"), "utf8"),
+    );
+
+    assert.deepEqual(secondDomain, firstDomain);
+    assert.equal(owners[0].domain, owners[1].domain);
+    assert.notEqual(owners[0].acquisition, owners[1].acquisition);
+    assert.equal(owners[0].diagnosticHost, "stager-one");
+    assert.equal(owners[1].diagnosticHost, "stager-two");
+    assert.throws(
+      () =>
+        stageStaticRelease({
+          stateRoot: state,
+          candidateRoot: b,
+          projectKey: "foreign-project",
+        }),
+      /another Compose project/i,
+    );
+    assert.match(currentShell(state), /B shell/);
+  });
+});
+
+test("exact-generation reclaim cannot move a replacement lock or admit two contenders", () => {
+  withFixture((root) => {
+    const state = join(root, "state");
+    const a = release(root, "a", { "a.js": "A" }, "A shell");
+    const b = release(root, "b", { "b.js": "B" }, "B shell");
+    const c = release(root, "c", { "c.js": "C" }, "C shell");
+    stageStaticRelease({ stateRoot: state, candidateRoot: a, projectKey: "fixture" });
+    const domain = JSON.parse(readFileSync(join(state, "stage-execution-domain.json"), "utf8"));
+    const lock = join(state, "stage.lock");
+    const record = (acquisition) => ({
+      schemaVersion: 2,
+      project: "fixture",
+      domain: domain.domain,
+      acquisition,
+      diagnosticHost: "recreated-stager",
+      pid: 999999,
+      startIdentity: "1",
+    });
+    const stale = record("stale-generation");
+    const replacement = record("live-replacement");
+    writeFileSync(lock, `${JSON.stringify(stale)}\n`);
+    let replaced = false;
+    assert.throws(
+      () =>
+        stageStaticRelease({
+          stateRoot: state,
+          candidateRoot: b,
+          projectKey: "fixture",
+          ownerInspector: (owner) => (owner.acquisition === stale.acquisition ? "dead" : "live"),
+          onLockOperation: ({ operation }) => {
+            if (operation === "stale-inspected" && !replaced) {
+              replaced = true;
+              unlinkSync(lock);
+              writeFileSync(lock, `${JSON.stringify(replacement)}\n`);
+            }
+          },
+        }),
+      /exclusive lock/i,
+    );
+    assert.deepEqual(JSON.parse(readFileSync(lock, "utf8")), replacement);
+    assert.equal(
+      readdirSync(state).some((name) => name.startsWith("stage.lock.stale-live-replacement")),
+      false,
+    );
+
+    unlinkSync(lock);
+    writeFileSync(lock, `${JSON.stringify(stale)}\n`);
+    let nested = false;
+    let active = 0;
+    let maximumActive = 0;
+    const track = ({ operation }) => {
+      if (operation === "lock-acquired") {
+        active += 1;
+        maximumActive = Math.max(maximumActive, active);
+      } else if (operation === "lock-released") {
+        active -= 1;
+      }
+    };
+    stageStaticRelease({
+      stateRoot: state,
+      candidateRoot: b,
+      projectKey: "fixture",
+      ownerInspector: () => "dead",
+      onLockOperation: (event) => {
+        if (event.operation === "stale-inspected" && !nested) {
+          nested = true;
+          stageStaticRelease({
+            stateRoot: state,
+            candidateRoot: c,
+            projectKey: "fixture",
+            ownerInspector: () => "dead",
+            onLockOperation: track,
+          });
+        }
+        track(event);
+      },
+    });
+    assert.equal(maximumActive, 1);
+    assert.equal(active, 0);
+    assert.match(currentShell(state), /B shell/);
+  });
+});
+
 test("journalled existing promoted assets rerun file and ancestor durability barriers", () => {
   withFixture((root) => {
     const state = join(root, "state");
@@ -690,6 +822,77 @@ test("legacy handoff marker and pointer failures leave the prior authority untou
       assert.equal(readlinkSync(join(handoff, "current")), external);
       assert.equal(readFileSync(join(external, "sentinel"), "utf8"), "do not touch");
     }
+  });
+});
+
+test("legacy handoff publication waits for the complete file and directory durability barrier", () => {
+  withFixture((root) => {
+    const handoff = join(root, "handoff");
+    const prior = legacyHandoff(join(handoff, "releases", "prior"), "legacy-prior", {
+      "prior.js": "prior",
+    });
+    publishLegacyHandoffPointer({ handoffRoot: handoff, release: "releases/prior" });
+    const candidate = join(handoff, "releases", "candidate");
+    mkdirSync(join(candidate, "assets", "nested"), { recursive: true });
+    writeFileSync(join(candidate, "assets", "nested", "lazy.js"), "lazy");
+    const unchanged = () =>
+      assert.equal(realpathSync(join(handoff, "current")), realpathSync(prior));
+
+    for (const [operation, suffix] of [
+      ["close-file", "lazy.js"],
+      ["fsync-file", ".legacy-handoff.json"],
+      ["fsync-directory", "assets/nested"],
+      ["fsync-directory", "assets"],
+      ["fsync-directory", "candidate"],
+      ["fsync-directory", "releases"],
+      ["fsync-directory", "handoff"],
+    ]) {
+      assert.throws(
+        () =>
+          writeLegacyHandoffManifest({
+            legacyRoot: candidate,
+            handoffRoot: handoff,
+            sourceId: "legacy-candidate",
+            sourceKind: "baked-legacy-root",
+            onDurabilityOperation: ({ operation: actual, path }) => {
+              if (actual === operation && path.endsWith(suffix)) throw new Error("sync fault");
+            },
+          }),
+        /sync fault/,
+      );
+      unchanged();
+    }
+
+    const trace = [];
+    writeLegacyHandoffManifest({
+      legacyRoot: candidate,
+      handoffRoot: handoff,
+      sourceId: "legacy-candidate",
+      sourceKind: "baked-legacy-root",
+      onDurabilityOperation: ({ operation, path }) => trace.push(`${operation}:${path}`),
+    });
+    const durableCandidate = realpathSync(candidate);
+    const fileIndex = trace.findIndex(
+      (entry) => entry.startsWith("fsync-file:") && entry.endsWith("assets/nested/lazy.js"),
+    );
+    const leafIndex = trace.indexOf(
+      `fsync-directory:${join(durableCandidate, "assets", "nested")}`,
+    );
+    const assetsIndex = trace.indexOf(`fsync-directory:${join(durableCandidate, "assets")}`);
+    const rootIndex = trace.indexOf(`fsync-directory:${durableCandidate}`);
+    const releasesIndex = trace.findIndex(
+      (entry, index) =>
+        index > rootIndex && entry === `fsync-directory:${realpathSync(join(handoff, "releases"))}`,
+    );
+    const handoffIndex = trace.findIndex(
+      (entry, index) =>
+        index > releasesIndex && entry === `fsync-directory:${realpathSync(handoff)}`,
+    );
+    assert.ok(fileIndex >= 0 && fileIndex < leafIndex && leafIndex < assetsIndex);
+    assert.ok(assetsIndex < rootIndex);
+    assert.ok(rootIndex < releasesIndex && releasesIndex < handoffIndex);
+    publishLegacyHandoffPointer({ handoffRoot: handoff, release: "releases/candidate" });
+    assert.equal(realpathSync(join(handoff, "current")), realpathSync(candidate));
   });
 });
 
