@@ -14,11 +14,11 @@
 - Cycle PR set: PR #217, `codex/051-asset-retention`, purpose `append-only
   static asset retention and shell-last Docker/static deployment`; initial
   product head `c55dee242989b222e0092953721915ea8784275b`; reviewed current head
-  `a921eeac5dc70a0f0f71c4d84968dd3ebaee6b88` implements R051-013 and R051-014,
-  but has accepted follow-up work R051-015 through R051-017 and is not a
+  `e83654a8879a724cdb2eda85fd37de252eba5ded` implements R051-015 through
+  R051-017, but has accepted follow-up work R051-018 and R051-019 and is not a
   final-validation candidate.
   It is included only after implementation, verification, resolution of all
-  eighteen open threads, and fresh exact-head review.
+  open threads, and fresh exact-head review.
 - Dependency: feature 051 must merge first. PR #215 is then synchronized to the
   merged main and independently retested/reviewed/revalidated.
 
@@ -202,6 +202,24 @@
   prerequisite and fail/cleanup before pointer publication on copy, marker,
   link, or rename failure. Add executable marker-writer failure injection proving
   the capture exits nonzero with no new authoritative `current` handoff.
+- [ ] T022r Implement R051-018: before the first immutable asset rename,
+  durably publish a canonical asset-promotion recovery journal that binds the
+  release/candidate/legacy inputs, prior ledger/store digest, additions, and
+  exact expected cumulative inventory. After a fault following any asset rename
+  and before `retained-assets.json` publication, resume only the exact same
+  request when the fresh store is the verified prior inventory plus a
+  byte-identical subset of additions; complete the ledger before any release or
+  `current` operation. Test empty first-stage and A->B cases, missing/corrupt/
+  stale/request-mismatched journals, unexpected partial assets, ledger-write and
+  journal-clear failures. Every mismatch must leave retained bytes and the prior
+  pointer unchanged; no retry may infer, delete, or overwrite assets.
+- [ ] T022s Implement R051-019: make durability synchronization recursive and
+  ordered for every newly created/renamed directory entry through the state or
+  static-publish transaction root. Add operation-trace and fault coverage for a
+  nested `assets/x/y.js` proving `assets/x`, `assets`, and `state` are synced in
+  order before `current`; cover nested release/output paths and failures at each
+  ancestor. Each failure leaves A current and exact retry succeeds without
+  destructive cleanup.
 - [ ] T023 Orchestrator route every finding/feedback to the proper role; all
   blocking threads are fixed/resolved or explicitly disposed, checks rerun, and
   process memory refreshed.
@@ -270,6 +288,13 @@
   no-follow rename; an existing link is never interpreted as a directory
   destination. Publication commands are explicitly checked rather than relying
   on shell `errexit` semantics in conditional invocation.
+- D051-020: a pre-promotion asset journal is the sole recovery authority for an
+  unledgered immutable partial store. It binds one exact requested union and
+  permits only verified subset-to-complete resumption; it is never a substitute
+  for the canonical ledger or an authority to discard existing retained bytes.
+- D051-021: directory fsync is transitive to the declared transaction root for
+  every new/renamed entry. A leaf directory sync alone does not make a nested
+  asset's ancestor name durable.
 
 ## Evidence And Feedback
 
@@ -431,6 +456,14 @@
   including running and stopped A migration. Full preflight was green before
   this correction and is rerun for the final commit before review/final
   validation.
+- Exact-head review at `e83654a8879a724cdb2eda85fd37de252eba5ded` found two
+  additional P2 gaps. R051-018: an asset rename may succeed before
+  `retained-assets.json` is written, leaving a nonempty unledgered store that
+  the existing retry rejects. R051-019: a nested `assets/x/y.js` syncs only
+  `assets/x`, omitting `/assets` and its ancestor durability barrier. Both are
+  accepted; implementation must add the exact journaled recovery and ordered
+  ancestor-sync contracts in T022r/T022s. No owner decision or scope expansion
+  is required. Review threads remain unresolved pending implementation evidence.
 - Effective content head: pending final process-memory and validation guards.
 - Cleanup: not assigned; any later environment cleanup requires separate
   Cleanup Agent scope/evidence.
@@ -439,10 +472,10 @@
 
 - Architect validation pass: not ready; final validation was not invoked.
 - Final Architect validation completed at: pending.
-- Architect return reason: R051-015 through R051-017 require follow-up
+- Architect return reason: R051-018 and R051-019 require follow-up
   implementation, focused/full verification, current-head checks, resolution of
   all open review threads, and fresh exact-head review.
-- Architect return count: 5 / 10.
+- Architect return count: 6 / 10.
 - Architect validated effective content head: pending.
 
 ## Final Analyst Validation

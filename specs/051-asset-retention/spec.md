@@ -83,6 +83,7 @@ The canonical release state is project-scoped and contains:
 state/
   assets/                       # append-only immutable namespace
   retained-assets.json          # canonical complete retained inventory
+  retained-assets-pending.json  # pre-promotion asset/ledger recovery journal
   releases/<release-id>/        # candidate tree plus .release-state.json
   current -> releases/<release-id>
   metadata/<release-id>.json    # canonical inventory/evidence
@@ -109,20 +110,29 @@ Transaction order:
    transaction directory, fsync/close, hash the staged bytes again, and verify
    exact inventory completeness. Test-only fault injection may stop at each
    boundary.
-6. Atomically rename verified new immutable files into `state/assets/`. A crash
-   may leave unreferenced B hashes, which is safe; it must never overwrite an A
-   hash or change `current`, and a retry is idempotent.
+6. Before the first immutable rename, atomically and durably write
+   `retained-assets-pending.json`. It binds the requested release/manifest and
+   authoritative legacy input (if any), the exact prior retained ledger and
+   filesystem digest, the complete expected retained inventory, and the exact
+   additions. Atomically rename verified new immutable files into
+   `state/assets/`. A crash may leave unreferenced B hashes, which is safe; it
+   must never overwrite an A hash or change `current`.
 7. Re-inventory the complete retained namespace and require exact equality with
-   the prior canonical retained inventory plus validated outgoing/candidate
-   additions. Atomically publish `retained-assets.json`; missing, corrupt, or
-   unexpected historical files fail before activation.
+   the pending journal's expected inventory. Atomically publish
+   `retained-assets.json`, then durably remove the pending journal. Missing,
+   corrupt, or unexpected historical files fail before activation.
 8. Write `.release-state.json` containing schema version, `release-id`, and
    manifest digest inside the verified transaction release. Atomically rename
    the release directory and metadata into their final paths, then read back and
    verify the marker, release tree, metadata, and retained inventory.
 9. Establish a durability barrier before activation: fsync every newly written
    asset, mutable file, marker, cumulative inventory and metadata file, then
-   fsync every affected parent directory after file/directory renames. Any fsync
+   fsync every affected parent directory after file/directory renames, from the
+   innermost changed directory through the state root. Thus a new
+   `assets/x/y.js` requires successful directory syncs of `assets/x`, `assets`,
+   and `state` in that order before `current` can change. The same ancestor
+   barrier applies to recursively created release, metadata, transaction and
+   static-output directories through their declared transaction root. Any fsync
    or close failure aborts without changing `current`; the Docker/Linux state
    filesystem must support these durability operations.
 10. Create `current.next` pointing only to that fully verified final release,
@@ -150,6 +160,15 @@ Resumption is part of the transaction contract, not an error shortcut:
   rather than raising `EEXIST`; the same requirement applies to every boundary
   before the final `current` rename. A selected release can therefore never lack
   its verified marker or metadata under the defined publisher.
+- If immutable promotion or the first `retained-assets.json` publication stops,
+  retry may resume only through a valid durable `retained-assets-pending.json`.
+  The request must bind exactly to the journaled release, candidate manifest,
+  legacy input, prior ledger and expected full inventory; the current asset walk
+  may contain only the journaled prior inventory plus a byte-identical subset of
+  its additions. It resumes the missing copies/ledger publication without
+  moving `current`. A missing, stale, mismatched, corrupt, or extra-asset
+  journal/state combination fails closed and is never repaired by deleting
+  retained bytes or guessing an inventory.
 - Legacy handoff inventory participates in collision validation and append-only
   promotion before every complete-release/idempotent shortcut. Re-staging an
   already-current candidate with newly available legacy assets must append those
@@ -339,6 +358,13 @@ Static publish uses a prepare/output/commit transaction under the release lock:
   a failed copy, marker write, symlink creation, or pointer rename returns
   failure and publishes no new authority. Shell conditional/error semantics may
   not convert a failed marker write into a successful capture.
+- FR-024: An interrupted immutable-asset promotion or initial cumulative-ledger
+  write is safely resumable only from a durable exact asset-promotion journal.
+  Without that journal, or with any journal/request/store disagreement, staging
+  fails closed while the prior `current` remains selected.
+- FR-025: Durability ordering covers every changed directory entry and all of
+  its ancestors through the transaction root; syncing only the leaf directory
+  of a nested retained asset is insufficient.
 
 ## Acceptance Criteria And Negative Scenarios
 
@@ -534,3 +560,15 @@ Static publish uses a prepare/output/commit transaction under the release lock:
   and cleanup-safe, particularly the marker writer, temporary link creation,
   and pointer rename. A marker-write failure must return nonzero before a
   `current` pointer can be published; add an executable failure-injection test.
+- **R051-018 (P2) — asset promotion can strand an unledgered store: accepted.**
+  Persist a durable, exact pre-promotion asset journal before the first rename,
+  then permit retry only when the request and fresh store walk match its prior
+  ledger, additions and expected complete inventory. Exercise empty first-stage
+  and A->B promotion faults after asset rename/before ledger publication; exact
+  retry must recover without moving `current`, while no/malformed/mismatched
+  journal or an unexpected asset fails unchanged.
+- **R051-019 (P2) — nested directory durability stops at the leaf: accepted.**
+  Replace single-parent syncing with an ordered ancestor-directory barrier to
+  the state or publish transaction root. Trace a nested `assets/x/y.js` and
+  assert leaf, `/assets`, then root sync before activation; inject each
+  ancestor-sync failure and prove A remains current and an exact retry works.

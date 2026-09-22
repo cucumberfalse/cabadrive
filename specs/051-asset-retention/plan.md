@@ -59,9 +59,16 @@ or PR #215 directly from this worktree.
    - Maintain a canonical cumulative retained inventory and compare it against
      the exact full `/assets` walk before activation and during authority checks;
      historical corruption/deletion/extra files fail closed.
-   - Add an explicit durability barrier: fsync promoted files and affected parent
-     directories before `current`, then fsync the state directory after pointer
-     rename. Injected sync/close failures must preserve the old pointer.
+   - Before the first immutable promotion, persist a durable exact
+     asset-promotion journal covering the request inputs, prior ledger, expected
+     full inventory and additions. Resume an interrupted first ledger write only
+     when the journal and a fresh exact asset walk agree; otherwise fail closed
+     without deleting retained bytes or moving `current`.
+   - Add an explicit durability barrier: fsync promoted files and every changed
+     directory ancestor, innermost-first through the state/transaction root,
+     before `current`, then fsync the state directory after pointer rename.
+     Injected file, leaf-parent, `/assets`-parent and root sync/close failures
+     must preserve the old pointer.
    - Preserve A on every failure. Make retries idempotent; never add asset GC.
 
 4. **Docker-only migration and serving**
@@ -112,6 +119,9 @@ or PR #215 directly from this worktree.
      fresh exact retained-assets walk; arbitrary/mismatched/stale existing output
      never resumes. A C promotion after B output invalidates B's retry rather
      than selecting a stale A+B output.
+   - Apply the same recursive ancestor sync barrier to newly created temporary
+     and final publish directories; publishing a nested retained hash may not
+     treat a synced leaf directory as durable while its parents are unsynced.
    - Document atomic deploy/no-delete requirements and unsupported destructive
      hosts. Do not add a provider-specific adapter.
 
@@ -202,7 +212,8 @@ or PR #215 directly from this worktree.
 | Manifest/path | focused Node tests | ordinal exact inventory; SHA/size stable; traversal, alias, symlink, duplicate, mutation, missing/extra rejected |
 | Collision/idempotence | focused Node tests | equal bytes retry; unequal bytes abort; retained bytes unchanged |
 | Transaction | fault-injected tests | every boundary before pointer rename leaves A current; retry succeeds; no retained deletion |
-| Durable activation | injected filesystem-operation trace | every new file and rename parent is fsynced before `current`; state dir fsynced after; sync/close failure preserves old pointer |
+| Durable activation | injected filesystem-operation trace | every new file and each changed directory ancestor (nested leaf, `/assets`, state/transaction root) is fsynced in order before `current`; state dir fsynced after; sync/close failure preserves old pointer |
+| Asset-promotion recovery | fault-injected staging tests | durable pre-promotion journal permits only matching subset-to-complete retry after asset rename/ledger-write failure; absent, corrupt, stale, request-mismatched or extra-asset state fails unchanged |
 | Cumulative retained integrity | focused staging/verifier tests | every A+B retained entry exactly matches canonical ledger; corrupt/missing/extra old A blocks B and authority |
 | State authority | focused capture/staging tests | empty/incomplete volume does not suppress legacy capture; corrupt or mismatched committed state fails closed |
 | Late legacy union | focused staging tests | identical candidate plus newly available legacy asset appends before idempotent return; collision changes nothing |
@@ -245,6 +256,13 @@ or PR #215 directly from this worktree.
   staging mutation and snapshot the negative result.
 - Buffered writes survive process tests but not host crash: require file and
   directory fsync ordering before/after the atomic pointer and fail on sync error.
+- A crash after immutable rename but before the first retained ledger can strand
+  valid bytes that an ordinary retry rejects: commit an exact pre-promotion
+  recovery journal first, accept only its verified partial subset, and otherwise
+  fail closed without deleting retained history.
+- Fsyncing `assets/x` does not durably record its entry in `/assets`: traverse
+  all changed directory ancestors through the declared transaction root and
+  fault-test every barrier before the pointer change.
 - Current-candidate-only verification misses corrupt older A: bind authority to
   an exact cumulative ledger and negatively mutate an unreferenced historical file.
 - Synthetic fetch/cache fixture bypasses legacy worker semantics: install and
@@ -279,7 +297,7 @@ or PR #215 directly from this worktree.
 ## Handoff Status
 
 Architect follow-up disposition is complete, but the feature is not ready for
-final validation. R051-015 through R051-017 require implementation and
-focused/full verification; all unresolved review threads require current-head
-evidence and resolution followed by fresh exact-head review before final
-validation may be invoked.
+final validation. R051-018 and R051-019 require implementation and focused/full
+verification; all unresolved review threads require current-head evidence and
+resolution followed by fresh exact-head review before final validation may be
+invoked.
