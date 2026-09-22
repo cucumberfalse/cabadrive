@@ -14,9 +14,9 @@
 - Cycle PR set: PR #217, `codex/051-asset-retention`, purpose `append-only
   static asset retention and shell-last Docker/static deployment`; initial
   product head `c55dee242989b222e0092953721915ea8784275b`; reviewed current head
-  `e83654a8879a724cdb2eda85fd37de252eba5ded` implements R051-015 through
-  R051-017, but has accepted follow-up work R051-018 and R051-019 and is not a
-  final-validation candidate.
+  `bb1b51e8b4668c7da861059c9750b2e5f1a4c6d6` implements R051-018 and
+  R051-019, but has accepted follow-up work R051-020 through R051-023 and is
+  not a final-validation candidate.
   It is included only after implementation, verification, resolution of all
   open threads, and fresh exact-head review.
 - Dependency: feature 051 must merge first. PR #215 is then synchronized to the
@@ -220,6 +220,32 @@
   order before `current`; cover nested release/output paths and failures at each
   ancestor. Each failure leaves A current and exact retry succeeds without
   destructive cleanup.
+- [ ] T022t Implement R051-020: extend `publish-pending.json` to bind the
+  prior current release and both complete retained snapshots (pre-stage A and
+  expected A+B). After `after-output`, fault B promotion before `current`, then
+  retry using the exact journal-known A+B state: it must complete B and clear
+  the journal. Foreign/extra assets, ledger drift, a changed current release,
+  stale A+B after C, or a changed candidate/legacy request must fail unchanged.
+  Do not loosen the existing A/B/C stale-output guard.
+- [ ] T022u Implement R051-021: use a no-follow `lstat` destination classifier
+  before every static publish transaction. A dangling output-root symlink, live
+  symlink, regular file, or directory is pre-existing state and is rejected
+  before stage; only the exact journal-bound completed regular-directory output
+  is recoverable. Test that the link and an external sentinel remain untouched.
+- [ ] T022v Implement R051-022: replace the permanent PID-only `stage.lock`
+  with a durably fsynced owner record carrying a non-reusable host-local process
+  identity. Prove dead-owner recovery atomically quarantines then replaces the
+  stale record; a live matching identity, malformed, or inaccessible/
+  cross-host/unsupported case fails closed, while a reused PID with a different
+  start identity proves the recorded owner stale. Keep an injectable
+  owner-inspection seam for deterministic tests and never blindly unlink a lock.
+- [ ] T022w Implement R051-023: on journaled recovery, re-fsync every exact
+  promoted destination and rerun its ordered destination ancestor barrier even
+  when that path already exists. Add nested `assets/x/y.js` faults immediately
+  after rename/before each ancestor sync and trace that retry performs file,
+  `assets/x`, `assets`, and `state` syncs before ledger/release/current. Foreign
+  or non-journaled existing bytes remain collisions/fail-closed, not candidates
+  for recovery.
 - [ ] T023 Orchestrator route every finding/feedback to the proper role; all
   blocking threads are fixed/resolved or explicitly disposed, checks rerun, and
   process memory refreshed.
@@ -476,6 +502,15 @@
   Docker runtime); `pnpm run test:docker-retention` passed with the isolated
   real Docker A/B retained-asset lifecycle; `pnpm run preflight` passed. No
   scope divergence or new implementation feedback.
+- Exact-head review at `bb1b51e8b4668c7da861059c9750b2e5f1a4c6d6` found four
+  additional P2 gaps. R051-020 (`r4072969602`) rejects a journal's own B
+  additions after a pre-current fault; R051-021 (`r4072969623`) treats a
+  dangling publish-output symlink as absent and overwrites it; R051-022
+  (`r4072969633`) leaves a crash-stale stage lock unrecoverable; R051-023 lets
+  a retry skip the file/ancestor durability barrier after a matching destination
+  already exists. Architect accepts all four bounded follow-ups above. They
+  require test-first executable recovery/negative evidence, fresh full
+  verification and review; no owner decision or scope expansion is required.
 - Effective content head: pending final process-memory and validation guards.
 - Cleanup: not assigned; any later environment cleanup requires separate
   Cleanup Agent scope/evidence.
@@ -484,10 +519,10 @@
 
 - Architect validation pass: not ready; final validation was not invoked.
 - Final Architect validation completed at: pending.
-- Architect return reason: R051-018 and R051-019 require follow-up
+- Architect return reason: R051-020 through R051-023 require follow-up
   implementation, focused/full verification, current-head checks, resolution of
   all open review threads, and fresh exact-head review.
-- Architect return count: 6 / 10.
+- Architect return count: 7 / 10.
 - Architect validated effective content head: pending.
 
 ## Final Analyst Validation

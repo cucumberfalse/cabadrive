@@ -204,6 +204,18 @@ or PR #215 directly from this worktree.
   shell switch. Candidate-only destructive upload is unsupported.
 - Retention is indefinite in this feature. Storage reclamation is a separate
   correctness problem.
+- A static-publish journal binds both the prior A and expected A+B retained
+  snapshots plus the prior current release. That makes an interrupted
+  publisher's own B additions resumable without admitting foreign state or a
+  later shell.
+- Publish destination admission is no-follow. `lstat` rather than `exists` is
+  the authority, so a dangling symlink is protected user state.
+- Stale-lock recovery needs a durable, non-reusable owner identity and atomic
+  quarantine. Clock-only leases and blind unlink are unsafe because they can
+  create two publishers; unsupported identity checks fail closed.
+- Recovered byte-identical promoted assets still need their file and full
+  ancestor durability barriers rerun. Existence is integrity evidence, not
+  evidence that directory entries survived a crash.
 
 ## Verification Matrix
 
@@ -233,6 +245,10 @@ or PR #215 directly from this worktree.
 | Existing publish destination | state snapshot integration | pre-existing output fails before stage and leaves pointer/releases/metadata/assets/output byte-identical |
 | Static output transaction | fault-injected integration | copy/hash/fsync/rename failure leaves A and no final output; complete-output/pre-current fault resumes only with matching journal and exact output |
 | Pending-journal freshness | fault-injected A/B/C integration | B output journal resumes only against the identical retained ledger/assets; a later C asset blocks stale B activation unchanged |
+| Pending own-promotion recovery | fault-injected A/B integration | exact journal-known A+B state and prior current resume after B pre-current failure; foreign asset/current/request drift stays unchanged |
+| No-follow publish destination | focused static-publish tests | dangling/live symlink, file, and directory are rejected before stage; external sentinel is untouched |
+| Crash-stale lock recovery | owner-identity tests | proven-dead/reused-PID-start-mismatch owner is atomically quarantined/reclaimed; live matching, malformed, inaccessible, or unsupported owner fails closed |
+| Recovery durability barrier | nested fault/retry trace | existing journal-known promoted file is fsynced and `assets/x` → `assets` → `state` is repeated before ledger/release/current |
 | Handoff pointer safety | focused capture failure/symlink tests | external `current` symlink target is never traversed; marker/copy/link/rename failures publish no incomplete handoff |
 | HTTP policy | curl/tests | `/assets/` immutable and exact; `sw.js`/HTML current; no HTML fallback for missing hashed asset |
 | Quality | repo commands | focused tests, full preflight, build/e2e, Docker smoke, and all required GitHub checks green |
@@ -279,6 +295,17 @@ or PR #215 directly from this worktree.
   use a no-follow Node rename and test an external sentinel remains untouched.
 - POSIX `set -e` is suppressed for functions used in conditional lists: make
   each handoff publication command return-checked and test marker-write failure.
+- B's own partial promotion can make its pending output look stale even though
+  no foreign change occurred: bind and admit only the exact journal-known A+B
+  retained state and recorded prior current; reject all other drift.
+- `existsSync` reports false for a dangling output symlink: use no-follow
+  classification so publishing never replaces a user-owned dangling link.
+- A crash can leave a stale lock forever, while a clock lease can steal a live
+  publisher: reclaim only a proven-dead owner with a non-reusable start identity
+  and atomically quarantine the old record; ambiguity stays locked.
+- A failed ancestor fsync followed by a matching destination on retry can skip
+  durability: rerun file and ancestor sync for every journal-known promotion
+  before any pointer can move.
 - Crash after release rename but before metadata: classify and resume exact
   release-only state; reject mismatches and never retry a blind rename over it.
 - Concurrent update: exclusive fail-closed lock; no implicit stale-lock removal.
@@ -297,7 +324,7 @@ or PR #215 directly from this worktree.
 ## Handoff Status
 
 Architect follow-up disposition is complete, but the feature is not ready for
-final validation. R051-018 and R051-019 require implementation and focused/full
-verification; all unresolved review threads require current-head evidence and
-resolution followed by fresh exact-head review before final validation may be
-invoked.
+final validation. R051-020 through R051-023 require implementation and
+focused/full verification; all unresolved review threads require current-head
+evidence and resolution followed by fresh exact-head review before final
+validation may be invoked.

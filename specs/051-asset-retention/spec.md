@@ -98,8 +98,15 @@ to remain on one filesystem.
 
 Transaction order:
 
-1. Acquire an exclusive `stage.lock`. Concurrent or ambiguous lock state fails
-   closed; the normal command never guesses that a lock is stale or removes it.
+1. Acquire an exclusive `stage.lock`. The durable lock record binds a schema,
+   host-local PID, and a non-reusable process-start identity, and the holder
+   retains ownership until its transaction ends. A live, malformed,
+   permission-denied, cross-host, or otherwise ambiguous record fails closed.
+   Only an unambiguously dead owner (including a PID-reuse identity mismatch)
+   may be atomically quarantined and replaced; the stale record is never
+   unlinked in place. The production Docker/Linux implementation must use an
+   executable process-start identity; platforms unable to establish that
+   identity fail closed rather than reclaiming a lock.
 2. Validate the candidate and its canonical inventory without touching
    `current`.
 3. If this is the first migration from a pre-feature Docker release, validate
@@ -282,13 +289,18 @@ Static publish uses a prepare/output/commit transaction under the release lock:
    no final output; prepared append-only state may remain unreferenced.
 4. If fault injection stops after output rename but before `current`, retry may
    resume only when the durable pending journal identifies the same transaction
-   and the output exactly matches its expected inventory **and** the current
-   canonical retained-assets ledger and exact `/assets/` walk still match the
-   journal's retained-assets digest. It then commits B and clears the journal
-   durably. A later C stage, ledger drift, arbitrary output, missing journal,
-   stale journal, or byte-mismatched existing output fails unchanged; in
-   particular, an old A+B output must never be selected after C was appended.
-   No command deletes or overwrites an existing output.
+   and the output exactly matches its expected inventory. The journal binds the
+   prior current release plus both the pre-stage and exact expected A+B retained
+   inventories. Retry accepts either the verified pre-stage A state (then it
+   performs B promotion) or the verified journal-known A+B state left by its
+   own failed promotion (then it rechecks the same candidate and commits B).
+   It may not accept a different current release, ledger/walk drift, arbitrary
+   output, missing/stale journal, or byte-mismatched output; in particular, a
+   later C stage must never cause an old A+B output to be selected. No command
+   deletes or overwrites an existing output. Destination existence is detected
+   with no-follow `lstat`: a regular file, directory, live symlink, or dangling
+   symlink is pre-existing state and is rejected unless it is the journal-bound
+   completed regular-directory output from this exact transaction.
 5. A crash after `current` commits but before journal removal is also idempotent:
    retry requires matching B current, journal and exact output, then only clears
    the journal. Any mismatch fails closed without changing output or state.
@@ -365,6 +377,21 @@ Static publish uses a prepare/output/commit transaction under the release lock:
 - FR-025: Durability ordering covers every changed directory entry and all of
   its ancestors through the transaction root; syncing only the leaf directory
   of a nested retained asset is insufficient.
+- FR-026: A static-publish retry may recognize only its own journal-bound
+  A+B promotion left before `current`; it rejects a foreign/corrupt retained
+  state or changed current release even if paths and candidate bytes overlap.
+- FR-027: Static publish detects destination existence without following
+  symlinks. A dangling output-root symlink is never treated as absent or
+  replaced.
+- FR-028: A crashed publisher's stale lock is safely reclaimable only after
+  durable owner identity proves the recorded owner is dead. A live matching
+  identity, malformed, inaccessible, or unsupported check fails closed; a
+  reused PID with a different recorded process-start identity proves the old
+  owner is dead and is safely reclaimable.
+- FR-029: On recovery after an immutable rename but before its durability
+  barrier, every journal-known promoted destination must be re-fsynced and its
+  full ancestor chain re-synced before any ledger, release, or `current` step.
+  Equal destination bytes alone do not prove durability.
 
 ## Acceptance Criteria And Negative Scenarios
 
@@ -476,6 +503,25 @@ Static publish uses a prepare/output/commit transaction under the release lock:
     unchanged. Inject failure of the handoff marker writer and of every pointer
     publication prerequisite; capture exits nonzero, does not create/select a
     new `current`, and never reports or uses an incomplete handoff as authority.
+27. Leave a B publish output/journal, then fault B promotion immediately before
+    `current`. The retry accepts the exact journal-known A+B ledger/walk and
+    prior A current, completes B, and clears the journal. Mutate the ledger,
+    add a foreign asset, change the current release, or provide a different B
+    request: every variant fails unchanged and cannot select B.
+28. Place a dangling `outputRoot` symlink (and controls for a live symlink,
+    regular file, and directory) before publish. It is rejected before staging;
+    the link itself and its external sentinel/target, state, and current pointer
+    remain unchanged.
+29. Simulate a dead stage owner and prove a later invocation atomically
+    quarantines/reclaims its lock and safely resumes, including a reused PID
+    with a different start identity. A live matching owner, malformed record,
+    inaccessible, or unsupported process identity fails closed without
+    releasing or stealing a live lock. Assert no two staging calls can pass the
+    lock boundary.
+30. Inject a fault after renaming nested `assets/x/y.js` and before each
+    destination ancestor fsync. Retry must re-fsync the existing matching file
+    and record `assets/x`, `assets`, and `state` in order before ledger/release/
+    `current`; it may not skip the barrier merely because the destination exists.
 
 ## Review And Completion Requirements
 
@@ -572,3 +618,31 @@ Static publish uses a prepare/output/commit transaction under the release lock:
   the state or publish transaction root. Trace a nested `assets/x/y.js` and
   assert leaf, `/assets`, then root sync before activation; inject each
   ancestor-sync failure and prove A remains current and an exact retry works.
+- **R051-020 (P2, r4072969602) — pending publish retry rejects its own B
+  additions: accepted.** Extend the pending journal with the prior current and
+  both authoritative pre-stage/expected retained snapshots. On retry accept
+  only a verified pre-stage state or the exact journal-known A+B state made by
+  the interrupted B promotion; require the recorded prior current until B is
+  committed. Any foreign asset, ledger mismatch, different request, or changed
+  current fails unchanged and cannot turn a stale output into an activation.
+- **R051-021 (P2, r4072969623) — dangling output symlink is overwritten:
+  accepted.** Replace `existsSync`-only destination admission with no-follow
+  `lstat` classification. Treat every existing destination entry, including a
+  dangling symlink, as occupied; allow only the exact journal-bound completed
+  output directory during recovery. Do not traverse, unlink, or rename over an
+  untrusted destination.
+- **R051-022 (P2, r4072969633) — crash-stale stage lock blocks recovery:
+  accepted.** Implement a durable owner identity and safe stale-lock protocol:
+  prove the owner dead using a non-reusable process-start identity, atomically
+  quarantine rather than unlink the stale record, then acquire a new lock. A
+  live matching identity, malformed, inaccessible, cross-host, or unsupported
+  record is ambiguous and fails closed; a reused PID with a different start
+  identity is proof the recorded owner is dead. Include deterministic
+  owner-check seams so the behavior is executable without weakening production
+  Docker/Linux semantics.
+- **R051-023 (P2) — retry skips the asset durability barrier after an existing
+  destination: accepted.** Journal-known promoted additions must be treated as
+  not yet durable after a rename/fsync-boundary fault. Before retry can publish
+  the ledger, release, or `current`, fsync each exact existing promoted file and
+  rerun its full destination ancestor barrier. A byte-equal `exists` branch is
+  not a durability shortcut; foreign/unjournaled entries remain fail-closed.
