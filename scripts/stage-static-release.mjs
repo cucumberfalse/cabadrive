@@ -24,6 +24,7 @@ import {
   writeFileSync,
 } from "node:fs";
 import { basename, dirname, isAbsolute, join, resolve, sep } from "node:path";
+import { hostname } from "node:os";
 import { fileURLToPath } from "node:url";
 
 const SCHEMA_VERSION = 1;
@@ -33,6 +34,7 @@ const LEGACY_HANDOFF_MARKER = ".legacy-handoff.json";
 const LEGACY_SOURCE_KIND = "baked-legacy-root";
 const PUBLISH_PENDING = "publish-pending.json";
 const ASSET_PROMOTION_PENDING = "retained-assets-pending.json";
+const LOCK_SCHEMA_VERSION = 1;
 
 function fail(message) {
   throw new Error(`Static release staging: ${message}`);
@@ -231,21 +233,119 @@ function ensureStateLayout(stateRoot) {
   return realpathSync(state);
 }
 
-function acquireLock(state) {
-  const lock = join(state, "stage.lock");
-  let descriptor;
+function processStartIdentity(pid) {
+  // Linux /proc starttime is tied to one process incarnation, unlike the PID.
+  // A platform without it cannot safely reclaim a crashed publisher's lock.
   try {
-    descriptor = openSync(lock, "wx", 0o600);
-    writeFileSync(descriptor, `${process.pid}\n`);
-    fsyncSync(descriptor);
-  } catch (error) {
-    if (error?.code === "EEXIST") fail("another stage holds the exclusive lock");
-    throw error;
-  } finally {
-    if (descriptor !== undefined) closeSync(descriptor);
+    const stat = readFileSync(`/proc/${pid}/stat`, "utf8");
+    const close = stat.lastIndexOf(")");
+    if (close < 0) return undefined;
+    const fields = stat
+      .slice(close + 2)
+      .trim()
+      .split(/\s+/u);
+    // Field 3 is the first field here; starttime is field 22.
+    const start = fields[19];
+    return /^\d+$/u.test(start || "") ? start : undefined;
+  } catch {
+    return undefined;
   }
+}
+
+function lockOwnerRecord() {
+  const startIdentity = processStartIdentity(process.pid);
+  return {
+    schemaVersion: LOCK_SCHEMA_VERSION,
+    host: hostname(),
+    pid: process.pid,
+    // Local developer platforms without Linux's executable /proc starttime
+    // may create a unique lock, but may never reclaim one: inspection below
+    // treats this identity as ambiguous/fail-closed.
+    startIdentity: startIdentity || `unsupported-${randomUUID()}`,
+  };
+}
+
+function inspectLockOwner(owner) {
+  if (
+    !owner ||
+    owner.schemaVersion !== LOCK_SCHEMA_VERSION ||
+    typeof owner.host !== "string" ||
+    !Number.isInteger(owner.pid) ||
+    owner.pid <= 0 ||
+    typeof owner.startIdentity !== "string" ||
+    !/^\d+$/u.test(owner.startIdentity)
+  ) {
+    return "ambiguous";
+  }
+  if (owner.host !== hostname()) return "ambiguous";
+  const actual = processStartIdentity(owner.pid);
+  if (!actual) {
+    // `/proc` can be unavailable or denied even while a publisher is alive.
+    // Only an explicit ESRCH is evidence that this owner cannot still hold
+    // the lock; every other inspection failure remains fail-closed.
+    try {
+      process.kill(owner.pid, 0);
+      return "ambiguous";
+    } catch (error) {
+      return error?.code === "ESRCH" ? "dead" : "ambiguous";
+    }
+  }
+  return actual === owner.startIdentity ? "live" : "dead";
+}
+
+function sameLockOwner(left, right) {
+  return JSON.stringify(left) === JSON.stringify(right);
+}
+
+function acquireLock(state, { ownerInspector } = {}) {
+  const lock = join(state, "stage.lock");
+  const owner = lockOwnerRecord();
+  let acquired = false;
+  while (!acquired) {
+    let descriptor;
+    try {
+      descriptor = openSync(lock, "wx", 0o600);
+      writeFileSync(descriptor, `${JSON.stringify(owner)}\n`);
+      fsyncSync(descriptor);
+      acquired = true;
+    } catch (error) {
+      if (error?.code !== "EEXIST") throw error;
+      let recorded;
+      try {
+        recorded = readJson(lock, "stage lock owner");
+      } catch {
+        fail("stage lock owner is malformed or inaccessible");
+      }
+      let status;
+      try {
+        status = (ownerInspector || inspectLockOwner)(recorded);
+      } catch {
+        status = "ambiguous";
+      }
+      if (status !== "dead") fail("another stage holds the exclusive lock");
+      const quarantine = join(state, `stage.lock.stale-${randomUUID()}`);
+      try {
+        renameSync(lock, quarantine);
+        syncDirectory(state, undefined);
+      } catch (renameError) {
+        if (renameError?.code === "ENOENT") continue;
+        throw renameError;
+      }
+    } finally {
+      if (descriptor !== undefined) closeSync(descriptor);
+    }
+  }
+  syncDirectory(state, undefined);
   return () => {
-    if (existsSync(lock)) rmSync(lock, { force: true });
+    let recorded;
+    try {
+      recorded = readJson(lock, "stage lock owner");
+    } catch {
+      fail("stage lock ownership changed before release");
+    }
+    if (!sameLockOwner(recorded, owner)) fail("stage lock ownership changed before release");
+    unlinkSync(lock);
+    syncDirectory(state, undefined);
   };
 }
 
@@ -460,13 +560,26 @@ function copyInventory(candidateRoot, inventory, target, sourceFor, options, dur
   }
 }
 
-function promoteFiles(from, to, inventory, options, { sourceRoot, destinationRoot }) {
+function promoteFiles(
+  from,
+  to,
+  inventory,
+  options,
+  { sourceRoot, destinationRoot, recoverExisting = false },
+) {
   for (const entry of inventory) {
     const source = join(from, ...entry.path.split("/"));
     const destination = join(to, ...entry.path.split("/"));
     if (existsSync(destination)) {
       if (!equalEntry(sha256(destination), entry))
         fail(`immutable asset collision at ${entry.path}`);
+      // A matching destination found through the durable promotion journal may
+      // have survived the rename but not its directory barrier.  Re-run the
+      // complete barrier before the ledger can make it authoritative.
+      if (recoverExisting) {
+        syncFile(destination, options);
+        syncDirectoryAncestors(dirname(destination), destinationRoot, options);
+      }
       continue;
     }
     mkdirSync(dirname(destination), { recursive: true, mode: 0o755 });
@@ -763,6 +876,7 @@ export function stageStaticRelease({
   legacyRoot,
   faultAt,
   onDurabilityOperation,
+  ownerInspector,
   lockHeld = false,
 } = {}) {
   if (!stateRoot || !candidateRoot) fail("--state and --candidate are required");
@@ -770,7 +884,7 @@ export function stageStaticRelease({
   const release = createCandidateManifest(candidateRoot);
   const releaseDir = join(state, "releases", release.releaseId);
   const metadataPath = join(state, "metadata", `${release.releaseId}.json`);
-  const unlock = lockHeld ? () => {} : acquireLock(state);
+  const unlock = lockHeld ? () => {} : acquireLock(state, { ownerInspector });
   const transaction = join(state, "transactions", `${release.releaseId}-${randomUUID()}`);
   try {
     const candidate = realpathSync(candidateRoot);
@@ -860,14 +974,19 @@ export function stageStaticRelease({
         faultAt,
         onDurabilityOperation,
       },
-      { sourceRoot: transaction, destinationRoot: state },
+      {
+        sourceRoot: transaction,
+        destinationRoot: state,
+        recoverExisting: Boolean(assetPromotionRecovery),
+      },
     );
     if (!sameEntries(inventoryForAssets(state, "retained assets"), expectedRetained)) {
       fail("promoted retained assets do not match cumulative inventory");
     }
-    if (!assetPromotionRecovery?.ledgerIsExpected) {
-      writeRetainedInventory(state, expectedRetained, { faultAt, onDurabilityOperation });
-    }
+    // Re-publish the ledger even when recovery observes its expected bytes.
+    // The previous atomic rename may have happened immediately before a failed
+    // directory barrier, so byte equality alone is not durability evidence.
+    writeRetainedInventory(state, expectedRetained, { faultAt, onDurabilityOperation });
     fault({ faultAt }, "after-assets");
     clearAssetPromotionJournal(state, { faultAt, onDurabilityOperation });
 
@@ -960,6 +1079,23 @@ function outputInventory(root) {
   return walkRegularFiles(root, "static publish output");
 }
 
+function currentReleaseId(state) {
+  const current = join(state, "current");
+  if (!existsSync(current) || !lstatSync(current).isSymbolicLink()) return null;
+  const target = readlinkSync(current);
+  return /^releases\/[a-f0-9]{64}$/u.test(target) ? target.slice("releases/".length) : null;
+}
+
+function exactInventory(value) {
+  return (
+    Array.isArray(value) &&
+    sameEntries(
+      value,
+      [...value].sort((left, right) => ordinal(left.path, right.path)),
+    )
+  );
+}
+
 function pendingPublishMatches(pending, output, release, inventory) {
   return (
     pending?.schemaVersion === SCHEMA_VERSION &&
@@ -968,19 +1104,50 @@ function pendingPublishMatches(pending, output, release, inventory) {
     pending.transactionId.startsWith(".") &&
     pending.releaseId === release.releaseId &&
     pending.manifestSha256 === manifestDigest(release) &&
-    typeof pending.retainedAssetsSha256 === "string" &&
+    (pending.priorCurrentReleaseId === null || typeof pending.priorCurrentReleaseId === "string") &&
+    exactInventory(pending.priorAssets) &&
+    exactInventory(pending.expectedAssets) &&
+    pending.priorAssetsSha256 === inventoryDigest(pending.priorAssets) &&
+    pending.expectedAssetsSha256 === inventoryDigest(pending.expectedAssets) &&
     sameEntries(pending.inventory || [], inventory)
   );
 }
 
 function pendingRetainedAssetsMatchCurrentState(state, pending) {
   const ledger = readRetainedInventory(state);
-  if (!ledger) return false;
   const retained = inventoryForAssets(state, "retained assets");
-  return (
-    sameEntries(ledger, retained) &&
-    pending.retainedAssetsSha256 === manifestDigest(retainedInventoryPayload(ledger))
-  );
+  const current = currentReleaseId(state);
+  if (!ledger) {
+    return (
+      pending.priorCurrentReleaseId === null &&
+      current === null &&
+      pending.priorAssets.length === 0 &&
+      retained.length === 0
+    );
+  }
+  if (!sameEntries(ledger, retained)) return false;
+  const committed = verifyCommittedState(state);
+  const priorCurrentIsExact =
+    pending.priorCurrentReleaseId === null
+      ? current === null && pending.priorAssets.length === 0
+      : committed.valid && committed.releaseId === pending.priorCurrentReleaseId;
+  const priorIsExact =
+    priorCurrentIsExact &&
+    sameEntries(ledger, pending.priorAssets) &&
+    sameEntries(retained, pending.priorAssets);
+  // A promotion can have completed before the pre-current fault.  It is safe
+  // only when it is precisely the journal's own A+B namespace and A is still
+  // selected; a later C release or a foreign byte remains a hard stop.
+  const ownPromotionIsExact =
+    priorCurrentIsExact &&
+    sameEntries(ledger, pending.expectedAssets) &&
+    sameEntries(retained, pending.expectedAssets);
+  const alreadyCommitted =
+    committed.valid &&
+    committed.releaseId === pending.releaseId &&
+    sameEntries(ledger, pending.expectedAssets) &&
+    sameEntries(retained, pending.expectedAssets);
+  return priorIsExact || ownPromotionIsExact || alreadyCommitted;
 }
 
 function readPendingPublish(state) {
@@ -1051,11 +1218,18 @@ function copyPublishTree({ state, candidate, temporary, options }) {
   syncTree(temporary, options);
   return {
     inventory,
-    // This is the retained namespace that existed before B activation.  It
-    // permits an exact B retry while A remains committed, but becomes stale as
-    // soon as any independent C promotion changes the ledger or asset walk.
-    retainedAssetsSha256: manifestDigest(retainedInventoryPayload(existing)),
+    priorAssets: existing,
+    expectedAssets: retained,
   };
+}
+
+function noFollowEntry(path) {
+  try {
+    return lstatSync(path);
+  } catch (error) {
+    if (error?.code === "ENOENT") return undefined;
+    throw error;
+  }
 }
 
 // Publication deliberately happens before state activation.  The journal turns
@@ -1068,6 +1242,7 @@ export function buildStaticPublish({
   outputRoot,
   faultAt,
   onDurabilityOperation,
+  ownerInspector,
 } = {}) {
   if (!stateRoot || !candidateRoot || !outputRoot)
     fail("--state, --candidate and --output are required");
@@ -1078,10 +1253,14 @@ export function buildStaticPublish({
   const candidate = { root: candidateRootReal, manifest };
   const options = { faultAt, onDurabilityOperation };
   const existingPending = readPendingPublish(state);
-  const unlock = acquireLock(state);
+  const unlock = acquireLock(state, { ownerInspector });
 
   try {
-    if (existsSync(output)) {
+    const outputEntry = noFollowEntry(output);
+    if (outputEntry) {
+      if (outputEntry.isSymbolicLink() || !outputEntry.isDirectory()) {
+        fail("publish output already exists without an exact pending transaction");
+      }
       const inventory = outputInventory(output);
       if (
         !existingPending ||
@@ -1095,11 +1274,13 @@ export function buildStaticPublish({
         candidateRoot: candidateRootReal,
         faultAt,
         onDurabilityOperation,
+        ownerInspector,
         lockHeld: true,
       });
       if (staged.releaseId !== manifest.releaseId || !verifyCommittedState(state).valid) {
         fail("static publish activation did not commit the journaled candidate");
       }
+      fault(options, "before-publish-journal-clear");
       clearPendingPublish(state, options);
       return staged;
     }
@@ -1112,19 +1293,32 @@ export function buildStaticPublish({
     let journalWritten = false;
     try {
       mkdirSync(temporary, { recursive: false, mode: 0o755 });
-      const { inventory, retainedAssetsSha256 } = copyPublishTree({
+      const { inventory, priorAssets, expectedAssets } = copyPublishTree({
         state,
         candidate,
         temporary,
         options,
       });
+      const priorCurrentReleaseId = currentReleaseId(state);
+      const priorCommitted = verifyCommittedState(state);
+      if (
+        (priorCurrentReleaseId === null && priorAssets.length !== 0) ||
+        (priorCurrentReleaseId !== null &&
+          (!priorCommitted.valid || priorCommitted.releaseId !== priorCurrentReleaseId))
+      ) {
+        fail("static publish requires an empty initial state or a valid committed current release");
+      }
       const pending = {
         schemaVersion: SCHEMA_VERSION,
         output,
         transactionId: basename(temporary),
         releaseId: manifest.releaseId,
         manifestSha256: manifestDigest(manifest),
-        retainedAssetsSha256,
+        priorCurrentReleaseId,
+        priorAssetsSha256: inventoryDigest(priorAssets),
+        priorAssets,
+        expectedAssetsSha256: inventoryDigest(expectedAssets),
+        expectedAssets,
         inventory,
       };
       writeAtomically(
@@ -1145,11 +1339,13 @@ export function buildStaticPublish({
         candidateRoot: candidateRootReal,
         faultAt,
         onDurabilityOperation,
+        ownerInspector,
         lockHeld: true,
       });
       if (staged.releaseId !== manifest.releaseId || !verifyCommittedState(state).valid) {
         fail("static publish activation did not commit the candidate");
       }
+      fault(options, "before-publish-journal-clear");
       clearPendingPublish(state, options);
       return staged;
     } finally {

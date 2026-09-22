@@ -11,6 +11,7 @@ const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const suffix = `${process.pid}-${Date.now()}`;
 const project = `cabadrive-retention-${suffix}`.toLowerCase();
 const stoppedProject = `${project}-stopped`;
+const initialProject = `${project}-initial`;
 const siblingProject = `${project}-sibling`;
 const port = String(5600 + (process.pid % 300));
 const temporary = mkdtempSync(join(tmpdir(), "cabadrive-docker-retention-"));
@@ -182,11 +183,28 @@ try {
   if (stoppedBody !== legacyBytes) throw new Error("stopped legacy image was not retained");
   assertExactCandidateShellAndWorker(stoppedProject);
   await assertCandidateWorkerControls();
+  make(["down"], stoppedProject);
+
+  // A clean initial install has neither a legacy source nor a retained-state
+  // tuple. It must still stage and serve the exact candidate release.
+  make(["build"], initialProject);
+  make(["up"], initialProject);
+  await waitFor(`http://localhost:${port}/`);
+  assertExactCandidateShellAndWorker(initialProject);
+  await assertCandidateWorkerControls();
+  const absentLegacy = spawnSync(
+    "curl",
+    ["--fail", "--silent", `http://localhost:${port}/assets/lazy-a.js`],
+    { encoding: "utf8" },
+  );
+  if (absentLegacy.status === 0)
+    throw new Error("initial install unexpectedly inherited a legacy asset");
 
   process.stdout.write(`Docker asset-retention lifecycle passed for ${project}\n`);
 } finally {
   cleanupProject(project);
   cleanupProject(stoppedProject);
+  cleanupProject(initialProject);
   spawnSync("docker", ["volume", "rm", "-f", `${siblingProject}_release-state`], {
     stdio: "ignore",
   });

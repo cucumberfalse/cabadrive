@@ -55,14 +55,14 @@
   promotion and before metadata promotion; promote any late authoritative legacy
   union before an idempotent return; require exact cumulative retained inventory
   and crash-durable file/directory sync ordering before activation; add no GC.
-- [ ] T009 Implement a static publish command that consumes current + candidate
+- [x] T009 Implement a static publish command that consumes current + candidate
   roots and emits a complete A+B `/assets/`, B-only mutable shell tree suitable
   for one atomic host publication. Reject candidate-only/destructive semantics
   and pre-existing output before any staging mutation. Prepare state without
   activation, atomically complete output, and only then commit `current`.
 - [x] T010 Add Docker candidate/stager targets and project-scoped persistent
   release-state volume. Keep runtime nginx-only and end-user host Node-free.
-- [ ] T011 Add safe pre-build legacy capture for the exact Compose project. Use
+- [x] T011 Add safe pre-build legacy capture for the exact Compose project. Use
   the running container when present or the prior Compose image when stopped;
   record source identity and fail if detected prior assets cannot be exported.
   Skip only for a validated committed-state tuple, never merely because its
@@ -70,7 +70,7 @@
   directory. A verifier-rejected volume may not be copied through an attached
   container; preserve only independently validated handoff/baked legacy sources.
   Discover and adopt the unique exact pre-F051 project before using a new default.
-- [ ] T012 Make `make build` capture before image replacement and `make up` run
+- [x] T012 Make `make build` capture before image replacement and `make up` run
   the stager before replacing/starting nginx. Preserve volume on `make down` and
   keep default URL plus isolated project/port behavior. Compose, capture, lookup,
   handoff, and bind mount must share one effective project key, including a
@@ -89,12 +89,12 @@
 
 ## Verification And Publication
 
-- [ ] T016 Run focused manifest/staging/fault/path/static-publish tests and
+- [x] T016 Run focused manifest/staging/fault/path/static-publish tests and
   record test-first FAIL->PASS evidence.
 - [x] T017 Run the real-worker Chromium safe A->B origin-hit test and destructive
   control; record cache-miss proof, request source, status, MIME, exact bytes/SHA,
   and absence of HTML fallback.
-- [ ] T018 Run an executable isolated Docker running-legacy and stopped-legacy
+- [x] T018 Run an executable isolated Docker running-legacy and stopped-legacy
   A->B regression in the normal Docker validation gate, plus
   initial install, restart and `make down/up`; smoke current HTML/SW and retained
   A hash. Also prove exact B shell/SW selection and B worker activation/control.
@@ -103,11 +103,11 @@
   `pnpm run test`, `pnpm run build`, `pnpm run test:e2e`, full `pnpm run
   preflight`, `node scripts/check-feature-memory.mjs --worktree`, `pnpm run
   check:repo`, and `git diff --check`.
-- [ ] T020 Inspect final scope: no feature-049 product behavior or sibling
+- [x] T020 Inspect final scope: no feature-049 product behavior or sibling
   feature-memory edits, no PR #214/#215 mutation, no host Node requirement, no
   unsafe deletion/overwrite, no broad path, and no committed runtime state/temp
   artifacts.
-- [ ] T021 Record exact results, release-state decisions, dead ends, known
+- [x] T021 Record exact results, release-state decisions, dead ends, known
   issues, all Implementation Agent feedback, effective content head, and cycle
   PR metadata. Commit/push/open exactly one ready PR under assignment; never
   merge as Implementation Agent.
@@ -220,26 +220,26 @@
   order before `current`; cover nested release/output paths and failures at each
   ancestor. Each failure leaves A current and exact retry succeeds without
   destructive cleanup.
-- [ ] T022t Implement R051-020: extend `publish-pending.json` to bind the
+- [x] T022t Implement R051-020: extend `publish-pending.json` to bind the
   prior current release and both complete retained snapshots (pre-stage A and
   expected A+B). After `after-output`, fault B promotion before `current`, then
   retry using the exact journal-known A+B state: it must complete B and clear
   the journal. Foreign/extra assets, ledger drift, a changed current release,
   stale A+B after C, or a changed candidate/legacy request must fail unchanged.
   Do not loosen the existing A/B/C stale-output guard.
-- [ ] T022u Implement R051-021: use a no-follow `lstat` destination classifier
+- [x] T022u Implement R051-021: use a no-follow `lstat` destination classifier
   before every static publish transaction. A dangling output-root symlink, live
   symlink, regular file, or directory is pre-existing state and is rejected
   before stage; only the exact journal-bound completed regular-directory output
   is recoverable. Test that the link and an external sentinel remain untouched.
-- [ ] T022v Implement R051-022: replace the permanent PID-only `stage.lock`
+- [x] T022v Implement R051-022: replace the permanent PID-only `stage.lock`
   with a durably fsynced owner record carrying a non-reusable host-local process
   identity. Prove dead-owner recovery atomically quarantines then replaces the
   stale record; a live matching identity, malformed, or inaccessible/
   cross-host/unsupported case fails closed, while a reused PID with a different
   start identity proves the recorded owner stale. Keep an injectable
   owner-inspection seam for deterministic tests and never blindly unlink a lock.
-- [ ] T022w Implement R051-023: on journaled recovery, re-fsync every exact
+- [x] T022w Implement R051-023: on journaled recovery, re-fsync every exact
   promoted destination and rerun its ordered destination ancestor barrier even
   when that path already exists. Add nested `assets/x/y.js` faults immediately
   after rename/before each ancestor sync and trace that retry performs file,
@@ -511,6 +511,45 @@
   already exists. Architect accepts all four bounded follow-ups above. They
   require test-first executable recovery/negative evidence, fresh full
   verification and review; no owner decision or scope expansion is required.
+- R051-020 through R051-023 implementation evidence (2026-09-22): `node
+  --test tests/static-release-staging.test.mjs
+  tests/capture-legacy-assets.test.mjs tests/static-release-docker-contract.test.mjs
+  tests/docker-runtime.test.mjs` passed 35/35. It covers B's exact own A+B
+  recovery after a pre-current fault, candidate/C drift rejection, no-follow
+  live/dangling output symlink protection, owner-record quarantine/reclaim and
+  fail-closed live/ambiguous/malformed locks, plus nested existing-promotion
+  file/ancestor re-fsync faults and retry ordering. `pnpm run typecheck`,
+  `pnpm run lint`, `pnpm run format:check`, and `pnpm run preflight` passed.
+  `pnpm run test:docker-retention` passed the isolated real Docker lifecycle.
+  Fresh exact-head review and required GitHub checks remain required before
+  final validation. No scope divergence or new implementation feedback.
+- Integrated implementation audit evidence (2026-09-22): the complete existing
+  F051 state-machine contract was rechecked in one pass across clean initial
+  publication, A->B, A->B->C stale rejection, exact own-pending retry,
+  corrupt/foreign current state, partial asset/ledger/release/output journals,
+  nested durability barriers, hostile/dangling symlinks, live/dead/ambiguous
+  lock ownership, running/stopped/nondefault legacy projects, static output,
+  restart, and down/up. Three concrete defects were fixed inside the existing
+  R051-018/R051-020/R051-023 and acceptance-24 contracts: an initial
+  post-output retry now records a canonical null prior release; pending recovery
+  requires the full committed current tuple rather than trusting its ID; and an
+  expected ledger surviving a failed directory barrier is atomically
+  re-published before activation. The previously specified
+  post-current/pre-journal-clear boundary now has an explicit resumable fault
+  point and regression. No architecture decision, new product scope, or owner
+  decision was required.
+- Final integrated focused evidence: `node --test
+  tests/static-release-staging.test.mjs tests/capture-legacy-assets.test.mjs
+  tests/static-release-docker-contract.test.mjs tests/docker-runtime.test.mjs`
+  passed 38/38; the state-machine suite itself passed 25/25. `pnpm exec
+  playwright test tests/e2e/asset-retention.spec.ts` passed 4/4. `pnpm run
+  preflight` passed with 588/588 Node tests and 158/158 Playwright tests, plus
+  feature-memory, repository, content, typecheck, lint, format, negative-quality
+  and production-build gates. `pnpm run test:docker-retention` passed a real,
+  isolated lifecycle covering running legacy A, restart, down/up, stopped-image
+  A, candidate shell/worker control, sibling isolation, and a clean initial
+  install with no inherited legacy asset. `git diff --check` passed; PR #214 and
+  PR #215 were not mutated.
 - Effective content head: pending final process-memory and validation guards.
 - Cleanup: not assigned; any later environment cleanup requires separate
   Cleanup Agent scope/evidence.
