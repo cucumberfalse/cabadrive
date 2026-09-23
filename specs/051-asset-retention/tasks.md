@@ -726,6 +726,21 @@
   `158/158` Playwright tests. The macOS-only E2E subprocess uses the explicit
   in-process test backend; production behavior remains the real Docker/Linux
   kernel lock proven by the separate lifecycle test.
+- Orchestrator routed two additional exact-contract implications from the
+  mandated final adjacent audit into this same return-10 batch, without a new
+  Architect return: R051-033 (`r4081604325`) is fixed by re-syncing a verified
+  visible release tree, metadata file, and both ancestor chains before
+  `current`; R051-034 (`r4081696656`) is fixed by rejecting canonical
+  candidate/output same-path or ancestor/descendant overlap before state layout
+  or transaction mutation. Targeted regressions prove metadata-parent fsync
+  failure keeps A selected and exact retry orders both tuple barriers before
+  `rename-current`; overlap cases include same, nested absent output, and
+  candidate-inside-output with no state creation. Focused staging passes
+  `33/33`. Final full preflight passes feature-memory, baseline, content,
+  typecheck, lint, format, negative-quality, `598/598` Node tests, build/SW,
+  and `158/158` Playwright tests. The isolated real Docker lifecycle also
+  passes again, including overlapping-container exclusion, kill/retry, retained
+  A bytes, candidate B shell/worker, restart and down/up persistence.
 
 ## Final Architect Validation
 

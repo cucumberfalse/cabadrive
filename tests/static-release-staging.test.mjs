@@ -286,6 +286,21 @@ test("static publish emits retained assets with only the B mutable shell", () =>
   });
 });
 
+test("static publish rejects candidate/output overlap before state mutation", () => {
+  withFixture((root) => {
+    const candidate = release(root, "candidate", { "a.js": "A" }, "A shell");
+    for (const outputRoot of [candidate, join(candidate, "nested-output"), root]) {
+      const state = join(root, `state-${Math.random()}`);
+      assert.throws(
+        () => buildStaticPublish({ stateRoot: state, candidateRoot: candidate, outputRoot }),
+        /must not overlap/i,
+      );
+      assert.equal(existsSync(state), false);
+      assert.equal(existsSync(join(candidate, "nested-output")), false);
+    }
+  });
+});
+
 test("static publish writes and verifies output before B activation and resumes only its exact journal", () => {
   withFixture((root) => {
     const state = join(root, "state");
@@ -1169,6 +1184,58 @@ test("release-only partial state resumes after metadata boundary without selecti
     stageStaticRelease({ stateRoot: state, candidateRoot: b });
     assert.match(currentShell(state), /B shell/);
     assert.equal(verifyCommittedState(state).valid, true);
+  });
+});
+
+test("visible release and metadata retry repeats tuple durability before current", () => {
+  withFixture((root) => {
+    const state = join(root, "state");
+    const a = release(root, "a", { "a.js": "A" }, "A shell");
+    const b = release(root, "b", { "b.js": "B" }, "B shell");
+    stageStaticRelease({ stateRoot: state, candidateRoot: a });
+    const durableState = realpathSync(state);
+    const releaseId = createCandidateManifest(b).releaseId;
+    const releaseDir = join(durableState, "releases", releaseId);
+    const metadataPath = join(durableState, "metadata", `${releaseId}.json`);
+    let injected = false;
+
+    assert.throws(
+      () =>
+        stageStaticRelease({
+          stateRoot: state,
+          candidateRoot: b,
+          onDurabilityOperation: ({ operation, path }) => {
+            if (
+              !injected &&
+              operation === "fsync-directory" &&
+              path === join(durableState, "metadata")
+            ) {
+              injected = true;
+              throw new Error("metadata directory barrier failed");
+            }
+          },
+        }),
+      /metadata directory barrier failed/i,
+    );
+    assert.equal(existsSync(releaseDir), true);
+    assert.equal(existsSync(metadataPath), true);
+    assert.match(currentShell(state), /A shell/);
+
+    const trace = [];
+    stageStaticRelease({
+      stateRoot: state,
+      candidateRoot: b,
+      onDurabilityOperation: (event) => trace.push(event),
+    });
+    const releaseSync = trace.findIndex(
+      ({ operation, path }) => operation === "fsync-directory" && path === releaseDir,
+    );
+    const metadataSync = trace.findIndex(
+      ({ operation, path }) => operation === "fsync-file" && path === metadataPath,
+    );
+    const activation = trace.findIndex(({ operation }) => operation === "rename-current");
+    assert.ok(releaseSync >= 0 && metadataSync > releaseSync && activation > metadataSync);
+    assert.match(currentShell(state), /B shell/);
   });
 });
 

@@ -1155,6 +1155,10 @@ export function stageStaticRelease({
       ) {
         fail("existing complete release is not a verified committed tuple");
       }
+      syncTree(releaseDir, { faultAt, onDurabilityOperation });
+      syncDirectoryAncestors(dirname(releaseDir), state, { faultAt, onDurabilityOperation });
+      syncFile(metadataPath, { faultAt, onDurabilityOperation });
+      syncDirectoryAncestors(dirname(metadataPath), state, { faultAt, onDurabilityOperation });
       makeCurrent(state, release.releaseId, { faultAt, onDurabilityOperation });
       return { changed: false, releaseId: release.releaseId, manifest: release };
     }
@@ -1169,6 +1173,10 @@ export function stageStaticRelease({
         faultAt,
         onDurabilityOperation,
       });
+      syncTree(releaseDir, { faultAt, onDurabilityOperation });
+      syncDirectoryAncestors(dirname(releaseDir), state, { faultAt, onDurabilityOperation });
+      syncFile(metadataPath, { faultAt, onDurabilityOperation });
+      syncDirectoryAncestors(dirname(metadataPath), state, { faultAt, onDurabilityOperation });
       fault({ faultAt }, "before-current");
       makeCurrent(state, release.releaseId, { faultAt, onDurabilityOperation });
       return { changed: true, releaseId: release.releaseId, manifest: release };
@@ -1448,6 +1456,18 @@ function noFollowEntry(path) {
   }
 }
 
+function canonicalProspectivePath(path) {
+  let ancestor = path;
+  const missing = [];
+  while (!existsSync(ancestor)) {
+    missing.unshift(basename(ancestor));
+    const parent = dirname(ancestor);
+    if (parent === ancestor) fail(`cannot resolve prospective path: ${path}`);
+    ancestor = parent;
+  }
+  return join(realpathSync(ancestor), ...missing);
+}
+
 // Publication deliberately happens before state activation.  The journal turns
 // the only unavoidable crash window (output renamed, current not yet changed)
 // into an exact, byte-verified retry rather than permission to adopt arbitrary
@@ -1464,9 +1484,17 @@ export function buildStaticPublish({
 } = {}) {
   if (!stateRoot || !candidateRoot || !outputRoot)
     fail("--state, --candidate and --output are required");
-  const state = ensureStateLayout(stateRoot);
   const output = resolve(outputRoot);
+  const canonicalOutput = canonicalProspectivePath(output);
   const candidateRootReal = realpathSync(candidateRoot);
+  if (
+    canonicalOutput === candidateRootReal ||
+    canonicalOutput.startsWith(`${candidateRootReal}${sep}`) ||
+    candidateRootReal.startsWith(`${canonicalOutput}${sep}`)
+  ) {
+    fail("candidate and static publish output must not overlap");
+  }
+  const state = ensureStateLayout(stateRoot);
   const manifest = createCandidateManifest(candidateRootReal);
   const candidate = { root: candidateRootReal, manifest };
   const options = { faultAt, onDurabilityOperation };

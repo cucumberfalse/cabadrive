@@ -58,6 +58,9 @@ for safe update continuity because an older open tab may request a lazy hash
 that its cache has never loaded.
 The target publish path must be new: an existing destination is rejected before
 any release-state staging or pointer change.
+A static output path that is the candidate path, contains it, or is contained by
+it is rejected before release-state creation or transaction work; publication
+may never mutate the candidate tree it inventories.
 A crash after the durable output journal but before its final rename resumes
 only the exact journal-bound temporary sibling with unchanged prior state; an
 ambiguous, hostile, drifted, or simultaneous temporary/final relation fails
@@ -66,6 +69,10 @@ After output rename, the journal remains `renamed-uncommitted` until the output
 parent directory is fsynced. Recovery from that phase revalidates and re-syncs
 the complete output and repeats the parent barrier before any retained release
 or `current` activation; only then is the journal advanced to `output-durable`.
+Recovery that observes both a verified release directory and metadata also
+repeats the release-tree, metadata-file, and parent-directory durability
+barriers before publishing `current`; visible bytes alone are not durability
+evidence.
 
 After `make up`, the app is available at:
 
