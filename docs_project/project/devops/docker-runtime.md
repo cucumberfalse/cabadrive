@@ -36,10 +36,14 @@ handoff is mandatory input and fails before release-state mutation.
 
 The stager's exclusive publication lock is also project-scoped. Its durable
 execution domain lives in `release-state`, so recreating the disposable stager
-container does not change lock authority. A crashed owner can be reclaimed only
-after its process incarnation is proven dead and the exact observed lock
-generation is atomically pinned and replaced; a concurrent or newly acquired
-lock is left untouched.
+container does not change lock authority. Production staging holds a Linux
+kernel advisory lock on one stable, no-follow `stage.lock` inode for the entire
+transaction; namespace-local PIDs are diagnostic only. Container death releases
+the lock in the kernel, while unsupported lock/filesystem semantics fail closed.
+The stager image supplies the required `flock` utility. A legacy
+`stage.lock.reclaim` hard link is removed only while that lock is held and only
+when its device, inode, and complete recorded generation exactly match the
+canonical lock; ambiguous evidence remains untouched and blocks staging.
 
 No host Node.js or pnpm is required: the candidate build and staging command
 run in Docker. The scoped handoff under `.cabadrive-release-handoff/` is local
@@ -58,6 +62,10 @@ A crash after the durable output journal but before its final rename resumes
 only the exact journal-bound temporary sibling with unchanged prior state; an
 ambiguous, hostile, drifted, or simultaneous temporary/final relation fails
 closed.
+After output rename, the journal remains `renamed-uncommitted` until the output
+parent directory is fsynced. Recovery from that phase revalidates and re-syncs
+the complete output and repeats the parent barrier before any retained release
+or `current` activation; only then is the journal advanced to `output-durable`.
 
 After `make up`, the app is available at:
 

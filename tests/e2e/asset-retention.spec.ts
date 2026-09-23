@@ -16,6 +16,7 @@ const generateHistoricalWorker = createServiceWorkerBody as unknown as (
 function stage(state: string, candidate: string) {
   execFileSync(process.execPath, [stager, "stage", "--state", state, "--candidate", candidate], {
     stdio: "pipe",
+    env: { ...process.env, CABADRIVE_TEST_KERNEL_LOCK: "in-process" },
   });
 }
 

@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import {
   existsSync,
   lstatSync,
+  linkSync,
   mkdirSync,
   readFileSync,
   readdirSync,
@@ -25,6 +26,8 @@ import {
   publishLegacyHandoffPointer,
   writeLegacyHandoffManifest,
 } from "../scripts/stage-static-release.mjs";
+
+process.env.CABADRIVE_TEST_KERNEL_LOCK = "in-process";
 
 function withFixture(callback) {
   const root = join(tmpdir(), `cabadrive-release-${process.pid}-${Date.now()}-${Math.random()}`);
@@ -544,6 +547,80 @@ test("initial static publish and post-current journal cleanup both recover exact
   });
 });
 
+test("rename-before-parent-fsync recovery repeats the barrier before activation", () => {
+  withFixture((root) => {
+    const state = join(root, "state");
+    const output = join(root, "output");
+    const a = release(root, "a", { "a.js": "A" }, "A shell");
+    const b = release(root, "b", { "b.js": "B" }, "B shell");
+    stageStaticRelease({ stateRoot: state, candidateRoot: a });
+
+    assert.throws(
+      () =>
+        buildStaticPublish({
+          stateRoot: state,
+          candidateRoot: b,
+          outputRoot: output,
+          faultAt: "crash-after-output-rename-before-parent-fsync",
+        }),
+      /fault injection/i,
+    );
+    assert.match(currentShell(state), /A shell/);
+    assert.equal(
+      JSON.parse(readFileSync(join(state, "publish-pending.json"), "utf8")).phase,
+      "renamed-uncommitted",
+    );
+
+    let failedParent = false;
+    assert.throws(
+      () =>
+        buildStaticPublish({
+          stateRoot: state,
+          candidateRoot: b,
+          outputRoot: output,
+          onDurabilityOperation: ({ operation, path }) => {
+            if (!failedParent && operation === "fsync-directory" && path === root) {
+              failedParent = true;
+              throw new Error("parent fsync failure");
+            }
+          },
+        }),
+      /parent fsync failure/i,
+    );
+    assert.match(currentShell(state), /A shell/);
+
+    assert.throws(
+      () =>
+        buildStaticPublish({
+          stateRoot: state,
+          candidateRoot: b,
+          outputRoot: output,
+          faultAt: "after-output-parent-fsync-before-phase",
+        }),
+      /fault injection/i,
+    );
+    assert.equal(
+      JSON.parse(readFileSync(join(state, "publish-pending.json"), "utf8")).phase,
+      "renamed-uncommitted",
+    );
+    assert.match(currentShell(state), /A shell/);
+
+    const trace = [];
+    buildStaticPublish({
+      stateRoot: state,
+      candidateRoot: b,
+      outputRoot: output,
+      onDurabilityOperation: (event) => trace.push(event),
+    });
+    const parentSync = trace.findIndex(
+      ({ operation, path }) => operation === "fsync-directory" && path === root,
+    );
+    const activation = trace.findIndex(({ operation }) => operation === "rename-current");
+    assert.ok(parentSync >= 0 && activation > parentSync);
+    assert.match(currentShell(state), /B shell/);
+  });
+});
+
 test("static publish rejects a corrupt prior current tuple before publication", () => {
   withFixture((root) => {
     const state = join(root, "state");
@@ -748,38 +825,44 @@ test("static publish never follows or replaces an occupied output-root entry", (
   });
 });
 
-test("only a proven-dead lock owner is quarantined and reclaimed", () => {
+test("legacy reclaim is removed only when it is the exact canonical inode and generation", () => {
   withFixture((root) => {
     const state = join(root, "state");
     const a = release(root, "a", { "a.js": "A" }, "A shell");
     const b = release(root, "b", { "b.js": "B" }, "B shell");
     stageStaticRelease({ stateRoot: state, candidateRoot: a });
     const lock = join(state, "stage.lock");
-    const owner = { schemaVersion: 1, host: "test", pid: 99, startIdentity: "1" };
-
-    writeFileSync(lock, `${JSON.stringify(owner)}\n`);
-    assert.doesNotThrow(() =>
-      stageStaticRelease({ stateRoot: state, candidateRoot: b, ownerInspector: () => "dead" }),
-    );
-    assert.ok(readdirSync(state).some((name) => name.startsWith("stage.lock.stale-")));
-    assert.match(currentShell(state), /B shell/);
-
-    for (const status of ["live", "ambiguous"]) {
-      writeFileSync(lock, `${JSON.stringify(owner)}\n`);
-      assert.throws(
-        () =>
-          stageStaticRelease({ stateRoot: state, candidateRoot: b, ownerInspector: () => status }),
-        /exclusive lock/i,
-      );
-      assert.equal(readFileSync(lock, "utf8"), `${JSON.stringify(owner)}\n`);
-      rmSync(lock);
-    }
-    writeFileSync(lock, "not-json\n");
+    const reclaim = join(state, "stage.lock.reclaim");
+    linkSync(lock, reclaim);
     assert.throws(
       () =>
-        stageStaticRelease({ stateRoot: state, candidateRoot: b, ownerInspector: () => "dead" }),
-      /malformed|inaccessible/i,
+        stageStaticRelease({
+          stateRoot: state,
+          candidateRoot: b,
+          onLockOperation: ({ operation }) => {
+            if (operation === "before-reclaim-removal") throw new Error("before reclaim removal");
+          },
+        }),
+      /before reclaim removal/i,
     );
+    assert.equal(lstatSync(reclaim).ino, lstatSync(lock).ino);
+    assert.doesNotThrow(() => stageStaticRelease({ stateRoot: state, candidateRoot: b }));
+    assert.equal(existsSync(reclaim), false);
+    assert.match(currentShell(state), /B shell/);
+
+    writeFileSync(reclaim, readFileSync(lock));
+    const foreignInode = lstatSync(reclaim).ino;
+    assert.notEqual(foreignInode, lstatSync(lock).ino);
+    assert.throws(
+      () => stageStaticRelease({ stateRoot: state, candidateRoot: b }),
+      /does not bind/i,
+    );
+    assert.equal(lstatSync(reclaim).ino, foreignInode);
+    rmSync(reclaim);
+
+    symlinkSync(lock, reclaim);
+    assert.throws(() => stageStaticRelease({ stateRoot: state, candidateRoot: b }), /unsafe/i);
+    assert.equal(lstatSync(reclaim).isSymbolicLink(), true);
   });
 });
 
@@ -831,85 +914,31 @@ test("lock authority survives stager recreation and rejects a sibling Compose pr
   });
 });
 
-test("exact-generation reclaim cannot move a replacement lock or admit two contenders", () => {
+test("stable kernel-lock inode admits at most one transaction", () => {
   withFixture((root) => {
     const state = join(root, "state");
     const a = release(root, "a", { "a.js": "A" }, "A shell");
     const b = release(root, "b", { "b.js": "B" }, "B shell");
-    const c = release(root, "c", { "c.js": "C" }, "C shell");
     stageStaticRelease({ stateRoot: state, candidateRoot: a, projectKey: "fixture" });
-    const domain = JSON.parse(readFileSync(join(state, "stage-execution-domain.json"), "utf8"));
     const lock = join(state, "stage.lock");
-    const record = (acquisition) => ({
-      schemaVersion: 2,
-      project: "fixture",
-      domain: domain.domain,
-      acquisition,
-      diagnosticHost: "recreated-stager",
-      pid: 999999,
-      startIdentity: "1",
-    });
-    const stale = record("stale-generation");
-    const replacement = record("live-replacement");
-    writeFileSync(lock, `${JSON.stringify(stale)}\n`);
-    let replaced = false;
-    assert.throws(
-      () =>
-        stageStaticRelease({
-          stateRoot: state,
-          candidateRoot: b,
-          projectKey: "fixture",
-          ownerInspector: (owner) => (owner.acquisition === stale.acquisition ? "dead" : "live"),
-          onLockOperation: ({ operation }) => {
-            if (operation === "stale-inspected" && !replaced) {
-              replaced = true;
-              unlinkSync(lock);
-              writeFileSync(lock, `${JSON.stringify(replacement)}\n`);
-            }
-          },
-        }),
-      /exclusive lock/i,
-    );
-    assert.deepEqual(JSON.parse(readFileSync(lock, "utf8")), replacement);
-    assert.equal(
-      readdirSync(state).some((name) => name.startsWith("stage.lock.stale-live-replacement")),
-      false,
-    );
-
-    unlinkSync(lock);
-    writeFileSync(lock, `${JSON.stringify(stale)}\n`);
+    const stableInode = lstatSync(lock).ino;
     let nested = false;
-    let active = 0;
-    let maximumActive = 0;
-    const track = ({ operation }) => {
-      if (operation === "lock-acquired") {
-        active += 1;
-        maximumActive = Math.max(maximumActive, active);
-      } else if (operation === "lock-released") {
-        active -= 1;
-      }
-    };
     stageStaticRelease({
       stateRoot: state,
       candidateRoot: b,
       projectKey: "fixture",
-      ownerInspector: () => "dead",
       onLockOperation: (event) => {
-        if (event.operation === "stale-inspected" && !nested) {
+        if (event.operation === "lock-acquired" && !nested) {
           nested = true;
-          stageStaticRelease({
-            stateRoot: state,
-            candidateRoot: c,
-            projectKey: "fixture",
-            ownerInspector: () => "dead",
-            onLockOperation: track,
-          });
+          assert.throws(
+            () => stageStaticRelease({ stateRoot: state, candidateRoot: b, projectKey: "fixture" }),
+            /exclusive kernel lock/i,
+          );
         }
-        track(event);
       },
     });
-    assert.equal(maximumActive, 1);
-    assert.equal(active, 0);
+    assert.equal(nested, true);
+    assert.equal(lstatSync(lock).ino, stableInode);
     assert.match(currentShell(state), /B shell/);
   });
 });

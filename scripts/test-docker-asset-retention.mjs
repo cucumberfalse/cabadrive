@@ -13,6 +13,7 @@ const project = `cabadrive-retention-${suffix}`.toLowerCase();
 const stoppedProject = `${project}-stopped`;
 const initialProject = `${project}-initial`;
 const siblingProject = `${project}-sibling`;
+const lockProject = `${project}-lock`;
 const port = String(5600 + (process.pid % 300));
 const temporary = mkdtempSync(join(tmpdir(), "cabadrive-docker-retention-"));
 const legacyBytes = "export const legacyLazy = 'retained-origin-A';";
@@ -124,11 +125,67 @@ function cleanupProject(selectedProject) {
   });
 }
 
+function assertCrossContainerKernelLock(selectedProject) {
+  const volume = `${selectedProject}_release-state`;
+  const holder = `${selectedProject}-holder`;
+  run("docker", ["volume", "create", volume]);
+  run("docker", [
+    "run",
+    "-d",
+    "--name",
+    holder,
+    "-e",
+    `CABADRIVE_COMPOSE_PROJECT=${selectedProject}`,
+    "-e",
+    "CABADRIVE_TEST_HOLD_LOCK_MS=15000",
+    "-v",
+    `${volume}:/state`,
+    `${project}-stager`,
+  ]);
+  for (let attempt = 0; attempt < 30; attempt += 1) {
+    const ready = spawnSync("docker", ["exec", holder, "test", "-s", "/state/stage.lock"]);
+    if (ready.status === 0) break;
+    Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 200);
+    if (attempt === 29) throw new Error("kernel-lock holder did not become ready");
+  }
+  const contender = spawnSync(
+    "docker",
+    [
+      "run",
+      "--rm",
+      "-e",
+      `CABADRIVE_COMPOSE_PROJECT=${selectedProject}`,
+      "-v",
+      `${volume}:/state`,
+      `${project}-stager`,
+    ],
+    { encoding: "utf8" },
+  );
+  if (contender.status === 0 || !/exclusive kernel lock/i.test(contender.stderr || "")) {
+    throw new Error(
+      `overlapping stager crossed the kernel-lock boundary: status=${contender.status} stderr=${contender.stderr}`,
+    );
+  }
+  run("docker", ["kill", holder]);
+  run("docker", ["rm", holder]);
+  run("docker", [
+    "run",
+    "--rm",
+    "-e",
+    `CABADRIVE_COMPOSE_PROJECT=${selectedProject}`,
+    "-v",
+    `${volume}:/state`,
+    `${project}-stager`,
+  ]);
+  run("docker", ["volume", "rm", volume]);
+}
+
 try {
   // Running-container first migration: capture A before B image replacement.
   buildLegacyImage(project);
   startLegacyContainer(project);
   make(["build"], project);
+  assertCrossContainerKernelLock(lockProject);
   make(["up"], project);
   await waitFor(`http://localhost:${port}/`);
   assertExactLegacyAsset();
@@ -205,6 +262,10 @@ try {
   cleanupProject(project);
   cleanupProject(stoppedProject);
   cleanupProject(initialProject);
+  spawnSync("docker", ["rm", "-f", `${lockProject}-holder`], { stdio: "ignore" });
+  spawnSync("docker", ["volume", "rm", "-f", `${lockProject}_release-state`], {
+    stdio: "ignore",
+  });
   spawnSync("docker", ["volume", "rm", "-f", `${siblingProject}_release-state`], {
     stdio: "ignore",
   });

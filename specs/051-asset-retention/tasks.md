@@ -285,7 +285,7 @@
   escaped transaction, occupied/both-present destination, changed request and
   A/B/C state-drift negatives. Preserve the post-output and post-current retry
   regressions.
-- [ ] T022ad Implement R051-030: replace namespace-local PID/start liveness with
+- [x] T022ad Implement R051-030: replace namespace-local PID/start liveness with
   a production Linux kernel advisory lock held on one stable, no-follow regular
   `stage.lock` inode for the complete transaction. The durable owner record
   remains project/domain diagnostics; never rename/unlink the canonical inode.
@@ -293,14 +293,14 @@
   namespaces: B cannot mutate while A is paused; after A is killed, B acquires
   and completes. Unsupported filesystem/lock semantics fail closed, and PID
   aliasing or inability to inspect the other namespace never permits reclaim.
-- [ ] T022ae Implement R051-031: migrate an orphan `stage.lock.reclaim` only
+- [x] T022ae Implement R051-031: migrate an orphan `stage.lock.reclaim` only
   under acquired kernel exclusion, with no-follow regular-file checks,
   exclusive locks on every involved inode, and exact device/inode plus complete
   generation binding to the stale acquisition. Fault before/after durable
   quarantine/removal and prove exact retry is idempotent. Symlinked, unreadable,
   malformed, different-inode/generation, newer, or live-held evidence remains
   untouched and blocks staging.
-- [ ] T022af Implement R051-032: add explicit `renamed-uncommitted` and
+- [x] T022af Implement R051-032: add explicit `renamed-uncommitted` and
   `output-durable` publish-journal phases. Fsync the output parent before the
   durable phase transition; recovery in the earlier phase revalidates/re-syncs
   the exact output and repeats parent fsync before any stage/release/`current`
@@ -698,6 +698,34 @@
   above. No owner decision or product-scope expansion is required. This is
   Architect return 10/10; no further implementation return is allowed in this
   cycle, and any later new gap requires a new feature request/escalation.
+- T022ad–T022af implementation evidence: production Docker/Linux now keeps one
+  stable no-follow `stage.lock` inode and holds a persistent kernel `flock` for
+  the complete transaction. The owner record carries project/domain, boot,
+  PID-namespace, process-start, and acquisition diagnostics without using PID
+  lookup as authority. The stager image installs the minimal `util-linux`
+  provider; unsupported non-Linux or missing-lock environments fail closed.
+  The real Docker lifecycle starts overlapping stagers in separate PID
+  namespaces on one named volume, proves the contender fails before mutation,
+  kills the holder, then proves exact retry completes on the same stable state.
+- Legacy `stage.lock.reclaim` migration accepts only a no-follow regular hard
+  link with the canonical device/inode and byte-identical generation while the
+  kernel lock is held. Before-removal failure preserves it; the durably removed
+  state retries idempotently. Foreign-inode and symlink evidence remains
+  untouched and blocks. Focused regressions also prove the stable inode excludes
+  nested acquisition.
+- Static publish journals `prepared`, `renamed-uncommitted`, and
+  `output-durable` separately. Rename-before-parent-fsync, parent-fsync failure,
+  and parent-fsync-before-phase-update crashes all leave A selected; exact retry
+  repeats output-tree and output-parent sync before `rename-current`. Focused
+  staging tests pass `31/31`, lint passes, and the real Docker asset-retention
+  lifecycle including overlap/kill/retry passes. The adjacent implementation
+  audit removed the obsolete PID-inspector seam and refreshed the durable Docker
+  runtime contract. Final full preflight passes: feature-memory, repository
+  baseline, content/attribution, typecheck, lint, format, negative-quality,
+  `596/596` Node tests, production build/service-worker generation, and
+  `158/158` Playwright tests. The macOS-only E2E subprocess uses the explicit
+  in-process test backend; production behavior remains the real Docker/Linux
+  kernel lock proven by the separate lifecycle test.
 
 ## Final Architect Validation
 

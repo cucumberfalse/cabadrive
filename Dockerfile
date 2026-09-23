@@ -13,6 +13,7 @@ RUN pnpm run build
 FROM node:22-alpine AS stager
 
 WORKDIR /app
+RUN apk add --no-cache util-linux
 COPY scripts/stage-static-release.mjs ./scripts/stage-static-release.mjs
 COPY --from=build /app/dist /candidate
 
