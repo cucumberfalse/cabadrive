@@ -67,10 +67,16 @@ may never mutate the candidate tree it inventories.
 The same pre-mutation rejection applies when static output equals, contains, or
 is contained by the release-state path, so publication cannot enter the retained
 asset namespace.
+Candidate and release-state paths are likewise canonicalized and rejected when
+equal or nested in either direction before the state layout is created, keeping
+the candidate build immutable.
 A crash after the durable output journal but before its final rename resumes
 only the exact journal-bound temporary sibling with unchanged prior state; an
 ambiguous, hostile, drifted, or simultaneous temporary/final relation fails
 closed.
+If the prepared journal rename becomes visible but its state-directory fsync
+fails, that exact no-follow journal/temporary binding is preserved for the same
+validated retry; cleanup never relies only on whether the write helper returned.
 After output rename, the journal remains `renamed-uncommitted` until the output
 parent directory is fsynced. Recovery from that phase revalidates and re-syncs
 the complete output and repeats the parent barrier before any retained release
@@ -83,6 +89,8 @@ Legacy-handoff pointer publication also preserves the prior authoritative
 target until the new pointer's root-directory barrier succeeds. If that barrier
 fails, the prior pointer is restored and re-synced before capture cleanup may
 remove the rejected release.
+Release `current` rollback always re-syncs the state directory, including first
+activation where there is no predecessor and rollback removes the pointer.
 
 Every `make build`, `make up`, `make down`, `make logs`, and `make stage`
 operation stops if the Compose project resolver reports ambiguity. No capture,

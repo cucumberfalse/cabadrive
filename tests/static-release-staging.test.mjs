@@ -328,6 +328,25 @@ test("static publish rejects state/output overlap before either path is mutated"
   });
 });
 
+test("static publish rejects candidate/state overlap before state layout mutation", () => {
+  withFixture((root) => {
+    const candidate = release(root, "candidate", { "a.js": "A" }, "A shell");
+    const outputRoot = join(root, "output");
+    const beforeManifest = createCandidateManifest(candidate);
+    const beforeRoot = readdirSync(root).sort();
+    for (const stateRoot of [candidate, join(candidate, "nested-state"), root]) {
+      assert.throws(
+        () => buildStaticPublish({ stateRoot, candidateRoot: candidate, outputRoot }),
+        /candidate and release state must not overlap/i,
+      );
+      assert.deepEqual(createCandidateManifest(candidate), beforeManifest);
+      assert.deepEqual(readdirSync(root).sort(), beforeRoot);
+      assert.equal(existsSync(join(candidate, "nested-state")), false);
+      assert.equal(existsSync(outputRoot), false);
+    }
+  });
+});
+
 test("static publish writes and verifies output before B activation and resumes only its exact journal", () => {
   withFixture((root) => {
     const state = join(root, "state");
@@ -372,6 +391,9 @@ test("static publish writes and verifies output before B activation and resumes 
     );
     assert.equal(readlinkSync(join(state2, "current")), before);
     assert.equal(existsSync(output2), false, "failed preparation exposes no output");
+    assert.equal(existsSync(join(state2, "publish-pending.json")), true);
+    buildStaticPublish({ stateRoot: state2, candidateRoot: b, outputRoot: output2 });
+    assert.match(currentShell(state2), /B shell/);
     assert.equal(existsSync(join(state2, "publish-pending.json")), false);
   });
 });
@@ -532,6 +554,48 @@ test("static publish recovers only an exact durable pre-rename temporary transac
     );
     unchanged(stateDrift, afterC);
     assert.match(currentShell(stateDrift.state), /C shell/);
+  });
+});
+
+test("a visible prepared journal preserves its exact temporary when its directory barrier fails", () => {
+  withFixture((root) => {
+    const state = join(root, "state");
+    const output = join(root, "output");
+    const a = release(root, "a", { "a.js": "A" }, "A shell");
+    const b = release(root, "b", { "b.js": "B" }, "B shell");
+    stageStaticRelease({ stateRoot: state, candidateRoot: a });
+    let injected = false;
+
+    assert.throws(
+      () =>
+        buildStaticPublish({
+          stateRoot: state,
+          candidateRoot: b,
+          outputRoot: output,
+          onDurabilityOperation: ({ operation, path }) => {
+            if (
+              !injected &&
+              operation === "fsync-directory" &&
+              path === realpathSync(state) &&
+              existsSync(join(state, "publish-pending.json"))
+            ) {
+              injected = true;
+              throw new Error("publish journal directory barrier failed");
+            }
+          },
+        }),
+      /journal directory barrier failed/i,
+    );
+    const pending = JSON.parse(readFileSync(join(state, "publish-pending.json"), "utf8"));
+    const temporary = join(root, pending.transactionId);
+    assert.equal(pending.phase, "prepared");
+    assert.equal(lstatSync(temporary).isDirectory(), true);
+    assert.equal(existsSync(output), false);
+
+    buildStaticPublish({ stateRoot: state, candidateRoot: b, outputRoot: output });
+    assert.match(currentShell(state), /B shell/);
+    assert.equal(existsSync(temporary), false);
+    assert.equal(existsSync(join(state, "publish-pending.json")), false);
   });
 });
 
@@ -1675,5 +1739,49 @@ test("durability barriers precede activation and failure leaves the old pointer 
     );
     stageStaticRelease({ stateRoot: state, candidateRoot: d });
     assert.match(currentShell(state), /D shell/);
+  });
+});
+
+test("initial current rollback durably removes the pointer when no predecessor exists", () => {
+  withFixture((root) => {
+    const state = join(root, "state");
+    const candidate = release(root, "candidate", { "a.js": "A" }, "A shell");
+    const trace = [];
+    let activationStarted = false;
+    let injected = false;
+
+    assert.throws(
+      () =>
+        stageStaticRelease({
+          stateRoot: state,
+          candidateRoot: candidate,
+          onDurabilityOperation: (event) => {
+            if (event.operation === "rename-current") activationStarted = true;
+            if (activationStarted) trace.push(event);
+            if (
+              activationStarted &&
+              !injected &&
+              event.operation === "fsync-directory" &&
+              event.path === realpathSync(state)
+            ) {
+              injected = true;
+              throw new Error("initial current barrier failed");
+            }
+          },
+        }),
+      /initial current barrier failed/i,
+    );
+    assert.equal(existsSync(join(state, "current")), false);
+    assert.equal(
+      trace.filter(
+        ({ operation, path }) => operation === "fsync-directory" && path === realpathSync(state),
+      ).length,
+      2,
+      "rollback repeats the state-directory durability barrier",
+    );
+    assert.equal(verifyCommittedState(state).valid, false);
+
+    stageStaticRelease({ stateRoot: state, candidateRoot: candidate });
+    assert.match(currentShell(state), /A shell/);
   });
 });

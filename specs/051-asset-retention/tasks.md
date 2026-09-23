@@ -766,6 +766,14 @@
   negative-quality, `602/602` Node tests, build/SW, and `158/158` Playwright;
   the isolated real Docker overlap/kill/retry and A→B retention lifecycle passes
   on this final implementation tree.
+- The same frozen batch closes R051-039 (`r4086393704`) by deriving pre-rename
+  cleanup from a no-follow, byte-exact visible prepared journal/temporary/state
+  binding, so a journal rename followed by directory-fsync failure preserves a
+  resumable transaction; R051-040 (`r4086393716`) makes no-predecessor current
+  rollback re-sync the state directory after unlink; R051-041 (`r4086393758`)
+  canonically rejects candidate/state equality or nesting before state layout
+  creation. Dedicated fault and sentinel regressions pass with focused staging
+  `39/39` and lint green; no new product scope or Architect return is introduced.
 
 ## Final Architect Validation
 

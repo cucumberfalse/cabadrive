@@ -793,8 +793,8 @@ function makeCurrent(state, releaseId, options) {
     if (existsSync(current)) rmSync(current, { force: true });
     if (previous) {
       symlinkSync(previous, current);
-      syncDirectory(state, undefined);
     }
+    syncDirectory(state, { onDurabilityOperation: options?.onDurabilityOperation });
     throw error;
   }
 }
@@ -1546,6 +1546,13 @@ export function buildStaticPublish({
   }
   const canonicalState = canonicalProspectivePath(resolve(stateRoot));
   if (
+    canonicalState === candidateRootReal ||
+    canonicalState.startsWith(`${candidateRootReal}${sep}`) ||
+    candidateRootReal.startsWith(`${canonicalState}${sep}`)
+  ) {
+    fail("candidate and release state must not overlap");
+  }
+  if (
     canonicalOutput === canonicalState ||
     canonicalOutput.startsWith(`${canonicalState}${sep}`) ||
     canonicalState.startsWith(`${canonicalOutput}${sep}`)
@@ -1684,7 +1691,6 @@ export function buildStaticPublish({
 
     const temporary = join(parent, `.${basename(output)}.publish-${process.pid}-${randomUUID()}`);
     let renamed = false;
-    let journalWritten = false;
     try {
       mkdirSync(temporary, { recursive: false, mode: 0o755 });
       const { inventory, priorAssets, expectedAssets } = copyPublishTree({
@@ -1722,7 +1728,6 @@ export function buildStaticPublish({
         `${JSON.stringify(pending, null, 2)}\n`,
         options,
       );
-      journalWritten = true;
       fault(options, "crash-before-output-rename");
       fault(options, "before-output-rename");
       pending = advancePendingPublishPhase(state, pending, "renamed-uncommitted", options);
@@ -1751,15 +1756,34 @@ export function buildStaticPublish({
       clearPendingPublish(state, options);
       return staged;
     } finally {
-      const simulatedPreRenameCrash = faultAt === "crash-before-output-rename";
-      if (!renamed && !simulatedPreRenameCrash && existsSync(temporary)) {
+      const pendingPath = publishPendingPath(state);
+      const pendingEntry = noFollowEntry(pendingPath);
+      let exactPreparedTransaction = false;
+      if (
+        !renamed &&
+        pendingEntry?.isFile() &&
+        !pendingEntry.isSymbolicLink() &&
+        noFollowEntry(temporary)?.isDirectory()
+      ) {
+        try {
+          const visiblePending = readPendingPublish(state);
+          const temporaryInventory = outputInventory(temporary);
+          exactPreparedTransaction =
+            visiblePending?.phase === "prepared" &&
+            visiblePending.transactionId === basename(temporary) &&
+            pendingPublishMatches(visiblePending, output, manifest, temporaryInventory) &&
+            pendingInventoryMatchesCandidate(visiblePending, manifest) &&
+            pendingPriorStateMatchesCurrentState(state, visiblePending);
+        } catch {
+          exactPreparedTransaction = false;
+        }
+      }
+      if (!renamed && !exactPreparedTransaction && existsSync(temporary)) {
         rmSync(temporary, { recursive: true, force: true });
       }
-      // The journal may survive only after the final output becomes observable.
-      // A pre-rename failure is not resumable and must not poison a future run.
-      if (!renamed && !simulatedPreRenameCrash && journalWritten) {
-        clearPendingPublish(state, undefined);
-      }
+      // A visible, exact prepared journal is durable recovery authority even
+      // when writeAtomically threw after its rename but before returning. Keep
+      // both it and its bound temporary; ambiguous evidence remains fail-closed.
     }
   } finally {
     unlock();
