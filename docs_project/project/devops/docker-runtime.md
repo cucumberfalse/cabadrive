@@ -57,7 +57,10 @@ upload and verify immutable assets without deletion, then switch HTML and
 for safe update continuity because an older open tab may request a lazy hash
 that its cache has never loaded.
 The target publish path must be new: an existing destination is rejected before
-any release-state staging or pointer change.
+any release-state staging or pointer change, except that an exact already-
+committed output/current/retained-ledger tuple is an idempotent recovery after a
+journal-cleanup interruption. That recovery re-syncs the output tree and parent;
+any byte, release, or ledger mismatch remains rejected without mutation.
 A static output path that is the candidate path, contains it, or is contained by
 it is rejected before release-state creation or transaction work; publication
 may never mutate the candidate tree it inventories.
@@ -73,6 +76,10 @@ Recovery that observes both a verified release directory and metadata also
 repeats the release-tree, metadata-file, and parent-directory durability
 barriers before publishing `current`; visible bytes alone are not durability
 evidence.
+Legacy-handoff pointer publication also preserves the prior authoritative
+target until the new pointer's root-directory barrier succeeds. If that barrier
+fails, the prior pointer is restored and re-synced before capture cleanup may
+remove the rejected release.
 
 After `make up`, the app is available at:
 

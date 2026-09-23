@@ -741,6 +741,19 @@
   and `158/158` Playwright tests. The isolated real Docker lifecycle also
   passes again, including overlapping-container exclusion, kill/retry, retained
   A bytes, candidate B shell/worker, restart and down/up persistence.
+- The same final batch closes the two remaining direct durability implications:
+  R051-035 (`r4081930961`) recognizes only an exact already-committed output,
+  current release and retained ledger after `publish-pending.json` unlink became
+  visible before its directory barrier, then repeats output-tree and parent
+  fsync; any tamper still fails closed. R051-036 (`r4081930973`) restores and
+  re-syncs the prior authoritative legacy-handoff pointer when the replacement
+  pointer's root-directory barrier fails, before the capture wrapper may delete
+  the rejected release. Focused fault regressions pass `35/35`; no new product
+  scope or additional Architect return is introduced. Final full preflight
+  passes feature-memory, baseline, content, typecheck, lint, format,
+  negative-quality, `600/600` Node tests, build/SW, and `158/158` Playwright;
+  the isolated real Docker overlap/kill/retry and A→B retention lifecycle also
+  passes on the final implementation tree.
 
 ## Final Architect Validation
 

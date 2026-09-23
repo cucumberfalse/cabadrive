@@ -546,7 +546,12 @@ export function writeLegacyHandoffManifest({
 // symlink-to-directory as a destination directory.  Keeping the link creation
 // and rename in one repository-owned helper also makes the exact failure
 // boundary testable without relying on shell errexit semantics.
-export function publishLegacyHandoffPointer({ handoffRoot, release, faultAt } = {}) {
+export function publishLegacyHandoffPointer({
+  handoffRoot,
+  release,
+  faultAt,
+  onDurabilityOperation,
+} = {}) {
   if (!handoffRoot || !release) fail("legacy handoff root and release are required");
   const suppliedRoot = resolve(handoffRoot);
   assertDirectory(suppliedRoot, "legacy handoff base");
@@ -562,14 +567,40 @@ export function publishLegacyHandoffPointer({ handoffRoot, release, faultAt } = 
 
   const current = join(root, "current");
   const next = join(root, `current.next-${process.pid}-${randomUUID()}`);
+  const rollback = join(root, `current.rollback-${process.pid}-${randomUUID()}`);
+  const previous =
+    existsSync(current) && lstatSync(current).isSymbolicLink() ? readlinkSync(current) : undefined;
+  let renamed = false;
   try {
     if (faultAt === "legacy-pointer-link") fail("fault injection at legacy pointer link");
     symlinkSync(relative, next);
     if (faultAt === "legacy-pointer-rename") fail("fault injection at legacy pointer rename");
     renameSync(next, current);
-    syncDirectory(root, undefined);
+    renamed = true;
+    syncDirectory(root, { faultAt, onDurabilityOperation });
+  } catch (error) {
+    if (renamed) {
+      try {
+        if (previous === undefined) {
+          if (existsSync(current)) unlinkSync(current);
+        } else {
+          symlinkSync(previous, rollback);
+          renameSync(rollback, current);
+        }
+        // Do not replay the injected fault while making the rollback durable.
+        // The caller may delete the rejected release only after this barrier.
+        syncDirectory(root, { onDurabilityOperation });
+      } catch (rollbackError) {
+        throw new AggregateError(
+          [error, rollbackError],
+          "Static release staging: legacy handoff pointer rollback failed",
+        );
+      }
+    }
+    throw error;
   } finally {
     if (existsSync(next)) rmSync(next, { force: true });
+    if (existsSync(rollback)) rmSync(rollback, { force: true });
   }
 }
 
@@ -1374,6 +1405,25 @@ function pendingRetainedAssetsMatchCurrentState(state, pending) {
   return priorIsExact || ownPromotionIsExact || alreadyCommitted;
 }
 
+function exactCommittedPublishWithoutJournal(state, release, inventory) {
+  const committed = verifyCommittedState(state);
+  const ledger = readRetainedInventory(state);
+  const retained = inventoryForAssets(state, "retained assets");
+  if (
+    !committed.valid ||
+    committed.releaseId !== release.releaseId ||
+    !ledger ||
+    !sameEntries(ledger, retained)
+  ) {
+    return false;
+  }
+  const expected = [
+    ...ledger.map((entry) => ({ ...entry, path: `assets/${entry.path}` })),
+    ...release.mutable,
+  ].sort((left, right) => ordinal(left.path, right.path));
+  return sameEntries(inventory, expected);
+}
+
 function readPendingPublish(state) {
   const path = publishPendingPath(state);
   return existsSync(path) ? readJson(path, "static publish pending journal") : undefined;
@@ -1514,9 +1564,19 @@ export function buildStaticPublish({
         fail("publish output already exists without an exact pending transaction");
       }
       const inventory = outputInventory(output);
-      const pendingTemporary = existingPending
-        ? join(parent, existingPending.transactionId || "invalid")
-        : undefined;
+      if (!existingPending) {
+        // unlink(publish-pending) can become visible before its directory fsync.
+        // Accept only the exact already-committed output/current/ledger tuple,
+        // repeat its durability barriers, and otherwise keep rejecting occupied
+        // destinations without mutation.
+        if (!exactCommittedPublishWithoutJournal(state, manifest, inventory)) {
+          fail("publish output already exists without an exact pending transaction");
+        }
+        syncTree(output, options);
+        syncDirectory(parent, options);
+        return { changed: false, releaseId: manifest.releaseId, manifest };
+      }
+      const pendingTemporary = join(parent, existingPending.transactionId || "invalid");
       if (
         !existingPending ||
         noFollowEntry(pendingTemporary) ||

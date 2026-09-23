@@ -279,10 +279,12 @@ test("static publish emits retained assets with only the B mutable shell", () =>
     assert.equal(readFileSync(join(output, "assets/a.js"), "utf8"), "A");
     assert.equal(readFileSync(join(output, "assets/b.js"), "utf8"), "B");
     assert.equal(readFileSync(join(output, "index.html"), "utf8"), "B shell");
-    assert.throws(
-      () => buildStaticPublish({ stateRoot: state, candidateRoot: b, outputRoot: output }),
-      /already exists without an exact pending transaction/i,
-    );
+    const exactRetry = buildStaticPublish({
+      stateRoot: state,
+      candidateRoot: b,
+      outputRoot: output,
+    });
+    assert.equal(exactRetry.changed, false);
   });
 });
 
@@ -559,6 +561,48 @@ test("initial static publish and post-current journal cleanup both recover exact
     );
     assert.match(currentShell(state), /B shell/);
     assert.equal(existsSync(join(state, "publish-pending.json")), false);
+  });
+});
+
+test("an unlink-before-directory-fsync cleanup fault retries only the exact committed publish", () => {
+  withFixture((root) => {
+    const state = join(root, "state");
+    const output = join(root, "output");
+    const a = release(root, "a", { "a.js": "A" }, "A shell");
+    const b = release(root, "b", { "b.js": "B" }, "B shell");
+    stageStaticRelease({ stateRoot: state, candidateRoot: a });
+
+    assert.throws(
+      () =>
+        buildStaticPublish({
+          stateRoot: state,
+          candidateRoot: b,
+          outputRoot: output,
+          faultAt: "durability:unlink-publish-pending",
+        }),
+      /unlink-publish-pending/i,
+    );
+    assert.match(currentShell(state), /B shell/);
+    assert.equal(existsSync(join(state, "publish-pending.json")), false);
+
+    const trace = [];
+    const retried = buildStaticPublish({
+      stateRoot: state,
+      candidateRoot: b,
+      outputRoot: output,
+      onDurabilityOperation: (event) => trace.push(event),
+    });
+    assert.equal(retried.changed, false);
+    assert.ok(
+      trace.some(({ operation, path }) => operation === "fsync-directory" && path === root),
+      "exact retry repeats the output-parent barrier",
+    );
+
+    writeFileSync(join(output, "index.html"), "foreign bytes");
+    assert.throws(
+      () => buildStaticPublish({ stateRoot: state, candidateRoot: b, outputRoot: output }),
+      /without an exact pending transaction/i,
+    );
   });
 });
 
@@ -1070,6 +1114,51 @@ test("legacy handoff marker and pointer failures leave the prior authority untou
       assert.equal(readlinkSync(join(handoff, "current")), external);
       assert.equal(readFileSync(join(external, "sentinel"), "utf8"), "do not touch");
     }
+  });
+});
+
+test("legacy handoff pointer restores and syncs prior authority after its commit barrier fails", () => {
+  withFixture((root) => {
+    const handoff = join(root, "handoff");
+    const prior = legacyHandoff(join(handoff, "releases", "prior"), "legacy-prior", {
+      "prior.js": "prior",
+    });
+    publishLegacyHandoffPointer({ handoffRoot: handoff, release: "releases/prior" });
+    const candidate = legacyHandoff(join(handoff, "releases", "candidate"), "legacy-candidate", {
+      "candidate.js": "candidate",
+    });
+    const durableRoot = realpathSync(handoff);
+    const trace = [];
+    let injected = false;
+
+    assert.throws(
+      () =>
+        publishLegacyHandoffPointer({
+          handoffRoot: handoff,
+          release: "releases/candidate",
+          onDurabilityOperation: (event) => {
+            trace.push(event);
+            if (!injected && event.operation === "fsync-directory" && event.path === durableRoot) {
+              injected = true;
+              throw new Error("handoff root barrier failed");
+            }
+          },
+        }),
+      /handoff root barrier failed/i,
+    );
+    assert.equal(realpathSync(join(handoff, "current")), realpathSync(prior));
+    assert.equal(
+      trace.filter(({ operation, path }) => operation === "fsync-directory" && path === durableRoot)
+        .length,
+      2,
+      "rollback repeats and completes the handoff-root barrier",
+    );
+
+    // This is the capture wrapper's failure cleanup boundary: deleting the
+    // rejected release cannot dangle or replace the restored pointer.
+    rmSync(candidate, { recursive: true, force: true });
+    assert.equal(verifyLegacyHandoff(join(handoff, "current")).valid, true);
+    assert.equal(realpathSync(join(handoff, "current")), realpathSync(prior));
   });
 });
 
