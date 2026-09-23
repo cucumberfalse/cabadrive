@@ -754,6 +754,18 @@
   negative-quality, `600/600` Node tests, build/SW, and `158/158` Playwright;
   the isolated real Docker overlap/kill/retry and A→B retention lifecycle also
   passes on the final implementation tree.
+- Two exact-head direct contract findings remain in the same frozen batch:
+  R051-037 (`r4086249950`) makes every Make lifecycle recipe short-circuit when
+  project resolution fails, with an executable isolated recipe regression that
+  proves no capture or Docker action starts for build/up/down/logs/stage;
+  R051-038 (`r4086249955`) canonically rejects state/output equality and either
+  ancestor relation before state creation, with three no-mutation sentinels.
+  The focused staging/capture/Docker-contract set passes `52/52` and lint passes;
+  no new product scope or Architect return is introduced. Final full preflight
+  passes feature-memory, baseline, content, typecheck, lint, format,
+  negative-quality, `602/602` Node tests, build/SW, and `158/158` Playwright;
+  the isolated real Docker overlap/kill/retry and A→B retention lifecycle passes
+  on this final implementation tree.
 
 ## Final Architect Validation
 

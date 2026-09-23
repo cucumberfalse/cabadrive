@@ -303,6 +303,31 @@ test("static publish rejects candidate/output overlap before state mutation", ()
   });
 });
 
+test("static publish rejects state/output overlap before either path is mutated", () => {
+  withFixture((root) => {
+    const candidate = release(root, "candidate", { "a.js": "A" }, "A shell");
+    const cases = [
+      {
+        stateRoot: join(root, "state-with-output"),
+        outputRoot: join(root, "state-with-output", "assets", "site"),
+      },
+      { stateRoot: join(root, "same"), outputRoot: join(root, "same") },
+      {
+        stateRoot: join(root, "output-with-state", "state"),
+        outputRoot: join(root, "output-with-state"),
+      },
+    ];
+    for (const { stateRoot, outputRoot } of cases) {
+      assert.throws(
+        () => buildStaticPublish({ stateRoot, candidateRoot: candidate, outputRoot }),
+        /state and static publish output must not overlap/i,
+      );
+      assert.equal(existsSync(stateRoot), false);
+      assert.equal(existsSync(outputRoot), false);
+    }
+  });
+});
+
 test("static publish writes and verifies output before B activation and resumes only its exact journal", () => {
   withFixture((root) => {
     const state = join(root, "state");

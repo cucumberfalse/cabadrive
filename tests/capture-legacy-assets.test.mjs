@@ -56,6 +56,59 @@ exit 0
   }
 });
 
+test("every Make lifecycle target stops when Compose project resolution is ambiguous", () => {
+  const root = join(tmpdir(), `cabadrive-make-resolver-${process.pid}-${Date.now()}`);
+  const bin = join(root, "bin");
+  const scripts = join(root, "scripts");
+  const sentinel = join(root, "lifecycle-action-started");
+  mkdirSync(bin, { recursive: true });
+  mkdirSync(scripts, { recursive: true });
+  writeFileSync(join(root, "Makefile"), readFileSync(join(repositoryRoot, "Makefile")));
+  const capture = join(scripts, "capture-legacy-assets.sh");
+  writeFileSync(
+    capture,
+    `#!/bin/sh
+set -eu
+if [ "\${1:-}" = --resolve-project ]; then
+  printf '%s\\n' 'ambiguous pre-feature Compose project' >&2
+  exit 41
+fi
+: >"$CABADRIVE_ACTION_SENTINEL"
+`,
+  );
+  chmodSync(capture, 0o755);
+  const docker = join(bin, "docker");
+  writeFileSync(
+    docker,
+    `#!/bin/sh
+set -eu
+: >"$CABADRIVE_ACTION_SENTINEL"
+exit 0
+`,
+  );
+  chmodSync(docker, 0o755);
+  try {
+    for (const target of ["build", "up", "down", "logs", "stage"]) {
+      if (existsSync(sentinel)) rmSync(sentinel, { force: true });
+      const env = {
+        ...process.env,
+        CABADRIVE_ACTION_SENTINEL: sentinel,
+        PATH: `${bin}:${process.env.PATH}`,
+      };
+      delete env.COMPOSE_PROJECT_NAME;
+      const result = spawnSync("make", [target], {
+        cwd: root,
+        encoding: "utf8",
+        env,
+      });
+      assert.notEqual(result.status, 0, `${target}: ${result.stdout}${result.stderr}`);
+      assert.equal(existsSync(sentinel), false, `${target} started Docker after resolver failure`);
+    }
+  } finally {
+    if (existsSync(root)) rmSync(root, { recursive: true, force: true });
+  }
+});
+
 test("stopped legacy Compose image is exported before a build can replace it", () => {
   const root = join(tmpdir(), `cabadrive-capture-${process.pid}-${Date.now()}`);
   const bin = join(root, "bin");

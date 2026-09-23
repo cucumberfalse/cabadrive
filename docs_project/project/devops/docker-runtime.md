@@ -64,6 +64,9 @@ any byte, release, or ledger mismatch remains rejected without mutation.
 A static output path that is the candidate path, contains it, or is contained by
 it is rejected before release-state creation or transaction work; publication
 may never mutate the candidate tree it inventories.
+The same pre-mutation rejection applies when static output equals, contains, or
+is contained by the release-state path, so publication cannot enter the retained
+asset namespace.
 A crash after the durable output journal but before its final rename resumes
 only the exact journal-bound temporary sibling with unchanged prior state; an
 ambiguous, hostile, drifted, or simultaneous temporary/final relation fails
@@ -80,6 +83,10 @@ Legacy-handoff pointer publication also preserves the prior authoritative
 target until the new pointer's root-directory barrier succeeds. If that barrier
 fails, the prior pointer is restored and re-synced before capture cleanup may
 remove the rejected release.
+
+Every `make build`, `make up`, `make down`, `make logs`, and `make stage`
+operation stops if the Compose project resolver reports ambiguity. No capture,
+build, or Compose action may run with an empty fallback project identity.
 
 After `make up`, the app is available at:
 

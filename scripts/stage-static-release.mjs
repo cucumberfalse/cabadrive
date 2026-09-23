@@ -1544,6 +1544,14 @@ export function buildStaticPublish({
   ) {
     fail("candidate and static publish output must not overlap");
   }
+  const canonicalState = canonicalProspectivePath(resolve(stateRoot));
+  if (
+    canonicalOutput === canonicalState ||
+    canonicalOutput.startsWith(`${canonicalState}${sep}`) ||
+    canonicalState.startsWith(`${canonicalOutput}${sep}`)
+  ) {
+    fail("release state and static publish output must not overlap");
+  }
   const state = ensureStateLayout(stateRoot);
   const manifest = createCandidateManifest(candidateRootReal);
   const candidate = { root: candidateRootReal, manifest };
