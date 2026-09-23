@@ -8,6 +8,12 @@ repo_root="${CABADRIVE_REPOSITORY_ROOT:-$(CDPATH= cd -- "$script_dir/.." && pwd)
 repo_root="$(CDPATH= cd -- "$repo_root" && pwd -P)"
 historical_basename="$(basename "$repo_root")"
 
+is_post_feature_runtime_image() {
+  docker image inspect \
+    --format '{{ index .Config.Labels "com.cabadrive.release-state-runtime" }}' \
+    "$1" 2>/dev/null | grep -qx 'true'
+}
+
 # An explicit project name always wins.  On the first upgrade however an older
 # Compose installation may have used the checkout basename rather than the new
 # cabadrive default.  Discover only resources that carry an exact Compose
@@ -50,10 +56,14 @@ resolve_project() {
   done
 
   # Pre-F051 images have no dependable label.  The exact checkout basename is
-  # nevertheless the historical Compose name, but only if its exact image
-  # exists.  Do not scan arbitrary similarly named images.
+  # nevertheless the historical Compose name, but only if its exact pre-F051
+  # image exists.  A labelled runtime image may have been produced by this
+  # checkout's new build and must not resurrect an obsolete project name.
+  # Do not scan arbitrary similarly named images.
   if docker image inspect --format '{{.Id}}' "${historical_basename}-cabadrive" >/dev/null 2>&1; then
-    add_candidate "$historical_basename"
+    if ! is_post_feature_runtime_image "${historical_basename}-cabadrive"; then
+      add_candidate "$historical_basename"
+    fi
   fi
 
   candidate_count="$(printf '%s\n' "$candidates" | tr '|' '\n' | sed '/^$/d' | wc -l | tr -d ' ')"
@@ -177,12 +187,6 @@ copy_legacy_assets() {
   else
     docker cp "$temporary_container:/usr/share/nginx/html/assets/." "$destination"
   fi
-}
-
-is_post_feature_runtime_image() {
-  docker image inspect \
-    --format '{{ index .Config.Labels "com.cabadrive.release-state-runtime" }}' \
-    "$1" 2>/dev/null | grep -qx 'true'
 }
 
 if [ -n "$container" ]; then

@@ -802,6 +802,13 @@
   never as an initial state. Focused direct-stage regressions pass `44/44`; full
   preflight and one real Docker retention lifecycle also pass before
   commit/review.
+- The terminal direct capture-boundary response adds R051-050 (`r4088120263`):
+  project resolution ignores a labelled post-feature
+  `${historical_basename}-cabadrive` runtime image when considering the exact
+  historical checkout basename, so a renamed checkout cannot revive an obsolete
+  named deployment or volume. The legacy unlabelled-image path remains eligible.
+  Focused capture regressions pass `10/10`; full preflight and one real Docker
+  retention lifecycle also pass before commit/review.
 
 ## Final Architect Validation
 

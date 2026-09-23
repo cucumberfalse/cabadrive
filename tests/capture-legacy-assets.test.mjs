@@ -223,6 +223,49 @@ exit 0
   }
 });
 
+test("project resolution ignores a labelled post-feature historical image", () => {
+  const root = join(tmpdir(), `cabadrive-renamed-checkout-${process.pid}-${Date.now()}`);
+  const bin = join(root, "bin");
+  const log = join(root, "docker.log");
+  mkdirSync(bin, { recursive: true });
+  const docker = join(bin, "docker");
+  writeFileSync(
+    docker,
+    `#!/bin/sh
+set -eu
+printf '%s\\n' "$*" >>"${log}"
+if [ "$1" = ps ]; then exit 0; fi
+if [ "$1" = image ] && [ "$2" = inspect ]; then
+  case "$*" in
+    *com.cabadrive.release-state-runtime*) printf '%s\\n' true ;;
+    *) printf '%s\\n' post-feature-image-id ;;
+  esac
+  exit 0
+fi
+exit 1
+`,
+  );
+  chmodSync(docker, 0o755);
+  try {
+    const env = {
+      ...process.env,
+      CABADRIVE_REPOSITORY_ROOT: root,
+      PATH: `${bin}:${process.env.PATH}`,
+    };
+    delete env.COMPOSE_PROJECT_NAME;
+    const result = spawnSync("sh", [captureScript, "--resolve-project"], {
+      cwd: root,
+      encoding: "utf8",
+      env,
+    });
+    assert.equal(result.status, 0, result.stderr);
+    assert.equal(result.stdout.trim(), "cabadrive");
+    assert.match(readFileSync(log, "utf8"), /release-state-runtime/);
+  } finally {
+    if (existsSync(root)) rmSync(root, { recursive: true, force: true });
+  }
+});
+
 test("an incomplete volume does not suppress capture of a running legacy release", () => {
   const root = join(tmpdir(), `cabadrive-capture-incomplete-${process.pid}-${Date.now()}`);
   const bin = join(root, "bin");
