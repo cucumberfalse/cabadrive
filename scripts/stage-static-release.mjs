@@ -1164,6 +1164,18 @@ export function stageStaticRelease({
   expectedManifest,
 } = {}) {
   if (!stateRoot || !candidateRoot) fail("--state and --candidate are required");
+  const candidateRootReal = realpathSync(candidateRoot);
+  const canonicalState = canonicalProspectivePath(resolve(stateRoot));
+  if (
+    canonicalState === candidateRootReal ||
+    canonicalState.startsWith(`${candidateRootReal}${sep}`) ||
+    candidateRootReal.startsWith(`${canonicalState}${sep}`)
+  ) {
+    fail("candidate and release state must not overlap");
+  }
+  // Perform this no-follow validation before creating the state layout: a
+  // dangling or unsafe current pointer is corruption, never an initial state.
+  currentReleaseId(resolve(stateRoot));
   const suppliedLegacyRoot =
     legacyRoot === undefined || legacyRoot === null ? undefined : resolve(legacyRoot);
   const legacyValidation = suppliedLegacyRoot ? verifyLegacyHandoff(suppliedLegacyRoot) : undefined;
@@ -1171,7 +1183,7 @@ export function stageStaticRelease({
     fail(`legacy handoff is not authoritative: ${legacyValidation?.reason || "invalid"}`);
   }
   const state = ensureStateLayout(stateRoot);
-  const release = createCandidateManifest(candidateRoot);
+  const release = createCandidateManifest(candidateRootReal);
   if (
     expectedManifest &&
     (release.releaseId !== expectedManifest.releaseId ||
@@ -1187,7 +1199,7 @@ export function stageStaticRelease({
     : acquireLock(state, { projectKey, onLockOperation, diagnosticHost });
   const transaction = join(state, "transactions", `${release.releaseId}-${randomUUID()}`);
   try {
-    const candidate = realpathSync(candidateRoot);
+    const candidate = candidateRootReal;
     const existing = inventoryForAssets(state, "retained assets");
     const legacy = legacyValidation?.manifest.assets || [];
     const legacySource = legacyValidation?.manifest.sourceId;
@@ -1383,9 +1395,17 @@ function outputInventory(root) {
 
 function currentReleaseId(state) {
   const current = join(state, "current");
-  if (!existsSync(current) || !lstatSync(current).isSymbolicLink()) return null;
+  const entry = noFollowEntry(current);
+  if (!entry) return null;
+  if (!entry.isSymbolicLink()) fail("current pointer is not a symlink");
   const target = readlinkSync(current);
-  return /^releases\/[a-f0-9]{64}$/u.test(target) ? target.slice("releases/".length) : null;
+  if (!/^releases\/[a-f0-9]{64}$/u.test(target)) fail("current pointer is unsafe");
+  const release = join(state, target);
+  const releaseEntry = noFollowEntry(release);
+  if (!releaseEntry || releaseEntry.isSymbolicLink() || !releaseEntry.isDirectory()) {
+    fail("current pointer is dangling");
+  }
+  return target.slice("releases/".length);
 }
 
 function exactInventory(value) {

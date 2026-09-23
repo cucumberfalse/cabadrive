@@ -135,6 +135,54 @@ test("stage appends A then B before atomically selecting B and is idempotent", (
   });
 });
 
+test("direct staging rejects candidate/state overlap before state layout mutation", () => {
+  withFixture((root) => {
+    const candidate = release(root, "candidate", { "a.js": "A" }, "A shell");
+    const beforeManifest = createCandidateManifest(candidate);
+    const beforeRoot = readdirSync(root).sort();
+    for (const stateRoot of [candidate, join(candidate, "nested-state"), root]) {
+      assert.throws(
+        () => stageStaticRelease({ stateRoot, candidateRoot: candidate }),
+        /candidate and release state must not overlap/i,
+      );
+      assert.deepEqual(createCandidateManifest(candidate), beforeManifest);
+      assert.deepEqual(readdirSync(root).sort(), beforeRoot);
+      assert.equal(existsSync(join(candidate, "nested-state")), false);
+    }
+  });
+});
+
+test("direct staging refuses malformed current pointers without mutation", () => {
+  withFixture((root) => {
+    const a = release(root, "a", { "a.js": "A" }, "A shell");
+    const b = release(root, "b", { "b.js": "B" }, "B shell");
+    for (const [name, install, pattern] of [
+      ["non-symlink", (current) => writeFileSync(current, "not a link"), /not a symlink/i],
+      ["unsafe", (current) => symlinkSync("../outside", current), /unsafe/i],
+      ["dangling", (current) => symlinkSync(`releases/${"0".repeat(64)}`, current), /dangling/i],
+    ]) {
+      const state = join(root, `${name}-state`);
+      stageStaticRelease({ stateRoot: state, candidateRoot: a });
+      const current = join(state, "current");
+      unlinkSync(current);
+      install(current);
+      const currentEntry = lstatSync(current);
+      const currentValue = currentEntry.isSymbolicLink()
+        ? readlinkSync(current)
+        : readFileSync(current, "utf8");
+      const retainedA = readFileSync(join(state, "assets", "a.js"), "utf8");
+      assert.throws(() => stageStaticRelease({ stateRoot: state, candidateRoot: b }), pattern);
+      const afterEntry = lstatSync(current);
+      assert.equal(afterEntry.isSymbolicLink(), currentEntry.isSymbolicLink());
+      assert.equal(
+        afterEntry.isSymbolicLink() ? readlinkSync(current) : readFileSync(current, "utf8"),
+        currentValue,
+      );
+      assert.equal(readFileSync(join(state, "assets", "a.js"), "utf8"), retainedA);
+    }
+  });
+});
+
 test("collision, unsafe input and injected partial stages preserve A", () => {
   withFixture((root) => {
     const state = join(root, "state");

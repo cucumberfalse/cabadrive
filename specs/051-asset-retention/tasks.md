@@ -795,6 +795,13 @@
   removes both safely and republishes the complete domain record. Focused
   staging regressions pass `42/42`; full preflight and one real Docker retention
   lifecycle also pass before commit and review.
+- The final direct stage-boundary response adds R051-048 (`r4087986863`): direct
+  stage and stage CLI canonicalize prospective state before layout creation and
+  reject any candidate/state equality or nesting. R051-049 (`r4087986867`)
+  treats a present but non-symlink, unsafe, or dangling `current` as corruption,
+  never as an initial state. Focused direct-stage regressions pass `44/44`; full
+  preflight and one real Docker retention lifecycle also pass before
+  commit/review.
 
 ## Final Architect Validation
 
