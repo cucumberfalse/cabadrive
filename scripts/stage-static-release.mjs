@@ -317,13 +317,24 @@ function recoverIncompleteExecutionDomain(state, path) {
     fail("stage execution domain is malformed while a stage lock exists");
   }
   const reclaim = join(state, ".stage-execution-domain.reclaim");
-  try {
-    linkSync(path, reclaim);
-  } catch (error) {
-    if (error?.code === "EEXIST") {
+  const existingReclaim = noFollowEntry(reclaim);
+  if (existingReclaim) {
+    if (
+      existingReclaim.isSymbolicLink() ||
+      !existingReclaim.isFile() ||
+      existingReclaim.ino !== entry.ino
+    ) {
       fail("stage execution domain recovery is already in progress");
     }
-    throw error;
+  } else {
+    try {
+      linkSync(path, reclaim);
+    } catch (error) {
+      if (error?.code === "EEXIST") {
+        fail("stage execution domain recovery is already in progress");
+      }
+      throw error;
+    }
   }
   try {
     const guarded = noFollowEntry(reclaim);
@@ -1150,6 +1161,7 @@ export function stageStaticRelease({
   onLockOperation,
   diagnosticHost,
   lockHeld = false,
+  expectedManifest,
 } = {}) {
   if (!stateRoot || !candidateRoot) fail("--state and --candidate are required");
   const suppliedLegacyRoot =
@@ -1160,6 +1172,14 @@ export function stageStaticRelease({
   }
   const state = ensureStateLayout(stateRoot);
   const release = createCandidateManifest(candidateRoot);
+  if (
+    expectedManifest &&
+    (release.releaseId !== expectedManifest.releaseId ||
+      !sameEntries(release.assets, expectedManifest.assets) ||
+      !sameEntries(release.mutable, expectedManifest.mutable))
+  ) {
+    fail("candidate inventory changed since static publish journal");
+  }
   const releaseDir = join(state, "releases", release.releaseId);
   const metadataPath = join(state, "metadata", `${release.releaseId}.json`);
   const unlock = lockHeld
@@ -1725,6 +1745,7 @@ export function buildStaticPublish({
         onLockOperation,
         diagnosticHost,
         lockHeld: true,
+        expectedManifest: manifest,
       });
       if (staged.releaseId !== manifest.releaseId || !verifyCommittedState(state).valid) {
         fail("static publish activation did not commit the journaled candidate");
@@ -1780,6 +1801,7 @@ export function buildStaticPublish({
         onLockOperation,
         diagnosticHost,
         lockHeld: true,
+        expectedManifest: manifest,
       });
       if (staged.releaseId !== manifest.releaseId || !verifyCommittedState(state).valid) {
         fail("static publish activation did not commit recovered candidate");
@@ -1848,6 +1870,7 @@ export function buildStaticPublish({
         onLockOperation,
         diagnosticHost,
         lockHeld: true,
+        expectedManifest: manifest,
       });
       if (staged.releaseId !== manifest.releaseId || !verifyCommittedState(state).valid) {
         fail("static publish activation did not commit the candidate");

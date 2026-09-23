@@ -786,6 +786,15 @@
   ambiguity. Focused capture/staging regressions pass `50/50`; full preflight
   and one real isolated Docker retention lifecycle also pass before commit and
   review.
+- The final direct crash-consistency response adds R051-046 (`r4087900321`):
+  every static-publish activation passes the journal's exact B manifest into
+  staging, which re-inventories and rejects a candidate changed after the B
+  output became durable before any `current` switch. R051-047 (`r4087900326`)
+  recognizes an orphan execution-domain reclaim guard only when it is the exact
+  hardlink of a malformed canonical record and no stage lock exists, then
+  removes both safely and republishes the complete domain record. Focused
+  staging regressions pass `42/42`; full preflight and one real Docker retention
+  lifecycle also pass before commit and review.
 
 ## Final Architect Validation
 

@@ -648,6 +648,51 @@ test("a durable output retry finishes its exact journalled partial asset promoti
   });
 });
 
+test("publish never activates a candidate changed after its output journal is durable", () => {
+  withFixture((root) => {
+    const state = join(root, "state");
+    const output = join(root, "output");
+    const a = release(root, "a", { "a.js": "A" }, "A shell");
+    const b = release(root, "b", { "b.js": "B" }, "B shell");
+    stageStaticRelease({ stateRoot: state, candidateRoot: a });
+    const aCurrent = readlinkSync(join(state, "current"));
+    assert.throws(
+      () =>
+        buildStaticPublish({
+          stateRoot: state,
+          candidateRoot: b,
+          outputRoot: output,
+          faultAt: "after-output",
+        }),
+      /fault injection/i,
+    );
+    let mutated = false;
+    assert.throws(
+      () =>
+        buildStaticPublish({
+          stateRoot: state,
+          candidateRoot: b,
+          outputRoot: output,
+          onLockOperation: ({ operation }) => {
+            if (!mutated && operation === "lock-acquired") {
+              mutated = true;
+              writeFileSync(join(b, "index.html"), "C shell");
+            }
+          },
+        }),
+      /candidate inventory changed since static publish journal/i,
+    );
+    assert.equal(mutated, true);
+    assert.equal(readlinkSync(join(state, "current")), aCurrent);
+    assert.match(readFileSync(join(output, "index.html"), "utf8"), /B shell/);
+    writeFileSync(join(b, "index.html"), "B shell");
+    assert.doesNotThrow(() =>
+      buildStaticPublish({ stateRoot: state, candidateRoot: b, outputRoot: output }),
+    );
+    assert.match(currentShell(state), /B shell/);
+  });
+});
+
 test("initial static publish and post-current journal cleanup both recover exactly", () => {
   withFixture((root) => {
     const initialState = join(root, "initial-state");
@@ -1111,17 +1156,19 @@ test("lock authority survives stager recreation and rejects a sibling Compose pr
   });
 });
 
-test("an incomplete first execution-domain record is atomically replaced before locking", () => {
+test("an incomplete first execution-domain record and its exact orphan guard recover before locking", () => {
   withFixture((root) => {
     const state = join(root, "state");
     const candidate = release(root, "candidate", { "a.js": "A" }, "A shell");
     mkdirSync(state);
-    writeFileSync(join(state, "stage-execution-domain.json"), '{"schemaVersion":');
+    const record = join(state, "stage-execution-domain.json");
+    writeFileSync(record, '{"schemaVersion":');
+    linkSync(record, join(state, ".stage-execution-domain.reclaim"));
 
     assert.doesNotThrow(() =>
       stageStaticRelease({ stateRoot: state, candidateRoot: candidate, projectKey: "fixture" }),
     );
-    const domain = JSON.parse(readFileSync(join(state, "stage-execution-domain.json"), "utf8"));
+    const domain = JSON.parse(readFileSync(record, "utf8"));
     assert.equal(domain.project, "fixture");
     assert.match(domain.domain, /^[a-f0-9-]{36}$/u);
     assert.equal(existsSync(join(state, ".stage-execution-domain.reclaim")), false);
