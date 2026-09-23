@@ -44,6 +44,16 @@ or PR #215 directly from this worktree.
 
 3. **Transactional release staging**
    - Implement the exact state layout and exclusive lock from `spec.md`.
+   - Make one stable no-follow lock inode plus a whole-transaction Linux kernel
+     advisory lock the production exclusion/liveness mechanism. Keep the owner
+     record for durable project/domain diagnostics, not PID-namespace liveness;
+     never rename or unlink the canonical inode. Unsupported semantics fail
+     closed. Exercise two overlapping stager containers, kill/retry recovery,
+     and aliased/uninspectable namespace-local PID identities.
+   - Migrate any pre-existing `stage.lock.reclaim` only under acquired kernel
+     exclusion and exact no-follow device/inode/generation binding to the stale
+     acquisition. Fault quarantine/removal and reject foreign, newer, live-held,
+     malformed, unreadable, or symlinked sidecars unchanged.
    - Validate outgoing/current/candidate immutable unions and fail on byte
      collisions before promotion.
    - Stage and rehash transaction bytes, atomically promote new immutable files,
@@ -136,6 +146,11 @@ or PR #215 directly from this worktree.
      pre-rename retry, require absent destination, exact temporary inventory and
      unchanged candidate/current/ledger/store, repeat durability synchronization,
      then rename once. Any ambiguous or hostile relation fails unchanged.
+   - Split the post-rename relation into `renamed-uncommitted` and
+     `output-durable`. After rename, fsync the output parent before durably
+     advancing the journal. Recovery from the former phase revalidates/re-syncs
+     the tree and repeats parent fsync before any stage or `current` operation;
+     fault before/at/after that barrier and assert operation ordering.
    - Apply the same recursive ancestor sync barrier to newly created temporary
      and final publish directories; publishing a nested retained hash may not
      treat a synced leaf directory as durable while its parents are unsynced.
@@ -227,12 +242,12 @@ or PR #215 directly from this worktree.
   later shell.
 - Publish destination admission is no-follow. `lstat` rather than `exists` is
   the authority, so a dangling symlink is protected user state.
-- Stale-lock recovery needs a durable, non-reusable owner identity and atomic
-  compare-and-reclaim transfer. Its execution domain is the durable effective
-  Compose project identity, not a disposable container hostname. Clock-only
-  leases, blind unlink, and read-then-rename quarantine are unsafe because a
-  newer live generation can replace the inspected stale record; unsupported
-  identity/CAS checks fail closed.
+- Cross-container lock exclusion is a kernel lock held on one stable inode for
+  the complete transaction. Namespace-local PID/start inspection is not live-
+  owner authority. The durable owner record remains project/domain evidence;
+  unsupported lock/filesystem semantics fail closed. Legacy compare-and-reclaim
+  sidecars are migration evidence and are removed only under kernel exclusion
+  with exact no-follow inode/generation binding; ambiguity remains blocked.
 - Recovered byte-identical promoted assets still need their file and full
   ancestor durability barriers rerun. Existence is integrity evidence, not
   evidence that directory entries survived a crash.
@@ -266,12 +281,15 @@ or PR #215 directly from this worktree.
 | Existing publish destination | state snapshot integration | pre-existing output fails before stage and leaves pointer/releases/metadata/assets/output byte-identical |
 | Static output transaction | fault-injected integration | copy/hash/fsync/rename failure leaves A and no final output; complete-output/pre-current fault resumes only with matching journal and exact output |
 | Pre-rename output recovery | crash-style fault integration | exact journal + contained temporary tree + unchanged pre-stage state re-syncs/renames once; missing, hostile, ambiguous, byte/state-drifted relations fail unchanged |
+| Post-rename parent durability | ordered crash-style trace | `renamed-uncommitted` retry revalidates output and fsyncs its parent before stage/current; parent-sync failure preserves A and retry repeats the barrier |
 | Pending-journal freshness | fault-injected A/B/C integration | B output journal resumes only against the identical retained ledger/assets; a later C asset blocks stale B activation unchanged |
 | Pending own-promotion recovery | fault-injected A/B integration | exact journal-known A+B state and prior current resume after B pre-current failure; foreign asset/current/request drift stays unchanged |
 | No-follow publish destination | focused static-publish tests | dangling/live symlink, file, and directory are rejected before stage; external sentinel is untouched |
 | Crash-stale lock recovery | owner-identity tests | proven-dead/reused-PID-start-mismatch owner is reclaimed only by exact-generation atomic transfer; live matching, malformed, inaccessible, or unsupported owner fails closed |
 | Lock identity across recreation | isolated Compose + owner tests | same project keeps its durable execution domain across stager hostnames; acquisition/start identities remain unique; sibling project is foreign |
 | Concurrent stale reclaim | adversarial deterministic interleaving | exact-generation CAS admits one reclaimer; stale observer cannot move a replacement lock; maximum critical-section concurrency is one |
+| Cross-container exclusion | overlapping real stager containers | a kernel lock on the shared stable inode excludes a second PID namespace; killing the holder releases it; unsupported semantics fail closed without record mutation |
+| Orphan reclaim migration | crash/fault + inode-generation tests | exact stale sidecar is durably recovered only under exclusive locks and exact binding; foreign/newer/live/symlinked/malformed evidence stays untouched and blocks |
 | Recovery durability barrier | nested fault/retry trace | existing journal-known promoted file is fsynced and `assets/x` → `assets` → `state` is repeated before ledger/release/current |
 | Handoff pointer safety | focused capture failure/symlink tests | external `current` symlink target is never traversed; marker/copy/link/rename failures publish no incomplete handoff |
 | Handoff durability | ordered capture trace + injected failures | every file/marker and directory through handoff root is fsynced before pointer publication; any close/sync failure leaves old authority |
@@ -314,6 +332,9 @@ or PR #215 directly from this worktree.
 - Static output copy can fail after state activation: prepare without pointer
   commit, atomically publish verified output first, then activate B with an exact
   resume rule for the intervening crash window.
+- Output rename can precede its parent-directory durability barrier: persist a
+  separate renamed phase and require exact retry to repeat output and parent
+  fsync before staging or activation.
 - A later stage changes retained assets while an older output journal remains:
   require fresh ledger plus exact-store equality at retry and fail closed rather
   than publishing an output that lacks the later asset.
@@ -333,10 +354,15 @@ or PR #215 directly from this worktree.
   retained state and recorded prior current; reject all other drift.
 - `existsSync` reports false for a dangling output symlink: use no-follow
   classification so publishing never replaces a user-owned dangling link.
-- A crash can leave a stale lock forever, while a clock lease can steal a live
-  publisher: reclaim only a proven-dead owner with a non-reusable start identity
-  and exact-generation atomic compare-and-reclaim; ambiguity stays locked and a
-  losing stale observer cannot quarantine a replacement owner.
+- A crash can leave a stale record forever, while a clock lease or foreign PID
+  lookup can steal a live publisher: hold a cross-container kernel lock on a
+  stable project-volume inode for the transaction. Never infer liveness from a
+  foreign PID namespace; fail closed when kernel/filesystem semantics cannot be
+  established.
+- A crashed legacy reclaimer can leave `stage.lock.reclaim`: under the new
+  kernel exclusion, recover it only when exact no-follow inode and generation
+  evidence binds the sidecar to the stale acquisition; preserve and block on
+  every ambiguous relation.
 - A recreated stager changes hostname even within the same project: derive the
   execution domain from durable project state and the effective Compose key;
   keep hostname non-authoritative.
@@ -366,7 +392,9 @@ or PR #215 directly from this worktree.
 
 ## Handoff Status
 
-Architect follow-up disposition is complete, but the feature is not ready for
-final validation. R051-028 and R051-029 require one final bounded implementation
-batch, focused/full verification, resolution of the two current review threads,
-and fresh exact-head review before final validation may be invoked.
+Architect return 10/10 disposition is complete, but the feature is not ready for
+final validation. R051-030 through R051-032 require one complete implementation
+batch, focused/full verification, resolution of the three current review
+threads, required checks, and fresh exact-head review. No further Architect
+implementation return is permitted in this cycle; any later new gap requires a
+new feature request/escalation under the repository contract.

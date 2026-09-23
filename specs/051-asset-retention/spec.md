@@ -98,21 +98,28 @@ to remain on one filesystem.
 
 Transaction order:
 
-1. Acquire an exclusive `stage.lock`. The durable lock record binds a schema,
-   the effective Compose project identity, a durable project-scoped execution
-   domain stored outside the disposable stager container, a unique acquisition
-   token, and an executable non-reusable owner identity. Container hostname is
-   diagnostic only and may never decide ownership or staleness because Compose
-   recreates stager containers. The holder retains ownership until its
-   transaction ends. A live, malformed, permission-denied, foreign-domain, or
-   otherwise ambiguous record fails closed. Only a record whose exact owner is
-   unambiguously dead may be replaced. Replacement must use an operating-system
-   lock/CAS primitive that atomically proves the canonical lock still denotes
-   the inspected token while transferring ownership; a read-then-rename or
-   read-then-unlink sequence is forbidden. A losing reclaimer retries from a
-   fresh canonical read and may not enter the critical section. Production
-   Docker/Linux must support this primitive and executable identity check;
-   unsupported platforms fail closed.
+1. Acquire an exclusive `stage.lock`. Production Docker/Linux uses a
+   non-blocking kernel advisory lock on one stable, no-follow regular-file inode
+   in the project-scoped volume as the sole exclusion and live-owner authority.
+   The lock is held by an open file descriptor for the complete staging
+   transaction and is released by the kernel on process/container death; no PID
+   lookup across container namespaces decides liveness. Unsupported filesystems,
+   lock primitives, link types, or ambiguous ownership fail closed. The durable
+   record written and fsynced only while holding the kernel lock binds schema,
+   effective Compose project identity, durable project execution domain, kernel
+   boot identity, PID-namespace identity for diagnostics, unique acquisition
+   token, and process-start identity. A contender that cannot obtain the kernel
+   lock fails without modifying the record. A contender that obtains it may
+   replace a stale diagnostic record because the kernel has proved that no live
+   holder on the supported local volume owns that inode; it never renames or
+   unlinks the canonical lock inode. Existing `stage.lock.reclaim` state from
+   the pre-kernel-lock protocol is migration evidence, not disposable temp
+   state: recover/quarantine it only after no-follow regular-file validation,
+   exclusive locks on every involved inode, and exact device/inode plus record-
+   generation binding to the stale canonical generation. An exact orphan is
+   durably quarantined/removed while exclusion is held; a symlink, unreadable or
+   malformed sidecar, different inode/generation, a live/locked inode, or any
+   uncertain relation fails closed and remains untouched.
 2. Validate the candidate and its canonical inventory without touching
    `current`.
 3. If this is the first migration from a pre-feature Docker release, validate
@@ -334,6 +341,16 @@ Static publish uses a prepare/output/commit transaction under the release lock:
    retry requires matching B current, journal and exact output, then only clears
    the journal. Any mismatch fails closed without changing output or state.
 
+The journal records an explicit output-publication phase. The atomic output
+rename leaves it in `renamed-uncommitted`; the output parent is then fsynced and
+only afterward may an atomic, durable journal update mark `output-durable`.
+Recovery from a final-output-present `renamed-uncommitted` phase must revalidate
+and re-fsync the exact output tree and re-fsync its parent before any retained
+stage, release activation, or `current` operation. A crash after parent fsync but
+before the phase update safely repeats the barrier. Parent-fsync failure leaves A
+selected and the journal recoverable; output presence alone is never durability
+evidence.
+
 ## Functional Requirements
 
 - FR-001: A->B staging preserves every valid A `/assets/` byte and adds every B
@@ -438,6 +455,20 @@ Static publish uses a prepare/output/commit transaction under the release lock:
   reclaimer wins between inspection and transfer, the loser cannot quarantine
   the newer record or enter staging. At most one contender may cross the lock
   boundary.
+- FR-034: Concurrent stagers in different container PID namespaces are excluded
+  by a kernel lock held on the same stable project-volume inode for the entire
+  transaction. PID/start-time inspection is not cross-container liveness
+  authority. Kernel-lock or filesystem support that cannot be proven fails
+  closed; container death makes the exact stable inode safely acquirable.
+- FR-035: A persisted `stage.lock.reclaim` artifact is removed or quarantined
+  only while exclusion is held and only when no-follow inode identity and the
+  complete recorded generation bind it to the exact stale lock being recovered.
+  Foreign, newer, malformed, symlinked, locked, or ambiguous sidecars remain
+  untouched and block staging.
+- FR-036: Static-output recovery after output rename but before output-parent
+  fsync repeats the complete output durability check and parent-directory fsync
+  before staging or activation. The durable journal phase, not output existence,
+  is the authority that the rename barrier completed.
 
 ## Acceptance Criteria And Negative Scenarios
 
@@ -597,6 +628,25 @@ Static publish uses a prepare/output/commit transaction under the release lock:
     temporary and final output fails closed without deleting or overwriting any
     evidence. The existing post-rename and post-current retry controls continue
     to pass.
+37. Run two real stager containers for one project volume with overlapping
+    lifetimes and distinct PID namespaces. Pause A after kernel-lock acquisition;
+    B must fail before state mutation even when its local PID/start tuple aliases
+    or cannot inspect A. Kill A, then prove B acquires the same stable inode and
+    completes. Repeat with an unsupported/foreign lock backend and require a
+    fail-closed result rather than PID-based reclaim.
+38. Crash after publishing `stage.lock.reclaim`. Exact retry may recover it only
+    when canonical lock and sidecar device/inode/generation relations identify
+    the exact stale acquisition and every involved inode is exclusively locked.
+    Substitute a symlink, different inode, newer generation, live-held inode,
+    malformed content, or permission failure; each must remain untouched and
+    block entry. Include crash points before and after durable quarantine/
+    removal so retry is idempotent and never removes a live replacement.
+39. Crash immediately after static output rename and before output-parent fsync.
+    Exact retry must trace output-tree revalidation/sync and output-parent fsync
+    before any retained-stage, release, or `current` event, then complete B.
+    Inject parent-fsync failure and crash after parent fsync but before the
+    journal phase update; A remains selected and the next exact retry repeats the
+    barrier. Mismatched output/journal/state continues to fail unchanged.
 
 ## Review And Completion Requirements
 
@@ -759,3 +809,21 @@ Static publish uses a prepare/output/commit transaction under the release lock:
   state stays untouched and fails closed. Exercise crash-style pre-rename
   recovery plus every mismatch and preserve existing post-rename/post-current
   coverage.
+- **R051-030 (P1, r4076702800) — PID/start identity is not cross-container
+  liveness: accepted.** Replace namespace-local owner inspection as production
+  authority with a kernel advisory lock held on the stable project-volume lock
+  inode for the whole transaction. Keep the durable owner record as diagnostic
+  and project/domain validation only; never rename/unlink the canonical inode.
+  Prove exclusion and crash release with overlapping real containers in distinct
+  PID namespaces, and fail closed where the primitive/filesystem is unsupported.
+- **R051-031 (P2, r4076769001) — orphan `stage.lock.reclaim` can persist:
+  accepted.** Add bounded migration recovery for the pre-kernel-lock sidecar.
+  Recover/quarantine only under exclusive kernel exclusion when no-follow
+  device/inode and full generation checks bind it to the exact stale lock;
+  otherwise preserve it and fail closed. Fault every quarantine/removal
+  durability boundary and test foreign/newer/live/symlinked sidecars.
+- **R051-032 (P2, r4076769013) — recovered output skips parent fsync:
+  accepted.** Journal the output rename and durable-parent phases separately.
+  Any retry in the renamed-but-not-durable phase must re-sync the verified output
+  and its parent before stage or `current`; add ordered trace and crash/fsync-
+  failure tests.

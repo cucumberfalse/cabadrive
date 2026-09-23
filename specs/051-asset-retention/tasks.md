@@ -14,8 +14,8 @@
 - Cycle PR set: PR #217, `codex/051-asset-retention`, purpose `append-only
   static asset retention and shell-last Docker/static deployment`; initial
   product head `c55dee242989b222e0092953721915ea8784275b`; reviewed current head
-  `4f620d8a9c9909b77b841de1f3f24a018f7deade` contains all earlier accepted
-  fixes but has accepted follow-up work R051-028 and R051-029 and is not a
+  `e13d2dc3725a001dbe549d6ed07de91a8fc86eda` contains the prior accepted
+  fixes but has accepted follow-up work R051-030 through R051-032 and is not a
   final-validation candidate.
   It is included only after implementation, verification, resolution of all
   open threads, and fresh exact-head review.
@@ -285,6 +285,28 @@
   escaped transaction, occupied/both-present destination, changed request and
   A/B/C state-drift negatives. Preserve the post-output and post-current retry
   regressions.
+- [ ] T022ad Implement R051-030: replace namespace-local PID/start liveness with
+  a production Linux kernel advisory lock held on one stable, no-follow regular
+  `stage.lock` inode for the complete transaction. The durable owner record
+  remains project/domain diagnostics; never rename/unlink the canonical inode.
+  Add adversarial overlapping real stager containers with distinct PID
+  namespaces: B cannot mutate while A is paused; after A is killed, B acquires
+  and completes. Unsupported filesystem/lock semantics fail closed, and PID
+  aliasing or inability to inspect the other namespace never permits reclaim.
+- [ ] T022ae Implement R051-031: migrate an orphan `stage.lock.reclaim` only
+  under acquired kernel exclusion, with no-follow regular-file checks,
+  exclusive locks on every involved inode, and exact device/inode plus complete
+  generation binding to the stale acquisition. Fault before/after durable
+  quarantine/removal and prove exact retry is idempotent. Symlinked, unreadable,
+  malformed, different-inode/generation, newer, or live-held evidence remains
+  untouched and blocks staging.
+- [ ] T022af Implement R051-032: add explicit `renamed-uncommitted` and
+  `output-durable` publish-journal phases. Fsync the output parent before the
+  durable phase transition; recovery in the earlier phase revalidates/re-syncs
+  the exact output and repeats parent fsync before any stage/release/`current`
+  event. Test crash immediately after rename, parent-fsync failure, and crash
+  after fsync/before phase update with ordered traces and unchanged mismatch
+  negatives.
 - [ ] T023 Orchestrator route every finding/feedback to the proper role; all
   blocking threads are fixed/resolved or explicitly disposed, checks rerun, and
   process memory refreshed.
@@ -360,6 +382,15 @@
 - D051-021: directory fsync is transitive to the declared transaction root for
   every new/renamed entry. A leaf directory sync alone does not make a nested
   asset's ancestor name durable.
+- D051-022: cross-container exclusion/liveness comes from a kernel advisory lock
+  held on one stable project-volume inode, not PID/start lookup in a disposable
+  container namespace. Unsupported semantics fail closed.
+- D051-023: legacy reclaim sidecars are migration evidence, not disposable temp
+  files. Only exact no-follow inode/generation binding under exclusive kernel
+  locks authorizes durable quarantine/removal.
+- D051-024: output rename and durable parent publication are separate journal
+  phases. Recovery repeats output and parent sync before state activation until
+  the durable phase is recorded.
 
 ## Evidence And Feedback
 
@@ -656,15 +687,28 @@
   found and fixed the clean-install Docker argument implication before push.
   Implementation feedback: no scope divergence or additional Architect
   disposition is required.
+- Exact-head review at `e13d2dc3725a001dbe549d6ed07de91a8fc86eda`
+  reports three current unresolved findings. R051-030 (`r4076702800`, P1)
+  rejects namespace-local PID/start inspection as cross-container liveness;
+  R051-031 (`r4076769001`, P2) requires exact safe recovery of a persisted
+  `stage.lock.reclaim`; R051-032 (`r4076769013`, P2) requires repeating output-
+  parent fsync after rename-before-fsync recovery. They are accepted together as
+  the final T022ad–T022af implementation batch with the kernel-lock, exact
+  migration, journal-phase, adversarial-container and crash-point contracts
+  above. No owner decision or product-scope expansion is required. This is
+  Architect return 10/10; no further implementation return is allowed in this
+  cycle, and any later new gap requires a new feature request/escalation.
 
 ## Final Architect Validation
 
 - Architect validation pass: not ready; final validation was not invoked.
 - Final Architect validation completed at: pending.
-- Architect return reason: R051-028 and R051-029 require the final bounded
-  T022ab–T022ac implementation batch, focused/full verification, resolution of
-  the two current review threads, required checks, and fresh exact-head review.
-- Architect return count: 9 / 10.
+- Architect return reason: R051-030 through R051-032 require the complete
+  T022ad–T022af implementation batch, focused/full verification, resolution of
+  the three current review threads, required checks, and fresh exact-head
+  review. No further Architect implementation return is permitted; any later
+  new gap requires a new feature request/escalation under the contract.
+- Architect return count: 10 / 10.
 - Architect validated effective content head: pending.
 
 ## Final Analyst Validation
