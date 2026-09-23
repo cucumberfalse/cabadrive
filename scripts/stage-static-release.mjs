@@ -13,6 +13,7 @@ import {
   fstatSync,
   ftruncateSync,
   fsyncSync,
+  linkSync,
   lstatSync,
   mkdirSync,
   openSync,
@@ -269,6 +270,84 @@ function effectiveProjectKey(projectKey) {
   return value;
 }
 
+function validExecutionDomain(record, project) {
+  return (
+    record?.schemaVersion === EXECUTION_DOMAIN_SCHEMA_VERSION &&
+    record.project === project &&
+    typeof record.domain === "string" &&
+    /^[a-f0-9-]{36}$/u.test(record.domain)
+  );
+}
+
+function publishExecutionDomain(state, path, record) {
+  const temporary = join(state, `.${EXECUTION_DOMAIN_RECORD}.${randomUUID()}.next`);
+  let descriptor;
+  try {
+    descriptor = openSync(temporary, "wx", 0o600);
+    writeFileSync(descriptor, `${JSON.stringify(record)}\n`);
+    fsyncSync(descriptor);
+  } finally {
+    if (descriptor !== undefined) closeSync(descriptor);
+  }
+  try {
+    // Hard-link publication is exclusive: unlike rename it never overwrites a
+    // concurrently published domain. The target is therefore either the
+    // complete, synced temporary or an already authoritative record.
+    linkSync(temporary, path);
+    syncDirectory(state, undefined);
+    return true;
+  } catch (error) {
+    if (error?.code === "EEXIST") return false;
+    throw error;
+  } finally {
+    if (existsSync(temporary)) {
+      unlinkSync(temporary);
+      syncDirectory(state, undefined);
+    }
+  }
+}
+
+function recoverIncompleteExecutionDomain(state, path) {
+  const entry = noFollowEntry(path);
+  if (!entry || entry.isSymbolicLink() || !entry.isFile()) {
+    fail("stage execution domain is malformed or belongs to another Compose project");
+  }
+  const lock = join(state, "stage.lock");
+  if (noFollowEntry(lock)) {
+    fail("stage execution domain is malformed while a stage lock exists");
+  }
+  const reclaim = join(state, ".stage-execution-domain.reclaim");
+  try {
+    linkSync(path, reclaim);
+  } catch (error) {
+    if (error?.code === "EEXIST") {
+      fail("stage execution domain recovery is already in progress");
+    }
+    throw error;
+  }
+  try {
+    const guarded = noFollowEntry(reclaim);
+    const current = noFollowEntry(path);
+    if (
+      !guarded ||
+      guarded.isSymbolicLink() ||
+      !current ||
+      current.isSymbolicLink() ||
+      guarded.ino !== current.ino ||
+      noFollowEntry(lock)
+    ) {
+      fail("stage execution domain recovery lost its exact incomplete record");
+    }
+    unlinkSync(path);
+    syncDirectory(state, undefined);
+  } finally {
+    if (noFollowEntry(reclaim)) {
+      unlinkSync(reclaim);
+      syncDirectory(state, undefined);
+    }
+  }
+}
+
 function executionDomain(state, projectKey) {
   const project = effectiveProjectKey(projectKey);
   const path = join(state, EXECUTION_DOMAIN_RECORD);
@@ -277,26 +356,33 @@ function executionDomain(state, projectKey) {
     project,
     domain: randomUUID(),
   };
-  let descriptor;
+  let recorded;
   try {
-    descriptor = openSync(path, "wx", 0o600);
-    writeFileSync(descriptor, `${JSON.stringify(created)}\n`);
-    fsyncSync(descriptor);
-  } catch (error) {
-    if (error?.code !== "EEXIST") throw error;
-  } finally {
-    if (descriptor !== undefined) closeSync(descriptor);
+    recorded = noFollowEntry(path) ? readJson(path, "stage execution domain") : undefined;
+  } catch {
+    recorded = undefined;
   }
-  if (descriptor !== undefined) syncDirectory(state, undefined);
-  const recorded = readJson(path, "stage execution domain");
-  if (
-    recorded?.schemaVersion !== EXECUTION_DOMAIN_SCHEMA_VERSION ||
-    recorded.project !== project ||
-    typeof recorded.domain !== "string" ||
-    !/^[a-f0-9-]{36}$/u.test(recorded.domain)
-  ) {
+  const structurallyCompleteForeignRecord =
+    recorded?.schemaVersion === EXECUTION_DOMAIN_SCHEMA_VERSION &&
+    typeof recorded.project === "string" &&
+    typeof recorded.domain === "string" &&
+    /^[a-f0-9-]{36}$/u.test(recorded.domain) &&
+    recorded.project !== project;
+  if (structurallyCompleteForeignRecord) {
     fail("stage execution domain is malformed or belongs to another Compose project");
   }
+  if (!validExecutionDomain(recorded, project)) {
+    if (noFollowEntry(path)) recoverIncompleteExecutionDomain(state, path);
+    publishExecutionDomain(state, path, created);
+    recorded = readJson(path, "stage execution domain");
+  }
+  if (!validExecutionDomain(recorded, project)) {
+    fail("stage execution domain is malformed or belongs to another Compose project");
+  }
+  // A previous exclusive publish might have failed after link visibility but
+  // before its parent barrier. Retrying the same valid record completes that
+  // barrier before the record participates in lock ownership.
+  syncDirectory(state, undefined);
   return recorded;
 }
 
@@ -1368,19 +1454,38 @@ function pendingPriorStateMatchesCurrentState(state, pending) {
   );
 }
 
-function pendingRetainedAssetsMatchCurrentState(state, pending) {
+function pendingRetainedAssetsMatchCurrentState(state, pending, release) {
   const ledger = readRetainedInventory(state);
   const retained = inventoryForAssets(state, "retained assets");
   const current = currentReleaseId(state);
+  const promotionJournal = readAssetPromotionJournal(state);
   if (!ledger) {
-    return (
+    const emptyPriorState =
       pending.priorCurrentReleaseId === null &&
       current === null &&
       pending.priorAssets.length === 0 &&
-      retained.length === 0
-    );
+      retained.length === 0;
+    const journalledInitialSubset =
+      pending.priorCurrentReleaseId === null &&
+      current === null &&
+      promotionJournal &&
+      pendingJournalMatchesRequest(promotionJournal, release, undefined, pending.expectedAssets) &&
+      actualIsPriorPlusSubset(retained, promotionJournal.priorAssets, promotionJournal.additions) &&
+      promotionJournal.priorAssets.length === 0;
+    return emptyPriorState || journalledInitialSubset;
   }
-  if (!sameEntries(ledger, retained)) return false;
+  const journalPriorCurrentIsExact =
+    pending.priorCurrentReleaseId === null
+      ? current === null && pending.priorAssets.length === 0
+      : current === pending.priorCurrentReleaseId;
+  const journalledPromotionSubset =
+    journalPriorCurrentIsExact &&
+    promotionJournal &&
+    pendingJournalMatchesRequest(promotionJournal, release, undefined, pending.expectedAssets) &&
+    actualIsPriorPlusSubset(retained, promotionJournal.priorAssets, promotionJournal.additions) &&
+    (sameEntries(ledger, promotionJournal.priorAssets) ||
+      sameEntries(ledger, promotionJournal.expectedAssets));
+  if (!sameEntries(ledger, retained)) return journalledPromotionSubset;
   const committed = verifyCommittedState(state);
   const priorCurrentIsExact =
     pending.priorCurrentReleaseId === null
@@ -1402,7 +1507,7 @@ function pendingRetainedAssetsMatchCurrentState(state, pending) {
     committed.releaseId === pending.releaseId &&
     sameEntries(ledger, pending.expectedAssets) &&
     sameEntries(retained, pending.expectedAssets);
-  return priorIsExact || ownPromotionIsExact || alreadyCommitted;
+  return priorIsExact || ownPromotionIsExact || alreadyCommitted || journalledPromotionSubset;
 }
 
 function exactCommittedPublishWithoutJournal(state, release, inventory) {
@@ -1597,7 +1702,7 @@ export function buildStaticPublish({
         noFollowEntry(pendingTemporary) ||
         !pendingPublishMatches(existingPending, output, manifest, inventory) ||
         !pendingInventoryMatchesCandidate(existingPending, manifest) ||
-        !pendingRetainedAssetsMatchCurrentState(state, existingPending)
+        !pendingRetainedAssetsMatchCurrentState(state, existingPending, manifest)
       ) {
         fail("publish output already exists without an exact pending transaction");
       }
@@ -1640,11 +1745,6 @@ export function buildStaticPublish({
         fail("static publish pending journal has no matching pre-output transaction");
       }
       const temporary = join(parent, existingPending.transactionId);
-      const prefix = `.${basename(output)}.publish-`;
-      const related = requireDirectoryNames(parent).filter((name) => name.startsWith(prefix));
-      if (related.length !== 1 || related[0] !== existingPending.transactionId) {
-        fail("static publish pending journal has ambiguous temporary state");
-      }
       const temporaryEntry = noFollowEntry(temporary);
       if (!temporaryEntry || temporaryEntry.isSymbolicLink() || !temporaryEntry.isDirectory()) {
         fail("static publish pending journal has no exact temporary directory");

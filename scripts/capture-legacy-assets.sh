@@ -179,9 +179,23 @@ copy_legacy_assets() {
   fi
 }
 
+is_post_feature_runtime_image() {
+  docker image inspect \
+    --format '{{ index .Config.Labels "com.cabadrive.release-state-runtime" }}' \
+    "$1" 2>/dev/null | grep -qx 'true'
+}
+
 if [ -n "$container" ]; then
   source="$container"
 elif image="$(docker image inspect --format '{{.Id}}' "${project}-cabadrive" 2>/dev/null || true)"; [ -n "$image" ]; then
+  if is_post_feature_runtime_image "${project}-cabadrive"; then
+    if [ -n "$invalid_state" ]; then
+      printf '%s\n' 'incomplete project release-state has no readable legacy source' >&2
+      exit 1
+    fi
+    printf '%s\n' 'initial-install: current runtime image has no pre-feature legacy assets'
+    exit 0
+  fi
   temporary_container="$(docker create "$image")"
   trap 'docker rm -f "$temporary_container" >/dev/null 2>&1 || true' EXIT
   source="$image"

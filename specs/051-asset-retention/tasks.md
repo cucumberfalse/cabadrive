@@ -774,6 +774,18 @@
   canonically rejects candidate/state equality or nesting before state layout
   creation. Dedicated fault and sentinel regressions pass with focused staging
   `39/39` and lint green; no new product scope or Architect return is introduced.
+- The final bounded fault-boundary completion adds R051-042 (`r4086505450`): an
+  output-durable static-publish retry now admits only the matching asset-promotion
+  journal's exact prior-plus-subset store and delegates its completion to the
+  stager. R051-043 (`r4086505462`) labels the post-feature runtime image so a
+  second clean `make build` never captures it as legacy. R051-044
+  (`r4086505468`) writes the execution-domain record to a synced temporary and
+  publishes it exclusively, while safely replacing only an incomplete first
+  record with no stage lock. R051-045 (`r4087741091`) recovers its exact prepared
+  temporary without treating unrelated older publish-orphan directories as
+  ambiguity. Focused capture/staging regressions pass `50/50`; full preflight
+  and one real isolated Docker retention lifecycle also pass before commit and
+  review.
 
 ## Final Architect Validation
 

@@ -448,6 +448,22 @@ test("static publish recovers only an exact durable pre-rename temporary transac
     assert.equal(readFileSync(join(exact.output, "index.html"), "utf8"), "B shell");
     assert.match(currentShell(exact.state), /B shell/);
 
+    const unrelated = crash("unrelated-orphan");
+    const unrelatedOrphan = join(root, ".unrelated-orphan-output.publish-old-attempt");
+    mkdirSync(unrelatedOrphan);
+    writeFileSync(join(unrelatedOrphan, "sentinel"), "leave unrelated recovery evidence alone");
+    assert.doesNotThrow(() =>
+      buildStaticPublish({
+        stateRoot: unrelated.state,
+        candidateRoot: b,
+        outputRoot: unrelated.output,
+      }),
+    );
+    assert.equal(
+      readFileSync(join(unrelatedOrphan, "sentinel"), "utf8"),
+      "leave unrelated recovery evidence alone",
+    );
+
     const missing = crash("missing");
     const missingBefore = snapshotState(missing.state);
     rmSync(missing.temporary, { recursive: true, force: true });
@@ -458,7 +474,7 @@ test("static publish recovers only an exact durable pre-rename temporary transac
           candidateRoot: b,
           outputRoot: missing.output,
         }),
-      /ambiguous temporary state/i,
+      /no exact temporary directory/i,
     );
     unchanged(missing, missingBefore);
 
@@ -596,6 +612,39 @@ test("a visible prepared journal preserves its exact temporary when its director
     assert.match(currentShell(state), /B shell/);
     assert.equal(existsSync(temporary), false);
     assert.equal(existsSync(join(state, "publish-pending.json")), false);
+  });
+});
+
+test("a durable output retry finishes its exact journalled partial asset promotion", () => {
+  withFixture((root) => {
+    const state = join(root, "state");
+    const output = join(root, "output");
+    const a = release(root, "a", { "a.js": "A" }, "A shell");
+    const b = release(root, "b", { "nested/b.js": "B" }, "B shell");
+    stageStaticRelease({ stateRoot: state, candidateRoot: a });
+    const aCurrent = readlinkSync(join(state, "current"));
+
+    assert.throws(
+      () =>
+        buildStaticPublish({
+          stateRoot: state,
+          candidateRoot: b,
+          outputRoot: output,
+          faultAt: "after-asset-rename",
+        }),
+      /fault injection/i,
+    );
+    assert.match(readFileSync(join(output, "index.html"), "utf8"), /B shell/);
+    assert.equal(readlinkSync(join(state, "current")), aCurrent);
+    assert.equal(existsSync(join(state, "publish-pending.json")), true);
+    assert.equal(existsSync(join(state, "retained-assets-pending.json")), true);
+
+    assert.doesNotThrow(() =>
+      buildStaticPublish({ stateRoot: state, candidateRoot: b, outputRoot: output }),
+    );
+    assert.match(currentShell(state), /B shell/);
+    assert.equal(existsSync(join(state, "publish-pending.json")), false);
+    assert.equal(existsSync(join(state, "retained-assets-pending.json")), false);
   });
 });
 
@@ -1059,6 +1108,23 @@ test("lock authority survives stager recreation and rejects a sibling Compose pr
       /another Compose project/i,
     );
     assert.match(currentShell(state), /B shell/);
+  });
+});
+
+test("an incomplete first execution-domain record is atomically replaced before locking", () => {
+  withFixture((root) => {
+    const state = join(root, "state");
+    const candidate = release(root, "candidate", { "a.js": "A" }, "A shell");
+    mkdirSync(state);
+    writeFileSync(join(state, "stage-execution-domain.json"), '{"schemaVersion":');
+
+    assert.doesNotThrow(() =>
+      stageStaticRelease({ stateRoot: state, candidateRoot: candidate, projectKey: "fixture" }),
+    );
+    const domain = JSON.parse(readFileSync(join(state, "stage-execution-domain.json"), "utf8"));
+    assert.equal(domain.project, "fixture");
+    assert.match(domain.domain, /^[a-f0-9-]{36}$/u);
+    assert.equal(existsSync(join(state, ".stage-execution-domain.reclaim")), false);
   });
 });
 

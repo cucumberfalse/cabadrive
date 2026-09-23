@@ -21,6 +21,8 @@ CMD ["sh", "-c", "set -eu; if [ -e /legacy-handoff/current ] || [ -L /legacy-han
 
 FROM nginx:1.29-alpine AS runtime
 
+LABEL com.cabadrive.release-state-runtime="true"
+
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 EXPOSE 8080

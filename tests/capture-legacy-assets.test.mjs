@@ -174,6 +174,55 @@ exit 90
   }
 });
 
+test("a second clean build ignores an unstarted post-feature runtime image", () => {
+  const root = join(tmpdir(), `cabadrive-post-feature-image-${process.pid}-${Date.now()}`);
+  const bin = join(root, "bin");
+  const log = join(root, "docker.log");
+  mkdirSync(bin, { recursive: true });
+  const docker = join(bin, "docker");
+  writeFileSync(
+    docker,
+    `#!/bin/sh
+set -eu
+printf '%s\\n' "$*" >>"${log}"
+if [ "$1" = compose ] && [ "$2" = ps ]; then exit 0; fi
+if [ "$1" = volume ] && [ "$2" = inspect ]; then exit 1; fi
+if [ "$1" = image ] && [ "$2" = inspect ]; then
+  case "$*" in
+    *com.cabadrive.release-state-runtime*) printf '%s\\n' true ;;
+    *) printf '%s\\n' post-feature-image-id ;;
+  esac
+  exit 0
+fi
+if [ "$1" = create ] || [ "$1" = cp ]; then
+  printf '%s\\n' 'post-feature image must not be captured' >&2
+  exit 91
+fi
+exit 0
+`,
+  );
+  chmodSync(docker, 0o755);
+  try {
+    for (const attempt of [1, 2]) {
+      const result = spawnSync("sh", [captureScript], {
+        cwd: root,
+        encoding: "utf8",
+        env: {
+          ...process.env,
+          COMPOSE_PROJECT_NAME: "fixture",
+          CABADRIVE_REPOSITORY_ROOT: root,
+          PATH: `${bin}:${process.env.PATH}`,
+        },
+      });
+      assert.equal(result.status, 0, `attempt ${attempt}: ${result.stderr}`);
+      assert.match(result.stdout, /current runtime image has no pre-feature legacy assets/);
+    }
+    assert.doesNotMatch(readFileSync(log, "utf8"), /^(create|cp)\b/m);
+  } finally {
+    if (existsSync(root)) rmSync(root, { recursive: true, force: true });
+  }
+});
+
 test("an incomplete volume does not suppress capture of a running legacy release", () => {
   const root = join(tmpdir(), `cabadrive-capture-incomplete-${process.pid}-${Date.now()}`);
   const bin = join(root, "bin");
