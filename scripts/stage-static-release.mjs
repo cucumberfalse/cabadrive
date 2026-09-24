@@ -1921,7 +1921,7 @@ export function buildStaticPublish({
     } finally {
       const pendingPath = publishPendingPath(state);
       const pendingEntry = noFollowEntry(pendingPath);
-      let exactPreparedTransaction = false;
+      let exactPreOutputTransaction = false;
       if (
         !renamed &&
         pendingEntry?.isFile() &&
@@ -1931,22 +1931,23 @@ export function buildStaticPublish({
         try {
           const visiblePending = readPendingPublish(state);
           const temporaryInventory = outputInventory(temporary);
-          exactPreparedTransaction =
-            visiblePending?.phase === "prepared" &&
+          exactPreOutputTransaction =
+            ["prepared", "renamed-uncommitted"].includes(visiblePending?.phase) &&
             visiblePending.transactionId === basename(temporary) &&
             pendingPublishMatches(visiblePending, output, manifest, temporaryInventory) &&
             pendingInventoryMatchesCandidate(visiblePending, manifest) &&
             pendingPriorStateMatchesCurrentState(state, visiblePending);
         } catch {
-          exactPreparedTransaction = false;
+          exactPreOutputTransaction = false;
         }
       }
-      if (!renamed && !exactPreparedTransaction && existsSync(temporary)) {
+      if (!renamed && !exactPreOutputTransaction && existsSync(temporary)) {
         rmSync(temporary, { recursive: true, force: true });
       }
-      // A visible, exact prepared journal is durable recovery authority even
-      // when writeAtomically threw after its rename but before returning. Keep
-      // both it and its bound temporary; ambiguous evidence remains fail-closed.
+      // A visible, exact pre-output journal is durable recovery authority even
+      // when either journal phase write threw after its rename but before
+      // returning. Keep both it and its bound temporary; ambiguous evidence
+      // remains fail-closed.
     }
   } finally {
     unlock();

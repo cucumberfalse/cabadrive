@@ -823,6 +823,14 @@
   proves preparation precedes activation, restores the prior target, and leaves
   no temporary pointer. Focused staging regressions pass `44/44`; full preflight
   and one real Docker retention lifecycle also pass before commit/review.
+- The terminal pre-output journal response closes R051-054 (`r4092299897`): a
+  visible, exact `renamed-uncommitted` journal is recoverable when its second
+  phase write reached visibility but directory fsync failed before temporary to
+  output rename. Final cleanup preserves only the exact bound temporary for the
+  recoverable pre-output phases (`prepared` or `renamed-uncommitted`), never an
+  `output-durable` or mismatched journal. Focused injected phase-barrier staging
+  regressions pass `44/44`; full preflight and one real Docker retention
+  lifecycle also pass before commit/review.
 
 ## Final Architect Validation
 

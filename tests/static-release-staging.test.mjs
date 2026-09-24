@@ -621,45 +621,50 @@ test("static publish recovers only an exact durable pre-rename temporary transac
   });
 });
 
-test("a visible prepared journal preserves its exact temporary when its directory barrier fails", () => {
+test("a visible pre-output journal preserves its exact temporary when its directory barrier fails", () => {
   withFixture((root) => {
-    const state = join(root, "state");
-    const output = join(root, "output");
     const a = release(root, "a", { "a.js": "A" }, "A shell");
     const b = release(root, "b", { "b.js": "B" }, "B shell");
-    stageStaticRelease({ stateRoot: state, candidateRoot: a });
-    let injected = false;
+    for (const phase of ["prepared", "renamed-uncommitted"]) {
+      const state = join(root, `${phase}-state`);
+      const output = join(root, `${phase}-output`);
+      stageStaticRelease({ stateRoot: state, candidateRoot: a });
+      let injected = false;
 
-    assert.throws(
-      () =>
-        buildStaticPublish({
-          stateRoot: state,
-          candidateRoot: b,
-          outputRoot: output,
-          onDurabilityOperation: ({ operation, path }) => {
-            if (
-              !injected &&
-              operation === "fsync-directory" &&
-              path === realpathSync(state) &&
-              existsSync(join(state, "publish-pending.json"))
-            ) {
-              injected = true;
-              throw new Error("publish journal directory barrier failed");
-            }
-          },
-        }),
-      /journal directory barrier failed/i,
-    );
-    const pending = JSON.parse(readFileSync(join(state, "publish-pending.json"), "utf8"));
-    const temporary = join(root, pending.transactionId);
-    assert.equal(pending.phase, "prepared");
-    assert.equal(lstatSync(temporary).isDirectory(), true);
-    assert.equal(existsSync(output), false);
+      assert.throws(
+        () =>
+          buildStaticPublish({
+            stateRoot: state,
+            candidateRoot: b,
+            outputRoot: output,
+            onDurabilityOperation: ({ operation, path }) => {
+              const pendingPath = join(state, "publish-pending.json");
+              if (
+                !injected &&
+                operation === "fsync-directory" &&
+                path === realpathSync(state) &&
+                existsSync(pendingPath) &&
+                JSON.parse(readFileSync(pendingPath, "utf8")).phase === phase
+              ) {
+                injected = true;
+                throw new Error(`${phase} journal directory barrier failed`);
+              }
+            },
+          }),
+        /journal directory barrier failed/i,
+      );
+      assert.equal(injected, true, `${phase} journal barrier was exercised`);
+      const pending = JSON.parse(readFileSync(join(state, "publish-pending.json"), "utf8"));
+      const temporary = join(root, pending.transactionId);
+      assert.equal(pending.phase, phase);
+      assert.equal(lstatSync(temporary).isDirectory(), true);
+      assert.equal(existsSync(output), false);
 
-    buildStaticPublish({ stateRoot: state, candidateRoot: b, outputRoot: output });
-    assert.match(currentShell(state), /B shell/);
-    assert.equal(existsSync(temporary), false);
-    assert.equal(existsSync(join(state, "publish-pending.json")), false);
+      buildStaticPublish({ stateRoot: state, candidateRoot: b, outputRoot: output });
+      assert.match(currentShell(state), /B shell/);
+      assert.equal(existsSync(temporary), false);
+      assert.equal(existsSync(join(state, "publish-pending.json")), false);
+    }
   });
 });
 
