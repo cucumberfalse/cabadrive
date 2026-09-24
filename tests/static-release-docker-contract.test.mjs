@@ -3,9 +3,14 @@ import { readFileSync } from "node:fs";
 import test from "node:test";
 
 const dockerfile = readFileSync(new URL("../Dockerfile", import.meta.url), "utf8");
+const dockerignore = readFileSync(new URL("../.dockerignore", import.meta.url), "utf8");
 const nginx = readFileSync(new URL("../nginx.conf", import.meta.url), "utf8");
 const capture = readFileSync(
   new URL("../scripts/capture-legacy-assets.sh", import.meta.url),
+  "utf8",
+);
+const dockerRetention = readFileSync(
+  new URL("../scripts/test-docker-asset-retention.mjs", import.meta.url),
   "utf8",
 );
 
@@ -22,6 +27,8 @@ test("the stager is Docker-contained and nginx exposes retained immutable assets
   assert.match(nginx, /alias \/state\/assets\//);
   assert.match(nginx, /location \/assets\//);
   assert.match(nginx, /try_files \$uri =404/);
+  assert.match(dockerignore, /^\.cabadrive-release-handoff$/m);
+  assert.match(dockerRetention, /\["image", "rm", "-f", `\$\{selectedProject\}-stager`\]/);
 });
 
 test("legacy capture is exact-project, supports container and prior image, and records identity", () => {

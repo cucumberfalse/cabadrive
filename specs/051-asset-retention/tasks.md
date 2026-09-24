@@ -809,6 +809,12 @@
   named deployment or volume. The legacy unlabelled-image path remains eligible.
   Focused capture regressions pass `10/10`; full preflight and one real Docker
   retention lifecycle also pass before commit/review.
+- The terminal direct Docker-hygiene response closes R051-051 (`r4088204047`)
+  by excluding `.cabadrive-release-handoff` from `COPY . .` build context and
+  layers, and R051-052 (`r4088204052`) by removing the test-owned
+  `${selectedProject}-stager` image alongside the runtime image. Focused Docker
+  contract regressions pass `2/2`; full preflight and one real Docker retention
+  lifecycle also pass before commit/review.
 
 ## Final Architect Validation
 

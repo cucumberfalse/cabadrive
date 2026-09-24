@@ -120,6 +120,7 @@ function cleanupProject(selectedProject) {
   spawnSync("docker", ["compose", "-p", selectedProject, "down"], { cwd: root, stdio: "ignore" });
   spawnSync("docker", ["rm", "-f", `${selectedProject}-legacy-a`], { stdio: "ignore" });
   spawnSync("docker", ["image", "rm", "-f", `${selectedProject}-cabadrive`], { stdio: "ignore" });
+  spawnSync("docker", ["image", "rm", "-f", `${selectedProject}-stager`], { stdio: "ignore" });
   spawnSync("docker", ["volume", "rm", "-f", `${selectedProject}_release-state`], {
     stdio: "ignore",
   });
