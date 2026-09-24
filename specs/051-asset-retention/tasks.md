@@ -855,6 +855,15 @@
   traversal and escaping root forms fail before host mutation. Focused
   no-mutation staging/capture regressions pass `57/57`; full preflight and one
   real Docker retention lifecycle also pass before commit/review.
+- The terminal direct consistency response closes R051-059 (`r4098225155`): a
+  direct stage with a predecessor now requires its complete committed
+  metadata/marker/tree tuple before promotion; the exact asset-promotion journal
+  remains the separately authorized recovery path. R051-060 (`r4098225162`)
+  serializes final output publication with an exact journal-bound no-follow
+  exclusive claim before its atomic directory rename, rejects a race-created
+  empty destination, and recovers only its exact unfinished claim. Focused
+  staging regressions pass `47/47`; full preflight and one real Docker
+  retention lifecycle also pass before commit/review.
 
 ## Final Architect Validation
 

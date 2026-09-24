@@ -937,6 +937,64 @@ test("static publish rejects a corrupt prior current tuple before publication", 
   });
 });
 
+test("direct stage rejects a corrupt prior current tuple before promotion", () => {
+  withFixture((root) => {
+    const state = join(root, "state");
+    const a = release(root, "a", { "a.js": "A" }, "A shell");
+    const b = release(root, "b", { "b.js": "B" }, "B shell");
+    stageStaticRelease({ stateRoot: state, candidateRoot: a });
+    const releaseId = createCandidateManifest(a).releaseId;
+    writeFileSync(join(state, "releases", releaseId, ".release-state.json"), "{}\n");
+    const before = snapshotState(state);
+
+    assert.throws(
+      () => stageStaticRelease({ stateRoot: state, candidateRoot: b }),
+      /valid committed current release/i,
+    );
+    assert.deepEqual(snapshotState(state), before);
+    assert.equal(existsSync(join(state, "releases", createCandidateManifest(b).releaseId)), false);
+  });
+});
+
+test("static publish never replaces an empty destination that wins the output claim race", () => {
+  withFixture((root) => {
+    const state = join(root, "state");
+    const output = join(root, "output");
+    const a = release(root, "a", { "a.js": "A" }, "A shell");
+    const b = release(root, "b", { "b.js": "B" }, "B shell");
+    stageStaticRelease({ stateRoot: state, candidateRoot: a });
+    let raced = false;
+
+    assert.throws(
+      () =>
+        buildStaticPublish({
+          stateRoot: state,
+          candidateRoot: b,
+          outputRoot: output,
+          onDurabilityOperation: ({ operation, path }) => {
+            if (!raced && operation === "before-output-reservation" && path === output) {
+              raced = true;
+              mkdirSync(output);
+            }
+          },
+        }),
+      /destination appeared during no-replace publication/i,
+    );
+    assert.equal(raced, true);
+    assert.equal(lstatSync(output).isDirectory(), true);
+    assert.deepEqual(readdirSync(output), []);
+    assert.match(currentShell(state), /A shell/);
+    const pending = JSON.parse(readFileSync(join(state, "publish-pending.json"), "utf8"));
+    assert.equal(pending.phase, "renamed-uncommitted");
+    assert.equal(lstatSync(join(root, pending.transactionId)).isDirectory(), true);
+
+    rmSync(output, { recursive: true, force: true });
+    buildStaticPublish({ stateRoot: state, candidateRoot: b, outputRoot: output });
+    assert.match(currentShell(state), /B shell/);
+    assert.equal(existsSync(join(state, "publish-pending.json")), false);
+  });
+});
+
 test("a pending B publish expires after an independent C retained-asset promotion", () => {
   withFixture((root) => {
     const state = join(root, "state");
@@ -1637,12 +1695,18 @@ test("cumulative retained ledger rejects corrupt, missing, and untracked histori
     const before = readlinkSync(join(state, "current"));
 
     writeFileSync(join(state, "assets", "old-unreferenced.js"), "corrupt");
-    assert.throws(() => stageStaticRelease({ stateRoot: state, candidateRoot: b }), /cumulative/i);
+    assert.throws(
+      () => stageStaticRelease({ stateRoot: state, candidateRoot: b }),
+      /(cumulative|valid committed current release)/i,
+    );
     assert.equal(readlinkSync(join(state, "current")), before);
 
     writeFileSync(join(state, "assets", "old-unreferenced.js"), "still A");
     rmSync(join(state, "retained-assets.json"));
-    assert.throws(() => stageStaticRelease({ stateRoot: state, candidateRoot: b }), /cumulative/i);
+    assert.throws(
+      () => stageStaticRelease({ stateRoot: state, candidateRoot: b }),
+      /(cumulative|valid committed current release)/i,
+    );
     assert.equal(readlinkSync(join(state, "current")), before, "ledger refuses a silent repair");
 
     writeFileSync(
@@ -1723,7 +1787,7 @@ test("an exact durable asset-promotion journal alone resumes an unledgered subse
     rmSync(join(rejected, "retained-assets-pending.json"));
     assert.throws(
       () => stageStaticRelease({ stateRoot: rejected, candidateRoot: b }),
-      /cumulative/i,
+      /(cumulative|valid committed current release)/i,
     );
     assert.equal(readlinkSync(join(rejected, "current")), rejectedCurrent);
 
