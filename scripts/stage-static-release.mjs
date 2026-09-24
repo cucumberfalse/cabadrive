@@ -878,21 +878,41 @@ function makeCurrent(state, releaseId, options) {
   const next = join(state, `current.next-${process.pid}-${randomUUID()}`);
   const previous =
     existsSync(current) && lstatSync(current).isSymbolicLink() ? readlinkSync(current) : undefined;
-  symlinkSync(join("releases", releaseId), next);
+  const rollback = previous
+    ? join(state, `current.rollback-${process.pid}-${randomUUID()}`)
+    : undefined;
+  let activated = false;
+  // Materialize the old pointer before the new one is visible. If the parent
+  // durability barrier then fails, rename replaces `current` atomically rather
+  // than exposing an unlink-to-symlink gap to readers.
   try {
+    if (rollback) {
+      symlinkSync(previous, rollback);
+      // Keep the pre-activation rollback boundary fault-injectable: no reader
+      // may observe the new pointer before its atomic replacement exists.
+      invokeDurability(options, "prepare-current-rollback", rollback);
+    }
+    symlinkSync(join("releases", releaseId), next);
     renameSync(next, current);
+    activated = true;
     invokeDurability(options, "rename-current", current);
     syncDirectory(state, options);
   } catch (error) {
     // A failed post-rename durability barrier must not leave a newly selected
     // release advertised by this process. Restore the prior pointer before
     // surfacing the failure; a retry can then safely re-run the transaction.
-    if (existsSync(current)) rmSync(current, { force: true });
-    if (previous) {
-      symlinkSync(previous, current);
+    if (activated) {
+      if (rollback && existsSync(rollback)) {
+        renameSync(rollback, current);
+      } else if (!previous && existsSync(current)) {
+        rmSync(current, { force: true });
+      }
+      syncDirectory(state, { onDurabilityOperation: options?.onDurabilityOperation });
     }
-    syncDirectory(state, { onDurabilityOperation: options?.onDurabilityOperation });
     throw error;
+  } finally {
+    if (existsSync(next)) rmSync(next, { force: true });
+    if (rollback && existsSync(rollback)) rmSync(rollback, { force: true });
   }
 }
 

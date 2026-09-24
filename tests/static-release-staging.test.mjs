@@ -1884,19 +1884,32 @@ test("durability barriers precede activation and failure leaves the old pointer 
     stageStaticRelease({ stateRoot: state, candidateRoot: c });
 
     const cCurrent = readlinkSync(join(state, "current"));
+    const rollbackTrace = [];
     assert.throws(
       () =>
         stageStaticRelease({
           stateRoot: state,
           candidateRoot: d,
           faultAt: "durability:rename-current",
+          onDurabilityOperation: ({ operation }) => rollbackTrace.push(operation),
         }),
       /durability fault injection/i,
     );
     assert.equal(
       readlinkSync(join(state, "current")),
       cCurrent,
-      "post-rename sync failure restores C",
+      "post-rename fault atomically restores C",
+    );
+    assert.equal(lstatSync(join(state, "current")).isSymbolicLink(), true);
+    assert.deepEqual(
+      readdirSync(state).filter((name) => name.startsWith("current.")),
+      [],
+      "fault rollback leaves no prepared pointer behind",
+    );
+    assert.ok(
+      rollbackTrace.indexOf("prepare-current-rollback") >= 0 &&
+        rollbackTrace.indexOf("prepare-current-rollback") < rollbackTrace.indexOf("rename-current"),
+      "the prior pointer is prepared before activation",
     );
     stageStaticRelease({ stateRoot: state, candidateRoot: d });
     assert.match(currentShell(state), /D shell/);

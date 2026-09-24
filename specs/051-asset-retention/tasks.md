@@ -815,6 +815,14 @@
   `${selectedProject}-stager` image alongside the runtime image. Focused Docker
   contract regressions pass `2/2`; full preflight and one real Docker retention
   lifecycle also pass before commit/review.
+- The terminal direct rollback response closes R051-053 (`r4092161046`): before
+  exposing a replacement `current`, staging prepares a temporary link to the
+  predecessor. If `rename-current` has completed but the state directory barrier
+  fails, that prepared link atomically renames over `current`; only the genuine
+  no-predecessor path unlinks the pointer. The injected post-rename regression
+  proves preparation precedes activation, restores the prior target, and leaves
+  no temporary pointer. Focused staging regressions pass `44/44`; full preflight
+  and one real Docker retention lifecycle also pass before commit/review.
 
 ## Final Architect Validation
 
