@@ -14,6 +14,22 @@ is_post_feature_runtime_image() {
     "$1" 2>/dev/null | grep -qx 'true'
 }
 
+validate_project_name() {
+  case "$1" in
+    [a-z0-9]*) ;;
+    *)
+      printf '%s\n' 'Compose project name must be one safe lowercase path component' >&2
+      return 1
+      ;;
+  esac
+  case "$1" in
+    *[!a-z0-9_-]*)
+      printf '%s\n' 'Compose project name must be one safe lowercase path component' >&2
+      return 1
+      ;;
+  esac
+}
+
 # An explicit project name always wins.  On the first upgrade however an older
 # Compose installation may have used the checkout basename rather than the new
 # cabadrive default.  Discover only resources that carry an exact Compose
@@ -21,6 +37,7 @@ is_post_feature_runtime_image() {
 # service-name match by itself is deliberately not enough authority.
 resolve_project() {
   if [ -n "${COMPOSE_PROJECT_NAME:-}" ]; then
+    validate_project_name "$COMPOSE_PROJECT_NAME" || return 1
     printf '%s\n' "$COMPOSE_PROJECT_NAME"
     return 0
   fi
@@ -68,13 +85,15 @@ resolve_project() {
 
   candidate_count="$(printf '%s\n' "$candidates" | tr '|' '\n' | sed '/^$/d' | wc -l | tr -d ' ')"
   case "$candidate_count" in
-    0) printf '%s\n' cabadrive ;;
-    1) printf '%s\n' "$candidates" ;;
+    0) candidate=cabadrive ;;
+    1) candidate="$candidates" ;;
     *)
       printf '%s\n' 'ambiguous pre-feature Compose project; set COMPOSE_PROJECT_NAME explicitly' >&2
       return 1
       ;;
   esac
+  validate_project_name "$candidate" || return 1
+  printf '%s\n' "$candidate"
 }
 
 if [ "${1:-}" = "--resolve-project" ]; then
@@ -84,7 +103,28 @@ fi
 
 project="$(resolve_project)"
 export COMPOSE_PROJECT_NAME="$project"
-handoff_base="$repo_root/.cabadrive-release-handoff/$project"
+handoff_parent="$repo_root/.cabadrive-release-handoff"
+if [ -L "$handoff_parent" ] || { [ -e "$handoff_parent" ] && [ ! -d "$handoff_parent" ]; }; then
+  printf '%s\n' 'legacy handoff root is not a repository-owned directory' >&2
+  exit 1
+fi
+if [ ! -e "$handoff_parent" ] && ! mkdir -p "$handoff_parent"; then
+  printf '%s\n' 'failed to create repository-owned legacy handoff root' >&2
+  exit 1
+fi
+handoff_parent="$(CDPATH= cd -- "$handoff_parent" && pwd -P)"
+if [ "$handoff_parent" != "$repo_root/.cabadrive-release-handoff" ]; then
+  printf '%s\n' 'legacy handoff root escapes the repository' >&2
+  exit 1
+fi
+handoff_base="$handoff_parent/$project"
+case "$handoff_base" in
+  "$handoff_parent"/*) ;;
+  *)
+    printf '%s\n' 'legacy handoff project escapes the repository-owned root' >&2
+    exit 1
+    ;;
+esac
 handoff="$handoff_base/current"
 state_volume="${project}_release-state"
 container="$(COMPOSE_PROJECT_NAME="$project" docker compose -f "$repo_root/docker-compose.yml" ps -aq --all cabadrive | sed -n '1p')"

@@ -614,7 +614,16 @@ export function writeLegacyHandoffManifest({
   faultAt,
   onDurabilityOperation,
 } = {}) {
+  if (!legacyRoot) fail("legacy root is required");
   const root = realpathSync(legacyRoot);
+  assertDirectory(root, "legacy handoff root");
+  let durableHandoff;
+  if (handoffRoot) {
+    const suppliedHandoff = resolve(handoffRoot);
+    assertDirectory(suppliedHandoff, "legacy handoff base");
+    durableHandoff = realpathSync(suppliedHandoff);
+    assertInside(durableHandoff, root, "legacy handoff release");
+  }
   const options = { faultAt, onDurabilityOperation };
   const manifest = createLegacyHandoffManifest({ legacyRoot: root, sourceId, sourceKind });
   const temporary = join(root, `${LEGACY_HANDOFF_MARKER}.next-${process.pid}-${randomUUID()}`);
@@ -629,10 +638,7 @@ export function writeLegacyHandoffManifest({
   // allowed to publish only after every captured byte and every directory entry
   // through the release root has reached durable storage.
   syncTree(root, options);
-  if (handoffRoot) {
-    const durableHandoff = realpathSync(handoffRoot);
-    assertDirectory(durableHandoff, "legacy handoff base");
-    assertInside(durableHandoff, root, "legacy handoff release");
+  if (durableHandoff) {
     syncDirectoryAncestors(dirname(root), durableHandoff, options);
   }
   return manifest;

@@ -267,6 +267,30 @@ exit 1
   }
 });
 
+test("capture rejects a traversal Compose project before creating a handoff child", () => {
+  const root = join(tmpdir(), `cabadrive-capture-project-path-${process.pid}-${Date.now()}`);
+  const external = join(root, "external");
+  mkdirSync(external, { recursive: true });
+  writeFileSync(join(external, "sentinel"), "do not mutate");
+  try {
+    const result = spawnSync("sh", [captureScript], {
+      cwd: root,
+      encoding: "utf8",
+      env: {
+        ...process.env,
+        COMPOSE_PROJECT_NAME: "../../external",
+        CABADRIVE_REPOSITORY_ROOT: root,
+      },
+    });
+    assert.equal(result.status, 1, result.stderr);
+    assert.match(result.stderr, /safe lowercase path component/i);
+    assert.equal(existsSync(join(root, ".cabadrive-release-handoff")), false);
+    assert.equal(readFileSync(join(external, "sentinel"), "utf8"), "do not mutate");
+  } finally {
+    if (existsSync(root)) rmSync(root, { recursive: true, force: true });
+  }
+});
+
 test("an incomplete volume does not suppress capture of a running legacy release", () => {
   const root = join(tmpdir(), `cabadrive-capture-incomplete-${process.pid}-${Date.now()}`);
   const bin = join(root, "bin");

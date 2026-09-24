@@ -1372,6 +1372,33 @@ test("legacy handoff marker and pointer failures leave the prior authority untou
   });
 });
 
+test("legacy handoff metadata rejects a symlink escape before writing outside the handoff", () => {
+  withFixture((root) => {
+    const handoff = join(root, "handoff");
+    const external = join(root, "external");
+    mkdirSync(join(handoff, "releases"), { recursive: true });
+    mkdirSync(join(external, "assets"), { recursive: true });
+    writeFileSync(join(external, "assets", "a.js"), "A");
+    writeFileSync(join(external, "sentinel"), "do not mutate");
+    symlinkSync(external, join(handoff, "releases", "escape"));
+
+    assert.throws(
+      () =>
+        writeLegacyHandoffManifest({
+          legacyRoot: join(handoff, "releases", "escape"),
+          handoffRoot: handoff,
+          sourceId: "legacy-A",
+          sourceKind: "baked-legacy-root",
+        }),
+      /legacy handoff release escapes its root/i,
+    );
+    assert.equal(readFileSync(join(external, "sentinel"), "utf8"), "do not mutate");
+    for (const metadata of ["source-id", "source-kind", ".legacy-handoff.json"]) {
+      assert.equal(existsSync(join(external, metadata)), false, `${metadata} escaped handoff`);
+    }
+  });
+});
+
 test("legacy handoff pointer restores and syncs prior authority after its commit barrier fails", () => {
   withFixture((root) => {
     const handoff = join(root, "handoff");

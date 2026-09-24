@@ -846,6 +846,15 @@
   deleting the shared handoff root or an arbitrary project. Focused Docker
   contract regressions pass `2/2`; full preflight and one real Docker retention
   lifecycle also pass before commit/review.
+- The terminal filesystem-boundary response closes R051-057 (`r4098098631`):
+  `legacy-write` canonicalizes the supplied handoff root and release then
+  verifies containment before its first metadata write, so an escaping release
+  symlink cannot create source or manifest files outside the handoff. R051-058
+  (`r4098098643`) accepts only a Compose-compatible safe project path component
+  and canonicalizes the repository-owned handoff root before creating its child;
+  traversal and escaping root forms fail before host mutation. Focused
+  no-mutation staging/capture regressions pass `57/57`; full preflight and one
+  real Docker retention lifecycle also pass before commit/review.
 
 ## Final Architect Validation
 
