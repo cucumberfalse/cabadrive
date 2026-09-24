@@ -29,6 +29,9 @@ test("the stager is Docker-contained and nginx exposes retained immutable assets
   assert.match(nginx, /try_files \$uri =404/);
   assert.match(dockerignore, /^\.cabadrive-release-handoff$/m);
   assert.match(dockerRetention, /\["image", "rm", "-f", `\$\{selectedProject\}-stager`\]/);
+  assert.match(dockerRetention, /const testHandoffProjects = new Set/);
+  assert.match(dockerRetention, /rmSync\(handoff, \{ recursive: true, force: true \}\)/);
+  assert.match(dockerRetention, /cleanupHandoffProject\(selectedProject\)/);
 });
 
 test("legacy capture is exact-project, supports container and prior image, and records identity", () => {

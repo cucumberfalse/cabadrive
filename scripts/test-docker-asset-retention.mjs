@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /** Executable Docker A->B retention regression, intentionally self-cleaning. */
 import { execFileSync, spawnSync } from "node:child_process";
-import { mkdtempSync, rmSync, writeFileSync } from "node:fs";
+import { existsSync, mkdtempSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -14,6 +14,14 @@ const stoppedProject = `${project}-stopped`;
 const initialProject = `${project}-initial`;
 const siblingProject = `${project}-sibling`;
 const lockProject = `${project}-lock`;
+const testHandoffProjects = new Set([
+  project,
+  stoppedProject,
+  initialProject,
+  siblingProject,
+  lockProject,
+]);
+const handoffBase = join(root, ".cabadrive-release-handoff");
 const port = String(5600 + (process.pid % 300));
 const temporary = mkdtempSync(join(tmpdir(), "cabadrive-docker-retention-"));
 const legacyBytes = "export const legacyLazy = 'retained-origin-A';";
@@ -124,6 +132,17 @@ function cleanupProject(selectedProject) {
   spawnSync("docker", ["volume", "rm", "-f", `${selectedProject}_release-state`], {
     stdio: "ignore",
   });
+  cleanupHandoffProject(selectedProject);
+}
+
+function cleanupHandoffProject(selectedProject) {
+  if (!testHandoffProjects.has(selectedProject)) {
+    throw new Error(`refusing to clean a non-test legacy handoff project: ${selectedProject}`);
+  }
+  const handoff = join(handoffBase, selectedProject);
+  rmSync(handoff, { recursive: true, force: true });
+  if (existsSync(handoff))
+    throw new Error(`test legacy handoff cleanup failed: ${selectedProject}`);
 }
 
 function assertCrossContainerKernelLock(selectedProject) {
@@ -270,5 +289,7 @@ try {
   spawnSync("docker", ["volume", "rm", "-f", `${siblingProject}_release-state`], {
     stdio: "ignore",
   });
+  cleanupHandoffProject(siblingProject);
+  cleanupHandoffProject(lockProject);
   rmSync(temporary, { recursive: true, force: true });
 }

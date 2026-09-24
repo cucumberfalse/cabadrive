@@ -839,6 +839,13 @@
   proves a nonzero pointer command cannot delete the release `current` still
   names. Focused capture regressions pass `11/11`; full preflight and one real
   Docker retention lifecycle also pass before commit/review.
+- The terminal Docker host-cleanup response closes R051-056 (`r4097964511`):
+  the retention lifecycle whitelists its five generated timestamped project
+  names and removes only each corresponding
+  `.cabadrive-release-handoff/<project>` child, verifying removal without ever
+  deleting the shared handoff root or an arbitrary project. Focused Docker
+  contract regressions pass `2/2`; full preflight and one real Docker retention
+  lifecycle also pass before commit/review.
 
 ## Final Architect Validation
 
