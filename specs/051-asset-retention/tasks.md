@@ -831,6 +831,14 @@
   `output-durable` or mismatched journal. Focused injected phase-barrier staging
   regressions pass `44/44`; full preflight and one real Docker retention
   lifecycle also pass before commit/review.
+- The terminal capture-cleanup response closes R051-055 (`r4097530838`): after
+  pointer publication begins, failed capture cleanup retains its release when
+  `current` still names that exact relative release, or when the symlink target
+  cannot be read conclusively. It otherwise removes only the unreferenced
+  temporary. The focused publication-barrier plus rollback-failure regression
+  proves a nonzero pointer command cannot delete the release `current` still
+  names. Focused capture regressions pass `11/11`; full preflight and one real
+  Docker retention lifecycle also pass before commit/review.
 
 ## Final Architect Validation
 

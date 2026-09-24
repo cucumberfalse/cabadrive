@@ -106,6 +106,8 @@ verify_handoff() {
 
 publish_handoff() {
   temporary="$handoff_base/releases/capture-$(date +%s)-$$"
+  release_relative="releases/$(basename "$temporary")"
+  pointer_publication_started=""
   if [ -n "$capture_fault" ]; then
     set -- --fault "$capture_fault"
   else
@@ -113,6 +115,18 @@ publish_handoff() {
   fi
   cleanup_capture() {
     if [ -n "${temporary:-}" ] && [ -e "$temporary" ]; then
+      # Pointer publication can fail after its rename but before a rollback is
+      # known durable. Never remove the captured release while current still
+      # names it; a failed readlink is likewise inconclusive and is retained.
+      if [ -n "$pointer_publication_started" ] && [ -L "$handoff" ]; then
+        if current_target="$(readlink "$handoff" 2>/dev/null)"; then
+          if [ "$current_target" = "$release_relative" ]; then
+            return 0
+          fi
+        else
+          return 0
+        fi
+      fi
       rm -rf -- "$temporary" || return 1
     fi
     return 0
@@ -138,17 +152,18 @@ publish_handoff() {
     --mount "type=bind,source=$script_dir,target=/app,readonly" \
     --mount "type=bind,source=$handoff_base,target=/handoff" \
     node:22-alpine node /app/stage-static-release.mjs legacy-write \
-      --legacy "/handoff/releases/$(basename "$temporary")" \
+      --legacy "/handoff/$release_relative" \
       --handoff /handoff \
       --source-id "$source" --source-kind "$source_kind" "$@"; then
     cleanup_capture || true
     return 1
   fi
+  pointer_publication_started=1
   if ! docker run --rm \
     --mount "type=bind,source=$script_dir,target=/app,readonly" \
     --mount "type=bind,source=$handoff_base,target=/handoff" \
     node:22-alpine node /app/stage-static-release.mjs legacy-publish-pointer \
-      --handoff /handoff --release "releases/$(basename "$temporary")" \
+      --handoff /handoff --release "$release_relative" \
       "$@"; then
     cleanup_capture || true
     return 1
