@@ -368,7 +368,10 @@ test("static export keeps destination absent through a durability failure and re
       /fault injection/i,
     );
     assert.equal(existsSync(archive), false);
-    assert.equal(readdirSync(root).some((name) => name.startsWith(".archive.export-")), false);
+    assert.equal(
+      readdirSync(root).some((name) => name.startsWith(".archive.export-")),
+      false,
+    );
 
     assert.doesNotThrow(() =>
       exportStaticPublish({
