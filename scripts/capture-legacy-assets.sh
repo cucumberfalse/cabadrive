@@ -143,6 +143,15 @@ fi
 
 project="$(resolve_project)"
 export COMPOSE_PROJECT_NAME="$project"
+# Do not let a pipeline mask the Compose lookup status. A failed lookup is not
+# equivalent to an empty project and must not fall through to image discovery
+# or create any handoff state.
+if ! compose_ps_output="$(COMPOSE_PROJECT_NAME="$project" docker compose -f "$repo_root/docker-compose.yml" ps -aq --all cabadrive 2>&1)"; then
+  printf '%s\n' "$compose_ps_output" >&2
+  printf '%s\n' 'failed to discover project Compose container' >&2
+  exit 1
+fi
+container="$(printf '%s\n' "$compose_ps_output" | sed -n '1p')"
 handoff_parent="$repo_root/.cabadrive-release-handoff"
 if [ -L "$handoff_parent" ] || { [ -e "$handoff_parent" ] && [ ! -d "$handoff_parent" ]; }; then
   printf '%s\n' 'legacy handoff root is not a repository-owned directory' >&2
@@ -190,17 +199,40 @@ if [ -e "$handoff_base" ] || [ -L "$handoff_base" ]; then
       ;;
   esac
   handoff_base="$handoff_base_real"
+else
+  if ! mkdir "$handoff_base"; then
+    printf '%s\n' 'failed to create repository-owned legacy handoff project' >&2
+    exit 1
+  fi
 fi
 handoff="$handoff_base/current"
+releases="$handoff_base/releases"
+if [ -e "$releases" ] || [ -L "$releases" ]; then
+  if [ -L "$releases" ] || [ ! -d "$releases" ]; then
+    printf '%s\n' 'legacy handoff releases is not a repository-owned directory' >&2
+    exit 1
+  fi
+else
+  if ! mkdir "$releases"; then
+    printf '%s\n' 'failed to create repository-owned legacy releases directory' >&2
+    exit 1
+  fi
+fi
+releases_real="$(CDPATH= cd -- "$releases" && pwd -P)" || exit 1
+case "$releases_real" in
+  "$handoff_base"/*) ;;
+  *)
+    printf '%s\n' 'legacy handoff releases escapes the repository-owned project' >&2
+    exit 1
+    ;;
+esac
+releases="$releases_real"
 state_volume="${project}_release-state"
-container="$(COMPOSE_PROJECT_NAME="$project" docker compose -f "$repo_root/docker-compose.yml" ps -aq --all cabadrive | sed -n '1p')"
 image=""
 source=""
 invalid_state=""
 source_kind="baked-legacy-root"
 capture_fault="${CABADRIVE_CAPTURE_FAULT:-}"
-
-mkdir -p "$handoff_base/releases"
 
 verify_handoff() {
   test -L "$handoff" || return 1
@@ -211,7 +243,7 @@ verify_handoff() {
 }
 
 publish_handoff() {
-  temporary="$handoff_base/releases/capture-$(date +%s)-$$"
+  temporary="$releases/capture-$(date +%s)-$$"
   release_relative="releases/$(basename "$temporary")"
   pointer_publication_started=""
   if [ -n "$capture_fault" ]; then

@@ -31,7 +31,7 @@ test("make build propagates capture failure before starting an image build", () 
     docker,
     `#!/bin/sh
 set -eu
-if [ "$1" = compose ] && [ "\${4:-}" = ps ]; then printf '%s\\n' legacy-container; exit 0; fi
+if [ "$1" = compose ]; then printf '%s\\n' legacy-container; exit 0; fi
 if [ "$1" = volume ] && [ "$2" = inspect ]; then exit 1; fi
 if [ "$1" = cp ]; then exit 73; fi
 if [ "$1" = compose ] && [ "$2" = build ]; then : >"$CABADRIVE_BUILD_SENTINEL"; exit 0; fi
@@ -120,7 +120,7 @@ test("stopped legacy Compose image is exported before a build can replace it", (
     docker,
     `#!/bin/sh
 set -eu
-if [ "$1" = compose ] && [ "$2" = ps ]; then exit 0; fi
+if [ "$1" = compose ]; then exit 0; fi
 if [ "$1" = ps ]; then exit 0; fi
 if [ "$1" = volume ] && [ "$2" = inspect ]; then exit 1; fi
 if [ "$1" = image ] && [ "$2" = inspect ]; then printf '%s\\n' legacy-image-id; exit 0; fi
@@ -188,7 +188,7 @@ test("a second clean build ignores an unstarted post-feature runtime image", () 
     `#!/bin/sh
 set -eu
 printf '%s\\n' "$*" >>"${log}"
-if [ "$1" = compose ] && [ "$2" = ps ]; then exit 0; fi
+if [ "$1" = compose ]; then exit 0; fi
 if [ "$1" = volume ] && [ "$2" = inspect ]; then exit 1; fi
 if [ "$1" = image ] && [ "$2" = inspect ]; then
   case "$*" in
@@ -281,7 +281,7 @@ test("a discovered historical project is persisted before later labelled-image r
     docker,
     `#!/bin/sh
 set -eu
-if [ "$1" = compose ] && [ "$2" = ps ]; then exit 0; fi
+if [ "$1" = compose ]; then exit 0; fi
 if [ "$1" = ps ]; then exit 0; fi
 if [ "$1" = volume ] && [ "$2" = inspect ]; then exit 1; fi
 if [ "$1" = image ] && [ "$2" = inspect ]; then
@@ -404,6 +404,81 @@ exit 90
   }
 });
 
+test("a failed project Compose lookup cannot fall through to image capture or handoff mutation", () => {
+  const root = join(tmpdir(), `cabadrive-compose-ps-failure-${process.pid}-${Date.now()}`);
+  const bin = join(root, "bin");
+  const imageFallback = join(root, "image-fallback");
+  mkdirSync(bin, { recursive: true });
+  const docker = join(bin, "docker");
+  writeFileSync(
+    docker,
+    `#!/bin/sh
+if [ "$1" = compose ]; then printf '%s\\n' 'compose unavailable' >&2; exit 71; fi
+if [ "$1" = image ] || [ "$1" = create ] || [ "$1" = cp ] || [ "$1" = run ]; then : >"${imageFallback}"; exit 90; fi
+exit 90
+`,
+  );
+  chmodSync(docker, 0o755);
+  try {
+    const result = spawnSync("sh", [captureScript], {
+      cwd: root,
+      encoding: "utf8",
+      env: {
+        ...process.env,
+        COMPOSE_PROJECT_NAME: "fixture",
+        CABADRIVE_REPOSITORY_ROOT: root,
+        PATH: `${bin}:${process.env.PATH}`,
+      },
+    });
+    assert.notEqual(result.status, 0);
+    assert.match(result.stderr, /failed to discover project Compose container/i);
+    assert.equal(existsSync(imageFallback), false);
+    assert.equal(existsSync(join(root, ".cabadrive-release-handoff")), false);
+  } finally {
+    if (existsSync(root)) rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("capture rejects a symlinked releases directory before creating a temporary capture", () => {
+  const root = join(tmpdir(), `cabadrive-releases-symlink-${process.pid}-${Date.now()}`);
+  const external = join(root, "external");
+  const handoff = join(root, ".cabadrive-release-handoff", "fixture");
+  const bin = join(root, "bin");
+  mkdirSync(external, { recursive: true });
+  mkdirSync(handoff, { recursive: true });
+  writeFileSync(join(external, "sentinel"), "external");
+  symlinkSync(external, join(handoff, "releases"));
+  mkdirSync(bin, { recursive: true });
+  const docker = join(bin, "docker");
+  writeFileSync(
+    docker,
+    `#!/bin/sh
+if [ "$1" = compose ]; then exit 0; fi
+: >"${join(root, "unexpected-docker-call")}"; exit 90
+`,
+  );
+  chmodSync(docker, 0o755);
+  try {
+    const result = spawnSync("sh", [captureScript], {
+      cwd: root,
+      encoding: "utf8",
+      env: {
+        ...process.env,
+        COMPOSE_PROJECT_NAME: "fixture",
+        CABADRIVE_REPOSITORY_ROOT: root,
+        PATH: `${bin}:${process.env.PATH}`,
+      },
+    });
+    assert.notEqual(result.status, 0);
+    assert.match(result.stderr, /releases is not a repository-owned directory/i);
+    assert.equal(readFileSync(join(external, "sentinel"), "utf8"), "external");
+    assert.deepEqual(readdirSync(external), ["sentinel"]);
+    assert.equal(existsSync(join(root, "unexpected-docker-call")), false);
+  } finally {
+    if (existsSync(root)) rmSync(root, { recursive: true, force: true });
+  }
+});
+
 test("capture rejects a traversal Compose project before creating a handoff child", () => {
   const root = join(tmpdir(), `cabadrive-capture-project-path-${process.pid}-${Date.now()}`);
   const external = join(root, "external");
@@ -472,7 +547,7 @@ test("capture replaces a valid handoff when its outgoing legacy image changed", 
     docker,
     `#!/bin/sh
 set -eu
-if [ "$1" = compose ] && [ "$2" = ps ]; then exit 0; fi
+if [ "$1" = compose ]; then exit 0; fi
 if [ "$1" = volume ] && [ "$2" = inspect ]; then exit 1; fi
 if [ "$1" = image ] && [ "$2" = inspect ]; then printf '%s\\n' new-image; exit 0; fi
 if [ "$1" = create ]; then printf '%s\\n' replacement-container; exit 0; fi
@@ -643,7 +718,7 @@ test("capture defaults to the Compose cabadrive identity outside a cabadrive cwd
     `#!/bin/sh
 set -eu
 printf '%s|%s\\n' "\${COMPOSE_PROJECT_NAME:-}" "$*" >>"${log}"
-if [ "$1" = compose ] && [ "$2" = ps ]; then exit 0; fi
+if [ "$1" = compose ]; then exit 0; fi
 if [ "$1" = ps ]; then exit 0; fi
 if [ "$1" = volume ] && [ "$2" = inspect ]; then exit 1; fi
 if [ "$1" = image ] && [ "$2" = inspect ]; then
@@ -703,7 +778,7 @@ test("every legacy-handoff publication failure leaves no authoritative current p
       docker,
       `#!/bin/sh
 set -eu
-if [ "$1" = compose ] && [ "$2" = ps ]; then exit 0; fi
+if [ "$1" = compose ]; then exit 0; fi
 if [ "$1" = volume ] && [ "$2" = inspect ]; then exit 1; fi
 if [ "$1" = image ] && [ "$2" = inspect ]; then printf '%s\\n' legacy-image-id; exit 0; fi
 if [ "$1" = create ]; then printf '%s\\n' temporary-container; exit 0; fi
@@ -764,7 +839,7 @@ test("capture retains a release still referenced after pointer barrier and rollb
     docker,
     `#!/bin/sh
 set -eu
-if [ "$1" = compose ] && [ "$2" = ps ]; then exit 0; fi
+if [ "$1" = compose ]; then exit 0; fi
 if [ "$1" = volume ] && [ "$2" = inspect ]; then exit 1; fi
 if [ "$1" = image ] && [ "$2" = inspect ]; then printf '%s\\n' legacy-image-id; exit 0; fi
 if [ "$1" = create ]; then printf '%s\\n' temporary-container; exit 0; fi

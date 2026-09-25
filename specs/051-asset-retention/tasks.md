@@ -911,6 +911,12 @@
   identity reads validate the repo-owned handoff root first, and Docker
   discovery/inspection failures now fail closed rather than resembling an empty
   discovery result.
+- Review follow-up R051-073/R051-074: project-scoped `docker compose ps` now
+  captures its raw status before normalizing successful output, so a lookup
+  failure cannot fall through to image discovery or initial-install handling.
+  Capture validates the project `releases` directory as a non-symlink canonical
+  child of its handoff root before deriving a temporary path or making capture
+  writes.
 
 ## Final Architect Validation
 
