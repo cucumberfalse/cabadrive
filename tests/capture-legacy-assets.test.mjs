@@ -121,6 +121,7 @@ test("stopped legacy Compose image is exported before a build can replace it", (
     `#!/bin/sh
 set -eu
 if [ "$1" = compose ] && [ "$2" = ps ]; then exit 0; fi
+if [ "$1" = ps ]; then exit 0; fi
 if [ "$1" = volume ] && [ "$2" = inspect ]; then exit 1; fi
 if [ "$1" = image ] && [ "$2" = inspect ]; then printf '%s\\n' legacy-image-id; exit 0; fi
 if [ "$1" = run ]; then
@@ -281,6 +282,7 @@ test("a discovered historical project is persisted before later labelled-image r
     `#!/bin/sh
 set -eu
 if [ "$1" = compose ] && [ "$2" = ps ]; then exit 0; fi
+if [ "$1" = ps ]; then exit 0; fi
 if [ "$1" = volume ] && [ "$2" = inspect ]; then exit 1; fi
 if [ "$1" = image ] && [ "$2" = inspect ]; then
   case "$*" in
@@ -339,6 +341,66 @@ exit 90
     assert.equal(explicit.stdout.trim(), "explicit");
   } finally {
     if (existsSync(root)) rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("resolve-only rejects an adopted identity beneath an unsafe handoff root before discovery", () => {
+  const root = join(tmpdir(), `cabadrive-unsafe-adopted-root-${process.pid}-${Date.now()}`);
+  const external = join(root, "external");
+  mkdirSync(external, { recursive: true });
+  writeFileSync(join(external, ".adopted-project"), "historical\n");
+  symlinkSync(external, join(root, ".cabadrive-release-handoff"));
+  try {
+    const env = { ...process.env, CABADRIVE_REPOSITORY_ROOT: root };
+    delete env.COMPOSE_PROJECT_NAME;
+    const result = spawnSync("sh", [captureScript, "--resolve-project"], {
+      cwd: root,
+      encoding: "utf8",
+      env,
+    });
+    assert.notEqual(result.status, 0);
+    assert.match(result.stderr, /handoff root is not a repository-owned directory/i);
+    assert.equal(readFileSync(join(external, ".adopted-project"), "utf8"), "historical\n");
+  } finally {
+    if (existsSync(root)) rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("project discovery fails closed when Docker ps or inspect fails", () => {
+  for (const failure of ["ps", "inspect"]) {
+    const root = join(tmpdir(), `cabadrive-discovery-${failure}-${process.pid}-${Date.now()}`);
+    const bin = join(root, "bin");
+    mkdirSync(bin, { recursive: true });
+    const docker = join(bin, "docker");
+    writeFileSync(
+      docker,
+      `#!/bin/sh
+if [ "$1" = ps ]; then [ "${failure}" = ps ] && exit 41; printf '%s\\n' container; exit 0; fi
+if [ "$1" = inspect ]; then exit 42; fi
+exit 90
+`,
+    );
+    chmodSync(docker, 0o755);
+    try {
+      const env = {
+        ...process.env,
+        CABADRIVE_REPOSITORY_ROOT: root,
+        PATH: `${bin}:${process.env.PATH}`,
+      };
+      delete env.COMPOSE_PROJECT_NAME;
+      const result = spawnSync("sh", [captureScript, "--resolve-project"], {
+        cwd: root,
+        encoding: "utf8",
+        env,
+      });
+      assert.notEqual(result.status, 0);
+      assert.match(
+        result.stderr,
+        new RegExp(`failed to ${failure === "ps" ? "discover" : "inspect"}`, "i"),
+      );
+    } finally {
+      if (existsSync(root)) rmSync(root, { recursive: true, force: true });
+    }
   }
 });
 
@@ -580,10 +642,16 @@ test("capture defaults to the Compose cabadrive identity outside a cabadrive cwd
     docker,
     `#!/bin/sh
 set -eu
-printf '%s|%s\\n' "$COMPOSE_PROJECT_NAME" "$*" >>"${log}"
+printf '%s|%s\\n' "\${COMPOSE_PROJECT_NAME:-}" "$*" >>"${log}"
 if [ "$1" = compose ] && [ "$2" = ps ]; then exit 0; fi
+if [ "$1" = ps ]; then exit 0; fi
 if [ "$1" = volume ] && [ "$2" = inspect ]; then exit 1; fi
-if [ "$1" = image ] && [ "$2" = inspect ]; then printf '%s\\n' default-image; exit 0; fi
+if [ "$1" = image ] && [ "$2" = inspect ]; then
+  case "$*" in
+    *cabadrive-cabadrive*) printf '%s\\n' default-image; exit 0 ;;
+    *) exit 1 ;;
+  esac
+fi
 if [ "$1" = create ]; then printf '%s\\n' temporary-container; exit 0; fi
 if [ "$1" = run ]; then
   case "$*" in

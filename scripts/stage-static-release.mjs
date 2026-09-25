@@ -28,7 +28,7 @@ import {
   unlinkSync,
   writeFileSync,
 } from "node:fs";
-import { spawn } from "node:child_process";
+import { spawn, spawnSync } from "node:child_process";
 import { basename, dirname, isAbsolute, join, resolve, sep } from "node:path";
 import { hostname } from "node:os";
 import { fileURLToPath } from "node:url";
@@ -1699,6 +1699,22 @@ function canonicalProspectivePath(path) {
   return join(realpathSync(ancestor), ...missing);
 }
 
+function pathsOverlap(left, right) {
+  return left === right || left.startsWith(`${right}${sep}`) || right.startsWith(`${left}${sep}`);
+}
+
+function renameNoReplace(source, destination, options) {
+  const helper = options?.renameNoReplaceHelper || process.env.CABADRIVE_RENAME_NOREPLACE_HELPER;
+  if (!helper) fail("native no-replace rename helper is unavailable");
+  const result = spawnSync(helper, [source, destination], { encoding: "utf8" });
+  if (result.error) fail(`native no-replace rename helper failed: ${result.error.message}`);
+  if (result.status !== 0) {
+    fail(
+      `native no-replace rename rejected destination: ${(result.stderr || result.stdout || "unknown error").trim()}`,
+    );
+  }
+}
+
 function exactPublishedOutputDirectory(parent, output, pending) {
   const entry = noFollowEntry(output);
   if (!entry?.isSymbolicLink()) return undefined;
@@ -2047,7 +2063,32 @@ export function exportStaticPublish({
   if (!exactCommittedPublishWithoutJournal(state, candidate, inventory)) {
     fail("static publish output is not an exact committed artifact");
   }
-  if (noFollowEntry(destination)) fail("static export destination already exists");
+  const canonicalDestination = canonicalProspectivePath(destination);
+  for (const protectedRoot of [
+    canonicalProspectivePath(state),
+    realpathSync(candidateRoot),
+    canonicalProspectivePath(output),
+    realpathSync(source),
+  ]) {
+    if (pathsOverlap(canonicalDestination, protectedRoot)) {
+      fail(
+        "static export destination must not overlap release state, candidate, or serving output",
+      );
+    }
+  }
+  const existingDestination = noFollowEntry(destination);
+  if (existingDestination) {
+    if (
+      existingDestination.isDirectory() &&
+      !existingDestination.isSymbolicLink() &&
+      sameEntries(outputInventory(destination), inventory)
+    ) {
+      syncTree(destination, options);
+      syncDirectory(dirname(destination), options);
+      return { changed: false, releaseId: candidate.releaseId, manifest: candidate };
+    }
+    fail("static export destination already exists");
+  }
   const destinationParent = dirname(destination);
   assertDirectory(destinationParent, "static export destination parent");
   const temporary = join(
@@ -2070,7 +2111,8 @@ export function exportStaticPublish({
     }
     syncTree(temporary, options);
     syncDirectory(destinationParent, options);
-    renameSync(temporary, destination);
+    options?.onBeforeExportPublish?.({ temporary, destination });
+    renameNoReplace(temporary, destination, options);
     published = true;
     invokeDurability(options, "export-rename", destination);
     syncDirectory(destinationParent, options);

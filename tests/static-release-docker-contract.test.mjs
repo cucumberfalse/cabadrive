@@ -18,6 +18,9 @@ test("the stager is Docker-contained and nginx exposes retained immutable assets
   assert.match(dockerfile, /FROM node:22-alpine AS stager/);
   assert.match(dockerfile, /\/candidate/);
   assert.match(dockerfile, /stage-static-release\.mjs/);
+  assert.match(dockerfile, /FROM alpine:3\.21 AS rename-noreplace-helper/);
+  assert.match(dockerfile, /COPY scripts\/rename-noreplace\.c/);
+  assert.match(dockerfile, /CABADRIVE_RENAME_NOREPLACE_HELPER=\/app\/scripts\/rename-noreplace/);
   assert.match(
     dockerfile,
     /\[ -e \/legacy-handoff\/current \] \|\| \[ -L \/legacy-handoff\/current \]/,

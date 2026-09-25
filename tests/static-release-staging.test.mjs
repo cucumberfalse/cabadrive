@@ -15,6 +15,7 @@ import {
 } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
+import { execFileSync } from "node:child_process";
 import test from "node:test";
 import {
   buildStaticPublish,
@@ -29,6 +30,14 @@ import {
 } from "../scripts/stage-static-release.mjs";
 
 process.env.CABADRIVE_TEST_KERNEL_LOCK = "in-process";
+
+const renameNoReplaceSource = new URL("../scripts/rename-noreplace.c", import.meta.url);
+
+function nativeRenameHelper(root) {
+  const helper = join(root, "rename-noreplace");
+  execFileSync("cc", ["-O2", "-Wall", "-Wextra", "-o", helper, renameNoReplaceSource.pathname]);
+  return helper;
+}
 
 function withFixture(callback) {
   const root = join(tmpdir(), `cabadrive-release-${process.pid}-${Date.now()}-${Math.random()}`);
@@ -335,11 +344,13 @@ test("static publish emits retained assets with only the B mutable shell", () =>
     });
     assert.equal(exactRetry.changed, false);
     const archive = join(root, "archive");
+    const renameNoReplaceHelper = nativeRenameHelper(root);
     exportStaticPublish({
       stateRoot: state,
       candidateRoot: b,
       outputRoot: output,
       destinationRoot: archive,
+      options: { renameNoReplaceHelper },
     });
     assert.equal(lstatSync(archive).isDirectory(), true);
     assert.equal(readFileSync(join(archive, "assets/a.js"), "utf8"), "A");
@@ -355,6 +366,7 @@ test("static export keeps destination absent through a durability failure and re
     stageStaticRelease({ stateRoot: state, candidateRoot: a });
     buildStaticPublish({ stateRoot: state, candidateRoot: b, outputRoot: output });
     const archive = join(root, "archive");
+    const renameNoReplaceHelper = nativeRenameHelper(root);
 
     assert.throws(
       () =>
@@ -363,7 +375,7 @@ test("static export keeps destination absent through a durability failure and re
           candidateRoot: b,
           outputRoot: output,
           destinationRoot: archive,
-          options: { faultAt: "durability:fsync-file" },
+          options: { faultAt: "durability:fsync-file", renameNoReplaceHelper },
         }),
       /fault injection/i,
     );
@@ -379,10 +391,94 @@ test("static export keeps destination absent through a durability failure and re
         candidateRoot: b,
         outputRoot: output,
         destinationRoot: archive,
+        options: { renameNoReplaceHelper },
       }),
     );
     assert.equal(lstatSync(archive).isDirectory(), true);
     assert.equal(readFileSync(join(archive, "assets/a.js"), "utf8"), "A");
+  });
+});
+
+test("static export rejects overlap and foreign races, then recovers its exact post-rename artifact", () => {
+  withFixture((root) => {
+    const state = join(root, "state");
+    const output = join(root, "publish");
+    const a = release(root, "a", { "a.js": "A" }, "A shell");
+    const b = release(root, "b", { "b.js": "B" }, "B shell");
+    stageStaticRelease({ stateRoot: state, candidateRoot: a });
+    buildStaticPublish({ stateRoot: state, candidateRoot: b, outputRoot: output });
+    const renameNoReplaceHelper = nativeRenameHelper(root);
+    const candidateBefore = readFileSync(join(b, "assets/b.js"), "utf8");
+
+    for (const destinationRoot of [join(state, "archive"), join(b, "archive"), output]) {
+      assert.throws(
+        () =>
+          exportStaticPublish({
+            stateRoot: state,
+            candidateRoot: b,
+            outputRoot: output,
+            destinationRoot,
+            options: { renameNoReplaceHelper },
+          }),
+        /must not overlap/i,
+      );
+      assert.equal(existsSync(destinationRoot), destinationRoot === output);
+    }
+    assert.equal(readFileSync(join(b, "assets/b.js"), "utf8"), candidateBefore);
+
+    const raced = join(root, "raced");
+    assert.throws(
+      () =>
+        exportStaticPublish({
+          stateRoot: state,
+          candidateRoot: b,
+          outputRoot: output,
+          destinationRoot: raced,
+          options: {
+            renameNoReplaceHelper,
+            onBeforeExportPublish: ({ destination }) => mkdirSync(destination),
+          },
+        }),
+      /native no-replace rename rejected destination/i,
+    );
+    assert.equal(lstatSync(raced).isDirectory(), true);
+    assert.deepEqual(readdirSync(raced), []);
+
+    const recovered = join(root, "recovered");
+    assert.throws(
+      () =>
+        exportStaticPublish({
+          stateRoot: state,
+          candidateRoot: b,
+          outputRoot: output,
+          destinationRoot: recovered,
+          options: { renameNoReplaceHelper, faultAt: "durability:export-rename" },
+        }),
+      /fault injection/i,
+    );
+    assert.equal(lstatSync(recovered).isDirectory(), true);
+    assert.equal(
+      exportStaticPublish({
+        stateRoot: state,
+        candidateRoot: b,
+        outputRoot: output,
+        destinationRoot: recovered,
+        options: { renameNoReplaceHelper },
+      }).changed,
+      false,
+    );
+    writeFileSync(join(recovered, "index.html"), "foreign");
+    assert.throws(
+      () =>
+        exportStaticPublish({
+          stateRoot: state,
+          candidateRoot: b,
+          outputRoot: output,
+          destinationRoot: recovered,
+          options: { renameNoReplaceHelper },
+        }),
+      /destination already exists/i,
+    );
   });
 });
 

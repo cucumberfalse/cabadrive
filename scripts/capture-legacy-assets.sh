@@ -37,6 +37,21 @@ validate_project_name() {
   esac
 }
 
+# Resolve-only lifecycle commands read persisted identity too. Validate the
+# repository-owned parent before that read, not only before a capture write.
+validate_handoff_parent_for_read() {
+  handoff_parent="$repo_root/.cabadrive-release-handoff"
+  if [ -L "$handoff_parent" ] || [ ! -d "$handoff_parent" ]; then
+    printf '%s\n' 'legacy handoff root is not a repository-owned directory' >&2
+    return 1
+  fi
+  handoff_parent_real="$(CDPATH= cd -- "$handoff_parent" && pwd -P)" || return 1
+  if [ "$handoff_parent_real" != "$handoff_parent" ]; then
+    printf '%s\n' 'legacy handoff root escapes the repository' >&2
+    return 1
+  fi
+}
+
 # An explicit project name always wins.  On the first upgrade however an older
 # Compose installation may have used the checkout basename rather than the new
 # cabadrive default.  Discover only resources that carry an exact Compose
@@ -50,6 +65,7 @@ resolve_project() {
   fi
 
   if [ -e "$adopted_project_file" ] || [ -L "$adopted_project_file" ]; then
+    validate_handoff_parent_for_read || return 1
     if [ -L "$adopted_project_file" ] || [ ! -f "$adopted_project_file" ]; then
       printf '%s\n' 'persisted Compose project identity is unsafe' >&2
       return 1
@@ -70,9 +86,15 @@ resolve_project() {
     esac
   }
 
-  containers="$(docker ps -aq --all --filter label=com.docker.compose.service=cabadrive 2>/dev/null || true)"
+  if ! containers="$(docker ps -aq --all --filter label=com.docker.compose.service=cabadrive 2>/dev/null)"; then
+    printf '%s\n' 'failed to discover existing Compose containers' >&2
+    return 1
+  fi
   for candidate_container in $containers; do
-    labels="$(docker inspect --format '{{ index .Config.Labels "com.docker.compose.project" }}|{{ index .Config.Labels "com.docker.compose.project.working_dir" }}|{{ index .Config.Labels "com.docker.compose.project.config_files" }}' "$candidate_container" 2>/dev/null || true)"
+    if ! labels="$(docker inspect --format '{{ index .Config.Labels "com.docker.compose.project" }}|{{ index .Config.Labels "com.docker.compose.project.working_dir" }}|{{ index .Config.Labels "com.docker.compose.project.config_files" }}' "$candidate_container" 2>/dev/null)"; then
+      printf '%s\n' 'failed to inspect existing Compose container' >&2
+      return 1
+    fi
     candidate_project="${labels%%|*}"
     remaining="${labels#*|}"
     candidate_workdir="${remaining%%|*}"

@@ -903,6 +903,14 @@
   configuration. The physical export now builds, verifies, and fsyncs in a
   unique hidden sibling before one final rename; ordinary failures remove only
   that attempt-owned temporary and leave the requested destination absent.
+- Review follow-up R051-068 through R051-072: physical export validates the
+  prospective destination against state, candidate, and serving transaction,
+  then uses the bundled macOS/Linux native no-replace helper for its final
+  atomic publication. Exact complete post-rename destinations are re-fsynced on
+  retry; foreign or mismatched entries stay rejected. Resolve-only adopted
+  identity reads validate the repo-owned handoff root first, and Docker
+  discovery/inspection failures now fail closed rather than resembling an empty
+  discovery result.
 
 ## Final Architect Validation
 
