@@ -4,4 +4,5 @@ coverage/
 public/content/
 playwright-report/
 test-results/
+.cabadrive-release-handoff/
 .DS_Store

@@ -16,6 +16,14 @@ Cabadrive — локальный веб-тренажёр для опытных �
 
 Нужен только Docker. Node.js и pnpm на хосте не требуются.
 
+Для внешнего static-host/archive артефакта используйте `stage-static-release.mjs
+export` с `--state`, `--candidate`, `--output` и `--destination`: рабочий output
+публикации является атомарной ссылкой на полный transaction и не предназначен
+для архивирования без этого export.
+Export публикует физический каталог только через нативный atomic no-replace
+helper: он уже включён в Docker stager; вне него операция безопасно завершается
+ошибкой, если helper для macOS/Linux недоступен.
+
 ```bash
 make build
 make up

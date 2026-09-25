@@ -1,0 +1,964 @@
+import assert from "node:assert/strict";
+import {
+  chmodSync,
+  existsSync,
+  mkdirSync,
+  readFileSync,
+  readlinkSync,
+  readdirSync,
+  rmSync,
+  symlinkSync,
+  writeFileSync,
+} from "node:fs";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
+import { spawnSync } from "node:child_process";
+import { fileURLToPath } from "node:url";
+import test from "node:test";
+
+const captureScript = fileURLToPath(
+  new URL("../scripts/capture-legacy-assets.sh", import.meta.url),
+);
+const repositoryRoot = fileURLToPath(new URL("..", import.meta.url));
+
+test("make build propagates capture failure before starting an image build", () => {
+  const root = join(tmpdir(), `cabadrive-build-short-circuit-${process.pid}-${Date.now()}`);
+  const bin = join(root, "bin");
+  const sentinel = join(root, "build-started");
+  mkdirSync(bin, { recursive: true });
+  const docker = join(bin, "docker");
+  writeFileSync(
+    docker,
+    `#!/bin/sh
+set -eu
+if [ "$1" = compose ]; then printf '%s\\n' legacy-container; exit 0; fi
+if [ "$1" = volume ] && [ "$2" = inspect ]; then exit 1; fi
+if [ "$1" = cp ]; then exit 73; fi
+if [ "$1" = compose ] && [ "$2" = build ]; then : >"$CABADRIVE_BUILD_SENTINEL"; exit 0; fi
+exit 0
+`,
+  );
+  chmodSync(docker, 0o755);
+  try {
+    const result = spawnSync("make", ["build"], {
+      cwd: repositoryRoot,
+      encoding: "utf8",
+      env: {
+        ...process.env,
+        COMPOSE_PROJECT_NAME: "fixture",
+        CABADRIVE_REPOSITORY_ROOT: root,
+        CABADRIVE_BUILD_SENTINEL: sentinel,
+        PATH: `${bin}:${process.env.PATH}`,
+      },
+    });
+    assert.notEqual(result.status, 0, result.stdout + result.stderr);
+    assert.equal(existsSync(sentinel), false);
+  } finally {
+    if (existsSync(root)) rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("every Make lifecycle target stops when Compose project resolution is ambiguous", () => {
+  const root = join(tmpdir(), `cabadrive-make-resolver-${process.pid}-${Date.now()}`);
+  const bin = join(root, "bin");
+  const scripts = join(root, "scripts");
+  const sentinel = join(root, "lifecycle-action-started");
+  mkdirSync(bin, { recursive: true });
+  mkdirSync(scripts, { recursive: true });
+  writeFileSync(join(root, "Makefile"), readFileSync(join(repositoryRoot, "Makefile")));
+  const capture = join(scripts, "capture-legacy-assets.sh");
+  writeFileSync(
+    capture,
+    `#!/bin/sh
+set -eu
+if [ "\${1:-}" = --resolve-project ]; then
+  printf '%s\\n' 'ambiguous pre-feature Compose project' >&2
+  exit 41
+fi
+: >"$CABADRIVE_ACTION_SENTINEL"
+`,
+  );
+  chmodSync(capture, 0o755);
+  const docker = join(bin, "docker");
+  writeFileSync(
+    docker,
+    `#!/bin/sh
+set -eu
+: >"$CABADRIVE_ACTION_SENTINEL"
+exit 0
+`,
+  );
+  chmodSync(docker, 0o755);
+  try {
+    for (const target of ["build", "up", "down", "logs", "stage"]) {
+      if (existsSync(sentinel)) rmSync(sentinel, { force: true });
+      const env = {
+        ...process.env,
+        CABADRIVE_ACTION_SENTINEL: sentinel,
+        PATH: `${bin}:${process.env.PATH}`,
+      };
+      delete env.COMPOSE_PROJECT_NAME;
+      const result = spawnSync("make", [target], {
+        cwd: root,
+        encoding: "utf8",
+        env,
+      });
+      assert.notEqual(result.status, 0, `${target}: ${result.stdout}${result.stderr}`);
+      assert.equal(existsSync(sentinel), false, `${target} started Docker after resolver failure`);
+    }
+  } finally {
+    if (existsSync(root)) rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("stopped legacy Compose image is exported before a build can replace it", () => {
+  const root = join(tmpdir(), `cabadrive-capture-${process.pid}-${Date.now()}`);
+  const bin = join(root, "bin");
+  mkdirSync(bin, { recursive: true });
+  const docker = join(bin, "docker");
+  writeFileSync(
+    docker,
+    `#!/bin/sh
+set -eu
+if [ "$1" = compose ]; then exit 0; fi
+if [ "$1" = ps ]; then exit 0; fi
+if [ "$1" = volume ] && [ "$2" = inspect ]; then exit 1; fi
+if [ "$1" = image ] && [ "$2" = inspect ]; then printf '%s\\n' legacy-image-id; exit 0; fi
+if [ "$1" = run ]; then
+  case "$*" in
+    *legacy-publish-pointer*)
+      release="$(find "${root}/.cabadrive-release-handoff/fixture/releases" -mindepth 1 -maxdepth 1 -type d | sed -n '1p')"
+      ln -s "releases/$(basename "$release")" "${root}/.cabadrive-release-handoff/fixture/current"
+      exit 0
+      ;;
+  esac
+  exit 0
+fi
+if [ "$1" = create ]; then printf '%s\\n' temporary-container; exit 0; fi
+if [ "$1" = cp ]; then
+  case "$2" in
+    *:/state/assets/.) exit 1 ;;
+    *:/usr/share/nginx/html/assets/.) mkdir -p "$3"; printf '%s' legacy-bytes >"$3/lazy-a.js"; exit 0 ;;
+  esac
+fi
+if [ "$1" = rm ]; then exit 0; fi
+exit 90
+`,
+  );
+  chmodSync(docker, 0o755);
+  try {
+    const result = spawnSync("sh", [captureScript], {
+      cwd: root,
+      encoding: "utf8",
+      env: {
+        ...process.env,
+        COMPOSE_PROJECT_NAME: "fixture",
+        CABADRIVE_REPOSITORY_ROOT: root,
+        PATH: `${bin}:${process.env.PATH}`,
+      },
+    });
+    assert.equal(result.status, 0, result.stderr);
+    assert.equal(
+      readFileSync(
+        join(root, ".cabadrive-release-handoff/fixture/current/assets/lazy-a.js"),
+        "utf8",
+      ),
+      "legacy-bytes",
+    );
+    assert.equal(
+      readFileSync(
+        join(root, ".cabadrive-release-handoff/fixture/current/source-id"),
+        "utf8",
+      ).trim(),
+      "legacy-image-id",
+    );
+  } finally {
+    if (existsSync(root)) rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("a second clean build ignores an unstarted post-feature runtime image", () => {
+  const root = join(tmpdir(), `cabadrive-post-feature-image-${process.pid}-${Date.now()}`);
+  const bin = join(root, "bin");
+  const log = join(root, "docker.log");
+  mkdirSync(bin, { recursive: true });
+  const docker = join(bin, "docker");
+  writeFileSync(
+    docker,
+    `#!/bin/sh
+set -eu
+printf '%s\\n' "$*" >>"${log}"
+if [ "$1" = compose ]; then exit 0; fi
+if [ "$1" = volume ] && [ "$2" = inspect ]; then exit 1; fi
+if [ "$1" = image ] && [ "$2" = inspect ]; then
+  case "$*" in
+    *com.cabadrive.release-state-runtime*) printf '%s\\n' true ;;
+    *) printf '%s\\n' post-feature-image-id ;;
+  esac
+  exit 0
+fi
+if [ "$1" = create ] || [ "$1" = cp ]; then
+  printf '%s\\n' 'post-feature image must not be captured' >&2
+  exit 91
+fi
+exit 0
+`,
+  );
+  chmodSync(docker, 0o755);
+  try {
+    for (const attempt of [1, 2]) {
+      const result = spawnSync("sh", [captureScript], {
+        cwd: root,
+        encoding: "utf8",
+        env: {
+          ...process.env,
+          COMPOSE_PROJECT_NAME: "fixture",
+          CABADRIVE_REPOSITORY_ROOT: root,
+          PATH: `${bin}:${process.env.PATH}`,
+        },
+      });
+      assert.equal(result.status, 0, `attempt ${attempt}: ${result.stderr}`);
+      assert.match(result.stdout, /current runtime image has no pre-feature legacy assets/);
+    }
+    assert.doesNotMatch(readFileSync(log, "utf8"), /^(create|cp)\b/m);
+  } finally {
+    if (existsSync(root)) rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("project resolution ignores a labelled post-feature historical image", () => {
+  const root = join(tmpdir(), `cabadrive-renamed-checkout-${process.pid}-${Date.now()}`);
+  const bin = join(root, "bin");
+  const log = join(root, "docker.log");
+  mkdirSync(bin, { recursive: true });
+  const docker = join(bin, "docker");
+  writeFileSync(
+    docker,
+    `#!/bin/sh
+set -eu
+printf '%s\\n' "$*" >>"${log}"
+if [ "$1" = ps ]; then exit 0; fi
+if [ "$1" = image ] && [ "$2" = inspect ]; then
+  case "$*" in
+    *com.cabadrive.release-state-runtime*) printf '%s\\n' true ;;
+    *) printf '%s\\n' post-feature-image-id ;;
+  esac
+  exit 0
+fi
+exit 1
+`,
+  );
+  chmodSync(docker, 0o755);
+  try {
+    const env = {
+      ...process.env,
+      CABADRIVE_REPOSITORY_ROOT: root,
+      PATH: `${bin}:${process.env.PATH}`,
+    };
+    delete env.COMPOSE_PROJECT_NAME;
+    const result = spawnSync("sh", [captureScript, "--resolve-project"], {
+      cwd: root,
+      encoding: "utf8",
+      env,
+    });
+    assert.equal(result.status, 0, result.stderr);
+    assert.equal(result.stdout.trim(), "cabadrive");
+    assert.match(readFileSync(log, "utf8"), /release-state-runtime/);
+  } finally {
+    if (existsSync(root)) rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("a discovered historical project is persisted before later labelled-image resolution", () => {
+  const root = join(tmpdir(), `cabadrive-adopted-project-${process.pid}-${Date.now()}`);
+  const project = root.split("/").at(-1);
+  const bin = join(root, "bin");
+  const phase = join(root, "image-phase");
+  mkdirSync(bin, { recursive: true });
+  writeFileSync(phase, "legacy");
+  const docker = join(bin, "docker");
+  writeFileSync(
+    docker,
+    `#!/bin/sh
+set -eu
+if [ "$1" = compose ]; then exit 0; fi
+if [ "$1" = ps ]; then exit 0; fi
+if [ "$1" = volume ] && [ "$2" = inspect ]; then exit 1; fi
+if [ "$1" = image ] && [ "$2" = inspect ]; then
+  case "$*" in
+    *com.cabadrive.release-state-runtime*)
+      [ "$(cat "${phase}")" = labeled ] && printf '%s\\n' true
+      ;;
+    *) printf '%s\\n' legacy-image-id ;;
+  esac
+  exit 0
+fi
+if [ "$1" = create ]; then printf '%s\\n' temporary-container; exit 0; fi
+if [ "$1" = cp ]; then mkdir -p "$3"; printf '%s' legacy-bytes >"$3/lazy-a.js"; exit 0; fi
+if [ "$1" = run ]; then
+  case "$*" in
+    *legacy-publish-pointer*)
+      release="$(find "${root}/.cabadrive-release-handoff/${project}/releases" -mindepth 1 -maxdepth 1 -type d | sed -n '1p')"
+      ln -s "releases/$(basename "$release")" "${root}/.cabadrive-release-handoff/${project}/current"
+      ;;
+  esac
+  exit 0
+fi
+if [ "$1" = rm ]; then exit 0; fi
+exit 90
+`,
+  );
+  chmodSync(docker, 0o755);
+  try {
+    const env = {
+      ...process.env,
+      CABADRIVE_REPOSITORY_ROOT: root,
+      PATH: `${bin}:${process.env.PATH}`,
+    };
+    delete env.COMPOSE_PROJECT_NAME;
+    const capture = spawnSync("sh", [captureScript], { cwd: root, encoding: "utf8", env });
+    assert.equal(capture.status, 0, capture.stderr);
+    assert.equal(
+      readFileSync(join(root, ".cabadrive-release-handoff/.adopted-project"), "utf8").trim(),
+      project,
+    );
+
+    writeFileSync(phase, "labeled");
+    const resolved = spawnSync("sh", [captureScript, "--resolve-project"], {
+      cwd: root,
+      encoding: "utf8",
+      env,
+    });
+    assert.equal(resolved.status, 0, resolved.stderr);
+    assert.equal(resolved.stdout.trim(), project);
+
+    const explicit = spawnSync("sh", [captureScript, "--resolve-project"], {
+      cwd: root,
+      encoding: "utf8",
+      env: { ...env, COMPOSE_PROJECT_NAME: "explicit" },
+    });
+    assert.equal(explicit.status, 0, explicit.stderr);
+    assert.equal(explicit.stdout.trim(), "explicit");
+  } finally {
+    if (existsSync(root)) rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("resolve-only rejects an adopted identity beneath an unsafe handoff root before discovery", () => {
+  const root = join(tmpdir(), `cabadrive-unsafe-adopted-root-${process.pid}-${Date.now()}`);
+  const external = join(root, "external");
+  mkdirSync(external, { recursive: true });
+  writeFileSync(join(external, ".adopted-project"), "historical\n");
+  symlinkSync(external, join(root, ".cabadrive-release-handoff"));
+  try {
+    const env = { ...process.env, CABADRIVE_REPOSITORY_ROOT: root };
+    delete env.COMPOSE_PROJECT_NAME;
+    const result = spawnSync("sh", [captureScript, "--resolve-project"], {
+      cwd: root,
+      encoding: "utf8",
+      env,
+    });
+    assert.notEqual(result.status, 0);
+    assert.match(result.stderr, /handoff root is not a repository-owned directory/i);
+    assert.equal(readFileSync(join(external, ".adopted-project"), "utf8"), "historical\n");
+  } finally {
+    if (existsSync(root)) rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("project discovery fails closed when Docker ps or inspect fails", () => {
+  for (const failure of ["ps", "inspect"]) {
+    const root = join(tmpdir(), `cabadrive-discovery-${failure}-${process.pid}-${Date.now()}`);
+    const bin = join(root, "bin");
+    mkdirSync(bin, { recursive: true });
+    const docker = join(bin, "docker");
+    writeFileSync(
+      docker,
+      `#!/bin/sh
+if [ "$1" = ps ]; then [ "${failure}" = ps ] && exit 41; printf '%s\\n' container; exit 0; fi
+if [ "$1" = inspect ]; then exit 42; fi
+exit 90
+`,
+    );
+    chmodSync(docker, 0o755);
+    try {
+      const env = {
+        ...process.env,
+        CABADRIVE_REPOSITORY_ROOT: root,
+        PATH: `${bin}:${process.env.PATH}`,
+      };
+      delete env.COMPOSE_PROJECT_NAME;
+      const result = spawnSync("sh", [captureScript, "--resolve-project"], {
+        cwd: root,
+        encoding: "utf8",
+        env,
+      });
+      assert.notEqual(result.status, 0);
+      assert.match(
+        result.stderr,
+        new RegExp(`failed to ${failure === "ps" ? "discover" : "inspect"}`, "i"),
+      );
+    } finally {
+      if (existsSync(root)) rmSync(root, { recursive: true, force: true });
+    }
+  }
+});
+
+test("a failed project Compose lookup cannot fall through to image capture or handoff mutation", () => {
+  const root = join(tmpdir(), `cabadrive-compose-ps-failure-${process.pid}-${Date.now()}`);
+  const bin = join(root, "bin");
+  const imageFallback = join(root, "image-fallback");
+  mkdirSync(bin, { recursive: true });
+  const docker = join(bin, "docker");
+  writeFileSync(
+    docker,
+    `#!/bin/sh
+if [ "$1" = compose ]; then printf '%s\\n' 'compose unavailable' >&2; exit 71; fi
+if [ "$1" = image ] || [ "$1" = create ] || [ "$1" = cp ] || [ "$1" = run ]; then : >"${imageFallback}"; exit 90; fi
+exit 90
+`,
+  );
+  chmodSync(docker, 0o755);
+  try {
+    const result = spawnSync("sh", [captureScript], {
+      cwd: root,
+      encoding: "utf8",
+      env: {
+        ...process.env,
+        COMPOSE_PROJECT_NAME: "fixture",
+        CABADRIVE_REPOSITORY_ROOT: root,
+        PATH: `${bin}:${process.env.PATH}`,
+      },
+    });
+    assert.notEqual(result.status, 0);
+    assert.match(result.stderr, /failed to discover project Compose container/i);
+    assert.equal(existsSync(imageFallback), false);
+    assert.equal(existsSync(join(root, ".cabadrive-release-handoff")), false);
+  } finally {
+    if (existsSync(root)) rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("an unreadable stopped runtime image fails before initial-install or capture fallback", () => {
+  const root = join(tmpdir(), `cabadrive-image-inspect-failure-${process.pid}-${Date.now()}`);
+  const bin = join(root, "bin");
+  const captureFallback = join(root, "capture-fallback");
+  mkdirSync(bin, { recursive: true });
+  const docker = join(bin, "docker");
+  writeFileSync(
+    docker,
+    `#!/bin/sh
+if [ "$1" = compose ]; then exit 0; fi
+if [ "$1" = volume ]; then exit 1; fi
+if [ "$1" = image ]; then printf '%s\\n' 'daemon temporarily unavailable' >&2; exit 42; fi
+if [ "$1" = create ] || [ "$1" = cp ] || [ "$1" = run ]; then : >"${captureFallback}"; exit 90; fi
+exit 90
+`,
+  );
+  chmodSync(docker, 0o755);
+  try {
+    const result = spawnSync("sh", [captureScript], {
+      cwd: root,
+      encoding: "utf8",
+      env: {
+        ...process.env,
+        COMPOSE_PROJECT_NAME: "fixture",
+        CABADRIVE_REPOSITORY_ROOT: root,
+        PATH: `${bin}:${process.env.PATH}`,
+      },
+    });
+    assert.notEqual(result.status, 0);
+    assert.match(result.stderr, /failed to inspect project runtime image/i);
+    assert.doesNotMatch(result.stdout, /initial-install/i);
+    assert.equal(existsSync(captureFallback), false);
+    assert.deepEqual(
+      readdirSync(join(root, ".cabadrive-release-handoff", "fixture", "releases")),
+      [],
+    );
+  } finally {
+    if (existsSync(root)) rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("a confirmed absent stopped runtime image keeps the clean-install path", () => {
+  const root = join(tmpdir(), `cabadrive-image-absent-${process.pid}-${Date.now()}`);
+  const bin = join(root, "bin");
+  mkdirSync(bin, { recursive: true });
+  const docker = join(bin, "docker");
+  writeFileSync(
+    docker,
+    `#!/bin/sh
+if [ "$1" = compose ]; then exit 0; fi
+if [ "$1" = volume ]; then exit 1; fi
+if [ "$1" = image ]; then printf '%s\\n' 'Error response from daemon: No such image: fixture-cabadrive' >&2; exit 1; fi
+if [ "$1" = create ] || [ "$1" = cp ] || [ "$1" = run ]; then exit 90; fi
+exit 90
+`,
+  );
+  chmodSync(docker, 0o755);
+  try {
+    const result = spawnSync("sh", [captureScript], {
+      cwd: root,
+      encoding: "utf8",
+      env: {
+        ...process.env,
+        COMPOSE_PROJECT_NAME: "fixture",
+        CABADRIVE_REPOSITORY_ROOT: root,
+        PATH: `${bin}:${process.env.PATH}`,
+      },
+    });
+    assert.equal(result.status, 0, result.stderr);
+    assert.match(result.stdout, /initial-install: no project-scoped legacy release found/i);
+  } finally {
+    if (existsSync(root)) rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("capture rejects a symlinked releases directory before creating a temporary capture", () => {
+  const root = join(tmpdir(), `cabadrive-releases-symlink-${process.pid}-${Date.now()}`);
+  const external = join(root, "external");
+  const handoff = join(root, ".cabadrive-release-handoff", "fixture");
+  const bin = join(root, "bin");
+  mkdirSync(external, { recursive: true });
+  mkdirSync(handoff, { recursive: true });
+  writeFileSync(join(external, "sentinel"), "external");
+  symlinkSync(external, join(handoff, "releases"));
+  mkdirSync(bin, { recursive: true });
+  const docker = join(bin, "docker");
+  writeFileSync(
+    docker,
+    `#!/bin/sh
+if [ "$1" = compose ]; then exit 0; fi
+: >"${join(root, "unexpected-docker-call")}"; exit 90
+`,
+  );
+  chmodSync(docker, 0o755);
+  try {
+    const result = spawnSync("sh", [captureScript], {
+      cwd: root,
+      encoding: "utf8",
+      env: {
+        ...process.env,
+        COMPOSE_PROJECT_NAME: "fixture",
+        CABADRIVE_REPOSITORY_ROOT: root,
+        PATH: `${bin}:${process.env.PATH}`,
+      },
+    });
+    assert.notEqual(result.status, 0);
+    assert.match(result.stderr, /releases is not a repository-owned directory/i);
+    assert.equal(readFileSync(join(external, "sentinel"), "utf8"), "external");
+    assert.deepEqual(readdirSync(external), ["sentinel"]);
+    assert.equal(existsSync(join(root, "unexpected-docker-call")), false);
+  } finally {
+    if (existsSync(root)) rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("capture rejects a traversal Compose project before creating a handoff child", () => {
+  const root = join(tmpdir(), `cabadrive-capture-project-path-${process.pid}-${Date.now()}`);
+  const external = join(root, "external");
+  mkdirSync(external, { recursive: true });
+  writeFileSync(join(external, "sentinel"), "do not mutate");
+  try {
+    const result = spawnSync("sh", [captureScript], {
+      cwd: root,
+      encoding: "utf8",
+      env: {
+        ...process.env,
+        COMPOSE_PROJECT_NAME: "../../external",
+        CABADRIVE_REPOSITORY_ROOT: root,
+      },
+    });
+    assert.equal(result.status, 1, result.stderr);
+    assert.match(result.stderr, /safe lowercase path component/i);
+    assert.equal(existsSync(join(root, ".cabadrive-release-handoff")), false);
+    assert.equal(readFileSync(join(external, "sentinel"), "utf8"), "do not mutate");
+  } finally {
+    if (existsSync(root)) rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("capture rejects a symlinked safe project handoff before external mutation", () => {
+  const root = join(tmpdir(), `cabadrive-capture-handoff-link-${process.pid}-${Date.now()}`);
+  const external = join(root, "external");
+  const handoffParent = join(root, ".cabadrive-release-handoff");
+  mkdirSync(external, { recursive: true });
+  writeFileSync(join(external, "sentinel"), "do not mutate");
+  mkdirSync(handoffParent, { recursive: true });
+  symlinkSync(external, join(handoffParent, "fixture"));
+  try {
+    const result = spawnSync("sh", [captureScript], {
+      cwd: root,
+      encoding: "utf8",
+      env: {
+        ...process.env,
+        COMPOSE_PROJECT_NAME: "fixture",
+        CABADRIVE_REPOSITORY_ROOT: root,
+      },
+    });
+    assert.equal(result.status, 1, result.stderr);
+    assert.match(result.stderr, /project is not a repository-owned directory/i);
+    assert.equal(readlinkSync(join(handoffParent, "fixture")), external);
+    assert.equal(existsSync(join(external, "releases")), false);
+    assert.equal(readFileSync(join(external, "sentinel"), "utf8"), "do not mutate");
+  } finally {
+    if (existsSync(root)) rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("capture replaces a valid handoff when its outgoing legacy image changed", () => {
+  const root = join(tmpdir(), `cabadrive-capture-source-change-${process.pid}-${Date.now()}`);
+  const bin = join(root, "bin");
+  const handoff = join(root, ".cabadrive-release-handoff/fixture");
+  const oldRelease = join(handoff, "releases/old");
+  mkdirSync(join(oldRelease, "assets"), { recursive: true });
+  writeFileSync(join(oldRelease, "source-id"), "old-image\n");
+  writeFileSync(join(oldRelease, "source-kind"), "baked-legacy-root\n");
+  writeFileSync(join(oldRelease, ".legacy-handoff.json"), "old marker\n");
+  symlinkSync("releases/old", join(handoff, "current"));
+  mkdirSync(bin, { recursive: true });
+  const docker = join(bin, "docker");
+  writeFileSync(
+    docker,
+    `#!/bin/sh
+set -eu
+if [ "$1" = compose ]; then exit 0; fi
+if [ "$1" = volume ] && [ "$2" = inspect ]; then exit 1; fi
+if [ "$1" = image ] && [ "$2" = inspect ]; then printf '%s\\n' new-image; exit 0; fi
+if [ "$1" = create ]; then printf '%s\\n' replacement-container; exit 0; fi
+if [ "$1" = cp ]; then mkdir -p "$3"; printf '%s' replacement-bytes >"$3/new-a.js"; exit 0; fi
+if [ "$1" = run ]; then
+  case "$*" in
+    *legacy-verify*) exit 0 ;;
+    *legacy-write*) exit 0 ;;
+    *legacy-publish-pointer*)
+      release="$(find "${root}/.cabadrive-release-handoff/fixture/releases" -mindepth 1 -maxdepth 1 -type d ! -name old | sed -n '1p')"
+      rm -f "${root}/.cabadrive-release-handoff/fixture/current"
+      ln -s "releases/$(basename "$release")" "${root}/.cabadrive-release-handoff/fixture/current"
+      exit 0
+      ;;
+  esac
+  exit 0
+fi
+if [ "$1" = rm ]; then exit 0; fi
+exit 90
+`,
+  );
+  chmodSync(docker, 0o755);
+  try {
+    const result = spawnSync("sh", [captureScript], {
+      cwd: root,
+      encoding: "utf8",
+      env: {
+        ...process.env,
+        COMPOSE_PROJECT_NAME: "fixture",
+        CABADRIVE_REPOSITORY_ROOT: root,
+        PATH: `${bin}:${process.env.PATH}`,
+      },
+    });
+    assert.equal(result.status, 0, result.stderr);
+    assert.match(result.stdout, /captured legacy assets from new-image/);
+    assert.equal(readFileSync(join(handoff, "current/source-id"), "utf8").trim(), "new-image");
+    assert.equal(
+      readFileSync(join(handoff, "current/assets/new-a.js"), "utf8"),
+      "replacement-bytes",
+    );
+  } finally {
+    if (existsSync(root)) rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("an incomplete volume does not suppress capture of a running legacy release", () => {
+  const root = join(tmpdir(), `cabadrive-capture-incomplete-${process.pid}-${Date.now()}`);
+  const bin = join(root, "bin");
+  mkdirSync(bin, { recursive: true });
+  const docker = join(bin, "docker");
+  writeFileSync(
+    docker,
+    `#!/bin/sh
+set -eu
+if [ "$1" = compose ]; then printf '%s\\n' running-legacy; exit 0; fi
+if [ "$1" = volume ] && [ "$2" = inspect ]; then exit 0; fi
+if [ "$1" = run ]; then
+  case "$*" in
+    *source=fixture_release-state*) exit 1 ;;
+    *legacy-publish-pointer*)
+      release="$(find "${root}/.cabadrive-release-handoff/fixture/releases" -mindepth 1 -maxdepth 1 -type d | sed -n '1p')"
+      ln -s "releases/$(basename "$release")" "${root}/.cabadrive-release-handoff/fixture/current"
+      exit 0
+      ;;
+    *) exit 0 ;;
+  esac
+fi
+if [ "$1" = cp ]; then
+  case "$2" in
+    *:/state/assets/.) exit 1 ;;
+    *:/usr/share/nginx/html/assets/.) mkdir -p "$3"; printf '%s' running-bytes >"$3/lazy-a.js"; exit 0 ;;
+  esac
+fi
+exit 90
+`,
+  );
+  chmodSync(docker, 0o755);
+  try {
+    const result = spawnSync("sh", [captureScript], {
+      cwd: root,
+      encoding: "utf8",
+      env: {
+        ...process.env,
+        COMPOSE_PROJECT_NAME: "fixture",
+        CABADRIVE_REPOSITORY_ROOT: root,
+        PATH: `${bin}:${process.env.PATH}`,
+      },
+    });
+    assert.equal(result.status, 0, result.stderr);
+    assert.equal(
+      readFileSync(
+        join(root, ".cabadrive-release-handoff/fixture/current/assets/lazy-a.js"),
+        "utf8",
+      ),
+      "running-bytes",
+    );
+    assert.match(result.stderr, /incomplete/);
+  } finally {
+    if (existsSync(root)) rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("a verifier-rejected state never becomes a source through an attached container", () => {
+  const root = join(tmpdir(), `cabadrive-capture-rejected-${process.pid}-${Date.now()}`);
+  const bin = join(root, "bin");
+  mkdirSync(bin, { recursive: true });
+  const docker = join(bin, "docker");
+  writeFileSync(
+    docker,
+    `#!/bin/sh
+set -eu
+if [ "$1" = compose ]; then printf '%s\\n' rejected-state-container; exit 0; fi
+if [ "$1" = volume ] && [ "$2" = inspect ]; then exit 0; fi
+if [ "$1" = run ]; then
+  case "$*" in
+    *source=fixture_release-state*) exit 1 ;;
+    *legacy-publish-pointer*)
+      release="$(find "${root}/.cabadrive-release-handoff/fixture/releases" -mindepth 1 -maxdepth 1 -type d | sed -n '1p')"
+      ln -s "releases/$(basename "$release")" "${root}/.cabadrive-release-handoff/fixture/current"
+      exit 0
+      ;;
+    *) exit 0 ;;
+  esac
+fi
+if [ "$1" = cp ]; then
+  case "$2" in
+    *:/state/assets/.) printf '%s\\n' 'forbidden state copy' >&2; exit 91 ;;
+    *:/usr/share/nginx/html/assets/.) mkdir -p "$3"; printf '%s' baked-bytes >"$3/lazy-a.js"; exit 0 ;;
+  esac
+fi
+exit 90
+`,
+  );
+  chmodSync(docker, 0o755);
+  try {
+    const result = spawnSync("sh", [captureScript], {
+      cwd: root,
+      encoding: "utf8",
+      env: {
+        ...process.env,
+        COMPOSE_PROJECT_NAME: "fixture",
+        CABADRIVE_REPOSITORY_ROOT: root,
+        PATH: `${bin}:${process.env.PATH}`,
+      },
+    });
+    assert.equal(result.status, 0, result.stderr);
+    assert.equal(
+      readFileSync(
+        join(root, ".cabadrive-release-handoff/fixture/current/assets/lazy-a.js"),
+        "utf8",
+      ),
+      "baked-bytes",
+    );
+    assert.doesNotMatch(result.stderr, /forbidden state copy/);
+  } finally {
+    if (existsSync(root)) rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("capture defaults to the Compose cabadrive identity outside a cabadrive cwd", () => {
+  const root = join(tmpdir(), `unrelated-cwd-${process.pid}-${Date.now()}`);
+  const bin = join(root, "bin");
+  const log = join(root, "docker.log");
+  mkdirSync(bin, { recursive: true });
+  const docker = join(bin, "docker");
+  writeFileSync(
+    docker,
+    `#!/bin/sh
+set -eu
+printf '%s|%s\\n' "\${COMPOSE_PROJECT_NAME:-}" "$*" >>"${log}"
+if [ "$1" = compose ]; then exit 0; fi
+if [ "$1" = ps ]; then exit 0; fi
+if [ "$1" = volume ] && [ "$2" = inspect ]; then exit 1; fi
+if [ "$1" = image ] && [ "$2" = inspect ]; then
+  case "$*" in
+    *cabadrive-cabadrive*) printf '%s\\n' default-image; exit 0 ;;
+    *) exit 1 ;;
+  esac
+fi
+if [ "$1" = create ]; then printf '%s\\n' temporary-container; exit 0; fi
+if [ "$1" = run ]; then
+  case "$*" in
+    *legacy-publish-pointer*)
+      release="$(find "${root}/.cabadrive-release-handoff/cabadrive/releases" -mindepth 1 -maxdepth 1 -type d | sed -n '1p')"
+      ln -s "releases/$(basename "$release")" "${root}/.cabadrive-release-handoff/cabadrive/current"
+      exit 0
+      ;;
+  esac
+  exit 0
+fi
+if [ "$1" = cp ]; then mkdir -p "$3"; printf '%s' default-bytes >"$3/lazy-a.js"; exit 0; fi
+if [ "$1" = rm ]; then exit 0; fi
+exit 90
+`,
+  );
+  chmodSync(docker, 0o755);
+  try {
+    const env = {
+      ...process.env,
+      CABADRIVE_REPOSITORY_ROOT: root,
+      PATH: `${bin}:${process.env.PATH}`,
+    };
+    delete env.COMPOSE_PROJECT_NAME;
+    const result = spawnSync("sh", [captureScript], { cwd: root, encoding: "utf8", env });
+    assert.equal(result.status, 0, result.stderr);
+    const calls = readFileSync(log, "utf8");
+    assert.match(calls, /^cabadrive\|compose -f/m);
+    assert.match(calls, /cabadrive\|image inspect --format .* cabadrive-cabadrive/);
+    assert.equal(
+      readFileSync(
+        join(root, ".cabadrive-release-handoff/cabadrive/current/assets/lazy-a.js"),
+        "utf8",
+      ),
+      "default-bytes",
+    );
+  } finally {
+    if (existsSync(root)) rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("every legacy-handoff publication failure leaves no authoritative current pointer", () => {
+  for (const fault of ["copy", "marker", "link", "rename"]) {
+    const root = join(tmpdir(), `cabadrive-capture-failure-${fault}-${process.pid}-${Date.now()}`);
+    const bin = join(root, "bin");
+    mkdirSync(bin, { recursive: true });
+    const docker = join(bin, "docker");
+    writeFileSync(
+      docker,
+      `#!/bin/sh
+set -eu
+if [ "$1" = compose ]; then exit 0; fi
+if [ "$1" = volume ] && [ "$2" = inspect ]; then exit 1; fi
+if [ "$1" = image ] && [ "$2" = inspect ]; then printf '%s\\n' legacy-image-id; exit 0; fi
+if [ "$1" = create ]; then printf '%s\\n' temporary-container; exit 0; fi
+if [ "$1" = cp ]; then
+  [ "$CABADRIVE_CAPTURE_FAULT" = legacy-copy ] && exit 1
+  mkdir -p "$3"; printf '%s' legacy-bytes >"$3/lazy-a.js"; exit 0
+fi
+if [ "$1" = run ]; then
+  case "$*" in
+    *legacy-verify*) exit 1 ;;
+    *legacy-write*) [ "$CABADRIVE_CAPTURE_FAULT" = legacy-marker-write ] && exit 1; exit 0 ;;
+    *legacy-publish-pointer*)
+      case "$CABADRIVE_CAPTURE_FAULT" in legacy-pointer-link|legacy-pointer-rename) exit 1 ;; esac
+      exit 0
+      ;;
+  esac
+fi
+if [ "$1" = rm ]; then exit 0; fi
+exit 90
+`,
+    );
+    chmodSync(docker, 0o755);
+    try {
+      const result = spawnSync("sh", [captureScript], {
+        cwd: root,
+        encoding: "utf8",
+        env: {
+          ...process.env,
+          COMPOSE_PROJECT_NAME: "fixture",
+          CABADRIVE_CAPTURE_FAULT:
+            fault === "copy"
+              ? "legacy-copy"
+              : fault === "marker"
+                ? "legacy-marker-write"
+                : `legacy-pointer-${fault}`,
+          CABADRIVE_REPOSITORY_ROOT: root,
+          PATH: `${bin}:${process.env.PATH}`,
+        },
+      });
+      // The mock distinguishes the underlying operation from the helper's
+      // fault name so each checked branch is exercised without host Docker.
+      assert.equal(result.status, 1, `${fault}: ${result.stderr}`);
+      const handoff = join(root, ".cabadrive-release-handoff/fixture");
+      assert.equal(existsSync(join(handoff, "current")), false, `${fault} published current`);
+      assert.deepEqual(readdirSync(join(handoff, "releases")), [], `${fault} left capture bytes`);
+    } finally {
+      if (existsSync(root)) rmSync(root, { recursive: true, force: true });
+    }
+  }
+});
+
+test("capture retains a release still referenced after pointer barrier and rollback failure", () => {
+  const root = join(tmpdir(), `cabadrive-capture-rollback-${process.pid}-${Date.now()}`);
+  const bin = join(root, "bin");
+  mkdirSync(bin, { recursive: true });
+  const docker = join(bin, "docker");
+  writeFileSync(
+    docker,
+    `#!/bin/sh
+set -eu
+if [ "$1" = compose ]; then exit 0; fi
+if [ "$1" = volume ] && [ "$2" = inspect ]; then exit 1; fi
+if [ "$1" = image ] && [ "$2" = inspect ]; then printf '%s\\n' legacy-image-id; exit 0; fi
+if [ "$1" = create ]; then printf '%s\\n' temporary-container; exit 0; fi
+if [ "$1" = cp ]; then mkdir -p "$3"; printf '%s' legacy-bytes >"$3/lazy-a.js"; exit 0; fi
+if [ "$1" = run ]; then
+  case "$*" in
+    *legacy-verify*) exit 1 ;;
+    *legacy-write*) exit 0 ;;
+    *legacy-publish-pointer*)
+      release="$(find "${root}/.cabadrive-release-handoff/fixture/releases" -mindepth 1 -maxdepth 1 -type d | sed -n '1p')"
+      ln -s "releases/$(basename "$release")" "${root}/.cabadrive-release-handoff/fixture/current"
+      # Simulate the publication directory barrier followed by a rollback
+      # failure: the CLI exits nonzero while current still names this release.
+      exit 1
+      ;;
+  esac
+fi
+if [ "$1" = rm ]; then exit 0; fi
+exit 90
+`,
+  );
+  chmodSync(docker, 0o755);
+  try {
+    const result = spawnSync("sh", [captureScript], {
+      cwd: root,
+      encoding: "utf8",
+      env: {
+        ...process.env,
+        COMPOSE_PROJECT_NAME: "fixture",
+        CABADRIVE_REPOSITORY_ROOT: root,
+        PATH: `${bin}:${process.env.PATH}`,
+      },
+    });
+    assert.equal(result.status, 1, result.stderr);
+    const handoff = join(root, ".cabadrive-release-handoff/fixture");
+    const releases = readdirSync(join(handoff, "releases"));
+    assert.equal(releases.length, 1, "capture release remains available to current");
+    assert.equal(readlinkSync(join(handoff, "current")), `releases/${releases[0]}`);
+  } finally {
+    if (existsSync(root)) rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("capture test locates its script module-relatively and has no checkout-specific path", () => {
+  assert.equal(existsSync(captureScript), true);
+  assert.doesNotMatch(readFileSync(new URL(import.meta.url), "utf8"), /\/Users\//);
+});

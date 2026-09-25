@@ -1,0 +1,400 @@
+# Implementation Plan: Append-Only Static Asset Retention
+
+## Delivery Shape
+
+Use the Analyst-created latest-main handoff as one branch and one PR after
+explicit Orchestrator assignment. Staging core, Docker wiring, tests, and docs
+must land atomically because any partial adoption would claim safe deployment
+without enforcing shell-last retention. Before implementation, Orchestrator
+re-verifies `origin/main`; if PR #214 has merged, integrate its main result
+role-appropriately and preserve its cache/security choices. Never modify PR #214
+or PR #215 directly from this worktree.
+
+## Expected Files
+
+- Staging/inventory: narrow modules under `scripts/`, with a Docker-facing CLI
+  and test-only fault-injection seams that are unavailable from normal flags.
+- Runtime: `Dockerfile`, `docker-compose.yml`, `Makefile`, `nginx.conf`, a narrow
+  container entrypoint/config if required, and a narrowly scoped ignored local
+  handoff path.
+- Tests: focused staging tests, Docker contract tests, a real A/B retained-origin
+  browser test, and a destructive-deploy control.
+- Docs: Docker runtime, frontend/backend deployment notes, feature inventory,
+  and relevant service-worker reliability status. Do not edit feature 049 memory
+  or sibling feature folders.
+- No new production dependency, backend, cloud provider SDK, or remote service.
+
+## Implementation Sequence
+
+1. **Baseline and red tests**
+   - Confirm exact branch/base/status, complete feature memory, single PR slice,
+     and parallel-work warning.
+   - Add failing inventory/path/collision/idempotence/lock/fault-boundary tests.
+   - Add failing browser fixture where legacy A Cache Storage lacks the lazy
+     hash and destructive B returns 404.
+   - Add failing Docker-contract tests for project-scoped retained state,
+     outgoing capture-before-build, stage-before-nginx, and preserved volume.
+
+2. **Canonical inventory and safe path boundary**
+   - Implement ordinal normalized manifests with size/SHA-256 and exact walks.
+   - Reject symlinks, non-regular files, escape/alias/duplicate paths, mutations
+     during hashing, missing/extra files, and unsafe roots.
+   - Expose pure/testable functions plus one CLI; avoid shell parsing of
+     untrusted paths.
+
+3. **Transactional release staging**
+   - Implement the exact state layout and exclusive lock from `spec.md`.
+   - Make one stable no-follow lock inode plus a whole-transaction Linux kernel
+     advisory lock the production exclusion/liveness mechanism. Keep the owner
+     record for durable project/domain diagnostics, not PID-namespace liveness;
+     never rename or unlink the canonical inode. Unsupported semantics fail
+     closed. Exercise two overlapping stager containers, kill/retry recovery,
+     and aliased/uninspectable namespace-local PID identities.
+   - Migrate any pre-existing `stage.lock.reclaim` only under acquired kernel
+     exclusion and exact no-follow device/inode/generation binding to the stale
+     acquisition. Fault quarantine/removal and reject foreign, newer, live-held,
+     malformed, unreadable, or symlinked sidecars unchanged.
+   - Validate outgoing/current/candidate immutable unions and fail on byte
+     collisions before promotion.
+   - Stage and rehash transaction bytes, atomically promote new immutable files,
+     atomically promote the complete release, then atomically replace `current`.
+   - Embed the committed-state marker in the release transaction, publish and
+     verify release/metadata/assets first, and keep `current` as the only and
+     final atomic activation point.
+   - Reconcile exact partial states, including a release promoted before its
+     metadata; add a fault point at that boundary and prove retry cannot fail on
+     `EEXIST`. A mismatched partial state fails closed and leaves A selected.
+   - Validate and promote newly authoritative legacy assets before the
+     complete-release/idempotent shortcut; test late handoff append and collision.
+   - Maintain a canonical cumulative retained inventory and compare it against
+     the exact full `/assets` walk before activation and during authority checks;
+     historical corruption/deletion/extra files fail closed.
+   - Before the first immutable promotion, persist a durable exact
+     asset-promotion journal covering the request inputs, prior ledger, expected
+     full inventory and additions. Resume an interrupted first ledger write only
+     when the journal and a fresh exact asset walk agree; otherwise fail closed
+     without deleting retained bytes or moving `current`.
+   - Add an explicit durability barrier: fsync promoted files and every changed
+     directory ancestor, innermost-first through the state/transaction root,
+     before `current`, then fsync the state directory after pointer rename.
+     Injected file, leaf-parent, `/assets`-parent and root sync/close failures
+     must preserve the old pointer.
+   - Preserve A on every failure. Make retries idempotent; never add asset GC.
+
+4. **Docker-only migration and serving**
+   - Add a dedicated stager target/service with Node and candidate `dist`; nginx
+     remains the runtime server.
+   - Add a project-scoped release-state volume. Resolve the exact Compose project
+     and only its `cabadrive` container/image.
+   - Define one cwd-independent project key for Compose, capture, volume/image/
+     container lookup, handoff, and stager bind. Test unset default and explicit
+     isolated values; declare the same default/override as Compose project name.
+   - Before choosing that new default, resolve a unique pre-F051 deployment key
+     from explicit input or exact checkout-bound Compose labels/historical-name
+     resources. Adopt it for capture and B; ambiguity or sibling-only evidence
+     fails closed.
+   - Before Compose build replaces an existing legacy image, export its
+     `/assets/` to the exact project handoff. Support running container and
+     stopped-container/prior-image paths; fail if a detected prior release cannot
+     be captured. Record source identity.
+   - Skip legacy capture only after validating the committed-state marker and
+     its complete current/release/metadata/assets tuple. Mere volume or directory
+     existence, including an empty/incomplete state, is never authoritative.
+   - After verifier rejection, forbid `/state/assets` fallback through a
+     container attached to that volume. Preserve a validated handoff, capture an
+     independent baked legacy root into a temporary replacement, or fail closed.
+     Bind handoff authority to canonical asset inventory, source ID, and source
+     kind, all revalidated before reuse.
+   - Treat a supplied legacy handoff as mandatory input, not a probe. Validate
+     its root, required `assets/` directory, marker/source fields and exact walk
+     even when `assets/` is missing or malformed; only omission of the argument
+     denotes a clean-install/no-legacy invocation.
+   - Publish a newly captured handoff only through a repository-owned no-follow
+     atomic rename of a temporary `current` link. Do not use shell `mv` against
+     an existing symlink/directory target. Explicitly check every copy, marker,
+     link, and rename result so POSIX `set -e`/conditional behavior cannot turn
+     a failed marker write into a usable handoff.
+   - Before pointer publication, close/fsync every captured file and marker and
+     fsync every changed handoff directory bottom-up through the handoff root.
+     Fsync the root again after the atomic pointer rename; any unsupported or
+     failed barrier leaves the prior handoff authoritative.
+   - Make capture and image build distinct fail-fast steps. A nonzero capture
+     result must short-circuit the build/replacement command rather than being
+     hidden by a shell command list.
+   - `make up` runs the stager successfully before replacing/starting nginx.
+     Nginx serves shared retained `/assets/` and atomic current shell. `make down`
+     preserves the volume. Never inspect/stop/remove another project.
+
+5. **Static publish output**
+   - Resolve and reject an existing output destination before staging can mutate
+     retained assets, metadata, releases, or `current`; snapshot the full state
+     in the negative regression.
+   - Reuse the same core to create a complete next publish tree from current +
+     candidate. It contains retained A+B immutable assets and only B mutable
+     files.
+   - Split state preparation from pointer commit. Build, rehash, fsync, and
+     atomically rename a temporary sibling output first; only then activate B.
+     Pre-output failures keep A/no final output. Exact complete output may resume
+     a post-output/pre-current fault only with a matching durable state journal
+     whose retained-assets digest still equals both the canonical ledger and a
+     fresh exact retained-assets walk; arbitrary/mismatched/stale existing output
+     never resumes. A C promotion after B output invalidates B's retry rather
+     than selecting a stale A+B output.
+   - Make the pre-output durable journal recoverable as a two-state protocol.
+     Before rename it must bind one contained canonical temporary sibling and
+     exact pre-stage state; after rename it binds the exact final output. On a
+     pre-rename retry, require absent destination, exact temporary inventory and
+     unchanged candidate/current/ledger/store, repeat durability synchronization,
+     then rename once. Any ambiguous or hostile relation fails unchanged.
+   - Split the post-rename relation into `renamed-uncommitted` and
+     `output-durable`. After rename, fsync the output parent before durably
+     advancing the journal. Recovery from the former phase revalidates/re-syncs
+     the tree and repeats parent fsync before any stage or `current` operation;
+     fault before/at/after that barrier and assert operation ordering.
+   - Apply the same recursive ancestor sync barrier to newly created temporary
+     and final publish directories; publishing a nested retained hash may not
+     treat a synced leaf directory as durable while its parents are unsynced.
+   - Document atomic deploy/no-delete requirements and unsupported destructive
+     hosts. Do not add a provider-specific adapter.
+
+6. **Executable migration evidence**
+   - Build deterministic A/B fixture files with distinct markers and bytes.
+   - A uses the historical exclusion and never application-loads the disputed
+     hash before deploy. Register the generated historical A worker, reload until
+     it controls the document, and assert its Cache Storage miss.
+   - Stage B safely and prove the old A request hits retained origin with exact
+     bytes/MIME. Run the candidate-only destructive control and prove 404.
+   - Exercise collision, interrupted stage, retry, Docker running/stopped legacy
+     capture, restart persistence, project isolation, and HTTP smoke.
+   - Add an executable isolated Docker lifecycle runner to the normal Docker
+     validation command: deploy legacy A, capture/stage B, prove the never-loaded
+     A hash, restart, perform `down/up`, exercise the stopped-image path, verify a
+     sibling sentinel, and clean up only its unique project/volume/port.
+   - Capture candidate B shell/SW identities before deployment; in the Docker
+     lifecycle prove exact B files are active and a headless browser reports B's
+     worker activated/controlling after deploy, restart, and `down/up`.
+
+7. **Documentation and full verification**
+   - Update durable runtime/deployment docs and status without claiming asset
+     pruning or provider guarantees.
+   - Run focused tests, typecheck/lint/format, complete Node/browser suites,
+     production build, isolated Docker A->B/restart smoke, repository/feature
+     guards, full preflight, and all required GitHub checks.
+   - Record exact commands/results, effective content head, known limitations,
+     feedback, cycle PR metadata, and cleanup applicability in `tasks.md`.
+   - Resolve every fixture/tool path relative to the checked-out module or
+     repository root, execute focused coverage from a temporary unrelated
+     working directory, and reject committed checkout-specific absolute paths.
+
+8. **Review, final validation, merge, and dependent handoff**
+   - Obtain independent exact-head review and resolve every blocking finding
+     through role-appropriate follow-up.
+   - Orchestrator invokes final Architect validation, then final Analyst
+     validation, then current-head guard and conservative merge.
+   - Only after verified merge does Orchestrator synchronize PR #215 with the
+     new main and require its corrected faithful fixture, checks, review, and
+     fresh final validations.
+
+## Key Decisions
+
+- The entire real `/assets/` namespace is immutable; filename shape is not an
+  integrity primitive.
+- SHA-256 plus byte length is canonical; same path with different bytes fails.
+- Candidate shell selection is an atomic same-filesystem symlink rename after
+  asset/release verification. Appending unreferenced B hashes before activation
+  is safe; publishing B shell early is not.
+- A project-scoped persistent state volume preserves assets across container
+  replacement and `make down/up`. Normal workflows never remove it.
+- Authority requires `current` to resolve to a verified per-release marker plus
+  matching release tree, metadata, cumulative retained inventory, and immutable
+  assets; volume existence is never proof and `current` remains the only
+  activation commit point.
+- Exact partial transaction state is resumable. Byte/manifest disagreement in
+  partial state fails closed without selecting B or recapturing over known data.
+- Idempotence is evaluated only after this invocation's candidate plus legacy
+  union has been collision-checked and promoted.
+- Rejected state is not an alternate legacy source through an attached container;
+  recovery authority must be independent and handoff replacement is atomic.
+- Compose identity is one explicit/default key shared by every migration path,
+  never a mixture of cwd basename and configuration fallback.
+- The new default applies only after unique legacy-project discovery. Exact
+  checkout/config labels or historical-name owned resources establish ancestry;
+  ambiguous or sibling-only discovery is a blocker, not an initial install.
+- `retained-assets.json` is the canonical cumulative ledger; candidate-only
+  membership checks cannot establish historical-store integrity.
+- `current` is a crash-durable commit only after file and directory fsync ordering
+  completes; unsupported/failed durability operations abort the activation.
+- Browser evidence uses real service-worker lifecycle/control from the historical
+  generator and current candidate, not a synthetic cache/request approximation.
+- Static output publication precedes state activation. Prepared append-only state
+  can survive failure, but B `current` cannot precede a complete durable output.
+- A pre-build capture bridges the first upgrade from a legacy image that had no
+  state volume. Detectable-but-unreadable prior state fails closed.
+- A Docker staging service preserves the host Docker-only contract; host Node or
+  pnpm is not required.
+- Static hosting consumes a complete merged publish tree and atomic/equivalent
+  shell switch. Candidate-only destructive upload is unsupported.
+- Retention is indefinite in this feature. Storage reclamation is a separate
+  correctness problem.
+- A static-publish journal binds both the prior A and expected A+B retained
+  snapshots plus the prior current release. That makes an interrupted
+  publisher's own B additions resumable without admitting foreign state or a
+  later shell.
+- Publish destination admission is no-follow. `lstat` rather than `exists` is
+  the authority, so a dangling symlink is protected user state.
+- Cross-container lock exclusion is a kernel lock held on one stable inode for
+  the complete transaction. Namespace-local PID/start inspection is not live-
+  owner authority. The durable owner record remains project/domain evidence;
+  unsupported lock/filesystem semantics fail closed. Legacy compare-and-reclaim
+  sidecars are migration evidence and are removed only under kernel exclusion
+  with exact no-follow inode/generation binding; ambiguity remains blocked.
+- Recovered byte-identical promoted assets still need their file and full
+  ancestor durability barriers rerun. Existence is integrity evidence, not
+  evidence that directory entries survived a crash.
+
+## Verification Matrix
+
+| Boundary | Evidence | Pass condition |
+|---|---|---|
+| Manifest/path | focused Node tests | ordinal exact inventory; SHA/size stable; traversal, alias, symlink, duplicate, mutation, missing/extra rejected |
+| Collision/idempotence | focused Node tests | equal bytes retry; unequal bytes abort; retained bytes unchanged |
+| Transaction | fault-injected tests | every boundary before pointer rename leaves A current; retry succeeds; no retained deletion |
+| Durable activation | injected filesystem-operation trace | every new file and each changed directory ancestor (nested leaf, `/assets`, state/transaction root) is fsynced in order before `current`; state dir fsynced after; sync/close failure preserves old pointer |
+| Asset-promotion recovery | fault-injected staging tests | durable pre-promotion journal permits only matching subset-to-complete retry after asset rename/ledger-write failure; absent, corrupt, stale, request-mismatched or extra-asset state fails unchanged |
+| Cumulative retained integrity | focused staging/verifier tests | every A+B retained entry exactly matches canonical ledger; corrupt/missing/extra old A blocks B and authority |
+| State authority | focused capture/staging tests | empty/incomplete volume does not suppress legacy capture; corrupt or mismatched committed state fails closed |
+| Late legacy union | focused staging tests | identical candidate plus newly available legacy asset appends before idempotent return; collision changes nothing |
+| Project identity | contract + isolated Docker tests | unset and explicit keys agree across Compose, capture, volume, image, handoff, and stager; sibling untouched |
+| Legacy project discovery | resolver unit + Docker migration | non-default pre-F051 project is uniquely adopted for A capture and B; ambiguity/mismatched labels/service-only sibling fail untouched |
+| Rejected-state source | focused capture + Docker negative | rejected volume is never copied through attached `/state`; preserved handoff/baked root works, no independent source fails unchanged |
+| Supplied handoff authority | focused staging negatives | every supplied handoff is validated even when `assets/` is missing/wrong-type/incomplete; failure precedes mutation and omission alone means no legacy input |
+| Partial release resume | fault-injected tests | crash after release rename and before metadata resumes without `EEXIST`; exact bytes become one committed tuple |
+| Legacy browser | real Chromium A/B | A cache miss proven; safe B stage; old path 200 JS with exact A bytes from origin |
+| Legacy worker fidelity | real Chromium + generated A worker | A worker controls page, lazy hash absent from its real precache, controlled safe fetch hits origin, controlled destructive fetch is 404 |
+| Destructive negative | isolated browser/server | candidate-only B yields old-path 404 and production staging rejects switch |
+| Docker first migration | isolated Compose project | running and stopped legacy A captured before build replacement; B staged before nginx replacement |
+| Docker persistence | isolated Compose project | A URL survives B, restart, and `make down/up`; project-scoped sibling untouched |
+| Docker lifecycle gate | executable Docker validation | real legacy A -> B capture, cache-miss origin fetch, restart/down-up, stopped-image path, sibling sentinel, exact cleanup all pass |
+| Docker B activation | Docker + headless browser | exact candidate B shell/SW served and B worker activated/controlling after deploy, restart, and down/up |
+| Portability | temporary-CWD focused/CI test | no checkout-specific absolute paths; capture fixture locates scripts from module/repository root |
+| Static publish | focused integration | output contains A+B assets/B shell; collision and incomplete stage fail |
+| Existing publish destination | state snapshot integration | pre-existing output fails before stage and leaves pointer/releases/metadata/assets/output byte-identical |
+| Static output transaction | fault-injected integration | copy/hash/fsync/rename failure leaves A and no final output; complete-output/pre-current fault resumes only with matching journal and exact output |
+| Pre-rename output recovery | crash-style fault integration | exact journal + contained temporary tree + unchanged pre-stage state re-syncs/renames once; missing, hostile, ambiguous, byte/state-drifted relations fail unchanged |
+| Post-rename parent durability | ordered crash-style trace | `renamed-uncommitted` retry revalidates output and fsyncs its parent before stage/current; parent-sync failure preserves A and retry repeats the barrier |
+| Pending-journal freshness | fault-injected A/B/C integration | B output journal resumes only against the identical retained ledger/assets; a later C asset blocks stale B activation unchanged |
+| Pending own-promotion recovery | fault-injected A/B integration | exact journal-known A+B state and prior current resume after B pre-current failure; foreign asset/current/request drift stays unchanged |
+| No-follow publish destination | focused static-publish tests | dangling/live symlink, file, and directory are rejected before stage; external sentinel is untouched |
+| Crash-stale lock recovery | owner-identity tests | proven-dead/reused-PID-start-mismatch owner is reclaimed only by exact-generation atomic transfer; live matching, malformed, inaccessible, or unsupported owner fails closed |
+| Lock identity across recreation | isolated Compose + owner tests | same project keeps its durable execution domain across stager hostnames; acquisition/start identities remain unique; sibling project is foreign |
+| Concurrent stale reclaim | adversarial deterministic interleaving | exact-generation CAS admits one reclaimer; stale observer cannot move a replacement lock; maximum critical-section concurrency is one |
+| Cross-container exclusion | overlapping real stager containers | a kernel lock on the shared stable inode excludes a second PID namespace; killing the holder releases it; unsupported semantics fail closed without record mutation |
+| Orphan reclaim migration | crash/fault + inode-generation tests | exact stale sidecar is durably recovered only under exclusive locks and exact binding; foreign/newer/live/symlinked/malformed evidence stays untouched and blocks |
+| Recovery durability barrier | nested fault/retry trace | existing journal-known promoted file is fsynced and `assets/x` → `assets` → `state` is repeated before ledger/release/current |
+| Handoff pointer safety | focused capture failure/symlink tests | external `current` symlink target is never traversed; marker/copy/link/rename failures publish no incomplete handoff |
+| Handoff durability | ordered capture trace + injected failures | every file/marker and directory through handoff root is fsynced before pointer publication; any close/sync failure leaves old authority |
+| Build short-circuit | Make wrapper integration | capture nonzero prevents any image build/replacement invocation and propagates failure |
+| HTTP policy | curl/tests | `/assets/` immutable and exact; `sw.js`/HTML current; no HTML fallback for missing hashed asset |
+| Quality | repo commands | focused tests, full preflight, build/e2e, Docker smoke, and all required GitHub checks green |
+| Process | diff/feature-memory/review | one PR; no sibling memory/state mutation; evidence/docs/current cycle set complete |
+
+## Risks And Mitigations
+
+- Crash during append: stage and hash in transaction, atomic file rename, old
+  pointer unchanged, safe idempotent retry.
+- Empty/failed-created volume masks legacy A: do not treat storage existence as
+  authority; require the validated committed-state tuple before skipping capture.
+- Mixed Compose defaults split handoff from the actual volume: use one effective
+  project key and cover unset/custom execution outside the canonical directory.
+- Applying the new default hides an old basename-derived deployment: resolve and
+  adopt one exact legacy project before defaulting; reject multiple candidates.
+- Rejected volume is re-imported through its attached container: forbid `/state`
+  fallback after verifier rejection and preserve only independent authority.
+- Idempotent shortcut skips late legacy input: promote the validated full union
+  before returning unchanged.
+- Existing publish output is discovered after activation: validate it before any
+  staging mutation and snapshot the negative result.
+- Buffered writes survive process tests but not host crash: require file and
+  directory fsync ordering before/after the atomic pointer and fail on sync error.
+- A crash after immutable rename but before the first retained ledger can strand
+  valid bytes that an ordinary retry rejects: commit an exact pre-promotion
+  recovery journal first, accept only its verified partial subset, and otherwise
+  fail closed without deleting retained history.
+- Fsyncing `assets/x` does not durably record its entry in `/assets`: traverse
+  all changed directory ancestors through the declared transaction root and
+  fault-test every barrier before the pointer change.
+- Current-candidate-only verification misses corrupt older A: bind authority to
+  an exact cumulative ledger and negatively mutate an unreferenced historical file.
+- Synthetic fetch/cache fixture bypasses legacy worker semantics: install and
+  control the generated historical worker for both safe and destructive cases.
+- Retained A success can hide failed B activation: assert exact B shell/SW plus
+  B worker control throughout the real Docker lifecycle.
+- Static output copy can fail after state activation: prepare without pointer
+  commit, atomically publish verified output first, then activate B with an exact
+  resume rule for the intervening crash window.
+- Output rename can precede its parent-directory durability barrier: persist a
+  separate renamed phase and require exact retry to repeat output and parent
+  fsync before staging or activation.
+- A later stage changes retained assets while an older output journal remains:
+  require fresh ledger plus exact-store equality at retry and fail closed rather
+  than publishing an output that lacks the later asset.
+- A supplied handoff loses `assets/` and is mistaken for optional absence:
+  validate any supplied handoff unconditionally and reserve no-legacy behavior
+  for an omitted argument.
+- A crash persists the publish journal before output rename and leaves a valid
+  temporary tree that ordinary retry rejects forever: bind both pre/post-rename
+  relations, resume only the exact contained temporary transaction, and fail
+  closed on ambiguity or state drift.
+- A shell `mv` may treat a `current` symlink to a directory as a destination:
+  use a no-follow Node rename and test an external sentinel remains untouched.
+- POSIX `set -e` is suppressed for functions used in conditional lists: make
+  each handoff publication command return-checked and test marker-write failure.
+- B's own partial promotion can make its pending output look stale even though
+  no foreign change occurred: bind and admit only the exact journal-known A+B
+  retained state and recorded prior current; reject all other drift.
+- `existsSync` reports false for a dangling output symlink: use no-follow
+  classification so publishing never replaces a user-owned dangling link.
+- A crash can leave a stale record forever, while a clock lease or foreign PID
+  lookup can steal a live publisher: hold a cross-container kernel lock on a
+  stable project-volume inode for the transaction. Never infer liveness from a
+  foreign PID namespace; fail closed when kernel/filesystem semantics cannot be
+  established.
+- A crashed legacy reclaimer can leave `stage.lock.reclaim`: under the new
+  kernel exclusion, recover it only when exact no-follow inode and generation
+  evidence binds the sidecar to the stale acquisition; preserve and block on
+  every ambiguous relation.
+- A recreated stager changes hostname even within the same project: derive the
+  execution domain from durable project state and the effective Compose key;
+  keep hostname non-authoritative.
+- Capture can fail before `docker compose build` while a shell `;` returns the
+  later build status: short-circuit and test the real Make target with a build
+  sentinel.
+- A handoff pointer can become durable while nested captured entries are not:
+  apply the complete file/directory fsync barrier before pointer publication.
+- A failed ancestor fsync followed by a matching destination on retry can skip
+  durability: rerun file and ancestor sync for every journal-known promotion
+  before any pointer can move.
+- Crash after release rename but before metadata: classify and resume exact
+  release-only state; reject mismatches and never retry a blind rename over it.
+- Concurrent update: exclusive fail-closed lock; stale recovery only through
+  exact-generation atomic compare-and-reclaim.
+- Hash-looking collision: verify bytes, never trust the name.
+- First upgrade after legacy container was removed and old image overwritten:
+  impossible to recover; capture is ordered before build replacement and aborts
+  when detected prior state cannot be read.
+- Volume growth: accepted indefinite retention; no unsafe GC.
+- PR #214 overlap: inspect only merged main, preserve sibling PR, and let
+  Orchestrator coordinate any conflict.
+- Fixture cheats: assert A Cache Storage miss and server-side retained-origin
+  request evidence; destructive control must 404.
+- Static host lacks atomic/no-delete behavior: mark unsupported, do not soften
+  the guarantee.
+
+## Handoff Status
+
+Architect return 10/10 disposition is complete, but the feature is not ready for
+final validation. R051-030 through R051-032 require one complete implementation
+batch, focused/full verification, resolution of the three current review
+threads, required checks, and fresh exact-head review. No further Architect
+implementation return is permitted in this cycle; any later new gap requires a
+new feature request/escalation under the repository contract.

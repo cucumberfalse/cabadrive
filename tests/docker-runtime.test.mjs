@@ -14,12 +14,30 @@ const frontendDocs = readFileSync(
 );
 
 test("Docker compose uses project-scoped containers and configurable host port", () => {
+  assert.match(compose, /^name:\s*\$\{COMPOSE_PROJECT_NAME:-cabadrive\}/m);
   assert.doesNotMatch(compose, /^\s*container_name:\s*cabadrive\s*$/m);
   assert.match(compose, /\$\{CABADRIVE_HOST_PORT:-5173\}:8080/);
 });
 
 test("Docker compose does not require a shared local image tag for isolated smoke", () => {
   assert.doesNotMatch(compose, /^\s*image:\s*cabadrive:local\s*$/m);
+});
+
+test("Docker stages a persistent project-scoped release store before nginx", () => {
+  assert.match(compose, /stager:/);
+  assert.match(compose, /release-state:\/state/);
+  assert.match(compose, /condition:\s*service_completed_successfully/);
+  assert.match(compose, /release-state:/);
+  assert.match(compose, /target:\s*stager/);
+  assert.match(compose, /target:\s*runtime/);
+  assert.match(makefile, /\.\/scripts\/capture-legacy-assets\.sh/);
+  assert.match(makefile, /capture-legacy-assets\.sh --resolve-project/);
+  assert.match(makefile, /export COMPOSE_PROJECT_NAME="\$\$project"/);
+  assert.match(makefile, /docker compose run --rm stager/);
+});
+
+test("Docker gives recreated stagers a stable project-scoped lock domain", () => {
+  assert.match(compose, /CABADRIVE_COMPOSE_PROJECT:\s*\$\{COMPOSE_PROJECT_NAME:-cabadrive\}/);
 });
 
 test("Makefile reports the configured Docker URL while keeping project-scoped targets", () => {
