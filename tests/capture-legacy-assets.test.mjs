@@ -7,6 +7,7 @@ import {
   readlinkSync,
   readdirSync,
   rmSync,
+  symlinkSync,
   writeFileSync,
 } from "node:fs";
 import { tmpdir } from "node:os";
@@ -286,6 +287,96 @@ test("capture rejects a traversal Compose project before creating a handoff chil
     assert.match(result.stderr, /safe lowercase path component/i);
     assert.equal(existsSync(join(root, ".cabadrive-release-handoff")), false);
     assert.equal(readFileSync(join(external, "sentinel"), "utf8"), "do not mutate");
+  } finally {
+    if (existsSync(root)) rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("capture rejects a symlinked safe project handoff before external mutation", () => {
+  const root = join(tmpdir(), `cabadrive-capture-handoff-link-${process.pid}-${Date.now()}`);
+  const external = join(root, "external");
+  const handoffParent = join(root, ".cabadrive-release-handoff");
+  mkdirSync(external, { recursive: true });
+  writeFileSync(join(external, "sentinel"), "do not mutate");
+  mkdirSync(handoffParent, { recursive: true });
+  symlinkSync(external, join(handoffParent, "fixture"));
+  try {
+    const result = spawnSync("sh", [captureScript], {
+      cwd: root,
+      encoding: "utf8",
+      env: {
+        ...process.env,
+        COMPOSE_PROJECT_NAME: "fixture",
+        CABADRIVE_REPOSITORY_ROOT: root,
+      },
+    });
+    assert.equal(result.status, 1, result.stderr);
+    assert.match(result.stderr, /project is not a repository-owned directory/i);
+    assert.equal(readlinkSync(join(handoffParent, "fixture")), external);
+    assert.equal(existsSync(join(external, "releases")), false);
+    assert.equal(readFileSync(join(external, "sentinel"), "utf8"), "do not mutate");
+  } finally {
+    if (existsSync(root)) rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("capture replaces a valid handoff when its outgoing legacy image changed", () => {
+  const root = join(tmpdir(), `cabadrive-capture-source-change-${process.pid}-${Date.now()}`);
+  const bin = join(root, "bin");
+  const handoff = join(root, ".cabadrive-release-handoff/fixture");
+  const oldRelease = join(handoff, "releases/old");
+  mkdirSync(join(oldRelease, "assets"), { recursive: true });
+  writeFileSync(join(oldRelease, "source-id"), "old-image\n");
+  writeFileSync(join(oldRelease, "source-kind"), "baked-legacy-root\n");
+  writeFileSync(join(oldRelease, ".legacy-handoff.json"), "old marker\n");
+  symlinkSync("releases/old", join(handoff, "current"));
+  mkdirSync(bin, { recursive: true });
+  const docker = join(bin, "docker");
+  writeFileSync(
+    docker,
+    `#!/bin/sh
+set -eu
+if [ "$1" = compose ] && [ "$2" = ps ]; then exit 0; fi
+if [ "$1" = volume ] && [ "$2" = inspect ]; then exit 1; fi
+if [ "$1" = image ] && [ "$2" = inspect ]; then printf '%s\\n' new-image; exit 0; fi
+if [ "$1" = create ]; then printf '%s\\n' replacement-container; exit 0; fi
+if [ "$1" = cp ]; then mkdir -p "$3"; printf '%s' replacement-bytes >"$3/new-a.js"; exit 0; fi
+if [ "$1" = run ]; then
+  case "$*" in
+    *legacy-verify*) exit 0 ;;
+    *legacy-write*) exit 0 ;;
+    *legacy-publish-pointer*)
+      release="$(find "${root}/.cabadrive-release-handoff/fixture/releases" -mindepth 1 -maxdepth 1 -type d ! -name old | sed -n '1p')"
+      rm -f "${root}/.cabadrive-release-handoff/fixture/current"
+      ln -s "releases/$(basename "$release")" "${root}/.cabadrive-release-handoff/fixture/current"
+      exit 0
+      ;;
+  esac
+  exit 0
+fi
+if [ "$1" = rm ]; then exit 0; fi
+exit 90
+`,
+  );
+  chmodSync(docker, 0o755);
+  try {
+    const result = spawnSync("sh", [captureScript], {
+      cwd: root,
+      encoding: "utf8",
+      env: {
+        ...process.env,
+        COMPOSE_PROJECT_NAME: "fixture",
+        CABADRIVE_REPOSITORY_ROOT: root,
+        PATH: `${bin}:${process.env.PATH}`,
+      },
+    });
+    assert.equal(result.status, 0, result.stderr);
+    assert.match(result.stdout, /captured legacy assets from new-image/);
+    assert.equal(readFileSync(join(handoff, "current/source-id"), "utf8").trim(), "new-image");
+    assert.equal(
+      readFileSync(join(handoff, "current/assets/new-a.js"), "utf8"),
+      "replacement-bytes",
+    );
   } finally {
     if (existsSync(root)) rmSync(root, { recursive: true, force: true });
   }

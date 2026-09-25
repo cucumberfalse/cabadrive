@@ -864,6 +864,15 @@
   empty destination, and recovers only its exact unfinished claim. Focused
   staging regressions pass `47/47`; full preflight and one real Docker
   retention lifecycle also pass before commit/review.
+- The terminal direct legacy-handoff response closes R051-061 (`r4098372746`):
+  capture rejects a present safe-named project child that is a symlink,
+  non-directory, or canonically outside the repository-owned handoff root before
+  it can create releases or bind-mount externally. R051-062 (`r4098372751`)
+  reuses a verified handoff only when its recorded source ID and source kind
+  exactly match the currently discovered outgoing legacy container/image;
+  replacement source assets are recaptured. Focused capture regressions pass
+  `14/14`; full preflight and one real Docker retention lifecycle also pass
+  before commit/review.
 
 ## Final Architect Validation
 
