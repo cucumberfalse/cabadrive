@@ -2031,6 +2031,7 @@ export function exportStaticPublish({
   candidateRoot,
   outputRoot,
   destinationRoot,
+  options,
 } = {}) {
   if (!stateRoot || !candidateRoot || !outputRoot || !destinationRoot) {
     fail("--state, --candidate, --output and --destination are required");
@@ -2047,19 +2048,39 @@ export function exportStaticPublish({
     fail("static publish output is not an exact committed artifact");
   }
   if (noFollowEntry(destination)) fail("static export destination already exists");
-  assertDirectory(dirname(destination), "static export destination parent");
-  mkdirSync(destination, { recursive: false, mode: 0o755 });
-  for (const entry of inventory) {
-    copyAndVerify(
-      join(source, ...entry.path.split("/")),
-      join(destination, ...entry.path.split("/")),
-      entry,
-      undefined,
-      destination,
-    );
+  const destinationParent = dirname(destination);
+  assertDirectory(destinationParent, "static export destination parent");
+  const temporary = join(
+    destinationParent,
+    `.${basename(destination)}.export-${process.pid}-${randomUUID()}`,
+  );
+  let published = false;
+  try {
+    // Never make the requested destination observable until the complete
+    // physical artifact has been copied, verified, and made durable.
+    mkdirSync(temporary, { recursive: false, mode: 0o755 });
+    for (const entry of inventory) {
+      copyAndVerify(
+        join(source, ...entry.path.split("/")),
+        join(temporary, ...entry.path.split("/")),
+        entry,
+        options,
+        temporary,
+      );
+    }
+    syncTree(temporary, options);
+    syncDirectory(destinationParent, options);
+    renameSync(temporary, destination);
+    published = true;
+    invokeDurability(options, "export-rename", destination);
+    syncDirectory(destinationParent, options);
+  } finally {
+    // Each attempt owns a unique sibling. Ordinary failures cannot leave a
+    // partial destination or a deterministic leftover that blocks retries.
+    if (!published && noFollowEntry(temporary)) {
+      rmSync(temporary, { recursive: true, force: true });
+    }
   }
-  syncTree(destination);
-  syncDirectory(dirname(destination));
   return { changed: true, releaseId: candidate.releaseId, manifest: candidate };
 }
 

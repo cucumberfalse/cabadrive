@@ -346,6 +346,43 @@ test("static publish emits retained assets with only the B mutable shell", () =>
   });
 });
 
+test("static export keeps destination absent through a durability failure and retries physically", () => {
+  withFixture((root) => {
+    const state = join(root, "state");
+    const output = join(root, "publish");
+    const a = release(root, "a", { "a.js": "A" }, "A shell");
+    const b = release(root, "b", { "b.js": "B" }, "B shell");
+    stageStaticRelease({ stateRoot: state, candidateRoot: a });
+    buildStaticPublish({ stateRoot: state, candidateRoot: b, outputRoot: output });
+    const archive = join(root, "archive");
+
+    assert.throws(
+      () =>
+        exportStaticPublish({
+          stateRoot: state,
+          candidateRoot: b,
+          outputRoot: output,
+          destinationRoot: archive,
+          options: { faultAt: "durability:fsync-file" },
+        }),
+      /fault injection/i,
+    );
+    assert.equal(existsSync(archive), false);
+    assert.equal(readdirSync(root).some((name) => name.startsWith(".archive.export-")), false);
+
+    assert.doesNotThrow(() =>
+      exportStaticPublish({
+        stateRoot: state,
+        candidateRoot: b,
+        outputRoot: output,
+        destinationRoot: archive,
+      }),
+    );
+    assert.equal(lstatSync(archive).isDirectory(), true);
+    assert.equal(readFileSync(join(archive, "assets/a.js"), "utf8"), "A");
+  });
+});
+
 test("static publish rejects candidate/output overlap before state mutation", () => {
   withFixture((root) => {
     const candidate = release(root, "candidate", { "a.js": "A" }, "A shell");

@@ -896,6 +896,13 @@
   static-host/archive consumers. The adopted project identity is persisted only
   in the ignored repository-owned handoff root and is validated before reuse;
   explicit `COMPOSE_PROJECT_NAME` still wins.
+- Review follow-up R051-066/R051-067: capture now records whether
+  `COMPOSE_PROJECT_NAME` was caller-provided before resolving and exporting the
+  selected identity, so a discovered validated non-default historical project
+  is persisted for later lifecycle commands without overwriting explicit
+  configuration. The physical export now builds, verifies, and fsyncs in a
+  unique hidden sibling before one final rename; ordinary failures remove only
+  that attempt-owned temporary and leave the requested destination absent.
 
 ## Final Architect Validation
 

@@ -268,6 +268,80 @@ exit 1
   }
 });
 
+test("a discovered historical project is persisted before later labelled-image resolution", () => {
+  const root = join(tmpdir(), `cabadrive-adopted-project-${process.pid}-${Date.now()}`);
+  const project = root.split("/").at(-1);
+  const bin = join(root, "bin");
+  const phase = join(root, "image-phase");
+  mkdirSync(bin, { recursive: true });
+  writeFileSync(phase, "legacy");
+  const docker = join(bin, "docker");
+  writeFileSync(
+    docker,
+    `#!/bin/sh
+set -eu
+if [ "$1" = compose ] && [ "$2" = ps ]; then exit 0; fi
+if [ "$1" = volume ] && [ "$2" = inspect ]; then exit 1; fi
+if [ "$1" = image ] && [ "$2" = inspect ]; then
+  case "$*" in
+    *com.cabadrive.release-state-runtime*)
+      [ "$(cat "${phase}")" = labeled ] && printf '%s\\n' true
+      ;;
+    *) printf '%s\\n' legacy-image-id ;;
+  esac
+  exit 0
+fi
+if [ "$1" = create ]; then printf '%s\\n' temporary-container; exit 0; fi
+if [ "$1" = cp ]; then mkdir -p "$3"; printf '%s' legacy-bytes >"$3/lazy-a.js"; exit 0; fi
+if [ "$1" = run ]; then
+  case "$*" in
+    *legacy-publish-pointer*)
+      release="$(find "${root}/.cabadrive-release-handoff/${project}/releases" -mindepth 1 -maxdepth 1 -type d | sed -n '1p')"
+      ln -s "releases/$(basename "$release")" "${root}/.cabadrive-release-handoff/${project}/current"
+      ;;
+  esac
+  exit 0
+fi
+if [ "$1" = rm ]; then exit 0; fi
+exit 90
+`,
+  );
+  chmodSync(docker, 0o755);
+  try {
+    const env = {
+      ...process.env,
+      CABADRIVE_REPOSITORY_ROOT: root,
+      PATH: `${bin}:${process.env.PATH}`,
+    };
+    delete env.COMPOSE_PROJECT_NAME;
+    const capture = spawnSync("sh", [captureScript], { cwd: root, encoding: "utf8", env });
+    assert.equal(capture.status, 0, capture.stderr);
+    assert.equal(
+      readFileSync(join(root, ".cabadrive-release-handoff/.adopted-project"), "utf8").trim(),
+      project,
+    );
+
+    writeFileSync(phase, "labeled");
+    const resolved = spawnSync("sh", [captureScript, "--resolve-project"], {
+      cwd: root,
+      encoding: "utf8",
+      env,
+    });
+    assert.equal(resolved.status, 0, resolved.stderr);
+    assert.equal(resolved.stdout.trim(), project);
+
+    const explicit = spawnSync("sh", [captureScript, "--resolve-project"], {
+      cwd: root,
+      encoding: "utf8",
+      env: { ...env, COMPOSE_PROJECT_NAME: "explicit" },
+    });
+    assert.equal(explicit.status, 0, explicit.stderr);
+    assert.equal(explicit.stdout.trim(), "explicit");
+  } finally {
+    if (existsSync(root)) rmSync(root, { recursive: true, force: true });
+  }
+});
+
 test("capture rejects a traversal Compose project before creating a handoff child", () => {
   const root = join(tmpdir(), `cabadrive-capture-project-path-${process.pid}-${Date.now()}`);
   const external = join(root, "external");

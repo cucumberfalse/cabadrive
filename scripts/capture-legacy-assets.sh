@@ -8,6 +8,12 @@ repo_root="${CABADRIVE_REPOSITORY_ROOT:-$(CDPATH= cd -- "$script_dir/.." && pwd)
 repo_root="$(CDPATH= cd -- "$repo_root" && pwd -P)"
 historical_basename="$(basename "$repo_root")"
 adopted_project_file="$repo_root/.cabadrive-release-handoff/.adopted-project"
+# Preserve this fact before resolve_project exports the selected value below.
+# A discovered historical identity must not look caller-provided afterward.
+compose_project_name_explicit=0
+if [ -n "${COMPOSE_PROJECT_NAME:-}" ]; then
+  compose_project_name_explicit=1
+fi
 
 is_post_feature_runtime_image() {
   docker image inspect \
@@ -129,7 +135,7 @@ if [ "$handoff_parent" != "$repo_root/.cabadrive-release-handoff" ]; then
   printf '%s\n' 'legacy handoff root escapes the repository' >&2
   exit 1
 fi
-if [ -z "${COMPOSE_PROJECT_NAME:-}" ] && [ "$project" != "cabadrive" ]; then
+if [ "$compose_project_name_explicit" -eq 0 ] && [ "$project" != "cabadrive" ]; then
   identity_temporary="$handoff_parent/.adopted-project.next-$$"
   printf '%s\n' "$project" >"$identity_temporary" && mv -f "$identity_temporary" "$adopted_project_file" || {
     rm -f "$identity_temporary"
