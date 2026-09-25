@@ -325,7 +325,24 @@ fi
 
 if [ -n "$container" ]; then
   source="$container"
-elif image="$(docker image inspect --format '{{.Id}}' "${project}-cabadrive" 2>/dev/null || true)"; [ -n "$image" ]; then
+else
+  if image_output="$(docker image inspect --format '{{.Id}}' "${project}-cabadrive" 2>&1)"; then
+    image="$image_output"
+  else
+    # Docker uses this explicit diagnostic for an ordinary absent image. Any
+    # daemon, permission, or transient inspect failure is not clean-install
+    # authority and must keep the outgoing image from being replaced.
+    case "$image_output" in
+      *"No such image"*|*"No such object"*) image="" ;;
+      *)
+        printf '%s\n' "$image_output" >&2
+        printf '%s\n' 'failed to inspect project runtime image' >&2
+        exit 1
+        ;;
+    esac
+  fi
+fi
+if [ -n "$image" ]; then
   if is_post_feature_runtime_image "${project}-cabadrive"; then
     if [ -n "$invalid_state" ]; then
       printf '%s\n' 'incomplete project release-state has no readable legacy source' >&2

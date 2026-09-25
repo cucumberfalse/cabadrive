@@ -439,6 +439,81 @@ exit 90
   }
 });
 
+test("an unreadable stopped runtime image fails before initial-install or capture fallback", () => {
+  const root = join(tmpdir(), `cabadrive-image-inspect-failure-${process.pid}-${Date.now()}`);
+  const bin = join(root, "bin");
+  const captureFallback = join(root, "capture-fallback");
+  mkdirSync(bin, { recursive: true });
+  const docker = join(bin, "docker");
+  writeFileSync(
+    docker,
+    `#!/bin/sh
+if [ "$1" = compose ]; then exit 0; fi
+if [ "$1" = volume ]; then exit 1; fi
+if [ "$1" = image ]; then printf '%s\\n' 'daemon temporarily unavailable' >&2; exit 42; fi
+if [ "$1" = create ] || [ "$1" = cp ] || [ "$1" = run ]; then : >"${captureFallback}"; exit 90; fi
+exit 90
+`,
+  );
+  chmodSync(docker, 0o755);
+  try {
+    const result = spawnSync("sh", [captureScript], {
+      cwd: root,
+      encoding: "utf8",
+      env: {
+        ...process.env,
+        COMPOSE_PROJECT_NAME: "fixture",
+        CABADRIVE_REPOSITORY_ROOT: root,
+        PATH: `${bin}:${process.env.PATH}`,
+      },
+    });
+    assert.notEqual(result.status, 0);
+    assert.match(result.stderr, /failed to inspect project runtime image/i);
+    assert.doesNotMatch(result.stdout, /initial-install/i);
+    assert.equal(existsSync(captureFallback), false);
+    assert.deepEqual(
+      readdirSync(join(root, ".cabadrive-release-handoff", "fixture", "releases")),
+      [],
+    );
+  } finally {
+    if (existsSync(root)) rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("a confirmed absent stopped runtime image keeps the clean-install path", () => {
+  const root = join(tmpdir(), `cabadrive-image-absent-${process.pid}-${Date.now()}`);
+  const bin = join(root, "bin");
+  mkdirSync(bin, { recursive: true });
+  const docker = join(bin, "docker");
+  writeFileSync(
+    docker,
+    `#!/bin/sh
+if [ "$1" = compose ]; then exit 0; fi
+if [ "$1" = volume ]; then exit 1; fi
+if [ "$1" = image ]; then printf '%s\\n' 'Error response from daemon: No such image: fixture-cabadrive' >&2; exit 1; fi
+if [ "$1" = create ] || [ "$1" = cp ] || [ "$1" = run ]; then exit 90; fi
+exit 90
+`,
+  );
+  chmodSync(docker, 0o755);
+  try {
+    const result = spawnSync("sh", [captureScript], {
+      cwd: root,
+      encoding: "utf8",
+      env: {
+        ...process.env,
+        COMPOSE_PROJECT_NAME: "fixture",
+        CABADRIVE_REPOSITORY_ROOT: root,
+        PATH: `${bin}:${process.env.PATH}`,
+      },
+    });
+    assert.equal(result.status, 0, result.stderr);
+    assert.match(result.stdout, /initial-install: no project-scoped legacy release found/i);
+  } finally {
+    if (existsSync(root)) rmSync(root, { recursive: true, force: true });
+  }
+});
+
 test("capture rejects a symlinked releases directory before creating a temporary capture", () => {
   const root = join(tmpdir(), `cabadrive-releases-symlink-${process.pid}-${Date.now()}`);
   const external = join(root, "external");

@@ -917,6 +917,10 @@
   Capture validates the project `releases` directory as a non-symlink canonical
   child of its handoff root before deriving a temporary path or making capture
   writes.
+- Review follow-up R051-075: stopped runtime-image lookup now distinguishes
+  Docker's explicit absent-image diagnostic from an unreadable image/daemon
+  failure. Only confirmed absence reaches the clean-install path; inspection
+  failures stop before image replacement or capture fallback.
 
 ## Final Architect Validation
 
