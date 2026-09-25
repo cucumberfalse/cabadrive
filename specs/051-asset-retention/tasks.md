@@ -873,11 +873,12 @@
   replacement source assets are recaptured. Focused capture regressions pass
   `14/14`; full preflight and one real Docker retention lifecycle also pass
   before commit/review.
-- The terminal output-claim crash response closes R051-063 (`r4105570337`):
-  final publication creates the claim from a fully written and fsynced unique
-  file using atomic no-replace hard-link publication, so no empty or truncated
-  claim can poison a recoverable exact journal retry. Focused staging
-  regressions pass `48/48`; full preflight and one real Docker retention
+- The terminal output-publication response closes R051-063 (`r4105570337`) and
+  R051-064 (`r4105697213`): final publication atomically creates a no-replace
+  output symlink to the complete, verified journal transaction directory. This
+  retains exact crash recovery and complete-tree visibility while an independent
+  `mkdir(output)` fails publication instead of being replaced. Focused staging
+  regressions pass `47/47`; full preflight and one real Docker retention
   lifecycle also pass before commit/review.
 
 ## Final Architect Validation

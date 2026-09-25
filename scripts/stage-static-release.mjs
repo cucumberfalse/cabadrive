@@ -1699,111 +1699,47 @@ function canonicalProspectivePath(path) {
   return join(realpathSync(ancestor), ...missing);
 }
 
-function outputClaimPath(parent, output) {
-  return join(parent, `.${basename(output)}.publish-claim`);
-}
-
-function isExactOutputClaim(parent, output, pending) {
-  if (!pending || !validPublishTransactionId(pending.transactionId, output)) return false;
-  const claim = outputClaimPath(parent, output);
-  const entry = noFollowEntry(claim);
-  if (!entry?.isFile() || entry.isSymbolicLink()) return false;
+function exactPublishedOutputDirectory(parent, output, pending) {
+  const entry = noFollowEntry(output);
+  if (!entry?.isSymbolicLink()) return undefined;
   try {
-    return readFileSync(claim, "utf8") === `${pending.transactionId}\n`;
+    const target = readlinkSync(output);
+    if (
+      !validPublishTransactionId(target, output) ||
+      (pending && target !== pending.transactionId)
+    ) {
+      return undefined;
+    }
+    const directory = join(parent, target);
+    const directoryEntry = noFollowEntry(directory);
+    if (!directoryEntry || directoryEntry.isSymbolicLink() || !directoryEntry.isDirectory()) {
+      return undefined;
+    }
+    assertInside(parent, directory, "static publish output directory");
+    return directory;
   } catch {
-    return false;
+    return undefined;
   }
 }
 
-// A process can crash after serializing publication but before renaming the
-// complete tree. Only the exact, journal-bound claim may be removed; every
-// other claim remains evidence of an unsafe concurrent publisher.
-function recoverExactOutputClaim({ state, parent, output, pending, release, options }) {
-  if (!isExactOutputClaim(parent, output, pending)) return false;
-  if (
-    pending.phase !== "renamed-uncommitted" ||
-    !pendingPublishIdentityMatches(pending, output, release) ||
-    !pendingInventoryMatchesCandidate(pending, release) ||
-    !pendingPriorStateMatchesCurrentState(state, pending)
-  ) {
-    return false;
-  }
-  const temporary = join(parent, pending.transactionId);
-  const temporaryEntry = noFollowEntry(temporary);
-  if (!temporaryEntry || temporaryEntry.isSymbolicLink() || !temporaryEntry.isDirectory()) {
-    return false;
-  }
-  try {
-    assertInside(parent, temporary, "static publish temporary output");
-    if (!pendingPublishMatches(pending, output, release, outputInventory(temporary))) return false;
-  } catch {
-    return false;
-  }
-  unlinkSync(outputClaimPath(parent, output));
-  syncDirectory(parent, options);
-  return true;
-}
-
-// A claim must never become visible before all its bytes are durable. A unique
-// prepared file plus link(2) gives the claim itself atomic no-replace creation:
-// either the complete, fsynced journal-bound value is linked or no claim exists.
-function publishOutputClaimAtomically(parent, output, pending, options) {
-  const claim = outputClaimPath(parent, output);
-  const temporary = join(
-    parent,
-    `.${basename(output)}.publish-claim.next-${process.pid}-${randomUUID()}`,
-  );
-  let descriptor;
-  try {
-    descriptor = openSync(temporary, "wx", 0o600);
-    writeFileSync(descriptor, `${pending.transactionId}\n`);
-    invokeDurability(options, "fsync-output-claim", temporary);
-    fsyncSync(descriptor);
-    invokeDurability(options, "close-output-claim", temporary);
-    closeSync(descriptor);
-    descriptor = undefined;
-    invokeDurability(options, "before-output-claim-link", claim);
-    linkSync(temporary, claim);
-    invokeDurability(options, "link-output-claim", claim);
-    syncDirectory(parent, options);
-  } finally {
-    if (descriptor !== undefined) closeSync(descriptor);
-    const temporaryEntry = noFollowEntry(temporary);
-    if (temporaryEntry?.isFile() && !temporaryEntry.isSymbolicLink()) unlinkSync(temporary);
-  }
-}
-
-// Node has no portable renameat(NO_REPLACE) binding for directories. Serialize
-// every publisher for this output through one no-follow exclusive claim, then
-// re-check the destination while that claim is held before the atomic rename.
+// A full tree remains in its verified sibling directory. Publishing an output
+// symlink to that directory is an atomic no-replace operation on every
+// supported runtime: a concurrent mkdir(output) makes symlink creation fail
+// rather than allowing rename to replace the newly occupied destination.
 function publishOutputNoReplace({ temporary, output, pending, options }) {
-  const parent = dirname(output);
-  const claim = outputClaimPath(parent, output);
+  if (basename(temporary) !== pending.transactionId) {
+    fail("static publish temporary does not match its output journal");
+  }
   invokeDurability(options, "before-output-reservation", output);
-  let claimPublished = false;
   try {
-    publishOutputClaimAtomically(parent, output, pending, options);
-    claimPublished = true;
+    symlinkSync(pending.transactionId, output);
   } catch (error) {
     if (error?.code === "EEXIST") {
-      fail("static publish output is already claimed by another publisher");
+      fail("static publish destination appeared during no-replace publication");
     }
     throw error;
   }
-  try {
-    if (!isExactOutputClaim(parent, output, pending)) {
-      fail("static publish output claim changed during publication");
-    }
-    if (noFollowEntry(output)) {
-      fail("static publish destination appeared during no-replace publication");
-    }
-    renameSync(temporary, output);
-    invokeDurability(options, "rename-output", output);
-  } finally {
-    // On an error before rename, remove only our still-exact claim. A crash
-    // leaves it for recoverExactOutputClaim on the next retry.
-    if (claimPublished && isExactOutputClaim(parent, output, pending)) unlinkSync(claim);
-  }
+  invokeDurability(options, "rename-output", output);
 }
 
 // Publication deliberately happens before state activation.  The journal turns
@@ -1861,20 +1797,17 @@ export function buildStaticPublish({
     const existingPending = readPendingPublish(state);
     const parent = dirname(output);
     assertDirectory(parent, "static publish output parent");
-    recoverExactOutputClaim({
-      state,
-      parent,
-      output,
-      pending: existingPending,
-      release: manifest,
-      options,
-    });
     const outputEntry = noFollowEntry(output);
     if (outputEntry) {
-      if (outputEntry.isSymbolicLink() || !outputEntry.isDirectory()) {
+      const outputDirectory = outputEntry.isSymbolicLink()
+        ? exactPublishedOutputDirectory(parent, output, existingPending)
+        : outputEntry.isDirectory()
+          ? output
+          : undefined;
+      if (!outputDirectory) {
         fail("publish output already exists without an exact pending transaction");
       }
-      const inventory = outputInventory(output);
+      const inventory = outputInventory(outputDirectory);
       if (!existingPending) {
         // unlink(publish-pending) can become visible before its directory fsync.
         // Accept only the exact already-committed output/current/ledger tuple,
@@ -1883,14 +1816,16 @@ export function buildStaticPublish({
         if (!exactCommittedPublishWithoutJournal(state, manifest, inventory)) {
           fail("publish output already exists without an exact pending transaction");
         }
-        syncTree(output, options);
+        syncTree(outputDirectory, options);
         syncDirectory(parent, options);
         return { changed: false, releaseId: manifest.releaseId, manifest };
       }
       const pendingTemporary = join(parent, existingPending.transactionId || "invalid");
       if (
         !existingPending ||
-        noFollowEntry(pendingTemporary) ||
+        (outputEntry.isSymbolicLink()
+          ? outputDirectory !== pendingTemporary
+          : noFollowEntry(pendingTemporary)) ||
         !pendingPublishMatches(existingPending, output, manifest, inventory) ||
         !pendingInventoryMatchesCandidate(existingPending, manifest) ||
         !pendingRetainedAssetsMatchCurrentState(state, existingPending, manifest)
@@ -1901,7 +1836,7 @@ export function buildStaticPublish({
         fail("publish output exists before its durable rename journal phase");
       }
       if (existingPending.phase === "renamed-uncommitted") {
-        syncTree(output, options);
+        syncTree(outputDirectory, options);
         fault(options, "before-recovered-output-parent-fsync");
         syncDirectory(parent, options);
         fault(options, "after-output-parent-fsync-before-phase");

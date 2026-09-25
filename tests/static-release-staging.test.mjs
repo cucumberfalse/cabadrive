@@ -491,7 +491,8 @@ test("static publish recovers only an exact durable pre-rename temporary transac
     );
     const outputRename = trace.findIndex((entry) => entry.startsWith("rename-output:"));
     assert.ok(temporarySync >= 0 && temporarySync < outputRename);
-    assert.equal(existsSync(exact.temporary), false);
+    assert.equal(lstatSync(exact.temporary).isDirectory(), true);
+    assert.equal(lstatSync(exact.output).isSymbolicLink(), true);
     assert.equal(existsSync(exact.pendingPath), false);
     assert.equal(readFileSync(join(exact.output, "index.html"), "utf8"), "B shell");
     assert.match(currentShell(exact.state), /B shell/);
@@ -662,7 +663,8 @@ test("a visible pre-output journal preserves its exact temporary when its direct
 
       buildStaticPublish({ stateRoot: state, candidateRoot: b, outputRoot: output });
       assert.match(currentShell(state), /B shell/);
-      assert.equal(existsSync(temporary), false);
+      assert.equal(lstatSync(temporary).isDirectory(), true);
+      assert.equal(lstatSync(output).isSymbolicLink(), true);
       assert.equal(existsSync(join(state, "publish-pending.json")), false);
     }
   });
@@ -956,7 +958,7 @@ test("direct stage rejects a corrupt prior current tuple before promotion", () =
   });
 });
 
-test("static publish never replaces an empty destination that wins the output claim race", () => {
+test("static publish atomically rejects a non-cooperating empty destination creator", () => {
   withFixture((root) => {
     const state = join(root, "state");
     const output = join(root, "output");
@@ -989,37 +991,6 @@ test("static publish never replaces an empty destination that wins the output cl
     assert.equal(lstatSync(join(root, pending.transactionId)).isDirectory(), true);
 
     rmSync(output, { recursive: true, force: true });
-    buildStaticPublish({ stateRoot: state, candidateRoot: b, outputRoot: output });
-    assert.match(currentShell(state), /B shell/);
-    assert.equal(existsSync(join(state, "publish-pending.json")), false);
-  });
-});
-
-test("a failed output-claim sync leaves no truncated claim and retries its exact journal", () => {
-  withFixture((root) => {
-    const state = join(root, "state");
-    const output = join(root, "output");
-    const a = release(root, "a", { "a.js": "A" }, "A shell");
-    const b = release(root, "b", { "b.js": "B" }, "B shell");
-    stageStaticRelease({ stateRoot: state, candidateRoot: a });
-
-    assert.throws(
-      () =>
-        buildStaticPublish({
-          stateRoot: state,
-          candidateRoot: b,
-          outputRoot: output,
-          faultAt: "durability:fsync-output-claim",
-        }),
-      /fsync-output-claim/i,
-    );
-    assert.equal(existsSync(join(root, ".output.publish-claim")), false);
-    assert.equal(existsSync(output), false);
-    const pending = JSON.parse(readFileSync(join(state, "publish-pending.json"), "utf8"));
-    assert.equal(pending.phase, "renamed-uncommitted");
-    assert.equal(lstatSync(join(root, pending.transactionId)).isDirectory(), true);
-    assert.match(currentShell(state), /A shell/);
-
     buildStaticPublish({ stateRoot: state, candidateRoot: b, outputRoot: output });
     assert.match(currentShell(state), /B shell/);
     assert.equal(existsSync(join(state, "publish-pending.json")), false);
