@@ -995,6 +995,37 @@ test("static publish never replaces an empty destination that wins the output cl
   });
 });
 
+test("a failed output-claim sync leaves no truncated claim and retries its exact journal", () => {
+  withFixture((root) => {
+    const state = join(root, "state");
+    const output = join(root, "output");
+    const a = release(root, "a", { "a.js": "A" }, "A shell");
+    const b = release(root, "b", { "b.js": "B" }, "B shell");
+    stageStaticRelease({ stateRoot: state, candidateRoot: a });
+
+    assert.throws(
+      () =>
+        buildStaticPublish({
+          stateRoot: state,
+          candidateRoot: b,
+          outputRoot: output,
+          faultAt: "durability:fsync-output-claim",
+        }),
+      /fsync-output-claim/i,
+    );
+    assert.equal(existsSync(join(root, ".output.publish-claim")), false);
+    assert.equal(existsSync(output), false);
+    const pending = JSON.parse(readFileSync(join(state, "publish-pending.json"), "utf8"));
+    assert.equal(pending.phase, "renamed-uncommitted");
+    assert.equal(lstatSync(join(root, pending.transactionId)).isDirectory(), true);
+    assert.match(currentShell(state), /A shell/);
+
+    buildStaticPublish({ stateRoot: state, candidateRoot: b, outputRoot: output });
+    assert.match(currentShell(state), /B shell/);
+    assert.equal(existsSync(join(state, "publish-pending.json")), false);
+  });
+});
+
 test("a pending B publish expires after an independent C retained-asset promotion", () => {
   withFixture((root) => {
     const state = join(root, "state");

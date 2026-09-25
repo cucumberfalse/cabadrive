@@ -1744,6 +1744,35 @@ function recoverExactOutputClaim({ state, parent, output, pending, release, opti
   return true;
 }
 
+// A claim must never become visible before all its bytes are durable. A unique
+// prepared file plus link(2) gives the claim itself atomic no-replace creation:
+// either the complete, fsynced journal-bound value is linked or no claim exists.
+function publishOutputClaimAtomically(parent, output, pending, options) {
+  const claim = outputClaimPath(parent, output);
+  const temporary = join(
+    parent,
+    `.${basename(output)}.publish-claim.next-${process.pid}-${randomUUID()}`,
+  );
+  let descriptor;
+  try {
+    descriptor = openSync(temporary, "wx", 0o600);
+    writeFileSync(descriptor, `${pending.transactionId}\n`);
+    invokeDurability(options, "fsync-output-claim", temporary);
+    fsyncSync(descriptor);
+    invokeDurability(options, "close-output-claim", temporary);
+    closeSync(descriptor);
+    descriptor = undefined;
+    invokeDurability(options, "before-output-claim-link", claim);
+    linkSync(temporary, claim);
+    invokeDurability(options, "link-output-claim", claim);
+    syncDirectory(parent, options);
+  } finally {
+    if (descriptor !== undefined) closeSync(descriptor);
+    const temporaryEntry = noFollowEntry(temporary);
+    if (temporaryEntry?.isFile() && !temporaryEntry.isSymbolicLink()) unlinkSync(temporary);
+  }
+}
+
 // Node has no portable renameat(NO_REPLACE) binding for directories. Serialize
 // every publisher for this output through one no-follow exclusive claim, then
 // re-check the destination while that claim is held before the atomic rename.
@@ -1751,8 +1780,10 @@ function publishOutputNoReplace({ temporary, output, pending, options }) {
   const parent = dirname(output);
   const claim = outputClaimPath(parent, output);
   invokeDurability(options, "before-output-reservation", output);
+  let claimPublished = false;
   try {
-    writeFileSync(claim, `${pending.transactionId}\n`, { flag: "wx", mode: 0o600 });
+    publishOutputClaimAtomically(parent, output, pending, options);
+    claimPublished = true;
   } catch (error) {
     if (error?.code === "EEXIST") {
       fail("static publish output is already claimed by another publisher");
@@ -1771,7 +1802,7 @@ function publishOutputNoReplace({ temporary, output, pending, options }) {
   } finally {
     // On an error before rename, remove only our still-exact claim. A crash
     // leaves it for recoverExactOutputClaim on the next retry.
-    if (isExactOutputClaim(parent, output, pending)) unlinkSync(claim);
+    if (claimPublished && isExactOutputClaim(parent, output, pending)) unlinkSync(claim);
   }
 }
 
