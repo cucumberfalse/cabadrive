@@ -1473,7 +1473,9 @@ function pendingPublishIdentityMatches(pending, output, release) {
     validPublishTransactionId(pending.transactionId, output) &&
     pending.releaseId === release.releaseId &&
     pending.manifestSha256 === manifestDigest(release) &&
-    ["prepared", "renamed-uncommitted", "output-durable"].includes(pending.phase) &&
+    ["prepared", "renamed-uncommitted", "materializing", "output-durable"].includes(
+      pending.phase,
+    ) &&
     (pending.priorCurrentReleaseId === null || typeof pending.priorCurrentReleaseId === "string") &&
     exactInventory(pending.priorAssets) &&
     exactInventory(pending.expectedAssets) &&
@@ -1742,6 +1744,85 @@ function publishOutputNoReplace({ temporary, output, pending, options }) {
   invokeDurability(options, "rename-output", output);
 }
 
+// The no-replace symlink is only the ownership/visibility claim. Once it is
+// exact and journal-bound, materialize a portable directory at output. If a
+// non-cooperating process wins the brief unlink→mkdir window, mkdir fails and
+// its directory is left untouched rather than being adopted or replaced.
+function materializePublishedOutput({ state, parent, output, pending, release, options }) {
+  let working = pending;
+  let outputEntry = noFollowEntry(output);
+  if (outputEntry?.isSymbolicLink()) {
+    const source = exactPublishedOutputDirectory(parent, output, working);
+    if (!source || !pendingPublishMatches(working, output, release, outputInventory(source))) {
+      fail("static publish output symlink does not match pending journal");
+    }
+    if (working.phase !== "materializing") {
+      working = advancePendingPublishPhase(state, working, "materializing", options);
+    }
+    unlinkSync(output);
+    syncDirectory(parent, options);
+    fault(options, "after-output-unlink-before-materialize");
+    try {
+      mkdirSync(output, { recursive: false, mode: 0o755 });
+    } catch (error) {
+      if (error?.code === "EEXIST") {
+        fail("static publish destination appeared during materialization");
+      }
+      throw error;
+    }
+    for (const entry of working.inventory) {
+      copyAndVerify(
+        join(source, ...entry.path.split("/")),
+        join(output, ...entry.path.split("/")),
+        entry,
+        options,
+        output,
+      );
+    }
+    syncTree(output, options);
+    syncDirectory(parent, options);
+    return advancePendingPublishPhase(state, working, "output-durable", options);
+  }
+  if (outputEntry?.isDirectory() && working.phase === "materializing") {
+    const inventory = outputInventory(output);
+    if (!pendingPublishMatches(working, output, release, inventory)) {
+      fail("static publish materialized output does not match pending journal");
+    }
+    syncTree(output, options);
+    syncDirectory(parent, options);
+    return advancePendingPublishPhase(state, working, "output-durable", options);
+  }
+  if (!outputEntry && working.phase === "materializing") {
+    const temporary = join(parent, working.transactionId);
+    const temporaryEntry = noFollowEntry(temporary);
+    if (!temporaryEntry || temporaryEntry.isSymbolicLink() || !temporaryEntry.isDirectory()) {
+      fail("static publish materialization has no exact transaction directory");
+    }
+    publishOutputNoReplace({ temporary, output, pending: working, options });
+    syncDirectory(parent, options);
+    return materializePublishedOutput({
+      state,
+      parent,
+      output,
+      pending: working,
+      release,
+      options,
+    });
+  }
+  return working;
+}
+
+function cleanupMaterializedTransaction(parent, pending, options) {
+  const transaction = join(parent, pending.transactionId);
+  const entry = noFollowEntry(transaction);
+  if (!entry) return;
+  if (entry.isSymbolicLink() || !entry.isDirectory()) {
+    fail("static publish transaction cleanup is unsafe");
+  }
+  rmSync(transaction, { recursive: true, force: true });
+  syncDirectory(parent, options);
+}
+
 // Publication deliberately happens before state activation.  The journal turns
 // the only unavoidable crash window (output renamed, current not yet changed)
 // into an exact, byte-verified retry rather than permission to adopt arbitrary
@@ -1825,7 +1906,9 @@ export function buildStaticPublish({
         !existingPending ||
         (outputEntry.isSymbolicLink()
           ? outputDirectory !== pendingTemporary
-          : noFollowEntry(pendingTemporary)) ||
+          : existingPending.phase === "materializing"
+            ? !noFollowEntry(pendingTemporary)?.isDirectory()
+            : noFollowEntry(pendingTemporary)) ||
         !pendingPublishMatches(existingPending, output, manifest, inventory) ||
         !pendingInventoryMatchesCandidate(existingPending, manifest) ||
         !pendingRetainedAssetsMatchCurrentState(state, existingPending, manifest)
@@ -1835,13 +1918,33 @@ export function buildStaticPublish({
       if (existingPending.phase === "prepared") {
         fail("publish output exists before its durable rename journal phase");
       }
+      let completedPending = existingPending;
       if (existingPending.phase === "renamed-uncommitted") {
         syncTree(outputDirectory, options);
         fault(options, "before-recovered-output-parent-fsync");
         syncDirectory(parent, options);
         fault(options, "after-output-parent-fsync-before-phase");
-        advancePendingPublishPhase(state, existingPending, "output-durable", options);
+        completedPending = advancePendingPublishPhase(
+          state,
+          existingPending,
+          "materializing",
+          options,
+        );
       }
+      if (completedPending.phase === "materializing") {
+        completedPending = materializePublishedOutput({
+          state,
+          parent,
+          output,
+          pending: completedPending,
+          release: manifest,
+          options,
+        });
+      }
+      if (completedPending.phase !== "output-durable") {
+        fail("static publish output is not durably materialized");
+      }
+      cleanupMaterializedTransaction(parent, completedPending, options);
       const staged = stageStaticRelease({
         stateRoot: state,
         candidateRoot: candidateRootReal,
@@ -1885,7 +1988,7 @@ export function buildStaticPublish({
       if (noFollowEntry(output)) {
         fail("static publish destination changed during pre-output recovery");
       }
-      const renamedPending = advancePendingPublishPhase(
+      let renamedPending = advancePendingPublishPhase(
         state,
         existingPending,
         "renamed-uncommitted",
@@ -1900,7 +2003,16 @@ export function buildStaticPublish({
       fault(options, "crash-after-output-rename-before-parent-fsync");
       syncDirectory(parent, options);
       fault(options, "after-output-parent-fsync-before-phase");
-      advancePendingPublishPhase(state, renamedPending, "output-durable", options);
+      renamedPending = advancePendingPublishPhase(state, renamedPending, "materializing", options);
+      renamedPending = materializePublishedOutput({
+        state,
+        parent,
+        output,
+        pending: renamedPending,
+        release: manifest,
+        options,
+      });
+      cleanupMaterializedTransaction(parent, renamedPending, options);
       fault(options, "after-output");
       const staged = stageStaticRelease({
         stateRoot: state,
@@ -1968,7 +2080,16 @@ export function buildStaticPublish({
       fault(options, "crash-after-output-rename-before-parent-fsync");
       syncDirectory(parent, options);
       fault(options, "after-output-parent-fsync-before-phase");
-      pending = advancePendingPublishPhase(state, pending, "output-durable", options);
+      pending = advancePendingPublishPhase(state, pending, "materializing", options);
+      pending = materializePublishedOutput({
+        state,
+        parent,
+        output,
+        pending,
+        release: manifest,
+        options,
+      });
+      cleanupMaterializedTransaction(parent, pending, options);
       fault(options, "after-output");
       const staged = stageStaticRelease({
         stateRoot: state,

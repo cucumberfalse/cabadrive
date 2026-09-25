@@ -880,6 +880,14 @@
   `mkdir(output)` fails publication instead of being replaced. Focused staging
   regressions pass `47/47`; full preflight and one real Docker retention
   lifecycle also pass before commit/review.
+- The terminal portable-output response closes R051-065 (`r4105815062`): the
+  exact no-replace symlink is a recoverable claim only. Before activation it is
+  materialized into a fully synced standalone output directory, then its hidden
+  transaction is safely removed. A crash after unlinking the exact claim and
+  before materialization resumes only the journal-bound transaction; a foreign
+  destination is never adopted or replaced. Focused staging regressions pass
+  `48/48`; full preflight and one real Docker retention lifecycle also pass
+  before commit/review.
 
 ## Final Architect Validation
 

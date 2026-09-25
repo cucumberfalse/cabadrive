@@ -324,6 +324,12 @@ test("static publish emits retained assets with only the B mutable shell", () =>
     stageStaticRelease({ stateRoot: state, candidateRoot: a });
     buildStaticPublish({ stateRoot: state, candidateRoot: b, outputRoot: output });
 
+    assert.equal(lstatSync(output).isDirectory(), true);
+    assert.equal(
+      readdirSync(root).some((name) => name.startsWith(".publish.publish-")),
+      false,
+      "portable output no longer depends on a hidden transaction sibling",
+    );
     assert.equal(readFileSync(join(output, "assets/a.js"), "utf8"), "A");
     assert.equal(readFileSync(join(output, "assets/b.js"), "utf8"), "B");
     assert.equal(readFileSync(join(output, "index.html"), "utf8"), "B shell");
@@ -491,8 +497,8 @@ test("static publish recovers only an exact durable pre-rename temporary transac
     );
     const outputRename = trace.findIndex((entry) => entry.startsWith("rename-output:"));
     assert.ok(temporarySync >= 0 && temporarySync < outputRename);
-    assert.equal(lstatSync(exact.temporary).isDirectory(), true);
-    assert.equal(lstatSync(exact.output).isSymbolicLink(), true);
+    assert.equal(existsSync(exact.temporary), false);
+    assert.equal(lstatSync(exact.output).isDirectory(), true);
     assert.equal(existsSync(exact.pendingPath), false);
     assert.equal(readFileSync(join(exact.output, "index.html"), "utf8"), "B shell");
     assert.match(currentShell(exact.state), /B shell/);
@@ -663,8 +669,8 @@ test("a visible pre-output journal preserves its exact temporary when its direct
 
       buildStaticPublish({ stateRoot: state, candidateRoot: b, outputRoot: output });
       assert.match(currentShell(state), /B shell/);
-      assert.equal(lstatSync(temporary).isDirectory(), true);
-      assert.equal(lstatSync(output).isSymbolicLink(), true);
+      assert.equal(existsSync(temporary), false);
+      assert.equal(lstatSync(output).isDirectory(), true);
       assert.equal(existsSync(join(state, "publish-pending.json")), false);
     }
   });
@@ -994,6 +1000,39 @@ test("static publish atomically rejects a non-cooperating empty destination crea
     buildStaticPublish({ stateRoot: state, candidateRoot: b, outputRoot: output });
     assert.match(currentShell(state), /B shell/);
     assert.equal(existsSync(join(state, "publish-pending.json")), false);
+  });
+});
+
+test("a crash after exact output claim recovers a portable standalone directory", () => {
+  withFixture((root) => {
+    const state = join(root, "state");
+    const output = join(root, "output");
+    const a = release(root, "a", { "a.js": "A" }, "A shell");
+    const b = release(root, "b", { "b.js": "B" }, "B shell");
+    stageStaticRelease({ stateRoot: state, candidateRoot: a });
+
+    assert.throws(
+      () =>
+        buildStaticPublish({
+          stateRoot: state,
+          candidateRoot: b,
+          outputRoot: output,
+          faultAt: "after-output-unlink-before-materialize",
+        }),
+      /after-output-unlink-before-materialize/i,
+    );
+    assert.equal(existsSync(output), false);
+    const pending = JSON.parse(readFileSync(join(state, "publish-pending.json"), "utf8"));
+    assert.equal(pending.phase, "materializing");
+    assert.equal(lstatSync(join(root, pending.transactionId)).isDirectory(), true);
+    assert.match(currentShell(state), /A shell/);
+
+    buildStaticPublish({ stateRoot: state, candidateRoot: b, outputRoot: output });
+    assert.equal(lstatSync(output).isDirectory(), true);
+    assert.equal(readFileSync(join(output, "assets/a.js"), "utf8"), "A");
+    assert.equal(readFileSync(join(output, "assets/b.js"), "utf8"), "B");
+    assert.equal(existsSync(join(root, pending.transactionId)), false);
+    assert.match(currentShell(state), /B shell/);
   });
 });
 
