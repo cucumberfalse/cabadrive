@@ -7,6 +7,7 @@ script_dir="$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)"
 repo_root="${CABADRIVE_REPOSITORY_ROOT:-$(CDPATH= cd -- "$script_dir/.." && pwd)}"
 repo_root="$(CDPATH= cd -- "$repo_root" && pwd -P)"
 historical_basename="$(basename "$repo_root")"
+adopted_project_file="$repo_root/.cabadrive-release-handoff/.adopted-project"
 
 is_post_feature_runtime_image() {
   docker image inspect \
@@ -39,6 +40,17 @@ resolve_project() {
   if [ -n "${COMPOSE_PROJECT_NAME:-}" ]; then
     validate_project_name "$COMPOSE_PROJECT_NAME" || return 1
     printf '%s\n' "$COMPOSE_PROJECT_NAME"
+    return 0
+  fi
+
+  if [ -e "$adopted_project_file" ] || [ -L "$adopted_project_file" ]; then
+    if [ -L "$adopted_project_file" ] || [ ! -f "$adopted_project_file" ]; then
+      printf '%s\n' 'persisted Compose project identity is unsafe' >&2
+      return 1
+    fi
+    adopted_project="$(cat "$adopted_project_file" 2>/dev/null || true)"
+    validate_project_name "$adopted_project" || return 1
+    printf '%s\n' "$adopted_project"
     return 0
   fi
 
@@ -116,6 +128,14 @@ handoff_parent="$(CDPATH= cd -- "$handoff_parent" && pwd -P)"
 if [ "$handoff_parent" != "$repo_root/.cabadrive-release-handoff" ]; then
   printf '%s\n' 'legacy handoff root escapes the repository' >&2
   exit 1
+fi
+if [ -z "${COMPOSE_PROJECT_NAME:-}" ] && [ "$project" != "cabadrive" ]; then
+  identity_temporary="$handoff_parent/.adopted-project.next-$$"
+  printf '%s\n' "$project" >"$identity_temporary" && mv -f "$identity_temporary" "$adopted_project_file" || {
+    rm -f "$identity_temporary"
+    printf '%s\n' 'failed to persist adopted Compose project identity' >&2
+    exit 1
+  }
 fi
 handoff_base="$handoff_parent/$project"
 case "$handoff_base" in

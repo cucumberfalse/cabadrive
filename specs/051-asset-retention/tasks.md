@@ -888,6 +888,14 @@
   destination is never adopted or replaced. Focused staging regressions pass
   `48/48`; full preflight and one real Docker retention lifecycle also pass
   before commit/review.
+- Cross-platform disposition for R051-064/R051-065: serving output remains the
+  exact atomic no-replace symlink to its complete journal transaction; no
+  recursive transaction cleanup is performed because it is the serving target.
+  `stage-static-release.mjs export --state --candidate --output --destination`
+  verifies the committed output and writes a standalone physical artifact for
+  static-host/archive consumers. The adopted project identity is persisted only
+  in the ignored repository-owned handoff root and is validated before reuse;
+  explicit `COMPOSE_PROJECT_NAME` still wins.
 
 ## Final Architect Validation
 
