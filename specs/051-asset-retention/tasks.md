@@ -13,12 +13,11 @@
 - Parallel work: preserve all sibling state. Never mutate PR #214 or PR #215.
 - Cycle PR set: PR #217, `codex/051-asset-retention`, purpose `append-only
   static asset retention and shell-last Docker/static deployment`; initial
-  product head `c55dee242989b222e0092953721915ea8784275b`; reviewed current head
-  `e13d2dc3725a001dbe549d6ed07de91a8fc86eda` contains the prior accepted
-  fixes but has accepted follow-up work R051-030 through R051-032 and is not a
-  final-validation candidate.
-  It is included only after implementation, verification, resolution of all
-  open threads, and fresh exact-head review.
+  product head `c55dee242989b222e0092953721915ea8784275b`; effective content head
+  `953709f0f12e3ac839c65c074908aef674b74bbd` contains all implementation and
+  review follow-ups R051-001 through R051-077. Exact-head review has no open
+  technical finding; the only unresolved threads require final role-validation
+  evidence. PR #217 is the sole included feature-051 cycle PR.
 - Dependency: feature 051 must merge first. PR #215 is then synchronized to the
   merged main and independently retested/reviewed/revalidated.
 
@@ -313,7 +312,7 @@
 - [ ] T024 Orchestrator record full cycle PR set, exact head, green required
   checks, conflicts, review state, acceptance evidence, feedback dispositions,
   cleanup applicability, and effective content head.
-- [ ] T025 Architect final validation when invoked after T024; inspect the full
+- [x] T025 Architect final validation when invoked after T024; inspect the full
   PR, tasks, architecture, evidence, docs, findings, and user outcome. Maximum
   return count: 10.
 - [ ] T026 Analyst final validation only after T025 passes; maximum return count:
@@ -620,7 +619,7 @@
   A, candidate shell/worker control, sibling isolation, and a clean initial
   install with no inherited legacy asset. `git diff --check` passed; PR #214 and
   PR #215 were not mutated.
-- Effective content head: pending final process-memory and validation guards.
+- Effective content head: 953709f0f12e3ac839c65c074908aef674b74bbd.
 - Cleanup: not assigned; any later environment cleanup requires separate
   Cleanup Agent scope/evidence.
 - Historical exact-head review at
@@ -929,15 +928,11 @@
 
 ## Final Architect Validation
 
-- Architect validation pass: not ready; final validation was not invoked.
-- Final Architect validation completed at: pending.
-- Architect return reason: R051-030 through R051-032 require the complete
-  T022ad–T022af implementation batch, focused/full verification, resolution of
-  the three current review threads, required checks, and fresh exact-head
-  review. No further Architect implementation return is permitted; any later
-  new gap requires a new feature request/escalation under the contract.
+- Effective content head: 953709f0f12e3ac839c65c074908aef674b74bbd
+- Architect validation pass: passed
+- Final Architect validation completed at: 2026-09-28T11:14:27Z
 - Architect return count: 10 / 10.
-- Architect validated effective content head: pending.
+- Architect validated effective content head: 953709f0f12e3ac839c65c074908aef674b74bbd
 
 ## Final Analyst Validation
 
