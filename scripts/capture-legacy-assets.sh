@@ -21,6 +21,24 @@ is_post_feature_runtime_image() {
     "$1" 2>/dev/null | grep -qx 'true'
 }
 
+# Return 0 with the image ID, 1 only for Docker's explicit not-found result,
+# and 2 for every other inspect failure. Callers must not mistake a daemon or
+# permission failure for a clean install.
+inspect_runtime_image() {
+  if inspect_output="$(docker image inspect --format '{{.Id}}' "$1" 2>&1)"; then
+    printf '%s\n' "$inspect_output"
+    return 0
+  fi
+  case "$inspect_output" in
+    *"No such image"*|*"No such object"*) return 1 ;;
+    *)
+      printf '%s\n' "$inspect_output" >&2
+      printf '%s\n' 'failed to inspect project runtime image' >&2
+      return 2
+      ;;
+  esac
+}
+
 validate_project_name() {
   case "$1" in
     [a-z0-9]*) ;;
@@ -117,9 +135,14 @@ resolve_project() {
   # image exists.  A labelled runtime image may have been produced by this
   # checkout's new build and must not resurrect an obsolete project name.
   # Do not scan arbitrary similarly named images.
-  if docker image inspect --format '{{.Id}}' "${historical_basename}-cabadrive" >/dev/null 2>&1; then
+  if historical_image="$(inspect_runtime_image "${historical_basename}-cabadrive")"; then
     if ! is_post_feature_runtime_image "${historical_basename}-cabadrive"; then
       add_candidate "$historical_basename"
+    fi
+  else
+    historical_status=$?
+    if [ "$historical_status" -ne 1 ]; then
+      return 1
     fi
   fi
 
@@ -326,20 +349,12 @@ fi
 if [ -n "$container" ]; then
   source="$container"
 else
-  if image_output="$(docker image inspect --format '{{.Id}}' "${project}-cabadrive" 2>&1)"; then
+  if image_output="$(inspect_runtime_image "${project}-cabadrive")"; then
     image="$image_output"
   else
-    # Docker uses this explicit diagnostic for an ordinary absent image. Any
-    # daemon, permission, or transient inspect failure is not clean-install
-    # authority and must keep the outgoing image from being replaced.
-    case "$image_output" in
-      *"No such image"*|*"No such object"*) image="" ;;
-      *)
-        printf '%s\n' "$image_output" >&2
-        printf '%s\n' 'failed to inspect project runtime image' >&2
-        exit 1
-        ;;
-    esac
+    image_status=$?
+    if [ "$image_status" -ne 1 ]; then exit 1; fi
+    image=""
   fi
 fi
 if [ -n "$image" ]; then

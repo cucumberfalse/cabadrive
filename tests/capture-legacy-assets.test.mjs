@@ -269,6 +269,73 @@ exit 1
   }
 });
 
+test("historical image inspection failure fails closed instead of selecting the default project", () => {
+  const root = join(tmpdir(), `cabadrive-historical-inspect-failure-${process.pid}-${Date.now()}`);
+  const bin = join(root, "bin");
+  mkdirSync(bin, { recursive: true });
+  const docker = join(bin, "docker");
+  writeFileSync(
+    docker,
+    `#!/bin/sh
+if [ "$1" = ps ]; then exit 0; fi
+if [ "$1" = image ]; then printf '%s\\n' 'daemon temporarily unavailable' >&2; exit 42; fi
+exit 90
+`,
+  );
+  chmodSync(docker, 0o755);
+  try {
+    const env = {
+      ...process.env,
+      CABADRIVE_REPOSITORY_ROOT: root,
+      PATH: `${bin}:${process.env.PATH}`,
+    };
+    delete env.COMPOSE_PROJECT_NAME;
+    const result = spawnSync("sh", [captureScript, "--resolve-project"], {
+      cwd: root,
+      encoding: "utf8",
+      env,
+    });
+    assert.notEqual(result.status, 0);
+    assert.match(result.stderr, /failed to inspect project runtime image/i);
+    assert.doesNotMatch(result.stdout, /cabadrive/);
+  } finally {
+    if (existsSync(root)) rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("confirmed absent historical image keeps default project resolution", () => {
+  const root = join(tmpdir(), `cabadrive-historical-absent-${process.pid}-${Date.now()}`);
+  const bin = join(root, "bin");
+  mkdirSync(bin, { recursive: true });
+  const docker = join(bin, "docker");
+  writeFileSync(
+    docker,
+    `#!/bin/sh
+if [ "$1" = ps ]; then exit 0; fi
+if [ "$1" = image ]; then printf '%s\\n' 'Error response from daemon: No such image' >&2; exit 1; fi
+exit 90
+`,
+  );
+  chmodSync(docker, 0o755);
+  try {
+    const env = {
+      ...process.env,
+      CABADRIVE_REPOSITORY_ROOT: root,
+      PATH: `${bin}:${process.env.PATH}`,
+    };
+    delete env.COMPOSE_PROJECT_NAME;
+    const result = spawnSync("sh", [captureScript, "--resolve-project"], {
+      cwd: root,
+      encoding: "utf8",
+      env,
+    });
+    assert.equal(result.status, 0, result.stderr);
+    assert.equal(result.stdout.trim(), "cabadrive");
+  } finally {
+    if (existsSync(root)) rmSync(root, { recursive: true, force: true });
+  }
+});
+
 test("a discovered historical project is persisted before later labelled-image resolution", () => {
   const root = join(tmpdir(), `cabadrive-adopted-project-${process.pid}-${Date.now()}`);
   const project = root.split("/").at(-1);
@@ -586,6 +653,18 @@ test("capture rejects a symlinked safe project handoff before external mutation"
   writeFileSync(join(external, "sentinel"), "do not mutate");
   mkdirSync(handoffParent, { recursive: true });
   symlinkSync(external, join(handoffParent, "fixture"));
+  const bin = join(root, "bin");
+  mkdirSync(bin, { recursive: true });
+  writeFileSync(join(root, "docker-compose.yml"), "services: {}\n");
+  const docker = join(bin, "docker");
+  writeFileSync(
+    docker,
+    `#!/bin/sh
+if [ "$1" = compose ]; then exit 0; fi
+exit 90
+`,
+  );
+  chmodSync(docker, 0o755);
   try {
     const result = spawnSync("sh", [captureScript], {
       cwd: root,
@@ -594,6 +673,7 @@ test("capture rejects a symlinked safe project handoff before external mutation"
         ...process.env,
         COMPOSE_PROJECT_NAME: "fixture",
         CABADRIVE_REPOSITORY_ROOT: root,
+        PATH: `${bin}:${process.env.PATH}`,
       },
     });
     assert.equal(result.status, 1, result.stderr);
@@ -799,7 +879,7 @@ if [ "$1" = volume ] && [ "$2" = inspect ]; then exit 1; fi
 if [ "$1" = image ] && [ "$2" = inspect ]; then
   case "$*" in
     *cabadrive-cabadrive*) printf '%s\\n' default-image; exit 0 ;;
-    *) exit 1 ;;
+    *) printf '%s\\n' 'Error response from daemon: No such image' >&2; exit 1 ;;
   esac
 fi
 if [ "$1" = create ]; then printf '%s\\n' temporary-container; exit 0; fi

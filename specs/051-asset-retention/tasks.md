@@ -921,6 +921,11 @@
   Docker's explicit absent-image diagnostic from an unreadable image/daemon
   failure. Only confirmed absence reaches the clean-install path; inspection
   failures stop before image replacement or capture fallback.
+- Review follow-up R051-076/R051-077: the same explicit-not-found contract now
+  applies to historical-basename image discovery, so daemon/permission failures
+  cannot silently select the default project. The symlinked-handoff regression
+  provides a successful local Compose mock and fixture compose file, reaching
+  the intended containment check consistently in Node-only CI.
 
 ## Final Architect Validation
 
