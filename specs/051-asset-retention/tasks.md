@@ -15,9 +15,12 @@
   static asset retention and shell-last Docker/static deployment`; initial
   product head `c55dee242989b222e0092953721915ea8784275b`; effective content head
   `953709f0f12e3ac839c65c074908aef674b74bbd` contains all implementation and
-  review follow-ups R051-001 through R051-077. Exact-head review has no open
-  technical finding; the only unresolved threads require final role-validation
-  evidence. PR #217 is the sole included feature-051 cycle PR.
+  review follow-ups R051-001 through R051-077. At final validation, exact-head
+  review had no open technical finding and the remaining threads requested role
+  evidence. Later current-head review opened `r4121580555` and `r4121580548`;
+  new feature 052 owns their implementation/process disposition because feature
+  051 exhausted its Architect return budget. PR #217 is the sole included
+  feature-051 cycle PR.
 - Dependency: feature 051 must merge first. PR #215 is then synchronized to the
   merged main and independently retested/reviewed/revalidated.
 
@@ -306,17 +309,24 @@
   event. Test crash immediately after rename, parent-fsync failure, and crash
   after fsync/before phase update with ordered traces and unchanged mismatch
   negatives.
-- [ ] T023 Orchestrator route every finding/feedback to the proper role; all
-  blocking threads are fixed/resolved or explicitly disposed, checks rerun, and
-  process memory refreshed.
-- [ ] T024 Orchestrator record full cycle PR set, exact head, green required
-  checks, conflicts, review state, acceptance evidence, feedback dispositions,
-  cleanup applicability, and effective content head.
+- [x] T023 For the feature-051 validation snapshot, Orchestrator routed every
+  then-current finding/feedback to the proper role; all R051-001 through
+  R051-077 findings were fixed/disposed and checks/process memory refreshed.
+  The later R052 threads are assigned to the new feature-052 cycle.
+- [x] T024 For effective content head
+  `953709f0f12e3ac839c65c074908aef674b74bbd`, Orchestrator recorded the sole
+  cycle PR, green required checks, conflict/review state, acceptance evidence,
+  dispositions, cleanup applicability, and effective head before final role
+  validation. Feature 052 must renew this evidence for its later content head.
 - [x] T025 Architect final validation when invoked after T024; inspect the full
   PR, tasks, architecture, evidence, docs, findings, and user outcome. Maximum
   return count: 10.
-- [ ] T026 Analyst final validation only after T025 passes; maximum return count:
-  5. Any Analyst gap returns to Architect disposition.
+- [x] T026 Analyst final validation completed after T025 at
+  `2026-09-28T11:19:10Z` on effective content head
+  `953709f0f12e3ac839c65c074908aef674b74bbd`; return count 0/5. The later
+  feature-052 non-evidence follow-up requires renewed Architect then Analyst
+  validation and does not retroactively invalidate this recorded historical
+  pass.
 - [ ] T027 Orchestrator run current-head guard, prove any post-validation commit
   evidence-only, recheck all gates, and conservatively merge feature 051.
 - [ ] T028 After verified merge, Orchestrator assign synchronization of PR #215
@@ -936,6 +946,19 @@
 
 ## Final Analyst Validation
 
-- Analyst validation: not invoked; must follow Architect pass.
+- Analyst validation pass: passed
+- Final Analyst validation completed at: 2026-09-28T11:19:10Z
 - Analyst return count: 0 / 5.
-- Analyst validated effective content head: pending.
+- Analyst validated effective content head: 953709f0f12e3ac839c65c074908aef674b74bbd
+
+## Post-Validation Follow-Up Disposition
+
+- R052-001 (`r4121580555`): accepted into new feature
+  `052-compose-project-provenance` because feature 051 reached its Architect
+  return limit. It corrects the Make wrapper's loss of discovered-project
+  provenance and requires fresh role validation on a renewed effective head.
+- R052-002 (`r4121580548`): accepted. The stale Architect-owned Analyst status
+  above is reconciled with the Analyst-owned pass evidence without modifying
+  `feature-request.md`. The old Architect and Analyst passes apply only to
+  `953709f0f12e3ac839c65c074908aef674b74bbd` and cannot authorize merge after
+  feature-052 implementation.

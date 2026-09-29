@@ -21,6 +21,178 @@ const captureScript = fileURLToPath(
 );
 const repositoryRoot = fileURLToPath(new URL("..", import.meta.url));
 
+function createMakeProvenanceFixture({ imageMode = "legacy" } = {}) {
+  const root = join(
+    tmpdir(),
+    `cabadrive-make-provenance-${process.pid}-${Date.now()}-${Math.random().toString(16).slice(2)}`,
+  );
+  const project = root.split("/").at(-1);
+  const bin = join(root, "bin");
+  const scripts = join(root, "scripts");
+  const phase = join(root, "image-phase");
+  const log = join(root, "docker.log");
+  const buildSentinel = join(root, "build-started");
+  mkdirSync(bin, { recursive: true });
+  mkdirSync(scripts, { recursive: true });
+  writeFileSync(join(root, "Makefile"), readFileSync(join(repositoryRoot, "Makefile")));
+  writeFileSync(join(scripts, "capture-legacy-assets.sh"), readFileSync(captureScript));
+  chmodSync(join(scripts, "capture-legacy-assets.sh"), 0o755);
+  writeFileSync(phase, "legacy");
+  const docker = join(bin, "docker");
+  writeFileSync(
+    docker,
+    `#!/bin/sh
+set -eu
+printf '%s|%s\\n' "\${COMPOSE_PROJECT_NAME:-}" "$*" >>"$CABADRIVE_DOCKER_LOG"
+if [ "$1" = ps ]; then exit 0; fi
+if [ "$1" = volume ] && [ "$2" = inspect ]; then exit 1; fi
+if [ "$1" = image ] && [ "$2" = inspect ]; then
+  case "$*" in
+    *com.cabadrive.release-state-runtime*)
+      [ "$(cat "$CABADRIVE_IMAGE_PHASE")" = labeled ] && printf '%s\\n' true
+      exit 0
+      ;;
+  esac
+  if [ "$CABADRIVE_IMAGE_MODE" = absent ]; then
+    printf '%s\\n' 'Error response from daemon: No such image' >&2
+    exit 1
+  fi
+  printf '%s\\n' legacy-image-id
+  exit 0
+fi
+if [ "$1" = compose ]; then
+  case " $* " in
+    *" build "*)
+      if [ "$CABADRIVE_IMAGE_MODE" = legacy ]; then
+        test -f "$CABADRIVE_ADOPTED_PROJECT" || exit 88
+      fi
+      : >"$CABADRIVE_BUILD_SENTINEL"
+      printf '%s\\n' labeled >"$CABADRIVE_IMAGE_PHASE"
+      printf 'build:%s\\n' "$COMPOSE_PROJECT_NAME" >>"$CABADRIVE_DOCKER_LOG"
+      exit 0
+      ;;
+    *" up "*)
+      printf 'up:%s\\n' "$COMPOSE_PROJECT_NAME" >>"$CABADRIVE_DOCKER_LOG"
+      exit 0
+      ;;
+    *) exit 0 ;;
+  esac
+fi
+if [ "$1" = create ]; then printf '%s\\n' temporary-container; exit 0; fi
+if [ "$1" = cp ]; then mkdir -p "$3"; printf '%s' legacy-bytes >"$3/lazy-a.js"; exit 0; fi
+if [ "$1" = run ]; then
+  case "$*" in
+    *legacy-publish-pointer*)
+      handoff_project="\${COMPOSE_PROJECT_NAME:-$CABADRIVE_FIXTURE_PROJECT}"
+      release="$(find "$CABADRIVE_REPOSITORY_ROOT/.cabadrive-release-handoff/$handoff_project/releases" -mindepth 1 -maxdepth 1 -type d | sed -n '1p')"
+      ln -s "releases/$(basename "$release")" "$CABADRIVE_REPOSITORY_ROOT/.cabadrive-release-handoff/$handoff_project/current"
+      ;;
+  esac
+  exit 0
+fi
+if [ "$1" = rm ]; then exit 0; fi
+exit 90
+`,
+  );
+  chmodSync(docker, 0o755);
+  const env = {
+    ...process.env,
+    CABADRIVE_REPOSITORY_ROOT: root,
+    CABADRIVE_FIXTURE_PROJECT: project,
+    CABADRIVE_IMAGE_MODE: imageMode,
+    CABADRIVE_IMAGE_PHASE: phase,
+    CABADRIVE_DOCKER_LOG: log,
+    CABADRIVE_BUILD_SENTINEL: buildSentinel,
+    CABADRIVE_ADOPTED_PROJECT: join(root, ".cabadrive-release-handoff/.adopted-project"),
+    PATH: `${bin}:${process.env.PATH}`,
+  };
+  delete env.COMPOSE_PROJECT_NAME;
+  return { root, project, bin, log, buildSentinel, env };
+}
+
+function runMake(root, target, env) {
+  return spawnSync("make", [target], { cwd: root, encoding: "utf8", env });
+}
+
+test("actual make build persists a discovered project before build and reuses it after evidence changes", () => {
+  const fixture = createMakeProvenanceFixture();
+  const adopted = join(fixture.root, ".cabadrive-release-handoff/.adopted-project");
+  try {
+    const build = runMake(fixture.root, "build", fixture.env);
+    assert.equal(build.status, 0, build.stdout + build.stderr);
+    assert.equal(readFileSync(adopted, "utf8").trim(), fixture.project);
+    assert.equal(existsSync(fixture.buildSentinel), true);
+    assert.match(readFileSync(fixture.log, "utf8"), new RegExp(`build:${fixture.project}`));
+
+    const up = runMake(fixture.root, "up", fixture.env);
+    assert.equal(up.status, 0, up.stdout + up.stderr);
+    assert.match(readFileSync(fixture.log, "utf8"), new RegExp(`up:${fixture.project}`));
+
+    rmSync(adopted);
+    const missingAdoption = runMake(fixture.root, "up", fixture.env);
+    assert.equal(missingAdoption.status, 0, missingAdoption.stdout + missingAdoption.stderr);
+    assert.match(readFileSync(fixture.log, "utf8"), /up:cabadrive/);
+  } finally {
+    if (existsSync(fixture.root)) rmSync(fixture.root, { recursive: true, force: true });
+  }
+});
+
+test("actual make build keeps an explicit project non-persistent", () => {
+  const fixture = createMakeProvenanceFixture();
+  const adopted = join(fixture.root, ".cabadrive-release-handoff/.adopted-project");
+  mkdirSync(join(fixture.root, ".cabadrive-release-handoff"), { recursive: true });
+  writeFileSync(adopted, "previous-adoption\\n");
+  try {
+    const result = runMake(fixture.root, "build", {
+      ...fixture.env,
+      COMPOSE_PROJECT_NAME: "caller-override",
+    });
+    assert.equal(result.status, 0, result.stdout + result.stderr);
+    assert.equal(readFileSync(adopted, "utf8"), "previous-adoption\\n");
+    assert.match(readFileSync(fixture.log, "utf8"), /build:caller-override/);
+  } finally {
+    if (existsSync(fixture.root)) rmSync(fixture.root, { recursive: true, force: true });
+  }
+});
+
+test("actual make build keeps a clean install on the default project without adoption", () => {
+  const fixture = createMakeProvenanceFixture({ imageMode: "absent" });
+  try {
+    const result = runMake(fixture.root, "build", fixture.env);
+    assert.equal(result.status, 0, result.stdout + result.stderr);
+    assert.equal(
+      existsSync(join(fixture.root, ".cabadrive-release-handoff/.adopted-project")),
+      false,
+    );
+    assert.match(readFileSync(fixture.log, "utf8"), /build:cabadrive/);
+  } finally {
+    if (existsSync(fixture.root)) rmSync(fixture.root, { recursive: true, force: true });
+  }
+});
+
+test("actual make build stops before image replacement when discovered adoption cannot publish", () => {
+  const fixture = createMakeProvenanceFixture();
+  const mv = join(fixture.bin, "mv");
+  writeFileSync(
+    mv,
+    `#!/bin/sh
+case "$*" in
+  *.cabadrive-release-handoff/.adopted-project) exit 73 ;;
+esac
+exec /bin/mv "$@"
+`,
+  );
+  chmodSync(mv, 0o755);
+  try {
+    const result = runMake(fixture.root, "build", fixture.env);
+    assert.notEqual(result.status, 0, result.stdout + result.stderr);
+    assert.match(result.stderr, /failed to persist adopted Compose project identity/i);
+    assert.equal(existsSync(fixture.buildSentinel), false);
+  } finally {
+    if (existsSync(fixture.root)) rmSync(fixture.root, { recursive: true, force: true });
+  }
+});
+
 test("make build propagates capture failure before starting an image build", () => {
   const root = join(tmpdir(), `cabadrive-build-short-circuit-${process.pid}-${Date.now()}`);
   const bin = join(root, "bin");
@@ -71,7 +243,7 @@ test("every Make lifecycle target stops when Compose project resolution is ambig
     capture,
     `#!/bin/sh
 set -eu
-if [ "\${1:-}" = --resolve-project ]; then
+if [ "\${1:-}" = --resolve-project ] || [ "$#" -eq 0 ]; then
   printf '%s\\n' 'ambiguous pre-feature Compose project' >&2
   exit 41
 fi

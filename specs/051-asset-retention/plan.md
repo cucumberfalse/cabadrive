@@ -395,6 +395,13 @@ or PR #215 directly from this worktree.
 All implementation and review follow-ups are complete at effective content head
 `953709f0f12e3ac839c65c074908aef674b74bbd`. Full preflight passed with 630/630
 Node tests, production build/service-worker generation, and 158/158 Playwright
-tests; current-head GitHub review has no open technical finding. Final Architect
-validation passed at return count 10/10. Final Analyst validation, current-head
-guards, thread resolution, and merge remain Orchestrator-coordinated gates.
+tests; GitHub review on that validation head had no open technical finding.
+Final Architect validation passed at return count 10/10. Final Analyst
+validation subsequently passed at `2026-09-28T11:19:10Z` on the same effective
+content head, with return
+count 0/5. Review follow-up `r4121580555` then identified a non-evidence
+Make-wrapper provenance defect after feature 051 exhausted its return budget;
+new feature 052 owns that correction and renewed final validation. Review thread
+`r4121580548` is accepted as this Architect-owned status reconciliation. The
+prior passes remain truthful historical evidence for `953709f...`, but they are
+not sufficient to finalize the post-feature-052 PR head.
