@@ -136,6 +136,23 @@ record and therefore select the same project.
   permits the existing pre-feature path; command failure or unexpected label
   state fails closed before candidate selection, adoption, capture, or lifecycle
   mutation.
+- **FR-052-10 — validate every existing handoff root before resolution:** at
+  resolver entry, before an explicit-project return, adopted-record lookup, or
+  Docker metadata/image discovery, classify
+  `.cabadrive-release-handoff` without following links. Absence is allowed;
+  every existing entry must be the canonical repository-owned directory.
+  Symlink, non-directory, inaccessible, or escaped state fails before any
+  Docker query, bind mount, adoption, capture, or lifecycle action, even when
+  `.adopted-project` is absent.
+- **FR-052-11 — crash-durable adoption publication:** a discovered adoption is
+  authoritative for Docker build only after the completed temporary regular
+  file is flushed, atomically renamed to `.adopted-project`, and the handoff
+  parent directory is flushed. Every close/fsync/rename/parent-fsync failure
+  returns nonzero before build. If failure occurs after rename made the record
+  visible, later resolution must validate and repeat the record plus parent
+  durability barrier before using it; visible bytes alone are not durability
+  evidence. The helper must preserve the Docker-only host contract and the
+  existing no-follow/repository-containment rules.
 
 ## Acceptance Criteria
 
@@ -168,6 +185,15 @@ record and therefore select the same project.
 11. When image-ID inspection succeeds but the separate runtime-label inspection
     fails, resolver/capture returns nonzero, creates no adoption record, and an
     actual Make build/lifecycle sentinel proves no Compose mutation begins.
+12. An existing symlinked empty handoff root with no adopted record makes
+    resolve and every actual Make lifecycle target fail before Docker discovery,
+    capture, bind mounting, adoption, or lifecycle mutation; the external target
+    remains unchanged.
+13. An ordered operation trace proves completed adoption bytes are file-fsynced
+    before atomic rename and the canonical handoff parent is fsynced after it,
+    all before image build. Fault injection at file sync, rename, and parent sync
+    fails closed with no build; an exact retry after a post-rename sync failure
+    reestablishes both durability barriers before returning the adopted project.
 
 ## Required Negative Scenarios
 
@@ -181,6 +207,11 @@ record and therefore select the same project.
 - Docker discovery or inspection failure fails rather than selecting a default.
 - Historical image-ID success followed by runtime-label inspection failure
   fails rather than classifying the image as an unlabeled legacy candidate.
+- Existing symlinked/non-directory handoff root without `.adopted-project`
+  fails before Docker discovery or bind-mounted lifecycle action.
+- Adoption temporary-file close/fsync, atomic rename, or handoff-parent fsync
+  failure prevents Docker build. A post-rename failure cannot make the merely
+  visible record authoritative without a successful retry durability barrier.
 - Genuine clean install selects `cabadrive` and creates no adoption record.
 
 ## Verification Requirements
@@ -232,11 +263,28 @@ record and therefore select the same project.
   validation on the same renewed effective content head. Reply with both role
   markers before resolving it; it must not be closed based on pre-return
   validation evidence.
+- **R052-005 / `r4134532193` — empty symlinked handoff root bypasses resolver
+  containment: accepted (Architect return #2).** Move no-follow classification
+  of every existing handoff root to the start of resolution, before explicit or
+  discovered project selection and before Docker metadata access. Preserve an
+  absent root as the only create-later state. Add an actual resolver/Make
+  regression with a symlink to an empty external directory, no adopted file,
+  Docker/action sentinels untouched, and external bytes unchanged.
+- **R052-006 / `r4134532208` — adopted-project rename lacks durability:
+  accepted (Architect return #2).** Publish through a repository-owned
+  Docker-executed durability boundary: checked write/close, exact content
+  validation, file fsync, atomic rename, then handoff-parent fsync. Failure at
+  any boundary blocks build. Revalidate and re-fsync a visible adopted record
+  before resolver authority so an interrupted post-rename parent barrier cannot
+  be mistaken for completed publication. Add ordered trace/fault/retry tests,
+  then rerun focused, full-preflight, isolated-Docker, exact-head review and
+  required-check gates.
 
 ## Final Validation Protocol
 
-- Feature-052 Architect return limit: 10. Current count: 1. Return #1 accepts
-  R052-003 and assigns the narrow status-separated label-probe fix.
+- Feature-052 Architect return limit: 10. Current count: 2. Return #1 accepted
+  R052-003; return #2 accepts R052-005 and R052-006 as one narrow containment
+  and adoption-durability follow-up.
 - Feature-052 Analyst return limit: 5. Initial count: 0.
 - The effective content head contains implementation, tests, documentation,
   dispositions, and all mutable task/evidence state.

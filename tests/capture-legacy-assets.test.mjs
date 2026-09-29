@@ -90,6 +90,21 @@ if [ "$1" = create ]; then printf '%s\\n' temporary-container; exit 0; fi
 if [ "$1" = cp ]; then mkdir -p "$3"; printf '%s' legacy-bytes >"$3/lazy-a.js"; exit 0; fi
 if [ "$1" = run ]; then
   case "$*" in
+    *adopted-project-verify*)
+      cat "$CABADRIVE_ADOPTED_PROJECT"
+      exit 0
+      ;;
+    *adopted-project-write*)
+      case "$*" in
+        *'durability:fsync-file'*) exit 73 ;;
+        *'durability:rename'*|*'durability:fsync-directory'*)
+          printf '%s\\n' "$COMPOSE_PROJECT_NAME" >"$CABADRIVE_ADOPTED_PROJECT"
+          exit 73
+          ;;
+      esac
+      printf '%s\\n' "$COMPOSE_PROJECT_NAME" >"$CABADRIVE_ADOPTED_PROJECT"
+      exit 0
+      ;;
     *legacy-publish-pointer*)
       handoff_project="\${COMPOSE_PROJECT_NAME:-$CABADRIVE_FIXTURE_PROJECT}"
       release="$(find "$CABADRIVE_REPOSITORY_ROOT/.cabadrive-release-handoff/$handoff_project/releases" -mindepth 1 -maxdepth 1 -type d | sed -n '1p')"
@@ -215,24 +230,76 @@ test("actual make build fails closed on an unexpected historical runtime label",
 
 test("actual make build stops before image replacement when discovered adoption cannot publish", () => {
   const fixture = createMakeProvenanceFixture();
-  const mv = join(fixture.bin, "mv");
-  writeFileSync(
-    mv,
-    `#!/bin/sh
-case "$*" in
-  *.cabadrive-release-handoff/.adopted-project) exit 73 ;;
-esac
-exec /bin/mv "$@"
-`,
-  );
-  chmodSync(mv, 0o755);
   try {
-    const result = runMake(fixture.root, "build", fixture.env);
+    const result = runMake(fixture.root, "build", {
+      ...fixture.env,
+      CABADRIVE_ADOPTION_FAULT: "durability:fsync-file",
+    });
     assert.notEqual(result.status, 0, result.stdout + result.stderr);
     assert.match(result.stderr, /failed to persist adopted Compose project identity/i);
     assert.equal(existsSync(fixture.buildSentinel), false);
   } finally {
     if (existsSync(fixture.root)) rmSync(fixture.root, { recursive: true, force: true });
+  }
+});
+
+test("actual make retries a visible adopted record after its parent durability barrier fails", () => {
+  const fixture = createMakeProvenanceFixture();
+  const adopted = join(fixture.root, ".cabadrive-release-handoff/.adopted-project");
+  try {
+    const interrupted = runMake(fixture.root, "build", {
+      ...fixture.env,
+      CABADRIVE_ADOPTION_FAULT: "durability:fsync-directory",
+    });
+    assert.notEqual(interrupted.status, 0, interrupted.stdout + interrupted.stderr);
+    assert.equal(readFileSync(adopted, "utf8"), `${fixture.project}\n`);
+    assert.equal(existsSync(fixture.buildSentinel), false);
+
+    const retried = runMake(fixture.root, "build", fixture.env);
+    assert.equal(retried.status, 0, retried.stdout + retried.stderr);
+    const log = readFileSync(fixture.log, "utf8");
+    assert.ok(log.indexOf("adopted-project-verify") < log.lastIndexOf(`build:${fixture.project}`));
+    assert.equal(existsSync(fixture.buildSentinel), true);
+  } finally {
+    if (existsSync(fixture.root)) rmSync(fixture.root, { recursive: true, force: true });
+  }
+});
+
+test("actual Make rejects an empty symlinked handoff root before any Docker action", () => {
+  const root = join(tmpdir(), `cabadrive-empty-handoff-root-${process.pid}-${Date.now()}`);
+  const external = join(root, "external");
+  const bin = join(root, "bin");
+  const scripts = join(root, "scripts");
+  const action = join(root, "docker-action");
+  mkdirSync(external, { recursive: true });
+  mkdirSync(bin, { recursive: true });
+  mkdirSync(scripts, { recursive: true });
+  writeFileSync(join(external, "sentinel"), "external bytes");
+  symlinkSync(external, join(root, ".cabadrive-release-handoff"));
+  writeFileSync(join(root, "Makefile"), readFileSync(join(repositoryRoot, "Makefile")));
+  writeFileSync(join(scripts, "capture-legacy-assets.sh"), readFileSync(captureScript));
+  chmodSync(join(scripts, "capture-legacy-assets.sh"), 0o755);
+  const docker = join(bin, "docker");
+  writeFileSync(docker, `#!/bin/sh\n: >"$CABADRIVE_ACTION_SENTINEL"\nexit 0\n`);
+  chmodSync(docker, 0o755);
+  try {
+    for (const explicit of [undefined, "caller-override"]) {
+      const env = {
+        ...process.env,
+        CABADRIVE_REPOSITORY_ROOT: root,
+        CABADRIVE_ACTION_SENTINEL: action,
+        PATH: `${bin}:${process.env.PATH}`,
+      };
+      if (explicit) env.COMPOSE_PROJECT_NAME = explicit;
+      else delete env.COMPOSE_PROJECT_NAME;
+      const result = runMake(root, "build", env);
+      assert.notEqual(result.status, 0, result.stdout + result.stderr);
+      assert.match(result.stderr, /legacy handoff root is not a repository-owned directory/i);
+      assert.equal(existsSync(action), false);
+      assert.equal(readFileSync(join(external, "sentinel"), "utf8"), "external bytes");
+    }
+  } finally {
+    if (existsSync(root)) rmSync(root, { recursive: true, force: true });
   }
 });
 
@@ -583,6 +650,12 @@ if [ "$1" = create ]; then printf '%s\\n' temporary-container; exit 0; fi
 if [ "$1" = cp ]; then mkdir -p "$3"; printf '%s' legacy-bytes >"$3/lazy-a.js"; exit 0; fi
 if [ "$1" = run ]; then
   case "$*" in
+    *adopted-project-write*)
+      printf '%s\n' "${project}" >"${root}/.cabadrive-release-handoff/.adopted-project"
+      ;;
+    *adopted-project-verify*)
+      cat "${root}/.cabadrive-release-handoff/.adopted-project"
+      ;;
     *legacy-publish-pointer*)
       release="$(find "${root}/.cabadrive-release-handoff/${project}/releases" -mindepth 1 -maxdepth 1 -type d | sed -n '1p')"
       ln -s "releases/$(basename "$release")" "${root}/.cabadrive-release-handoff/${project}/current"

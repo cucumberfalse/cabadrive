@@ -114,6 +114,37 @@ or Docker resource is planned.
      Architect validation and later final Analyst validation both name the same
      renewed effective content head; reply with that evidence before resolution.
 
+8. **Architect return #2: root containment and durable adoption**
+   - At the beginning of resolution, classify the handoff root with no-follow
+     semantics. If absent, continue without creating it; if present, require the
+     canonical repository-owned directory. Perform this before explicit-project
+     return, adopted-record lookup, or any Docker metadata/image query so every
+     later bind-mount consumer inherits a validated root.
+   - Replace shell-only adoption publication with the narrowest repository-owned
+     Docker-executed durability helper, reusing the existing staging durability
+     primitives where practical so host Node remains unnecessary. Require a
+     contained no-follow temporary regular file, checked write/close and exact
+     content, file fsync, atomic same-directory rename, then parent-directory
+     fsync before capture/build may proceed.
+   - On every existing adopted-record read, retain no-follow/content/name checks
+     and repeat file plus parent fsync before returning its project. This is the
+     recovery path for a crash or injected failure after visible rename but
+     before a durable parent barrier; any durability failure remains blocking.
+   - Add a symlinked-empty-root fixture with no adoption record. Assert resolver
+     and actual Make fail before Docker discovery/action and the external target
+     is untouched. Cover unset and explicit resolution if the shared entry
+     validation applies to both.
+   - Add deterministic operation tracing and faults for adoption file sync,
+     rename, and parent sync. Assert `file fsync < rename < parent fsync < Docker
+     build`; each failure suppresses build. For post-rename parent failure, keep
+     the visible exact record fail-closed and prove retry repeats durability
+     barriers before project use.
+   - Rerun all focused capture/runtime tests, feature/repository guards, full
+     preflight, and isolated real Docker retention lifecycle. Obtain renewed
+     exact-head review and resolve `r4134532193`/`r4134532208` with evidence.
+     Keep `r4134154325` open through final Architect and later Analyst validation,
+     then reply with both exact-head markers before resolving it.
+
 ## Key Decisions
 
 - **D052-001:** reuse the capture script's existing combined
@@ -136,6 +167,15 @@ or Docker resource is planned.
   failure—and only the verified-unlabeled outcome authorizes basename adoption.
 - **D052-009:** an unexpected nonempty runtime-marker value is ambiguous and
   fails closed; it is not silently equivalent to an absent marker.
+- **D052-010:** handoff-root containment is a prerequisite to project
+  resolution, including explicit resolution; the presence of an adopted record
+  is not what activates the safety boundary.
+- **D052-011:** adoption visibility and adoption durability are distinct.
+  Authority requires file fsync before same-directory rename and parent fsync
+  after rename; a later read repeats the barriers before returning authority.
+- **D052-012:** the durability operation runs through repository-owned tooling
+  in Docker so the end-user host remains Docker-only; no host Node/Python
+  dependency is introduced.
 
 ## Verification Matrix
 
@@ -147,6 +187,8 @@ or Docker resource is planned.
 | Explicit override | actual Make fixture | exact explicit project used; adoption absent/unchanged |
 | Adoption failure | failure injection + build sentinel | Make fails and image build never starts |
 | Runtime-label inspection | focused resolver + actual-Make failure fixture | ID success plus label-inspect failure aborts with no adoption/capture/build action |
+| Existing handoff root | no-follow resolver/actual-Make fixture | empty symlink/non-directory fails before Docker query, bind, adoption, or action; external target unchanged |
+| Adoption durability | ordered trace + injected file-sync/rename/parent-sync failures | exact file fsync precedes rename, parent fsync precedes build, failure blocks build, retry rebarriers visible exact record |
 | Existing safety | focused capture tests | ambiguity, unsafe state, Docker failures, and clean install retain fail-closed behavior |
 | Runtime integration | isolated real Docker lifecycle | project/image/volume/handoff/stager continuity remains green |
 | Repository quality | full preflight and guards | all commands pass on effective content head |
@@ -172,3 +214,9 @@ or Docker resource is planned.
 - A pipeline can report `grep`'s mismatch instead of Docker's inspect failure:
   capture inspect output/status before classification and test the split failure
   directly.
+- Checking the root only when `.adopted-project` exists lets an empty symlink
+  escape through later bind mounts: validate every existing root before any
+  project-resolution branch or Docker discovery.
+- Atomic rename can be visible but lost after a crash: fsync the completed file
+  before rename and the parent afterward; on a visible post-failure record,
+  repeat both barriers before use.

@@ -14,6 +14,7 @@ compose_project_name_explicit=0
 if [ -n "${COMPOSE_PROJECT_NAME:-}" ]; then
   compose_project_name_explicit=1
 fi
+adoption_fault="${CABADRIVE_ADOPTION_FAULT:-}"
 
 # Return 0 only for the exact post-feature marker, 1 only when a successful
 # Docker inspection proves the marker is absent, and 2 for all unsafe states.
@@ -73,19 +74,48 @@ validate_project_name() {
   esac
 }
 
-# Resolve-only lifecycle commands read persisted identity too. Validate the
-# repository-owned parent before that read, not only before a capture write.
-validate_handoff_parent_for_read() {
+# Every resolver branch may later trust or bind-mount this root. Validate every
+# existing entry before explicit/adopted/discovered selection or any Docker
+# query; only an absent root may be created later by capture.
+validate_existing_handoff_parent() {
   handoff_parent="$repo_root/.cabadrive-release-handoff"
+  if [ ! -e "$handoff_parent" ] && [ ! -L "$handoff_parent" ]; then
+    return 0
+  fi
   if [ -L "$handoff_parent" ] || [ ! -d "$handoff_parent" ]; then
     printf '%s\n' 'legacy handoff root is not a repository-owned directory' >&2
     return 1
   fi
-  handoff_parent_real="$(CDPATH= cd -- "$handoff_parent" && pwd -P)" || return 1
+  handoff_parent_real="$(CDPATH= cd -- "$handoff_parent" && pwd -P)" || {
+    printf '%s\n' 'legacy handoff root is not accessible' >&2
+    return 1
+  }
   if [ "$handoff_parent_real" != "$handoff_parent" ]; then
     printf '%s\n' 'legacy handoff root escapes the repository' >&2
     return 1
   fi
+  handoff_parent="$handoff_parent_real"
+}
+
+verify_adopted_project() {
+  docker run --rm \
+    --mount "type=bind,source=$handoff_parent,target=/handoff" \
+    --mount "type=bind,source=$script_dir/stage-static-release.mjs,target=/app/stage-static-release.mjs,readonly" \
+    node:22-alpine node /app/stage-static-release.mjs adopted-project-verify \
+      --handoff /handoff
+}
+
+publish_adopted_project() {
+  if [ -n "$adoption_fault" ]; then
+    set -- --fault "$adoption_fault"
+  else
+    set --
+  fi
+  docker run --rm \
+    --mount "type=bind,source=$handoff_parent,target=/handoff" \
+    --mount "type=bind,source=$script_dir/stage-static-release.mjs,target=/app/stage-static-release.mjs,readonly" \
+    node:22-alpine node /app/stage-static-release.mjs adopted-project-write \
+      --handoff /handoff --project "$project" "$@"
 }
 
 # An explicit project name always wins.  On the first upgrade however an older
@@ -94,6 +124,8 @@ validate_handoff_parent_for_read() {
 # ancestry label for this checkout (or the exact historical image name); a
 # service-name match by itself is deliberately not enough authority.
 resolve_project() {
+  validate_existing_handoff_parent || return 1
+
   if [ -n "${COMPOSE_PROJECT_NAME:-}" ]; then
     validate_project_name "$COMPOSE_PROJECT_NAME" || return 1
     printf '%s\n' "$COMPOSE_PROJECT_NAME"
@@ -101,12 +133,14 @@ resolve_project() {
   fi
 
   if [ -e "$adopted_project_file" ] || [ -L "$adopted_project_file" ]; then
-    validate_handoff_parent_for_read || return 1
     if [ -L "$adopted_project_file" ] || [ ! -f "$adopted_project_file" ]; then
       printf '%s\n' 'persisted Compose project identity is unsafe' >&2
       return 1
     fi
-    adopted_project="$(cat "$adopted_project_file" 2>/dev/null || true)"
+    if ! adopted_project="$(verify_adopted_project)"; then
+      printf '%s\n' 'persisted Compose project identity is not durably verified' >&2
+      return 1
+    fi
     validate_project_name "$adopted_project" || return 1
     printf '%s\n' "$adopted_project"
     return 0
@@ -215,12 +249,10 @@ if [ "$handoff_parent" != "$repo_root/.cabadrive-release-handoff" ]; then
   exit 1
 fi
 if [ "$compose_project_name_explicit" -eq 0 ] && [ "$project" != "cabadrive" ]; then
-  identity_temporary="$handoff_parent/.adopted-project.next-$$"
-  printf '%s\n' "$project" >"$identity_temporary" && mv -f "$identity_temporary" "$adopted_project_file" || {
-    rm -f "$identity_temporary"
+  if ! publish_adopted_project; then
     printf '%s\n' 'failed to persist adopted Compose project identity' >&2
     exit 1
-  }
+  fi
 fi
 handoff_base="$handoff_parent/$project"
 case "$handoff_base" in

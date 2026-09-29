@@ -37,6 +37,7 @@ const SCHEMA_VERSION = 1;
 const RELEASE_MARKER = ".release-state.json";
 const RETAINED_INVENTORY = "retained-assets.json";
 const LEGACY_HANDOFF_MARKER = ".legacy-handoff.json";
+const ADOPTED_PROJECT_RECORD = ".adopted-project";
 const LEGACY_SOURCE_KIND = "baked-legacy-root";
 const PUBLISH_PENDING = "publish-pending.json";
 const ASSET_PROMOTION_PENDING = "retained-assets-pending.json";
@@ -776,6 +777,91 @@ function syncDirectory(path, options) {
     invokeDurability(options, "close-directory", path);
   } finally {
     if (descriptor !== undefined) closeSync(descriptor);
+  }
+}
+
+function adoptedProjectRoot(handoffRoot) {
+  if (!handoffRoot) fail("adopted project handoff root is required");
+  const supplied = resolve(handoffRoot);
+  assertDirectory(supplied, "adopted project handoff root");
+  return realpathSync(supplied);
+}
+
+function adoptedProjectName(contents) {
+  if (typeof contents !== "string" || !/^[a-z0-9][a-z0-9_-]*\n$/.test(contents)) {
+    fail("adopted project record is invalid");
+  }
+  return contents.slice(0, -1);
+}
+
+function readAdoptedProjectRecord(root) {
+  const record = join(root, ADOPTED_PROJECT_RECORD);
+  const entry = noFollowEntry(record);
+  if (!entry || entry.isSymbolicLink() || !entry.isFile()) {
+    fail("adopted project record is not a no-follow regular file");
+  }
+  return { record, project: adoptedProjectName(readFileSync(record, "utf8")) };
+}
+
+// The capture shell delegates Compose-identity durability to this helper so its
+// Docker-only runtime never relies on host Node.js or shell rename semantics.
+// A visible record is re-synced before authority is returned: this safely
+// completes the post-rename parent barrier after an interrupted publication.
+export function verifyAdoptedProject({ handoffRoot, faultAt, onDurabilityOperation } = {}) {
+  const root = adoptedProjectRoot(handoffRoot);
+  const result = readAdoptedProjectRecord(root);
+  const options = { faultAt, onDurabilityOperation };
+  syncFile(result.record, options);
+  syncDirectory(root, options);
+  return result;
+}
+
+export function writeAdoptedProject({
+  handoffRoot,
+  project,
+  faultAt,
+  onDurabilityOperation,
+} = {}) {
+  if (typeof project !== "string" || !/^[a-z0-9][a-z0-9_-]*$/.test(project)) {
+    fail("adopted project name is invalid");
+  }
+  const root = adoptedProjectRoot(handoffRoot);
+  const record = join(root, ADOPTED_PROJECT_RECORD);
+  const existing = noFollowEntry(record);
+  if (existing) {
+    const verified = verifyAdoptedProject({ handoffRoot: root, faultAt, onDurabilityOperation });
+    if (verified.project !== project) fail("adopted project record conflicts with discovery");
+    return { ...verified, changed: false };
+  }
+
+  const temporary = join(root, `${ADOPTED_PROJECT_RECORD}.next-${process.pid}-${randomUUID()}`);
+  const contents = `${project}\n`;
+  const options = { faultAt, onDurabilityOperation };
+  let descriptor;
+  let renamed = false;
+  try {
+    descriptor = openSync(temporary, "wx", 0o600);
+    writeFileSync(descriptor, contents);
+    invokeDurability(options, "adopted-project-write", temporary);
+  } finally {
+    if (descriptor !== undefined) closeSync(descriptor);
+  }
+  try {
+    const entry = noFollowEntry(temporary);
+    if (!entry || entry.isSymbolicLink() || !entry.isFile() || readFileSync(temporary, "utf8") !== contents) {
+      fail("adopted project temporary record is invalid");
+    }
+    syncFile(temporary, options);
+    renameSync(temporary, record);
+    renamed = true;
+    invokeDurability(options, "rename", record);
+    syncDirectory(root, options);
+    return { record, project, changed: true };
+  } finally {
+    if (!renamed) {
+      const entry = noFollowEntry(temporary);
+      if (entry?.isFile() && !entry.isSymbolicLink()) unlinkSync(temporary);
+    }
   }
 }
 
@@ -2171,13 +2257,30 @@ if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.ur
                     release: values.release,
                     faultAt: values.fault,
                   })
+                : command === "adopted-project-write"
+                  ? writeAdoptedProject({
+                      handoffRoot: values.handoff,
+                      project: values.project,
+                      faultAt: values.fault,
+                    })
+                  : command === "adopted-project-verify"
+                    ? verifyAdoptedProject({
+                        handoffRoot: values.handoff,
+                        faultAt: values.fault,
+                      })
                 : command === "legacy-verify"
                   ? verifyLegacyHandoff(values.legacy)
                   : fail(`unknown command ${command}`);
   if (command === "verify" || command === "legacy-verify") {
     process.stdout.write(`${JSON.stringify(result)}\n`);
     if (!result.valid) process.exitCode = 1;
-  } else if (command === "legacy-write" || command === "legacy-publish-pointer") {
+  } else if (command === "adopted-project-verify") {
+    process.stdout.write(`${result.project}\n`);
+  } else if (
+    command === "legacy-write" ||
+    command === "legacy-publish-pointer" ||
+    command === "adopted-project-write"
+  ) {
     process.stdout.write(`${JSON.stringify(result)}\n`);
   } else {
     process.stdout.write(

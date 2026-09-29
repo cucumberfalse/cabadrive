@@ -84,6 +84,25 @@
   implementation/test evidence. Keep `r4134154325` open until final Architect
   validation and later final Analyst validation both name the same renewed
   effective content head; then reply with both role markers before resolution.
+- [x] T052-014e Implement R052-005 test-first: validate every existing
+  `.cabadrive-release-handoff` entry with no-follow canonical containment at
+  resolver entry, before explicit/adopted/discovered selection and before Docker
+  metadata access. Add a symlinked empty-root/no-adoption actual-Make regression
+  proving Docker/action sentinels and the external target remain untouched.
+- [x] T052-014f Implement R052-006 test-first through repository-owned
+  Docker-executed tooling: checked adoption write/close, exact validation, file
+  fsync, same-directory atomic rename, then handoff-parent fsync. Re-fsync a
+  validated visible adopted record and its parent before resolver use so a
+  post-rename failure remains blocked until an exact durability retry succeeds.
+- [x] T052-014g Add ordered trace/fault coverage for adoption file fsync,
+  rename, and parent fsync. Require `file fsync < rename < parent fsync < build`;
+  every injected failure leaves the build/action sentinel absent, and an exact
+  post-rename retry repeats both barriers before selecting the project.
+- [x] T052-014h Rerun complete focused capture/runtime tests, `git diff
+  --check`, feature/repository guards, full `pnpm run preflight`, and the
+  isolated real Docker retention lifecycle. Obtain renewed exact-head review;
+  resolve `r4134532193` and `r4134532208` only with passing evidence. Keep
+  `r4134154325` open until final Architect then Analyst validation evidence.
 - [ ] T052-015 Orchestrator routes any actionable finding role-appropriately;
   every Implementation Agent feedback item receives Architect disposition.
 - [x] T052-016 Resolve `r4121580555` with the passing Make-level regression and
@@ -128,6 +147,12 @@
 - R052-004 (`r4134154325`): expected process gate, not a product change;
   T052-014d and T052-018/T052-019 enforce Architect-before-Analyst evidence and
   resolution ordering.
+- R052-005 (`r4134532193`): accepted in Architect return #2; T052-014e adds the
+  root-at-resolver-entry containment gate and empty-symlink fail-before-discovery
+  regression.
+- R052-006 (`r4134532208`): accepted in Architect return #2; T052-014f through
+  T052-014h add durable adoption publication/recovery, ordered fault coverage,
+  and renewed verification/review.
 
 ## Verification Evidence
 
@@ -197,21 +222,46 @@
   asset-retention lifecycle passed for
   cabadrive-retention-70091-1790690943623`; its test-owned project cleanup
   completed.
+- R052-005 test-first FAIL: at `2026-09-29T18:45:14Z`, the empty-handoff-root
+  actual-Make regression was run against isolated archive
+  `36f744796a8040a0053b358b5d371a3189c8ff12`. The old resolver invoked the
+  Docker mock before rejecting the symlink, creating its action sentinel; the
+  new assertion failed exactly on that forbidden mutation.
+- R052-005/R052-006 focused PASS: `sh -n
+  scripts/capture-legacy-assets.sh` and `node --test
+  tests/capture-legacy-assets.test.mjs tests/static-release-staging.test.mjs`
+  passed 81/81. The actual-Make empty-root control covers unset and explicit
+  caller identities, proves no Docker action and no external mutation, and the
+  retry control blocks build on a visible post-rename parent-barrier failure
+  then succeeds only after helper verification. The direct helper trace proves
+  file fsync < rename < parent fsync and exercises file, rename, and parent
+  fault/retry paths.
+- R052-005/R052-006 guard PASS: `pnpm exec prettier --check
+  tests/capture-legacy-assets.test.mjs tests/static-release-staging.test.mjs`,
+  `git diff --check`, and `node scripts/check-feature-memory.mjs --worktree`
+  passed.
+- R052-005/R052-006 full preflight PASS: `pnpm run preflight` completed
+  successfully on the renewed implementation content.
+- R052-005/R052-006 isolated real Docker lifecycle PASS: `node
+  scripts/test-docker-asset-retention.mjs` completed successfully after the
+  focused suite and preflight; its generated project state was self-cleaned.
 
 ## Implementation Agent Feedback
 
 - No unresolved Implementation Agent feedback is recorded. R052-003 is an
-  accepted native-review finding assigned by Architect return #1.
+  accepted native-review finding completed after Architect return #1. R052-005
+  and R052-006 were completed as the narrow Architect return #2 implementation.
 
 ## Known Issues
 
-- No accepted product issue is open. `r4134154325` remains an expected blocking
-  final-validation gate and is not an accepted known issue for merge.
+- `r4134154325` remains the expected final-validation gate. R052-005 and
+  R052-006 await only their explicitly assigned review-thread disposition; they
+  are not accepted known issues for merge.
 
 ## Final Architect Validation
 
 - Architect validation pass: pending.
-- Architect return count: 1 / 10.
+- Architect return count: 2 / 10.
 - Architect validated effective content head: pending.
 
 ## Final Analyst Validation

@@ -26,6 +26,8 @@ import {
   verifyCandidateManifest,
   verifyLegacyHandoff,
   publishLegacyHandoffPointer,
+  verifyAdoptedProject,
+  writeAdoptedProject,
   writeLegacyHandoffManifest,
 } from "../scripts/stage-static-release.mjs";
 
@@ -1514,6 +1516,60 @@ test("journalled existing promoted assets rerun file and ancestor durability bar
         assetsIndex < stateIndex,
     );
     assert.ok(stateIndex < current);
+  });
+});
+
+test("adopted project publication is file-synced, renamed, parent-synced, and retryable", () => {
+  withFixture((root) => {
+    const handoff = join(root, "handoff");
+    mkdirSync(handoff, { recursive: true });
+    const record = join(handoff, ".adopted-project");
+    const durableHandoff = realpathSync(handoff);
+    const durableRecord = join(durableHandoff, ".adopted-project");
+    const trace = [];
+    writeAdoptedProject({
+      handoffRoot: handoff,
+      project: "historical-project",
+      onDurabilityOperation: ({ operation, path }) => trace.push(`${operation}:${path}`),
+    });
+    const fileSync = trace.findIndex(
+      (entry) => entry.startsWith("fsync-file:") && entry.includes(".adopted-project.next-"),
+    );
+    const renamed = trace.indexOf(`rename:${durableRecord}`);
+    const parentSync = trace.findIndex(
+      (entry, index) => index > renamed && entry === `fsync-directory:${durableHandoff}`,
+    );
+    assert.ok(fileSync >= 0 && fileSync < renamed && renamed < parentSync);
+    assert.equal(verifyAdoptedProject({ handoffRoot: handoff }).project, "historical-project");
+
+    for (const operation of ["fsync-file", "rename", "fsync-directory"]) {
+      if (existsSync(durableRecord)) unlinkSync(durableRecord);
+      assert.throws(
+        () =>
+          writeAdoptedProject({
+            handoffRoot: handoff,
+            project: "historical-project",
+            faultAt: `durability:${operation}`,
+          }),
+        /durability fault injection/i,
+      );
+      if (operation === "fsync-file") {
+        assert.equal(existsSync(record), false);
+        continue;
+      }
+      assert.equal(readFileSync(record, "utf8"), "historical-project\n");
+      const retryTrace = [];
+      assert.equal(
+        verifyAdoptedProject({
+          handoffRoot: handoff,
+          onDurabilityOperation: ({ operation: actual, path }) =>
+            retryTrace.push(`${actual}:${path}`),
+        }).project,
+        "historical-project",
+      );
+      assert.ok(retryTrace.includes(`fsync-file:${durableRecord}`));
+      assert.ok(retryTrace.includes(`fsync-directory:${durableHandoff}`));
+    }
   });
 });
 
