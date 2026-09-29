@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import {
   chmodSync,
   existsSync,
+  mkdtempSync,
   mkdirSync,
   readFileSync,
   readlinkSync,
@@ -619,6 +620,70 @@ exit 90
     assert.equal(result.stdout.trim(), "cabadrive");
   } finally {
     if (existsSync(root)) rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("unsafe checkout basenames skip optional image probes and default actual Make", () => {
+  for (const prefix of ["CABADRIVE-UPPER-", "cabadrive space-", "cabadrive.dot-"]) {
+    const root = mkdtempSync(join(tmpdir(), prefix));
+    const bin = join(root, "bin");
+    const scripts = join(root, "scripts");
+    const log = join(root, "docker.log");
+    const invalidProbe = join(root, "invalid-image-probe");
+    const build = join(root, "build-started");
+    mkdirSync(bin, { recursive: true });
+    mkdirSync(scripts, { recursive: true });
+    writeFileSync(join(root, "Makefile"), readFileSync(join(repositoryRoot, "Makefile")));
+    writeFileSync(join(scripts, "capture-legacy-assets.sh"), readFileSync(captureScript));
+    chmodSync(join(scripts, "capture-legacy-assets.sh"), 0o755);
+    const docker = join(bin, "docker");
+    writeFileSync(
+      docker,
+      `#!/bin/sh
+set -eu
+printf '%s\\n' "$*" >>"${log}"
+if [ "$1" = ps ]; then exit 0; fi
+if [ "$1" = volume ] && [ "$2" = inspect ]; then exit 1; fi
+if [ "$1" = image ] && [ "$2" = inspect ]; then
+  case "$*" in
+    *cabadrive-cabadrive*) printf '%s\\n' 'Error response from daemon: No such image' >&2; exit 1 ;;
+    *) : >"${invalidProbe}"; printf '%s\\n' 'unsafe historical image probe' >&2; exit 88 ;;
+  esac
+fi
+if [ "$1" = compose ]; then
+  case " $* " in
+    *" build "*) : >"${build}" ;;
+  esac
+  exit 0
+fi
+exit 90
+`,
+    );
+    chmodSync(docker, 0o755);
+    try {
+      const env = {
+        ...process.env,
+        CABADRIVE_REPOSITORY_ROOT: root,
+        PATH: `${bin}:${process.env.PATH}`,
+      };
+      delete env.COMPOSE_PROJECT_NAME;
+      const resolved = spawnSync("sh", [captureScript, "--resolve-project"], {
+        cwd: root,
+        encoding: "utf8",
+        env,
+      });
+      assert.equal(resolved.status, 0, `${prefix}: ${resolved.stderr}`);
+      assert.equal(resolved.stdout.trim(), "cabadrive");
+      assert.equal(existsSync(invalidProbe), false, `${prefix}: invalid image inspect`);
+
+      const made = runMake(root, "build", env);
+      assert.equal(made.status, 0, `${prefix}: ${made.stdout}${made.stderr}`);
+      assert.equal(existsSync(invalidProbe), false, `${prefix}: invalid image inspect`);
+      assert.equal(existsSync(build), true, `${prefix}: default project build did not run`);
+      assert.match(readFileSync(log, "utf8"), /compose.*build/);
+    } finally {
+      if (existsSync(root)) rmSync(root, { recursive: true, force: true });
+    }
   }
 });
 

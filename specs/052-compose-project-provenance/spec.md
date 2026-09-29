@@ -153,6 +153,14 @@ record and therefore select the same project.
   durability barrier before using it; visible bytes alone are not durability
   evidence. The helper must preserve the Docker-only host contract and the
   existing no-follow/repository-containment rules.
+- **FR-052-12 — invalid checkout basename is not a Docker probe:** the optional
+  pre-feature `${historical_basename}-cabadrive` image fallback may run only
+  when the raw checkout basename already satisfies the safe Compose project
+  grammar used by this feature. An uppercase, spaced, dotted, empty, or otherwise
+  invalid basename is not normalized or passed to Docker; container-label
+  discovery still runs, and zero authoritative candidates selects the documented
+  `cabadrive` clean-install default. Skipping an invalid optional basename is not
+  equivalent to suppressing Docker errors for a valid probe.
 
 ## Acceptance Criteria
 
@@ -194,6 +202,11 @@ record and therefore select the same project.
     all before image build. Fault injection at file sync, rename, and parent sync
     fails closed with no build; an exact retry after a post-rename sync failure
     reestablishes both durability barriers before returning the adopted project.
+14. From checkouts whose basenames contain uppercase letters, spaces, dots, or
+    other characters outside the safe project grammar, clean-install resolve
+    and actual Make lifecycle select `cabadrive` without issuing an invalid
+    historical-image inspection. A valid lowercase historical basename keeps
+    the existing exact discovery behavior.
 
 ## Required Negative Scenarios
 
@@ -212,6 +225,9 @@ record and therefore select the same project.
 - Adoption temporary-file close/fsync, atomic rename, or handoff-parent fsync
   failure prevents Docker build. A post-rename failure cannot make the merely
   visible record authoritative without a successful retry durability barrier.
+- Invalid raw checkout basename is skipped as an optional historical image
+  candidate; it must not produce an invalid-reference Docker failure or be
+  normalized into an unproven project identity.
 - Genuine clean install selects `cabadrive` and creates no adoption record.
 
 ## Verification Requirements
@@ -279,12 +295,28 @@ record and therefore select the same project.
   be mistaken for completed publication. Add ordered trace/fault/retry tests,
   then rerun focused, full-preflight, isolated-Docker, exact-head review and
   required-check gates.
+- **R052-007 / `r4137130912` — invalid checkout basename breaks clean install:
+  accepted (Architect final-validation return #3).** Gate the optional
+  historical-basename image probe on the existing safe Compose project grammar.
+  Do not normalize an invalid basename into a candidate: skip only that fallback,
+  retain exact container-label discovery, and use `cabadrive` when no valid
+  candidate exists. Add uppercase/space/dot actual-resolver/Make regressions
+  proving no invalid image-inspect call or lifecycle failure, while a valid
+  lowercase historical basename remains discoverable. Rerun focused, preflight,
+  Docker, exact-head review, and required checks.
+- **R052-008 / `r4137191315` — validate the actual effective content head: no
+  separate product task.** The formatting-only runtime commit still makes prior
+  role evidence stale under repository policy. After R052-007 lands, record the
+  new full effective content head and perform final Architect validation followed
+  by final Analyst validation on that same head before resolving this thread or
+  `r4134154325`.
 
 ## Final Validation Protocol
 
-- Feature-052 Architect return limit: 10. Current count: 2. Return #1 accepted
-  R052-003; return #2 accepts R052-005 and R052-006 as one narrow containment
-  and adoption-durability follow-up.
+- Feature-052 Architect return limit: 10. Current count: 3. Return #1 accepted
+  R052-003; return #2 accepted R052-005/R052-006; final-validation return #3
+  accepts R052-007. No Architect pass is recorded until its focused fix and all
+  renewed gates are complete.
 - Feature-052 Analyst return limit: 5. Initial count: 0.
 - The effective content head contains implementation, tests, documentation,
   dispositions, and all mutable task/evidence state.

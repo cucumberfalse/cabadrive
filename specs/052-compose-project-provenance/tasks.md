@@ -103,6 +103,21 @@
   isolated real Docker retention lifecycle. Obtain renewed exact-head review;
   resolve `r4134532193` and `r4134532208` only with passing evidence. Keep
   `r4134154325` open until final Architect then Analyst validation evidence.
+- [x] T052-014i Implement R052-007 test-first: gate the optional
+  `${historical_basename}-cabadrive` probe on the existing safe Compose project
+  grammar. Skip uppercase/space/dot/otherwise invalid raw basenames without
+  normalization; retain container-label discovery and the `cabadrive` zero-
+  candidate default.
+- [x] T052-014j Add resolver and actual-Make regressions from uppercase, spaced,
+  and dotted temporary checkout roots. Prove no invalid historical image-inspect
+  call occurs and clean install uses `cabadrive`; retain the valid lowercase
+  historical-image discovery/adoption control.
+- [x] T052-014k Rerun complete focused capture/runtime tests, `git diff
+  --check`, feature/repository guards, full `pnpm run preflight`, and isolated
+  real Docker retention lifecycle. Obtain renewed exact-head review and resolve
+  `r4137130912` with evidence. Keep validation-only `r4137191315` and
+  `r4134154325` open until final Architect then Analyst markers name the later
+  effective content head.
 - [ ] T052-015 Orchestrator routes any actionable finding role-appropriately;
   every Implementation Agent feedback item receives Architect disposition.
 - [x] T052-016 Resolve `r4121580555` with the passing Make-level regression and
@@ -153,6 +168,13 @@
 - R052-006 (`r4134532208`): accepted in Architect return #2; T052-014f through
   T052-014h add durable adoption publication/recovery, ordered fault coverage,
   and renewed verification/review.
+- R052-007 (`r4137130912`): accepted in Architect final-validation return #3;
+  T052-014i through T052-014k implement and verify the safe optional-basename
+  probe without inventing a normalized project identity.
+- R052-008 (`r4137191315`): validation-only; the attempted effective head
+  `a7c5f617dbd210a705aecc9fac78277609eb13de` is superseded by this accepted
+  gap. Resolve only after the new effective head receives Architect then Analyst
+  validation, together with `r4134154325`.
 
 ## Verification Evidence
 
@@ -249,23 +271,42 @@
   `76fbb26bd0c196f2c9111fa13830682e11f76289`. Any following task-only commit
   records verification and review-thread evidence and does not change runtime,
   tests, feature policy, or Architect planning.
+- R052-007 test-first FAIL: at `2026-09-29T19:09:47Z`, the unsafe-basename
+  resolver/actual-Make regression was run against isolated archive
+  `a7c5f617dbd210a705aecc9fac78277609eb13de`. The uppercase root attempted an
+  invalid historical image inspect and failed before the `cabadrive` fallback,
+  exactly reproducing the review finding.
+- R052-007 focused PASS: `sh -n scripts/capture-legacy-assets.sh` and `node
+  --test tests/capture-legacy-assets.test.mjs tests/static-release-staging.test.mjs`
+  passed 82/82. Uppercase, spaced, and dotted temporary roots prove resolver
+  plus actual Make skip the optional invalid probe, make no invalid image
+  inspect, and clean-install with `cabadrive`; the existing lowercase historical
+  adoption control remains green.
+- R052-007 guard PASS: `pnpm run format:check`, `git diff --check`, and `node
+  scripts/check-feature-memory.mjs --worktree` passed.
+- R052-007 full preflight PASS: `pnpm run preflight` completed successfully.
+- R052-007 isolated real Docker lifecycle PASS: `node
+  scripts/test-docker-asset-retention.mjs` completed successfully after the
+  focused suite and preflight; its generated project state was self-cleaned.
 
 ## Implementation Agent Feedback
 
 - No unresolved Implementation Agent feedback is recorded. R052-003 is an
   accepted native-review finding completed after Architect return #1. R052-005
   and R052-006 were completed as the narrow Architect return #2 implementation.
+  R052-007 was completed as the narrow Architect final-validation return #3
+  implementation.
 
 ## Known Issues
 
-- `r4134154325` remains the expected final-validation gate. R052-005 and
-  R052-006 await only their explicitly assigned review-thread disposition; they
-  are not accepted known issues for merge.
+- R052-007 awaits only its assigned review-thread disposition; it is not an
+  accepted known issue for merge. `r4134154325` and `r4137191315` remain
+  validation-only gates.
 
 ## Final Architect Validation
 
 - Architect validation pass: pending.
-- Architect return count: 2 / 10.
+- Architect return count: 3 / 10.
 - Architect validated effective content head: pending.
 
 ## Final Analyst Validation

@@ -58,20 +58,21 @@ inspect_runtime_image() {
   esac
 }
 
-validate_project_name() {
+is_safe_project_name() {
   case "$1" in
     [a-z0-9]*) ;;
-    *)
-      printf '%s\n' 'Compose project name must be one safe lowercase path component' >&2
-      return 1
-      ;;
+    *) return 1 ;;
   esac
   case "$1" in
-    *[!a-z0-9_-]*)
-      printf '%s\n' 'Compose project name must be one safe lowercase path component' >&2
-      return 1
-      ;;
+    *[!a-z0-9_-]*) return 1 ;;
   esac
+}
+
+validate_project_name() {
+  if ! is_safe_project_name "$1"; then
+    printf '%s\n' 'Compose project name must be one safe lowercase path component' >&2
+    return 1
+  fi
 }
 
 # Every resolver branch may later trust or bind-mount this root. Validate every
@@ -187,21 +188,23 @@ resolve_project() {
   # image exists.  A labelled runtime image may have been produced by this
   # checkout's new build and must not resurrect an obsolete project name.
   # Do not scan arbitrary similarly named images.
-  if historical_image="$(inspect_runtime_image "${historical_basename}-cabadrive")"; then
-    if classify_runtime_label "${historical_basename}-cabadrive"; then
-      :
-    else
-      runtime_label_status=$?
-      if [ "$runtime_label_status" -eq 1 ]; then
-        add_candidate "$historical_basename"
+  if is_safe_project_name "$historical_basename"; then
+    if historical_image="$(inspect_runtime_image "${historical_basename}-cabadrive")"; then
+      if classify_runtime_label "${historical_basename}-cabadrive"; then
+        :
       else
+        runtime_label_status=$?
+        if [ "$runtime_label_status" -eq 1 ]; then
+          add_candidate "$historical_basename"
+        else
+          return 1
+        fi
+      fi
+    else
+      historical_status=$?
+      if [ "$historical_status" -ne 1 ]; then
         return 1
       fi
-    fi
-  else
-    historical_status=$?
-    if [ "$historical_status" -ne 1 ]; then
-      return 1
     fi
   fi
 

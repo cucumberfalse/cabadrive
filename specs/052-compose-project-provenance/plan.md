@@ -145,6 +145,27 @@ or Docker resource is planned.
      Keep `r4134154325` open through final Architect and later Analyst validation,
      then reply with both exact-head markers before resolving it.
 
+9. **Final-validation return #3: safe optional basename probe**
+   - Before constructing `${historical_basename}-cabadrive`, classify the raw
+     basename with the existing safe Compose project grammar. Probe Docker only
+     when it is already valid; do not lowercase, sanitize, or otherwise map an
+     invalid path name to an unproven historical identity.
+   - Invalid basename skips only the optional legacy-image fallback. Exact
+     Compose container-label discovery remains authoritative; zero candidates
+     still yields the stable `cabadrive` clean-install default.
+   - Add temporary repository-root fixtures with uppercase, space, and dot
+     basenames. Make Docker fail/sentinel on any invalid historical image-inspect
+     call and prove resolver plus an actual Make lifecycle succeed with
+     `cabadrive`. Retain the valid lowercase historical-image adoption regression.
+   - Rerun the complete focused capture/runtime tests, guards, full preflight,
+     and isolated real Docker retention lifecycle. Obtain renewed exact-head
+     review and resolve `r4137130912` only with evidence.
+   - Treat `a7c5f617dbd210a705aecc9fac78277609eb13de` as the superseded attempted
+     validation head: its formatting-only runtime change is non-evidence under
+     policy, and R052-007 requires a later effective content head. Keep
+     `r4137191315` and `r4134154325` open until final Architect then Analyst
+     validation both name that later head.
+
 ## Key Decisions
 
 - **D052-001:** reuse the capture script's existing combined
@@ -176,6 +197,9 @@ or Docker resource is planned.
 - **D052-012:** the durability operation runs through repository-owned tooling
   in Docker so the end-user host remains Docker-only; no host Node/Python
   dependency is introduced.
+- **D052-013:** the historical basename image is optional evidence, not a value
+  to normalize. Invalid raw basenames are skipped; only already-safe exact names
+  may authorize the fallback probe.
 
 ## Verification Matrix
 
@@ -189,6 +213,7 @@ or Docker resource is planned.
 | Runtime-label inspection | focused resolver + actual-Make failure fixture | ID success plus label-inspect failure aborts with no adoption/capture/build action |
 | Existing handoff root | no-follow resolver/actual-Make fixture | empty symlink/non-directory fails before Docker query, bind, adoption, or action; external target unchanged |
 | Adoption durability | ordered trace + injected file-sync/rename/parent-sync failures | exact file fsync precedes rename, parent fsync precedes build, failure blocks build, retry rebarriers visible exact record |
+| Invalid checkout basename | uppercase/space/dot resolver + actual-Make fixtures | no invalid image probe; label discovery remains available; clean install selects `cabadrive` |
 | Existing safety | focused capture tests | ambiguity, unsafe state, Docker failures, and clean install retain fail-closed behavior |
 | Runtime integration | isolated real Docker lifecycle | project/image/volume/handoff/stager continuity remains green |
 | Repository quality | full preflight and guards | all commands pass on effective content head |
@@ -220,3 +245,6 @@ or Docker resource is planned.
 - Atomic rename can be visible but lost after a crash: fsync the completed file
   before rename and the parent afterward; on a visible post-failure record,
   repeat both barriers before use.
+- Passing an invalid checkout basename to Docker turns optional migration
+  discovery into a clean-install outage: validate before constructing the image
+  reference and skip rather than normalize invalid evidence.
