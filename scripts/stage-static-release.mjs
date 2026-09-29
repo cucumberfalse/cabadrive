@@ -816,12 +816,7 @@ export function verifyAdoptedProject({ handoffRoot, faultAt, onDurabilityOperati
   return result;
 }
 
-export function writeAdoptedProject({
-  handoffRoot,
-  project,
-  faultAt,
-  onDurabilityOperation,
-} = {}) {
+export function writeAdoptedProject({ handoffRoot, project, faultAt, onDurabilityOperation } = {}) {
   if (typeof project !== "string" || !/^[a-z0-9][a-z0-9_-]*$/.test(project)) {
     fail("adopted project name is invalid");
   }
@@ -848,7 +843,12 @@ export function writeAdoptedProject({
   }
   try {
     const entry = noFollowEntry(temporary);
-    if (!entry || entry.isSymbolicLink() || !entry.isFile() || readFileSync(temporary, "utf8") !== contents) {
+    if (
+      !entry ||
+      entry.isSymbolicLink() ||
+      !entry.isFile() ||
+      readFileSync(temporary, "utf8") !== contents
+    ) {
       fail("adopted project temporary record is invalid");
     }
     syncFile(temporary, options);
@@ -2268,9 +2268,9 @@ if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.ur
                         handoffRoot: values.handoff,
                         faultAt: values.fault,
                       })
-                : command === "legacy-verify"
-                  ? verifyLegacyHandoff(values.legacy)
-                  : fail(`unknown command ${command}`);
+                    : command === "legacy-verify"
+                      ? verifyLegacyHandoff(values.legacy)
+                      : fail(`unknown command ${command}`);
   if (command === "verify" || command === "legacy-verify") {
     process.stdout.write(`${JSON.stringify(result)}\n`);
     if (!result.valid) process.exitCode = 1;
