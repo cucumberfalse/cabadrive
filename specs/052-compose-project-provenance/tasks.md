@@ -80,7 +80,7 @@
 - [x] T052-014c Rerun the complete focused capture/runtime tests, `git diff
   --check`, feature/repository guards, full `pnpm run preflight`, and the
   isolated real Docker asset-retention lifecycle on the renewed content head.
-- [ ] T052-014d Obtain renewed exact-head review and resolve `r4134154337` with
+- [x] T052-014d Obtained renewed exact-head review and resolved `r4134154337` with
   implementation/test evidence. Keep `r4134154325` open until final Architect
   validation and later final Analyst validation both name the same renewed
   effective content head; then reply with both role markers before resolution.
@@ -160,10 +160,11 @@
   capture/Make test, feature-052 memory, and the Architect-provided
   feature-051 reconciliation. No runtime handoff artifact, dependency,
   sibling-memory, or durable-document change is present.
-- Exact implementation content head:
-  `7b9b7b4094ca022021bfbf3f203f4620192d5d03`; the later task-only
-  review-disposition commit is evidence-only and does not alter runtime or
-  test behavior.
+- Prior implementation content head:
+  `7b9b7b4094ca022021bfbf3f203f4620192d5d03`; superseded by Architect return
+  #1. Renewed implementation content head:
+  `f187bd7ff72bc8e70953a0fad0672de14eebe055`; later task-only evidence commits
+  do not alter runtime or test behavior.
 - Required current-head checks: pending.
 - Complete paginated review/thread guard: pending.
 - Originating-thread disposition: on commit
@@ -171,6 +172,11 @@
   `r4121580555` (actual-Make provenance regression and full verification) and
   `r4121580548` (Architect-owned feature-051 reconciliation). Renewed
   feature-052 review/final-validation guards remain Orchestrator-owned work.
+- R052-003 review disposition: on renewed implementation head
+  `f187bd7ff72bc8e70953a0fad0672de14eebe055`, replied to and resolved only
+  `r4134154337` with the status-separated classifier and actual-Make proof.
+  `r4134154325` remains unresolved by design pending final Architect then
+  Analyst evidence on this renewed content head.
 - R052-003 test-first FAIL: the new actual `make build` fixture made image-ID
   inspection succeed and runtime-label inspection exit 42. Before the fix,
   capture proceeded (`captured legacy assets from legacy-image-id`) and build
@@ -199,8 +205,8 @@
 
 ## Known Issues
 
-- R052-003 is an accepted blocking review finding pending implementation and
-  renewed verification. It is not an accepted known issue for merge.
+- No accepted product issue is open. `r4134154325` remains an expected blocking
+  final-validation gate and is not an accepted known issue for merge.
 
 ## Final Architect Validation
 
