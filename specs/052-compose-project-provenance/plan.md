@@ -94,6 +94,26 @@ or Docker resource is planned.
      paginated guard proves all unchanged merge gates. Never bypass a red,
      pending, missing, conflicting, stale, or unresolved gate.
 
+7. **Architect return #1: status-preserving runtime-label probe**
+   - Replace the `docker image inspect | grep` classification used for the
+     historical-basename runtime marker with an explicit command-status capture.
+     Preserve stderr/status long enough to distinguish exact `true`, verified
+     absence, and inspection failure; reject unexpected nonempty marker values
+     rather than treating them as legacy.
+   - Keep the existing successful image-ID probe as a separate prerequisite.
+     Only a confirmed existing image whose label inspection succeeds and proves
+     the marker absent may add the historical basename candidate.
+   - Add a focused fail-closed regression where ID inspection succeeds but label
+     inspection exits nonzero. Assert resolver/actual Make fails, no
+     `.adopted-project` is written, and no capture/build/lifecycle sentinel runs.
+   - Retain the existing verified-unlabeled and exact-`true` regressions, then
+     rerun the complete focused capture suite, repository preflight, and isolated
+     real Docker retention lifecycle.
+   - Obtain renewed exact-head review and resolve `r4134154337` only with passing
+     fix evidence. Keep final-validation thread `r4134154325` open until final
+     Architect validation and later final Analyst validation both name the same
+     renewed effective content head; reply with that evidence before resolution.
+
 ## Key Decisions
 
 - **D052-001:** reuse the capture script's existing combined
@@ -111,6 +131,11 @@ or Docker resource is planned.
   alone cannot protect this shell/environment boundary.
 - **D052-007:** feature-051's old validation markers remain historical truth,
   not authority for the post-feature-052 head.
+- **D052-008:** Docker command status is part of provenance evidence. The label
+  probe exposes three outcomes—post-feature, verified pre-feature/unlabeled, and
+  failure—and only the verified-unlabeled outcome authorizes basename adoption.
+- **D052-009:** an unexpected nonempty runtime-marker value is ambiguous and
+  fails closed; it is not silently equivalent to an absent marker.
 
 ## Verification Matrix
 
@@ -121,6 +146,7 @@ or Docker resource is planned.
 | Regression strength | red-before-green record + no-adoption control | intake head fails; absent record after evidence loss resolves `cabadrive` |
 | Explicit override | actual Make fixture | exact explicit project used; adoption absent/unchanged |
 | Adoption failure | failure injection + build sentinel | Make fails and image build never starts |
+| Runtime-label inspection | focused resolver + actual-Make failure fixture | ID success plus label-inspect failure aborts with no adoption/capture/build action |
 | Existing safety | focused capture tests | ambiguity, unsafe state, Docker failures, and clean install retain fail-closed behavior |
 | Runtime integration | isolated real Docker lifecycle | project/image/volume/handoff/stager continuity remains green |
 | Repository quality | full preflight and guards | all commands pass on effective content head |
@@ -143,3 +169,6 @@ or Docker resource is planned.
   passes apply only to `953709f...` and require renewed feature-052 validation.
 - PR review pagination may hide an unresolved thread: enumerate all pages before
   merge; helper refusal alone is not a bypass authorization.
+- A pipeline can report `grep`'s mismatch instead of Docker's inspect failure:
+  capture inspect output/status before classification and test the split failure
+  directly.

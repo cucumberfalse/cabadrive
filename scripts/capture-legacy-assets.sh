@@ -15,10 +15,28 @@ if [ -n "${COMPOSE_PROJECT_NAME:-}" ]; then
   compose_project_name_explicit=1
 fi
 
-is_post_feature_runtime_image() {
-  docker image inspect \
-    --format '{{ index .Config.Labels "com.cabadrive.release-state-runtime" }}' \
-    "$1" 2>/dev/null | grep -qx 'true'
+# Return 0 only for the exact post-feature marker, 1 only when a successful
+# Docker inspection proves the marker is absent, and 2 for all unsafe states.
+# Do not pipe this probe through grep: a failed image inspect must not look like
+# an unlabeled legacy image merely because grep received no input.
+classify_runtime_label() {
+  if runtime_label="$(
+    docker image inspect \
+      --format '{{ index .Config.Labels "com.cabadrive.release-state-runtime" }}' \
+      "$1" 2>&1
+  )"; then
+    case "$runtime_label" in
+      true) return 0 ;;
+      '') return 1 ;;
+      *)
+        printf '%s\n' "unexpected project runtime label: $runtime_label" >&2
+        return 2
+        ;;
+    esac
+  fi
+  printf '%s\n' "$runtime_label" >&2
+  printf '%s\n' 'failed to inspect project runtime label' >&2
+  return 2
 }
 
 # Return 0 with the image ID, 1 only for Docker's explicit not-found result,
@@ -136,8 +154,15 @@ resolve_project() {
   # checkout's new build and must not resurrect an obsolete project name.
   # Do not scan arbitrary similarly named images.
   if historical_image="$(inspect_runtime_image "${historical_basename}-cabadrive")"; then
-    if ! is_post_feature_runtime_image "${historical_basename}-cabadrive"; then
-      add_candidate "$historical_basename"
+    if classify_runtime_label "${historical_basename}-cabadrive"; then
+      :
+    else
+      runtime_label_status=$?
+      if [ "$runtime_label_status" -eq 1 ]; then
+        add_candidate "$historical_basename"
+      else
+        return 1
+      fi
     fi
   else
     historical_status=$?
@@ -358,15 +383,18 @@ else
   fi
 fi
 if [ -n "$image" ]; then
-  if is_post_feature_runtime_image "${project}-cabadrive"; then
+  if classify_runtime_label "${project}-cabadrive"; then
     if [ -n "$invalid_state" ]; then
       printf '%s\n' 'incomplete project release-state has no readable legacy source' >&2
       exit 1
     fi
     printf '%s\n' 'initial-install: current runtime image has no pre-feature legacy assets'
     exit 0
+  else
+    runtime_label_status=$?
+    if [ "$runtime_label_status" -ne 1 ]; then exit 1; fi
+    source="$image"
   fi
-  source="$image"
 fi
 
 # A handoff is authoritative only when its independently generated canonical

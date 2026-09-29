@@ -62,10 +62,28 @@
 
 ## Review And Final Validation
 
-- [ ] T052-014 Review Agent inspects the exact implementation head for
+- [x] T052-014 Review Agent inspected exact head
+  `f679ee25ab3cbcc5f966a8ab49d70d992e748757` for
   R052-001/R052-002, actual-boundary regression strength, failure ordering,
-  explicit/default behavior, scope, and role/process compliance. No broad
-  exploratory reopening of resolved feature-051 findings.
+  explicit/default behavior, scope, and role/process compliance. It opened
+  R052-003 (`r4134154337`) for the status-collapsing runtime-label pipeline and
+  R052-004 (`r4134154325`) for expected final role-validation evidence.
+- [x] T052-014a Implement R052-003 test-first: replace the runtime-label
+  `docker image inspect | grep` classifier with a status-preserving probe that
+  distinguishes exact post-feature `true`, successfully verified absence, and
+  inspect failure/unexpected state. Only verified absence may add the historical
+  basename; failure must precede adoption, capture, and lifecycle mutation.
+- [x] T052-014b Add a focused regression where image-ID inspection succeeds but
+  runtime-label inspection fails. Prove resolver/actual Make returns nonzero,
+  `.adopted-project` remains absent, and capture/build/lifecycle sentinels remain
+  untouched. Preserve exact-`true`, unlabeled, clean, and explicit cases.
+- [x] T052-014c Rerun the complete focused capture/runtime tests, `git diff
+  --check`, feature/repository guards, full `pnpm run preflight`, and the
+  isolated real Docker asset-retention lifecycle on the renewed content head.
+- [ ] T052-014d Obtain renewed exact-head review and resolve `r4134154337` with
+  implementation/test evidence. Keep `r4134154325` open until final Architect
+  validation and later final Analyst validation both name the same renewed
+  effective content head; then reply with both role markers before resolution.
 - [ ] T052-015 Orchestrator routes any actionable finding role-appropriately;
   every Implementation Agent feedback item receives Architect disposition.
 - [x] T052-016 Resolve `r4121580555` with the passing Make-level regression and
@@ -105,6 +123,11 @@
 - R052-001 (`r4121580555`): accepted; T052-003 through T052-007.
 - R052-002 (`r4121580548`): accepted; Architect-owned feature-051 plan/task
   status corrected during planning without altering Analyst-owned evidence.
+- R052-003 (`r4134154337`): accepted in Architect return #1; T052-014a through
+  T052-014c implement and verify the fail-closed status-preserving label probe.
+- R052-004 (`r4134154325`): expected process gate, not a product change;
+  T052-014d and T052-018/T052-019 enforce Architect-before-Analyst evidence and
+  resolution ordering.
 
 ## Verification Evidence
 
@@ -148,19 +171,41 @@
   `r4121580555` (actual-Make provenance regression and full verification) and
   `r4121580548` (Architect-owned feature-051 reconciliation). Renewed
   feature-052 review/final-validation guards remain Orchestrator-owned work.
+- R052-003 test-first FAIL: the new actual `make build` fixture made image-ID
+  inspection succeed and runtime-label inspection exit 42. Before the fix,
+  capture proceeded (`captured legacy assets from legacy-image-id`) and build
+  returned success, proving the old `inspect | grep` classifier collapsed the
+  Docker failure into an unlabeled image.
+- R052-003 focused PASS: `sh -n scripts/capture-legacy-assets.sh`, the two
+  actual-Make label controls, and `node --test
+  tests/capture-legacy-assets.test.mjs` pass 29/29. ID-success/label-failure
+  and unexpected-marker controls leave adoption and build sentinels absent and
+  invoke no Compose action; existing exact-`true`, verified-unlabeled, explicit,
+  and clean controls remain green.
+- R052-003 full preflight PASS: a renewed `pnpm run preflight` completed after
+  the probe fix, including feature-memory/worktree and repository guards,
+  content validation, quality, all Node tests, production build/service-worker,
+  and Playwright E2E.
+- R052-003 isolated real Docker lifecycle PASS: `node
+  scripts/test-docker-asset-retention.mjs` exited 0 and reported `Docker
+  asset-retention lifecycle passed for
+  cabadrive-retention-70091-1790690943623`; its test-owned project cleanup
+  completed.
 
 ## Implementation Agent Feedback
 
-- Pending implementation handoff.
+- No unresolved Implementation Agent feedback is recorded. R052-003 is an
+  accepted native-review finding assigned by Architect return #1.
 
 ## Known Issues
 
-- None accepted. Implementation and verification are pending.
+- R052-003 is an accepted blocking review finding pending implementation and
+  renewed verification. It is not an accepted known issue for merge.
 
 ## Final Architect Validation
 
 - Architect validation pass: pending.
-- Architect return count: 0 / 10.
+- Architect return count: 1 / 10.
 - Architect validated effective content head: pending.
 
 ## Final Analyst Validation

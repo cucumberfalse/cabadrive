@@ -128,6 +128,14 @@ record and therefore select the same project.
   prior Architect and Analyst passes on effective head
   `953709f0f12e3ac839c65c074908aef674b74bbd`; feature 052 then records renewed
   validation for the new effective content head after this non-evidence fix.
+- **FR-052-9 — status-preserving runtime-label probe:** historical-basename
+  discovery must distinguish an exact post-feature runtime label, a successful
+  inspection proving the label absent, and a failed/unreadable image inspection.
+  A pipeline or boolean helper must not collapse Docker failure into label
+  absence. Exact `true` excludes the basename candidate; a verified absent label
+  permits the existing pre-feature path; command failure or unexpected label
+  state fails closed before candidate selection, adoption, capture, or lifecycle
+  mutation.
 
 ## Acceptance Criteria
 
@@ -157,6 +165,9 @@ record and therefore select the same project.
 10. Final Architect validation precedes final Analyst validation and both name
     the same renewed effective content head; all required current-head checks
     are green before merge.
+11. When image-ID inspection succeeds but the separate runtime-label inspection
+    fails, resolver/capture returns nonzero, creates no adoption record, and an
+    actual Make build/lifecycle sentinel proves no Compose mutation begins.
 
 ## Required Negative Scenarios
 
@@ -168,6 +179,8 @@ record and therefore select the same project.
 - Multiple valid historical candidates fail without selection or persistence.
 - Unsafe/malformed adopted state fails without Docker lifecycle mutation.
 - Docker discovery or inspection failure fails rather than selecting a default.
+- Historical image-ID success followed by runtime-label inspection failure
+  fails rather than classifying the image as an unlabeled legacy candidate.
 - Genuine clean install selects `cabadrive` and creates no adoption record.
 
 ## Verification Requirements
@@ -203,10 +216,27 @@ record and therefore select the same project.
   `953709f0f12e3ac839c65c074908aef674b74bbd`. Do not alter Analyst-owned
   evidence. State explicitly that feature-052's non-evidence change makes those
   old passes insufficient for finalization and requires renewed validation.
+- **R052-003 / `r4134154337` — runtime-label pipeline masks Docker inspect
+  failure: accepted (Architect return #1).** Replace the pipeline/boolean
+  classification with an explicit status-preserving probe. Accept a historical
+  basename only after both image existence and successful inspection prove the
+  post-feature marker absent. An exact `true` excludes it; inspection failure or
+  unexpected nonempty marker state aborts without selection, persistence, or
+  lifecycle mutation. Add a focused regression where ID inspection succeeds,
+  label inspection fails, and build/adoption sentinels remain absent; rerun the
+  focused suite, full preflight, isolated Docker lifecycle, exact-head review,
+  and required checks.
+- **R052-004 / `r4134154325` — final role-validation evidence pending: no
+  product task.** Keep the thread open until R052-003 is implemented and
+  reviewed, then complete final Architect validation followed by final Analyst
+  validation on the same renewed effective content head. Reply with both role
+  markers before resolving it; it must not be closed based on pre-return
+  validation evidence.
 
 ## Final Validation Protocol
 
-- Feature-052 Architect return limit: 10. Initial count: 0.
+- Feature-052 Architect return limit: 10. Current count: 1. Return #1 accepts
+  R052-003 and assigns the narrow status-separated label-probe fix.
 - Feature-052 Analyst return limit: 5. Initial count: 0.
 - The effective content head contains implementation, tests, documentation,
   dispositions, and all mutable task/evidence state.

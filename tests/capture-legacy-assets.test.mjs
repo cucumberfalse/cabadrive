@@ -21,7 +21,7 @@ const captureScript = fileURLToPath(
 );
 const repositoryRoot = fileURLToPath(new URL("..", import.meta.url));
 
-function createMakeProvenanceFixture({ imageMode = "legacy" } = {}) {
+function createMakeProvenanceFixture({ imageMode = "legacy", labelMode = "normal" } = {}) {
   const root = join(
     tmpdir(),
     `cabadrive-make-provenance-${process.pid}-${Date.now()}-${Math.random().toString(16).slice(2)}`,
@@ -49,6 +49,14 @@ if [ "$1" = volume ] && [ "$2" = inspect ]; then exit 1; fi
 if [ "$1" = image ] && [ "$2" = inspect ]; then
   case "$*" in
     *com.cabadrive.release-state-runtime*)
+      if [ "$CABADRIVE_LABEL_MODE" = failure ]; then
+        printf '%s\\n' 'runtime label inspect unavailable' >&2
+        exit 42
+      fi
+      if [ "$CABADRIVE_LABEL_MODE" = unexpected ]; then
+        printf '%s\\n' unexpected-marker
+        exit 0
+      fi
       [ "$(cat "$CABADRIVE_IMAGE_PHASE")" = labeled ] && printf '%s\\n' true
       exit 0
       ;;
@@ -100,6 +108,7 @@ exit 90
     CABADRIVE_REPOSITORY_ROOT: root,
     CABADRIVE_FIXTURE_PROJECT: project,
     CABADRIVE_IMAGE_MODE: imageMode,
+    CABADRIVE_LABEL_MODE: labelMode,
     CABADRIVE_IMAGE_PHASE: phase,
     CABADRIVE_DOCKER_LOG: log,
     CABADRIVE_BUILD_SENTINEL: buildSentinel,
@@ -165,6 +174,40 @@ test("actual make build keeps a clean install on the default project without ado
       false,
     );
     assert.match(readFileSync(fixture.log, "utf8"), /build:cabadrive/);
+  } finally {
+    if (existsSync(fixture.root)) rmSync(fixture.root, { recursive: true, force: true });
+  }
+});
+
+test("actual make build fails closed when the historical runtime label cannot be inspected", () => {
+  const fixture = createMakeProvenanceFixture({ labelMode: "failure" });
+  try {
+    const result = runMake(fixture.root, "build", fixture.env);
+    assert.notEqual(result.status, 0, result.stdout + result.stderr);
+    assert.match(result.stderr, /failed to inspect project runtime label/i);
+    assert.equal(
+      existsSync(join(fixture.root, ".cabadrive-release-handoff/.adopted-project")),
+      false,
+    );
+    assert.equal(existsSync(fixture.buildSentinel), false);
+    assert.doesNotMatch(readFileSync(fixture.log, "utf8"), /\|compose\b/);
+  } finally {
+    if (existsSync(fixture.root)) rmSync(fixture.root, { recursive: true, force: true });
+  }
+});
+
+test("actual make build fails closed on an unexpected historical runtime label", () => {
+  const fixture = createMakeProvenanceFixture({ labelMode: "unexpected" });
+  try {
+    const result = runMake(fixture.root, "build", fixture.env);
+    assert.notEqual(result.status, 0, result.stdout + result.stderr);
+    assert.match(result.stderr, /unexpected project runtime label/i);
+    assert.equal(
+      existsSync(join(fixture.root, ".cabadrive-release-handoff/.adopted-project")),
+      false,
+    );
+    assert.equal(existsSync(fixture.buildSentinel), false);
+    assert.doesNotMatch(readFileSync(fixture.log, "utf8"), /\|compose\b/);
   } finally {
     if (existsSync(fixture.root)) rmSync(fixture.root, { recursive: true, force: true });
   }
@@ -295,7 +338,11 @@ set -eu
 if [ "$1" = compose ]; then exit 0; fi
 if [ "$1" = ps ]; then exit 0; fi
 if [ "$1" = volume ] && [ "$2" = inspect ]; then exit 1; fi
-if [ "$1" = image ] && [ "$2" = inspect ]; then printf '%s\\n' legacy-image-id; exit 0; fi
+if [ "$1" = image ] && [ "$2" = inspect ]; then
+  case "$*" in *com.cabadrive.release-state-runtime*) exit 0 ;; esac
+  printf '%s\\n' legacy-image-id
+  exit 0
+fi
 if [ "$1" = run ]; then
   case "$*" in
     *legacy-publish-pointer*)
@@ -876,7 +923,11 @@ test("capture replaces a valid handoff when its outgoing legacy image changed", 
 set -eu
 if [ "$1" = compose ]; then exit 0; fi
 if [ "$1" = volume ] && [ "$2" = inspect ]; then exit 1; fi
-if [ "$1" = image ] && [ "$2" = inspect ]; then printf '%s\\n' new-image; exit 0; fi
+if [ "$1" = image ] && [ "$2" = inspect ]; then
+  case "$*" in *com.cabadrive.release-state-runtime*) exit 0 ;; esac
+  printf '%s\\n' new-image
+  exit 0
+fi
 if [ "$1" = create ]; then printf '%s\\n' replacement-container; exit 0; fi
 if [ "$1" = cp ]; then mkdir -p "$3"; printf '%s' replacement-bytes >"$3/new-a.js"; exit 0; fi
 if [ "$1" = run ]; then
@@ -1050,6 +1101,7 @@ if [ "$1" = ps ]; then exit 0; fi
 if [ "$1" = volume ] && [ "$2" = inspect ]; then exit 1; fi
 if [ "$1" = image ] && [ "$2" = inspect ]; then
   case "$*" in
+    *com.cabadrive.release-state-runtime*) exit 0 ;;
     *cabadrive-cabadrive*) printf '%s\\n' default-image; exit 0 ;;
     *) printf '%s\\n' 'Error response from daemon: No such image' >&2; exit 1 ;;
   esac
@@ -1107,7 +1159,11 @@ test("every legacy-handoff publication failure leaves no authoritative current p
 set -eu
 if [ "$1" = compose ]; then exit 0; fi
 if [ "$1" = volume ] && [ "$2" = inspect ]; then exit 1; fi
-if [ "$1" = image ] && [ "$2" = inspect ]; then printf '%s\\n' legacy-image-id; exit 0; fi
+if [ "$1" = image ] && [ "$2" = inspect ]; then
+  case "$*" in *com.cabadrive.release-state-runtime*) exit 0 ;; esac
+  printf '%s\\n' legacy-image-id
+  exit 0
+fi
 if [ "$1" = create ]; then printf '%s\\n' temporary-container; exit 0; fi
 if [ "$1" = cp ]; then
   [ "$CABADRIVE_CAPTURE_FAULT" = legacy-copy ] && exit 1
@@ -1168,7 +1224,11 @@ test("capture retains a release still referenced after pointer barrier and rollb
 set -eu
 if [ "$1" = compose ]; then exit 0; fi
 if [ "$1" = volume ] && [ "$2" = inspect ]; then exit 1; fi
-if [ "$1" = image ] && [ "$2" = inspect ]; then printf '%s\\n' legacy-image-id; exit 0; fi
+if [ "$1" = image ] && [ "$2" = inspect ]; then
+  case "$*" in *com.cabadrive.release-state-runtime*) exit 0 ;; esac
+  printf '%s\\n' legacy-image-id
+  exit 0
+fi
 if [ "$1" = create ]; then printf '%s\\n' temporary-container; exit 0; fi
 if [ "$1" = cp ]; then mkdir -p "$3"; printf '%s' legacy-bytes >"$3/lazy-a.js"; exit 0; fi
 if [ "$1" = run ]; then
