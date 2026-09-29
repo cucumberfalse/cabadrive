@@ -68,7 +68,7 @@
   exploratory reopening of resolved feature-051 findings.
 - [ ] T052-015 Orchestrator routes any actionable finding role-appropriately;
   every Implementation Agent feedback item receives Architect disposition.
-- [ ] T052-016 Resolve `r4121580555` with the passing Make-level regression and
+- [x] T052-016 Resolve `r4121580555` with the passing Make-level regression and
   `r4121580548` with coherent role-owned process memory.
 - [ ] T052-017 Orchestrator records the exact cycle PR set/head, acceptance
   evidence, green required checks, conflict state, cleanup applicability, and a
@@ -140,6 +140,11 @@
 - Exact implementation content head: pending.
 - Required current-head checks: pending.
 - Complete paginated review/thread guard: pending.
+- Originating-thread disposition: on commit
+  `7b9b7b4094ca022021bfbf3f203f4620192d5d03`, replied to and resolved only
+  `r4121580555` (actual-Make provenance regression and full verification) and
+  `r4121580548` (Architect-owned feature-051 reconciliation). Renewed
+  feature-052 review/final-validation guards remain Orchestrator-owned work.
 
 ## Implementation Agent Feedback
 
