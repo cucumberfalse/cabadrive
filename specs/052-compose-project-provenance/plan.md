@@ -197,6 +197,22 @@ or Docker resource is planned.
      `r4134154325`/`r4137191315` open through final Architect then Analyst
      validation on the final effective content head.
 
+11. **Architect return #5: literal config-file tokenization**
+   - Replace unquoted `for ... in $config_files` iteration with a literal
+     comma-slicing loop using quoted assignments and parameter expansion. Do not
+     let any token undergo pathname expansion; avoid global shell-option changes.
+   - Preserve exact token equality, empty/malformed-token behavior, the positive
+     multi-file list, and independent exact `working_dir` authority.
+   - Add negative fixtures whose label tokens contain `?`, `*`, and bracket
+     expressions and whose repository filesystem makes those patterns match the
+     canonical compose file. Assert none authorizes a candidate or adoption.
+   - Run the focused capture/runtime suite, shell syntax, format/diff/feature/
+     repository guards, full preflight, and isolated real Docker lifecycle once.
+     Obtain one renewed exact-head review, resolve `r4144203150` with evidence,
+     and keep validation-only `r4134154325`/`r4137191315` open for final
+     Architect then Analyst validation. Do not reopen the other return #4 fixes
+     absent new concrete evidence.
+
 ## Key Decisions
 
 - **D052-001:** reuse the capture script's existing combined
@@ -239,6 +255,9 @@ or Docker resource is planned.
 - **D052-016:** root safety and project-child safety are separate invariants.
   Every selected identity passes the child invariant before it leaves resolver
   authority or triggers adoption.
+- **D052-017:** config label parsing is literal data parsing, not shell word
+  generation. Quoted comma slicing is preferred over toggling process-wide
+  noglob state.
 
 ## Verification Matrix
 
@@ -256,6 +275,7 @@ or Docker resource is planned.
 | Compose config ancestry | exact-list positive + near-match negative table | only a complete canonical list token grants ownership; working-dir exact match remains valid |
 | Concurrent adoption | adversarial same/different writer tests + durability trace | first durable claim is never replaced; same converges, different fails; build waits for authority |
 | Selected project child | explicit/adopted/default/discovered actual-Make symlink fixtures | child is validated before return/adoption/bind; action absent and external target unchanged |
+| Literal config tokens | expandable `?`/`*`/bracket negatives + exact-list positive | wildcard text never expands; only literal canonical token grants ancestry |
 | Existing safety | focused capture tests | ambiguity, unsafe state, Docker failures, and clean install retain fail-closed behavior |
 | Runtime integration | isolated real Docker lifecycle | project/image/volume/handoff/stager continuity remains green |
 | Repository quality | full preflight and guards | all commands pass on effective content head |
@@ -296,3 +316,5 @@ or Docker resource is planned.
   writer publishes: use a no-replace claim and exact winner reconciliation.
 - Validating only the parent leaves selected child symlinks available to later
   bind mounts: validate the exact project child on every resolver exit path.
+- Setting `IFS` does not disable shell globbing: parse comma tokens as quoted
+  literal substrings so filesystem contents cannot manufacture an exact match.

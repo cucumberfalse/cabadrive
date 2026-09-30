@@ -185,6 +185,12 @@ record and therefore select the same project.
   directory contained directly beneath the validated handoff root. Symlink,
   non-directory, inaccessible, or escaped children fail before bind-mounted
   lifecycle action, capture, or adoption.
+- **FR-052-16 — config tokens are literal, never pathname patterns:** splitting
+  `config_files` must not pass unquoted tokens through POSIX field expansion or
+  pathname generation. Comma parsing operates on literal string slices (or an
+  equivalently scoped noglob mode with exact prior-state restoration) before
+  equality comparison. Tokens containing `?`, `*`, `[`, `]`, or other glob
+  syntax remain literal near matches even when repository files satisfy them.
 
 ## Acceptance Criteria
 
@@ -241,6 +247,10 @@ record and therefore select the same project.
 17. Existing symlink project children for explicit, adopted, default, and
     discovered selections make resolver/actual Make fail before return,
     adoption, bind mount, or lifecycle action; external targets remain unchanged.
+18. `config_files` tokens such as `<repo>/docker-compose.ym?`, `<repo>/*`, and
+    `<repo>/docker-compose.ym[l]` do not authorize the project even when the
+    real compose file makes each pattern expandable. Exact literal membership
+    remains the only accepted config-path evidence.
 
 ## Required Negative Scenarios
 
@@ -270,6 +280,8 @@ record and therefore select the same project.
   idempotent success.
 - Existing symlink/non-directory project child fails for every identity source,
   including explicit and default paths that otherwise return without discovery.
+- Wildcard-bearing `config_files` tokens (`?`, `*`, bracket expressions) remain
+  literal and cannot expand into the canonical compose path.
 - Genuine clean install selects `cabadrive` and creates no adoption record.
 
 ## Verification Requirements
@@ -371,13 +383,23 @@ record and therefore select the same project.
   discovered adoption. Add actual-Make symlink-child controls for explicit,
   adopted, default, and discovered identities, proving no bind/action/adoption
   and no external mutation.
+- **R052-012 / `r4144203150` — POSIX glob expansion defeats exact config token
+  matching: accepted (Architect return #5).** Replace `for token in
+  $config_files` with literal comma-token parsing that never exposes tokens to
+  pathname expansion. Prefer parameter-expansion slicing so no shell option
+  state changes; if controlled noglob is used instead, preserve and restore the
+  caller's exact prior noglob state on every exit. Add `?`, `*`, and bracket-
+  expression negatives with matching filesystem entries plus the existing exact
+  multi-file positive. Rerun focused, full-preflight, isolated-Docker, exact-head
+  review, and required-check gates; return #4's other fixes remain closed.
 
 ## Final Validation Protocol
 
-- Feature-052 Architect return limit: 10. Current count: 4. Return #1 accepted
+- Feature-052 Architect return limit: 10. Current count: 5. Return #1 accepted
   R052-003; return #2 accepted R052-005/R052-006; final-validation return #3
   accepted R052-007; return #4 accepts the bounded combined R052-009/R052-010/
-  R052-011 batch. No Architect pass is recorded until the combined fix and one
+  R052-011 batch; bounded re-review found only residual R052-012, accepted in
+  return #5. No Architect pass is recorded until its literal-parser fix and one
   renewed verification/review cycle are complete.
 - Feature-052 Analyst return limit: 5. Initial count: 0.
 - The effective content head contains implementation, tests, documentation,

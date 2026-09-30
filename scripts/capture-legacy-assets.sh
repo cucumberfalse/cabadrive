@@ -102,19 +102,26 @@ validate_existing_handoff_parent() {
 # authoritative only when one whole token equals its canonical compose path;
 # substring matches would adopt a sibling or backup checkout.
 config_list_contains_checkout_compose() {
-  config_files="$1"
+  config_files_remaining="$1"
   expected_compose="$repo_root/docker-compose.yml"
-  previous_ifs="$IFS"
-  IFS=,
-  config_match=1
-  for config_file in $config_files; do
+  while :; do
+    case "$config_files_remaining" in
+      *,*)
+        config_file="${config_files_remaining%%,*}"
+        config_files_remaining="${config_files_remaining#*,}"
+        config_files_done=
+        ;;
+      *)
+        config_file="$config_files_remaining"
+        config_files_done=1
+        ;;
+    esac
     if [ "$config_file" = "$expected_compose" ]; then
-      config_match=0
-      break
+      return 0
     fi
+    [ -z "$config_files_done" ] || break
   done
-  IFS="$previous_ifs"
-  return "$config_match"
+  return 1
 }
 
 # Root containment does not make a selected project child safe. Every resolver

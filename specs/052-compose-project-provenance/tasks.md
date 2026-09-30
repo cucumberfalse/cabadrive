@@ -139,6 +139,17 @@
   review; resolve both duplicate config threads and the adoption/child threads
   with that evidence. Keep `r4134154325` and `r4137191315` open until final
   Architect then Analyst validation on the final effective content head.
+- [ ] T052-014p Implement R052-012 test-first: replace unquoted
+  `for config_file in $config_files` with quoted literal comma-token slicing (or
+  a strictly scoped/restored noglob equivalent). Preserve exact multi-file
+  positive behavior and independent exact `working_dir` authority.
+- [ ] T052-014q Add expandable wildcard negatives for `?`, `*`, and bracket
+  expressions with filesystem entries that would match the canonical compose
+  path under the old loop. Prove no candidate/adoption; then run one focused
+  capture/runtime suite, shell/format/diff/feature/repository guards, full
+  preflight, isolated real Docker lifecycle, and renewed exact-head review.
+  Resolve only `r4144203150` from this evidence; validation-only threads remain
+  open for final Architect then Analyst markers.
 - [ ] T052-015 Orchestrator routes any actionable finding role-appropriately;
   every Implementation Agent feedback item receives Architect disposition.
 - [x] T052-016 Resolve `r4121580555` with the passing Make-level regression and
@@ -204,6 +215,9 @@
   and preserved durability/fault semantics.
 - R052-011 (`r4143886073`): accepted in Architect return #4; T052-014n validates
   every selected project child before resolver authority or adoption.
+- R052-012 (`r4144203150`): accepted in Architect return #5; T052-014p/q replace
+  glob-vulnerable iteration with literal comma parsing and add expandable
+  wildcard negative regressions. Bounded re-review reported no other finding.
 
 ## Verification Evidence
 
@@ -352,19 +366,20 @@
   R052-007 was completed as the narrow Architect final-validation return #3
   implementation. R052-009/R052-010/R052-011 are accepted native-review
   findings assigned as one bounded Architect return #4 batch and completed in
-  this implementation return; the comprehensive audit reported no additional
-  technical finding.
+  this implementation return. R052-012 is the sole residual bounded-re-review
+  finding assigned by Architect return #5; no other finding was reported.
 
 ## Known Issues
 
-- R052-009/R052-010/R052-011 are implemented and verified pending the assigned
-  review-thread replies. They are not accepted known issues for merge.
-  `r4134154325` and `r4137191315` remain validation-only gates.
+- R052-012 is an accepted blocking review finding pending its literal-parser
+  implementation and one renewed verification/review cycle; it is not an
+  accepted known issue for merge. Return #4's other fixes passed bounded
+  re-review. `r4134154325` and `r4137191315` remain validation-only gates.
 
 ## Final Architect Validation
 
 - Architect validation pass: pending.
-- Architect return count: 4 / 10.
+- Architect return count: 5 / 10.
 - Architect validated effective content head: pending.
 
 ## Final Analyst Validation

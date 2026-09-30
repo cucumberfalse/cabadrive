@@ -637,7 +637,10 @@ test("container config-file ancestry requires one exact canonical list token", (
     `#!/bin/sh
 set -eu
 if [ "$1" = ps ]; then printf '%s\\n' container; exit 0; fi
-if [ "$1" = inspect ]; then printf '%s||%s\\n' claimed "$CABADRIVE_CONFIG_FILES"; exit 0; fi
+if [ "$1" = inspect ]; then
+  printf '%s|%s|%s\\n' claimed "$CABADRIVE_WORKING_DIR" "$CABADRIVE_CONFIG_FILES"
+  exit 0
+fi
 if [ "$1" = image ] && [ "$2" = inspect ]; then
   printf '%s\\n' 'Error response from daemon: No such image' >&2
   exit 1
@@ -651,23 +654,70 @@ exit 90
       {
         name: "exact multi-file token",
         config: `/other.yml,${canonicalExpected},/third.yml`,
+        workingDir: "",
         project: "claimed",
       },
-      { name: "backup", config: `${canonicalExpected}.backup`, project: "cabadrive" },
-      { name: "prefix", config: `/prefix${canonicalExpected}`, project: "cabadrive" },
-      { name: "suffix", config: `${canonicalExpected}-suffix`, project: "cabadrive" },
+      {
+        name: "exact working directory",
+        config: "/unrelated.yml",
+        workingDir: realpathSync(root),
+        project: "claimed",
+      },
+      {
+        name: "question-mark pattern",
+        config: `${canonicalExpected.slice(0, -1)}?`,
+        workingDir: "",
+        project: "cabadrive",
+      },
+      {
+        name: "star pattern",
+        config: `${realpathSync(root)}/*`,
+        workingDir: "",
+        project: "cabadrive",
+      },
+      {
+        name: "bracket pattern",
+        config: `${canonicalExpected.slice(0, -1)}[l]`,
+        workingDir: "",
+        project: "cabadrive",
+      },
+      {
+        name: "backup",
+        config: `${canonicalExpected}.backup`,
+        workingDir: "",
+        project: "cabadrive",
+      },
+      {
+        name: "prefix",
+        config: `/prefix${canonicalExpected}`,
+        workingDir: "",
+        project: "cabadrive",
+      },
+      {
+        name: "suffix",
+        config: `${canonicalExpected}-suffix`,
+        workingDir: "",
+        project: "cabadrive",
+      },
       {
         name: "sibling",
         config: join(realpathSync(root), "sibling", "docker-compose.yml"),
+        workingDir: "",
         project: "cabadrive",
       },
-      { name: "substring", config: `/other/${canonicalExpected}/fragment`, project: "cabadrive" },
+      {
+        name: "substring",
+        config: `/other/${canonicalExpected}/fragment`,
+        workingDir: "",
+        project: "cabadrive",
+      },
     ];
     for (const row of rows) {
       const env = {
         ...process.env,
         CABADRIVE_REPOSITORY_ROOT: root,
         CABADRIVE_CONFIG_FILES: row.config,
+        CABADRIVE_WORKING_DIR: row.workingDir,
         PATH: `${bin}:${process.env.PATH}`,
       };
       delete env.COMPOSE_PROJECT_NAME;
