@@ -1865,6 +1865,86 @@ test("release-only partial state resumes after metadata boundary without selecti
   });
 });
 
+test("metadata-only retry repeats file and ancestor durability before current", () => {
+  withFixture((root) => {
+    const a = release(root, "a", { "a.js": "A" }, "A shell");
+    const b = release(root, "b", { "b.js": "B" }, "B shell");
+    const releaseId = createCandidateManifest(b).releaseId;
+    const metadataSeed = join(root, "metadata-seed");
+    stageStaticRelease({ stateRoot: metadataSeed, candidateRoot: b });
+    const metadataBytes = readFileSync(join(metadataSeed, "metadata", `${releaseId}.json`), "utf8");
+
+    for (const [name, operation, expectedPath] of [
+      ["metadata-file", "fsync-file", (state) => join(state, "metadata", `${releaseId}.json`)],
+      ["metadata-directory", "fsync-directory", (state) => join(state, "metadata")],
+      ["state-directory", "fsync-directory", (state) => state],
+    ]) {
+      const state = join(root, `state-${name}`);
+      stageStaticRelease({ stateRoot: state, candidateRoot: a });
+      const durableState = realpathSync(state);
+      const metadataPath = join(durableState, "metadata", `${releaseId}.json`);
+      writeFileSync(metadataPath, metadataBytes);
+      const priorCurrent = readlinkSync(join(durableState, "current"));
+      let injected = false;
+
+      assert.throws(
+        () =>
+          stageStaticRelease({
+            stateRoot: state,
+            candidateRoot: b,
+            onDurabilityOperation: (event) => {
+              if (
+                !injected &&
+                event.operation === operation &&
+                event.path === expectedPath(durableState)
+              ) {
+                injected = true;
+                throw new Error(`${name} retry barrier failed`);
+              }
+            },
+          }),
+        new RegExp(`${name} retry barrier failed`, "i"),
+      );
+      assert.equal(injected, true);
+      assert.equal(readlinkSync(join(durableState, "current")), priorCurrent);
+      assert.match(currentShell(durableState), /A shell/);
+
+      const trace = [];
+      stageStaticRelease({
+        stateRoot: state,
+        candidateRoot: b,
+        onDurabilityOperation: (event) => trace.push(event),
+      });
+      const metadataFileSync = trace.findIndex(
+        (event) => event.operation === "fsync-file" && event.path === metadataPath,
+      );
+      const metadataDirectorySync = trace.findIndex(
+        (event, index) =>
+          index > metadataFileSync &&
+          event.operation === "fsync-directory" &&
+          event.path === join(durableState, "metadata"),
+      );
+      const stateDirectorySync = trace.findIndex(
+        (event, index) =>
+          index > metadataDirectorySync &&
+          event.operation === "fsync-directory" &&
+          event.path === durableState,
+      );
+      const activation = trace.findIndex(
+        (event, index) => index > stateDirectorySync && event.operation === "rename-current",
+      );
+      assert.ok(
+        metadataFileSync >= 0 &&
+          metadataDirectorySync > metadataFileSync &&
+          stateDirectorySync > metadataDirectorySync &&
+          activation > stateDirectorySync,
+      );
+      assert.match(currentShell(durableState), /B shell/);
+      assert.equal(verifyCommittedState(durableState).valid, true);
+    }
+  });
+});
+
 test("visible release and metadata retry repeats tuple durability before current", () => {
   withFixture((root) => {
     const state = join(root, "state");

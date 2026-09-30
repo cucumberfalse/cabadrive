@@ -1469,7 +1469,8 @@ export function stageStaticRelease({
       makeCurrent(state, release.releaseId, { faultAt, onDurabilityOperation });
       return { changed: true, releaseId: release.releaseId, manifest: release };
     }
-    if (existsSync(metadataPath) && !metadataMatches(metadataPath, release)) {
+    const metadataAlreadyExists = existsSync(metadataPath);
+    if (metadataAlreadyExists && !metadataMatches(metadataPath, release)) {
       fail("existing metadata-only partial state does not match candidate");
     }
 
@@ -1507,13 +1508,20 @@ export function stageStaticRelease({
     invokeDurability({ faultAt, onDurabilityOperation }, "rename", releaseDir);
     syncDirectoryAncestors(dirname(releaseDir), state, { faultAt, onDurabilityOperation });
     fault({ faultAt }, "after-release");
-    if (!existsSync(metadataPath)) {
+    if (!metadataAlreadyExists) {
       renameSync(join(transaction, "manifest.json"), metadataPath);
       invokeDurability({ faultAt, onDurabilityOperation }, "rename", metadataPath);
       syncDirectoryAncestors(dirname(metadataPath), state, { faultAt, onDurabilityOperation });
     }
     if (!metadataMatches(metadataPath, release) || !releaseFilesMatch(releaseDir, release)) {
       fail("promoted release tuple does not match candidate");
+    }
+    if (metadataAlreadyExists) {
+      // Byte equality cannot prove that a metadata-only partial survived its
+      // earlier publication barrier. Repeat the file and complete ancestor
+      // durability chain before selecting the newly promoted release.
+      syncFile(metadataPath, { faultAt, onDurabilityOperation });
+      syncDirectoryAncestors(dirname(metadataPath), state, { faultAt, onDurabilityOperation });
     }
     fault({ faultAt }, "before-current");
     makeCurrent(state, release.releaseId, { faultAt, onDurabilityOperation });

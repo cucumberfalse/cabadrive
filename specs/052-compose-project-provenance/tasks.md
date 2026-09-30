@@ -150,6 +150,18 @@
   preflight, isolated real Docker lifecycle, and renewed exact-head review.
   Resolve only `r4144203150` from this evidence; validation-only threads remain
   open for final Architect then Analyst markers.
+- [x] T052-014r Implement R052-013 as bounded Architect return #6. On a
+  metadata-only partial retry where the complete metadata file already exists
+  and byte validation permits skipping its publication, repeat the metadata
+  file fsync and every durability-relevant ancestor-directory fsync before
+  `makeCurrent` may activate that release. Fail closed before activation when
+  any repeated file or directory barrier fails. Add an exact fault/order
+  regression that constructs the pre-existing-metadata/not-current retry
+  state, proves metadata-file and ancestor barriers precede current
+  publication, proves each injected barrier failure leaves current unchanged,
+  and proves a later clean retry activates only after all barriers succeed.
+  Run focused staging tests, full preflight, real Docker validation, renewed
+  exact-head review, and resolve the originating thread with that evidence.
 - [x] T052-015 Orchestrator routed every actionable finding role-appropriately;
   every Implementation Agent feedback item has Architect disposition. Renewed
   exact-head Review Agent and native review reported no additional technical
@@ -220,6 +232,17 @@
 - R052-012 (`r4144203150`): accepted in Architect return #5; T052-014p/q replace
   glob-vulnerable iteration with literal comma parsing and add expandable
   wildcard negative regressions. Bounded re-review reported no other finding.
+- R052-013 (`PRRT_kwDOSX65IM6noHqP`): accepted in Architect return #6;
+  T052-014r restores the omitted metadata-file and ancestor durability barriers
+  on an idempotent metadata-only retry before `makeCurrent`, with fail-closed
+  fault/order coverage. This is a blocking implementation task, not an accepted
+  known issue.
+- Validation-only thread `PRRT_kwDOSX65IM6noHqI`: no product task. The ordered
+  feature-053 Architect pass and later Analyst pass already name the same
+  effective content head, so Implementation Agent need only reply with that
+  evidence and resolve the thread. Both passes become stale for merge authority
+  because R052-013 is a new non-evidence follow-up and must be repeated after
+  its bounded fix and review.
 
 ## Verification Evidence
 
@@ -381,6 +404,30 @@
   regressions, feature-052 return #5 planning, and the independent feature-053
   security refresh. A following tasks-only commit records this verification and
   does not alter runtime, tests, dependencies, or Architect policy.
+- R052-013 test-first FAIL: the exact metadata-only/not-current fixture seeded
+  valid candidate metadata beside current A, then targeted the expected
+  metadata-file barrier. Before the fix, staging reached activation without
+  emitting that barrier and the test failed with `Missing expected exception`,
+  reproducing the review finding without changing the prior current pointer.
+- R052-013 implementation PASS: the metadata-only branch records whether
+  candidate metadata pre-existed, verifies it, promotes the release, then
+  repeats `fsync` for the existing metadata file and the complete
+  metadata-directory-to-state ancestor chain before `makeCurrent`. New metadata
+  publication retains its existing atomic rename and directory-barrier path.
+- R052-013 focused PASS: the exact regression passed and the full
+  `tests/static-release-staging.test.mjs` suite passed 52/52. For each of the
+  metadata-file, metadata-directory, and state-directory barriers, an injected
+  failure leaves current A selected; a clean retry records file < metadata
+  directory < state directory < `rename-current`, selects B, and verifies the
+  committed tuple.
+- R052-013 guards PASS: Prettier checks for the changed implementation/test,
+  `git diff --check`, the worktree feature-memory gate, and repository baseline
+  check passed.
+- R052-013 full preflight PASS: 644/644 Node tests, production build and service
+  worker generation, and 158/158 Playwright tests passed.
+- R052-013 isolated Docker PASS: `pnpm run test:docker-retention` reported
+  `Docker asset-retention lifecycle passed for
+  cabadrive-retention-83485-1790789053739`; scoped teardown completed.
 
 ## Implementation Agent Feedback
 
@@ -390,18 +437,20 @@
   R052-007 was completed as the narrow Architect final-validation return #3
   implementation. R052-009/R052-010/R052-011 are accepted native-review
   findings assigned as one bounded Architect return #4 batch and completed in
-  this implementation return. R052-012 was the sole residual bounded-re-review
+  this implementation return. R052-012 was the residual bounded-re-review
   finding assigned by Architect return #5 and is implemented with complete
-  local evidence. Renewed exact-head Review Agent and native review passed with
-  no technical finding.
+  local evidence. Full pagination then surfaced R052-013, accepted as the sole
+  bounded Architect return #6 task and now implemented with focused, full, and
+  Docker evidence. No other Implementation Agent feedback is unresolved.
 
 ## Known Issues
 
-- No accepted technical known issue. R052-012 implementation, local
-  verification, and exact-head review are complete. `r4134154325` and
-  `r4137191315` remain open validation-only gates until the later Analyst pass
-  and thread resolution; the still-running required `AI Review` workflow must
-  become green before Orchestrator finalization.
+- No accepted technical known issue. R052-013 implementation and local
+  verification are complete; exact-head review and renewed final validation
+  remain required. Validation-only thread
+  `PRRT_kwDOSX65IM6noHqI` already has the required ordered role markers and
+  was replied to and resolved, but those markers are stale for merge after this
+  non-evidence return.
 
 ## Final Architect Validation
 
@@ -429,9 +478,22 @@
 - Final Architect validation completed at: 2026-09-30T17:00:40Z
 - Architect return count: 5 / 10.
 - Architect validated effective content head: 8f785ed08c16d2202867310f9ad4afab4f40dbdb
+- Architect validation evidence: the pass above and the later ordered Analyst
+  pass are stale for merge authority because full pagination surfaced
+  R052-013, a behaviorally meaningful durability gap requiring implementation.
+- Architect validation pass: failed
+- Final Architect validation completed at: 2026-09-30T17:13:42Z
+- Architect return count: 6 / 10.
+- Architect gaps: complete T052-014r test-first, run focused/full/Docker
+  verification, obtain renewed exact-head review with no unresolved technical
+  finding, establish a new effective content head, then repeat final Architect
+  and Analyst validation in order before the current-head guard.
+- Architect validated effective content head: pending R052-013 implementation and revalidation.
 
 ## Final Analyst Validation
 
-- Analyst validation: pending; must follow Architect pass.
+- Analyst validation: the feature-053 pass completed after the prior Architect
+  pass but is stale for merge authority after R052-013; repeat only after the
+  renewed Architect pass.
 - Analyst return count: 0 / 5.
 - Analyst validated effective content head: pending.
