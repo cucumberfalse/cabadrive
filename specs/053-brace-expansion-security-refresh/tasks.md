@@ -11,21 +11,21 @@
 - Parallel preservation: all pre-existing feature-051/052 changes and sibling state remain outside feature-053 ownership.
 - Architect return count: `0 / 10`.
 - Analyst return count: `0 / 5`.
-- Effective content head: pending implementation and follow-up completion.
+- Effective content head: `8f785ed08c16d2202867310f9ad4afab4f40dbdb`.
 
 ## Implementation Tasks
 
-- [ ] **T001 — Confirm assignment and preserve parallel state.** Record branch, worktree, exact starting head, verified-base ancestry, dirty-file ownership, and feature-053 allowed files before mutation. Do not stage, restore, clean, or overwrite feature-051/052 or sibling work.
-- [ ] **T002 — Capture exact-tool and negative-baseline evidence.** Require pnpm `10.33.0`; record manifest/lock hashes, package-manager/override policy, supplied exact-head OSV failure, both vulnerable/fixed pairs, all `1.1.18`/`5.0.9` lock occurrences, and current recursive ownership.
-- [ ] **T003 — Run the ordinary targeted lockfile-only resolution.** First mutation is `corepack pnpm@10.33.0 update --lockfile-only --depth Infinity brace-expansion`. Use no override, owner update, manual lock edit, `--latest`, `--force`, or workflow/security change.
-- [ ] **T004 — Audit and narrow the complete diff.** Account for every changed package key, snapshot, integrity value, engine, peer suffix, importer, owner edge, addition, and removal. Require byte-identical `package.json`, stable `minimatch`/toolchain owners, and no unexplained churn.
-- [ ] **T005 — Handle exceptional resolution safely.** If either floor is unreachable or any manifest/owner change appears necessary, stop and record failed ordinary evidence, constraints, compatibility, and smallest candidates for Architect disposition. Do not independently add an override or update a parent.
-- [ ] **T006 — Prove thresholds and duplicate absence.** Full-lock inspection must show every 1.x occurrence `>=1.1.21`, every 5.x occurrence `>=5.0.12`, and zero lower package keys, snapshots, or dependency edges.
-- [ ] **T007 — Prove final ownership and compatibility.** Record recursive `pnpm why` for both lines through their expected owners; inspect engines/peers against Node 20 and Docker; record any mechanically changed metadata.
-- [ ] **T008 — Prove frozen determinism.** Hash manifest/lock before and after `corepack pnpm@10.33.0 install --frozen-lockfile`; require success and no rewrite.
-- [ ] **T009 — Run focused and full local checks.** Record `git diff --check`, feature-memory check, typecheck, lint, format check, quality-fast, and full `pnpm run preflight` on the final implementation content.
-- [ ] **T010 — Run Docker compatibility validation.** Record real build/start/smoke/retained-asset/teardown evidence equivalent to the required `docker-validation` job.
-- [ ] **T011 — Record implementation evidence.** Complete the lock audit, changed-file boundary, decisions, dead ends, known issues, Implementation Agent feedback, and exact implementation head. Stage/commit/push only assigned files under Implementation Agent authority; never merge.
+- [x] **T001 — Confirm assignment and preserve parallel state.** Record branch, worktree, exact starting head, verified-base ancestry, dirty-file ownership, and feature-053 allowed files before mutation. Do not stage, restore, clean, or overwrite feature-051/052 or sibling work.
+- [x] **T002 — Capture exact-tool and negative-baseline evidence.** Require pnpm `10.33.0`; record manifest/lock hashes, package-manager/override policy, supplied exact-head OSV failure, both vulnerable/fixed pairs, all `1.1.18`/`5.0.9` lock occurrences, and current recursive ownership.
+- [x] **T003 — Run the ordinary targeted lockfile-only resolution.** First mutation is `corepack pnpm@10.33.0 update --lockfile-only --depth Infinity brace-expansion`. Use no override, owner update, manual lock edit, `--latest`, `--force`, or workflow/security change.
+- [x] **T004 — Audit and narrow the complete diff.** Account for every changed package key, snapshot, integrity value, engine, peer suffix, importer, owner edge, addition, and removal. Require byte-identical `package.json`, stable `minimatch`/toolchain owners, and no unexplained churn.
+- [x] **T005 — Handle exceptional resolution safely.** Ordinary resolution succeeded without an exception; no manifest, owner, override, or fallback change was needed.
+- [x] **T006 — Prove thresholds and duplicate absence.** Full-lock inspection shows only `1.1.21` and `5.0.12`, with no lower package key, snapshot, or owner edge.
+- [x] **T007 — Prove final ownership and compatibility.** Recursive ownership and installed metadata confirm the unchanged owner lines and Node 20 compatibility.
+- [x] **T008 — Prove frozen determinism.** Manifest and lock hashes remained unchanged across `corepack pnpm@10.33.0 install --frozen-lockfile`.
+- [x] **T009 — Run focused and full local checks.** Diff/memory/repository/focused gates and the complete preflight passed on the final implementation content.
+- [x] **T010 — Run Docker compatibility validation.** The isolated real Docker retained-asset lifecycle passed and self-cleaned.
+- [x] **T011 — Record implementation evidence.** The exact audit, decisions, known issues, feedback, and implementation head are recorded below; implementation commits are ready for the single assigned push and no merge was performed.
 
 ## Review And Follow-Up Tasks
 
@@ -50,14 +50,37 @@
 
 ## Verification Evidence
 
-- Negative baseline: pending implementation.
-- Exact pnpm version and resolver command: pending implementation.
-- Final thresholds and duplicate search: pending implementation.
-- Ownership and compatibility: pending implementation.
-- Complete lock diff audit: pending implementation.
-- Frozen install and hashes: pending implementation.
-- Focused checks and full preflight: pending implementation.
-- Docker validation: pending implementation.
+- Negative baseline: assigned head contained package/snapshot/owner references to
+  `brace-expansion@1.1.18` and `brace-expansion@5.0.9`; the supplied exact-head
+  OSV gate required minimum fixed versions `1.1.21` and `5.0.12`.
+- Exact pnpm version and resolver command: `corepack pnpm@10.33.0 --version`
+  returned `10.33.0`; the first dependency mutation was exactly `corepack
+  pnpm@10.33.0 update --lockfile-only --depth Infinity brace-expansion` and
+  completed successfully.
+- Final thresholds and duplicate search: complete lock search contains only
+  `brace-expansion@1.1.21` and `brace-expansion@5.0.12`, each in its package and
+  snapshot key plus one expected owner edge. No vulnerable duplicate survives.
+- Ownership and compatibility: recursive `pnpm why` reports 1.1.21 through
+  unchanged `minimatch@3.1.5`/ESLint and 5.0.12 through unchanged
+  `minimatch@10.2.5`/`@typescript-eslint`. Installed 1.1.21 declares no engine
+  or peer constraint; 5.0.12 declares `node: 20 || >=22` and no peer constraint,
+  compatible with repository CI and Docker build Node 20.
+- Complete lock diff audit: only the two package keys/integrities, two snapshot
+  keys, and two owner edges changed. Importers, peer suffixes, owners, other
+  packages, and `package.json` are unchanged; no override or workflow/scanner
+  change exists.
+- Frozen install and hashes: `package.json` remained
+  `d3f93e3aa38596e10798866cbcc06f80169a98b549098aecae5e4d83f029ba21`;
+  the resolved lock remained
+  `9250764a4862dea2f1d9da1c4d601ec224e7e3c0fa36fcacb7dcc52a69d1ea53`
+  before and after the frozen install.
+- Focused checks and full preflight: F052 capture/staging passed 85/85; shell,
+  format, diff, feature-memory and repository gates passed. The permitted full
+  preflight rerun passed 643/643 Node tests, build/service-worker generation,
+  and 158/158 Playwright tests. An initial sandboxed attempt stopped only on a
+  Vite temporary-file `EPERM`, before any product failure.
+- Docker validation: `pnpm run test:docker-retention` passed for isolated
+  project `cabadrive-retention-72988-1790786393203` and completed teardown.
 - Exact-head GitHub checks/review/conflicts: pending Orchestrator coordination.
 - Current-head guard/finalizer: pending after final validations.
 
@@ -65,22 +88,30 @@
 
 | Purpose | Branch | PR | Starting head | Current/final head | Status | Final-validation inclusion |
 |---|---|---|---|---|---|---|
-| Feature-053 security refresh contributing to combined feature-051/052/053 delivery | `codex/051-asset-retention` | #217 | `0ab100ebcb4cdb4f19f4bb148675184b7a10b8a5` | Pending | Open; implementation not started | Required |
+| Feature-053 security refresh contributing to combined feature-051/052/053 delivery | `codex/051-asset-retention` | #217 | `0ab100ebcb4cdb4f19f4bb148675184b7a10b8a5` | `8f785ed08c16d2202867310f9ad4afab4f40dbdb` effective content | Open; implementation complete, review/checks pending | Required |
 
 ## Decisions And Dead Ends
 
 - **Decision — ordinary lock-only resolution is the planned mechanism.** The existing graph already has compatible separate major lines and feature 050 proved targeted pnpm resolution can advance them without manifest changes. A new override would add durable policy without evidence of need; parent movement would enlarge the reviewed toolchain surface.
 - **Decision — overrides and parent updates are stop-and-disposition exceptions.** If ordinary resolution fails, Implementation Agent records comparative evidence and Architect chooses the smallest compatible exception before further mutation.
 - **Decision — no security-policy change.** The failing OSV gate is correct and remains mandatory; only the vulnerable graph is changed.
-- **Dead ends:** none at planning time.
+- **Decision — the ordinary resolver is sufficient.** It selected exactly the
+  minimum safe patches on both existing major lines with no owner, manifest,
+  importer, peer, or unrelated package churn.
+- **Dead end — sandbox-only preflight launch.** The first non-permitted
+  preflight attempt could not create Vite's worktree-local temporary file. The
+  permitted rerun passed completely; no source or configuration change was
+  needed.
 
 ## Implementation Agent Feedback
 
-Pending implementation. Every feedback item requires Architect disposition before scope expansion or completion.
+No unresolved Implementation Agent feedback. Ordinary resolution stayed inside
+the Architect-defined boundary and required no scope expansion.
 
 ## Known Issues
 
-None at planning time.
+No accepted known issue. Exact-head review, GitHub checks, role validation, and
+finalization remain required gates rather than implementation defects.
 
 ## Final Validation Evidence
 
@@ -88,7 +119,7 @@ None at planning time.
 - Architect return count: 0.
 - Analyst validation: pending and must follow a passing Architect validation.
 - Analyst return count: 0.
-- Effective content head: pending.
+- Effective content head: `8f785ed08c16d2202867310f9ad4afab4f40dbdb`.
 - Final-validation evidence-only delta: pending.
 - Current-PR-head read-only guard: pending.
 - Limit escalation: none.

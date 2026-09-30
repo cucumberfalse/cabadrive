@@ -139,7 +139,7 @@
   review; resolve both duplicate config threads and the adoption/child threads
   with that evidence. Keep `r4134154325` and `r4137191315` open until final
   Architect then Analyst validation on the final effective content head.
-- [ ] T052-014p Implement R052-012 test-first: replace unquoted
+- [x] T052-014p Implement R052-012 test-first: replace unquoted
   `for config_file in $config_files` with quoted literal comma-token slicing (or
   a strictly scoped/restored noglob equivalent). Preserve exact multi-file
   positive behavior and independent exact `working_dir` authority.
@@ -357,6 +357,28 @@
 - R052-009/R052-010/R052-011 isolated real Docker lifecycle PASS: the single
   `node scripts/test-docker-asset-retention.mjs` lifecycle completed after that
   preflight with no error output and left no generated worktree artifact.
+- R052-012 implementation PASS: `config_list_contains_checkout_compose` now
+  consumes the comma-separated label through quoted parameter-expansion slices;
+  no token is exposed to shell pathname generation. The focused table retains
+  the exact multi-file and exact-working-directory positives and rejects `?`,
+  `*`, and bracket-expression tokens even though repository paths satisfy them.
+- R052-012 combined focused PASS: `sh -n scripts/capture-legacy-assets.sh` and
+  `node --test tests/capture-legacy-assets.test.mjs
+  tests/static-release-staging.test.mjs` passed 85/85. `pnpm run format:check`,
+  `git diff --check`, `node scripts/check-feature-memory.mjs --worktree`, and
+  `pnpm run check:repo` also passed.
+- R052-012 combined full preflight PASS: the sandboxed first attempt was blocked
+  only by an `EPERM` opening Vite's worktree-local temporary file. The permitted
+  rerun completed successfully: 643/643 Node tests, production build/service
+  worker generation, and 158/158 Playwright tests passed.
+- R052-012 combined isolated Docker PASS: `pnpm run test:docker-retention`
+  reported `Docker asset-retention lifecycle passed for
+  cabadrive-retention-72988-1790786393203`; scoped teardown completed.
+- Renewed effective implementation content head:
+  `8f785ed08c16d2202867310f9ad4afab4f40dbdb`. It includes the literal parser,
+  regressions, feature-052 return #5 planning, and the independent feature-053
+  security refresh. A following tasks-only commit records this verification and
+  does not alter runtime, tests, dependencies, or Architect policy.
 
 ## Implementation Agent Feedback
 
@@ -366,15 +388,16 @@
   R052-007 was completed as the narrow Architect final-validation return #3
   implementation. R052-009/R052-010/R052-011 are accepted native-review
   findings assigned as one bounded Architect return #4 batch and completed in
-  this implementation return. R052-012 is the sole residual bounded-re-review
-  finding assigned by Architect return #5; no other finding was reported.
+  this implementation return. R052-012 was the sole residual bounded-re-review
+  finding assigned by Architect return #5 and is implemented with complete
+  local evidence; renewed exact-head review remains Orchestrator-owned.
 
 ## Known Issues
 
-- R052-012 is an accepted blocking review finding pending its literal-parser
-  implementation and one renewed verification/review cycle; it is not an
-  accepted known issue for merge. Return #4's other fixes passed bounded
-  re-review. `r4134154325` and `r4137191315` remain validation-only gates.
+- R052-012 implementation and local verification are complete; exact-head
+  review and originating-thread disposition remain before final validation.
+  It is not an accepted known issue for merge. `r4134154325` and
+  `r4137191315` remain validation-only gates.
 
 ## Final Architect Validation
 
