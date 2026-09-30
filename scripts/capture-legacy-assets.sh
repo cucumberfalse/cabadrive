@@ -98,6 +98,57 @@ validate_existing_handoff_parent() {
   handoff_parent="$handoff_parent_real"
 }
 
+# Docker Compose stores config_files as a comma-separated list. A checkout is
+# authoritative only when one whole token equals its canonical compose path;
+# substring matches would adopt a sibling or backup checkout.
+config_list_contains_checkout_compose() {
+  config_files="$1"
+  expected_compose="$repo_root/docker-compose.yml"
+  previous_ifs="$IFS"
+  IFS=,
+  config_match=1
+  for config_file in $config_files; do
+    if [ "$config_file" = "$expected_compose" ]; then
+      config_match=0
+      break
+    fi
+  done
+  IFS="$previous_ifs"
+  return "$config_match"
+}
+
+# Root containment does not make a selected project child safe. Every resolver
+# branch returns through here before a resolve-only caller can bind it or a
+# capture path can publish adoption beneath it.
+validate_selected_handoff_project() {
+  selected_project="$1"
+  if [ ! -e "$handoff_parent" ] && [ ! -L "$handoff_parent" ]; then
+    return 0
+  fi
+  selected_handoff="$handoff_parent/$selected_project"
+  if [ ! -e "$selected_handoff" ] && [ ! -L "$selected_handoff" ]; then
+    return 0
+  fi
+  if [ -L "$selected_handoff" ] || [ ! -d "$selected_handoff" ]; then
+    printf '%s\n' 'legacy handoff project is not a repository-owned directory' >&2
+    return 1
+  fi
+  selected_handoff_real="$(CDPATH= cd -- "$selected_handoff" && pwd -P)" || {
+    printf '%s\n' 'legacy handoff project is not accessible' >&2
+    return 1
+  }
+  if [ "$(dirname -- "$selected_handoff_real")" != "$handoff_parent" ]; then
+    printf '%s\n' 'legacy handoff project escapes the repository-owned root' >&2
+    return 1
+  fi
+}
+
+select_project() {
+  validate_project_name "$1" || return 1
+  validate_selected_handoff_project "$1" || return 1
+  printf '%s\n' "$1"
+}
+
 verify_adopted_project() {
   docker run --rm \
     --mount "type=bind,source=$handoff_parent,target=/handoff" \
@@ -128,9 +179,8 @@ resolve_project() {
   validate_existing_handoff_parent || return 1
 
   if [ -n "${COMPOSE_PROJECT_NAME:-}" ]; then
-    validate_project_name "$COMPOSE_PROJECT_NAME" || return 1
-    printf '%s\n' "$COMPOSE_PROJECT_NAME"
-    return 0
+    select_project "$COMPOSE_PROJECT_NAME"
+    return $?
   fi
 
   if [ -e "$adopted_project_file" ] || [ -L "$adopted_project_file" ]; then
@@ -142,9 +192,8 @@ resolve_project() {
       printf '%s\n' 'persisted Compose project identity is not durably verified' >&2
       return 1
     fi
-    validate_project_name "$adopted_project" || return 1
-    printf '%s\n' "$adopted_project"
-    return 0
+    select_project "$adopted_project"
+    return $?
   fi
 
   candidates=""
@@ -173,10 +222,8 @@ resolve_project() {
     owned=""
     if [ "$candidate_workdir" = "$repo_root" ]; then
       owned=1
-    else
-      case "$candidate_config" in
-        *"$repo_root/docker-compose.yml"*) owned=1 ;;
-      esac
+    elif config_list_contains_checkout_compose "$candidate_config"; then
+      owned=1
     fi
     if [ -n "$owned" ]; then
       add_candidate "$candidate_project"
@@ -217,8 +264,7 @@ resolve_project() {
       return 1
       ;;
   esac
-  validate_project_name "$candidate" || return 1
-  printf '%s\n' "$candidate"
+  select_project "$candidate"
 }
 
 if [ "${1:-}" = "--resolve-project" ]; then

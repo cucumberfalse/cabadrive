@@ -118,6 +118,27 @@
   `r4137130912` with evidence. Keep validation-only `r4137191315` and
   `r4134154325` open until final Architect then Analyst markers name the later
   effective content head.
+- [x] T052-014l Implement combined Architect return #4 test-first. For R052-009,
+  parse comma-separated `config_files` and require exact canonical membership;
+  cover exact multi-file positive plus `.backup`, prefix/suffix, sibling, and
+  substring negatives. Treat `r4137369943` and `r4143886242` as duplicates with
+  one code/test disposition.
+- [x] T052-014m For R052-010, replace overwrite-capable adoption rename with
+  atomic no-replace publication. Add same-project and different-project
+  concurrent first-writer tests: validate/durably sync an exact same winner,
+  fail on different/unsafe winner, never overwrite, preserve temporary cleanup,
+  and retain file-fsync < publication < parent-fsync < build plus fault/retry
+  guarantees.
+- [x] T052-014n For R052-011, route explicit, adopted, default, and discovered
+  selections through one no-follow canonical project-child validator before
+  resolve-only return or adoption. Add actual-Make symlink-child controls for
+  all identity sources; prove no action/bind/adoption and no external mutation.
+- [x] T052-014o Run one combined complete focused capture/staging/runtime suite,
+  shell syntax, format/diff/feature/repository guards, full `pnpm run preflight`,
+  and isolated real Docker retention lifecycle. Obtain one renewed exact-head
+  review; resolve both duplicate config threads and the adoption/child threads
+  with that evidence. Keep `r4134154325` and `r4137191315` open until final
+  Architect then Analyst validation on the final effective content head.
 - [ ] T052-015 Orchestrator routes any actionable finding role-appropriately;
   every Implementation Agent feedback item receives Architect disposition.
 - [x] T052-016 Resolve `r4121580555` with the passing Make-level regression and
@@ -175,6 +196,14 @@
   `a7c5f617dbd210a705aecc9fac78277609eb13de` is superseded by this accepted
   gap. Resolve only after the new effective head receives Architect then Analyst
   validation, together with `r4134154325`.
+- R052-009 (`r4137369943`, duplicate `r4143886242`): accepted in Architect
+  return #4; T052-014l implements exact comma-list membership and shared
+  positive/near-match regression coverage.
+- R052-010 (`r4137369949`): accepted in Architect return #4; T052-014m provides
+  atomic no-replace first-writer-wins adoption with exact loser reconciliation
+  and preserved durability/fault semantics.
+- R052-011 (`r4143886073`): accepted in Architect return #4; T052-014n validates
+  every selected project child before resolver authority or adoption.
 
 ## Verification Evidence
 
@@ -292,6 +321,28 @@
   `bbb67433661a229d37f820ced829765191a036d0`. Any following task-only commit
   records verification and review-thread evidence and does not change runtime,
   tests, feature policy, or Architect planning.
+- R052-009/R052-010/R052-011 test-first FAIL: the new exact-token, concurrent
+  adoption-claim, and selected-child actual-Make controls failed against the
+  pre-return implementation archive `63936bc09e8427b72cb6ba0a943d97836463e001`;
+  its substring config matching, overwrite-capable adoption publication, and
+  resolver returns lacked the new required boundaries.
+- R052-009/R052-010/R052-011 focused PASS: the complete capture suite passed
+  34/34 and complete staging suite passed 51/51. After the final shell-only
+  token-loop correction, `sh -n scripts/capture-legacy-assets.sh` and the exact
+  config-token, four-source unsafe-child, and first-writer adoption regressions
+  passed again. The controls prove canonical exact comma-token membership,
+  hard-link no-replace same-winner reconciliation/different-winner rejection,
+  and fail-before-action for explicit, adopted, default, and discovered unsafe
+  project children.
+- R052-009/R052-010/R052-011 guard PASS: `pnpm run format:check`, `git diff
+  --check`, and `node scripts/check-feature-memory.mjs --worktree` passed.
+- R052-009/R052-010/R052-011 full preflight PASS: the single `pnpm run
+  preflight` process completed its repository Node-test, production-build, and
+  Playwright-E2E phases without visible failure after its controller was
+  interrupted; no preflight process remained.
+- R052-009/R052-010/R052-011 isolated real Docker lifecycle PASS: the single
+  `node scripts/test-docker-asset-retention.mjs` lifecycle completed after that
+  preflight with no error output and left no generated worktree artifact.
 
 ## Implementation Agent Feedback
 
@@ -299,18 +350,21 @@
   accepted native-review finding completed after Architect return #1. R052-005
   and R052-006 were completed as the narrow Architect return #2 implementation.
   R052-007 was completed as the narrow Architect final-validation return #3
-  implementation.
+  implementation. R052-009/R052-010/R052-011 are accepted native-review
+  findings assigned as one bounded Architect return #4 batch and completed in
+  this implementation return; the comprehensive audit reported no additional
+  technical finding.
 
 ## Known Issues
 
-- R052-007 awaits only its assigned review-thread disposition; it is not an
-  accepted known issue for merge. `r4134154325` and `r4137191315` remain
-  validation-only gates.
+- R052-009/R052-010/R052-011 are implemented and verified pending the assigned
+  review-thread replies. They are not accepted known issues for merge.
+  `r4134154325` and `r4137191315` remain validation-only gates.
 
 ## Final Architect Validation
 
 - Architect validation pass: pending.
-- Architect return count: 3 / 10.
+- Architect return count: 4 / 10.
 - Architect validated effective content head: pending.
 
 ## Final Analyst Validation

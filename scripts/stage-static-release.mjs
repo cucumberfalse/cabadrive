@@ -816,7 +816,13 @@ export function verifyAdoptedProject({ handoffRoot, faultAt, onDurabilityOperati
   return result;
 }
 
-export function writeAdoptedProject({ handoffRoot, project, faultAt, onDurabilityOperation } = {}) {
+export function writeAdoptedProject({
+  handoffRoot,
+  project,
+  faultAt,
+  onDurabilityOperation,
+  onBeforeAdoptedProjectClaim,
+} = {}) {
   if (typeof project !== "string" || !/^[a-z0-9][a-z0-9_-]*$/.test(project)) {
     fail("adopted project name is invalid");
   }
@@ -833,7 +839,7 @@ export function writeAdoptedProject({ handoffRoot, project, faultAt, onDurabilit
   const contents = `${project}\n`;
   const options = { faultAt, onDurabilityOperation };
   let descriptor;
-  let renamed = false;
+  let claimed = false;
   try {
     descriptor = openSync(temporary, "wx", 0o600);
     writeFileSync(descriptor, contents);
@@ -852,16 +858,27 @@ export function writeAdoptedProject({ handoffRoot, project, faultAt, onDurabilit
       fail("adopted project temporary record is invalid");
     }
     syncFile(temporary, options);
-    renameSync(temporary, record);
-    renamed = true;
+    onBeforeAdoptedProjectClaim?.({ temporary, record, project });
+    try {
+      // link(2) creates the record atomically only if it is absent. Unlike
+      // rename, it cannot replace a concurrent publisher's completed claim.
+      linkSync(temporary, record);
+      claimed = true;
+    } catch (error) {
+      if (error?.code !== "EEXIST") throw error;
+    }
+    if (!claimed) {
+      const verified = verifyAdoptedProject({ handoffRoot: root, faultAt, onDurabilityOperation });
+      if (verified.project !== project) fail("adopted project record conflicts with discovery");
+      return { ...verified, changed: false };
+    }
     invokeDurability(options, "rename", record);
+    unlinkSync(temporary);
     syncDirectory(root, options);
     return { record, project, changed: true };
   } finally {
-    if (!renamed) {
-      const entry = noFollowEntry(temporary);
-      if (entry?.isFile() && !entry.isSymbolicLink()) unlinkSync(temporary);
-    }
+    const entry = noFollowEntry(temporary);
+    if (entry?.isFile() && !entry.isSymbolicLink()) unlinkSync(temporary);
   }
 }
 

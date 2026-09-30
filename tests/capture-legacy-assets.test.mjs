@@ -7,6 +7,7 @@ import {
   readFileSync,
   readlinkSync,
   readdirSync,
+  realpathSync,
   rmSync,
   symlinkSync,
   writeFileSync,
@@ -620,6 +621,151 @@ exit 90
     assert.equal(result.stdout.trim(), "cabadrive");
   } finally {
     if (existsSync(root)) rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("container config-file ancestry requires one exact canonical list token", () => {
+  const root = mkdtempSync(join(tmpdir(), "cabadrive-config-token-"));
+  const bin = join(root, "bin");
+  const expected = join(root, "docker-compose.yml");
+  mkdirSync(bin, { recursive: true });
+  writeFileSync(expected, "services: {}\n");
+  const canonicalExpected = realpathSync(expected);
+  const docker = join(bin, "docker");
+  writeFileSync(
+    docker,
+    `#!/bin/sh
+set -eu
+if [ "$1" = ps ]; then printf '%s\\n' container; exit 0; fi
+if [ "$1" = inspect ]; then printf '%s||%s\\n' claimed "$CABADRIVE_CONFIG_FILES"; exit 0; fi
+if [ "$1" = image ] && [ "$2" = inspect ]; then
+  printf '%s\\n' 'Error response from daemon: No such image' >&2
+  exit 1
+fi
+exit 90
+`,
+  );
+  chmodSync(docker, 0o755);
+  try {
+    const rows = [
+      {
+        name: "exact multi-file token",
+        config: `/other.yml,${canonicalExpected},/third.yml`,
+        project: "claimed",
+      },
+      { name: "backup", config: `${canonicalExpected}.backup`, project: "cabadrive" },
+      { name: "prefix", config: `/prefix${canonicalExpected}`, project: "cabadrive" },
+      { name: "suffix", config: `${canonicalExpected}-suffix`, project: "cabadrive" },
+      {
+        name: "sibling",
+        config: join(realpathSync(root), "sibling", "docker-compose.yml"),
+        project: "cabadrive",
+      },
+      { name: "substring", config: `/other/${canonicalExpected}/fragment`, project: "cabadrive" },
+    ];
+    for (const row of rows) {
+      const env = {
+        ...process.env,
+        CABADRIVE_REPOSITORY_ROOT: root,
+        CABADRIVE_CONFIG_FILES: row.config,
+        PATH: `${bin}:${process.env.PATH}`,
+      };
+      delete env.COMPOSE_PROJECT_NAME;
+      const result = spawnSync("sh", [captureScript, "--resolve-project"], {
+        cwd: root,
+        encoding: "utf8",
+        env,
+      });
+      assert.equal(result.status, 0, `${row.name}: ${result.stderr}`);
+      assert.equal(result.stdout.trim(), row.project, row.name);
+    }
+  } finally {
+    if (existsSync(root)) rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("actual Make rejects an unsafe selected handoff child for every identity source", () => {
+  for (const source of ["explicit", "adopted", "default", "discovered"]) {
+    const root = mkdtempSync(join(tmpdir(), `cabadrive-child-${source}-`));
+    const bin = join(root, "bin");
+    const scripts = join(root, "scripts");
+    const external = join(root, "external");
+    const action = join(root, "lifecycle-action");
+    const handoff = join(root, ".cabadrive-release-handoff");
+    const project =
+      source === "explicit"
+        ? "explicit"
+        : source === "adopted"
+          ? "adopted"
+          : source === "discovered"
+            ? "discovered"
+            : "cabadrive";
+    mkdirSync(bin, { recursive: true });
+    mkdirSync(scripts, { recursive: true });
+    mkdirSync(external, { recursive: true });
+    mkdirSync(handoff, { recursive: true });
+    const canonicalRoot = realpathSync(root);
+    writeFileSync(join(external, "sentinel"), source);
+    symlinkSync(external, join(handoff, project));
+    if (source === "adopted") writeFileSync(join(handoff, ".adopted-project"), "adopted\n");
+    writeFileSync(join(root, "Makefile"), readFileSync(join(repositoryRoot, "Makefile")));
+    writeFileSync(join(scripts, "capture-legacy-assets.sh"), readFileSync(captureScript));
+    chmodSync(join(scripts, "capture-legacy-assets.sh"), 0o755);
+    const docker = join(bin, "docker");
+    writeFileSync(
+      docker,
+      `#!/bin/sh
+set -eu
+if [ "$1" = ps ]; then
+  [ "$CABADRIVE_CHILD_SOURCE" = discovered ] && printf '%s\\n' container
+  exit 0
+fi
+if [ "$1" = inspect ]; then
+  printf '%s|%s|%s\\n' discovered "$CABADRIVE_REPOSITORY_ROOT" "$CABADRIVE_REPOSITORY_ROOT/docker-compose.yml"
+  exit 0
+fi
+if [ "$1" = image ] && [ "$2" = inspect ]; then
+  printf '%s\\n' 'Error response from daemon: No such image' >&2
+  exit 1
+fi
+if [ "$1" = run ] && echo "$*" | grep -q adopted-project-verify; then
+  printf '%s\\n' adopted
+  exit 0
+fi
+: >"$CABADRIVE_ACTION"
+exit 91
+`,
+    );
+    chmodSync(docker, 0o755);
+    try {
+      const env = {
+        ...process.env,
+        CABADRIVE_REPOSITORY_ROOT: canonicalRoot,
+        CABADRIVE_CHILD_SOURCE: source,
+        CABADRIVE_ACTION: action,
+        PATH: `${bin}:${process.env.PATH}`,
+      };
+      if (source === "explicit") env.COMPOSE_PROJECT_NAME = "explicit";
+      else delete env.COMPOSE_PROJECT_NAME;
+      const resolved = spawnSync("sh", [captureScript, "--resolve-project"], {
+        cwd: root,
+        encoding: "utf8",
+        env,
+      });
+      assert.notEqual(resolved.status, 0, `${source}: ${resolved.stdout}${resolved.stderr}`);
+      assert.match(
+        resolved.stderr,
+        /legacy handoff project is not a repository-owned directory/i,
+        source,
+      );
+      const result = runMake(root, "build", env);
+      assert.notEqual(result.status, 0, `${source}: ${result.stdout}${result.stderr}`);
+      assert.match(result.stderr, /legacy handoff project is not a repository-owned directory/i);
+      assert.equal(existsSync(action), false, `${source}: lifecycle action ran`);
+      assert.equal(readFileSync(join(external, "sentinel"), "utf8"), source);
+    } finally {
+      if (existsSync(root)) rmSync(root, { recursive: true, force: true });
+    }
   }
 });
 

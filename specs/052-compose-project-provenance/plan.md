@@ -166,6 +166,37 @@ or Docker resource is planned.
      `r4137191315` and `r4134154325` open until final Architect then Analyst
      validation both name that later head.
 
+10. **Architect return #4: exact ancestry, no-replace adoption, safe child**
+   - Parse each successful container `config_files` label as the documented
+     comma-separated path list and compare each token exactly with the canonical
+     checkout compose path. Preserve exact `working_dir` equality as a separate
+     authority; never use substring matching.
+   - Change adoption publication to an atomic same-directory no-replace claim,
+     using the narrow repository-owned primitive compatible with the Docker-only
+     helper. Preserve completed temporary-file fsync before publication and
+     parent fsync afterward. When the target already exists, validate it no-
+     follow and repeat durability barriers; return idempotent success only for
+     the same project, otherwise fail without overwrite or Docker build.
+   - Add deterministic concurrent-writer interleavings for same and different
+     projects. Prove one target publication, no replacement, exact loser
+     validation, cleaned attempt-owned temporaries, preserved file/no-replace/
+     parent ordering, and fail-closed injected retry paths.
+   - Refactor resolver control flow only enough to funnel every selected
+     explicit/adopted/default/discovered project through one child validator.
+     If the handoff root exists and its project child exists, require a no-follow
+     canonical directory directly beneath that root before printing/returning
+     or publishing an adoption. Absence remains allowed for later capture.
+   - Add one config-label table covering an exact target in a multi-file list
+     and `.backup`, prefix/suffix, sibling, and substring-only negatives. Add
+     actual-Make symlink-child controls for all four identity sources; assert no
+     lifecycle/bind/adoption action and no external mutation.
+   - Execute one combined focused suite, syntax/format/diff/feature/repository
+     guards, full preflight, and isolated real Docker retention lifecycle. Then
+     obtain one renewed exact-head review. Resolve both duplicate config threads
+     from the same evidence plus the adoption/child threads; keep validation-only
+     `r4134154325`/`r4137191315` open through final Architect then Analyst
+     validation on the final effective content head.
+
 ## Key Decisions
 
 - **D052-001:** reuse the capture script's existing combined
@@ -200,6 +231,14 @@ or Docker resource is planned.
 - **D052-013:** the historical basename image is optional evidence, not a value
   to normalize. Invalid raw basenames are skipped; only already-safe exact names
   may authorize the fallback probe.
+- **D052-014:** Compose config ancestry is token equality, not text containment;
+  the canonical compose path must be one complete comma-separated entry.
+- **D052-015:** `.adopted-project` is a first-writer-wins durable claim. A loser
+  never overwrites and may converge only on an exact same-project winner after
+  revalidation and durability barriers.
+- **D052-016:** root safety and project-child safety are separate invariants.
+  Every selected identity passes the child invariant before it leaves resolver
+  authority or triggers adoption.
 
 ## Verification Matrix
 
@@ -214,6 +253,9 @@ or Docker resource is planned.
 | Existing handoff root | no-follow resolver/actual-Make fixture | empty symlink/non-directory fails before Docker query, bind, adoption, or action; external target unchanged |
 | Adoption durability | ordered trace + injected file-sync/rename/parent-sync failures | exact file fsync precedes rename, parent fsync precedes build, failure blocks build, retry rebarriers visible exact record |
 | Invalid checkout basename | uppercase/space/dot resolver + actual-Make fixtures | no invalid image probe; label discovery remains available; clean install selects `cabadrive` |
+| Compose config ancestry | exact-list positive + near-match negative table | only a complete canonical list token grants ownership; working-dir exact match remains valid |
+| Concurrent adoption | adversarial same/different writer tests + durability trace | first durable claim is never replaced; same converges, different fails; build waits for authority |
+| Selected project child | explicit/adopted/default/discovered actual-Make symlink fixtures | child is validated before return/adoption/bind; action absent and external target unchanged |
 | Existing safety | focused capture tests | ambiguity, unsafe state, Docker failures, and clean install retain fail-closed behavior |
 | Runtime integration | isolated real Docker lifecycle | project/image/volume/handoff/stager continuity remains green |
 | Repository quality | full preflight and guards | all commands pass on effective content head |
@@ -248,3 +290,9 @@ or Docker resource is planned.
 - Passing an invalid checkout basename to Docker turns optional migration
   discovery into a clean-install outage: validate before constructing the image
   reference and skip rather than normalize invalid evidence.
+- Substring config matching can adopt a container from a backup or neighboring
+  file: tokenize the label and require exact canonical membership.
+- Overwrite rename lets concurrent discoveries change identity after another
+  writer publishes: use a no-replace claim and exact winner reconciliation.
+- Validating only the parent leaves selected child symlinks available to later
+  bind mounts: validate the exact project child on every resolver exit path.

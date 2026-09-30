@@ -1573,6 +1573,51 @@ test("adopted project publication is file-synced, renamed, parent-synced, and re
   });
 });
 
+test("adopted project claims are first-writer-wins and converge only on the same project", () => {
+  withFixture((root) => {
+    const same = join(root, "same");
+    mkdirSync(same, { recursive: true });
+    let interleaved = false;
+    const outer = writeAdoptedProject({
+      handoffRoot: same,
+      project: "historical",
+      onBeforeAdoptedProjectClaim: () => {
+        if (interleaved) return;
+        interleaved = true;
+        writeAdoptedProject({ handoffRoot: same, project: "historical" });
+      },
+    });
+    assert.equal(outer.changed, false);
+    assert.equal(verifyAdoptedProject({ handoffRoot: same }).project, "historical");
+    assert.equal(
+      readdirSync(same).some((name) => name.startsWith(".adopted-project.next-")),
+      false,
+    );
+
+    const different = join(root, "different");
+    mkdirSync(different, { recursive: true });
+    interleaved = false;
+    assert.throws(
+      () =>
+        writeAdoptedProject({
+          handoffRoot: different,
+          project: "first",
+          onBeforeAdoptedProjectClaim: () => {
+            if (interleaved) return;
+            interleaved = true;
+            writeAdoptedProject({ handoffRoot: different, project: "second" });
+          },
+        }),
+      /conflicts with discovery/i,
+    );
+    assert.equal(verifyAdoptedProject({ handoffRoot: different }).project, "second");
+    assert.equal(
+      readdirSync(different).some((name) => name.startsWith(".adopted-project.next-")),
+      false,
+    );
+  });
+});
+
 test("legacy handoff pointer replaces a hostile current symlink without following it", () => {
   withFixture((root) => {
     const handoff = join(root, "handoff");

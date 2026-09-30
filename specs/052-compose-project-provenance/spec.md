@@ -161,6 +161,30 @@ record and therefore select the same project.
   discovery still runs, and zero authoritative candidates selects the documented
   `cabadrive` clean-install default. Skipping an invalid optional basename is not
   equivalent to suppressing Docker errors for a valid probe.
+- **FR-052-13 — exact Compose config-file ancestry:** container discovery may
+  treat `com.docker.compose.project.config_files` as checkout ownership only
+  when one token in its comma-separated list exactly equals the canonical
+  `$repo_root/docker-compose.yml` path. Substring, prefix/suffix, `.backup`,
+  sibling, or other near matches are not authority. Exact `working_dir`
+  equality remains independently sufficient; malformed/empty config tokens do
+  not create ownership.
+- **FR-052-14 — concurrent adoption is atomic no-replace:** first-upgrade
+  publishers must never overwrite `.adopted-project`. Publication uses one
+  atomic no-replace claim after the temporary file is complete and durable. A
+  losing writer may succeed only after no-follow validation proves the already
+  published record is exact, names the same project, and has completed its file
+  and parent durability barriers; a different, unsafe, unreadable, or
+  incompletely durable winner fails closed. Preserve temporary-file cleanup,
+  retry semantics, and `file fsync < no-replace publication < parent fsync <
+  Docker build` ordering.
+- **FR-052-15 — selected project child is safe before authority:** after any
+  explicit, adopted, default, or discovered identity is selected, but before a
+  resolve-only return or discovered adoption, classify
+  `.cabadrive-release-handoff/<project>` without following links. Absence is
+  allowed for later creation; every existing entry must be a canonical regular
+  directory contained directly beneath the validated handoff root. Symlink,
+  non-directory, inaccessible, or escaped children fail before bind-mounted
+  lifecycle action, capture, or adoption.
 
 ## Acceptance Criteria
 
@@ -207,6 +231,16 @@ record and therefore select the same project.
     and actual Make lifecycle select `cabadrive` without issuing an invalid
     historical-image inspection. A valid lowercase historical basename keeps
     the existing exact discovery behavior.
+15. A comma-separated `config_files` label containing the exact canonical
+    compose path authorizes its project. Labels containing only `.backup`,
+    prefixed/suffixed, sibling, or substring near matches do not add a candidate.
+16. Two concurrent first-upgrade adoption writers cannot replace one another.
+    Same-project contenders converge only after exact winner validation and
+    durability; different-project contenders produce one durable winner and one
+    fail-closed loser without overwrite. Fault/retry ordering remains intact.
+17. Existing symlink project children for explicit, adopted, default, and
+    discovered selections make resolver/actual Make fail before return,
+    adoption, bind mount, or lifecycle action; external targets remain unchanged.
 
 ## Required Negative Scenarios
 
@@ -228,6 +262,14 @@ record and therefore select the same project.
 - Invalid raw checkout basename is skipped as an optional historical image
   candidate; it must not produce an invalid-reference Docker failure or be
   normalized into an unproven project identity.
+- `config_files` values that only contain the canonical path as a substring,
+  including `.backup` and near-match suffix/prefix paths, do not establish
+  checkout ownership.
+- Concurrent adoption with a different project cannot overwrite the first
+  durable record; an unsafe or not-yet-verifiable winner is not accepted as an
+  idempotent success.
+- Existing symlink/non-directory project child fails for every identity source,
+  including explicit and default paths that otherwise return without discovery.
 - Genuine clean install selects `cabadrive` and creates no adoption record.
 
 ## Verification Requirements
@@ -310,13 +352,33 @@ record and therefore select the same project.
   new full effective content head and perform final Architect validation followed
   by final Analyst validation on that same head before resolving this thread or
   `r4134154325`.
+- **R052-009 / `r4137369943` and duplicate `r4143886242` — config-files
+  substring grants false ancestry: accepted (Architect return #4).** Parse the
+  Docker Compose `config_files` label as a comma-separated list and require one
+  exact canonical path token. Retain exact working-directory authority. Add a
+  positive multi-file list and `.backup`, prefix/suffix, sibling, and substring
+  negatives; the two review threads share one implementation/disposition.
+- **R052-010 / `r4137369949` — concurrent adoption can overwrite the winner:
+  accepted (Architect return #4).** Replace overwrite-capable rename with an
+  atomic no-replace publication primitive. On collision, validate and durability-
+  sync the winner; same project is idempotent, different/unsafe state fails
+  closed. Add adversarial same/different-project concurrency plus fsync/fault/
+  retry ordering coverage and prove Docker build never precedes durable winner
+  authority.
+- **R052-011 / `r4143886073` — selected project child is unchecked on
+  resolve-only paths: accepted (Architect return #4).** Centralize a no-follow
+  canonical child validator after identity selection and before every return or
+  discovered adoption. Add actual-Make symlink-child controls for explicit,
+  adopted, default, and discovered identities, proving no bind/action/adoption
+  and no external mutation.
 
 ## Final Validation Protocol
 
-- Feature-052 Architect return limit: 10. Current count: 3. Return #1 accepted
+- Feature-052 Architect return limit: 10. Current count: 4. Return #1 accepted
   R052-003; return #2 accepted R052-005/R052-006; final-validation return #3
-  accepts R052-007. No Architect pass is recorded until its focused fix and all
-  renewed gates are complete.
+  accepted R052-007; return #4 accepts the bounded combined R052-009/R052-010/
+  R052-011 batch. No Architect pass is recorded until the combined fix and one
+  renewed verification/review cycle are complete.
 - Feature-052 Analyst return limit: 5. Initial count: 0.
 - The effective content head contains implementation, tests, documentation,
   dispositions, and all mutable task/evidence state.
