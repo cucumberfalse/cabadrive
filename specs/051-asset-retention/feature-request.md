@@ -173,6 +173,48 @@ The known dependent PR is #215 (`codex/049-learning-priority-fresh-update`). It 
 
 ## Final Analyst Validation Notes
 
+### Renewed combined-cycle validation — 2026-09-30
+
+- Analyst validation pass: passed
+- Final Analyst validation completed at: 2026-09-30T17:05:35Z
+- Analyst validated effective content head: 8f785ed08c16d2202867310f9ad4afab4f40dbdb
+- Analyst return count: 0 / 5.
+- Combined PR-set coverage: PR #217 on branch `codex/051-asset-retention`,
+  covering feature 051 asset retention, feature 052 Compose-project provenance,
+  and feature 053 brace-expansion security refresh. Current pre-validation-
+  evidence head `19b0c9f8ab255dac9ba3c8f3a988e5626d184e27` differs from the effective
+  content head only in feature-052/053 verification and process evidence; the
+  uncommitted Architect PASS additions remain in those same Architect-owned
+  `tasks.md` files.
+- Customer-intent validation: the renewed combined result still satisfies
+  R051-1 through R051-8 in spirit and letter. Recorded tests prove append-only
+  immutable staging, equal-byte idempotence, collision/path/symlink and
+  incomplete-stage fail-closed behavior, shell-last activation, a genuine old
+  cache-miss lazy asset served with exact historical bytes after the new
+  release, the destructive replacement negative, and the Docker/static-host
+  deployment contract. Feature 052's durable discovered-project provenance
+  closes the later Make-lifecycle split that could otherwise bypass that same
+  retained release, without weakening explicit caller choice, clean-install
+  fallback, ambiguity rejection, or safety containment.
+- Regression and review evidence: the final combined focused suites passed
+  85/85, full preflight passed 643/643 Node tests plus production build/service
+  worker generation and 158/158 Playwright tests, and the isolated real Docker
+  retained-asset lifecycle passed and self-cleaned. Exact-head Review Agent and
+  native Codex review report no technical finding; no unresolved
+  Implementation Agent feedback or accepted known issue remains.
+- Sequencing remains mandatory: PR #217 must merge before dependent PR #215 is
+  synchronized to the resulting `main`, retested, reviewed, and independently
+  revalidated. This PASS does not authorize skipping that requirement.
+- Merge-gate boundary: required `AI Review`, remaining validation-only thread
+  resolution, exact-current-head required-check/conflict verification, and the
+  Orchestrator current-head guard/finalizer remain mandatory. They are not
+  waived by Analyst validation and do not represent a customer-intent gap in
+  the validated effective content.
+
+The earlier Analyst validation below applies only to historical effective head
+`953709f0f12e3ac839c65c074908aef674b74bbd` and is superseded for merge
+authority by the renewed combined-cycle validation above.
+
 - Analyst validation pass: passed
 - Final Analyst validation completed at: 2026-09-28T11:19:10Z
 - Analyst validated effective content head: 953709f0f12e3ac839c65c074908aef674b74bbd

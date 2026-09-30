@@ -324,3 +324,42 @@ adjacent process-memory reconciliation needed for trustworthy finalization.
 No implementation or validation pass is claimed by this intake. Architect
 planning, implementation, review, final Architect validation, final Analyst
 validation, current-head guards, and merge remain pending.
+
+## Final Analyst Validation
+
+- Analyst validation pass: passed
+- Final Analyst validation completed at: 2026-09-30T17:05:35Z
+- Analyst validated effective content head: 8f785ed08c16d2202867310f9ad4afab4f40dbdb
+- Analyst return count: 0 / 5.
+- Combined PR-set coverage: PR #217 on branch `codex/051-asset-retention`,
+  covering feature 051 asset retention, this feature 052 Compose-project
+  provenance cycle, and feature 053 brace-expansion security refresh. Current
+  pre-validation-evidence head
+  `19b0c9f8ab255dac9ba3c8f3a988e5626d184e27` adds only feature-052/053
+  verification/process evidence beyond the effective content head, with the
+  final Architect PASS recorded in Architect-owned task memory.
+- Customer-intent validation: R052-1 through R052-8 and all required negative
+  scenarios are satisfied in spirit and letter. The recorded Make-level and
+  resolver regressions prove that a uniquely discovered non-default project is
+  identified with explicit provenance, durably adopted before replacement,
+  and reused after historical evidence disappears. Explicit caller choice is
+  not falsely adopted, genuine clean install remains `cabadrive`, invalid or
+  ambiguous discovery fails before Docker mutation, and unsafe selected-child,
+  token parsing, concurrent first-writer, rename, and durability paths remain
+  fail-closed.
+- Evidence coverage: all bounded R052-001 through R052-012 findings were
+  implemented and dispositioned. The final focused capture/staging suites
+  passed 85/85; full preflight passed 643/643 Node tests, production build and
+  service-worker generation, and 158/158 Playwright tests; the isolated real
+  Docker lifecycle passed and self-cleaned. Exact-head Review Agent and native
+  Codex review found no technical defect. There is no unresolved Implementation
+  Agent feedback, accepted known issue, or further customer-intent gap.
+- Cross-feature consistency: this provenance correction preserves feature
+  051's retained-asset and shell-last safety contract and feature 053 changes
+  only the vulnerable transitive dependency graph. The combined PR has one
+  renewed effective content head and no contradictory claim that the older
+  feature-051 validation alone authorizes merge.
+- Merge-gate boundary: the required `AI Review`, validation-only thread
+  resolution, current-head required-check/conflict verification, and
+  Orchestrator evidence-only guard/finalizer remain mandatory and are not
+  waived by this PASS.

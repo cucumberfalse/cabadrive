@@ -143,22 +143,24 @@
   `for config_file in $config_files` with quoted literal comma-token slicing (or
   a strictly scoped/restored noglob equivalent). Preserve exact multi-file
   positive behavior and independent exact `working_dir` authority.
-- [ ] T052-014q Add expandable wildcard negatives for `?`, `*`, and bracket
+- [x] T052-014q Add expandable wildcard negatives for `?`, `*`, and bracket
   expressions with filesystem entries that would match the canonical compose
   path under the old loop. Prove no candidate/adoption; then run one focused
   capture/runtime suite, shell/format/diff/feature/repository guards, full
   preflight, isolated real Docker lifecycle, and renewed exact-head review.
   Resolve only `r4144203150` from this evidence; validation-only threads remain
   open for final Architect then Analyst markers.
-- [ ] T052-015 Orchestrator routes any actionable finding role-appropriately;
-  every Implementation Agent feedback item receives Architect disposition.
+- [x] T052-015 Orchestrator routed every actionable finding role-appropriately;
+  every Implementation Agent feedback item has Architect disposition. Renewed
+  exact-head Review Agent and native review reported no additional technical
+  finding.
 - [x] T052-016 Resolve `r4121580555` with the passing Make-level regression and
   `r4121580548` with coherent role-owned process memory.
 - [ ] T052-017 Orchestrator records the exact cycle PR set/head, acceptance
   evidence, green required checks, conflict state, cleanup applicability, and a
   complete paginated read-only review/thread guard for PR #217.
-- [ ] T052-018 Orchestrator invokes final Architect validation after T052-017.
-  Architect return limit: 10; current count: 0.
+- [x] T052-018 Orchestrator invoked final Architect validation for the combined
+  feature-051/052/053 cycle. Architect return limit: 10; current count: 5.
 - [ ] T052-019 After Architect pass, Orchestrator invokes final Analyst
   validation on the same effective content head. Analyst return limit: 5;
   current count: 0.
@@ -390,20 +392,43 @@
   findings assigned as one bounded Architect return #4 batch and completed in
   this implementation return. R052-012 was the sole residual bounded-re-review
   finding assigned by Architect return #5 and is implemented with complete
-  local evidence; renewed exact-head review remains Orchestrator-owned.
+  local evidence. Renewed exact-head Review Agent and native review passed with
+  no technical finding.
 
 ## Known Issues
 
-- R052-012 implementation and local verification are complete; exact-head
-  review and originating-thread disposition remain before final validation.
-  It is not an accepted known issue for merge. `r4134154325` and
-  `r4137191315` remain validation-only gates.
+- No accepted technical known issue. R052-012 implementation, local
+  verification, and exact-head review are complete. `r4134154325` and
+  `r4137191315` remain open validation-only gates until the later Analyst pass
+  and thread resolution; the still-running required `AI Review` workflow must
+  become green before Orchestrator finalization.
 
 ## Final Architect Validation
 
-- Architect validation pass: pending.
+- Architect validation evidence: combined PR #217 cycle covers historical
+  feature-051 effective head `953709f0f12e3ac839c65c074908aef674b74bbd`,
+  all five bounded feature-052 returns and dispositions, and feature-053's
+  independent security refresh. The stale feature-051 pass is not reused for
+  merge authority; renewed effective content head
+  `8f785ed08c16d2202867310f9ad4afab4f40dbdb` contains every behaviorally
+  meaningful correction.
+- Architect validation evidence: current head
+  `19b0c9f8ab255dac9ba3c8f3a988e5626d184e27` differs from the effective
+  content head only in verification/process evidence in feature-052 and
+  feature-053 `tasks.md`. Exact-head Review Agent and native Codex review have
+  no technical finding; focused, full preflight, Docker, dependency, and four
+  completed required-check results are green. The running `AI Review` check,
+  later Analyst validation, validation-only thread resolution, and final
+  current-head guard remain Orchestrator merge gates.
+- Architect validation evidence: all R052-001 through R052-012 findings are
+  accepted and implemented, no Implementation Agent feedback is unresolved,
+  no accepted known issue remains, and the combined result satisfies the
+  original asset-retention, Make provenance, fail-closed safety, and truthful
+  OSV customer intent in spirit and letter.
+- Architect validation pass: passed
+- Final Architect validation completed at: 2026-09-30T17:00:40Z
 - Architect return count: 5 / 10.
-- Architect validated effective content head: pending.
+- Architect validated effective content head: 8f785ed08c16d2202867310f9ad4afab4f40dbdb
 
 ## Final Analyst Validation
 

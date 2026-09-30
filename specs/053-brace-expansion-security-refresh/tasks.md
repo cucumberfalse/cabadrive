@@ -29,14 +29,14 @@
 
 ## Review And Follow-Up Tasks
 
-- [ ] **T012 — Perform exact-head review.** Review both major lines, duplicate absence, owners, diff accountability, engine/peer compatibility, frozen install, OSV-policy integrity, scope, feature memory, and role boundaries.
-- [ ] **T013 — Dispose all findings and feedback.** Orchestrator routes each item to Architect. Record task, follow-up ticket, duplicate, or explicit not-needed rationale; implementation fixes only accepted in-scope tasks and reruns proportional checks.
+- [x] **T012 — Perform exact-head review.** Review Agent and current-head native Codex review passed with no technical finding after inspecting both major lines, duplicate absence, owners, diff accountability, compatibility, determinism, OSV-policy integrity, scope, memory, and role boundaries.
+- [x] **T013 — Dispose all findings and feedback.** No feature-053 review finding or unresolved Implementation Agent feedback requires another task, ticket, or known-issue decision.
 - [ ] **T014 — Verify exact-head GitHub state.** Require all five checks (`baseline-checks`, `docker-validation`, `guard`, `AI Review`, `osv-scan`) green, complete paginated review/thread inspection blocker-free, PR #217 conflict-free, and process memory current on the exact head.
 
 ## Final Validation Tasks
 
-- [ ] **T015 — Establish the renewed effective content head.** Include dependency content, feature-053 process memory, all fixes/dispositions, cycle PR set, acceptance evidence, and combined PR #217 state before role validation.
-- [ ] **T016 — Complete final Architect validation.** When explicitly invoked, validate the full feature-053 cycle, all tasks/dispositions/guidance, exact-head dependency and OSV evidence, combined feature-051/052/053 PR state, open task state, process memory, and customer intent. Record pass/timestamp/effective-head markers or increment the return count and return concrete gaps.
+- [x] **T015 — Establish the renewed effective content head.** Effective content head `8f785ed08c16d2202867310f9ad4afab4f40dbdb` includes dependency content, feature-053 memory, all technical fixes/dispositions, acceptance evidence, and combined PR #217 state.
+- [x] **T016 — Complete final Architect validation.** Architect validated the full combined cycle and effective content head at return count `0 / 10` for feature 053; remaining Analyst/current-head actions are separate ordered gates.
 - [ ] **T017 — Complete later Analyst validation.** Only after Architect passes, Analyst validates the original security/merge outcome against the same effective content head and records role-owned evidence in `feature-request.md`.
 - [ ] **T018 — Run the final current-head guard and finalize.** Prove any post-effective-head delta is evidence-only, recheck all five checks/review/threads/conflicts/feedback/process memory, run expected-head finalizer dry-run, and use conservative protected finalization. Complete paginated guards remain mandatory if helper pagination requires authorized manual squash merge.
 
@@ -81,14 +81,18 @@
   Vite temporary-file `EPERM`, before any product failure.
 - Docker validation: `pnpm run test:docker-retention` passed for isolated
   project `cabadrive-retention-72988-1790786393203` and completed teardown.
-- Exact-head GitHub checks/review/conflicts: pending Orchestrator coordination.
+- Exact-head GitHub checks/review/conflicts: exact-head Review Agent and native
+  Codex review passed with no technical finding. `baseline-checks`,
+  `docker-validation`, `guard`, and `osv-scan` are green; required `AI Review`
+  is still running and therefore remains a hard pre-merge gate. Validation-only
+  threads await the ordered Architect/Analyst evidence and resolution.
 - Current-head guard/finalizer: pending after final validations.
 
 ## Cycle PR Set
 
 | Purpose | Branch | PR | Starting head | Current/final head | Status | Final-validation inclusion |
 |---|---|---|---|---|---|---|
-| Feature-053 security refresh contributing to combined feature-051/052/053 delivery | `codex/051-asset-retention` | #217 | `0ab100ebcb4cdb4f19f4bb148675184b7a10b8a5` | `8f785ed08c16d2202867310f9ad4afab4f40dbdb` effective content | Open; implementation complete, review/checks pending | Required |
+| Feature-053 security refresh contributing to combined feature-051/052/053 delivery | `codex/051-asset-retention` | #217 | `0ab100ebcb4cdb4f19f4bb148675184b7a10b8a5` | `8f785ed08c16d2202867310f9ad4afab4f40dbdb` effective content; `19b0c9f8ab255dac9ba3c8f3a988e5626d184e27` validated current head | Open; implementation/review/Architect validation complete, AI Review workflow and later gates pending | Required |
 
 ## Decisions And Dead Ends
 
@@ -115,15 +119,42 @@ finalization remain required gates rather than implementation defects.
 
 ## Final Validation Evidence
 
-- Architect validation: pending Orchestrator invocation after implementation, review, checks, and dispositions are complete.
+- Architect validation: passed for the complete combined feature-051/052/053
+  cycle and feature-053 security-refresh acceptance evidence.
 - Architect return count: 0.
 - Analyst validation: pending and must follow a passing Architect validation.
 - Analyst return count: 0.
 - Effective content head: `8f785ed08c16d2202867310f9ad4afab4f40dbdb`.
-- Final-validation evidence-only delta: pending.
+- Final-validation evidence-only delta: current head
+  `19b0c9f8ab255dac9ba3c8f3a988e5626d184e27` differs from effective content
+  head `8f785ed08c16d2202867310f9ad4afab4f40dbdb` only through verification and
+  process evidence in feature-052 and feature-053 `tasks.md`.
 - Current-PR-head read-only guard: pending.
 - Limit escalation: none.
 
 ## Final Architect Validation Notes
 
-Populate only when Orchestrator explicitly invokes final Architect validation after implementation, review, required checks, feedback disposition, cycle evidence, and combined current-head evidence are complete.
+- Architect validation evidence: inspected the entire PR #217 cycle: feature
+  051's historical pass and explicit stale disposition, feature 052 return
+  count `5 / 10` with R052-001 through R052-012 implemented/disposed, and
+  feature 053's ordinary lock-only resolution to `brace-expansion@1.1.21` and
+  `brace-expansion@5.0.12` with no manifest, owner, unrelated dependency, or
+  OSV-policy drift.
+- Architect validation evidence: effective content head
+  `8f785ed08c16d2202867310f9ad4afab4f40dbdb` contains all behaviorally
+  meaningful implementation, tests, dependency content, and Architect policy.
+  Current head `19b0c9f8ab255dac9ba3c8f3a988e5626d184e27`
+  adds only feature-052/053 verification and process evidence.
+- Architect validation evidence: focused regressions, 643 Node tests, build and
+  service-worker generation, 158 Playwright tests, isolated Docker lifecycle,
+  lock audit, ownership, frozen install, and exact-head no-finding Review Agent
+  and native review evidence cover the customer outcome. Four completed
+  required checks are green. The still-running `AI Review` workflow is not
+  waived and must pass before merge, followed by Analyst validation,
+  validation-only thread resolution, and the current-head guard.
+- Architect disposition: no unresolved technical finding, Implementation Agent
+  feedback, accepted known issue, or additional feature request is required.
+- Architect validation pass: passed
+- Architect return count: 0 / 10
+- Final Architect validation completed at: 2026-09-30T17:00:40Z
+- Architect validated effective content head: 8f785ed08c16d2202867310f9ad4afab4f40dbdb
