@@ -173,6 +173,44 @@ The known dependent PR is #215 (`codex/049-learning-priority-fresh-update`). It 
 
 ## Final Analyst Validation Notes
 
+### Renewed combined-cycle validation — 2026-10-01
+
+- Analyst validation pass: passed
+- Final Analyst validation completed at: 2026-10-01T16:31:06Z
+- Analyst validated effective content head: 5da4cc28a9a722c0b2880f98c07afaf03d5e9600
+- Analyst return count: 0 / 5.
+- Combined PR-set coverage: PR #217 on branch `codex/051-asset-retention`,
+  covering feature 051 asset retention, feature 052 Compose-project provenance,
+  and feature 053 brace-expansion security refresh. Current PR head and
+  effective content head are the same exact commit; no post-effective delta
+  exists.
+- Customer-intent validation: the final combined result satisfies R051-1
+  through R051-8 in spirit and letter. Existing evidence proves append-only
+  immutable staging, byte-safe idempotence and collision rejection,
+  path/symlink and incomplete-stage failure safety, shell-last activation, the
+  real legacy cache-miss origin fallback with exact historical bytes, the
+  destructive-deployment negative, and the Docker/static-host contract.
+  Feature 052's final R052-013 correction also makes metadata-only retry
+  durability explicit before current activation, including fail-closed
+  metadata-file, metadata-directory, and state-directory barriers; this closes
+  the single later gap without weakening any feature-051 invariant.
+- Verification evidence: the R052-013 focused staging suite passed 52/52, full
+  preflight passed 644/644 Node tests plus production build/service-worker
+  generation and 158/158 Playwright tests, and the isolated Docker retention
+  lifecycle passed and self-cleaned. Exact-head Review Agent passed with no
+  finding, all five required GitHub checks are green, and the complete
+  paginated thread guard is resolved with no new thread.
+- Process and sequencing: all R052-001 through R052-013 dispositions are
+  complete at Architect return count 6/10; no unresolved Implementation Agent
+  feedback, accepted known issue, conflict, or customer-intent gap remains.
+  PR #217 must still merge before PR #215 is synchronized to resulting `main`,
+  retested, reviewed, and independently revalidated as required by R051-8.
+
+The 2026-09-30 validation for effective head
+`8f785ed08c16d2202867310f9ad4afab4f40dbdb` is stale and explicitly
+superseded because R052-013 was a later behaviorally meaningful durability
+fix. The validation above is the current Analyst authority.
+
 ### Renewed combined-cycle validation — 2026-09-30
 
 - Analyst validation pass: passed

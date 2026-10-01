@@ -11,7 +11,7 @@
 - Parallel preservation: all pre-existing feature-051/052 changes and sibling state remain outside feature-053 ownership.
 - Architect return count: `0 / 10`.
 - Analyst return count: `0 / 5`.
-- Effective content head: `8f785ed08c16d2202867310f9ad4afab4f40dbdb`.
+- Effective content head: `5da4cc28a9a722c0b2880f98c07afaf03d5e9600`.
 
 ## Implementation Tasks
 
@@ -92,7 +92,7 @@
 
 | Purpose | Branch | PR | Starting head | Current/final head | Status | Final-validation inclusion |
 |---|---|---|---|---|---|---|
-| Feature-053 security refresh contributing to combined feature-051/052/053 delivery | `codex/051-asset-retention` | #217 | `0ab100ebcb4cdb4f19f4bb148675184b7a10b8a5` | `8f785ed08c16d2202867310f9ad4afab4f40dbdb` effective content; `19b0c9f8ab255dac9ba3c8f3a988e5626d184e27` validated current head | Open; implementation/review/Architect validation complete, AI Review workflow and later gates pending | Required |
+| Feature-053 security refresh contributing to combined feature-051/052/053 delivery | `codex/051-asset-retention` | #217 | `0ab100ebcb4cdb4f19f4bb148675184b7a10b8a5` | `5da4cc28a9a722c0b2880f98c07afaf03d5e9600` effective/current content | Open; combined implementation, exact-head review, and renewed Architect validation complete | Required |
 
 ## Decisions And Dead Ends
 
@@ -119,16 +119,16 @@ finalization remain required gates rather than implementation defects.
 
 ## Final Validation Evidence
 
-- Architect validation: passed for the complete combined feature-051/052/053
-  cycle and feature-053 security-refresh acceptance evidence.
+- Architect validation: renewed pass for the complete combined
+  feature-051/052/053 cycle after bounded F052 return #6; the earlier pass on
+  `8f785ed08c16d2202867310f9ad4afab4f40dbdb` is superseded.
 - Architect return count: 0.
 - Analyst validation: pending and must follow a passing Architect validation.
 - Analyst return count: 0.
-- Effective content head: `8f785ed08c16d2202867310f9ad4afab4f40dbdb`.
-- Final-validation evidence-only delta: current head
-  `19b0c9f8ab255dac9ba3c8f3a988e5626d184e27` differs from effective content
-  head `8f785ed08c16d2202867310f9ad4afab4f40dbdb` only through verification and
-  process evidence in feature-052 and feature-053 `tasks.md`.
+- Effective content head: `5da4cc28a9a722c0b2880f98c07afaf03d5e9600`.
+- Final-validation evidence-only delta: none at renewed validation; current and
+  effective content head are both
+  `5da4cc28a9a722c0b2880f98c07afaf03d5e9600`.
 - Current-PR-head read-only guard: pending.
 - Limit escalation: none.
 
@@ -158,3 +158,21 @@ finalization remain required gates rather than implementation defects.
 - Architect return count: 0 / 10
 - Final Architect validation completed at: 2026-09-30T17:00:40Z
 - Architect validated effective content head: 8f785ed08c16d2202867310f9ad4afab4f40dbdb
+- Architect validation evidence: the preceding pass is historical and was
+  superseded by F052 return #6. Renewed exact/current head
+  `5da4cc28a9a722c0b2880f98c07afaf03d5e9600` preserves feature-053's audited
+  lock-only `brace-expansion@1.1.21`/`5.0.12` resolution and adds only the
+  bounded F052 durability correction, its exact regression, and current
+  Architect-owned cycle evidence.
+- Architect validation evidence: combined return #6 verification passed 52/52
+  focused staging tests, 644/644 Node tests, build/SW, 158/158 Playwright tests,
+  and isolated Docker lifecycle. Exact-head Review Agent comment `5916353134`
+  passed with no findings; complete two-page thread enumeration shows the P2
+  and validation-only threads resolved with no new thread.
+- Architect disposition: the combined F051/F052/F053 cycle has no unresolved
+  technical finding, feedback item, accepted known issue, or additional
+  Architect task. F052 return count is 6/10; F053 remains 0/10.
+- Architect validation pass: passed
+- Architect return count: 0 / 10
+- Final Architect validation completed at: 2026-10-01T16:29:35Z
+- Architect validated effective content head: 5da4cc28a9a722c0b2880f98c07afaf03d5e9600

@@ -172,7 +172,8 @@
   evidence, green required checks, conflict state, cleanup applicability, and a
   complete paginated read-only review/thread guard for PR #217.
 - [x] T052-018 Orchestrator invoked final Architect validation for the combined
-  feature-051/052/053 cycle. Architect return limit: 10; current count: 5.
+  feature-051/052/053 cycle and renewed it after bounded return #6. Architect
+  return limit: 10; current count: 6.
 - [ ] T052-019 After Architect pass, Orchestrator invokes final Analyst
   validation on the same effective content head. Analyst return limit: 5;
   current count: 0.
@@ -445,12 +446,10 @@
 
 ## Known Issues
 
-- No accepted technical known issue. R052-013 implementation and local
-  verification are complete; exact-head review and renewed final validation
-  remain required. Validation-only thread
-  `PRRT_kwDOSX65IM6noHqI` already has the required ordered role markers and
-  was replied to and resolved, but those markers are stale for merge after this
-  non-evidence return.
+- No accepted technical known issue. R052-013 implementation, focused/full/
+  Docker verification, exact-head no-finding review, and renewed Architect
+  validation are complete. The full two-page thread guard confirms the assigned
+  P2 and validation-only threads are resolved with no new thread.
 
 ## Final Architect Validation
 
@@ -489,11 +488,34 @@
   finding, establish a new effective content head, then repeat final Architect
   and Analyst validation in order before the current-head guard.
 - Architect validated effective content head: pending R052-013 implementation and revalidation.
+- Architect validation evidence: the failed return #6 marker immediately above
+  is superseded. Effective/current head
+  `5da4cc28a9a722c0b2880f98c07afaf03d5e9600` contains the bounded R052-013
+  durability fix, exact fault/order regression, and current F052 evidence; no
+  post-effective delta exists.
+- Architect validation evidence: metadata-only retry now repeats the existing
+  metadata-file, metadata-directory, and state-directory durability barriers
+  before current activation and fails closed at each injected barrier. Focused
+  staging passed 52/52, full preflight passed 644/644 Node tests plus build/SW
+  and 158/158 Playwright tests, and the isolated Docker lifecycle passed.
+- Architect validation evidence: Review Agent exact-head comment `5916353134`
+  is PASS with no findings. The complete two-page review-thread guard confirms
+  R052-013 and validation-only threads resolved and no new thread. Across the
+  combined cycle, feature-051's earlier pass remains historical, all R052-001
+  through R052-013 dispositions are complete at return count 6/10, and
+  feature-053 remains a narrow lock-only security refresh at return count 0/10.
+- Architect validation evidence: no unresolved Implementation Agent feedback,
+  accepted known issue, open technical task, architectural gap, or conflict
+  with the user's asset-retention, Compose provenance, fail-closed durability,
+  and truthful security-gate intent remains.
+- Architect validation pass: passed
+- Final Architect validation completed at: 2026-10-01T16:29:35Z
+- Architect return count: 6 / 10.
+- Architect validated effective content head: 5da4cc28a9a722c0b2880f98c07afaf03d5e9600
 
 ## Final Analyst Validation
 
-- Analyst validation: the feature-053 pass completed after the prior Architect
-  pass but is stale for merge authority after R052-013; repeat only after the
-  renewed Architect pass.
+- Analyst validation: the prior pass is stale after R052-013; Orchestrator may
+  now invoke renewed Analyst validation after the fresh Architect pass above.
 - Analyst return count: 0 / 5.
 - Analyst validated effective content head: pending.

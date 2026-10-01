@@ -327,6 +327,46 @@ validation, current-head guards, and merge remain pending.
 
 ## Final Analyst Validation
 
+### Renewed validation after Architect return #6 — 2026-10-01
+
+- Analyst validation pass: passed
+- Final Analyst validation completed at: 2026-10-01T16:31:06Z
+- Analyst validated effective content head: 5da4cc28a9a722c0b2880f98c07afaf03d5e9600
+- Analyst return count: 0 / 5.
+- Combined PR-set coverage: PR #217 on branch `codex/051-asset-retention`,
+  covering feature 051 asset retention, this feature 052 Compose-project
+  provenance cycle, and feature 053 brace-expansion security refresh. Current
+  PR head equals the effective content head exactly, with no later delta.
+- Customer-intent validation: R052-1 through R052-8 and every required negative
+  scenario are satisfied in spirit and letter. All R052-001 through R052-013
+  findings have role-correct dispositions and implementation. In particular,
+  return #6 closes the metadata-only/not-current retry gap: pre-existing
+  candidate metadata is verified and the metadata file, metadata directory,
+  and complete directory chain to state are durably synchronized before
+  `makeCurrent`; an injected failure at each barrier leaves A selected, and a
+  clean retry orders every barrier before activation and selects verified B.
+- Earlier provenance guarantees remain intact: uniquely discovered non-default
+  identity is durably adopted before replacement and survives loss of discovery
+  evidence; explicit caller choice is not spuriously persisted; genuine clean
+  install remains `cabadrive`; ambiguity, invalid state, unsafe selected
+  children, token parsing, concurrent first-writer, rename, and durability
+  failures all remain fail-closed before unintended Docker lifecycle mutation.
+- Verification evidence: focused staging passed 52/52; full preflight passed
+  644/644 Node tests, production build/service-worker generation, and 158/158
+  Playwright tests; the isolated real Docker lifecycle passed and self-cleaned.
+  Exact-head Review Agent passed with no finding, all five required GitHub
+  checks are green, and complete paginated review-thread inspection confirms
+  all threads resolved with no new thread.
+- Cross-feature and process validation: the correction preserves feature 051's
+  retained-assets/shell-last contract and feature 053's narrow truthful
+  security refresh. Architect return count is 6/10, Analyst return count is
+  0/5, and no unresolved feedback, accepted known issue, conflict, open task,
+  or further customer-intent gap remains.
+
+The 2026-09-30 Analyst validation for effective head
+`8f785ed08c16d2202867310f9ad4afab4f40dbdb` is stale and explicitly
+superseded by this validation because R052-013 changed durability behavior.
+
 - Analyst validation pass: passed
 - Final Analyst validation completed at: 2026-09-30T17:05:35Z
 - Analyst validated effective content head: 8f785ed08c16d2202867310f9ad4afab4f40dbdb
