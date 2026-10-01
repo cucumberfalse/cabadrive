@@ -327,6 +327,41 @@ validation, current-head guards, and merge remain pending.
 
 ## Final Analyst Validation
 
+### Renewed validation after Architect return #7 — 2026-10-01
+
+- Analyst validation pass: passed
+- Final Analyst validation completed at: 2026-10-01T17:07:24Z
+- Analyst validated effective content head: efaa9fe3d74f8d13d029286e6689fc46591f78b5
+- Analyst return count: 0 / 5.
+- Combined PR-set coverage: PR #217 on branch `codex/051-asset-retention`,
+  covering feature 051 asset retention, this feature 052 Compose-project
+  provenance cycle, and feature 053 brace-expansion security refresh. Current
+  PR head and effective content head are the same commit with no later delta.
+- Customer-intent validation: R052-1 through R052-8 and all required negative
+  scenarios are satisfied in spirit and letter. R052-014 pins the canonical
+  release root returned by handoff validation so a concurrent `current` repoint
+  cannot redirect inventory copy. R052-016 opens release metadata with
+  no-follow/nonblocking semantics and accepts it only when descriptor and path
+  identify the same regular file. R052-017 publishes `source-id` and
+  `source-kind` through exclusive temporary regular files and a no-replace
+  hard-link claim, allowing idempotent/same-value convergence while refusing
+  symlink, substitution, truncation, and conflicting-writer races.
+- Evidence coverage: the four direct regressions passed 4/4, full staging
+  passed 55/55, combined capture/staging passed 89/89, full preflight passed
+  647/647 Node tests plus build/service-worker generation and 158/158
+  Playwright tests, and the isolated real Docker lifecycle passed. Exact-head
+  Review Agent passed without findings; full two-page thread enumeration shows
+  every return #7 thread resolved and no new thread.
+- Cross-feature and process validation: the changes preserve feature 051's
+  retained-assets/shell-last safety contract and feature 053's narrow audited
+  security refresh. R052-001 through R052-017 are complete at Architect return
+  count 7/10; Analyst return count remains 0/5; no unresolved task, feedback,
+  finding, accepted known issue, or customer-intent gap remains.
+
+The Analyst validation for effective head
+`5da4cc28a9a722c0b2880f98c07afaf03d5e9600`, and every earlier Analyst marker,
+is stale and explicitly superseded by this return-#7 validation.
+
 ### Renewed validation after Architect return #6 — 2026-10-01
 
 - Analyst validation pass: passed

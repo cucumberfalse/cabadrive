@@ -173,6 +173,41 @@ The known dependent PR is #215 (`codex/049-learning-priority-fresh-update`). It 
 
 ## Final Analyst Validation Notes
 
+### Renewed combined-cycle validation — 2026-10-01 return #7
+
+- Analyst validation pass: passed
+- Final Analyst validation completed at: 2026-10-01T17:07:24Z
+- Analyst validated effective content head: efaa9fe3d74f8d13d029286e6689fc46591f78b5
+- Analyst return count: 0 / 5.
+- Combined PR-set coverage: PR #217 on branch `codex/051-asset-retention`,
+  covering feature 051 asset retention, feature 052 Compose-project provenance,
+  and feature 053 brace-expansion security refresh. Current PR head equals this
+  effective content head exactly; there is no post-effective delta.
+- Customer-intent validation: R051-1 through R051-8 remain satisfied in spirit
+  and letter. Return #7 closes the three bounded handoff/symlink gaps without
+  weakening append-only immutable retention, byte/collision safety,
+  fail-closed staging, shell-last activation, real old-cache-miss origin
+  continuity, destructive-deploy negative proof, or Docker/static-host
+  compatibility. The validated canonical release root is now pinned through
+  inventory copy; release metadata is accepted only through a no-follow
+  descriptor matching the same regular file; and `source-id`/`source-kind`
+  publication cannot follow, truncate, or lose a no-replace race.
+- Verification evidence: return controls passed 4/4, staging passed 55/55,
+  combined capture/staging passed 89/89, full preflight passed 647/647 Node
+  tests plus production build/service-worker generation and 158/158 Playwright
+  tests, and isolated Docker validation passed. Exact-head Review Agent passed
+  without findings, and the complete two-page thread guard resolved all return
+  #7 threads with no new thread.
+- Process and sequencing: R052-001 through R052-017 are complete at Architect
+  return count 7/10; no unresolved task, finding, feedback, accepted known
+  issue, or customer-intent gap remains. PR #217 must still merge before PR
+  #215 is synchronized, retested, reviewed, and independently revalidated.
+
+The 2026-10-01 validation for effective head
+`5da4cc28a9a722c0b2880f98c07afaf03d5e9600`, and all earlier Analyst markers,
+are stale and explicitly superseded because return #7 made later behaviorally
+meaningful safety changes. This validation is current authority.
+
 ### Renewed combined-cycle validation — 2026-10-01
 
 - Analyst validation pass: passed

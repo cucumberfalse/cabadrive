@@ -182,6 +182,38 @@ At intake, feature 053 has no separate PR. Its Orchestrator-approved single slic
 
 ## Final Analyst Validation Notes
 
+### Renewed combined-cycle validation — 2026-10-01 return #7
+
+- Analyst validation pass: passed
+- Final Analyst validation completed at: 2026-10-01T17:07:24Z
+- Analyst validated effective content head: efaa9fe3d74f8d13d029286e6689fc46591f78b5
+- Analyst return count: 0 / 5.
+- Combined PR-set coverage: PR #217 on branch `codex/051-asset-retention`,
+  covering feature 051 asset retention, feature 052 Compose-project provenance,
+  and this feature 053 security refresh. Current head equals the effective
+  content head exactly and has no later delta.
+- Customer-intent validation: feature 053 remains satisfied in spirit and
+  letter after the bounded feature-052 return #7 safety changes. Both
+  vulnerable dependency lines remain resolved at `brace-expansion@1.1.21` and
+  `brace-expansion@5.0.12`, with no vulnerable duplicate, manifest edit,
+  override, owner/toolchain movement, unrelated dependency churn, OSV
+  suppression, or workflow weakening.
+- Compatibility and combined evidence remain current: unchanged ownership and
+  Node 20 compatibility are preserved; the refreshed combined full preflight
+  passed 647/647 Node tests, build/service-worker generation, and 158/158
+  Playwright tests; isolated Docker validation passed. Exact-head Review Agent
+  passed without findings and the complete two-page thread guard is clean after
+  resolving every return #7 thread.
+- Process validation: the combined cycle covers all feature-051 evidence,
+  R052-001 through R052-017 at Architect return count 7/10, and feature 053 at
+  Architect return count 0/10. No unresolved feedback, accepted known issue,
+  security exception, conflict, or customer-intent gap remains.
+
+The Analyst validation for effective head
+`5da4cc28a9a722c0b2880f98c07afaf03d5e9600`, and every earlier Analyst marker,
+is stale and explicitly superseded because return #7 added behaviorally
+meaningful handoff/symlink safety changes.
+
 ### Renewed combined-cycle validation — 2026-10-01
 
 - Analyst validation pass: passed

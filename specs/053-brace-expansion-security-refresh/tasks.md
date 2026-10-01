@@ -120,15 +120,15 @@ finalization remain required gates rather than implementation defects.
 ## Final Validation Evidence
 
 - Architect validation: renewed pass for the complete combined
-  feature-051/052/053 cycle after bounded F052 return #6; the earlier pass on
-  `8f785ed08c16d2202867310f9ad4afab4f40dbdb` is superseded.
+  feature-051/052/053 cycle after bounded F052 return #7; all earlier passes are
+  historical and superseded for current merge authority.
 - Architect return count: 0.
 - Analyst validation: pending and must follow a passing Architect validation.
 - Analyst return count: 0.
-- Effective content head: `5da4cc28a9a722c0b2880f98c07afaf03d5e9600`.
+- Effective content head: `efaa9fe3d74f8d13d029286e6689fc46591f78b5`.
 - Final-validation evidence-only delta: none at renewed validation; current and
   effective content head are both
-  `5da4cc28a9a722c0b2880f98c07afaf03d5e9600`.
+  `efaa9fe3d74f8d13d029286e6689fc46591f78b5`.
 - Current-PR-head read-only guard: pending.
 - Limit escalation: none.
 
@@ -176,3 +176,22 @@ finalization remain required gates rather than implementation defects.
 - Architect return count: 0 / 10
 - Final Architect validation completed at: 2026-10-01T16:29:35Z
 - Architect validated effective content head: 5da4cc28a9a722c0b2880f98c07afaf03d5e9600
+- Architect validation evidence: the preceding return #6 pass is superseded by
+  bounded F052 return #7. Effective/current head
+  `efaa9fe3d74f8d13d029286e6689fc46591f78b5` preserves feature-053's audited
+  lock-only `brace-expansion@1.1.21`/`5.0.12` graph and adds only the accepted
+  F052 target-pinning/no-follow safety corrections, exact regressions, and
+  current cycle evidence.
+- Architect validation evidence: return #7 controls passed 4/4, staging passed
+  55/55, combined capture/staging passed 89/89, full preflight passed 647/647
+  Node tests plus build/SW and 158/158 Playwright tests, and isolated Docker
+  passed. Exact-head Review Agent comment `5936458493` passed without findings;
+  complete two-page thread enumeration shows all four return #7 threads
+  resolved and no new thread.
+- Architect disposition: the combined F051/F052/F053 cycle has no unresolved
+  technical finding, feedback item, accepted known issue, or additional
+  Architect task. F052 return count is 7/10; F053 remains 0/10.
+- Architect validation pass: passed
+- Architect return count: 0 / 10
+- Final Architect validation completed at: 2026-10-01T17:06:11Z
+- Architect validated effective content head: efaa9fe3d74f8d13d029286e6689fc46591f78b5

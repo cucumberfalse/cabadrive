@@ -510,8 +510,9 @@
 
 - No accepted technical known issue. R052-014, R052-016, and R052-017 are
   implemented with exact race/symlink/non-regular regressions and complete
-  focused/full/Docker evidence. Renewed exact-head review and final validation
-  remain Orchestrator gates. R052-015 needs only evidence reply/resolution.
+  focused/full/Docker evidence. Exact-head review passed without findings; the
+  complete two-page guard confirms all four return #7 threads resolved and no
+  new thread.
 
 ## Final Architect Validation
 
@@ -587,11 +588,38 @@
   content head, then repeat Architect and Analyst validation in order before
   the current-head guard.
 - Architect validated effective content head: pending return #7 implementation and revalidation.
+- Architect validation evidence: the failed return #7 marker immediately above
+  is superseded. Effective/current head
+  `efaa9fe3d74f8d13d029286e6689fc46591f78b5` contains the complete bounded
+  return #7 implementation, exact regressions, and current cycle evidence with
+  no post-effective delta.
+- Architect validation evidence: the validated handoff target is pinned across
+  inventory copy, release metadata is accepted only as a no-follow regular
+  file, and `source-id`/`source-kind` publication refuses symlink and
+  substitution races across initial, retry, and concurrent paths. Exact return
+  controls passed 4/4, staging passed 55/55, and combined capture/staging passed
+  89/89.
+- Architect validation evidence: full preflight passed 647/647 Node tests,
+  production build and service-worker generation, and 158/158 Playwright tests;
+  the isolated real Docker lifecycle passed. Exact-head Review Agent comment
+  `5936458493` is PASS with no findings, and the full two-page GraphQL guard
+  confirms all four return #7 threads resolved with no new thread.
+- Architect validation evidence: the full combined PR #217 cycle preserves
+  feature-051's historical evidence without treating it as current authority,
+  completes R052-001 through R052-017 at F052 return count 7/10, and preserves
+  feature-053's audited lock-only security resolution at return count 0/10.
+  No unresolved task, finding, feedback item, accepted known issue, or customer-
+  intent gap remains for Architect disposition.
+- Architect validation pass: passed
+- Final Architect validation completed at: 2026-10-01T17:06:11Z
+- Architect return count: 7 / 10.
+- Architect validated effective content head: efaa9fe3d74f8d13d029286e6689fc46591f78b5
 
 ## Final Analyst Validation
 
 - Analyst validation: the renewed pass on effective head
-  `5da4cc28a9a722c0b2880f98c07afaf03d5e9600` is stale after return #7; repeat
-  only after the next passing Architect validation.
+  `5da4cc28a9a722c0b2880f98c07afaf03d5e9600` is stale after return #7;
+  Orchestrator may now invoke a fresh Analyst validation after the passing
+  Architect marker above.
 - Analyst return count: 0 / 5.
 - Analyst validated effective content head: pending.
