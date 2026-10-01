@@ -240,6 +240,41 @@ test("legacy assets seed the append-only namespace and stay byte-identical", () 
   });
 });
 
+test("legacy staging stays bound to the validated release across current repoint", () => {
+  withFixture((root) => {
+    const handoff = join(root, "handoff");
+    const legacyA = legacyHandoff(join(handoff, "releases", "a"), "legacy-A", {
+      "shared.js": "validated A bytes",
+    });
+    const legacyB = legacyHandoff(join(handoff, "releases", "b"), "legacy-B", {
+      "shared.js": "different B bytes",
+      "b-only.js": "B only",
+    });
+    publishLegacyHandoffPointer({ handoffRoot: handoff, release: "releases/a" });
+    const state = join(root, "state");
+    const candidate = release(root, "candidate", { "candidate.js": "candidate" });
+    let repointed = false;
+
+    stageStaticRelease({
+      stateRoot: state,
+      candidateRoot: candidate,
+      legacyRoot: join(handoff, "current"),
+      onDurabilityOperation: () => {
+        if (repointed) return;
+        repointed = true;
+        publishLegacyHandoffPointer({ handoffRoot: handoff, release: "releases/b" });
+      },
+    });
+
+    assert.equal(repointed, true);
+    assert.equal(realpathSync(join(handoff, "current")), realpathSync(legacyB));
+    assert.equal(readFileSync(join(state, "assets", "shared.js"), "utf8"), "validated A bytes");
+    assert.equal(existsSync(join(state, "assets", "b-only.js")), false);
+    assert.equal(verifyLegacyHandoff(legacyA).valid, true);
+    assert.equal(verifyCommittedState(state).valid, true);
+  });
+});
+
 test("a late authoritative legacy union is promoted before an idempotent candidate return", () => {
   withFixture((root) => {
     const state = join(root, "state");
@@ -279,6 +314,47 @@ test("a malformed legacy handoff is never treated as authoritative", () => {
         }),
       /not authoritative/i,
     );
+  });
+});
+
+test("release metadata verification requires one no-follow regular file", () => {
+  withFixture((root) => {
+    const a = release(root, "a", { "a.js": "A" }, "A shell");
+    const b = release(root, "b", { "b.js": "B" }, "B shell");
+    for (const [name, install] of [
+      [
+        "symlink",
+        (metadataPath, bytes) => {
+          const external = join(root, "external-valid-metadata.json");
+          writeFileSync(external, bytes);
+          symlinkSync(external, metadataPath);
+        },
+      ],
+      ["dangling", (metadataPath) => symlinkSync(join(root, "missing-metadata"), metadataPath)],
+      ["directory", (metadataPath) => mkdirSync(metadataPath)],
+      ["fifo", (metadataPath) => execFileSync("mkfifo", [metadataPath])],
+    ]) {
+      const state = join(root, `metadata-${name}`);
+      stageStaticRelease({ stateRoot: state, candidateRoot: a });
+      const releaseId = createCandidateManifest(a).releaseId;
+      const metadataPath = join(state, "metadata", `${releaseId}.json`);
+      const bytes = readFileSync(metadataPath, "utf8");
+      rmSync(metadataPath, { recursive: true, force: true });
+      install(metadataPath, bytes);
+      const priorCurrent = readlinkSync(join(state, "current"));
+
+      assert.equal(verifyCommittedState(state).valid, false, `${name} metadata is rejected`);
+      assert.throws(
+        () => stageStaticRelease({ stateRoot: state, candidateRoot: b }),
+        /valid committed current release/i,
+      );
+      assert.equal(readlinkSync(join(state, "current")), priorCurrent);
+      assert.equal(existsSync(join(state, "assets", "b.js")), false);
+    }
+
+    const regularState = join(root, "metadata-regular");
+    stageStaticRelease({ stateRoot: regularState, candidateRoot: a });
+    assert.equal(verifyCommittedState(regularState).valid, true);
   });
 });
 
@@ -1706,6 +1782,87 @@ test("legacy handoff metadata rejects a symlink escape before writing outside th
   });
 });
 
+test("legacy source metadata publication never follows or truncates substituted entries", () => {
+  withFixture((root) => {
+    for (const name of ["source-id", "source-kind"]) {
+      const candidate = join(root, `preexisting-${name}`);
+      const external = join(root, `external-${name}`);
+      mkdirSync(join(candidate, "assets"), { recursive: true });
+      writeFileSync(join(candidate, "assets", "a.js"), "A");
+      writeFileSync(external, "external bytes");
+      symlinkSync(external, join(candidate, name));
+      assert.throws(
+        () =>
+          writeLegacyHandoffManifest({
+            legacyRoot: candidate,
+            sourceId: "legacy-A",
+            sourceKind: "baked-legacy-root",
+          }),
+        /no-follow regular file/i,
+      );
+      assert.equal(readFileSync(external, "utf8"), "external bytes");
+    }
+
+    for (const name of ["source-id", "source-kind"]) {
+      const candidate = join(root, `substitution-${name}`);
+      const external = join(root, `substitution-external-${name}`);
+      mkdirSync(join(candidate, "assets"), { recursive: true });
+      writeFileSync(join(candidate, "assets", "a.js"), "A");
+      writeFileSync(external, "external bytes");
+      let substituted = false;
+      assert.throws(
+        () =>
+          writeLegacyHandoffManifest({
+            legacyRoot: candidate,
+            sourceId: "legacy-A",
+            sourceKind: "baked-legacy-root",
+            onDurabilityOperation: ({ operation, path }) => {
+              if (!substituted && operation === "fsync-file" && path.includes(`.${name}.next-`)) {
+                substituted = true;
+                symlinkSync(external, join(candidate, name));
+              }
+            },
+          }),
+        /no-follow regular file/i,
+      );
+      assert.equal(substituted, true);
+      assert.equal(readFileSync(external, "utf8"), "external bytes");
+    }
+
+    const idempotent = legacyHandoff(join(root, "idempotent"), "legacy-A", { "a.js": "A" });
+    assert.doesNotThrow(() =>
+      writeLegacyHandoffManifest({
+        legacyRoot: idempotent,
+        sourceId: "legacy-A",
+        sourceKind: "baked-legacy-root",
+      }),
+    );
+    assert.equal(verifyLegacyHandoff(idempotent).valid, true);
+
+    const concurrent = join(root, "concurrent");
+    mkdirSync(join(concurrent, "assets"), { recursive: true });
+    writeFileSync(join(concurrent, "assets", "a.js"), "A");
+    let interleaved = false;
+    writeLegacyHandoffManifest({
+      legacyRoot: concurrent,
+      sourceId: "legacy-concurrent",
+      sourceKind: "baked-legacy-root",
+      onDurabilityOperation: ({ operation, path }) => {
+        if (!interleaved && operation === "fsync-file" && path.includes(".source-id.next-")) {
+          interleaved = true;
+          writeLegacyHandoffManifest({
+            legacyRoot: concurrent,
+            sourceId: "legacy-concurrent",
+            sourceKind: "baked-legacy-root",
+          });
+        }
+      },
+    });
+    assert.equal(interleaved, true);
+    assert.equal(verifyLegacyHandoff(concurrent).valid, true);
+  });
+});
+
 test("legacy handoff pointer restores and syncs prior authority after its commit barrier fails", () => {
   withFixture((root) => {
     const handoff = join(root, "handoff");
@@ -1805,7 +1962,9 @@ test("legacy handoff publication waits for the complete file and directory durab
       `fsync-directory:${join(durableCandidate, "assets", "nested")}`,
     );
     const assetsIndex = trace.indexOf(`fsync-directory:${join(durableCandidate, "assets")}`);
-    const rootIndex = trace.indexOf(`fsync-directory:${durableCandidate}`);
+    const rootIndex = trace.findIndex(
+      (entry, index) => index > assetsIndex && entry === `fsync-directory:${durableCandidate}`,
+    );
     const releasesIndex = trace.findIndex(
       (entry, index) =>
         index > rootIndex && entry === `fsync-directory:${realpathSync(join(handoff, "releases"))}`,

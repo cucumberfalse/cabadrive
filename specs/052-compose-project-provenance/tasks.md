@@ -162,6 +162,26 @@
   and proves a later clean retry activates only after all barriers succeed.
   Run focused staging tests, full preflight, real Docker validation, renewed
   exact-head review, and resolve the originating thread with that evidence.
+- [x] T052-014s Implement R052-014 test-first: pin the already validated
+  `/legacy-handoff/current` release target for the entire inventory/copy
+  operation, or atomically revalidate both the pointer identity and complete
+  inventory immediately before consuming it. Add a deterministic concurrent
+  repoint regression in which `current` changes after initial validation;
+  copying must remain bound to one complete validated release or fail closed,
+  never combine the old validation with an incomplete/new target.
+- [x] T052-014t Implement R052-016 test-first: before reading release metadata,
+  classify its exact path with no-follow semantics and require a regular file.
+  Add symlink-to-valid-file, dangling-symlink, directory, and non-regular
+  negatives proving rejection before metadata parsing, copy, or activation,
+  while preserving the regular-file control.
+- [x] T052-014u Implement R052-017 test-first: publish `source-id` and
+  `source-kind` handoff metadata without following or truncating symlinks,
+  including retry and concurrent-writer paths. Add exact symlink and
+  substitution-race negatives proving external targets remain byte-identical
+  and the operation fails closed; preserve safe idempotent retry/concurrency.
+  Run the combined focused capture/staging suite, path/race/fault guards, full
+  preflight, isolated real Docker lifecycle, and one renewed exact-head review
+  for T052-014s through T052-014u before revalidation.
 - [x] T052-015 Orchestrator routed every actionable finding role-appropriately;
   every Implementation Agent feedback item has Architect disposition. Renewed
   exact-head Review Agent and native review reported no additional technical
@@ -173,7 +193,7 @@
   complete paginated read-only review/thread guard for PR #217.
 - [x] T052-018 Orchestrator invoked final Architect validation for the combined
   feature-051/052/053 cycle and renewed it after bounded return #6. Architect
-  return limit: 10; current count: 6.
+  return limit: 10; current count: 7 after the new bounded return below.
 - [ ] T052-019 After Architect pass, Orchestrator invokes final Analyst
   validation on the same effective content head. Analyst return limit: 5;
   current count: 0.
@@ -244,6 +264,21 @@
   evidence and resolve the thread. Both passes become stale for merge authority
   because R052-013 is a new non-evidence follow-up and must be repeated after
   its bounded fix and review.
+- R052-014 (`PRRT_kwDOSX65IM6nosN7`): accepted P1 in combined Architect return
+  #7; T052-014s binds validation and consumption to one complete handoff
+  release despite concurrent `current` repointing.
+- R052-015 (`PRRT_kwDOSX65IM6nosOB`): process-only, no product task. The renewed
+  F052/F053 Architect and Analyst markers at effective head
+  `5da4cc28a9a722c0b2880f98c07afaf03d5e9600` already supersede the reported
+  stale state; reply with that evidence and resolve. Return #7 now makes those
+  passes stale for merge authority, but does not change this thread's
+  disposition or create implementation work.
+- R052-016 (`PRRT_kwDOSX65IM6oCpwR`): accepted P2 in combined Architect return
+  #7; T052-014t requires no-follow regular-file classification of release
+  metadata before read/parse/use.
+- R052-017 (`PRRT_kwDOSX65IM6oCpwb`): accepted P2 in combined Architect return
+  #7; T052-014u makes `source-id`/`source-kind` publication no-follow and
+  non-truncating under initial write, retry, and concurrency.
 
 ## Verification Evidence
 
@@ -429,6 +464,30 @@
 - R052-013 isolated Docker PASS: `pnpm run test:docker-retention` reported
   `Docker asset-retention lifecycle passed for
   cabadrive-retention-83485-1790789053739`; scoped teardown completed.
+- R052-014/R052-016/R052-017 implementation PASS: staging consumes the
+  canonical release root returned by handoff validation, so a concurrent
+  `current` repoint cannot redirect the later inventory copy. Release metadata
+  is opened with no-follow/nonblocking semantics and accepted only when the
+  descriptor and path identify the same regular file. `source-id` and
+  `source-kind` are published through exclusive temporary regular files and a
+  no-replace hard-link claim; retries and same-value writers converge without
+  following or truncating an occupied path.
+- R052-014/R052-016/R052-017 focused PASS: the four directly related
+  regressions passed 4/4, the complete staging suite passed 55/55, and the
+  combined capture/staging suite passed 89/89. The regressions cover an exact
+  post-validation handoff repoint, symlink/dangling/directory/FIFO release
+  metadata, pre-existing and substituted source-metadata symlinks with
+  byte-identical external targets, idempotent retry, and same-value
+  interleaving.
+- R052-014/R052-016/R052-017 guards PASS: capture shell syntax, Prettier for
+  the changed implementation/test, `git diff --check`, the worktree
+  feature-memory gate, and repository baseline check passed.
+- R052-014/R052-016/R052-017 full preflight PASS: 647/647 Node tests,
+  production build and service-worker generation, and 158/158 Playwright tests
+  passed.
+- R052-014/R052-016/R052-017 isolated Docker PASS: `pnpm run
+  test:docker-retention` reported `Docker asset-retention lifecycle passed for
+  cabadrive-retention-29533-1790874040955`; scoped teardown completed.
 
 ## Implementation Agent Feedback
 
@@ -442,14 +501,17 @@
   finding assigned by Architect return #5 and is implemented with complete
   local evidence. Full pagination then surfaced R052-013, accepted as the sole
   bounded Architect return #6 task and now implemented with focused, full, and
-  Docker evidence. No other Implementation Agent feedback is unresolved.
+  Docker evidence. Full last-page pagination then surfaced R052-014,
+  R052-016, and R052-017 as the three product tasks combined and completed in
+  bounded return #7; R052-015 is process-only. No other Implementation Agent
+  feedback is unresolved.
 
 ## Known Issues
 
-- No accepted technical known issue. R052-013 implementation, focused/full/
-  Docker verification, exact-head no-finding review, and renewed Architect
-  validation are complete. The full two-page thread guard confirms the assigned
-  P2 and validation-only threads are resolved with no new thread.
+- No accepted technical known issue. R052-014, R052-016, and R052-017 are
+  implemented with exact race/symlink/non-regular regressions and complete
+  focused/full/Docker evidence. Renewed exact-head review and final validation
+  remain Orchestrator gates. R052-015 needs only evidence reply/resolution.
 
 ## Final Architect Validation
 
@@ -512,10 +574,24 @@
 - Final Architect validation completed at: 2026-10-01T16:29:35Z
 - Architect return count: 6 / 10.
 - Architect validated effective content head: 5da4cc28a9a722c0b2880f98c07afaf03d5e9600
+- Architect validation evidence: the immediately preceding pass and its later
+  Analyst pass are stale for merge authority because full last-page review
+  pagination surfaced three behaviorally meaningful safety gaps at current
+  head `296fa332196aa4344ae14fd920922708e8ec70b2`.
+- Architect validation pass: failed
+- Final Architect validation completed at: 2026-10-01T16:45:12Z
+- Architect return count: 7 / 10.
+- Architect gaps: implement T052-014s through T052-014u as one bounded return,
+  run combined focused/full/Docker verification, obtain renewed exact-head
+  review and complete paginated thread evidence, establish a new effective
+  content head, then repeat Architect and Analyst validation in order before
+  the current-head guard.
+- Architect validated effective content head: pending return #7 implementation and revalidation.
 
 ## Final Analyst Validation
 
-- Analyst validation: the prior pass is stale after R052-013; Orchestrator may
-  now invoke renewed Analyst validation after the fresh Architect pass above.
+- Analyst validation: the renewed pass on effective head
+  `5da4cc28a9a722c0b2880f98c07afaf03d5e9600` is stale after return #7; repeat
+  only after the next passing Architect validation.
 - Analyst return count: 0 / 5.
 - Analyst validated effective content head: pending.

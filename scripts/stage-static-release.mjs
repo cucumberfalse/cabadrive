@@ -214,6 +214,76 @@ function readJson(path, label) {
   }
 }
 
+function openRegularFileNoFollow(path, label) {
+  let descriptor;
+  try {
+    descriptor = openSync(path, constants.O_RDONLY | constants.O_NOFOLLOW | constants.O_NONBLOCK);
+    const descriptorStat = fstatSync(descriptor);
+    const pathStat = lstatSync(path);
+    if (
+      !descriptorStat.isFile() ||
+      pathStat.isSymbolicLink() ||
+      !pathStat.isFile() ||
+      descriptorStat.dev !== pathStat.dev ||
+      descriptorStat.ino !== pathStat.ino
+    ) {
+      fail(`${label} is not one stable no-follow regular file: ${path}`);
+    }
+    return { descriptor, stat: descriptorStat };
+  } catch (error) {
+    if (descriptor !== undefined) closeSync(descriptor);
+    if (error instanceof Error && error.message.startsWith("Static release staging:")) throw error;
+    fail(`${label} is not a no-follow regular file: ${path}`);
+  }
+}
+
+function requireStableOpenPath(path, label, stat) {
+  const pathStat = lstatSync(path);
+  if (
+    pathStat.isSymbolicLink() ||
+    !pathStat.isFile() ||
+    pathStat.dev !== stat.dev ||
+    pathStat.ino !== stat.ino
+  ) {
+    fail(`${label} changed during no-follow access: ${path}`);
+  }
+}
+
+function readRegularFileNoFollow(path, label) {
+  const { descriptor, stat } = openRegularFileNoFollow(path, label);
+  try {
+    const contents = readFileSync(descriptor, "utf8");
+    requireStableOpenPath(path, label, stat);
+    return contents;
+  } finally {
+    closeSync(descriptor);
+  }
+}
+
+function readJsonRegularFileNoFollow(path, label) {
+  try {
+    return JSON.parse(readRegularFileNoFollow(path, label));
+  } catch (error) {
+    if (error instanceof Error && error.message.startsWith("Static release staging:")) throw error;
+    fail(`invalid ${label}: ${path}`);
+  }
+}
+
+function verifyAndSyncExactRegularFile(path, label, expected, options) {
+  const { descriptor, stat } = openRegularFileNoFollow(path, label);
+  try {
+    if (readFileSync(descriptor, "utf8") !== expected) {
+      fail(`${label} conflicts with the requested handoff: ${path}`);
+    }
+    invokeDurability(options, "fsync-file", path);
+    fsyncSync(descriptor);
+    requireStableOpenPath(path, label, stat);
+    invokeDurability(options, "close-file", path);
+  } finally {
+    closeSync(descriptor);
+  }
+}
+
 export function verifyCandidateManifest(candidateRoot, manifest) {
   if (!manifest || manifest.schemaVersion !== SCHEMA_VERSION) fail("unsupported manifest schema");
   const actual = createCandidateManifest(candidateRoot);
@@ -607,6 +677,43 @@ export function createLegacyHandoffManifest({ legacyRoot, sourceId, sourceKind }
   };
 }
 
+function publishLegacyMetadata(root, name, contents, options) {
+  const path = join(root, name);
+  if (noFollowEntry(path)) {
+    verifyAndSyncExactRegularFile(path, `legacy handoff ${name}`, contents, options);
+    syncDirectory(root, options);
+    return;
+  }
+
+  const temporary = join(root, `.${name}.next-${process.pid}-${randomUUID()}`);
+  let descriptor;
+  let claimed = false;
+  try {
+    descriptor = openSync(temporary, "wx", 0o600);
+    writeFileSync(descriptor, contents);
+    invokeDurability(options, "fsync-file", temporary);
+    fsyncSync(descriptor);
+    invokeDurability(options, "close-file", temporary);
+  } finally {
+    if (descriptor !== undefined) closeSync(descriptor);
+  }
+  try {
+    try {
+      linkSync(temporary, path);
+      claimed = true;
+      invokeDurability(options, "link", path);
+    } catch (error) {
+      if (error?.code !== "EEXIST") throw error;
+    }
+    if (!claimed) {
+      verifyAndSyncExactRegularFile(path, `legacy handoff ${name}`, contents, options);
+    }
+  } finally {
+    if (noFollowEntry(temporary)) unlinkSync(temporary);
+    syncDirectory(root, options);
+  }
+}
+
 export function writeLegacyHandoffManifest({
   legacyRoot,
   handoffRoot,
@@ -628,8 +735,8 @@ export function writeLegacyHandoffManifest({
   const options = { faultAt, onDurabilityOperation };
   const manifest = createLegacyHandoffManifest({ legacyRoot: root, sourceId, sourceKind });
   const temporary = join(root, `${LEGACY_HANDOFF_MARKER}.next-${process.pid}-${randomUUID()}`);
-  writeFileSync(join(root, "source-id"), `${manifest.sourceId}\n`);
-  writeFileSync(join(root, "source-kind"), `${manifest.sourceKind}\n`);
+  publishLegacyMetadata(root, "source-id", `${manifest.sourceId}\n`, options);
+  publishLegacyMetadata(root, "source-kind", `${manifest.sourceKind}\n`, options);
   // This point is deliberately injectable so the capture wrapper can prove a
   // half-written handoff never becomes authoritative.
   if (faultAt === "legacy-marker-write") fail("fault injection at legacy marker write");
@@ -721,13 +828,13 @@ export function verifyLegacyHandoff(legacyRoot) {
     const marker = readJson(markerPath, "legacy handoff marker");
     const actual = createLegacyHandoffManifest({
       legacyRoot: root,
-      sourceId: readFileSync(sourceIdPath, "utf8"),
-      sourceKind: readFileSync(sourceKindPath, "utf8"),
+      sourceId: readRegularFileNoFollow(sourceIdPath, "legacy handoff source-id"),
+      sourceKind: readRegularFileNoFollow(sourceKindPath, "legacy handoff source-kind"),
     });
     if (!sameLegacyManifest(marker, actual)) {
       return { valid: false, reason: "legacy handoff inventory does not match" };
     }
-    return { valid: true, manifest: actual };
+    return { valid: true, manifest: actual, root };
   } catch (error) {
     return {
       valid: false,
@@ -1222,7 +1329,7 @@ function recoverAssetPromotion({ state, existing, release, legacyValidation, exp
 function metadataMatches(path, release) {
   if (!existsSync(path)) return false;
   try {
-    const metadata = readJson(path, "release metadata");
+    const metadata = readJsonRegularFileNoFollow(path, "release metadata");
     return (
       metadata.releaseId === release.releaseId &&
       sameEntries(metadata.assets || [], release.assets) &&
@@ -1261,7 +1368,7 @@ export function verifyCommittedState(stateRoot) {
     if (!existsSync(releaseDirectory) || !existsSync(metadataPath)) {
       return { valid: false, reason: "current tuple is incomplete" };
     }
-    const metadata = readJson(metadataPath, "release metadata");
+    const metadata = readJsonRegularFileNoFollow(metadataPath, "release metadata");
     if (metadata.releaseId !== releaseId || !metadataMatches(metadataPath, metadata)) {
       return { valid: false, reason: "current metadata does not match" };
     }
@@ -1311,6 +1418,7 @@ export function stageStaticRelease({
   if (suppliedLegacyRoot && !legacyValidation?.valid) {
     fail(`legacy handoff is not authoritative: ${legacyValidation?.reason || "invalid"}`);
   }
+  const validatedLegacyRoot = legacyValidation?.root;
   const state = ensureStateLayout(stateRoot);
   const release = createCandidateManifest(candidateRootReal);
   if (
@@ -1376,7 +1484,7 @@ export function stageStaticRelease({
     fault({ faultAt }, "after-validation");
     if (legacy.length) {
       copyInventory(
-        suppliedLegacyRoot,
+        validatedLegacyRoot,
         legacy,
         transactionAssets,
         sourceAsset,
