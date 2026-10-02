@@ -379,7 +379,30 @@ verify_handoff() {
 }
 
 publish_handoff() {
-  temporary="$releases/capture-$(date +%s)-$$"
+  temporary=""
+  capture_owned=""
+  capture_attempt=0
+  while [ "$capture_attempt" -lt 8 ]; do
+    capture_attempt=$((capture_attempt + 1))
+    if temporary="$(mktemp -d "$releases/capture-XXXXXXXXXX" 2>/dev/null)"; then
+      break
+    fi
+    temporary=""
+  done
+  if [ -z "$temporary" ] || [ -L "$temporary" ] || [ ! -d "$temporary" ]; then
+    printf '%s\n' 'failed to create an exclusive legacy capture directory' >&2
+    return 1
+  fi
+  temporary_real="$(CDPATH= cd -- "$temporary" && pwd -P)" || {
+    printf '%s\n' 'exclusive legacy capture directory is not accessible' >&2
+    return 1
+  }
+  if [ "$(dirname -- "$temporary_real")" != "$releases" ]; then
+    printf '%s\n' 'exclusive legacy capture directory escapes the releases root' >&2
+    return 1
+  fi
+  temporary="$temporary_real"
+  capture_owned=1
   release_relative="releases/$(basename "$temporary")"
   pointer_publication_started=""
   if [ -n "$capture_fault" ]; then
@@ -388,7 +411,7 @@ publish_handoff() {
     set --
   fi
   cleanup_capture() {
-    if [ -n "${temporary:-}" ] && [ -e "$temporary" ]; then
+    if [ -n "$capture_owned" ] && [ -n "${temporary:-}" ] && [ -e "$temporary" ]; then
       # Pointer publication can fail after its rename but before a rollback is
       # known durable. Never remove the captured release while current still
       # names it; a failed readlink is likewise inconclusive and is retained.
@@ -406,19 +429,11 @@ publish_handoff() {
     return 0
   }
 
-  if ! mkdir -p "$temporary/assets"; then
+  if ! mkdir "$temporary/assets"; then
     cleanup_capture || true
     return 1
   fi
   if ! copy_legacy_assets "$temporary/assets"; then
-    cleanup_capture || true
-    return 1
-  fi
-  if ! printf '%s\n' "$source" >"$temporary/source-id"; then
-    cleanup_capture || true
-    return 1
-  fi
-  if ! printf '%s\n' "$source_kind" >"$temporary/source-kind"; then
     cleanup_capture || true
     return 1
   fi

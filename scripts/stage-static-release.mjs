@@ -2345,6 +2345,18 @@ export function exportStaticPublish({
   return { changed: true, releaseId: candidate.releaseId, manifest: candidate };
 }
 
+export function publishAndExportStaticRelease(options) {
+  const published = buildStaticPublish(options);
+  const exported = exportStaticPublish({
+    ...options,
+    destinationRoot: options.destinationRoot,
+  });
+  if (published.releaseId !== exported.releaseId) {
+    fail("static publish/export transaction changed between operations");
+  }
+  return exported;
+}
+
 function parseCli(argv) {
   const [command = "stage", ...rest] = argv;
   const values = {};
@@ -2374,36 +2386,42 @@ if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.ur
               outputRoot: values.output,
               destinationRoot: values.destination,
             })
-          : command === "verify"
-            ? verifyCommittedState(values.state)
-            : command === "legacy-write"
-              ? writeLegacyHandoffManifest({
-                  legacyRoot: values.legacy,
-                  handoffRoot: values.handoff,
-                  sourceId: values["source-id"],
-                  sourceKind: values["source-kind"],
-                  faultAt: values.fault,
-                })
-              : command === "legacy-publish-pointer"
-                ? publishLegacyHandoffPointer({
+          : command === "publish-export"
+            ? publishAndExportStaticRelease({
+                ...options,
+                outputRoot: values.output,
+                destinationRoot: values.destination,
+              })
+            : command === "verify"
+              ? verifyCommittedState(values.state)
+              : command === "legacy-write"
+                ? writeLegacyHandoffManifest({
+                    legacyRoot: values.legacy,
                     handoffRoot: values.handoff,
-                    release: values.release,
+                    sourceId: values["source-id"],
+                    sourceKind: values["source-kind"],
                     faultAt: values.fault,
                   })
-                : command === "adopted-project-write"
-                  ? writeAdoptedProject({
+                : command === "legacy-publish-pointer"
+                  ? publishLegacyHandoffPointer({
                       handoffRoot: values.handoff,
-                      project: values.project,
+                      release: values.release,
                       faultAt: values.fault,
                     })
-                  : command === "adopted-project-verify"
-                    ? verifyAdoptedProject({
+                  : command === "adopted-project-write"
+                    ? writeAdoptedProject({
                         handoffRoot: values.handoff,
+                        project: values.project,
                         faultAt: values.fault,
                       })
-                    : command === "legacy-verify"
-                      ? verifyLegacyHandoff(values.legacy)
-                      : fail(`unknown command ${command}`);
+                    : command === "adopted-project-verify"
+                      ? verifyAdoptedProject({
+                          handoffRoot: values.handoff,
+                          faultAt: values.fault,
+                        })
+                      : command === "legacy-verify"
+                        ? verifyLegacyHandoff(values.legacy)
+                        : fail(`unknown command ${command}`);
   if (command === "verify" || command === "legacy-verify") {
     process.stdout.write(`${JSON.stringify(result)}\n`);
     if (!result.valid) process.exitCode = 1;

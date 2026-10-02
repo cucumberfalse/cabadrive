@@ -55,6 +55,13 @@ path escapes, symlinks and same-path byte collisions, and selects a new
 HTML/service-worker shell only after its complete asset union is staged. A
 static host must provide the equivalent atomic shell-last/no-delete contract;
 destructive build-directory replacement is not compatible with old open tabs.
+The executable fresh-artifact path is
+`./scripts/export-static-release.sh /absolute/path/cabadrive-static`. It uses
+the Docker stager and Compose release-state volume to commit one `publish`
+transaction before exporting that same transaction to a new host directory.
+The lower-level `export` operation intentionally fails closed when its publish
+output is absent or does not match the committed state; it is not a standalone
+fresh-output command.
 
 ## Future Backend Triggers
 

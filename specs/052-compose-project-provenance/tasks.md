@@ -182,6 +182,25 @@
   Run the combined focused capture/staging suite, path/race/fault guards, full
   preflight, isolated real Docker lifecycle, and one renewed exact-head review
   for T052-014s through T052-014u before revalidation.
+- [x] T052-014v Implement R052-018 test-first: replace predictable
+  `capture-<seconds>-<pid>` plus `mkdir -p` reuse with a freshly randomized,
+  atomically exclusive capture directory created inside the validated handoff
+  root; never follow or reuse a pre-existing path. Add exact pre-created-name,
+  concurrent-capture, and symlink-substitution regressions proving each winner
+  owns a distinct fresh directory, collisions retry or fail closed, metadata
+  publication never enters attacker-controlled state, and every external
+  symlink target remains byte-identical.
+- [x] T052-014w Implement R052-019 as the bounded static-host contract fix:
+  make the documented fresh-output flow execute a Docker-contained
+  publish-then-export bootstrap (or a behaviorally equivalent Architect-safe
+  command) that first creates and commits the exact publish transaction and
+  only then exports that same transaction. Add focused executable command/docs
+  verification from an empty output/state fixture proving the advertised
+  sequence succeeds, the exported release/manifest matches the committed
+  transaction, and export still fails closed when publication is absent or
+  mismatched. Run the combined focused capture/static-publish/export/docs
+  contract suites, full preflight, isolated real Docker lifecycle, and one
+  renewed exact-head review for T052-014v/w before revalidation.
 - [x] T052-015 Orchestrator routed every actionable finding role-appropriately;
   every Implementation Agent feedback item has Architect disposition. Renewed
   exact-head Review Agent and native review reported no additional technical
@@ -193,7 +212,7 @@
   complete paginated read-only review/thread guard for PR #217.
 - [x] T052-018 Orchestrator invoked final Architect validation for the combined
   feature-051/052/053 cycle and renewed it after bounded return #6. Architect
-  return limit: 10; current count: 7 after the new bounded return below.
+  return limit: 10; current count: 8 after the new bounded return below.
 - [ ] T052-019 After Architect pass, Orchestrator invokes final Analyst
   validation on the same effective content head. Analyst return limit: 5;
   current count: 0.
@@ -279,6 +298,14 @@
 - R052-017 (`PRRT_kwDOSX65IM6oCpwb`): accepted P2 in combined Architect return
   #7; T052-014u makes `source-id`/`source-kind` publication no-follow and
   non-truncating under initial write, retry, and concurrency.
+- R052-018 (`PRRT_kwDOSX65IM6oWgqE`): accepted P2 in combined Architect return
+  #8; T052-014v requires randomized exclusive capture-directory ownership and
+  exact collision/concurrency/symlink-target integrity coverage before guarded
+  metadata publication.
+- R052-019 (`PRRT_kwDOSX65IM6oWgqN`): accepted P2 in combined Architect return
+  #8; T052-014w aligns the static-host documentation with an executable
+  Docker-contained publish-then-export bootstrap and verifies the fresh-output
+  command contract plus absent/mismatched-transaction failures.
 
 ## Verification Evidence
 
@@ -488,6 +515,34 @@
 - R052-014/R052-016/R052-017 isolated Docker PASS: `pnpm run
   test:docker-retention` reported `Docker asset-retention lifecycle passed for
   cabadrive-retention-29533-1790874040955`; scoped teardown completed.
+- R052-018 implementation PASS: capture releases now use `mktemp -d` with a
+  randomized template inside the already validated canonical releases root,
+  bounded collision retries, canonical-parent revalidation, and ownership-
+  gated cleanup. The shell no longer performs direct `source-id`/`source-kind`
+  redirections; the no-follow publisher owns those files after assets copy.
+- R052-019 implementation PASS: the executable
+  `scripts/export-static-release.sh` Docker-only bootstrap builds the stager and
+  invokes the new `publish-export` CLI operation, which commits one exact
+  static publish transaction before exporting that same release to a new host
+  directory. README/backend deployment guidance names that command and
+  explicitly rejects standalone export without matching publication/state.
+- R052-018/R052-019 focused PASS: the four new controls passed 4/4, and the two
+  affected legacy-capture fixtures passed 2/2 after they were reconciled to
+  emulate the existing safe `legacy-write` metadata publisher rather than the
+  removed shell redirections. Coverage proves bounded deterministic collision
+  retry without reuse, two concurrent distinct winners, substituted-symlink
+  rejection before Docker copy/metadata writes with byte-identical external
+  target, fresh publish-then-export success, and absent/mismatched fail-closed
+  export.
+- R052-018/R052-019 combined focused PASS: capture, staging, static-export
+  command/docs, and Docker runtime contracts passed 101/101. Shell syntax for
+  both wrappers, Prettier for changed code/tests, `git diff --check`, the
+  worktree feature-memory gate, and repository baseline check passed.
+- R052-018/R052-019 full preflight PASS: 651/651 Node tests, production build
+  and service-worker generation, and 158/158 Playwright tests passed.
+- R052-018/R052-019 isolated Docker PASS: `pnpm run test:docker-retention`
+  reported `Docker asset-retention lifecycle passed for
+  cabadrive-retention-83427-1790948501072`; scoped teardown completed.
 
 ## Implementation Agent Feedback
 
@@ -504,15 +559,15 @@
   Docker evidence. Full last-page pagination then surfaced R052-014,
   R052-016, and R052-017 as the three product tasks combined and completed in
   bounded return #7; R052-015 is process-only. No other Implementation Agent
-  feedback is unresolved.
+  feedback is unresolved. R052-018 and R052-019 were the only findings assigned
+  to bounded return #8 and are implemented with complete local evidence.
 
 ## Known Issues
 
-- No accepted technical known issue. R052-014, R052-016, and R052-017 are
-  implemented with exact race/symlink/non-regular regressions and complete
-  focused/full/Docker evidence. Exact-head review passed without findings; the
-  complete two-page guard confirms all four return #7 threads resolved and no
-  new thread.
+- No accepted technical known issue. R052-018 and R052-019 are implemented with
+  exact collision/concurrency/symlink and fresh-output command-contract
+  regressions plus combined focused/full/Docker verification. Renewed exact-
+  head review and final validation remain Orchestrator gates.
 
 ## Final Architect Validation
 
@@ -631,3 +686,19 @@
   only role/process evidence after effective content head
   `efaa9fe3d74f8d13d029286e6689fc46591f78b5`; they do not change validation
   outcome, product behavior, task state, return counts, code, or tests.
+- Analyst validation evidence: the pass above and the preceding Architect pass
+  are stale for merge authority because current head
+  `06c9f96a49f92a572772910ebabafbeb43348dd1` surfaced R052-018 and R052-019,
+  two behaviorally meaningful follow-ups requiring implementation.
+
+## Architect Return #8
+
+- Architect validation pass: failed
+- Final Architect validation completed at: 2026-10-02T13:27:38Z
+- Architect return count: 8 / 10.
+- Architect gaps: implement T052-014v and T052-014w as one bounded return; run
+  their combined focused command/docs/path suite, full preflight, isolated real
+  Docker lifecycle, and renewed exact-head review; establish a new effective
+  content head; then repeat final Architect and Analyst validation in order
+  before the current-head guard.
+- Architect validated effective content head: pending return #8 implementation and revalidation.

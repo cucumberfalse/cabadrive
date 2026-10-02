@@ -140,6 +140,42 @@ function runMake(root, target, env) {
   return spawnSync("make", [target], { cwd: root, encoding: "utf8", env });
 }
 
+function createExclusiveCaptureFixture(label) {
+  const root = mkdtempSync(join(tmpdir(), `cabadrive-exclusive-${label}-`));
+  const bin = join(root, "bin");
+  const releases = join(root, ".cabadrive-release-handoff", "fixture", "releases");
+  const log = join(root, "docker.log");
+  mkdirSync(bin, { recursive: true });
+  mkdirSync(releases, { recursive: true });
+  const docker = join(bin, "docker");
+  writeFileSync(
+    docker,
+    `#!/bin/sh
+set -eu
+printf '%s\n' "$*" >>"$CABADRIVE_DOCKER_LOG"
+if [ "$1" = compose ]; then printf '%s\n' legacy-container; exit 0; fi
+if [ "$1" = volume ] && [ "$2" = inspect ]; then exit 1; fi
+if [ "$1" = cp ]; then mkdir -p "$3"; printf '%s' legacy-bytes >"$3/lazy.js"; exit 0; fi
+if [ "$1" = run ]; then exit 0; fi
+exit 90
+`,
+  );
+  chmodSync(docker, 0o755);
+  return {
+    root,
+    bin,
+    releases,
+    log,
+    env: {
+      ...process.env,
+      COMPOSE_PROJECT_NAME: "fixture",
+      CABADRIVE_REPOSITORY_ROOT: root,
+      CABADRIVE_DOCKER_LOG: log,
+      PATH: `${bin}:${process.env.PATH}`,
+    },
+  };
+}
+
 test("actual make build persists a discovered project before build and reuses it after evidence changes", () => {
   const fixture = createMakeProvenanceFixture();
   const adopted = join(fixture.root, ".cabadrive-release-handoff/.adopted-project");
@@ -414,6 +450,12 @@ if [ "$1" = image ] && [ "$2" = inspect ]; then
 fi
 if [ "$1" = run ]; then
   case "$*" in
+    *legacy-write*)
+      release="$(find "${root}/.cabadrive-release-handoff/fixture/releases" -mindepth 1 -maxdepth 1 -type d | sed -n '1p')"
+      printf '%s\n' legacy-image-id >"$release/source-id"
+      printf '%s\n' baked-legacy-root >"$release/source-kind"
+      exit 0
+      ;;
     *legacy-publish-pointer*)
       release="$(find "${root}/.cabadrive-release-handoff/fixture/releases" -mindepth 1 -maxdepth 1 -type d | sed -n '1p')"
       ln -s "releases/$(basename "$release")" "${root}/.cabadrive-release-handoff/fixture/current"
@@ -1134,6 +1176,106 @@ exit 90
   }
 });
 
+test("capture retries an exclusive randomized directory collision without reusing its contents", () => {
+  const fixture = createExclusiveCaptureFixture("collision");
+  const occupied = join(fixture.releases, "capture-forced-collision");
+  const selected = join(fixture.releases, "capture-forced-winner");
+  const counter = join(fixture.root, "mktemp-count");
+  mkdirSync(occupied);
+  writeFileSync(join(occupied, "sentinel"), "pre-existing bytes");
+  writeFileSync(counter, "0");
+  const mktemp = join(fixture.bin, "mktemp");
+  writeFileSync(
+    mktemp,
+    `#!/bin/sh
+set -eu
+count="$(cat "$CABADRIVE_MKTEMP_COUNT")"
+if [ "$count" -eq 0 ]; then
+  printf '%s' 1 >"$CABADRIVE_MKTEMP_COUNT"
+  mkdir "$CABADRIVE_COLLISION_PATH"
+  printf '%s\n' "$CABADRIVE_COLLISION_PATH"
+  exit 0
+fi
+mkdir "$CABADRIVE_WINNER_PATH"
+printf '%s\n' "$CABADRIVE_WINNER_PATH"
+`,
+  );
+  chmodSync(mktemp, 0o755);
+  try {
+    const result = spawnSync("sh", [captureScript], {
+      cwd: fixture.root,
+      encoding: "utf8",
+      env: {
+        ...fixture.env,
+        CABADRIVE_MKTEMP_COUNT: counter,
+        CABADRIVE_COLLISION_PATH: occupied,
+        CABADRIVE_WINNER_PATH: selected,
+      },
+    });
+    assert.equal(result.status, 0, result.stdout + result.stderr);
+    assert.equal(readFileSync(join(occupied, "sentinel"), "utf8"), "pre-existing bytes");
+    assert.equal(readFileSync(join(selected, "assets", "lazy.js"), "utf8"), "legacy-bytes");
+    const log = readFileSync(fixture.log, "utf8");
+    assert.doesNotMatch(log, new RegExp(occupied.replaceAll("/", "\\/")));
+    assert.match(log, new RegExp(selected.replaceAll("/", "\\/")));
+  } finally {
+    rmSync(fixture.root, { recursive: true, force: true });
+  }
+});
+
+test("concurrent captures own distinct freshly created release directories", () => {
+  const fixture = createExclusiveCaptureFixture("concurrent");
+  try {
+    const quotedCapture = `'${captureScript.replaceAll("'", `'\\''`)}'`;
+    const result = spawnSync("sh", ["-c", `${quotedCapture} & ${quotedCapture} & wait`], {
+      cwd: fixture.root,
+      encoding: "utf8",
+      env: fixture.env,
+    });
+    assert.equal(result.status, 0, result.stdout + result.stderr);
+    const captures = readdirSync(fixture.releases).filter((name) => name.startsWith("capture-"));
+    assert.equal(captures.length, 2);
+    assert.notEqual(captures[0], captures[1]);
+    for (const capture of captures) {
+      assert.equal(
+        readFileSync(join(fixture.releases, capture, "assets", "lazy.js"), "utf8"),
+        "legacy-bytes",
+      );
+    }
+  } finally {
+    rmSync(fixture.root, { recursive: true, force: true });
+  }
+});
+
+test("capture rejects a substituted mktemp symlink before Docker copy or metadata writes", () => {
+  const fixture = createExclusiveCaptureFixture("substitution");
+  const external = join(fixture.root, "external");
+  const substituted = join(fixture.releases, "capture-substituted");
+  mkdirSync(external);
+  writeFileSync(join(external, "sentinel"), "external bytes");
+  symlinkSync(external, substituted);
+  const mktemp = join(fixture.bin, "mktemp");
+  writeFileSync(mktemp, `#!/bin/sh\nprintf '%s\\n' "$CABADRIVE_SUBSTITUTED_PATH"\n`);
+  chmodSync(mktemp, 0o755);
+  try {
+    const result = spawnSync("sh", [captureScript], {
+      cwd: fixture.root,
+      encoding: "utf8",
+      env: { ...fixture.env, CABADRIVE_SUBSTITUTED_PATH: substituted },
+    });
+    assert.notEqual(result.status, 0, result.stdout + result.stderr);
+    assert.match(result.stderr, /exclusive legacy capture directory/i);
+    assert.equal(readFileSync(join(external, "sentinel"), "utf8"), "external bytes");
+    assert.equal(existsSync(join(external, "assets")), false);
+    assert.equal(existsSync(join(external, "source-id")), false);
+    assert.equal(existsSync(join(external, "source-kind")), false);
+    assert.doesNotMatch(readFileSync(fixture.log, "utf8"), /^cp\b/m);
+    assert.equal(realpathSync(substituted), realpathSync(external));
+  } finally {
+    rmSync(fixture.root, { recursive: true, force: true });
+  }
+});
+
 test("capture rejects a symlinked releases directory before creating a temporary capture", () => {
   const root = join(tmpdir(), `cabadrive-releases-symlink-${process.pid}-${Date.now()}`);
   const external = join(root, "external");
@@ -1267,7 +1409,12 @@ if [ "$1" = cp ]; then mkdir -p "$3"; printf '%s' replacement-bytes >"$3/new-a.j
 if [ "$1" = run ]; then
   case "$*" in
     *legacy-verify*) exit 0 ;;
-    *legacy-write*) exit 0 ;;
+    *legacy-write*)
+      release="$(find "${root}/.cabadrive-release-handoff/fixture/releases" -mindepth 1 -maxdepth 1 -type d ! -name old | sed -n '1p')"
+      printf '%s\n' new-image >"$release/source-id"
+      printf '%s\n' baked-legacy-root >"$release/source-kind"
+      exit 0
+      ;;
     *legacy-publish-pointer*)
       release="$(find "${root}/.cabadrive-release-handoff/fixture/releases" -mindepth 1 -maxdepth 1 -type d ! -name old | sed -n '1p')"
       rm -f "${root}/.cabadrive-release-handoff/fixture/current"
