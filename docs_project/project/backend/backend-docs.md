@@ -57,11 +57,14 @@ static host must provide the equivalent atomic shell-last/no-delete contract;
 destructive build-directory replacement is not compatible with old open tabs.
 The executable fresh-artifact path is
 `./scripts/export-static-release.sh /absolute/path/cabadrive-static`. It uses
-the Docker stager and Compose release-state volume to commit one `publish`
-transaction before exporting that same transaction to a new host directory.
-The lower-level `export` operation intentionally fails closed when its publish
-output is absent or does not match the committed state; it is not a standalone
-fresh-output command.
+the full outgoing-runtime capture boundary first, requires the resulting
+canonical legacy handoff, and uses the Docker stager and Compose release-state
+volume to stage that legacy inventory before committing one `publish`
+transaction and exporting the same transaction to a new host directory.
+Missing or invalid capture authority fails before an incomplete candidate-only
+publication. The lower-level `export` operation intentionally fails closed
+when its publish output is absent or does not match the committed state; it is
+not a standalone fresh-output command.
 
 ## Future Backend Triggers
 

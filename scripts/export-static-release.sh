@@ -33,6 +33,10 @@ if [ -e "$destination" ] || [ -L "$destination" ]; then
   exit 1
 fi
 
+# This is the same authoritative outgoing-runtime capture boundary used by
+# `make build`. A clean/missing or invalid handoff is not silently treated as
+# candidate-only authority by the static export path.
+"$script_dir/capture-legacy-assets.sh"
 project="$("$script_dir/capture-legacy-assets.sh" --resolve-project)"
 export COMPOSE_PROJECT_NAME="$project"
 docker compose -f "$repo_root/docker-compose.yml" build stager
@@ -41,4 +45,4 @@ docker compose -f "$repo_root/docker-compose.yml" run --rm --no-deps \
   --entrypoint node stager \
   /app/scripts/stage-static-release.mjs publish-export \
   --state /state --candidate /candidate --output /tmp/cabadrive-static-publish \
-  --destination "/export/$destination_name"
+  --destination "/export/$destination_name" --legacy /legacy-handoff/current

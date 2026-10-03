@@ -4,6 +4,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { execFileSync, spawnSync } from "node:child_process";
 import test from "node:test";
+import { writeLegacyHandoffManifest } from "../scripts/stage-static-release.mjs";
 
 const dockerfile = readFileSync(new URL("../Dockerfile", import.meta.url), "utf8");
 const dockerignore = readFileSync(new URL("../.dockerignore", import.meta.url), "utf8");
@@ -101,11 +102,20 @@ test("documented Docker bootstrap publishes then exports one exact fresh transac
     const output = join(root, "publish");
     const destination = join(root, "archive");
     const a = candidate(root, "candidate-a", "a.js");
+    const legacy = join(root, "legacy");
+    mkdirSync(join(legacy, "assets"), { recursive: true });
+    writeFileSync(join(legacy, "assets", "legacy-hash.js"), "legacy hashed bytes");
+    writeLegacyHandoffManifest({
+      legacyRoot: legacy,
+      sourceId: "legacy-runtime-id",
+      sourceKind: "baked-legacy-root",
+    });
     const bootstrap = runStage(root, helper, "publish-export", {
       state,
       candidate: a,
       output,
       destination,
+      legacy,
     });
     assert.equal(bootstrap.status, 0, bootstrap.stdout + bootstrap.stderr);
     const result = JSON.parse(bootstrap.stdout);
@@ -115,6 +125,38 @@ test("documented Docker bootstrap publishes then exports one exact fresh transac
       "<title>candidate-a</title>",
     );
     assert.equal(readFileSync(join(destination, "assets", "a.js"), "utf8"), "candidate-a bytes");
+    assert.equal(
+      readFileSync(join(state, "assets", "legacy-hash.js"), "utf8"),
+      "legacy hashed bytes",
+    );
+    assert.equal(
+      readFileSync(join(destination, "assets", "legacy-hash.js"), "utf8"),
+      "legacy hashed bytes",
+    );
+
+    for (const [name, invalidLegacy] of [
+      ["missing", join(root, "missing-legacy")],
+      ["invalid", join(root, "invalid-legacy")],
+    ]) {
+      if (name === "invalid") {
+        mkdirSync(join(invalidLegacy, "assets"), { recursive: true });
+        writeFileSync(join(invalidLegacy, "assets", "untrusted.js"), "untrusted");
+      }
+      const invalidState = join(root, `${name}-state`);
+      const invalidOutput = join(root, `${name}-output`);
+      const invalidDestination = join(root, `${name}-archive`);
+      const invalid = runStage(root, helper, "publish-export", {
+        state: invalidState,
+        candidate: a,
+        output: invalidOutput,
+        destination: invalidDestination,
+        legacy: invalidLegacy,
+      });
+      assert.notEqual(invalid.status, 0, name);
+      assert.match(invalid.stderr, /legacy handoff is not authoritative|ENOENT/i);
+      assert.equal(existsSync(invalidOutput), false);
+      assert.equal(existsSync(invalidDestination), false);
+    }
 
     const absentDestination = join(root, "absent-archive");
     const absent = runStage(root, helper, "export", {
@@ -142,13 +184,23 @@ test("documented Docker bootstrap publishes then exports one exact fresh transac
     assert.equal(existsSync(mismatchDestination), false);
 
     assert.match(staticExport, /publish-export/);
+    assert.match(
+      staticExport,
+      /capture-legacy-assets\.sh"\nproject=.*capture-legacy-assets\.sh" --resolve-project/,
+    );
     assert.match(staticExport, /docker compose[\s\S]*build stager/);
-    assert.match(staticExport, /--state \/state[\s\S]*--candidate \/candidate/);
+    assert.match(
+      staticExport,
+      /--state \/state[\s\S]*--candidate \/candidate[\s\S]*--legacy \/legacy-handoff\/current/,
+    );
     assert.match(
       readme,
       /\.\/scripts\/export-static-release\.sh \/absolute\/path\/cabadrive-static/,
     );
-    assert.match(backendDocs, /commit one `publish`[\s\S]*exporting that same transaction/);
+    assert.match(
+      backendDocs,
+      /stage that legacy inventory[\s\S]*committing one `publish`[\s\S]*exporting the same transaction/,
+    );
   } finally {
     rmSync(root, { recursive: true, force: true });
   }

@@ -23,12 +23,15 @@ Docker-contained bootstrap (каталог назначения не долже�
 ./scripts/export-static-release.sh /absolute/path/cabadrive-static
 ```
 
-Команда собирает Docker stager, сначала создаёт и фиксирует точную static-publish
-transaction в Compose release-state volume, затем экспортирует именно её в
-новый физический каталог через встроенный atomic no-replace helper. Отдельный
-`stage-static-release.mjs export` не является bootstrap: без соответствующей
-завершённой публикации или при несовпадении state/output он безопасно
-завершается ошибкой.
+Команда сначала выполняет полный авторитетный capture исходящей Docker-версии,
+затем собирает Docker stager, проверяет захваченный legacy handoff, добавляет
+его immutable assets в Compose release-state, создаёт и фиксирует точную
+static-publish transaction и только после этого экспортирует именно её в новый
+физический каталог через встроенный atomic no-replace helper. Отсутствующий или
+невалидный handoff не превращается в candidate-only экспорт: bootstrap
+завершается ошибкой. Отдельный `stage-static-release.mjs export` тоже не
+является bootstrap: без соответствующей завершённой публикации или при
+несовпадении state/output он безопасно завершается ошибкой.
 
 ```bash
 make build

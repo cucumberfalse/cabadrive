@@ -201,6 +201,19 @@
   mismatched. Run the combined focused capture/static-publish/export/docs
   contract suites, full preflight, isolated real Docker lifecycle, and one
   renewed exact-head review for T052-014v/w before revalidation.
+- [x] T052-014x Implement R052-020 test-first: make the first static export from
+  an existing pre-feature-051 installation with empty retained state run the
+  full authoritative capture and legacy-aware staging sequence before
+  publish/export, or consume an equivalently pinned and completely validated
+  handoff produced by that sequence. The export wrapper must not bypass capture
+  or invoke `publish-export` against candidate-only state. Add a deterministic
+  empty-state fixture with a valid outgoing-runtime legacy handoff and a legacy
+  hashed asset; prove the asset is present in the committed retained state and
+  the exported artifact, while missing/invalid capture or handoff state fails
+  closed before publishing an incomplete export. Run relevant focused wrapper,
+  capture, staging, publish/export, and docs-command tests, full preflight,
+  isolated real Docker lifecycle, and renewed exact-head review before role
+  revalidation.
 - [x] T052-015 Orchestrator routed every actionable finding role-appropriately;
   every Implementation Agent feedback item has Architect disposition. Renewed
   exact-head Review Agent and native review reported no additional technical
@@ -212,7 +225,7 @@
   complete paginated read-only review/thread guard for PR #217.
 - [x] T052-018 Orchestrator invoked final Architect validation for the combined
   feature-051/052/053 cycle and renewed it after bounded return #6. Architect
-  return limit: 10; current count: 8 after the new bounded return below.
+  return limit: 10; current count: 9 after the new bounded return below.
 - [ ] T052-019 After Architect pass, Orchestrator invokes final Analyst
   validation on the same effective content head. Analyst return limit: 5;
   current count: 0.
@@ -306,6 +319,10 @@
   #8; T052-014w aligns the static-host documentation with an executable
   Docker-contained publish-then-export bootstrap and verifies the fresh-output
   command contract plus absent/mismatched-transaction failures.
+- R052-020 (`r4166312904`, `discussion_r4166312904`): accepted P1 in bounded
+  Architect return #9; T052-014x requires the export bootstrap to capture the
+  outgoing authoritative runtime and legacy-aware stage that pinned handoff
+  before publish/export, with exact empty-state legacy-asset retention proof.
 
 ## Verification Evidence
 
@@ -543,6 +560,26 @@
 - R052-018/R052-019 isolated Docker PASS: `pnpm run test:docker-retention`
   reported `Docker asset-retention lifecycle passed for
   cabadrive-retention-83427-1790948501072`; scoped teardown completed.
+- R052-020 implementation PASS: `scripts/export-static-release.sh` now runs the
+  full authoritative outgoing-runtime capture before resolving the Compose
+  project and passes the resulting canonical `/legacy-handoff/current` to the
+  Docker-contained `publish-export` operation. `publish-export` requires that
+  handoff, performs legacy-aware staging into retained state first, then builds
+  and exports one matching committed release; it cannot publish candidate-only
+  state when capture or handoff validation fails.
+- R052-020 focused PASS: the deterministic empty-state contract passed 1/1 and
+  proves `legacy-hash.js` is byte-identical in both committed `state/assets`
+  and the exported artifact after a valid legacy handoff. Missing and invalid
+  handoffs exit nonzero before creating publish output or destination state.
+- R052-020 combined focused PASS: shell syntax plus capture, staging,
+  publish/export, docs-command, and Docker runtime contracts passed 101/101;
+  Prettier, `git diff --check`, the worktree feature-memory gate, and repository
+  baseline check passed.
+- R052-020 full preflight PASS: 651/651 Node tests, production build and
+  service-worker generation, and 158/158 Playwright tests passed.
+- R052-020 isolated Docker PASS: `pnpm run test:docker-retention` reported
+  `Docker asset-retention lifecycle passed for
+  cabadrive-retention-33337-1791040747514`; scoped teardown completed.
 
 ## Implementation Agent Feedback
 
@@ -561,13 +598,14 @@
   bounded return #7; R052-015 is process-only. No other Implementation Agent
   feedback is unresolved. R052-018 and R052-019 were the only findings assigned
   to bounded return #8 and are implemented with complete local evidence.
+  R052-020 was the sole finding assigned to bounded return #9 and is implemented
+  with complete focused, full-preflight, and isolated-Docker evidence.
 
 ## Known Issues
 
-- No accepted technical known issue. R052-018 and R052-019 are implemented with
-  exact collision/concurrency/symlink and fresh-output command-contract
-  regressions plus combined focused/full/Docker verification. Renewed exact-
-  head review and final validation remain Orchestrator gates.
+- No accepted technical known issue. R052-020 implementation and local
+  verification are complete; renewed exact-head review and renewed Architect
+  then Analyst validation remain merge gates.
 
 ## Final Architect Validation
 
@@ -702,3 +740,24 @@
   content head; then repeat final Architect and Analyst validation in order
   before the current-head guard.
 - Architect validated effective content head: pending return #8 implementation and revalidation.
+
+## Architect Return #9
+
+- Architect validation evidence: effective/current head
+  `8d7db53cb4c801f59bd2d0dcf1b993b21b9a6d7f` implements return #8, but exact-
+  head review surfaced R052-020. Because the export wrapper can bypass the
+  authoritative legacy capture/staging boundary on first export from an
+  existing installation, this is a behaviorally meaningful post-validation
+  gap rather than process-only evidence.
+- Architect validation evidence: every earlier Architect/Analyst pass is stale
+  for merge authority until R052-020 is implemented and the combined cycle is
+  revalidated on a new effective content head.
+- Architect validation pass: failed
+- Final Architect validation completed at: 2026-10-02T13:47:52Z
+- Architect return count: 9 / 10.
+- Architect gaps: implement T052-014x with its deterministic empty-state valid-
+  legacy-handoff regression, run focused/full/Docker verification, obtain a
+  renewed exact-head no-finding review, establish the next effective content
+  head, and repeat Architect then Analyst validation before the current-head
+  guard.
+- Architect validated effective content head: pending return #9 implementation and revalidation.
