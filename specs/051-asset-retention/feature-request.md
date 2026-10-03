@@ -173,6 +173,43 @@ The known dependent PR is #215 (`codex/049-learning-priority-fresh-update`). It 
 
 ## Final Analyst Validation Notes
 
+### Renewed combined-cycle validation — 2026-10-03 return #9
+
+- Analyst validation pass: passed
+- Final Analyst validation completed at: 2026-10-03T15:29:53Z
+- Analyst validated effective content head: dbe850e8979a2595fa065a04a28c32661f8f4250
+- Analyst return count: 0 / 5.
+- Combined PR-set coverage: PR #217 on branch `codex/051-asset-retention`
+  covers feature 051 asset retention, feature 052 Compose-project provenance,
+  and feature 053 brace-expansion security refresh. All behaviorally meaningful
+  content is contained in the effective head above; the later uncommitted
+  changes present during this validation are role-owned final-validation
+  evidence only.
+- Customer-intent validation: R051-1 through R051-8 remain satisfied in spirit
+  and letter. Return #9 closes the final fresh-export gap by making the public
+  export wrapper perform authoritative outgoing-runtime capture, requiring a
+  validated legacy handoff, and staging its immutable historical assets before
+  candidate publication/export. A missing or invalid handoff fails closed
+  without creating output or a destination, while the deterministic valid
+  empty-state regression proves `legacy-hash.js` reaches both committed retained
+  state and the exported artifact.
+- Verification evidence: the direct return control passed 1/1, combined focused
+  contracts passed 101/101, full preflight passed 651/651 Node tests plus
+  production build/service-worker generation and 158/158 Playwright tests, and
+  isolated Docker lifecycle `cabadrive-retention-33337-1791040747514` passed.
+  Exact-head bounded Review Agent inspection passed without findings and the
+  prior export-bootstrap P1 is resolved.
+- Process and sequencing: the complete combined cycle has no unresolved
+  implementation feedback, technical finding, accepted known issue, or
+  customer-intent gap. F052 is within its bound at Architect return count 9/10;
+  F053 remains 0/10. PR #217 must still pass the Orchestrator current-head
+  evidence-only guard and merge before PR #215 is synchronized, retested,
+  reviewed, and independently revalidated as required by R051-8.
+
+The return-#7 validation for effective head
+`efaa9fe3d74f8d13d029286e6689fc46591f78b5`, and every earlier Analyst marker,
+is stale and explicitly superseded by this return-#9 validation.
+
 ### Renewed combined-cycle validation — 2026-10-01 return #7
 
 - Analyst validation pass: passed

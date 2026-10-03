@@ -327,6 +327,45 @@ validation, current-head guards, and merge remain pending.
 
 ## Final Analyst Validation
 
+### Renewed validation after Architect return #9 — 2026-10-03
+
+- Analyst validation pass: passed
+- Final Analyst validation completed at: 2026-10-03T15:29:53Z
+- Analyst validated effective content head: dbe850e8979a2595fa065a04a28c32661f8f4250
+- Analyst return count: 0 / 5.
+- Combined PR-set coverage: PR #217 on branch `codex/051-asset-retention`
+  covers feature 051 asset retention, this feature 052 Compose-project
+  provenance cycle, and feature 053 brace-expansion security refresh. The
+  effective head above contains all product, test, documentation, dependency,
+  and disposition content; the later uncommitted changes present during this
+  validation are role-owned final-validation evidence only.
+- Customer-intent validation: R052-1 through R052-8 and all required negative
+  scenarios are satisfied in spirit and letter. The provenance, adoption,
+  lifecycle-continuity, explicit-choice, clean-install, ambiguity, and
+  fail-closed guarantees remain intact. Return #9 additionally ensures the
+  documented fresh static-export entry point cannot bypass the established
+  outgoing-runtime capture boundary: `publish-export` requires the validated
+  legacy handoff and stages it before publish/export, preserving legacy assets
+  in both release state and the exported artifact. Missing or invalid authority
+  creates neither publication output nor destination.
+- Evidence coverage: the direct R052-020 control passed 1/1, combined focused
+  contracts passed 101/101, full preflight passed 651/651 Node tests plus
+  production build/service-worker generation and 158/158 Playwright tests, and
+  isolated Docker lifecycle `cabadrive-retention-33337-1791040747514` passed.
+  Exact-head bounded Review Agent inspection passed without findings and the
+  prior export-bootstrap P1 is resolved.
+- Cross-feature and process validation: feature 051's append-only/shell-last
+  safety and feature 053's narrow audited dependency resolution remain
+  preserved. R052-001 through R052-020 are complete at Architect return count
+  9/10; Analyst return count remains 0/5; no unresolved task, feedback,
+  technical finding, accepted known issue, or customer-intent gap remains.
+  Current-head required checks, complete thread/conflict inspection, and the
+  evidence-only guard remain Orchestrator merge gates rather than Analyst gaps.
+
+The return-#7 Analyst validation for effective head
+`efaa9fe3d74f8d13d029286e6689fc46591f78b5`, and all earlier Analyst markers,
+is stale and explicitly superseded by this return-#9 validation.
+
 ### Renewed validation after Architect return #7 — 2026-10-01
 
 - Analyst validation pass: passed

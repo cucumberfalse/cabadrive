@@ -226,9 +226,9 @@
 - [x] T052-018 Orchestrator invoked final Architect validation for the combined
   feature-051/052/053 cycle and renewed it after bounded return #6. Architect
   return limit: 10; current count: 9 after the new bounded return below.
-- [ ] T052-019 After Architect pass, Orchestrator invokes final Analyst
-  validation on the same effective content head. Analyst return limit: 5;
-  current count: 0.
+- [x] T052-019 After Architect pass, Orchestrator invoked final Analyst
+  validation on the same effective content head. Analyst passed at
+  `2026-10-03T15:29:53Z`; return count: 0 / 5.
 - [ ] T052-020 Orchestrator runs the current-head guard, proves any later commit
   evidence-only, reruns exact-head required checks, and finalizes PR #217. If
   the helper refuses solely due its bounded review pagination, manual squash is
@@ -603,9 +603,9 @@
 
 ## Known Issues
 
-- No accepted technical known issue. R052-020 implementation and local
-  verification are complete; renewed exact-head review and renewed Architect
-  then Analyst validation remain merge gates.
+- No accepted technical known issue. R052-020 implementation, focused/full/
+  Docker verification, and bounded exact-head no-finding review are complete;
+  renewed Architect validation passes below.
 
 ## Final Architect Validation
 
@@ -761,3 +761,65 @@
   head, and repeat Architect then Analyst validation before the current-head
   guard.
 - Architect validated effective content head: pending return #9 implementation and revalidation.
+- Architect validation evidence: the failed return #9 marker immediately above
+  is superseded. Effective/current content head
+  `dbe850e8979a2595fa065a04a28c32661f8f4250` contains R052-020's authoritative
+  capture and legacy-aware staging before publish/export, its deterministic
+  empty-state legacy-asset regression, and current process memory with no
+  post-effective delta.
+- Architect validation evidence: the exact R052-020 control passed 1/1,
+  combined focused contracts passed 101/101, full preflight passed 651/651 Node
+  tests plus production build/service-worker generation and 158/158 Playwright
+  tests, and isolated Docker lifecycle
+  `cabadrive-retention-33337-1791040747514` passed. Repository guards are green.
+- Architect validation evidence: bounded Review Agent inspection of exact head
+  `dbe850e8979a2595fa065a04a28c32661f8f4250` passed with no findings and the
+  prior P1 is resolved. The full combined cycle preserves feature-051's
+  historical evidence, completes R052-001 through R052-020 at F052 return count
+  9/10, and preserves feature-053's audited lock-only security resolution at
+  return count 0/10.
+- Architect validation evidence: every assigned task and disposition is
+  complete; no unresolved Implementation Agent feedback, technical finding,
+  accepted known issue, architectural gap, or conflict with the user's asset-
+  retention, Compose provenance, static-export, fail-closed durability, and
+  truthful security-gate intent remains.
+- Architect validation pass: passed
+- Final Architect validation completed at: 2026-10-03T15:26:26Z
+- Architect return count: 9 / 10.
+- Architect validated effective content head: dbe850e8979a2595fa065a04a28c32661f8f4250
+
+## Final Analyst Validation
+
+- Analyst validation evidence: after the renewed Architect pass at
+  `2026-10-03T15:26:26Z`, Analyst validated the complete combined PR #217
+  feature-051/052/053 result against customer intent on the same effective
+  content head. This terminal summary supersedes the historical/stale Analyst
+  markers above without rewriting their narrative.
+- Analyst validation pass: passed
+- Final Analyst validation completed at: 2026-10-03T15:29:53Z
+- Analyst return count: 0 / 5.
+- Analyst validated effective content head: dbe850e8979a2595fa065a04a28c32661f8f4250
+- Final-validation evidence-only delta: the role-owned Analyst markers and this
+  one-time Architect reconciliation are evidence-only after effective content
+  head `dbe850e8979a2595fa065a04a28c32661f8f4250`; they do not change product,
+  task outcomes, return counts, code, tests, docs, or dependency content.
+
+## Terminal Validation Checklist
+
+- Effective content boundary: complete at
+  `dbe850e8979a2595fa065a04a28c32661f8f4250`; all product, tests, docs,
+  dependency, task, and disposition content is included.
+- Exact-head implementation/review evidence: complete; R052-020 verification
+  and bounded no-finding review are current.
+- Final Architect validation: complete at `2026-10-03T15:26:26Z`, F052 return
+  count 9/10 and F053 return count 0/10.
+- Final Analyst validation: complete at `2026-10-03T15:29:53Z`, return count
+  0/5, on the same effective content head; terminal F052/F053 reconciliation is
+  complete once in Architect-owned memory.
+- Orchestrator current-head guard/finalization: remains after this evidence;
+  prove every later commit evidence-only, recheck required checks, complete
+  review/thread state, conflicts, process memory, and expected head before
+  merge.
+- Reopening rule: do not start a broad audit or another implementation cycle
+  unless a new non-evidence change or concrete technical finding invalidates
+  this effective content head.
