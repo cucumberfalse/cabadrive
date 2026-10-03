@@ -2346,9 +2346,6 @@ export function exportStaticPublish({
 }
 
 export function publishAndExportStaticRelease(options) {
-  if (!options?.legacyRoot) {
-    fail("publish-export requires an authoritative legacy handoff");
-  }
   const staged = stageStaticRelease(options);
   const published = buildStaticPublish(options);
   const exported = exportStaticPublish({

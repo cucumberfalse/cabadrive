@@ -134,6 +134,22 @@ test("documented Docker bootstrap publishes then exports one exact fresh transac
       "legacy hashed bytes",
     );
 
+    const cleanState = join(root, "clean-state");
+    const cleanOutput = join(root, "clean-output");
+    const cleanDestination = join(root, "clean-archive");
+    const clean = runStage(root, helper, "publish-export", {
+      state: cleanState,
+      candidate: a,
+      output: cleanOutput,
+      destination: cleanDestination,
+    });
+    assert.equal(clean.status, 0, clean.stdout + clean.stderr);
+    assert.equal(readFileSync(join(cleanState, "assets", "a.js"), "utf8"), "candidate-a bytes");
+    assert.equal(
+      readFileSync(join(cleanDestination, "assets", "a.js"), "utf8"),
+      "candidate-a bytes",
+    );
+
     for (const [name, invalidLegacy] of [
       ["missing", join(root, "missing-legacy")],
       ["invalid", join(root, "invalid-legacy")],
@@ -154,6 +170,7 @@ test("documented Docker bootstrap publishes then exports one exact fresh transac
       });
       assert.notEqual(invalid.status, 0, name);
       assert.match(invalid.stderr, /legacy handoff is not authoritative|ENOENT/i);
+      assert.equal(existsSync(invalidState), false);
       assert.equal(existsSync(invalidOutput), false);
       assert.equal(existsSync(invalidDestination), false);
     }
@@ -191,16 +208,18 @@ test("documented Docker bootstrap publishes then exports one exact fresh transac
     assert.match(staticExport, /docker compose[\s\S]*build stager/);
     assert.match(
       staticExport,
-      /--state \/state[\s\S]*--candidate \/candidate[\s\S]*--legacy \/legacy-handoff\/current/,
+      /legacy_handoff=.*\/current[\s\S]*\[ -e "\$legacy_handoff" \] \|\| \[ -L "\$legacy_handoff" \][\s\S]*set -- --legacy \/legacy-handoff\/current/,
     );
+    assert.match(staticExport, /--destination "\/export\/\$destination_name" "\$@"/);
     assert.match(
       readme,
       /\.\/scripts\/export-static-release\.sh \/absolute\/path\/cabadrive-static/,
     );
     assert.match(
       backendDocs,
-      /stage that legacy inventory[\s\S]*committing one `publish`[\s\S]*exporting the same transaction/,
+      /stage that legacy inventory[\s\S]*committing one `publish`[\s\S]*exporting the\s+same transaction/,
     );
+    assert.match(backendDocs, /verified clean\/post-feature capture\s+with no `current` pointer/);
   } finally {
     rmSync(root, { recursive: true, force: true });
   }

@@ -39,10 +39,15 @@ fi
 "$script_dir/capture-legacy-assets.sh"
 project="$("$script_dir/capture-legacy-assets.sh" --resolve-project)"
 export COMPOSE_PROJECT_NAME="$project"
+legacy_handoff="$repo_root/.cabadrive-release-handoff/$project/current"
+set --
+if [ -e "$legacy_handoff" ] || [ -L "$legacy_handoff" ]; then
+  set -- --legacy /legacy-handoff/current
+fi
 docker compose -f "$repo_root/docker-compose.yml" build stager
 docker compose -f "$repo_root/docker-compose.yml" run --rm --no-deps \
   --volume "$destination_parent:/export" \
   --entrypoint node stager \
   /app/scripts/stage-static-release.mjs publish-export \
   --state /state --candidate /candidate --output /tmp/cabadrive-static-publish \
-  --destination "/export/$destination_name" --legacy /legacy-handoff/current
+  --destination "/export/$destination_name" "$@"

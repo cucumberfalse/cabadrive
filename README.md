@@ -27,11 +27,14 @@ Docker-contained bootstrap (каталог назначения не долже�
 затем собирает Docker stager, проверяет захваченный legacy handoff, добавляет
 его immutable assets в Compose release-state, создаёт и фиксирует точную
 static-publish transaction и только после этого экспортирует именно её в новый
-физический каталог через встроенный atomic no-replace helper. Отсутствующий или
-невалидный handoff не превращается в candidate-only экспорт: bootstrap
-завершается ошибкой. Отдельный `stage-static-release.mjs export` тоже не
-является bootstrap: без соответствующей завершённой публикации или при
-несовпадении state/output он безопасно завершается ошибкой.
+физический каталог через встроенный atomic no-replace helper. Если полный
+capture подтверждает чистую/post-feature установку без `current`, команда
+выполняет публикацию без legacy-аргумента. Любой существующий `current` (в том
+числе невалидный) передаётся stager для строгой проверки и при ошибке не
+превращается в candidate-only экспорт. Отдельная операция
+`stage-static-release.mjs export` тоже не является bootstrap: без
+соответствующей завершённой публикации или при несовпадении state/output она
+безопасно завершается ошибкой.
 
 ```bash
 make build
