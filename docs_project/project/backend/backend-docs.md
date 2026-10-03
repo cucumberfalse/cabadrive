@@ -49,6 +49,25 @@ Planned deployment shapes:
 - Local Docker-served build for end-user study.
 - Optional static hosting of build artifacts (while preserving offline behavior after first load).
 
+Static delivery retains immutable `/assets/` bytes append-only across releases.
+The local Docker release state validates SHA-256/size inventories, rejects
+path escapes, symlinks and same-path byte collisions, and selects a new
+HTML/service-worker shell only after its complete asset union is staged. A
+static host must provide the equivalent atomic shell-last/no-delete contract;
+destructive build-directory replacement is not compatible with old open tabs.
+The executable fresh-artifact path is
+`./scripts/export-static-release.sh /absolute/path/cabadrive-static`. It uses
+the full outgoing-runtime capture boundary first and uses the Docker stager and
+Compose release-state volume to stage that legacy inventory when one exists
+before committing one `publish` transaction and exporting the
+same transaction to a new host directory. A verified clean/post-feature capture
+with no `current` pointer publishes without a legacy argument. Any `current`
+entry that does exist is passed unchanged to strict stager validation, so
+dangling, wrong-type, incomplete, or mismatched authority fails before an
+incomplete candidate-only publication. The lower-level `export` operation
+intentionally fails closed when its publish output is absent or does not match
+the committed state; it is not a standalone fresh-output command.
+
 ## Future Backend Triggers
 
 Backend should only be introduced with an explicit feature spec if requirements add multi-user accounts, sync, remote analytics, or managed content delivery.
