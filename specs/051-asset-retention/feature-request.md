@@ -173,6 +173,45 @@ The known dependent PR is #215 (`codex/049-learning-priority-fresh-update`). It 
 
 ## Final Analyst Validation Notes
 
+### Renewed combined-cycle validation — 2026-10-04 final return #10
+
+- Analyst validation pass: passed
+- Final Analyst validation completed at: 2026-10-04T10:10:23Z
+- Analyst validated effective content head: d4fd6d9ffb5c5c7442d6e728410abc3d91062472
+- Analyst return count: 0 / 5.
+- Combined PR-set coverage: PR #217 on branch `codex/051-asset-retention`
+  covers feature 051 asset retention, feature 052 Compose-project provenance,
+  and feature 053 brace-expansion security refresh. All behaviorally meaningful
+  content is contained in the effective head above; the later uncommitted
+  changes present during this validation are role-owned final-validation
+  evidence only.
+- Customer-intent validation: R051-1 through R051-8 are satisfied in spirit and
+  letter. Final return #10 preserves authoritative outgoing-runtime capture and
+  legacy-aware append-only staging whenever a `current` entry exists, including
+  dangling, wrong-type, or otherwise invalid entries that must fail closed. It
+  also restores the intended clean/post-feature path: when capture confirms
+  that no legacy pointer exists, candidate assets are safely committed and
+  exported without inventing legacy authority. Supplied invalid legacy input
+  still creates no state, publish output, or destination.
+- Verification evidence: the direct R052-021 clean-no-pointer control passed
+  1/1, combined focused contracts passed 101/101, full preflight passed 651/651
+  Node tests plus production build/service-worker generation and 158/158
+  Playwright tests, and isolated Docker lifecycle
+  `cabadrive-retention-46613-1791042391648` passed. Exact-head bounded Review
+  Agent inspection passed without findings and thread `r4173723121` is
+  resolved.
+- Process and sequencing: the complete combined cycle has no unresolved task,
+  feedback, finding, accepted known issue, security exception, or
+  customer-intent gap. F052 has completed R052-001 through R052-021 at its
+  maximum Architect return count 10/10; F053 remains 0/10. No escalation is
+  required because validation passes. PR #217 must still pass the Orchestrator
+  current-head evidence-only guard and merge before PR #215 is synchronized,
+  retested, reviewed, and independently revalidated as required by R051-8.
+
+The return-#9 Analyst validation for effective head
+`dbe850e8979a2595fa065a04a28c32661f8f4250`, and every earlier Analyst marker,
+is stale and explicitly superseded by this final return-#10 validation.
+
 ### Renewed combined-cycle validation — 2026-10-03 return #9
 
 - Analyst validation pass: passed

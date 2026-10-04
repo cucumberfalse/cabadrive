@@ -182,6 +182,43 @@ At intake, feature 053 has no separate PR. Its Orchestrator-approved single slic
 
 ## Final Analyst Validation Notes
 
+### Renewed combined-cycle validation — 2026-10-04 final return #10
+
+- Analyst validation pass: passed
+- Final Analyst validation completed at: 2026-10-04T10:10:23Z
+- Analyst validated effective content head: d4fd6d9ffb5c5c7442d6e728410abc3d91062472
+- Analyst return count: 0 / 5.
+- Combined PR-set coverage: PR #217 on branch `codex/051-asset-retention`
+  covers feature 051 asset retention, feature 052 Compose-project provenance,
+  and this feature 053 security refresh. All behaviorally meaningful content is
+  contained in the effective head above; the later uncommitted changes present
+  during this validation are role-owned final-validation evidence only.
+- Customer-intent validation: feature 053 remains satisfied in spirit and
+  letter after final F052 return #10. Both vulnerable dependency lines remain
+  resolved at `brace-expansion@1.1.21` and
+  `brace-expansion@5.0.12`, with no vulnerable duplicate, manifest edit,
+  override, owner/toolchain movement, unrelated dependency churn, scanner
+  suppression, or workflow weakening. The conditional clean-no-legacy export
+  correction does not alter the audited dependency graph or product behavior
+  outside its assigned deployment-safety scope.
+- Compatibility and combined evidence: the direct R052-021 control passed 1/1,
+  combined focused contracts passed 101/101, full preflight passed 651/651 Node
+  tests plus production build/service-worker generation and 158/158 Playwright
+  tests, and isolated Docker lifecycle
+  `cabadrive-retention-46613-1791042391648` passed. Exact-head bounded Review
+  Agent inspection passed without findings and `r4173723121` is resolved.
+- Process validation: F052 completes R052-001 through R052-021 at its maximum
+  Architect return count 10/10; F053 remains at Architect return count 0/10
+  and Analyst return count 0/5. No unresolved feedback, finding, accepted known
+  issue, security exception, escalation condition, or customer-intent gap
+  remains. Exact-current-head security and required-check confirmation,
+  thread/conflict inspection, and the evidence-only guard remain mandatory
+  Orchestrator merge gates.
+
+The return-#9 Analyst validation for effective head
+`dbe850e8979a2595fa065a04a28c32661f8f4250`, and every earlier Analyst marker,
+is stale and explicitly superseded by this final return-#10 validation.
+
 ### Renewed combined-cycle validation — 2026-10-03 return #9
 
 - Analyst validation pass: passed

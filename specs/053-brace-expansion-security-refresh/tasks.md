@@ -11,7 +11,7 @@
 - Parallel preservation: all pre-existing feature-051/052 changes and sibling state remain outside feature-053 ownership.
 - Architect return count: `0 / 10`.
 - Analyst return count: `0 / 5`.
-- Effective content head: `dbe850e8979a2595fa065a04a28c32661f8f4250`.
+- Effective content head: `d4fd6d9ffb5c5c7442d6e728410abc3d91062472`.
 
 ## Implementation Tasks
 
@@ -35,9 +35,9 @@
 
 ## Final Validation Tasks
 
-- [x] **T015 — Establish the renewed effective content head.** Effective content head `dbe850e8979a2595fa065a04a28c32661f8f4250` includes dependency content, feature-053 memory, all technical fixes/dispositions, acceptance evidence, and combined PR #217 state.
-- [x] **T016 — Complete final Architect validation.** Architect validated the full combined cycle and effective content head at `2026-10-03T15:26:26Z`, return count `0 / 10` for feature 053; current-head guard and finalization remain separate gates.
-- [x] **T017 — Complete later Analyst validation.** After Architect passed, Analyst validated the combined feature-051/052/053 outcome at `2026-10-03T15:29:53Z`, return count `0 / 5`, against the same effective content head `dbe850e8979a2595fa065a04a28c32661f8f4250`; role-owned evidence is recorded in the feature-request memory.
+- [x] **T015 — Establish the renewed effective content head.** Effective content head `d4fd6d9ffb5c5c7442d6e728410abc3d91062472` includes dependency content, feature-053 memory, all technical fixes/dispositions, acceptance evidence, and combined PR #217 state.
+- [x] **T016 — Complete final Architect validation.** Architect validated the full combined cycle and effective content head at `2026-10-04T10:09:10Z`, return count `0 / 10` for feature 053; current-head guard and finalization remain separate gates.
+- [x] **T017 — Complete later Analyst validation.** After Architect passed, Analyst validated the combined F051/F052/F053 outcome at `2026-10-04T10:10:23Z`, return count `0 / 5`, against the same effective content head `d4fd6d9ffb5c5c7442d6e728410abc3d91062472`; role-owned evidence is recorded in feature-request memory.
 - [ ] **T018 — Run the final current-head guard and finalize.** Prove any post-effective-head delta is evidence-only, recheck all five checks/review/threads/conflicts/feedback/process memory, run expected-head finalizer dry-run, and use conservative protected finalization. Complete paginated guards remain mandatory if helper pagination requires authorized manual squash merge.
 
 ## Planned Diff Audit
@@ -93,7 +93,7 @@
 
 | Purpose | Branch | PR | Starting head | Current/final head | Status | Final-validation inclusion |
 |---|---|---|---|---|---|---|
-| Feature-053 security refresh contributing to combined feature-051/052/053 delivery | `codex/051-asset-retention` | #217 | `0ab100ebcb4cdb4f19f4bb148675184b7a10b8a5` | `dbe850e8979a2595fa065a04a28c32661f8f4250` effective/current content | Open; combined implementation, review, and renewed Architect/Analyst validation complete; current-head/finalization gates pending | Required |
+| Feature-053 security refresh contributing to combined feature-051/052/053 delivery | `codex/051-asset-retention` | #217 | `0ab100ebcb4cdb4f19f4bb148675184b7a10b8a5` | `d4fd6d9ffb5c5c7442d6e728410abc3d91062472` effective/current content | Open; return #10 implementation/review and renewed Architect/Analyst validation complete; current-head/finalization gates pending | Required |
 
 ## Decisions And Dead Ends
 
@@ -122,17 +122,17 @@ gates rather than implementation defects.
 ## Final Validation Evidence
 
 - Architect validation: renewed pass for the complete combined
-  feature-051/052/053 cycle after bounded F052 return #9; all earlier passes are
+  feature-051/052/053 cycle after final F052 return #10; all earlier passes are
   historical and superseded for current merge authority.
 - Architect return count: 0.
 - Analyst validation pass: passed.
-- Final Analyst validation completed at: 2026-10-03T15:29:53Z.
+- Final Analyst validation completed at: 2026-10-04T10:10:23Z.
 - Analyst return count: 0 / 5.
-- Analyst validated effective content head: `dbe850e8979a2595fa065a04a28c32661f8f4250`.
-- Effective content head: `dbe850e8979a2595fa065a04a28c32661f8f4250`.
-- Final-validation evidence-only delta: the role-owned Analyst markers and this
-  one-time Architect reconciliation are evidence-only after effective content
-  head `dbe850e8979a2595fa065a04a28c32661f8f4250`; no product/task outcome,
+- Analyst validated effective content head: `d4fd6d9ffb5c5c7442d6e728410abc3d91062472`.
+- Effective content head: `d4fd6d9ffb5c5c7442d6e728410abc3d91062472`.
+- Final-validation evidence-only delta: the renewed role-owned Analyst markers
+  and this one-time reconciliation are evidence-only after effective content
+  head `d4fd6d9ffb5c5c7442d6e728410abc3d91062472`; no product/task outcome,
   return count, code, test, docs, or dependency content changed.
 - Current-PR-head read-only guard: pending.
 - Limit escalation: none.
@@ -218,6 +218,34 @@ gates rather than implementation defects.
 - Architect return count: 0 / 10
 - Final Architect validation completed at: 2026-10-03T15:26:26Z
 - Architect validated effective content head: dbe850e8979a2595fa065a04a28c32661f8f4250
+- Architect validation evidence: the preceding return #9 pass is historical and
+  superseded by final F052 return #10. Effective/current head
+  `d4fd6d9ffb5c5c7442d6e728410abc3d91062472` preserves F053's audited security
+  graph and adds R052-021's conditional clean-no-legacy correction and exact
+  regressions.
+- Architect validation evidence: focused control passed 1/1, combined contracts
+  passed 101/101, preflight passed 651/651 Node tests plus build/SW and 158/158
+  Playwright tests, and Docker lifecycle
+  `cabadrive-retention-46613-1791042391648` passed. Exact-head bounded review
+  passed without findings and `r4173723121` is resolved.
+- Architect disposition: no combined-cycle Architect work remains. F052 is at
+  10/10 and F053 remains 0/10; any later concrete gap requires new-feature-
+  request escalation.
+- Architect validation pass: passed
+- Architect return count: 0 / 10
+- Final Architect validation completed at: 2026-10-04T10:09:10Z
+- Architect validated effective content head: d4fd6d9ffb5c5c7442d6e728410abc3d91062472
+
+## Terminal Validation Checklist After Return #10
+
+- Effective content boundary and review: complete at
+  `d4fd6d9ffb5c5c7442d6e728410abc3d91062472`.
+- Final Architect validation: complete at `2026-10-04T10:09:10Z`; F052 is
+  10/10 and F053 is 0/10.
+- Final Analyst validation: complete at `2026-10-04T10:10:23Z`, return count
+  0/5, on the same head; terminal F052/F053 reconciliation is complete once.
+- Current-head guard/finalization: pending after this evidence and exact-head gates.
+- Any later Architect gap requires a new feature request.
 
 ## Terminal Validation Checklist
 

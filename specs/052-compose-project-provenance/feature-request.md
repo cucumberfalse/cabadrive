@@ -327,6 +327,47 @@ validation, current-head guards, and merge remain pending.
 
 ## Final Analyst Validation
 
+### Renewed validation after final Architect return #10 — 2026-10-04
+
+- Analyst validation pass: passed
+- Final Analyst validation completed at: 2026-10-04T10:10:23Z
+- Analyst validated effective content head: d4fd6d9ffb5c5c7442d6e728410abc3d91062472
+- Analyst return count: 0 / 5.
+- Combined PR-set coverage: PR #217 on branch `codex/051-asset-retention`
+  covers feature 051 asset retention, this feature 052 Compose-project
+  provenance cycle, and feature 053 brace-expansion security refresh. The
+  effective head above contains all product, test, documentation, dependency,
+  and disposition content; the later uncommitted changes present during this
+  validation are role-owned final-validation evidence only.
+- Customer-intent validation: R052-1 through R052-8 and all required negative
+  scenarios are satisfied in spirit and letter. Provenance, durable adoption,
+  lifecycle continuity, explicit caller choice, clean-install behavior,
+  ambiguity rejection, and fail-closed safety remain intact. R052-021 correctly
+  distinguishes an authoritatively confirmed absence of legacy state from a
+  present but invalid legacy entry: the former permits a complete candidate
+  publish/export, while every present entry is forwarded for strict validation
+  and cannot degrade into a candidate-only success.
+- Evidence coverage: the direct clean-no-pointer regression passed 1/1 and
+  proves candidate bytes reach both committed retained state and the exported
+  destination. Existing legacy-byte coverage remains exact, while supplied
+  missing/incomplete legacy inputs fail before state, publish output, or
+  destination creation. Combined focused contracts passed 101/101; full
+  preflight passed 651/651 Node tests plus build/service-worker generation and
+  158/158 Playwright tests; isolated Docker lifecycle
+  `cabadrive-retention-46613-1791042391648` passed.
+- Review and process validation: exact-head bounded Review Agent inspection
+  passed without findings and `r4173723121` is resolved. Feature 051's
+  append-only/shell-last contract and feature 053's narrow audited security
+  resolution remain preserved. R052-001 through R052-021 are complete at the
+  maximum Architect return count 10/10; Analyst return count remains 0/5. No
+  new-feature escalation is required because no customer or architecture gap
+  remains. Exact-current-head checks, complete thread/conflict inspection, and
+  the evidence-only guard remain Orchestrator merge gates.
+
+The return-#9 Analyst validation for effective head
+`dbe850e8979a2595fa065a04a28c32661f8f4250`, and all earlier Analyst markers,
+is stale and explicitly superseded by this final return-#10 validation.
+
 ### Renewed validation after Architect return #9 — 2026-10-03
 
 - Analyst validation pass: passed

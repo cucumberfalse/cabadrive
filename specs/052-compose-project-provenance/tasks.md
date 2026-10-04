@@ -239,7 +239,7 @@
   return limit: 10; current count: 10 after the final permitted return below.
 - [x] T052-019 After Architect pass, Orchestrator invoked final Analyst
   validation on the same effective content head. Analyst passed at
-  `2026-10-03T15:29:53Z`; return count: 0 / 5.
+  `2026-10-04T10:10:23Z`; return count: 0 / 5.
 - [ ] T052-020 Orchestrator runs the current-head guard, proves any later commit
   evidence-only, reruns exact-head required checks, and finalizes PR #217. If
   the helper refuses solely due its bounded review pagination, manual squash is
@@ -646,9 +646,9 @@
 
 ## Known Issues
 
-- No accepted technical known issue. R052-021 implementation and local
-  verification are complete; renewed exact-head review and renewed Architect
-  then Analyst validation remain merge gates.
+- No accepted technical known issue. R052-021 implementation, focused/full/
+  Docker verification, exact-head bounded no-finding review, and originating-
+  thread resolution are complete; renewed Architect validation passes below.
 
 ## Final Architect Validation
 
@@ -885,3 +885,53 @@
   current-head guard. This consumes the F052 Architect return limit; any later
   Architect gap requires the repository's new-feature-request escalation.
 - Architect validated effective content head: pending return #10 implementation and revalidation.
+- Architect validation evidence: the failed return #10 marker immediately above
+  is superseded. Effective/current content head
+  `d4fd6d9ffb5c5c7442d6e728410abc3d91062472` contains the conditional
+  clean-no-legacy wrapper behavior, present-invalid fail-closed handling, exact
+  regressions, and current process memory with no post-effective delta.
+- Architect validation evidence: the direct R052-021 control passed 1/1,
+  combined focused contracts passed 101/101, full preflight passed 651/651 Node
+  tests plus build/SW and 158/158 Playwright tests, and isolated Docker
+  lifecycle `cabadrive-retention-46613-1791042391648` passed. Guards are green.
+- Architect validation evidence: bounded Review Agent inspection of exact head
+  `d4fd6d9ffb5c5c7442d6e728410abc3d91062472` passed with no findings and thread
+  `r4173723121` is resolved. The combined cycle completes R052-001 through
+  R052-021 at F052 return count 10/10 and preserves F053 at 0/10.
+- Architect validation evidence: all tasks, dispositions, and process memory
+  are current; no unresolved finding, feedback item, accepted known issue,
+  architectural gap, or customer-intent mismatch remains. No escalation is
+  needed because this validation passes.
+- Architect validation pass: passed
+- Final Architect validation completed at: 2026-10-04T10:09:10Z
+- Architect return count: 10 / 10.
+- Architect validated effective content head: d4fd6d9ffb5c5c7442d6e728410abc3d91062472
+
+## Final Analyst Validation After Return #10
+
+- Analyst validation evidence: after the renewed Architect pass at
+  `2026-10-04T10:09:10Z`, Analyst validated the complete combined PR #217
+  F051/F052/F053 result against customer intent on the same effective content
+  head. This terminal record supersedes earlier historical Analyst summaries.
+- Analyst validation pass: passed
+- Final Analyst validation completed at: 2026-10-04T10:10:23Z
+- Analyst return count: 0 / 5.
+- Analyst validated effective content head: d4fd6d9ffb5c5c7442d6e728410abc3d91062472
+- Final-validation evidence-only delta: the role-owned Analyst markers and this
+  one-time reconciliation are evidence-only after effective content head
+  `d4fd6d9ffb5c5c7442d6e728410abc3d91062472`; no product/task outcome, return
+  count, code, test, docs, or dependency content changed.
+
+## Terminal Validation Checklist After Return #10
+
+- Effective content boundary and exact-head review: complete at
+  `d4fd6d9ffb5c5c7442d6e728410abc3d91062472`.
+- Final Architect validation: complete at `2026-10-04T10:09:10Z`; F052 is at
+  its maximum 10/10 and F053 remains 0/10.
+- Final Analyst validation: complete at `2026-10-04T10:10:23Z`, return count
+  0/5, on the same effective content head; one-time F052/F053 reconciliation is
+  complete.
+- Current-head guard/finalization: pending after this evidence and exact-
+  current-head merge gates.
+- Any later concrete Architect gap must escalate to a new feature request; no
+  further F052 return is available.
