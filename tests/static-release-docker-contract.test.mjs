@@ -1,5 +1,14 @@
 import assert from "node:assert/strict";
-import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import {
+  chmodSync,
+  existsSync,
+  mkdirSync,
+  mkdtempSync,
+  readFileSync,
+  rmSync,
+  symlinkSync,
+  writeFileSync,
+} from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { execFileSync, spawnSync } from "node:child_process";
@@ -208,7 +217,7 @@ test("documented Docker bootstrap publishes then exports one exact fresh transac
     assert.match(staticExport, /docker compose[\s\S]*build stager/);
     assert.match(
       staticExport,
-      /legacy_handoff=.*\/current[\s\S]*\[ -e "\$legacy_handoff" \] \|\| \[ -L "\$legacy_handoff" \][\s\S]*set -- --legacy \/legacy-handoff\/current/,
+      /legacy_handoff=.*\/current[\s\S]*\[ -L "\$legacy_handoff" \][\s\S]*set -- --legacy \/legacy-handoff\/current[\s\S]*elif \[ -e "\$legacy_handoff" \]/,
     );
     assert.match(staticExport, /--destination "\/export\/\$destination_name" "\$@"/);
     assert.match(
@@ -222,5 +231,63 @@ test("documented Docker bootstrap publishes then exports one exact fresh transac
     assert.match(backendDocs, /verified clean\/post-feature capture\s+with no `current` pointer/);
   } finally {
     rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("export wrapper distinguishes absent, symlink, and non-symlink current entries", () => {
+  for (const kind of ["absent", "dangling", "file", "directory"]) {
+    const root = mkdtempSync(join(tmpdir(), `cabadrive-static-wrapper-${kind}-`));
+    try {
+      const scripts = join(root, "scripts");
+      const bin = join(root, "bin");
+      const projectRoot = join(root, ".cabadrive-release-handoff", "fixture");
+      const log = join(root, "docker.log");
+      mkdirSync(scripts, { recursive: true });
+      mkdirSync(bin, { recursive: true });
+      mkdirSync(projectRoot, { recursive: true });
+      writeFileSync(join(root, "docker-compose.yml"), "services: {}\n");
+      writeFileSync(join(scripts, "export-static-release.sh"), staticExport);
+      chmodSync(join(scripts, "export-static-release.sh"), 0o755);
+      writeFileSync(
+        join(scripts, "capture-legacy-assets.sh"),
+        '#!/bin/sh\nif [ "${1:-}" = "--resolve-project" ]; then printf "%s\\n" fixture; fi\n',
+      );
+      chmodSync(join(scripts, "capture-legacy-assets.sh"), 0o755);
+      writeFileSync(
+        join(bin, "docker"),
+        '#!/bin/sh\nprintf "%s\\n" "$*" >>"$CABADRIVE_DOCKER_LOG"\n',
+      );
+      chmodSync(join(bin, "docker"), 0o755);
+      const current = join(projectRoot, "current");
+      if (kind === "dangling") symlinkSync("releases/missing", current);
+      if (kind === "file") writeFileSync(current, "not a pointer");
+      if (kind === "directory") mkdirSync(current);
+
+      const result = spawnSync(
+        "sh",
+        [join(scripts, "export-static-release.sh"), join(root, "out")],
+        {
+          encoding: "utf8",
+          env: {
+            ...process.env,
+            PATH: `${bin}:${process.env.PATH}`,
+            CABADRIVE_DOCKER_LOG: log,
+          },
+        },
+      );
+      if (kind === "file" || kind === "directory") {
+        assert.notEqual(result.status, 0, kind);
+        assert.match(result.stderr, /current entry must be a symlink/i);
+        assert.equal(existsSync(log), false);
+      } else {
+        assert.equal(result.status, 0, result.stdout + result.stderr);
+        const dockerArgs = readFileSync(log, "utf8");
+        if (kind === "dangling") assert.match(dockerArgs, /--legacy \/legacy-handoff\/current/);
+        else assert.doesNotMatch(dockerArgs, /--legacy/);
+      }
+      assert.equal(existsSync(join(root, "out")), false);
+    } finally {
+      rmSync(root, { recursive: true, force: true });
+    }
   }
 });

@@ -30,8 +30,14 @@ static-publish transaction и только после этого экспорт�
 физический каталог через встроенный atomic no-replace helper. Если полный
 capture подтверждает чистую/post-feature установку без `current`, команда
 выполняет публикацию без legacy-аргумента. Любой существующий `current` (в том
-числе невалидный) передаётся stager для строгой проверки и при ошибке не
-превращается в candidate-only экспорт. Отдельная операция
+числе dangling) обязан быть symlink и передаётся stager для закрепления и
+строгой проверки; обычный файл, каталог или подмена pointer завершают команду
+до мутации. Marker handoff читается только через no-follow/nonblocking
+descriptor после проверки regular-file типа. Stager сохраняет предыдущий
+`current`, пока новый serving output и физический export полностью не
+опубликованы и не синхронизированы; только затем активирует новый release.
+Точный journal позволяет повторить прерванную транзакцию, но отклоняет дрейф
+candidate, legacy authority, state, output или destination. Отдельная операция
 `stage-static-release.mjs export` тоже не является bootstrap: без
 соответствующей завершённой публикации или при несовпадении state/output она
 безопасно завершается ошибкой.

@@ -249,9 +249,10 @@ function requireStableOpenPath(path, label, stat) {
   }
 }
 
-function readRegularFileNoFollow(path, label) {
+function readRegularFileNoFollow(path, label, { onOpen } = {}) {
   const { descriptor, stat } = openRegularFileNoFollow(path, label);
   try {
+    onOpen?.({ path, stat });
     const contents = readFileSync(descriptor, "utf8");
     requireStableOpenPath(path, label, stat);
     return contents;
@@ -260,9 +261,9 @@ function readRegularFileNoFollow(path, label) {
   }
 }
 
-function readJsonRegularFileNoFollow(path, label) {
+function readJsonRegularFileNoFollow(path, label, options) {
   try {
-    return JSON.parse(readRegularFileNoFollow(path, label));
+    return JSON.parse(readRegularFileNoFollow(path, label, options));
   } catch (error) {
     if (error instanceof Error && error.message.startsWith("Static release staging:")) throw error;
     fail(`invalid ${label}: ${path}`);
@@ -815,7 +816,7 @@ export function publishLegacyHandoffPointer({
   }
 }
 
-export function verifyLegacyHandoff(legacyRoot) {
+export function verifyLegacyHandoff(legacyRoot, { onMarkerOpen } = {}) {
   try {
     const root = realpathSync(legacyRoot);
     assertDirectory(root, "legacy handoff root");
@@ -825,7 +826,9 @@ export function verifyLegacyHandoff(legacyRoot) {
     if (!existsSync(markerPath) || !existsSync(sourceIdPath) || !existsSync(sourceKindPath)) {
       return { valid: false, reason: "legacy handoff marker is incomplete" };
     }
-    const marker = readJson(markerPath, "legacy handoff marker");
+    const marker = readJsonRegularFileNoFollow(markerPath, "legacy handoff marker", {
+      onOpen: onMarkerOpen,
+    });
     const actual = createLegacyHandoffManifest({
       legacyRoot: root,
       sourceId: readRegularFileNoFollow(sourceIdPath, "legacy handoff source-id"),
@@ -841,6 +844,75 @@ export function verifyLegacyHandoff(legacyRoot) {
       reason: error instanceof Error ? error.message : "legacy handoff validation failed",
     };
   }
+}
+
+export function pinLegacyHandoffCurrent(legacyCurrent, { onAfterClassify, onAfterValidate } = {}) {
+  const current = resolve(legacyCurrent);
+  let entry;
+  try {
+    entry = lstatSync(current);
+  } catch (error) {
+    if (error?.code === "ENOENT") fail("legacy handoff current pointer is absent");
+    throw error;
+  }
+  if (!entry.isSymbolicLink()) {
+    fail("legacy handoff current entry must be a symlink");
+  }
+  const linkTarget = readlinkSync(current);
+  onAfterClassify?.({ current, linkTarget, entry });
+  const parent = realpathSync(dirname(current));
+  let target;
+  try {
+    target = realpathSync(resolve(dirname(current), linkTarget));
+  } catch {
+    fail("legacy handoff current pointer is dangling");
+  }
+  assertInside(parent, target, "legacy handoff current target");
+  const targetEntry = lstatSync(target);
+  if (targetEntry.isSymbolicLink() || !targetEntry.isDirectory()) {
+    fail("legacy handoff current target must be a directory");
+  }
+  const verification = verifyLegacyHandoff(target);
+  if (!verification.valid) {
+    fail(`legacy handoff is not authoritative: ${verification.reason || "invalid"}`);
+  }
+  onAfterValidate?.({ current, target, targetEntry });
+  const revalidate = () => {
+    let currentEntry;
+    try {
+      currentEntry = lstatSync(current);
+    } catch {
+      fail("legacy handoff current pointer changed during validation");
+    }
+    if (
+      !currentEntry.isSymbolicLink() ||
+      currentEntry.dev !== entry.dev ||
+      currentEntry.ino !== entry.ino ||
+      readlinkSync(current) !== linkTarget
+    ) {
+      fail("legacy handoff current pointer changed during validation");
+    }
+    let currentTarget;
+    let currentTargetEntry;
+    try {
+      currentTarget = realpathSync(resolve(dirname(current), linkTarget));
+      currentTargetEntry = lstatSync(currentTarget);
+    } catch {
+      fail("legacy handoff current target changed during validation");
+    }
+    if (
+      currentTarget !== target ||
+      currentTargetEntry.dev !== targetEntry.dev ||
+      currentTargetEntry.ino !== targetEntry.ino ||
+      currentTargetEntry.isSymbolicLink() ||
+      !currentTargetEntry.isDirectory()
+    ) {
+      fail("legacy handoff current target changed during validation");
+    }
+    return target;
+  };
+  revalidate();
+  return { ...verification, root: target, current, linkTarget, revalidate };
 }
 
 function assertNoCollision(...groups) {
@@ -1398,6 +1470,7 @@ export function stageStaticRelease({
   diagnosticHost,
   lockHeld = false,
   expectedManifest,
+  validatedLegacy,
 } = {}) {
   if (!stateRoot || !candidateRoot) fail("--state and --candidate are required");
   const candidateRootReal = realpathSync(candidateRoot);
@@ -1414,10 +1487,17 @@ export function stageStaticRelease({
   currentReleaseId(resolve(stateRoot));
   const suppliedLegacyRoot =
     legacyRoot === undefined || legacyRoot === null ? undefined : resolve(legacyRoot);
-  const legacyValidation = suppliedLegacyRoot ? verifyLegacyHandoff(suppliedLegacyRoot) : undefined;
+  const legacyValidation =
+    validatedLegacy ||
+    (suppliedLegacyRoot
+      ? basename(suppliedLegacyRoot) === "current"
+        ? pinLegacyHandoffCurrent(suppliedLegacyRoot)
+        : verifyLegacyHandoff(suppliedLegacyRoot)
+      : undefined);
   if (suppliedLegacyRoot && !legacyValidation?.valid) {
     fail(`legacy handoff is not authoritative: ${legacyValidation?.reason || "invalid"}`);
   }
+  legacyValidation?.revalidate?.();
   const validatedLegacyRoot = legacyValidation?.root;
   const state = ensureStateLayout(stateRoot);
   const release = createCandidateManifest(candidateRootReal);
@@ -1692,13 +1772,23 @@ function pendingPublishIdentityMatches(pending, output, release) {
     validPublishTransactionId(pending.transactionId, output) &&
     pending.releaseId === release.releaseId &&
     pending.manifestSha256 === manifestDigest(release) &&
-    ["prepared", "renamed-uncommitted", "output-durable"].includes(pending.phase) &&
+    ["prepared", "renamed-uncommitted", "output-durable", "export-durable"].includes(
+      pending.phase,
+    ) &&
     (pending.priorCurrentReleaseId === null || typeof pending.priorCurrentReleaseId === "string") &&
     exactInventory(pending.priorAssets) &&
     exactInventory(pending.expectedAssets) &&
     exactInventory(pending.inventory) &&
     pending.priorAssetsSha256 === inventoryDigest(pending.priorAssets) &&
     pending.expectedAssetsSha256 === inventoryDigest(pending.expectedAssets)
+  );
+}
+
+function pendingCoordinatorRequestMatches(pending, destination, legacyValidation) {
+  return (
+    pending.destination === destination &&
+    pending.legacyManifestSha256 ===
+      (legacyValidation ? manifestDigest(legacyValidation.manifest) : null)
   );
 }
 
@@ -1851,7 +1941,7 @@ function syncTree(root, options) {
   visit(root);
 }
 
-function copyPublishTree({ state, candidate, temporary, options }) {
+function copyPublishTree({ state, candidate, temporary, options, legacyValidation }) {
   const existing = inventoryForAssets(state, "retained assets");
   const ledger = readRetainedInventory(state);
   if (existing.length && !ledger)
@@ -1859,13 +1949,17 @@ function copyPublishTree({ state, candidate, temporary, options }) {
   if (ledger && !sameEntries(existing, ledger)) {
     fail("retained assets do not match canonical cumulative inventory");
   }
-  assertNoCollision(existing, candidate.manifest.assets);
+  const legacy = legacyValidation?.manifest.assets || [];
+  assertNoCollision(existing, legacy, candidate.manifest.assets);
   const byExistingPath = new Map(existing.map((entry) => [entry.path, entry]));
-  const retained = mergeInventories(existing, candidate.manifest.assets);
+  const byLegacyPath = new Map(legacy.map((entry) => [entry.path, entry]));
+  const retained = mergeInventories(existing, legacy, candidate.manifest.assets);
   for (const entry of retained) {
     const source = byExistingPath.has(entry.path)
       ? join(state, "assets", ...entry.path.split("/"))
-      : sourceAsset(candidate.root, entry.path);
+      : byLegacyPath.has(entry.path)
+        ? join(legacyValidation.root, "assets", ...entry.path.split("/"))
+        : sourceAsset(candidate.root, entry.path);
     copyAndVerify(
       source,
       join(temporary, "assets", ...entry.path.split("/")),
@@ -1985,6 +2079,11 @@ export function buildStaticPublish({
   stateRoot,
   candidateRoot,
   outputRoot,
+  destinationRoot,
+  legacyRoot,
+  validatedLegacy,
+  deferActivation = false,
+  lockHeld = false,
   faultAt,
   onDurabilityOperation,
   projectKey,
@@ -2018,18 +2117,41 @@ export function buildStaticPublish({
   ) {
     fail("release state and static publish output must not overlap");
   }
+  const suppliedLegacyRoot =
+    legacyRoot === undefined || legacyRoot === null ? undefined : resolve(legacyRoot);
+  const legacyValidation =
+    validatedLegacy ||
+    (suppliedLegacyRoot
+      ? basename(suppliedLegacyRoot) === "current"
+        ? pinLegacyHandoffCurrent(suppliedLegacyRoot)
+        : verifyLegacyHandoff(suppliedLegacyRoot)
+      : undefined);
+  if (suppliedLegacyRoot && !legacyValidation?.valid) {
+    fail(`legacy handoff is not authoritative: ${legacyValidation?.reason || "invalid"}`);
+  }
+  legacyValidation?.revalidate?.();
+  const destination = destinationRoot ? resolve(destinationRoot) : null;
   const state = ensureStateLayout(stateRoot);
   const manifest = createCandidateManifest(candidateRootReal);
   const candidate = { root: candidateRootReal, manifest };
   const options = { faultAt, onDurabilityOperation };
-  const unlock = acquireLock(state, {
-    projectKey,
-    onLockOperation,
-    diagnosticHost,
-  });
+  const unlock = lockHeld
+    ? () => {}
+    : acquireLock(state, {
+        projectKey,
+        onLockOperation,
+        diagnosticHost,
+      });
 
   try {
     const existingPending = readPendingPublish(state);
+    if (
+      existingPending &&
+      !deferActivation &&
+      (existingPending.destination !== null || existingPending.legacyManifestSha256 !== null)
+    ) {
+      fail("static publish/export transaction must resume through publish-export");
+    }
     const parent = dirname(output);
     assertDirectory(parent, "static publish output parent");
     const outputEntry = noFollowEntry(output);
@@ -2063,7 +2185,9 @@ export function buildStaticPublish({
           : noFollowEntry(pendingTemporary)) ||
         !pendingPublishMatches(existingPending, output, manifest, inventory) ||
         !pendingInventoryMatchesCandidate(existingPending, manifest) ||
-        !pendingRetainedAssetsMatchCurrentState(state, existingPending, manifest)
+        !pendingRetainedAssetsMatchCurrentState(state, existingPending, manifest) ||
+        (deferActivation &&
+          !pendingCoordinatorRequestMatches(existingPending, destination, legacyValidation))
       ) {
         fail("publish output already exists without an exact pending transaction");
       }
@@ -2076,6 +2200,9 @@ export function buildStaticPublish({
         syncDirectory(parent, options);
         fault(options, "after-output-parent-fsync-before-phase");
         advancePendingPublishPhase(state, existingPending, "output-durable", options);
+      }
+      if (deferActivation) {
+        return { changed: false, releaseId: manifest.releaseId, manifest };
       }
       const staged = stageStaticRelease({
         stateRoot: state,
@@ -2096,13 +2223,15 @@ export function buildStaticPublish({
       return staged;
     }
     if (existingPending) {
-      if (existingPending.phase === "output-durable") {
+      if (["output-durable", "export-durable"].includes(existingPending.phase)) {
         fail("durable publish journal is missing its exact output");
       }
       if (
         !pendingPublishIdentityMatches(existingPending, output, manifest) ||
         !pendingInventoryMatchesCandidate(existingPending, manifest) ||
-        !pendingPriorStateMatchesCurrentState(state, existingPending)
+        !pendingPriorStateMatchesCurrentState(state, existingPending) ||
+        (deferActivation &&
+          !pendingCoordinatorRequestMatches(existingPending, destination, legacyValidation))
       ) {
         fail("static publish pending journal has no matching pre-output transaction");
       }
@@ -2137,6 +2266,9 @@ export function buildStaticPublish({
       fault(options, "after-output-parent-fsync-before-phase");
       advancePendingPublishPhase(state, renamedPending, "output-durable", options);
       fault(options, "after-output");
+      if (deferActivation) {
+        return { changed: true, releaseId: manifest.releaseId, manifest };
+      }
       const staged = stageStaticRelease({
         stateRoot: state,
         candidateRoot: candidateRootReal,
@@ -2165,6 +2297,7 @@ export function buildStaticPublish({
         candidate,
         temporary,
         options,
+        legacyValidation,
       });
       const priorCurrentReleaseId = currentReleaseId(state);
       const priorCommitted = verifyCommittedState(state);
@@ -2188,6 +2321,8 @@ export function buildStaticPublish({
         expectedAssetsSha256: inventoryDigest(expectedAssets),
         expectedAssets,
         inventory,
+        destination,
+        legacyManifestSha256: legacyValidation ? manifestDigest(legacyValidation.manifest) : null,
       };
       writeAtomically(
         state,
@@ -2205,6 +2340,9 @@ export function buildStaticPublish({
       fault(options, "after-output-parent-fsync-before-phase");
       pending = advancePendingPublishPhase(state, pending, "output-durable", options);
       fault(options, "after-output");
+      if (deferActivation) {
+        return { changed: true, releaseId: manifest.releaseId, manifest };
+      }
       const staged = stageStaticRelease({
         stateRoot: state,
         candidateRoot: candidateRootReal,
@@ -2267,6 +2405,8 @@ export function exportStaticPublish({
   outputRoot,
   destinationRoot,
   options,
+  allowPending = false,
+  validatedLegacy,
 } = {}) {
   if (!stateRoot || !candidateRoot || !outputRoot || !destinationRoot) {
     fail("--state, --candidate, --output and --destination are required");
@@ -2276,10 +2416,19 @@ export function exportStaticPublish({
   const destination = resolve(destinationRoot);
   const parent = dirname(output);
   const candidate = createCandidateManifest(realpathSync(candidateRoot));
-  const source = exactPublishedOutputDirectory(parent, output);
+  const pending = allowPending ? readPendingPublish(state) : undefined;
+  const source = exactPublishedOutputDirectory(parent, output, pending);
   if (!source) fail("static publish output is not an exact serving transaction");
   const inventory = outputInventory(source);
-  if (!exactCommittedPublishWithoutJournal(state, candidate, inventory)) {
+  const exactPending =
+    allowPending &&
+    pending &&
+    ["output-durable", "export-durable"].includes(pending.phase) &&
+    pendingPublishMatches(pending, output, candidate, inventory) &&
+    pendingInventoryMatchesCandidate(pending, candidate) &&
+    pendingRetainedAssetsMatchCurrentState(state, pending, candidate) &&
+    pendingCoordinatorRequestMatches(pending, destination, validatedLegacy);
+  if (!exactPending && !exactCommittedPublishWithoutJournal(state, candidate, inventory)) {
     fail("static publish output is not an exact committed artifact");
   }
   const canonicalDestination = canonicalProspectivePath(destination);
@@ -2304,6 +2453,10 @@ export function exportStaticPublish({
     ) {
       syncTree(destination, options);
       syncDirectory(dirname(destination), options);
+      if (exactPending && pending.phase === "output-durable") {
+        fault(options || {}, "after-export-parent-fsync-before-phase");
+        advancePendingPublishPhase(state, pending, "export-durable", options || {});
+      }
       return { changed: false, releaseId: candidate.releaseId, manifest: candidate };
     }
     fail("static export destination already exists");
@@ -2335,6 +2488,11 @@ export function exportStaticPublish({
     published = true;
     invokeDurability(options, "export-rename", destination);
     syncDirectory(destinationParent, options);
+    if (exactPending) {
+      fault(options || {}, "after-export-parent-fsync-before-phase");
+      advancePendingPublishPhase(state, pending, "export-durable", options || {});
+      fault(options || {}, "after-export");
+    }
   } finally {
     // Each attempt owns a unique sibling. Ordinary failures cannot leave a
     // partial destination or a deterministic leftover that blocks retries.
@@ -2346,16 +2504,76 @@ export function exportStaticPublish({
 }
 
 export function publishAndExportStaticRelease(options) {
-  const staged = stageStaticRelease(options);
-  const published = buildStaticPublish(options);
-  const exported = exportStaticPublish({
-    ...options,
-    destinationRoot: options.destinationRoot,
-  });
-  if (staged.releaseId !== published.releaseId || published.releaseId !== exported.releaseId) {
-    fail("static publish/export transaction changed between operations");
+  if (!options?.stateRoot || !options?.candidateRoot || !options?.outputRoot) {
+    fail("--state, --candidate and --output are required");
   }
-  return exported;
+  const suppliedLegacyRoot = options.legacyRoot ? resolve(options.legacyRoot) : undefined;
+  const legacyValidation = suppliedLegacyRoot
+    ? basename(suppliedLegacyRoot) === "current"
+      ? pinLegacyHandoffCurrent(suppliedLegacyRoot)
+      : verifyLegacyHandoff(suppliedLegacyRoot)
+    : undefined;
+  if (suppliedLegacyRoot && !legacyValidation?.valid) {
+    fail(`legacy handoff is not authoritative: ${legacyValidation?.reason || "invalid"}`);
+  }
+  legacyValidation?.revalidate?.();
+  const state = ensureStateLayout(options.stateRoot);
+  const transactionOptions = {
+    faultAt: options.faultAt,
+    onDurabilityOperation: options.onDurabilityOperation,
+    renameNoReplaceHelper: options.renameNoReplaceHelper,
+    onBeforeExportPublish: options.onBeforeExportPublish,
+  };
+  const unlock = acquireLock(state, {
+    projectKey: options.projectKey,
+    onLockOperation: options.onLockOperation,
+    diagnosticHost: options.diagnosticHost,
+  });
+  try {
+    const published = buildStaticPublish({
+      ...options,
+      stateRoot: state,
+      validatedLegacy: legacyValidation,
+      deferActivation: true,
+      lockHeld: true,
+    });
+    const exported = exportStaticPublish({
+      ...options,
+      stateRoot: state,
+      validatedLegacy: legacyValidation,
+      allowPending: true,
+      options: transactionOptions,
+    });
+    const pending = readPendingPublish(state);
+    if (
+      !pending ||
+      pending.phase !== "export-durable" ||
+      !pendingCoordinatorRequestMatches(pending, resolve(options.destinationRoot), legacyValidation)
+    ) {
+      fail("static publish/export transaction is not durably export-complete");
+    }
+    fault(transactionOptions, "before-current-activation");
+    legacyValidation?.revalidate?.();
+    const staged = stageStaticRelease({
+      ...options,
+      stateRoot: state,
+      validatedLegacy: legacyValidation,
+      lockHeld: true,
+      expectedManifest: published.manifest,
+    });
+    if (
+      staged.releaseId !== published.releaseId ||
+      published.releaseId !== exported.releaseId ||
+      !verifyCommittedState(state).valid
+    ) {
+      fail("static publish/export transaction changed between operations");
+    }
+    fault(transactionOptions, "before-publish-journal-clear");
+    clearPendingPublish(state, transactionOptions);
+    return exported;
+  } finally {
+    unlock();
+  }
 }
 
 function parseCli(argv) {

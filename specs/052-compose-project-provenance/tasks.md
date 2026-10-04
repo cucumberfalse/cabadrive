@@ -646,9 +646,10 @@
 
 ## Known Issues
 
-- No accepted technical known issue. R052-021 implementation, focused/full/
-  Docker verification, exact-head bounded no-finding review, and originating-
-  thread resolution are complete; renewed Architect validation passes below.
+- Three unresolved blocking findings surfaced only during the later complete
+  paginated final guard after F052 exhausted its Architect return budget. They
+  are not accepted known issues and require the new-feature-request escalation
+  recorded below; PR #217 must not finalize with them unresolved.
 
 ## Final Architect Validation
 
@@ -935,3 +936,40 @@
   current-head merge gates.
 - Any later concrete Architect gap must escalate to a new feature request; no
   further F052 return is available.
+
+## Post-Limit Architect Escalation
+
+- Recorded at: `2026-10-04T10:15:19Z`.
+- F052 Architect return count remains `10 / 10`. No return #11, F052
+  implementation task, or F052 implementation design is created.
+- Finding `r4173773102` (P1): accepted as blocking. `publish-export` can make B
+  current before output publication succeeds, so an output-publication failure
+  violates the required rollback/current-A contract.
+- Finding `r4173773104` (P2): accepted as blocking. Reading the legacy marker
+  without no-follow regular-file classification can follow a symlink or block
+  on a FIFO instead of rejecting unsafe input.
+- Finding `r4173872733` (P2): accepted as blocking. A present `current` path
+  must be a symlink; accepting a regular directory weakens the boundary, while
+  a dangling symlink must still be forwarded to strict downstream rejection.
+- Grouping disposition: these findings share the static export/legacy handoff
+  trust and transaction boundary and require one new Analyst-owned feature
+  request. Orchestrator must not route them as an eleventh F052 return.
+- Minimal acceptance scope for the new feature request:
+  1. Preserve current A and the prior committed tuple until B's exact output is
+     successfully and durably published; an injected output-publication failure
+     must leave A selected and prove no partial B activation.
+  2. Require the legacy marker path to be a no-follow regular file before any
+     read; symlink, FIFO, directory, dangling, unreadable, and other non-regular
+     controls fail closed before state/output mutation.
+  3. Classify a present handoff `current` with no-follow semantics and require a
+     symlink. A genuinely absent path may follow the verified clean path; a
+     dangling symlink is forwarded unchanged so strict handoff validation
+     rejects it; regular file/directory and substitution controls fail closed.
+  4. Add exact fault/type/race regressions and run the relevant focused export,
+     handoff, staging, and publication contracts, full preflight, isolated real
+     Docker lifecycle, exact-head review, and renewed combined role validation.
+- Validation disposition: the Architect pass at `2026-10-04T10:09:10Z` and
+  Analyst pass at `2026-10-04T10:10:23Z` on effective head
+  `d4fd6d9ffb5c5c7442d6e728410abc3d91062472` are superseded for merge authority
+  by these unresolved blocking findings. Current-head guard/finalization must
+  stop until the new feature cycle implements and validates the accepted scope.

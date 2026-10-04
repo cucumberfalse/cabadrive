@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import {
+  chmodSync,
   existsSync,
   lstatSync,
   linkSync,
@@ -8,6 +9,7 @@ import {
   readdirSync,
   realpathSync,
   readlinkSync,
+  renameSync,
   rmSync,
   symlinkSync,
   unlinkSync,
@@ -26,6 +28,8 @@ import {
   verifyCandidateManifest,
   verifyLegacyHandoff,
   publishLegacyHandoffPointer,
+  pinLegacyHandoffCurrent,
+  publishAndExportStaticRelease,
   verifyAdoptedProject,
   writeAdoptedProject,
   writeLegacyHandoffManifest,
@@ -432,6 +436,150 @@ test("static publish emits retained assets with only the B mutable shell", () =>
     });
     assert.equal(lstatSync(archive).isDirectory(), true);
     assert.equal(readFileSync(join(archive, "assets/a.js"), "utf8"), "A");
+  });
+});
+
+test("publish-export keeps A current until output and physical export are durable", () => {
+  for (const faultAt of [
+    "crash-before-output-rename",
+    "crash-after-output-rename-before-parent-fsync",
+    "after-output-parent-fsync-before-phase",
+    "after-output",
+    "durability:export-rename",
+    "after-export-parent-fsync-before-phase",
+    "after-export",
+    "before-current-activation",
+  ]) {
+    withFixture((root) => {
+      const state = join(root, "state");
+      const output = join(root, "publish");
+      const destination = join(root, "archive");
+      const a = release(root, "a", { "a.js": "A" }, "A shell");
+      const b = release(root, "b", { "b.js": "B" }, "B shell");
+      const renameNoReplaceHelper = nativeRenameHelper(root);
+      stageStaticRelease({ stateRoot: state, candidateRoot: a });
+
+      assert.throws(
+        () =>
+          publishAndExportStaticRelease({
+            stateRoot: state,
+            candidateRoot: b,
+            outputRoot: output,
+            destinationRoot: destination,
+            faultAt,
+            renameNoReplaceHelper,
+          }),
+        /fault injection/i,
+        faultAt,
+      );
+      assert.match(currentShell(state), /A shell/, faultAt);
+      if (existsSync(destination)) {
+        assert.equal(readFileSync(join(destination, "assets/a.js"), "utf8"), "A");
+        assert.equal(readFileSync(join(destination, "assets/b.js"), "utf8"), "B");
+      }
+
+      const trace = [];
+      assert.doesNotThrow(() =>
+        publishAndExportStaticRelease({
+          stateRoot: state,
+          candidateRoot: b,
+          outputRoot: output,
+          destinationRoot: destination,
+          renameNoReplaceHelper,
+          onDurabilityOperation: ({ operation }) => trace.push(operation),
+        }),
+      );
+      assert.match(currentShell(state), /B shell/, faultAt);
+      assert.equal(readFileSync(join(destination, "assets/a.js"), "utf8"), "A");
+      assert.equal(readFileSync(join(destination, "assets/b.js"), "utf8"), "B");
+      assert.ok(trace.lastIndexOf("export-rename") < trace.lastIndexOf("rename-current"));
+    });
+  }
+});
+
+test("legacy marker and current authority reject unsafe types without following or blocking", () => {
+  withFixture((root) => {
+    const base = join(root, "handoff");
+    const releaseRoot = legacyHandoff(join(base, "releases", "r1"), "legacy", {
+      "legacy.js": "legacy",
+    });
+    mkdirSync(base, { recursive: true });
+    symlinkSync("releases/r1", join(base, "current"));
+    assert.equal(pinLegacyHandoffCurrent(join(base, "current")).root, realpathSync(releaseRoot));
+
+    const external = join(root, "external-marker.json");
+    writeFileSync(external, "external sentinel");
+    const marker = join(releaseRoot, ".legacy-handoff.json");
+    unlinkSync(marker);
+    symlinkSync(external, marker);
+    assert.equal(verifyLegacyHandoff(releaseRoot).valid, false);
+    assert.equal(readFileSync(external, "utf8"), "external sentinel");
+    unlinkSync(marker);
+    execFileSync("mkfifo", [marker]);
+    const started = Date.now();
+    assert.equal(verifyLegacyHandoff(releaseRoot).valid, false);
+    assert.ok(Date.now() - started < 1000, "FIFO marker rejection must not block");
+
+    unlinkSync(marker);
+    mkdirSync(marker);
+    assert.equal(verifyLegacyHandoff(releaseRoot).valid, false);
+    rmSync(marker, { recursive: true });
+    writeLegacyHandoffManifest({
+      legacyRoot: releaseRoot,
+      sourceId: "legacy",
+      sourceKind: "baked-legacy-root",
+    });
+    const validMarker = readFileSync(marker, "utf8");
+    assert.equal(
+      verifyLegacyHandoff(releaseRoot, {
+        onMarkerOpen: ({ path }) => {
+          unlinkSync(path);
+          writeFileSync(path, validMarker);
+        },
+      }).valid,
+      false,
+    );
+    writeFileSync(marker, validMarker);
+    chmodSync(marker, 0o000);
+    assert.equal(verifyLegacyHandoff(releaseRoot).valid, false);
+    chmodSync(marker, 0o600);
+
+    unlinkSync(join(base, "current"));
+    for (const kind of ["file", "directory"]) {
+      if (kind === "file") writeFileSync(join(base, "current"), "not a pointer");
+      else mkdirSync(join(base, "current"));
+      assert.throws(() => pinLegacyHandoffCurrent(join(base, "current")), /must be a symlink/i);
+      rmSync(join(base, "current"), { recursive: true, force: true });
+    }
+    symlinkSync("releases/missing", join(base, "current"));
+    assert.throws(() => pinLegacyHandoffCurrent(join(base, "current")), /dangling/i);
+    unlinkSync(join(base, "current"));
+    symlinkSync("releases/r1", join(base, "current"));
+    assert.throws(
+      () =>
+        pinLegacyHandoffCurrent(join(base, "current"), {
+          onAfterClassify: ({ current }) => {
+            unlinkSync(current);
+            symlinkSync("releases/missing", current);
+          },
+        }),
+      /changed during validation/i,
+    );
+    unlinkSync(join(base, "current"));
+    symlinkSync("releases/r1", join(base, "current"));
+    legacyHandoff(join(base, "releases", "r2"), "replacement", {
+      "replacement.js": "replacement",
+    });
+    assert.throws(
+      () =>
+        pinLegacyHandoffCurrent(join(base, "current"), {
+          onAfterValidate: ({ target }) => {
+            renameSync(target, `${target}-old`);
+            renameSync(join(base, "releases", "r2"), target);
+          },
+        }),
+      /target changed during validation/i,
+    );
   });
 });
 

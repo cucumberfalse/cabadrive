@@ -63,10 +63,18 @@ before committing one `publish` transaction and exporting the
 same transaction to a new host directory. A verified clean/post-feature capture
 with no `current` pointer publishes without a legacy argument. Any `current`
 entry that does exist is passed unchanged to strict stager validation, so
-dangling, wrong-type, incomplete, or mismatched authority fails before an
-incomplete candidate-only publication. The lower-level `export` operation
-intentionally fails closed when its publish output is absent or does not match
-the committed state; it is not a standalone fresh-output command.
+dangling or invalid targets fail rather than becoming clean absence. Every
+present `current` entry must be a symlink; regular files, directories, special
+files, and pointer substitution fail before mutation. The stager pins and
+revalidates the symlink target, and reads the handoff marker from one
+`O_NOFOLLOW | O_NONBLOCK` descriptor proven by `fstat` to be a regular file.
+The static transaction keeps the prior release current while the exact serving
+output and physical export are copied, verified, published no-replace, and
+durably synchronized. Its journal binds prior current, candidate/legacy
+inventory, output, and destination; only an exact retry may continue, and the
+new release is activated last. The lower-level `export` operation intentionally
+fails closed when its publish output is absent or does not match the committed
+state; it is not a standalone fresh-output command.
 
 ## Future Backend Triggers
 

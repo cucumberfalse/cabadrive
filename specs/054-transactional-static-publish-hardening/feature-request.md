@@ -1,0 +1,448 @@
+# Feature Request: Transactional static-publish and legacy-handoff hardening
+
+## Intake Metadata
+
+- Feature ID: `054-transactional-static-publish-hardening`.
+- Intake role: Analyst, explicitly assigned by Orchestrator after feature 052
+  exhausted its Architect return limit.
+- Assigned worktree:
+  `/Users/chap/devel/cabadrive-worktrees/051-asset-retention`.
+- Assigned branch: `codex/051-asset-retention`.
+- Contributing PR: #217.
+- Recorded stacked base: current PR #217 head
+  `5e5f4ef40336fc7bff2c400b6301d99fbc9479c1`.
+- Numbering evidence: the maximum existing numeric feature prefix is `053`;
+  this intake therefore uses the next prefix, `054`.
+- Parallel-work warning: existing branches, worktrees, PRs, commits, dirty
+  diffs, and process memory may belong to sibling agents. In particular, the
+  current feature-052 Architect disposition is an intentional uncommitted diff
+  and must be preserved exactly.
+- Analyst scope: create this folder and this one `feature-request.md` only. No
+  `spec.md`, `plan.md`, `tasks.md`, code, tests, docs, commit, push, review, or
+  merge action belongs to this intake assignment.
+
+## Authority And Originating User Intent
+
+The user's standing request is to continue through merge of all related PRs
+without sacrificing result quality, and to change the workflow first when that
+is necessary to reach a correct merge rather than repeat an exhausted loop.
+
+Feature 052 reached its maximum permitted Architect return count of `10 / 10`.
+Three later exact-head findings are accepted as blocking. Repository governance
+therefore requires a new Analyst-owned feature request instead of an invalid
+eleventh feature-052 return. This feature groups only those three findings
+because they share one static-export transaction and legacy-handoff trust
+boundary:
+
+- `r4173773102` (P1): `publish-export` can select release B before publication
+  of B's exact output has completed durably. An output-publication failure can
+  therefore violate the required current-A rollback contract.
+- `r4173773104` (P2): the legacy marker can be read without first proving, with
+  no-follow semantics, that it is a regular file. A symlink can be followed and
+  a FIFO can block instead of being rejected.
+- `r4173872733` (P2): a present handoff `current` entry must be a symlink. A
+  genuinely absent entry is the clean case; a dangling symlink must be passed
+  to strict downstream validation; regular files and directories must not be
+  accepted as equivalent authority.
+
+No additional discovery or unrelated review scope is authorized by this
+intake. Concrete new findings may still be processed through the normal review
+and role-routing contract, but this request must not become a broad historical
+audit.
+
+## Documented Startup Fallback And Base Context
+
+The normal workflow starts a new feature from freshly verified `origin/main`
+in a new isolated worktree. Orchestrator has explicitly selected a documented
+fallback for this intake because all three accepted blockers exist only in the
+unmerged implementation on PR #217. Starting from `main` would omit the code
+under review, duplicate a long dependent change stack, and risk losing or
+misapplying the existing transaction and provenance work.
+
+Accordingly, feature 054 is stacked in the existing isolated dependency
+worktree on current PR #217 head
+`5e5f4ef40336fc7bff2c400b6301d99fbc9479c1`. The post-limit Architect
+disposition already present as an uncommitted feature-052 process-memory diff
+is preserved as input evidence, not rewritten by Analyst. This is a
+PR-#217-specific fallback and does not weaken the latest-main rule for future
+independent work.
+
+## Product And Technical Context
+
+Cabadrive is a static local-first SPA/PWA with no runtime backend. Its primary
+delivery path is Docker/Nginx, with optional static artifact export. The safe
+update contract retains immutable historical `/assets/` bytes so an old,
+service-worker-controlled tab can still fetch an uncached old hashed asset
+after a new release is deployed.
+
+Features 051 and 052 established append-only retained assets, shell-last
+activation, exact static-output publication, crash recovery, Compose-project
+provenance, authoritative outgoing-runtime capture, and a clean installation
+path with no legacy handoff. Feature 053 separately refreshed the vulnerable
+`brace-expansion` dependency lines. These existing guarantees and their
+evidence remain prerequisites; feature 054 narrows three residual trust and
+ordering gaps without reopening unrelated behavior.
+
+The static export operation spans two externally relevant results:
+
+1. the release-state `current` authority used by the Docker-served runtime;
+2. the exact exported output requested by the operator.
+
+Those results must behave as one ordered transaction from the operator's point
+of view. Preparing B is allowed while A remains current, but B must not become
+current until B's exact output has been completely and durably published.
+
+The outgoing legacy handoff also crosses a host/container filesystem boundary.
+Its marker and `current` pointer are authority-bearing inputs. Their types and
+identities must be validated without following attacker-controlled filesystem
+objects or blocking on special files.
+
+## Problem Statement
+
+The current implementation can violate transaction atomicity and input trust
+in three related ways:
+
+1. It may select B in release state before output publication finishes. A copy,
+   verification, sync, rename, or durability failure during publication can
+   then leave B active even though the requested export failed.
+2. It may read the legacy marker through a path whose no-follow type was not
+   proven to be a regular file. Symlinks, FIFOs, and type-substitution races can
+   escape validation or hang the process.
+3. It treats existence of handoff `current` as sufficient to forward legacy
+   authority, rather than requiring a present entry to be a symlink. This can
+   accept a regular directory/file as a pointer while also mishandling the
+   important distinction between genuine absence and a dangling symlink.
+
+These are merge blockers because they can expose partial activation, follow
+untrusted authority, or silently weaken the clean-versus-invalid handoff
+boundary.
+
+## Desired Outcome
+
+PR #217 provides one coherent, fail-closed transaction with the following
+observable behavior:
+
+1. Release A and its prior committed tuple remain authoritative while B is
+   prepared and while B's exact export output is copied, verified, published,
+   and made durable.
+2. B becomes `current` only after successful durable publication of the exact B
+   output. Any publication failure leaves A selected and exposes no partial B
+   activation.
+3. The legacy marker is opened/read only after no-follow regular-file
+   validation bound to the same object. Symlink, FIFO, directory, device,
+   socket, unreadable, replaced, or otherwise wrong-type marker input fails
+   closed before state/output mutation.
+4. A genuinely absent handoff `current` entry follows the verified clean
+   no-legacy path. Every present entry must be a symlink. A dangling symlink is
+   still present and is forwarded unchanged to strict handoff validation, which
+   rejects it. A regular file, regular directory, special file, or substituted
+   entry is rejected rather than treated as clean or authoritative.
+5. Exact fault, type, and race regressions prove these guarantees without
+   weakening existing retention, Docker, provenance, security, review, or
+   final-validation gates.
+
+## Scope
+
+### In Scope
+
+- Reorder or refactor the `publish-export` transaction so exact output
+  publication and durability complete before B's release-state activation.
+- Preserve or extend the existing journal/retry model as needed so faults are
+  deterministic, evidence remains inspectable, and exact retry cannot activate
+  stale or mismatched output.
+- Add failure injection around every relevant output-publication boundary,
+  including copy, digest/verification, file and directory sync, final publish
+  rename/no-replace, output-parent durability, and the boundary before current
+  activation.
+- Validate the legacy authority marker through a no-follow regular-file
+  boundary before reading it, with object identity held or revalidated strongly
+  enough to reject substitution races.
+- Classify the host-side handoff `current` entry with no-follow semantics:
+  absent is clean; present symlink is forwarded; present non-symlink is fatal.
+- Preserve strict downstream rejection for dangling or invalid symlinks rather
+  than converting them to clean absence.
+- Add deterministic symlink, FIFO, directory, file, special/wrong-type,
+  unreadable, and substitution-race controls that prove failure occurs before
+  state, output, destination, or current mutation.
+- Update only the durable deployment documentation and feature memory required
+  to describe the corrected transaction and authority contract.
+- Run focused, full-preflight, isolated real-Docker, exact-head review, required
+  check, and renewed Architect-then-Analyst validation gates for the complete
+  combined PR #217 cycle.
+
+### Out Of Scope
+
+- Learner scheduling, progress storage, service-worker UX, question content,
+  or any feature-049 behavior.
+- New deployment providers, remote storage, accounts, backend services, CDN
+  selection, analytics, or asset garbage collection.
+- Redesign of unrelated staging, lock, Compose discovery, dependency, content,
+  or browser behavior that is not required by one of the three accepted
+  findings.
+- Broad reopening of historical feature-051/052 findings or speculative audit
+  beyond the exact changed transaction and handoff boundary.
+- Weakening or bypassing required checks, native review, branch protection,
+  exact-head evidence, or final validation to obtain a merge.
+- Direct work on PR #215 before PR #217 is safely merged. Its existing
+  synchronization, retest, review, and renewed-validation dependency remains.
+
+## Acceptance Expectations
+
+### R054-1: Output Publication Precedes Current Activation
+
+Given A is current and B is the requested static export, the operation may
+prepare verified B state but must keep A selected until the exact B output has
+been fully copied, verified, atomically published, and durably synchronized.
+The ordered trace must show the output publication/durability barrier before
+the B `current` activation boundary.
+
+### R054-2: Publication Failure Preserves A And Prevents Partial Activation
+
+Inject a failure at each output-publication boundary, including copy, digest or
+inventory verification, file sync/close, nested and parent directory sync,
+atomic output rename/no-replace, and post-rename parent durability. Every
+failure before the completed durability barrier must:
+
+- return nonzero;
+- leave A and its prior committed tuple selected and byte-identical;
+- expose no partial destination and no partial B activation;
+- preserve only explicitly journal-owned, unreferenced recovery evidence;
+- allow only an exact, unchanged retry to continue; and
+- reject stale, missing, mutated, extra, symlinked, path-escaped, or
+  request-mismatched recovery state without changing A.
+
+If a complete B output is present after a crash boundary, it is not sufficient
+by itself to authorize B. Exact journal, output, candidate, retained-state, and
+prior-current relations must all validate before activation.
+
+### R054-3: Legacy Marker Is A No-Follow Regular File
+
+Before any marker bytes are read, the implementation must prove that the
+authority marker is a regular file without following its final path component.
+Validation and read must refer to the same file identity, or equivalently close
+the classification/read substitution race. A symlink (including dangling),
+FIFO, directory, socket, device, unreadable file, replaced inode, or any other
+non-regular/unsafe marker fails closed before retained-state, publish-output,
+destination, or current mutation. A FIFO control must terminate promptly rather
+than block waiting for a writer.
+
+### R054-4: Handoff Current Has Exact Three-Way Semantics
+
+Host-side classification of the project-scoped handoff `current` entry uses
+no-follow semantics and has exactly three outcomes:
+
+1. **Genuinely absent:** follow the already verified clean/post-feature
+   no-legacy path.
+2. **Present symlink:** forward the pointer unchanged to strict downstream
+   handoff validation. A valid symlink may provide legacy authority; a dangling
+   or invalid-target symlink must be rejected downstream and must not be
+   reclassified as absent.
+3. **Present non-symlink:** reject before Docker/stager state or export mutation.
+   At minimum, regular directory and regular file controls are required; all
+   other non-symlink filesystem types are likewise unsafe.
+
+### R054-5: Type And Race Safety Is Executable
+
+Automated tests must cover both stable wrong-type inputs and deterministic
+replacement races. At minimum they must attempt to replace the marker or
+`current` between classification and use with a symlink, FIFO, regular file,
+directory, or different inode. The result must be either use of the exact
+validated object or a fail-closed error before mutation; following or reading
+the replacement is forbidden. External sentinels and sibling project state
+must remain untouched.
+
+### R054-6: Existing Guarantees Remain Intact
+
+The correction must preserve:
+
+- append-only immutable historical assets and same-path byte-collision
+  rejection;
+- shell-last activation and exact legacy cache-miss origin continuity;
+- successful clean no-legacy export;
+- successful valid-legacy export with exact retained historical bytes;
+- strict invalid-legacy rejection;
+- Compose-project provenance and project isolation;
+- Docker-only operation and optional static-host contract;
+- feature-053 dependency graph and security enforcement; and
+- the required sequencing in which PR #217 merges before PR #215 is
+  synchronized and independently revalidated.
+
+### R054-7: Verification And Merge Evidence Is Renewed
+
+The implementation must provide:
+
+- focused transaction, output-publication, handoff, marker, path/type, and race
+  tests for the exact new behavior;
+- the relevant combined focused export/capture/staging/publication contracts;
+- `pnpm run preflight`, including production build/service-worker and
+  Playwright coverage;
+- an isolated real Docker asset-retention lifecycle using a unique Compose
+  project and port, with scoped cleanup that does not touch sibling resources;
+- exact-head Review Agent inspection of the bounded feature-054 diff and
+  complete native review-thread enumeration/disposition;
+- every required GitHub check green on the exact current PR head, with no
+  conflicts or unresolved blocking thread;
+- current process memory and disposition of every Implementation Agent feedback
+  item; and
+- final Architect validation followed chronologically by final Analyst
+  validation on the same renewed effective content head, then the Orchestrator
+  evidence-only current-head guard before merge.
+
+## Required Negative Scenarios
+
+- B output copy, verification, sync, rename, or parent-sync fails: A remains
+  current and no partial B activation is observable.
+- Output is complete but its durability barrier or journal relation is missing:
+  B is not activated merely because the destination exists.
+- Exact retry after a recoverable output fault succeeds only when candidate,
+  output, journal, retained ledger/walk, and prior A authority all still match.
+- A later C mutation, foreign asset, changed current, changed request, or
+  altered output makes an old B retry fail unchanged.
+- Legacy marker is a symlink to a readable regular file: reject without
+  following it or touching the external sentinel.
+- Legacy marker is a FIFO: reject promptly without blocking and without
+  mutation.
+- Legacy marker is a directory, socket/device, unreadable file, or changes
+  identity between classification and read: reject before mutation.
+- Handoff `current` is genuinely absent: the clean no-legacy export succeeds.
+- Handoff `current` is a valid symlink: strict downstream validation accepts it
+  and exact legacy bytes remain retained/exported.
+- Handoff `current` is dangling: forward it as present and fail strict
+  downstream validation; do not silently use the clean path.
+- Handoff `current` is a regular file or directory: reject before invoking a
+  mutating Docker/stager path.
+- Handoff `current` is substituted after classification: never follow or accept
+  the replacement; fail closed unless the exact validated entry remains bound.
+- Any failed case leaves sibling Compose projects, worktrees, branches, PRs,
+  external targets, and sentinels unchanged.
+
+## Assumptions And Open Architect Decisions
+
+- **A1 — one feature, three findings.** The findings share one export/handoff
+  transaction boundary and should remain one feature unless Architect proves
+  separation is necessary for safety. No fourth independent goal is implied.
+- **A2 — preparation versus activation.** Preparing B's immutable state before
+  output publication may remain valid, but preparation cannot make B current or
+  authoritative. Architect defines the exact state-machine phases and journal
+  schema.
+- **A3 — atomic publication.** Existing no-replace output publication and
+  durability primitives should be reused where sound. Architect decides the
+  smallest ordering/refactor that makes output durability precede activation.
+- **A4 — crash recovery.** Recovery evidence may remain after failure only when
+  it is unreferenced by `current`, contained, exact, and safely retryable. It
+  must never be mistaken for completed activation.
+- **A5 — no-follow primitive.** Descriptor-based open with no-follow semantics
+  plus descriptor metadata/read is preferred for marker identity, but Architect
+  may choose an equally strong repository-supported primitive.
+- **A6 — pointer classification.** `current` absence must be distinguished from
+  every present inode type using no-follow metadata. Ordinary followed-path
+  existence checks alone are insufficient.
+- **A7 — platform contract.** Production execution is Docker/Linux. Tests may
+  use deterministic injected filesystem adapters where host support differs,
+  but at least the applicable real Docker lifecycle must exercise the shipping
+  path.
+- **A8 — no user clarification needed.** The accepted findings, existing
+  feature memory, and standing quality/merge instruction fully define the
+  request. Architecture choices stay with Architect and do not require product
+  Q&A.
+
+## Risks And Required Mitigations
+
+| Risk | Impact | Required mitigation |
+|---|---|---|
+| B becomes current before exported output is durable | Failed command leaves partial or contradictory release authority | Explicit ordered state machine; fault trace proves output durability before current activation |
+| Reordering breaks exact retry | Crash recovery activates stale or mismatched B | Bind journal to candidate, output, retained state, prior current, and transaction identity; reject drift |
+| Marker check follows a symlink | External content becomes trusted authority | No-follow open/classification and same-object descriptor read |
+| Marker is FIFO | Export hangs indefinitely | Reject non-regular type before read; deterministic prompt-termination test |
+| Check/use race changes marker or current | Validated object differs from consumed object | Descriptor/inode binding or equivalent race-safe primitive; adversarial substitution test |
+| Dangling current is mistaken for absence | Invalid legacy authority silently becomes candidate-only export | No-follow presence/type classification; forward dangling symlink to strict rejection |
+| Regular directory/file is accepted as current | Trust boundary is weakened | Require symlink for every present current entry |
+| New cycle becomes another broad audit | Delay and scope churn after return-limit escalation | Bound implementation/review to three findings and their direct regressions |
+| Existing F051/F052/F053 evidence is treated as current after code changes | Merge authority becomes stale | Establish renewed effective content head and repeat Architect then Analyst validation |
+| Stacked fallback overwrites sibling work | Loss of process or implementation state | Preserve all current diffs and limit Analyst to this single new file |
+
+## Verification Evidence Required Before Merge
+
+- Ordered operation trace proving exact output rename and output-parent
+  durability complete before B `current` activation.
+- Per-boundary fault matrix proving A/no-partial-activation behavior and exact
+  retry/rejection semantics.
+- Marker type matrix covering regular file success and symlink, dangling
+  symlink, FIFO, directory, special/wrong-type, unreadable, and substitution
+  failure before read/mutation.
+- Handoff `current` matrix covering absent clean success, valid symlink success,
+  dangling symlink strict rejection, regular file/directory rejection, and
+  substitution-race safety.
+- External-target and sibling sentinels proving no traversal or unrelated
+  mutation.
+- Focused and combined contract results, full preflight, and isolated real
+  Docker lifecycle results recorded against the implementation head.
+- Exact-head bounded review of the three-finding diff and complete disposition
+  of GitHub review threads.
+- Required-check and conflict evidence for the exact current PR head.
+- Complete feature-054 process memory, including dead ends, decisions, known
+  issues, and Architect disposition of Implementation Agent feedback.
+- Renewed final Architect pass before final Analyst pass on one effective
+  content head, followed by the Orchestrator current-head evidence-only guard.
+
+## Relationship To Existing Features And Merge Order
+
+- Feature 051 remains the product/deployment contract for retained assets and
+  shell-last safe updates.
+- Feature 052 remains historical provenance and implementation evidence through
+  its maximum 10 Architect returns. These three new blockers are not return #11;
+  feature 054 owns their new cycle and validation.
+- Feature 053 remains the narrow dependency-security cycle and must be
+  regression-preserved.
+- Feature 054 contributes to the existing PR #217 because the affected code is
+  present only there under the documented stacked fallback.
+- All earlier Architect/Analyst validation markers on pre-feature-054 effective
+  heads are historical after implementation changes. PR #217 requires renewed
+  final validation before merge.
+- PR #217 remains a prerequisite for PR #215. After #217 merges and its result
+  is verified, Orchestrator synchronizes #215 to resulting `main`, reruns its
+  affected tests and review, resolves concrete findings role-correctly, and
+  repeats final Architect then Analyst validation before #215 merge.
+
+## Research
+
+No external research was needed. This intake is derived from the three exact
+accepted review findings, the recorded post-limit Architect disposition, and
+the repository's existing transactional deployment, Docker, and role-governance
+contracts. No advisory, platform claim, or vendor behavior was invented.
+
+## Role Boundaries And Handoff
+
+- Analyst created exactly this intake artifact and now returns control to
+  Orchestrator.
+- Architect must create `spec.md`, `plan.md`, and `tasks.md`; define the ordered
+  publish/export/activation state machine, journal and retry invariants,
+  no-follow marker and current-pointer interfaces, fault/type/race matrix,
+  implementation slice, documentation impact, and review/final-validation
+  requirements.
+- Implementation Agent may begin only after complete feature-054 memory and an
+  explicit Orchestrator assignment of the existing isolated PR #217 worktree,
+  branch, scoped files, and parallel-preservation warning. It records tests,
+  decisions, dead ends, and feedback in feature-054 memory.
+- Review Agent inspects the bounded exact-head diff for transaction ordering,
+  crash recovery, no-follow object identity, type/race safety, regression
+  coverage, and process compliance without editing files or broadening into an
+  unrelated audit.
+- Orchestrator coordinates commit/push, exact-head checks and thread state,
+  final Architect then Analyst validation, current-head guard, conservative
+  merge of PR #217, and subsequent completion of PR #215.
+
+## Initial Cycle Context
+
+Feature 054 starts as a new work cycle because feature 052 exhausted its
+Architect return limit and the three accepted blockers cannot legally become an
+eleventh return. Its documented PR-only stacked base is
+`5e5f4ef40336fc7bff2c400b6301d99fbc9479c1` on
+`codex/051-asset-retention`, PR #217. Existing uncommitted Architect-owned
+feature-052 process evidence remains preserved beside this new Analyst-owned
+file.
+
+No implementation or validation pass is claimed by this intake. Architect
+planning, implementation, focused/full/Docker verification, exact-head review,
+required checks, renewed final Architect validation, renewed final Analyst
+validation, the current-head guard, and merge all remain pending.

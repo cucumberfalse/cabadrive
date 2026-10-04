@@ -41,8 +41,11 @@ project="$("$script_dir/capture-legacy-assets.sh" --resolve-project)"
 export COMPOSE_PROJECT_NAME="$project"
 legacy_handoff="$repo_root/.cabadrive-release-handoff/$project/current"
 set --
-if [ -e "$legacy_handoff" ] || [ -L "$legacy_handoff" ]; then
+if [ -L "$legacy_handoff" ]; then
   set -- --legacy /legacy-handoff/current
+elif [ -e "$legacy_handoff" ]; then
+  printf '%s\n' 'legacy handoff current entry must be a symlink' >&2
+  exit 1
 fi
 docker compose -f "$repo_root/docker-compose.yml" build stager
 docker compose -f "$repo_root/docker-compose.yml" run --rm --no-deps \
