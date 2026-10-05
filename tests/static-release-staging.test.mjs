@@ -497,6 +497,64 @@ test("publish-export keeps A current until output and physical export are durabl
   }
 });
 
+test("publish-export resumes its exact legacy-aware partial asset promotion", () => {
+  withFixture((root) => {
+    const state = join(root, "state");
+    const output = join(root, "publish");
+    const destination = join(root, "archive");
+    const handoff = join(root, "handoff");
+    const a = release(root, "a", { "a.js": "A" }, "A shell");
+    const b = release(root, "b", { "b.js": "B" }, "B shell");
+    const legacy = legacyHandoff(join(handoff, "releases", "legacy-a"), "legacy-a", {
+      "legacy.js": "legacy",
+    });
+    mkdirSync(handoff, { recursive: true });
+    symlinkSync("releases/legacy-a", join(handoff, "current"));
+    const renameNoReplaceHelper = nativeRenameHelper(root);
+    stageStaticRelease({ stateRoot: state, candidateRoot: a });
+
+    assert.throws(
+      () =>
+        publishAndExportStaticRelease({
+          stateRoot: state,
+          candidateRoot: b,
+          outputRoot: output,
+          destinationRoot: destination,
+          legacyRoot: join(handoff, "current"),
+          faultAt: "after-asset-rename",
+          renameNoReplaceHelper,
+        }),
+      /fault injection/i,
+    );
+    assert.match(currentShell(state), /A shell/);
+    assert.equal(existsSync(join(state, "publish-pending.json")), true);
+    assert.equal(existsSync(join(state, "retained-assets-pending.json")), true);
+    for (const rootPath of [output, destination]) {
+      assert.equal(readFileSync(join(rootPath, "assets/a.js"), "utf8"), "A");
+      assert.equal(readFileSync(join(rootPath, "assets/b.js"), "utf8"), "B");
+      assert.equal(readFileSync(join(rootPath, "assets/legacy.js"), "utf8"), "legacy");
+    }
+    assert.equal(readFileSync(join(legacy, "assets/legacy.js"), "utf8"), "legacy");
+
+    assert.doesNotThrow(() =>
+      publishAndExportStaticRelease({
+        stateRoot: state,
+        candidateRoot: b,
+        outputRoot: output,
+        destinationRoot: destination,
+        legacyRoot: join(handoff, "current"),
+        renameNoReplaceHelper,
+      }),
+    );
+    assert.match(currentShell(state), /B shell/);
+    assert.equal(readFileSync(join(state, "assets/a.js"), "utf8"), "A");
+    assert.equal(readFileSync(join(state, "assets/b.js"), "utf8"), "B");
+    assert.equal(readFileSync(join(state, "assets/legacy.js"), "utf8"), "legacy");
+    assert.equal(existsSync(join(state, "publish-pending.json")), false);
+    assert.equal(existsSync(join(state, "retained-assets-pending.json")), false);
+  });
+});
+
 test("legacy marker and current authority reject unsafe types without following or blocking", () => {
   withFixture((root) => {
     const base = join(root, "handoff");

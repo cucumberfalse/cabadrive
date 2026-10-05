@@ -1839,7 +1839,7 @@ function pendingPriorStateMatchesCurrentState(state, pending) {
   );
 }
 
-function pendingRetainedAssetsMatchCurrentState(state, pending, release) {
+function pendingRetainedAssetsMatchCurrentState(state, pending, release, legacyValidation) {
   const ledger = readRetainedInventory(state);
   const retained = inventoryForAssets(state, "retained assets");
   const current = currentReleaseId(state);
@@ -1854,7 +1854,12 @@ function pendingRetainedAssetsMatchCurrentState(state, pending, release) {
       pending.priorCurrentReleaseId === null &&
       current === null &&
       promotionJournal &&
-      pendingJournalMatchesRequest(promotionJournal, release, undefined, pending.expectedAssets) &&
+      pendingJournalMatchesRequest(
+        promotionJournal,
+        release,
+        legacyValidation,
+        pending.expectedAssets,
+      ) &&
       actualIsPriorPlusSubset(retained, promotionJournal.priorAssets, promotionJournal.additions) &&
       promotionJournal.priorAssets.length === 0;
     return emptyPriorState || journalledInitialSubset;
@@ -1866,7 +1871,12 @@ function pendingRetainedAssetsMatchCurrentState(state, pending, release) {
   const journalledPromotionSubset =
     journalPriorCurrentIsExact &&
     promotionJournal &&
-    pendingJournalMatchesRequest(promotionJournal, release, undefined, pending.expectedAssets) &&
+    pendingJournalMatchesRequest(
+      promotionJournal,
+      release,
+      legacyValidation,
+      pending.expectedAssets,
+    ) &&
     actualIsPriorPlusSubset(retained, promotionJournal.priorAssets, promotionJournal.additions) &&
     (sameEntries(ledger, promotionJournal.priorAssets) ||
       sameEntries(ledger, promotionJournal.expectedAssets));
@@ -2185,7 +2195,12 @@ export function buildStaticPublish({
           : noFollowEntry(pendingTemporary)) ||
         !pendingPublishMatches(existingPending, output, manifest, inventory) ||
         !pendingInventoryMatchesCandidate(existingPending, manifest) ||
-        !pendingRetainedAssetsMatchCurrentState(state, existingPending, manifest) ||
+        !pendingRetainedAssetsMatchCurrentState(
+          state,
+          existingPending,
+          manifest,
+          legacyValidation,
+        ) ||
         (deferActivation &&
           !pendingCoordinatorRequestMatches(existingPending, destination, legacyValidation))
       ) {
@@ -2426,7 +2441,7 @@ export function exportStaticPublish({
     ["output-durable", "export-durable"].includes(pending.phase) &&
     pendingPublishMatches(pending, output, candidate, inventory) &&
     pendingInventoryMatchesCandidate(pending, candidate) &&
-    pendingRetainedAssetsMatchCurrentState(state, pending, candidate) &&
+    pendingRetainedAssetsMatchCurrentState(state, pending, candidate, validatedLegacy) &&
     pendingCoordinatorRequestMatches(pending, destination, validatedLegacy);
   if (!exactPending && !exactCommittedPublishWithoutJournal(state, candidate, inventory)) {
     fail("static publish output is not an exact committed artifact");
