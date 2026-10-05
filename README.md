@@ -17,7 +17,9 @@ Cabadrive — локальный веб-тренажёр для опытных �
 Нужен только Docker. Node.js и pnpm на хосте не требуются.
 
 Для нового внешнего static-host/archive каталога используйте один
-Docker-contained bootstrap (каталог назначения не должен существовать):
+Docker-contained bootstrap (при первом запуске каталог назначения не должен
+существовать; при точном повторе допускается только каталог, принадлежащий той
+же journal-транзакции):
 
 ```bash
 ./scripts/export-static-release.sh /absolute/path/cabadrive-static
@@ -41,6 +43,16 @@ candidate, legacy authority, state, output или destination. Отдельна�
 `stage-static-release.mjs export` тоже не является bootstrap: без
 соответствующей завершённой публикации или при несовпадении state/output она
 безопасно завершается ошибкой.
+
+Serving output и его временное дерево находятся на отдельном project-scoped
+Compose volume `/publish`, поэтому точная транзакция переживает остановку и
+новый `docker compose run --rm`. До создания state/lock stager выполняет
+read-only admission, затем повторяет проверку под lock; непосредственно перед
+активацией и очисткой journal он заново проверяет digest output и destination.
+Retained ledger, release marker, execution-domain и оба transaction journal
+читаются одним bounded no-follow/nonblocking descriptor protocol: symlink,
+FIFO, directory, socket/device, mode `000`, подмена или слишком большой файл
+никогда не принимаются как authority.
 
 ```bash
 make build

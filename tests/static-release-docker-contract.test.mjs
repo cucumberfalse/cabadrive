@@ -82,6 +82,11 @@ test("the stager is Docker-contained and nginx exposes retained immutable assets
   assert.match(dockerRetention, /const testHandoffProjects = new Set/);
   assert.match(dockerRetention, /rmSync\(handoff, \{ recursive: true, force: true \}\)/);
   assert.match(dockerRetention, /cleanupHandoffProject\(selectedProject\)/);
+  assert.match(dockerRetention, /assertCrossContainerPublishRetry/);
+  assert.match(dockerRetention, /_static-publish/);
+  const compose = readFileSync(new URL("../docker-compose.yml", import.meta.url), "utf8");
+  assert.match(compose, /static-publish:\/publish/);
+  assert.match(compose, /static-publish:/);
 });
 
 test("legacy capture is exact-project, supports container and prior image, and records identity", () => {
@@ -220,6 +225,7 @@ test("documented Docker bootstrap publishes then exports one exact fresh transac
       /legacy_handoff=.*\/current[\s\S]*\[ -L "\$legacy_handoff" \][\s\S]*set -- --legacy \/legacy-handoff\/current[\s\S]*elif \[ -e "\$legacy_handoff" \]/,
     );
     assert.match(staticExport, /--destination "\/export\/\$destination_name" "\$@"/);
+    assert.match(staticExport, /--output \/publish\/cabadrive-static-publish/);
     assert.match(
       readme,
       /\.\/scripts\/export-static-release\.sh \/absolute\/path\/cabadrive-static/,
@@ -229,6 +235,8 @@ test("documented Docker bootstrap publishes then exports one exact fresh transac
       /stage that legacy inventory[\s\S]*committing one `publish`[\s\S]*exporting the\s+same transaction/,
     );
     assert.match(backendDocs, /verified clean\/post-feature capture\s+with no `current` pointer/);
+    assert.match(backendDocs, /static-publish` Compose volume mounted at `\/publish`/);
+    assert.match(backendDocs, /read-only admission pass/);
   } finally {
     rmSync(root, { recursive: true, force: true });
   }

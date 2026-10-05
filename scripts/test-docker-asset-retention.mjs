@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /** Executable Docker A->B retention regression, intentionally self-cleaning. */
 import { execFileSync, spawnSync } from "node:child_process";
-import { existsSync, mkdtempSync, rmSync, writeFileSync } from "node:fs";
+import { existsSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -14,12 +14,14 @@ const stoppedProject = `${project}-stopped`;
 const initialProject = `${project}-initial`;
 const siblingProject = `${project}-sibling`;
 const lockProject = `${project}-lock`;
+const retryProject = `${project}-publish-retry`;
 const testHandoffProjects = new Set([
   project,
   stoppedProject,
   initialProject,
   siblingProject,
   lockProject,
+  retryProject,
 ]);
 const handoffBase = join(root, ".cabadrive-release-handoff");
 const port = String(5600 + (process.pid % 300));
@@ -132,6 +134,9 @@ function cleanupProject(selectedProject) {
   spawnSync("docker", ["volume", "rm", "-f", `${selectedProject}_release-state`], {
     stdio: "ignore",
   });
+  spawnSync("docker", ["volume", "rm", "-f", `${selectedProject}_static-publish`], {
+    stdio: "ignore",
+  });
   cleanupHandoffProject(selectedProject);
 }
 
@@ -200,12 +205,89 @@ function assertCrossContainerKernelLock(selectedProject) {
   run("docker", ["volume", "rm", volume]);
 }
 
+function assertCrossContainerPublishRetry(selectedProject) {
+  const faultPoints = [
+    "crash-before-output-rename",
+    "crash-after-output-rename-before-parent-fsync",
+    "after-output",
+    "durability:export-rename",
+    "after-export",
+  ];
+  for (const [index, faultAt] of faultPoints.entries()) {
+    const transactionProject = `${selectedProject}-${index}`;
+    const stateVolume = `${transactionProject}_release-state`;
+    const publishVolume = `${transactionProject}_static-publish`;
+    const destinationName = `two-container-export-${index}`;
+    const destination = join(temporary, destinationName);
+    run("docker", ["volume", "create", stateVolume]);
+    run("docker", ["volume", "create", publishVolume]);
+    const common = [
+      "run",
+      "--rm",
+      "-e",
+      `CABADRIVE_COMPOSE_PROJECT=${transactionProject}`,
+      "-v",
+      `${stateVolume}:/state`,
+      "-v",
+      `${publishVolume}:/publish`,
+      "-v",
+      `${temporary}:/export`,
+      "--entrypoint",
+      "node",
+      `${project}-stager`,
+      "/app/scripts/stage-static-release.mjs",
+      "publish-export",
+      "--state",
+      "/state",
+      "--candidate",
+      "/candidate",
+      "--output",
+      "/publish/cabadrive-static-publish",
+      "--destination",
+      `/export/${destinationName}`,
+    ];
+    try {
+      const faulted = spawnSync("docker", [...common, "--fault", faultAt], {
+        encoding: "utf8",
+      });
+      if (faulted.status === 0 || !/fault injection/i.test(faulted.stderr || "")) {
+        throw new Error(`first publish container did not stop at ${faultAt}: ${faulted.stderr}`);
+      }
+      const resumed = spawnSync("docker", common, { encoding: "utf8" });
+      if (resumed.status !== 0) {
+        throw new Error(`fresh publish container did not resume ${faultAt}: ${resumed.stderr}`);
+      }
+      const publishedShell = readFileSync(join(destination, "index.html"), "utf8");
+      if (!publishedShell.includes("<!doctype html")) {
+        throw new Error(`fresh publish retry did not export the candidate shell: ${faultAt}`);
+      }
+      const current = run("docker", [
+        "run",
+        "--rm",
+        "-v",
+        `${stateVolume}:/state:ro`,
+        "alpine:3.21",
+        "readlink",
+        "/state/current",
+      ]).trim();
+      if (!/^releases\/[a-f0-9]{64}$/.test(current)) {
+        throw new Error(`fresh publish retry did not activate exact state: ${faultAt}`);
+      }
+    } finally {
+      spawnSync("docker", ["volume", "rm", "-f", stateVolume], { stdio: "ignore" });
+      spawnSync("docker", ["volume", "rm", "-f", publishVolume], { stdio: "ignore" });
+      rmSync(destination, { recursive: true, force: true });
+    }
+  }
+}
+
 try {
   // Running-container first migration: capture A before B image replacement.
   buildLegacyImage(project);
   startLegacyContainer(project);
   make(["build"], project);
   assertCrossContainerKernelLock(lockProject);
+  assertCrossContainerPublishRetry(retryProject);
   make(["up"], project);
   await waitFor(`http://localhost:${port}/`);
   assertExactLegacyAsset();
@@ -282,6 +364,7 @@ try {
   cleanupProject(project);
   cleanupProject(stoppedProject);
   cleanupProject(initialProject);
+  cleanupProject(retryProject);
   spawnSync("docker", ["rm", "-f", `${lockProject}-holder`], { stdio: "ignore" });
   spawnSync("docker", ["volume", "rm", "-f", `${lockProject}_release-state`], {
     stdio: "ignore",

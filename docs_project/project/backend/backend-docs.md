@@ -76,6 +76,23 @@ new release is activated last. The lower-level `export` operation intentionally
 fails closed when its publish output is absent or does not match the committed
 state; it is not a standalone fresh-output command.
 
+The stager's serving output and scratch tree share the project-scoped
+`static-publish` Compose volume mounted at `/publish`, so journal-owned recovery
+survives separate `docker compose run --rm` containers. Publication has a
+read-only admission pass before state or lock creation and a complete locked
+revalidation pass. Existing output or destination is recoverable only when the
+stable journal owns the exact operation kind, pinned legacy identity, candidate,
+path, inventory, and phase. The stager re-digests output and destination before
+activation and before journal removal; an exact committed retry also recovers a
+visible journal unlink whose directory sync failed.
+
+Retained-ledger, release-marker, execution-domain, asset-promotion-journal, and
+publish-journal authorities use one bounded descriptor reader with
+`O_NOFOLLOW | O_NONBLOCK`, regular-file and policy-readable-mode checks,
+descriptor/path identity revalidation, and caller-specific absence rules.
+Symlinks (including dangling ones), FIFO, directories, sockets/devices, mode
+`000`, malformed or oversized data, and substitution races fail closed.
+
 ## Future Backend Triggers
 
 Backend should only be introduced with an explicit feature spec if requirements add multi-user accounts, sync, remote analytics, or managed content delivery.

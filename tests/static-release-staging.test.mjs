@@ -30,6 +30,8 @@ import {
   publishLegacyHandoffPointer,
   pinLegacyHandoffCurrent,
   publishAndExportStaticRelease,
+  readAuthorityFile,
+  readAuthorityJson,
   verifyAdoptedProject,
   writeAdoptedProject,
   writeLegacyHandoffManifest,
@@ -127,6 +129,164 @@ test("canonical manifest is ordinal, complete and digest-backed", () => {
     assert.equal(manifest.mutable.map((entry) => entry.path).join(","), "index.html,sw.js");
     assert.match(manifest.releaseId, /^[a-f0-9]{64}$/);
     assert.doesNotThrow(() => verifyCandidateManifest(candidate, manifest));
+  });
+});
+
+test("authority reader rejects every unsafe type, mode, size, parse, and substitution", () => {
+  withFixture((root) => {
+    const authority = join(root, "authority.json");
+    writeFileSync(authority, '{"ok":true}\n');
+    assert.deepEqual(readAuthorityJson(authority), { ok: true });
+
+    chmodSync(authority, 0o000);
+    assert.throws(() => readAuthorityFile(authority, "test authority"), /no-follow regular file/i);
+    chmodSync(authority, 0o644);
+
+    const external = join(root, "external.json");
+    writeFileSync(external, '{"external":true}\n');
+    const externalBytes = readFileSync(external, "utf8");
+    const socketPath = join("/tmp", `cabadrive-authority-${process.pid}-${Date.now()}.sock`);
+    for (const [name, install, path = join(root, name)] of [
+      ["readable-symlink", (path) => symlinkSync(external, path)],
+      ["dangling-symlink", (path) => symlinkSync(join(root, "missing"), path)],
+      ["directory", (path) => mkdirSync(path)],
+      ["fifo", (path) => execFileSync("mkfifo", [path])],
+      [
+        "socket",
+        (path) =>
+          execFileSync("python3", [
+            "-c",
+            "import socket,sys; s=socket.socket(socket.AF_UNIX); s.bind(sys.argv[1]); s.close()",
+            path,
+          ]),
+        socketPath,
+      ],
+    ]) {
+      install(path);
+      const started = Date.now();
+      assert.throws(() => readAuthorityFile(path, "test authority"), /regular file/i);
+      assert.ok(Date.now() - started < 1000, `${name} rejection must not block`);
+      assert.equal(readFileSync(external, "utf8"), externalBytes);
+      if (path === socketPath) rmSync(path, { force: true });
+    }
+    assert.throws(() => readAuthorityFile("/dev/null", "test authority"), /regular file/i);
+
+    writeFileSync(authority, "not-json\n");
+    assert.throws(() => readAuthorityJson(authority), /invalid authority record/i);
+    writeFileSync(authority, "x".repeat(1024 * 1024 + 1));
+    assert.throws(() => readAuthorityFile(authority, "test authority"), /size limit/i);
+
+    writeFileSync(authority, '{"generation":1}\n');
+    assert.throws(
+      () =>
+        readAuthorityFile(authority, "test authority", {
+          onOpen: () => {
+            renameSync(authority, join(root, "authority-opened.json"));
+            writeFileSync(authority, '{"generation":2}\n');
+          },
+        }),
+      /changed during no-follow access/i,
+    );
+    unlinkSync(authority);
+    renameSync(join(root, "authority-opened.json"), authority);
+    assert.throws(
+      () =>
+        readAuthorityFile(authority, "test authority", {
+          onAfterRead: () => {
+            renameSync(authority, join(root, "authority-read.json"));
+            writeFileSync(authority, '{"generation":3}\n');
+          },
+        }),
+      /changed during no-follow access/i,
+    );
+  });
+});
+
+test("state ledger, marker, domain, and both journals all enforce authority reads", () => {
+  withFixture((root) => {
+    const state = join(root, "ledger-state");
+    const output = join(root, "ledger-output");
+    const a = release(root, "ledger-a", { "a.js": "A" }, "A shell");
+    const b = release(root, "ledger-b", { "b.js": "B" }, "B shell");
+    stageStaticRelease({ stateRoot: state, candidateRoot: a });
+    const before = readlinkSync(join(state, "current"));
+    chmodSync(join(state, "retained-assets.json"), 0o000);
+    assert.throws(
+      () => buildStaticPublish({ stateRoot: state, candidateRoot: b, outputRoot: output }),
+      /no-follow regular file/i,
+    );
+    assert.equal(readlinkSync(join(state, "current")), before);
+    assert.equal(existsSync(output), false);
+  });
+
+  withFixture((root) => {
+    const state = join(root, "marker-state");
+    const a = release(root, "marker-a", { "a.js": "A" }, "A shell");
+    stageStaticRelease({ stateRoot: state, candidateRoot: a });
+    const releaseId = createCandidateManifest(a).releaseId;
+    chmodSync(join(state, "releases", releaseId, ".release-state.json"), 0o000);
+    assert.equal(verifyCommittedState(state).valid, false);
+  });
+
+  withFixture((root) => {
+    const state = join(root, "domain-state");
+    const output = join(root, "domain-output");
+    const a = release(root, "domain-a", { "a.js": "A" }, "A shell");
+    stageStaticRelease({ stateRoot: state, candidateRoot: a, projectKey: "domain" });
+    chmodSync(join(state, "stage-execution-domain.json"), 0o000);
+    assert.throws(
+      () =>
+        buildStaticPublish({
+          stateRoot: state,
+          candidateRoot: a,
+          outputRoot: output,
+          projectKey: "domain",
+        }),
+      /no-follow regular file/i,
+    );
+    assert.equal(existsSync(output), false);
+  });
+
+  withFixture((root) => {
+    const state = join(root, "promotion-state");
+    const a = release(root, "promotion-a", { "a.js": "A" }, "A shell");
+    assert.throws(
+      () =>
+        stageStaticRelease({ stateRoot: state, candidateRoot: a, faultAt: "after-asset-rename" }),
+      /fault injection/i,
+    );
+    chmodSync(join(state, "retained-assets-pending.json"), 0o000);
+    assert.throws(
+      () => stageStaticRelease({ stateRoot: state, candidateRoot: a }),
+      /no-follow regular file/i,
+    );
+    assert.equal(existsSync(join(state, "current")), false);
+  });
+
+  withFixture((root) => {
+    const state = join(root, "publish-state");
+    const output = join(root, "publish-output");
+    const a = release(root, "publish-a", { "a.js": "A" }, "A shell");
+    assert.throws(
+      () =>
+        buildStaticPublish({
+          stateRoot: state,
+          candidateRoot: a,
+          outputRoot: output,
+          faultAt: "after-output",
+        }),
+      /fault injection/i,
+    );
+    const journal = join(state, "publish-pending.json");
+    const external = join(root, "external-journal.json");
+    renameSync(journal, external);
+    symlinkSync(external, journal);
+    const externalBytes = readFileSync(external, "utf8");
+    assert.throws(
+      () => buildStaticPublish({ stateRoot: state, candidateRoot: a, outputRoot: output }),
+      /no-follow regular file/i,
+    );
+    assert.equal(readFileSync(external, "utf8"), externalBytes);
   });
 });
 
@@ -555,6 +715,247 @@ test("publish-export resumes its exact legacy-aware partial asset promotion", ()
   });
 });
 
+test("publish admission rejects invalid or raced paths before transaction mutation", () => {
+  withFixture((root) => {
+    const candidate = release(root, "candidate", { "b.js": "B" }, "B shell");
+    const renameNoReplaceHelper = nativeRenameHelper(root);
+    for (const [name, options, pattern] of [
+      ["missing-destination", {}, /destination (?:is|are) required/i],
+      [
+        "missing-parent",
+        { destinationRoot: join(root, "missing-parent", "archive") },
+        /destination parent must be an existing/i,
+      ],
+    ]) {
+      const state = join(root, `state-${name}`);
+      const output = join(root, `output-${name}`);
+      assert.throws(
+        () =>
+          publishAndExportStaticRelease({
+            stateRoot: state,
+            candidateRoot: candidate,
+            outputRoot: output,
+            renameNoReplaceHelper,
+            ...options,
+          }),
+        pattern,
+      );
+      assert.equal(existsSync(state), false);
+      assert.equal(existsSync(output), false);
+    }
+
+    const symlinkParent = join(root, "destination-parent-link");
+    const external = join(root, "external");
+    mkdirSync(external);
+    writeFileSync(join(external, "sentinel"), "external");
+    symlinkSync(external, symlinkParent);
+    const symlinkState = join(root, "state-symlink-parent");
+    assert.throws(
+      () =>
+        publishAndExportStaticRelease({
+          stateRoot: symlinkState,
+          candidateRoot: candidate,
+          outputRoot: join(root, "output-symlink-parent"),
+          destinationRoot: join(symlinkParent, "archive"),
+          renameNoReplaceHelper,
+        }),
+      /must be an existing non-symlink directory/i,
+    );
+    assert.equal(existsSync(symlinkState), false);
+    assert.equal(readFileSync(join(external, "sentinel"), "utf8"), "external");
+
+    for (const occupied of ["output", "destination"]) {
+      const state = join(root, `state-occupied-${occupied}`);
+      const output = join(root, `output-occupied-${occupied}`);
+      const destination = join(root, `destination-occupied-${occupied}`);
+      mkdirSync(occupied === "output" ? output : destination);
+      writeFileSync(join(occupied === "output" ? output : destination, "sentinel"), "foreign");
+      assert.throws(
+        () =>
+          publishAndExportStaticRelease({
+            stateRoot: state,
+            candidateRoot: candidate,
+            outputRoot: output,
+            destinationRoot: destination,
+            renameNoReplaceHelper,
+          }),
+        /already exists without exact transaction authority/i,
+      );
+      assert.equal(existsSync(state), false);
+      assert.equal(
+        readFileSync(join(occupied === "output" ? output : destination, "sentinel"), "utf8"),
+        "foreign",
+      );
+    }
+
+    const raceState = join(root, "race-state");
+    const a = release(root, "a-race", { "a.js": "A" }, "A shell");
+    stageStaticRelease({ stateRoot: raceState, candidateRoot: a });
+    const before = snapshotState(raceState);
+    const raceOutput = join(root, "race-output");
+    assert.throws(
+      () =>
+        buildStaticPublish({
+          stateRoot: raceState,
+          candidateRoot: candidate,
+          outputRoot: raceOutput,
+          onAfterReadOnlyAdmission: () => {
+            mkdirSync(raceOutput);
+            writeFileSync(join(raceOutput, "sentinel"), "racer");
+          },
+        }),
+      /already exists without exact transaction authority/i,
+    );
+    assert.deepEqual(snapshotState(raceState), before);
+    assert.equal(readFileSync(join(raceOutput, "sentinel"), "utf8"), "racer");
+    assert.equal(existsSync(join(raceState, "publish-pending.json")), false);
+  });
+});
+
+test("standalone journal ownership includes operation kind and pinned legacy identity", () => {
+  withFixture((root) => {
+    const state = join(root, "state");
+    const output = join(root, "publish");
+    const destination = join(root, "archive");
+    const a = release(root, "a", { "a.js": "A" }, "A shell");
+    const b = release(root, "b", { "b.js": "B" }, "B shell");
+    const handoff = join(root, "handoff");
+    legacyHandoff(join(handoff, "releases", "one"), "legacy-one", {
+      "legacy.js": "legacy",
+    });
+    legacyHandoff(join(handoff, "releases", "two"), "legacy-two", {
+      "legacy.js": "legacy",
+    });
+    mkdirSync(handoff, { recursive: true });
+    symlinkSync("releases/one", join(handoff, "current"));
+    stageStaticRelease({ stateRoot: state, candidateRoot: a });
+
+    assert.throws(
+      () =>
+        buildStaticPublish({
+          stateRoot: state,
+          candidateRoot: b,
+          outputRoot: output,
+          legacyRoot: join(handoff, "current"),
+          faultAt: "after-output",
+        }),
+      /fault injection/i,
+    );
+    const pending = JSON.parse(readFileSync(join(state, "publish-pending.json"), "utf8"));
+    assert.equal(pending.operation, "publish");
+    assert.equal(pending.legacy.sourceId, "legacy-one");
+    assert.match(currentShell(state), /A shell/);
+
+    const renameNoReplaceHelper = nativeRenameHelper(root);
+    assert.throws(
+      () =>
+        publishAndExportStaticRelease({
+          stateRoot: state,
+          candidateRoot: b,
+          outputRoot: output,
+          destinationRoot: destination,
+          legacyRoot: join(handoff, "current"),
+          renameNoReplaceHelper,
+        }),
+      /does not own this exact operation/i,
+    );
+    unlinkSync(join(handoff, "current"));
+    symlinkSync("releases/two", join(handoff, "current"));
+    assert.throws(
+      () =>
+        buildStaticPublish({
+          stateRoot: state,
+          candidateRoot: b,
+          outputRoot: output,
+          legacyRoot: join(handoff, "current"),
+        }),
+      /does not own this exact operation/i,
+    );
+    unlinkSync(join(handoff, "current"));
+    symlinkSync("releases/one", join(handoff, "current"));
+    assert.doesNotThrow(() =>
+      buildStaticPublish({
+        stateRoot: state,
+        candidateRoot: b,
+        outputRoot: output,
+        legacyRoot: join(handoff, "current"),
+      }),
+    );
+    assert.match(currentShell(state), /B shell/);
+    assert.equal(readFileSync(join(state, "assets/legacy.js"), "utf8"), "legacy");
+  });
+});
+
+test("coordinator revalidates visible artifacts and recovers a visible journal unlink", () => {
+  withFixture((root) => {
+    const state = join(root, "state");
+    const output = join(root, "publish");
+    const destination = join(root, "archive");
+    const a = release(root, "a", { "a.js": "A" }, "A shell");
+    const b = release(root, "b", { "b.js": "B" }, "B shell");
+    const renameNoReplaceHelper = nativeRenameHelper(root);
+    stageStaticRelease({ stateRoot: state, candidateRoot: a });
+
+    assert.throws(
+      () =>
+        publishAndExportStaticRelease({
+          stateRoot: state,
+          candidateRoot: b,
+          outputRoot: output,
+          destinationRoot: destination,
+          renameNoReplaceHelper,
+          onBeforeActivationRevalidation: () =>
+            writeFileSync(join(output, "foreign.txt"), "foreign"),
+        }),
+      /serving output changed/i,
+    );
+    assert.match(currentShell(state), /A shell/);
+    assert.equal(existsSync(join(state, "publish-pending.json")), true);
+    unlinkSync(join(output, "foreign.txt"));
+
+    const destinationIndex = readFileSync(join(destination, "index.html"), "utf8");
+    assert.throws(
+      () =>
+        publishAndExportStaticRelease({
+          stateRoot: state,
+          candidateRoot: b,
+          outputRoot: output,
+          destinationRoot: destination,
+          renameNoReplaceHelper,
+          onBeforeJournalClearRevalidation: () =>
+            writeFileSync(join(destination, "index.html"), "drift"),
+        }),
+      /(?:physical|static export) destination changed/i,
+    );
+    assert.match(currentShell(state), /B shell/);
+    assert.equal(existsSync(join(state, "publish-pending.json")), true);
+    writeFileSync(join(destination, "index.html"), destinationIndex);
+
+    assert.throws(
+      () =>
+        publishAndExportStaticRelease({
+          stateRoot: state,
+          candidateRoot: b,
+          outputRoot: output,
+          destinationRoot: destination,
+          renameNoReplaceHelper,
+          faultAt: "durability:unlink-publish-pending",
+        }),
+      /fault injection/i,
+    );
+    assert.equal(existsSync(join(state, "publish-pending.json")), false);
+    assert.match(currentShell(state), /B shell/);
+    const retry = publishAndExportStaticRelease({
+      stateRoot: state,
+      candidateRoot: b,
+      outputRoot: output,
+      destinationRoot: destination,
+      renameNoReplaceHelper,
+    });
+    assert.equal(retry.changed, false);
+  });
+});
+
 test("legacy marker and current authority reject unsafe types without following or blocking", () => {
   withFixture((root) => {
     const base = join(root, "handoff");
@@ -683,7 +1084,7 @@ test("static export keeps destination absent through a durability failure and re
   });
 });
 
-test("static export rejects overlap and foreign races, then recovers its exact post-rename artifact", () => {
+test("static export rejects overlap, foreign races, and unjournaled existing destinations", () => {
   withFixture((root) => {
     const state = join(root, "state");
     const output = join(root, "publish");
@@ -741,15 +1142,16 @@ test("static export rejects overlap and foreign races, then recovers its exact p
       /fault injection/i,
     );
     assert.equal(lstatSync(recovered).isDirectory(), true);
-    assert.equal(
-      exportStaticPublish({
-        stateRoot: state,
-        candidateRoot: b,
-        outputRoot: output,
-        destinationRoot: recovered,
-        options: { renameNoReplaceHelper },
-      }).changed,
-      false,
+    assert.throws(
+      () =>
+        exportStaticPublish({
+          stateRoot: state,
+          candidateRoot: b,
+          outputRoot: output,
+          destinationRoot: recovered,
+          options: { renameNoReplaceHelper },
+        }),
+      /destination already exists/i,
     );
     writeFileSync(join(recovered, "index.html"), "foreign");
     assert.throws(
@@ -1002,7 +1404,7 @@ test("static publish recovers only an exact durable pre-rename temporary transac
           candidateRoot: b,
           outputRoot: escaped.output,
         }),
-      /no matching pre-output transaction/i,
+      /no matching pre-output transaction|does not own this exact operation/i,
     );
     unchanged(escaped, escapedBefore);
 
@@ -1017,7 +1419,7 @@ test("static publish recovers only an exact durable pre-rename temporary transac
           candidateRoot: b,
           outputRoot: occupied.output,
         }),
-      /exact pending transaction/i,
+      /exact (?:pending transaction|transaction authority)/i,
     );
     unchanged(occupied, occupiedBefore);
     assert.equal(readFileSync(join(occupied.output, "sentinel"), "utf8"), "user");
@@ -1031,7 +1433,7 @@ test("static publish recovers only an exact durable pre-rename temporary transac
           candidateRoot: c,
           outputRoot: candidateDrift.output,
         }),
-      /no matching pre-output transaction/i,
+      /no matching pre-output transaction|does not own this exact operation/i,
     );
     unchanged(candidateDrift, candidateBefore);
 
@@ -1269,7 +1671,7 @@ test("an unlink-before-directory-fsync cleanup fault retries only the exact comm
     writeFileSync(join(output, "index.html"), "foreign bytes");
     assert.throws(
       () => buildStaticPublish({ stateRoot: state, candidateRoot: b, outputRoot: output }),
-      /without an exact pending transaction/i,
+      /without (?:an )?exact (?:pending transaction|transaction authority)/i,
     );
   });
 });
@@ -1456,7 +1858,7 @@ test("a pending B publish expires after an independent C retained-asset promotio
 
     assert.throws(
       () => buildStaticPublish({ stateRoot: state, candidateRoot: b, outputRoot: output }),
-      /exact pending transaction/i,
+      /exact pending transaction|does not own this exact operation/i,
     );
     assert.deepEqual(snapshotState(state), afterC, "stale B cannot alter C state");
     assert.equal(readFileSync(join(output, "index.html"), "utf8"), staleOutput);
@@ -1541,7 +1943,7 @@ test("a pending publish resumes its exact own A+B promotion but rejects all drif
           candidateRoot: changedB,
           outputRoot: changedCandidateOutput,
         }),
-      /exact pending transaction/i,
+      /exact pending transaction|does not own this exact operation/i,
     );
     assert.deepEqual(snapshotState(changedCandidateState), beforeChangedRequest);
 
@@ -1564,7 +1966,7 @@ test("a pending publish resumes its exact own A+B promotion but rejects all drif
     assert.throws(
       () =>
         buildStaticPublish({ stateRoot: driftState, candidateRoot: b, outputRoot: driftOutput }),
-      /exact pending transaction/i,
+      /exact pending transaction|does not own this exact operation/i,
     );
     assert.deepEqual(snapshotState(driftState), afterC);
   });
@@ -1699,7 +2101,7 @@ test("lock authority survives stager recreation and rejects a sibling Compose pr
   });
 });
 
-test("an incomplete first execution-domain record and its exact orphan guard recover before locking", () => {
+test("a malformed execution-domain authority fails closed before locking", () => {
   withFixture((root) => {
     const state = join(root, "state");
     const candidate = release(root, "candidate", { "a.js": "A" }, "A shell");
@@ -1708,13 +2110,15 @@ test("an incomplete first execution-domain record and its exact orphan guard rec
     writeFileSync(record, '{"schemaVersion":');
     linkSync(record, join(state, ".stage-execution-domain.reclaim"));
 
-    assert.doesNotThrow(() =>
-      stageStaticRelease({ stateRoot: state, candidateRoot: candidate, projectKey: "fixture" }),
+    const before = readFileSync(record, "utf8");
+    assert.throws(
+      () =>
+        stageStaticRelease({ stateRoot: state, candidateRoot: candidate, projectKey: "fixture" }),
+      /invalid stage execution domain/i,
     );
-    const domain = JSON.parse(readFileSync(record, "utf8"));
-    assert.equal(domain.project, "fixture");
-    assert.match(domain.domain, /^[a-f0-9-]{36}$/u);
-    assert.equal(existsSync(join(state, ".stage-execution-domain.reclaim")), false);
+    assert.equal(readFileSync(record, "utf8"), before);
+    assert.equal(existsSync(join(state, "stage.lock")), false);
+    assert.equal(existsSync(join(state, "assets")), false);
   });
 });
 
