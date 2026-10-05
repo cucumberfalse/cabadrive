@@ -628,6 +628,7 @@ test("publish-export keeps A current until output and physical export are durabl
     "crash-after-output-rename-before-parent-fsync",
     "after-output-parent-fsync-before-phase",
     "after-output",
+    "after-export-identity-bind",
     "durability:export-rename",
     "after-export-parent-fsync-before-phase",
     "after-export",
@@ -1152,6 +1153,163 @@ test("missing, malformed, wrong-type, and changed-nonce proofs never authorize r
         /without exact transaction authority|json/i,
       );
       assert.equal(existsSync(join(state, "current")), false);
+    });
+  }
+});
+
+test("a recursively copied destination proof never adopts a different inode", () => {
+  withFixture((root) => {
+    const state = join(root, "state");
+    const candidateA = release(root, "candidate-a", { "a.js": "A" }, "A shell");
+    const candidateB = release(root, "candidate-b", { "b.js": "B" }, "B shell");
+    const renameNoReplaceHelper = nativeRenameHelper(root);
+    publishAndExportStaticRelease({
+      stateRoot: state,
+      candidateRoot: candidateA,
+      outputRoot: join(root, "publish-a"),
+      destinationRoot: join(root, "archive-a"),
+      renameNoReplaceHelper,
+    });
+    const output = join(root, "publish-b");
+    const destination = join(root, "archive-b");
+    const exactRenamed = join(root, "exact-renamed-archive-b");
+    let replaced = false;
+    assert.throws(
+      () =>
+        publishAndExportStaticRelease({
+          stateRoot: state,
+          candidateRoot: candidateB,
+          outputRoot: output,
+          destinationRoot: destination,
+          renameNoReplaceHelper,
+          onDurabilityOperation: ({ operation, path }) => {
+            if (!replaced && operation === "export-rename" && path === destination) {
+              replaced = true;
+              renameSync(destination, exactRenamed);
+              cpSync(exactRenamed, destination, { recursive: true });
+            }
+          },
+        }),
+      /journal-bound renamed inode/i,
+    );
+    assert.match(currentShell(state), /A shell/);
+    assert.equal(existsSync(join(state, "publish-pending.json")), true);
+    const foreignInode = lstatSync(destination).ino;
+    assert.notEqual(foreignInode, lstatSync(exactRenamed).ino);
+    assert.throws(
+      () =>
+        publishAndExportStaticRelease({
+          stateRoot: state,
+          candidateRoot: candidateB,
+          outputRoot: output,
+          destinationRoot: destination,
+          renameNoReplaceHelper,
+        }),
+      /without exact transaction authority/i,
+    );
+    assert.equal(lstatSync(destination).ino, foreignInode);
+    rmSync(destination, { recursive: true });
+    renameSync(exactRenamed, destination);
+    const pendingPath = join(state, "publish-pending.json");
+    const exactPending = readFileSync(pendingPath, "utf8");
+    const missingIdentity = JSON.parse(exactPending);
+    missingIdentity.exportDevice = null;
+    missingIdentity.exportInode = null;
+    writeFileSync(pendingPath, `${JSON.stringify(missingIdentity)}\n`);
+    assert.throws(
+      () =>
+        publishAndExportStaticRelease({
+          stateRoot: state,
+          candidateRoot: candidateB,
+          outputRoot: output,
+          destinationRoot: destination,
+          renameNoReplaceHelper,
+        }),
+      /without exact transaction authority/i,
+    );
+    writeFileSync(pendingPath, exactPending);
+    assert.doesNotThrow(() =>
+      publishAndExportStaticRelease({
+        stateRoot: state,
+        candidateRoot: candidateB,
+        outputRoot: output,
+        destinationRoot: destination,
+        renameNoReplaceHelper,
+      }),
+    );
+    assert.match(currentShell(state), /B shell/);
+    assert.equal(existsSync(join(state, "publish-pending.json")), false);
+  });
+});
+
+test("post-durability validation rejects output and destination fsync races", () => {
+  for (const boundary of ["activation", "clear"]) {
+    withFixture((root) => {
+      const state = join(root, "state");
+      const candidateA = release(root, "candidate-a", { "a.js": "A" }, "A shell");
+      const candidateB = release(root, "candidate-b", { "b.js": "B" }, "B shell");
+      const renameNoReplaceHelper = nativeRenameHelper(root);
+      publishAndExportStaticRelease({
+        stateRoot: state,
+        candidateRoot: candidateA,
+        outputRoot: join(root, "publish-a"),
+        destinationRoot: join(root, "archive-a"),
+        renameNoReplaceHelper,
+      });
+      const output = join(root, "publish-b");
+      const destination = join(root, "archive-b");
+      let armed = false;
+      let mutated = false;
+      let mutatedPath;
+      let original;
+      assert.throws(
+        () =>
+          publishAndExportStaticRelease({
+            stateRoot: state,
+            candidateRoot: candidateB,
+            outputRoot: output,
+            destinationRoot: destination,
+            renameNoReplaceHelper,
+            onBeforeActivationRevalidation: () => {
+              if (boundary === "activation") armed = true;
+            },
+            onBeforeJournalClearRevalidation: () => {
+              if (boundary === "clear") armed = true;
+            },
+            onDurabilityOperation: ({ operation, path }) => {
+              const activationRace =
+                boundary === "activation" &&
+                operation === "fsync-file" &&
+                /index\.html$/u.test(path);
+              const clearRace =
+                boundary === "clear" && operation === "fsync-directory" && path === destination;
+              if (!armed || mutated || (!activationRace && !clearRace)) return;
+              mutated = true;
+              mutatedPath =
+                boundary === "activation"
+                  ? join(realpathSync(output), "index.html")
+                  : join(destination, "index.html");
+              original = readFileSync(mutatedPath, "utf8");
+              writeFileSync(mutatedPath, "fsync race drift");
+            },
+          }),
+        /changed before transaction boundary/i,
+      );
+      assert.equal(mutated, true);
+      assert.equal(existsSync(join(state, "publish-pending.json")), true);
+      assert.match(currentShell(state), boundary === "activation" ? /A shell/ : /B shell/);
+      writeFileSync(mutatedPath, original);
+      assert.doesNotThrow(() =>
+        publishAndExportStaticRelease({
+          stateRoot: state,
+          candidateRoot: candidateB,
+          outputRoot: output,
+          destinationRoot: destination,
+          renameNoReplaceHelper,
+        }),
+      );
+      assert.match(currentShell(state), /B shell/);
+      assert.equal(existsSync(join(state, "publish-pending.json")), false);
     });
   }
 });
@@ -1922,7 +2080,7 @@ test("publish never activates a candidate changed after its output journal is du
             }
           },
         }),
-      /candidate inventory changed since static publish journal/i,
+      /candidate (?:inventory changed since static publish journal|changed before final transaction boundary)/i,
     );
     assert.equal(mutated, true);
     assert.equal(readlinkSync(join(state, "current")), aCurrent);

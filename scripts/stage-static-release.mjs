@@ -1466,6 +1466,7 @@ export function stageStaticRelease({
   lockHeld = false,
   expectedManifest,
   validatedLegacy,
+  finalRevalidate,
 } = {}) {
   if (!stateRoot || !candidateRoot) fail("--state and --candidate are required");
   const candidateRootReal = realpathSync(candidateRoot);
@@ -1643,6 +1644,7 @@ export function stageStaticRelease({
       syncDirectoryAncestors(dirname(releaseDir), state, { faultAt, onDurabilityOperation });
       syncFile(metadataPath, { faultAt, onDurabilityOperation });
       syncDirectoryAncestors(dirname(metadataPath), state, { faultAt, onDurabilityOperation });
+      finalRevalidate?.();
       makeCurrent(state, release.releaseId, { faultAt, onDurabilityOperation });
       return { changed: false, releaseId: release.releaseId, manifest: release };
     }
@@ -1661,6 +1663,7 @@ export function stageStaticRelease({
       syncDirectoryAncestors(dirname(releaseDir), state, { faultAt, onDurabilityOperation });
       syncFile(metadataPath, { faultAt, onDurabilityOperation });
       syncDirectoryAncestors(dirname(metadataPath), state, { faultAt, onDurabilityOperation });
+      finalRevalidate?.();
       fault({ faultAt }, "before-current");
       makeCurrent(state, release.releaseId, { faultAt, onDurabilityOperation });
       return { changed: true, releaseId: release.releaseId, manifest: release };
@@ -1719,6 +1722,7 @@ export function stageStaticRelease({
       syncFile(metadataPath, { faultAt, onDurabilityOperation });
       syncDirectoryAncestors(dirname(metadataPath), state, { faultAt, onDurabilityOperation });
     }
+    finalRevalidate?.();
     fault({ faultAt }, "before-current");
     makeCurrent(state, release.releaseId, { faultAt, onDurabilityOperation });
     return { changed: true, releaseId: release.releaseId, manifest: release };
@@ -1755,6 +1759,8 @@ function exportProofFor(pending, destination) {
     releaseId: pending.releaseId,
     manifestSha256: pending.manifestSha256,
     destination,
+    device: pending.exportDevice,
+    inode: pending.exportInode,
   };
 }
 
@@ -1766,9 +1772,32 @@ function validExportNonce(value) {
   return typeof value === "string" && /^[a-f0-9-]{36}$/u.test(value);
 }
 
+function validExportIdentity(pending, { required = false } = {}) {
+  const absent = pending.exportDevice === null && pending.exportInode === null;
+  const present =
+    typeof pending.exportDevice === "string" &&
+    /^[0-9]+$/u.test(pending.exportDevice) &&
+    typeof pending.exportInode === "string" &&
+    /^[0-9]+$/u.test(pending.exportInode);
+  return required ? present : absent || present;
+}
+
+function exactBoundExportDirectory(path, pending) {
+  const entry = noFollowEntry(path);
+  return (
+    entry &&
+    !entry.isSymbolicLink() &&
+    entry.isDirectory() &&
+    validExportIdentity(pending, { required: true }) &&
+    String(entry.dev) === pending.exportDevice &&
+    String(entry.ino) === pending.exportInode
+  );
+}
+
 function destinationOwnership(state, destination, pending, inventory, { terminal = false } = {}) {
   const entry = noFollowEntry(destination);
   if (!entry || entry.isSymbolicLink() || !entry.isDirectory()) return false;
+  if (!terminal && !exactBoundExportDirectory(destination, pending)) return false;
   const proofPath = join(destination, EXPORT_OWNER_RECORD);
   const proofEntry = noFollowEntry(proofPath);
   if (!terminal && proofEntry) {
@@ -1799,6 +1828,9 @@ function destinationOwnership(state, destination, pending, inventory, { terminal
 }
 
 function publishExportReceipt(state, destination, pending, inventory, options) {
+  if (!exactBoundExportDirectory(destination, pending)) {
+    fail("static export destination is not the journal-bound renamed inode");
+  }
   const stat = lstatSync(destination);
   const receipt = {
     ...exportProofFor(pending, destination),
@@ -1877,8 +1909,10 @@ function pendingPublishIdentityMatches(pending, output, release, operation, lega
     pending.priorAssetsSha256 === inventoryDigest(pending.priorAssets) &&
     pending.expectedAssetsSha256 === inventoryDigest(pending.expectedAssets) &&
     (operation === "publish-export"
-      ? validExportNonce(pending.exportNonce)
-      : pending.exportNonce === null) &&
+      ? validExportNonce(pending.exportNonce) && validExportIdentity(pending)
+      : pending.exportNonce === null &&
+        pending.exportDevice === null &&
+        pending.exportInode === null) &&
     JSON.stringify(pending.legacy) === JSON.stringify(legacyRequest(legacyValidation))
   );
 }
@@ -1900,6 +1934,27 @@ function advancePendingPublishPhase(state, pending, phase, options) {
     options,
   );
   return advanced;
+}
+
+function bindPendingExportIdentity(state, pending, temporary, options) {
+  if (pending.operation !== "publish-export" || pending.phase !== "output-durable") {
+    fail("static export identity can bind only an output-durable coordinator transaction");
+  }
+  const entry = noFollowEntry(temporary);
+  if (!entry || entry.isSymbolicLink() || !entry.isDirectory()) {
+    fail("static export temporary is not one no-follow directory");
+  }
+  const device = String(entry.dev);
+  const inode = String(entry.ino);
+  if (validExportIdentity(pending, { required: true })) {
+    if (pending.exportDevice !== device || pending.exportInode !== inode) {
+      fail("static export temporary does not match its journal-bound inode");
+    }
+    return pending;
+  }
+  const bound = { ...pending, exportDevice: device, exportInode: inode };
+  writeAtomically(state, publishPendingPath(state), `${JSON.stringify(bound, null, 2)}\n`, options);
+  return bound;
 }
 
 function pendingPublishMatches(pending, output, release, inventory, operation, legacyValidation) {
@@ -2389,6 +2444,53 @@ function assertJournalOwnedArtifacts({
   return { pending, published };
 }
 
+function assertCandidateStillMatches(candidateRoot, release) {
+  const candidate = createCandidateManifest(realpathSync(candidateRoot));
+  if (
+    candidate.releaseId !== release.releaseId ||
+    !sameEntries(candidate.assets, release.assets) ||
+    !sameEntries(candidate.mutable, release.mutable)
+  ) {
+    fail("candidate changed before final transaction boundary");
+  }
+}
+
+function assertFinalJournalBoundary(boundary, candidateRoot, { committed = false } = {}) {
+  assertCandidateStillMatches(candidateRoot, boundary.release);
+  boundary.legacyValidation?.revalidate?.();
+  return assertJournalOwnedArtifacts({ ...boundary, committed });
+}
+
+function syncAndRevalidateJournalBoundary(
+  boundary,
+  candidateRoot,
+  options,
+  { committed = false } = {},
+) {
+  const initial = assertFinalJournalBoundary(boundary, candidateRoot, { committed });
+  syncTree(initial.published.directory, options);
+  syncDirectory(dirname(boundary.output), options);
+  if (boundary.destination) {
+    syncTree(boundary.destination, options);
+    syncDirectory(dirname(boundary.destination), options);
+  }
+  syncDirectory(boundary.state, options);
+  return assertFinalJournalBoundary(boundary, candidateRoot, { committed });
+}
+
+function syncAndRevalidateCommittedTerminal(admissionRequest, admission, options) {
+  syncTree(admission.published.directory, options);
+  syncDirectory(dirname(admissionRequest.output), options);
+  syncTree(admissionRequest.destination, options);
+  syncDirectory(dirname(admissionRequest.destination), options);
+  syncDirectory(resolve(admissionRequest.stateRoot), options);
+  assertCandidateStillMatches(admissionRequest.candidateRoot, admissionRequest.release);
+  admissionRequest.legacyValidation?.revalidate?.();
+  const final = inspectPublishAdmission(admissionRequest);
+  if (!final.terminal) fail("committed publish changed during final durability validation");
+  return final;
+}
+
 function renameNoReplace(source, destination, options) {
   const helper = options?.renameNoReplaceHelper || process.env.CABADRIVE_RENAME_NOREPLACE_HELPER;
   if (!helper) fail("native no-replace rename helper is unavailable");
@@ -2569,7 +2671,7 @@ export function buildStaticPublish({
       };
       onBeforeActivationRevalidation?.(boundary);
       fault(options, "before-activation-revalidation");
-      assertJournalOwnedArtifacts(boundary);
+      syncAndRevalidateJournalBoundary(boundary, candidateRootReal, options);
       const staged = stageStaticRelease({
         stateRoot: state,
         candidateRoot: candidateRootReal,
@@ -2581,13 +2683,17 @@ export function buildStaticPublish({
         lockHeld: true,
         expectedManifest: manifest,
         validatedLegacy: legacyValidation,
+        finalRevalidate: () =>
+          assertFinalJournalBoundary(boundary, candidateRootReal, { committed: false }),
       });
       if (staged.releaseId !== manifest.releaseId || !verifyCommittedState(state).valid) {
         fail("static publish activation did not commit the journaled candidate");
       }
       onBeforeJournalClearRevalidation?.(boundary);
       fault(options, "before-clear-revalidation");
-      assertJournalOwnedArtifacts({ ...boundary, committed: true });
+      syncAndRevalidateJournalBoundary(boundary, candidateRootReal, options, {
+        committed: true,
+      });
       fault(options, "before-publish-journal-clear");
       clearPendingPublish(state, options);
       return staged;
@@ -2764,6 +2870,8 @@ export function buildStaticPublish({
         inventory,
         destination,
         exportNonce: operation === "publish-export" ? randomUUID() : null,
+        exportDevice: null,
+        exportInode: null,
         legacy: legacyRequest(legacyValidation),
       };
       writeAtomically(
@@ -2849,7 +2957,7 @@ export function exportStaticPublish({
   const destination = resolve(destinationRoot);
   const parent = dirname(output);
   const candidate = createCandidateManifest(realpathSync(candidateRoot));
-  const pending = allowPending ? readPendingPublish(state) : undefined;
+  let pending = allowPending ? readPendingPublish(state) : undefined;
   const source = exactPublishedOutputDirectory(parent, output, pending);
   if (!source) fail("static publish output is not an exact serving transaction");
   const inventory = outputInventory(source);
@@ -2910,36 +3018,71 @@ export function exportStaticPublish({
   assertDirectory(destinationParent, "static export destination parent");
   const temporary = join(
     destinationParent,
-    `.${basename(destination)}.export-${process.pid}-${randomUUID()}`,
+    exactPending
+      ? `.${basename(destination)}.export-${pending.exportNonce}`
+      : `.${basename(destination)}.export-${process.pid}-${randomUUID()}`,
   );
   let published = false;
+  let createdTemporaryIdentity;
   try {
     // Never make the requested destination observable until the complete
     // physical artifact has been copied, verified, and made durable.
-    mkdirSync(temporary, { recursive: false, mode: 0o755 });
-    for (const entry of inventory) {
-      copyAndVerify(
-        join(source, ...entry.path.split("/")),
-        join(temporary, ...entry.path.split("/")),
-        entry,
-        options,
-        temporary,
-      );
+    const existingTemporary = noFollowEntry(temporary);
+    if (existingTemporary) {
+      if (
+        !exactPending ||
+        !exactBoundExportDirectory(temporary, pending) ||
+        !sameEntries(exportedInventory(temporary), inventory)
+      ) {
+        fail("static export journal has no exact bound temporary directory");
+      }
+    } else {
+      if (exactPending && validExportIdentity(pending, { required: true })) {
+        fail("static export journal-bound temporary directory is missing");
+      }
+      mkdirSync(temporary, { recursive: false, mode: 0o755 });
+      const created = lstatSync(temporary);
+      createdTemporaryIdentity = { device: created.dev, inode: created.ino };
+      for (const entry of inventory) {
+        copyAndVerify(
+          join(source, ...entry.path.split("/")),
+          join(temporary, ...entry.path.split("/")),
+          entry,
+          options,
+          temporary,
+        );
+      }
+      handBackTreeOwnership(temporary, options?.ownerUid, options?.ownerGid, options);
+      syncTree(temporary, options);
+      if (exactPending) {
+        pending = bindPendingExportIdentity(state, pending, temporary, options || {});
+        fault(options || {}, "after-export-identity-bind");
+      }
     }
     if (exactPending) {
       const proofPath = join(temporary, EXPORT_OWNER_RECORD);
-      writeFileSync(
-        proofPath,
-        `${JSON.stringify(exportProofFor(pending, destination), null, 2)}\n`,
-        {
-          flag: "wx",
-          mode: 0o600,
-        },
-      );
+      if (noFollowEntry(proofPath)) {
+        const proof = readJson(proofPath, "export ownership proof");
+        if (!exactExportProof(proof, pending, destination)) {
+          fail("export ownership proof changed");
+        }
+      } else {
+        writeFileSync(
+          proofPath,
+          `${JSON.stringify(exportProofFor(pending, destination), null, 2)}\n`,
+          {
+            flag: "wx",
+            mode: 0o600,
+          },
+        );
+      }
       syncFile(proofPath, options);
     }
     handBackTreeOwnership(temporary, options?.ownerUid, options?.ownerGid, options);
     syncTree(temporary, options);
+    if (exactPending && !exactBoundExportDirectory(temporary, pending)) {
+      fail("static export temporary changed after its journal identity was bound");
+    }
     syncDirectory(destinationParent, options);
     options?.onBeforeExportPublish?.({ temporary, destination });
     renameNoReplace(temporary, destination, options);
@@ -2954,9 +3097,33 @@ export function exportStaticPublish({
     }
   } finally {
     // Each attempt owns a unique sibling. Ordinary failures cannot leave a
-    // partial destination or a deterministic leftover that blocks retries.
+    // partial destination. Once the journal may have durably bound the inode,
+    // preserve it even if the binding call failed after its atomic rename but
+    // before its parent barrier returned.
     if (!published && noFollowEntry(temporary)) {
-      rmSync(temporary, { recursive: true, force: true });
+      let preserveForJournal = false;
+      if (exactPending) {
+        try {
+          const latest = readPendingPublish(state);
+          preserveForJournal = Boolean(
+            latest &&
+            validExportIdentity(latest, { required: true }) &&
+            latest.exportNonce === pending.exportNonce,
+          );
+        } catch {
+          preserveForJournal = true;
+        }
+      }
+      const current = noFollowEntry(temporary);
+      const stillCreatedTemporary =
+        createdTemporaryIdentity &&
+        current?.isDirectory() &&
+        !current.isSymbolicLink() &&
+        current.dev === createdTemporaryIdentity.device &&
+        current.ino === createdTemporaryIdentity.inode;
+      if (!preserveForJournal && stillCreatedTemporary) {
+        rmSync(temporary, { recursive: true, force: true });
+      }
     }
   }
   return { changed: true, releaseId: candidate.releaseId, manifest: candidate };
@@ -3029,11 +3196,11 @@ export function publishAndExportStaticRelease(options) {
     legacyValidation?.revalidate?.();
     const lockedAdmission = inspectPublishAdmission({ ...admissionRequest, stateRoot: state });
     if (lockedAdmission.terminal) {
-      syncTree(lockedAdmission.published.directory, transactionOptions);
-      syncDirectory(dirname(output), transactionOptions);
-      syncTree(destination, transactionOptions);
-      syncDirectory(dirname(destination), transactionOptions);
-      syncDirectory(state, transactionOptions);
+      syncAndRevalidateCommittedTerminal(
+        { ...admissionRequest, stateRoot: state },
+        lockedAdmission,
+        transactionOptions,
+      );
       retireOldPublishGenerations(
         options.generationRoot,
         logicalOutput,
@@ -3076,7 +3243,7 @@ export function publishAndExportStaticRelease(options) {
     };
     options.onBeforeActivationRevalidation?.(boundary);
     fault(transactionOptions, "before-activation-revalidation");
-    assertJournalOwnedArtifacts(boundary);
+    syncAndRevalidateJournalBoundary(boundary, candidateRoot, transactionOptions);
     fault(transactionOptions, "before-current-activation");
     const staged = stageStaticRelease({
       ...options,
@@ -3084,6 +3251,8 @@ export function publishAndExportStaticRelease(options) {
       validatedLegacy: legacyValidation,
       lockHeld: true,
       expectedManifest: published.manifest,
+      finalRevalidate: () =>
+        assertFinalJournalBoundary(boundary, candidateRoot, { committed: false }),
     });
     if (
       staged.releaseId !== published.releaseId ||
@@ -3094,7 +3263,9 @@ export function publishAndExportStaticRelease(options) {
     }
     options.onBeforeJournalClearRevalidation?.(boundary);
     fault(transactionOptions, "before-clear-revalidation");
-    assertJournalOwnedArtifacts({ ...boundary, committed: true });
+    syncAndRevalidateJournalBoundary(boundary, candidateRoot, transactionOptions, {
+      committed: true,
+    });
     fault(transactionOptions, "before-publish-journal-clear");
     clearPendingPublish(state, transactionOptions);
     retireOldPublishGenerations(options.generationRoot, logicalOutput, output, transactionOptions);

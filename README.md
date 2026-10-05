@@ -50,10 +50,14 @@ Compose volume `/publish`. Каждый release получает неизмен�
 output, а безопасная очистка сохраняет активную и одну rollback generation.
 Точная транзакция переживает остановку и новый `docker compose run --rm`.
 Destination публикуется только с непредсказуемым journal-bound ownership proof;
-после durable state receipt служебный proof удаляется из готового сайта.
+proof заранее связывает nonce с device/inode временного каталога, поэтому
+рекурсивная копия его байтов не может быть принята как результат atomic rename.
+После durable state receipt служебный proof удаляется из готового сайта.
 До создания state/lock stager выполняет read-only admission, затем повторяет
 проверку под lock; непосредственно перед активацией и очисткой journal он
-заново проверяет candidate, legacy, state, output, destination и ownership.
+заново проверяет candidate, legacy, state, output, destination и ownership,
+причём последняя полная проверка выполняется после всех durability-walk прямо
+перед активацией release или удалением journal.
 Wrapper передаёт числовые host UID/GID, а stager возвращает владельца всего
 готового export без следования по ссылкам и без ослабления режимов файлов.
 Retained ledger, release marker, execution-domain и оба transaction journal

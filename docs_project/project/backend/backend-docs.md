@@ -83,13 +83,17 @@ project do not collide; post-commit retirement preserves the active and one
 rollback generation. Journal-owned recovery survives separate
 `docker compose run --rm` containers. Physical destination ownership is proven
 by an unpredictable journal-bound record before publication and a durable
-state-side path/device/inode receipt afterward; internal proof metadata is then
-removed from the final site. Publication has a read-only admission pass before
+state-side path/device/inode receipt afterward. The journal binds the no-follow
+temporary root device/inode before no-replace rename, and both pre-receipt
+recovery and receipt creation require that same inode, so recursively copied
+proof bytes never establish ownership. Internal proof metadata is then removed
+from the final site. Publication has a read-only admission pass before
 state or lock creation and a complete locked revalidation pass. Existing output
 or destination is recoverable only when the stable journal owns the exact
 operation kind, pinned legacy identity, candidate, path, inventory, and phase.
 The stager re-digests every candidate, legacy, state, output, destination, and
-ownership authority under the lock before terminal success, activation, and
+ownership authority under the lock after all relevant file/tree/directory
+durability walks and immediately before terminal success, activation, and
 journal removal; an exact committed retry also recovers a visible journal
 unlink whose directory sync failed. The wrapper supplies strictly numeric host
 UID/GID, and the stager hands the completed bind-mounted export back without

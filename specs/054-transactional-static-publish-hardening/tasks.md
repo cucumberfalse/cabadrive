@@ -8,12 +8,12 @@
 - Contributing PR: #217.
 - Delivery: one bounded stacked implementation slice under the documented PR-only fallback.
 - Parallel preservation: F052 post-limit evidence, Analyst-owned intake, sibling work, and external PR/branch state must remain untouched outside explicit assignment.
-- F054 Architect return count: `3 / 10`.
+- F054 Architect return count: `4 / 10`.
 - F054 Analyst return count: `0 / 5`.
-- Effective content head: pending consolidated return #3 implementation,
-  exact-head review, and renewed role validation. Current reviewed technical
-  head `25bc5e7b56ac3bbf19643538103b8bc339d497be` and prior validated head
-  `f3f925c883b94327876a9f7c053917afdb56f777` are historical only.
+- Effective content head: pending narrow return #4 implementation, exact-head
+  review, and renewed role validation. Current reviewed technical head
+  `4e4992f6ad760efcd1a17f8e78a335ea8b7cc7bb` and earlier heads are historical
+  only.
 
 ## Setup And Test-First Tasks
 
@@ -171,15 +171,15 @@
   kind as specified below. Each negative case proves no unauthorized state,
   lock, journal, retained asset, current change, output, destination, or
   external/sibling mutation; each exact retry proves convergence.
-- [ ] **T054-027 — Renew all gates once after return #3.** Run focused authority/
+- [ ] **T054-027 — Renew all gates once after return #4.** Run focused authority/
   admission/transaction/wrapper/ownership tests, complete staging and combined
   contracts, full preflight, isolated sequential-release Docker lifecycle,
   root/unprivileged cleanup control, scope/memory guards, and one exact-head
-  bounded Review covering return #2 plus the complete return #3 package. Resolve
+  bounded Review covering returns #2/#3 plus the complete return #4 package. Resolve
   the paginated thread set, establish a new effective head, then repeat final
   Architect followed by Analyst validation before current-head finalization.
-  The implementation-owned return-#2 gates at `2026-10-05T12:33:06Z` are
-  historical and must not be run as a separate finalization cycle.
+  Earlier implementation gates are historical and must not be run as separate
+  finalization cycles.
 
 ### Deterministic return-#2 matrix
 
@@ -333,19 +333,65 @@
   and all unchanged return-#2 admission/crash/retry/preservation controls. Then
   hand the complete package to T054-027 for one review/validation cycle.
 
+## Architect Return #4 — Rename-Bound Ownership And Post-Durability Validation
+
+- Disposition recorded at `2026-10-05T18:57:40Z` for exact-head findings on
+  `4e4992f6ad760efcd1a17f8e78a335ea8b7cc7bb`. Both P1 findings are accepted as
+  one narrow package; they refine return #3 rather than opening serial returns.
+- `r4187632471`: accepted. A nonce copied with a recursively cloned foreign
+  directory proves only copied bytes, not that the transaction's no-replace
+  rename published that directory. Before rename, durably bind the temporary
+  root's no-follow device/inode identity to the journal and nonce. Atomic rename
+  must preserve that identity at the destination; pre-receipt recovery and
+  receipt creation accept only the exact bound inode. A recursive copy has a
+  different inode and can never be adopted even when every byte and proof file
+  matches.
+- `r4187634578`: accepted. A1 validation before `syncTree`/directory fsync does
+  not authorize activation or journal clear because the tree can mutate during
+  those durability walks. After every output/destination/proof/receipt durability
+  operation completes, perform one final exact locked revalidation of candidate,
+  pinned legacy, output generation, destination, current, ledger, release tuple,
+  operation, nonce proof, and receipt immediately before activation or clear.
+  Any drift preserves the journal and fails closed.
+
+### Single cohesive return-#4 package
+
+- [x] **T054-035 — Bind proof to the renamed inode.** Record the temporary
+  destination root's no-follow device/inode and ownership nonce durably before
+  no-replace rename; require the visible destination to be that same inode
+  before accepting the pre-receipt proof or creating the state-side receipt.
+  Receipt identity must remain bound to that inode. Reject recursive copy,
+  rename-away/replacement, hard-link/type substitution, missing identity, and
+  mismatched receipt without adopting or rewriting the foreign destination.
+- [x] **T054-036 — Revalidate after all durability walks.** Add one shared final
+  locked validation call after output/destination/proof/receipt syncs and
+  immediately before `makeCurrent` or journal clear. It must rewalk/digest the
+  candidate, output, and destination and revalidate legacy/current/ledger/
+  release/operation/proof/receipt identity; it cannot reuse pre-fsync results.
+- [x] **T054-037 — Add both deterministic race regressions.** At
+  `durability:export-rename`, recursively replace the destination with a foreign
+  byte-identical copy including the nonce proof; require rejection because the
+  inode differs, A remains current, journals/recovery evidence remain, and an
+  exact restored retry succeeds. At deterministic file/directory fsync hooks,
+  mutate output and destination after their earlier validation; require the
+  post-durability check to fail before activation/clear, preserve A for the
+  activation case (and the already committed tuple for clear recovery), retain
+  journals, reject drift, and allow exact restoration/retry to converge. Run
+  these with all return-#3 ownership/generation/terminal controls before T054-027.
+
 ## Verification And Review Tasks
 
 - [x] **T054-010 — Run focused verification.** Focused authority/transaction/wrapper controls and combined export/capture/staging/static-host contracts passed; exact counts are recorded below.
 - [x] **T054-011 — Run repository guards and full preflight.** Shell syntax, format, quality-fast, feature-memory/repository gates, `git diff --check`, and the renewed full `pnpm run preflight` passed on return #1 content; preflight completed 655/655 Node tests, the production/service-worker build, and 158/158 Playwright tests.
 - [x] **T054-012 — Run isolated real Docker validation.** `pnpm run test:docker-retention` passed the renewed clean and legacy update/export lifecycle with unique project `cabadrive-retention-10658-1791164306953` and scoped teardown.
 - [x] **T054-013 — Audit scope and evidence.** The diff is limited to the assigned coordinator/authority code, direct tests, two deployment-doc sections, F052 disposition, and complete F054 memory; no unrelated product or sibling state changed.
-- [x] **T054-014 — Obtain exact-head bounded review.** Exact-head bounded Review passed on `f3f925c883b94327876a9f7c053917afdb56f777` with no finding; this completed evidence is historical after consolidated returns #2/#3, whose one renewed review is T054-027.
+- [x] **T054-014 — Obtain exact-head bounded review.** Exact-head bounded Review passed on `f3f925c883b94327876a9f7c053917afdb56f777` with no finding; this completed evidence is historical after returns #2/#3/#4, whose one renewed review is T054-027.
 
 ## Final Validation And Merge Tasks
 
-- [x] **T054-015 — Establish renewed effective content head.** Historical effective head `f3f925c883b94327876a9f7c053917afdb56f777` included the then-complete cycle; returns #2/#3 require a new effective head through T054-027.
-- [x] **T054-016 — Complete final Architect validation.** Architect passed the historical head at `2026-10-05T01:43:29Z`; returns #2/#3 make that pass stale for merge authority. F054 is now at `3 / 10`, while F052 remains closed/escalated at `10 / 10`.
-- [x] **T054-017 — Complete later Analyst validation.** Analyst passed the historical head at `2026-10-05T01:46:00Z`, return count `0 / 5`; returns #2/#3 make that pass stale and T054-027 requires renewed ordered role validation.
+- [x] **T054-015 — Establish renewed effective content head.** Historical effective head `f3f925c883b94327876a9f7c053917afdb56f777` included the then-complete cycle; returns #2/#3/#4 require a new effective head through T054-027.
+- [x] **T054-016 — Complete final Architect validation.** Architect passed the historical head at `2026-10-05T01:43:29Z`; returns #2/#3/#4 make that pass stale for merge authority. F054 is now at `4 / 10`, while F052 remains closed/escalated at `10 / 10`.
+- [x] **T054-017 — Complete later Analyst validation.** Analyst passed the historical head at `2026-10-05T01:46:00Z`, return count `0 / 5`; returns #2/#3/#4 make that pass stale and T054-027 requires renewed ordered role validation.
 - [ ] **T054-018 — Run current-head guard and finalize PR #217.** Prove every later commit evidence-only, recheck all required checks/review threads/conflicts/feedback/process memory, run expected-head conservative finalization, and merge only when blocker-free.
 - [ ] **T054-019 — Preserve downstream order.** Only after verified PR #217 merge may Orchestrator synchronize PR #215 to resulting `main`, rerun affected tests/review, and repeat its required validations.
 
@@ -371,6 +417,11 @@
   the entry, so only that runtime accepts stable unchanged `0:0` identity and
   the real lifecycle proves the completed trees are removable by the invoking
   unprivileged host user.
+- **D054-007 — preserve a bound pre-rename temporary.** The coordinator derives
+  its export temporary name from the unpredictable journal nonce. Once its
+  device/inode is durably journal-bound, a pre-rename fault preserves that
+  exact directory for deterministic recovery; retry never recreates or adopts
+  a missing or different inode.
 - **Dead ends:** the first return-#3 Docker lifecycle correctly failed closed on
   LinuxKit's opaque bind ownership reporting. Treating that report as native
   Linux ownership was rejected; the runtime-scoped fallback above preserves
@@ -383,18 +434,17 @@ Architect-defined one-lock/existing-journal design without scope divergence.
 
 ## Known Issues
 
-The consolidated return-#3 technical and CI blockers are implemented and
-locally verified. T054-027 exact-head review/thread resolution and renewed
-ordered role validation remain pending Orchestrator work, so merge authority is
-not yet established. Process-only `r4184197134` awaits that renewed validation
-evidence and adds no product task. No unrelated accepted known issue is
-recorded.
+Return #4 T054-035 through T054-037 is implemented and locally verified.
+T054-027 exact-head review/thread resolution and renewed ordered role validation
+remain pending Orchestrator work, so merge authority is not yet established.
+Process-only `r4184197134` still adds no product task. No unrelated accepted
+known issue is recorded.
 
 ## Cycle PR Set
 
 | Purpose | Branch | PR | Stacked base | Current/final head | Status | Final-validation inclusion |
 |---|---|---|---|---|---|---|
-| F054 transactional publish/handoff hardening within combined F051/F052/F053/F054 delivery | `codex/051-asset-retention` | #217 | `5e5f4ef40336fc7bff2c400b6301d99fbc9479c1` | Return #3 implementation commit pending; reviewed technical head `25bc5e7b56ac3bbf19643538103b8bc339d497be` is historical | Consolidated return #3 implementation and local verification complete; exact-head review/thread resolution and renewed role validation pending through T054-027 | Required |
+| F054 transactional publish/handoff hardening within combined F051/F052/F053/F054 delivery | `codex/051-asset-retention` | #217 | `5e5f4ef40336fc7bff2c400b6301d99fbc9479c1` | Return #4 implementation commit pending; reviewed `4e4992f6ad760efcd1a17f8e78a335ea8b7cc7bb` is historical | Return #4 implementation/local verification complete; exact-head review and renewed role validation pending through T054-027 | Required |
 
 ## Verification Evidence
 
@@ -487,6 +537,35 @@ recorded.
   cannot authorize merge until the return-#3 commit receives exact-head review,
   thread resolution, and renewed ordered role validation through T054-027.
 
+### Return #4 evidence status
+
+- Exact-head findings `r4187632471` and `r4187634578` are accepted together;
+  T054-035 through T054-037 completed at `2026-10-05T19:16:27Z`.
+- The journal now durably binds nonce plus temporary device/inode before
+  no-replace rename. Pre-receipt proof and receipt creation require that same
+  visible inode; missing identity, a recursively copied byte-identical proof,
+  and foreign replacement reject without adoption. Restoring the exact renamed
+  inode converges; an injected post-bind/pre-rename fault also preserves and
+  resumes only the nonce-derived journal-bound temporary.
+- Shared locked final validation rewalks candidate, pinned legacy, serving
+  output, destination, current, ledger, release tuple, operation, proof, and
+  receipt after durability walks and immediately before activation or journal
+  clear. Deterministic file-fsync output drift preserves A and the journal;
+  directory-fsync destination drift preserves the committed tuple and journal;
+  exact restoration/retry converges in both cases.
+- Focused return-#4 races passed `2 / 2`; the combined capture/staging/wrapper
+  suite passed `115 / 115`; `quality:fast`, syntax, format, diff, feature-memory,
+  and repository guards passed.
+- Full `pnpm run preflight` passed `671 / 671` Node tests, production and
+  service-worker builds, and `158 / 158` Playwright tests.
+- Isolated real Docker lifecycle passed as
+  `cabadrive-retention-85780-1791228206423`, including all five fresh-container
+  crash retries, persistent sequential releases, unprivileged host cleanup, and
+  scoped teardown.
+- Return-#3 results remain regression baselines only. Merge authority still
+  requires T054-027 exact-head review/thread resolution and renewed ordered role
+  validation on the new implementation head.
+
 ## Final Architect Validation Notes
 
 - Architect validation pass: passed
@@ -514,19 +593,19 @@ recorded.
   `f3f925c883b94327876a9f7c053917afdb56f777`; return #2 supersedes it for merge
   authority.
 
-## Return #3 Validation Staleness
+## Return #4 Validation Staleness
 
-- Prior Architect validation status: stale due accepted returns #2 and #3.
-- Prior Analyst validation status: stale due accepted returns #2 and #3.
+- Prior Architect validation status: stale due accepted returns #2/#3/#4.
+- Prior Analyst validation status: stale due accepted returns #2/#3/#4.
 - The passes at `2026-10-05T01:43:29Z` and `2026-10-05T01:46:00Z` on
   `f3f925c883b94327876a9f7c053917afdb56f777` are retained as historical
   evidence only and do not authorize merge.
-- F054 Architect return count: `3 / 10`.
-- Architect validated effective content head: pending return #3 implementation,
+- F054 Architect return count: `4 / 10`.
+- Architect validated effective content head: pending return #4 implementation,
   exact-head review, and renewed final validation.
 - Final Analyst validation: pending only after renewed Architect validation.
-- Return-#2 implementation/check evidence and reviewed technical head
-  `25bc5e7b56ac3bbf19643538103b8bc339d497be` are also superseded for merge
-  authority by the consolidated return #3 package.
-- Current-head guard/finalization is blocked until T054-028 through T054-034,
+- Return-#3 implementation/check evidence and reviewed technical head
+  `4e4992f6ad760efcd1a17f8e78a335ea8b7cc7bb` are superseded for merge authority
+  by return #4.
+- Current-head guard/finalization is blocked until T054-035 through T054-037,
   T054-027, and renewed ordered role validation are complete.
