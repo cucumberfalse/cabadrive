@@ -173,6 +173,51 @@ The known dependent PR is #215 (`codex/049-learning-priority-fresh-update`). It 
 
 ## Final Analyst Validation Notes
 
+### Renewed combined-cycle validation after feature 054 — 2026-10-05
+
+- Analyst validation pass: passed
+- Final Analyst validation completed at: 2026-10-05T01:46:00Z
+- Analyst validated effective content head: f3f925c883b94327876a9f7c053917afdb56f777
+- Analyst return count: 0 / 5.
+- Combined PR-set coverage: PR #217 on branch `codex/051-asset-retention`
+  contains the complete F051/F052/F053/F054 delivery. All behaviorally
+  meaningful code, tests, documentation, feature memory, review fixes, and
+  dispositions are contained in the effective head above; later uncommitted
+  changes present during this validation are role-owned final-validation
+  evidence only.
+- Customer-intent validation: R051-1 through R051-8 are satisfied in spirit and
+  letter. Feature 054 closes all three post-limit blockers without weakening
+  append-only asset retention, byte-collision safety, clean or valid-legacy
+  export, real old-cache-miss continuity, destructive negative proof, or the
+  Docker/static-host contract. A remains current until serving output and the
+  physical export are durable; every injected pre-activation fault preserves A
+  with no partial B activation. Marker reads are descriptor-bound, no-follow,
+  nonblocking regular-file reads, and handoff `current` now distinguishes
+  genuine absence, valid/present symlink, and forbidden non-symlink input.
+- Recovery validation: the feature-054 return #1 regression uses a real valid
+  legacy handoff and an `after-asset-rename` fault. It proves A remains current
+  with both exact journals and durable output/export, then an identical request
+  recovers the legacy-plus-candidate promotion, selects B, and clears both
+  journals. Drifted or mismatched recovery cannot authorize activation.
+- Evidence: F054 direct controls passed 4/4, the return #1 control passed 1/1,
+  staging passed 58/58, combined contracts passed 105/105, full preflight
+  passed 655/655 Node tests plus production build/service-worker generation and
+  158/158 Playwright tests, and isolated Docker lifecycle
+  `cabadrive-retention-10658-1791164306953` passed. Exact-head bounded Review
+  passed without findings and every routed technical thread is resolved.
+- Process and sequencing: F052 remains closed/escalated at Architect return
+  count 10/10, F053 remains 0/10, and F054 passes at 1/10 with Analyst return
+  count 0/5. No unresolved task, feedback, accepted known issue, security
+  exception, or customer-intent gap remains. PR #217 must still pass the
+  Orchestrator evidence-only current-head guard and merge before PR #215 is
+  synchronized to resulting `main`, retested, reviewed, and independently
+  revalidated as required by R051-8.
+
+The final-return-#10 Analyst validation for effective head
+`d4fd6d9ffb5c5c7442d6e728410abc3d91062472`, and every earlier Analyst marker,
+is historical and superseded for merge authority by this combined F054
+validation.
+
 ### Renewed combined-cycle validation — 2026-10-04 final return #10
 
 - Analyst validation pass: passed

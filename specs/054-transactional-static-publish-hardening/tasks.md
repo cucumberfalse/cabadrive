@@ -10,7 +10,7 @@
 - Parallel preservation: F052 post-limit evidence, Analyst-owned intake, sibling work, and external PR/branch state must remain untouched outside explicit assignment.
 - F054 Architect return count: `1 / 10`.
 - F054 Analyst return count: `0 / 5`.
-- Effective content head: pending implementation and follow-up completion.
+- Effective content head: `f3f925c883b94327876a9f7c053917afdb56f777`.
 
 ## Setup And Test-First Tasks
 
@@ -59,13 +59,13 @@
 - [x] **T054-011 — Run repository guards and full preflight.** Shell syntax, format, quality-fast, feature-memory/repository gates, `git diff --check`, and the renewed full `pnpm run preflight` passed on return #1 content; preflight completed 655/655 Node tests, the production/service-worker build, and 158/158 Playwright tests.
 - [x] **T054-012 — Run isolated real Docker validation.** `pnpm run test:docker-retention` passed the renewed clean and legacy update/export lifecycle with unique project `cabadrive-retention-10658-1791164306953` and scoped teardown.
 - [x] **T054-013 — Audit scope and evidence.** The diff is limited to the assigned coordinator/authority code, direct tests, two deployment-doc sections, F052 disposition, and complete F054 memory; no unrelated product or sibling state changed.
-- [ ] **T054-014 — Obtain exact-head bounded review.** Review transaction atomicity/recovery, marker descriptor binding, current pointer identity, tests/docs, stacked-scope preservation, and role compliance. Enumerate all native review pages and dispose every finding role-appropriately.
+- [x] **T054-014 — Obtain exact-head bounded review.** Exact-head bounded Review passed on `f3f925c883b94327876a9f7c053917afdb56f777` with no finding; complete thread inspection confirms the three originating blockers and return #1 P1 are resolved with no unresolved technical thread.
 
 ## Final Validation And Merge Tasks
 
-- [ ] **T054-015 — Establish renewed effective content head.** Include all product/test/docs/memory content, follow-up fixes, dispositions, acceptance evidence, and the complete F051/F052/F053/F054 PR #217 cycle set.
-- [ ] **T054-016 — Complete final Architect validation.** After implementation, checks, review, and dispositions are complete, validate the full combined cycle, customer intent, task state, process memory, and exact effective head. Return limit: `10`; current count: `1`.
-- [ ] **T054-017 — Complete later Analyst validation.** Only after Architect passes, Analyst validates the same effective head against this intake; return limit: `5`; current count: `0`.
+- [x] **T054-015 — Establish renewed effective content head.** Effective/current content head `f3f925c883b94327876a9f7c053917afdb56f777` includes all product/test/docs/memory content, follow-up fixes, dispositions, acceptance evidence, and the complete F051/F052/F053/F054 PR #217 cycle set.
+- [x] **T054-016 — Complete final Architect validation.** Architect validated the combined cycle and effective head `f3f925c883b94327876a9f7c053917afdb56f777` at `2026-10-05T01:43:29Z`; F054 return count remains `1 / 10` and F052 remains closed/escalated at `10 / 10`.
+- [x] **T054-017 — Complete later Analyst validation.** After Architect passed, Analyst validated the combined F051/F052/F053/F054 outcome at `2026-10-05T01:46:00Z`, return count `0 / 5`, against the same effective content head `f3f925c883b94327876a9f7c053917afdb56f777`.
 - [ ] **T054-018 — Run current-head guard and finalize PR #217.** Prove every later commit evidence-only, recheck all required checks/review threads/conflicts/feedback/process memory, run expected-head conservative finalization, and merge only when blocker-free.
 - [ ] **T054-019 — Preserve downstream order.** Only after verified PR #217 merge may Orchestrator synchronize PR #215 to resulting `main`, rerun affected tests/review, and repeat its required validations.
 
@@ -94,15 +94,15 @@ Architect-defined one-lock/existing-journal design without scope divergence.
 
 ## Known Issues
 
-Accepted P1 `r4177166714` is implemented and locally verified as T054-020;
-exact-head re-review and originating-thread resolution remain. No unrelated
-accepted known issue is recorded.
+No accepted technical known issue remains. P1 `r4177166714` is implemented,
+verified, exact-head reviewed, and resolved as T054-020; the three originating
+F052 post-limit blockers are implemented and resolved by F054.
 
 ## Cycle PR Set
 
 | Purpose | Branch | PR | Stacked base | Current/final head | Status | Final-validation inclusion |
 |---|---|---|---|---|---|---|
-| F054 transactional publish/handoff hardening within combined F051/F052/F053/F054 delivery | `codex/051-asset-retention` | #217 | `5e5f4ef40336fc7bff2c400b6301d99fbc9479c1` | Pending implementation commit | Implementation and local verification complete; exact-head review pending | Required |
+| F054 transactional publish/handoff hardening within combined F051/F052/F053/F054 delivery | `codex/051-asset-retention` | #217 | `5e5f4ef40336fc7bff2c400b6301d99fbc9479c1` | `f3f925c883b94327876a9f7c053917afdb56f777` effective/current content | Implementation, verification, exact-head review, thread resolution, and ordered Architect/Analyst validation complete; current-head/finalization gates pending | Required |
 
 ## Verification Evidence
 
@@ -130,10 +130,36 @@ accepted known issue is recorded.
   service-worker build, and 158/158 Playwright tests.
 - Isolated Docker lifecycle: `pnpm run test:docker-retention` passed with unique
   project `cabadrive-retention-10658-1791164306953` and scoped teardown.
-- Exact-head review and required checks: pending Orchestrator coordination.
-- Final Architect then Analyst validation: pending.
+- Exact-head review and required checks: bounded Review passed with no finding;
+  all review threads are resolved and supplied guards are green on
+  `f3f925c883b94327876a9f7c053917afdb56f777`.
+- Final Architect then Analyst validation: Architect passed at
+  `2026-10-05T01:43:29Z`; Analyst passed afterward at
+  `2026-10-05T01:46:00Z`, return count `0 / 5`, on the same effective head.
 - Current-head guard/finalizer: pending.
 
 ## Final Architect Validation Notes
 
-Populate only when Orchestrator explicitly invokes final Architect validation after implementation, verification, exact-head review, feedback disposition, and combined-cycle evidence are complete.
+- Architect validation pass: passed
+- Final Architect validation completed at: 2026-10-05T01:43:29Z
+- Architect validated effective content head: f3f925c883b94327876a9f7c053917afdb56f777
+- Architect return counts: F052 `10 / 10` closed through required new-feature
+  escalation; F053 `0 / 10`; F054 `1 / 10`.
+- Combined-cycle evidence: PR #217 contains the complete F051 retention/cache
+  work, F052 provenance and bounded returns, F053 lock-only security refresh,
+  and F054 resolution of all three post-limit blockers plus the legacy-aware
+  promotion-retry P1. Direct control passed 1/1, staging passed 58/58, combined
+  contracts passed 105/105, full preflight passed 655/655 Node tests plus
+  build/service-worker and 158/158 Playwright tests, isolated Docker lifecycle
+  `cabadrive-retention-10658-1791164306953` passed, guards are green, exact-head
+  bounded Review passed, and every routed thread is resolved.
+- Customer intent and architecture: activation remains last after both durable
+  publications, legacy marker/current authority is fail-closed and no-follow,
+  exact legacy-aware recovery now converges, and no unrelated scope or accepted
+  issue remains.
+- Analyst validation pass: passed
+- Final Analyst validation completed at: 2026-10-05T01:46:00Z
+- Analyst return count: 0 / 5
+- Analyst validated effective content head: f3f925c883b94327876a9f7c053917afdb56f777
+- Ordered role validation is complete. Only Orchestrator current-head/check/
+  finalization gates remain pending.

@@ -446,3 +446,57 @@ No implementation or validation pass is claimed by this intake. Architect
 planning, implementation, focused/full/Docker verification, exact-head review,
 required checks, renewed final Architect validation, renewed final Analyst
 validation, the current-head guard, and merge all remain pending.
+
+## Final Analyst Validation Notes
+
+### Final combined-cycle validation — 2026-10-05
+
+- Analyst validation pass: passed
+- Final Analyst validation completed at: 2026-10-05T01:46:00Z
+- Analyst validated effective content head: f3f925c883b94327876a9f7c053917afdb56f777
+- Analyst return count: 0 / 5.
+- Combined PR-set coverage: PR #217 on branch `codex/051-asset-retention`
+  contains the complete F051/F052/F053/F054 delivery, including F054's stacked
+  implementation, follow-up return #1, verification, dispositions, and exact-
+  head review. All behaviorally meaningful content is contained in the
+  effective head above; the later uncommitted changes present during this
+  validation are role-owned final-validation evidence only.
+- Customer-intent validation: R054-1 through R054-7 and every required negative
+  scenario are satisfied in spirit and letter. Release A remains current until
+  both exact serving output and physical export are durably published. Faults
+  at the journal/publication/activation boundaries return nonzero without
+  partial B activation; only the exact journal-bound unchanged request may
+  recover and activate B.
+- Authority validation: the legacy marker is opened with no-follow,
+  nonblocking descriptor semantics, proven regular with stable identity, read
+  through that descriptor, and path identity revalidated. Symlink, dangling
+  symlink, FIFO, directory, unreadable, wrong-type, and inode-substitution
+  controls fail closed. Handoff `current` has the required three-way behavior:
+  genuine absence takes the clean path, a present symlink is pinned and passed
+  to strict validation, and every present non-symlink is rejected before a
+  mutating Docker/stager path.
+- Exact-retry validation: return #1 threads the pinned legacy validation through
+  coordinator-owned promotion-journal checks. With a real authoritative legacy
+  handoff, an `after-asset-rename` fault leaves A current while preserving the
+  exact outer and promotion journals plus durable output/export; identical
+  retry recovers legacy and candidate assets, selects B, and clears both
+  journals. This closes the follow-up P1 without changing the protocol scope.
+- Evidence: direct F054 controls passed 4/4, return #1 control passed 1/1,
+  staging passed 58/58, combined contracts passed 105/105, full preflight
+  passed 655/655 Node tests plus production build/service-worker generation and
+  158/158 Playwright tests, and isolated Docker lifecycle
+  `cabadrive-retention-10658-1791164306953` passed. Exact-head bounded Review on
+  `f3f925c883b94327876a9f7c053917afdb56f777` passed without findings, all four
+  routed threads are resolved, and supplied guards are green.
+- Process validation: Final Architect validation passed first at
+  `2026-10-05T01:43:29Z` on the same effective head. F052 remains closed at
+  10/10, F053 remains 0/10, and F054 is within its limit at 1/10; F054 Analyst
+  return count is 0/5. No unresolved implementation feedback, technical
+  finding, accepted known issue, architecture gap, or customer-intent mismatch
+  remains.
+- Merge sequencing: the Orchestrator must still prove the later commit is
+  evidence-only, recheck exact-current-head required checks, review threads,
+  conflicts, process memory, and expected head, then merge PR #217. Only after
+  that verified merge may PR #215 be synchronized to resulting `main`, have its
+  affected tests and review rerun, and receive renewed final Architect then
+  Analyst validation before merge.

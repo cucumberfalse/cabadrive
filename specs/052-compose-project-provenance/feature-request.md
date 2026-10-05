@@ -327,6 +327,49 @@ validation, current-head guards, and merge remain pending.
 
 ## Final Analyst Validation
 
+### Renewed combined validation after feature 054 — 2026-10-05
+
+- Analyst validation pass: passed
+- Final Analyst validation completed at: 2026-10-05T01:46:00Z
+- Analyst validated effective content head: f3f925c883b94327876a9f7c053917afdb56f777
+- Analyst return count: 0 / 5.
+- Combined PR-set coverage: PR #217 on branch `codex/051-asset-retention`
+  contains F051 asset retention, this closed F052 provenance cycle, F053
+  security refresh, and the required F054 post-limit hardening cycle. All
+  behaviorally meaningful content is present in the effective head above; the
+  later uncommitted changes present during this validation are role-owned
+  final-validation evidence only.
+- Customer-intent validation: R052-1 through R052-8 and their required negative
+  scenarios remain satisfied in spirit and letter. Durable Compose-project
+  adoption, lifecycle continuity, explicit caller choice, clean-install
+  behavior, ambiguity rejection, and fail-closed project isolation are
+  preserved. The three findings discovered after F052's 10/10 return limit were
+  correctly moved into F054 rather than becoming an invalid return #11.
+- F054 boundary validation: output and export durability now precede B current
+  activation; descriptor-bound marker reads reject symlink, FIFO, wrong-type,
+  unreadable, and substituted objects; and a no-follow `current` classification
+  permits genuine absence, forwards a present symlink to strict validation, and
+  rejects present non-symlinks before mutation. The legacy-aware promotion
+  exact-retry regression proves a recoverable fault preserves A and both bound
+  journals, while the identical request later converges to B and clears them.
+- Evidence: F054 direct controls passed 4/4, return #1 control passed 1/1,
+  staging passed 58/58, combined contracts passed 105/105, full preflight
+  passed 655/655 Node tests plus build/service-worker generation and 158/158
+  Playwright tests, and isolated Docker lifecycle
+  `cabadrive-retention-10658-1791164306953` passed. Exact-head bounded Review
+  passed without findings and all originating/follow-up threads are resolved.
+- Process validation: F052 remains complete and closed at Architect return
+  count 10/10; F054 owns the escalated work and passes at 1/10. Analyst return
+  count is 0/5. No unresolved task, feedback, technical finding, accepted known
+  issue, or customer-intent gap remains. Exact-current-head checks,
+  thread/conflict verification, and the evidence-only guard remain Orchestrator
+  merge gates rather than Analyst gaps.
+
+The final-return-#10 Analyst validation for effective head
+`d4fd6d9ffb5c5c7442d6e728410abc3d91062472`, and all earlier Analyst markers,
+is historical and superseded for merge authority by this combined F054
+validation.
+
 ### Renewed validation after final Architect return #10 — 2026-10-04
 
 - Analyst validation pass: passed
