@@ -45,12 +45,19 @@ candidate, legacy authority, state, output или destination. Отдельна�
 безопасно завершается ошибкой.
 
 Serving output и его временное дерево находятся на отдельном project-scoped
-Compose volume `/publish`, поэтому точная транзакция переживает остановку и
-новый `docker compose run --rm`. До создания state/lock stager выполняет
-read-only admission, затем повторяет проверку под lock; непосредственно перед
-активацией и очисткой journal он заново проверяет digest output и destination.
+Compose volume `/publish`. Каждый release получает неизменяемую generation,
+поэтому следующие версии того же Compose-проекта не конфликтуют с предыдущим
+output, а безопасная очистка сохраняет активную и одну rollback generation.
+Точная транзакция переживает остановку и новый `docker compose run --rm`.
+Destination публикуется только с непредсказуемым journal-bound ownership proof;
+после durable state receipt служебный proof удаляется из готового сайта.
+До создания state/lock stager выполняет read-only admission, затем повторяет
+проверку под lock; непосредственно перед активацией и очисткой journal он
+заново проверяет candidate, legacy, state, output, destination и ownership.
+Wrapper передаёт числовые host UID/GID, а stager возвращает владельца всего
+готового export без следования по ссылкам и без ослабления режимов файлов.
 Retained ledger, release marker, execution-domain и оба transaction journal
-читаются одним bounded no-follow/nonblocking descriptor protocol: symlink,
+читаются одним chunked hard-bounded no-follow/nonblocking descriptor protocol: symlink,
 FIFO, directory, socket/device, mode `000`, подмена или слишком большой файл
 никогда не принимаются как authority.
 

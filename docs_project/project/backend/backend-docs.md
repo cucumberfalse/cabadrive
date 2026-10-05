@@ -77,17 +77,30 @@ fails closed when its publish output is absent or does not match the committed
 state; it is not a standalone fresh-output command.
 
 The stager's serving output and scratch tree share the project-scoped
-`static-publish` Compose volume mounted at `/publish`, so journal-owned recovery
-survives separate `docker compose run --rm` containers. Publication has a
-read-only admission pass before state or lock creation and a complete locked
-revalidation pass. Existing output or destination is recoverable only when the
-stable journal owns the exact operation kind, pinned legacy identity, candidate,
-path, inventory, and phase. The stager re-digests output and destination before
-activation and before journal removal; an exact committed retry also recovers a
-visible journal unlink whose directory sync failed.
+`static-publish` Compose volume mounted at `/publish`. Each release uses an
+immutable contained generation, so sequential releases in the same Compose
+project do not collide; post-commit retirement preserves the active and one
+rollback generation. Journal-owned recovery survives separate
+`docker compose run --rm` containers. Physical destination ownership is proven
+by an unpredictable journal-bound record before publication and a durable
+state-side path/device/inode receipt afterward; internal proof metadata is then
+removed from the final site. Publication has a read-only admission pass before
+state or lock creation and a complete locked revalidation pass. Existing output
+or destination is recoverable only when the stable journal owns the exact
+operation kind, pinned legacy identity, candidate, path, inventory, and phase.
+The stager re-digests every candidate, legacy, state, output, destination, and
+ownership authority under the lock before terminal success, activation, and
+journal removal; an exact committed retry also recovers a visible journal
+unlink whose directory sync failed. The wrapper supplies strictly numeric host
+UID/GID, and the stager hands the completed bind-mounted export back without
+following links or broadening production modes before no-replace publication.
+Native Linux mounts require exact in-container UID/GID confirmation. LinuxKit
+bind mounts, which deliberately report container-root ownership even when the
+host owns the entry, use the narrow unchanged-identity fallback and the real
+Docker lifecycle proves unprivileged host deletion of the resulting tree.
 
 Retained-ledger, release-marker, execution-domain, asset-promotion-journal, and
-publish-journal authorities use one bounded descriptor reader with
+publish-journal authorities use one chunked hard-bounded descriptor reader with
 `O_NOFOLLOW | O_NONBLOCK`, regular-file and policy-readable-mode checks,
 descriptor/path identity revalidation, and caller-specific absence rules.
 Symlinks (including dangling ones), FIFO, directories, sockets/devices, mode

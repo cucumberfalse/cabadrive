@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /** Executable Docker A->B retention regression, intentionally self-cleaning. */
 import { execFileSync, spawnSync } from "node:child_process";
-import { existsSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -243,8 +243,14 @@ function assertCrossContainerPublishRetry(selectedProject) {
       "/candidate",
       "--output",
       "/publish/cabadrive-static-publish",
+      "--generation-root",
+      "/publish",
       "--destination",
       `/export/${destinationName}`,
+      "--owner-uid",
+      String(process.getuid()),
+      "--owner-gid",
+      String(process.getgid()),
     ];
     try {
       const faulted = spawnSync("docker", [...common, "--fault", faultAt], {
@@ -281,6 +287,68 @@ function assertCrossContainerPublishRetry(selectedProject) {
   }
 }
 
+function assertSequentialPublishGenerations(selectedProject) {
+  const stateVolume = `${selectedProject}_release-state`;
+  const publishVolume = `${selectedProject}_static-publish`;
+  const candidateB = join(temporary, "candidate-sequential-b");
+  const destinationA = join(temporary, "sequential-a");
+  const destinationB = join(temporary, "sequential-b");
+  mkdirSync(join(candidateB, "assets"), { recursive: true });
+  writeFileSync(join(candidateB, "index.html"), "<!doctype html><title>sequential B</title>");
+  writeFileSync(join(candidateB, "sw.js"), "self.release = 'sequential-b';");
+  writeFileSync(join(candidateB, "assets", "sequential-b.js"), "sequential B bytes");
+  run("docker", ["volume", "create", stateVolume]);
+  run("docker", ["volume", "create", publishVolume]);
+  const publish = (candidate, destinationName, extraMount = []) =>
+    run("docker", [
+      "run",
+      "--rm",
+      "-e",
+      `CABADRIVE_COMPOSE_PROJECT=${selectedProject}`,
+      "-v",
+      `${stateVolume}:/state`,
+      "-v",
+      `${publishVolume}:/publish`,
+      "-v",
+      `${temporary}:/export`,
+      ...extraMount,
+      "--entrypoint",
+      "node",
+      `${project}-stager`,
+      "/app/scripts/stage-static-release.mjs",
+      "publish-export",
+      "--state",
+      "/state",
+      "--candidate",
+      candidate,
+      "--output",
+      "/publish/cabadrive-static-publish",
+      "--generation-root",
+      "/publish",
+      "--destination",
+      `/export/${destinationName}`,
+      "--owner-uid",
+      String(process.getuid()),
+      "--owner-gid",
+      String(process.getgid()),
+    ]);
+  try {
+    publish("/candidate", "sequential-a");
+    publish("/candidate-b", "sequential-b", ["-v", `${candidateB}:/candidate-b:ro`]);
+    if (!readFileSync(join(destinationB, "index.html"), "utf8").includes("sequential B")) {
+      throw new Error("second release did not publish from a new persistent generation");
+    }
+    rmSync(destinationA, { recursive: true });
+    rmSync(destinationB, { recursive: true });
+    if (existsSync(destinationA) || existsSync(destinationB)) {
+      throw new Error("host-owned exported artifacts were not removable without privilege");
+    }
+  } finally {
+    spawnSync("docker", ["volume", "rm", "-f", stateVolume], { stdio: "ignore" });
+    spawnSync("docker", ["volume", "rm", "-f", publishVolume], { stdio: "ignore" });
+  }
+}
+
 try {
   // Running-container first migration: capture A before B image replacement.
   buildLegacyImage(project);
@@ -288,6 +356,7 @@ try {
   make(["build"], project);
   assertCrossContainerKernelLock(lockProject);
   assertCrossContainerPublishRetry(retryProject);
+  assertSequentialPublishGenerations(`${retryProject}-sequential`);
   make(["up"], project);
   await waitFor(`http://localhost:${port}/`);
   assertExactLegacyAsset();

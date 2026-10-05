@@ -116,6 +116,18 @@ test("documented Docker bootstrap publishes then exports one exact fresh transac
     const output = join(root, "publish");
     const destination = join(root, "archive");
     const a = candidate(root, "candidate-a", "a.js");
+    const invalidOwnerState = join(root, "invalid-owner-state");
+    const invalidOwner = runStage(root, helper, "publish-export", {
+      state: invalidOwnerState,
+      candidate: a,
+      output: join(root, "invalid-owner-output"),
+      destination: join(root, "invalid-owner-archive"),
+      "owner-uid": "1e3",
+      "owner-gid": "0",
+    });
+    assert.notEqual(invalidOwner.status, 0);
+    assert.match(invalidOwner.stderr, /--owner-uid must be a numeric host identity/i);
+    assert.equal(existsSync(invalidOwnerState), false);
     const legacy = join(root, "legacy");
     mkdirSync(join(legacy, "assets"), { recursive: true });
     writeFileSync(join(legacy, "assets", "legacy-hash.js"), "legacy hashed bytes");
@@ -217,15 +229,17 @@ test("documented Docker bootstrap publishes then exports one exact fresh transac
     assert.match(staticExport, /publish-export/);
     assert.match(
       staticExport,
-      /capture-legacy-assets\.sh"\nproject=.*capture-legacy-assets\.sh" --resolve-project/,
+      /project=.*capture-legacy-assets\.sh" --resolve-project[\s\S]*legacy_handoff=[\s\S]*capture-legacy-assets\.sh"/,
     );
     assert.match(staticExport, /docker compose[\s\S]*build stager/);
     assert.match(
       staticExport,
-      /legacy_handoff=.*\/current[\s\S]*\[ -L "\$legacy_handoff" \][\s\S]*set -- --legacy \/legacy-handoff\/current[\s\S]*elif \[ -e "\$legacy_handoff" \]/,
+      /legacy_handoff=.*\/current[\s\S]*\[ -L "\$legacy_handoff" \][\s\S]*capture-legacy-assets\.sh"[\s\S]*set -- "\$@" --legacy \/legacy-handoff\/current/,
     );
     assert.match(staticExport, /--destination "\/export\/\$destination_name" "\$@"/);
     assert.match(staticExport, /--output \/publish\/cabadrive-static-publish/);
+    assert.match(staticExport, /--owner-uid "\$\(id -u\)" --owner-gid "\$\(id -g\)"/);
+    assert.match(staticExport, /--generation-root \/publish/);
     assert.match(
       readme,
       /\.\/scripts\/export-static-release\.sh \/absolute\/path\/cabadrive-static/,
@@ -242,14 +256,15 @@ test("documented Docker bootstrap publishes then exports one exact fresh transac
   }
 });
 
-test("export wrapper distinguishes absent, symlink, and non-symlink current entries", () => {
-  for (const kind of ["absent", "dangling", "file", "directory"]) {
+test("export wrapper classifies current before capture and rejects wrong types unchanged", () => {
+  for (const kind of ["absent", "dangling", "file", "directory", "fifo"]) {
     const root = mkdtempSync(join(tmpdir(), `cabadrive-static-wrapper-${kind}-`));
     try {
       const scripts = join(root, "scripts");
       const bin = join(root, "bin");
       const projectRoot = join(root, ".cabadrive-release-handoff", "fixture");
       const log = join(root, "docker.log");
+      const captureLog = join(root, "capture.log");
       mkdirSync(scripts, { recursive: true });
       mkdirSync(bin, { recursive: true });
       mkdirSync(projectRoot, { recursive: true });
@@ -258,7 +273,7 @@ test("export wrapper distinguishes absent, symlink, and non-symlink current entr
       chmodSync(join(scripts, "export-static-release.sh"), 0o755);
       writeFileSync(
         join(scripts, "capture-legacy-assets.sh"),
-        '#!/bin/sh\nif [ "${1:-}" = "--resolve-project" ]; then printf "%s\\n" fixture; fi\n',
+        '#!/bin/sh\nprintf "%s\\n" "${1:-capture}" >>"$CABADRIVE_CAPTURE_LOG"\nif [ "${1:-}" = "--resolve-project" ]; then printf "%s\\n" fixture; fi\n',
       );
       chmodSync(join(scripts, "capture-legacy-assets.sh"), 0o755);
       writeFileSync(
@@ -270,6 +285,7 @@ test("export wrapper distinguishes absent, symlink, and non-symlink current entr
       if (kind === "dangling") symlinkSync("releases/missing", current);
       if (kind === "file") writeFileSync(current, "not a pointer");
       if (kind === "directory") mkdirSync(current);
+      if (kind === "fifo") execFileSync("mkfifo", [current]);
 
       const result = spawnSync(
         "sh",
@@ -280,22 +296,67 @@ test("export wrapper distinguishes absent, symlink, and non-symlink current entr
             ...process.env,
             PATH: `${bin}:${process.env.PATH}`,
             CABADRIVE_DOCKER_LOG: log,
+            CABADRIVE_CAPTURE_LOG: captureLog,
           },
         },
       );
-      if (kind === "file" || kind === "directory") {
+      if (["file", "directory", "fifo"].includes(kind)) {
         assert.notEqual(result.status, 0, kind);
         assert.match(result.stderr, /current entry must be a symlink/i);
         assert.equal(existsSync(log), false);
+        assert.equal(readFileSync(captureLog, "utf8"), "--resolve-project\n");
       } else {
         assert.equal(result.status, 0, result.stdout + result.stderr);
         const dockerArgs = readFileSync(log, "utf8");
         if (kind === "dangling") assert.match(dockerArgs, /--legacy \/legacy-handoff\/current/);
         else assert.doesNotMatch(dockerArgs, /--legacy/);
+        assert.equal(readFileSync(captureLog, "utf8"), "--resolve-project\ncapture\n");
       }
       assert.equal(existsSync(join(root, "out")), false);
     } finally {
       rmSync(root, { recursive: true, force: true });
     }
+  }
+});
+
+test("export wrapper reclassifies current after capture before Docker mutation", () => {
+  const root = mkdtempSync(join(tmpdir(), "cabadrive-static-wrapper-race-"));
+  try {
+    const scripts = join(root, "scripts");
+    const bin = join(root, "bin");
+    const projectRoot = join(root, ".cabadrive-release-handoff", "fixture");
+    const dockerLog = join(root, "docker.log");
+    mkdirSync(scripts, { recursive: true });
+    mkdirSync(bin);
+    mkdirSync(projectRoot, { recursive: true });
+    writeFileSync(join(root, "docker-compose.yml"), "services: {}\n");
+    writeFileSync(join(scripts, "export-static-release.sh"), staticExport);
+    chmodSync(join(scripts, "export-static-release.sh"), 0o755);
+    writeFileSync(
+      join(scripts, "capture-legacy-assets.sh"),
+      `#!/bin/sh
+if [ "\${1:-}" = "--resolve-project" ]; then printf '%s\\n' fixture; exit; fi
+printf '%s\\n' replaced >${JSON.stringify(join(projectRoot, "current"))}
+`,
+    );
+    chmodSync(join(scripts, "capture-legacy-assets.sh"), 0o755);
+    writeFileSync(
+      join(bin, "docker"),
+      '#!/bin/sh\nprintf "%s\\n" "$*" >>"$CABADRIVE_DOCKER_LOG"\n',
+    );
+    chmodSync(join(bin, "docker"), 0o755);
+    const result = spawnSync("sh", [join(scripts, "export-static-release.sh"), join(root, "out")], {
+      encoding: "utf8",
+      env: {
+        ...process.env,
+        PATH: `${bin}:${process.env.PATH}`,
+        CABADRIVE_DOCKER_LOG: dockerLog,
+      },
+    });
+    assert.notEqual(result.status, 0);
+    assert.match(result.stderr, /changed to a non-symlink/i);
+    assert.equal(existsSync(dockerLog), false);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
   }
 });

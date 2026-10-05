@@ -33,18 +33,23 @@ if [ -L "$destination" ] || { [ -e "$destination" ] && [ ! -d "$destination" ]; 
   exit 1
 fi
 
-# This is the same authoritative outgoing-runtime capture boundary used by
-# `make build`. A clean/missing or invalid handoff is not silently treated as
-# candidate-only authority by the static export path.
-"$script_dir/capture-legacy-assets.sh"
 project="$("$script_dir/capture-legacy-assets.sh" --resolve-project)"
 export COMPOSE_PROJECT_NAME="$project"
 legacy_handoff="$repo_root/.cabadrive-release-handoff/$project/current"
-set --
 if [ -L "$legacy_handoff" ]; then
-  set -- --legacy /legacy-handoff/current
+  :
 elif [ -e "$legacy_handoff" ]; then
   printf '%s\n' 'legacy handoff current entry must be a symlink' >&2
+  exit 1
+fi
+# This is the same authoritative outgoing-runtime capture boundary used by
+# `make build`. Wrong-type current entries have already failed unchanged.
+"$script_dir/capture-legacy-assets.sh"
+set -- --owner-uid "$(id -u)" --owner-gid "$(id -g)" --generation-root /publish
+if [ -L "$legacy_handoff" ]; then
+  set -- "$@" --legacy /legacy-handoff/current
+elif [ -e "$legacy_handoff" ]; then
+  printf '%s\n' 'legacy handoff current entry changed to a non-symlink' >&2
   exit 1
 fi
 docker compose -f "$repo_root/docker-compose.yml" build stager

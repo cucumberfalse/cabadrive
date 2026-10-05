@@ -1,6 +1,8 @@
 import assert from "node:assert/strict";
 import {
+  appendFileSync,
   chmodSync,
+  cpSync,
   existsSync,
   lstatSync,
   linkSync,
@@ -199,6 +201,27 @@ test("authority reader rejects every unsafe type, mode, size, parse, and substit
         }),
       /changed during no-follow access/i,
     );
+  });
+});
+
+test("authority reader stops at maxBytes plus one when the opened inode grows", () => {
+  withFixture((root) => {
+    const authority = join(root, "growing-authority");
+    writeFileSync(authority, "{}\n");
+    let totalRead = 0;
+    assert.throws(
+      () =>
+        readAuthorityFile(authority, "growing authority", {
+          maxBytes: 64,
+          onOpen: () => appendFileSync(authority, "x".repeat(4096)),
+          onReadChunk: ({ total }) => {
+            totalRead = total;
+          },
+        }),
+      /size limit/i,
+    );
+    assert.ok(totalRead <= 65, `reader consumed ${totalRead} bytes`);
+    assert.doesNotThrow(() => renameSync(authority, join(root, "closed-authority")));
   });
 });
 
@@ -953,6 +976,338 @@ test("coordinator revalidates visible artifacts and recovers a visible journal u
       renameNoReplaceHelper,
     });
     assert.equal(retry.changed, false);
+  });
+});
+
+test("coordinator rejects a foreign byte-identical destination and cleans owned proof metadata", () => {
+  withFixture((root) => {
+    const state = join(root, "state");
+    const output = join(root, "publish");
+    const destination = join(root, "archive");
+    const candidate = release(root, "candidate", { "a.js": "A" }, "A shell");
+    const renameNoReplaceHelper = nativeRenameHelper(root);
+    assert.throws(
+      () =>
+        publishAndExportStaticRelease({
+          stateRoot: state,
+          candidateRoot: candidate,
+          outputRoot: output,
+          destinationRoot: destination,
+          renameNoReplaceHelper,
+          faultAt: "after-output",
+        }),
+      /fault injection/i,
+    );
+    cpSync(realpathSync(output), destination, { recursive: true });
+    assert.throws(
+      () =>
+        publishAndExportStaticRelease({
+          stateRoot: state,
+          candidateRoot: candidate,
+          outputRoot: output,
+          destinationRoot: destination,
+          renameNoReplaceHelper,
+        }),
+      /without exact transaction authority/i,
+    );
+    rmSync(destination, { recursive: true });
+    assert.doesNotThrow(() =>
+      publishAndExportStaticRelease({
+        stateRoot: state,
+        candidateRoot: candidate,
+        outputRoot: output,
+        destinationRoot: destination,
+        renameNoReplaceHelper,
+        ownerUid: process.getuid?.(),
+        ownerGid: process.getgid?.(),
+      }),
+    );
+    assert.equal(existsSync(join(destination, ".cabadrive-export-owner.json")), false);
+    assert.equal(lstatSync(destination).uid, process.getuid?.());
+    assert.equal(lstatSync(join(destination, "index.html")).uid, process.getuid?.());
+    assert.equal(
+      readdirSync(state).some((name) => name.startsWith("export-receipt-")),
+      true,
+    );
+  });
+});
+
+test("reserved destination proof names are rejected before transaction mutation", () => {
+  withFixture((root) => {
+    const state = join(root, "state");
+    const output = join(root, "publish");
+    const destination = join(root, "archive");
+    const candidate = release(root, "candidate", { "a.js": "A" }, "A shell");
+    writeFileSync(join(candidate, ".cabadrive-export-owner.json"), "user collision");
+    assert.throws(
+      () =>
+        publishAndExportStaticRelease({
+          stateRoot: state,
+          candidateRoot: candidate,
+          outputRoot: output,
+          destinationRoot: destination,
+          renameNoReplaceHelper: nativeRenameHelper(root),
+        }),
+      /reserved export ownership record/i,
+    );
+    assert.equal(existsSync(state), false);
+    assert.equal(existsSync(output), false);
+    assert.equal(existsSync(destination), false);
+  });
+});
+
+test("destination proof is no-follow authority and survives exact pre-receipt retry", () => {
+  withFixture((root) => {
+    const state = join(root, "state");
+    const output = join(root, "publish");
+    const destination = join(root, "archive");
+    const candidate = release(root, "candidate", { "a.js": "A" }, "A shell");
+    const renameNoReplaceHelper = nativeRenameHelper(root);
+    assert.throws(
+      () =>
+        publishAndExportStaticRelease({
+          stateRoot: state,
+          candidateRoot: candidate,
+          outputRoot: output,
+          destinationRoot: destination,
+          renameNoReplaceHelper,
+          faultAt: "durability:export-rename",
+        }),
+      /fault injection/i,
+    );
+    const proof = join(destination, ".cabadrive-export-owner.json");
+    assert.equal(lstatSync(proof).isFile(), true);
+    const external = join(root, "external-proof");
+    renameSync(proof, external);
+    symlinkSync(external, proof);
+    const sentinel = readFileSync(external, "utf8");
+    assert.throws(
+      () =>
+        publishAndExportStaticRelease({
+          stateRoot: state,
+          candidateRoot: candidate,
+          outputRoot: output,
+          destinationRoot: destination,
+          renameNoReplaceHelper,
+        }),
+      /without exact transaction authority/i,
+    );
+    assert.equal(readFileSync(external, "utf8"), sentinel);
+    unlinkSync(proof);
+    renameSync(external, proof);
+    assert.doesNotThrow(() =>
+      publishAndExportStaticRelease({
+        stateRoot: state,
+        candidateRoot: candidate,
+        outputRoot: output,
+        destinationRoot: destination,
+        renameNoReplaceHelper,
+      }),
+    );
+    assert.equal(existsSync(proof), false);
+  });
+});
+
+test("missing, malformed, wrong-type, and changed-nonce proofs never authorize retry", () => {
+  for (const mutation of ["missing", "malformed", "directory", "nonce"]) {
+    withFixture((root) => {
+      const state = join(root, "state");
+      const output = join(root, "publish");
+      const destination = join(root, "archive");
+      const candidate = release(root, "candidate", { "a.js": "A" }, "A shell");
+      const renameNoReplaceHelper = nativeRenameHelper(root);
+      assert.throws(
+        () =>
+          publishAndExportStaticRelease({
+            stateRoot: state,
+            candidateRoot: candidate,
+            outputRoot: output,
+            destinationRoot: destination,
+            renameNoReplaceHelper,
+            faultAt: "durability:export-rename",
+          }),
+        /fault injection/i,
+      );
+      const proof = join(destination, ".cabadrive-export-owner.json");
+      if (mutation === "missing") unlinkSync(proof);
+      if (mutation === "malformed") writeFileSync(proof, "not json\n");
+      if (mutation === "directory") {
+        unlinkSync(proof);
+        mkdirSync(proof);
+      }
+      if (mutation === "nonce") {
+        const changed = JSON.parse(readFileSync(proof, "utf8"));
+        changed.nonce = "00000000-0000-0000-0000-000000000000";
+        writeFileSync(proof, `${JSON.stringify(changed)}\n`);
+      }
+      assert.throws(
+        () =>
+          publishAndExportStaticRelease({
+            stateRoot: state,
+            candidateRoot: candidate,
+            outputRoot: output,
+            destinationRoot: destination,
+            renameNoReplaceHelper,
+          }),
+        /without exact transaction authority|json/i,
+      );
+      assert.equal(existsSync(join(state, "current")), false);
+    });
+  }
+});
+
+test("persistent generation root accepts sequential releases in one project", () => {
+  withFixture((root) => {
+    const state = join(root, "state");
+    const generationRoot = join(root, "publish-generations");
+    mkdirSync(generationRoot);
+    const logicalOutput = join(generationRoot, "site");
+    const a = release(root, "a", { "a.js": "A" }, "A shell");
+    const b = release(root, "b", { "b.js": "B" }, "B shell");
+    const c = release(root, "c", { "c.js": "C" }, "C shell");
+    const renameNoReplaceHelper = nativeRenameHelper(root);
+    publishAndExportStaticRelease({
+      stateRoot: state,
+      candidateRoot: a,
+      outputRoot: logicalOutput,
+      generationRoot,
+      destinationRoot: join(root, "archive-a"),
+      renameNoReplaceHelper,
+    });
+    publishAndExportStaticRelease({
+      stateRoot: state,
+      candidateRoot: b,
+      outputRoot: logicalOutput,
+      generationRoot,
+      destinationRoot: join(root, "archive-b"),
+      renameNoReplaceHelper,
+    });
+    publishAndExportStaticRelease({
+      stateRoot: state,
+      candidateRoot: c,
+      outputRoot: logicalOutput,
+      generationRoot,
+      destinationRoot: join(root, "archive-c"),
+      renameNoReplaceHelper,
+    });
+    const generations = readdirSync(generationRoot).filter((name) => name.startsWith("site-"));
+    assert.equal(generations.length, 2);
+    assert.match(readFileSync(join(root, "archive-a", "index.html"), "utf8"), /A shell/);
+    assert.match(readFileSync(join(root, "archive-b", "index.html"), "utf8"), /B shell/);
+    assert.match(readFileSync(join(root, "archive-c", "index.html"), "utf8"), /C shell/);
+    assert.match(currentShell(state), /C shell/);
+  });
+});
+
+test("terminal retry revalidates every mutable authority after A0 under the lock", () => {
+  for (const drift of [
+    "candidate",
+    "output",
+    "destination",
+    "destination-inode",
+    "current",
+    "ledger",
+    "release",
+    "receipt",
+  ]) {
+    withFixture((root) => {
+      const state = join(root, "state");
+      const output = join(root, "publish");
+      const destination = join(root, "archive");
+      const candidate = release(root, "candidate", { "a.js": "A" }, "A shell");
+      const renameNoReplaceHelper = nativeRenameHelper(root);
+      assert.throws(
+        () =>
+          publishAndExportStaticRelease({
+            stateRoot: state,
+            candidateRoot: candidate,
+            outputRoot: output,
+            destinationRoot: destination,
+            renameNoReplaceHelper,
+            faultAt: "durability:unlink-publish-pending",
+          }),
+        /fault injection/i,
+      );
+      assert.throws(
+        () =>
+          publishAndExportStaticRelease({
+            stateRoot: state,
+            candidateRoot: candidate,
+            outputRoot: output,
+            destinationRoot: destination,
+            renameNoReplaceHelper,
+            onAfterReadOnlyAdmission: () => {
+              if (drift === "candidate") writeFileSync(join(candidate, "index.html"), "drift");
+              if (drift === "output") writeFileSync(join(output, "index.html"), "drift");
+              if (drift === "destination") writeFileSync(join(destination, "index.html"), "drift");
+              if (drift === "destination-inode") {
+                const oldDestination = join(root, "old-archive");
+                renameSync(destination, oldDestination);
+                cpSync(oldDestination, destination, { recursive: true });
+              }
+              if (drift === "current") {
+                unlinkSync(join(state, "current"));
+                symlinkSync(`releases/${"0".repeat(64)}`, join(state, "current"));
+              }
+              if (drift === "ledger") writeFileSync(join(state, "retained-assets.json"), "[]\n");
+              if (drift === "release") {
+                const releaseId = readlinkSync(join(state, "current")).split("/").at(-1);
+                writeFileSync(join(state, "releases", releaseId, "index.html"), "drift");
+              }
+              if (drift === "receipt") {
+                const receipt = readdirSync(state).find((name) =>
+                  name.startsWith("export-receipt-"),
+                );
+                writeFileSync(join(state, receipt), '{"foreign":true}\n');
+              }
+            },
+          }),
+        /changed between read-only|without exact transaction authority|dangling|retained asset|release/i,
+      );
+    });
+  }
+});
+
+test("terminal retry remains bound to the pinned legacy pointer under the lock", () => {
+  withFixture((root) => {
+    const state = join(root, "state");
+    const output = join(root, "publish");
+    const destination = join(root, "archive");
+    const candidate = release(root, "candidate", { "a.js": "A" }, "A shell");
+    const handoff = join(root, "handoff");
+    legacyHandoff(join(handoff, "releases", "one"), "legacy-one", { "legacy.js": "one" });
+    legacyHandoff(join(handoff, "releases", "two"), "legacy-two", { "legacy.js": "one" });
+    symlinkSync("releases/one", join(handoff, "current"));
+    const renameNoReplaceHelper = nativeRenameHelper(root);
+    assert.throws(
+      () =>
+        publishAndExportStaticRelease({
+          stateRoot: state,
+          candidateRoot: candidate,
+          outputRoot: output,
+          destinationRoot: destination,
+          legacyRoot: join(handoff, "current"),
+          renameNoReplaceHelper,
+          faultAt: "durability:unlink-publish-pending",
+        }),
+      /fault injection/i,
+    );
+    assert.throws(
+      () =>
+        publishAndExportStaticRelease({
+          stateRoot: state,
+          candidateRoot: candidate,
+          outputRoot: output,
+          destinationRoot: destination,
+          legacyRoot: join(handoff, "current"),
+          renameNoReplaceHelper,
+          onAfterReadOnlyAdmission: () => {
+            unlinkSync(join(handoff, "current"));
+            symlinkSync("releases/two", join(handoff, "current"));
+          },
+        }),
+      /changed during validation/i,
+    );
   });
 });
 

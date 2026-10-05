@@ -14,6 +14,7 @@ import {
   ftruncateSync,
   fsyncSync,
   linkSync,
+  lchownSync,
   lstatSync,
   mkdirSync,
   openSync,
@@ -46,6 +47,7 @@ const EXECUTION_DOMAIN_SCHEMA_VERSION = 1;
 const EXECUTION_DOMAIN_RECORD = "stage-execution-domain.json";
 const RECLAIM_GUARD = "stage.lock.reclaim";
 const MAX_AUTHORITY_BYTES = 1024 * 1024;
+const EXPORT_OWNER_RECORD = ".cabadrive-export-owner.json";
 const TEST_LOCKS = new Set();
 
 function fail(message) {
@@ -174,6 +176,9 @@ export function createCandidateManifest(candidateRoot) {
   const assets = [];
   const mutable = [];
   for (const entry of all) {
+    if (entry.path === EXPORT_OWNER_RECORD) {
+      fail(`candidate collides with reserved export ownership record: ${entry.path}`);
+    }
     if (entry.path.startsWith("assets/")) {
       assets.push({ ...entry, path: entry.path.slice("assets/".length) });
     } else {
@@ -250,16 +255,24 @@ function requireStableOpenPath(path, label, stat) {
 export function readAuthorityFile(
   path,
   label,
-  { onOpen, onAfterRead, maxBytes = MAX_AUTHORITY_BYTES } = {},
+  { onOpen, onReadChunk, onAfterRead, maxBytes = MAX_AUTHORITY_BYTES } = {},
 ) {
   const { descriptor, stat } = openRegularFileNoFollow(path, label);
   try {
     if (stat.size > maxBytes) fail(`${label} exceeds the authority size limit: ${path}`);
     onOpen?.({ path, stat });
-    const contents = readFileSync(descriptor, "utf8");
-    if (Buffer.byteLength(contents) > maxBytes) {
-      fail(`${label} exceeds the authority size limit: ${path}`);
+    const chunks = [];
+    let total = 0;
+    while (total <= maxBytes) {
+      const buffer = Buffer.allocUnsafe(Math.min(64 * 1024, maxBytes + 1 - total));
+      const count = readSync(descriptor, buffer, 0, buffer.length, null);
+      if (count === 0) break;
+      total += count;
+      onReadChunk?.({ path, count, total });
+      if (total > maxBytes) fail(`${label} exceeds the authority size limit: ${path}`);
+      chunks.push(buffer.subarray(0, count));
     }
+    const contents = Buffer.concat(chunks, total).toString("utf8");
     onAfterRead?.({ path, stat, contents });
     const after = fstatSync(descriptor);
     if (
@@ -1723,6 +1736,92 @@ function outputInventory(root) {
   return walkRegularFiles(root, "static publish output");
 }
 
+function exportedInventory(root) {
+  return outputInventory(root).filter((entry) => entry.path !== EXPORT_OWNER_RECORD);
+}
+
+function exportReceiptPath(state, destination) {
+  return join(
+    state,
+    `export-receipt-${createHash("sha256").update(destination).digest("hex")}.json`,
+  );
+}
+
+function exportProofFor(pending, destination) {
+  return {
+    schemaVersion: SCHEMA_VERSION,
+    nonce: pending.exportNonce,
+    operation: "publish-export",
+    releaseId: pending.releaseId,
+    manifestSha256: pending.manifestSha256,
+    destination,
+  };
+}
+
+function exactExportProof(value, pending, destination) {
+  return JSON.stringify(value) === JSON.stringify(exportProofFor(pending, destination));
+}
+
+function validExportNonce(value) {
+  return typeof value === "string" && /^[a-f0-9-]{36}$/u.test(value);
+}
+
+function destinationOwnership(state, destination, pending, inventory, { terminal = false } = {}) {
+  const entry = noFollowEntry(destination);
+  if (!entry || entry.isSymbolicLink() || !entry.isDirectory()) return false;
+  const proofPath = join(destination, EXPORT_OWNER_RECORD);
+  const proofEntry = noFollowEntry(proofPath);
+  if (!terminal && proofEntry) {
+    if (proofEntry.isSymbolicLink() || !proofEntry.isFile()) return false;
+    return (
+      exactExportProof(readJson(proofPath, "export ownership proof"), pending, destination) &&
+      sameEntries(exportedInventory(destination), inventory)
+    );
+  }
+  if (proofEntry) return false;
+  const receiptPath = exportReceiptPath(state, destination);
+  if (!noFollowEntry(receiptPath)) return false;
+  const receipt = readJson(receiptPath, "export ownership receipt");
+  const current = lstatSync(destination);
+  return (
+    receipt?.schemaVersion === SCHEMA_VERSION &&
+    receipt.operation === "publish-export" &&
+    receipt.destination === destination &&
+    receipt.releaseId === pending.releaseId &&
+    receipt.manifestSha256 === pending.manifestSha256 &&
+    validExportNonce(receipt.nonce) &&
+    (!pending.exportNonce || receipt.nonce === pending.exportNonce) &&
+    receipt.device === String(current.dev) &&
+    receipt.inode === String(current.ino) &&
+    receipt.inventorySha256 === inventoryDigest(inventory) &&
+    sameEntries(exportedInventory(destination), inventory)
+  );
+}
+
+function publishExportReceipt(state, destination, pending, inventory, options) {
+  const stat = lstatSync(destination);
+  const receipt = {
+    ...exportProofFor(pending, destination),
+    device: String(stat.dev),
+    inode: String(stat.ino),
+    inventorySha256: inventoryDigest(inventory),
+  };
+  writeAtomically(
+    state,
+    exportReceiptPath(state, destination),
+    `${JSON.stringify(receipt, null, 2)}\n`,
+    options,
+  );
+  const proofPath = join(destination, EXPORT_OWNER_RECORD);
+  if (noFollowEntry(proofPath)) {
+    const proof = readJson(proofPath, "export ownership proof");
+    if (!exactExportProof(proof, pending, destination)) fail("export ownership proof changed");
+    unlinkSync(proofPath);
+    syncDirectory(destination, options);
+  }
+  syncDirectory(dirname(destination), options);
+}
+
 function currentReleaseId(state) {
   const current = join(state, "current");
   const entry = noFollowEntry(current);
@@ -1777,6 +1876,9 @@ function pendingPublishIdentityMatches(pending, output, release, operation, lega
     exactInventory(pending.inventory) &&
     pending.priorAssetsSha256 === inventoryDigest(pending.priorAssets) &&
     pending.expectedAssetsSha256 === inventoryDigest(pending.expectedAssets) &&
+    (operation === "publish-export"
+      ? validExportNonce(pending.exportNonce)
+      : pending.exportNonce === null) &&
     JSON.stringify(pending.legacy) === JSON.stringify(legacyRequest(legacyValidation))
   );
 }
@@ -1954,6 +2056,53 @@ function syncTree(root, options) {
       else fail(`static publish output has non-regular entry: ${path}`);
     }
     syncDirectory(directory, options);
+  };
+  visit(root);
+}
+
+function handBackTreeOwnership(root, ownerUid, ownerGid, options) {
+  if (ownerUid === undefined && ownerGid === undefined) return;
+  if (
+    !Number.isSafeInteger(ownerUid) ||
+    ownerUid < 0 ||
+    !Number.isSafeInteger(ownerGid) ||
+    ownerGid < 0
+  ) {
+    fail("export owner uid/gid must be safe non-negative integers");
+  }
+  const virtualizedDockerOwnership = (() => {
+    try {
+      return /linuxkit/iu.test(readFileSync("/proc/version", "utf8"));
+    } catch {
+      return false;
+    }
+  })();
+  const visit = (path) => {
+    const before = lstatSync(path);
+    if (before.isSymbolicLink() || (!before.isDirectory() && !before.isFile())) {
+      fail(`export ownership handoff found unsafe entry: ${path}`);
+    }
+    if (before.isDirectory()) {
+      for (const name of requireDirectoryNames(path).sort(ordinal)) visit(join(path, name));
+    }
+    lchownSync(path, ownerUid, ownerGid);
+    const after = lstatSync(path);
+    const ownershipMatches = after.uid === ownerUid && after.gid === ownerGid;
+    const ownershipIsOpaque =
+      virtualizedDockerOwnership &&
+      before.uid === 0 &&
+      before.gid === 0 &&
+      after.uid === before.uid &&
+      after.gid === before.gid;
+    if (
+      after.dev !== before.dev ||
+      after.ino !== before.ino ||
+      (!ownershipMatches && !ownershipIsOpaque)
+    ) {
+      fail(`export ownership handoff changed identity or ownership: ${path}`);
+    }
+    if (after.isFile()) syncFile(path, options);
+    else syncDirectory(path, options);
   };
   visit(root);
 }
@@ -2160,14 +2309,25 @@ function inspectPublishAdmission({
     if (destinationEntry.isSymbolicLink() || !destinationEntry.isDirectory()) {
       fail("static export destination already exists without exact transaction authority");
     }
-    const destinationInventory = outputInventory(destination);
     const journalOwned =
       pending &&
       published &&
       ["output-durable", "export-durable"].includes(pending.phase) &&
-      sameEntries(destinationInventory, published.inventory);
+      destinationOwnership(state, destination, pending, published.inventory);
     const terminalDestination =
-      terminal && published && sameEntries(destinationInventory, published.inventory);
+      terminal &&
+      published &&
+      destinationOwnership(
+        state,
+        destination,
+        {
+          releaseId: release.releaseId,
+          manifestSha256: manifestDigest(release),
+          exportNonce: null,
+        },
+        published.inventory,
+        { terminal: true },
+      );
     if (!journalOwned && !terminalDestination) {
       fail("static export destination already exists without exact transaction authority");
     }
@@ -2216,13 +2376,7 @@ function assertJournalOwnedArtifacts({
     fail("static publish serving output changed before transaction boundary");
   }
   if (operation === "publish-export") {
-    const destinationEntry = noFollowEntry(destination);
-    if (
-      !destinationEntry ||
-      destinationEntry.isSymbolicLink() ||
-      !destinationEntry.isDirectory() ||
-      !sameEntries(outputInventory(destination), published.inventory)
-    ) {
+    if (!destinationOwnership(state, destination, pending, published.inventory)) {
       fail("static export destination changed before transaction boundary");
     }
   }
@@ -2288,6 +2442,29 @@ function publishOutputNoReplace({ temporary, output, pending, options }) {
     throw error;
   }
   invokeDurability(options, "rename-output", output);
+}
+
+function retireOldPublishGenerations(generationRoot, logicalOutput, activeOutput, options) {
+  if (!generationRoot) return;
+  const root = realpathSync(generationRoot);
+  const prefix = `${basename(logicalOutput)}-`;
+  const candidates = requireDirectoryNames(root)
+    .filter((name) => name.startsWith(prefix))
+    .map((name) => join(root, name))
+    .filter((path) => noFollowEntry(path)?.isSymbolicLink())
+    .sort((left, right) => lstatSync(right).mtimeMs - lstatSync(left).mtimeMs);
+  const protectedPaths = new Set([activeOutput]);
+  const rollback = candidates.find((path) => path !== activeOutput);
+  if (rollback) protectedPaths.add(rollback);
+  for (const output of candidates) {
+    if (protectedPaths.has(output)) continue;
+    const directory = exactPublishedOutputDirectory(root, output);
+    if (!directory) fail(`old publish generation is not safely contained: ${output}`);
+    unlinkSync(output);
+    syncDirectory(root, options);
+    rmSync(directory, { recursive: true, force: false });
+    syncDirectory(root, options);
+  }
 }
 
 // Publication deliberately happens before state activation.  The journal turns
@@ -2586,6 +2763,7 @@ export function buildStaticPublish({
         expectedAssets,
         inventory,
         destination,
+        exportNonce: operation === "publish-export" ? randomUUID() : null,
         legacy: legacyRequest(legacyValidation),
       };
       writeAtomically(
@@ -2715,10 +2893,11 @@ export function exportStaticPublish({
       exactPending &&
       existingDestination.isDirectory() &&
       !existingDestination.isSymbolicLink() &&
-      sameEntries(outputInventory(destination), inventory)
+      destinationOwnership(state, destination, pending, inventory)
     ) {
       syncTree(destination, options);
       syncDirectory(dirname(destination), options);
+      publishExportReceipt(state, destination, pending, inventory, options || {});
       if (exactPending && pending.phase === "output-durable") {
         fault(options || {}, "after-export-parent-fsync-before-phase");
         advancePendingPublishPhase(state, pending, "export-durable", options || {});
@@ -2747,6 +2926,19 @@ export function exportStaticPublish({
         temporary,
       );
     }
+    if (exactPending) {
+      const proofPath = join(temporary, EXPORT_OWNER_RECORD);
+      writeFileSync(
+        proofPath,
+        `${JSON.stringify(exportProofFor(pending, destination), null, 2)}\n`,
+        {
+          flag: "wx",
+          mode: 0o600,
+        },
+      );
+      syncFile(proofPath, options);
+    }
+    handBackTreeOwnership(temporary, options?.ownerUid, options?.ownerGid, options);
     syncTree(temporary, options);
     syncDirectory(destinationParent, options);
     options?.onBeforeExportPublish?.({ temporary, destination });
@@ -2755,6 +2947,7 @@ export function exportStaticPublish({
     invokeDurability(options, "export-rename", destination);
     syncDirectory(destinationParent, options);
     if (exactPending) {
+      publishExportReceipt(state, destination, pending, inventory, options || {});
       fault(options || {}, "after-export-parent-fsync-before-phase");
       advancePendingPublishPhase(state, pending, "export-durable", options || {});
       fault(options || {}, "after-export");
@@ -2780,7 +2973,13 @@ export function publishAndExportStaticRelease(options) {
   }
   const candidateRoot = realpathSync(options.candidateRoot);
   const manifest = createCandidateManifest(candidateRoot);
-  const output = resolve(options.outputRoot);
+  const logicalOutput = resolve(options.outputRoot);
+  const output = options.generationRoot
+    ? join(
+        assertAdmissionDirectory(resolve(options.generationRoot), "publish generation root"),
+        `${basename(logicalOutput)}-${manifest.releaseId}`,
+      )
+    : logicalOutput;
   const destination = resolve(options.destinationRoot);
   const suppliedLegacyRoot = options.legacyRoot ? resolve(options.legacyRoot) : undefined;
   const legacyValidation = suppliedLegacyRoot
@@ -2810,6 +3009,8 @@ export function publishAndExportStaticRelease(options) {
     onDurabilityOperation: options.onDurabilityOperation,
     renameNoReplaceHelper: options.renameNoReplaceHelper,
     onBeforeExportPublish: options.onBeforeExportPublish,
+    ownerUid: options.ownerUid,
+    ownerGid: options.ownerGid,
   };
   const unlock = acquireLock(state, {
     projectKey: options.projectKey,
@@ -2817,6 +3018,15 @@ export function publishAndExportStaticRelease(options) {
     diagnosticHost: options.diagnosticHost,
   });
   try {
+    const lockedManifest = createCandidateManifest(candidateRoot);
+    if (
+      lockedManifest.releaseId !== manifest.releaseId ||
+      !sameEntries(lockedManifest.assets, manifest.assets) ||
+      !sameEntries(lockedManifest.mutable, manifest.mutable)
+    ) {
+      fail("candidate changed between read-only and locked admission");
+    }
+    legacyValidation?.revalidate?.();
     const lockedAdmission = inspectPublishAdmission({ ...admissionRequest, stateRoot: state });
     if (lockedAdmission.terminal) {
       syncTree(lockedAdmission.published.directory, transactionOptions);
@@ -2824,10 +3034,17 @@ export function publishAndExportStaticRelease(options) {
       syncTree(destination, transactionOptions);
       syncDirectory(dirname(destination), transactionOptions);
       syncDirectory(state, transactionOptions);
+      retireOldPublishGenerations(
+        options.generationRoot,
+        logicalOutput,
+        output,
+        transactionOptions,
+      );
       return { changed: false, releaseId: manifest.releaseId, manifest };
     }
     const published = buildStaticPublish({
       ...options,
+      outputRoot: output,
       stateRoot: state,
       validatedLegacy: legacyValidation,
       deferActivation: true,
@@ -2835,6 +3052,7 @@ export function publishAndExportStaticRelease(options) {
     });
     const exported = exportStaticPublish({
       ...options,
+      outputRoot: output,
       stateRoot: state,
       validatedLegacy: legacyValidation,
       allowPending: true,
@@ -2879,6 +3097,7 @@ export function publishAndExportStaticRelease(options) {
     assertJournalOwnedArtifacts({ ...boundary, committed: true });
     fault(transactionOptions, "before-publish-journal-clear");
     clearPendingPublish(state, transactionOptions);
+    retireOldPublishGenerations(options.generationRoot, logicalOutput, output, transactionOptions);
     return exported;
   } finally {
     unlock();
@@ -2896,6 +3115,14 @@ function parseCli(argv) {
   return { command, values };
 }
 
+function parseOwnerId(value, label) {
+  if (value === undefined) return undefined;
+  if (!/^(0|[1-9][0-9]*)$/.test(value)) fail(`${label} must be a numeric host identity`);
+  const parsed = Number(value);
+  if (!Number.isSafeInteger(parsed)) fail(`${label} must be a safe integer host identity`);
+  return parsed;
+}
+
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   const { command, values } = parseCli(process.argv.slice(2));
   const options = {
@@ -2903,6 +3130,9 @@ if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.ur
     candidateRoot: values.candidate,
     legacyRoot: values.legacy,
     faultAt: values.fault,
+    generationRoot: values["generation-root"],
+    ownerUid: parseOwnerId(values["owner-uid"], "--owner-uid"),
+    ownerGid: parseOwnerId(values["owner-gid"], "--owner-gid"),
   };
   const result =
     command === "stage"

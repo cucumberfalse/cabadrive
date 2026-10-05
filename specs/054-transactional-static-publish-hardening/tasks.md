@@ -8,11 +8,12 @@
 - Contributing PR: #217.
 - Delivery: one bounded stacked implementation slice under the documented PR-only fallback.
 - Parallel preservation: F052 post-limit evidence, Analyst-owned intake, sibling work, and external PR/branch state must remain untouched outside explicit assignment.
-- F054 Architect return count: `2 / 10`.
+- F054 Architect return count: `3 / 10`.
 - F054 Analyst return count: `0 / 5`.
-- Effective content head: pending return #2 implementation, review, and renewed
-  role validation. The prior validated head
-  `f3f925c883b94327876a9f7c053917afdb56f777` is historical only.
+- Effective content head: pending consolidated return #3 implementation,
+  exact-head review, and renewed role validation. Current reviewed technical
+  head `25bc5e7b56ac3bbf19643538103b8bc339d497be` and prior validated head
+  `f3f925c883b94327876a9f7c053917afdb56f777` are historical only.
 
 ## Setup And Test-First Tasks
 
@@ -170,15 +171,15 @@
   kind as specified below. Each negative case proves no unauthorized state,
   lock, journal, retained asset, current change, output, destination, or
   external/sibling mutation; each exact retry proves convergence.
-- [ ] **T054-027 — Renew all gates once.** Run focused authority/admission/
-  transaction tests, complete staging and combined contracts, full preflight,
-  isolated two-invocation Docker lifecycle, scope/memory guards, and one
-  exact-head bounded Review covering all 13 threads. Resolve the complete
-  paginated thread set, establish a new effective head, then repeat final
+- [ ] **T054-027 — Renew all gates once after return #3.** Run focused authority/
+  admission/transaction/wrapper/ownership tests, complete staging and combined
+  contracts, full preflight, isolated sequential-release Docker lifecycle,
+  root/unprivileged cleanup control, scope/memory guards, and one exact-head
+  bounded Review covering return #2 plus the complete return #3 package. Resolve
+  the paginated thread set, establish a new effective head, then repeat final
   Architect followed by Analyst validation before current-head finalization.
-  Implementation-owned gates passed at `2026-10-05T12:33:06Z`; exact-head
-  Review, thread resolution, effective-head recording, and ordered role
-  validation remain Orchestrator-owned follow-up after this commit.
+  The implementation-owned return-#2 gates at `2026-10-05T12:33:06Z` are
+  historical and must not be run as a separate finalization cycle.
 
 ### Deterministic return-#2 matrix
 
@@ -212,19 +213,139 @@
   assets, collision rejection, Compose provenance, security lock graph,
   service-worker/cache behavior, and external/sibling sentinels remain green.
 
+## Architect Return #3 — Ownership, Generation, And Terminal Revalidation
+
+- Disposition recorded at `2026-10-05T16:17:33Z` after terminal review and
+  native CI on head `25bc5e7b56ac3bbf19643538103b8bc339d497be`.
+  The six technical items below are accepted as one cohesive package layered
+  onto the shared return-#2 state machine; no serial per-thread return is
+  authorized.
+- `r4185040287`: accept. Byte-identical destination contents do not prove that
+  the transaction created the visible directory. Exact destination retry must
+  require a journal-bound unpredictable ownership nonce/proof written and made
+  durable before publication; a foreign identical directory remains foreign.
+- `r4185040118` and duplicate `r4184197126`: accept as one finding. A fixed
+  persistent `/publish/cabadrive-static-publish` path is valid for only one
+  generation and blocks B-after-A export in the same Compose project. Use an
+  immutable release/transaction generation path under the persistent publish
+  root, bind it in the journal, and retire old generations only after the new
+  committed tuple is authoritative.
+- `r4186166731`: accept. Read-only A0 checks cannot authorize terminal success.
+  The committed-terminal retry must reread/revalidate candidate, pinned legacy,
+  serving output, physical destination, current, retained ledger, release tuple,
+  ownership proof, and operation identity under the acquired A1 lock before
+  repeating durability or reporting success.
+- `r4186166813`: accept. An initial `fstat.size` plus unbounded `readFileSync`
+  does not impose a hard limit when the inode grows concurrently. Authority
+  content must be read in bounded chunks with an absolute `maxBytes + 1` stop,
+  followed by the existing stability/path-identity checks.
+- `r4180198863`: accept. The host wrapper must resolve the project and classify
+  the existing handoff `current` with no-follow semantics before capture can
+  replace it. A present wrong-type entry fails unchanged; an absent/symlink
+  case may proceed, and capture plus the stager must revalidate authoritative
+  state against races.
+- Docker CI cleanup failure: accept as a delivery blocker. Root-created files
+  in a bind-mounted export must be deterministically handed back to the invoking
+  host UID/GID, or cleaned by an equivalently bounded container-owned cleanup,
+  while preserving production file modes, no-follow rules, durability, and
+  fail-closed behavior.
+- `r4184197134`: process-only. It adds no implementation task; reply/resolve it
+  only after the renewed exact-head review and ordered Architect/Analyst
+  validation evidence exists.
+
+### Return-#3 protocol refinements
+
+- The journal generates and binds a cryptographically unpredictable export
+  ownership nonce before destination publication. The temporary destination
+  carries a reserved, regular, no-follow ownership record containing that nonce
+  and exact operation/candidate/destination identity; it is fsynced with the
+  tree. After no-replace publication, a durable state-side receipt binds the
+  nonce, destination path/device/inode, and inventory before the internal record
+  is removed and the destination is resynced. Recovery accepts either the exact
+  pre-receipt internal proof or the exact post-receipt identity, never inventory
+  equality alone. User content may not collide with the reserved record, and
+  the final exported site does not retain internal transaction metadata.
+- The persistent publish mount is a namespace, not one output directory. Each
+  candidate/transaction uses an immutable contained generation path bound by
+  the journal. Exact retry reuses only that generation; a later release uses a
+  different generation even in the same Compose project. Cleanup is
+  post-commit, contained, no-follow, and cannot delete the active, journal-
+  referenced, or prior rollback generation.
+- A0 remains read-only screening. Every path that can return committed-terminal
+  success enters A1, holds the project lock, then performs the same full
+  candidate/legacy/output/destination/current/ledger/release/proof revalidation
+  as activation/clear. Drift between A0 and A1 fails without durability claims
+  or mutation.
+- `readAuthorityFile` uses fixed-size descriptor reads and stops as soon as
+  cumulative bytes exceed the configured maximum. It never allocates or reads
+  the remainder of a growing inode; close and stability checks remain mandatory
+  on success and failure.
+- Wrapper order is: resolve project read-only; no-follow classify `current` as
+  absent or symlink and reject every present non-symlink unchanged; capture;
+  rebuild/pin legacy arguments; then rely on the stager's authoritative locked
+  revalidation. The wrapper classification is an early mutation barrier, not a
+  replacement for stager authority.
+- For a host bind export, the wrapper supplies validated numeric host UID/GID.
+  The stager applies ownership to the completed temporary export without
+  following links, preserves declared modes, verifies ownership, and syncs the
+  metadata before no-replace publication. If safe ownership handoff is
+  unavailable, publication fails before activation. Test teardown remains
+  scoped and must succeed for both unprivileged-host and root-container paths.
+
+### Single cohesive return-#3 implementation package
+
+- [x] **T054-028 — Bind destination ownership proof.** Add the reserved durable
+  nonce record, state-side identity receipt, and journal fields; require exact
+  proof for visible destination retry and committed-terminal recovery, then
+  remove internal metadata only after the receipt is durable. Reject foreign
+  byte-identical trees, proof collision, missing/malformed/wrong-type proof,
+  changed nonce/inode, and proof replacement without mutating A/state/output/
+  destination.
+- [x] **T054-029 — Use immutable persistent generations.** Derive a contained
+  release/transaction generation path under `/publish`, journal it, update the
+  wrapper/coordinator interfaces, and perform safe post-commit generation
+  retirement. Prove two different releases export sequentially in the same
+  Compose project and exact retry still selects its original generation.
+- [x] **T054-030 — Revalidate every terminal authority under lock.** Consolidate
+  committed-terminal, activation-ready, and pre-clear validation on one locked
+  helper covering candidate, legacy, output generation, destination/proof,
+  current, ledger, release tuple, operation, and journal. Inject A0-to-A1 drift
+  independently for each authority and require fail-closed behavior.
+- [x] **T054-031 — Enforce a hard streaming authority bound.** Replace unbounded
+  descriptor reads with a capped chunk loop. Deterministically grow the same
+  inode beyond the limit after initial `fstat`; prove prompt bounded rejection,
+  bounded allocation/read count, stable close, and no downstream mutation.
+- [x] **T054-032 — Guard handoff current before capture.** Reorder the wrapper to
+  resolve/classify before capture, add regular-file/directory/FIFO/symlink and
+  replacement controls, and prove a wrong-type `current` is byte-for-byte
+  unchanged with capture/Docker never invoked while valid absence/symlink flows
+  retain later stager revalidation.
+- [x] **T054-033 — Make export ownership and cleanup deterministic.** Carry
+  validated host UID/GID through the Docker wrapper, normalize the complete
+  temporary export no-follow before publication, preserve modes/durability, and
+  add unprivileged-host deletion plus root-container cleanup regressions. Do not
+  broaden permissions or use recursive host deletion as a workaround.
+- [x] **T054-034 — Run the unified return-#3 regression matrix.** Cover foreign-
+  identical destination rejection and exact nonce retry; sequential A/B
+  releases in one Compose project; committed-terminal candidate/legacy/output/
+  destination/proof drift under lock; concurrent authority growth beyond the
+  hard limit; pre-capture wrong-type `current`; unprivileged and root cleanup;
+  and all unchanged return-#2 admission/crash/retry/preservation controls. Then
+  hand the complete package to T054-027 for one review/validation cycle.
+
 ## Verification And Review Tasks
 
 - [x] **T054-010 — Run focused verification.** Focused authority/transaction/wrapper controls and combined export/capture/staging/static-host contracts passed; exact counts are recorded below.
 - [x] **T054-011 — Run repository guards and full preflight.** Shell syntax, format, quality-fast, feature-memory/repository gates, `git diff --check`, and the renewed full `pnpm run preflight` passed on return #1 content; preflight completed 655/655 Node tests, the production/service-worker build, and 158/158 Playwright tests.
 - [x] **T054-012 — Run isolated real Docker validation.** `pnpm run test:docker-retention` passed the renewed clean and legacy update/export lifecycle with unique project `cabadrive-retention-10658-1791164306953` and scoped teardown.
 - [x] **T054-013 — Audit scope and evidence.** The diff is limited to the assigned coordinator/authority code, direct tests, two deployment-doc sections, F052 disposition, and complete F054 memory; no unrelated product or sibling state changed.
-- [x] **T054-014 — Obtain exact-head bounded review.** Exact-head bounded Review passed on `f3f925c883b94327876a9f7c053917afdb56f777` with no finding; this completed evidence is historical after the consolidated return #2 findings, whose renewed review is T054-027.
+- [x] **T054-014 — Obtain exact-head bounded review.** Exact-head bounded Review passed on `f3f925c883b94327876a9f7c053917afdb56f777` with no finding; this completed evidence is historical after consolidated returns #2/#3, whose one renewed review is T054-027.
 
 ## Final Validation And Merge Tasks
 
-- [x] **T054-015 — Establish renewed effective content head.** Historical effective head `f3f925c883b94327876a9f7c053917afdb56f777` included the then-complete cycle; return #2 requires a new effective head through T054-027.
-- [x] **T054-016 — Complete final Architect validation.** Architect passed the historical head at `2026-10-05T01:43:29Z`; return #2 makes that pass stale for merge authority. F054 is now at `2 / 10`, while F052 remains closed/escalated at `10 / 10`.
-- [x] **T054-017 — Complete later Analyst validation.** Analyst passed the historical head at `2026-10-05T01:46:00Z`, return count `0 / 5`; return #2 makes that pass stale and T054-027 requires renewed ordered role validation.
+- [x] **T054-015 — Establish renewed effective content head.** Historical effective head `f3f925c883b94327876a9f7c053917afdb56f777` included the then-complete cycle; returns #2/#3 require a new effective head through T054-027.
+- [x] **T054-016 — Complete final Architect validation.** Architect passed the historical head at `2026-10-05T01:43:29Z`; returns #2/#3 make that pass stale for merge authority. F054 is now at `3 / 10`, while F052 remains closed/escalated at `10 / 10`.
+- [x] **T054-017 — Complete later Analyst validation.** Analyst passed the historical head at `2026-10-05T01:46:00Z`, return count `0 / 5`; returns #2/#3 make that pass stale and T054-027 requires renewed ordered role validation.
 - [ ] **T054-018 — Run current-head guard and finalize PR #217.** Prove every later commit evidence-only, recheck all required checks/review threads/conflicts/feedback/process memory, run expected-head conservative finalization, and merge only when blocker-free.
 - [ ] **T054-019 — Preserve downstream order.** Only after verified PR #217 merge may Orchestrator synchronize PR #215 to resulting `main`, rerun affected tests/review, and repeat its required validations.
 
@@ -244,7 +365,16 @@
 - **D054-003 — extend, do not replace.** Reuse the existing lock, journal, unique siblings, no-replace publication, sync, and rollback primitives.
 - **D054-004 — descriptor-bound marker.** Path classification followed by pathname read is insufficient; the same no-follow descriptor is typed and read.
 - **D054-005 — stager owns authoritative current classification.** Shell triage may construct arguments, but the mutating boundary pins and validates the exact symlink target.
-- **Dead ends:** none at planning time.
+- **D054-006 — verify ownership according to the filesystem contract.** Native
+  Linux requires exact UID/GID observation after no-follow `lchown`. LinuxKit
+  bind mounts report unchanged container-root ownership even when the host owns
+  the entry, so only that runtime accepts stable unchanged `0:0` identity and
+  the real lifecycle proves the completed trees are removable by the invoking
+  unprivileged host user.
+- **Dead ends:** the first return-#3 Docker lifecycle correctly failed closed on
+  LinuxKit's opaque bind ownership reporting. Treating that report as native
+  Linux ownership was rejected; the runtime-scoped fallback above preserves
+  strict native behavior and supplies host-side cleanup evidence.
 
 ## Implementation Agent Feedback
 
@@ -253,17 +383,18 @@ Architect-defined one-lock/existing-journal design without scope divergence.
 
 ## Known Issues
 
-The implementation and deterministic verification for all 13 accepted threads
-are complete through T054-026. T054-027 remains blocked only on the required
-post-commit exact-head Review, thread resolution, and renewed ordered role
-validation; these are process gates, not accepted product issues.
-No unrelated accepted known issue is recorded.
+The consolidated return-#3 technical and CI blockers are implemented and
+locally verified. T054-027 exact-head review/thread resolution and renewed
+ordered role validation remain pending Orchestrator work, so merge authority is
+not yet established. Process-only `r4184197134` awaits that renewed validation
+evidence and adds no product task. No unrelated accepted known issue is
+recorded.
 
 ## Cycle PR Set
 
 | Purpose | Branch | PR | Stacked base | Current/final head | Status | Final-validation inclusion |
 |---|---|---|---|---|---|---|
-| F054 transactional publish/handoff hardening within combined F051/F052/F053/F054 delivery | `codex/051-asset-retention` | #217 | `5e5f4ef40336fc7bff2c400b6301d99fbc9479c1` | Pending return #2 implementation commit; parent `7ffc307e4b52185bb2375ca10c630f35b594fdc9` | Consolidated 13-thread implementation and local gates complete; exact-head review/renewed role validation pending | Required |
+| F054 transactional publish/handoff hardening within combined F051/F052/F053/F054 delivery | `codex/051-asset-retention` | #217 | `5e5f4ef40336fc7bff2c400b6301d99fbc9479c1` | Return #3 implementation commit pending; reviewed technical head `25bc5e7b56ac3bbf19643538103b8bc339d497be` is historical | Consolidated return #3 implementation and local verification complete; exact-head review/thread resolution and renewed role validation pending through T054-027 | Required |
 
 ## Verification Evidence
 
@@ -325,7 +456,36 @@ No unrelated accepted known issue is recorded.
   persistent state and `/publish` volumes, and scoped teardown.
 - T054-021 through T054-026 are complete. T054-027 exact-head bounded Review,
   thread resolution, effective-head recording, and renewed Architect-then-
-  Analyst validation remain pending after the implementation commit.
+  Analyst validation were not reached because terminal review/native CI
+  produced the consolidated return #3 package. Their results are historical
+  and T054-027 now follows T054-028 through T054-034.
+
+### Return #3 evidence status
+
+- Terminal review/native CI produced exactly the six technical/CI items in the
+  return-#3 disposition; duplicate `r4184197126` is grouped with
+  `r4185040118`, and process-only `r4184197134` creates no implementation work.
+- Implementation completed at `2026-10-05T18:53:20Z`: unpredictable
+  journal-bound destination proofs and durable inode receipts, immutable
+  release generations with safe post-commit retirement, locked terminal
+  revalidation, hard chunked authority reads, pre-capture current
+  classification, and no-follow host ownership handback are present.
+- Focused proof collision/type/nonce, inode/candidate/legacy/output/destination/
+  current/ledger/release/receipt drift, concurrent growth, wrapper capture-race,
+  sequential generation, and cleanup controls passed. The final combined
+  capture/staging/static-host contract passed `113 / 113`; `quality:fast`, shell
+  syntax, and formatting passed.
+- Full `pnpm run preflight` passed `669 / 669` Node tests, production and
+  service-worker builds, and `158 / 158` Playwright tests.
+- Isolated real Docker lifecycle passed as
+  `cabadrive-retention-55908-1791225949317`: all five separate first-container
+  crash boundaries recovered in fresh containers over persistent state and
+  `/publish`, two different releases published sequentially in the same
+  project, and both host exports were removed unprivileged before scoped volume
+  teardown.
+- All return-#2 and earlier check results remain useful regression baselines but
+  cannot authorize merge until the return-#3 commit receives exact-head review,
+  thread resolution, and renewed ordered role validation through T054-027.
 
 ## Final Architect Validation Notes
 
@@ -354,16 +514,19 @@ No unrelated accepted known issue is recorded.
   `f3f925c883b94327876a9f7c053917afdb56f777`; return #2 supersedes it for merge
   authority.
 
-## Return #2 Validation Staleness
+## Return #3 Validation Staleness
 
-- Prior Architect validation status: stale due accepted return #2.
-- Prior Analyst validation status: stale due accepted return #2.
+- Prior Architect validation status: stale due accepted returns #2 and #3.
+- Prior Analyst validation status: stale due accepted returns #2 and #3.
 - The passes at `2026-10-05T01:43:29Z` and `2026-10-05T01:46:00Z` on
   `f3f925c883b94327876a9f7c053917afdb56f777` are retained as historical
   evidence only and do not authorize merge.
-- F054 Architect return count: `2 / 10`.
-- Architect validated effective content head: pending return #2 implementation,
+- F054 Architect return count: `3 / 10`.
+- Architect validated effective content head: pending return #3 implementation,
   exact-head review, and renewed final validation.
 - Final Analyst validation: pending only after renewed Architect validation.
-- Current-head guard/finalization is blocked until this single consolidated
-  package and ordered role validation are complete.
+- Return-#2 implementation/check evidence and reviewed technical head
+  `25bc5e7b56ac3bbf19643538103b8bc339d497be` are also superseded for merge
+  authority by the consolidated return #3 package.
+- Current-head guard/finalization is blocked until T054-028 through T054-034,
+  T054-027, and renewed ordered role validation are complete.
