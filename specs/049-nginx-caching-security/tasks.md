@@ -351,6 +351,34 @@ Candidate SHA во время локального прогона (до commit):
   CI runtime smoke: `/assets/does-not-exist.js` → `HTTP/… 404` и `! grep cache-control`
   (заголовок Cache-Control отсутствует на miss) — OK.
 - `git diff --check` — clean (нет whitespace/conflict-маркеров).
+- **Latest-main sync для PR #214 (Implementation Agent, 2026-10-06):** ветка
+  `codex/pr214-sync`, отслеживающая `origin/claude/049-nginx-caching-security`,
+  синхронизирована обычным merge (без rebase/history rewrite) с verified
+  `origin/main` `2a92bcfcb7638d1094f33b28e4c2932fb2e4121e`; исходный PR head
+  `f0f3734cb00ee0b728931169ad001ff70e4c38fc`, merge commit
+  `77c2c1aea76e07e32f17549c47f692ed6bab6e76`. Конфликтов не было; merge
+  сохранил обе стороны и принёс только `pnpm-lock.yaml` плюс полную feature memory
+  `specs/050-security-baseline-refresh/` из `main`. `pnpm-lock.yaml` теперь
+  разрешает единственную версию `postcss@8.5.28` (`pnpm why postcss --depth 1` →
+  `postcss@8.5.28` через `vite@6.4.3`), то есть уязвимая `8.5.15` устранена и
+  требование `>=8.5.18` выполнено. `pnpm install --frozen-lockfile` — EXIT 0.
+- **Проверка после sync:** первый sandboxed `pnpm run preflight` дошёл до unit
+  suite и завершился 555/556 из-за единственного ограничения окружения:
+  `listen EPERM: operation not permitted 127.0.0.1` в тесте, который намеренно
+  открывает локальный HTTP-порт. Повторный полный `pnpm run preflight` вне этого
+  loopback-ограничения — **EXIT 0**: feature-memory/repository/content checks,
+  typecheck, lint, format, negative-quality contract, **556/556 unit**, build +
+  service worker (2156 cached assets), **154/154 Playwright e2e**. Это подтверждает
+  объединённое дерево на merge commit до evidence-only правки; после записи этой
+  процессной evidence полный preflight должен быть повторён на точном кандидате к
+  push.
+- **Validation/check expectation после sync:** merge `origin/main` изменил
+  non-evidence content (`pnpm-lock.yaml`), поэтому любые прежние current-head CI/
+  review результаты и любые прежние final-validation выводы считаются stale.
+  Final Architect validation остаётся pending и должна выполняться на новом
+  effective content head только после fresh CI + current-head Review; Final
+  Analyst validation остаётся pending и запускается строго после Architect pass.
+  Implementation Agent эти role-owned validation-маркеры не заполнял.
 - PR URL / head SHA / состояние checks и review threads — ведёт Orchestrator (см.
   `## Cycle PR Set`).
 
