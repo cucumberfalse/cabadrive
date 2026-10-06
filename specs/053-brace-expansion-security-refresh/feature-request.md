@@ -182,6 +182,43 @@ At intake, feature 053 has no separate PR. Its Orchestrator-approved single slic
 
 ## Final Analyst Validation Notes
 
+### Renewed combined-cycle validation after F054 return #5 — 2026-10-06
+
+- Analyst validation pass: passed
+- Final Analyst validation completed at: 2026-10-06T00:41:13Z
+- Analyst validated effective content head: 4a687f788d1eed2e5dae8f3f7397e8ef8c765064
+- Analyst return count: 0 / 5.
+- Combined PR-set coverage: PR #217 on branch `codex/051-asset-retention`
+  contains the complete F051/F052/F053/F054 result through F054 return #5. All
+  behaviorally meaningful content is in the effective head above; later
+  uncommitted changes present during validation are role-owned final-validation
+  evidence only.
+- Customer-intent validation: feature 053 remains satisfied in spirit and
+  letter. Both vulnerable dependency lines remain resolved at
+  `brace-expansion@1.1.21` and `brace-expansion@5.0.12`, without a vulnerable
+  duplicate, manifest override, owner/toolchain movement, unrelated dependency
+  churn, scanner suppression, or workflow weakening. F054 returns #2–#5 remain
+  within the bounded static publish/handoff transaction, recovery, ownership,
+  Docker, direct-test, documentation, and process-memory surfaces.
+- Combined safety evidence: F054 maintains activation-last ordering,
+  no-follow bounded authority reads, exact journal/legacy recovery, inode-bound
+  destination ownership, immutable publish generations, post-durability locked
+  validation, and safe rootful/rootless ownership mapping. Final preflight
+  passed 673/673 Node tests plus production/service-worker builds and 158/158
+  Playwright tests; focused return-#5 contracts passed 80/80; isolated Docker
+  lifecycle `cabadrive-retention-97105-1791246610556` passed; exact-head Review
+  passed and every technical thread is resolved.
+- Process validation: F052 remains closed/escalated at 10/10, F053 remains at
+  Architect return count 0/10, and F054 passes at 5/10; Analyst return count is
+  0/5. No unresolved feedback, finding, accepted known issue, security
+  exception, or customer-intent gap remains. Exact-current-head security and
+  required-check confirmation, thread/conflict inspection, and the
+  evidence-only guard remain mandatory Orchestrator merge gates.
+
+The F054 return-#1 Analyst validation for effective head
+`f3f925c883b94327876a9f7c053917afdb56f777`, and every earlier Analyst marker,
+is historical and superseded for merge authority by this return-#5 validation.
+
 ### Renewed combined-cycle validation after feature 054 — 2026-10-05
 
 - Analyst validation pass: passed

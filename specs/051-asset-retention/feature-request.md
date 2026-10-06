@@ -173,6 +173,53 @@ The known dependent PR is #215 (`codex/049-learning-priority-fresh-update`). It 
 
 ## Final Analyst Validation Notes
 
+### Renewed combined-cycle validation after F054 return #5 — 2026-10-06
+
+- Analyst validation pass: passed
+- Final Analyst validation completed at: 2026-10-06T00:41:13Z
+- Analyst validated effective content head: 4a687f788d1eed2e5dae8f3f7397e8ef8c765064
+- Analyst return count: 0 / 5.
+- Combined PR-set coverage: PR #217 on branch `codex/051-asset-retention`
+  contains the complete F051/F052/F053/F054 delivery through F054 returns
+  #1–#5. All behaviorally meaningful code, tests, documentation, feature
+  memory, review fixes, and dispositions are contained in the effective head
+  above; later uncommitted changes present during this validation are
+  role-owned final-validation evidence only.
+- Customer-intent validation: R051-1 through R051-8 remain satisfied in spirit
+  and letter. B activates only after exact serving output and physical export
+  authority are durable; every authority read, recovery path, destination
+  ownership proof, release generation, and terminal check fails closed on
+  drift. Immutable A assets, byte collisions, real old-cache-miss continuity,
+  clean and valid-legacy exports, invalid-legacy rejection, destructive
+  negative proof, Docker persistence, and the static-host contract remain
+  preserved.
+- Final F054 hardening validation: transaction scratch/output survives fresh
+  one-shot containers; exact retry is bound to operation, legacy identity,
+  candidate, prior current, retained state, output, destination, journal,
+  ownership nonce, and the actual no-replace-renamed inode. Candidate and all
+  terminal authorities are revalidated under lock after durability work and
+  immediately before activation or journal clear. Immutable generations allow
+  sequential releases, while rootful/rootless ownership mapping uses a stable
+  no-follow probe and preserves unprivileged cleanup without widening modes.
+- Evidence: final preflight passed 673/673 Node tests plus production/service-
+  worker builds and 158/158 Playwright tests. The return-#5 combined focused
+  staging/static-host contract passed 80/80, and isolated Docker lifecycle
+  `cabadrive-retention-97105-1791246610556` passed five fresh-container crash
+  retries, sequential releases, ownership handoff, unprivileged cleanup, and
+  scoped teardown. Exact-head Review passed and all technical threads are
+  resolved.
+- Process and sequencing: F052 remains closed/escalated at Architect return
+  count 10/10, F053 remains 0/10, and F054 passes within its limit at 5/10;
+  Analyst return count remains 0/5. No unresolved task, feedback, finding,
+  accepted known issue, security exception, or customer-intent gap remains.
+  PR #217 still requires the Orchestrator current-head evidence-only guard and
+  merge before PR #215 is synchronized to resulting `main`, retested, reviewed,
+  and independently revalidated as required by R051-8.
+
+The F054 return-#1 Analyst validation for effective head
+`f3f925c883b94327876a9f7c053917afdb56f777`, and every earlier Analyst marker,
+is historical and superseded for merge authority by this return-#5 validation.
+
 ### Renewed combined-cycle validation after feature 054 — 2026-10-05
 
 - Analyst validation pass: passed

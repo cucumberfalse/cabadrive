@@ -449,6 +449,66 @@ validation, the current-head guard, and merge all remain pending.
 
 ## Final Analyst Validation Notes
 
+### Renewed final combined-cycle validation after return #5 — 2026-10-06
+
+- Analyst validation pass: passed
+- Final Analyst validation completed at: 2026-10-06T00:41:13Z
+- Analyst validated effective content head: 4a687f788d1eed2e5dae8f3f7397e8ef8c765064
+- Analyst return count: 0 / 5.
+- Combined PR-set coverage: PR #217 on branch `codex/051-asset-retention`
+  contains the complete F051/F052/F053/F054 delivery, including every F054
+  return #1–#5 task, disposition, regression, and exact-head review result. All
+  behaviorally meaningful content is contained in the effective head above;
+  later uncommitted changes present during this validation are role-owned
+  final-validation evidence only.
+- Customer-intent validation: R054-1 through R054-7 and all required negative
+  scenarios are satisfied in spirit and letter. A remains authoritative until
+  exact serving output and physical export are durably published and their full
+  authority tuple passes a final locked post-durability validation. Marker and
+  handoff authority remain no-follow, bounded, stable, policy-readable, and
+  type-correct; present wrong types and every drift case fail before unsafe
+  mutation or activation.
+- Exact recovery validation: coordinator and standalone operations are
+  distinguished explicitly and bind the pinned legacy identity. Scratch,
+  journal, and immutable output generations persist across fresh one-shot
+  containers. Exact retry requires the unchanged candidate, legacy request,
+  prior current, retained ledger/walk, release tuple, output, destination,
+  operation, ownership nonce/proof/receipt, and actual renamed device/inode.
+  Foreign identical content, stale generations, substituted inodes, concurrent
+  authority growth, post-validation durability races, or tuple drift reject
+  without adoption; unchanged crash retries converge.
+- Ownership and lifecycle validation: physical destination authority is bound
+  to the no-replace-renamed inode, not copied bytes. The wrapper's unique
+  mode-0600 no-follow probe maps the invoking owner correctly under both
+  rootful and rootless/userns Docker; modes are not broadened, and completed
+  exports remain removable by the invoking unprivileged host user. Sequential
+  releases in one Compose project use separate immutable generations and
+  preserve bounded cleanup.
+- Evidence: final preflight passed 673/673 Node tests, production and service-
+  worker builds, and 158/158 Playwright tests. Return-#5 focused staging/static-
+  host contracts passed 80/80. Isolated Docker lifecycle
+  `cabadrive-retention-97105-1791246610556` passed five fresh-container crash
+  retries, persistent sequential releases, safe ownership handoff,
+  unprivileged cleanup, and scoped teardown. Exact-head Review on
+  `4a687f788d1eed2e5dae8f3f7397e8ef8c765064` passed, all technical threads are
+  resolved, and guards are green.
+- Process validation: Final Architect validation passed first at
+  `2026-10-06T00:38:23Z` on this same effective head. F052 remains closed at
+  10/10, F053 remains 0/10, and F054 remains within its bound at 5/10; F054
+  Analyst return count is 0/5. No unresolved Implementation Agent feedback,
+  technical finding, accepted known issue, architectural gap, or customer-
+  intent mismatch remains.
+- Merge sequencing: Orchestrator must now prove the later commit is evidence-
+  only, recheck exact-current-head required checks, review/thread state,
+  conflicts, process memory, and expected head, then merge PR #217. Only after
+  that verified merge may PR #215 be synchronized to resulting `main`, have its
+  affected tests and review rerun, and receive renewed final Architect then
+  Analyst validation before merge.
+
+The Analyst validation for effective head
+`f3f925c883b94327876a9f7c053917afdb56f777` is historical and superseded for
+merge authority by this return-#5 validation.
+
 ### Final combined-cycle validation — 2026-10-05
 
 - Analyst validation pass: passed
