@@ -797,26 +797,57 @@ export function publishLegacyHandoffPointer({
 
 export function verifyLegacyHandoff(legacyRoot, { onMarkerOpen } = {}) {
   try {
-    const root = realpathSync(legacyRoot);
+    const suppliedRoot = resolve(legacyRoot);
+    const root = realpathSync(suppliedRoot);
     assertDirectory(root, "legacy handoff root");
-    const markerPath = join(root, LEGACY_HANDOFF_MARKER);
-    const sourceIdPath = join(root, "source-id");
-    const sourceKindPath = join(root, "source-kind");
-    if (!existsSync(markerPath) || !existsSync(sourceIdPath) || !existsSync(sourceKindPath)) {
-      return { valid: false, reason: "legacy handoff marker is incomplete" };
-    }
-    const marker = readJsonRegularFileNoFollow(markerPath, "legacy handoff marker", {
-      onOpen: onMarkerOpen,
-    });
-    const actual = createLegacyHandoffManifest({
-      legacyRoot: root,
-      sourceId: readRegularFileNoFollow(sourceIdPath, "legacy handoff source-id"),
-      sourceKind: readRegularFileNoFollow(sourceKindPath, "legacy handoff source-kind"),
-    });
-    if (!sameLegacyManifest(marker, actual)) {
-      return { valid: false, reason: "legacy handoff inventory does not match" };
-    }
-    return { valid: true, manifest: actual, root };
+    const rootEntry = lstatSync(root);
+    const inspect = () => {
+      let currentRoot;
+      let currentRootEntry;
+      try {
+        currentRoot = realpathSync(suppliedRoot);
+        currentRootEntry = lstatSync(currentRoot);
+      } catch {
+        fail("legacy handoff root changed during validation");
+      }
+      if (
+        currentRoot !== root ||
+        currentRootEntry.dev !== rootEntry.dev ||
+        currentRootEntry.ino !== rootEntry.ino ||
+        currentRootEntry.isSymbolicLink() ||
+        !currentRootEntry.isDirectory()
+      ) {
+        fail("legacy handoff root changed during validation");
+      }
+      const markerPath = join(root, LEGACY_HANDOFF_MARKER);
+      const sourceIdPath = join(root, "source-id");
+      const sourceKindPath = join(root, "source-kind");
+      if (!existsSync(markerPath) || !existsSync(sourceIdPath) || !existsSync(sourceKindPath)) {
+        fail("legacy handoff marker is incomplete");
+      }
+      const marker = readJsonRegularFileNoFollow(markerPath, "legacy handoff marker", {
+        onOpen: onMarkerOpen,
+      });
+      const actual = createLegacyHandoffManifest({
+        legacyRoot: root,
+        sourceId: readRegularFileNoFollow(sourceIdPath, "legacy handoff source-id"),
+        sourceKind: readRegularFileNoFollow(sourceKindPath, "legacy handoff source-kind"),
+      });
+      if (!sameLegacyManifest(marker, actual)) {
+        fail("legacy handoff inventory does not match");
+      }
+      return actual;
+    };
+    const manifest = inspect();
+    const revalidate = () => {
+      const current = inspect();
+      if (!sameLegacyManifest(manifest, current)) {
+        fail("legacy handoff tuple changed during validation");
+      }
+      return root;
+    };
+    revalidate();
+    return { valid: true, manifest, root, revalidate };
   } catch (error) {
     return {
       valid: false,
@@ -888,6 +919,7 @@ export function pinLegacyHandoffCurrent(legacyCurrent, { onAfterClassify, onAfte
     ) {
       fail("legacy handoff current target changed during validation");
     }
+    verification.revalidate();
     return target;
   };
   revalidate();

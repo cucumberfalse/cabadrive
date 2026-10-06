@@ -92,6 +92,31 @@ function legacyHandoff(root, sourceId, assets) {
   return root;
 }
 
+function mutateLegacyTuple(legacy, mutation) {
+  const marker = join(legacy, ".legacy-handoff.json");
+  const sourceId = join(legacy, "source-id");
+  const sourceKind = join(legacy, "source-kind");
+  const asset = join(legacy, "assets", "legacy.js");
+  if (mutation === "added-asset") {
+    const added = join(legacy, "assets", "added.js");
+    writeFileSync(added, "unlisted");
+    return () => unlinkSync(added);
+  }
+  const target =
+    mutation === "marker"
+      ? marker
+      : mutation === "source-id"
+        ? sourceId
+        : mutation === "source-kind"
+          ? sourceKind
+          : asset;
+  const original = readFileSync(target);
+  if (mutation === "removed-asset") unlinkSync(target);
+  else if (mutation === "marker") writeFileSync(target, "{}\n");
+  else writeFileSync(target, `changed-${mutation}`);
+  return () => writeFileSync(target, original);
+}
+
 function snapshotState(state) {
   const current = readlinkSync(join(state, "current"));
   const releases = Object.fromEntries(
@@ -738,6 +763,134 @@ test("publish-export resumes its exact legacy-aware partial asset promotion", ()
     assert.equal(existsSync(join(state, "publish-pending.json")), false);
     assert.equal(existsSync(join(state, "retained-assets-pending.json")), false);
   });
+});
+
+test("locked admission reruns the complete pinned legacy tuple for every drift class", () => {
+  for (const mutation of [
+    "added-asset",
+    "removed-asset",
+    "modified-asset",
+    "marker",
+    "source-id",
+    "source-kind",
+  ]) {
+    withFixture((root) => {
+      const state = join(root, "state");
+      const output = join(root, "publish");
+      const destination = join(root, "archive");
+      const handoff = join(root, "handoff");
+      const legacy = legacyHandoff(join(handoff, "releases", "legacy-a"), "legacy-a", {
+        "legacy.js": "legacy",
+      });
+      symlinkSync("releases/legacy-a", join(handoff, "current"));
+      const a = release(root, "a", { "a.js": "A" }, "A shell");
+      const b = release(root, "b", { "b.js": "B" }, "B shell");
+      const sibling = join(root, "sibling-sentinel");
+      writeFileSync(sibling, "untouched");
+      stageStaticRelease({ stateRoot: state, candidateRoot: a });
+      const before = snapshotState(state);
+      let restore;
+      assert.throws(
+        () =>
+          publishAndExportStaticRelease({
+            stateRoot: state,
+            candidateRoot: b,
+            outputRoot: output,
+            destinationRoot: destination,
+            legacyRoot: join(handoff, "current"),
+            renameNoReplaceHelper: nativeRenameHelper(root),
+            onAfterReadOnlyAdmission: () => {
+              restore = mutateLegacyTuple(legacy, mutation);
+            },
+          }),
+        /legacy handoff|legacy source/i,
+        mutation,
+      );
+      assert.deepEqual(snapshotState(state), before, mutation);
+      assert.equal(existsSync(output), false, mutation);
+      assert.equal(existsSync(destination), false, mutation);
+      assert.equal(existsSync(join(state, "publish-pending.json")), false, mutation);
+      assert.equal(readFileSync(sibling, "utf8"), "untouched", mutation);
+      restore();
+      assert.doesNotThrow(() =>
+        publishAndExportStaticRelease({
+          stateRoot: state,
+          candidateRoot: b,
+          outputRoot: output,
+          destinationRoot: destination,
+          legacyRoot: join(handoff, "current"),
+          renameNoReplaceHelper: nativeRenameHelper(root),
+        }),
+      );
+      assert.match(currentShell(state), /B shell/, mutation);
+      assert.equal(readFileSync(join(state, "assets", "legacy.js"), "utf8"), "legacy");
+    });
+  }
+});
+
+test("durability-bound legacy drift preserves A and its exact journal until restored retry", () => {
+  for (const boundary of ["recovery-entry", "post-durability"]) {
+    withFixture((root) => {
+      const state = join(root, "state");
+      const output = join(root, "publish");
+      const destination = join(root, "archive");
+      const handoff = join(root, "handoff");
+      const legacy = legacyHandoff(join(handoff, "releases", "legacy-a"), "legacy-a", {
+        "legacy.js": "legacy",
+      });
+      symlinkSync("releases/legacy-a", join(handoff, "current"));
+      const a = release(root, "a", { "a.js": "A" }, "A shell");
+      const b = release(root, "b", { "b.js": "B" }, "B shell");
+      stageStaticRelease({ stateRoot: state, candidateRoot: a });
+      let armed = boundary === "recovery-entry";
+      let restore;
+      assert.throws(
+        () =>
+          publishAndExportStaticRelease({
+            stateRoot: state,
+            candidateRoot: b,
+            outputRoot: output,
+            destinationRoot: destination,
+            legacyRoot: join(handoff, "current"),
+            renameNoReplaceHelper: nativeRenameHelper(root),
+            onBeforeActivationRevalidation: () => {
+              armed = true;
+            },
+            onDurabilityOperation: ({ operation }) => {
+              const atBoundary =
+                boundary === "recovery-entry"
+                  ? operation === "rename-output"
+                  : armed && operation === "fsync-file";
+              if (!restore && atBoundary) {
+                restore = mutateLegacyTuple(
+                  legacy,
+                  boundary === "recovery-entry" ? "modified-asset" : "marker",
+                );
+              }
+            },
+          }),
+        /legacy handoff/i,
+        boundary,
+      );
+      assert.match(currentShell(state), /A shell/, boundary);
+      assert.equal(existsSync(join(state, "publish-pending.json")), true, boundary);
+      const journal = readFileSync(join(state, "publish-pending.json"), "utf8");
+      restore();
+      assert.doesNotThrow(() =>
+        publishAndExportStaticRelease({
+          stateRoot: state,
+          candidateRoot: b,
+          outputRoot: output,
+          destinationRoot: destination,
+          legacyRoot: join(handoff, "current"),
+          renameNoReplaceHelper: nativeRenameHelper(root),
+        }),
+      );
+      assert.match(currentShell(state), /B shell/, boundary);
+      assert.equal(existsSync(join(state, "publish-pending.json")), false, boundary);
+      assert.match(journal, /"legacy"/u, boundary);
+    });
+  }
 });
 
 test("publish admission rejects invalid or raced paths before transaction mutation", () => {

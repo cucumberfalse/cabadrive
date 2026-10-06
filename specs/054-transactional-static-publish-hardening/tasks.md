@@ -8,9 +8,12 @@
 - Contributing PR: #217.
 - Delivery: one bounded stacked implementation slice under the documented PR-only fallback.
 - Parallel preservation: F052 post-limit evidence, Analyst-owned intake, sibling work, and external PR/branch state must remain untouched outside explicit assignment.
-- F054 Architect return count: `5 / 10`.
+- F054 Architect return count: `6 / 10`.
 - F054 Analyst return count: `0 / 5`.
-- Effective content head: `4a687f788d1eed2e5dae8f3f7397e8ef8c765064`.
+- Effective content head: pending return #6 implementation, exact-head review,
+  and renewed ordered role validation. Current head
+  `07ccfbaf098fdf04bfb4d1f83f7464038e8a9cb8` and the previously validated
+  `4a687f788d1eed2e5dae8f3f7397e8ef8c765064` are historical only.
 
 ## Setup And Test-First Tasks
 
@@ -168,17 +171,16 @@
   kind as specified below. Each negative case proves no unauthorized state,
   lock, journal, retained asset, current change, output, destination, or
   external/sibling mutation; each exact retry proves convergence.
-- [x] **T054-027 — Renew all gates once after return #5.** Focused authority/
+- [ ] **T054-027 — Renew all gates once after return #6.** Run focused authority/
   admission/transaction/wrapper/ownership tests, complete staging and combined
   contracts, full preflight, isolated sequential-release Docker lifecycle,
   root/unprivileged cleanup control, scope/memory guards, and one exact-head
-  bounded Review covering returns #2/#3/#4 plus return #5. Resolve
+  bounded Review covering returns #2–#5 plus return #6. Resolve
   the paginated thread set, establish a new effective head, then repeat final
   Architect followed by Analyst validation before current-head finalization.
-  Exact-head Review passed with all technical threads resolved; full preflight,
-  Docker, guards, and final Architect validation are complete on
-  `4a687f788d1eed2e5dae8f3f7397e8ef8c765064`. Final Analyst validation then
-  passed on the same head; earlier gates remain historical.
+  The completed review/validation evidence on
+  `4a687f788d1eed2e5dae8f3f7397e8ef8c765064` is historical after return #6 and
+  must not be reused as current merge authority.
 
 ### Deterministic return-#2 matrix
 
@@ -416,6 +418,38 @@
 - `r4187662934`: process-only. It creates no implementation task and waits for
   renewed exact-head review plus final Architect/Analyst validation evidence.
 
+## Architect Return #6 — Full Pinned Legacy Tuple Revalidation
+
+- Disposition recorded at `2026-10-06T00:44:46Z` for P2 `r4190341948` on
+  `07ccfbaf098fdf04bfb4d1f83f7464038e8a9cb8`. Accepted as one narrow authority-
+  reuse correction.
+- Pointer inode/link target and target-directory identity are necessary but not
+  sufficient. Every reuse of pinned legacy authority must rerun the complete
+  `verifyLegacyHandoff` contract over the same pinned root: no-follow marker,
+  source identity/kind, canonical manifest/inventory, every listed asset's
+  regular-file identity/size/digest, absence of added/unlisted assets, and the
+  pinned pointer/target identity. The newly verified tuple must exactly equal
+  the originally pinned manifest/source tuple.
+- Full tuple revalidation is mandatory at locked A1 admission, recovery entry,
+  before and after output/destination durability walks, immediately before
+  activation, and immediately before journal clear. It may share one helper,
+  but no boundary may downgrade to pointer-only revalidation or reuse cached
+  inventory/digests. Drift fails closed while preserving the exact journaled
+  recovery relation.
+- [x] **T054-039 — Revalidate the complete pinned handoff tuple everywhere.**
+  Upgrade the pinned authority's revalidation callback/helper and route every
+  A1, recovery, pre/post-durability, pre-activation, and pre-clear call through
+  it. Add deterministic hooks after read-only admission and during durability
+  to add an unlisted legacy asset, remove a listed asset, modify listed bytes,
+  and mutate marker/inventory/source metadata while pointer and directory inode
+  remain unchanged. Each case must prove fail-closed behavior, A remains current
+  before activation, no partial output/destination becomes authoritative,
+  journals and external/sibling state remain exact, and restoring the original
+  tuple permits an unchanged retry to converge. Run the unchanged returns #1–#5
+  regression set, then complete T054-027 once for review and renewed validation.
+- Process/validation-only threads remain non-product work and wait for renewed
+  final Architect then Analyst evidence on the new effective head.
+
 ## Verification And Review Tasks
 
 - [x] **T054-010 — Run focused verification.** Focused authority/transaction/wrapper controls and combined export/capture/staging/static-host contracts passed; exact counts are recorded below.
@@ -426,9 +460,9 @@
 
 ## Final Validation And Merge Tasks
 
-- [x] **T054-015 — Establish renewed effective content head.** Effective/current head `4a687f788d1eed2e5dae8f3f7397e8ef8c765064` contains the complete F051/F052/F053/F054 cycle and F054 returns #1–#5.
-- [x] **T054-016 — Complete final Architect validation.** Architect passed the combined cycle at `2026-10-06T00:38:23Z` on `4a687f788d1eed2e5dae8f3f7397e8ef8c765064`; F054 remains within limit at `5 / 10` and F052 remains closed/escalated at `10 / 10`.
-- [x] **T054-017 — Complete later Analyst validation.** After the renewed Architect pass, Analyst passed at `2026-10-06T00:41:13Z`, return count `0 / 5`, against the same effective head `4a687f788d1eed2e5dae8f3f7397e8ef8c765064`.
+- [x] **T054-015 — Establish renewed effective content head.** Historical head `4a687f788d1eed2e5dae8f3f7397e8ef8c765064` contained returns #1–#5; return #6 requires a new effective head through T054-027.
+- [x] **T054-016 — Complete final Architect validation.** Architect passed the historical head at `2026-10-06T00:38:23Z`; return #6 makes that pass stale. F054 is now at `6 / 10` and F052 remains closed/escalated at `10 / 10`.
+- [x] **T054-017 — Complete later Analyst validation.** Analyst passed the historical head at `2026-10-06T00:41:13Z`, return count `0 / 5`; return #6 makes that pass stale and requires renewed ordered role validation through T054-027.
 - [ ] **T054-018 — Run current-head guard and finalize PR #217.** Prove every later commit evidence-only, recheck all required checks/review threads/conflicts/feedback/process memory, run expected-head conservative finalization, and merge only when blocker-free.
 - [ ] **T054-019 — Preserve downstream order.** Only after verified PR #217 merge may Orchestrator synchronize PR #215 to resulting `main`, rerun affected tests/review, and repeat its required validations.
 
@@ -471,16 +505,16 @@ Architect-defined one-lock/existing-journal design without scope divergence.
 
 ## Known Issues
 
-No accepted technical known issue remains. Returns #1–#5 are implemented,
-verified, exact-head reviewed, and all technical threads are resolved.
-Process-only `r4184197134` and `r4187662934` require only ordered final Analyst
-evidence and add no product task.
+Accepted P2 `r4190341948` is implemented and locally verified through T054-039;
+T054-027 exact-head review and renewed validation remain. Returns #1–#5 remain
+implemented regression baselines. Process-only threads add no product task and
+wait renewed ordered validation evidence.
 
 ## Cycle PR Set
 
 | Purpose | Branch | PR | Stacked base | Current/final head | Status | Final-validation inclusion |
 |---|---|---|---|---|---|---|
-| F054 transactional publish/handoff hardening within combined F051/F052/F053/F054 delivery | `codex/051-asset-retention` | #217 | `5e5f4ef40336fc7bff2c400b6301d99fbc9479c1` | `4a687f788d1eed2e5dae8f3f7397e8ef8c765064` effective/current content | Returns #1–#5 implemented; verification, exact-head Review, thread resolution, and ordered Architect/Analyst validation complete; current-head/finalization gates pending | Required |
+| F054 transactional publish/handoff hardening within combined F051/F052/F053/F054 delivery | `codex/051-asset-retention` | #217 | `5e5f4ef40336fc7bff2c400b6301d99fbc9479c1` | Pending return #6 head; `07ccfbaf098fdf04bfb4d1f83f7464038e8a9cb8` under disposition and `4a687f788d1eed2e5dae8f3f7397e8ef8c765064` historical | Returns #1–#5 complete; full pinned legacy tuple return #6 implementation, exact-head review, and renewed role validation pending | Required |
 
 ## Verification Evidence
 
@@ -572,6 +606,29 @@ evidence and add no product task.
 - All return-#2 and earlier check results remain useful regression baselines but
   cannot authorize merge until the return-#3 commit receives exact-head review,
   thread resolution, and renewed ordered role validation through T054-027.
+
+### Return #6 evidence status
+
+- T054-039 completed on `2026-10-06`: pinned legacy revalidation now reruns the
+  entire original root/marker/source/inventory/listed-assets/no-added-assets
+  tuple and compares it with the originally pinned manifest at every existing
+  A1, recovery, durability, activation, and journal-clear boundary.
+- Deterministic A1 controls covered added and removed assets, modified bytes,
+  marker inventory, source-id, and source-kind while pointer/root inode stayed
+  fixed. Recovery-entry and post-durability mutations preserved A and the exact
+  journal; restoring the original tuple allowed the unchanged retry to commit.
+  External/sibling sentinels and non-authoritative destinations stayed intact.
+- Focused return-#6 controls passed `2 / 2`; the combined staging/static-host
+  suite passed `82 / 82`; shell/format/diff/feature-memory/repository guards
+  passed.
+- Full `pnpm run preflight` passed `675 / 675` Node tests, production and
+  service-worker builds, and `158 / 158` Playwright tests.
+- Isolated Docker lifecycle passed as
+  `cabadrive-retention-8328-1791248030088`, including five fresh-container
+  crash retries, sequential releases, ownership handoff, unprivileged cleanup,
+  and scoped teardown.
+- Returns #1–#5 remain regression baselines only. Merge authority requires
+  T054-027 exact-head review/thread resolution and renewed ordered validation.
 
 ### Return #5 evidence status
 
@@ -695,3 +752,16 @@ evidence and add no product task.
 - The historical staleness block above is superseded by the renewed ordered
   passes. Only Orchestrator current-head/check/finalization and downstream PR
   #215 ordering remain pending.
+
+## Return #6 Validation Staleness
+
+- F054 Architect return count: `6 / 10`.
+- The Architect pass at `2026-10-06T00:38:23Z` and Analyst pass at
+  `2026-10-06T00:41:13Z` on
+  `4a687f788d1eed2e5dae8f3f7397e8ef8c765064` are stale for merge authority due
+  accepted P2 `r4190341948`.
+- Architect validated effective content head: pending T054-039 implementation,
+  exact-head Review/thread resolution, and renewed final validation.
+- Final Analyst validation is pending only after renewed Architect validation.
+- Current-head guard/finalization and downstream PR #215 ordering remain blocked
+  until T054-039, T054-027, and renewed ordered role validation are complete.
