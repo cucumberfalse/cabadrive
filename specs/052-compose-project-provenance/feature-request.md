@@ -327,6 +327,41 @@ validation, current-head guards, and merge remain pending.
 
 ## Final Analyst Validation
 
+### Renewed combined validation after F054 return #6 — 2026-10-06
+
+- Analyst validation pass: passed
+- Final Analyst validation completed at: 2026-10-06T01:06:26Z
+- Analyst validated effective content head: 7b0c355a6d24b260523011a5ac10b3c2621b457c
+- Analyst return count: 0 / 5.
+- Combined PR-set coverage: PR #217 contains F051 retention, this closed F052
+  provenance cycle, F053 security refresh, and F054 through return #6. The
+  effective head above contains all behaviorally meaningful content; later
+  uncommitted changes are role-owned final-validation evidence only.
+- Customer-intent validation: R052-1 through R052-8 and all required negatives
+  remain satisfied in spirit and letter. Project provenance, durable adoption,
+  lifecycle continuity, explicit caller choice, clean install, ambiguity
+  rejection, and project isolation remain preserved. F054 remains the proper
+  post-limit feature and does not become an invalid F052 return #11.
+- Return-#6 validation: pinned legacy reuse now reruns the complete canonical
+  marker/source/inventory/asset/no-extra tuple at every locked admission,
+  recovery, durability, activation, and clear boundary and compares it with the
+  originally pinned tuple. Pointer stability alone can no longer hide asset or
+  metadata drift; exact restoration/retry remains supported.
+- Evidence: return-#6 controls passed 2/2, combined contracts passed 82/82,
+  full preflight passed 675/675 Node tests plus production/service-worker builds
+  and 158/158 Playwright tests, and isolated Docker lifecycle
+  `cabadrive-retention-8328-1791248030088` passed. Guards and exact-head Review
+  passed, and all technical threads are resolved.
+- Process validation: F052 remains complete at 10/10, F054 passes at 6/10, and
+  Analyst return count is 0/5. No unresolved task, feedback, technical finding,
+  architecture gap, or customer-intent mismatch remains. Exact-current-head
+  checks, thread/conflict state, process memory, and the evidence-only guard
+  remain Orchestrator merge gates.
+
+The F054 return-#5 Analyst validation on
+`4a687f788d1eed2e5dae8f3f7397e8ef8c765064`, and all earlier Analyst markers,
+is historical and superseded for merge authority by this return-#6 validation.
+
 ### Renewed combined validation after F054 return #5 — 2026-10-06
 
 - Analyst validation pass: passed

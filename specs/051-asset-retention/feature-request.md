@@ -173,6 +173,45 @@ The known dependent PR is #215 (`codex/049-learning-priority-fresh-update`). It 
 
 ## Final Analyst Validation Notes
 
+### Renewed combined-cycle validation after F054 return #6 — 2026-10-06
+
+- Analyst validation pass: passed
+- Final Analyst validation completed at: 2026-10-06T01:06:26Z
+- Analyst validated effective content head: 7b0c355a6d24b260523011a5ac10b3c2621b457c
+- Analyst return count: 0 / 5.
+- Combined PR-set coverage: PR #217 contains the complete F051/F052/F053/F054
+  delivery through F054 return #6. All behaviorally meaningful code, tests,
+  docs, memory, review fixes, and dispositions are in the effective head above;
+  later uncommitted changes are role-owned final-validation evidence only.
+- Customer-intent validation: R051-1 through R051-8 remain satisfied in spirit
+  and letter. Retained assets, byte immutability, shell-last activation, clean
+  and legacy exports, real old-cache-miss continuity, destructive negative
+  proof, Docker persistence, and static-host safety remain intact. Return #6
+  strengthens rather than changes that contract: every reuse of pinned legacy
+  authority revalidates its full root, marker, source identity/kind, canonical
+  inventory, every listed asset identity/size/digest, absence of unlisted
+  assets, and pointer/target identity.
+- Drift and recovery validation: full tuple revalidation runs at locked
+  admission, recovery entry, before and after durability, before activation,
+  and before journal clear. Added/removed assets, changed bytes, marker,
+  inventory, source-id, or source-kind fail closed while preserving A and the
+  exact journal; restoring the original tuple permits unchanged retry to
+  converge.
+- Evidence: return-#6 controls passed 2/2, combined contracts passed 82/82,
+  full preflight passed 675/675 Node tests plus production/service-worker builds
+  and 158/158 Playwright tests, and isolated Docker lifecycle
+  `cabadrive-retention-8328-1791248030088` passed. Guards and exact-head Review
+  passed, and all technical threads are resolved.
+- Process and sequencing: F052 remains closed at 10/10, F053 remains 0/10, and
+  F054 passes within its limit at 6/10; Analyst return count remains 0/5. No
+  unresolved task, feedback, finding, known issue, or customer-intent gap
+  remains. Orchestrator must still guard and merge #217 before synchronizing,
+  retesting, reviewing, revalidating, and merging #215.
+
+The F054 return-#5 Analyst validation on
+`4a687f788d1eed2e5dae8f3f7397e8ef8c765064`, and all earlier Analyst markers,
+is historical and superseded for merge authority by this return-#6 validation.
+
 ### Renewed combined-cycle validation after F054 return #5 — 2026-10-06
 
 - Analyst validation pass: passed

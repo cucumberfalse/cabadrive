@@ -449,6 +449,56 @@ validation, the current-head guard, and merge all remain pending.
 
 ## Final Analyst Validation Notes
 
+### Renewed final combined-cycle validation after return #6 — 2026-10-06
+
+- Analyst validation pass: passed
+- Final Analyst validation completed at: 2026-10-06T01:06:26Z
+- Analyst validated effective content head: 7b0c355a6d24b260523011a5ac10b3c2621b457c
+- Analyst return count: 0 / 5.
+- Combined PR-set coverage: PR #217 contains the complete F051/F052/F053/F054
+  delivery, including every F054 return #1–#6 task, disposition, regression,
+  and exact-head review result. All behaviorally meaningful content is in the
+  effective head above; later uncommitted changes are role-owned final-
+  validation evidence only.
+- Customer-intent validation: R054-1 through R054-7 and all required negative
+  scenarios are satisfied in spirit and letter. Activation remains last after
+  exact durable output/export; authority records remain bounded, no-follow,
+  descriptor-bound, stable, and type-correct; recovery remains operation,
+  legacy, journal, generation, ownership-proof, and renamed-inode bound; and
+  rootful/rootless ownership remains safe without permission broadening.
+- Full pinned-legacy validation: return #6 closes the pointer-only reuse gap.
+  Every revalidation reconstructs and compares the full originally pinned
+  handoff tuple: root, marker, source-id/kind, manifest/inventory, every listed
+  asset's identity/size/digest, absence of unlisted assets, and pointer/target
+  identity. This is repeated at locked admission, recovery entry, both sides of
+  durability, pre-activation, and pre-clear.
+- Fault/retry evidence: deterministic additions, removals, byte changes,
+  marker/inventory/source mutations, recovery-entry drift, and post-durability
+  drift preserve A and exact journals and leave sibling/external state intact.
+  Restoring the complete original tuple permits the identical retry to converge
+  without weakening any return #1–#5 invariant.
+- Verification evidence: return-#6 controls passed 2/2, combined contracts
+  passed 82/82, full preflight passed 675/675 Node tests plus production/
+  service-worker builds and 158/158 Playwright tests, and isolated Docker
+  lifecycle `cabadrive-retention-8328-1791248030088` passed. Exact-head Review
+  on `7b0c355a6d24b260523011a5ac10b3c2621b457c` passed, guards are green, and all
+  technical threads are resolved.
+- Process validation: Final Architect validation passed first at
+  `2026-10-06T01:04:40Z` on this effective head. F052 remains closed at 10/10,
+  F053 remains 0/10, and F054 is within its limit at 6/10; Analyst return count
+  is 0/5. No unresolved Implementation Agent feedback, technical finding,
+  accepted known issue, architecture gap, or customer-intent mismatch remains.
+- Merge sequencing: Orchestrator must now prove any later commit is evidence-
+  only, recheck exact-current-head required checks, review/thread state,
+  conflicts, process memory, and expected head, then merge PR #217. Only after
+  verified #217 merge may #215 be synchronized to resulting `main`, retested,
+  reviewed, and renewed through final Architect then Analyst validation before
+  merge.
+
+The return-#5 Analyst validation on
+`4a687f788d1eed2e5dae8f3f7397e8ef8c765064` is historical and superseded for
+merge authority by this return-#6 validation.
+
 ### Renewed final combined-cycle validation after return #5 — 2026-10-06
 
 - Analyst validation pass: passed

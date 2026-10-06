@@ -182,6 +182,39 @@ At intake, feature 053 has no separate PR. Its Orchestrator-approved single slic
 
 ## Final Analyst Validation Notes
 
+### Renewed combined-cycle validation after F054 return #6 — 2026-10-06
+
+- Analyst validation pass: passed
+- Final Analyst validation completed at: 2026-10-06T01:06:26Z
+- Analyst validated effective content head: 7b0c355a6d24b260523011a5ac10b3c2621b457c
+- Analyst return count: 0 / 5.
+- Combined PR-set coverage: PR #217 contains the complete F051/F052/F053/F054
+  result through F054 return #6. All behaviorally meaningful content is in the
+  effective head above; later uncommitted changes are role-owned final-
+  validation evidence only.
+- Customer-intent validation: feature 053 remains satisfied in spirit and
+  letter. Both `brace-expansion` lines remain fixed at `1.1.21` and `5.0.12`,
+  without vulnerable duplicates, manifest override, owner/toolchain movement,
+  unrelated dependency churn, scanner suppression, or workflow weakening.
+  Return #6 is limited to complete pinned-legacy tuple revalidation and direct
+  tests/process memory.
+- Combined evidence: all prior F054 ordering, recovery, ownership, generation,
+  no-follow, and rootful/rootless guarantees remain intact; full legacy asset
+  and metadata drift now fails at every authority-reuse boundary. Controls
+  passed 2/2, combined contracts 82/82, full preflight 675/675 Node tests plus
+  builds and 158/158 Playwright tests, and isolated Docker lifecycle
+  `cabadrive-retention-8328-1791248030088` passed. Exact-head Review passed and
+  all technical threads are resolved.
+- Process validation: F052 remains closed at 10/10, F053 remains at Architect
+  return count 0/10, and F054 passes at 6/10; Analyst return count is 0/5. No
+  unresolved feedback, finding, security exception, known issue, or customer-
+  intent gap remains. Exact-current-head security/check confirmation and the
+  Orchestrator guard remain mandatory before merge.
+
+The F054 return-#5 Analyst validation on
+`4a687f788d1eed2e5dae8f3f7397e8ef8c765064`, and all earlier Analyst markers,
+is historical and superseded for merge authority by this return-#6 validation.
+
 ### Renewed combined-cycle validation after F054 return #5 — 2026-10-06
 
 - Analyst validation pass: passed

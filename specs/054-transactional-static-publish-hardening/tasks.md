@@ -10,10 +10,7 @@
 - Parallel preservation: F052 post-limit evidence, Analyst-owned intake, sibling work, and external PR/branch state must remain untouched outside explicit assignment.
 - F054 Architect return count: `6 / 10`.
 - F054 Analyst return count: `0 / 5`.
-- Effective content head: pending return #6 implementation, exact-head review,
-  and renewed ordered role validation. Current head
-  `07ccfbaf098fdf04bfb4d1f83f7464038e8a9cb8` and the previously validated
-  `4a687f788d1eed2e5dae8f3f7397e8ef8c765064` are historical only.
+- Effective content head: `7b0c355a6d24b260523011a5ac10b3c2621b457c`.
 
 ## Setup And Test-First Tasks
 
@@ -171,16 +168,17 @@
   kind as specified below. Each negative case proves no unauthorized state,
   lock, journal, retained asset, current change, output, destination, or
   external/sibling mutation; each exact retry proves convergence.
-- [ ] **T054-027 — Renew all gates once after return #6.** Run focused authority/
+- [x] **T054-027 — Renew all gates once after return #6.** Focused authority/
   admission/transaction/wrapper/ownership tests, complete staging and combined
   contracts, full preflight, isolated sequential-release Docker lifecycle,
   root/unprivileged cleanup control, scope/memory guards, and one exact-head
   bounded Review covering returns #2–#5 plus return #6. Resolve
   the paginated thread set, establish a new effective head, then repeat final
   Architect followed by Analyst validation before current-head finalization.
-  The completed review/validation evidence on
-  `4a687f788d1eed2e5dae8f3f7397e8ef8c765064` is historical after return #6 and
-  must not be reused as current merge authority.
+  Exact-head Review, thread resolution, full verification, guards, and final
+  Architect validation are complete on
+  `7b0c355a6d24b260523011a5ac10b3c2621b457c`; final Analyst validation then
+  passed on the same head.
 
 ### Deterministic return-#2 matrix
 
@@ -460,9 +458,9 @@
 
 ## Final Validation And Merge Tasks
 
-- [x] **T054-015 — Establish renewed effective content head.** Historical head `4a687f788d1eed2e5dae8f3f7397e8ef8c765064` contained returns #1–#5; return #6 requires a new effective head through T054-027.
-- [x] **T054-016 — Complete final Architect validation.** Architect passed the historical head at `2026-10-06T00:38:23Z`; return #6 makes that pass stale. F054 is now at `6 / 10` and F052 remains closed/escalated at `10 / 10`.
-- [x] **T054-017 — Complete later Analyst validation.** Analyst passed the historical head at `2026-10-06T00:41:13Z`, return count `0 / 5`; return #6 makes that pass stale and requires renewed ordered role validation through T054-027.
+- [x] **T054-015 — Establish renewed effective content head.** Effective/current head `7b0c355a6d24b260523011a5ac10b3c2621b457c` contains the complete F051/F052/F053/F054 cycle and F054 returns #1–#6.
+- [x] **T054-016 — Complete final Architect validation.** Architect passed the combined cycle at `2026-10-06T01:04:40Z` on `7b0c355a6d24b260523011a5ac10b3c2621b457c`; F054 is within limit at `6 / 10` and F052 remains closed/escalated at `10 / 10`.
+- [x] **T054-017 — Complete later Analyst validation.** After Architect passed, Analyst validated the combined outcome at `2026-10-06T01:06:26Z`, return count `0 / 5`, against `7b0c355a6d24b260523011a5ac10b3c2621b457c`.
 - [ ] **T054-018 — Run current-head guard and finalize PR #217.** Prove every later commit evidence-only, recheck all required checks/review threads/conflicts/feedback/process memory, run expected-head conservative finalization, and merge only when blocker-free.
 - [ ] **T054-019 — Preserve downstream order.** Only after verified PR #217 merge may Orchestrator synchronize PR #215 to resulting `main`, rerun affected tests/review, and repeat its required validations.
 
@@ -505,16 +503,15 @@ Architect-defined one-lock/existing-journal design without scope divergence.
 
 ## Known Issues
 
-Accepted P2 `r4190341948` is implemented and locally verified through T054-039;
-T054-027 exact-head review and renewed validation remain. Returns #1–#5 remain
-implemented regression baselines. Process-only threads add no product task and
-wait renewed ordered validation evidence.
+No accepted technical known issue remains. P2 `r4190341948` and all F054
+returns #1–#6 are implemented, verified, exact-head reviewed, and resolved.
+Process-only threads are satisfied by the ordered final Analyst evidence.
 
 ## Cycle PR Set
 
 | Purpose | Branch | PR | Stacked base | Current/final head | Status | Final-validation inclusion |
 |---|---|---|---|---|---|---|
-| F054 transactional publish/handoff hardening within combined F051/F052/F053/F054 delivery | `codex/051-asset-retention` | #217 | `5e5f4ef40336fc7bff2c400b6301d99fbc9479c1` | Pending return #6 head; `07ccfbaf098fdf04bfb4d1f83f7464038e8a9cb8` under disposition and `4a687f788d1eed2e5dae8f3f7397e8ef8c765064` historical | Returns #1–#5 complete; full pinned legacy tuple return #6 implementation, exact-head review, and renewed role validation pending | Required |
+| F054 transactional publish/handoff hardening within combined F051/F052/F053/F054 delivery | `codex/051-asset-retention` | #217 | `5e5f4ef40336fc7bff2c400b6301d99fbc9479c1` | `7b0c355a6d24b260523011a5ac10b3c2621b457c` effective/current content | Returns #1–#6 implemented; verification, exact-head Review, thread resolution, and ordered Architect/Analyst validation complete; current-head/finalization gates pending | Required |
 
 ## Verification Evidence
 
@@ -762,6 +759,32 @@ wait renewed ordered validation evidence.
   accepted P2 `r4190341948`.
 - Architect validated effective content head: pending T054-039 implementation,
   exact-head Review/thread resolution, and renewed final validation.
-- Final Analyst validation is pending only after renewed Architect validation.
+- At return-#6 disposition time, renewed Analyst validation had not yet run;
+  the terminal pass is recorded below.
 - Current-head guard/finalization and downstream PR #215 ordering remain blocked
   until T054-039, T054-027, and renewed ordered role validation are complete.
+
+## Renewed Final Architect Validation After Return #6
+
+- Architect validation pass: passed
+- Final Architect validation completed at: 2026-10-06T01:04:40Z
+- Architect validated effective content head: 7b0c355a6d24b260523011a5ac10b3c2621b457c
+- Architect return counts: F052 `10 / 10` closed through the required F054
+  escalation; F053 `0 / 10`; F054 `6 / 10`.
+- Cycle coverage: combined PR #217 F051/F052/F053/F054, all F052 dispositions,
+  the post-limit feature split, and all F054 returns #1–#6.
+- Acceptance evidence: combined contracts passed `82 / 82`; full preflight
+  passed `675 / 675` Node tests plus production/service-worker builds and
+  `158 / 158` Playwright tests. Isolated Docker lifecycle
+  `cabadrive-retention-8328-1791248030088` passed; guards are green, exact-head
+  Review passed, and all technical threads are resolved.
+- Full pinned legacy marker/inventory/asset tuple revalidation now covers every
+  A1, recovery, durability, activation, and clear boundary while preserving all
+  prior transaction, ownership, generation, and userns guarantees.
+- Analyst validation pass: passed
+- Final Analyst validation completed at: 2026-10-06T01:06:26Z
+- Analyst return count: 0 / 5
+- Analyst validated effective content head: 7b0c355a6d24b260523011a5ac10b3c2621b457c
+- The historical staleness block above is superseded by the renewed ordered
+  passes. Only Orchestrator current-head/finalization and downstream PR #215
+  ordering remain pending.
