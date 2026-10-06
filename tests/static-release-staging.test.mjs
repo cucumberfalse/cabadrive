@@ -32,6 +32,7 @@ import {
   publishLegacyHandoffPointer,
   pinLegacyHandoffCurrent,
   publishAndExportStaticRelease,
+  observeExportOwnerMapping,
   readAuthorityFile,
   readAuthorityJson,
   verifyAdoptedProject,
@@ -1012,6 +1013,8 @@ test("coordinator rejects a foreign byte-identical destination and cleans owned 
       /without exact transaction authority/i,
     );
     rmSync(destination, { recursive: true });
+    const ownerProbe = join(root, ".cabadrive-export-owner-probe.Direct1");
+    writeFileSync(ownerProbe, "", { flag: "wx", mode: 0o600 });
     assert.doesNotThrow(() =>
       publishAndExportStaticRelease({
         stateRoot: state,
@@ -1021,6 +1024,7 @@ test("coordinator rejects a foreign byte-identical destination and cleans owned 
         renameNoReplaceHelper,
         ownerUid: process.getuid?.(),
         ownerGid: process.getgid?.(),
+        ownerProbe,
       }),
     );
     assert.equal(existsSync(join(destination, ".cabadrive-export-owner.json")), false);
@@ -1030,6 +1034,114 @@ test("coordinator rejects a foreign byte-identical destination and cleans owned 
       readdirSync(state).some((name) => name.startsWith("export-receipt-")),
       true,
     );
+  });
+});
+
+test("export owner probe models direct and namespaced mappings and rejects contradictions", () => {
+  withFixture((root) => {
+    const probe = join(root, ".cabadrive-export-owner-probe.Mapping1");
+    writeFileSync(probe, "", { flag: "wx", mode: 0o600 });
+    const stat = lstatSync(probe);
+    const different = stat.uid === 12345 ? 12346 : 12345;
+    assert.deepEqual(
+      observeExportOwnerMapping({
+        probePath: probe,
+        expectedParent: root,
+        claimedUid: stat.uid,
+        claimedGid: stat.gid,
+        effectiveUid: different,
+        effectiveGid: different,
+      }).uid,
+      stat.uid,
+    );
+    assert.equal(
+      observeExportOwnerMapping({
+        probePath: probe,
+        expectedParent: root,
+        claimedUid: different,
+        claimedGid: different,
+        effectiveUid: stat.uid,
+        effectiveGid: stat.gid,
+      }).uid,
+      stat.uid,
+    );
+    assert.throws(
+      () =>
+        observeExportOwnerMapping({
+          probePath: probe,
+          expectedParent: root,
+          claimedUid: different,
+          claimedGid: different,
+          effectiveUid: different + 1,
+          effectiveGid: different + 1,
+        }),
+      /contradicts claimed host and container ownership mappings/i,
+    );
+    assert.throws(
+      () =>
+        observeExportOwnerMapping({
+          probePath: probe,
+          expectedParent: root,
+          claimedUid: -1,
+          claimedGid: stat.gid,
+        }),
+      /safe non-negative integer/i,
+    );
+  });
+});
+
+test("export owner probe rejects wrong types, modes, and replacement races", () => {
+  withFixture((root) => {
+    const probe = join(root, ".cabadrive-export-owner-probe.Tamper1");
+    const external = join(root, "external");
+    writeFileSync(external, "sentinel");
+    symlinkSync(external, probe);
+    const values = {
+      expectedParent: root,
+      claimedUid: process.getuid?.(),
+      claimedGid: process.getgid?.(),
+    };
+    assert.throws(
+      () =>
+        observeExportOwnerMapping({
+          probePath: join(root, ".cabadrive-export-owner-probe.Missing1"),
+          ...values,
+        }),
+      /cannot open|regular file/i,
+    );
+    assert.throws(
+      () => observeExportOwnerMapping({ probePath: probe, ...values }),
+      /regular file/i,
+    );
+    unlinkSync(probe);
+    mkdirSync(probe);
+    assert.throws(
+      () => observeExportOwnerMapping({ probePath: probe, ...values }),
+      /regular file/i,
+    );
+    rmSync(probe, { recursive: true });
+    execFileSync("mkfifo", [probe]);
+    assert.throws(
+      () => observeExportOwnerMapping({ probePath: probe, ...values }),
+      /regular file/i,
+    );
+    unlinkSync(probe);
+    writeFileSync(probe, "", { mode: 0o644 });
+    assert.throws(() => observeExportOwnerMapping({ probePath: probe, ...values }), /mode-0600/i);
+    chmodSync(probe, 0o600);
+    assert.throws(
+      () =>
+        observeExportOwnerMapping({
+          probePath: probe,
+          ...values,
+          onAfterOpen: () => {
+            renameSync(probe, `${probe}.old`);
+            writeFileSync(probe, "", { mode: 0o600 });
+          },
+        }),
+      /changed|stable/i,
+    );
+    assert.equal(readFileSync(external, "utf8"), "sentinel");
   });
 });
 

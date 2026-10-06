@@ -5,6 +5,7 @@ import {
   mkdirSync,
   mkdtempSync,
   readFileSync,
+  readdirSync,
   rmSync,
   symlinkSync,
   writeFileSync,
@@ -238,6 +239,8 @@ test("documented Docker bootstrap publishes then exports one exact fresh transac
     );
     assert.match(staticExport, /--destination "\/export\/\$destination_name" "\$@"/);
     assert.match(staticExport, /--output \/publish\/cabadrive-static-publish/);
+    assert.match(staticExport, /\.cabadrive-export-owner-probe\.XXXXXXXX/);
+    assert.match(staticExport, /--owner-probe "\/export\/\$owner_probe_name"/);
     assert.match(staticExport, /--owner-uid "\$\(id -u\)" --owner-gid "\$\(id -g\)"/);
     assert.match(staticExport, /--generation-root \/publish/);
     assert.match(
@@ -311,6 +314,10 @@ test("export wrapper classifies current before capture and rejects wrong types u
         if (kind === "dangling") assert.match(dockerArgs, /--legacy \/legacy-handoff\/current/);
         else assert.doesNotMatch(dockerArgs, /--legacy/);
         assert.equal(readFileSync(captureLog, "utf8"), "--resolve-project\ncapture\n");
+        assert.equal(
+          readdirSync(root).some((name) => name.startsWith(".cabadrive-export-owner-probe.")),
+          false,
+        );
       }
       assert.equal(existsSync(join(root, "out")), false);
     } finally {

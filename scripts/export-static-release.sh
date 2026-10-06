@@ -45,7 +45,35 @@ fi
 # This is the same authoritative outgoing-runtime capture boundary used by
 # `make build`. Wrong-type current entries have already failed unchanged.
 "$script_dir/capture-legacy-assets.sh"
-set -- --owner-uid "$(id -u)" --owner-gid "$(id -g)" --generation-root /publish
+owner_probe=
+cleanup_owner_probe() {
+  status=$?
+  trap - EXIT HUP INT TERM
+  if [ -n "${owner_probe:-}" ]; then
+    if [ -e "$owner_probe" ] || [ -L "$owner_probe" ]; then
+      current_probe_inode="$(ls -din -- "$owner_probe" 2>/dev/null | awk '{print $1}')"
+      if [ ! -L "$owner_probe" ] && [ "$current_probe_inode" = "$owner_probe_inode" ]; then
+        rm -f -- "$owner_probe" || status=1
+      else
+        printf '%s\n' 'export owner probe was replaced; refusing to remove the foreign entry' >&2
+        status=1
+      fi
+    fi
+    exec 9<&-
+  fi
+  exit "$status"
+}
+trap cleanup_owner_probe EXIT HUP INT TERM
+old_umask="$(umask)"
+umask 077
+owner_probe="$(mktemp "$destination_parent/.cabadrive-export-owner-probe.XXXXXXXX")"
+umask "$old_umask"
+chmod 600 "$owner_probe"
+exec 9<"$owner_probe"
+owner_probe_inode="$(ls -din -- "$owner_probe" | awk '{print $1}')"
+owner_probe_name="$(basename -- "$owner_probe")"
+set -- --owner-probe "/export/$owner_probe_name" \
+  --owner-uid "$(id -u)" --owner-gid "$(id -g)" --generation-root /publish
 if [ -L "$legacy_handoff" ]; then
   set -- "$@" --legacy /legacy-handoff/current
 elif [ -e "$legacy_handoff" ]; then

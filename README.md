@@ -58,8 +58,12 @@ proof заранее связывает nonce с device/inode временног
 заново проверяет candidate, legacy, state, output, destination и ownership,
 причём последняя полная проверка выполняется после всех durability-walk прямо
 перед активацией release или удалением journal.
-Wrapper передаёт числовые host UID/GID, а stager возвращает владельца всего
-готового export без следования по ссылкам и без ослабления режимов файлов.
+Wrapper создаёт в точном bind-parent уникальный host-owned probe режима `0600`
+и держит его inode открытым до завершения контейнера. Stager no-follow способом
+наблюдает container UID/GID этого probe, сверяет direct или namespaced mapping и
+использует только наблюдаемую пару для возврата владельца готового export.
+Пропажа, подмена, неверный тип или противоречивая ownership-модель завершаются
+до публикации; wrapper удаляет только свой точный probe.
 Retained ledger, release marker, execution-domain и оба transaction journal
 читаются одним chunked hard-bounded no-follow/nonblocking descriptor protocol: symlink,
 FIFO, directory, socket/device, mode `000`, подмена или слишком большой файл

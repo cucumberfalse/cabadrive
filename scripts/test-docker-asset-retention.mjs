@@ -1,7 +1,15 @@
 #!/usr/bin/env node
 /** Executable Docker A->B retention regression, intentionally self-cleaning. */
 import { execFileSync, spawnSync } from "node:child_process";
-import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import {
+  chmodSync,
+  existsSync,
+  mkdirSync,
+  mkdtempSync,
+  readFileSync,
+  rmSync,
+  writeFileSync,
+} from "node:fs";
 import { tmpdir } from "node:os";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -219,6 +227,10 @@ function assertCrossContainerPublishRetry(selectedProject) {
     const publishVolume = `${transactionProject}_static-publish`;
     const destinationName = `two-container-export-${index}`;
     const destination = join(temporary, destinationName);
+    const probeName = `.cabadrive-export-owner-probe.Retry${index}`;
+    const probe = join(temporary, probeName);
+    writeFileSync(probe, "", { flag: "wx", mode: 0o600 });
+    chmodSync(probe, 0o600);
     run("docker", ["volume", "create", stateVolume]);
     run("docker", ["volume", "create", publishVolume]);
     const common = [
@@ -247,6 +259,8 @@ function assertCrossContainerPublishRetry(selectedProject) {
       "/publish",
       "--destination",
       `/export/${destinationName}`,
+      "--owner-probe",
+      `/export/${probeName}`,
       "--owner-uid",
       String(process.getuid()),
       "--owner-gid",
@@ -283,6 +297,7 @@ function assertCrossContainerPublishRetry(selectedProject) {
       spawnSync("docker", ["volume", "rm", "-f", stateVolume], { stdio: "ignore" });
       spawnSync("docker", ["volume", "rm", "-f", publishVolume], { stdio: "ignore" });
       rmSync(destination, { recursive: true, force: true });
+      rmSync(probe, { force: true });
     }
   }
 }
@@ -299,39 +314,51 @@ function assertSequentialPublishGenerations(selectedProject) {
   writeFileSync(join(candidateB, "assets", "sequential-b.js"), "sequential B bytes");
   run("docker", ["volume", "create", stateVolume]);
   run("docker", ["volume", "create", publishVolume]);
-  const publish = (candidate, destinationName, extraMount = []) =>
-    run("docker", [
-      "run",
-      "--rm",
-      "-e",
-      `CABADRIVE_COMPOSE_PROJECT=${selectedProject}`,
-      "-v",
-      `${stateVolume}:/state`,
-      "-v",
-      `${publishVolume}:/publish`,
-      "-v",
-      `${temporary}:/export`,
-      ...extraMount,
-      "--entrypoint",
-      "node",
-      `${project}-stager`,
-      "/app/scripts/stage-static-release.mjs",
-      "publish-export",
-      "--state",
-      "/state",
-      "--candidate",
-      candidate,
-      "--output",
-      "/publish/cabadrive-static-publish",
-      "--generation-root",
-      "/publish",
-      "--destination",
-      `/export/${destinationName}`,
-      "--owner-uid",
-      String(process.getuid()),
-      "--owner-gid",
-      String(process.getgid()),
-    ]);
+  let probeSequence = 0;
+  const publish = (candidate, destinationName, extraMount = []) => {
+    const probeName = `.cabadrive-export-owner-probe.Sequential${probeSequence++}`;
+    const probe = join(temporary, probeName);
+    writeFileSync(probe, "", { flag: "wx", mode: 0o600 });
+    chmodSync(probe, 0o600);
+    try {
+      return run("docker", [
+        "run",
+        "--rm",
+        "-e",
+        `CABADRIVE_COMPOSE_PROJECT=${selectedProject}`,
+        "-v",
+        `${stateVolume}:/state`,
+        "-v",
+        `${publishVolume}:/publish`,
+        "-v",
+        `${temporary}:/export`,
+        ...extraMount,
+        "--entrypoint",
+        "node",
+        `${project}-stager`,
+        "/app/scripts/stage-static-release.mjs",
+        "publish-export",
+        "--state",
+        "/state",
+        "--candidate",
+        candidate,
+        "--output",
+        "/publish/cabadrive-static-publish",
+        "--generation-root",
+        "/publish",
+        "--destination",
+        `/export/${destinationName}`,
+        "--owner-probe",
+        `/export/${probeName}`,
+        "--owner-uid",
+        String(process.getuid()),
+        "--owner-gid",
+        String(process.getgid()),
+      ]);
+    } finally {
+      rmSync(probe, { force: true });
+    }
+  };
   try {
     publish("/candidate", "sequential-a");
     publish("/candidate-b", "sequential-b", ["-v", `${candidateB}:/candidate-b:ro`]);

@@ -2117,6 +2117,7 @@ function syncTree(root, options) {
 
 function handBackTreeOwnership(root, ownerUid, ownerGid, options) {
   if (ownerUid === undefined && ownerGid === undefined) return;
+  options?.ownerAuthority?.revalidate();
   if (
     !Number.isSafeInteger(ownerUid) ||
     ownerUid < 0 ||
@@ -2140,6 +2141,7 @@ function handBackTreeOwnership(root, ownerUid, ownerGid, options) {
     if (before.isDirectory()) {
       for (const name of requireDirectoryNames(path).sort(ordinal)) visit(join(path, name));
     }
+    options?.onBeforeOwnershipChange?.({ path, ownerUid, ownerGid });
     lchownSync(path, ownerUid, ownerGid);
     const after = lstatSync(path);
     const ownershipMatches = after.uid === ownerUid && after.gid === ownerGid;
@@ -2160,6 +2162,87 @@ function handBackTreeOwnership(root, ownerUid, ownerGid, options) {
     else syncDirectory(path, options);
   };
   visit(root);
+  options?.ownerAuthority?.revalidate();
+}
+
+export function observeExportOwnerMapping({
+  probePath,
+  expectedParent,
+  claimedUid,
+  claimedGid,
+  effectiveUid = process.geteuid?.() ?? process.getuid?.(),
+  effectiveGid = process.getegid?.() ?? process.getgid?.(),
+  onAfterOpen,
+} = {}) {
+  if (!probePath || !expectedParent) fail("export owner probe and parent are required");
+  for (const [label, value] of [
+    ["claimed uid", claimedUid],
+    ["claimed gid", claimedGid],
+    ["effective uid", effectiveUid],
+    ["effective gid", effectiveGid],
+  ]) {
+    if (!Number.isSafeInteger(value) || value < 0) {
+      fail(`export owner ${label} must be a safe non-negative integer`);
+    }
+  }
+  const probe = resolve(probePath);
+  const parent = realpathSync(expectedParent);
+  if (
+    realpathSync(dirname(probe)) !== parent ||
+    !/^\.cabadrive-export-owner-probe\.[A-Za-z0-9]+$/u.test(basename(probe))
+  ) {
+    fail("export owner probe must be one unique entry in the exact destination parent");
+  }
+  let opened = false;
+  const inspect = () => {
+    const { descriptor, stat } = openRegularFileNoFollow(probe, "export owner probe");
+    try {
+      if ((stat.mode & 0o777) !== 0o600 || stat.size !== 0 || stat.nlink !== 1) {
+        fail("export owner probe must be one empty mode-0600 regular file");
+      }
+      if (!opened) {
+        opened = true;
+        onAfterOpen?.({ probe, stat });
+      }
+      requireStableOpenPath(probe, "export owner probe", stat);
+      const after = fstatSync(descriptor);
+      if (
+        after.dev !== stat.dev ||
+        after.ino !== stat.ino ||
+        after.mode !== stat.mode ||
+        after.uid !== stat.uid ||
+        after.gid !== stat.gid ||
+        after.size !== 0 ||
+        after.nlink !== 1
+      ) {
+        fail("export owner probe changed during no-follow validation");
+      }
+      return stat;
+    } finally {
+      closeSync(descriptor);
+    }
+  };
+  const initial = inspect();
+  const directMapping = initial.uid === claimedUid && initial.gid === claimedGid;
+  const namespacedMapping = initial.uid === effectiveUid && initial.gid === effectiveGid;
+  if (!directMapping && !namespacedMapping) {
+    fail("export owner probe contradicts claimed host and container ownership mappings");
+  }
+  const revalidate = () => {
+    const current = inspect();
+    if (
+      current.dev !== initial.dev ||
+      current.ino !== initial.ino ||
+      current.uid !== initial.uid ||
+      current.gid !== initial.gid ||
+      current.mode !== initial.mode
+    ) {
+      fail("export owner probe changed before publication");
+    }
+    return current;
+  };
+  revalidate();
+  return { uid: initial.uid, gid: initial.gid, probe, revalidate };
 }
 
 function copyPublishTree({ state, candidate, temporary, options, legacyValidation }) {
@@ -3085,6 +3168,7 @@ export function exportStaticPublish({
     }
     syncDirectory(destinationParent, options);
     options?.onBeforeExportPublish?.({ temporary, destination });
+    options?.ownerAuthority?.revalidate();
     renameNoReplace(temporary, destination, options);
     published = true;
     invokeDurability(options, "export-rename", destination);
@@ -3148,6 +3232,22 @@ export function publishAndExportStaticRelease(options) {
       )
     : logicalOutput;
   const destination = resolve(options.destinationRoot);
+  const ownerFields = [options.ownerProbe, options.ownerUid, options.ownerGid];
+  const ownerFieldCount = ownerFields.filter((value) => value !== undefined).length;
+  if (ownerFieldCount !== 0 && ownerFieldCount !== ownerFields.length) {
+    fail("export owner probe, uid, and gid must be supplied together");
+  }
+  const ownerAuthority = ownerFieldCount
+    ? observeExportOwnerMapping({
+        probePath: options.ownerProbe,
+        expectedParent: dirname(destination),
+        claimedUid: options.ownerUid,
+        claimedGid: options.ownerGid,
+        effectiveUid: options.ownerEffectiveUid,
+        effectiveGid: options.ownerEffectiveGid,
+        onAfterOpen: options.onAfterOwnerProbeOpen,
+      })
+    : undefined;
   const suppliedLegacyRoot = options.legacyRoot ? resolve(options.legacyRoot) : undefined;
   const legacyValidation = suppliedLegacyRoot
     ? basename(suppliedLegacyRoot) === "current"
@@ -3176,8 +3276,10 @@ export function publishAndExportStaticRelease(options) {
     onDurabilityOperation: options.onDurabilityOperation,
     renameNoReplaceHelper: options.renameNoReplaceHelper,
     onBeforeExportPublish: options.onBeforeExportPublish,
-    ownerUid: options.ownerUid,
-    ownerGid: options.ownerGid,
+    onBeforeOwnershipChange: options.onBeforeOwnershipChange,
+    ownerUid: ownerAuthority?.uid,
+    ownerGid: ownerAuthority?.gid,
+    ownerAuthority,
   };
   const unlock = acquireLock(state, {
     projectKey: options.projectKey,
@@ -3304,6 +3406,7 @@ if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.ur
     generationRoot: values["generation-root"],
     ownerUid: parseOwnerId(values["owner-uid"], "--owner-uid"),
     ownerGid: parseOwnerId(values["owner-gid"], "--owner-gid"),
+    ownerProbe: values["owner-probe"],
   };
   const result =
     command === "stage"

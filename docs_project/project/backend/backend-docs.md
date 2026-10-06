@@ -95,13 +95,15 @@ The stager re-digests every candidate, legacy, state, output, destination, and
 ownership authority under the lock after all relevant file/tree/directory
 durability walks and immediately before terminal success, activation, and
 journal removal; an exact committed retry also recovers a visible journal
-unlink whose directory sync failed. The wrapper supplies strictly numeric host
-UID/GID, and the stager hands the completed bind-mounted export back without
-following links or broadening production modes before no-replace publication.
-Native Linux mounts require exact in-container UID/GID confirmation. LinuxKit
-bind mounts, which deliberately report container-root ownership even when the
-host owns the entry, use the narrow unchanged-identity fallback and the real
-Docker lifecycle proves unprivileged host deletion of the resulting tree.
+unlink whose directory sync failed. The wrapper creates a unique host-owned
+mode-0600 probe in the exact export bind parent and keeps its inode open through
+the container run. The stager accepts only a stable no-follow regular probe
+whose observed container UID/GID agrees with either direct host mapping or its
+effective namespaced identity, then uses that observed pair for the ownership
+handoff. Missing, replaced, wrong-type, or contradictory probes fail before
+publication; the wrapper removes only its exact probe afterward. This supports
+both rootful direct mapping and rootless/user-namespace mapping without
+weakening file modes or guessing a host identity.
 
 Retained-ledger, release-marker, execution-domain, asset-promotion-journal, and
 publish-journal authorities use one chunked hard-bounded descriptor reader with
