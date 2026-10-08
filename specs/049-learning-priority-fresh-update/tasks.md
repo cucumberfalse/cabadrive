@@ -494,3 +494,53 @@
 - Final-validation evidence-only commit/current-head guard: pending Orchestrator.
 - Limit escalation: none.
 - Cleanup evidence: not applicable to implementation; any later cleanup requires separate Cleanup Agent assignment/evidence.
+
+## Architect completion-cycle055 assignment (2026-10-08)
+
+- [ ] C055-215-1 Synchronize the preserved PR #215 branch with verified main after #214 then #217 merge; record actual base/head and integration disposition without rewriting sibling history.
+- [x] C055-215-2 Make the legacy generated A fixture faithfully exclude the deferred `manual4Ruedas` hash; assert it was never loaded and every A Cache Storage lacks the URL before B. Preserve the separate all-hashed-precache new-protocol coverage.
+- [ ] C055-215-3 After real retained-origin B publication, first-load A's missing deferred module from the still-open A document; record server-side retained-origin request, success, exact A bytes and marker. Run the matching destructive B 404 control.
+- [ ] C055-215-4 Pass focused SW/browser suites, full preflight, and isolated Docker runtime smoke; reconcile a freshly fetched complete review inventory without treating historical totals as current.
+- [ ] C055-215-5 Renew final Architect then Analyst validation on the same integrated effective content head, and prove later final-evidence commits contain no substantive changes before all five current-head checks and merge.
+
+This is an explicit architectural assignment, not a final validation pass or an additional return against the historical feature's existing return count. The new055 completion cycle owns cross-PR integration; old recorded passes cannot authorize the new content. Implementation owns task evidence and checkboxes; Architect owns the renewed validation section.
+
+### Implementation evidence for completion-cycle055 (2026-10-08)
+
+- Assigned slice remains PR #215; local branch `codex/finalize-pr-215` continues
+  content head `31c2507f` and will publish to existing
+  `codex/049-learning-priority-fresh-update`. Parallel work and historical
+  feature049 entries remain preserved. Architect's scoped assignment was read
+  before implementation. #217 prerequisite integration and final gates remain
+  pending; no final validation pass is asserted.
+- Replaced the simplified synthetic legacy worker with a test-only historical
+  generator snapshot from verified main
+  `2a92bcfcb7638d1094f33b28e4c2932fb2e4121e`. It preserves the actual
+  `manual4Ruedas-*.js` collector exclusion and legacy install/activate/fetch
+  body. A's never-loaded exact URL is asserted absent from every Cache Storage
+  before B, and the marker is absent with zero origin requests for that hash.
+- Authentic red evidence: isolated Chromium at `PLAYWRIGHT_PORT=53215` reached
+  successful A-to-B activation, but the still-open A document's first deferred
+  request returned HTTP 404/body `not found` under destructive publication,
+  failing the old artificial retained-cache assertion in 2.2 seconds. This
+  proves the historical generated cache miss, rather than relying on a manually
+  injected precache asset.
+- Prepared real merged-stager serving (`state/assets` plus `state/current`),
+  exact retained-body/SHA-256/origin-hit and module-visible-marker assertions,
+  a destructive 404 control, and separate new-protocol A all-hashed precache
+  and retained-cache evidence. Those integration tests intentionally await the
+  #217 prerequisite merge; their implementation is not yet green evidence.
+- Frozen-lock dependency installation and production application build passed.
+  The locked Playwright 1.59.1 Chromium/headless shell 1217 was missing and was
+  installed; no existing browser revision was removed. Typecheck, lint, scoped
+  formatting, diff whitespace guard, and generated-worker Node suite passed
+  (`7/7`). Full preflight remains reserved after #214/#217 under Orchestrator
+  coordination. No product/runtime/dependency behavior changed in this slice.
+- Applied the Architect-approved narrow frontend/backend clarification that
+  historical A cache misses require retained-origin deployment; new-worker
+  complete precaching cannot retroactively supply an omitted A hash. The
+  destructive control explicitly installs/activates B before requesting the
+  missing A URL. Context7 primary Playwright v1.59.0 documentation confirmed
+  async `page.evaluate`, serialized URL arguments, `expect.poll`, and isolated
+  test contexts used by the focused browser assertions; these APIs match the
+  locked 1.59.1 environment.

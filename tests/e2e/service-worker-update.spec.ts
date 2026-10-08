@@ -1,5 +1,6 @@
 import { expect, test } from "@playwright/test";
 import { execFileSync } from "node:child_process";
+import { createHash } from "node:crypto";
 import { createServer, type Server } from "node:http";
 import {
   cpSync,
@@ -20,9 +21,45 @@ test.setTimeout(90_000);
 let server: Server;
 let origin = "";
 let root = "";
-let activeBuild = "A";
+let state = "";
+let retainOriginAssets = true;
+let lazyOriginRequests = 0;
 let navigationRequests = 0;
 const legacyLazyPath = "/assets/manual4Ruedas-a-legacy-only.js";
+const legacyLazyBody = `globalThis.aOnlyLoaded = true; document.body.insertAdjacentHTML("beforeend", '<div id="legacy-lazy-marker">Legacy A lazy module</div>');`;
+
+function publishBuild(name: "A" | "B" | "C" | "broken" | "new-A") {
+  execFileSync(
+    process.execPath,
+    [
+      "scripts/stage-static-release.mjs",
+      "stage",
+      "--state",
+      state,
+      "--candidate",
+      join(root, name),
+    ],
+    { cwd: process.cwd(), env: { ...process.env, CABADRIVE_TEST_KERNEL_LOCK: "in-process" } },
+  );
+}
+
+async function assertLegacyChunkNeverLoaded(page: import("@playwright/test").Page) {
+  const snapshot = await page.evaluate(
+    async (path) => ({
+      loaded: "aOnlyLoaded" in globalThis,
+      cached: await Promise.all(
+        (await caches.keys()).map(async (key) =>
+          Boolean(await (await caches.open(key)).match(path)),
+        ),
+      ),
+    }),
+    legacyLazyPath,
+  );
+  expect(snapshot.loaded).toBe(false);
+  expect(snapshot.cached.length).toBeGreaterThan(0);
+  expect(snapshot.cached.every((cached) => !cached)).toBe(true);
+  expect(lazyOriginRequests).toBe(0);
+}
 
 function generateProductionWorker(target: string, timestamp: string) {
   execFileSync(
@@ -38,27 +75,7 @@ function generateProductionWorker(target: string, timestamp: string) {
   );
 }
 
-function makeLegacyWorker(generated: string) {
-  const assets = generated.match(/const ASSETS = \[[\s\S]*?\];/u)?.[0];
-  if (!assets?.includes(legacyLazyPath)) throw new Error("generated A precache omitted lazy chunk");
-  return `const CACHE_NAME = "cabadrive-static-test-A";
-${assets}
-self.addEventListener("install", (event) => {
-  event.waitUntil(caches.open(CACHE_NAME).then((cache) => cache.addAll(ASSETS)).then(() => self.skipWaiting()));
-});
-self.addEventListener("activate", (event) => event.waitUntil(self.clients.claim()));
-self.addEventListener("fetch", (event) => {
-  if (event.request.method !== "GET") return;
-  event.respondWith(
-    caches.match(event.request, { ignoreSearch: event.request.mode === "navigate" }).then(
-      (cached) => cached ?? fetch(event.request),
-    ),
-  );
-});
-`;
-}
-
-function prepareBuild(name: "A" | "B" | "C" | "broken") {
+function prepareBuild(name: "A" | "B" | "C" | "broken" | "new-A") {
   const target = join(root, name);
   cpSync("dist", target, { recursive: true });
   rmSync(join(target, "content"), { recursive: true, force: true });
@@ -70,14 +87,29 @@ function prepareBuild(name: "A" | "B" | "C" | "broken") {
     `<body><div id="build-marker" style="position:fixed;z-index:9999">Build ${marker}</div>`,
   );
   writeFileSync(indexPath, index);
-  if (name === "A") {
-    writeFileSync(join(target, legacyLazyPath.slice(1)), "globalThis.aOnlyLoaded = true;");
+  if (name === "A" || name === "new-A") {
+    writeFileSync(join(target, legacyLazyPath.slice(1)), legacyLazyBody);
   }
   const missingPath = join(target, "assets", "missing-install.js");
   if (name === "broken") writeFileSync(missingPath, "missing after generation");
   generateProductionWorker(target, `test-${name}`);
   const swPath = join(target, "sw.js");
-  if (name === "A") writeFileSync(swPath, makeLegacyWorker(readFileSync(swPath, "utf8")));
+  if (name === "A") {
+    execFileSync(
+      process.execPath,
+      [
+        "--input-type=module",
+        "--eval",
+        'import { generateServiceWorker } from "./tests/fixtures/legacy-service-worker-generator.mjs"; generateServiceWorker({ dist: process.argv[1], timestamp: "test-A" });',
+        target,
+      ],
+      { cwd: process.cwd() },
+    );
+    expect(readFileSync(swPath, "utf8")).not.toContain(legacyLazyPath);
+  }
+  if (name === "new-A") expect(readFileSync(swPath, "utf8")).toContain(legacyLazyPath);
+  if (name === "B" || name === "C")
+    expect(readFileSync(swPath, "utf8")).not.toContain(legacyLazyPath);
   if (name === "broken") unlinkSync(missingPath);
 }
 
@@ -96,12 +128,16 @@ test.beforeAll(async () => {
   prepareBuild("B");
   prepareBuild("C");
   prepareBuild("broken");
+  prepareBuild("new-A");
   server = createServer((request, response) => {
     const pathname = new URL(request.url ?? "/", "http://localhost").pathname;
     if (pathname === "/" || pathname === "/index.html") navigationRequests += 1;
     const relative = pathname === "/" ? "index.html" : pathname.slice(1);
-    const selected = activeBuild === "BROKEN" ? "broken" : activeBuild;
-    const path = join(root, selected, relative);
+    if (pathname === legacyLazyPath) lazyOriginRequests += 1;
+    const path =
+      pathname.startsWith("/assets/") && retainOriginAssets
+        ? join(state, "assets", pathname.slice("/assets/".length))
+        : join(state, "current", relative);
     try {
       if (!statSync(path).isFile()) throw new Error("not a file");
       response.writeHead(200, {
@@ -128,7 +164,11 @@ test.afterAll(async () => {
 });
 
 test.beforeEach(() => {
-  activeBuild = "A";
+  state = join(root, "state");
+  rmSync(state, { recursive: true, force: true });
+  publishBuild("A");
+  retainOriginAssets = true;
+  lazyOriginRequests = 0;
   navigationRequests = 0;
 });
 
@@ -167,7 +207,9 @@ test("legacy A auto-activates complete B once, then C waits for the prompt", asy
     localStorage.setItem("cabadrive.progress.v1", JSON.stringify(progress));
   });
 
-  activeBuild = "B";
+  await assertLegacyChunkNeverLoaded(oldATab);
+
+  publishBuild("B");
   await page.evaluate(async () => {
     const registration = await navigator.serviceWorker.getRegistration();
     await registration?.update();
@@ -190,9 +232,17 @@ test("legacy A auto-activates complete B once, then C waits for the prompt", asy
     const response = await fetch(path);
     return { ok: response.ok, body: await response.text() };
   }, legacyLazyPath);
-  expect(retainedChunk).toEqual({ ok: true, body: "globalThis.aOnlyLoaded = true;" });
+  expect(retainedChunk).toEqual({ ok: true, body: legacyLazyBody });
+  expect(createHash("sha256").update(retainedChunk.body).digest("hex")).toBe(
+    createHash("sha256").update(legacyLazyBody).digest("hex"),
+  );
+  expect(lazyOriginRequests).toBe(1);
+  await oldATab.evaluate(async (path) => {
+    await import(path);
+  }, legacyLazyPath);
+  await expect(oldATab.locator("#legacy-lazy-marker")).toHaveText("Legacy A lazy module");
 
-  activeBuild = "C";
+  publishBuild("C");
   await page.evaluate(async () => {
     const registration = await navigator.serviceWorker.getRegistration();
     await registration?.update();
@@ -221,7 +271,7 @@ test("failed compatibility install cannot mark or replace legacy A", async ({ pa
   await page.goto(origin);
   await page.evaluate(() => navigator.serviceWorker.ready);
   await page.reload();
-  activeBuild = "BROKEN";
+  publishBuild("broken");
   await page.evaluate(async () => {
     const registration = await navigator.serviceWorker.getRegistration();
     await registration?.update();
@@ -235,7 +285,7 @@ test("failed compatibility install cannot mark or replace legacy A", async ({ pa
   await expect(page.locator("#build-marker")).toHaveText("Build A");
   await context.setOffline(false);
 
-  activeBuild = "B";
+  publishBuild("B");
   await page.evaluate(async () => {
     const registration = await navigator.serviceWorker.getRegistration();
     await registration?.update();
@@ -245,4 +295,68 @@ test("failed compatibility install cannot mark or replace legacy A", async ({ pa
     .toBe(true);
   await page.reload();
   await expect(page.locator("#build-marker")).toHaveText("Build B");
+});
+
+test("authentic legacy A lazy cache miss returns 404 under destructive B publication", async ({
+  page,
+}) => {
+  await page.goto(origin);
+  await page.evaluate(() => navigator.serviceWorker.ready);
+  await page.reload();
+  await expect
+    .poll(() => page.evaluate(() => navigator.serviceWorker.controller !== null))
+    .toBe(true);
+  await assertLegacyChunkNeverLoaded(page);
+  publishBuild("B");
+  await page.evaluate(async () => {
+    await (await navigator.serviceWorker.getRegistration())?.update();
+  });
+  await expect
+    .poll(() => page.evaluate(() => caches.has("cabadrive-update-protocol-v1")))
+    .toBe(true);
+  retainOriginAssets = false;
+  const response = await page.evaluate(async (path) => {
+    const value = await fetch(path);
+    return { status: value.status, body: await value.text() };
+  }, legacyLazyPath);
+  expect(response).toEqual({ status: 404, body: "not found" });
+  expect(lazyOriginRequests).toBe(1);
+  await expect(page.locator("#legacy-lazy-marker")).toHaveCount(0);
+});
+
+test("new-protocol A precaches its never-loaded lazy hash for retained-cache B activation", async ({
+  page,
+  context,
+}) => {
+  publishBuild("new-A");
+  await page.goto(origin);
+  await page.evaluate(() => navigator.serviceWorker.ready);
+  await page.reload();
+  await expect(page.locator("#build-marker")).toHaveText("Build new-A");
+  const oldATab = await context.newPage();
+  await oldATab.goto(origin);
+  expect(
+    await oldATab.evaluate(
+      async (path) => ({
+        loaded: "aOnlyLoaded" in globalThis,
+        body: await (await caches.match(path))?.text(),
+      }),
+      legacyLazyPath,
+    ),
+  ).toEqual({ loaded: false, body: legacyLazyBody });
+  publishBuild("B");
+  await page.evaluate(async () => {
+    await (await navigator.serviceWorker.getRegistration())?.update();
+  });
+  await expect(page.getByText("Доступна новая версия приложения.")).toBeVisible();
+  await page.getByRole("button", { name: "Обновить" }).click();
+  await expect(page.locator("#build-marker")).toHaveText("Build B");
+  const hitsBeforeFetch = lazyOriginRequests;
+  retainOriginAssets = false;
+  const response = await oldATab.evaluate(async (path) => {
+    const value = await fetch(path);
+    return { status: value.status, body: await value.text() };
+  }, legacyLazyPath);
+  expect(response).toEqual({ status: 200, body: legacyLazyBody });
+  expect(lazyOriginRequests).toBe(hitsBeforeFetch);
 });
