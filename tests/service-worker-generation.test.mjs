@@ -133,7 +133,7 @@ test("generated service worker keeps runtime GET caching for the manual chunk", 
       true,
     );
     assert.equal(body, generated);
-    assert.match(generated, /cache\.addAll\(ASSETS\)/);
+    assert.match(generated, /cache\.addAll\(ASSETS\.map/);
     assert.match(generated, /fetch\(event\.request\)/);
     assert.match(generated, /cache\.put\(event\.request, copy\)/);
     assert.doesNotMatch(generated, /\/assets\/manual4Ruedas-def456\.js/);

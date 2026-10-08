@@ -40,7 +40,11 @@ export function createServiceWorkerBody(assets, timestamp = Date.now()) {
 const ASSETS = ${JSON.stringify(assets, null, 2)};
 
 self.addEventListener("install", (event) => {
-  event.waitUntil(caches.open(CACHE_NAME).then((cache) => cache.addAll(ASSETS)));
+  event.waitUntil(
+    caches.open(CACHE_NAME).then((cache) =>
+      cache.addAll(ASSETS.map((asset) => new Request(asset, { cache: "reload" })))
+    )
+  );
   self.skipWaiting();
 });
 
