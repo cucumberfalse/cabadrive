@@ -65,12 +65,15 @@ proof заранее связывает nonce с device/inode временног
 заново проверяет candidate, legacy, state, output, destination и ownership,
 причём последняя полная проверка выполняется после всех durability-walk прямо
 перед активацией release или удалением journal.
-Wrapper создаёт в точном bind-parent уникальный host-owned probe режима `0600`
-и держит его inode открытым до завершения контейнера. Stager no-follow способом
-наблюдает container UID/GID этого probe, сверяет direct или namespaced mapping и
-использует только наблюдаемую пару для возврата владельца готового export.
-Пропажа, подмена, неверный тип или противоречивая ownership-модель завершаются
-до публикации; wrapper удаляет только свой точный probe.
+Wrapper создаёт или проверяет в точном export-parent один постоянный приватный
+каталог `.cabadrive-export-owner-mapping` режима `0700`, принадлежащий пользователю
+хоста. Docker монтирует его только для чтения, чтобы наблюдать реальное отображение
+UID/GID. Содержимое этого каталога сохраняется, каталог используется повторно и
+автоматически не удаляется. Stager создаёт отдельный непредсказуемый probe режима
+`0600` через exclusive/no-follow/nonblocking descriptor, назначает ему только
+наблюдаемые UID/GID и держит этот же descriptor до конца экспорта. Подмена файла,
+типа, режима, owner-класса или поколения прекращает операцию до следующего изменения.
+При завершении stager удаляет только свой точный probe; чужая подмена сохраняется.
 Retained ledger, release marker, execution-domain и оба transaction journal
 читаются одним chunked hard-bounded no-follow/nonblocking descriptor protocol: symlink,
 FIFO, directory, socket/device, mode `000`, подмена или слишком большой файл

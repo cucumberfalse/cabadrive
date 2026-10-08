@@ -202,3 +202,95 @@ test("directory durability prompt-rejects unsafe types and held-path replacement
     assert.equal(changed,true);assert.equal(fs.readFileSync(join(root,'foreign'),'utf8'),'foreign-project\\n');
   `);
 });
+
+test("export probe creation uses exclusive no-follow nonblocking flags and preserves occupied foreign entries", () => {
+  for (const kind of ["regular", "symlink", "fifo"])
+    worker(`
+    const mapping=join(root,'.cabadrive-export-owner-mapping');fs.mkdirSync(mapping,{mode:0o700});
+    const originalOpen=fs.openSync;let probe,changed=false;
+    fs.openSync=(path,flags,...args)=>{
+      if(!changed&&String(path).includes('.cabadrive-export-owner-probe.')){
+        changed=true;
+        probe=path;
+        for(const flag of ['O_EXCL','O_NOFOLLOW','O_NONBLOCK','O_CREAT']) assert.ok(flags&fs.constants[flag],flag);
+        if(${JSON.stringify(kind)}==='regular')fs.writeFileSync(path,'foreign',{mode:0o600});
+        else if(${JSON.stringify(kind)}==='symlink')fs.symlinkSync(join(root,'foreign'),path);
+        else execFileSync('mkfifo',[path]);
+      }
+      return originalOpen(path,flags,...args);
+    };syncBuiltinESMExports();
+    try{assert.throws(()=>stager.createExportOwnerAuthority({mappingDirectory:mapping,mappingName:'.cabadrive-export-owner-mapping',expectedParent:root,claimedUid:process.getuid(),claimedGid:process.getgid()}),/EEXIST/);}
+    finally{fs.openSync=originalOpen;syncBuiltinESMExports();}
+    assert.ok(fs.lstatSync(probe));assert.equal(fs.readFileSync(join(root,'foreign'),'utf8'),'foreign-project\\n');
+    if(${JSON.stringify(kind)}==='regular')assert.equal(fs.readFileSync(probe,'utf8'),'foreign');
+  `);
+});
+
+test("export probe creation cleans exact owned failures and never absorbs unrelated fchown metadata drift", () => {
+  for (const failure of ["fchown", "fsync", "fchown-mode-drift", "observer-parent-open"])
+    worker(`
+    const mapping=join(root,'.cabadrive-export-owner-mapping');fs.mkdirSync(mapping,{mode:0o700});
+    const originalChown=fs.fchownSync,originalSync=fs.fsyncSync,originalOpen=fs.openSync,originalClose=fs.closeSync;
+    const held=new Set();let probe,probeFd,parentOpens=0,changed=false;
+    fs.openSync=(path,...args)=>{
+      if(path===root&&++parentOpens===2&&${JSON.stringify(failure)}==='observer-parent-open')throw new Error('injected parent open');
+      const fd=originalOpen(path,...args);held.add(fd);if(String(path).includes('.cabadrive-export-owner-probe.')){probe=path;probeFd=fd;}return fd;
+    };
+    fs.closeSync=fd=>{held.delete(fd);return originalClose(fd);};
+    fs.fchownSync=(fd,...args)=>{
+      if(fd===probeFd&&${JSON.stringify(failure)}==='fchown'){changed=true;throw new Error('injected chown');}
+      const result=originalChown(fd,...args);
+      if(fd===probeFd&&${JSON.stringify(failure)}==='fchown-mode-drift'){changed=true;fs.fchmodSync(fd,0o000);}
+      return result;
+    };
+    fs.fsyncSync=fd=>{if(fd===probeFd&&${JSON.stringify(failure)}==='fsync'){changed=true;throw new Error('injected fsync');}return originalSync(fd);};syncBuiltinESMExports();
+    try{assert.throws(()=>stager.createExportOwnerAuthority({mappingDirectory:mapping,mappingName:'.cabadrive-export-owner-mapping',expectedParent:root,claimedUid:process.getuid(),claimedGid:process.getgid()}),/injected|ownership operation/);}
+    finally{fs.openSync=originalOpen;fs.closeSync=originalClose;fs.fchownSync=originalChown;fs.fsyncSync=originalSync;syncBuiltinESMExports();}
+    assert.equal(held.size,0,'all acquired descriptors close');
+    if(${JSON.stringify(failure)}==='fchown-mode-drift'){assert.equal(fs.lstatSync(probe).mode&0o777,0);fs.chmodSync(probe,0o600);}
+    else assert.equal(fs.existsSync(probe),false,'own failure leaves no probe orphan');
+    assert.equal(fs.readFileSync(join(root,'foreign'),'utf8'),'foreign-project\\n');
+  `);
+});
+
+test("export mapping is readonly owner-class authority and cleanup preserves a substituted witness", () =>
+  worker(`
+  const name='.cabadrive-export-owner-mapping',mapping=join(root,name);fs.mkdirSync(mapping,{mode:0o700});
+  const options={mappingDirectory:mapping,mappingName:name,expectedParent:root,claimedUid:process.getuid(),claimedGid:process.getgid()};
+  const first=stager.createExportOwnerAuthority(options);
+  fs.writeFileSync(join(mapping,'foreign-content'),'witness contents are readonly');
+  first.revalidate();first.close();assert.equal(fs.readFileSync(join(mapping,'foreign-content'),'utf8'),'witness contents are readonly');
+  const second=stager.createExportOwnerAuthority({...options,onDurabilityOperation:({operation})=>{
+    if(operation==='close-export-owner-probe'){fs.renameSync(mapping,mapping+'.original');fs.mkdirSync(mapping,{mode:0o700});fs.writeFileSync(join(mapping,'sentinel'),'foreign witness');}
+  }});
+  assert.throws(()=>second.close(),/mapping changed/);
+  assert.equal(fs.readFileSync(join(mapping,'sentinel'),'utf8'),'foreign witness');
+  assert.ok(fs.lstatSync(second.probe));second.close();
+`));
+
+test("created export descriptor rejects pathname substitution before its first fstat or ownership mutation", () => {
+  for (const kind of ["regular", "symlink", "fifo", "hardlink"])
+    worker(`
+    const mapping=join(root,'.cabadrive-export-owner-mapping');fs.mkdirSync(mapping,{mode:0o700});
+    const foreign=join(root,'foreign');const before=fs.lstatSync(foreign,{bigint:true});
+    const originalOpen=fs.openSync,originalChown=fs.fchownSync;let probe,changed=false,chowns=0;
+    fs.openSync=(path,...args)=>{
+      const fd=originalOpen(path,...args);
+      if(!changed&&String(path).includes('.cabadrive-export-owner-probe.')){
+        changed=true;probe=path;fs.renameSync(path,path+'.original');
+        if(${JSON.stringify(kind)}==='hardlink')fs.linkSync(foreign,path);
+        else if(${JSON.stringify(kind)}==='symlink')fs.symlinkSync(foreign,path);
+        else if(${JSON.stringify(kind)}==='fifo')execFileSync('mkfifo',[path]);
+        else fs.writeFileSync(path,'foreign replacement',{mode:0o600});
+      }
+      return fd;
+    };
+    fs.fchownSync=(...args)=>{chowns++;return originalChown(...args);};syncBuiltinESMExports();
+    try{assert.throws(()=>stager.createExportOwnerAuthority({mappingDirectory:mapping,mappingName:'.cabadrive-export-owner-mapping',expectedParent:root,claimedUid:process.getuid(),claimedGid:process.getgid()}),/descriptor access|changed/);}
+    finally{fs.openSync=originalOpen;fs.fchownSync=originalChown;syncBuiltinESMExports();}
+    assert.equal(changed,true);assert.equal(chowns,0,'no ownership mutation before exact created path binding');
+    assert.ok(fs.lstatSync(probe));assert.equal(fs.readFileSync(foreign,'utf8'),'foreign-project\\n');
+    const after=fs.lstatSync(foreign,{bigint:true});
+    for(const key of ['dev','ino','mode','uid','gid','size','mtimeNs'])assert.equal(after[key],before[key]);
+  `);
+});

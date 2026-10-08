@@ -33,6 +33,7 @@ import {
   pinLegacyHandoffCurrent,
   publishAndExportStaticRelease,
   observeExportOwnerMapping,
+  createExportOwnerAuthority,
   readAuthorityFile,
   readAuthorityJson,
   verifyAdoptedProject,
@@ -3930,4 +3931,201 @@ test("initial current rollback durably removes the pointer when no predecessor e
     stageStaticRelease({ stateRoot: state, candidateRoot: candidate });
     assert.match(currentShell(state), /A shell/);
   });
+});
+
+test("Docker-owned exclusive export probe preserves readonly witness and closes exact authority", () => {
+  withFixture((root) => {
+    const name = ".cabadrive-export-owner-mapping";
+    const mapping = join(root, name);
+    mkdirSync(mapping, { mode: 0o700 });
+    writeFileSync(join(mapping, "foreign-sentinel"), "preserve witness contents");
+    const before = lstatSync(mapping, { bigint: true });
+    for (let attempt = 0; attempt < 2; attempt++) {
+      const authority = createExportOwnerAuthority({
+        mappingDirectory: mapping,
+        mappingName: name,
+        expectedParent: root,
+        claimedUid: process.getuid(),
+        claimedGid: process.getgid(),
+      });
+      const probe = authority.probe;
+      const entry = lstatSync(probe);
+      assert.equal(entry.mode & 0o777, 0o600);
+      assert.equal(entry.nlink, 1);
+      assert.equal(entry.size, 0);
+      assert.equal(authority.uid, before.uid === BigInt(process.getuid()) ? process.getuid() : -1);
+      authority.revalidate();
+      authority.close();
+      authority.close();
+      assert.equal(existsSync(probe), false);
+    }
+    const after = lstatSync(mapping, { bigint: true });
+    for (const key of ["dev", "ino", "mode", "uid", "gid", "mtimeNs", "ctimeNs"])
+      assert.equal(after[key], before[key]);
+    assert.equal(
+      readFileSync(join(mapping, "foreign-sentinel"), "utf8"),
+      "preserve witness contents",
+    );
+  });
+});
+
+test("exclusive export probe rejects replacements from creation through first admission without deleting foreign entries", () => {
+  for (const kind of ["symlink", "fifo", "regular", "hardlink", "mode", "mode-restored"]) {
+    withFixture((root) => {
+      const name = ".cabadrive-export-owner-mapping",
+        mapping = join(root, name);
+      mkdirSync(mapping, { mode: 0o700 });
+      const foreign = join(root, "foreign");
+      writeFileSync(foreign, "foreign bytes", { mode: 0o700 });
+      const original = lstatSync(foreign, { bigint: true });
+      let probe;
+      assert.throws(
+        () =>
+          createExportOwnerAuthority({
+            mappingDirectory: mapping,
+            mappingName: name,
+            expectedParent: root,
+            claimedUid: process.getuid(),
+            claimedGid: process.getgid(),
+            onAfterOpen: ({ probe: path }) => {
+              probe = path;
+              if (kind === "mode" || kind === "mode-restored") {
+                const beforeModeChange = lstatSync(probe, { bigint: true });
+                chmodSync(probe, 0o400);
+                if (kind === "mode-restored") {
+                  // Linux filesystems may stamp immediate chmod pairs in the same
+                  // tick. Establish observable generation drift before checking
+                  // rejection; the mode and inode are restored, only ctime differs.
+                  for (let attempt = 0; attempt < 10000; attempt += 1) {
+                    chmodSync(probe, 0o600);
+                    if (lstatSync(probe, { bigint: true }).ctimeNs !== beforeModeChange.ctimeNs)
+                      break;
+                    chmodSync(probe, 0o400);
+                  }
+                  chmodSync(probe, 0o600);
+                  const restored = lstatSync(probe, { bigint: true });
+                  assert.equal(restored.ino, beforeModeChange.ino);
+                  assert.equal(restored.mode, beforeModeChange.mode);
+                  assert.notEqual(restored.ctimeNs, beforeModeChange.ctimeNs);
+                }
+              } else {
+                renameSync(probe, join(root, "held-original"));
+                if (kind === "symlink") symlinkSync(foreign, probe);
+                else if (kind === "fifo") execFileSync("mkfifo", [probe]);
+                else if (kind === "hardlink") linkSync(foreign, probe);
+                else writeFileSync(probe, "", { mode: 0o600 });
+              }
+            },
+          }),
+        /probe.*changed|descriptor access/i,
+        kind,
+      );
+      assert.equal(existsSync(probe), true, kind);
+      assert.equal(readFileSync(foreign, "utf8"), "foreign bytes");
+      const current = lstatSync(foreign, { bigint: true });
+      for (const key of ["dev", "ino", "mode", "uid", "gid", "size", "mtimeNs"])
+        assert.equal(current[key], original[key], kind);
+    });
+  }
+});
+
+test("export probe cleanup keeps a foreign replacement and releases original descriptors", () => {
+  withFixture((root) => {
+    const name = ".cabadrive-export-owner-mapping",
+      mapping = join(root, name);
+    mkdirSync(mapping, { mode: 0o700 });
+    const authority = createExportOwnerAuthority({
+      mappingDirectory: mapping,
+      mappingName: name,
+      expectedParent: root,
+      claimedUid: process.getuid(),
+      claimedGid: process.getgid(),
+      onDurabilityOperation: ({ operation, path }) => {
+        if (operation === "close-export-owner-probe") {
+          renameSync(path, join(root, "original-at-close"));
+          writeFileSync(path, "foreign replacement", { mode: 0o600 });
+        }
+      },
+    });
+    assert.throws(() => authority.close(), /probe.*changed|descriptor access/i);
+    assert.equal(readFileSync(authority.probe, "utf8"), "foreign replacement");
+    authority.close();
+  });
+});
+
+test("readonly export mapping rejects type, private-mode and bound-parent substitutions", () => {
+  for (const kind of ["file", "fifo", "symlink", "mode", "wrong-parent"])
+    withFixture((root) => {
+      const name = ".cabadrive-export-owner-mapping",
+        mapping = join(root, name);
+      if (kind === "file") writeFileSync(mapping, "foreign");
+      else if (kind === "fifo") execFileSync("mkfifo", [mapping]);
+      else if (kind === "symlink") {
+        mkdirSync(join(root, "foreign"), { mode: 0o700 });
+        symlinkSync(join(root, "foreign"), mapping);
+      } else mkdirSync(mapping, { mode: kind === "mode" ? 0o755 : 0o700 });
+      const supplied = kind === "wrong-parent" ? join(root, "other") : mapping;
+      if (kind === "wrong-parent") mkdirSync(supplied, { mode: 0o700 });
+      assert.throws(
+        () =>
+          createExportOwnerAuthority({
+            mappingDirectory: supplied,
+            mappingName: name,
+            expectedParent: root,
+            claimedUid: process.getuid(),
+            claimedGid: process.getgid(),
+          }),
+        /mapping|ENOTDIR|ELOOP/i,
+        kind,
+      );
+      assert.equal(
+        readdirSync(root).some((name) => name.startsWith(".cabadrive-export-owner-probe.")),
+        false,
+      );
+    });
+});
+
+test("held export probe rejects admission and final callback substitutions before the next mutation", () => {
+  for (const boundary of [
+    "onAfterReadOnlyAdmission",
+    "onBeforeActivationRevalidation",
+    "onBeforeJournalClearRevalidation",
+  ])
+    withFixture((root) => {
+      const candidate = release(root, "candidate", { "current.js": "C" });
+      const state = join(root, "state"),
+        output = join(root, "output"),
+        destination = join(root, "export");
+      const name = ".cabadrive-export-owner-mapping",
+        mapping = join(root, name);
+      mkdirSync(mapping, { mode: 0o700 });
+      let probe;
+      assert.throws(
+        () =>
+          publishAndExportStaticRelease({
+            stateRoot: state,
+            candidateRoot: candidate,
+            outputRoot: output,
+            destinationRoot: destination,
+            ownerMapping: mapping,
+            ownerMappingName: name,
+            ownerUid: process.getuid(),
+            ownerGid: process.getgid(),
+            renameNoReplaceHelper: nativeRenameHelper(root),
+            onAfterOwnerProbeOpen: ({ probe: path }) => (probe = path),
+            [boundary]: () => {
+              renameSync(probe, join(root, "held-original"));
+              writeFileSync(probe, "foreign", { mode: 0o600 });
+            },
+          }),
+        /probe.*changed|descriptor access/i,
+        boundary,
+      );
+      assert.equal(readFileSync(probe, "utf8"), "foreign");
+      if (boundary === "onAfterReadOnlyAdmission") assert.equal(existsSync(state), false);
+      if (boundary === "onBeforeActivationRevalidation")
+        assert.equal(existsSync(join(state, "current")), false);
+      if (boundary === "onBeforeJournalClearRevalidation")
+        assert.equal(existsSync(join(state, "publish-pending.json")), true);
+    });
 });

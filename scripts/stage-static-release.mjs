@@ -2435,6 +2435,7 @@ export function observeExportOwnerMapping({
   effectiveUid = process.geteuid?.() ?? process.getuid?.(),
   effectiveGid = process.getegid?.() ?? process.getgid?.(),
   onAfterOpen,
+  createdProbe,
 } = {}) {
   if (!probePath || !expectedParent) fail("export owner probe and parent are required");
   for (const [label, value] of [
@@ -2455,56 +2456,249 @@ export function observeExportOwnerMapping({
   ) {
     fail("export owner probe must be one unique entry in the exact destination parent");
   }
-  let opened = false;
-  const inspect = () => {
-    const { descriptor, stat } = openRegularFileNoFollow(probe, "export owner probe");
-    try {
-      if ((stat.mode & 0o777) !== 0o600 || stat.size !== 0 || stat.nlink !== 1) {
-        fail("export owner probe must be one empty mode-0600 regular file");
-      }
-      if (!opened) {
-        opened = true;
-        onAfterOpen?.({ probe, stat });
-      }
-      requireStableOpenPath(probe, "export owner probe", stat);
-      const after = fstatSync(descriptor);
-      if (
-        after.dev !== stat.dev ||
-        after.ino !== stat.ino ||
-        after.mode !== stat.mode ||
-        after.uid !== stat.uid ||
-        after.gid !== stat.gid ||
-        after.size !== 0 ||
-        after.nlink !== 1
-      ) {
-        fail("export owner probe changed during no-follow validation");
-      }
-      return stat;
-    } finally {
-      closeSync(descriptor);
-    }
-  };
-  const initial = inspect();
-  const directMapping = initial.uid === claimedUid && initial.gid === claimedGid;
-  const namespacedMapping = initial.uid === effectiveUid && initial.gid === effectiveGid;
-  if (!directMapping && !namespacedMapping) {
-    fail("export owner probe contradicts claimed host and container ownership mappings");
+  const opened = createdProbe || openRegularFileNoFollow(probe, "export owner probe");
+  let parentDescriptor;
+  let parentIdentity;
+  try {
+    parentDescriptor = openSync(
+      parent,
+      constants.O_RDONLY | constants.O_DIRECTORY | constants.O_NOFOLLOW | constants.O_NONBLOCK,
+    );
+    parentIdentity = fstatSync(parentDescriptor);
+  } catch (error) {
+    if (!createdProbe) closeSync(opened.descriptor);
+    if (parentDescriptor !== undefined) closeSync(parentDescriptor);
+    throw error;
   }
-  const revalidate = () => {
-    const current = inspect();
-    if (
-      current.dev !== initial.dev ||
-      current.ino !== initial.ino ||
-      current.uid !== initial.uid ||
-      current.gid !== initial.gid ||
-      current.mode !== initial.mode
-    ) {
-      fail("export owner probe changed before publication");
+  let closed = false;
+  const close = () => {
+    if (!closed) {
+      closed = true;
+      closeSync(opened.descriptor);
+      closeSync(parentDescriptor);
     }
-    return current;
   };
-  revalidate();
-  return { uid: initial.uid, gid: initial.gid, probe, revalidate };
+  const revalidate = () => {
+    if (closed) fail("export owner probe authority is closed");
+    assertPinnedRegular(probe, "export owner probe", opened);
+    const entry = lstatSync(parent);
+    const held = fstatSync(parentDescriptor);
+    if (
+      !entry.isDirectory() ||
+      entry.isSymbolicLink() ||
+      !held.isDirectory() ||
+      entry.dev !== parentIdentity.dev ||
+      entry.ino !== parentIdentity.ino ||
+      held.dev !== parentIdentity.dev ||
+      held.ino !== parentIdentity.ino ||
+      realpathSync(dirname(probe)) !== parent
+    )
+      fail("export owner probe parent changed");
+    return opened.stat;
+  };
+  try {
+    const initial = revalidate();
+    if ((initial.mode & 0o777) !== 0o600 || initial.size !== 0 || initial.nlink !== 1)
+      fail("export owner probe must be one empty mode-0600 regular file");
+    onAfterOpen?.({ probe, stat: initial });
+    revalidate();
+    const directMapping = initial.uid === claimedUid && initial.gid === claimedGid;
+    const namespacedMapping = initial.uid === effectiveUid && initial.gid === effectiveGid;
+    if (!directMapping && !namespacedMapping)
+      fail("export owner probe contradicts claimed host and container ownership mappings");
+    return {
+      uid: initial.uid,
+      gid: initial.gid,
+      probe,
+      revalidate,
+      close,
+      syncParent: () => fsyncSync(parentDescriptor),
+    };
+  } catch (error) {
+    if (createdProbe) closeSync(parentDescriptor);
+    else close();
+    throw error;
+  }
+}
+
+// A read-only host-owned private directory carries the owner class across a
+// user namespace. Only the probe created here has destructive cleanup authority.
+export function createExportOwnerAuthority({
+  mappingDirectory,
+  mappingName,
+  expectedParent,
+  claimedUid,
+  claimedGid,
+  effectiveUid,
+  effectiveGid,
+  onAfterOpen,
+  onDurabilityOperation,
+} = {}) {
+  if (!mappingDirectory || mappingName !== ".cabadrive-export-owner-mapping")
+    fail("export owner mapping must name one private directory");
+  const parent = realpathSync(expectedParent);
+  const mapping = resolve(mappingDirectory);
+  const boundMapping = join(parent, mappingName);
+  let mappingDescriptor;
+  let parentDescriptor;
+  let parentIdentity;
+  let probeDescriptor;
+  let authority;
+  let probe;
+  let createdProbe;
+  let mappingIdentity;
+  const checkParent = () => {
+    const parentEntry = lstatSync(parent);
+    const parentHeld = fstatSync(parentDescriptor);
+    if (
+      !parentEntry.isDirectory() ||
+      parentEntry.isSymbolicLink() ||
+      !parentHeld.isDirectory() ||
+      parentEntry.dev !== parentIdentity.dev ||
+      parentEntry.ino !== parentIdentity.ino ||
+      parentHeld.dev !== parentIdentity.dev ||
+      parentHeld.ino !== parentIdentity.ino
+    )
+      fail("export owner mapping parent changed");
+  };
+  const checkMapping = () => {
+    checkParent();
+    const held = fstatSync(mappingDescriptor, { bigint: true });
+    for (const path of [mapping, boundMapping]) {
+      const entry = lstatSync(path, { bigint: true });
+      if (
+        !entry.isDirectory() ||
+        entry.isSymbolicLink() ||
+        !held.isDirectory() ||
+        ["dev", "ino", "mode", "uid", "gid"].some(
+          (key) => held[key] !== mappingIdentity[key] || entry[key] !== held[key],
+        )
+      )
+        fail("export owner mapping changed from its read-only owner class");
+    }
+  };
+  try {
+    parentDescriptor = openSync(
+      parent,
+      constants.O_RDONLY | constants.O_DIRECTORY | constants.O_NOFOLLOW | constants.O_NONBLOCK,
+    );
+    parentIdentity = fstatSync(parentDescriptor);
+    if (!parentIdentity.isDirectory()) fail("export owner mapping parent is not a directory");
+    mappingDescriptor = openSync(
+      mapping,
+      constants.O_RDONLY | constants.O_DIRECTORY | constants.O_NOFOLLOW | constants.O_NONBLOCK,
+    );
+    mappingIdentity = fstatSync(mappingDescriptor, { bigint: true });
+    if (!mappingIdentity.isDirectory() || (mappingIdentity.mode & 0o777n) !== 0o700n)
+      fail("export owner mapping must be a private mode-0700 directory");
+    checkMapping();
+    probe = join(parent, `.cabadrive-export-owner-probe.${randomUUID().replaceAll("-", "")}`);
+    probeDescriptor = openSync(
+      probe,
+      constants.O_RDWR |
+        constants.O_CREAT |
+        constants.O_EXCL |
+        constants.O_NOFOLLOW |
+        constants.O_NONBLOCK,
+      0o600,
+    );
+    const first = fstatSync(probeDescriptor);
+    createdProbe = {
+      descriptor: probeDescriptor,
+      stat: first,
+      identity: fstatSync(probeDescriptor, { bigint: true }),
+    };
+    assertPinnedRegular(probe, "created export owner probe", createdProbe);
+    if (!first.isFile() || first.nlink !== 1 || first.size !== 0 || (first.mode & 0o777) !== 0o600)
+      fail("created export owner probe is not one private regular file");
+    checkMapping();
+    fchownSync(probeDescriptor, Number(mappingIdentity.uid), Number(mappingIdentity.gid));
+    const ownedIdentity = fstatSync(probeDescriptor, { bigint: true });
+    if (
+      !ownedIdentity.isFile() ||
+      ownedIdentity.uid !== mappingIdentity.uid ||
+      ownedIdentity.gid !== mappingIdentity.gid ||
+      REGULAR_IDENTITY_FIELDS.filter((key) => !["uid", "gid", "ctimeNs"].includes(key)).some(
+        (key) => ownedIdentity[key] !== createdProbe.identity[key],
+      )
+    )
+      fail("created export owner probe changed across its own descriptor ownership operation");
+    // Only the deliberate fchown's uid/gid/ctime transition is admitted. Pin it
+    // before fsync so even a failed barrier retains exact cleanup authority.
+    createdProbe = {
+      descriptor: probeDescriptor,
+      stat: fstatSync(probeDescriptor),
+      identity: ownedIdentity,
+    };
+    assertPinnedRegular(probe, "created export owner probe", createdProbe);
+    fsyncSync(probeDescriptor);
+    assertPinnedRegular(probe, "created export owner probe", createdProbe);
+    authority = observeExportOwnerMapping({
+      probePath: probe,
+      expectedParent: parent,
+      claimedUid,
+      claimedGid,
+      effectiveUid,
+      effectiveGid,
+      createdProbe,
+      onAfterOpen,
+    });
+    probeDescriptor = undefined; // authority owns the exact created descriptor.
+    checkMapping();
+    const checkProbe = authority.revalidate;
+    const closeProbe = authority.close;
+    let closed = false;
+    return {
+      ...authority,
+      revalidate: () => {
+        checkMapping();
+        return checkProbe();
+      },
+      close: () => {
+        if (closed) return;
+        closed = true;
+        try {
+          onDurabilityOperation?.({ operation: "close-export-owner-probe", path: probe });
+          checkMapping();
+          checkProbe();
+          unlinkSync(probe);
+          fsyncSync(parentDescriptor); // sync the entry removal in its held actual parent.
+        } finally {
+          closeProbe();
+          closeSync(mappingDescriptor);
+          closeSync(parentDescriptor);
+        }
+      },
+    };
+  } catch (error) {
+    if (authority) {
+      try {
+        checkParent();
+        authority.revalidate();
+        unlinkSync(probe);
+        fsyncSync(parentDescriptor);
+      } catch {
+        /* Preserve a replacement or uncertain parent. */
+      }
+      authority.close();
+    } else if (probeDescriptor !== undefined) {
+      // A created FD, never an observed pathname, is the cleanup grant.
+      if (createdProbe) {
+        try {
+          checkParent();
+          assertPinnedRegular(probe, "created export owner probe", createdProbe);
+          unlinkSync(probe);
+          fsyncSync(parentDescriptor);
+        } catch {
+          /* Preserve a replacement or uncertain entry. */
+        }
+      }
+      closeSync(probeDescriptor);
+    }
+    if (mappingDescriptor !== undefined) closeSync(mappingDescriptor);
+    if (parentDescriptor !== undefined) closeSync(parentDescriptor);
+    throw error;
+  }
 }
 
 function copyPublishTree({ state, candidate, temporary, options, legacyValidation }) {
@@ -3856,80 +4050,184 @@ export function publishAndExportStaticRelease(options) {
       )
     : logicalOutput;
   const destination = resolve(options.destinationRoot);
-  const ownerFields = [options.ownerProbe, options.ownerUid, options.ownerGid];
+  const ownerSource = options.ownerMapping || options.ownerProbe;
+  const ownerFields = [ownerSource, options.ownerUid, options.ownerGid];
   const ownerFieldCount = ownerFields.filter((value) => value !== undefined).length;
-  if (ownerFieldCount !== 0 && ownerFieldCount !== ownerFields.length) {
-    fail("export owner probe, uid, and gid must be supplied together");
-  }
+  if (ownerFieldCount !== 0 && ownerFieldCount !== ownerFields.length)
+    fail("export owner authority, uid, and gid must be supplied together");
+  if (options.ownerMapping && options.ownerProbe)
+    fail("export owner mapping and existing probe cannot be combined");
   const ownerAuthority = ownerFieldCount
-    ? observeExportOwnerMapping({
-        probePath: options.ownerProbe,
-        expectedParent: dirname(destination),
-        claimedUid: options.ownerUid,
-        claimedGid: options.ownerGid,
-        effectiveUid: options.ownerEffectiveUid,
-        effectiveGid: options.ownerEffectiveGid,
-        onAfterOpen: options.onAfterOwnerProbeOpen,
-      })
+    ? options.ownerMapping
+      ? createExportOwnerAuthority({
+          mappingDirectory: options.ownerMapping,
+          mappingName: options.ownerMappingName,
+          expectedParent: dirname(destination),
+          claimedUid: options.ownerUid,
+          claimedGid: options.ownerGid,
+          effectiveUid: options.ownerEffectiveUid,
+          effectiveGid: options.ownerEffectiveGid,
+          onAfterOpen: options.onAfterOwnerProbeOpen,
+          onDurabilityOperation: options.onDurabilityOperation,
+        })
+      : observeExportOwnerMapping({
+          probePath: options.ownerProbe,
+          expectedParent: dirname(destination),
+          claimedUid: options.ownerUid,
+          claimedGid: options.ownerGid,
+          effectiveUid: options.ownerEffectiveUid,
+          effectiveGid: options.ownerEffectiveGid,
+          onAfterOpen: options.onAfterOwnerProbeOpen,
+        })
     : undefined;
-  const suppliedLegacyRoot = options.legacyRoot ? resolve(options.legacyRoot) : undefined;
-  const legacyValidation = suppliedLegacyRoot
-    ? basename(suppliedLegacyRoot) === "current"
-      ? pinLegacyHandoffCurrent(suppliedLegacyRoot)
-      : verifyLegacyHandoff(suppliedLegacyRoot)
-    : undefined;
-  if (suppliedLegacyRoot && !legacyValidation?.valid) {
-    fail(`legacy handoff is not authoritative: ${legacyValidation?.reason || "invalid"}`);
-  }
-  legacyValidation?.revalidate?.();
-  const admissionRequest = {
-    stateRoot: options.stateRoot,
-    candidateRoot,
-    release: manifest,
-    output,
-    destination,
-    operation: "publish-export",
-    legacyValidation,
-    projectKey: options.projectKey,
-  };
-  inspectPublishAdmission(admissionRequest);
-  options.onAfterReadOnlyAdmission?.(admissionRequest);
-  const state = ensureStateLayout(options.stateRoot);
-  const transactionOptions = {
-    faultAt: options.faultAt,
-    onDurabilityOperation: options.onDurabilityOperation,
-    renameNoReplaceHelper: options.renameNoReplaceHelper,
-    onBeforeExportPublish: options.onBeforeExportPublish,
-    onBeforeOwnershipChange: options.onBeforeOwnershipChange,
-    ownerUid: ownerAuthority?.uid,
-    ownerGid: ownerAuthority?.gid,
+  const originalDurability = options.onDurabilityOperation;
+  options = {
+    ...options,
     ownerAuthority,
+    onDurabilityOperation: (event) => {
+      ownerAuthority?.revalidate();
+      originalDurability?.(event);
+      ownerAuthority?.revalidate();
+    },
   };
-  const unlock = acquireLock(state, {
-    projectKey: options.projectKey,
-    onLockOperation: options.onLockOperation,
-    diagnosticHost: options.diagnosticHost,
-  });
   try {
-    // Finish the prior committed generation's bounded retirement before a
-    // new release can change its active/rollback authority.
-    resumePendingRetirement(state, options.generationRoot, logicalOutput, transactionOptions);
-    const lockedManifest = createCandidateManifest(candidateRoot);
-    if (
-      lockedManifest.releaseId !== manifest.releaseId ||
-      !sameEntries(lockedManifest.assets, manifest.assets) ||
-      !sameEntries(lockedManifest.mutable, manifest.mutable)
-    ) {
-      fail("candidate changed between read-only and locked admission");
+    const suppliedLegacyRoot = options.legacyRoot ? resolve(options.legacyRoot) : undefined;
+    const legacyValidation = suppliedLegacyRoot
+      ? basename(suppliedLegacyRoot) === "current"
+        ? pinLegacyHandoffCurrent(suppliedLegacyRoot)
+        : verifyLegacyHandoff(suppliedLegacyRoot)
+      : undefined;
+    if (suppliedLegacyRoot && !legacyValidation?.valid) {
+      fail(`legacy handoff is not authoritative: ${legacyValidation?.reason || "invalid"}`);
     }
     legacyValidation?.revalidate?.();
-    const lockedAdmission = inspectPublishAdmission({ ...admissionRequest, stateRoot: state });
-    if (lockedAdmission.terminal) {
-      syncAndRevalidateCommittedTerminal(
-        { ...admissionRequest, stateRoot: state },
-        lockedAdmission,
-        transactionOptions,
-      );
+    const admissionRequest = {
+      stateRoot: options.stateRoot,
+      candidateRoot,
+      release: manifest,
+      output,
+      destination,
+      operation: "publish-export",
+      legacyValidation,
+      projectKey: options.projectKey,
+    };
+    inspectPublishAdmission(admissionRequest);
+    options.onAfterReadOnlyAdmission?.(admissionRequest);
+    ownerAuthority?.revalidate();
+    const state = ensureStateLayout(options.stateRoot);
+    const transactionOptions = {
+      faultAt: options.faultAt,
+      onDurabilityOperation: options.onDurabilityOperation,
+      renameNoReplaceHelper: options.renameNoReplaceHelper,
+      onBeforeExportPublish: options.onBeforeExportPublish,
+      onBeforeOwnershipChange: options.onBeforeOwnershipChange,
+      ownerUid: ownerAuthority?.uid,
+      ownerGid: ownerAuthority?.gid,
+      ownerAuthority,
+    };
+    const unlock = acquireLock(state, {
+      projectKey: options.projectKey,
+      onLockOperation: options.onLockOperation,
+      diagnosticHost: options.diagnosticHost,
+    });
+    try {
+      // Finish the prior committed generation's bounded retirement before a
+      // new release can change its active/rollback authority.
+      resumePendingRetirement(state, options.generationRoot, logicalOutput, transactionOptions);
+      const lockedManifest = createCandidateManifest(candidateRoot);
+      if (
+        lockedManifest.releaseId !== manifest.releaseId ||
+        !sameEntries(lockedManifest.assets, manifest.assets) ||
+        !sameEntries(lockedManifest.mutable, manifest.mutable)
+      ) {
+        fail("candidate changed between read-only and locked admission");
+      }
+      legacyValidation?.revalidate?.();
+      const lockedAdmission = inspectPublishAdmission({ ...admissionRequest, stateRoot: state });
+      if (lockedAdmission.terminal) {
+        syncAndRevalidateCommittedTerminal(
+          { ...admissionRequest, stateRoot: state },
+          lockedAdmission,
+          transactionOptions,
+        );
+        retireOldPublishGenerations(
+          state,
+          options.generationRoot,
+          logicalOutput,
+          output,
+          transactionOptions,
+        );
+        ownerAuthority?.revalidate();
+        return { changed: false, releaseId: manifest.releaseId, manifest };
+      }
+      const published = buildStaticPublish({
+        ...options,
+        outputRoot: output,
+        stateRoot: state,
+        validatedLegacy: legacyValidation,
+        deferActivation: true,
+        lockHeld: true,
+      });
+      const exported = exportStaticPublish({
+        ...options,
+        outputRoot: output,
+        stateRoot: state,
+        validatedLegacy: legacyValidation,
+        allowPending: true,
+        options: transactionOptions,
+      });
+      const pending = readPendingPublish(state);
+      if (
+        !pending ||
+        pending.phase !== "export-durable" ||
+        !pendingCoordinatorRequestMatches(
+          pending,
+          resolve(options.destinationRoot),
+          legacyValidation,
+        )
+      ) {
+        fail("static publish/export transaction is not durably export-complete");
+      }
+      const boundary = {
+        state,
+        output,
+        destination,
+        release: manifest,
+        operation: "publish-export",
+        legacyValidation,
+      };
+      options.onBeforeActivationRevalidation?.(boundary);
+      ownerAuthority?.revalidate();
+      fault(transactionOptions, "before-activation-revalidation");
+      syncAndRevalidateJournalBoundary(boundary, candidateRoot, transactionOptions);
+      fault(transactionOptions, "before-current-activation");
+      const staged = stageStaticRelease({
+        ...options,
+        stateRoot: state,
+        validatedLegacy: legacyValidation,
+        lockHeld: true,
+        expectedManifest: published.manifest,
+        finalRevalidate: () => {
+          ownerAuthority?.revalidate();
+          assertFinalJournalBoundary(boundary, candidateRoot, { committed: false });
+        },
+      });
+      if (
+        staged.releaseId !== published.releaseId ||
+        published.releaseId !== exported.releaseId ||
+        !verifyCommittedState(state).valid
+      ) {
+        fail("static publish/export transaction changed between operations");
+      }
+      options.onBeforeJournalClearRevalidation?.(boundary);
+      ownerAuthority?.revalidate();
+      fault(transactionOptions, "before-clear-revalidation");
+      syncAndRevalidateJournalBoundary(boundary, candidateRoot, transactionOptions, {
+        committed: true,
+      });
+      fault(transactionOptions, "before-publish-journal-clear");
+      ownerAuthority?.revalidate();
+      clearPendingPublish(state, transactionOptions);
       retireOldPublishGenerations(
         state,
         options.generationRoot,
@@ -3937,77 +4235,13 @@ export function publishAndExportStaticRelease(options) {
         output,
         transactionOptions,
       );
-      return { changed: false, releaseId: manifest.releaseId, manifest };
+      ownerAuthority?.revalidate();
+      return exported;
+    } finally {
+      unlock();
     }
-    const published = buildStaticPublish({
-      ...options,
-      outputRoot: output,
-      stateRoot: state,
-      validatedLegacy: legacyValidation,
-      deferActivation: true,
-      lockHeld: true,
-    });
-    const exported = exportStaticPublish({
-      ...options,
-      outputRoot: output,
-      stateRoot: state,
-      validatedLegacy: legacyValidation,
-      allowPending: true,
-      options: transactionOptions,
-    });
-    const pending = readPendingPublish(state);
-    if (
-      !pending ||
-      pending.phase !== "export-durable" ||
-      !pendingCoordinatorRequestMatches(pending, resolve(options.destinationRoot), legacyValidation)
-    ) {
-      fail("static publish/export transaction is not durably export-complete");
-    }
-    const boundary = {
-      state,
-      output,
-      destination,
-      release: manifest,
-      operation: "publish-export",
-      legacyValidation,
-    };
-    options.onBeforeActivationRevalidation?.(boundary);
-    fault(transactionOptions, "before-activation-revalidation");
-    syncAndRevalidateJournalBoundary(boundary, candidateRoot, transactionOptions);
-    fault(transactionOptions, "before-current-activation");
-    const staged = stageStaticRelease({
-      ...options,
-      stateRoot: state,
-      validatedLegacy: legacyValidation,
-      lockHeld: true,
-      expectedManifest: published.manifest,
-      finalRevalidate: () =>
-        assertFinalJournalBoundary(boundary, candidateRoot, { committed: false }),
-    });
-    if (
-      staged.releaseId !== published.releaseId ||
-      published.releaseId !== exported.releaseId ||
-      !verifyCommittedState(state).valid
-    ) {
-      fail("static publish/export transaction changed between operations");
-    }
-    options.onBeforeJournalClearRevalidation?.(boundary);
-    fault(transactionOptions, "before-clear-revalidation");
-    syncAndRevalidateJournalBoundary(boundary, candidateRoot, transactionOptions, {
-      committed: true,
-    });
-    fault(transactionOptions, "before-publish-journal-clear");
-    clearPendingPublish(state, transactionOptions);
-    retireOldPublishGenerations(
-      state,
-      options.generationRoot,
-      logicalOutput,
-      output,
-      transactionOptions,
-    );
-    return exported;
   } finally {
-    unlock();
+    ownerAuthority?.close();
   }
 }
 
@@ -4041,6 +4275,8 @@ if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.ur
     ownerUid: parseOwnerId(values["owner-uid"], "--owner-uid"),
     ownerGid: parseOwnerId(values["owner-gid"], "--owner-gid"),
     ownerProbe: values["owner-probe"],
+    ownerMapping: values["owner-mapping"],
+    ownerMappingName: values["owner-mapping-name"],
   };
   const result =
     command === "stage"

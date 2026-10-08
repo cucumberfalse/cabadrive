@@ -6,11 +6,13 @@ import {
   chmodSync,
   existsSync,
   mkdirSync,
+  lstatSync,
   mkdtempSync,
   readFileSync,
   realpathSync,
   statSync,
   rmSync,
+  rmdirSync,
   writeFileSync,
 } from "node:fs";
 import { tmpdir } from "node:os";
@@ -553,6 +555,79 @@ function assertSequentialPublishGenerations(selectedProject) {
   }
 }
 
+// Docker creates private handoff metadata as root on a Linux host. Inspect it
+// through the same pinned validators in a read-only container; host reads of
+// exports below remain intentional checks of ownership handback.
+function literalHandoffMount(checkout, readonly = true) {
+  const source = join(checkout, ".cabadrive-release-handoff");
+  const field = `source=${source}`.replaceAll('"', '""');
+  return `type=bind,"${field}",target=/handoff${readonly ? ",readonly" : ""}`;
+}
+
+function assertPrivateLiteralHandoff(checkout, selectedProject) {
+  const result = JSON.parse(
+    run("docker", [
+      "run",
+      "--rm",
+      "--mount",
+      literalHandoffMount(checkout),
+      "--mount",
+      `type=bind,source=${join(root, "scripts")},target=/app,readonly`,
+      "node:22-alpine",
+      "node",
+      "--input-type=module",
+      "-e",
+      `import { lstatSync, readFileSync } from "node:fs";
+import { join } from "node:path";
+import { verifyAdoptedProject, pinLegacyHandoffCurrent } from "/app/stage-static-release.mjs";
+const [project, asset] = process.argv.slice(1);
+const record = "/handoff/.adopted-project";
+const metadata = () => {
+  const entry = lstatSync(record, { bigint: true });
+  if (!entry.isFile() || (entry.mode & 0o777n) !== 0o600n)
+    throw new Error("adopted project record lost private regular-file mode");
+  return ["dev", "ino", "mode", "uid", "gid", "size", "mtimeNs", "ctimeNs"]
+    .map(key => entry[key].toString());
+};
+const before = metadata();
+const adopted = verifyAdoptedProject({ handoffRoot: "/handoff" });
+const retained = pinLegacyHandoffCurrent(join("/handoff", project, "current"));
+const body = readFileSync(record, "utf8");
+const bytes = readFileSync(join(retained.root, asset), "utf8");
+retained.revalidate();
+if (JSON.stringify(metadata()) !== JSON.stringify(before))
+  throw new Error("read-only handoff inspection changed private metadata");
+process.stdout.write(JSON.stringify({ project: adopted.project, body, bytes, metadata: before }));`,
+      selectedProject,
+      legacyAssetPath.slice(1),
+    ]),
+  );
+  if (result.project !== selectedProject || result.body !== `${selectedProject}\n`)
+    throw new Error("literal checkout persisted the wrong private project");
+  if (result.bytes !== legacyBytes) throw new Error("literal checkout captured different A bytes");
+}
+
+function cleanupLiteralHandoff(checkout) {
+  const handoff = join(checkout, ".cabadrive-release-handoff");
+  if (!existsSync(handoff)) return;
+  if (!checkout.startsWith(`${temporary}/`) || !lstatSync(handoff).isDirectory())
+    throw new Error("refusing cleanup outside this literal fixture's real handoff");
+  // Only this fixture's private handoff is mounted; remove its entries without
+  // changing their permissions or touching the host-owned exported artifacts.
+  run("docker", [
+    "run",
+    "--rm",
+    "--mount",
+    literalHandoffMount(checkout, false),
+    "node:22-alpine",
+    "node",
+    "--input-type=module",
+    "-e",
+    'import { readdirSync, rmSync } from "node:fs"; import { join } from "node:path"; for (const name of readdirSync("/handoff")) rmSync(join("/handoff", name), { recursive: true });',
+  ]);
+  rmdirSync(handoff);
+}
+
 // Exercise literal host paths with real Docker label transport, bind CSV and
 // Compose adoption. Reuse this run's exact B images; never rebuild web content.
 async function assertLiteralCheckoutPaths() {
@@ -747,23 +822,7 @@ volumes:
           `literal checkout lost historical project: ${JSON.stringify({ checkout, resolved, selectedProject })}`,
         );
       inFixture("make", ["build"]);
-      const adopted = readFileSync(
-        join(checkout, ".cabadrive-release-handoff", ".adopted-project"),
-        "utf8",
-      );
-      if (adopted !== `${selectedProject}\n`)
-        throw new Error("literal checkout persisted the wrong project");
-      const retained = readFileSync(
-        join(
-          checkout,
-          ".cabadrive-release-handoff",
-          selectedProject,
-          "current",
-          legacyAssetPath.slice(1),
-        ),
-        "utf8",
-      );
-      if (retained !== legacyBytes) throw new Error("literal checkout captured different A bytes");
+      assertPrivateLiteralHandoff(checkout, selectedProject);
       inFixture("make", ["up"]);
       await waitFor(`http://localhost:${port}/`);
       assertExactLegacyAsset();
@@ -813,6 +872,7 @@ volumes:
         spawnSync("docker", ["volume", "rm", "-f", `${selectedProject}_${volume}`], {
           stdio: "ignore",
         });
+      cleanupLiteralHandoff(checkout);
     }
   }
 }

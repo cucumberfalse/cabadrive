@@ -239,9 +239,10 @@ test("documented Docker bootstrap publishes then exports one exact fresh transac
     );
     assert.match(staticExport, /--destination "\/export\/\$destination_name" "\$@"/);
     assert.match(staticExport, /--output \/publish\/cabadrive-static-publish/);
-    assert.match(staticExport, /\.cabadrive-export-owner-probe\.XXXXXXXX/);
-    assert.match(staticExport, /--owner-probe "\/export\/\$owner_probe_name"/);
-    assert.match(staticExport, /--owner-uid "\$\(id -u\)" --owner-gid "\$\(id -g\)"/);
+    assert.match(staticExport, /\.cabadrive-export-owner-mapping/);
+    assert.match(staticExport, /--owner-mapping \/owner-mapping --owner-mapping-name/);
+    assert.match(staticExport, /--volume "\$owner_mapping:\/owner-mapping:ro"/);
+    assert.doesNotMatch(staticExport, /chmod 600|exec 9|rm -f -- "\$owner_probe"/);
     assert.match(staticExport, /--generation-root \/publish/);
     assert.match(
       readme,

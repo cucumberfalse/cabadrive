@@ -78,35 +78,36 @@ fi
 # This is the same authoritative outgoing-runtime capture boundary used by
 # `make build`. Wrong-type current entries have already failed unchanged.
 "$script_dir/capture-legacy-assets.sh"
-owner_probe=
-cleanup_owner_probe() {
-  status=$?
-  trap - EXIT HUP INT TERM
-  if [ -n "${owner_probe:-}" ]; then
-    if [ -e "$owner_probe" ] || [ -L "$owner_probe" ]; then
-      current_probe_inode="$(ls -din -- "$owner_probe" 2>/dev/null | awk '{print $1}')"
-      if [ ! -L "$owner_probe" ] && [ "$current_probe_inode" = "$owner_probe_inode" ]; then
-        rm -f -- "$owner_probe" || status=1
-      else
-        printf '%s\n' 'export owner probe was replaced; refusing to remove the foreign entry' >&2
-        status=1
-      fi
-    fi
-    exec 9<&-
-  fi
-  exit "$status"
-}
-trap cleanup_owner_probe EXIT HUP INT TERM
+# A host-created private directory supplies only the host owner class seen
+# through Docker's namespace. It is read-only authority, never a cleanup grant.
+# The stager creates and holds its actual probe descriptor exclusively.
+owner_uid="$(id -u)"
+owner_gid="$(id -g)"
 old_umask="$(umask)"
 umask 077
-owner_probe="$(mktemp "$destination_parent/.cabadrive-export-owner-probe.XXXXXXXX")"
+owner_mapping="$destination_parent/.cabadrive-export-owner-mapping"
+if [ ! -e "$owner_mapping" ] && [ ! -L "$owner_mapping" ]; then
+  mkdir "$owner_mapping" || { umask "$old_umask"; exit 1; }
+fi
 umask "$old_umask"
-chmod 600 "$owner_probe"
-exec 9<"$owner_probe"
-owner_probe_inode="$(ls -din -- "$owner_probe" | awk '{print $1}')"
-owner_probe_name="${owner_probe##*/}"
-set -- --owner-probe "/export/$owner_probe_name" \
-  --owner-uid "$(id -u)" --owner-gid "$(id -g)" --generation-root /publish
+mapping_identity() {
+  [ ! -L "$1" ] && [ -d "$1" ] || return 1
+  LC_ALL=C ls -dlin -- "$1" | awk 'NR == 1 {print $1 ":" $2 ":" $4 ":" $5}'
+}
+owner_mapping_identity="$(mapping_identity "$owner_mapping")" || {
+  printf '%s\n' 'export owner mapping is not a private directory' >&2
+  exit 1
+}
+case "$owner_mapping_identity" in
+  *:drwx------*:"$owner_uid":"$owner_gid") ;;
+  *) printf '%s\n' 'export owner mapping is not private host-owned authority' >&2; exit 1 ;;
+esac
+owner_mapping_name="${owner_mapping##*/}"
+# Reuse one persistent read-only owner-class witness. Its contents are never
+# changed or removed: observation does not grant destructive creator authority.
+printf '%s\n' "retaining read-only export owner mapping witness: $owner_mapping" >&2
+set -- --owner-mapping /owner-mapping --owner-mapping-name "$owner_mapping_name" \
+  --owner-uid "$owner_uid" --owner-gid "$owner_gid" --generation-root /publish
 if [ -L "$legacy_handoff" ]; then
   set -- "$@" --legacy /legacy-handoff/current
 elif [ -e "$legacy_handoff" ]; then
@@ -114,8 +115,13 @@ elif [ -e "$legacy_handoff" ]; then
   exit 1
 fi
 docker compose -f "$repo_root/docker-compose.yml" build stager
+if [ "$(mapping_identity "$owner_mapping")" != "$owner_mapping_identity" ]; then
+  printf '%s\n' 'export owner mapping changed before stager admission' >&2
+  exit 1
+fi
 docker compose -f "$repo_root/docker-compose.yml" run --rm --no-deps \
   --volume "$destination_parent:/export" \
+  --volume "$owner_mapping:/owner-mapping:ro" \
   --entrypoint node stager \
   /app/scripts/stage-static-release.mjs publish-export \
   --state /state --candidate /candidate --output /publish/cabadrive-static-publish \
