@@ -234,6 +234,9 @@
 
 ## Verification Evidence
 
+- Evidence passed: C055-214-CSP actual-browser verification on effective content head `aa261a7cbfd24b7cc1e739f1c4be397526d5b55c` used isolated nginx Docker project `cabadrive-finalize214` at `http://127.0.0.1:5194`, with enforced response CSP verified rather than Vite preview. Ephemeral copies of both existing browser suites changed only the import to an auto instrumentation fixture; tracked product/tests/runtime/dependencies remain unchanged. Commands: `pnpm exec playwright test --config /private/tmp/cabadrive-finalize214-csp/playwright.config.ts` and companion manual config;146 app cases plus8 manual-ticket cases cover desktop/mobile home/learn, exam/start/completion/resume/leave, mistakes, vocabulary/detail, materials/tickets, process, CABA/RF, manual/front-matter/chapter/appendix/detail/lazy corpus, source-reader/search/translation modes, progress/export/import/reset and offline reload.
+- Evidence passed:154 distinct cases under real nginx policy,155 monitored records including one focused rerun; zero securitypolicyviolation events, zero enforced violations, zero console CSP errors, zero console errors and zero pageerrors. All successful document responses expose exactly the specified enforced CSP; actual network evidence includes `/assets/index-ui5s-K4J.js` and deferred `/assets/manual4Ruedas-BSu9JrPn.js`. Native Chromium hit SIGSEGV during one mobile lazy-chunk context teardown after assertions; only that case was rerun with `--project mobile --workers 1 --grep 'non-manual startup defers the manual corpus chunk until the manual view opens'` and passed EXIT0. Initial145 app+8 manual passes and focused1 pass establish all154 cases without a product fix or hidden test weakening. JSON audit/summary, unchanged assertions and dense-manual desktop/mobile screenshots retained in `/private/tmp/cabadrive-finalize214-csp`; summary records exact counts/hashes. HTTP/runtime smoke passed again; browser-run image `3c8faf0f1b02e1fad1204fb3d629efdb59c2c94eb93b2781cbbfa8939bc77a57` preserves prior JS hashes. Own Docker container/network removed successfully; siblings preserved.
+
 - Current implementation verification passed on the content committed as6a7205b2: full preflight EXIT0,556/556 Node tests,154/154 Playwright cases, memory/repository/content/quality/format/negative/build guards,2156-asset generated worker. Original nginx049's NS1–NS8 and local-first/offline outcomes remain covered.
 - Current real Docker evidence passed: project cabadrive-finalize214, port5194, build/up/down EXIT0, runtime imageae4c02775cd0efdc7a68855d4708d7518e2f7c3ebe9ab891bdd3d31c3b89034e. Exact five security headers on root/SW/current hashed JS/content image/404; immutable hashed assets;86400+stale604800 unhashed content; no-cache SW; no error Cache-Control; gzip and actual nginx PID1 non-root UID101. Sibling resources preserved.
 - Security evidence passed: source-map-js1.2.2 only via postcss8.5.28; manifest unchanged; four target lock-key/integrity/edge/snapshot lines audited; frozen install EXIT0 without hash drift. New055 owns this narrow dependency remediation.
@@ -445,9 +448,46 @@ Final architectural validation is invoked after this process preparation receive
 
 ## Final Validation Evidence
 
+- Effective content head: aa261a7cbfd24b7cc1e739f1c4be397526d5b55c
+- Architect validated effective content head: aa261a7cbfd24b7cc1e739f1c4be397526d5b55c
+- Current-PR-head read-only guard: local assigned214 continuation HEAD equals effective content head aa261a7cbfd24b7cc1e739f1c4be397526d5b55c at Architect inspection; no post-effective product, runtime, test, dependency or other substantive changes exist. The only proposed later diff is permitted original049 role-validation evidence. Orchestrator refreshes the actual GitHub PR head and verifies the evidence-only delta, all five exact-head checks, review/conversations and mergeability before finalization.
+
 - Architect return count:0/10; final original049 architectural pass is recorded after effective preparation SHA is committed.
 - Analyst return count:0/5; Analyst validation follows the passing Architect timestamp on exactly the same effective content SHA in Analyst-owned feature-request.md.
 - Limit escalation: none.
 - Final-validation evidence-only commit: later evidence must be limited to original049 role-owned validation notes/process evidence and pass the existing section/path guard. Any later substantive content restarts validation.
 - Current-PR-head read-only guard: Orchestrator must verify explicit effective SHA, prove later commits contain only permitted role evidence, and check exact-head required checks/review/conversations/conflicts before finalization.
 - Cleanup: not applicable; no deletion scope was assigned, current intake/continuation environments are preserved.
+
+
+## Final Architect Validation Notes
+
+Architect validation pass: passed
+Final Architect validation completed at: 2026-10-08T17:16:31Z
+Architect return count: 0 / 10
+Architect validated effective content head: aa261a7cbfd24b7cc1e739f1c4be397526d5b55c
+Architect validation evidence: Original nginx049 sole included PR #214 inspected against spec/plan/tasks, current process memory, actual nginx/Docker/CI/test/lock diff and customer intent. Full preflight556/556 Node and154/154 browser cases, isolated port5194 real Docker headers/gzip/404/non-rootUID101 lifecycle, frozen source-map-js1.2.2 graph and independent no-finding Review on product-identical6a7205b2 establish acceptance. Preparation6a7205b2..aa261a7c changed only canonical049 task evidence; runtime, tests, dependency and product content are byte-identical.
+Architect disposition: T010 independent Review completed; T011 all scoped review/implementation feedback disposed; T012 no engineering follow-up remains after consolidated security/runtime verification; T014 architectural validation completes here. T013 exact remote check state, T015 ordered Analyst validation and T016 expected-head finalization/merge are sequential role/merge gates, not missing engineering tasks. No unresolved implementation feedback or owner-risk decision remains.
+Open Architect dispositions: none
+Architect validation evidence: This pass covers original049 and integrated security baseline only. Cumulative055 and downstream217/215 remain in progress and require their own later integrated role evidence; no prerequisite merge or remote green check is fabricated. Orchestrator must obtain all five exact-current-head checks and resolved conversations, then run the authoritative GitHub/current-head guard before authorized merge.
+
+
+## Final Architect Validation Notes
+
+Architect validation pass: not ready
+Architect return count: 1 / 10
+Architect gaps: Analyst final verification correctly identified that the154-case Playwright preflight used Vite preview without nginx CSP. Header/runtime evidence proves server policy emission but does not prove original049 FR5/AC2 browser compatibility under that policy. The earlier all-acceptance claim is superseded until actual Docker browser evidence is recorded; no code defect is currently established.
+Architect disposition: Accepted evidence task C055-214-CSP. Implementation214 must run a real browser against its isolated Docker5194 runtime, visit all learner screens and representative lazy/detail routes, collect securitypolicyviolation events and console/page errors, and assert rendered app/no enforced CSP violations. A complete existing browser suite may reuse the Docker server; ephemeral instrumentation is sufficient without a repository test/product edit. Record commands and actual results in allowed Verification Evidence bullets. Genuine CSP defects require role-routed substantive repair and renewed effective content SHA; evidence-only success retains effective SHAaa261a7cbfd24b7cc1e739f1c4be397526d5b55c and receives renewed Architect-before-Analyst notes.
+Open Architect dispositions: C055-214-CSP actual Docker browser verification
+
+
+## Final Architect Validation Notes
+
+Architect validation pass: passed
+Final Architect validation completed at: 2026-10-08T17:28:21Z
+Architect return count: 1 / 10
+Architect validated effective content head: aa261a7cbfd24b7cc1e739f1c4be397526d5b55c
+Architect validation evidence: Renewed original049 validation inspected actual Docker browser audit/summary, instrumentation, focused rerun log and tracked evidence.154 distinct original desktop/mobile cases pass against nginx5194,155 monitored records,182 document responses carry the exact enforced CSP, zero securitypolicyviolation/enforced violations/console CSP/console errors/pageerrors; actual manual4Ruedas and source-reader deferred shards loaded. Raw events SHA256 matches summary40fa0c9da057836fc79f0a36876b39778df4b8c9375ed95b4b779f643c7bc73a. The single native Chromium context-teardown crash was independently rerun successfully without changing tracked assertions or product.
+Architect disposition: C055-214-CSP resolved by actual enforced-policy browser evidence, closing originalFR5/AC2 and superseding the earlier evidence gap. T010–T012/T014 architectural and engineering obligations are complete; no open implementation task/disposition or accepted owner risk remains. Prior full556/154 preflight, actual headers/gzip/404/non-rootUID101 Docker smoke, compatible frozen source-map-js1.2.2 graph, independent product-current review and canonical process preparation remain valid on the same effective SHA. Only sequential Analyst and live remote finalization gates remain; no gates are waived.
+Open Architect dispositions: none
+Architect validation evidence: No substantive post-effective change occurred. All proposed changes after aa261a7cbfd24b7cc1e739f1c4be397526d5b55c are permitted original049 verification and role-validation evidence.055 remains in progress and downstream217/215 validations are excluded from this original049 pass.
