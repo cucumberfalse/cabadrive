@@ -24,6 +24,7 @@ import {
   realpathSync,
   renameSync,
   rmSync,
+  rmdirSync,
   statSync,
   symlinkSync,
   unlinkSync,
@@ -795,7 +796,10 @@ export function publishLegacyHandoffPointer({
   }
 }
 
-export function verifyLegacyHandoff(legacyRoot, { onMarkerOpen } = {}) {
+export function verifyLegacyHandoff(
+  legacyRoot,
+  { onMarkerOpen, onSourceOpen, expectedSourceId, expectedSourceKind } = {},
+) {
   try {
     const suppliedRoot = resolve(legacyRoot);
     const root = realpathSync(suppliedRoot);
@@ -830,11 +834,21 @@ export function verifyLegacyHandoff(legacyRoot, { onMarkerOpen } = {}) {
       });
       const actual = createLegacyHandoffManifest({
         legacyRoot: root,
-        sourceId: readRegularFileNoFollow(sourceIdPath, "legacy handoff source-id"),
-        sourceKind: readRegularFileNoFollow(sourceKindPath, "legacy handoff source-kind"),
+        sourceId: readRegularFileNoFollow(sourceIdPath, "legacy handoff source-id", {
+          onOpen: onSourceOpen,
+        }),
+        sourceKind: readRegularFileNoFollow(sourceKindPath, "legacy handoff source-kind", {
+          onOpen: onSourceOpen,
+        }),
       });
       if (!sameLegacyManifest(marker, actual)) {
         fail("legacy handoff inventory does not match");
+      }
+      if (
+        (expectedSourceId !== undefined && actual.sourceId !== expectedSourceId) ||
+        (expectedSourceKind !== undefined && actual.sourceKind !== expectedSourceKind)
+      ) {
+        fail("legacy handoff source identity does not match expected source");
       }
       return actual;
     };
@@ -856,7 +870,10 @@ export function verifyLegacyHandoff(legacyRoot, { onMarkerOpen } = {}) {
   }
 }
 
-export function pinLegacyHandoffCurrent(legacyCurrent, { onAfterClassify, onAfterValidate } = {}) {
+export function pinLegacyHandoffCurrent(
+  legacyCurrent,
+  { onAfterClassify, onAfterValidate, ...verificationOptions } = {},
+) {
   const current = resolve(legacyCurrent);
   let entry;
   try {
@@ -882,7 +899,7 @@ export function pinLegacyHandoffCurrent(legacyCurrent, { onAfterClassify, onAfte
   if (targetEntry.isSymbolicLink() || !targetEntry.isDirectory()) {
     fail("legacy handoff current target must be a directory");
   }
-  const verification = verifyLegacyHandoff(target);
+  const verification = verifyLegacyHandoff(target, verificationOptions);
   if (!verification.valid) {
     fail(`legacy handoff is not authoritative: ${verification.reason || "invalid"}`);
   }
@@ -2661,26 +2678,336 @@ function publishOutputNoReplace({ temporary, output, pending, options }) {
   invokeDurability(options, "rename-output", output);
 }
 
-function retireOldPublishGenerations(generationRoot, logicalOutput, activeOutput, options) {
+const RETIREMENT_PENDING = "publish-retirement.json";
+
+function retirementIdentity(entry) {
+  return { device: entry.dev, inode: entry.ino };
+}
+
+function retirementIdentityMatches(entry, identity) {
+  return entry && entry.dev === identity.device && entry.ino === identity.inode;
+}
+
+function retirementTree(directory) {
+  const entries = [];
+  const walk = (parent, prefix = "") => {
+    for (const name of requireDirectoryNames(parent).sort(ordinal)) {
+      normalizeRelative(name);
+      const path = join(parent, name);
+      const entry = lstatSync(path);
+      const relative = prefix ? `${prefix}/${name}` : name;
+      if (entry.isSymbolicLink() || (!entry.isDirectory() && !entry.isFile())) {
+        fail(`retirement tree contains an unsafe entry: ${path}`);
+      }
+      const item = {
+        path: relative,
+        type: entry.isDirectory() ? "directory" : "file",
+        ...retirementIdentity(entry),
+      };
+      if (entry.isFile()) Object.assign(item, sha256(path));
+      entries.push(item);
+      if (entry.isDirectory()) walk(path, relative);
+    }
+  };
+  walk(directory);
+  return entries.sort((left, right) => ordinal(left.path, right.path));
+}
+
+function retirementLink(root, output) {
+  const directory = exactPublishedOutputDirectory(root, output);
+  if (!directory) fail(`publish generation is not safely contained: ${output}`);
+  return { path: output, target: basename(directory), ...retirementIdentity(lstatSync(output)) };
+}
+
+function retirementKeys(value, expected) {
+  return (
+    value &&
+    typeof value === "object" &&
+    !Array.isArray(value) &&
+    Object.keys(value).sort().join(",") === expected.split(",").sort().join(",")
+  );
+}
+
+function validateRetirement(record, root, logicalOutput, activeOutput) {
+  if (
+    !retirementKeys(
+      record,
+      "schemaVersion,root,rootIdentity,logicalOutput,activeOutput,current,protected,output,target,entries",
+    ) ||
+    record.schemaVersion !== 1 ||
+    record.root !== root ||
+    record.logicalOutput !== logicalOutput ||
+    record.activeOutput !== activeOutput ||
+    !retirementKeys(record.rootIdentity, "device,inode") ||
+    !retirementIdentityMatches(noFollowEntry(root), record.rootIdentity) ||
+    !Array.isArray(record.protected) ||
+    record.protected.length !== 2 ||
+    !Array.isArray(record.entries)
+  ) {
+    fail("retirement journal does not match its generation domain");
+  }
+  const validLink = (link) =>
+    retirementKeys(link, "path,target,device,inode") &&
+    typeof link.path === "string" &&
+    dirname(link.path) === root &&
+    basename(link.path).startsWith(`${basename(logicalOutput)}-`) &&
+    validPublishTransactionId(link.target, link.path) &&
+    Number.isSafeInteger(link.device) &&
+    Number.isSafeInteger(link.inode);
+  if (
+    !validLink(record.output) ||
+    !retirementKeys(record.target, "name,device,inode") ||
+    record.target.name !== record.output.target ||
+    !Number.isSafeInteger(record.target.device) ||
+    !Number.isSafeInteger(record.target.inode) ||
+    !record.protected.every(validLink) ||
+    record.protected[0].path !== activeOutput ||
+    record.protected[0].path === record.protected[1].path ||
+    record.protected.some(
+      (link) => link.path === record.output.path || link.target === record.output.target,
+    )
+  ) {
+    fail("retirement journal has unsafe or protected generation authority");
+  }
+  for (const link of record.protected) {
+    const entry = noFollowEntry(link.path);
+    if (
+      !entry?.isSymbolicLink() ||
+      !retirementIdentityMatches(entry, link) ||
+      readlinkSync(link.path) !== link.target ||
+      !exactPublishedOutputDirectory(root, link.path)
+    )
+      fail("retirement protected generation changed");
+  }
+  const outputEntry = noFollowEntry(record.output.path);
+  if (
+    outputEntry &&
+    (!outputEntry.isSymbolicLink() ||
+      !retirementIdentityMatches(outputEntry, record.output) ||
+      readlinkSync(record.output.path) !== record.output.target)
+  )
+    fail("retirement output link changed");
+  const known = new Map();
+  for (const item of record.entries) {
+    if (
+      !retirementKeys(
+        item,
+        item?.type === "file" ? "path,type,device,inode,size,sha256" : "path,type,device,inode",
+      ) ||
+      !["file", "directory"].includes(item.type) ||
+      !Number.isSafeInteger(item.device) ||
+      !Number.isSafeInteger(item.inode) ||
+      (item.type === "file" &&
+        (!Number.isSafeInteger(item.size) ||
+          item.size < 0 ||
+          typeof item.sha256 !== "string" ||
+          !/^[a-f0-9]{64}$/.test(item.sha256)))
+    )
+      fail("retirement journal has an invalid tree inventory");
+    normalizeRelative(item.path);
+    if (known.has(item.path)) fail("retirement journal has duplicate tree entries");
+    known.set(item.path, item);
+  }
+  const target = join(root, record.target.name);
+  const targetEntry = noFollowEntry(target);
+  if (targetEntry) {
+    if (
+      !targetEntry.isDirectory() ||
+      targetEntry.isSymbolicLink() ||
+      !retirementIdentityMatches(targetEntry, record.target)
+    )
+      fail("retirement target tree identity changed");
+    const actual = retirementTree(target);
+    if (outputEntry && actual.length !== record.entries.length)
+      fail("retirement referenced tree is incomplete");
+    for (const item of actual) {
+      if (JSON.stringify(known.get(item.path)) !== JSON.stringify(item))
+        fail("retirement remaining tree is foreign or substituted");
+    }
+  } else if (outputEntry) {
+    fail("retirement referenced tree is absent");
+  }
+  return { target, targetEntry, outputEntry, known };
+}
+
+function resumeRetirement(state, record, root, logicalOutput, activeOutput, options) {
+  const committed = verifyCommittedState(state);
+  if (
+    !committed.valid ||
+    activeOutput !== join(root, `${basename(logicalOutput)}-${committed.releaseId}`)
+  )
+    fail("retirement active release no longer matches committed state");
+  const current = join(state, "current");
+  const currentIdentity = lstatSync(current);
+  const currentTarget = readlinkSync(current);
+  if (
+    !retirementKeys(record.current, "path,target,device,inode") ||
+    record.current.path !== current ||
+    !retirementIdentityMatches(currentIdentity, record.current) ||
+    record.current.target !== currentTarget
+  )
+    fail("retirement committed current identity changed");
+  const assertCurrent = () => {
+    const entry = noFollowEntry(current);
+    if (
+      !entry?.isSymbolicLink() ||
+      !retirementIdentityMatches(entry, retirementIdentity(currentIdentity)) ||
+      readlinkSync(current) !== currentTarget
+    )
+      fail("retirement committed current pointer changed");
+  };
+  const journal = join(state, RETIREMENT_PENDING);
+  const { descriptor, stat: journalIdentity } = openRegularFileNoFollow(
+    journal,
+    "retirement journal",
+  );
+  try {
+    const journalBytes = readAuthorityFile(journal, "retirement journal");
+    if (JSON.stringify(JSON.parse(journalBytes)) !== JSON.stringify(record))
+      fail("retirement journal changed before recovery");
+    const assertJournal = () => {
+      assertCurrent();
+      requireStableOpenPath(journal, "retirement journal", journalIdentity);
+      const current = lstatSync(journal);
+      if (
+        current.size !== journalIdentity.size ||
+        current.mtimeMs !== journalIdentity.mtimeMs ||
+        current.ctimeMs !== journalIdentity.ctimeMs
+      )
+        fail("retirement journal contents changed");
+    };
+    assertJournal();
+    // Complete the visible journal's durability barrier through the same
+    // no-follow/nonblocking descriptor before removing any owned entry.
+    invokeDurability(options, "fsync-file", journal);
+    fsyncSync(descriptor);
+    assertJournal();
+    syncDirectory(state, options);
+    assertJournal();
+    let authority = validateRetirement(record, root, logicalOutput, activeOutput);
+    invokeDurability(options, "retirement-journal-durable", journal);
+    assertJournal();
+    authority = validateRetirement(record, root, logicalOutput, activeOutput);
+    if (authority.outputEntry) {
+      unlinkSync(record.output.path);
+      invokeDurability(options, "retirement-unlink", record.output.path);
+    }
+    syncDirectory(root, options);
+    invokeDurability(options, "retirement-unlink-durable", root);
+    assertJournal();
+    authority = validateRetirement(record, root, logicalOutput, activeOutput);
+    if (authority.targetEntry) {
+      const entries = retirementTree(authority.target).sort(
+        (left, right) =>
+          right.path.split("/").length - left.path.split("/").length ||
+          ordinal(left.path, right.path),
+      );
+      for (const item of entries) {
+        assertJournal();
+        // Check each ancestor against the journal before any path operation can
+        // traverse it. Partial deletion permits missing entries only, never new
+        // bytes, replacement inodes, symlinks, or an unrecorded subtree.
+        const parts = item.path.split("/");
+        for (let count = 0; count < parts.length; count += 1) {
+          const ancestor =
+            count === 0 ? authority.target : join(authority.target, ...parts.slice(0, count));
+          const expected =
+            count === 0 ? record.target : authority.known.get(parts.slice(0, count).join("/"));
+          const entry = noFollowEntry(ancestor);
+          if (
+            !entry?.isDirectory() ||
+            entry.isSymbolicLink() ||
+            !retirementIdentityMatches(entry, expected)
+          )
+            fail("retirement removal ancestor changed");
+        }
+        const path = join(authority.target, item.path);
+        const entry = noFollowEntry(path);
+        if (
+          !retirementIdentityMatches(entry, item) ||
+          entry.isSymbolicLink() ||
+          (item.type === "file"
+            ? !entry.isFile() || !equalEntry(sha256(path), item)
+            : !entry.isDirectory())
+        )
+          fail("retirement removal entry changed");
+        if (item.type === "directory") rmdirSync(path);
+        else unlinkSync(path);
+        invokeDurability(options, "retirement-remove-entry", path);
+      }
+      assertJournal();
+      validateRetirement(record, root, logicalOutput, activeOutput);
+      rmdirSync(authority.target);
+      invokeDurability(options, "retirement-remove-tree", authority.target);
+    }
+    syncDirectory(root, options);
+    invokeDurability(options, "retirement-tree-durable", root);
+    assertJournal();
+    validateRetirement(record, root, logicalOutput, activeOutput);
+    invokeDurability(options, "retirement-before-clear", journal);
+    assertJournal();
+    if (readAuthorityFile(journal, "retirement journal") !== journalBytes)
+      fail("retirement journal contents changed before clear");
+    assertJournal();
+    unlinkSync(journal);
+    invokeDurability(options, "retirement-clear", journal);
+    syncDirectory(state, options);
+  } finally {
+    closeSync(descriptor);
+  }
+}
+
+function resumePendingRetirement(state, generationRoot, logicalOutput, options) {
+  const journal = join(state, RETIREMENT_PENDING);
+  if (!noFollowEntry(journal)) return;
+  if (!generationRoot) fail("retirement recovery requires its original generation domain");
+  const root = assertAdmissionDirectory(resolve(generationRoot), "publish generation root");
+  const pending = readAuthorityJson(journal, "retirement journal");
+  if (typeof pending?.activeOutput !== "string")
+    fail("retirement journal has no active generation");
+  resumeRetirement(state, pending, root, logicalOutput, pending.activeOutput, options);
+}
+
+function retireOldPublishGenerations(state, generationRoot, logicalOutput, activeOutput, options) {
   if (!generationRoot) return;
-  const root = realpathSync(generationRoot);
+  const root = assertAdmissionDirectory(resolve(generationRoot), "publish generation root");
+  const journal = join(state, RETIREMENT_PENDING);
+  if (noFollowEntry(journal)) {
+    const pending = readAuthorityJson(journal, "retirement journal");
+    resumeRetirement(state, pending, root, logicalOutput, activeOutput, options);
+  }
   const prefix = `${basename(logicalOutput)}-`;
   const candidates = requireDirectoryNames(root)
     .filter((name) => name.startsWith(prefix))
     .map((name) => join(root, name))
     .filter((path) => noFollowEntry(path)?.isSymbolicLink())
     .sort((left, right) => lstatSync(right).mtimeMs - lstatSync(left).mtimeMs);
-  const protectedPaths = new Set([activeOutput]);
   const rollback = candidates.find((path) => path !== activeOutput);
-  if (rollback) protectedPaths.add(rollback);
+  const protectedPaths = new Set([activeOutput, rollback]);
   for (const output of candidates) {
     if (protectedPaths.has(output)) continue;
-    const directory = exactPublishedOutputDirectory(root, output);
-    if (!directory) fail(`old publish generation is not safely contained: ${output}`);
-    unlinkSync(output);
-    syncDirectory(root, options);
-    rmSync(directory, { recursive: true, force: false });
-    syncDirectory(root, options);
+    const link = retirementLink(root, output);
+    const directory = join(root, link.target);
+    const record = {
+      schemaVersion: 1,
+      root,
+      rootIdentity: retirementIdentity(lstatSync(root)),
+      logicalOutput,
+      activeOutput,
+      current: {
+        path: join(state, "current"),
+        target: readlinkSync(join(state, "current")),
+        ...retirementIdentity(lstatSync(join(state, "current"))),
+      },
+      protected: [retirementLink(root, activeOutput), retirementLink(root, rollback)],
+      output: link,
+      target: { name: link.target, ...retirementIdentity(lstatSync(directory)) },
+      entries: retirementTree(directory),
+    };
+    validateRetirement(record, root, logicalOutput, activeOutput);
+    invokeDurability(options, "retirement-prepare", journal);
+    writeAtomically(state, journal, `${JSON.stringify(record)}\n`, options);
+    resumeRetirement(state, record, root, logicalOutput, activeOutput, options);
   }
 }
 
@@ -3319,6 +3646,9 @@ export function publishAndExportStaticRelease(options) {
     diagnosticHost: options.diagnosticHost,
   });
   try {
+    // Finish the prior committed generation's bounded retirement before a
+    // new release can change its active/rollback authority.
+    resumePendingRetirement(state, options.generationRoot, logicalOutput, transactionOptions);
     const lockedManifest = createCandidateManifest(candidateRoot);
     if (
       lockedManifest.releaseId !== manifest.releaseId ||
@@ -3336,6 +3666,7 @@ export function publishAndExportStaticRelease(options) {
         transactionOptions,
       );
       retireOldPublishGenerations(
+        state,
         options.generationRoot,
         logicalOutput,
         output,
@@ -3402,7 +3733,13 @@ export function publishAndExportStaticRelease(options) {
     });
     fault(transactionOptions, "before-publish-journal-clear");
     clearPendingPublish(state, transactionOptions);
-    retireOldPublishGenerations(options.generationRoot, logicalOutput, output, transactionOptions);
+    retireOldPublishGenerations(
+      state,
+      options.generationRoot,
+      logicalOutput,
+      output,
+      transactionOptions,
+    );
     return exported;
   } finally {
     unlock();
@@ -3485,7 +3822,12 @@ if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.ur
                           faultAt: values.fault,
                         })
                       : command === "legacy-verify"
-                        ? verifyLegacyHandoff(values.legacy)
+                        ? (basename(resolve(values.legacy)) === "current"
+                            ? pinLegacyHandoffCurrent
+                            : verifyLegacyHandoff)(values.legacy, {
+                            expectedSourceId: values["source-id"],
+                            expectedSourceKind: values["source-kind"],
+                          })
                         : fail(`unknown command ${command}`);
   if (command === "verify" || command === "legacy-verify") {
     process.stdout.write(`${JSON.stringify(result)}\n`);

@@ -154,6 +154,8 @@ function createExclusiveCaptureFixture(label) {
 set -eu
 printf '%s\n' "$*" >>"$CABADRIVE_DOCKER_LOG"
 if [ "$1" = compose ]; then printf '%s\n' legacy-container; exit 0; fi
+if [ "$1" = inspect ]; then printf '%s\\n' immutable-legacy-image; exit 0; fi
+if [ "$1" = image ] && [ "$2" = inspect ]; then exit 0; fi
 if [ "$1" = volume ] && [ "$2" = inspect ]; then exit 1; fi
 if [ "$1" = cp ]; then mkdir -p "$3"; printf '%s' legacy-bytes >"$3/lazy.js"; exit 0; fi
 if [ "$1" = run ]; then exit 0; fi
@@ -352,6 +354,8 @@ test("make build propagates capture failure before starting an image build", () 
     `#!/bin/sh
 set -eu
 if [ "$1" = compose ]; then printf '%s\\n' legacy-container; exit 0; fi
+if [ "$1" = inspect ]; then printf '%s\\n' immutable-legacy-image; exit 0; fi
+if [ "$1" = image ] && [ "$2" = inspect ]; then exit 0; fi
 if [ "$1" = volume ] && [ "$2" = inspect ]; then exit 1; fi
 if [ "$1" = cp ]; then exit 73; fi
 if [ "$1" = compose ] && [ "$2" = build ]; then : >"$CABADRIVE_BUILD_SENTINEL"; exit 0; fi
@@ -1408,7 +1412,10 @@ if [ "$1" = create ]; then printf '%s\\n' replacement-container; exit 0; fi
 if [ "$1" = cp ]; then mkdir -p "$3"; printf '%s' replacement-bytes >"$3/new-a.js"; exit 0; fi
 if [ "$1" = run ]; then
   case "$*" in
-    *legacy-verify*) exit 0 ;;
+    *legacy-verify*)
+      case "$*" in *'--source-id new-image'*) exit 1 ;; esac
+      exit 0
+      ;;
     *legacy-write*)
       release="$(find "${root}/.cabadrive-release-handoff/fixture/releases" -mindepth 1 -maxdepth 1 -type d ! -name old | sed -n '1p')"
       printf '%s\n' new-image >"$release/source-id"
@@ -1462,6 +1469,8 @@ test("an incomplete volume does not suppress capture of a running legacy release
     `#!/bin/sh
 set -eu
 if [ "$1" = compose ]; then printf '%s\\n' running-legacy; exit 0; fi
+if [ "$1" = inspect ]; then printf '%s\\n' immutable-legacy-image; exit 0; fi
+if [ "$1" = image ] && [ "$2" = inspect ]; then exit 0; fi
 if [ "$1" = volume ] && [ "$2" = inspect ]; then exit 0; fi
 if [ "$1" = run ]; then
   case "$*" in
@@ -1519,6 +1528,8 @@ test("a verifier-rejected state never becomes a source through an attached conta
     `#!/bin/sh
 set -eu
 if [ "$1" = compose ]; then printf '%s\\n' rejected-state-container; exit 0; fi
+if [ "$1" = inspect ]; then printf '%s\\n' immutable-legacy-image; exit 0; fi
+if [ "$1" = image ] && [ "$2" = inspect ]; then exit 0; fi
 if [ "$1" = volume ] && [ "$2" = inspect ]; then exit 0; fi
 if [ "$1" = run ]; then
   case "$*" in

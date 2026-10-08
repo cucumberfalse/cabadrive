@@ -375,7 +375,7 @@ verify_handoff() {
   docker run --rm \
     --mount "type=bind,source=$script_dir,target=/app,readonly" \
     --mount "type=bind,source=$handoff_base,target=/handoff,readonly" \
-    node:22-alpine node /app/stage-static-release.mjs legacy-verify --legacy /handoff/current
+    node:22-alpine node /app/stage-static-release.mjs legacy-verify --legacy /handoff/current "$@"
 }
 
 publish_handoff() {
@@ -475,6 +475,23 @@ if docker volume inspect "$state_volume" >/dev/null 2>&1; then
 fi
 
 if [ -n "$container" ]; then
+  # The selected container's immutable image identity, never a mutable tag,
+  # decides whether the baked pre-feature assets can be an independent source.
+  if ! container_image="$(docker inspect --format '{{.Image}}' "$container")" || [ -z "$container_image" ]; then
+    printf '%s\n' 'failed to inspect selected container image identity' >&2
+    exit 1
+  fi
+  if classify_runtime_label "$container_image"; then
+    if verify_handoff >/dev/null 2>&1; then
+      printf '%s\n' 'validated preserved legacy handoff is the independent retained source'
+      exit 0
+    fi
+    printf '%s\n' 'post-feature container has no authoritative independent legacy handoff' >&2
+    exit 1
+  else
+    runtime_label_status=$?
+    if [ "$runtime_label_status" -ne 1 ]; then exit 1; fi
+  fi
   source="$container"
 else
   if image_output="$(inspect_runtime_image "${project}-cabadrive")"; then
@@ -503,9 +520,7 @@ fi
 # A handoff is authoritative only when its independently generated canonical
 # inventory and exact source identity revalidate against the outgoing legacy
 # container/image. A replaced A source must be captured again before staging.
-if [ -n "$source" ] && verify_handoff >/dev/null 2>&1 &&
-  [ "$(cat "$handoff/source-id" 2>/dev/null || true)" = "$source" ] &&
-  [ "$(cat "$handoff/source-kind" 2>/dev/null || true)" = "$source_kind" ]; then
+if [ -n "$source" ] && verify_handoff --source-id "$source" --source-kind "$source_kind" >/dev/null 2>&1; then
   printf '%s\n' 'validated independent legacy handoff is the retained source'
   exit 0
 fi

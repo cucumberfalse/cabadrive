@@ -80,7 +80,14 @@ The stager's serving output and scratch tree share the project-scoped
 `static-publish` Compose volume mounted at `/publish`. Each release uses an
 immutable contained generation, so sequential releases in the same Compose
 project do not collide; post-commit retirement preserves the active and one
-rollback generation. Journal-owned recovery survives separate
+rollback generation. Before removing an older output, a durable
+`publish-retirement.json` record binds its exact link, tree inode and file
+inventory, the committed current pointer, and both protected generations.
+Interrupted unlink, partial removal, and sync failures resume only the recorded
+remaining entries; substituted journals or trees fail closed. A later release
+finishes any prior retirement under the existing lock before publishing or
+activating its new generation. Unreferenced foreign trees are never pruned.
+Journal-owned recovery survives separate
 `docker compose run --rm` containers. Physical destination ownership is proven
 by an unpredictable journal-bound record before publication and a durable
 state-side path/device/inode receipt afterward. The journal binds the no-follow

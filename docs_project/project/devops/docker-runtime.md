@@ -123,7 +123,25 @@ shared `cabadrive:local` image.
 ## Implementation
 
 - `Dockerfile` builds the Vite app in a Node 22 Alpine stage.
-- Runtime is nginx on port `8080` inside the container.
+- Runtime is nginx on port `8080` inside the container, served from the
+  `nginxinc/nginx-unprivileged:1.29-alpine` image so the nginx master runs as a
+  non-root user (uid 101) rather than root.
+- `nginx.conf` applies a split cache policy (immutable, one-year
+  `Cache-Control` on hashed `/assets/` bundles; `max-age=86400` plus
+  `stale-while-revalidate` on non-hashed `/content/assets/` media), baseline
+  security headers (including a strict `'self'` Content-Security-Policy,
+  `X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`, and
+  `Permissions-Policy`), and gzip for text responses. Cache-Control is derived
+  from a single `map $uri` and emitted with the security headers via one
+  server-level `add_header`, so no `location` block overrides header
+  inheritance.
+- The service worker installs one atomic precache batch of `Request` objects
+  with `cache: "reload"`, so a new online release fetches current origin bytes
+  even when stable content URLs have fresh entries in the browser HTTP cache.
+  Failed installation preserves the previous active worker and offline cache.
+  Deferred manual chunks and page images remain outside the install precache.
+  Cache Storage is a release snapshot, separate from the nginx HTTP policy:
+  offline or unchanged-worker snapshots have no automatic 24-hour expiry.
 - `docker-compose.yml` maps host `${CABADRIVE_HOST_PORT:-5173}` to container
   `8080`.
 - Compose owns container naming so container identity is scoped by the compose
@@ -151,3 +169,10 @@ override is required because the compose project name scopes the auto-generated
 build image name.
 
 CI includes a `docker-validation` job that runs this flow and checks the home page plus `sw.js`.
+
+The runtime classifier inspects an attached container's immutable image ID. A
+post-feature runtime with rejected release state can recover only from its
+independently validated, preserved pre-feature handoff; its empty baked root
+and rejected `/state` are never capture sources. Genuine legacy sources compare
+their expected ID and kind inside the pinned no-follow handoff verifier, without
+shell metadata reads. Missing or unsafe authority blocks `make build`.

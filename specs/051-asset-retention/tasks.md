@@ -1,5 +1,69 @@
 # Tasks: Append-Only Static Asset Retention
 
+## Current Completion Context
+
+The following canonical sections govern the present PR217 integration. All dated older sections below are historical evidence for their respective SHA and cannot authorize the new merged content. Root verified PR214 merged at2026-10-08T18:11:24Z into main1e3507e2363314340eed43c0d77dd3d0acbc92cf with all five required checks and strict finalizer passing. Implementation217 reports normal --no-commit main integration conflicts settled; integrated engineering verification is complete (688unit/164browser, exact inherited safe lock, actual Docker lifecycle/27HTTP responses/UID101); final effective SHA and current-content Review/roles are still to be established. This is process preparation, not a renewed final role pass.
+
+## Decisions
+
+- Retained immutable namespace, exact A/B worker lifecycle and atomic persistent current selection remain the contract. Original051 budget exhaustion and subsequent052/054/055 ownership are preserved.
+- Preserve merged214's single cache-policy map, server-level security headers/gzip and official unprivileged image while retaining217's /state/current, cumulative /assets/aliases, transaction/authority and project-provenance behavior. Generated worker retains214's atomic reload-request installation;215's later update protocol remains its own downstream slice.
+- C055-217-R1/R3 selected-container classification binds immutable .Image provenance; rejected state recovers only independently validated original handoff, and expected source comparison occurs within the same no-follow descriptor-bound verifier with no shell metadata reread.
+- C055-217-R2/R2a/R2b retirement authority is durable before unlink, exact journal inode/bytes and contained tree inventory stay pinned through every destructive/durability boundary, and interruptedC cleanup precedes a newD publication under the existing lock. Protected active/rollback and all foreign or unjournaled trees survive.
+- Review enumerates all pages (historical217 inventory160 threads, including second-page findings); normal finalization gates are unchanged. Union-scoped evidence checking evaluates each included feature with the existing exported guards and exact role-owned path union; every051/052/053/054 final role pass must name the same final effective SHA.
+
+## Dead Ends
+
+- Historical no-canonical-evidence headings, stale SHA passes and first100-only thread enumeration are superseded by the canonical records and complete pagination; they cannot authorize current content.
+- HostNode25.2.1 symlink-removal regression was isolated by a minimal probe; supported bundledNode24.19.0 and DockerNode22 validate the intended filesystem contract. No unrelated product workaround or runtime downgrade is introduced.
+- Pathname metadata rereads, one-time retirement-journal checks and cleanup only after later activation were rejected as insufficient authority/recovery designs; implemented descriptor-bound and pre-publication recovery controls replace them.
+
+## Known Issues
+
+No unresolved known issues.
+
+- C055-217-R1/R2/R3 and R2a/R2b safety findings. Disposition: resolved in the bounded implemented safety suite11/11; integrated fullpreflight/Docker/current-head review remain explicit validation tasks, not accepted defects.
+- Earlier role passes and check states. Disposition: superseded for merge authority by new214 integration and055 safety behavior; all dated evidence remains historical.
+- Historical exhausted051/052 budgets. Disposition: resolved by preserved explicit new-cycle ownership in052/054/055; no budget reset or implicit extension.
+
+## Verification Evidence
+
+- Evidence passed: root verified214 merge prerequisite at main1e3507e2363314340eed43c0d77dd3d0acbc92cf,2026-10-08T18:11:24Z, all five exact-head required checks and strict finalization. This is the integrated base;217 itself is not merged.
+- Evidence passed: implementation217 final dedicated safety suite11/11 covers source identity/type/races, retirement journal/unlink/removal/fsync faults and substitution, partial retries, protected/foreign preservation, and interruptedC→D convergence. Typecheck/lint, scoped formatting and diff checks passed before main integration. Detailed original implementation evidence is preserved below; it is not a substitute for integrated final verification.
+- Evidence passed: integrated217 `pnpm run preflight` EXIT0 on2026-10-08 with bundledNode24.19.0/pnpm10.33.0: feature-memory/repository/content/attribution, typecheck/lint/format, negative quality contracts,688/688 unit tests, production build and164/164 actual desktop/mobile Playwright scenarios. This includes the final11/11 hostile safety matrix, inherited six realHTTP-cache freshness/atomic-offline controls and retained-origin browser controls. Final scoped feature-memory and diff guards passed after canonical preparation; complete transient log `/tmp/cabadrive-217-final-preflight.log` records the run.
+- Evidence passed: frozen installation EXIT0; `pnpm-lock.yaml` is byte-identical to verified214-merged main1e3507e2363314340eed43c0d77dd3d0acbc92cf (both gitblob `c771fb84b1bc5e28ed4b35492439c78ca843e862`, SHA256 `100de609ab9ff12d49d738a8f99e62ea57c09f12502721be38f2f1267d496db3`). Thus214's same-version fullOSVscannerv2.3.5 proof241packages/zero findings applies to the identical frozen graph: source-map-js1.2.2, brace-expansion1.1.21/5.0.12, no suppression or independent graph changes. Exact published217-head remoteOSV remains a separate mandatory gate.
+- Evidence passed: `CABADRIVE_HOST_PORT=5197 pnpm run test:docker-retention` EXIT0 under anonymous taskDocker config on2026-10-08, isolated project `cabadrive-retention-15496-1791483535389` and own derived projects. Actual build/up/down proves exact legacyA bytes for running-container and stopped-image migration, current candidate shell/worker, first install with legacy404, restart/down-up persistence, worker control and sibling sentinel preservation. Separate realNode22 containers prove kernel locking, killed-publisher/new-process retry and A/B/C/D publication: C retirement-unlink failure is recovered before D publishes, leaving exactly two protected generation links/two trees/no retirement journal; host-owned exported artifacts remain removable without privilege. Own temporary containers/volumes/handoffs are cleaned by the runner.
+- Evidence passed: combined live nginx smoke covers27responses across running/stopped/initial installations. Root/index/SPA have no long-lived Cache-Control, SW is no-cache, current and retained hashed assets immutable31536000, unhashed content86400+stale-while-revalidate604800, asset/content404 have no Cache-Control. All five exact security headers survive200/404, currentJS gzip is enabled, actual nginxPID1 and runtime exec UID both101. Integrated `/state/current` and cumulative `/state/assets/` alias retain server-level header inheritance; complete transient log `/tmp/cabadrive-217-final-docker.log` records results. Exact final-content independent Review, ordered roles and published-head gates remain pending; no217 merge or055 completion is claimed.
+
+## Implementation Agent Feedback
+
+- No unresolved Implementation Agent feedback.
+
+## Cycle PR Set
+
+- PR #217 https://github.com/cucumberfalse/cabadrive/pull/217; branch codex/051-asset-retention; status open, integration in progress; current head follows normal integration of verified main1e3507e2363314340eed43c0d77dd3d0acbc92cf and final effective content head will be recorded after engineering preparation. Sole implementation PR included in renewed final validation for051/052/053/054;055 owns the bounded integration dispositions.
+- PR #214 https://github.com/cucumberfalse/cabadrive/pull/214; branch claude/049-nginx-caching-security; status merged at2026-10-08T18:11:24Z; resulting main head1e3507e2363314340eed43c0d77dd3d0acbc92cf; verified prerequisite, excluded from this217 final-validation implementation set.
+- PR #215 https://github.com/cucumberfalse/cabadrive/pull/215; branch claude/049-learning-priority-fresh-update; status downstream in progress; final head unknown until its own integration; excluded from217 final-validation inclusion. Its terminal integration/validation follows verified217 merge; no055 cumulative completion claim.
+
+## Final Validation Evidence
+
+- Architect return count: 10 / 10.
+- Analyst return count: 0 / 5.
+- Limit escalation: escalated; original051/052 exhausted budgets preserved,054 owns the historical post-limit batch and055 owns current integration safety work.
+- Final-validation evidence-only commit: after one final integrated effective content SHA, only allowed role/verification evidence additions across the exact included feature-path union; substantive changes require renewed content preparation and role validation.
+- Current-PR-head read-only guard: final same-SHA role evidence precedes complete exact-published-head checks/review threads/conflicts/feedback/process-memory/evidence-only verification and expected-head finalization. Actual final SHA and live guard results will be recorded after engineering/review; no stale or partial gate is accepted.
+- Cleanup: not applicable; no environment deletion scope assigned, existing continuation/intake worktrees preserved.
+
+## Current Integrated Validation Tasks
+
+- [x] C055-217-P1 Preserve verified214 main prerequisite and settle normal integration conflicts while retaining both runtime contracts.
+- [x] C055-217-P2 Implement acceptedR1/R2/R3/R2a/R2b safety controls and dedicated11/11 matrix; preserve historic feature budgets and evidence.
+- [x] C055-217-P3 Complete consolidated integrated fullpreflight, fullOSV/frozen graph and isolated Docker retainedA/B lifecycle plus headers/gzip/404/nonroot evidence.
+- [ ] C055-217-P4 Obtain exact final-content independent Review and commit canonical preparation before effective SHA establishment.
+- [ ] C055-217-P5 Renew Architect then Analyst validation for all included051/052/053/054 on that one effective SHA.
+- [ ] C055-217-P6 Orchestrator verifies all live exact-head gates/complete pagination and expected-head finalization;215 ordering follows actual217 merge.
+
+
 ## Cycle Context
 
 - Feature: `051-asset-retention`.
@@ -335,8 +399,7 @@
   final Architect then Analyst validation, current-head guard, and only then
   finalization of PR #215.
 
-## Decisions
-
+## Historical Decisions (before completion-cycle055)
 - D051-001: all regular candidate `/assets/` files are immutable; names alone
   never establish integrity.
 - D051-002: canonical equality is path + byte length + SHA-256; byte-different
@@ -962,3 +1025,13 @@
   `feature-request.md`. The old Architect and Analyst passes apply only to
   `953709f0f12e3ac839c65c074908aef674b74bbd` and cannot authorize merge after
   feature-052 implementation.
+
+## Architect completion-cycle055 assignment (2026-10-08)
+
+- [x] C055-217-1 Synchronize PR #217 after #214 merges; preserve all existing051/052/053/054 code and process memory and record integrated base/head.
+- [x] C055-217-2 Reconcile nginx/Docker with one cache-policy map and server security headers, gzip and official unprivileged image; preserve `/state/current`, retained `/assets/` aliases, exact transaction and provenance contracts.
+- [x] C055-217-3 Run focused staging/export/provenance/retention tests and full preflight; run isolated real Docker retained-asset lifecycle with exact B shell/worker control and retained A deferred bytes.
+- [x] C055-217-4 Record live HTTP headers for root, SW, hashed current/retained assets, unhashed content and missing404: correct cache policies, all security headers, no error-cache header, gzip and non-root master identity. Preserve sibling projects/ports.
+- [ ] C055-217-5 Renew Architect then Analyst passes for included051/052/053/054 on one integrated effective content head; independent review, all five exact-head checks and evidence-only current-head guard remain mandatory.
+
+This is a cross-PR integration assignment of completion cycle055, not another return against exhausted feature051/052 budgets and not a final pass. Prior recorded validation evidence remains valid only for its historical SHA. Implementation owns task evidence/checkboxes; Architect owns renewed validation.

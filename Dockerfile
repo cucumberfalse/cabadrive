@@ -28,7 +28,7 @@ COPY --from=build /app/dist /candidate
 
 CMD ["sh", "-c", "set -eu; if [ -e /legacy-handoff/current ] || [ -L /legacy-handoff/current ]; then exec node /app/scripts/stage-static-release.mjs stage --state /state --candidate /candidate --legacy /legacy-handoff/current; else exec node /app/scripts/stage-static-release.mjs stage --state /state --candidate /candidate; fi"]
 
-FROM nginx:1.29-alpine AS runtime
+FROM nginxinc/nginx-unprivileged:1.29-alpine AS runtime
 
 LABEL com.cabadrive.release-state-runtime="true"
 

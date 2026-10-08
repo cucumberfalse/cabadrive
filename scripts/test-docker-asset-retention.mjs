@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 /** Executable Docker A->B retention regression, intentionally self-cleaning. */
+import { createHash } from "node:crypto";
 import { execFileSync, spawnSync } from "node:child_process";
 import {
   chmodSync,
@@ -32,9 +33,10 @@ const testHandoffProjects = new Set([
   retryProject,
 ]);
 const handoffBase = join(root, ".cabadrive-release-handoff");
-const port = String(5600 + (process.pid % 300));
+const port = process.env.CABADRIVE_HOST_PORT || String(5600 + (process.pid % 300));
 const temporary = mkdtempSync(join(tmpdir(), "cabadrive-docker-retention-"));
 const legacyBytes = "export const legacyLazy = 'retained-origin-A';";
+const legacyAssetPath = `/assets/lazy-a-${createHash("sha256").update(legacyBytes).digest("hex").slice(0, 8)}.js`;
 
 function run(command, args, options = {}) {
   return execFileSync(command, args, {
@@ -58,7 +60,7 @@ function make(args, selectedProject) {
 function buildLegacyImage(selectedProject) {
   const dockerfile = `FROM nginx:1.29-alpine
 RUN mkdir -p /usr/share/nginx/html/assets \\
-  && printf %s ${JSON.stringify(legacyBytes)} > /usr/share/nginx/html/assets/lazy-a.js \\
+  && printf %s ${JSON.stringify(legacyBytes)} > /usr/share/nginx/html${legacyAssetPath} \\
   && printf %s '<!doctype html><title>legacy A</title>' > /usr/share/nginx/html/index.html
 `;
   writeFileSync(join(temporary, "Dockerfile"), dockerfile);
@@ -95,7 +97,7 @@ function startLegacyContainer(selectedProject) {
 }
 
 function assertExactLegacyAsset() {
-  const body = run("curl", ["--fail", "--silent", `http://localhost:${port}/assets/lazy-a.js`]);
+  const body = run("curl", ["--fail", "--silent", `http://localhost:${port}${legacyAssetPath}`]);
   if (body !== legacyBytes)
     throw new Error("retained legacy asset bytes changed or were not served");
 }
@@ -113,6 +115,94 @@ function assertExactCandidateShellAndWorker(selectedProject) {
     throw new Error("B index.html is not served from the committed candidate release");
   if (actualWorker !== expectedWorker)
     throw new Error("B sw.js is not served from the committed candidate release");
+}
+
+async function assertIntegratedRuntime(selectedProject, retained = false) {
+  const shell = candidateFile(selectedProject, "index.html");
+  const currentAsset = shell.match(/src="(\/assets\/[^" ]+\.js)"/)?.[1];
+  if (!currentAsset) throw new Error("candidate shell has no hashed script asset");
+  const contentAsset = run("docker", [
+    "run",
+    "--rm",
+    `${selectedProject}-stager`,
+    "find",
+    "/candidate/content/assets",
+    "-type",
+    "f",
+    "-print",
+    "-quit",
+  ])
+    .trim()
+    .replace(/^\/candidate/, "");
+  if (!contentAsset.startsWith("/content/assets/"))
+    throw new Error("candidate has no unhashed content asset");
+  const security = {
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "strict-origin-when-cross-origin",
+    "permissions-policy": "camera=(), microphone=(), geolocation=()",
+    "content-security-policy":
+      "default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; base-uri 'none'; frame-ancestors 'none'",
+  };
+  const immutable = "public, max-age=31536000, immutable";
+  const cases = [
+    ["/", 200, null],
+    ["/index.html", 200, null],
+    ["/integration-spa-route", 200, null],
+    ["/sw.js", 200, "no-cache"],
+    [currentAsset, 200, immutable],
+    [contentAsset, 200, "public, max-age=86400, stale-while-revalidate=604800"],
+    [legacyAssetPath, retained ? 200 : 404, retained ? immutable : null],
+    ["/assets/missing-integration-404.js", 404, null],
+    ["/content/assets/missing-integration-404.png", 404, null],
+  ];
+  const evidence = [];
+  for (const [path, status, cache] of cases) {
+    const response = await fetch(`http://localhost:${port}${path}`, {
+      headers: { "Accept-Encoding": "gzip" },
+    });
+    if (response.status !== status || response.headers.get("cache-control") !== cache)
+      throw new Error(
+        `runtime status/cache mismatch on ${path}: ${response.status}/${response.headers.get("cache-control")}`,
+      );
+    for (const [name, expected] of Object.entries(security)) {
+      if (response.headers.get(name) !== expected)
+        throw new Error(`runtime security header ${name} missing/changed on ${path}`);
+    }
+    await response.arrayBuffer();
+    if (path === currentAsset && response.headers.get("content-encoding") !== "gzip")
+      throw new Error("current JavaScript asset was not gzip encoded");
+    evidence.push({
+      path,
+      status,
+      cache,
+      securityHeaders: 5,
+      gzip: response.headers.get("content-encoding") === "gzip",
+    });
+  }
+  const processStatus = compose(
+    ["exec", "-T", "cabadrive", "cat", "/proc/1/status"],
+    selectedProject,
+  );
+  const masterUid = Number(processStatus.match(/^Uid:\s+(\d+)/m)?.[1]);
+  const runtimeUid = Number(
+    compose(["exec", "-T", "cabadrive", "id", "-u"], selectedProject).trim(),
+  );
+  const masterCommand = compose(
+    ["exec", "-T", "cabadrive", "cat", "/proc/1/cmdline"],
+    selectedProject,
+  );
+  if (
+    !Number.isSafeInteger(masterUid) ||
+    masterUid === 0 ||
+    !Number.isSafeInteger(runtimeUid) ||
+    runtimeUid === 0 ||
+    !masterCommand.includes("nginx")
+  )
+    throw new Error("runtime nginx master or exec identity is not unprivileged");
+  process.stdout.write(
+    `Integrated runtime headers passed: ${JSON.stringify({ project: selectedProject, masterUid, runtimeUid, responses: evidence })}\n`,
+  );
 }
 
 async function assertCandidateWorkerControls() {
@@ -315,7 +405,7 @@ function assertSequentialPublishGenerations(selectedProject) {
   run("docker", ["volume", "create", stateVolume]);
   run("docker", ["volume", "create", publishVolume]);
   let probeSequence = 0;
-  const publish = (candidate, destinationName, extraMount = []) => {
+  const publish = (candidate, destinationName, extraMount = [], faultAt) => {
     const probeName = `.cabadrive-export-owner-probe.Sequential${probeSequence++}`;
     const probe = join(temporary, probeName);
     writeFileSync(probe, "", { flag: "wx", mode: 0o600 });
@@ -354,6 +444,7 @@ function assertSequentialPublishGenerations(selectedProject) {
         String(process.getuid()),
         "--owner-gid",
         String(process.getgid()),
+        ...(faultAt ? ["--fault", faultAt] : []),
       ]);
     } finally {
       rmSync(probe, { force: true });
@@ -365,6 +456,90 @@ function assertSequentialPublishGenerations(selectedProject) {
     if (!readFileSync(join(destinationB, "index.html"), "utf8").includes("sequential B")) {
       throw new Error("second release did not publish from a new persistent generation");
     }
+    // C commits, then retirement fails after the old output unlink. A fresh
+    // D container must resume that exact cleanup before D can activate.
+    const extraDestinations = [];
+    for (const name of ["c", "d"]) {
+      const candidate = join(temporary, `candidate-${name}`);
+      mkdirSync(join(candidate, "assets"), { recursive: true });
+      writeFileSync(
+        join(candidate, "index.html"),
+        `<!doctype html><title>sequential ${name.toUpperCase()}</title>`,
+      );
+      writeFileSync(join(candidate, "sw.js"), `self.release = 'sequential-${name}';`);
+      writeFileSync(join(candidate, "assets", `sequential-${name}.js`), `sequential ${name} bytes`);
+      if (name === "c") {
+        let faulted = false;
+        try {
+          publish(
+            `/candidate-${name}`,
+            `sequential-${name}`,
+            ["-v", `${candidate}:/candidate-${name}:ro`],
+            "durability:retirement-unlink",
+          );
+        } catch (error) {
+          if (!String(error.stderr || error.message).includes("retirement-unlink")) throw error;
+          faulted = true;
+        }
+        if (!faulted) throw new Error("cross-container retirement fault was not reached");
+      } else {
+        publish(`/candidate-${name}`, `sequential-${name}`, [
+          "-v",
+          `${candidate}:/candidate-${name}:ro`,
+        ]);
+      }
+      extraDestinations.push(join(temporary, `sequential-${name}`));
+    }
+    const generationLinks = run("docker", [
+      "run",
+      "--rm",
+      "-v",
+      `${publishVolume}:/publish:ro`,
+      "alpine:3.21",
+      "find",
+      "/publish",
+      "-maxdepth",
+      "1",
+      "-type",
+      "l",
+    ])
+      .trim()
+      .split("\n")
+      .filter(Boolean);
+    const generationTrees = run("docker", [
+      "run",
+      "--rm",
+      "-v",
+      `${publishVolume}:/publish:ro`,
+      "alpine:3.21",
+      "find",
+      "/publish",
+      "-mindepth",
+      "1",
+      "-maxdepth",
+      "1",
+      "-type",
+      "d",
+    ])
+      .trim()
+      .split("\n")
+      .filter(Boolean);
+    if (generationLinks.length !== 2 || generationTrees.length !== 2)
+      throw new Error(
+        "cross-container retirement did not bound exact active/rollback outputs and trees",
+      );
+    run("docker", [
+      "run",
+      "--rm",
+      "-v",
+      `${stateVolume}:/state:ro`,
+      "alpine:3.21",
+      "test",
+      "!",
+      "-e",
+      "/state/publish-retirement.json",
+    ]);
+    for (const destination of extraDestinations) rmSync(destination, { recursive: true });
     rmSync(destinationA, { recursive: true });
     rmSync(destinationB, { recursive: true });
     if (existsSync(destinationA) || existsSync(destinationB)) {
@@ -388,6 +563,7 @@ try {
   await waitFor(`http://localhost:${port}/`);
   assertExactLegacyAsset();
   assertExactCandidateShellAndWorker(project);
+  await assertIntegratedRuntime(project, true);
   await assertCandidateWorkerControls();
   compose(["restart", "cabadrive"], project);
   await waitFor(`http://localhost:${port}/`);
@@ -433,10 +609,11 @@ try {
   const stoppedBody = run("curl", [
     "--fail",
     "--silent",
-    `http://localhost:${port}/assets/lazy-a.js`,
+    `http://localhost:${port}${legacyAssetPath}`,
   ]);
   if (stoppedBody !== legacyBytes) throw new Error("stopped legacy image was not retained");
   assertExactCandidateShellAndWorker(stoppedProject);
+  await assertIntegratedRuntime(stoppedProject, true);
   await assertCandidateWorkerControls();
   make(["down"], stoppedProject);
 
@@ -446,10 +623,11 @@ try {
   make(["up"], initialProject);
   await waitFor(`http://localhost:${port}/`);
   assertExactCandidateShellAndWorker(initialProject);
+  await assertIntegratedRuntime(initialProject);
   await assertCandidateWorkerControls();
   const absentLegacy = spawnSync(
     "curl",
-    ["--fail", "--silent", `http://localhost:${port}/assets/lazy-a.js`],
+    ["--fail", "--silent", `http://localhost:${port}${legacyAssetPath}`],
     { encoding: "utf8" },
   );
   if (absentLegacy.status === 0)

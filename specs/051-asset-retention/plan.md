@@ -405,3 +405,14 @@ new feature 052 owns that correction and renewed final validation. Review thread
 `r4121580548` is accepted as this Architect-owned status reconciliation. The
 prior passes remain truthful historical evidence for `953709f...`, but they are
 not sufficient to finalize the post-feature-052 PR head.
+
+## Architect disposition: completion-cycle055 integration (2026-10-08)
+
+After #214 merges, synchronize the preserved PR #217 branch with verified updated main and retain the complete feature051/052/053/054 implementation. Resolve nginx/Docker integration by preserving #214's single cache-policy map, server-level security headers with `always`, gzip, non-cacheable error responses, and official unprivileged runtime. Keep retention's `/state/current` document root and alias-backed immutable assets, append-only ledger, project provenance, shell-last staging, no-follow authority boundaries, transaction durability and no-replace export semantics. Shared headers must remain effective on alias assets, SPA routes, worker responses and 404; `Cache-Control` must not be added on error responses.
+
+Run real isolated Docker build/up/down and HTTP header smoke for `/`, `/sw.js`, real hashed `/assets/`, real unhashed `/content/assets/`, retained historical hash and missing asset 404, including gzip and actual non-root nginx master identity. Verify B worker/shell activation plus exact retained A-origin bytes through the full Docker retained-asset lifecycle and hostile publication tests. Full preflight and all five exact-current-head checks are mandatory. Record the integration in new055 instead of incrementing exhausted historical051/052 return budgets. Refresh Architect then Analyst evidence for every included feature051/052/053/054 on the same final integrated content head; historical passes remain historical and cannot authorize merge.
+
+
+## Completion-cycle055 Integrated Validation Preparation
+
+Verified214 main1e3507e2363314340eed43c0d77dd3d0acbc92cf is the prerequisite for current217. Preserve both runtime contracts: one server-level cache/header map and unprivileged nginx/gzip from214;217 persistent/state-current/retained-alias/provenance/transaction behavior. New055 owns R1/R2/R3 and R2a/R2b; all original return counts and post-limit histories remain intact. Consolidate fullpreflight, fullOSV/frozen graph and isolated retainedA/B Docker lifecycle plus live root/SW/current+retained assets/content/404 headers/cache/gzip/nonroot evidence. Complete exact-head Review and canonical process preparation precede final content SHA. Then all included051/052/053/054 receive chronological Architect-before-Analyst passes on that same SHA; union evidence checks reuse existing guards per feature without weakening gates. Live full-pagination checks/conversations/conflicts and expected-head finalization precede217 merge.215 and cumulative055 final closure are downstream; this preparation asserts no final pass or merge.
