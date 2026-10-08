@@ -234,8 +234,14 @@
 
 ## Verification Evidence
 
-Implementation Agent записывает команда → фактический результат → SHA кандидата.
-Слоты (заполнить фактическими прогонами на HEAD):
+- Current implementation verification passed on the content committed as6a7205b2: full preflight EXIT0,556/556 Node tests,154/154 Playwright cases, memory/repository/content/quality/format/negative/build guards,2156-asset generated worker. Original nginx049's NS1–NS8 and local-first/offline outcomes remain covered.
+- Current real Docker evidence passed: project cabadrive-finalize214, port5194, build/up/down EXIT0, runtime imageae4c02775cd0efdc7a68855d4708d7518e2f7c3ebe9ab891bdd3d31c3b89034e. Exact five security headers on root/SW/current hashed JS/content image/404; immutable hashed assets;86400+stale604800 unhashed content; no-cache SW; no error Cache-Control; gzip and actual nginx PID1 non-root UID101. Sibling resources preserved.
+- Security evidence passed: source-map-js1.2.2 only via postcss8.5.28; manifest unchanged; four target lock-key/integrity/edge/snapshot lines audited; frozen install EXIT0 without hash drift. New055 owns this narrow dependency remediation.
+- Independent current-content Review passed on6a7205b2; this preparation changes only canonical process evidence/dispositions, with no product/runtime/test/dependency delta. Final remote exact-head checks remain Orchestrator gates.
+
+### Historical implementation checkpoints
+
+The following dated earlier baselines are preserved as historical evidence. Their blocked local Docker statement and older head/check expectations are superseded by current successful verification above.
 
 Candidate SHA во время локального прогона (до commit): `c5520b31922c0e45afd96b2e5877136c1848a541` (HEAD == base до commit; подтверждено `git rev-parse HEAD`).
 
@@ -410,13 +416,11 @@ Cycle055 AD055-2 owns the minimal source-map-js lock-only1.2.2 security resoluti
 
 ## Known Issues
 
-No unresolved known issues; the accepted limitations of this cycle — hashed image
-paths (`/content/img/`, ТЗ-P3) remain out of scope so `/content/assets/` is cached
-as "fresh ≤24h" rather than truly immutable; Brotli is deferred (no `ngx_brotli` in
-stock alpine, gzip only); HSTS/TLS are out of scope (HTTP :8080 behind an external
-proxy); the `docs/improvements/14-*.md` §4 checkboxes are not edited (047/048
-precedent) — are all documented and Architect-ACCEPTED under Decisions, with no
-open owner decision required.
+No unresolved known issues.
+
+- Historical local Docker registry/pull limitation. Disposition: superseded by the actual2026-10-08 isolated build/up/header/gzip/non-root/down pass recorded in Verification Evidence; no owner decision remains.
+- Hashed-image migration, Brotli and HSTS/TLS. Disposition: not needed in this nginx049 scope; existing declared cache policy, gzip and HTTP8080 contracts are fully implemented and tested. These are excluded product scope, not accepted defective behavior.
+- Improvement-file status checkboxes. Disposition: not needed under the existing documented047/048 convention; durable runtime/spec evidence is current.
 
 ## Implementation Agent Feedback
 
@@ -430,62 +434,20 @@ open owner decision required.
 
 ## Final Architect Validation (Architect-owned)
 
-Merge-gate markers (exact keys, verbatim — do not reword; parsed by
-`scripts/finalize-pr.mjs`):
-
-Architect validation pass: <passed|failed>
-Final Architect validation completed at: <ISO-8601 timestamp>
-Effective content head: <40-hex-sha>
-Architect validated effective content head: <40-hex-sha>
-
-_(Заполняется на финальной Architect-валидации, инициируемой Orchestrator после
-завершения реализации и review. Записать incremental review basis `git diff
-c5520b31..<head>`, re-verification против задач/диспозиций/guidance/process
-memory/customer intent, повторный прогон гейтов на effective head, Architect
-return count.)_
+Final architectural validation is invoked after this process preparation receives its final effective content SHA. Record the pass only in the permitted `## Final Architect Validation Notes` evidence section on that SHA; prior placeholders are removed. The architecture has no open implementation disposition; independent review passed on product-identical content6a7205b2 and must remain valid through the process-only preparation.
 
 ## Cycle PR Set
 
-_(Ведёт Orchestrator. Slice 1 (this cycle, SOLE PR): PR #<num> — <url>; branch
-`claude/049-nginx-caching-security` → base `main`; status; effective content head
-`<40-hex-sha>`; purpose: ТЗ-14 — split кеш-политики (FR-1) + security-заголовки/CSP
-(FR-2) + gzip (FR-3) + unprivileged-образ (FR-4) + двухслойный header-контракт
-(FR-5). Required checks / AI Review (Codex) / final Architect+Analyst validation /
-current-head guard / merge — Orchestrator. Do NOT merge manually — squash-only
-ruleset + Codex gate.)_
-
-- **Slice 1 (SOLE PR) — Implementation Agent handoff:**
-  - PR: #214 — https://github.com/cucumberfalse/cabadrive/pull/214
-  - Branch: `claude/049-nginx-caching-security` → base `main`
-  - Status: OPEN, ready (non-draft) at handoff.
-  - Head SHA (full): `4b992567d10a9835323d23909f230a95ed7c4953`
-  - Purpose: ТЗ-14 — FR-1 split cache + FR-2 security headers/CSP + FR-3 gzip +
-    FR-4 unprivileged image + FR-5 two-layer header contract.
-  - Note: pushed via SSH remote (the HTTPS OAuth token lacks `workflow` scope for
-    `.github/workflows/ci.yml`). Required checks / AI Review (Codex) / final
-    Architect+Analyst validation / current-head guard / merge — Orchestrator.
-    Local docker run blocked by environment (see Implementation Agent Feedback);
-    live FR-5.2 header contract runs in CI `docker-validation`.
+- PR #214 https://github.com/cucumberfalse/cabadrive/pull/214; branch `claude/049-nginx-caching-security`; status open, ready for review; head SHA is the effective content preparation committed after `6a7205b2e585fb026261c77c96550d93d29b65ba`; sole original049 implementation slice; included in final validation. The remote head is refreshed by Orchestrator at push/finalization, never inferred from this local preparation checkpoint.
+- PR #214 purpose: split cache/security/gzip/unprivileged header delivery; later compatible source-map-js1.2.2 remediation belongs to completion-cycle055 AD055-2. Original049 validation covers its preserved product contract and integrated security baseline.
+- PR #217 and PR #215 are separate original product cycles and downstream members of055; status remains in progress. They are excluded from original nginx049 final-validation scope and receive independent ordered validation after214 merge. No055 cumulative pass or all-target merge claim is made here.
+- PR #214 local preflight and actual Docker runtime evidence passed; exact final remote head, all five checks, fully resolved conversations, conflict-free state, current-head guard and GitHub merge result are Orchestrator finalization evidence. No merge before those live gates pass.
 
 ## Final Validation Evidence
 
-_(Заполняется на финальной валидации, инициируемой Orchestrator.)_
-
-- **Architect final validation:** `<PASS|FAIL>` on effective content head
-  `<40-hex-sha>` — см. verbatim merge-gate marker lines в
-  `## Final Architect Validation (Architect-owned)`. Architect return count `<n>`
-  (limit 10).
-- **Analyst final validation:** `<PASSED|returned>` (Analyst-owned) — записано в
-  `feature-request.md` с LATER timestamp (после Architect) и
-  `Analyst validated effective content head: <40-hex-sha>` (тот же SHA, что у
-  Architect). Analyst return count `<n>` (limit 5).
-- Limit escalation: `<none|details>`.
-- **Current-head guard / required checks / resolved threads / conflicts / merge:**
-  Orchestrator-owned. Any post-validation NON-evidence change makes the Architect
-  pass stale and must be routed back through role-appropriate final validation
-  before merge.
-- **Permitted later commit:** a single evidence-only validation commit recording
-  Architect/Analyst validation evidence is allowed without recursive role
-  re-validation (changes no behavior). Orchestrator performs the read-only
-  current-PR-head guard (effective content head by full SHA) before conservative
-  finalization/merge.
+- Architect return count:0/10; final original049 architectural pass is recorded after effective preparation SHA is committed.
+- Analyst return count:0/5; Analyst validation follows the passing Architect timestamp on exactly the same effective content SHA in Analyst-owned feature-request.md.
+- Limit escalation: none.
+- Final-validation evidence-only commit: later evidence must be limited to original049 role-owned validation notes/process evidence and pass the existing section/path guard. Any later substantive content restarts validation.
+- Current-PR-head read-only guard: Orchestrator must verify explicit effective SHA, prove later commits contain only permitted role evidence, and check exact-head required checks/review/conversations/conflicts before finalization.
+- Cleanup: not applicable; no deletion scope was assigned, current intake/continuation environments are preserved.
