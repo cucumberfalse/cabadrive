@@ -344,20 +344,20 @@ no change to localStorage; and no nginx/Docker/CI scope expansion.
   regression tests must be implemented before review threads are resolved or
   final validation begins. The duplicate thread is resolved against R049-004.
 - Accepted follow-up R049-005 must be implemented test-first and receive focused
-  plus full verification and fresh exact-head review. Until then current PR head
+  plus full verification and fresh exact-head review. At that dated checkpoint PR head
   `ec2f7c8f939ac40246c3d5c05cc19766e5f00c67` is not ready for final Architect
   validation. Thread `r4053153086` is resolved as already-fixed duplicate of
   R049-001 only after Orchestrator verifies the cited current-head evidence.
 - Accepted follow-ups R049-006 and R049-007 must be implemented test-first and
   receive generated-worker, update-manager, real A/B/C browser, full-preflight,
-  required-check, and fresh exact-head review evidence. Current PR head
+  required-check, and fresh exact-head review evidence. Historical PR head
   `da8cfe14a92a3b8bc0e4bd20a0a450853671a225` and effective product head
   `24e3ddae9f04a7da22974b3e5b7cdd6be0f0822f` are not final-validation
   candidates while either accepted task or either review thread remains open.
 - Accepted follow-up R049-008 is limited to canonical process-memory accuracy:
   the pre-finding checkpoint must consistently state nine of nine resolved,
   while its historical post-finding checkpoint must state nine of ten resolved.
-  Replacement review expanded the live ledger to nine of twelve with the three
+  Replacement review on2026-09-20 expanded that ledger to nine of twelve with the three
   explicitly named unresolved IDs. Final validation is prohibited while any of
   the five stale counts remains, R049-008/R049-010 remains unresolved, or fresh
   exact-head inventory/review and effective-head evidence are absent.
@@ -386,3 +386,10 @@ new collector, a test that manually injects the lazy hash into A cache, or a B
 fixture that serves the hash without exercising release staging is not evidence
 for R049-010. Claiming client-only recovery after both cache and origin miss is
 invalid and must block validation.
+
+
+## Operative completion-cycle055 boundary (2026-10-08)
+
+The original schema, canonical persistence, exact-once stats, session-stable Learn behavior and fresh-online/offline/update contracts above remain required in full.214 is the verified merged and early-synchronized prerequisite;217 is still open awaiting verified finalization and must merge before the faithful legacy retained-origin acceptance evidence. Never infer old-worker cache coverage from the modern generator. Both the original upgrade fixture and inherited asset-retention historical-worker fixture must use the actual pre215 snapshot, exclude never-loaded manual4Ruedas from historicalA CacheStorage and prove retained-origin first-hit exactA bytes afterB with a destructive404 negative. Modern complete hashed precaching remains separately tested.
+
+Prior heads/counts and review dispositions are historical provenance. Orchestrator's complete2026-10-08 around19:14Z inventory is12threads/9resolved/3open at GitHub31c2507, including outdated-but-unresolved ledger/role conversations and the current legacy-fixture conversation. Integrated current engineering, exact Review and final same-SHA Architect-before-Analyst evidence must replace old merge authority without altering original return3/10 and Analyst0/5. New055 cumulative closure belongs to terminal215 after actual prerequisites; no current final pass or merged217 claim is asserted here.

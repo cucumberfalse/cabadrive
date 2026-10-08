@@ -148,7 +148,7 @@ The implementation slice must re-fetch/verify latest `origin/main` immediately b
    - Keep the change bounded to feature-memory/process evidence. It must not
      alter product code, tests, runtime docs, dependencies, or sibling PR #214.
      Replacement review subsequently raised two additional threads, so the live
-     ledger is now 9/12. After the correction is published, inspect the exact-head
+     2026-09-20 ledger was 9/12. After the correction is published, inspect the exact-head
      GitHub list and resolve `r4056768455` against that evidence, producing 10/12
      while R049-009/R049-010 remain open; never rewrite the historical 9/10
      checkpoint as if all twelve threads existed then.
@@ -230,7 +230,7 @@ The implementation slice must re-fetch/verify latest `origin/main` immediately b
 | Full quality | `pnpm run typecheck`, `lint`, `format:check`, `test`, `build`, `test:e2e`, `preflight` | all pass on candidate head or exact unrelated blocker recorded |
 | Runtime | isolated `make build/up/down` on free project/port | HTTP smoke, offline-capable app, no sibling compose mutation |
 | Scope/process | `git diff --check`, scoped diff, feature-memory check, PR/review evidence | no nginx/Docker/CI/sibling mutation; docs/tasks/evidence current |
-| Review-thread ledger | exact-head GitHub thread inventory + canonical-memory scan | historical checkpoints remain 9/9 then 9/10; current state is 9/12 with the three named IDs; expected sequence is 10/12 after R049-008, 11/12 after R049-010, and 12/12 only after the final-role gate R049-009 |
+| Review-thread ledger | exact-head GitHub thread inventory + canonical-memory scan | historical checkpoints remain 9/9 then 9/10; dated replacement-review state was9/12; refreshed2026-10-08 GitHub checkpoint remains12total/9resolved/3open; subsequent counts must come from complete exact-head enumeration, with final-role thread closed only after ordered roles/current-head guard |
 | Legacy deploy retention | deployment integration + faithful A/B browser | legacy A cache lacks its lazy hash; staged B origin retains exact A bytes before shell switch; old A document first-loads after B; destructive/collision/incomplete staging fails closed |
 | Final role gate | role-owned markers + read-only current-head guard | Architect passes before Analyst on one effective head; later diff is evidence-only; guard passes before `r4056774421` resolution/merge |
 
@@ -267,3 +267,10 @@ The cycle PR set is recorded in `tasks.md` with purpose, branch, PR metadata, cu
 R049-010 is an integration task in the preserved PR #215 continuation, with PR #217's merged retained-origin deployment as a mandatory prerequisite. The authentic generated historical A worker must omit the deferred `manual4Ruedas` hashed chunk from its install precache and must never runtime-load it before B. Do not add that chunk to A's cache or replace A with a synthetic fetch worker. Before switching origin to B, enumerate A Cache Storage and assert the exact deferred URL is absent. Publish B through the real retained-assets path, then first-load the A-only module from the still-open A document: assert a same-origin server request, HTTP success, and exact retained A bytes/visible marker. The destructive-origin control must return 404 for the same missing A hash. These assertions close the legacy hole separately from the valid new-protocol A all-hashed-precaching regression.
 
 Synchronize #215 with verified main after #214 and #217 merge; preserve progress/order/exposure behavior and the full A/B/C protocol matrix. Run focused browser and generated-worker suites, full preflight, and an isolated real Docker runtime smoke. Refresh the complete live review inventory; historical 9/9, 9/10, and 9/12 records remain dated checkpoints rather than current totals. Every scoped action requires real evidence before resolving its conversation. Prior role passes apply only to their recorded historical heads; the integrated content head requires fresh Architect-before-Analyst passes and a current-head evidence-only guard.
+
+
+## Operative completion-cycle055 preparation (2026-10-08)
+
+Original D049 and acceptance contracts remain operative; prior implementation/check/head statements describe their dated checkpoints.214 has actually merged and is synchronized early;217 remains open awaiting verified finalization. After actual217 merge, fetch verifiedmain and integrate normally preserving the modern all-hash/reload/protocol/waiting/navigation contracts and the authentic old-A generator snapshot. The inherited asset-retention historical-worker fixture must use that actual pre215 snapshot rather than the newly modern production generator; retain existing cache-miss/origin-hit/offline assertions and verify the affected controls. This is the scoped R049-010 test correction, not a new runtime mechanism.
+
+Then establish positive legacyA miss→retained originA byte/marker/server-hit evidence afterB and the destructive404 control, full integrated preflight and isolated actual Docker runtime. Review all original progress/migration/order/exposure and A/B/C guarantees. Fresh full GitHub inventory currently supplied by Orchestrator is12threads/9resolved/3open at published31c2507 around19:14Z; stale out-of-date thread flags do not mean resolved. T023l/T023n/thread closures remain gated on actual new proof. Final exact content Review precedes Architect3/10 then Analyst0/5 on one effectiveSHA; root proves the permitted evidence-only union with terminal055 and verifies all five exact-head checks/full pagination/guard before merge. No original budget reset, premature pass or217 merged claim is made.

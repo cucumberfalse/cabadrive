@@ -2,12 +2,70 @@
 
 ## Cycle Context
 
+- Assigned continuation: preserved PR #215 / `codex/049-learning-priority-fresh-update`, local `finalize-pr-215`; current process preparation at local97b7df follows merged214 synchronization and precedes actual217 integration. Parallel/sibling work and all historical feature memory are preserved.
+- Scope: original ProgressV3 migration/exact-once priority, stable Learn exposure/order and fresh-online/last-known-good offline update remain unchanged. New055 owns the cross-PR completion integration; prior role/check evidence authorizes only its recorded content.
+- Live inventory supplied by Orchestrator on2026-10-08 around19:14Z: GitHub PR215 head31c2507, complete12threads/no next page,9resolved and3open. The ledger/final-role threads are outdated but unresolved; the legacy-fixture thread remains current. Historical9/9 and9/10 checkpoints retain their original dates and are not current merge authority.
+
+## Decisions
+
+- Preserve original D049-001..013 below: schema3 at existing progress key, exact v2 backup, retained valid unknown IDs, canonical ordinal serialization, exact-once derived answer stats, one committed exposure per visible transition and stable mount ordering.
+- Preserve atomic all-hashed reload-request precache, verified build-independent one-time compatibility sentinel, subsequent prompted activation, retained version caches, network-first navigation and nonfatal optional runtime cache writes. No wall-clock expiry is promised for an installed offline snapshot.
+- Legacy-A recovery has two distinct proofs: modern generated A precaches every hashed dependency; authentically historical A excludes deferred manual4Ruedas, never loads it beforeB and therefore requires retained-origin bytes afterB. Never manufacture an A cache hit or replace historical A with modern code.
+- Actual214 mergedmain1e3507e2363314340eed43c0d77dd3d0acbc92cf at2026-10-08T18:11:24Z with all five checks and strict finalizer verified. Its early normal merge into215 preserves both SW reload contracts.217 remains open on the renewed published8c5 head; await its verified merge and fetch before normal integration.
+- Retained client caches are an explicit offline/open-tab correctness tradeoff. Future bounded cache reuse/cleanup stays separately owned by TZ13; broad stable-content HTTP policy belongs to merged214. No cleanup assignment exists; retain active validation worktrees and sibling resources.
+
+## Dead Ends
+
+- Disposition: superseded. Historical upstream image-metadata DeadlineExceeded prevented the original isolated Docker build before feature image creation; it was an environment attempt, not runtime success or a product defect. Fresh isolated215 Docker validation remains an assigned terminal task.
+- Disposition: resolved. Earlier parallel browser timeouts were isolated and the dated authoritative full rerun passed; current integrated tests must produce their own evidence without deleting or weakening assertions.
+- Disposition: superseded. A fixture generated with the new all-hashed collector cannot represent deployed legacyA. The committed test-only historical generator snapshot and measured destructive-deployment404 establish the authentic miss; positive retained-origin integration awaits217.
+
+## Known Issues
+
+- Disposition: not needed. Retained version-cache growth is a documented intentional offline/open-tab boundary, owned by future TZ13; no accepted defective behavior or owner decision is needed here.
+- Disposition: superseded. Historical Docker metadata outage and old dependency-baseline failures do not establish current defects; fresh integrated Docker and all five exact-head checks remain required tasks.
+- Disposition: resolved. Historical9/9 and9/10 ledger counts are preserved as dated checkpoints; current Orchestrator inventory is12total/9resolved/3open and must be refreshed after publication.
+
+## Verification Evidence
+
+- Passed historical original implementation evidence is preserved below with exact dates/heads: progress/Learn/SW regression suites, full preflight572Node/158browser checkpoint and then-required checks do not validate future integrated content.
+- Passed current055 preparation: authentic historicalA excludes manual4Ruedas from every CacheStorage beforeB with zero origin requests and no visible module marker. Its measured destructive-deployment first request404 is genuine red evidence, not a manually precached fixture. Positive retained-origin evidence is assigned after217 merge.
+- Passed early actual214 integration: normal merge of verified1e3507e2363314340eed43c0d77dd3d0acbc92cf; frozen install, generated-worker7/7, production build and real desktop/mobile HTTP-cache6/6 controls. Detailed implementation logs and content provenance remain below.
+- Verification tasks still open: actual217 merge/sync, authentic retained-origin positive/destructive controls, complete integrated preflight and isolated Docker, exact content Review, ordered same-SHA roles, exact-head five checks/resolved threads/current-head finalization. No final integrated success is asserted.
+
+## Implementation Agent Feedback
+
+- F049-IA-001 Disposition: superseded. Historical registry failure required no product change and never waived Docker; fresh terminal runtime validation is assigned.
+- F049-GATE-001 Disposition: resolved. Separate feature050/PR216 dependency baseline merged and was synchronized historically; actual214 now includes subsequent security floors. Preserve owning graph and obtain fresh exact-head OSV after full integration.
+- F049-GATE-002 / R049-010 Disposition: accepted task. Implement the existing authentic legacy-cache-miss/retained-origin integration after verified217 merge; the cross-PR deployment prerequisite is owned by055/217, not new215 runtime scope.
+- Inherited asset-retention fixture feedback Disposition: accepted task. After217 synchronization, use the actual pre215 historical generator snapshot for its historical worker helper; the modern production generator cannot certify old-worker behavior. Preserve all original retained-origin/offline assertions and run affected browser controls.
+- No unresolved Implementation Agent feedback.
+
+## Cycle PR Set
+
+- Sole original049 implementation and final-validation inclusion: PR[#215](https://github.com/cucumberfalse/cabadrive/pull/215), branch `codex/049-learning-priority-fresh-update`, status OPEN at verified GitHub head31c2507 checkpoint. Current local97b7df is preparation, not a published final head. Complete inventory12total/9resolved/3open supplied2026-10-08 around19:14Z; no unresolved-thread closure is claimed.
+- External prerequisite214 is MERGED at1e3507e2363314340eed43c0d77dd3d0acbc92cf and early synchronized. External217 original051/052/053/054 remains OPEN on renewed8c5 published head awaiting live gates; not included in original049's implementation PR set. Its verified merge and normal main sync are mandatory before terminal evidence.
+- Historical216 merge2a92bcfcb7638d1094f33b28e4c2932fb2e4121e remains a completed separate prerequisite. New055 cumulative final validation is deferred to terminal215 and includes actual completion status/evidence of all three PRs, without claiming215 is already merged.
+
+## Final Validation Evidence
+
+- Architect validation pass: not ready.
+- Architect return count: 3 / 10.
+- Analyst validation: not yet invoked; must follow final Architect pass on the same future effective content head.
+- Analyst return count: 0 / 5.
+- Effective content head: pending terminal integrated engineering and exact Review.
+- Current-PR-head read-only guard: pending new content/ordered roles and publication; historical evidence-only checkpoints do not authorize merge.
+- Limit escalation: none.
+- Cleanup evidence: not applicable; no Cleanup Agent assignment and active worktrees/resources retained.
+
+## Historical Cycle Context
+
 - Feature: `049-learning-priority-fresh-update`.
 - Planning base: verified `origin/main` `c5520b31922c0e45afd96b2e5877136c1848a541`.
 - Analyst/Architect handoff: `codex/049-learning-priority-fresh-update` in `/Users/chap/devel/cabadrive-worktrees/049-learning-priority-fresh-update`.
 - Delivery decision: one implementation PR slice continuing this handoff only after explicit Orchestrator assignment and latest-main re-verification.
 - Parallel work: preserve all sibling state. PR #214 `claude/049-nginx-caching-security` owns nginx/Docker/CI and is excluded.
-- Cycle PR set: sole implementation PR [#215](https://github.com/cucumberfalse/cabadrive/pull/215), branch `codex/049-learning-priority-fresh-update`, open and included in final validation only after all blockers close. The historical checkpoint at `7cfe29a3286f36500cae563e399e8fb9ab5023f0` had `9/9` resolved. Exact inventory after replacement review now contains 12 total threads, 9 resolved and three unresolved: `r4056768455` (R049-008 ledger), `r4056774421` (R049-009 final role validations/current-head guard), and `r4056774425` (R049-010 real deployed legacy lazy hash). Final validation is not ready.
+- Cycle PR set: sole implementation PR [#215](https://github.com/cucumberfalse/cabadrive/pull/215), branch `codex/049-learning-priority-fresh-update`, open and included in final validation only after all blockers close. The historical checkpoint at `7cfe29a3286f36500cae563e399e8fb9ab5023f0` had `9/9` resolved. The dated replacement-review inventory contained 12 total threads, 9 resolved and three unresolved: `r4056768455` (R049-008 ledger), `r4056774421` (R049-009 final role validations/current-head guard), and `r4056774425` (R049-010 real deployed legacy lazy hash). Final validation is not ready.
 - Effective content head: pending after R049-008/R049-010 correction and prerequisite synchronization; prior marker `51cb103e7818cbc36eeff60e4c0d15408a2e9f5b` is stale.
 - Cleanup: not applicable during implementation; post-completion environment cleanup, if assigned, belongs only to Cleanup Agent.
 
@@ -112,12 +170,12 @@
   full preflight, every required check, and fresh exact-head review before
   resolving either thread.
 - [ ] T023l R049-008 / thread `r4056768455`: keep the five corrected historical
-  checkpoint counts at `9/9`/nine, record the distinct current state as `9/10`
+  checkpoint counts at `9/9`/nine, record the distinct dated post-finding state as `9/10`
   with only this thread unresolved at that historical checkpoint, and publish
   the bounded process-evidence correction without product/test/runtime/dependency/sibling changes. Then
   enumerate the exact-head GitHub thread inventory, obtain fresh exact-head
   Review Agent evidence, resolve `r4056768455` only after the corrected evidence
-  is visible, refresh the resulting live state from `9/12` to `10/12` while
+  is visible, record only the actually observed resulting count, historically expected to advance from `9/12` to `10/12`, while
   R049-009/R049-010 remain open, and rerun applicable feature-memory, repository,
   diff, and required GitHub gates before T024/T025.
 - [ ] T023m R049-010 / thread `r4056774425`: Orchestrator create a separate
@@ -160,7 +218,7 @@
   thread. It requires no product implementation but blocks merge.
 - [ ] T028 Orchestrator finalize/merge only with green required checks, no blocking/unresolved review, no conflicts, complete acceptance/process/feedback evidence, matching validation markers, final guards, and no exceptional human blocker. Cleanup, if any, is separately assigned.
 
-## Decisions
+## Historical Decisions
 
 - D049-001: one implementation PR; progress/Learn lands atomically and SW remains a separately reviewable file/test section within the same original user outcome.
 - D049-002: payload version bumps to 3 while the localStorage key remains `cabadrive.progress.v1`; exact raw v2 backup uses `cabadrive.progress.v2.backup` before in-place overwrite.
@@ -193,7 +251,7 @@
   retained-cache cost is accepted for old-tab/local-first integrity; large
   unhashed manual page images remain runtime-cached.
 
-## Dead Ends And Known Issues
+## Historical Dead Ends And Known Issues
 
 - No dead ends at Architect handoff.
 - Accepted limitation: prior version caches are retained to guarantee open-tab safety; unbounded cache reuse/cleanup is intentionally deferred to ТЗ-13 FR-1/FR-2 and must be documented, not silently “fixed” by deleting old caches.
@@ -201,7 +259,7 @@
 - Environment limitation: isolated Docker validation used project `cabadrive-049-validation` and free port `5199`, but `COMPOSE_PROJECT_NAME=cabadrive-049-validation CABADRIVE_HOST_PORT=5199 make build` failed while loading metadata for `node:22-alpine` and `nginx:1.29-alpine` with `DeadlineExceeded: context deadline exceeded`. Neither base image exists locally, so `make up`/HTTP smoke could not proceed. Existing `cabadrive-cabadrive-1` on port 5173 and all sibling containers were left untouched.
 - Test-harness dead end: parallel six-worker browser runs intermittently timed out in unrelated pre-existing image, exam-clock, and manual-reader cases. Every initially observed unrelated timeout was isolated and passed; no feature code was changed to mask those failures. The authoritative optimized preflight rerun below passed the complete browser matrix.
 
-## Verification Evidence
+## Historical Verification Evidence
 
 - Startup/base: assigned branch `codex/049-learning-priority-fresh-update`; pre-edit `HEAD` and `origin/main` both `c5520b31922c0e45afd96b2e5877136c1848a541`; only the four assigned untracked feature-memory files existed; parallel/sibling work warning acknowledged.
 - Test-first red evidence: `pnpm exec node --test tests/progress-store.test.mjs tests/domain.test.mjs tests/service-worker-generation.test.mjs` produced 7 targeted failures for absent ordering, v3 migration/stats/exposure, and old unconditional SW lifecycle while 27 existing focused assertions passed.
@@ -324,7 +382,7 @@
   A whose cache omitted that path. No client-only recovery exists after the
   origin also removes the bytes.
 
-## Implementation Agent Feedback
+## Historical Implementation Agent Feedback
 
 - F049-IA-001: isolated Docker smoke is externally blocked because Docker could not fetch metadata for uncached `node:22-alpine` and `nginx:1.29-alpine` (`DeadlineExceeded`). Recommended disposition: no product task; accept the already-green host production build/browser evidence and let CI or an environment with registry access provide Docker confirmation. No implementation divergence is proposed.
 
@@ -450,14 +508,14 @@
   both duplicate dispositions are complete; prerequisite feature 050 / PR #216
   merged and PR #215 synchronized it without rebase; all required checks and the
   earlier exact-head review passed; and all nine review threads then present
-  were resolved. Current inventory is `9/12`: R049-008 and R049-010 require
+  were resolved. The 2026-09-20 replacement-review inventory was `9/12`: R049-008 and R049-010 require
   T023l/T023m/T023n plus refreshed exact-head/effective-head evidence. R049-009
   remains intentionally open through the subsequent ordered final validations
   and current-head guard. The PR is not ready for final validation now.
 
-## Cycle PR Set
+## Historical Cycle PR Set
 
-- Slice 1 / sole implementation PR: purpose `feature 049 complete implementation`; branch `codex/049-learning-priority-fresh-update`; PR [#215](https://github.com/cucumberfalse/cabadrive/pull/215); historical terminal implementation/checkpoint head `7cfe29a3286f36500cae563e399e8fb9ab5023f0` had `9/9` threads resolved. Current inventory is `9/12`, with R049-008/R049-009/R049-010 open; effective content head, prerequisite-sync head, checks, review, and final-validation inclusion are pending.
+- Slice 1 / sole implementation PR: purpose `feature 049 complete implementation`; branch `codex/049-learning-priority-fresh-update`; PR [#215](https://github.com/cucumberfalse/cabadrive/pull/215); historical terminal implementation/checkpoint head `7cfe29a3286f36500cae563e399e8fb9ab5023f0` had `9/9` threads resolved. The 2026-09-20 replacement-review inventory was `9/12`, with R049-008/R049-009/R049-010 then open; effective content head, prerequisite-sync head, checks, review, and final-validation inclusion are pending.
 - External prerequisite (F049-GATE-001): dependency-security baseline PR and
   feature 050 PR #216 merged separately to `main` as
   `2a92bcfcb7638d1094f33b28e4c2932fb2e4121e` and is **not** included in feature
@@ -486,7 +544,7 @@
   - `Effective content head: <40-hex-sha>`
   - `Architect validated effective content head: <40-hex-sha>`
 
-## Final Validation Evidence
+## Historical Final Validation Evidence
 
 - Analyst validation: not yet invoked; must occur after Architect pass.
 - Analyst return count: 0 / 5.
@@ -567,3 +625,12 @@ This is an explicit architectural assignment, not a final validation pass or an 
   closure/OSV/handoff headings explicitly identify their dated scope. No055
   pass is claimed. C055-215-1/3/4 remain pending actual217 merge and terminal
   integrated checks; these early focused passes do not substitute for them.
+
+
+## Final Architect Validation Notes
+
+Architect validation pass: not ready
+Final Architect validation completed at: 2026-10-08T19:17:15Z
+Architect return count: 3 / 10
+Architect disposition: This is authorized canonical preparation for the original049 continuation before actual217 merge and integrated engineering. Original dispositions and historical results are preserved; accepted legacy-fixture and inherited historical-worker adaptation are assigned tasks. Exact integrated content Review, full engineering evidence and ordered same-SHA roles remain sequential future gates. No final validation invocation, additional return or cumulative055 pass is claimed.
+Open Architect dispositions: none; accepted implementation tasks remain assigned
