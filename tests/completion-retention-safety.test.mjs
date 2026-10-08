@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import {
   chmodSync,
   existsSync,
+  lstatSync,
   mkdirSync,
   mkdtempSync,
   readFileSync,
@@ -555,29 +556,148 @@ test("next release resumes earlier retirement before changing committed current"
 });
 
 test("next release rejects changed retirement current or protected topology before publishing", () => {
-  for (const mutation of ["current", "active-link", "rollback-link"])
-    fixture((root) => {
-      const f = generations(root);
-      assert.throws(
-        () =>
-          f.publish(2, {
-            onDurabilityOperation: ({ operation }) => {
-              if (operation === "retirement-journal-durable") throw new Error("pause C");
-            },
-          }),
-        /pause C/,
-      );
-      const link =
-        mutation === "current"
-          ? join(f.state, "current")
-          : f.releases[mutation === "active-link" ? 2 : 1].output;
-      const target = readlinkSync(link);
-      unlinkSync(link);
-      symlinkSync(target, link);
+  for (const replacement of ["immediate-recreate", "retained-original-inode"])
+    for (const mutation of ["current", "active-link", "rollback-link"])
+      fixture((root) => {
+        const f = generations(root);
+        assert.throws(
+          () =>
+            f.publish(2, {
+              onDurabilityOperation: ({ operation }) => {
+                if (operation === "retirement-journal-durable") throw new Error("pause C");
+              },
+            }),
+          /pause C/,
+        );
+        const link =
+          mutation === "current"
+            ? join(f.state, "current")
+            : f.releases[mutation === "active-link" ? 2 : 1].output;
+        const target = readlinkSync(link);
+        const original = lstatSync(link, { bigint: true });
+        if (replacement === "retained-original-inode")
+          renameSync(link, join(root, `displaced-${mutation}`));
+        else unlinkSync(link);
+        symlinkSync(target, link);
+        const changed = lstatSync(link, { bigint: true });
+        if (replacement === "retained-original-inode")
+          assert.notEqual(
+            changed.ino,
+            original.ino,
+            "replacement must have a distinct allocated inode",
+          );
+        assert.throws(() => f.publish(3), /retirement/);
+        assert.equal(existsSync(f.releases[3].output), false);
+        assert.equal(existsSync(f.releases[3].destination), false);
+        assert.equal(existsSync(f.oldTree), true);
+        assert.equal(existsSync(f.journal), true);
+      });
+});
+
+test("retirement schema2 requires canonical exact link generations and rejects schema1 unchanged", () => {
+  fixture((root) => {
+    const f = generations(root);
+    assert.throws(
+      () =>
+        f.publish(2, {
+          onDurabilityOperation: ({ operation }) => {
+            if (operation === "retirement-journal-durable") throw new Error("pause C");
+          },
+        }),
+      /pause C/,
+    );
+    const original = JSON.parse(readFileSync(f.journal, "utf8"));
+    assert.equal(original.schemaVersion, 2);
+    const links = (record) => [record.current, ...record.protected, record.output];
+    for (const link of links(original)) {
+      for (const field of ["ctimeNs", "birthtimeNs"])
+        assert.match(link[field], /^(?:0|[1-9][0-9]*)$/);
+    }
+    const rejected = (record) => {
+      writeFileSync(f.journal, JSON.stringify(record));
       assert.throws(() => f.publish(3), /retirement/);
+      assert.equal(existsSync(f.oldTree), true);
       assert.equal(existsSync(f.releases[3].output), false);
       assert.equal(existsSync(f.releases[3].destination), false);
-      assert.equal(existsSync(f.oldTree), true);
-      assert.equal(existsSync(f.journal), true);
-    });
+      assert.equal(readFileSync(join(f.releases[1].output, "index.html"), "utf8"), "b shell");
+      assert.equal(readFileSync(join(f.releases[2].output, "index.html"), "utf8"), "c shell");
+      assert.equal(readFileSync(f.journal, "utf8"), JSON.stringify(record));
+    };
+    const legacy = structuredClone(original);
+    legacy.schemaVersion = 1;
+    for (const link of links(legacy)) {
+      delete link.ctimeNs;
+      delete link.birthtimeNs;
+    }
+    rejected(legacy);
+    for (let index = 0; index < 4; index++)
+      for (const field of ["ctimeNs", "birthtimeNs"])
+        for (const value of [undefined, null, 7, "", "-1", "+1", "01", "1.0"]) {
+          const record = structuredClone(original);
+          if (value === undefined) delete links(record)[index][field];
+          else links(record)[index][field] = value;
+          rejected(record);
+        }
+    writeFileSync(f.journal, JSON.stringify(original));
+    f.publish(3);
+    assert.equal(existsSync(f.oldTree), false);
+    assert.equal(existsSync(f.journal), false);
+  });
+});
+
+test("retirement link generations stay pinned at callback, partial removal and clear boundaries", () => {
+  for (const point of [
+    "retirement-journal-durable",
+    "retirement-remove-entry",
+    "retirement-before-clear",
+  ])
+    for (const selected of ["current", "active", "rollback", "output"])
+      fixture((root) => {
+        const f = generations(root);
+        let replacementPath;
+        let target;
+        let remaining;
+        let journalBytes;
+        let injected = false;
+        assert.throws(
+          () =>
+            f.publish(2, {
+              onDurabilityOperation: ({ operation }) => {
+                if (operation !== point || injected) return;
+                injected = true;
+                journalBytes = readFileSync(f.journal, "utf8");
+                const record = JSON.parse(journalBytes);
+                const authority =
+                  selected === "current"
+                    ? record.current
+                    : selected === "active"
+                      ? record.protected[0]
+                      : selected === "rollback"
+                        ? record.protected[1]
+                        : record.output;
+                replacementPath = authority.path;
+                target = authority.target;
+                remaining = existsSync(f.oldTree)
+                  ? readdirSync(f.oldTree, { recursive: true }).sort()
+                  : null;
+                try {
+                  renameSync(replacementPath, join(root, `displaced-${selected}`));
+                } catch (error) {
+                  if (error.code !== "ENOENT") throw error;
+                }
+                symlinkSync(target, replacementPath);
+              },
+            }),
+          /retirement/,
+        );
+        assert.equal(injected, true);
+        assert.equal(readlinkSync(replacementPath), target);
+        assert.equal(readFileSync(f.journal, "utf8"), journalBytes);
+        assert.deepEqual(
+          existsSync(f.oldTree) ? readdirSync(f.oldTree, { recursive: true }).sort() : null,
+          remaining,
+        );
+        assert.equal(existsSync(f.releases[3].output), false);
+        assert.equal(existsSync(f.releases[3].destination), false);
+      });
 });

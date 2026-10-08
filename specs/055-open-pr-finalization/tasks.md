@@ -2,7 +2,7 @@
 
 ## Current217 Completion Context
 
-PR214 is verified MERGED into main1e3507e2363314340eed43c0d77dd3d0acbc92cf at2026-10-08T18:11:24Z, with original049 ordered roles, all five exact-head checks and strict finalizer passing. Normal217 integration preserves both runtime contracts; consolidated preflight passes688unit/164browser. Isolated Docker validation passed (retained lifecycle/recovery,27HTTP responses and UID101);217 remains open and awaits exact-content Review, renewed original051/052/053/054 roles and live checks/finalization.215 and cumulative055 final validation remain downstream and uninvoked.
+PR214 is verified MERGED into main1e3507e2363314340eed43c0d77dd3d0acbc92cf at2026-10-08T18:11:24Z, with original049 ordered roles, all five exact-head checks and strict finalizer passing. Normal217 integration preserves both runtime contracts; consolidated post-R2c preflight passes690unit/164browser and Linux20/host24 safety13/13 each. Isolated Docker validation passed (retained lifecycle/recovery,27HTTP responses and UID101);217 remains open and awaits exact-content Review, renewed original051/052/053/054 roles and live checks/finalization.215 and cumulative055 final validation remain downstream and uninvoked.
 
 ## Decisions
 
@@ -28,6 +28,8 @@ No unresolved known issues.
 - Downstream215 faithful legacy fixture/integration. Disposition: accepted already assigned boundedT008/T009; terminal completion awaits actual217 merge and its own engineering/roles, no owner-risk decision accepted.
 - Older pending214 or old-SHA readiness claims. Disposition: superseded by this current checkpoint; dated history remains audit evidence only.
 
+- C055-217-R2c Linux generation ABA. Disposition: resolved by mandatory unrounded canonicaldecimal ctimeNs/birthtimeNs schema2 link authority and schema1/malformed fail-closed handling; real reused-inode replacement now rejects, immediate/deterministic safety13/13 on Linux20+host24, fullpreflight690/164 and rebuiltDocker27HTTP/lifecycle/UID101 pass.
+
 ## Verification Evidence
 
 - Evidence passed: root verified214 MERGED1e3507e2363314340eed43c0d77dd3d0acbc92cf at2026-10-08T18:11:24Z; all five exact-head checks, strict finalizer and ordered original049 roles completed. Original049 final effective7b6c8cb19aeea076ac3801ca39a4f7d3f6d8a56a and detailed raw/hash evidence are retained in merged records.
@@ -42,12 +44,12 @@ No unresolved known issues.
 ## Cycle PR Set
 
 - PR #214 https://github.com/cucumberfalse/cabadrive/pull/214; branch claude/049-nginx-caching-security; status MERGED at2026-10-08T18:11:24Z; main head1e3507e2363314340eed43c0d77dd3d0acbc92cf; verified prerequisite, included in later055 cumulative final validation.
-- PR #217 https://github.com/cucumberfalse/cabadrive/pull/217; branch codex/051-asset-retention; status open/integrated engineering verified by preflight688/164 and actual Docker5197 lifecycle/27HTTP/UID101; final head follows completed preparation; sole implementationPR included in original051/052/053/054 final validation.055 cumulative final-validation inclusion excluded until215.
+- PR #217 https://github.com/cucumberfalse/cabadrive/pull/217; branch codex/051-asset-retention; status open/integrated engineering including schema2 generation authority verified by preflight690/164 and actual Docker5197 lifecycle/27HTTP/UID101; final head follows completed preparation; sole implementationPR included in original051/052/053/054 final validation.055 cumulative final-validation inclusion excluded until215.
 - PR #215 https://github.com/cucumberfalse/cabadrive/pull/215; branch codex/049-learning-priority-fresh-update; status downstream in progress; final head after verified217merge/integration; included in terminal049-learning plus055 cumulative final validation. No217/215 merge claim.
 
 ## Final Validation Evidence
 
-- Architect return count: 0 / 10 for055; original0493/10,05110/10,05210/10,0530/10,0546/10 preserved in respective records.
+- Architect return count: 1 / 10 for055; original0493/10,05110/10,05210/10,0530/10,0546/10 preserved in respective records.
 - Analyst return count: 0 / 5 for055; original0491/5 and original051–0540/5 preserved.
 - Limit escalation: none for055; original exhausted051/052 budgets and054/055 ownership are retained without reset.
 - Final-validation evidence-only commit:055 cumulative final roles remain uninvoked until terminal215;217 roles cover original051/052/053/054 only. After each established effective SHA, only allowed role evidence additions or renewed content preparation/roles.
@@ -59,7 +61,7 @@ No unresolved known issues.
 | Slice | Purpose | Branch | Initial head | Current status / final inclusion |
 |---|---|---|---|---|
 | #214 | nginx/security plus shared055 security remediation/carrier | `claude/049-nginx-caching-security` | `f80deaa27339b8b2a28af6218aaadf723482ce7a` | MERGED1e3507e2363314340eed43c0d77dd3d0acbc92cf at2026-10-08T18:11:24Z; original049 roles/all five exact-head gates completed;055 cumulative included |
-| #217 | retained assets/provenance/security/export051–054 integration | `codex/051-asset-retention` | `a53a2a0c3ec6068f1b0ca58cc95efa3307e7fe5f` | 214 merged and normal217 integration settled; preflight688/164 and Docker lifecycle/27HTTP/UID101 passed;051–054 per-slice final validation follows,055 cumulative excluded until215 |
+| #217 | retained assets/provenance/security/export051–054 integration | `codex/051-asset-retention` | `a53a2a0c3ec6068f1b0ca58cc95efa3307e7fe5f` | 214 merged and normal217 integration settled; post-R2c preflight690/164 and rebuiltDocker lifecycle/27HTTP/UID101 passed;051–054 per-slice final validation follows,055 cumulative excluded until215 |
 | #215 | learning/safe updates and authentic legacy retention regression | `codex/049-learning-priority-fresh-update` | `31c2507fd6a0e0ac4eaaeac1d9f6d49de251446e` | pending217 merge and final integrated evidence;049-learning plus055 cumulative final validation |
 
 Initial heads/branch names are continuation handoff context, never final remote readiness claims. Implementation/Orchestrator must record refreshed actual heads, check/review evidence and merge SHAs/times sequentially here.055 is in progress until all three GitHub merges are verified.
@@ -203,3 +205,27 @@ C055-214-OSV2 and C055-214-FRESH are implemented and verified; T002b/T003b/T003c
 - Frozen graph exact214-main identity: gitblob `c771fb84b1bc5e28ed4b35492439c78ca843e862`, lockSHA256 `100de609ab9ff12d49d738a8f99e62ea57c09f12502721be38f2f1267d496db3`; source-map-js1.2.2/brace1.1.21+5.0.12.214 fullOSVv2.3.5 scan241/zero findings carries by byte identity, while published217 remoteOSV is still independently required. No suppression or new dependency change.
 - Actual isolatedDocker retention runner EXIT0 on port5197, project `cabadrive-retention-15496-1791483535389`: running/stopped legacy migrations preserve exact historicalA asset, worker/current candidate, restart/down-up and clean-install/sibling controls; real kernel lock, killed-publisher retry and C interrupted-retirement→D new-container recovery leave exactly two protected links/two trees/no journal with removable host-owned exports. All test-owned resources are cleaned. Combined27HTTP responses prove exact five security headers on200/404, current/historical immutable, content86400/SWR604800, SWno-cache, shell/default and404no-cacheheader, gzipJS and actualmaster/runtimeUID101. Logs remain transient `/tmp/cabadrive-217-final-preflight.log` and `/tmp/cabadrive-217-final-docker.log`.
 - Canonical original051/052/053/054 process preparation is current before effective SHA; historic budgets and validation history remain. No unresolved Implementation Agent feedback. Independent exact final-content Review, ordered original-feature Architect then Analyst, all five exact-published-head checks/conversations/guard and actual217merge are subsequent mandatory tasks.055 remains in progress for downstream215 and its own terminal validation; no cumulative success is claimed.
+
+
+## Architect completion return: C055-217-R2c
+
+- [x] T006a Implement schema2 exact symlink generation authority and strict malformed/legacy rejection, preserving immediate ABA and deterministic retained-inode hostile controls plus untouched/partial/C→D positives.
+- [x] T006b Complete supported fullpreflight690unit/164browser, affected LinuxNode20 safety13/13 and rebuiltDockerNode22 affectedtransaction/header lifecycle; actual evidence recorded before new content/review/roles.
+- Architect return count: 1 / 10.
+- Analyst return count: 0 / 5.
+- Earlier217 engineering/role checkpoints remain historical. Current217 merge is blocked until new verified content and all exact-head gates; cumulative055 remains uninvoked and215downstream.
+
+
+## Implementation Agent evidence: PR #217 Linux generation authority follow-up
+
+- Baseline CI on published`aca45b70fe54dfd40c04f0b2174b5573914c6ef0` failed exactly one of688 tests on UbuntuNode20: immediate unlink/same-target recreation unexpectedly accepted. Docker/OSV/feature-memory gates passing on that head did not authorize ignoring this failure. NativeP1`PRRT_kwDOSX65IM6qgQte` prompted approved C055-217-R2c runtime hardening; original feature budgets stay unchanged and all0a role passes are historical. No test-only dismissal was used.
+- Read-only isolatedLinuxNode20 measurement reproduced ACTIVE andROLLBACK dev62 inode reuse (2929636/2929615) with different exact ctimeNs/birthtimeNs, accepted by schema1; CURRENT used a different inode and was already rejected. Fixed-runtime measurement observes same activeinode3060762/rollbackinode3060741 but changed Ns values and rejects both replacements. Source and telemetry establish a real generation gap, not merely a flaky assertion. No sleeps or allocated-inode assumptions are required for the original regression.
+- Runtime now records schema2, mandatory canonicaldecimalstring ctimeNs+birthtimeNs from one BigIntlstat of each current/protected/retiring symlink, retaining dev/inode/target. It validates fields/type/schema before mutation and checks exact generations before each destructive operation and journal clear, including callback substitutions. Schema1/incomplete authority fails closed rather than synthesizing ownership from observed paths. Root/tree directory identity remains device/inode because legitimate partial cleanup changes directory timestamps. Context7 officialNode docs (`https://nodejs.org/docs/latest-v22.x/api/fs.html`) confirm lstat of the symlink itself and bigintNs properties; precision is platform-dependent, not asserted universally unique. Backend documentation records this boundary.
+- Expanded safety13/13 PASS independently in LinuxNode20 and bundledNode24: original immediate ABA, deterministic renamed-original-inode replacement,64 malformed/missing timestamp controls, schema1 unchanged rejection/valid-schema2 subsequent convergence,12 protected/current/retiring substitutions at journal/partial/clear boundaries, plus all earlier journal/fifo/source/partial/untouched/C→D controls. Final updated fullpreflight EXIT0 with690/690 unit and164/164 actualbrowser scenarios and every required localquality/content/build gate.
+- Rebuilt actualNode22Docker retention EXIT0 on5197, project`cabadrive-retention-21212-1791485551007`: running/stopped/initial migration, exactA retention/currentB shell+worker, restart/down-up/SW/sibling, kernel lock/killed-publisher/new-container retry and schema2 C-interruption→D bounded2links+2trees+nojournal/host-owned export deletion all pass.27liveHTTP responses preserve five security headers on200/404, exact hashed/content/SW/default/error caching, gzipJS and nginxmaster/runtimeUID101. Own resources cleaned. Lockfile unchanged/byte-identical to214-main, existing fullOSVv2.3.5 scan241/zero remains graph proof; exact new-published-head CI remains independent.
+- Actual transientlogs: `/tmp/cabadrive-217-generation-preflight.log`, `/tmp/cabadrive-217-generation-docker.log`, `/tmp/cabadrive-217-generation-linux20.log`, `/tmp/cabadrive-217-generation-node24.log`; before/afterNs telemetry `/tmp/cabadrive-217-linux20-identity.log` and`-identity-fixed.log`. No further engineering feedback remains after accepted implementation; exact new-content independent Review, refreshed original051–054 ordered roles and exact remote gates/pagination/finalizer are still required before217merge.215/cumulative055 completion remains pending.
+
+
+## Architect engineering closure: C055-217-R2c before effective content
+
+C055-217-R2c implemented and verified; T006a/T006b complete. Measured Linux same-inode/different-generation active/rollback replacements now fail closed, with immediate and deterministic controls retained; schema2 exact decimal generation fields reject v1/malformed authority without directoryctime coupling. Linux20/host24 affected safety13/13 each, complete supported preflight690/164 and rebuiltDockerNode22 retained/recovery/header lifecycle pass. Original05110/05210/0530/0546 and Analyst0 stay intact; new055 realArchitectreturn1/10, Analyst0/5. Earlier0a/aca role/CI results are historical and cannot authorize new content. No engineering issue remains; newcontentcommit/exactReview/originalfourorderedroles/livegates precede217merge.055 cumulative remains uninvoked until terminal215 after verified predecessors.

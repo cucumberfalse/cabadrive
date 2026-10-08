@@ -2344,9 +2344,9 @@ function copyPublishTree({ state, candidate, temporary, options, legacyValidatio
   };
 }
 
-function noFollowEntry(path) {
+function noFollowEntry(path, options) {
   try {
-    return lstatSync(path);
+    return lstatSync(path, options);
   } catch (error) {
     if (error?.code === "ENOENT") return undefined;
     throw error;
@@ -2688,6 +2688,34 @@ function retirementIdentityMatches(entry, identity) {
   return entry && entry.dev === identity.device && entry.ino === identity.inode;
 }
 
+// Symlink inodes may be reused immediately after unlink on Linux. Bind their
+// generation using exact bigint timestamps; mutable tree directories retain
+// device/inode identities so partial cleanup does not invalidate its journal.
+function retirementLinkIdentity(entry) {
+  return {
+    device: Number(entry.dev),
+    inode: Number(entry.ino),
+    ctimeNs: entry.ctimeNs.toString(),
+    birthtimeNs: entry.birthtimeNs.toString(),
+  };
+}
+
+function validRetirementLinkGeneration(identity) {
+  return [identity.ctimeNs, identity.birthtimeNs].every(
+    (value) => typeof value === "string" && /^(?:0|[1-9][0-9]*)$/.test(value),
+  );
+}
+
+function retirementLinkIdentityMatches(entry, identity) {
+  return (
+    entry &&
+    Number(entry.dev) === identity.device &&
+    Number(entry.ino) === identity.inode &&
+    entry.ctimeNs.toString() === identity.ctimeNs &&
+    entry.birthtimeNs.toString() === identity.birthtimeNs
+  );
+}
+
 function retirementTree(directory) {
   const entries = [];
   const walk = (parent, prefix = "") => {
@@ -2716,7 +2744,11 @@ function retirementTree(directory) {
 function retirementLink(root, output) {
   const directory = exactPublishedOutputDirectory(root, output);
   if (!directory) fail(`publish generation is not safely contained: ${output}`);
-  return { path: output, target: basename(directory), ...retirementIdentity(lstatSync(output)) };
+  return {
+    path: output,
+    target: basename(directory),
+    ...retirementLinkIdentity(lstatSync(output, { bigint: true })),
+  };
 }
 
 function retirementKeys(value, expected) {
@@ -2734,7 +2766,7 @@ function validateRetirement(record, root, logicalOutput, activeOutput) {
       record,
       "schemaVersion,root,rootIdentity,logicalOutput,activeOutput,current,protected,output,target,entries",
     ) ||
-    record.schemaVersion !== 1 ||
+    record.schemaVersion !== 2 ||
     record.root !== root ||
     record.logicalOutput !== logicalOutput ||
     record.activeOutput !== activeOutput ||
@@ -2747,7 +2779,8 @@ function validateRetirement(record, root, logicalOutput, activeOutput) {
     fail("retirement journal does not match its generation domain");
   }
   const validLink = (link) =>
-    retirementKeys(link, "path,target,device,inode") &&
+    retirementKeys(link, "path,target,device,inode,ctimeNs,birthtimeNs") &&
+    validRetirementLinkGeneration(link) &&
     typeof link.path === "string" &&
     dirname(link.path) === root &&
     basename(link.path).startsWith(`${basename(logicalOutput)}-`) &&
@@ -2770,20 +2803,20 @@ function validateRetirement(record, root, logicalOutput, activeOutput) {
     fail("retirement journal has unsafe or protected generation authority");
   }
   for (const link of record.protected) {
-    const entry = noFollowEntry(link.path);
+    const entry = noFollowEntry(link.path, { bigint: true });
     if (
       !entry?.isSymbolicLink() ||
-      !retirementIdentityMatches(entry, link) ||
+      !retirementLinkIdentityMatches(entry, link) ||
       readlinkSync(link.path) !== link.target ||
       !exactPublishedOutputDirectory(root, link.path)
     )
       fail("retirement protected generation changed");
   }
-  const outputEntry = noFollowEntry(record.output.path);
+  const outputEntry = noFollowEntry(record.output.path, { bigint: true });
   if (
     outputEntry &&
     (!outputEntry.isSymbolicLink() ||
-      !retirementIdentityMatches(outputEntry, record.output) ||
+      !retirementLinkIdentityMatches(outputEntry, record.output) ||
       readlinkSync(record.output.path) !== record.output.target)
   )
     fail("retirement output link changed");
@@ -2831,6 +2864,7 @@ function validateRetirement(record, root, logicalOutput, activeOutput) {
 }
 
 function resumeRetirement(state, record, root, logicalOutput, activeOutput, options) {
+  if (record?.schemaVersion !== 2) fail("retirement journal has unsupported generation schema");
   const committed = verifyCommittedState(state);
   if (
     !committed.valid ||
@@ -2838,24 +2872,28 @@ function resumeRetirement(state, record, root, logicalOutput, activeOutput, opti
   )
     fail("retirement active release no longer matches committed state");
   const current = join(state, "current");
-  const currentIdentity = lstatSync(current);
+  const currentIdentity = lstatSync(current, { bigint: true });
   const currentTarget = readlinkSync(current);
   if (
-    !retirementKeys(record.current, "path,target,device,inode") ||
+    !retirementKeys(record.current, "path,target,device,inode,ctimeNs,birthtimeNs") ||
+    !validRetirementLinkGeneration(record.current) ||
     record.current.path !== current ||
-    !retirementIdentityMatches(currentIdentity, record.current) ||
+    !retirementLinkIdentityMatches(currentIdentity, record.current) ||
     record.current.target !== currentTarget
   )
     fail("retirement committed current identity changed");
   const assertCurrent = () => {
-    const entry = noFollowEntry(current);
+    const entry = noFollowEntry(current, { bigint: true });
     if (
       !entry?.isSymbolicLink() ||
-      !retirementIdentityMatches(entry, retirementIdentity(currentIdentity)) ||
+      !retirementLinkIdentityMatches(entry, retirementLinkIdentity(currentIdentity)) ||
       readlinkSync(current) !== currentTarget
     )
       fail("retirement committed current pointer changed");
   };
+  // Reject incomplete or malformed generation authority before durability or
+  // deletion operations, including journals from the unsupported v1 schema.
+  validateRetirement(record, root, logicalOutput, activeOutput);
   const journal = join(state, RETIREMENT_PENDING);
   const { descriptor, stat: journalIdentity } = openRegularFileNoFollow(
     journal,
@@ -2867,6 +2905,20 @@ function resumeRetirement(state, record, root, logicalOutput, activeOutput, opti
       fail("retirement journal changed before recovery");
     const assertJournal = () => {
       assertCurrent();
+      // Protected and still-visible retiring links retain the exact generation
+      // at every destructive boundary, including callbacks before journal clear.
+      if (!Array.isArray(record.protected)) fail("retirement protected authority is invalid");
+      for (const link of [...record.protected, record.output]) {
+        const entry = noFollowEntry(link.path, { bigint: true });
+        if (
+          (!entry && link !== record.output) ||
+          (entry &&
+            (!entry.isSymbolicLink() ||
+              !retirementLinkIdentityMatches(entry, link) ||
+              readlinkSync(link.path) !== link.target))
+        )
+          fail("retirement link generation changed");
+      }
       requireStableOpenPath(journal, "retirement journal", journalIdentity);
       const current = lstatSync(journal);
       if (
@@ -2989,7 +3041,7 @@ function retireOldPublishGenerations(state, generationRoot, logicalOutput, activ
     const link = retirementLink(root, output);
     const directory = join(root, link.target);
     const record = {
-      schemaVersion: 1,
+      schemaVersion: 2,
       root,
       rootIdentity: retirementIdentity(lstatSync(root)),
       logicalOutput,
@@ -2997,7 +3049,7 @@ function retireOldPublishGenerations(state, generationRoot, logicalOutput, activ
       current: {
         path: join(state, "current"),
         target: readlinkSync(join(state, "current")),
-        ...retirementIdentity(lstatSync(join(state, "current"))),
+        ...retirementLinkIdentity(lstatSync(join(state, "current"), { bigint: true })),
       },
       protected: [retirementLink(root, activeOutput), retirementLink(root, rollback)],
       output: link,

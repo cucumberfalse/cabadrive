@@ -83,6 +83,12 @@ project do not collide; post-commit retirement preserves the active and one
 rollback generation. Before removing an older output, a durable
 `publish-retirement.json` record binds its exact link, tree inode and file
 inventory, the committed current pointer, and both protected generations.
+Schema2 also binds authority-bearing symlinks to exact bigint `ctimeNs` and
+`birthtimeNs` values, alongside device/inode and target, so observed Linux inode
+reuse cannot authorize a replacement. Timestamp precision is platform-dependent;
+mutable directory timestamps are not pinned because legitimate partial cleanup
+changes them. Missing or malformed generation fields and old schema1 journals
+fail closed before mutation; no authority is inferred from existing paths.
 Interrupted unlink, partial removal, and sync failures resume only the recorded
 remaining entries; substituted journals or trees fail closed. A later release
 finishes any prior retirement under the existing lock before publishing or

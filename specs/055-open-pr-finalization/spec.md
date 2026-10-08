@@ -2,7 +2,7 @@
 
 ## Current217 Progress Boundary
 
-214 is verifiedMERGEDmain1e3507e2363314340eed43c0d77dd3d0acbc92cf at2026-10-08T18:11:24Z with all required exact-head checks/roles/finalizer. Integrated217 preflight688unit/164browser passes; Docker5197 lifecycle/27HTTP/UID101 passed and final217 Review/051–054 roles/live gates are required.055 cumulative remains uninvoked and excluded at217;215 follows actual217 merge for terminal049-learning+055 validation. No later merge or runtime success is asserted.
+214 is verifiedMERGEDmain1e3507e2363314340eed43c0d77dd3d0acbc92cf at2026-10-08T18:11:24Z with all required exact-head checks/roles/finalizer. Integrated217 post-R2c preflight690unit/164browser and Linux20/host24 safety13/13 each pass; Docker5197 lifecycle/27HTTP/UID101 passed and final217 Review/051–054 roles/live gates are required.055 cumulative remains uninvoked and excluded at217;215 follows actual217 merge for terminal049-learning+055 validation. No later merge or runtime success is asserted.
 
 ## Goal and cycle context
 
@@ -42,3 +42,8 @@ Documentation must distinguish nginx HTTP86400/SWR policy from release-snapshot 
 Current Context7MDN `/mdn/content` documents Cache.addAll accepting Request objects and fetching them; primary Request.cache documentation states reload bypasses the HTTP cache and updates it. Sources: https://developer.mozilla.org/en-US/docs/Web/API/Cache/addAll and https://developer.mozilla.org/en-US/docs/Web/API/Request/cache .215 implementation independently confirms its modern protocol already constructs reload Requests and atomically caches them before marker/activation; preserve that during integration. Historical215A fixture remains the genuine old stringaddAll/excludedmanual worker, not silently repaired.
 
 Consolidate with current brace/security remediation before renewed full preflight/rebuilt real Docker+appropriate CSP/SW browser verification and fullOSVscan. A running earlier preflight is superseded by changed generator; stop only the assigned own process safely or treat results as preliminary. Substantive generated-worker change invalidates cache-token-only carry-forward equivalence; obtain real changed-worker policy/offline/freshness evidence. Renew ordered roles on one final new effectiveSHA; real Architectreturn3/10 and Analystreturn1/5 remain recorded.
+
+
+## C055-217-R2c scoped generation requirement
+
+Retirement recovery must reject an authority-bearing symlink replacement even when Linux reuses its inode and its target string is unchanged. Bind committedcurrent/protectedactive+rollback/retiringoutput links to dev/inode/target plus validated observed high-resolution change/birth generation fields in schema2 authority. Do not bind mutable directory ctime, infer missing generation or relax existing negative controls. New055 owns this scoped repair; original budgets/history remain intact, and earlier0a roles require renewal on new verified content.
