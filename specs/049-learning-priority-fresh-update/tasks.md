@@ -544,3 +544,26 @@ This is an explicit architectural assignment, not a final validation pass or an 
   async `page.evaluate`, serialized URL arguments, `expect.poll`, and isolated
   test contexts used by the focused browser assertions; these APIs match the
   locked 1.59.1 environment.
+
+### Early PR #214 prerequisite integration evidence (2026-10-08)
+
+- Authorized by Orchestrator to synchronize merged214 before217, preserving
+  preparation `522e169db856dc014e0571afc408477c6b8207c0`. Fresh fetch and GitHub
+  verify actual main/214 merge `1e3507e2363314340eed43c0d77dd3d0acbc92cf`,
+  merged at `2026-10-08T18:11:24Z`. The normal merge resolves two overlapping
+  generator/test hunks by preserving the already-modern reload-request atomic
+  batch, all hashed dependencies, durable marker protocol, retained cache
+  lookup and network-first navigation. No historicalA snapshot repair occurs.
+- Inherited real HTTP-cache browser fixture now accepts both exact emitted
+  cache-name formats (literal and CACHE_PREFIX) and rejects an unmatched hook,
+  preserving actual HTTP-warmA/default-negative/reloadB/server-hit and failed
+  install/offline controls without routing or clearing cache. Frozen install
+  passed; generated-worker suite passed7/7; production build passed; isolated
+  `PLAYWRIGHT_PORT=53215` HTTP-cache browser matrix passed6/6 desktop/mobile
+  cases. Logs use `/private/tmp/cabadrive-pr215-*-after214.log`.
+- Reconciled cumulative055 canonical memory preserves complete214 detailed
+  evidence and hashes plus latest intake R2a/R2b and Analyst typo correction.
+  Architect's read-only union review confirms no loss; historical pre-merge
+  closure/OSV/handoff headings explicitly identify their dated scope. No055
+  pass is claimed. C055-215-1/3/4 remain pending actual217 merge and terminal
+  integrated checks; these early focused passes do not substitute for them.
