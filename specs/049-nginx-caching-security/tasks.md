@@ -234,6 +234,10 @@
 
 ## Verification Evidence
 
+- Evidence passed: consolidated C055-214-OSV2/FRESH candidate `pnpm run preflight` EXIT0 with556/556 Node tests and160/160 desktop/mobile Playwright cases, all memory/repository/content/quality/format/negative/build guards and2156 cached worker assets. Six new actual HTTP-cache cases prove warmA/default-fetchA without extra server hits, legacy-default new cacheA, fixed reload origin hit/exact new cacheB, and503 rejected atomic installation with empty new cache/prior active cacheA/offline reload. No routing or HTTP-cache clearing is used. Log `/private/tmp/cabadrive-finalize214-preflight-final.log` SHA256 `ad6a38a24502a47e088f1d495beab0d979c752d86af5240a5a72fba6ed435f12`. Exact compatible brace1.1.21/5.0.12 with unchanged minimatch owners/source-map-js1.2.2 and manifest passed frozen install/hash audit; local same-version OSVv2.3.5 full recursive scan EXIT0,241 packages/zero vulnerable packages, raw report SHA256 `653ca6184b8c572167d82db713cb0ca5226f6d85963d8119c56202ee54710f4f`. Remote exact-new-head scanner remains independently required.
+- Evidence passed: fresh isolated Docker image `cb8d0e3ec1eb5bc5f552716579686b0bbea60683fcdc13f59b4331ec2aeb1510` versus prior full actual-CSP audit image `3c8faf0f1b02e1fad1204fb3d629efdb59c2c94eb93b2781cbbfa8939bc77a57`: complete served inventory2358 files;2357 raw byte-identical shell/hashed assets/content files; only `sw.js` changed, exactly generated decimal cache token plus accepted atomic Request(cache:reload) install construction. Complete ASSETS2156 and all other worker bytes are identical; no raw whole-tree/worker identity is claimed. Prior inventory SHA256 `a35a19dd2815580e5899055feb4cb716a813351f8150a8cb0f5f7652a4e5b588`, current inventory SHA256 `54cd6d33c26a0ff279798e387326bea33d72b3f3b9154eec662dae419abc7d9a`; full comparison `/private/tmp/cabadrive-finalize214-runtime-final-comparison.json`. Prior154-screen CSP compatibility carries for unchanged app/headers; changed worker received fresh actual-browser verification rather than timestamp-only equivalence.
+- Evidence passed: actual rebuilt nginx5194 desktop/mobile worker install/offline shell reload/first deferred manual load/offline manual reload2/2 cases and8 document responses with specified enforced CSP; zero securitypolicyviolation events, console errors or pageerrors. Both projects install current `cabadrive-static-1791481561584`; actual cache inspection proves manual chunk absent after install and present only after real first load of `/assets/manual4Ruedas-BSu9JrPn.js`. Raw events `/private/tmp/cabadrive-finalize214-osv2-browser/events.jsonl` SHA256 `85c9d39750fb1be22f795b8a3b88848871be3fe0dc960e219dd7424aff7dad6b`; browser command `pnpm exec playwright test --config /private/tmp/cabadrive-finalize214-osv2-browser/config.ts`. Fresh root/SW/hashedJS/stable image/404 exact five-header/cache/gzip smoke passed, UID101 actual nginx master; image unchanged after corrected scratch Request.url instrumentation. Own project `cabadrive-finalize214` container/network removed; sibling resources preserved. Ordered roles on new substantive SHA and live remote gates remain pending.
+
 - Evidence passed: C055-214-CSP actual-browser verification on effective content head `aa261a7cbfd24b7cc1e739f1c4be397526d5b55c` used isolated nginx Docker project `cabadrive-finalize214` at `http://127.0.0.1:5194`, with enforced response CSP verified rather than Vite preview. Ephemeral copies of both existing browser suites changed only the import to an auto instrumentation fixture; tracked product/tests/runtime/dependencies remain unchanged. Commands: `pnpm exec playwright test --config /private/tmp/cabadrive-finalize214-csp/playwright.config.ts` and companion manual config;146 app cases plus8 manual-ticket cases cover desktop/mobile home/learn, exam/start/completion/resume/leave, mistakes, vocabulary/detail, materials/tickets, process, CABA/RF, manual/front-matter/chapter/appendix/detail/lazy corpus, source-reader/search/translation modes, progress/export/import/reset and offline reload.
 - Evidence passed:154 distinct cases under real nginx policy,155 monitored records including one focused rerun; zero securitypolicyviolation events, zero enforced violations, zero console CSP errors, zero console errors and zero pageerrors. All successful document responses expose exactly the specified enforced CSP; actual network evidence includes `/assets/index-ui5s-K4J.js` and deferred `/assets/manual4Ruedas-BSu9JrPn.js`. Native Chromium hit SIGSEGV during one mobile lazy-chunk context teardown after assertions; only that case was rerun with `--project mobile --workers 1 --grep 'non-manual startup defers the manual corpus chunk until the manual view opens'` and passed EXIT0. Initial145 app+8 manual passes and focused1 pass establish all154 cases without a product fix or hidden test weakening. JSON audit/summary, unchanged assertions and dense-manual desktop/mobile screenshots retained in `/private/tmp/cabadrive-finalize214-csp`; summary records exact counts/hashes. HTTP/runtime smoke passed again; browser-run image `3c8faf0f1b02e1fad1204fb3d629efdb59c2c94eb93b2781cbbfa8939bc77a57` preserves prior JS hashes. Own Docker container/network removed successfully; siblings preserved.
 
@@ -421,19 +425,15 @@ Cycle055 AD055-2 owns the minimal source-map-js lock-only1.2.2 security resoluti
 
 No unresolved known issues.
 
-- Historical local Docker registry/pull limitation. Disposition: superseded by the actual2026-10-08 isolated build/up/header/gzip/non-root/down pass recorded in Verification Evidence; no owner decision remains.
-- Hashed-image migration, Brotli and HSTS/TLS. Disposition: not needed in this nginx049 scope; existing declared cache policy, gzip and HTTP8080 contracts are fully implemented and tested. These are excluded product scope, not accepted defective behavior.
-- Improvement-file status checkboxes. Disposition: not needed under the existing documented047/048 convention; durable runtime/spec evidence is current.
+- C055-214-OSV2 safe graph advisory findings. Disposition: resolved by brace1.1.21/5.0.12/source-map-js1.2.2 with unchanged owners/manifest, frozen graph audit and fullOSVscan241/0; remote exact-head required check remains mandatory.
+- C055-214-FRESH new-install HTTP-cache promotion. Disposition: resolved by atomic reload-request batch,6realHTTPcache/failure/offline controls, actual changedSWDocker/CSP smoke and truthfulHTTP-versus-SW docs; no unresolved owner decision.
+- Historical local Docker/CSP-preview verification gaps. Disposition: superseded by real isolated headers/nonroot lifecycle and actual enforced-policy browser evidence.
+- Hashed-image migration/Brotli/HSTS/TLS/status-checkbox updates. Disposition: not needed under declared scope; HTTP86400/SWR and persistent offlineSW snapshot are explicitly distinguished, not accepted defective behavior.
 
 ## Implementation Agent Feedback
 
-- No unresolved Implementation Agent feedback.
-
----
-
-<!-- Секции ниже — skeleton-плейсхолдеры; заполняются на финальной валидации,
-     инициируемой Orchestrator. НЕ заполнять marker-значения (timestamp/SHA)
-     на этапе Architect-дизайна. -->
+- C055-214-OSV2 and C055-214-FRESH. Disposition: resolved by consolidated verified implementation, graph/fullscan and changed-worker regressions; no undisposed engineering feedback.
+- No unresolved Implementation Agent feedback. New substantive review finding requires Architect disposition before repair; final role/current-head/remote gates remain Orchestrator obligations.
 
 ## Final Architect Validation (Architect-owned)
 
@@ -448,17 +448,12 @@ Final architectural validation is invoked after this process preparation receive
 
 ## Final Validation Evidence
 
-- Effective content head: aa261a7cbfd24b7cc1e739f1c4be397526d5b55c
-- Architect validated effective content head: aa261a7cbfd24b7cc1e739f1c4be397526d5b55c
-- Current-PR-head read-only guard: local assigned214 continuation HEAD equals effective content head aa261a7cbfd24b7cc1e739f1c4be397526d5b55c at Architect inspection; no post-effective product, runtime, test, dependency or other substantive changes exist. The only proposed later diff is permitted original049 role-validation evidence. Orchestrator refreshes the actual GitHub PR head and verifies the evidence-only delta, all five exact-head checks, review/conversations and mergeability before finalization.
-
-- Architect return count:0/10; final original049 architectural pass is recorded after effective preparation SHA is committed.
-- Analyst return count:0/5; Analyst validation follows the passing Architect timestamp on exactly the same effective content SHA in Analyst-owned feature-request.md.
+- Architect return count:3/10; prior passes onaa261a7c are historical and superseded for merge authority by the consolidated dependency/generator content. New final Architect pass is invoked only after exact new-content review.
+- Analyst return count:1/5; new Analyst pass follows renewed Architect pass on the same final effective SHA in Analyst-owned feature-request.md.
 - Limit escalation: none.
-- Final-validation evidence-only commit: later evidence must be limited to original049 role-owned validation notes/process evidence and pass the existing section/path guard. Any later substantive content restarts validation.
-- Current-PR-head read-only guard: Orchestrator must verify explicit effective SHA, prove later commits contain only permitted role evidence, and check exact-head required checks/review/conversations/conflicts before finalization.
-- Cleanup: not applicable; no deletion scope was assigned, current intake/continuation environments are preserved.
-
+- Final-validation evidence-only commit: after new effective content SHA, only original049 role-validation/verification evidence additions are permitted; all future non-evidence changes restart roles.
+- Current-PR-head read-only guard: Orchestrator refreshes published/newGitHub head, references the final new effective SHA, proves later evidence-only delta and verifies all five required checks/fullreview/conversations/conflicts before expected-head finalization. Oldaa local guard is preserved only in historical notes and cannot authorize new content.
+- Cleanup: not applicable; no deletion scope assigned, continuation/intake environments preserved.
 
 ## Final Architect Validation Notes
 
@@ -491,3 +486,29 @@ Architect validation evidence: Renewed original049 validation inspected actual D
 Architect disposition: C055-214-CSP resolved by actual enforced-policy browser evidence, closing originalFR5/AC2 and superseding the earlier evidence gap. T010–T012/T014 architectural and engineering obligations are complete; no open implementation task/disposition or accepted owner risk remains. Prior full556/154 preflight, actual headers/gzip/404/non-rootUID101 Docker smoke, compatible frozen source-map-js1.2.2 graph, independent product-current review and canonical process preparation remain valid on the same effective SHA. Only sequential Analyst and live remote finalization gates remain; no gates are waived.
 Open Architect dispositions: none
 Architect validation evidence: No substantive post-effective change occurred. All proposed changes after aa261a7cbfd24b7cc1e739f1c4be397526d5b55c are permitted original049 verification and role-validation evidence.055 remains in progress and downstream217/215 validations are excluded from this original049 pass.
+
+
+## Final Architect Validation Notes
+
+Architect validation pass: not ready
+Architect return count: 2 / 10
+Architect gaps: Required exact-head OSV on published68f1d758a1c0010b2e5ccb5b9925192152dcf09b finds both brace-expansion major lines below safe compatible floors. New substantive dependency remediation supersedes original049 Architect/Analyst passes onaa261a7cbfd24b7cc1e739f1c4be397526d5b55c for merge authority.
+Architect disposition: Accepted new055 taskC055-214-OSV2 for ordinary compatible lock-only advancement of BOTH1.x>=1.1.21 and5.x>=5.0.12, complete graph/frozen-install audit and full same-version localOSVscan before push, fullpreflight/rebuiltDocker verification and ordered renewed role passes on a new final effective content SHA. Preserve Analystreturn1/5 and exact-head remote gates; no suppression, manifest/owner drift, stale pass reuse or merge of published68.
+Open Architect dispositions: C055-214-OSV2
+
+
+## Final Architect Validation Notes
+
+Architect validation pass: not ready
+Architect return count: 3 / 10
+Architect gaps: Accepted P1r4222201360 identifies real install-time promotion of staleHTTP stablecontent into a new timestamp worker cache. Headers do not establish release freshness while stringaddAll consults defaultHTTP cache.
+Architect disposition: New055C055-214-FRESH narrowly authorizes install reloadRequests in one atomic batch, meaningful realHTTPfreshA→originB newinstall regression, failure/offline controls and truthfulHTTP-versus-CacheStorage docs. Consolidate this substantive generator fix with brace/security work before final verification and a new effective content SHA; preserve215 modern reload-request protocol and historicalA fixture. Earlier cache-token-only equivalence and original049rolepasses cannot authorize changed worker content; renewed ordered Architect/Analyst passes mandatory.
+Open Architect dispositions: C055-214-OSV2 and C055-214-FRESH
+
+
+## Final Architect Validation Notes
+
+Architect validation pass: not ready
+Architect return count: 3 / 10
+Architect disposition: C055-214-OSV2 and C055-214-FRESH engineering tasks resolved by final consolidated fullpreflight556Node/160browser, completeOSVv2.3.5 scan241/0, compatible audited frozen safegraph and rebuiltDocker security/cache/gzip/404/nonroot plus changedSWCSP/offline/lazy verification. No engineering disposition remains. Final current-content independent review and renewed chronological same-SHA Architect/Analyst validations are sequential obligations; no final pass is claimed before content commit/review.
+Open Architect dispositions: none

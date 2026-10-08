@@ -10,7 +10,7 @@
 ## Principles Applied (Constitution)
 
 - **Principle III (Test-first).** Статические text-ассерты FR-5.1 на `nginx.conf`/`Dockerfile` пишутся и наблюдаются падающими на ТЕКУЩЕМ баговом конфиге ДО правки nginx.conf/Dockerfile; затем правки делают их зелёными.
-- **Simplicity / minimal surface.** Инфраструктурный слой раздачи + контрактный тест. Никаких изменений приложения/SW/роутинга/контента/`assetUrl()`. Cache-Control через `map` (одна server-level `add_header`), а не размазан по `location`-блокам.
+- **Simplicity / minimal surface.** Инфраструктурный слой раздачи + контрактный тест. Приложение/роутинг/контент/`assetUrl()` не меняются. Узкое C055-214-FRESH исключение разрешает только install-precache reload request construction, meaningful HTTP-cache regression и truthful freshness docs; остальной SW protocol сохраняется. Cache-Control через `map` (одна server-level `add_header`), а не размазан по `location`-блокам.
 - **Determinism.** Эталонные `nginx.conf` и `Dockerfile` зафиксированы ниже символ-в-символ, чтобы FR-5.1 статические ассерты матчились детерминированно (тот же приём, что 048 применял к тексту SW-обработчика).
 
 ## Design — эталонный `nginx.conf` (FR-1/FR-2/FR-3)
@@ -186,8 +186,10 @@ curl -sI "http://localhost:${CABADRIVE_HOST_PORT}/${img}" | grep -qi 'cache-cont
 - `tests/docker-runtime.test.mjs` — +2 чтения (`nginx.conf`/`Dockerfile`), +2 focused `test()` блока (FR-5.1). Существующие 4 блока не ослабляются.
 - `.github/workflows/ci.yml` — только джоба `docker-validation`: `curl -I` header-smoke (FR-5.2). Джоба `baseline-checks` не трогается.
 - `docs_project/project/devops/docker-runtime.md` — аддитивная синхронизация (A8).
+- C055-214-FRESH: `scripts/generate-service-worker.mjs` install request construction; `tests/service-worker-generation.test.mjs` и `tests/e2e/service-worker-http-cache.spec.ts` behavioral regression; improvements/runtime docs HTTP-versus-release-snapshot explanation без изменения status checkboxes.
+- New055: compatible security-only `pnpm-lock.yaml` resolution и process memory, без manifest/owner churn.
 
-Файлы, которые НЕ трогаются: приложение (`src/**`), SW (`public/sw.js`, `scripts/generate-service-worker.mjs`), `assetUrl()`/`src/data/content.ts`, роутинг, контент, `index.html`, `vite.config.ts`, `docker-compose.yml`, `Makefile`, `package.json`, чекбоксы `docs/improvements/14-*.md`.
+Файлы, которые НЕ трогаются: приложение (`src/**`), ручной `public/sw.js` и остальной SW protocol (generator install request construction отдельно разрешён C055-FRESH), `assetUrl()`/`src/data/content.ts`, роутинг, контент, `index.html`, `vite.config.ts`, `docker-compose.yml`, `Makefile`, `package.json`, чекбоксы `docs/improvements/14-*.md`.
 
 ## Verification Strategy
 
@@ -197,7 +199,8 @@ curl -sI "http://localhost:${CABADRIVE_HOST_PORT}/${img}" | grep -qi 'cache-cont
 - `pnpm run format:check` — зелёный (тест-файл/ci.yml/doc проходят prettier; `nginx.conf`/`Dockerfile` вне prettier-allowlist).
 - `pnpm run preflight` — перед push, EXIT 0 (включает e2e; NFR-1 «no external requests» и офлайн зелёные).
 - **Docker-контракт (реальный `curl -I`)** — прогоняется в CI-джобе `docker-validation`; Implementation Agent записывает, что реальные header-проверки идут в CI, и (опц.) прогоняет docker локально.
-- Границы (AC-6): `git diff --name-only` = ровно `nginx.conf`, `Dockerfile`, `tests/docker-runtime.test.mjs`, `.github/workflows/ci.yml`, `docs_project/project/devops/docker-runtime.md` (+ `specs/049-*`); `git diff --stat src public/sw.js scripts/generate-service-worker.mjs src/data/content.ts index.html vite.config.ts docker-compose.yml Makefile package.json` — пусто.
+- Границы (AC-6): nginx/runtime/test/doc файлы выше плюс явно разрешённые C055-FRESH generator/request/regression/docs и compatible security lock/process memory. `src/**`, ручной `public/sw.js`, роутинг/контент/assetUrl, index/vite/compose/Makefile/package.json и прочий SW protocol сохраняются.
+- Freshness: реальный HTTP-fresh A → origin B → новая SW install с reloadRequests сохраняет B/server-hit; default-request negative A, failed-install ready-cache/offline shell controls обязательны. HTTP86400/SWR не выдаётся за CacheStorage TTL.
 
 ## Verification Matrix
 
@@ -226,10 +229,47 @@ curl -sI "http://localhost:${CABADRIVE_HOST_PORT}/${img}" | grep -qi 'cache-cont
 | unprivileged-образ не стартует / master root (NS-3) | Низкая | Контейнер не поднят / root-master | Официальный образ решает pid/user из коробки; `COPY`/`CMD`/`listen 8080` неизменны; docker-smoke + AC-4 |
 | Статик-ассерты «косметические» (проходят и на баговом, и на новом) — NS-5 | Средняя | Ложная защита | FR-5.1 test-first: наблюдать FAIL на текущих `nginx.conf`/`Dockerfile`; двойной слой с реальным curl -I |
 | Эталонный текст расходится с регэкспами (пробелы) | Средняя | Красные тесты | `nginx.conf`/`Dockerfile` зафиксированы символ-в-символ; регэкспы с гибкими `\s*` в маппингах; сверка на HEAD |
-| Скоуп расползается в приложение/SW/хешированные пути | Средняя | Нарушение атомарности PR | Явные Out-of-scope границы; `git diff --name-only` контроль (AC-6) |
+| Скоуп расползается в приложение/SW/хешированные пути | Средняя | Нарушение атомарности PR | Явные Out-of-scope границы плюс одно C055-FRESH install исключение; `git diff --name-only` контроль (AC-6) |
 | Duplicate MIME warning от `text/html` в gzip_types | Низкая | Шумный лог nginx | `text/html` НЕ перечислен явно (сжимается неявно); ассерт `doesNotMatch(gzip_types … text/html)` |
 | immutable Cache-Control «залипает» на 404 ассетов (NS-8) | Средняя | Транзиентный `/assets/*` 404 запинается в браузере как immutable даже после восстановления файла | Cache-Control-`add_header` БЕЗ `always` (эмиссия только на 2xx/3xx); security-заголовки сохраняют `always`; статик `doesNotMatch(… Cache-Control … always)` + runtime `! grep cache-control` на `/assets/`-404 |
 
 ## Architect completion-cycle055 disposition (2026-10-08)
 
 New055 carries the shared source-map-js security-only resolution on existing214; this does not change nginx049 product scope. Preserve the single server cache map/security headers, gzip and unprivileged image. Historical local Docker pull failure is an execution checkpoint, not an accepted owner-risk decision: new full preflight, isolated real Docker header/non-root smoke and exact-current-head CI must supply the missing evidence. After that evidence exists, reconcile the issue/feedback as verified closed, retain the historical failure narrative as history, and renew original049 Architect then Analyst passes on the real effective content head before merge.055 remains in progress until217 and215 subsequently complete.
+
+## Architect disposition: exact-head OSV brace-expansion follow-up
+
+GitHub required OSV run37817165454 on published214 head68f1d758a1c0010b2e5ccb5b9925192152dcf09b reports six advisory matches: brace-expansion1.1.18 and5.0.9 below compatible safe floors1.1.21 and5.0.12 (GHSA-6j4f-fj2g-mc7p, GHSA-qhr7-859c-m2p7, GHSA-q2hr-2g5m-vwhr). source-map-js1.2.2 is cleared. Merge remains blocked. New055 owns this narrow shared security remediation; historical217 feature053 evidence/ownership is preserved, and both PRs later inherit one converged safe graph through main.
+
+- C055-214-OSV2: accepted implementation task. With pinnedpnpm10.33.0, use ordinary targeted lockfile-only compatible resolution to advance both existing brace-expansion major lines independently to1.x>=1.1.21 and5.x>=5.0.12. Preserve minimatch owners/direct ranges, existing overrides/scripts/packageManager and source-map-js1.2.2. Audit every package key, snapshot, owner edge, integrity/engine/peer difference; eliminate every below-floor duplicate. No blanket override, new manifest policy, owner upgrade, forced/latest major churn or scanner suppression without exact constraint evidence and prior Architect disposition.
+- C055-214-OSV2 verification: run the complete repository scan with the same OSVscannerv2.3.5 as CI using disposable anonymousDocker context before any push; inspect every reported package/advisory, not only brace-expansion, to consolidate all actual blockers. An advisory beyond this assigned graph is recorded for exact bounded Architect disposition before mutation. Zero full-scan findings, deterministic frozen-install/hash/graph evidence, appropriate full preflight and rebuilt isolated actualDocker/nginx headers/non-root/CSP behavior establish candidate readiness before publication. Keep all required CI policies unchanged and require exact-current-head green remoteOSV independently.
+- C055-214-OSV2 validation: dependency content is substantive. Earlier original049 Architect/Analyst passes onaa261a7c are historical and cannot authorize the new content. Preserve real Architectreturn2/10 and Analystreturn1/5; establish one final new effective content SHA after fixes/audit/process preparation, then renew Architect first and Analyst second. New055 cumulative validation remains uninvoked until215. Do not merge published68 or guess-and-push partial dependency fixes.
+
+### Historical conditional OSV2 verification proportionality (superseded by FRESH logic change)
+
+PR #217 original053 already resolves brace-expansion to exact1.1.21/5.0.12; converge214 to those same compatible entries and later inherit source-map-js1.2.2 through main. Because brace-expansion is dev/build-only, the completed actualDocker154-case CSP audit may carry forward only when a fresh complete built/served artifact inventory proves shell, generated SW, hashed assets and content byte-identical to the audited runtime, and a rebuilt isolated Docker header/gzip/non-root smoke passes. A single JS hash or unchanged source file is insufficient. Any served artifact drift receives appropriate actual policy/browser verification before claiming compatibility. Full preflight, fullOSVv2.3.5 prepush scan, frozen graph/hash audit and ordered role validation on the new effective content SHA remain mandatory; no unnecessary broad CSP rerun is required once identity is proven.
+
+### Historical conditional generated-cache-token comparison (superseded by actual changed-worker verification)
+
+Generator inspection confirms `createServiceWorkerBody(assets, timestamp = Date.now())` emits a leading `const CACHE_NAME = "cabadrive-static-<decimal timestamp>";`. Accept normalization of that exact generated decimal cache-name field only after reporting raw SW drift and proving generator code plus executable dependency logic unchanged, complete ASSETS list and every remaining SW byte identical. Every other served shell/asset/content file must be compared raw byte-for-byte; no broad timestamp/regex normalization or executable-logic drift is authorized. This is normalized equivalence, never raw full-tree byte identity.
+
+Require fresh rebuiltDocker worker response/policy smoke and a real service-worker install, offline reload and deferred/lazy-asset CSP smoke on the new token. The original full154-case actual nginx CSP compatibility evidence may then carry forward because the sole generated cache identifier change cannot affect policy compatibility; complete inventory and exact normalization demonstrate that boundary. Any additional drift requires explicit appropriate verification/disposition before final role pass. Full preflight/fullOSV/frozen-audit/newSHA ordered-role gates remain intact.
+
+## Architect disposition: P1 stable-content HTTP-cache promotion
+
+Accepted current214 P1r4222201360/PRRT_kwDOSX65IM6qewtC. Source inspection confirms generated install uses `cache.addAll(ASSETS)` strings and fetch uses indefinite cache-first `caches.match`. A new timestamp worker can copy still-fresh or stale-while-revalidate old `/content/assets/` HTTP bytes into its new release CacheStorage despite the new origin content. The nginx HTTP policy alone does not establish the claimed worker refresh; out-of-scope SW wording is not a valid rejection of this regression.
+
+C055-214-FRESH is a narrow explicit exception owned by new055 to original nginx049's SW exclusion. Change only install request construction so stable `/content/assets/` precache requests bypass HTTP cache with `Request(...,{cache:"reload"})`, keeping one atomic `cache.addAll(requests)` and unchanged cache keys/list coverage. Applying reload to the entire install batch is also compatible and converges with215's already-implemented reload batch; choose the smaller coherent change. Preserve deferred manual exclusions, offline-ready prior cache on failed installation, feature048 response/error behavior, no external request and existing activation behavior. No URL-version migration, runtime TTL subsystem, new dependency or unrelated update protocol change is authorized.
+
+Evidence must reproduce HTTP-fresh A bytes warmed under a real cacheable response, origin switch to B at the same stable URL without clearing/route-disabling HTTP cache, and new worker install. Baseline default request must return/promote A; fixed install reload request must hit B origin and store exact B bytes. A meaningful generated-worker execution test may model the browser cache semantics, but actual same-origin browser/server hit evidence is required for the HTTP-cache boundary. Add failed install/atomic cache and offline fallback controls; preserve hashed/deferred coverage. Never use Playwright routing that silently disables HTTP cache for the freshness regression.
+
+Documentation must distinguish nginx HTTP86400/SWR policy from release-snapshot CacheStorage: new online worker installation refreshes current origin bytes, while offline/unchanged-worker cache-first snapshots have no wall-clock24h TTL. Remove unqualified blanket24h claims rather than pretending headers govern CacheStorage. This is truthful clarification of existing local-first behavior, not weakening new-release freshness acceptance.
+
+Current Context7MDN `/mdn/content` documents Cache.addAll accepting Request objects and fetching them; primary Request.cache documentation states reload bypasses the HTTP cache and updates it. Sources: https://developer.mozilla.org/en-US/docs/Web/API/Cache/addAll and https://developer.mozilla.org/en-US/docs/Web/API/Request/cache .215 implementation independently confirms its modern protocol already constructs reload Requests and atomically caches them before marker/activation; preserve that during integration. Historical215A fixture remains the genuine old stringaddAll/excludedmanual worker, not silently repaired.
+
+Consolidate with current brace/security remediation before renewed full preflight/rebuilt real Docker+appropriate CSP/SW browser verification and fullOSVscan. A running earlier preflight is superseded by changed generator; stop only the assigned own process safely or treat results as preliminary. Substantive generated-worker change invalidates cache-token-only carry-forward equivalence; obtain real changed-worker policy/offline/freshness evidence. Renew ordered roles on one final new effectiveSHA; real Architectreturn3/10 and Analystreturn1/5 remain recorded.
+
+
+## Current214 engineering handoff
+
+OSV2/FRESH implemented and verified: both compatible safe brace lines and source-map-js, fullscanner241/0, frozen audit, fullpreflight556/160 and actual rebuiltDocker headers/nonroot/changedSWCSP-offline-lazy checks. Prior cache-token-only comparison conditions are historical; actual install logic changed and received real regression evidence. No engineering follow-up remains. Commit final content/process preparation, independently review its exact SHA, then renew original049 Architect-before-Analyst passes with retained returns3/10 and1/5; live remote gates/guard/merge remain mandatory. Cumulative055 stays in progress through217/215.

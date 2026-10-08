@@ -49,6 +49,13 @@ shared `cabadrive:local` image.
   from a single `map $uri` and emitted with the security headers via one
   server-level `add_header`, so no `location` block overrides header
   inheritance.
+- The service worker installs one atomic precache batch of `Request` objects
+  with `cache: "reload"`, so a new online release fetches current origin bytes
+  even when stable content URLs have fresh entries in the browser HTTP cache.
+  Failed installation preserves the previous active worker and offline cache.
+  Deferred manual chunks and page images remain outside the install precache.
+  Cache Storage is a release snapshot, separate from the nginx HTTP policy:
+  offline or unchanged-worker snapshots have no automatic 24-hour expiry.
 - `docker-compose.yml` maps host `${CABADRIVE_HOST_PORT:-5173}` to container
   `8080`.
 - Compose owns container naming so container identity is scoped by the compose
