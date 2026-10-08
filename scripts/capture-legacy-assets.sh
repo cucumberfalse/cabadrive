@@ -3,10 +3,54 @@
 # `docker compose build` can replace its image.  No host Node/pnpm is needed.
 set -eu
 
-script_dir="$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)"
-repo_root="${CABADRIVE_REPOSITORY_ROOT:-$(CDPATH= cd -- "$script_dir/.." && pwd)}"
-repo_root="$(CDPATH= cd -- "$repo_root" && pwd -P)"
-historical_basename="$(basename "$repo_root")"
+# Command substitution removes trailing LF. Keep one non-path sentinel after
+# the command's framing newline, then remove exactly those framing bytes.
+capture_newline='
+'
+canonical_directory() {
+  canonical_directory_result="$(CDPATH= cd -- "$1" && pwd -P && printf '.')" || return 1
+  canonical_directory_result="${canonical_directory_result%.}"
+  canonical_directory_result="${canonical_directory_result%"$capture_newline"}"
+}
+case "$0" in */*) entry_directory="${0%/*}" ;; *) entry_directory=. ;; esac
+[ -n "$entry_directory" ] || entry_directory=/
+canonical_directory "$entry_directory" || exit 1
+script_dir="$canonical_directory_result"
+canonical_directory "${CABADRIVE_REPOSITORY_ROOT:-$script_dir/..}" || exit 1
+repo_root="$canonical_directory_result"
+# Compose resolves its schema relative to a file URL; C0/DEL checkout bytes
+# are unsupported upstream. Reject before any discovery or handoff mutation.
+checkout_printable="$(printf '%s' "$repo_root" | LC_ALL=C tr -d '\000-\037\177' && printf '.')" || exit 1
+checkout_printable="${checkout_printable%.}"
+if [ "$checkout_printable" != "$repo_root" ]; then
+  printf '%s\n' 'Compose checkout path contains unsupported control characters; no discovery or mutation performed' >&2
+  exit 1
+fi
+
+historical_basename="${repo_root##*/}"
+
+# --mount uses CSV, independently of shell quoting. Quote the entire source
+# field and double embedded quotes, preserving commas and literal whitespace.
+bind_mount() {
+  mount_remaining="$1"
+  mount_prefix=""
+  while :; do
+    case "$mount_remaining" in
+      *\"*)
+        mount_prefix="${mount_prefix}${mount_remaining%%\"*}\"\""
+        mount_remaining="${mount_remaining#*\"}"
+        ;;
+      *) break ;;
+    esac
+  done
+  printf 'type=bind,"source=%s%s",target=%s%s' "$mount_prefix" "$mount_remaining" "$2" "${3:-}"
+}
+
+inspect_compose_label() {
+  inspected_label="$(docker inspect --format "{{ index .Config.Labels \"$1\" }}" "$2" 2>/dev/null && printf '.')" || return 1
+  inspected_label="${inspected_label%.}"
+  inspected_label="${inspected_label%"$capture_newline"}"
+}
 adopted_project_file="$repo_root/.cabadrive-release-handoff/.adopted-project"
 # Preserve this fact before resolve_project exports the selected value below.
 # A discovered historical identity must not look caller-provided afterward.
@@ -87,10 +131,11 @@ validate_existing_handoff_parent() {
     printf '%s\n' 'legacy handoff root is not a repository-owned directory' >&2
     return 1
   fi
-  handoff_parent_real="$(CDPATH= cd -- "$handoff_parent" && pwd -P)" || {
+  canonical_directory "$handoff_parent" || {
     printf '%s\n' 'legacy handoff root is not accessible' >&2
     return 1
   }
+  handoff_parent_real="$canonical_directory_result"
   if [ "$handoff_parent_real" != "$handoff_parent" ]; then
     printf '%s\n' 'legacy handoff root escapes the repository' >&2
     return 1
@@ -98,30 +143,98 @@ validate_existing_handoff_parent() {
   handoff_parent="$handoff_parent_real"
 }
 
-# Docker Compose stores config_files as a comma-separated list. A checkout is
-# authoritative only when one whole token equals its canonical compose path;
-# substring matches would adopt a sibling or backup checkout.
-config_list_contains_checkout_compose() {
-  config_files_remaining="$1"
-  expected_compose="$repo_root/docker-compose.yml"
+# Dynamic reachability over comma boundaries finds every actual file-list
+# interpretation in quadratic probes, including commas inside each pathname.
+# Numeric boundary IDs are safe to serialize; path bytes remain shell values.
+config_has_multiple_file_partition() (
+  partition_starts="$1"
+  partition_start=0
+  partition_reachable="|0|"
   while :; do
-    case "$config_files_remaining" in
-      *,*)
-        config_file="${config_files_remaining%%,*}"
-        config_files_remaining="${config_files_remaining#*,}"
-        config_files_done=
-        ;;
-      *)
-        config_file="$config_files_remaining"
-        config_files_done=1
+    case "$partition_reachable" in
+      *"|$partition_start|"*)
+        partition_remaining="$partition_starts"
+        partition_prefix=""
+        partition_end="$partition_start"
+        while :; do
+          case "$partition_remaining" in
+            *,*) partition_piece="${partition_remaining%%,*}"; partition_remaining="${partition_remaining#*,}"; partition_done="" ;;
+            *) partition_piece="$partition_remaining"; partition_done=1 ;;
+          esac
+          if [ "$partition_end" -eq "$partition_start" ]; then partition_prefix="$partition_piece"; else partition_prefix="$partition_prefix,$partition_piece"; fi
+          partition_end=$((partition_end + 1))
+          case "$partition_prefix" in
+            /*)
+              if [ -f "$partition_prefix" ]; then
+                if [ -n "$partition_done" ] && [ "$partition_start" -gt 0 ]; then return 0; fi
+                if [ -z "$partition_done" ]; then partition_reachable="$partition_reachable$partition_end|"; fi
+              fi
+              ;;
+          esac
+          [ -z "$partition_done" ] || break
+        done
         ;;
     esac
-    if [ "$config_file" = "$expected_compose" ]; then
-      return 0
-    fi
-    [ -z "$config_files_done" ] || break
+    case "$partition_starts" in
+      *,*) partition_starts="${partition_starts#*,}"; partition_start=$((partition_start + 1)) ;;
+      *) return 1 ;;
+    esac
   done
-  return 1
+)
+
+# Compose's config_files is an unescaped comma-joined scalar, not an array.
+# The entire exact single path is safe, including comma-bearing filenames.
+# Multi-file fallback requires existing whole paths with no alternate grouped
+# pathname interpretation; an ambiguous relevant record must never mean empty.
+config_list_contains_checkout_compose() {
+  expected_compose="$repo_root/docker-compose.yml"
+  if [ "$1" = "$expected_compose" ]; then
+    # Even the entire exact scalar may also encode multiple real files.
+    # Preserve a single comma pathname only without that alternative authority.
+    if config_has_multiple_file_partition "$1"; then return 2; fi
+    return 0
+  fi
+  case "$repo_root" in
+    *,*)
+      case "$1" in *"$repo_root"*) return 2 ;; *) return 1 ;; esac
+      ;;
+  esac
+  config_files_remaining="$1"
+  config_found=""
+  config_alternative=""
+  while :; do
+    case "$config_files_remaining" in
+      *,*) config_file="${config_files_remaining%%,*}"; config_files_remaining="${config_files_remaining#*,}"; config_done="" ;;
+      *) config_file="$config_files_remaining"; config_done=1 ;;
+    esac
+    [ "$config_file" != "$expected_compose" ] || config_found=1
+    if [ -f "$config_file" ] && [ "${config_file%/*}" = "$repo_root" ]; then config_alternative=1; fi
+    [ -z "$config_done" ] || break
+  done
+  if [ -z "$config_found" ]; then
+    [ -z "$config_alternative" ] || return 2
+    return 1
+  fi
+  config_suffix="$1"
+  while :; do
+    config_group_remaining="$config_suffix"
+    config_group=""
+    config_group_count=0
+    while :; do
+      case "$config_group_remaining" in
+        *,*) config_file="${config_group_remaining%%,*}"; config_group_remaining="${config_group_remaining#*,}"; config_done="" ;;
+        *) config_file="$config_group_remaining"; config_done=1 ;;
+      esac
+      case "$config_file" in /*) ;; *) return 2 ;; esac
+      [ -f "$config_file" ] || return 2
+      config_group="${config_group}${config_group:+,}$config_file"
+      config_group_count=$((config_group_count + 1))
+      if [ "$config_group_count" -gt 1 ] && { [ -e "$config_group" ] || [ -L "$config_group" ]; }; then return 2; fi
+      [ -z "$config_done" ] || break
+    done
+    case "$config_suffix" in *,*) config_suffix="${config_suffix#*,}" ;; *) break ;; esac
+  done
+  return 0
 }
 
 # Root containment does not make a selected project child safe. Every resolver
@@ -140,11 +253,12 @@ validate_selected_handoff_project() {
     printf '%s\n' 'legacy handoff project is not a repository-owned directory' >&2
     return 1
   fi
-  selected_handoff_real="$(CDPATH= cd -- "$selected_handoff" && pwd -P)" || {
+  canonical_directory "$selected_handoff" || {
     printf '%s\n' 'legacy handoff project is not accessible' >&2
     return 1
   }
-  if [ "$(dirname -- "$selected_handoff_real")" != "$handoff_parent" ]; then
+  selected_handoff_real="$canonical_directory_result"
+  if [ "${selected_handoff_real%/*}" != "$handoff_parent" ]; then
     printf '%s\n' 'legacy handoff project escapes the repository-owned root' >&2
     return 1
   fi
@@ -158,8 +272,8 @@ select_project() {
 
 verify_adopted_project() {
   docker run --rm \
-    --mount "type=bind,source=$handoff_parent,target=/handoff" \
-    --mount "type=bind,source=$script_dir/stage-static-release.mjs,target=/app/stage-static-release.mjs,readonly" \
+    --mount "$(bind_mount "$handoff_parent" "/handoff" "")" \
+    --mount "$(bind_mount "$script_dir/stage-static-release.mjs" "/app/stage-static-release.mjs" ",readonly")" \
     node:22-alpine node /app/stage-static-release.mjs adopted-project-verify \
       --handoff /handoff
 }
@@ -171,8 +285,8 @@ publish_adopted_project() {
     set --
   fi
   docker run --rm \
-    --mount "type=bind,source=$handoff_parent,target=/handoff" \
-    --mount "type=bind,source=$script_dir/stage-static-release.mjs,target=/app/stage-static-release.mjs,readonly" \
+    --mount "$(bind_mount "$handoff_parent" "/handoff" "")" \
+    --mount "$(bind_mount "$script_dir/stage-static-release.mjs" "/app/stage-static-release.mjs" ",readonly")" \
     node:22-alpine node /app/stage-static-release.mjs adopted-project-write \
       --handoff /handoff --project "$project" "$@"
 }
@@ -206,7 +320,7 @@ resolve_project() {
   candidates=""
   add_candidate() {
     candidate="$1"
-    [ -n "$candidate" ] || return 0
+    validate_project_name "$candidate" || return 1
     case "|$candidates|" in
       *"|$candidate|"*) ;;
       *) candidates="${candidates}${candidates:+|}$candidate" ;;
@@ -218,22 +332,37 @@ resolve_project() {
     return 1
   fi
   for candidate_container in $containers; do
-    if ! labels="$(docker inspect --format '{{ index .Config.Labels "com.docker.compose.project" }}|{{ index .Config.Labels "com.docker.compose.project.working_dir" }}|{{ index .Config.Labels "com.docker.compose.project.config_files" }}' "$candidate_container" 2>/dev/null)"; then
-      printf '%s\n' 'failed to inspect existing Compose container' >&2
+    if ! inspect_compose_label com.docker.compose.project "$candidate_container"; then
+      printf '%s\n' 'failed to inspect existing Compose container project' >&2
       return 1
     fi
-    candidate_project="${labels%%|*}"
-    remaining="${labels#*|}"
-    candidate_workdir="${remaining%%|*}"
-    candidate_config="${remaining#*|}"
+    candidate_project="$inspected_label"
+    if ! inspect_compose_label com.docker.compose.project.working_dir "$candidate_container"; then
+      printf '%s\n' 'failed to inspect existing Compose container working directory' >&2
+      return 1
+    fi
+    candidate_workdir="$inspected_label"
+    if ! inspect_compose_label com.docker.compose.project.config_files "$candidate_container"; then
+      printf '%s\n' 'failed to inspect existing Compose container configuration files' >&2
+      return 1
+    fi
+    candidate_config="$inspected_label"
     owned=""
     if [ "$candidate_workdir" = "$repo_root" ]; then
       owned=1
-    elif config_list_contains_checkout_compose "$candidate_config"; then
-      owned=1
+    else
+      if config_list_contains_checkout_compose "$candidate_config"; then
+        owned=1
+      else
+        config_status=$?
+        if [ "$config_status" -eq 2 ]; then
+          printf '%s\n' 'ambiguous Compose configuration ancestry; exact working directory or explicit project is required' >&2
+          return 1
+        fi
+      fi
     fi
     if [ -n "$owned" ]; then
-      add_candidate "$candidate_project"
+      add_candidate "$candidate_project" || return 1
     fi
   done
 
@@ -249,7 +378,7 @@ resolve_project() {
       else
         runtime_label_status=$?
         if [ "$runtime_label_status" -eq 1 ]; then
-          add_candidate "$historical_basename"
+          add_candidate "$historical_basename" || return 1
         else
           return 1
         fi
@@ -299,7 +428,8 @@ if [ ! -e "$handoff_parent" ] && ! mkdir -p "$handoff_parent"; then
   printf '%s\n' 'failed to create repository-owned legacy handoff root' >&2
   exit 1
 fi
-handoff_parent="$(CDPATH= cd -- "$handoff_parent" && pwd -P)"
+canonical_directory "$handoff_parent" || exit 1
+handoff_parent="$canonical_directory_result"
 if [ "$handoff_parent" != "$repo_root/.cabadrive-release-handoff" ]; then
   printf '%s\n' 'legacy handoff root escapes the repository' >&2
   exit 1
@@ -326,7 +456,8 @@ if [ -e "$handoff_base" ] || [ -L "$handoff_base" ]; then
     printf '%s\n' 'legacy handoff project is not a repository-owned directory' >&2
     exit 1
   fi
-  handoff_base_real="$(CDPATH= cd -- "$handoff_base" && pwd -P)"
+  canonical_directory "$handoff_base" || exit 1
+  handoff_base_real="$canonical_directory_result"
   case "$handoff_base_real" in
     "$handoff_parent"/*) ;;
     *)
@@ -354,7 +485,8 @@ else
     exit 1
   fi
 fi
-releases_real="$(CDPATH= cd -- "$releases" && pwd -P)" || exit 1
+canonical_directory "$releases" || exit 1
+releases_real="$canonical_directory_result"
 case "$releases_real" in
   "$handoff_base"/*) ;;
   *)
@@ -373,8 +505,8 @@ capture_fault="${CABADRIVE_CAPTURE_FAULT:-}"
 verify_handoff() {
   test -L "$handoff" || return 1
   docker run --rm \
-    --mount "type=bind,source=$script_dir,target=/app,readonly" \
-    --mount "type=bind,source=$handoff_base,target=/handoff,readonly" \
+    --mount "$(bind_mount "$script_dir" "/app" ",readonly")" \
+    --mount "$(bind_mount "$handoff_base" "/handoff" ",readonly")" \
     node:22-alpine node /app/stage-static-release.mjs legacy-verify --legacy /handoff/current "$@"
 }
 
@@ -393,17 +525,18 @@ publish_handoff() {
     printf '%s\n' 'failed to create an exclusive legacy capture directory' >&2
     return 1
   fi
-  temporary_real="$(CDPATH= cd -- "$temporary" && pwd -P)" || {
+  canonical_directory "$temporary" || {
     printf '%s\n' 'exclusive legacy capture directory is not accessible' >&2
     return 1
   }
-  if [ "$(dirname -- "$temporary_real")" != "$releases" ]; then
+  temporary_real="$canonical_directory_result"
+  if [ "${temporary_real%/*}" != "$releases" ]; then
     printf '%s\n' 'exclusive legacy capture directory escapes the releases root' >&2
     return 1
   fi
   temporary="$temporary_real"
   capture_owned=1
-  release_relative="releases/$(basename "$temporary")"
+  release_relative="releases/${temporary##*/}"
   pointer_publication_started=""
   if [ -n "$capture_fault" ]; then
     set -- --fault "$capture_fault"
@@ -438,8 +571,8 @@ publish_handoff() {
     return 1
   fi
   if ! docker run --rm \
-    --mount "type=bind,source=$script_dir,target=/app,readonly" \
-    --mount "type=bind,source=$handoff_base,target=/handoff" \
+    --mount "$(bind_mount "$script_dir" "/app" ",readonly")" \
+    --mount "$(bind_mount "$handoff_base" "/handoff" "")" \
     node:22-alpine node /app/stage-static-release.mjs legacy-write \
       --legacy "/handoff/$release_relative" \
       --handoff /handoff \
@@ -449,8 +582,8 @@ publish_handoff() {
   fi
   pointer_publication_started=1
   if ! docker run --rm \
-    --mount "type=bind,source=$script_dir,target=/app,readonly" \
-    --mount "type=bind,source=$handoff_base,target=/handoff" \
+    --mount "$(bind_mount "$script_dir" "/app" ",readonly")" \
+    --mount "$(bind_mount "$handoff_base" "/handoff" "")" \
     node:22-alpine node /app/stage-static-release.mjs legacy-publish-pointer \
       --handoff /handoff --release "$release_relative" \
       "$@"; then
@@ -465,7 +598,7 @@ publish_handoff() {
 if docker volume inspect "$state_volume" >/dev/null 2>&1; then
   if docker run --rm \
     --mount "type=volume,source=$state_volume,target=/state,readonly" \
-    --mount "type=bind,source=$script_dir/stage-static-release.mjs,target=/app/stage-static-release.mjs,readonly" \
+    --mount "$(bind_mount "$script_dir/stage-static-release.mjs" "/app/stage-static-release.mjs" ",readonly")" \
     node:22-alpine node /app/stage-static-release.mjs verify --state /state; then
     printf '%s\n' 'validated project release-state volume is the retained source'
     exit 0

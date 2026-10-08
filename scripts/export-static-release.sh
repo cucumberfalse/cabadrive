@@ -8,14 +8,43 @@ if [ "$#" -ne 1 ]; then
   exit 2
 fi
 
-script_dir="$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)"
-repo_root="$(CDPATH= cd -- "$script_dir/.." && pwd -P)"
+# Preserve literal trailing LF instead of canonicalizing a different sibling.
+path_newline='
+'
+canonical_directory() {
+  canonical_directory_result="$(CDPATH= cd -- "$1" && pwd -P && printf '.')" || return 1
+  canonical_directory_result="${canonical_directory_result%.}"
+  canonical_directory_result="${canonical_directory_result%"$path_newline"}"
+}
+case "$0" in */*) entry_directory="${0%/*}" ;; *) entry_directory=. ;; esac
+[ -n "$entry_directory" ] || entry_directory=/
+canonical_directory "$entry_directory" || exit 1
+script_dir="$canonical_directory_result"
+canonical_directory "$script_dir/.." || exit 1
+repo_root="$canonical_directory_result"
+# Compose resolves its schema relative to a file URL; C0/DEL checkout bytes
+# are unsupported upstream. Reject before any discovery or handoff mutation.
+checkout_printable="$(printf '%s' "$repo_root" | LC_ALL=C tr -d '\000-\037\177' && printf '.')" || exit 1
+checkout_printable="${checkout_printable%.}"
+if [ "$checkout_printable" != "$repo_root" ]; then
+  printf '%s\n' 'Compose checkout path contains unsupported control characters; no discovery or mutation performed' >&2
+  exit 1
+fi
+
 case "$1" in
   /*) destination="$1" ;;
-  *) destination="$(pwd -P)/$1" ;;
+  *) canonical_directory . || exit 1; destination="$canonical_directory_result/$1" ;;
 esac
-destination_parent="$(dirname -- "$destination")"
-destination_name="$(basename -- "$destination")"
+# Match dirname/basename's trailing slash behavior without a lossy substitution.
+while [ "$destination" != / ] && [ "${destination%/}" != "$destination" ]; do destination="${destination%/}"; done
+destination_parent="${destination%/*}"
+[ -n "$destination_parent" ] || destination_parent=/
+destination_name="${destination##*/}"
+# Compose run only exposes the colon-delimited --volume form. Reject this
+# unsupported parent before discovery, capture, owner probes, or builds.
+case "$destination_parent" in
+  *:*) printf '%s\n' 'static export parent containing a colon cannot be represented by Compose --volume' >&2; exit 1 ;;
+esac
 
 if [ "$destination_name" = "." ] || [ "$destination_name" = ".." ] ||
   [ -z "$destination_name" ]; then
@@ -26,7 +55,11 @@ if [ ! -d "$destination_parent" ] || [ -L "$destination_parent" ]; then
   printf '%s\n' 'static export destination parent must be an existing directory' >&2
   exit 1
 fi
-destination_parent="$(CDPATH= cd -- "$destination_parent" && pwd -P)"
+canonical_directory "$destination_parent" || exit 1
+destination_parent="$canonical_directory_result"
+case "$destination_parent" in
+  *:*) printf '%s\n' 'static export parent containing a colon cannot be represented by Compose --volume' >&2; exit 1 ;;
+esac
 destination="$destination_parent/$destination_name"
 if [ -L "$destination" ] || { [ -e "$destination" ] && [ ! -d "$destination" ]; }; then
   printf '%s\n' 'static export destination must be absent or an existing directory owned by the exact transaction' >&2
@@ -71,7 +104,7 @@ umask "$old_umask"
 chmod 600 "$owner_probe"
 exec 9<"$owner_probe"
 owner_probe_inode="$(ls -din -- "$owner_probe" | awk '{print $1}')"
-owner_probe_name="$(basename -- "$owner_probe")"
+owner_probe_name="${owner_probe##*/}"
 set -- --owner-probe "/export/$owner_probe_name" \
   --owner-uid "$(id -u)" --owner-gid "$(id -g)" --generation-root /publish
 if [ -L "$legacy_handoff" ]; then

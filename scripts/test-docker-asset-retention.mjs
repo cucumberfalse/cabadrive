@@ -8,6 +8,8 @@ import {
   mkdirSync,
   mkdtempSync,
   readFileSync,
+  realpathSync,
+  statSync,
   rmSync,
   writeFileSync,
 } from "node:fs";
@@ -34,7 +36,7 @@ const testHandoffProjects = new Set([
 ]);
 const handoffBase = join(root, ".cabadrive-release-handoff");
 const port = process.env.CABADRIVE_HOST_PORT || String(5600 + (process.pid % 300));
-const temporary = mkdtempSync(join(tmpdir(), "cabadrive-docker-retention-"));
+const temporary = realpathSync(mkdtempSync(join(tmpdir(), "cabadrive-docker-retention-")));
 const legacyBytes = "export const legacyLazy = 'retained-origin-A';";
 const legacyAssetPath = `/assets/lazy-a-${createHash("sha256").update(legacyBytes).digest("hex").slice(0, 8)}.js`;
 
@@ -551,6 +553,270 @@ function assertSequentialPublishGenerations(selectedProject) {
   }
 }
 
+// Exercise literal host paths with real Docker label transport, bind CSV and
+// Compose adoption. Reuse this run's exact B images; never rebuild web content.
+async function assertLiteralCheckoutPaths() {
+  const cases = [
+    { name: "cabadrive|old", stopped: false },
+    { name: 'cabadrive, "old', stopped: true },
+    { name: "checkout\n", stopped: false },
+  ];
+  for (const [index, row] of cases.entries()) {
+    const selectedProject = `${project}-literal-${index}`;
+    const fixtureParent = join(temporary, `literal-${index}`);
+    const checkout = join(fixtureParent, row.name);
+    const scripts = join(checkout, "scripts");
+    const legacyName = `${selectedProject}-legacy-a`;
+    mkdirSync(scripts, { recursive: true });
+    const fixtureEnv = {
+      ...process.env,
+      CABADRIVE_HOST_PORT: port,
+      CABADRIVE_REPOSITORY_ROOT: checkout,
+    };
+    delete fixtureEnv.COMPOSE_PROJECT_NAME;
+    for (const name of [
+      "capture-legacy-assets.sh",
+      "export-static-release.sh",
+      "stage-static-release.mjs",
+    ]) {
+      writeFileSync(join(scripts, name), readFileSync(join(root, "scripts", name)));
+      chmodSync(join(scripts, name), 0o755);
+    }
+    writeFileSync(join(checkout, "Makefile"), readFileSync(join(root, "Makefile")));
+    writeFileSync(join(checkout, "sentinel"), "literal checkout");
+    const plainSibling = row.name.endsWith("\n")
+      ? join(fixtureParent, row.name.slice(0, -1))
+      : null;
+    if (plainSibling) {
+      mkdirSync(plainSibling);
+      writeFileSync(join(plainSibling, "sentinel"), "plain sibling");
+    }
+    writeFileSync(
+      join(checkout, "docker-compose.yml"),
+      `name: \${COMPOSE_PROJECT_NAME:-cabadrive}
+services:
+  stager:
+    image: ${project}-stager
+    volumes:
+      - release-state:/state
+      - static-publish:/publish
+      - ./.cabadrive-release-handoff/\${COMPOSE_PROJECT_NAME:-cabadrive}:/legacy-handoff:ro
+    environment:
+      CABADRIVE_COMPOSE_PROJECT: \${COMPOSE_PROJECT_NAME:-cabadrive}
+  cabadrive:
+    image: ${project}-cabadrive
+    ports:
+      - "${port}:8080"
+    volumes:
+      - release-state:/state:ro
+    depends_on:
+      stager:
+        condition: service_completed_successfully
+volumes:
+  release-state:
+  static-publish:
+`,
+    );
+    const inFixture = (command, args) => run(command, args, { cwd: checkout, env: fixtureEnv });
+    if (plainSibling) {
+      buildLegacyImage(selectedProject);
+      run("docker", [
+        "run",
+        "-d",
+        "--name",
+        legacyName,
+        "--label",
+        `com.docker.compose.project=${selectedProject}`,
+        "--label",
+        "com.docker.compose.service=cabadrive",
+        "--label",
+        `com.docker.compose.project.working_dir=${checkout}`,
+        "--label",
+        `com.docker.compose.project.config_files=${checkout}/docker-compose.yml`,
+        `${selectedProject}-cabadrive`,
+      ]);
+      try {
+        const containerBefore = run("docker", [
+          "inspect",
+          "--format",
+          "{{.Id}}|{{.Image}}|{{.State.Running}}|{{.State.Status}}|{{.State.StartedAt}}",
+          legacyName,
+        ]);
+        const bytesBefore = run("docker", [
+          "exec",
+          legacyName,
+          "cat",
+          `/usr/share/nginx/html${legacyAssetPath}`,
+        ]);
+        // Actual Compose schema URL handling rejects LF checkout paths. The
+        // wrapper must diagnose this BEFORE even calling Docker or publishing A.
+        const upstream = spawnSync(
+          "docker",
+          ["compose", "-f", join(checkout, "docker-compose.yml"), "config", "--quiet"],
+          { cwd: checkout, env: fixtureEnv, encoding: "utf8" },
+        );
+        if (upstream.status === 0 || !upstream.stderr.includes("invalid control character"))
+          throw new Error("expected measured Compose checkout URL limitation");
+        const sentinels = [join(checkout, "sentinel"), join(plainSibling, "sentinel")];
+        const before = sentinels.map((path) => statSync(path, { bigint: true }));
+        const probe = join(fixtureParent, "docker-called");
+        const bin = join(fixtureParent, "bin");
+        mkdirSync(bin);
+        writeFileSync(join(bin, "docker"), '#!/bin/sh\n: >"$CABADRIVE_DOCKER_PROBE"\nexit 97\n');
+        chmodSync(join(bin, "docker"), 0o755);
+        const rejected = spawnSync("make", ["build"], {
+          cwd: checkout,
+          env: { ...fixtureEnv, PATH: `${bin}:${fixtureEnv.PATH}`, CABADRIVE_DOCKER_PROBE: probe },
+          encoding: "utf8",
+        });
+        if (
+          rejected.status === 0 ||
+          !rejected.stderr.includes("unsupported control characters") ||
+          existsSync(probe)
+        )
+          throw new Error("unsupported checkout reached Docker before rejection");
+        for (const root of [checkout, plainSibling])
+          if (existsSync(join(root, ".cabadrive-release-handoff")))
+            throw new Error("unsupported checkout mutated a handoff or sibling");
+        const after = sentinels.map((path) => statSync(path, { bigint: true }));
+        if (
+          before.some((entry, index) =>
+            ["dev", "ino", "mode", "uid", "gid", "size", "mtimeNs", "ctimeNs"].some(
+              (key) => entry[key] !== after[index][key],
+            ),
+          )
+        )
+          throw new Error("unsupported checkout changed sentinel metadata");
+        if (
+          readFileSync(sentinels[0], "utf8") !== "literal checkout" ||
+          readFileSync(sentinels[1], "utf8") !== "plain sibling"
+        )
+          throw new Error("unsupported checkout changed sentinel bytes");
+        if (
+          run("docker", [
+            "inspect",
+            "--format",
+            "{{.Id}}|{{.Image}}|{{.State.Running}}|{{.State.Status}}|{{.State.StartedAt}}",
+            legacyName,
+          ]) !== containerBefore ||
+          run("docker", ["inspect", "--format", "{{.State.Running}}", legacyName]).trim() !==
+            "true" ||
+          run("docker", ["exec", legacyName, "cat", `/usr/share/nginx/html${legacyAssetPath}`]) !==
+            bytesBefore ||
+          bytesBefore !== legacyBytes
+        )
+          throw new Error(
+            "unsupported checkout changed historical container identity/state/A bytes",
+          );
+        process.stdout.write(
+          `Literal Docker checkout ${JSON.stringify(row.name)}: measured Compose schema URL rejection; early wrapper rejection/ZERO Docker calls/no handoff/legacy ID-state-A/sibling bytes+metadata PASS\n`,
+        );
+        continue;
+      } finally {
+        spawnSync("docker", ["rm", "-f", legacyName], { stdio: "ignore" });
+        spawnSync("docker", ["image", "rm", "-f", `${selectedProject}-cabadrive`], {
+          stdio: "ignore",
+        });
+      }
+    }
+
+    try {
+      buildLegacyImage(selectedProject);
+      run("docker", [
+        "run",
+        "-d",
+        "--name",
+        legacyName,
+        "--label",
+        `com.docker.compose.project=${selectedProject}`,
+        "--label",
+        "com.docker.compose.service=cabadrive",
+        "--label",
+        `com.docker.compose.project.working_dir=${checkout}`,
+        "--label",
+        `com.docker.compose.project.config_files=${checkout}/docker-compose.yml`,
+        `${selectedProject}-cabadrive`,
+      ]);
+      if (row.stopped) run("docker", ["stop", legacyName]);
+      const resolved = inFixture("sh", [
+        join(scripts, "capture-legacy-assets.sh"),
+        "--resolve-project",
+      ]);
+      if (resolved !== `${selectedProject}\n`)
+        throw new Error(
+          `literal checkout lost historical project: ${JSON.stringify({ checkout, resolved, selectedProject })}`,
+        );
+      inFixture("make", ["build"]);
+      const adopted = readFileSync(
+        join(checkout, ".cabadrive-release-handoff", ".adopted-project"),
+        "utf8",
+      );
+      if (adopted !== `${selectedProject}\n`)
+        throw new Error("literal checkout persisted the wrong project");
+      const retained = readFileSync(
+        join(
+          checkout,
+          ".cabadrive-release-handoff",
+          selectedProject,
+          "current",
+          legacyAssetPath.slice(1),
+        ),
+        "utf8",
+      );
+      if (retained !== legacyBytes) throw new Error("literal checkout captured different A bytes");
+      inFixture("make", ["up"]);
+      await waitFor(`http://localhost:${port}/`);
+      assertExactLegacyAsset();
+      assertExactCandidateShellAndWorker(project);
+      inFixture("docker", ["compose", "restart", "cabadrive"]);
+      await waitFor(`http://localhost:${port}/`);
+      assertExactLegacyAsset();
+      assertExactCandidateShellAndWorker(project);
+      inFixture("make", ["down"]);
+      inFixture("make", ["up"]);
+      await waitFor(`http://localhost:${port}/`);
+      assertExactLegacyAsset();
+      assertExactCandidateShellAndWorker(project);
+      const exportParent = join(fixtureParent, 'export, "parent\n');
+      mkdirSync(exportParent);
+      const destination = join(exportParent, "static-output\n");
+      inFixture("sh", [join(scripts, "export-static-release.sh"), destination]);
+      if (readFileSync(join(destination, legacyAssetPath.slice(1)), "utf8") !== legacyBytes)
+        throw new Error("literal export lost A bytes");
+      if (readFileSync(join(destination, "sw.js"), "utf8") !== candidateFile(project, "sw.js"))
+        throw new Error("literal export changed B worker");
+      rmSync(destination, { recursive: true });
+      if (readFileSync(join(checkout, "sentinel"), "utf8") !== "literal checkout")
+        throw new Error("literal checkout sentinel changed");
+      if (
+        plainSibling &&
+        (readFileSync(join(plainSibling, "sentinel"), "utf8") !== "plain sibling" ||
+          existsSync(join(plainSibling, ".cabadrive-release-handoff")))
+      )
+        throw new Error("trailing LF was truncated to the plain sibling");
+      if (existsSync(join(checkout, ".cabadrive-release-handoff", "cabadrive")))
+        throw new Error("literal checkout silently selected default");
+      process.stdout.write(
+        `Literal Docker checkout ${JSON.stringify(row.name)} ${row.stopped ? "stopped" : "running"}: adoption/A/B-SW/restart/down-up/export/siblings PASS\n`,
+      );
+    } finally {
+      spawnSync("docker", ["compose", "-p", selectedProject, "down"], {
+        cwd: checkout,
+        env: fixtureEnv,
+        stdio: "ignore",
+      });
+      spawnSync("docker", ["rm", "-f", legacyName], { stdio: "ignore" });
+      spawnSync("docker", ["image", "rm", "-f", `${selectedProject}-cabadrive`], {
+        stdio: "ignore",
+      });
+      for (const volume of ["release-state", "static-publish"])
+        spawnSync("docker", ["volume", "rm", "-f", `${selectedProject}_${volume}`], {
+          stdio: "ignore",
+        });
+    }
+  }
+}
+
 try {
   // Running-container first migration: capture A before B image replacement.
   buildLegacyImage(project);
@@ -600,6 +866,8 @@ try {
   ]);
   if (sibling !== "sibling") throw new Error("sibling Compose volume was changed");
   make(["down"], project);
+
+  await assertLiteralCheckoutPaths();
 
   // Stopped-image first migration: no legacy container, only exact old image.
   buildLegacyImage(stoppedProject);

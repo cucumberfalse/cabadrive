@@ -677,6 +677,10 @@ test("container config-file ancestry requires one exact canonical list token", (
   mkdirSync(bin, { recursive: true });
   writeFileSync(expected, "services: {}\n");
   const canonicalExpected = realpathSync(expected);
+  const other = join(realpathSync(root), "other.yml");
+  const third = join(realpathSync(root), "third.yml");
+  writeFileSync(other, "services: {}\n");
+  writeFileSync(third, "services: {}\n");
   const docker = join(bin, "docker");
   writeFileSync(
     docker,
@@ -684,7 +688,11 @@ test("container config-file ancestry requires one exact canonical list token", (
 set -eu
 if [ "$1" = ps ]; then printf '%s\\n' container; exit 0; fi
 if [ "$1" = inspect ]; then
-  printf '%s|%s|%s\\n' claimed "$CABADRIVE_WORKING_DIR" "$CABADRIVE_CONFIG_FILES"
+  case "$3" in
+    *working_dir*) printf '%s\\n' "$CABADRIVE_WORKING_DIR" ;;
+    *config_files*) printf '%s\\n' "$CABADRIVE_CONFIG_FILES" ;;
+    *) printf '%s\\n' claimed ;;
+  esac
   exit 0
 fi
 if [ "$1" = image ] && [ "$2" = inspect ]; then
@@ -699,7 +707,7 @@ exit 90
     const rows = [
       {
         name: "exact multi-file token",
-        config: `/other.yml,${canonicalExpected},/third.yml`,
+        config: `${other},${canonicalExpected},${third}`,
         workingDir: "",
         project: "claimed",
       },
@@ -817,7 +825,11 @@ if [ "$1" = ps ]; then
   exit 0
 fi
 if [ "$1" = inspect ]; then
-  printf '%s|%s|%s\\n' discovered "$CABADRIVE_REPOSITORY_ROOT" "$CABADRIVE_REPOSITORY_ROOT/docker-compose.yml"
+  case "$3" in
+    *working_dir*) printf '%s\\n' "$CABADRIVE_REPOSITORY_ROOT" ;;
+    *config_files*) printf '%s\\n' "$CABADRIVE_REPOSITORY_ROOT/docker-compose.yml" ;;
+    *) printf '%s\\n' discovered ;;
+  esac
   exit 0
 fi
 if [ "$1" = image ] && [ "$2" = inspect ]; then

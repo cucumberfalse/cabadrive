@@ -54,7 +54,7 @@ Retirement recovery must reject an authority-bearing symlink replacement even wh
 The exact committed-state hash and durable adopted Compose project must refer to bytes and metadata from the same verified no-follow regular descriptor. Path replacement cannot certify different bytes or redirect read/fsync authority. FIFO/link/type/substitution negatives reject promptly without foreign mutation; normal interrupted adoption/publication and bounded retained-generation recovery remain functional. The accepted R2d plan includes preventive consolidation of equivalent authoritative helper races. Earlier356/8c5 engineering/roles/checks are historical until new content, verification and renewed originalfour ordered same-SHA validation; original budgets remain intact and new055 real return becomes2/10.
 
 
-## Current R2d engineering closure before effective content
+## Historical R2d engineering closure before effective content
 
 C055-217-R2d engineering is resolved: descriptor-bound regular hashing/read/fsync/copy, pinned adopted read/temporary claim with limited own link/ctime transitions, no-follow directory sync without mutable timestamp pinning, pinned fchown and owned nlink1 destination/overlap guards all have passing hostile and positive controls. Actual Linux20root23/23, newhost24descriptor10/10, fullpreflight700/164 and rebuiltDocker retained/adoption/recovery/27HTTP/UID101 pass. The FIFO copy timeout and induced equal-overlap/hardlink/rebind corners were repaired within this one accepted consolidation; no pending engineering feedback or risk waiver remains. All scoped assignments are completed engineering; previous conditional diagnostics and688/690 checkpoints remain dated history. Establish one final contentSHA/exactReview, renew originalfour ordered roles, then verify allfive published-head gates/fullpagination/threads/current-head beforemerge. No extra runtime checks or additional original return is assigned;055 cumulative remains terminal215.
 
@@ -62,3 +62,18 @@ C055-217-R2d engineering is resolved: descriptor-bound regular hashing/read/fsyn
 ## Historical predecessor checkpoint before R2d closure
 
 214 is verifiedMERGEDmain1e3507e2363314340eed43c0d77dd3d0acbc92cf at2026-10-08T18:11:24Z with all required exact-head checks/roles/finalizer. Integrated217 post-R2c preflight690unit/164browser and Linux20/host24 safety13/13 each pass; Docker5197 lifecycle/27HTTP/UID101 passed and final217 Review/051–054 roles/live gates are required.055 cumulative remains uninvoked and excluded at217;215 follows actual217 merge for terminal049-learning+055 validation. No later merge or runtime success is asserted.
+
+
+## C055-217-R2e exact path authority requirement
+
+Docker Compose ancestry labels and canonical checkout/mount paths are exact values, not invented delimiter fields. A pipe/comma/whitespace/quote/newline-bearing valid checkout cannot silently lose its existing historical project or retainedA bytes through parsing/default fallback. Explicit project precedence, safe project component validation, exact unambiguous config-file membership, durable unique adoption before build and ambiguous/unsafe fail-closed behavior remain the original contract. New055 R2e owns parsing/audit integration return3/10; original budgets remain unchanged. Prior62e/98ea engineering/roles apply only to their recorded checkpoints until new verified content and ordered originalfour validation.
+
+
+## C055-217-R2e measured supported checkout boundary
+
+Lossless checkout authority does not imply upstream Compose supports every filesystem pathname. Actual Docker verifies pipe/comma/quote checkout upgrades and LF external export destination support; an LF checkout is rejected by Compose's schema-file URL parser. Reject that canonical checkout explicitly before Docker discovery/adoption/capture/build, preserving both plain and LF sibling state. Preserve exact path transport so rejection cannot become sibling selection or default fallback. The failed exploratory LF make run is historical diagnostic evidence; a final passing real Docker run must cover pre-mutation rejection alongside supported upgrade positives. No new return or accepted unresolved issue is introduced.
+
+
+## Current R2e engineering closure before effective content
+
+C055-217-R2e engineering is complete: exact independent label/sentinel transport, validated project IDs, lossless canonical values, CSV bind mounts, bounded symmetric complete config partition checks and pre-mutation canonical checkout C0/DEL rejection preserve project/retention authority. Supported pipe running-container and comma/quote stopped-image upgrades plus LF external export destinations pass; unsupported LF checkout rejects before Docker calls/handoff/adoption/build, preserving the genuine historical container ID/image/state/A bytes and plain/LF sibling bytes/metadata. Fresh quality/build/frozen-install/fullunits712/712 and Linux20 affected54/54 pass. Actual final Docker project73083 passes lifecycle/path controls/27HTTP responses/UID101; earlier corrected68896 cross-container locking/kill-retry/C→D proof is separately retained. Identity proves3008 critical tracked blobs and2357 served files equivalent to98ea with only unchanged CACHE_NAME timestamp normalized; prior actual164 browser cases carry through that explicit proof, not a new local browser run. No pending engineering feedback or risk waiver remains. Exact newcontent Review, ordered originalfour same-SHA roles and allfive live/fullpagination/finalizer gates remain pending;055 cumulative remains terminal215.
