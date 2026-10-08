@@ -2,7 +2,7 @@
 
 ## Current217 Progress Boundary
 
-214 is verifiedMERGEDmain1e3507e2363314340eed43c0d77dd3d0acbc92cf at2026-10-08T18:11:24Z with all required exact-head checks/roles/finalizer. Integrated217 post-R2c preflight690unit/164browser and Linux20/host24 safety13/13 each pass; Docker5197 lifecycle/27HTTP/UID101 passed and final217 Review/051–054 roles/live gates are required.055 cumulative remains uninvoked and excluded at217;215 follows actual217 merge for terminal049-learning+055 validation. No later merge or runtime success is asserted.
+Verified214 is MERGEDmain1e3507e2363314340eed43c0d77dd3d0acbc92cf at2026-10-08T18:11:24Z with all five checks and strict finalizer. Integrated217 R2d engineering passes fullpreflight700unit/164browser, Linux20root23/23, newhostdescriptor10/10 and rebuiltDocker lifecycle/27HTTP/UID101. Prior356/8c5 role/check evidence is historical; one newcontent/exactReview and renewed original051–054 ordered roles/live gates precede217 merge.055 cumulative stays excluded and uninvoked until terminal215 after verified prerequisites; originalbudgets preserved055return2/10.
 
 ## Goal and cycle context
 
@@ -47,3 +47,18 @@ Consolidate with current brace/security remediation before renewed full prefligh
 ## C055-217-R2c scoped generation requirement
 
 Retirement recovery must reject an authority-bearing symlink replacement even when Linux reuses its inode and its target string is unchanged. Bind committedcurrent/protectedactive+rollback/retiringoutput links to dev/inode/target plus validated observed high-resolution change/birth generation fields in schema2 authority. Do not bind mutable directory ctime, infer missing generation or relax existing negative controls. New055 owns this scoped repair; original budgets/history remain intact, and earlier0a roles require renewal on new verified content.
+
+
+## C055-217-R2d existing authority requirement
+
+The exact committed-state hash and durable adopted Compose project must refer to bytes and metadata from the same verified no-follow regular descriptor. Path replacement cannot certify different bytes or redirect read/fsync authority. FIFO/link/type/substitution negatives reject promptly without foreign mutation; normal interrupted adoption/publication and bounded retained-generation recovery remain functional. The accepted R2d plan includes preventive consolidation of equivalent authoritative helper races. Earlier356/8c5 engineering/roles/checks are historical until new content, verification and renewed originalfour ordered same-SHA validation; original budgets remain intact and new055 real return becomes2/10.
+
+
+## Current R2d engineering closure before effective content
+
+C055-217-R2d engineering is resolved: descriptor-bound regular hashing/read/fsync/copy, pinned adopted read/temporary claim with limited own link/ctime transitions, no-follow directory sync without mutable timestamp pinning, pinned fchown and owned nlink1 destination/overlap guards all have passing hostile and positive controls. Actual Linux20root23/23, newhost24descriptor10/10, fullpreflight700/164 and rebuiltDocker retained/adoption/recovery/27HTTP/UID101 pass. The FIFO copy timeout and induced equal-overlap/hardlink/rebind corners were repaired within this one accepted consolidation; no pending engineering feedback or risk waiver remains. All scoped assignments are completed engineering; previous conditional diagnostics and688/690 checkpoints remain dated history. Establish one final contentSHA/exactReview, renew originalfour ordered roles, then verify allfive published-head gates/fullpagination/threads/current-head beforemerge. No extra runtime checks or additional original return is assigned;055 cumulative remains terminal215.
+
+
+## Historical predecessor checkpoint before R2d closure
+
+214 is verifiedMERGEDmain1e3507e2363314340eed43c0d77dd3d0acbc92cf at2026-10-08T18:11:24Z with all required exact-head checks/roles/finalizer. Integrated217 post-R2c preflight690unit/164browser and Linux20/host24 safety13/13 each pass; Docker5197 lifecycle/27HTTP/UID101 passed and final217 Review/051–054 roles/live gates are required.055 cumulative remains uninvoked and excluded at217;215 follows actual217 merge for terminal049-learning+055 validation. No later merge or runtime success is asserted.

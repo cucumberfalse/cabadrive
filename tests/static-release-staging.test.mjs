@@ -213,7 +213,7 @@ test("authority reader rejects every unsafe type, mode, size, parse, and substit
             writeFileSync(authority, '{"generation":2}\n');
           },
         }),
-      /changed during no-follow access/i,
+      /changed during descriptor access/i,
     );
     unlinkSync(authority);
     renameSync(join(root, "authority-opened.json"), authority);
@@ -225,12 +225,12 @@ test("authority reader rejects every unsafe type, mode, size, parse, and substit
             writeFileSync(authority, '{"generation":3}\n');
           },
         }),
-      /changed during no-follow access/i,
+      /changed during descriptor access/i,
     );
   });
 });
 
-test("authority reader stops at maxBytes plus one when the opened inode grows", () => {
+test("authority reader rejects growth before consuming more than its byte limit", () => {
   withFixture((root) => {
     const authority = join(root, "growing-authority");
     writeFileSync(authority, "{}\n");
@@ -244,7 +244,7 @@ test("authority reader stops at maxBytes plus one when the opened inode grows", 
             totalRead = total;
           },
         }),
-      /size limit/i,
+      /changed during descriptor access/i,
     );
     assert.ok(totalRead <= 65, `reader consumed ${totalRead} bytes`);
     assert.doesNotThrow(() => renameSync(authority, join(root, "closed-authority")));
@@ -1558,7 +1558,7 @@ test("post-durability validation rejects output and destination fsync races", ()
               writeFileSync(mutatedPath, "fsync race drift");
             },
           }),
-        /changed before transaction boundary/i,
+        /changed before transaction boundary|changed during descriptor access/i,
       );
       assert.equal(mutated, true);
       assert.equal(existsSync(join(state, "publish-pending.json")), true);

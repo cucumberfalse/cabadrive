@@ -8,13 +8,12 @@ import {
   constants,
   chmodSync,
   closeSync,
-  copyFileSync,
   existsSync,
   fstatSync,
   ftruncateSync,
   fsyncSync,
   linkSync,
-  lchownSync,
+  fchownSync,
   lstatSync,
   mkdirSync,
   openSync,
@@ -25,7 +24,6 @@ import {
   renameSync,
   rmSync,
   rmdirSync,
-  statSync,
   symlinkSync,
   unlinkSync,
   writeFileSync,
@@ -93,22 +91,12 @@ function assertInside(root, target, label) {
 }
 
 function sha256(path) {
-  const handle = openSync(path, "r");
+  const opened = openRegularFileNoFollow(path, "hashed file");
   try {
-    const before = statSync(path);
-    if (!before.isFile()) fail(`non-regular file: ${path}`);
-    const data = readFileSync(handle);
-    const after = statSync(path);
-    if (
-      before.size !== after.size ||
-      before.mtimeMs !== after.mtimeMs ||
-      before.ino !== after.ino
-    ) {
-      fail(`file changed while hashing: ${path}`);
-    }
+    const data = readPinnedRegularFile(path, "hashed file", opened);
     return { size: data.byteLength, sha256: createHash("sha256").update(data).digest("hex") };
   } finally {
-    closeSync(handle);
+    closeSync(opened.descriptor);
   }
 }
 
@@ -217,28 +205,93 @@ function readJson(path, label) {
   return readJsonRegularFileNoFollow(path, label);
 }
 
+const REGULAR_IDENTITY_FIELDS = [
+  "dev",
+  "ino",
+  "mode",
+  "uid",
+  "gid",
+  "nlink",
+  "size",
+  "mtimeNs",
+  "ctimeNs",
+  "birthtimeNs",
+];
+
+function sameRegularIdentity(left, right) {
+  return (
+    left.isFile() &&
+    right.isFile() &&
+    REGULAR_IDENTITY_FIELDS.every((field) => left[field] === right[field])
+  );
+}
+
+function assertPinnedRegular(path, label, opened) {
+  const descriptorStat = fstatSync(opened.descriptor, { bigint: true });
+  const pathStat = lstatSync(path, { bigint: true });
+  if (
+    !sameRegularIdentity(opened.identity, descriptorStat) ||
+    pathStat.isSymbolicLink() ||
+    !sameRegularIdentity(descriptorStat, pathStat)
+  ) {
+    fail(`${label} changed during descriptor access: ${path}`);
+  }
+}
+
 function openRegularFileNoFollow(path, label) {
   let descriptor;
   try {
     descriptor = openSync(path, constants.O_RDONLY | constants.O_NOFOLLOW | constants.O_NONBLOCK);
-    const descriptorStat = fstatSync(descriptor);
-    const pathStat = lstatSync(path);
-    if (
-      !descriptorStat.isFile() ||
-      (descriptorStat.mode & 0o444) === 0 ||
-      pathStat.isSymbolicLink() ||
-      !pathStat.isFile() ||
-      descriptorStat.dev !== pathStat.dev ||
-      descriptorStat.ino !== pathStat.ino
-    ) {
+    const stat = fstatSync(descriptor);
+    const opened = { descriptor, stat, identity: fstatSync(descriptor, { bigint: true }) };
+    if (!stat.isFile() || (stat.mode & 0o444) === 0) {
       fail(`${label} is not one stable no-follow regular file: ${path}`);
     }
-    return { descriptor, stat: descriptorStat };
+    assertPinnedRegular(path, label, opened);
+    return opened;
   } catch (error) {
     if (descriptor !== undefined) closeSync(descriptor);
     if (error instanceof Error && error.message.startsWith("Static release staging:")) throw error;
     fail(`${label} is not a no-follow regular file: ${path}`);
   }
+}
+
+function readPinnedRegularFile(path, label, opened, options = {}) {
+  const { maxBytes = Infinity, onOpen, onReadChunk, onAfterRead } = options;
+  assertPinnedRegular(path, label, opened);
+  if (opened.stat.size > maxBytes) fail(`${label} exceeds the authority size limit: ${path}`);
+  onOpen?.({ path, stat: opened.stat });
+  assertPinnedRegular(path, label, opened);
+  const chunks = [];
+  let total = 0;
+  while (true) {
+    const buffer = Buffer.allocUnsafe(Math.min(64 * 1024, maxBytes + 1 - total));
+    const count = readSync(opened.descriptor, buffer, 0, buffer.length, total);
+    if (count === 0) break;
+    total += count;
+    onReadChunk?.({ path, count, total });
+    assertPinnedRegular(path, label, opened);
+    if (total > maxBytes) fail(`${label} exceeds the authority size limit: ${path}`);
+    chunks.push(buffer.subarray(0, count));
+  }
+  const data = Buffer.concat(chunks, total);
+  onAfterRead?.({ path, stat: opened.stat, contents: data.toString("utf8") });
+  assertPinnedRegular(path, label, opened);
+  return data;
+}
+
+function syncPinnedRegular(path, label, opened, options, revalidate = () => {}) {
+  const check = () => {
+    revalidate();
+    assertPinnedRegular(path, label, opened);
+  };
+  check();
+  invokeDurability(options, "fsync-file", path);
+  check();
+  fsyncSync(opened.descriptor);
+  check();
+  invokeDurability(options, "close-file", path);
+  check();
 }
 
 function requireStableOpenPath(path, label, stat) {
@@ -253,41 +306,15 @@ function requireStableOpenPath(path, label, stat) {
   }
 }
 
-export function readAuthorityFile(
-  path,
-  label,
-  { onOpen, onReadChunk, onAfterRead, maxBytes = MAX_AUTHORITY_BYTES } = {},
-) {
-  const { descriptor, stat } = openRegularFileNoFollow(path, label);
+export function readAuthorityFile(path, label, options = {}) {
+  const opened = openRegularFileNoFollow(path, label);
   try {
-    if (stat.size > maxBytes) fail(`${label} exceeds the authority size limit: ${path}`);
-    onOpen?.({ path, stat });
-    const chunks = [];
-    let total = 0;
-    while (total <= maxBytes) {
-      const buffer = Buffer.allocUnsafe(Math.min(64 * 1024, maxBytes + 1 - total));
-      const count = readSync(descriptor, buffer, 0, buffer.length, null);
-      if (count === 0) break;
-      total += count;
-      onReadChunk?.({ path, count, total });
-      if (total > maxBytes) fail(`${label} exceeds the authority size limit: ${path}`);
-      chunks.push(buffer.subarray(0, count));
-    }
-    const contents = Buffer.concat(chunks, total).toString("utf8");
-    onAfterRead?.({ path, stat, contents });
-    const after = fstatSync(descriptor);
-    if (
-      after.dev !== stat.dev ||
-      after.ino !== stat.ino ||
-      after.size !== stat.size ||
-      after.mtimeMs !== stat.mtimeMs
-    ) {
-      fail(`${label} changed during descriptor access: ${path}`);
-    }
-    requireStableOpenPath(path, label, stat);
-    return contents;
+    return readPinnedRegularFile(path, label, opened, {
+      maxBytes: MAX_AUTHORITY_BYTES,
+      ...options,
+    }).toString("utf8");
   } finally {
-    closeSync(descriptor);
+    closeSync(opened.descriptor);
   }
 }
 
@@ -309,17 +336,18 @@ export function readAuthorityJson(path, label = "authority record", options) {
 }
 
 function verifyAndSyncExactRegularFile(path, label, expected, options) {
-  const { descriptor, stat } = openRegularFileNoFollow(path, label);
+  const opened = openRegularFileNoFollow(path, label);
   try {
-    if (readFileSync(descriptor, "utf8") !== expected) {
+    if (
+      readPinnedRegularFile(path, label, opened, { maxBytes: MAX_AUTHORITY_BYTES }).toString(
+        "utf8",
+      ) !== expected
+    ) {
       fail(`${label} conflicts with the requested handoff: ${path}`);
     }
-    invokeDurability(options, "fsync-file", path);
-    fsyncSync(descriptor);
-    requireStableOpenPath(path, label, stat);
-    invokeDurability(options, "close-file", path);
+    syncPinnedRegular(path, label, opened, options);
   } finally {
-    closeSync(descriptor);
+    closeSync(opened.descriptor);
   }
 }
 
@@ -964,24 +992,44 @@ function invokeDurability(options, operation, path) {
 }
 
 function syncFile(path, options) {
-  let descriptor;
+  const opened = openRegularFileNoFollow(path, "durability file");
   try {
-    descriptor = openSync(path, "r");
-    invokeDurability(options, "fsync-file", path);
-    fsyncSync(descriptor);
-    invokeDurability(options, "close-file", path);
+    syncPinnedRegular(path, "durability file", opened, options);
   } finally {
-    if (descriptor !== undefined) closeSync(descriptor);
+    closeSync(opened.descriptor);
   }
 }
 
 function syncDirectory(path, options) {
   let descriptor;
   try {
-    descriptor = openSync(path, "r");
+    descriptor = openSync(
+      path,
+      constants.O_RDONLY | constants.O_DIRECTORY | constants.O_NOFOLLOW | constants.O_NONBLOCK,
+    );
+    const identity = fstatSync(descriptor);
+    const check = () => {
+      const held = fstatSync(descriptor);
+      const entry = lstatSync(path);
+      if (
+        !identity.isDirectory() ||
+        !held.isDirectory() ||
+        entry.isSymbolicLink() ||
+        !entry.isDirectory() ||
+        held.dev !== identity.dev ||
+        held.ino !== identity.ino ||
+        entry.dev !== held.dev ||
+        entry.ino !== held.ino
+      )
+        fail(`durability directory changed during descriptor access: ${path}`);
+    };
+    check();
     invokeDurability(options, "fsync-directory", path);
+    check();
     fsyncSync(descriptor);
+    check();
     invokeDurability(options, "close-directory", path);
+    check();
   } finally {
     if (descriptor !== undefined) closeSync(descriptor);
   }
@@ -1001,26 +1049,65 @@ function adoptedProjectName(contents) {
   return contents.slice(0, -1);
 }
 
-function readAdoptedProjectRecord(root) {
-  const record = join(root, ADOPTED_PROJECT_RECORD);
-  const entry = noFollowEntry(record);
-  if (!entry || entry.isSymbolicLink() || !entry.isFile()) {
-    fail("adopted project record is not a no-follow regular file");
+function pinAdoptedProjectRoot(handoffRoot) {
+  const root = adoptedProjectRoot(handoffRoot);
+  const descriptor = openSync(
+    root,
+    constants.O_RDONLY | constants.O_DIRECTORY | constants.O_NOFOLLOW | constants.O_NONBLOCK,
+  );
+  const identity = fstatSync(descriptor);
+  const revalidate = () => {
+    const entry = lstatSync(root);
+    const held = fstatSync(descriptor);
+    if (
+      entry.isSymbolicLink() ||
+      !entry.isDirectory() ||
+      !held.isDirectory() ||
+      entry.dev !== identity.dev ||
+      entry.ino !== identity.ino ||
+      held.dev !== identity.dev ||
+      held.ino !== identity.ino ||
+      adoptedProjectRoot(handoffRoot) !== root
+    )
+      fail("adopted project handoff root changed");
+  };
+  try {
+    revalidate();
+  } catch (error) {
+    closeSync(descriptor);
+    throw error;
   }
-  return { record, project: adoptedProjectName(readFileSync(record, "utf8")) };
+  return { root, descriptor, revalidate };
 }
 
-// The capture shell delegates Compose-identity durability to this helper so its
-// Docker-only runtime never relies on host Node.js or shell rename semantics.
-// A visible record is re-synced before authority is returned: this safely
-// completes the post-rename parent barrier after an interrupted publication.
+// A visible record completes an interrupted parent barrier using the same
+// descriptor that supplied its validated project identity.
 export function verifyAdoptedProject({ handoffRoot, faultAt, onDurabilityOperation } = {}) {
-  const root = adoptedProjectRoot(handoffRoot);
-  const result = readAdoptedProjectRecord(root);
-  const options = { faultAt, onDurabilityOperation };
-  syncFile(result.record, options);
-  syncDirectory(root, options);
-  return result;
+  const authority = pinAdoptedProjectRoot(handoffRoot);
+  let opened;
+  try {
+    const record = join(authority.root, ADOPTED_PROJECT_RECORD);
+    opened = openRegularFileNoFollow(record, "adopted project record");
+    const contents = readPinnedRegularFile(record, "adopted project record", opened, {
+      maxBytes: MAX_AUTHORITY_BYTES,
+    }).toString("utf8");
+    const project = adoptedProjectName(contents);
+    const options = { faultAt, onDurabilityOperation };
+    const check = () => {
+      authority.revalidate();
+      assertPinnedRegular(record, "adopted project record", opened);
+    };
+    syncPinnedRegular(record, "adopted project record", opened, options, authority.revalidate);
+    invokeDurability(options, "fsync-directory", authority.root);
+    check();
+    fsyncSync(authority.descriptor);
+    invokeDurability(options, "close-directory", authority.root);
+    check();
+    return { record, project };
+  } finally {
+    if (opened) closeSync(opened.descriptor);
+    closeSync(authority.descriptor);
+  }
 }
 
 export function writeAdoptedProject({
@@ -1030,62 +1117,115 @@ export function writeAdoptedProject({
   onDurabilityOperation,
   onBeforeAdoptedProjectClaim,
 } = {}) {
-  if (typeof project !== "string" || !/^[a-z0-9][a-z0-9_-]*$/.test(project)) {
+  if (typeof project !== "string" || !/^[a-z0-9][a-z0-9_-]*$/.test(project))
     fail("adopted project name is invalid");
-  }
-  const root = adoptedProjectRoot(handoffRoot);
+  const authority = pinAdoptedProjectRoot(handoffRoot);
+  const { root } = authority;
   const record = join(root, ADOPTED_PROJECT_RECORD);
-  const existing = noFollowEntry(record);
-  if (existing) {
-    const verified = verifyAdoptedProject({ handoffRoot: root, faultAt, onDurabilityOperation });
-    if (verified.project !== project) fail("adopted project record conflicts with discovery");
-    return { ...verified, changed: false };
-  }
-
   const temporary = join(root, `${ADOPTED_PROJECT_RECORD}.next-${process.pid}-${randomUUID()}`);
   const contents = `${project}\n`;
   const options = { faultAt, onDurabilityOperation };
-  let descriptor;
+  let opened;
   let claimed = false;
   try {
-    descriptor = openSync(temporary, "wx", 0o600);
-    writeFileSync(descriptor, contents);
-    invokeDurability(options, "adopted-project-write", temporary);
-  } finally {
-    if (descriptor !== undefined) closeSync(descriptor);
-  }
-  try {
-    const entry = noFollowEntry(temporary);
-    if (
-      !entry ||
-      entry.isSymbolicLink() ||
-      !entry.isFile() ||
-      readFileSync(temporary, "utf8") !== contents
-    ) {
-      fail("adopted project temporary record is invalid");
+    if (noFollowEntry(record)) {
+      const verified = verifyAdoptedProject({ handoffRoot, faultAt, onDurabilityOperation });
+      authority.revalidate();
+      if (verified.project !== project) fail("adopted project record conflicts with discovery");
+      return { ...verified, changed: false };
     }
-    syncFile(temporary, options);
+    const descriptor = openSync(
+      temporary,
+      constants.O_RDWR |
+        constants.O_CREAT |
+        constants.O_EXCL |
+        constants.O_NOFOLLOW |
+        constants.O_NONBLOCK,
+      0o600,
+    );
+    opened = { descriptor };
+    writeFileSync(descriptor, contents);
+    opened.stat = fstatSync(descriptor);
+    opened.identity = fstatSync(descriptor, { bigint: true });
+    const check = (path = temporary) => {
+      authority.revalidate();
+      if (
+        readPinnedRegularFile(path, "adopted project temporary record", opened, {
+          maxBytes: MAX_AUTHORITY_BYTES,
+        }).toString("utf8") !== contents
+      )
+        fail("adopted project temporary record is invalid");
+    };
+    check();
+    invokeDurability(options, "adopted-project-write", temporary);
+    check();
+    syncPinnedRegular(
+      temporary,
+      "adopted project temporary record",
+      opened,
+      options,
+      authority.revalidate,
+    );
     onBeforeAdoptedProjectClaim?.({ temporary, record, project });
+    check();
     try {
-      // link(2) creates the record atomically only if it is absent. Unlike
-      // rename, it cannot replace a concurrent publisher's completed claim.
       linkSync(temporary, record);
       claimed = true;
     } catch (error) {
       if (error?.code !== "EEXIST") throw error;
     }
     if (!claimed) {
-      const verified = verifyAdoptedProject({ handoffRoot: root, faultAt, onDurabilityOperation });
+      const verified = verifyAdoptedProject({ handoffRoot, faultAt, onDurabilityOperation });
+      check();
       if (verified.project !== project) fail("adopted project record conflicts with discovery");
       return { ...verified, changed: false };
     }
+    // Our own link/unlink changes nlink and ctime. Bind each resulting name to
+    // the still-open original inode before accepting those deliberate changes.
+    const rebind = (path, linkDelta) => {
+      const held = fstatSync(descriptor, { bigint: true });
+      const entry = lstatSync(path, { bigint: true });
+      if (
+        !held.isFile() ||
+        held.nlink !== opened.identity.nlink + BigInt(linkDelta) ||
+        REGULAR_IDENTITY_FIELDS.filter((field) => !["nlink", "ctimeNs"].includes(field)).some(
+          (field) => held[field] !== opened.identity[field],
+        ) ||
+        entry.isSymbolicLink() ||
+        !sameRegularIdentity(held, entry)
+      )
+        fail("adopted project claim changed identity");
+      opened.identity = held;
+      opened.stat = fstatSync(descriptor);
+      check(path);
+    };
+    rebind(temporary, 1);
+    check(record);
     invokeDurability(options, "rename", record);
+    check();
+    check(record);
     unlinkSync(temporary);
-    syncDirectory(root, options);
+    rebind(record, -1);
+    invokeDurability(options, "fsync-directory", root);
+    check(record);
+    fsyncSync(authority.descriptor);
+    invokeDurability(options, "close-directory", root);
+    check(record);
     return { record, project, changed: true };
   } finally {
-    const entry = noFollowEntry(temporary);
-    if (entry?.isFile() && !entry.isSymbolicLink()) unlinkSync(temporary);
+    if (opened) {
+      const entry = noFollowEntry(temporary);
+      const held = fstatSync(opened.descriptor);
+      if (
+        entry?.isFile() &&
+        !entry.isSymbolicLink() &&
+        entry.dev === held.dev &&
+        entry.ino === held.ino
+      )
+        unlinkSync(temporary);
+      closeSync(opened.descriptor);
+    }
+    closeSync(authority.descriptor);
   }
 }
 
@@ -1125,12 +1265,58 @@ function writeAtomically(directory, path, contents, options, durabilityRoot = di
 }
 
 function copyAndVerify(source, destination, expected, options, durabilityRoot) {
-  mkdirSync(dirname(destination), { recursive: true, mode: 0o755 });
-  copyFileSync(source, destination);
-  const actual = sha256(destination);
-  if (!equalEntry(actual, expected)) fail(`staged digest mismatch: ${destination}`);
-  syncFile(destination, options);
-  if (durabilityRoot) syncDirectoryAncestors(dirname(destination), durabilityRoot, options);
+  const opened = openRegularFileNoFollow(source, "copy source");
+  try {
+    const bytes = readPinnedRegularFile(source, "copy source", opened);
+    const actual = {
+      size: bytes.byteLength,
+      sha256: createHash("sha256").update(bytes).digest("hex"),
+    };
+    if (!equalEntry(actual, expected)) fail(`staged digest mismatch: ${source}`);
+    mkdirSync(dirname(destination), { recursive: true, mode: 0o755 });
+    try {
+      const target = openSync(
+        destination,
+        constants.O_WRONLY |
+          constants.O_CREAT |
+          constants.O_EXCL |
+          constants.O_NOFOLLOW |
+          constants.O_NONBLOCK,
+        0o644,
+      );
+      try {
+        writeFileSync(target, bytes);
+      } finally {
+        closeSync(target);
+      }
+    } catch (error) {
+      if (error?.code !== "EEXIST") throw error;
+      // Legacy and candidate inventories may share an unchanged bundle. Its
+      // existing transaction entry is admitted only by the same exact digest.
+      const existing = openRegularFileNoFollow(destination, "existing copy destination");
+      try {
+        if (existing.stat.nlink !== 1)
+          fail(`copy destination has foreign hard-link aliases: ${destination}`);
+        const data = readPinnedRegularFile(destination, "existing copy destination", existing);
+        if (
+          !equalEntry(
+            { size: data.byteLength, sha256: createHash("sha256").update(data).digest("hex") },
+            expected,
+          )
+        )
+          fail(`staged digest mismatch: ${destination}`);
+      } finally {
+        closeSync(existing.descriptor);
+      }
+    }
+    assertPinnedRegular(source, "copy source", opened);
+    if (!equalEntry(sha256(destination), expected)) fail(`staged digest mismatch: ${destination}`);
+    syncFile(destination, options);
+    assertPinnedRegular(source, "copy source", opened);
+    if (durabilityRoot) syncDirectoryAncestors(dirname(destination), durabilityRoot, options);
+  } finally {
+    closeSync(opened.descriptor);
+  }
 }
 
 function sourceAsset(candidateRoot, path) {
@@ -2184,31 +2370,58 @@ function handBackTreeOwnership(root, ownerUid, ownerGid, options) {
   })();
   const visit = (path) => {
     const before = lstatSync(path);
-    if (before.isSymbolicLink() || (!before.isDirectory() && !before.isFile())) {
+    if (before.isSymbolicLink() || (!before.isDirectory() && !before.isFile()))
       fail(`export ownership handoff found unsafe entry: ${path}`);
+    const descriptor = openSync(
+      path,
+      constants.O_RDONLY |
+        constants.O_NOFOLLOW |
+        constants.O_NONBLOCK |
+        (before.isDirectory() ? constants.O_DIRECTORY : 0),
+    );
+    try {
+      const check = () => {
+        options?.ownerAuthority?.revalidate();
+        const held = fstatSync(descriptor);
+        const entry = lstatSync(path);
+        if (
+          entry.isSymbolicLink() ||
+          (held.isFile() && held.nlink !== 1) ||
+          held.dev !== before.dev ||
+          held.ino !== before.ino ||
+          entry.dev !== held.dev ||
+          entry.ino !== held.ino ||
+          entry.isDirectory() !== before.isDirectory() ||
+          entry.isFile() !== before.isFile()
+        )
+          fail(`export ownership handoff changed identity or ownership: ${path}`);
+        return held;
+      };
+      check();
+      if (before.isDirectory())
+        for (const name of requireDirectoryNames(path).sort(ordinal)) visit(join(path, name));
+      options?.onBeforeOwnershipChange?.({ path, ownerUid, ownerGid });
+      check();
+      fchownSync(descriptor, ownerUid, ownerGid);
+      const after = check();
+      const ownershipMatches = after.uid === ownerUid && after.gid === ownerGid;
+      const ownershipIsOpaque =
+        virtualizedDockerOwnership &&
+        before.uid === 0 &&
+        before.gid === 0 &&
+        after.uid === before.uid &&
+        after.gid === before.gid;
+      if (!ownershipMatches && !ownershipIsOpaque)
+        fail(`export ownership handoff changed identity or ownership: ${path}`);
+      const operation = before.isFile() ? "file" : "directory";
+      invokeDurability(options, `fsync-${operation}`, path);
+      check();
+      fsyncSync(descriptor);
+      invokeDurability(options, `close-${operation}`, path);
+      check();
+    } finally {
+      closeSync(descriptor);
     }
-    if (before.isDirectory()) {
-      for (const name of requireDirectoryNames(path).sort(ordinal)) visit(join(path, name));
-    }
-    options?.onBeforeOwnershipChange?.({ path, ownerUid, ownerGid });
-    lchownSync(path, ownerUid, ownerGid);
-    const after = lstatSync(path);
-    const ownershipMatches = after.uid === ownerUid && after.gid === ownerGid;
-    const ownershipIsOpaque =
-      virtualizedDockerOwnership &&
-      before.uid === 0 &&
-      before.gid === 0 &&
-      after.uid === before.uid &&
-      after.gid === before.gid;
-    if (
-      after.dev !== before.dev ||
-      after.ino !== before.ino ||
-      (!ownershipMatches && !ownershipIsOpaque)
-    ) {
-      fail(`export ownership handoff changed identity or ownership: ${path}`);
-    }
-    if (after.isFile()) syncFile(path, options);
-    else syncDirectory(path, options);
   };
   visit(root);
   options?.ownerAuthority?.revalidate();
