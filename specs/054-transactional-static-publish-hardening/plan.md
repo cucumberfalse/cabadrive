@@ -1,28 +1,102 @@
-# Plan: Ordered finalization without replacement PRs
+# Implementation Plan: Transactional static-publish and legacy-handoff hardening
 
-## Current217 Integration Checkpoint
+## Delivery Shape
 
-C055-217-R2j engineering is complete. Fresh transaction-specific generation identities support repeated content and new export destinations while exact pending/terminal same-request retries preserve identity. Durable private creator-bound lineage records actual active/previous and eligible owned generations; retirement uses neither mtime nor prefix ownership, and unknown foreign artifacts remain untouched. Creator reservations precede no-replace output publication; descriptor-bound prepared lineage promotes before pending clear with exact crash recovery, positive creator birth admission and strict schema/domain/receipt proofs. Legacy bootstrap grants unique verified active owned:false protection only. Published lineage and valid advanced runtime state are independently verified for fresh operations; ordinary stage rejects coordinator/retirement/tombstone work with exact private internal permits, preserving standalone FR021. Effective project identity uses the existing resolver. Fresh full preflight EXIT0 passes739/739 unit tests with zero skips,164/164 browser cases and all quality/content/memory/build gates; full DEFAULT Docker81393/5197 EXIT0 exercises new repeated-release/new-destination/foreign/predecessor/mixed controls and seven cross-container fault retries plus every earlier lifecycle/path/owner/kernel/recovery subcall and27HTTP/security/cache/gzip/UID101. Two registered owned generations converge; preserved unowned artifacts are excluded from that count. The first Docker EXIT1 was the new fixture's omitted publish mount, resolved only by three task-container mounts and scoped checks before complete successful rerun; unchanged runtime/unit/browser blobs preserve preflight evidence. No outstanding engineering feedback or unresolved owner issue remains. Exact newcontent Review and originalfour renewed same-SHA ordered roles plus allfive published-head/fullpagination/finalizer gates remain pending. Genuine055 return7/10 and original10/10,10/10,0/10,6/10 with Analyst0 are preserved;217 is not claimed merged,215/cumulative055 remain uninvoked.
+- Existing stacked slice: branch `codex/051-asset-retention`, PR #217, worktree `/Users/chap/devel/cabadrive-worktrees/051-asset-retention`.
+- Recorded stacked base: `5e5f4ef40336fc7bff2c400b6301d99fbc9479c1`.
+- Expected implementation surface: `scripts/stage-static-release.mjs`, `scripts/export-static-release.sh` only if host triage remains necessary, focused staging/export/Docker tests, narrowly affected deployment docs, and feature-054 memory.
+- Preserve the uncommitted F052 post-limit disposition, Analyst intake, sibling changes, and all external branch/PR state. Stage only assigned files.
 
-Verified214 MERGEDmain1e3507e2363314340eed43c0d77dd3d0acbc92cf at2026-10-08T18:11:24Z.
+## Phase 1 — Test-First Baselines
 
-## Architecture and assignments
+1. Confirm branch/worktree/head, dirty-file ownership, stacked-base relation, and allowed file boundary.
+2. Archive or otherwise isolate the assigned pre-fix behavior for negative-baseline runs without touching sibling work.
+3. Add a transaction-order test with current A, candidate B, serving output, and physical destination. Assert the existing path selects B before a later destination-publication fault.
+4. Add marker controls proving the existing pathname read follows a readable symlink and can block on a FIFO; use bounded subprocess/injected adapters so the suite cannot hang.
+5. Add current controls proving regular directory/file acceptance and dangling-symlink classification behavior, plus deterministic substitution between classification and use.
+6. Record exact failing commands/results before implementation.
 
-Preserve current continuation branches and use normal merges from verified updated main where synchronization is required. Existing PRs are the requested deliverables; replacing them would duplicate the task. Implementation214 carries all055 artifacts and the narrow shared dependency fix. Implementation217 owns combined runtime/retention integration only after214 merges. Implementation215 may repair its browser fixture early, but obtains terminal integration evidence only after217 merges. Review remains independent; Orchestrator alone coordinates checks, review conversations, finalization and merge.
+## Phase 2 — One Transaction Coordinator
 
-## Dependency remediation disposition
+1. Refactor the existing stage/publish/export internals into preparation, publication, and activation operations callable while one project-scoped lock remains held. Avoid nested independent commits.
+2. Extend the existing publish journal rather than adding a parallel journal. Bind it to:
+   - schema/transaction ID and exact request paths;
+   - prior current A or verified empty state;
+   - candidate B manifest/release ID and legacy request;
+   - prior and expected retained inventories;
+   - serving-output inventory/path and physical destination inventory/path; and
+   - explicit durable phases through `prepared`, `output-durable`, `export-durable`, and activation/clear.
+3. Prepare B and journal-owned immutable evidence without changing `current` or publishing a new authoritative retained tuple.
+4. Publish and durably sync the serving output, then publish and durably sync the physical destination. Revalidate exact journal relations after every already-visible crash boundary.
+5. Only after `export-durable`, commit the retained/release tuple and invoke rollback-capable `makeCurrent` for B. Clear the journal after the complete committed tuple and outputs revalidate.
+6. Keep idempotent completed-output behavior, no-replace destination semantics, and clean/legacy export success.
 
-The original nginx049 exclusion of new dependencies remains its product boundary. New055 explicitly authorizes a shared security-only lock resolution on214, inherited later through main. Use current Context7 pnpm documentation and pinned10.33.0; prefer targeted ordinary lockfile-only update of `source-map-js`. Preserve manifest scripts, direct ranges, package manager and unrelated overrides. Explain every package key/snapshot/edge change and engine/peer compatibility. If ordinary resolution is insufficient, record exact resolver constraint for Architect disposition before changing manifest policy or owners.
+## Phase 3 — Fault And Recovery Matrix
 
-## Sequence and evidence
+Inject deterministic faults at every directly relevant boundary:
 
-1.214: copy055 memory, audit/fix graph, obtain reproducible install, full preflight, isolated Docker headers/non-root smoke and exact-head review/CI. Dispose historical local Docker pull failure using actual new successful runtime and required CI evidence; do not call it an owner-accepted unresolved risk. Renew original049 Architect then Analyst passes, expected-head dry-run/guard and squash merge. Record actual merge result while055 remains in progress.
-2.217: fetch updated main and integrate214 without dropping retained-state or transactional guarantees. Use one server cache/security configuration and retained root/aliases. Run focused hostile staging/provenance/export contracts, full preflight, Docker retained lifecycle and combined HTTP header smoke. Independently review and renew every included051/052/053/054 role pass on the integrated SHA. Exhausted historical budgets are preserved;055 owns this integration. Merge only with exact-head green gates and guard.
-3.215: fetch main containing both predecessors, integrate and run authentic generated historical A fixture: deferred manual hash omitted, untouched, explicit A cache miss; publish B through real retention; old A first-load proves exact A-origin bytes and logged request; destructive control404. Keep learning and new A/B/C protocol regressions. Run focused/full/Docker checks, reconcile complete live inventory and renew049-learning validation. Finally validate cumulative055 against verified214/217 merges and215 effective content, then merge215 and verify complete target set.
+- serving/destination copy and digest verification;
+- nested file/tree sync and close;
+- transaction journal write/rename/directory sync;
+- serving-output and physical-destination reservation/rename/no-replace;
+- serving-output and destination parent sync;
+- phase transition before/after durability; and
+- immediately before and during current activation.
 
-## Process boundaries
+For every pre-activation failure prove nonzero exit, A still current, prior tuple valid, no partial public tree/destination, no B activation, and only exact contained journal-owned recovery evidence. Then prove unchanged retry succeeds and changed A/B/C/request/output/destination/journal/inventory fails unchanged.
 
-Implementation records commands, output summaries, hashes, exact review/check URLs and dispositions in applicable tasks.md; no terminal success is inferred from AI prose. Architect owns final architectural evidence; Analyst writes only its feature-request validation section after Architect passes. Every substantive later edit restarts affected validation; evidence-only commits require read-only current-head proof. Cleanup is unassigned/not applicable, preserve worktrees.
+## Phase 4 — Marker And Current Authority
+
+1. Add a reusable descriptor-bound JSON reader for authority files. Open the marker no-follow/nonblocking, require descriptor `fstat` regular-file type, read from that descriptor, and reject read/metadata/identity failures.
+2. Replace marker pathname read in `verifyLegacyHandoff`; preserve canonical manifest comparison and strict invalid-handoff result.
+3. Add an authoritative `current` classifier at the stager boundary:
+   - no entry: verified clean/no-legacy result;
+   - symlink: capture and identity-revalidate its link target, then resolve/validate that pinned target;
+   - any non-symlink: fail before mutation.
+4. Keep lightweight host-shell triage only if needed for argument construction; stager classification remains authoritative. Never use followed-path `-e` alone to decide absence.
+5. Exercise stable and substitution-race matrices for marker/current. Verify FIFO prompt termination, dangling strict rejection, and untouched external/sibling sentinels.
+
+## Phase 5 — Documentation And Local Verification
+
+1. Update only the static-export/Docker runtime docs needed to state output-before-activation ordering, exact retry behavior, and absent/symlink/non-symlink handoff semantics.
+2. Run shell syntax and focused staging/export/capture/static-host tests.
+3. Run typecheck, lint, format check, quality-fast, feature-memory/repository guards, and `git diff --check`.
+4. Run full `pnpm run preflight` on the final implementation content.
+5. Run the isolated real Docker lifecycle with a unique project/port and scoped teardown.
+6. Record exact operation traces, fault/type matrices, changed-file/diff audit, dead ends, decisions, known issues, and Implementation Agent feedback in `tasks.md`.
+
+## Phase 6 — Review, Validation, And Merge Gates
+
+1. Review Agent inspects only the bounded feature-054 diff: transaction order/recovery, no-follow descriptor binding, current identity pinning, regressions, docs, and process compliance.
+2. Orchestrator enumerates all native review pages/threads and routes each finding or Implementation Agent feedback item for Architect disposition.
+3. Establish one renewed effective content head containing implementation, tests, docs, feature memory, and all follow-up fixes/dispositions.
+4. Require all configured checks green, complete no-blocker review/thread state, conflict-free PR #217, and current acceptance evidence.
+5. Orchestrator invokes final Architect validation across the combined F051/F052/F053/F054 cycle, then final Analyst validation on the same effective head.
+6. Perform the evidence-only current-head guard and conservative expected-head finalization. If a helper cannot enumerate the long review history, complete paginated read-only guards remain mandatory before the authorized manual squash path.
+
+## Verification Matrix
+
+| Boundary | Evidence | Pass condition |
+|---|---|---|
+| Ordering | exact operation trace | output durable < export durable < B current |
+| Fault rollback | per-boundary injection matrix | A valid/current; no partial public artifact or B activation |
+| Recovery | exact retry and drift matrix | unchanged resumes; any relation drift fails unchanged |
+| Marker | descriptor/type/race matrix | same no-follow regular file read; unsafe types reject promptly |
+| Current | absent/symlink/non-symlink/race matrix | exact three-way result; dangling rejects downstream |
+| Preservation | clean + valid/invalid legacy controls | existing retention/provenance/export contracts remain green |
+| Focused quality | targeted and combined suites | all green on implementation head |
+| Full quality | `pnpm run preflight` | all phases green |
+| Docker | isolated lifecycle | pass with scoped cleanup |
+| Review/GitHub | exact-head review and required checks | blocker-free, green, conflict-free |
+| Validation | role markers/current-head guard | Architect then Analyst same head; later delta evidence-only |
+
+## Stop Conditions
+
+- A proposed fix activates B before both durability barriers, trusts a complete output without exact journal authority, or weakens A rollback.
+- Marker validation uses a pathname read after classification or may block on special files.
+- `current` classification collapses dangling symlink into absence or accepts a non-symlink.
+- A race test can cause a replacement object to be consumed.
+- Implementation requires unrelated behavior or mutating sibling state; return evidence to Orchestrator/Architect instead of broadening scope.
 
 ## Architect disposition: paginated completion-cycle055 findings (2026-10-08)
 
@@ -34,48 +108,6 @@ Complete pagination is authoritative: PR #217 has160 review threads, with8 unres
 
 Run the focused capture/provenance/staging/export fault suites and combined tests before publication; consolidate all3 fixes then obtain full preflight, isolated real Docker lifecycle and post214 integration/header smoke. Review includes all pages and exact effective content. The5 validation conversations remain pending until renewed same-SHA Architect then Analyst evidence and current-head guard are proven; technical resolution requires substantive regression evidence.
 
-### C055-217-R2 adversarial evidence assignment
-
-Retirement negatives must cover malformed/truncated authority, unexpected schema/fields, foreign root/output/transaction, absolute/escape/symlink target, replaced inode/tree, active/immediate-rollback target, and changed output link after journal publication; each rejects without foreign or protected mutation. A partial-removal retry may admit only the exact journal-known remaining subset with no extra/replaced entries, complete removal and durability, then clear authority. Inject parent-sync failure after unlink plus partial-tree removal and final-clear faults. Verify retries converge and unrelated orphan, sibling, active and rollback sentinels remain readable/unchanged. Use supported Node/Docker runtime for evidence; environment-specific unsupported filesystem behavior is recorded rather than patched outside scope.
-
-## Historical Architect disposition: exact-head OSV brace-expansion follow-up (resolved214)
-
-GitHub required OSV run37817165454 on published214 head68f1d758a1c0010b2e5ccb5b9925192152dcf09b reports six advisory matches: brace-expansion1.1.18 and5.0.9 below compatible safe floors1.1.21 and5.0.12 (GHSA-6j4f-fj2g-mc7p, GHSA-qhr7-859c-m2p7, GHSA-q2hr-2g5m-vwhr). source-map-js1.2.2 is cleared. Merge remains blocked. New055 owns this narrow shared security remediation; historical217 feature053 evidence/ownership is preserved, and both PRs later inherit one converged safe graph through main.
-
-- C055-214-OSV2: accepted implementation task. With pinnedpnpm10.33.0, use ordinary targeted lockfile-only compatible resolution to advance both existing brace-expansion major lines independently to1.x>=1.1.21 and5.x>=5.0.12. Preserve minimatch owners/direct ranges, existing overrides/scripts/packageManager and source-map-js1.2.2. Audit every package key, snapshot, owner edge, integrity/engine/peer difference; eliminate every below-floor duplicate. No blanket override, new manifest policy, owner upgrade, forced/latest major churn or scanner suppression without exact constraint evidence and prior Architect disposition.
-- C055-214-OSV2 verification: run the complete repository scan with the same OSVscannerv2.3.5 as CI using disposable anonymousDocker context before any push; inspect every reported package/advisory, not only brace-expansion, to consolidate all actual blockers. An advisory beyond this assigned graph is recorded for exact bounded Architect disposition before mutation. Zero full-scan findings, deterministic frozen-install/hash/graph evidence, appropriate full preflight and rebuilt isolated actualDocker/nginx headers/non-root/CSP behavior establish candidate readiness before publication. Keep all required CI policies unchanged and require exact-current-head green remoteOSV independently.
-- C055-214-OSV2 validation: dependency content is substantive. Earlier original049 Architect/Analyst passes onaa261a7c are historical and cannot authorize the new content. Preserve real Architectreturn2/10 and Analystreturn1/5; establish one final new effective content SHA after fixes/audit/process preparation, then renew Architect first and Analyst second. New055 cumulative validation remains uninvoked until215. Do not merge published68 or guess-and-push partial dependency fixes.
-
-### Historical conditional OSV2 verification proportionality (superseded by FRESH logic change)
-
-PR #217 original053 already resolves brace-expansion to exact1.1.21/5.0.12; converge214 to those same compatible entries and later inherit source-map-js1.2.2 through main. Because brace-expansion is dev/build-only, the completed actualDocker154-case CSP audit may carry forward only when a fresh complete built/served artifact inventory proves shell, generated SW, hashed assets and content byte-identical to the audited runtime, and a rebuilt isolated Docker header/gzip/non-root smoke passes. A single JS hash or unchanged source file is insufficient. Any served artifact drift receives appropriate actual policy/browser verification before claiming compatibility. Full preflight, fullOSVv2.3.5 prepush scan, frozen graph/hash audit and ordered role validation on the new effective content SHA remain mandatory; no unnecessary broad CSP rerun is required once identity is proven.
-
-### Historical conditional generated-cache-token comparison (superseded by actual changed-worker verification)
-
-Generator inspection confirms `createServiceWorkerBody(assets, timestamp = Date.now())` emits a leading `const CACHE_NAME = "cabadrive-static-<decimal timestamp>";`. Accept normalization of that exact generated decimal cache-name field only after reporting raw SW drift and proving generator code plus executable dependency logic unchanged, complete ASSETS list and every remaining SW byte identical. Every other served shell/asset/content file must be compared raw byte-for-byte; no broad timestamp/regex normalization or executable-logic drift is authorized. This is normalized equivalence, never raw full-tree byte identity.
-
-Require fresh rebuiltDocker worker response/policy smoke and a real service-worker install, offline reload and deferred/lazy-asset CSP smoke on the new token. The original full154-case actual nginx CSP compatibility evidence may then carry forward because the sole generated cache identifier change cannot affect policy compatibility; complete inventory and exact normalization demonstrate that boundary. Any additional drift requires explicit appropriate verification/disposition before final role pass. Full preflight/fullOSV/frozen-audit/newSHA ordered-role gates remain intact.
-
-## Historical Architect disposition: P1 stable-content HTTP-cache promotion (resolved214)
-
-Accepted current214 P1r4222201360/PRRT_kwDOSX65IM6qewtC. Source inspection confirms generated install uses `cache.addAll(ASSETS)` strings and fetch uses indefinite cache-first `caches.match`. A new timestamp worker can copy still-fresh or stale-while-revalidate old `/content/assets/` HTTP bytes into its new release CacheStorage despite the new origin content. The nginx HTTP policy alone does not establish the claimed worker refresh; out-of-scope SW wording is not a valid rejection of this regression.
-
-C055-214-FRESH is a narrow explicit exception owned by new055 to original nginx049's SW exclusion. Change only install request construction so stable `/content/assets/` precache requests bypass HTTP cache with `Request(...,{cache:"reload"})`, keeping one atomic `cache.addAll(requests)` and unchanged cache keys/list coverage. Applying reload to the entire install batch is also compatible and converges with215's already-implemented reload batch; choose the smaller coherent change. Preserve deferred manual exclusions, offline-ready prior cache on failed installation, feature048 response/error behavior, no external request and existing activation behavior. No URL-version migration, runtime TTL subsystem, new dependency or unrelated update protocol change is authorized.
-
-Evidence must reproduce HTTP-fresh A bytes warmed under a real cacheable response, origin switch to B at the same stable URL without clearing/route-disabling HTTP cache, and new worker install. Baseline default request must return/promote A; fixed install reload request must hit B origin and store exact B bytes. A meaningful generated-worker execution test may model the browser cache semantics, but actual same-origin browser/server hit evidence is required for the HTTP-cache boundary. Add failed install/atomic cache and offline fallback controls; preserve hashed/deferred coverage. Never use Playwright routing that silently disables HTTP cache for the freshness regression.
-
-Documentation must distinguish nginx HTTP86400/SWR policy from release-snapshot CacheStorage: new online worker installation refreshes current origin bytes, while offline/unchanged-worker cache-first snapshots have no wall-clock24h TTL. Remove unqualified blanket24h claims rather than pretending headers govern CacheStorage. This is truthful clarification of existing local-first behavior, not weakening new-release freshness acceptance.
-
-Current Context7MDN `/mdn/content` documents Cache.addAll accepting Request objects and fetching them; primary Request.cache documentation states reload bypasses the HTTP cache and updates it. Sources: https://developer.mozilla.org/en-US/docs/Web/API/Cache/addAll and https://developer.mozilla.org/en-US/docs/Web/API/Request/cache .215 implementation independently confirms its modern protocol already constructs reload Requests and atomically caches them before marker/activation; preserve that during integration. Historical215A fixture remains the genuine old stringaddAll/excludedmanual worker, not silently repaired.
-
-Consolidate with current brace/security remediation before renewed full preflight/rebuilt real Docker+appropriate CSP/SW browser verification and fullOSVscan. A running earlier preflight is superseded by changed generator; stop only the assigned own process safely or treat results as preliminary. Substantive generated-worker change invalidates cache-token-only carry-forward equivalence; obtain real changed-worker policy/offline/freshness evidence. Renew ordered roles on one final new effectiveSHA; real Architectreturn3/10 and Analystreturn1/5 remain recorded.
-
-
-## Historical214 engineering handoff (completed predecessor)
-
-OSV2/FRESH implemented and verified: both compatible safe brace lines and source-map-js, fullscanner241/0, frozen audit, fullpreflight556/160 and actual rebuiltDocker headers/nonroot/changedSWCSP-offline-lazy checks. Prior cache-token-only comparison conditions are historical; actual install logic changed and received real regression evidence. No engineering follow-up remains. Commit final content/process preparation, independently review its exact SHA, then renew original049 Architect-before-Analyst passes with retained returns3/10 and1/5; live remote gates/guard/merge remain mandatory. Cumulative055 stays in progress through217/215.
-
-
 ## Architect refinement: C055-217-R2 continuation and pinned authority
 
 - C055-217-R2a: accepted bounded task. Under the existing project transaction lock, resume an interrupted C retirement before admitting, publishing or activating a different D transaction. Validate that authoritative current state still identifies recorded C and that exact protected C/B output/target identities remain intact. Complete the journal-known C cleanup and durability, then proceed with D. A C-interruption→D regression must converge without committing D then stranding C authority. Changed current release, project/domain, output or protected topology fails unchanged before the next publication; never reinterpret an old journal after new activation.
@@ -84,24 +116,9 @@ OSV2/FRESH implemented and verified: both compatible safe brace lines and source
 Both refinements are within055's original bounded retirement recovery/authority contract, not a scope expansion or another historical052/054 return. Consolidate them with the existing R2 fault matrix before publishing fixes; run focused and combined verification and preserve active/rollback/sibling sentinels.
 
 
-## Architect disposition: C055-217-R2c Linux retirement-link generation
+## Completion-cycle055 Integrated Validation Preparation
 
-Accepted current nativeP1PRRT_kwDOSX65IM6qgQte on publishedaca45b70 and sole UbuntuNode20 baseline failure at completion-retention-safety.test.mjs577 (687/688). Real LinuxNode20 telemetry confirms active and rollback symlinks immediately recreated with the same target reuse dev/inode while ctimeNs/birthtimeNs change; the old persisted dev/inode/target identity admits that replacement. Although identical-target bytes do not demonstrate foreign deletion, this violates the declared changed-topology/generation fail-closed contract and is not disposed as a test-only false positive. New055 owns one bounded real Architect return1/10; historical05110/05210/0530/0546 and allAnalyst counts stay unchanged.
-
-- Harden only retirement authority symlinks: committed current, both protected active/rollback links, and retiring output link. Retain dev/inode/target and add mandatory canonical decimal-string ctimeNs and birthtimeNs from no-follow lstatSync(path,{bigint:true}); validate exact schema/field types and compare generation at existing admission/destructive/durability/recovery boundaries.
-- Retirement journal schema2 requires these generation fields. Missing/malformed/noncanonical/negative/wrongtype or schema1 authority rejects before mutation; never infer generation from a current pathname or silently adopt ambiguous oldauthority. The schema1 retirement journal belongs to this unmerged feature and introduces no supported migration commitment. Other original publication/promotion journals remain unchanged.
-- Keep directory/tree inode+inventory authority unchanged: deletion legitimately changes directory ctime, so adding mutable directory generation stamps would reject valid partial retry. No broad identity/schema refactor, timestamp sleep, product workaround or cleanup expansion.
-- Preserve actual immediate unlink/recreate-same-target test and log observed identity/generation; add deterministic rename-to-private-fixture-backup replacement so original inode remains allocated, assert observed identity/generation differs, retain all no-D-publication/current/protected/foreign preservation assertions. Cover both protected links, current and retiringoutput, malformed/missing generation/schema rejection, untouched positive retry, partial deletion and C-interruption→D convergence. Do not skip or relax the regression.
-- Consolidate affected LinuxNode20 safety tests plus supported complete unit/fullpreflight and rebuilt actual DockerNode22 retirement/lifecycle/header verification because production authority changes; exact new-head CI independently verifies the complete UbuntuNode20 suite. Frozen graph remains unchanged; inherited fullOSV identity evidence plus exact new-head remoteOSV stays valid. No unnecessary repeated complete historical CSP audit for unchanged app/SW; no new runtime requirement outside the affected transaction contract.
-- Complete new process/content preparation and exact Review, then renew every original051/052/053/054 Architect then Analyst on one new effective SHA. All live exact-head checks/full pagination/native thread resolution/expected-head gates precede217 merge;055 cumulative remains excluded until215.
-
-Context7 current Node20 primary docs confirm lstat reports symlink itself, bigint enables ctimeNs/birthtimeNs and timestamp precision is platform-dependent (https://nodejs.org/docs/latest-v20.x/api/fs.html). Generation stamps are additional observed authority, not a universal uniqueness claim; actual Linux/macOS/Docker regressions establish supported behavior.
-
-
-## Historical C055-217-R2c engineering closure
-
-Implemented mandatory schema2 link-only generation authority and fail-closed old/malformed authority. Actual immediate reused-inode/different-Ns replacement rejects; deterministic retained-inode controls and unchanged/partial/C→D positives pass. Proportionate actual verification is Linux20 affected safety13/13, host24 safety13/13 and fullpreflight690unit/164browser plus rebuilt productionDockerNode22 complete lifecycle/27HTTP/UID101; no unrun complete Linux690 claim. No product/SW/dependency change outside accepted transaction scope or further runtime requirement remains. Complete canonical process before newcontentcommit, exactReview then allfour ordered same-SHA roles, live complete Ubuntu/other gates and expected-head finalization. Preserve history/oldbudgets and055return1; no final pass or217merge claim.
-
+Verified214 main1e3507e2363314340eed43c0d77dd3d0acbc92cf is the prerequisite for current217. Preserve both runtime contracts: one server-level cache/header map and unprivileged nginx/gzip from214;217 persistent/state-current/retained-alias/provenance/transaction behavior. New055 owns R1/R2/R3 and R2a/R2b; all original return counts and post-limit histories remain intact. Consolidate fullpreflight, fullOSV/frozen graph and isolated retainedA/B Docker lifecycle plus live root/SW/current+retained assets/content/404 headers/cache/gzip/nonroot evidence. Complete exact-head Review and canonical process preparation precede final content SHA. Then all included051/052/053/054 receive chronological Architect-before-Analyst passes on that same SHA; union evidence checks reuse existing guards per feature without weakening gates. Live full-pagination checks/conversations/conflicts and expected-head finalization precede217 merge.215 and cumulative055 final closure are downstream; this preparation asserts no final pass or merge.
 
 
 ## Architect disposition: C055-217-R2d descriptor-bound hashing and adoption
@@ -149,16 +166,6 @@ Review subsequently identified a directly equivalent pre-admission open boundary
 These are explicit accepted dispositions within the existing R2d no-follow/owned export/journal durability contracts, not a new cycle or another return. Consolidated Review map is complete: resolve every listed implementation note before the one final focusedLinux/host, fullpreflight and actualDocker batch/content commit. Original05110/05210/0530/0546 remain intact;055 realreturn2/10 and Analyst0/5. No gate/test weakening or general filesystem redesign.
 
 
-## Historical R2d engineering closure before effective content
-
-C055-217-R2d engineering is resolved: descriptor-bound regular hashing/read/fsync/copy, pinned adopted read/temporary claim with limited own link/ctime transitions, no-follow directory sync without mutable timestamp pinning, pinned fchown and owned nlink1 destination/overlap guards all have passing hostile and positive controls. Actual Linux20root23/23, newhost24descriptor10/10, fullpreflight700/164 and rebuiltDocker retained/adoption/recovery/27HTTP/UID101 pass. The FIFO copy timeout and induced equal-overlap/hardlink/rebind corners were repaired within this one accepted consolidation; no pending engineering feedback or risk waiver remains. All scoped assignments are completed engineering; previous conditional diagnostics and688/690 checkpoints remain dated history. Establish one final contentSHA/exactReview, renew originalfour ordered roles, then verify allfive published-head gates/fullpagination/threads/current-head beforemerge. No extra runtime checks or additional original return is assigned;055 cumulative remains terminal215.
-
-
-## Historical predecessor checkpoint before R2d closure
-
-Verified214 mergedmain1e3507e2363314340eed43c0d77dd3d0acbc92cf at2026-10-08T18:11:24Z with all five exact-head checks and strict finalizer.217 normal integration and post-R2c preflight690unit164browser plus Linux20/host24 safety13/13 complete; isolatedDocker lifecycle/27HTTP/UID101 passed. Current217 engineering/review/roles/live gates remain open; original051/052/053/054 final validation includes217,055 cumulative excluded until terminal215. All dated214 assignments below are completed historical dispositions; hashes/return counters preserved.
-
-
 ## Architect disposition: C055-217-R2e exact Compose label/path parsing
 
 Accepted current nativeP2 PRRT_kwDOSX65IM6qh7aW on published62e586a230a36646ca9f666f219e638f077afd41: concatenating project/working_dir/config_files with `|` splits a valid canonical checkout containing that character, discards genuine historical Compose ancestry and may silently select cabadrive rather than the existing safe historical project. The invalid raw basename is not usable fallback; this is original052 exact-project/adoption and051 legacy retention correctness. New055 owns real Architect return3/10; original05110/05210/0530/0546 and Analyst0 counts remain unchanged. No merge or reuse of98ea final roles for changed content.
@@ -178,11 +185,6 @@ Independent Review confirms the bounded map: independent Compose label transport
 config_files is an upstream comma-joined scalar, not a JSON array even when wrapped in structured label JSON. Exact canonical working_dir remains independent authority; exact entire label equal to the single canonical compose path can preserve that supported single-file case even with a comma. Ordinary unambiguous multi-file membership remains supported. Comma-bearing ambiguous multi-config config-only evidence must not gain authority through guessed fragments; fail closed when relevant ancestry cannot be established. Caller explicit project precedence remains available within the existing contract, without automatic persistence or requirement questions. Actual Docker pathological-pipe running/stopped migration plus comma mount controls and focused trailingLF/explicit-file semantics close the map; no general shell rewrite or extra return.
 
 
-### C055-217-R2e trailingLF sibling preservation control
-
-Review establishes a concrete mutation consequence: with both checkout and checkout<LF> present, stripped pwd and stripped working_dir label can falsely match the plain sibling and place adoption/handoff state there. Preserve trailing canonical and label bytes through exact boundary-safe transport. Regression creates both distinct directories, selects the LF checkout and exact historical label, and proves correct selected project/actual root with the plain sibling bytes/metadata unchanged. If a measured upstream Docker/Compose representation cannot support that path, explicit rejection must precede discovery/adoption/capture/build and preserve both siblings; silently shortening the root or falling back to default is forbidden. Apply the same support-or-explicit-premutation-reject boundary to internal LF and comma/quote CSV transport without a general shell rewrite or new return.
-
-
 ### C055-217-R2e accepted implementation boundaries and proportional verification
 
 Independent label sentinel transport and exact canonical-path helper values preserve Docker's framing versus literal label LF; CSV-quote the full source field with doubled quotes for bind mounts. Validate owned project grammar before candidate delimiter/dedup. Config ancestry supports exact entire single-label/default path equality; ordinary multi-file fallback requires verified absolute regular whole-file tokens and rejects a comma-joined token group that is itself an existing path. Relevant comma-bearing/alternate config-only ancestry that cannot be established rejects explicitly rather than defaulting. Exact working_dir supports explicit alternative config paths independently. These are bounded ancestry checks, not a general shell rewrite.
@@ -192,39 +194,6 @@ Review closes the audit map with the export caller's equivalent pwd/dirname/base
 R2e changes only shell path/provenance representation. Prior98ea fullpreflight700unit/164browser and web/protocol evidence may carry forward only with recorded byte-identical tracked app/web/generator/stager/nginx/Dockerfile/lock authority and equivalent built served content; the generator's deterministic-equivalent cache token timestamp may be explicitly normalized only when generator/asset logic is unchanged and fresh Docker SW smoke passes. Record actual compared file counts/hashes and expected token drift, never claim unnormalized full byte identity.
 
 Fresh verification remains mandatory: focused pathological resolver/provenance/sibling and config/mount controls on supported host/Linux, complete unit suite, frozen install, typecheck/lint/format/content/negative quality/build/feature-memory/diff guards, and actual isolated Docker normal running/stopped migration/restart/retention/headers/UID plus real pipe/comma checkout adoption and LF sibling support-or-premutation-reject controls. If web/generator/stager/lock/served logic changes or runtime evidence reveals a relevant gap, refresh affected browser scenarios/full matrix as appropriate before final content. Otherwise a blind local164 repetition is not required for shell-only changes; the unchanged exact newhead CI baseline still executes its complete mandatory suite and allfive live checks/fullpagination/roles/guard remain required. No gate or acceptance waiver; newroles sameSHA remain mandatory,055return3 unchanged.
-
-
-### C055-217-R2e symmetric config ambiguity and induced boundary preservation
-
-Exact entire config_files scalar equality is authority only when no other physically valid interpretation exists. The scalar `/tmp/a,/tmp/b/docker-compose.yml` can be both the genuine comma-bearing single path and two existing absolute regular foreign config files; when working_dir does not establish checkout authority, reject that ambiguity. The same applies to grouped comma filenames: `/tmp/a,/tmp/b,/tmp/c/docker-compose.yml` may partition into existing `/tmp/a,/tmp/b` and `/tmp/c/docker-compose.yml` even if `/tmp/a` is absent. Checking only every comma fragment is insufficient. Use a bounded complete alternate-partition check over existing absolute regular paths, with cached probes/dynamic reachability or an equivalent non-exponential method, and reject any valid alternative partition excluding the purported single-file authority. Preserve unambiguous single-comma positives and independent exact working_dir authority; do not declare all comma paths unsupported or rename user files. Add actual two-file and grouped-file ambiguity negatives with unchanged foreign/project state.
-
-Preserve induced path-derivation cases: a script invoked without slash has dirname `.` and a root script has dirname `/`; literal parameter expansion must not replace either with filename/empty directory. Export unsupported-colon policy examines the final canonical mount parent before project resolution/probe/build, including symlink ancestors whose raw alias has no colon; raw-only checks can run mutation before rejection. These remain the existing R2e exact/support-or-premutation-reject contract, not new scope or another return. Close all Review notes before consolidated final evidence/content;055return3 and original budgets unchanged.
-
-
-### C055-217-R2e measured Compose checkout boundary
-
-The actual expanded Docker run proved pipe-checkout running-container upgrade and comma/quote-checkout stopped-image upgrade, including LF-bearing external export parent/destination on a supported checkout. Its later LF-checkout capture resolved the exact historical project and retained bytes, but Docker Compose rejected the checkout file URL with `net/url: invalid control character in URL` before build. That partial run is diagnostic, not a passing full Docker run or support for LF checkout.
-
-Accept a narrow preflight guard for the measured unsupported checkout boundary: retain lossless canonical-path and label transport, then reject a canonical checkout containing LF before any Docker discovery, adoption, handoff capture, image build or probe. Apply the same checkout preflight to the export entry point before its resolver/probe/build; do not prohibit LF in an external export destination that actual Docker already supports. Other control-character rejection must follow the same documented upstream URL limitation, with explicit focused controls, rather than silently shortening paths or broadening unrelated file restrictions.
-
-The real negative creates plain and LF sibling directories and a genuine historical Docker container, then proves explicit rejection with no discovery/capture/adoption/build and unchanged sibling bytes/metadata and authority. Preserve successful pipe/comma/quote migration and LF external export positives. Update focused mocks and durable support-boundary docs; refresh affected host/Linux controls, full unit/quality/build and final actual Docker after the guard. Prior 164-browser evidence carries only through the accepted unchanged-web/stager/generator/lock/served-content identity proof. Final Docker must exit zero before engineering closure. This refines the existing support-or-premutation-reject task, preserves055return3/10 and original budgets, and adds no separate return or waiver.
-
-
-## Historical R2e engineering closure before effective content
-
-C055-217-R2e engineering is complete: exact independent label/sentinel transport, validated project IDs, lossless canonical values, CSV bind mounts, bounded symmetric complete config partition checks and pre-mutation canonical checkout C0/DEL rejection preserve project/retention authority. Supported pipe running-container and comma/quote stopped-image upgrades plus LF external export destinations pass; unsupported LF checkout rejects before Docker calls/handoff/adoption/build, preserving the genuine historical container ID/image/state/A bytes and plain/LF sibling bytes/metadata. Fresh quality/build/frozen-install/fullunits712/712 and Linux20 affected54/54 pass. Actual final Docker project73083 passes lifecycle/path controls/27HTTP responses/UID101; earlier corrected68896 cross-container locking/kill-retry/C→D proof is separately retained. Identity proves3008 critical tracked blobs and2357 served files equivalent to98ea with only unchanged CACHE_NAME timestamp normalized; prior actual164 browser cases carry through that explicit proof, not a new local browser run. No pending engineering feedback or risk waiver remains. Exact newcontent Review, ordered originalfour same-SHA roles and allfive live/fullpagination/finalizer gates remain pending;055 cumulative remains terminal215.
-
-
-## Architect disposition: C055-217-R2f private Docker fixture portability
-
-Exact-head Docker CI on c9702b81a7b922155d05d2c7fba8cfbacf250a60 passed normal migration, kernel locking/killed-publisher retry and C→D controls before failing at the new literal-path fixture host read of root-owned private `.cabadrive-release-handoff/.adopted-project` with EACCES. This is a real completion-verification portability gap; no production permission/authority defect is established. New055 owns authentic Architect return4/10, preserving original05110/05210/0530/0546 and Analyst0. Earlier28c roles/checks remain truthful historical checkpoints but cannot authorize changed fixture content.
-
-- Preserve production private0600, root-owned handoff authority and all ownership/permissions. Replace fixture host-only private record/tree inspection with a readonly task-container inspection of the exact selected checkout authority and expected project/retainedA bytes. No chmod/chown relaxation, privileged host CI job, skip, timer/assertion weakening or runtime policy change.
-- Audit all newly added literal-path fixture read/stat/readdir and owned cleanup operations for root-owned Docker artifacts on Linuxnonroot host. Preserve host-owned removable exported artifacts and no foreign/sibling mutation; cleanup may remove only this fixture's known resources. Do not use broad recursive ownership changes to make host reads possible.
-- Produce actual Linuxnonroot proof covering safe pipe running-container and comma/quote stopped-image capture/adoption/restart/export, exact private adopted-record/project and retainedA bytes, original unsupported-checkout/ambiguous-provenance/sibling controls and owned cleanup. Record host uid, private mode/uid, container readonly access and authoritative expected bytes; prior macOS success does not prove Linux ownership portability.
-- Proportional verification is fresh scoped fixture lint/format/affected tests and actual nonroot Docker controls with exact current runner/provenance; preserve prior712units/Linux54/164browser, runtime/lock/OSV evidence only through explicit unchanged production/app/stager/generator/nginx/dependency identity. No blind complete preflight/browser repetition for a fixture-only correction. Exact newhead CI remains the complete mandatory unchanged suite; new effectivecontent/exactReview and originalfour ordered same-SHA roles are required.
-
-The preventive ownership/read/cleanup audit is bounded to the introduced fixture. Record any concrete product defect separately before implementation; no general filesystem rewrite or permission weakening is assigned. This engineering disposition is pending implementation evidence, not a renewed final pass or merged217 claim;055 cumulative remains terminal215.
 
 
 ## Architect disposition: C055-217-R2g export owner-probe authority
@@ -265,53 +234,6 @@ R2f Linux UID1001 proof independently confirms private-host EACCES→readonly bo
 Use a bounded persistent reserved mapping-directory per exact export parent, rather than accumulate one retained random directory per invocation. Create it privately once when absent; reuse only a no-follow actual directory with validated private-mode/caller-owner class. It remains read-only mapping evidence, not creator-owned export authority. Preserve all preexisting/foreign witness contents and identity; never auto-delete or chmod/chown a compatible existing witness, and reject symlink/FIFO/wrong type/mode/owner without mutation. Once observed, pin and repeatedly validate it with the same parent/probe lifecycle. The separate randomly named probe is exclusively created and held by the stager and cleaned only under exact creator identity.
 
 Persistent bounded witness retention is the deliberate mapping-verification design, not an accepted defect, ownership waiver or request for another user decision. Document the reserved path, why it remains, unsupported/wrong-type rejection and absence of per-export orphan growth. Maintain support for comma/quote/LF export parents on supported checkouts, preexisting exacttransaction retry and unprivileged host artifact removal. These are the same settled R2g requirements, with055return4/10 unchanged.
-
-
-## Current R2f/R2g engineering closure before effective content
-
-C055-217-R2f/R2g engineering is complete. Fixture inspection reads private Docker artifacts through bounded readonly containers, preserves0600/0700 and private generation trees, and performs only scoped owned cleanup. Runtime owner mapping uses one persistent read-only private caller-owner witness per exact export parent; its contents remain unchanged and it is not claimed as creator authority. The single stager process creates a random O_EXCL|O_NOFOLLOW|O_NONBLOCK0600/nlink1 probe, derives fchown only from observed direct/namespaced mappedIDs and holds its creator descriptor through publication/finally. Exact probe/parent/mapping identities and regular-file generation checks surround admission, durability, activation/journal-clear and cleanup; foreign replacements survive and partial-open failures close descriptors. Fresh fullpreflight721/721unit+164/164browser/allquality/build EXIT0 and post-fixture-determinism refresh721/721unit0skips pass. LinuxNode20 UID1001 nine selected new groups pass (87 name-filter exclusions are not claimed as exercised); actual root-stager→UID1001 exact mapped export/retry and ordinary-user read/write/removal plus witness sentinel preservation pass. Default full Docker project6271/port5871 EXIT0 includes all kernel-lock/killed-publisher/C→D subcalls, normal and pathological pipe/comma upgrades, LF preflight negative, full27HTTP/security/cache/gzip/UID101 and export ownership/removability. Oldc970 symlink mode mutation/FIFO hang and minimal-prototype foreign-inode acceptance/deletion are authentic red; smaller post-mktemp authority route is rejected. No pending engineering feedback/owner-risk issue remains. Exact newcontent Review, renewed originalfour same-SHA ordered roles and allfive current-head/live/fullpagination/finalizer gates remain pending;055 cumulative remains terminal215.
-
-
-## Architect disposition: C055-217-R2h immutable image classification
-
-Accept native currentP1 PR217 r4224491599 on publisheddec25bb40faff362679fa4440571e741e03ce878. capture-legacy-assets.sh stores immutable image IDs from inspect_runtime_image, but historical project discovery and stopped-image source selection then classify the mutable tag again. Retagging between inspections can classify a different labeled runtime, incorrectly report initial install and omit real outgoing hashed assets. Selected running-container classification already uses container.Image and must remain unchanged. This is a real new completion gap after prior final roles:055 owns genuine Architect return5/10, preserving original05110/05210/0530/0546 and Analyst0. Priorf895/dec25 roles/checks are historical/superseded for changed content.
-
-Use the exact captured immutable ID for every subsequent runtime-label classification in those branches: historical_image for historical discovery, image for stopped-image capture. Source identity, Docker create/copy and handoff source-id must remain bound to that same capture ID, never substituted with a later tag or newest image. Preserve the existing classification tri-state: exact runtime label true, successfully absent label legacy, malformed/error fatal. If the captured ID vanishes or label inspection fails, fail closed without re-resolving a mutable tag, defaulting to absence, overwriting an existing handoff or capturing replacement bytes. Preserve exact explicit/discovered/adopted project semantics and running-container immutable provenance. No unrelated runtime helper, owner policy, path/parser, dependency, CI or interface changes.
-
-Add authentic deterministic retag-at-boundary red→green tests. A legacy ID is captured, the tag points to labeled postfeature B before classification, and fixed logic must classify/capture original A by ID with exact source-id/A bytes; historical discovery must retain the actual safe historical project. Reverse control captures a labeled postfeature ID then retags to legacy replacement: classification remains postfeature and cannot fabricate legacy capture. A removed captured ID while the tag points to a valid replacement fails before create/copy/publication with existing handoff/sibling/foreign bytes intact. Existing container.Image and label-error/absent/default controls remain. Mocks must inspect actual argument and phase, not return the same label for tag and ID; measure old-head failure and avoid repairing fixture assumptions in place of production code.
-
-Consolidate the two equivalent tag rereads before final verification. Run affected capture/provenance tests on host/Linux and full preflight (all unit tests including new regressions, actual164browser, quality/build/frozen graph), plus full default isolated Docker running/stopped capture/adoption/restart, all kernel-lock/killed-publisher/C→D subcalls, exact owner export/retry/nonroot/removability/pathnegative and27HTTP/security/cache/gzip/UID101. No gate, permission, timeout or assertion weakening. Record true evidence and close all R2h engineering before one new effectivecontent/exactReview, renewed originalfour ordered same-SHA roles and allfive exact published-head/fullpagination/thread/finalizer gates.055 cumulative remains terminal215; no217merge readiness is claimed.
-
-
-## R2h verification fixture disposition: controlled exam clock
-
-The first consolidated preflight passed all724 unit tests and quality/build gates, but browser verification returned161/164: two unchanged AC2 resume controls observed43:59 rather than44 because installed Playwright time continued advancing across asynchronous actions; one mobile manual evaluation timed out under concurrent Docker load without a failed geometry assertion. These are not successful final browser evidence. Accept only a controlled-clock fixture adjustment: retain install at00:00 and natural page.goto, then pauseAt fixed future00:01 before starting the exam, as current official Playwright Context7 guidance recommends. Existing runFor60000 then advances the paused clock. Preserve every original45:00/44:/deadline/answer/finish assertion, timeout and production byte; no broader test or product change.
-
-After actual Docker completion, pass both focused AC2 variants and the mobile manual control, then all164 browser cases with one isolated worker. Existing successful724-unit/quality/build evidence remains applicable to this sole test-clock adjustment; run scoped formatting/lint/diff checks. The prior failed browser run is a recorded dead end, not acceptance. This remains the current pre-effective R2h consolidation with055return5/10 and unchanged original budgets; final engineering closure waits actual successful evidence.
-
-## R2h engineering closure
-
-C055-217-R2h engineering is complete: exactly two tag-derived runtime-label calls now classify the captured immutable historical_image/image ID, retaining selected-container .Image and exact source/create binding. Authentic forward/reverse retag and removed-ID fail-closed controls pass in three focused groups. Composite final evidence comprises724 unit tests plus all quality/build gates from the initial preflight, four focused browser cases and a fresh complete164/164 single-worker browser run EXIT0, and full DEFAULT Docker25591/5197 EXIT0 with every kernel-lock/killed-publisher/C→D subcall, running/stopped/path/export/private-owner controls and27HTTP cache/security/gzip/UID101. The initial preflight EXIT1 with161/164 browser passes and three failures is preserved honestly; the approved controlled-clock fixture retained all assertions/timeouts, and final complete browser proof supersedes that failed attempt. No first-preflight EXIT0 is claimed. Exact new content Review, renewed originalfour same-SHA ordered roles and allfive complete current-head/fullpagination/finalizer gates remain pending;217 is not asserted merged,215/cumulative055 remain uninvoked. Genuine055 Architect return5/10 and original10/10,10/10,0/10,6/10 with Analyst0 are preserved.
-
-
-## Architect disposition: C055-217-R2i image-only preserved-handoff recovery
-
-Exact pre-publication Review of8b85683 identifies a genuine FR013/051 recovery asymmetry: after legacyA capture, labeled postfeatureB image build and interrupted first staging, incomplete release-state survives while compose down removes the container. Image-only retry rejects before independently verifying the preserved A handoff, although the selected labeled-container branch already accepts that same authoritative handoff. New055 owns real Architect return6/10; original05110/05210/0530/0546 and Analyst0 remain unchanged. Prior content/roles are superseded for the new repair; no new pass or merge claim.
-
-In the labeled postfeature image branch with invalid_state, permit continuation only when the existing descriptor-bound verify_handoff independently succeeds, using the same exact project/source-kind/source-ID/inventory authority already required for the preserved source. This is reuse of an independently validated old handoff; the newly built postfeature image ID cannot be substituted as legacy source. Keep missing, corrupt, foreign or mismatched handoffs fatal. Never docker create/cp the labeled postfeature image for legacy capture, copy rejected release-state, recapture incomplete output or weaken the verifier. Preserve immutable-ID classification and successful clean initial-install semantics; no unrelated helper/protocol/owner/parser/dependency change.
-
-Add meaningful positive image-only + invalid-state + independently valid A handoff, with exact original source-ID/kind/inventory/bytes and no create/cp; negative missing/corrupt/foreign/sibling/source-classification controls must preserve all authorities. Reproduce old-head rejection. Extend isolated actual Docker recovery to A capture→B image build→first-stage interruption/incomplete volume→down/container removal→image-only retry, proving retained A bytes and valid new shell/worker/controller where applicable. Keep selected-container and genuine initial-install controls. Consolidate full unit/quality/build, fresh all164 browser and full DEFAULT Docker including all existing crash/retry/kernel/C→D/path/export/header/nonroot gates plus the new recovery control. Only actual successful evidence closes engineering before one new effective commit/exact Review and originalfour ordered same-SHA roles; allfive current-head/fullpagination/finalizer remain mandatory.055 cumulative remains terminal215.
-
-
-## R2i consolidated source-matrix extension
-
-Preventive Review confirms the same rejected-state recovery gap when both selected container and project image are absent: legacyA was independently captured, first staging failed, compose down removed the container and obsolete project image was removed, but exact preserved A handoff remains. Within the current uncommitted R2i return6/10, cover both labeled-postfeature-image + invalid_state and entirely absent Docker source + invalid_state. In either branch, only successful existing descriptor-bound verify_handoff permits reuse; missing/corrupt/foreign/invalid source-kind/identity/inventory remain fatal. Preserve actual pre-feature source identity comparison/recapture precedence, authoritative verified-state priority, and unchanged no-state clean initial-install behavior. No rejected-state laundering, postfeature create/cp, default source fabrication or verifier relaxation.
-
-Add absent-source valid-handoff positive and invalid/missing negatives alongside image-only recovery. Actual Docker interrupted-first-stage/down recovery must exercise labeled B image-only retry and then absent project image retry, with preserved exact A authority and no baked-source copy. Full unit/quality/build, fresh164 browser and default full Docker requirements remain unchanged. Independent matrix audit found no further actionable gap. No additional return or budget reset; new effective Review and originalfour ordered roles remain pending.
-
-## R2i engineering closure
-
-C055-217-R2i engineering is complete. Both labeled postfeature-image and entirely absent Docker-source branches with rejected/incomplete release-state now permit recovery only through the existing independently verified preserved legacy handoff. Actual prefeature source-ID comparison/recapture precedence, verified-state authority, immutable image classification and no-state initial-install semantics remain unchanged. Missing/corrupt/foreign/source-kind-invalid handoffs remain fatal; no rejected-state or postfeature baked-source copy is admitted. Focused recovery controls5/5 pass with zero skips. Fresh full preflight EXIT0 passes726/726 unit tests with zero skips,164/164 browser cases and all memory/repository/content/attribution/quality/build gates. Full DEFAULT Docker projectcabadrive-retention-53684-1791517486949/5197 EXIT0 proves interrupted first stage after-assets→down→B image-only retry→removed-B-image absent-source retry, preserving exact A/source-ID/kind/inventory/pointer generation and sibling authority before valid B/A shell-worker activation. All existing cross-container kernel-lock/killed-publisher/C→D, running/stopped/initial, literal-path/private-owner/export controls and27HTTP security/cache/gzip/UID101 pass. Earlier R2h composite724/164 and failed initial-browser attempt remain truthful historical evidence; current726/164/fullDocker is fresh successful proof. Genuine055 return6/10 and original10/10,10/10,0/10,6/10 with Analyst0 are preserved. Exact new effective-content Review, renewed originalfour same-SHA chronological roles and allfive exact published-head/fullpagination/finalizer gates remain pending;217 is not claimed merged and215/cumulative055 remain uninvoked.
 
 
 ## Architect disposition: C055-217-R2j transaction generation and predecessor authority
@@ -370,11 +292,6 @@ This requirement is limited to creator authority permitting own-rename ctime rec
 Authentic /tmp/cabadrive-r2j-project-red.log proves omitted API projectKey under CABADRIVE_COMPOSE_PROJECT=r2j-effective-project creates a correct execution domain but new lineage.projectKey=null; subsequent explicit identical project rejects that same logical domain. Normalize only the new generation-lineage, coordinator-pending and direct-stage guard identity construction/comparison sites through existing effectiveProjectKey: explicit argument, then CABADRIVE_COMPOSE_PROJECT, then cabadrive, with existing validation. Exact equivalent omitted/explicit representations must interoperate with the same recorded execution domain.
 
 Keep case-sensitive exact project identity and foreign/malformed/domain rejection; no aliases, inferred ancestor, environment rewrite or change to existing standalone-publish pending schemas/FR021 controls. Add omitted-under-env→explicit-same, explicit→omitted-same and default-equivalent positives with genuinely different-project negatives preserving original output/current/export/authority. This is current unfrozen R2j7 consistency, not another return or scope. Four new identity sites reuse the existing resolver; no unrelated normalization. Zero-birth creator adapter controls remain required and have separate actual successful proof, without retirement-schema change.
-
-
-## R2j Docker fixture mount parity disposition
-
-Fresh complete preflight739/739 unit tests and164/164 browser cases passes. The first full Docker attempt failed in the new sequential runtime-only stage fixture because it mounted release-state:/state but omitted static-publish:/publish, while production docker-compose.yml stager mounts both. The lineage correctly rejected an absent recorded /publish domain. Approve only the matching publish-volume mount in the new direct-stage positive and retirement-negative task containers, preserving production guards and every assertion. Run scoped lint/format/diff and fresh complete default Docker; successful739/164 preflight remains valid for this fixture-only correction. The failed Docker attempt is a resolved fixture-design dead end, not final successful runtime proof. Same R2j7 and original budgets; actual Docker EXIT0 and FIRST evidence append are prerequisites for canonical closure.
 
 ## R2j engineering closure before effective content
 
@@ -441,5 +358,5 @@ Fresh frozen complete preflight TRUE EXIT0 passes751/751 unit tests with zero fa
 
 New exact effective-content commit/Review and originalfour renewed ordered same-SHA Architect/Analyst roles remain pending; allfive live exact-head checks/full review pagination/conversations/conflicts/strict finalizer follow. Prior647115/a45e R2j roles/checks remain historical for changed content.055 owns genuine8/10, original05110/05210/0530/0546 and Analyst0 preserved.214 is actually mergedmain1e3507e2363314340eed43c0d77dd3d0acbc92cf at2026-10-08T18:11:24Z;217 publisheda45e4c05 remains open until new verified head,215 published31c remains downstream open. No217/215 merge or055 cumulative completion is claimed;055 final roles remain terminal215.
 
-Architect return count: 8 / 10.
+Architect return count: 6 / 10.
 Analyst return count: 0 / 5.

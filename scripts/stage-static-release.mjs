@@ -1,0 +1,5926 @@
+#!/usr/bin/env node
+/**
+ * Append-only staging for Vite output.  This intentionally has no package
+ * dependencies so the Docker stager can run it without the application tree.
+ */
+import { createHash, randomUUID } from "node:crypto";
+import {
+  constants,
+  chmodSync,
+  closeSync,
+  existsSync,
+  fstatSync,
+  ftruncateSync,
+  fsyncSync,
+  linkSync,
+  fchownSync,
+  lstatSync,
+  mkdirSync,
+  openSync,
+  readFileSync,
+  readSync,
+  readlinkSync,
+  realpathSync,
+  renameSync,
+  rmSync,
+  rmdirSync,
+  symlinkSync,
+  unlinkSync,
+  writeFileSync,
+} from "node:fs";
+import { spawn, spawnSync } from "node:child_process";
+import { basename, dirname, isAbsolute, join, resolve, sep } from "node:path";
+import { hostname } from "node:os";
+import { fileURLToPath } from "node:url";
+
+const SCHEMA_VERSION = 1;
+const RELEASE_MARKER = ".release-state.json";
+const RETAINED_INVENTORY = "retained-assets.json";
+const LEGACY_HANDOFF_MARKER = ".legacy-handoff.json";
+const ADOPTED_PROJECT_RECORD = ".adopted-project";
+const LEGACY_SOURCE_KIND = "baked-legacy-root";
+const PUBLISH_PENDING = "publish-pending.json";
+const ASSET_PROMOTION_PENDING = "retained-assets-pending.json";
+const LOCK_SCHEMA_VERSION = 2;
+const EXECUTION_DOMAIN_SCHEMA_VERSION = 1;
+const EXECUTION_DOMAIN_RECORD = "stage-execution-domain.json";
+const RECLAIM_GUARD = "stage.lock.reclaim";
+const MAX_AUTHORITY_BYTES = 1024 * 1024;
+// A publish journal also contains the bounded creation proof of every copied entry.
+const MAX_PUBLISH_AUTHORITY_BYTES = 8 * 1024 * 1024;
+const EXPORT_OWNER_RECORD = ".cabadrive-export-owner.json";
+const TEST_LOCKS = new Set();
+const COORDINATOR_STAGE = Symbol("coordinator stage authority");
+const COORDINATOR_STAGE_PERMITS = new WeakSet();
+
+function fail(message) {
+  throw new Error(`Static release staging: ${message}`);
+}
+
+function ordinal(left, right) {
+  return left < right ? -1 : left > right ? 1 : 0;
+}
+
+function normalizeRelative(path) {
+  if (
+    typeof path !== "string" ||
+    !path ||
+    path.includes("\0") ||
+    path.includes("\\") ||
+    isAbsolute(path) ||
+    path.split("/").some((part) => !part || part === "." || part === "..")
+  ) {
+    fail(`unsafe relative path ${JSON.stringify(path)}`);
+  }
+  return path;
+}
+
+function assertDirectory(path, label, { allowMissing = false } = {}) {
+  if (!existsSync(path)) {
+    if (allowMissing) return false;
+    fail(`${label} does not exist: ${path}`);
+  }
+  const stat = lstatSync(path);
+  if (stat.isSymbolicLink()) fail(`${label} must not be a symlink: ${path}`);
+  if (!stat.isDirectory()) fail(`${label} must be a directory: ${path}`);
+  return true;
+}
+
+function assertInside(root, target, label) {
+  const rootReal = realpathSync(root);
+  const targetReal = realpathSync(target);
+  if (targetReal !== rootReal && !targetReal.startsWith(`${rootReal}${sep}`)) {
+    fail(`${label} escapes its root: ${target}`);
+  }
+}
+
+function sha256(path) {
+  const opened = openRegularFileNoFollow(path, "hashed file");
+  try {
+    const data = readPinnedRegularFile(path, "hashed file", opened);
+    return { size: data.byteLength, sha256: createHash("sha256").update(data).digest("hex") };
+  } finally {
+    closeSync(opened.descriptor);
+  }
+}
+
+function walkRegularFiles(root, label) {
+  assertDirectory(root, label);
+  const entries = [];
+  const visit = (directory, prefix = "") => {
+    const names = [...new Set(requireDirectoryNames(directory))].sort(ordinal);
+    for (const name of names) {
+      normalizeRelative(name);
+      const path = join(directory, name);
+      const stat = lstatSync(path);
+      if (stat.isSymbolicLink()) fail(`symlink is not allowed: ${path}`);
+      const relativePath = prefix ? `${prefix}/${name}` : name;
+      if (stat.isDirectory()) {
+        assertInside(root, path, label);
+        visit(path, relativePath);
+      } else if (stat.isFile()) {
+        assertInside(root, path, label);
+        entries.push({ path: normalizeRelative(relativePath), ...sha256(path) });
+      } else {
+        fail(`non-regular file is not allowed: ${path}`);
+      }
+    }
+  };
+  visit(root);
+  return entries.sort((left, right) => ordinal(left.path, right.path));
+}
+
+function requireDirectoryNames(path) {
+  // Dynamic import would make this otherwise synchronous staging API async.
+  // Node's directory snapshot is enough because each discovered node is lstat'ed.
+  return awaitlessReaddir(path);
+}
+
+function awaitlessReaddir(path) {
+  // Kept as a small indirection to make the deterministic walk clear in tests.
+  return readdirSync(path);
+}
+
+// Imported this way to keep the built-in dependency list explicit at the top.
+import { readdirSync } from "node:fs";
+
+function manifestDigest(payload) {
+  return createHash("sha256").update(JSON.stringify(payload)).digest("hex");
+}
+
+function markerForRelease(release) {
+  return {
+    schemaVersion: SCHEMA_VERSION,
+    releaseId: release.releaseId,
+    manifestSha256: manifestDigest({
+      schemaVersion: release.schemaVersion,
+      assets: release.assets,
+      mutable: release.mutable,
+    }),
+  };
+}
+
+export function createCandidateManifest(candidateRoot) {
+  assertDirectory(candidateRoot, "candidate root");
+  const root = realpathSync(candidateRoot);
+  const assetsRoot = join(root, "assets");
+  assertDirectory(assetsRoot, "candidate assets directory");
+  const all = walkRegularFiles(root, "candidate root");
+  const assets = [];
+  const mutable = [];
+  for (const entry of all) {
+    if (entry.path === EXPORT_OWNER_RECORD) {
+      fail(`candidate collides with reserved export ownership record: ${entry.path}`);
+    }
+    if (entry.path.startsWith("assets/")) {
+      assets.push({ ...entry, path: entry.path.slice("assets/".length) });
+    } else {
+      mutable.push(entry);
+    }
+  }
+  if (mutable.length === 0) fail("candidate has no mutable shell files");
+  const canonical = { schemaVersion: SCHEMA_VERSION, assets, mutable };
+  return { ...canonical, releaseId: manifestDigest(canonical) };
+}
+
+function equalEntry(left, right) {
+  return left.size === right.size && left.sha256 === right.sha256;
+}
+
+function sameEntries(left, right) {
+  return (
+    left.length === right.length &&
+    left.every(
+      (entry, index) => entry.path === right[index].path && equalEntry(entry, right[index]),
+    )
+  );
+}
+
+function sameLegacyManifest(left, right) {
+  return (
+    left?.schemaVersion === right?.schemaVersion &&
+    left?.sourceId === right?.sourceId &&
+    left?.sourceKind === right?.sourceKind &&
+    sameEntries(left?.assets || [], right?.assets || [])
+  );
+}
+
+function readJson(path, label) {
+  return readJsonRegularFileNoFollow(path, label);
+}
+
+const REGULAR_IDENTITY_FIELDS = [
+  "dev",
+  "ino",
+  "mode",
+  "uid",
+  "gid",
+  "nlink",
+  "size",
+  "mtimeNs",
+  "ctimeNs",
+  "birthtimeNs",
+];
+
+function sameRegularIdentity(left, right) {
+  return (
+    left.isFile() &&
+    right.isFile() &&
+    REGULAR_IDENTITY_FIELDS.every((field) => left[field] === right[field])
+  );
+}
+
+function assertPinnedRegular(path, label, opened) {
+  const descriptorStat = fstatSync(opened.descriptor, { bigint: true });
+  const pathStat = lstatSync(path, { bigint: true });
+  if (
+    !sameRegularIdentity(opened.identity, descriptorStat) ||
+    pathStat.isSymbolicLink() ||
+    !sameRegularIdentity(descriptorStat, pathStat)
+  ) {
+    fail(`${label} changed during descriptor access: ${path}`);
+  }
+}
+
+function openRegularFileNoFollow(path, label) {
+  let descriptor;
+  try {
+    descriptor = openSync(path, constants.O_RDONLY | constants.O_NOFOLLOW | constants.O_NONBLOCK);
+    const stat = fstatSync(descriptor);
+    const opened = { descriptor, stat, identity: fstatSync(descriptor, { bigint: true }) };
+    if (!stat.isFile() || (stat.mode & 0o444) === 0) {
+      fail(`${label} is not one stable no-follow regular file: ${path}`);
+    }
+    assertPinnedRegular(path, label, opened);
+    return opened;
+  } catch (error) {
+    if (descriptor !== undefined) closeSync(descriptor);
+    if (error instanceof Error && error.message.startsWith("Static release staging:")) throw error;
+    fail(`${label} is not a no-follow regular file: ${path}`);
+  }
+}
+
+function readPinnedRegularFile(path, label, opened, options = {}) {
+  const { maxBytes = Infinity, onOpen, onReadChunk, onAfterRead } = options;
+  assertPinnedRegular(path, label, opened);
+  if (opened.stat.size > maxBytes) fail(`${label} exceeds the authority size limit: ${path}`);
+  onOpen?.({ path, stat: opened.stat });
+  assertPinnedRegular(path, label, opened);
+  const chunks = [];
+  let total = 0;
+  while (true) {
+    const buffer = Buffer.allocUnsafe(Math.min(64 * 1024, maxBytes + 1 - total));
+    const count = readSync(opened.descriptor, buffer, 0, buffer.length, total);
+    if (count === 0) break;
+    total += count;
+    onReadChunk?.({ path, count, total });
+    assertPinnedRegular(path, label, opened);
+    if (total > maxBytes) fail(`${label} exceeds the authority size limit: ${path}`);
+    chunks.push(buffer.subarray(0, count));
+  }
+  const data = Buffer.concat(chunks, total);
+  onAfterRead?.({ path, stat: opened.stat, contents: data.toString("utf8") });
+  assertPinnedRegular(path, label, opened);
+  return data;
+}
+
+function syncPinnedRegular(path, label, opened, options, revalidate = () => {}) {
+  const check = () => {
+    revalidate();
+    assertPinnedRegular(path, label, opened);
+  };
+  check();
+  invokeDurability(options, "fsync-file", path);
+  check();
+  fsyncSync(opened.descriptor);
+  check();
+  invokeDurability(options, "close-file", path);
+  check();
+}
+
+function requireStableOpenPath(path, label, stat) {
+  const pathStat = lstatSync(path);
+  if (
+    pathStat.isSymbolicLink() ||
+    !pathStat.isFile() ||
+    pathStat.dev !== stat.dev ||
+    pathStat.ino !== stat.ino
+  ) {
+    fail(`${label} changed during no-follow access: ${path}`);
+  }
+}
+
+export function readAuthorityFile(path, label, options = {}) {
+  const opened = openRegularFileNoFollow(path, label);
+  try {
+    return readPinnedRegularFile(path, label, opened, {
+      maxBytes: MAX_AUTHORITY_BYTES,
+      ...options,
+    }).toString("utf8");
+  } finally {
+    closeSync(opened.descriptor);
+  }
+}
+
+function readRegularFileNoFollow(path, label, options) {
+  return readAuthorityFile(path, label, options);
+}
+
+function readJsonRegularFileNoFollow(path, label, options) {
+  try {
+    return JSON.parse(readRegularFileNoFollow(path, label, options));
+  } catch (error) {
+    if (error instanceof Error && error.message.startsWith("Static release staging:")) throw error;
+    fail(`invalid ${label}: ${path}`);
+  }
+}
+
+export function readAuthorityJson(path, label = "authority record", options) {
+  return readJsonRegularFileNoFollow(path, label, options);
+}
+
+function verifyAndSyncExactRegularFile(path, label, expected, options) {
+  const opened = openRegularFileNoFollow(path, label);
+  try {
+    if (
+      readPinnedRegularFile(path, label, opened, { maxBytes: MAX_AUTHORITY_BYTES }).toString(
+        "utf8",
+      ) !== expected
+    ) {
+      fail(`${label} conflicts with the requested handoff: ${path}`);
+    }
+    syncPinnedRegular(path, label, opened, options);
+  } finally {
+    closeSync(opened.descriptor);
+  }
+}
+
+export function verifyCandidateManifest(candidateRoot, manifest) {
+  if (!manifest || manifest.schemaVersion !== SCHEMA_VERSION) fail("unsupported manifest schema");
+  const actual = createCandidateManifest(candidateRoot);
+  if (
+    manifest.releaseId !== actual.releaseId ||
+    !sameEntries(manifest.assets, actual.assets) ||
+    !sameEntries(manifest.mutable, actual.mutable)
+  ) {
+    fail("candidate inventory does not match exact filesystem walk");
+  }
+  return actual;
+}
+
+function ensureStateLayout(stateRoot) {
+  const state = resolve(stateRoot);
+  if (existsSync(state)) {
+    assertDirectory(state, "state root");
+  } else {
+    mkdirSync(state, { recursive: true, mode: 0o755 });
+  }
+  chmodSync(state, 0o755);
+  for (const part of ["assets", "releases", "metadata", "transactions"]) {
+    const path = join(state, part);
+    if (existsSync(path)) assertDirectory(path, `state ${part}`);
+    else mkdirSync(path, { recursive: true, mode: 0o755 });
+    chmodSync(path, 0o755);
+  }
+  return realpathSync(state);
+}
+
+function processStartIdentity(pid) {
+  // Linux /proc starttime is tied to one process incarnation, unlike the PID.
+  // A platform without it cannot safely reclaim a crashed publisher's lock.
+  try {
+    const stat = readFileSync(`/proc/${pid}/stat`, "utf8");
+    const close = stat.lastIndexOf(")");
+    if (close < 0) return undefined;
+    const fields = stat
+      .slice(close + 2)
+      .trim()
+      .split(/\s+/u);
+    // Field 3 is the first field here; starttime is field 22.
+    const start = fields[19];
+    return /^\d+$/u.test(start || "") ? start : undefined;
+  } catch {
+    return undefined;
+  }
+}
+
+function effectiveProjectKey(projectKey) {
+  const value = projectKey || process.env.CABADRIVE_COMPOSE_PROJECT || "cabadrive";
+  if (typeof value !== "string" || !/^[a-zA-Z0-9][a-zA-Z0-9_.-]*$/u.test(value)) {
+    fail("Compose project identity is missing or unsafe");
+  }
+  return value;
+}
+
+function validExecutionDomain(record, project) {
+  return (
+    record?.schemaVersion === EXECUTION_DOMAIN_SCHEMA_VERSION &&
+    record.project === project &&
+    typeof record.domain === "string" &&
+    /^[a-f0-9-]{36}$/u.test(record.domain)
+  );
+}
+
+function publishExecutionDomain(state, path, record) {
+  const temporary = join(state, `.${EXECUTION_DOMAIN_RECORD}.${randomUUID()}.next`);
+  let descriptor;
+  try {
+    descriptor = openSync(temporary, "wx", 0o600);
+    writeFileSync(descriptor, `${JSON.stringify(record)}\n`);
+    fsyncSync(descriptor);
+  } finally {
+    if (descriptor !== undefined) closeSync(descriptor);
+  }
+  try {
+    // Hard-link publication is exclusive: unlike rename it never overwrites a
+    // concurrently published domain. The target is therefore either the
+    // complete, synced temporary or an already authoritative record.
+    linkSync(temporary, path);
+    syncDirectory(state, undefined);
+    return true;
+  } catch (error) {
+    if (error?.code === "EEXIST") return false;
+    throw error;
+  } finally {
+    if (existsSync(temporary)) {
+      unlinkSync(temporary);
+      syncDirectory(state, undefined);
+    }
+  }
+}
+
+function executionDomain(state, projectKey) {
+  const project = effectiveProjectKey(projectKey);
+  const path = join(state, EXECUTION_DOMAIN_RECORD);
+  const created = {
+    schemaVersion: EXECUTION_DOMAIN_SCHEMA_VERSION,
+    project,
+    domain: randomUUID(),
+  };
+  let recorded = noFollowEntry(path) ? readJson(path, "stage execution domain") : undefined;
+  const structurallyCompleteForeignRecord =
+    recorded?.schemaVersion === EXECUTION_DOMAIN_SCHEMA_VERSION &&
+    typeof recorded.project === "string" &&
+    typeof recorded.domain === "string" &&
+    /^[a-f0-9-]{36}$/u.test(recorded.domain) &&
+    recorded.project !== project;
+  if (structurallyCompleteForeignRecord) {
+    fail("stage execution domain is malformed or belongs to another Compose project");
+  }
+  if (!recorded) {
+    publishExecutionDomain(state, path, created);
+    recorded = readJson(path, "stage execution domain");
+  }
+  if (!validExecutionDomain(recorded, project)) {
+    fail("stage execution domain is malformed or belongs to another Compose project");
+  }
+  // A previous exclusive publish might have failed after link visibility but
+  // before its parent barrier. Retrying the same valid record completes that
+  // barrier before the record participates in lock ownership.
+  syncDirectory(state, undefined);
+  return recorded;
+}
+
+function lockOwnerRecord(context, diagnosticHost = hostname()) {
+  const startIdentity = processStartIdentity(process.pid);
+  const diagnostic = (read) => {
+    try {
+      return read();
+    } catch {
+      return "unavailable";
+    }
+  };
+  return {
+    schemaVersion: LOCK_SCHEMA_VERSION,
+    project: context.project,
+    domain: context.domain,
+    acquisition: randomUUID(),
+    diagnosticHost,
+    bootIdentity: diagnostic(() => readFileSync("/proc/sys/kernel/random/boot_id", "utf8").trim()),
+    pidNamespaceIdentity: diagnostic(() => readlinkSync("/proc/self/ns/pid")),
+    pid: process.pid,
+    // Local developer platforms without Linux's executable /proc starttime
+    // may create a unique lock, but may never reclaim one: inspection below
+    // treats this identity as ambiguous/fail-closed.
+    startIdentity: startIdentity || `unsupported-${randomUUID()}`,
+  };
+}
+
+function regularNoFollowDescriptor(path, { create = false } = {}) {
+  let descriptor;
+  try {
+    descriptor = openSync(
+      path,
+      constants.O_RDWR | constants.O_NOFOLLOW | (create ? constants.O_CREAT : 0),
+      0o600,
+    );
+    const descriptorStat = fstatSync(descriptor);
+    const pathStat = lstatSync(path);
+    if (
+      !descriptorStat.isFile() ||
+      pathStat.isSymbolicLink() ||
+      !pathStat.isFile() ||
+      descriptorStat.dev !== pathStat.dev ||
+      descriptorStat.ino !== pathStat.ino
+    ) {
+      fail(`lock path is not one stable no-follow regular inode: ${path}`);
+    }
+    return { descriptor, stat: descriptorStat };
+  } catch (error) {
+    if (descriptor !== undefined) closeSync(descriptor);
+    throw error;
+  }
+}
+
+function lockDescriptor(path, stat) {
+  const key = `${stat.dev}:${stat.ino}`;
+  if (process.env.CABADRIVE_TEST_KERNEL_LOCK === "in-process") {
+    if (TEST_LOCKS.has(key)) return undefined;
+    TEST_LOCKS.add(key);
+    return () => TEST_LOCKS.delete(key);
+  }
+  if (process.platform !== "linux") fail("kernel advisory lock is unsupported on this platform");
+  const holder = spawn("flock", ["--nonblock", path, "sh", "-c", "printf L; cat >/dev/null"], {
+    stdio: ["pipe", "pipe", "pipe"],
+  });
+  let spawnError;
+  holder.once("error", (error) => {
+    spawnError = error;
+  });
+  const outputDescriptor = holder.stdout?._handle?.fd;
+  if (!holder.pid || outputDescriptor === undefined) {
+    holder.kill();
+    fail("kernel advisory lock primitive is unavailable");
+  }
+  const ready = Buffer.alloc(1);
+  const deadline = Date.now() + 2000;
+  let acquired = false;
+  while (Date.now() < deadline && !spawnError) {
+    try {
+      const count = readSync(outputDescriptor, ready, 0, 1, null);
+      if (count === 1 && ready[0] === 76) {
+        acquired = true;
+        break;
+      }
+      if (count === 0) break;
+    } catch (error) {
+      if (error?.code !== "EAGAIN") {
+        holder.kill();
+        throw error;
+      }
+    }
+    Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 10);
+  }
+  if (!acquired) {
+    holder.kill();
+    if (spawnError?.code === "ENOENT") fail("kernel advisory lock primitive is unavailable");
+    fail("another stage holds the exclusive kernel lock");
+  }
+  const lockedPath = lstatSync(path);
+  if (
+    lockedPath.isSymbolicLink() ||
+    !lockedPath.isFile() ||
+    lockedPath.dev !== stat.dev ||
+    lockedPath.ino !== stat.ino
+  ) {
+    holder.kill("SIGTERM");
+    holder.stdin?.destroy();
+    fail("kernel lock inode changed during no-follow acquisition");
+  }
+  // The helper stays alive for the complete transaction. Abrupt parent or
+  // container death closes its stdin and releases the kernel lock without
+  // consulting namespace-local PIDs.
+  return () => {
+    holder.kill("SIGTERM");
+    holder.stdin?.destroy();
+  };
+}
+
+function recoverLegacyReclaim(state, lock, lockStat, onLockOperation) {
+  const reclaim = join(state, RECLAIM_GUARD);
+  const entry = noFollowEntry(reclaim);
+  if (!entry) return;
+  if (entry.isSymbolicLink() || !entry.isFile()) fail("legacy reclaim evidence is unsafe");
+  const { descriptor, stat } = regularNoFollowDescriptor(reclaim);
+  try {
+    if (stat.dev !== lockStat.dev || stat.ino !== lockStat.ino) {
+      fail("legacy reclaim evidence does not bind the canonical lock inode");
+    }
+    const canonicalOwner = readJson(lock, "canonical legacy lock owner");
+    const reclaimOwner = readJson(reclaim, "legacy reclaim owner");
+    if (!sameLockOwner(canonicalOwner, reclaimOwner)) {
+      fail("legacy reclaim generation does not match the canonical lock");
+    }
+    onLockOperation?.({ operation: "before-reclaim-removal", owner: canonicalOwner });
+    unlinkSync(reclaim);
+    syncDirectory(state, undefined);
+    onLockOperation?.({ operation: "after-reclaim-removal", owner: canonicalOwner });
+  } finally {
+    closeSync(descriptor);
+  }
+}
+
+function sameLockOwner(left, right) {
+  return JSON.stringify(left) === JSON.stringify(right);
+}
+
+function acquireLock(state, { projectKey, onLockOperation, diagnosticHost } = {}) {
+  const lock = join(state, "stage.lock");
+  const context = executionDomain(state, projectKey);
+  const owner = lockOwnerRecord(context, diagnosticHost);
+  const existed = Boolean(noFollowEntry(lock));
+  const { descriptor, stat } = regularNoFollowDescriptor(lock, { create: true });
+  let releaseKernel;
+  try {
+    releaseKernel = lockDescriptor(lock, stat);
+    if (!releaseKernel) fail("another stage holds the exclusive kernel lock");
+    if (!existed) syncDirectory(state, undefined);
+    recoverLegacyReclaim(state, lock, stat, onLockOperation);
+    ftruncateSync(descriptor, 0);
+    writeFileSync(descriptor, `${JSON.stringify(owner)}\n`, { position: 0 });
+    fsyncSync(descriptor);
+  } catch (error) {
+    releaseKernel?.();
+    closeSync(descriptor);
+    throw error;
+  }
+  syncDirectory(state, undefined);
+  onLockOperation?.({ operation: "lock-acquired", owner });
+  const testHold = Number(process.env.CABADRIVE_TEST_HOLD_LOCK_MS || 0);
+  if (Number.isInteger(testHold) && testHold > 0) {
+    Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, testHold);
+  }
+  return () => {
+    let recorded;
+    try {
+      recorded = readJson(lock, "stage lock owner");
+    } catch {
+      fail("stage lock ownership changed before release");
+    }
+    if (!sameLockOwner(recorded, owner)) fail("stage lock ownership changed before release");
+    onLockOperation?.({ operation: "lock-released", owner });
+    releaseKernel();
+    closeSync(descriptor);
+  };
+}
+
+function inventoryForAssets(root, label) {
+  const assets = join(root, "assets");
+  if (!existsSync(assets)) return [];
+  return walkRegularFiles(assets, label);
+}
+
+function requireLegacySource(value, label) {
+  if (typeof value !== "string" || !value.trim()) fail(`${label} must be a nonempty string`);
+  return value.trim();
+}
+
+export function createLegacyHandoffManifest({ legacyRoot, sourceId, sourceKind } = {}) {
+  if (!legacyRoot) fail("legacy root is required");
+  const root = realpathSync(legacyRoot);
+  assertDirectory(root, "legacy handoff root");
+  assertDirectory(join(root, "assets"), "legacy handoff assets directory");
+  const kind = requireLegacySource(sourceKind, "legacy source kind");
+  if (kind !== LEGACY_SOURCE_KIND) fail(`unsupported legacy source kind ${JSON.stringify(kind)}`);
+  return {
+    schemaVersion: SCHEMA_VERSION,
+    sourceId: requireLegacySource(sourceId, "legacy source id"),
+    sourceKind: kind,
+    assets: inventoryForAssets(root, "legacy handoff assets"),
+  };
+}
+
+function publishLegacyMetadata(root, name, contents, options) {
+  const path = join(root, name);
+  if (noFollowEntry(path)) {
+    verifyAndSyncExactRegularFile(path, `legacy handoff ${name}`, contents, options);
+    syncDirectory(root, options);
+    return;
+  }
+
+  const temporary = join(root, `.${name}.next-${process.pid}-${randomUUID()}`);
+  let descriptor;
+  let claimed = false;
+  try {
+    descriptor = openSync(temporary, "wx", 0o600);
+    writeFileSync(descriptor, contents);
+    invokeDurability(options, "fsync-file", temporary);
+    fsyncSync(descriptor);
+    invokeDurability(options, "close-file", temporary);
+  } finally {
+    if (descriptor !== undefined) closeSync(descriptor);
+  }
+  try {
+    try {
+      linkSync(temporary, path);
+      claimed = true;
+      invokeDurability(options, "link", path);
+    } catch (error) {
+      if (error?.code !== "EEXIST") throw error;
+    }
+    if (!claimed) {
+      verifyAndSyncExactRegularFile(path, `legacy handoff ${name}`, contents, options);
+    }
+  } finally {
+    if (noFollowEntry(temporary)) unlinkSync(temporary);
+    syncDirectory(root, options);
+  }
+}
+
+export function writeLegacyHandoffManifest({
+  legacyRoot,
+  handoffRoot,
+  sourceId,
+  sourceKind,
+  faultAt,
+  onDurabilityOperation,
+} = {}) {
+  if (!legacyRoot) fail("legacy root is required");
+  const root = realpathSync(legacyRoot);
+  assertDirectory(root, "legacy handoff root");
+  let durableHandoff;
+  if (handoffRoot) {
+    const suppliedHandoff = resolve(handoffRoot);
+    assertDirectory(suppliedHandoff, "legacy handoff base");
+    durableHandoff = realpathSync(suppliedHandoff);
+    assertInside(durableHandoff, root, "legacy handoff release");
+  }
+  const options = { faultAt, onDurabilityOperation };
+  const manifest = createLegacyHandoffManifest({ legacyRoot: root, sourceId, sourceKind });
+  const temporary = join(root, `${LEGACY_HANDOFF_MARKER}.next-${process.pid}-${randomUUID()}`);
+  publishLegacyMetadata(root, "source-id", `${manifest.sourceId}\n`, options);
+  publishLegacyMetadata(root, "source-kind", `${manifest.sourceKind}\n`, options);
+  // This point is deliberately injectable so the capture wrapper can prove a
+  // half-written handoff never becomes authoritative.
+  if (faultAt === "legacy-marker-write") fail("fault injection at legacy marker write");
+  writeFileSync(temporary, `${JSON.stringify(manifest, null, 2)}\n`);
+  renameSync(temporary, join(root, LEGACY_HANDOFF_MARKER));
+  // This is the handoff commit barrier. The independent pointer command is
+  // allowed to publish only after every captured byte and every directory entry
+  // through the release root has reached durable storage.
+  syncTree(root, options);
+  if (durableHandoff) {
+    syncDirectoryAncestors(dirname(root), durableHandoff, options);
+  }
+  return manifest;
+}
+
+// The capture shell deliberately delegates the pointer commit to this helper.
+// POSIX rename replaces a symlink itself; unlike `mv`, it never interprets a
+// symlink-to-directory as a destination directory.  Keeping the link creation
+// and rename in one repository-owned helper also makes the exact failure
+// boundary testable without relying on shell errexit semantics.
+export function publishLegacyHandoffPointer({
+  handoffRoot,
+  release,
+  faultAt,
+  onDurabilityOperation,
+} = {}) {
+  if (!handoffRoot || !release) fail("legacy handoff root and release are required");
+  const suppliedRoot = resolve(handoffRoot);
+  assertDirectory(suppliedRoot, "legacy handoff base");
+  const root = realpathSync(suppliedRoot);
+  const relative = normalizeRelative(release);
+  if (!relative.startsWith("releases/")) fail("legacy handoff release must be under releases");
+  const releaseRoot = join(root, ...relative.split("/"));
+  assertDirectory(releaseRoot, "legacy handoff release");
+  assertInside(root, releaseRoot, "legacy handoff release");
+  if (!verifyLegacyHandoff(releaseRoot).valid) {
+    fail("legacy handoff release is not authoritative");
+  }
+
+  const current = join(root, "current");
+  const next = join(root, `current.next-${process.pid}-${randomUUID()}`);
+  const rollback = join(root, `current.rollback-${process.pid}-${randomUUID()}`);
+  const previous =
+    existsSync(current) && lstatSync(current).isSymbolicLink() ? readlinkSync(current) : undefined;
+  let renamed = false;
+  try {
+    if (faultAt === "legacy-pointer-link") fail("fault injection at legacy pointer link");
+    symlinkSync(relative, next);
+    if (faultAt === "legacy-pointer-rename") fail("fault injection at legacy pointer rename");
+    renameSync(next, current);
+    renamed = true;
+    syncDirectory(root, { faultAt, onDurabilityOperation });
+  } catch (error) {
+    if (renamed) {
+      try {
+        if (previous === undefined) {
+          if (existsSync(current)) unlinkSync(current);
+        } else {
+          symlinkSync(previous, rollback);
+          renameSync(rollback, current);
+        }
+        // Do not replay the injected fault while making the rollback durable.
+        // The caller may delete the rejected release only after this barrier.
+        syncDirectory(root, { onDurabilityOperation });
+      } catch (rollbackError) {
+        throw new AggregateError(
+          [error, rollbackError],
+          "Static release staging: legacy handoff pointer rollback failed",
+        );
+      }
+    }
+    throw error;
+  } finally {
+    if (existsSync(next)) rmSync(next, { force: true });
+    if (existsSync(rollback)) rmSync(rollback, { force: true });
+  }
+}
+
+export function verifyLegacyHandoff(
+  legacyRoot,
+  { onMarkerOpen, onSourceOpen, expectedSourceId, expectedSourceKind } = {},
+) {
+  try {
+    const suppliedRoot = resolve(legacyRoot);
+    const root = realpathSync(suppliedRoot);
+    assertDirectory(root, "legacy handoff root");
+    const rootEntry = lstatSync(root);
+    const inspect = () => {
+      let currentRoot;
+      let currentRootEntry;
+      try {
+        currentRoot = realpathSync(suppliedRoot);
+        currentRootEntry = lstatSync(currentRoot);
+      } catch {
+        fail("legacy handoff root changed during validation");
+      }
+      if (
+        currentRoot !== root ||
+        currentRootEntry.dev !== rootEntry.dev ||
+        currentRootEntry.ino !== rootEntry.ino ||
+        currentRootEntry.isSymbolicLink() ||
+        !currentRootEntry.isDirectory()
+      ) {
+        fail("legacy handoff root changed during validation");
+      }
+      const markerPath = join(root, LEGACY_HANDOFF_MARKER);
+      const sourceIdPath = join(root, "source-id");
+      const sourceKindPath = join(root, "source-kind");
+      if (!existsSync(markerPath) || !existsSync(sourceIdPath) || !existsSync(sourceKindPath)) {
+        fail("legacy handoff marker is incomplete");
+      }
+      const marker = readJsonRegularFileNoFollow(markerPath, "legacy handoff marker", {
+        onOpen: onMarkerOpen,
+      });
+      const actual = createLegacyHandoffManifest({
+        legacyRoot: root,
+        sourceId: readRegularFileNoFollow(sourceIdPath, "legacy handoff source-id", {
+          onOpen: onSourceOpen,
+        }),
+        sourceKind: readRegularFileNoFollow(sourceKindPath, "legacy handoff source-kind", {
+          onOpen: onSourceOpen,
+        }),
+      });
+      if (!sameLegacyManifest(marker, actual)) {
+        fail("legacy handoff inventory does not match");
+      }
+      if (
+        (expectedSourceId !== undefined && actual.sourceId !== expectedSourceId) ||
+        (expectedSourceKind !== undefined && actual.sourceKind !== expectedSourceKind)
+      ) {
+        fail("legacy handoff source identity does not match expected source");
+      }
+      return actual;
+    };
+    const manifest = inspect();
+    const revalidate = () => {
+      const current = inspect();
+      if (!sameLegacyManifest(manifest, current)) {
+        fail("legacy handoff tuple changed during validation");
+      }
+      return root;
+    };
+    revalidate();
+    return { valid: true, manifest, root, revalidate };
+  } catch (error) {
+    return {
+      valid: false,
+      reason: error instanceof Error ? error.message : "legacy handoff validation failed",
+    };
+  }
+}
+
+export function pinLegacyHandoffCurrent(
+  legacyCurrent,
+  { onAfterClassify, onAfterValidate, ...verificationOptions } = {},
+) {
+  const current = resolve(legacyCurrent);
+  let entry;
+  try {
+    entry = lstatSync(current);
+  } catch (error) {
+    if (error?.code === "ENOENT") fail("legacy handoff current pointer is absent");
+    throw error;
+  }
+  if (!entry.isSymbolicLink()) {
+    fail("legacy handoff current entry must be a symlink");
+  }
+  const linkTarget = readlinkSync(current);
+  onAfterClassify?.({ current, linkTarget, entry });
+  const parent = realpathSync(dirname(current));
+  let target;
+  try {
+    target = realpathSync(resolve(dirname(current), linkTarget));
+  } catch {
+    fail("legacy handoff current pointer is dangling");
+  }
+  assertInside(parent, target, "legacy handoff current target");
+  const targetEntry = lstatSync(target);
+  if (targetEntry.isSymbolicLink() || !targetEntry.isDirectory()) {
+    fail("legacy handoff current target must be a directory");
+  }
+  const verification = verifyLegacyHandoff(target, verificationOptions);
+  if (!verification.valid) {
+    fail(`legacy handoff is not authoritative: ${verification.reason || "invalid"}`);
+  }
+  onAfterValidate?.({ current, target, targetEntry });
+  const revalidate = () => {
+    let currentEntry;
+    try {
+      currentEntry = lstatSync(current);
+    } catch {
+      fail("legacy handoff current pointer changed during validation");
+    }
+    if (
+      !currentEntry.isSymbolicLink() ||
+      currentEntry.dev !== entry.dev ||
+      currentEntry.ino !== entry.ino ||
+      readlinkSync(current) !== linkTarget
+    ) {
+      fail("legacy handoff current pointer changed during validation");
+    }
+    let currentTarget;
+    let currentTargetEntry;
+    try {
+      currentTarget = realpathSync(resolve(dirname(current), linkTarget));
+      currentTargetEntry = lstatSync(currentTarget);
+    } catch {
+      fail("legacy handoff current target changed during validation");
+    }
+    if (
+      currentTarget !== target ||
+      currentTargetEntry.dev !== targetEntry.dev ||
+      currentTargetEntry.ino !== targetEntry.ino ||
+      currentTargetEntry.isSymbolicLink() ||
+      !currentTargetEntry.isDirectory()
+    ) {
+      fail("legacy handoff current target changed during validation");
+    }
+    verification.revalidate();
+    return target;
+  };
+  revalidate();
+  return { ...verification, root: target, current, linkTarget, revalidate };
+}
+
+function assertNoCollision(...groups) {
+  const known = new Map();
+  for (const group of groups) {
+    for (const entry of group) {
+      const prior = known.get(entry.path);
+      if (prior && !equalEntry(prior, entry)) {
+        fail(`immutable asset collision at ${entry.path}`);
+      }
+      known.set(entry.path, entry);
+    }
+  }
+}
+
+function invokeDurability(options, operation, path) {
+  options?.onDurabilityOperation?.({ operation, path });
+  if (options?.faultAt === `durability:${operation}`) {
+    fail(`durability fault injection at ${operation}`);
+  }
+}
+
+function syncFile(path, options) {
+  const opened = openRegularFileNoFollow(path, "durability file");
+  try {
+    syncPinnedRegular(path, "durability file", opened, options);
+  } finally {
+    closeSync(opened.descriptor);
+  }
+}
+
+function syncDirectory(path, options) {
+  let descriptor;
+  try {
+    descriptor = openSync(
+      path,
+      constants.O_RDONLY | constants.O_DIRECTORY | constants.O_NOFOLLOW | constants.O_NONBLOCK,
+    );
+    const identity = fstatSync(descriptor);
+    const check = () => {
+      const held = fstatSync(descriptor);
+      const entry = lstatSync(path);
+      if (
+        !identity.isDirectory() ||
+        !held.isDirectory() ||
+        entry.isSymbolicLink() ||
+        !entry.isDirectory() ||
+        held.dev !== identity.dev ||
+        held.ino !== identity.ino ||
+        entry.dev !== held.dev ||
+        entry.ino !== held.ino
+      )
+        fail(`durability directory changed during descriptor access: ${path}`);
+    };
+    check();
+    invokeDurability(options, "fsync-directory", path);
+    check();
+    fsyncSync(descriptor);
+    check();
+    invokeDurability(options, "close-directory", path);
+    check();
+  } finally {
+    if (descriptor !== undefined) closeSync(descriptor);
+  }
+}
+
+function adoptedProjectRoot(handoffRoot) {
+  if (!handoffRoot) fail("adopted project handoff root is required");
+  const supplied = resolve(handoffRoot);
+  assertDirectory(supplied, "adopted project handoff root");
+  return realpathSync(supplied);
+}
+
+function adoptedProjectName(contents) {
+  if (typeof contents !== "string" || !/^[a-z0-9][a-z0-9_-]*\n$/.test(contents)) {
+    fail("adopted project record is invalid");
+  }
+  return contents.slice(0, -1);
+}
+
+function pinAdoptedProjectRoot(handoffRoot) {
+  const root = adoptedProjectRoot(handoffRoot);
+  const descriptor = openSync(
+    root,
+    constants.O_RDONLY | constants.O_DIRECTORY | constants.O_NOFOLLOW | constants.O_NONBLOCK,
+  );
+  const identity = fstatSync(descriptor);
+  const revalidate = () => {
+    const entry = lstatSync(root);
+    const held = fstatSync(descriptor);
+    if (
+      entry.isSymbolicLink() ||
+      !entry.isDirectory() ||
+      !held.isDirectory() ||
+      entry.dev !== identity.dev ||
+      entry.ino !== identity.ino ||
+      held.dev !== identity.dev ||
+      held.ino !== identity.ino ||
+      adoptedProjectRoot(handoffRoot) !== root
+    )
+      fail("adopted project handoff root changed");
+  };
+  try {
+    revalidate();
+  } catch (error) {
+    closeSync(descriptor);
+    throw error;
+  }
+  return { root, descriptor, revalidate };
+}
+
+// A visible record completes an interrupted parent barrier using the same
+// descriptor that supplied its validated project identity.
+export function verifyAdoptedProject({ handoffRoot, faultAt, onDurabilityOperation } = {}) {
+  const authority = pinAdoptedProjectRoot(handoffRoot);
+  let opened;
+  try {
+    const record = join(authority.root, ADOPTED_PROJECT_RECORD);
+    opened = openRegularFileNoFollow(record, "adopted project record");
+    const contents = readPinnedRegularFile(record, "adopted project record", opened, {
+      maxBytes: MAX_AUTHORITY_BYTES,
+    }).toString("utf8");
+    const project = adoptedProjectName(contents);
+    const options = { faultAt, onDurabilityOperation };
+    const check = () => {
+      authority.revalidate();
+      assertPinnedRegular(record, "adopted project record", opened);
+    };
+    syncPinnedRegular(record, "adopted project record", opened, options, authority.revalidate);
+    invokeDurability(options, "fsync-directory", authority.root);
+    check();
+    fsyncSync(authority.descriptor);
+    invokeDurability(options, "close-directory", authority.root);
+    check();
+    return { record, project };
+  } finally {
+    if (opened) closeSync(opened.descriptor);
+    closeSync(authority.descriptor);
+  }
+}
+
+export function writeAdoptedProject({
+  handoffRoot,
+  project,
+  faultAt,
+  onDurabilityOperation,
+  onBeforeAdoptedProjectClaim,
+} = {}) {
+  if (typeof project !== "string" || !/^[a-z0-9][a-z0-9_-]*$/.test(project))
+    fail("adopted project name is invalid");
+  const authority = pinAdoptedProjectRoot(handoffRoot);
+  const { root } = authority;
+  const record = join(root, ADOPTED_PROJECT_RECORD);
+  const temporary = join(root, `${ADOPTED_PROJECT_RECORD}.next-${process.pid}-${randomUUID()}`);
+  const contents = `${project}\n`;
+  const options = { faultAt, onDurabilityOperation };
+  let opened;
+  let claimed = false;
+  try {
+    if (noFollowEntry(record)) {
+      const verified = verifyAdoptedProject({ handoffRoot, faultAt, onDurabilityOperation });
+      authority.revalidate();
+      if (verified.project !== project) fail("adopted project record conflicts with discovery");
+      return { ...verified, changed: false };
+    }
+    const descriptor = openSync(
+      temporary,
+      constants.O_RDWR |
+        constants.O_CREAT |
+        constants.O_EXCL |
+        constants.O_NOFOLLOW |
+        constants.O_NONBLOCK,
+      0o600,
+    );
+    opened = { descriptor };
+    writeFileSync(descriptor, contents);
+    opened.stat = fstatSync(descriptor);
+    opened.identity = fstatSync(descriptor, { bigint: true });
+    const check = (path = temporary) => {
+      authority.revalidate();
+      if (
+        readPinnedRegularFile(path, "adopted project temporary record", opened, {
+          maxBytes: MAX_AUTHORITY_BYTES,
+        }).toString("utf8") !== contents
+      )
+        fail("adopted project temporary record is invalid");
+    };
+    check();
+    invokeDurability(options, "adopted-project-write", temporary);
+    check();
+    syncPinnedRegular(
+      temporary,
+      "adopted project temporary record",
+      opened,
+      options,
+      authority.revalidate,
+    );
+    onBeforeAdoptedProjectClaim?.({ temporary, record, project });
+    check();
+    try {
+      linkSync(temporary, record);
+      claimed = true;
+    } catch (error) {
+      if (error?.code !== "EEXIST") throw error;
+    }
+    if (!claimed) {
+      const verified = verifyAdoptedProject({ handoffRoot, faultAt, onDurabilityOperation });
+      check();
+      if (verified.project !== project) fail("adopted project record conflicts with discovery");
+      return { ...verified, changed: false };
+    }
+    // Our own link/unlink changes nlink and ctime. Bind each resulting name to
+    // the still-open original inode before accepting those deliberate changes.
+    const rebind = (path, linkDelta) => {
+      const held = fstatSync(descriptor, { bigint: true });
+      const entry = lstatSync(path, { bigint: true });
+      if (
+        !held.isFile() ||
+        held.nlink !== opened.identity.nlink + BigInt(linkDelta) ||
+        REGULAR_IDENTITY_FIELDS.filter((field) => !["nlink", "ctimeNs"].includes(field)).some(
+          (field) => held[field] !== opened.identity[field],
+        ) ||
+        entry.isSymbolicLink() ||
+        !sameRegularIdentity(held, entry)
+      )
+        fail("adopted project claim changed identity");
+      opened.identity = held;
+      opened.stat = fstatSync(descriptor);
+      check(path);
+    };
+    rebind(temporary, 1);
+    check(record);
+    invokeDurability(options, "rename", record);
+    check();
+    check(record);
+    unlinkSync(temporary);
+    rebind(record, -1);
+    invokeDurability(options, "fsync-directory", root);
+    check(record);
+    fsyncSync(authority.descriptor);
+    invokeDurability(options, "close-directory", root);
+    check(record);
+    return { record, project, changed: true };
+  } finally {
+    if (opened) {
+      const entry = noFollowEntry(temporary);
+      const held = fstatSync(opened.descriptor);
+      if (
+        entry?.isFile() &&
+        !entry.isSymbolicLink() &&
+        entry.dev === held.dev &&
+        entry.ino === held.ino
+      )
+        unlinkSync(temporary);
+      closeSync(opened.descriptor);
+    }
+    closeSync(authority.descriptor);
+  }
+}
+
+// Directory entries become durable only when every ancestor that records the
+// entry is synced.  Keep the ordering innermost-first so a nested asset is
+// never advertised through a synced parent before its own name is durable.
+function syncDirectoryAncestors(directory, root, options) {
+  const resolvedRoot = realpathSync(root);
+  let current = realpathSync(directory);
+  if (current !== resolvedRoot && !current.startsWith(`${resolvedRoot}${sep}`)) {
+    fail(`durability directory escapes declared root: ${directory}`);
+  }
+  while (true) {
+    syncDirectory(current, options);
+    if (current === resolvedRoot) return;
+    const parent = dirname(current);
+    if (parent === current) fail(`durability root is unreachable: ${root}`);
+    current = parent;
+  }
+}
+
+function writeAtomically(directory, path, contents, options, durabilityRoot = directory) {
+  const temporary = join(directory, `.${randomUUID()}.next`);
+  let descriptor;
+  try {
+    descriptor = openSync(temporary, "wx", 0o644);
+    writeFileSync(descriptor, contents);
+    invokeDurability(options, "fsync-file", temporary);
+    fsyncSync(descriptor);
+    invokeDurability(options, "close-file", temporary);
+  } finally {
+    if (descriptor !== undefined) closeSync(descriptor);
+  }
+  renameSync(temporary, path);
+  invokeDurability(options, "rename", path);
+  syncDirectoryAncestors(directory, durabilityRoot, options);
+}
+
+// Physical temporary trees admit only objects captured from their creation
+// descriptors. The held directory chain stays alive through handback/cleanup.
+const OWNED_TREE = Symbol("created physical tree");
+const OWNED_EXPORT_SCOPE = Symbol("export admission epoch");
+const OWNED_DIRECTORY_FIELDS = ["dev", "ino", "mode", "uid", "gid", "birthtimeNs"];
+function ownedSnapshot(stat) {
+  const fields = stat.isDirectory() ? OWNED_DIRECTORY_FIELDS : REGULAR_IDENTITY_FIELDS;
+  if (stat.birthtimeNs <= 0n || (!stat.isDirectory() && !stat.isFile()))
+    fail("created physical tree has no proven creation generation");
+  return {
+    kind: stat.isDirectory() ? "directory" : "file",
+    ...Object.fromEntries(fields.map((key) => [key, String(stat[key])])),
+  };
+}
+function ownedMatches(stat, snapshot) {
+  if (!snapshot || (snapshot.kind === "directory" ? !stat.isDirectory() : !stat.isFile()))
+    return false;
+  const fields = snapshot.kind === "directory" ? OWNED_DIRECTORY_FIELDS : REGULAR_IDENTITY_FIELDS;
+  return fields.every((key) => String(stat[key]) === snapshot[key]);
+}
+function createOwnedTree(root, saved, expectedFiles, recoverTimes = false) {
+  const entries = new Map();
+  const parentPath = dirname(root);
+  const parent = openSync(
+    parentPath,
+    constants.O_RDONLY | constants.O_DIRECTORY | constants.O_NOFOLLOW | constants.O_NONBLOCK,
+  );
+  const parentStat = fstatSync(parent, { bigint: true });
+  const tree = { root, entries, parent, parentStat };
+  const parentIdentity = {
+    dev: String(parentStat.dev),
+    ino: String(parentStat.ino),
+    birthtimeNs: String(parentStat.birthtimeNs),
+  };
+  const addDirectory = (path, snapshot) => {
+    const fd = openSync(
+      path,
+      constants.O_RDONLY | constants.O_DIRECTORY | constants.O_NOFOLLOW | constants.O_NONBLOCK,
+    );
+    try {
+      const stat = fstatSync(fd, { bigint: true });
+      const identity = snapshot || ownedSnapshot(stat);
+      if (
+        !ownedMatches(stat, identity) ||
+        !ownedMatches(lstatSync(path, { bigint: true }), identity)
+      )
+        fail(`created directory changed: ${path}`);
+      entries.set(path === root ? "" : path.slice(root.length + 1), {
+        descriptor: fd,
+        snapshot: identity,
+      });
+    } catch (error) {
+      closeSync(fd);
+      throw error;
+    }
+  };
+  tree.check = () => {
+    const heldParent = fstatSync(parent, { bigint: true });
+    const namedParent = lstatSync(parentPath, { bigint: true });
+    if (
+      !heldParent.isDirectory() ||
+      namedParent.dev !== parentStat.dev ||
+      namedParent.ino !== parentStat.ino ||
+      heldParent.dev !== parentStat.dev ||
+      heldParent.ino !== parentStat.ino
+    )
+      fail("created physical tree parent changed");
+    for (const [name, entry] of entries) {
+      if (entry.snapshot.kind !== "directory") continue;
+      const path = name ? join(root, ...name.split("/")) : root;
+      if (
+        !ownedMatches(fstatSync(entry.descriptor, { bigint: true }), entry.snapshot) ||
+        !ownedMatches(lstatSync(path, { bigint: true }), entry.snapshot)
+      )
+        fail(`created physical tree ancestry changed: ${path}`);
+    }
+  };
+  tree.relocate = (destination) => {
+    if (dirname(destination) !== parentPath) fail("created export rename changed its parent");
+    root = destination;
+    tree.root = destination;
+    tree.validate();
+  };
+  tree.ensureParent = (path) => {
+    const relative = path.slice(root.length + 1);
+    normalizeRelative(relative);
+    let current = root;
+    for (const component of relative.split("/").slice(0, -1)) {
+      current = join(current, component);
+      const name = current.slice(root.length + 1);
+      tree.check();
+      if (!entries.has(name)) {
+        mkdirSync(current, { mode: 0o755 });
+        addDirectory(current);
+      }
+    }
+    tree.check();
+  };
+  tree.registerFile = (path, fd) => {
+    tree.check();
+    const stat = fstatSync(fd, { bigint: true });
+    if (!stat.isFile() || stat.nlink !== 1n) fail("created copy has foreign aliases");
+    const snapshot = ownedSnapshot(stat);
+    if (!ownedMatches(lstatSync(path, { bigint: true }), snapshot))
+      fail("created copy pathname changed");
+    const name = normalizeRelative(path.slice(root.length + 1));
+    if (entries.has(name)) fail("created copy registry entry already exists");
+    entries.set(name, { snapshot });
+    return name;
+  };
+  tree.refreshWrittenFile = (name, fd) => {
+    const entry = entries.get(name);
+    const stat = fstatSync(fd, { bigint: true });
+    const previous = entry.snapshot;
+    for (const key of ["dev", "ino", "mode", "uid", "gid", "nlink", "birthtimeNs"])
+      if (String(stat[key]) !== previous[key]) fail("created copy changed during its write");
+    entry.snapshot = ownedSnapshot(stat);
+    tree.check();
+    if (!ownedMatches(lstatSync(join(root, ...name.split("/")), { bigint: true }), entry.snapshot))
+      fail("created copy pathname changed after write");
+  };
+  tree.open = (name) => {
+    tree.check();
+    const entry = entries.get(name);
+    if (!entry) fail(`unregistered physical tree entry: ${name}`);
+    const path = name ? join(root, ...name.split("/")) : root;
+    const fd =
+      entry.descriptor ??
+      openSync(path, constants.O_RDONLY | constants.O_NOFOLLOW | constants.O_NONBLOCK);
+    try {
+      tree.check();
+      if (
+        !ownedMatches(fstatSync(fd, { bigint: true }), entry.snapshot) ||
+        !ownedMatches(lstatSync(path, { bigint: true }), entry.snapshot)
+      )
+        fail(`registered physical tree entry changed: ${path}`);
+      return {
+        fd,
+        entry,
+        path,
+        close: () => {
+          if (entry.descriptor === undefined) closeSync(fd);
+        },
+      };
+    } catch (error) {
+      if (entry.descriptor === undefined) closeSync(fd);
+      throw error;
+    }
+  };
+  tree.checkNames = () => {
+    tree.check();
+    for (const [name, entry] of entries) {
+      if (entry.snapshot.kind !== "directory") continue;
+      const path = name ? join(root, ...name.split("/")) : root;
+      const expected = [...entries.keys()]
+        .filter(
+          (child) =>
+            child && (child.includes("/") ? child.slice(0, child.lastIndexOf("/")) : "") === name,
+        )
+        .map((child) => child.slice(child.lastIndexOf("/") + 1))
+        .sort(ordinal);
+      const actual = requireDirectoryNames(path).sort(ordinal);
+      tree.check();
+      if (JSON.stringify(actual) !== JSON.stringify(expected))
+        fail(`physical tree contains unregistered entries: ${path}`);
+    }
+  };
+  tree.validate = () => {
+    tree.checkNames();
+    for (const name of entries.keys()) {
+      const opened = tree.open(name);
+      opened.close();
+    }
+  };
+  tree.snapshot = () => {
+    tree.validate();
+    return {
+      schemaVersion: 1,
+      parent: parentIdentity,
+      entries: [...entries]
+        .sort(([a], [b]) => ordinal(a, b))
+        .map(([path, entry]) => ({ path, identity: entry.snapshot })),
+    };
+  };
+  tree.close = () => {
+    for (const entry of entries.values())
+      if (entry.descriptor !== undefined) closeSync(entry.descriptor);
+    closeSync(parent);
+  };
+  tree.remove = (name, options) => {
+    const helper = options?.renameNoReplaceHelper || process.env.CABADRIVE_RENAME_NOREPLACE_HELPER;
+    if (!helper) fail("owned temporary cleanup requires the native helper");
+    const opened = tree.open(name);
+    let removed = false;
+    try {
+      const parentName = name.includes("/") ? name.slice(0, name.lastIndexOf("/")) : "";
+      const parentFd = name ? entries.get(parentName).descriptor : parent;
+      invokeDurability(options, "unlink-owned-entry", opened.path);
+      tree.checkNames();
+      if (
+        !ownedMatches(fstatSync(opened.fd, { bigint: true }), opened.entry.snapshot) ||
+        !ownedMatches(lstatSync(opened.path, { bigint: true }), opened.entry.snapshot)
+      )
+        fail("cleanup entry changed before native handoff");
+      const result = spawnSync(
+        helper,
+        ["--owned-unlink", basename(opened.path), opened.entry.snapshot.kind],
+        { encoding: "utf8", stdio: ["ignore", "pipe", "pipe", parentFd, opened.fd] },
+      );
+      if (result.error || result.status !== 0)
+        fail(`owned temporary cleanup rejected: ${result.error?.message || result.stderr}`);
+      entries.delete(name);
+      removed = true;
+      invokeDurability(options, "unlink-owned-entry-durable", opened.path);
+    } finally {
+      if (opened.entry.descriptor !== undefined) {
+        if (removed) closeSync(opened.fd);
+      } else opened.close();
+    }
+  };
+  tree.cleanup = (options) => {
+    // Reject the entire uncertain scope before deleting even one known entry.
+    tree.validate();
+    for (const name of [...entries.keys()].sort(
+      (a, b) => b.split("/").length - a.split("/").length || ordinal(b, a),
+    ))
+      tree.remove(name, options);
+  };
+
+  try {
+    if (saved) {
+      if (
+        saved.schemaVersion !== 1 ||
+        Object.keys(saved).sort().join() !== "entries,parent,schemaVersion" ||
+        !Array.isArray(saved.entries) ||
+        !saved.entries.length
+      )
+        fail("invalid created export registry");
+      if (
+        !saved.parent ||
+        Object.keys(saved.parent).sort().join() !== "birthtimeNs,dev,ino" ||
+        Object.keys(parentIdentity).some((key) => saved.parent[key] !== parentIdentity[key])
+      )
+        fail("created export parent authority changed");
+      for (const item of saved.entries) {
+        if (
+          !item ||
+          Object.keys(item).sort().join() !== "identity,path" ||
+          typeof item.path !== "string" ||
+          entries.has(item.path)
+        )
+          fail("invalid created export registry entry");
+        if (item.path) normalizeRelative(item.path);
+        const identity = item.identity;
+        const fields =
+          identity?.kind === "directory" ? OWNED_DIRECTORY_FIELDS : REGULAR_IDENTITY_FIELDS;
+        if (
+          !identity ||
+          !["file", "directory"].includes(identity.kind) ||
+          Object.keys(identity).sort().join() !== [...fields, "kind"].sort().join() ||
+          fields.some((field) => !/^(0|[1-9][0-9]*)$/u.test(identity[field])) ||
+          BigInt(identity.birthtimeNs) <= 0n
+        )
+          fail("invalid created export generation");
+        if (identity.kind === "directory")
+          addDirectory(item.path ? join(root, ...item.path.split("/")) : root, identity);
+        else {
+          const path = join(root, ...item.path.split("/"));
+          const expected = expectedFiles?.get(item.path);
+          if (!expected) fail("created export entry lacks exact pending byte authority");
+          const opened = openRegularFileNoFollow(path, "recovered created export entry");
+          try {
+            const stableFields = recoverTimes
+              ? REGULAR_IDENTITY_FIELDS.filter((field) => !["ctimeNs", "mtimeNs"].includes(field))
+              : REGULAR_IDENTITY_FIELDS;
+            if (stableFields.some((field) => String(opened.identity[field]) !== identity[field]))
+              fail("recovered created export entry generation changed");
+            const bytes = readPinnedRegularFile(path, "recovered created export entry", opened);
+            if (
+              !equalEntry(
+                {
+                  size: bytes.byteLength,
+                  sha256: createHash("sha256").update(bytes).digest("hex"),
+                },
+                expected,
+              )
+            )
+              fail("recovered created export entry bytes changed");
+            // Reconcile only observational time changes on the same proven
+            // creator object with restored exact bytes. Never hand it back anew.
+            entries.set(item.path, { snapshot: ownedSnapshot(opened.identity) });
+          } finally {
+            closeSync(opened.descriptor);
+          }
+        }
+      }
+      if (entries.get("")?.snapshot.kind !== "directory")
+        fail("created export registry has no root");
+      tree.validate();
+    } else {
+      mkdirSync(root, { mode: 0o755 });
+      addDirectory(root);
+      tree.check();
+    }
+    return tree;
+  } catch (error) {
+    tree.close();
+    throw error;
+  }
+}
+
+function copyAndVerify(source, destination, expected, options, durabilityRoot) {
+  const owned = options?.[OWNED_TREE];
+  const opened = openRegularFileNoFollow(source, "copy source");
+  try {
+    const bytes = readPinnedRegularFile(source, "copy source", opened);
+    const actual = {
+      size: bytes.byteLength,
+      sha256: createHash("sha256").update(bytes).digest("hex"),
+    };
+    if (!equalEntry(actual, expected)) fail(`staged digest mismatch: ${source}`);
+    if (owned) owned.ensureParent(destination);
+    else mkdirSync(dirname(destination), { recursive: true, mode: 0o755 });
+    try {
+      const target = openSync(
+        destination,
+        constants.O_WRONLY |
+          constants.O_CREAT |
+          constants.O_EXCL |
+          constants.O_NOFOLLOW |
+          constants.O_NONBLOCK,
+        0o644,
+      );
+      try {
+        const registered = owned?.registerFile(destination, target);
+        writeFileSync(target, bytes);
+        if (owned) owned.refreshWrittenFile(registered, target);
+      } finally {
+        closeSync(target);
+      }
+    } catch (error) {
+      if (error?.code !== "EEXIST") throw error;
+
+      // Legacy and candidate inventories may share an unchanged bundle. Its
+      // existing transaction entry is admitted only by the same exact digest.
+      const existing = openRegularFileNoFollow(destination, "existing copy destination");
+      try {
+        if (existing.stat.nlink !== 1)
+          fail(`copy destination has foreign hard-link aliases: ${destination}`);
+        if (owned) {
+          const registered = owned.open(destination.slice(owned.root.length + 1));
+          registered.close();
+        }
+        const data = readPinnedRegularFile(destination, "existing copy destination", existing);
+        if (
+          !equalEntry(
+            { size: data.byteLength, sha256: createHash("sha256").update(data).digest("hex") },
+            expected,
+          )
+        )
+          fail(`staged digest mismatch: ${destination}`);
+      } finally {
+        closeSync(existing.descriptor);
+      }
+    }
+    assertPinnedRegular(source, "copy source", opened);
+    if (!equalEntry(sha256(destination), expected)) fail(`staged digest mismatch: ${destination}`);
+    syncFile(destination, options);
+    assertPinnedRegular(source, "copy source", opened);
+    if (durabilityRoot) syncDirectoryAncestors(dirname(destination), durabilityRoot, options);
+    if (owned) {
+      const registered = owned.open(destination.slice(owned.root.length + 1));
+      registered.close();
+    }
+  } finally {
+    closeSync(opened.descriptor);
+  }
+}
+
+function sourceAsset(candidateRoot, path) {
+  return join(candidateRoot, "assets", ...path.split("/"));
+}
+
+function sourceMutable(candidateRoot, path) {
+  return join(candidateRoot, ...path.split("/"));
+}
+
+function fault(options, point) {
+  if (options.faultAt === point) fail(`fault injection at ${point}`);
+}
+
+function copyInventory(candidateRoot, inventory, target, sourceFor, options, durabilityRoot) {
+  for (const entry of inventory) {
+    copyAndVerify(
+      sourceFor(candidateRoot, entry.path),
+      join(target, ...entry.path.split("/")),
+      entry,
+      options,
+      durabilityRoot,
+    );
+  }
+}
+
+function promoteFiles(
+  from,
+  to,
+  inventory,
+  options,
+  { sourceRoot, destinationRoot, recoverExisting = false },
+) {
+  for (const entry of inventory) {
+    const source = join(from, ...entry.path.split("/"));
+    const destination = join(to, ...entry.path.split("/"));
+    if (existsSync(destination)) {
+      if (!equalEntry(sha256(destination), entry))
+        fail(`immutable asset collision at ${entry.path}`);
+      // A matching destination found through the durable promotion journal may
+      // have survived the rename but not its directory barrier.  Re-run the
+      // complete barrier before the ledger can make it authoritative.
+      if (recoverExisting) {
+        syncFile(destination, options);
+        syncDirectoryAncestors(dirname(destination), destinationRoot, options);
+      }
+      continue;
+    }
+    mkdirSync(dirname(destination), { recursive: true, mode: 0o755 });
+    syncFile(source, options);
+    renameSync(source, destination);
+    invokeDurability(options, "rename", destination);
+    syncDirectoryAncestors(dirname(source), sourceRoot, options);
+    syncDirectoryAncestors(dirname(destination), destinationRoot, options);
+    fault(options, "after-asset-rename");
+  }
+}
+
+function makeCurrent(state, releaseId, options) {
+  const current = join(state, "current");
+  const next = join(state, `current.next-${process.pid}-${randomUUID()}`);
+  const previous =
+    existsSync(current) && lstatSync(current).isSymbolicLink() ? readlinkSync(current) : undefined;
+  const rollback = previous
+    ? join(state, `current.rollback-${process.pid}-${randomUUID()}`)
+    : undefined;
+  let activated = false;
+  // Materialize the old pointer before the new one is visible. If the parent
+  // durability barrier then fails, rename replaces `current` atomically rather
+  // than exposing an unlink-to-symlink gap to readers.
+  try {
+    if (rollback) {
+      symlinkSync(previous, rollback);
+      // Keep the pre-activation rollback boundary fault-injectable: no reader
+      // may observe the new pointer before its atomic replacement exists.
+      invokeDurability(options, "prepare-current-rollback", rollback);
+    }
+    symlinkSync(join("releases", releaseId), next);
+    renameSync(next, current);
+    activated = true;
+    invokeDurability(options, "rename-current", current);
+    syncDirectory(state, options);
+  } catch (error) {
+    // A failed post-rename durability barrier must not leave a newly selected
+    // release advertised by this process. Restore the prior pointer before
+    // surfacing the failure; a retry can then safely re-run the transaction.
+    if (activated) {
+      if (rollback && existsSync(rollback)) {
+        renameSync(rollback, current);
+      } else if (!previous && existsSync(current)) {
+        rmSync(current, { force: true });
+      }
+      syncDirectory(state, { onDurabilityOperation: options?.onDurabilityOperation });
+    }
+    throw error;
+  } finally {
+    if (existsSync(next)) rmSync(next, { force: true });
+    if (rollback && existsSync(rollback)) rmSync(rollback, { force: true });
+  }
+}
+
+function releaseFilesMatch(releaseDirectory, release) {
+  const markerPath = join(releaseDirectory, RELEASE_MARKER);
+  if (!noFollowEntry(markerPath)) return false;
+  const marker = readJson(markerPath, "release marker");
+  if (JSON.stringify(marker) !== JSON.stringify(markerForRelease(release))) return false;
+  const files = walkRegularFiles(releaseDirectory, "release tree").filter(
+    (entry) => entry.path !== RELEASE_MARKER,
+  );
+  return sameEntries(files, release.mutable);
+}
+
+function retainedLedgerPath(state) {
+  return join(state, RETAINED_INVENTORY);
+}
+
+function retainedInventoryPayload(assets) {
+  return { schemaVersion: SCHEMA_VERSION, assets };
+}
+
+function assetsMatch(state, release, expectedRetained) {
+  const retained = inventoryForAssets(state, "retained assets");
+  if (expectedRetained && !sameEntries(retained, expectedRetained)) return false;
+  const byPath = new Map(retained.map((entry) => [entry.path, entry]));
+  if (!release.assets.every((entry) => equalEntry(byPath.get(entry.path) || {}, entry)))
+    return false;
+  const path = retainedLedgerPath(state);
+  if (!noFollowEntry(path)) return false;
+  try {
+    const ledger = readJson(path, "retained asset inventory");
+    return ledger.schemaVersion === SCHEMA_VERSION && sameEntries(ledger.assets || [], retained);
+  } catch {
+    return false;
+  }
+}
+
+function mergeInventories(...groups) {
+  const merged = new Map();
+  for (const group of groups) {
+    for (const entry of group) merged.set(entry.path, entry);
+  }
+  return [...merged.values()].sort((left, right) => ordinal(left.path, right.path));
+}
+
+function readRetainedInventory(state) {
+  const path = retainedLedgerPath(state);
+  if (!noFollowEntry(path)) return undefined;
+  const ledger = readJson(path, "retained asset inventory");
+  if (ledger.schemaVersion !== SCHEMA_VERSION || !Array.isArray(ledger.assets)) {
+    fail("retained asset inventory has an unsupported schema");
+  }
+  const canonical = [...ledger.assets].sort((left, right) => ordinal(left.path, right.path));
+  if (!sameEntries(ledger.assets, canonical)) fail("retained asset inventory is not canonical");
+  return canonical;
+}
+
+function assertExistingRetainedAuthority(state, existing) {
+  const ledger = readRetainedInventory(state);
+  if (!ledger) {
+    if (existing.length === 0) return [];
+    fail("retained assets do not match canonical cumulative inventory");
+  }
+  if (!sameEntries(ledger, existing))
+    fail("retained assets do not match canonical cumulative inventory");
+  return ledger;
+}
+
+function writeRetainedInventory(state, assets, options) {
+  writeAtomically(
+    state,
+    retainedLedgerPath(state),
+    `${JSON.stringify(retainedInventoryPayload(assets), null, 2)}\n`,
+    options,
+  );
+}
+
+function assetPromotionPendingPath(state) {
+  return join(state, ASSET_PROMOTION_PENDING);
+}
+
+function inventoryDigest(assets) {
+  return manifestDigest(retainedInventoryPayload(assets));
+}
+
+function inventoryAdditions(prior, expected) {
+  const priorByPath = new Map(prior.map((entry) => [entry.path, entry]));
+  return expected.filter((entry) => !priorByPath.has(entry.path));
+}
+
+function legacyRequest(legacyValidation) {
+  if (!legacyValidation) return null;
+  const manifest = legacyValidation.manifest;
+  return {
+    sourceId: manifest.sourceId,
+    sourceKind: manifest.sourceKind,
+    manifestSha256: manifestDigest(manifest),
+  };
+}
+
+function assetPromotionJournal({ release, legacyValidation, prior, expected }) {
+  return {
+    schemaVersion: SCHEMA_VERSION,
+    releaseId: release.releaseId,
+    manifestSha256: manifestDigest(release),
+    legacy: legacyRequest(legacyValidation),
+    priorAssetsSha256: inventoryDigest(prior),
+    priorAssets: prior,
+    additions: inventoryAdditions(prior, expected),
+    expectedAssetsSha256: inventoryDigest(expected),
+    expectedAssets: expected,
+  };
+}
+
+function pendingJournalMatchesRequest(pending, release, legacyValidation, expected) {
+  const prior = pending?.priorAssets;
+  const additions = pending?.additions;
+  return (
+    pending?.schemaVersion === SCHEMA_VERSION &&
+    pending.releaseId === release.releaseId &&
+    pending.manifestSha256 === manifestDigest(release) &&
+    JSON.stringify(pending.legacy) === JSON.stringify(legacyRequest(legacyValidation)) &&
+    Array.isArray(prior) &&
+    Array.isArray(additions) &&
+    Array.isArray(pending.expectedAssets) &&
+    sameEntries(
+      prior,
+      [...prior].sort((left, right) => ordinal(left.path, right.path)),
+    ) &&
+    pending.priorAssetsSha256 === inventoryDigest(prior) &&
+    pending.expectedAssetsSha256 === inventoryDigest(pending.expectedAssets) &&
+    sameEntries(pending.expectedAssets, expected) &&
+    sameEntries(additions, inventoryAdditions(prior, expected))
+  );
+}
+
+function actualIsPriorPlusSubset(actual, prior, additions) {
+  const priorByPath = new Map(prior.map((entry) => [entry.path, entry]));
+  const additionsByPath = new Map(additions.map((entry) => [entry.path, entry]));
+  for (const entry of prior) {
+    const current = actual.find((candidate) => candidate.path === entry.path);
+    if (!equalEntry(current || {}, entry)) return false;
+  }
+  return actual.every((entry) => {
+    const priorEntry = priorByPath.get(entry.path);
+    const addition = additionsByPath.get(entry.path);
+    return (
+      (priorEntry && equalEntry(priorEntry, entry)) || (addition && equalEntry(addition, entry))
+    );
+  });
+}
+
+function readAssetPromotionJournal(state) {
+  const path = assetPromotionPendingPath(state);
+  return noFollowEntry(path) ? readJson(path, "asset promotion journal") : undefined;
+}
+
+function writeAssetPromotionJournal(state, journal, options) {
+  writeAtomically(
+    state,
+    assetPromotionPendingPath(state),
+    `${JSON.stringify(journal, null, 2)}\n`,
+    options,
+  );
+}
+
+function clearAssetPromotionJournal(state, options) {
+  const path = assetPromotionPendingPath(state);
+  if (!existsSync(path)) return;
+  unlinkSync(path);
+  invokeDurability(options, "unlink-asset-promotion-pending", path);
+  syncDirectoryAncestors(state, state, options);
+}
+
+function recoverAssetPromotion({ state, existing, release, legacyValidation, expected }) {
+  const pending = readAssetPromotionJournal(state);
+  if (!pending) return undefined;
+  if (!pendingJournalMatchesRequest(pending, release, legacyValidation, expected)) {
+    fail("asset promotion journal does not match this exact request");
+  }
+  if (!actualIsPriorPlusSubset(existing, pending.priorAssets, pending.additions)) {
+    fail("asset promotion journal does not match the retained asset store");
+  }
+  const ledger = readRetainedInventory(state);
+  // The durable journal carries the prior ledger itself.  A crash that loses
+  // the old directory entry must not turn an otherwise exact journaled subset
+  // into an unrecoverable store; any non-journaled missing ledger still fails.
+  const ledgerIsPrior = !ledger || sameEntries(ledger, pending.priorAssets);
+  const ledgerIsExpected =
+    ledger && sameEntries(ledger, expected) && sameEntries(existing, expected);
+  if (!ledgerIsPrior && !ledgerIsExpected) {
+    fail("asset promotion journal does not match the retained ledger");
+  }
+  return { pending, ledgerIsExpected };
+}
+
+function metadataMatches(path, release) {
+  if (!existsSync(path)) return false;
+  try {
+    const metadata = readJsonRegularFileNoFollow(path, "release metadata");
+    return (
+      metadata.releaseId === release.releaseId &&
+      sameEntries(metadata.assets || [], release.assets) &&
+      sameEntries(metadata.mutable || [], release.mutable)
+    );
+  } catch {
+    return false;
+  }
+}
+
+function metadataLegacyMatches(path, legacyValidation) {
+  const metadata = readJsonRegularFileNoFollow(path, "release metadata");
+  return (
+    JSON.stringify(metadata.legacyAuthority ?? null) ===
+    JSON.stringify(legacyRequest(legacyValidation))
+  );
+}
+
+function releaseMetadata(release, legacyValidation) {
+  return {
+    ...release,
+    legacySource: legacyValidation?.manifest.sourceId,
+    legacyAuthority: legacyRequest(legacyValidation),
+  };
+}
+
+function writeMetadataAtomically(state, path, release, legacyValidation, options) {
+  writeAtomically(
+    dirname(path),
+    path,
+    `${JSON.stringify(releaseMetadata(release, legacyValidation), null, 2)}\n`,
+    options,
+    state,
+  );
+}
+
+export function verifyCommittedState(stateRoot) {
+  try {
+    const state = resolve(stateRoot);
+    assertDirectory(state, "state root");
+    const current = join(state, "current");
+    if (!existsSync(current) || !lstatSync(current).isSymbolicLink()) {
+      return { valid: false, reason: "current pointer is missing" };
+    }
+    const target = readlinkSync(current);
+    if (!/^releases\/[a-f0-9]{64}$/.test(target)) {
+      return { valid: false, reason: "current pointer is unsafe" };
+    }
+    const releaseId = target.slice("releases/".length);
+    const releaseDirectory = join(state, target);
+    const metadataPath = join(state, "metadata", `${releaseId}.json`);
+    if (!existsSync(releaseDirectory) || !existsSync(metadataPath)) {
+      return { valid: false, reason: "current tuple is incomplete" };
+    }
+    const metadata = readJsonRegularFileNoFollow(metadataPath, "release metadata");
+    if (metadata.releaseId !== releaseId || !metadataMatches(metadataPath, metadata)) {
+      return { valid: false, reason: "current metadata does not match" };
+    }
+    if (!releaseFilesMatch(releaseDirectory, metadata)) {
+      return { valid: false, reason: "current release marker/tree does not match" };
+    }
+    if (!assetsMatch(state, metadata)) {
+      return { valid: false, reason: "retained assets do not match metadata" };
+    }
+    return { valid: true, releaseId };
+  } catch (error) {
+    return {
+      valid: false,
+      reason: error instanceof Error ? error.message : "state validation failed",
+    };
+  }
+}
+
+function stageCoordinatorRelease(options, boundary) {
+  const permit = { boundary };
+  COORDINATOR_STAGE_PERMITS.add(permit);
+  try {
+    return stageStaticRelease({ ...options, [COORDINATOR_STAGE]: permit });
+  } finally {
+    COORDINATOR_STAGE_PERMITS.delete(permit);
+  }
+}
+
+function assertStageCoordinatorAdmission(
+  state,
+  candidate,
+  lockHeld,
+  expectedManifest,
+  finalRevalidate,
+  permit,
+  projectKey,
+) {
+  if (noFollowEntry(join(state, RETIREMENT_PENDING)))
+    fail("runtime stage cannot bypass pending publication retirement");
+  if (noFollowEntry(join(state, GENERATION_LINEAGE))) {
+    const snapshot = generationAuthoritySnapshot(join(state, GENERATION_LINEAGE));
+    const lineage = JSON.parse(snapshot.bytes);
+    if (lineage.retiring !== null)
+      fail("runtime stage cannot bypass unfinished publication retirement lineage");
+    validateGenerationLineage(state, lineage, lineage.root, lineage.logicalOutput, projectKey);
+  }
+  const pending = noFollowEntry(state) ? readPendingPublish(state) : undefined;
+  if (!pending || (pending.operation === "publish" && !pending.generation)) return;
+  if (
+    !lockHeld ||
+    !expectedManifest ||
+    typeof finalRevalidate !== "function" ||
+    !permit ||
+    !COORDINATOR_STAGE_PERMITS.has(permit) ||
+    permit.boundary.state !== state ||
+    permit.boundary.operation !== "publish-export" ||
+    pending.operation !== "publish-export"
+  )
+    fail("runtime stage cannot bypass pending publish-export coordinator authority");
+  assertFinalJournalBoundary(permit.boundary, candidate, { committed: false });
+  finalRevalidate();
+}
+
+export function stageStaticRelease({
+  stateRoot,
+  candidateRoot,
+  legacyRoot,
+  faultAt,
+  onDurabilityOperation,
+  projectKey,
+  onLockOperation,
+  diagnosticHost,
+  lockHeld = false,
+  expectedManifest,
+  validatedLegacy,
+  finalRevalidate,
+  [COORDINATOR_STAGE]: coordinatorPermit,
+} = {}) {
+  if (!stateRoot || !candidateRoot) fail("--state and --candidate are required");
+  const candidateRootReal = realpathSync(candidateRoot);
+  const canonicalState = canonicalProspectivePath(resolve(stateRoot));
+  if (
+    canonicalState === candidateRootReal ||
+    canonicalState.startsWith(`${candidateRootReal}${sep}`) ||
+    candidateRootReal.startsWith(`${canonicalState}${sep}`)
+  ) {
+    fail("candidate and release state must not overlap");
+  }
+  // Perform this no-follow validation before creating the state layout: a
+  // dangling or unsafe current pointer is corruption, never an initial state.
+  currentReleaseId(resolve(stateRoot));
+  const suppliedLegacyRoot =
+    legacyRoot === undefined || legacyRoot === null ? undefined : resolve(legacyRoot);
+  const legacyValidation =
+    validatedLegacy ||
+    (suppliedLegacyRoot
+      ? basename(suppliedLegacyRoot) === "current"
+        ? pinLegacyHandoffCurrent(suppliedLegacyRoot)
+        : verifyLegacyHandoff(suppliedLegacyRoot)
+      : undefined);
+  if (suppliedLegacyRoot && !legacyValidation?.valid) {
+    fail(`legacy handoff is not authoritative: ${legacyValidation?.reason || "invalid"}`);
+  }
+  legacyValidation?.revalidate?.();
+  const validatedLegacyRoot = legacyValidation?.root;
+  const prospectiveState = resolve(stateRoot);
+  const existingState = noFollowEntry(prospectiveState);
+  if (existingState) {
+    if (existingState.isSymbolicLink() || !existingState.isDirectory()) {
+      fail(`state root must be a non-symlink directory: ${prospectiveState}`);
+    }
+    inspectExistingExecutionDomain(prospectiveState, projectKey);
+  }
+  assertStageCoordinatorAdmission(
+    prospectiveState,
+    candidateRootReal,
+    lockHeld,
+    expectedManifest,
+    finalRevalidate,
+    coordinatorPermit,
+    projectKey,
+  );
+  const state = ensureStateLayout(stateRoot);
+  const release = createCandidateManifest(candidateRootReal);
+  if (
+    expectedManifest &&
+    (release.releaseId !== expectedManifest.releaseId ||
+      !sameEntries(release.assets, expectedManifest.assets) ||
+      !sameEntries(release.mutable, expectedManifest.mutable))
+  ) {
+    fail("candidate inventory changed since static publish journal");
+  }
+  const releaseDir = join(state, "releases", release.releaseId);
+  const metadataPath = join(state, "metadata", `${release.releaseId}.json`);
+  const unlock = lockHeld
+    ? () => {}
+    : acquireLock(state, { projectKey, onLockOperation, diagnosticHost });
+  const transaction = join(state, "transactions", `${release.releaseId}-${randomUUID()}`);
+  try {
+    assertStageCoordinatorAdmission(
+      state,
+      candidateRootReal,
+      lockHeld,
+      expectedManifest,
+      finalRevalidate,
+      coordinatorPermit,
+      projectKey,
+    );
+    const candidate = candidateRootReal;
+    const existing = inventoryForAssets(state, "retained assets");
+    const legacy = legacyValidation?.manifest.assets || [];
+    assertNoCollision(existing, legacy, release.assets);
+    const pendingAssetPromotion = readAssetPromotionJournal(state);
+    let priorRetained;
+    let expectedRetained;
+    let assetPromotionRecovery;
+    if (pendingAssetPromotion) {
+      if (!Array.isArray(pendingAssetPromotion.priorAssets)) {
+        fail("asset promotion journal has no prior retained inventory");
+      }
+      priorRetained = pendingAssetPromotion.priorAssets;
+      expectedRetained = mergeInventories(priorRetained, legacy, release.assets);
+      assetPromotionRecovery = recoverAssetPromotion({
+        state,
+        existing,
+        release,
+        legacyValidation,
+        expected: expectedRetained,
+      });
+    } else {
+      // A normal direct promotion may never advance an incomplete predecessor.
+      // An exact asset-promotion journal is the separately verified recovery
+      // authority for the narrow crash window above.
+      const priorCurrentReleaseId = currentReleaseId(state);
+      if (priorCurrentReleaseId !== null) {
+        const priorCommitted = verifyCommittedState(state);
+        if (!priorCommitted.valid || priorCommitted.releaseId !== priorCurrentReleaseId) {
+          fail("direct stage requires a valid committed current release");
+        }
+      }
+      priorRetained = assertExistingRetainedAuthority(state, existing);
+      expectedRetained = mergeInventories(priorRetained, legacy, release.assets);
+    }
+
+    // Do this before the complete-release shortcut: a handoff can arrive after
+    // the candidate was first staged, and immutable A bytes are still owed.
+    mkdirSync(transaction, { recursive: true, mode: 0o755 });
+    const transactionAssets = join(transaction, "assets");
+    const transactionRelease = join(transaction, "release");
+    mkdirSync(transactionAssets, { recursive: true, mode: 0o755 });
+    mkdirSync(transactionRelease, { recursive: true, mode: 0o755 });
+    syncDirectoryAncestors(transaction, state, { faultAt, onDurabilityOperation });
+    fault({ faultAt }, "after-validation");
+    if (legacy.length) {
+      copyInventory(
+        validatedLegacyRoot,
+        legacy,
+        transactionAssets,
+        sourceAsset,
+        {
+          faultAt,
+          onDurabilityOperation,
+        },
+        transaction,
+      );
+    }
+    copyInventory(
+      candidate,
+      release.assets,
+      transactionAssets,
+      sourceAsset,
+      {
+        faultAt,
+        onDurabilityOperation,
+      },
+      transaction,
+    );
+    fault({ faultAt }, "during-assets");
+    if (!assetPromotionRecovery) {
+      writeAssetPromotionJournal(
+        state,
+        assetPromotionJournal({
+          release,
+          legacyValidation,
+          prior: priorRetained,
+          expected: expectedRetained,
+        }),
+        { faultAt, onDurabilityOperation },
+      );
+    }
+    promoteFiles(
+      transactionAssets,
+      join(state, "assets"),
+      [...legacy, ...release.assets],
+      {
+        faultAt,
+        onDurabilityOperation,
+      },
+      {
+        sourceRoot: transaction,
+        destinationRoot: state,
+        recoverExisting: Boolean(assetPromotionRecovery),
+      },
+    );
+    if (!sameEntries(inventoryForAssets(state, "retained assets"), expectedRetained)) {
+      fail("promoted retained assets do not match cumulative inventory");
+    }
+    // Re-publish the ledger even when recovery observes its expected bytes.
+    // The previous atomic rename may have happened immediately before a failed
+    // directory barrier, so byte equality alone is not durability evidence.
+    writeRetainedInventory(state, expectedRetained, { faultAt, onDurabilityOperation });
+    fault({ faultAt }, "after-assets");
+    clearAssetPromotionJournal(state, { faultAt, onDurabilityOperation });
+
+    if (existsSync(releaseDir) && existsSync(metadataPath)) {
+      if (
+        !metadataMatches(metadataPath, release) ||
+        !releaseFilesMatch(releaseDir, release) ||
+        !assetsMatch(state, release, expectedRetained)
+      ) {
+        fail("existing complete release is not a verified committed tuple");
+      }
+      if (!metadataLegacyMatches(metadataPath, legacyValidation)) {
+        writeMetadataAtomically(state, metadataPath, release, legacyValidation, {
+          faultAt,
+          onDurabilityOperation,
+        });
+      }
+      syncTree(releaseDir, { faultAt, onDurabilityOperation });
+      syncDirectoryAncestors(dirname(releaseDir), state, { faultAt, onDurabilityOperation });
+      syncFile(metadataPath, { faultAt, onDurabilityOperation });
+      syncDirectoryAncestors(dirname(metadataPath), state, { faultAt, onDurabilityOperation });
+      finalRevalidate?.();
+      makeCurrent(state, release.releaseId, { faultAt, onDurabilityOperation });
+      return { changed: false, releaseId: release.releaseId, manifest: release };
+    }
+    if (existsSync(releaseDir)) {
+      if (
+        !releaseFilesMatch(releaseDir, release) ||
+        !assetsMatch(state, release, expectedRetained)
+      ) {
+        fail("existing release-only partial state does not match candidate");
+      }
+      writeMetadataAtomically(state, metadataPath, release, legacyValidation, {
+        faultAt,
+        onDurabilityOperation,
+      });
+      syncTree(releaseDir, { faultAt, onDurabilityOperation });
+      syncDirectoryAncestors(dirname(releaseDir), state, { faultAt, onDurabilityOperation });
+      syncFile(metadataPath, { faultAt, onDurabilityOperation });
+      syncDirectoryAncestors(dirname(metadataPath), state, { faultAt, onDurabilityOperation });
+      finalRevalidate?.();
+      fault({ faultAt }, "before-current");
+      makeCurrent(state, release.releaseId, { faultAt, onDurabilityOperation });
+      return { changed: true, releaseId: release.releaseId, manifest: release };
+    }
+    const metadataAlreadyExists = existsSync(metadataPath);
+    if (metadataAlreadyExists && !metadataMatches(metadataPath, release)) {
+      fail("existing metadata-only partial state does not match candidate");
+    }
+
+    copyInventory(
+      candidate,
+      release.mutable,
+      transactionRelease,
+      sourceMutable,
+      {
+        faultAt,
+        onDurabilityOperation,
+      },
+      transaction,
+    );
+    const stagedMutable = walkRegularFiles(transactionRelease, "transaction release");
+    if (!sameEntries(stagedMutable, release.mutable))
+      fail("transaction mutable inventory is incomplete");
+    fault({ faultAt }, "during-mutable");
+    writeFileSync(
+      join(transactionRelease, RELEASE_MARKER),
+      `${JSON.stringify(markerForRelease(release), null, 2)}\n`,
+    );
+    syncFile(join(transactionRelease, RELEASE_MARKER), { faultAt, onDurabilityOperation });
+    if (!releaseFilesMatch(transactionRelease, release)) {
+      fail("transaction release marker/tree does not match candidate");
+    }
+    writeAtomically(
+      transaction,
+      join(transaction, "manifest.json"),
+      `${JSON.stringify(releaseMetadata(release, legacyValidation), null, 2)}\n`,
+      { faultAt, onDurabilityOperation },
+    );
+    syncDirectoryAncestors(transactionRelease, transaction, { faultAt, onDurabilityOperation });
+    renameSync(transactionRelease, releaseDir);
+    invokeDurability({ faultAt, onDurabilityOperation }, "rename", releaseDir);
+    syncDirectoryAncestors(dirname(releaseDir), state, { faultAt, onDurabilityOperation });
+    fault({ faultAt }, "after-release");
+    if (!metadataAlreadyExists) {
+      renameSync(join(transaction, "manifest.json"), metadataPath);
+      invokeDurability({ faultAt, onDurabilityOperation }, "rename", metadataPath);
+      syncDirectoryAncestors(dirname(metadataPath), state, { faultAt, onDurabilityOperation });
+    }
+    if (!metadataMatches(metadataPath, release) || !releaseFilesMatch(releaseDir, release)) {
+      fail("promoted release tuple does not match candidate");
+    }
+    if (metadataAlreadyExists) {
+      // Byte equality cannot prove that a metadata-only partial survived its
+      // earlier publication barrier. Repeat the file and complete ancestor
+      // durability chain before selecting the newly promoted release.
+      syncFile(metadataPath, { faultAt, onDurabilityOperation });
+      syncDirectoryAncestors(dirname(metadataPath), state, { faultAt, onDurabilityOperation });
+    }
+    finalRevalidate?.();
+    fault({ faultAt }, "before-current");
+    makeCurrent(state, release.releaseId, { faultAt, onDurabilityOperation });
+    return { changed: true, releaseId: release.releaseId, manifest: release };
+  } finally {
+    if (existsSync(transaction)) rmSync(transaction, { recursive: true, force: true });
+    unlock();
+  }
+}
+
+function publishPendingPath(state) {
+  return join(state, PUBLISH_PENDING);
+}
+
+function outputInventory(root) {
+  return walkRegularFiles(root, "static publish output");
+}
+
+function exportedInventory(root) {
+  return outputInventory(root).filter((entry) => entry.path !== EXPORT_OWNER_RECORD);
+}
+
+function exportReceiptPath(state, destination) {
+  return join(
+    state,
+    `export-receipt-${createHash("sha256").update(destination).digest("hex")}.json`,
+  );
+}
+
+function exportProofFor(pending, destination) {
+  return {
+    schemaVersion: SCHEMA_VERSION,
+    nonce: pending.exportNonce,
+    operation: "publish-export",
+    releaseId: pending.releaseId,
+    manifestSha256: pending.manifestSha256,
+    destination,
+    device: pending.exportDevice,
+    inode: pending.exportInode,
+  };
+}
+
+function exactExportProof(value, pending, destination) {
+  return JSON.stringify(value) === JSON.stringify(exportProofFor(pending, destination));
+}
+
+function validExportNonce(value) {
+  return typeof value === "string" && /^[a-f0-9-]{36}$/u.test(value);
+}
+
+function validExportIdentity(pending, { required = false } = {}) {
+  const absent = pending.exportDevice === null && pending.exportInode === null;
+  const present =
+    typeof pending.exportDevice === "string" &&
+    /^[0-9]+$/u.test(pending.exportDevice) &&
+    typeof pending.exportInode === "string" &&
+    /^[0-9]+$/u.test(pending.exportInode);
+  return required ? present : absent || present;
+}
+
+function exactBoundExportDirectory(path, pending) {
+  const entry = noFollowEntry(path);
+  return (
+    entry &&
+    !entry.isSymbolicLink() &&
+    entry.isDirectory() &&
+    validExportIdentity(pending, { required: true }) &&
+    String(entry.dev) === pending.exportDevice &&
+    String(entry.ino) === pending.exportInode &&
+    pending.exportCreatedTree?.entries?.[0]?.path === "" &&
+    ownedMatches(lstatSync(path, { bigint: true }), pending.exportCreatedTree.entries[0].identity)
+  );
+}
+
+function exportExpectedFiles(pending, inventory) {
+  const expected = new Map(inventory.map((entry) => [entry.path, entry]));
+  const proof = Buffer.from(
+    `${JSON.stringify(exportProofFor(pending, pending.destination), null, 2)}\n`,
+  );
+  expected.set(EXPORT_OWNER_RECORD, {
+    size: proof.byteLength,
+    sha256: createHash("sha256").update(proof).digest("hex"),
+  });
+  return expected;
+}
+
+function exportRegistryDigest(pending) {
+  return createHash("sha256").update(JSON.stringify(pending.exportCreatedTree)).digest("hex");
+}
+function exportTreeAfterReceipt(state, destination, pending, inventory) {
+  const receipt = readJson(exportReceiptPath(state, destination), "export ownership receipt");
+  const root = pending.exportCreatedTree?.entries?.[0]?.identity;
+  if (
+    !retirementKeys(
+      receipt,
+      "schemaVersion,nonce,operation,releaseId,manifestSha256,destination,device,inode,inventorySha256,createdTreeSha256,rootBirthtimeNs",
+    ) ||
+    !root ||
+    receipt.schemaVersion !== SCHEMA_VERSION ||
+    receipt.operation !== "publish-export" ||
+    receipt.nonce !== pending.exportNonce ||
+    receipt.destination !== destination ||
+    receipt.releaseId !== pending.releaseId ||
+    receipt.manifestSha256 !== pending.manifestSha256 ||
+    receipt.device !== pending.exportDevice ||
+    receipt.inode !== pending.exportInode ||
+    receipt.inventorySha256 !== inventoryDigest(inventory) ||
+    receipt.createdTreeSha256 !== exportRegistryDigest(pending) ||
+    receipt.rootBirthtimeNs !== root.birthtimeNs
+  )
+    fail("export ownership receipt does not authorize the registered proof removal");
+  return {
+    ...pending.exportCreatedTree,
+    entries: pending.exportCreatedTree.entries.filter(
+      (entry) => entry.path !== EXPORT_OWNER_RECORD,
+    ),
+  };
+}
+
+function admitExportTree(path, pending, inventory, saved, scope) {
+  const owned = createOwnedTree(
+    path,
+    scope?.snapshot || saved,
+    exportExpectedFiles(pending, inventory),
+    !scope?.snapshot,
+  );
+  if (scope) scope.snapshot = owned.snapshot();
+  return owned;
+}
+
+function destinationOwnership(
+  state,
+  destination,
+  pending,
+  inventory,
+  { terminal = false, exportScope } = {},
+) {
+  const entry = noFollowEntry(destination);
+  if (!entry || entry.isSymbolicLink() || !entry.isDirectory()) return false;
+  if (!terminal && !exactBoundExportDirectory(destination, pending)) return false;
+  const proofPath = join(destination, EXPORT_OWNER_RECORD);
+  const proofEntry = noFollowEntry(proofPath);
+  if (!terminal) {
+    let owned;
+    try {
+      owned = admitExportTree(
+        destination,
+        pending,
+        inventory,
+        proofEntry
+          ? pending.exportCreatedTree
+          : exportTreeAfterReceipt(state, destination, pending, inventory),
+        exportScope,
+      );
+      owned.validate();
+    } catch {
+      return false;
+    } finally {
+      owned?.close();
+    }
+  }
+  if (!terminal && proofEntry) {
+    if (proofEntry.isSymbolicLink() || !proofEntry.isFile()) return false;
+    return (
+      exactExportProof(readJson(proofPath, "export ownership proof"), pending, destination) &&
+      sameEntries(exportedInventory(destination), inventory)
+    );
+  }
+  if (proofEntry) return false;
+  const receiptPath = exportReceiptPath(state, destination);
+  if (!noFollowEntry(receiptPath)) return false;
+  const receipt = readJson(receiptPath, "export ownership receipt");
+  const current = lstatSync(destination);
+  return (
+    receipt?.schemaVersion === SCHEMA_VERSION &&
+    receipt.operation === "publish-export" &&
+    receipt.destination === destination &&
+    receipt.releaseId === pending.releaseId &&
+    receipt.manifestSha256 === pending.manifestSha256 &&
+    validExportNonce(receipt.nonce) &&
+    (!pending.exportNonce || receipt.nonce === pending.exportNonce) &&
+    receipt.device === String(current.dev) &&
+    receipt.inode === String(current.ino) &&
+    receipt.inventorySha256 === inventoryDigest(inventory) &&
+    sameEntries(exportedInventory(destination), inventory)
+  );
+}
+
+function publishExportReceipt(state, destination, pending, inventory, options) {
+  if (!exactBoundExportDirectory(destination, pending)) {
+    fail("static export destination is not the journal-bound renamed inode");
+  }
+  const stat = lstatSync(destination);
+  const receipt = {
+    ...exportProofFor(pending, destination),
+    device: String(stat.dev),
+    inode: String(stat.ino),
+    inventorySha256: inventoryDigest(inventory),
+    createdTreeSha256: exportRegistryDigest(pending),
+    rootBirthtimeNs: pending.exportCreatedTree.entries[0].identity.birthtimeNs,
+  };
+  writeAtomically(
+    state,
+    exportReceiptPath(state, destination),
+    `${JSON.stringify(receipt, null, 2)}\n`,
+    options,
+  );
+  const durableReceipt = readJson(
+    exportReceiptPath(state, destination),
+    "export ownership receipt",
+  );
+  if (JSON.stringify(durableReceipt) !== JSON.stringify(receipt))
+    fail("export ownership receipt changed before proof removal");
+  const proofPath = join(destination, EXPORT_OWNER_RECORD);
+  if (noFollowEntry(proofPath)) {
+    const proof = readJson(proofPath, "export ownership proof");
+    if (!exactExportProof(proof, pending, destination)) fail("export ownership proof changed");
+    const live = options?.[OWNED_TREE];
+    const owned =
+      live ||
+      admitExportTree(
+        destination,
+        pending,
+        inventory,
+        pending.exportCreatedTree,
+        options?.[OWNED_EXPORT_SCOPE],
+      );
+    if (owned.root !== destination) fail("export receipt lost its live creator root");
+    try {
+      owned.validate();
+      owned.remove(EXPORT_OWNER_RECORD, options);
+      if (options?.[OWNED_EXPORT_SCOPE]) options[OWNED_EXPORT_SCOPE].snapshot = owned.snapshot();
+    } finally {
+      if (!live) owned.close();
+    }
+    syncDirectory(destination, options);
+  }
+  syncDirectory(dirname(destination), options);
+}
+
+function currentReleaseId(state) {
+  const current = join(state, "current");
+  const entry = noFollowEntry(current);
+  if (!entry) return null;
+  if (!entry.isSymbolicLink()) fail("current pointer is not a symlink");
+  const target = readlinkSync(current);
+  if (!/^releases\/[a-f0-9]{64}$/u.test(target)) fail("current pointer is unsafe");
+  const release = join(state, target);
+  const releaseEntry = noFollowEntry(release);
+  if (!releaseEntry || releaseEntry.isSymbolicLink() || !releaseEntry.isDirectory()) {
+    fail("current pointer is dangling");
+  }
+  return target.slice("releases/".length);
+}
+
+function exactInventory(value) {
+  return (
+    Array.isArray(value) &&
+    sameEntries(
+      value,
+      [...value].sort((left, right) => ordinal(left.path, right.path)),
+    )
+  );
+}
+
+function validPublishTransactionId(transactionId, output) {
+  const prefix = `.${basename(output)}.publish-`;
+  return (
+    typeof transactionId === "string" &&
+    transactionId === basename(transactionId) &&
+    transactionId.startsWith(prefix) &&
+    transactionId.length > prefix.length &&
+    !transactionId.includes("\\") &&
+    !transactionId.includes("\0")
+  );
+}
+
+function pendingPublishIdentityMatches(pending, output, release, operation, legacyValidation) {
+  return (
+    pending?.schemaVersion === SCHEMA_VERSION &&
+    pending.operation === operation &&
+    pending.output === output &&
+    validPublishTransactionId(pending.transactionId, output) &&
+    pending.releaseId === release.releaseId &&
+    pending.manifestSha256 === manifestDigest(release) &&
+    ["prepared", "renamed-uncommitted", "output-durable", "export-durable"].includes(
+      pending.phase,
+    ) &&
+    (pending.priorCurrentReleaseId === null || typeof pending.priorCurrentReleaseId === "string") &&
+    exactInventory(pending.priorAssets) &&
+    exactInventory(pending.expectedAssets) &&
+    exactInventory(pending.inventory) &&
+    pending.priorAssetsSha256 === inventoryDigest(pending.priorAssets) &&
+    pending.expectedAssetsSha256 === inventoryDigest(pending.expectedAssets) &&
+    (operation === "publish-export"
+      ? validExportNonce(pending.exportNonce) && validExportIdentity(pending)
+      : pending.exportNonce === null &&
+        pending.exportDevice === null &&
+        pending.exportInode === null) &&
+    JSON.stringify(pending.legacy) === JSON.stringify(legacyRequest(legacyValidation))
+  );
+}
+
+function pendingCoordinatorRequestMatches(pending, destination, legacyValidation) {
+  return (
+    pending.operation === "publish-export" &&
+    pending.destination === destination &&
+    JSON.stringify(pending.legacy) === JSON.stringify(legacyRequest(legacyValidation))
+  );
+}
+
+function advancePendingPublishPhase(state, pending, phase, options) {
+  const advanced = { ...pending, phase };
+  writeAtomically(
+    state,
+    publishPendingPath(state),
+    `${JSON.stringify(advanced, null, 2)}\n`,
+    options,
+  );
+  return advanced;
+}
+
+function bindPendingExportIdentity(state, pending, temporary, options) {
+  if (pending.operation !== "publish-export" || pending.phase !== "output-durable") {
+    fail("static export identity can bind only an output-durable coordinator transaction");
+  }
+  const entry = noFollowEntry(temporary);
+  if (!entry || entry.isSymbolicLink() || !entry.isDirectory()) {
+    fail("static export temporary is not one no-follow directory");
+  }
+  const device = String(entry.dev);
+  const inode = String(entry.ino);
+  if (validExportIdentity(pending, { required: true })) {
+    if (pending.exportDevice !== device || pending.exportInode !== inode) {
+      fail("static export temporary does not match its journal-bound inode");
+    }
+    return pending;
+  }
+  const bound = {
+    ...pending,
+    exportDevice: device,
+    exportInode: inode,
+    exportCreatedTree: options[OWNED_TREE].snapshot(),
+  };
+  writeAtomically(state, publishPendingPath(state), `${JSON.stringify(bound, null, 2)}\n`, options);
+  return bound;
+}
+
+function pendingPublishMatches(pending, output, release, inventory, operation, legacyValidation) {
+  return (
+    pendingPublishIdentityMatches(pending, output, release, operation, legacyValidation) &&
+    sameEntries(pending.inventory, inventory)
+  );
+}
+
+function pendingInventoryMatchesCandidate(pending, release) {
+  const expected = [
+    ...pending.expectedAssets.map((entry) => ({ ...entry, path: `assets/${entry.path}` })),
+    ...release.mutable,
+  ].sort((left, right) => ordinal(left.path, right.path));
+  return sameEntries(pending.inventory, expected);
+}
+
+function pendingPriorStateMatchesCurrentState(state, pending) {
+  const ledger = readRetainedInventory(state);
+  const retained = inventoryForAssets(state, "retained assets");
+  const current = currentReleaseId(state);
+  if (!ledger) {
+    return (
+      pending.priorCurrentReleaseId === null &&
+      current === null &&
+      pending.priorAssets.length === 0 &&
+      retained.length === 0
+    );
+  }
+  if (!sameEntries(ledger, retained) || !sameEntries(ledger, pending.priorAssets)) return false;
+  const committed = verifyCommittedState(state);
+  return (
+    pending.priorCurrentReleaseId !== null &&
+    committed.valid &&
+    committed.releaseId === pending.priorCurrentReleaseId
+  );
+}
+
+function pendingRetainedAssetsMatchCurrentState(state, pending, release, legacyValidation) {
+  const ledger = readRetainedInventory(state);
+  const retained = inventoryForAssets(state, "retained assets");
+  const current = currentReleaseId(state);
+  const promotionJournal = readAssetPromotionJournal(state);
+  if (!ledger) {
+    const emptyPriorState =
+      pending.priorCurrentReleaseId === null &&
+      current === null &&
+      pending.priorAssets.length === 0 &&
+      retained.length === 0;
+    const journalledInitialSubset =
+      pending.priorCurrentReleaseId === null &&
+      current === null &&
+      promotionJournal &&
+      pendingJournalMatchesRequest(
+        promotionJournal,
+        release,
+        legacyValidation,
+        pending.expectedAssets,
+      ) &&
+      actualIsPriorPlusSubset(retained, promotionJournal.priorAssets, promotionJournal.additions) &&
+      promotionJournal.priorAssets.length === 0;
+    return emptyPriorState || journalledInitialSubset;
+  }
+  const journalPriorCurrentIsExact =
+    pending.priorCurrentReleaseId === null
+      ? current === null && pending.priorAssets.length === 0
+      : current === pending.priorCurrentReleaseId;
+  const journalledPromotionSubset =
+    journalPriorCurrentIsExact &&
+    promotionJournal &&
+    pendingJournalMatchesRequest(
+      promotionJournal,
+      release,
+      legacyValidation,
+      pending.expectedAssets,
+    ) &&
+    actualIsPriorPlusSubset(retained, promotionJournal.priorAssets, promotionJournal.additions) &&
+    (sameEntries(ledger, promotionJournal.priorAssets) ||
+      sameEntries(ledger, promotionJournal.expectedAssets));
+  if (!sameEntries(ledger, retained)) return journalledPromotionSubset;
+  const committed = verifyCommittedState(state);
+  const priorCurrentIsExact =
+    pending.priorCurrentReleaseId === null
+      ? current === null && pending.priorAssets.length === 0
+      : committed.valid && committed.releaseId === pending.priorCurrentReleaseId;
+  const priorIsExact =
+    priorCurrentIsExact &&
+    sameEntries(ledger, pending.priorAssets) &&
+    sameEntries(retained, pending.priorAssets);
+  // A promotion can have completed before the pre-current fault.  It is safe
+  // only when it is precisely the journal's own A+B namespace and A is still
+  // selected; a later C release or a foreign byte remains a hard stop.
+  const ownPromotionIsExact =
+    priorCurrentIsExact &&
+    sameEntries(ledger, pending.expectedAssets) &&
+    sameEntries(retained, pending.expectedAssets);
+  const alreadyCommitted =
+    committed.valid &&
+    committed.releaseId === pending.releaseId &&
+    sameEntries(ledger, pending.expectedAssets) &&
+    sameEntries(retained, pending.expectedAssets);
+  return priorIsExact || ownPromotionIsExact || alreadyCommitted || journalledPromotionSubset;
+}
+
+function exactCommittedPublishWithoutJournal(state, release, inventory, legacyValidation) {
+  const committed = verifyCommittedState(state);
+  const ledger = readRetainedInventory(state);
+  const retained = inventoryForAssets(state, "retained assets");
+  if (
+    !committed.valid ||
+    committed.releaseId !== release.releaseId ||
+    !ledger ||
+    !sameEntries(ledger, retained)
+  ) {
+    return false;
+  }
+  const metadata = readJsonRegularFileNoFollow(
+    join(state, "metadata", `${release.releaseId}.json`),
+    "release metadata",
+  );
+  if (
+    JSON.stringify(metadata.legacyAuthority ?? null) !==
+    JSON.stringify(legacyRequest(legacyValidation))
+  ) {
+    return false;
+  }
+  const expected = [
+    ...ledger.map((entry) => ({ ...entry, path: `assets/${entry.path}` })),
+    ...release.mutable,
+  ].sort((left, right) => ordinal(left.path, right.path));
+  return sameEntries(inventory, expected);
+}
+
+function readPendingPublish(state) {
+  const path = publishPendingPath(state);
+  return noFollowEntry(path)
+    ? readJsonRegularFileNoFollow(path, "static publish pending journal", {
+        maxBytes: MAX_PUBLISH_AUTHORITY_BYTES,
+      })
+    : undefined;
+}
+
+function clearPendingPublish(state, options) {
+  const path = publishPendingPath(state);
+  if (!existsSync(path)) return;
+  unlinkSync(path);
+  invokeDurability(options, "unlink-publish-pending", path);
+  syncDirectory(state, options);
+}
+
+function syncTree(root, options) {
+  const visit = (directory) => {
+    for (const name of requireDirectoryNames(directory).sort(ordinal)) {
+      const path = join(directory, name);
+      const stat = lstatSync(path);
+      if (stat.isDirectory()) visit(path);
+      else if (stat.isFile()) syncFile(path, options);
+      else fail(`static publish output has non-regular entry: ${path}`);
+    }
+    syncDirectory(directory, options);
+  };
+  visit(root);
+}
+
+function handBackTreeOwnership(root, ownerUid, ownerGid, options) {
+  if (ownerUid === undefined && ownerGid === undefined) return;
+  options?.ownerAuthority?.revalidate();
+  if (
+    !Number.isSafeInteger(ownerUid) ||
+    ownerUid < 0 ||
+    !Number.isSafeInteger(ownerGid) ||
+    ownerGid < 0
+  ) {
+    fail("export owner uid/gid must be safe non-negative integers");
+  }
+  const virtualizedDockerOwnership = (() => {
+    try {
+      return /linuxkit/iu.test(readFileSync("/proc/version", "utf8"));
+    } catch {
+      return false;
+    }
+  })();
+  const owned = options?.[OWNED_TREE];
+  if (!owned || owned.root !== root) fail("export ownership requires its created-entry registry");
+  owned.validate();
+  for (const name of [...owned.entries.keys()].sort(
+    (a, b) => b.split("/").length - a.split("/").length || ordinal(b, a),
+  )) {
+    const opened = owned.open(name);
+    try {
+      const { fd, entry, path } = opened;
+      const check = () => {
+        options?.ownerAuthority?.revalidate();
+        owned.check();
+        if (
+          !ownedMatches(fstatSync(fd, { bigint: true }), entry.snapshot) ||
+          !ownedMatches(lstatSync(path, { bigint: true }), entry.snapshot)
+        )
+          fail(`export ownership handoff changed identity or ownership: ${path}`);
+      };
+      options?.onBeforeOwnershipChange?.({ path, ownerUid, ownerGid });
+      owned.checkNames();
+      check();
+      const before = entry.snapshot;
+      fchownSync(fd, ownerUid, ownerGid);
+      const after = fstatSync(fd, { bigint: true });
+      const opaque =
+        virtualizedDockerOwnership &&
+        before.uid === "0" &&
+        before.gid === "0" &&
+        after.uid === 0n &&
+        after.gid === 0n;
+      if (!opaque && (after.uid !== BigInt(ownerUid) || after.gid !== BigInt(ownerGid)))
+        fail(`export ownership handoff changed identity or ownership: ${path}`);
+      const invariant =
+        entry.snapshot.kind === "directory"
+          ? ["dev", "ino", "mode", "birthtimeNs"]
+          : REGULAR_IDENTITY_FIELDS.filter((field) => !["uid", "gid", "ctimeNs"].includes(field));
+      if (invariant.some((field) => String(after[field]) !== before[field]))
+        fail(`export ownership handoff changed registered entry: ${path}`);
+      entry.snapshot = ownedSnapshot(after);
+      check();
+      const kind = entry.snapshot.kind;
+      invokeDurability(options, `fsync-${kind}`, path);
+      check();
+      fsyncSync(fd);
+      invokeDurability(options, `close-${kind}`, path);
+      check();
+    } finally {
+      opened.close();
+    }
+  }
+
+  options?.ownerAuthority?.revalidate();
+}
+
+export function observeExportOwnerMapping({
+  probePath,
+  expectedParent,
+  claimedUid,
+  claimedGid,
+  effectiveUid = process.geteuid?.() ?? process.getuid?.(),
+  effectiveGid = process.getegid?.() ?? process.getgid?.(),
+  onAfterOpen,
+  createdProbe,
+} = {}) {
+  if (!probePath || !expectedParent) fail("export owner probe and parent are required");
+  for (const [label, value] of [
+    ["claimed uid", claimedUid],
+    ["claimed gid", claimedGid],
+    ["effective uid", effectiveUid],
+    ["effective gid", effectiveGid],
+  ]) {
+    if (!Number.isSafeInteger(value) || value < 0) {
+      fail(`export owner ${label} must be a safe non-negative integer`);
+    }
+  }
+  const probe = resolve(probePath);
+  const parent = realpathSync(expectedParent);
+  if (
+    realpathSync(dirname(probe)) !== parent ||
+    !/^\.cabadrive-export-owner-probe\.[A-Za-z0-9]+$/u.test(basename(probe))
+  ) {
+    fail("export owner probe must be one unique entry in the exact destination parent");
+  }
+  const opened = createdProbe || openRegularFileNoFollow(probe, "export owner probe");
+  let parentDescriptor;
+  let parentIdentity;
+  try {
+    parentDescriptor = openSync(
+      parent,
+      constants.O_RDONLY | constants.O_DIRECTORY | constants.O_NOFOLLOW | constants.O_NONBLOCK,
+    );
+    parentIdentity = fstatSync(parentDescriptor);
+  } catch (error) {
+    if (!createdProbe) closeSync(opened.descriptor);
+    if (parentDescriptor !== undefined) closeSync(parentDescriptor);
+    throw error;
+  }
+  let closed = false;
+  const close = () => {
+    if (!closed) {
+      closed = true;
+      closeSync(opened.descriptor);
+      closeSync(parentDescriptor);
+    }
+  };
+  const revalidate = () => {
+    if (closed) fail("export owner probe authority is closed");
+    assertPinnedRegular(probe, "export owner probe", opened);
+    const entry = lstatSync(parent);
+    const held = fstatSync(parentDescriptor);
+    if (
+      !entry.isDirectory() ||
+      entry.isSymbolicLink() ||
+      !held.isDirectory() ||
+      entry.dev !== parentIdentity.dev ||
+      entry.ino !== parentIdentity.ino ||
+      held.dev !== parentIdentity.dev ||
+      held.ino !== parentIdentity.ino ||
+      realpathSync(dirname(probe)) !== parent
+    )
+      fail("export owner probe parent changed");
+    return opened.stat;
+  };
+  try {
+    const initial = revalidate();
+    if ((initial.mode & 0o777) !== 0o600 || initial.size !== 0 || initial.nlink !== 1)
+      fail("export owner probe must be one empty mode-0600 regular file");
+    onAfterOpen?.({ probe, stat: initial });
+    revalidate();
+    const directMapping = initial.uid === claimedUid && initial.gid === claimedGid;
+    const namespacedMapping = initial.uid === effectiveUid && initial.gid === effectiveGid;
+    if (!directMapping && !namespacedMapping)
+      fail("export owner probe contradicts claimed host and container ownership mappings");
+    return {
+      uid: initial.uid,
+      gid: initial.gid,
+      probe,
+      revalidate,
+      close,
+      syncParent: () => fsyncSync(parentDescriptor),
+    };
+  } catch (error) {
+    if (createdProbe) closeSync(parentDescriptor);
+    else close();
+    throw error;
+  }
+}
+
+// A read-only host-owned private directory carries the owner class across a
+// user namespace. Only the probe created here has destructive cleanup authority.
+export function createExportOwnerAuthority({
+  mappingDirectory,
+  mappingName,
+  expectedParent,
+  claimedUid,
+  claimedGid,
+  effectiveUid,
+  effectiveGid,
+  onAfterOpen,
+  onDurabilityOperation,
+} = {}) {
+  if (!mappingDirectory || mappingName !== ".cabadrive-export-owner-mapping")
+    fail("export owner mapping must name one private directory");
+  const parent = realpathSync(expectedParent);
+  const mapping = resolve(mappingDirectory);
+  const boundMapping = join(parent, mappingName);
+  let mappingDescriptor;
+  let parentDescriptor;
+  let parentIdentity;
+  let probeDescriptor;
+  let authority;
+  let probe;
+  let createdProbe;
+  let mappingIdentity;
+  const checkParent = () => {
+    const parentEntry = lstatSync(parent);
+    const parentHeld = fstatSync(parentDescriptor);
+    if (
+      !parentEntry.isDirectory() ||
+      parentEntry.isSymbolicLink() ||
+      !parentHeld.isDirectory() ||
+      parentEntry.dev !== parentIdentity.dev ||
+      parentEntry.ino !== parentIdentity.ino ||
+      parentHeld.dev !== parentIdentity.dev ||
+      parentHeld.ino !== parentIdentity.ino
+    )
+      fail("export owner mapping parent changed");
+  };
+  const checkMapping = () => {
+    checkParent();
+    const held = fstatSync(mappingDescriptor, { bigint: true });
+    for (const path of [mapping, boundMapping]) {
+      const entry = lstatSync(path, { bigint: true });
+      if (
+        !entry.isDirectory() ||
+        entry.isSymbolicLink() ||
+        !held.isDirectory() ||
+        ["dev", "ino", "mode", "uid", "gid"].some(
+          (key) => held[key] !== mappingIdentity[key] || entry[key] !== held[key],
+        )
+      )
+        fail("export owner mapping changed from its read-only owner class");
+    }
+  };
+  try {
+    parentDescriptor = openSync(
+      parent,
+      constants.O_RDONLY | constants.O_DIRECTORY | constants.O_NOFOLLOW | constants.O_NONBLOCK,
+    );
+    parentIdentity = fstatSync(parentDescriptor);
+    if (!parentIdentity.isDirectory()) fail("export owner mapping parent is not a directory");
+    mappingDescriptor = openSync(
+      mapping,
+      constants.O_RDONLY | constants.O_DIRECTORY | constants.O_NOFOLLOW | constants.O_NONBLOCK,
+    );
+    mappingIdentity = fstatSync(mappingDescriptor, { bigint: true });
+    if (!mappingIdentity.isDirectory() || (mappingIdentity.mode & 0o777n) !== 0o700n)
+      fail("export owner mapping must be a private mode-0700 directory");
+    checkMapping();
+    probe = join(parent, `.cabadrive-export-owner-probe.${randomUUID().replaceAll("-", "")}`);
+    probeDescriptor = openSync(
+      probe,
+      constants.O_RDWR |
+        constants.O_CREAT |
+        constants.O_EXCL |
+        constants.O_NOFOLLOW |
+        constants.O_NONBLOCK,
+      0o600,
+    );
+    const first = fstatSync(probeDescriptor);
+    createdProbe = {
+      descriptor: probeDescriptor,
+      stat: first,
+      identity: fstatSync(probeDescriptor, { bigint: true }),
+    };
+    assertPinnedRegular(probe, "created export owner probe", createdProbe);
+    if (!first.isFile() || first.nlink !== 1 || first.size !== 0 || (first.mode & 0o777) !== 0o600)
+      fail("created export owner probe is not one private regular file");
+    checkMapping();
+    fchownSync(probeDescriptor, Number(mappingIdentity.uid), Number(mappingIdentity.gid));
+    const ownedIdentity = fstatSync(probeDescriptor, { bigint: true });
+    if (
+      !ownedIdentity.isFile() ||
+      ownedIdentity.uid !== mappingIdentity.uid ||
+      ownedIdentity.gid !== mappingIdentity.gid ||
+      REGULAR_IDENTITY_FIELDS.filter((key) => !["uid", "gid", "ctimeNs"].includes(key)).some(
+        (key) => ownedIdentity[key] !== createdProbe.identity[key],
+      )
+    )
+      fail("created export owner probe changed across its own descriptor ownership operation");
+    // Only the deliberate fchown's uid/gid/ctime transition is admitted. Pin it
+    // before fsync so even a failed barrier retains exact cleanup authority.
+    createdProbe = {
+      descriptor: probeDescriptor,
+      stat: fstatSync(probeDescriptor),
+      identity: ownedIdentity,
+    };
+    assertPinnedRegular(probe, "created export owner probe", createdProbe);
+    fsyncSync(probeDescriptor);
+    assertPinnedRegular(probe, "created export owner probe", createdProbe);
+    authority = observeExportOwnerMapping({
+      probePath: probe,
+      expectedParent: parent,
+      claimedUid,
+      claimedGid,
+      effectiveUid,
+      effectiveGid,
+      createdProbe,
+      onAfterOpen,
+    });
+    probeDescriptor = undefined; // authority owns the exact created descriptor.
+    checkMapping();
+    const checkProbe = authority.revalidate;
+    const closeProbe = authority.close;
+    let closed = false;
+    return {
+      ...authority,
+      revalidate: () => {
+        checkMapping();
+        return checkProbe();
+      },
+      close: () => {
+        if (closed) return;
+        closed = true;
+        try {
+          onDurabilityOperation?.({ operation: "close-export-owner-probe", path: probe });
+          checkMapping();
+          checkProbe();
+          unlinkSync(probe);
+          fsyncSync(parentDescriptor); // sync the entry removal in its held actual parent.
+        } finally {
+          closeProbe();
+          closeSync(mappingDescriptor);
+          closeSync(parentDescriptor);
+        }
+      },
+    };
+  } catch (error) {
+    if (authority) {
+      try {
+        checkParent();
+        authority.revalidate();
+        unlinkSync(probe);
+        fsyncSync(parentDescriptor);
+      } catch {
+        /* Preserve a replacement or uncertain parent. */
+      }
+      authority.close();
+    } else if (probeDescriptor !== undefined) {
+      // A created FD, never an observed pathname, is the cleanup grant.
+      if (createdProbe) {
+        try {
+          checkParent();
+          assertPinnedRegular(probe, "created export owner probe", createdProbe);
+          unlinkSync(probe);
+          fsyncSync(parentDescriptor);
+        } catch {
+          /* Preserve a replacement or uncertain entry. */
+        }
+      }
+      closeSync(probeDescriptor);
+    }
+    if (mappingDescriptor !== undefined) closeSync(mappingDescriptor);
+    if (parentDescriptor !== undefined) closeSync(parentDescriptor);
+    throw error;
+  }
+}
+
+function copyPublishTree({ state, candidate, temporary, options, legacyValidation }) {
+  const existing = inventoryForAssets(state, "retained assets");
+  const ledger = readRetainedInventory(state);
+  if (existing.length && !ledger)
+    fail("retained assets do not match canonical cumulative inventory");
+  if (ledger && !sameEntries(existing, ledger)) {
+    fail("retained assets do not match canonical cumulative inventory");
+  }
+  const legacy = legacyValidation?.manifest.assets || [];
+  assertNoCollision(existing, legacy, candidate.manifest.assets);
+  const byExistingPath = new Map(existing.map((entry) => [entry.path, entry]));
+  const byLegacyPath = new Map(legacy.map((entry) => [entry.path, entry]));
+  const retained = mergeInventories(existing, legacy, candidate.manifest.assets);
+  for (const entry of retained) {
+    const source = byExistingPath.has(entry.path)
+      ? join(state, "assets", ...entry.path.split("/"))
+      : byLegacyPath.has(entry.path)
+        ? join(legacyValidation.root, "assets", ...entry.path.split("/"))
+        : sourceAsset(candidate.root, entry.path);
+    copyAndVerify(
+      source,
+      join(temporary, "assets", ...entry.path.split("/")),
+      entry,
+      options,
+      temporary,
+    );
+  }
+  copyInventory(
+    candidate.root,
+    candidate.manifest.mutable,
+    temporary,
+    sourceMutable,
+    options,
+    temporary,
+  );
+  const inventory = outputInventory(temporary);
+  const expected = [
+    ...retained.map((entry) => ({ ...entry, path: `assets/${entry.path}` })),
+    ...candidate.manifest.mutable,
+  ].sort((left, right) => ordinal(left.path, right.path));
+  if (!sameEntries(inventory, expected))
+    fail("static publish output inventory does not match candidate");
+  syncTree(temporary, options);
+  return {
+    inventory,
+    priorAssets: existing,
+    expectedAssets: retained,
+  };
+}
+
+function noFollowEntry(path, options) {
+  try {
+    return lstatSync(path, options);
+  } catch (error) {
+    if (error?.code === "ENOENT") return undefined;
+    throw error;
+  }
+}
+
+function canonicalProspectivePath(path) {
+  let ancestor = path;
+  const missing = [];
+  while (!existsSync(ancestor)) {
+    missing.unshift(basename(ancestor));
+    const parent = dirname(ancestor);
+    if (parent === ancestor) fail(`cannot resolve prospective path: ${path}`);
+    ancestor = parent;
+  }
+  return join(realpathSync(ancestor), ...missing);
+}
+
+function pathsOverlap(left, right) {
+  return left === right || left.startsWith(`${right}${sep}`) || right.startsWith(`${left}${sep}`);
+}
+
+function assertAdmissionDirectory(path, label) {
+  const entry = noFollowEntry(path);
+  if (!entry || entry.isSymbolicLink() || !entry.isDirectory()) {
+    fail(`${label} must be an existing non-symlink directory: ${path}`);
+  }
+  return realpathSync(path);
+}
+
+function inspectExistingExecutionDomain(state, projectKey) {
+  const project = effectiveProjectKey(projectKey);
+  const recordPath = join(state, EXECUTION_DOMAIN_RECORD);
+  const entry = noFollowEntry(recordPath);
+  if (!entry) {
+    if (noFollowEntry(join(state, "stage.lock"))) {
+      fail("stage execution domain is missing while a stage lock exists");
+    }
+    return;
+  }
+  const record = readJson(recordPath, "stage execution domain");
+  if (!validExecutionDomain(record, project)) {
+    fail("stage execution domain is malformed or belongs to another Compose project");
+  }
+}
+
+function exactPublishedInventory(output, pending) {
+  const parent = dirname(output);
+  const directory = exactPublishedOutputDirectory(parent, output, pending);
+  if (!directory) return undefined;
+  return { directory, inventory: outputInventory(directory) };
+}
+
+function inspectPublishAdmission({
+  stateRoot,
+  candidateRoot,
+  release,
+  output,
+  destination,
+  operation,
+  legacyValidation,
+  projectKey,
+  [OWNED_EXPORT_SCOPE]: exportScope,
+}) {
+  assertAdmissionDirectory(dirname(output), "static publish output parent");
+  if (operation === "publish-export") {
+    if (!destination) fail("--destination is required for publish-export");
+    assertAdmissionDirectory(dirname(destination), "static export destination parent");
+  } else if (destination !== null) {
+    fail("standalone publish must not carry a physical export destination");
+  }
+
+  const canonicalCandidate = realpathSync(candidateRoot);
+  const canonicalState = canonicalProspectivePath(resolve(stateRoot));
+  const canonicalOutput = canonicalProspectivePath(output);
+  for (const [left, right, message] of [
+    [canonicalCandidate, canonicalState, "candidate and release state must not overlap"],
+    [canonicalCandidate, canonicalOutput, "candidate and static publish output must not overlap"],
+    [canonicalState, canonicalOutput, "release state and static publish output must not overlap"],
+  ]) {
+    if (pathsOverlap(left, right)) fail(message);
+  }
+  if (destination) {
+    const canonicalDestination = canonicalProspectivePath(destination);
+    for (const protectedRoot of [canonicalCandidate, canonicalState, canonicalOutput]) {
+      if (pathsOverlap(canonicalDestination, protectedRoot)) {
+        fail(
+          "static export destination must not overlap release state, candidate, or serving output",
+        );
+      }
+    }
+  }
+
+  const state = resolve(stateRoot);
+  const stateEntry = noFollowEntry(state);
+  if (!stateEntry) {
+    assertAdmissionDirectory(dirname(state), "release state parent");
+  } else {
+    if (stateEntry.isSymbolicLink() || !stateEntry.isDirectory()) {
+      fail(`state root must be a non-symlink directory: ${state}`);
+    }
+    inspectExistingExecutionDomain(state, projectKey);
+  }
+  const pending = stateEntry ? readPendingPublish(state) : undefined;
+  if (
+    pending &&
+    !pendingPublishIdentityMatches(pending, output, release, operation, legacyValidation)
+  ) {
+    fail("static publish pending journal does not own this exact operation");
+  }
+  if (pending && pending.destination !== destination) {
+    fail("static publish pending journal does not own this exact destination");
+  }
+  if (
+    pending &&
+    operation === "publish-export" &&
+    !pendingCoordinatorRequestMatches(pending, destination, legacyValidation)
+  ) {
+    fail("static publish pending journal does not own this exact destination");
+  }
+
+  const published = noFollowEntry(output) ? exactPublishedInventory(output, pending) : undefined;
+  let terminal = false;
+  if (noFollowEntry(output)) {
+    const journalOwned =
+      pending &&
+      published &&
+      pendingPublishMatches(
+        pending,
+        output,
+        release,
+        published.inventory,
+        operation,
+        legacyValidation,
+      );
+    terminal =
+      !pending &&
+      stateEntry &&
+      published &&
+      exactCommittedPublishWithoutJournal(state, release, published.inventory, legacyValidation);
+    if (!journalOwned && !terminal) {
+      fail("publish output already exists without exact transaction authority");
+    }
+  }
+
+  if (destination && noFollowEntry(destination)) {
+    const destinationEntry = noFollowEntry(destination);
+    if (destinationEntry.isSymbolicLink() || !destinationEntry.isDirectory()) {
+      fail("static export destination already exists without exact transaction authority");
+    }
+    const journalOwned =
+      pending &&
+      published &&
+      ["output-durable", "export-durable"].includes(pending.phase) &&
+      destinationOwnership(state, destination, pending, published.inventory, { exportScope });
+    const terminalDestination =
+      terminal &&
+      published &&
+      destinationOwnership(
+        state,
+        destination,
+        {
+          releaseId: release.releaseId,
+          manifestSha256: manifestDigest(release),
+          exportNonce: null,
+        },
+        published.inventory,
+        { terminal: true },
+      );
+    if (!journalOwned && !terminalDestination) {
+      fail("static export destination already exists without exact transaction authority");
+    }
+  }
+  if (operation === "publish-export" && terminal && !noFollowEntry(destination)) {
+    fail("committed publish-export destination is missing");
+  }
+  return { pending, published, terminal };
+}
+
+function assertJournalOwnedArtifacts({
+  state,
+  output,
+  destination,
+  release,
+  operation,
+  legacyValidation,
+  committed = false,
+  [OWNED_EXPORT_SCOPE]: exportScope,
+}) {
+  legacyValidation?.revalidate?.();
+  const pending = readPendingPublish(state);
+  if (
+    !pending ||
+    !pendingPublishIdentityMatches(pending, output, release, operation, legacyValidation) ||
+    pending.destination !== destination
+  ) {
+    fail("static publish journal changed before transaction boundary");
+  }
+  const expectedPhase = operation === "publish-export" ? "export-durable" : "output-durable";
+  if (pending.phase !== expectedPhase) {
+    fail(`static publish transaction is not ${expectedPhase}`);
+  }
+  const published = exactPublishedInventory(output, pending);
+  if (
+    !published ||
+    !pendingPublishMatches(
+      pending,
+      output,
+      release,
+      published.inventory,
+      operation,
+      legacyValidation,
+    ) ||
+    !pendingInventoryMatchesCandidate(pending, release)
+  ) {
+    fail("static publish serving output changed before transaction boundary");
+  }
+  if (operation === "publish-export") {
+    if (!destinationOwnership(state, destination, pending, published.inventory, { exportScope })) {
+      fail("static export destination changed before transaction boundary");
+    }
+  }
+  const stateMatches = committed
+    ? exactCommittedPublishWithoutJournal(state, release, published.inventory, legacyValidation)
+    : pendingRetainedAssetsMatchCurrentState(state, pending, release, legacyValidation);
+  if (!stateMatches) {
+    fail("release state changed before transaction boundary");
+  }
+  if (pending.generation) {
+    assertGenerationPending(state, pending);
+  }
+  return { pending, published };
+}
+
+function assertCandidateStillMatches(candidateRoot, release) {
+  const candidate = createCandidateManifest(realpathSync(candidateRoot));
+  if (
+    candidate.releaseId !== release.releaseId ||
+    !sameEntries(candidate.assets, release.assets) ||
+    !sameEntries(candidate.mutable, release.mutable)
+  ) {
+    fail("candidate changed before final transaction boundary");
+  }
+}
+
+function assertFinalJournalBoundary(boundary, candidateRoot, { committed = false } = {}) {
+  assertCandidateStillMatches(candidateRoot, boundary.release);
+  boundary.legacyValidation?.revalidate?.();
+  return assertJournalOwnedArtifacts({ ...boundary, committed });
+}
+
+function syncAndRevalidateJournalBoundary(
+  boundary,
+  candidateRoot,
+  options,
+  { committed = false } = {},
+) {
+  const initial = assertFinalJournalBoundary(boundary, candidateRoot, { committed });
+  syncTree(initial.published.directory, options);
+  syncDirectory(dirname(boundary.output), options);
+  if (boundary.destination) {
+    syncTree(boundary.destination, options);
+    syncDirectory(dirname(boundary.destination), options);
+  }
+  syncDirectory(boundary.state, options);
+  return assertFinalJournalBoundary(boundary, candidateRoot, { committed });
+}
+
+function syncAndRevalidateCommittedTerminal(admissionRequest, admission, options) {
+  syncTree(admission.published.directory, options);
+  syncDirectory(dirname(admissionRequest.output), options);
+  syncTree(admissionRequest.destination, options);
+  syncDirectory(dirname(admissionRequest.destination), options);
+  syncDirectory(resolve(admissionRequest.stateRoot), options);
+  assertCandidateStillMatches(admissionRequest.candidateRoot, admissionRequest.release);
+  admissionRequest.legacyValidation?.revalidate?.();
+  const final = inspectPublishAdmission(admissionRequest);
+  if (!final.terminal) fail("committed publish changed during final durability validation");
+  return final;
+}
+
+function renameNoReplace(source, destination, options) {
+  const helper = options?.renameNoReplaceHelper || process.env.CABADRIVE_RENAME_NOREPLACE_HELPER;
+  if (!helper) fail("native no-replace rename helper is unavailable");
+  const result = spawnSync(helper, [source, destination], { encoding: "utf8" });
+  if (result.error) fail(`native no-replace rename helper failed: ${result.error.message}`);
+  if (result.status !== 0) {
+    fail(
+      `native no-replace rename rejected destination: ${(result.stderr || result.stdout || "unknown error").trim()}`,
+    );
+  }
+}
+
+function exactPublishedOutputDirectory(parent, output, pending) {
+  const entry = noFollowEntry(output);
+  if (!entry?.isSymbolicLink()) return undefined;
+  try {
+    const target = readlinkSync(output);
+    if (
+      !validPublishTransactionId(target, output) ||
+      (pending && target !== pending.transactionId)
+    ) {
+      return undefined;
+    }
+    const directory = join(parent, target);
+    const directoryEntry = noFollowEntry(directory);
+    if (!directoryEntry || directoryEntry.isSymbolicLink() || !directoryEntry.isDirectory()) {
+      return undefined;
+    }
+    assertInside(parent, directory, "static publish output directory");
+    return directory;
+  } catch {
+    return undefined;
+  }
+}
+
+// A full tree remains in its verified sibling directory. Publishing an output
+// symlink to that directory is an atomic no-replace operation on every
+// supported runtime: a concurrent mkdir(output) makes symlink creation fail
+// rather than allowing rename to replace the newly occupied destination.
+function publishOutputNoReplace({ state, temporary, output, pending, options }) {
+  if (basename(temporary) !== pending.transactionId)
+    fail("static publish temporary does not match its output journal");
+  if (pending.generation) {
+    if (!pending.generation.reservation) {
+      const reservationPath = join(dirname(output), `.${basename(output)}.reserve-${randomUUID()}`);
+      symlinkSync(pending.transactionId, reservationPath);
+      const identity = lstatSync(reservationPath, { bigint: true });
+      if (typeof identity.birthtimeNs !== "bigint" || identity.birthtimeNs <= 0n)
+        fail("publish generation reservation requires positive creator birth generation");
+      const reservation = {
+        path: reservationPath,
+        target: pending.transactionId,
+        ...retirementLinkIdentity(identity),
+        ...Object.fromEntries(
+          ["mode", "uid", "gid", "mtimeNs"].map((field) => [field, identity[field].toString()]),
+        ),
+      };
+      const created = {
+        ...pending.generation.created,
+        link: { path: output, target: pending.transactionId, ...retirementLinkIdentity(identity) },
+      };
+      pending = { ...pending, generation: { ...pending.generation, created, reservation } };
+      assertGenerationPending(state, pending);
+      writeAtomically(state, publishPendingPath(state), `${JSON.stringify(pending)}\n`, options);
+      syncDirectory(dirname(output), options);
+      assertGenerationPending(state, pending);
+    }
+    return bindRecoveredGeneration(state, pending, options);
+  }
+  invokeDurability(options, "before-output-reservation", output);
+  try {
+    symlinkSync(pending.transactionId, output);
+  } catch (error) {
+    if (error?.code === "EEXIST")
+      fail("static publish destination appeared during no-replace publication");
+    throw error;
+  }
+  invokeDurability(options, "rename-output", output);
+  return pending;
+}
+
+const GENERATION_LINEAGE = "publish-generations.json";
+
+function generationFileIdentity(entry) {
+  return Object.fromEntries(
+    REGULAR_IDENTITY_FIELDS.map((field) => [field, entry[field].toString()]),
+  );
+}
+
+function generationAuthoritySnapshot(path) {
+  const opened = openRegularFileNoFollow(path, "publish generation retirement lineage");
+  try {
+    if (opened.identity.nlink !== 1n || (opened.identity.mode & 0o777n) !== 0o600n)
+      fail("publish generation retirement lineage is not private single-link authority");
+    const bytes = readPinnedRegularFile(path, "publish generation retirement lineage", opened, {
+      maxBytes: MAX_AUTHORITY_BYTES,
+    }).toString("utf8");
+    return { bytes, identity: generationFileIdentity(opened.identity) };
+  } finally {
+    closeSync(opened.descriptor);
+  }
+}
+
+function assertGenerationSnapshot(path, expected, { renamed = false } = {}) {
+  if (
+    !expected ||
+    !retirementKeys(expected, "bytes,identity") ||
+    typeof expected.bytes !== "string" ||
+    !retirementKeys(expected.identity, REGULAR_IDENTITY_FIELDS.join(",")) ||
+    !Object.values(expected.identity).every(
+      (value) => typeof value === "string" && /^(?:0|[1-9][0-9]*)$/.test(value),
+    )
+  )
+    fail("publish generation retirement lineage has malformed file authority");
+  const actual = generationAuthoritySnapshot(path);
+  if (
+    renamed &&
+    (!/^[1-9][0-9]*$/.test(expected.identity.birthtimeNs) ||
+      !/^[1-9][0-9]*$/.test(actual.identity.birthtimeNs))
+  )
+    fail("publish generation rename requires positive creator birth generation");
+  if (
+    actual.bytes !== expected.bytes ||
+    REGULAR_IDENTITY_FIELDS.some(
+      (field) =>
+        !(renamed && field === "ctimeNs") && actual.identity[field] !== expected.identity[field],
+    )
+  )
+    fail("publish generation retirement lineage file identity changed");
+  return actual;
+}
+
+function generationDomain(_state, root, logicalOutput, projectKey) {
+  return {
+    schemaVersion: 1,
+    root,
+    rootIdentity: retirementIdentity(lstatSync(root)),
+    logicalOutput,
+    projectKey: effectiveProjectKey(projectKey),
+    active: null,
+    previous: null,
+    generations: [],
+    retiring: null,
+  };
+}
+
+function validateGenerationEntry(
+  entry,
+  root,
+  logicalOutput,
+  { partial = false, unlinked = false } = {},
+) {
+  if (
+    !retirementKeys(
+      entry,
+      "link,tree,treeSha256,releaseId,manifestSha256,destination,legacy,owned",
+    ) ||
+    typeof entry.owned !== "boolean" ||
+    !/^[a-f0-9]{64}$/.test(entry.releaseId) ||
+    !/^[a-f0-9]{64}$/.test(entry.manifestSha256) ||
+    typeof entry.destination !== "string" ||
+    !isAbsolute(entry.destination) ||
+    !/^[a-f0-9]{64}$/.test(entry.treeSha256) ||
+    !retirementKeys(entry.tree, "device,inode") ||
+    !retirementKeys(entry.link, "path,target,device,inode,ctimeNs,birthtimeNs") ||
+    !validRetirementLinkGeneration(entry.link) ||
+    dirname(entry.link.path) !== root ||
+    !basename(entry.link.path).startsWith(`${basename(logicalOutput)}-`) ||
+    !validPublishTransactionId(entry.link.target, entry.link.path) ||
+    !Number.isSafeInteger(entry.link.device) ||
+    !Number.isSafeInteger(entry.link.inode) ||
+    !Number.isSafeInteger(entry.tree.device) ||
+    !Number.isSafeInteger(entry.tree.inode)
+  )
+    fail("publish generation retirement lineage contains malformed generation authority");
+  const link = noFollowEntry(entry.link.path, { bigint: true });
+  if (
+    (!link && !unlinked) ||
+    (link &&
+      (!link.isSymbolicLink() ||
+        !retirementLinkIdentityMatches(link, entry.link) ||
+        readlinkSync(entry.link.path) !== entry.link.target))
+  )
+    fail("publish generation retirement lineage output link changed");
+  const target = join(root, entry.link.target);
+  const tree = noFollowEntry(target);
+  if (!tree) {
+    if (partial && !link) return;
+    fail("publish generation retirement lineage tree is missing");
+  }
+  if (!tree.isDirectory() || tree.isSymbolicLink() || !retirementIdentityMatches(tree, entry.tree))
+    fail("publish generation retirement lineage tree identity changed");
+  const actual = retirementTree(target);
+  if (
+    !partial &&
+    createHash("sha256").update(JSON.stringify(actual)).digest("hex") !== entry.treeSha256
+  )
+    fail("publish generation retirement lineage tree inventory changed");
+}
+
+function validateGenerationLineage(
+  state,
+  value,
+  root,
+  logicalOutput,
+  projectKey,
+  { pendingRetirement } = {},
+) {
+  if (
+    !retirementKeys(
+      value,
+      "schemaVersion,root,rootIdentity,logicalOutput,projectKey,active,previous,generations,retiring",
+    ) ||
+    value.schemaVersion !== 1 ||
+    value.root !== root ||
+    value.logicalOutput !== logicalOutput ||
+    value.projectKey !== effectiveProjectKey(projectKey) ||
+    !retirementKeys(value.rootIdentity, "device,inode") ||
+    !retirementIdentityMatches(lstatSync(root), value.rootIdentity) ||
+    !Array.isArray(value.generations) ||
+    value.generations.length === 0 ||
+    typeof value.active !== "string" ||
+    !(value.previous === null || typeof value.previous === "string")
+  )
+    fail("publish generation retirement lineage does not match its domain");
+  const paths = new Set();
+  for (const entry of value.generations) {
+    if (paths.has(entry?.link?.path))
+      fail("publish generation retirement lineage contains duplicate generations");
+    paths.add(entry?.link?.path);
+    const retiring = value.retiring === entry?.link?.path;
+    if (
+      retiring &&
+      pendingRetirement &&
+      (pendingRetirement.output.path !== entry.link.path ||
+        createHash("sha256").update(JSON.stringify(pendingRetirement.entries)).digest("hex") !==
+          entry.treeSha256)
+    )
+      fail("retirement journal is not the owned generation inventory");
+    if (
+      retiring &&
+      !pendingRetirement &&
+      !noFollowEntry(entry.link.path) &&
+      noFollowEntry(join(root, entry.link.target))
+    )
+      fail("partial retirement lost its journal");
+    validateGenerationEntry(entry, root, logicalOutput, { partial: retiring, unlinked: retiring });
+  }
+  if (
+    !paths.has(value.active) ||
+    (value.previous !== null && (!paths.has(value.previous) || value.previous === value.active))
+  )
+    fail("publish generation retirement lineage active or previous authority is missing");
+  if (
+    !(
+      value.retiring === null ||
+      (paths.has(value.retiring) &&
+        value.retiring !== value.active &&
+        value.retiring !== value.previous)
+    )
+  )
+    fail("publish generation retirement lineage has invalid retiring authority");
+  return value;
+}
+
+function generationCurrentMatches(state, lineage) {
+  const active = lineage.generations.find((entry) => entry.link.path === lineage.active);
+  const committed = verifyCommittedState(state);
+  if (!active || !committed.valid || committed.releaseId !== active.releaseId)
+    fail("publish generation retirement lineage no longer matches committed current");
+  const release = readJson(
+    join(state, "metadata", `${active.releaseId}.json`),
+    "generation release metadata",
+  );
+  const inventory = outputInventory(join(lineage.root, active.link.target));
+  const ledger = readRetainedInventory(state);
+  const retained = inventoryForAssets(state, "retained assets");
+  const expected = [
+    ...(ledger || []).map((entry) => ({ ...entry, path: `assets/${entry.path}` })),
+    ...release.mutable,
+  ].sort((left, right) => ordinal(left.path, right.path));
+  if (
+    !ledger ||
+    !sameEntries(ledger, retained) ||
+    !sameEntries(inventory, expected) ||
+    JSON.stringify(release.legacyAuthority ?? null) !== JSON.stringify(active.legacy) ||
+    manifestDigest({
+      schemaVersion: release.schemaVersion,
+      assets: release.assets,
+      mutable: release.mutable,
+      releaseId: release.releaseId,
+    }) !== active.manifestSha256
+  )
+    fail("publish generation retirement lineage active bytes do not match committed current");
+}
+
+function generationPublishedMatches(state, lineage) {
+  const active = lineage.generations.find((entry) => entry.link.path === lineage.active);
+  const committed = verifyCommittedState(state);
+  if (!active || !committed.valid) fail("published generation or runtime state is invalid");
+  const release = readJson(
+    join(state, "metadata", `${active.releaseId}.json`),
+    "published generation metadata",
+  );
+  const manifest = {
+    schemaVersion: release.schemaVersion,
+    assets: release.assets,
+    mutable: release.mutable,
+    releaseId: release.releaseId,
+  };
+  const inventory = outputInventory(join(lineage.root, active.link.target));
+  const assets = inventory
+    .filter((entry) => entry.path.startsWith("assets/"))
+    .map((entry) => ({ ...entry, path: entry.path.slice(7) }));
+  const mutable = inventory.filter((entry) => !entry.path.startsWith("assets/"));
+  const retained = readRetainedInventory(state);
+  const contains = (whole, subset) =>
+    subset.every((entry) =>
+      whole.some(
+        (item) =>
+          item.path === entry.path && item.sha256 === entry.sha256 && item.size === entry.size,
+      ),
+    );
+  if (
+    manifest.releaseId !== active.releaseId ||
+    manifestDigest(manifest) !== active.manifestSha256 ||
+    !sameEntries(mutable, manifest.mutable) ||
+    !contains(assets, manifest.assets) ||
+    !retained ||
+    !contains(retained, assets)
+  )
+    fail("published generation immutable manifest or retained asset subset changed");
+  if (active.owned) {
+    const receipt = readJson(
+      exportReceiptPath(state, active.destination),
+      "published generation receipt",
+    );
+    if (
+      !(
+        retirementKeys(
+          receipt,
+          "schemaVersion,nonce,operation,releaseId,manifestSha256,destination,device,inode,inventorySha256",
+        ) ||
+        (retirementKeys(
+          receipt,
+          "schemaVersion,nonce,operation,releaseId,manifestSha256,destination,device,inode,inventorySha256,createdTreeSha256,rootBirthtimeNs",
+        ) &&
+          /^[a-f0-9]{64}$/u.test(receipt.createdTreeSha256) &&
+          /^[1-9][0-9]*$/u.test(receipt.rootBirthtimeNs))
+      ) ||
+      receipt.schemaVersion !== SCHEMA_VERSION ||
+      ![receipt.device, receipt.inode].every(
+        (value) => typeof value === "string" && /^(?:0|[1-9][0-9]*)$/.test(value),
+      ) ||
+      receipt.operation !== "publish-export" ||
+      receipt.destination !== active.destination ||
+      receipt.releaseId !== active.releaseId ||
+      receipt.manifestSha256 !== active.manifestSha256 ||
+      receipt.inventorySha256 !== inventoryDigest(inventory) ||
+      !validExportNonce(receipt.nonce)
+    )
+      fail("published generation ownership receipt changed");
+  }
+}
+
+function readGenerationSelection(
+  state,
+  root,
+  logicalOutput,
+  release,
+  destination,
+  legacyValidation,
+  projectKey,
+  freshOutput,
+) {
+  const lineagePath = join(state, GENERATION_LINEAGE);
+  const pending = noFollowEntry(state) ? readPendingPublish(state) : undefined;
+  const retirement = noFollowEntry(join(state, RETIREMENT_PENDING))
+    ? readAuthorityJson(join(state, RETIREMENT_PENDING), "retirement journal")
+    : undefined;
+  let snapshot = noFollowEntry(lineagePath) ? generationAuthoritySnapshot(lineagePath) : null;
+  let lineage = snapshot
+    ? validateGenerationLineage(
+        state,
+        JSON.parse(snapshot.bytes),
+        root,
+        logicalOutput,
+        projectKey,
+        { pendingRetirement: retirement },
+      )
+    : null;
+  if (pending) {
+    const generation = pending.generation;
+    if (
+      !generation ||
+      generation.root !== root ||
+      generation.logicalOutput !== logicalOutput ||
+      generation.projectKey !== effectiveProjectKey(projectKey) ||
+      pending.output !== generation.output ||
+      !pendingPublishIdentityMatches(
+        pending,
+        pending.output,
+        release,
+        "publish-export",
+        legacyValidation,
+      ) ||
+      !pendingCoordinatorRequestMatches(pending, destination, legacyValidation)
+    )
+      fail("publish generation pending authority does not match this request");
+    assertGenerationPending(state, pending);
+    return { output: generation.output, generation, lineage, snapshot };
+  }
+  if (lineage) {
+    generationPublishedMatches(state, lineage);
+    const active = lineage.generations.find((entry) => entry.link.path === lineage.active);
+    if (
+      active.releaseId === release.releaseId &&
+      active.manifestSha256 === manifestDigest(release) &&
+      active.destination === destination &&
+      JSON.stringify(active.legacy) === JSON.stringify(legacyRequest(legacyValidation))
+    ) {
+      generationCurrentMatches(state, lineage);
+      return { output: lineage.active, lineage, snapshot, terminal: true };
+    }
+  } else {
+    const names = requireDirectoryNames(root).filter((name) =>
+      name.startsWith(`${basename(logicalOutput)}-`),
+    );
+    if (names.length) {
+      const committed = verifyCommittedState(state);
+      const expected = committed.valid
+        ? join(root, `${basename(logicalOutput)}-${committed.releaseId}`)
+        : null;
+      const matches = names
+        .map((name) => join(root, name))
+        .filter((path) => {
+          const directory = exactPublishedOutputDirectory(root, path);
+          if (!directory || !committed.valid) return false;
+          const metadata = readJson(
+            join(state, "metadata", `${committed.releaseId}.json`),
+            "legacy generation metadata",
+          );
+          return exactCommittedPublishWithoutJournal(
+            state,
+            metadata,
+            outputInventory(directory),
+            legacyValidation,
+          );
+        });
+      if (matches.length !== 1 || matches[0] !== expected)
+        fail("publish generation retirement lineage is missing or old layout is ambiguous");
+      const link = retirementLink(root, expected);
+      const tree = join(root, link.target);
+      lineage = {
+        ...generationDomain(state, root, logicalOutput, projectKey),
+        active: expected,
+        generations: [
+          {
+            link,
+            tree: retirementIdentity(lstatSync(tree)),
+            treeSha256: createHash("sha256")
+              .update(JSON.stringify(retirementTree(tree)))
+              .digest("hex"),
+            releaseId: committed.releaseId,
+            manifestSha256: manifestDigest(
+              (({ schemaVersion, assets, mutable, releaseId }) => ({
+                schemaVersion,
+                assets,
+                mutable,
+                releaseId,
+              }))(
+                readJson(
+                  join(state, "metadata", `${committed.releaseId}.json`),
+                  "legacy generation metadata",
+                ),
+              ),
+            ),
+            destination,
+            legacy: legacyRequest(legacyValidation),
+            owned: false,
+          },
+        ],
+      };
+    }
+  }
+  const output =
+    freshOutput || join(root, `${basename(logicalOutput)}-${release.releaseId}-${randomUUID()}`);
+  if (noFollowEntry(output)) fail("fresh publish generation output is occupied");
+  return {
+    output,
+    lineage,
+    snapshot,
+    generation: {
+      schemaVersion: 1,
+      root,
+      logicalOutput,
+      projectKey: effectiveProjectKey(projectKey),
+      rootIdentity: retirementIdentity(lstatSync(root)),
+      output,
+      prior: snapshot,
+      priorLineage: lineage,
+      created: null,
+      promotion: null,
+      reservation: null,
+    },
+  };
+}
+
+function assertPriorGenerationLineage(state, generation) {
+  if (
+    !retirementKeys(
+      generation,
+      "schemaVersion,root,logicalOutput,projectKey,rootIdentity,output,prior,priorLineage,created,promotion,reservation",
+    ) ||
+    generation.schemaVersion !== 1 ||
+    !retirementKeys(generation.rootIdentity, "device,inode") ||
+    !retirementIdentityMatches(lstatSync(generation.root), generation.rootIdentity) ||
+    dirname(generation.output) !== generation.root ||
+    !basename(generation.output).startsWith(`${basename(generation.logicalOutput)}-`)
+  )
+    fail("publish generation pending authority is malformed");
+  if (
+    generation.prior &&
+    JSON.stringify(JSON.parse(generation.prior.bytes)) !== JSON.stringify(generation.priorLineage)
+  )
+    fail("publish generation prior lineage does not match pinned bytes");
+  if (generation.promotion) {
+    const promotion = generation.promotion;
+    if (
+      !retirementKeys(promotion, "temporary,snapshot,installed") ||
+      typeof promotion.installed !== "boolean" ||
+      typeof promotion.temporary !== "string" ||
+      !/^\.publish-generations-[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}\.next$/.test(
+        promotion.temporary,
+      ) ||
+      !promotion.snapshot ||
+      typeof promotion.snapshot.bytes !== "string" ||
+      !/^[1-9][0-9]*$/.test(promotion.snapshot.identity?.birthtimeNs)
+    )
+      fail("publish generation prepared promotion authority is malformed");
+    const expected = {
+      ...generationDomain(state, generation.root, generation.logicalOutput, generation.projectKey),
+      active: generation.output,
+      previous: generation.priorLineage?.active ?? null,
+      generations: [...(generation.priorLineage?.generations || []), generation.created],
+    };
+    if (promotion.snapshot.bytes !== `${JSON.stringify(expected)}\n`)
+      fail("publish generation prepared promotion does not match journal request");
+  }
+  const path = join(state, GENERATION_LINEAGE);
+  if (generation.promotion && noFollowEntry(path)) {
+    try {
+      assertGenerationSnapshot(path, generation.promotion.snapshot, {
+        renamed: !generation.promotion.installed,
+      });
+      validateGenerationLineage(
+        state,
+        JSON.parse(generation.promotion.snapshot.bytes),
+        generation.root,
+        generation.logicalOutput,
+        generation.projectKey,
+      );
+      return;
+    } catch {
+      /* The old committed lineage remains authoritative until promotion. */
+    }
+  }
+  if (generation.prior) assertGenerationSnapshot(path, generation.prior);
+  else if (noFollowEntry(path)) fail("publish generation retirement lineage appeared unexpectedly");
+  if (generation.priorLineage)
+    validateGenerationLineage(
+      state,
+      generation.priorLineage,
+      generation.root,
+      generation.logicalOutput,
+      generation.projectKey,
+      {
+        pendingRetirement: noFollowEntry(join(state, RETIREMENT_PENDING))
+          ? readAuthorityJson(join(state, RETIREMENT_PENDING), "retirement journal")
+          : undefined,
+      },
+    );
+}
+
+function createGenerationFile(path, bytes) {
+  const descriptor = openSync(
+    path,
+    constants.O_RDWR |
+      constants.O_CREAT |
+      constants.O_EXCL |
+      constants.O_NOFOLLOW |
+      constants.O_NONBLOCK,
+    0o600,
+  );
+  try {
+    const initial = fstatSync(descriptor, { bigint: true });
+    if (typeof initial.birthtimeNs !== "bigint" || initial.birthtimeNs <= 0n)
+      fail("prepared publish generation requires positive creator birth generation");
+    if (!initial.isFile() || initial.nlink !== 1n || (initial.mode & 0o777n) !== 0o600n)
+      fail("created publish generation lineage is not a private regular file");
+    writeFileSync(descriptor, bytes);
+    const identity = fstatSync(descriptor, { bigint: true });
+    for (const field of ["dev", "ino", "mode", "uid", "gid", "nlink", "birthtimeNs"])
+      if (identity[field] !== initial[field])
+        fail("created publish generation lineage identity changed");
+    const opened = { descriptor, identity, stat: fstatSync(descriptor) };
+    assertPinnedRegular(path, "created publish generation lineage", opened);
+    fsyncSync(descriptor);
+    assertPinnedRegular(path, "created publish generation lineage", opened);
+    const actual = readPinnedRegularFile(path, "created publish generation lineage", opened, {
+      maxBytes: MAX_AUTHORITY_BYTES,
+    }).toString("utf8");
+    if (actual !== bytes) fail("created publish generation lineage bytes changed");
+    return { opened, snapshot: { bytes, identity: generationFileIdentity(identity) } };
+  } catch (error) {
+    closeSync(descriptor);
+    throw error;
+  }
+}
+
+function assertGenerationPending(state, pending) {
+  const generation = pending.generation;
+  if (!generation) return;
+  assertPriorGenerationLineage(state, generation);
+  const created = generation.created;
+  if (
+    !created ||
+    created.releaseId !== pending.releaseId ||
+    created.manifestSha256 !== pending.manifestSha256 ||
+    created.destination !== pending.destination ||
+    JSON.stringify(created.legacy) !== JSON.stringify(pending.legacy) ||
+    !created.owned ||
+    generation.output !== pending.output ||
+    (created.link &&
+      (created.link.path !== pending.output || created.link.target !== pending.transactionId))
+  )
+    fail("publish generation created authority does not match pending transaction");
+  if (generation.prior === null && generation.priorLineage) {
+    const prior = generation.priorLineage;
+    const entry = prior.generations?.[0];
+    if (
+      prior.generations?.length !== 1 ||
+      entry?.owned !== false ||
+      prior.previous !== null ||
+      prior.retiring !== null ||
+      prior.active !== entry.link.path ||
+      entry.link.path !==
+        join(
+          generation.root,
+          `${basename(generation.logicalOutput)}-${pending.priorCurrentReleaseId}`,
+        ) ||
+      entry.releaseId !== pending.priorCurrentReleaseId
+    )
+      fail("publish generation absent prior authority is not a protection-only legacy bootstrap");
+    const metadata = readJson(
+      join(state, "metadata", `${entry.releaseId}.json`),
+      "legacy generation metadata",
+    );
+    const expected = [
+      ...pending.priorAssets.map((item) => ({ ...item, path: `assets/${item.path}` })),
+      ...metadata.mutable,
+    ].sort((left, right) => ordinal(left.path, right.path));
+    if (
+      !sameEntries(outputInventory(join(generation.root, entry.link.target)), expected) ||
+      JSON.stringify(metadata.legacyAuthority ?? null) !== JSON.stringify(entry.legacy)
+    )
+      fail("publish generation legacy bootstrap does not match exact prior state");
+  }
+  if (generation.reservation) assertGenerationReservation(pending);
+  if (created.link && !generation.reservation)
+    validateGenerationEntry(created, generation.root, generation.logicalOutput);
+  else {
+    const directory = join(generation.root, pending.transactionId);
+    const entry = noFollowEntry(directory);
+    if (
+      !entry?.isDirectory() ||
+      entry.isSymbolicLink() ||
+      !retirementIdentityMatches(entry, created.tree) ||
+      createHash("sha256")
+        .update(JSON.stringify(retirementTree(directory)))
+        .digest("hex") !== created.treeSha256
+    )
+      fail("publish generation pending creator tree changed");
+  }
+}
+
+function assertGenerationReservation(pending) {
+  const reservation = pending.generation.reservation;
+  if (
+    !retirementKeys(
+      reservation,
+      "path,target,device,inode,ctimeNs,birthtimeNs,mode,uid,gid,mtimeNs",
+    ) ||
+    dirname(reservation.path) !== dirname(pending.output) ||
+    !basename(reservation.path).startsWith(`.${basename(pending.output)}.reserve-`) ||
+    !/^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/.test(
+      basename(reservation.path).slice(`.${basename(pending.output)}.reserve-`.length),
+    ) ||
+    reservation.target !== pending.transactionId ||
+    !validRetirementLinkGeneration(reservation) ||
+    !/^[1-9][0-9]*$/.test(reservation.birthtimeNs) ||
+    !["mode", "uid", "gid", "mtimeNs"].every(
+      (field) =>
+        typeof reservation[field] === "string" && /^(?:0|[1-9][0-9]*)$/.test(reservation[field]),
+    )
+  )
+    fail("publish generation reservation authority is malformed");
+  const reserved = noFollowEntry(reservation.path, { bigint: true });
+  const published = noFollowEntry(pending.output, { bigint: true });
+  const actual = reserved || published;
+  if (
+    !actual ||
+    ["mode", "uid", "gid", "mtimeNs"].some(
+      (field) => actual[field].toString() !== reservation[field],
+    )
+  )
+    fail("publish generation reservation invariant metadata changed");
+  if (reserved) {
+    if (
+      published ||
+      !reserved.isSymbolicLink() ||
+      !retirementLinkIdentityMatches(reserved, reservation) ||
+      readlinkSync(reservation.path) !== reservation.target
+    )
+      fail("publish generation reservation changed or output is occupied");
+  } else if (
+    !published?.isSymbolicLink() ||
+    Number(published.dev) !== reservation.device ||
+    Number(published.ino) !== reservation.inode ||
+    published.birthtimeNs.toString() !== reservation.birthtimeNs ||
+    readlinkSync(pending.output) !== reservation.target
+  )
+    fail("publish generation promoted reservation is not the creator-owned link");
+  return !!reserved;
+}
+
+function bindRecoveredGeneration(state, pending, options) {
+  if (!pending.generation?.reservation) return pending;
+  assertGenerationPending(state, pending);
+  if (pending.phase !== "renamed-uncommitted")
+    fail("publish generation reservation has invalid phase");
+  if (assertGenerationReservation(pending)) {
+    invokeDurability(options, "before-output-reservation", pending.output);
+    assertGenerationReservation(pending);
+    renameNoReplace(pending.generation.reservation.path, pending.output, options);
+  }
+  assertGenerationReservation(pending);
+  const created = {
+    ...pending.generation.created,
+    link: retirementLink(dirname(pending.output), pending.output),
+  };
+  validateGenerationEntry(created, pending.generation.root, pending.generation.logicalOutput);
+  pending = { ...pending, generation: { ...pending.generation, created, reservation: null } };
+  writeAtomically(state, publishPendingPath(state), `${JSON.stringify(pending)}\n`, options);
+  invokeDurability(options, "rename-output", pending.output);
+  assertGenerationPending(state, pending);
+  return pending;
+}
+
+function prepareGenerationPromotion(state, pending, options) {
+  const generation = pending.generation;
+  if (!generation) return pending;
+  assertGenerationPending(state, pending);
+  validateGenerationEntry(generation.created, generation.root, generation.logicalOutput);
+  if (generation.promotion) {
+    const final = join(state, GENERATION_LINEAGE);
+    const temporary = join(state, generation.promotion.temporary);
+    assertGenerationSnapshot(
+      noFollowEntry(temporary) ? temporary : final,
+      generation.promotion.snapshot,
+      { renamed: !noFollowEntry(temporary) && !generation.promotion.installed },
+    );
+    return pending;
+  }
+  const prior = generation.priorLineage;
+  const record = {
+    ...generationDomain(state, generation.root, generation.logicalOutput, generation.projectKey),
+    active: generation.output,
+    previous: prior?.active ?? null,
+    generations: [...(prior?.generations || []), generation.created],
+  };
+  const bytes = `${JSON.stringify(record)}\n`;
+  const temporary = join(state, `.publish-generations-${randomUUID()}.next`);
+  const created = createGenerationFile(temporary, bytes);
+  try {
+    const promotion = {
+      temporary: basename(temporary),
+      snapshot: created.snapshot,
+      installed: false,
+    };
+    pending = { ...pending, generation: { ...generation, promotion } };
+    writeAtomically(state, publishPendingPath(state), `${JSON.stringify(pending)}\n`, options);
+    assertPinnedRegular(temporary, "prepared publish generation lineage", created.opened);
+    invokeDurability(options, "generation-lineage-prepared", temporary);
+    assertPriorGenerationLineage(state, pending.generation);
+    assertPinnedRegular(temporary, "prepared publish generation lineage", created.opened);
+    return pending;
+  } finally {
+    closeSync(created.opened.descriptor);
+  }
+}
+
+function promoteGenerationLineage(state, pending, options) {
+  const generation = pending.generation;
+  if (!generation) return;
+  assertPriorGenerationLineage(state, generation);
+  const record = JSON.parse(generation.promotion.snapshot.bytes);
+  validateGenerationLineage(
+    state,
+    record,
+    generation.root,
+    generation.logicalOutput,
+    generation.projectKey,
+  );
+  generationCurrentMatches(state, record);
+  const path = join(state, GENERATION_LINEAGE);
+  const temporary = join(state, generation.promotion.temporary);
+  const preparedExists = !!noFollowEntry(temporary);
+  const opened = openRegularFileNoFollow(
+    preparedExists ? temporary : path,
+    "publish generation promotion",
+  );
+  try {
+    assertGenerationSnapshot(preparedExists ? temporary : path, generation.promotion.snapshot, {
+      renamed: !preparedExists && !generation.promotion.installed,
+    });
+    const heldBytes = readPinnedRegularFile(
+      preparedExists ? temporary : path,
+      "publish generation promotion",
+      opened,
+      { maxBytes: MAX_AUTHORITY_BYTES },
+    ).toString("utf8");
+    const heldIdentity = generationFileIdentity(opened.identity);
+    if (
+      heldBytes !== generation.promotion.snapshot.bytes ||
+      REGULAR_IDENTITY_FIELDS.some(
+        (field) =>
+          !(field === "ctimeNs" && !preparedExists && !generation.promotion.installed) &&
+          heldIdentity[field] !== generation.promotion.snapshot.identity[field],
+      )
+    )
+      fail("publish generation promotion descriptor is not the prepared inode");
+    if (preparedExists) {
+      renameSync(temporary, path);
+      const identity = fstatSync(opened.descriptor, { bigint: true });
+      if (
+        REGULAR_IDENTITY_FIELDS.some(
+          (field) => field !== "ctimeNs" && identity[field] !== opened.identity[field],
+        )
+      )
+        fail("publish generation promotion changed invariant file metadata");
+      opened.identity = identity;
+      opened.stat = fstatSync(opened.descriptor);
+      assertPinnedRegular(path, "publish generation promotion", opened);
+    }
+    const installed = {
+      bytes: generation.promotion.snapshot.bytes,
+      identity: generationFileIdentity(opened.identity),
+    };
+    options.onGenerationLineageInstalled?.(installed);
+    pending = {
+      ...pending,
+      generation: {
+        ...generation,
+        promotion: {
+          ...generation.promotion,
+          snapshot: installed,
+          installed: true,
+        },
+      },
+    };
+    writeAtomically(state, publishPendingPath(state), `${JSON.stringify(pending)}\n`, options);
+    assertPinnedRegular(path, "committed publish generation lineage", opened);
+    invokeDurability(options, "generation-lineage-promoted", path);
+    assertPinnedRegular(path, "committed publish generation lineage", opened);
+    fsyncSync(opened.descriptor);
+    syncDirectory(state, options);
+    assertPinnedRegular(path, "committed publish generation lineage", opened);
+    invokeDurability(options, "generation-lineage-durable", path);
+    assertPinnedRegular(path, "committed publish generation lineage", opened);
+  } finally {
+    closeSync(opened.descriptor);
+  }
+}
+
+const RETIREMENT_PENDING = "publish-retirement.json";
+
+function retirementIdentity(entry) {
+  return { device: entry.dev, inode: entry.ino };
+}
+
+function retirementIdentityMatches(entry, identity) {
+  return entry && entry.dev === identity.device && entry.ino === identity.inode;
+}
+
+// Symlink inodes may be reused immediately after unlink on Linux. Bind their
+// generation using exact bigint timestamps; mutable tree directories retain
+// device/inode identities so partial cleanup does not invalidate its journal.
+function retirementLinkIdentity(entry) {
+  return {
+    device: Number(entry.dev),
+    inode: Number(entry.ino),
+    ctimeNs: entry.ctimeNs.toString(),
+    birthtimeNs: entry.birthtimeNs.toString(),
+  };
+}
+
+function validRetirementLinkGeneration(identity) {
+  return [identity.ctimeNs, identity.birthtimeNs].every(
+    (value) => typeof value === "string" && /^(?:0|[1-9][0-9]*)$/.test(value),
+  );
+}
+
+function retirementLinkIdentityMatches(entry, identity) {
+  return (
+    entry &&
+    Number(entry.dev) === identity.device &&
+    Number(entry.ino) === identity.inode &&
+    entry.ctimeNs.toString() === identity.ctimeNs &&
+    entry.birthtimeNs.toString() === identity.birthtimeNs
+  );
+}
+
+function retirementTree(directory) {
+  const entries = [];
+  const walk = (parent, prefix = "") => {
+    for (const name of requireDirectoryNames(parent).sort(ordinal)) {
+      normalizeRelative(name);
+      const path = join(parent, name);
+      const entry = lstatSync(path);
+      const relative = prefix ? `${prefix}/${name}` : name;
+      if (entry.isSymbolicLink() || (!entry.isDirectory() && !entry.isFile())) {
+        fail(`retirement tree contains an unsafe entry: ${path}`);
+      }
+      const item = {
+        path: relative,
+        type: entry.isDirectory() ? "directory" : "file",
+        ...retirementIdentity(entry),
+      };
+      if (entry.isFile()) Object.assign(item, sha256(path));
+      entries.push(item);
+      if (entry.isDirectory()) walk(path, relative);
+    }
+  };
+  walk(directory);
+  return entries.sort((left, right) => ordinal(left.path, right.path));
+}
+
+function retirementLink(root, output) {
+  const directory = exactPublishedOutputDirectory(root, output);
+  if (!directory) fail(`publish generation is not safely contained: ${output}`);
+  return {
+    path: output,
+    target: basename(directory),
+    ...retirementLinkIdentity(lstatSync(output, { bigint: true })),
+  };
+}
+
+function retirementKeys(value, expected) {
+  return (
+    value &&
+    typeof value === "object" &&
+    !Array.isArray(value) &&
+    Object.keys(value).sort().join(",") === expected.split(",").sort().join(",")
+  );
+}
+
+function validateRetirement(record, root, logicalOutput, activeOutput) {
+  if (
+    !retirementKeys(
+      record,
+      "schemaVersion,root,rootIdentity,logicalOutput,activeOutput,current,protected,output,target,entries,lineage",
+    ) ||
+    record.schemaVersion !== 2 ||
+    record.root !== root ||
+    record.logicalOutput !== logicalOutput ||
+    record.activeOutput !== activeOutput ||
+    !retirementKeys(record.rootIdentity, "device,inode") ||
+    !retirementIdentityMatches(noFollowEntry(root), record.rootIdentity) ||
+    !Array.isArray(record.protected) ||
+    record.protected.length !== 2 ||
+    !Array.isArray(record.entries)
+  ) {
+    fail("retirement journal does not match its generation domain");
+  }
+  const validLink = (link) =>
+    retirementKeys(link, "path,target,device,inode,ctimeNs,birthtimeNs") &&
+    validRetirementLinkGeneration(link) &&
+    typeof link.path === "string" &&
+    dirname(link.path) === root &&
+    basename(link.path).startsWith(`${basename(logicalOutput)}-`) &&
+    validPublishTransactionId(link.target, link.path) &&
+    Number.isSafeInteger(link.device) &&
+    Number.isSafeInteger(link.inode);
+  if (
+    !validLink(record.output) ||
+    !retirementKeys(record.target, "name,device,inode") ||
+    record.target.name !== record.output.target ||
+    !Number.isSafeInteger(record.target.device) ||
+    !Number.isSafeInteger(record.target.inode) ||
+    !record.protected.every(validLink) ||
+    record.protected[0].path !== activeOutput ||
+    record.protected[0].path === record.protected[1].path ||
+    record.protected.some(
+      (link) => link.path === record.output.path || link.target === record.output.target,
+    )
+  ) {
+    fail("retirement journal has unsafe or protected generation authority");
+  }
+  for (const link of record.protected) {
+    const entry = noFollowEntry(link.path, { bigint: true });
+    if (
+      !entry?.isSymbolicLink() ||
+      !retirementLinkIdentityMatches(entry, link) ||
+      readlinkSync(link.path) !== link.target ||
+      !exactPublishedOutputDirectory(root, link.path)
+    )
+      fail("retirement protected generation changed");
+  }
+  const outputEntry = noFollowEntry(record.output.path, { bigint: true });
+  if (
+    outputEntry &&
+    (!outputEntry.isSymbolicLink() ||
+      !retirementLinkIdentityMatches(outputEntry, record.output) ||
+      readlinkSync(record.output.path) !== record.output.target)
+  )
+    fail("retirement output link changed");
+  const known = new Map();
+  for (const item of record.entries) {
+    if (
+      !retirementKeys(
+        item,
+        item?.type === "file" ? "path,type,device,inode,size,sha256" : "path,type,device,inode",
+      ) ||
+      !["file", "directory"].includes(item.type) ||
+      !Number.isSafeInteger(item.device) ||
+      !Number.isSafeInteger(item.inode) ||
+      (item.type === "file" &&
+        (!Number.isSafeInteger(item.size) ||
+          item.size < 0 ||
+          typeof item.sha256 !== "string" ||
+          !/^[a-f0-9]{64}$/.test(item.sha256)))
+    )
+      fail("retirement journal has an invalid tree inventory");
+    normalizeRelative(item.path);
+    if (known.has(item.path)) fail("retirement journal has duplicate tree entries");
+    known.set(item.path, item);
+  }
+  const target = join(root, record.target.name);
+  const targetEntry = noFollowEntry(target);
+  if (targetEntry) {
+    if (
+      !targetEntry.isDirectory() ||
+      targetEntry.isSymbolicLink() ||
+      !retirementIdentityMatches(targetEntry, record.target)
+    )
+      fail("retirement target tree identity changed");
+    const actual = retirementTree(target);
+    if (outputEntry && actual.length !== record.entries.length)
+      fail("retirement referenced tree is incomplete");
+    for (const item of actual) {
+      if (JSON.stringify(known.get(item.path)) !== JSON.stringify(item))
+        fail("retirement remaining tree is foreign or substituted");
+    }
+  } else if (outputEntry) {
+    fail("retirement referenced tree is absent");
+  }
+  return { target, targetEntry, outputEntry, known };
+}
+
+function resumeRetirement(state, record, root, logicalOutput, activeOutput, options) {
+  if (record?.schemaVersion !== 2) fail("retirement journal has unsupported generation schema");
+  const lineagePath = join(state, GENERATION_LINEAGE);
+  assertGenerationSnapshot(lineagePath, record.lineage);
+  const lineage = validateGenerationLineage(
+    state,
+    JSON.parse(record.lineage.bytes),
+    root,
+    logicalOutput,
+    options.projectKey,
+    { pendingRetirement: record },
+  );
+  generationCurrentMatches(state, lineage);
+  const owned = lineage.generations.find((entry) => entry.link.path === record.output?.path);
+  if (
+    lineage.active !== activeOutput ||
+    lineage.retiring !== owned?.link.path ||
+    !owned?.owned ||
+    JSON.stringify(owned.link) !== JSON.stringify(record.output) ||
+    owned.treeSha256 !==
+      createHash("sha256").update(JSON.stringify(record.entries)).digest("hex") ||
+    JSON.stringify(owned.tree) !==
+      JSON.stringify({ device: record.target?.device, inode: record.target?.inode })
+  )
+    fail("retirement journal does not own a committed generation");
+  const current = join(state, "current");
+  const currentIdentity = lstatSync(current, { bigint: true });
+  const currentTarget = readlinkSync(current);
+  if (
+    !retirementKeys(record.current, "path,target,device,inode,ctimeNs,birthtimeNs") ||
+    !validRetirementLinkGeneration(record.current) ||
+    record.current.path !== current ||
+    !retirementLinkIdentityMatches(currentIdentity, record.current) ||
+    record.current.target !== currentTarget
+  )
+    fail("retirement committed current identity changed");
+  const assertCurrent = () => {
+    const entry = noFollowEntry(current, { bigint: true });
+    if (
+      !entry?.isSymbolicLink() ||
+      !retirementLinkIdentityMatches(entry, retirementLinkIdentity(currentIdentity)) ||
+      readlinkSync(current) !== currentTarget
+    )
+      fail("retirement committed current pointer changed");
+  };
+  // Reject incomplete or malformed generation authority before durability or
+  // deletion operations, including journals from the unsupported v1 schema.
+  validateRetirement(record, root, logicalOutput, activeOutput);
+  const journal = join(state, RETIREMENT_PENDING);
+  const { descriptor, stat: journalIdentity } = openRegularFileNoFollow(
+    journal,
+    "retirement journal",
+  );
+  try {
+    const journalBytes = readAuthorityFile(journal, "retirement journal");
+    if (JSON.stringify(JSON.parse(journalBytes)) !== JSON.stringify(record))
+      fail("retirement journal changed before recovery");
+    const assertJournal = () => {
+      assertGenerationSnapshot(lineagePath, record.lineage);
+      assertCurrent();
+      // Protected and still-visible retiring links retain the exact generation
+      // at every destructive boundary, including callbacks before journal clear.
+      if (!Array.isArray(record.protected)) fail("retirement protected authority is invalid");
+      for (const link of [...record.protected, record.output]) {
+        const entry = noFollowEntry(link.path, { bigint: true });
+        if (
+          (!entry && link !== record.output) ||
+          (entry &&
+            (!entry.isSymbolicLink() ||
+              !retirementLinkIdentityMatches(entry, link) ||
+              readlinkSync(link.path) !== link.target))
+        )
+          fail("retirement link generation changed");
+      }
+      requireStableOpenPath(journal, "retirement journal", journalIdentity);
+      const current = lstatSync(journal);
+      if (
+        current.size !== journalIdentity.size ||
+        current.mtimeMs !== journalIdentity.mtimeMs ||
+        current.ctimeMs !== journalIdentity.ctimeMs
+      )
+        fail("retirement journal contents changed");
+    };
+    assertJournal();
+    // Complete the visible journal's durability barrier through the same
+    // no-follow/nonblocking descriptor before removing any owned entry.
+    invokeDurability(options, "fsync-file", journal);
+    fsyncSync(descriptor);
+    assertJournal();
+    syncDirectory(state, options);
+    assertJournal();
+    let authority = validateRetirement(record, root, logicalOutput, activeOutput);
+    invokeDurability(options, "retirement-journal-durable", journal);
+    assertJournal();
+    authority = validateRetirement(record, root, logicalOutput, activeOutput);
+    if (authority.outputEntry) {
+      unlinkSync(record.output.path);
+      invokeDurability(options, "retirement-unlink", record.output.path);
+    }
+    syncDirectory(root, options);
+    invokeDurability(options, "retirement-unlink-durable", root);
+    assertJournal();
+    authority = validateRetirement(record, root, logicalOutput, activeOutput);
+    if (authority.targetEntry) {
+      const entries = retirementTree(authority.target).sort(
+        (left, right) =>
+          right.path.split("/").length - left.path.split("/").length ||
+          ordinal(left.path, right.path),
+      );
+      for (const item of entries) {
+        assertJournal();
+        // Check each ancestor against the journal before any path operation can
+        // traverse it. Partial deletion permits missing entries only, never new
+        // bytes, replacement inodes, symlinks, or an unrecorded subtree.
+        const parts = item.path.split("/");
+        for (let count = 0; count < parts.length; count += 1) {
+          const ancestor =
+            count === 0 ? authority.target : join(authority.target, ...parts.slice(0, count));
+          const expected =
+            count === 0 ? record.target : authority.known.get(parts.slice(0, count).join("/"));
+          const entry = noFollowEntry(ancestor);
+          if (
+            !entry?.isDirectory() ||
+            entry.isSymbolicLink() ||
+            !retirementIdentityMatches(entry, expected)
+          )
+            fail("retirement removal ancestor changed");
+        }
+        const path = join(authority.target, item.path);
+        const entry = noFollowEntry(path);
+        if (
+          !retirementIdentityMatches(entry, item) ||
+          entry.isSymbolicLink() ||
+          (item.type === "file"
+            ? !entry.isFile() || !equalEntry(sha256(path), item)
+            : !entry.isDirectory())
+        )
+          fail("retirement removal entry changed");
+        if (item.type === "directory") rmdirSync(path);
+        else unlinkSync(path);
+        invokeDurability(options, "retirement-remove-entry", path);
+      }
+      assertJournal();
+      validateRetirement(record, root, logicalOutput, activeOutput);
+      rmdirSync(authority.target);
+      invokeDurability(options, "retirement-remove-tree", authority.target);
+    }
+    syncDirectory(root, options);
+    invokeDurability(options, "retirement-tree-durable", root);
+    assertJournal();
+    validateRetirement(record, root, logicalOutput, activeOutput);
+    invokeDurability(options, "retirement-before-clear", journal);
+    assertJournal();
+    if (readAuthorityFile(journal, "retirement journal") !== journalBytes)
+      fail("retirement journal contents changed before clear");
+    assertJournal();
+    unlinkSync(journal);
+    invokeDurability(options, "retirement-clear", journal);
+    syncDirectory(state, options);
+  } finally {
+    closeSync(descriptor);
+  }
+}
+
+function replaceGenerationLineage(state, record, expected, options) {
+  const path = join(state, GENERATION_LINEAGE);
+  assertGenerationSnapshot(path, expected);
+  const temporary = join(state, `.publish-generations-${randomUUID()}.next`);
+  const created = createGenerationFile(temporary, `${JSON.stringify(record)}\n`);
+  const prepared = created.snapshot;
+  try {
+    assertGenerationSnapshot(path, expected);
+    renameSync(temporary, path);
+    const identity = fstatSync(created.opened.descriptor, { bigint: true });
+    if (
+      REGULAR_IDENTITY_FIELDS.some(
+        (field) => field !== "ctimeNs" && identity[field] !== created.opened.identity[field],
+      )
+    )
+      fail("publish generation retirement promotion changed invariant metadata");
+    created.opened.identity = identity;
+    created.opened.stat = fstatSync(created.opened.descriptor);
+    assertPinnedRegular(path, "publish generation retirement lineage", created.opened);
+    const installed = { bytes: prepared.bytes, identity: generationFileIdentity(identity) };
+    options.onGenerationLineageInstalled?.(installed);
+    invokeDurability(options, "generation-lineage-update", path);
+    assertGenerationSnapshot(path, installed);
+    syncFile(path, options);
+    syncDirectory(state, options);
+    assertGenerationSnapshot(path, installed);
+    return installed;
+  } finally {
+    closeSync(created.opened.descriptor);
+  }
+}
+
+function resumePendingRetirement(state, generationRoot, logicalOutput, options) {
+  const journal = join(state, RETIREMENT_PENDING);
+  const lineagePath = join(state, GENERATION_LINEAGE);
+  if (!noFollowEntry(journal) && !noFollowEntry(lineagePath)) return;
+  if (!generationRoot) {
+    if (noFollowEntry(journal)) fail("retirement recovery requires its original generation domain");
+    return;
+  }
+  const root = assertAdmissionDirectory(resolve(generationRoot), "publish generation root");
+  const snapshot = generationAuthoritySnapshot(lineagePath);
+  const lineage = JSON.parse(snapshot.bytes);
+  if (noFollowEntry(journal) || lineage.retiring)
+    retireOldPublishGenerations(state, root, logicalOutput, lineage.active, options);
+}
+
+function retireOldPublishGenerations(state, generationRoot, logicalOutput, activeOutput, options) {
+  if (!generationRoot) return;
+  const root = assertAdmissionDirectory(resolve(generationRoot), "publish generation root");
+  const journal = join(state, RETIREMENT_PENDING);
+  const lineagePath = join(state, GENERATION_LINEAGE);
+  let snapshot = generationAuthoritySnapshot(lineagePath);
+  let lineage = validateGenerationLineage(
+    state,
+    JSON.parse(snapshot.bytes),
+    root,
+    logicalOutput,
+    options.projectKey,
+    {
+      pendingRetirement: noFollowEntry(journal)
+        ? readAuthorityJson(journal, "retirement journal")
+        : undefined,
+    },
+  );
+  generationCurrentMatches(state, lineage);
+  if (lineage.active !== activeOutput)
+    fail("retirement active generation differs from committed lineage");
+  const protectedPaths = new Set([lineage.active, lineage.previous]);
+  // Unknown path names never grant ownership. Only created, durably recorded
+  // generations can become retirement candidates; proved legacy active trees
+  // receive protection, without permission to delete them later.
+  for (const owned of lineage.generations.filter((entry) => !protectedPaths.has(entry.link.path))) {
+    if (!owned.owned) {
+      lineage = { ...lineage, generations: lineage.generations.filter((entry) => entry !== owned) };
+      snapshot = replaceGenerationLineage(state, lineage, snapshot, options);
+      continue;
+    }
+    if (lineage.retiring !== null && lineage.retiring !== owned.link.path)
+      fail("retirement lineage selects a different owned generation");
+    const directory = join(root, owned.link.target);
+    if (
+      lineage.retiring &&
+      !noFollowEntry(owned.link.path) &&
+      !noFollowEntry(directory) &&
+      !noFollowEntry(journal)
+    ) {
+      // Journal unlink can be visible before its parent barrier. Re-establish
+      // both deletion barriers before dropping the exact owned tombstone.
+      syncDirectory(root, options);
+      syncDirectory(state, options);
+    } else {
+      if (!lineage.retiring) {
+        lineage = { ...lineage, retiring: owned.link.path };
+        snapshot = replaceGenerationLineage(state, lineage, snapshot, options);
+      }
+      let record;
+      if (noFollowEntry(journal)) record = readAuthorityJson(journal, "retirement journal");
+      else {
+        validateGenerationEntry(owned, root, logicalOutput);
+        record = {
+          schemaVersion: 2,
+          root,
+          rootIdentity: lineage.rootIdentity,
+          logicalOutput,
+          activeOutput,
+          current: {
+            path: join(state, "current"),
+            target: readlinkSync(join(state, "current")),
+            ...retirementLinkIdentity(lstatSync(join(state, "current"), { bigint: true })),
+          },
+          protected: [lineage.active, lineage.previous].map(
+            (path) => lineage.generations.find((entry) => entry.link.path === path).link,
+          ),
+          output: owned.link,
+          target: { name: owned.link.target, ...owned.tree },
+          entries: retirementTree(directory),
+          lineage: snapshot,
+        };
+        validateRetirement(record, root, logicalOutput, activeOutput);
+        invokeDurability(options, "retirement-prepare", journal);
+        assertGenerationSnapshot(lineagePath, snapshot);
+        writeAtomically(state, journal, `${JSON.stringify(record)}\n`, options);
+      }
+      resumeRetirement(state, record, root, logicalOutput, activeOutput, options);
+    }
+    if (noFollowEntry(owned.link.path) || noFollowEntry(directory))
+      fail("retirement owned generation remains");
+    lineage = {
+      ...lineage,
+      retiring: null,
+      generations: lineage.generations.filter((entry) => entry.link.path !== owned.link.path),
+    };
+    snapshot = replaceGenerationLineage(state, lineage, snapshot, options);
+  }
+}
+
+// Publication deliberately happens before state activation.  The journal turns
+// the only unavoidable crash window (output renamed, current not yet changed)
+// into an exact, byte-verified retry rather than permission to adopt arbitrary
+// pre-existing output.
+export function buildStaticPublish({
+  stateRoot,
+  candidateRoot,
+  outputRoot,
+  destinationRoot,
+  legacyRoot,
+  validatedLegacy,
+  deferActivation = false,
+  generationContext,
+  renameNoReplaceHelper,
+  lockHeld = false,
+  faultAt,
+  onDurabilityOperation,
+  projectKey,
+  onLockOperation,
+  diagnosticHost,
+  onAfterReadOnlyAdmission,
+  onBeforeActivationRevalidation,
+  onBeforeJournalClearRevalidation,
+} = {}) {
+  if (!stateRoot || !candidateRoot || !outputRoot)
+    fail("--state, --candidate and --output are required");
+  const output = resolve(outputRoot);
+  const canonicalOutput = canonicalProspectivePath(output);
+  const candidateRootReal = realpathSync(candidateRoot);
+  if (
+    canonicalOutput === candidateRootReal ||
+    canonicalOutput.startsWith(`${candidateRootReal}${sep}`) ||
+    candidateRootReal.startsWith(`${canonicalOutput}${sep}`)
+  ) {
+    fail("candidate and static publish output must not overlap");
+  }
+  const canonicalState = canonicalProspectivePath(resolve(stateRoot));
+  if (
+    canonicalState === candidateRootReal ||
+    canonicalState.startsWith(`${candidateRootReal}${sep}`) ||
+    candidateRootReal.startsWith(`${canonicalState}${sep}`)
+  ) {
+    fail("candidate and release state must not overlap");
+  }
+  if (
+    canonicalOutput === canonicalState ||
+    canonicalOutput.startsWith(`${canonicalState}${sep}`) ||
+    canonicalState.startsWith(`${canonicalOutput}${sep}`)
+  ) {
+    fail("release state and static publish output must not overlap");
+  }
+  const suppliedLegacyRoot =
+    legacyRoot === undefined || legacyRoot === null ? undefined : resolve(legacyRoot);
+  const legacyValidation =
+    validatedLegacy ||
+    (suppliedLegacyRoot
+      ? basename(suppliedLegacyRoot) === "current"
+        ? pinLegacyHandoffCurrent(suppliedLegacyRoot)
+        : verifyLegacyHandoff(suppliedLegacyRoot)
+      : undefined);
+  if (suppliedLegacyRoot && !legacyValidation?.valid) {
+    fail(`legacy handoff is not authoritative: ${legacyValidation?.reason || "invalid"}`);
+  }
+  legacyValidation?.revalidate?.();
+  const destination = destinationRoot ? resolve(destinationRoot) : null;
+  const operation = deferActivation ? "publish-export" : "publish";
+  const manifest = createCandidateManifest(candidateRootReal);
+  const candidate = { root: candidateRootReal, manifest };
+  const admissionRequest = {
+    stateRoot,
+    candidateRoot: candidateRootReal,
+    release: manifest,
+    output,
+    destination,
+    operation,
+    legacyValidation,
+    projectKey,
+  };
+  inspectPublishAdmission(admissionRequest);
+  if (!lockHeld) onAfterReadOnlyAdmission?.(admissionRequest);
+  const state = ensureStateLayout(stateRoot);
+  const options = { faultAt, onDurabilityOperation, renameNoReplaceHelper };
+  const unlock = lockHeld
+    ? () => {}
+    : acquireLock(state, {
+        projectKey,
+        onLockOperation,
+        diagnosticHost,
+      });
+
+  try {
+    inspectPublishAdmission({ ...admissionRequest, stateRoot: state });
+    let existingPending = readPendingPublish(state);
+    const activateStandalonePublish = () => {
+      const boundary = {
+        state,
+        output,
+        destination,
+        release: manifest,
+        operation,
+        legacyValidation,
+      };
+      onBeforeActivationRevalidation?.(boundary);
+      fault(options, "before-activation-revalidation");
+      syncAndRevalidateJournalBoundary(boundary, candidateRootReal, options);
+      const staged = stageStaticRelease({
+        stateRoot: state,
+        candidateRoot: candidateRootReal,
+        faultAt,
+        onDurabilityOperation,
+        projectKey,
+        onLockOperation,
+        diagnosticHost,
+        lockHeld: true,
+        expectedManifest: manifest,
+        validatedLegacy: legacyValidation,
+        finalRevalidate: () =>
+          assertFinalJournalBoundary(boundary, candidateRootReal, { committed: false }),
+      });
+      if (staged.releaseId !== manifest.releaseId || !verifyCommittedState(state).valid) {
+        fail("static publish activation did not commit the journaled candidate");
+      }
+      onBeforeJournalClearRevalidation?.(boundary);
+      fault(options, "before-clear-revalidation");
+      syncAndRevalidateJournalBoundary(boundary, candidateRootReal, options, {
+        committed: true,
+      });
+      fault(options, "before-publish-journal-clear");
+      clearPendingPublish(state, options);
+      return staged;
+    };
+    if (existingPending && existingPending.operation !== operation) {
+      fail(
+        `static ${existingPending.operation || "unknown"} transaction cannot resume as ${operation}`,
+      );
+    }
+    const parent = dirname(output);
+    assertDirectory(parent, "static publish output parent");
+    const outputEntry = noFollowEntry(output);
+    if (outputEntry) {
+      const outputDirectory = outputEntry.isSymbolicLink()
+        ? exactPublishedOutputDirectory(parent, output, existingPending)
+        : outputEntry.isDirectory()
+          ? output
+          : undefined;
+      if (!outputDirectory) {
+        fail("publish output already exists without an exact pending transaction");
+      }
+      const inventory = outputInventory(outputDirectory);
+      if (!existingPending) {
+        // unlink(publish-pending) can become visible before its directory fsync.
+        // Accept only the exact already-committed output/current/ledger tuple,
+        // repeat its durability barriers, and otherwise keep rejecting occupied
+        // destinations without mutation.
+        if (!exactCommittedPublishWithoutJournal(state, manifest, inventory, legacyValidation)) {
+          fail("publish output already exists without an exact pending transaction");
+        }
+        syncTree(outputDirectory, options);
+        syncDirectory(parent, options);
+        return { changed: false, releaseId: manifest.releaseId, manifest };
+      }
+      const pendingTemporary = join(parent, existingPending.transactionId || "invalid");
+      if (
+        !existingPending ||
+        (outputEntry.isSymbolicLink()
+          ? outputDirectory !== pendingTemporary
+          : noFollowEntry(pendingTemporary)) ||
+        !pendingPublishMatches(
+          existingPending,
+          output,
+          manifest,
+          inventory,
+          operation,
+          legacyValidation,
+        ) ||
+        !pendingInventoryMatchesCandidate(existingPending, manifest) ||
+        !pendingRetainedAssetsMatchCurrentState(
+          state,
+          existingPending,
+          manifest,
+          legacyValidation,
+        ) ||
+        (deferActivation &&
+          !pendingCoordinatorRequestMatches(existingPending, destination, legacyValidation))
+      ) {
+        fail("publish output already exists without an exact pending transaction");
+      }
+      if (existingPending.phase === "prepared") {
+        fail("publish output exists before its durable rename journal phase");
+      }
+      if (existingPending.phase === "renamed-uncommitted") {
+        existingPending = bindRecoveredGeneration(state, existingPending, options);
+        syncTree(outputDirectory, options);
+        fault(options, "before-recovered-output-parent-fsync");
+        syncDirectory(parent, options);
+        fault(options, "after-output-parent-fsync-before-phase");
+        advancePendingPublishPhase(state, existingPending, "output-durable", options);
+      }
+      if (deferActivation) {
+        return { changed: false, releaseId: manifest.releaseId, manifest };
+      }
+      return activateStandalonePublish();
+    }
+    if (existingPending) {
+      if (["output-durable", "export-durable"].includes(existingPending.phase)) {
+        fail("durable publish journal is missing its exact output");
+      }
+      if (
+        !pendingPublishIdentityMatches(
+          existingPending,
+          output,
+          manifest,
+          operation,
+          legacyValidation,
+        ) ||
+        !pendingInventoryMatchesCandidate(existingPending, manifest) ||
+        !pendingPriorStateMatchesCurrentState(state, existingPending) ||
+        (deferActivation &&
+          !pendingCoordinatorRequestMatches(existingPending, destination, legacyValidation))
+      ) {
+        fail("static publish pending journal has no matching pre-output transaction");
+      }
+      const temporary = join(parent, existingPending.transactionId);
+      const temporaryEntry = noFollowEntry(temporary);
+      if (!temporaryEntry || temporaryEntry.isSymbolicLink() || !temporaryEntry.isDirectory()) {
+        fail("static publish pending journal has no exact temporary directory");
+      }
+      assertInside(parent, temporary, "static publish temporary output");
+      const inventory = outputInventory(temporary);
+      if (
+        !pendingPublishMatches(
+          existingPending,
+          output,
+          manifest,
+          inventory,
+          operation,
+          legacyValidation,
+        )
+      ) {
+        fail("static publish temporary output does not match pending journal");
+      }
+      syncTree(temporary, options);
+      if (noFollowEntry(output)) {
+        fail("static publish destination changed during pre-output recovery");
+      }
+      const renamedPending = advancePendingPublishPhase(
+        state,
+        existingPending,
+        "renamed-uncommitted",
+        options,
+      );
+      const boundPending = publishOutputNoReplace({
+        state,
+        temporary,
+        output,
+        pending: renamedPending,
+        options,
+      });
+      fault(options, "crash-after-output-rename-before-parent-fsync");
+      syncDirectory(parent, options);
+      fault(options, "after-output-parent-fsync-before-phase");
+      advancePendingPublishPhase(state, boundPending, "output-durable", options);
+      fault(options, "after-output");
+      if (deferActivation) {
+        return { changed: true, releaseId: manifest.releaseId, manifest };
+      }
+      return activateStandalonePublish();
+    }
+
+    const temporary = join(parent, `.${basename(output)}.publish-${process.pid}-${randomUUID()}`);
+    let renamed = false;
+    let owned;
+    try {
+      owned = createOwnedTree(temporary);
+      const physicalOptions = { ...options, [OWNED_TREE]: owned };
+      const { inventory, priorAssets, expectedAssets } = copyPublishTree({
+        state,
+        candidate,
+        temporary,
+        options: physicalOptions,
+        legacyValidation,
+      });
+      owned.validate();
+      const priorCurrentReleaseId = currentReleaseId(state);
+      const priorCommitted = verifyCommittedState(state);
+      if (
+        (priorCurrentReleaseId === null && priorAssets.length !== 0) ||
+        (priorCurrentReleaseId !== null &&
+          (!priorCommitted.valid || priorCommitted.releaseId !== priorCurrentReleaseId))
+      ) {
+        fail("static publish requires an empty initial state or a valid committed current release");
+      }
+      let pending = {
+        schemaVersion: SCHEMA_VERSION,
+        operation,
+        output,
+        transactionId: basename(temporary),
+        releaseId: manifest.releaseId,
+        manifestSha256: manifestDigest(manifest),
+        phase: "prepared",
+        priorCurrentReleaseId,
+        priorAssetsSha256: inventoryDigest(priorAssets),
+        priorAssets,
+        expectedAssetsSha256: inventoryDigest(expectedAssets),
+        expectedAssets,
+        inventory,
+        destination,
+        exportNonce: operation === "publish-export" ? randomUUID() : null,
+        exportDevice: null,
+        exportInode: null,
+        legacy: legacyRequest(legacyValidation),
+        ...(generationContext
+          ? {
+              generation: {
+                ...generationContext,
+                created: {
+                  link: null,
+                  tree: retirementIdentity(lstatSync(temporary)),
+                  treeSha256: createHash("sha256")
+                    .update(JSON.stringify(retirementTree(temporary)))
+                    .digest("hex"),
+                  releaseId: manifest.releaseId,
+                  manifestSha256: manifestDigest(manifest),
+                  destination,
+                  legacy: legacyRequest(legacyValidation),
+                  owned: true,
+                },
+              },
+            }
+          : {}),
+      };
+      writeAtomically(
+        state,
+        publishPendingPath(state),
+        `${JSON.stringify(pending, null, 2)}\n`,
+        options,
+      );
+      fault(options, "crash-before-output-rename");
+      fault(options, "before-output-rename");
+      pending = advancePendingPublishPhase(state, pending, "renamed-uncommitted", options);
+      pending = publishOutputNoReplace({ state, temporary, output, pending, options });
+      renamed = true;
+      fault(options, "crash-after-output-rename-before-parent-fsync");
+      syncDirectory(parent, options);
+      fault(options, "after-output-parent-fsync-before-phase");
+      pending = advancePendingPublishPhase(state, pending, "output-durable", options);
+      fault(options, "after-output");
+      if (deferActivation) {
+        return { changed: true, releaseId: manifest.releaseId, manifest };
+      }
+      return activateStandalonePublish();
+    } finally {
+      const pendingPath = publishPendingPath(state);
+      const pendingEntry = noFollowEntry(pendingPath);
+      let exactPreOutputTransaction = false;
+      if (
+        !renamed &&
+        pendingEntry?.isFile() &&
+        !pendingEntry.isSymbolicLink() &&
+        noFollowEntry(temporary)?.isDirectory()
+      ) {
+        try {
+          const visiblePending = readPendingPublish(state);
+          const temporaryInventory = outputInventory(temporary);
+          exactPreOutputTransaction =
+            ["prepared", "renamed-uncommitted"].includes(visiblePending?.phase) &&
+            visiblePending.transactionId === basename(temporary) &&
+            pendingPublishMatches(
+              visiblePending,
+              output,
+              manifest,
+              temporaryInventory,
+              operation,
+              legacyValidation,
+            ) &&
+            pendingInventoryMatchesCandidate(visiblePending, manifest) &&
+            pendingPriorStateMatchesCurrentState(state, visiblePending);
+        } catch {
+          exactPreOutputTransaction = false;
+        }
+      }
+      if (!renamed && !exactPreOutputTransaction && owned) {
+        try {
+          owned.cleanup(options);
+        } catch {
+          /* Preserve uncertain or foreign entries. */
+        }
+      }
+      owned?.close();
+      // A visible, exact pre-output journal is durable recovery authority even
+      // when either journal phase write threw after its rename but before
+      // returning. Keep both it and its bound temporary; ambiguous evidence
+      // remains fail-closed.
+    }
+  } finally {
+    unlock();
+  }
+}
+
+// The serving output is an atomic no-replace symlink so it never exposes a
+// partial tree. Static-host/archive consumers that require a physical artifact
+// must call this explicit export operation rather than archiving that link.
+export function exportStaticPublish({
+  stateRoot,
+  candidateRoot,
+  outputRoot,
+  destinationRoot,
+  options,
+  allowPending = false,
+  validatedLegacy,
+} = {}) {
+  if (!stateRoot || !candidateRoot || !outputRoot || !destinationRoot) {
+    fail("--state, --candidate, --output and --destination are required");
+  }
+  const state = resolve(stateRoot);
+  const output = resolve(outputRoot);
+  const destination = resolve(destinationRoot);
+  const exportScope = options?.[OWNED_EXPORT_SCOPE] || { snapshot: null };
+  options = { ...options, [OWNED_EXPORT_SCOPE]: exportScope };
+  const parent = dirname(output);
+  const candidate = createCandidateManifest(realpathSync(candidateRoot));
+  let pending = allowPending ? readPendingPublish(state) : undefined;
+  const source = exactPublishedOutputDirectory(parent, output, pending);
+  if (!source) fail("static publish output is not an exact serving transaction");
+  const inventory = outputInventory(source);
+  const exactPending =
+    allowPending &&
+    pending &&
+    ["output-durable", "export-durable"].includes(pending.phase) &&
+    pendingPublishMatches(
+      pending,
+      output,
+      candidate,
+      inventory,
+      "publish-export",
+      validatedLegacy,
+    ) &&
+    pendingInventoryMatchesCandidate(pending, candidate) &&
+    pendingRetainedAssetsMatchCurrentState(state, pending, candidate, validatedLegacy) &&
+    pendingCoordinatorRequestMatches(pending, destination, validatedLegacy);
+  if (
+    !exactPending &&
+    !exactCommittedPublishWithoutJournal(state, candidate, inventory, validatedLegacy)
+  ) {
+    fail("static publish output is not an exact committed artifact");
+  }
+  const canonicalDestination = canonicalProspectivePath(destination);
+  for (const protectedRoot of [
+    canonicalProspectivePath(state),
+    realpathSync(candidateRoot),
+    canonicalProspectivePath(output),
+    realpathSync(source),
+  ]) {
+    if (pathsOverlap(canonicalDestination, protectedRoot)) {
+      fail(
+        "static export destination must not overlap release state, candidate, or serving output",
+      );
+    }
+  }
+  const existingDestination = noFollowEntry(destination);
+  if (existingDestination) {
+    if (
+      exactPending &&
+      existingDestination.isDirectory() &&
+      !existingDestination.isSymbolicLink() &&
+      destinationOwnership(state, destination, pending, inventory, { exportScope })
+    ) {
+      const existingOwned = admitExportTree(
+        destination,
+        pending,
+        inventory,
+        noFollowEntry(join(destination, EXPORT_OWNER_RECORD))
+          ? pending.exportCreatedTree
+          : exportTreeAfterReceipt(state, destination, pending, inventory),
+        exportScope,
+      );
+      options = { ...options, [OWNED_TREE]: existingOwned };
+      try {
+        existingOwned.validate();
+        syncTree(destination, options);
+        syncDirectory(dirname(destination), options);
+        publishExportReceipt(state, destination, pending, inventory, options || {});
+        if (exactPending && pending.phase === "output-durable") {
+          fault(options || {}, "after-export-parent-fsync-before-phase");
+          advancePendingPublishPhase(state, pending, "export-durable", options || {});
+        }
+        if (!noFollowEntry(join(destination, EXPORT_OWNER_RECORD)))
+          existingOwned.entries.delete(EXPORT_OWNER_RECORD);
+        existingOwned.validate();
+      } finally {
+        existingOwned.close();
+      }
+      return { changed: false, releaseId: candidate.releaseId, manifest: candidate };
+    }
+    fail("static export destination already exists");
+  }
+  const destinationParent = dirname(destination);
+  assertDirectory(destinationParent, "static export destination parent");
+  const temporary = join(
+    destinationParent,
+    exactPending
+      ? `.${basename(destination)}.export-${pending.exportNonce}`
+      : `.${basename(destination)}.export-${process.pid}-${randomUUID()}`,
+  );
+  let published = false;
+  let owned;
+  try {
+    // Never make the requested destination observable until the complete
+    // physical artifact has been copied, verified, and made durable.
+    const existingTemporary = noFollowEntry(temporary);
+    if (existingTemporary) {
+      if (
+        !exactPending ||
+        !exactBoundExportDirectory(temporary, pending) ||
+        !sameEntries(exportedInventory(temporary), inventory)
+      ) {
+        fail("static export journal has no exact bound temporary directory");
+      }
+      owned = admitExportTree(
+        temporary,
+        pending,
+        inventory,
+        pending.exportCreatedTree,
+        exportScope,
+      );
+      options = { ...options, [OWNED_TREE]: owned };
+    } else {
+      if (exactPending && validExportIdentity(pending, { required: true })) {
+        fail("static export journal-bound temporary directory is missing");
+      }
+      owned = createOwnedTree(temporary);
+      options = { ...options, [OWNED_TREE]: owned };
+      for (const entry of inventory) {
+        copyAndVerify(
+          join(source, ...entry.path.split("/")),
+          join(temporary, ...entry.path.split("/")),
+          entry,
+          options,
+          temporary,
+        );
+      }
+      if (exactPending) {
+        const rootIdentity = owned.entries.get("").snapshot;
+        const proofPending = {
+          ...pending,
+          exportDevice: rootIdentity.dev,
+          exportInode: rootIdentity.ino,
+        };
+        const proofPath = join(temporary, EXPORT_OWNER_RECORD);
+        const fd = openSync(
+          proofPath,
+          constants.O_WRONLY |
+            constants.O_CREAT |
+            constants.O_EXCL |
+            constants.O_NOFOLLOW |
+            constants.O_NONBLOCK,
+          0o600,
+        );
+        try {
+          const registered = owned.registerFile(proofPath, fd);
+          writeFileSync(
+            fd,
+            `${JSON.stringify(exportProofFor(proofPending, destination), null, 2)}\n`,
+          );
+          owned.refreshWrittenFile(registered, fd);
+        } finally {
+          closeSync(fd);
+        }
+      }
+      handBackTreeOwnership(temporary, options?.ownerUid, options?.ownerGid, options);
+      owned.validate();
+      syncTree(temporary, options);
+      owned.validate();
+      if (exactPending) {
+        pending = bindPendingExportIdentity(state, pending, temporary, options || {});
+        fault(options || {}, "after-export-identity-bind");
+      }
+    }
+    if (
+      exactPending &&
+      !exactExportProof(
+        readJson(join(temporary, EXPORT_OWNER_RECORD), "export ownership proof"),
+        pending,
+        destination,
+      )
+    )
+      fail("export ownership proof changed");
+    owned.validate();
+    syncTree(temporary, options);
+    owned.validate();
+    if (exactPending && !exactBoundExportDirectory(temporary, pending)) {
+      fail("static export temporary changed after its journal identity was bound");
+    }
+    syncDirectory(destinationParent, options);
+    options?.onBeforeExportPublish?.({ temporary, destination });
+    options?.ownerAuthority?.revalidate();
+    owned.validate();
+    renameNoReplace(temporary, destination, options);
+    published = true;
+    owned.relocate(destination);
+    exportScope.snapshot = owned.snapshot();
+    invokeDurability(options, "export-rename", destination);
+    syncDirectory(destinationParent, options);
+    if (exactPending) {
+      publishExportReceipt(state, destination, pending, inventory, options || {});
+      fault(options || {}, "after-export-parent-fsync-before-phase");
+      advancePendingPublishPhase(state, pending, "export-durable", options || {});
+      fault(options || {}, "after-export");
+    }
+  } finally {
+    // Each attempt owns a unique sibling. Ordinary failures cannot leave a
+    // partial destination. Once the journal may have durably bound the inode,
+    // preserve it even if the binding call failed after its atomic rename but
+    // before its parent barrier returned.
+    if (!published && noFollowEntry(temporary)) {
+      let preserveForJournal = false;
+      if (exactPending) {
+        try {
+          const latest = readPendingPublish(state);
+          preserveForJournal = Boolean(
+            latest &&
+            validExportIdentity(latest, { required: true }) &&
+            latest.exportNonce === pending.exportNonce,
+          );
+        } catch {
+          preserveForJournal = true;
+        }
+      }
+      if (!preserveForJournal && owned) {
+        try {
+          owned.cleanup(options);
+        } catch {
+          /* Preserve substituted/unknown objects. */
+        }
+      }
+    }
+    owned?.close();
+  }
+  return { changed: true, releaseId: candidate.releaseId, manifest: candidate };
+}
+
+export function publishAndExportStaticRelease(options) {
+  if (
+    !options?.stateRoot ||
+    !options?.candidateRoot ||
+    !options?.outputRoot ||
+    !options?.destinationRoot
+  ) {
+    fail("--state, --candidate, --output and --destination are required");
+  }
+  const candidateRoot = realpathSync(options.candidateRoot);
+  const manifest = createCandidateManifest(candidateRoot);
+  const logicalOutput = resolve(options.outputRoot);
+  const generationRoot = options.generationRoot
+    ? assertAdmissionDirectory(resolve(options.generationRoot), "publish generation root")
+    : null;
+  let output = logicalOutput;
+  let generationSelection;
+  let generationSnapshot;
+  const destination = resolve(options.destinationRoot);
+  const ownerSource = options.ownerMapping || options.ownerProbe;
+  const ownerFields = [ownerSource, options.ownerUid, options.ownerGid];
+  const ownerFieldCount = ownerFields.filter((value) => value !== undefined).length;
+  if (ownerFieldCount !== 0 && ownerFieldCount !== ownerFields.length)
+    fail("export owner authority, uid, and gid must be supplied together");
+  if (options.ownerMapping && options.ownerProbe)
+    fail("export owner mapping and existing probe cannot be combined");
+  const ownerAuthority = ownerFieldCount
+    ? options.ownerMapping
+      ? createExportOwnerAuthority({
+          mappingDirectory: options.ownerMapping,
+          mappingName: options.ownerMappingName,
+          expectedParent: dirname(destination),
+          claimedUid: options.ownerUid,
+          claimedGid: options.ownerGid,
+          effectiveUid: options.ownerEffectiveUid,
+          effectiveGid: options.ownerEffectiveGid,
+          onAfterOpen: options.onAfterOwnerProbeOpen,
+          onDurabilityOperation: options.onDurabilityOperation,
+        })
+      : observeExportOwnerMapping({
+          probePath: options.ownerProbe,
+          expectedParent: dirname(destination),
+          claimedUid: options.ownerUid,
+          claimedGid: options.ownerGid,
+          effectiveUid: options.ownerEffectiveUid,
+          effectiveGid: options.ownerEffectiveGid,
+          onAfterOpen: options.onAfterOwnerProbeOpen,
+        })
+    : undefined;
+  const exportScope = { snapshot: null };
+  const originalDurability = options.onDurabilityOperation;
+  options = {
+    ...options,
+    ownerAuthority,
+    onDurabilityOperation: (event) => {
+      ownerAuthority?.revalidate();
+      if (generationRoot) assertCoordinatorGenerationSnapshot();
+      originalDurability?.(event);
+      ownerAuthority?.revalidate();
+      if (generationRoot) assertCoordinatorGenerationSnapshot();
+    },
+  };
+  const assertCoordinatorGenerationSnapshot = () => {
+    const path = join(resolve(options.stateRoot), GENERATION_LINEAGE);
+    if (generationSnapshot) assertGenerationSnapshot(path, generationSnapshot);
+    else if (noFollowEntry(path)) fail("publish generation lineage appeared during transaction");
+  };
+  options.onGenerationLineageInstalled = (snapshot) => {
+    generationSnapshot = snapshot;
+  };
+  try {
+    const suppliedLegacyRoot = options.legacyRoot ? resolve(options.legacyRoot) : undefined;
+    const legacyValidation = suppliedLegacyRoot
+      ? basename(suppliedLegacyRoot) === "current"
+        ? pinLegacyHandoffCurrent(suppliedLegacyRoot)
+        : verifyLegacyHandoff(suppliedLegacyRoot)
+      : undefined;
+    if (suppliedLegacyRoot && !legacyValidation?.valid) {
+      fail(`legacy handoff is not authoritative: ${legacyValidation?.reason || "invalid"}`);
+    }
+    legacyValidation?.revalidate?.();
+    if (generationRoot) {
+      generationSelection = readGenerationSelection(
+        resolve(options.stateRoot),
+        generationRoot,
+        logicalOutput,
+        manifest,
+        destination,
+        legacyValidation,
+        options.projectKey,
+      );
+      output = generationSelection.output;
+      generationSnapshot = generationSelection.snapshot;
+    }
+    const admissionRequest = {
+      stateRoot: options.stateRoot,
+      candidateRoot,
+      release: manifest,
+      output,
+      destination,
+      operation: "publish-export",
+      legacyValidation,
+      projectKey: options.projectKey,
+      [OWNED_EXPORT_SCOPE]: exportScope,
+    };
+    inspectPublishAdmission(admissionRequest);
+    options.onAfterReadOnlyAdmission?.(admissionRequest);
+    ownerAuthority?.revalidate();
+    if (generationRoot) assertCoordinatorGenerationSnapshot();
+    const state = ensureStateLayout(options.stateRoot);
+    const transactionOptions = {
+      faultAt: options.faultAt,
+      onDurabilityOperation: options.onDurabilityOperation,
+      renameNoReplaceHelper: options.renameNoReplaceHelper,
+      onBeforeExportPublish: options.onBeforeExportPublish,
+      onBeforeOwnershipChange: options.onBeforeOwnershipChange,
+      ownerUid: ownerAuthority?.uid,
+      ownerGid: ownerAuthority?.gid,
+      ownerAuthority,
+      projectKey: options.projectKey,
+      onGenerationLineageInstalled: options.onGenerationLineageInstalled,
+      [OWNED_EXPORT_SCOPE]: exportScope,
+    };
+    const unlock = acquireLock(state, {
+      projectKey: options.projectKey,
+      onLockOperation: options.onLockOperation,
+      diagnosticHost: options.diagnosticHost,
+    });
+    try {
+      if (generationRoot) assertCoordinatorGenerationSnapshot();
+      // Finish the prior committed generation's bounded retirement before a
+      // new release can change its active/rollback authority.
+      resumePendingRetirement(state, options.generationRoot, logicalOutput, transactionOptions);
+      if (generationRoot) {
+        generationSelection = readGenerationSelection(
+          state,
+          generationRoot,
+          logicalOutput,
+          manifest,
+          destination,
+          legacyValidation,
+          options.projectKey,
+          output,
+        );
+        if (generationSelection.output !== output)
+          fail("publish generation changed during locked admission");
+        generationSnapshot = generationSelection.snapshot;
+      }
+      const lockedManifest = createCandidateManifest(candidateRoot);
+      if (
+        lockedManifest.releaseId !== manifest.releaseId ||
+        !sameEntries(lockedManifest.assets, manifest.assets) ||
+        !sameEntries(lockedManifest.mutable, manifest.mutable)
+      ) {
+        fail("candidate changed between read-only and locked admission");
+      }
+      legacyValidation?.revalidate?.();
+      const lockedAdmission = inspectPublishAdmission({ ...admissionRequest, stateRoot: state });
+      if (lockedAdmission.terminal) {
+        syncAndRevalidateCommittedTerminal(
+          { ...admissionRequest, stateRoot: state },
+          lockedAdmission,
+          transactionOptions,
+        );
+        retireOldPublishGenerations(
+          state,
+          options.generationRoot,
+          logicalOutput,
+          output,
+          transactionOptions,
+        );
+        ownerAuthority?.revalidate();
+        return { changed: false, releaseId: manifest.releaseId, manifest };
+      }
+      const published = buildStaticPublish({
+        ...options,
+        outputRoot: output,
+        generationContext: generationSelection?.generation,
+        stateRoot: state,
+        validatedLegacy: legacyValidation,
+        deferActivation: true,
+        lockHeld: true,
+      });
+      const exported = exportStaticPublish({
+        ...options,
+        outputRoot: output,
+        stateRoot: state,
+        validatedLegacy: legacyValidation,
+        allowPending: true,
+        options: transactionOptions,
+      });
+      let pending = readPendingPublish(state);
+      if (
+        !pending ||
+        pending.phase !== "export-durable" ||
+        !pendingCoordinatorRequestMatches(
+          pending,
+          resolve(options.destinationRoot),
+          legacyValidation,
+        )
+      ) {
+        fail("static publish/export transaction is not durably export-complete");
+      }
+      pending = prepareGenerationPromotion(state, pending, transactionOptions);
+      const boundary = {
+        state,
+        output,
+        destination,
+        release: manifest,
+        operation: "publish-export",
+        legacyValidation,
+        [OWNED_EXPORT_SCOPE]: exportScope,
+      };
+      options.onBeforeActivationRevalidation?.(boundary);
+      ownerAuthority?.revalidate();
+      fault(transactionOptions, "before-activation-revalidation");
+      syncAndRevalidateJournalBoundary(boundary, candidateRoot, transactionOptions);
+      fault(transactionOptions, "before-current-activation");
+      const staged = stageCoordinatorRelease(
+        {
+          ...options,
+          stateRoot: state,
+          validatedLegacy: legacyValidation,
+          lockHeld: true,
+          expectedManifest: published.manifest,
+          finalRevalidate: () => {
+            ownerAuthority?.revalidate();
+            assertFinalJournalBoundary(boundary, candidateRoot, { committed: false });
+          },
+        },
+        boundary,
+      );
+      if (
+        staged.releaseId !== published.releaseId ||
+        published.releaseId !== exported.releaseId ||
+        !verifyCommittedState(state).valid
+      ) {
+        fail("static publish/export transaction changed between operations");
+      }
+      options.onBeforeJournalClearRevalidation?.(boundary);
+      ownerAuthority?.revalidate();
+      fault(transactionOptions, "before-clear-revalidation");
+      syncAndRevalidateJournalBoundary(boundary, candidateRoot, transactionOptions, {
+        committed: true,
+      });
+      fault(transactionOptions, "before-publish-journal-clear");
+      ownerAuthority?.revalidate();
+      promoteGenerationLineage(state, pending, transactionOptions);
+      clearPendingPublish(state, transactionOptions);
+      retireOldPublishGenerations(
+        state,
+        options.generationRoot,
+        logicalOutput,
+        output,
+        transactionOptions,
+      );
+      ownerAuthority?.revalidate();
+      return exported;
+    } finally {
+      unlock();
+    }
+  } finally {
+    ownerAuthority?.close();
+  }
+}
+
+function parseCli(argv) {
+  const [command = "stage", ...rest] = argv;
+  const values = {};
+  for (let index = 0; index < rest.length; index += 1) {
+    if (!rest[index].startsWith("--") || !rest[index + 1]) fail("expected --name value arguments");
+    values[rest[index].slice(2)] = rest[index + 1];
+    index += 1;
+  }
+  return { command, values };
+}
+
+function parseOwnerId(value, label) {
+  if (value === undefined) return undefined;
+  if (!/^(0|[1-9][0-9]*)$/.test(value)) fail(`${label} must be a numeric host identity`);
+  const parsed = Number(value);
+  if (!Number.isSafeInteger(parsed)) fail(`${label} must be a safe integer host identity`);
+  return parsed;
+}
+
+if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+  const { command, values } = parseCli(process.argv.slice(2));
+  const options = {
+    stateRoot: values.state,
+    candidateRoot: values.candidate,
+    legacyRoot: values.legacy,
+    faultAt: values.fault,
+    generationRoot: values["generation-root"],
+    ownerUid: parseOwnerId(values["owner-uid"], "--owner-uid"),
+    ownerGid: parseOwnerId(values["owner-gid"], "--owner-gid"),
+    ownerProbe: values["owner-probe"],
+    ownerMapping: values["owner-mapping"],
+    ownerMappingName: values["owner-mapping-name"],
+  };
+  const result =
+    command === "stage"
+      ? stageStaticRelease(options)
+      : command === "publish"
+        ? buildStaticPublish({ ...options, outputRoot: values.output })
+        : command === "export"
+          ? exportStaticPublish({
+              ...options,
+              outputRoot: values.output,
+              destinationRoot: values.destination,
+            })
+          : command === "publish-export"
+            ? publishAndExportStaticRelease({
+                ...options,
+                outputRoot: values.output,
+                destinationRoot: values.destination,
+              })
+            : command === "verify"
+              ? verifyCommittedState(values.state)
+              : command === "legacy-write"
+                ? writeLegacyHandoffManifest({
+                    legacyRoot: values.legacy,
+                    handoffRoot: values.handoff,
+                    sourceId: values["source-id"],
+                    sourceKind: values["source-kind"],
+                    faultAt: values.fault,
+                  })
+                : command === "legacy-publish-pointer"
+                  ? publishLegacyHandoffPointer({
+                      handoffRoot: values.handoff,
+                      release: values.release,
+                      faultAt: values.fault,
+                    })
+                  : command === "adopted-project-write"
+                    ? writeAdoptedProject({
+                        handoffRoot: values.handoff,
+                        project: values.project,
+                        faultAt: values.fault,
+                      })
+                    : command === "adopted-project-verify"
+                      ? verifyAdoptedProject({
+                          handoffRoot: values.handoff,
+                          faultAt: values.fault,
+                        })
+                      : command === "legacy-verify"
+                        ? (basename(resolve(values.legacy)) === "current"
+                            ? pinLegacyHandoffCurrent
+                            : verifyLegacyHandoff)(values.legacy, {
+                            expectedSourceId: values["source-id"],
+                            expectedSourceKind: values["source-kind"],
+                          })
+                        : fail(`unknown command ${command}`);
+  if (command === "verify" || command === "legacy-verify") {
+    process.stdout.write(`${JSON.stringify(result)}\n`);
+    if (!result.valid) process.exitCode = 1;
+  } else if (command === "adopted-project-verify") {
+    process.stdout.write(`${result.project}\n`);
+  } else if (
+    command === "legacy-write" ||
+    command === "legacy-publish-pointer" ||
+    command === "adopted-project-write"
+  ) {
+    process.stdout.write(`${JSON.stringify(result)}\n`);
+  } else {
+    process.stdout.write(
+      `${JSON.stringify({
+        changed: result.changed,
+        releaseId: result.releaseId,
+        assets: result.manifest.assets.length,
+        mutable: result.manifest.mutable.length,
+      })}\n`,
+    );
+  }
+}

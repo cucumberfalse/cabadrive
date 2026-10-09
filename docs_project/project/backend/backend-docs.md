@@ -49,6 +49,82 @@ Planned deployment shapes:
 - Local Docker-served build for end-user study.
 - Optional static hosting of build artifacts (while preserving offline behavior after first load).
 
+Static delivery retains immutable `/assets/` bytes append-only across releases.
+The local Docker release state validates SHA-256/size inventories, rejects
+path escapes, symlinks and same-path byte collisions, and selects a new
+HTML/service-worker shell only after its complete asset union is staged. A
+static host must provide the equivalent atomic shell-last/no-delete contract;
+destructive build-directory replacement is not compatible with old open tabs.
+The executable fresh-artifact path is
+`./scripts/export-static-release.sh /absolute/path/cabadrive-static`. It uses
+the full outgoing-runtime capture boundary first and uses the Docker stager and
+Compose release-state volume to stage that legacy inventory when one exists
+before committing one `publish` transaction and exporting the
+same transaction to a new host directory. A verified clean/post-feature capture
+with no `current` pointer publishes without a legacy argument. Any `current`
+entry that does exist is passed unchanged to strict stager validation, so
+dangling or invalid targets fail rather than becoming clean absence. Every
+present `current` entry must be a symlink; regular files, directories, special
+files, and pointer substitution fail before mutation. The stager pins and
+revalidates the symlink target, and reads the handoff marker from one
+`O_NOFOLLOW | O_NONBLOCK` descriptor proven by `fstat` to be a regular file.
+The static transaction keeps the prior release current while the exact serving
+output and physical export are copied, verified, published no-replace, and
+durably synchronized. Its journal binds prior current, candidate/legacy
+inventory, output, and destination; only an exact retry may continue, and the
+new release is activated last. The lower-level `export` operation intentionally
+fails closed when its publish output is absent or does not match the committed
+state; it is not a standalone fresh-output command.
+
+The stager's serving output and scratch tree share the project-scoped
+`static-publish` Compose volume mounted at `/publish`. Each release uses an
+immutable contained generation, so sequential releases in the same Compose
+project do not collide; post-commit retirement preserves the active and one
+rollback generation. Before removing an older output, a durable
+`publish-retirement.json` record binds its exact link, tree inode and file
+inventory, the committed current pointer, and both protected generations.
+Schema2 also binds authority-bearing symlinks to exact bigint `ctimeNs` and
+`birthtimeNs` values, alongside device/inode and target, so observed Linux inode
+reuse cannot authorize a replacement. Timestamp precision is platform-dependent;
+mutable directory timestamps are not pinned because legitimate partial cleanup
+changes them. Missing or malformed generation fields and old schema1 journals
+fail closed before mutation; no authority is inferred from existing paths.
+Interrupted unlink, partial removal, and sync failures resume only the recorded
+remaining entries; substituted journals or trees fail closed. A later release
+finishes any prior retirement under the existing lock before publishing or
+activating its new generation. Unreferenced foreign trees are never pruned.
+Journal-owned recovery survives separate
+`docker compose run --rm` containers. Physical destination ownership is proven
+by an unpredictable journal-bound record before publication and a durable
+state-side path/device/inode receipt afterward. The journal binds the no-follow
+temporary root device/inode before no-replace rename, and both pre-receipt
+recovery and receipt creation require that same inode, so recursively copied
+proof bytes never establish ownership. Internal proof metadata is then removed
+from the final site. Publication has a read-only admission pass before
+state or lock creation and a complete locked revalidation pass. Existing output
+or destination is recoverable only when the stable journal owns the exact
+operation kind, pinned legacy identity, candidate, path, inventory, and phase.
+The stager re-digests every candidate, legacy, state, output, destination, and
+ownership authority under the lock after all relevant file/tree/directory
+durability walks and immediately before terminal success, activation, and
+journal removal; an exact committed retry also recovers a visible journal
+unlink whose directory sync failed. The wrapper creates a unique host-owned
+mode-0600 probe in the exact export bind parent and keeps its inode open through
+the container run. The stager accepts only a stable no-follow regular probe
+whose observed container UID/GID agrees with either direct host mapping or its
+effective namespaced identity, then uses that observed pair for the ownership
+handoff. Missing, replaced, wrong-type, or contradictory probes fail before
+publication; the wrapper removes only its exact probe afterward. This supports
+both rootful direct mapping and rootless/user-namespace mapping without
+weakening file modes or guessing a host identity.
+
+Retained-ledger, release-marker, execution-domain, asset-promotion-journal, and
+publish-journal authorities use one chunked hard-bounded descriptor reader with
+`O_NOFOLLOW | O_NONBLOCK`, regular-file and policy-readable-mode checks,
+descriptor/path identity revalidation, and caller-specific absence rules.
+Symlinks (including dangling ones), FIFO, directories, sockets/devices, mode
+`000`, malformed or oversized data, and substitution races fail closed.
+
 ## Future Backend Triggers
 
 Backend should only be introduced with an explicit feature spec if requirements add multi-user accounts, sync, remote analytics, or managed content delivery.
