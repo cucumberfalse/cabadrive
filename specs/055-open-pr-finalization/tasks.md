@@ -1,6 +1,19 @@
 # Tasks: Three-PR completion cycle055
 
-## Current215 terminal integration context
+## Current terminal215 engineering context
+
+Terminal215 engineering is complete at2026-10-09T12:18:14Z on source checkpoint38e4d126b18a7fbc1c2fe7e87241eabdeebea1b8 after normal verified-main18173 integration. Original ProgressV3 canonical migration/exact backup/unknown-ID retention/exact-once stats, Learn least-shown priority/stable mount/exposure, and fresh-online/last-known-good-offline update guarantees remain intact. Authentic historical A uses the actual old collector/string-addAll/manual exclusion; before B every cache misses its unloaded manual URL, origin hits and module marker are zero and prompted protocol/sentinel are absent. Real retained-stage B serves the first deferred A request with exact A bytes/hash/origin hit/execution; destructive B returns404. This is an old worker over the current fixture app, not a claim that the entire historical app or its manager is reproduced. Separate modern all-hash/protocol-present/atomic reload/B-to-C prompt/retained-cache/failure controls pass.
+
+Fresh complete preflight TRUE EXIT0 passes769/769 unit tests with zero failures/skips and the complete174 configured browser matrix:170 passed plus four intentional mobile duplicate service-worker skips. Focused affected trio TRUE EXIT0 has14 passed plus the same four intentional duplicates. Log /private/tmp/cabadrive-215-preflight-final.log and /private/tmp/cabadrive-215-focused-final.log preserve actual counts. Superseded fixture expected-protocol mismatch and CLI-only separator forwarding No-tests-found failure remain dated dead ends; the corrected complete execution passes without assertion/timeout/product relaxation.
+
+FULL DEFAULT rebuilt Docker91642 TRUE EXIT0 at observed12:09:30Z (/private/tmp/cabadrive-215-docker-final.log) executes all12 native ownership/cleanup/recovery groups, seven cross-container fault/retry cases before actual11:33:31Z sequential start, full repeated-release/new-destination/exact retry/owned predecessor/foreign/timestamp/mixed stage/retirement matrix and every kernel-lock/killed-publisher/legacy/image-only/absent-source/running/stopped/initial/literal pipe/comma/quote/LF zero-Docker rejection/export mapping subcall. All27 HTTP200/404 cache/security/gzip responses and actual master/runtimeUID101 pass. The unchanged inherited coordinator/helper preserves complete R2c–k creator registry/native relative cleanup/private owner/persisted receipt/pending-only8MiB/strict LIVE and first-recovery-only unchanged positive-birth reconciliation contracts; POSIX no compare-inode-unlink limitation is not overstated.
+
+Additional real-nginx browser/CSP audit32722 TRUE EXIT0 observed12:15:20Z exercises148 app plus8 manual cases,156 records with78 each desktop/mobile,184 real200 documents with enforced self-only script policy,10 manual-lazy records and zero CSP violations/CSP console errors/UI console errors/page exceptions. Own audit project make-down TRUE EXIT0; sibling resources unchanged. Raw logs/JSON are /private/tmp/cabadrive-finalize215-csp/. This actual policy evidence supports current flows rather than Vite-preview-only inference.
+
+Verified214 MERGED1e3507e2363314340eed43c0d77dd3d0acbc92cf at2026-10-08T18:11:24Z and217 MERGED18173ae87611625a619f2d8d7a681af289eab6f6 at2026-10-09T10:13:57Z have allfive verified checks and completed predecessor guards;217 complete170thread inventory is resolved. Predecessor effective60f1/published66f5 roles remain scoped historical evidence.215 published31c remains OPEN at current verified12total/9resolved/3open(two outdated conversations plus current legacy finding); no native resolution or newhead check success is claimed. New exact effective-content commit/Review and original049-learning plus055 chronological same-SHA Architect then Analyst roles remain pending, followed by fresh allfive exacthead CI/fullpagination/thread/conflict/process/evidence-only/expected-head finalization. Only after actual215 merge is all-three-MERGED completion recorded. Original049 Architect3/10/Analyst0 and055 Architect8/10/Analyst0 with05110/05210/0530/0546 remain unchanged; no new return/reset/cleanup scope is assigned.
+
+## Historical terminal215 preparation context
+
 
 Verified predecessor214 MERGEDmain1e3507e2363314340eed43c0d77dd3d0acbc92cf at2026-10-08T18:11:24Z. Verified217 MERGEDmain18173ae87611625a619f2d8d7a681af289eab6f6 at2026-10-09T10:13:57Z after five exact published-head checks SUCCESS,170resolved review threads and strict four-original-feature finalization. Its effective content60f1cac9510a53c26595726d6f98d64a722aec9e received ordered original051/052/053/054 roles; published66f5 final evidence is scoped only to217. Actual remote751unit0skip/164browser and full Docker(all12native/recovery,seven cross-container faults/mixed/sequential/literal paths/27headers/UID101) establish predecessor acceptance. These records do not validate future215 content.
 
@@ -24,7 +37,9 @@ Verified214 MERGEDmain1e3507e2363314340eed43c0d77dd3d0acbc92cf at2026-10-08T18:1
 
 ## Decisions
 
-- Normal terminal215 integration preserves complete incoming R2c–R2k authority/generation/owner/cleanup policies and local049-learning/historical214 records. Both prerequisites are verified merged; cumulative0558/10 remains pending fresh215 proof and ordered same-SHA roles.
+- Current terminal215 integrated engineering/actual-nginx proof is complete; all previous content/checkpoint evidence remains dated history. New exact effective-content Review and ordered original049 plus055 roles are required before live finalization. Retain original0493/10 and cumulative0558/10 without reset.
+
+- Normal terminal215 integration preserves complete incoming R2c–R2k authority/generation/owner/cleanup policies and local049-learning/historical214 records. Both prerequisites are verified merged and fresh215 engineering proof is complete; cumulative0558/10 awaits exactReview and ordered same-SHA roles.
 
 - Completed C055-217-R2k uses creator-held physical-tree registry, generation-bound recovered exports and native descriptor-relative cleanup; only exact receipt-authorized proof removal and same-creator first-recovery timestamp reconciliation are allowed.055 genuine8/10 preserves all original budgets and gates.
 
@@ -35,6 +50,9 @@ Verified214 MERGEDmain1e3507e2363314340eed43c0d77dd3d0acbc92cf at2026-10-08T18:1
 - Complete pagination and unchanged normal gates apply. Multi-feature evidence union uses existing parsers/evaluateFinalizationGates per included feature and evaluatePostEffectiveHeadDiff on exact role-owned union, with one SHA; no helper or gate weakening.
 
 ## Dead Ends
+
+- Terminal focused fixture first expected snapshot omitted modern protocol fields. Disposition: resolved by explicitly true modern expectations and false historical expectations,14pass/four intentional mobile duplicates and fresh170-pass complete matrix; no assertion omission or product change.
+- CLI-only preflight separator became a test filename and returned No-tests-found. Disposition: superseded by corrected complete TRUE EXIT0 preflight769unit/170browser/four intentional duplicates; original failed command is preserved and not claimed successful.
 
 - R2k procfd traversal is Linux-only; Darwin devfd child lookup returns ENOTDIR. Disposition: resolved by portable inherited-descriptor native helper, with no POSIX compare-inode-unlink claim. Missing-proof registry mismatch and same-creator restored-timestamp retry rejection are resolved by exact durable receipt and narrowly proved recovery reconciliation; generic1MiB remains except measured pending-only8MiB.
 
@@ -51,6 +69,8 @@ Verified214 MERGEDmain1e3507e2363314340eed43c0d77dd3d0acbc92cf at2026-10-08T18:1
 
 ## Known Issues
 
+- Terminal215 legacy/protocol/integration/CSP engineering. Disposition: resolved by authentic old-worker miss/retained-origin/destructive and independent modern controls, fresh769/170/fullDEFAULTDocker/real-nginx CSP proof; no risk waiver.
+
 - C055-217-R2k allfive physical ownership/cleanup/recovered-export findings. Disposition: resolved by exact creator-held registry/generation/native-boundary controls and fresh751/164/FULLDEFAULTDocker proof; no defective-behavior or owner-risk waiver.
 
 
@@ -65,12 +85,23 @@ Verified214 MERGEDmain1e3507e2363314340eed43c0d77dd3d0acbc92cf at2026-10-08T18:1
 - C055-217-R2d authority races. Disposition: resolved by all consolidated descriptor/adoption/copy/sync/export controls and actual Linux23/host10/full700/164/rebuiltDocker proof; exact newcontent Review/roles/live gates remain sequential, no defective-behavior waiver.
 - C055-214-OSV2/FRESH/CSP. Disposition: resolved by completed verified214 implementation/roles/live gates and actual merge.
 - C055-217-R1/R2/R3/R2a/R2b engineering findings. Disposition: resolved by implemented exact-authority controls and safety11/11; final integrated Docker/Review/roles remain validation tasks, not accepted defects.
-- Downstream215 faithful legacy fixture/integration. Disposition: accepted already assigned boundedT008/T009; terminal completion awaits fresh integrated215 engineering/roles after actual217 merge, no owner-risk decision accepted.
+- Downstream215 faithful legacy fixture/integration. Disposition: accepted already assigned boundedT008/T009; terminal engineering is complete with authentic integrated proof; final roles/live finalization remain mandatory after actual217 merge, no owner-risk decision accepted.
 - Older pending214 or old-SHA readiness claims. Disposition: superseded by this current checkpoint; dated history remains audit evidence only.
 
 - C055-217-R2c Linux generation ABA. Disposition: resolved by mandatory unrounded canonicaldecimal ctimeNs/birthtimeNs schema2 link authority and schema1/malformed fail-closed handling; real reused-inode replacement now rejects, immediate/deterministic safety13/13 on Linux20+host24, fullpreflight690/164 and rebuiltDocker27HTTP/lifecycle/UID101 pass.
 
+
 ## Verification Evidence
+
+- Terminal PR #215 engineering completed on source checkpoint `38e4d126b18a7fbc1c2fe7e87241eabdeebea1b8`, observed at `2026-10-09T12:15:20Z`. This is fresh implementation evidence after both actual predecessor merges, not final Architect/Analyst validation, an effective-content freeze, publication, or a claim that215 is merged. Only this original049 continuation and cumulative055 evidence are updated; parallel work and historical records remain preserved.
+- Integration provenance: verified predecessor214 merge `1e3507e2363314340eed43c0d77dd3d0acbc92cf` (`2026-10-08T18:11:24Z`) was already synchronized. Fresh fetch/GitHub verification confirmed217 MERGED at `18173ae87611625a619f2d8d7a681af289eab6f6` (`2026-10-09T10:13:57Z`); ordinary merge38e4d retains both histories. Architect resolved only055 plan/tasks conflicts, preserving incoming R2c–k policy, genuine055 Architect8/10 and all predecessor evidence. Frozen retention coordinator/stager/native helper/default Docker runner/nginx/Compose/lock remain unchanged against merged main; no runtime authority or recovery scope was added.
+- Authentic old-worker proof: inherited `asset-retention.spec.ts` now uses the actual historical generator snapshot, with original manual exclusion/string `addAll` and existing retained-origin/offline/destructive assertions preserved. Before B, A's never-loaded manual URL is absent across every Cache Storage, the execution/visible marker is absent, server hits are zero, and both fixed prompted-protocol cache and sentinel are explicitly absent. B is served by the real merged retention stager; A's first deferred request returns exact A bytes/SHA-256, increments the real origin counter and executes A's marker. Physically destructive B publication produces the separate genuine404. This models a historical SW controller over the current fixture app, not an entire historical app or absence of its update manager; no user SKIP_WAITING action is used. The separate modern A control explicitly proves protocol cache/sentinel present, an unloaded but completely precached lazy hash, cache-only recovery with zero origin hits, B→C waiting/prompt and failed atomic-install behavior. Real warm HTTP-cache default-negative/reload-positive controls remain intact.
+- Focused browser verification at isolated `PLAYWRIGHT_PORT=53215`, one worker: `service-worker-update.spec.ts`, `asset-retention.spec.ts`, and `service-worker-http-cache.spec.ts` completed EXIT0,14 passed and4 intentional mobile duplicate SW skips (37.2s), log `/private/tmp/cabadrive-215-focused-final.log`. A superseded first run exited1 with13 passed/4 skips/1 failed because the modern positive snapshot expected object omitted the two newly observed protocol fields. Both expected fields were explicitly corrected to true; historical expectations remain explicitly false, with no omitted observations, relaxed assertions or product change.
+- Fresh complete bundled Node24 preflight `PLAYWRIGHT_PORT=53215 pnpm preflight --workers=1` completed actual EXIT0, observed `2026-10-09T10:53:47Z`:769/769 unit tests with zero failures/skips; complete configured174 desktop/mobile browser matrix,170 passed and4 intentional mobile duplicate SW skips (21.0m); feature-memory/repository/content/attribution/typecheck/lint/format/negative-quality/build gates passed. Log `/private/tmp/cabadrive-215-preflight-final.log`. The earlier command-only attempt `pnpm preflight -- --workers=1` actually exited1 with "No tests found" after passing preceding gates/unit tests because its separator was forwarded as a test filename; archived `/private/tmp/cabadrive-215-preflight-cli-forwarding-failed.log`. The corrected complete run supersedes it without changing source, tests, assertions or timeouts.
+- Fresh FULL DEFAULT Docker `DOCKER_CONFIG=/tmp/cabadrive-finalize214-docker CABADRIVE_HOST_PORT=5195 pnpm test:docker-retention` completed actual terminal EXIT0 (session91642), observed `2026-10-09T12:09:30Z`, log `/private/tmp/cabadrive-215-docker-final.log`, lifecycle project `cabadrive-retention-41865-1791543228395`. No runner subcall was narrowed or disabled. All12 rebuilt Linux created-entry ownership/cleanup/native/recovery groups passed. All seven cross-container fault/retry cases completed before the strict sequential matrix began: actual child44587 sequential project start `2026-10-09T11:33:31Z`, observed at11:35:22Z elapsed1:51, provides progress/order evidence where the runner emits no separate seven-case group marker.
+- Full Docker preserves all original kernel-lock/killed-publisher, image-only/absent-source recovery, running/stopped adoption, B shell/SW/restart/down-up/export, mapped ownership/removability and clean initial-install controls. Repeated A/B/A, same-current/new destination, exact terminal reuse, actual owned previous generation, mixed direct-stage/export admission, foreign/timestamp preservation and interrupted C→D retirement/recovery all pass. Literal pipe and comma/quote checkout positives pass the full adoption/export matrix; genuine LF checkout rejects before mutation with zero Docker calls and unchanged legacy/sibling identity/state/bytes/metadata. All27 HTTP200/404/gzip responses across running/stopped/initial runtime groups carry the required cache/security contract, and all actual master/runtime users are UID101. No sibling runtime was stopped or modified.
+- Additional actual-nginx CSP audit, sequential after Docker, completed actual terminal EXIT0 (session32722), observed `2026-10-09T12:15:20Z`:148 current app scenarios (4.5m) plus8 current manual-placement scenarios (14.7s),78 per desktop/mobile project. Scratch copies preserve all original positive/negative assertions and deterministic clock fixture, changing only their import to an automatic CSP observer; no routing mock or CSP bypass is used. Own project `cabadrive-finalize215-csp-1791547790`, port5195, was built/up through normal Docker Make targets.156 audit records cover Learn/exposure/progress/import/undo/offline/manual flows;184 real200 documents each contain enforced `script-src 'self'`,10 records observe actual hashed manual-lazy requests. Enforced/all CSP violations, CSP console errors, all UI console errors and page exceptions are each zero; no negative-fixture error exemption was needed. Logs and JSON records reside in `/private/tmp/cabadrive-finalize215-csp/`. Only this audit project was stopped with `make down`, actual EXIT0; source worktree remained clean38e4d before evidence append.
+- Current review inventory remains root-verified complete pagination12 total/9 resolved/3 open, with dated historical counts preserved. This implementation does not claim final thread closure, final independent exact-content Review, ordered same-effective-SHA role passes, current-head five-check success, or215 merge. Handoff is before final effective commit for Architect canonical closure of original049 and cumulative055, followed by fresh Review→Architect→Analyst under Orchestrator coordination. Genuine return counts remain unchanged.
 
 - Evidence verified, predecessor217 MERGED18173ae87611625a619f2d8d7a681af289eab6f6 at2026-10-09T10:13:57Z: exact published66f5 allfive native checks SUCCESS,170review threads resolved and strict originalfour gate PASS on effective60f1cac9510a53c26595726d6f98d64a722aec9e. Remote751unit0skip/164browser and full Docker(all12/seven faults/mixed/sequential/literal/27headers/UID101) are predecessor proof, not fresh215 evidence. Predecessor214 verified MERGED1e3507e2363314340eed43c0d77dd3d0acbc92cf at2026-10-08T18:11:24Z. Fresh215 full preflight/Docker/Review/roles remain pending.
 
@@ -129,6 +160,12 @@ Verified214 MERGEDmain1e3507e2363314340eed43c0d77dd3d0acbc92cf at2026-10-08T18:1
 ## Implementation Agent Feedback
 
 - No unresolved Implementation Agent feedback.
+- Planned terminal integration, inherited historical fixture adaptation and actual-nginx acceptance. Disposition: resolved by normal verified-main merge, authentic snapshot/retained-origin controls, full preflight/defaultDocker and enforced-policy browser proof; no scope divergence or accepted unverified runtime risk.
+
+## Historical disposed feedback before terminal215 engineering closure
+
+
+- No unresolved Implementation Agent feedback.
 - Terminal215 full integration/proof and faithful legacy/modern fixture coverage. Disposition: accepted existing T008/T009 assignments; no owner risk waiver and no predecessor acceptance substitution.
 
 ## Historical resolved implementation feedback before terminal215
@@ -150,11 +187,30 @@ Verified214 MERGEDmain1e3507e2363314340eed43c0d77dd3d0acbc92cf at2026-10-08T18:1
 
 ## Cycle PR Set
 
+- PR #214 https://github.com/cucumberfalse/cabadrive/pull/214; branch claude/049-nginx-caching-security; status MERGED head 1e3507e2363314340eed43c0d77dd3d0acbc92cf at2026-10-08T18:11:24Z, allfive/strict prerequisite gates complete. Included as verified merged predecessor evidence in terminal cumulative055.
+- PR #217 https://github.com/cucumberfalse/cabadrive/pull/217; branch codex/051-asset-retention; status MERGED head 18173ae87611625a619f2d8d7a681af289eab6f6 at2026-10-09T10:13:57Z, effective60f1/published66f5 predecessor-only, allfiveSUCCESS/170resolved/strictoriginalfourPASS. Included as verified merged predecessor evidence in cumulative055; old roles do not validate215.
+- PR #215 https://github.com/cucumberfalse/cabadrive/pull/215; branch codex/049-learning-priority-fresh-update; status OPEN published31c, normally integrated sourcecheckpoint38e4d after verifiedmain18173. Terminal implementation PR final-validation inclusion covers original049 plus cumulative055. Fresh769/170 plusfour intentional duplicates/defaultDocker/actualnginxCSP complete; new effectivehead/exactReview/orderedroles/liveCI/thread/finalizer/merge pending. No215 pass or merge claimed.
+
+## Historical cycle inventory before terminal215 engineering closure
+
+
 - PR #214 https://github.com/cucumberfalse/cabadrive/pull/214; branch claude/049-nginx-caching-security; status MERGED at2026-10-08T18:11:24Z, main head1e3507e2363314340eed43c0d77dd3d0acbc92cf; verified predecessor included as historical merged evidence in cumulative055 final validation.
 - PR #217 https://github.com/cucumberfalse/cabadrive/pull/217; branch codex/051-asset-retention; status MERGED at2026-10-09T10:13:57Z, main head18173ae87611625a619f2d8d7a681af289eab6f6, effective60f1cac9510a53c26595726d6f98d64a722aec9e and final published66f5; allfive checks SUCCESS/170threads resolved/strict originalfour finalizer PASS. Included as merged predecessor evidence in cumulative055; old original roles do not validate215.
 - PR #215 https://github.com/cucumberfalse/cabadrive/pull/215; branch codex/049-learning-priority-fresh-update; status OPEN published31c, normal merge of verifiedmain18173 in progress; new final head awaits integrated full proof/effective-content commit. Terminal implementation PR included in original049-learning and cumulative055 final validation. No215 final pass or merge is claimed.
 
 ## Final Validation Evidence
+
+- Architect validation pass: not ready.
+- Architect return count: 8 / 10.
+- Analyst return count: 0 / 5.
+- Effective content head: pending initial215 effective-content commit and exactReview; sourcecheckpoint38e4d is engineering provenance only.
+- Current-PR-head read-only guard: new same-effective-SHA chronological roles then allfive exact-publishedhead checks/fullpagination/conversation/conflict/process/evidence-only/expected-head guard before merge. Current21512/9/3 remains unresolved until actual proof is published and verified.
+- Final-validation evidence-only commit: after new effectivehead, only original049 and055 role-owned evidence union may change; any substantive change requires renewed content preparation/Review/roles. No current final pass is invoked.
+- Limit escalation: none; genuine original0493/10/cumulative0558/10 and historical exhausted original051/052 budgets preserved, no reset.
+- Cleanup: not applicable; no environment deletion assigned, all sibling/intake/continuation work preserved.
+
+## Historical final-validation preparation evidence before terminal215 closure
+
 
 - Current terminal215 validation boundary at2026-10-09T10:18:10Z: predecessors214/217 merged, cumulative055 roles NOTREADY until fresh215 integrated full proof and exact effective-content Review. No215 effective SHA or final pass is claimed. Original049-learning Architect3/10 and Analyst0/5 remain separate from originalnginx049 historical Analyst1/5.
 
@@ -186,8 +242,8 @@ Initial heads/branch names are continuation handoff context, never final remote 
 - [x] T005 Synchronize217 with verified214-merged main, preserving single map/security/gzip/unprivileged runtime and retention `/state/current`/alias assets plus051–054 guarantees.
 - [x] T006 Pass focused hostile retention/provenance/export tests, full preflight, isolated Docker retention lifecycle and combined header/non-root smoke on217 integrated head.
 - [x] T007 Independent review and renewed same-SHA Architect then Analyst evidence for051/052/053/054; all five current-head checks/conversations/guard; merge217 and record GitHub result.
-- [ ] T008 Synchronize215 with both verified merges. Authentic historical A omits manual4Ruedas lazy hash; assert never-loaded cache miss, real retained B-origin first-load with exact A bytes/marker and request evidence, destructive404; preserve new-protocol coverage.
-- [ ] T009 Pass focused SW/browser/learning suites, full preflight and isolated Docker smoke; reconcile fresh complete review inventory with historical counts clearly dated.
+- [x] T008 Synchronize215 with both verified merges. Authentic historical A omits manual4Ruedas lazy hash; assert never-loaded cache miss, real retained B-origin first-load with exact A bytes/marker and request evidence, destructive404; preserve new-protocol coverage.
+- [x] T009 Pass focused SW/browser/learning suites, full preflight and isolated Docker smoke; reconcile fresh complete review inventory with historical counts clearly dated.
 - [ ] T010 Renew049-learning Architect then Analyst validation on integrated215 effective SHA. Perform cumulative055 Architect then Analyst final validation using that SHA and verified predecessor merge evidence.
 - [ ] T011 Verify all five exact215-head gates, independent review/conversations, current-head evidence-only guard and finalizer dry run; merge215 and record GitHub merge SHA/time and all-three-MERGED completion.
 
@@ -1070,3 +1126,29 @@ Open Architect dispositions: terminal215 assigned integration/full proof and lat
 
 Architect return count: 8 / 10.
 Analyst return count: 0 / 5.
+
+
+## Current Architect engineering closure before initial215 effective content
+
+Terminal215 engineering is complete at2026-10-09T12:18:14Z on source checkpoint38e4d126b18a7fbc1c2fe7e87241eabdeebea1b8 after normal verified-main18173 integration. Original ProgressV3 canonical migration/exact backup/unknown-ID retention/exact-once stats, Learn least-shown priority/stable mount/exposure, and fresh-online/last-known-good-offline update guarantees remain intact. Authentic historical A uses the actual old collector/string-addAll/manual exclusion; before B every cache misses its unloaded manual URL, origin hits and module marker are zero and prompted protocol/sentinel are absent. Real retained-stage B serves the first deferred A request with exact A bytes/hash/origin hit/execution; destructive B returns404. This is an old worker over the current fixture app, not a claim that the entire historical app or its manager is reproduced. Separate modern all-hash/protocol-present/atomic reload/B-to-C prompt/retained-cache/failure controls pass.
+
+Fresh complete preflight TRUE EXIT0 passes769/769 unit tests with zero failures/skips and the complete174 configured browser matrix:170 passed plus four intentional mobile duplicate service-worker skips. Focused affected trio TRUE EXIT0 has14 passed plus the same four intentional duplicates. Log /private/tmp/cabadrive-215-preflight-final.log and /private/tmp/cabadrive-215-focused-final.log preserve actual counts. Superseded fixture expected-protocol mismatch and CLI-only separator forwarding No-tests-found failure remain dated dead ends; the corrected complete execution passes without assertion/timeout/product relaxation.
+
+FULL DEFAULT rebuilt Docker91642 TRUE EXIT0 at observed12:09:30Z (/private/tmp/cabadrive-215-docker-final.log) executes all12 native ownership/cleanup/recovery groups, seven cross-container fault/retry cases before actual11:33:31Z sequential start, full repeated-release/new-destination/exact retry/owned predecessor/foreign/timestamp/mixed stage/retirement matrix and every kernel-lock/killed-publisher/legacy/image-only/absent-source/running/stopped/initial/literal pipe/comma/quote/LF zero-Docker rejection/export mapping subcall. All27 HTTP200/404 cache/security/gzip responses and actual master/runtimeUID101 pass. The unchanged inherited coordinator/helper preserves complete R2c–k creator registry/native relative cleanup/private owner/persisted receipt/pending-only8MiB/strict LIVE and first-recovery-only unchanged positive-birth reconciliation contracts; POSIX no compare-inode-unlink limitation is not overstated.
+
+Additional real-nginx browser/CSP audit32722 TRUE EXIT0 observed12:15:20Z exercises148 app plus8 manual cases,156 records with78 each desktop/mobile,184 real200 documents with enforced self-only script policy,10 manual-lazy records and zero CSP violations/CSP console errors/UI console errors/page exceptions. Own audit project make-down TRUE EXIT0; sibling resources unchanged. Raw logs/JSON are /private/tmp/cabadrive-finalize215-csp/. This actual policy evidence supports current flows rather than Vite-preview-only inference.
+
+Verified214 MERGED1e3507e2363314340eed43c0d77dd3d0acbc92cf at2026-10-08T18:11:24Z and217 MERGED18173ae87611625a619f2d8d7a681af289eab6f6 at2026-10-09T10:13:57Z have allfive verified checks and completed predecessor guards;217 complete170thread inventory is resolved. Predecessor effective60f1/published66f5 roles remain scoped historical evidence.215 published31c remains OPEN at current verified12total/9resolved/3open(two outdated conversations plus current legacy finding); no native resolution or newhead check success is claimed. New exact effective-content commit/Review and original049-learning plus055 chronological same-SHA Architect then Analyst roles remain pending, followed by fresh allfive exacthead CI/fullpagination/thread/conflict/process/evidence-only/expected-head finalization. Only after actual215 merge is all-three-MERGED completion recorded. Original049 Architect3/10/Analyst0 and055 Architect8/10/Analyst0 with05110/05210/0530/0546 remain unchanged; no new return/reset/cleanup scope is assigned.
+
+Architect return count: 8 / 10.
+Analyst return count: 0 / 5.
+
+## Final Architect Validation Notes
+
+Architect validation pass: not ready
+Final Architect validation completed at: 2026-10-09T12:18:14Z
+Architect return count: 8 / 10.
+Architect validation evidence: Assigned terminal215 engineering and both current canonical records are closed by actual fresh769unit0skip/170browser plusfour intentional duplicates/fullDEFAULTDocker91642/real-nginx156-record zero-error proof. Actual214/217 merges and all historical R2k generation/native/strict-LIVE/recovery contracts remain intact.
+Architect gaps: none remaining in assigned engineering; initial effective-content commit, exact independent Review and ordered same-SHA final roles remain required.
+Architect disposition: Preserve original0493/10 and0558/10 with Analyst0/5; no new return/reset/final PASS or215 merge is claimed. Native conversations/currenthead five checks/strict finalizer remain Orchestrator gates after actual publication.
+Open Architect dispositions: none in engineering; future final role invocation remains pending.
