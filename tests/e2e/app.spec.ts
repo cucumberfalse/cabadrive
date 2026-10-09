@@ -1417,6 +1417,8 @@ test("reloading mid-exam offers to resume with saved answers and deadline-based 
 }) => {
   await page.clock.install({ time: new Date("2026-01-01T00:00:00Z") });
   await page.goto("/");
+  // Pause after natural loading so async actions cannot cross a minute boundary.
+  await page.clock.pauseAt(new Date("2026-01-01T00:01:00Z"));
   await page.getByRole("button", { name: /Экзамен/ }).click();
   await page.getByRole("button", { name: "Начать" }).click();
   await expect(page.getByText("45:00")).toBeVisible();

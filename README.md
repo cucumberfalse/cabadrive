@@ -16,6 +16,69 @@ Cabadrive — локальный веб-тренажёр для опытных �
 
 Нужен только Docker. Node.js и pnpm на хосте не требуются.
 
+Путь checkout может содержать пробелы, `|`, запятые и кавычки. Управляющие
+символы ASCII (включая табуляцию и перевод строки) в пути checkout не
+поддерживаются Docker Compose: команды отклоняют такой путь до обращения к
+Docker и изменения handoff. Путь внешнего экспортируемого каталога сохраняется
+полностью, включая переводы строк; его канонический родитель не должен содержать
+двоеточие, поскольку Compose передаёт этот bind mount через `--volume`.
+
+Для нового внешнего static-host/archive каталога используйте один
+Docker-contained bootstrap (при первом запуске каталог назначения не должен
+существовать; при точном повторе допускается только каталог, принадлежащий той
+же journal-транзакции):
+
+```bash
+./scripts/export-static-release.sh /absolute/path/cabadrive-static
+```
+
+Команда сначала выполняет полный авторитетный capture исходящей Docker-версии,
+затем собирает Docker stager, проверяет захваченный legacy handoff, добавляет
+его immutable assets в Compose release-state, создаёт и фиксирует точную
+static-publish transaction и только после этого экспортирует именно её в новый
+физический каталог через встроенный atomic no-replace helper. Если полный
+capture подтверждает чистую/post-feature установку без `current`, команда
+выполняет публикацию без legacy-аргумента. Любой существующий `current` (в том
+числе dangling) обязан быть symlink и передаётся stager для закрепления и
+строгой проверки; обычный файл, каталог или подмена pointer завершают команду
+до мутации. Marker handoff читается только через no-follow/nonblocking
+descriptor после проверки regular-file типа. Stager сохраняет предыдущий
+`current`, пока новый serving output и физический export полностью не
+опубликованы и не синхронизированы; только затем активирует новый release.
+Точный journal позволяет повторить прерванную транзакцию, но отклоняет дрейф
+candidate, legacy authority, state, output или destination. Отдельная операция
+`stage-static-release.mjs export` тоже не является bootstrap: без
+соответствующей завершённой публикации или при несовпадении state/output она
+безопасно завершается ошибкой.
+
+Serving output и его временное дерево находятся на отдельном project-scoped
+Compose volume `/publish`. Каждый release получает неизменяемую generation,
+поэтому следующие версии того же Compose-проекта не конфликтуют с предыдущим
+output, а безопасная очистка сохраняет активную и одну rollback generation.
+Точная транзакция переживает остановку и новый `docker compose run --rm`.
+Destination публикуется только с непредсказуемым journal-bound ownership proof;
+proof заранее связывает nonce с device/inode временного каталога, поэтому
+рекурсивная копия его байтов не может быть принята как результат atomic rename.
+После durable state receipt служебный proof удаляется из готового сайта.
+До создания state/lock stager выполняет read-only admission, затем повторяет
+проверку под lock; непосредственно перед активацией и очисткой journal он
+заново проверяет candidate, legacy, state, output, destination и ownership,
+причём последняя полная проверка выполняется после всех durability-walk прямо
+перед активацией release или удалением journal.
+Wrapper создаёт или проверяет в точном export-parent один постоянный приватный
+каталог `.cabadrive-export-owner-mapping` режима `0700`, принадлежащий пользователю
+хоста. Docker монтирует его только для чтения, чтобы наблюдать реальное отображение
+UID/GID. Содержимое этого каталога сохраняется, каталог используется повторно и
+автоматически не удаляется. Stager создаёт отдельный непредсказуемый probe режима
+`0600` через exclusive/no-follow/nonblocking descriptor, назначает ему только
+наблюдаемые UID/GID и держит этот же descriptor до конца экспорта. Подмена файла,
+типа, режима, owner-класса или поколения прекращает операцию до следующего изменения.
+При завершении stager удаляет только свой точный probe; чужая подмена сохраняется.
+Retained ledger, release marker, execution-domain и оба transaction journal
+читаются одним chunked hard-bounded no-follow/nonblocking descriptor protocol: symlink,
+FIFO, directory, socket/device, mode `000`, подмена или слишком большой файл
+никогда не принимаются как authority.
+
 ```bash
 make build
 make up

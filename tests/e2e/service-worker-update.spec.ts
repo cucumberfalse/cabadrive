@@ -47,6 +47,8 @@ async function assertLegacyChunkNeverLoaded(page: import("@playwright/test").Pag
   const snapshot = await page.evaluate(
     async (path) => ({
       loaded: "aOnlyLoaded" in globalThis,
+      protocolCache: await caches.has("cabadrive-update-protocol-v1"),
+      protocolMarker: Boolean(await caches.match("/prompted-activation-v1")),
       cached: await Promise.all(
         (await caches.keys()).map(async (key) =>
           Boolean(await (await caches.open(key)).match(path)),
@@ -56,6 +58,9 @@ async function assertLegacyChunkNeverLoaded(page: import("@playwright/test").Pag
     legacyLazyPath,
   );
   expect(snapshot.loaded).toBe(false);
+  expect(snapshot.protocolCache).toBe(false);
+  expect(snapshot.protocolMarker).toBe(false);
+  await expect(page.locator("#legacy-lazy-marker")).toHaveCount(0);
   expect(snapshot.cached.length).toBeGreaterThan(0);
   expect(snapshot.cached.every((cached) => !cached)).toBe(true);
   expect(lazyOriginRequests).toBe(0);
@@ -339,11 +344,18 @@ test("new-protocol A precaches its never-loaded lazy hash for retained-cache B a
     await oldATab.evaluate(
       async (path) => ({
         loaded: "aOnlyLoaded" in globalThis,
+        protocolCache: await caches.has("cabadrive-update-protocol-v1"),
+        protocolMarker: Boolean(await caches.match("/prompted-activation-v1")),
         body: await (await caches.match(path))?.text(),
       }),
       legacyLazyPath,
     ),
-  ).toEqual({ loaded: false, body: legacyLazyBody });
+  ).toEqual({
+    loaded: false,
+    protocolCache: true,
+    protocolMarker: true,
+    body: legacyLazyBody,
+  });
   publishBuild("B");
   await page.evaluate(async () => {
     await (await navigator.serviceWorker.getRegistration())?.update();

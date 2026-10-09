@@ -22,6 +22,10 @@
 - Guide module focused on CABA-vs-RF differences that matter for exam outcomes, including compact parking-clearance contrast notes where source-supported by the current fallback practice set.
 - Offline-capable local-first behavior after build, with online navigation preferring the currently deployed app, last-ready shell fallback offline, and a compact explicit update banner for long-lived tabs.
 - Docker-only local runtime with `make build`, `make up`, and `make down`.
+- Append-only, SHA-256-verified static `/assets/` retention across Docker
+  releases, with a project-scoped persistent release volume, first legacy-image
+  capture, atomic shell-last activation, and an explicit non-destructive static
+  hosting contract for old lazy chunks.
 - Public project entry point with Apache-2.0 licensing for Cabadrive-owned work, separate third-party/official-source attribution, Docker quick start, contribution/security policies, and three current product screenshots.
 - Top-level `О приложении` view with deterministic package version, canonical local content-mode and community-source attribution, official-source boundary, repository link, and no runtime network dependency.
 
