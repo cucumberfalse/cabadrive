@@ -2,7 +2,9 @@
 
 ## Current217 Progress Boundary
 
-Verified214 is MERGEDmain1e3507e2363314340eed43c0d77dd3d0acbc92cf at2026-10-08T18:11:24Z with all five checks and strict finalizer. Integrated217 R2d engineering passes fullpreflight700unit/164browser, Linux20root23/23, newhostdescriptor10/10 and rebuiltDocker lifecycle/27HTTP/UID101. Prior356/8c5 role/check evidence is historical; one newcontent/exactReview and renewed original051–054 ordered roles/live gates precede217 merge.055 cumulative stays excluded and uninvoked until terminal215 after verified prerequisites; originalbudgets preserved055return2/10.
+C055-217-R2h engineering is complete: exactly two tag-derived runtime-label calls now classify the captured immutable historical_image/image ID, retaining selected-container .Image and exact source/create binding. Authentic forward/reverse retag and removed-ID fail-closed controls pass in three focused groups. Composite final evidence comprises724 unit tests plus all quality/build gates from the initial preflight, four focused browser cases and a fresh complete164/164 single-worker browser run EXIT0, and full DEFAULT Docker25591/5197 EXIT0 with every kernel-lock/killed-publisher/C→D subcall, running/stopped/path/export/private-owner controls and27HTTP cache/security/gzip/UID101. The initial preflight EXIT1 with161/164 browser passes and three failures is preserved honestly; the approved controlled-clock fixture retained all assertions/timeouts, and final complete browser proof supersedes that failed attempt. No first-preflight EXIT0 is claimed. Exact new content Review, renewed originalfour same-SHA ordered roles and allfive complete current-head/fullpagination/finalizer gates remain pending;217 is not asserted merged,215/cumulative055 remain uninvoked. Genuine055 Architect return5/10 and original10/10,10/10,0/10,6/10 with Analyst0 are preserved.
+
+Verified214 is MERGEDmain1e3507e2363314340eed43c0d77dd3d0acbc92cf at2026-10-08T18:11:24Z.
 
 ## Goal and cycle context
 

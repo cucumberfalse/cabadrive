@@ -373,7 +373,7 @@ resolve_project() {
   # Do not scan arbitrary similarly named images.
   if is_safe_project_name "$historical_basename"; then
     if historical_image="$(inspect_runtime_image "${historical_basename}-cabadrive")"; then
-      if classify_runtime_label "${historical_basename}-cabadrive"; then
+      if classify_runtime_label "$historical_image"; then
         :
       else
         runtime_label_status=$?
@@ -636,7 +636,7 @@ else
   fi
 fi
 if [ -n "$image" ]; then
-  if classify_runtime_label "${project}-cabadrive"; then
+  if classify_runtime_label "$image"; then
     if [ -n "$invalid_state" ]; then
       printf '%s\n' 'incomplete project release-state has no readable legacy source' >&2
       exit 1

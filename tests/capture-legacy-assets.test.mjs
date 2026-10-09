@@ -1778,3 +1778,218 @@ test("capture test locates its script module-relatively and has no checkout-spec
   assert.equal(existsSync(captureScript), true);
   assert.doesNotMatch(readFileSync(new URL(import.meta.url), "utf8"), /\/Users\//);
 });
+
+function createRetagClassificationFixture({
+  kind = "legacy",
+  removed = false,
+  provenance = "none",
+  historical = false,
+} = {}) {
+  const root = join(
+    realpathSync(tmpdir()),
+    `cabadrive-retag-${process.pid}-${Date.now()}-${Math.random().toString(16).slice(2)}`,
+  );
+  mkdirSync(root);
+  const project = historical ? root.split("/").at(-1) : "fixture";
+  const bin = join(root, "bin"),
+    log = join(root, "docker.log");
+  const handoff = join(root, ".cabadrive-release-handoff", project);
+  const oldRelease = join(handoff, "releases", "preserved");
+  mkdirSync(bin, { recursive: true });
+  mkdirSync(join(oldRelease, "assets"), { recursive: true });
+  writeFileSync(join(oldRelease, "assets", "preserved.js"), "preserve original A");
+  writeFileSync(join(root, "docker-compose.yml"), "services: {}\n");
+  const stager = fileURLToPath(new URL("../scripts/stage-static-release.mjs", import.meta.url));
+  for (const args of [
+    [
+      "legacy-write",
+      "--legacy",
+      oldRelease,
+      "--handoff",
+      handoff,
+      "--source-id",
+      "preserved-source",
+      "--source-kind",
+      "baked-legacy-root",
+    ],
+    ["legacy-publish-pointer", "--handoff", handoff, "--release", "releases/preserved"],
+  ]) {
+    const result = spawnSync(process.execPath, [stager, ...args], { encoding: "utf8" });
+    assert.equal(result.status, 0, result.stderr);
+  }
+  const sibling = join(root, ".cabadrive-release-handoff", "foreign-sibling");
+  mkdirSync(sibling);
+  writeFileSync(join(sibling, "sentinel"), "foreign authority unchanged");
+  const docker = join(bin, "docker");
+  writeFileSync(
+    docker,
+    `#!/bin/sh
+set -eu
+printf '%s\\n' "$*" >>"$R2H_LOG"
+if [ "$1" = ps ]; then
+  [ "$R2H_PROVENANCE" = none ] || printf '%s\\n' provenance-container
+  exit 0
+fi
+if [ "$1" = inspect ]; then
+  case "$*" in
+    *working_dir*) [ "$R2H_PROVENANCE" != working ] || printf '%s\\n' "$CABADRIVE_REPOSITORY_ROOT" ;;
+    *config_files*) [ "$R2H_PROVENANCE" != config ] || printf '%s\\n' "$CABADRIVE_REPOSITORY_ROOT/docker-compose.yml" ;;
+    *project*) printf '%s\\n' "$R2H_PROJECT" ;;
+    *) exit 91 ;;
+  esac
+  exit 0
+fi
+if [ "$1" = compose ]; then exit 0; fi
+if [ "$1" = volume ]; then exit 1; fi
+if [ "$1" = image ] && [ "$2" = inspect ]; then
+  for argument do target="$argument"; done
+  case "$*" in
+    *com.cabadrive.release-state-runtime*)
+      if [ "$target" = immutable-bound-image-id ]; then
+        if [ "$R2H_REMOVED" = yes ]; then printf '%s\\n' 'No such image: immutable-bound-image-id' >&2; exit 42; fi
+        [ "$R2H_KIND" != post-feature ] || printf '%s\\n' true
+      else
+        # The tag now denotes the OPPOSITE runtime kind. Its new label cannot
+        # classify the already captured original immutable identity.
+        [ "$R2H_KIND" != legacy ] || printf '%s\\n' true
+      fi
+      ;;
+    *) printf '%s\\n' immutable-bound-image-id ;;
+  esac
+  exit 0
+fi
+if [ "$1" = create ]; then
+  [ "$2" = immutable-bound-image-id ] || exit 92
+  printf '%s\\n' captured-original-container
+  exit 0
+fi
+if [ "$1" = cp ]; then
+  [ "$2" = captured-original-container:/usr/share/nginx/html/assets/. ] || exit 93
+  mkdir -p "$3"; printf '%s' exact-original-image-A >"$3/original-a.js"
+  exit 0
+fi
+if [ "$1" = rm ]; then exit 0; fi
+if [ "$1" = run ]; then
+  while [ "$1" != /app/stage-static-release.mjs ]; do shift; done
+  shift; operation="$1"; shift
+  translated_count="$#"
+  while [ "$translated_count" -gt 0 ]; do
+    argument="$1"; shift
+    case "$argument" in /handoff) argument="$R2H_HANDOFF" ;; /handoff/*) argument="$R2H_HANDOFF/\${argument#/handoff/}" ;; esac
+    set -- "$@" "$argument"
+    translated_count=$((translated_count - 1))
+  done
+  exec "$R2H_NODE" "$R2H_STAGER" "$operation" "$@"
+fi
+exit 94
+`,
+  );
+  chmodSync(docker, 0o755);
+  const env = {
+    ...process.env,
+    CABADRIVE_REPOSITORY_ROOT: root,
+    PATH: `${bin}:${process.env.PATH}`,
+    R2H_LOG: log,
+    R2H_PROJECT: project,
+    R2H_HANDOFF: handoff,
+    R2H_NODE: process.execPath,
+    R2H_STAGER: stager,
+    R2H_KIND: kind,
+    R2H_REMOVED: removed ? "yes" : "no",
+    R2H_PROVENANCE: provenance,
+  };
+  if (historical) delete env.COMPOSE_PROJECT_NAME;
+  else env.COMPOSE_PROJECT_NAME = project;
+  return { root, project, handoff, log, env, sibling };
+}
+
+function assertRetagSiblingPreserved(fixture) {
+  assert.equal(
+    readFileSync(join(fixture.sibling, "sentinel"), "utf8"),
+    "foreign authority unchanged",
+  );
+  assert.equal(
+    readFileSync(join(fixture.handoff, "releases/preserved/assets/preserved.js"), "utf8"),
+    "preserve original A",
+  );
+}
+
+test("stopped-image capture keeps its immutable identity across retagging in both directions", () => {
+  for (const kind of ["legacy", "post-feature"]) {
+    const fixture = createRetagClassificationFixture({ kind });
+    try {
+      const result = spawnSync("sh", [captureScript], { env: fixture.env, encoding: "utf8" });
+      assert.equal(result.status, 0, result.stderr);
+      const calls = readFileSync(fixture.log, "utf8");
+      assert.match(calls, /release-state-runtime.*immutable-bound-image-id/);
+      assert.doesNotMatch(calls, /release-state-runtime.*fixture-cabadrive/);
+      if (kind === "legacy") {
+        assert.match(calls, /^create immutable-bound-image-id$/m);
+        assert.equal(
+          readFileSync(join(fixture.handoff, "current/source-id"), "utf8"),
+          "immutable-bound-image-id\n",
+        );
+        assert.equal(
+          readFileSync(join(fixture.handoff, "current/assets/original-a.js"), "utf8"),
+          "exact-original-image-A",
+        );
+      } else {
+        assert.doesNotMatch(calls, /^(create|cp)\b/m);
+        assert.equal(readlinkSync(join(fixture.handoff, "current")), "releases/preserved");
+      }
+      assertRetagSiblingPreserved(fixture);
+    } finally {
+      rmSync(fixture.root, { recursive: true, force: true });
+    }
+  }
+});
+
+test("historical image classification survives retagging and preserves exact Compose ancestry", () => {
+  for (const kind of ["legacy", "post-feature"])
+    for (const provenance of ["none", "working", "config"]) {
+      const fixture = createRetagClassificationFixture({ kind, historical: true, provenance });
+      try {
+        const result = spawnSync("sh", [captureScript, "--resolve-project"], {
+          env: fixture.env,
+          encoding: "utf8",
+        });
+        assert.equal(result.status, 0, result.stderr);
+        assert.equal(
+          result.stdout.trim(),
+          kind === "legacy" || provenance !== "none" ? fixture.project : "cabadrive",
+        );
+        const calls = readFileSync(fixture.log, "utf8");
+        assert.match(calls, /release-state-runtime.*immutable-bound-image-id/);
+        assert.doesNotMatch(
+          calls,
+          new RegExp(`release-state-runtime.*${fixture.project}-cabadrive`),
+        );
+        assert.doesNotMatch(calls, /^(create|cp)\b/m);
+        assert.equal(readlinkSync(join(fixture.handoff, "current")), "releases/preserved");
+        assertRetagSiblingPreserved(fixture);
+      } finally {
+        rmSync(fixture.root, { recursive: true, force: true });
+      }
+    }
+});
+
+test("an unavailable captured image fails closed without replacement-tag fallback or retained mutations", () => {
+  for (const historical of [false, true]) {
+    const fixture = createRetagClassificationFixture({ historical, removed: true });
+    try {
+      const result = spawnSync(
+        "sh",
+        [captureScript, ...(historical ? ["--resolve-project"] : [])],
+        { env: fixture.env, encoding: "utf8" },
+      );
+      assert.notEqual(result.status, 0);
+      assert.match(result.stderr, /failed to inspect project runtime label/);
+      const calls = readFileSync(fixture.log, "utf8");
+      assert.doesNotMatch(calls, /^(create|cp)\b/m);
+      assert.equal(readlinkSync(join(fixture.handoff, "current")), "releases/preserved");
+      assertRetagSiblingPreserved(fixture);
+    } finally {
+      rmSync(fixture.root, { recursive: true, force: true });
+    }
+  }
+});
