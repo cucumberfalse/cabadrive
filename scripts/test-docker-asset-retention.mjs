@@ -1238,6 +1238,28 @@ try {
   startLegacyContainer(project);
   make(["build"], project);
   assertImageOnlyIncompleteRecovery(project);
+  // The real rebuilt stager/helper must preserve task-local foreign objects
+  // as Linux root, and verify durable created entries across process retries.
+  run("docker", [
+    "run",
+    "--rm",
+    "--network",
+    "none",
+    "--mount",
+    `type=bind,source=${join(root, "tests", "created-tree-static-release-safety.test.mjs")},target=/probe/created-tree.test.mjs,readonly`,
+    "-e",
+    "CABADRIVE_DESCRIPTOR_TEST_MODULE=/app/scripts/stage-static-release.mjs",
+    "-e",
+    "CABADRIVE_CREATED_TREE_TEST_HELPER=/app/scripts/rename-noreplace",
+    "--entrypoint",
+    "node",
+    `${project}-stager`,
+    "--test",
+    "/probe/created-tree.test.mjs",
+  ]);
+  process.stdout.write(
+    "Rebuilt Linux stager created-entry ownership/cleanup/native/recovery matrix passed\n",
+  );
   assertCrossContainerKernelLock(lockProject);
   assertCrossContainerPublishRetry(retryProject);
   assertSequentialPublishGenerations(`${retryProject}-sequential`);

@@ -46,6 +46,8 @@ const EXECUTION_DOMAIN_SCHEMA_VERSION = 1;
 const EXECUTION_DOMAIN_RECORD = "stage-execution-domain.json";
 const RECLAIM_GUARD = "stage.lock.reclaim";
 const MAX_AUTHORITY_BYTES = 1024 * 1024;
+// A publish journal also contains the bounded creation proof of every copied entry.
+const MAX_PUBLISH_AUTHORITY_BYTES = 8 * 1024 * 1024;
 const EXPORT_OWNER_RECORD = ".cabadrive-export-owner.json";
 const TEST_LOCKS = new Set();
 const COORDINATOR_STAGE = Symbol("coordinator stage authority");
@@ -1266,7 +1268,319 @@ function writeAtomically(directory, path, contents, options, durabilityRoot = di
   syncDirectoryAncestors(directory, durabilityRoot, options);
 }
 
+// Physical temporary trees admit only objects captured from their creation
+// descriptors. The held directory chain stays alive through handback/cleanup.
+const OWNED_TREE = Symbol("created physical tree");
+const OWNED_EXPORT_SCOPE = Symbol("export admission epoch");
+const OWNED_DIRECTORY_FIELDS = ["dev", "ino", "mode", "uid", "gid", "birthtimeNs"];
+function ownedSnapshot(stat) {
+  const fields = stat.isDirectory() ? OWNED_DIRECTORY_FIELDS : REGULAR_IDENTITY_FIELDS;
+  if (stat.birthtimeNs <= 0n || (!stat.isDirectory() && !stat.isFile()))
+    fail("created physical tree has no proven creation generation");
+  return {
+    kind: stat.isDirectory() ? "directory" : "file",
+    ...Object.fromEntries(fields.map((key) => [key, String(stat[key])])),
+  };
+}
+function ownedMatches(stat, snapshot) {
+  if (!snapshot || (snapshot.kind === "directory" ? !stat.isDirectory() : !stat.isFile()))
+    return false;
+  const fields = snapshot.kind === "directory" ? OWNED_DIRECTORY_FIELDS : REGULAR_IDENTITY_FIELDS;
+  return fields.every((key) => String(stat[key]) === snapshot[key]);
+}
+function createOwnedTree(root, saved, expectedFiles, recoverTimes = false) {
+  const entries = new Map();
+  const parentPath = dirname(root);
+  const parent = openSync(
+    parentPath,
+    constants.O_RDONLY | constants.O_DIRECTORY | constants.O_NOFOLLOW | constants.O_NONBLOCK,
+  );
+  const parentStat = fstatSync(parent, { bigint: true });
+  const tree = { root, entries, parent, parentStat };
+  const parentIdentity = {
+    dev: String(parentStat.dev),
+    ino: String(parentStat.ino),
+    birthtimeNs: String(parentStat.birthtimeNs),
+  };
+  const addDirectory = (path, snapshot) => {
+    const fd = openSync(
+      path,
+      constants.O_RDONLY | constants.O_DIRECTORY | constants.O_NOFOLLOW | constants.O_NONBLOCK,
+    );
+    try {
+      const stat = fstatSync(fd, { bigint: true });
+      const identity = snapshot || ownedSnapshot(stat);
+      if (
+        !ownedMatches(stat, identity) ||
+        !ownedMatches(lstatSync(path, { bigint: true }), identity)
+      )
+        fail(`created directory changed: ${path}`);
+      entries.set(path === root ? "" : path.slice(root.length + 1), {
+        descriptor: fd,
+        snapshot: identity,
+      });
+    } catch (error) {
+      closeSync(fd);
+      throw error;
+    }
+  };
+  tree.check = () => {
+    const heldParent = fstatSync(parent, { bigint: true });
+    const namedParent = lstatSync(parentPath, { bigint: true });
+    if (
+      !heldParent.isDirectory() ||
+      namedParent.dev !== parentStat.dev ||
+      namedParent.ino !== parentStat.ino ||
+      heldParent.dev !== parentStat.dev ||
+      heldParent.ino !== parentStat.ino
+    )
+      fail("created physical tree parent changed");
+    for (const [name, entry] of entries) {
+      if (entry.snapshot.kind !== "directory") continue;
+      const path = name ? join(root, ...name.split("/")) : root;
+      if (
+        !ownedMatches(fstatSync(entry.descriptor, { bigint: true }), entry.snapshot) ||
+        !ownedMatches(lstatSync(path, { bigint: true }), entry.snapshot)
+      )
+        fail(`created physical tree ancestry changed: ${path}`);
+    }
+  };
+  tree.relocate = (destination) => {
+    if (dirname(destination) !== parentPath) fail("created export rename changed its parent");
+    root = destination;
+    tree.root = destination;
+    tree.validate();
+  };
+  tree.ensureParent = (path) => {
+    const relative = path.slice(root.length + 1);
+    normalizeRelative(relative);
+    let current = root;
+    for (const component of relative.split("/").slice(0, -1)) {
+      current = join(current, component);
+      const name = current.slice(root.length + 1);
+      tree.check();
+      if (!entries.has(name)) {
+        mkdirSync(current, { mode: 0o755 });
+        addDirectory(current);
+      }
+    }
+    tree.check();
+  };
+  tree.registerFile = (path, fd) => {
+    tree.check();
+    const stat = fstatSync(fd, { bigint: true });
+    if (!stat.isFile() || stat.nlink !== 1n) fail("created copy has foreign aliases");
+    const snapshot = ownedSnapshot(stat);
+    if (!ownedMatches(lstatSync(path, { bigint: true }), snapshot))
+      fail("created copy pathname changed");
+    const name = normalizeRelative(path.slice(root.length + 1));
+    if (entries.has(name)) fail("created copy registry entry already exists");
+    entries.set(name, { snapshot });
+    return name;
+  };
+  tree.refreshWrittenFile = (name, fd) => {
+    const entry = entries.get(name);
+    const stat = fstatSync(fd, { bigint: true });
+    const previous = entry.snapshot;
+    for (const key of ["dev", "ino", "mode", "uid", "gid", "nlink", "birthtimeNs"])
+      if (String(stat[key]) !== previous[key]) fail("created copy changed during its write");
+    entry.snapshot = ownedSnapshot(stat);
+    tree.check();
+    if (!ownedMatches(lstatSync(join(root, ...name.split("/")), { bigint: true }), entry.snapshot))
+      fail("created copy pathname changed after write");
+  };
+  tree.open = (name) => {
+    tree.check();
+    const entry = entries.get(name);
+    if (!entry) fail(`unregistered physical tree entry: ${name}`);
+    const path = name ? join(root, ...name.split("/")) : root;
+    const fd =
+      entry.descriptor ??
+      openSync(path, constants.O_RDONLY | constants.O_NOFOLLOW | constants.O_NONBLOCK);
+    try {
+      tree.check();
+      if (
+        !ownedMatches(fstatSync(fd, { bigint: true }), entry.snapshot) ||
+        !ownedMatches(lstatSync(path, { bigint: true }), entry.snapshot)
+      )
+        fail(`registered physical tree entry changed: ${path}`);
+      return {
+        fd,
+        entry,
+        path,
+        close: () => {
+          if (entry.descriptor === undefined) closeSync(fd);
+        },
+      };
+    } catch (error) {
+      if (entry.descriptor === undefined) closeSync(fd);
+      throw error;
+    }
+  };
+  tree.checkNames = () => {
+    tree.check();
+    for (const [name, entry] of entries) {
+      if (entry.snapshot.kind !== "directory") continue;
+      const path = name ? join(root, ...name.split("/")) : root;
+      const expected = [...entries.keys()]
+        .filter(
+          (child) =>
+            child && (child.includes("/") ? child.slice(0, child.lastIndexOf("/")) : "") === name,
+        )
+        .map((child) => child.slice(child.lastIndexOf("/") + 1))
+        .sort(ordinal);
+      const actual = requireDirectoryNames(path).sort(ordinal);
+      tree.check();
+      if (JSON.stringify(actual) !== JSON.stringify(expected))
+        fail(`physical tree contains unregistered entries: ${path}`);
+    }
+  };
+  tree.validate = () => {
+    tree.checkNames();
+    for (const name of entries.keys()) {
+      const opened = tree.open(name);
+      opened.close();
+    }
+  };
+  tree.snapshot = () => {
+    tree.validate();
+    return {
+      schemaVersion: 1,
+      parent: parentIdentity,
+      entries: [...entries]
+        .sort(([a], [b]) => ordinal(a, b))
+        .map(([path, entry]) => ({ path, identity: entry.snapshot })),
+    };
+  };
+  tree.close = () => {
+    for (const entry of entries.values())
+      if (entry.descriptor !== undefined) closeSync(entry.descriptor);
+    closeSync(parent);
+  };
+  tree.remove = (name, options) => {
+    const helper = options?.renameNoReplaceHelper || process.env.CABADRIVE_RENAME_NOREPLACE_HELPER;
+    if (!helper) fail("owned temporary cleanup requires the native helper");
+    const opened = tree.open(name);
+    let removed = false;
+    try {
+      const parentName = name.includes("/") ? name.slice(0, name.lastIndexOf("/")) : "";
+      const parentFd = name ? entries.get(parentName).descriptor : parent;
+      invokeDurability(options, "unlink-owned-entry", opened.path);
+      tree.checkNames();
+      if (
+        !ownedMatches(fstatSync(opened.fd, { bigint: true }), opened.entry.snapshot) ||
+        !ownedMatches(lstatSync(opened.path, { bigint: true }), opened.entry.snapshot)
+      )
+        fail("cleanup entry changed before native handoff");
+      const result = spawnSync(
+        helper,
+        ["--owned-unlink", basename(opened.path), opened.entry.snapshot.kind],
+        { encoding: "utf8", stdio: ["ignore", "pipe", "pipe", parentFd, opened.fd] },
+      );
+      if (result.error || result.status !== 0)
+        fail(`owned temporary cleanup rejected: ${result.error?.message || result.stderr}`);
+      entries.delete(name);
+      removed = true;
+      invokeDurability(options, "unlink-owned-entry-durable", opened.path);
+    } finally {
+      if (opened.entry.descriptor !== undefined) {
+        if (removed) closeSync(opened.fd);
+      } else opened.close();
+    }
+  };
+  tree.cleanup = (options) => {
+    // Reject the entire uncertain scope before deleting even one known entry.
+    tree.validate();
+    for (const name of [...entries.keys()].sort(
+      (a, b) => b.split("/").length - a.split("/").length || ordinal(b, a),
+    ))
+      tree.remove(name, options);
+  };
+
+  try {
+    if (saved) {
+      if (
+        saved.schemaVersion !== 1 ||
+        Object.keys(saved).sort().join() !== "entries,parent,schemaVersion" ||
+        !Array.isArray(saved.entries) ||
+        !saved.entries.length
+      )
+        fail("invalid created export registry");
+      if (
+        !saved.parent ||
+        Object.keys(saved.parent).sort().join() !== "birthtimeNs,dev,ino" ||
+        Object.keys(parentIdentity).some((key) => saved.parent[key] !== parentIdentity[key])
+      )
+        fail("created export parent authority changed");
+      for (const item of saved.entries) {
+        if (
+          !item ||
+          Object.keys(item).sort().join() !== "identity,path" ||
+          typeof item.path !== "string" ||
+          entries.has(item.path)
+        )
+          fail("invalid created export registry entry");
+        if (item.path) normalizeRelative(item.path);
+        const identity = item.identity;
+        const fields =
+          identity?.kind === "directory" ? OWNED_DIRECTORY_FIELDS : REGULAR_IDENTITY_FIELDS;
+        if (
+          !identity ||
+          !["file", "directory"].includes(identity.kind) ||
+          Object.keys(identity).sort().join() !== [...fields, "kind"].sort().join() ||
+          fields.some((field) => !/^(0|[1-9][0-9]*)$/u.test(identity[field])) ||
+          BigInt(identity.birthtimeNs) <= 0n
+        )
+          fail("invalid created export generation");
+        if (identity.kind === "directory")
+          addDirectory(item.path ? join(root, ...item.path.split("/")) : root, identity);
+        else {
+          const path = join(root, ...item.path.split("/"));
+          const expected = expectedFiles?.get(item.path);
+          if (!expected) fail("created export entry lacks exact pending byte authority");
+          const opened = openRegularFileNoFollow(path, "recovered created export entry");
+          try {
+            const stableFields = recoverTimes
+              ? REGULAR_IDENTITY_FIELDS.filter((field) => !["ctimeNs", "mtimeNs"].includes(field))
+              : REGULAR_IDENTITY_FIELDS;
+            if (stableFields.some((field) => String(opened.identity[field]) !== identity[field]))
+              fail("recovered created export entry generation changed");
+            const bytes = readPinnedRegularFile(path, "recovered created export entry", opened);
+            if (
+              !equalEntry(
+                {
+                  size: bytes.byteLength,
+                  sha256: createHash("sha256").update(bytes).digest("hex"),
+                },
+                expected,
+              )
+            )
+              fail("recovered created export entry bytes changed");
+            // Reconcile only observational time changes on the same proven
+            // creator object with restored exact bytes. Never hand it back anew.
+            entries.set(item.path, { snapshot: ownedSnapshot(opened.identity) });
+          } finally {
+            closeSync(opened.descriptor);
+          }
+        }
+      }
+      if (entries.get("")?.snapshot.kind !== "directory")
+        fail("created export registry has no root");
+      tree.validate();
+    } else {
+      mkdirSync(root, { mode: 0o755 });
+      addDirectory(root);
+      tree.check();
+    }
+    return tree;
+  } catch (error) {
+    tree.close();
+    throw error;
+  }
+}
+
 function copyAndVerify(source, destination, expected, options, durabilityRoot) {
+  const owned = options?.[OWNED_TREE];
   const opened = openRegularFileNoFollow(source, "copy source");
   try {
     const bytes = readPinnedRegularFile(source, "copy source", opened);
@@ -1275,7 +1589,8 @@ function copyAndVerify(source, destination, expected, options, durabilityRoot) {
       sha256: createHash("sha256").update(bytes).digest("hex"),
     };
     if (!equalEntry(actual, expected)) fail(`staged digest mismatch: ${source}`);
-    mkdirSync(dirname(destination), { recursive: true, mode: 0o755 });
+    if (owned) owned.ensureParent(destination);
+    else mkdirSync(dirname(destination), { recursive: true, mode: 0o755 });
     try {
       const target = openSync(
         destination,
@@ -1287,18 +1602,25 @@ function copyAndVerify(source, destination, expected, options, durabilityRoot) {
         0o644,
       );
       try {
+        const registered = owned?.registerFile(destination, target);
         writeFileSync(target, bytes);
+        if (owned) owned.refreshWrittenFile(registered, target);
       } finally {
         closeSync(target);
       }
     } catch (error) {
       if (error?.code !== "EEXIST") throw error;
+
       // Legacy and candidate inventories may share an unchanged bundle. Its
       // existing transaction entry is admitted only by the same exact digest.
       const existing = openRegularFileNoFollow(destination, "existing copy destination");
       try {
         if (existing.stat.nlink !== 1)
           fail(`copy destination has foreign hard-link aliases: ${destination}`);
+        if (owned) {
+          const registered = owned.open(destination.slice(owned.root.length + 1));
+          registered.close();
+        }
         const data = readPinnedRegularFile(destination, "existing copy destination", existing);
         if (
           !equalEntry(
@@ -1316,6 +1638,10 @@ function copyAndVerify(source, destination, expected, options, durabilityRoot) {
     syncFile(destination, options);
     assertPinnedRegular(source, "copy source", opened);
     if (durabilityRoot) syncDirectoryAncestors(dirname(destination), durabilityRoot, options);
+    if (owned) {
+      const registered = owned.open(destination.slice(owned.root.length + 1));
+      registered.close();
+    }
   } finally {
     closeSync(opened.descriptor);
   }
@@ -2091,16 +2417,99 @@ function exactBoundExportDirectory(path, pending) {
     entry.isDirectory() &&
     validExportIdentity(pending, { required: true }) &&
     String(entry.dev) === pending.exportDevice &&
-    String(entry.ino) === pending.exportInode
+    String(entry.ino) === pending.exportInode &&
+    pending.exportCreatedTree?.entries?.[0]?.path === "" &&
+    ownedMatches(lstatSync(path, { bigint: true }), pending.exportCreatedTree.entries[0].identity)
   );
 }
 
-function destinationOwnership(state, destination, pending, inventory, { terminal = false } = {}) {
+function exportExpectedFiles(pending, inventory) {
+  const expected = new Map(inventory.map((entry) => [entry.path, entry]));
+  const proof = Buffer.from(
+    `${JSON.stringify(exportProofFor(pending, pending.destination), null, 2)}\n`,
+  );
+  expected.set(EXPORT_OWNER_RECORD, {
+    size: proof.byteLength,
+    sha256: createHash("sha256").update(proof).digest("hex"),
+  });
+  return expected;
+}
+
+function exportRegistryDigest(pending) {
+  return createHash("sha256").update(JSON.stringify(pending.exportCreatedTree)).digest("hex");
+}
+function exportTreeAfterReceipt(state, destination, pending, inventory) {
+  const receipt = readJson(exportReceiptPath(state, destination), "export ownership receipt");
+  const root = pending.exportCreatedTree?.entries?.[0]?.identity;
+  if (
+    !retirementKeys(
+      receipt,
+      "schemaVersion,nonce,operation,releaseId,manifestSha256,destination,device,inode,inventorySha256,createdTreeSha256,rootBirthtimeNs",
+    ) ||
+    !root ||
+    receipt.schemaVersion !== SCHEMA_VERSION ||
+    receipt.operation !== "publish-export" ||
+    receipt.nonce !== pending.exportNonce ||
+    receipt.destination !== destination ||
+    receipt.releaseId !== pending.releaseId ||
+    receipt.manifestSha256 !== pending.manifestSha256 ||
+    receipt.device !== pending.exportDevice ||
+    receipt.inode !== pending.exportInode ||
+    receipt.inventorySha256 !== inventoryDigest(inventory) ||
+    receipt.createdTreeSha256 !== exportRegistryDigest(pending) ||
+    receipt.rootBirthtimeNs !== root.birthtimeNs
+  )
+    fail("export ownership receipt does not authorize the registered proof removal");
+  return {
+    ...pending.exportCreatedTree,
+    entries: pending.exportCreatedTree.entries.filter(
+      (entry) => entry.path !== EXPORT_OWNER_RECORD,
+    ),
+  };
+}
+
+function admitExportTree(path, pending, inventory, saved, scope) {
+  const owned = createOwnedTree(
+    path,
+    scope?.snapshot || saved,
+    exportExpectedFiles(pending, inventory),
+    !scope?.snapshot,
+  );
+  if (scope) scope.snapshot = owned.snapshot();
+  return owned;
+}
+
+function destinationOwnership(
+  state,
+  destination,
+  pending,
+  inventory,
+  { terminal = false, exportScope } = {},
+) {
   const entry = noFollowEntry(destination);
   if (!entry || entry.isSymbolicLink() || !entry.isDirectory()) return false;
   if (!terminal && !exactBoundExportDirectory(destination, pending)) return false;
   const proofPath = join(destination, EXPORT_OWNER_RECORD);
   const proofEntry = noFollowEntry(proofPath);
+  if (!terminal) {
+    let owned;
+    try {
+      owned = admitExportTree(
+        destination,
+        pending,
+        inventory,
+        proofEntry
+          ? pending.exportCreatedTree
+          : exportTreeAfterReceipt(state, destination, pending, inventory),
+        exportScope,
+      );
+      owned.validate();
+    } catch {
+      return false;
+    } finally {
+      owned?.close();
+    }
+  }
   if (!terminal && proofEntry) {
     if (proofEntry.isSymbolicLink() || !proofEntry.isFile()) return false;
     return (
@@ -2138,6 +2547,8 @@ function publishExportReceipt(state, destination, pending, inventory, options) {
     device: String(stat.dev),
     inode: String(stat.ino),
     inventorySha256: inventoryDigest(inventory),
+    createdTreeSha256: exportRegistryDigest(pending),
+    rootBirthtimeNs: pending.exportCreatedTree.entries[0].identity.birthtimeNs,
   };
   writeAtomically(
     state,
@@ -2145,11 +2556,34 @@ function publishExportReceipt(state, destination, pending, inventory, options) {
     `${JSON.stringify(receipt, null, 2)}\n`,
     options,
   );
+  const durableReceipt = readJson(
+    exportReceiptPath(state, destination),
+    "export ownership receipt",
+  );
+  if (JSON.stringify(durableReceipt) !== JSON.stringify(receipt))
+    fail("export ownership receipt changed before proof removal");
   const proofPath = join(destination, EXPORT_OWNER_RECORD);
   if (noFollowEntry(proofPath)) {
     const proof = readJson(proofPath, "export ownership proof");
     if (!exactExportProof(proof, pending, destination)) fail("export ownership proof changed");
-    unlinkSync(proofPath);
+    const live = options?.[OWNED_TREE];
+    const owned =
+      live ||
+      admitExportTree(
+        destination,
+        pending,
+        inventory,
+        pending.exportCreatedTree,
+        options?.[OWNED_EXPORT_SCOPE],
+      );
+    if (owned.root !== destination) fail("export receipt lost its live creator root");
+    try {
+      owned.validate();
+      owned.remove(EXPORT_OWNER_RECORD, options);
+      if (options?.[OWNED_EXPORT_SCOPE]) options[OWNED_EXPORT_SCOPE].snapshot = owned.snapshot();
+    } finally {
+      if (!live) owned.close();
+    }
     syncDirectory(destination, options);
   }
   syncDirectory(dirname(destination), options);
@@ -2253,7 +2687,12 @@ function bindPendingExportIdentity(state, pending, temporary, options) {
     }
     return pending;
   }
-  const bound = { ...pending, exportDevice: device, exportInode: inode };
+  const bound = {
+    ...pending,
+    exportDevice: device,
+    exportInode: inode,
+    exportCreatedTree: options[OWNED_TREE].snapshot(),
+  };
   writeAtomically(state, publishPendingPath(state), `${JSON.stringify(bound, null, 2)}\n`, options);
   return bound;
 }
@@ -2391,7 +2830,11 @@ function exactCommittedPublishWithoutJournal(state, release, inventory, legacyVa
 
 function readPendingPublish(state) {
   const path = publishPendingPath(state);
-  return noFollowEntry(path) ? readJson(path, "static publish pending journal") : undefined;
+  return noFollowEntry(path)
+    ? readJsonRegularFileNoFollow(path, "static publish pending journal", {
+        maxBytes: MAX_PUBLISH_AUTHORITY_BYTES,
+      })
+    : undefined;
 }
 
 function clearPendingPublish(state, options) {
@@ -2434,62 +2877,57 @@ function handBackTreeOwnership(root, ownerUid, ownerGid, options) {
       return false;
     }
   })();
-  const visit = (path) => {
-    const before = lstatSync(path);
-    if (before.isSymbolicLink() || (!before.isDirectory() && !before.isFile()))
-      fail(`export ownership handoff found unsafe entry: ${path}`);
-    const descriptor = openSync(
-      path,
-      constants.O_RDONLY |
-        constants.O_NOFOLLOW |
-        constants.O_NONBLOCK |
-        (before.isDirectory() ? constants.O_DIRECTORY : 0),
-    );
+  const owned = options?.[OWNED_TREE];
+  if (!owned || owned.root !== root) fail("export ownership requires its created-entry registry");
+  owned.validate();
+  for (const name of [...owned.entries.keys()].sort(
+    (a, b) => b.split("/").length - a.split("/").length || ordinal(b, a),
+  )) {
+    const opened = owned.open(name);
     try {
+      const { fd, entry, path } = opened;
       const check = () => {
         options?.ownerAuthority?.revalidate();
-        const held = fstatSync(descriptor);
-        const entry = lstatSync(path);
+        owned.check();
         if (
-          entry.isSymbolicLink() ||
-          (held.isFile() && held.nlink !== 1) ||
-          held.dev !== before.dev ||
-          held.ino !== before.ino ||
-          entry.dev !== held.dev ||
-          entry.ino !== held.ino ||
-          entry.isDirectory() !== before.isDirectory() ||
-          entry.isFile() !== before.isFile()
+          !ownedMatches(fstatSync(fd, { bigint: true }), entry.snapshot) ||
+          !ownedMatches(lstatSync(path, { bigint: true }), entry.snapshot)
         )
           fail(`export ownership handoff changed identity or ownership: ${path}`);
-        return held;
       };
-      check();
-      if (before.isDirectory())
-        for (const name of requireDirectoryNames(path).sort(ordinal)) visit(join(path, name));
       options?.onBeforeOwnershipChange?.({ path, ownerUid, ownerGid });
+      owned.checkNames();
       check();
-      fchownSync(descriptor, ownerUid, ownerGid);
-      const after = check();
-      const ownershipMatches = after.uid === ownerUid && after.gid === ownerGid;
-      const ownershipIsOpaque =
+      const before = entry.snapshot;
+      fchownSync(fd, ownerUid, ownerGid);
+      const after = fstatSync(fd, { bigint: true });
+      const opaque =
         virtualizedDockerOwnership &&
-        before.uid === 0 &&
-        before.gid === 0 &&
-        after.uid === before.uid &&
-        after.gid === before.gid;
-      if (!ownershipMatches && !ownershipIsOpaque)
+        before.uid === "0" &&
+        before.gid === "0" &&
+        after.uid === 0n &&
+        after.gid === 0n;
+      if (!opaque && (after.uid !== BigInt(ownerUid) || after.gid !== BigInt(ownerGid)))
         fail(`export ownership handoff changed identity or ownership: ${path}`);
-      const operation = before.isFile() ? "file" : "directory";
-      invokeDurability(options, `fsync-${operation}`, path);
+      const invariant =
+        entry.snapshot.kind === "directory"
+          ? ["dev", "ino", "mode", "birthtimeNs"]
+          : REGULAR_IDENTITY_FIELDS.filter((field) => !["uid", "gid", "ctimeNs"].includes(field));
+      if (invariant.some((field) => String(after[field]) !== before[field]))
+        fail(`export ownership handoff changed registered entry: ${path}`);
+      entry.snapshot = ownedSnapshot(after);
       check();
-      fsyncSync(descriptor);
-      invokeDurability(options, `close-${operation}`, path);
+      const kind = entry.snapshot.kind;
+      invokeDurability(options, `fsync-${kind}`, path);
+      check();
+      fsyncSync(fd);
+      invokeDurability(options, `close-${kind}`, path);
       check();
     } finally {
-      closeSync(descriptor);
+      opened.close();
     }
-  };
-  visit(root);
+  }
+
   options?.ownerAuthority?.revalidate();
 }
 
@@ -2882,6 +3320,7 @@ function inspectPublishAdmission({
   operation,
   legacyValidation,
   projectKey,
+  [OWNED_EXPORT_SCOPE]: exportScope,
 }) {
   assertAdmissionDirectory(dirname(output), "static publish output parent");
   if (operation === "publish-export") {
@@ -2973,7 +3412,7 @@ function inspectPublishAdmission({
       pending &&
       published &&
       ["output-durable", "export-durable"].includes(pending.phase) &&
-      destinationOwnership(state, destination, pending, published.inventory);
+      destinationOwnership(state, destination, pending, published.inventory, { exportScope });
     const terminalDestination =
       terminal &&
       published &&
@@ -3006,6 +3445,7 @@ function assertJournalOwnedArtifacts({
   operation,
   legacyValidation,
   committed = false,
+  [OWNED_EXPORT_SCOPE]: exportScope,
 }) {
   legacyValidation?.revalidate?.();
   const pending = readPendingPublish(state);
@@ -3036,7 +3476,7 @@ function assertJournalOwnedArtifacts({
     fail("static publish serving output changed before transaction boundary");
   }
   if (operation === "publish-export") {
-    if (!destinationOwnership(state, destination, pending, published.inventory)) {
+    if (!destinationOwnership(state, destination, pending, published.inventory, { exportScope })) {
       fail("static export destination changed before transaction boundary");
     }
   }
@@ -3437,9 +3877,17 @@ function generationPublishedMatches(state, lineage) {
       "published generation receipt",
     );
     if (
-      !retirementKeys(
-        receipt,
-        "schemaVersion,nonce,operation,releaseId,manifestSha256,destination,device,inode,inventorySha256",
+      !(
+        retirementKeys(
+          receipt,
+          "schemaVersion,nonce,operation,releaseId,manifestSha256,destination,device,inode,inventorySha256",
+        ) ||
+        (retirementKeys(
+          receipt,
+          "schemaVersion,nonce,operation,releaseId,manifestSha256,destination,device,inode,inventorySha256,createdTreeSha256,rootBirthtimeNs",
+        ) &&
+          /^[a-f0-9]{64}$/u.test(receipt.createdTreeSha256) &&
+          /^[1-9][0-9]*$/u.test(receipt.rootBirthtimeNs))
       ) ||
       receipt.schemaVersion !== SCHEMA_VERSION ||
       ![receipt.device, receipt.inode].every(
@@ -4733,15 +5181,18 @@ export function buildStaticPublish({
 
     const temporary = join(parent, `.${basename(output)}.publish-${process.pid}-${randomUUID()}`);
     let renamed = false;
+    let owned;
     try {
-      mkdirSync(temporary, { recursive: false, mode: 0o755 });
+      owned = createOwnedTree(temporary);
+      const physicalOptions = { ...options, [OWNED_TREE]: owned };
       const { inventory, priorAssets, expectedAssets } = copyPublishTree({
         state,
         candidate,
         temporary,
-        options,
+        options: physicalOptions,
         legacyValidation,
       });
+      owned.validate();
       const priorCurrentReleaseId = currentReleaseId(state);
       const priorCommitted = verifyCommittedState(state);
       if (
@@ -4840,9 +5291,14 @@ export function buildStaticPublish({
           exactPreOutputTransaction = false;
         }
       }
-      if (!renamed && !exactPreOutputTransaction && existsSync(temporary)) {
-        rmSync(temporary, { recursive: true, force: true });
+      if (!renamed && !exactPreOutputTransaction && owned) {
+        try {
+          owned.cleanup(options);
+        } catch {
+          /* Preserve uncertain or foreign entries. */
+        }
       }
+      owned?.close();
       // A visible, exact pre-output journal is durable recovery authority even
       // when either journal phase write threw after its rename but before
       // returning. Keep both it and its bound temporary; ambiguous evidence
@@ -4871,6 +5327,8 @@ export function exportStaticPublish({
   const state = resolve(stateRoot);
   const output = resolve(outputRoot);
   const destination = resolve(destinationRoot);
+  const exportScope = options?.[OWNED_EXPORT_SCOPE] || { snapshot: null };
+  options = { ...options, [OWNED_EXPORT_SCOPE]: exportScope };
   const parent = dirname(output);
   const candidate = createCandidateManifest(realpathSync(candidateRoot));
   let pending = allowPending ? readPendingPublish(state) : undefined;
@@ -4917,14 +5375,32 @@ export function exportStaticPublish({
       exactPending &&
       existingDestination.isDirectory() &&
       !existingDestination.isSymbolicLink() &&
-      destinationOwnership(state, destination, pending, inventory)
+      destinationOwnership(state, destination, pending, inventory, { exportScope })
     ) {
-      syncTree(destination, options);
-      syncDirectory(dirname(destination), options);
-      publishExportReceipt(state, destination, pending, inventory, options || {});
-      if (exactPending && pending.phase === "output-durable") {
-        fault(options || {}, "after-export-parent-fsync-before-phase");
-        advancePendingPublishPhase(state, pending, "export-durable", options || {});
+      const existingOwned = admitExportTree(
+        destination,
+        pending,
+        inventory,
+        noFollowEntry(join(destination, EXPORT_OWNER_RECORD))
+          ? pending.exportCreatedTree
+          : exportTreeAfterReceipt(state, destination, pending, inventory),
+        exportScope,
+      );
+      options = { ...options, [OWNED_TREE]: existingOwned };
+      try {
+        existingOwned.validate();
+        syncTree(destination, options);
+        syncDirectory(dirname(destination), options);
+        publishExportReceipt(state, destination, pending, inventory, options || {});
+        if (exactPending && pending.phase === "output-durable") {
+          fault(options || {}, "after-export-parent-fsync-before-phase");
+          advancePendingPublishPhase(state, pending, "export-durable", options || {});
+        }
+        if (!noFollowEntry(join(destination, EXPORT_OWNER_RECORD)))
+          existingOwned.entries.delete(EXPORT_OWNER_RECORD);
+        existingOwned.validate();
+      } finally {
+        existingOwned.close();
       }
       return { changed: false, releaseId: candidate.releaseId, manifest: candidate };
     }
@@ -4939,7 +5415,7 @@ export function exportStaticPublish({
       : `.${basename(destination)}.export-${process.pid}-${randomUUID()}`,
   );
   let published = false;
-  let createdTemporaryIdentity;
+  let owned;
   try {
     // Never make the requested destination observable until the complete
     // physical artifact has been copied, verified, and made durable.
@@ -4952,13 +5428,20 @@ export function exportStaticPublish({
       ) {
         fail("static export journal has no exact bound temporary directory");
       }
+      owned = admitExportTree(
+        temporary,
+        pending,
+        inventory,
+        pending.exportCreatedTree,
+        exportScope,
+      );
+      options = { ...options, [OWNED_TREE]: owned };
     } else {
       if (exactPending && validExportIdentity(pending, { required: true })) {
         fail("static export journal-bound temporary directory is missing");
       }
-      mkdirSync(temporary, { recursive: false, mode: 0o755 });
-      const created = lstatSync(temporary);
-      createdTemporaryIdentity = { device: created.dev, inode: created.ino };
+      owned = createOwnedTree(temporary);
+      options = { ...options, [OWNED_TREE]: owned };
       for (const entry of inventory) {
         copyAndVerify(
           join(source, ...entry.path.split("/")),
@@ -4968,42 +5451,66 @@ export function exportStaticPublish({
           temporary,
         );
       }
+      if (exactPending) {
+        const rootIdentity = owned.entries.get("").snapshot;
+        const proofPending = {
+          ...pending,
+          exportDevice: rootIdentity.dev,
+          exportInode: rootIdentity.ino,
+        };
+        const proofPath = join(temporary, EXPORT_OWNER_RECORD);
+        const fd = openSync(
+          proofPath,
+          constants.O_WRONLY |
+            constants.O_CREAT |
+            constants.O_EXCL |
+            constants.O_NOFOLLOW |
+            constants.O_NONBLOCK,
+          0o600,
+        );
+        try {
+          const registered = owned.registerFile(proofPath, fd);
+          writeFileSync(
+            fd,
+            `${JSON.stringify(exportProofFor(proofPending, destination), null, 2)}\n`,
+          );
+          owned.refreshWrittenFile(registered, fd);
+        } finally {
+          closeSync(fd);
+        }
+      }
       handBackTreeOwnership(temporary, options?.ownerUid, options?.ownerGid, options);
+      owned.validate();
       syncTree(temporary, options);
+      owned.validate();
       if (exactPending) {
         pending = bindPendingExportIdentity(state, pending, temporary, options || {});
         fault(options || {}, "after-export-identity-bind");
       }
     }
-    if (exactPending) {
-      const proofPath = join(temporary, EXPORT_OWNER_RECORD);
-      if (noFollowEntry(proofPath)) {
-        const proof = readJson(proofPath, "export ownership proof");
-        if (!exactExportProof(proof, pending, destination)) {
-          fail("export ownership proof changed");
-        }
-      } else {
-        writeFileSync(
-          proofPath,
-          `${JSON.stringify(exportProofFor(pending, destination), null, 2)}\n`,
-          {
-            flag: "wx",
-            mode: 0o600,
-          },
-        );
-      }
-      syncFile(proofPath, options);
-    }
-    handBackTreeOwnership(temporary, options?.ownerUid, options?.ownerGid, options);
+    if (
+      exactPending &&
+      !exactExportProof(
+        readJson(join(temporary, EXPORT_OWNER_RECORD), "export ownership proof"),
+        pending,
+        destination,
+      )
+    )
+      fail("export ownership proof changed");
+    owned.validate();
     syncTree(temporary, options);
+    owned.validate();
     if (exactPending && !exactBoundExportDirectory(temporary, pending)) {
       fail("static export temporary changed after its journal identity was bound");
     }
     syncDirectory(destinationParent, options);
     options?.onBeforeExportPublish?.({ temporary, destination });
     options?.ownerAuthority?.revalidate();
+    owned.validate();
     renameNoReplace(temporary, destination, options);
     published = true;
+    owned.relocate(destination);
+    exportScope.snapshot = owned.snapshot();
     invokeDurability(options, "export-rename", destination);
     syncDirectory(destinationParent, options);
     if (exactPending) {
@@ -5031,17 +5538,15 @@ export function exportStaticPublish({
           preserveForJournal = true;
         }
       }
-      const current = noFollowEntry(temporary);
-      const stillCreatedTemporary =
-        createdTemporaryIdentity &&
-        current?.isDirectory() &&
-        !current.isSymbolicLink() &&
-        current.dev === createdTemporaryIdentity.device &&
-        current.ino === createdTemporaryIdentity.inode;
-      if (!preserveForJournal && stillCreatedTemporary) {
-        rmSync(temporary, { recursive: true, force: true });
+      if (!preserveForJournal && owned) {
+        try {
+          owned.cleanup(options);
+        } catch {
+          /* Preserve substituted/unknown objects. */
+        }
       }
     }
+    owned?.close();
   }
   return { changed: true, releaseId: candidate.releaseId, manifest: candidate };
 }
@@ -5095,6 +5600,7 @@ export function publishAndExportStaticRelease(options) {
           onAfterOpen: options.onAfterOwnerProbeOpen,
         })
     : undefined;
+  const exportScope = { snapshot: null };
   const originalDurability = options.onDurabilityOperation;
   options = {
     ...options,
@@ -5148,6 +5654,7 @@ export function publishAndExportStaticRelease(options) {
       operation: "publish-export",
       legacyValidation,
       projectKey: options.projectKey,
+      [OWNED_EXPORT_SCOPE]: exportScope,
     };
     inspectPublishAdmission(admissionRequest);
     options.onAfterReadOnlyAdmission?.(admissionRequest);
@@ -5165,6 +5672,7 @@ export function publishAndExportStaticRelease(options) {
       ownerAuthority,
       projectKey: options.projectKey,
       onGenerationLineageInstalled: options.onGenerationLineageInstalled,
+      [OWNED_EXPORT_SCOPE]: exportScope,
     };
     const unlock = acquireLock(state, {
       projectKey: options.projectKey,
@@ -5254,6 +5762,7 @@ export function publishAndExportStaticRelease(options) {
         release: manifest,
         operation: "publish-export",
         legacyValidation,
+        [OWNED_EXPORT_SCOPE]: exportScope,
       };
       options.onBeforeActivationRevalidation?.(boundary);
       ownerAuthority?.revalidate();
