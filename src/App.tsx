@@ -92,9 +92,9 @@ import {
   formatDuration,
   isPassing,
   learningTicketTargetSeconds,
+  orderLearningQuestions,
   scorePercent,
   selectExamSet,
-  shuffleQuestions,
 } from "./domain";
 import { exactTextStatusKind, exactTextStatusNote } from "./primarySourceStatus";
 import { ConfirmDialog } from "./components/ConfirmDialog";
@@ -119,10 +119,15 @@ import {
   mistakesFromProgress,
   parseImportedProgress,
   useProgress,
-  type ProgressV2,
+  type ProgressV3,
   type StorageLike,
 } from "./progressStore";
 import { searchQuestions, searchVocabulary } from "./search";
+import {
+  applyServiceWorkerUpdate,
+  dismissServiceWorkerUpdate,
+  useServiceWorkerUpdate,
+} from "./serviceWorkerUpdates";
 
 type View =
   | "learn"
@@ -594,7 +599,7 @@ function LanguagePair({
   );
 }
 
-function StatusStrip({ progress }: { progress: ProgressV2 }) {
+function StatusStrip({ progress }: { progress: ProgressV3 }) {
   const wrong = mistakesFromProgress(progress).length;
   const lastAttempt = progress.examAttempts.at(-1);
   return (
@@ -920,20 +925,24 @@ function QuestionFlowNavigation({
   );
 }
 
-function LearnView({ progress }: { progress: ProgressV2 }) {
+function LearnView({ progress }: { progress: ProgressV3 }) {
   const [query, setQuery] = useState("");
   const [index, setIndex] = useState(0);
   const [timerStates, setTimerStates] = useState<Record<string, LearningTicketTimerState>>({});
   const [attemptsByQuestion, setAttemptsByQuestion] = useState<
     Record<string, QuestionAttemptState>
   >({});
-  const [sessionQuestions] = useState(() => shuffleQuestions(data.questions));
+  const [sessionQuestions] = useState(() =>
+    orderLearningQuestions(data.questions, progress.learningQuestionStats),
+  );
+  const lastExposedQuestionId = useRef<string | undefined>(undefined);
   const normalizedQuery = query.trim();
   const hasActiveSearch = normalizedQuery.length > 0;
-  const results = useMemo(
-    () => (hasActiveSearch ? searchQuestions(normalizedQuery) : sessionQuestions),
-    [hasActiveSearch, normalizedQuery, sessionQuestions],
-  );
+  const results = useMemo(() => {
+    if (!hasActiveSearch) return sessionQuestions;
+    const matchedIds = new Set(searchQuestions(normalizedQuery).map((item) => item.id));
+    return sessionQuestions.filter((item) => matchedIds.has(item.id));
+  }, [hasActiveSearch, normalizedQuery, sessionQuestions]);
   const hasResults = results.length > 0;
   const currentIndex = results.length ? Math.min(index, results.length - 1) : 0;
   const question = results[currentIndex];
@@ -955,6 +964,16 @@ function LearnView({ progress }: { progress: ProgressV2 }) {
   useEffect(() => {
     setIndex(0);
   }, [query]);
+
+  useEffect(() => {
+    if (!questionId) {
+      lastExposedQuestionId.current = undefined;
+      return;
+    }
+    if (lastExposedQuestionId.current === questionId) return;
+    lastExposedQuestionId.current = questionId;
+    dispatchProgress({ type: "recordQuestionExposure", questionId });
+  }, [questionId]);
 
   function record(answer: ProgressAnswer) {
     if (!question) return;
@@ -1434,7 +1453,7 @@ function ExamView({
   );
 }
 
-function MistakesView({ progress }: { progress: ProgressV2 }) {
+function MistakesView({ progress }: { progress: ProgressV3 }) {
   const [index, setIndex] = useState(0);
   const [attemptsByQuestion, setAttemptsByQuestion] = useState<
     Record<string, QuestionAttemptState>
@@ -5266,6 +5285,7 @@ function progressNoticeText(notice: ProgressNotice) {
 }
 
 export function App() {
+  const serviceWorkerUpdate = useServiceWorkerUpdate();
   const [view, setView] = useState<View>(() => {
     if (introductionEntryForHash(window.location.hash)) return "pandemia";
     const manualSectionForHash = manualGuideSectionByHash.get(window.location.hash);
@@ -5439,7 +5459,7 @@ export function App() {
   const [resetDialogOpen, setResetDialogOpen] = useState(false);
   const [resetAcknowledged, setResetAcknowledged] = useState(false);
   const [importCandidate, setImportCandidate] = useState<
-    { raw: string; parsed: ProgressV2 } | undefined
+    { raw: string; parsed: ProgressV3 } | undefined
   >();
   const [headerNotice, setHeaderNotice] = useState<ProgressNotice | undefined>(() => {
     const session = safeSessionStorage();
@@ -5506,7 +5526,7 @@ export function App() {
   }
 
   async function reviewImportFile(file: File) {
-    let parsed: ProgressV2 | undefined;
+    let parsed: ProgressV3 | undefined;
     let raw = "";
     try {
       raw = await file.text();
@@ -5640,6 +5660,27 @@ export function App() {
           />
         </div>
       </header>
+
+      {serviceWorkerUpdate.available && (
+        <section className="update-notice" role="status" aria-live="polite">
+          <p>Доступна новая версия приложения.</p>
+          <div className="progress-notice-actions">
+            <button
+              type="button"
+              className="tool-button"
+              onClick={applyServiceWorkerUpdate}
+              disabled={serviceWorkerUpdate.applying}
+            >
+              {serviceWorkerUpdate.applying ? "Обновление…" : "Обновить"}
+            </button>
+            {!serviceWorkerUpdate.applying && (
+              <button type="button" className="tool-button" onClick={dismissServiceWorkerUpdate}>
+                Позже
+              </button>
+            )}
+          </div>
+        </section>
+      )}
 
       {headerNotice && (
         <section

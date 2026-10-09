@@ -1,4 +1,5 @@
 import type { ProgressAnswer, Question } from "./data/content";
+import type { LearningQuestionStat } from "./progressStoreCore";
 
 export type ExamFormatTiming = {
   questionCount?: number;
@@ -54,13 +55,37 @@ function sortedExamSet(questions: Question[], count: number) {
     .slice(0, Math.min(count, questions.length));
 }
 
-export function shuffleQuestions(questions: Question[], random = Math.random) {
+export function shuffleQuestions<T>(questions: T[], random = Math.random) {
   const shuffled = [...questions];
   for (let index = shuffled.length - 1; index > 0; index -= 1) {
     const swapIndex = Math.min(Math.max(Math.floor(random() * (index + 1)), 0), index);
     [shuffled[index], shuffled[swapIndex]] = [shuffled[swapIndex], shuffled[index]];
   }
   return shuffled;
+}
+
+export function orderLearningQuestions<T extends Pick<Question, "id">>(
+  questions: T[],
+  learningQuestionStats: LearningQuestionStat[],
+  random = Math.random,
+): T[] {
+  const stats = new Map(learningQuestionStats.map((item) => [item.questionId, item]));
+  return shuffleQuestions(questions, random)
+    .map((question, sessionRank) => ({ question, sessionRank }))
+    .sort((left, right) => {
+      const leftStat = stats.get(left.question.id);
+      const rightStat = stats.get(right.question.id);
+      const countDifference = (leftStat?.showCount ?? 0) - (rightStat?.showCount ?? 0);
+      if (countDifference !== 0) return countDifference;
+      const priorityDifference =
+        Number(rightStat?.activeMistakePriority ?? false) -
+        Number(leftStat?.activeMistakePriority ?? false);
+      if (priorityDifference !== 0) return priorityDifference;
+      const randomDifference = left.sessionRank - right.sessionRank;
+      if (randomDifference !== 0) return randomDifference;
+      return left.question.id.localeCompare(right.question.id);
+    })
+    .map(({ question }) => question);
 }
 
 function randomExamSet(questions: Question[], count: number, random: () => number) {

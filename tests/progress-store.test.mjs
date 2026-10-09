@@ -21,6 +21,8 @@ const {
   PROGRESS_BACKUP_KEY,
   PROGRESS_KEY,
   PROGRESS_RECOVERY_KEY,
+  PROGRESS_V2_BACKUP_KEY,
+  applyAnswerToLearningStats,
   createProgressStore,
   emptyProgress,
   mistakesFromProgress,
@@ -69,6 +71,234 @@ const v2 = (overrides = {}) => ({
   examAttempts: [attempt],
   prunedAnswerStats: [],
   ...overrides,
+});
+const v3 = (overrides = {}) => ({
+  version: 3,
+  answers: [],
+  difficultQuestionIds: [],
+  examAttempts: [],
+  prunedAnswerStats: [],
+  learningQuestionStats: [],
+  ...overrides,
+});
+
+test("v2 migrates to canonical v3 after exact backup and keeps all existing fields", () => {
+  const raw = JSON.stringify(
+    v2({
+      answers: [answer(1, false), answer(1, true), answer(1, true), answer(1, true)],
+      prunedAnswerStats: [
+        {
+          questionId: "q-1",
+          wrong: 2,
+          lastPrunedAnswer: answer(1, false),
+          firstSeenOrder: 0,
+        },
+      ],
+    }),
+  );
+  const storage = new FakeStorage({ [PROGRESS_KEY]: raw });
+  const store = createProgressStore(storage);
+  const snapshot = store.getSnapshot();
+
+  assert.equal(storage.getItem(PROGRESS_V2_BACKUP_KEY), raw);
+  assert.equal(snapshot.version, 3);
+  assert.deepEqual(snapshot.answers, JSON.parse(raw).answers);
+  assert.deepEqual(snapshot.difficultQuestionIds, ["q-1"]);
+  assert.deepEqual(snapshot.examAttempts, [attempt]);
+  assert.deepEqual(snapshot.prunedAnswerStats, JSON.parse(raw).prunedAnswerStats);
+  assert.deepEqual(snapshot.learningQuestionStats, [
+    {
+      questionId: "q-1",
+      showCount: 0,
+      activeMistakePriority: true,
+      correctStreakAfterLastError: 3,
+    },
+  ]);
+  const reload = createProgressStore(storage);
+  assert.deepEqual(reload.getSnapshot(), snapshot);
+  assert.equal(storage.writes.filter(([key]) => key === PROGRESS_V2_BACKUP_KEY).length, 1);
+});
+
+test("learning answer transition deactivates only on the fourth consecutive correct answer", () => {
+  let stats = applyAnswerToLearningStats([], answer(1, false));
+  assert.deepEqual(stats[0], {
+    questionId: "q-1",
+    showCount: 0,
+    activeMistakePriority: true,
+    correctStreakAfterLastError: 0,
+  });
+  for (let streak = 1; streak <= 3; streak += 1) {
+    stats = applyAnswerToLearningStats(stats, answer(1, true));
+    assert.equal(stats[0].activeMistakePriority, true);
+    assert.equal(stats[0].correctStreakAfterLastError, streak);
+  }
+  stats = applyAnswerToLearningStats(stats, answer(1, true));
+  assert.equal(stats[0].activeMistakePriority, false);
+  assert.equal(stats[0].correctStreakAfterLastError, 4);
+  stats = applyAnswerToLearningStats(stats, answer(1, false));
+  assert.equal(stats[0].activeMistakePriority, true);
+  assert.equal(stats[0].correctStreakAfterLastError, 0);
+});
+
+test("interleaved answers are isolated and an exam skip reactivates the target question", () => {
+  const store = createProgressStore(new FakeStorage());
+  store.dispatch({ type: "recordAnswer", answer: answer(1, false) });
+  for (let index = 0; index < 4; index += 1) {
+    store.dispatch({ type: "recordAnswer", answer: answer(2, true) });
+    store.dispatch({ type: "recordAnswer", answer: answer(1, true) });
+  }
+  assert.equal(
+    store.getSnapshot().learningQuestionStats.find(({ questionId }) => questionId === "q-1")
+      .activeMistakePriority,
+    false,
+  );
+  store.dispatch({
+    type: "recordAnswer",
+    answer: { ...answer(1, false), selectedAnswerId: "", mode: "exam" },
+  });
+  assert.deepEqual(
+    store.getSnapshot().learningQuestionStats.find(({ questionId }) => questionId === "q-1"),
+    {
+      questionId: "q-1",
+      showCount: 0,
+      activeMistakePriority: true,
+      correctStreakAfterLastError: 0,
+    },
+  );
+});
+
+test("invalid local v3 statistics recover conservative priority without invented exposure counts", () => {
+  const raw = JSON.stringify(
+    v3({
+      answers: [answer(1, true)],
+      prunedAnswerStats: [
+        {
+          questionId: "q-1",
+          wrong: 1,
+          lastPrunedAnswer: answer(1, false),
+          firstSeenOrder: 0,
+        },
+      ],
+      learningQuestionStats: [
+        {
+          questionId: "q-1",
+          showCount: -1,
+          activeMistakePriority: false,
+          correctStreakAfterLastError: 4,
+        },
+      ],
+    }),
+  );
+  const store = createProgressStore(new FakeStorage({ [PROGRESS_KEY]: raw }));
+
+  assert.equal(store.getLastRecovery().code, "localDataRecovered");
+  assert.deepEqual(store.getSnapshot().learningQuestionStats, [
+    {
+      questionId: "q-1",
+      showCount: 0,
+      activeMistakePriority: true,
+      correctStreakAfterLastError: 1,
+    },
+  ]);
+});
+
+test("v2 backup failure blocks in-place overwrite until an exact backup succeeds", () => {
+  const raw = JSON.stringify(v2());
+  const storage = new FakeStorage({ [PROGRESS_KEY]: raw }, [new Error("backup blocked")]);
+  const store = createProgressStore(storage);
+  assert.equal(storage.getItem(PROGRESS_KEY), raw);
+  assert.equal(store.getLastRecovery().code, "migrationBackupFailed");
+
+  store.dispatch({ type: "recordQuestionExposure", questionId: "q-1" });
+  assert.equal(storage.getItem(PROGRESS_V2_BACKUP_KEY), raw);
+  assert.equal(JSON.parse(storage.getItem(PROGRESS_KEY)).version, 3);
+});
+
+test("exposures persist exactly and unknown question statistics survive canonical export/import", () => {
+  const storage = new FakeStorage();
+  const store = createProgressStore(storage);
+  store.dispatch({ type: "recordQuestionExposure", questionId: "q-visible" });
+  store.dispatch({ type: "recordQuestionExposure", questionId: "q-visible" });
+  store.dispatch({ type: "recordQuestionExposure", questionId: "q-unknown" });
+  const exported = store.exportProgress();
+  const restored = createProgressStore(new FakeStorage());
+
+  assert.equal(restored.dispatch({ type: "importProgress", raw: exported }), true);
+  assert.deepEqual(restored.getSnapshot().learningQuestionStats, [
+    {
+      questionId: "q-unknown",
+      showCount: 1,
+      activeMistakePriority: false,
+      correctStreakAfterLastError: 0,
+    },
+    {
+      questionId: "q-visible",
+      showCount: 2,
+      activeMistakePriority: false,
+      correctStreakAfterLastError: 0,
+    },
+  ]);
+});
+
+test("non-ASCII unknown IDs export and validate in locale-independent ordinal order", () => {
+  const originalLocaleCompare = String.prototype.localeCompare;
+  const ordinalFallback = (left, right) => (left < right ? -1 : left > right ? 1 : 0);
+  const setContrastingLocale = (zBeforeUmlaut) => {
+    String.prototype.localeCompare = function localeCompare(other) {
+      const left = String(this);
+      const right = String(other);
+      if (left === "z" && right === "ä") return zBeforeUmlaut ? -1 : 1;
+      if (left === "ä" && right === "z") return zBeforeUmlaut ? 1 : -1;
+      return ordinalFallback(left, right);
+    };
+  };
+
+  try {
+    setContrastingLocale(true);
+    const source = createProgressStore(new FakeStorage());
+    source.dispatch({ type: "recordQuestionExposure", questionId: "ä" });
+    source.dispatch({ type: "recordQuestionExposure", questionId: "z" });
+    const exported = source.exportProgress();
+    assert.deepEqual(
+      JSON.parse(exported).learningQuestionStats.map(({ questionId }) => questionId),
+      ["z", "ä"],
+    );
+
+    setContrastingLocale(false);
+    const restored = createProgressStore(new FakeStorage());
+    assert.equal(restored.dispatch({ type: "importProgress", raw: exported }), true);
+    assert.equal(restored.exportProgress(), exported);
+    assert.deepEqual(
+      restored.getSnapshot().learningQuestionStats,
+      source.getSnapshot().learningQuestionStats,
+    );
+
+    const before = restored.exportProgress();
+    const reversed = JSON.parse(exported);
+    reversed.learningQuestionStats.reverse();
+    assert.equal(
+      restored.dispatch({ type: "importProgress", raw: JSON.stringify(reversed) }),
+      false,
+    );
+    assert.equal(restored.exportProgress(), before);
+  } finally {
+    String.prototype.localeCompare = originalLocaleCompare;
+  }
+});
+
+test("quota pruning never reapplies derived learning transitions", () => {
+  const storage = new FakeStorage({}, [quota(), quota(), null]);
+  const store = createProgressStore(storage);
+  const history = [answer(1, false), ...Array.from({ length: 4 }, () => answer(1, true))];
+  store.dispatch({ type: "finishExam", answers: history, attempt });
+  assert.deepEqual(store.getSnapshot().learningQuestionStats, [
+    {
+      questionId: "q-1",
+      showCount: 0,
+      activeMistakePriority: false,
+      correctStreakAfterLastError: 4,
+    },
+  ]);
 });
 
 test("migrates production-shaped v1, backs up exact raw payload before v2 overwrite and reloads idempotently", () => {
@@ -222,12 +452,17 @@ test("reset clears the primary, migration backup, and recovery diagnostic keys",
   assert.equal(storage.getItem(PROGRESS_BACKUP_KEY), raw);
   store.dispatch({ type: "reset" });
   assert.equal(storage.getItem(PROGRESS_BACKUP_KEY), null);
+  assert.equal(storage.getItem(PROGRESS_V2_BACKUP_KEY), null);
   assert.equal(storage.getItem(PROGRESS_RECOVERY_KEY), null);
   assert.deepEqual(store.getSnapshot(), emptyProgress());
 });
 
 test("reset removes the primary key even when the follow-up empty write fails", () => {
-  const storage = new FakeStorage({ [PROGRESS_KEY]: JSON.stringify(v2()) }, [new Error("disk")]);
+  const storage = new FakeStorage({ [PROGRESS_KEY]: JSON.stringify(v2()) }, [
+    null,
+    null,
+    new Error("disk"),
+  ]);
   const store = createProgressStore(storage);
   store.dispatch({ type: "reset" });
   assert.equal(storage.getItem(PROGRESS_KEY), null);

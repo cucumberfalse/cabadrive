@@ -9,11 +9,12 @@ const policy =
   "default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; base-uri 'none'; frame-ancestors 'none'";
 
 function workerBody(version: number, legacy = false) {
-  let body = readFileSync(resolve("dist/sw.js"), "utf8")
-    .replace(
-      /^const CACHE_NAME = "cabadrive-static-\d+";/,
-      `const CACHE_NAME = "cabadrive-static-${version}";`,
-    )
+  const builtWorker = readFileSync(resolve("dist/sw.js"), "utf8");
+  const cacheNameDeclaration =
+    /^const CACHE_NAME = (?:"cabadrive-static-\d+"|CACHE_PREFIX \+ "\d+");/m;
+  expect(builtWorker.match(cacheNameDeclaration)).not.toBeNull();
+  let body = builtWorker
+    .replace(cacheNameDeclaration, `const CACHE_NAME = "cabadrive-static-${version}";`)
     .replace(
       /const ASSETS = \[[\s\S]*?\];\n\n/,
       `const ASSETS = ${JSON.stringify(fixtureAssets)};\n\n`,

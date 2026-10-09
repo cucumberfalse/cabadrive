@@ -5,7 +5,7 @@ import { mkdtempSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "nod
 import { tmpdir } from "node:os";
 import { join, normalize } from "node:path";
 import { test, expect } from "@playwright/test";
-import { createServiceWorkerBody } from "../../scripts/generate-service-worker.mjs";
+import { createServiceWorkerBody } from "../fixtures/legacy-service-worker-generator.mjs";
 
 const stager = new URL("../../scripts/stage-static-release.mjs", import.meta.url).pathname;
 const generateHistoricalWorker = createServiceWorkerBody as unknown as (
