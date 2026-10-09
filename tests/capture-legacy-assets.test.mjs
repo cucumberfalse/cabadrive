@@ -10,6 +10,7 @@ import {
   realpathSync,
   rmSync,
   symlinkSync,
+  unlinkSync,
   writeFileSync,
 } from "node:fs";
 import { tmpdir } from "node:os";
@@ -1784,6 +1785,8 @@ function createRetagClassificationFixture({
   removed = false,
   provenance = "none",
   historical = false,
+  incompleteState = false,
+  sourceAbsent = false,
 } = {}) {
   const root = join(
     realpathSync(tmpdir()),
@@ -1840,8 +1843,9 @@ if [ "$1" = inspect ]; then
   exit 0
 fi
 if [ "$1" = compose ]; then exit 0; fi
-if [ "$1" = volume ]; then exit 1; fi
+if [ "$1" = volume ]; then [ "$R2H_INCOMPLETE_STATE" = yes ] && exit 0; exit 1; fi
 if [ "$1" = image ] && [ "$2" = inspect ]; then
+  if [ "$R2H_NO_IMAGE" = yes ]; then printf '%s\\n' 'No such image: fixture-cabadrive' >&2; exit 1; fi
   for argument do target="$argument"; done
   case "$*" in
     *com.cabadrive.release-state-runtime*)
@@ -1872,6 +1876,7 @@ if [ "$1" = rm ]; then exit 0; fi
 if [ "$1" = run ]; then
   while [ "$1" != /app/stage-static-release.mjs ]; do shift; done
   shift; operation="$1"; shift
+  if [ "$operation" = verify ]; then printf '%s\\n' incomplete-state >&2; exit 1; fi
   translated_count="$#"
   while [ "$translated_count" -gt 0 ]; do
     argument="$1"; shift
@@ -1897,6 +1902,8 @@ exit 94
     R2H_KIND: kind,
     R2H_REMOVED: removed ? "yes" : "no",
     R2H_PROVENANCE: provenance,
+    R2H_INCOMPLETE_STATE: incompleteState ? "yes" : "no",
+    R2H_NO_IMAGE: sourceAbsent ? "yes" : "no",
   };
   if (historical) delete env.COMPOSE_PROJECT_NAME;
   else env.COMPOSE_PROJECT_NAME = project;
@@ -1992,4 +1999,87 @@ test("an unavailable captured image fails closed without replacement-tag fallbac
       rmSync(fixture.root, { recursive: true, force: true });
     }
   }
+});
+
+test("post-feature image-only and absent-source retries accept independent A after incomplete staging", () => {
+  for (const sourceAbsent of [false, true]) {
+    const fixture = createRetagClassificationFixture({
+      kind: "post-feature",
+      incompleteState: true,
+      sourceAbsent,
+    });
+    try {
+      const release = join(fixture.handoff, "releases/preserved");
+      const metadata = ["source-id", "source-kind", ".legacy-handoff.json"];
+      const before = metadata.map((name) => readFileSync(join(release, name), "utf8"));
+      const result = spawnSync("sh", [captureScript], { env: fixture.env, encoding: "utf8" });
+      assert.equal(result.status, 0, result.stderr);
+      assert.match(
+        result.stdout,
+        /validated preserved legacy handoff is the independent retained source/,
+      );
+      assert.match(result.stderr, /project release-state is incomplete/);
+      const calls = readFileSync(fixture.log, "utf8");
+      assert.match(calls, /legacy-verify --legacy \/handoff\/current/);
+      if (sourceAbsent) assert.doesNotMatch(calls, /image inspect.*release-state-runtime/);
+      else assert.match(calls, /image inspect.*release-state-runtime.*immutable-bound-image-id/);
+      assert.doesNotMatch(calls, /--source-id immutable-bound-image-id|^create |^cp /m);
+      assert.equal(readlinkSync(join(fixture.handoff, "current")), "releases/preserved");
+      assert.deepEqual(
+        metadata.map((name) => readFileSync(join(release, name), "utf8")),
+        before,
+      );
+      assert.equal(before[0], "preserved-source\n");
+      assert.equal(before[1], "baked-legacy-root\n");
+      assertRetagSiblingPreserved(fixture);
+    } finally {
+      rmSync(fixture.root, { recursive: true, force: true });
+    }
+  }
+});
+
+test("post-feature image-only and absent-source retries reject invalid independent handoffs", () => {
+  for (const sourceAbsent of [false, true])
+    for (const problem of ["missing", "corrupt", "foreign", "source-kind"]) {
+      const fixture = createRetagClassificationFixture({
+        kind: "post-feature",
+        incompleteState: true,
+        sourceAbsent,
+      });
+      try {
+        const current = join(fixture.handoff, "current");
+        const release = join(fixture.handoff, "releases/preserved");
+        if (problem === "missing") unlinkSync(current);
+        else if (problem === "foreign") {
+          unlinkSync(current);
+          symlinkSync("../foreign-sibling", current);
+        } else if (problem === "corrupt")
+          writeFileSync(join(release, ".legacy-handoff.json"), "{}\n");
+        else writeFileSync(join(release, "source-kind"), "post-feature\n");
+        const metadata = ["source-id", "source-kind", ".legacy-handoff.json"];
+        const before = metadata.map((name) => readFileSync(join(release, name), "utf8"));
+        const result = spawnSync("sh", [captureScript], { env: fixture.env, encoding: "utf8" });
+        assert.equal(result.status, 1, `${problem}: ${result.stdout} ${result.stderr}`);
+        assert.match(
+          result.stderr,
+          /incomplete project release-state has no readable legacy source/,
+        );
+        assert.equal(result.stdout, "");
+        const calls = readFileSync(fixture.log, "utf8");
+        assert.doesNotMatch(calls, /^create |^cp /m);
+        assert.deepEqual(
+          metadata.map((name) => readFileSync(join(release, name), "utf8")),
+          before,
+        );
+        if (problem === "missing") assert.equal(existsSync(current), false);
+        else
+          assert.equal(
+            readlinkSync(current),
+            problem === "foreign" ? "../foreign-sibling" : "releases/preserved",
+          );
+        assertRetagSiblingPreserved(fixture);
+      } finally {
+        rmSync(fixture.root, { recursive: true, force: true });
+      }
+    }
 });

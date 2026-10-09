@@ -121,6 +121,157 @@ function assertExactCandidateShellAndWorker(selectedProject) {
     throw new Error("B sw.js is not served from the committed candidate release");
 }
 
+function preservedHandoffSnapshot(selectedProject) {
+  return run("docker", [
+    "run",
+    "--rm",
+    "--mount",
+    literalHandoffMount(root),
+    "--mount",
+    `type=bind,source=${join(root, "scripts")},target=/app,readonly`,
+    "node:22-alpine",
+    "node",
+    "--input-type=module",
+    "-e",
+    `import { readFileSync, lstatSync, readlinkSync } from "node:fs";
+import { join } from "node:path";
+import { pinLegacyHandoffCurrent } from "/app/stage-static-release.mjs";
+const [project, asset] = process.argv.slice(1);
+const current = join("/handoff", project, "current");
+const pinned = pinLegacyHandoffCurrent(current);
+const pointer = lstatSync(current, { bigint: true });
+const bytes = readFileSync(join(pinned.root, asset), "utf8");
+pinned.revalidate();
+const metadata = ["source-id", "source-kind", ".legacy-handoff.json"].map(name => {
+  const entry = lstatSync(join(pinned.root, name), { bigint: true });
+  return [name, ...["dev", "ino", "mode", "uid", "gid", "size", "mtimeNs", "ctimeNs", "birthtimeNs"].map(key => entry[key].toString())];
+});
+pinned.revalidate();
+process.stdout.write(JSON.stringify({ manifest: pinned.manifest, bytes, metadata,
+  pointer: [pointer.dev.toString(), pointer.ino.toString(), pointer.ctimeNs.toString(), pointer.birthtimeNs.toString(), readlinkSync(current)] }));`,
+    selectedProject,
+    legacyAssetPath.slice(1),
+  ]);
+}
+
+function assertImageOnlyIncompleteRecovery(selectedProject) {
+  const env = { ...process.env, COMPOSE_PROJECT_NAME: selectedProject, CABADRIVE_HOST_PORT: port };
+  const before = preservedHandoffSnapshot(selectedProject);
+  const source = JSON.parse(before);
+  if (source.bytes !== legacyBytes || source.manifest.sourceKind !== "baked-legacy-root")
+    throw new Error("first-stage recovery requires the exact independently captured A authority");
+  run("docker", ["volume", "create", `${siblingProject}_release-state`]);
+  run("docker", [
+    "run",
+    "--rm",
+    "-v",
+    `${siblingProject}_release-state:/state`,
+    "alpine:3.21",
+    "sh",
+    "-c",
+    "printf sibling > /state/sentinel",
+  ]);
+  const interrupted = spawnSync(
+    "docker",
+    [
+      "compose",
+      "-p",
+      selectedProject,
+      "run",
+      "--rm",
+      "stager",
+      "node",
+      "/app/scripts/stage-static-release.mjs",
+      "stage",
+      "--state",
+      "/state",
+      "--candidate",
+      "/candidate",
+      "--legacy",
+      "/legacy-handoff/current",
+      "--fault",
+      "after-assets",
+    ],
+    { cwd: root, env, encoding: "utf8" },
+  );
+  if (interrupted.status === 0 || !interrupted.stderr.includes("fault injection at after-assets"))
+    throw new Error(
+      `first stage did not reach its intended incomplete-volume fault: ${interrupted.stderr}`,
+    );
+  const rejected = spawnSync(
+    "docker",
+    [
+      "compose",
+      "-p",
+      selectedProject,
+      "run",
+      "--rm",
+      "stager",
+      "node",
+      "/app/scripts/stage-static-release.mjs",
+      "verify",
+      "--state",
+      "/state",
+    ],
+    { cwd: root, env, encoding: "utf8" },
+  );
+  if (rejected.status === 0)
+    throw new Error("interrupted first stage unexpectedly verified committed state");
+  make(["down"], selectedProject);
+  run("docker", ["rm", "-f", `${selectedProject}-legacy-a`]);
+  const containers = run("docker", [
+    "ps",
+    "-aq",
+    "--all",
+    "--filter",
+    `label=com.docker.compose.project=${selectedProject}`,
+    "--filter",
+    "label=com.docker.compose.service=cabadrive",
+  ]).trim();
+  if (containers) throw new Error("image-only recovery still has a project runtime container");
+  const label = run("docker", [
+    "image",
+    "inspect",
+    "--format",
+    '{{ index .Config.Labels "com.cabadrive.release-state-runtime" }}',
+    `${selectedProject}-cabadrive`,
+  ]).trim();
+  if (label !== "true")
+    throw new Error("image-only recovery did not retain the built B post-feature image");
+  const retried = make(["build"], selectedProject);
+  if (!retried.includes("validated preserved legacy handoff is the independent retained source"))
+    throw new Error("image-only retry did not admit independently verified preserved A");
+  if (preservedHandoffSnapshot(selectedProject) !== before)
+    throw new Error(
+      "image-only retry replaced original A source identity, inventory, pointer or bytes",
+    );
+  // Removal of the obsolete project image must preserve the same authority.
+  run("docker", ["image", "rm", `${selectedProject}-cabadrive`]);
+  const noSourceRetry = make(["build"], selectedProject);
+  if (
+    !noSourceRetry.includes("validated preserved legacy handoff is the independent retained source")
+  )
+    throw new Error("absent-source retry did not admit independently verified preserved A");
+  if (preservedHandoffSnapshot(selectedProject) !== before)
+    throw new Error(
+      "absent-source retry replaced original A source identity, inventory, pointer or bytes",
+    );
+  const sibling = run("docker", [
+    "run",
+    "--rm",
+    "-v",
+    `${siblingProject}_release-state:/state:ro`,
+    "alpine:3.21",
+    "cat",
+    "/state/sentinel",
+  ]);
+  if (sibling !== "sibling")
+    throw new Error("image-only incomplete recovery changed a sibling volume");
+  process.stdout.write(
+    "First-stage interruption/down/image-only B plus absent-image retries preserve exact independent A source/inventory and sibling PASS\n",
+  );
+}
+
 async function assertIntegratedRuntime(selectedProject, retained = false) {
   const shell = candidateFile(selectedProject, "index.html");
   const currentAsset = shell.match(/src="(\/assets\/[^" ]+\.js)"/)?.[1];
@@ -882,6 +1033,7 @@ try {
   buildLegacyImage(project);
   startLegacyContainer(project);
   make(["build"], project);
+  assertImageOnlyIncompleteRecovery(project);
   assertCrossContainerKernelLock(lockProject);
   assertCrossContainerPublishRetry(retryProject);
   assertSequentialPublishGenerations(`${retryProject}-sequential`);

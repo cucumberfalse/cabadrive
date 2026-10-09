@@ -638,6 +638,10 @@ fi
 if [ -n "$image" ]; then
   if classify_runtime_label "$image"; then
     if [ -n "$invalid_state" ]; then
+      if verify_handoff >/dev/null 2>&1; then
+        printf '%s\n' 'validated preserved legacy handoff is the independent retained source'
+        exit 0
+      fi
       printf '%s\n' 'incomplete project release-state has no readable legacy source' >&2
       exit 1
     fi
@@ -671,6 +675,10 @@ copy_legacy_assets() {
 
 if [ -z "$source" ]; then
   if [ -n "$invalid_state" ]; then
+    if verify_handoff >/dev/null 2>&1; then
+      printf '%s\n' 'validated preserved legacy handoff is the independent retained source'
+      exit 0
+    fi
     printf '%s\n' 'incomplete project release-state has no readable legacy source' >&2
     exit 1
   fi
