@@ -1,8 +1,11 @@
 import assert from "node:assert/strict";
 import {
   chmodSync,
+  cpSync,
   existsSync,
   lstatSync,
+  lutimesSync,
+  linkSync,
   mkdirSync,
   mkdtempSync,
   readFileSync,
@@ -20,6 +23,7 @@ import { join } from "node:path";
 import { execFileSync, spawnSync } from "node:child_process";
 import test from "node:test";
 import {
+  stageStaticRelease,
   createCandidateManifest,
   pinLegacyHandoffCurrent,
   publishAndExportStaticRelease,
@@ -160,16 +164,39 @@ function generations(root) {
     };
   });
   const state = join(root, "state");
-  const publish = (index, extra = {}) =>
-    publishAndExportStaticRelease({
-      stateRoot: state,
-      generationRoot,
-      outputRoot: join(generationRoot, "site"),
-      candidateRoot: releases[index].candidate,
-      destinationRoot: releases[index].destination,
-      renameNoReplaceHelper: helper,
-      ...extra,
-    });
+  const publish = (index, extra = {}) => {
+    try {
+      return publishAndExportStaticRelease({
+        stateRoot: state,
+        generationRoot,
+        outputRoot: join(generationRoot, "site"),
+        candidateRoot: releases[index].candidate,
+        destinationRoot: releases[index].destination,
+        renameNoReplaceHelper: helper,
+        ...extra,
+      });
+    } finally {
+      const pendingPath = join(state, "publish-pending.json");
+      const lineagePath = join(state, "publish-generations.json");
+      const readFixtureRecord = (path) => {
+        try {
+          return lstatSync(path).isFile() ? JSON.parse(readFileSync(path, "utf8")) : null;
+        } catch {
+          return null;
+        }
+      };
+      const pending = readFixtureRecord(pendingPath);
+      const lineage = readFixtureRecord(lineagePath);
+      const releaseId = createCandidateManifest(releases[index].candidate).releaseId;
+      const destination = extra.destinationRoot || releases[index].destination;
+      const published = lineage?.generations.find(
+        (entry) => entry.releaseId === releaseId && entry.destination === destination,
+      );
+      if (pending?.releaseId === releaseId && pending.destination === destination)
+        releases[index].output = pending.output;
+      else if (published) releases[index].output = published.link.path;
+    }
+  };
   publish(0);
   publish(1);
   const oldTree = join(generationRoot, readlinkSync(releases[0].output));
@@ -700,4 +727,683 @@ test("retirement link generations stay pinned at callback, partial removal and c
         assert.equal(existsSync(f.releases[3].output), false);
         assert.equal(existsSync(f.releases[3].destination), false);
       });
+});
+
+function generationLineage(f) {
+  return JSON.parse(readFileSync(join(f.state, "publish-generations.json"), "utf8"));
+}
+
+test("publication generations separate repeated content, new destinations and exact terminal retries", () => {
+  fixture((root) => {
+    const f = generations(root);
+    const originalA = f.releases[0].output;
+    const originalB = f.releases[1].output;
+    const before = readFileSync(join(f.state, "publish-generations.json"), "utf8");
+    const outputIdentity = lstatSync(originalB, { bigint: true });
+    const destinationIdentity = lstatSync(f.releases[1].destination, { bigint: true });
+    f.publish(1);
+    assert.equal(readFileSync(join(f.state, "publish-generations.json"), "utf8"), before);
+    assert.equal(lstatSync(originalB, { bigint: true }).ino, outputIdentity.ino);
+    assert.equal(
+      lstatSync(f.releases[1].destination, { bigint: true }).ino,
+      destinationIdentity.ino,
+    );
+    f.publish(1, { destinationRoot: join(root, "export-b-second") });
+    const secondB = generationLineage(f).active;
+    assert.notEqual(secondB, originalB);
+    assert.equal(generationLineage(f).previous, originalB);
+    f.publish(0, { destinationRoot: join(root, "export-a-again") });
+    const repeatedA = generationLineage(f).active;
+    assert.notEqual(repeatedA, originalA);
+    assert.equal(generationLineage(f).previous, secondB);
+    f.publish(2);
+    assert.equal(generationLineage(f).previous, repeatedA);
+    f.publish(3);
+    assert.equal(generationLineage(f).previous, f.releases[2].output);
+    assert.equal(generationLineage(f).generations.length, 2);
+    for (const release of f.releases)
+      assert.equal(
+        readFileSync(join(release.destination, "index.html"), "utf8"),
+        readFileSync(join(release.candidate, "index.html"), "utf8"),
+      );
+    assert.equal(readFileSync(join(root, "export-b-second", "index.html"), "utf8"), "b shell");
+    assert.equal(readFileSync(join(root, "export-a-again", "index.html"), "utf8"), "a shell");
+  });
+});
+
+test("retirement never obtains ownership from foreign prefix-shaped links or trees", () => {
+  fixture((root) => {
+    const f = generations(root);
+    const foreignTree = join(f.generationRoot, ".site-foreign.publish-review-foreign");
+    const foreignLink = join(f.generationRoot, "site-foreign");
+    mkdirSync(foreignTree);
+    writeFileSync(join(foreignTree, "sentinel"), "foreign exact");
+    symlinkSync(".site-foreign.publish-review-foreign", foreignLink);
+    const beforeLink = lstatSync(foreignLink, { bigint: true });
+    const beforeTree = lstatSync(foreignTree, { bigint: true });
+    f.publish(2);
+    f.publish(3);
+    assert.equal(readFileSync(join(foreignTree, "sentinel"), "utf8"), "foreign exact");
+    assert.equal(readlinkSync(foreignLink), ".site-foreign.publish-review-foreign");
+    for (const field of ["dev", "ino", "mode", "uid", "gid", "ctimeNs", "mtimeNs", "birthtimeNs"]) {
+      assert.equal(lstatSync(foreignLink, { bigint: true })[field], beforeLink[field]);
+      assert.equal(lstatSync(foreignTree, { bigint: true })[field], beforeTree[field]);
+    }
+    assert.equal(generationLineage(f).generations.length, 2);
+    assert.equal(generationLineage(f).previous, f.releases[2].output);
+  });
+});
+
+test("timestamp changes cannot choose or delete a different immediate predecessor", () => {
+  for (const name of ["active", "previous"])
+    for (const value of ["2000-01-01", "2040-01-01"])
+      fixture((root) => {
+        const f = generations(root);
+        f.publish(2);
+        const lineage = generationLineage(f);
+        const before = readFileSync(join(f.state, "publish-generations.json"), "utf8");
+        const path = lineage[name];
+        const original = lstatSync(path, { bigint: true });
+        lutimesSync(path, new Date(value), new Date(value));
+        assert.notEqual(lstatSync(path, { bigint: true }).ctimeNs, original.ctimeNs);
+        assert.throws(() => f.publish(3), /lineage.*link changed/);
+        assert.equal(readFileSync(join(f.state, "publish-generations.json"), "utf8"), before);
+        assert.equal(readFileSync(join(lineage.active, "index.html"), "utf8"), "c shell");
+        assert.equal(readFileSync(join(lineage.previous, "index.html"), "utf8"), "b shell");
+        assert.equal(existsSync(f.releases[3].destination), false);
+      });
+});
+
+test("generation lineage promotion resumes exact output/export in a new process at every durable boundary", () => {
+  for (const point of [
+    "after-output",
+    "after-export",
+    "before-current-activation",
+    "before-publish-journal-clear",
+    "generation-lineage-prepared",
+    "generation-lineage-promoted",
+    "generation-lineage-durable",
+    "unlink-publish-pending",
+    "generation-lineage-update",
+  ])
+    fixture((root) => {
+      const f = generations(root);
+      let injected = false;
+      assert.throws(
+        () =>
+          f.publish(
+            2,
+            point.startsWith("after-") || point.startsWith("before-")
+              ? { faultAt: point }
+              : {
+                  onDurabilityOperation: ({ operation }) => {
+                    if (!injected && operation === point) {
+                      injected = true;
+                      throw new Error(`pause ${point}`);
+                    }
+                  },
+                },
+          ),
+        /fault injection|pause/,
+      );
+      const output = f.releases[2].output;
+      const outputIdentity = lstatSync(output, { bigint: true });
+      const destinationIdentity = existsSync(f.releases[2].destination)
+        ? lstatSync(f.releases[2].destination, { bigint: true })
+        : null;
+      const options = {
+        stateRoot: f.state,
+        generationRoot: f.generationRoot,
+        outputRoot: join(f.generationRoot, "site"),
+        candidateRoot: f.releases[2].candidate,
+        destinationRoot: f.releases[2].destination,
+        renameNoReplaceHelper: join(root, "rename-noreplace"),
+      };
+      const child = spawnSync(
+        process.execPath,
+        [
+          "--input-type=module",
+          "-e",
+          `import {publishAndExportStaticRelease} from ${JSON.stringify(stager)};\n` +
+            `process.env.CABADRIVE_TEST_KERNEL_LOCK='in-process';\npublishAndExportStaticRelease(${JSON.stringify(options)});`,
+        ],
+        { encoding: "utf8", timeout: 30000 },
+      );
+      assert.equal(child.error, undefined, point);
+      assert.equal(child.status, 0, `${point}: ${child.stderr}`);
+      assert.equal(generationLineage(f).active, output);
+      assert.equal(generationLineage(f).previous, f.releases[1].output);
+      assert.equal(lstatSync(output, { bigint: true }).ino, outputIdentity.ino);
+      if (destinationIdentity)
+        assert.equal(
+          lstatSync(f.releases[2].destination, { bigint: true }).ino,
+          destinationIdentity.ino,
+        );
+      assert.equal(generationLineage(f).generations.length, 2);
+      assert.equal(existsSync(join(f.state, "publish-pending.json")), false);
+      assert.equal(existsSync(f.journal), false);
+    });
+});
+
+test("lineage rejects malformed, missing, linked, FIFO and substituted authority before publication", () => {
+  for (const mutation of [
+    "schema",
+    "extra",
+    "root",
+    "project",
+    "active",
+    "previous",
+    "duplicate",
+    "owned-type",
+    "tree-digest",
+    "missing",
+    "symlink",
+    "hardlink",
+    "fifo",
+    "replacement-after-admission",
+  ])
+    fixture((root) => {
+      const f = generations(root);
+      const path = join(f.state, "publish-generations.json");
+      const original = readFileSync(path, "utf8");
+      const record = JSON.parse(original);
+      const foreign = join(root, "foreign-lineage");
+      writeFileSync(foreign, original, { mode: 0o600 });
+      if (mutation === "schema") record.schemaVersion = 99;
+      if (mutation === "extra") record.unknown = true;
+      if (mutation === "root") record.root = root;
+      if (mutation === "project") record.projectKey = "foreign";
+      if (mutation === "active") record.active = f.releases[0].output;
+      if (mutation === "previous") record.previous = record.active;
+      if (mutation === "duplicate") record.generations.push(record.generations[0]);
+      if (mutation === "owned-type") record.generations[0].owned = "true";
+      if (mutation === "tree-digest") record.generations[0].treeSha256 = "0".repeat(64);
+      if (["missing", "symlink", "hardlink", "fifo"].includes(mutation)) {
+        renameSync(path, `${path}.original`);
+        if (mutation === "symlink") symlinkSync(foreign, path);
+        if (mutation === "hardlink") linkSync(foreign, path);
+        if (mutation === "fifo") execFileSync("mkfifo", [path]);
+      } else if (mutation !== "replacement-after-admission")
+        writeFileSync(path, JSON.stringify(record));
+      if (!["missing", "replacement-after-admission"].includes(mutation))
+        assert.throws(() =>
+          stageStaticRelease({ stateRoot: f.state, candidateRoot: f.releases[2].candidate }),
+        );
+      assert.throws(() =>
+        f.publish(
+          2,
+          mutation === "replacement-after-admission"
+            ? {
+                onAfterReadOnlyAdmission: () => {
+                  renameSync(path, `${path}.original`);
+                  writeFileSync(path, original, { mode: 0o600 });
+                },
+              }
+            : {},
+        ),
+      );
+      assert.equal(existsSync(f.releases[2].destination), false);
+      assert.equal(readFileSync(join(f.state, "current", "index.html"), "utf8"), "b shell");
+      assert.equal(readFileSync(join(f.releases[0].output, "index.html"), "utf8"), "a shell");
+      assert.equal(readFileSync(join(f.releases[1].output, "index.html"), "utf8"), "b shell");
+      assert.equal(readFileSync(foreign, "utf8"), original);
+    });
+});
+
+test("creator-bound publication reservations recover after binding-write failure and reject foreign same-target links", () => {
+  for (const mutation of ["untouched", "published-clone", "reserved-clone", "competing-output"])
+    fixture((root) => {
+      const f = generations(root);
+      const pendingPath = join(f.state, "publish-pending.json");
+      let injected = false;
+      let foreignPath;
+      let foreignIdentity;
+      let target;
+      assert.throws(
+        () =>
+          f.publish(2, {
+            onDurabilityOperation: ({ operation, path }) => {
+              if (injected) return;
+              if (["reserved-clone", "competing-output"].includes(mutation)) {
+                if (operation !== "before-output-reservation") return;
+                const record = JSON.parse(readFileSync(pendingPath, "utf8"));
+                target = record.transactionId;
+                foreignPath =
+                  mutation === "reserved-clone"
+                    ? record.generation.reservation.path
+                    : record.output;
+                if (mutation === "reserved-clone")
+                  renameSync(foreignPath, join(root, "original-reservation"));
+                symlinkSync(target, foreignPath);
+                foreignIdentity = lstatSync(foreignPath, { bigint: true });
+                injected = true;
+                return;
+              }
+              if (operation !== "fsync-file" || !path.endsWith(".next")) return;
+              let next;
+              try {
+                next = JSON.parse(readFileSync(path, "utf8"));
+              } catch {
+                return;
+              }
+              if (
+                next.operation !== "publish-export" ||
+                next.generation?.reservation !== null ||
+                !next.generation?.created?.link
+              )
+                return;
+              const prior = JSON.parse(readFileSync(pendingPath, "utf8"));
+              if (!prior.generation?.reservation) return;
+              injected = true;
+              throw new Error("pause reservation binding write");
+            },
+          }),
+        /reservation|occupied/,
+      );
+      assert.equal(injected, true);
+      const pending = JSON.parse(readFileSync(pendingPath, "utf8"));
+      const tree = join(f.generationRoot, pending.transactionId);
+      assert.equal(readFileSync(join(f.state, "current", "index.html"), "utf8"), "b shell");
+      assert.equal(existsSync(f.releases[2].destination), false);
+      if (mutation === "untouched") {
+        const original = lstatSync(pending.output, { bigint: true });
+        const child = spawnSync(
+          process.execPath,
+          [
+            "--input-type=module",
+            "-e",
+            `import {publishAndExportStaticRelease} from ${JSON.stringify(stager)};process.env.CABADRIVE_TEST_KERNEL_LOCK='in-process';publishAndExportStaticRelease(${JSON.stringify({ stateRoot: f.state, generationRoot: f.generationRoot, outputRoot: join(f.generationRoot, "site"), candidateRoot: f.releases[2].candidate, destinationRoot: f.releases[2].destination, renameNoReplaceHelper: join(root, "rename-noreplace") })});`,
+          ],
+          { encoding: "utf8", timeout: 30000 },
+        );
+        assert.equal(child.status, 0, child.stderr);
+        assert.equal(lstatSync(pending.output, { bigint: true }).ino, original.ino);
+        assert.equal(generationLineage(f).previous, f.releases[1].output);
+      } else {
+        if (mutation === "published-clone") {
+          foreignPath = pending.output;
+          target = pending.transactionId;
+          renameSync(foreignPath, join(root, "original-published-link"));
+          symlinkSync(target, foreignPath);
+          foreignIdentity = lstatSync(foreignPath, { bigint: true });
+        }
+        assert.throws(() => f.publish(2), /reservation|occupied|creator-owned/);
+        assert.equal(readlinkSync(foreignPath), target);
+        for (const field of ["dev", "ino", "mode", "ctimeNs", "birthtimeNs"])
+          assert.equal(lstatSync(foreignPath, { bigint: true })[field], foreignIdentity[field]);
+        assert.equal(readFileSync(join(tree, "index.html"), "utf8"), "c shell");
+        assert.equal(readFileSync(join(f.state, "current", "index.html"), "utf8"), "b shell");
+        assert.equal(existsSync(f.releases[2].destination), false);
+      }
+    });
+});
+
+test("pending lineage promotion rejects escaping paths, forged semantic ownership and malformed fields", () => {
+  for (const mutation of [
+    "escape",
+    "extra",
+    "installed",
+    "wrong-domain",
+    "created-release",
+    "created-destination",
+    "absent-prior-owned",
+  ])
+    fixture((root) => {
+      const f = generations(root);
+      const pendingPath = join(f.state, "publish-pending.json");
+      assert.throws(
+        () =>
+          f.publish(2, {
+            onDurabilityOperation: ({ operation }) => {
+              if (operation === "generation-lineage-prepared")
+                throw new Error("pause prepared lineage");
+            },
+          }),
+        /pause prepared/,
+      );
+      const pending = JSON.parse(readFileSync(pendingPath, "utf8"));
+      const foreign = join(root, "foreign-prepared");
+      writeFileSync(foreign, pending.generation.promotion.snapshot.bytes, { mode: 0o600 });
+      const before = lstatSync(foreign, { bigint: true });
+      const foreignBytes = readFileSync(foreign, "utf8");
+      if (mutation === "escape") {
+        pending.generation.promotion.temporary = "../foreign-prepared";
+        pending.generation.promotion.snapshot.identity = Object.fromEntries(
+          Object.keys(pending.generation.promotion.snapshot.identity).map((field) => [
+            field,
+            before[field].toString(),
+          ]),
+        );
+      }
+      if (mutation === "extra") pending.generation.promotion.extra = true;
+      if (mutation === "installed") pending.generation.promotion.installed = "false";
+      if (mutation === "wrong-domain") {
+        const record = JSON.parse(pending.generation.promotion.snapshot.bytes);
+        record.projectKey = "foreign";
+        pending.generation.promotion.snapshot.bytes = JSON.stringify(record);
+      }
+      if (mutation === "created-release")
+        pending.generation.created.releaseId = createCandidateManifest(
+          f.releases[0].candidate,
+        ).releaseId;
+      if (mutation === "created-destination") pending.generation.created.destination = foreign;
+      if (mutation === "absent-prior-owned") {
+        renameSync(join(f.state, "publish-generations.json"), join(root, "original-lineage"));
+        pending.generation.prior = null;
+        pending.generation.promotion = null;
+      }
+      writeFileSync(pendingPath, JSON.stringify(pending));
+      assert.throws(() => f.publish(2), /generation|lineage|promotion/);
+      assert.equal(readFileSync(foreign, "utf8"), foreignBytes);
+      for (const field of ["dev", "ino", "mode", "uid", "gid", "ctimeNs", "mtimeNs", "birthtimeNs"])
+        assert.equal(lstatSync(foreign, { bigint: true })[field], before[field]);
+      assert.equal(readFileSync(join(f.state, "current", "index.html"), "utf8"), "b shell");
+      assert.equal(readFileSync(join(f.releases[2].output, "index.html"), "utf8"), "c shell");
+      assert.equal(readFileSync(join(f.releases[2].destination, "index.html"), "utf8"), "c shell");
+    });
+});
+
+test("legacy bootstrap protects only the unique old current and never owns unknown generations", () => {
+  for (const mode of ["legacy", "ambiguous", "empty-domain"])
+    fixture((root) => {
+      const f = generations(root);
+      const state = join(root, "legacy-state");
+      const domain = join(root, "legacy-generations");
+      mkdirSync(domain);
+      const aManifest = createCandidateManifest(f.releases[0].candidate);
+      const oldOutput = join(
+        mode === "empty-domain" ? root : domain,
+        `site-${aManifest.releaseId}`,
+      );
+      const oldDestination = join(root, "legacy-export-a");
+      const helper = join(root, "rename-noreplace");
+      publishAndExportStaticRelease({
+        stateRoot: state,
+        outputRoot: oldOutput,
+        candidateRoot: f.releases[0].candidate,
+        destinationRoot: oldDestination,
+        renameNoReplaceHelper: helper,
+      });
+      const originalLink = lstatSync(oldOutput, { bigint: true });
+      const foreign = join(domain, ".site-foreign.publish-review-foreign");
+      let foreignIdentity;
+      const addForeign = () => {
+        mkdirSync(foreign);
+        writeFileSync(join(foreign, "sentinel"), "foreign old tree");
+        symlinkSync(".site-foreign.publish-review-foreign", join(domain, "site-foreign"));
+        foreignIdentity = lstatSync(foreign, { bigint: true });
+      };
+      if (mode !== "empty-domain") addForeign();
+      const publish = (index) =>
+        publishAndExportStaticRelease({
+          stateRoot: state,
+          generationRoot: domain,
+          outputRoot: join(domain, "site"),
+          candidateRoot: f.releases[index].candidate,
+          destinationRoot: join(root, `legacy-export-${index}`),
+          renameNoReplaceHelper: helper,
+        });
+      if (mode === "ambiguous") {
+        const duplicate = join(domain, `site-${aManifest.releaseId}-duplicate`);
+        const duplicateTree = `.${duplicate.split("/").at(-1)}.publish-00000000-0000-4000-8000-000000000001`;
+        cpSync(join(domain, readlinkSync(oldOutput)), join(domain, duplicateTree), {
+          recursive: true,
+        });
+        symlinkSync(duplicateTree, duplicate);
+        assert.throws(() => publish(1), /ambiguous/);
+        assert.equal(existsSync(join(root, "legacy-export-1")), false);
+      } else {
+        publish(1);
+        if (mode === "empty-domain") addForeign();
+        const lineage = JSON.parse(readFileSync(join(state, "publish-generations.json"), "utf8"));
+        if (mode === "legacy") {
+          assert.equal(lineage.previous, oldOutput);
+          assert.equal(
+            lineage.generations.find((entry) => entry.link.path === oldOutput).owned,
+            false,
+          );
+        } else assert.equal(lineage.previous, null);
+        publish(2);
+        publish(3);
+        assert.equal(
+          JSON.parse(readFileSync(join(state, "publish-generations.json"), "utf8")).generations
+            .length,
+          2,
+        );
+      }
+      assert.equal(lstatSync(oldOutput, { bigint: true }).ino, originalLink.ino);
+      assert.equal(readFileSync(join(oldOutput, "index.html"), "utf8"), "a shell");
+      assert.equal(readFileSync(join(oldDestination, "index.html"), "utf8"), "a shell");
+      assert.equal(readFileSync(join(foreign, "sentinel"), "utf8"), "foreign old tree");
+      assert.equal(lstatSync(foreign, { bigint: true }).ctimeNs, foreignIdentity.ctimeNs);
+    });
+});
+
+test("runtime-only advancement leaves published lineage authoritative for fresh exports", () => {
+  fixture((root) => {
+    const f = generations(root);
+    const publishedB = f.releases[1].output;
+    const lineage = readFileSync(join(f.state, "publish-generations.json"), "utf8");
+    stageStaticRelease({ stateRoot: f.state, candidateRoot: f.releases[2].candidate });
+    assert.equal(readFileSync(join(f.state, "publish-generations.json"), "utf8"), lineage);
+    f.publish(3);
+    assert.equal(generationLineage(f).previous, publishedB);
+    assert.equal(readFileSync(join(publishedB, "index.html"), "utf8"), "b shell");
+    assert.equal(readFileSync(join(f.state, "current", "index.html"), "utf8"), "d shell");
+  });
+});
+
+test("ordinary runtime stage cannot bypass coordinator pending or retirement authority including final clear", () => {
+  for (const point of ["after-output", "after-export", "retirement-unlink", "retirement-clear"])
+    fixture((root) => {
+      const f = generations(root);
+      assert.throws(
+        () =>
+          f.publish(
+            2,
+            point.startsWith("after-")
+              ? { faultAt: point }
+              : {
+                  onDurabilityOperation: ({ operation }) => {
+                    if (operation === point) throw Error(`pause ${point}`);
+                  },
+                },
+          ),
+        /pause|fault injection/,
+      );
+      const current = readlinkSync(join(f.state, "current"));
+      const lineage = readFileSync(join(f.state, "publish-generations.json"), "utf8");
+      const pendingPath = join(f.state, "publish-pending.json");
+      const pending = existsSync(pendingPath) ? readFileSync(pendingPath, "utf8") : null;
+      if (point === "retirement-clear") {
+        assert.equal(existsSync(f.journal), false);
+        assert.notEqual(generationLineage(f).retiring, null);
+      }
+      for (const options of [
+        {},
+        {
+          lockHeld: true,
+          expectedManifest: createCandidateManifest(f.releases[3].candidate),
+          finalRevalidate: () => {},
+        },
+      ])
+        assert.throws(
+          () =>
+            stageStaticRelease({
+              stateRoot: f.state,
+              candidateRoot: f.releases[3].candidate,
+              ...options,
+            }),
+          /cannot bypass/,
+        );
+      assert.equal(readlinkSync(join(f.state, "current")), current);
+      assert.equal(readFileSync(join(f.state, "publish-generations.json"), "utf8"), lineage);
+      if (pending) assert.equal(readFileSync(pendingPath, "utf8"), pending);
+      f.publish(point.startsWith("after-") ? 2 : 3);
+      assert.equal(generationLineage(f).retiring, null);
+    });
+});
+
+test("published receipt rejects malformed identity while fresh exports preserve externally removed destinations", () => {
+  for (const mutation of ["schema", "extra", "device", "inode", "missing", "removed-destination"])
+    fixture((root) => {
+      const f = generations(root);
+      const receiptPath = readdirSync(f.state)
+        .filter((name) => name.startsWith("export-receipt-"))
+        .map((name) => join(f.state, name))
+        .find(
+          (path) =>
+            JSON.parse(readFileSync(path, "utf8")).destination === f.releases[1].destination,
+        );
+      const receipt = JSON.parse(readFileSync(receiptPath, "utf8"));
+      const before = readFileSync(join(f.state, "publish-generations.json"), "utf8");
+      if (mutation === "removed-destination") {
+        rmSync(f.releases[1].destination, { recursive: true });
+        f.publish(2);
+        assert.equal(generationLineage(f).previous, f.releases[1].output);
+        assert.equal(
+          readFileSync(join(f.releases[2].destination, "index.html"), "utf8"),
+          "c shell",
+        );
+      } else {
+        if (mutation === "schema") receipt.schemaVersion = 99;
+        if (mutation === "extra") receipt.foreign = true;
+        if (mutation === "device") receipt.device = "01";
+        if (mutation === "inode") receipt.inode = 1;
+        if (mutation === "missing") delete receipt.device;
+        writeFileSync(receiptPath, JSON.stringify(receipt));
+        assert.throws(() => f.publish(2), /ownership receipt/);
+        assert.equal(readFileSync(join(f.state, "publish-generations.json"), "utf8"), before);
+        assert.equal(readFileSync(join(f.state, "current", "index.html"), "utf8"), "b shell");
+        assert.equal(existsSync(f.releases[2].destination), false);
+      }
+    });
+});
+
+test("creator rename authority fails closed when the filesystem cannot supply birth generation", () => {
+  for (const mode of [
+    "reservation-create",
+    "reservation-admit",
+    "prepared-create",
+    "prepared-admit",
+    "retirement-create",
+  ])
+    fixture((root) => {
+      const f = generations(root);
+      const pendingPath = join(f.state, "publish-pending.json");
+      if (mode.endsWith("admit")) {
+        const point = mode.startsWith("reservation")
+          ? "before-output-reservation"
+          : "generation-lineage-prepared";
+        assert.throws(
+          () =>
+            f.publish(2, {
+              onDurabilityOperation: ({ operation }) => {
+                if (operation === point) throw Error("pause birth admission");
+              },
+            }),
+          /pause birth/,
+        );
+        const pending = JSON.parse(readFileSync(pendingPath, "utf8"));
+        if (mode.startsWith("reservation")) {
+          pending.generation.reservation.birthtimeNs = "0";
+          pending.generation.created.link.birthtimeNs = "0";
+        } else pending.generation.promotion.snapshot.identity.birthtimeNs = "0";
+        writeFileSync(pendingPath, JSON.stringify(pending));
+      }
+      const before = readFileSync(join(f.state, "publish-generations.json"), "utf8");
+      const options = {
+        stateRoot: f.state,
+        generationRoot: f.generationRoot,
+        outputRoot: join(f.generationRoot, "site"),
+        candidateRoot: f.releases[2].candidate,
+        destinationRoot: f.releases[2].destination,
+        renameNoReplaceHelper: join(root, "rename-noreplace"),
+      };
+      const child = spawnSync(
+        process.execPath,
+        [
+          "--input-type=module",
+          "-e",
+          `
+        import fs from 'node:fs'; import assert from 'node:assert/strict'; import {syncBuiltinESMExports} from 'node:module';
+        import {publishAndExportStaticRelease} from ${JSON.stringify(stager)};
+        process.env.CABADRIVE_TEST_KERNEL_LOCK='in-process';
+        const mode=${JSON.stringify(mode)};const descriptors=new Map();let observed=0;let creatorCount=0,unprovablePath;
+        const originalOpen=fs.openSync,originalStat=fs.lstatSync,originalFstat=fs.fstatSync;
+        const originalWrite=fs.writeFileSync;
+        const selected=path=>mode==='retirement-create'?(unprovablePath!==undefined&&path===unprovablePath):mode.startsWith('reservation')?String(path).includes('.reserve-'):String(path).split('/').at(-1).startsWith('.publish-generations-');
+        const zero=stat=>{observed++;return new Proxy(stat,{get(target,key){return key==='birthtimeNs'?0n:Reflect.get(target,key);}});};
+        fs.openSync=(path,...args)=>{const fd=originalOpen(path,...args);descriptors.set(fd,path);if(mode==='retirement-create'&&String(path).split('/').at(-1).startsWith('.publish-generations-')&&(args[0]&fs.constants.O_CREAT)&&++creatorCount===2)unprovablePath=path;return fd;};
+        fs.lstatSync=(path,...args)=>{const stat=originalStat(path,...args);return args[0]?.bigint&&selected(path)?zero(stat):stat;};
+        fs.fstatSync=(fd,...args)=>{const stat=originalFstat(fd,...args);return args[0]?.bigint&&selected(descriptors.get(fd))?zero(stat):stat;};
+        fs.writeFileSync=(path,...args)=>{if(['prepared-create','retirement-create'].includes(mode)&&selected(descriptors.get(path)))throw Error('unprovable creator must reject BEFORE writing prepared bytes');return originalWrite(path,...args);};
+        syncBuiltinESMExports();
+        assert.throws(()=>publishAndExportStaticRelease(${JSON.stringify(options)}),/birth generation|reservation authority|promotion authority/);
+        if(mode.endsWith('create'))assert.ok(observed>0,'adapter must actually expose zero birthtime on the creator inode');
+      `,
+        ],
+        { encoding: "utf8", timeout: 30000 },
+      );
+      assert.equal(child.error, undefined, mode);
+      assert.equal(child.status, 0, `${mode}: ${child.stderr}`);
+      if (mode === "retirement-create") {
+        const committed = generationLineage(f);
+        assert.equal(committed.retiring, null);
+        assert.equal(committed.generations.length, 3);
+        assert.equal(readFileSync(join(committed.active, "index.html"), "utf8"), "c shell");
+        assert.equal(readFileSync(join(f.state, "current", "index.html"), "utf8"), "c shell");
+        assert.equal(existsSync(f.oldTree), true);
+        assert.equal(existsSync(f.releases[1].output), true);
+        assert.equal(existsSync(f.journal), false);
+      } else {
+        assert.equal(readFileSync(join(f.state, "publish-generations.json"), "utf8"), before);
+        assert.equal(readFileSync(join(f.state, "current", "index.html"), "utf8"), "b shell");
+      }
+      assert.equal(readFileSync(join(f.releases[0].destination, "index.html"), "utf8"), "a shell");
+      assert.equal(readFileSync(join(f.releases[1].destination, "index.html"), "utf8"), "b shell");
+      if (mode.startsWith("reservation"))
+        assert.equal(existsSync(f.releases[2].destination), false);
+    });
+});
+
+test("generation and runtime admission share the existing effective Compose project identity", () => {
+  const previous = process.env.CABADRIVE_COMPOSE_PROJECT;
+  try {
+    for (const selected of ["cabadrive", "r2j-effective-project"])
+      fixture((root) => {
+        if (selected === "cabadrive") delete process.env.CABADRIVE_COMPOSE_PROJECT;
+        else process.env.CABADRIVE_COMPOSE_PROJECT = selected;
+        const f = generations(root);
+        assert.equal(generationLineage(f).projectKey, selected);
+        stageStaticRelease({
+          stateRoot: f.state,
+          candidateRoot: f.releases[2].candidate,
+          projectKey: selected,
+        });
+        f.publish(3, { projectKey: selected });
+        const lineage = readFileSync(join(f.state, "publish-generations.json"), "utf8");
+        f.publish(3, { projectKey: selected });
+        assert.equal(readFileSync(join(f.state, "publish-generations.json"), "utf8"), lineage);
+        assert.throws(() =>
+          stageStaticRelease({
+            stateRoot: f.state,
+            candidateRoot: f.releases[0].candidate,
+            projectKey: "foreign-project",
+          }),
+        );
+        assert.throws(() =>
+          f.publish(0, {
+            projectKey: "foreign-project",
+            destinationRoot: join(root, "foreign-export"),
+          }),
+        );
+        assert.equal(readFileSync(join(f.state, "publish-generations.json"), "utf8"), lineage);
+        assert.equal(readFileSync(join(f.state, "current", "index.html"), "utf8"), "d shell");
+        assert.equal(existsSync(join(root, "foreign-export")), false);
+      });
+  } finally {
+    if (previous === undefined) delete process.env.CABADRIVE_COMPOSE_PROJECT;
+    else process.env.CABADRIVE_COMPOSE_PROJECT = previous;
+  }
 });

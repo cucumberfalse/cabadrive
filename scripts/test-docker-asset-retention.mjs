@@ -465,6 +465,8 @@ function assertCrossContainerPublishRetry(selectedProject) {
     "after-output",
     "durability:export-rename",
     "after-export",
+    "durability:generation-lineage-prepared",
+    "durability:generation-lineage-promoted",
   ];
   for (const [index, faultAt] of faultPoints.entries()) {
     const transactionProject = `${selectedProject}-${index}`;
@@ -517,6 +519,35 @@ function assertCrossContainerPublishRetry(selectedProject) {
       });
       if (faulted.status === 0 || !/fault injection/i.test(faulted.stderr || "")) {
         throw new Error(`first publish container did not stop at ${faultAt}: ${faulted.stderr}`);
+      }
+      if (faultAt === "after-output") {
+        const rejectedStage = spawnSync(
+          "docker",
+          [
+            "run",
+            "--rm",
+            "-e",
+            `CABADRIVE_COMPOSE_PROJECT=${transactionProject}`,
+            "-v",
+            `${stateVolume}:/state`,
+            "-v",
+            `${publishVolume}:/publish`,
+            "--entrypoint",
+            "node",
+            `${project}-stager`,
+            "/app/scripts/stage-static-release.mjs",
+            "stage",
+            "--state",
+            "/state",
+            "--candidate",
+            "/candidate",
+          ],
+          { encoding: "utf8" },
+        );
+        if (rejectedStage.status === 0 || !/cannot bypass/.test(rejectedStage.stderr || ""))
+          throw new Error(
+            `runtime stage bypassed pending pre-export publication: ${rejectedStage.stderr}`,
+          );
       }
       const resumed = spawnSync("docker", common, { encoding: "utf8" });
       if (resumed.status !== 0) {
@@ -605,15 +636,103 @@ function assertSequentialPublishGenerations(selectedProject) {
       rmSync(probe, { force: true });
     }
   };
+  const inspectPublishedState = (program) =>
+    run("docker", [
+      "run",
+      "--rm",
+      "-v",
+      `${stateVolume}:/state:ro`,
+      "-v",
+      `${publishVolume}:/publish:ro`,
+      "--entrypoint",
+      "node",
+      `${project}-stager`,
+      "-e",
+      program,
+    ]);
+  const readLineage = () =>
+    JSON.parse(
+      inspectPublishedState(
+        "process.stdout.write(require('fs').readFileSync('/state/publish-generations.json','utf8'))",
+      ),
+    );
+  const foreignSnapshot = () =>
+    inspectPublishedState(`
+    const fs=require('fs'); const fields=['dev','ino','mode','uid','gid','mtimeNs','ctimeNs','birthtimeNs'];
+    const snapshot=p=>Object.fromEntries(fields.map(k=>[k,fs.lstatSync(p,{bigint:true})[k].toString()]));
+    process.stdout.write(JSON.stringify({link:snapshot('/publish/cabadrive-static-publish-foreign'),
+      tree:snapshot('/publish/.cabadrive-static-publish-foreign.publish-owned-test-foreign'),
+      target:fs.readlinkSync('/publish/cabadrive-static-publish-foreign'),
+      bytes:fs.readFileSync('/publish/.cabadrive-static-publish-foreign.publish-owned-test-foreign/sentinel','utf8')}));
+  `);
   try {
     publish("/candidate", "sequential-a");
     publish("/candidate-b", "sequential-b", ["-v", `${candidateB}:/candidate-b:ro`]);
     if (!readFileSync(join(destinationB, "index.html"), "utf8").includes("sequential B")) {
       throw new Error("second release did not publish from a new persistent generation");
     }
+    const initialB = readLineage();
+    // A normal runtime stage may advance current without publishing a new
+    // export generation. The next export still protects the last published B.
+    run("docker", [
+      "run",
+      "--rm",
+      "-e",
+      `CABADRIVE_COMPOSE_PROJECT=${selectedProject}`,
+      "-v",
+      `${stateVolume}:/state`,
+      "-v",
+      `${publishVolume}:/publish`,
+      "--entrypoint",
+      "node",
+      `${project}-stager`,
+      "/app/scripts/stage-static-release.mjs",
+      "stage",
+      "--state",
+      "/state",
+      "--candidate",
+      "/candidate",
+    ]);
+    if (JSON.stringify(readLineage()) !== JSON.stringify(initialB))
+      throw new Error("ordinary runtime stage changed published generation lineage");
+    publish("/candidate-b", "sequential-b-after-runtime", ["-v", `${candidateB}:/candidate-b:ro`]);
+    const afterRuntime = readLineage();
+    if (afterRuntime.previous !== initialB.active)
+      throw new Error("fresh export after runtime-only activation lost last published predecessor");
+
+    publish("/candidate-b", "sequential-b-after-runtime", ["-v", `${candidateB}:/candidate-b:ro`]);
+    if (JSON.stringify(readLineage()) !== JSON.stringify(afterRuntime))
+      throw new Error("same-current same-destination retry changed exact publication generation");
+    run("docker", [
+      "run",
+      "--rm",
+      "-v",
+      `${publishVolume}:/publish`,
+      "--entrypoint",
+      "node",
+      `${project}-stager`,
+      "-e",
+      `const fs=require('fs');
+        fs.mkdirSync('/publish/.cabadrive-static-publish-foreign.publish-owned-test-foreign');
+        fs.writeFileSync('/publish/.cabadrive-static-publish-foreign.publish-owned-test-foreign/sentinel','FOREIGN');
+        fs.symlinkSync('.cabadrive-static-publish-foreign.publish-owned-test-foreign','/publish/cabadrive-static-publish-foreign');`,
+    ]);
+    const foreignBefore = foreignSnapshot();
+    const extraDestinations = [];
+    publish("/candidate", "sequential-a-again");
+    const repeatedA = readLineage();
+    if (repeatedA.previous !== afterRuntime.active || repeatedA.active === initialB.previous)
+      throw new Error("A-B-A did not publish fresh generation and protect exact B predecessor");
+    extraDestinations.push(join(temporary, "sequential-a-again"));
+    publish("/candidate", "sequential-a-new-destination");
+    const anotherA = readLineage();
+    if (anotherA.active === repeatedA.active || anotherA.previous !== repeatedA.active)
+      throw new Error(
+        "same-content new-destination did not create distinct active/previous generations",
+      );
+    extraDestinations.push(join(temporary, "sequential-a-new-destination"));
     // C commits, then retirement fails after the old output unlink. A fresh
     // D container must resume that exact cleanup before D can activate.
-    const extraDestinations = [];
     for (const name of ["c", "d"]) {
       const candidate = join(temporary, `candidate-${name}`);
       mkdirSync(join(candidate, "assets"), { recursive: true });
@@ -637,6 +756,42 @@ function assertSequentialPublishGenerations(selectedProject) {
           faulted = true;
         }
         if (!faulted) throw new Error("cross-container retirement fault was not reached");
+        const beforeRejectedStage = inspectPublishedState(
+          "process.stdout.write(require('fs').readlinkSync('/state/current'))",
+        );
+        const blockedStage = spawnSync(
+          "docker",
+          [
+            "run",
+            "--rm",
+            "-e",
+            `CABADRIVE_COMPOSE_PROJECT=${selectedProject}`,
+            "-v",
+            `${stateVolume}:/state`,
+            "-v",
+            `${publishVolume}:/publish`,
+            "--entrypoint",
+            "node",
+            `${project}-stager`,
+            "/app/scripts/stage-static-release.mjs",
+            "stage",
+            "--state",
+            "/state",
+            "--candidate",
+            "/candidate",
+          ],
+          { encoding: "utf8" },
+        );
+        if (
+          blockedStage.status === 0 ||
+          !/cannot bypass/.test(blockedStage.stderr || "") ||
+          inspectPublishedState(
+            "process.stdout.write(require('fs').readlinkSync('/state/current'))",
+          ) !== beforeRejectedStage
+        )
+          throw new Error(
+            `ordinary runtime stage bypassed interrupted retirement: ${blockedStage.stderr}`,
+          );
       } else {
         publish(`/candidate-${name}`, `sequential-${name}`, [
           "-v",
@@ -679,7 +834,21 @@ function assertSequentialPublishGenerations(selectedProject) {
       .trim()
       .split("\n")
       .filter(Boolean);
-    if (generationLinks.length !== 2 || generationTrees.length !== 2)
+    const finalLineage = readLineage();
+    if (
+      finalLineage.generations.length !== 2 ||
+      generationLinks.length !== 3 ||
+      generationTrees.length !== 3 ||
+      !finalLineage.generations.every((entry) => generationLinks.includes(entry.link.path)) ||
+      finalLineage.previous !==
+        finalLineage.generations.find(
+          (entry) =>
+            entry.releaseId !==
+            finalLineage.generations.find((active) => active.link.path === finalLineage.active)
+              .releaseId,
+        )?.link.path ||
+      foreignSnapshot() !== foreignBefore
+    )
       throw new Error(
         "cross-container retirement did not bound exact active/rollback outputs and trees",
       );
@@ -694,6 +863,41 @@ function assertSequentialPublishGenerations(selectedProject) {
       "-e",
       "/state/publish-retirement.json",
     ]);
+    const beforeTimestamp = JSON.stringify(finalLineage);
+    run("docker", [
+      "run",
+      "--rm",
+      "-v",
+      `${stateVolume}:/state:ro`,
+      "-v",
+      `${publishVolume}:/publish`,
+      "--entrypoint",
+      "node",
+      `${project}-stager`,
+      "-e",
+      `const fs=require('fs');
+        const record=JSON.parse(fs.readFileSync('/state/publish-generations.json','utf8'));
+        fs.lutimesSync(record.previous,new Date('2040-01-01'),new Date('2040-01-01'));`,
+    ]);
+    let timestampRejected = false;
+    try {
+      publish("/candidate", "sequential-after-timestamp");
+    } catch (error) {
+      if (!/lineage.*link changed/.test(String(error.stderr || error.message))) throw error;
+      timestampRejected = true;
+    }
+    if (
+      !timestampRejected ||
+      JSON.stringify(readLineage()) !== beforeTimestamp ||
+      foreignSnapshot() !== foreignBefore ||
+      existsSync(join(temporary, "sequential-after-timestamp"))
+    )
+      throw new Error(
+        "timestamp drift did not fail closed preserving current/previous/foreign authority",
+      );
+    console.log(
+      "Docker R2j repeated content/new destination/exact retry/owned predecessor/foreign/timestamp controls passed",
+    );
     for (const destination of extraDestinations) rmSync(destination, { recursive: true });
     rmSync(destinationA, { recursive: true });
     rmSync(destinationB, { recursive: true });

@@ -827,3 +827,8 @@ evidence.
   Any retry in the renamed-but-not-durable phase must re-sync the verified output
   and its parent before stage or `current`; add ordered trace and crash/fsync-
   failure tests.
+
+
+## Current055 R2j publication authority clarification
+
+Release content identity is distinct from publication transaction identity. Durable created-generation lineage, not filesystem timestamp or prefix, selects the active/immediately previous publication and only owned retirement candidates. Exact same-request retry is idempotent; repeated content/new destination creates a fresh transaction. Unknown artifacts and protection-only legacy bootstrap remain outside destructive ownership. Valid ordinary runtime staging and fresh export compose through independent published/current authority; outstanding coordinator/retirement/tombstone work blocks direct-stage mutation while valid standalone-publish FR021 controls remain intact. Current engineering evidence and future ordered-role gates are recorded in055 and the original tasks without resetting historical budgets.

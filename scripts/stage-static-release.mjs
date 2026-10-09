@@ -48,6 +48,8 @@ const RECLAIM_GUARD = "stage.lock.reclaim";
 const MAX_AUTHORITY_BYTES = 1024 * 1024;
 const EXPORT_OWNER_RECORD = ".cabadrive-export-owner.json";
 const TEST_LOCKS = new Set();
+const COORDINATOR_STAGE = Symbol("coordinator stage authority");
+const COORDINATOR_STAGE_PERMITS = new WeakSet();
 
 function fail(message) {
   throw new Error(`Static release staging: ${message}`);
@@ -1689,6 +1691,51 @@ export function verifyCommittedState(stateRoot) {
   }
 }
 
+function stageCoordinatorRelease(options, boundary) {
+  const permit = { boundary };
+  COORDINATOR_STAGE_PERMITS.add(permit);
+  try {
+    return stageStaticRelease({ ...options, [COORDINATOR_STAGE]: permit });
+  } finally {
+    COORDINATOR_STAGE_PERMITS.delete(permit);
+  }
+}
+
+function assertStageCoordinatorAdmission(
+  state,
+  candidate,
+  lockHeld,
+  expectedManifest,
+  finalRevalidate,
+  permit,
+  projectKey,
+) {
+  if (noFollowEntry(join(state, RETIREMENT_PENDING)))
+    fail("runtime stage cannot bypass pending publication retirement");
+  if (noFollowEntry(join(state, GENERATION_LINEAGE))) {
+    const snapshot = generationAuthoritySnapshot(join(state, GENERATION_LINEAGE));
+    const lineage = JSON.parse(snapshot.bytes);
+    if (lineage.retiring !== null)
+      fail("runtime stage cannot bypass unfinished publication retirement lineage");
+    validateGenerationLineage(state, lineage, lineage.root, lineage.logicalOutput, projectKey);
+  }
+  const pending = noFollowEntry(state) ? readPendingPublish(state) : undefined;
+  if (!pending || (pending.operation === "publish" && !pending.generation)) return;
+  if (
+    !lockHeld ||
+    !expectedManifest ||
+    typeof finalRevalidate !== "function" ||
+    !permit ||
+    !COORDINATOR_STAGE_PERMITS.has(permit) ||
+    permit.boundary.state !== state ||
+    permit.boundary.operation !== "publish-export" ||
+    pending.operation !== "publish-export"
+  )
+    fail("runtime stage cannot bypass pending publish-export coordinator authority");
+  assertFinalJournalBoundary(permit.boundary, candidate, { committed: false });
+  finalRevalidate();
+}
+
 export function stageStaticRelease({
   stateRoot,
   candidateRoot,
@@ -1702,6 +1749,7 @@ export function stageStaticRelease({
   expectedManifest,
   validatedLegacy,
   finalRevalidate,
+  [COORDINATOR_STAGE]: coordinatorPermit,
 } = {}) {
   if (!stateRoot || !candidateRoot) fail("--state and --candidate are required");
   const candidateRootReal = realpathSync(candidateRoot);
@@ -1738,6 +1786,15 @@ export function stageStaticRelease({
     }
     inspectExistingExecutionDomain(prospectiveState, projectKey);
   }
+  assertStageCoordinatorAdmission(
+    prospectiveState,
+    candidateRootReal,
+    lockHeld,
+    expectedManifest,
+    finalRevalidate,
+    coordinatorPermit,
+    projectKey,
+  );
   const state = ensureStateLayout(stateRoot);
   const release = createCandidateManifest(candidateRootReal);
   if (
@@ -1755,6 +1812,15 @@ export function stageStaticRelease({
     : acquireLock(state, { projectKey, onLockOperation, diagnosticHost });
   const transaction = join(state, "transactions", `${release.releaseId}-${randomUUID()}`);
   try {
+    assertStageCoordinatorAdmission(
+      state,
+      candidateRootReal,
+      lockHeld,
+      expectedManifest,
+      finalRevalidate,
+      coordinatorPermit,
+      projectKey,
+    );
     const candidate = candidateRootReal;
     const existing = inventoryForAssets(state, "retained assets");
     const legacy = legacyValidation?.manifest.assets || [];
@@ -2980,6 +3046,9 @@ function assertJournalOwnedArtifacts({
   if (!stateMatches) {
     fail("release state changed before transaction boundary");
   }
+  if (pending.generation) {
+    assertGenerationPending(state, pending);
+  }
   return { pending, published };
 }
 
@@ -3069,20 +3138,842 @@ function exactPublishedOutputDirectory(parent, output, pending) {
 // symlink to that directory is an atomic no-replace operation on every
 // supported runtime: a concurrent mkdir(output) makes symlink creation fail
 // rather than allowing rename to replace the newly occupied destination.
-function publishOutputNoReplace({ temporary, output, pending, options }) {
-  if (basename(temporary) !== pending.transactionId) {
+function publishOutputNoReplace({ state, temporary, output, pending, options }) {
+  if (basename(temporary) !== pending.transactionId)
     fail("static publish temporary does not match its output journal");
+  if (pending.generation) {
+    if (!pending.generation.reservation) {
+      const reservationPath = join(dirname(output), `.${basename(output)}.reserve-${randomUUID()}`);
+      symlinkSync(pending.transactionId, reservationPath);
+      const identity = lstatSync(reservationPath, { bigint: true });
+      if (typeof identity.birthtimeNs !== "bigint" || identity.birthtimeNs <= 0n)
+        fail("publish generation reservation requires positive creator birth generation");
+      const reservation = {
+        path: reservationPath,
+        target: pending.transactionId,
+        ...retirementLinkIdentity(identity),
+        ...Object.fromEntries(
+          ["mode", "uid", "gid", "mtimeNs"].map((field) => [field, identity[field].toString()]),
+        ),
+      };
+      const created = {
+        ...pending.generation.created,
+        link: { path: output, target: pending.transactionId, ...retirementLinkIdentity(identity) },
+      };
+      pending = { ...pending, generation: { ...pending.generation, created, reservation } };
+      assertGenerationPending(state, pending);
+      writeAtomically(state, publishPendingPath(state), `${JSON.stringify(pending)}\n`, options);
+      syncDirectory(dirname(output), options);
+      assertGenerationPending(state, pending);
+    }
+    return bindRecoveredGeneration(state, pending, options);
   }
   invokeDurability(options, "before-output-reservation", output);
   try {
     symlinkSync(pending.transactionId, output);
   } catch (error) {
-    if (error?.code === "EEXIST") {
+    if (error?.code === "EEXIST")
       fail("static publish destination appeared during no-replace publication");
-    }
     throw error;
   }
   invokeDurability(options, "rename-output", output);
+  return pending;
+}
+
+const GENERATION_LINEAGE = "publish-generations.json";
+
+function generationFileIdentity(entry) {
+  return Object.fromEntries(
+    REGULAR_IDENTITY_FIELDS.map((field) => [field, entry[field].toString()]),
+  );
+}
+
+function generationAuthoritySnapshot(path) {
+  const opened = openRegularFileNoFollow(path, "publish generation retirement lineage");
+  try {
+    if (opened.identity.nlink !== 1n || (opened.identity.mode & 0o777n) !== 0o600n)
+      fail("publish generation retirement lineage is not private single-link authority");
+    const bytes = readPinnedRegularFile(path, "publish generation retirement lineage", opened, {
+      maxBytes: MAX_AUTHORITY_BYTES,
+    }).toString("utf8");
+    return { bytes, identity: generationFileIdentity(opened.identity) };
+  } finally {
+    closeSync(opened.descriptor);
+  }
+}
+
+function assertGenerationSnapshot(path, expected, { renamed = false } = {}) {
+  if (
+    !expected ||
+    !retirementKeys(expected, "bytes,identity") ||
+    typeof expected.bytes !== "string" ||
+    !retirementKeys(expected.identity, REGULAR_IDENTITY_FIELDS.join(",")) ||
+    !Object.values(expected.identity).every(
+      (value) => typeof value === "string" && /^(?:0|[1-9][0-9]*)$/.test(value),
+    )
+  )
+    fail("publish generation retirement lineage has malformed file authority");
+  const actual = generationAuthoritySnapshot(path);
+  if (
+    renamed &&
+    (!/^[1-9][0-9]*$/.test(expected.identity.birthtimeNs) ||
+      !/^[1-9][0-9]*$/.test(actual.identity.birthtimeNs))
+  )
+    fail("publish generation rename requires positive creator birth generation");
+  if (
+    actual.bytes !== expected.bytes ||
+    REGULAR_IDENTITY_FIELDS.some(
+      (field) =>
+        !(renamed && field === "ctimeNs") && actual.identity[field] !== expected.identity[field],
+    )
+  )
+    fail("publish generation retirement lineage file identity changed");
+  return actual;
+}
+
+function generationDomain(_state, root, logicalOutput, projectKey) {
+  return {
+    schemaVersion: 1,
+    root,
+    rootIdentity: retirementIdentity(lstatSync(root)),
+    logicalOutput,
+    projectKey: effectiveProjectKey(projectKey),
+    active: null,
+    previous: null,
+    generations: [],
+    retiring: null,
+  };
+}
+
+function validateGenerationEntry(
+  entry,
+  root,
+  logicalOutput,
+  { partial = false, unlinked = false } = {},
+) {
+  if (
+    !retirementKeys(
+      entry,
+      "link,tree,treeSha256,releaseId,manifestSha256,destination,legacy,owned",
+    ) ||
+    typeof entry.owned !== "boolean" ||
+    !/^[a-f0-9]{64}$/.test(entry.releaseId) ||
+    !/^[a-f0-9]{64}$/.test(entry.manifestSha256) ||
+    typeof entry.destination !== "string" ||
+    !isAbsolute(entry.destination) ||
+    !/^[a-f0-9]{64}$/.test(entry.treeSha256) ||
+    !retirementKeys(entry.tree, "device,inode") ||
+    !retirementKeys(entry.link, "path,target,device,inode,ctimeNs,birthtimeNs") ||
+    !validRetirementLinkGeneration(entry.link) ||
+    dirname(entry.link.path) !== root ||
+    !basename(entry.link.path).startsWith(`${basename(logicalOutput)}-`) ||
+    !validPublishTransactionId(entry.link.target, entry.link.path) ||
+    !Number.isSafeInteger(entry.link.device) ||
+    !Number.isSafeInteger(entry.link.inode) ||
+    !Number.isSafeInteger(entry.tree.device) ||
+    !Number.isSafeInteger(entry.tree.inode)
+  )
+    fail("publish generation retirement lineage contains malformed generation authority");
+  const link = noFollowEntry(entry.link.path, { bigint: true });
+  if (
+    (!link && !unlinked) ||
+    (link &&
+      (!link.isSymbolicLink() ||
+        !retirementLinkIdentityMatches(link, entry.link) ||
+        readlinkSync(entry.link.path) !== entry.link.target))
+  )
+    fail("publish generation retirement lineage output link changed");
+  const target = join(root, entry.link.target);
+  const tree = noFollowEntry(target);
+  if (!tree) {
+    if (partial && !link) return;
+    fail("publish generation retirement lineage tree is missing");
+  }
+  if (!tree.isDirectory() || tree.isSymbolicLink() || !retirementIdentityMatches(tree, entry.tree))
+    fail("publish generation retirement lineage tree identity changed");
+  const actual = retirementTree(target);
+  if (
+    !partial &&
+    createHash("sha256").update(JSON.stringify(actual)).digest("hex") !== entry.treeSha256
+  )
+    fail("publish generation retirement lineage tree inventory changed");
+}
+
+function validateGenerationLineage(
+  state,
+  value,
+  root,
+  logicalOutput,
+  projectKey,
+  { pendingRetirement } = {},
+) {
+  if (
+    !retirementKeys(
+      value,
+      "schemaVersion,root,rootIdentity,logicalOutput,projectKey,active,previous,generations,retiring",
+    ) ||
+    value.schemaVersion !== 1 ||
+    value.root !== root ||
+    value.logicalOutput !== logicalOutput ||
+    value.projectKey !== effectiveProjectKey(projectKey) ||
+    !retirementKeys(value.rootIdentity, "device,inode") ||
+    !retirementIdentityMatches(lstatSync(root), value.rootIdentity) ||
+    !Array.isArray(value.generations) ||
+    value.generations.length === 0 ||
+    typeof value.active !== "string" ||
+    !(value.previous === null || typeof value.previous === "string")
+  )
+    fail("publish generation retirement lineage does not match its domain");
+  const paths = new Set();
+  for (const entry of value.generations) {
+    if (paths.has(entry?.link?.path))
+      fail("publish generation retirement lineage contains duplicate generations");
+    paths.add(entry?.link?.path);
+    const retiring = value.retiring === entry?.link?.path;
+    if (
+      retiring &&
+      pendingRetirement &&
+      (pendingRetirement.output.path !== entry.link.path ||
+        createHash("sha256").update(JSON.stringify(pendingRetirement.entries)).digest("hex") !==
+          entry.treeSha256)
+    )
+      fail("retirement journal is not the owned generation inventory");
+    if (
+      retiring &&
+      !pendingRetirement &&
+      !noFollowEntry(entry.link.path) &&
+      noFollowEntry(join(root, entry.link.target))
+    )
+      fail("partial retirement lost its journal");
+    validateGenerationEntry(entry, root, logicalOutput, { partial: retiring, unlinked: retiring });
+  }
+  if (
+    !paths.has(value.active) ||
+    (value.previous !== null && (!paths.has(value.previous) || value.previous === value.active))
+  )
+    fail("publish generation retirement lineage active or previous authority is missing");
+  if (
+    !(
+      value.retiring === null ||
+      (paths.has(value.retiring) &&
+        value.retiring !== value.active &&
+        value.retiring !== value.previous)
+    )
+  )
+    fail("publish generation retirement lineage has invalid retiring authority");
+  return value;
+}
+
+function generationCurrentMatches(state, lineage) {
+  const active = lineage.generations.find((entry) => entry.link.path === lineage.active);
+  const committed = verifyCommittedState(state);
+  if (!active || !committed.valid || committed.releaseId !== active.releaseId)
+    fail("publish generation retirement lineage no longer matches committed current");
+  const release = readJson(
+    join(state, "metadata", `${active.releaseId}.json`),
+    "generation release metadata",
+  );
+  const inventory = outputInventory(join(lineage.root, active.link.target));
+  const ledger = readRetainedInventory(state);
+  const retained = inventoryForAssets(state, "retained assets");
+  const expected = [
+    ...(ledger || []).map((entry) => ({ ...entry, path: `assets/${entry.path}` })),
+    ...release.mutable,
+  ].sort((left, right) => ordinal(left.path, right.path));
+  if (
+    !ledger ||
+    !sameEntries(ledger, retained) ||
+    !sameEntries(inventory, expected) ||
+    JSON.stringify(release.legacyAuthority ?? null) !== JSON.stringify(active.legacy) ||
+    manifestDigest({
+      schemaVersion: release.schemaVersion,
+      assets: release.assets,
+      mutable: release.mutable,
+      releaseId: release.releaseId,
+    }) !== active.manifestSha256
+  )
+    fail("publish generation retirement lineage active bytes do not match committed current");
+}
+
+function generationPublishedMatches(state, lineage) {
+  const active = lineage.generations.find((entry) => entry.link.path === lineage.active);
+  const committed = verifyCommittedState(state);
+  if (!active || !committed.valid) fail("published generation or runtime state is invalid");
+  const release = readJson(
+    join(state, "metadata", `${active.releaseId}.json`),
+    "published generation metadata",
+  );
+  const manifest = {
+    schemaVersion: release.schemaVersion,
+    assets: release.assets,
+    mutable: release.mutable,
+    releaseId: release.releaseId,
+  };
+  const inventory = outputInventory(join(lineage.root, active.link.target));
+  const assets = inventory
+    .filter((entry) => entry.path.startsWith("assets/"))
+    .map((entry) => ({ ...entry, path: entry.path.slice(7) }));
+  const mutable = inventory.filter((entry) => !entry.path.startsWith("assets/"));
+  const retained = readRetainedInventory(state);
+  const contains = (whole, subset) =>
+    subset.every((entry) =>
+      whole.some(
+        (item) =>
+          item.path === entry.path && item.sha256 === entry.sha256 && item.size === entry.size,
+      ),
+    );
+  if (
+    manifest.releaseId !== active.releaseId ||
+    manifestDigest(manifest) !== active.manifestSha256 ||
+    !sameEntries(mutable, manifest.mutable) ||
+    !contains(assets, manifest.assets) ||
+    !retained ||
+    !contains(retained, assets)
+  )
+    fail("published generation immutable manifest or retained asset subset changed");
+  if (active.owned) {
+    const receipt = readJson(
+      exportReceiptPath(state, active.destination),
+      "published generation receipt",
+    );
+    if (
+      !retirementKeys(
+        receipt,
+        "schemaVersion,nonce,operation,releaseId,manifestSha256,destination,device,inode,inventorySha256",
+      ) ||
+      receipt.schemaVersion !== SCHEMA_VERSION ||
+      ![receipt.device, receipt.inode].every(
+        (value) => typeof value === "string" && /^(?:0|[1-9][0-9]*)$/.test(value),
+      ) ||
+      receipt.operation !== "publish-export" ||
+      receipt.destination !== active.destination ||
+      receipt.releaseId !== active.releaseId ||
+      receipt.manifestSha256 !== active.manifestSha256 ||
+      receipt.inventorySha256 !== inventoryDigest(inventory) ||
+      !validExportNonce(receipt.nonce)
+    )
+      fail("published generation ownership receipt changed");
+  }
+}
+
+function readGenerationSelection(
+  state,
+  root,
+  logicalOutput,
+  release,
+  destination,
+  legacyValidation,
+  projectKey,
+  freshOutput,
+) {
+  const lineagePath = join(state, GENERATION_LINEAGE);
+  const pending = noFollowEntry(state) ? readPendingPublish(state) : undefined;
+  const retirement = noFollowEntry(join(state, RETIREMENT_PENDING))
+    ? readAuthorityJson(join(state, RETIREMENT_PENDING), "retirement journal")
+    : undefined;
+  let snapshot = noFollowEntry(lineagePath) ? generationAuthoritySnapshot(lineagePath) : null;
+  let lineage = snapshot
+    ? validateGenerationLineage(
+        state,
+        JSON.parse(snapshot.bytes),
+        root,
+        logicalOutput,
+        projectKey,
+        { pendingRetirement: retirement },
+      )
+    : null;
+  if (pending) {
+    const generation = pending.generation;
+    if (
+      !generation ||
+      generation.root !== root ||
+      generation.logicalOutput !== logicalOutput ||
+      generation.projectKey !== effectiveProjectKey(projectKey) ||
+      pending.output !== generation.output ||
+      !pendingPublishIdentityMatches(
+        pending,
+        pending.output,
+        release,
+        "publish-export",
+        legacyValidation,
+      ) ||
+      !pendingCoordinatorRequestMatches(pending, destination, legacyValidation)
+    )
+      fail("publish generation pending authority does not match this request");
+    assertGenerationPending(state, pending);
+    return { output: generation.output, generation, lineage, snapshot };
+  }
+  if (lineage) {
+    generationPublishedMatches(state, lineage);
+    const active = lineage.generations.find((entry) => entry.link.path === lineage.active);
+    if (
+      active.releaseId === release.releaseId &&
+      active.manifestSha256 === manifestDigest(release) &&
+      active.destination === destination &&
+      JSON.stringify(active.legacy) === JSON.stringify(legacyRequest(legacyValidation))
+    ) {
+      generationCurrentMatches(state, lineage);
+      return { output: lineage.active, lineage, snapshot, terminal: true };
+    }
+  } else {
+    const names = requireDirectoryNames(root).filter((name) =>
+      name.startsWith(`${basename(logicalOutput)}-`),
+    );
+    if (names.length) {
+      const committed = verifyCommittedState(state);
+      const expected = committed.valid
+        ? join(root, `${basename(logicalOutput)}-${committed.releaseId}`)
+        : null;
+      const matches = names
+        .map((name) => join(root, name))
+        .filter((path) => {
+          const directory = exactPublishedOutputDirectory(root, path);
+          if (!directory || !committed.valid) return false;
+          const metadata = readJson(
+            join(state, "metadata", `${committed.releaseId}.json`),
+            "legacy generation metadata",
+          );
+          return exactCommittedPublishWithoutJournal(
+            state,
+            metadata,
+            outputInventory(directory),
+            legacyValidation,
+          );
+        });
+      if (matches.length !== 1 || matches[0] !== expected)
+        fail("publish generation retirement lineage is missing or old layout is ambiguous");
+      const link = retirementLink(root, expected);
+      const tree = join(root, link.target);
+      lineage = {
+        ...generationDomain(state, root, logicalOutput, projectKey),
+        active: expected,
+        generations: [
+          {
+            link,
+            tree: retirementIdentity(lstatSync(tree)),
+            treeSha256: createHash("sha256")
+              .update(JSON.stringify(retirementTree(tree)))
+              .digest("hex"),
+            releaseId: committed.releaseId,
+            manifestSha256: manifestDigest(
+              (({ schemaVersion, assets, mutable, releaseId }) => ({
+                schemaVersion,
+                assets,
+                mutable,
+                releaseId,
+              }))(
+                readJson(
+                  join(state, "metadata", `${committed.releaseId}.json`),
+                  "legacy generation metadata",
+                ),
+              ),
+            ),
+            destination,
+            legacy: legacyRequest(legacyValidation),
+            owned: false,
+          },
+        ],
+      };
+    }
+  }
+  const output =
+    freshOutput || join(root, `${basename(logicalOutput)}-${release.releaseId}-${randomUUID()}`);
+  if (noFollowEntry(output)) fail("fresh publish generation output is occupied");
+  return {
+    output,
+    lineage,
+    snapshot,
+    generation: {
+      schemaVersion: 1,
+      root,
+      logicalOutput,
+      projectKey: effectiveProjectKey(projectKey),
+      rootIdentity: retirementIdentity(lstatSync(root)),
+      output,
+      prior: snapshot,
+      priorLineage: lineage,
+      created: null,
+      promotion: null,
+      reservation: null,
+    },
+  };
+}
+
+function assertPriorGenerationLineage(state, generation) {
+  if (
+    !retirementKeys(
+      generation,
+      "schemaVersion,root,logicalOutput,projectKey,rootIdentity,output,prior,priorLineage,created,promotion,reservation",
+    ) ||
+    generation.schemaVersion !== 1 ||
+    !retirementKeys(generation.rootIdentity, "device,inode") ||
+    !retirementIdentityMatches(lstatSync(generation.root), generation.rootIdentity) ||
+    dirname(generation.output) !== generation.root ||
+    !basename(generation.output).startsWith(`${basename(generation.logicalOutput)}-`)
+  )
+    fail("publish generation pending authority is malformed");
+  if (
+    generation.prior &&
+    JSON.stringify(JSON.parse(generation.prior.bytes)) !== JSON.stringify(generation.priorLineage)
+  )
+    fail("publish generation prior lineage does not match pinned bytes");
+  if (generation.promotion) {
+    const promotion = generation.promotion;
+    if (
+      !retirementKeys(promotion, "temporary,snapshot,installed") ||
+      typeof promotion.installed !== "boolean" ||
+      typeof promotion.temporary !== "string" ||
+      !/^\.publish-generations-[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}\.next$/.test(
+        promotion.temporary,
+      ) ||
+      !promotion.snapshot ||
+      typeof promotion.snapshot.bytes !== "string" ||
+      !/^[1-9][0-9]*$/.test(promotion.snapshot.identity?.birthtimeNs)
+    )
+      fail("publish generation prepared promotion authority is malformed");
+    const expected = {
+      ...generationDomain(state, generation.root, generation.logicalOutput, generation.projectKey),
+      active: generation.output,
+      previous: generation.priorLineage?.active ?? null,
+      generations: [...(generation.priorLineage?.generations || []), generation.created],
+    };
+    if (promotion.snapshot.bytes !== `${JSON.stringify(expected)}\n`)
+      fail("publish generation prepared promotion does not match journal request");
+  }
+  const path = join(state, GENERATION_LINEAGE);
+  if (generation.promotion && noFollowEntry(path)) {
+    try {
+      assertGenerationSnapshot(path, generation.promotion.snapshot, {
+        renamed: !generation.promotion.installed,
+      });
+      validateGenerationLineage(
+        state,
+        JSON.parse(generation.promotion.snapshot.bytes),
+        generation.root,
+        generation.logicalOutput,
+        generation.projectKey,
+      );
+      return;
+    } catch {
+      /* The old committed lineage remains authoritative until promotion. */
+    }
+  }
+  if (generation.prior) assertGenerationSnapshot(path, generation.prior);
+  else if (noFollowEntry(path)) fail("publish generation retirement lineage appeared unexpectedly");
+  if (generation.priorLineage)
+    validateGenerationLineage(
+      state,
+      generation.priorLineage,
+      generation.root,
+      generation.logicalOutput,
+      generation.projectKey,
+      {
+        pendingRetirement: noFollowEntry(join(state, RETIREMENT_PENDING))
+          ? readAuthorityJson(join(state, RETIREMENT_PENDING), "retirement journal")
+          : undefined,
+      },
+    );
+}
+
+function createGenerationFile(path, bytes) {
+  const descriptor = openSync(
+    path,
+    constants.O_RDWR |
+      constants.O_CREAT |
+      constants.O_EXCL |
+      constants.O_NOFOLLOW |
+      constants.O_NONBLOCK,
+    0o600,
+  );
+  try {
+    const initial = fstatSync(descriptor, { bigint: true });
+    if (typeof initial.birthtimeNs !== "bigint" || initial.birthtimeNs <= 0n)
+      fail("prepared publish generation requires positive creator birth generation");
+    if (!initial.isFile() || initial.nlink !== 1n || (initial.mode & 0o777n) !== 0o600n)
+      fail("created publish generation lineage is not a private regular file");
+    writeFileSync(descriptor, bytes);
+    const identity = fstatSync(descriptor, { bigint: true });
+    for (const field of ["dev", "ino", "mode", "uid", "gid", "nlink", "birthtimeNs"])
+      if (identity[field] !== initial[field])
+        fail("created publish generation lineage identity changed");
+    const opened = { descriptor, identity, stat: fstatSync(descriptor) };
+    assertPinnedRegular(path, "created publish generation lineage", opened);
+    fsyncSync(descriptor);
+    assertPinnedRegular(path, "created publish generation lineage", opened);
+    const actual = readPinnedRegularFile(path, "created publish generation lineage", opened, {
+      maxBytes: MAX_AUTHORITY_BYTES,
+    }).toString("utf8");
+    if (actual !== bytes) fail("created publish generation lineage bytes changed");
+    return { opened, snapshot: { bytes, identity: generationFileIdentity(identity) } };
+  } catch (error) {
+    closeSync(descriptor);
+    throw error;
+  }
+}
+
+function assertGenerationPending(state, pending) {
+  const generation = pending.generation;
+  if (!generation) return;
+  assertPriorGenerationLineage(state, generation);
+  const created = generation.created;
+  if (
+    !created ||
+    created.releaseId !== pending.releaseId ||
+    created.manifestSha256 !== pending.manifestSha256 ||
+    created.destination !== pending.destination ||
+    JSON.stringify(created.legacy) !== JSON.stringify(pending.legacy) ||
+    !created.owned ||
+    generation.output !== pending.output ||
+    (created.link &&
+      (created.link.path !== pending.output || created.link.target !== pending.transactionId))
+  )
+    fail("publish generation created authority does not match pending transaction");
+  if (generation.prior === null && generation.priorLineage) {
+    const prior = generation.priorLineage;
+    const entry = prior.generations?.[0];
+    if (
+      prior.generations?.length !== 1 ||
+      entry?.owned !== false ||
+      prior.previous !== null ||
+      prior.retiring !== null ||
+      prior.active !== entry.link.path ||
+      entry.link.path !==
+        join(
+          generation.root,
+          `${basename(generation.logicalOutput)}-${pending.priorCurrentReleaseId}`,
+        ) ||
+      entry.releaseId !== pending.priorCurrentReleaseId
+    )
+      fail("publish generation absent prior authority is not a protection-only legacy bootstrap");
+    const metadata = readJson(
+      join(state, "metadata", `${entry.releaseId}.json`),
+      "legacy generation metadata",
+    );
+    const expected = [
+      ...pending.priorAssets.map((item) => ({ ...item, path: `assets/${item.path}` })),
+      ...metadata.mutable,
+    ].sort((left, right) => ordinal(left.path, right.path));
+    if (
+      !sameEntries(outputInventory(join(generation.root, entry.link.target)), expected) ||
+      JSON.stringify(metadata.legacyAuthority ?? null) !== JSON.stringify(entry.legacy)
+    )
+      fail("publish generation legacy bootstrap does not match exact prior state");
+  }
+  if (generation.reservation) assertGenerationReservation(pending);
+  if (created.link && !generation.reservation)
+    validateGenerationEntry(created, generation.root, generation.logicalOutput);
+  else {
+    const directory = join(generation.root, pending.transactionId);
+    const entry = noFollowEntry(directory);
+    if (
+      !entry?.isDirectory() ||
+      entry.isSymbolicLink() ||
+      !retirementIdentityMatches(entry, created.tree) ||
+      createHash("sha256")
+        .update(JSON.stringify(retirementTree(directory)))
+        .digest("hex") !== created.treeSha256
+    )
+      fail("publish generation pending creator tree changed");
+  }
+}
+
+function assertGenerationReservation(pending) {
+  const reservation = pending.generation.reservation;
+  if (
+    !retirementKeys(
+      reservation,
+      "path,target,device,inode,ctimeNs,birthtimeNs,mode,uid,gid,mtimeNs",
+    ) ||
+    dirname(reservation.path) !== dirname(pending.output) ||
+    !basename(reservation.path).startsWith(`.${basename(pending.output)}.reserve-`) ||
+    !/^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/.test(
+      basename(reservation.path).slice(`.${basename(pending.output)}.reserve-`.length),
+    ) ||
+    reservation.target !== pending.transactionId ||
+    !validRetirementLinkGeneration(reservation) ||
+    !/^[1-9][0-9]*$/.test(reservation.birthtimeNs) ||
+    !["mode", "uid", "gid", "mtimeNs"].every(
+      (field) =>
+        typeof reservation[field] === "string" && /^(?:0|[1-9][0-9]*)$/.test(reservation[field]),
+    )
+  )
+    fail("publish generation reservation authority is malformed");
+  const reserved = noFollowEntry(reservation.path, { bigint: true });
+  const published = noFollowEntry(pending.output, { bigint: true });
+  const actual = reserved || published;
+  if (
+    !actual ||
+    ["mode", "uid", "gid", "mtimeNs"].some(
+      (field) => actual[field].toString() !== reservation[field],
+    )
+  )
+    fail("publish generation reservation invariant metadata changed");
+  if (reserved) {
+    if (
+      published ||
+      !reserved.isSymbolicLink() ||
+      !retirementLinkIdentityMatches(reserved, reservation) ||
+      readlinkSync(reservation.path) !== reservation.target
+    )
+      fail("publish generation reservation changed or output is occupied");
+  } else if (
+    !published?.isSymbolicLink() ||
+    Number(published.dev) !== reservation.device ||
+    Number(published.ino) !== reservation.inode ||
+    published.birthtimeNs.toString() !== reservation.birthtimeNs ||
+    readlinkSync(pending.output) !== reservation.target
+  )
+    fail("publish generation promoted reservation is not the creator-owned link");
+  return !!reserved;
+}
+
+function bindRecoveredGeneration(state, pending, options) {
+  if (!pending.generation?.reservation) return pending;
+  assertGenerationPending(state, pending);
+  if (pending.phase !== "renamed-uncommitted")
+    fail("publish generation reservation has invalid phase");
+  if (assertGenerationReservation(pending)) {
+    invokeDurability(options, "before-output-reservation", pending.output);
+    assertGenerationReservation(pending);
+    renameNoReplace(pending.generation.reservation.path, pending.output, options);
+  }
+  assertGenerationReservation(pending);
+  const created = {
+    ...pending.generation.created,
+    link: retirementLink(dirname(pending.output), pending.output),
+  };
+  validateGenerationEntry(created, pending.generation.root, pending.generation.logicalOutput);
+  pending = { ...pending, generation: { ...pending.generation, created, reservation: null } };
+  writeAtomically(state, publishPendingPath(state), `${JSON.stringify(pending)}\n`, options);
+  invokeDurability(options, "rename-output", pending.output);
+  assertGenerationPending(state, pending);
+  return pending;
+}
+
+function prepareGenerationPromotion(state, pending, options) {
+  const generation = pending.generation;
+  if (!generation) return pending;
+  assertGenerationPending(state, pending);
+  validateGenerationEntry(generation.created, generation.root, generation.logicalOutput);
+  if (generation.promotion) {
+    const final = join(state, GENERATION_LINEAGE);
+    const temporary = join(state, generation.promotion.temporary);
+    assertGenerationSnapshot(
+      noFollowEntry(temporary) ? temporary : final,
+      generation.promotion.snapshot,
+      { renamed: !noFollowEntry(temporary) && !generation.promotion.installed },
+    );
+    return pending;
+  }
+  const prior = generation.priorLineage;
+  const record = {
+    ...generationDomain(state, generation.root, generation.logicalOutput, generation.projectKey),
+    active: generation.output,
+    previous: prior?.active ?? null,
+    generations: [...(prior?.generations || []), generation.created],
+  };
+  const bytes = `${JSON.stringify(record)}\n`;
+  const temporary = join(state, `.publish-generations-${randomUUID()}.next`);
+  const created = createGenerationFile(temporary, bytes);
+  try {
+    const promotion = {
+      temporary: basename(temporary),
+      snapshot: created.snapshot,
+      installed: false,
+    };
+    pending = { ...pending, generation: { ...generation, promotion } };
+    writeAtomically(state, publishPendingPath(state), `${JSON.stringify(pending)}\n`, options);
+    assertPinnedRegular(temporary, "prepared publish generation lineage", created.opened);
+    invokeDurability(options, "generation-lineage-prepared", temporary);
+    assertPriorGenerationLineage(state, pending.generation);
+    assertPinnedRegular(temporary, "prepared publish generation lineage", created.opened);
+    return pending;
+  } finally {
+    closeSync(created.opened.descriptor);
+  }
+}
+
+function promoteGenerationLineage(state, pending, options) {
+  const generation = pending.generation;
+  if (!generation) return;
+  assertPriorGenerationLineage(state, generation);
+  const record = JSON.parse(generation.promotion.snapshot.bytes);
+  validateGenerationLineage(
+    state,
+    record,
+    generation.root,
+    generation.logicalOutput,
+    generation.projectKey,
+  );
+  generationCurrentMatches(state, record);
+  const path = join(state, GENERATION_LINEAGE);
+  const temporary = join(state, generation.promotion.temporary);
+  const preparedExists = !!noFollowEntry(temporary);
+  const opened = openRegularFileNoFollow(
+    preparedExists ? temporary : path,
+    "publish generation promotion",
+  );
+  try {
+    assertGenerationSnapshot(preparedExists ? temporary : path, generation.promotion.snapshot, {
+      renamed: !preparedExists && !generation.promotion.installed,
+    });
+    const heldBytes = readPinnedRegularFile(
+      preparedExists ? temporary : path,
+      "publish generation promotion",
+      opened,
+      { maxBytes: MAX_AUTHORITY_BYTES },
+    ).toString("utf8");
+    const heldIdentity = generationFileIdentity(opened.identity);
+    if (
+      heldBytes !== generation.promotion.snapshot.bytes ||
+      REGULAR_IDENTITY_FIELDS.some(
+        (field) =>
+          !(field === "ctimeNs" && !preparedExists && !generation.promotion.installed) &&
+          heldIdentity[field] !== generation.promotion.snapshot.identity[field],
+      )
+    )
+      fail("publish generation promotion descriptor is not the prepared inode");
+    if (preparedExists) {
+      renameSync(temporary, path);
+      const identity = fstatSync(opened.descriptor, { bigint: true });
+      if (
+        REGULAR_IDENTITY_FIELDS.some(
+          (field) => field !== "ctimeNs" && identity[field] !== opened.identity[field],
+        )
+      )
+        fail("publish generation promotion changed invariant file metadata");
+      opened.identity = identity;
+      opened.stat = fstatSync(opened.descriptor);
+      assertPinnedRegular(path, "publish generation promotion", opened);
+    }
+    const installed = {
+      bytes: generation.promotion.snapshot.bytes,
+      identity: generationFileIdentity(opened.identity),
+    };
+    options.onGenerationLineageInstalled?.(installed);
+    pending = {
+      ...pending,
+      generation: {
+        ...generation,
+        promotion: {
+          ...generation.promotion,
+          snapshot: installed,
+          installed: true,
+        },
+      },
+    };
+    writeAtomically(state, publishPendingPath(state), `${JSON.stringify(pending)}\n`, options);
+    assertPinnedRegular(path, "committed publish generation lineage", opened);
+    invokeDurability(options, "generation-lineage-promoted", path);
+    assertPinnedRegular(path, "committed publish generation lineage", opened);
+    fsyncSync(opened.descriptor);
+    syncDirectory(state, options);
+    assertPinnedRegular(path, "committed publish generation lineage", opened);
+    invokeDurability(options, "generation-lineage-durable", path);
+    assertPinnedRegular(path, "committed publish generation lineage", opened);
+  } finally {
+    closeSync(opened.descriptor);
+  }
 }
 
 const RETIREMENT_PENDING = "publish-retirement.json";
@@ -3171,7 +4062,7 @@ function validateRetirement(record, root, logicalOutput, activeOutput) {
   if (
     !retirementKeys(
       record,
-      "schemaVersion,root,rootIdentity,logicalOutput,activeOutput,current,protected,output,target,entries",
+      "schemaVersion,root,rootIdentity,logicalOutput,activeOutput,current,protected,output,target,entries,lineage",
     ) ||
     record.schemaVersion !== 2 ||
     record.root !== root ||
@@ -3272,12 +4163,29 @@ function validateRetirement(record, root, logicalOutput, activeOutput) {
 
 function resumeRetirement(state, record, root, logicalOutput, activeOutput, options) {
   if (record?.schemaVersion !== 2) fail("retirement journal has unsupported generation schema");
-  const committed = verifyCommittedState(state);
+  const lineagePath = join(state, GENERATION_LINEAGE);
+  assertGenerationSnapshot(lineagePath, record.lineage);
+  const lineage = validateGenerationLineage(
+    state,
+    JSON.parse(record.lineage.bytes),
+    root,
+    logicalOutput,
+    options.projectKey,
+    { pendingRetirement: record },
+  );
+  generationCurrentMatches(state, lineage);
+  const owned = lineage.generations.find((entry) => entry.link.path === record.output?.path);
   if (
-    !committed.valid ||
-    activeOutput !== join(root, `${basename(logicalOutput)}-${committed.releaseId}`)
+    lineage.active !== activeOutput ||
+    lineage.retiring !== owned?.link.path ||
+    !owned?.owned ||
+    JSON.stringify(owned.link) !== JSON.stringify(record.output) ||
+    owned.treeSha256 !==
+      createHash("sha256").update(JSON.stringify(record.entries)).digest("hex") ||
+    JSON.stringify(owned.tree) !==
+      JSON.stringify({ device: record.target?.device, inode: record.target?.inode })
   )
-    fail("retirement active release no longer matches committed state");
+    fail("retirement journal does not own a committed generation");
   const current = join(state, "current");
   const currentIdentity = lstatSync(current, { bigint: true });
   const currentTarget = readlinkSync(current);
@@ -3311,6 +4219,7 @@ function resumeRetirement(state, record, root, logicalOutput, activeOutput, opti
     if (JSON.stringify(JSON.parse(journalBytes)) !== JSON.stringify(record))
       fail("retirement journal changed before recovery");
     const assertJournal = () => {
+      assertGenerationSnapshot(lineagePath, record.lineage);
       assertCurrent();
       // Protected and still-visible retiring links retain the exact generation
       // at every destructive boundary, including callbacks before journal clear.
@@ -3416,57 +4325,140 @@ function resumeRetirement(state, record, root, logicalOutput, activeOutput, opti
   }
 }
 
+function replaceGenerationLineage(state, record, expected, options) {
+  const path = join(state, GENERATION_LINEAGE);
+  assertGenerationSnapshot(path, expected);
+  const temporary = join(state, `.publish-generations-${randomUUID()}.next`);
+  const created = createGenerationFile(temporary, `${JSON.stringify(record)}\n`);
+  const prepared = created.snapshot;
+  try {
+    assertGenerationSnapshot(path, expected);
+    renameSync(temporary, path);
+    const identity = fstatSync(created.opened.descriptor, { bigint: true });
+    if (
+      REGULAR_IDENTITY_FIELDS.some(
+        (field) => field !== "ctimeNs" && identity[field] !== created.opened.identity[field],
+      )
+    )
+      fail("publish generation retirement promotion changed invariant metadata");
+    created.opened.identity = identity;
+    created.opened.stat = fstatSync(created.opened.descriptor);
+    assertPinnedRegular(path, "publish generation retirement lineage", created.opened);
+    const installed = { bytes: prepared.bytes, identity: generationFileIdentity(identity) };
+    options.onGenerationLineageInstalled?.(installed);
+    invokeDurability(options, "generation-lineage-update", path);
+    assertGenerationSnapshot(path, installed);
+    syncFile(path, options);
+    syncDirectory(state, options);
+    assertGenerationSnapshot(path, installed);
+    return installed;
+  } finally {
+    closeSync(created.opened.descriptor);
+  }
+}
+
 function resumePendingRetirement(state, generationRoot, logicalOutput, options) {
   const journal = join(state, RETIREMENT_PENDING);
-  if (!noFollowEntry(journal)) return;
-  if (!generationRoot) fail("retirement recovery requires its original generation domain");
+  const lineagePath = join(state, GENERATION_LINEAGE);
+  if (!noFollowEntry(journal) && !noFollowEntry(lineagePath)) return;
+  if (!generationRoot) {
+    if (noFollowEntry(journal)) fail("retirement recovery requires its original generation domain");
+    return;
+  }
   const root = assertAdmissionDirectory(resolve(generationRoot), "publish generation root");
-  const pending = readAuthorityJson(journal, "retirement journal");
-  if (typeof pending?.activeOutput !== "string")
-    fail("retirement journal has no active generation");
-  resumeRetirement(state, pending, root, logicalOutput, pending.activeOutput, options);
+  const snapshot = generationAuthoritySnapshot(lineagePath);
+  const lineage = JSON.parse(snapshot.bytes);
+  if (noFollowEntry(journal) || lineage.retiring)
+    retireOldPublishGenerations(state, root, logicalOutput, lineage.active, options);
 }
 
 function retireOldPublishGenerations(state, generationRoot, logicalOutput, activeOutput, options) {
   if (!generationRoot) return;
   const root = assertAdmissionDirectory(resolve(generationRoot), "publish generation root");
   const journal = join(state, RETIREMENT_PENDING);
-  if (noFollowEntry(journal)) {
-    const pending = readAuthorityJson(journal, "retirement journal");
-    resumeRetirement(state, pending, root, logicalOutput, activeOutput, options);
-  }
-  const prefix = `${basename(logicalOutput)}-`;
-  const candidates = requireDirectoryNames(root)
-    .filter((name) => name.startsWith(prefix))
-    .map((name) => join(root, name))
-    .filter((path) => noFollowEntry(path)?.isSymbolicLink())
-    .sort((left, right) => lstatSync(right).mtimeMs - lstatSync(left).mtimeMs);
-  const rollback = candidates.find((path) => path !== activeOutput);
-  const protectedPaths = new Set([activeOutput, rollback]);
-  for (const output of candidates) {
-    if (protectedPaths.has(output)) continue;
-    const link = retirementLink(root, output);
-    const directory = join(root, link.target);
-    const record = {
-      schemaVersion: 2,
-      root,
-      rootIdentity: retirementIdentity(lstatSync(root)),
-      logicalOutput,
-      activeOutput,
-      current: {
-        path: join(state, "current"),
-        target: readlinkSync(join(state, "current")),
-        ...retirementLinkIdentity(lstatSync(join(state, "current"), { bigint: true })),
-      },
-      protected: [retirementLink(root, activeOutput), retirementLink(root, rollback)],
-      output: link,
-      target: { name: link.target, ...retirementIdentity(lstatSync(directory)) },
-      entries: retirementTree(directory),
+  const lineagePath = join(state, GENERATION_LINEAGE);
+  let snapshot = generationAuthoritySnapshot(lineagePath);
+  let lineage = validateGenerationLineage(
+    state,
+    JSON.parse(snapshot.bytes),
+    root,
+    logicalOutput,
+    options.projectKey,
+    {
+      pendingRetirement: noFollowEntry(journal)
+        ? readAuthorityJson(journal, "retirement journal")
+        : undefined,
+    },
+  );
+  generationCurrentMatches(state, lineage);
+  if (lineage.active !== activeOutput)
+    fail("retirement active generation differs from committed lineage");
+  const protectedPaths = new Set([lineage.active, lineage.previous]);
+  // Unknown path names never grant ownership. Only created, durably recorded
+  // generations can become retirement candidates; proved legacy active trees
+  // receive protection, without permission to delete them later.
+  for (const owned of lineage.generations.filter((entry) => !protectedPaths.has(entry.link.path))) {
+    if (!owned.owned) {
+      lineage = { ...lineage, generations: lineage.generations.filter((entry) => entry !== owned) };
+      snapshot = replaceGenerationLineage(state, lineage, snapshot, options);
+      continue;
+    }
+    if (lineage.retiring !== null && lineage.retiring !== owned.link.path)
+      fail("retirement lineage selects a different owned generation");
+    const directory = join(root, owned.link.target);
+    if (
+      lineage.retiring &&
+      !noFollowEntry(owned.link.path) &&
+      !noFollowEntry(directory) &&
+      !noFollowEntry(journal)
+    ) {
+      // Journal unlink can be visible before its parent barrier. Re-establish
+      // both deletion barriers before dropping the exact owned tombstone.
+      syncDirectory(root, options);
+      syncDirectory(state, options);
+    } else {
+      if (!lineage.retiring) {
+        lineage = { ...lineage, retiring: owned.link.path };
+        snapshot = replaceGenerationLineage(state, lineage, snapshot, options);
+      }
+      let record;
+      if (noFollowEntry(journal)) record = readAuthorityJson(journal, "retirement journal");
+      else {
+        validateGenerationEntry(owned, root, logicalOutput);
+        record = {
+          schemaVersion: 2,
+          root,
+          rootIdentity: lineage.rootIdentity,
+          logicalOutput,
+          activeOutput,
+          current: {
+            path: join(state, "current"),
+            target: readlinkSync(join(state, "current")),
+            ...retirementLinkIdentity(lstatSync(join(state, "current"), { bigint: true })),
+          },
+          protected: [lineage.active, lineage.previous].map(
+            (path) => lineage.generations.find((entry) => entry.link.path === path).link,
+          ),
+          output: owned.link,
+          target: { name: owned.link.target, ...owned.tree },
+          entries: retirementTree(directory),
+          lineage: snapshot,
+        };
+        validateRetirement(record, root, logicalOutput, activeOutput);
+        invokeDurability(options, "retirement-prepare", journal);
+        assertGenerationSnapshot(lineagePath, snapshot);
+        writeAtomically(state, journal, `${JSON.stringify(record)}\n`, options);
+      }
+      resumeRetirement(state, record, root, logicalOutput, activeOutput, options);
+    }
+    if (noFollowEntry(owned.link.path) || noFollowEntry(directory))
+      fail("retirement owned generation remains");
+    lineage = {
+      ...lineage,
+      retiring: null,
+      generations: lineage.generations.filter((entry) => entry.link.path !== owned.link.path),
     };
-    validateRetirement(record, root, logicalOutput, activeOutput);
-    invokeDurability(options, "retirement-prepare", journal);
-    writeAtomically(state, journal, `${JSON.stringify(record)}\n`, options);
-    resumeRetirement(state, record, root, logicalOutput, activeOutput, options);
+    snapshot = replaceGenerationLineage(state, lineage, snapshot, options);
   }
 }
 
@@ -3482,6 +4474,8 @@ export function buildStaticPublish({
   legacyRoot,
   validatedLegacy,
   deferActivation = false,
+  generationContext,
+  renameNoReplaceHelper,
   lockHeld = false,
   faultAt,
   onDurabilityOperation,
@@ -3549,7 +4543,7 @@ export function buildStaticPublish({
   inspectPublishAdmission(admissionRequest);
   if (!lockHeld) onAfterReadOnlyAdmission?.(admissionRequest);
   const state = ensureStateLayout(stateRoot);
-  const options = { faultAt, onDurabilityOperation };
+  const options = { faultAt, onDurabilityOperation, renameNoReplaceHelper };
   const unlock = lockHeld
     ? () => {}
     : acquireLock(state, {
@@ -3560,7 +4554,7 @@ export function buildStaticPublish({
 
   try {
     inspectPublishAdmission({ ...admissionRequest, stateRoot: state });
-    const existingPending = readPendingPublish(state);
+    let existingPending = readPendingPublish(state);
     const activateStandalonePublish = () => {
       const boundary = {
         state,
@@ -3659,6 +4653,7 @@ export function buildStaticPublish({
         fail("publish output exists before its durable rename journal phase");
       }
       if (existingPending.phase === "renamed-uncommitted") {
+        existingPending = bindRecoveredGeneration(state, existingPending, options);
         syncTree(outputDirectory, options);
         fault(options, "before-recovered-output-parent-fsync");
         syncDirectory(parent, options);
@@ -3718,7 +4713,8 @@ export function buildStaticPublish({
         "renamed-uncommitted",
         options,
       );
-      publishOutputNoReplace({
+      const boundPending = publishOutputNoReplace({
+        state,
         temporary,
         output,
         pending: renamedPending,
@@ -3727,7 +4723,7 @@ export function buildStaticPublish({
       fault(options, "crash-after-output-rename-before-parent-fsync");
       syncDirectory(parent, options);
       fault(options, "after-output-parent-fsync-before-phase");
-      advancePendingPublishPhase(state, renamedPending, "output-durable", options);
+      advancePendingPublishPhase(state, boundPending, "output-durable", options);
       fault(options, "after-output");
       if (deferActivation) {
         return { changed: true, releaseId: manifest.releaseId, manifest };
@@ -3774,6 +4770,25 @@ export function buildStaticPublish({
         exportDevice: null,
         exportInode: null,
         legacy: legacyRequest(legacyValidation),
+        ...(generationContext
+          ? {
+              generation: {
+                ...generationContext,
+                created: {
+                  link: null,
+                  tree: retirementIdentity(lstatSync(temporary)),
+                  treeSha256: createHash("sha256")
+                    .update(JSON.stringify(retirementTree(temporary)))
+                    .digest("hex"),
+                  releaseId: manifest.releaseId,
+                  manifestSha256: manifestDigest(manifest),
+                  destination,
+                  legacy: legacyRequest(legacyValidation),
+                  owned: true,
+                },
+              },
+            }
+          : {}),
       };
       writeAtomically(
         state,
@@ -3784,7 +4799,7 @@ export function buildStaticPublish({
       fault(options, "crash-before-output-rename");
       fault(options, "before-output-rename");
       pending = advancePendingPublishPhase(state, pending, "renamed-uncommitted", options);
-      publishOutputNoReplace({ temporary, output, pending, options });
+      pending = publishOutputNoReplace({ state, temporary, output, pending, options });
       renamed = true;
       fault(options, "crash-after-output-rename-before-parent-fsync");
       syncDirectory(parent, options);
@@ -4043,12 +5058,12 @@ export function publishAndExportStaticRelease(options) {
   const candidateRoot = realpathSync(options.candidateRoot);
   const manifest = createCandidateManifest(candidateRoot);
   const logicalOutput = resolve(options.outputRoot);
-  const output = options.generationRoot
-    ? join(
-        assertAdmissionDirectory(resolve(options.generationRoot), "publish generation root"),
-        `${basename(logicalOutput)}-${manifest.releaseId}`,
-      )
-    : logicalOutput;
+  const generationRoot = options.generationRoot
+    ? assertAdmissionDirectory(resolve(options.generationRoot), "publish generation root")
+    : null;
+  let output = logicalOutput;
+  let generationSelection;
+  let generationSnapshot;
   const destination = resolve(options.destinationRoot);
   const ownerSource = options.ownerMapping || options.ownerProbe;
   const ownerFields = [ownerSource, options.ownerUid, options.ownerGid];
@@ -4086,9 +5101,19 @@ export function publishAndExportStaticRelease(options) {
     ownerAuthority,
     onDurabilityOperation: (event) => {
       ownerAuthority?.revalidate();
+      if (generationRoot) assertCoordinatorGenerationSnapshot();
       originalDurability?.(event);
       ownerAuthority?.revalidate();
+      if (generationRoot) assertCoordinatorGenerationSnapshot();
     },
+  };
+  const assertCoordinatorGenerationSnapshot = () => {
+    const path = join(resolve(options.stateRoot), GENERATION_LINEAGE);
+    if (generationSnapshot) assertGenerationSnapshot(path, generationSnapshot);
+    else if (noFollowEntry(path)) fail("publish generation lineage appeared during transaction");
+  };
+  options.onGenerationLineageInstalled = (snapshot) => {
+    generationSnapshot = snapshot;
   };
   try {
     const suppliedLegacyRoot = options.legacyRoot ? resolve(options.legacyRoot) : undefined;
@@ -4101,6 +5126,19 @@ export function publishAndExportStaticRelease(options) {
       fail(`legacy handoff is not authoritative: ${legacyValidation?.reason || "invalid"}`);
     }
     legacyValidation?.revalidate?.();
+    if (generationRoot) {
+      generationSelection = readGenerationSelection(
+        resolve(options.stateRoot),
+        generationRoot,
+        logicalOutput,
+        manifest,
+        destination,
+        legacyValidation,
+        options.projectKey,
+      );
+      output = generationSelection.output;
+      generationSnapshot = generationSelection.snapshot;
+    }
     const admissionRequest = {
       stateRoot: options.stateRoot,
       candidateRoot,
@@ -4114,6 +5152,7 @@ export function publishAndExportStaticRelease(options) {
     inspectPublishAdmission(admissionRequest);
     options.onAfterReadOnlyAdmission?.(admissionRequest);
     ownerAuthority?.revalidate();
+    if (generationRoot) assertCoordinatorGenerationSnapshot();
     const state = ensureStateLayout(options.stateRoot);
     const transactionOptions = {
       faultAt: options.faultAt,
@@ -4124,6 +5163,8 @@ export function publishAndExportStaticRelease(options) {
       ownerUid: ownerAuthority?.uid,
       ownerGid: ownerAuthority?.gid,
       ownerAuthority,
+      projectKey: options.projectKey,
+      onGenerationLineageInstalled: options.onGenerationLineageInstalled,
     };
     const unlock = acquireLock(state, {
       projectKey: options.projectKey,
@@ -4131,9 +5172,25 @@ export function publishAndExportStaticRelease(options) {
       diagnosticHost: options.diagnosticHost,
     });
     try {
+      if (generationRoot) assertCoordinatorGenerationSnapshot();
       // Finish the prior committed generation's bounded retirement before a
       // new release can change its active/rollback authority.
       resumePendingRetirement(state, options.generationRoot, logicalOutput, transactionOptions);
+      if (generationRoot) {
+        generationSelection = readGenerationSelection(
+          state,
+          generationRoot,
+          logicalOutput,
+          manifest,
+          destination,
+          legacyValidation,
+          options.projectKey,
+          output,
+        );
+        if (generationSelection.output !== output)
+          fail("publish generation changed during locked admission");
+        generationSnapshot = generationSelection.snapshot;
+      }
       const lockedManifest = createCandidateManifest(candidateRoot);
       if (
         lockedManifest.releaseId !== manifest.releaseId ||
@@ -4163,6 +5220,7 @@ export function publishAndExportStaticRelease(options) {
       const published = buildStaticPublish({
         ...options,
         outputRoot: output,
+        generationContext: generationSelection?.generation,
         stateRoot: state,
         validatedLegacy: legacyValidation,
         deferActivation: true,
@@ -4176,7 +5234,7 @@ export function publishAndExportStaticRelease(options) {
         allowPending: true,
         options: transactionOptions,
       });
-      const pending = readPendingPublish(state);
+      let pending = readPendingPublish(state);
       if (
         !pending ||
         pending.phase !== "export-durable" ||
@@ -4188,6 +5246,7 @@ export function publishAndExportStaticRelease(options) {
       ) {
         fail("static publish/export transaction is not durably export-complete");
       }
+      pending = prepareGenerationPromotion(state, pending, transactionOptions);
       const boundary = {
         state,
         output,
@@ -4201,17 +5260,20 @@ export function publishAndExportStaticRelease(options) {
       fault(transactionOptions, "before-activation-revalidation");
       syncAndRevalidateJournalBoundary(boundary, candidateRoot, transactionOptions);
       fault(transactionOptions, "before-current-activation");
-      const staged = stageStaticRelease({
-        ...options,
-        stateRoot: state,
-        validatedLegacy: legacyValidation,
-        lockHeld: true,
-        expectedManifest: published.manifest,
-        finalRevalidate: () => {
-          ownerAuthority?.revalidate();
-          assertFinalJournalBoundary(boundary, candidateRoot, { committed: false });
+      const staged = stageCoordinatorRelease(
+        {
+          ...options,
+          stateRoot: state,
+          validatedLegacy: legacyValidation,
+          lockHeld: true,
+          expectedManifest: published.manifest,
+          finalRevalidate: () => {
+            ownerAuthority?.revalidate();
+            assertFinalJournalBoundary(boundary, candidateRoot, { committed: false });
+          },
         },
-      });
+        boundary,
+      );
       if (
         staged.releaseId !== published.releaseId ||
         published.releaseId !== exported.releaseId ||
@@ -4227,6 +5289,7 @@ export function publishAndExportStaticRelease(options) {
       });
       fault(transactionOptions, "before-publish-journal-clear");
       ownerAuthority?.revalidate();
+      promoteGenerationLineage(state, pending, transactionOptions);
       clearPendingPublish(state, transactionOptions);
       retireOldPublishGenerations(
         state,
