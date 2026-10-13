@@ -52,6 +52,17 @@ jobs:
             pnpm install --no-frozen-lockfile
           fi
 
+      - name: Install pinned image QA compiler
+        run: rustup toolchain install 1.85.1 --profile minimal
+
+      - name: Setup pinned native image QA tools
+        env:
+          RUSTUP_TOOLCHAIN: "1.85.1"
+        run: pnpm run setup:image-qa
+
+      - name: Audit native image QA dependency locks
+        run: pnpm run audit:image-qa
+
       - name: Run repository baseline
         run: pnpm run check:repo
 
@@ -144,6 +155,8 @@ jobs:
 
       - name: Verify retained legacy assets across Docker releases
         run: node scripts/test-docker-asset-retention.mjs
+      - name: Verify nonempty image pipeline Docker boundary
+        run: pnpm run test:docker-image-pipeline
       - name: Header contract smoke
         env:
           CABADRIVE_HOST_PORT: "5173"

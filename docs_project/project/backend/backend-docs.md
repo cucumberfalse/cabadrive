@@ -128,3 +128,13 @@ Symlinks (including dangling ones), FIFO, directories, sockets/devices, mode
 ## Future Backend Triggers
 
 Backend should only be introduced with an explicit feature spec if requirements add multi-user accounts, sync, remote analytics, or managed content delivery.
+
+## Build-Time Image Pipeline
+
+The [image pipeline](../image-pipeline.md) runs entirely before static delivery,
+with pinned project-local native quality tools and independently recomputed
+metrics. No runtime backend is introduced. `validate:content` includes the image
+gate; normal build copies persistent raster derivatives without publishing
+masters or SVG audit output. The stage-1 production raster registry is empty and
+reported as `no-masters`; real fixtures and the complete learning SVG audit
+provide verification until later stages supply verified PNG masters.

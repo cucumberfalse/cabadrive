@@ -315,3 +315,16 @@ export function assetSrcSet(sourcePath: string): { srcSet: string; fallbackSrc: 
 | `<img>` с srcset | 0 | 100 % растровых классов |
 | Трафик изображений LearnView (mobile) | базовый замер | −25 % и более |
 | Автоматический контроль качества | только sha256 | like-sized dssim/ssimulacra2-гейты в CI; reference downscale до candidate dimensions через `lanczos3`, без candidate upscale |
+
+## Статус этапа 1
+
+Инфраструктура реализована в `specs/056-image-pipeline-infrastructure`:
+`build:images`, независимый `validate:images`, реальный DSSIM/SSIMULACRA2,
+PNG-реестр и манифест, безопасный SVG-аудит и `assetSrcSet`. Канонические SVG
+сохранены; оптимизированные копии и 30 проверенных пар находятся в производном
+аудите. Реальный класс (d) содержит 1 382 файла, класс (e) отсутствует; четыре SVG
+руководства защищены отдельно. Размеры/viewBox сохранены, `removeDimensions`
+не применяется. PNG-мастеров пока нет: растровый реестр честно пуст, кодеки
+проверены на изолированных настоящих PNG-фикстурах. Этапы 2–5 и включение
+адаптивных изображений в UI остаются отдельной работой. Команды и контракт:
+[`docs_project/project/image-pipeline.md`](../../../docs_project/project/image-pipeline.md).

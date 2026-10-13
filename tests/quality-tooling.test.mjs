@@ -22,9 +22,9 @@ const qualitySentinels = [
 test("quality scripts use fail-closed explicit allowlists", () => {
   assert.equal(packageJson.scripts.typecheck, "tsc --noEmit");
   const lintTargets =
-    '"src/**/*.{ts,tsx}" "scripts/**/*.mjs" "tests/**/*.mjs" "tests/e2e/**/*.ts" "vite.config.ts" "playwright.config.ts" "eslint.config.mjs"';
+    '"src/**/*.{ts,tsx}" "scripts/**/*.mjs" "tests/**/*.mjs" "tests/e2e/**/*.ts" "vite.config.ts" "playwright.config.ts" "eslint.config.mjs" "svgo.config.mjs"';
   const formatTargets =
-    '"src/**/*.{ts,tsx,css}" "scripts/**/*.mjs" "tests/**/*.mjs" "tests/e2e/**/*.ts" "vite.config.ts" "playwright.config.ts" "eslint.config.mjs"';
+    '"src/**/*.{ts,tsx,css}" "scripts/**/*.mjs" "tests/**/*.mjs" "tests/e2e/**/*.ts" "vite.config.ts" "playwright.config.ts" "eslint.config.mjs" "svgo.config.mjs"';
   assert.equal(packageJson.scripts.lint, `eslint --max-warnings 0 ${lintTargets}`);
   assert.equal(packageJson.scripts.format, `prettier --write ${formatTargets}`);
   assert.equal(packageJson.scripts["format:check"], `prettier --check ${formatTargets}`);
@@ -232,6 +232,7 @@ test("representative files receive the intended flat-config profiles", async () 
   const domain = await eslint.calculateConfigForFile("src/domain.ts");
   const script = await eslint.calculateConfigForFile("scripts/shared.mjs");
   const nodeTest = await eslint.calculateConfigForFile("tests/domain.test.mjs");
+  const svgo = await eslint.calculateConfigForFile("svgo.config.mjs");
   const e2e = await eslint.calculateConfigForFile("tests/e2e/app.spec.ts");
   const manualTicketE2e = await eslint.calculateConfigForFile(
     "tests/e2e/manual-ticket-placement.spec.ts",
@@ -252,7 +253,7 @@ test("representative files receive the intended flat-config profiles", async () 
     assert.equal(config.rules["react-refresh/only-export-components"][0], 2);
     assert.match(config.languageOptions.parser.meta.name, /typescript-eslint/);
   }
-  for (const config of [script, nodeTest]) {
+  for (const config of [script, nodeTest, svgo]) {
     assert.equal(config.rules["react-hooks/rules-of-hooks"], undefined);
     assert.equal(config.languageOptions.globals.process, false);
   }

@@ -1,4 +1,12 @@
-FROM node:22-alpine AS build
+FROM rust:1.85.1-alpine3.21 AS image-qa-tools
+
+RUN apk add --no-cache build-base nodejs
+WORKDIR /native-setup
+COPY scripts/setup-image-native.mjs scripts/image-native-policy.mjs ./scripts/
+COPY scripts/image-qa-locks ./scripts/image-qa-locks
+RUN node scripts/setup-image-native.mjs --root /image-qa
+
+FROM node:22-alpine3.21 AS build
 
 WORKDIR /app
 RUN corepack enable
@@ -8,6 +16,9 @@ COPY pnpm-lock.yaml* ./
 RUN if [ -f pnpm-lock.yaml ]; then pnpm install --frozen-lockfile; else pnpm install --no-frozen-lockfile; fi
 
 COPY . .
+COPY --from=image-qa-tools /image-qa/bin/ ./.cache/image-qa/bin/
+COPY --from=image-qa-tools /image-qa/install-receipt.json ./.cache/image-qa/install-receipt.json
+RUN node --test tests/image-assets.test.mjs tests/image-pipeline.test.mjs
 RUN pnpm run build
 
 FROM alpine:3.21 AS rename-noreplace-helper

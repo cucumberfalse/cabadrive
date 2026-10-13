@@ -135,3 +135,12 @@ The current question set is `unofficial_b_fallback`, not an official GCBA questi
 - Manual placement provenance is fail-closed: runtime consumes only committed ticket-to-page references whose exact visible anchor text and semantic review are sealed by the reviewed manifest. Candidate scoring is development-only and never appears as an approval or runtime content source.
 - Thematic manual placement is routed through a reviewed 38-topic table plus one sealed ticket-topic assignment per canonical ticket. A fallback destination and anchor must belong to that ticket's curated route; global lexical ranking cannot choose runtime destinations.
 - Manual ticket appendices render up to 6 tickets directly. Routes with 7 or more tickets use a collapsed native disclosure and do not mount rich ticket cards until opened. Ticket order is deterministic by canonical ID, images remain local and lazy-loaded, and support pages such as presentation, categories, and glossary never receive appendices.
+
+## Image Pipeline Boundary
+
+ТЗ-P3 stage 1 adds an offline, validated derivative manifest and `assetSrcSet`
+export beside `assetUrl`. Current components continue to use canonical images.
+The helper returns separate format sets plus JPEG fallback/dimensions, or `null`
+for missing/malformed records. Responsive markup and container `sizes` belong to
+later image-quality stages. See [image-pipeline.md](../image-pipeline.md) for the
+master contract, output paths, profiles, metrics and build tooling.

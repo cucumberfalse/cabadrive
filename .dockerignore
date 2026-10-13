@@ -6,3 +6,7 @@ test-results
 .git
 .DS_Store
 .cabadrive-release-handoff
+.cache
+content/assets-derived/svg
+.claude
+.omc
