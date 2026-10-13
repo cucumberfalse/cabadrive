@@ -1,0 +1,24 @@
+[[IgnoredVulns]]
+id = "RUSTSEC-2025-0056"
+ignoreUntil = 2027-01-10
+reason = "adler: unmaintained notice only; M-001 maintainer review due 2027-01-10."
+
+[[IgnoredVulns]]
+id = "RUSTSEC-2024-0384"
+ignoreUntil = 2027-01-10
+reason = "instant: unmaintained notice only; M-001 maintainer review due 2027-01-10."
+
+[[IgnoredVulns]]
+id = "RUSTSEC-2025-0119"
+ignoreUntil = 2027-01-10
+reason = "number_prefix: unmaintained notice only; M-001 maintainer review due 2027-01-10."
+
+[[IgnoredVulns]]
+id = "RUSTSEC-2024-0436"
+ignoreUntil = 2027-01-10
+reason = "paste: unmaintained notice only; M-001 maintainer review due 2027-01-10."
+
+[[IgnoredVulns]]
+id = "RUSTSEC-2026-0192"
+ignoreUntil = 2027-01-10
+reason = "ttf-parser: unmaintained notice only; M-001 maintainer review due 2027-01-10."

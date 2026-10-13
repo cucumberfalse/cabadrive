@@ -6,3 +6,6 @@ playwright-report/
 test-results/
 .cabadrive-release-handoff/
 .DS_Store
+.cache/image-qa/
+content/assets-masters/
+content/assets-derived/svg/

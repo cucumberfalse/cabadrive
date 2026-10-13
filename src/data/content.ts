@@ -1,3 +1,5 @@
+import imageDerivatives from "../../content/image-derivatives.manifest.json";
+import { assetSrcSetFromManifest } from "./imageAssets";
 import contentMode from "../../content/meta/content-mode.json";
 import examFormat from "../../content/config/caba-exam-format.json";
 import sources from "../../content/sources/sources.json";
@@ -382,4 +384,8 @@ export const questionById = new Map(data.questions.map((question) => [question.i
 
 export function assetUrl(localPath: string) {
   return `/${localPath}`;
+}
+
+export function assetSrcSet(sourcePath: string) {
+  return assetSrcSetFromManifest(imageDerivatives, sourcePath);
 }

@@ -25,7 +25,7 @@ export default tseslint.config(
     ],
   },
   {
-    files: ["scripts/**/*.mjs", "tests/**/*.mjs", "eslint.config.mjs"],
+    files: ["scripts/**/*.mjs", "tests/**/*.mjs", "eslint.config.mjs", "svgo.config.mjs"],
     ...eslint.configs.recommended,
     languageOptions: {
       ecmaVersion: "latest",
