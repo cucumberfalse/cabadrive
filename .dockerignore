@@ -7,7 +7,6 @@ test-results
 .DS_Store
 .cabadrive-release-handoff
 .cache
-content/assets-masters
 content/assets-derived/svg
 .claude
 .omc

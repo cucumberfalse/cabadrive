@@ -13,6 +13,7 @@ pnpm run audit:image-qa
 pnpm run build:images
 pnpm run validate:images
 node scripts/content-image-derivatives.mjs --write
+pnpm run test:docker-image-pipeline
 ```
 
 Setup and the native dependency audit are explicit network-enabled maintainer operations. Generation and
@@ -48,6 +49,16 @@ complete pixel decode and single-frame orientation checks all apply. JPEG
 animated PNG, duplicate/unregistered inputs, traversal and symlinks fail. Future
 maintainers must preserve/recover actual PNG master provenance outside the
 runtime payload; existing JPEGs are not promoted into masters.
+
+Provision every registered PNG master before building, including before Docker
+context transfer. Every local and CI build with a nonempty registry requires all
+registered masters. Later master intake must decide provenance, provisioning
+and any reviewed force-add of Git-ignored inputs. Git ignores
+`content/assets-masters/`, but Docker includes it
+as a build-only input so normal image validation can fully decode and compare
+the master. Missing inputs fail; validation never downloads masters or falls
+back to an empty registry. Only `dist` crosses into the release-stager image,
+and the nginx image serves the staged static payload.
 
 Raster derivatives are commit-eligible in
 `content/assets-derived/img/<class>/<id>-<width>.<hash8>.<ext>`. The manifest stores
@@ -123,6 +134,19 @@ installations rebuild via root-local Cargo ownership. CI pins Rust 1.85.1 and us
 Rust 1.85.1 Alpine 3.21 stage, then copies only QA binaries into Node 22 Alpine
 build tooling and executes actual raster/native/SVG fixture tests. Native tooling,
 Rust and caches stay out of the nginx and release-stager images.
+
+The explicit Docker regression runs locally and in the required Docker CI job.
+It prepares an isolated real PNG, nonempty registry and three-codec manifest
+before the production `COPY`, proves the former master exclusion fails, then
+runs the actual full build and real quality validation. It checks exact
+derivative bytes in public/dist/stager, then runs the production stager command
+into its own state volume and verifies published bytes and readable `0644` modes.
+The nginx runtime serves that published state read-only; all three responses
+must match the manifest, with complete final payload exclusion. The literal
+master URL follows the existing SPA route and returns the exact HTML shell,
+never PNG bytes; a missing canonical asset route remains 404. The fixture removes
+only its own containers, image tags, state volume and temporary context. It
+fails explicitly when Docker is unavailable.
 
 Relevant encoder/renderer versions participate in policy identity. Incidental
 CPU, paths and compiler metadata do not. Validation tolerates small platform

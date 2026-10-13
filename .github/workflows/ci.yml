@@ -155,6 +155,8 @@ jobs:
 
       - name: Verify retained legacy assets across Docker releases
         run: node scripts/test-docker-asset-retention.mjs
+      - name: Verify nonempty image pipeline Docker boundary
+        run: pnpm run test:docker-image-pipeline
       - name: Header contract smoke
         env:
           CABADRIVE_HOST_PORT: "5173"
