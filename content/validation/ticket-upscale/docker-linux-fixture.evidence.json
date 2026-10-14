@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "checkedAt": "2026-10-14T15:45:03.923315+00:00",
-  "status": "FUNCTIONAL_FIVE_PHASE_PASS_PRESERVATION_RECONCILED_RESOURCE_HOLD",
+  "checkedAt": "2026-10-14T21:42:34.673157+00:00",
+  "status": "B2_IMPLEMENTATION_BASELINE_FULL_DOCKER_NATIVE_AND_ALL_FIVE_CHECKS_PASS_C_TERMINAL_GATES_PENDING",
   "overallAcceptance": false,
   "historicalFocused": {
     "schemaVersion": 1,
@@ -240,7 +240,7 @@
     "attribution": "Unproved. Only aggregate minimum retained; variable collector loop cadence and stage samples do not locate or explain the minimum.",
     "historicalFunctionalProofInvalidated": false
   },
-  "remaining": "IF028 serial quality remains memory HOLD; IF02932 child/lifecycle cases require actual next current-head CI; separately admitted complete new CI including unit/quality/build/browser, retention/five image-pipeline phases/headers and resource/finally evidence; current-head reviews/checks and final roles. No full Docker acceptance.",
+  "remaining": "After actual substantive C publication: complete current-C Linux CI/native/all five required checks; final Architect FIRST then Analyst on the identical frozen C. Append-only final evidence D must receive all current-head checks/native review/evidence-only guard and expected-head finalizer before merge. Completed B2 checks do not substitute for C or D checks. No final-role or merge acceptance is claimed.",
   "currentWholeHost": {
     "at": "2026-10-14T08:17:16.278805+00:00",
     "status": "CURRENT_WHOLE_HOST_PASS",
@@ -858,5 +858,1077 @@
     "fullNewCiRequired": true,
     "localDockerExecuted": false,
     "finalRolesInvoked": false
+  },
+  "historicalLocalSequenceStatus": {
+    "status": "FUNCTIONAL_FIVE_PHASE_PASS_PRESERVATION_RECONCILED_RESOURCE_HOLD",
+    "checkedAt": "2026-10-14T15:45:03.923315+00:00",
+    "remainingAtThatCheckpoint": "IF028 serial quality remains memory HOLD; IF02932 child/lifecycle cases require actual next current-head CI; separately admitted complete new CI including unit/quality/build/browser, retention/five image-pipeline phases/headers and resource/finally evidence; current-head reviews/checks and final roles. No full Docker acceptance.",
+    "scope": "Existing root sourceInputSha256, phaseChain, proofAccounting, preservation and resourceObservation describe the historical local 413f sequence. Those values and all A/B/local validation objects below are preserved; actualCiB2 binds the later independent Linux runner."
+  },
+  "actualCiB2": {
+    "status": "COMPLETED_BASELINE_AND_FULL_DOCKER_CONTRACT_PASS",
+    "sourceHead": "67362f772c0cb2c7c886e3246e75ebcdd3bffb87",
+    "measuredCheckout": "0a156f8f536aee8f89544a8299c02437217bdb2c",
+    "checkoutParents": [
+      "3beb624c0c7c615ab7159fdd3227f74f790df29f",
+      "67362f772c0cb2c7c886e3246e75ebcdd3bffb87"
+    ],
+    "runUrl": "https://github.com/cucumberfalse/cabadrive/actions/runs/38598148892",
+    "baseline": {
+      "schemaVersion": 1,
+      "runId": 38598148892,
+      "jobId": 115970107857,
+      "jobConclusion": "success",
+      "sourceSha": "67362f772c0cb2c7c886e3246e75ebcdd3bffb87",
+      "measuredCheckoutSha": "0a156f8f536aee8f89544a8299c02437217bdb2c",
+      "log": {
+        "path": "/private/tmp/cabadrive-057-B2-ci-intake/baseline-job.log",
+        "bytes": 419308,
+        "sha256": "999d00bc093f4b3f2dcecbc79dc99c219d94bad4d2d2162636b034cd0a9274b9"
+      },
+      "unit": {
+        "tests": 848,
+        "passed": 848,
+        "failed": 0,
+        "skipped": 0
+      },
+      "browser": {
+        "passed": 181,
+        "skipped": 5
+      },
+      "qualityFast": {
+        "seconds": 26,
+        "budgetSeconds": 60,
+        "negativeContractsAndSentinelCleanupPassed": true
+      },
+      "linuxResourceCases": {
+        "wrapperPassed": true,
+        "completeModuleExecution": true,
+        "sourceCaseCount": 32,
+        "sourceSha256": "d12f3c34fb282ef13b84afb5def305458fb1bae446f0968a4bf18a4a60f415ba",
+        "wrapperSha256": "a3db350409c7865546baca45e1382bea47bc3422b4202b0ca2572359b0d79499",
+        "individualPythonCountsPrintedInJobLog": false
+      },
+      "genuineRetirementJournal": {
+        "bytes": 1272204,
+        "capBytes": 2097152,
+        "headroomBytes": 824948,
+        "entries": 5607,
+        "files": 5603,
+        "sha256": "9464e2d0a299b63a3a9d066d7cbd6e5015f008dc4081a2f47efe63c4afd141c5"
+      },
+      "ordinaryBuildPassed": true,
+      "e2eOwnBuildPassed": true
+    },
+    "docker": {
+      "jobUrl": "https://github.com/cucumberfalse/cabadrive/actions/runs/38598148892/job/115970108321",
+      "startedAt": "2026-10-14T16:27:36.318863+00:00",
+      "completedAt": "2026-10-14T21:26:57.976440+00:00",
+      "status": "ALL_DOCKER_CI_COMMANDS_PASS",
+      "originalReceiptOverallAcceptance": false,
+      "artifact": {
+        "id": 11929708892,
+        "zipBytes": 1592926,
+        "expandedBytes": 6506328,
+        "sha256": "50c4d8a011d19d74b253e8a1b597980fe49b5b19a6d38ea5d0d255a9ce8d7061"
+      },
+      "topology": {
+        "backingPath": "/var/lib/docker",
+        "context": "default",
+        "daemonPids": [
+          1059
+        ],
+        "dockerVersion": "28.0.4",
+        "endpoint": "unix:///var/run/docker.sock",
+        "host": "runnervm8k3b6",
+        "hostPath": "/home/runner/work/cabadrive/cabadrive",
+        "kernel": "6.17.0-1022-azure",
+        "project": "cabadrive-ci-38598148892-1",
+        "socketDevice": 28,
+        "socketInode": 1030,
+        "vmMemory": "not-applicable: proven same-host native dockerd",
+        "workingMemoryAllowanceBytes": 268435456
+      },
+      "separateVmMemoryGate": "Not applicable only because actual topology proves native same-host dockerd; not an assumed VM-free credit.",
+      "stageCommandSource": "scripts/ci-docker-stage.sh",
+      "stages": [
+        {
+          "stage": "install",
+          "exit": 0,
+          "startedAt": "2026-10-14T16:27:37.003636+00:00",
+          "completedAt": "2026-10-14T16:27:38.513559+00:00",
+          "clientPid": 2327,
+          "clientGroup": 2327,
+          "allOwnedClosureProven": true,
+          "pipesDrained": true,
+          "childWaited": true,
+          "groupPresent": false,
+          "errorCount": 0,
+          "terminalTasks": []
+        },
+        {
+          "stage": "browser",
+          "exit": 0,
+          "startedAt": "2026-10-14T16:27:38.718527+00:00",
+          "completedAt": "2026-10-14T16:28:06.462907+00:00",
+          "clientPid": 2411,
+          "clientGroup": 2411,
+          "allOwnedClosureProven": true,
+          "pipesDrained": true,
+          "childWaited": true,
+          "groupPresent": false,
+          "errorCount": 0,
+          "terminalTasks": []
+        },
+        {
+          "stage": "build",
+          "exit": 0,
+          "startedAt": "2026-10-14T16:28:06.653231+00:00",
+          "completedAt": "2026-10-14T16:48:20.927038+00:00",
+          "clientPid": 3135,
+          "clientGroup": 3135,
+          "allOwnedClosureProven": true,
+          "pipesDrained": true,
+          "childWaited": true,
+          "groupPresent": false,
+          "errorCount": 0,
+          "terminalTasks": [
+            {
+              "CompletedAt": "2026-10-14T16:48:20.889731684Z",
+              "Context": ".",
+              "Dockerfile": "Dockerfile",
+              "FullRef": "default/default/itnq1cazor7679ej4f4kg2m48",
+              "Ref": "itnq1cazor7679ej4f4kg2m48",
+              "StartedAt": "2026-10-14T16:28:07.031090239Z",
+              "Status": "completed",
+              "Target": "stager",
+              "builder": "default",
+              "node": "default",
+              "rawId": "itnq1cazor7679ej4f4kg2m48"
+            },
+            {
+              "CompletedAt": "2026-10-14T16:28:32.134289103Z",
+              "Context": ".",
+              "Dockerfile": "Dockerfile",
+              "FullRef": "default/default/w4ibs6bkfit2cdkb20895oimn",
+              "Ref": "w4ibs6bkfit2cdkb20895oimn",
+              "StartedAt": "2026-10-14T16:28:07.030302341Z",
+              "Status": "completed",
+              "Target": "runtime",
+              "builder": "default",
+              "node": "default",
+              "rawId": "w4ibs6bkfit2cdkb20895oimn"
+            }
+          ]
+        },
+        {
+          "stage": "up",
+          "exit": 0,
+          "startedAt": "2026-10-14T16:48:21.199537+00:00",
+          "completedAt": "2026-10-14T16:48:35.118528+00:00",
+          "clientPid": 35200,
+          "clientGroup": 35200,
+          "allOwnedClosureProven": true,
+          "pipesDrained": true,
+          "childWaited": true,
+          "groupPresent": false,
+          "errorCount": 0,
+          "terminalTasks": []
+        },
+        {
+          "stage": "smoke",
+          "exit": 0,
+          "startedAt": "2026-10-14T16:48:35.244796+00:00",
+          "completedAt": "2026-10-14T16:48:35.271783+00:00",
+          "clientPid": 35577,
+          "clientGroup": 35577,
+          "allOwnedClosureProven": true,
+          "pipesDrained": true,
+          "childWaited": true,
+          "groupPresent": false,
+          "errorCount": 0,
+          "terminalTasks": []
+        },
+        {
+          "stage": "production-retry",
+          "exit": 0,
+          "startedAt": "2026-10-14T16:48:35.406892+00:00",
+          "completedAt": "2026-10-14T16:48:45.463927+00:00",
+          "clientPid": 35644,
+          "clientGroup": 35644,
+          "allOwnedClosureProven": true,
+          "pipesDrained": true,
+          "childWaited": true,
+          "groupPresent": false,
+          "errorCount": 0,
+          "terminalTasks": []
+        },
+        {
+          "stage": "retention",
+          "exit": 0,
+          "startedAt": "2026-10-14T16:48:45.597698+00:00",
+          "completedAt": "2026-10-14T20:08:39.944037+00:00",
+          "clientPid": 36102,
+          "clientGroup": 36102,
+          "allOwnedClosureProven": true,
+          "pipesDrained": true,
+          "childWaited": true,
+          "groupPresent": false,
+          "errorCount": 0,
+          "terminalTasks": [
+            {
+              "CompletedAt": "2026-10-14T20:07:21.39302876Z",
+              "Context": "/tmp/cabadrive-docker-retention-Pxg6OO",
+              "Dockerfile": "Dockerfile",
+              "FullRef": "default/default/2mzj14yjqwzpqw0wbjr9ziz3m",
+              "Ref": "2mzj14yjqwzpqw0wbjr9ziz3m",
+              "StartedAt": "2026-10-14T20:07:21.19158428Z",
+              "Status": "completed",
+              "Target": null,
+              "builder": "default",
+              "node": "default",
+              "rawId": "2mzj14yjqwzpqw0wbjr9ziz3m"
+            },
+            {
+              "CompletedAt": "2026-10-14T16:48:53.883060264Z",
+              "Context": ".",
+              "Dockerfile": "Dockerfile",
+              "FullRef": "default/default/4jmm0b6g5v4nzr8m33vzucokv",
+              "Ref": "4jmm0b6g5v4nzr8m33vzucokv",
+              "StartedAt": "2026-10-14T16:48:49.387298136Z",
+              "Status": "completed",
+              "Target": "stager",
+              "builder": "default",
+              "node": "default",
+              "rawId": "4jmm0b6g5v4nzr8m33vzucokv"
+            },
+            {
+              "CompletedAt": "2026-10-14T16:49:04.720493272Z",
+              "Context": ".",
+              "Dockerfile": "Dockerfile",
+              "FullRef": "default/default/9qflc93nuuziqe0cicumeghvf",
+              "Ref": "9qflc93nuuziqe0cicumeghvf",
+              "StartedAt": "2026-10-14T16:49:04.40824147Z",
+              "Status": "completed",
+              "Target": "stager",
+              "builder": "default",
+              "node": "default",
+              "rawId": "9qflc93nuuziqe0cicumeghvf"
+            },
+            {
+              "CompletedAt": "2026-10-14T16:48:48.010105509Z",
+              "Context": "/tmp/cabadrive-docker-retention-Pxg6OO",
+              "Dockerfile": "Dockerfile",
+              "FullRef": "default/default/hf62qkp2zfpuc7rnz8oxvsd0j",
+              "Ref": "hf62qkp2zfpuc7rnz8oxvsd0j",
+              "StartedAt": "2026-10-14T16:48:45.985684594Z",
+              "Status": "completed",
+              "Target": null,
+              "builder": "default",
+              "node": "default",
+              "rawId": "hf62qkp2zfpuc7rnz8oxvsd0j"
+            },
+            {
+              "CompletedAt": "2026-10-14T16:48:52.445969278Z",
+              "Context": ".",
+              "Dockerfile": "Dockerfile",
+              "FullRef": "default/default/i63o7yw9g3nd1jni254zy6e7k",
+              "Ref": "i63o7yw9g3nd1jni254zy6e7k",
+              "StartedAt": "2026-10-14T16:48:49.387354817Z",
+              "Status": "completed",
+              "Target": "runtime",
+              "builder": "default",
+              "node": "default",
+              "rawId": "i63o7yw9g3nd1jni254zy6e7k"
+            },
+            {
+              "CompletedAt": "2026-10-14T16:49:03.141423225Z",
+              "Context": ".",
+              "Dockerfile": "Dockerfile",
+              "FullRef": "default/default/iskrys88r8fuacdg15f5me8vm",
+              "Ref": "iskrys88r8fuacdg15f5me8vm",
+              "StartedAt": "2026-10-14T16:49:03.040797772Z",
+              "Status": "completed",
+              "Target": "runtime",
+              "builder": "default",
+              "node": "default",
+              "rawId": "iskrys88r8fuacdg15f5me8vm"
+            },
+            {
+              "CompletedAt": "2026-10-14T19:50:53.616061204Z",
+              "Context": "/tmp/cabadrive-docker-retention-Pxg6OO",
+              "Dockerfile": "Dockerfile",
+              "FullRef": "default/default/jlg0w002qx8vss755en8zwbjb",
+              "Ref": "jlg0w002qx8vss755en8zwbjb",
+              "StartedAt": "2026-10-14T19:50:53.450647816Z",
+              "Status": "completed",
+              "Target": null,
+              "builder": "default",
+              "node": "default",
+              "rawId": "jlg0w002qx8vss755en8zwbjb"
+            },
+            {
+              "CompletedAt": "2026-10-14T20:08:04.847939705Z",
+              "Context": ".",
+              "Dockerfile": "Dockerfile",
+              "FullRef": "default/default/kgivpgtsbaq32gtrj7l776hw0",
+              "Ref": "kgivpgtsbaq32gtrj7l776hw0",
+              "StartedAt": "2026-10-14T20:08:03.159434623Z",
+              "Status": "completed",
+              "Target": "runtime",
+              "builder": "default",
+              "node": "default",
+              "rawId": "kgivpgtsbaq32gtrj7l776hw0"
+            },
+            {
+              "CompletedAt": "2026-10-14T20:07:23.66041715Z",
+              "Context": ".",
+              "Dockerfile": "Dockerfile",
+              "FullRef": "default/default/omb00o6ewqxexl5e1x54vb5md",
+              "Ref": "omb00o6ewqxexl5e1x54vb5md",
+              "StartedAt": "2026-10-14T20:07:23.4719825Z",
+              "Status": "completed",
+              "Target": "runtime",
+              "builder": "default",
+              "node": "default",
+              "rawId": "omb00o6ewqxexl5e1x54vb5md"
+            },
+            {
+              "CompletedAt": "2026-10-14T20:08:03.789466739Z",
+              "Context": ".",
+              "Dockerfile": "Dockerfile",
+              "FullRef": "default/default/pkf295c7ct3jlpaoqrjlczzou",
+              "Ref": "pkf295c7ct3jlpaoqrjlczzou",
+              "StartedAt": "2026-10-14T20:08:03.159384087Z",
+              "Status": "completed",
+              "Target": "stager",
+              "builder": "default",
+              "node": "default",
+              "rawId": "pkf295c7ct3jlpaoqrjlczzou"
+            },
+            {
+              "CompletedAt": "2026-10-14T20:07:28.379775055Z",
+              "Context": ".",
+              "Dockerfile": "Dockerfile",
+              "FullRef": "default/default/pn8dkssvdbhb7whoibl62241s",
+              "Ref": "pn8dkssvdbhb7whoibl62241s",
+              "StartedAt": "2026-10-14T20:07:23.471928233Z",
+              "Status": "completed",
+              "Target": "stager",
+              "builder": "default",
+              "node": "default",
+              "rawId": "pn8dkssvdbhb7whoibl62241s"
+            },
+            {
+              "CompletedAt": "2026-10-14T16:49:03.378074654Z",
+              "Context": ".",
+              "Dockerfile": "Dockerfile",
+              "FullRef": "default/default/t3vnr7m8bj5y4vzjk4624v40o",
+              "Ref": "t3vnr7m8bj5y4vzjk4624v40o",
+              "StartedAt": "2026-10-14T16:49:03.040810241Z",
+              "Status": "completed",
+              "Target": "stager",
+              "builder": "default",
+              "node": "default",
+              "rawId": "t3vnr7m8bj5y4vzjk4624v40o"
+            },
+            {
+              "CompletedAt": "2026-10-14T16:49:04.503388569Z",
+              "Context": ".",
+              "Dockerfile": "Dockerfile",
+              "FullRef": "default/default/umfxlhjvpjh60z278gezfwp7v",
+              "Ref": "umfxlhjvpjh60z278gezfwp7v",
+              "StartedAt": "2026-10-14T16:49:04.408098875Z",
+              "Status": "completed",
+              "Target": "runtime",
+              "builder": "default",
+              "node": "default",
+              "rawId": "umfxlhjvpjh60z278gezfwp7v"
+            },
+            {
+              "CompletedAt": "2026-10-14T20:07:22.281252784Z",
+              "Context": "/tmp/cabadrive-docker-retention-Pxg6OO",
+              "Dockerfile": "Dockerfile",
+              "FullRef": "default/default/xekv1q404pmscb92kf8bw0rhn",
+              "Ref": "xekv1q404pmscb92kf8bw0rhn",
+              "StartedAt": "2026-10-14T20:07:22.176930159Z",
+              "Status": "completed",
+              "Target": null,
+              "builder": "default",
+              "node": "default",
+              "rawId": "xekv1q404pmscb92kf8bw0rhn"
+            },
+            {
+              "CompletedAt": "2026-10-14T19:35:53.478968961Z",
+              "Context": "/tmp/cabadrive-docker-retention-Pxg6OO",
+              "Dockerfile": "Dockerfile",
+              "FullRef": "default/default/yx7mqty2entifvtl3xdc78r2e",
+              "Ref": "yx7mqty2entifvtl3xdc78r2e",
+              "StartedAt": "2026-10-14T19:35:53.320280683Z",
+              "Status": "completed",
+              "Target": null,
+              "builder": "default",
+              "node": "default",
+              "rawId": "yx7mqty2entifvtl3xdc78r2e"
+            }
+          ]
+        },
+        {
+          "stage": "image-pipeline",
+          "exit": 0,
+          "startedAt": "2026-10-14T20:08:41.380198+00:00",
+          "completedAt": "2026-10-14T21:26:56.961700+00:00",
+          "clientPid": 58561,
+          "clientGroup": 58561,
+          "allOwnedClosureProven": true,
+          "pipesDrained": true,
+          "childWaited": true,
+          "groupPresent": false,
+          "errorCount": 0,
+          "terminalTasks": [
+            {
+              "CompletedAt": "2026-10-14T20:08:59.374614423Z",
+              "Context": "/tmp/cabadrive-docker-images-fDxt1C/context",
+              "Dockerfile": "Dockerfile",
+              "FullRef": "default/default/1gm6p5i9x23srwjdjbxfh7lwm",
+              "Ref": "1gm6p5i9x23srwjdjbxfh7lwm",
+              "StartedAt": "2026-10-14T20:08:51.764096879Z",
+              "Status": "completed",
+              "Target": "image-pipeline-fixture-tools",
+              "builder": "default",
+              "node": "default",
+              "rawId": "1gm6p5i9x23srwjdjbxfh7lwm"
+            },
+            {
+              "CompletedAt": "2026-10-14T20:09:03.833968836Z",
+              "Context": "/tmp/cabadrive-docker-images-fDxt1C/context",
+              "Dockerfile": "Dockerfile",
+              "FullRef": "default/default/j2w7fpp3bplof8avpisequdhx",
+              "Ref": "j2w7fpp3bplof8avpisequdhx",
+              "StartedAt": "2026-10-14T20:08:59.870907488Z",
+              "Status": "completed",
+              "Target": "stager",
+              "builder": "default",
+              "node": "default",
+              "rawId": "j2w7fpp3bplof8avpisequdhx"
+            },
+            {
+              "CompletedAt": "2026-10-14T20:10:28.804749432Z",
+              "Context": "/tmp/cabadrive-docker-images-fDxt1C/context",
+              "Dockerfile": "Dockerfile",
+              "FullRef": "default/default/p4r2fiq2aiad3bd4ded1vs2df",
+              "Ref": "p4r2fiq2aiad3bd4ded1vs2df",
+              "StartedAt": "2026-10-14T20:09:11.233191402Z",
+              "Status": "failed",
+              "Target": "build",
+              "builder": "default",
+              "node": "default",
+              "rawId": "p4r2fiq2aiad3bd4ded1vs2df"
+            },
+            {
+              "CompletedAt": "2026-10-14T20:57:23.478879098Z",
+              "Context": "/tmp/cabadrive-docker-images-fDxt1C/context",
+              "Dockerfile": "Dockerfile",
+              "FullRef": "default/default/t5roqh1hqfputnn31qqcb348z",
+              "Ref": "t5roqh1hqfputnn31qqcb348z",
+              "StartedAt": "2026-10-14T20:57:22.224260773Z",
+              "Status": "completed",
+              "Target": "runtime",
+              "builder": "default",
+              "node": "default",
+              "rawId": "t5roqh1hqfputnn31qqcb348z"
+            }
+          ]
+        },
+        {
+          "stage": "headers",
+          "exit": 0,
+          "startedAt": "2026-10-14T21:26:57.477663+00:00",
+          "completedAt": "2026-10-14T21:26:57.533370+00:00",
+          "clientPid": 199390,
+          "clientGroup": 199390,
+          "allOwnedClosureProven": true,
+          "pipesDrained": true,
+          "childWaited": true,
+          "groupPresent": false,
+          "errorCount": 0,
+          "terminalTasks": []
+        }
+      ],
+      "buildkitStatuses": {
+        "completed": 20,
+        "expectedNegativeFailed": 1
+      },
+      "sampleValidation": {
+        "observerSourceSha256": "8ed008a60dbe1019cb50d87544947370d4e7091be8cee47612233b7f44f9bb55",
+        "samples": 18042,
+        "decodedCanonicalSha256": "c30de70c0e107b061aaa902c257d1cefd6daccd183ee7ddb8ec56987bcbb02a0",
+        "minimumMemAvailable": 13433581568,
+        "maximumSwapUsedBytes": 65536,
+        "maximumWallGapSeconds": 1.190915584564209,
+        "maximumMonotonicGapSeconds": 1.190915663000851,
+        "allSamplesPassStrict18GiBDiskAnd1GiBMemoryAnd1GiBSwapAllowance": true,
+        "stableFilesystemIdentitiesAndFreeBlockArithmetic": true,
+        "lastSampleAt": "2026-10-14T21:26:57.965696+00:00",
+        "seriesBytes": 2779292,
+        "maximumFrameBytes": 158,
+        "frames": 18043,
+        "sourceHead": "67362f772c0cb2c7c886e3246e75ebcdd3bffb87",
+        "measuredCheckout": "0a156f8f536aee8f89544a8299c02437217bdb2c",
+        "status": "ALL_DOCKER_CI_COMMANDS_PASS",
+        "overallAcceptance": false,
+        "proofHashesMatch": true,
+        "productionSameTupleAndInventoryRealRetry18Http": true,
+        "imageCompletedPhases": [
+          "production",
+          "negative",
+          "two-releases",
+          "runtime",
+          "exact-creator-teardown"
+        ],
+        "allNineClientGroupsAbsentPipesDrainedChildrenWaited": true,
+        "buildkitTerminalRecords": 21,
+        "teardownSafe": true,
+        "makeDownExit": 0,
+        "rawSummaryReceiptSha256": "de07a0ff3d900707023630352e940187186ebaeb66c582617b769f0f4d4769d8",
+        "initialObservationAt": "2026-10-14T16:27:36.795514+00:00",
+        "initialObservationSource": "Original receipt.initialSample (separate from serialized series)",
+        "canonicalSerialization": {
+          "digestField": "decodedCanonicalSha256",
+          "encoding": "UTF-8",
+          "json": "json.dumps(row, ensure_ascii=True, allow_nan=False, separators=(',', ':')) + newline",
+          "sortKeys": false,
+          "scope": "Decoded insertion-order compact JSON. Different JSON key ordering or separators produce a different byte digest without implying different sample semantics."
+        },
+        "firstPersistedSeriesRowAt": "2026-10-14T16:27:36.796820+00:00",
+        "alternateCanonicalSerialization": {
+          "sha256": "6d6ae78d518be2cdb90cd7eb57e0dbe6fa4611b3bc258a264b02e3b8df850909",
+          "json": "json.dumps(row, sort_keys=True) + newline",
+          "encoding": "UTF-8",
+          "semanticReconciliation": "Independent review reproduced both hashes from the same 18042 typed rows in the same order; serialization bytes differ, semantics do not."
+        }
+      },
+      "sampleSeries": {
+        "appendable": true,
+        "bytes": 2779292,
+        "capBytes": 6291456,
+        "capacityLimitation": "Byte-derived representation capacity, not a runtime or extra-observation guarantee.",
+        "fullFrames": 0,
+        "headers": 1,
+        "incomplete": false,
+        "maximumFullFrameBytes": 0,
+        "maximumHeaderBytes": 156,
+        "maximumOrdinaryBytes": 158,
+        "maximumTopologyFrameBytes": 0,
+        "ordinaryFrames": 18042,
+        "remainingBytes": 3512164,
+        "remainingConservativeOrdinarySlots": 13719,
+        "samples": 18042,
+        "stableHeaderConservativeSlots": 24560,
+        "topologyFrames": 0,
+        "version": 1
+      },
+      "seriesObservation": {
+        "acceptanceHold": false,
+        "attempted": 18042,
+        "failed": 0,
+        "incomplete": false,
+        "persisted": 18042
+      },
+      "diskMinima": {
+        "backing": {
+          "at": "2026-10-14T20:57:21.881336+00:00",
+          "availableBlocks": 19199572,
+          "blockBytes": 4096,
+          "device": 66305,
+          "filesystemId": 5133272434662400248,
+          "freeBytes": 78641446912,
+          "path": "/var/lib/docker"
+        },
+        "host": {
+          "at": "2026-10-14T20:57:21.881336+00:00",
+          "availableBlocks": 19199572,
+          "blockBytes": 4096,
+          "device": 66305,
+          "filesystemId": 5133272434662400248,
+          "freeBytes": 78641446912,
+          "path": "/home/runner/work/cabadrive/cabadrive"
+        }
+      },
+      "swapBudget": {
+        "additionalBytes": 1073741824,
+        "baselineUsedBytes": 0,
+        "totalBytes": 3221221376
+      },
+      "forecast": {
+        "bytes": 17179869184,
+        "categories": {
+          "additionalSwapAllowance": 1073741824,
+          "contextsAndCopyLayers": 4294967296,
+          "imagesAndBuildLayers": 4294967296,
+          "nativeCompilerAndDependencies": 2147483648,
+          "retainedStatesAndExports": 3221225472,
+          "workingCopiesProofAndUncertainty": 2147483648
+        },
+        "limitation": "Conservative category union, not a proven maximum; no cache/cleanup credit."
+      },
+      "proofAllocatedBytes": 6828032,
+      "proofCapBytes": 16777216,
+      "production": {
+        "status": "PRODUCTION_PUBLICATION_AND_REAL_RETRY_PASS",
+        "sameTupleAndFullInventory": true,
+        "beforeAndAfter": {
+          "verified": {
+            "valid": true,
+            "releaseId": "a3866b5a5efad29b137bc86ea8fccaa1fd702e6575eda54084264d865d3e8304"
+          },
+          "metadata": {
+            "bytes": 1127818,
+            "sha256": "3bf92774b14d9bceb4fb51459d56ced0ceb78425f50b9d147ae59249cadcfd0d"
+          },
+          "marker": {
+            "bytes": 196,
+            "sha256": "5c88d63e985b4c84a294e7c395b8cc832c44def6fc1dd3a86dfb91d496a1863a"
+          },
+          "retainedInventory": {
+            "bytes": 10219,
+            "sha256": "00af90e257bb40d8dac3eb6a66f5bb9103d790a85f0f0b7f5e7ffbebdaf968c0"
+          },
+          "release": {
+            "files": 5625,
+            "bytes": 278370526,
+            "sha256": "e6f0aa13daf8c207620325382c5273e92d027bd80670f6be6b3190283b601974"
+          },
+          "assets": {
+            "files": 54,
+            "bytes": 28412534,
+            "sha256": "5e868c0472e49e7715fe6cf829a7421fb2123875243e8db37884408a348ad1d9"
+          }
+        },
+        "makeStageExit": 0,
+        "httpBeforeCount": 9,
+        "httpAfterCount": 9,
+        "allHttpSame": true,
+        "widths": [
+          480,
+          800,
+          1240
+        ],
+        "formats": [
+          "avif",
+          "webp",
+          "jpeg"
+        ],
+        "allStatus200ImmutableNosniff": true
+      },
+      "imagePipeline": {
+        "status": "PASS",
+        "completedPhases": [
+          "production",
+          "negative",
+          "two-releases",
+          "runtime",
+          "exact-creator-teardown"
+        ],
+        "inputSha256": "76d45fe5fb3a3211001aa8638360656dd91ec14aede472ddacd6ff4c58e78a81",
+        "productionSources": 275,
+        "productionVariants": 3321,
+        "productionInventoryFiles": 5678,
+        "productionMetricSample": 167,
+        "productionBuilds": [
+          {
+            "target": "image-pipeline-fixture-tools",
+            "exit": 0
+          },
+          {
+            "target": "stager",
+            "exit": 0
+          }
+        ],
+        "negativeExit": 1,
+        "negativeError": "ENOENT /app/content/assets-masters",
+        "negativeStderrSha256": "d4f6cf63aef98b381bd6c419742ae70a04812eb8a500af2e89571a9dcb7f6325",
+        "payloadFiles": 5682,
+        "forbiddenPayloadFiles": 0,
+        "published": {
+          "publishedFiles": 5683,
+          "derivativeMode": "0644",
+          "forbiddenPayloadFiles": 0,
+          "completeCandidateFiles": 5682,
+          "committedReleaseId": "dc261c6be8a27369d63e0c2dd9beabe74695d167aa2453fe95b697b886861d1e"
+        },
+        "retainedDerivativeUrls": [
+          "content/img/a/docker-pipeline-master-480.a5ac82ee.avif",
+          "content/img/a/docker-pipeline-master-480.dda10660.webp",
+          "content/img/a/docker-pipeline-master-480.3d041678.jpg",
+          "content/img/a/docker-pipeline-master-480.e53a7728.avif",
+          "content/img/a/docker-pipeline-master-480.0c0555ac.webp",
+          "content/img/a/docker-pipeline-master-480.328ee51e.jpg"
+        ],
+        "viteTemporaryBoundary": {
+          "status": "VITE_TEMP_BOUNDARY_PASS",
+          "capBytes": 16777216,
+          "vmMemoryAvailable": 14890651648,
+          "parentReadonly": true,
+          "packageAndLockWritesRefused": true,
+          "memoryBefore": 49184768,
+          "memoryWithFullTmpfs": 66170880,
+          "swapBefore": 0,
+          "swapWithFullTmpfs": 0,
+          "incrementalMemoryAndSwap": 16986112
+        },
+        "securityHeaders": {
+          "x-content-type-options": "nosniff",
+          "x-frame-options": "DENY",
+          "referrer-policy": "strict-origin-when-cross-origin",
+          "permissions-policy": "camera=(), microphone=(), geolocation=()",
+          "content-security-policy": "default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; base-uri 'none'; frame-ancestors 'none'"
+        }
+      },
+      "retentionAndReleaseMarkers": [
+        {
+          "line": 1245,
+          "text": "First-stage interruption/down/image-only B plus absent-image retries preserve exact independent A source/inventory and sibling PASS"
+        },
+        {
+          "line": 1246,
+          "text": "Rebuilt Linux stager created-entry ownership/cleanup/native/recovery matrix passed"
+        },
+        {
+          "line": 1247,
+          "text": "Docker R2j repeated content/new destination/exact retry/owned predecessor/foreign/timestamp controls passed"
+        },
+        {
+          "line": 1249,
+          "text": "Literal Docker checkout \"cabadrive|old\" running: adoption/A/B-SW/restart/down-up/export/siblings PASS"
+        },
+        {
+          "line": 1250,
+          "text": "Literal Docker checkout \"cabadrive, \\\"old\" stopped: adoption/A/B-SW/restart/down-up/export/siblings PASS"
+        },
+        {
+          "line": 1251,
+          "text": "Literal Docker checkout \"checkout\\n\": measured Compose schema URL rejection; early wrapper rejection/ZERO Docker calls/no handoff/legacy ID-state-A/sibling bytes+metadata PASS"
+        },
+        {
+          "line": 1254,
+          "text": "Docker asset-retention lifecycle passed for cabadrive-retention-36103-1791996525906"
+        },
+        {
+          "line": 1773,
+          "text": "Actual readonly dependency Vite failure,16MiB isolated tmpfs,manual validator,package/lock refusal,lifetime and installed/native integrity PASS"
+        },
+        {
+          "line": 1774,
+          "text": "Owned Linux frozen lock/modules and pnpm10.33.0 PASS"
+        },
+        {
+          "line": 1775,
+          "text": "Real production275 rejects missing journal and tampered individual review PASS"
+        },
+        {
+          "line": 2165,
+          "text": "Two real complete static/Docker releases retain all old and new derivative hashes PASS"
+        }
+      ],
+      "makeDown": {
+        "allOwnedClosureProven": true,
+        "allPipesDrainedAndChildWaited": true,
+        "boundedClosureDeadlineExceeded": false,
+        "childStillAlive": false,
+        "childWaited": true,
+        "drainedBytes": {
+          "stderr": 571,
+          "stdout": 0
+        },
+        "errorCount": 0,
+        "errors": [],
+        "exit": 0,
+        "group": 199445,
+        "groupClosureKnown": true,
+        "groupPresent": false,
+        "openStreamIds": [],
+        "ownSigintSent": false,
+        "pid": 199445,
+        "pipesDrained": true,
+        "pipesOpen": false,
+        "residualGroupMembers": [],
+        "signalAttempted": false,
+        "signalRefusal": null,
+        "startedAt": "2026-10-14T21:26:57.596636+00:00",
+        "stopDeadlineMonotonic": null,
+        "stopStartedAt": null,
+        "stopStartedMonotonic": null
+      },
+      "makeDownExit": 0,
+      "teardownSafe": true,
+      "downPolicy": "Ordinary make down without -v: owned project containers/network removed; owned state volumes retained. Positive client/group/pipe/daemon terminal closure and workflow verify-down do not constitute a separate full post-down daemon resource inventory.",
+      "limitations": [
+        "Source/merge checkout relationship bound by actual completed GitHub job checkout line; no local Docker query was made.",
+        "Original supervisor overallAcceptance remains false for broader feature acceptance; this intake proves the completed Docker contract.",
+        "make down without -v completed and owned client/group/pipe/daemon closure is recorded; no separate post-down full daemon resource inventory is uploaded.",
+        "The baseline Node wrapper executed the complete frozen 32-case Python module successfully; individual Python case count is source-bound and not printed in the captured job log."
+      ]
+    },
+    "proofs": [
+      {
+        "path": "/private/tmp/cabadrive-057-B2-ci-intake/artifact-metadata.json",
+        "bytes": 770,
+        "sha256": "9cdc1c7241bf501f9fa3f0d1ffc4bd1edcc29218e7e831df6fe09c159cfdf2af"
+      },
+      {
+        "path": "/private/tmp/cabadrive-057-B2-ci-intake/docker-artifact.zip",
+        "bytes": 1592926,
+        "sha256": "50c4d8a011d19d74b253e8a1b597980fe49b5b19a6d38ea5d0d255a9ce8d7061"
+      },
+      {
+        "path": "/private/tmp/cabadrive-057-B2-ci-intake/docker-job.log",
+        "bytes": 3783810,
+        "sha256": "538c8486f686b03dfa9db4683fc810e67bfaa4eeaf6eb47af8ff25d01db39db3"
+      },
+      {
+        "path": "/private/tmp/cabadrive-057-B2-ci-intake/baseline-job.log",
+        "bytes": 419308,
+        "sha256": "999d00bc093f4b3f2dcecbc79dc99c219d94bad4d2d2162636b034cd0a9274b9"
+      },
+      {
+        "path": "/private/tmp/cabadrive-057-B2-ci-intake/completed-docker-intake.json",
+        "bytes": 36677,
+        "sha256": "2bf837213dad269ce5dcef11603e918a22afbb03b49cdc9c26b27f0684f82df2"
+      },
+      {
+        "path": "/private/tmp/cabadrive-057-B2-ci-intake/docker-decoded-validation.json",
+        "bytes": 1321,
+        "sha256": "afb8a33555b029560127a64897aa86d1bf433736df911572c98545c774ef30bc"
+      },
+      {
+        "path": "/private/tmp/cabadrive-057-B2-ci-intake/docker-proof/receipt.json",
+        "bytes": 22404,
+        "sha256": "de07a0ff3d900707023630352e940187186ebaeb66c582617b769f0f4d4769d8"
+      },
+      {
+        "path": "/private/tmp/cabadrive-057-B2-ci-intake/docker-proof/production.json",
+        "bytes": 7435,
+        "sha256": "a453614e5760c72e226303a8d77c92d9556dd65d295dc8aad2772fa39488851d"
+      },
+      {
+        "path": "/private/tmp/cabadrive-057-B2-ci-intake/docker-proof/samples.jsonl",
+        "bytes": 2779292,
+        "sha256": "36641da4ab3f4d90c3d0d24278f5a29324fb6910b5c62edc255a6d0e70c5c101"
+      },
+      {
+        "path": "/private/tmp/cabadrive-057-B2-ci-intake/docker-proof/commands.log",
+        "bytes": 3697197,
+        "sha256": "46011b6862a03c2952f0021173016b9fc69e5da2df4ff707e0e0c0d11ea412d5"
+      }
+    ],
+    "if028CurrentCiValidation": {
+      "genuineCompleteJournal": {
+        "bytes": 1272204,
+        "capBytes": 2097152,
+        "headroomBytes": 824948,
+        "entries": 5607,
+        "files": 5603,
+        "sha256": "9464e2d0a299b63a3a9d066d7cbd6e5015f008dc4081a2f47efe63c4afd141c5"
+      },
+      "affectedAndWholeUnitValidation": "848/848 complete baseline units passed, including current retirement/recovery/security suites. Historical local 135/136 plus exact unchanged socket correction, heap OOM and unadmitted retry are retained separately; CI does not relabel them as local PASS."
+    },
+    "if029CurrentCiValidation": {
+      "completePythonModuleWrapperPassed": true,
+      "sourceCaseCount": 32,
+      "individualPythonCountsPrintedInJobLog": false,
+      "wrapper": {
+        "wrapperPassed": true,
+        "completeModuleExecution": true,
+        "sourceCaseCount": 32,
+        "sourceSha256": "d12f3c34fb282ef13b84afb5def305458fb1bae446f0968a4bf18a4a60f415ba",
+        "wrapperSha256": "a3db350409c7865546baca45e1382bea47bc3422b4202b0ca2572359b0d79499",
+        "individualPythonCountsPrintedInJobLog": false
+      },
+      "actualFullSeries": {
+        "observerSourceSha256": "8ed008a60dbe1019cb50d87544947370d4e7091be8cee47612233b7f44f9bb55",
+        "samples": 18042,
+        "decodedCanonicalSha256": "c30de70c0e107b061aaa902c257d1cefd6daccd183ee7ddb8ec56987bcbb02a0",
+        "minimumMemAvailable": 13433581568,
+        "maximumSwapUsedBytes": 65536,
+        "maximumWallGapSeconds": 1.190915584564209,
+        "maximumMonotonicGapSeconds": 1.190915663000851,
+        "allSamplesPassStrict18GiBDiskAnd1GiBMemoryAnd1GiBSwapAllowance": true,
+        "stableFilesystemIdentitiesAndFreeBlockArithmetic": true,
+        "lastSampleAt": "2026-10-14T21:26:57.965696+00:00",
+        "seriesBytes": 2779292,
+        "maximumFrameBytes": 158,
+        "frames": 18043,
+        "sourceHead": "67362f772c0cb2c7c886e3246e75ebcdd3bffb87",
+        "measuredCheckout": "0a156f8f536aee8f89544a8299c02437217bdb2c",
+        "status": "ALL_DOCKER_CI_COMMANDS_PASS",
+        "overallAcceptance": false,
+        "proofHashesMatch": true,
+        "productionSameTupleAndInventoryRealRetry18Http": true,
+        "imageCompletedPhases": [
+          "production",
+          "negative",
+          "two-releases",
+          "runtime",
+          "exact-creator-teardown"
+        ],
+        "allNineClientGroupsAbsentPipesDrainedChildrenWaited": true,
+        "buildkitTerminalRecords": 21,
+        "teardownSafe": true,
+        "makeDownExit": 0,
+        "rawSummaryReceiptSha256": "de07a0ff3d900707023630352e940187186ebaeb66c582617b769f0f4d4769d8",
+        "initialObservationAt": "2026-10-14T16:27:36.795514+00:00",
+        "initialObservationSource": "Original receipt.initialSample (separate from serialized series)",
+        "canonicalSerialization": {
+          "digestField": "decodedCanonicalSha256",
+          "encoding": "UTF-8",
+          "json": "json.dumps(row, ensure_ascii=True, allow_nan=False, separators=(',', ':')) + newline",
+          "sortKeys": false,
+          "scope": "Decoded insertion-order compact JSON. Different JSON key ordering or separators produce a different byte digest without implying different sample semantics."
+        }
+      },
+      "local32Execution": "NOT_RUN_MEMORY_HOLD; unchanged historical fact"
+    },
+    "featureAcceptanceClaim": false,
+    "pending": "Terminal gates for substantive C and final evidence D: actual published C must obtain its own complete Linux CI/native/all five required checks before final Architect FIRST then Analyst on identical frozen C; D then requires its own current checks/evidence-only guard and expected-head finalizer. No B2 check is substituted for C or D.",
+    "independentArtifactReview": {
+      "status": "NO_ACTIONABLE_FINDINGS",
+      "proofPath": "/private/tmp/cabadrive-057-B2-ci-artifact-review-proof.json",
+      "proofSha256": "9852b2703a02392f0bdfeb5421b04a717509b60f174a2e8aa6b9a24ab01866a9",
+      "scope": "Full18042 sample decode, source/checkout, full stages and production/closure/limitations; not final feature roles."
+    },
+    "prReadyTransition": {
+      "actor": "Root",
+      "proofPath": "/private/tmp/cabadrive-057-B2-ready-result.json",
+      "proofSha256": "fba59d24e8dea5a56d5905416ceb690bd4564bfc7fdf33bca7127c43de85e5f1",
+      "sourceHead": "67362f772c0cb2c7c886e3246e75ebcdd3bffb87",
+      "nativeReview": "SUCCESS_CURRENT_B2_SOURCE_BOUND",
+      "scope": "Ready transition after independently accepted completed B2 CI. No native/final-role acceptance inferred."
+    },
+    "nativeAndAllRequiredChecks": {
+      "checkedAt": "2026-10-14T21:42:34.673157+00:00",
+      "sourceHead": "67362f772c0cb2c7c886e3246e75ebcdd3bffb87",
+      "proof": {
+        "path": "/private/tmp/cabadrive-057-B2-native-all5-result.json",
+        "sha256": "c7d99fea829369ac026122dc8a41b9a643f8b9c54bb9c506129105f7b74c41ab"
+      },
+      "ready": true,
+      "allFiveSuccessful": true,
+      "checks": {
+        "baseline-checks": {
+          "id": 115970107857,
+          "sourceHead": "67362f772c0cb2c7c886e3246e75ebcdd3bffb87",
+          "status": "completed",
+          "conclusion": "success",
+          "completedAt": "2026-10-14T17:09:57Z",
+          "url": "https://github.com/cucumberfalse/cabadrive/actions/runs/38598148892/job/115970107857"
+        },
+        "docker-validation": {
+          "id": 115970108321,
+          "sourceHead": "67362f772c0cb2c7c886e3246e75ebcdd3bffb87",
+          "status": "completed",
+          "conclusion": "success",
+          "completedAt": "2026-10-14T21:27:01Z",
+          "url": "https://github.com/cucumberfalse/cabadrive/actions/runs/38598148892/job/115970108321"
+        },
+        "guard": {
+          "id": 115970107525,
+          "sourceHead": "67362f772c0cb2c7c886e3246e75ebcdd3bffb87",
+          "status": "completed",
+          "conclusion": "success",
+          "completedAt": "2026-10-14T16:27:39Z",
+          "url": "https://github.com/cucumberfalse/cabadrive/actions/runs/38598148864/job/115970107525"
+        },
+        "AI Review": {
+          "id": 116117615115,
+          "sourceHead": "67362f772c0cb2c7c886e3246e75ebcdd3bffb87",
+          "status": "completed",
+          "conclusion": "success",
+          "completedAt": "2026-10-14T21:41:43Z",
+          "url": "https://github.com/cucumberfalse/cabadrive/actions/runs/38641429828/job/116117615115"
+        },
+        "osv-scan": {
+          "id": 115970107315,
+          "sourceHead": "67362f772c0cb2c7c886e3246e75ebcdd3bffb87",
+          "status": "completed",
+          "conclusion": "success",
+          "completedAt": "2026-10-14T16:27:40Z",
+          "url": "https://github.com/cucumberfalse/cabadrive/actions/runs/38598148849/job/115970107315"
+        }
+      },
+      "native": {
+        "runUrl": "https://github.com/cucumberfalse/cabadrive/actions/runs/38641429828",
+        "jobUrl": "https://github.com/cucumberfalse/cabadrive/actions/runs/38641429828/job/116117615115",
+        "jobId": 116117615115,
+        "completedAt": "2026-10-14T21:41:43Z",
+        "commentId": 6179109146,
+        "commentUrl": "https://github.com/cucumberfalse/cabadrive/pull/219#issuecomment-6179109146",
+        "commentAt": "2026-10-14T21:41:07Z",
+        "result": "Native bot reported no major issues on reviewed commit67362f772c.",
+        "limitations": [
+          "Earlier same-head AI Review skipped draft record retained; latest actual native gate success selected by check-run id.",
+          "No native exhaustive full4025path coverage claimed; independent local complete-diff review remains separately bound."
+        ]
+      },
+      "oldDraftSkippedRecord": "Preserved in exact Root proof; skipped draft check is not selected as native success.",
+      "futureCAndDChecks": "NOT_YET_EXECUTED_FOR_UNPUBLISHED_C_OR_D"
+    }
+  },
+  "publicationB2History": {
+    "reconciledProof": {
+      "path": "/private/tmp/cabadrive-057-publication-B2-reconciled.json",
+      "sha256": "33d06a9dbf1e17d61e36a7796a682e1d34af51bf222021bf20aa1fe6ac03333f"
+    },
+    "sourceB2": "67362f772c0cb2c7c886e3246e75ebcdd3bffb87",
+    "parentB": "ef4f7808488a1c5675413f3505803b04d9832e42",
+    "owner": "cucumberfalse",
+    "exactSevenBlobsModesAndMessageVerified": true,
+    "stagedCheckExit": 0,
+    "pushExit": 0,
+    "immediatePostPushControllerExit": 1,
+    "assertionFailureCause": "UNKNOWN beyond recorded AssertionError",
+    "laterReadOnlyReconciliationExit": 0,
+    "pushRetried": false,
+    "sourceRemoteConfirmed": true,
+    "freshOriginalGitAdmission": {
+      "forecastBytes": 268435456,
+      "result": "PASS per Root assignment",
+      "proofSha256": "6ad05844897d2af2cc0bf8442624a153c337d61562a7b6fea6e321bd20ace900",
+      "ageBeforeStageSeconds": 67.922752,
+      "independentChangedStateObservedAt": "2026-10-14T16:22:06",
+      "original15_51HoldRetained": true,
+      "forecastLowered": false,
+      "ramPollingLoop": false
+    },
+    "httpsAlternative": {
+      "firstGetFailed": true,
+      "postCount": 0,
+      "casCount": 0,
+      "abandoned": true
+    },
+    "overallAcceptance": false,
+    "sourceProof": {
+      "path": "/private/tmp/cabadrive-057-consolidation-b2-baseline-8_jtrz7d/publication-b2-history.json",
+      "sha256": "374c110d2111b3a7c5bdf983267a5efbdeb52c1303a1c2bd353fcedb7071a9b8"
+    }
+  },
+  "currentEvidenceInterpretation": "Exact B2 source67362 and measured merge0a156 completed baseline/full native-Linux Docker validation; ready transition, independent artifact Review, native no-major-issues outcome and all five required B2 checks are proven. Dated prior pending snapshots and original supervisor overallAcceptance:false remain historical facts. This substantive C evidence does not claim future C/D checks, final Architect/Analyst acceptance or merge. Historical local resource/memory HOLD, failed A/B attempts, VERIFY-only old orphan and reconciled push remain unchanged.",
+  "historicalB2GateSnapshot": {
+    "checkedAt": "2026-10-14T21:26:57.976440+00:00",
+    "status": "B2_FULL_DOCKER_CONTRACT_AND_BASELINE_PASS_FINAL_FEATURE_GATES_PENDING",
+    "remaining": "Current-head native review and all required checks after final meaningful C evidence/docs commit; Architect then Analyst on the same frozen C; final evidence D and its current-head checks/finalizer. T015 and whole-feature acceptance remain pending. Historical local memory/resource HOLD and A/B failures remain unchanged; no local rerun is implied.",
+    "overallAcceptance": false,
+    "currentEvidenceInterpretation": "B2 supplies actual complete Linux resource/lifecycle/product acceptance for its source and measured merge checkout. Historical local five-phase functional proof with a breached host reserve, old uncommitted-artifact VERIFY-only result, A/B failed CI attempts and initial publication assertion failure/reconciled push all remain immutable historical facts. overallAcceptance stays false until remaining feature gates complete.",
+    "actualCiB2Pending": "Native/current final-head checks and final C/D role/finalizer sequence. No T015 completion claim.",
+    "sourceSha256": "3bc84f7ab02bc433b503f4a810da4810a13e58d620abf4211b31576fcac41577"
+  },
+  "historicalPreNativeCPreparationSnapshot": {
+    "checkedAt": "2026-10-14T21:26:57.976440+00:00",
+    "status": "B2_IMPLEMENTATION_VALIDATION_PASS_NATIVE_GATE_PENDING",
+    "remaining": "B2 native Review/all5 implementation readiness and independent substantive C-vector Review/Root GO. T015 remains unchecked at this dated preparation. After actual C publication, complete C current CI/native/all5 before final Architect then Analyst on the same C; D current checks/finalizer afterward. No completed B2 result substitutes for C or D.",
+    "overallAcceptance": false,
+    "currentEvidenceInterpretation": "B2 provides completed baseline/native-Linux Docker validation for exact source67362 and measured merge0a156. Actual ready transition and independent artifact Review are proven; native Review result remains unresolved. Historical local failures/HOLD/VERIFY-only old orphan, failed A/B CI and reconciled push remain immutable. Top overallAcceptance:false is preserved from the original supervisor/history, not recomputed into a current feature-acceptance flag.",
+    "actualCiB2Pending": "Native current-B2 result/all5 and substantive C-vector Review/GO; afterward actual C CI/native/all5 then ordered C roles and D current gates.",
+    "prReadyTransitionNativeReview": "RUNNING; no result claimed"
   }
 }
