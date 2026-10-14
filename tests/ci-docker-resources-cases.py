@@ -7,6 +7,8 @@ import sys
 import tempfile
 import time
 import unittest
+import json
+import copy
 from unittest.mock import patch
 
 spec = importlib.util.spec_from_file_location('resources', 'scripts/ci-docker-resources.py')
@@ -486,6 +488,236 @@ else:sys.exit(2)
                     self.assertFalse(record['persisted']);self.assertEqual(record['diagnosticError'],'PermissionError')
                     self.assertEqual(record['lifecycle']['exit'],1)
                 self.assertFalse((root/'next-stage').exists())
+
+
+class SeriesCases(unittest.TestCase):
+    def sample(self):
+        value = row()
+        for index, name in enumerate(('host', 'backing')):
+            value[name] = {'path': '/owned/' + name, 'device': index + 1,
+                           'filesystemId': index + 2, 'blockBytes': 4096,
+                           'availableBlocks': 123456, 'freeBytes': 505675777}
+        # Intentionally independently measured, rather than inferred arithmetic.
+        value['memory'].update(SwapTotal=1024, SwapFree=901)
+        return value
+
+    def assert_exact(self, before, after):
+        self.assertEqual(m.encode(before), m.encode(after))
+        if type(before) is dict:
+            self.assertEqual(set(before), set(after))
+            for key in before: self.assert_exact(before[key], after[key])
+        else:
+            self.assertIs(type(before), type(after))
+
+    def test_versioned_and_legacy_exact_roundtrip_and_topology_frames(self):
+        values = [self.sample()]
+        second = copy.deepcopy(values[0]); second['wall'] = 123; second['monotonic'] = 456.0
+        second['host']['device'] = 99; second['backing']['path'] = '/different/backing'
+        values.append(second)
+        third = copy.deepcopy(second); third['at'] = '2026-10-14T00:00:00.' + '1' * 90 + '+00:00'
+        third['memory'] = {key: 2**64-1 for key in m.MEMORY_KEYS}
+        for name in ('host', 'backing'):
+            third[name].update(availableBlocks=2**64-1, freeBytes=2**64-1)
+        third['swapUsedBytes'] = 2**64-1
+        values.append(third)
+        with tempfile.TemporaryDirectory() as directory:
+            series = m.SampleSeries(pathlib.Path(directory) / 'series')
+            try:
+                for value in values: series.append_sample(value)
+                actual = list(m.read_samples(io.BytesIO(pathlib.Path(series.file.name).read_bytes())))
+                for original, decoded in zip(values, actual): self.assert_exact(original, decoded)
+                self.assertEqual(len(actual), 3)
+                self.assertEqual(series.stats['topologyFrames'], 1)
+                self.assertEqual(series.stats['fullFrames'], 1)
+                self.assertEqual(series.stats['samples'], 3)
+                self.assertLessEqual(series.summary()['maximumHeaderBytes'], 4096)
+                self.assertEqual(series.summary()['stableHeaderConservativeSlots'], 24560)
+                self.assertEqual(series.summary()['bytes'], pathlib.Path(series.file.name).stat().st_size)
+                legacy = b''.join(m.encode(value) for value in values)
+                for original, decoded in zip(values, m.read_samples(io.BytesIO(legacy))): self.assert_exact(original, decoded)
+            finally: series.file.close()
+
+    def test_key_type_anomaly_and_oversized_frame_refusals(self):
+        changes = [lambda x: x.update(extra=1), lambda x: x.update(wall=float('nan')),
+                   lambda x: x.update(monotonic=-1), lambda x: x['host'].update(device=True),
+                   lambda x: x['host'].update(freeBytes=2**64), lambda x: x['memory'].update(MemAvailable=-1),
+                   lambda x: x['host'].update(path='relative'), lambda x: x['memory'].update(extra=0),
+                   lambda x: x.update(at='not-a-timestamp'), lambda x: x['host'].update(path='/'+'x'*4096)]
+        with tempfile.TemporaryDirectory() as directory:
+            for index, change in enumerate(changes):
+                series=m.SampleSeries(pathlib.Path(directory)/str(index)); value=self.sample(); change(value)
+                try:
+                    with self.assertRaises((ValueError, TypeError)):series.append_sample(value)
+                    self.assertEqual(series.size, 0)
+                    self.assertTrue(series.summary()['incomplete'])
+                    if series.summary()['appendable']:
+                        series.append_sample(self.sample())
+                        self.assertEqual(series.stats['samples'],1)
+                finally:series.file.close()
+
+    def test_reader_rejects_unknown_duplicate_inconsistent_truncated_and_invalid_frames(self):
+        value = self.sample(); metadata = m.sample_metadata(value)
+        header = m.compact_json([m.SERIES_MAGIC, 1, *metadata])
+        sample = m.compact_json(['s', *m.sample_values(value)])
+        changed = copy.deepcopy(metadata); changed[0][1] = 3
+        cases = [b'', header, header+sample[:-1], header+header+sample,
+                 m.compact_json([m.SERIES_MAGIC, True, *metadata])+sample,
+                 m.compact_json([m.SERIES_MAGIC, 2, *metadata])+sample,
+                 header+m.compact_json(['t', *metadata])+sample,
+                 header+m.compact_json(['t', *changed]),
+                 header+m.compact_json(['t', *changed])+m.compact_json(['t', *metadata])+sample,
+                 header+m.compact_json(['s', *m.sample_values(value)[:-1]]),
+                 header+m.compact_json(['s', 'x'*4096]), header+b'["s",NaN]\n',
+                 header+b'\xff\n', header+b'{"x":1,"x":2}\n',
+                 header+m.compact_json(['f', {**value,'host':{**value['host'],'device':99}}])]
+        for scalar in [True, 1.0, -1, 2**64]:
+            changed_values=m.sample_values(value); changed_values[4]=scalar
+            cases.append(header+m.compact_json(['s',*changed_values]))
+        for raw in cases:
+            with self.subTest(raw=raw[:80]), self.assertRaises((ValueError, UnicodeError)):
+                list(m.read_samples(io.BytesIO(raw)))
+
+    def test_exact_byte_ledger_boundary_and_one_byte_overflow_are_incomplete(self):
+        value=self.sample()
+        required=len(m.compact_json([m.SERIES_MAGIC,1,*m.sample_metadata(value)]))+len(m.compact_json(['s',*m.sample_values(value)]))
+        with tempfile.TemporaryDirectory() as directory:
+            for cap in [required,required-1]:
+                series=m.SampleSeries(pathlib.Path(directory)/str(cap),cap=cap)
+                try:
+                    if cap==required:
+                        series.append_sample(value)
+                        self.assertEqual(series.size,cap)
+                        self.assertEqual(series.summary()['remainingBytes'],0)
+                        with self.assertRaisesRegex(ValueError,'series cap'):series.append_sample(value)
+                        self.assertEqual(len(list(m.read_samples(io.BytesIO(pathlib.Path(series.file.name).read_bytes())))),1)
+                    else:
+                        with self.assertRaisesRegex(ValueError,'series cap'):series.append_sample(value)
+                        self.assertEqual(series.size,0)
+                    self.assertTrue(series.summary()['incomplete'])
+                    with self.assertRaisesRegex(ValueError,'append disabled'):series.append_sample(value)
+                finally:series.file.close()
+
+    def test_sample_sink_short_write_and_oserror_permanently_refuse_append(self):
+        with tempfile.TemporaryDirectory() as directory:
+            for fault in ['short','error']:
+                series=m.SampleSeries(pathlib.Path(directory)/fault)
+                real=series.file
+                class Sink:
+                    def write(self,data):
+                        if fault=='error':raise OSError('injected sample sink ENOSPC')
+                        return real.write(data[:-1])
+                series.file=Sink()
+                try:
+                    with self.assertRaises(OSError):series.append_sample(self.sample())
+                    self.assertTrue(series.summary()['incomplete'])
+                    with self.assertRaises(ValueError):series.append_sample(self.sample())
+                    with self.assertRaises(ValueError):list(m.read_samples(io.BytesIO(pathlib.Path(real.name).read_bytes())))
+                finally:real.close()
+
+    def test_sample_gap_error_and_postappend_check_failure_are_explicit(self):
+        with tempfile.TemporaryDirectory() as directory:
+            for fault in ['sample','gap','backward','check']:
+                series=m.SampleSeries(pathlib.Path(directory)/fault); result={}; value=self.sample()
+                if fault=='gap': result['lastSample']={**value,'wall':value['wall']-6}
+                if fault=='backward': result['lastSample']={**value,'wall':value['wall']+6}
+                def source():
+                    if fault=='sample': raise OSError('sample unavailable')
+                    return value
+                def check(_):
+                    if fault=='check':raise ValueError('resource threshold HOLD')
+                try:
+                    with self.assertRaises((OSError,ValueError)):m.observe(source,check,series,result)
+                    state=result['seriesObservation']
+                    self.assertEqual(state['attempted'],1);self.assertEqual(state['failed'],1)
+                    self.assertEqual(state['persisted'],int(fault!='sample'))
+                    self.assertEqual(state['incomplete'],fault=='sample')
+                    self.assertEqual(series.summary()['incomplete'],fault=='sample')
+                    self.assertTrue(state['acceptanceHold']);self.assertTrue(series.summary()['appendable'])
+                    self.assertIn('firstError',state)
+                    later=copy.deepcopy(value);later['wall']+=1;later['monotonic']+=1
+                    m.observe(lambda:later,lambda _:None,series,result)
+                    with open(series.file.name,'rb') as source:
+                        stored=list(m.read_samples(source))
+                    self.assertEqual(len(stored),1+int(fault!='sample'))
+                    self.assert_exact(stored[-1],later)
+                finally:series.file.close()
+
+    def test_resource_crossing_keeps_healthy_stop_and_finally_samples(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root=pathlib.Path(directory); ready=root/'ready'; foreign=root/'foreign';foreign.write_text('unchanged')
+            log=m.BoundedFile(root/'log',2*1024**2);series=m.SampleSeries(root/'series');result={};calls=0
+            code="""import pathlib,signal,time,sys,os
+def stop(*_):raise KeyboardInterrupt()
+signal.signal(signal.SIGINT,stop)
+pathlib.Path('ready').write_text('ready')
+try:
+ while True:time.sleep(.01)
+finally:
+ assert (pathlib.Path(os.environ['CABADRIVE_CI_STOP_DIR'])/'stop.json').is_file()
+ sys.stdout.write('x'*1048576);sys.stdout.flush();pathlib.Path('finally').write_text('done')
+"""
+            def source():
+                nonlocal calls
+                until=time.monotonic()+3
+                while not ready.exists() and time.monotonic()<until:time.sleep(.01)
+                value=self.sample();calls+=1
+                for name in ('host','backing'):value[name].update(freeBytes=64*m.GIB,availableBlocks=64*m.GIB//4096)
+                if calls==1:value['host']['freeBytes']=m.RESERVE-1
+                return value
+            try:
+                with contextlib.redirect_stdout(io.TextIOWrapper(io.BytesIO())),patch.object(m.os,'killpg',wraps=m.os.killpg) as interrupt:
+                    outcome=m.run_owned([sys.executable,'-c',code],root,log,series,source,lambda value:m.validate(value,0,123,m.GIB),result)
+                self.assertEqual(interrupt.call_count,1);self.assertTrue(outcome['ownSigintSent'])
+                self.assertTrue(outcome['allOwnedClosureProven']);self.assertTrue(outcome['errors'])
+                state=result['seriesObservation'];self.assertTrue(state['acceptanceHold']);self.assertFalse(state['incomplete'])
+                self.assertEqual(state['attempted'],state['persisted']);self.assertGreaterEqual(state['persisted'],2)
+                self.assertFalse(series.summary()['incomplete']);self.assertTrue(series.summary()['appendable'])
+                with open(series.file.name,'rb') as source_file:stored=list(m.read_samples(source_file))
+                self.assertEqual(len(stored),calls);self.assertEqual(stored[0]['host']['freeBytes'],m.RESERVE-1)
+                self.assertEqual(stored[-1]['host']['freeBytes'],64*m.GIB)
+                self.assertEqual((root/'finally').read_text(),'done');self.assertEqual(foreign.read_text(),'unchanged');self.assertFalse((root/'next').exists())
+            finally:log.file.close();series.file.close()
+
+    def test_cap_abort_keeps_real_owned_child_finally_and_refuses_next_stage(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root=pathlib.Path(directory); ready=root/'ready'; log=m.BoundedFile(root/'log',2*1024**2)
+            series=m.SampleSeries(root/'series',cap=1); result={}
+            code="""import pathlib,signal,time,sys
+def stop(*_):raise KeyboardInterrupt()
+signal.signal(signal.SIGINT,stop)
+pathlib.Path('ready').write_text('ready')
+try:
+ while True:time.sleep(.01)
+finally:
+ sys.stdout.write('x'*1048576);sys.stdout.flush();pathlib.Path('finally').write_text('done')
+"""
+            def source():
+                until=time.monotonic()+3
+                while not ready.exists() and time.monotonic()<until:time.sleep(.01)
+                return self.sample()
+            try:
+                with contextlib.redirect_stdout(io.TextIOWrapper(io.BytesIO())):
+                    outcome=m.run_owned([sys.executable,'-c',code],root,log,series,source,lambda _:None,result)
+                self.assertTrue(outcome['ownSigintSent']);self.assertTrue(outcome['allOwnedClosureProven'])
+                self.assertTrue(outcome['errors']);self.assertTrue(result['seriesObservation']['incomplete'])
+                self.assertEqual(result['seriesObservation']['persisted'],0)
+                self.assertEqual((root/'finally').read_text(),'done');self.assertFalse((root/'next').exists())
+            finally:log.file.close();series.file.close()
+        # The real main status may not upgrade an incomplete series to PASS.
+        with tempfile.TemporaryDirectory() as directory:
+            proof=pathlib.Path(directory)/'proof'; value=self.sample(); allocations=[]
+            real_series=m.SampleSeries
+            class TinySeries(real_series):
+                def __init__(self,path):super().__init__(path,cap=1)
+            env={'CABADRIVE_CI_PROOF':str(proof),'CI_SOURCE_SHA':'a'*40,'GITHUB_SERVER_URL':'https://github.com','GITHUB_REPOSITORY':'cucumberfalse/cabadrive','GITHUB_RUN_ID':'1','GITHUB_JOB':'docker-validation','GITHUB_RUN_ATTEMPT':'1'}
+            before=os.umask(0o022);os.umask(before)
+            try:
+                with patch.dict(os.environ,env),patch.object(m,'SampleSeries',TinySeries),patch.object(m,'topology',lambda _:{'backingPath':directory}),patch.object(m,'query',lambda _:'b'*40),patch.object(m,'sample_paths',lambda *_:value),patch.object(m,'validate',lambda *_:None),patch.object(m,'history',lambda **_:[]),patch.object(m,'run_owned',lambda *args,**kw:allocations.append(args)):
+                    self.assertEqual(m.main(),1)
+            finally:os.umask(before)
+            receipt=json.loads((proof/'receipt.json').read_text())
+            self.assertEqual(receipt['status'],'HOLD');self.assertEqual(allocations,[])
+            self.assertTrue(receipt['sampleSeries']['incomplete']);self.assertTrue(receipt['seriesObservation']['incomplete'])
 
 
 if __name__ == '__main__':

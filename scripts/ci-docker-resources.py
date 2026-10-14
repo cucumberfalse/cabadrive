@@ -14,6 +14,7 @@ import sys
 import time
 import secrets
 import re
+import math
 
 GIB = 1024 ** 3
 RESERVE = 2 * GIB
@@ -57,6 +58,200 @@ class BoundedFile:
         if written != len(data):
             raise OSError('short evidence write')
         self.size += written
+
+
+SERIES_MAGIC = 'cabadrive-resource-series'
+SERIES_VERSION = 1
+SERIES_CAP = 6 * 1024 ** 2
+SERIES_FRAME_CAP = 4096
+SERIES_ROW_CAP = 256
+FS_METADATA = ('path', 'device', 'filesystemId', 'blockBytes')
+SAMPLE_KEYS = {'at', 'wall', 'monotonic', 'host', 'backing', 'memory', 'swapUsedBytes'}
+FS_KEYS = set(FS_METADATA) | {'availableBlocks', 'freeBytes'}
+MEMORY_KEYS = ('MemAvailable', 'SwapTotal', 'SwapFree')
+
+
+def compact_json(value):
+    return (json.dumps(value, ensure_ascii=True, allow_nan=False, separators=(',', ':')) + '\n').encode('utf-8')
+
+
+def sample_shape(row):
+    """Representation validation only; resource and identity gates remain separate."""
+    if type(row) is not dict or set(row) != SAMPLE_KEYS:
+        raise ValueError('unsupported sample key set')
+    at = row['at']
+    if type(at) is not str or len(at) > 128 or datetime.datetime.fromisoformat(at).utcoffset() is None:
+        raise ValueError('unsupported sample timestamp')
+    for name in ('wall', 'monotonic'):
+        value = row[name]
+        if type(value) not in (int, float) or not math.isfinite(value) or not 0 <= value <= 10 ** 20:
+            raise ValueError('unsupported sample clock')
+    for name in ('host', 'backing'):
+        fields = row[name]
+        if type(fields) is not dict or set(fields) != FS_KEYS or type(fields['path']) is not str or not fields['path'].startswith('/'):
+            raise ValueError('unsupported filesystem sample')
+        for key in FS_KEYS - {'path'}:
+            if type(fields[key]) is not int or not 0 <= fields[key] <= 2 ** 64 - 1:
+                raise ValueError('unsupported filesystem scalar')
+        if fields['blockBytes'] == 0:
+            raise ValueError('unsupported filesystem block size')
+    if type(row['memory']) is not dict or set(row['memory']) != set(MEMORY_KEYS):
+        raise ValueError('unsupported memory key set')
+    for value in [*row['memory'].values(), row['swapUsedBytes']]:
+        if type(value) is not int or not 0 <= value <= 2 ** 64 - 1:
+            raise ValueError('unsupported memory scalar')
+
+
+def sample_metadata(row):
+    return [[row[name][key] for key in FS_METADATA] for name in ('host', 'backing')]
+
+
+def sample_values(row):
+    return [row['at'], row['wall'], row['monotonic'],
+            row['host']['availableBlocks'], row['host']['freeBytes'],
+            row['backing']['availableBlocks'], row['backing']['freeBytes'],
+            *[row['memory'][key] for key in MEMORY_KEYS], row['swapUsedBytes']]
+
+
+def sample_from_values(values, metadata):
+    if type(values) is not list or len(values) != 11:
+        raise ValueError('invalid compact sample order/length')
+    row = dict(zip(('at', 'wall', 'monotonic'), values[:3]))
+    for index, name in enumerate(('host', 'backing')):
+        row[name] = {**dict(zip(FS_METADATA, metadata[index])),
+                     'availableBlocks': values[3 + 2 * index], 'freeBytes': values[4 + 2 * index]}
+    row['memory'] = dict(zip(MEMORY_KEYS, values[7:10]))
+    row['swapUsedBytes'] = values[10]
+    sample_shape(row)
+    return row
+
+
+def metadata_shape(metadata):
+    if type(metadata) is not list or len(metadata) != 2 or any(type(fields) is not list or len(fields) != 4 for fields in metadata):
+        raise ValueError('invalid sample topology frame')
+    # Validate the complete header independently, without inferring measured data.
+    sample_from_values(['2000-01-01T00:00:00+00:00', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], metadata)
+
+
+class SampleSeries(BoundedFile):
+    """Exact-byte ledger; missing coverage and unsafe appendability are independent."""
+    def __init__(self, path, cap=SERIES_CAP):
+        super().__init__(path, cap)
+        self.metadata = None
+        self.appendable = True
+        self.stats = {'version': SERIES_VERSION, 'samples': 0, 'headers': 0,
+                      'topologyFrames': 0, 'fullFrames': 0, 'ordinaryFrames': 0,
+                      'maximumHeaderBytes': 0, 'maximumOrdinaryBytes': 0,
+                      'maximumFullFrameBytes': 0, 'maximumTopologyFrameBytes': 0,
+                      'incomplete': False}
+
+    def append_sample(self, row):
+        if not self.appendable:
+            raise ValueError('sample series append disabled after framing/cap/sink failure')
+        writing = False
+        try:
+            sample_shape(row)
+            metadata = sample_metadata(row)
+            frames = []
+            if self.metadata is None:
+                frames.append(('headers', 'maximumHeaderBytes', compact_json([SERIES_MAGIC, SERIES_VERSION, *metadata])))
+            elif compact_json(metadata) != compact_json(self.metadata):
+                frames.append(('topologyFrames', 'maximumTopologyFrameBytes', compact_json(['t', *metadata])))
+            data = compact_json(['s', *sample_values(row)])
+            if len(data) <= SERIES_ROW_CAP:
+                frames.append(('ordinaryFrames', 'maximumOrdinaryBytes', data))
+            else:
+                frames.append(('fullFrames', 'maximumFullFrameBytes', compact_json(['f', row])))
+            if any(len(data) > SERIES_FRAME_CAP for _, _, data in frames):
+                self.appendable = False
+                raise ValueError('sample frame cap exceeded')
+            if self.size + sum(len(data) for _, _, data in frames) > self.cap:
+                self.appendable = False
+                raise ValueError('sample series cap exceeded')
+            for category, maximum, data in frames:
+                writing = True
+                self.write(data)
+                self.stats[category] += 1
+                self.stats[maximum] = max(self.stats[maximum], len(data))
+            self.metadata = metadata
+            self.stats['samples'] += 1
+        except Exception as error:
+            self.stats['incomplete'] = True
+            if writing:
+                self.appendable = False
+            if not self.appendable and 'appendDisabledReason' not in self.stats:
+                self.stats['appendDisabledReason'] = type(error).__name__ + ': ' + str(error)[:256]
+            raise
+
+    def summary(self):
+        return {**self.stats, 'appendable': self.appendable, 'bytes': self.size, 'capBytes': self.cap,
+                'remainingBytes': self.cap - self.size,
+                'remainingConservativeOrdinarySlots': (self.cap - self.size) // SERIES_ROW_CAP,
+                'stableHeaderConservativeSlots': (SERIES_CAP - SERIES_FRAME_CAP) // SERIES_ROW_CAP,
+                'capacityLimitation': 'Byte-derived representation capacity, not a runtime or extra-observation guarantee.'}
+
+
+def strict_json(raw):
+    def pairs(items):
+        value = {}
+        for key, entry in items:
+            if key in value:
+                raise ValueError('duplicate sample object key')
+            value[key] = entry
+        return value
+    def constant(_):
+        raise ValueError('nonfinite sample JSON number')
+    return json.loads(raw.decode('utf-8'), object_pairs_hook=pairs, parse_constant=constant)
+
+
+def read_samples(stream):
+    """Bounded streaming reader for version1 frames and legacy object-per-line data."""
+    mode = metadata = None
+    count = total = 0
+    pending_topology = False
+    while True:
+        raw = stream.readline(SERIES_FRAME_CAP + 1)
+        if not raw:
+            break
+        total += len(raw)
+        if total > SERIES_CAP or len(raw) > SERIES_FRAME_CAP or not raw.endswith(b'\n'):
+            raise ValueError('oversized or truncated sample series/frame')
+        frame = strict_json(raw)
+        if mode is None:
+            if type(frame) is dict:
+                mode = 'legacy'
+            elif type(frame) is list and len(frame) == 4 and frame[0] == SERIES_MAGIC and type(frame[1]) is int and frame[1] == SERIES_VERSION:
+                mode, metadata = 'v1', frame[2:]
+                metadata_shape(metadata)
+                continue
+            else:
+                raise ValueError('unknown sample series header/version')
+        if mode == 'legacy':
+            sample_shape(frame)
+            row = frame
+        elif type(frame) is list and len(frame) == 3 and frame[0] == 't':
+            replacement = frame[1:]
+            metadata_shape(replacement)
+            if pending_topology or compact_json(replacement) == compact_json(metadata):
+                raise ValueError('duplicate/inconsistent sample topology frame')
+            metadata, pending_topology = replacement, True
+            continue
+        elif type(frame) is list and len(frame) == 12 and frame[0] == 's':
+            if len(raw) > SERIES_ROW_CAP:
+                raise ValueError('oversized ordinary sample frame')
+            row = sample_from_values(frame[1:], metadata)
+        elif type(frame) is list and len(frame) == 2 and frame[0] == 'f':
+            row = frame[1]
+            sample_shape(row)
+            if compact_json(sample_metadata(row)) != compact_json(metadata):
+                raise ValueError('full sample topology differs from header')
+        else:
+            raise ValueError('invalid sample frame/header/order')
+        count += 1
+        pending_topology = False
+        yield row
+    if count == 0 or pending_topology:
+        raise ValueError('empty or incomplete sample series')
 
 
 def query(args, timeout=10):
@@ -177,21 +372,54 @@ def group_members(group):
 
 
 def observe(sample, check, series, observations):
-    row = sample()
-    previous = observations.get('lastSample')
-    observations['lastSample'] = row
-    if previous:
-        wall, mono = row['wall'] - previous['wall'], row['monotonic'] - previous['monotonic']
-        observations['maximumWallGapSeconds'] = max(observations.get('maximumWallGapSeconds', 0), wall)
-        observations['maximumMonotonicGapSeconds'] = max(observations.get('maximumMonotonicGapSeconds', 0), mono)
-        if wall < 0 or wall > 5:
+    state = observations.setdefault('seriesObservation', {'attempted': 0, 'persisted': 0, 'failed': 0, 'incomplete': False, 'acceptanceHold': False})
+    state['attempted'] += 1
+    row = None
+    persisted = False
+    try:
+        row = sample()
+        previous = observations.get('lastSample')
+        observations['lastSample'] = row
+        gap_error = False
+        if previous:
+            wall, mono = row['wall'] - previous['wall'], row['monotonic'] - previous['monotonic']
+            observations['maximumWallGapSeconds'] = max(observations.get('maximumWallGapSeconds', 0), wall)
+            observations['maximumMonotonicGapSeconds'] = max(observations.get('maximumMonotonicGapSeconds', 0), mono)
+            if wall < 0 or wall > 5:
+                gap_error = True
+        for name in ['host', 'backing']:
+            if name not in observations.get('minima', {}) or row[name]['freeBytes'] < observations['minima'][name]['freeBytes']:
+                observations.setdefault('minima', {})[name] = {'at': row['at'], **row[name]}
+        if isinstance(series, SampleSeries):
+            series.append_sample(row)
+        else:
+            series.write(encode(row))
+        state['persisted'] += 1
+        persisted = True
+        if gap_error:
             raise ValueError('wall sample gap/jump HOLD')
-    for name in ['host', 'backing']:
-        if name not in observations.get('minima', {}) or row[name]['freeBytes'] < observations['minima'][name]['freeBytes']:
-            observations.setdefault('minima', {})[name] = {'at': row['at'], **row[name]}
-    series.write(encode(row))
-    check(row)
-    return row
+        check(row)
+        return row
+    except Exception as error:
+        state['failed'] += 1
+        state['acceptanceHold'] = True
+        if not persisted:
+            state['incomplete'] = True
+            if isinstance(series, SampleSeries):
+                series.stats['incomplete'] = True
+        if 'firstError' not in state:
+            first = {'at': utc(), 'category': type(error).__name__, 'error': str(error)[:1024], 'recordPersisted': persisted}
+            try:
+                if row is None:
+                    raise ValueError('sample unavailable')
+                raw = compact_json(row)
+                first.update(recordBytes=len(raw), recordSha256=hashlib.sha256(raw).hexdigest())
+                if len(raw) <= SERIES_FRAME_CAP:
+                    first['recordUtf8'] = raw.decode('utf-8')
+            except Exception:
+                first['recordUnavailable'] = True
+            state['firstError'] = first
+        raise
 
 
 def run_owned(command, root, log, series, sample, check, observations, can_interrupt=True, stop_grace=60, total_seconds=None, forward_stdout=True, stream_capture=None):
@@ -579,7 +807,7 @@ def main():
     proof = pathlib.Path(os.environ['CABADRIVE_CI_PROOF'])
     proof.mkdir(mode=0o700, parents=True, exist_ok=False)
     log = BoundedFile(proof / 'commands.log', 8 * 1024 ** 2)
-    series = BoundedFile(proof / 'samples.jsonl', 6 * 1024 ** 2)
+    series = SampleSeries(proof / 'samples.jsonl')
     result = {'status': 'HOLD', 'overallAcceptance': False, 'startedAt': utc(), 'stages': [],
               'forecastBytes': sum(FORECAST.values()), 'forecastCategories': FORECAST,
               'remainingStageEnvelopeGiB': REMAINING_GIB,
@@ -662,6 +890,10 @@ def main():
         else:
             result['makeDownNotAdmitted'] = 'Fresh ownership/allocation or actual client/pipe/daemon closure unavailable; teardown refused.'
         result['teardownSafe'] = teardown_safe
+        result['sampleSeries'] = series.summary()
+        sample_state = result.get('seriesObservation', {})
+        if series.stats['incomplete'] or sample_state.get('incomplete') or sample_state.get('acceptanceHold') or sample_state.get('attempted') != sample_state.get('persisted'):
+            result['status'] = 'HOLD'
         if os.environ.get('GITHUB_OUTPUT'):
             with open(os.environ['GITHUB_OUTPUT'], 'a') as output:
                 output.write('teardown-safe=' + str(teardown_safe).lower() + '\n')
@@ -699,4 +931,9 @@ def verify_down(proof):
 
 
 if __name__ == '__main__':
-    sys.exit(verify_down(os.environ['CABADRIVE_CI_PROOF']) if sys.argv[1:] == ['--verify-down'] else main())
+    if len(sys.argv) == 3 and sys.argv[1] == '--decode-samples':
+        with open(sys.argv[2], 'rb') as source:
+            for sample in read_samples(source):
+                sys.stdout.buffer.write(encode(sample))
+    else:
+        sys.exit(verify_down(os.environ['CABADRIVE_CI_PROOF']) if sys.argv[1:] == ['--verify-down'] else main())

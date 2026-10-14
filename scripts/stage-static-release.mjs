@@ -46,6 +46,7 @@ const EXECUTION_DOMAIN_SCHEMA_VERSION = 1;
 const EXECUTION_DOMAIN_RECORD = "stage-execution-domain.json";
 const RECLAIM_GUARD = "stage.lock.reclaim";
 const MAX_AUTHORITY_BYTES = 1024 * 1024;
+const MAX_RETIREMENT_AUTHORITY_BYTES = 2 * 1024 * 1024;
 // Complete stage2 inventories need a larger, still bounded per-release record.
 // Other authority retains its existing1MiB boundary.
 const MAX_RELEASE_METADATA_BYTES = 2 * 1024 * 1024;
@@ -323,6 +324,18 @@ export function readAuthorityFile(path, label, options = {}) {
   } finally {
     closeSync(opened.descriptor);
   }
+}
+
+function readRetirementAuthorityFile(path) {
+  return readAuthorityFile(path, "retirement journal", {
+    maxBytes: MAX_RETIREMENT_AUTHORITY_BYTES,
+  });
+}
+
+function readRetirementAuthorityJson(path) {
+  return readJsonRegularFileNoFollow(path, "retirement journal", {
+    maxBytes: MAX_RETIREMENT_AUTHORITY_BYTES,
+  });
 }
 
 function readReleaseMetadata(path, label = "release metadata") {
@@ -3924,7 +3937,7 @@ function readGenerationSelection(
   const lineagePath = join(state, GENERATION_LINEAGE);
   const pending = noFollowEntry(state) ? readPendingPublish(state) : undefined;
   const retirement = noFollowEntry(join(state, RETIREMENT_PENDING))
-    ? readAuthorityJson(join(state, RETIREMENT_PENDING), "retirement journal")
+    ? readRetirementAuthorityJson(join(state, RETIREMENT_PENDING))
     : undefined;
   let snapshot = noFollowEntry(lineagePath) ? generationAuthoritySnapshot(lineagePath) : null;
   let lineage = snapshot
@@ -4124,7 +4137,7 @@ function assertPriorGenerationLineage(state, generation) {
       generation.projectKey,
       {
         pendingRetirement: noFollowEntry(join(state, RETIREMENT_PENDING))
-          ? readAuthorityJson(join(state, RETIREMENT_PENDING), "retirement journal")
+          ? readRetirementAuthorityJson(join(state, RETIREMENT_PENDING))
           : undefined,
       },
     );
@@ -4670,7 +4683,7 @@ function resumeRetirement(state, record, root, logicalOutput, activeOutput, opti
     "retirement journal",
   );
   try {
-    const journalBytes = readAuthorityFile(journal, "retirement journal");
+    const journalBytes = readRetirementAuthorityFile(journal);
     if (JSON.stringify(JSON.parse(journalBytes)) !== JSON.stringify(record))
       fail("retirement journal changed before recovery");
     const assertJournal = () => {
@@ -4769,7 +4782,7 @@ function resumeRetirement(state, record, root, logicalOutput, activeOutput, opti
     validateRetirement(record, root, logicalOutput, activeOutput);
     invokeDurability(options, "retirement-before-clear", journal);
     assertJournal();
-    if (readAuthorityFile(journal, "retirement journal") !== journalBytes)
+    if (readRetirementAuthorityFile(journal) !== journalBytes)
       fail("retirement journal contents changed before clear");
     assertJournal();
     unlinkSync(journal);
@@ -4840,9 +4853,7 @@ function retireOldPublishGenerations(state, generationRoot, logicalOutput, activ
     logicalOutput,
     options.projectKey,
     {
-      pendingRetirement: noFollowEntry(journal)
-        ? readAuthorityJson(journal, "retirement journal")
-        : undefined,
+      pendingRetirement: noFollowEntry(journal) ? readRetirementAuthorityJson(journal) : undefined,
     },
   );
   generationCurrentMatches(state, lineage);
@@ -4877,7 +4888,7 @@ function retireOldPublishGenerations(state, generationRoot, logicalOutput, activ
         snapshot = replaceGenerationLineage(state, lineage, snapshot, options);
       }
       let record;
-      if (noFollowEntry(journal)) record = readAuthorityJson(journal, "retirement journal");
+      if (noFollowEntry(journal)) record = readRetirementAuthorityJson(journal);
       else {
         validateGenerationEntry(owned, root, logicalOutput);
         record = {
@@ -4900,9 +4911,12 @@ function retireOldPublishGenerations(state, generationRoot, logicalOutput, activ
           lineage: snapshot,
         };
         validateRetirement(record, root, logicalOutput, activeOutput);
+        const journalBytes = `${JSON.stringify(record)}\n`;
+        if (Buffer.byteLength(journalBytes, "utf8") > MAX_RETIREMENT_AUTHORITY_BYTES)
+          fail(`retirement journal exceeds the authority size limit: ${journal}`);
         invokeDurability(options, "retirement-prepare", journal);
         assertGenerationSnapshot(lineagePath, snapshot);
-        writeAtomically(state, journal, `${JSON.stringify(record)}\n`, options);
+        writeAtomically(state, journal, journalBytes, options);
       }
       resumeRetirement(state, record, root, logicalOutput, activeOutput, options);
     }

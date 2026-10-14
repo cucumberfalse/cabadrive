@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "checkedAt": "2026-10-14T08:45:27.096944+00:00",
+  "checkedAt": "2026-10-14T15:45:03.923315+00:00",
   "status": "FUNCTIONAL_FIVE_PHASE_PASS_PRESERVATION_RECONCILED_RESOURCE_HOLD",
   "overallAcceptance": false,
   "historicalFocused": {
@@ -240,7 +240,7 @@
     "attribution": "Unproved. Only aggregate minimum retained; variable collector loop cadence and stage samples do not locate or explain the minimum.",
     "historicalFunctionalProofInvalidated": false
   },
-  "remaining": "Actual fresh Compose production publication (>1MiB metadata), same-release make stage retry and HTTP proof; current-head GitHub checks/reviews, final roles and merge. Local admission remains HOLD; CI route pending.",
+  "remaining": "IF028 serial quality remains memory HOLD; IF02932 child/lifecycle cases require actual next current-head CI; separately admitted complete new CI including unit/quality/build/browser, retention/five image-pipeline phases/headers and resource/finally evidence; current-head reviews/checks and final roles. No full Docker acceptance.",
   "currentWholeHost": {
     "at": "2026-10-14T08:17:16.278805+00:00",
     "status": "CURRENT_WHOLE_HOST_PASS",
@@ -567,5 +567,296 @@
     },
     "overallDockerAcceptance": false,
     "interpretation": "Actual A baseline passed on its measured merge checkout. Docker product build completed; observer inspection failure blocked all remaining acceptance and teardown. Original failed artifact is preserved. IF027 correction and a separately admitted complete new CI remain pending; no partial resume or local Docker execution."
+  },
+  "actualCiB": {
+    "checkedAt": "2026-10-14T13:46:57.588738+00:00",
+    "sourceHead": "ef4f7808488a1c5675413f3505803b04d9832e42",
+    "checkoutHead": "0def9e557950a7002ac7aeeb87ccb4ada5f915d9",
+    "checkoutParents": [
+      "3beb624c0c7c615ab7159fdd3227f74f790df29f",
+      "ef4f7808488a1c5675413f3505803b04d9832e42"
+    ],
+    "runUrl": "https://github.com/cucumberfalse/cabadrive/actions/runs/38554334881",
+    "baseline": {
+      "jobId": 115819613998,
+      "conclusion": "success",
+      "unitTests": 846,
+      "unitPassed": 846,
+      "unitFailed": 0,
+      "browserPassed": 181,
+      "browserIntentionalSkipped": 5,
+      "quality": "PASS",
+      "ordinaryBuild": "PASS",
+      "e2eServerBuild": "PASS",
+      "logBytes": 418273,
+      "logSha256": "f5bc5a598d38127d501d3a00d5015fb530767659ba40a8eed854b1aceda4c3b1"
+    },
+    "docker": {
+      "jobId": 115819614276,
+      "conclusion": "failure",
+      "status": "PRODUCTION_RETRY_PASS_RETENTION_FAILED_REMAINING_PHASES_UNRUN",
+      "receiptSha256": "3650c8f5214520a98a04bc59cb900f6ae582b445777b6e5f6e030a28091cf124",
+      "commandsSha256": "5110cf8841e359df2b3d821beb2e08e37cf74111fb0fe9dc02b4112329e999bf",
+      "productionProofSha256": "c3818de6d7bd28a95e4c39e1881c8cb4af309231fbd8dad73e07fc6d72c599a9",
+      "artifactZipSha256": "d4764a4acb851673fe5e4a4015a7e7f0581cdd9b48e7f9493d316bf56b9d90eb",
+      "jobLogSha256": "b0a9c32f572d4f7136af9ebb18eaf8de3c7dbb9e421b62f2a045bf8699d6faf7",
+      "completedPriorCommands": [
+        "install",
+        "browser",
+        "make build",
+        "make up",
+        "smoke",
+        "production-retry"
+      ],
+      "productionMetadataBytes": 1127818,
+      "productionReleaseId": "4d8b57b1686eba42c33c466409b531958a8001cfe6cdfc1fc4cad0b0b0a70e37",
+      "sameFullTupleAndInventories": true,
+      "ordinaryMakeStageExit": 0,
+      "httpAssertionsBefore": 9,
+      "httpAssertionsAfter": 9,
+      "retentionExit": 1,
+      "failure": "retirement journal exceeds the authority size limit: /state/publish-retirement.json",
+      "failedJournalSerializedBytes": null,
+      "unrun": [
+        "image-pipeline",
+        "headers"
+      ],
+      "clientsGroupsPipesAndAttributedTasksClosed": true,
+      "makeDownExit": 0,
+      "teardownSafe": true,
+      "independentPostDownFullResourceInventory": false,
+      "resourceSamples": 9314,
+      "minimumDiskFreeBytes": 81295114240,
+      "minimumMemAvailableBytes": 13812273152,
+      "swapUsedBytes": 0,
+      "maximumWallSampleGapSeconds": 1.2456178665161133,
+      "allocatedProofBytes": 5615616,
+      "proofLimitBytes": 16777216
+    },
+    "overallDockerAcceptance": false,
+    "interpretation": "Actual B production publication and ordinary same-release retry passed. Retention failed at the typed retirement journal read; its byte count was not captured. Full image-pipeline and headers remain unrun; no full Docker acceptance or old-state recovery is claimed. Original A/B failures remain immutable."
+  },
+  "if028": {
+    "status": "AFFECTED_PREDICATES_COVERED_SERIAL_QUALITY_MEMORY_HOLD",
+    "candidateRetirementCapBytes": 2097152,
+    "genericAuthorityCapBytes": 1048576,
+    "releaseMetadataCapBytes": 2097152,
+    "publishPendingCapBytes": 8388608,
+    "genuineCompleteJournalMeasurement": {
+      "serializedUtf8BytesIncludingNewline": 1306870,
+      "capBytes": 2097152,
+      "headroomBytes": 790282,
+      "entries": 5607,
+      "regularFiles": 5603,
+      "sha256": "3deea1cd031c122efeeb0edfb60bcd661206deaaf95b698d984a7a1f91d0c3fc",
+      "source": "actual production publisher over two complete 5600-file generations, retaining all schema2 identities, paths, lineage and hashes; no padding in positive journal",
+      "repeatedActualSha256": "a85350b4dd33edc71689e483ae14f8df6b172d1d12e53c830059d9502d9abd0c"
+    },
+    "fullNewCiRequired": true,
+    "localDockerExecuted": false,
+    "finalRolesInvoked": false,
+    "initialFocused": {
+      "tapPassed": 2,
+      "tapFailed": 0,
+      "nameFilterSkipped": 26,
+      "tapDurationMs": 957716.810458,
+      "outerTimeWrapperExit": 1,
+      "outerTimeWrapperError": "post-TAP sysctl kern.clockrate: Operation not permitted",
+      "actualNodeExitIndependentlyRecorded": false,
+      "maximumRssBytes": null,
+      "minimumObservedHostFreeBytes": 5066559488,
+      "logSha256": "bc4a12905351553b431c2cdb1aff7fd1eee572ccb98ee125693aa08ff4406acc",
+      "interpretation": "TAP predicates passed; outer measurement wrapper failed. No unqualified command-exit or RSS claim."
+    },
+    "affectedValidation": {
+      "status": "DIRECT_NODE_EXIT1_SANDBOX_UNIX_SOCKET_REFUSAL",
+      "startedAt": "2026-10-14T14:18:31.030596+00:00",
+      "testConcurrency": 1,
+      "maxOldSpaceMiB": 128,
+      "suiteFiles": [
+        "completion-retention-safety",
+        "descriptor-static-release-safety",
+        "created-tree-static-release-safety",
+        "static-release-staging"
+      ],
+      "fixtureForecastBytes": 419430400,
+      "proofBudgetBytes": 33554432,
+      "diskReserveBytes": 2147483648,
+      "endedAt": "2026-10-14T14:39:46.493554+00:00",
+      "exit": 1,
+      "tests": 136,
+      "passed": 135,
+      "failed": 1,
+      "skipped": 0,
+      "logSha256": "240bdd6d67b9a334abef482b05352499b0d18554651df3ec17b15cfddcc5e4d6",
+      "minimumObservedHostFreeBytes": 4788006912,
+      "firstObservedHostFreeBytes": 5278478336,
+      "observedWholeFilesystemDeclineBytes": 490471424,
+      "sampleCount": 636,
+      "maximumWallSampleGapSeconds": 2.021237,
+      "ownedAllocationPeakBytes": null,
+      "resourceInterpretation": "All observed free space exceeds2GiB reserve. Whole-filesystem decline exceeds the432MiB fixture/proof forecast; foreign contribution and owned peak are unknown, so no forecast-accuracy pass is claimed.",
+      "unixSocketCorrection": {
+        "exit": 0,
+        "passed": 1,
+        "failed": 0,
+        "nameFilterSkipped": 81,
+        "logSha256": "140e5047a9e7a131c2041f1575909bedc478494b0ae52b9d2524f0680235cc00",
+        "interpretation": "Exact unchanged failed authority-reader case rerun with Root-approved socket sandbox permission; original136-case exit1 retained."
+      }
+    },
+    "currentChecks": {
+      "serialTypecheck": {
+        "status": "FAILED_EXPLICIT_256MIB_HEAP_LIMIT",
+        "exit": -6,
+        "logSha256": "fa5212afdc77369695071132c762af1d75766f9aa9b991c404c29bf6797e04f7",
+        "typescriptDiagnostic": false
+      },
+      "lint": "NOT_RUN_MEMORY_ADMISSION_HOLD",
+      "format": {
+        "exit": 0,
+        "logSha256": "17aa973d3f004560237d9a95171210b0671deff23d61628eecf7322ff5938f20"
+      },
+      "repo": {
+        "exit": 0,
+        "logSha256": "30684ab426dfca0e6bb423671ddd65ef4e1317c5a60483c23074a87a9f83d8db"
+      },
+      "featureMemory": {
+        "exit": 0,
+        "logSha256": "12851de6a12fbbcb62491d00c22028916b77d25a0677b3a1faf257c124a51dff"
+      },
+      "largerHeapRetryAdmission": {
+        "status": "HOLD",
+        "requiredMemoryBytes": 738197504,
+        "nativeFreeBytes": 109838336,
+        "cliFreeAndSpeculativeBytes": 108609536,
+        "hostFreeBytes": 5187481600,
+        "pressureLevel": 1,
+        "swapUsedBytes": 423362560,
+        "admissionSha256": "bb2f9659c22d1c4558510512b57d59d936c0ebaa710e9d84be19a0edfb563f13",
+        "typecheck512Executed": false,
+        "lintExecuted": false,
+        "interpretation": "One fresh Root-authorized admission refused the 704 MiB serial workload. No repeated memory sampling or heap retry followed."
+      }
+    },
+    "independentReview": {
+      "status": "SCOPED_CODE_AND_ACTUAL_LOG_REVIEW_CLOSED",
+      "stageSha256": "586ceed126b98cd0a49e3a7ae1a2f20be3acf9599823b6a1ee313f1e5d4d3f26",
+      "testSha256": "d72c206cd6c7c17f872101bac2c445400c4069ff6988e30b28c9e29a3dbbea33",
+      "scope": "Typed retirement cap, six reads, exact serialized writer admission and recovery/security regressions; quality HOLD and original failed commands remain distinct."
+    }
+  },
+  "if029": {
+    "status": "EXACT_B_REPLAY_PASS_CHILD_CASES_CI_ONLY_PENDING",
+    "overallAcceptance": false,
+    "observerSha256": "8ed008a60dbe1019cb50d87544947370d4e7091be8cee47612233b7f44f9bb55",
+    "testSha256": "d12f3c34fb282ef13b84afb5def305458fb1bae446f0968a4bf18a4a60f415ba",
+    "seriesCapBytes": 6291456,
+    "commandLogCapBytes": 8388608,
+    "totalAllocatedProofCapBytes": 16777216,
+    "targetSampleSeconds": 1,
+    "maximumWallGapSeconds": 5,
+    "scope": "Lossless versioned streaming representation and legacy reader; resource/ownership/stop/drain/group/daemon/down gates unchanged. Acceptance HOLD, coverage and writer appendability remain separate; a healthy sink continues representable stop/drain/finally observations after resource or clock failure.",
+    "independentStaticReview": {
+      "status": "CORRECTED_APPENDABILITY_P2_CLOSED_NO_ADDITIONAL_STATIC_FINDING",
+      "proofSha256": "d04f87087b3720010afa5933c003b482be38e5ddb510b9132031f97831c88704"
+    },
+    "childLifecycleValidation": {
+      "tests": 32,
+      "retainedPriorCases": 24,
+      "newCases": 8,
+      "localStatus": "NOT_RUN_MEMORY_HOLD",
+      "requiredExecution": "Next complete actual current-head CI, bound to source and measured checkout; complete Python module execution must exit0.",
+      "memoryForecastBytes": 268435456,
+      "correctedAdmissionAt": "2026-10-14T15:01:53.958098+00:00",
+      "nativeFreeBytes": 226000896,
+      "cliFreePlusSpeculativeBytes": 226639872,
+      "pressureLevel": 1,
+      "stableSwapUsedBytes": 423362560,
+      "admissionSha256": "296f6b6adac6c8cb51307d1a2a6387a1c16de569159015ffed663da458509fd3",
+      "nodeConsumerSha256": "a3db350409c7865546baca45e1382bea47bc3422b4202b0ca2572359b0d79499"
+    },
+    "distinctReplayAdmission": {
+      "admissionSha256": "a121f713a00c991edb06f163182d14bd99cb318fb8925d18c526335f3d88aaf0",
+      "at": "2026-10-14T15:04:46.756534+00:00",
+      "admitted": true,
+      "ramForecastBytes": 134217728,
+      "nativeFreeBytes": 231538688,
+      "cliFreePlusSpeculativeBytes": 233127936,
+      "pressureLevel": 1,
+      "stableSwapUsedBytes": 423362560,
+      "hostFreeBytes": 5175685120,
+      "proofBudgetBytes": 33554432,
+      "diskReserveBytes": 2147483648,
+      "interpretation": "Separate no-child streaming workload; not a reduced-threshold retry of the32-case child workload."
+    },
+    "actualBReplay": {
+      "status": "EXACT_B_REPLAY_PASS",
+      "overallAcceptance": false,
+      "startedAt": "2026-10-14T15:05:01.746195+00:00",
+      "noChildren": true,
+      "originalCount": 9314,
+      "encodedCount": 9314,
+      "decodedCount": 9314,
+      "originalBytes": 5258092,
+      "originalSha256": "b206f4c68f64f16e36c477e005afd789f19cdefb5a5965720b42292ffe4d2560",
+      "maximumOriginalFrameBytes": 565,
+      "encodedSha256": "6177148bad3ddf37e458cda46e9206d890323ae68b8a78a8bd25fe953b172f5b",
+      "originalSemanticSha256": "b206f4c68f64f16e36c477e005afd789f19cdefb5a5965720b42292ffe4d2560",
+      "decodedSemanticSha256": "b206f4c68f64f16e36c477e005afd789f19cdefb5a5965720b42292ffe4d2560",
+      "sampleSeries": {
+        "version": 1,
+        "samples": 9314,
+        "headers": 1,
+        "topologyFrames": 0,
+        "fullFrames": 0,
+        "ordinaryFrames": 9314,
+        "maximumHeaderBytes": 154,
+        "maximumOrdinaryBytes": 153,
+        "maximumFullFrameBytes": 0,
+        "maximumTopologyFrameBytes": 0,
+        "incomplete": false,
+        "appendable": true,
+        "bytes": 1420878,
+        "capBytes": 6291456,
+        "remainingBytes": 4870578,
+        "remainingConservativeOrdinarySlots": 19025,
+        "stableHeaderConservativeSlots": 24560,
+        "capacityLimitation": "Byte-derived representation capacity, not a runtime or extra-observation guarantee."
+      },
+      "observerSha256": "8ed008a60dbe1019cb50d87544947370d4e7091be8cee47612233b7f44f9bb55",
+      "completedAt": "2026-10-14T15:05:02.548879+00:00",
+      "minimumObservedHostFreeBytes": 5173067776,
+      "diskSamples": 2,
+      "maximumMonotonicDiskSampleGapSeconds": 0.8024660419905558,
+      "diskSamplingLimitation": "Before/after and at most1second during record loops; observed filesystem free space, no owned allocation attribution.",
+      "observedAllocatedBeforeReceiptBytes": 1421312,
+      "additionalReceiptAndAuxReserveBytes": 32768,
+      "chargedAllocatedProofBytes": 1454080,
+      "receiptSha256": "df33889f8f02cb94f5bd7def6f17235c7dadadafb371d1554183b1aa18e0521f",
+      "sourceAfterProofSha256": "50396697833aaaa50d7a489aae66e1a74e73997d64b9d2c48afc1bb98db80764",
+      "sourceAfterSha256": "b206f4c68f64f16e36c477e005afd789f19cdefb5a5965720b42292ffe4d2560",
+      "sourceAfterCount": 9314,
+      "sourceAfterBytes": 5258092,
+      "totalEncodedFramesIncludingHeader": 9315,
+      "controllerSha256": "3e06a8355fb26a6e39ae6fdf1af3351e1cf380094750c35f1e5de0195b924939",
+      "directExit": 0,
+      "maximumRssBytes": null,
+      "interpretation": "All9314 original/encoded/decoded observations compare exact field types/values/order. Before/after disk observations are not owned allocation or RAM peak evidence. Replay does not execute32 cases or prove full CI acceptance."
+    },
+    "conditionalCapacity": {
+      "actualRemainingBytes": 4870578,
+      "conservativeOrdinaryFrameBytes": 256,
+      "remainingConservativeOrdinarySlots": 19025,
+      "stableHeaderConservativeSlots": 24560,
+      "historicalActiveImagePipelineSeconds": 4315,
+      "limitation": "Expected headroom is conditional on actual future topology, query/wait observations and retention duration; no runtime, extra-call or six-hour completion guarantee. Every frame debits actual bytes; cap/sink/schema errors remain explicit incomplete HOLD."
+    },
+    "documentation": [
+      "https://docs.python.org/3/library/json.html"
+    ],
+    "fullNewCiRequired": true,
+    "localDockerExecuted": false,
+    "finalRolesInvoked": false
   }
 }
