@@ -1,9 +1,12 @@
-# Image pipeline (ТЗ-P3 stage 1)
+# Image pipeline (ТЗ-P3 stages 1–2)
 
 The pipeline creates and verifies derived images before build. Today's canonical
-assets, content pins and UI remain unchanged. Production has no verified PNG
-masters yet: the committed empty registry reports `no-masters`, rather than
-claiming production raster quality or later-stage resolution/traffic targets.
+JPG assets and their content pins remain unchanged. Stage 2 registers 275
+individually reviewed class-c PNG masters for the 276 ticket-image usages.
+198 masters are actual RealESRNet outputs; 77 visually rejected candidates use
+separately inspected bicubic originals. Exact inference, original/master hashes,
+individual observations and rejected AI pixels are retained in the ticket journal
+and `content/validation/ticket-upscale/`.
 
 ## Commands
 
@@ -24,8 +27,9 @@ after current bytes, identities and real quality gates pass. It cannot adopt a
 tampered derivative or rewrite source approvals.
 
 For isolated tests, both CLIs support `--root /absolute/fixture-root`; adding
-`--raster-only` skips production SVG audit only for such a separate fixture root.
-Unknown flags fail. Normal production commands always include the SVG audit.
+`--raster-only` skips the production ticket and SVG audits only for such a separate
+fixture root. Unknown flags fail. Normal production commands require all 275
+reviewed ticket masters, their original joins, and the SVG audit.
 
 ## Source registry and derived files
 
@@ -66,7 +70,14 @@ relative delivery paths `content/img/...`, full hashes, byte sizes, dimensions,
 quality/attempt, source/generation identity and measured QA. Asset sync copies
 only persistent raster derivatives to `public/content/img/`, preserving hashed
 URLs. Masters, native caches and SVG audit output do not enter public/dist.
-Stage 1 adds no immutable image-cache or service-worker delivery policy.
+Stage 2 publishes a compact `content/image-delivery.manifest.json` for responsive
+React pictures. The nginx `/content/img/` namespace serves correct codec MIME,
+immutable successful responses and real 404 misses. JPEG ticket variants are
+precached; modern variants are cached on demand. Each ready worker cache contains
+its own integrity-bound exact modern-to-same-source-width-JPEG map, including
+retained releases for old tabs. A fallback response has honest `image/jpeg` MIME.
+Sync copies the complete append-only derivative directory into every package;
+the stager's persistent `/assets/` namespace remains unchanged.
 
 The canonical manifest uses the shared `canonicalJson` serializer with one
 newline, no timestamps or absolute paths. Generation hashes bind current
@@ -81,7 +92,8 @@ build preserves the prior manifest.
 
 All references and derivatives normalize to 8-bit sRGB, flatten alpha on white
 and strip metadata. Widths are 480, 800, 1200, 1600 and 2400, never enlarged; a
-smaller source keeps its natural width. Heights are rounded from the source
+smaller source keeps its natural width. Reachable explicit targets such as 1240
+are added once to the width inventory. Heights are rounded from the source
 aspect ratio. Explicit target widths must be reachable. Each encoder gets its
 own buffer with explicit `fill`, `lanczos3` and `withoutEnlargement` settings.
 
@@ -184,11 +196,15 @@ Aliases, classification/package drift, security findings, broad configuration,
 expiry, malformed/partial responses and network errors fail. This check uses the
 current OSV service; offline image/content validation stays independent of it.
 
-## Future frontend boundary
+## Frontend delivery boundary
 
 `assetSrcSet` is re-exported beside `assetUrl`, using the pure typed
 `assetSrcSetFromManifest` boundary. It returns separate AVIF/WebP/JPEG source
 sets, JPEG `srcSet`, largest JPEG fallback and its positive integer dimensions,
 or `null` for missing/malformed/unsafe/unbalanced records. URLs are root-relative
-local paths. Container `sizes`, `<picture>` activation and delivery/offline policy
-belong to later reviewed UI stages; today's components keep their existing paths.
+local paths. Ticket cards and Materials/manual references render `<picture>` sources with
+measured container `sizes`, intrinsic dimensions and proportional height caps.
+Ticket JPEG variants are precached; modern URLs resolve to the same source and
+width JPEG offline through integrity-checked release-local cache maps. Full
+derivative history is copied into each static package so old hashes survive
+the next publication without changing the stager retention namespace.

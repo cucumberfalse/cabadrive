@@ -1,0 +1,30 @@
+{
+  "imageId": "question-image-b134",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:06:27.502Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "rejected",
+  "observations": [
+    "Enlarged blue direction sign shows source street-name rows flattened into broad white bands and synthetic strokes; opposing arrows, park trees and road geometry remain."
+  ],
+  "rejectionReason": "Blue street-name sign letter rows are erased into broad synthetic white bands in native detail.",
+  "candidateSha256": "98cae1ad2089627477cef3d00e3ed75def55f63d5f6c32c6781eeb723ce8d896",
+  "originalSha256": "e0ba2901606d2da0c243a54040e4eb8a3b9fb54013f8875d5173c2ac5633d0ff",
+  "fallbackObservations": [
+    "Fallback retains small upper-right street-name/number lettering without invented bars, with the same park trees, fence and arrows."
+  ],
+  "fallbackReviewedAt": "2026-10-13T17:43:22.331Z",
+  "fallbackReviewer": "Implementation Agent (Codex)",
+  "fallbackSha256": "70aec17c4ebbc3dcd5e9c12c1a59a3a8bd5e3467e0800f443d072a9e3f78b115",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b134.jpg",
+    "originalSha256": "e0ba2901606d2da0c243a54040e4eb8a3b9fb54013f8875d5173c2ac5633d0ff",
+    "masterPath": "content/assets-masters/questions/b134.png",
+    "masterSha256": "70aec17c4ebbc3dcd5e9c12c1a59a3a8bd5e3467e0800f443d072a9e3f78b115",
+    "candidateSha256": "98cae1ad2089627477cef3d00e3ed75def55f63d5f6c32c6781eeb723ce8d896",
+    "inferenceSha256": "9ab0b1d6cbf5330ec5d94130333dcbbd81efd230da4f164f7da41040fce14f2c",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

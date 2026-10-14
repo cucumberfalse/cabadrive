@@ -120,7 +120,7 @@ test("fallback and image-backed tickets preserve canonical content", async ({ pa
   await expect(fallback).toContainText("¿Con qué se lubrica un motor?");
   await expect(fallback).toContainText("Правильный ответ");
   await expect(fallback.locator("img")).toHaveAttribute("loading", "lazy");
-  await expect(fallback.locator("img")).toHaveAttribute("src", /^\/content\/assets\/questions\//u);
+  await expect(fallback.locator("img")).toHaveAttribute("src", /^\/content\/img\/c\//u);
 });
 
 test("manual required-documents tickets surface topic-guide conflict notes", async ({ page }) => {

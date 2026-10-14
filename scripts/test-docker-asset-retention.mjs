@@ -1,7 +1,22 @@
 #!/usr/bin/env node
 /** Executable Docker A->B retention regression, intentionally self-cleaning. */
 import { createHash } from "node:crypto";
-import { execFileSync, spawnSync } from "node:child_process";
+import {
+  execFileSync as nativeExecFileSync,
+  spawnSync as nativeSpawnSync,
+} from "node:child_process";
+import { createInterruptionGate } from "./docker-test-interruption.mjs";
+const interruption = createInterruptionGate();
+const spawnSync = (...args) => interruption.forward(() => nativeSpawnSync(...args));
+const execFileSync = (...args) => interruption.forward(() => nativeExecFileSync(...args));
+const checkedLog = (...args) => {
+  interruption.check();
+  console.log(...args);
+};
+const checkedWrite = (...args) => {
+  interruption.check();
+  return process.stdout.write(...args);
+};
 import {
   chmodSync,
   existsSync,
@@ -75,13 +90,13 @@ async function waitFor(url) {
   let lastError;
   for (let attempt = 0; attempt < 20; attempt += 1) {
     try {
-      const response = await fetch(url);
+      const response = await interruption.wait(() => fetch(url));
       if (response.ok) return response;
       lastError = new Error(`${url} returned ${response.status}`);
     } catch (error) {
       lastError = error;
     }
-    await new Promise((resolveDelay) => setTimeout(resolveDelay, 500));
+    await interruption.wait(() => new Promise((resolveDelay) => setTimeout(resolveDelay, 500)));
   }
   throw lastError || new Error(`timed out waiting for ${url}`);
 }
@@ -267,7 +282,7 @@ function assertImageOnlyIncompleteRecovery(selectedProject) {
   ]);
   if (sibling !== "sibling")
     throw new Error("image-only incomplete recovery changed a sibling volume");
-  process.stdout.write(
+  checkedWrite(
     "First-stage interruption/down/image-only B plus absent-image retries preserve exact independent A source/inventory and sibling PASS\n",
   );
 }
@@ -313,9 +328,11 @@ async function assertIntegratedRuntime(selectedProject, retained = false) {
   ];
   const evidence = [];
   for (const [path, status, cache] of cases) {
-    const response = await fetch(`http://localhost:${port}${path}`, {
-      headers: { "Accept-Encoding": "gzip" },
-    });
+    const response = await interruption.wait(() =>
+      fetch(`http://localhost:${port}${path}`, {
+        headers: { "Accept-Encoding": "gzip" },
+      }),
+    );
     if (response.status !== status || response.headers.get("cache-control") !== cache)
       throw new Error(
         `runtime status/cache mismatch on ${path}: ${response.status}/${response.headers.get("cache-control")}`,
@@ -324,7 +341,7 @@ async function assertIntegratedRuntime(selectedProject, retained = false) {
       if (response.headers.get(name) !== expected)
         throw new Error(`runtime security header ${name} missing/changed on ${path}`);
     }
-    await response.arrayBuffer();
+    await interruption.wait(() => response.arrayBuffer());
     if (path === currentAsset && response.headers.get("content-encoding") !== "gzip")
       throw new Error("current JavaScript asset was not gzip encoded");
     evidence.push({
@@ -355,27 +372,38 @@ async function assertIntegratedRuntime(selectedProject, retained = false) {
     !masterCommand.includes("nginx")
   )
     throw new Error("runtime nginx master or exec identity is not unprivileged");
-  process.stdout.write(
+  checkedWrite(
     `Integrated runtime headers passed: ${JSON.stringify({ project: selectedProject, masterUid, runtimeUid, responses: evidence })}\n`,
   );
 }
 
 async function assertCandidateWorkerControls() {
-  const browser = await chromium.launch({ headless: true });
+  const browser = await interruption.wait(() => chromium.launch({ headless: true }));
   try {
-    const page = await browser.newPage();
-    await page.goto(`http://localhost:${port}/`, { waitUntil: "networkidle" });
-    await page.waitForFunction(() =>
-      navigator.serviceWorker.ready.then(() => Boolean(navigator.serviceWorker.controller)),
+    const page = await interruption.wait(() => browser.newPage());
+    await interruption.wait(() =>
+      page.goto(`http://localhost:${port}/`, { waitUntil: "networkidle" }),
     );
-    await page.reload({ waitUntil: "networkidle" });
-    const controlled = await page.evaluate(
-      () => navigator.serviceWorker.controller?.scriptURL.endsWith("/sw.js") === true,
+    await interruption.wait(() =>
+      page.waitForFunction(() =>
+        navigator.serviceWorker.ready.then(() => Boolean(navigator.serviceWorker.controller)),
+      ),
+    );
+    await interruption.wait(() => page.reload({ waitUntil: "networkidle" }));
+    const controlled = await interruption.wait(() =>
+      page.evaluate(
+        () => navigator.serviceWorker.controller?.scriptURL.endsWith("/sw.js") === true,
+      ),
     );
     if (!controlled)
       throw new Error("candidate B service worker did not activate and control the browser");
   } finally {
-    await browser.close();
+    interruption.beginCleanup();
+    try {
+      await interruption.wait(() => browser.close());
+    } finally {
+      interruption.endCleanup();
+    }
   }
 }
 
@@ -570,10 +598,15 @@ function assertCrossContainerPublishRetry(selectedProject) {
         throw new Error(`fresh publish retry did not activate exact state: ${faultAt}`);
       }
     } finally {
-      spawnSync("docker", ["volume", "rm", "-f", stateVolume], { stdio: "ignore" });
-      spawnSync("docker", ["volume", "rm", "-f", publishVolume], { stdio: "ignore" });
-      rmSync(destination, { recursive: true, force: true });
-      rmSync(probe, { force: true });
+      interruption.beginCleanup();
+      try {
+        spawnSync("docker", ["volume", "rm", "-f", stateVolume], { stdio: "ignore" });
+        spawnSync("docker", ["volume", "rm", "-f", publishVolume], { stdio: "ignore" });
+        rmSync(destination, { recursive: true, force: true });
+        rmSync(probe, { force: true });
+      } finally {
+        interruption.endCleanup();
+      }
     }
   }
 }
@@ -633,7 +666,12 @@ function assertSequentialPublishGenerations(selectedProject) {
         ...(faultAt ? ["--fault", faultAt] : []),
       ]);
     } finally {
-      rmSync(probe, { force: true });
+      interruption.beginCleanup();
+      try {
+        rmSync(probe, { force: true });
+      } finally {
+        interruption.endCleanup();
+      }
     }
   };
   const inspectPublishedState = (program) =>
@@ -895,7 +933,7 @@ function assertSequentialPublishGenerations(selectedProject) {
       throw new Error(
         "timestamp drift did not fail closed preserving current/previous/foreign authority",
       );
-    console.log(
+    checkedLog(
       "Docker R2j repeated content/new destination/exact retry/owned predecessor/foreign/timestamp controls passed",
     );
     for (const destination of extraDestinations) rmSync(destination, { recursive: true });
@@ -905,8 +943,13 @@ function assertSequentialPublishGenerations(selectedProject) {
       throw new Error("host-owned exported artifacts were not removable without privilege");
     }
   } finally {
-    spawnSync("docker", ["volume", "rm", "-f", stateVolume], { stdio: "ignore" });
-    spawnSync("docker", ["volume", "rm", "-f", publishVolume], { stdio: "ignore" });
+    interruption.beginCleanup();
+    try {
+      spawnSync("docker", ["volume", "rm", "-f", stateVolume], { stdio: "ignore" });
+      spawnSync("docker", ["volume", "rm", "-f", publishVolume], { stdio: "ignore" });
+    } finally {
+      interruption.endCleanup();
+    }
   }
 }
 
@@ -1138,15 +1181,20 @@ volumes:
           throw new Error(
             "unsupported checkout changed historical container identity/state/A bytes",
           );
-        process.stdout.write(
+        checkedWrite(
           `Literal Docker checkout ${JSON.stringify(row.name)}: measured Compose schema URL rejection; early wrapper rejection/ZERO Docker calls/no handoff/legacy ID-state-A/sibling bytes+metadata PASS\n`,
         );
         continue;
       } finally {
-        spawnSync("docker", ["rm", "-f", legacyName], { stdio: "ignore" });
-        spawnSync("docker", ["image", "rm", "-f", `${selectedProject}-cabadrive`], {
-          stdio: "ignore",
-        });
+        interruption.beginCleanup();
+        try {
+          spawnSync("docker", ["rm", "-f", legacyName], { stdio: "ignore" });
+          spawnSync("docker", ["image", "rm", "-f", `${selectedProject}-cabadrive`], {
+            stdio: "ignore",
+          });
+        } finally {
+          interruption.endCleanup();
+        }
       }
     }
 
@@ -1179,16 +1227,16 @@ volumes:
       inFixture("make", ["build"]);
       assertPrivateLiteralHandoff(checkout, selectedProject);
       inFixture("make", ["up"]);
-      await waitFor(`http://localhost:${port}/`);
+      await interruption.wait(() => waitFor(`http://localhost:${port}/`));
       assertExactLegacyAsset();
       assertExactCandidateShellAndWorker(project);
       inFixture("docker", ["compose", "restart", "cabadrive"]);
-      await waitFor(`http://localhost:${port}/`);
+      await interruption.wait(() => waitFor(`http://localhost:${port}/`));
       assertExactLegacyAsset();
       assertExactCandidateShellAndWorker(project);
       inFixture("make", ["down"]);
       inFixture("make", ["up"]);
-      await waitFor(`http://localhost:${port}/`);
+      await interruption.wait(() => waitFor(`http://localhost:${port}/`));
       assertExactLegacyAsset();
       assertExactCandidateShellAndWorker(project);
       const exportParent = join(fixtureParent, 'export, "parent\n');
@@ -1210,29 +1258,35 @@ volumes:
         throw new Error("trailing LF was truncated to the plain sibling");
       if (existsSync(join(checkout, ".cabadrive-release-handoff", "cabadrive")))
         throw new Error("literal checkout silently selected default");
-      process.stdout.write(
+      checkedWrite(
         `Literal Docker checkout ${JSON.stringify(row.name)} ${row.stopped ? "stopped" : "running"}: adoption/A/B-SW/restart/down-up/export/siblings PASS\n`,
       );
     } finally {
-      spawnSync("docker", ["compose", "-p", selectedProject, "down"], {
-        cwd: checkout,
-        env: fixtureEnv,
-        stdio: "ignore",
-      });
-      spawnSync("docker", ["rm", "-f", legacyName], { stdio: "ignore" });
-      spawnSync("docker", ["image", "rm", "-f", `${selectedProject}-cabadrive`], {
-        stdio: "ignore",
-      });
-      for (const volume of ["release-state", "static-publish"])
-        spawnSync("docker", ["volume", "rm", "-f", `${selectedProject}_${volume}`], {
+      interruption.beginCleanup();
+      try {
+        spawnSync("docker", ["compose", "-p", selectedProject, "down"], {
+          cwd: checkout,
+          env: fixtureEnv,
           stdio: "ignore",
         });
-      cleanupLiteralHandoff(checkout);
+        spawnSync("docker", ["rm", "-f", legacyName], { stdio: "ignore" });
+        spawnSync("docker", ["image", "rm", "-f", `${selectedProject}-cabadrive`], {
+          stdio: "ignore",
+        });
+        for (const volume of ["release-state", "static-publish"])
+          spawnSync("docker", ["volume", "rm", "-f", `${selectedProject}_${volume}`], {
+            stdio: "ignore",
+          });
+        cleanupLiteralHandoff(checkout);
+      } finally {
+        interruption.endCleanup();
+      }
     }
   }
 }
 
 try {
+  interruption.check();
   // Running-container first migration: capture A before B image replacement.
   buildLegacyImage(project);
   startLegacyContainer(project);
@@ -1257,23 +1311,23 @@ try {
     "--test",
     "/probe/created-tree.test.mjs",
   ]);
-  process.stdout.write(
+  checkedWrite(
     "Rebuilt Linux stager created-entry ownership/cleanup/native/recovery matrix passed\n",
   );
   assertCrossContainerKernelLock(lockProject);
   assertCrossContainerPublishRetry(retryProject);
   assertSequentialPublishGenerations(`${retryProject}-sequential`);
   make(["up"], project);
-  await waitFor(`http://localhost:${port}/`);
+  await interruption.wait(() => waitFor(`http://localhost:${port}/`));
   assertExactLegacyAsset();
   assertExactCandidateShellAndWorker(project);
-  await assertIntegratedRuntime(project, true);
-  await assertCandidateWorkerControls();
+  await interruption.wait(() => assertIntegratedRuntime(project, true));
+  await interruption.wait(() => assertCandidateWorkerControls());
   compose(["restart", "cabadrive"], project);
-  await waitFor(`http://localhost:${port}/`);
+  await interruption.wait(() => waitFor(`http://localhost:${port}/`));
   assertExactLegacyAsset();
   assertExactCandidateShellAndWorker(project);
-  await assertCandidateWorkerControls();
+  await interruption.wait(() => assertCandidateWorkerControls());
 
   // A sibling test-owned volume is never read or changed by this project.
   run("docker", ["volume", "create", `${siblingProject}_release-state`]);
@@ -1289,10 +1343,10 @@ try {
   ]);
   make(["down"], project);
   make(["up"], project);
-  await waitFor(`http://localhost:${port}/`);
+  await interruption.wait(() => waitFor(`http://localhost:${port}/`));
   assertExactLegacyAsset();
   assertExactCandidateShellAndWorker(project);
-  await assertCandidateWorkerControls();
+  await interruption.wait(() => assertCandidateWorkerControls());
   const sibling = run("docker", [
     "run",
     "--rm",
@@ -1305,13 +1359,13 @@ try {
   if (sibling !== "sibling") throw new Error("sibling Compose volume was changed");
   make(["down"], project);
 
-  await assertLiteralCheckoutPaths();
+  await interruption.wait(() => assertLiteralCheckoutPaths());
 
   // Stopped-image first migration: no legacy container, only exact old image.
   buildLegacyImage(stoppedProject);
   make(["build"], stoppedProject);
   make(["up"], stoppedProject);
-  await waitFor(`http://localhost:${port}/`);
+  await interruption.wait(() => waitFor(`http://localhost:${port}/`));
   const stoppedBody = run("curl", [
     "--fail",
     "--silent",
@@ -1319,18 +1373,18 @@ try {
   ]);
   if (stoppedBody !== legacyBytes) throw new Error("stopped legacy image was not retained");
   assertExactCandidateShellAndWorker(stoppedProject);
-  await assertIntegratedRuntime(stoppedProject, true);
-  await assertCandidateWorkerControls();
+  await interruption.wait(() => assertIntegratedRuntime(stoppedProject, true));
+  await interruption.wait(() => assertCandidateWorkerControls());
   make(["down"], stoppedProject);
 
   // A clean initial install has neither a legacy source nor a retained-state
   // tuple. It must still stage and serve the exact candidate release.
   make(["build"], initialProject);
   make(["up"], initialProject);
-  await waitFor(`http://localhost:${port}/`);
+  await interruption.wait(() => waitFor(`http://localhost:${port}/`));
   assertExactCandidateShellAndWorker(initialProject);
-  await assertIntegratedRuntime(initialProject);
-  await assertCandidateWorkerControls();
+  await interruption.wait(() => assertIntegratedRuntime(initialProject));
+  await interruption.wait(() => assertCandidateWorkerControls());
   const absentLegacy = spawnSync(
     "curl",
     ["--fail", "--silent", `http://localhost:${port}${legacyAssetPath}`],
@@ -1338,21 +1392,27 @@ try {
   );
   if (absentLegacy.status === 0)
     throw new Error("initial install unexpectedly inherited a legacy asset");
-
-  process.stdout.write(`Docker asset-retention lifecycle passed for ${project}\n`);
 } finally {
-  cleanupProject(project);
-  cleanupProject(stoppedProject);
-  cleanupProject(initialProject);
-  cleanupProject(retryProject);
-  spawnSync("docker", ["rm", "-f", `${lockProject}-holder`], { stdio: "ignore" });
-  spawnSync("docker", ["volume", "rm", "-f", `${lockProject}_release-state`], {
-    stdio: "ignore",
-  });
-  spawnSync("docker", ["volume", "rm", "-f", `${siblingProject}_release-state`], {
-    stdio: "ignore",
-  });
-  cleanupHandoffProject(siblingProject);
-  cleanupHandoffProject(lockProject);
-  rmSync(temporary, { recursive: true, force: true });
+  interruption.beginCleanup();
+  try {
+    cleanupProject(project);
+    cleanupProject(stoppedProject);
+    cleanupProject(initialProject);
+    cleanupProject(retryProject);
+    spawnSync("docker", ["rm", "-f", `${lockProject}-holder`], { stdio: "ignore" });
+    spawnSync("docker", ["volume", "rm", "-f", `${lockProject}_release-state`], {
+      stdio: "ignore",
+    });
+    spawnSync("docker", ["volume", "rm", "-f", `${siblingProject}_release-state`], {
+      stdio: "ignore",
+    });
+    cleanupHandoffProject(siblingProject);
+    cleanupHandoffProject(lockProject);
+    rmSync(temporary, { recursive: true, force: true });
+  } finally {
+    interruption.endCleanup();
+  }
 }
+
+interruption.check();
+checkedWrite(`Docker asset-retention lifecycle passed for ${project}\n`);

@@ -1,0 +1,23 @@
+{
+  "imageId": "question-image-b86",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:41:44.560Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "ARRECIFES 33, C. DE ARECO 45 and CHACABUCO 50 remain readable with left/up/right arrows on the same three lines."
+  ],
+  "candidateSha256": "71b7cf363c0c661a71a44bc9a5f2824159e9a0be92a87e92ed1271baeabb5b57",
+  "originalSha256": "5c91282ce06b3d4acb3f1c6217d414164c7bdf7c41b6b31fbd8a0900e6ae064f",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b86.jpg",
+    "originalSha256": "5c91282ce06b3d4acb3f1c6217d414164c7bdf7c41b6b31fbd8a0900e6ae064f",
+    "masterPath": "content/assets-masters/questions/b86.png",
+    "masterSha256": "71b7cf363c0c661a71a44bc9a5f2824159e9a0be92a87e92ed1271baeabb5b57",
+    "candidateSha256": "71b7cf363c0c661a71a44bc9a5f2824159e9a0be92a87e92ed1271baeabb5b57",
+    "inferenceSha256": "6c36a9358eb1e1fa7843d21a6e10ff98cc8d885f6b0a8e59b157b19147fbcb9b",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

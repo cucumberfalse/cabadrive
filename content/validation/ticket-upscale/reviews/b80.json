@@ -1,0 +1,23 @@
+{
+  "imageId": "question-image-b80",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:39:28.632Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": false,
+  "status": "accepted",
+  "observations": [
+    "The orange-red curb remains orange-red, including the dark lower edge and diagonal sidewalk crack; the parking-rule colour remains unchanged."
+  ],
+  "candidateSha256": "e530bd91076bbc892f17cc2aac3a11237e3d7e8eb32e2b6be94975481ad1b77f",
+  "originalSha256": "1f0ede8e0bd6dcca150623042ff9aebabb80f0157fbaeff0044f0ae9dc1784af",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b80.jpg",
+    "originalSha256": "1f0ede8e0bd6dcca150623042ff9aebabb80f0157fbaeff0044f0ae9dc1784af",
+    "masterPath": "content/assets-masters/questions/b80.png",
+    "masterSha256": "e530bd91076bbc892f17cc2aac3a11237e3d7e8eb32e2b6be94975481ad1b77f",
+    "candidateSha256": "e530bd91076bbc892f17cc2aac3a11237e3d7e8eb32e2b6be94975481ad1b77f",
+    "inferenceSha256": "a7c11e88ec7348f823a1b51634cd9dcf6d2c6f68d3486b7de6e5ecdd92b3111f",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "imageId": "question-image-b184",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b184.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b184.png",
+  "originalSha256": "8816cccfb1ab030f45391ebbb3a067d3d776e5abbae36f4ad9a6b82b476e9c23",
+  "candidateSha256": "e2ed6f55d9e88715a8e728755050bfe07e866d6c9dc10dabf8af92eaf55e211a",
+  "reviewer": "image_review",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": false,
+  "status": "accepted",
+  "observations": [
+    "Rainy-night cars, headlight positions, strong reflected-light columns and wet asphalt cues retained; no new road/lamp geometry introduced."
+  ],
+  "rejectionReason": null,
+  "reviewedAt": "2026-10-13T17:07:28.921410+00:00",
+  "inspectionArtifacts": [
+    "/private/tmp/cabadrive-057-review-b140-b220-b180-b181-b182-b183-b184.png"
+  ],
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b184.jpg",
+    "originalSha256": "8816cccfb1ab030f45391ebbb3a067d3d776e5abbae36f4ad9a6b82b476e9c23",
+    "masterPath": "content/assets-masters/questions/b184.png",
+    "masterSha256": "e2ed6f55d9e88715a8e728755050bfe07e866d6c9dc10dabf8af92eaf55e211a",
+    "candidateSha256": "e2ed6f55d9e88715a8e728755050bfe07e866d6c9dc10dabf8af92eaf55e211a",
+    "inferenceSha256": "b63e89e884bacec0fb2c6848e3cc4478b0cda3f9e0007c36f7ce36d4207c1eff",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

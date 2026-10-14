@@ -1,0 +1,25 @@
+{
+  "imageId": "question-image-b227",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b227.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b227.png",
+  "originalSha256": "6b5e1590201663aeb8a46c8a37970f21c114c06c24302d16a6fba80f65be48e7",
+  "candidateSha256": "fe20dbe20046676e867a91f66aff55ea5be58e2d54c28f75dbeddc4dcf5178aa",
+  "reviewer": "Supplemental Review Agent /root/image_review_tail (Codex)",
+  "reviewedAt": "2026-10-13T17:16:49.364970+00:00",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "Two raised bridge leaves remain separated over three wavy water lines; symmetric end piers, opening and yellow warning diamond retain the original relative geometry."
+  ],
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b227.jpg",
+    "originalSha256": "6b5e1590201663aeb8a46c8a37970f21c114c06c24302d16a6fba80f65be48e7",
+    "masterPath": "content/assets-masters/questions/b227.png",
+    "masterSha256": "fe20dbe20046676e867a91f66aff55ea5be58e2d54c28f75dbeddc4dcf5178aa",
+    "candidateSha256": "fe20dbe20046676e867a91f66aff55ea5be58e2d54c28f75dbeddc4dcf5178aa",
+    "inferenceSha256": "2d1c8d83dfbe62027457f95b871240d0351e508c9d41f59c7c43b48726654f13",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

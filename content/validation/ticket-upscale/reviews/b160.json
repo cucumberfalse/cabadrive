@@ -1,0 +1,36 @@
+{
+  "imageId": "question-image-b160",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b160.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b160.png",
+  "originalSha256": "6d41769da81cca20f80f35d6f533cca4c814846ae71cc7c2cb2af55970a863e8",
+  "candidateSha256": "7bdae7ab253e11da1f7b699e9f1002096c6a418dfab15c95847a81c4ac5adc49",
+  "reviewer": "image_review",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "rejected",
+  "observations": [
+    "Enlarged white parked-car plate changes blurred source glyphs into invented sharp black-and-white character strokes; red highlight circle and lane arrow are retained."
+  ],
+  "rejectionReason": "Enlarged white parked-car plate changes blurred source glyphs into invented sharp black-and-white character strokes; red highlight circle and lane arrow are retained.",
+  "reviewedAt": "2026-10-13T17:03:49.010404+00:00",
+  "inspectionArtifacts": [
+    "/private/tmp/cabadrive-057-review-b140-b220-detail-b160-.55-.38-.17-.13.png",
+    "/private/tmp/cabadrive-057-review-b140-b220-b160-b161-b162-b163-b164.png"
+  ],
+  "fallbackObservations": [
+    "Fallback keeps the circled moving car and both original rear plates without adding glyphs, and preserves the broken lane markings."
+  ],
+  "fallbackReviewedAt": "2026-10-13T17:44:15.326Z",
+  "fallbackReviewer": "Implementation Agent (Codex)",
+  "fallbackSha256": "03f9ce21972102eaeeb986c9a329fcbe29a55e1b96464758fc261abde93073a5",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b160.jpg",
+    "originalSha256": "6d41769da81cca20f80f35d6f533cca4c814846ae71cc7c2cb2af55970a863e8",
+    "masterPath": "content/assets-masters/questions/b160.png",
+    "masterSha256": "03f9ce21972102eaeeb986c9a329fcbe29a55e1b96464758fc261abde93073a5",
+    "candidateSha256": "7bdae7ab253e11da1f7b699e9f1002096c6a418dfab15c95847a81c4ac5adc49",
+    "inferenceSha256": "9f8ab6e2cc9e693bbc31d39034780feaba5a717c476070a2935361654c9023c4",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

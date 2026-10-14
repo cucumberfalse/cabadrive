@@ -1,0 +1,30 @@
+{
+  "imageId": "question-image-b31",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:24:51.018Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "rejected",
+  "observations": [
+    "Crossing orange/white stripe sequence and green cyclelane preserved, but native storefront crop shows CAFE RESTO BAR letters rearranged into synthetic square strokes and undersign fineprint into line bars."
+  ],
+  "rejectionReason": "Storefront cafe/bar glyph shapes and fine print become false reconstructed strokes.",
+  "candidateSha256": "e7982767546b4741b8df18cb79186fa06867568ed5ce06b4d6d9dbd1aad2b2fb",
+  "originalSha256": "cb6de33b6808f8372e51502434c12dc1f57252b96161e49163cad58603841604",
+  "fallbackObservations": [
+    "Fallback preserves CAFE RESTO BAR/Cuba Bella lettering and tiny under-line text at source softness, plus zebra, island bollards and green lane."
+  ],
+  "fallbackReviewedAt": "2026-10-13T17:45:13.383Z",
+  "fallbackReviewer": "Implementation Agent (Codex)",
+  "fallbackSha256": "300132f0d2814757ae83822f924c067da6a141d39b2328fbd1d49e669f5e6ffe",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b31.jpg",
+    "originalSha256": "cb6de33b6808f8372e51502434c12dc1f57252b96161e49163cad58603841604",
+    "masterPath": "content/assets-masters/questions/b31.png",
+    "masterSha256": "300132f0d2814757ae83822f924c067da6a141d39b2328fbd1d49e669f5e6ffe",
+    "candidateSha256": "e7982767546b4741b8df18cb79186fa06867568ed5ce06b4d6d9dbd1aad2b2fb",
+    "inferenceSha256": "3ed9670d39cc9915221fa127bde279ccfa1a6c3722c4e4f13cfa2f82bb26ebcb",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

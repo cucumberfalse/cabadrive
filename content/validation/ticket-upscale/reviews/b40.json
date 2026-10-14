@@ -1,0 +1,23 @@
+{
+  "imageId": "question-image-b40",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:28:09.851Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": false,
+  "status": "accepted",
+  "observations": [
+    "Green cyclelane, white zebra bars, two yellow refuge islands and group of pedestrians retain their relative positions and perspective."
+  ],
+  "candidateSha256": "b0d64d3a138de9dd977b2f96e56aac81dedc924b84aa2cf2bd3d42347c26472d",
+  "originalSha256": "47914274431ae015d06f2fe59a1c576662d6a101357b3cd57bf265caae1f7361",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b40.jpg",
+    "originalSha256": "47914274431ae015d06f2fe59a1c576662d6a101357b3cd57bf265caae1f7361",
+    "masterPath": "content/assets-masters/questions/b40.png",
+    "masterSha256": "b0d64d3a138de9dd977b2f96e56aac81dedc924b84aa2cf2bd3d42347c26472d",
+    "candidateSha256": "b0d64d3a138de9dd977b2f96e56aac81dedc924b84aa2cf2bd3d42347c26472d",
+    "inferenceSha256": "191231a5d19cf527b95dc73de30c88f297050b4de2ba2b760d2be9013622df6f",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

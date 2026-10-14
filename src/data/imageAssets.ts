@@ -31,6 +31,15 @@ function path(value: unknown, prefix: string): value is string {
 function positive(value: unknown): value is number {
   return typeof value === "number" && Number.isSafeInteger(value) && value > 0;
 }
+export function originalDimensionsFromManifest(manifest: unknown, sourcePath: string) {
+  if (!object(manifest) || !Array.isArray(manifest.sources)) return undefined;
+  const source: unknown = manifest.sources.find(
+    (item: unknown) => object(item) && item.sourcePath === sourcePath,
+  );
+  return object(source) && positive(source.originalWidth) && positive(source.originalHeight)
+    ? { width: source.originalWidth, height: source.originalHeight }
+    : undefined;
+}
 export function assetSrcSetFromManifest(
   manifest: unknown,
   sourcePath: string,

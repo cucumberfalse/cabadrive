@@ -1,0 +1,36 @@
+{
+  "imageId": "question-image-b172",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b172.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b172.png",
+  "originalSha256": "fe7f71319f8912cdf5ed691731800536679010b1c5a5db72a70bd6e7ddbc23f2",
+  "candidateSha256": "0d50c8547998d571bc572cd5877ba23f1a65288fae7de2d47e363cf643f1a200",
+  "reviewer": "image_review",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "rejected",
+  "observations": [
+    "Critical white-car plate crop replaces source glyphs with sharp malformed 8/3-like strokes; parking E, circled indicator and lane arrow survive."
+  ],
+  "rejectionReason": "Critical white-car plate crop replaces source glyphs with sharp malformed 8/3-like strokes; parking E, circled indicator and lane arrow survive.",
+  "reviewedAt": "2026-10-13T17:05:40.128731+00:00",
+  "inspectionArtifacts": [
+    "/private/tmp/cabadrive-057-review-b140-b220-detail-b172-.55-.49-.12-.09.png",
+    "/private/tmp/cabadrive-057-review-b140-b220-b170-b171-b172-b173-b174.png"
+  ],
+  "fallbackObservations": [
+    "Fallback preserves original plates of both foreground cars and the circled right lamp, with unchanged driver/person and E sign."
+  ],
+  "fallbackReviewedAt": "2026-10-13T17:44:40.899Z",
+  "fallbackReviewer": "Implementation Agent (Codex)",
+  "fallbackSha256": "3d8006c5b93b9b4c501b7675ed8229f4166bdf743fecdb925659a138e3c191d5",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b172.jpg",
+    "originalSha256": "fe7f71319f8912cdf5ed691731800536679010b1c5a5db72a70bd6e7ddbc23f2",
+    "masterPath": "content/assets-masters/questions/b172.png",
+    "masterSha256": "3d8006c5b93b9b4c501b7675ed8229f4166bdf743fecdb925659a138e3c191d5",
+    "candidateSha256": "0d50c8547998d571bc572cd5877ba23f1a65288fae7de2d47e363cf643f1a200",
+    "inferenceSha256": "45e696bbb6c3d09fe25139fbf4cb4d8d109208b8adb887566002e9c7a381102c",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

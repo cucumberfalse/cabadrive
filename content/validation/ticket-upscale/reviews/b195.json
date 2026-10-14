@@ -1,0 +1,36 @@
+{
+  "imageId": "question-image-b195",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b195.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b195.png",
+  "originalSha256": "4bd88b15cbf05b5f4cce2ab3296713dedeb4a781e8707bffbe11ce5b4ce78b50",
+  "candidateSha256": "a0b5fb95653985d24922017630541a7a6c5065374a8b90bdce739ed621a02060",
+  "reviewer": "image_review",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "rejected",
+  "observations": [
+    "Enlarged street-name sign transforms letters into broad solid white bars/block glyphs; right arrow/parking curb preserved but text lost."
+  ],
+  "rejectionReason": "Enlarged street-name sign transforms letters into broad solid white bars/block glyphs; right arrow/parking curb preserved but text lost.",
+  "reviewedAt": "2026-10-13T17:08:53.445960+00:00",
+  "inspectionArtifacts": [
+    "/private/tmp/cabadrive-057-review-b140-b220-detail-b195-.025-.07-.115-.10.png",
+    "/private/tmp/cabadrive-057-review-b140-b220-b194-b195-b196-b197.png"
+  ],
+  "fallbackObservations": [
+    "Fallback retains upper-left street-plaque lettering and taxi plate as original soft glyphs, with unchanged yellow curb/parked-car scene."
+  ],
+  "fallbackReviewedAt": "2026-10-13T17:44:40.908Z",
+  "fallbackReviewer": "Implementation Agent (Codex)",
+  "fallbackSha256": "6d076de2f57b4f917bfba81e345d22a83cb12a4c30dab682e3a72c505d9b2d0c",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b195.jpg",
+    "originalSha256": "4bd88b15cbf05b5f4cce2ab3296713dedeb4a781e8707bffbe11ce5b4ce78b50",
+    "masterPath": "content/assets-masters/questions/b195.png",
+    "masterSha256": "6d076de2f57b4f917bfba81e345d22a83cb12a4c30dab682e3a72c505d9b2d0c",
+    "candidateSha256": "a0b5fb95653985d24922017630541a7a6c5065374a8b90bdce739ed621a02060",
+    "inferenceSha256": "33af1a044c5066ad5ef772d04dfcc9dd3c35e0ec46ded0eddbd219430bbea993",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

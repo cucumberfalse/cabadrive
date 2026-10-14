@@ -1,0 +1,23 @@
+{
+  "imageId": "question-image-b129",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:00:39.227Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": false,
+  "status": "accepted",
+  "observations": [
+    "Red oval retains the same silver hatchback before the zebra crossing; green light, crossing stripes, yellow central lines and black car at right retain relative locations."
+  ],
+  "candidateSha256": "1d04f596231666a01a0e8fab93da3f560c53eb2862a4bdda6e6fb70fc6e6373b",
+  "originalSha256": "ee86d7d3ad14fd8388c0972af27817c0d294525c740eb0e3e6d4b95f8f0ea167",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b129.jpg",
+    "originalSha256": "ee86d7d3ad14fd8388c0972af27817c0d294525c740eb0e3e6d4b95f8f0ea167",
+    "masterPath": "content/assets-masters/questions/b129.png",
+    "masterSha256": "1d04f596231666a01a0e8fab93da3f560c53eb2862a4bdda6e6fb70fc6e6373b",
+    "candidateSha256": "1d04f596231666a01a0e8fab93da3f560c53eb2862a4bdda6e6fb70fc6e6373b",
+    "inferenceSha256": "046124ab73bccbaf2e3dc65c01bab06520dca783464075feb3ae084b942e2f69",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

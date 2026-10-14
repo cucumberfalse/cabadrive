@@ -127,62 +127,28 @@ jobs:
           node-version: "20"
           cache: "pnpm"
 
-      - name: Install test dependencies
-        run: pnpm install --frozen-lockfile
-
-      - name: Install Playwright browser
-        run: pnpm exec playwright install --with-deps chromium
-
-      - name: Build Docker image
-        run: make build
-
-      - name: Start Docker app
-        run: make up
-
-      - name: Smoke test local app
+      - name: Observe complete Docker validation and production retry
+        id: docker-proof
         env:
+          COMPOSE_PROJECT_NAME: cabadrive-ci-${{ github.run_id }}-${{ github.run_attempt }}
           CABADRIVE_HOST_PORT: "5173"
-        run: |
-          set -euo pipefail
-          for attempt in $(seq 1 30); do
-            if curl --fail --silent --show-error "http://localhost:${CABADRIVE_HOST_PORT}/" >/tmp/cabadrive-home.html; then
-              break
-            fi
-            sleep 1
-          done
-          grep -q "Cabadrive" /tmp/cabadrive-home.html
-          curl --fail --silent --show-error "http://localhost:${CABADRIVE_HOST_PORT}/sw.js" >/dev/null
+          CABADRIVE_CI_PROOF: ${{ runner.temp }}/cabadrive-docker-proof
+          CI_SOURCE_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: python3 scripts/ci-docker-resources.py
 
-      - name: Verify retained legacy assets across Docker releases
-        run: node scripts/test-docker-asset-retention.mjs
-      - name: Verify nonempty image pipeline Docker boundary
-        run: pnpm run test:docker-image-pipeline
-      - name: Header contract smoke
+      - name: Verify actual Docker teardown
+        if: always() && steps.docker-proof.outputs.teardown-safe == 'true'
         env:
-          CABADRIVE_HOST_PORT: "5173"
-        run: |
-          set -euo pipefail
-          # hashed Vite bundle discovered from index.html
-          asset=$(curl --fail --silent "http://localhost:${CABADRIVE_HOST_PORT}/" | grep -oE '/assets/[^"]+\.js' | head -1)
-          test -n "$asset"
-          # FR-1: immutable on hashed /assets/
-          curl -sI "http://localhost:${CABADRIVE_HOST_PORT}${asset}" | grep -qi 'cache-control: public, max-age=31536000, immutable'
-          # FR-3 (NS-6): gzip on a JS asset when Accept-Encoding: gzip
-          curl -sI -H 'Accept-Encoding: gzip' "http://localhost:${CABADRIVE_HOST_PORT}${asset}" | grep -qi 'content-encoding: gzip'
-          # FR-2: security headers on the app shell
-          curl -sI "http://localhost:${CABADRIVE_HOST_PORT}/" | grep -qi 'x-content-type-options: nosniff'
-          curl -sI "http://localhost:${CABADRIVE_HOST_PORT}/" | grep -qi 'content-security-policy: default-src'
-          # FR-1 (NS-2): non-hashed /content/assets/ must NOT be immutable, must carry max-age=86400
-          img=$(find content/assets -type f \( -name '*.jpg' -o -name '*.png' -o -name '*.webp' \) -print -quit)
-          test -n "$img"
-          curl -sI "http://localhost:${CABADRIVE_HOST_PORT}/${img}" | grep -qi 'cache-control: public, max-age=86400, stale-while-revalidate=604800'
-          ! curl -sI "http://localhost:${CABADRIVE_HOST_PORT}/${img}" | grep -qi 'immutable'
-          # NS-8: an /assets/* miss (404) must NOT be cached as immutable, else the
-          # failure is pinned in browsers even after the file is restored.
-          missing_headers=$(curl -sI "http://localhost:${CABADRIVE_HOST_PORT}/assets/does-not-exist.js")
-          echo "$missing_headers" | grep -qi '^HTTP/[0-9.]* 404'
-          ! echo "$missing_headers" | grep -qi 'cache-control'
+          COMPOSE_PROJECT_NAME: cabadrive-ci-${{ github.run_id }}-${{ github.run_attempt }}
+          CABADRIVE_CI_PROOF: ${{ runner.temp }}/cabadrive-docker-proof
+        run: python3 scripts/ci-docker-resources.py --verify-down
 
-      - name: Stop Docker app
+      - name: Upload bounded Docker production and resource proof
         if: always()
-        run: make down
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: docker-production-proof-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/cabadrive-docker-proof
+          if-no-files-found: error
+          retention-days: 14
+          compression-level: 6

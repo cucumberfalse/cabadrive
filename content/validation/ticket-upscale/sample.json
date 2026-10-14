@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "frozenAt": "2026-10-13T16:33:59.427Z",
+  "method": "Original pixels viewed before freeze; cyclists/arm geometry, priority text, tiny parking text, QR/document text, ambiguous street text, night/rain, fog, labeled lanes, tall belt photo, 212px icon, colored arrows, labeled overtake and 902px multi-panel overview.",
+  "sources": [
+    {
+      "imageId": "question-image-b13",
+      "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b13.jpg",
+      "originalSha256": "aae6435fd73747197db844c9cfc7f520b94efb5095e33f043b84d5dc15e7f2b7"
+    },
+    {
+      "imageId": "question-image-b103",
+      "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b103.jpg",
+      "originalSha256": "e24f6410c6803c703f58da4bf68c80d31ff1cbfd33ebc702e97490b6b12dbd87"
+    },
+    {
+      "imageId": "question-image-b272",
+      "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b272.jpg",
+      "originalSha256": "95da68334ab84bce521c4becd8bf47dbb8b9b8622b43628ca07c717bf76c97d0"
+    },
+    {
+      "imageId": "question-image-b48",
+      "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b48.jpg",
+      "originalSha256": "87f59b8f584f7720af46d8e9cb682f1600496ef10543f69fed32d954aeaae6d9"
+    },
+    {
+      "imageId": "question-image-b46",
+      "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b46.jpg",
+      "originalSha256": "1274c6a048f3c0a4d4a8a57ffc03cedda476b434dcdf2ea4e323ab76b07ef154"
+    },
+    {
+      "imageId": "question-image-b157",
+      "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b157.jpg",
+      "originalSha256": "95704b51ec619501a06476ca0f8282613c74d33edd9fe4489d10e5e77fb176ee"
+    },
+    {
+      "imageId": "question-image-b185",
+      "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b185.jpg",
+      "originalSha256": "dac0097e0b65006d007ca080fe4ef505e4cf304544ef342f80c77330ac73423b"
+    },
+    {
+      "imageId": "question-image-b192",
+      "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b192.jpg",
+      "originalSha256": "a316182e924ff2fe2792976550093baa4f85f2bd42823776b2b3652a3e384e5d"
+    },
+    {
+      "imageId": "question-image-b7",
+      "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b7.jpg",
+      "originalSha256": "60f06c57dbee5f3356e21053c9eb1df0c00f133aa6b864a5664b1eb33b10065a"
+    },
+    {
+      "imageId": "question-image-b115",
+      "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b115.jpg",
+      "originalSha256": "b85bd7322c731bdccfdd9ecd0ae7604429f941651bfa1ae634606f4b90abcc98"
+    },
+    {
+      "imageId": "question-image-b219",
+      "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b219.jpg",
+      "originalSha256": "95877230077ead4a0b01c12fafa69e8431402abb9ab96d62342a8bfea5f2f278"
+    },
+    {
+      "imageId": "question-image-b225",
+      "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b225.jpg",
+      "originalSha256": "e52a36bf7cbe4a9e80d63931c4d2438181ed3d17387dcd8cb802cc849f42b27b"
+    },
+    {
+      "imageId": "question-image-b247",
+      "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b247.jpg",
+      "originalSha256": "80d9290a6422dade8cdc25b19748c4af2130de8738abbac3f376c7bd288efef3"
+    },
+    {
+      "imageId": "question-image-b112",
+      "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b112.jpg",
+      "originalSha256": "33892c9d157792ef1b5235816e23e7206aae61465fc091e2fcf7c7e58cb992f2"
+    },
+    {
+      "imageId": "question-image-b4",
+      "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b4.jpg",
+      "originalSha256": "400a3c754977396fd0427bc960115f6e681eabbfe9c55671a38c703408de6923"
+    }
+  ]
+}

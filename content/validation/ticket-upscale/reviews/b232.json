@@ -1,0 +1,25 @@
+{
+  "imageId": "question-image-b232",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b232.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b232.png",
+  "originalSha256": "08e49fb4b18a4141eb9fa94761d0ac3d073604c47bbe0babb413ba3168d79dd3",
+  "candidateSha256": "f56b693577bf4d7dc47a697323dc1cd1cd9da38f2356eca88c15abaafadd74c8",
+  "reviewer": "Supplemental Review Agent /root/image_review_tail (Codex)",
+  "reviewedAt": "2026-10-13T17:17:04.476241+00:00",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "Two separate vertical arrows remain left downward and right upward with the same spacing; black tips and stems stay inside the yellow diamond without merging."
+  ],
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b232.jpg",
+    "originalSha256": "08e49fb4b18a4141eb9fa94761d0ac3d073604c47bbe0babb413ba3168d79dd3",
+    "masterPath": "content/assets-masters/questions/b232.png",
+    "masterSha256": "f56b693577bf4d7dc47a697323dc1cd1cd9da38f2356eca88c15abaafadd74c8",
+    "candidateSha256": "f56b693577bf4d7dc47a697323dc1cd1cd9da38f2356eca88c15abaafadd74c8",
+    "inferenceSha256": "622f4d1dfc0dac930936d14da928dd773d05e7b2b4ca55e6cbf3ebb3e9ee8039",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

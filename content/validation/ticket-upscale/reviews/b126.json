@@ -1,0 +1,23 @@
+{
+  "imageId": "question-image-b126",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:00:39.224Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": false,
+  "status": "accepted",
+  "observations": [
+    "Red circle stays on the approaching silver car across the broken white lane line; yellow centerline, zebra crossing and parked motorcycle preserve original geometry."
+  ],
+  "candidateSha256": "ee69e0e6646a198635978a608dc025c02650b889df6528ac44d779bc5d7b2eac",
+  "originalSha256": "c7bf3dcd82970b5c7ee85514ef43e972f065362cb4ee7944b036353c52919afa",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b126.jpg",
+    "originalSha256": "c7bf3dcd82970b5c7ee85514ef43e972f065362cb4ee7944b036353c52919afa",
+    "masterPath": "content/assets-masters/questions/b126.png",
+    "masterSha256": "ee69e0e6646a198635978a608dc025c02650b889df6528ac44d779bc5d7b2eac",
+    "candidateSha256": "ee69e0e6646a198635978a608dc025c02650b889df6528ac44d779bc5d7b2eac",
+    "inferenceSha256": "44a6297d9bb1d780024cbf6f462f08ae81f4eeefa87c51f0b4fe67c4532c3f14",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

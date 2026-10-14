@@ -1,0 +1,30 @@
+{
+  "imageId": "question-image-b133",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:06:27.502Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "rejected",
+  "observations": [
+    "40 speed sign remains intact, but native directional sign detail shows Av. Crisologo Larralde and lower address digits becoming distorted synthetic contours."
+  ],
+  "rejectionReason": "Small street-name and address glyphs change contour in enlarged sign comparison despite retained40 speed digits.",
+  "candidateSha256": "1f6135fc62bb2a4d28afcb431b10b87c7e05900134890e33d23ccd942e31c9ba",
+  "originalSha256": "87adb2ce301a225cbee5d61c4819f037c2e1d3ca0eff1fc1e1dcf6d0c7816873",
+  "fallbackObservations": [
+    "Fallback retains original street-name plaques and small address strokes,40 numerals and the foreground crossing geometry."
+  ],
+  "fallbackReviewedAt": "2026-10-13T17:43:22.329Z",
+  "fallbackReviewer": "Implementation Agent (Codex)",
+  "fallbackSha256": "fe256352add8bb4b8709d0607c17a3317e780b0cac7e539ebe139bb4c9603365",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b133.jpg",
+    "originalSha256": "87adb2ce301a225cbee5d61c4819f037c2e1d3ca0eff1fc1e1dcf6d0c7816873",
+    "masterPath": "content/assets-masters/questions/b133.png",
+    "masterSha256": "fe256352add8bb4b8709d0607c17a3317e780b0cac7e539ebe139bb4c9603365",
+    "candidateSha256": "1f6135fc62bb2a4d28afcb431b10b87c7e05900134890e33d23ccd942e31c9ba",
+    "inferenceSha256": "2f81338a3962b71fb37295f43ab2ff2b03a0457861842970d0a19f1d91f1aa6a",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

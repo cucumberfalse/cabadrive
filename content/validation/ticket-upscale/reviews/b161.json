@@ -1,0 +1,36 @@
+{
+  "imageId": "question-image-b161",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b161.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b161.png",
+  "originalSha256": "7b3ba57a8325b044ed4372e0b7e3c2fafea984b77b720edaa10a4a6ce2d255f3",
+  "candidateSha256": "a98fd3e4544dc96d68830834e13e5397c2d7781610f6935b978746083983c9fd",
+  "reviewer": "image_review",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "rejected",
+  "observations": [
+    "Enlarged Crossfox plate gains unsupported J/C-like black-and-white glyphs from ambiguous source marks; circled car and parking relationship retained."
+  ],
+  "rejectionReason": "Enlarged Crossfox plate gains unsupported J/C-like black-and-white glyphs from ambiguous source marks; circled car and parking relationship retained.",
+  "reviewedAt": "2026-10-13T17:03:49.012766+00:00",
+  "inspectionArtifacts": [
+    "/private/tmp/cabadrive-057-review-b140-b220-detail-b161-.75-.61-.09-.12.png",
+    "/private/tmp/cabadrive-057-review-b140-b220-b160-b161-b162-b163-b164.png"
+  ],
+  "fallbackObservations": [
+    "Fallback preserves original CROSSFOX spare-wheel lettering and both rear plates, plus the red-circle parking situation."
+  ],
+  "fallbackReviewedAt": "2026-10-13T17:44:15.329Z",
+  "fallbackReviewer": "Implementation Agent (Codex)",
+  "fallbackSha256": "b327248598e91ac71e9d69b8b090ed73aff4008e530f5e895644d4ab2b9c22da",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b161.jpg",
+    "originalSha256": "7b3ba57a8325b044ed4372e0b7e3c2fafea984b77b720edaa10a4a6ce2d255f3",
+    "masterPath": "content/assets-masters/questions/b161.png",
+    "masterSha256": "b327248598e91ac71e9d69b8b090ed73aff4008e530f5e895644d4ab2b9c22da",
+    "candidateSha256": "a98fd3e4544dc96d68830834e13e5397c2d7781610f6935b978746083983c9fd",
+    "inferenceSha256": "9f6a87810bb29df6a313fc197fa3c0c3f7eab491b881d0b61443fb7fa7884fb9",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

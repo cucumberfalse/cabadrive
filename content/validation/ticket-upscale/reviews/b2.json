@@ -1,0 +1,23 @@
+{
+  "imageId": "question-image-b2",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:12:43.031Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "A/B/C labels retain the same car, red scooter and folding-bike rider across three panels. Vehicle directions, rider posture and separated panel boundaries stay intact; scooter wheel texture is cleaned."
+  ],
+  "candidateSha256": "c8f446c0af15f76790ea03fc61f3ec03fbe4c52ffa0fde2404233c9355df1938",
+  "originalSha256": "76ebfaa28b93f8e71d1ec7045dd2a1cf098567dfcaa7e33d86f768e426774e10",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b2.jpg",
+    "originalSha256": "76ebfaa28b93f8e71d1ec7045dd2a1cf098567dfcaa7e33d86f768e426774e10",
+    "masterPath": "content/assets-masters/questions/b2.png",
+    "masterSha256": "c8f446c0af15f76790ea03fc61f3ec03fbe4c52ffa0fde2404233c9355df1938",
+    "candidateSha256": "c8f446c0af15f76790ea03fc61f3ec03fbe4c52ffa0fde2404233c9355df1938",
+    "inferenceSha256": "09fa0743d4c0628d93fdade455d8f16e87fe77f3b71045d0302fff035f61aa3e",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

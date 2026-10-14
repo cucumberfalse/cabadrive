@@ -1,0 +1,26 @@
+{
+  "imageId": "question-image-b274",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b274.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b274.png",
+  "originalSha256": "93eb5d19fbb2b28a58c17f89e71c01f5a1627b85198e0966a02a77ceffb55f41",
+  "candidateSha256": "6e4d5a814579f043cfc1aad193c12801d64605b31db1954710c58532cb780b16",
+  "reviewer": "Supplemental Review Agent /root/image_review_tail (Codex)",
+  "reviewedAt": "2026-10-13T17:21:02.615895+00:00",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "Road scene retains yellow centerlines, white right edge, shoulder guardrail, route marker on blue post and distant road direction; cloud/tree texture is smoothed without changing lane geometry.",
+    "Actual enlarged route-marker crop preserves the black numeral5 and its white square with black/pale frame; nearby shoulder, poles and guardrail remain in their source relative positions."
+  ],
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b274.jpg",
+    "originalSha256": "93eb5d19fbb2b28a58c17f89e71c01f5a1627b85198e0966a02a77ceffb55f41",
+    "masterPath": "content/assets-masters/questions/b274.png",
+    "masterSha256": "6e4d5a814579f043cfc1aad193c12801d64605b31db1954710c58532cb780b16",
+    "candidateSha256": "6e4d5a814579f043cfc1aad193c12801d64605b31db1954710c58532cb780b16",
+    "inferenceSha256": "dc6ec0c5fd6d48143242f93253f67408a7a7847950079ea9d4ce7769e62b45e5",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

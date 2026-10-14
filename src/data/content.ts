@@ -1,5 +1,5 @@
-import imageDerivatives from "../../content/image-derivatives.manifest.json";
-import { assetSrcSetFromManifest } from "./imageAssets";
+import imageDerivatives from "../../content/image-delivery.manifest.json";
+import { assetSrcSetFromManifest, originalDimensionsFromManifest } from "./imageAssets";
 import contentMode from "../../content/meta/content-mode.json";
 import examFormat from "../../content/config/caba-exam-format.json";
 import sources from "../../content/sources/sources.json";
@@ -388,4 +388,8 @@ export function assetUrl(localPath: string) {
 
 export function assetSrcSet(sourcePath: string) {
   return assetSrcSetFromManifest(imageDerivatives, sourcePath);
+}
+
+export function ticketOriginalDimensions(sourcePath: string) {
+  return originalDimensionsFromManifest(imageDerivatives, sourcePath);
 }

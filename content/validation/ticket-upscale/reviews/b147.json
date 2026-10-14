@@ -1,0 +1,29 @@
+{
+  "imageId": "question-image-b147",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b147.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b147.png",
+  "originalSha256": "b0cd9f63d0fda2b8c45d02cd2b2da774e4c8b289d1b18a9a334420a803f1bc9d",
+  "candidateSha256": "ed374496bf5a6d9ccad74c900d3badd77631fa42f39c7155d8193a9a16f3a044",
+  "reviewer": "image_review",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "Train warning triangle and locomotive icon preserved; large asphalt crack junctions, curb and straight road geometry remain in matching positions."
+  ],
+  "rejectionReason": null,
+  "reviewedAt": "2026-10-13T17:02:15.468190+00:00",
+  "inspectionArtifacts": [
+    "/private/tmp/cabadrive-057-review-b140-b220-b145-b146-b147-b148-b149.png"
+  ],
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b147.jpg",
+    "originalSha256": "b0cd9f63d0fda2b8c45d02cd2b2da774e4c8b289d1b18a9a334420a803f1bc9d",
+    "masterPath": "content/assets-masters/questions/b147.png",
+    "masterSha256": "ed374496bf5a6d9ccad74c900d3badd77631fa42f39c7155d8193a9a16f3a044",
+    "candidateSha256": "ed374496bf5a6d9ccad74c900d3badd77631fa42f39c7155d8193a9a16f3a044",
+    "inferenceSha256": "bfc7c40eccd006b7aee6c6bda8432ea811b2311a6f17bbfceff68237c0d59a09",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "imageId": "question-image-b128",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:00:39.227Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": false,
+  "status": "accepted",
+  "observations": [
+    "Circled silver hatchback keeps the same orientation across center yellow lines; opposing road arrows, zebra crossing and green traffic lights remain in their original positions."
+  ],
+  "candidateSha256": "9cdb5e2afaa14923de73cf0e02c60003a96873cbf044eb837dfaf74354b3226d",
+  "originalSha256": "88e281cfff9ceb2f47983929303ad7b9dcd3684441b8d94fca7ef2e3f89313f4",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b128.jpg",
+    "originalSha256": "88e281cfff9ceb2f47983929303ad7b9dcd3684441b8d94fca7ef2e3f89313f4",
+    "masterPath": "content/assets-masters/questions/b128.png",
+    "masterSha256": "9cdb5e2afaa14923de73cf0e02c60003a96873cbf044eb837dfaf74354b3226d",
+    "candidateSha256": "9cdb5e2afaa14923de73cf0e02c60003a96873cbf044eb837dfaf74354b3226d",
+    "inferenceSha256": "fc27a39df07c1bf2ed3bd40c3325c347c87a4cdf5da4df88a5059bb327e88b66",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

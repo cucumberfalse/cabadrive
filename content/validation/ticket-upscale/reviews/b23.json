@@ -1,0 +1,23 @@
+{
+  "imageId": "question-image-b23",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:22:22.561Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": false,
+  "status": "accepted",
+  "observations": [
+    "Yellow-roof taxi remains before zebra crossing, green cyclelane and distant pedestrian; zebra endpoints, curb radius and signal placement unchanged."
+  ],
+  "candidateSha256": "20e94a3555bb6707355e83de1f14cf33c73de025bd307dd4fb8611cdd39473e3",
+  "originalSha256": "2215885204866256db03ae5999b17045aaccecd9c96a3f19c5f1a25ea6536957",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b23.jpg",
+    "originalSha256": "2215885204866256db03ae5999b17045aaccecd9c96a3f19c5f1a25ea6536957",
+    "masterPath": "content/assets-masters/questions/b23.png",
+    "masterSha256": "20e94a3555bb6707355e83de1f14cf33c73de025bd307dd4fb8611cdd39473e3",
+    "candidateSha256": "20e94a3555bb6707355e83de1f14cf33c73de025bd307dd4fb8611cdd39473e3",
+    "inferenceSha256": "6eaa148bb9833edb5cd4317d3ba416d6b18aeee6f431a1c552a82c4d4511f19f",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

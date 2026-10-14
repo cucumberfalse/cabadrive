@@ -1,0 +1,29 @@
+{
+  "imageId": "question-image-b154",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b154.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b154.png",
+  "originalSha256": "bbd67c83be558a2363c5295b4b68b9bcf3c78119108be9f254e686d735077166",
+  "candidateSha256": "b559e312c745a3a6fd7bd7272e11651b4985913a7c86ca081b9c094e847d0c15",
+  "reviewer": "image_review",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "No-parking E, diagonal red slash, circular double rim and color fields retain exact topology; only compression edge noise removed."
+  ],
+  "rejectionReason": null,
+  "reviewedAt": "2026-10-13T17:02:15.481444+00:00",
+  "inspectionArtifacts": [
+    "/private/tmp/cabadrive-057-review-b140-b220-b150-b151-b152-b153-b154.png"
+  ],
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b154.jpg",
+    "originalSha256": "bbd67c83be558a2363c5295b4b68b9bcf3c78119108be9f254e686d735077166",
+    "masterPath": "content/assets-masters/questions/b154.png",
+    "masterSha256": "b559e312c745a3a6fd7bd7272e11651b4985913a7c86ca081b9c094e847d0c15",
+    "candidateSha256": "b559e312c745a3a6fd7bd7272e11651b4985913a7c86ca081b9c094e847d0c15",
+    "inferenceSha256": "ca1bdeedb032b011c42a3aeb66d418f9619fa4e3038a6abb6c0c34e85962f09f",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

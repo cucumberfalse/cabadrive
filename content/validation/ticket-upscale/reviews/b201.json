@@ -1,0 +1,36 @@
+{
+  "imageId": "question-image-b201",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b201.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b201.png",
+  "originalSha256": "ce49162906dd00bf39c35783da9a8433d2b72848394f3eed1fea5c8bed4540e6",
+  "candidateSha256": "326e0ebb1a876f0af7370e0331c1bd68f18a92b437f562a3b1c07c0087ff6db3",
+  "reviewer": "image_review",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "rejected",
+  "observations": [
+    "AGUA/ACEITE1 and A/B/C labels retained, but enlarged oil-container fine-print is transformed into malformed sharp pseudoletters; detail fidelity fails."
+  ],
+  "rejectionReason": "AGUA/ACEITE1 and A/B/C labels retained, but enlarged oil-container fine-print is transformed into malformed sharp pseudoletters; detail fidelity fails.",
+  "reviewedAt": "2026-10-13T17:12:56.837328+00:00",
+  "inspectionArtifacts": [
+    "/private/tmp/cabadrive-057-review-b140-b220-b200-b201-b202-b203-b204.png",
+    "/private/tmp/cabadrive-057-review-b140-b220-detail-b201-.675-.535-.19-.23.png"
+  ],
+  "fallbackObservations": [
+    "Fallback keeps AGUA, ACEITE1 and fine oil-container print as original strokes, plus A/B/C labels and pump arrangement."
+  ],
+  "fallbackReviewedAt": "2026-10-13T17:44:40.912Z",
+  "fallbackReviewer": "Implementation Agent (Codex)",
+  "fallbackSha256": "a2f49f3a6d6d01e588d67b8e3041f03744bade2413e1cefee1dbb7918d7fa944",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b201.jpg",
+    "originalSha256": "ce49162906dd00bf39c35783da9a8433d2b72848394f3eed1fea5c8bed4540e6",
+    "masterPath": "content/assets-masters/questions/b201.png",
+    "masterSha256": "a2f49f3a6d6d01e588d67b8e3041f03744bade2413e1cefee1dbb7918d7fa944",
+    "candidateSha256": "326e0ebb1a876f0af7370e0331c1bd68f18a92b437f562a3b1c07c0087ff6db3",
+    "inferenceSha256": "151b8824649ff2827cc60080a3463103d45cdaaecf8e51c1740d51d0cfa9504e",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

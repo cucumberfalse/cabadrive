@@ -1,0 +1,29 @@
+{
+  "imageId": "question-image-b193",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b193.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b193.png",
+  "originalSha256": "e9b8fe9d5c7bde99a641d63d1ebcbed432854208336d2b6b426c03d17a51be89",
+  "candidateSha256": "cae90a869cd5887437ee2efed6fe5dfc4a818b046f9bb34f794043cb31cc30a9",
+  "reviewer": "image_review",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": false,
+  "status": "accepted",
+  "observations": [
+    "Goat silhouettes/count and positions crossing mountain road retained; white edge and yellow centerline direction, rocky slopes and distant fog remain faithful."
+  ],
+  "rejectionReason": null,
+  "reviewedAt": "2026-10-13T17:08:53.443548+00:00",
+  "inspectionArtifacts": [
+    "/private/tmp/cabadrive-057-review-b140-b220-b190-b191-b192-b193.png"
+  ],
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b193.jpg",
+    "originalSha256": "e9b8fe9d5c7bde99a641d63d1ebcbed432854208336d2b6b426c03d17a51be89",
+    "masterPath": "content/assets-masters/questions/b193.png",
+    "masterSha256": "cae90a869cd5887437ee2efed6fe5dfc4a818b046f9bb34f794043cb31cc30a9",
+    "candidateSha256": "cae90a869cd5887437ee2efed6fe5dfc4a818b046f9bb34f794043cb31cc30a9",
+    "inferenceSha256": "a2868c28272c91113b3ce0d880b0cee144d31bfcc71bd5c8a2ab0142270692bd",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

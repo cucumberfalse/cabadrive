@@ -1,0 +1,29 @@
+{
+  "imageId": "question-image-b148",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b148.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b148.png",
+  "originalSha256": "2a0d2a13d46ec84a169e7157eb0b6b70b0fedd44e6a8cf19d1f381c02dad1838",
+  "candidateSha256": "a8e6f1c6bcb34334d60889188af145904c18d970a094ad22d89d45b0c51a6892",
+  "reviewer": "image_review",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": false,
+  "status": "accepted",
+  "observations": [
+    "Car remains on sidewalk beside same tree; curb edge, garage opening, tree trunk and car wheel/body geometry preserved; shadows and texture smoothed."
+  ],
+  "rejectionReason": null,
+  "reviewedAt": "2026-10-13T17:02:15.470100+00:00",
+  "inspectionArtifacts": [
+    "/private/tmp/cabadrive-057-review-b140-b220-b145-b146-b147-b148-b149.png"
+  ],
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b148.jpg",
+    "originalSha256": "2a0d2a13d46ec84a169e7157eb0b6b70b0fedd44e6a8cf19d1f381c02dad1838",
+    "masterPath": "content/assets-masters/questions/b148.png",
+    "masterSha256": "a8e6f1c6bcb34334d60889188af145904c18d970a094ad22d89d45b0c51a6892",
+    "candidateSha256": "a8e6f1c6bcb34334d60889188af145904c18d970a094ad22d89d45b0c51a6892",
+    "inferenceSha256": "890eea0515c768b6fa0bb80d892d866d25b7fb7409768f839b9088082922883e",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "imageId": "question-image-b210",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b210.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b210.png",
+  "originalSha256": "5db3c3da91a24e8b07e9be602a8477fd0a07cd21c8ca9ae56669588924b20b63",
+  "candidateSha256": "b131852a8c09c91f1eb8ae5f3dbfa37947b5ae865e68d2412ceaef2ed09dfaee",
+  "reviewer": "image_review",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": false,
+  "status": "accepted",
+  "observations": [
+    "All rear belts remain anchored to same sides/center, with identical buckle positions, seat seams and headrest count; rear-window outlined decal retained."
+  ],
+  "rejectionReason": null,
+  "reviewedAt": "2026-10-13T17:14:25.293089+00:00",
+  "inspectionArtifacts": [
+    "/private/tmp/cabadrive-057-review-b140-b220-b209-b210-b211-b212.png"
+  ],
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b210.jpg",
+    "originalSha256": "5db3c3da91a24e8b07e9be602a8477fd0a07cd21c8ca9ae56669588924b20b63",
+    "masterPath": "content/assets-masters/questions/b210.png",
+    "masterSha256": "b131852a8c09c91f1eb8ae5f3dbfa37947b5ae865e68d2412ceaef2ed09dfaee",
+    "candidateSha256": "b131852a8c09c91f1eb8ae5f3dbfa37947b5ae865e68d2412ceaef2ed09dfaee",
+    "inferenceSha256": "549dc5e7e6526cc9e5d15a88416fd13375eb5c2aeebb16de65643a5288ab860e",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

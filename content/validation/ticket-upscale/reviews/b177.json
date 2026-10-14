@@ -1,0 +1,30 @@
+{
+  "imageId": "question-image-b177",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b177.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b177.png",
+  "originalSha256": "72d0591a18f6baa8f4971c62ce1d3d76ca09b40d0f1795c55093d84ea659a5d4",
+  "candidateSha256": "5df16a8db4948152ced090d3b0d578fa2ba80364a37ff867837ffa334319feb7",
+  "reviewer": "image_review",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": false,
+  "status": "accepted",
+  "observations": [
+    "Truck rear frame, upper apertures, road center dashes, shoulder and asphalt crack trajectory remain consistent; grain removed without lane/truck geometry change."
+  ],
+  "rejectionReason": null,
+  "reviewedAt": "2026-10-13T17:05:40.136929+00:00",
+  "inspectionArtifacts": [
+    "/private/tmp/cabadrive-057-review-b140-b220-b175-b176-b177-b178-b179.png",
+    "/private/tmp/cabadrive-057-review-b140-b220-detail-b177-.55-.40-.145-.22.png"
+  ],
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b177.jpg",
+    "originalSha256": "72d0591a18f6baa8f4971c62ce1d3d76ca09b40d0f1795c55093d84ea659a5d4",
+    "masterPath": "content/assets-masters/questions/b177.png",
+    "masterSha256": "5df16a8db4948152ced090d3b0d578fa2ba80364a37ff867837ffa334319feb7",
+    "candidateSha256": "5df16a8db4948152ced090d3b0d578fa2ba80364a37ff867837ffa334319feb7",
+    "inferenceSha256": "619328b221d0a38dd721ae67007bc4c7878daca05c797c77eab6a0049c5eabd2",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

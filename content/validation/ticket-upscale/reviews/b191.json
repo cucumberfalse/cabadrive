@@ -1,0 +1,29 @@
+{
+  "imageId": "question-image-b191",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b191.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b191.png",
+  "originalSha256": "e46a636844d368b79169e31b0d7bbb6e446c71da2c2d5796cf2de9212ccd0ea3",
+  "candidateSha256": "6c76d6c1741c448722ee7468bc3506c12b159f7f4e14b1c3c39d8ae0abb0af9f",
+  "reviewer": "image_review",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": false,
+  "status": "accepted",
+  "observations": [
+    "Separately viewed fog image preserves faint oncoming headlight pair, shoulder/center lines and obscured horizon; grass denoised without altered visibility cues."
+  ],
+  "rejectionReason": null,
+  "reviewedAt": "2026-10-13T17:08:53.440883+00:00",
+  "inspectionArtifacts": [
+    "/private/tmp/cabadrive-057-review-b140-b220-b190-b191-b192-b193.png"
+  ],
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b191.jpg",
+    "originalSha256": "e46a636844d368b79169e31b0d7bbb6e446c71da2c2d5796cf2de9212ccd0ea3",
+    "masterPath": "content/assets-masters/questions/b191.png",
+    "masterSha256": "6c76d6c1741c448722ee7468bc3506c12b159f7f4e14b1c3c39d8ae0abb0af9f",
+    "candidateSha256": "6c76d6c1741c448722ee7468bc3506c12b159f7f4e14b1c3c39d8ae0abb0af9f",
+    "inferenceSha256": "334ded72b4fab9953bc8648cb526a107a0eb67140f775a1217d576ab94fe2f4c",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

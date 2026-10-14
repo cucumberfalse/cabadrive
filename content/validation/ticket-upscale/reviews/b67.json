@@ -1,0 +1,23 @@
+{
+  "imageId": "question-image-b67",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:33:53.720Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": false,
+  "status": "accepted",
+  "observations": [
+    "Officer centered between whitecar and taxi retains vertically raisedarm/hand; opposite arm, bus beyond and crossing pedestrian positions retained."
+  ],
+  "candidateSha256": "79bf922f0ea312d49f7b2a98d4ffdee1cfb17d96760127f42c63b45402c3c19c",
+  "originalSha256": "eb3a2a1b6c49e6bfe79d44f5cb10ae1421494b1e623f947376cee056ad04e05c",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b67.jpg",
+    "originalSha256": "eb3a2a1b6c49e6bfe79d44f5cb10ae1421494b1e623f947376cee056ad04e05c",
+    "masterPath": "content/assets-masters/questions/b67.png",
+    "masterSha256": "79bf922f0ea312d49f7b2a98d4ffdee1cfb17d96760127f42c63b45402c3c19c",
+    "candidateSha256": "79bf922f0ea312d49f7b2a98d4ffdee1cfb17d96760127f42c63b45402c3c19c",
+    "inferenceSha256": "534f2a7bd542dfdf679ff692bb36bca231331ed1851c9c1748c886165e41a201",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

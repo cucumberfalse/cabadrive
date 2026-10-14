@@ -1,0 +1,23 @@
+{
+  "imageId": "question-image-b17",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:09:29.737Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": false,
+  "status": "accepted",
+  "observations": [
+    "Yellow-roof taxi remains stopped across the zebra crossing with four pedestrians in the same places; stripes, curb islands and traffic directions retain geometry."
+  ],
+  "candidateSha256": "1598d3c5729cdc7355dcc450292904d3460765c776cdfdd32f84a2afa3f1e9f8",
+  "originalSha256": "e811273e300c2fcfbe80477238a15d636ee2058c1bfb1d548186a4d7d3e6986c",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b17.jpg",
+    "originalSha256": "e811273e300c2fcfbe80477238a15d636ee2058c1bfb1d548186a4d7d3e6986c",
+    "masterPath": "content/assets-masters/questions/b17.png",
+    "masterSha256": "1598d3c5729cdc7355dcc450292904d3460765c776cdfdd32f84a2afa3f1e9f8",
+    "candidateSha256": "1598d3c5729cdc7355dcc450292904d3460765c776cdfdd32f84a2afa3f1e9f8",
+    "inferenceSha256": "b80d95fb58b44364739fcf04a25966b4da7f8157dabd6ff6d3777c2d0652502a",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

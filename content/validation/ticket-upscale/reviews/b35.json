@@ -1,0 +1,23 @@
+{
+  "imageId": "question-image-b35",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:24:51.040Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": false,
+  "status": "accepted",
+  "observations": [
+    "Cafe sidewalk tables, pedestrians, potted plants and corner zebra crossings preserve source geometry; yellowtaxi and silvercar stay in their original lane positions."
+  ],
+  "candidateSha256": "ce66af65f489885f57f8243fe741278529478a99521c864b659128e222b88c35",
+  "originalSha256": "9ce827b3f83f627a31f921323c4b678351c2f1d05d935f37d13f5b9546ccd263",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b35.jpg",
+    "originalSha256": "9ce827b3f83f627a31f921323c4b678351c2f1d05d935f37d13f5b9546ccd263",
+    "masterPath": "content/assets-masters/questions/b35.png",
+    "masterSha256": "ce66af65f489885f57f8243fe741278529478a99521c864b659128e222b88c35",
+    "candidateSha256": "ce66af65f489885f57f8243fe741278529478a99521c864b659128e222b88c35",
+    "inferenceSha256": "c80cdc0a4945c1657181420257ba1a49369fa8988354a57078b6d1219ee8bbb0",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

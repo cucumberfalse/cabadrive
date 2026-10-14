@@ -1,0 +1,25 @@
+{
+  "imageId": "question-image-b248",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b248.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b248.png",
+  "originalSha256": "b63aab0f4a471421259f24ed98aba9bfd2a6142c821b07dc0e7a6f0a27dba76a",
+  "candidateSha256": "a4392071681ada00cda1c06c18ec7751b8a7861729c2adebba53ed6e834d6b3a",
+  "reviewer": "Supplemental Review Agent /root/image_review_tail (Codex)",
+  "reviewedAt": "2026-10-13T17:18:30.087946+00:00",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "No-entry disk preserves a single white horizontal rectangular bar centered on red, with its dark edge and circular outline; no glyph, slash or additional opening appears."
+  ],
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b248.jpg",
+    "originalSha256": "b63aab0f4a471421259f24ed98aba9bfd2a6142c821b07dc0e7a6f0a27dba76a",
+    "masterPath": "content/assets-masters/questions/b248.png",
+    "masterSha256": "a4392071681ada00cda1c06c18ec7751b8a7861729c2adebba53ed6e834d6b3a",
+    "candidateSha256": "a4392071681ada00cda1c06c18ec7751b8a7861729c2adebba53ed6e834d6b3a",
+    "inferenceSha256": "79bfc05e688551fcbab2aa460d8b2d89ee4705120bdb06d8622dc189b98b61fa",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

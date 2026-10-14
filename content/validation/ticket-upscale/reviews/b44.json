@@ -1,0 +1,23 @@
+{
+  "imageId": "question-image-b44",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:30:13.192Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": false,
+  "status": "accepted",
+  "observations": [
+    "Yellow highlighted broad middle carriageway remains between solid borders with same white lane dashes and four car positions; adjoining unhighlighted traffic lanes unchanged."
+  ],
+  "candidateSha256": "eeee139f5927f497bc6b00a91f0b2506fa44201101ca0ffd8f49f180f7a1bca4",
+  "originalSha256": "cccdd8249f3237594e68b787424b8ad10b099d326ef2d0932797c9c6c08e287c",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b44.jpg",
+    "originalSha256": "cccdd8249f3237594e68b787424b8ad10b099d326ef2d0932797c9c6c08e287c",
+    "masterPath": "content/assets-masters/questions/b44.png",
+    "masterSha256": "eeee139f5927f497bc6b00a91f0b2506fa44201101ca0ffd8f49f180f7a1bca4",
+    "candidateSha256": "eeee139f5927f497bc6b00a91f0b2506fa44201101ca0ffd8f49f180f7a1bca4",
+    "inferenceSha256": "2b5bf74d12e816e2f0e891771d8db854271010f8fe3219ade3f4be4120abbcce",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

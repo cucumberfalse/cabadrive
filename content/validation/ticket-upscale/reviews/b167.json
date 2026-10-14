@@ -1,0 +1,29 @@
+{
+  "imageId": "question-image-b167",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b167.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b167.png",
+  "originalSha256": "b271d8589726f277be97101047dad31068ab161c612d08c437f2164a55dd88d9",
+  "candidateSha256": "250fd3b5577549d90bf78fa10e70303a43675495c88f74ffd478ce5598f99179",
+  "reviewer": "image_review",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": false,
+  "status": "accepted",
+  "observations": [
+    "Red wagon parked oppositely remains same distance from curb; wheel spokes, doors/window divisions and dashed lane line retained."
+  ],
+  "rejectionReason": null,
+  "reviewedAt": "2026-10-13T17:05:40.118582+00:00",
+  "inspectionArtifacts": [
+    "/private/tmp/cabadrive-057-review-b140-b220-b165-b166-b167-b168-b169.png"
+  ],
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b167.jpg",
+    "originalSha256": "b271d8589726f277be97101047dad31068ab161c612d08c437f2164a55dd88d9",
+    "masterPath": "content/assets-masters/questions/b167.png",
+    "masterSha256": "250fd3b5577549d90bf78fa10e70303a43675495c88f74ffd478ce5598f99179",
+    "candidateSha256": "250fd3b5577549d90bf78fa10e70303a43675495c88f74ffd478ce5598f99179",
+    "inferenceSha256": "ba4532365cfa3fe8b969f4d0973a99b2e9bec11d024cb43863b09017a8cd3cab",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

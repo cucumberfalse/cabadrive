@@ -1,0 +1,25 @@
+{
+  "imageId": "question-image-b270",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b270.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b270.png",
+  "originalSha256": "43e8393d6a96570da0f8db9edec0916b4d4ce48709ab18edacd25ab207348a24",
+  "candidateSha256": "66833567959234171cbc3051f81a41142b96a342e488aee0b5254b86e2e5e404",
+  "reviewer": "Supplemental Review Agent /root/image_review_tail (Codex)",
+  "reviewedAt": "2026-10-13T17:20:36.729775+00:00",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "Bus terminal pictogram preserves two bus wheels, the row of white window divisions, left support and triangular canopy braces; blue frame and ground baseline keep the original positions."
+  ],
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b270.jpg",
+    "originalSha256": "43e8393d6a96570da0f8db9edec0916b4d4ce48709ab18edacd25ab207348a24",
+    "masterPath": "content/assets-masters/questions/b270.png",
+    "masterSha256": "66833567959234171cbc3051f81a41142b96a342e488aee0b5254b86e2e5e404",
+    "candidateSha256": "66833567959234171cbc3051f81a41142b96a342e488aee0b5254b86e2e5e404",
+    "inferenceSha256": "fa16344d344b6b25db0c7b5bdc918c270f09516497d347e821f1d148fd051ddb",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

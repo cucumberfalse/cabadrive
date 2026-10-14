@@ -1,0 +1,25 @@
+{
+  "imageId": "question-image-b258",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b258.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b258.png",
+  "originalSha256": "ee0b1bef4243d832376a754bcb2501039f37a7369d3c5c8186ec2869e890c46f",
+  "candidateSha256": "78f154c445879edf68cfec3f610239380e63c4cc2d77beed998f352d3d05c1dc",
+  "reviewer": "Supplemental Review Agent /root/image_review_tail (Codex)",
+  "reviewedAt": "2026-10-13T17:18:59.856232+00:00",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "Large white numerals remain exactly 35 on the blue circular field inside a red ring; both digit openings, sequence and placement stay faithful after enlargement."
+  ],
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b258.jpg",
+    "originalSha256": "ee0b1bef4243d832376a754bcb2501039f37a7369d3c5c8186ec2869e890c46f",
+    "masterPath": "content/assets-masters/questions/b258.png",
+    "masterSha256": "78f154c445879edf68cfec3f610239380e63c4cc2d77beed998f352d3d05c1dc",
+    "candidateSha256": "78f154c445879edf68cfec3f610239380e63c4cc2d77beed998f352d3d05c1dc",
+    "inferenceSha256": "de2a9847105ce353cd195eeb17ee9c377220b531f8e3ebf113b8d6a2993bf05b",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

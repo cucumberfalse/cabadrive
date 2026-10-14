@@ -1,0 +1,29 @@
+{
+  "imageId": "question-image-b185",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b185.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b185.png",
+  "originalSha256": "dac0097e0b65006d007ca080fe4ef505e4cf304544ef342f80c77330ac73423b",
+  "candidateSha256": "f3d05a71bbe539c94e5914f3872bf02749ed33b63f7351ee83b2b93395cd808e",
+  "reviewer": "image_review",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "PARRILLA sign remains exactly readable; moving dark vehicle, water spray, lane edge and wet-road headlight reflections preserved."
+  ],
+  "rejectionReason": null,
+  "reviewedAt": "2026-10-13T17:07:28.922813+00:00",
+  "inspectionArtifacts": [
+    "/private/tmp/cabadrive-057-review-b140-b220-b185-b186-b187-b188-b189.png"
+  ],
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b185.jpg",
+    "originalSha256": "dac0097e0b65006d007ca080fe4ef505e4cf304544ef342f80c77330ac73423b",
+    "masterPath": "content/assets-masters/questions/b185.png",
+    "masterSha256": "f3d05a71bbe539c94e5914f3872bf02749ed33b63f7351ee83b2b93395cd808e",
+    "candidateSha256": "f3d05a71bbe539c94e5914f3872bf02749ed33b63f7351ee83b2b93395cd808e",
+    "inferenceSha256": "7561ec5ea8342d8c3377f56caec99bc83c5bbf59d834a381b6e31f7feb709717",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

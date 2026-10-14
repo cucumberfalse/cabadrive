@@ -1,0 +1,30 @@
+{
+  "imageId": "question-image-b100",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T16:53:54.900Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "rejected",
+  "observations": [
+    "At enlarged sign detail Avenida De Los Incas 4200-4300 remains legible, but lower street-name and address numerals turn into disconnected curled strokes. A/B vehicle markers and direction arrows remain."
+  ],
+  "rejectionReason": "Native sign-detail comparison shows lower street-name letters and address numerals reconstructed as disconnected glyph contours.",
+  "candidateSha256": "d983a946bf609b90252588146fe44c23a3ae3da439aa7a9af74f7cba5d17e248",
+  "originalSha256": "3eb9c60216289749b3953b5768b157e32698c68c87e67fab13dab83753ace387",
+  "fallbackObservations": [
+    "Fallback preserves Avenida De Los Incas4200-4300 and Donado plaques with their original small strokes and arrows, plus A/B car positions."
+  ],
+  "fallbackReviewedAt": "2026-10-13T17:43:22.307Z",
+  "fallbackReviewer": "Implementation Agent (Codex)",
+  "fallbackSha256": "bb8ebff427430755f3660e7f0cf72131895e47f4f3892da8012079b711c3b00c",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b100.jpg",
+    "originalSha256": "3eb9c60216289749b3953b5768b157e32698c68c87e67fab13dab83753ace387",
+    "masterPath": "content/assets-masters/questions/b100.png",
+    "masterSha256": "bb8ebff427430755f3660e7f0cf72131895e47f4f3892da8012079b711c3b00c",
+    "candidateSha256": "d983a946bf609b90252588146fe44c23a3ae3da439aa7a9af74f7cba5d17e248",
+    "inferenceSha256": "59c08a4c0fa15f631fc102f3480898faf993e46ffb07ee3823c4b77d4c5fc853",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "imageId": "question-image-b7",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:33:53.721Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "A white-shirt rider looking forward and B blackshirt rider looking left retain helmet/backpack/handlebar arrangement; A/B circles, bicycle angles and clothing distinction unchanged."
+  ],
+  "candidateSha256": "0a733a5ba638e85d09a7131111a8614a9165fe48a13ec0fb5e14f319f3a37612",
+  "originalSha256": "60f06c57dbee5f3356e21053c9eb1df0c00f133aa6b864a5664b1eb33b10065a",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b7.jpg",
+    "originalSha256": "60f06c57dbee5f3356e21053c9eb1df0c00f133aa6b864a5664b1eb33b10065a",
+    "masterPath": "content/assets-masters/questions/b7.png",
+    "masterSha256": "0a733a5ba638e85d09a7131111a8614a9165fe48a13ec0fb5e14f319f3a37612",
+    "candidateSha256": "0a733a5ba638e85d09a7131111a8614a9165fe48a13ec0fb5e14f319f3a37612",
+    "inferenceSha256": "be7abeee7ca85ad5acac9f0b92fa537d91702812bc671f90fea65746340b6018",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

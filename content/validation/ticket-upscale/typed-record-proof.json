@@ -1,0 +1,13 @@
+{
+  "checkedAt": "2026-10-13T21:12:28.608Z",
+  "status": "PASS",
+  "actualRecords": 275,
+  "actualExactHashBoundFallbackProofs": 77,
+  "exactCanonicalRecordInferenceReviewIds": true,
+  "exactOriginalCandidateReviewMasterHashes": true,
+  "primaryAndFallbackStringTimestampProof": true,
+  "journalSha256": "47e7deb145ecd66454cfcc82aa190faca175b7e16648c34ea5eca89173cfffbc",
+  "evidenceModified": false,
+  "retainedRejectedCandidateHashesVerified": 77,
+  "retainedCandidateCheckedAt": "2026-10-13T21:13:22.628Z"
+}

@@ -1,0 +1,23 @@
+{
+  "imageId": "question-image-b112",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T16:56:57.893Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": false,
+  "status": "accepted",
+  "observations": [
+    "A/B/C labels remain above overtaking red car, white pickup and oncoming white car. Paired solid yellow lines and white edge line retain continuity; oncoming clearance is unchanged."
+  ],
+  "candidateSha256": "e42e92bfd747b2f48d02e9d6d01e80f03a5339a82d11143594e04d6f076f6c01",
+  "originalSha256": "33892c9d157792ef1b5235816e23e7206aae61465fc091e2fcf7c7e58cb992f2",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b112.jpg",
+    "originalSha256": "33892c9d157792ef1b5235816e23e7206aae61465fc091e2fcf7c7e58cb992f2",
+    "masterPath": "content/assets-masters/questions/b112.png",
+    "masterSha256": "e42e92bfd747b2f48d02e9d6d01e80f03a5339a82d11143594e04d6f076f6c01",
+    "candidateSha256": "e42e92bfd747b2f48d02e9d6d01e80f03a5339a82d11143594e04d6f076f6c01",
+    "inferenceSha256": "fc58bde76ece046d7f93aea3e70652ac41c332b5584fd4c324b2d7d352583c2b",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

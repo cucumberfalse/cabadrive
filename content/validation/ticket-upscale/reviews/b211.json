@@ -1,0 +1,29 @@
+{
+  "imageId": "question-image-b211",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b211.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b211.png",
+  "originalSha256": "0fd257f384e707a224d14c25549cf7e946a859aedff069da0220695b47802125",
+  "candidateSha256": "63a3e90a18571819fd920d241a9857b55fdc20c71b9c258918fca6aba97b1636",
+  "reviewer": "image_review",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": false,
+  "status": "accepted",
+  "observations": [
+    "Front passenger child restraint keeps side wings, headrest, belt buckle and seat placement; door/gear-shift relation remains consistent."
+  ],
+  "rejectionReason": null,
+  "reviewedAt": "2026-10-13T17:14:25.294483+00:00",
+  "inspectionArtifacts": [
+    "/private/tmp/cabadrive-057-review-b140-b220-b209-b210-b211-b212.png"
+  ],
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b211.jpg",
+    "originalSha256": "0fd257f384e707a224d14c25549cf7e946a859aedff069da0220695b47802125",
+    "masterPath": "content/assets-masters/questions/b211.png",
+    "masterSha256": "63a3e90a18571819fd920d241a9857b55fdc20c71b9c258918fca6aba97b1636",
+    "candidateSha256": "63a3e90a18571819fd920d241a9857b55fdc20c71b9c258918fca6aba97b1636",
+    "inferenceSha256": "9fb833cf46220d8d06bd9bb7f42407e2357a56906bbb96c351b5b357be957b82",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

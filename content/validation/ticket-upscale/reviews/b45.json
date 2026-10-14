@@ -1,0 +1,23 @@
+{
+  "imageId": "question-image-b45",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:30:13.196Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": false,
+  "status": "accepted",
+  "observations": [
+    "Single left-side lane remains yellow-highlighted beside median; white bus/vehicles and lane-dash spacing retain source relationships."
+  ],
+  "candidateSha256": "d9193aae5f680db3008e4ad9de32d685ce73e78a69d7837a93986f6c87fae7b4",
+  "originalSha256": "ddd19cafb7155631ed7ee52686d3a7ae2aba8031c7f352f57fb04d0012cd61bf",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b45.jpg",
+    "originalSha256": "ddd19cafb7155631ed7ee52686d3a7ae2aba8031c7f352f57fb04d0012cd61bf",
+    "masterPath": "content/assets-masters/questions/b45.png",
+    "masterSha256": "d9193aae5f680db3008e4ad9de32d685ce73e78a69d7837a93986f6c87fae7b4",
+    "candidateSha256": "d9193aae5f680db3008e4ad9de32d685ce73e78a69d7837a93986f6c87fae7b4",
+    "inferenceSha256": "b05136bee0c30d814148626ba4efc4dfc027bf19db3924c3bdcd595fc40fa361",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

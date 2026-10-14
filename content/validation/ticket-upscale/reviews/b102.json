@@ -1,0 +1,23 @@
+{
+  "imageId": "question-image-b102",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T16:53:11.968Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "Road-surface PARE letters retain sequence and placement before the zebra crossing; sidewalks, yellow separators, parked vehicles and dumpster remain in the same positions."
+  ],
+  "candidateSha256": "3ed4ea2d8607594847aa5482a966c7710b8bbf7e123ace7ce9bb25f2e496ae78",
+  "originalSha256": "d6d8de0e3619d49efbdf8ffe07d291b18e0b4824852447cfba73e8cc247a763e",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b102.jpg",
+    "originalSha256": "d6d8de0e3619d49efbdf8ffe07d291b18e0b4824852447cfba73e8cc247a763e",
+    "masterPath": "content/assets-masters/questions/b102.png",
+    "masterSha256": "3ed4ea2d8607594847aa5482a966c7710b8bbf7e123ace7ce9bb25f2e496ae78",
+    "candidateSha256": "3ed4ea2d8607594847aa5482a966c7710b8bbf7e123ace7ce9bb25f2e496ae78",
+    "inferenceSha256": "5870ad19a9a246cec63b0294df904b3c90d7731838c66a36c57572aea1d00200",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

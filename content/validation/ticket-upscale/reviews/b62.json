@@ -1,0 +1,23 @@
+{
+  "imageId": "question-image-b62",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:32:48.706Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "Circled extended hand out of taxi window retains downward finger direction; TOYOTA label, van110 badge, white roadarrow and dashed lane divider keep source placement."
+  ],
+  "candidateSha256": "c15b9e209673e3c68b43c33ecbbc9012a1be3d6084bdf7119b57232c5265d1af",
+  "originalSha256": "3aabdfa7cbe50d2af4034098d9e7799b89444042b99400a022116a48fe630db7",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b62.jpg",
+    "originalSha256": "3aabdfa7cbe50d2af4034098d9e7799b89444042b99400a022116a48fe630db7",
+    "masterPath": "content/assets-masters/questions/b62.png",
+    "masterSha256": "c15b9e209673e3c68b43c33ecbbc9012a1be3d6084bdf7119b57232c5265d1af",
+    "candidateSha256": "c15b9e209673e3c68b43c33ecbbc9012a1be3d6084bdf7119b57232c5265d1af",
+    "inferenceSha256": "79b68e1b2e03869b786386b9522644ae35f58915b682816870edb6951c8ff3ed",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

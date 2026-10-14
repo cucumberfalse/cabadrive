@@ -1,0 +1,23 @@
+{
+  "imageId": "question-image-b29",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:24:51.006Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "Large white BUS lettering and diamond remain readable with source alignment; yellow diagonal hatched lanes and two adjacent car positions unchanged despite smooth asphalt texture."
+  ],
+  "candidateSha256": "6fffe2ee486ca54f5897ecca0e5c729f3238ae182eae2c98e794b9560aee02ae",
+  "originalSha256": "a34d34aef62deb61d7543dcf8be279bdb1be16fe64069a4f702fe19c396db0c9",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b29.jpg",
+    "originalSha256": "a34d34aef62deb61d7543dcf8be279bdb1be16fe64069a4f702fe19c396db0c9",
+    "masterPath": "content/assets-masters/questions/b29.png",
+    "masterSha256": "6fffe2ee486ca54f5897ecca0e5c729f3238ae182eae2c98e794b9560aee02ae",
+    "candidateSha256": "6fffe2ee486ca54f5897ecca0e5c729f3238ae182eae2c98e794b9560aee02ae",
+    "inferenceSha256": "5d6d20779ef8316b5e1162665e1508da4d12ecd368d94219cdeaf121dade7ba1",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

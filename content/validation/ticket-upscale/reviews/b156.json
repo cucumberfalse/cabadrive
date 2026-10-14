@@ -1,0 +1,36 @@
+{
+  "imageId": "question-image-b156",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b156.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b156.png",
+  "originalSha256": "63004da2a4768e35393a389c55b86afe4c0f7a0a0cb5b0feb0ffe74799b035f4",
+  "candidateSha256": "f6e0409ab36261e301dd531dcd45ad072cbc2784d66386315e7198cda3b929ea",
+  "reviewer": "image_review",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "rejected",
+  "observations": [
+    "Enlarged street-name panels turn original letter strokes into smooth white bars and blocks; opposite upper arrows and lower right arrow survive but sign lettering is reconstructed."
+  ],
+  "rejectionReason": "Enlarged street-name panels turn original letter strokes into smooth white bars and blocks; opposite upper arrows and lower right arrow survive but sign lettering is reconstructed.",
+  "reviewedAt": "2026-10-13T17:03:49.001454+00:00",
+  "inspectionArtifacts": [
+    "/private/tmp/cabadrive-057-review-b140-b220-b155-b156-b157-b158-b159.png",
+    "/private/tmp/cabadrive-057-review-b140-b220-detail-b156-.79-.16-.14-.20.png"
+  ],
+  "fallbackObservations": [
+    "Fallback preserves original small street-plaque letters/arrows, the white truck and yellow curb, without flattening letters into synthetic bars."
+  ],
+  "fallbackReviewedAt": "2026-10-13T17:44:15.316Z",
+  "fallbackReviewer": "Implementation Agent (Codex)",
+  "fallbackSha256": "894385ba963d3e97bafb99f481b79a9b7e8282474b2ed5b8174619a40a369a87",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b156.jpg",
+    "originalSha256": "63004da2a4768e35393a389c55b86afe4c0f7a0a0cb5b0feb0ffe74799b035f4",
+    "masterPath": "content/assets-masters/questions/b156.png",
+    "masterSha256": "894385ba963d3e97bafb99f481b79a9b7e8282474b2ed5b8174619a40a369a87",
+    "candidateSha256": "f6e0409ab36261e301dd531dcd45ad072cbc2784d66386315e7198cda3b929ea",
+    "inferenceSha256": "65a09a8915b4d4d418cada8f716714842ebc2ae6b0acfb5d4d2ffab70a408b0f",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "imageId": "question-image-b127",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:00:39.226Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "Red circled vehicle remains at the intersection, zebra crossing and yellow raised center divider retain positions. Right-hand red crossed E sign keeps E and slash clearly intact."
+  ],
+  "candidateSha256": "35d77bded668dc243bcb3ca0fb2430bdc79820796e6d9db117d77f5610c82998",
+  "originalSha256": "867b12ed9f69e76eee3125dbdd470f8efab790c1d5314f028ceefc82f6b3219e",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b127.jpg",
+    "originalSha256": "867b12ed9f69e76eee3125dbdd470f8efab790c1d5314f028ceefc82f6b3219e",
+    "masterPath": "content/assets-masters/questions/b127.png",
+    "masterSha256": "35d77bded668dc243bcb3ca0fb2430bdc79820796e6d9db117d77f5610c82998",
+    "candidateSha256": "35d77bded668dc243bcb3ca0fb2430bdc79820796e6d9db117d77f5610c82998",
+    "inferenceSha256": "347dfa8f3f1569fa6940ef3360ad618cea7c7c8afa41c48ea50675fbe42f57f7",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

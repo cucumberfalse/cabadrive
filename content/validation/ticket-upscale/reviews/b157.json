@@ -1,0 +1,36 @@
+{
+  "imageId": "question-image-b157",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b157.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b157.png",
+  "originalSha256": "95704b51ec619501a06476ca0f8282613c74d33edd9fe4489d10e5e77fb176ee",
+  "candidateSha256": "0ecb2de047f83454292cc3d753269f3ae4efce8b3f5418ee3bd035d6c86a0fe7",
+  "reviewer": "image_review",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "rejected",
+  "observations": [
+    "Critical Av. Álvarez Jonte sign crop changes Álvarez/Jonte letters and numeric strokes into malformed sharp glyphs; right arrow remains correct."
+  ],
+  "rejectionReason": "Critical Av. Álvarez Jonte sign crop changes Álvarez/Jonte letters and numeric strokes into malformed sharp glyphs; right arrow remains correct.",
+  "reviewedAt": "2026-10-13T17:03:49.003866+00:00",
+  "inspectionArtifacts": [
+    "/private/tmp/cabadrive-057-review-b140-b220-b155-b156-b157-b158-b159.png",
+    "/private/tmp/cabadrive-057-review-b140-b220-detail-b157-.74-.07-.22-.23.png"
+  ],
+  "fallbackObservations": [
+    "Fallback retains Av.Alvarez fine name/address strokes and right arrow in their source softness, with the original taxi and parked-car layout."
+  ],
+  "fallbackReviewedAt": "2026-10-13T17:44:15.320Z",
+  "fallbackReviewer": "Implementation Agent (Codex)",
+  "fallbackSha256": "6a12eaf8a02140d7405bca990a2790be5eaa5c6b616f8343b56d0aeaa8861068",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b157.jpg",
+    "originalSha256": "95704b51ec619501a06476ca0f8282613c74d33edd9fe4489d10e5e77fb176ee",
+    "masterPath": "content/assets-masters/questions/b157.png",
+    "masterSha256": "6a12eaf8a02140d7405bca990a2790be5eaa5c6b616f8343b56d0aeaa8861068",
+    "candidateSha256": "0ecb2de047f83454292cc3d753269f3ae4efce8b3f5418ee3bd035d6c86a0fe7",
+    "inferenceSha256": "d9ca0d9bcf57d67b78992f71237f69182b5ed69ea3165c5b0467a9a2bb8333fc",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

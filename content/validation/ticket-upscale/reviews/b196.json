@@ -1,0 +1,37 @@
+{
+  "imageId": "question-image-b196",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b196.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b196.png",
+  "originalSha256": "e01647d17cd4f48242620c38e2946cf321e7f0e9249fb9acef722d53ddbbf3b6",
+  "candidateSha256": "f60c6693310306814b924fad9b755d67ff94b0326068d01133b33729bdbecf98",
+  "reviewer": "image_review",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "rejected",
+  "observations": [
+    "Small overhead destination signs and vehicle plates are reconstructed as malformed/ambiguous sharp strokes; lane/traffic geometry and van110 retain but text fidelity cannot pass."
+  ],
+  "rejectionReason": "Small overhead destination signs and vehicle plates are reconstructed as malformed/ambiguous sharp strokes; lane/traffic geometry and van110 retain but text fidelity cannot pass.",
+  "reviewedAt": "2026-10-13T17:08:53.446962+00:00",
+  "inspectionArtifacts": [
+    "/private/tmp/cabadrive-057-review-b140-b220-detail-b196-.64-.40-.19-.07.png",
+    "/private/tmp/cabadrive-057-review-b140-b220-detail-b196-.60-.46-.27-.12.png",
+    "/private/tmp/cabadrive-057-review-b140-b220-b194-b195-b196-b197.png"
+  ],
+  "fallbackObservations": [
+    "Fallback preserves original fine green overhead highway-board lines and their arrows, with unchanged traffic and white lane separators."
+  ],
+  "fallbackReviewedAt": "2026-10-13T17:44:40.910Z",
+  "fallbackReviewer": "Implementation Agent (Codex)",
+  "fallbackSha256": "bb4af4cfa5c52aab5100de55eb6d1c54c58d4dc4d76c68d52378d7366b43acc2",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b196.jpg",
+    "originalSha256": "e01647d17cd4f48242620c38e2946cf321e7f0e9249fb9acef722d53ddbbf3b6",
+    "masterPath": "content/assets-masters/questions/b196.png",
+    "masterSha256": "bb4af4cfa5c52aab5100de55eb6d1c54c58d4dc4d76c68d52378d7366b43acc2",
+    "candidateSha256": "f60c6693310306814b924fad9b755d67ff94b0326068d01133b33729bdbecf98",
+    "inferenceSha256": "4e1b609815acc03c649364e08db65c1f1af0e47287f1722ba4e313f6115099ce",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

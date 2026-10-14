@@ -1,0 +1,36 @@
+{
+  "imageId": "question-image-b170",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b170.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b170.png",
+  "originalSha256": "ab010044299ae0cd5a8890efeaba2d4fcf51f1286e5e85217477fba541ffe01a",
+  "candidateSha256": "8982863a57768f7cbb594f0404766606e74d140f003984c4da826e481e9830c1",
+  "reviewer": "image_review",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "rejected",
+  "observations": [
+    "Enlarged rear plate turns ambiguous source letters into unsupported F/I-like and solid black glyph forms; digits191 retained but letter fidelity fails."
+  ],
+  "rejectionReason": "Enlarged rear plate turns ambiguous source letters into unsupported F/I-like and solid black glyph forms; digits191 retained but letter fidelity fails.",
+  "reviewedAt": "2026-10-13T17:05:40.124660+00:00",
+  "inspectionArtifacts": [
+    "/private/tmp/cabadrive-057-review-b140-b220-detail-b170-.57-.57-.10-.09.png",
+    "/private/tmp/cabadrive-057-review-b140-b220-b170-b171-b172-b173-b174.png"
+  ],
+  "fallbackObservations": [
+    "Fallback retains circled amber lights and original plate shapes at source softness, including the small blue parking sign text."
+  ],
+  "fallbackReviewedAt": "2026-10-13T17:44:40.892Z",
+  "fallbackReviewer": "Implementation Agent (Codex)",
+  "fallbackSha256": "c0fb01d4a4e56d8b94e8e08db92665e2e2d3139b07a62595c814234e3b830ed7",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b170.jpg",
+    "originalSha256": "ab010044299ae0cd5a8890efeaba2d4fcf51f1286e5e85217477fba541ffe01a",
+    "masterPath": "content/assets-masters/questions/b170.png",
+    "masterSha256": "c0fb01d4a4e56d8b94e8e08db92665e2e2d3139b07a62595c814234e3b830ed7",
+    "candidateSha256": "8982863a57768f7cbb594f0404766606e74d140f003984c4da826e481e9830c1",
+    "inferenceSha256": "bb8ff4bf2d134b82a0f46d6a9968a57cf4a7a4ec4e95d23f7056ea3e466b0601",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

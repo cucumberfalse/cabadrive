@@ -1,0 +1,25 @@
+{
+  "imageId": "question-image-b275",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b275.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b275.png",
+  "originalSha256": "36c00644d279613392d1bd06e40fa9090b8116bf0a251087d46543ab914f5b14",
+  "candidateSha256": "ff7df757cccf2716811dac0c15740eace6f46cde031173a0c792afb44f762b6f",
+  "reviewer": "Supplemental Review Agent /root/image_review_tail (Codex)",
+  "reviewedAt": "2026-10-13T17:21:02.616805+00:00",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "White pointed route shield keeps its black outline and the single centered numeral3 with both rounded bowls; shield corners, bottom point, glyph sequence and white interior are unchanged."
+  ],
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b275.jpg",
+    "originalSha256": "36c00644d279613392d1bd06e40fa9090b8116bf0a251087d46543ab914f5b14",
+    "masterPath": "content/assets-masters/questions/b275.png",
+    "masterSha256": "ff7df757cccf2716811dac0c15740eace6f46cde031173a0c792afb44f762b6f",
+    "candidateSha256": "ff7df757cccf2716811dac0c15740eace6f46cde031173a0c792afb44f762b6f",
+    "inferenceSha256": "ec33f65d7e431a57ca44c2e31ec9f582f54d78557d41ace70360778344e7d877",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "imageId": "question-image-b169",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b169.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b169.png",
+  "originalSha256": "1d72e945e33c5dc0f2cf305206589bd15c8895196edb279379f6a34304c0256d",
+  "candidateSha256": "8aa1edc058844b87485a0b104e2b4813c1c467a4c98514bdfedab0fa8d7312fc",
+  "reviewer": "image_review",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "rejected",
+  "observations": [
+    "Rear plate detail acquires invented sharp character strokes from unreadable original; E/right parking arrow and red lamp circles retained."
+  ],
+  "rejectionReason": "Rear plate detail acquires invented sharp character strokes from unreadable original; E/right parking arrow and red lamp circles retained.",
+  "reviewedAt": "2026-10-13T17:05:40.122488+00:00",
+  "inspectionArtifacts": [
+    "/private/tmp/cabadrive-057-review-b140-b220-detail-b169-.455-.64-.09-.07.png",
+    "/private/tmp/cabadrive-057-review-b140-b220-b165-b166-b167-b168-b169.png"
+  ],
+  "fallbackObservations": [
+    "Fallback keeps original plate strokes and small blue parking plaque, large E and both circled amber lamps, preserving their colours."
+  ],
+  "fallbackReviewedAt": "2026-10-13T17:44:15.337Z",
+  "fallbackReviewer": "Implementation Agent (Codex)",
+  "fallbackSha256": "01246fe9b8d018608202a42ec2d099bec6e18ef197de1350ba1fed1e40627c61",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b169.jpg",
+    "originalSha256": "1d72e945e33c5dc0f2cf305206589bd15c8895196edb279379f6a34304c0256d",
+    "masterPath": "content/assets-masters/questions/b169.png",
+    "masterSha256": "01246fe9b8d018608202a42ec2d099bec6e18ef197de1350ba1fed1e40627c61",
+    "candidateSha256": "8aa1edc058844b87485a0b104e2b4813c1c467a4c98514bdfedab0fa8d7312fc",
+    "inferenceSha256": "8451af32641172948fd19746c6a7c7e75205be92d46fb3dc0079d29a2b2419bb",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "imageId": "question-image-b204",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b204.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b204.png",
+  "originalSha256": "fcc736958659f3efbdca2e9853e53bf35f0ca2817dc83380646ca94fa69ec54c",
+  "candidateSha256": "41f6ff720b4ec36726a34424c124b549674419fcba01f8fc048d6d362b261bae",
+  "reviewer": "image_review",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": false,
+  "status": "accepted",
+  "observations": [
+    "Deflated tire contact bulge and flattened lower contour remain visible; wheel five-spoke geometry, body sill and tread relation preserved."
+  ],
+  "rejectionReason": null,
+  "reviewedAt": "2026-10-13T17:12:56.841671+00:00",
+  "inspectionArtifacts": [
+    "/private/tmp/cabadrive-057-review-b140-b220-b200-b201-b202-b203-b204.png"
+  ],
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b204.jpg",
+    "originalSha256": "fcc736958659f3efbdca2e9853e53bf35f0ca2817dc83380646ca94fa69ec54c",
+    "masterPath": "content/assets-masters/questions/b204.png",
+    "masterSha256": "41f6ff720b4ec36726a34424c124b549674419fcba01f8fc048d6d362b261bae",
+    "candidateSha256": "41f6ff720b4ec36726a34424c124b549674419fcba01f8fc048d6d362b261bae",
+    "inferenceSha256": "b81216e9731454afff966a1f4d834ee90eaf210dc281aa51b45b2f666d25cd27",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

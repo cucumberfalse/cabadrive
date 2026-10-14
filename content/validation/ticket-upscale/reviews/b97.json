@@ -1,0 +1,30 @@
+{
+  "imageId": "question-image-b97",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:41:44.565Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "rejected",
+  "observations": [
+    "A/B circles, crossbuck and vehicle trajectories stay intact. Actual enlarged blue background poster loses fine text into broad bars and rectangular pseudoletters."
+  ],
+  "rejectionReason": "Blue-poster fine lettering is erased or reconstructed.",
+  "candidateSha256": "de7a881f94fdd1104860340ffb6914f25fdb0efe229e9e0e57257739ce81224d",
+  "originalSha256": "e29a7e85798d4985cd1579c8b557c6c6d061f4f9117cd50be8019e128e2c2aa8",
+  "fallbackObservations": [
+    "Fallback retains original blue poster fine writing at source softness, A/B circles, white van and crossbuck silhouette."
+  ],
+  "fallbackReviewedAt": "2026-10-13T17:47:00.404Z",
+  "fallbackReviewer": "Implementation Agent (Codex)",
+  "fallbackSha256": "2c331f10d2e6d68d9d8469e2681077cbe852a63d25d36492c9fc2ebfb5700b20",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b97.jpg",
+    "originalSha256": "e29a7e85798d4985cd1579c8b557c6c6d061f4f9117cd50be8019e128e2c2aa8",
+    "masterPath": "content/assets-masters/questions/b97.png",
+    "masterSha256": "2c331f10d2e6d68d9d8469e2681077cbe852a63d25d36492c9fc2ebfb5700b20",
+    "candidateSha256": "de7a881f94fdd1104860340ffb6914f25fdb0efe229e9e0e57257739ce81224d",
+    "inferenceSha256": "4039a376db6068e02ae55c8f4e7b04068348842d8e0998871bb22777e714438a",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

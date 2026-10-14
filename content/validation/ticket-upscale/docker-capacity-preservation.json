@@ -1,0 +1,1578 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-13T21:52:08.106474+00:00",
+  "status": "Root and independentReview semantic preservation CLOSED; original strict BLOCKED retained; actual correctedDocker acceptance pending",
+  "scope": "IF010/T005F, IF011/T005G, IF012/T005H, IF013/T005I",
+  "humanApproval": "\u0414\u0430, \u0443\u0432\u0435\u043b\u0438\u0447\u0438\u0442\u044c \u0434\u043e72\u0413\u0438\u0411",
+  "beforeCheckedAt": "2026-10-13T21:18:24.256074+00:00",
+  "afterCheckedAt": "2026-10-13T21:27:13.422589+00:00",
+  "onlySettingDelta": {
+    "changedKeys": [
+      "DiskSizeMiB"
+    ],
+    "beforeDiskSizeMiB": 65536,
+    "afterDiskSizeMiB": 73728,
+    "expectedOnlyCapacityChange": true
+  },
+  "resourceCounts": {
+    "containerCount": 9,
+    "imageCount": 71,
+    "volumeCount": 49,
+    "networkCount": 6,
+    "cacheCount": 413
+  },
+  "fullTypedContainers": {
+    "countBefore": 9,
+    "countAfter": 9,
+    "missingIds": [],
+    "addedIds": [],
+    "changedIds": [],
+    "beforeHash": "1acefd8674c850227343086116e38a6681b21837ff8a020230f1f33562168c4f",
+    "afterHash": "1acefd8674c850227343086116e38a6681b21837ff8a020230f1f33562168c4f"
+  },
+  "fullTypedVolumes": {
+    "countBefore": 49,
+    "countAfter": 49,
+    "missingIds": [],
+    "addedIds": [],
+    "changedIds": [],
+    "beforeHash": "d9506c3a99f4b661b0cba1a0ab0997412ed65fec12db84f49ec4011e506b53d4",
+    "afterHash": "d9506c3a99f4b661b0cba1a0ab0997412ed65fec12db84f49ec4011e506b53d4"
+  },
+  "comparableApi149Images": {
+    "beforeCount": 71,
+    "afterCount": 71,
+    "exactTypedComparableEqual": true,
+    "changedIds": [],
+    "beforeHash": "009cb660135301b046e4df8d9abfb452dcd96a3ef207effa7ed4d475a42e5d35",
+    "afterHash": "009cb660135301b046e4df8d9abfb452dcd96a3ef207effa7ed4d475a42e5d35"
+  },
+  "comparableApi149Networks": {
+    "beforeCount": 6,
+    "afterCount": 6,
+    "exactTypedComparableEqual": true,
+    "changedIds": [],
+    "beforeHash": "6771dbd8cc5d42c45efe80534102f0832040907a36e7adf103dbafc94cf8a3be",
+    "afterHash": "6771dbd8cc5d42c45efe80534102f0832040907a36e7adf103dbafc94cf8a3be"
+  },
+  "defaultBridge": {
+    "oldDefaultBridgeId": "09a929d8025c3f186d5a8586ee40f2ff1018007feffc833e4e5bcece0959457d",
+    "newDefaultBridgeId": "e95d45b0e699a48b9ed3a1e2787b6675869f01bee4531b87755cf45520962ed4"
+  },
+  "originalStrictComparison": {
+    "status": "BLOCKED",
+    "rawImageRecordsWithShapeDifferences": 71,
+    "rawNetworkRecordsWithAddedStatus": 6,
+    "cacheRecordsWithRelativeAgeDifferences": 12,
+    "preservedAsSeparateOriginalResult": true
+  },
+  "nativeStatusAndCacheTelemetry": {
+    "checkedAt": "2026-10-13T21:36:31.703154+00:00",
+    "networkStatusSource": "https://github.com/moby/moby/blob/master/api/docs/CHANGELOG.md#v152-api-changes",
+    "nativeNetworkStatus": [
+      {
+        "networkName": "capsule-zero-docker-deploy_default",
+        "currentEndpointCount": 0,
+        "beforeEndpointCount": 0,
+        "configuredPoolCount": 1,
+        "statusPoolCount": 1,
+        "statusPoolsCoverConfigured": true,
+        "poolChecks": [
+          {
+            "prefixLength": 16,
+            "family": 4,
+            "poolAddressCount": 65536,
+            "matchesConfiguredPool": true,
+            "gatewayInsidePool": true,
+            "IPsInUse": 3,
+            "DynamicIPsAvailable": 65533,
+            "exactIntegerTypes": true,
+            "nonnegativeWithinPool": true,
+            "unconnectedGatewayAndReservedOnly": true
+          }
+        ],
+        "hostNoneEmptyIPAM": true
+      },
+      {
+        "networkName": "capsule-zero_internal",
+        "currentEndpointCount": 0,
+        "beforeEndpointCount": 0,
+        "configuredPoolCount": 1,
+        "statusPoolCount": 1,
+        "statusPoolsCoverConfigured": true,
+        "poolChecks": [
+          {
+            "prefixLength": 16,
+            "family": 4,
+            "poolAddressCount": 65536,
+            "matchesConfiguredPool": true,
+            "gatewayInsidePool": true,
+            "IPsInUse": 3,
+            "DynamicIPsAvailable": 65533,
+            "exactIntegerTypes": true,
+            "nonnegativeWithinPool": true,
+            "unconnectedGatewayAndReservedOnly": true
+          }
+        ],
+        "hostNoneEmptyIPAM": true
+      },
+      {
+        "networkName": "community-bot-local_default",
+        "currentEndpointCount": 0,
+        "beforeEndpointCount": 0,
+        "configuredPoolCount": 1,
+        "statusPoolCount": 1,
+        "statusPoolsCoverConfigured": true,
+        "poolChecks": [
+          {
+            "prefixLength": 16,
+            "family": 4,
+            "poolAddressCount": 65536,
+            "matchesConfiguredPool": true,
+            "gatewayInsidePool": true,
+            "IPsInUse": 3,
+            "DynamicIPsAvailable": 65533,
+            "exactIntegerTypes": true,
+            "nonnegativeWithinPool": true,
+            "unconnectedGatewayAndReservedOnly": true
+          }
+        ],
+        "hostNoneEmptyIPAM": true
+      },
+      {
+        "networkName": "host",
+        "currentEndpointCount": 0,
+        "beforeEndpointCount": 0,
+        "configuredPoolCount": 0,
+        "statusPoolCount": 0,
+        "statusPoolsCoverConfigured": true,
+        "poolChecks": [],
+        "hostNoneEmptyIPAM": true
+      },
+      {
+        "networkName": "bridge",
+        "currentEndpointCount": 0,
+        "beforeEndpointCount": 0,
+        "configuredPoolCount": 1,
+        "statusPoolCount": 1,
+        "statusPoolsCoverConfigured": true,
+        "poolChecks": [
+          {
+            "prefixLength": 16,
+            "family": 4,
+            "poolAddressCount": 65536,
+            "matchesConfiguredPool": true,
+            "gatewayInsidePool": true,
+            "IPsInUse": 3,
+            "DynamicIPsAvailable": 65533,
+            "exactIntegerTypes": true,
+            "nonnegativeWithinPool": true,
+            "unconnectedGatewayAndReservedOnly": true
+          }
+        ],
+        "hostNoneEmptyIPAM": true
+      },
+      {
+        "networkName": "none",
+        "currentEndpointCount": 0,
+        "beforeEndpointCount": 0,
+        "configuredPoolCount": 0,
+        "statusPoolCount": 0,
+        "statusPoolsCoverConfigured": true,
+        "poolChecks": [],
+        "hostNoneEmptyIPAM": true
+      }
+    ],
+    "all9ContainersRemainStopped": true,
+    "cacheAll413MaterialPropertiesEqual": true,
+    "cacheMaterialChangedIds": [],
+    "beforeSnapshotAt": "2026-10-13T21:18:24.256074+00:00",
+    "afterSnapshotAt": "2026-10-13T21:27:13.422589+00:00",
+    "historicalNegotiatedApiAndRawCacheTimestamps": "not captured, cannot reconstruct",
+    "buildAllowed": false,
+    "cacheAgeProof": [
+      {
+        "cacheId": "l92z94awvvci3iuis89o0ueiy",
+        "beforeDisplayAge": "20 hours ago",
+        "afterDisplayAge": "21 hours ago",
+        "currentRawLastUsedAt": "2026-10-13T00:54:49.098288345Z",
+        "expectedBeforeUsingCurrentRawTimestamp": "20 hours ago",
+        "expectedAfterUsingCurrentRawTimestamp": "21 hours ago",
+        "bothLabelsMatchCurrentRawFormatter": true
+      },
+      {
+        "cacheId": "ophnfec6zwrypa6b47whzgzu9",
+        "beforeDisplayAge": "20 hours ago",
+        "afterDisplayAge": "21 hours ago",
+        "currentRawLastUsedAt": "2026-10-13T00:54:49.099021804Z",
+        "expectedBeforeUsingCurrentRawTimestamp": "20 hours ago",
+        "expectedAfterUsingCurrentRawTimestamp": "21 hours ago",
+        "bothLabelsMatchCurrentRawFormatter": true
+      },
+      {
+        "cacheId": "r6ysi7uwq2gpw9bb85uzzhv3s",
+        "beforeDisplayAge": "2 hours ago",
+        "afterDisplayAge": "3 hours ago",
+        "currentRawLastUsedAt": "2026-10-13T18:53:37.666508424Z",
+        "expectedBeforeUsingCurrentRawTimestamp": "2 hours ago",
+        "expectedAfterUsingCurrentRawTimestamp": "3 hours ago",
+        "bothLabelsMatchCurrentRawFormatter": true
+      },
+      {
+        "cacheId": "uqyuusd9a7n2dotn1jw8klj4z",
+        "beforeDisplayAge": "2 hours ago",
+        "afterDisplayAge": "3 hours ago",
+        "currentRawLastUsedAt": "2026-10-13T18:55:25.180126209Z",
+        "expectedBeforeUsingCurrentRawTimestamp": "2 hours ago",
+        "expectedAfterUsingCurrentRawTimestamp": "3 hours ago",
+        "bothLabelsMatchCurrentRawFormatter": true
+      },
+      {
+        "cacheId": "v03djv0gxjlss5qy7v5hmwq0d",
+        "beforeDisplayAge": "20 hours ago",
+        "afterDisplayAge": "21 hours ago",
+        "currentRawLastUsedAt": "2026-10-13T00:54:49.101764137Z",
+        "expectedBeforeUsingCurrentRawTimestamp": "20 hours ago",
+        "expectedAfterUsingCurrentRawTimestamp": "21 hours ago",
+        "bothLabelsMatchCurrentRawFormatter": true
+      },
+      {
+        "cacheId": "mvtka51lxv9p73gtj3akgcn50",
+        "beforeDisplayAge": "2 hours ago",
+        "afterDisplayAge": "3 hours ago",
+        "currentRawLastUsedAt": "2026-10-13T18:53:37.668422757Z",
+        "expectedBeforeUsingCurrentRawTimestamp": "2 hours ago",
+        "expectedAfterUsingCurrentRawTimestamp": "3 hours ago",
+        "bothLabelsMatchCurrentRawFormatter": true
+      },
+      {
+        "cacheId": "4um0rty9lv3opr61bk1lad818",
+        "beforeDisplayAge": "2 hours ago",
+        "afterDisplayAge": "3 hours ago",
+        "currentRawLastUsedAt": "2026-10-13T18:55:25.175890501Z",
+        "expectedBeforeUsingCurrentRawTimestamp": "2 hours ago",
+        "expectedAfterUsingCurrentRawTimestamp": "3 hours ago",
+        "bothLabelsMatchCurrentRawFormatter": true
+      },
+      {
+        "cacheId": "equg8yxku6qreoczaxuux10nr",
+        "beforeDisplayAge": "2 hours ago",
+        "afterDisplayAge": "3 hours ago",
+        "currentRawLastUsedAt": "2026-10-13T18:55:13.563438176Z",
+        "expectedBeforeUsingCurrentRawTimestamp": "2 hours ago",
+        "expectedAfterUsingCurrentRawTimestamp": "3 hours ago",
+        "bothLabelsMatchCurrentRawFormatter": true
+      },
+      {
+        "cacheId": "x6vdgrhk79j1yb1dyt4qhg9uh",
+        "beforeDisplayAge": "2 hours ago",
+        "afterDisplayAge": "3 hours ago",
+        "currentRawLastUsedAt": "2026-10-13T18:53:37.670221007Z",
+        "expectedBeforeUsingCurrentRawTimestamp": "2 hours ago",
+        "expectedAfterUsingCurrentRawTimestamp": "3 hours ago",
+        "bothLabelsMatchCurrentRawFormatter": true
+      },
+      {
+        "cacheId": "utpzw5z78nzxwnwuazle7cn90",
+        "beforeDisplayAge": "2 hours ago",
+        "afterDisplayAge": "3 hours ago",
+        "currentRawLastUsedAt": "2026-10-13T18:55:25.178938876Z",
+        "expectedBeforeUsingCurrentRawTimestamp": "2 hours ago",
+        "expectedAfterUsingCurrentRawTimestamp": "3 hours ago",
+        "bothLabelsMatchCurrentRawFormatter": true
+      },
+      {
+        "cacheId": "pjwnenblt6r7ihj5ojsbswd5q",
+        "beforeDisplayAge": "20 hours ago",
+        "afterDisplayAge": "21 hours ago",
+        "currentRawLastUsedAt": "2026-10-13T00:55:54.764739959Z",
+        "expectedBeforeUsingCurrentRawTimestamp": "20 hours ago",
+        "expectedAfterUsingCurrentRawTimestamp": "21 hours ago",
+        "bothLabelsMatchCurrentRawFormatter": true
+      },
+      {
+        "cacheId": "rxeugak1xc23h2rg0jgm85vdj",
+        "beforeDisplayAge": "2 hours ago",
+        "afterDisplayAge": "3 hours ago",
+        "currentRawLastUsedAt": "2026-10-13T18:53:37.66220434Z",
+        "expectedBeforeUsingCurrentRawTimestamp": "2 hours ago",
+        "expectedAfterUsingCurrentRawTimestamp": "3 hours ago",
+        "bothLabelsMatchCurrentRawFormatter": true
+      }
+    ],
+    "all12LabelPairsMatchActualCurrentRawFormatting": true,
+    "rawCurrentCacheCount": 413,
+    "installedBuildx": "v0.33.0-desktop.1 7f91f038ac14cbf5c4b2a6b76470860814424da1",
+    "installedDesktopCommitNotPubliclyAvailable": true,
+    "formatterPrimarySource": {
+      "url": "https://github.com/docker/buildx/blob/master/commands/diskusage.go",
+      "sha256": "a869c0663cf1a232c48fe3fe8c8b1328cf3e982ee4891dbfef5964f7061ca600",
+      "behavior": "LastUsedAt uses units.HumanDuration(time.Since(actual timestamp)) + ago; hours use floor(durationHours+0.5)",
+      "unitsURL": "https://github.com/docker/go-units/blob/main/duration.go"
+    },
+    "status": "READ-ONLY EVIDENCE COMPLETE; Orchestrator review required; buildAllowed false",
+    "historicalRawTimestampEqualityProved": false,
+    "networkStatusBoundary": {
+      "api151StatusAbsentAll6": true,
+      "api152StatusPresentAll6": true,
+      "api152StatusExactNativeAll6": true
+    },
+    "currentContext": {
+      "name": "desktop-linux",
+      "endpoint": "unix:///Users/kristina.kurashova/.docker/run/docker.sock",
+      "serverVersion": "29.4.3",
+      "clientServerApi": "1.54",
+      "minimumApi": "1.40",
+      "comparableRequestApi": "1.49",
+      "statusBoundaryRequests": [
+        "1.51",
+        "1.52"
+      ],
+      "historicalNegotiationNotCaptured": true,
+      "privateCurrentContextHash": "916fd4dc5f0a8c2d3178143fc94cec721867f7d50999271906ab84ccb3e14938"
+    }
+  },
+  "storagePathsUnchanged": true,
+  "serverVersionUnchanged": true,
+  "zeroActiveBeforeAfter": true,
+  "probesRemoved": true,
+  "logicalBytesBefore": 68719476736,
+  "logicalBytesAfter": 77309411328,
+  "allocatedBytesBefore": 59868741632,
+  "allocatedBytesAfter": 59868897280,
+  "allocatedGrowthBytes": 155648,
+  "measuredAfterHostFreeBytes": 6356119552,
+  "measuredAfterBackingFreeBytes": 12800696320,
+  "privatePayloadsCommitted": false,
+  "buildAllowed": false,
+  "limitation": "Historical negotiated API/raw cache timestamps unrecorded; original raw comparison remains BLOCKED. Comparable typed equality and current telemetry are separate read-only evidence, not Docker acceptance or proof of prior raw timestamps.",
+  "consistentCurrentEpochComparison": {
+    "checkedAt": "2026-10-13T21:51:17.009233+00:00",
+    "startEpoch": {
+      "capturedAt": "2026-10-13T21:49:35.473492+00:00",
+      "bridgeId": "f17f9beaf4720ad69e3a32590809184b37d06fddc84c3d27ab2125f810800ef3",
+      "bridgeCreated": "2026-10-13T21:36:48.32025875Z",
+      "serverVersion": "29.4.3",
+      "context": "desktop-linux"
+    },
+    "finishEpoch": {
+      "capturedAt": "2026-10-13T21:49:36.783631+00:00",
+      "bridgeId": "f17f9beaf4720ad69e3a32590809184b37d06fddc84c3d27ab2125f810800ef3",
+      "bridgeCreated": "2026-10-13T21:36:48.32025875Z",
+      "serverVersion": "29.4.3",
+      "context": "desktop-linux"
+    },
+    "consistentEpoch": true,
+    "privateMode": "0600",
+    "privateEvidence": ".cache/image-qa/ticket-upscale/docker-t005i-epoch-private.json",
+    "originalStrictComparisonPreserved": "docker-t005f-comparison-safe.json",
+    "status": "SEMANTIC_PRESERVATION_PASS_REVIEW_PENDING",
+    "buildAllowed": false,
+    "beforeCheckedAt": "2026-10-13T21:18:24.256074+00:00",
+    "recoveryCheckedAt": "2026-10-13T21:27:13.422589+00:00",
+    "currentCheckedAt": "2026-10-13T21:49:36.485932+00:00",
+    "containersVsBefore": {
+      "beforeCount": 9,
+      "currentCount": 9,
+      "missing": [],
+      "added": [],
+      "changed": [],
+      "equal": true,
+      "beforeHash": "1acefd8674c850227343086116e38a6681b21837ff8a020230f1f33562168c4f",
+      "currentHash": "1acefd8674c850227343086116e38a6681b21837ff8a020230f1f33562168c4f"
+    },
+    "containersVsRecovery": {
+      "beforeCount": 9,
+      "currentCount": 9,
+      "missing": [],
+      "added": [],
+      "changed": [],
+      "equal": true,
+      "beforeHash": "1acefd8674c850227343086116e38a6681b21837ff8a020230f1f33562168c4f",
+      "currentHash": "1acefd8674c850227343086116e38a6681b21837ff8a020230f1f33562168c4f"
+    },
+    "volumesVsBefore": {
+      "beforeCount": 49,
+      "currentCount": 49,
+      "missing": [],
+      "added": [],
+      "changed": [],
+      "equal": true,
+      "beforeHash": "d9506c3a99f4b661b0cba1a0ab0997412ed65fec12db84f49ec4011e506b53d4",
+      "currentHash": "d9506c3a99f4b661b0cba1a0ab0997412ed65fec12db84f49ec4011e506b53d4"
+    },
+    "volumesVsRecovery": {
+      "beforeCount": 49,
+      "currentCount": 49,
+      "missing": [],
+      "added": [],
+      "changed": [],
+      "equal": true,
+      "beforeHash": "d9506c3a99f4b661b0cba1a0ab0997412ed65fec12db84f49ec4011e506b53d4",
+      "currentHash": "d9506c3a99f4b661b0cba1a0ab0997412ed65fec12db84f49ec4011e506b53d4"
+    },
+    "imagesApi149VsBefore": {
+      "beforeCount": 71,
+      "currentCount": 71,
+      "missing": [],
+      "added": [],
+      "changed": [],
+      "equal": true,
+      "beforeHash": "f82cfc6d4402028dbbf96fea6aa683a7c5b2cbeb23dba59f926f76e01e44ab48",
+      "currentHash": "f82cfc6d4402028dbbf96fea6aa683a7c5b2cbeb23dba59f926f76e01e44ab48"
+    },
+    "imagesNativeVsRecovery": {
+      "beforeCount": 71,
+      "currentCount": 71,
+      "missing": [],
+      "added": [],
+      "changed": [],
+      "equal": true,
+      "beforeHash": "380f3770233e4b944c333296369c2fb42dc4d074cb582adc419bb77d0d4e4e70",
+      "currentHash": "380f3770233e4b944c333296369c2fb42dc4d074cb582adc419bb77d0d4e4e70"
+    },
+    "networksApi149VsBefore": {
+      "beforeCount": 6,
+      "currentCount": 6,
+      "missing": [],
+      "added": [],
+      "changed": [],
+      "equal": true,
+      "beforeHash": "be1a0bb7a5286b569b31b9361d65dde9746d3aaf1613025eed0444970ee5dad0",
+      "currentHash": "be1a0bb7a5286b569b31b9361d65dde9746d3aaf1613025eed0444970ee5dad0"
+    },
+    "networksNativeVsRecovery": {
+      "beforeCount": 6,
+      "currentCount": 6,
+      "missing": [],
+      "added": [],
+      "changed": [],
+      "equal": true,
+      "beforeHash": "5c1356e32da7a0c3b17701ce233dfd9b637339943ff16662bbbbe6700d619052",
+      "currentHash": "5c1356e32da7a0c3b17701ce233dfd9b637339943ff16662bbbbe6700d619052"
+    },
+    "cacheMaterialVsBefore": {
+      "beforeCount": 413,
+      "currentCount": 413,
+      "missing": [],
+      "added": [],
+      "changed": [],
+      "equal": true,
+      "beforeHash": "c3900aa5bdddeda95e6d2dde27a9f814fa77a4dd4f9f6db12de117e777130cea",
+      "currentHash": "c3900aa5bdddeda95e6d2dde27a9f814fa77a4dd4f9f6db12de117e777130cea"
+    },
+    "cacheMaterialVsRecovery": {
+      "beforeCount": 413,
+      "currentCount": 413,
+      "missing": [],
+      "added": [],
+      "changed": [],
+      "equal": true,
+      "beforeHash": "c3900aa5bdddeda95e6d2dde27a9f814fa77a4dd4f9f6db12de117e777130cea",
+      "currentHash": "c3900aa5bdddeda95e6d2dde27a9f814fa77a4dd4f9f6db12de117e777130cea"
+    },
+    "cacheRawTelemetryVsPrior": {
+      "beforeCount": 413,
+      "currentCount": 413,
+      "missing": [],
+      "added": [],
+      "changed": [],
+      "equal": true,
+      "beforeHash": "d8a15a4041bd210059df853e01ee345137683071895df80716829a67ad245212",
+      "currentHash": "d8a15a4041bd210059df853e01ee345137683071895df80716829a67ad245212"
+    },
+    "relativeAgeProof": [
+      {
+        "baselineAt": "2026-10-13T21:18:24.256074+00:00",
+        "cacheId": "1oquor1bma7f9o3amuf6t9lzz",
+        "beforeAge": "21 hours ago",
+        "currentAge": "22 hours ago",
+        "currentRawTimestamp": "2026-10-13T00:08:27.634087419Z",
+        "expectedBeforeUsingCurrentRaw": "21 hours ago",
+        "expectedCurrentUsingCurrentRaw": "22 hours ago",
+        "exactCompletionTimestampLabelsMatch": true,
+        "historicalCommandWindowStart": "2026-10-13T21:18:24.256074+00:00",
+        "historicalCommandWindowEnd": "2026-10-13T21:18:24.256074+00:00",
+        "windowStartFormattedAge": "21 hours ago",
+        "historicalLabelWithinBoundedWindow": true,
+        "matches": true
+      },
+      {
+        "baselineAt": "2026-10-13T21:18:24.256074+00:00",
+        "cacheId": "l92z94awvvci3iuis89o0ueiy",
+        "beforeAge": "20 hours ago",
+        "currentAge": "21 hours ago",
+        "currentRawTimestamp": "2026-10-13T00:54:49.098288345Z",
+        "expectedBeforeUsingCurrentRaw": "20 hours ago",
+        "expectedCurrentUsingCurrentRaw": "21 hours ago",
+        "exactCompletionTimestampLabelsMatch": true,
+        "historicalCommandWindowStart": "2026-10-13T21:18:24.256074+00:00",
+        "historicalCommandWindowEnd": "2026-10-13T21:18:24.256074+00:00",
+        "windowStartFormattedAge": "20 hours ago",
+        "historicalLabelWithinBoundedWindow": true,
+        "matches": true
+      },
+      {
+        "baselineAt": "2026-10-13T21:18:24.256074+00:00",
+        "cacheId": "vxvmb0ywl0a27gfpl5al0w3d5",
+        "beforeAge": "21 hours ago",
+        "currentAge": "22 hours ago",
+        "currentRawTimestamp": "2026-10-13T00:06:29.121669378Z",
+        "expectedBeforeUsingCurrentRaw": "21 hours ago",
+        "expectedCurrentUsingCurrentRaw": "22 hours ago",
+        "exactCompletionTimestampLabelsMatch": true,
+        "historicalCommandWindowStart": "2026-10-13T21:18:24.256074+00:00",
+        "historicalCommandWindowEnd": "2026-10-13T21:18:24.256074+00:00",
+        "windowStartFormattedAge": "21 hours ago",
+        "historicalLabelWithinBoundedWindow": true,
+        "matches": true
+      },
+      {
+        "baselineAt": "2026-10-13T21:18:24.256074+00:00",
+        "cacheId": "ophnfec6zwrypa6b47whzgzu9",
+        "beforeAge": "20 hours ago",
+        "currentAge": "21 hours ago",
+        "currentRawTimestamp": "2026-10-13T00:54:49.099021804Z",
+        "expectedBeforeUsingCurrentRaw": "20 hours ago",
+        "expectedCurrentUsingCurrentRaw": "21 hours ago",
+        "exactCompletionTimestampLabelsMatch": true,
+        "historicalCommandWindowStart": "2026-10-13T21:18:24.256074+00:00",
+        "historicalCommandWindowEnd": "2026-10-13T21:18:24.256074+00:00",
+        "windowStartFormattedAge": "20 hours ago",
+        "historicalLabelWithinBoundedWindow": true,
+        "matches": true
+      },
+      {
+        "baselineAt": "2026-10-13T21:18:24.256074+00:00",
+        "cacheId": "r6ysi7uwq2gpw9bb85uzzhv3s",
+        "beforeAge": "2 hours ago",
+        "currentAge": "3 hours ago",
+        "currentRawTimestamp": "2026-10-13T18:53:37.666508424Z",
+        "expectedBeforeUsingCurrentRaw": "2 hours ago",
+        "expectedCurrentUsingCurrentRaw": "3 hours ago",
+        "exactCompletionTimestampLabelsMatch": true,
+        "historicalCommandWindowStart": "2026-10-13T21:18:24.256074+00:00",
+        "historicalCommandWindowEnd": "2026-10-13T21:18:24.256074+00:00",
+        "windowStartFormattedAge": "2 hours ago",
+        "historicalLabelWithinBoundedWindow": true,
+        "matches": true
+      },
+      {
+        "baselineAt": "2026-10-13T21:18:24.256074+00:00",
+        "cacheId": "uqyuusd9a7n2dotn1jw8klj4z",
+        "beforeAge": "2 hours ago",
+        "currentAge": "3 hours ago",
+        "currentRawTimestamp": "2026-10-13T18:55:25.180126209Z",
+        "expectedBeforeUsingCurrentRaw": "2 hours ago",
+        "expectedCurrentUsingCurrentRaw": "3 hours ago",
+        "exactCompletionTimestampLabelsMatch": true,
+        "historicalCommandWindowStart": "2026-10-13T21:18:24.256074+00:00",
+        "historicalCommandWindowEnd": "2026-10-13T21:18:24.256074+00:00",
+        "windowStartFormattedAge": "2 hours ago",
+        "historicalLabelWithinBoundedWindow": true,
+        "matches": true
+      },
+      {
+        "baselineAt": "2026-10-13T21:18:24.256074+00:00",
+        "cacheId": "krux2bkur0ecvvw2ltuhc1d7c",
+        "beforeAge": "20 hours ago",
+        "currentAge": "21 hours ago",
+        "currentRawTimestamp": "2026-10-13T00:57:13.291459217Z",
+        "expectedBeforeUsingCurrentRaw": "20 hours ago",
+        "expectedCurrentUsingCurrentRaw": "21 hours ago",
+        "exactCompletionTimestampLabelsMatch": true,
+        "historicalCommandWindowStart": "2026-10-13T21:18:24.256074+00:00",
+        "historicalCommandWindowEnd": "2026-10-13T21:18:24.256074+00:00",
+        "windowStartFormattedAge": "20 hours ago",
+        "historicalLabelWithinBoundedWindow": true,
+        "matches": true
+      },
+      {
+        "baselineAt": "2026-10-13T21:18:24.256074+00:00",
+        "cacheId": "zkrnaliumrb2tom5x0aae854n",
+        "beforeAge": "21 hours ago",
+        "currentAge": "22 hours ago",
+        "currentRawTimestamp": "2026-10-13T00:08:27.611716336Z",
+        "expectedBeforeUsingCurrentRaw": "21 hours ago",
+        "expectedCurrentUsingCurrentRaw": "22 hours ago",
+        "exactCompletionTimestampLabelsMatch": true,
+        "historicalCommandWindowStart": "2026-10-13T21:18:24.256074+00:00",
+        "historicalCommandWindowEnd": "2026-10-13T21:18:24.256074+00:00",
+        "windowStartFormattedAge": "21 hours ago",
+        "historicalLabelWithinBoundedWindow": true,
+        "matches": true
+      },
+      {
+        "baselineAt": "2026-10-13T21:18:24.256074+00:00",
+        "cacheId": "lpg4t51v49oll0kr1fmlqzept",
+        "beforeAge": "21 hours ago",
+        "currentAge": "22 hours ago",
+        "currentRawTimestamp": "2026-10-13T00:06:29.112394461Z",
+        "expectedBeforeUsingCurrentRaw": "21 hours ago",
+        "expectedCurrentUsingCurrentRaw": "22 hours ago",
+        "exactCompletionTimestampLabelsMatch": true,
+        "historicalCommandWindowStart": "2026-10-13T21:18:24.256074+00:00",
+        "historicalCommandWindowEnd": "2026-10-13T21:18:24.256074+00:00",
+        "windowStartFormattedAge": "21 hours ago",
+        "historicalLabelWithinBoundedWindow": true,
+        "matches": true
+      },
+      {
+        "baselineAt": "2026-10-13T21:18:24.256074+00:00",
+        "cacheId": "v03djv0gxjlss5qy7v5hmwq0d",
+        "beforeAge": "20 hours ago",
+        "currentAge": "21 hours ago",
+        "currentRawTimestamp": "2026-10-13T00:54:49.101764137Z",
+        "expectedBeforeUsingCurrentRaw": "20 hours ago",
+        "expectedCurrentUsingCurrentRaw": "21 hours ago",
+        "exactCompletionTimestampLabelsMatch": true,
+        "historicalCommandWindowStart": "2026-10-13T21:18:24.256074+00:00",
+        "historicalCommandWindowEnd": "2026-10-13T21:18:24.256074+00:00",
+        "windowStartFormattedAge": "20 hours ago",
+        "historicalLabelWithinBoundedWindow": true,
+        "matches": true
+      },
+      {
+        "baselineAt": "2026-10-13T21:18:24.256074+00:00",
+        "cacheId": "mvtka51lxv9p73gtj3akgcn50",
+        "beforeAge": "2 hours ago",
+        "currentAge": "3 hours ago",
+        "currentRawTimestamp": "2026-10-13T18:53:37.668422757Z",
+        "expectedBeforeUsingCurrentRaw": "2 hours ago",
+        "expectedCurrentUsingCurrentRaw": "3 hours ago",
+        "exactCompletionTimestampLabelsMatch": true,
+        "historicalCommandWindowStart": "2026-10-13T21:18:24.256074+00:00",
+        "historicalCommandWindowEnd": "2026-10-13T21:18:24.256074+00:00",
+        "windowStartFormattedAge": "2 hours ago",
+        "historicalLabelWithinBoundedWindow": true,
+        "matches": true
+      },
+      {
+        "baselineAt": "2026-10-13T21:18:24.256074+00:00",
+        "cacheId": "4um0rty9lv3opr61bk1lad818",
+        "beforeAge": "2 hours ago",
+        "currentAge": "3 hours ago",
+        "currentRawTimestamp": "2026-10-13T18:55:25.175890501Z",
+        "expectedBeforeUsingCurrentRaw": "2 hours ago",
+        "expectedCurrentUsingCurrentRaw": "3 hours ago",
+        "exactCompletionTimestampLabelsMatch": true,
+        "historicalCommandWindowStart": "2026-10-13T21:18:24.256074+00:00",
+        "historicalCommandWindowEnd": "2026-10-13T21:18:24.256074+00:00",
+        "windowStartFormattedAge": "2 hours ago",
+        "historicalLabelWithinBoundedWindow": true,
+        "matches": true
+      },
+      {
+        "baselineAt": "2026-10-13T21:18:24.256074+00:00",
+        "cacheId": "equg8yxku6qreoczaxuux10nr",
+        "beforeAge": "2 hours ago",
+        "currentAge": "3 hours ago",
+        "currentRawTimestamp": "2026-10-13T18:55:13.563438176Z",
+        "expectedBeforeUsingCurrentRaw": "2 hours ago",
+        "expectedCurrentUsingCurrentRaw": "3 hours ago",
+        "exactCompletionTimestampLabelsMatch": true,
+        "historicalCommandWindowStart": "2026-10-13T21:18:24.256074+00:00",
+        "historicalCommandWindowEnd": "2026-10-13T21:18:24.256074+00:00",
+        "windowStartFormattedAge": "2 hours ago",
+        "historicalLabelWithinBoundedWindow": true,
+        "matches": true
+      },
+      {
+        "baselineAt": "2026-10-13T21:18:24.256074+00:00",
+        "cacheId": "21dkfnpeu0cy9zsqaf7hopuxh",
+        "beforeAge": "21 hours ago",
+        "currentAge": "22 hours ago",
+        "currentRawTimestamp": "2026-10-13T00:08:27.614853461Z",
+        "expectedBeforeUsingCurrentRaw": "21 hours ago",
+        "expectedCurrentUsingCurrentRaw": "22 hours ago",
+        "exactCompletionTimestampLabelsMatch": true,
+        "historicalCommandWindowStart": "2026-10-13T21:18:24.256074+00:00",
+        "historicalCommandWindowEnd": "2026-10-13T21:18:24.256074+00:00",
+        "windowStartFormattedAge": "21 hours ago",
+        "historicalLabelWithinBoundedWindow": true,
+        "matches": true
+      },
+      {
+        "baselineAt": "2026-10-13T21:18:24.256074+00:00",
+        "cacheId": "00qafqlrvted7u0kbklm25is1",
+        "beforeAge": "20 hours ago",
+        "currentAge": "21 hours ago",
+        "currentRawTimestamp": "2026-10-13T00:57:13.287929925Z",
+        "expectedBeforeUsingCurrentRaw": "20 hours ago",
+        "expectedCurrentUsingCurrentRaw": "21 hours ago",
+        "exactCompletionTimestampLabelsMatch": true,
+        "historicalCommandWindowStart": "2026-10-13T21:18:24.256074+00:00",
+        "historicalCommandWindowEnd": "2026-10-13T21:18:24.256074+00:00",
+        "windowStartFormattedAge": "20 hours ago",
+        "historicalLabelWithinBoundedWindow": true,
+        "matches": true
+      },
+      {
+        "baselineAt": "2026-10-13T21:18:24.256074+00:00",
+        "cacheId": "x6vdgrhk79j1yb1dyt4qhg9uh",
+        "beforeAge": "2 hours ago",
+        "currentAge": "3 hours ago",
+        "currentRawTimestamp": "2026-10-13T18:53:37.670221007Z",
+        "expectedBeforeUsingCurrentRaw": "2 hours ago",
+        "expectedCurrentUsingCurrentRaw": "3 hours ago",
+        "exactCompletionTimestampLabelsMatch": true,
+        "historicalCommandWindowStart": "2026-10-13T21:18:24.256074+00:00",
+        "historicalCommandWindowEnd": "2026-10-13T21:18:24.256074+00:00",
+        "windowStartFormattedAge": "2 hours ago",
+        "historicalLabelWithinBoundedWindow": true,
+        "matches": true
+      },
+      {
+        "baselineAt": "2026-10-13T21:18:24.256074+00:00",
+        "cacheId": "utpzw5z78nzxwnwuazle7cn90",
+        "beforeAge": "2 hours ago",
+        "currentAge": "3 hours ago",
+        "currentRawTimestamp": "2026-10-13T18:55:25.178938876Z",
+        "expectedBeforeUsingCurrentRaw": "2 hours ago",
+        "expectedCurrentUsingCurrentRaw": "3 hours ago",
+        "exactCompletionTimestampLabelsMatch": true,
+        "historicalCommandWindowStart": "2026-10-13T21:18:24.256074+00:00",
+        "historicalCommandWindowEnd": "2026-10-13T21:18:24.256074+00:00",
+        "windowStartFormattedAge": "2 hours ago",
+        "historicalLabelWithinBoundedWindow": true,
+        "matches": true
+      },
+      {
+        "baselineAt": "2026-10-13T21:18:24.256074+00:00",
+        "cacheId": "ryqkora3ej206maxj5w1215i8",
+        "beforeAge": "19 hours ago",
+        "currentAge": "20 hours ago",
+        "currentRawTimestamp": "2026-10-13T02:09:05.064206004Z",
+        "expectedBeforeUsingCurrentRaw": "19 hours ago",
+        "expectedCurrentUsingCurrentRaw": "20 hours ago",
+        "exactCompletionTimestampLabelsMatch": true,
+        "historicalCommandWindowStart": "2026-10-13T21:18:24.256074+00:00",
+        "historicalCommandWindowEnd": "2026-10-13T21:18:24.256074+00:00",
+        "windowStartFormattedAge": "19 hours ago",
+        "historicalLabelWithinBoundedWindow": true,
+        "matches": true
+      },
+      {
+        "baselineAt": "2026-10-13T21:18:24.256074+00:00",
+        "cacheId": "ty4jslls5eaoiat2aqiupzwd9",
+        "beforeAge": "21 hours ago",
+        "currentAge": "22 hours ago",
+        "currentRawTimestamp": "2026-10-13T00:08:27.621753044Z",
+        "expectedBeforeUsingCurrentRaw": "21 hours ago",
+        "expectedCurrentUsingCurrentRaw": "22 hours ago",
+        "exactCompletionTimestampLabelsMatch": true,
+        "historicalCommandWindowStart": "2026-10-13T21:18:24.256074+00:00",
+        "historicalCommandWindowEnd": "2026-10-13T21:18:24.256074+00:00",
+        "windowStartFormattedAge": "21 hours ago",
+        "historicalLabelWithinBoundedWindow": true,
+        "matches": true
+      },
+      {
+        "baselineAt": "2026-10-13T21:18:24.256074+00:00",
+        "cacheId": "tmq0q35plcc1bfjnsv5ebovfs",
+        "beforeAge": "21 hours ago",
+        "currentAge": "22 hours ago",
+        "currentRawTimestamp": "2026-10-13T00:08:27.605136419Z",
+        "expectedBeforeUsingCurrentRaw": "21 hours ago",
+        "expectedCurrentUsingCurrentRaw": "22 hours ago",
+        "exactCompletionTimestampLabelsMatch": true,
+        "historicalCommandWindowStart": "2026-10-13T21:18:24.256074+00:00",
+        "historicalCommandWindowEnd": "2026-10-13T21:18:24.256074+00:00",
+        "windowStartFormattedAge": "21 hours ago",
+        "historicalLabelWithinBoundedWindow": true,
+        "matches": true
+      },
+      {
+        "baselineAt": "2026-10-13T21:18:24.256074+00:00",
+        "cacheId": "mxm6b1bilzd8vj06jvus34hno",
+        "beforeAge": "19 hours ago",
+        "currentAge": "20 hours ago",
+        "currentRawTimestamp": "2026-10-13T02:09:05.070773087Z",
+        "expectedBeforeUsingCurrentRaw": "19 hours ago",
+        "expectedCurrentUsingCurrentRaw": "20 hours ago",
+        "exactCompletionTimestampLabelsMatch": true,
+        "historicalCommandWindowStart": "2026-10-13T21:18:24.256074+00:00",
+        "historicalCommandWindowEnd": "2026-10-13T21:18:24.256074+00:00",
+        "windowStartFormattedAge": "19 hours ago",
+        "historicalLabelWithinBoundedWindow": true,
+        "matches": true
+      },
+      {
+        "baselineAt": "2026-10-13T21:18:24.256074+00:00",
+        "cacheId": "t53kr6sl4hp9rvdhf2b74h6s3",
+        "beforeAge": "19 hours ago",
+        "currentAge": "20 hours ago",
+        "currentRawTimestamp": "2026-10-13T02:09:05.063085546Z",
+        "expectedBeforeUsingCurrentRaw": "19 hours ago",
+        "expectedCurrentUsingCurrentRaw": "20 hours ago",
+        "exactCompletionTimestampLabelsMatch": true,
+        "historicalCommandWindowStart": "2026-10-13T21:18:24.256074+00:00",
+        "historicalCommandWindowEnd": "2026-10-13T21:18:24.256074+00:00",
+        "windowStartFormattedAge": "19 hours ago",
+        "historicalLabelWithinBoundedWindow": true,
+        "matches": true
+      },
+      {
+        "baselineAt": "2026-10-13T21:18:24.256074+00:00",
+        "cacheId": "uey55m74wz47339dypnb6g8h2",
+        "beforeAge": "4 days ago",
+        "currentAge": "5 days ago",
+        "currentRawTimestamp": "2026-10-08T21:59:40.031794801Z",
+        "expectedBeforeUsingCurrentRaw": "4 days ago",
+        "expectedCurrentUsingCurrentRaw": "5 days ago",
+        "exactCompletionTimestampLabelsMatch": true,
+        "historicalCommandWindowStart": "2026-10-13T21:18:24.256074+00:00",
+        "historicalCommandWindowEnd": "2026-10-13T21:18:24.256074+00:00",
+        "windowStartFormattedAge": "4 days ago",
+        "historicalLabelWithinBoundedWindow": true,
+        "matches": true
+      },
+      {
+        "baselineAt": "2026-10-13T21:18:24.256074+00:00",
+        "cacheId": "oskltvks1oz5ip4s13epbjm7s",
+        "beforeAge": "21 hours ago",
+        "currentAge": "22 hours ago",
+        "currentRawTimestamp": "2026-10-13T00:08:27.631373419Z",
+        "expectedBeforeUsingCurrentRaw": "21 hours ago",
+        "expectedCurrentUsingCurrentRaw": "22 hours ago",
+        "exactCompletionTimestampLabelsMatch": true,
+        "historicalCommandWindowStart": "2026-10-13T21:18:24.256074+00:00",
+        "historicalCommandWindowEnd": "2026-10-13T21:18:24.256074+00:00",
+        "windowStartFormattedAge": "21 hours ago",
+        "historicalLabelWithinBoundedWindow": true,
+        "matches": true
+      },
+      {
+        "baselineAt": "2026-10-13T21:18:24.256074+00:00",
+        "cacheId": "pjwnenblt6r7ihj5ojsbswd5q",
+        "beforeAge": "20 hours ago",
+        "currentAge": "21 hours ago",
+        "currentRawTimestamp": "2026-10-13T00:55:54.764739959Z",
+        "expectedBeforeUsingCurrentRaw": "20 hours ago",
+        "expectedCurrentUsingCurrentRaw": "21 hours ago",
+        "exactCompletionTimestampLabelsMatch": true,
+        "historicalCommandWindowStart": "2026-10-13T21:18:24.256074+00:00",
+        "historicalCommandWindowEnd": "2026-10-13T21:18:24.256074+00:00",
+        "windowStartFormattedAge": "20 hours ago",
+        "historicalLabelWithinBoundedWindow": true,
+        "matches": true
+      },
+      {
+        "baselineAt": "2026-10-13T21:18:24.256074+00:00",
+        "cacheId": "vknyhtj2om9mva53aov9yj66u",
+        "beforeAge": "21 hours ago",
+        "currentAge": "22 hours ago",
+        "currentRawTimestamp": "2026-10-13T00:08:27.613415669Z",
+        "expectedBeforeUsingCurrentRaw": "21 hours ago",
+        "expectedCurrentUsingCurrentRaw": "22 hours ago",
+        "exactCompletionTimestampLabelsMatch": true,
+        "historicalCommandWindowStart": "2026-10-13T21:18:24.256074+00:00",
+        "historicalCommandWindowEnd": "2026-10-13T21:18:24.256074+00:00",
+        "windowStartFormattedAge": "21 hours ago",
+        "historicalLabelWithinBoundedWindow": true,
+        "matches": true
+      },
+      {
+        "baselineAt": "2026-10-13T21:18:24.256074+00:00",
+        "cacheId": "st7bgkqyag1g8jeqmqf37vaja",
+        "beforeAge": "4 days ago",
+        "currentAge": "5 days ago",
+        "currentRawTimestamp": "2026-10-08T21:59:40.031152843Z",
+        "expectedBeforeUsingCurrentRaw": "4 days ago",
+        "expectedCurrentUsingCurrentRaw": "5 days ago",
+        "exactCompletionTimestampLabelsMatch": true,
+        "historicalCommandWindowStart": "2026-10-13T21:18:24.256074+00:00",
+        "historicalCommandWindowEnd": "2026-10-13T21:18:24.256074+00:00",
+        "windowStartFormattedAge": "4 days ago",
+        "historicalLabelWithinBoundedWindow": true,
+        "matches": true
+      },
+      {
+        "baselineAt": "2026-10-13T21:18:24.256074+00:00",
+        "cacheId": "79u0ft9uhm2j28mkivdiwzowp",
+        "beforeAge": "4 hours ago",
+        "currentAge": "5 hours ago",
+        "currentRawTimestamp": "2026-10-13T16:59:44.69740688Z",
+        "expectedBeforeUsingCurrentRaw": "4 hours ago",
+        "expectedCurrentUsingCurrentRaw": "5 hours ago",
+        "exactCompletionTimestampLabelsMatch": true,
+        "historicalCommandWindowStart": "2026-10-13T21:18:24.256074+00:00",
+        "historicalCommandWindowEnd": "2026-10-13T21:18:24.256074+00:00",
+        "windowStartFormattedAge": "4 hours ago",
+        "historicalLabelWithinBoundedWindow": true,
+        "matches": true
+      },
+      {
+        "baselineAt": "2026-10-13T21:18:24.256074+00:00",
+        "cacheId": "12qhumyt6ee7ejx701hu49l3f",
+        "beforeAge": "19 hours ago",
+        "currentAge": "20 hours ago",
+        "currentRawTimestamp": "2026-10-13T02:11:06.336339838Z",
+        "expectedBeforeUsingCurrentRaw": "19 hours ago",
+        "expectedCurrentUsingCurrentRaw": "20 hours ago",
+        "exactCompletionTimestampLabelsMatch": true,
+        "historicalCommandWindowStart": "2026-10-13T21:18:24.256074+00:00",
+        "historicalCommandWindowEnd": "2026-10-13T21:18:24.256074+00:00",
+        "windowStartFormattedAge": "19 hours ago",
+        "historicalLabelWithinBoundedWindow": true,
+        "matches": true
+      },
+      {
+        "baselineAt": "2026-10-13T21:18:24.256074+00:00",
+        "cacheId": "wvy90x7lr6ysgegrqdqs9kfop",
+        "beforeAge": "4 days ago",
+        "currentAge": "5 days ago",
+        "currentRawTimestamp": "2026-10-08T21:59:40.02963751Z",
+        "expectedBeforeUsingCurrentRaw": "4 days ago",
+        "expectedCurrentUsingCurrentRaw": "5 days ago",
+        "exactCompletionTimestampLabelsMatch": true,
+        "historicalCommandWindowStart": "2026-10-13T21:18:24.256074+00:00",
+        "historicalCommandWindowEnd": "2026-10-13T21:18:24.256074+00:00",
+        "windowStartFormattedAge": "4 days ago",
+        "historicalLabelWithinBoundedWindow": true,
+        "matches": true
+      },
+      {
+        "baselineAt": "2026-10-13T21:18:24.256074+00:00",
+        "cacheId": "kqse2n0vpa81ppg0dgjn3yazp",
+        "beforeAge": "21 hours ago",
+        "currentAge": "22 hours ago",
+        "currentRawTimestamp": "2026-10-13T00:08:27.632610836Z",
+        "expectedBeforeUsingCurrentRaw": "21 hours ago",
+        "expectedCurrentUsingCurrentRaw": "22 hours ago",
+        "exactCompletionTimestampLabelsMatch": true,
+        "historicalCommandWindowStart": "2026-10-13T21:18:24.256074+00:00",
+        "historicalCommandWindowEnd": "2026-10-13T21:18:24.256074+00:00",
+        "windowStartFormattedAge": "21 hours ago",
+        "historicalLabelWithinBoundedWindow": true,
+        "matches": true
+      },
+      {
+        "baselineAt": "2026-10-13T21:18:24.256074+00:00",
+        "cacheId": "8ntt5s5h5vyv0y2iuu56xt9c6",
+        "beforeAge": "20 hours ago",
+        "currentAge": "21 hours ago",
+        "currentRawTimestamp": "2026-10-13T00:57:13.289342967Z",
+        "expectedBeforeUsingCurrentRaw": "20 hours ago",
+        "expectedCurrentUsingCurrentRaw": "21 hours ago",
+        "exactCompletionTimestampLabelsMatch": true,
+        "historicalCommandWindowStart": "2026-10-13T21:18:24.256074+00:00",
+        "historicalCommandWindowEnd": "2026-10-13T21:18:24.256074+00:00",
+        "windowStartFormattedAge": "20 hours ago",
+        "historicalLabelWithinBoundedWindow": true,
+        "matches": true
+      },
+      {
+        "baselineAt": "2026-10-13T21:18:24.256074+00:00",
+        "cacheId": "rxeugak1xc23h2rg0jgm85vdj",
+        "beforeAge": "2 hours ago",
+        "currentAge": "3 hours ago",
+        "currentRawTimestamp": "2026-10-13T18:53:37.66220434Z",
+        "expectedBeforeUsingCurrentRaw": "2 hours ago",
+        "expectedCurrentUsingCurrentRaw": "3 hours ago",
+        "exactCompletionTimestampLabelsMatch": true,
+        "historicalCommandWindowStart": "2026-10-13T21:18:24.256074+00:00",
+        "historicalCommandWindowEnd": "2026-10-13T21:18:24.256074+00:00",
+        "windowStartFormattedAge": "2 hours ago",
+        "historicalLabelWithinBoundedWindow": true,
+        "matches": true
+      },
+      {
+        "baselineAt": "2026-10-13T21:27:13.422589+00:00",
+        "cacheId": "1oquor1bma7f9o3amuf6t9lzz",
+        "beforeAge": "21 hours ago",
+        "currentAge": "22 hours ago",
+        "currentRawTimestamp": "2026-10-13T00:08:27.634087419Z",
+        "expectedBeforeUsingCurrentRaw": "21 hours ago",
+        "expectedCurrentUsingCurrentRaw": "22 hours ago",
+        "exactCompletionTimestampLabelsMatch": true,
+        "historicalCommandWindowStart": "2026-10-13T21:26:50.236163171Z",
+        "historicalCommandWindowEnd": "2026-10-13T21:27:13.422589+00:00",
+        "windowStartFormattedAge": "21 hours ago",
+        "historicalLabelWithinBoundedWindow": true,
+        "matches": true
+      },
+      {
+        "baselineAt": "2026-10-13T21:27:13.422589+00:00",
+        "cacheId": "vxvmb0ywl0a27gfpl5al0w3d5",
+        "beforeAge": "21 hours ago",
+        "currentAge": "22 hours ago",
+        "currentRawTimestamp": "2026-10-13T00:06:29.121669378Z",
+        "expectedBeforeUsingCurrentRaw": "21 hours ago",
+        "expectedCurrentUsingCurrentRaw": "22 hours ago",
+        "exactCompletionTimestampLabelsMatch": true,
+        "historicalCommandWindowStart": "2026-10-13T21:26:50.236163171Z",
+        "historicalCommandWindowEnd": "2026-10-13T21:27:13.422589+00:00",
+        "windowStartFormattedAge": "21 hours ago",
+        "historicalLabelWithinBoundedWindow": true,
+        "matches": true
+      },
+      {
+        "baselineAt": "2026-10-13T21:27:13.422589+00:00",
+        "cacheId": "krux2bkur0ecvvw2ltuhc1d7c",
+        "beforeAge": "20 hours ago",
+        "currentAge": "21 hours ago",
+        "currentRawTimestamp": "2026-10-13T00:57:13.291459217Z",
+        "expectedBeforeUsingCurrentRaw": "21 hours ago",
+        "expectedCurrentUsingCurrentRaw": "21 hours ago",
+        "exactCompletionTimestampLabelsMatch": false,
+        "historicalCommandWindowStart": "2026-10-13T21:26:50.236163171Z",
+        "historicalCommandWindowEnd": "2026-10-13T21:27:13.422589+00:00",
+        "windowStartFormattedAge": "20 hours ago",
+        "historicalLabelWithinBoundedWindow": true,
+        "matches": true
+      },
+      {
+        "baselineAt": "2026-10-13T21:27:13.422589+00:00",
+        "cacheId": "zkrnaliumrb2tom5x0aae854n",
+        "beforeAge": "21 hours ago",
+        "currentAge": "22 hours ago",
+        "currentRawTimestamp": "2026-10-13T00:08:27.611716336Z",
+        "expectedBeforeUsingCurrentRaw": "21 hours ago",
+        "expectedCurrentUsingCurrentRaw": "22 hours ago",
+        "exactCompletionTimestampLabelsMatch": true,
+        "historicalCommandWindowStart": "2026-10-13T21:26:50.236163171Z",
+        "historicalCommandWindowEnd": "2026-10-13T21:27:13.422589+00:00",
+        "windowStartFormattedAge": "21 hours ago",
+        "historicalLabelWithinBoundedWindow": true,
+        "matches": true
+      },
+      {
+        "baselineAt": "2026-10-13T21:27:13.422589+00:00",
+        "cacheId": "lpg4t51v49oll0kr1fmlqzept",
+        "beforeAge": "21 hours ago",
+        "currentAge": "22 hours ago",
+        "currentRawTimestamp": "2026-10-13T00:06:29.112394461Z",
+        "expectedBeforeUsingCurrentRaw": "21 hours ago",
+        "expectedCurrentUsingCurrentRaw": "22 hours ago",
+        "exactCompletionTimestampLabelsMatch": true,
+        "historicalCommandWindowStart": "2026-10-13T21:26:50.236163171Z",
+        "historicalCommandWindowEnd": "2026-10-13T21:27:13.422589+00:00",
+        "windowStartFormattedAge": "21 hours ago",
+        "historicalLabelWithinBoundedWindow": true,
+        "matches": true
+      },
+      {
+        "baselineAt": "2026-10-13T21:27:13.422589+00:00",
+        "cacheId": "21dkfnpeu0cy9zsqaf7hopuxh",
+        "beforeAge": "21 hours ago",
+        "currentAge": "22 hours ago",
+        "currentRawTimestamp": "2026-10-13T00:08:27.614853461Z",
+        "expectedBeforeUsingCurrentRaw": "21 hours ago",
+        "expectedCurrentUsingCurrentRaw": "22 hours ago",
+        "exactCompletionTimestampLabelsMatch": true,
+        "historicalCommandWindowStart": "2026-10-13T21:26:50.236163171Z",
+        "historicalCommandWindowEnd": "2026-10-13T21:27:13.422589+00:00",
+        "windowStartFormattedAge": "21 hours ago",
+        "historicalLabelWithinBoundedWindow": true,
+        "matches": true
+      },
+      {
+        "baselineAt": "2026-10-13T21:27:13.422589+00:00",
+        "cacheId": "00qafqlrvted7u0kbklm25is1",
+        "beforeAge": "20 hours ago",
+        "currentAge": "21 hours ago",
+        "currentRawTimestamp": "2026-10-13T00:57:13.287929925Z",
+        "expectedBeforeUsingCurrentRaw": "21 hours ago",
+        "expectedCurrentUsingCurrentRaw": "21 hours ago",
+        "exactCompletionTimestampLabelsMatch": false,
+        "historicalCommandWindowStart": "2026-10-13T21:26:50.236163171Z",
+        "historicalCommandWindowEnd": "2026-10-13T21:27:13.422589+00:00",
+        "windowStartFormattedAge": "20 hours ago",
+        "historicalLabelWithinBoundedWindow": true,
+        "matches": true
+      },
+      {
+        "baselineAt": "2026-10-13T21:27:13.422589+00:00",
+        "cacheId": "ryqkora3ej206maxj5w1215i8",
+        "beforeAge": "19 hours ago",
+        "currentAge": "20 hours ago",
+        "currentRawTimestamp": "2026-10-13T02:09:05.064206004Z",
+        "expectedBeforeUsingCurrentRaw": "19 hours ago",
+        "expectedCurrentUsingCurrentRaw": "20 hours ago",
+        "exactCompletionTimestampLabelsMatch": true,
+        "historicalCommandWindowStart": "2026-10-13T21:26:50.236163171Z",
+        "historicalCommandWindowEnd": "2026-10-13T21:27:13.422589+00:00",
+        "windowStartFormattedAge": "19 hours ago",
+        "historicalLabelWithinBoundedWindow": true,
+        "matches": true
+      },
+      {
+        "baselineAt": "2026-10-13T21:27:13.422589+00:00",
+        "cacheId": "ty4jslls5eaoiat2aqiupzwd9",
+        "beforeAge": "21 hours ago",
+        "currentAge": "22 hours ago",
+        "currentRawTimestamp": "2026-10-13T00:08:27.621753044Z",
+        "expectedBeforeUsingCurrentRaw": "21 hours ago",
+        "expectedCurrentUsingCurrentRaw": "22 hours ago",
+        "exactCompletionTimestampLabelsMatch": true,
+        "historicalCommandWindowStart": "2026-10-13T21:26:50.236163171Z",
+        "historicalCommandWindowEnd": "2026-10-13T21:27:13.422589+00:00",
+        "windowStartFormattedAge": "21 hours ago",
+        "historicalLabelWithinBoundedWindow": true,
+        "matches": true
+      },
+      {
+        "baselineAt": "2026-10-13T21:27:13.422589+00:00",
+        "cacheId": "tmq0q35plcc1bfjnsv5ebovfs",
+        "beforeAge": "21 hours ago",
+        "currentAge": "22 hours ago",
+        "currentRawTimestamp": "2026-10-13T00:08:27.605136419Z",
+        "expectedBeforeUsingCurrentRaw": "21 hours ago",
+        "expectedCurrentUsingCurrentRaw": "22 hours ago",
+        "exactCompletionTimestampLabelsMatch": true,
+        "historicalCommandWindowStart": "2026-10-13T21:26:50.236163171Z",
+        "historicalCommandWindowEnd": "2026-10-13T21:27:13.422589+00:00",
+        "windowStartFormattedAge": "21 hours ago",
+        "historicalLabelWithinBoundedWindow": true,
+        "matches": true
+      },
+      {
+        "baselineAt": "2026-10-13T21:27:13.422589+00:00",
+        "cacheId": "mxm6b1bilzd8vj06jvus34hno",
+        "beforeAge": "19 hours ago",
+        "currentAge": "20 hours ago",
+        "currentRawTimestamp": "2026-10-13T02:09:05.070773087Z",
+        "expectedBeforeUsingCurrentRaw": "19 hours ago",
+        "expectedCurrentUsingCurrentRaw": "20 hours ago",
+        "exactCompletionTimestampLabelsMatch": true,
+        "historicalCommandWindowStart": "2026-10-13T21:26:50.236163171Z",
+        "historicalCommandWindowEnd": "2026-10-13T21:27:13.422589+00:00",
+        "windowStartFormattedAge": "19 hours ago",
+        "historicalLabelWithinBoundedWindow": true,
+        "matches": true
+      },
+      {
+        "baselineAt": "2026-10-13T21:27:13.422589+00:00",
+        "cacheId": "t53kr6sl4hp9rvdhf2b74h6s3",
+        "beforeAge": "19 hours ago",
+        "currentAge": "20 hours ago",
+        "currentRawTimestamp": "2026-10-13T02:09:05.063085546Z",
+        "expectedBeforeUsingCurrentRaw": "19 hours ago",
+        "expectedCurrentUsingCurrentRaw": "20 hours ago",
+        "exactCompletionTimestampLabelsMatch": true,
+        "historicalCommandWindowStart": "2026-10-13T21:26:50.236163171Z",
+        "historicalCommandWindowEnd": "2026-10-13T21:27:13.422589+00:00",
+        "windowStartFormattedAge": "19 hours ago",
+        "historicalLabelWithinBoundedWindow": true,
+        "matches": true
+      },
+      {
+        "baselineAt": "2026-10-13T21:27:13.422589+00:00",
+        "cacheId": "uey55m74wz47339dypnb6g8h2",
+        "beforeAge": "4 days ago",
+        "currentAge": "5 days ago",
+        "currentRawTimestamp": "2026-10-08T21:59:40.031794801Z",
+        "expectedBeforeUsingCurrentRaw": "4 days ago",
+        "expectedCurrentUsingCurrentRaw": "5 days ago",
+        "exactCompletionTimestampLabelsMatch": true,
+        "historicalCommandWindowStart": "2026-10-13T21:26:50.236163171Z",
+        "historicalCommandWindowEnd": "2026-10-13T21:27:13.422589+00:00",
+        "windowStartFormattedAge": "4 days ago",
+        "historicalLabelWithinBoundedWindow": true,
+        "matches": true
+      },
+      {
+        "baselineAt": "2026-10-13T21:27:13.422589+00:00",
+        "cacheId": "oskltvks1oz5ip4s13epbjm7s",
+        "beforeAge": "21 hours ago",
+        "currentAge": "22 hours ago",
+        "currentRawTimestamp": "2026-10-13T00:08:27.631373419Z",
+        "expectedBeforeUsingCurrentRaw": "21 hours ago",
+        "expectedCurrentUsingCurrentRaw": "22 hours ago",
+        "exactCompletionTimestampLabelsMatch": true,
+        "historicalCommandWindowStart": "2026-10-13T21:26:50.236163171Z",
+        "historicalCommandWindowEnd": "2026-10-13T21:27:13.422589+00:00",
+        "windowStartFormattedAge": "21 hours ago",
+        "historicalLabelWithinBoundedWindow": true,
+        "matches": true
+      },
+      {
+        "baselineAt": "2026-10-13T21:27:13.422589+00:00",
+        "cacheId": "vknyhtj2om9mva53aov9yj66u",
+        "beforeAge": "21 hours ago",
+        "currentAge": "22 hours ago",
+        "currentRawTimestamp": "2026-10-13T00:08:27.613415669Z",
+        "expectedBeforeUsingCurrentRaw": "21 hours ago",
+        "expectedCurrentUsingCurrentRaw": "22 hours ago",
+        "exactCompletionTimestampLabelsMatch": true,
+        "historicalCommandWindowStart": "2026-10-13T21:26:50.236163171Z",
+        "historicalCommandWindowEnd": "2026-10-13T21:27:13.422589+00:00",
+        "windowStartFormattedAge": "21 hours ago",
+        "historicalLabelWithinBoundedWindow": true,
+        "matches": true
+      },
+      {
+        "baselineAt": "2026-10-13T21:27:13.422589+00:00",
+        "cacheId": "st7bgkqyag1g8jeqmqf37vaja",
+        "beforeAge": "4 days ago",
+        "currentAge": "5 days ago",
+        "currentRawTimestamp": "2026-10-08T21:59:40.031152843Z",
+        "expectedBeforeUsingCurrentRaw": "4 days ago",
+        "expectedCurrentUsingCurrentRaw": "5 days ago",
+        "exactCompletionTimestampLabelsMatch": true,
+        "historicalCommandWindowStart": "2026-10-13T21:26:50.236163171Z",
+        "historicalCommandWindowEnd": "2026-10-13T21:27:13.422589+00:00",
+        "windowStartFormattedAge": "4 days ago",
+        "historicalLabelWithinBoundedWindow": true,
+        "matches": true
+      },
+      {
+        "baselineAt": "2026-10-13T21:27:13.422589+00:00",
+        "cacheId": "79u0ft9uhm2j28mkivdiwzowp",
+        "beforeAge": "4 hours ago",
+        "currentAge": "5 hours ago",
+        "currentRawTimestamp": "2026-10-13T16:59:44.69740688Z",
+        "expectedBeforeUsingCurrentRaw": "4 hours ago",
+        "expectedCurrentUsingCurrentRaw": "5 hours ago",
+        "exactCompletionTimestampLabelsMatch": true,
+        "historicalCommandWindowStart": "2026-10-13T21:26:50.236163171Z",
+        "historicalCommandWindowEnd": "2026-10-13T21:27:13.422589+00:00",
+        "windowStartFormattedAge": "4 hours ago",
+        "historicalLabelWithinBoundedWindow": true,
+        "matches": true
+      },
+      {
+        "baselineAt": "2026-10-13T21:27:13.422589+00:00",
+        "cacheId": "12qhumyt6ee7ejx701hu49l3f",
+        "beforeAge": "19 hours ago",
+        "currentAge": "20 hours ago",
+        "currentRawTimestamp": "2026-10-13T02:11:06.336339838Z",
+        "expectedBeforeUsingCurrentRaw": "19 hours ago",
+        "expectedCurrentUsingCurrentRaw": "20 hours ago",
+        "exactCompletionTimestampLabelsMatch": true,
+        "historicalCommandWindowStart": "2026-10-13T21:26:50.236163171Z",
+        "historicalCommandWindowEnd": "2026-10-13T21:27:13.422589+00:00",
+        "windowStartFormattedAge": "19 hours ago",
+        "historicalLabelWithinBoundedWindow": true,
+        "matches": true
+      },
+      {
+        "baselineAt": "2026-10-13T21:27:13.422589+00:00",
+        "cacheId": "wvy90x7lr6ysgegrqdqs9kfop",
+        "beforeAge": "4 days ago",
+        "currentAge": "5 days ago",
+        "currentRawTimestamp": "2026-10-08T21:59:40.02963751Z",
+        "expectedBeforeUsingCurrentRaw": "4 days ago",
+        "expectedCurrentUsingCurrentRaw": "5 days ago",
+        "exactCompletionTimestampLabelsMatch": true,
+        "historicalCommandWindowStart": "2026-10-13T21:26:50.236163171Z",
+        "historicalCommandWindowEnd": "2026-10-13T21:27:13.422589+00:00",
+        "windowStartFormattedAge": "4 days ago",
+        "historicalLabelWithinBoundedWindow": true,
+        "matches": true
+      },
+      {
+        "baselineAt": "2026-10-13T21:27:13.422589+00:00",
+        "cacheId": "kqse2n0vpa81ppg0dgjn3yazp",
+        "beforeAge": "21 hours ago",
+        "currentAge": "22 hours ago",
+        "currentRawTimestamp": "2026-10-13T00:08:27.632610836Z",
+        "expectedBeforeUsingCurrentRaw": "21 hours ago",
+        "expectedCurrentUsingCurrentRaw": "22 hours ago",
+        "exactCompletionTimestampLabelsMatch": true,
+        "historicalCommandWindowStart": "2026-10-13T21:26:50.236163171Z",
+        "historicalCommandWindowEnd": "2026-10-13T21:27:13.422589+00:00",
+        "windowStartFormattedAge": "21 hours ago",
+        "historicalLabelWithinBoundedWindow": true,
+        "matches": true
+      },
+      {
+        "baselineAt": "2026-10-13T21:27:13.422589+00:00",
+        "cacheId": "8ntt5s5h5vyv0y2iuu56xt9c6",
+        "beforeAge": "20 hours ago",
+        "currentAge": "21 hours ago",
+        "currentRawTimestamp": "2026-10-13T00:57:13.289342967Z",
+        "expectedBeforeUsingCurrentRaw": "21 hours ago",
+        "expectedCurrentUsingCurrentRaw": "21 hours ago",
+        "exactCompletionTimestampLabelsMatch": false,
+        "historicalCommandWindowStart": "2026-10-13T21:26:50.236163171Z",
+        "historicalCommandWindowEnd": "2026-10-13T21:27:13.422589+00:00",
+        "windowStartFormattedAge": "20 hours ago",
+        "historicalLabelWithinBoundedWindow": true,
+        "matches": true
+      }
+    ],
+    "allRelativeChangesBounded": true,
+    "nativeStatusHealth": [
+      {
+        "name": "capsule-zero-docker-deploy_default",
+        "endpointCount": 0,
+        "configuredPools": 1,
+        "statusPools": 1,
+        "checks": [
+          {
+            "pool": "172.18.0.0/16",
+            "matchesConfigured": true,
+            "gatewayInPool": true,
+            "integerTypes": true,
+            "validRange": true,
+            "reservedAndGatewayOnly": true
+          }
+        ],
+        "healthy": true
+      },
+      {
+        "name": "capsule-zero_internal",
+        "endpointCount": 0,
+        "configuredPools": 1,
+        "statusPools": 1,
+        "checks": [
+          {
+            "pool": "172.19.0.0/16",
+            "matchesConfigured": true,
+            "gatewayInPool": true,
+            "integerTypes": true,
+            "validRange": true,
+            "reservedAndGatewayOnly": true
+          }
+        ],
+        "healthy": true
+      },
+      {
+        "name": "community-bot-local_default",
+        "endpointCount": 0,
+        "configuredPools": 1,
+        "statusPools": 1,
+        "checks": [
+          {
+            "pool": "172.20.0.0/16",
+            "matchesConfigured": true,
+            "gatewayInPool": true,
+            "integerTypes": true,
+            "validRange": true,
+            "reservedAndGatewayOnly": true
+          }
+        ],
+        "healthy": true
+      },
+      {
+        "name": "host",
+        "endpointCount": 0,
+        "configuredPools": 0,
+        "statusPools": 0,
+        "checks": [],
+        "healthy": true
+      },
+      {
+        "name": "none",
+        "endpointCount": 0,
+        "configuredPools": 0,
+        "statusPools": 0,
+        "checks": [],
+        "healthy": true
+      },
+      {
+        "name": "bridge",
+        "endpointCount": 0,
+        "configuredPools": 1,
+        "statusPools": 1,
+        "checks": [
+          {
+            "pool": "172.17.0.0/16",
+            "matchesConfigured": true,
+            "gatewayInPool": true,
+            "integerTypes": true,
+            "validRange": true,
+            "reservedAndGatewayOnly": true
+          }
+        ],
+        "healthy": true
+      }
+    ],
+    "settingsDeltaVsBefore": [
+      "DiskSizeMiB"
+    ],
+    "settingsExactVsRecovery": true,
+    "onlyCapacityChange": true,
+    "serverAndStoragePathsExact": true,
+    "zeroActive": true,
+    "probeRemoved": true,
+    "capacities": {
+      "hostFreeBytes": 6309638144,
+      "backingFreeBytes": 12800688128,
+      "logicalBytes": 77309411328,
+      "allocatedBytes": 59868848128,
+      "diskSizeMiB": 73728
+    },
+    "limitations": [
+      "Historical negotiated API/context and raw cache timestamps were not captured; current telemetry reproduces historical human-readable labels but does not reconstruct historical raw timestamps.",
+      "Default bridge Id/Created changes are actual evidenced cold recovery and automatic timedactivities lifecycle changes, not API serialization.",
+      "Three recovered cache display labels cross an hour-rounding threshold0.131\u20130.135seconds before final snapshot completion. Exact historical cacheDU invocation timestamps were not recorded. The recovered bridge creation\u2192snapshot completion brackets its prior sequential cacheDU command; the labels are consistent with that bounded23.187second window, not claimed exact at final completion. Current all413raw timestamp/material records equal prior21:38raw telemetry.",
+      "Original strict BLOCKED report remains unchanged; semantic preservation is distinct from Docker/application acceptance."
+    ]
+  },
+  "automaticBridgeLifecycle": {
+    "checkedAt": "2026-10-13T21:43:41.015022+00:00",
+    "mode": "0o600",
+    "events": [
+      {
+        "log": "host/monitor.log",
+        "timestamp": "2026-10-13T21:36:46.083938000Z",
+        "safeEvent": "[21:36:46.083383000Z][main.idle             ] event handler 49c97439-3145-4531-9b7c-38f490efc566: event streamer: error: EOF"
+      },
+      {
+        "log": "host/monitor.log",
+        "timestamp": "2026-10-13T21:36:46.084003000Z",
+        "safeEvent": "[21:36:46.083406000Z][main.idle             ] event handler 3b70625c-d781-4dad-8c2b-6412255b1df4: event streamer: error: EOF"
+      },
+      {
+        "log": "host/monitor.log",
+        "timestamp": "2026-10-13T21:36:46.090182000Z",
+        "safeEvent": "[21:36:46.089142000Z][main                  ] VM has started: <path> --kernel <path> --cmdline init=<path> loglevel=1 root=<path> rootfstype=erofs ro vsyscall=emulate panic=0 eth0.dhcp eth1.dhcp linuxkit.unified_cgroup_hierarchy=1 console=hvc0   virtio_net.disable_csum=1 slub_min"
+      },
+      {
+        "log": "host/monitor.log",
+        "timestamp": "2026-10-13T21:36:46.153234000Z",
+        "safeEvent": "[21:36:46.153120000Z][main                  ] [2026-10-13T21:36:46.152781000Z][com.docker.virtualization] VM has started"
+      },
+      {
+        "log": "host/monitor.log",
+        "timestamp": "2026-10-13T21:36:46.966395000Z",
+        "safeEvent": "[21:36:46.964633000Z][main.ipc              ] 3be5b0d0-PauseHDL <path> <-- 2026-10-13T18:36:46.954118291-03:00 (c4777f19) ipc ready:"
+      },
+      {
+        "log": "host/monitor.log",
+        "timestamp": "2026-10-13T21:36:46.966486000Z",
+        "safeEvent": "[21:36:46.964987000Z][main.procd            ] received state "
+      },
+      {
+        "log": "host/monitor.log",
+        "timestamp": "2026-10-13T21:36:47.091395000Z",
+        "safeEvent": "[21:36:47.091204000Z][main.engines          ] setting engine linux<path> state starting -> running"
+      },
+      {
+        "log": "host/monitor.log",
+        "timestamp": "2026-10-13T21:36:47.095412000Z",
+        "safeEvent": "[21:36:47.093896000Z][main.enginedependencies] starting forwarding dials"
+      },
+      {
+        "log": "host/monitor.log",
+        "timestamp": "2026-10-13T21:36:47.095506000Z",
+        "safeEvent": "[21:36:47.094163000Z][main.enginedependencies] starting metrics port exposure"
+      },
+      {
+        "log": "host/monitor.log",
+        "timestamp": "2026-10-13T21:36:47.107212000Z",
+        "safeEvent": "[21:36:47.107129000Z][main.engines          ] engine start complete"
+      },
+      {
+        "log": "host/monitor.log",
+        "timestamp": "2026-10-13T21:36:47.107652000Z",
+        "safeEvent": "[21:36:47.107289000Z][main.idle             ] VM started"
+      },
+      {
+        "log": "host/monitor.log",
+        "timestamp": "2026-10-13T21:36:47.107755000Z",
+        "safeEvent": "2026<path> 18:36:47 http: superfluous response.WriteHeader call from github.com<path> (eventsproxy.go:306)"
+      },
+      {
+        "log": "host/monitor.log",
+        "timestamp": "2026-10-13T21:36:47.107776000Z",
+        "safeEvent": "2026<path> 18:36:47 http: superfluous response.WriteHeader call from github.com<path> (eventsproxy.go:306)"
+      },
+      {
+        "log": "host/monitor.log",
+        "timestamp": "2026-10-13T21:36:47.107853000Z",
+        "safeEvent": "2026<path> 18:36:47 http: superfluous response.WriteHeader call from github.com<path> (eventsproxy.go:306)"
+      },
+      {
+        "log": "host/monitor.log",
+        "timestamp": "2026-10-13T21:36:47.107876000Z",
+        "safeEvent": "2026<path> 18:36:47 http: superfluous response.WriteHeader call from github.com<path> (eventsproxy.go:306)"
+      },
+      {
+        "log": "host/monitor.log",
+        "timestamp": "2026-10-13T21:36:47.107884000Z",
+        "safeEvent": "2026<path> 18:36:47 http: superfluous response.WriteHeader call from github.com<path> (eventsproxy.go:306)"
+      },
+      {
+        "log": "host/monitor.log",
+        "timestamp": "2026-10-13T21:36:47.107950000Z",
+        "safeEvent": "2026<path> 18:36:47 http: superfluous response.WriteHeader call from github.com<path> (eventsproxy.go:306)"
+      },
+      {
+        "log": "host/monitor.log",
+        "timestamp": "2026-10-13T21:36:47.107968000Z",
+        "safeEvent": "2026<path> 18:36:47 http: superfluous response.WriteHeader call from github.com<path> (eventsproxy.go:306)"
+      },
+      {
+        "log": "host/monitor.log",
+        "timestamp": "2026-10-13T21:36:47.213996000Z",
+        "safeEvent": "[21:36:47.213819000Z][main.idlemetrics      ] Compute time at run 1.77s / 1s added to 21.39s / 10m1s total 23.16s / 10m2s"
+      },
+      {
+        "log": "host/monitor.log",
+        "timestamp": "2026-10-13T21:36:47.214438000Z",
+        "safeEvent": "[21:36:47.214232000Z][main.events           ] adding server timestamp to event (): 1791927407214225000 idle: running"
+      },
+      {
+        "log": "host/monitor.log",
+        "timestamp": "2026-10-13T21:36:47.214503000Z",
+        "safeEvent": "[21:36:47.214255000Z][main.analytics.tracker] sending event: idle a210528c-1e34-427c-ac8c-c37341662359"
+      },
+      {
+        "log": "host/monitor.log",
+        "timestamp": "2026-10-13T21:36:47.214698000Z",
+        "safeEvent": "[21:36:47.214321000Z][main.analytics.tracker] sending event: idle a210528c-1e34-427c-ac8c-c37341662359"
+      },
+      {
+        "log": "host/monitor.log",
+        "timestamp": "2026-10-13T21:41:46.085869000Z",
+        "safeEvent": "[21:41:46.085263000Z][main.idle             ] busy -> idle"
+      },
+      {
+        "log": "host/monitor.log",
+        "timestamp": "2026-10-13T21:41:46.085904000Z",
+        "safeEvent": "[21:41:46.085703000Z][main.idle             ] timer started (5m0s)"
+      }
+    ],
+    "conciseBackendCycle": [
+      {
+        "at": "2026-10-13T21:31:39.623276Z",
+        "event": "busy to idle; 5-minute timer started"
+      },
+      {
+        "at": "2026-10-13T21:36:39.630167Z",
+        "event": "5-minute idle timer expired"
+      },
+      {
+        "at": "2026-10-13T21:36:39.632323Z",
+        "event": "system idle; reducing / idle shutdown"
+      },
+      {
+        "at": "2026-10-13T21:36:40.483648Z",
+        "event": "VM stopped automatically by logged idle cycle"
+      },
+      {
+        "at": "2026-10-13T21:36:46.078997Z",
+        "event": "idle to busy; reason timed activities, specific actor not inferred"
+      },
+      {
+        "at": "2026-10-13T21:36:46.079593Z",
+        "event": "VM starting"
+      },
+      {
+        "at": "2026-10-13T21:36:47.107129Z",
+        "event": "engine start complete"
+      },
+      {
+        "at": "2026-10-13T21:36:48.320258750Z",
+        "event": "current default bridge Created value"
+      }
+    ],
+    "bridgeEvolution": {
+      "coldRecoveryId": "e95d45b0e699a48b9ed3a1e2787b6675869f01bee4531b87755cf45520962ed4",
+      "idleCycleId": "f17f9beaf4720ad69e3a32590809184b37d06fddc84c3d27ab2125f810800ef3",
+      "operatorRestartPerformedByImplementation": false,
+      "originalPrivateArtifactsModified": false,
+      "boundaryArtifactOwnCheckedAt": "not recorded; original mtime21:39:56.304904Z retained, not reconstructed as snapshot clock",
+      "status": "IF013 disposition/current preservation pending; no PASS"
+    }
+  },
+  "reviewClosure": {
+    "rootDecision": "semantic T005H/T005I preservation gate CLOSED; narrowly disposed lifecycle/API/elapsed/Mounts differences only",
+    "historicalLimitationsRetained": true,
+    "resourceGateNotProductionAcceptance": true
+  }
+}

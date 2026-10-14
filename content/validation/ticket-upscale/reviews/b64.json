@@ -1,0 +1,23 @@
+{
+  "imageId": "question-image-b64",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:32:48.716Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": false,
+  "status": "accepted",
+  "observations": [
+    "Driver holds dark mate vessel/straw near mouth with one hand while other hand stays on steeringwheel; mirrorreflection and console controls retained."
+  ],
+  "candidateSha256": "b87c0b27bb552527e6c5f6f1cf3d3c0437765906a607d600d816b13749351b16",
+  "originalSha256": "776659e03e7f295588c1c70a5072c48c0d381ba87c10c28a8f6d6fac81c58cb0",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b64.jpg",
+    "originalSha256": "776659e03e7f295588c1c70a5072c48c0d381ba87c10c28a8f6d6fac81c58cb0",
+    "masterPath": "content/assets-masters/questions/b64.png",
+    "masterSha256": "b87c0b27bb552527e6c5f6f1cf3d3c0437765906a607d600d816b13749351b16",
+    "candidateSha256": "b87c0b27bb552527e6c5f6f1cf3d3c0437765906a607d600d816b13749351b16",
+    "inferenceSha256": "c37646371451a962bf6c368247bc404758582dfda6693220daaa10a705f2c52e",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

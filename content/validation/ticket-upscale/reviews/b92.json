@@ -1,0 +1,23 @@
+{
+  "imageId": "question-image-b92",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:41:44.563Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "Cars1/2/3 and all right arrows retain the three-lane placement, with the ambulance beside car2 and same medical cross/word."
+  ],
+  "candidateSha256": "a3df2b542c7dd5eb46f193fb3cfbc23f3db039cf357961ea792ce09abdd99390",
+  "originalSha256": "2896a6d877fde3462f9bdc59ac04f83d7c8c73a8f3a3414aada489de35c72864",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b92.jpg",
+    "originalSha256": "2896a6d877fde3462f9bdc59ac04f83d7c8c73a8f3a3414aada489de35c72864",
+    "masterPath": "content/assets-masters/questions/b92.png",
+    "masterSha256": "a3df2b542c7dd5eb46f193fb3cfbc23f3db039cf357961ea792ce09abdd99390",
+    "candidateSha256": "a3df2b542c7dd5eb46f193fb3cfbc23f3db039cf357961ea792ce09abdd99390",
+    "inferenceSha256": "d496f926a6da8e658e174fe112ba2c3a1d22315141e659e32ec88d0338362407",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

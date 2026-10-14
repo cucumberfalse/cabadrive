@@ -1,0 +1,25 @@
+{
+  "imageId": "question-image-b222",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b222.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b222.png",
+  "originalSha256": "df4aaa0847855141d7f3551ce0aaccfd78ac25e3705ace619c871b63574b56c9",
+  "candidateSha256": "8a296f97bb5bf42731f49a1741b5904fb1065485729b86eae7b8cec8edad34cc",
+  "reviewer": "Supplemental Review Agent /root/image_review_tail (Codex)",
+  "reviewedAt": "2026-10-13T17:16:24.188675+00:00",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "Orange diamond, double black boundary and two worker busts retain placement and colors; three helmet ribs, orange helmet bands and the right worker's flared side profile remain distinct without added lettering."
+  ],
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b222.jpg",
+    "originalSha256": "df4aaa0847855141d7f3551ce0aaccfd78ac25e3705ace619c871b63574b56c9",
+    "masterPath": "content/assets-masters/questions/b222.png",
+    "masterSha256": "8a296f97bb5bf42731f49a1741b5904fb1065485729b86eae7b8cec8edad34cc",
+    "candidateSha256": "8a296f97bb5bf42731f49a1741b5904fb1065485729b86eae7b8cec8edad34cc",
+    "inferenceSha256": "933f49ab3c479f4bfd41889b0b0c0c2df196b6d3126446f95727dd5da192edfa",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

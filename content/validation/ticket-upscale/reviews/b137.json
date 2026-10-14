@@ -1,0 +1,23 @@
+{
+  "imageId": "question-image-b137",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:09:29.734Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": false,
+  "status": "accepted",
+  "observations": [
+    "Truck stays centered in the travel lane with same open dark rear; broken center line, solid edge and pavement cracks preserve their source paths. Clouds and shoulder retain composition."
+  ],
+  "candidateSha256": "20bbbd678b947c7fed8ddb04101ca0fca02ee89cf303cd1b54724349a940ef25",
+  "originalSha256": "f29f8412ec4989d21b2b420409b5e36b40363e1474f03e7843272e77ca52db10",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b137.jpg",
+    "originalSha256": "f29f8412ec4989d21b2b420409b5e36b40363e1474f03e7843272e77ca52db10",
+    "masterPath": "content/assets-masters/questions/b137.png",
+    "masterSha256": "20bbbd678b947c7fed8ddb04101ca0fca02ee89cf303cd1b54724349a940ef25",
+    "candidateSha256": "20bbbd678b947c7fed8ddb04101ca0fca02ee89cf303cd1b54724349a940ef25",
+    "inferenceSha256": "ae07dec557555b1ef96878a79a8aff9a7109287a0ed2a566c486283f62391c84",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

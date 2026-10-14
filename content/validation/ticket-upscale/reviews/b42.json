@@ -1,0 +1,23 @@
+{
+  "imageId": "question-image-b42",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:28:09.856Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "A rider blackhelmet, B rider beneath redbridge and C fluorescentvest/redhelmet rider retain hand/handlebar poses and original white dashed cyclelane boundary; A/B/C labels unchanged."
+  ],
+  "candidateSha256": "d583158aa2e930ae263b9d48c9863ed493b72495ceb800fa2c8db47857507731",
+  "originalSha256": "ee4bb00b38bc6ef1c4441ce0bf3f7c8c98f1156ebe1bb3cbd60d992143156e27",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b42.jpg",
+    "originalSha256": "ee4bb00b38bc6ef1c4441ce0bf3f7c8c98f1156ebe1bb3cbd60d992143156e27",
+    "masterPath": "content/assets-masters/questions/b42.png",
+    "masterSha256": "d583158aa2e930ae263b9d48c9863ed493b72495ceb800fa2c8db47857507731",
+    "candidateSha256": "d583158aa2e930ae263b9d48c9863ed493b72495ceb800fa2c8db47857507731",
+    "inferenceSha256": "935d1c5aa05e7bc288e4b98b18cb637c537e2c1579dd1c0b168aafc733dd3d8f",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "imageId": "question-image-b218",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b218.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b218.png",
+  "originalSha256": "41d581437ff49face7e6d8bd1665f41ef8a29d0fb198c6483d33204eff5a8072",
+  "candidateSha256": "b2062be85ccc27558d98197c697ec72294230b94f327ca74bfc5ee2f40bc6b98",
+  "reviewer": "image_review",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "A/B labels, fetus icons and contrast between A belt crossing belly and B lower lap-belt placement retained; diagram color fields and line topology unchanged."
+  ],
+  "rejectionReason": null,
+  "reviewedAt": "2026-10-13T17:15:25.764813+00:00",
+  "inspectionArtifacts": [
+    "/private/tmp/cabadrive-057-review-b140-b220-b215-b216-b217-b218-b219.png"
+  ],
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b218.jpg",
+    "originalSha256": "41d581437ff49face7e6d8bd1665f41ef8a29d0fb198c6483d33204eff5a8072",
+    "masterPath": "content/assets-masters/questions/b218.png",
+    "masterSha256": "b2062be85ccc27558d98197c697ec72294230b94f327ca74bfc5ee2f40bc6b98",
+    "candidateSha256": "b2062be85ccc27558d98197c697ec72294230b94f327ca74bfc5ee2f40bc6b98",
+    "inferenceSha256": "1a23b67788975211dc7a9430ef050ac3831637618675b742b0ce4e0c47b689e2",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

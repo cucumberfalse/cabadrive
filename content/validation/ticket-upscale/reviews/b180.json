@@ -1,0 +1,30 @@
+{
+  "imageId": "question-image-b180",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b180.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b180.png",
+  "originalSha256": "2ac2094b24b98d8137f3cb7448a02cad6875e1cd3cad2f65beba2977069a3ba9",
+  "candidateSha256": "1f12f36ac815774a9f01c10cf157f19287ec06f16ed9c8b1584160c2866c11fb",
+  "reviewer": "image_review",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "AB259HS plate and visible4300-9241 property-phone numerals remain consistent in enlarged crop; water splash, headlamp reflection and flooded curb retained."
+  ],
+  "rejectionReason": null,
+  "reviewedAt": "2026-10-13T17:07:28.912908+00:00",
+  "inspectionArtifacts": [
+    "/private/tmp/cabadrive-057-review-b140-b220-b180-b181-b182-b183-b184.png",
+    "/private/tmp/cabadrive-057-review-b140-b220-detail-b180-.33-.01-.10-.085.png"
+  ],
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b180.jpg",
+    "originalSha256": "2ac2094b24b98d8137f3cb7448a02cad6875e1cd3cad2f65beba2977069a3ba9",
+    "masterPath": "content/assets-masters/questions/b180.png",
+    "masterSha256": "1f12f36ac815774a9f01c10cf157f19287ec06f16ed9c8b1584160c2866c11fb",
+    "candidateSha256": "1f12f36ac815774a9f01c10cf157f19287ec06f16ed9c8b1584160c2866c11fb",
+    "inferenceSha256": "394e687bca93a9c0a1b25a0b9b42a722cfcb8e33a9c0ea493f890ec1e3041415",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "imageId": "question-image-b21",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:12:43.031Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": false,
+  "status": "accepted",
+  "observations": [
+    "Pedestrian stays on the same island next to yellow bollards and planters; zebra stripes, turning road edge and approaching black car retain geometry. Tree textures are smoothed without relocating traffic cues."
+  ],
+  "candidateSha256": "fc6f82af7d17d4cbd8d3570e5c4356856535e24b5a090bf9cbb29caa41ffc818",
+  "originalSha256": "1f9f1944fa52836519c59fff40424c8f83882294f51096c417a84f08451f6516",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b21.jpg",
+    "originalSha256": "1f9f1944fa52836519c59fff40424c8f83882294f51096c417a84f08451f6516",
+    "masterPath": "content/assets-masters/questions/b21.png",
+    "masterSha256": "fc6f82af7d17d4cbd8d3570e5c4356856535e24b5a090bf9cbb29caa41ffc818",
+    "candidateSha256": "fc6f82af7d17d4cbd8d3570e5c4356856535e24b5a090bf9cbb29caa41ffc818",
+    "inferenceSha256": "429dd9cca2a949a988466136d57b60b9a59b1d09f683bd33c0ca815078b69965",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

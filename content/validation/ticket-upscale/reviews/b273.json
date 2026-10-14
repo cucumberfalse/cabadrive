@@ -1,0 +1,25 @@
+{
+  "imageId": "question-image-b273",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b273.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b273.png",
+  "originalSha256": "68c21e88c78f6a0a37f68e7791bf159efab6c1b26c51d01c6252b5fae6cecfaf",
+  "candidateSha256": "63da78b58608c0e3216dcf2e9b1827b003fe1ae8060df4eac5e60749ec75cf4f",
+  "reviewer": "Supplemental Review Agent /root/image_review_tail (Codex)",
+  "reviewedAt": "2026-10-13T17:21:02.613926+00:00",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "Three route choices retain A/B/C labels in yellow circles, ARGENTINA over the map shield, numeral2 in the pointed shield and numeral4 in the square; map silhouette and each border type stay in the original arrangement."
+  ],
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b273.jpg",
+    "originalSha256": "68c21e88c78f6a0a37f68e7791bf159efab6c1b26c51d01c6252b5fae6cecfaf",
+    "masterPath": "content/assets-masters/questions/b273.png",
+    "masterSha256": "63da78b58608c0e3216dcf2e9b1827b003fe1ae8060df4eac5e60749ec75cf4f",
+    "candidateSha256": "63da78b58608c0e3216dcf2e9b1827b003fe1ae8060df4eac5e60749ec75cf4f",
+    "inferenceSha256": "8d8e2de9362275f3ca46d91178f6e7ad7cdc01003c5f49c65a23fc2c1ebba2ca",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

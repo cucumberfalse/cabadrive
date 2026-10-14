@@ -1,0 +1,23 @@
+{
+  "imageId": "question-image-b63",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:32:48.712Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": false,
+  "status": "accepted",
+  "observations": [
+    "Thin smoking object held near mouth, bent fingers, leftarm on steeringwheel and rearviewmirror remain in same pose; circular dashboard vents unchanged."
+  ],
+  "candidateSha256": "007097b3ad6d14baf4476eb9185411be82f16f16ae9e981deb20b1d0cd95b97a",
+  "originalSha256": "a333b16b04b8e4e90ae76676e16c015e9c8b15723cb84d75702f44962debf9fe",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b63.jpg",
+    "originalSha256": "a333b16b04b8e4e90ae76676e16c015e9c8b15723cb84d75702f44962debf9fe",
+    "masterPath": "content/assets-masters/questions/b63.png",
+    "masterSha256": "007097b3ad6d14baf4476eb9185411be82f16f16ae9e981deb20b1d0cd95b97a",
+    "candidateSha256": "007097b3ad6d14baf4476eb9185411be82f16f16ae9e981deb20b1d0cd95b97a",
+    "inferenceSha256": "f6099439efc8e34fe27b2eb7e11aa9439a29447089e4cd4a6ef97411eb937757",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

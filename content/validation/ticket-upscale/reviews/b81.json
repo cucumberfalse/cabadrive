@@ -1,0 +1,23 @@
+{
+  "imageId": "question-image-b81",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:39:28.632Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": false,
+  "status": "accepted",
+  "observations": [
+    "The yellow curb keeps its diagonal position and chipped dark top edge; adjacent white painted road rectangles retain their placement and colour."
+  ],
+  "candidateSha256": "dff181d30b65423d346fcdf68e22f9112728cc3abfd64d21eaacfb88384ce552",
+  "originalSha256": "a109ab26c5e9617b9dd7efb1a422d2005e50d7b181e88d2a320852423a6d7f7a",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b81.jpg",
+    "originalSha256": "a109ab26c5e9617b9dd7efb1a422d2005e50d7b181e88d2a320852423a6d7f7a",
+    "masterPath": "content/assets-masters/questions/b81.png",
+    "masterSha256": "dff181d30b65423d346fcdf68e22f9112728cc3abfd64d21eaacfb88384ce552",
+    "candidateSha256": "dff181d30b65423d346fcdf68e22f9112728cc3abfd64d21eaacfb88384ce552",
+    "inferenceSha256": "f4d6bc71f980050d4054e19347f5c8e93d1c7deb6f7da23e61058cd30b395ef7",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

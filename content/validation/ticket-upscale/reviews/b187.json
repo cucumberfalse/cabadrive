@@ -1,0 +1,30 @@
+{
+  "imageId": "question-image-b187",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b187.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b187.png",
+  "originalSha256": "94ec482c406348dc357f1250b92a24c5899d45b837ef20efdd7b0f181c201603",
+  "candidateSha256": "b1af41724e8de5f311cee4655d5abc41421a4fc62f16551411925886c50e5d0c",
+  "reviewer": "image_review",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "Fog visibility boundary, white chevrons, double yellow and white shoulder lines retained; enlarged foreground crop confirms darker crack paths already exist in source rather than added obstacles."
+  ],
+  "rejectionReason": null,
+  "reviewedAt": "2026-10-13T17:07:28.924523+00:00",
+  "inspectionArtifacts": [
+    "/private/tmp/cabadrive-057-review-b140-b220-b185-b186-b187-b188-b189.png",
+    "/private/tmp/cabadrive-057-review-b140-b220-detail-b187-.32-.73-.43-.24.png"
+  ],
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b187.jpg",
+    "originalSha256": "94ec482c406348dc357f1250b92a24c5899d45b837ef20efdd7b0f181c201603",
+    "masterPath": "content/assets-masters/questions/b187.png",
+    "masterSha256": "b1af41724e8de5f311cee4655d5abc41421a4fc62f16551411925886c50e5d0c",
+    "candidateSha256": "b1af41724e8de5f311cee4655d5abc41421a4fc62f16551411925886c50e5d0c",
+    "inferenceSha256": "cf0c7501135616b337f43403806a3f4482a8de417a0a08c014dac4fb764c45f5",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

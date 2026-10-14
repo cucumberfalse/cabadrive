@@ -1,0 +1,29 @@
+{
+  "imageId": "question-image-b155",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b155.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b155.png",
+  "originalSha256": "0ffe0b7c7e463d17161dffe98f368aa04231c4ea7e8c376903dfe5d6784cfa51",
+  "candidateSha256": "e22b8d78a0e78e6b4c40e0516b89f179bc60e157e03e9bf2a37571a40c9ee17a",
+  "reviewer": "image_review",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": false,
+  "status": "accepted",
+  "observations": [
+    "Raised striped rail barriers, crossing street alignment, pedestrians and road cobble arcs remain positioned as original; texture softened without barrier/road geometry change."
+  ],
+  "rejectionReason": null,
+  "reviewedAt": "2026-10-13T17:03:48.998861+00:00",
+  "inspectionArtifacts": [
+    "/private/tmp/cabadrive-057-review-b140-b220-b155-b156-b157-b158-b159.png"
+  ],
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b155.jpg",
+    "originalSha256": "0ffe0b7c7e463d17161dffe98f368aa04231c4ea7e8c376903dfe5d6784cfa51",
+    "masterPath": "content/assets-masters/questions/b155.png",
+    "masterSha256": "e22b8d78a0e78e6b4c40e0516b89f179bc60e157e03e9bf2a37571a40c9ee17a",
+    "candidateSha256": "e22b8d78a0e78e6b4c40e0516b89f179bc60e157e03e9bf2a37571a40c9ee17a",
+    "inferenceSha256": "9bae9560d00ce9d797f3b45c759838bc1d9e1a7d61601b9d51f8442d631ca438",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

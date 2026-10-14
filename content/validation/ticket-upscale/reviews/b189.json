@@ -1,0 +1,29 @@
+{
+  "imageId": "question-image-b189",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b189.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b189.png",
+  "originalSha256": "f8262138fc858cc0bff164252443099f57254ad97c5d626b430c8cbab94ec8d2",
+  "candidateSha256": "22dee8e8dee5ddac436c97ad87c2ea2bebc81f95571ab22d583095d86c69eed3",
+  "reviewer": "image_review",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": false,
+  "status": "accepted",
+  "observations": [
+    "Foggy oncoming headlight pair remains faint in same location; center/edge lines disappear into same fog boundary, no newly invented road detail."
+  ],
+  "rejectionReason": null,
+  "reviewedAt": "2026-10-13T17:07:28.925910+00:00",
+  "inspectionArtifacts": [
+    "/private/tmp/cabadrive-057-review-b140-b220-b185-b186-b187-b188-b189.png"
+  ],
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b189.jpg",
+    "originalSha256": "f8262138fc858cc0bff164252443099f57254ad97c5d626b430c8cbab94ec8d2",
+    "masterPath": "content/assets-masters/questions/b189.png",
+    "masterSha256": "22dee8e8dee5ddac436c97ad87c2ea2bebc81f95571ab22d583095d86c69eed3",
+    "candidateSha256": "22dee8e8dee5ddac436c97ad87c2ea2bebc81f95571ab22d583095d86c69eed3",
+    "inferenceSha256": "86bf83aad4768ee3717bd8634766c1083ad65c301d946d2f9e00fa8d814c67e8",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

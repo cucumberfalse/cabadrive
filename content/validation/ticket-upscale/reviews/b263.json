@@ -1,0 +1,25 @@
+{
+  "imageId": "question-image-b263",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b263.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b263.png",
+  "originalSha256": "5707f3285e59394f27901093f0df0b871d728226c35ef1298fd65038712db767",
+  "candidateSha256": "877b1b3d8aec6eff4af033e726e8b0c5b44f135766221ebc681f40315528d056",
+  "reviewer": "Supplemental Review Agent /root/image_review_tail (Codex)",
+  "reviewedAt": "2026-10-13T17:19:46.749693+00:00",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "White divided-highway pictogram retains two converging road bands crossed by the same horizontal bridge with two short lower feet; blue square and central vertical separation remain intact."
+  ],
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b263.jpg",
+    "originalSha256": "5707f3285e59394f27901093f0df0b871d728226c35ef1298fd65038712db767",
+    "masterPath": "content/assets-masters/questions/b263.png",
+    "masterSha256": "877b1b3d8aec6eff4af033e726e8b0c5b44f135766221ebc681f40315528d056",
+    "candidateSha256": "877b1b3d8aec6eff4af033e726e8b0c5b44f135766221ebc681f40315528d056",
+    "inferenceSha256": "7801ca3730f0e1659ae233e83fa58329a4a1dc337ab0ee4ec956d843f5ab57a3",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

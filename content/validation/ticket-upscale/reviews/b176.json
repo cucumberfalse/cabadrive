@@ -1,0 +1,35 @@
+{
+  "imageId": "question-image-b176",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b176.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b176.png",
+  "originalSha256": "3231a0cb9d0565d0c2111aef3df1e15fa7a3a939dd8d3e4ad70982799c35e569",
+  "candidateSha256": "04b971df77421a6c3be8a7d2a75f4ebb1c66a29305edaafcef77246d81d47144",
+  "reviewer": "image_review",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "rejected",
+  "observations": [
+    "Small rear plate gets unsupported crisp glyphs from ambiguous original; E parking arrow and both lamp highlight circles remain correct."
+  ],
+  "rejectionReason": "Small rear plate gets unsupported crisp glyphs from ambiguous original; E parking arrow and both lamp highlight circles remain correct.",
+  "reviewedAt": "2026-10-13T17:05:40.135614+00:00",
+  "inspectionArtifacts": [
+    "/private/tmp/cabadrive-057-review-b140-b220-b175-b176-b177-b178-b179.png"
+  ],
+  "fallbackObservations": [
+    "Separately inspected fallback keeps the red-car plate, small blue parking lettering and both circled amber lamps in the original wider scene."
+  ],
+  "fallbackReviewedAt": "2026-10-13T17:44:40.901Z",
+  "fallbackReviewer": "Implementation Agent (Codex)",
+  "fallbackSha256": "cc854c4009c4d0cfee98bebd201259d067e6523bb236247548af8a9648c2a6d6",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b176.jpg",
+    "originalSha256": "3231a0cb9d0565d0c2111aef3df1e15fa7a3a939dd8d3e4ad70982799c35e569",
+    "masterPath": "content/assets-masters/questions/b176.png",
+    "masterSha256": "cc854c4009c4d0cfee98bebd201259d067e6523bb236247548af8a9648c2a6d6",
+    "candidateSha256": "04b971df77421a6c3be8a7d2a75f4ebb1c66a29305edaafcef77246d81d47144",
+    "inferenceSha256": "11172f81a1356ecdd384b0863b4e5c8c9ed1d6a6f79bfb6b4b08b636b1d53ba1",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

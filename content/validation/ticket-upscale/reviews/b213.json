@@ -1,0 +1,29 @@
+{
+  "imageId": "question-image-b213",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b213.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b213.png",
+  "originalSha256": "6528ea414679339952aecc56caff3dd608fe9ef61c989d073686295d4f7b8085",
+  "candidateSha256": "758bc62c0c6c03a05e03148a28b23e737fcc6a9cc8157d051ac072135252f0ec",
+  "reviewer": "image_review",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": false,
+  "status": "accepted",
+  "observations": [
+    "Child face remains intentionally pixelated; booster wing/head support, dress, arms and leg seating position remain consistent."
+  ],
+  "rejectionReason": null,
+  "reviewedAt": "2026-10-13T17:14:25.296619+00:00",
+  "inspectionArtifacts": [
+    "/private/tmp/cabadrive-057-review-b140-b220-b213-b214.png"
+  ],
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b213.jpg",
+    "originalSha256": "6528ea414679339952aecc56caff3dd608fe9ef61c989d073686295d4f7b8085",
+    "masterPath": "content/assets-masters/questions/b213.png",
+    "masterSha256": "758bc62c0c6c03a05e03148a28b23e737fcc6a9cc8157d051ac072135252f0ec",
+    "candidateSha256": "758bc62c0c6c03a05e03148a28b23e737fcc6a9cc8157d051ac072135252f0ec",
+    "inferenceSha256": "b4e1f04fd38806361193cc5020d44358dda4da8e51c68829c58f75937933df38",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

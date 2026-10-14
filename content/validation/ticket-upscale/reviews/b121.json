@@ -1,0 +1,30 @@
+{
+  "imageId": "question-image-b121",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:06:27.499Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "rejected",
+  "observations": [
+    "Enlarged bridge-rail numeric restriction sign turns its blurred height numerals into separated artificial black shapes; red border and opposing vertical arrows remain."
+  ],
+  "rejectionReason": "Height-restriction numeral glyphs acquire artificial separated contours in native sign comparison.",
+  "candidateSha256": "68269285228a3ccbf374a2ef12d6efef991a0473d20c5ebc99198f25869028a7",
+  "originalSha256": "779f53955161bd7e62d68fa681791c3821f42816de3a8b2bef1ea4d92d752024",
+  "fallbackObservations": [
+    "Fallback preserves the bridge circular restriction number in its original soft shape, red railings and the white van plate without invented digits."
+  ],
+  "fallbackReviewedAt": "2026-10-13T17:43:22.316Z",
+  "fallbackReviewer": "Implementation Agent (Codex)",
+  "fallbackSha256": "4dae8fe4c4857d182707e1cce1a0fd759f5d33e2785160bb693a87d92bdc2339",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b121.jpg",
+    "originalSha256": "779f53955161bd7e62d68fa681791c3821f42816de3a8b2bef1ea4d92d752024",
+    "masterPath": "content/assets-masters/questions/b121.png",
+    "masterSha256": "4dae8fe4c4857d182707e1cce1a0fd759f5d33e2785160bb693a87d92bdc2339",
+    "candidateSha256": "68269285228a3ccbf374a2ef12d6efef991a0473d20c5ebc99198f25869028a7",
+    "inferenceSha256": "328f5ceb447a88d7e41effbebd94f6acd08220e732dbb5448962dc768f17f0e2",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

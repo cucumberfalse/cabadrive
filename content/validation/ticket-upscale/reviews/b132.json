@@ -1,0 +1,30 @@
+{
+  "imageId": "question-image-b132",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:06:27.501Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "rejected",
+  "observations": [
+    "Enlarged Av. Alvarez Jonte sign shows malformed street-name/address glyph contours while its right arrow remains intact; taxi/dumpster placement is preserved."
+  ],
+  "rejectionReason": "Street-name and numeric sign detail is reconstructed into distorted letter/number contours.",
+  "candidateSha256": "1e2c6a258c953eaa076c0cf960ae9f53abbd24d206132e64a9fde6cbd60d59f6",
+  "originalSha256": "a46cdc545a850add2b4f6f199d38b6b34aaae8854c5d5c7e67a359b5598d6a4a",
+  "fallbackObservations": [
+    "Fallback keeps Av. Alvarez street-name and small number strokes with their original softness; right arrow and parked taxi remain."
+  ],
+  "fallbackReviewedAt": "2026-10-13T17:43:22.327Z",
+  "fallbackReviewer": "Implementation Agent (Codex)",
+  "fallbackSha256": "a172c35a3bf79cc318b93bd82ba814f30128b25e72b4b5c68e0fc481810576ea",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b132.jpg",
+    "originalSha256": "a46cdc545a850add2b4f6f199d38b6b34aaae8854c5d5c7e67a359b5598d6a4a",
+    "masterPath": "content/assets-masters/questions/b132.png",
+    "masterSha256": "a172c35a3bf79cc318b93bd82ba814f30128b25e72b4b5c68e0fc481810576ea",
+    "candidateSha256": "1e2c6a258c953eaa076c0cf960ae9f53abbd24d206132e64a9fde6cbd60d59f6",
+    "inferenceSha256": "69fe3388694050f8e1e73d604e744d4679e2c8fbc6e3c11d8b4740ecc99ad879",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "imageId": "question-image-b178",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b178.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b178.png",
+  "originalSha256": "546a63c24f374f2d788ad3f439b632033b6029def7897322810f3ee818015265",
+  "candidateSha256": "e34986bc0f235a145364f7057ce3bbe182949778561a98592219c01e57e9da7a",
+  "reviewer": "image_review",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "Central NHN737 plate and visible right-car plate strokes remain matching; circled reverse lamps, forward lane arrow, brake lamp and vehicle placement retained."
+  ],
+  "rejectionReason": null,
+  "reviewedAt": "2026-10-13T17:05:40.138172+00:00",
+  "inspectionArtifacts": [
+    "/private/tmp/cabadrive-057-review-b140-b220-b175-b176-b177-b178-b179.png",
+    "/private/tmp/cabadrive-057-review-b140-b220-detail-b178-.47-.405-.105-.07.png"
+  ],
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b178.jpg",
+    "originalSha256": "546a63c24f374f2d788ad3f439b632033b6029def7897322810f3ee818015265",
+    "masterPath": "content/assets-masters/questions/b178.png",
+    "masterSha256": "e34986bc0f235a145364f7057ce3bbe182949778561a98592219c01e57e9da7a",
+    "candidateSha256": "e34986bc0f235a145364f7057ce3bbe182949778561a98592219c01e57e9da7a",
+    "inferenceSha256": "200d9bfb55eade6dba8cb3aff14ac726f230c7cae94ddf445ef272986bc12952",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

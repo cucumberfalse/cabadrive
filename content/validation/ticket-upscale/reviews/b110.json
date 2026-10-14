@@ -1,0 +1,23 @@
+{
+  "imageId": "question-image-b110",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T16:56:24.344Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "Circled silver vehicle remains at left of the queue, with same red oval, rear lamps and angle. Night lighting, car positions, center brake lamps and cobblestone boundaries are retained."
+  ],
+  "candidateSha256": "a351bc01e9c6e3da5d8b620b151a561845d6f01b17aa20b1e9e3465e9c428e71",
+  "originalSha256": "a95392881793038b4a19046793f5ba404886f2d074fbe14b640b681d40e0bd7f",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b110.jpg",
+    "originalSha256": "a95392881793038b4a19046793f5ba404886f2d074fbe14b640b681d40e0bd7f",
+    "masterPath": "content/assets-masters/questions/b110.png",
+    "masterSha256": "a351bc01e9c6e3da5d8b620b151a561845d6f01b17aa20b1e9e3465e9c428e71",
+    "candidateSha256": "a351bc01e9c6e3da5d8b620b151a561845d6f01b17aa20b1e9e3465e9c428e71",
+    "inferenceSha256": "a570d8c5671ecc254ce45fe7fdcfee65a853026e0a423d783cfa775e32ddb382",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

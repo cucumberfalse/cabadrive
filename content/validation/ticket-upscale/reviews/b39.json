@@ -1,0 +1,23 @@
+{
+  "imageId": "question-image-b39",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:28:09.847Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "E parking sign remains same letter silhouette; near zebra bars, green cyclelane and white dashed separators keep their original crossing geometry."
+  ],
+  "candidateSha256": "7c4e10f0b45dd0ffc90f3507186de2259c4ff7aaea3f7c1822fa3f39b5eec696",
+  "originalSha256": "c61dbc9602a5f94531495defaa542e5c4ff67e76b41bf372f35e12c93af5195e",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b39.jpg",
+    "originalSha256": "c61dbc9602a5f94531495defaa542e5c4ff67e76b41bf372f35e12c93af5195e",
+    "masterPath": "content/assets-masters/questions/b39.png",
+    "masterSha256": "7c4e10f0b45dd0ffc90f3507186de2259c4ff7aaea3f7c1822fa3f39b5eec696",
+    "candidateSha256": "7c4e10f0b45dd0ffc90f3507186de2259c4ff7aaea3f7c1822fa3f39b5eec696",
+    "inferenceSha256": "da9960075d2773098c36f93d7adf38ee59105d98e537c4acb1dda1cf081704ad",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

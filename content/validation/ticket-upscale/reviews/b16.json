@@ -1,0 +1,23 @@
+{
+  "imageId": "question-image-b16",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:09:29.736Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": false,
+  "status": "accepted",
+  "observations": [
+    "Cyclist remains inside the separated bicycle lane at right, with same yellow curb, dashed line and wheel/pedalling posture. Crosswalk and pedestrians retain positions."
+  ],
+  "candidateSha256": "6b77c361ca963de6369a26edbdbddf60eb0d3173820369731b534b2d1cb06151",
+  "originalSha256": "9cf7f4e55fca84986f996c9b7abbdd9a14185831a038703023bf623e9efce8e0",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b16.jpg",
+    "originalSha256": "9cf7f4e55fca84986f996c9b7abbdd9a14185831a038703023bf623e9efce8e0",
+    "masterPath": "content/assets-masters/questions/b16.png",
+    "masterSha256": "6b77c361ca963de6369a26edbdbddf60eb0d3173820369731b534b2d1cb06151",
+    "candidateSha256": "6b77c361ca963de6369a26edbdbddf60eb0d3173820369731b534b2d1cb06151",
+    "inferenceSha256": "89bd889822803c24866a56558b48e9f78a1765e2cbd302b4ee8150d8d3c24db9",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

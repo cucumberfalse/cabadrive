@@ -1,0 +1,23 @@
+{
+  "imageId": "question-image-b135",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:09:29.732Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "60 speed-limit sign retains both digits, red circle and white field; broad road lanes, distant cars and approaching plane preserve original arrangement. Tiny distant green sign text remains unresolved in both images."
+  ],
+  "candidateSha256": "b86e887023ec739609745054cd4284d31b7f4176f7cb288313e1dd875a4d1bf1",
+  "originalSha256": "ec9e4d7e0af7629f39020788adc3ca48a22ef98bddfcab3e263065836ab4b28d",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b135.jpg",
+    "originalSha256": "ec9e4d7e0af7629f39020788adc3ca48a22ef98bddfcab3e263065836ab4b28d",
+    "masterPath": "content/assets-masters/questions/b135.png",
+    "masterSha256": "b86e887023ec739609745054cd4284d31b7f4176f7cb288313e1dd875a4d1bf1",
+    "candidateSha256": "b86e887023ec739609745054cd4284d31b7f4176f7cb288313e1dd875a4d1bf1",
+    "inferenceSha256": "c92168a01221cd7be704a3f8a3c957b44c9e49b48f5b235b58c079c85127f541",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

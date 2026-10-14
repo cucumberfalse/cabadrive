@@ -1,0 +1,25 @@
+{
+  "imageId": "question-image-b236",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b236.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b236.png",
+  "originalSha256": "219b2870c2fdd289a9ec8866664fcb0ef588ec261ee3ccfc8a876abb009a3027",
+  "candidateSha256": "16451fedbde135896920071c7a292f56e3a262a607e42e5055b20f6cf74c506c",
+  "reviewer": "Supplemental Review Agent /root/image_review_tail (Codex)",
+  "reviewedAt": "2026-10-13T17:17:29.494791+00:00",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "Divided-road symbol retains left downward and right upward curved arrows on opposite sides of the central pointed divider; arrow directions, separations and yellow diamond stay unchanged."
+  ],
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b236.jpg",
+    "originalSha256": "219b2870c2fdd289a9ec8866664fcb0ef588ec261ee3ccfc8a876abb009a3027",
+    "masterPath": "content/assets-masters/questions/b236.png",
+    "masterSha256": "16451fedbde135896920071c7a292f56e3a262a607e42e5055b20f6cf74c506c",
+    "candidateSha256": "16451fedbde135896920071c7a292f56e3a262a607e42e5055b20f6cf74c506c",
+    "inferenceSha256": "fe2401c90596fc98644268f6ad2c3342204016f716720e847a33cb859a4979ab",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

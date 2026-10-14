@@ -1,0 +1,29 @@
+{
+  "imageId": "question-image-b165",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b165.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b165.png",
+  "originalSha256": "98ca2e285e837ac7662610bc2e6f2f505ef56844b54913db2fe3ecf17e04593b",
+  "candidateSha256": "04871084dc15742e8b43d644e1242c340b1051408d245537576164fb4b287516",
+  "reviewer": "image_review",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": false,
+  "status": "accepted",
+  "observations": [
+    "Rear tire remains beside same raised curb with wheel, tread edge, bumper and red tail-light geometry preserved; grass/stones denoised without tire/curb relation change."
+  ],
+  "rejectionReason": null,
+  "reviewedAt": "2026-10-13T17:05:40.114781+00:00",
+  "inspectionArtifacts": [
+    "/private/tmp/cabadrive-057-review-b140-b220-b165-b166-b167-b168-b169.png"
+  ],
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b165.jpg",
+    "originalSha256": "98ca2e285e837ac7662610bc2e6f2f505ef56844b54913db2fe3ecf17e04593b",
+    "masterPath": "content/assets-masters/questions/b165.png",
+    "masterSha256": "04871084dc15742e8b43d644e1242c340b1051408d245537576164fb4b287516",
+    "candidateSha256": "04871084dc15742e8b43d644e1242c340b1051408d245537576164fb4b287516",
+    "inferenceSha256": "adc6d1e92817fec05c9c820489c4a7a69722de53e81ba8ff21e51a316e022bb0",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

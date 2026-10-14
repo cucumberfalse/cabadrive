@@ -1,0 +1,36 @@
+{
+  "imageId": "question-image-b152",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b152.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b152.png",
+  "originalSha256": "fe76a8f9703415bda0438741a8b72b72ea108ceae72aa5484ac51e7c69bfdf4c",
+  "candidateSha256": "c163da4711f8a81b0deb610b729cc6b0d5d78ee231ddb6dc9717716d41927d3d",
+  "reviewer": "image_review",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "rejected",
+  "observations": [
+    "Enlarged hospital header reinterprets HOSPITAL GENERAL DE AGUDOS / DR TEODORO ALVAREZ as malformed character groups; hospital cross and pedestrian geometry survive."
+  ],
+  "rejectionReason": "Enlarged hospital header reinterprets HOSPITAL GENERAL DE AGUDOS / DR TEODORO ALVAREZ as malformed character groups; hospital cross and pedestrian geometry survive.",
+  "reviewedAt": "2026-10-13T17:02:15.478541+00:00",
+  "inspectionArtifacts": [
+    "/private/tmp/cabadrive-057-review-b140-b220-b150-b151-b152-b153-b154.png",
+    "/private/tmp/cabadrive-057-review-b140-b220-detail-b152-.47-.12-.32-.18.png"
+  ],
+  "fallbackObservations": [
+    "Fallback preserves original hospital entrance inscription and HOSPITAL label, red cross, pedestrians and ambulance/car positions."
+  ],
+  "fallbackReviewedAt": "2026-10-13T17:43:47.678Z",
+  "fallbackReviewer": "Implementation Agent (Codex)",
+  "fallbackSha256": "50bec2dfd1c135560e6b31e4fefa46a12c635ae129724e2f285ac348772a84ec",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b152.jpg",
+    "originalSha256": "fe76a8f9703415bda0438741a8b72b72ea108ceae72aa5484ac51e7c69bfdf4c",
+    "masterPath": "content/assets-masters/questions/b152.png",
+    "masterSha256": "50bec2dfd1c135560e6b31e4fefa46a12c635ae129724e2f285ac348772a84ec",
+    "candidateSha256": "c163da4711f8a81b0deb610b729cc6b0d5d78ee231ddb6dc9717716d41927d3d",
+    "inferenceSha256": "8807937d794682f5d40b5719565754fe3e70a5f9fbb6073dcaf9114f6c83f626",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

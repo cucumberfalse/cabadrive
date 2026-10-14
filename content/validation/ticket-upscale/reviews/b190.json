@@ -1,0 +1,29 @@
+{
+  "imageId": "question-image-b190",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b190.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b190.png",
+  "originalSha256": "7c7931bf937caceb69f61d2e1049c4fd6b7843cf8dc970bc40e03b3a76b8ee1e",
+  "candidateSha256": "6b6eff4349c4d0eac735d9ea6d23adc764b240da14d1d2ad5f47527b705e327f",
+  "reviewer": "image_review",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "LPK165 plate stays readable with same characters; two circled fog lamps and main headlamps retain position/color; bumper/grille geometry preserved."
+  ],
+  "rejectionReason": null,
+  "reviewedAt": "2026-10-13T17:08:53.439625+00:00",
+  "inspectionArtifacts": [
+    "/private/tmp/cabadrive-057-review-b140-b220-b190-b191-b192-b193.png"
+  ],
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b190.jpg",
+    "originalSha256": "7c7931bf937caceb69f61d2e1049c4fd6b7843cf8dc970bc40e03b3a76b8ee1e",
+    "masterPath": "content/assets-masters/questions/b190.png",
+    "masterSha256": "6b6eff4349c4d0eac735d9ea6d23adc764b240da14d1d2ad5f47527b705e327f",
+    "candidateSha256": "6b6eff4349c4d0eac735d9ea6d23adc764b240da14d1d2ad5f47527b705e327f",
+    "inferenceSha256": "fabe7cd7e5e24eea259f7966bbb6aa248186198f6798b844ae7e51d54999d02e",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

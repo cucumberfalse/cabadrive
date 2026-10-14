@@ -1,0 +1,23 @@
+{
+  "imageId": "question-image-b116",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T16:56:57.895Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": false,
+  "status": "accepted",
+  "observations": [
+    "B stays above the nearer silver hatchback and A above the adjacent white car; long traffic queue, lane divider and grassy shoulder preserve relative placement."
+  ],
+  "candidateSha256": "f11280f4fb1095786545c06a94d719550b2434f126e8adbc3238078ed472a4c8",
+  "originalSha256": "dcf85af452ab01712dbd4e5927e04da837f45035d6ed39a5cb2e3a370ed27f16",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b116.jpg",
+    "originalSha256": "dcf85af452ab01712dbd4e5927e04da837f45035d6ed39a5cb2e3a370ed27f16",
+    "masterPath": "content/assets-masters/questions/b116.png",
+    "masterSha256": "f11280f4fb1095786545c06a94d719550b2434f126e8adbc3238078ed472a4c8",
+    "candidateSha256": "f11280f4fb1095786545c06a94d719550b2434f126e8adbc3238078ed472a4c8",
+    "inferenceSha256": "6aada01676f9037bfee81460792e2388a1f5e435a010b7b579e846f869422003",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

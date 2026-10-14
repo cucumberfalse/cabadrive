@@ -1,0 +1,30 @@
+{
+  "imageId": "question-image-b139",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:09:29.735Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "rejected",
+  "observations": [
+    "20 speed sign and schoolchild warning silhouette retain geometry; enlarged left blue UM board retains UM but fine text rows become disconnected lines and white bands."
+  ],
+  "rejectionReason": "Blue institutional sign fine lettering is erased into artificial white bands and fragmented strokes.",
+  "candidateSha256": "99bb28b6a82162f6708acc21796ef65d7de36797e78ec24000db6687c5c0058f",
+  "originalSha256": "7dc7ff0aff52d9d09fea3e03437329077f5ca04b6f9d542559f24abdec9b9b59",
+  "fallbackObservations": [
+    "Fallback keeps UM board fine lines, schoolchild pictogram and20 numerals, together with the original parked black car and plate."
+  ],
+  "fallbackReviewedAt": "2026-10-13T17:43:47.662Z",
+  "fallbackReviewer": "Implementation Agent (Codex)",
+  "fallbackSha256": "3aedc0ea0c49163bf7a752710f8ccc30e5ad3f4c11c20d2259d397d8d610d010",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b139.jpg",
+    "originalSha256": "7dc7ff0aff52d9d09fea3e03437329077f5ca04b6f9d542559f24abdec9b9b59",
+    "masterPath": "content/assets-masters/questions/b139.png",
+    "masterSha256": "3aedc0ea0c49163bf7a752710f8ccc30e5ad3f4c11c20d2259d397d8d610d010",
+    "candidateSha256": "99bb28b6a82162f6708acc21796ef65d7de36797e78ec24000db6687c5c0058f",
+    "inferenceSha256": "79462569c287b8904dc80855182a7365d248b72998987017895e59ef8be15775",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "imageId": "question-image-b198",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b198.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b198.png",
+  "originalSha256": "578c2f3bd7a9230eba09549d1064f7050c3ac55a64dfe94cd3f180388a67e19c",
+  "candidateSha256": "b1d24a61dd17a3cc7e19b0e3f550ddccb1c06cf22c9cd541df665f3b5d478eab",
+  "reviewer": "image_review",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "FIT191 plate, lit headlights, grille/logo and fuel-station pump/hoses retained; source-readable characters preserved without altered refueling scene geometry."
+  ],
+  "rejectionReason": null,
+  "reviewedAt": "2026-10-13T17:09:20.680315+00:00",
+  "inspectionArtifacts": [
+    "/private/tmp/cabadrive-057-review-b140-b220-b198-b199.png"
+  ],
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b198.jpg",
+    "originalSha256": "578c2f3bd7a9230eba09549d1064f7050c3ac55a64dfe94cd3f180388a67e19c",
+    "masterPath": "content/assets-masters/questions/b198.png",
+    "masterSha256": "b1d24a61dd17a3cc7e19b0e3f550ddccb1c06cf22c9cd541df665f3b5d478eab",
+    "candidateSha256": "b1d24a61dd17a3cc7e19b0e3f550ddccb1c06cf22c9cd541df665f3b5d478eab",
+    "inferenceSha256": "2eb0e9440c596f5d3a21465cf7a54e145bc8d81dde5d89d8b3f3807c598ce76a",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

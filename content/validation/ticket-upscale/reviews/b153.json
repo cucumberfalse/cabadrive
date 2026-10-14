@@ -1,0 +1,36 @@
+{
+  "imageId": "question-image-b153",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b153.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b153.png",
+  "originalSha256": "0e853c550e2bde12000be5ab73204ed6c88b9d184dca0d6b87764d3d01e03203",
+  "candidateSha256": "f1d6b69cb312421c368be142b13c52c09718f88fccaf5ba363cf0ecf5a033bd0",
+  "reviewer": "image_review",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "rejected",
+  "observations": [
+    "Enlarged yellow hospital board changes Hospital Dr. José Dueñas / Hospital de Odontología into malformed sharp lettering; source text fidelity lost."
+  ],
+  "rejectionReason": "Enlarged yellow hospital board changes Hospital Dr. José Dueñas / Hospital de Odontología into malformed sharp lettering; source text fidelity lost.",
+  "reviewedAt": "2026-10-13T17:02:15.480288+00:00",
+  "inspectionArtifacts": [
+    "/private/tmp/cabadrive-057-review-b140-b220-b150-b151-b152-b153-b154.png",
+    "/private/tmp/cabadrive-057-review-b140-b220-detail-b153-.52-.29-.26-.16.png"
+  ],
+  "fallbackObservations": [
+    "Fallback retains HospitalDrJoseDuenas/HospitaldeOdontologia yellow-board lettering and original door/stair/pedestrian arrangement."
+  ],
+  "fallbackReviewedAt": "2026-10-13T17:43:47.680Z",
+  "fallbackReviewer": "Implementation Agent (Codex)",
+  "fallbackSha256": "33f83ceb9adb23c0c510cac16b04ccb34e12fa76636c764aab53cc8d5798b0ba",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b153.jpg",
+    "originalSha256": "0e853c550e2bde12000be5ab73204ed6c88b9d184dca0d6b87764d3d01e03203",
+    "masterPath": "content/assets-masters/questions/b153.png",
+    "masterSha256": "33f83ceb9adb23c0c510cac16b04ccb34e12fa76636c764aab53cc8d5798b0ba",
+    "candidateSha256": "f1d6b69cb312421c368be142b13c52c09718f88fccaf5ba363cf0ecf5a033bd0",
+    "inferenceSha256": "fa0bd00e2fe2a2a240d1b7cc3c06a9f0fb30aa559684f1efe4548c5cb58759d2",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

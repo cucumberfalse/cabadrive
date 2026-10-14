@@ -1,0 +1,23 @@
+{
+  "imageId": "question-image-b49",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:30:13.216Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "AB123CD plate characters, REPUBLICA ARGENTINA header, blue band, white border and two small emblem positions retained exactly."
+  ],
+  "candidateSha256": "71ecc4945e701d2a546141c7544118abb31177e149aadc8aaf7546cb241aa6f7",
+  "originalSha256": "43f6d66b5ec3ea10c077d0daf2e2be456c8e3cffcd393e3e43777d6c5bad4997",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b49.jpg",
+    "originalSha256": "43f6d66b5ec3ea10c077d0daf2e2be456c8e3cffcd393e3e43777d6c5bad4997",
+    "masterPath": "content/assets-masters/questions/b49.png",
+    "masterSha256": "71ecc4945e701d2a546141c7544118abb31177e149aadc8aaf7546cb241aa6f7",
+    "candidateSha256": "71ecc4945e701d2a546141c7544118abb31177e149aadc8aaf7546cb241aa6f7",
+    "inferenceSha256": "efaa89b1d83f4ba46e48159b9fc7111b65ab909ec6b52f297343e2a14b395cd3",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

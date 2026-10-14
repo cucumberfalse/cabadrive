@@ -1,0 +1,25 @@
+{
+  "imageId": "question-image-b223",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b223.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b223.png",
+  "originalSha256": "adfbd52f0e3439c58e9b74c08db4be920ffbb6de1389ab4767a0f8b92e93e4f4",
+  "candidateSha256": "642a9a7994946c6efef7212ecd1039dbeec2ce226859c2f123d100586e390dd4",
+  "reviewer": "Supplemental Review Agent /root/image_review_tail (Codex)",
+  "reviewedAt": "2026-10-13T17:16:24.189715+00:00",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "Yellow warning diamond keeps its black aircraft pointing upward, two lateral wings and paired tail fins; central tail stem and all four sign corners remain in the original relative positions."
+  ],
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b223.jpg",
+    "originalSha256": "adfbd52f0e3439c58e9b74c08db4be920ffbb6de1389ab4767a0f8b92e93e4f4",
+    "masterPath": "content/assets-masters/questions/b223.png",
+    "masterSha256": "642a9a7994946c6efef7212ecd1039dbeec2ce226859c2f123d100586e390dd4",
+    "candidateSha256": "642a9a7994946c6efef7212ecd1039dbeec2ce226859c2f123d100586e390dd4",
+    "inferenceSha256": "5e44884271388fb6cf078bb2422f5302b910fbe60c4ba8f6fd926d7d76cbb7a1",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

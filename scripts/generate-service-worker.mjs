@@ -1,5 +1,6 @@
 #!/usr/bin/env node
-import { readdirSync, statSync, writeFileSync } from "node:fs";
+import { readdirSync, statSync, writeFileSync, readFileSync } from "node:fs";
+import { createHash } from "node:crypto";
 import { dirname, join, relative, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -14,7 +15,49 @@ export function isManualPageImageAsset(path) {
 }
 
 export function shouldInstallPrecacheAsset(path) {
-  return path !== "/sw.js" && !isManualPageImageAsset(path);
+  return (
+    path !== "/sw.js" &&
+    !isManualPageImageAsset(path) &&
+    !/^\/content\/img\/c\/.*\.(avif|webp)$/.test(path)
+  );
+}
+
+export function ticketOfflineMap(manifest, dist) {
+  const map = {};
+  const paths = new Set();
+  for (const source of manifest.sources.filter((item) => item.class === "c")) {
+    const jpeg = new Map();
+    for (const variant of source.variants) {
+      const extension = variant.format === "jpeg" ? "jpg" : variant.format;
+      if (
+        !["jpeg", "avif", "webp"].includes(variant.format) ||
+        !/^content\/img\/c\/[a-zA-Z0-9-]+-\d+\.[a-f0-9]{8}\.(avif|webp|jpg)$/.test(variant.path) ||
+        !variant.path.endsWith(`.${extension}`) ||
+        paths.has(variant.path) ||
+        !Number.isSafeInteger(variant.width) ||
+        variant.width < 1 ||
+        !Number.isSafeInteger(variant.height) ||
+        variant.height < 1 ||
+        !/^[a-f0-9]{64}$/.test(variant.sha256 ?? "")
+      )
+        throw new Error("Unsafe/incomplete ticket offline map");
+      paths.add(variant.path);
+      const bytes = readFileSync(join(dist, variant.path));
+      if (createHash("sha256").update(bytes).digest("hex") !== variant.sha256)
+        throw new Error("Ticket offline-map payload integrity mismatch");
+      if (variant.format === "jpeg") {
+        if (jpeg.has(variant.width)) throw new Error("Duplicate ticket JPEG width");
+        jpeg.set(variant.width, variant);
+      }
+    }
+    for (const variant of source.variants.filter((item) => item.format !== "jpeg")) {
+      const fallback = jpeg.get(variant.width);
+      if (!fallback || fallback.height !== variant.height)
+        throw new Error("Missing same-width ticket JPEG fallback");
+      map[`/${variant.path}`] = `/${fallback.path}`;
+    }
+  }
+  return map;
 }
 
 function walk(dir, dist) {
@@ -31,13 +74,27 @@ export function collectInstallPrecacheAssets(dist = defaultDist) {
   return ["/", ...walk(dist, dist).sort()];
 }
 
-export function createServiceWorkerBody(assets, timestamp = Date.now()) {
+export function createServiceWorkerBody(assets, timestamp = Date.now(), offlineMap = {}) {
   return `const CACHE_PREFIX = "cabadrive-static-";
 const CACHE_NAME = CACHE_PREFIX + "${timestamp}";
 const UPDATE_PROTOCOL_CACHE = "cabadrive-update-protocol-v1";
 const PROMPTED_ACTIVATION_MARKER = "/prompted-activation-v1";
 const PROMPTED_ACTIVATION_VALUE = "prompted-activation-v1";
 const ASSETS = ${JSON.stringify(assets, null, 2)};
+const TICKET_OFFLINE_JPEG = ${JSON.stringify(offlineMap)};
+const TICKET_MAP_PATH = "/ticket-offline-map-v1";
+
+function validateRetainedTicketMap(map) {
+  if (!map || typeof map !== "object" || Array.isArray(map)) return undefined;
+  const modern = /^\\/content\\/img\\/c\\/([a-zA-Z0-9-]+)-(\\d+)\\.[a-f0-9]{8}\\.(avif|webp)$/;
+  const jpeg = /^\\/content\\/img\\/c\\/([a-zA-Z0-9-]+)-(\\d+)\\.[a-f0-9]{8}\\.jpg$/;
+  for (const [path, fallback] of Object.entries(map)) {
+    const from = path.match(modern);
+    const to = typeof fallback === "string" && fallback.match(jpeg);
+    if (!from || !to || from[1] !== to[1] || from[2] !== to[2]) return undefined;
+  }
+  return map;
+}
 
 self.addEventListener("install", (event) => {
   const requests = ASSETS.map((asset) => new Request(asset, { cache: "reload" }));
@@ -45,6 +102,13 @@ self.addEventListener("install", (event) => {
     (async () => {
       const cache = await caches.open(CACHE_NAME);
       await cache.addAll(requests);
+      await cache.put(TICKET_MAP_PATH, new Response(JSON.stringify(TICKET_OFFLINE_JPEG), {
+        headers: { "Content-Type": "application/json" },
+      }));
+      const snapshot = await cache.match(TICKET_MAP_PATH);
+      if (!snapshot || JSON.stringify(await snapshot.json()) !== JSON.stringify(TICKET_OFFLINE_JPEG)) {
+        throw new Error("Could not verify the installed ticket fallback map");
+      }
       const protocolCache = await caches.open(UPDATE_PROTOCOL_CACHE);
       const existingMarker = await protocolCache.match(PROMPTED_ACTIVATION_MARKER);
       if (existingMarker) return;
@@ -89,6 +153,24 @@ async function matchRetainedCabadriveCache(request) {
   return undefined;
 }
 
+async function retainedTicketJpeg(path) {
+  const keys = await caches.keys();
+  for (const key of keys) {
+    if (!key.startsWith(CACHE_PREFIX) || key === CACHE_NAME) continue;
+    const cache = await caches.open(key);
+    const snapshot = await cache.match(TICKET_MAP_PATH);
+    if (!snapshot) continue;
+    let map;
+    try { map = validateRetainedTicketMap(await snapshot.json()); } catch { continue; }
+    const jpeg = map?.[path];
+    if (jpeg) {
+      const response = await cache.match(jpeg);
+      if (response?.ok && response.headers.get("Content-Type")?.split(";")[0] === "image/jpeg") return response;
+    }
+  }
+  return undefined;
+}
+
 self.addEventListener("fetch", (event) => {
   if (event.request.method !== "GET") return;
   event.respondWith(
@@ -114,11 +196,22 @@ self.addEventListener("fetch", (event) => {
       const retained = await matchRetainedCabadriveCache(event.request);
       if (retained) return retained;
       let response;
+      const url = new URL(event.request.url);
+      const localTicket = url.origin === self.location?.origin && !url.search;
+      const jpegPath = localTicket
+        ? TICKET_OFFLINE_JPEG[url.pathname] : undefined;
+      const offlineJpeg = async () => {
+        if (!localTicket) return undefined;
+        const response = jpegPath && ((await currentCache.match(jpegPath)) ?? (await matchRetainedCabadriveCache(jpegPath)));
+        if (response?.ok && response.headers.get("Content-Type")?.split(";")[0] === "image/jpeg") return response;
+        return retainedTicketJpeg(url.pathname);
+      };
       try {
         response = await fetch(event.request);
       } catch {
-        return Response.error();
+        return (await offlineJpeg()) || Response.error();
       }
+      if (!response.ok) return (await offlineJpeg()) || response;
       if (response.ok) {
         try {
           await currentCache.put(event.request, response.clone());
@@ -133,9 +226,17 @@ self.addEventListener("fetch", (event) => {
 `;
 }
 
-export function generateServiceWorker({ dist = defaultDist, timestamp = Date.now() } = {}) {
+export function generateServiceWorker({
+  dist = defaultDist,
+  timestamp = Date.now(),
+  manifest,
+} = {}) {
   const assets = collectInstallPrecacheAssets(dist);
-  const body = createServiceWorkerBody(assets, timestamp);
+  manifest ??=
+    dist === defaultDist
+      ? JSON.parse(readFileSync(join(root, "content/image-derivatives.manifest.json"), "utf8"))
+      : { sources: [] };
+  const body = createServiceWorkerBody(assets, timestamp, ticketOfflineMap(manifest, dist));
   writeFileSync(join(dist, "sw.js"), body);
   return { assets, body };
 }

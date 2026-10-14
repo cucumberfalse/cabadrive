@@ -1,0 +1,23 @@
+{
+  "imageId": "question-image-b108",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T16:56:24.341Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "A stays above the oncoming white car and B above the red SUV; both vehicle directions, curb and narrow road clearance remain. Tail lights, spare wheel and rear-window shapes are retained; plate is sharpened but is incidental."
+  ],
+  "candidateSha256": "089b4d197913486a53e4a4677cc16d093054f98f84d60a744888cfd9a3778c2e",
+  "originalSha256": "5296aae372deeb6aa63c29e874a5ce16ac236d5eb89d94f42a0f5a63f1d7c151",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b108.jpg",
+    "originalSha256": "5296aae372deeb6aa63c29e874a5ce16ac236d5eb89d94f42a0f5a63f1d7c151",
+    "masterPath": "content/assets-masters/questions/b108.png",
+    "masterSha256": "089b4d197913486a53e4a4677cc16d093054f98f84d60a744888cfd9a3778c2e",
+    "candidateSha256": "089b4d197913486a53e4a4677cc16d093054f98f84d60a744888cfd9a3778c2e",
+    "inferenceSha256": "a634f73557e0fca2cfca1fa3c417c876622939484ba4018da85532619d8f8f94",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

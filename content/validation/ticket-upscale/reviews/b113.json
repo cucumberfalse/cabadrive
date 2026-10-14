@@ -1,0 +1,30 @@
+{
+  "imageId": "question-image-b113",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T16:57:29.028Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "rejected",
+  "observations": [
+    "Enlarged truck-rear detail shows the source lower lettering SOLA Y BRUSA acquiring artificial letter contours, while bumper lettering becomes disconnected dark strokes; A/B markers and lane geometry remain."
+  ],
+  "rejectionReason": "Native truck-rear inspection shows fine lettering and bumper characters reconstructed into different glyph contours.",
+  "candidateSha256": "d5ae775491ee0ffde7883ba9b23a787474df96ab116f5e3d534a1e20a5a09375",
+  "originalSha256": "55835f2500f7c60c12be8c4214dfbb9bbec0b065a265fe87fa60486e132f6aca",
+  "fallbackObservations": [
+    "Fallback retains the truck rear bumper words and blue badge as source-soft lettering, together with the original A/B lane arrangement."
+  ],
+  "fallbackReviewedAt": "2026-10-13T17:43:22.311Z",
+  "fallbackReviewer": "Implementation Agent (Codex)",
+  "fallbackSha256": "e180a4ea3066e81e4503823ab833af52432d8875906da98000133a233ac259b9",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b113.jpg",
+    "originalSha256": "55835f2500f7c60c12be8c4214dfbb9bbec0b065a265fe87fa60486e132f6aca",
+    "masterPath": "content/assets-masters/questions/b113.png",
+    "masterSha256": "e180a4ea3066e81e4503823ab833af52432d8875906da98000133a233ac259b9",
+    "candidateSha256": "d5ae775491ee0ffde7883ba9b23a787474df96ab116f5e3d534a1e20a5a09375",
+    "inferenceSha256": "1aa7bfbfce9a2441a7f10d2fb059ce5163a1680a63002168c12d639326decc46",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

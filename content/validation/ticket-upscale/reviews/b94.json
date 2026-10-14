@@ -1,0 +1,30 @@
+{
+  "imageId": "question-image-b94",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:41:44.564Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "rejected",
+  "observations": [
+    "Driver arm and white cloth retain their position; enlarged rear badge word below the chevrons becomes a flat fused bar instead of separate original letter strokes."
+  ],
+  "rejectionReason": "Rear vehicle brand lettering loses its original shapes.",
+  "candidateSha256": "c945b2cf39f1d38f3cc4d9cdef0d75d1b14079ea9ce9c2abf7fee66b6f9b0388",
+  "originalSha256": "f29c225cf1235261627fa31ed07e795987fb44eb7b99572ceb674fefbed8d90e",
+  "fallbackObservations": [
+    "Fallback retains original fine badge word below the chevrons, NHN737 plate and driver arm with white cloth."
+  ],
+  "fallbackReviewedAt": "2026-10-13T17:47:00.398Z",
+  "fallbackReviewer": "Implementation Agent (Codex)",
+  "fallbackSha256": "7f6c1ac1aa7089489cd48f39c3d93b2d7ac0483222a96e57cbdfd2c975006927",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b94.jpg",
+    "originalSha256": "f29c225cf1235261627fa31ed07e795987fb44eb7b99572ceb674fefbed8d90e",
+    "masterPath": "content/assets-masters/questions/b94.png",
+    "masterSha256": "7f6c1ac1aa7089489cd48f39c3d93b2d7ac0483222a96e57cbdfd2c975006927",
+    "candidateSha256": "c945b2cf39f1d38f3cc4d9cdef0d75d1b14079ea9ce9c2abf7fee66b6f9b0388",
+    "inferenceSha256": "26ed6f9cc3086fd25c6231ded69196d06424206c5d2b10c3794a7eb67c84b755",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

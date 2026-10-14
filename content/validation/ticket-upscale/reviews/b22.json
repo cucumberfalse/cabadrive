@@ -1,0 +1,30 @@
+{
+  "imageId": "question-image-b22",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:22:22.560Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "rejected",
+  "observations": [
+    "Native rear crop retains plate digits and chevron badge geometry, but fine CITROEN lettering beneath badge becomes a flat synthetic bar; curb, woman and driveway retained."
+  ],
+  "rejectionReason": "Fine brand lettering below rear chevrons is replaced by synthetic flattened strokes.",
+  "candidateSha256": "199e36ffb6356ac6655b20282921d60aad011b96cc84891a2414ee9d639709ee",
+  "originalSha256": "e77218710c28cdd9ca1458fc00f9b4c6ca293066b40cec37d93444b982ecd8e4",
+  "fallbackObservations": [
+    "Fallback keeps original CITROEN badge strokes below the chevrons and NHN737 plate, with the pedestrian and parked-car relation unchanged."
+  ],
+  "fallbackReviewedAt": "2026-10-13T17:45:13.371Z",
+  "fallbackReviewer": "Implementation Agent (Codex)",
+  "fallbackSha256": "2bdf25d59cb768526ff6851e36101c41d11a8307587fd096858e65913b3bc3bd",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b22.jpg",
+    "originalSha256": "e77218710c28cdd9ca1458fc00f9b4c6ca293066b40cec37d93444b982ecd8e4",
+    "masterPath": "content/assets-masters/questions/b22.png",
+    "masterSha256": "2bdf25d59cb768526ff6851e36101c41d11a8307587fd096858e65913b3bc3bd",
+    "candidateSha256": "199e36ffb6356ac6655b20282921d60aad011b96cc84891a2414ee9d639709ee",
+    "inferenceSha256": "7f087e012da0f16e8711b93dff6d0a3c93103e9ba439af57d1faf3d623927614",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

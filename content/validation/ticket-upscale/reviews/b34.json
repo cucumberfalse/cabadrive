@@ -1,0 +1,23 @@
+{
+  "imageId": "question-image-b34",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:24:51.035Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "Three red ovals retain their exact table/sidewalk, distant cafe and roadway highlight positions;20 road marking, two white direction arrows and crossing stripes unchanged."
+  ],
+  "candidateSha256": "0ea72991b8e6a9e99c16e3edd94cc996143d34830138ac6a41755619155da3f0",
+  "originalSha256": "26cb8565e3196367db420a785083544a9e4236856a9b62233b660b0377a9d1ec",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b34.jpg",
+    "originalSha256": "26cb8565e3196367db420a785083544a9e4236856a9b62233b660b0377a9d1ec",
+    "masterPath": "content/assets-masters/questions/b34.png",
+    "masterSha256": "0ea72991b8e6a9e99c16e3edd94cc996143d34830138ac6a41755619155da3f0",
+    "candidateSha256": "0ea72991b8e6a9e99c16e3edd94cc996143d34830138ac6a41755619155da3f0",
+    "inferenceSha256": "db4a22187ab1d40035081bdbde137c910b89ae7e8e5fca327b3493be0f13569b",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

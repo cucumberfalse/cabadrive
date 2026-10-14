@@ -1,0 +1,23 @@
+{
+  "imageId": "question-image-b109",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T16:56:24.343Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "Red oval still encloses the same silver car pulled beside the curb; double positioning relative to the foreground taxi and parked cars remains. Far lettering/plate is softened without altering the traffic cue."
+  ],
+  "candidateSha256": "b769c3c964b57611e077aa849a526e3207b454b3fff5e5d50152c1ac8d7a6f4f",
+  "originalSha256": "0dda30d691862ddc326d8c94d4037e75b6e90500e8f8c4db3d3523962f1fe759",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b109.jpg",
+    "originalSha256": "0dda30d691862ddc326d8c94d4037e75b6e90500e8f8c4db3d3523962f1fe759",
+    "masterPath": "content/assets-masters/questions/b109.png",
+    "masterSha256": "b769c3c964b57611e077aa849a526e3207b454b3fff5e5d50152c1ac8d7a6f4f",
+    "candidateSha256": "b769c3c964b57611e077aa849a526e3207b454b3fff5e5d50152c1ac8d7a6f4f",
+    "inferenceSha256": "308d484befa2c73c9bb4c7e035bd1d98d47df7f85d0cc3432a6b30ca91d84bdd",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

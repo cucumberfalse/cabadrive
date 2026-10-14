@@ -1,0 +1,30 @@
+{
+  "imageId": "question-image-b15",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:12:43.028Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "rejected",
+  "observations": [
+    "Native shop banner comparison shows original white business lettering replaced by stretched synthetic letter shapes and the small lower tagline flattened; crossing/black-car geometry remains."
+  ],
+  "rejectionReason": "Shop banner lettering becomes synthetic stretched glyphs and flattened lower text in enlarged comparison.",
+  "candidateSha256": "3a9fc4c37b9850f479585b2a0a51e8fa2019ad97eb8c9e805f1889bb23a49999",
+  "originalSha256": "e70ff8fb2d97593285c3602ff6af1a78fb0b78a840ab590a8d17b0b1360fc2ae",
+  "fallbackObservations": [
+    "Fallback keeps the corner green business banner in its original cursive lettering and original crossing stripes/green bicycle lane."
+  ],
+  "fallbackReviewedAt": "2026-10-13T17:43:47.671Z",
+  "fallbackReviewer": "Implementation Agent (Codex)",
+  "fallbackSha256": "a641e474f5e0b9da147a06cae1201f11f1256c6c58ce53e7ac4605df3aa6095b",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b15.jpg",
+    "originalSha256": "e70ff8fb2d97593285c3602ff6af1a78fb0b78a840ab590a8d17b0b1360fc2ae",
+    "masterPath": "content/assets-masters/questions/b15.png",
+    "masterSha256": "a641e474f5e0b9da147a06cae1201f11f1256c6c58ce53e7ac4605df3aa6095b",
+    "candidateSha256": "3a9fc4c37b9850f479585b2a0a51e8fa2019ad97eb8c9e805f1889bb23a49999",
+    "inferenceSha256": "20646d254b8176763cfb4c93c7170859af9bc8f414a4c690719223c1d17fa98c",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

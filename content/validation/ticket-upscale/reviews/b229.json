@@ -1,0 +1,25 @@
+{
+  "imageId": "question-image-b229",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b229.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b229.png",
+  "originalSha256": "fd6cb3d02825a283dbb0e08a700c958fe362adfad53098c78ea5bd88a9e312bd",
+  "candidateSha256": "c1aa33fa4abc343f4e55d5e5751a7e1eec1e415936aa2c858d7012e41772ab83",
+  "reviewer": "Supplemental Review Agent /root/image_review_tail (Codex)",
+  "reviewedAt": "2026-10-13T17:17:04.471216+00:00",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "Black T-intersection retains its continuous horizontal bar and centered lower stem; source corner positions, yellow field and diamond outline stay intact."
+  ],
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b229.jpg",
+    "originalSha256": "fd6cb3d02825a283dbb0e08a700c958fe362adfad53098c78ea5bd88a9e312bd",
+    "masterPath": "content/assets-masters/questions/b229.png",
+    "masterSha256": "c1aa33fa4abc343f4e55d5e5751a7e1eec1e415936aa2c858d7012e41772ab83",
+    "candidateSha256": "c1aa33fa4abc343f4e55d5e5751a7e1eec1e415936aa2c858d7012e41772ab83",
+    "inferenceSha256": "10cd864bbc799244efdbbb7b289ae46705a77356386318b120ffca73b0effb0c",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

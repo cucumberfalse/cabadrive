@@ -1,0 +1,23 @@
+{
+  "imageId": "question-image-b70",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:39:28.626Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": false,
+  "status": "accepted",
+  "observations": [
+    "Rail tracks, horizontal red-and-white barriers and stopped cars keep their positions and lengths; no change to the answer-relevant crossing geometry."
+  ],
+  "candidateSha256": "1c443aacde2e966df70547fa39440d121f3f5ae5066615ae90b27af20310b0a8",
+  "originalSha256": "f67bd27999ed86a02ad29459c9f8a923182d09960d44ccad00dbf21bf687c22e",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b70.jpg",
+    "originalSha256": "f67bd27999ed86a02ad29459c9f8a923182d09960d44ccad00dbf21bf687c22e",
+    "masterPath": "content/assets-masters/questions/b70.png",
+    "masterSha256": "1c443aacde2e966df70547fa39440d121f3f5ae5066615ae90b27af20310b0a8",
+    "candidateSha256": "1c443aacde2e966df70547fa39440d121f3f5ae5066615ae90b27af20310b0a8",
+    "inferenceSha256": "01355dc2147d981c40c8bc5651aaf257ce18710946109c92480bba1dcf40baa7",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

@@ -46,6 +46,9 @@ const EXECUTION_DOMAIN_SCHEMA_VERSION = 1;
 const EXECUTION_DOMAIN_RECORD = "stage-execution-domain.json";
 const RECLAIM_GUARD = "stage.lock.reclaim";
 const MAX_AUTHORITY_BYTES = 1024 * 1024;
+// Complete stage2 inventories need a larger, still bounded per-release record.
+// Other authority retains its existing1MiB boundary.
+const MAX_RELEASE_METADATA_BYTES = 2 * 1024 * 1024;
 // A publish journal also contains the bounded creation proof of every copied entry.
 const MAX_PUBLISH_AUTHORITY_BYTES = 8 * 1024 * 1024;
 const EXPORT_OWNER_RECORD = ".cabadrive-export-owner.json";
@@ -320,6 +323,10 @@ export function readAuthorityFile(path, label, options = {}) {
   } finally {
     closeSync(opened.descriptor);
   }
+}
+
+function readReleaseMetadata(path, label = "release metadata") {
+  return readJsonRegularFileNoFollow(path, label, { maxBytes: MAX_RELEASE_METADATA_BYTES });
 }
 
 function readRegularFileNoFollow(path, label, options) {
@@ -1943,7 +1950,7 @@ function recoverAssetPromotion({ state, existing, release, legacyValidation, exp
 function metadataMatches(path, release) {
   if (!existsSync(path)) return false;
   try {
-    const metadata = readJsonRegularFileNoFollow(path, "release metadata");
+    const metadata = readReleaseMetadata(path);
     return (
       metadata.releaseId === release.releaseId &&
       sameEntries(metadata.assets || [], release.assets) &&
@@ -1955,7 +1962,7 @@ function metadataMatches(path, release) {
 }
 
 function metadataLegacyMatches(path, legacyValidation) {
-  const metadata = readJsonRegularFileNoFollow(path, "release metadata");
+  const metadata = readReleaseMetadata(path);
   return (
     JSON.stringify(metadata.legacyAuthority ?? null) ===
     JSON.stringify(legacyRequest(legacyValidation))
@@ -1998,7 +2005,7 @@ export function verifyCommittedState(stateRoot) {
     if (!existsSync(releaseDirectory) || !existsSync(metadataPath)) {
       return { valid: false, reason: "current tuple is incomplete" };
     }
-    const metadata = readJsonRegularFileNoFollow(metadataPath, "release metadata");
+    const metadata = readReleaseMetadata(metadataPath);
     if (metadata.releaseId !== releaseId || !metadataMatches(metadataPath, metadata)) {
       return { valid: false, reason: "current metadata does not match" };
     }
@@ -2811,7 +2818,7 @@ function exactCommittedPublishWithoutJournal(state, release, inventory, legacyVa
   ) {
     return false;
   }
-  const metadata = readJsonRegularFileNoFollow(
+  const metadata = readReleaseMetadata(
     join(state, "metadata", `${release.releaseId}.json`),
     "release metadata",
   );
@@ -3809,7 +3816,7 @@ function generationCurrentMatches(state, lineage) {
   const committed = verifyCommittedState(state);
   if (!active || !committed.valid || committed.releaseId !== active.releaseId)
     fail("publish generation retirement lineage no longer matches committed current");
-  const release = readJson(
+  const release = readReleaseMetadata(
     join(state, "metadata", `${active.releaseId}.json`),
     "generation release metadata",
   );
@@ -3839,7 +3846,7 @@ function generationPublishedMatches(state, lineage) {
   const active = lineage.generations.find((entry) => entry.link.path === lineage.active);
   const committed = verifyCommittedState(state);
   if (!active || !committed.valid) fail("published generation or runtime state is invalid");
-  const release = readJson(
+  const release = readReleaseMetadata(
     join(state, "metadata", `${active.releaseId}.json`),
     "published generation metadata",
   );
@@ -3977,7 +3984,7 @@ function readGenerationSelection(
         .filter((path) => {
           const directory = exactPublishedOutputDirectory(root, path);
           if (!directory || !committed.valid) return false;
-          const metadata = readJson(
+          const metadata = readReleaseMetadata(
             join(state, "metadata", `${committed.releaseId}.json`),
             "legacy generation metadata",
           );
@@ -4010,7 +4017,7 @@ function readGenerationSelection(
                 mutable,
                 releaseId,
               }))(
-                readJson(
+                readReleaseMetadata(
                   join(state, "metadata", `${committed.releaseId}.json`),
                   "legacy generation metadata",
                 ),
@@ -4193,7 +4200,7 @@ function assertGenerationPending(state, pending) {
       entry.releaseId !== pending.priorCurrentReleaseId
     )
       fail("publish generation absent prior authority is not a protection-only legacy bootstrap");
-    const metadata = readJson(
+    const metadata = readReleaseMetadata(
       join(state, "metadata", `${entry.releaseId}.json`),
       "legacy generation metadata",
     );

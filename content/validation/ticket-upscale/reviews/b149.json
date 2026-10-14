@@ -1,0 +1,29 @@
+{
+  "imageId": "question-image-b149",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b149.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b149.png",
+  "originalSha256": "35535a5a67284067d98f6bbbae6b5812fe2b87bb8bd91683729ab2568ad9a1fa",
+  "candidateSha256": "be87d54d7c8b2c389e1f514774bf697392524e163ad9f9c0459ffc22d049b7da",
+  "reviewer": "image_review",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": false,
+  "status": "accepted",
+  "observations": [
+    "Yellow curb and longitudinal stripe, white parking-edge dashes, car position and tree cage retained; lane/sidewalk relationship unchanged."
+  ],
+  "rejectionReason": null,
+  "reviewedAt": "2026-10-13T17:02:15.471826+00:00",
+  "inspectionArtifacts": [
+    "/private/tmp/cabadrive-057-review-b140-b220-b145-b146-b147-b148-b149.png"
+  ],
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b149.jpg",
+    "originalSha256": "35535a5a67284067d98f6bbbae6b5812fe2b87bb8bd91683729ab2568ad9a1fa",
+    "masterPath": "content/assets-masters/questions/b149.png",
+    "masterSha256": "be87d54d7c8b2c389e1f514774bf697392524e163ad9f9c0459ffc22d049b7da",
+    "candidateSha256": "be87d54d7c8b2c389e1f514774bf697392524e163ad9f9c0459ffc22d049b7da",
+    "inferenceSha256": "0dafbc2debebdb5ca9aba9744dab61f3726758e1548cea30983621eaa535080d",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

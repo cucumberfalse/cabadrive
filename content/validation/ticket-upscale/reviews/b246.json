@@ -1,0 +1,25 @@
+{
+  "imageId": "question-image-b246",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b246.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b246.png",
+  "originalSha256": "6d5d481d036ad583a6b014a81a1191e0b78732b53730227e3d08a3eaa2e27b2f",
+  "candidateSha256": "9666ad75edb6de5a6d3dfb449bdf41334d59a5c8d717dd17d22d29c733811479",
+  "reviewer": "Supplemental Review Agent /root/image_review_tail (Codex)",
+  "reviewedAt": "2026-10-13T17:18:30.086531+00:00",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "Car descends toward the right along the same triangular slope; two wheels, divided windshield, car orientation and yellow warning diamond remain faithful."
+  ],
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b246.jpg",
+    "originalSha256": "6d5d481d036ad583a6b014a81a1191e0b78732b53730227e3d08a3eaa2e27b2f",
+    "masterPath": "content/assets-masters/questions/b246.png",
+    "masterSha256": "9666ad75edb6de5a6d3dfb449bdf41334d59a5c8d717dd17d22d29c733811479",
+    "candidateSha256": "9666ad75edb6de5a6d3dfb449bdf41334d59a5c8d717dd17d22d29c733811479",
+    "inferenceSha256": "2ddb49df72bd01c4ffc92adb7bb1724d6ae2f4249ed33d0e42382830d6d7d65b",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

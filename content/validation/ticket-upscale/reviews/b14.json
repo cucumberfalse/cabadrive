@@ -1,0 +1,23 @@
+{
+  "imageId": "question-image-b14",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:09:29.735Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": false,
+  "status": "accepted",
+  "observations": [
+    "Circled cyclist arm remains raised with bent elbow and open hand; backpack, helmet and bike orientation retain their source shapes. Same parked cars and lane/crossing marks surround the cyclist."
+  ],
+  "candidateSha256": "0a66214c72c6618d577e3ce8dcabf344498ca08eb8786f005a218ae820239e94",
+  "originalSha256": "8f33d1aef65ad140a19ecabc86c53890cf3a0ad61f3d1e1b1b78629d8e63054d",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b14.jpg",
+    "originalSha256": "8f33d1aef65ad140a19ecabc86c53890cf3a0ad61f3d1e1b1b78629d8e63054d",
+    "masterPath": "content/assets-masters/questions/b14.png",
+    "masterSha256": "0a66214c72c6618d577e3ce8dcabf344498ca08eb8786f005a218ae820239e94",
+    "candidateSha256": "0a66214c72c6618d577e3ce8dcabf344498ca08eb8786f005a218ae820239e94",
+    "inferenceSha256": "04e28c4e3079a1984cf8bb818fbe69049bc9aba6cbff422a58824d1922622ac3",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "imageId": "question-image-b96",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:41:44.564Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "rejected",
+  "observations": [
+    "A/B labels, level-crossing barriers and traffic retain positions. Enlarged MEDICALS billboard fine text becomes repeated rectangles and false lower glyphs."
+  ],
+  "rejectionReason": "Billboard fine lettering is replaced with invented blocks.",
+  "candidateSha256": "b49370ea85bd511224a5d2dffafcdc9c22e3b81070fb8feb216040b21c1a43c2",
+  "originalSha256": "fcb169896d89887a128a536b9a9120ba78057f8a158aab00782647acdef3a88f",
+  "fallbackObservations": [
+    "Fallback preserves original MEDICALS billboard fine print instead of false rectangles, alongside A/B circles and raised railway barriers."
+  ],
+  "fallbackReviewedAt": "2026-10-13T17:47:00.402Z",
+  "fallbackReviewer": "Implementation Agent (Codex)",
+  "fallbackSha256": "43f4b3bd41df20ad34a38c629109a305b8fd6de436f146a9c20cce435b2d36c4",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b96.jpg",
+    "originalSha256": "fcb169896d89887a128a536b9a9120ba78057f8a158aab00782647acdef3a88f",
+    "masterPath": "content/assets-masters/questions/b96.png",
+    "masterSha256": "43f4b3bd41df20ad34a38c629109a305b8fd6de436f146a9c20cce435b2d36c4",
+    "candidateSha256": "b49370ea85bd511224a5d2dffafcdc9c22e3b81070fb8feb216040b21c1a43c2",
+    "inferenceSha256": "a7dc4179b889f0a2d9fe2f6c00bfe56eb1c585cf1d2157eb53885faf1df6e255",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

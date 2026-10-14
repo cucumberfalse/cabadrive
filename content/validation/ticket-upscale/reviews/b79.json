@@ -1,0 +1,23 @@
+{
+  "imageId": "question-image-b79",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:39:28.632Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": false,
+  "status": "accepted",
+  "observations": [
+    "The red curb, sidewalk joint and chipped lower curb edge retain the same arrangement and red hue; no sign or number is introduced."
+  ],
+  "candidateSha256": "bdeccc21852d19f925739634018602ecdc28b135c447b2fd186a1869c608c891",
+  "originalSha256": "f47b1c55f735dca748f8e3a7f0bb233b18c46f6acf26a1bde2f62938707a0195",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b79.jpg",
+    "originalSha256": "f47b1c55f735dca748f8e3a7f0bb233b18c46f6acf26a1bde2f62938707a0195",
+    "masterPath": "content/assets-masters/questions/b79.png",
+    "masterSha256": "bdeccc21852d19f925739634018602ecdc28b135c447b2fd186a1869c608c891",
+    "candidateSha256": "bdeccc21852d19f925739634018602ecdc28b135c447b2fd186a1869c608c891",
+    "inferenceSha256": "3d24109d170c8832e37ff020149ee145636d3be9cc384f48943ac2c243db3d20",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

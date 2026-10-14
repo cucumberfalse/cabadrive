@@ -1,0 +1,36 @@
+{
+  "imageId": "question-image-b206",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b206.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b206.png",
+  "originalSha256": "6505b12b8c30d1972d4b9294796cce5ac978f50f626f48f947fa381cc67a74a0",
+  "candidateSha256": "12a97cbfc2549d165861dd96d854be61cfb13055beb063b8132df40a6cf274a7",
+  "reviewer": "image_review",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "rejected",
+  "observations": [
+    "Enlarged trunk extinguisher instruction label gains invented black/white swirls and pseudocharacters; mounting location remains but printed-detail fidelity fails."
+  ],
+  "rejectionReason": "Enlarged trunk extinguisher instruction label gains invented black/white swirls and pseudocharacters; mounting location remains but printed-detail fidelity fails.",
+  "reviewedAt": "2026-10-13T17:12:56.844529+00:00",
+  "inspectionArtifacts": [
+    "/private/tmp/cabadrive-057-review-b140-b220-b205-b206-b207-b208.png",
+    "/private/tmp/cabadrive-057-review-b140-b220-detail-b206-.555-.705-.10-.13.png"
+  ],
+  "fallbackObservations": [
+    "Fallback preserves source extinguisher label and its colour bands in the trunk corner, retaining shelf and rear-seat geometry."
+  ],
+  "fallbackReviewedAt": "2026-10-13T17:45:13.365Z",
+  "fallbackReviewer": "Implementation Agent (Codex)",
+  "fallbackSha256": "cdbc981b4e3ad6a8ea8f894934c5da9cfc319c597baf1b78bc5b6fde05e09510",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b206.jpg",
+    "originalSha256": "6505b12b8c30d1972d4b9294796cce5ac978f50f626f48f947fa381cc67a74a0",
+    "masterPath": "content/assets-masters/questions/b206.png",
+    "masterSha256": "cdbc981b4e3ad6a8ea8f894934c5da9cfc319c597baf1b78bc5b6fde05e09510",
+    "candidateSha256": "12a97cbfc2549d165861dd96d854be61cfb13055beb063b8132df40a6cf274a7",
+    "inferenceSha256": "241ec55078225369097baa3cd54948fb39b56ee04316e4d52bee595caf2e5cd1",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

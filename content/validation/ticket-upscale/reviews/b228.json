@@ -1,0 +1,25 @@
+{
+  "imageId": "question-image-b228",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b228.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b228.png",
+  "originalSha256": "225cd7106ba3850ec5079f4f99abec30dd2ce94778fab31130688d3c1f1bde0e",
+  "candidateSha256": "d087b39d754858015d4fb89de1b2ca905ee4d92764d28716fc5d26c64ce40215",
+  "reviewer": "Supplemental Review Agent /root/image_review_tail (Codex)",
+  "reviewedAt": "2026-10-13T17:16:49.366180+00:00",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "Black Y junction retains equal diagonal branches and lower vertical stem with the same fork opening; yellow diamond and double black outline remain aligned."
+  ],
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b228.jpg",
+    "originalSha256": "225cd7106ba3850ec5079f4f99abec30dd2ce94778fab31130688d3c1f1bde0e",
+    "masterPath": "content/assets-masters/questions/b228.png",
+    "masterSha256": "d087b39d754858015d4fb89de1b2ca905ee4d92764d28716fc5d26c64ce40215",
+    "candidateSha256": "d087b39d754858015d4fb89de1b2ca905ee4d92764d28716fc5d26c64ce40215",
+    "inferenceSha256": "91eafe5eeddef4b2eae3f679ce2a801b0425a808f28884264cdbb44ceab3e215",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

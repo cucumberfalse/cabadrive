@@ -1,0 +1,23 @@
+{
+  "imageId": "question-image-b69",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:33:53.721Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": false,
+  "status": "accepted",
+  "observations": [
+    "Red oval remains around rear-facing officer whose rightforearm is vertical and left hand on hip; yellowbarrier and nearby silvercar remain in same positions."
+  ],
+  "candidateSha256": "d12182ef0956aa88501206941e56bfebdbbfc811a17740257c0c9ef354451352",
+  "originalSha256": "59ac5a1e96d90c690cafa2c82abd5782c08c22e63692e9675f3d82b75ed26bc0",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b69.jpg",
+    "originalSha256": "59ac5a1e96d90c690cafa2c82abd5782c08c22e63692e9675f3d82b75ed26bc0",
+    "masterPath": "content/assets-masters/questions/b69.png",
+    "masterSha256": "d12182ef0956aa88501206941e56bfebdbbfc811a17740257c0c9ef354451352",
+    "candidateSha256": "d12182ef0956aa88501206941e56bfebdbbfc811a17740257c0c9ef354451352",
+    "inferenceSha256": "39809ed5b3ccd99869dc5ba641dd8b68c3070908dd0404d5885a25bdcaaa6435",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "imageId": "question-image-b1",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T16:53:11.965Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": false,
+  "status": "rejected",
+  "observations": [
+    "Fallen motorcycle position, crossing and approaching car remain, but right-side roadway impact/scrape texture and small broken-looking patches are erased into smooth bands; tank emblem is reduced to a synthetic oval."
+  ],
+  "rejectionReason": "Candidate erases visible road scrape/impact texture around the fallen motorcycle and changes the tank emblem contours; the crash-scene evidence should remain source-faithful.",
+  "candidateSha256": "995dd6c33cf64605f4a00f7aa912bd5d8c1da49327d7353fba3ab9c4082e099e",
+  "originalSha256": "c401bf9a8110d0c592a2bea72ce490db8539b4890c1df6725e7d6ff16a5025f8",
+  "fallbackObservations": [
+    "Fallback retains the fallen motorcycle, damaged car and granular impact/road texture visible in the source; motorcycle badge stays softly defined."
+  ],
+  "fallbackReviewedAt": "2026-10-13T17:43:22.303Z",
+  "fallbackReviewer": "Implementation Agent (Codex)",
+  "fallbackSha256": "e1f97289a7b5ee62001bc60615ed0aedf1b54bb1f9d82ab8bc14a0f4417bc3ba",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b1.jpg",
+    "originalSha256": "c401bf9a8110d0c592a2bea72ce490db8539b4890c1df6725e7d6ff16a5025f8",
+    "masterPath": "content/assets-masters/questions/b1.png",
+    "masterSha256": "e1f97289a7b5ee62001bc60615ed0aedf1b54bb1f9d82ab8bc14a0f4417bc3ba",
+    "candidateSha256": "995dd6c33cf64605f4a00f7aa912bd5d8c1da49327d7353fba3ab9c4082e099e",
+    "inferenceSha256": "fefaf4c22aa99a3233390006c56abab0cbf85916906b3a882190fdbc90c264a0",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

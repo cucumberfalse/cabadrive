@@ -1,0 +1,23 @@
+{
+  "imageId": "question-image-b4",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:28:09.848Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "A/B circles remain over their original two avenue views; central B busplatform, lane separators, median trees and traffic flow relationships retained."
+  ],
+  "candidateSha256": "654ade79ce3695fb313a64eef70c2189597567f8df993f7b7b767b67df125489",
+  "originalSha256": "400a3c754977396fd0427bc960115f6e681eabbfe9c55671a38c703408de6923",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b4.jpg",
+    "originalSha256": "400a3c754977396fd0427bc960115f6e681eabbfe9c55671a38c703408de6923",
+    "masterPath": "content/assets-masters/questions/b4.png",
+    "masterSha256": "654ade79ce3695fb313a64eef70c2189597567f8df993f7b7b767b67df125489",
+    "candidateSha256": "654ade79ce3695fb313a64eef70c2189597567f8df993f7b7b767b67df125489",
+    "inferenceSha256": "101d95f052a0809c6e130791a5b62fdde9e8b52e6cb84a42c26b8f9baaef2175",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

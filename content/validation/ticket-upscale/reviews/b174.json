@@ -1,0 +1,29 @@
+{
+  "imageId": "question-image-b174",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b174.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b174.png",
+  "originalSha256": "8cd00cce46745f077e912fd5aa1d6031bdbfeb983bc9648afca0d40c636fdfa5",
+  "candidateSha256": "7a787f4c4d8882f114a105658a48aa1b082b1c15ca39ab865fd1e30c065c6118",
+  "reviewer": "image_review",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": false,
+  "status": "accepted",
+  "observations": [
+    "Night scene retains circled vehicle location, individual headlight positions, lane dashes and road arrow direction; dark texture reduced without added semantic objects."
+  ],
+  "rejectionReason": null,
+  "reviewedAt": "2026-10-13T17:05:40.131940+00:00",
+  "inspectionArtifacts": [
+    "/private/tmp/cabadrive-057-review-b140-b220-b170-b171-b172-b173-b174.png"
+  ],
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b174.jpg",
+    "originalSha256": "8cd00cce46745f077e912fd5aa1d6031bdbfeb983bc9648afca0d40c636fdfa5",
+    "masterPath": "content/assets-masters/questions/b174.png",
+    "masterSha256": "7a787f4c4d8882f114a105658a48aa1b082b1c15ca39ab865fd1e30c065c6118",
+    "candidateSha256": "7a787f4c4d8882f114a105658a48aa1b082b1c15ca39ab865fd1e30c065c6118",
+    "inferenceSha256": "07388feac49e359dcf08cdb29d8273d0ec3ff300d76dbdc0216a6525d5dd13b4",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

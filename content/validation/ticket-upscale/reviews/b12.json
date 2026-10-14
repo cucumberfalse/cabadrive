@@ -1,0 +1,23 @@
+{
+  "imageId": "question-image-b12",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T16:57:29.031Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": false,
+  "status": "accepted",
+  "observations": [
+    "Circled cyclist left arm stays extended horizontally to the left, with hand direction, helmet, backpack and riding position retained. Crossing stripe geometry and adjacent vehicles remain source-aligned."
+  ],
+  "candidateSha256": "6e09787b1ea6a5c119256d4050d699185773b8446fbc9d9ccd74d659d264c980",
+  "originalSha256": "47baec6debdf00d2f66d9efbf1c2800671db2e87a96f51b87c7f690e71c2db3c",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b12.jpg",
+    "originalSha256": "47baec6debdf00d2f66d9efbf1c2800671db2e87a96f51b87c7f690e71c2db3c",
+    "masterPath": "content/assets-masters/questions/b12.png",
+    "masterSha256": "6e09787b1ea6a5c119256d4050d699185773b8446fbc9d9ccd74d659d264c980",
+    "candidateSha256": "6e09787b1ea6a5c119256d4050d699185773b8446fbc9d9ccd74d659d264c980",
+    "inferenceSha256": "db197c0996910a2b2894d786c8a45fa65073cbbf78b1448675e1761e78d859bd",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

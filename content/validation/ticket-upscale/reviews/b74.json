@@ -1,0 +1,30 @@
+{
+  "imageId": "question-image-b74",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:39:28.629Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "rejected",
+  "observations": [
+    "Both circled red lamps stay red. Enlarged yellow plaques below the lamps replace blurred fine lettering with dark disconnected bar-like strokes."
+  ],
+  "rejectionReason": "Fine yellow-plaque lettering becomes invented strokes.",
+  "candidateSha256": "7054142266f2f0c2d6447980266b9a01bf071e3b880effc95662e3ac72751bb4",
+  "originalSha256": "3bcb6f65ad0633dc5a5aef0494862ad9da2ed6362b420e30957c450acb76a169",
+  "fallbackObservations": [
+    "Fallback preserves original soft yellow-plaque lettering, both circled red lamps and white crossing marks without invented dark bars."
+  ],
+  "fallbackReviewedAt": "2026-10-13T17:46:29.985Z",
+  "fallbackReviewer": "Implementation Agent (Codex)",
+  "fallbackSha256": "6e38b66cad429d85530b08afad4303ed3da83f5958a62c50433439a1c6cbb0f9",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b74.jpg",
+    "originalSha256": "3bcb6f65ad0633dc5a5aef0494862ad9da2ed6362b420e30957c450acb76a169",
+    "masterPath": "content/assets-masters/questions/b74.png",
+    "masterSha256": "6e38b66cad429d85530b08afad4303ed3da83f5958a62c50433439a1c6cbb0f9",
+    "candidateSha256": "7054142266f2f0c2d6447980266b9a01bf071e3b880effc95662e3ac72751bb4",
+    "inferenceSha256": "5f0857467d055f45a70b43fce44f7398b00ffadff491f8842b5af28f53b9862f",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "imageId": "question-image-b77",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:39:28.631Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": false,
+  "status": "accepted",
+  "observations": [
+    "The double yellow centre line, white shoulder line and right-side orange warning diamond keep their direction and placement along the rural bend."
+  ],
+  "candidateSha256": "68227cd0d52c46b07bdbfe9946b8a97b7dfb1f5b7126d2daf1b32ecc1e2438a9",
+  "originalSha256": "7b2cefd3c5e1032fd860d395b59cff4237f7ee910b0a34c87ad2a7168425d388",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b77.jpg",
+    "originalSha256": "7b2cefd3c5e1032fd860d395b59cff4237f7ee910b0a34c87ad2a7168425d388",
+    "masterPath": "content/assets-masters/questions/b77.png",
+    "masterSha256": "68227cd0d52c46b07bdbfe9946b8a97b7dfb1f5b7126d2daf1b32ecc1e2438a9",
+    "candidateSha256": "68227cd0d52c46b07bdbfe9946b8a97b7dfb1f5b7126d2daf1b32ecc1e2438a9",
+    "inferenceSha256": "e227e18d945fc7c8f0527fdaede97a6d4f8dfbe9cfbbc4780ee7956f7931abe1",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "imageId": "question-image-b173",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b173.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b173.png",
+  "originalSha256": "0564f39c154dc8be5a4474632e8eef8cbfdefdf1535481d212fe768b21accead",
+  "candidateSha256": "b25b7acf049f94f32d975c99daa32bb29590ba9ea341d882918d44d37571da84",
+  "reviewer": "image_review",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "Raised hand crop preserves four fingers plus thumb, upright arm and red ellipse; NHN737 plate, rear lamps and window geometry retained."
+  ],
+  "rejectionReason": null,
+  "reviewedAt": "2026-10-13T17:05:40.130723+00:00",
+  "inspectionArtifacts": [
+    "/private/tmp/cabadrive-057-review-b140-b220-detail-b173-.29-.22-.10-.26.png",
+    "/private/tmp/cabadrive-057-review-b140-b220-b170-b171-b172-b173-b174.png"
+  ],
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b173.jpg",
+    "originalSha256": "0564f39c154dc8be5a4474632e8eef8cbfdefdf1535481d212fe768b21accead",
+    "masterPath": "content/assets-masters/questions/b173.png",
+    "masterSha256": "b25b7acf049f94f32d975c99daa32bb29590ba9ea341d882918d44d37571da84",
+    "candidateSha256": "b25b7acf049f94f32d975c99daa32bb29590ba9ea341d882918d44d37571da84",
+    "inferenceSha256": "085ff8572831495c3bda1d1a140055ae7cc463ca5ae14223576d75f305f77517",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

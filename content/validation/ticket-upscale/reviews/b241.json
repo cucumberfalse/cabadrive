@@ -1,0 +1,25 @@
+{
+  "imageId": "question-image-b241",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b241.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b241.png",
+  "originalSha256": "bfa3f3bfa6c989a9a945fe78141927c78fe9b2e1e869f003b54bde243f7b0613",
+  "candidateSha256": "027fc26ac87d704791eda165d5983d8aa4fdbc499636f3296d6d8dfa28dec666",
+  "reviewer": "Supplemental Review Agent /root/image_review_tail (Codex)",
+  "reviewedAt": "2026-10-13T17:18:11.035828+00:00",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "Curving warning arrow retains its lower right-hand horizontal segment, leftward bend and rising upper-right arrowhead; red triangle, white interior and tip geometry preserve source direction."
+  ],
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b241.jpg",
+    "originalSha256": "bfa3f3bfa6c989a9a945fe78141927c78fe9b2e1e869f003b54bde243f7b0613",
+    "masterPath": "content/assets-masters/questions/b241.png",
+    "masterSha256": "027fc26ac87d704791eda165d5983d8aa4fdbc499636f3296d6d8dfa28dec666",
+    "candidateSha256": "027fc26ac87d704791eda165d5983d8aa4fdbc499636f3296d6d8dfa28dec666",
+    "inferenceSha256": "ca26a5cc61a6d163400ed510905eabfd5b51d6b6262c045e383a59f872d69830",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

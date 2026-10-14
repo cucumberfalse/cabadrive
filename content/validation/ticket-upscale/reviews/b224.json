@@ -1,0 +1,25 @@
+{
+  "imageId": "question-image-b224",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b224.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b224.png",
+  "originalSha256": "46518b4eac233bbcfa4b8d7d7ffab8633110a3dc61f6ed75c0711de3cfe2c91d",
+  "candidateSha256": "2cf428313a00ae41fe4427920900afee9f0d7c129c220151bdfc169d8305dffc",
+  "reviewer": "Supplemental Review Agent /root/image_review_tail (Codex)",
+  "reviewedAt": "2026-10-13T17:16:49.361277+00:00",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "Bent tree leans right with the same separated fronds and three short wind lines; trunk, ground shape and yellow diamond boundary keep source geometry and wind direction."
+  ],
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b224.jpg",
+    "originalSha256": "46518b4eac233bbcfa4b8d7d7ffab8633110a3dc61f6ed75c0711de3cfe2c91d",
+    "masterPath": "content/assets-masters/questions/b224.png",
+    "masterSha256": "2cf428313a00ae41fe4427920900afee9f0d7c129c220151bdfc169d8305dffc",
+    "candidateSha256": "2cf428313a00ae41fe4427920900afee9f0d7c129c220151bdfc169d8305dffc",
+    "inferenceSha256": "e639fa9bae8f30635a3c32323e777ea0866a3c400f704d5f112709286883edf6",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

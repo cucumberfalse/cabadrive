@@ -1,0 +1,25 @@
+{
+  "imageId": "question-image-b231",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b231.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b231.png",
+  "originalSha256": "8392ef0e21dc26cbc0f8942fbe41d2056c9860cfabc7703e077ad6a9403648fa",
+  "candidateSha256": "172ecb13af15295dee05c7e7ff13a8ee7c1efad5050ecb2e0800b17dbab50ed4",
+  "reviewer": "Supplemental Review Agent /root/image_review_tail (Codex)",
+  "reviewedAt": "2026-10-13T17:17:04.474923+00:00",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "Upward main arrow retains a single diagonal branch joining from lower-left; arrowhead, stem and branch location are unchanged and no opposing branch is introduced."
+  ],
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b231.jpg",
+    "originalSha256": "8392ef0e21dc26cbc0f8942fbe41d2056c9860cfabc7703e077ad6a9403648fa",
+    "masterPath": "content/assets-masters/questions/b231.png",
+    "masterSha256": "172ecb13af15295dee05c7e7ff13a8ee7c1efad5050ecb2e0800b17dbab50ed4",
+    "candidateSha256": "172ecb13af15295dee05c7e7ff13a8ee7c1efad5050ecb2e0800b17dbab50ed4",
+    "inferenceSha256": "d1966878cdc4280b3ce3f28d16af9dd7e2b93cb1cb4e3ab329129d00c59f830a",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

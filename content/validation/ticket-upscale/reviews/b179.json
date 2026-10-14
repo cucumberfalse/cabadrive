@@ -1,0 +1,36 @@
+{
+  "imageId": "question-image-b179",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b179.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b179.png",
+  "originalSha256": "00bb4d675eac5ee6e4745f7aea197bc5ea057a63b41702b7e51e96df06a70aab",
+  "candidateSha256": "a217fa217fe0c700d133fdf09b35101e978d4a4bb6700290047053e16801e905",
+  "reviewer": "image_review",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "rejected",
+  "observations": [
+    "Enlarged red property sign changes letters and telephone-number strokes into malformed sharp forms; flooded road/water splash and vehicle remain in position."
+  ],
+  "rejectionReason": "Enlarged red property sign changes letters and telephone-number strokes into malformed sharp forms; flooded road/water splash and vehicle remain in position.",
+  "reviewedAt": "2026-10-13T17:05:40.139937+00:00",
+  "inspectionArtifacts": [
+    "/private/tmp/cabadrive-057-review-b140-b220-detail-b179-.245-.03-.09-.19.png",
+    "/private/tmp/cabadrive-057-review-b140-b220-b175-b176-b177-b178-b179.png"
+  ],
+  "fallbackObservations": [
+    "Fallback retains the Volkswagen plate and background4300-number board at source softness, along with original water splash and wet-road texture."
+  ],
+  "fallbackReviewedAt": "2026-10-13T17:44:40.903Z",
+  "fallbackReviewer": "Implementation Agent (Codex)",
+  "fallbackSha256": "1caee110897166b9be2d028adcef712a7bbf45bc8cfbd74c961c222837db9236",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b179.jpg",
+    "originalSha256": "00bb4d675eac5ee6e4745f7aea197bc5ea057a63b41702b7e51e96df06a70aab",
+    "masterPath": "content/assets-masters/questions/b179.png",
+    "masterSha256": "1caee110897166b9be2d028adcef712a7bbf45bc8cfbd74c961c222837db9236",
+    "candidateSha256": "a217fa217fe0c700d133fdf09b35101e978d4a4bb6700290047053e16801e905",
+    "inferenceSha256": "72d01fa947663862e7901ac0ef05b1bdc3c62f24b4548c181f792e24aac1a84c",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

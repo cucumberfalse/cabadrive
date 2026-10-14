@@ -1,0 +1,23 @@
+{
+  "imageId": "question-image-b33",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:24:51.023Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "Native crop confirms10 numeral, red circular border and CAFE/CAFEEE lettering match original; sidewalk tables, bollards and two walking figures remain in place."
+  ],
+  "candidateSha256": "92c542979571f5ed660e9c3710961794d20db896ac917825b290f32cd0b7f803",
+  "originalSha256": "0af771ed5fd4be48abb1c962513dfefd597cc072366e732dbbc4d80fe9c48842",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b33.jpg",
+    "originalSha256": "0af771ed5fd4be48abb1c962513dfefd597cc072366e732dbbc4d80fe9c48842",
+    "masterPath": "content/assets-masters/questions/b33.png",
+    "masterSha256": "92c542979571f5ed660e9c3710961794d20db896ac917825b290f32cd0b7f803",
+    "candidateSha256": "92c542979571f5ed660e9c3710961794d20db896ac917825b290f32cd0b7f803",
+    "inferenceSha256": "340e9b0da7714c1ab61ca7a3f54db7c06ffaf08d6ab4905e0edf2a74fc7b3ac8",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

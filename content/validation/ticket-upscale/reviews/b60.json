@@ -1,0 +1,30 @@
+{
+  "imageId": "question-image-b60",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:32:48.705Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "rejected",
+  "observations": [
+    "Native phone crop retains hands/device angle and bubble layout, but original message glyph texture is erased into sparse solid bars and header pseudoletters."
+  ],
+  "rejectionReason": "Phone message characters are replaced by bars/false header glyph strokes.",
+  "candidateSha256": "d4f1ebad1f2e6939601a0da0428c1ad3bf2feb8267862e11412f4dbd1808cdf2",
+  "originalSha256": "48b2937478d08bef5ac027670bb4ee6fdba562e53241fc95f37c56e2f3c9e364",
+  "fallbackObservations": [
+    "Fallback preserves original small phone header/message glyph strokes instead of reconstructed bars, and the driver/device pose."
+  ],
+  "fallbackReviewedAt": "2026-10-13T17:46:29.979Z",
+  "fallbackReviewer": "Implementation Agent (Codex)",
+  "fallbackSha256": "40f1426be6fdd24d1f9b0eacdc76e3b5efebe87de4835badc00cd692bdd4ac29",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b60.jpg",
+    "originalSha256": "48b2937478d08bef5ac027670bb4ee6fdba562e53241fc95f37c56e2f3c9e364",
+    "masterPath": "content/assets-masters/questions/b60.png",
+    "masterSha256": "40f1426be6fdd24d1f9b0eacdc76e3b5efebe87de4835badc00cd692bdd4ac29",
+    "candidateSha256": "d4f1ebad1f2e6939601a0da0428c1ad3bf2feb8267862e11412f4dbd1808cdf2",
+    "inferenceSha256": "e101d34ba31b989aeea807bd31b47a4e5169a6dec1f3807e2e76f7f5c724829f",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

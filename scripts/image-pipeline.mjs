@@ -25,7 +25,8 @@ export const profiles = {
 };
 export function currentPolicy() {
   return {
-    pipelineVersion: 1,
+    pipelineVersion: 2,
+    targetWidthPolicy: "include-reachable-source-target-v1",
     widths,
     formats,
     profiles,
@@ -171,7 +172,7 @@ export async function loadSources(root) {
       throw new Error(`Missing logical image source: ${record.sourcePath}`);
     const bytes = await readFile(await confinedPath(root, record.masterPath));
     const master = await decodeMaster(bytes, record.masterPath);
-    if (record.targetWidth && Math.max(...variantWidths(master.width)) < record.targetWidth)
+    if (record.targetWidth && master.width < record.targetWidth)
       throw new Error(`Master cannot meet target width: ${record.sourcePath}`);
     sources.push({ record, master });
   }
@@ -182,13 +183,21 @@ export async function loadSources(root) {
     throw new Error("PNG master inventory differs from registry (unregistered/missing input)");
   return sources;
 }
-export function variantWidths(width) {
+export function variantWidths(width, targetWidth) {
+  if (
+    targetWidth !== undefined &&
+    (!Number.isSafeInteger(targetWidth) || targetWidth < 1 || targetWidth > width)
+  )
+    throw new Error("Master cannot meet target width");
   const values = widths.filter((value) => value <= width);
-  return values.length ? values : [width];
+  if (targetWidth !== undefined) values.push(targetWidth);
+  values.sort((a, b) => a - b);
+  const unique = [...new Set(values)];
+  return unique.length ? unique : [width];
 }
 export function expectedVariants(sources) {
   return sources.flatMap(({ record, master }) =>
-    variantWidths(master.width).flatMap((width) =>
+    variantWidths(master.width, record.targetWidth).flatMap((width) =>
       formats.map((format) => ({ sourcePath: record.sourcePath, width, format })),
     ),
   );

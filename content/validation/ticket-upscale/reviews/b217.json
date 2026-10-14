@@ -1,0 +1,29 @@
+{
+  "imageId": "question-image-b217",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b217.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b217.png",
+  "originalSha256": "e2ca5d1727636d9e6bd2b7141844b24ba136f940ea9acf4b64a30247544d1100",
+  "candidateSha256": "5aecf154d4f5dc26d2b1be62ed7ca51f4fb8c4e862964d475ad627ef0cada596",
+  "reviewer": "image_review",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": false,
+  "status": "accepted",
+  "observations": [
+    "Both front diagonal belts remain visible; rear passenger remains without an added belt; seating/headrest count and each body position preserved."
+  ],
+  "rejectionReason": null,
+  "reviewedAt": "2026-10-13T17:15:25.764792+00:00",
+  "inspectionArtifacts": [
+    "/private/tmp/cabadrive-057-review-b140-b220-b215-b216-b217-b218-b219.png"
+  ],
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b217.jpg",
+    "originalSha256": "e2ca5d1727636d9e6bd2b7141844b24ba136f940ea9acf4b64a30247544d1100",
+    "masterPath": "content/assets-masters/questions/b217.png",
+    "masterSha256": "5aecf154d4f5dc26d2b1be62ed7ca51f4fb8c4e862964d475ad627ef0cada596",
+    "candidateSha256": "5aecf154d4f5dc26d2b1be62ed7ca51f4fb8c4e862964d475ad627ef0cada596",
+    "inferenceSha256": "aceeeafc5e79d6fd0416589175f7f33ba53af2d59c6f7e2bfbd817b91e3d114e",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

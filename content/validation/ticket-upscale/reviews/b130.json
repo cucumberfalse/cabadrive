@@ -1,0 +1,30 @@
+{
+  "imageId": "question-image-b130",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:41:44.567Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "rejected",
+  "observations": [
+    "Native right-wall plaque crop shows its fine name/address letters becoming flat grey rectangular bars; parked cars and transverse white road markings remain."
+  ],
+  "rejectionReason": "Wall direction-plaque lettering is erased into bars.",
+  "candidateSha256": "23d0412a34079a4a6e37612e1504bd5d1b1c2ede2672693da52af68551e56678",
+  "originalSha256": "49b26a180924f879689d50088137b44ea941147ddd4f2292258d7fa6cc5a8592",
+  "fallbackObservations": [
+    "Fallback retains the fine wall plaque in its original blurred state, parallel parked cars and foreground broken white markings."
+  ],
+  "fallbackReviewedAt": "2026-10-13T17:43:22.323Z",
+  "fallbackReviewer": "Implementation Agent (Codex)",
+  "fallbackSha256": "8fd658505f584ee5be0a0488ee1f88e74cd9ff6f390330d2e72691a666f6d191",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b130.jpg",
+    "originalSha256": "49b26a180924f879689d50088137b44ea941147ddd4f2292258d7fa6cc5a8592",
+    "masterPath": "content/assets-masters/questions/b130.png",
+    "masterSha256": "8fd658505f584ee5be0a0488ee1f88e74cd9ff6f390330d2e72691a666f6d191",
+    "candidateSha256": "23d0412a34079a4a6e37612e1504bd5d1b1c2ede2672693da52af68551e56678",
+    "inferenceSha256": "723177e33537916dd645f7e32b611793cbad2739987ceef952b1e2f7328d271d",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

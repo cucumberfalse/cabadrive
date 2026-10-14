@@ -1,0 +1,23 @@
+{
+  "imageId": "question-image-b87",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:41:44.560Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "Blank blue informational rectangle, red restriction circle and yellow warning diamond retain A/B/C labels and category-specific shapes."
+  ],
+  "candidateSha256": "463c5a3dc6b9d7a8ad006c16c17bac7219ebe5212e814a948ac5fab0b4dd1c66",
+  "originalSha256": "9fdaac8bf6f14ad1118670d92ca7276c5d506143d28ab54c239f795ca15893bf",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b87.jpg",
+    "originalSha256": "9fdaac8bf6f14ad1118670d92ca7276c5d506143d28ab54c239f795ca15893bf",
+    "masterPath": "content/assets-masters/questions/b87.png",
+    "masterSha256": "463c5a3dc6b9d7a8ad006c16c17bac7219ebe5212e814a948ac5fab0b4dd1c66",
+    "candidateSha256": "463c5a3dc6b9d7a8ad006c16c17bac7219ebe5212e814a948ac5fab0b4dd1c66",
+    "inferenceSha256": "a888798cf36b4ab3a4eca884933905f50a3ae84009fcf38913d61cc20cc22d03",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "imageId": "question-image-b216",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b216.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b216.png",
+  "originalSha256": "8e0093f0cf6cd8419303c342e3186c8a034f67078478661e4035d5daaf4fbc88",
+  "candidateSha256": "9847ddde94f7f45d2e0196e9faa59bf40f66351fe73c00831e285785e9787891",
+  "reviewer": "image_review",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": false,
+  "status": "accepted",
+  "observations": [
+    "Driver/front headrest keeps both posts, outline and same relation to driver head/neck; steering wheel and window geometry retained."
+  ],
+  "rejectionReason": null,
+  "reviewedAt": "2026-10-13T17:15:25.764771+00:00",
+  "inspectionArtifacts": [
+    "/private/tmp/cabadrive-057-review-b140-b220-b215-b216-b217-b218-b219.png"
+  ],
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b216.jpg",
+    "originalSha256": "8e0093f0cf6cd8419303c342e3186c8a034f67078478661e4035d5daaf4fbc88",
+    "masterPath": "content/assets-masters/questions/b216.png",
+    "masterSha256": "9847ddde94f7f45d2e0196e9faa59bf40f66351fe73c00831e285785e9787891",
+    "candidateSha256": "9847ddde94f7f45d2e0196e9faa59bf40f66351fe73c00831e285785e9787891",
+    "inferenceSha256": "57a6b8fba9a0df7ff16f6fb111d83ca32ffd8d97e5b293f476ccd02824a54c73",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

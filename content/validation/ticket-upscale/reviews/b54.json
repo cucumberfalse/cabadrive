@@ -1,0 +1,23 @@
+{
+  "imageId": "question-image-b54",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:31:28.487Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "Green P placard remains same shape/position behind rear windshield; Volkswagen badge and horizontal heater wires retain source arrangement."
+  ],
+  "candidateSha256": "2400a82bd21a42cabcb2dee20986038e483d449b0d1641e6970494ac772e6535",
+  "originalSha256": "a7fd1e2102b8ed26c2306963822a43c3279a26aec9244b9cc0c3e00635b6271d",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b54.jpg",
+    "originalSha256": "a7fd1e2102b8ed26c2306963822a43c3279a26aec9244b9cc0c3e00635b6271d",
+    "masterPath": "content/assets-masters/questions/b54.png",
+    "masterSha256": "2400a82bd21a42cabcb2dee20986038e483d449b0d1641e6970494ac772e6535",
+    "candidateSha256": "2400a82bd21a42cabcb2dee20986038e483d449b0d1641e6970494ac772e6535",
+    "inferenceSha256": "fa520e97c850c98eacb918704f913784b34d857cc0fdcb65596444f690619b72",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

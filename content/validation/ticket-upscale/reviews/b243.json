@@ -1,0 +1,25 @@
+{
+  "imageId": "question-image-b243",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b243.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b243.png",
+  "originalSha256": "dd46a7f8681d9a285a2b2dbf750fca3bf6c100ca25fa5e4bbba822a2a5bc77bc",
+  "candidateSha256": "1647270bd82f0fa79ed304643c4218f5e014154866bb0f3201ca7578b42250ad",
+  "reviewer": "Supplemental Review Agent /root/image_review_tail (Codex)",
+  "reviewedAt": "2026-10-13T17:18:11.037567+00:00",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "Three vertical panels retain exactly one, two and three rising red diagonal stripes from left to right; panel spacing, stripe slopes, white gaps and thin rounded borders are preserved."
+  ],
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b243.jpg",
+    "originalSha256": "dd46a7f8681d9a285a2b2dbf750fca3bf6c100ca25fa5e4bbba822a2a5bc77bc",
+    "masterPath": "content/assets-masters/questions/b243.png",
+    "masterSha256": "1647270bd82f0fa79ed304643c4218f5e014154866bb0f3201ca7578b42250ad",
+    "candidateSha256": "1647270bd82f0fa79ed304643c4218f5e014154866bb0f3201ca7578b42250ad",
+    "inferenceSha256": "e426904d4690fce56a4e6b0c950a302c8e5c3e458568f46c323f4682e0840ca8",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

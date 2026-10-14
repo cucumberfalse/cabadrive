@@ -1,0 +1,30 @@
+{
+  "imageId": "question-image-b203",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b203.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b203.png",
+  "originalSha256": "cb5902828c7a392198818e5f3aa93359d1c1f2184b15c4f45a595aea3f453a4a",
+  "candidateSha256": "dceeaf1ecf21b3c84044a73d7a6c1dc4b32bf62c7b998ed267c618da4e86bd77",
+  "reviewer": "image_review",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "Tire tread grooves, V direction, wheel spoke count and tire contour retained; minute sidewall markings stay unresolved without claim of reconstructed lettering."
+  ],
+  "rejectionReason": null,
+  "reviewedAt": "2026-10-13T17:12:56.839929+00:00",
+  "inspectionArtifacts": [
+    "/private/tmp/cabadrive-057-review-b140-b220-b200-b201-b202-b203-b204.png",
+    "/private/tmp/cabadrive-057-review-b140-b220-detail-b203-.56-.735-.065-.11.png"
+  ],
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b203.jpg",
+    "originalSha256": "cb5902828c7a392198818e5f3aa93359d1c1f2184b15c4f45a595aea3f453a4a",
+    "masterPath": "content/assets-masters/questions/b203.png",
+    "masterSha256": "dceeaf1ecf21b3c84044a73d7a6c1dc4b32bf62c7b998ed267c618da4e86bd77",
+    "candidateSha256": "dceeaf1ecf21b3c84044a73d7a6c1dc4b32bf62c7b998ed267c618da4e86bd77",
+    "inferenceSha256": "4cc6f1b9d131a08c846f2960cdbf2d0d1494d1bb3bf3ad7367b6f9067a611fb4",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

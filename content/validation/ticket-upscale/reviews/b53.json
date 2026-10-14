@@ -1,0 +1,30 @@
+{
+  "imageId": "question-image-b53",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:31:28.482Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "rejected",
+  "observations": [
+    "Operator mouthpiece/driver pose retained; native bluevest crop shows lower official lettering reconstructed into new curled/stretched glyph contours unlike original fabric text."
+  ],
+  "rejectionReason": "Fine lettering on operator vest becomes synthetic curled glyphs.",
+  "candidateSha256": "f3e18a90141f83eb07f8dbb7a58b844a08ed71b498dee90a92d56781aea27afb",
+  "originalSha256": "1f77fdce9b995b2f6d20652e93ac6cada727a430f52f394f7edf370f86be821e",
+  "fallbackObservations": [
+    "Fallback preserves original vest lettering in soft separate strokes, reflective stripe and breathalyzer/person/car geometry."
+  ],
+  "fallbackReviewedAt": "2026-10-13T17:46:29.975Z",
+  "fallbackReviewer": "Implementation Agent (Codex)",
+  "fallbackSha256": "15011989d7af0f346c082fc45ef75531959fe597e8cf51576938f789c6bd8ba9",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b53.jpg",
+    "originalSha256": "1f77fdce9b995b2f6d20652e93ac6cada727a430f52f394f7edf370f86be821e",
+    "masterPath": "content/assets-masters/questions/b53.png",
+    "masterSha256": "15011989d7af0f346c082fc45ef75531959fe597e8cf51576938f789c6bd8ba9",
+    "candidateSha256": "f3e18a90141f83eb07f8dbb7a58b844a08ed71b498dee90a92d56781aea27afb",
+    "inferenceSha256": "d4c54cedda0c1be87f27ccf96a37cd1196235634bc2e9005fb223973ce93a507",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

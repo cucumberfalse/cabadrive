@@ -1,0 +1,23 @@
+{
+  "imageId": "question-image-b6",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:32:48.701Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": false,
+  "status": "accepted",
+  "observations": [
+    "Cyclist helmetstrap, both gripping hands and brakecable routing retain original structure; basket and wristwatch positions unchanged."
+  ],
+  "candidateSha256": "2a38193219b50f346fe3347ab90f8072c1614089e1c42ea0c1bf03f890d3688e",
+  "originalSha256": "ccdd7023fda92f94a85dfd4a8880d31e8366486f4fd4ef07ecff469cf346e8cb",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b6.jpg",
+    "originalSha256": "ccdd7023fda92f94a85dfd4a8880d31e8366486f4fd4ef07ecff469cf346e8cb",
+    "masterPath": "content/assets-masters/questions/b6.png",
+    "masterSha256": "2a38193219b50f346fe3347ab90f8072c1614089e1c42ea0c1bf03f890d3688e",
+    "candidateSha256": "2a38193219b50f346fe3347ab90f8072c1614089e1c42ea0c1bf03f890d3688e",
+    "inferenceSha256": "4627c0cdf758bb1f21079ddbf628336eb099bbf4b352333f4601cd6ca1aacb2f",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

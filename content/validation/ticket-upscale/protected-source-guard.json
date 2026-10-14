@@ -1,0 +1,14 @@
+{
+  "checkedAt": "2026-10-13T21:59:12.049367+00:00",
+  "comparedRef": "origin/main",
+  "protectedRoots": [
+    "content/assets",
+    "content/questions",
+    "content/primary-sources",
+    "content/official-documents"
+  ],
+  "protectedTrackedDiffEmpty": true,
+  "protectedUntrackedEmpty": true,
+  "diffCheck": "PASS",
+  "scope": "read-only protected-source guard; no tests or edits"
+}

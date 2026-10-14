@@ -1,0 +1,29 @@
+{
+  "imageId": "question-image-b166",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b166.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b166.png",
+  "originalSha256": "9bf78aae30c3248a2e9eef2aa4910bfd9c1895fb06b118e3bdee6474d0bdd8f6",
+  "candidateSha256": "6195d6dc577e805f771aff515ec282b40e0eb722f34b0b59125a127b8b57d332",
+  "reviewer": "image_review",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": false,
+  "status": "accepted",
+  "observations": [
+    "Red wagon remains parked beside curb in same orientation; window divisions, wheels/spokes, lamps and body outline retained."
+  ],
+  "rejectionReason": null,
+  "reviewedAt": "2026-10-13T17:05:40.116982+00:00",
+  "inspectionArtifacts": [
+    "/private/tmp/cabadrive-057-review-b140-b220-b165-b166-b167-b168-b169.png"
+  ],
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b166.jpg",
+    "originalSha256": "9bf78aae30c3248a2e9eef2aa4910bfd9c1895fb06b118e3bdee6474d0bdd8f6",
+    "masterPath": "content/assets-masters/questions/b166.png",
+    "masterSha256": "6195d6dc577e805f771aff515ec282b40e0eb722f34b0b59125a127b8b57d332",
+    "candidateSha256": "6195d6dc577e805f771aff515ec282b40e0eb722f34b0b59125a127b8b57d332",
+    "inferenceSha256": "0548b88be0bf8588c5d24e5c16590ab0f6ed64e05b3e80fdbb19a1d5193f4376",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

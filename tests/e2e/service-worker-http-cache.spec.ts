@@ -16,8 +16,8 @@ function workerBody(version: number, legacy = false) {
   let body = builtWorker
     .replace(cacheNameDeclaration, `const CACHE_NAME = "cabadrive-static-${version}";`)
     .replace(
-      /const ASSETS = \[[\s\S]*?\];\n\n/,
-      `const ASSETS = ${JSON.stringify(fixtureAssets)};\n\n`,
+      /const ASSETS = \[[\s\S]*?\];\n/,
+      `const ASSETS = ${JSON.stringify(fixtureAssets)};\n`,
     );
   if (legacy) {
     // Original install behavior is an HTTP-cache control, not a repaired historical fixture.

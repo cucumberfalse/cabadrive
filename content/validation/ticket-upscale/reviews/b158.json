@@ -1,0 +1,36 @@
+{
+  "imageId": "question-image-b158",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b158.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b158.png",
+  "originalSha256": "93092111efad040aa550eecd2b919e3254bca6d1968394c430489b209979e2d5",
+  "candidateSha256": "4fb0bdb70d4ed12a8ac0b9a0d847a9406bd91bb6f6f3ca0011687711007cb0d6",
+  "reviewer": "image_review",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "rejected",
+  "observations": [
+    "Enlarged street-name sign develops disconnected invented glyphs and a broad white stripe replacing small letters; right arrow and zebra crossing retained."
+  ],
+  "rejectionReason": "Enlarged street-name sign develops disconnected invented glyphs and a broad white stripe replacing small letters; right arrow and zebra crossing retained.",
+  "reviewedAt": "2026-10-13T17:03:49.006281+00:00",
+  "inspectionArtifacts": [
+    "/private/tmp/cabadrive-057-review-b140-b220-b155-b156-b157-b158-b159.png",
+    "/private/tmp/cabadrive-057-review-b140-b220-detail-b158-.065-.22-.14-.10.png"
+  ],
+  "fallbackObservations": [
+    "Fallback keeps the tiny left-wall street-name plaque and right arrow as original soft strokes, along with the yellow curb and white transverse marks."
+  ],
+  "fallbackReviewedAt": "2026-10-13T17:44:15.322Z",
+  "fallbackReviewer": "Implementation Agent (Codex)",
+  "fallbackSha256": "eb27b270c5c155c5caec7843bea1cefe03414bfd08b8fc7716a12c478698faa4",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b158.jpg",
+    "originalSha256": "93092111efad040aa550eecd2b919e3254bca6d1968394c430489b209979e2d5",
+    "masterPath": "content/assets-masters/questions/b158.png",
+    "masterSha256": "eb27b270c5c155c5caec7843bea1cefe03414bfd08b8fc7716a12c478698faa4",
+    "candidateSha256": "4fb0bdb70d4ed12a8ac0b9a0d847a9406bd91bb6f6f3ca0011687711007cb0d6",
+    "inferenceSha256": "a268ed20d0c82f41b41a4fcc35fafad4753d19c8ddff632fae1026c826a7ad54",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

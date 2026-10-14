@@ -1,0 +1,36 @@
+{
+  "imageId": "question-image-b142",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b142.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b142.png",
+  "originalSha256": "fce5f7f66b4ed605fa80a15e091f3c4a4f91363710f58a5ba2af0aff50e7a8c2",
+  "candidateSha256": "4b0cb6e18ba26bf6db28740594b27ef15aa61dad70c4f356f49237230f4886b6",
+  "reviewer": "image_review",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "rejected",
+  "observations": [
+    "Enlarged paired street-name plaques keep opposite arrows but original small glyph strokes are replaced by smooth rectangular blocks; name fidelity cannot be accepted."
+  ],
+  "rejectionReason": "Enlarged paired street-name plaques keep opposite arrows but original small glyph strokes are replaced by smooth rectangular blocks; name fidelity cannot be accepted.",
+  "reviewedAt": "2026-10-13T17:02:15.460767+00:00",
+  "inspectionArtifacts": [
+    "/private/tmp/cabadrive-057-review-b140-b220-b140-b141-b142-b143-b144.png",
+    "/private/tmp/cabadrive-057-review-b140-b220-detail-b142-.20-.07-.23-.16.png"
+  ],
+  "fallbackObservations": [
+    "Fallback retains both opposing street plaques with their original fine text and arrows, plus Chevrolet plate and black gate lettering."
+  ],
+  "fallbackReviewedAt": "2026-10-13T17:43:47.667Z",
+  "fallbackReviewer": "Implementation Agent (Codex)",
+  "fallbackSha256": "aa0f51192f175ef077c17bf1fc80da72165d57cc9a46fdd2d960301ebfea45a8",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b142.jpg",
+    "originalSha256": "fce5f7f66b4ed605fa80a15e091f3c4a4f91363710f58a5ba2af0aff50e7a8c2",
+    "masterPath": "content/assets-masters/questions/b142.png",
+    "masterSha256": "aa0f51192f175ef077c17bf1fc80da72165d57cc9a46fdd2d960301ebfea45a8",
+    "candidateSha256": "4b0cb6e18ba26bf6db28740594b27ef15aa61dad70c4f356f49237230f4886b6",
+    "inferenceSha256": "ed99360dae13f3832aba48de71e27ac2bbe3c922c6beda7e1cd4444aca55273a",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "imageId": "question-image-b168",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b168.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b168.png",
+  "originalSha256": "3e5f2ea31758ec58e11c47ab7ec270068a842eefbb060064a7e0c92b47acbaaf",
+  "candidateSha256": "3ea1e3d260cdcfd30984d13aa685e55f3fc9060f1cbb44d02532e092aeca040b",
+  "reviewer": "image_review",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "rejected",
+  "observations": [
+    "Enlarged GUSTAVO CERATI bridge lettering develops malformed V/A-like and connected glyph shapes; road underpass and yellow center geometry retained."
+  ],
+  "rejectionReason": "Enlarged GUSTAVO CERATI bridge lettering develops malformed V/A-like and connected glyph shapes; road underpass and yellow center geometry retained.",
+  "reviewedAt": "2026-10-13T17:05:40.120523+00:00",
+  "inspectionArtifacts": [
+    "/private/tmp/cabadrive-057-review-b140-b220-detail-b168-.36-.48-.24-.095.png",
+    "/private/tmp/cabadrive-057-review-b140-b220-b165-b166-b167-b168-b169.png"
+  ],
+  "fallbackObservations": [
+    "Fallback retains original GUSTAVO CERATI bridge writing and yellow tram/rail structure, plus wall murals and road curvature."
+  ],
+  "fallbackReviewedAt": "2026-10-13T17:44:15.335Z",
+  "fallbackReviewer": "Implementation Agent (Codex)",
+  "fallbackSha256": "398dffaa0dc7837a2eaa0f0228f30680af78cb30889379a09876c82b57b076a9",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b168.jpg",
+    "originalSha256": "3e5f2ea31758ec58e11c47ab7ec270068a842eefbb060064a7e0c92b47acbaaf",
+    "masterPath": "content/assets-masters/questions/b168.png",
+    "masterSha256": "398dffaa0dc7837a2eaa0f0228f30680af78cb30889379a09876c82b57b076a9",
+    "candidateSha256": "3ea1e3d260cdcfd30984d13aa685e55f3fc9060f1cbb44d02532e092aeca040b",
+    "inferenceSha256": "3d0a86e625a2ae29e044dbeea8356b04118bcb819b5835e2b6970156a29e672b",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

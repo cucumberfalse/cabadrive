@@ -1,0 +1,23 @@
+{
+  "imageId": "question-image-b61",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:32:48.706Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": false,
+  "status": "accepted",
+  "observations": [
+    "Red oval still surrounds passenger looking down at phone; driver hands on steeringwheel and visible seatbelt retain original positions and angles."
+  ],
+  "candidateSha256": "ef99b9d0f28e08854a249944e91754fb4f60754ca026ef39370accafa0c2b726",
+  "originalSha256": "32b6b52e1e54023d83cf853e4acb0a3aaa7643977eedce5493a70b6dff80a442",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b61.jpg",
+    "originalSha256": "32b6b52e1e54023d83cf853e4acb0a3aaa7643977eedce5493a70b6dff80a442",
+    "masterPath": "content/assets-masters/questions/b61.png",
+    "masterSha256": "ef99b9d0f28e08854a249944e91754fb4f60754ca026ef39370accafa0c2b726",
+    "candidateSha256": "ef99b9d0f28e08854a249944e91754fb4f60754ca026ef39370accafa0c2b726",
+    "inferenceSha256": "48be51f4832875370e26b801162144f59addff7a425d763d3813ff75d9dc5465",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

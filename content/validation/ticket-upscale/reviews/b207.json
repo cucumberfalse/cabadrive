@@ -1,0 +1,36 @@
+{
+  "imageId": "question-image-b207",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b207.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b207.png",
+  "originalSha256": "2490e4ea0ce77623342ad61c0b8ab3d2844a2318c2a555c0ebcb4788778e8dbc",
+  "candidateSha256": "86ac44a30382853babfe6d2e63f62bcf276044468cdbaea22d75e70bcf7e2501",
+  "reviewer": "image_review",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "rejected",
+  "observations": [
+    "Enlarged passenger-seat extinguisher label loses fine white text and becomes flat red/blue-green blobs; circular locator retained but label detail destroyed."
+  ],
+  "rejectionReason": "Enlarged passenger-seat extinguisher label loses fine white text and becomes flat red/blue-green blobs; circular locator retained but label detail destroyed.",
+  "reviewedAt": "2026-10-13T17:12:56.845954+00:00",
+  "inspectionArtifacts": [
+    "/private/tmp/cabadrive-057-review-b140-b220-b205-b206-b207-b208.png",
+    "/private/tmp/cabadrive-057-review-b140-b220-detail-b207-.435-.535-.115-.14.png"
+  ],
+  "fallbackObservations": [
+    "Fallback keeps the small extinguisher label at original softness inside the red circle and the same beige seat/console arrangement."
+  ],
+  "fallbackReviewedAt": "2026-10-13T17:45:13.367Z",
+  "fallbackReviewer": "Implementation Agent (Codex)",
+  "fallbackSha256": "bca5b227fadae29e6103537c97522cfd3d0ed3030229bad8656f1c2a75065b9a",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b207.jpg",
+    "originalSha256": "2490e4ea0ce77623342ad61c0b8ab3d2844a2318c2a555c0ebcb4788778e8dbc",
+    "masterPath": "content/assets-masters/questions/b207.png",
+    "masterSha256": "bca5b227fadae29e6103537c97522cfd3d0ed3030229bad8656f1c2a75065b9a",
+    "candidateSha256": "86ac44a30382853babfe6d2e63f62bcf276044468cdbaea22d75e70bcf7e2501",
+    "inferenceSha256": "05d450c19cfc1483b111d509a399185a6adc9ead81936ca928aaad7a39d33d2f",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

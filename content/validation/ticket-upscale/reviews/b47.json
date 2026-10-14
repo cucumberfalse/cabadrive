@@ -1,0 +1,23 @@
+{
+  "imageId": "question-image-b47",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:30:13.202Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "Windshield plate NHN737 remains exact with same positions/slant; mirror, steeringwheel, rearview ornament and blurred traffic lights retain geometry."
+  ],
+  "candidateSha256": "dab94613363c048d74d426815060eb67eaab33e43d1cd4acc6113eb6ef0a6ea8",
+  "originalSha256": "9b1931cb93b2b0f69202d4bcc23a3109eae56e57cb4dbaff18ba1d445cab49af",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b47.jpg",
+    "originalSha256": "9b1931cb93b2b0f69202d4bcc23a3109eae56e57cb4dbaff18ba1d445cab49af",
+    "masterPath": "content/assets-masters/questions/b47.png",
+    "masterSha256": "dab94613363c048d74d426815060eb67eaab33e43d1cd4acc6113eb6ef0a6ea8",
+    "candidateSha256": "dab94613363c048d74d426815060eb67eaab33e43d1cd4acc6113eb6ef0a6ea8",
+    "inferenceSha256": "5651bea31e318f2f380f529b99836d5226751d29d0dece8e123a97d5d384a36c",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

@@ -30,6 +30,7 @@ import {
   type ReactNode,
 } from "react";
 import packageJson from "../package.json";
+import { TicketRaster } from "./components/TicketRaster";
 import {
   data,
   assetUrl,
@@ -468,36 +469,10 @@ function QuestionImageFigure({
   showFallback: boolean;
 }) {
   const imagePath = question.image!.localPath;
-  const imageSrc = assetUrl(imagePath);
-  const [naturalSize, setNaturalSize] = useState<{ src: string; width: number; height: number }>();
-  const currentNaturalSize = naturalSize?.src === imageSrc ? naturalSize : undefined;
-  const imageFrameStyle = currentNaturalSize
-    ? ({
-        "--question-image-max-width-by-height": `${(360 * currentNaturalSize.width) / currentNaturalSize.height}px`,
-      } as CSSProperties)
-    : undefined;
 
   return (
     <figure className={showOverlay ? "question-image has-explanation-overlay" : "question-image"}>
-      <div className="question-image-frame" style={imageFrameStyle}>
-        <img
-          src={imageSrc}
-          alt={question.image!.altEs}
-          onLoad={(event) => {
-            const { naturalWidth, naturalHeight } = event.currentTarget;
-            if (naturalWidth <= 0 || naturalHeight <= 0) return;
-            if (event.currentTarget.getAttribute("src") !== imageSrc) return;
-            setNaturalSize((current) => {
-              if (
-                current?.src === imageSrc &&
-                current.width === naturalWidth &&
-                current.height === naturalHeight
-              )
-                return current;
-              return { src: imageSrc, width: naturalWidth, height: naturalHeight };
-            });
-          }}
-        />
+      <TicketRaster sourcePath={imagePath} alt={question.image!.altEs}>
         {showOverlay && overlay && (
           <div
             className="image-explanation-overlay"
@@ -520,7 +495,7 @@ function QuestionImageFigure({
             ))}
           </div>
         )}
-      </div>
+      </TicketRaster>
       <figcaption>
         <ImageIcon size={16} aria-hidden="true" /> Локальное изображение вопроса
         {showOverlay && overlay ? <span> · включено проверенное визуальное пояснение</span> : null}
@@ -1678,10 +1653,11 @@ function CanonicalStudyTicketBlock({
       )}
       {localImagePath && (
         <figure className="question-image materials-image">
-          <img
-            loading="lazy"
-            src={assetUrl(localImagePath)}
+          <TicketRaster
+            sourcePath={localImagePath}
             alt={question.image?.altEs || `Изображение билета ${question.id}`}
+            loading="lazy"
+            heightCap={300}
           />
           <figcaption>
             <ImageIcon size={16} aria-hidden="true" /> Локальное изображение вопроса

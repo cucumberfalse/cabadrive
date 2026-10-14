@@ -1,0 +1,30 @@
+{
+  "imageId": "question-image-b104",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T16:53:54.902Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "rejected",
+  "observations": [
+    "Enlarged signs reveal Avenida letter contours malformed and the 4200-4300 address strokes broken; lower street sign characters are changed. Bus, car and crossing remain placed correctly."
+  ],
+  "rejectionReason": "Sign-detail inspection shows reconstructed malformed street-name letters and broken numeric strokes instead of the original glyph contours.",
+  "candidateSha256": "5b435a512f1ececc83de6a61d911549015a9a90219ba9cfd51dec0f33864fe63",
+  "originalSha256": "e80484dac8e68e36e8be742a52ffa35a490ebb0f5eb845e48eeeb034f097b961",
+  "fallbackObservations": [
+    "Separately inspected fallback retains the same street plaques, bus and original blurred small numbers without synthetic bars."
+  ],
+  "fallbackReviewedAt": "2026-10-13T17:43:22.310Z",
+  "fallbackReviewer": "Implementation Agent (Codex)",
+  "fallbackSha256": "3a7951359dac983393789f2e4477bec1ae30b0934cfa9fd7866c3e06ea779b41",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b104.jpg",
+    "originalSha256": "e80484dac8e68e36e8be742a52ffa35a490ebb0f5eb845e48eeeb034f097b961",
+    "masterPath": "content/assets-masters/questions/b104.png",
+    "masterSha256": "3a7951359dac983393789f2e4477bec1ae30b0934cfa9fd7866c3e06ea779b41",
+    "candidateSha256": "5b435a512f1ececc83de6a61d911549015a9a90219ba9cfd51dec0f33864fe63",
+    "inferenceSha256": "f2a4032c19b5d3756930b27aad94b132344f88c3d5fffa600f2920c656e61a28",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

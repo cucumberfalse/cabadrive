@@ -1,0 +1,25 @@
+{
+  "imageId": "question-image-b259",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b259.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b259.png",
+  "originalSha256": "ca7cb7373a614d4ba703640ebeb71271d2bd9ccdd1054f90c566838a8e270d1a",
+  "candidateSha256": "92598fe18c260cb39ee04781ab5dbf1451ae7d6ec969b4da02feab7abe2c88b8",
+  "reviewer": "Supplemental Review Agent /root/image_review_tail (Codex)",
+  "reviewedAt": "2026-10-13T17:19:46.746463+00:00",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "Lane-change prohibition retains the source curved upward-right black arrow crossing a dashed vertical line, covered by the red diagonal slash from upper-left to lower-right; exposed dash count and arrow direction remain unchanged."
+  ],
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b259.jpg",
+    "originalSha256": "ca7cb7373a614d4ba703640ebeb71271d2bd9ccdd1054f90c566838a8e270d1a",
+    "masterPath": "content/assets-masters/questions/b259.png",
+    "masterSha256": "92598fe18c260cb39ee04781ab5dbf1451ae7d6ec969b4da02feab7abe2c88b8",
+    "candidateSha256": "92598fe18c260cb39ee04781ab5dbf1451ae7d6ec969b4da02feab7abe2c88b8",
+    "inferenceSha256": "467eabf8e81c4508cde66001cc344689229e8a2270f2e90846d2528afb96fbaf",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

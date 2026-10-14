@@ -1,0 +1,36 @@
+{
+  "imageId": "question-image-b205",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b205.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b205.png",
+  "originalSha256": "1f7c44d8186d783356cb777e12c4cb344dd068b2e92d309161216481e43307e0",
+  "candidateSha256": "53cfa69e130733c83e8b2e280716d7f142fd6a4e2bca2f8b68adb95542054882",
+  "reviewer": "image_review",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "rejected",
+  "observations": [
+    "A–E equipment labels retained, but enlarged extinguisher instruction label is reinterpreted as empty bars/malformed abstract marks, losing original fine glyph layout."
+  ],
+  "rejectionReason": "A–E equipment labels retained, but enlarged extinguisher instruction label is reinterpreted as empty bars/malformed abstract marks, losing original fine glyph layout.",
+  "reviewedAt": "2026-10-13T17:12:56.843317+00:00",
+  "inspectionArtifacts": [
+    "/private/tmp/cabadrive-057-review-b140-b220-detail-b205-.775-.29-.11-.16.png",
+    "/private/tmp/cabadrive-057-review-b140-b220-b205-b206-b207-b208.png"
+  ],
+  "fallbackObservations": [
+    "Fallback retains original extinguisher label stripes/fine print and A-E object labels, with medical cross, warning triangles, vest and rod unchanged."
+  ],
+  "fallbackReviewedAt": "2026-10-13T17:45:13.361Z",
+  "fallbackReviewer": "Implementation Agent (Codex)",
+  "fallbackSha256": "b4aa45fd4a16015030b8dc97d9991422f4597f1845a1aca21c364e7a4c7092ed",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b205.jpg",
+    "originalSha256": "1f7c44d8186d783356cb777e12c4cb344dd068b2e92d309161216481e43307e0",
+    "masterPath": "content/assets-masters/questions/b205.png",
+    "masterSha256": "b4aa45fd4a16015030b8dc97d9991422f4597f1845a1aca21c364e7a4c7092ed",
+    "candidateSha256": "53cfa69e130733c83e8b2e280716d7f142fd6a4e2bca2f8b68adb95542054882",
+    "inferenceSha256": "9ad51d5a101080df25611780099fcd2d67e4c725579a8f0a8e8da99dab1053ee",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

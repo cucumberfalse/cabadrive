@@ -1,0 +1,25 @@
+{
+  "imageId": "question-image-b266",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b266.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b266.png",
+  "originalSha256": "969c9818bb3304bbef8c813e7fb6f0b828a1321247e7fe1f60252038451f9a37",
+  "candidateSha256": "dc47c1096914269a0af625f6565fd66b433a0a2d532899271faca63d9d964e9f",
+  "reviewer": "Supplemental Review Agent /root/image_review_tail (Codex)",
+  "reviewedAt": "2026-10-13T17:20:00.387623+00:00",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "Yellow star retains exactly five pointed tips and five concave joins with the same black outline; white rounded-square field and faint outer border preserve the source layout."
+  ],
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b266.jpg",
+    "originalSha256": "969c9818bb3304bbef8c813e7fb6f0b828a1321247e7fe1f60252038451f9a37",
+    "masterPath": "content/assets-masters/questions/b266.png",
+    "masterSha256": "dc47c1096914269a0af625f6565fd66b433a0a2d532899271faca63d9d964e9f",
+    "candidateSha256": "dc47c1096914269a0af625f6565fd66b433a0a2d532899271faca63d9d964e9f",
+    "inferenceSha256": "ba9070430aefebf6f424292432ca227a6034910ec650612e68b87b22b47c1cac",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "imageId": "question-image-b255",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b255.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b255.png",
+  "originalSha256": "9f951ed4ceeebeda6bbf5d2d07b21fa6e3413566eb8da791047fc8c351872175",
+  "candidateSha256": "ca660b542aa1ff8ca733e78f99a413dd092643ce627b3b30010a9bd5e1f62cc4",
+  "reviewer": "Supplemental Review Agent /root/image_review_tail (Codex)",
+  "reviewedAt": "2026-10-13T17:18:59.853288+00:00",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "Black horizontal capsule bar keeps its rounded ends at the center of a white disk with red annulus; unlike b248, bar color remains black and inner field remains white."
+  ],
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b255.jpg",
+    "originalSha256": "9f951ed4ceeebeda6bbf5d2d07b21fa6e3413566eb8da791047fc8c351872175",
+    "masterPath": "content/assets-masters/questions/b255.png",
+    "masterSha256": "ca660b542aa1ff8ca733e78f99a413dd092643ce627b3b30010a9bd5e1f62cc4",
+    "candidateSha256": "ca660b542aa1ff8ca733e78f99a413dd092643ce627b3b30010a9bd5e1f62cc4",
+    "inferenceSha256": "34321e53ff1ceaf243c8b200b1fa7303a60a020a2984bebbbd974173cac1c9fa",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

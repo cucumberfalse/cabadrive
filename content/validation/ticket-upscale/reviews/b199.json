@@ -1,0 +1,29 @@
+{
+  "imageId": "question-image-b199",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b199.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b199.png",
+  "originalSha256": "a22adf6c9323ffc3cfbe56c3c423edccbd376742bca8ecbba68706584df4c145",
+  "candidateSha256": "d5c12a21686b817d1e58f9c80cc1b1e9d3fa137ce10d45e934c6ccb688eab7fd",
+  "reviewer": "image_review",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": false,
+  "status": "accepted",
+  "observations": [
+    "Oil dipstick loop/tip, hand grip, engine filler cap and hose/connector placements preserved; metal texture denoised without changed mechanical relationships."
+  ],
+  "rejectionReason": null,
+  "reviewedAt": "2026-10-13T17:09:20.682050+00:00",
+  "inspectionArtifacts": [
+    "/private/tmp/cabadrive-057-review-b140-b220-b198-b199.png"
+  ],
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b199.jpg",
+    "originalSha256": "a22adf6c9323ffc3cfbe56c3c423edccbd376742bca8ecbba68706584df4c145",
+    "masterPath": "content/assets-masters/questions/b199.png",
+    "masterSha256": "d5c12a21686b817d1e58f9c80cc1b1e9d3fa137ce10d45e934c6ccb688eab7fd",
+    "candidateSha256": "d5c12a21686b817d1e58f9c80cc1b1e9d3fa137ce10d45e934c6ccb688eab7fd",
+    "inferenceSha256": "04ea11a9028c1101afdf951856e3a79d86a3103e6eb0cd9a35b1689ba31f6eb1",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

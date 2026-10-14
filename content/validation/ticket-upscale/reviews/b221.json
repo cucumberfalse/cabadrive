@@ -1,0 +1,33 @@
+{
+  "imageId": "question-image-b221",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b221.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b221.png",
+  "originalSha256": "13ffca3b6cdcc6e2e0bb779f4986b3405bd9557553529499354fbd2ed835d1fb",
+  "candidateSha256": "c54109a8d32a36badea8fc358aab8d88f7d31b86b228006059b94e17b5b2a644",
+  "reviewer": "Supplemental Review Agent /root/image_review_tail (Codex)",
+  "reviewedAt": "2026-10-13T17:16:24.187313+00:00",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "rejected",
+  "observations": [
+    "Dog remains unrestrained on the passenger's lap and the driver's hand stays on the same steering-wheel section; road-user pose, belt and interior geometry are preserved.",
+    "Enlarged background-car grille comparison shows the originally blurred badge region reconstructed into a new bright hook-like glyph; this introduces a determinate emblem contour absent from the ambiguous source."
+  ],
+  "rejectionReason": "Candidate reconstructs the ambiguous background grille badge as a new bright hook-like glyph in the actual enlarged comparison.",
+  "fallbackObservations": [
+    "Fallback preserves the actual small background-car grille badge as its original ambiguous soft shape, confirmed in an enlarged crop; dog/passenger/driver poses remain."
+  ],
+  "fallbackReviewedAt": "2026-10-13T17:49:05.856Z",
+  "fallbackReviewer": "Implementation Agent (Codex)",
+  "fallbackSha256": "d5e2a75efac7e79f89fe0c12dfd9c6410222561ccf1021d59729f4cc7bc7c897",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b221.jpg",
+    "originalSha256": "13ffca3b6cdcc6e2e0bb779f4986b3405bd9557553529499354fbd2ed835d1fb",
+    "masterPath": "content/assets-masters/questions/b221.png",
+    "masterSha256": "d5e2a75efac7e79f89fe0c12dfd9c6410222561ccf1021d59729f4cc7bc7c897",
+    "candidateSha256": "c54109a8d32a36badea8fc358aab8d88f7d31b86b228006059b94e17b5b2a644",
+    "inferenceSha256": "958aee0f6c2db81246916178dcc192fcedbe0c4c6a843d7af0778bd72baa2ede",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}
