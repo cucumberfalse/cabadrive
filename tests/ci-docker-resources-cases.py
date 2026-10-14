@@ -340,8 +340,156 @@ finally:
         finally: m.platform.system = old
 
 
+class QueryCases(unittest.TestCase):
+    @contextlib.contextmanager
+    def mock_cli(self):
+        import json
+        with tempfile.TemporaryDirectory(prefix='cabadrive-query-contract-') as directory:
+            root = pathlib.Path(directory).resolve()
+            proof = root / 'proof'; proof.mkdir(mode=0o700)
+            binary = root / 'docker'
+            binary.write_text('#!' + sys.executable + '\n' + r'''import json,os,pathlib,sys,time
+args=sys.argv[1:]
+with open('calls.jsonl','a') as f:f.write(json.dumps(args)+'\n')
+mode=os.environ.get('QUERY_CASE','normal')
+if mode=='known-failure':
+ sys.stderr.write('ERROR: mock query failed '+('x'*50));sys.exit(1)
+if mode=='bad-json':print('not-json');sys.exit(0)
+if mode=='large':sys.stderr.write('x'*70000);sys.stderr.flush();sys.exit(1)
+if mode=='query-cap':sys.stdout.write('x'*(3*1024*1024));sys.stdout.flush();sys.exit(0)
+if mode=='timeout':time.sleep(3)
+if args[:3]==['buildx','history','ls']:
+ for raw in ['first','second']:print(json.dumps({'ref':'chosen/node0/'+raw,'status':'completed'}))
+elif args[:3]==['buildx','history','inspect']:
+ if '--builder' not in args or args[args.index('--builder')+1]!='chosen' or '/' in args[-1]:
+  sys.stderr.write('ERROR: raw reference and explicit matching builder required');sys.exit(1)
+ raw=args[-1]
+ print(json.dumps({'Ref':raw,'Context':os.getcwd(),'Dockerfile':'Dockerfile','Target':'stager' if raw=='first' else 'runtime','StartedAt':'2026-10-14T08:00:01+00:00','CompletedAt':'2026-10-14T08:01:00+00:00','Status':'completed'}))
+ sys.stderr.write('WARNING: safe mock warning on stderr\n')
+else:sys.exit(2)
+''')
+            binary.chmod(0o700)
+            log = m.BoundedFile(proof / 'commands.log', 1024 ** 2)
+            series = m.BoundedFile(proof / 'samples.jsonl', 1024 ** 2)
+            result = {'currentStage':'build'}
+            observer = m.Observation(root, log, series, row, lambda _:None, result)
+            foreign=root/'foreign';foreign.write_text('unchanged')
+            try:
+                with patch.dict(os.environ, {'PATH':str(root)+os.pathsep+os.environ['PATH']}):
+                    yield root, observer, result
+                self.assertEqual(foreign.read_text(),'unchanged')
+            finally:
+                log.file.close();series.file.close()
+
+    def test_real_cli_full_tuple_uses_explicit_builder_raw_id_and_separate_warning(self):
+        import json
+        with self.mock_cli() as (root, observer, result):
+            value=m.terminal_tasks([], '2026-10-14T08:00:00+00:00',root,'build',True,observer=observer)
+            self.assertEqual({p['Target'] for p in value['terminalTasks']},{'stager','runtime'})
+            self.assertEqual(value['observedCurrentRefs'],['chosen/node0/first','chosen/node0/second'])
+            calls=[json.loads(x) for x in (root/'calls.jsonl').read_text().splitlines()]
+            inspections=[x for x in calls if x[:3]==['buildx','history','inspect']]
+            self.assertEqual(inspections,[['buildx','history','inspect','--builder','chosen','--format=json',raw] for raw in ['first','second']])
+            self.assertEqual({p['builder'] for p in value['terminalTasks']},{'chosen'})
+            self.assertEqual({p['node'] for p in value['terminalTasks']},{'node0'})
+            self.assertNotIn('queryFailureDiagnostics',result)
+
+    def test_reference_malformed_duplicate_node_collision_and_wrong_response_ref_refuse(self):
+        valid={'ref':'chosen/node0/first','status':'completed'}
+        for rows in [[{'ref':'first'}],[{'ref':'chosen//first'}],[{'ref':'chosen/node0/first/extra'}],[valid,valid],[valid,{'ref':'chosen/node1/first'}],[valid,{'ref':'foreign/node0/second'}]]:
+            with self.assertRaises(ValueError):m.history_identities(rows)
+        with self.assertRaisesRegex(ValueError,'unexpected builder/node'):
+            m.terminal_tasks([valid], '2026-10-14T08:00:00+00:00',pathlib.Path('/owned'),'retention',True,lambda:[valid,{'ref':'chosen/newnode/second','status':'completed'}])
+        with self.assertRaises(ValueError):
+            m.terminal_tasks([], '2026-10-14T08:00:00+00:00',pathlib.Path('/owned'),'retention',True,lambda:[valid],lambda _:{'Ref':'other','Context':'/owned','StartedAt':'2026-10-14T08:00:01+00:00','CompletedAt':'2026-10-14T08:01:00+00:00','Status':'completed'})
+
+    def test_known_75_stderr_failure_is_persisted_before_hold_with_full_argv_and_lifecycle(self):
+        import hashlib,json,stat
+        with self.mock_cli() as (root,observer,result),patch.dict(os.environ,{'QUERY_CASE':'known-failure'}):
+            args=['docker','buildx','history','inspect','--builder','chosen','--format=json','first']
+            with self.assertRaisesRegex(ValueError,'query HOLD'):observer.query(args,history_identity={'fullRef':'chosen/node0/first','builder':'chosen','node':'node0','rawId':'first'})
+            first=result['queryFailureDiagnostics'][0]
+            self.assertTrue(first['persisted']);self.assertEqual(first['argv'],args)
+            self.assertTrue(first['rawRunnerLocal']);self.assertFalse(first['rawUploaded']);self.assertFalse(first['rawAvailableAfterJob'])
+            self.assertEqual(first['lifecycle']['historyIdentity'],{'fullRef':'chosen/node0/first','builder':'chosen','node':'node0','rawId':'first'})
+            self.assertEqual(first['streams']['stderr']['bytesObserved'],75)
+            self.assertEqual(first['streams']['stdout']['bytesObserved'],0)
+            raw=pathlib.Path(first['privatePath']).read_bytes()
+            self.assertEqual(raw,b'ERROR: mock query failed '+b'x'*50)
+            self.assertEqual(first['privateSha256'],hashlib.sha256(raw).hexdigest())
+            self.assertEqual(first['lifecycle']['exit'],1);self.assertEqual(first['lifecycle']['errors'],[])
+            self.assertTrue(first['lifecycle']['allOwnedClosureProven'])
+            self.assertEqual(stat.S_IMODE(pathlib.Path(first['privatePath']).stat().st_mode),0o600)
+            saved=(root/'proof'/first['safePath']).read_bytes()
+            self.assertNotIn(b'ERROR: mock',saved)
+            with self.assertRaises(ValueError):observer.query(args)
+            self.assertEqual((root/'proof'/first['safePath']).read_bytes(),saved)
+            self.assertEqual(len(result['queryFailureDiagnostics']),2)
+
+    def test_bad_json_diagnostic_overflow_and_four_record_cap(self):
+        import json
+        with self.mock_cli() as (root,observer,result):
+            for mode in ['bad-json','large','known-failure','known-failure','known-failure']:
+                with patch.dict(os.environ,{'QUERY_CASE':mode}),self.assertRaises(ValueError):
+                    observer.query(['docker','buildx','history','inspect','--builder','chosen','--format=json','first'])
+            records=result['queryFailureDiagnostics'];self.assertEqual(len(records),4)
+            self.assertTrue(result['queryFailureRecordLimitExceeded'])
+            self.assertEqual(records[0]['category'],'inspect-json-decode')
+            second=records[1];self.assertFalse(second['streams']['stderr']['complete'])
+            self.assertEqual(second['streams']['stderr']['bytesObserved'],70000)
+            self.assertEqual(second['privateBytes'],65536)
+            self.assertLessEqual(sum(p.stat().st_size for p in (root/'proof-query-private').glob('*.bin')),256*1024)
+
+    def test_diagnostic_short_write_and_serialization_failures_do_not_hide_command_exit(self):
+        for fault in ['short-write','serialization']:
+            with self.mock_cli() as (root,observer,result),patch.dict(os.environ,{'QUERY_CASE':'known-failure'}):
+                original_fdopen=m.os.fdopen; original_encode=m.encode
+                class Short:
+                    def __init__(inner,file):inner.file=file
+                    def __enter__(inner):return inner
+                    def __exit__(inner,*_):inner.file.close()
+                    def write(inner,data):return inner.file.write(data[:-1])
+                    def fileno(inner):return inner.file.fileno()
+                def encode(value):
+                    if isinstance(value,dict) and 'category' in value:raise TypeError('injected metadata serialization refusal')
+                    return original_encode(value)
+                mutation=patch.object(m.os,'fdopen',lambda *a,**kw:Short(original_fdopen(*a,**kw))) if fault=='short-write' else patch.object(m,'encode',encode)
+                with mutation,self.assertRaisesRegex(ValueError,'query failure retained'):
+                    observer.query(['docker','buildx','history','inspect','--builder','chosen','--format=json','first'])
+                record=result['queryFailureDiagnostics'][0]
+                self.assertFalse(record['persisted']);self.assertEqual(record['lifecycle']['exit'],1)
+                self.assertEqual(record['diagnosticError'],'OSError' if fault=='short-write' else 'TypeError')
+                self.assertEqual(result['lastQueryOutcome']['command'][-1],'first')
+
+    def test_query_startup_failure_persists_unknown_closure_before_hold(self):
+        with self.mock_cli() as (_,observer,result),patch.object(m,'run_owned',side_effect=OSError('injected startup failure')):
+            with self.assertRaisesRegex(ValueError,'query HOLD'):
+                observer.query(['docker','buildx','history','ls','--no-trunc','--format=json'])
+            record=result['queryFailureDiagnostics'][0]
+            self.assertTrue(record['persisted'])
+            self.assertIsNone(record['lifecycle']['exit'])
+            self.assertIsNone(record['lifecycle']['childStillAlive'])
+            self.assertFalse(record['lifecycle']['allOwnedClosureProven'])
+            self.assertEqual(record['lifecycle']['errors'],['OSError: query startup/receipt unavailable'])
+
+    def test_query_cap_timeout_and_diagnostic_write_refusal_keep_original_failure(self):
+        for mode in ['query-cap','timeout','known-failure']:
+            with self.mock_cli() as (root,observer,result),patch.dict(os.environ,{'QUERY_CASE':mode}):
+                refusal=patch.object(m.os,'open',side_effect=PermissionError('injected diagnostic refusal')) if mode=='known-failure' else contextlib.nullcontext()
+                with refusal,self.assertRaises(ValueError):
+                    observer.query(['docker','buildx','history','inspect','--builder','chosen','--format=json','first'],timeout=.15 if mode=='timeout' else 10)
+                record=result['queryFailureDiagnostics'][0]
+                self.assertEqual(record['lifecycle']['command'] if 'command' in record['lifecycle'] else record['argv'],record['argv'])
+                if mode=='query-cap':self.assertTrue(record['outputCapExceeded'])
+                if mode=='timeout':self.assertTrue(record['lifecycle']['boundedClosureDeadlineExceeded'])
+                if mode=='known-failure':
+                    self.assertFalse(record['persisted']);self.assertEqual(record['diagnosticError'],'PermissionError')
+                    self.assertEqual(record['lifecycle']['exit'],1)
+                self.assertFalse((root/'next-stage').exists())
+
+
 if __name__ == '__main__':
-    suite = unittest.defaultTestLoader.loadTestsFromTestCase(Cases)
+    suite = unittest.defaultTestLoader.loadTestsFromModule(sys.modules[__name__])
     result = unittest.TextTestRunner(verbosity=2).run(suite)
     if result.wasSuccessful(): print('LINUX_RESOURCE_REGRESSIONS_PASS')
     sys.exit(0 if result.wasSuccessful() else 1)

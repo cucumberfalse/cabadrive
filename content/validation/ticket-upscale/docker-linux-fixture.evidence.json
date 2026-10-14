@@ -443,10 +443,10 @@
     "interpretation": "Intact uncommitted artifact verified; missing current authority remains. Original project make build refusal is correct. No old volume writes, recovery claim or fabricated handoff."
   },
   "currentCiDelta": {
-    "checkedAt": "2026-10-14T09:51:41.950234+00:00",
-    "status": "FOCUSED_LOCAL_CHECKS_PASS_REVIEW_AND_ACTUAL_CI_PENDING",
+    "checkedAt": "2026-10-14T10:57:53.550156+00:00",
+    "status": "IF027_CURRENT_FOCUSED_CHECKS_AND_REVIEW_PENDING_ACTUAL_DOCKER_CI",
     "fullCurrentPreflight": false,
-    "productBrowserCorpusLineage": "unchanged from historical whole HOST input9447; CI/harness delta separately checked",
+    "productBrowserCorpusLineage": "Product/browser/corpus unchanged from historical whole HOST9447 through A; A actual CI baseline846/181 passed. IF027 observer delta requires focused current checks and a new complete Docker CI; no claim of whole preflight on uncommitted changes.",
     "focused": {
       "tests": 15,
       "passed": 15,
@@ -476,7 +476,7 @@
       ]
     },
     "remoteDockerAcceptance": false,
-    "review": "Independent Review_tail closed all4P2/no actionable P0-P3 on exact16-path vector b55eeee3bb75fb4ab89949f8c541c8c087727a47926c432d9275fdd143551d15; actual remote CI pending",
+    "review": "IF027 changed-vector independent Review pending; prior b55eeee review and sourceA baseline remain historical evidence.",
     "localDockerHeavy": "not executed; local capacity HOLD retained",
     "fixtureIsolation": {
       "tests": 38,
@@ -494,6 +494,78 @@
       "logSha256": "17479e610c57440fc73f8a195675cb6c99c5ffb9e37b0a903ffb88b01f3729b9",
       "coverage": "Exact group absence including closed-pipe descendant; observed real delayed query/wait, reserve/gap final admission; selector faults drain1MiB finally; one-signal deadline and typed teardown receipt."
     },
-    "currentReviewVectorSha256": "b55eeee3bb75fb4ab89949f8c541c8c087727a47926c432d9275fdd143551d15"
+    "currentReviewVectorSha256": "b55eeee3bb75fb4ab89949f8c541c8c087727a47926c432d9275fdd143551d15",
+    "historicalLocalReview": "Independent Review_tail closed all4P2/no actionable P0-P3 on exact16-path vector b55eeee3bb75fb4ab89949f8c541c8c087727a47926c432d9275fdd143551d15; actual remote CI pending",
+    "if027": {
+      "checkedAt": "2026-10-14T11:00:56.527290+00:00",
+      "status": "FOCUSED_CURRENT_CHECKS_PASS_INDEPENDENT_REVIEW_AND_ACTUAL_CI_PENDING",
+      "pythonCases": 24,
+      "passed": 24,
+      "failed": 0,
+      "exit": 0,
+      "logSha256": "42bbf09c71e9190fac03e41bb5ec5809ed4b4286e0ccee2c93325de6d3abb278",
+      "coverage": "Actual owned-child mock CLI full builder/node/raw listing to explicit matching builder/raw inspect; real separate75-byte stderr failure persisted before HOLD; stderr-warning success; malformed/duplicate/node ambiguity and changed-node refusal; startup unknown closure, timeout, parse,2MiB output cap, four-record/64KiB diagnostics, write/short-write/serialization refusal and original failure retention. Existing exact owned stop/group/drain/finally/resource/selector cases retained.",
+      "queryCombinedLimitBytes": 2097152,
+      "failedRecordLimit": 4,
+      "rawPerRecordLimitBytes": 65536,
+      "rawAggregateLimitBytes": 262144,
+      "totalAllocatedProofLimitBytes": 16777216,
+      "privacy": "Raw bytes remain in exact-owned private0600 runner-local sibling files outside uploaded artifact; safe uploaded metadata includes controlled argv/tuple/lifecycle and lengths/SHA only, explicitly not verbatim diagnostics. Private bytes are charged to the same total proof limit.",
+      "qualityFastExit": 0,
+      "formatCheckExit": 0,
+      "checkRepoExit": 0,
+      "featureMemoryExit": 0,
+      "diffCheckExit": 0,
+      "firstFailures": "Original22-case fixture mistakes (75-byte mock was76; Darwin alias context path) fixed in fixtures. Final sandbox24-case attempt correctly refused ps inspection; preserved failed log, then same24 current cases passed with approved process access. No production assertions weakened.",
+      "privacyDisposition": "Architect confirmed existing IF027 projection: rawRunnerLocal=true, rawUploaded=false, rawAvailableAfterJob=false. Private persistence before HOLD does not imply recoverable post-job diagnostics; unknown cause remains unknown."
+    }
+  },
+  "actualCiA": {
+    "checkedAt": "2026-10-14T10:57:53.550156+00:00",
+    "sourceHead": "e9568adb44a47ff0c1df810e35b9ac934422d90a",
+    "checkoutHead": "ed831501e82873d729376862bb07c2b4435ed7a4",
+    "runUrl": "https://github.com/cucumberfalse/cabadrive/actions/runs/38546916029",
+    "baseline": {
+      "jobUrl": "https://github.com/cucumberfalse/cabadrive/actions/runs/38546916029/job/115795126706",
+      "conclusion": "success",
+      "unitTests": 846,
+      "unitPassed": 846,
+      "unitFailed": 0,
+      "browserPassed": 181,
+      "browserIntentionalSkipped": 5,
+      "ordinaryBuild": "PASS",
+      "e2eServerBuild": "PASS",
+      "quality": "PASS",
+      "logBytes": 632905,
+      "logSha256": "d01992f28f16b06dda49ab72313493869975a632b38bfc926fcd344f49c95e86"
+    },
+    "docker": {
+      "jobUrl": "https://github.com/cucumberfalse/cabadrive/actions/runs/38546916029/job/115795126917",
+      "conclusion": "failure",
+      "status": "PARTIAL_BUILD_SUCCESS_OBSERVER_HOLD",
+      "makeBuildExit": 0,
+      "buildxVersion": "v0.37.2",
+      "queryExit": 1,
+      "queryStdoutBytes": 0,
+      "queryStderrBytes": 75,
+      "queryErrors": [],
+      "actualQueryMessage": "not retained; exact historical cause unproven",
+      "daemonClosure": "unknown",
+      "teardownSafe": false,
+      "makeDownExit": null,
+      "remainingProductionRetryAndFivePhaseAcceptanceReached": false,
+      "minimumHostFreeBytes": 81913581568,
+      "minimumBackingFreeBytes": 81913581568,
+      "maximumWallSampleGapSeconds": 1.0985479354858398,
+      "allocatedProofBytes": 983040,
+      "artifactId": 11886176666,
+      "artifactZipBytes": 70692,
+      "artifactZipSha256": "2e23c5fcd4fcc830d2da29d830abe252c557fc172d35d76d6dcf2beebd0fecac",
+      "receiptSha256": "fb401d11ed0d4b1766a658752962c5b6344eb51310736fca875e07dc233881e0",
+      "commandsSha256": "f95c421e7183874322cefe87a52e5709abef8e613702539ead32e995038d1fd8",
+      "samplesSha256": "3fdfd17cc6465a66c4a7e6d105d1b100fdce5d51a3e0c50c8ab5290f8a23bd78"
+    },
+    "overallDockerAcceptance": false,
+    "interpretation": "Actual A baseline passed on its measured merge checkout. Docker product build completed; observer inspection failure blocked all remaining acceptance and teardown. Original failed artifact is preserved. IF027 correction and a separately admitted complete new CI remain pending; no partial resume or local Docker execution."
   }
 }

@@ -13,6 +13,7 @@ import subprocess
 import sys
 import time
 import secrets
+import re
 
 GIB = 1024 ** 3
 RESERVE = 2 * GIB
@@ -193,7 +194,7 @@ def observe(sample, check, series, observations):
     return row
 
 
-def run_owned(command, root, log, series, sample, check, observations, can_interrupt=True, stop_grace=60, total_seconds=None, forward_stdout=True):
+def run_owned(command, root, log, series, sample, check, observations, can_interrupt=True, stop_grace=60, total_seconds=None, forward_stdout=True, stream_capture=None):
     """Bounded one-signal stop, independent pipe/leader/group facts on every path."""
     stop_directory = pathlib.Path(log.file.name).parent / ('stop-' + secrets.token_hex(8))
     stop_directory.mkdir(mode=0o700)
@@ -306,9 +307,15 @@ def run_owned(command, root, log, series, sample, check, observations, can_inter
                     del streams[name]
                 else:
                     drained_bytes[name] += len(data)
+                    if stream_capture is not None:
+                        try:
+                            stream_capture.write_stream(name, data)
+                        except Exception as error:
+                            abort(error)
                     if not sink_failed:
                         try:
-                            log.write(data)
+                            if stream_capture is None:
+                                log.write(data)
                             if forward_stdout:
                                 sys.stdout.buffer.write(data)
                                 sys.stdout.buffer.flush()
@@ -373,27 +380,115 @@ class Observation:
                 return
             time.sleep(min(0.2, left))
 
-    def query(self, args, timeout=10):
+    def query(self, args, timeout=10, history_identity=None):
+        if not args or any(type(arg) is not str for arg in args) or sum(len(arg.encode()) for arg in args) > 16384:
+            raise ValueError('bounded controlled query argv required')
+        if history_identity is not None:
+            expected = history_identities([{'ref': history_identity['fullRef']}])[history_identity['fullRef']]
+            if history_identity != {'fullRef': history_identity['fullRef'], **expected} or args != ['docker', 'buildx', 'history', 'inspect', '--builder', expected['builder'], '--format=json', expected['rawId']]:
+                raise ValueError('query argv/history identity mismatch')
         class Capture:
-            file = self.log.file
-            data = bytearray()
-            def write(inner, value):
-                if len(inner.data) + len(value) > 2 * 1024 ** 2:
-                    raise ValueError('read-only query output cap exceeded')
-                inner.data.extend(value)
+            def __init__(inner):
+                inner.data = {'stdout': bytearray(), 'stderr': bytearray()}
+                inner.hashes = {name: hashlib.sha256() for name in inner.data}
+                inner.lengths = {name: 0 for name in inner.data}
+                inner.overflow = False
+            def write_stream(inner, name, value):
+                inner.hashes[name].update(value)
+                inner.lengths[name] += len(value)
+                left = max(0, 2 * 1024 ** 2 - sum(len(part) for part in inner.data.values()))
+                inner.data[name].extend(value[:left])
+                if len(value) > left and not inner.overflow:
+                    inner.overflow = True
+                    raise ValueError('combined query output cap exceeded')
         capture = Capture()
-        outcome = run_owned(args, self.root, capture, self.series, self.sample, self.check, self.result,
-                            total_seconds=timeout, forward_stdout=False)
+        started, clock = utc(), time.monotonic()
+        try:
+            outcome = run_owned(args, self.root, self.log, self.series, self.sample, self.check, self.result,
+                                total_seconds=timeout, forward_stdout=False, stream_capture=capture)
+        except Exception as error:
+            outcome = {'exit': None, 'errors': [type(error).__name__ + ': query startup/receipt unavailable'],
+                       'allOwnedClosureProven': False, 'childStillAlive': None, 'pipesOpen': None,
+                       'groupClosureKnown': False, 'childWaited': False}
         self.result['observedQueryCount'] = self.result.get('observedQueryCount', 0) + 1
-        self.result['lastQueryOutcome'] = {'command': args[:4], **outcome}
-        if outcome['errors']:
+        full = {'command': args, 'historyIdentity': history_identity, 'completedAt': utc(), 'deadlineMonotonic': clock + timeout, **outcome}
+        self.result['lastQueryOutcome'] = full
+        category = None
+        try:
+            if outcome['exit'] != 0 or outcome['errors'] or not outcome['allOwnedClosureProven'] or capture.overflow:
+                category = 'command-or-lifecycle-failure'
+                raise ValueError('bounded observed read-only query HOLD')
+            text = bytes(capture.data['stdout']).decode('utf-8')
+            # Only stdout belongs to the JSON contract; stderr warnings stay separate.
+            if args[:4] == ['docker', 'buildx', 'history', 'ls']:
+                category = 'history-json-decode'
+                for line in text.splitlines():
+                    if line.strip(): json.loads(line)
+            elif args[:4] == ['docker', 'buildx', 'history', 'inspect']:
+                category = 'inspect-json-decode'
+                json.loads(text)
+            category = 'post-query-observation'
+            self.tick()
+            return text.strip()
+        except Exception as error:
             failures = self.result.setdefault('failedQueryOutcomes', [])
             if len(failures) < 4:
-                failures.append({'command': args[:4], **outcome})
-        if outcome['exit'] != 0 or outcome['errors'] or not outcome['allOwnedClosureProven']:
-            raise ValueError('bounded observed read-only query HOLD')
-        self.tick()
-        return bytes(capture.data).decode().strip()
+                failures.append(full)
+            self.persist_query_failure(args, capture, full, category or 'stdout-decode', type(error).__name__, started)
+            raise
+
+    def persist_query_failure(self, args, capture, outcome, category, error_type, started):
+        records = self.result.setdefault('queryFailureDiagnostics', [])
+        if len(records) >= 4:
+            self.result['queryFailureRecordLimitExceeded'] = True
+            return
+        record = {'index': len(records) + 1, 'category': category, 'errorType': error_type,
+                  'stage': self.result.get('currentStage'), 'argv': args, 'startedAt': started,
+                  'lifecycle': outcome, 'projection': 'Safe metadata only; raw streams are private runner-local bytes, not uploaded.',
+                  'rawRunnerLocal': True, 'rawUploaded': False, 'rawAvailableAfterJob': False,
+                  'streams': {}, 'persisted': False}
+        records.append(record)  # Original failure remains present even if evidence writing fails.
+        try:
+            directory = pathlib.Path(self.log.file.name).parent
+            private = directory.with_name(directory.name + '-query-private')
+            private.mkdir(mode=0o700, exist_ok=True)
+            if private.is_symlink() or private.stat().st_uid != os.getuid() or stat.S_IMODE(private.stat().st_mode) != 0o700:
+                raise ValueError('unsafe private query proof directory')
+            payload = bytearray()
+            reserve_stderr = min(32768, len(capture.data['stderr']))
+            for name in ['stdout', 'stderr']:
+                budget = 65536 - reserve_stderr if name == 'stdout' else 65536 - len(payload)
+                available = min(budget, len(capture.data[name]))
+                part = bytes(capture.data[name][:available])
+                record['streams'][name] = {'bytesObserved': capture.lengths[name],
+                    'sha256': capture.hashes[name].hexdigest(), 'privateOffset': len(payload),
+                    'privateCapturedBytes': len(part), 'complete': len(part) == capture.lengths[name],
+                    'excerptOnly': len(part) != capture.lengths[name]}
+                payload.extend(part)
+            if len(payload) > 65536:
+                raise ValueError('raw query diagnostic cap exceeded')
+            path = private / ('query-failure-' + str(record['index']) + '.bin')
+            pending = path.with_suffix('.pending')
+            fd = os.open(pending, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600)
+            with os.fdopen(fd, 'wb', buffering=0) as output:
+                if output.write(payload) != len(payload): raise OSError('short private query evidence write')
+                os.fsync(output.fileno())
+            os.replace(pending, path)
+            record.update(privatePath=str(path), privateSha256=hashlib.sha256(payload).hexdigest(),
+                          privateBytes=len(payload), outputCapExceeded=capture.overflow, persisted=True)
+            safe = directory / ('query-failure-' + str(record['index']) + '.json')
+            raw = encode(record)
+            if len(raw) > 65536: raise ValueError('query diagnostic metadata cap exceeded')
+            fd = os.open(safe, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600)
+            with os.fdopen(fd, 'wb', buffering=0) as output:
+                if output.write(raw) != len(raw): raise OSError('short query metadata write')
+                os.fsync(output.fileno())
+            record['safePath'] = safe.name
+            record['safeSha256'] = hashlib.sha256(raw).hexdigest()
+        except Exception as error:
+            record['persisted'] = False
+            record['diagnosticError'] = type(error).__name__
+            raise ValueError('query failure retained; diagnostic persistence unavailable') from error
 
 
 TERMINAL = {'completed', 'error', 'failed', 'canceled', 'cancelled'}
@@ -403,8 +498,32 @@ def history(timeout=10, read=query):
     return [json.loads(line) for line in read(['docker', 'buildx', 'history', 'ls', '--no-trunc', '--format=json'], timeout=timeout).splitlines() if line.strip()]
 
 
+def history_identities(rows):
+    identities, raw_nodes = {}, {}
+    for row in rows:
+        full = row.get('ref', row.get('Ref'))
+        if type(full) is not str or len(full) > 384:
+            raise ValueError('full builder/node/raw history reference required')
+        parts = full.split('/')
+        if len(parts) != 3 or any(not re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9_.-]{0,127}', part) for part in parts):
+            raise ValueError('malformed full history reference')
+        builder, node, raw = parts
+        if full in identities:
+            raise ValueError('duplicate full history reference')
+        key = (builder, raw)
+        if key in raw_nodes and raw_nodes[key] != node:
+            raise ValueError('ambiguous build ID across builder nodes')
+        raw_nodes[key] = node
+        identities[full] = {'builder': builder, 'node': node, 'rawId': raw}
+    if len({item['builder'] for item in identities.values()}) > 1:
+        raise ValueError('unexpected builders in selected history')
+    return identities
+
+
 def terminal_tasks(before, started, root, stage, successful, read_history=None, inspect=None, sleep=time.sleep, timeout=60, observer=None):
-    old = {row.get('ref', row.get('Ref')) for row in before}
+    old_identities = history_identities(before)
+    old = set(old_identities)
+    prior_nodes = {(value['builder'], value['node']) for value in old_identities.values()}
     seen = set()
     deadline = time.monotonic() + timeout
     def remaining():
@@ -415,12 +534,18 @@ def terminal_tasks(before, started, root, stage, successful, read_history=None, 
     read = observer.query if observer else query
     sleep = observer.wait if observer else sleep
     read_history = read_history or (lambda: history(timeout=remaining(), read=read))
-    inspect = inspect or (lambda ref: json.loads(read(['docker', 'buildx', 'history', 'inspect', '--format=json', ref], timeout=remaining())))
+    def inspect_reference(ref, identity):
+        args = ['docker', 'buildx', 'history', 'inspect', '--builder', identity['builder'], '--format=json', identity['rawId']]
+        text = observer.query(args, timeout=remaining(), history_identity={'fullRef': ref, **identity}) if observer else read(args, timeout=remaining())
+        return json.loads(text)
     for attempt in range(12):
         remaining()
         rows = read_history()
         remaining()
-        ids = {row.get('ref', row.get('Ref')) for row in rows}
+        identities = history_identities(rows)
+        if prior_nodes and not {(value['builder'], value['node']) for value in identities.values()} <= prior_nodes:
+            raise ValueError('unexpected builder/node changed from before history')
+        ids = set(identities)
         if None in ids or not seen <= ids:
             raise ValueError('current BuildKit reference missing/dropped')
         seen |= ids - old
@@ -430,15 +555,16 @@ def terminal_tasks(before, started, root, stage, successful, read_history=None, 
             proofs = []
             for ref in sorted(seen):
                 remaining()
-                detail = inspect(ref)
+                identity = identities[ref]
+                detail = inspect(ref) if inspect else inspect_reference(ref, identity)
                 remaining()
                 context = pathlib.Path(detail['Context'])
                 if not context.is_absolute():
                     context = (root / context).resolve()
                 allowed = context == root or context.is_relative_to(root) or (context.is_absolute() and any(part.startswith(('cabadrive-docker-images-', 'cabadrive-docker-retention-')) for part in context.parts))
-                if not allowed or detail['Ref'] != ref.rsplit('/', 1)[-1] or datetime.datetime.fromisoformat(detail['StartedAt'].replace('Z', '+00:00')) < datetime.datetime.fromisoformat(started) or not detail.get('CompletedAt') or str(detail['Status']).lower() not in TERMINAL:
+                if not allowed or detail['Ref'] != identity['rawId'] or datetime.datetime.fromisoformat(detail['StartedAt'].replace('Z', '+00:00')) < datetime.datetime.fromisoformat(started) or not detail.get('CompletedAt') or str(detail['Status']).lower() not in TERMINAL:
                     raise ValueError('unbound/nonterminal current BuildKit task')
-                proofs.append({key: detail.get(key) for key in ['Ref', 'Context', 'Dockerfile', 'Target', 'StartedAt', 'CompletedAt', 'Status']})
+                proofs.append({'FullRef': ref, **identity, **{key: detail.get(key) for key in ['Ref', 'Context', 'Dockerfile', 'Target', 'StartedAt', 'CompletedAt', 'Status']}})
             if successful and stage == 'build' and ({p['Target'] for p in proofs} != {'stager', 'runtime'} or any(p['Status'] != 'completed' for p in proofs)):
                 raise ValueError('both actual Compose build targets required')
             return {'observedCurrentRefs': sorted(seen), 'terminalTasks': proofs, 'failedBeforeAnyObservedTask': not successful and not seen}
@@ -542,7 +668,9 @@ def main():
         result['proofHashes'] = {path.name: hashlib.sha256(path.read_bytes()).hexdigest()
                                  for path in proof.iterdir() if path.is_file()}
         result['completedAt'] = utc()
-        result['allocatedProofBytes'] = sum(p.stat().st_blocks * 512 for p in proof.rglob('*')) + 128 * 1024
+        private_queries = proof.with_name(proof.name + '-query-private')
+        result['allocatedProofBytes'] = (sum(p.stat().st_blocks * 512 for p in proof.rglob('*'))
+            + (sum(p.stat().st_blocks * 512 for p in private_queries.rglob('*')) if private_queries.exists() else 0) + 128 * 1024)
         if result['allocatedProofBytes'] > 16 * 1024 ** 2:
             result['status'] = 'HOLD'
             result['proofCapExceeded'] = True
