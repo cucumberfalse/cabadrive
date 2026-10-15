@@ -101,6 +101,41 @@ test("isAcceptableCodexSummaryComment accepts head SHA marker from trusted login
   assert.equal(isAcceptableCodexSummaryComment(comment, headSha), true);
 });
 
+test("isAcceptableCodexSummaryComment accepts a trusted exact-head Codex receipt", () => {
+  const headSha = "738edb46b70f51eb60a02a4b0e7d9c73214dac20";
+  const comment = {
+    body: `<!-- codex-review-receipt:v1 -->\n\nCodex Review: Didn't find any major issues in this pull request.\n\n**Reviewed commit:** \`738edb46b7\``,
+    user: { login: "chatgpt-codex-connector" },
+    created_at: "2026-10-15T21:07:00Z",
+  };
+  assert.equal(isAcceptableCodexSummaryComment(comment, headSha), true);
+  const headCommittedAt = "2026-10-15T21:00:00Z";
+  for (const body of [
+    comment.body.replace("738edb46b7", "433a5e883e"),
+    comment.body.replace("**Reviewed commit:** `738edb46b7`", ""),
+    comment.body.replace("**Reviewed commit:** `738edb46b7`", "**Reviewed commit:** stale"),
+    `${comment.body}\n**Reviewed commit:** \`738edb46b7\``,
+    `${comment.body}\nConflicting review head: 433a5e883e.`,
+    comment.body.replace("Didn't find any major issues", "Found a major issue"),
+    comment.body.replace("codex-review-receipt:v1", "codex-review-receipt:v2"),
+    `Preamble\n${comment.body}`,
+    ` ${comment.body}`,
+  ]) {
+    assert.equal(
+      isAcceptableCodexSummaryComment({ ...comment, body }, headSha, headCommittedAt),
+      false,
+    );
+  }
+  assert.equal(
+    isAcceptableCodexSummaryComment(
+      { ...comment, user: { login: "repo-owner" }, author_association: "OWNER" },
+      headSha,
+      headCommittedAt,
+    ),
+    false,
+  );
+});
+
 test("isAcceptableCodexSummaryComment accepts current short head marker from trusted login", () => {
   const headSha = "83a6736a01246465a46c900ee21926cf594c1825";
   const comment = {
