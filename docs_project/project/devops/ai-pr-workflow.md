@@ -357,6 +357,43 @@ back through role-appropriate follow-up or final validation.
 
 The active required-check list is `.unicorn-hub/config.json` (`requiredChecks`); installed defaults reflect the active profile. Stack-specific profiles that preserve existing target CI ship only `guard` and `AI Review` and expect the team to add the repository's real CI job names before applying branch protection.
 
+Orchestrator owns one status watch per PR/check group. Agents report their own
+completion or blocker; they do not duplicate periodic GitHub polls. Prefer a
+completion event or one bounded wait, then inspect status at a meaningful
+transition or explicit deadline. Back off while a run remains active; investigate
+or rerun a stuck or failed check at the deadline. A timeout does not imply
+success. The final exact-head check immediately before merge still covers all
+required checks, AI Review, review threads, conflicts, and process evidence.
+
+The `CI` workflow keeps `baseline-checks` and `docker-validation` as actual
+required jobs on every PR head. For ordinary changes they run every existing
+baseline, browser, and Docker step. A short route is possible only after a
+successful full `CI` run on the same PR's effective content head and an
+append-only final-validation evidence commit. The classifier is loaded from
+the trusted PR base; changing the workflow, agent controls, or classifier from
+that base forces full CI for the entire PR. It also requires identical current
+base SHA and workflow digest, complete Git ancestry, and GitHub API proof of
+the prior run, successful named jobs, every heavy step, and its bound provenance
+artifact. Missing or ambiguous proof runs full CI or fails the required job.
+`guard`, `AI Review`, and `osv-scan` remain independent required checks.
+
+The only short-route additions are exact bullet lines under already-existing
+`## Final Analyst Validation Notes` in `feature-request.md` and `### Final
+Validation Evidence` in `tasks.md`, with final punctuation. Allowed Analyst
+lines are `Analyst validation pass: passed`, `Final Analyst validation completed
+at: <UTC ISO time>`, `Analyst validated effective content head: <40-hex SHA>`,
+and `Analyst return count for this work cycle: <0–5>`. Allowed task lines are
+`Effective content head: <same SHA>`, `Architect validation pass: passed`,
+`Final Architect validation completed at: <UTC ISO time>`, `Architect validated
+effective content head: <same SHA>`, and `Architect return count for this work
+cycle: <0–10>`. Each line begins `- ` and ends `.`. All three SHA markers must
+agree; Architect time precedes Analyst time. Added prose, headings, task or
+requirement changes, replacements, other files, merge commits, a changed base,
+or missing provenance force full CI. The short route prints JSON for the exact
+current head and runs a proof step in each required job. This CI shortcut is
+stricter than the finalizer's broader read-only process-memory guard; passing
+the finalizer alone does not select short CI.
+
 PRs are merge-ready only when every required check is green on the current head,
 blocking review findings are resolved or outdated, required review conversations
 are resolved, docs/specs are updated, feature-memory feedback has Architect

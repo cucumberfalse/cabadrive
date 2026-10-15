@@ -10,6 +10,7 @@
 - [ ] T006 If the request began read-only, record the transition point that made it repository-changing.
 - [ ] T007 If any direct edits started before routing or prerequisites, record stop/report/preserve/recovery disposition before continuing.
 - [ ] T008 Confirm Orchestrator provided any parallel-work warning and preserve existing dirty diffs, branches, commits, PRs, sibling feature folders, process memory, active worktrees, and ambiguous local paths.
+- [ ] Assign one Orchestrator owner for PR/check monitoring; use agent completion events or bounded waits with a deadline and backoff, and record only meaningful state changes. Recheck all exact-head gates immediately before merge.
 - [ ] T009 Record baseline checks before editing, including `git status --short --branch`.
 
 ## Implementation
@@ -61,17 +62,12 @@
 
 ### Final Validation Evidence
 
-- Architect validation: `[not yet invoked, pass details, or gap details]`
-- Architect return count: `[0-10]`
-- Analyst validation: `[not yet invoked, pass details, or Analyst-owned validation-note reference]`
-- Analyst return count: `[0-5]`
-- Effective content head: `[SHA validated by Architect and Analyst, or not yet validated]`
-- Architect validated effective content head: `[same 40-hex SHA, or not yet validated]`
-- Analyst validated effective content head: `[same 40-hex SHA, or not yet validated]`
-- Final-validation evidence-only commit: `[none, current-head SHA and evidence-only scope, or stale because non-evidence content changed]`
-- Current-PR-head read-only guard: `[pending, pass with current head and gate evidence, or failed and routed back through role-appropriate follow-up/final validation]`
-- Analyst feedback Architect disposition: `[none, accepted task/ticket, explicit dispose, or pending blocker]`
-- Limit escalation: `[none, Architect breach -> Orchestrator asks Analyst for new feature request, or Analyst creates new feature request in separate latest-main branch/worktree]`
+Keep this section free of placeholder key/value lines before freezing the
+effective content head. Append role-owned passing evidence in the strict format
+documented in `docs_project/project/devops/ai-pr-workflow.md`; substantive
+dispositions, task changes, and narrative evidence belong before the freeze and
+require full CI if added later. Orchestrator records the read-only current-head
+guard after the evidence commit without manufacturing a self-referential SHA.
 
 ### Cleanup Evidence
 
