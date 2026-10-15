@@ -12,6 +12,7 @@ import {
   validatePriorRun,
 } from "../scripts/ci-evidence-route.mjs";
 import {
+  evaluateFinalizationGates,
   evaluatePostEffectiveHeadDiff,
   readProcessEvidence,
   verifyPostEffectiveHeadChanges,
@@ -365,14 +366,43 @@ test("complete straight-line Git history accepts only evidence-only commits", ()
     assert.equal(process.acceptanceEvidence, true);
     assert.equal(process.currentProcessMemory, true);
     assert.equal(process.feedbackDisposition, true);
+    assert.equal(process.effectiveContentHead, effective);
     assert.equal(process.effectiveContentHeadValidation, true);
+    assert.equal(process.architectValidatedEffectiveContentHead, effective);
+    assert.equal(process.analystValidatedEffectiveContentHead, effective);
     assert.equal(process.currentHeadGuardEvidence, true);
     assert.equal(process.acceptedKnownIssueDecisionPending, false);
-    assert.equal(
-      verifyPostEffectiveHeadChanges(directory, "specs/999-ci-fixture", effective, processHead)
-        .postEffectiveHeadEvidenceOnly,
-      true,
+    assert.equal(process.processEvidenceSourceError, undefined);
+    const postHead = verifyPostEffectiveHeadChanges(
+      directory,
+      "specs/999-ci-fixture",
+      effective,
+      processHead,
     );
+    assert.equal(postHead.postEffectiveHeadEvidenceOnly, true);
+    assert.equal(postHead.postEffectiveHeadVerificationError, null);
+    assert.deepEqual(postHead.postEffectiveHeadInvalidPaths, []);
+    const requiredChecks = JSON.parse(
+      readFileSync(new URL("../.unicorn-hub/config.json", import.meta.url), "utf8"),
+    ).requiredChecks;
+    const finalization = evaluateFinalizationGates({
+      suppliedHeadSha: processHead,
+      requireExpectedHead: true,
+      pr: {
+        number: 42,
+        headSha: processHead,
+        isDraft: false,
+        mergeable: "MERGEABLE",
+        mergeStateStatus: "CLEAN",
+      },
+      requiredChecks,
+      checks: requiredChecks.map((name) => ({ name, status: "COMPLETED", conclusion: "SUCCESS" })),
+      reviewThreads: [],
+      blockingFindings: [],
+      processEvidence: { ...process, ...postHead },
+    });
+    assert.equal(finalization.ready, true);
+    assert.deepEqual(finalization.blockers, []);
     const repeatedGuard = guardLine
       .replace(headSha, processHead)
       .replace(effectiveSha, effective)

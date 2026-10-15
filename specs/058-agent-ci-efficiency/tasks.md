@@ -48,7 +48,7 @@ T011–T015 are future published-head and final-role duties, not completed imple
 
 ### Known Issues
 
-- None accepted yet.
+- None.
 
 ### Verification Evidence
 
