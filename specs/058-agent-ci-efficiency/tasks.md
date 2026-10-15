@@ -17,7 +17,7 @@
 ## Verification and PR
 
 - [x] T009 Run focused local tests and applicable preflight, record commands/results; do not infer a local full Docker pass from remote results.
-- [ ] T010 Publish ready-for-review PR with `Co-authored-by: Codex <codex@openai.com>` at end of description and commit trailer `Co-authored-by: OpenAI Codex <codex@openai.com>` for Codex-assisted commits.
+- [x] T010 Publish ready-for-review PR with `Co-authored-by: Codex <codex@openai.com>` at end of description and commit trailer `Co-authored-by: OpenAI Codex <codex@openai.com>` for Codex-assisted commits.
 - [ ] T011 Prove this PR takes full baseline/Docker steps remotely and all five required check names conclude literal `SUCCESS` on exact current head; inspect AI Review and resolve all required conversations and blocking findings.
 - [ ] T012 Record cycle PR set, task evidence, any feedback dispositions, and exact effective content head before final role validation.
 - [ ] T013 On Orchestrator request, Architect validates the full cycle and records passing time, effective-head marker, return count, and any gaps in Architect-owned memory; Analyst validation follows only after Architect passes.
@@ -43,13 +43,14 @@
 
 ### Verification Evidence
 
-- `node --test tests/ci-evidence-route.test.mjs`: four focused positive/negative tests passed, including strict appended-line parsing, full-run provenance, active required jobs, and real Git commit-history classification.
+- `node --test tests/ci-evidence-route.test.mjs tests/quality-tooling.test.mjs`: 12 tests passed, including strict appended-line parsing, full-run provenance, active required jobs, and real Git commit-history classification.
 - Ruby YAML parse of `.github/workflows/ci.yml` found both required jobs. `git diff --check`, `node --check` for the new script/test, `pnpm run quality:fast`, `pnpm run format:check`, and `pnpm run verify:quality-negative` passed. `pnpm run build:app` passed and generated the service worker.
 - `pnpm run preflight` and `pnpm run build` reached `validate:images` then stopped on the missing local native QA receipt. Full remote baseline/Docker checks are mandatory acceptance evidence. No local Docker claim.
+- Independent Review Agent reported no findings at implementation head `eb3a8635524493b715d711451752c5e462c34cd4`. Remote CI, AI Review, and final role validation are pending.
 
 ### Cycle PR Set
 
-- One planned slice: `codex/058-agent-ci-efficiency`; PR not yet created; final-validation inclusion pending.
+- One slice: ready-for-review PR #220 (`codex/058-agent-ci-efficiency`), published at implementation head `eb3a8635524493b715d711451752c5e462c34cd4`; final-validation inclusion pending.
 
 ### Final Validation Evidence
 
