@@ -475,6 +475,10 @@ before triggering, on every poll, and immediately before success. A new push,
 closed PR, or draft supersedes that run; the resolver never silently substitutes
 the later head. Administrative Codex requests name the full pinned SHA. The
 Orchestrator's human-account native request remains a distinct required action.
+Workflow policy and gate runtime independently make every run attempt after the
+first evaluation-only. Even with a same-repository review token or explicit
+comment mode, a rerun never posts another administrative/native review request.
+Invalid attempt metadata fails before triggering.
 
 Codex evidence comes only from configured trusted connector identities. A
 no-findings comment may use the legacy `Codex Review:` header or exactly one
@@ -504,9 +508,25 @@ only wakes independent API reconciliation; its code/artifacts/logs are never
 privileged input or verdict evidence. This split supports fork review events whose
 PR-merge workflow token is read-only. A read-only trusted context job verifies
 the source workflow identity and PR association before the mutation job joins the
-shared per-PR serialized queue. If GitHub omits a fork run's PR array, repository,
-branch, and raw-head or live API merge-commit identity must identify exactly one
-current open PR; the verified raw head stays pinned through routing. Native signal run creation
+shared per-PR serialized queue. Both API source-run actors (`actor` and
+`triggering_actor`) must match configured trusted Codex review logins. A public
+human event or human rerun of a bot-origin signal cannot supply native freshness;
+payload actor claims cannot replace the independently fetched API identities.
+GitHub can omit the PR array on both the target
+fork `AI Review` run and its completion event. These paths share API association:
+the run's fork repository, branch, and full raw head must identify exactly one open
+PR before applying draft eligibility. Another matching draft or base-branch PR is
+ambiguous when no explicit PR association exists. A linked PR array may identify
+its explicit PR. Native review-event run metadata may instead report the base
+repository as `head_repository`. Only that verified native-signal mode enumerates
+open PRs across forks and requires one matching branch/full-head candidate before
+draft or base-branch eligibility; foreign metadata does not enable this fallback.
+Only the native signal bridge can additionally match the live API merge-commit
+identity. AI Review targets and their completion events retain the exact fork
+repository/ref and raw-head rule. Every selected PR must match the expected base repository,
+fork repository/ref, and immutable full raw head; target selection and all run
+revalidation boundaries repeat this proof. The verified raw head stays pinned
+through routing. Native signal run creation
 time is a scheduling freshness hint for an absent checkpoint, so formal
 dismissals and inline deletions are reevaluated even when REST timestamps do not
 change. It supplies no verdict; unchanged checkpoint hashes still deduplicate. These paths
@@ -519,6 +539,9 @@ canonical completed false/false summary remains neutral. Malformed, duplicate, o
 conflicting newest native signals fail closed. The latest blocking current-head
 formal review vetoes issue receipts until corrected or dismissed. Workflow filters are coarse; runtime repeats event,
 trusted author, repository, backend, PR, and live full-head checks.
+Issue-comment YAML filtering checks PR/body shape, so configured additional
+trusted identities can reach the authoritative runtime check. Copied signal text
+from an untrusted author can start only the read-only context job.
 
 Requeue targets the existing `AI Review` pull-request run for the exact PR/head,
 preserving the real required check association. Events and completion share one
@@ -539,6 +562,29 @@ response: later deliveries reconcile the API, then fail explicitly without a
 second POST until an authorized operator proves acceptance or definitive
 non-acceptance. GitHub rerun has no idempotency key for atomic state/POST recovery. Permissions/API failures remain
 visible workflow failures requiring authorized reconciliation.
+
+The trusted default workflow also discovers eligible open PRs every 15 minutes
+and pins their full heads read-only. GitHub may delay scheduled runs. A bounded
+matrix (at most 256 PRs, four concurrent jobs) sends each PR through the same
+serialized queue as direct/completion events. This catches actual thread
+resolution/reopening changes, which do not emit a supported Actions review-thread
+event. It reads the same native evaluator as the gate, including short-SHA API
+proof, and hashes actual thread resolution with the native bodies/identities.
+Schedule time never refreshes evidence or the fingerprint.
+
+Without a checkpoint for the selected current head and run, an active gate waits
+for completion or the next schedule. A terminal gate is requeued only when its
+actual success/failure disagrees with the genuine native evaluator. Matching
+outcomes or absent native results cause no checkpoint write or rerun. A trusted
+fail-closed native result can requeue a successful check for real evaluation;
+API/context uncertainty cannot establish a mismatch. Once an actual later attempt
+consumes the stable hash, unchanged schedules and that attempt's completion do
+nothing, even if an unrelated gate failure remains. Resolution changes use the
+existing bounded claim/posting guards. A settled ledger for an older head or
+different run is not a current baseline. An uncertain old posting state must
+first be reconciled against its own immutable API run/attempt and strict server
+timestamps; lack of proof blocks replacement without another POST. Scheduling
+never resolves a finding, posts `@codex`, or manufactures a check result.
 
 This workflow becomes effective after protected deployment to the default branch.
 A PR-only parser/router change cannot repair its own trusted-main gate. Manual

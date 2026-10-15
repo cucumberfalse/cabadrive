@@ -9,12 +9,36 @@ import {
 import { assertCurrentPull, createReviewApi } from "./ai-review-api.mjs";
 import { readConfig } from "./shared.mjs";
 
+export async function evaluateCodexReview(
+  api,
+  reviews,
+  inline,
+  comments,
+  resolvedIds,
+  headSha,
+  config = {},
+) {
+  const unresolved = inline.filter(
+    (comment) => !comment.in_reply_to_id && !resolvedIds.has(comment.id),
+  );
+  const evidence = latestCodexResult(reviews, unresolved, comments, headSha, config);
+  if (evidence.result === "pass" && evidence.comment)
+    for (const marker of codexCommentMarkers(evidence.comment.body)) {
+      if (marker.length < 40) {
+        const commit = await api.request(`${api.root}/commits/${marker}`);
+        if (commit.sha !== headSha) return null;
+      }
+    }
+  return evidence.result;
+}
+
 export async function runReviewGate({
   api,
   number,
   headSha,
   agent = "codex",
   triggerMode = "skip",
+  runAttempt = 1,
   config = {},
   maxWaitMs = 900000,
   initialPollMs = 15000,
@@ -29,11 +53,13 @@ export async function runReviewGate({
     throw new Error(`Unsupported AI_REVIEW_AGENT value: ${agent}`);
   if (!new Set(["skip", "comment"]).has(triggerMode))
     throw new Error(`Unsupported AI_REVIEW_TRIGGER_MODE value: ${triggerMode}`);
+  if (!Number.isSafeInteger(runAttempt) || runAttempt < 1)
+    throw new Error("A valid positive GITHUB_RUN_ATTEMPT is required.");
   const commentPath = `${api.root}/issues/${number}/comments`;
   const createComment = (body) =>
     api.request(commentPath, { method: "POST", body: JSON.stringify({ body }) });
   await assertCurrentPull(api, number, headSha);
-  if (triggerMode === "comment") {
+  if (triggerMode === "comment" && runAttempt === 1) {
     const triggers = {
       codex: `@codex review ${headSha}`,
       claude: "@claude review once",
@@ -72,20 +98,16 @@ export async function runReviewGate({
             api.resolvedCommentIds(number),
             api.list(commentPath),
           ]);
-          const unresolved = allComments.filter(
-            (comment) => !comment.in_reply_to_id && !resolvedIds.has(comment.id),
-          );
-          const evidence = latestCodexResult(reviews, unresolved, comments, headSha, config);
-          accepted = evidence.result === "pass";
-          if (accepted && evidence.comment) {
-            // GitHub resolves abbreviated object IDs; ambiguous prefixes fail closed.
-            for (const marker of codexCommentMarkers(evidence.comment.body)) {
-              if (marker.length < 40) {
-                const commit = await api.request(`${api.root}/commits/${marker}`);
-                if (commit.sha !== headSha) accepted = false;
-              }
-            }
-          }
+          accepted =
+            (await evaluateCodexReview(
+              api,
+              reviews,
+              allComments,
+              comments,
+              resolvedIds,
+              headSha,
+              config,
+            )) === "pass";
         } else {
           accepted = reviews.some((review) =>
             isAcceptableNativeReview(review, agent, headSha, config),
@@ -132,6 +154,9 @@ if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) 
       headSha: env.AI_REVIEW_HEAD_SHA,
       agent: (env.AI_REVIEW_AGENT || "codex").trim().toLowerCase(),
       triggerMode: (env.AI_REVIEW_TRIGGER_MODE || "skip").trim().toLowerCase(),
+      runAttempt: /^[1-9][0-9]*$/.test(env.GITHUB_RUN_ATTEMPT || "")
+        ? Number(env.GITHUB_RUN_ATTEMPT)
+        : NaN,
       config: readConfig(),
       maxWaitMs: Number(env.AI_REVIEW_WAIT_MS || 900000),
       initialPollMs: Number(env.AI_REVIEW_POLL_MS || 15000),

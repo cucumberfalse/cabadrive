@@ -6,6 +6,8 @@ on:
   workflow_run:
     workflows: [AI Review, AI Review Native Signal]
     types: [completed]
+  schedule:
+    - cron: "*/15 * * * *"
 
 permissions:
   contents: read
@@ -21,12 +23,12 @@ jobs:
       actions: read
     outputs:
       pr_number: ${{ steps.pr.outputs.pr_number }}
+      pr_matrix: ${{ steps.pr.outputs.pr_matrix }}
+      has_prs: ${{ steps.pr.outputs.has_prs }}
     if: |
-      github.event_name == 'workflow_run' ||
-      ((github.event.comment.user.login == 'chatgpt-codex-connector[bot]' || github.event.comment.user.login == 'chatgpt-codex-connector' ||
-        github.event.review.user.login == 'chatgpt-codex-connector[bot]' || github.event.review.user.login == 'chatgpt-codex-connector') &&
-       (github.event_name != 'issue_comment' || github.event.issue.pull_request) &&
-       (github.event_name != 'issue_comment' || contains(github.event.comment.body, 'Codex Review:') ||
+      github.event_name == 'workflow_run' || github.event_name == 'schedule' ||
+      (github.event_name == 'issue_comment' && github.event.issue.pull_request &&
+       (contains(github.event.comment.body, 'Codex Review:') ||
         contains(github.event.comment.body, '<!-- codex-review-receipt:') ||
         contains(github.event.comment.body, '<!-- codex-pull-request-review-summary') ||
         contains(github.event.comment.body, '<!-- codex-review-state:')))
@@ -43,11 +45,17 @@ jobs:
         run: node scripts/ai-review-wakeup.mjs --resolve-only
         env:
           GITHUB_TOKEN: ${{ github.token }}
+          AI_REVIEW_AGENT: ${{ vars.AI_REVIEW_AGENT }}
   wakeup:
     needs: context
-    if: needs.context.outputs.pr_number != ''
+    if: needs.context.outputs.has_prs == 'true'
+    strategy:
+      fail-fast: false
+      max-parallel: 4
+      matrix:
+        pull: ${{ fromJSON(needs.context.outputs.pr_matrix) }}
     concurrency:
-      group: ai-review-wakeup-${{ needs.context.outputs.pr_number }}
+      group: ai-review-wakeup-${{ matrix.pull.number }}
       cancel-in-progress: false
     runs-on: ubuntu-latest
     timeout-minutes: 5
@@ -62,3 +70,5 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.token }}
           AI_REVIEW_AGENT: ${{ vars.AI_REVIEW_AGENT }}
+          AI_REVIEW_PR_NUMBER: ${{ matrix.pull.number }}
+          AI_REVIEW_HEAD_SHA: ${{ matrix.pull.head_sha }}

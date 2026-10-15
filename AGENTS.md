@@ -208,11 +208,19 @@ Supported review backends:
 - `claude`: top-level comment containing `AI_REVIEW_AGENT`, `AI_REVIEW_SHA`, and `AI_REVIEW_OUTCOME: pass|advisory|block`.
 - `gemini`: native GitHub PR review from the configured app.
 
-Only trusted actors may trigger AI workflows:
+Human AI workflow requests require a trusted repository association:
 
 - `OWNER`
 - `MEMBER`
 - `COLLABORATOR`
+
+Native Codex wakeups use configured trusted review logins. A native signal's API
+`actor` and `triggering_actor` must both be trusted; a human rerun does not inherit
+bot provenance. Coarse workflow filters leave actor validation to the trusted
+runtime. AI Review attempts after the first only evaluate evidence and never
+post another review request. Trusted default-branch scheduled reconciliation may
+requeue a stale exact-head gate after actual thread-resolution changes; it never
+approves review or uses schedule time as native evidence.
 
 ## Completion Contract
 

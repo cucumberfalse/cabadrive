@@ -1,12 +1,52 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
+import { readFileSync, mkdtempSync, rmSync } from "node:fs";
+import { spawnSync } from "node:child_process";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
 
 const workflow = readFileSync(
   new URL("../.github/workflows/ai-review.yml", import.meta.url),
   "utf8",
 );
 const gate = readFileSync(new URL("../scripts/ai-review-gate.mjs", import.meta.url), "utf8");
+
+test("actual workflow policy keeps initial triggers and makes every rerun evaluation-only", () => {
+  const policy = workflow
+    .match(/name: Resolve selected review policy[\s\S]*?run: \|\n([\s\S]*?)\n {6}- name:/)[1]
+    .replace(/^ {10}/gm, "");
+  const dir = mkdtempSync(join(tmpdir(), "ai-review-policy-"));
+  try {
+    for (const EVENT_NAME of ["pull_request", "workflow_dispatch"])
+      for (const attempt of ["1", "2", "10", "0", "invalid"]) {
+        const output = join(dir, `${EVENT_NAME}-${attempt}`);
+        const result = spawnSync("bash", ["-c", policy], {
+          encoding: "utf8",
+          env: {
+            ...process.env,
+            SELECTED_AGENT: "codex",
+            REQUESTED_TRIGGER_MODE: "comment",
+            EVENT_NAME,
+            PR_HEAD_REPOSITORY: "owner/repo",
+            REPOSITORY: "owner/repo",
+            HAS_AI_REVIEW_GITHUB_TOKEN: "true",
+            GITHUB_RUN_ATTEMPT: attempt,
+            GITHUB_OUTPUT: output,
+          },
+        });
+        if (attempt === "0" || attempt === "invalid") assert.notEqual(result.status, 0);
+        else {
+          assert.equal(result.status, 0, result.stderr);
+          assert.match(
+            readFileSync(output, "utf8"),
+            new RegExp(`trigger_mode=${attempt === "1" ? "comment" : "skip"}`),
+          );
+        }
+      }
+  } finally {
+    rmSync(dir, { recursive: true });
+  }
+});
 
 test("same-repository pull request AI Review runs trigger the selected backend before polling", () => {
   assert.match(workflow, /ref:\s*\$\{\{\s*github\.event\.repository\.default_branch\s*\}\}/);
@@ -25,7 +65,7 @@ test("same-repository pull request AI Review runs trigger the selected backend b
   );
   assert.match(
     workflow,
-    /if \[ "\$\{EVENT_NAME\}" = "workflow_dispatch" \]; then[\s\S]*trigger_mode="\$\{REQUESTED_TRIGGER_MODE:-skip\}"[\s\S]*elif \[ "\$\{PR_HEAD_REPOSITORY\}" = "\$\{REPOSITORY\}" \] && \[ "\$\{HAS_AI_REVIEW_GITHUB_TOKEN\}" = "true" \]; then[\s\S]*trigger_mode="comment"[\s\S]*else[\s\S]*trigger_mode="skip"[\s\S]*fi/,
+    /elif \[ "\$\{EVENT_NAME\}" = "workflow_dispatch" \]; then[\s\S]*trigger_mode="\$\{REQUESTED_TRIGGER_MODE:-skip\}"[\s\S]*elif \[ "\$\{PR_HEAD_REPOSITORY\}" = "\$\{REPOSITORY\}" \] && \[ "\$\{HAS_AI_REVIEW_GITHUB_TOKEN\}" = "true" \]; then[\s\S]*trigger_mode="comment"[\s\S]*else[\s\S]*trigger_mode="skip"[\s\S]*fi/,
   );
 });
 
@@ -93,7 +133,7 @@ test("actual wakeup workflow filter admits created/edited receipt, summary, and 
       issue: { pull_request: {} },
       comment: { body: "Codex Review:", user: { login: "owner" } },
     }),
-    false,
+    true,
   );
   assert.equal(
     workflowAllows("issue_comment", {
@@ -101,6 +141,37 @@ test("actual wakeup workflow filter admits created/edited receipt, summary, and 
     }),
     false,
   );
+});
+test("coarse workflow routing admits configured identities and keeps unrelated text out", () => {
+  for (const action of ["created", "edited"])
+    for (const login of ["custom-codex", "CUSTOM-CODEX", "unknown"])
+      for (const body of [
+        "<!-- codex-review-receipt:v1 -->",
+        "<!-- codex-pull-request-review-summary -->",
+      ])
+        assert.equal(
+          workflowAllows("issue_comment", {
+            action,
+            issue: { pull_request: {} },
+            comment: { body, user: { login } },
+          }),
+          true,
+        );
+  assert.equal(
+    workflowAllows("issue_comment", {
+      issue: { pull_request: {} },
+      comment: { body: "unrelated", user: { login: "custom-codex" } },
+    }),
+    false,
+  );
+});
+test("resolution schedules discover pinned PRs read-only and share direct-event per-PR serialization", () => {
+  assert.match(wakeup, /schedule:\s*- cron: ["']\*\/15 \* \* \* \*["']/);
+  assert.match(wakeup, /matrix:[\s\S]*fromJSON\(needs.context.outputs.pr_matrix\)/);
+  assert.match(wakeup, /group: ai-review-wakeup-\$\{\{ matrix.pull.number \}\}/);
+  assert.match(wakeup, /AI_REVIEW_HEAD_SHA: \$\{\{ matrix.pull.head_sha \}\}/);
+  assert.match(wakeup, /github.event_name == 'schedule'/);
+  assert.doesNotMatch(wakeup, /pull_request_review_thread/);
 });
 
 test("wakeup uses trusted default scripts and bot token with shared serialized completion backstop", () => {
@@ -116,7 +187,7 @@ test("wakeup uses trusted default scripts and bot token with shared serialized c
   assert.match(wakeup, /run: node scripts\/ai-review-wakeup\.mjs/);
   assert.match(wakeup, /ref: \$\{\{ github\.event\.repository\.default_branch \}\}/);
   assert.match(wakeup, /GITHUB_TOKEN: \$\{\{ github\.token \}\}/);
-  assert.match(wakeup, /needs\.context\.outputs\.pr_number/);
+  assert.match(wakeup, /needs\.context\.outputs\.pr_matrix/);
   assert.match(wakeup, /cancel-in-progress: false/);
   assert.doesNotMatch(
     wakeup,
@@ -129,5 +200,5 @@ test("fork native signal bridge has no privileged execution or credentials", () 
   assert.doesNotMatch(signalWorkflow, /uses:|checkout|secrets|GITHUB_TOKEN|node scripts/);
   assert.doesNotMatch(wakeup, /^ {2}pull_request_review(?:_comment)?:/m);
   assert.match(wakeup, /run: node scripts\/ai-review-wakeup\.mjs --resolve-only/);
-  assert.match(wakeup, /group: ai-review-wakeup-\$\{\{ needs.context.outputs.pr_number \}\}/);
+  assert.match(wakeup, /group: ai-review-wakeup-\$\{\{ matrix.pull.number \}\}/);
 });
