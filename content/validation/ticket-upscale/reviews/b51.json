@@ -1,0 +1,23 @@
+{
+  "imageId": "question-image-b51",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:30:13.231Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "NHN737 and ARGENTINA lettering, four bolt locations and two crests retain source geometry; white rim and black grill openings unchanged."
+  ],
+  "candidateSha256": "e545eb355f6fbbabbf9845fa523237ab56657c78b09226f097dd8e401e1c6f7b",
+  "originalSha256": "c0f7142de146aede4d42defb84a38523e2cf5e6a6962f45c7aa05344e07f98ee",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b51.jpg",
+    "originalSha256": "c0f7142de146aede4d42defb84a38523e2cf5e6a6962f45c7aa05344e07f98ee",
+    "masterPath": "content/assets-masters/questions/b51.png",
+    "masterSha256": "e545eb355f6fbbabbf9845fa523237ab56657c78b09226f097dd8e401e1c6f7b",
+    "candidateSha256": "e545eb355f6fbbabbf9845fa523237ab56657c78b09226f097dd8e401e1c6f7b",
+    "inferenceSha256": "fa8f7a28fb8bcfb953110fe102c7b4ead04291f18a585626d509bb2104cb9219",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "imageId": "question-image-b11",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T16:56:24.343Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "Blue circular E at left and red crossed E at right retain letter, colors and prohibition slash. Parked vehicles, curb and sign sides remain aligned to the original."
+  ],
+  "candidateSha256": "e438373b53d1c0988f18b880435796722c0153620223694f5cd08c435a240aa3",
+  "originalSha256": "f40480ed97f15d33979a3c32b9cb25481aee95a2df314535a9606c5ccc33740f",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b11.jpg",
+    "originalSha256": "f40480ed97f15d33979a3c32b9cb25481aee95a2df314535a9606c5ccc33740f",
+    "masterPath": "content/assets-masters/questions/b11.png",
+    "masterSha256": "e438373b53d1c0988f18b880435796722c0153620223694f5cd08c435a240aa3",
+    "candidateSha256": "e438373b53d1c0988f18b880435796722c0153620223694f5cd08c435a240aa3",
+    "inferenceSha256": "7d4cc6452a9eb7a1efa4559976700ea6ae39af57e433a80aff46784ea8aa9efb",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

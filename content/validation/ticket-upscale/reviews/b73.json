@@ -1,0 +1,30 @@
+{
+  "imageId": "question-image-b73",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:39:28.629Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "rejected",
+  "observations": [
+    "The circled amber signal stays amber, but the foreground plate acquires new white block strokes and the upper-right shop board develops different glyph contours."
+  ],
+  "rejectionReason": "License-plate and shop lettering are altered.",
+  "candidateSha256": "90f089dbc756265a9ebe858a2b671c2e39a8dbfcda29965e961c504bca6788bb",
+  "originalSha256": "cd1a0e55641735aa9d19bf786d7878804cc923c2fe9917cf0b256512853dda48",
+  "fallbackObservations": [
+    "Fallback keeps original plate and shop-board glyph shapes, with circled amber signal and zebra crossing unchanged."
+  ],
+  "fallbackReviewedAt": "2026-10-13T17:46:29.983Z",
+  "fallbackReviewer": "Implementation Agent (Codex)",
+  "fallbackSha256": "5086e06ebee4c4a10007c5948816d4ffd73bdda77390d2938395b9d601193aef",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b73.jpg",
+    "originalSha256": "cd1a0e55641735aa9d19bf786d7878804cc923c2fe9917cf0b256512853dda48",
+    "masterPath": "content/assets-masters/questions/b73.png",
+    "masterSha256": "5086e06ebee4c4a10007c5948816d4ffd73bdda77390d2938395b9d601193aef",
+    "candidateSha256": "90f089dbc756265a9ebe858a2b671c2e39a8dbfcda29965e961c504bca6788bb",
+    "inferenceSha256": "d17fc7b7394fb4d8ab26d88adcec496ba72776bbc5cf9a45aa1db82628bc4149",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

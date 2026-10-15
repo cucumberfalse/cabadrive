@@ -1,0 +1,29 @@
+{
+  "imageId": "question-image-b144",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b144.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b144.png",
+  "originalSha256": "a18fde9aa9092eb6a0699f77e3595a8f7e7eb4a48adbd118c3afd15aa17202bd",
+  "candidateSha256": "17d148448202736537b3ef82cd7309957df63b3589f4bb2d3e86a40772ffe527",
+  "reviewer": "image_review",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "A/B yellow labels, pickup/hatchback positions and all dashed lane-divider segments retain count, direction and placement; vehicle silhouettes preserved."
+  ],
+  "rejectionReason": null,
+  "reviewedAt": "2026-10-13T17:02:15.464029+00:00",
+  "inspectionArtifacts": [
+    "/private/tmp/cabadrive-057-review-b140-b220-b140-b141-b142-b143-b144.png"
+  ],
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b144.jpg",
+    "originalSha256": "a18fde9aa9092eb6a0699f77e3595a8f7e7eb4a48adbd118c3afd15aa17202bd",
+    "masterPath": "content/assets-masters/questions/b144.png",
+    "masterSha256": "17d148448202736537b3ef82cd7309957df63b3589f4bb2d3e86a40772ffe527",
+    "candidateSha256": "17d148448202736537b3ef82cd7309957df63b3589f4bb2d3e86a40772ffe527",
+    "inferenceSha256": "979434bff657cbcba46251f0ddef0d91acb8fc13681ccd1ad0088ed7f13164ad",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

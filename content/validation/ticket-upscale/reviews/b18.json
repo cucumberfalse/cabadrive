@@ -1,0 +1,30 @@
+{
+  "imageId": "question-image-b18",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:12:43.030Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "rejected",
+  "observations": [
+    "Native black street sign comparison shows tiny street-name rows turning into repeated square/bar strokes while left arrow remains; green traffic lights and pedestrian figure retain positions."
+  ],
+  "rejectionReason": "Street-name lettering is reconstructed into repeated bars and square strokes in native sign detail.",
+  "candidateSha256": "06e3106bd5d5bd8927728558bee47a73a4ba10e9407d07330764f3d1b537b1cd",
+  "originalSha256": "df93eca370e589d3fe7d84bca71808f6f28613f69171f05093dccdbaf6ad3786",
+  "fallbackObservations": [
+    "Fallback preserves the right-hand street-plaque fine letters/arrows and green traffic signal; pedestrians and crossings stay in place."
+  ],
+  "fallbackReviewedAt": "2026-10-13T17:44:40.906Z",
+  "fallbackReviewer": "Implementation Agent (Codex)",
+  "fallbackSha256": "76e9e53d79263f61a1dccc054c66ad6bbb8816a0ec71bad21298fc6e2b5660c0",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b18.jpg",
+    "originalSha256": "df93eca370e589d3fe7d84bca71808f6f28613f69171f05093dccdbaf6ad3786",
+    "masterPath": "content/assets-masters/questions/b18.png",
+    "masterSha256": "76e9e53d79263f61a1dccc054c66ad6bbb8816a0ec71bad21298fc6e2b5660c0",
+    "candidateSha256": "06e3106bd5d5bd8927728558bee47a73a4ba10e9407d07330764f3d1b537b1cd",
+    "inferenceSha256": "a99ed89c34cd39b16dc2e5204d6ab6f590ec855c9967491b515e9950e0409a6c",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

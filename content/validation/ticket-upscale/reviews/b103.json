@@ -1,0 +1,23 @@
+{
+  "imageId": "question-image-b103",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T16:53:54.901Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "CEDA EL PASO keeps its two-line lettering within the inverted white triangle/red border; PARE keeps all four white letters on red octagon. Border edges are cleaned without changing shapes or placements."
+  ],
+  "candidateSha256": "4e9dc034600c0ec0ced2b52db0d87392ff9b9e776829caf0bfd7b8806a0bb993",
+  "originalSha256": "e24f6410c6803c703f58da4bf68c80d31ff1cbfd33ebc702e97490b6b12dbd87",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b103.jpg",
+    "originalSha256": "e24f6410c6803c703f58da4bf68c80d31ff1cbfd33ebc702e97490b6b12dbd87",
+    "masterPath": "content/assets-masters/questions/b103.png",
+    "masterSha256": "4e9dc034600c0ec0ced2b52db0d87392ff9b9e776829caf0bfd7b8806a0bb993",
+    "candidateSha256": "4e9dc034600c0ec0ced2b52db0d87392ff9b9e776829caf0bfd7b8806a0bb993",
+    "inferenceSha256": "8adf3882e0e7bbdd7f3e99c0b176bb4055cf0bacf0bd33e1254fd630170aa83f",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

@@ -18,6 +18,11 @@ test("image paths refuse traversal, remote URLs and ambiguous separators", () =>
 test("configured widths never enlarge and small images retain natural width", () => {
   assert.deepEqual(variantWidths(300), [300]);
   assert.deepEqual(variantWidths(2400), [480, 800, 1200, 1600, 2400]);
+  assert.deepEqual(variantWidths(1240, 1240), [480, 800, 1200, 1240]);
+  assert.deepEqual(variantWidths(1600, 1200), [480, 800, 1200, 1600]);
+  assert.deepEqual(variantWidths(300, 250), [250]);
+  assert.throws(() => variantWidths(1200, 1240), /target/);
+  assert.throws(() => variantWidths(1240, 0), /target/);
 });
 
 import { mkdtemp, rm, readFile, writeFile, symlink, mkdir, copyFile } from "node:fs/promises";

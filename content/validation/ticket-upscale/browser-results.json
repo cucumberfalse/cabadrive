@@ -1,0 +1,1252 @@
+{
+  "stats": {
+    "startTime": "2026-10-13T18:47:31.439Z",
+    "duration": 5270.170999999999,
+    "expected": 9,
+    "skipped": 1,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "tests": [
+    {
+      "title": "a new worker decodes unvisited old and current modern URLs offline through retained JPEG maps",
+      "project": "chromium",
+      "status": "passed",
+      "duration": 877,
+      "attachments": [
+        {
+          "name": "two-worker-real-ticket-decode.json",
+          "data": {
+            "cachedModern": [
+              false,
+              false
+            ],
+            "evidence": [
+              {
+                "path": "content/img/c/b1-1240.fb812f18.avif",
+                "width": 1240,
+                "height": 796,
+                "status": 200,
+                "mime": "image/jpeg",
+                "hash": "f85a75ae7d76984b78e4f96d931d37f1170d32056e82c1eb682f099b20ff6e68"
+              },
+              {
+                "path": "content/img/c/b10-1240.e4150aca.avif",
+                "width": 1240,
+                "height": 627,
+                "status": 200,
+                "mime": "image/jpeg",
+                "hash": "5f90d7061cf467c5f2359326e5ad05e380b866a6a1ea4e5a1bb18a135bbf5bfa"
+              }
+            ],
+            "modernRequests": 0,
+            "unknownFailed": true,
+            "oldBytes": "f85a75ae7d76984b78e4f96d931d37f1170d32056e82c1eb682f099b20ff6e68"
+          }
+        }
+      ]
+    },
+    {
+      "title": "a new worker decodes unvisited old and current modern URLs offline through retained JPEG maps",
+      "project": "mobile",
+      "status": "passed",
+      "duration": 985,
+      "attachments": [
+        {
+          "name": "two-worker-real-ticket-decode.json",
+          "data": {
+            "cachedModern": [
+              false,
+              false
+            ],
+            "evidence": [
+              {
+                "path": "content/img/c/b1-1240.fb812f18.avif",
+                "width": 1240,
+                "height": 796,
+                "status": 200,
+                "mime": "image/jpeg",
+                "hash": "f85a75ae7d76984b78e4f96d931d37f1170d32056e82c1eb682f099b20ff6e68"
+              },
+              {
+                "path": "content/img/c/b10-1240.e4150aca.avif",
+                "width": 1240,
+                "height": 627,
+                "status": 200,
+                "mime": "image/jpeg",
+                "hash": "5f90d7061cf467c5f2359326e5ad05e380b866a6a1ea4e5a1bb18a135bbf5bfa"
+              }
+            ],
+            "modernRequests": 0,
+            "unknownFailed": true,
+            "oldBytes": "f85a75ae7d76984b78e4f96d931d37f1170d32056e82c1eb682f099b20ff6e68"
+          }
+        }
+      ]
+    },
+    {
+      "title": "fresh DPR1/2 mobile slots and a desktop 620px slot select sufficient encoded widths",
+      "project": "chromium",
+      "status": "passed",
+      "duration": 1584,
+      "attachments": [
+        {
+          "name": "explicit-dpr1-dpr2.json",
+          "data": [
+            {
+              "viewport": 390,
+              "source": "content/assets/questions/source-bandinopla-testdeconducir-b/b2.jpg",
+              "currentSrc": "content/img/c/b2-480.fe4c698a.avif",
+              "sizes": "304px",
+              "intrinsicWidth": 304,
+              "width": 304,
+              "height": 126.03125,
+              "frameWidth": 304,
+              "frameHeight": 126,
+              "encodedWidth": 480,
+              "encodedHeight": 199,
+              "dpr": 1
+            },
+            {
+              "viewport": 1280,
+              "source": "content/assets/questions/source-bandinopla-testdeconducir-b/b2.jpg",
+              "currentSrc": "content/img/c/b2-800.d7ed2558.avif",
+              "sizes": "618px",
+              "intrinsicWidth": 618,
+              "width": 618,
+              "height": 255.6875,
+              "frameWidth": 618,
+              "frameHeight": 256,
+              "encodedWidth": 800,
+              "encodedHeight": 331,
+              "dpr": 1
+            },
+            {
+              "viewport": 390,
+              "source": "content/assets/questions/source-bandinopla-testdeconducir-b/b2.jpg",
+              "currentSrc": "content/img/c/b2-800.d7ed2558.avif",
+              "sizes": "304px",
+              "intrinsicWidth": 304,
+              "width": 304,
+              "height": 125.765625,
+              "frameWidth": 304,
+              "frameHeight": 126,
+              "encodedWidth": 800,
+              "encodedHeight": 331,
+              "dpr": 2
+            },
+            {
+              "viewport": 1280,
+              "source": "content/assets/questions/source-bandinopla-testdeconducir-b/b2.jpg",
+              "currentSrc": "content/img/c/b2-1240.9762da6b.avif",
+              "sizes": "618px",
+              "intrinsicWidth": 618,
+              "width": 618,
+              "height": 255.671875,
+              "frameWidth": 618,
+              "frameHeight": 256,
+              "encodedWidth": 1240,
+              "encodedHeight": 513,
+              "dpr": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ticket pictures choose actual container/DPR variants and preserve rapid navigation geometry",
+      "project": "chromium",
+      "status": "passed",
+      "duration": 643,
+      "attachments": [
+        {
+          "name": "slot-dpr-currentSrc.json",
+          "data": {
+            "measurements": [
+              {
+                "source": "content/assets/questions/source-bandinopla-testdeconducir-b/b13.jpg",
+                "currentSrc": "content/img/c/b13-480.7b8f38af.avif",
+                "sizes": "304px",
+                "intrinsicWidth": 304,
+                "width": 304,
+                "height": 194.421875,
+                "frameWidth": 304,
+                "frameHeight": 195,
+                "encodedWidth": 480,
+                "encodedHeight": 307,
+                "dpr": 1
+              },
+              {
+                "source": "content/assets/questions/source-bandinopla-testdeconducir-b/b13.jpg",
+                "currentSrc": "content/img/c/b13-800.581755b1.avif",
+                "sizes": "560px",
+                "intrinsicWidth": 560,
+                "width": 560.203125,
+                "height": 358.515625,
+                "frameWidth": 560,
+                "frameHeight": 359,
+                "encodedWidth": 800,
+                "encodedHeight": 512,
+                "dpr": 1
+              },
+              {
+                "source": "content/assets/questions/source-bandinopla-testdeconducir-b/b13.jpg",
+                "currentSrc": "content/img/c/b13-800.581755b1.avif",
+                "sizes": "560px",
+                "intrinsicWidth": 560,
+                "width": 560.203125,
+                "height": 358.515625,
+                "frameWidth": 560,
+                "frameHeight": 359,
+                "encodedWidth": 800,
+                "encodedHeight": 512,
+                "dpr": 1
+              }
+            ],
+            "rapidNavigation": {
+              "source": "content/assets/questions/source-bandinopla-testdeconducir-b/b144.jpg",
+              "currentSrc": "content/img/c/b144-800.9e8bc092.avif",
+              "sizes": "564px",
+              "intrinsicWidth": 564,
+              "width": 563.765625,
+              "height": 358.6875,
+              "frameWidth": 564,
+              "frameHeight": 359,
+              "encodedWidth": 800,
+              "encodedHeight": 509,
+              "dpr": 1
+            }
+          }
+        }
+      ]
+    },
+    {
+      "title": "delayed ticket decode reserves geometry and unsupported sources use JPEG",
+      "project": "chromium",
+      "status": "passed",
+      "duration": 503,
+      "attachments": [
+        {
+          "name": "delayed-decode-and-jpeg.json",
+          "data": {
+            "before": {
+              "x": 66,
+              "y": 693.6875,
+              "width": 562.203125,
+              "height": 360.703125
+            },
+            "decoded": {
+              "source": "content/assets/questions/source-bandinopla-testdeconducir-b/b13.jpg",
+              "currentSrc": "content/img/c/b13-800.581755b1.avif",
+              "sizes": "560px",
+              "intrinsicWidth": 560,
+              "width": 560.203125,
+              "height": 358.515625,
+              "frameWidth": 560,
+              "frameHeight": 359,
+              "encodedWidth": 800,
+              "encodedHeight": 512,
+              "dpr": 1
+            },
+            "jpeg": {
+              "source": "content/assets/questions/source-bandinopla-testdeconducir-b/b13.jpg",
+              "currentSrc": "content/img/c/b13-800.9962ab59.jpg",
+              "sizes": "560px",
+              "intrinsicWidth": 560,
+              "width": 560.203125,
+              "height": 358.515625,
+              "frameWidth": 560,
+              "frameHeight": 359,
+              "encodedWidth": 800,
+              "encodedHeight": 512,
+              "dpr": 1
+            }
+          }
+        }
+      ]
+    },
+    {
+      "title": "Materials/manual pictures keep the 300px height cap and decode responsive derivatives",
+      "project": "chromium",
+      "status": "passed",
+      "duration": 546,
+      "attachments": [
+        {
+          "name": "materials-slot.json",
+          "data": {
+            "source": "content/assets/questions/source-bandinopla-testdeconducir-b/b210.jpg",
+            "currentSrc": "content/img/c/b210-480.93f04db6.avif",
+            "sizes": "466px",
+            "intrinsicWidth": 466,
+            "width": 465.921875,
+            "height": 298.953125,
+            "frameWidth": 466,
+            "frameHeight": 299,
+            "encodedWidth": 480,
+            "encodedHeight": 308,
+            "dpr": 1
+          }
+        }
+      ]
+    },
+    {
+      "title": "fresh DPR1/2 mobile slots and a desktop 620px slot select sufficient encoded widths",
+      "project": "mobile",
+      "status": "skipped",
+      "duration": 264,
+      "attachments": []
+    },
+    {
+      "title": "ticket pictures choose actual container/DPR variants and preserve rapid navigation geometry",
+      "project": "mobile",
+      "status": "passed",
+      "duration": 1212,
+      "attachments": [
+        {
+          "name": "slot-dpr-currentSrc.json",
+          "data": {
+            "measurements": [
+              {
+                "source": "content/assets/questions/source-bandinopla-testdeconducir-b/b13.jpg",
+                "currentSrc": "content/img/c/b13-800.581755b1.avif",
+                "sizes": "304px",
+                "intrinsicWidth": 304,
+                "width": 304,
+                "height": 194.546875,
+                "frameWidth": 304,
+                "frameHeight": 195,
+                "encodedWidth": 800,
+                "encodedHeight": 512,
+                "dpr": 2.625
+              },
+              {
+                "source": "content/assets/questions/source-bandinopla-testdeconducir-b/b13.jpg",
+                "currentSrc": "content/img/c/b13-1240.2312ea59.avif",
+                "sizes": "560px",
+                "intrinsicWidth": 560,
+                "width": 560.203125,
+                "height": 358.703125,
+                "frameWidth": 560,
+                "frameHeight": 359,
+                "encodedWidth": 1240,
+                "encodedHeight": 794,
+                "dpr": 2.625
+              },
+              {
+                "source": "content/assets/questions/source-bandinopla-testdeconducir-b/b13.jpg",
+                "currentSrc": "content/img/c/b13-1240.2312ea59.avif",
+                "sizes": "560px",
+                "intrinsicWidth": 560,
+                "width": 560.203125,
+                "height": 358.703125,
+                "frameWidth": 560,
+                "frameHeight": 359,
+                "encodedWidth": 1240,
+                "encodedHeight": 794,
+                "dpr": 2.625
+              }
+            ],
+            "rapidNavigation": {
+              "source": "content/assets/questions/source-bandinopla-testdeconducir-b/b144.jpg",
+              "currentSrc": "content/img/c/b144-1240.9646b3b1.avif",
+              "sizes": "564px",
+              "intrinsicWidth": 564,
+              "width": 563.765625,
+              "height": 358.703125,
+              "frameWidth": 564,
+              "frameHeight": 359,
+              "encodedWidth": 1240,
+              "encodedHeight": 789,
+              "dpr": 2.625
+            }
+          }
+        }
+      ]
+    },
+    {
+      "title": "delayed ticket decode reserves geometry and unsupported sources use JPEG",
+      "project": "mobile",
+      "status": "passed",
+      "duration": 491,
+      "attachments": [
+        {
+          "name": "delayed-decode-and-jpeg.json",
+          "data": {
+            "before": {
+              "x": 42,
+              "y": 1059.15625,
+              "width": 328,
+              "height": 210.734375
+            },
+            "decoded": {
+              "source": "content/assets/questions/source-bandinopla-testdeconducir-b/b13.jpg",
+              "currentSrc": "content/img/c/b13-1200.e9a37744.avif",
+              "sizes": "326px",
+              "intrinsicWidth": 326,
+              "width": 326,
+              "height": 208.625,
+              "frameWidth": 326,
+              "frameHeight": 209,
+              "encodedWidth": 1200,
+              "encodedHeight": 768,
+              "dpr": 2.625
+            },
+            "jpeg": {
+              "source": "content/assets/questions/source-bandinopla-testdeconducir-b/b13.jpg",
+              "currentSrc": "content/img/c/b13-1200.0d2de3b5.jpg",
+              "sizes": "326px",
+              "intrinsicWidth": 326,
+              "width": 326,
+              "height": 208.625,
+              "frameWidth": 326,
+              "frameHeight": 209,
+              "encodedWidth": 1200,
+              "encodedHeight": 768,
+              "dpr": 2.625
+            }
+          }
+        }
+      ]
+    },
+    {
+      "title": "Materials/manual pictures keep the 300px height cap and decode responsive derivatives",
+      "project": "mobile",
+      "status": "passed",
+      "duration": 656,
+      "attachments": [
+        {
+          "name": "materials-slot.json",
+          "data": {
+            "source": "content/assets/questions/source-bandinopla-testdeconducir-b/b210.jpg",
+            "currentSrc": "content/img/c/b210-1200.fe60b0e4.avif",
+            "sizes": "313px",
+            "intrinsicWidth": 313,
+            "width": 312.8125,
+            "height": 200.453125,
+            "frameWidth": 313,
+            "frameHeight": 201,
+            "encodedWidth": 1200,
+            "encodedHeight": 769,
+            "dpr": 2.625
+          }
+        }
+      ]
+    }
+  ],
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-13T19:56:50.241713+00:00",
+  "expandedOffline": {
+    "stats": {
+      "startTime": "2026-10-13T19:03:24.075Z",
+      "duration": 3724.4320000000002,
+      "expected": 4,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "actualDecodeRecords": [
+      {
+        "dpr": 1,
+        "cachedModern": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "evidence": [
+          {
+            "path": "content/img/c/b1-480.1d900909.avif",
+            "width": 480,
+            "height": 308,
+            "status": 200,
+            "mime": "image/jpeg",
+            "hash": "9f69ba8670280b93263084ea8c7aca6fbe63f1bf64953079bd3f5c579172f5b9"
+          },
+          {
+            "path": "content/img/c/b1-480.a67f269b.webp",
+            "width": 480,
+            "height": 308,
+            "status": 200,
+            "mime": "image/jpeg",
+            "hash": "9f69ba8670280b93263084ea8c7aca6fbe63f1bf64953079bd3f5c579172f5b9"
+          },
+          {
+            "path": "content/img/c/b1-480.9f69ba86.jpg",
+            "width": 480,
+            "height": 308,
+            "status": 200,
+            "mime": "image/jpeg",
+            "hash": "9f69ba8670280b93263084ea8c7aca6fbe63f1bf64953079bd3f5c579172f5b9"
+          },
+          {
+            "path": "content/img/c/b1-800.5ff0bcf9.avif",
+            "width": 800,
+            "height": 514,
+            "status": 200,
+            "mime": "image/jpeg",
+            "hash": "77d777545b3e3b42b313e2f303e10c7c9ba7baca02e91f17883ba499cd861c68"
+          },
+          {
+            "path": "content/img/c/b1-800.5677db10.webp",
+            "width": 800,
+            "height": 514,
+            "status": 200,
+            "mime": "image/jpeg",
+            "hash": "77d777545b3e3b42b313e2f303e10c7c9ba7baca02e91f17883ba499cd861c68"
+          },
+          {
+            "path": "content/img/c/b1-800.77d77754.jpg",
+            "width": 800,
+            "height": 514,
+            "status": 200,
+            "mime": "image/jpeg",
+            "hash": "77d777545b3e3b42b313e2f303e10c7c9ba7baca02e91f17883ba499cd861c68"
+          },
+          {
+            "path": "content/img/c/b1-1240.fb812f18.avif",
+            "width": 1240,
+            "height": 796,
+            "status": 200,
+            "mime": "image/jpeg",
+            "hash": "f85a75ae7d76984b78e4f96d931d37f1170d32056e82c1eb682f099b20ff6e68"
+          },
+          {
+            "path": "content/img/c/b1-1240.36b06b63.webp",
+            "width": 1240,
+            "height": 796,
+            "status": 200,
+            "mime": "image/jpeg",
+            "hash": "f85a75ae7d76984b78e4f96d931d37f1170d32056e82c1eb682f099b20ff6e68"
+          },
+          {
+            "path": "content/img/c/b1-1240.f85a75ae.jpg",
+            "width": 1240,
+            "height": 796,
+            "status": 200,
+            "mime": "image/jpeg",
+            "hash": "f85a75ae7d76984b78e4f96d931d37f1170d32056e82c1eb682f099b20ff6e68"
+          },
+          {
+            "path": "content/img/c/b10-480.f43dc029.avif",
+            "width": 480,
+            "height": 243,
+            "status": 200,
+            "mime": "image/jpeg",
+            "hash": "71977cb85c53672e8f2199f917f71660eef62515bb52306de81cfb9101538194"
+          },
+          {
+            "path": "content/img/c/b10-480.080c3332.webp",
+            "width": 480,
+            "height": 243,
+            "status": 200,
+            "mime": "image/jpeg",
+            "hash": "71977cb85c53672e8f2199f917f71660eef62515bb52306de81cfb9101538194"
+          },
+          {
+            "path": "content/img/c/b10-480.71977cb8.jpg",
+            "width": 480,
+            "height": 243,
+            "status": 200,
+            "mime": "image/jpeg",
+            "hash": "71977cb85c53672e8f2199f917f71660eef62515bb52306de81cfb9101538194"
+          },
+          {
+            "path": "content/img/c/b10-800.1d00a70e.avif",
+            "width": 800,
+            "height": 404,
+            "status": 200,
+            "mime": "image/jpeg",
+            "hash": "e834b4fa5ff97f0ca35414940413afb7b68153a8d9d67bae5d4ff10f4b2f4f3e"
+          },
+          {
+            "path": "content/img/c/b10-800.e6ca549d.webp",
+            "width": 800,
+            "height": 404,
+            "status": 200,
+            "mime": "image/jpeg",
+            "hash": "e834b4fa5ff97f0ca35414940413afb7b68153a8d9d67bae5d4ff10f4b2f4f3e"
+          },
+          {
+            "path": "content/img/c/b10-800.e834b4fa.jpg",
+            "width": 800,
+            "height": 404,
+            "status": 200,
+            "mime": "image/jpeg",
+            "hash": "e834b4fa5ff97f0ca35414940413afb7b68153a8d9d67bae5d4ff10f4b2f4f3e"
+          },
+          {
+            "path": "content/img/c/b10-1240.e4150aca.avif",
+            "width": 1240,
+            "height": 627,
+            "status": 200,
+            "mime": "image/jpeg",
+            "hash": "5f90d7061cf467c5f2359326e5ad05e380b866a6a1ea4e5a1bb18a135bbf5bfa"
+          },
+          {
+            "path": "content/img/c/b10-1240.c4d2cd7a.webp",
+            "width": 1240,
+            "height": 627,
+            "status": 200,
+            "mime": "image/jpeg",
+            "hash": "5f90d7061cf467c5f2359326e5ad05e380b866a6a1ea4e5a1bb18a135bbf5bfa"
+          },
+          {
+            "path": "content/img/c/b10-1240.5f90d706.jpg",
+            "width": 1240,
+            "height": 627,
+            "status": 200,
+            "mime": "image/jpeg",
+            "hash": "5f90d7061cf467c5f2359326e5ad05e380b866a6a1ea4e5a1bb18a135bbf5bfa"
+          }
+        ],
+        "responsive": [
+          {
+            "slot": 304,
+            "dpr": 1,
+            "currentSrc": "content/img/c/b1-480.1d900909.avif",
+            "encodedWidth": 480,
+            "mime": "image/jpeg"
+          },
+          {
+            "slot": 304,
+            "dpr": 1,
+            "currentSrc": "content/img/c/b10-480.f43dc029.avif",
+            "encodedWidth": 480,
+            "mime": "image/jpeg"
+          },
+          {
+            "slot": 618,
+            "dpr": 1,
+            "currentSrc": "content/img/c/b1-800.5ff0bcf9.avif",
+            "encodedWidth": 800,
+            "mime": "image/jpeg"
+          },
+          {
+            "slot": 618,
+            "dpr": 1,
+            "currentSrc": "content/img/c/b10-800.1d00a70e.avif",
+            "encodedWidth": 800,
+            "mime": "image/jpeg"
+          }
+        ],
+        "modernRequests": 0,
+        "unknownFailed": true,
+        "oldBytes": "9f69ba8670280b93263084ea8c7aca6fbe63f1bf64953079bd3f5c579172f5b9"
+      },
+      {
+        "dpr": 2,
+        "cachedModern": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "evidence": [
+          {
+            "path": "content/img/c/b1-480.1d900909.avif",
+            "width": 480,
+            "height": 308,
+            "status": 200,
+            "mime": "image/jpeg",
+            "hash": "9f69ba8670280b93263084ea8c7aca6fbe63f1bf64953079bd3f5c579172f5b9"
+          },
+          {
+            "path": "content/img/c/b1-480.a67f269b.webp",
+            "width": 480,
+            "height": 308,
+            "status": 200,
+            "mime": "image/jpeg",
+            "hash": "9f69ba8670280b93263084ea8c7aca6fbe63f1bf64953079bd3f5c579172f5b9"
+          },
+          {
+            "path": "content/img/c/b1-480.9f69ba86.jpg",
+            "width": 480,
+            "height": 308,
+            "status": 200,
+            "mime": "image/jpeg",
+            "hash": "9f69ba8670280b93263084ea8c7aca6fbe63f1bf64953079bd3f5c579172f5b9"
+          },
+          {
+            "path": "content/img/c/b1-800.5ff0bcf9.avif",
+            "width": 800,
+            "height": 514,
+            "status": 200,
+            "mime": "image/jpeg",
+            "hash": "77d777545b3e3b42b313e2f303e10c7c9ba7baca02e91f17883ba499cd861c68"
+          },
+          {
+            "path": "content/img/c/b1-800.5677db10.webp",
+            "width": 800,
+            "height": 514,
+            "status": 200,
+            "mime": "image/jpeg",
+            "hash": "77d777545b3e3b42b313e2f303e10c7c9ba7baca02e91f17883ba499cd861c68"
+          },
+          {
+            "path": "content/img/c/b1-800.77d77754.jpg",
+            "width": 800,
+            "height": 514,
+            "status": 200,
+            "mime": "image/jpeg",
+            "hash": "77d777545b3e3b42b313e2f303e10c7c9ba7baca02e91f17883ba499cd861c68"
+          },
+          {
+            "path": "content/img/c/b1-1240.fb812f18.avif",
+            "width": 1240,
+            "height": 796,
+            "status": 200,
+            "mime": "image/jpeg",
+            "hash": "f85a75ae7d76984b78e4f96d931d37f1170d32056e82c1eb682f099b20ff6e68"
+          },
+          {
+            "path": "content/img/c/b1-1240.36b06b63.webp",
+            "width": 1240,
+            "height": 796,
+            "status": 200,
+            "mime": "image/jpeg",
+            "hash": "f85a75ae7d76984b78e4f96d931d37f1170d32056e82c1eb682f099b20ff6e68"
+          },
+          {
+            "path": "content/img/c/b1-1240.f85a75ae.jpg",
+            "width": 1240,
+            "height": 796,
+            "status": 200,
+            "mime": "image/jpeg",
+            "hash": "f85a75ae7d76984b78e4f96d931d37f1170d32056e82c1eb682f099b20ff6e68"
+          },
+          {
+            "path": "content/img/c/b10-480.f43dc029.avif",
+            "width": 480,
+            "height": 243,
+            "status": 200,
+            "mime": "image/jpeg",
+            "hash": "71977cb85c53672e8f2199f917f71660eef62515bb52306de81cfb9101538194"
+          },
+          {
+            "path": "content/img/c/b10-480.080c3332.webp",
+            "width": 480,
+            "height": 243,
+            "status": 200,
+            "mime": "image/jpeg",
+            "hash": "71977cb85c53672e8f2199f917f71660eef62515bb52306de81cfb9101538194"
+          },
+          {
+            "path": "content/img/c/b10-480.71977cb8.jpg",
+            "width": 480,
+            "height": 243,
+            "status": 200,
+            "mime": "image/jpeg",
+            "hash": "71977cb85c53672e8f2199f917f71660eef62515bb52306de81cfb9101538194"
+          },
+          {
+            "path": "content/img/c/b10-800.1d00a70e.avif",
+            "width": 800,
+            "height": 404,
+            "status": 200,
+            "mime": "image/jpeg",
+            "hash": "e834b4fa5ff97f0ca35414940413afb7b68153a8d9d67bae5d4ff10f4b2f4f3e"
+          },
+          {
+            "path": "content/img/c/b10-800.e6ca549d.webp",
+            "width": 800,
+            "height": 404,
+            "status": 200,
+            "mime": "image/jpeg",
+            "hash": "e834b4fa5ff97f0ca35414940413afb7b68153a8d9d67bae5d4ff10f4b2f4f3e"
+          },
+          {
+            "path": "content/img/c/b10-800.e834b4fa.jpg",
+            "width": 800,
+            "height": 404,
+            "status": 200,
+            "mime": "image/jpeg",
+            "hash": "e834b4fa5ff97f0ca35414940413afb7b68153a8d9d67bae5d4ff10f4b2f4f3e"
+          },
+          {
+            "path": "content/img/c/b10-1240.e4150aca.avif",
+            "width": 1240,
+            "height": 627,
+            "status": 200,
+            "mime": "image/jpeg",
+            "hash": "5f90d7061cf467c5f2359326e5ad05e380b866a6a1ea4e5a1bb18a135bbf5bfa"
+          },
+          {
+            "path": "content/img/c/b10-1240.c4d2cd7a.webp",
+            "width": 1240,
+            "height": 627,
+            "status": 200,
+            "mime": "image/jpeg",
+            "hash": "5f90d7061cf467c5f2359326e5ad05e380b866a6a1ea4e5a1bb18a135bbf5bfa"
+          },
+          {
+            "path": "content/img/c/b10-1240.5f90d706.jpg",
+            "width": 1240,
+            "height": 627,
+            "status": 200,
+            "mime": "image/jpeg",
+            "hash": "5f90d7061cf467c5f2359326e5ad05e380b866a6a1ea4e5a1bb18a135bbf5bfa"
+          }
+        ],
+        "responsive": [
+          {
+            "slot": 304,
+            "dpr": 2,
+            "currentSrc": "content/img/c/b1-800.5ff0bcf9.avif",
+            "encodedWidth": 800,
+            "mime": "image/jpeg"
+          },
+          {
+            "slot": 304,
+            "dpr": 2,
+            "currentSrc": "content/img/c/b10-800.1d00a70e.avif",
+            "encodedWidth": 800,
+            "mime": "image/jpeg"
+          },
+          {
+            "slot": 618,
+            "dpr": 2,
+            "currentSrc": "content/img/c/b1-1240.fb812f18.avif",
+            "encodedWidth": 1240,
+            "mime": "image/jpeg"
+          },
+          {
+            "slot": 618,
+            "dpr": 2,
+            "currentSrc": "content/img/c/b10-1240.e4150aca.avif",
+            "encodedWidth": 1240,
+            "mime": "image/jpeg"
+          }
+        ],
+        "modernRequests": 0,
+        "unknownFailed": true,
+        "oldBytes": "9f69ba8670280b93263084ea8c7aca6fbe63f1bf64953079bd3f5c579172f5b9"
+      },
+      {
+        "dpr": 1,
+        "cachedModern": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "evidence": [
+          {
+            "path": "content/img/c/b1-480.1d900909.avif",
+            "width": 480,
+            "height": 308,
+            "status": 200,
+            "mime": "image/jpeg",
+            "hash": "9f69ba8670280b93263084ea8c7aca6fbe63f1bf64953079bd3f5c579172f5b9"
+          },
+          {
+            "path": "content/img/c/b1-480.a67f269b.webp",
+            "width": 480,
+            "height": 308,
+            "status": 200,
+            "mime": "image/jpeg",
+            "hash": "9f69ba8670280b93263084ea8c7aca6fbe63f1bf64953079bd3f5c579172f5b9"
+          },
+          {
+            "path": "content/img/c/b1-480.9f69ba86.jpg",
+            "width": 480,
+            "height": 308,
+            "status": 200,
+            "mime": "image/jpeg",
+            "hash": "9f69ba8670280b93263084ea8c7aca6fbe63f1bf64953079bd3f5c579172f5b9"
+          },
+          {
+            "path": "content/img/c/b1-800.5ff0bcf9.avif",
+            "width": 800,
+            "height": 514,
+            "status": 200,
+            "mime": "image/jpeg",
+            "hash": "77d777545b3e3b42b313e2f303e10c7c9ba7baca02e91f17883ba499cd861c68"
+          },
+          {
+            "path": "content/img/c/b1-800.5677db10.webp",
+            "width": 800,
+            "height": 514,
+            "status": 200,
+            "mime": "image/jpeg",
+            "hash": "77d777545b3e3b42b313e2f303e10c7c9ba7baca02e91f17883ba499cd861c68"
+          },
+          {
+            "path": "content/img/c/b1-800.77d77754.jpg",
+            "width": 800,
+            "height": 514,
+            "status": 200,
+            "mime": "image/jpeg",
+            "hash": "77d777545b3e3b42b313e2f303e10c7c9ba7baca02e91f17883ba499cd861c68"
+          },
+          {
+            "path": "content/img/c/b1-1240.fb812f18.avif",
+            "width": 1240,
+            "height": 796,
+            "status": 200,
+            "mime": "image/jpeg",
+            "hash": "f85a75ae7d76984b78e4f96d931d37f1170d32056e82c1eb682f099b20ff6e68"
+          },
+          {
+            "path": "content/img/c/b1-1240.36b06b63.webp",
+            "width": 1240,
+            "height": 796,
+            "status": 200,
+            "mime": "image/jpeg",
+            "hash": "f85a75ae7d76984b78e4f96d931d37f1170d32056e82c1eb682f099b20ff6e68"
+          },
+          {
+            "path": "content/img/c/b1-1240.f85a75ae.jpg",
+            "width": 1240,
+            "height": 796,
+            "status": 200,
+            "mime": "image/jpeg",
+            "hash": "f85a75ae7d76984b78e4f96d931d37f1170d32056e82c1eb682f099b20ff6e68"
+          },
+          {
+            "path": "content/img/c/b10-480.f43dc029.avif",
+            "width": 480,
+            "height": 243,
+            "status": 200,
+            "mime": "image/jpeg",
+            "hash": "71977cb85c53672e8f2199f917f71660eef62515bb52306de81cfb9101538194"
+          },
+          {
+            "path": "content/img/c/b10-480.080c3332.webp",
+            "width": 480,
+            "height": 243,
+            "status": 200,
+            "mime": "image/jpeg",
+            "hash": "71977cb85c53672e8f2199f917f71660eef62515bb52306de81cfb9101538194"
+          },
+          {
+            "path": "content/img/c/b10-480.71977cb8.jpg",
+            "width": 480,
+            "height": 243,
+            "status": 200,
+            "mime": "image/jpeg",
+            "hash": "71977cb85c53672e8f2199f917f71660eef62515bb52306de81cfb9101538194"
+          },
+          {
+            "path": "content/img/c/b10-800.1d00a70e.avif",
+            "width": 800,
+            "height": 404,
+            "status": 200,
+            "mime": "image/jpeg",
+            "hash": "e834b4fa5ff97f0ca35414940413afb7b68153a8d9d67bae5d4ff10f4b2f4f3e"
+          },
+          {
+            "path": "content/img/c/b10-800.e6ca549d.webp",
+            "width": 800,
+            "height": 404,
+            "status": 200,
+            "mime": "image/jpeg",
+            "hash": "e834b4fa5ff97f0ca35414940413afb7b68153a8d9d67bae5d4ff10f4b2f4f3e"
+          },
+          {
+            "path": "content/img/c/b10-800.e834b4fa.jpg",
+            "width": 800,
+            "height": 404,
+            "status": 200,
+            "mime": "image/jpeg",
+            "hash": "e834b4fa5ff97f0ca35414940413afb7b68153a8d9d67bae5d4ff10f4b2f4f3e"
+          },
+          {
+            "path": "content/img/c/b10-1240.e4150aca.avif",
+            "width": 1240,
+            "height": 627,
+            "status": 200,
+            "mime": "image/jpeg",
+            "hash": "5f90d7061cf467c5f2359326e5ad05e380b866a6a1ea4e5a1bb18a135bbf5bfa"
+          },
+          {
+            "path": "content/img/c/b10-1240.c4d2cd7a.webp",
+            "width": 1240,
+            "height": 627,
+            "status": 200,
+            "mime": "image/jpeg",
+            "hash": "5f90d7061cf467c5f2359326e5ad05e380b866a6a1ea4e5a1bb18a135bbf5bfa"
+          },
+          {
+            "path": "content/img/c/b10-1240.5f90d706.jpg",
+            "width": 1240,
+            "height": 627,
+            "status": 200,
+            "mime": "image/jpeg",
+            "hash": "5f90d7061cf467c5f2359326e5ad05e380b866a6a1ea4e5a1bb18a135bbf5bfa"
+          }
+        ],
+        "responsive": [
+          {
+            "slot": 304,
+            "dpr": 1,
+            "currentSrc": "content/img/c/b1-480.1d900909.avif",
+            "encodedWidth": 480,
+            "mime": "image/jpeg"
+          },
+          {
+            "slot": 304,
+            "dpr": 1,
+            "currentSrc": "content/img/c/b10-480.f43dc029.avif",
+            "encodedWidth": 480,
+            "mime": "image/jpeg"
+          },
+          {
+            "slot": 618,
+            "dpr": 1,
+            "currentSrc": "content/img/c/b1-800.5ff0bcf9.avif",
+            "encodedWidth": 800,
+            "mime": "image/jpeg"
+          },
+          {
+            "slot": 618,
+            "dpr": 1,
+            "currentSrc": "content/img/c/b10-800.1d00a70e.avif",
+            "encodedWidth": 800,
+            "mime": "image/jpeg"
+          }
+        ],
+        "modernRequests": 0,
+        "unknownFailed": true,
+        "oldBytes": "9f69ba8670280b93263084ea8c7aca6fbe63f1bf64953079bd3f5c579172f5b9"
+      },
+      {
+        "dpr": 2,
+        "cachedModern": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "evidence": [
+          {
+            "path": "content/img/c/b1-480.1d900909.avif",
+            "width": 480,
+            "height": 308,
+            "status": 200,
+            "mime": "image/jpeg",
+            "hash": "9f69ba8670280b93263084ea8c7aca6fbe63f1bf64953079bd3f5c579172f5b9"
+          },
+          {
+            "path": "content/img/c/b1-480.a67f269b.webp",
+            "width": 480,
+            "height": 308,
+            "status": 200,
+            "mime": "image/jpeg",
+            "hash": "9f69ba8670280b93263084ea8c7aca6fbe63f1bf64953079bd3f5c579172f5b9"
+          },
+          {
+            "path": "content/img/c/b1-480.9f69ba86.jpg",
+            "width": 480,
+            "height": 308,
+            "status": 200,
+            "mime": "image/jpeg",
+            "hash": "9f69ba8670280b93263084ea8c7aca6fbe63f1bf64953079bd3f5c579172f5b9"
+          },
+          {
+            "path": "content/img/c/b1-800.5ff0bcf9.avif",
+            "width": 800,
+            "height": 514,
+            "status": 200,
+            "mime": "image/jpeg",
+            "hash": "77d777545b3e3b42b313e2f303e10c7c9ba7baca02e91f17883ba499cd861c68"
+          },
+          {
+            "path": "content/img/c/b1-800.5677db10.webp",
+            "width": 800,
+            "height": 514,
+            "status": 200,
+            "mime": "image/jpeg",
+            "hash": "77d777545b3e3b42b313e2f303e10c7c9ba7baca02e91f17883ba499cd861c68"
+          },
+          {
+            "path": "content/img/c/b1-800.77d77754.jpg",
+            "width": 800,
+            "height": 514,
+            "status": 200,
+            "mime": "image/jpeg",
+            "hash": "77d777545b3e3b42b313e2f303e10c7c9ba7baca02e91f17883ba499cd861c68"
+          },
+          {
+            "path": "content/img/c/b1-1240.fb812f18.avif",
+            "width": 1240,
+            "height": 796,
+            "status": 200,
+            "mime": "image/jpeg",
+            "hash": "f85a75ae7d76984b78e4f96d931d37f1170d32056e82c1eb682f099b20ff6e68"
+          },
+          {
+            "path": "content/img/c/b1-1240.36b06b63.webp",
+            "width": 1240,
+            "height": 796,
+            "status": 200,
+            "mime": "image/jpeg",
+            "hash": "f85a75ae7d76984b78e4f96d931d37f1170d32056e82c1eb682f099b20ff6e68"
+          },
+          {
+            "path": "content/img/c/b1-1240.f85a75ae.jpg",
+            "width": 1240,
+            "height": 796,
+            "status": 200,
+            "mime": "image/jpeg",
+            "hash": "f85a75ae7d76984b78e4f96d931d37f1170d32056e82c1eb682f099b20ff6e68"
+          },
+          {
+            "path": "content/img/c/b10-480.f43dc029.avif",
+            "width": 480,
+            "height": 243,
+            "status": 200,
+            "mime": "image/jpeg",
+            "hash": "71977cb85c53672e8f2199f917f71660eef62515bb52306de81cfb9101538194"
+          },
+          {
+            "path": "content/img/c/b10-480.080c3332.webp",
+            "width": 480,
+            "height": 243,
+            "status": 200,
+            "mime": "image/jpeg",
+            "hash": "71977cb85c53672e8f2199f917f71660eef62515bb52306de81cfb9101538194"
+          },
+          {
+            "path": "content/img/c/b10-480.71977cb8.jpg",
+            "width": 480,
+            "height": 243,
+            "status": 200,
+            "mime": "image/jpeg",
+            "hash": "71977cb85c53672e8f2199f917f71660eef62515bb52306de81cfb9101538194"
+          },
+          {
+            "path": "content/img/c/b10-800.1d00a70e.avif",
+            "width": 800,
+            "height": 404,
+            "status": 200,
+            "mime": "image/jpeg",
+            "hash": "e834b4fa5ff97f0ca35414940413afb7b68153a8d9d67bae5d4ff10f4b2f4f3e"
+          },
+          {
+            "path": "content/img/c/b10-800.e6ca549d.webp",
+            "width": 800,
+            "height": 404,
+            "status": 200,
+            "mime": "image/jpeg",
+            "hash": "e834b4fa5ff97f0ca35414940413afb7b68153a8d9d67bae5d4ff10f4b2f4f3e"
+          },
+          {
+            "path": "content/img/c/b10-800.e834b4fa.jpg",
+            "width": 800,
+            "height": 404,
+            "status": 200,
+            "mime": "image/jpeg",
+            "hash": "e834b4fa5ff97f0ca35414940413afb7b68153a8d9d67bae5d4ff10f4b2f4f3e"
+          },
+          {
+            "path": "content/img/c/b10-1240.e4150aca.avif",
+            "width": 1240,
+            "height": 627,
+            "status": 200,
+            "mime": "image/jpeg",
+            "hash": "5f90d7061cf467c5f2359326e5ad05e380b866a6a1ea4e5a1bb18a135bbf5bfa"
+          },
+          {
+            "path": "content/img/c/b10-1240.c4d2cd7a.webp",
+            "width": 1240,
+            "height": 627,
+            "status": 200,
+            "mime": "image/jpeg",
+            "hash": "5f90d7061cf467c5f2359326e5ad05e380b866a6a1ea4e5a1bb18a135bbf5bfa"
+          },
+          {
+            "path": "content/img/c/b10-1240.5f90d706.jpg",
+            "width": 1240,
+            "height": 627,
+            "status": 200,
+            "mime": "image/jpeg",
+            "hash": "5f90d7061cf467c5f2359326e5ad05e380b866a6a1ea4e5a1bb18a135bbf5bfa"
+          }
+        ],
+        "responsive": [
+          {
+            "slot": 304,
+            "dpr": 2,
+            "currentSrc": "content/img/c/b1-800.5ff0bcf9.avif",
+            "encodedWidth": 800,
+            "mime": "image/jpeg"
+          },
+          {
+            "slot": 304,
+            "dpr": 2,
+            "currentSrc": "content/img/c/b10-800.1d00a70e.avif",
+            "encodedWidth": 800,
+            "mime": "image/jpeg"
+          },
+          {
+            "slot": 618,
+            "dpr": 2,
+            "currentSrc": "content/img/c/b1-1240.fb812f18.avif",
+            "encodedWidth": 1240,
+            "mime": "image/jpeg"
+          },
+          {
+            "slot": 618,
+            "dpr": 2,
+            "currentSrc": "content/img/c/b10-1240.e4150aca.avif",
+            "encodedWidth": 1240,
+            "mime": "image/jpeg"
+          }
+        ],
+        "modernRequests": 0,
+        "unknownFailed": true,
+        "oldBytes": "9f69ba8670280b93263084ea8c7aca6fbe63f1bf64953079bd3f5c579172f5b9"
+      }
+    ],
+    "coverage": "Real ready install/update/controllerchange, unvisited old/current AVIF/WebP/JPEG width480/800/1240 decode and SHA/MIME; explicit mobile304 and desktop618 slots at DPR1/2. Chromium/mobile profiles both passed."
+  },
+  "followupRegressions": {
+    "materialsCanonicalIdentityAndActualCurrentSrcSha": "both profiles PASS",
+    "httpCacheStableOriginAndAtomicFailure": "six cases PASS; fixture ASSETS-only replacement corrected",
+    "compatibilityFailureRecovery": "Chromium PASS unchanged in focused rerun; mobile duplicate intentionally skipped",
+    "focusedTests": 9,
+    "focusedSkipped": 1,
+    "focusedElapsedMs": 49000,
+    "oldFullPreflight": {
+      "localTestsPassed": 795,
+      "browserPassed": 170,
+      "browserFailed": 9,
+      "browserSkipped": 5,
+      "browserDidNotRun": 2,
+      "isFinalAcceptance": false,
+      "reason": "Run preceded final metadata changes and exact Materials/http-cache fixture repairs; final full preflight still required."
+    }
+  }
+}

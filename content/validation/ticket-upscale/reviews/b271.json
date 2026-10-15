@@ -1,0 +1,25 @@
+{
+  "imageId": "question-image-b271",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b271.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b271.png",
+  "originalSha256": "46e8806667b4785fefbf2bc01edfec1b76479125a3b131d94050a3e5bb6ed3b3",
+  "candidateSha256": "40eb0b472ca1c89da5983b57842afb3685e5123881531558bafc14a35dbe60a6",
+  "reviewer": "Supplemental Review Agent /root/image_review_tail (Codex)",
+  "reviewedAt": "2026-10-13T17:20:36.730359+00:00",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "Tree crown, branching trunk openings and horizontal ground remain above the unchanged PLAZA label; white inset and blue rectangular surround retain their source layout."
+  ],
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b271.jpg",
+    "originalSha256": "46e8806667b4785fefbf2bc01edfec1b76479125a3b131d94050a3e5bb6ed3b3",
+    "masterPath": "content/assets-masters/questions/b271.png",
+    "masterSha256": "40eb0b472ca1c89da5983b57842afb3685e5123881531558bafc14a35dbe60a6",
+    "candidateSha256": "40eb0b472ca1c89da5983b57842afb3685e5123881531558bafc14a35dbe60a6",
+    "inferenceSha256": "ec72b4a71b0e44c464f77663c1ab45fc1fb9301f13fda4a13487acb342fa8427",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

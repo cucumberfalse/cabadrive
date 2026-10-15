@@ -1,0 +1,36 @@
+{
+  "imageId": "question-image-b159",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b159.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b159.png",
+  "originalSha256": "4659d63c0234490d098ab384788d54a4436faaad4f223da8fcbeb1a7e9bd8125",
+  "candidateSha256": "a7a1ea580246c8cba8e10c95a094eaf99b2848c2390992ded9a688a2cee93ff9",
+  "reviewer": "image_review",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "rejected",
+  "observations": [
+    "Enlarged red bus-stop poster replaces multiple fine-text rows and bottom logo with synthetic bars/malformed letters; bus lane stripes retained."
+  ],
+  "rejectionReason": "Enlarged red bus-stop poster replaces multiple fine-text rows and bottom logo with synthetic bars/malformed letters; bus lane stripes retained.",
+  "reviewedAt": "2026-10-13T17:03:49.008160+00:00",
+  "inspectionArtifacts": [
+    "/private/tmp/cabadrive-057-review-b140-b220-b155-b156-b157-b158-b159.png",
+    "/private/tmp/cabadrive-057-review-b140-b220-detail-b159-.155-.205-.16-.36.png"
+  ],
+  "fallbackObservations": [
+    "Fallback retains red bus-shelter poster fine print and the red-car plate at source softness, with the same yellow dashed stop lane."
+  ],
+  "fallbackReviewedAt": "2026-10-13T17:44:15.324Z",
+  "fallbackReviewer": "Implementation Agent (Codex)",
+  "fallbackSha256": "a840059f6adb0e6431fea7e57deb3b6c464839d977449196dc74c8e687c2167d",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b159.jpg",
+    "originalSha256": "4659d63c0234490d098ab384788d54a4436faaad4f223da8fcbeb1a7e9bd8125",
+    "masterPath": "content/assets-masters/questions/b159.png",
+    "masterSha256": "a840059f6adb0e6431fea7e57deb3b6c464839d977449196dc74c8e687c2167d",
+    "candidateSha256": "a7a1ea580246c8cba8e10c95a094eaf99b2848c2390992ded9a688a2cee93ff9",
+    "inferenceSha256": "30e2596b1180ca68e362eda9b408ab3e0302cfa1fcd8771dad0b4e90c928de72",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

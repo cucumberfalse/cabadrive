@@ -1,0 +1,2306 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-15T02:14:47.224151+00:00",
+  "status": "IF033_FOCUSED_FIXTURE_LIFETIME_PASS_CURRENT_HEAD_GATES_RECORDED_SEPARATELY",
+  "overallAcceptance": false,
+  "historicalFocused": {
+    "schemaVersion": 1,
+    "checkedAt": "2026-10-14T03:22:12.872432+00:00",
+    "status": "FOCUSED_LINUX_FULL275_PASS",
+    "overallAcceptance": false,
+    "sourceInputSha256": "bb6f8e8d1cf08776dda9d005e0965df9d09060fe84a6fbc89038a5ede5272206",
+    "nodePid": 27900,
+    "full275OrdinaryBuildExit": 0,
+    "assertion": {
+      "acPower": true,
+      "acquisitionCheckedAt": "2026-10-14T03:07:20Z",
+      "acquisitionObserved": true,
+      "exit": 0,
+      "pid": 27902,
+      "releasedAt": "2026-10-14T03:19:18Z",
+      "seconds": 1800,
+      "startedAt": "2026-10-14T03:07:20Z",
+      "watchedNodePid": 27900
+    },
+    "clone": {
+      "method": "verified independent APFS clone",
+      "files": 8948,
+      "logicalBytes": 1130368304,
+      "matchingCloneIdsOrEmpty": 8948,
+      "unprovenDataBytes": 0,
+      "privateDataBytes": 0,
+      "directories": 264
+    },
+    "temporaryBoundary": {
+      "status": "VITE_TEMP_BOUNDARY_PASS",
+      "capBytes": 16777216,
+      "vmMemoryAvailable": 11676803072,
+      "parentReadonly": true,
+      "packageAndLockWritesRefused": true,
+      "memoryBefore": 50761728,
+      "memoryWithFullTmpfs": 67526656,
+      "swapBefore": 0,
+      "swapWithFullTmpfs": 0,
+      "incrementalMemoryAndSwap": 16764928
+    },
+    "nativeOutputSummary": {
+      "public": {
+        "files": 5623,
+        "allocatedBytes": 290713600,
+        "boundaryProof": {
+          "path": "content/assets/learning/generated/v1/topic-learning-adverse-weather-and-visibility-1.svg",
+          "canonicalSha256": "7ff8a7babe983dc13a414aee88a1ee6bf2a47d8b05b91d197b7214deb78cc4e2",
+          "outputSha256": "7ff8a7babe983dc13a414aee88a1ee6bf2a47d8b05b91d197b7214deb78cc4e2",
+          "mode": 420,
+          "readable": true
+        }
+      },
+      "dist": {
+        "files": 5678,
+        "allocatedBytes": 319700992,
+        "boundaryProof": {
+          "path": "content/assets/learning/generated/v1/topic-learning-adverse-weather-and-visibility-1.svg",
+          "canonicalSha256": "7ff8a7babe983dc13a414aee88a1ee6bf2a47d8b05b91d197b7214deb78cc4e2",
+          "outputSha256": "7ff8a7babe983dc13a414aee88a1ee6bf2a47d8b05b91d197b7214deb78cc4e2",
+          "mode": 420,
+          "readable": true
+        }
+      }
+    },
+    "minimumHostFreeBytes": 6130753536,
+    "actualAllocatedProofBytes": 25362432,
+    "chargedProofBytesIncludingMetadata": 25886720,
+    "exactCreatorTeardown": true,
+    "protectedSourceUnchanged": true,
+    "receiptSha256": "97e513563feb5daeaccbae33d2a7249bc0ebb8e8b8bf2df3fd7864dd4f0397f4",
+    "priorFailuresRetained": [
+      "IF015 original generated payload SyntaxError",
+      "IF015 copied SVG EACCES after full275",
+      "IF016 diagnostic complete/build-appEXIT1 with actual fakeowner ownership-view discrepancy"
+    ],
+    "remaining": "New frozen production/negative/two-release/runtime/defaultstager acceptance, corrected Compose/recovery and current full host preflight are pending; focused result is not aggregate acceptance."
+  },
+  "sourceInputSha256": "413f4d612a610b8152b1e5af4e759481e20b89253ff6619b73416a72c329a132",
+  "sourceFiles": 8949,
+  "sourceLogicalBytes": 1130371871,
+  "functionalPhases": [
+    "production",
+    "negative",
+    "two-releases",
+    "runtime",
+    "exact-creator-teardown"
+  ],
+  "phaseChain": [
+    {
+      "phase": "production",
+      "receiptSha256": "36912e624a08b9c2fda249868e7075de78aa0142aa09f242ed6f2b0914b9c968",
+      "exit": 0,
+      "actualPhasePredicate": true,
+      "driverStatus": "PARTIAL",
+      "overallAcceptance": false,
+      "assertion": {
+        "acPower": true,
+        "acquisitionCheckedAt": "2026-10-14T03:36:40Z",
+        "acquisitionObserved": true,
+        "exit": 0,
+        "pid": 30181,
+        "releasedAt": "2026-10-14T03:49:13Z",
+        "seconds": 1800,
+        "startedAt": "2026-10-14T03:36:40Z",
+        "watchedNodePid": 30179
+      },
+      "chargedProofBytes": 6287360
+    },
+    {
+      "phase": "negative",
+      "receiptSha256": "81a04f1c957c37c81ed246f6e69aae4a48407564be63da624c6379faf40325ab",
+      "exit": 0,
+      "actualPhasePredicate": true,
+      "driverStatus": "PARTIAL",
+      "overallAcceptance": false,
+      "assertion": {
+        "acPower": true,
+        "acquisitionCheckedAt": "2026-10-14T04:35:47Z",
+        "acquisitionObserved": true,
+        "exit": 0,
+        "pid": 33415,
+        "releasedAt": "2026-10-14T04:36:52Z",
+        "seconds": 600,
+        "startedAt": "2026-10-14T04:35:47Z",
+        "watchedNodePid": 33413
+      },
+      "chargedProofBytes": 8118272
+    },
+    {
+      "phase": "releases",
+      "receiptSha256": "f45292a325c5334c1f395f3b91698be8b2011d57a164871a965c420c7ce104e6",
+      "exit": 0,
+      "actualPhasePredicate": true,
+      "driverStatus": "PASS",
+      "overallAcceptance": false,
+      "assertion": {
+        "acPower": true,
+        "acquisitionCheckedAt": "2026-10-14T04:48:43Z",
+        "acquisitionObserved": true,
+        "exit": 0,
+        "pid": 34164,
+        "releasedAt": "2026-10-14T05:47:00Z",
+        "seconds": 5400,
+        "startedAt": "2026-10-14T04:48:43Z",
+        "watchedNodePid": 34162
+      },
+      "chargedProofBytes": 47288320
+    }
+  ],
+  "productionSources": 275,
+  "productionDerivatives": 3321,
+  "productionNativeSampleCount": 167,
+  "collectorSha256": "14f140c43e77edfad3c60aa5d96b3451f3668360d74e931ed57238f761b07da2",
+  "releasesLogSha256": "2a511edaad6d7b08149a831c8ba733b94650a0d4868641ae51359f7fe8701d09",
+  "driverSummarySha256": "799d934de3aca126754df26e68c637d9a03a7da091602075211b30c24953755f",
+  "proofAccounting": {
+    "chargedAllocatedBytesIncludingMetadataAllowance": 47288320,
+    "maximumBytes": 134217728,
+    "carriedPriorLogsAndReceipts": "All four production/negative log and receipt files remain present with verified immutable SHA. currentlyPresent:false in the final collector is a not-resampled carried-record flag, not proof of absence.",
+    "removedNamedCheckpointProofs": "Creator context, checkpoint, lock and seal were actually removed by exact finally; their observed peak allocations remain charged."
+  },
+  "preservation": {
+    "recordedAt": "2026-10-14T05:50:13.572005+00:00",
+    "status": "TARGETED_PRESERVATION_RECONCILED_RESOURCE_HOLD",
+    "snapshotCapturedAt": "2026-10-14T05:48:02.702725+00:00",
+    "originalHoldSha256": "5aba5b1abcbbed3ad0a70effe920480182a9d7be6614a8461f084e55b7e1e4ce",
+    "privateSnapshotSha256": "f979294b3e4472e58ad180cc27e80ae9946e86f8814ae4f5972e8d98864d48ec",
+    "disposition": "Root relayed Architect exact sixth cache telemetry disposition after actual runtime cached COPY. Only exact delta below is admitted; original HOLD remains immutable.",
+    "fullTypedChecks": {
+      "containers": {
+        "before": 9,
+        "current": 9,
+        "fullTypedExact": true
+      },
+      "images": {
+        "before": 71,
+        "current": 71,
+        "fullTypedExact": true
+      },
+      "volumes": {
+        "before": 49,
+        "current": 49,
+        "fullTypedExact": true
+      },
+      "networks": {
+        "before": 6,
+        "current": 6,
+        "fullTypedExact": true
+      }
+    },
+    "original76RawFullExact": true,
+    "baseline413Present": true,
+    "allSevenSharedRestored": true,
+    "rawSharedSizeRestored": true,
+    "creatorResourcesAbsent": true,
+    "sourceInputSha256": "413f4d612a610b8152b1e5af4e759481e20b89253ff6619b73416a72c329a132",
+    "sourceFiles": 8949,
+    "sourceBytes": 1130371871,
+    "resourceReserveSatisfied": false,
+    "resourceMinimumHostFree": 852582400,
+    "resourceAttribution": "unproved; raw minimum timestamp unavailable",
+    "nextHeavyExecutionAllowed": false
+  },
+  "exactTelemetryReconciliation": {
+    "cacheId": "equg8yxku6qreoczaxuux10nr",
+    "delta": {
+      "UsageCount": {
+        "before": 1,
+        "current": 2
+      },
+      "LastUsedAt": {
+        "before": "2026-10-13T18:55:13.563438176Z",
+        "current": "2026-10-14T05:23:31.640753042Z"
+      }
+    },
+    "description": "[runtime 2/2] COPY nginx.conf /etc/nginx/conf.d/default.conf",
+    "runtimeBuildRef": "brwfuzb1lvleaang16o161o1v",
+    "runtimeBuildStart": "2026-10-14T05:23:30.971Z",
+    "runtimeBuildEnd": "2026-10-14T05:23:31.936Z",
+    "step": "#6 [runtime 2/2] COPY nginx.conf /etc/nginx/conf.d/default.conf; #6 CACHED",
+    "allOtherFieldsTypedExact": true
+  },
+  "preservationEvidenceSha256": "1aaa9c920c80557d8c0dfedff4256dcc1309c5781f404f27b2cea9f3c696e492",
+  "originalPreservationHoldSha256": "5aba5b1abcbbed3ad0a70effe920480182a9d7be6614a8461f084e55b7e1e4ce",
+  "resourceObservation": {
+    "status": "HISTORICAL_RESERVE_BREACH_NEXT_HEAVY_HOLD",
+    "beforeHostFreeBytes": 5065420800,
+    "minimumHostFreeBytes": 852582400,
+    "afterHostFreeBytes": 4278743040,
+    "observedWholeFilesystemDrawBytes": 4212838400,
+    "requiredReserveBytes": 2147483648,
+    "historicalHostForecastGiB": 2.66,
+    "continuousReserveSatisfied": false,
+    "minimumTimestamp": null,
+    "attribution": "Unproved. Only aggregate minimum retained; variable collector loop cadence and stage samples do not locate or explain the minimum.",
+    "historicalFunctionalProofInvalidated": false
+  },
+  "remaining": "IF033 focused full-module wrapper result is complete; independent changed-vector Review and Architect semantic disposition are recorded separately before meaningful C4 publication. C4 requires its own complete current baseline/Docker/native/all-five checks before ordered Architect FIRST then Analyst on the identical frozen head. Append-only D retains its own gates/evidence-only guard/expected-head finalizer before merge. No future head, final-role or merge acceptance is claimed.",
+  "currentWholeHost": {
+    "at": "2026-10-14T08:17:16.278805+00:00",
+    "status": "CURRENT_WHOLE_HOST_PASS",
+    "unit": {
+      "total": 830,
+      "passed": 830,
+      "failed": 0,
+      "cancelled": 0
+    },
+    "browser": {
+      "passed": 181,
+      "intentionalSkipped": 5,
+      "failed": 0
+    },
+    "ordinaryBuildPassed": true,
+    "e2eOwnBuildPassed": true,
+    "allNineStages": [
+      {
+        "commandSha256": "68b0a778d73e9fcc16f68df38dfc30c37990aa413ecff8da202e0afae0179462",
+        "completedAt": "2026-10-14T07:00:24.557980+00:00",
+        "exit": 0,
+        "pid": 58228,
+        "stage": "node scripts/check-feature-memory.mjs --worktree",
+        "startedAt": "2026-10-14T07:00:24.462568+00:00"
+      },
+      {
+        "commandSha256": "4479172d5f2498d435374558f523fb4dfe9a8d942b6c0e3dffd8087f8468f571",
+        "completedAt": "2026-10-14T07:00:24.909341+00:00",
+        "exit": 0,
+        "pid": 58243,
+        "stage": "pnpm run check:repo",
+        "startedAt": "2026-10-14T07:00:24.602470+00:00"
+      },
+      {
+        "commandSha256": "31b00d969e7f7e69f314ad0700124de9917129fb8c0c7b51300319855549a530",
+        "completedAt": "2026-10-14T07:07:42.007145+00:00",
+        "exit": 0,
+        "pid": 58262,
+        "stage": "pnpm run validate:content",
+        "startedAt": "2026-10-14T07:00:24.953949+00:00"
+      },
+      {
+        "commandSha256": "31020d2943546d18d7ee4e2d23fb6cd70a43bac995185ff7866b6cc8532ca44a",
+        "completedAt": "2026-10-14T07:07:57.737752+00:00",
+        "exit": 0,
+        "pid": 63280,
+        "stage": "pnpm run quality:fast",
+        "startedAt": "2026-10-14T07:07:42.049896+00:00"
+      },
+      {
+        "commandSha256": "ddc7a4dcf9ad55ecaa79728ef07640f96b0bfd73e36fee8717f318ae5a74f194",
+        "completedAt": "2026-10-14T07:08:01.676143+00:00",
+        "exit": 0,
+        "pid": 63373,
+        "stage": "pnpm run format:check",
+        "startedAt": "2026-10-14T07:07:57.781495+00:00"
+      },
+      {
+        "commandSha256": "b2ac88276f6b66b794ea1b562d2c32aa20794f6dd836c49cfde17947299cf9aa",
+        "completedAt": "2026-10-14T07:08:16.385863+00:00",
+        "exit": 0,
+        "pid": 63405,
+        "stage": "pnpm run verify:quality-negative",
+        "startedAt": "2026-10-14T07:08:01.719570+00:00"
+      },
+      {
+        "commandSha256": "7f29efdf164d3e08e71425bf641d8037e78ac1a1e68dec2ca5fe148f59b6ddbe",
+        "completedAt": "2026-10-14T07:14:13.765885+00:00",
+        "exit": 0,
+        "pid": 63557,
+        "stage": "pnpm run test",
+        "startedAt": "2026-10-14T07:08:16.428967+00:00"
+      },
+      {
+        "commandSha256": "966135decc77ff982e11a981aa0c3de120b576039b4d3f603ec0ad766ebf6ce2",
+        "completedAt": "2026-10-14T07:21:48.497953+00:00",
+        "exit": 0,
+        "pid": 76375,
+        "stage": "pnpm run build",
+        "startedAt": "2026-10-14T07:14:13.810594+00:00"
+      },
+      {
+        "commandSha256": "fa386925dfd3099f9070b6d08c53b470aec664af7a80347587ca8401c12c2c2f",
+        "completedAt": "2026-10-14T07:31:38.821975+00:00",
+        "exit": 0,
+        "pid": 81470,
+        "stage": "pnpm run test:e2e",
+        "startedAt": "2026-10-14T07:21:48.540257+00:00"
+      }
+    ],
+    "receipt": {
+      "path": "/private/tmp/cabadrive-057-reserve-observer-yzsjt5c1/receipt.json",
+      "sha256": "c101762dd56e8a0d8edc77a9c2a7f20d205d4ad64d2fab931d3d5bc88496eaf6",
+      "bytes": 3371
+    },
+    "log": {
+      "path": "/private/tmp/cabadrive-057-reserve-observer-yzsjt5c1/stdout-stderr.log",
+      "sha256": "76556a13f1697dba539f7dae5677cdeced21720081137433d0c68d5185dfae59",
+      "bytes": 233189
+    },
+    "assertionRelease": {
+      "path": "/private/tmp/cabadrive-057-reserve-observer-yzsjt5c1/assertion-release.json",
+      "sha256": "c1ba0312c748a2c3a6029d6e27b6021f305c8d6314fc26df718f4ab1ddedb876",
+      "bytes": 387
+    },
+    "postInput": {
+      "path": "/Users/kristina.kurashova/projects/caba-drive/cabadrive/.claude/worktrees/ticket-photo-quality/.cache/image-qa/ticket-upscale/if020-host-post-input-proof.json",
+      "sha256": "a96b9e89b209e710a7b1f05e5a525640ac468bc0e20d8a6fdf250b9fdabc1623",
+      "bytes": 569
+    },
+    "callerUmask": "0o22",
+    "minimumHostFree": {
+      "at": "2026-10-14T07:30:21.854795+00:00",
+      "availableBlocks": 1538897,
+      "blockBytes": 4096,
+      "device": 16777232,
+      "filesystemId": 16777232,
+      "freeBytes": 6303322112,
+      "monotonic": 708844.425608375,
+      "path": "/Users/kristina.kurashova/projects/caba-drive/cabadrive/.claude/worktrees/ticket-photo-quality",
+      "stage": "pnpm run test:e2e:running"
+    },
+    "maximumObservedWallGapSeconds": 1.314445,
+    "maximumObservedMonotonicGapSeconds": 1.314464500057511,
+    "wallAnomalies": [],
+    "errors": [],
+    "historicalFailureUnchanged": "Prior 077-inherited observer run remains FAILED; this current pass uses corrected caller022 and retained foreground assertion. No product permission/timeouts changes.",
+    "scope": "Historical complete HOST preflight at input9447c51bfc032d3d9ab28c4b59ea4bef7710b97dc8ab3a7b6e97e0bd7af23eb7. Product/browser/corpus lineage remains unchanged; later IF023/IF024 CI and harness changes require their own focused checks and actual current-head CI. This is not a whole-preflight claim for the later head.",
+    "overallAcceptance": false,
+    "historicalFailedRun": {
+      "status": "HOLD_FAILED",
+      "run": "/private/tmp/cabadrive-057-reserve-observer-fnuk76ak",
+      "unitPassed": 823,
+      "unitFailed": 6,
+      "unitCancelled": 1,
+      "inheritedChildUmask": "077",
+      "sleepWallGapSeconds": 1020.725255966,
+      "unobservedReserveCoverage": true,
+      "productPermissionsOrTimeoutsChanged": false,
+      "replacedByCurrentWholeHost": true
+    }
+  },
+  "oldComposeArtifactVerification": {
+    "status": "PRESERVED_INTACT_UNCOMMITTED_ARTIFACT_VERIFIED",
+    "checkedAt": "2026-10-14T08:25:32.982Z",
+    "readOnly": true,
+    "successfulRecovery": false,
+    "receipt": {
+      "path": "/private/tmp/cabadrive-057-recovery-readonly-14sa9mm7/full-old-artifact-verification.json",
+      "sha256": "6d996469fa6d1cad11901efb711dcd19b1d8d96ce12919170c860047d5dbe392"
+    },
+    "releaseId": "1fe2b1e85e8a76fb2efb2b5fd1bf1b5e388f15173d807e3f2a7684411c553511",
+    "metadata": {
+      "bytes": 1127818,
+      "sha256": "50c4e379de7ca0eb344d5b3f54f6190d0a39bb62bdee66b7051836c15c12ede3",
+      "canonical": "1fe2b1e85e8a76fb2efb2b5fd1bf1b5e388f15173d807e3f2a7684411c553511"
+    },
+    "marker": {
+      "bytes": 196,
+      "sha256": "4409a95a28f4daa277e09b606a359e08c14dd1190db7fdae3708a9192d835a53"
+    },
+    "ledger": {
+      "bytes": 10219,
+      "sha256": "00af90e257bb40d8dac3eb6a66f5bb9103d790a85f0f0b7f5e7ffbebdaf968c0"
+    },
+    "comparison": {
+      "assets": {
+        "expected": 54,
+        "actual": 54,
+        "bytesRead": 28412534,
+        "expectedInventorySha256": "cf7aa47e25f8698c29ef4e1f0967532aabf46086ca8273862cfc625e5c82f6cc",
+        "actualInventorySha256": "cf7aa47e25f8698c29ef4e1f0967532aabf46086ca8273862cfc625e5c82f6cc"
+      },
+      "mutable": {
+        "expected": 5624,
+        "actual": 5624,
+        "bytesRead": 278370330,
+        "expectedInventorySha256": "67e6876b920ceafa168f02ce909918900035d4109b70278090deed7752500174",
+        "actualInventorySha256": "67e6876b920ceafa168f02ce909918900035d4109b70278090deed7752500174"
+      },
+      "ledger": {
+        "expected": 54,
+        "actual": 54,
+        "bytesRead": 28412534,
+        "expectedInventorySha256": "cf7aa47e25f8698c29ef4e1f0967532aabf46086ca8273862cfc625e5c82f6cc",
+        "actualInventorySha256": "cf7aa47e25f8698c29ef4e1f0967532aabf46086ca8273862cfc625e5c82f6cc"
+      }
+    },
+    "allExpectedFileBytesRead": true,
+    "completeExtraMissingInventory": true,
+    "failureCount": 0,
+    "authorityAbsent": true,
+    "publishAndTransactionsEmpty": true,
+    "productionVerify": {
+      "valid": false,
+      "reason": "current pointer is missing"
+    },
+    "aggregateProofAllocatedBytes": 1851392,
+    "proofCapBytes": 2097152,
+    "interpretation": "Intact uncommitted artifact verified; missing current authority remains. Original project make build refusal is correct. No old volume writes, recovery claim or fabricated handoff."
+  },
+  "currentCiDelta": {
+    "checkedAt": "2026-10-14T10:57:53.550156+00:00",
+    "status": "IF027_CURRENT_FOCUSED_CHECKS_AND_REVIEW_PENDING_ACTUAL_DOCKER_CI",
+    "fullCurrentPreflight": false,
+    "productBrowserCorpusLineage": "Product/browser/corpus unchanged from historical whole HOST9447 through A; A actual CI baseline846/181 passed. IF027 observer delta requires focused current checks and a new complete Docker CI; no claim of whole preflight on uncommitted changes.",
+    "focused": {
+      "tests": 15,
+      "passed": 15,
+      "failed": 0,
+      "logSha256": "bc17cb065585644494f87b6b58ec86f82902abfa27d6a51cffc3b81aa628ae5e"
+    },
+    "unitIntegration": {
+      "tests": 845,
+      "passed": 842,
+      "failed": 3,
+      "exit": 1,
+      "logSha256": "d8341aa75642a7984804eeff07cec494d571c60f393ca11e5c3ed8161156ac92",
+      "affectedCorrection": {
+        "tests": 101,
+        "passed": 101,
+        "failed": 0,
+        "exit": 0,
+        "testConcurrency": 1,
+        "permission": "approved local socket and process inspection",
+        "logSha256": "d273e5af0458e9f521e7819acb1e5aa1f43f90e88787127c7e340ab41d4167df",
+        "interpretation": "Affected-file correction, not a new full integration PASS; concurrent sentinel regression separately closes race."
+      },
+      "failureClasses": [
+        "sandbox loopback EPERM",
+        "parallel ephemeral quality sentinel cpSync race",
+        "sandbox Unix socket EPERM"
+      ]
+    },
+    "remoteDockerAcceptance": false,
+    "review": "IF027 changed-vector independent Review pending; prior b55eeee review and sourceA baseline remain historical evidence.",
+    "localDockerHeavy": "not executed; local capacity HOLD retained",
+    "fixtureIsolation": {
+      "tests": 38,
+      "passed": 38,
+      "failed": 0,
+      "exit": 0,
+      "logSha256": "1f2e55c85217195f57699b20fca16a11f1468d8a996a51ac735addd291a3825f",
+      "coverage": "All four actual copied-harness fixtures plus exact disappearing sentinel/all-real-script SHA/near-name/nested-name/missing-real-file checks concurrently with quality-tooling."
+    },
+    "resourceLifecycle": {
+      "tests": 17,
+      "passed": 17,
+      "failed": 0,
+      "exit": 0,
+      "logSha256": "17479e610c57440fc73f8a195675cb6c99c5ffb9e37b0a903ffb88b01f3729b9",
+      "coverage": "Exact group absence including closed-pipe descendant; observed real delayed query/wait, reserve/gap final admission; selector faults drain1MiB finally; one-signal deadline and typed teardown receipt."
+    },
+    "currentReviewVectorSha256": "b55eeee3bb75fb4ab89949f8c541c8c087727a47926c432d9275fdd143551d15",
+    "historicalLocalReview": "Independent Review_tail closed all4P2/no actionable P0-P3 on exact16-path vector b55eeee3bb75fb4ab89949f8c541c8c087727a47926c432d9275fdd143551d15; actual remote CI pending",
+    "if027": {
+      "checkedAt": "2026-10-14T11:00:56.527290+00:00",
+      "status": "FOCUSED_CURRENT_CHECKS_PASS_INDEPENDENT_REVIEW_AND_ACTUAL_CI_PENDING",
+      "pythonCases": 24,
+      "passed": 24,
+      "failed": 0,
+      "exit": 0,
+      "logSha256": "42bbf09c71e9190fac03e41bb5ec5809ed4b4286e0ccee2c93325de6d3abb278",
+      "coverage": "Actual owned-child mock CLI full builder/node/raw listing to explicit matching builder/raw inspect; real separate75-byte stderr failure persisted before HOLD; stderr-warning success; malformed/duplicate/node ambiguity and changed-node refusal; startup unknown closure, timeout, parse,2MiB output cap, four-record/64KiB diagnostics, write/short-write/serialization refusal and original failure retention. Existing exact owned stop/group/drain/finally/resource/selector cases retained.",
+      "queryCombinedLimitBytes": 2097152,
+      "failedRecordLimit": 4,
+      "rawPerRecordLimitBytes": 65536,
+      "rawAggregateLimitBytes": 262144,
+      "totalAllocatedProofLimitBytes": 16777216,
+      "privacy": "Raw bytes remain in exact-owned private0600 runner-local sibling files outside uploaded artifact; safe uploaded metadata includes controlled argv/tuple/lifecycle and lengths/SHA only, explicitly not verbatim diagnostics. Private bytes are charged to the same total proof limit.",
+      "qualityFastExit": 0,
+      "formatCheckExit": 0,
+      "checkRepoExit": 0,
+      "featureMemoryExit": 0,
+      "diffCheckExit": 0,
+      "firstFailures": "Original22-case fixture mistakes (75-byte mock was76; Darwin alias context path) fixed in fixtures. Final sandbox24-case attempt correctly refused ps inspection; preserved failed log, then same24 current cases passed with approved process access. No production assertions weakened.",
+      "privacyDisposition": "Architect confirmed existing IF027 projection: rawRunnerLocal=true, rawUploaded=false, rawAvailableAfterJob=false. Private persistence before HOLD does not imply recoverable post-job diagnostics; unknown cause remains unknown."
+    }
+  },
+  "actualCiA": {
+    "checkedAt": "2026-10-14T10:57:53.550156+00:00",
+    "sourceHead": "e9568adb44a47ff0c1df810e35b9ac934422d90a",
+    "checkoutHead": "ed831501e82873d729376862bb07c2b4435ed7a4",
+    "runUrl": "https://github.com/cucumberfalse/cabadrive/actions/runs/38546916029",
+    "baseline": {
+      "jobUrl": "https://github.com/cucumberfalse/cabadrive/actions/runs/38546916029/job/115795126706",
+      "conclusion": "success",
+      "unitTests": 846,
+      "unitPassed": 846,
+      "unitFailed": 0,
+      "browserPassed": 181,
+      "browserIntentionalSkipped": 5,
+      "ordinaryBuild": "PASS",
+      "e2eServerBuild": "PASS",
+      "quality": "PASS",
+      "logBytes": 632905,
+      "logSha256": "d01992f28f16b06dda49ab72313493869975a632b38bfc926fcd344f49c95e86"
+    },
+    "docker": {
+      "jobUrl": "https://github.com/cucumberfalse/cabadrive/actions/runs/38546916029/job/115795126917",
+      "conclusion": "failure",
+      "status": "PARTIAL_BUILD_SUCCESS_OBSERVER_HOLD",
+      "makeBuildExit": 0,
+      "buildxVersion": "v0.37.2",
+      "queryExit": 1,
+      "queryStdoutBytes": 0,
+      "queryStderrBytes": 75,
+      "queryErrors": [],
+      "actualQueryMessage": "not retained; exact historical cause unproven",
+      "daemonClosure": "unknown",
+      "teardownSafe": false,
+      "makeDownExit": null,
+      "remainingProductionRetryAndFivePhaseAcceptanceReached": false,
+      "minimumHostFreeBytes": 81913581568,
+      "minimumBackingFreeBytes": 81913581568,
+      "maximumWallSampleGapSeconds": 1.0985479354858398,
+      "allocatedProofBytes": 983040,
+      "artifactId": 11886176666,
+      "artifactZipBytes": 70692,
+      "artifactZipSha256": "2e23c5fcd4fcc830d2da29d830abe252c557fc172d35d76d6dcf2beebd0fecac",
+      "receiptSha256": "fb401d11ed0d4b1766a658752962c5b6344eb51310736fca875e07dc233881e0",
+      "commandsSha256": "f95c421e7183874322cefe87a52e5709abef8e613702539ead32e995038d1fd8",
+      "samplesSha256": "3fdfd17cc6465a66c4a7e6d105d1b100fdce5d51a3e0c50c8ab5290f8a23bd78"
+    },
+    "overallDockerAcceptance": false,
+    "interpretation": "Actual A baseline passed on its measured merge checkout. Docker product build completed; observer inspection failure blocked all remaining acceptance and teardown. Original failed artifact is preserved. IF027 correction and a separately admitted complete new CI remain pending; no partial resume or local Docker execution."
+  },
+  "actualCiB": {
+    "checkedAt": "2026-10-14T13:46:57.588738+00:00",
+    "sourceHead": "ef4f7808488a1c5675413f3505803b04d9832e42",
+    "checkoutHead": "0def9e557950a7002ac7aeeb87ccb4ada5f915d9",
+    "checkoutParents": [
+      "3beb624c0c7c615ab7159fdd3227f74f790df29f",
+      "ef4f7808488a1c5675413f3505803b04d9832e42"
+    ],
+    "runUrl": "https://github.com/cucumberfalse/cabadrive/actions/runs/38554334881",
+    "baseline": {
+      "jobId": 115819613998,
+      "conclusion": "success",
+      "unitTests": 846,
+      "unitPassed": 846,
+      "unitFailed": 0,
+      "browserPassed": 181,
+      "browserIntentionalSkipped": 5,
+      "quality": "PASS",
+      "ordinaryBuild": "PASS",
+      "e2eServerBuild": "PASS",
+      "logBytes": 418273,
+      "logSha256": "f5bc5a598d38127d501d3a00d5015fb530767659ba40a8eed854b1aceda4c3b1"
+    },
+    "docker": {
+      "jobId": 115819614276,
+      "conclusion": "failure",
+      "status": "PRODUCTION_RETRY_PASS_RETENTION_FAILED_REMAINING_PHASES_UNRUN",
+      "receiptSha256": "3650c8f5214520a98a04bc59cb900f6ae582b445777b6e5f6e030a28091cf124",
+      "commandsSha256": "5110cf8841e359df2b3d821beb2e08e37cf74111fb0fe9dc02b4112329e999bf",
+      "productionProofSha256": "c3818de6d7bd28a95e4c39e1881c8cb4af309231fbd8dad73e07fc6d72c599a9",
+      "artifactZipSha256": "d4764a4acb851673fe5e4a4015a7e7f0581cdd9b48e7f9493d316bf56b9d90eb",
+      "jobLogSha256": "b0a9c32f572d4f7136af9ebb18eaf8de3c7dbb9e421b62f2a045bf8699d6faf7",
+      "completedPriorCommands": [
+        "install",
+        "browser",
+        "make build",
+        "make up",
+        "smoke",
+        "production-retry"
+      ],
+      "productionMetadataBytes": 1127818,
+      "productionReleaseId": "4d8b57b1686eba42c33c466409b531958a8001cfe6cdfc1fc4cad0b0b0a70e37",
+      "sameFullTupleAndInventories": true,
+      "ordinaryMakeStageExit": 0,
+      "httpAssertionsBefore": 9,
+      "httpAssertionsAfter": 9,
+      "retentionExit": 1,
+      "failure": "retirement journal exceeds the authority size limit: /state/publish-retirement.json",
+      "failedJournalSerializedBytes": null,
+      "unrun": [
+        "image-pipeline",
+        "headers"
+      ],
+      "clientsGroupsPipesAndAttributedTasksClosed": true,
+      "makeDownExit": 0,
+      "teardownSafe": true,
+      "independentPostDownFullResourceInventory": false,
+      "resourceSamples": 9314,
+      "minimumDiskFreeBytes": 81295114240,
+      "minimumMemAvailableBytes": 13812273152,
+      "swapUsedBytes": 0,
+      "maximumWallSampleGapSeconds": 1.2456178665161133,
+      "allocatedProofBytes": 5615616,
+      "proofLimitBytes": 16777216
+    },
+    "overallDockerAcceptance": false,
+    "interpretation": "Actual B production publication and ordinary same-release retry passed. Retention failed at the typed retirement journal read; its byte count was not captured. Full image-pipeline and headers remain unrun; no full Docker acceptance or old-state recovery is claimed. Original A/B failures remain immutable."
+  },
+  "if028": {
+    "status": "AFFECTED_PREDICATES_COVERED_SERIAL_QUALITY_MEMORY_HOLD",
+    "candidateRetirementCapBytes": 2097152,
+    "genericAuthorityCapBytes": 1048576,
+    "releaseMetadataCapBytes": 2097152,
+    "publishPendingCapBytes": 8388608,
+    "genuineCompleteJournalMeasurement": {
+      "serializedUtf8BytesIncludingNewline": 1306870,
+      "capBytes": 2097152,
+      "headroomBytes": 790282,
+      "entries": 5607,
+      "regularFiles": 5603,
+      "sha256": "3deea1cd031c122efeeb0edfb60bcd661206deaaf95b698d984a7a1f91d0c3fc",
+      "source": "actual production publisher over two complete 5600-file generations, retaining all schema2 identities, paths, lineage and hashes; no padding in positive journal",
+      "repeatedActualSha256": "a85350b4dd33edc71689e483ae14f8df6b172d1d12e53c830059d9502d9abd0c"
+    },
+    "fullNewCiRequired": true,
+    "localDockerExecuted": false,
+    "finalRolesInvoked": false,
+    "initialFocused": {
+      "tapPassed": 2,
+      "tapFailed": 0,
+      "nameFilterSkipped": 26,
+      "tapDurationMs": 957716.810458,
+      "outerTimeWrapperExit": 1,
+      "outerTimeWrapperError": "post-TAP sysctl kern.clockrate: Operation not permitted",
+      "actualNodeExitIndependentlyRecorded": false,
+      "maximumRssBytes": null,
+      "minimumObservedHostFreeBytes": 5066559488,
+      "logSha256": "bc4a12905351553b431c2cdb1aff7fd1eee572ccb98ee125693aa08ff4406acc",
+      "interpretation": "TAP predicates passed; outer measurement wrapper failed. No unqualified command-exit or RSS claim."
+    },
+    "affectedValidation": {
+      "status": "DIRECT_NODE_EXIT1_SANDBOX_UNIX_SOCKET_REFUSAL",
+      "startedAt": "2026-10-14T14:18:31.030596+00:00",
+      "testConcurrency": 1,
+      "maxOldSpaceMiB": 128,
+      "suiteFiles": [
+        "completion-retention-safety",
+        "descriptor-static-release-safety",
+        "created-tree-static-release-safety",
+        "static-release-staging"
+      ],
+      "fixtureForecastBytes": 419430400,
+      "proofBudgetBytes": 33554432,
+      "diskReserveBytes": 2147483648,
+      "endedAt": "2026-10-14T14:39:46.493554+00:00",
+      "exit": 1,
+      "tests": 136,
+      "passed": 135,
+      "failed": 1,
+      "skipped": 0,
+      "logSha256": "240bdd6d67b9a334abef482b05352499b0d18554651df3ec17b15cfddcc5e4d6",
+      "minimumObservedHostFreeBytes": 4788006912,
+      "firstObservedHostFreeBytes": 5278478336,
+      "observedWholeFilesystemDeclineBytes": 490471424,
+      "sampleCount": 636,
+      "maximumWallSampleGapSeconds": 2.021237,
+      "ownedAllocationPeakBytes": null,
+      "resourceInterpretation": "All observed free space exceeds2GiB reserve. Whole-filesystem decline exceeds the432MiB fixture/proof forecast; foreign contribution and owned peak are unknown, so no forecast-accuracy pass is claimed.",
+      "unixSocketCorrection": {
+        "exit": 0,
+        "passed": 1,
+        "failed": 0,
+        "nameFilterSkipped": 81,
+        "logSha256": "140e5047a9e7a131c2041f1575909bedc478494b0ae52b9d2524f0680235cc00",
+        "interpretation": "Exact unchanged failed authority-reader case rerun with Root-approved socket sandbox permission; original136-case exit1 retained."
+      }
+    },
+    "currentChecks": {
+      "serialTypecheck": {
+        "status": "FAILED_EXPLICIT_256MIB_HEAP_LIMIT",
+        "exit": -6,
+        "logSha256": "fa5212afdc77369695071132c762af1d75766f9aa9b991c404c29bf6797e04f7",
+        "typescriptDiagnostic": false
+      },
+      "lint": "NOT_RUN_MEMORY_ADMISSION_HOLD",
+      "format": {
+        "exit": 0,
+        "logSha256": "17aa973d3f004560237d9a95171210b0671deff23d61628eecf7322ff5938f20"
+      },
+      "repo": {
+        "exit": 0,
+        "logSha256": "30684ab426dfca0e6bb423671ddd65ef4e1317c5a60483c23074a87a9f83d8db"
+      },
+      "featureMemory": {
+        "exit": 0,
+        "logSha256": "12851de6a12fbbcb62491d00c22028916b77d25a0677b3a1faf257c124a51dff"
+      },
+      "largerHeapRetryAdmission": {
+        "status": "HOLD",
+        "requiredMemoryBytes": 738197504,
+        "nativeFreeBytes": 109838336,
+        "cliFreeAndSpeculativeBytes": 108609536,
+        "hostFreeBytes": 5187481600,
+        "pressureLevel": 1,
+        "swapUsedBytes": 423362560,
+        "admissionSha256": "bb2f9659c22d1c4558510512b57d59d936c0ebaa710e9d84be19a0edfb563f13",
+        "typecheck512Executed": false,
+        "lintExecuted": false,
+        "interpretation": "One fresh Root-authorized admission refused the 704 MiB serial workload. No repeated memory sampling or heap retry followed."
+      }
+    },
+    "independentReview": {
+      "status": "SCOPED_CODE_AND_ACTUAL_LOG_REVIEW_CLOSED",
+      "stageSha256": "586ceed126b98cd0a49e3a7ae1a2f20be3acf9599823b6a1ee313f1e5d4d3f26",
+      "testSha256": "d72c206cd6c7c17f872101bac2c445400c4069ff6988e30b28c9e29a3dbbea33",
+      "scope": "Typed retirement cap, six reads, exact serialized writer admission and recovery/security regressions; quality HOLD and original failed commands remain distinct."
+    }
+  },
+  "if029": {
+    "status": "EXACT_B_REPLAY_PASS_CHILD_CASES_CI_ONLY_PENDING",
+    "overallAcceptance": false,
+    "observerSha256": "8ed008a60dbe1019cb50d87544947370d4e7091be8cee47612233b7f44f9bb55",
+    "testSha256": "d12f3c34fb282ef13b84afb5def305458fb1bae446f0968a4bf18a4a60f415ba",
+    "seriesCapBytes": 6291456,
+    "commandLogCapBytes": 8388608,
+    "totalAllocatedProofCapBytes": 16777216,
+    "targetSampleSeconds": 1,
+    "maximumWallGapSeconds": 5,
+    "scope": "Lossless versioned streaming representation and legacy reader; resource/ownership/stop/drain/group/daemon/down gates unchanged. Acceptance HOLD, coverage and writer appendability remain separate; a healthy sink continues representable stop/drain/finally observations after resource or clock failure.",
+    "independentStaticReview": {
+      "status": "CORRECTED_APPENDABILITY_P2_CLOSED_NO_ADDITIONAL_STATIC_FINDING",
+      "proofSha256": "d04f87087b3720010afa5933c003b482be38e5ddb510b9132031f97831c88704"
+    },
+    "childLifecycleValidation": {
+      "tests": 32,
+      "retainedPriorCases": 24,
+      "newCases": 8,
+      "localStatus": "NOT_RUN_MEMORY_HOLD",
+      "requiredExecution": "Next complete actual current-head CI, bound to source and measured checkout; complete Python module execution must exit0.",
+      "memoryForecastBytes": 268435456,
+      "correctedAdmissionAt": "2026-10-14T15:01:53.958098+00:00",
+      "nativeFreeBytes": 226000896,
+      "cliFreePlusSpeculativeBytes": 226639872,
+      "pressureLevel": 1,
+      "stableSwapUsedBytes": 423362560,
+      "admissionSha256": "296f6b6adac6c8cb51307d1a2a6387a1c16de569159015ffed663da458509fd3",
+      "nodeConsumerSha256": "a3db350409c7865546baca45e1382bea47bc3422b4202b0ca2572359b0d79499"
+    },
+    "distinctReplayAdmission": {
+      "admissionSha256": "a121f713a00c991edb06f163182d14bd99cb318fb8925d18c526335f3d88aaf0",
+      "at": "2026-10-14T15:04:46.756534+00:00",
+      "admitted": true,
+      "ramForecastBytes": 134217728,
+      "nativeFreeBytes": 231538688,
+      "cliFreePlusSpeculativeBytes": 233127936,
+      "pressureLevel": 1,
+      "stableSwapUsedBytes": 423362560,
+      "hostFreeBytes": 5175685120,
+      "proofBudgetBytes": 33554432,
+      "diskReserveBytes": 2147483648,
+      "interpretation": "Separate no-child streaming workload; not a reduced-threshold retry of the32-case child workload."
+    },
+    "actualBReplay": {
+      "status": "EXACT_B_REPLAY_PASS",
+      "overallAcceptance": false,
+      "startedAt": "2026-10-14T15:05:01.746195+00:00",
+      "noChildren": true,
+      "originalCount": 9314,
+      "encodedCount": 9314,
+      "decodedCount": 9314,
+      "originalBytes": 5258092,
+      "originalSha256": "b206f4c68f64f16e36c477e005afd789f19cdefb5a5965720b42292ffe4d2560",
+      "maximumOriginalFrameBytes": 565,
+      "encodedSha256": "6177148bad3ddf37e458cda46e9206d890323ae68b8a78a8bd25fe953b172f5b",
+      "originalSemanticSha256": "b206f4c68f64f16e36c477e005afd789f19cdefb5a5965720b42292ffe4d2560",
+      "decodedSemanticSha256": "b206f4c68f64f16e36c477e005afd789f19cdefb5a5965720b42292ffe4d2560",
+      "sampleSeries": {
+        "version": 1,
+        "samples": 9314,
+        "headers": 1,
+        "topologyFrames": 0,
+        "fullFrames": 0,
+        "ordinaryFrames": 9314,
+        "maximumHeaderBytes": 154,
+        "maximumOrdinaryBytes": 153,
+        "maximumFullFrameBytes": 0,
+        "maximumTopologyFrameBytes": 0,
+        "incomplete": false,
+        "appendable": true,
+        "bytes": 1420878,
+        "capBytes": 6291456,
+        "remainingBytes": 4870578,
+        "remainingConservativeOrdinarySlots": 19025,
+        "stableHeaderConservativeSlots": 24560,
+        "capacityLimitation": "Byte-derived representation capacity, not a runtime or extra-observation guarantee."
+      },
+      "observerSha256": "8ed008a60dbe1019cb50d87544947370d4e7091be8cee47612233b7f44f9bb55",
+      "completedAt": "2026-10-14T15:05:02.548879+00:00",
+      "minimumObservedHostFreeBytes": 5173067776,
+      "diskSamples": 2,
+      "maximumMonotonicDiskSampleGapSeconds": 0.8024660419905558,
+      "diskSamplingLimitation": "Before/after and at most1second during record loops; observed filesystem free space, no owned allocation attribution.",
+      "observedAllocatedBeforeReceiptBytes": 1421312,
+      "additionalReceiptAndAuxReserveBytes": 32768,
+      "chargedAllocatedProofBytes": 1454080,
+      "receiptSha256": "df33889f8f02cb94f5bd7def6f17235c7dadadafb371d1554183b1aa18e0521f",
+      "sourceAfterProofSha256": "50396697833aaaa50d7a489aae66e1a74e73997d64b9d2c48afc1bb98db80764",
+      "sourceAfterSha256": "b206f4c68f64f16e36c477e005afd789f19cdefb5a5965720b42292ffe4d2560",
+      "sourceAfterCount": 9314,
+      "sourceAfterBytes": 5258092,
+      "totalEncodedFramesIncludingHeader": 9315,
+      "controllerSha256": "3e06a8355fb26a6e39ae6fdf1af3351e1cf380094750c35f1e5de0195b924939",
+      "directExit": 0,
+      "maximumRssBytes": null,
+      "interpretation": "All9314 original/encoded/decoded observations compare exact field types/values/order. Before/after disk observations are not owned allocation or RAM peak evidence. Replay does not execute32 cases or prove full CI acceptance."
+    },
+    "conditionalCapacity": {
+      "actualRemainingBytes": 4870578,
+      "conservativeOrdinaryFrameBytes": 256,
+      "remainingConservativeOrdinarySlots": 19025,
+      "stableHeaderConservativeSlots": 24560,
+      "historicalActiveImagePipelineSeconds": 4315,
+      "limitation": "Expected headroom is conditional on actual future topology, query/wait observations and retention duration; no runtime, extra-call or six-hour completion guarantee. Every frame debits actual bytes; cap/sink/schema errors remain explicit incomplete HOLD."
+    },
+    "documentation": [
+      "https://docs.python.org/3/library/json.html"
+    ],
+    "fullNewCiRequired": true,
+    "localDockerExecuted": false,
+    "finalRolesInvoked": false
+  },
+  "historicalLocalSequenceStatus": {
+    "status": "FUNCTIONAL_FIVE_PHASE_PASS_PRESERVATION_RECONCILED_RESOURCE_HOLD",
+    "checkedAt": "2026-10-14T15:45:03.923315+00:00",
+    "remainingAtThatCheckpoint": "IF028 serial quality remains memory HOLD; IF02932 child/lifecycle cases require actual next current-head CI; separately admitted complete new CI including unit/quality/build/browser, retention/five image-pipeline phases/headers and resource/finally evidence; current-head reviews/checks and final roles. No full Docker acceptance.",
+    "scope": "Existing root sourceInputSha256, phaseChain, proofAccounting, preservation and resourceObservation describe the historical local 413f sequence. Those values and all A/B/local validation objects below are preserved; actualCiB2 binds the later independent Linux runner."
+  },
+  "actualCiB2": {
+    "status": "COMPLETED_BASELINE_AND_FULL_DOCKER_CONTRACT_PASS",
+    "sourceHead": "67362f772c0cb2c7c886e3246e75ebcdd3bffb87",
+    "measuredCheckout": "0a156f8f536aee8f89544a8299c02437217bdb2c",
+    "checkoutParents": [
+      "3beb624c0c7c615ab7159fdd3227f74f790df29f",
+      "67362f772c0cb2c7c886e3246e75ebcdd3bffb87"
+    ],
+    "runUrl": "https://github.com/cucumberfalse/cabadrive/actions/runs/38598148892",
+    "baseline": {
+      "schemaVersion": 1,
+      "runId": 38598148892,
+      "jobId": 115970107857,
+      "jobConclusion": "success",
+      "sourceSha": "67362f772c0cb2c7c886e3246e75ebcdd3bffb87",
+      "measuredCheckoutSha": "0a156f8f536aee8f89544a8299c02437217bdb2c",
+      "log": {
+        "path": "/private/tmp/cabadrive-057-B2-ci-intake/baseline-job.log",
+        "bytes": 419308,
+        "sha256": "999d00bc093f4b3f2dcecbc79dc99c219d94bad4d2d2162636b034cd0a9274b9"
+      },
+      "unit": {
+        "tests": 848,
+        "passed": 848,
+        "failed": 0,
+        "skipped": 0
+      },
+      "browser": {
+        "passed": 181,
+        "skipped": 5
+      },
+      "qualityFast": {
+        "seconds": 26,
+        "budgetSeconds": 60,
+        "negativeContractsAndSentinelCleanupPassed": true
+      },
+      "linuxResourceCases": {
+        "wrapperPassed": true,
+        "completeModuleExecution": true,
+        "sourceCaseCount": 32,
+        "sourceSha256": "d12f3c34fb282ef13b84afb5def305458fb1bae446f0968a4bf18a4a60f415ba",
+        "wrapperSha256": "a3db350409c7865546baca45e1382bea47bc3422b4202b0ca2572359b0d79499",
+        "individualPythonCountsPrintedInJobLog": false
+      },
+      "genuineRetirementJournal": {
+        "bytes": 1272204,
+        "capBytes": 2097152,
+        "headroomBytes": 824948,
+        "entries": 5607,
+        "files": 5603,
+        "sha256": "9464e2d0a299b63a3a9d066d7cbd6e5015f008dc4081a2f47efe63c4afd141c5"
+      },
+      "ordinaryBuildPassed": true,
+      "e2eOwnBuildPassed": true
+    },
+    "docker": {
+      "jobUrl": "https://github.com/cucumberfalse/cabadrive/actions/runs/38598148892/job/115970108321",
+      "startedAt": "2026-10-14T16:27:36.318863+00:00",
+      "completedAt": "2026-10-14T21:26:57.976440+00:00",
+      "status": "ALL_DOCKER_CI_COMMANDS_PASS",
+      "originalReceiptOverallAcceptance": false,
+      "artifact": {
+        "id": 11929708892,
+        "zipBytes": 1592926,
+        "expandedBytes": 6506328,
+        "sha256": "50c4d8a011d19d74b253e8a1b597980fe49b5b19a6d38ea5d0d255a9ce8d7061"
+      },
+      "topology": {
+        "backingPath": "/var/lib/docker",
+        "context": "default",
+        "daemonPids": [
+          1059
+        ],
+        "dockerVersion": "28.0.4",
+        "endpoint": "unix:///var/run/docker.sock",
+        "host": "runnervm8k3b6",
+        "hostPath": "/home/runner/work/cabadrive/cabadrive",
+        "kernel": "6.17.0-1022-azure",
+        "project": "cabadrive-ci-38598148892-1",
+        "socketDevice": 28,
+        "socketInode": 1030,
+        "vmMemory": "not-applicable: proven same-host native dockerd",
+        "workingMemoryAllowanceBytes": 268435456
+      },
+      "separateVmMemoryGate": "Not applicable only because actual topology proves native same-host dockerd; not an assumed VM-free credit.",
+      "stageCommandSource": "scripts/ci-docker-stage.sh",
+      "stages": [
+        {
+          "stage": "install",
+          "exit": 0,
+          "startedAt": "2026-10-14T16:27:37.003636+00:00",
+          "completedAt": "2026-10-14T16:27:38.513559+00:00",
+          "clientPid": 2327,
+          "clientGroup": 2327,
+          "allOwnedClosureProven": true,
+          "pipesDrained": true,
+          "childWaited": true,
+          "groupPresent": false,
+          "errorCount": 0,
+          "terminalTasks": []
+        },
+        {
+          "stage": "browser",
+          "exit": 0,
+          "startedAt": "2026-10-14T16:27:38.718527+00:00",
+          "completedAt": "2026-10-14T16:28:06.462907+00:00",
+          "clientPid": 2411,
+          "clientGroup": 2411,
+          "allOwnedClosureProven": true,
+          "pipesDrained": true,
+          "childWaited": true,
+          "groupPresent": false,
+          "errorCount": 0,
+          "terminalTasks": []
+        },
+        {
+          "stage": "build",
+          "exit": 0,
+          "startedAt": "2026-10-14T16:28:06.653231+00:00",
+          "completedAt": "2026-10-14T16:48:20.927038+00:00",
+          "clientPid": 3135,
+          "clientGroup": 3135,
+          "allOwnedClosureProven": true,
+          "pipesDrained": true,
+          "childWaited": true,
+          "groupPresent": false,
+          "errorCount": 0,
+          "terminalTasks": [
+            {
+              "CompletedAt": "2026-10-14T16:48:20.889731684Z",
+              "Context": ".",
+              "Dockerfile": "Dockerfile",
+              "FullRef": "default/default/itnq1cazor7679ej4f4kg2m48",
+              "Ref": "itnq1cazor7679ej4f4kg2m48",
+              "StartedAt": "2026-10-14T16:28:07.031090239Z",
+              "Status": "completed",
+              "Target": "stager",
+              "builder": "default",
+              "node": "default",
+              "rawId": "itnq1cazor7679ej4f4kg2m48"
+            },
+            {
+              "CompletedAt": "2026-10-14T16:28:32.134289103Z",
+              "Context": ".",
+              "Dockerfile": "Dockerfile",
+              "FullRef": "default/default/w4ibs6bkfit2cdkb20895oimn",
+              "Ref": "w4ibs6bkfit2cdkb20895oimn",
+              "StartedAt": "2026-10-14T16:28:07.030302341Z",
+              "Status": "completed",
+              "Target": "runtime",
+              "builder": "default",
+              "node": "default",
+              "rawId": "w4ibs6bkfit2cdkb20895oimn"
+            }
+          ]
+        },
+        {
+          "stage": "up",
+          "exit": 0,
+          "startedAt": "2026-10-14T16:48:21.199537+00:00",
+          "completedAt": "2026-10-14T16:48:35.118528+00:00",
+          "clientPid": 35200,
+          "clientGroup": 35200,
+          "allOwnedClosureProven": true,
+          "pipesDrained": true,
+          "childWaited": true,
+          "groupPresent": false,
+          "errorCount": 0,
+          "terminalTasks": []
+        },
+        {
+          "stage": "smoke",
+          "exit": 0,
+          "startedAt": "2026-10-14T16:48:35.244796+00:00",
+          "completedAt": "2026-10-14T16:48:35.271783+00:00",
+          "clientPid": 35577,
+          "clientGroup": 35577,
+          "allOwnedClosureProven": true,
+          "pipesDrained": true,
+          "childWaited": true,
+          "groupPresent": false,
+          "errorCount": 0,
+          "terminalTasks": []
+        },
+        {
+          "stage": "production-retry",
+          "exit": 0,
+          "startedAt": "2026-10-14T16:48:35.406892+00:00",
+          "completedAt": "2026-10-14T16:48:45.463927+00:00",
+          "clientPid": 35644,
+          "clientGroup": 35644,
+          "allOwnedClosureProven": true,
+          "pipesDrained": true,
+          "childWaited": true,
+          "groupPresent": false,
+          "errorCount": 0,
+          "terminalTasks": []
+        },
+        {
+          "stage": "retention",
+          "exit": 0,
+          "startedAt": "2026-10-14T16:48:45.597698+00:00",
+          "completedAt": "2026-10-14T20:08:39.944037+00:00",
+          "clientPid": 36102,
+          "clientGroup": 36102,
+          "allOwnedClosureProven": true,
+          "pipesDrained": true,
+          "childWaited": true,
+          "groupPresent": false,
+          "errorCount": 0,
+          "terminalTasks": [
+            {
+              "CompletedAt": "2026-10-14T20:07:21.39302876Z",
+              "Context": "/tmp/cabadrive-docker-retention-Pxg6OO",
+              "Dockerfile": "Dockerfile",
+              "FullRef": "default/default/2mzj14yjqwzpqw0wbjr9ziz3m",
+              "Ref": "2mzj14yjqwzpqw0wbjr9ziz3m",
+              "StartedAt": "2026-10-14T20:07:21.19158428Z",
+              "Status": "completed",
+              "Target": null,
+              "builder": "default",
+              "node": "default",
+              "rawId": "2mzj14yjqwzpqw0wbjr9ziz3m"
+            },
+            {
+              "CompletedAt": "2026-10-14T16:48:53.883060264Z",
+              "Context": ".",
+              "Dockerfile": "Dockerfile",
+              "FullRef": "default/default/4jmm0b6g5v4nzr8m33vzucokv",
+              "Ref": "4jmm0b6g5v4nzr8m33vzucokv",
+              "StartedAt": "2026-10-14T16:48:49.387298136Z",
+              "Status": "completed",
+              "Target": "stager",
+              "builder": "default",
+              "node": "default",
+              "rawId": "4jmm0b6g5v4nzr8m33vzucokv"
+            },
+            {
+              "CompletedAt": "2026-10-14T16:49:04.720493272Z",
+              "Context": ".",
+              "Dockerfile": "Dockerfile",
+              "FullRef": "default/default/9qflc93nuuziqe0cicumeghvf",
+              "Ref": "9qflc93nuuziqe0cicumeghvf",
+              "StartedAt": "2026-10-14T16:49:04.40824147Z",
+              "Status": "completed",
+              "Target": "stager",
+              "builder": "default",
+              "node": "default",
+              "rawId": "9qflc93nuuziqe0cicumeghvf"
+            },
+            {
+              "CompletedAt": "2026-10-14T16:48:48.010105509Z",
+              "Context": "/tmp/cabadrive-docker-retention-Pxg6OO",
+              "Dockerfile": "Dockerfile",
+              "FullRef": "default/default/hf62qkp2zfpuc7rnz8oxvsd0j",
+              "Ref": "hf62qkp2zfpuc7rnz8oxvsd0j",
+              "StartedAt": "2026-10-14T16:48:45.985684594Z",
+              "Status": "completed",
+              "Target": null,
+              "builder": "default",
+              "node": "default",
+              "rawId": "hf62qkp2zfpuc7rnz8oxvsd0j"
+            },
+            {
+              "CompletedAt": "2026-10-14T16:48:52.445969278Z",
+              "Context": ".",
+              "Dockerfile": "Dockerfile",
+              "FullRef": "default/default/i63o7yw9g3nd1jni254zy6e7k",
+              "Ref": "i63o7yw9g3nd1jni254zy6e7k",
+              "StartedAt": "2026-10-14T16:48:49.387354817Z",
+              "Status": "completed",
+              "Target": "runtime",
+              "builder": "default",
+              "node": "default",
+              "rawId": "i63o7yw9g3nd1jni254zy6e7k"
+            },
+            {
+              "CompletedAt": "2026-10-14T16:49:03.141423225Z",
+              "Context": ".",
+              "Dockerfile": "Dockerfile",
+              "FullRef": "default/default/iskrys88r8fuacdg15f5me8vm",
+              "Ref": "iskrys88r8fuacdg15f5me8vm",
+              "StartedAt": "2026-10-14T16:49:03.040797772Z",
+              "Status": "completed",
+              "Target": "runtime",
+              "builder": "default",
+              "node": "default",
+              "rawId": "iskrys88r8fuacdg15f5me8vm"
+            },
+            {
+              "CompletedAt": "2026-10-14T19:50:53.616061204Z",
+              "Context": "/tmp/cabadrive-docker-retention-Pxg6OO",
+              "Dockerfile": "Dockerfile",
+              "FullRef": "default/default/jlg0w002qx8vss755en8zwbjb",
+              "Ref": "jlg0w002qx8vss755en8zwbjb",
+              "StartedAt": "2026-10-14T19:50:53.450647816Z",
+              "Status": "completed",
+              "Target": null,
+              "builder": "default",
+              "node": "default",
+              "rawId": "jlg0w002qx8vss755en8zwbjb"
+            },
+            {
+              "CompletedAt": "2026-10-14T20:08:04.847939705Z",
+              "Context": ".",
+              "Dockerfile": "Dockerfile",
+              "FullRef": "default/default/kgivpgtsbaq32gtrj7l776hw0",
+              "Ref": "kgivpgtsbaq32gtrj7l776hw0",
+              "StartedAt": "2026-10-14T20:08:03.159434623Z",
+              "Status": "completed",
+              "Target": "runtime",
+              "builder": "default",
+              "node": "default",
+              "rawId": "kgivpgtsbaq32gtrj7l776hw0"
+            },
+            {
+              "CompletedAt": "2026-10-14T20:07:23.66041715Z",
+              "Context": ".",
+              "Dockerfile": "Dockerfile",
+              "FullRef": "default/default/omb00o6ewqxexl5e1x54vb5md",
+              "Ref": "omb00o6ewqxexl5e1x54vb5md",
+              "StartedAt": "2026-10-14T20:07:23.4719825Z",
+              "Status": "completed",
+              "Target": "runtime",
+              "builder": "default",
+              "node": "default",
+              "rawId": "omb00o6ewqxexl5e1x54vb5md"
+            },
+            {
+              "CompletedAt": "2026-10-14T20:08:03.789466739Z",
+              "Context": ".",
+              "Dockerfile": "Dockerfile",
+              "FullRef": "default/default/pkf295c7ct3jlpaoqrjlczzou",
+              "Ref": "pkf295c7ct3jlpaoqrjlczzou",
+              "StartedAt": "2026-10-14T20:08:03.159384087Z",
+              "Status": "completed",
+              "Target": "stager",
+              "builder": "default",
+              "node": "default",
+              "rawId": "pkf295c7ct3jlpaoqrjlczzou"
+            },
+            {
+              "CompletedAt": "2026-10-14T20:07:28.379775055Z",
+              "Context": ".",
+              "Dockerfile": "Dockerfile",
+              "FullRef": "default/default/pn8dkssvdbhb7whoibl62241s",
+              "Ref": "pn8dkssvdbhb7whoibl62241s",
+              "StartedAt": "2026-10-14T20:07:23.471928233Z",
+              "Status": "completed",
+              "Target": "stager",
+              "builder": "default",
+              "node": "default",
+              "rawId": "pn8dkssvdbhb7whoibl62241s"
+            },
+            {
+              "CompletedAt": "2026-10-14T16:49:03.378074654Z",
+              "Context": ".",
+              "Dockerfile": "Dockerfile",
+              "FullRef": "default/default/t3vnr7m8bj5y4vzjk4624v40o",
+              "Ref": "t3vnr7m8bj5y4vzjk4624v40o",
+              "StartedAt": "2026-10-14T16:49:03.040810241Z",
+              "Status": "completed",
+              "Target": "stager",
+              "builder": "default",
+              "node": "default",
+              "rawId": "t3vnr7m8bj5y4vzjk4624v40o"
+            },
+            {
+              "CompletedAt": "2026-10-14T16:49:04.503388569Z",
+              "Context": ".",
+              "Dockerfile": "Dockerfile",
+              "FullRef": "default/default/umfxlhjvpjh60z278gezfwp7v",
+              "Ref": "umfxlhjvpjh60z278gezfwp7v",
+              "StartedAt": "2026-10-14T16:49:04.408098875Z",
+              "Status": "completed",
+              "Target": "runtime",
+              "builder": "default",
+              "node": "default",
+              "rawId": "umfxlhjvpjh60z278gezfwp7v"
+            },
+            {
+              "CompletedAt": "2026-10-14T20:07:22.281252784Z",
+              "Context": "/tmp/cabadrive-docker-retention-Pxg6OO",
+              "Dockerfile": "Dockerfile",
+              "FullRef": "default/default/xekv1q404pmscb92kf8bw0rhn",
+              "Ref": "xekv1q404pmscb92kf8bw0rhn",
+              "StartedAt": "2026-10-14T20:07:22.176930159Z",
+              "Status": "completed",
+              "Target": null,
+              "builder": "default",
+              "node": "default",
+              "rawId": "xekv1q404pmscb92kf8bw0rhn"
+            },
+            {
+              "CompletedAt": "2026-10-14T19:35:53.478968961Z",
+              "Context": "/tmp/cabadrive-docker-retention-Pxg6OO",
+              "Dockerfile": "Dockerfile",
+              "FullRef": "default/default/yx7mqty2entifvtl3xdc78r2e",
+              "Ref": "yx7mqty2entifvtl3xdc78r2e",
+              "StartedAt": "2026-10-14T19:35:53.320280683Z",
+              "Status": "completed",
+              "Target": null,
+              "builder": "default",
+              "node": "default",
+              "rawId": "yx7mqty2entifvtl3xdc78r2e"
+            }
+          ]
+        },
+        {
+          "stage": "image-pipeline",
+          "exit": 0,
+          "startedAt": "2026-10-14T20:08:41.380198+00:00",
+          "completedAt": "2026-10-14T21:26:56.961700+00:00",
+          "clientPid": 58561,
+          "clientGroup": 58561,
+          "allOwnedClosureProven": true,
+          "pipesDrained": true,
+          "childWaited": true,
+          "groupPresent": false,
+          "errorCount": 0,
+          "terminalTasks": [
+            {
+              "CompletedAt": "2026-10-14T20:08:59.374614423Z",
+              "Context": "/tmp/cabadrive-docker-images-fDxt1C/context",
+              "Dockerfile": "Dockerfile",
+              "FullRef": "default/default/1gm6p5i9x23srwjdjbxfh7lwm",
+              "Ref": "1gm6p5i9x23srwjdjbxfh7lwm",
+              "StartedAt": "2026-10-14T20:08:51.764096879Z",
+              "Status": "completed",
+              "Target": "image-pipeline-fixture-tools",
+              "builder": "default",
+              "node": "default",
+              "rawId": "1gm6p5i9x23srwjdjbxfh7lwm"
+            },
+            {
+              "CompletedAt": "2026-10-14T20:09:03.833968836Z",
+              "Context": "/tmp/cabadrive-docker-images-fDxt1C/context",
+              "Dockerfile": "Dockerfile",
+              "FullRef": "default/default/j2w7fpp3bplof8avpisequdhx",
+              "Ref": "j2w7fpp3bplof8avpisequdhx",
+              "StartedAt": "2026-10-14T20:08:59.870907488Z",
+              "Status": "completed",
+              "Target": "stager",
+              "builder": "default",
+              "node": "default",
+              "rawId": "j2w7fpp3bplof8avpisequdhx"
+            },
+            {
+              "CompletedAt": "2026-10-14T20:10:28.804749432Z",
+              "Context": "/tmp/cabadrive-docker-images-fDxt1C/context",
+              "Dockerfile": "Dockerfile",
+              "FullRef": "default/default/p4r2fiq2aiad3bd4ded1vs2df",
+              "Ref": "p4r2fiq2aiad3bd4ded1vs2df",
+              "StartedAt": "2026-10-14T20:09:11.233191402Z",
+              "Status": "failed",
+              "Target": "build",
+              "builder": "default",
+              "node": "default",
+              "rawId": "p4r2fiq2aiad3bd4ded1vs2df"
+            },
+            {
+              "CompletedAt": "2026-10-14T20:57:23.478879098Z",
+              "Context": "/tmp/cabadrive-docker-images-fDxt1C/context",
+              "Dockerfile": "Dockerfile",
+              "FullRef": "default/default/t5roqh1hqfputnn31qqcb348z",
+              "Ref": "t5roqh1hqfputnn31qqcb348z",
+              "StartedAt": "2026-10-14T20:57:22.224260773Z",
+              "Status": "completed",
+              "Target": "runtime",
+              "builder": "default",
+              "node": "default",
+              "rawId": "t5roqh1hqfputnn31qqcb348z"
+            }
+          ]
+        },
+        {
+          "stage": "headers",
+          "exit": 0,
+          "startedAt": "2026-10-14T21:26:57.477663+00:00",
+          "completedAt": "2026-10-14T21:26:57.533370+00:00",
+          "clientPid": 199390,
+          "clientGroup": 199390,
+          "allOwnedClosureProven": true,
+          "pipesDrained": true,
+          "childWaited": true,
+          "groupPresent": false,
+          "errorCount": 0,
+          "terminalTasks": []
+        }
+      ],
+      "buildkitStatuses": {
+        "completed": 20,
+        "expectedNegativeFailed": 1
+      },
+      "sampleValidation": {
+        "observerSourceSha256": "8ed008a60dbe1019cb50d87544947370d4e7091be8cee47612233b7f44f9bb55",
+        "samples": 18042,
+        "decodedCanonicalSha256": "c30de70c0e107b061aaa902c257d1cefd6daccd183ee7ddb8ec56987bcbb02a0",
+        "minimumMemAvailable": 13433581568,
+        "maximumSwapUsedBytes": 65536,
+        "maximumWallGapSeconds": 1.190915584564209,
+        "maximumMonotonicGapSeconds": 1.190915663000851,
+        "allSamplesPassStrict18GiBDiskAnd1GiBMemoryAnd1GiBSwapAllowance": true,
+        "stableFilesystemIdentitiesAndFreeBlockArithmetic": true,
+        "lastSampleAt": "2026-10-14T21:26:57.965696+00:00",
+        "seriesBytes": 2779292,
+        "maximumFrameBytes": 158,
+        "frames": 18043,
+        "sourceHead": "67362f772c0cb2c7c886e3246e75ebcdd3bffb87",
+        "measuredCheckout": "0a156f8f536aee8f89544a8299c02437217bdb2c",
+        "status": "ALL_DOCKER_CI_COMMANDS_PASS",
+        "overallAcceptance": false,
+        "proofHashesMatch": true,
+        "productionSameTupleAndInventoryRealRetry18Http": true,
+        "imageCompletedPhases": [
+          "production",
+          "negative",
+          "two-releases",
+          "runtime",
+          "exact-creator-teardown"
+        ],
+        "allNineClientGroupsAbsentPipesDrainedChildrenWaited": true,
+        "buildkitTerminalRecords": 21,
+        "teardownSafe": true,
+        "makeDownExit": 0,
+        "rawSummaryReceiptSha256": "de07a0ff3d900707023630352e940187186ebaeb66c582617b769f0f4d4769d8",
+        "initialObservationAt": "2026-10-14T16:27:36.795514+00:00",
+        "initialObservationSource": "Original receipt.initialSample (separate from serialized series)",
+        "canonicalSerialization": {
+          "digestField": "decodedCanonicalSha256",
+          "encoding": "UTF-8",
+          "json": "json.dumps(row, ensure_ascii=True, allow_nan=False, separators=(',', ':')) + newline",
+          "sortKeys": false,
+          "scope": "Decoded insertion-order compact JSON. Different JSON key ordering or separators produce a different byte digest without implying different sample semantics."
+        },
+        "firstPersistedSeriesRowAt": "2026-10-14T16:27:36.796820+00:00",
+        "alternateCanonicalSerialization": {
+          "sha256": "6d6ae78d518be2cdb90cd7eb57e0dbe6fa4611b3bc258a264b02e3b8df850909",
+          "json": "json.dumps(row, sort_keys=True) + newline",
+          "encoding": "UTF-8",
+          "semanticReconciliation": "Independent review reproduced both hashes from the same 18042 typed rows in the same order; serialization bytes differ, semantics do not."
+        }
+      },
+      "sampleSeries": {
+        "appendable": true,
+        "bytes": 2779292,
+        "capBytes": 6291456,
+        "capacityLimitation": "Byte-derived representation capacity, not a runtime or extra-observation guarantee.",
+        "fullFrames": 0,
+        "headers": 1,
+        "incomplete": false,
+        "maximumFullFrameBytes": 0,
+        "maximumHeaderBytes": 156,
+        "maximumOrdinaryBytes": 158,
+        "maximumTopologyFrameBytes": 0,
+        "ordinaryFrames": 18042,
+        "remainingBytes": 3512164,
+        "remainingConservativeOrdinarySlots": 13719,
+        "samples": 18042,
+        "stableHeaderConservativeSlots": 24560,
+        "topologyFrames": 0,
+        "version": 1
+      },
+      "seriesObservation": {
+        "acceptanceHold": false,
+        "attempted": 18042,
+        "failed": 0,
+        "incomplete": false,
+        "persisted": 18042
+      },
+      "diskMinima": {
+        "backing": {
+          "at": "2026-10-14T20:57:21.881336+00:00",
+          "availableBlocks": 19199572,
+          "blockBytes": 4096,
+          "device": 66305,
+          "filesystemId": 5133272434662400248,
+          "freeBytes": 78641446912,
+          "path": "/var/lib/docker"
+        },
+        "host": {
+          "at": "2026-10-14T20:57:21.881336+00:00",
+          "availableBlocks": 19199572,
+          "blockBytes": 4096,
+          "device": 66305,
+          "filesystemId": 5133272434662400248,
+          "freeBytes": 78641446912,
+          "path": "/home/runner/work/cabadrive/cabadrive"
+        }
+      },
+      "swapBudget": {
+        "additionalBytes": 1073741824,
+        "baselineUsedBytes": 0,
+        "totalBytes": 3221221376
+      },
+      "forecast": {
+        "bytes": 17179869184,
+        "categories": {
+          "additionalSwapAllowance": 1073741824,
+          "contextsAndCopyLayers": 4294967296,
+          "imagesAndBuildLayers": 4294967296,
+          "nativeCompilerAndDependencies": 2147483648,
+          "retainedStatesAndExports": 3221225472,
+          "workingCopiesProofAndUncertainty": 2147483648
+        },
+        "limitation": "Conservative category union, not a proven maximum; no cache/cleanup credit."
+      },
+      "proofAllocatedBytes": 6828032,
+      "proofCapBytes": 16777216,
+      "production": {
+        "status": "PRODUCTION_PUBLICATION_AND_REAL_RETRY_PASS",
+        "sameTupleAndFullInventory": true,
+        "beforeAndAfter": {
+          "verified": {
+            "valid": true,
+            "releaseId": "a3866b5a5efad29b137bc86ea8fccaa1fd702e6575eda54084264d865d3e8304"
+          },
+          "metadata": {
+            "bytes": 1127818,
+            "sha256": "3bf92774b14d9bceb4fb51459d56ced0ceb78425f50b9d147ae59249cadcfd0d"
+          },
+          "marker": {
+            "bytes": 196,
+            "sha256": "5c88d63e985b4c84a294e7c395b8cc832c44def6fc1dd3a86dfb91d496a1863a"
+          },
+          "retainedInventory": {
+            "bytes": 10219,
+            "sha256": "00af90e257bb40d8dac3eb6a66f5bb9103d790a85f0f0b7f5e7ffbebdaf968c0"
+          },
+          "release": {
+            "files": 5625,
+            "bytes": 278370526,
+            "sha256": "e6f0aa13daf8c207620325382c5273e92d027bd80670f6be6b3190283b601974"
+          },
+          "assets": {
+            "files": 54,
+            "bytes": 28412534,
+            "sha256": "5e868c0472e49e7715fe6cf829a7421fb2123875243e8db37884408a348ad1d9"
+          }
+        },
+        "makeStageExit": 0,
+        "httpBeforeCount": 9,
+        "httpAfterCount": 9,
+        "allHttpSame": true,
+        "widths": [
+          480,
+          800,
+          1240
+        ],
+        "formats": [
+          "avif",
+          "webp",
+          "jpeg"
+        ],
+        "allStatus200ImmutableNosniff": true
+      },
+      "imagePipeline": {
+        "status": "PASS",
+        "completedPhases": [
+          "production",
+          "negative",
+          "two-releases",
+          "runtime",
+          "exact-creator-teardown"
+        ],
+        "inputSha256": "76d45fe5fb3a3211001aa8638360656dd91ec14aede472ddacd6ff4c58e78a81",
+        "productionSources": 275,
+        "productionVariants": 3321,
+        "productionInventoryFiles": 5678,
+        "productionMetricSample": 167,
+        "productionBuilds": [
+          {
+            "target": "image-pipeline-fixture-tools",
+            "exit": 0
+          },
+          {
+            "target": "stager",
+            "exit": 0
+          }
+        ],
+        "negativeExit": 1,
+        "negativeError": "ENOENT /app/content/assets-masters",
+        "negativeStderrSha256": "d4f6cf63aef98b381bd6c419742ae70a04812eb8a500af2e89571a9dcb7f6325",
+        "payloadFiles": 5682,
+        "forbiddenPayloadFiles": 0,
+        "published": {
+          "publishedFiles": 5683,
+          "derivativeMode": "0644",
+          "forbiddenPayloadFiles": 0,
+          "completeCandidateFiles": 5682,
+          "committedReleaseId": "dc261c6be8a27369d63e0c2dd9beabe74695d167aa2453fe95b697b886861d1e"
+        },
+        "retainedDerivativeUrls": [
+          "content/img/a/docker-pipeline-master-480.a5ac82ee.avif",
+          "content/img/a/docker-pipeline-master-480.dda10660.webp",
+          "content/img/a/docker-pipeline-master-480.3d041678.jpg",
+          "content/img/a/docker-pipeline-master-480.e53a7728.avif",
+          "content/img/a/docker-pipeline-master-480.0c0555ac.webp",
+          "content/img/a/docker-pipeline-master-480.328ee51e.jpg"
+        ],
+        "viteTemporaryBoundary": {
+          "status": "VITE_TEMP_BOUNDARY_PASS",
+          "capBytes": 16777216,
+          "vmMemoryAvailable": 14890651648,
+          "parentReadonly": true,
+          "packageAndLockWritesRefused": true,
+          "memoryBefore": 49184768,
+          "memoryWithFullTmpfs": 66170880,
+          "swapBefore": 0,
+          "swapWithFullTmpfs": 0,
+          "incrementalMemoryAndSwap": 16986112
+        },
+        "securityHeaders": {
+          "x-content-type-options": "nosniff",
+          "x-frame-options": "DENY",
+          "referrer-policy": "strict-origin-when-cross-origin",
+          "permissions-policy": "camera=(), microphone=(), geolocation=()",
+          "content-security-policy": "default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; base-uri 'none'; frame-ancestors 'none'"
+        }
+      },
+      "retentionAndReleaseMarkers": [
+        {
+          "line": 1245,
+          "text": "First-stage interruption/down/image-only B plus absent-image retries preserve exact independent A source/inventory and sibling PASS"
+        },
+        {
+          "line": 1246,
+          "text": "Rebuilt Linux stager created-entry ownership/cleanup/native/recovery matrix passed"
+        },
+        {
+          "line": 1247,
+          "text": "Docker R2j repeated content/new destination/exact retry/owned predecessor/foreign/timestamp controls passed"
+        },
+        {
+          "line": 1249,
+          "text": "Literal Docker checkout \"cabadrive|old\" running: adoption/A/B-SW/restart/down-up/export/siblings PASS"
+        },
+        {
+          "line": 1250,
+          "text": "Literal Docker checkout \"cabadrive, \\\"old\" stopped: adoption/A/B-SW/restart/down-up/export/siblings PASS"
+        },
+        {
+          "line": 1251,
+          "text": "Literal Docker checkout \"checkout\\n\": measured Compose schema URL rejection; early wrapper rejection/ZERO Docker calls/no handoff/legacy ID-state-A/sibling bytes+metadata PASS"
+        },
+        {
+          "line": 1254,
+          "text": "Docker asset-retention lifecycle passed for cabadrive-retention-36103-1791996525906"
+        },
+        {
+          "line": 1773,
+          "text": "Actual readonly dependency Vite failure,16MiB isolated tmpfs,manual validator,package/lock refusal,lifetime and installed/native integrity PASS"
+        },
+        {
+          "line": 1774,
+          "text": "Owned Linux frozen lock/modules and pnpm10.33.0 PASS"
+        },
+        {
+          "line": 1775,
+          "text": "Real production275 rejects missing journal and tampered individual review PASS"
+        },
+        {
+          "line": 2165,
+          "text": "Two real complete static/Docker releases retain all old and new derivative hashes PASS"
+        }
+      ],
+      "makeDown": {
+        "allOwnedClosureProven": true,
+        "allPipesDrainedAndChildWaited": true,
+        "boundedClosureDeadlineExceeded": false,
+        "childStillAlive": false,
+        "childWaited": true,
+        "drainedBytes": {
+          "stderr": 571,
+          "stdout": 0
+        },
+        "errorCount": 0,
+        "errors": [],
+        "exit": 0,
+        "group": 199445,
+        "groupClosureKnown": true,
+        "groupPresent": false,
+        "openStreamIds": [],
+        "ownSigintSent": false,
+        "pid": 199445,
+        "pipesDrained": true,
+        "pipesOpen": false,
+        "residualGroupMembers": [],
+        "signalAttempted": false,
+        "signalRefusal": null,
+        "startedAt": "2026-10-14T21:26:57.596636+00:00",
+        "stopDeadlineMonotonic": null,
+        "stopStartedAt": null,
+        "stopStartedMonotonic": null
+      },
+      "makeDownExit": 0,
+      "teardownSafe": true,
+      "downPolicy": "Ordinary make down without -v: owned project containers/network removed; owned state volumes retained. Positive client/group/pipe/daemon terminal closure and workflow verify-down do not constitute a separate full post-down daemon resource inventory.",
+      "limitations": [
+        "Source/merge checkout relationship bound by actual completed GitHub job checkout line; no local Docker query was made.",
+        "Original supervisor overallAcceptance remains false for broader feature acceptance; this intake proves the completed Docker contract.",
+        "make down without -v completed and owned client/group/pipe/daemon closure is recorded; no separate post-down full daemon resource inventory is uploaded.",
+        "The baseline Node wrapper executed the complete frozen 32-case Python module successfully; individual Python case count is source-bound and not printed in the captured job log."
+      ]
+    },
+    "proofs": [
+      {
+        "path": "/private/tmp/cabadrive-057-B2-ci-intake/artifact-metadata.json",
+        "bytes": 770,
+        "sha256": "9cdc1c7241bf501f9fa3f0d1ffc4bd1edcc29218e7e831df6fe09c159cfdf2af"
+      },
+      {
+        "path": "/private/tmp/cabadrive-057-B2-ci-intake/docker-artifact.zip",
+        "bytes": 1592926,
+        "sha256": "50c4d8a011d19d74b253e8a1b597980fe49b5b19a6d38ea5d0d255a9ce8d7061"
+      },
+      {
+        "path": "/private/tmp/cabadrive-057-B2-ci-intake/docker-job.log",
+        "bytes": 3783810,
+        "sha256": "538c8486f686b03dfa9db4683fc810e67bfaa4eeaf6eb47af8ff25d01db39db3"
+      },
+      {
+        "path": "/private/tmp/cabadrive-057-B2-ci-intake/baseline-job.log",
+        "bytes": 419308,
+        "sha256": "999d00bc093f4b3f2dcecbc79dc99c219d94bad4d2d2162636b034cd0a9274b9"
+      },
+      {
+        "path": "/private/tmp/cabadrive-057-B2-ci-intake/completed-docker-intake.json",
+        "bytes": 36677,
+        "sha256": "2bf837213dad269ce5dcef11603e918a22afbb03b49cdc9c26b27f0684f82df2"
+      },
+      {
+        "path": "/private/tmp/cabadrive-057-B2-ci-intake/docker-decoded-validation.json",
+        "bytes": 1321,
+        "sha256": "afb8a33555b029560127a64897aa86d1bf433736df911572c98545c774ef30bc"
+      },
+      {
+        "path": "/private/tmp/cabadrive-057-B2-ci-intake/docker-proof/receipt.json",
+        "bytes": 22404,
+        "sha256": "de07a0ff3d900707023630352e940187186ebaeb66c582617b769f0f4d4769d8"
+      },
+      {
+        "path": "/private/tmp/cabadrive-057-B2-ci-intake/docker-proof/production.json",
+        "bytes": 7435,
+        "sha256": "a453614e5760c72e226303a8d77c92d9556dd65d295dc8aad2772fa39488851d"
+      },
+      {
+        "path": "/private/tmp/cabadrive-057-B2-ci-intake/docker-proof/samples.jsonl",
+        "bytes": 2779292,
+        "sha256": "36641da4ab3f4d90c3d0d24278f5a29324fb6910b5c62edc255a6d0e70c5c101"
+      },
+      {
+        "path": "/private/tmp/cabadrive-057-B2-ci-intake/docker-proof/commands.log",
+        "bytes": 3697197,
+        "sha256": "46011b6862a03c2952f0021173016b9fc69e5da2df4ff707e0e0c0d11ea412d5"
+      }
+    ],
+    "if028CurrentCiValidation": {
+      "genuineCompleteJournal": {
+        "bytes": 1272204,
+        "capBytes": 2097152,
+        "headroomBytes": 824948,
+        "entries": 5607,
+        "files": 5603,
+        "sha256": "9464e2d0a299b63a3a9d066d7cbd6e5015f008dc4081a2f47efe63c4afd141c5"
+      },
+      "affectedAndWholeUnitValidation": "848/848 complete baseline units passed, including current retirement/recovery/security suites. Historical local 135/136 plus exact unchanged socket correction, heap OOM and unadmitted retry are retained separately; CI does not relabel them as local PASS."
+    },
+    "if029CurrentCiValidation": {
+      "completePythonModuleWrapperPassed": true,
+      "sourceCaseCount": 32,
+      "individualPythonCountsPrintedInJobLog": false,
+      "wrapper": {
+        "wrapperPassed": true,
+        "completeModuleExecution": true,
+        "sourceCaseCount": 32,
+        "sourceSha256": "d12f3c34fb282ef13b84afb5def305458fb1bae446f0968a4bf18a4a60f415ba",
+        "wrapperSha256": "a3db350409c7865546baca45e1382bea47bc3422b4202b0ca2572359b0d79499",
+        "individualPythonCountsPrintedInJobLog": false
+      },
+      "actualFullSeries": {
+        "observerSourceSha256": "8ed008a60dbe1019cb50d87544947370d4e7091be8cee47612233b7f44f9bb55",
+        "samples": 18042,
+        "decodedCanonicalSha256": "c30de70c0e107b061aaa902c257d1cefd6daccd183ee7ddb8ec56987bcbb02a0",
+        "minimumMemAvailable": 13433581568,
+        "maximumSwapUsedBytes": 65536,
+        "maximumWallGapSeconds": 1.190915584564209,
+        "maximumMonotonicGapSeconds": 1.190915663000851,
+        "allSamplesPassStrict18GiBDiskAnd1GiBMemoryAnd1GiBSwapAllowance": true,
+        "stableFilesystemIdentitiesAndFreeBlockArithmetic": true,
+        "lastSampleAt": "2026-10-14T21:26:57.965696+00:00",
+        "seriesBytes": 2779292,
+        "maximumFrameBytes": 158,
+        "frames": 18043,
+        "sourceHead": "67362f772c0cb2c7c886e3246e75ebcdd3bffb87",
+        "measuredCheckout": "0a156f8f536aee8f89544a8299c02437217bdb2c",
+        "status": "ALL_DOCKER_CI_COMMANDS_PASS",
+        "overallAcceptance": false,
+        "proofHashesMatch": true,
+        "productionSameTupleAndInventoryRealRetry18Http": true,
+        "imageCompletedPhases": [
+          "production",
+          "negative",
+          "two-releases",
+          "runtime",
+          "exact-creator-teardown"
+        ],
+        "allNineClientGroupsAbsentPipesDrainedChildrenWaited": true,
+        "buildkitTerminalRecords": 21,
+        "teardownSafe": true,
+        "makeDownExit": 0,
+        "rawSummaryReceiptSha256": "de07a0ff3d900707023630352e940187186ebaeb66c582617b769f0f4d4769d8",
+        "initialObservationAt": "2026-10-14T16:27:36.795514+00:00",
+        "initialObservationSource": "Original receipt.initialSample (separate from serialized series)",
+        "canonicalSerialization": {
+          "digestField": "decodedCanonicalSha256",
+          "encoding": "UTF-8",
+          "json": "json.dumps(row, ensure_ascii=True, allow_nan=False, separators=(',', ':')) + newline",
+          "sortKeys": false,
+          "scope": "Decoded insertion-order compact JSON. Different JSON key ordering or separators produce a different byte digest without implying different sample semantics."
+        }
+      },
+      "local32Execution": "NOT_RUN_MEMORY_HOLD; unchanged historical fact"
+    },
+    "featureAcceptanceClaim": false,
+    "pending": "Terminal gates for substantive C and final evidence D: actual published C must obtain its own complete Linux CI/native/all five required checks before final Architect FIRST then Analyst on identical frozen C; D then requires its own current checks/evidence-only guard and expected-head finalizer. No B2 check is substituted for C or D.",
+    "independentArtifactReview": {
+      "status": "NO_ACTIONABLE_FINDINGS",
+      "proofPath": "/private/tmp/cabadrive-057-B2-ci-artifact-review-proof.json",
+      "proofSha256": "9852b2703a02392f0bdfeb5421b04a717509b60f174a2e8aa6b9a24ab01866a9",
+      "scope": "Full18042 sample decode, source/checkout, full stages and production/closure/limitations; not final feature roles."
+    },
+    "prReadyTransition": {
+      "actor": "Root",
+      "proofPath": "/private/tmp/cabadrive-057-B2-ready-result.json",
+      "proofSha256": "fba59d24e8dea5a56d5905416ceb690bd4564bfc7fdf33bca7127c43de85e5f1",
+      "sourceHead": "67362f772c0cb2c7c886e3246e75ebcdd3bffb87",
+      "nativeReview": "SUCCESS_CURRENT_B2_SOURCE_BOUND",
+      "scope": "Ready transition after independently accepted completed B2 CI. No native/final-role acceptance inferred."
+    },
+    "nativeAndAllRequiredChecks": {
+      "checkedAt": "2026-10-14T21:42:34.673157+00:00",
+      "sourceHead": "67362f772c0cb2c7c886e3246e75ebcdd3bffb87",
+      "proof": {
+        "path": "/private/tmp/cabadrive-057-B2-native-all5-result.json",
+        "sha256": "c7d99fea829369ac026122dc8a41b9a643f8b9c54bb9c506129105f7b74c41ab"
+      },
+      "ready": true,
+      "allFiveSuccessful": true,
+      "checks": {
+        "baseline-checks": {
+          "id": 115970107857,
+          "sourceHead": "67362f772c0cb2c7c886e3246e75ebcdd3bffb87",
+          "status": "completed",
+          "conclusion": "success",
+          "completedAt": "2026-10-14T17:09:57Z",
+          "url": "https://github.com/cucumberfalse/cabadrive/actions/runs/38598148892/job/115970107857"
+        },
+        "docker-validation": {
+          "id": 115970108321,
+          "sourceHead": "67362f772c0cb2c7c886e3246e75ebcdd3bffb87",
+          "status": "completed",
+          "conclusion": "success",
+          "completedAt": "2026-10-14T21:27:01Z",
+          "url": "https://github.com/cucumberfalse/cabadrive/actions/runs/38598148892/job/115970108321"
+        },
+        "guard": {
+          "id": 115970107525,
+          "sourceHead": "67362f772c0cb2c7c886e3246e75ebcdd3bffb87",
+          "status": "completed",
+          "conclusion": "success",
+          "completedAt": "2026-10-14T16:27:39Z",
+          "url": "https://github.com/cucumberfalse/cabadrive/actions/runs/38598148864/job/115970107525"
+        },
+        "AI Review": {
+          "id": 116117615115,
+          "sourceHead": "67362f772c0cb2c7c886e3246e75ebcdd3bffb87",
+          "status": "completed",
+          "conclusion": "success",
+          "completedAt": "2026-10-14T21:41:43Z",
+          "url": "https://github.com/cucumberfalse/cabadrive/actions/runs/38641429828/job/116117615115"
+        },
+        "osv-scan": {
+          "id": 115970107315,
+          "sourceHead": "67362f772c0cb2c7c886e3246e75ebcdd3bffb87",
+          "status": "completed",
+          "conclusion": "success",
+          "completedAt": "2026-10-14T16:27:40Z",
+          "url": "https://github.com/cucumberfalse/cabadrive/actions/runs/38598148849/job/115970107315"
+        }
+      },
+      "native": {
+        "runUrl": "https://github.com/cucumberfalse/cabadrive/actions/runs/38641429828",
+        "jobUrl": "https://github.com/cucumberfalse/cabadrive/actions/runs/38641429828/job/116117615115",
+        "jobId": 116117615115,
+        "completedAt": "2026-10-14T21:41:43Z",
+        "commentId": 6179109146,
+        "commentUrl": "https://github.com/cucumberfalse/cabadrive/pull/219#issuecomment-6179109146",
+        "commentAt": "2026-10-14T21:41:07Z",
+        "result": "Native bot reported no major issues on reviewed commit67362f772c.",
+        "limitations": [
+          "Earlier same-head AI Review skipped draft record retained; latest actual native gate success selected by check-run id.",
+          "No native exhaustive full4025path coverage claimed; independent local complete-diff review remains separately bound."
+        ]
+      },
+      "oldDraftSkippedRecord": "Preserved in exact Root proof; skipped draft check is not selected as native success.",
+      "futureCAndDChecks": "NOT_YET_EXECUTED_FOR_UNPUBLISHED_C_OR_D"
+    }
+  },
+  "publicationB2History": {
+    "reconciledProof": {
+      "path": "/private/tmp/cabadrive-057-publication-B2-reconciled.json",
+      "sha256": "33d06a9dbf1e17d61e36a7796a682e1d34af51bf222021bf20aa1fe6ac03333f"
+    },
+    "sourceB2": "67362f772c0cb2c7c886e3246e75ebcdd3bffb87",
+    "parentB": "ef4f7808488a1c5675413f3505803b04d9832e42",
+    "owner": "cucumberfalse",
+    "exactSevenBlobsModesAndMessageVerified": true,
+    "stagedCheckExit": 0,
+    "pushExit": 0,
+    "immediatePostPushControllerExit": 1,
+    "assertionFailureCause": "UNKNOWN beyond recorded AssertionError",
+    "laterReadOnlyReconciliationExit": 0,
+    "pushRetried": false,
+    "sourceRemoteConfirmed": true,
+    "freshOriginalGitAdmission": {
+      "forecastBytes": 268435456,
+      "result": "PASS per Root assignment",
+      "proofSha256": "6ad05844897d2af2cc0bf8442624a153c337d61562a7b6fea6e321bd20ace900",
+      "ageBeforeStageSeconds": 67.922752,
+      "independentChangedStateObservedAt": "2026-10-14T16:22:06",
+      "original15_51HoldRetained": true,
+      "forecastLowered": false,
+      "ramPollingLoop": false
+    },
+    "httpsAlternative": {
+      "firstGetFailed": true,
+      "postCount": 0,
+      "casCount": 0,
+      "abandoned": true
+    },
+    "overallAcceptance": false,
+    "sourceProof": {
+      "path": "/private/tmp/cabadrive-057-consolidation-b2-baseline-8_jtrz7d/publication-b2-history.json",
+      "sha256": "374c110d2111b3a7c5bdf983267a5efbdeb52c1303a1c2bd353fcedb7071a9b8"
+    }
+  },
+  "currentEvidenceInterpretation": "B2 complete baseline/full Docker/native/all-five remains dated accepted evidence. C3 baseline succeeded, but current-source native review found a genuine residual-test descendant cleanup P2; C3 cannot support terminal acceptance. IF033 changes only the two residual fixtures and their focused lifetime regression: absolute atomic ready/completion controls, exact PID/group/start identity, cooperative release, ACK plus bounded actual terminal proof, finite self-expiry, preserved controls on unknown closure and unconditional sink closure. The existing wrapper passed and invoked the full35-case Python module; individual35 success lines were captured, not separately printed. Earlier wrapper direct0 remains actual command evidence, not a blanket fixture-closure claim: two exactly attributed leaked PIDs were separately removed, while twelve older ambiguous processes were preserved. Production observer, service worker and all275 corpus/pixel/provenance identities remain unchanged. Historical failures/HOLD/VERIFY-only/publication reconciliations and original overallAcceptance:false remain intact. Future source-matched checks/native/all-five and ordered roles/D remain independent gates.",
+  "historicalB2GateSnapshot": {
+    "checkedAt": "2026-10-14T21:26:57.976440+00:00",
+    "status": "B2_FULL_DOCKER_CONTRACT_AND_BASELINE_PASS_FINAL_FEATURE_GATES_PENDING",
+    "remaining": "Current-head native review and all required checks after final meaningful C evidence/docs commit; Architect then Analyst on the same frozen C; final evidence D and its current-head checks/finalizer. T015 and whole-feature acceptance remain pending. Historical local memory/resource HOLD and A/B failures remain unchanged; no local rerun is implied.",
+    "overallAcceptance": false,
+    "currentEvidenceInterpretation": "B2 supplies actual complete Linux resource/lifecycle/product acceptance for its source and measured merge checkout. Historical local five-phase functional proof with a breached host reserve, old uncommitted-artifact VERIFY-only result, A/B failed CI attempts and initial publication assertion failure/reconciled push all remain immutable historical facts. overallAcceptance stays false until remaining feature gates complete.",
+    "actualCiB2Pending": "Native/current final-head checks and final C/D role/finalizer sequence. No T015 completion claim.",
+    "sourceSha256": "3bc84f7ab02bc433b503f4a810da4810a13e58d620abf4211b31576fcac41577"
+  },
+  "historicalPreNativeCPreparationSnapshot": {
+    "checkedAt": "2026-10-14T21:26:57.976440+00:00",
+    "status": "B2_IMPLEMENTATION_VALIDATION_PASS_NATIVE_GATE_PENDING",
+    "remaining": "B2 native Review/all5 implementation readiness and independent substantive C-vector Review/Root GO. T015 remains unchecked at this dated preparation. After actual C publication, complete C current CI/native/all5 before final Architect then Analyst on the same C; D current checks/finalizer afterward. No completed B2 result substitutes for C or D.",
+    "overallAcceptance": false,
+    "currentEvidenceInterpretation": "B2 provides completed baseline/native-Linux Docker validation for exact source67362 and measured merge0a156. Actual ready transition and independent artifact Review are proven; native Review result remains unresolved. Historical local failures/HOLD/VERIFY-only old orphan, failed A/B CI and reconciled push remain immutable. Top overallAcceptance:false is preserved from the original supervisor/history, not recomputed into a current feature-acceptance flag.",
+    "actualCiB2Pending": "Native current-B2 result/all5 and substantive C-vector Review/GO; afterward actual C CI/native/all5 then ordered C roles and D current gates.",
+    "prReadyTransitionNativeReview": "RUNNING; no result claimed"
+  },
+  "historicalPreIF030Status": {
+    "checkedAt": "2026-10-14T21:42:34.673157+00:00",
+    "status": "B2_IMPLEMENTATION_BASELINE_FULL_DOCKER_NATIVE_AND_ALL_FIVE_CHECKS_PASS_C_TERMINAL_GATES_PENDING",
+    "remaining": "After actual substantive C publication: complete current-C Linux CI/native/all five required checks; final Architect FIRST then Analyst on the identical frozen C. Append-only final evidence D must receive all current-head checks/native review/evidence-only guard and expected-head finalizer before merge. Completed B2 checks do not substitute for C or D checks. No final-role or merge acceptance is claimed.",
+    "currentEvidenceInterpretation": "Exact B2 source67362 and measured merge0a156 completed baseline/full native-Linux Docker validation; ready transition, independent artifact Review, native no-major-issues outcome and all five required B2 checks are proven. Dated prior pending snapshots and original supervisor overallAcceptance:false remain historical facts. This substantive C evidence does not claim future C/D checks, final Architect/Analyst acceptance or merge. Historical local resource/memory HOLD, failed A/B attempts, VERIFY-only old orphan and reconciled push remain unchanged."
+  },
+  "actualCiC": {
+    "sourceCommit": "df6c24c14e5af29aeecfdfc91f30ceaba51ffc3a",
+    "measuredMergeCheckout": "3744f52d48bab1b3b75c418a4c34cf8977d1ff05",
+    "baseCommit": "3beb624c0c7c615ab7159fdd3227f74f790df29f",
+    "runId": 38643435434,
+    "runUrl": "https://github.com/cucumberfalse/cabadrive/actions/runs/38643435434",
+    "baseline": {
+      "jobId": 116124369023,
+      "conclusion": "success",
+      "unitTestsPassed": 848,
+      "browserTestsPassed": 181,
+      "browserTestsSkipped": 5,
+      "qualitySeconds": 28,
+      "observerWrapperTestsPassed": 81,
+      "python32ModuleExecutedByWholeWrapper": true,
+      "individual32CaseNamesPrinted": false,
+      "logBytes": 419322,
+      "logSha256": "1f249f33bb4a17148745529cfb9403ee086ce52ef579f762ef9afcaa5cafa3a4"
+    },
+    "native": {
+      "runId": 38643435459,
+      "jobId": 116124369797,
+      "conclusion": "failure",
+      "commentUrl": "https://github.com/cucumberfalse/cabadrive/pull/219#issuecomment-6179380037",
+      "finding": "Genuine b112 false-negative text/sign classification despite visible A/B/C labels and matching original observation; semantic issue, not invalidated merely by later head.",
+      "intakeSha256": "1c52deeeb35d20f4b870071f25fb47828df366f636b798746eac4e9b883bc043"
+    },
+    "docker": {
+      "jobId": 116124369090,
+      "statusAt": "2026-10-14T23:53:33Z",
+      "status": "in_progress",
+      "currentStep": "Observe complete Docker validation and production retry",
+      "completeAcceptance": false
+    },
+    "allFiveAccepted": false
+  },
+  "if030": {
+    "checkpointPath": "content/validation/ticket-upscale/classification-audit.json",
+    "checkpointSha256": "ac8975a48beb3c028a64364731358786750ab58b5554b622386540bdbea96dba",
+    "governedMapSha256": "12a63bed30d1576e727ace09ee73530fa68e798284feedc8f9903ecac61a98b1",
+    "independentAuditSha256": "bce8d6427e1d09d2562af7f88185a990622d1bb0c3da5fe2a0105be7c2f129d9",
+    "independentMapReviewSha256": "a6b68b37c0579202b6eee3cce6ea75582855fd3fcc9a7da21a8fe316243b95fe",
+    "priorJournalSha256": "47e7deb145ecd66454cfcc82aa190faca175b7e16648c34ea5eca89173cfffbc",
+    "currentJournalSha256": "f3afc193aea840d37dcc4b13dbaeab0ff5c504994ac31ec16c6ba1f77404f3c7",
+    "counts": {
+      "falseToTrue": 48,
+      "retainedFalse": 18,
+      "unchangedTrue": 209,
+      "currentTrue": 257,
+      "currentFalse": 18,
+      "accepted": 198,
+      "rejected": 77
+    },
+    "coverage": {
+      "reviewRecordsRead": 275,
+      "independentFreshPairedPreviouslyFalseReviews": 66,
+      "unchangedPriorTruePixelReviewsNotRepeated": 209,
+      "independentFreshControls": [
+        "b65",
+        "b222"
+      ],
+      "implementationPairedSpotReviewIds": [
+        "b61",
+        "b63",
+        "b64",
+        "b67",
+        "b111",
+        "b112",
+        "b114",
+        "b116",
+        "b213",
+        "b214",
+        "b215",
+        "b216",
+        "b217",
+        "b219"
+      ],
+      "freshAll275PixelReview": false,
+      "ocrPerformed": false,
+      "newPixelQualityOrMetricApproval": false
+    },
+    "historicalJournalProofs": [
+      {
+        "path": "content/validation/ticket-upscale/typed-record-proof.json",
+        "sha256": "d794c8437a773c468670cb9409460f4042ebb91d5c8abdde607ae5a3edcee52a",
+        "scope": "Unmodified dated proof of prior journal 47e7deb145ecd66454cfcc82aa190faca175b7e16648c34ea5eca89173cfffbc; not current classification certification"
+      },
+      {
+        "path": "content/validation/ticket-upscale/verification-results.json",
+        "sha256": "760bbf302483714793aef3986a63392cd93dbec3d6d510998b7472673af9d29d",
+        "scope": "Unmodified dated proof of prior journal 47e7deb145ecd66454cfcc82aa190faca175b7e16648c34ea5eca89173cfffbc; not current classification certification"
+      }
+    ],
+    "protectedJournalExcludingReviewDigestsSha256": "5eda856529dda74d55ac2c8fdb214233c90e7018b5475d6c84a30fb6e9d525c2",
+    "focusedValidation": {
+      "completedAt": "2026-10-14T23:54:32.399397+00:00",
+      "testFile": "tests/ticket-upscale.test.mjs",
+      "testFileSha256": "06870971ab14a0bcd3aa3f2eeb25d7659075761571cddfbd2b032aff8160a58b",
+      "tests": 12,
+      "passed": 12,
+      "failed": 0,
+      "skipped": 0,
+      "directExit": 0,
+      "durationMs": 443.172125,
+      "logSha256": "886b70df0239091545e268661f573337c8be4bb8437658bf3627b1947de0df77",
+      "resultSha256": "a301573fdb2ca4b9d13ca6649b54a9e814dece53fd5b146aac3d76f60d98fa8f",
+      "scope": "9 prior identity/fallback cases plus3 governed classification/current corpus/production stale-digest cases; no full preflight, metric or pixel regeneration."
+    },
+    "resourceAdmission": {
+      "sha256": "7435f916fc7dff58b2211affcb2979953d3713230a2715b418a80f9d596ba75d",
+      "ramForecastBytes": 268435456,
+      "fixtureAndProofDiskForecastBytes": 33554432,
+      "diskReserveBytes": 2147483648,
+      "minimumObservedHostFreeBytes": 6837166080,
+      "memoryPeakMeasured": false
+    },
+    "independentChangedVectorReview": "Recorded separately in governed workflow/task evidence; no self-referential checkpoint Review certification.",
+    "semanticIssueClosure": "Metadata/binding implementation and focused tests complete; Architect records independent Review and prefreeze semantic disposition separately.",
+    "futureCurrentC2AllFive": "PENDING",
+    "pixelMetricsRegenerated": false
+  },
+  "historicalIF030PreSemanticReviewSnapshot": {
+    "checkedAt": "2026-10-14T23:55:20.289673+00:00",
+    "archivedAt": "2026-10-14T23:58:59.278631+00:00",
+    "currentEvidenceInterpretation": "B2 complete baseline/full Docker/native/all-five remains dated accepted evidence. Subsequent C baseline passed but native found a genuine FR-004 classification P2; its Docker observation is dated pending, not complete acceptance. IF030 corrects independently governed review-scope metadata and exact review journal digests without changing pixels/status/fallback/inference/policy/tool/derivative identities. Focused12/12 passed; independent changed-vector Review and future C2 own complete gates remain pending. Historical A/B failures, local resource/memory HOLD, VERIFY-only old orphan, publication failed assertion and independent reconciliation remain unchanged. Original overallAcceptance:false is preserved.",
+    "remaining": "Complete independent IF030 changed-vector Review and prefreeze issue reconciliation, then publish substantive corrected C2. C2 must receive its own complete current Linux baseline/Docker/native/all-five checks before final Architect FIRST then Analyst on identical frozen C2. Append-only D retains its own current gates/evidence-only guard/expected-head finalizer before merge. No final-role or merge acceptance is claimed."
+  },
+  "historicalPreIF031IF032Status": {
+    "checkedAt": "2026-10-14T23:55:20.289673+00:00",
+    "status": "IF030_CLASSIFICATION_CORRECTED_FOCUSED_PASS_NEW_HEAD_GATES_RECORDED_SEPARATELY",
+    "currentEvidenceInterpretation": "B2 complete baseline/full Docker/native/all-five remains dated accepted evidence. Subsequent C baseline passed but native found a genuine FR-004 classification P2; its Docker observation is dated pending, not complete acceptance. IF030 corrects independently governed review-scope metadata and exact review journal digests without changing pixels/status/fallback/inference/policy/tool/derivative identities. Focused12/12 passed. Independent semantic changed-vector Review completed with no actionable P0\u2013P3: proof de23be083c63d42728d009a15356a66ffec10f903cbe8b55d40ae8258d409c8a binds prior packet0cb1a4fcc3ebfca210c87e57ac52b87937cb2b2327ed486e1972c88e20a1d4eb, not this subsequently reconciled evidence file. Architect prefreeze disposition and final combined-vector rebind are recorded separately. C2 must still obtain its own complete CI/native/all-five gates before ordered final roles; historical results do not certify a later head. Historical A/B failures, local resource/memory HOLD, VERIFY-only old orphan, publication failed assertion and independent reconciliation remain unchanged. Original overallAcceptance:false is preserved.",
+    "remaining": "IF030 semantic implementation/focused12 and independent semantic changed-vector Review are complete; final prefreeze Architect reconciliation and combined-vector binding precede C2 publication. C2 own complete current Linux baseline/Docker/native/all-five checks remain required before final Architect FIRST then Analyst on identical frozen C2. Append-only D retains its own current gates/evidence-only guard/expected-head finalizer before merge. No final-role or merge acceptance is claimed."
+  },
+  "actualCiC2": {
+    "sourceSha": "6d36b7a8fe7676aaf6618b9e300fe9ca17739ad3",
+    "measuredMergeSha": "398293811eb9e220ecbba5f7a1881c8083231e09",
+    "mergeParents": [
+      "3beb624c0c7c615ab7159fdd3227f74f790df29f",
+      "6d36b7a8fe7676aaf6618b9e300fe9ca17739ad3"
+    ],
+    "baseline": {
+      "status": "SUCCESS",
+      "unitPassed": 851,
+      "unitFailed": 0,
+      "browserPassed": 181,
+      "browserSkipped": 5,
+      "qualitySeconds": 16,
+      "wholePrior32CasePythonModuleWrapperPassed": true,
+      "wrapperDurationMs": 9860.950103,
+      "summary": {
+        "path": "/private/tmp/cabadrive-057-C2-ci-intake/baseline-native-summary.json",
+        "bytes": 1595,
+        "sha256": "2f7a2c3f1ab6c6fd6eb89004825aa56cd002834d1f7002b7a51884096fd0d2e3"
+      }
+    },
+    "native": {
+      "status": "FAILURE",
+      "commentId": 6181499017,
+      "commentUrl": "https://github.com/cucumberfalse/cabadrive/pull/219#issuecomment-6181499017",
+      "issues": [
+        "P2 historical class-c JPEGs admitted to current install cache",
+        "P2 scheduler-sensitive 1.3-second test SLA"
+      ],
+      "metadata": {
+        "path": "/private/tmp/cabadrive-057-C2-ci-intake/native-failure-metadata.json",
+        "bytes": 21647,
+        "sha256": "beb9cea4f6976961451dc28e1b4e787d6e8cb46e9beb5d0bdf100bb4659d93cd"
+      }
+    },
+    "docker": {
+      "statusAtLatestSnapshot": "IN_PROGRESS",
+      "completionNotClaimed": true
+    }
+  },
+  "if031If032": {
+    "checkedAt": "2026-10-15T01:11:36.603325+00:00",
+    "sourceParent": "6d36b7a8fe7676aaf6618b9e300fe9ca17739ad3",
+    "files": [
+      {
+        "path": "scripts/generate-service-worker.mjs",
+        "bytes": 9632,
+        "sha256": "cbe93fa0f381d4177d22e866b8533cc3cf63c2d9bf61db0c5fa6cd94c30acb72"
+      },
+      {
+        "path": "tests/ticket-offline.test.mjs",
+        "bytes": 13976,
+        "sha256": "f747434d1d8fe76091e9655352c0781b6ad0230f11ed6f4a161e1287581ab5ed"
+      },
+      {
+        "path": "tests/ci-docker-resources-cases.py",
+        "bytes": 53899,
+        "sha256": "89791762d6b9345475c612f013d50a6d548b4add6791066299641ca07529df5d"
+      }
+    ],
+    "protectedProductionObserverSha256": "8ed008a60dbe1019cb50d87544947370d4e7091be8cee47612233b7f44f9bb55",
+    "pixelClassificationJournalRegeneration": false,
+    "serviceWorkerSuites": {
+      "passed": 15,
+      "failed": 0,
+      "exit": 0,
+      "log": {
+        "path": "/private/tmp/cabadrive-057-if031-if032-implementation/service-worker-focused.log",
+        "bytes": 3310,
+        "sha256": "15e5719a19d38aaf7ac4ea19e4c5dcaeeab150b4cc86a7ff6afbf3e4618ae4c1"
+      }
+    },
+    "sandboxAttempt": {
+      "receipt": {
+        "path": "/private/tmp/cabadrive-057-if031-if032-implementation/focused-result.json",
+        "bytes": 3725,
+        "sha256": "3cf2dc2a01ca8482a228b3053a66acd7928b83fa726e9e138c8259914bd7118a"
+      },
+      "wrapperLog": {
+        "path": "/private/tmp/cabadrive-057-if031-if032-implementation/python-wrapper.log",
+        "bytes": 17091,
+        "sha256": "c4be60099535cda07b5bc2ae6a7bd4eb45495c0356bbdadd2b6a8a9731c44b45"
+      },
+      "wrapperExit": 1,
+      "pythonCases": 34,
+      "passed": 25,
+      "failed": 7,
+      "errors": 2,
+      "observedExecutionLimitation": "ps PermissionError EPERM prevents group-closure evidence and causes dependent query/category assertions to fail; no code-defect inference or allPASS claim."
+    },
+    "unsandboxedExactWrapperCorrection": {
+      "receipt": {
+        "path": "/private/tmp/cabadrive-057-if031-if032-wrapper-unsandboxed/focused-result.json",
+        "bytes": 1803,
+        "sha256": "f82fa34bccbb0a4cb39df06854d71173a492b811f0a0a94ee8086b00cf53615b"
+      },
+      "log": {
+        "path": "/private/tmp/cabadrive-057-if031-if032-wrapper-unsandboxed/python-wrapper.log",
+        "bytes": 339,
+        "sha256": "4ab1dc9025968962b0da66351509ad2c7d7d5ba5cad1275baf6d49271e2f4c4a"
+      },
+      "exit": 0,
+      "wrapperTestsPassed": 1,
+      "wholePythonModuleCaseCount": 34,
+      "countExposure": "Full actual Python module invoked; successful Python details captured by existing wrapper, not separately printed34 PASS.",
+      "executionEnvironmentChange": "Only process-status sandbox restriction removed; same source and thresholds, ordinary child umask022."
+    },
+    "resourceBounds": {
+      "forecastRamBytes": 268435456,
+      "incrementAndProofDiskBytes": 33554432,
+      "diskReserveBytes": 2147483648,
+      "initialAdmission": {
+        "path": "/private/tmp/cabadrive-057-if031-if032-implementation/admission-1.json",
+        "bytes": 2201,
+        "sha256": "d6cc6bcf4c97026d3e67ce142da928fff0d1c608bc8ad57d7acc963baa5915ce"
+      },
+      "correctionAdmission": {
+        "path": "/private/tmp/cabadrive-057-if031-if032-wrapper-unsandboxed/admission-1.json",
+        "bytes": 2199,
+        "sha256": "f50b9a09c79025924fde4e93ba46eac9a6dd14ee42ddb3ebc1b678e88acd4620"
+      },
+      "minimumHostFreeBytesFirst": 6792728576,
+      "minimumHostFreeBytesCorrection": 6790844416,
+      "privateProofAllocatedBytesFirst": 114688,
+      "privateProofAllocatedBytesCorrection": 32768,
+      "allDirectChildrenWaitedEofGroupAbsent": true,
+      "memoryPeakBytes": null,
+      "limitation": "Prospective aggregate RAM budget; no measured RSS/owned peak or attribution of foreign filesystem change."
+    },
+    "reviewAndCurrentHeadGates": "Recorded separately; no later-head CI/native/feature acceptance inferred."
+  },
+  "historicalPreIF033Status": {
+    "checkedAt": "2026-10-15T01:11:36.603325+00:00",
+    "status": "IF031_IF032_FOCUSED_CORRECTIONS_PASS_CURRENT_HEAD_GATES_RECORDED_SEPARATELY",
+    "remaining": "IF031/IF032 focused runtime results are complete; independent changed-vector Review and Architect prefreeze semantic disposition precede a substantive C3 publication. C3 must obtain its own complete current baseline/Docker/native/all-five checks before ordered Architect FIRST then Analyst on identical frozen head. Append-only D retains its own current gates/evidence-only guard/expected-head finalizer before merge. No current C3, final-role or merge acceptance is claimed.",
+    "currentEvidenceInterpretation": "B2 complete baseline/full Docker/native/all-five remains dated accepted evidence. C2 baseline passed, but its source-matched native review found genuine JPEG install-authority and scheduler-sensitive test P2 issues; that head does not satisfy terminal gates. IF031 narrows service-worker install admission to all authenticated current class-c JPEG widths and excludes the entire generic class-c tree, preserving retained cache-local maps. IF032 changes only test synchronization/controlled time, with production observer bytes unchanged. Targeted service-worker suites15/15 passed; the full34-case Python module passed through its existing Node wrapper after a separately admitted exact unsandboxed correction. The first sandbox run failed with explicit ps EPERM and is retained without a clean-PASS relabel. Changed-vector Review, Architect semantic disposition, new source publication, current Linux CI/native/all-five and final roles are separate recorded gates. All historical A/B/C failures, local HOLD, VERIFY-only recovery and publication reconciliation evidence remain unchanged. Original overallAcceptance:false is preserved."
+  },
+  "actualCiC3": {
+    "sourceHead": "0eedab731b55ce17d39bfce9bdc3de2c0e4c037e",
+    "ciRunId": 38664846057,
+    "baselineJobId": 116194293472,
+    "nativeRunId": 38664846183,
+    "nativeJobId": 116194293780,
+    "statusAt": "2026-10-15T02:07:35Z",
+    "baseline": "SUCCESS",
+    "native": "FAILURE",
+    "docker": "IN_PROGRESS",
+    "statusProof": {
+      "path": "/private/tmp/cabadrive-057-C3-ci-intake/status-20261015T020735Z.json",
+      "bytes": 7823,
+      "sha256": "01924045bd596ca29989a8bb5fb9e9bfb18019d3c6cc706d7c32497672bc262f"
+    },
+    "nativeFindingMetadata": {
+      "path": "/private/tmp/cabadrive-057-C3-ci-intake/native-failure-metadata.json",
+      "bytes": 16482,
+      "sha256": "85e11f7bda89b24d6b92eb6a889f26401b51cad99eb07dc5f6324ba39f5058f0"
+    },
+    "findingComment": "https://github.com/cucumberfalse/cabadrive/pull/219#issuecomment-6182255951",
+    "limitation": "Dated job metadata only; baseline terminal log and Docker terminal proof not downloaded by this update. No later completion inferred."
+  },
+  "if033": {
+    "checkedAt": "2026-10-15T02:14:47.224151+00:00",
+    "sourceParent": "0eedab731b55ce17d39bfce9bdc3de2c0e4c037e",
+    "files": [
+      {
+        "path": "tests/ci-docker-resources-cases.py",
+        "bytes": 60282,
+        "sha256": "3e22e5b3f4ea12e8071f636b6dd2189c484ad65f2cc44a0d0b55519f7e4b8489"
+      }
+    ],
+    "productionObserverSha256": "8ed008a60dbe1019cb50d87544947370d4e7091be8cee47612233b7f44f9bb55",
+    "scope": "Only ignored-interrupt/open-pipe and adjacent closed-pipe residual test fixtures, shared bounded cooperative lifetime helper and one combined real lifetime/isolation/missing-ACK regression. Early launcher exit and residual group/pipe/marker/down assertions remain real. No production observer/SW/corpus policy change or pixel/metric regeneration.",
+    "focused": {
+      "receipt": {
+        "path": "/private/tmp/cabadrive-057-if033-implementation/focused-result.json",
+        "bytes": 1456,
+        "sha256": "818e7c996dcbdc32acc19b687796df0be3d601e28e5b401d4cfb586d1b83f690"
+      },
+      "log": {
+        "path": "/private/tmp/cabadrive-057-if033-implementation/python-wrapper.log",
+        "bytes": 339,
+        "sha256": "ece01099e8600a9305e391da11f9bd382a4956ea01f9914dc625ce0870080de3"
+      },
+      "admission": {
+        "path": "/private/tmp/cabadrive-057-if033-implementation/admission-1.json",
+        "bytes": 2202,
+        "sha256": "493e76e278a4697d434fdde8263a3089a7f8ed986cca938101a1c34fce212b62"
+      },
+      "plan": {
+        "path": "/private/tmp/cabadrive-057-if033-implementation/focused-plan.json",
+        "bytes": 3620,
+        "sha256": "ff3f111b6caf31fcf71585b0a46b3b346b3e4052e5b54edac3fa722e6e98cd6c"
+      },
+      "exit": 0,
+      "wrapperTestsPassed": 1,
+      "wholePythonModuleAstCaseCount": 35,
+      "individualPythonSuccessLinesPrinted": false,
+      "startedAt": "2026-10-15T02:13:19.702414+00:00",
+      "completedAt": "2026-10-15T02:13:37.408288+00:00",
+      "allDirectChildrenWaitedEofGroupAbsent": true,
+      "newFixtureClosureAssertions": "Real delayed post-launcher ACK then terminal identity; missing ACK fails and preserves controls until independent child exit, early result failure and per-iteration unlaunched-state isolation; sinks close in nested finally.",
+      "resourceBounds": {
+        "ramForecastBytes": 268435456,
+        "incrementAndProofDiskBytes": 33554432,
+        "diskReserveBytes": 2147483648,
+        "admissionNativeFreeBytes": 628834304,
+        "admissionCliFreePlusSpecBytes": 629522432,
+        "admissionHostFreeBytes": 6797688832,
+        "minimumObservedHostFreeBytes": 6793273344,
+        "proofAllocatedBytes": 32768,
+        "memoryPeakBytes": null,
+        "limitation": "Prospective combined budget, not measured RSS/owned peak; no attribution of foreign free-space changes."
+      }
+    },
+    "priorExactOwnedCleanup": {
+      "receipt": {
+        "path": "/private/tmp/cabadrive-057-if033-cleanup-plan-usoaz1hg/cleanup-result.json",
+        "bytes": 4780,
+        "sha256": "c9318e17724d38c23238e539b6fd5ee94c17396b1bbec89da38e2bb7f8c330f8"
+      },
+      "exactPids": [
+        74150,
+        74282
+      ],
+      "eachSingleSignal": "SIGTERM",
+      "eachTerminalObservation": "absent",
+      "otherOlderAmbiguousProcessesPreserved": 12,
+      "filesystemCleanup": false,
+      "limitation": "Separate Root-authorized exact-two cleanup only; no all-leaks-removed or historical wrapper-fixture-closure claim."
+    },
+    "semanticReviewAndFutureHeadGates": "Recorded separately; no current C4 or final-role acceptance inferred."
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "imageId": "question-image-b225",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b225.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b225.png",
+  "originalSha256": "e52a36bf7cbe4a9e80d63931c4d2438181ed3d17387dcd8cb802cc849f42b27b",
+  "candidateSha256": "75c7022cb34124d5799b90a63506e0c60932857cbb63d9a80e04f183d1992745",
+  "reviewer": "Supplemental Review Agent /root/image_review_tail (Codex)",
+  "reviewedAt": "2026-10-13T17:16:49.362750+00:00",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "Horse and rider remain facing left with a raised front leg, trailing tail, separate circular rider head and connecting rein; leg count, silhouette gaps and diamond layout are preserved."
+  ],
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b225.jpg",
+    "originalSha256": "e52a36bf7cbe4a9e80d63931c4d2438181ed3d17387dcd8cb802cc849f42b27b",
+    "masterPath": "content/assets-masters/questions/b225.png",
+    "masterSha256": "75c7022cb34124d5799b90a63506e0c60932857cbb63d9a80e04f183d1992745",
+    "candidateSha256": "75c7022cb34124d5799b90a63506e0c60932857cbb63d9a80e04f183d1992745",
+    "inferenceSha256": "9e5b04f675441761bcc3ca68dc93c407be046a113c50266382bb67d9da43508e",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "imageId": "question-image-b82",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:39:28.633Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "A/B/C labels, PARE letters and octagon, officer raised palm, and schoolchild holding a book retain their exact arrangement and silhouettes."
+  ],
+  "candidateSha256": "530ede4bcc5e3d372ca2cc0a50ea55af5f66e4f8d76e1ae905b8f6a091e7a84e",
+  "originalSha256": "c449051b370c828d1a9ca0c254071e8fb0a0a8ccb1f2b5aee47fe6ee48a7868a",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b82.jpg",
+    "originalSha256": "c449051b370c828d1a9ca0c254071e8fb0a0a8ccb1f2b5aee47fe6ee48a7868a",
+    "masterPath": "content/assets-masters/questions/b82.png",
+    "masterSha256": "530ede4bcc5e3d372ca2cc0a50ea55af5f66e4f8d76e1ae905b8f6a091e7a84e",
+    "candidateSha256": "530ede4bcc5e3d372ca2cc0a50ea55af5f66e4f8d76e1ae905b8f6a091e7a84e",
+    "inferenceSha256": "817db0fdb2f78c626f66393889799ffb1eeb9330441157fef30bdad210438201",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

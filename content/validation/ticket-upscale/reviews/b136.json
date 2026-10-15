@@ -1,0 +1,30 @@
+{
+  "imageId": "question-image-b136",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:09:29.734Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "rejected",
+  "observations": [
+    "Enlarged Avenida Gral. Mosconi 3800-3900 keeps major lettering but lower Comuna 11 strokes become malformed; adjacent red institutional board fine text is replaced by white blobs/bands."
+  ],
+  "rejectionReason": "Native detail shows lower sign letters distorted and red-board administrative text replaced by synthetic white blobs and bars.",
+  "candidateSha256": "7523f25cbcd4fd29a545630bd11f4b20ac2f766c79907914698e84a6fdd73050",
+  "originalSha256": "d2f4d6fd47d52f55ae770173c327cc516530a487f55b00ccac0c88b79499e3e7",
+  "fallbackObservations": [
+    "Fallback preserves original red institutional-board fine writing and Alvarez/Comuna11 plaque, plus left arrow and red car."
+  ],
+  "fallbackReviewedAt": "2026-10-13T17:43:22.334Z",
+  "fallbackReviewer": "Implementation Agent (Codex)",
+  "fallbackSha256": "7fde3c3059ba3084e88659afe635d98acffcf07e57890a102f62a5893ab0d6ee",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b136.jpg",
+    "originalSha256": "d2f4d6fd47d52f55ae770173c327cc516530a487f55b00ccac0c88b79499e3e7",
+    "masterPath": "content/assets-masters/questions/b136.png",
+    "masterSha256": "7fde3c3059ba3084e88659afe635d98acffcf07e57890a102f62a5893ab0d6ee",
+    "candidateSha256": "7523f25cbcd4fd29a545630bd11f4b20ac2f766c79907914698e84a6fdd73050",
+    "inferenceSha256": "5f19d84d16a7a98ab837df249979ef354d560e707487e0f07ad06bbde8249e55",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

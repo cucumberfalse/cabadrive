@@ -1,0 +1,30 @@
+{
+  "imageId": "question-image-b75",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:39:28.630Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "rejected",
+  "observations": [
+    "Circled car, straight arrows and crossing geometry remain. Enlarged RESTAURANTE storefront lettering loses separate source letter strokes and becomes fused angular shapes."
+  ],
+  "rejectionReason": "Storefront letter contours are not source-faithful.",
+  "candidateSha256": "0c0367dddff82c0b099b89491cd89f36cbe69df3b73647124155683579f6df21",
+  "originalSha256": "db86a238778e1823bb5fe34b1738fee5c595c3640a255d18631aa0052382b565",
+  "fallbackObservations": [
+    "Fallback preserves original RESTAURANTE letter strokes and storefront emblem, with circled car, straight arrows and crossing geometry unchanged."
+  ],
+  "fallbackReviewedAt": "2026-10-13T17:47:00.382Z",
+  "fallbackReviewer": "Implementation Agent (Codex)",
+  "fallbackSha256": "845a8f0847c7821c21444c7e30082f4032d4e35e1dff1dee54f00cdd199e9030",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b75.jpg",
+    "originalSha256": "db86a238778e1823bb5fe34b1738fee5c595c3640a255d18631aa0052382b565",
+    "masterPath": "content/assets-masters/questions/b75.png",
+    "masterSha256": "845a8f0847c7821c21444c7e30082f4032d4e35e1dff1dee54f00cdd199e9030",
+    "candidateSha256": "0c0367dddff82c0b099b89491cd89f36cbe69df3b73647124155683579f6df21",
+    "inferenceSha256": "1ff32ae4abb122be133f4daf2bcd7bcc86872852883e77218f7606860ad569d2",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

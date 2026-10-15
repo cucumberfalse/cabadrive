@@ -1,0 +1,23 @@
+{
+  "imageId": "question-image-b28",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:24:51.005Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "Native EDIFICIO LAHUSEN facade crop retains letters and word spacing; redcar before redpainted crossing and white zebra endpoints retain placement."
+  ],
+  "candidateSha256": "b8d527cea3f80467e39343788c549f364d40c45df04b6dc093a540be90b69a52",
+  "originalSha256": "abd906cfbf0291b6f83c561a24aa15b9855ac397f4959644676030ea4c62e5aa",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b28.jpg",
+    "originalSha256": "abd906cfbf0291b6f83c561a24aa15b9855ac397f4959644676030ea4c62e5aa",
+    "masterPath": "content/assets-masters/questions/b28.png",
+    "masterSha256": "b8d527cea3f80467e39343788c549f364d40c45df04b6dc093a540be90b69a52",
+    "candidateSha256": "b8d527cea3f80467e39343788c549f364d40c45df04b6dc093a540be90b69a52",
+    "inferenceSha256": "d855316cf4c4c3a43595a99e13253825a4d0d4a55bcdaac723cc1d2d83a3b147",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

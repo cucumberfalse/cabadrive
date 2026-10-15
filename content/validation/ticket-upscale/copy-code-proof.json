@@ -1,0 +1,12 @@
+{
+  "checkedAt": "2026-10-13T20:09:04.396Z",
+  "method": "verified independent APFS clone",
+  "files": 8936,
+  "logicalBytes": 1130094828,
+  "matchingCloneIdsOrEmpty": 8936,
+  "unprovenDataBytes": 0,
+  "privateDataBytes": 0,
+  "directories": 264,
+  "independentModificationVerified": true,
+  "productionJournalRecords": 275
+}

@@ -1,0 +1,29 @@
+{
+  "imageId": "question-image-b146",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b146.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b146.png",
+  "originalSha256": "e5097343cd38553643f369b959b61a7108eb850071de23cba8ecf81e60a01d81",
+  "candidateSha256": "17b7256cd990ce2ca85323d734f959c74c84d6a7a16fd732800538bd10304568",
+  "reviewer": "image_review",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "Skidding-car diamond icon keeps both winding tracks, car silhouette and colors; motorcycle, double center lines and road curve preserved."
+  ],
+  "rejectionReason": null,
+  "reviewedAt": "2026-10-13T17:02:15.466654+00:00",
+  "inspectionArtifacts": [
+    "/private/tmp/cabadrive-057-review-b140-b220-b145-b146-b147-b148-b149.png"
+  ],
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b146.jpg",
+    "originalSha256": "e5097343cd38553643f369b959b61a7108eb850071de23cba8ecf81e60a01d81",
+    "masterPath": "content/assets-masters/questions/b146.png",
+    "masterSha256": "17b7256cd990ce2ca85323d734f959c74c84d6a7a16fd732800538bd10304568",
+    "candidateSha256": "17b7256cd990ce2ca85323d734f959c74c84d6a7a16fd732800538bd10304568",
+    "inferenceSha256": "c886fdd5be0077cf24390105f5776eccd5513b90f1fa1135da34461c87bfb836",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

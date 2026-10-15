@@ -1,0 +1,26 @@
+{
+  "imageId": "question-image-b272",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b272.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b272.png",
+  "originalSha256": "95da68334ab84bce521c4becd8bf47dbb8b9b8622b43628ca07c717bf76c97d0",
+  "candidateSha256": "722544f4db0a923e6e85b102726283a6949daf89ff61997b465fce3e22ddacbc",
+  "reviewer": "Supplemental Review Agent /root/image_review_tail (Codex)",
+  "reviewedAt": "2026-10-13T17:20:36.731035+00:00",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "Parking panel retains the large black E in its white upper inset and full white ESTACIONAMIENTO on blue below.",
+    "Actual enlarged lower-label crop preserves every letter in ESTACIONAMIENTO without invented strokes or a changed sequence; sign frame and word placement remain faithful."
+  ],
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b272.jpg",
+    "originalSha256": "95da68334ab84bce521c4becd8bf47dbb8b9b8622b43628ca07c717bf76c97d0",
+    "masterPath": "content/assets-masters/questions/b272.png",
+    "masterSha256": "722544f4db0a923e6e85b102726283a6949daf89ff61997b465fce3e22ddacbc",
+    "candidateSha256": "722544f4db0a923e6e85b102726283a6949daf89ff61997b465fce3e22ddacbc",
+    "inferenceSha256": "85d5fbe77c8eb0a448775c4c6c17a46483734c83c5544463522f8c0b2357bab2",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

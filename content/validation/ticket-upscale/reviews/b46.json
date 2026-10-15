@@ -1,0 +1,30 @@
+{
+  "imageId": "question-image-b46",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:30:13.200Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "rejected",
+  "observations": [
+    "Actually viewed batch document again: large44578918 and6NOV2013 remain, while REGISTRO NACIONAL header and fine administrative labels/signature contours become malformed synthetic glyphs."
+  ],
+  "rejectionReason": "Document header, fine labels and signature/stamp lettering are reconstructed as malformed glyph strokes; actual sanity DSSIM also exceeds0.02.",
+  "candidateSha256": "e02dca22ef4986583e3ed1d9f3815f18390555056d35748e29c04e53c580b299",
+  "originalSha256": "1274c6a048f3c0a4d4a8a57ffc03cedda476b434dcdf2ea4e323ab76b07ef154",
+  "fallbackObservations": [
+    "Fallback preserves REGISTRO header, fine administrative labels and signature/stamp stroke contours,44578918 and6NOV2013 without invented glyphs."
+  ],
+  "fallbackReviewedAt": "2026-10-13T17:46:29.971Z",
+  "fallbackReviewer": "Implementation Agent (Codex)",
+  "fallbackSha256": "54da651fd566300b7b9ff993d901ebec098a8d0e009becc47a678bbddf42fa7d",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b46.jpg",
+    "originalSha256": "1274c6a048f3c0a4d4a8a57ffc03cedda476b434dcdf2ea4e323ab76b07ef154",
+    "masterPath": "content/assets-masters/questions/b46.png",
+    "masterSha256": "54da651fd566300b7b9ff993d901ebec098a8d0e009becc47a678bbddf42fa7d",
+    "candidateSha256": "e02dca22ef4986583e3ed1d9f3815f18390555056d35748e29c04e53c580b299",
+    "inferenceSha256": "23d0e9d37013b0db26a07152fa7a1a84f033738a0e9618ff9ee2423ebcf9c5d8",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

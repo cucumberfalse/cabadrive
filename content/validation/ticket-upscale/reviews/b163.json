@@ -1,0 +1,36 @@
+{
+  "imageId": "question-image-b163",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b163.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b163.png",
+  "originalSha256": "a58cd44ca67f0a925e0e022f5beffa115b1c2707f00bf55a74983b5fcac617ed",
+  "candidateSha256": "e6a9b44ea30119967060addf4427ca7590b960e91188c88793f575fc885756a0",
+  "reviewer": "image_review",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "rejected",
+  "observations": [
+    "Enlarged green shop fascia changes name lettering into malformed b/connector-like shapes; crossing stripes retained but storefront text reconstruction is unreliable."
+  ],
+  "rejectionReason": "Enlarged green shop fascia changes name lettering into malformed b/connector-like shapes; crossing stripes retained but storefront text reconstruction is unreliable.",
+  "reviewedAt": "2026-10-13T17:03:49.016948+00:00",
+  "inspectionArtifacts": [
+    "/private/tmp/cabadrive-057-review-b140-b220-detail-b163-.01-.15-.19-.10.png",
+    "/private/tmp/cabadrive-057-review-b140-b220-b160-b161-b162-b163-b164.png"
+  ],
+  "fallbackObservations": [
+    "Fallback preserves the corner green storefront cursive writing and small blue wall plaque at source softness, with unchanged zebra/green lane."
+  ],
+  "fallbackReviewedAt": "2026-10-13T17:44:15.333Z",
+  "fallbackReviewer": "Implementation Agent (Codex)",
+  "fallbackSha256": "f70e2f6688ce1e41866a1b57d82fc1ea4af98752a33eac9c267c16d74de255c2",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b163.jpg",
+    "originalSha256": "a58cd44ca67f0a925e0e022f5beffa115b1c2707f00bf55a74983b5fcac617ed",
+    "masterPath": "content/assets-masters/questions/b163.png",
+    "masterSha256": "f70e2f6688ce1e41866a1b57d82fc1ea4af98752a33eac9c267c16d74de255c2",
+    "candidateSha256": "e6a9b44ea30119967060addf4427ca7590b960e91188c88793f575fc885756a0",
+    "inferenceSha256": "452e4bc5873ea48bd153fc865cf9fcbdd4479978e569b3d827f6d11814a982eb",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

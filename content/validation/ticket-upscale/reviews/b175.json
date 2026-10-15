@@ -1,0 +1,29 @@
+{
+  "imageId": "question-image-b175",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b175.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b175.png",
+  "originalSha256": "4650ad0466aa3d5cbd122715ece7d17e055274cd52bf14a5ab4a3022a087beb1",
+  "candidateSha256": "a0a39d6453bdca8ab3ecce99f7254f42ccf796d78835bfbdea014825045e1e22",
+  "reviewer": "image_review",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "NHN737 plate and circular highlights on both rear lamps retained; car outline, E sign and curb geometry preserved."
+  ],
+  "rejectionReason": null,
+  "reviewedAt": "2026-10-13T17:05:40.133636+00:00",
+  "inspectionArtifacts": [
+    "/private/tmp/cabadrive-057-review-b140-b220-b175-b176-b177-b178-b179.png"
+  ],
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b175.jpg",
+    "originalSha256": "4650ad0466aa3d5cbd122715ece7d17e055274cd52bf14a5ab4a3022a087beb1",
+    "masterPath": "content/assets-masters/questions/b175.png",
+    "masterSha256": "a0a39d6453bdca8ab3ecce99f7254f42ccf796d78835bfbdea014825045e1e22",
+    "candidateSha256": "a0a39d6453bdca8ab3ecce99f7254f42ccf796d78835bfbdea014825045e1e22",
+    "inferenceSha256": "0f0b4625723a10068a38173bd031bf4c0dee6d09acd992d886fe3b6e69d70f37",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

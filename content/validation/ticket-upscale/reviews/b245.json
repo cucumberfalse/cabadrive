@@ -1,0 +1,25 @@
+{
+  "imageId": "question-image-b245",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b245.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b245.png",
+  "originalSha256": "e283fca2a9fed9cc611f3153b2f3234bc336ca3a9897df86449f1c2da512bc27",
+  "candidateSha256": "7dc5eff9a74a0172edf67f5657dded880746bd696127f9fd8af5d4eaea8be30f",
+  "reviewer": "Supplemental Review Agent /root/image_review_tail (Codex)",
+  "reviewedAt": "2026-10-13T17:18:30.085747+00:00",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "White square keeps one broad red right-pointing chevron with the same center notch and right-edge tip; thin border and white triangular negative space are unchanged."
+  ],
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b245.jpg",
+    "originalSha256": "e283fca2a9fed9cc611f3153b2f3234bc336ca3a9897df86449f1c2da512bc27",
+    "masterPath": "content/assets-masters/questions/b245.png",
+    "masterSha256": "7dc5eff9a74a0172edf67f5657dded880746bd696127f9fd8af5d4eaea8be30f",
+    "candidateSha256": "7dc5eff9a74a0172edf67f5657dded880746bd696127f9fd8af5d4eaea8be30f",
+    "inferenceSha256": "d5c76d73b4217f4790038c1adec5e57df5c4d88fa6a91b1a9bec3336075d910c",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

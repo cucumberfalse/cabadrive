@@ -1,0 +1,23 @@
+{
+  "imageId": "question-image-b24",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:22:22.561Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "Lit red standing pedestrian figure and four corner brackets retain their shape and exact position; lower unlit walking silhouette remains faint and unchanged."
+  ],
+  "candidateSha256": "04727cefee0ecaac2a6a358309b5ec678b453e87439d1601da1d8e689fa3385f",
+  "originalSha256": "59cc5b8cdd0079311e9ca0ba6bbce2016241b321ae391e2f50f0e3ff21e9f988",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b24.jpg",
+    "originalSha256": "59cc5b8cdd0079311e9ca0ba6bbce2016241b321ae391e2f50f0e3ff21e9f988",
+    "masterPath": "content/assets-masters/questions/b24.png",
+    "masterSha256": "04727cefee0ecaac2a6a358309b5ec678b453e87439d1601da1d8e689fa3385f",
+    "candidateSha256": "04727cefee0ecaac2a6a358309b5ec678b453e87439d1601da1d8e689fa3385f",
+    "inferenceSha256": "9fdceeed899b2da7ccd77c2346a24a0803e3812da041ac8804f2e1a465fb51c2",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

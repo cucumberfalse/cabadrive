@@ -1,0 +1,35 @@
+{
+  "imageId": "question-image-b119",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T16:57:29.030Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "A/B/C markers stay above blue, black and white cars in the same queued order; solid white lane edge and truck at distance preserve their relative spacing."
+  ],
+  "candidateSha256": "3eb9537063d74752fbe42d513d5b768b320c8eac88804c79fe671eb75153307b",
+  "originalSha256": "7a09307e8f1e06709a0b958c706c49448796f507a3504509e4ca29e6647accc7",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b119.jpg",
+    "originalSha256": "7a09307e8f1e06709a0b958c706c49448796f507a3504509e4ca29e6647accc7",
+    "masterPath": "content/assets-masters/questions/b119.png",
+    "masterSha256": "3eb9537063d74752fbe42d513d5b768b320c8eac88804c79fe671eb75153307b",
+    "candidateSha256": "3eb9537063d74752fbe42d513d5b768b320c8eac88804c79fe671eb75153307b",
+    "inferenceSha256": "e53f93a1227d1dc2bbb1d3e30ec8f3bed202be967e27e794322c72ed6f916dba",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  },
+  "classificationCorrection": {
+    "reviewer": "Implementation Agent (Codex)",
+    "reviewedAt": "2026-10-14T23:51:51.129Z",
+    "method": "IF030 independently governed classification correction with paired-image spot review",
+    "previousTextOrSign": false,
+    "previousReviewSha256": "263193c9abf13ab41d5f4f966af71f6170e88f5b1ac7372e7963cbae7fc7c78f",
+    "basis": "Large explicit A/B/C labels above queued vehicles.",
+    "scope": "Review-scope flag only; no OCR, exact glyph readability, pixel-quality recertification or new metric approval.",
+    "governedMapSha256": "12a63bed30d1576e727ace09ee73530fa68e798284feedc8f9903ecac61a98b1",
+    "independentAuditSha256": "bce8d6427e1d09d2562af7f88185a990622d1bb0c3da5fe2a0105be7c2f129d9",
+    "independentMapReviewSha256": "a6b68b37c0579202b6eee3cce6ea75582855fd3fcc9a7da21a8fe316243b95fe"
+  }
+}

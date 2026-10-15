@@ -1,0 +1,35 @@
+{
+  "imageId": "question-image-b14",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:09:29.735Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "Circled cyclist arm remains raised with bent elbow and open hand; backpack, helmet and bike orientation retain their source shapes. Same parked cars and lane/crossing marks surround the cyclist."
+  ],
+  "candidateSha256": "0a66214c72c6618d577e3ce8dcabf344498ca08eb8786f005a218ae820239e94",
+  "originalSha256": "8f33d1aef65ad140a19ecabc86c53890cf3a0ad61f3d1e1b1b78629d8e63054d",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b14.jpg",
+    "originalSha256": "8f33d1aef65ad140a19ecabc86c53890cf3a0ad61f3d1e1b1b78629d8e63054d",
+    "masterPath": "content/assets-masters/questions/b14.png",
+    "masterSha256": "0a66214c72c6618d577e3ce8dcabf344498ca08eb8786f005a218ae820239e94",
+    "candidateSha256": "0a66214c72c6618d577e3ce8dcabf344498ca08eb8786f005a218ae820239e94",
+    "inferenceSha256": "04e28c4e3079a1984cf8bb818fbe69049bc9aba6cbff422a58824d1922622ac3",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  },
+  "classificationCorrection": {
+    "reviewer": "Implementation Agent (Codex)",
+    "reviewedAt": "2026-10-14T23:51:51.129Z",
+    "method": "IF030 independently governed classification correction with paired-image spot review",
+    "previousTextOrSign": false,
+    "previousReviewSha256": "c86d2f1717c59f43b450540076135aa476cde5d74bfac95eb858e988c9ce4936",
+    "basis": "Ambiguous storefront and vehicle plate fields; raised arm alone is not a sign.",
+    "scope": "Review-scope flag only; no OCR, exact glyph readability, pixel-quality recertification or new metric approval.",
+    "governedMapSha256": "12a63bed30d1576e727ace09ee73530fa68e798284feedc8f9903ecac61a98b1",
+    "independentAuditSha256": "bce8d6427e1d09d2562af7f88185a990622d1bb0c3da5fe2a0105be7c2f129d9",
+    "independentMapReviewSha256": "a6b68b37c0579202b6eee3cce6ea75582855fd3fcc9a7da21a8fe316243b95fe"
+  }
+}

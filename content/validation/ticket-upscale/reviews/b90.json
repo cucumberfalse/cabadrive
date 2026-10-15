@@ -1,0 +1,23 @@
+{
+  "imageId": "question-image-b90",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:41:44.562Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "The large white E, diamond outline and grey background retain their exact shape, spacing and orientation."
+  ],
+  "candidateSha256": "e9586dbb753544309753b09cd5d97928dc6e9268b35485ecbb07f4d008feeca0",
+  "originalSha256": "566144a847a0f133815b0e29a2fad42796ca09d6434d4190268cb727c808338a",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b90.jpg",
+    "originalSha256": "566144a847a0f133815b0e29a2fad42796ca09d6434d4190268cb727c808338a",
+    "masterPath": "content/assets-masters/questions/b90.png",
+    "masterSha256": "e9586dbb753544309753b09cd5d97928dc6e9268b35485ecbb07f4d008feeca0",
+    "candidateSha256": "e9586dbb753544309753b09cd5d97928dc6e9268b35485ecbb07f4d008feeca0",
+    "inferenceSha256": "532a138cc2902bea4b3d172288176141aad449523179b34c6db4fccf805a5433",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

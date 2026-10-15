@@ -1,0 +1,23 @@
+{
+  "imageId": "question-image-b58",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:32:48.699Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "A earbud wire behind driver ear and B openhand by rearviewmirror preserve poses; A/B labels, roofcontrols and mirror reflection orientation unchanged."
+  ],
+  "candidateSha256": "3f1cd437c1237e265f43652d8dc157b03de1fdf1a5e5e687b611405c307ed0af",
+  "originalSha256": "b114489f57d490dd3c411e5ea9cb590ad392bed725bec1bbe22944ff8e951a08",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b58.jpg",
+    "originalSha256": "b114489f57d490dd3c411e5ea9cb590ad392bed725bec1bbe22944ff8e951a08",
+    "masterPath": "content/assets-masters/questions/b58.png",
+    "masterSha256": "3f1cd437c1237e265f43652d8dc157b03de1fdf1a5e5e687b611405c307ed0af",
+    "candidateSha256": "3f1cd437c1237e265f43652d8dc157b03de1fdf1a5e5e687b611405c307ed0af",
+    "inferenceSha256": "85aaf6b8b77f15262ad09079c0e77ce5d2762b381ab5ca078dbfacee009698a6",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

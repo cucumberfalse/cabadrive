@@ -1,0 +1,30 @@
+{
+  "imageId": "question-image-b99",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:42:04.036Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "rejected",
+  "observations": [
+    "A/B circles, green bicycle lane and crossing retain their placement. Actual enlarged corner plaque replaces fine original light letter strokes with disconnected flat white bars."
+  ],
+  "rejectionReason": "Corner street-plaque lettering is reconstructed into bars.",
+  "candidateSha256": "2de736dadeae9236e5335397105332c3aba027ce430e4d86c23c48bbdf869577",
+  "originalSha256": "a82982ab6cd164e3e5977e4265e0ea8928580876e37f7999692bb64e7b64e338",
+  "fallbackObservations": [
+    "Fallback keeps original small corner-plaque light-letter strokes, A/B circles, green bicycle lane and crossing stripes."
+  ],
+  "fallbackReviewedAt": "2026-10-13T17:47:00.408Z",
+  "fallbackReviewer": "Implementation Agent (Codex)",
+  "fallbackSha256": "4667eb51925e0cf6273a2cc880438974512ae927e66dab2cce65a901b9241be3",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b99.jpg",
+    "originalSha256": "a82982ab6cd164e3e5977e4265e0ea8928580876e37f7999692bb64e7b64e338",
+    "masterPath": "content/assets-masters/questions/b99.png",
+    "masterSha256": "4667eb51925e0cf6273a2cc880438974512ae927e66dab2cce65a901b9241be3",
+    "candidateSha256": "2de736dadeae9236e5335397105332c3aba027ce430e4d86c23c48bbdf869577",
+    "inferenceSha256": "474a8a0cc7d67992c4700eed1e0c4e6c067fa8d7b19f2ca015d308c0755044bb",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

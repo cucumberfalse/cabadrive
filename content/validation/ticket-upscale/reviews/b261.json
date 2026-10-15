@@ -1,0 +1,25 @@
+{
+  "imageId": "question-image-b261",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b261.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b261.png",
+  "originalSha256": "125c164169a35e97c315cd2bba5b981a6034bce5bc61a57d593fba2130fe5d6d",
+  "candidateSha256": "794e9723f610878005acb2b28f23592a379d022d38506cc62287bd00d458d5de",
+  "reviewer": "Supplemental Review Agent /root/image_review_tail (Codex)",
+  "reviewedAt": "2026-10-13T17:19:46.748178+00:00",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "Two separate white arrows point down-left and down-right inside the muted blue circular field; central gap, arrow tips and pale outlined edge retain their source positions."
+  ],
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b261.jpg",
+    "originalSha256": "125c164169a35e97c315cd2bba5b981a6034bce5bc61a57d593fba2130fe5d6d",
+    "masterPath": "content/assets-masters/questions/b261.png",
+    "masterSha256": "794e9723f610878005acb2b28f23592a379d022d38506cc62287bd00d458d5de",
+    "candidateSha256": "794e9723f610878005acb2b28f23592a379d022d38506cc62287bd00d458d5de",
+    "inferenceSha256": "17172e62a5160aa4d2169997ca77bdea78868beec47a3d94ebf01471c2794019",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

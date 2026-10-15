@@ -6,7 +6,7 @@ COPY scripts/setup-image-native.mjs scripts/image-native-policy.mjs ./scripts/
 COPY scripts/image-qa-locks ./scripts/image-qa-locks
 RUN node scripts/setup-image-native.mjs --root /image-qa
 
-FROM node:22-alpine3.21 AS build
+FROM node:22-alpine3.21 AS image-pipeline-dependencies
 
 WORKDIR /app
 RUN corepack enable
@@ -15,9 +15,12 @@ COPY package.json pnpm-workspace.yaml ./
 COPY pnpm-lock.yaml* ./
 RUN if [ -f pnpm-lock.yaml ]; then pnpm install --frozen-lockfile; else pnpm install --no-frozen-lockfile; fi
 
-COPY . .
+FROM image-pipeline-dependencies AS image-pipeline-fixture-tools
 COPY --from=image-qa-tools /image-qa/bin/ ./.cache/image-qa/bin/
 COPY --from=image-qa-tools /image-qa/install-receipt.json ./.cache/image-qa/install-receipt.json
+
+FROM image-pipeline-fixture-tools AS build
+COPY . .
 RUN node --test tests/image-assets.test.mjs tests/image-pipeline.test.mjs
 RUN pnpm run build
 

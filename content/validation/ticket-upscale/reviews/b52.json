@@ -1,0 +1,23 @@
+{
+  "imageId": "question-image-b52",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:31:28.476Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "Native breathalyzer crop confirms exact0.60g/L reading with same decimal and unit strokes; greenbutton/displayborder and device angle unchanged, finer unclear labels remain indistinct."
+  ],
+  "candidateSha256": "8b966f05a545bf8590dc0a19980e012365073a1fd8117a7e31c83f61da6d4444",
+  "originalSha256": "37f3d2fb5f3d112add6263e6bc9897ee31ffa8e682436ed684f62a472fc02e17",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b52.jpg",
+    "originalSha256": "37f3d2fb5f3d112add6263e6bc9897ee31ffa8e682436ed684f62a472fc02e17",
+    "masterPath": "content/assets-masters/questions/b52.png",
+    "masterSha256": "8b966f05a545bf8590dc0a19980e012365073a1fd8117a7e31c83f61da6d4444",
+    "candidateSha256": "8b966f05a545bf8590dc0a19980e012365073a1fd8117a7e31c83f61da6d4444",
+    "inferenceSha256": "fc33a6ce9a71a070092d75a1ea3dc0ff7862ec10c2ff1ca6249347294e004762",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

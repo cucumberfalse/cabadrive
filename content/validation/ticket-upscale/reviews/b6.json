@@ -1,0 +1,35 @@
+{
+  "imageId": "question-image-b6",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:32:48.701Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "Cyclist helmetstrap, both gripping hands and brakecable routing retain original structure; basket and wristwatch positions unchanged."
+  ],
+  "candidateSha256": "2a38193219b50f346fe3347ab90f8072c1614089e1c42ea0c1bf03f890d3688e",
+  "originalSha256": "ccdd7023fda92f94a85dfd4a8880d31e8366486f4fd4ef07ecff469cf346e8cb",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b6.jpg",
+    "originalSha256": "ccdd7023fda92f94a85dfd4a8880d31e8366486f4fd4ef07ecff469cf346e8cb",
+    "masterPath": "content/assets-masters/questions/b6.png",
+    "masterSha256": "2a38193219b50f346fe3347ab90f8072c1614089e1c42ea0c1bf03f890d3688e",
+    "candidateSha256": "2a38193219b50f346fe3347ab90f8072c1614089e1c42ea0c1bf03f890d3688e",
+    "inferenceSha256": "4627c0cdf758bb1f21079ddbf628336eb099bbf4b352333f4601cd6ca1aacb2f",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  },
+  "classificationCorrection": {
+    "reviewer": "Implementation Agent (Codex)",
+    "reviewedAt": "2026-10-14T23:51:51.129Z",
+    "method": "IF030 independently governed classification correction with paired-image spot review",
+    "previousTextOrSign": false,
+    "previousReviewSha256": "fd381e07aac090fc08212fd4867fa943a29d9f81a78297b59a823c2710859da7",
+    "basis": "Ambiguous printed/plate-like bag panel and background billboard; no glyph transcription.",
+    "scope": "Review-scope flag only; no OCR, exact glyph readability, pixel-quality recertification or new metric approval.",
+    "governedMapSha256": "12a63bed30d1576e727ace09ee73530fa68e798284feedc8f9903ecac61a98b1",
+    "independentAuditSha256": "bce8d6427e1d09d2562af7f88185a990622d1bb0c3da5fe2a0105be7c2f129d9",
+    "independentMapReviewSha256": "a6b68b37c0579202b6eee3cce6ea75582855fd3fcc9a7da21a8fe316243b95fe"
+  }
+}

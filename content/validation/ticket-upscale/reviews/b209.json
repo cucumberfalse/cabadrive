@@ -1,0 +1,29 @@
+{
+  "imageId": "question-image-b209",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b209.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b209.png",
+  "originalSha256": "4e19d3ea5697d99c7968b63b0dde8318c17379eb5b525b7aebde2f83d89a1f35",
+  "candidateSha256": "5981b4e06a0cc8e327468b1f906f77cc78234a1d914ebd5901bac5d0dd5b250d",
+  "reviewer": "image_review",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "Separately viewed AIRBAG photo preserves embossed lettering/red ellipse, glovebox lock and vent; no label-letter substitution observed."
+  ],
+  "rejectionReason": null,
+  "reviewedAt": "2026-10-13T17:14:25.291728+00:00",
+  "inspectionArtifacts": [
+    "/private/tmp/cabadrive-057-review-b140-b220-b209-b210-b211-b212.png"
+  ],
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b209.jpg",
+    "originalSha256": "4e19d3ea5697d99c7968b63b0dde8318c17379eb5b525b7aebde2f83d89a1f35",
+    "masterPath": "content/assets-masters/questions/b209.png",
+    "masterSha256": "5981b4e06a0cc8e327468b1f906f77cc78234a1d914ebd5901bac5d0dd5b250d",
+    "candidateSha256": "5981b4e06a0cc8e327468b1f906f77cc78234a1d914ebd5901bac5d0dd5b250d",
+    "inferenceSha256": "a9b99c5e8790cb1dee48c98bea06ab897cfc6b415e106835eaeafde0188c3bbd",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

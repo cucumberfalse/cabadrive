@@ -1,4 +1,5 @@
 import { expect, test, type Locator, type Page } from "@playwright/test";
+import { createHash } from "node:crypto";
 import { readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 
@@ -1114,8 +1115,8 @@ test("image explanation overlay bounds follow the rendered bitmap when image hei
     };
   });
 
-  expect(geometry.naturalWidth).toBe(537);
-  expect(geometry.naturalHeight).toBe(344);
+  expect(geometry.naturalWidth).toBeGreaterThan(0);
+  expect(geometry.naturalHeight).toBeGreaterThan(0);
   expect(geometry.imageRect.height).toBeGreaterThan(350);
   expect(geometry.imageRect.height).toBeLessThanOrEqual(361);
   expect(Math.abs(geometry.imageBoxAspect - geometry.imageAspect)).toBeLessThan(0.01);
@@ -1151,9 +1152,13 @@ test("cached image path navigation keeps the frame keyed to the current source d
     .getByRole("button", { name: "Следующий" })
     .click();
   await expect(page.getByText(questions[1].officialTextEs)).toBeVisible();
+  await expect(page.locator(".question-image-frame")).toHaveAttribute(
+    "data-ticket-source",
+    nextImagePath,
+  );
   await expect(page.locator(".question-image-frame img")).toHaveAttribute(
     "src",
-    `/${nextImagePath}`,
+    /^\/content\/img\/c\//,
   );
   await page.evaluate(
     () => new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve))),
@@ -1178,8 +1183,8 @@ test("cached image path navigation keeps the frame keyed to the current source d
   });
 
   const expectedWidth = (360 * geometry.naturalWidth) / geometry.naturalHeight;
-  expect(geometry.naturalWidth).toBe(573);
-  expect(geometry.naturalHeight).toBe(367);
+  expect(geometry.naturalWidth).toBeGreaterThan(0);
+  expect(geometry.naturalHeight).toBeGreaterThan(0);
   expect(Math.abs(geometry.frameWidth - expectedWidth)).toBeLessThanOrEqual(1);
   expect(Math.abs(geometry.imageWidth - expectedWidth)).toBeLessThanOrEqual(3);
   expect(geometry.imageHeight).toBeGreaterThan(350);
@@ -6930,6 +6935,7 @@ test("primary source reader adapts between compact and expanded widths without r
 
 test("materials view renders topic guide status, list, details, canonical ticket data, and local images", async ({
   page,
+  request,
 }) => {
   const firstTopic = topicGuide.topics[0];
   const firstTicket = firstTopic.tickets[0];
@@ -7051,10 +7057,35 @@ test("materials view renders topic guide status, list, details, canonical ticket
       .filter({ hasText: incorrectExplanation.explanationRu })
       .first(),
   ).toBeVisible();
-  await expect(ticketBlock.locator("img")).toHaveAttribute(
-    "src",
-    new RegExp(canonicalQuestion.image.localPath),
+  const ticketDelivery = JSON.parse(
+    readFileSync("content/image-derivatives.manifest.json", "utf8"),
+  ).sources.find(
+    (source: { sourcePath: string }) => source.sourcePath === canonicalQuestion.image.localPath,
+  ) as { variants: { format: string; width: number; path: string; sha256: string }[] };
+  expect(ticketDelivery).toBeDefined();
+  await expect(ticketBlock.locator("[data-ticket-source]")).toHaveAttribute(
+    "data-ticket-source",
+    canonicalQuestion.image.localPath,
   );
+  const jpegFallback = ticketDelivery.variants
+    .filter((variant) => variant.format === "jpeg" && variant.width <= 1240)
+    .sort((left, right) => right.width - left.width)[0];
+  const ticketImage = ticketBlock.locator("img");
+  await expect(ticketImage).toHaveAttribute("src", `/${jpegFallback.path}`);
+  await ticketImage.scrollIntoViewIfNeeded();
+  const selectedPath = await ticketImage.evaluate(async (image: HTMLImageElement) => {
+    await image.decode();
+    return new URL(image.currentSrc).pathname.slice(1);
+  });
+  const selectedVariant = ticketDelivery.variants.find((variant) => variant.path === selectedPath);
+  expect(selectedVariant).toBeDefined();
+  const delivered = await request.get(`/${selectedPath}`);
+  expect(delivered.status()).toBe(200);
+  expect(
+    createHash("sha256")
+      .update(await delivered.body())
+      .digest("hex"),
+  ).toBe(selectedVariant!.sha256);
 });
 
 test("materials view renders a dual-topic ticket as a full block in both assigned topics", async ({

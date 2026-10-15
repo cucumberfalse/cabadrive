@@ -1,0 +1,23 @@
+{
+  "imageId": "question-image-b3",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:24:51.007Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "Yellow A and B circles remain over bicycle-side and busy-carriageway panels respectively; cyclist hands/handlebars and dense vehicle rows preserve source relationships."
+  ],
+  "candidateSha256": "80be839f59c689f39fbbc6f690b6f303bcb4e5ffeaa7615c337065db8339abfd",
+  "originalSha256": "86280dfc86809157890bdecb69a8106e3023aeafb7fa7fd0f4eadcc160d509f4",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b3.jpg",
+    "originalSha256": "86280dfc86809157890bdecb69a8106e3023aeafb7fa7fd0f4eadcc160d509f4",
+    "masterPath": "content/assets-masters/questions/b3.png",
+    "masterSha256": "80be839f59c689f39fbbc6f690b6f303bcb4e5ffeaa7615c337065db8339abfd",
+    "candidateSha256": "80be839f59c689f39fbbc6f690b6f303bcb4e5ffeaa7615c337065db8339abfd",
+    "inferenceSha256": "1afac5ec3a607c187aca4d81f9d7154e81a419b3c3c5ff72899813e00f25dcd7",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

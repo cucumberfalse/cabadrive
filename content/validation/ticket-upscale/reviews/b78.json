@@ -1,0 +1,30 @@
+{
+  "imageId": "question-image-b78",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:39:28.631Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "rejected",
+  "observations": [
+    "White broken lane marks and the red ellipse remain. Actual enlarged rear plate shows original separate blurred dark characters becoming merged angular black shapes and a flat white lower bar."
+  ],
+  "rejectionReason": "Rear-plate characters are reconstructed into different shapes.",
+  "candidateSha256": "9f6f2296b39da26fc553710a77288db6d8a25652fb382478430351b5a2369026",
+  "originalSha256": "946e672e4ea2b647e8c51db0d1c1f1fffea937098b2c8e79063f054959a62775",
+  "fallbackObservations": [
+    "Fallback keeps original softly separated rear-plate characters, broken white lane marks and red ellipse without inventing angular glyphs."
+  ],
+  "fallbackReviewedAt": "2026-10-13T17:47:00.385Z",
+  "fallbackReviewer": "Implementation Agent (Codex)",
+  "fallbackSha256": "0724e31b7f3dc80cb46249eec728ebedf2408e2c7478644d888a422c4ae24ca6",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b78.jpg",
+    "originalSha256": "946e672e4ea2b647e8c51db0d1c1f1fffea937098b2c8e79063f054959a62775",
+    "masterPath": "content/assets-masters/questions/b78.png",
+    "masterSha256": "0724e31b7f3dc80cb46249eec728ebedf2408e2c7478644d888a422c4ae24ca6",
+    "candidateSha256": "9f6f2296b39da26fc553710a77288db6d8a25652fb382478430351b5a2369026",
+    "inferenceSha256": "a155375e14f965a3d0de5e2c93864abc995f491efaed8509cbdc0a0ab355e3ad",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "imageId": "question-image-b145",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b145.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b145.png",
+  "originalSha256": "93bc47a55b00128741141e9f6c2112ef4a3131b09dff9db993e6e80a7d527240",
+  "candidateSha256": "c67655514b4dc29fee4500d82bab08bcef33615f2571b834023126648364f582",
+  "reviewer": "image_review",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "Double-yellow curved center lines, white edge lines, approaching vehicles and left chevron shape retained; road grain softened without lane topology change."
+  ],
+  "rejectionReason": null,
+  "reviewedAt": "2026-10-13T17:02:15.465387+00:00",
+  "inspectionArtifacts": [
+    "/private/tmp/cabadrive-057-review-b140-b220-b145-b146-b147-b148-b149.png"
+  ],
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b145.jpg",
+    "originalSha256": "93bc47a55b00128741141e9f6c2112ef4a3131b09dff9db993e6e80a7d527240",
+    "masterPath": "content/assets-masters/questions/b145.png",
+    "masterSha256": "c67655514b4dc29fee4500d82bab08bcef33615f2571b834023126648364f582",
+    "candidateSha256": "c67655514b4dc29fee4500d82bab08bcef33615f2571b834023126648364f582",
+    "inferenceSha256": "5dffeaeb56723ea5f64d5ff28ab40a667ceed30992fae443d0e00cf305853ec2",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

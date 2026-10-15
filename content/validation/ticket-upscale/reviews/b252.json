@@ -1,0 +1,25 @@
+{
+  "imageId": "question-image-b252",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b252.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b252.png",
+  "originalSha256": "c561f4d5ecb011a54c70465857b45369b5f43aef803488f26aa9bbca6d2418c1",
+  "candidateSha256": "21fde7bbd0eb6b13d447a933d0a754ee4fcb6280433331e5d880d4bcb6c4f67d",
+  "reviewer": "Supplemental Review Agent /root/image_review_tail (Codex)",
+  "reviewedAt": "2026-10-13T17:18:45.634970+00:00",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "Black right-pointing horizontal arrow remains beside the rear-view truck; paired cargo doors, central latch, two white lower reflectors and two wheels retain count and placement inside the red circle."
+  ],
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b252.jpg",
+    "originalSha256": "c561f4d5ecb011a54c70465857b45369b5f43aef803488f26aa9bbca6d2418c1",
+    "masterPath": "content/assets-masters/questions/b252.png",
+    "masterSha256": "21fde7bbd0eb6b13d447a933d0a754ee4fcb6280433331e5d880d4bcb6c4f67d",
+    "candidateSha256": "21fde7bbd0eb6b13d447a933d0a754ee4fcb6280433331e5d880d4bcb6c4f67d",
+    "inferenceSha256": "c0cfd546014abe838850e4cb1c383c0db3b2874f6c2e7994be664e5b48b53ade",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

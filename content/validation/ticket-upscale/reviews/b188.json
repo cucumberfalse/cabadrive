@@ -1,0 +1,29 @@
+{
+  "imageId": "question-image-b188",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b188.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b188.png",
+  "originalSha256": "a45db5ae737ba6f553ba335e404b64c475ba6068350a9c55c4abb7cfe923f15e",
+  "candidateSha256": "e175f2d3320d3abe8f6e599c77e382c60f6ce664450393ef7f407d19cb8883ea",
+  "reviewer": "image_review",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": false,
+  "status": "accepted",
+  "observations": [
+    "Fog bank obscures road horizon to same extent; double yellow center and white shoulder line keep placement, no fabricated distant signs/vehicles."
+  ],
+  "rejectionReason": null,
+  "reviewedAt": "2026-10-13T17:07:28.925247+00:00",
+  "inspectionArtifacts": [
+    "/private/tmp/cabadrive-057-review-b140-b220-b185-b186-b187-b188-b189.png"
+  ],
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b188.jpg",
+    "originalSha256": "a45db5ae737ba6f553ba335e404b64c475ba6068350a9c55c4abb7cfe923f15e",
+    "masterPath": "content/assets-masters/questions/b188.png",
+    "masterSha256": "e175f2d3320d3abe8f6e599c77e382c60f6ce664450393ef7f407d19cb8883ea",
+    "candidateSha256": "e175f2d3320d3abe8f6e599c77e382c60f6ce664450393ef7f407d19cb8883ea",
+    "inferenceSha256": "d2d25e12ca857a51b9017bf7c18003a5946484e6df374e4e9e3ea1a8d374b59e",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "imageId": "question-image-b69",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:33:53.721Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "Red oval remains around rear-facing officer whose rightforearm is vertical and left hand on hip; yellowbarrier and nearby silvercar remain in same positions."
+  ],
+  "candidateSha256": "d12182ef0956aa88501206941e56bfebdbbfc811a17740257c0c9ef354451352",
+  "originalSha256": "59ac5a1e96d90c690cafa2c82abd5782c08c22e63692e9675f3d82b75ed26bc0",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b69.jpg",
+    "originalSha256": "59ac5a1e96d90c690cafa2c82abd5782c08c22e63692e9675f3d82b75ed26bc0",
+    "masterPath": "content/assets-masters/questions/b69.png",
+    "masterSha256": "d12182ef0956aa88501206941e56bfebdbbfc811a17740257c0c9ef354451352",
+    "candidateSha256": "d12182ef0956aa88501206941e56bfebdbbfc811a17740257c0c9ef354451352",
+    "inferenceSha256": "39809ed5b3ccd99869dc5ba641dd8b68c3070908dd0404d5885a25bdcaaa6435",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  },
+  "classificationCorrection": {
+    "reviewer": "Implementation Agent (Codex)",
+    "reviewedAt": "2026-10-14T23:51:51.129Z",
+    "method": "IF030 independently governed classification correction with paired-image spot review",
+    "previousTextOrSign": false,
+    "previousReviewSha256": "8531d811b1bc498d2509de28a2415b51a1805bfc87ca78301c8ac95657c4ea3e",
+    "basis": "Confirmed shirt letter strokes separated by harness; logo wording unresolved.",
+    "scope": "Review-scope flag only; no OCR, exact glyph readability, pixel-quality recertification or new metric approval.",
+    "governedMapSha256": "12a63bed30d1576e727ace09ee73530fa68e798284feedc8f9903ecac61a98b1",
+    "independentAuditSha256": "bce8d6427e1d09d2562af7f88185a990622d1bb0c3da5fe2a0105be7c2f129d9",
+    "independentMapReviewSha256": "a6b68b37c0579202b6eee3cce6ea75582855fd3fcc9a7da21a8fe316243b95fe"
+  }
+}

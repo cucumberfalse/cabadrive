@@ -1,0 +1,25 @@
+{
+  "imageId": "question-image-b237",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b237.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b237.png",
+  "originalSha256": "1ff444eb22695258711ef8c176c5b46fe8a1b4c35fbcb2184d0ec7c51e10f9b9",
+  "candidateSha256": "e0f383976f512875a25b4cac0a4d03da5bdf11b70dbf59cb09ea9f44a7135859",
+  "reviewer": "Supplemental Review Agent /root/image_review_tail (Codex)",
+  "reviewedAt": "2026-10-13T17:17:29.495576+00:00",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "Two black road edges narrow symmetrically toward the upper half with the same inward bends and continuous central gap; no arrowheads or additional road branch appears."
+  ],
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b237.jpg",
+    "originalSha256": "1ff444eb22695258711ef8c176c5b46fe8a1b4c35fbcb2184d0ec7c51e10f9b9",
+    "masterPath": "content/assets-masters/questions/b237.png",
+    "masterSha256": "e0f383976f512875a25b4cac0a4d03da5bdf11b70dbf59cb09ea9f44a7135859",
+    "candidateSha256": "e0f383976f512875a25b4cac0a4d03da5bdf11b70dbf59cb09ea9f44a7135859",
+    "inferenceSha256": "3517c22cd76a516cd34ea112e7437c2b638642ae1fab9865513913c433d3f514",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

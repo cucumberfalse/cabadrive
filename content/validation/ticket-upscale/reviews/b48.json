@@ -1,0 +1,30 @@
+{
+  "imageId": "question-image-b48",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:30:13.211Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "rejected",
+  "observations": [
+    "A/B labels, VTV and2019 retained but QR modules and small verification fineprint change their source shapes; actual batch matches already inspected pilot candidate."
+  ],
+  "rejectionReason": "QR module contours and fine verification lettering are reconstructed inconsistently with source.",
+  "candidateSha256": "789bd22dfe4e66d7f69ef91a42b36bfc0597dfc31a7125432a8b9f63f7a3f4b9",
+  "originalSha256": "87f59b8f584f7720af46d8e9cb682f1600496ef10543f69fed32d954aeaae6d9",
+  "fallbackObservations": [
+    "Fallback retains the original QR-module arrangement, fine verification writing,001171401 and2019, plus A/B labels and pixelated panel."
+  ],
+  "fallbackReviewedAt": "2026-10-13T17:46:29.973Z",
+  "fallbackReviewer": "Implementation Agent (Codex)",
+  "fallbackSha256": "192f578590d8d426947bef99b659ead45d1b135279bb03c38dd5846023f32ead",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b48.jpg",
+    "originalSha256": "87f59b8f584f7720af46d8e9cb682f1600496ef10543f69fed32d954aeaae6d9",
+    "masterPath": "content/assets-masters/questions/b48.png",
+    "masterSha256": "192f578590d8d426947bef99b659ead45d1b135279bb03c38dd5846023f32ead",
+    "candidateSha256": "789bd22dfe4e66d7f69ef91a42b36bfc0597dfc31a7125432a8b9f63f7a3f4b9",
+    "inferenceSha256": "7bf9284fabcf5b03956c0e23efc1c47537cb5586046b3e5a1bab7475ff6a2687",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

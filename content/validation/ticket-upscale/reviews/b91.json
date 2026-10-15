@@ -1,0 +1,23 @@
+{
+  "imageId": "question-image-b91",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:41:44.562Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "Cars labelled1 and2, right arrows, broken separating line, medical cross and vertical AMBULANCIA lettering retain their arrangement."
+  ],
+  "candidateSha256": "7bcc9fe355dd9f3f9beff8fade3794c0b196a74d264172368dbeffe1a82d38d4",
+  "originalSha256": "2520d1417874a5d5130caad41496713d8542d6d17bda6f43661f9b45129d1ca4",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b91.jpg",
+    "originalSha256": "2520d1417874a5d5130caad41496713d8542d6d17bda6f43661f9b45129d1ca4",
+    "masterPath": "content/assets-masters/questions/b91.png",
+    "masterSha256": "7bcc9fe355dd9f3f9beff8fade3794c0b196a74d264172368dbeffe1a82d38d4",
+    "candidateSha256": "7bcc9fe355dd9f3f9beff8fade3794c0b196a74d264172368dbeffe1a82d38d4",
+    "inferenceSha256": "11038872b7d02f687ca5fbee365bcb162b72484edc4a65d060585790f34ddaf8",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "imageId": "question-image-b171",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b171.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b171.png",
+  "originalSha256": "27d5eaa741c3cd1082f868cfaa49913d71fc8361d1ae383bfbc6191c7dfaeef8",
+  "candidateSha256": "70ff0371f65c7262caa01d04dacf5fbd641fefe3ee7f850cbdc52c31e3ee1a88",
+  "reviewer": "image_review",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "rejected",
+  "observations": [
+    "Small rear plate is sharpened into invented black-white character shapes; large E/right arrow and lamp highlight circles remain intact."
+  ],
+  "rejectionReason": "Small rear plate is sharpened into invented black-white character shapes; large E/right arrow and lamp highlight circles remain intact.",
+  "reviewedAt": "2026-10-13T17:05:40.126823+00:00",
+  "inspectionArtifacts": [
+    "/private/tmp/cabadrive-057-review-b140-b220-b170-b171-b172-b173-b174.png"
+  ],
+  "fallbackObservations": [
+    "Separately viewed wider-scene fallback keeps E/right-turn sign, blue plaque fine letters, advertisement and red-car plate unchanged."
+  ],
+  "fallbackReviewedAt": "2026-10-13T17:44:40.896Z",
+  "fallbackReviewer": "Implementation Agent (Codex)",
+  "fallbackSha256": "44f45aacf67c488316cce1a6695f5dd38bcfb82c1368cd142ecde7294eba4817",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b171.jpg",
+    "originalSha256": "27d5eaa741c3cd1082f868cfaa49913d71fc8361d1ae383bfbc6191c7dfaeef8",
+    "masterPath": "content/assets-masters/questions/b171.png",
+    "masterSha256": "44f45aacf67c488316cce1a6695f5dd38bcfb82c1368cd142ecde7294eba4817",
+    "candidateSha256": "70ff0371f65c7262caa01d04dacf5fbd641fefe3ee7f850cbdc52c31e3ee1a88",
+    "inferenceSha256": "a2f31d5f7f64c295874073b7a9c1372523ec677121ba51596ccc64319a60f4b6",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

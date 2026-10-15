@@ -3777,7 +3777,8 @@ small,
 
 .question-image-frame {
   position: relative;
-  width: min(100%, 620px, var(--question-image-max-width-by-height, 620px));
+  box-sizing: content-box;
+  width: min(calc(100% - 2px), 618px, calc(var(--question-image-max-width-by-height, 620px) - 2px));
   overflow: hidden;
   border: 1px solid #ccd3ce;
   border-radius: 8px;
@@ -3795,7 +3796,14 @@ small,
   background: #ffffff;
 }
 
+.question-image-frame picture {
+  display: block;
+}
+
 .question-image-frame img {
+  display: block;
+  width: 100%;
+  height: auto;
   max-height: none;
   object-fit: fill;
   border: 0;
@@ -4478,7 +4486,7 @@ small,
   background: #fff6f5;
 }
 
-.materials-image img {
+.materials-image > img {
   max-height: 300px;
 }
 

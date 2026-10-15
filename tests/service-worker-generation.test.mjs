@@ -159,6 +159,7 @@ test("runtime cache write failure does not discard a successful network response
   const context = vm.createContext({
     Request,
     Response,
+    URL,
     fetch: async () => networkResponse,
     caches: {
       keys: async () => [],
@@ -199,6 +200,7 @@ test("runtime network failure still returns an error response", async () => {
   const context = vm.createContext({
     Request,
     Response,
+    URL,
     fetch: async () => {
       throw new Error("offline");
     },
@@ -252,7 +254,7 @@ test("generated service worker fetch handler has correct offline fallbacks", () 
     );
     assert.match(generated, /key\.startsWith\(CACHE_PREFIX\) && key !== CACHE_NAME/);
     assert.match(generated, /await matchRetainedCabadriveCache\(event\.request\)/);
-    assert.match(generated, /return Response\.error\(\);/);
+    assert.match(generated, /Response\.error\(\)/);
   });
 });
 
@@ -263,6 +265,7 @@ test("first prompted worker persists its fixed marker before compatibility activ
   });
   const handlers = new Map();
   const protocolEntries = new Map();
+  const staticEntries = new Map();
   let skipWaitingCalls = 0;
   const context = vm.createContext({
     Request: class Request {
@@ -281,7 +284,11 @@ test("first prompted worker persists its fixed marker before compatibility activ
               put: async (key, response) => protocolEntries.set(key, response.clone()),
               delete: async (key) => protocolEntries.delete(key),
             }
-          : { addAll: async () => undefined },
+          : {
+              addAll: async () => undefined,
+              match: async (key) => staticEntries.get(key)?.clone(),
+              put: async (key, response) => staticEntries.set(key, response.clone()),
+            },
     },
     self: {
       addEventListener: (name, handler) => handlers.set(name, handler),
@@ -311,6 +318,7 @@ test("marked workers stay waiting and marker failures abort compatibility activa
     const handlers = new Map();
     let skipWaitingCalls = 0;
     let protocolOpenCalls = 0;
+    const staticEntries = new Map();
     const marker = marked ? new Response("prompted-activation-v1") : undefined;
     const context = vm.createContext({
       Request: class Request {
@@ -328,6 +336,8 @@ test("marked workers stay waiting and marker failures abort compatibility activa
               addAll: async () => {
                 if (failPrecache) throw new Error("precache failed");
               },
+              match: async (key) => staticEntries.get(key)?.clone(),
+              put: async (key, response) => staticEntries.set(key, response.clone()),
             };
           protocolOpenCalls += 1;
           return {

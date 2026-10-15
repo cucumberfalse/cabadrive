@@ -1,0 +1,30 @@
+{
+  "imageId": "question-image-b124",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:06:27.501Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "rejected",
+  "observations": [
+    "Enlarged green signs show ACCESO NORTE/AV DONADO and right sign address rows reconstructed into disconnected white strokes; circled car and80 sign geometry remain."
+  ],
+  "rejectionReason": "Native highway-sign lettering/address comparison shows reconstructed disconnected glyph strokes and lost source letter shapes.",
+  "candidateSha256": "dedc1a5046f6291204874b4fd2d825372324817fcb060b58ead28b88560781ec",
+  "originalSha256": "eef65554188ded1130e100bc6dadf9c82d5dd3504bcd5eac3e90d20eedb14e51",
+  "fallbackObservations": [
+    "Fallback keeps original multi-line green highway destinations,80 sign and red car circle, avoiding reconstructed letter fragments."
+  ],
+  "fallbackReviewedAt": "2026-10-13T17:43:22.320Z",
+  "fallbackReviewer": "Implementation Agent (Codex)",
+  "fallbackSha256": "162ec79328335ba31a63627e722add659bdc6af3fedacf2ff33795e87639b6d3",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b124.jpg",
+    "originalSha256": "eef65554188ded1130e100bc6dadf9c82d5dd3504bcd5eac3e90d20eedb14e51",
+    "masterPath": "content/assets-masters/questions/b124.png",
+    "masterSha256": "162ec79328335ba31a63627e722add659bdc6af3fedacf2ff33795e87639b6d3",
+    "candidateSha256": "dedc1a5046f6291204874b4fd2d825372324817fcb060b58ead28b88560781ec",
+    "inferenceSha256": "d9af6a8ff80fcae6a22df9663d007039108987f6d05eb1b89441fc35e780e80e",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

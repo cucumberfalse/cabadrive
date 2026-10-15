@@ -1,0 +1,25 @@
+{
+  "imageId": "question-image-b260",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b260.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b260.png",
+  "originalSha256": "7d19c1f58485f537602faac79bfef9506a69b10b9da9b1eb6cf49ee104734105",
+  "candidateSha256": "bd7e61a989031a3c37b272feb9f951bf39d765a160df9793df3ffa3fb42b8eb6",
+  "reviewer": "Supplemental Review Agent /root/image_review_tail (Codex)",
+  "reviewedAt": "2026-10-13T17:19:46.747341+00:00",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "Blue rounded square retains its white vertical road stem ending under a red horizontal block; junction position and all three color fields preserve source layout."
+  ],
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b260.jpg",
+    "originalSha256": "7d19c1f58485f537602faac79bfef9506a69b10b9da9b1eb6cf49ee104734105",
+    "masterPath": "content/assets-masters/questions/b260.png",
+    "masterSha256": "bd7e61a989031a3c37b272feb9f951bf39d765a160df9793df3ffa3fb42b8eb6",
+    "candidateSha256": "bd7e61a989031a3c37b272feb9f951bf39d765a160df9793df3ffa3fb42b8eb6",
+    "inferenceSha256": "08c1bd3058c6fba86f13840b6cdbc0f9eca6dbad673d0add7642683de14374e1",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

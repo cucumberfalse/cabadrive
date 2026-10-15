@@ -1,0 +1,25 @@
+{
+  "imageId": "question-image-b268",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b268.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b268.png",
+  "originalSha256": "6fa1d24528e69b1d18fcfa6f2c573976a8b6cc9d4738413ddceb2a1c88f3c943",
+  "candidateSha256": "8b85a7fdadcfcfcb9872db2f36eb586226f6be3f09276ea0eac7a31c2c475fa5",
+  "reviewer": "Supplemental Review Agent /root/image_review_tail (Codex)",
+  "reviewedAt": "2026-10-13T17:20:36.728336+00:00",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "Black tire retains its open oval center and short white tread streaks on the left shoulder inside a white inset; blue rectangle, inset position and tread orientation remain source-faithful."
+  ],
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b268.jpg",
+    "originalSha256": "6fa1d24528e69b1d18fcfa6f2c573976a8b6cc9d4738413ddceb2a1c88f3c943",
+    "masterPath": "content/assets-masters/questions/b268.png",
+    "masterSha256": "8b85a7fdadcfcfcb9872db2f36eb586226f6be3f09276ea0eac7a31c2c475fa5",
+    "candidateSha256": "8b85a7fdadcfcfcb9872db2f36eb586226f6be3f09276ea0eac7a31c2c475fa5",
+    "inferenceSha256": "c18ee14e6c7a9bad66c16ed726a1157100b8bcb3a915e1caafe636ea15617ee5",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

@@ -1,0 +1,651 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-14T08:45:27.096944+00:00",
+  "requiredReserveBytes": 2147483648,
+  "pilotForecast": {
+    "checkedAt": "2026-10-13T16:46:53Z",
+    "freeBytesBeforeBatch": 10516525056,
+    "requiredReserveBytes": 2147483648,
+    "pilotSelectedMasterBytes": 21658130,
+    "projected275MasterBytes": 397065717,
+    "projected275InferenceMs": 2754143,
+    "derivativePilot": {
+      "sources": 3,
+      "variants": 39,
+      "elapsedMs": 11746,
+      "masterBytes": 6193987,
+      "derivativeBytes": 3455161,
+      "jpegBytes": 1667120,
+      "maxDssim": 0.00240081
+    },
+    "conservativeAdditionalPeakBytes": 7516192768,
+    "incrementalPeakAssumptions": [
+      "0.4GiB candidates plus0.4GiB tracked masters",
+      "0.45GiB three-codec derivatives using2x measured ratio",
+      "1.6GiB public/dist/two bounded release packages",
+      "1.0GiB git index/object+publication allowance",
+      "3.0GiB scoped Docker writable build layers",
+      "No shared cleanup; tile32, sequential; overwrite only owned scratch PNG"
+    ],
+    "projectedRemainingBytes": 3000332288,
+    "executionAllowed": true,
+    "dockerBacking": {
+      "checkedAt": "2026-10-13T16:52:00Z",
+      "probe": "docker run --rm --name cabadrive-057-disk-probe --entrypoint df alpine:3.21 -k /",
+      "availableKiB": 509604,
+      "requiredReserveBytes": 2147483648,
+      "buildAllowed": false,
+      "feedback": "IF-001; no pruning performed"
+    }
+  },
+  "actualCorpus": {
+    "masters": 275,
+    "accepted": 198,
+    "rejected": 77,
+    "masterBytes": 380226241,
+    "retainedRejectedCandidateBytes": 126364256,
+    "derivatives": 3321,
+    "derivativeBytes": 208945727,
+    "jpegBytes": 105028840,
+    "compactDeliveryBytes": 335250
+  },
+  "remainingDockerPeakBytes": 3478923510,
+  "remainingHostTransientPeakBytes": 3586297692,
+  "remainingHostPostFixtureGitPeakBytes": 2084674045,
+  "assumptions": [
+    "Current phase1 proposal: cold local source snapshot1.053GiB + fullCOPY1.053GiB + public/dist0.58GiB + candidate/stager0.30GiB + headroom0.15GiB =3.24GiB; host adds conditional0.10GiB clone metadata.",
+    "Current IF017 phased gates: phase2 remaining1.65/1.75GiB and phase3 remaining2.03/2.66GiB Docker/host plus2GiB independent reserve. Retained allocations remain in actual measured free; no future reclamation credit.",
+    "Verified Darwin clone shares actual source data; Linux ordinary context charges its complete1.053GiB additionally before copying. No data sharing assumed without direct per-file proof.",
+    "Native/corepack copy<=40MiB plus fixture/manifests<=10MiB guards; actual installed dependencies0.25GiB and public/dist0.58GiB remain separately charged.",
+    "Git0.70GiB incremental allowance applies only after exact creator fixture teardown, with all retained Docker physical allocation reflected in a fresh host measurement.",
+    "Full275 production validation/fullCOPY/former-ignore negative, two genuinely distinct ordinary releases, actual stager/nginx, makebuild/up/down and2GiB reserves unchanged; no automatic cleanup; explicit reviewed IF014 quiescent production/negative checkpoints only."
+  ],
+  "capacityProvisioning": {
+    "diskSizeMiBBefore": 61035,
+    "diskSizeMiBAfter": 65536,
+    "increaseMiB": 4501,
+    "allocatedByteIncreaseAtApply": 57344,
+    "onlyChangedSetting": "DiskSizeMiB",
+    "defaultBridgeRecreated": true,
+    "historicalFullConfigurationEqualityProved": false,
+    "preservationEvidence": "content/validation/ticket-upscale/docker-preservation.json"
+  },
+  "dockerBacking": {
+    "buildAllowed": false,
+    "freshBeforeBuildProbeRequired": true,
+    "measurementAuthority": "Historical actual driver after-second-build capacity sample; no new current probe or future admission",
+    "feedback": "Functional sequence complete; IF018 next-heavy resource HOLD",
+    "measuredAt": "2026-10-14T05:46:40.959Z",
+    "lastReportedAvailableBytes": 11679641600
+  },
+  "host": {
+    "reserveGate": false,
+    "measurementAuthority": "Final read-only preservation snapshot; rebound does not repair prior minimum or admit future work",
+    "lastReportedAvailableBytes": 5761318912,
+    "measuredAt": "2026-10-14T05:48:02.702725Z",
+    "conditionalPhase1CapacitySatisfied": false,
+    "buildAllowed": false,
+    "lastReportedFreeBytes": 5761318912
+  },
+  "executionAllowed": false,
+  "lastApprovedBuildSnapshot": {
+    "checkedAt": "2026-10-13T18:42:45.161634+00:00",
+    "remainingDockerPeakBytes": 4509715661,
+    "remainingHostTransientPeakBytes": 6528350290,
+    "remainingHostPostFixtureGitPeakBytes": 5583457485,
+    "assumptions": [
+      "Actual~1GiB production source context includes275masters,77retainedrejects and209MBderivatives; no additional fullCOPY for fixture releases.",
+      "Reuse pinned existing Linux native/dependency layers via accepted T014A tools target; owned locked Linux dependency volume0.25GiB.",
+      "One genuine production fullCOPY/public+dist~0.6GiB; production stager snapshot/export~0.6GiB.",
+      "Former-ignore fullCOPY negative~0.65GiB, two-release statevolume~0.6GiB, remaining tools/headroom within4.2GiB maximum.",
+      "Owned host context~1GiB plus its new public/dist~0.58GiB; candidate paths reuse context/dist directly, no duplicate full static package.",
+      "Docker physical growth conservatively charged fully to host4.2GiB; browser/report allowance0.3GiB. Already-created original worktree public/dist are sunk and not added again.",
+      "Git index/object/publication allowance0.7GiB occurs after exact-owned fixture context is removed, so it does not overlap its1.58GiB peak.",
+      "Fresh host/backing peak+2GiB gates and between-step probes required; no prune or additional disk-limit mutation."
+    ],
+    "dockerBacking": {
+      "availableKiB": 7220496,
+      "measuredAfterProvisioning": true,
+      "freshBeforeBuildProbeRequired": false,
+      "buildAllowed": true,
+      "probe": "auto-removed network-none alpine:3.21 df;7220496KiB measured;zeroactive/nonReclaimable=[]"
+    },
+    "host": {
+      "availableBytes": 8895975424,
+      "reserveGate": true
+    },
+    "executionAllowed": true
+  },
+  "remainingPeakStatus": "HOLD IF018: historical phase3 host forecast exceeded; no future peak approved",
+  "currentFeedback": "IF023 prospective CI fallback; no local heavy retry or reduced forecast. IF022 local admission remains unexecuted.",
+  "proposedPhaseGates": {
+    "disposition": "IF014/T014C supersedes former phase2 envelope conditionally on actual filtered context<=0.75GiB; fresh gates required",
+    "reserveBytes": 2147483648,
+    "phase1": {
+      "remainingDockerGiB": 3.24,
+      "remainingHostGiB": 3.34,
+      "requiredDockerFreeGiB": 5.24,
+      "requiredHostFreeGiB": 5.34,
+      "hostCloneAllowanceConditional": true
+    },
+    "phase2": {
+      "remainingDockerGiB": 1.65,
+      "remainingHostGiB": 1.75,
+      "requiredDockerFreeGiB": 3.65,
+      "requiredHostFreeGiB": 3.75
+    },
+    "phase3": {
+      "remainingDockerGiB": 2.03,
+      "remainingHostGiB": 2.66,
+      "requiredDockerFreeGiB": 4.03,
+      "requiredHostFreeGiB": 4.66
+    },
+    "overlapRule": "All still-retained incremental growth charged until exact closure proven; no broad prune or assumed cleanup.",
+    "status": "HISTORICAL_EXECUTED_GATES; phase3 host forecast under observed whole-FS draw, not future admission"
+  },
+  "cloneProof": {
+    "checkedAt": "2026-10-13T19:59:35.013Z",
+    "method": "macOS documented cp -cRp; scoped filtered independent fixture",
+    "files": 8933,
+    "logicalBytes": 1130082845,
+    "nativeCloneCalls": 40,
+    "cloneAttributes": {
+      "regularFiles": 8933,
+      "logicalBytes": 1130082845,
+      "matchingCloneIdsOrEmpty": 8933,
+      "unprovenDataBytes": 0,
+      "clonePrivateDataBytes": 0,
+      "directories": 264,
+      "directoryAllocatedBytes": 0,
+      "authority": "installed getattrlist(2), ATTR_CMNEXT_PRIVATESIZE / CLONEID, SDK sys/attr.h"
+    },
+    "hostBefore": 6354702336,
+    "hostAfterClone": 6650310656,
+    "observedFreeDeltaBytes": -295608320,
+    "independentInodes": true,
+    "sourceUnchangedAfterCloneReviewMutation": true,
+    "cloneChanged": true,
+    "measurementLimit": "Per-file APFS clone IDs prove shared data for all actual copied regular files, independent of whole-filesystem free delta. Metadata and future changed files remain conservatively budgeted; phase gates remain held until measured capacity.",
+    "allocationCeilingCredit": "Direct regular-file data sharing proved; future tools/fixture changed-byte bound proposed, pending execution proof. No Docker build permission inferred."
+  },
+  "copyImplementationProof": {
+    "checkedAt": "2026-10-13T20:09:04.396Z",
+    "method": "verified independent APFS clone",
+    "files": 8936,
+    "logicalBytes": 1130094828,
+    "matchingCloneIdsOrEmpty": 8936,
+    "unprovenDataBytes": 0,
+    "privateDataBytes": 0,
+    "directories": 264,
+    "independentModificationVerified": true,
+    "productionJournalRecords": 275
+  },
+  "changedFileBounds": {
+    "toolsAndCorepackMaximumBytes": 41943040,
+    "fixtureAndManifestMaximumBytes": 10485760,
+    "runtimeAssertions": "Before Linux tools copy; after each real fixture derivative generation; stop and revise forecast on bound violation",
+    "existingDerivatives": "Immutable matching production bytes reused; no COW data overwrites",
+    "executionAllowed": false
+  },
+  "phaseExecutionRule": "Default fails insufficient next-phase capacity and exact-tears down. Only explicit reviewed IF014 production/negative checkpoints intentionally retain creator minimal images/context/sealed proofs and return PARTIAL; root separately assigns proved intermediate closure, never automatic cleanup or overall partial acceptance.",
+  "historicalAggregateForecast": {
+    "remainingDockerPeakBytes": 4509715661,
+    "remainingHostTransientPeakBytes": 6528350290,
+    "remainingHostPostFixtureGitPeakBytes": 5583457485,
+    "assumptions": [
+      "Actual~1GiB production source context includes275masters,77retainedrejects and209MBderivatives; no additional fullCOPY for fixture releases.",
+      "Reuse pinned existing Linux native/dependency layers via accepted T014A tools target; owned locked Linux dependency volume0.25GiB.",
+      "One genuine production fullCOPY/public+dist~0.6GiB; production stager snapshot/export~0.6GiB.",
+      "Former-ignore fullCOPY negative~0.65GiB, two-release statevolume~0.6GiB, remaining tools/headroom within4.2GiB maximum.",
+      "Owned host context~1GiB plus its new public/dist~0.58GiB; candidate paths reuse context/dist directly, no duplicate full static package.",
+      "Docker physical growth conservatively charged fully to host4.2GiB; browser/report allowance0.3GiB. Already-created original worktree public/dist are sunk and not added again.",
+      "Git index/object/publication allowance0.7GiB occurs after exact-owned fixture context is removed, so it does not overlap its1.58GiB peak.",
+      "Fresh host/backing peak+2GiB gates and between-step probes required; no prune or additional disk-limit mutation."
+    ]
+  },
+  "laterExactCleanup": {
+    "evidence": "/private/tmp/cabadrive-057-retry-cache-inventory.md",
+    "removedOldOwnedStagerImage": "sha256:6ad1769c9dec73f7d8a5684da7294ebf251b5fa06118f065780a5eae6a52bcc3",
+    "oldImagePhysicalReclaimedKiB": 16,
+    "removedExactCache": "p8hiaq38wko25319xmrbm5tb5",
+    "backingBeforeAvailableKiB": 4350440,
+    "backingAfterAvailableKiB": 4663076,
+    "preservedAncestorsAndVolumes": true,
+    "normalization": "Only permutation of identical Mounts for semantic snapshots",
+    "noFurtherAuthority": true
+  },
+  "secondCapacityProvisioning": {
+    "humanApproval": "Да, увеличить до72ГиБ",
+    "beforeDiskSizeMiB": 65536,
+    "authorizedTargetMiB": 73728,
+    "freshBeforeCheckedAt": "2026-10-13T21:18:24.256074+00:00",
+    "beforeLogicalBytes": 68719476736,
+    "beforeAllocatedBytes": 59868741632,
+    "beforeHostFreeBytes": 6436233216,
+    "beforeBackingFreeBytes": 4774998016,
+    "resourceCounts": {
+      "containerCount": 9,
+      "imageCount": 71,
+      "volumeCount": 49,
+      "networkCount": 6,
+      "cacheCount": 413
+    },
+    "zeroActive": true,
+    "beforePrivateMode": "0o600",
+    "afterStatus": "Historical original strict serialization BLOCKED retained; IF012/013 matched typed-view semantic closure completed separately, then final IF017 preservation restored",
+    "buildAllowed": false,
+    "actualSettingsDiskSizeMiB": 73728,
+    "actualLogicalBytes": 77309411328,
+    "actualAllocatedBytes": 59868897280,
+    "allocatedGrowthBytes": 155648,
+    "readinessError": "VZErrorInvalidVirtualMachineConfiguration: storage device attachment invalid",
+    "readinessErrorAt": "2026-10-13T21:18:46.447Z",
+    "afterCheckedAt": "2026-10-13T21:27:13.422589+00:00",
+    "hostFreeBytes": 6356119552,
+    "backingFreeBytes": 12800696320
+  },
+  "coldRestartRecovery": {
+    "disposition": "IF-011/T005G; one supported unchanged-state graceful stop/start by Orchestrator only",
+    "readOnlyBeforeGuard": "PASS",
+    "checkedAt": "2026-10-13T21:25:29.419669+00:00",
+    "hostFreeBytes": 6142152704,
+    "hostPhase1PeakPlusReserveBytes": 5733781340,
+    "unrelatedDockerClientCount": 0,
+    "engineInventoryUnavailable": true,
+    "afterStatus": "One supported cold restart recovered daemon; subsequent semantic preservation closed under IF012/013 and actual final IF017 reconciliation",
+    "buildAllowed": false
+  },
+  "checkpointClosurePlan": {
+    "disposition": "plan IF014/T014C",
+    "status": "ACTUAL_ALL_FIVE_FUNCTIONAL_PHASES_COMPLETE_EXACT_FINALLY_NO_RESUME; historical reserve breach retained",
+    "fullFrozenContext": "Every copied regular-file path/byte size/mode/SHA, including docs/specs/validation, bound against both original root and independent context; any included change blocks continuation. Private cache keys/proofs excluded from production inputs.",
+    "phase1": {
+      "dockerPeakGiB": 3.24,
+      "hostPeakGiB": 3.34,
+      "reserveGiBEach": 2,
+      "boundary": "NEW real tools+fullCOPY275 stager build and actual logged3321 candidate predicate; PARTIAL only, exact two images/context/sealed receipt retained."
+    },
+    "phase2": {
+      "dockerPeakGiB": 1.65,
+      "hostPeakGiB": 1.75,
+      "reserveGiBEach": 2,
+      "conditionalMaximumFilteredBytes": 805306368,
+      "boundary": "Actual ordinary full build fails missing masters; original Dockerignore restored and complete inventory reverified; PARTIAL only."
+    },
+    "phase3": {
+      "dockerPeakGiB": 2.03,
+      "hostPeakGiB": 2.66,
+      "reserveGiBEach": 2,
+      "boundary": "Both ordinary complete275 releases, default production stager publication/retention/nginx/runtime and exact final teardown; only then aggregatePASS."
+    },
+    "coexistingRetainedObjects": [
+      "Independent APFS context and private input/proof/receipt/HMAC key",
+      "Exact owned tools and stager images (actual allocations reflected in fresh free values)",
+      "All foreign/shared/native/dependency resources and prior failed Compose recovery volumes/runtime image preserved"
+    ],
+    "closureRule": "After each intentional quiescent boundary root may separately assign exact now-consumed intermediate inventory/removal; referenced retained image/context/native/future/shared resources never removed. No future reclamation credited; continuation waits outside runner for actual proved closure and fresh independent dual gates. If closure does not fit next envelope, leave PARTIAL blocked. Default/CI full command does not automatically pause or prune.",
+    "defaultWorstFutureAdditionalGiB": {
+      "docker": 6.92,
+      "host": 7.75
+    },
+    "explicitSequence": "Quiescent checkpoints close active build/transient overlap only; retained existing allocations remain reflected in the next measured free values. No unconditional whole-sequence capacity claim."
+  },
+  "latestExactCleanup": {
+    "completedAt": "2026-10-13T22:15:36Z",
+    "removedExactRecords": 6,
+    "baselineCacheRecordsPreserved": 413,
+    "hostFreeBytes": 5853839360,
+    "backingFreeBytes": 12800151552,
+    "nonTargetTypedResourcesPreserved": true,
+    "authority": "Orchestrator separately assigned Cleanup; private failure-cleanup inventory evidence retained"
+  },
+  "currentIF017": {
+    "status": "FUNCTIONAL_FIVE_PHASE_PASS_PRESERVATION_RECONCILED_RESOURCE_HOLD",
+    "coldTools": {
+      "remainingDockerGiB": 3.24,
+      "remainingHostGiB": 3.34,
+      "reserveGiBEach": 2
+    },
+    "focusedAndPhase3": {
+      "remainingDockerGiB": 2.03,
+      "remainingHostGiB": 2.66,
+      "reserveGiBEach": 2,
+      "nativePublicMaximumGiB": 0.3,
+      "nativeDistMaximumGiB": 0.33,
+      "addedMetadataAndInitializationGiB": 0.04
+    },
+    "boundaries": "Only fresh exact creator-labelled public/dist Linux-native volumes with nocopy, empty root ownership init, <=100 regular0644 public seed files/1MiB bytes; same UID, readonly deps and16MiB Vite tmpfs. No host output export, source mode repair or recovery credit.",
+    "validation": "Actual 23 focused tests/quality PASS; genuine focused full275 PASS; NEW frozen production/negative/two ordinary releases/default stager/runtime/exact finally PASS; preservation reconciled. IF018 resource breach/Compose/current HOST pending.",
+    "historicalIF016": {
+      "nodePid": 23817,
+      "ordinaryBuildAppExit": 1,
+      "diagnosticComplete": true,
+      "overallAcceptance": false,
+      "sourceUnchanged": true,
+      "exactTeardown": true,
+      "proofAllocatedBytes": 23367680,
+      "safeEvidence": ".cache/image-qa/ticket-upscale/if016-diagnostic-result-safe.json"
+    },
+    "proofBudgetAllocatedMaximumBytes": 134217728,
+    "hostTransientMemoryAllowanceBytes": 1073741824,
+    "requires": "No repeated focused/full sequence absent a new defect. IF018 reviewed observer, separate per-command forecast and explicit Root GO required before remaining heavy work.",
+    "actualFocusedEvidence": "content/validation/ticket-upscale/docker-linux-fixture.evidence.json"
+  },
+  "historicalCurrentPhaseAdmission": {
+    "checkedAt": "2026-10-13T21:54:55.013427+00:00",
+    "hostFreeBytes": 6297878528,
+    "backingFreeBytes": 12800696320,
+    "requiredHostFreeGiB": 5.34,
+    "requiredBackingFreeGiB": 5.24,
+    "context": "desktop-linux",
+    "serverVersion": "29.4.3",
+    "defaultBridgeId": "f17f9beaf4720ad69e3a32590809184b37d06fddc84c3d27ab2125f810800ef3",
+    "defaultBridgeCreated": "2026-10-13T21:36:48.32025875Z",
+    "activeContainers": 0,
+    "activeBuilds": 0,
+    "unrelatedDockerClients": 0,
+    "probeRemoved": true,
+    "hostPreflightCompletedAt": "2026-10-13T21:48:48.179709+00:00",
+    "hostHeavyOverlap": false,
+    "status": "PHASE1_GATES_PASS"
+  },
+  "historicalCurrentDriverPartialResult": {
+    "startedAt": "2026-10-13T21:55:30.805905+00:00",
+    "completedAt": "2026-10-13T22:06:01.922357+00:00",
+    "exitCode": 1,
+    "status": "FAILED",
+    "log": ".cache/image-qa/ticket-upscale/docker-final-reviewed.log",
+    "postTeardown": {
+      "checkedAt": "2026-10-13T22:09:03.827890+00:00",
+      "token": "cabadrive-images-99528-1791928531144",
+      "driverOwnedTagsRemaining": [],
+      "driverOwnedContainersRemaining": [],
+      "driverOwnedVolumesRemaining": [],
+      "temporaryPrefixPathsRemaining": [],
+      "counts": {
+        "containers": 9,
+        "images": 71,
+        "volumes": 49,
+        "networks": 6,
+        "cache": 419
+      },
+      "newCacheRecords": [
+        {
+          "ID": "2kz1fhcyjq64jtlfq02hl860q",
+          "Parents": [
+            "mvtka51lxv9p73gtj3akgcn50"
+          ],
+          "Type": "regular",
+          "Size": "1.128GB",
+          "Shared": false,
+          "Reclaimable": true,
+          "Mutable": false,
+          "UsageCount": 1,
+          "CreatedAt": "2026-10-13 21:55:51.885026793 +0000 UTC",
+          "LastUsedAt": "2 minutes ago",
+          "actualRawSizeBytes": 1128289463,
+          "actualRawParents": [
+            "mvtka51lxv9p73gtj3akgcn50"
+          ]
+        },
+        {
+          "ID": "e9sbbfzgdn65731ku9iwogszm",
+          "Parents": [
+            "nkf15ww22frjplpr1v7pyfuck"
+          ],
+          "Type": "regular",
+          "Size": "219.2kB",
+          "Shared": false,
+          "Reclaimable": true,
+          "Mutable": false,
+          "UsageCount": 1,
+          "CreatedAt": "2026-10-13 21:55:49.426827501 +0000 UTC",
+          "LastUsedAt": "2 minutes ago",
+          "actualRawSizeBytes": 219179,
+          "actualRawParents": [
+            "nkf15ww22frjplpr1v7pyfuck"
+          ]
+        },
+        {
+          "ID": "iuplitr4t5kfituojai22n1dq",
+          "Parents": [
+            "e9sbbfzgdn65731ku9iwogszm"
+          ],
+          "Type": "regular",
+          "Size": "73.34kB",
+          "Shared": false,
+          "Reclaimable": true,
+          "Mutable": false,
+          "UsageCount": 1,
+          "CreatedAt": "2026-10-13 21:55:49.481712292 +0000 UTC",
+          "LastUsedAt": "2 minutes ago",
+          "actualRawSizeBytes": 73344,
+          "actualRawParents": [
+            "e9sbbfzgdn65731ku9iwogszm"
+          ]
+        },
+        {
+          "ID": "l52mlluxnik9b4rpan7peisj1",
+          "Parents": [
+            "2kz1fhcyjq64jtlfq02hl860q"
+          ],
+          "Type": "regular",
+          "Size": "0B",
+          "Shared": false,
+          "Reclaimable": true,
+          "Mutable": false,
+          "UsageCount": 1,
+          "CreatedAt": "2026-10-13 21:56:22.431968377 +0000 UTC",
+          "LastUsedAt": "2 minutes ago",
+          "actualRawSizeBytes": 0,
+          "actualRawParents": [
+            "2kz1fhcyjq64jtlfq02hl860q"
+          ]
+        },
+        {
+          "ID": "m04rolb0olajddyyczvbndxse",
+          "Parents": [
+            "iuplitr4t5kfituojai22n1dq"
+          ],
+          "Type": "regular",
+          "Size": "306.8MB",
+          "Shared": false,
+          "Reclaimable": true,
+          "Mutable": false,
+          "UsageCount": 1,
+          "CreatedAt": "2026-10-13 22:05:58.731622422 +0000 UTC",
+          "LastUsedAt": "2 minutes ago",
+          "actualRawSizeBytes": 306782864,
+          "actualRawParents": [
+            "iuplitr4t5kfituojai22n1dq"
+          ]
+        },
+        {
+          "ID": "r35ufd6fxexz0r69t4zlc6xx7",
+          "Parents": [
+            "l52mlluxnik9b4rpan7peisj1"
+          ],
+          "Type": "regular",
+          "Size": "592.9MB",
+          "Shared": false,
+          "Reclaimable": true,
+          "Mutable": true,
+          "UsageCount": 1,
+          "CreatedAt": "2026-10-13 21:56:22.446090294 +0000 UTC",
+          "LastUsedAt": "2 minutes ago",
+          "actualRawSizeBytes": 592894739,
+          "actualRawParents": [
+            "l52mlluxnik9b4rpan7peisj1"
+          ]
+        }
+      ],
+      "missingBaselineCacheIds": [],
+      "newCacheActualRawBytes": 2028259589,
+      "newCacheOwnershipNotYetApprovedForCleanup": true,
+      "capturedBuildRefs": [
+        "desktop-linux/desktop-linux/xj0rax4faxfm4m5k6amsrjal5",
+        "desktop-linux/desktop-linux/moasw2kqar1bcwn0xe09pdp8y"
+      ],
+      "hostFreeBytes": 4163555328,
+      "backingFreeBytes": 10714394624,
+      "allDriverCreatedTagsContainersVolumesAbsent": true,
+      "zeroActive": true,
+      "probeRemoved": true
+    },
+    "productionNativeTestsPassed": 15,
+    "productionPnpmBuildSeconds": 574.6,
+    "fullStagerStageStartedAt": "2026-10-13T21:55:37.514Z",
+    "fullStagerStageFinishedAt": "2026-10-13T22:05:59.560Z",
+    "formerIgnoreNotRun": true,
+    "twoReleaseNotRun": true,
+    "runtimeNotRun": true
+  },
+  "historicalCapacityProvisioningPending": {
+    "disposition": "IF-010/T005F",
+    "proposedSettingMiB": 73728,
+    "effectiveSettingMiB": 65536,
+    "humanPermission": "pending",
+    "beforePrivateSnapshot": ".cache/image-qa/ticket-upscale/docker-full-preservation-t005f-before.json",
+    "beforeCheckedAt": "2026-10-13T20:30:30.399472Z",
+    "activeContainers": 0,
+    "activeBuilds": 0,
+    "containerCount": 9,
+    "imageCount": 71,
+    "volumeCount": 49,
+    "networkCount": 6,
+    "cacheCount": 413,
+    "hostFreeBytes": 6426710016,
+    "backingFreeBytes": 4774998016,
+    "physicalAllocatedBytes": 59872370688,
+    "logicalBytes": 68719476736,
+    "defaultBridgeId": "09a929d8025c3f186d5a8586ee40f2ff1018007feffc833e4e5bcece0959457d",
+    "defaultBridgeCreated": "2026-10-13T20:28:44.186583459Z",
+    "defaultBridgeCreationCause": "not inferred",
+    "settingsMutationPerformed": false,
+    "buildAllowed": false
+  },
+  "status": "LOCAL_FRESH_COMPOSE_CAPACITY_HOLD_CI_ROUTE_PENDING",
+  "currentCompletedSequence": {
+    "functionalEvidence": "content/validation/ticket-upscale/docker-linux-fixture.evidence.json",
+    "sourceInputSha256": "413f4d612a610b8152b1e5af4e759481e20b89253ff6619b73416a72c329a132",
+    "phaseChain": [
+      {
+        "phase": "production",
+        "receiptSha256": "36912e624a08b9c2fda249868e7075de78aa0142aa09f242ed6f2b0914b9c968",
+        "exit": 0,
+        "actualPhasePredicate": true,
+        "driverStatus": "PARTIAL",
+        "overallAcceptance": false,
+        "assertion": {
+          "acPower": true,
+          "acquisitionCheckedAt": "2026-10-14T03:36:40Z",
+          "acquisitionObserved": true,
+          "exit": 0,
+          "pid": 30181,
+          "releasedAt": "2026-10-14T03:49:13Z",
+          "seconds": 1800,
+          "startedAt": "2026-10-14T03:36:40Z",
+          "watchedNodePid": 30179
+        },
+        "chargedProofBytes": 6287360
+      },
+      {
+        "phase": "negative",
+        "receiptSha256": "81a04f1c957c37c81ed246f6e69aae4a48407564be63da624c6379faf40325ab",
+        "exit": 0,
+        "actualPhasePredicate": true,
+        "driverStatus": "PARTIAL",
+        "overallAcceptance": false,
+        "assertion": {
+          "acPower": true,
+          "acquisitionCheckedAt": "2026-10-14T04:35:47Z",
+          "acquisitionObserved": true,
+          "exit": 0,
+          "pid": 33415,
+          "releasedAt": "2026-10-14T04:36:52Z",
+          "seconds": 600,
+          "startedAt": "2026-10-14T04:35:47Z",
+          "watchedNodePid": 33413
+        },
+        "chargedProofBytes": 8118272
+      },
+      {
+        "phase": "releases",
+        "receiptSha256": "f45292a325c5334c1f395f3b91698be8b2011d57a164871a965c420c7ce104e6",
+        "exit": 0,
+        "actualPhasePredicate": true,
+        "driverStatus": "PASS",
+        "overallAcceptance": false,
+        "assertion": {
+          "acPower": true,
+          "acquisitionCheckedAt": "2026-10-14T04:48:43Z",
+          "acquisitionObserved": true,
+          "exit": 0,
+          "pid": 34164,
+          "releasedAt": "2026-10-14T05:47:00Z",
+          "seconds": 5400,
+          "startedAt": "2026-10-14T04:48:43Z",
+          "watchedNodePid": 34162
+        },
+        "chargedProofBytes": 47288320
+      }
+    ],
+    "preservationReconciled": true,
+    "creatorResourcesAbsent": true,
+    "overallAcceptance": false,
+    "resourceObservation": {
+      "status": "HISTORICAL_RESERVE_BREACH_NEXT_HEAVY_HOLD",
+      "beforeHostFreeBytes": 5065420800,
+      "minimumHostFreeBytes": 852582400,
+      "afterHostFreeBytes": 4278743040,
+      "observedWholeFilesystemDrawBytes": 4212838400,
+      "requiredReserveBytes": 2147483648,
+      "historicalHostForecastGiB": 2.66,
+      "continuousReserveSatisfied": false,
+      "minimumTimestamp": null,
+      "attribution": "Unproved. Only aggregate minimum retained; variable collector loop cadence and stage samples do not locate or explain the minimum.",
+      "historicalFunctionalProofInvalidated": false
+    },
+    "nextHeavyExecutionAllowed": false,
+    "nextForecast": "Not yet admitted; HOST-only and healthy Compose category-union budgets must be reviewed separately under IF018"
+  },
+  "currentWholeHost": {
+    "status": "CURRENT_WHOLE_HOST_PASS",
+    "unitPassed": 830,
+    "browserPassed": 181,
+    "intentionalBrowserSkipped": 5,
+    "completedAt": "2026-10-14T07:31:38.844196+00:00",
+    "receiptSha256": "c101762dd56e8a0d8edc77a9c2a7f20d205d4ad64d2fab931d3d5bc88496eaf6",
+    "minimumObservedHostFreeBytes": 6303322112,
+    "maximumObservedWallGapSeconds": 1.314445,
+    "foregroundAssertionExit": 0,
+    "proofChargedBytes": 1409024
+  },
+  "latestLocalComposeAdmission": {
+    "status": "HOLD",
+    "checkedAt": "2026-10-14T08:43:40Z",
+    "actualHostFreeBytes": 7425679360,
+    "requiredHostFreeBytes": 7451642511,
+    "shortfallBytes": 25963151,
+    "hostRemainingPeakGiB": 4.94,
+    "dockerRemainingPeakGiB": 3.84,
+    "requiredReserveBytes": 2147483648,
+    "actualHeavyExecution": false,
+    "forecastReduced": false,
+    "knownCleanup": "Only completed ignored dist/public/content removed by separately assigned Cleanup; public/sw.js/canonical/proofs preserved. Actual before-to-final host gain614125568bytes. No future cleanup credit.",
+    "if022RuntimeStaticReview": "Scoped runtime chain closed; external volume-label and VM-memory pre-GO dependencies remain unexecuted. Two historical memory sample sets do not grant future admission."
+  },
+  "historicalHostPostFixtureGitPeakBytes": 751619277,
+  "publicationStorageProposal": {
+    "status": "PROPOSED_NOT_ADMISSION",
+    "source": "/private/tmp/cabadrive-057-publication-storage-proposal.json",
+    "looseGitObjectsAllowanceBytes": 827894699,
+    "mainCheckoutAllowanceBytes": 719908434,
+    "unknownPushPackAllowanceBytes": 268435456,
+    "uncertaintyBytes": 268435456,
+    "remainingIncrementalPeakBytes": 2084674045,
+    "requiredReserveBytes": 2147483648,
+    "requiredFreeBytes": 4232157693,
+    "limitations": "Fresh actual storage guard required before staging/commit/push/main checkout. Per-command maintenance.auto=false and gc.auto=0 only; no global changes or cleanup credit. Earlier751619277-byte proposal is historical and insufficient for current admission."
+  }
+}

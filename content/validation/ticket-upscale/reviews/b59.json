@@ -1,0 +1,23 @@
+{
+  "imageId": "question-image-b59",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:32:48.700Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": false,
+  "status": "accepted",
+  "observations": [
+    "Separately viewed driver retains earbud, thin wire to shoulder, spectacle shape and extended arm; rearview mirror and sidewindow positions unchanged."
+  ],
+  "candidateSha256": "2930c2dba5fe4b789423f3efe4e1d67ada561f503710da454d53823196532ff9",
+  "originalSha256": "1cfc1cd78d46b9faaec679e7bbd2ee50f88365f9725ef8988195808e3bac00e7",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b59.jpg",
+    "originalSha256": "1cfc1cd78d46b9faaec679e7bbd2ee50f88365f9725ef8988195808e3bac00e7",
+    "masterPath": "content/assets-masters/questions/b59.png",
+    "masterSha256": "2930c2dba5fe4b789423f3efe4e1d67ada561f503710da454d53823196532ff9",
+    "candidateSha256": "2930c2dba5fe4b789423f3efe4e1d67ada561f503710da454d53823196532ff9",
+    "inferenceSha256": "d03e972c94516ca6679ea10f74fa75921368b12956987241ef3086ea20dfa1a9",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

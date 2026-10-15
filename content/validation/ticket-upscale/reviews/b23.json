@@ -1,0 +1,35 @@
+{
+  "imageId": "question-image-b23",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:22:22.561Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "Yellow-roof taxi remains before zebra crossing, green cyclelane and distant pedestrian; zebra endpoints, curb radius and signal placement unchanged."
+  ],
+  "candidateSha256": "20e94a3555bb6707355e83de1f14cf33c73de025bd307dd4fb8611cdd39473e3",
+  "originalSha256": "2215885204866256db03ae5999b17045aaccecd9c96a3f19c5f1a25ea6536957",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b23.jpg",
+    "originalSha256": "2215885204866256db03ae5999b17045aaccecd9c96a3f19c5f1a25ea6536957",
+    "masterPath": "content/assets-masters/questions/b23.png",
+    "masterSha256": "20e94a3555bb6707355e83de1f14cf33c73de025bd307dd4fb8611cdd39473e3",
+    "candidateSha256": "20e94a3555bb6707355e83de1f14cf33c73de025bd307dd4fb8611cdd39473e3",
+    "inferenceSha256": "6eaa148bb9833edb5cd4317d3ba416d6b18aeee6f431a1c552a82c4d4511f19f",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  },
+  "classificationCorrection": {
+    "reviewer": "Implementation Agent (Codex)",
+    "reviewedAt": "2026-10-14T23:51:51.129Z",
+    "method": "IF030 independently governed classification correction with paired-image spot review",
+    "previousTextOrSign": false,
+    "previousReviewSha256": "c5aecdbfd712cc238beb19841c0dba24127ff50b4746b7b1e16fa874d4b5a0b8",
+    "basis": "Actual yellow warning-sign face with directional pictogram.",
+    "scope": "Review-scope flag only; no OCR, exact glyph readability, pixel-quality recertification or new metric approval.",
+    "governedMapSha256": "12a63bed30d1576e727ace09ee73530fa68e798284feedc8f9903ecac61a98b1",
+    "independentAuditSha256": "bce8d6427e1d09d2562af7f88185a990622d1bb0c3da5fe2a0105be7c2f129d9",
+    "independentMapReviewSha256": "a6b68b37c0579202b6eee3cce6ea75582855fd3fcc9a7da21a8fe316243b95fe"
+  }
+}

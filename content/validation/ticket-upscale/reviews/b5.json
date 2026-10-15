@@ -1,0 +1,23 @@
+{
+  "imageId": "question-image-b5",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:30:13.220Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "A/B/C panels retain cyclist sideview, yellow-roof taxi and redbusatplatform respectively; bicycle wheel/handlebar poses and bus/waiting-person placements unchanged."
+  ],
+  "candidateSha256": "3e2a1ef1c92c9f02ba7a1d3ec9b31b4a3ba06371a344eb7482985d3eae0c2821",
+  "originalSha256": "b4e0b3ac5fc2b83e241c3b69d83511ec6c3fd7fd77d66ec1d9e85622d0c539ba",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b5.jpg",
+    "originalSha256": "b4e0b3ac5fc2b83e241c3b69d83511ec6c3fd7fd77d66ec1d9e85622d0c539ba",
+    "masterPath": "content/assets-masters/questions/b5.png",
+    "masterSha256": "3e2a1ef1c92c9f02ba7a1d3ec9b31b4a3ba06371a344eb7482985d3eae0c2821",
+    "candidateSha256": "3e2a1ef1c92c9f02ba7a1d3ec9b31b4a3ba06371a344eb7482985d3eae0c2821",
+    "inferenceSha256": "469cbf22bc4a1e38a28669439dc7e83850fb89098e5303263eee61a20a3bd72e",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

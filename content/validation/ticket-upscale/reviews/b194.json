@@ -1,0 +1,29 @@
+{
+  "imageId": "question-image-b194",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b194.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b194.png",
+  "originalSha256": "726de7e850a8131866d00206201baddf24c9ea64ee730ab9a9e24a5c54c445fb",
+  "candidateSha256": "a67fc0d382ee239526a424d1a362a2064e3b40551607fcec1687a11f084ede7d",
+  "reviewer": "image_review",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": false,
+  "status": "accepted",
+  "observations": [
+    "Sandal strap, bare heel/foot placement over pedal and both ribbed pedal shapes preserved; anatomical outline remains same, skin texture smoothed."
+  ],
+  "rejectionReason": null,
+  "reviewedAt": "2026-10-13T17:08:53.444368+00:00",
+  "inspectionArtifacts": [
+    "/private/tmp/cabadrive-057-review-b140-b220-b194-b195-b196-b197.png"
+  ],
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b194.jpg",
+    "originalSha256": "726de7e850a8131866d00206201baddf24c9ea64ee730ab9a9e24a5c54c445fb",
+    "masterPath": "content/assets-masters/questions/b194.png",
+    "masterSha256": "a67fc0d382ee239526a424d1a362a2064e3b40551607fcec1687a11f084ede7d",
+    "candidateSha256": "a67fc0d382ee239526a424d1a362a2064e3b40551607fcec1687a11f084ede7d",
+    "inferenceSha256": "7ed47a52ca5c12a166d24961d187fc503f601b91cb0a404ddf4c67ba365a25d4",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

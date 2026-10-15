@@ -1,0 +1,35 @@
+{
+  "imageId": "question-image-b68",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:33:53.720Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "Night officer arms stay extended sideways with one hand directing toward redcar; cone, green lamps, waiting officials and vehicle positions unchanged."
+  ],
+  "candidateSha256": "270652b8c9d574b97863f5e1f1f0d1e123d32994af544c84d65ccd8506b3b1be",
+  "originalSha256": "26d460dd0f700b8b8c00867d2ca6b06735047fa3cdc0e22e13f8e1cd1640312e",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b68.jpg",
+    "originalSha256": "26d460dd0f700b8b8c00867d2ca6b06735047fa3cdc0e22e13f8e1cd1640312e",
+    "masterPath": "content/assets-masters/questions/b68.png",
+    "masterSha256": "270652b8c9d574b97863f5e1f1f0d1e123d32994af544c84d65ccd8506b3b1be",
+    "candidateSha256": "270652b8c9d574b97863f5e1f1f0d1e123d32994af544c84d65ccd8506b3b1be",
+    "inferenceSha256": "ab50bfec174d2dc393b91fb295298f2caf0299201f4c29d8f67f567768e8cdea",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  },
+  "classificationCorrection": {
+    "reviewer": "Implementation Agent (Codex)",
+    "reviewedAt": "2026-10-14T23:51:51.129Z",
+    "method": "IF030 independently governed classification correction with paired-image spot review",
+    "previousTextOrSign": false,
+    "previousReviewSha256": "af4f2bb60a7e286ef654dc926f78802aaa43c96d147e29261fd464940fad076b",
+    "basis": "Actual illuminated green traffic signal; vest/background lettering remains ambiguous.",
+    "scope": "Review-scope flag only; no OCR, exact glyph readability, pixel-quality recertification or new metric approval.",
+    "governedMapSha256": "12a63bed30d1576e727ace09ee73530fa68e798284feedc8f9903ecac61a98b1",
+    "independentAuditSha256": "bce8d6427e1d09d2562af7f88185a990622d1bb0c3da5fe2a0105be7c2f129d9",
+    "independentMapReviewSha256": "a6b68b37c0579202b6eee3cce6ea75582855fd3fcc9a7da21a8fe316243b95fe"
+  }
+}

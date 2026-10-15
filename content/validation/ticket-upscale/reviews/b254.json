@@ -1,0 +1,25 @@
+{
+  "imageId": "question-image-b254",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b254.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b254.png",
+  "originalSha256": "4de4b121884be408c1b4a0cf6e90495d8eb23581c81755ce1c3c9c8b163ecab8",
+  "candidateSha256": "9749e015fcc07c606c110be212b46f3bf031fccde7c6096d5a42a1e5986d1c2f",
+  "reviewer": "Supplemental Review Agent /root/image_review_tail (Codex)",
+  "reviewedAt": "2026-10-13T17:18:59.852360+00:00",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "Walking person beside bicycle retains separate head, lowered two legs, hand-to-handlebar connection, two wheels and triangular frame; red circle and white background keep original geometry."
+  ],
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b254.jpg",
+    "originalSha256": "4de4b121884be408c1b4a0cf6e90495d8eb23581c81755ce1c3c9c8b163ecab8",
+    "masterPath": "content/assets-masters/questions/b254.png",
+    "masterSha256": "9749e015fcc07c606c110be212b46f3bf031fccde7c6096d5a42a1e5986d1c2f",
+    "candidateSha256": "9749e015fcc07c606c110be212b46f3bf031fccde7c6096d5a42a1e5986d1c2f",
+    "inferenceSha256": "e442fe489bfe828905723c8e2c80d0338fad2387d7e3aea854f1c72481bedd96",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

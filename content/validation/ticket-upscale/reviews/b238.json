@@ -1,0 +1,26 @@
+{
+  "imageId": "question-image-b238",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b238.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b238.png",
+  "originalSha256": "b079af8f97e55ff9a5a9c09f75c97e71136b15772348c6984d3c74a4d12e954a",
+  "candidateSha256": "fc31121dd086dfabc6053359ea326dddb0130f15568dab53545ac9a2ee5896bd",
+  "reviewer": "Supplemental Review Agent /root/image_review_tail (Codex)",
+  "reviewedAt": "2026-10-13T17:17:29.497257+00:00",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "Street-photo pedestrian warning remains triangular red with the same person and five crossing stripes; poles, foreground car and background pedestrian stay in position.",
+    "Actual enlarged sign-region comparison preserves pedestrian limbs and black stripe gaps; the small camera notice remains a camera silhouette over an unreadable pale panel rather than invented readable text."
+  ],
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b238.jpg",
+    "originalSha256": "b079af8f97e55ff9a5a9c09f75c97e71136b15772348c6984d3c74a4d12e954a",
+    "masterPath": "content/assets-masters/questions/b238.png",
+    "masterSha256": "fc31121dd086dfabc6053359ea326dddb0130f15568dab53545ac9a2ee5896bd",
+    "candidateSha256": "fc31121dd086dfabc6053359ea326dddb0130f15568dab53545ac9a2ee5896bd",
+    "inferenceSha256": "365d03285f2f0a2f8e2e5ad334063cff1c66f1a02393a150cd5e7f7465ce6237",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

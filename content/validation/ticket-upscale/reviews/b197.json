@@ -1,0 +1,29 @@
+{
+  "imageId": "question-image-b197",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b197.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b197.png",
+  "originalSha256": "5d7bf9a62ff1eb429889eed8bcf106a8c321523f377c46658a13c0c1bd27cceb",
+  "candidateSha256": "969e66bd72af430224905dfe087e221e2abb52719f0709a9c292bd50d116d557",
+  "reviewer": "image_review",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "FORESTER lettering, fuel flap/nozzle connection, hose angle and tail-light segment structure retained; reflections simplified without altered refueling geometry."
+  ],
+  "rejectionReason": null,
+  "reviewedAt": "2026-10-13T17:08:53.448040+00:00",
+  "inspectionArtifacts": [
+    "/private/tmp/cabadrive-057-review-b140-b220-b194-b195-b196-b197.png"
+  ],
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b197.jpg",
+    "originalSha256": "5d7bf9a62ff1eb429889eed8bcf106a8c321523f377c46658a13c0c1bd27cceb",
+    "masterPath": "content/assets-masters/questions/b197.png",
+    "masterSha256": "969e66bd72af430224905dfe087e221e2abb52719f0709a9c292bd50d116d557",
+    "candidateSha256": "969e66bd72af430224905dfe087e221e2abb52719f0709a9c292bd50d116d557",
+    "inferenceSha256": "e2e2ed250002ee68985c8fa18dfda86eedba865886a91095c5df9fcf6c4934cd",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "imageId": "question-image-b240",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b240.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b240.png",
+  "originalSha256": "7b5e21726fe14b4bbe7bea0946720780e43db774f9c6feef62d5e284900d4f7b",
+  "candidateSha256": "c47c188eab776d5dcab17fe810cb796761a7844ee66413c7eb9bf17927c59ccf",
+  "reviewer": "Supplemental Review Agent /root/image_review_tail (Codex)",
+  "reviewedAt": "2026-10-13T17:18:11.035082+00:00",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "Steam locomotive remains facing left with the same smoke plume, three separated lower wheel forms and right rear cabin; rail baseline and red triangular boundary are retained."
+  ],
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b240.jpg",
+    "originalSha256": "7b5e21726fe14b4bbe7bea0946720780e43db774f9c6feef62d5e284900d4f7b",
+    "masterPath": "content/assets-masters/questions/b240.png",
+    "masterSha256": "c47c188eab776d5dcab17fe810cb796761a7844ee66413c7eb9bf17927c59ccf",
+    "candidateSha256": "c47c188eab776d5dcab17fe810cb796761a7844ee66413c7eb9bf17927c59ccf",
+    "inferenceSha256": "dcfb0c605bbe33d33b4f0524b8b889f2298c41419d9754401dad33653bbac4b2",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

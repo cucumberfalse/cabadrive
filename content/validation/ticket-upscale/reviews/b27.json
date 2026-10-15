@@ -1,0 +1,30 @@
+{
+  "imageId": "question-image-b27",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:24:51.000Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "rejected",
+  "observations": [
+    "Separately inspected bus/shelter image retains its bus approach and platform figures; same native-route panel pattern as b25 has long false digit strokes and bars instead of destination letters."
+  ],
+  "rejectionReason": "Bus destination/route panel reconstructs source glyphs into elongated synthetic strokes.",
+  "candidateSha256": "e7f3eccf5c8adb391a2d6d31a533e3da1542cb02d615a647547a38305274bb99",
+  "originalSha256": "45f66b66435bf260fce5c9c58fa596a1c8bef1d5f90f0245b459239f47f3e92e",
+  "fallbackObservations": [
+    "Separately viewed bus photograph fallback retains original route panel and fine windshield words, bus grille and shelter lettering."
+  ],
+  "fallbackReviewedAt": "2026-10-13T17:45:13.381Z",
+  "fallbackReviewer": "Implementation Agent (Codex)",
+  "fallbackSha256": "722c8418b50a90b4c26bda9c126b3ae414bb9eafc15997d883f163d51f17745f",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b27.jpg",
+    "originalSha256": "45f66b66435bf260fce5c9c58fa596a1c8bef1d5f90f0245b459239f47f3e92e",
+    "masterPath": "content/assets-masters/questions/b27.png",
+    "masterSha256": "722c8418b50a90b4c26bda9c126b3ae414bb9eafc15997d883f163d51f17745f",
+    "candidateSha256": "e7f3eccf5c8adb391a2d6d31a533e3da1542cb02d615a647547a38305274bb99",
+    "inferenceSha256": "73c60adba99dd6758e4b68b053d6bb08e4a262901f2230507be342a05b628c8e",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

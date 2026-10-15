@@ -1,0 +1,23 @@
+{
+  "imageId": "question-image-b101",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T16:53:11.968Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "Red circled octagonal PARE keeps all four letters, pole and position before the crossing; zebra stripes, yellow bollards, pedestrian and dumpster retain their geometry."
+  ],
+  "candidateSha256": "25e9376be890a840cfda7551e2bf280b2590ac5df548ba2c1f35dcc7effb87ca",
+  "originalSha256": "993b81301dcbf271cfa4ea7f8ab5616619f40e14efaec75883a0e2c0b28b2c4c",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b101.jpg",
+    "originalSha256": "993b81301dcbf271cfa4ea7f8ab5616619f40e14efaec75883a0e2c0b28b2c4c",
+    "masterPath": "content/assets-masters/questions/b101.png",
+    "masterSha256": "25e9376be890a840cfda7551e2bf280b2590ac5df548ba2c1f35dcc7effb87ca",
+    "candidateSha256": "25e9376be890a840cfda7551e2bf280b2590ac5df548ba2c1f35dcc7effb87ca",
+    "inferenceSha256": "8fbace21d0aa3855dbf7a64fe1d275c1b2dd5c55aff09042dd4efc4052b3a948",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

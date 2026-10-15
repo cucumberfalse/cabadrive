@@ -1,0 +1,30 @@
+{
+  "imageId": "question-image-b9",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:41:44.562Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "rejected",
+  "observations": [
+    "Garage layout and cars stay in place, but actual enlarged right-hand service board changes its small original letters into disconnected pseudoletters and solid bars."
+  ],
+  "rejectionReason": "Garage service-board lettering is not source-faithful.",
+  "candidateSha256": "be408ad32bf8f340630db5708663639c3c20fe1d02fdad5f236b7de955959110",
+  "originalSha256": "e02a90359d2a9f1e0ebbf109605b3588fb47dc9a103fdca9cee0303e3ef0cf33",
+  "fallbackObservations": [
+    "Fallback keeps the original small service-board letter strokes on the garage right wall and identical car/aisle layout."
+  ],
+  "fallbackReviewedAt": "2026-10-13T17:47:00.393Z",
+  "fallbackReviewer": "Implementation Agent (Codex)",
+  "fallbackSha256": "69ad20708cec5335808f00c52eb2925b56fc111e3946967be91eeb793ebf6bea",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b9.jpg",
+    "originalSha256": "e02a90359d2a9f1e0ebbf109605b3588fb47dc9a103fdca9cee0303e3ef0cf33",
+    "masterPath": "content/assets-masters/questions/b9.png",
+    "masterSha256": "69ad20708cec5335808f00c52eb2925b56fc111e3946967be91eeb793ebf6bea",
+    "candidateSha256": "be408ad32bf8f340630db5708663639c3c20fe1d02fdad5f236b7de955959110",
+    "inferenceSha256": "1f48677c4ee827aab5be69395618527ed9828cb05fbf3ce389923186fb56f997",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

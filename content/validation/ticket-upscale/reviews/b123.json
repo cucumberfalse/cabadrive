@@ -1,0 +1,30 @@
+{
+  "imageId": "question-image-b123",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:06:27.501Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "rejected",
+  "observations": [
+    "Native van detail shows source branding transformed into tangled invented dark strokes and small information lines flattened; circled road segment remains source-aligned."
+  ],
+  "rejectionReason": "Van branding letters are reconstructed into invented dark glyph contours, and fine text lines are replaced by smooth bars.",
+  "candidateSha256": "09c1c1f66032d9b2fe9c1d6b772c6cf85d22503e7cd713ec5b3c4593ac0f1e26",
+  "originalSha256": "43e38696c8b879405be5df8870decab6d206b14b5ea7cb72aec065fa200964d7",
+  "fallbackObservations": [
+    "Fallback preserves the van side branding as original soft cursive strokes and the red ellipse on the double centre line."
+  ],
+  "fallbackReviewedAt": "2026-10-13T17:43:22.318Z",
+  "fallbackReviewer": "Implementation Agent (Codex)",
+  "fallbackSha256": "caeb273e316668ea60435f5a0aa54b351ef772db0881849bbdb6053d74f7b797",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b123.jpg",
+    "originalSha256": "43e38696c8b879405be5df8870decab6d206b14b5ea7cb72aec065fa200964d7",
+    "masterPath": "content/assets-masters/questions/b123.png",
+    "masterSha256": "caeb273e316668ea60435f5a0aa54b351ef772db0881849bbdb6053d74f7b797",
+    "candidateSha256": "09c1c1f66032d9b2fe9c1d6b772c6cf85d22503e7cd713ec5b3c4593ac0f1e26",
+    "inferenceSha256": "581c4acf2b0869532f4ea16102ddfe614ec1a952527f12ed1f179e35296adc19",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

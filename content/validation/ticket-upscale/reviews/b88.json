@@ -1,0 +1,23 @@
+{
+  "imageId": "question-image-b88",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:41:44.560Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "A/B/C labels retain the blue informational rectangle, orange works rectangle with diagonal white top stripes and red restriction circle."
+  ],
+  "candidateSha256": "fc0315df89478ebcb20d0a52adecfbeee2e1b46d67f4c1ce3af1d634ad95a103",
+  "originalSha256": "ff7f4d9dedac8f6b62f9ee0284ff82219fad71819d391f5885c6ff4a25842811",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b88.jpg",
+    "originalSha256": "ff7f4d9dedac8f6b62f9ee0284ff82219fad71819d391f5885c6ff4a25842811",
+    "masterPath": "content/assets-masters/questions/b88.png",
+    "masterSha256": "fc0315df89478ebcb20d0a52adecfbeee2e1b46d67f4c1ce3af1d634ad95a103",
+    "candidateSha256": "fc0315df89478ebcb20d0a52adecfbeee2e1b46d67f4c1ce3af1d634ad95a103",
+    "inferenceSha256": "6621821605d600370700a7b1b9abd9d0eaccafec31714622bfd2c6b163f02795",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

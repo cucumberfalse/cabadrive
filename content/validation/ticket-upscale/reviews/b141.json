@@ -1,0 +1,36 @@
+{
+  "imageId": "question-image-b141",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b141.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b141.png",
+  "originalSha256": "d1f65b0eeb880fb85cd153985cff121361fd72b8b831f3db54021a23a0e5b8be",
+  "candidateSha256": "acd1ff5ac97d90f4fa49677bb0c7e07fd6d0a292dee9eb44c43c7633626f19c8",
+  "reviewer": "image_review",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "rejected",
+  "observations": [
+    "Primary 20, child and wheelchair signs retained, but enlarged auxiliary blue-and-white plaque gains a reshaped white blob/stroke and tiny lettering becomes invented marks."
+  ],
+  "rejectionReason": "Primary 20, child and wheelchair signs retained, but enlarged auxiliary blue-and-white plaque gains a reshaped white blob/stroke and tiny lettering becomes invented marks.",
+  "reviewedAt": "2026-10-13T17:02:15.459043+00:00",
+  "inspectionArtifacts": [
+    "/private/tmp/cabadrive-057-review-b140-b220-b140-b141-b142-b143-b144.png",
+    "/private/tmp/cabadrive-057-review-b140-b220-detail-b141-.65-.05-.34-.40.png"
+  ],
+  "fallbackObservations": [
+    "Separately inspected duplicate fallback preserves UM board fine print and wheelchair plaque in their original soft state; parking geometry unchanged."
+  ],
+  "fallbackReviewedAt": "2026-10-13T17:43:47.665Z",
+  "fallbackReviewer": "Implementation Agent (Codex)",
+  "fallbackSha256": "7dd5c0909e1aa65d195484422168dd40047660441f80edbeb9cd81428f461d53",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b141.jpg",
+    "originalSha256": "d1f65b0eeb880fb85cd153985cff121361fd72b8b831f3db54021a23a0e5b8be",
+    "masterPath": "content/assets-masters/questions/b141.png",
+    "masterSha256": "7dd5c0909e1aa65d195484422168dd40047660441f80edbeb9cd81428f461d53",
+    "candidateSha256": "acd1ff5ac97d90f4fa49677bb0c7e07fd6d0a292dee9eb44c43c7633626f19c8",
+    "inferenceSha256": "4011c68cd40edc56ae20bf71cd739c1c0b98dfabd4eb3fa407ec284f53f83691",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

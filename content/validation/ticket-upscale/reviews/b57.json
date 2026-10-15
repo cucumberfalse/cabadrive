@@ -1,0 +1,23 @@
+{
+  "imageId": "question-image-b57",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:32:48.697Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "Forward white roadarrow and crossing stripes retain arrangement; RESTAURANTE facade letters remain legible with matching position; stoppedwhitecars preserve source relationships."
+  ],
+  "candidateSha256": "cdd58bd5458b2903b944fafdf1b383e7bb1f0d179f6866f30f91c35af7e01411",
+  "originalSha256": "aa22a2f82bee0b2c9f844925b27399bf1bbf572fec4e7553e747514bac13f76e",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b57.jpg",
+    "originalSha256": "aa22a2f82bee0b2c9f844925b27399bf1bbf572fec4e7553e747514bac13f76e",
+    "masterPath": "content/assets-masters/questions/b57.png",
+    "masterSha256": "cdd58bd5458b2903b944fafdf1b383e7bb1f0d179f6866f30f91c35af7e01411",
+    "candidateSha256": "cdd58bd5458b2903b944fafdf1b383e7bb1f0d179f6866f30f91c35af7e01411",
+    "inferenceSha256": "9eff68dd84e102d9552696563b7f71e0220479e1f022e4bb4a7dff08d9024cb1",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

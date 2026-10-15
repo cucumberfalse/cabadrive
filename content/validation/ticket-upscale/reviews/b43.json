@@ -1,0 +1,30 @@
+{
+  "imageId": "question-image-b43",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:30:13.179Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "rejected",
+  "observations": [
+    "Native blackstreet-plaque crop confirms white arrow points right as original, but top name and address numerals become connected white strokes/rectangles instead of original glyph shapes."
+  ],
+  "rejectionReason": "Street-name/address plaque letters and numbers become synthetic white bars.",
+  "candidateSha256": "9ad9a7f91b05466dae865d7a9a37a5752d55735c1124390b8c73acaeed74d969",
+  "originalSha256": "b910e5bc79560ddec317206da6117639ca33cd46ff7f471696a99583bce8ddba",
+  "fallbackObservations": [
+    "Fallback preserves original small street-name/number plaque and right arrow, with source-level softness and unchanged zebra/yellow curb."
+  ],
+  "fallbackReviewedAt": "2026-10-13T17:46:29.957Z",
+  "fallbackReviewer": "Implementation Agent (Codex)",
+  "fallbackSha256": "9f98cbf9bbd473227eb843a7a6e05adaac4920b7e77f5b6ff0a4079d430b4437",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b43.jpg",
+    "originalSha256": "b910e5bc79560ddec317206da6117639ca33cd46ff7f471696a99583bce8ddba",
+    "masterPath": "content/assets-masters/questions/b43.png",
+    "masterSha256": "9f98cbf9bbd473227eb843a7a6e05adaac4920b7e77f5b6ff0a4079d430b4437",
+    "candidateSha256": "9ad9a7f91b05466dae865d7a9a37a5752d55735c1124390b8c73acaeed74d969",
+    "inferenceSha256": "38e9469ae3d547757308ffbba6bad42a39d0fe5618c19a75d5077d2c5a22cc43",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

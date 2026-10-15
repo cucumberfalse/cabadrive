@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-13T18:38:46.523229+00:00",
+  "baseline": {
+    "sha256": "3f30327bb43604736d656a0042bcec919d9d7963f348efde597ef1780854c8be",
+    "recordedAt": "2026-10-13T16:56:27.790965+00:00",
+    "recordedContainers": 9
+  },
+  "containerDetailedFieldDelta": [],
+  "unchangedFields": [
+    "Id",
+    "Image",
+    "Name",
+    "State.Status",
+    "State.Running",
+    "State.Pid",
+    "Labels",
+    "Mounts"
+  ],
+  "zeroActiveExistingContainers": true,
+  "imageTagTuplesUnchanged": true,
+  "volumeNamesUnchanged": true,
+  "customNetworkIdsUnchanged": true,
+  "changedSettings": [
+    "DiskSizeMiB"
+  ],
+  "diskSizeMiB": 65536,
+  "defaultBridge": {
+    "oldId": "52219961902e4a44a8ec715a10e2d6f61a04753ef557360ee8d4c88c51c720ac",
+    "newId": "04e48ba7c281a2a8235f89e84ec1805b7557076989ad4b749261e3ae89b79fc6",
+    "currentName": "bridge",
+    "currentDriver": "bridge",
+    "currentDefaultBridge": true
+  },
+  "currentPrivateInspectHashes": {
+    "containers": "444f10851be26205b7d0971368d1bb4be1dba51f452bbb411b3af01f86b2065c",
+    "networks": "2bf0815a881ec70e271aa0c01c6d8ececc3316d854d34f108e042bbe5dad56c2",
+    "volumes": "def2728549f7d936f4aa3798e9be7df0dfc2309ab44f6bc436d2ac2b42ce3529"
+  },
+  "currentChecks": {
+    "containers": 9,
+    "networks": 6,
+    "volumes": 47,
+    "containerErrorsEmpty": true,
+    "mountAttachmentsAndNetworkModeCaptured": true,
+    "customNetworkConfigurationCaptured": true,
+    "volumeIdentityDriverAttachmentsCaptured": true
+  },
+  "limitations": [
+    "Historical full Config/HostConfig/NetworkSettings and network IPAM/options were not recorded; equality cannot be reconstructed.",
+    "Current full inspect establishes only current configuration/health; it cannot prove historical volume contents or missing private application data paths.",
+    "No stopped sibling container was started/recreated, no helper mounted sibling volumes, and no private application data was read."
+  ]
+}

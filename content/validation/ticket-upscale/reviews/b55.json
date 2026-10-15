@@ -1,0 +1,23 @@
+{
+  "imageId": "question-image-b55",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:31:28.492Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "Native storefrontprice crop retains2x30 and2x120 arrangement and greenprice circle; green P placard and plate MUH438, curb/crossing positions unchanged; finest shoplabels remain ambiguous."
+  ],
+  "candidateSha256": "b1b8ee70dc04fed49595cd02a7a643bbcf59e5304273e19e60fd46b6a8e5f2f2",
+  "originalSha256": "4846ab1514120986cf75e6b09da67543d42e34da923e409d2550ac560df0617e",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b55.jpg",
+    "originalSha256": "4846ab1514120986cf75e6b09da67543d42e34da923e409d2550ac560df0617e",
+    "masterPath": "content/assets-masters/questions/b55.png",
+    "masterSha256": "b1b8ee70dc04fed49595cd02a7a643bbcf59e5304273e19e60fd46b6a8e5f2f2",
+    "candidateSha256": "b1b8ee70dc04fed49595cd02a7a643bbcf59e5304273e19e60fd46b6a8e5f2f2",
+    "inferenceSha256": "b01f3db1fef3919299e54edadd2d5aa4de30ac1b49aebfe1ab3f98af844f5b20",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

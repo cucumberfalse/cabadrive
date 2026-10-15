@@ -1,0 +1,30 @@
+{
+  "imageId": "question-image-b95",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:41:44.564Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "rejected",
+  "observations": [
+    "Crossing stripes, bicycle lane and taxi remain; actual enlarged rear plate turns the source blurred character sequence into new angular black-on-white glyphs."
+  ],
+  "rejectionReason": "Taxi plate characters are altered.",
+  "candidateSha256": "db879123e312033fda762f4fab24fd052565e3f115e5e69b4461f0a993db15fb",
+  "originalSha256": "5b80ae08ce3ee8a0b15ea1c02027b94c32371cc6c782d23df921408c451e3bdd",
+  "fallbackObservations": [
+    "Fallback keeps the taxi original rear-plate character shapes at source softness, with unchanged zebra crossing and green bicycle lane."
+  ],
+  "fallbackReviewedAt": "2026-10-13T17:47:00.400Z",
+  "fallbackReviewer": "Implementation Agent (Codex)",
+  "fallbackSha256": "b9e67f8fe4be7d71acfd6af4427208fe7b4f41f8a2beb1eb7ba5ff697e9392a1",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b95.jpg",
+    "originalSha256": "5b80ae08ce3ee8a0b15ea1c02027b94c32371cc6c782d23df921408c451e3bdd",
+    "masterPath": "content/assets-masters/questions/b95.png",
+    "masterSha256": "b9e67f8fe4be7d71acfd6af4427208fe7b4f41f8a2beb1eb7ba5ff697e9392a1",
+    "candidateSha256": "db879123e312033fda762f4fab24fd052565e3f115e5e69b4461f0a993db15fb",
+    "inferenceSha256": "1a249dc973a09af619eb5ac92e8aa293adb749bfe5daf7aede58879315e09fe7",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

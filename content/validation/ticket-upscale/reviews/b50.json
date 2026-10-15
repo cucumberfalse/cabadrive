@@ -1,0 +1,23 @@
+{
+  "imageId": "question-image-b50",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:30:13.226Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "Separately viewed AB123CD plate retains all character order, country header, blue strip and border proportions; emblem positions unchanged."
+  ],
+  "candidateSha256": "36970eecabaa9c76e60f28e353c60e8920b43531ffbebc2b4382eb43248b8917",
+  "originalSha256": "4f31a2b49c38b1cb22eb835614fa1ae6e6fe904f4a228d1757ab97f499796713",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b50.jpg",
+    "originalSha256": "4f31a2b49c38b1cb22eb835614fa1ae6e6fe904f4a228d1757ab97f499796713",
+    "masterPath": "content/assets-masters/questions/b50.png",
+    "masterSha256": "36970eecabaa9c76e60f28e353c60e8920b43531ffbebc2b4382eb43248b8917",
+    "candidateSha256": "36970eecabaa9c76e60f28e353c60e8920b43531ffbebc2b4382eb43248b8917",
+    "inferenceSha256": "ee2e941a61470966d727bd0467f417d6da184ca19a76269c2238c6515b6b337a",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

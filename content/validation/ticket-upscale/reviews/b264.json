@@ -1,0 +1,25 @@
+{
+  "imageId": "question-image-b264",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b264.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b264.png",
+  "originalSha256": "4a9c12374026d825ea54de329765fb1f610b1c1f9b34683640cc7adb1cc4c407",
+  "candidateSha256": "b3b8f663d12938cb417e4d1ad5ec5d1fab9a962e06712d070ea4348551d113fa",
+  "reviewer": "Supplemental Review Agent /root/image_review_tail (Codex)",
+  "reviewedAt": "2026-10-13T17:20:00.384897+00:00",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "End-of-highway sign keeps the white divided road and horizontal bridge beneath a broad red slash rising from lower-left to upper-right; visible road segments and muted blue square are unchanged."
+  ],
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b264.jpg",
+    "originalSha256": "4a9c12374026d825ea54de329765fb1f610b1c1f9b34683640cc7adb1cc4c407",
+    "masterPath": "content/assets-masters/questions/b264.png",
+    "masterSha256": "b3b8f663d12938cb417e4d1ad5ec5d1fab9a962e06712d070ea4348551d113fa",
+    "candidateSha256": "b3b8f663d12938cb417e4d1ad5ec5d1fab9a962e06712d070ea4348551d113fa",
+    "inferenceSha256": "c6e434e7f54224192a28bd245f9a5ce912139b708f99100d4595eb4735237d67",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

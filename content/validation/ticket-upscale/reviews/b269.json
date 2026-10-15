@@ -1,0 +1,25 @@
+{
+  "imageId": "question-image-b269",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b269.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b269.png",
+  "originalSha256": "dca6a426e67d71a165ee23839cd23703a6373d60dec12b1d47ee194656762f9b",
+  "candidateSha256": "a44f5677d42538c65d2ca0d89134ff701385eb785fde5c8f3cd6ad5a5c2d419b",
+  "reviewer": "Supplemental Review Agent /root/image_review_tail (Codex)",
+  "reviewedAt": "2026-10-13T17:20:36.729099+00:00",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "Theatre panel retains upper sad and lower smiling mask with the same eyes/mouth openings; literal TEATRO letters remain in order below the white inset and neither expression is reversed."
+  ],
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b269.jpg",
+    "originalSha256": "dca6a426e67d71a165ee23839cd23703a6373d60dec12b1d47ee194656762f9b",
+    "masterPath": "content/assets-masters/questions/b269.png",
+    "masterSha256": "a44f5677d42538c65d2ca0d89134ff701385eb785fde5c8f3cd6ad5a5c2d419b",
+    "candidateSha256": "a44f5677d42538c65d2ca0d89134ff701385eb785fde5c8f3cd6ad5a5c2d419b",
+    "inferenceSha256": "e209d169395dd8a4289c00b5f94ef211535b5592ff5a0bba47e4708108468eae",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "imageId": "question-image-b202",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b202.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b202.png",
+  "originalSha256": "402f43721d239bbbf79dcc654babb9cc5abf38d02c00c86dfe4ca0941c49ce2d",
+  "candidateSha256": "02b3d1b933c9e994978fa7fc039b2eff5f1877885f4cfa18ba8e4ebceee0a09a",
+  "reviewer": "image_review",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "rejected",
+  "observations": [
+    "A/B mirrors and visible reflected fields retained, but enlarged blue street-side poster transforms blurred text into invented white symbol/letter blobs."
+  ],
+  "rejectionReason": "A/B mirrors and visible reflected fields retained, but enlarged blue street-side poster transforms blurred text into invented white symbol/letter blobs.",
+  "reviewedAt": "2026-10-13T17:12:56.838613+00:00",
+  "inspectionArtifacts": [
+    "/private/tmp/cabadrive-057-review-b140-b220-b200-b201-b202-b203-b204.png",
+    "/private/tmp/cabadrive-057-review-b140-b220-detail-b202-.10-.04-.075-.19.png",
+    "/private/tmp/cabadrive-057-review-b140-b220-detail-b202-.09-.35-.07-.17.png"
+  ],
+  "fallbackObservations": [
+    "Fallback preserves the small blue roadside poster in its original soft lettering and both mirror views, with A/B labels unchanged."
+  ],
+  "fallbackReviewedAt": "2026-10-13T17:44:40.913Z",
+  "fallbackReviewer": "Implementation Agent (Codex)",
+  "fallbackSha256": "39fe36a6bf751c198c1462ebd8214ff5bbca6ca0602d266faaed0bbc21ea9fc7",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b202.jpg",
+    "originalSha256": "402f43721d239bbbf79dcc654babb9cc5abf38d02c00c86dfe4ca0941c49ce2d",
+    "masterPath": "content/assets-masters/questions/b202.png",
+    "masterSha256": "39fe36a6bf751c198c1462ebd8214ff5bbca6ca0602d266faaed0bbc21ea9fc7",
+    "candidateSha256": "02b3d1b933c9e994978fa7fc039b2eff5f1877885f4cfa18ba8e4ebceee0a09a",
+    "inferenceSha256": "4db173b510152953e273587577a2c8b36387c778649ed243353f99339038607e",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "imageId": "question-image-b26",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:22:22.562Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "rejected",
+  "observations": [
+    "161 route digits and wheelchair shape preserved, but native destination-board crop reconstructs fine SAAVEDRA/ITALIA label letters with altered solid contours; roadway BUS strokes remain."
+  ],
+  "rejectionReason": "Fine destination-board text is sharpened into altered glyph contours rather than source-faithful letters.",
+  "candidateSha256": "24c48c698b488d08a0029346184337ccac85d3d1ae9e4104bf68af86f6bf17e3",
+  "originalSha256": "d5595ef06557ba9c7eaa5fab379cf2a700675d90cf6d328b6b0f68b29ad69873",
+  "fallbackObservations": [
+    "Fallback retains161, wheelchair icon and original LINIERS/SAAVEDRA/PLAZAITALIA lettering, with lane direction and shelter positions intact."
+  ],
+  "fallbackReviewedAt": "2026-10-13T17:45:13.378Z",
+  "fallbackReviewer": "Implementation Agent (Codex)",
+  "fallbackSha256": "c1f67ea77fe6391b1d18506a7a596db668a97e2738aa4431eab28019f3977d34",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b26.jpg",
+    "originalSha256": "d5595ef06557ba9c7eaa5fab379cf2a700675d90cf6d328b6b0f68b29ad69873",
+    "masterPath": "content/assets-masters/questions/b26.png",
+    "masterSha256": "c1f67ea77fe6391b1d18506a7a596db668a97e2738aa4431eab28019f3977d34",
+    "candidateSha256": "24c48c698b488d08a0029346184337ccac85d3d1ae9e4104bf68af86f6bf17e3",
+    "inferenceSha256": "602e942b66978ec3e88c0879aa310abc0d88ad5b92607a7dcf132b4f77d799d7",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

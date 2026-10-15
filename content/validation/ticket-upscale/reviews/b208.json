@@ -1,0 +1,30 @@
+{
+  "imageId": "question-image-b208",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b208.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b208.png",
+  "originalSha256": "4e19d3ea5697d99c7968b63b0dde8318c17379eb5b525b7aebde2f83d89a1f35",
+  "candidateSha256": "5981b4e06a0cc8e327468b1f906f77cc78234a1d914ebd5901bac5d0dd5b250d",
+  "reviewer": "image_review",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "Enlarged AIRBAG embossing preserves A/I/R/B/A/G stroke arrangement and red ellipse; glovebox/vent geometry retained though plastic grain smoothed."
+  ],
+  "rejectionReason": null,
+  "reviewedAt": "2026-10-13T17:12:56.847339+00:00",
+  "inspectionArtifacts": [
+    "/private/tmp/cabadrive-057-review-b140-b220-b205-b206-b207-b208.png",
+    "/private/tmp/cabadrive-057-review-b140-b220-detail-b208-.40-.29-.155-.15.png"
+  ],
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b208.jpg",
+    "originalSha256": "4e19d3ea5697d99c7968b63b0dde8318c17379eb5b525b7aebde2f83d89a1f35",
+    "masterPath": "content/assets-masters/questions/b208.png",
+    "masterSha256": "5981b4e06a0cc8e327468b1f906f77cc78234a1d914ebd5901bac5d0dd5b250d",
+    "candidateSha256": "5981b4e06a0cc8e327468b1f906f77cc78234a1d914ebd5901bac5d0dd5b250d",
+    "inferenceSha256": "b46582c46d96852f6f0059ad99f55b0c0eb57d48e51f96ea151b159d240b8542",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

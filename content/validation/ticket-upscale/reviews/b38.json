@@ -1,0 +1,23 @@
+{
+  "imageId": "question-image-b38",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:28:09.845Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": false,
+  "status": "accepted",
+  "observations": [
+    "Two staggered rows of white square crossing marks retain perspective and exact order; foreground squares keep visible original flecks rather than adding or relocating markings."
+  ],
+  "candidateSha256": "199aa474333a566c2c377a999ed9b73606e84760213fa5a589f5873c8c8328e3",
+  "originalSha256": "59f124387493a4cf0cd8eb9d89885189ad8e01aaaa8eb7b64b9e413f611125ab",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b38.jpg",
+    "originalSha256": "59f124387493a4cf0cd8eb9d89885189ad8e01aaaa8eb7b64b9e413f611125ab",
+    "masterPath": "content/assets-masters/questions/b38.png",
+    "masterSha256": "199aa474333a566c2c377a999ed9b73606e84760213fa5a589f5873c8c8328e3",
+    "candidateSha256": "199aa474333a566c2c377a999ed9b73606e84760213fa5a589f5873c8c8328e3",
+    "inferenceSha256": "34d8c61643fecda2c5316aea20d3d9c573818c2cdd0faca0ac9158abe823ad30",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

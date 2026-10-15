@@ -1,0 +1,23 @@
+{
+  "imageId": "question-image-b105",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T16:53:54.902Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "Red oval retains the same central silver SUV and lateral spacing to the van; paired yellow center lines remain continuous. Distant billboard/plates are softened, while the highlighted vehicle and lane-position cues stay intact."
+  ],
+  "candidateSha256": "ebcfaeb0310acdb4687f2574eb6b77708d1896946199308e848f2041c44aae3c",
+  "originalSha256": "ee3236b0aed389d0289c89af7c331ebf539688d9f347dcc4973a9cca61522686",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b105.jpg",
+    "originalSha256": "ee3236b0aed389d0289c89af7c331ebf539688d9f347dcc4973a9cca61522686",
+    "masterPath": "content/assets-masters/questions/b105.png",
+    "masterSha256": "ebcfaeb0310acdb4687f2574eb6b77708d1896946199308e848f2041c44aae3c",
+    "candidateSha256": "ebcfaeb0310acdb4687f2574eb6b77708d1896946199308e848f2041c44aae3c",
+    "inferenceSha256": "935979633e376deb43a706d357cc8907dac9a1b42a97ca9700f7a41c82867b88",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

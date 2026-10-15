@@ -1,0 +1,36 @@
+{
+  "imageId": "question-image-b150",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b150.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b150.png",
+  "originalSha256": "3039522c2343c7af5b96e551e05a85568f4112e1e0b4c1f72b19e57577552908",
+  "candidateSha256": "2833f06cd2b1122d4071b3b850f1f398b1b34fb6d33e89ecb36513d30baec5c7",
+  "reviewer": "image_review",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "rejected",
+  "observations": [
+    "Enlarged shop menu at right changes glyph shapes into disconnected strokes (including EMPANADAS and CALAMAR/FRITO-like lines); bus 75 remains but small text fidelity fails."
+  ],
+  "rejectionReason": "Enlarged shop menu at right changes glyph shapes into disconnected strokes (including EMPANADAS and CALAMAR/FRITO-like lines); bus 75 remains but small text fidelity fails.",
+  "reviewedAt": "2026-10-13T17:02:15.474475+00:00",
+  "inspectionArtifacts": [
+    "/private/tmp/cabadrive-057-review-b140-b220-b150-b151-b152-b153-b154.png",
+    "/private/tmp/cabadrive-057-review-b140-b220-detail-b150-.91-.33-.085-.28.png"
+  ],
+  "fallbackObservations": [
+    "Fallback preserves the van rear plate and right storefront writing as original soft glyphs, along with75 bus-stop marker and parked position."
+  ],
+  "fallbackReviewedAt": "2026-10-13T17:43:47.674Z",
+  "fallbackReviewer": "Implementation Agent (Codex)",
+  "fallbackSha256": "f03ae80b275ac3d0c246004c41e8dfb5fdc67b871bc04236d900db8cb3faac16",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b150.jpg",
+    "originalSha256": "3039522c2343c7af5b96e551e05a85568f4112e1e0b4c1f72b19e57577552908",
+    "masterPath": "content/assets-masters/questions/b150.png",
+    "masterSha256": "f03ae80b275ac3d0c246004c41e8dfb5fdc67b871bc04236d900db8cb3faac16",
+    "candidateSha256": "2833f06cd2b1122d4071b3b850f1f398b1b34fb6d33e89ecb36513d30baec5c7",
+    "inferenceSha256": "1b1fb2d3c40554140c526ad98b191169df4d8f9b216c361cc0b33a8dec4f6e79",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

@@ -1,0 +1,190 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-13T22:29:32.935615+00:00",
+  "status": "CURRENT_HARNESS_FOCUSED_PASS_FULL_DOCKER_AND_FINAL_CURRENT_PREFLIGHT_PENDING",
+  "metadataCapacity": {
+    "testsPassed": 4,
+    "testsFailed": 0,
+    "elapsedMs": 1753202.834584,
+    "positiveCompleteInventoryFiles": 5602,
+    "positiveMetadataRangeBytes": [
+      1048577,
+      2097151
+    ],
+    "actualStageCommittedTupleAndRetry": true,
+    "actualStaticPublishExactGenerationAndRetry": true,
+    "exact2MiBAccepted": true,
+    "over2MiBRejected": true,
+    "malformedStructuralAndInventoryMismatchesRejected": true,
+    "genericAuthority1MiBBoundPreserved": true
+  },
+  "stagerSecurity": {
+    "restrictedPassed": 112,
+    "restrictedFailed": 1,
+    "restrictedFailure": "AF_UNIX EPERM sandbox prevented unsafe-socket fixture creation",
+    "approvedFocusedAuthorityReaderPassed": 1,
+    "approvedFocusedAuthorityReaderFailed": 0,
+    "totalDistinctCasesVerified": 113
+  },
+  "qualityFast": "typecheck/lint PASS after metadata and browser repairs",
+  "oldFullPreflight": {
+    "status": "FAILED",
+    "localTestsPassed": 795,
+    "browserPassed": 170,
+    "browserFailed": 9,
+    "browserSkipped": 5,
+    "browserDidNotRun": 2,
+    "currentFinalFilesCovered": false
+  },
+  "correctedFocusedBrowser": {
+    "passed": 9,
+    "failed": 0,
+    "skipped": 1,
+    "elapsedMs": 49000,
+    "skipReason": "mobile duplicate of Chromium two-build compatibility matrix"
+  },
+  "docker": {
+    "actualFullProductionBuild": "PASS full275/276 and native13 tests; ordinary pnpm build 582.6s",
+    "productionFullPayloadProbe": "PASS exact3321 variant SHA/exclusion after stdin fix",
+    "fullAcceptance": "HELD/partialfailedactualphase2hostreserve; no completedDockeracceptance",
+    "makeBuild": "PASS cached actual command before latest metadata fix",
+    "makeUp": "FAILED old1MiB reader; corrected retry pending resources",
+    "makeDown": "PASS own command teardown",
+    "resourceExecutionAllowed": false,
+    "reviewedDriverPartial": {
+      "startedAt": "2026-10-13T21:55:30.805905+00:00",
+      "completedAt": "2026-10-13T22:06:01.922357+00:00",
+      "exitCode": 1,
+      "status": "FAILED",
+      "log": ".cache/image-qa/ticket-upscale/docker-final-reviewed.log",
+      "productionNativePassed": 15,
+      "productionNativeFailed": 0,
+      "ordinaryProductionBuildSeconds": 574.6,
+      "stagerImageSha256": "203b62a1cdbc579f7d5643074fb836537d3fc4075d3026ec0557bd57b070333d",
+      "complete275Masters276References": true,
+      "full3321PayloadProbeReturnedNormallyBeforePhase2Guard": true,
+      "fullProductionPayloadProbeStdoutLogged": false,
+      "phase2Failure": "host remaining2.06GiB+2reserve,before actualformer-ignorebuild",
+      "creatorFinallyTeardownComplete": true,
+      "logSha256": "ec316c21bcd411a4add4aa6690537b7775be89b41b2fa7e5eddf756c6eb9a821",
+      "fullAcceptance": "FAILED/PARTIAL; negative/two-release/runtime notrun"
+    }
+  },
+  "currentRelevantFileHashes": {
+    "scripts/copy-image-test-context.mjs": "dff35154bc817c58691ebbfe71682c28e0f4c7082a3bcb7f756c0b18cdd9a404",
+    "scripts/test-docker-image-pipeline.mjs": "a1f1e4867fc5012b153d9ed7b2580a1e55e404dd08382e1043c0c5644637d30e",
+    "scripts/stage-static-release.mjs": "a113d34f4b08cb904c842094cf349b43727578549c9f83f6a7c6ab1b905ea931",
+    "tests/release-metadata-capacity.test.mjs": "f4acd78b879ae4ffa3524f0df01a7c0dcc2879e84670c57d7202045e6f7504ac",
+    "tests/e2e/app.spec.ts": "564148c97e3e5c4cc9b7cf61b5686b387f74e1c56754fb274155a9791a92b950",
+    "tests/e2e/service-worker-http-cache.spec.ts": "c97bdcbe9789c0c5a0b28dd787364d8c53f3272f92cd0d9430cfeaf3224fdc5f",
+    "tests/docker-image-pipeline-cleanup.test.mjs": "2efe46d919222a8867b67a7459fce44ca4ae547200df51b9cc7181158aee1b83",
+    "scripts/ticket-upscale-validation.mjs": "55af38fb2d99f2793eaaa96e31557702a5ce1e10cff2c74be0e9a380c4de3c64",
+    "tests/ticket-upscale.test.mjs": "5e83eb74609c6bd3ebdc97dc2113790a81fbc4b7cbbb74cd9f24450475d91e79"
+  },
+  "postBuildCleanupRegression": {
+    "passed": 1,
+    "failed": 0,
+    "elapsedMs": 4360.6195,
+    "boundary": "real driver with isolated mock Docker command; successful image registration precedes reserve probe; exact tag/context teardown on probe failure",
+    "actualDockerAcceptance": false
+  },
+  "interruptedPreflightBeforeCleanupFix": {
+    "unitTestsPassed": 799,
+    "unitTestsFailed": 0,
+    "ordinaryCompleteProductionBuildPassed": true,
+    "e2eNotRun": true,
+    "stoppedAt": "2026-10-13T20:39:14.711103+00:00",
+    "exitCode": 143,
+    "currentFinalFilesCovered": false,
+    "reason": "stop after useful production build; subsequent P2 cleanup ordering/test requires final renewed preflight"
+  },
+  "fallbackProofRegression": {
+    "focusedTestsPassed": 4,
+    "focusedTestsFailed": 0,
+    "allActualRecordsVerified": 275,
+    "actualExactHashBoundFallbackProofs": 77,
+    "evidenceModified": false,
+    "journalSha256": "47e7deb145ecd66454cfcc82aa190faca175b7e16648c34ea5eca89173cfffbc",
+    "requiredProof": [
+      "fallbackSha256 equals exact master SHA",
+      "nonempty trimmed string fallbackReviewer",
+      "valid ISO timestamp/calendar date fallbackReviewedAt",
+      "actual individual observations array"
+    ],
+    "negativeCases": "observations-only, missing/wrong hash, missing/blank/nonstring reviewer, missing/invalid/nonstring date and calendar rollover after digest rebinding"
+  },
+  "interruptedPreflightBeforeFallbackProofFix": {
+    "reportedUnitPasses": 80,
+    "reportedUnitFailures": 0,
+    "nativeContentQualityFormatNegativeContractsPassed": true,
+    "unitSuiteCompleted": false,
+    "appBuildNotRun": true,
+    "e2eNotRun": true,
+    "stoppedAt": "2026-10-13T20:58:25.557246+00:00",
+    "exitCode": 143,
+    "currentFinalFilesCovered": false
+  },
+  "completeTypedRecordSchemaRegression": {
+    "focusedTestsPassed": 9,
+    "focusedTestsFailed": 0,
+    "elapsedMs": 203.193083,
+    "actualRecordProof": "content/validation/ticket-upscale/typed-record-proof.json",
+    "strictCanonicalInferenceReviewIdentity": true,
+    "strictPrimaryAndFallbackAuthorAndTimestamp": true,
+    "strictDigestAndReceiptBooleanTypes": true,
+    "bothSideMissingDigestNegativesAfterRebinding": true,
+    "meaningfulRejectionStringRequired": true,
+    "originalJournalAndImageEvidenceModified": false,
+    "wholePreflight": "PASS current reviewed code:805/805units, completeproductionbuild,181browserPASS/5intentionalSKIP0fail"
+  },
+  "interruptedPreflightBeforePrimaryTypedSchemaFix": {
+    "stoppedAt": "2026-10-13T21:07:38.065567+00:00",
+    "strict275Masters276ReferencesPassed": true,
+    "nativeDerivativeAuditCompleted": false,
+    "unitSuiteNotRun": true,
+    "appBuildNotRun": true,
+    "e2eNotRun": true,
+    "exitCode": 143,
+    "currentFinalFilesCovered": false
+  },
+  "currentReviewedCodePreflight": {
+    "log": "preflight-final-reviewed.log",
+    "nativeContentQualityFormatNegativeContracts": "PASS",
+    "unitTestsPassed": 805,
+    "unitTestsFailed": 0,
+    "unitTestsSkipped": 0,
+    "unitElapsedMs": 379929.028458,
+    "ordinaryProductionBuild": "PASS",
+    "e2e": "PASS",
+    "status": "PASS",
+    "browserPassed": 181,
+    "browserFailed": 0,
+    "browserSkipped": 5,
+    "browserElapsedMinutes": 2.3,
+    "exitCode": 0,
+    "completedAt": "2026-10-13T21:48:48.179709+00:00",
+    "intentionalSkipReason": "one duplicate mobile DPR/slot matrix (dedicated DPR1/2 anddesktop contexts execute in Chromium project) and four duplicate mobile two-build compatibility/protocol cases",
+    "logSha256": "ba6d9723d3d34415cf60208df9d345bbf23cc6fcf0edccace47e1223652648b0"
+  },
+  "checkpointHarness": {
+    "focusedTests": 14,
+    "pass": 14,
+    "fail": 0,
+    "skip": 0,
+    "durationMs": 20580.069292,
+    "logSha256": "ba44efa3750b897f8c6fdbb367712a0c65bc67c81b2945225b3e01b2f8b924a7",
+    "scope": "Actual copied driver with isolated command double; not production Docker acceptance. Remaining default two-release/runtime aggregate will be executed with real Docker.",
+    "review": "Independent read-only current helper/driver/tests closed without residual blocker; no final PR-head role PASS",
+    "actualPhases": "NOT_RUN",
+    "originalFailedDriver": "35648 remains FAILED; images/context removed; no reusable proof",
+    "quality": {
+      "typecheck": "PASS",
+      "lint": "PASS",
+      "format": "PASS",
+      "featureMemory": "PASS",
+      "checkedAt": "2026-10-13T22:30:15.496461+00:00",
+      "qualityLogSha256": "301f196474cf91fc05211478e0a14d4ddcec8ecbdbbc2d831580f5699c90c5ac",
+      "formatLogSha256": "62214aa536d87e9bac5d87bf92068d996c2e5f47d6ae8e9cf62ab316d0221362"
+    }
+  }
+}

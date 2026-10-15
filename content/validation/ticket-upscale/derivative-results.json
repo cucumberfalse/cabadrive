@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-13T18:17:31.272Z",
+  "sources": 275,
+  "variants": 3321,
+  "derivativeBytes": 208945727,
+  "jpegBytes": 105028840,
+  "maxDssim": 0.00390633,
+  "ssimulacra2Samples": 167,
+  "minSsimulacra2": 71.18074928,
+  "qaManifestBytes": 1095065,
+  "deliveryManifestBytes": 335250,
+  "byteIdentity": {
+    "comparedFiles": 3323,
+    "inventorySha256": "227feec13ba131a68a102fec2cc40d4debe0b6c689a199b7e1799de36924c5c5",
+    "identical": true
+  },
+  "firstBuild": {
+    "basis": "log-file creation to final write; actual wall clock metadata",
+    "startedAt": "2026-10-13T17:51:58.160Z",
+    "finishedAt": "2026-10-13T18:07:23.745Z",
+    "elapsedMs": 925585
+  },
+  "repeatedBuild": {
+    "basis": "log-file creation to final write; actual wall clock metadata",
+    "startedAt": "2026-10-13T18:08:38.151Z",
+    "finishedAt": "2026-10-13T18:15:54.837Z",
+    "elapsedMs": 436686
+  }
+}

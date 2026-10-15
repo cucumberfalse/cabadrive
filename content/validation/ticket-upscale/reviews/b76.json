@@ -1,0 +1,23 @@
+{
+  "imageId": "question-image-b76",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:39:28.630Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "The red ellipse, yellow crosshatched keep-clear area and bridge truss retain their shapes; crossing stripes and the small stop octagon keep the same positions."
+  ],
+  "candidateSha256": "c6bffd0942221a195b7973d59b47fc8222a1fffe1aa5a0a67d864396137d4d00",
+  "originalSha256": "9e494e5739eb11b71232497ece22e497b76f33add90f3d5809e47c6651de38f7",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b76.jpg",
+    "originalSha256": "9e494e5739eb11b71232497ece22e497b76f33add90f3d5809e47c6651de38f7",
+    "masterPath": "content/assets-masters/questions/b76.png",
+    "masterSha256": "c6bffd0942221a195b7973d59b47fc8222a1fffe1aa5a0a67d864396137d4d00",
+    "candidateSha256": "c6bffd0942221a195b7973d59b47fc8222a1fffe1aa5a0a67d864396137d4d00",
+    "inferenceSha256": "64ac52df47151d6bbbf1fae9830a4a7fe9d2e05a6e45f1295fa6eb14d2cb44fc",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

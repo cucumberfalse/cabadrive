@@ -1,0 +1,29 @@
+{
+  "imageId": "question-image-b215",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b215.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b215.png",
+  "originalSha256": "ca711046f80770a14ac05b6e70e7d71a6939feb8627c1bad0390786b4b1d751f",
+  "candidateSha256": "f30e5464919c45af7b9be54e60b024432a77257d1fca1543f24a5933be639d34",
+  "reviewer": "image_review",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": false,
+  "status": "accepted",
+  "observations": [
+    "Headrest shape, two posts and locator ellipse retained; pillar/seatbelt hardware and apparent adjusted headrest height unchanged."
+  ],
+  "rejectionReason": null,
+  "reviewedAt": "2026-10-13T17:15:25.764607+00:00",
+  "inspectionArtifacts": [
+    "/private/tmp/cabadrive-057-review-b140-b220-b215-b216-b217-b218-b219.png"
+  ],
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b215.jpg",
+    "originalSha256": "ca711046f80770a14ac05b6e70e7d71a6939feb8627c1bad0390786b4b1d751f",
+    "masterPath": "content/assets-masters/questions/b215.png",
+    "masterSha256": "f30e5464919c45af7b9be54e60b024432a77257d1fca1543f24a5933be639d34",
+    "candidateSha256": "f30e5464919c45af7b9be54e60b024432a77257d1fca1543f24a5933be639d34",
+    "inferenceSha256": "86df22cd56596dbe91959ae9e72f23feb3a7b9f1284f3bf8656920494458fe1e",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

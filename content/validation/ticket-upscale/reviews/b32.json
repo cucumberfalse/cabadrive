@@ -1,0 +1,23 @@
+{
+  "imageId": "question-image-b32",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:24:51.019Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "Yellow SUBE above BAJA lettering remains source-faithful; yellow dashed lane boundary, curb stripe and car positions retain geometry."
+  ],
+  "candidateSha256": "8b3c72807ef410a9f9752c5482fcae372705cb5458b29b168cdbd8d375083ec1",
+  "originalSha256": "00045e00324a9586ea864b7f33848d96829fdfe7bcc269160c6bba9f34ca1011",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b32.jpg",
+    "originalSha256": "00045e00324a9586ea864b7f33848d96829fdfe7bcc269160c6bba9f34ca1011",
+    "masterPath": "content/assets-masters/questions/b32.png",
+    "masterSha256": "8b3c72807ef410a9f9752c5482fcae372705cb5458b29b168cdbd8d375083ec1",
+    "candidateSha256": "8b3c72807ef410a9f9752c5482fcae372705cb5458b29b168cdbd8d375083ec1",
+    "inferenceSha256": "95a61d59c6412bb9230b3b53f072ecc928af37a930c74a898e178ffe7dc09cc0",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

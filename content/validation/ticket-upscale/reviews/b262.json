@@ -1,0 +1,26 @@
+{
+  "imageId": "question-image-b262",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b262.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b262.png",
+  "originalSha256": "60e120663ae7f69a25597bbe7eabdb927700e901fb27c4b083bc620a8c7fb0ea",
+  "candidateSha256": "5fd86c689096baa2794d16c3bb19ce212b6bd187c22155800f1dd8f74f56c27b",
+  "reviewer": "Supplemental Review Agent /root/image_review_tail (Codex)",
+  "reviewedAt": "2026-10-13T17:19:46.748954+00:00",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "Detour diagram keeps blue blocks, the blocked left route marked by no-entry and the black path bending right then upward.",
+    "Enlarged actual text/route crop retains ATENCIÓN with accent, CALLE A vertically, CALLE B above and CALLE C below; letter sequences, red no-entry bar, arrowhead and all relative labels remain unchanged."
+  ],
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b262.jpg",
+    "originalSha256": "60e120663ae7f69a25597bbe7eabdb927700e901fb27c4b083bc620a8c7fb0ea",
+    "masterPath": "content/assets-masters/questions/b262.png",
+    "masterSha256": "5fd86c689096baa2794d16c3bb19ce212b6bd187c22155800f1dd8f74f56c27b",
+    "candidateSha256": "5fd86c689096baa2794d16c3bb19ce212b6bd187c22155800f1dd8f74f56c27b",
+    "inferenceSha256": "398ad0acb7195fa7b27537f1a8ed081b37ed2fb6aaa7e00c1cdcc2e3e13198a8",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

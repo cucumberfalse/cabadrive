@@ -1,0 +1,23 @@
+{
+  "imageId": "question-image-b85",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:41:44.559Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "The motorway-end red diagonal, PARE word and schoolchild-book pictogram remain in A/B/C order with unchanged outlines."
+  ],
+  "candidateSha256": "49081af0fabc8ec09ddc54550a681e98d163d077f6633128b7050b902faf24e0",
+  "originalSha256": "ad79cb8b97ac1b1bbff74f8bb57d7d5293a803c132dad7a00bbdd4f09bf60aab",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b85.jpg",
+    "originalSha256": "ad79cb8b97ac1b1bbff74f8bb57d7d5293a803c132dad7a00bbdd4f09bf60aab",
+    "masterPath": "content/assets-masters/questions/b85.png",
+    "masterSha256": "49081af0fabc8ec09ddc54550a681e98d163d077f6633128b7050b902faf24e0",
+    "candidateSha256": "49081af0fabc8ec09ddc54550a681e98d163d077f6633128b7050b902faf24e0",
+    "inferenceSha256": "20508cebb351fbfd0c287ad4d378fa494dae459d61b094139c2434566f3e80a8",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

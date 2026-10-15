@@ -1,0 +1,30 @@
+{
+  "imageId": "question-image-b89",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:41:44.561Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "rejected",
+  "observations": [
+    "SAME, mirrored AMBULANCIA and AC550UI remain recognizable, but enlarged windshield website changes original small letter strokes into angular reconstructed glyphs."
+  ],
+  "rejectionReason": "Small windshield web-address lettering is altered.",
+  "candidateSha256": "d5212b42a71db33e412b4b546c7d5fe42f3907329d34bf6bf8d3e3380cc5ef7b",
+  "originalSha256": "ce9e630c0b1845b4d41faf9eaca501bb107cf205bfa7807c8c90ae7ba1451694",
+  "fallbackObservations": [
+    "Fallback retains original windshield web-address letter strokes at source softness, SAME/mirroredAMBULANCIA and AC550UI plate."
+  ],
+  "fallbackReviewedAt": "2026-10-13T17:47:00.390Z",
+  "fallbackReviewer": "Implementation Agent (Codex)",
+  "fallbackSha256": "ec314613163a857779b5707ac12e72d0b0fe578af06e4f7b06e8be6dc47fe4ca",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b89.jpg",
+    "originalSha256": "ce9e630c0b1845b4d41faf9eaca501bb107cf205bfa7807c8c90ae7ba1451694",
+    "masterPath": "content/assets-masters/questions/b89.png",
+    "masterSha256": "ec314613163a857779b5707ac12e72d0b0fe578af06e4f7b06e8be6dc47fe4ca",
+    "candidateSha256": "d5212b42a71db33e412b4b546c7d5fe42f3907329d34bf6bf8d3e3380cc5ef7b",
+    "inferenceSha256": "dea8804c51406d1edd27cd7b1aadd8e8a07e0fbbea972de60e5c7534110cde7a",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

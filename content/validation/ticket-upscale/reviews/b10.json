@@ -1,0 +1,23 @@
+{
+  "imageId": "question-image-b10",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T16:53:11.967Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "Cyclist remains ahead between parked cars, with blue backpack, pedalling legs and same lateral clearances. Distant red stop sign shape remains; plates and leaf texture are smoothed without changing cyclist position."
+  ],
+  "candidateSha256": "5aac362540eaf814b2de3bf3375d3b79d9559f85c02496e4c99d891839afbf0d",
+  "originalSha256": "5b9c0c9ffde529b23e06f6d6bc212c287eda5971e50e40ed3d59cc4972fe7198",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b10.jpg",
+    "originalSha256": "5b9c0c9ffde529b23e06f6d6bc212c287eda5971e50e40ed3d59cc4972fe7198",
+    "masterPath": "content/assets-masters/questions/b10.png",
+    "masterSha256": "5aac362540eaf814b2de3bf3375d3b79d9559f85c02496e4c99d891839afbf0d",
+    "candidateSha256": "5aac362540eaf814b2de3bf3375d3b79d9559f85c02496e4c99d891839afbf0d",
+    "inferenceSha256": "346711d56eb6947d5a9dc7b14206e5103281a1c8f638fe1ff0a3e2ac6354adb5",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

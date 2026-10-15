@@ -1,0 +1,30 @@
+{
+  "imageId": "question-image-b37",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:28:09.844Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "rejected",
+  "observations": [
+    "Native directional-plaques crop shows names and address numbers replaced by connected pseudoletter strokes/white bars; opposing arrow silhouettes and central lamppost geometry preserved."
+  ],
+  "rejectionReason": "Direction plaque street-name and address glyphs are reconstructed into false strokes.",
+  "candidateSha256": "5a2dcdd841fbfd63cf53f50f9343cef70276087c0d85fe41fa5436d2838d6dbf",
+  "originalSha256": "c5d8425419a302637ae5c5cb40653765ccffc4482beb7f8c4febb193bc985a49",
+  "fallbackObservations": [
+    "Fallback retains original street names and address strokes on the two lamp-post arrows, with unchanged wrought lamp and doorway."
+  ],
+  "fallbackReviewedAt": "2026-10-13T17:46:29.952Z",
+  "fallbackReviewer": "Implementation Agent (Codex)",
+  "fallbackSha256": "04320047abfdcfbf919d2256f91c6c818112c125e28c7c996e20902939ef24e2",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b37.jpg",
+    "originalSha256": "c5d8425419a302637ae5c5cb40653765ccffc4482beb7f8c4febb193bc985a49",
+    "masterPath": "content/assets-masters/questions/b37.png",
+    "masterSha256": "04320047abfdcfbf919d2256f91c6c818112c125e28c7c996e20902939ef24e2",
+    "candidateSha256": "5a2dcdd841fbfd63cf53f50f9343cef70276087c0d85fe41fa5436d2838d6dbf",
+    "inferenceSha256": "f6f722002c9e0b53c4238da487bc8a6543572c876ee09c192b64021f96402273",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

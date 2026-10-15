@@ -1,0 +1,25 @@
+{
+  "imageId": "question-image-b256",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b256.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b256.png",
+  "originalSha256": "2dcbee6485d827ae637c8f872794481e6db0ad66edc094c5eb840519abc4bf76",
+  "candidateSha256": "62dfb141254059c02780996e14b0192cbea01eaedb18494eb67372ad2a1a51d0",
+  "reviewer": "Supplemental Review Agent /root/image_review_tail (Codex)",
+  "reviewedAt": "2026-10-13T17:18:59.854148+00:00",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "Rightward pedestrian and separate black arrow pointing right retain limb directions, head separation and spacing; red circle retains the source thin pale edge without an added prohibition slash."
+  ],
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b256.jpg",
+    "originalSha256": "2dcbee6485d827ae637c8f872794481e6db0ad66edc094c5eb840519abc4bf76",
+    "masterPath": "content/assets-masters/questions/b256.png",
+    "masterSha256": "62dfb141254059c02780996e14b0192cbea01eaedb18494eb67372ad2a1a51d0",
+    "candidateSha256": "62dfb141254059c02780996e14b0192cbea01eaedb18494eb67372ad2a1a51d0",
+    "inferenceSha256": "71f17f32a16324dcd22fd1eb48e120f026cb26b808088b3e927f2062d9a44dc9",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

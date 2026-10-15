@@ -1,0 +1,25 @@
+{
+  "imageId": "question-image-b242",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b242.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b242.png",
+  "originalSha256": "aaf5b68e5423e2eafe1aed22897043107d8b9287e97c44e8b4c17f1dd917b18d",
+  "candidateSha256": "60f61e7b64bb5e9b6df31eae04160911a164e34010edd51ad9529866f1e1ef26",
+  "reviewer": "Supplemental Review Agent /root/image_review_tail (Codex)",
+  "reviewedAt": "2026-10-13T17:18:11.036852+00:00",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "Red outlined railway crossbuck keeps the upper crossing X and separate lower chevron with identical endpoints and white interiors; no letter or extra rail arm is introduced."
+  ],
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b242.jpg",
+    "originalSha256": "aaf5b68e5423e2eafe1aed22897043107d8b9287e97c44e8b4c17f1dd917b18d",
+    "masterPath": "content/assets-masters/questions/b242.png",
+    "masterSha256": "60f61e7b64bb5e9b6df31eae04160911a164e34010edd51ad9529866f1e1ef26",
+    "candidateSha256": "60f61e7b64bb5e9b6df31eae04160911a164e34010edd51ad9529866f1e1ef26",
+    "inferenceSha256": "dca66725ec3f8e7369778da08b7419c2b894a5ccabc29dd7b8c165fd5aed47c6",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

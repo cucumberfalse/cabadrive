@@ -1,0 +1,25 @@
+{
+  "imageId": "question-image-b239",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b239.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b239.png",
+  "originalSha256": "1310bff2d623f65d2499420ddcebbb9e81648f66107b4dad2ff89fbe31a421c6",
+  "candidateSha256": "99d3bfafb167a09ed248df59f552eda610839b307ef9f5adeec9ea1fbe2be41e",
+  "reviewer": "Supplemental Review Agent /root/image_review_tail (Codex)",
+  "reviewedAt": "2026-10-13T17:18:11.033786+00:00",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "Matched three-sign comparison keeps triangle/pedestrian crossing, circular pedestrian with left-pointing arrow, and yellow schoolchild diamond in A/B/C order; enlarged yellow labels retain literal A, B and C with no changed choice identity."
+  ],
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b239.jpg",
+    "originalSha256": "1310bff2d623f65d2499420ddcebbb9e81648f66107b4dad2ff89fbe31a421c6",
+    "masterPath": "content/assets-masters/questions/b239.png",
+    "masterSha256": "99d3bfafb167a09ed248df59f552eda610839b307ef9f5adeec9ea1fbe2be41e",
+    "candidateSha256": "99d3bfafb167a09ed248df59f552eda610839b307ef9f5adeec9ea1fbe2be41e",
+    "inferenceSha256": "032e5099aca004d4ca41844ad87327f8e984b250caa2f029c322e441dd42b542",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

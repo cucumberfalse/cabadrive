@@ -11,6 +11,8 @@ import {
   immutableWrite,
 } from "./image-pipeline.mjs";
 import { auditSvg, verifySvgEvidence, svgEvidencePath } from "./image-svg-audit.mjs";
+import { validateTicketMasters } from "./ticket-upscale-validation.mjs";
+import { imageDelivery, verifyImageDelivery, imageDeliveryPath } from "./image-delivery.mjs";
 
 export function parseArguments(args, command) {
   const options = { root: repositoryRoot, rasterOnly: false, write: false };
@@ -43,6 +45,7 @@ export async function runPipeline(command, options) {
   const { root, rasterOnly, write } = options;
   const sources = await loadSources(root);
   const tools = sources.length || !rasterOnly ? await nativeTools(options.tools) : null;
+  const ticketJournal = !rasterOnly ? await validateTicketMasters(root, sources, tools) : undefined;
   const manifestPath = "content/image-derivatives.manifest.json";
   let existing;
   try {
@@ -55,6 +58,12 @@ export async function runPipeline(command, options) {
       ? await buildRaster(root, sources, tools, existing)
       : { manifest: await validateRaster(root, sources, tools, existing), pending: [] };
   const svg = rasterOnly ? null : await auditSvg(root, tools);
+  if (command === "validate" && !rasterOnly)
+    verifyImageDelivery(
+      await readJson(await confinedPath(root, imageDeliveryPath)),
+      raster.manifest,
+      ticketJournal,
+    );
   if (command === "validate" && svg) {
     const evidencePath = await confinedPath(root, svgEvidencePath);
     const storedEvidence = await readJson(evidencePath);
@@ -92,6 +101,8 @@ export async function runPipeline(command, options) {
     // Preserve raster score bytes during normal rebuild reuse; refresh only with
     // explicit --write after current byte/integrity gates have passed.
     await atomicJson(root, manifestPath, raster.manifest);
+    if (!rasterOnly && command === "build")
+      await atomicJson(root, imageDeliveryPath, imageDelivery(raster.manifest, ticketJournal));
   }
   console.log(
     `Images: ${sources.length ? `${sources.length} verified PNG masters` : "no-masters (production raster bootstrap; no quality claim)"}; ${svg ? `${svg.evidence.classD.count} SVGs, ${svg.evidence.sample.length} real DSSIM samples, class (e) absent` : "isolated raster fixture"}`,

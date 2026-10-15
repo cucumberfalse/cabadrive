@@ -1,0 +1,25 @@
+{
+  "imageId": "question-image-b234",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b234.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b234.png",
+  "originalSha256": "8898c26483a8f8c0f9fa4d2d39447a7f132e1af7d610bac94ab519ad849d8779",
+  "candidateSha256": "64c9f26f5e3393236e3c9cfb7fce35f3e115bb53aa813d99f3c2fa1e4ffa0888",
+  "reviewer": "Supplemental Review Agent /root/image_review_tail (Codex)",
+  "reviewedAt": "2026-10-13T17:17:29.493099+00:00",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "Front-view car keeps two headlights, windshield and lower wheels beside the right rocky slope; falling-rock dots remain separated in the same two clusters and warning diamond colors are unchanged."
+  ],
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b234.jpg",
+    "originalSha256": "8898c26483a8f8c0f9fa4d2d39447a7f132e1af7d610bac94ab519ad849d8779",
+    "masterPath": "content/assets-masters/questions/b234.png",
+    "masterSha256": "64c9f26f5e3393236e3c9cfb7fce35f3e115bb53aa813d99f3c2fa1e4ffa0888",
+    "candidateSha256": "64c9f26f5e3393236e3c9cfb7fce35f3e115bb53aa813d99f3c2fa1e4ffa0888",
+    "inferenceSha256": "e3f77bd07a5d56989b62bd5a37b6ce9dd2dd470eece1990f3e2fde3309dbab3c",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

@@ -1,4 +1,7 @@
 import assert from "node:assert/strict";
+import fs from "node:fs";
+import { createHash } from "node:crypto";
+import { syncBuiltinESMExports } from "node:module";
 import {
   chmodSync,
   cpSync,
@@ -24,6 +27,7 @@ import { execFileSync, spawnSync } from "node:child_process";
 import test from "node:test";
 import {
   stageStaticRelease,
+  verifyCommittedState,
   createCandidateManifest,
   pinLegacyHandoffCurrent,
   publishAndExportStaticRelease,
@@ -139,7 +143,7 @@ test("source identity authority rejects links, FIFO, wrong types and open-time s
     }
 });
 
-function generations(root) {
+function generations(root, { large = false } = {}) {
   const generationRoot = join(root, "generations");
   mkdirSync(generationRoot);
   const helper = join(root, "rename-noreplace");
@@ -157,6 +161,18 @@ function generations(root) {
     writeFileSync(join(candidate, "assets", `${name}.js`), `${name} exact`);
     writeFileSync(join(candidate, "index.html"), `${name} shell`);
     writeFileSync(join(candidate, "sw.js"), `${name} worker`);
+    if (large && ["a", "b"].includes(name)) {
+      const pictures = join(candidate, "content/img/c");
+      mkdirSync(pictures, { recursive: true });
+      for (let id = 0; id < 5600; id++)
+        writeFileSync(
+          join(
+            pictures,
+            `ticket-photo-quality-regression-${String(id).padStart(5, "0")}-1240.0123456789abcdef01234567.jpg`,
+          ),
+          String(id),
+        );
+    }
     return {
       candidate,
       output: join(generationRoot, `site-${createCandidateManifest(candidate).releaseId}`),
@@ -209,6 +225,168 @@ function generations(root) {
     journal: join(state, "publish-retirement.json"),
   };
 }
+
+const retirementCap = 2 * 1024 ** 2;
+function treeWitness(root) {
+  const rows = [];
+  const walk = (path, relative) => {
+    const identity = lstatSync(path, { bigint: true });
+    const row = {
+      path: relative,
+      device: identity.dev.toString(),
+      inode: identity.ino.toString(),
+      mode: identity.mode.toString(),
+    };
+    if (identity.isSymbolicLink()) row.target = readlinkSync(path);
+    else if (identity.isFile())
+      row.sha256 = createHash("sha256").update(readFileSync(path)).digest("hex");
+    rows.push(row);
+    if (identity.isDirectory())
+      for (const name of readdirSync(path).sort())
+        walk(join(path, name), relative ? `${relative}/${name}` : name);
+  };
+  walk(root, "");
+  return rows;
+}
+function stopAtRetirement(f, operation) {
+  let reached = false;
+  assert.throws(
+    () =>
+      f.publish(2, {
+        onDurabilityOperation: ({ operation: actual }) => {
+          if (actual === operation) {
+            reached = true;
+            throw new Error(`capacity stop ${operation}`);
+          }
+        },
+      }),
+    new RegExp(`capacity stop ${operation}`),
+  );
+  assert.equal(reached, true);
+}
+
+test("genuine >1MiB retirement journal bounds, writer refusal and ordinary recovery preserve authority", (t) => {
+  fixture((root) => {
+    const f = generations(root, { large: true });
+    const foreign = join(f.generationRoot, "foreign");
+    mkdirSync(foreign);
+    writeFileSync(join(foreign, "sentinel"), "foreign exact bytes");
+    stopAtRetirement(f, "retirement-prepare");
+    assert.equal(existsSync(f.journal), false);
+    const lineagePath = join(f.state, "publish-generations.json");
+    const lineageBytes = readFileSync(lineagePath);
+    const lineage = JSON.parse(lineageBytes);
+    assert.equal(lineage.retiring, f.releases[0].output);
+    assert.equal(verifyCommittedState(f.state).valid, true);
+    const current = treeWitness(join(f.state, "current"));
+    const before = treeWitness(f.generationRoot);
+    // A still-valid generic authority at its unchanged 1MiB bound makes the
+    // complete writer record exceed 2MiB. This is a negative, not the genuine
+    // positive measurement below; no production limit is lowered.
+    const paddedLineage = Buffer.concat([
+      lineageBytes,
+      Buffer.alloc(1024 ** 2 - lineageBytes.length, " "),
+    ]);
+    writeFileSync(lineagePath, paddedLineage);
+    assert.throws(() => f.publish(2), /retirement journal exceeds the authority size limit/);
+    assert.equal(existsSync(f.journal), false);
+    assert.deepEqual(readFileSync(lineagePath), paddedLineage);
+    assert.deepEqual(treeWitness(f.generationRoot), before);
+    assert.deepEqual(treeWitness(join(f.state, "current")), current);
+    assert.equal(verifyCommittedState(f.state).valid, true);
+    assert.equal(
+      readdirSync(f.state).some((name) => name.endsWith(".next")),
+      false,
+    );
+    // Restore only this test's valid lineage serialization; ordinary production
+    // retry must validate the complete tree and regenerate its own journal.
+    writeFileSync(lineagePath, lineageBytes);
+    stopAtRetirement(f, "retirement-journal-durable");
+    const journal = readFileSync(f.journal);
+    const record = JSON.parse(journal);
+    assert(journal.length > 1024 ** 2);
+    assert(journal.length < retirementCap);
+    assert.equal(journal.at(-1), 10);
+    assert.equal(record.schemaVersion, 2);
+    assert.equal(record.entries.filter((entry) => entry.type === "file").length, 5603);
+    assert.deepEqual(record.lineage.bytes, lineageBytes.toString());
+    const actual = treeWitness(f.oldTree).filter((entry) => entry.path);
+    assert.equal(record.entries.length, actual.length);
+    for (const entry of record.entries) {
+      const row = actual.find((candidate) => candidate.path === entry.path);
+      assert.equal(String(entry.device), row.device);
+      assert.equal(String(entry.inode), row.inode);
+      if (entry.type === "file") assert.equal(entry.sha256, row.sha256);
+    }
+    t.diagnostic(
+      JSON.stringify({
+        kind: "genuine-production-retirement-journal",
+        bytes: journal.length,
+        capBytes: retirementCap,
+        headroomBytes: retirementCap - journal.length,
+        entries: record.entries.length,
+        files: 5603,
+        sha256: createHash("sha256").update(journal).digest("hex"),
+      }),
+    );
+    stopAtRetirement(f, "retirement-remove-entry");
+    assert.deepEqual(readFileSync(f.journal), journal);
+    assert.equal(existsSync(f.oldTree), true);
+    f.publish(2);
+    assert.equal(existsSync(f.oldTree), false);
+    assert.equal(existsSync(f.journal), false);
+    assert.equal(readFileSync(join(f.releases[1].output, "index.html"), "utf8"), "b shell");
+    assert.equal(readFileSync(join(f.releases[2].output, "index.html"), "utf8"), "c shell");
+    // The second genuine large generation also retires by an uninterrupted
+    // ordinary publication, preserving its active/rollback and foreign trees.
+    const secondOldTree = realpathSync(f.releases[1].output);
+    f.publish(3);
+    assert.equal(existsSync(secondOldTree), false);
+    assert.equal(readFileSync(join(f.releases[2].output, "index.html"), "utf8"), "c shell");
+    assert.equal(readFileSync(join(f.releases[3].output, "index.html"), "utf8"), "d shell");
+    assert.equal(readFileSync(join(foreign, "sentinel"), "utf8"), "foreign exact bytes");
+  });
+});
+
+test("retirement typed reader accepts exactly 2MiB and refuses growth or one byte above before deletion", () => {
+  fixture((root) => {
+    const f = generations(root);
+    stopAtRetirement(f, "retirement-journal-durable");
+    const original = readFileSync(f.journal);
+    const exact = Buffer.concat([original, Buffer.alloc(retirementCap - original.length, " ")]);
+    const before = treeWitness(f.generationRoot);
+    writeFileSync(f.journal, Buffer.concat([exact, Buffer.from(" ")]));
+    const over = readFileSync(f.journal);
+    assert.throws(() => f.publish(2), /retirement journal exceeds the authority size limit/);
+    assert.deepEqual(readFileSync(f.journal), over);
+    assert.deepEqual(treeWitness(f.generationRoot), before);
+    writeFileSync(f.journal, exact);
+    const identity = lstatSync(f.journal);
+    const read = fs.readSync;
+    let grew = false;
+    fs.readSync = (descriptor, ...args) => {
+      const count = read(descriptor, ...args);
+      if (!grew && count && fs.fstatSync(descriptor).ino === identity.ino) {
+        grew = true;
+        fs.appendFileSync(f.journal, " ");
+      }
+      return count;
+    };
+    syncBuiltinESMExports();
+    try {
+      assert.throws(() => f.publish(2), /changed|size limit/);
+      assert.equal(grew, true);
+    } finally {
+      fs.readSync = read;
+      syncBuiltinESMExports();
+    }
+    assert.deepEqual(treeWitness(f.generationRoot), before);
+    writeFileSync(f.journal, exact);
+    f.publish(2);
+    assert.equal(existsSync(f.oldTree), false);
+    assert.equal(existsSync(f.journal), false);
+  });
+});
 
 test("generation retirement survives every journal, unlink, removal and fsync interruption", () => {
   for (const point of [
@@ -279,6 +457,7 @@ test("retirement rejects malformed or substituted authority and preserves foreig
     "json",
     "schema",
     "extra",
+    "duplicate-entry",
     "root",
     "output",
     "active",
@@ -307,6 +486,7 @@ test("retirement rejects malformed or substituted authority and preserves foreig
       if (mutation === "json") writeFileSync(f.journal, "{");
       if (mutation === "schema") record.schemaVersion = 99;
       if (mutation === "extra") record.foreign = true;
+      if (mutation === "duplicate-entry") record.entries.push(record.entries[0]);
       if (mutation === "root") record.root = root;
       if (mutation === "output") record.output.path = join(f.generationRoot, "unrelated");
       if (mutation === "active") record.output.path = f.releases[2].output;

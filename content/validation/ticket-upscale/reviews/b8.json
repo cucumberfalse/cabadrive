@@ -1,0 +1,30 @@
+{
+  "imageId": "question-image-b8",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:41:44.557Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "rejected",
+  "observations": [
+    "Actual enlarged overhead highway boards turn original fine destination lines into disconnected white bars and pseudoletters; lane geometry and vehicles remain."
+  ],
+  "rejectionReason": "Overhead destination-letter strokes are altered.",
+  "candidateSha256": "deedcd8f75e7cd5450c6e48d3bbf1fd79abb4c0d3f44bc6188713c0c6362e5c8",
+  "originalSha256": "38904b7ff70a77e42b87ded0f8cebd6acc692cba6fb12be2816e26a5a1ce2a07",
+  "fallbackObservations": [
+    "Fallback preserves original multi-line destination lettering on green overhead boards and the same traffic/lane arrangement."
+  ],
+  "fallbackReviewedAt": "2026-10-13T17:47:00.387Z",
+  "fallbackReviewer": "Implementation Agent (Codex)",
+  "fallbackSha256": "0e5d7ccd4dd49d4c84a3b299e11f720b68f4d5c3f697ffb2e1fb488a09284cf4",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b8.jpg",
+    "originalSha256": "38904b7ff70a77e42b87ded0f8cebd6acc692cba6fb12be2816e26a5a1ce2a07",
+    "masterPath": "content/assets-masters/questions/b8.png",
+    "masterSha256": "0e5d7ccd4dd49d4c84a3b299e11f720b68f4d5c3f697ffb2e1fb488a09284cf4",
+    "candidateSha256": "deedcd8f75e7cd5450c6e48d3bbf1fd79abb4c0d3f44bc6188713c0c6362e5c8",
+    "inferenceSha256": "dd4bdcd6278396ca4d7f35ae0cc696bd683a3ec8c3fb3c1bdd973d0783a6c3b0",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

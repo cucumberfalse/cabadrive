@@ -1,0 +1,25 @@
+{
+  "imageId": "question-image-b253",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b253.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b253.png",
+  "originalSha256": "c7b4542719b1e55c6dcb87dde248b0085145f9418e9a48f58cb3a6db32901fc3",
+  "candidateSha256": "be8610a5a8b506d6475a575dba14bff95cb5872e343dd53ad2e7833b54b879c2",
+  "reviewer": "Supplemental Review Agent /root/image_review_tail (Codex)",
+  "reviewedAt": "2026-10-13T17:18:45.636123+00:00",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "White bicycle remains inside the blue disk and red ring with two wheels, triangular frame, handlebar and seat in the same geometry; no spoke, rider or slash is introduced."
+  ],
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b253.jpg",
+    "originalSha256": "c7b4542719b1e55c6dcb87dde248b0085145f9418e9a48f58cb3a6db32901fc3",
+    "masterPath": "content/assets-masters/questions/b253.png",
+    "masterSha256": "be8610a5a8b506d6475a575dba14bff95cb5872e343dd53ad2e7833b54b879c2",
+    "candidateSha256": "be8610a5a8b506d6475a575dba14bff95cb5872e343dd53ad2e7833b54b879c2",
+    "inferenceSha256": "2e2afc2e34223aed14729bb28bd35a2b8a1f5a579d22e04a2c3610bb0ec5297b",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

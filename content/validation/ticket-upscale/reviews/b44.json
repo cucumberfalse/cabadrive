@@ -1,0 +1,35 @@
+{
+  "imageId": "question-image-b44",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:30:13.192Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "Yellow highlighted broad middle carriageway remains between solid borders with same white lane dashes and four car positions; adjoining unhighlighted traffic lanes unchanged."
+  ],
+  "candidateSha256": "eeee139f5927f497bc6b00a91f0b2506fa44201101ca0ffd8f49f180f7a1bca4",
+  "originalSha256": "cccdd8249f3237594e68b787424b8ad10b099d326ef2d0932797c9c6c08e287c",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b44.jpg",
+    "originalSha256": "cccdd8249f3237594e68b787424b8ad10b099d326ef2d0932797c9c6c08e287c",
+    "masterPath": "content/assets-masters/questions/b44.png",
+    "masterSha256": "eeee139f5927f497bc6b00a91f0b2506fa44201101ca0ffd8f49f180f7a1bca4",
+    "candidateSha256": "eeee139f5927f497bc6b00a91f0b2506fa44201101ca0ffd8f49f180f7a1bca4",
+    "inferenceSha256": "2b5bf74d12e816e2f0e891771d8db854271010f8fe3219ade3f4be4120abbcce",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  },
+  "classificationCorrection": {
+    "reviewer": "Implementation Agent (Codex)",
+    "reviewedAt": "2026-10-14T23:51:51.129Z",
+    "method": "IF030 independently governed classification correction with paired-image spot review",
+    "previousTextOrSign": false,
+    "previousReviewSha256": "aabacc99df1fe8f4c24785fe5045f1fd7396b19e6ecb6e4fbe04bebe4199a169",
+    "basis": "Ambiguous distant overhead board faces and vehicle plate fields.",
+    "scope": "Review-scope flag only; no OCR, exact glyph readability, pixel-quality recertification or new metric approval.",
+    "governedMapSha256": "12a63bed30d1576e727ace09ee73530fa68e798284feedc8f9903ecac61a98b1",
+    "independentAuditSha256": "bce8d6427e1d09d2562af7f88185a990622d1bb0c3da5fe2a0105be7c2f129d9",
+    "independentMapReviewSha256": "a6b68b37c0579202b6eee3cce6ea75582855fd3fcc9a7da21a8fe316243b95fe"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "imageId": "question-image-b93",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:41:44.563Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "rejected",
+  "observations": [
+    "Firetruck lamps and red body stay positioned correctly. Actual enlarged bumper plate changes blurred independent dark characters into fused block contours."
+  ],
+  "rejectionReason": "Firetruck plate characters are reconstructed into different shapes.",
+  "candidateSha256": "7badaf9e18b95f21c2506b8c38de8c88f516f0660b8c14d11bfabeb206495f15",
+  "originalSha256": "bddef7b2642a4824eec1982d940ed989b2a725b167038fc19d7ee633e673d4a7",
+  "fallbackObservations": [
+    "Fallback preserves original blurred firetruck plate characters without synthetic block contours; red body, bumper and lamps stay unchanged."
+  ],
+  "fallbackReviewedAt": "2026-10-13T17:47:00.396Z",
+  "fallbackReviewer": "Implementation Agent (Codex)",
+  "fallbackSha256": "6ae4995f36506d32efc8b4f7530a735f2cd9d9417dcf93846e3fde74bec9b44d",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b93.jpg",
+    "originalSha256": "bddef7b2642a4824eec1982d940ed989b2a725b167038fc19d7ee633e673d4a7",
+    "masterPath": "content/assets-masters/questions/b93.png",
+    "masterSha256": "6ae4995f36506d32efc8b4f7530a735f2cd9d9417dcf93846e3fde74bec9b44d",
+    "candidateSha256": "7badaf9e18b95f21c2506b8c38de8c88f516f0660b8c14d11bfabeb206495f15",
+    "inferenceSha256": "4a4c1ed35ef681e15a8f8d223f5128ab9fc2ed35c567a627c1de5cd0f79d64ef",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

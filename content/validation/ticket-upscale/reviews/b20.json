@@ -1,0 +1,23 @@
+{
+  "imageId": "question-image-b20",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:12:43.031Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "GIRO LIBRE remains on two lines below white right-turn arrow on blue circle; sign pole, silver car and intersection geometry retain source positions. Background YO lettering remains readable."
+  ],
+  "candidateSha256": "8ad3a96c4af430a2a679fdb0ae05f6f7a1d6fbf026c5f16706884bf6e21962bb",
+  "originalSha256": "b1e22d655ef9204e62010cd63e5d570ab282769f4ec77711d3fe23d911487069",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b20.jpg",
+    "originalSha256": "b1e22d655ef9204e62010cd63e5d570ab282769f4ec77711d3fe23d911487069",
+    "masterPath": "content/assets-masters/questions/b20.png",
+    "masterSha256": "8ad3a96c4af430a2a679fdb0ae05f6f7a1d6fbf026c5f16706884bf6e21962bb",
+    "candidateSha256": "8ad3a96c4af430a2a679fdb0ae05f6f7a1d6fbf026c5f16706884bf6e21962bb",
+    "inferenceSha256": "10d3e5d6d95f11101be02849e323098ed34d5e059d226f77efc9228748b38de6",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

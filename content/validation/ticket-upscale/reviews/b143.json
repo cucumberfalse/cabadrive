@@ -1,0 +1,36 @@
+{
+  "imageId": "question-image-b143",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b143.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b143.png",
+  "originalSha256": "689a23c904be2bb5c3a7d897b98033f2fa071e6a5aba597979a0e0bd4708aaef",
+  "candidateSha256": "4b1f761f7ab1e0594c64d8338c754783b9e01ffcf6c4f65db9be63f61cb0ddd7",
+  "reviewer": "image_review",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "rejected",
+  "observations": [
+    "Critical crop: Avenida De Los Incas becomes malformed Da Loa Inca-like lettering; Donado, 1400–1500 and arrow directions retained but upper street-name text changes."
+  ],
+  "rejectionReason": "Critical crop: Avenida De Los Incas becomes malformed Da Loa Inca-like lettering; Donado, 1400–1500 and arrow directions retained but upper street-name text changes.",
+  "reviewedAt": "2026-10-13T17:02:15.462723+00:00",
+  "inspectionArtifacts": [
+    "/private/tmp/cabadrive-057-review-b140-b220-b140-b141-b142-b143-b144.png",
+    "/private/tmp/cabadrive-057-review-b140-b220-detail-b143-.63-.12-.31-.30.png"
+  ],
+  "fallbackObservations": [
+    "Fallback preserves Donado1400-1500/Comuna15 and AvenidaDeLosIncas plaque letter strokes and original opposing arrows."
+  ],
+  "fallbackReviewedAt": "2026-10-13T17:43:47.669Z",
+  "fallbackReviewer": "Implementation Agent (Codex)",
+  "fallbackSha256": "4b98a6206ca8cfa74218d8a98c0bc1f8205347339b63f4765b4d9b581866baf9",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b143.jpg",
+    "originalSha256": "689a23c904be2bb5c3a7d897b98033f2fa071e6a5aba597979a0e0bd4708aaef",
+    "masterPath": "content/assets-masters/questions/b143.png",
+    "masterSha256": "4b98a6206ca8cfa74218d8a98c0bc1f8205347339b63f4765b4d9b581866baf9",
+    "candidateSha256": "4b1f761f7ab1e0594c64d8338c754783b9e01ffcf6c4f65db9be63f61cb0ddd7",
+    "inferenceSha256": "6dd8ddaee11cf487b358780679ed925bc7c6acaad5ca3246e6ed65a3fd122453",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

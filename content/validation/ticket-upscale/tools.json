@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "platform": "darwin-arm64",
+  "gpu": "Apple M1 Max",
+  "node": "20.20.2",
+  "sharp": "0.35.5",
+  "executables": {
+    "realesrgan": {
+      "version": "v0.2.0",
+      "commit": "37026f49824c5cf84062e7c6a5dd71445dcf610f",
+      "source": "https://github.com/xinntao/Real-ESRGAN-ncnn-vulkan/releases/tag/v0.2.0",
+      "archiveSha256": "f1cc31f13398126ddec25a186b9e50c7ab3e4f2bc011d0222331b43ce2037d3b",
+      "sha256": "c1c35d92079085de96b9d547fd7e4464bc8a2e9ccf28d7b8c712d72ade91b7cc",
+      "license": "MIT",
+      "licenseSha256": "5abb941454de437b0e90d78dcb72e3688f74e14bcd4e24393273cb5cd0e9c937"
+    },
+    "upscayl": {
+      "version": "20251207-174704",
+      "commit": "d02fa88e078e7109fd689932453362430144014d",
+      "source": "https://github.com/upscayl/upscayl-ncnn/releases/tag/20251207-174704",
+      "archiveSha256": "277419791281a56eae0c739c70120b974d7267cf7c2de8e86dc09798d4b314db",
+      "sha256": "b7f54f362fc10d5f334e587fb90917e95a5557ec1cfefbddce78657dd3fee055",
+      "license": "AGPL-3.0",
+      "licenseSha256": "db1a87ba81e885b6bb82971964ab4e202463cde2ac4003571bc5a857d577e4a3"
+    }
+  },
+  "models": {
+    "realesrgan-x4plus": {
+      "productionEligible": true,
+      "source": "https://github.com/xinntao/Real-ESRGAN/releases/tag/v0.2.3.0",
+      "commit": "f07aaffda04c7e69f11e6bfaf8023a6435471459",
+      "archiveSha256": "de6e546f3e9f582faf7b59e7e93b8d72afffcf3d69845efc6f663bc647959686",
+      "binSha256": "713ee713b0353afaa27976f0563a64a5043bd70b9bd8936c2e26e25ebcdbcddf",
+      "paramSha256": "35330ececcea33b6c397a72548e788d5d53becee4734c50b7fada36e89f10a86",
+      "license": "BSD-3-Clause",
+      "licenseSha256": "4a699ec4863d96a91fc265948a0c90033f7e8735d515524dcf3444736406e0c2"
+    },
+    "realesrnet-x4plus": {
+      "productionEligible": true,
+      "source": "https://github.com/xinntao/Real-ESRGAN/releases/tag/v0.2.3.0",
+      "commit": "f07aaffda04c7e69f11e6bfaf8023a6435471459",
+      "archiveSha256": "de6e546f3e9f582faf7b59e7e93b8d72afffcf3d69845efc6f663bc647959686",
+      "binSha256": "26bccfcc82d9e8260c0c6b0dffb34ab297982740882d1f33c6d423f70b562c40",
+      "paramSha256": "35330ececcea33b6c397a72548e788d5d53becee4734c50b7fada36e89f10a86",
+      "license": "BSD-3-Clause",
+      "licenseSha256": "4a699ec4863d96a91fc265948a0c90033f7e8735d515524dcf3444736406e0c2"
+    },
+    "remacri": {
+      "productionEligible": false,
+      "scope": "local noncommercial evaluation only; no output license assertion",
+      "creator": "FoolhardyVEVO",
+      "source": "https://github.com/upscayl/upscayl/tree/v2.11.0/resources/models",
+      "commit": "3ed807223186bb77d1711fee73d78c3dfbe432ee",
+      "binSha256": "a43be595c0d743314c30b50fe7ef188be0c61cc55c46ce81adb79ba4b3c3fb7a",
+      "paramSha256": "859ecba5b3592ecf3e76c93bed65e9f627b5236dd696aae5a84ecf8c93ab65ce",
+      "license": "CC-BY-NC-SA-4.0 per primary maintainer acknowledgment",
+      "licenseProvenance": "https://github.com/upscayl/upscayl/issues/198",
+      "termsSource": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+      "licenseSha256": "e66c269d4819aaab34b49ef5220c4ddab6756f21bb5180761a4eb8561f2b7bbd",
+      "modifications": "None to weights; resizing evaluation raster only"
+    }
+  }
+}

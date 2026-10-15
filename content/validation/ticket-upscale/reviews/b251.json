@@ -1,0 +1,25 @@
+{
+  "imageId": "question-image-b251",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b251.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b251.png",
+  "originalSha256": "8a1a5ff6efaf60a14c6548c225af33675473949f071322861bc00d3d07775c1a",
+  "candidateSha256": "f5dbf847c1d01bd3486f3b31628b53a9577cb94b633aaf7a1b5c719b482e3485",
+  "reviewer": "Supplemental Review Agent /root/image_review_tail (Codex)",
+  "reviewedAt": "2026-10-13T17:18:45.634057+00:00",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "Black centered arrow remains straight upward with a broad triangular head and lower rectangular stem; red ring and white inner disk retain the source positions without extra arrows."
+  ],
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b251.jpg",
+    "originalSha256": "8a1a5ff6efaf60a14c6548c225af33675473949f071322861bc00d3d07775c1a",
+    "masterPath": "content/assets-masters/questions/b251.png",
+    "masterSha256": "f5dbf847c1d01bd3486f3b31628b53a9577cb94b633aaf7a1b5c719b482e3485",
+    "candidateSha256": "f5dbf847c1d01bd3486f3b31628b53a9577cb94b633aaf7a1b5c719b482e3485",
+    "inferenceSha256": "1f580ab474f307f620d86996c1bc313b973a78d34b924da91bb2fa4933ebe945",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

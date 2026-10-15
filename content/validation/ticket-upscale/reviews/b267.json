@@ -1,0 +1,25 @@
+{
+  "imageId": "question-image-b267",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b267.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b267.png",
+  "originalSha256": "700b3ea2fd9ad114a67508e88bacd21e93e82fc6de38720f3ed5c5f83a896894",
+  "candidateSha256": "12437eb429d37cbb2d180d0c2ba9cc730dc499f72a389f49b0e473fc15b5edc9",
+  "reviewer": "Supplemental Review Agent /root/image_review_tail (Codex)",
+  "reviewedAt": "2026-10-13T17:20:00.388803+00:00",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "Medical information sign retains centered red cross in a white upper inset with blue rectangular surround and empty lower panel; cross arm lengths, inset border and sign proportions remain faithful."
+  ],
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b267.jpg",
+    "originalSha256": "700b3ea2fd9ad114a67508e88bacd21e93e82fc6de38720f3ed5c5f83a896894",
+    "masterPath": "content/assets-masters/questions/b267.png",
+    "masterSha256": "12437eb429d37cbb2d180d0c2ba9cc730dc499f72a389f49b0e473fc15b5edc9",
+    "candidateSha256": "12437eb429d37cbb2d180d0c2ba9cc730dc499f72a389f49b0e473fc15b5edc9",
+    "inferenceSha256": "cd6cb59bd2d52beb3b5fe17e44c3f863745ec745c03e459336c8c07a9d1de1ec",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

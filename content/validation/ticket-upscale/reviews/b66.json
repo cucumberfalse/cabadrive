@@ -1,0 +1,23 @@
+{
+  "imageId": "question-image-b66",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:33:53.717Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "A red stoplamp, B octagonal PARE and C raised openhand remain in same labelled panels; PARE letters, redfield and officer palm direction unchanged."
+  ],
+  "candidateSha256": "57738a320a8e241a0e57a97b07a7baf48b22805400efbdacfad1d7b42aba6636",
+  "originalSha256": "6e3921eb3422056e44a1cd517170caf69c9da4da773453223ce734d1ac43abe8",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b66.jpg",
+    "originalSha256": "6e3921eb3422056e44a1cd517170caf69c9da4da773453223ce734d1ac43abe8",
+    "masterPath": "content/assets-masters/questions/b66.png",
+    "masterSha256": "57738a320a8e241a0e57a97b07a7baf48b22805400efbdacfad1d7b42aba6636",
+    "candidateSha256": "57738a320a8e241a0e57a97b07a7baf48b22805400efbdacfad1d7b42aba6636",
+    "inferenceSha256": "2f994a1fe73033ba2083f9056bd4f986ab9f369052cf31cf5ae1aff79b3cb0cb",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "imageId": "question-image-b212",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b212.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b212.png",
+  "originalSha256": "d268711f2c8c103a140cebcbdbc33830b3b3253da99cdf0832ac70d243483256",
+  "candidateSha256": "0199c9e6ec0c8c3e15c90e6835b934f68e7d784ea3c4af19514abba65e91d336",
+  "reviewer": "image_review",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "rejected",
+  "observations": [
+    "Enlarged restraint warning-label crop changes small red outlined pictogram into a filled red blob and smooths fine instruction structure; seat/child placement retained but safety-label detail changes."
+  ],
+  "rejectionReason": "Enlarged restraint warning-label crop changes small red outlined pictogram into a filled red blob and smooths fine instruction structure; seat/child placement retained but safety-label detail changes.",
+  "reviewedAt": "2026-10-13T17:14:25.295586+00:00",
+  "inspectionArtifacts": [
+    "/private/tmp/cabadrive-057-review-b140-b220-detail-b212-.475-.66-.07-.06.png",
+    "/private/tmp/cabadrive-057-review-b140-b220-b209-b210-b211-b212.png",
+    "/private/tmp/cabadrive-057-review-b140-b220-detail-b212-.47-.58-.08-.075.png"
+  ],
+  "fallbackObservations": [
+    "Fallback preserves the actual tiny lower red-bordered warning pictogram, confirmed in an enlarged crop without filling its centre; other labels and child-seat geometry remain."
+  ],
+  "fallbackReviewedAt": "2026-10-13T17:49:05.859Z",
+  "fallbackReviewer": "Implementation Agent (Codex)",
+  "fallbackSha256": "b05fd6036258d743a24fb3fc826c1394f04dc3a4a81c7758ef0d508689261bfc",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b212.jpg",
+    "originalSha256": "d268711f2c8c103a140cebcbdbc33830b3b3253da99cdf0832ac70d243483256",
+    "masterPath": "content/assets-masters/questions/b212.png",
+    "masterSha256": "b05fd6036258d743a24fb3fc826c1394f04dc3a4a81c7758ef0d508689261bfc",
+    "candidateSha256": "0199c9e6ec0c8c3e15c90e6835b934f68e7d784ea3c4af19514abba65e91d336",
+    "inferenceSha256": "0c18f15fac357dd7888f01ffa5a7861997ae8ef080792d42cdfd51808d1376dd",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

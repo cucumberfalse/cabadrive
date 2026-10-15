@@ -1,0 +1,25 @@
+{
+  "imageId": "question-image-b230",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b230.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b230.png",
+  "originalSha256": "5694f4dfb8ef5ecb9b7bb47bbf437ed06dbdffab7b3d24fa19f0dde47535a952",
+  "candidateSha256": "0307d35256d7cb662fdd771034bffb51f9d90e7b0d6d9c0973b447566ca7e68d",
+  "reviewer": "Supplemental Review Agent /root/image_review_tail (Codex)",
+  "reviewedAt": "2026-10-13T17:17:04.473386+00:00",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "Tunnel arch encloses the same front-view car with two circular headlights, rectangular grille, windshield and separate lower tires; negative-space gaps and yellow diamond remain faithful."
+  ],
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b230.jpg",
+    "originalSha256": "5694f4dfb8ef5ecb9b7bb47bbf437ed06dbdffab7b3d24fa19f0dde47535a952",
+    "masterPath": "content/assets-masters/questions/b230.png",
+    "masterSha256": "0307d35256d7cb662fdd771034bffb51f9d90e7b0d6d9c0973b447566ca7e68d",
+    "candidateSha256": "0307d35256d7cb662fdd771034bffb51f9d90e7b0d6d9c0973b447566ca7e68d",
+    "inferenceSha256": "9327ce5c72cd41f65a027c8226e23cea212f49cb5de71a3ae8b7300c2088b84e",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

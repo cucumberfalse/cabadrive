@@ -1,0 +1,29 @@
+{
+  "imageId": "question-image-b200",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b200.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b200.png",
+  "originalSha256": "ba1e3b1cd6c7d062d8c21f31cb7d3f66f854e6202d26a20737b24d2333216c46",
+  "candidateSha256": "892390607e0b99a1866e1a56a360e0d72c6ee89b206a9a6c27e72e8b12942bce",
+  "reviewer": "image_review",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "Roof cargo bundles and securing straps, REXTON lettering and lane edge retained; original intentionally blurred plate stays blurred without invented characters."
+  ],
+  "rejectionReason": null,
+  "reviewedAt": "2026-10-13T17:12:56.835436+00:00",
+  "inspectionArtifacts": [
+    "/private/tmp/cabadrive-057-review-b140-b220-b200-b201-b202-b203-b204.png"
+  ],
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b200.jpg",
+    "originalSha256": "ba1e3b1cd6c7d062d8c21f31cb7d3f66f854e6202d26a20737b24d2333216c46",
+    "masterPath": "content/assets-masters/questions/b200.png",
+    "masterSha256": "892390607e0b99a1866e1a56a360e0d72c6ee89b206a9a6c27e72e8b12942bce",
+    "candidateSha256": "892390607e0b99a1866e1a56a360e0d72c6ee89b206a9a6c27e72e8b12942bce",
+    "inferenceSha256": "47541795b23e5437b40b2a361c4b917c1b3035a7772d72a4d5ade00b27a954a1",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

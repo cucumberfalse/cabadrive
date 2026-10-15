@@ -1,0 +1,23 @@
+{
+  "imageId": "question-image-b30",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:24:51.011Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "Native plaque crop retains Solo omnibus y taxis ocupados, dias habiles, de8a20horas wording; circular blue/red lane symbol and red circledcar position unchanged."
+  ],
+  "candidateSha256": "e4a6cbac3b70d6910b120b31c79005b35d30b6b963e6f0d8257812c69b921b06",
+  "originalSha256": "b68fc0a253677c918a9e392ec8339b74746740cfc83e07028b3f179514f49544",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b30.jpg",
+    "originalSha256": "b68fc0a253677c918a9e392ec8339b74746740cfc83e07028b3f179514f49544",
+    "masterPath": "content/assets-masters/questions/b30.png",
+    "masterSha256": "e4a6cbac3b70d6910b120b31c79005b35d30b6b963e6f0d8257812c69b921b06",
+    "candidateSha256": "e4a6cbac3b70d6910b120b31c79005b35d30b6b963e6f0d8257812c69b921b06",
+    "inferenceSha256": "5099c89f22103d593863340264b165ce86b2f157900b8bad01fe10da1c7b7608",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

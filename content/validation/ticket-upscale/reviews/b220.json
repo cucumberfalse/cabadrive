@@ -1,0 +1,29 @@
+{
+  "imageId": "question-image-b220",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b220.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b220.png",
+  "originalSha256": "97685edb90bb7a3cf9052a0dab70576f28a538cbc98c1db7117e1cf66cb9bc3f",
+  "candidateSha256": "b67a84c5b8b2a0841961e55286e87f202cb35e3f1f49393f203138a2858e393e",
+  "reviewer": "image_review",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "A/B labels and contrast between low lap strap A and higher abdominal crossing B retained; buckle, shoulder straps and driver pose unchanged."
+  ],
+  "rejectionReason": null,
+  "reviewedAt": "2026-10-13T17:15:25.764850+00:00",
+  "inspectionArtifacts": [
+    "/private/tmp/cabadrive-057-review-b140-b220-b220.png"
+  ],
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b220.jpg",
+    "originalSha256": "97685edb90bb7a3cf9052a0dab70576f28a538cbc98c1db7117e1cf66cb9bc3f",
+    "masterPath": "content/assets-masters/questions/b220.png",
+    "masterSha256": "b67a84c5b8b2a0841961e55286e87f202cb35e3f1f49393f203138a2858e393e",
+    "candidateSha256": "b67a84c5b8b2a0841961e55286e87f202cb35e3f1f49393f203138a2858e393e",
+    "inferenceSha256": "2705a5a0fc3f8b4937f7061c95bccbdb0b95fb2b2b395b065e6803c2d8284809",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

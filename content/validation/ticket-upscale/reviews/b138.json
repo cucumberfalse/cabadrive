@@ -1,0 +1,30 @@
+{
+  "imageId": "question-image-b138",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:09:29.735Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "rejected",
+  "observations": [
+    "20 road/posted speed digits and wheelchair symbol retain geometry; enlarged small information plaque beneath wheelchair becomes synthetic bars, and red storefront lettering changes contours."
+  ],
+  "rejectionReason": "Fine information plaque text and storefront glyphs are reconstructed into synthetic bars and altered contours in native detail.",
+  "candidateSha256": "72f15b3ab58b672bfb82dba2453adabc52d00893f0dc5d64d035261c8b7ac2f5",
+  "originalSha256": "d62bdeabfb3b876afe12bbfb8b5b0c05f9f8890d00d76e18c4d3010156c01120",
+  "fallbackObservations": [
+    "Fallback retains wheelchair sign,20 marking and original small shop-front words in their source-soft state, without changing road perspective."
+  ],
+  "fallbackReviewedAt": "2026-10-13T17:43:47.658Z",
+  "fallbackReviewer": "Implementation Agent (Codex)",
+  "fallbackSha256": "5af9c3592bc7507fa877bafd9c3fa8a0eb3ef44249be34815aae458713e70e6f",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b138.jpg",
+    "originalSha256": "d62bdeabfb3b876afe12bbfb8b5b0c05f9f8890d00d76e18c4d3010156c01120",
+    "masterPath": "content/assets-masters/questions/b138.png",
+    "masterSha256": "5af9c3592bc7507fa877bafd9c3fa8a0eb3ef44249be34815aae458713e70e6f",
+    "candidateSha256": "72f15b3ab58b672bfb82dba2453adabc52d00893f0dc5d64d035261c8b7ac2f5",
+    "inferenceSha256": "2bf310cfa2f2c94bea724ecc7e08723910c5366c738b5a209553bca897e7e07a",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

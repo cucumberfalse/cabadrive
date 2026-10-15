@@ -1,0 +1,25 @@
+{
+  "imageId": "question-image-b235",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b235.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b235.png",
+  "originalSha256": "64656d32688be12a1d6df455cc6e43e4df07f632f428e81f90e93415f953d9c5",
+  "candidateSha256": "23e254564cabf8b4f11a76fe841e44d98ad8667eea50520dbca1baeba15afe96",
+  "reviewer": "Supplemental Review Agent /root/image_review_tail (Codex)",
+  "reviewedAt": "2026-10-13T17:17:29.494037+00:00",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "Child pictogram retains the separate circular head, raised left hand with bag, extended right arm and crossing legs; school warning diamond has the same border and yellow field."
+  ],
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b235.jpg",
+    "originalSha256": "64656d32688be12a1d6df455cc6e43e4df07f632f428e81f90e93415f953d9c5",
+    "masterPath": "content/assets-masters/questions/b235.png",
+    "masterSha256": "23e254564cabf8b4f11a76fe841e44d98ad8667eea50520dbca1baeba15afe96",
+    "candidateSha256": "23e254564cabf8b4f11a76fe841e44d98ad8667eea50520dbca1baeba15afe96",
+    "inferenceSha256": "94e19b6e29c0725ddd80936bd728abcd7e4138e1187c13b05f21a46320c8417e",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "imageId": "question-image-b65",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:32:48.717Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "A/B/C labelled triptych retains smoking driver, mate-drinking driver and driver eating respective objects; hand/mouth contacts and steeringhand positions unchanged."
+  ],
+  "candidateSha256": "2157d74f69cff860921bf2ebdb5e8c9599b7b8b0a6ef371a50d00792f25cdb5c",
+  "originalSha256": "b46a9f1ac64f761bb14fdbfcb1aa2e61cefa76b033cd9353ddbb27892949f429",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b65.jpg",
+    "originalSha256": "b46a9f1ac64f761bb14fdbfcb1aa2e61cefa76b033cd9353ddbb27892949f429",
+    "masterPath": "content/assets-masters/questions/b65.png",
+    "masterSha256": "2157d74f69cff860921bf2ebdb5e8c9599b7b8b0a6ef371a50d00792f25cdb5c",
+    "candidateSha256": "2157d74f69cff860921bf2ebdb5e8c9599b7b8b0a6ef371a50d00792f25cdb5c",
+    "inferenceSha256": "02981150c4405d02046633b53aeac624e0f46ef2ecf0856bf14798e259b41813",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

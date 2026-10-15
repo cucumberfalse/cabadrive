@@ -1,0 +1,25 @@
+{
+  "imageId": "question-image-b247",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b247.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b247.png",
+  "originalSha256": "80d9290a6422dade8cdc25b19748c4af2130de8738abbac3f376c7bd288efef3",
+  "candidateSha256": "0920e9b1871df920a37212b13026bc782f7f74b06810fad8de1531266125192a",
+  "reviewer": "Supplemental Review Agent /root/image_review_tail (Codex)",
+  "reviewedAt": "2026-10-13T17:18:30.087289+00:00",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "Priority-direction sign retains a larger black downward arrow on the left and smaller red upward arrow on the right; arrowhead sizes, relative heights, red outer ring and white center are unchanged."
+  ],
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b247.jpg",
+    "originalSha256": "80d9290a6422dade8cdc25b19748c4af2130de8738abbac3f376c7bd288efef3",
+    "masterPath": "content/assets-masters/questions/b247.png",
+    "masterSha256": "0920e9b1871df920a37212b13026bc782f7f74b06810fad8de1531266125192a",
+    "candidateSha256": "0920e9b1871df920a37212b13026bc782f7f74b06810fad8de1531266125192a",
+    "inferenceSha256": "8d659e8026db1bd913adefd64a68886d27615f2b2a853d3cd76ceafcf81d4e3e",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

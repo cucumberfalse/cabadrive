@@ -21,6 +21,15 @@ Implemented stack:
 - native service worker generated after production build, with revalidated atomic precaching of every hashed build dependency, network-first online navigation, last-ready offline fallback, and retained version caches so an old tab can first-load its old lazy chunk after deployment; a durable one-time marker safely activates the first upgrade from the legacy worker, while every subsequent version uses the explicit update banner/lifecycle; tabs opened mid-install observe the active installation, and activation clears stale banners in other tabs without forcing them to reload; an already-deployed legacy worker may have omitted its deferred manual chunk, so that first upgrade requires the append-only retained-origin deployment from feature 051/PR #217 to preserve the exact outgoing bytes before the shell switches
 - Node test runner + Playwright for testing
 
+Ticket photos use the shared `TicketRaster` picture on question cards and manual
+Materials references. The compact delivery map supplies AVIF/WebP/JPEG srcsets
+and original dimensions. Layout-effect measurement sets `sizes` to the actual
+rendered slot; portrait frames keep the same aspect ratio and 360px question /
+300px Materials height caps. Captions, alternative text and explanation overlays
+stay outside or inside the same measured frame as appropriate. Every ready worker
+retains its release-local exact modern-to-JPEG map so an unvisited old-tab image
+can decode offline after another tab activates a new worker.
+
 ## Runtime Contract
 
 The local execution contract is Docker-only:
@@ -138,9 +147,10 @@ The current question set is `unofficial_b_fallback`, not an official GCBA questi
 
 ## Image Pipeline Boundary
 
-ТЗ-P3 stage 1 adds an offline, validated derivative manifest and `assetSrcSet`
-export beside `assetUrl`. Current components continue to use canonical images.
-The helper returns separate format sets plus JPEG fallback/dimensions, or `null`
-for missing/malformed records. Responsive markup and container `sizes` belong to
-later image-quality stages. See [image-pipeline.md](../image-pipeline.md) for the
-master contract, output paths, profiles, metrics and build tooling.
+ТЗ-P3 stages 1–2 provide the validated derivative manifest and `assetSrcSet`
+export beside `assetUrl`. Ticket questions and Materials ticket references share
+`TicketRaster`: separate AVIF/WebP source sets, a JPEG fallback, intrinsic dimensions
+and measured container `sizes` account for slot width, DPR and height caps. The
+canonical local image remains the fallback when a derivative record is absent or
+invalid. See [image-pipeline.md](../image-pipeline.md) for the reviewed masters,
+output paths, profiles, metrics, offline fallback maps and build tooling.

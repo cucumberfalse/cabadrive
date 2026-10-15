@@ -1,0 +1,23 @@
+{
+  "imageId": "question-image-b41",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:28:09.853Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "A/B/C panels preserve different cyclist positions, red pedestrian bridge, white forward cyclelane arrow and yellow bicycle-sideway bag; label circles and dividing lines unchanged."
+  ],
+  "candidateSha256": "e0119b0d9c73bfe498312af04f99ca5886c54d8a4c803be10f6140147ba3ee1a",
+  "originalSha256": "cd0f4900333b55a77a0a572dca3309b0b63f69dda2f3ac7d82f6aaeecb3e7e6d",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b41.jpg",
+    "originalSha256": "cd0f4900333b55a77a0a572dca3309b0b63f69dda2f3ac7d82f6aaeecb3e7e6d",
+    "masterPath": "content/assets-masters/questions/b41.png",
+    "masterSha256": "e0119b0d9c73bfe498312af04f99ca5886c54d8a4c803be10f6140147ba3ee1a",
+    "candidateSha256": "e0119b0d9c73bfe498312af04f99ca5886c54d8a4c803be10f6140147ba3ee1a",
+    "inferenceSha256": "70c8b4d7d0a4ca224fd2e8716e8cbfdc7c1eed4f3ecb91a04e9a391447203a6a",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

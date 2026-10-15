@@ -1,0 +1,35 @@
+{
+  "imageId": "question-image-b67",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:33:53.720Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "Officer centered between whitecar and taxi retains vertically raisedarm/hand; opposite arm, bus beyond and crossing pedestrian positions retained."
+  ],
+  "candidateSha256": "79bf922f0ea312d49f7b2a98d4ffdee1cfb17d96760127f42c63b45402c3c19c",
+  "originalSha256": "eb3a2a1b6c49e6bfe79d44f5cb10ae1421494b1e623f947376cee056ad04e05c",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b67.jpg",
+    "originalSha256": "eb3a2a1b6c49e6bfe79d44f5cb10ae1421494b1e623f947376cee056ad04e05c",
+    "masterPath": "content/assets-masters/questions/b67.png",
+    "masterSha256": "79bf922f0ea312d49f7b2a98d4ffdee1cfb17d96760127f42c63b45402c3c19c",
+    "candidateSha256": "79bf922f0ea312d49f7b2a98d4ffdee1cfb17d96760127f42c63b45402c3c19c",
+    "inferenceSha256": "534f2a7bd542dfdf679ff692bb36bca231331ed1851c9c1748c886165e41a201",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  },
+  "classificationCorrection": {
+    "reviewer": "Implementation Agent (Codex)",
+    "reviewedAt": "2026-10-14T23:51:51.129Z",
+    "method": "IF030 independently governed classification correction with paired-image spot review",
+    "previousTextOrSign": false,
+    "previousReviewSha256": "5fa2b2ad8742b5263e23a5fb5782c8075aa39b1c23da2646ee9db511d98ca218",
+    "basis": "Actual green traffic signals plus storefront letters and foreground taxi plate.",
+    "scope": "Review-scope flag only; no OCR, exact glyph readability, pixel-quality recertification or new metric approval.",
+    "governedMapSha256": "12a63bed30d1576e727ace09ee73530fa68e798284feedc8f9903ecac61a98b1",
+    "independentAuditSha256": "bce8d6427e1d09d2562af7f88185a990622d1bb0c3da5fe2a0105be7c2f129d9",
+    "independentMapReviewSha256": "a6b68b37c0579202b6eee3cce6ea75582855fd3fcc9a7da21a8fe316243b95fe"
+  }
+}

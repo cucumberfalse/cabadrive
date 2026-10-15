@@ -1,0 +1,23 @@
+{
+  "imageId": "question-image-b106",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:41:44.566Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "Native crop confirms Burela and upper Larralde/5800-5850/Comuna12 line strokes and right arrow retain the source arrangement; remaining lower Burela panel and A/B vehicle layout stay unchanged."
+  ],
+  "candidateSha256": "a15d724e7fab1873ab99f7d515784bffe5211ea6d7d232254e8c6dfba4a43df3",
+  "originalSha256": "38228b1c7ab2a6a91ea8254bf3cda9b0048b99ed93c41acd73142f220a22ece5",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b106.jpg",
+    "originalSha256": "38228b1c7ab2a6a91ea8254bf3cda9b0048b99ed93c41acd73142f220a22ece5",
+    "masterPath": "content/assets-masters/questions/b106.png",
+    "masterSha256": "a15d724e7fab1873ab99f7d515784bffe5211ea6d7d232254e8c6dfba4a43df3",
+    "candidateSha256": "a15d724e7fab1873ab99f7d515784bffe5211ea6d7d232254e8c6dfba4a43df3",
+    "inferenceSha256": "22ccb46f6d8658754d30b15abdcb03919c627f71803cceac0a79b24b41839bf1",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

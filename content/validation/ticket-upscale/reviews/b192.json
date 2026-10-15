@@ -1,0 +1,29 @@
+{
+  "imageId": "question-image-b192",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b192.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b192.png",
+  "originalSha256": "a316182e924ff2fe2792976550093baa4f85f2bd42823776b2b3652a3e384e5d",
+  "candidateSha256": "89e7c1855ac74ddefd32e753da6259af3536d03ed4fbd4e58078335d568ded48",
+  "reviewer": "image_review",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": false,
+  "status": "accepted",
+  "observations": [
+    "Selected pilot fog source retains faint approaching headlights and fog boundary; double yellow, white edge and foreground road cracks remain consistent."
+  ],
+  "rejectionReason": null,
+  "reviewedAt": "2026-10-13T17:08:53.441950+00:00",
+  "inspectionArtifacts": [
+    "/private/tmp/cabadrive-057-review-b140-b220-b190-b191-b192-b193.png"
+  ],
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b192.jpg",
+    "originalSha256": "a316182e924ff2fe2792976550093baa4f85f2bd42823776b2b3652a3e384e5d",
+    "masterPath": "content/assets-masters/questions/b192.png",
+    "masterSha256": "89e7c1855ac74ddefd32e753da6259af3536d03ed4fbd4e58078335d568ded48",
+    "candidateSha256": "89e7c1855ac74ddefd32e753da6259af3536d03ed4fbd4e58078335d568ded48",
+    "inferenceSha256": "804d06f908df970ea127264e0902f25d607f7e5d0169f54355cb99ce1c1a4c5b",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

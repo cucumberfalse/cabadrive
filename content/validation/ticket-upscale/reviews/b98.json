@@ -1,0 +1,30 @@
+{
+  "imageId": "question-image-b98",
+  "reviewer": "Implementation Agent (Codex)",
+  "reviewedAt": "2026-10-13T17:41:44.566Z",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "rejected",
+  "observations": [
+    "A/B circles and truck/car geometry remain. Actual enlarged HELADERIA storefront changes original letter strokes into disconnected angular glyphs."
+  ],
+  "rejectionReason": "Storefront lettering is reconstructed incorrectly.",
+  "candidateSha256": "6f60e1ae82d1d66185ff281eb4aea4c96c826fc3aa825a483c55731c55cdea19",
+  "originalSha256": "402c04f2e7c7ccdd236117d639e6d37f8cf484f9d2c67360ccac711b2e4295bc",
+  "fallbackObservations": [
+    "Fallback preserves original HELADERIA letter strokes and storefront emblem, together with A/B vehicle positions."
+  ],
+  "fallbackReviewedAt": "2026-10-13T17:47:00.406Z",
+  "fallbackReviewer": "Implementation Agent (Codex)",
+  "fallbackSha256": "3e81d62dc94646ad60435d4f82bccb7f6845cbc8f83a35a1a031320f175b2409",
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b98.jpg",
+    "originalSha256": "402c04f2e7c7ccdd236117d639e6d37f8cf484f9d2c67360ccac711b2e4295bc",
+    "masterPath": "content/assets-masters/questions/b98.png",
+    "masterSha256": "3e81d62dc94646ad60435d4f82bccb7f6845cbc8f83a35a1a031320f175b2409",
+    "candidateSha256": "6f60e1ae82d1d66185ff281eb4aea4c96c826fc3aa825a483c55731c55cdea19",
+    "inferenceSha256": "14b7d0b505a04c251e6bb94f54bd567e868a2bc6e05481c5d9e275658f813ab2",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "checkedAt": "2026-10-13T19:59:35.013Z",
+  "method": "macOS documented cp -cRp; scoped filtered independent fixture",
+  "files": 8933,
+  "logicalBytes": 1130082845,
+  "nativeCloneCalls": 40,
+  "cloneAttributes": {
+    "regularFiles": 8933,
+    "logicalBytes": 1130082845,
+    "matchingCloneIdsOrEmpty": 8933,
+    "unprovenDataBytes": 0,
+    "clonePrivateDataBytes": 0,
+    "directories": 264,
+    "directoryAllocatedBytes": 0,
+    "authority": "installed getattrlist(2), ATTR_CMNEXT_PRIVATESIZE / CLONEID, SDK sys/attr.h"
+  },
+  "hostBefore": 6354702336,
+  "hostAfterClone": 6650310656,
+  "observedFreeDeltaBytes": -295608320,
+  "independentInodes": true,
+  "sourceUnchangedAfterCloneReviewMutation": true,
+  "cloneChanged": true,
+  "measurementLimit": "Per-file APFS clone IDs prove shared data for all actual copied regular files, independent of whole-filesystem free delta. Metadata and future changed files remain conservatively budgeted; phase gates remain held until measured capacity."
+}

@@ -1,0 +1,29 @@
+{
+  "imageId": "question-image-b182",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b182.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b182.png",
+  "originalSha256": "9301f198818a2a6e36faf3ec734e2e2620f0b554a9166580674563cea4cacb95",
+  "candidateSha256": "6a1b61c34bd8be48032a8cbb3db05d953298093faafab50d382eacddbda21376",
+  "reviewer": "image_review",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "Separately viewed wet-street photo retains cobble alignment, foreground pedestrian, yellow-black facade stripes and far vehicle; tiny red plaque remains blurred."
+  ],
+  "rejectionReason": null,
+  "reviewedAt": "2026-10-13T17:07:28.916964+00:00",
+  "inspectionArtifacts": [
+    "/private/tmp/cabadrive-057-review-b140-b220-b180-b181-b182-b183-b184.png"
+  ],
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b182.jpg",
+    "originalSha256": "9301f198818a2a6e36faf3ec734e2e2620f0b554a9166580674563cea4cacb95",
+    "masterPath": "content/assets-masters/questions/b182.png",
+    "masterSha256": "6a1b61c34bd8be48032a8cbb3db05d953298093faafab50d382eacddbda21376",
+    "candidateSha256": "6a1b61c34bd8be48032a8cbb3db05d953298093faafab50d382eacddbda21376",
+    "inferenceSha256": "d6222118a50e8af9b1b4ab6efbeb24900fb2b042e669d5626cb71884be1bb4ef",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

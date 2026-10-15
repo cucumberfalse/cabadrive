@@ -1,0 +1,25 @@
+{
+  "imageId": "question-image-b257",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b257.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b257.png",
+  "originalSha256": "e43514e1a79753031fc7d014343f7ee242816ec170255ed1ddf249ec40f3e6ea",
+  "candidateSha256": "47095a58fbc7fdc3b1ef0fd2495e514d71f2c2a7b24c5ab1a0c8052b93c2d9c0",
+  "reviewer": "Supplemental Review Agent /root/image_review_tail (Codex)",
+  "reviewedAt": "2026-10-13T17:18:59.855130+00:00",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "White motorcycle inside blue disk retains two circular wheels, raised rear tail, front fork, handlebar and large tank/body silhouette; red ring and wheel-center gaps are preserved."
+  ],
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b257.jpg",
+    "originalSha256": "e43514e1a79753031fc7d014343f7ee242816ec170255ed1ddf249ec40f3e6ea",
+    "masterPath": "content/assets-masters/questions/b257.png",
+    "masterSha256": "47095a58fbc7fdc3b1ef0fd2495e514d71f2c2a7b24c5ab1a0c8052b93c2d9c0",
+    "candidateSha256": "47095a58fbc7fdc3b1ef0fd2495e514d71f2c2a7b24c5ab1a0c8052b93c2d9c0",
+    "inferenceSha256": "c0f4ce6967e57d0e40ea7a03538ddfa17eba820f9a8dda750bc9182e785e885c",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}

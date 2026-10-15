@@ -1,0 +1,25 @@
+{
+  "imageId": "question-image-b226",
+  "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b226.jpg",
+  "candidatePath": ".cache/image-qa/ticket-upscale/candidates/realesrnet-x4plus/b226.png",
+  "originalSha256": "f0864f03a2b9f9402b2bf2100de844232eeb90b05a3140f7ad4517e3283b048f",
+  "candidateSha256": "b5d842f63e4cd5a7e33cd7b55860190475145bcbf095fe458caafd7579a88107",
+  "reviewer": "Supplemental Review Agent /root/image_review_tail (Codex)",
+  "reviewedAt": "2026-10-13T17:16:49.363834+00:00",
+  "method": "actual-source-candidate-pixel-inspection",
+  "textOrSign": true,
+  "status": "accepted",
+  "observations": [
+    "Thick upward winding arrow retains both opposing bends, lower vertical stem and upper triangular head inside the yellow diamond; no turn direction or arrowhead is added."
+  ],
+  "binding": {
+    "sourcePath": "content/assets/questions/source-bandinopla-testdeconducir-b/b226.jpg",
+    "originalSha256": "f0864f03a2b9f9402b2bf2100de844232eeb90b05a3140f7ad4517e3283b048f",
+    "masterPath": "content/assets-masters/questions/b226.png",
+    "masterSha256": "b5d842f63e4cd5a7e33cd7b55860190475145bcbf095fe458caafd7579a88107",
+    "candidateSha256": "b5d842f63e4cd5a7e33cd7b55860190475145bcbf095fe458caafd7579a88107",
+    "inferenceSha256": "f95a7f13b174654e6d220302fe25173755d029820d83c0fbd644b7e623ad4165",
+    "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
+    "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  }
+}
