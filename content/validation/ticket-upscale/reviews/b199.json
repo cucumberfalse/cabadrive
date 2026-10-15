@@ -6,7 +6,7 @@
   "candidateSha256": "d5c12a21686b817d1e58f9c80cc1b1e9d3fa137ce10d45e934c6ccb688eab7fd",
   "reviewer": "image_review",
   "method": "actual-source-candidate-pixel-inspection",
-  "textOrSign": false,
+  "textOrSign": true,
   "status": "accepted",
   "observations": [
     "Oil dipstick loop/tip, hand grip, engine filler cap and hose/connector placements preserved; metal texture denoised without changed mechanical relationships."
@@ -25,5 +25,17 @@
     "inferenceSha256": "04ea11a9028c1101afdf951856e3a79d86a3103e6eb0cd9a35b1689ba31f6eb1",
     "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
     "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  },
+  "classificationCorrection": {
+    "reviewer": "Implementation Agent (Codex)",
+    "reviewedAt": "2026-10-14T23:51:51.129Z",
+    "method": "IF030 independently governed classification correction with paired-image spot review",
+    "previousTextOrSign": false,
+    "previousReviewSha256": "2ce3fe3d27d3dfe8b019dd6b90f0c9100f71646bfd4a4a0e2d7dd00219859c52",
+    "basis": "Actual functional engine-cap pictogram; tiny connector marks remain ambiguous.",
+    "scope": "Review-scope flag only; no OCR, exact glyph readability, pixel-quality recertification or new metric approval.",
+    "governedMapSha256": "12a63bed30d1576e727ace09ee73530fa68e798284feedc8f9903ecac61a98b1",
+    "independentAuditSha256": "bce8d6427e1d09d2562af7f88185a990622d1bb0c3da5fe2a0105be7c2f129d9",
+    "independentMapReviewSha256": "a6b68b37c0579202b6eee3cce6ea75582855fd3fcc9a7da21a8fe316243b95fe"
   }
 }

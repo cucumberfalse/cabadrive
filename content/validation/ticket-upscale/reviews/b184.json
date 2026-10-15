@@ -6,7 +6,7 @@
   "candidateSha256": "e2ed6f55d9e88715a8e728755050bfe07e866d6c9dc10dabf8af92eaf55e211a",
   "reviewer": "image_review",
   "method": "actual-source-candidate-pixel-inspection",
-  "textOrSign": false,
+  "textOrSign": true,
   "status": "accepted",
   "observations": [
     "Rainy-night cars, headlight positions, strong reflected-light columns and wet asphalt cues retained; no new road/lamp geometry introduced."
@@ -25,5 +25,17 @@
     "inferenceSha256": "b63e89e884bacec0fb2c6848e3cc4478b0cda3f9e0007c36f7ce36d4207c1eff",
     "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
     "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  },
+  "classificationCorrection": {
+    "reviewer": "Implementation Agent (Codex)",
+    "reviewedAt": "2026-10-14T23:51:51.129Z",
+    "method": "IF030 independently governed classification correction with paired-image spot review",
+    "previousTextOrSign": false,
+    "previousReviewSha256": "c7bd701f2e826ce2dfd2bad69eb5d2a5bedc901adf69691be7fb8c16f65bbc13",
+    "basis": "Actual lit business-sign area; exact contents remain unresolved.",
+    "scope": "Review-scope flag only; no OCR, exact glyph readability, pixel-quality recertification or new metric approval.",
+    "governedMapSha256": "12a63bed30d1576e727ace09ee73530fa68e798284feedc8f9903ecac61a98b1",
+    "independentAuditSha256": "bce8d6427e1d09d2562af7f88185a990622d1bb0c3da5fe2a0105be7c2f129d9",
+    "independentMapReviewSha256": "a6b68b37c0579202b6eee3cce6ea75582855fd3fcc9a7da21a8fe316243b95fe"
   }
 }

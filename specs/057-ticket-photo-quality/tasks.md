@@ -52,6 +52,11 @@ These checkboxes describe implementation/review readiness before effective-conte
 - [x] T015 Published sole PR219 ready with actual corpus/rejected evidence and correct attributed commit/PR history. Actual B2 latest five required checks/native no-major-issues result completed on source67362f772c0cb2c7c886e3246e75ebcdd3bffb87; all Implementation feedback has concrete Architect dispositions and current task/CyclePR evidence is recorded for pre-freeze review. Substantive C publication and its own complete checks, final Architect→Analyst on C, and D/current gates/merge remain separate terminal actions; B2 is not C or D acceptance.
 
 
+- [x] T014T IF030 semantic correction complete:48 individually governed false→true/18retainfalse with209true unchanged gives257true/18false. All275 previous/current review hashes and dated facts preserved; raw journal changes only48reviewSha256 values. Current checkpointac8975a48beb3c028a64364731358786750ab58b5554b622386540bdbea96dba binds exact map/source/master/review/journal identities. Source/master/candidate/inference/policy/tool/status/fallback/derivative identities unchanged; no AI/pixel/native-metric regeneration. Independent changed-vector Reviewde23be083c63d42728d009a15356a66ffec10f903cbe8b55d40ae8258d409c8a found no actionable P0–P3.
+- [x] T014U IF030 focused verification complete:12/12 PASS0fail0skip/directexit0 (9prior+3new), including governed-classification drift with freshly rebound journal digest and production stale-review digest rejection before metrics; complete275current-binding/corpus checks and independent changed-vector Review passed. Test06870971ab14a0bcd3aa3f2eeb25d7659075761571cddfbd2b032aff8160a58b/log886b70df0239091545e268661f573337c8be4bb8437658bf3627b1947de0df77/resulta301573fdb2ca4b9d13ca6649b54a9e814dece53fd5b146aac3d76f60d98fa8f. Semantic issue closes before C2 freeze; future C2 own current all5/native and ordered final roles/D remain mandatory terminal gates, not completed here.
+- IF030 current readiness: semantic correction/bindings/current checkpoint/focused negatives/independent Review are complete before C2 publication; active Known Issues is resolved. T007/T015 and earlier B2/C observations remain dated evidence, not C2 check results. Actual published C2 must obtain its own complete current all5/native before separately invoked Architect FIRST then Analyst and append-only D; no C2 hash or final-role result is invented, counters0/0 remain unchanged.
+
+
 ## Process memory
 
 ### Decisions
@@ -66,6 +71,8 @@ These checkboxes describe implementation/review readiness before effective-conte
 - D-008: Final validation/evidence/merge use append-only recognized process evidence after effective-content freeze; no recursive mandatory checkbox updates. Behavioral/policy/review-disposition changes still invalidate validations.
 
 ### Architect Dispositions
+
+- IF-030 Architect disposition: resolved and complete. Actual48corrections/257true18false, all275old/current review bindings,12focused PASS0fail0skip/direct0 and independent changed-vector Reviewde23be083c63d42728d009a15356a66ffec10f903cbe8b55d40ae8258d409c8a findings[] close T014T/T014U. Original source-C native P2/failure and earlier disposition wording are retained verbatim in dated history. No pixel/AI/metric regeneration or production OCR. C2 own current native/all5, ordered final roles and D are separate mandatory terminal gates; this semantic closure does not certify those results.
 
 - All planning decisions D-001 through D-008 are disposed in `plan.md`.
 - IF-001 Architect disposition: accepted as taskT005A. Docker backing capacity is a separate blocking execution gate; host-only forecast is insufficient. Require remaining Docker peak+2GiB reserve and proven post-remediation measurements. Separate Cleanup Agent inventory is read-only absent later exact-target authorization; no product acceptance waiver or broad prune.
@@ -92,6 +99,12 @@ These checkboxes describe implementation/review readiness before effective-conte
 - Any new product/test/evidence-policy/disposition change invalidates the effective-content freeze. Historical failures/HOLD/limitations remain dated facts and are never normalized into successful attempts.
 
 ### Verification Evidence
+
+- IF030 actual semantic closure before C2: implementation packet0cb1a4fcc3ebfca210c87e57ac52b87937cb2b2327ed486e1972c88e20a1d4eb binds52Implementation+2governance files before this closure. Independent Reviewproofde23be083c63d42728d009a15356a66ffec10f903cbe8b55d40ae8258d409c8a (106532bytes) has findings[]/no actionable P0–P3; all275old/current review bytes checked,48onlyflag+separate-correction metadata changes and227byte-identical reviews, complete protected journal identical except48review digests. Current journalf3afc193aea840d37dcc4b13dbaeab0ff5c504994ac31ec16c6ba1f77404f3c7/protected-journal5eda856529dda74d55ac2c8fdb214233c90e7018b5475d6c84a30fb6e9d525c2 and current275checkpointac8975a48beb3c028a64364731358786750ab58b5554b622386540bdbea96dba bind the independently governed map12a63bed30d1576e727ace09ee73530fa68e798284feedc8f9903ecac61a98b1. Focused2026-10-14T23:54:31.906482→23:54:32.399397UTC direct0/12PASS0fail0skip (9prior+3new), log886b70df0239091545e268661f573337c8be4bb8437658bf3627b1947de0df77/resulta301573fdb2ca4b9d13ca6649b54a9e814dece53fd5b146aac3d76f60d98fa8f. Fresh admission7435f916fc7dff58b2211affcb2979953d3713230a2715b418a80f9d596ba75d age32.042823s; minimum observed host6837166080bytes/proof94208bytes within32MiB, RSS not measured. This is focused/current-binding evidence, not full preflight/Docker/C2-native/final-role acceptance.
+
+- IF030 exact66-map scoped Review accepted mapSHA12a63bed30d1576e727ace09ee73530fa68e798284feedc8f9903ecac61a98b1 with no remaining map finding; proofSHAa6b68b37c0579202b6eee3cce6ea75582855fd3fcc9a7da21a8fe316243b95fe. All66source/master identities match original audit; two targeted b63/b213 crops support ambiguous inclusion only. Actual map48corrections/18retainfalse plus209unchangedtrue governs proposed257true/18false; application/current275checkpoint/tests/new-head native/all5 remain pending.
+
+- IF030 actual independent current-C classification audit at23:38:53UTC proofSHAbce8d6427e1d09d2562af7f88185a990622d1bb0c3da5fe2a0105be7c2f129d9: all275 reviewed records hash-bound,209true/66false, fresh paired pixel views for66false plus8crops/b65+b222controls. The12confirmedfalse-negative subset and additional per-image scope boundaries are governed in plan.md;48corrections/18retainedfalse/257futuretrue are proposed, not yet applied or passed. Old209true pixel review is inherited, not newly repeated. Native current-C comment6179380037 remains a real unresolved P2; no role validation performed.
 
 - IF028 implementation checkpoint: actual complete journal1,306,870bytes/5,607entries/5,603files SHA3deea1cd031c122efeeb0edfb60bcd661206deaaf95b698d984a7a1f91d0c3fc supports typed2,097,152byte cap/headroom790,282. Direct affected run EXIT1/136total/135PASS/one sandbox AF_UNIX failure/zero skips, logSHA240bdd6d67b9a334abef482b05352499b0d18554651df3ec17b15cfddcc5e4d6; unchanged exact socket case permitted rerun EXIT0/onePASS/81name-skips SHA140e5047a9e7a131c2041f1575909bedc478494b0ae52b9d2524f0680235cc00. Earlier filtered twoPASS/26skips and outer time-wrapper sysctlEPERM remain recorded without Node-exit/RSS inference. Scoped Review no actionable P0–P3 on code586ceed126b98cd0a49e3a7ae1a2f20be3acf9599823b6a1ee313f1e5d4d3f26/testd72c206cd6c7c17f872101bac2c445400c4069ff6988e30b28c9e29a3dbbea33, proof399b7a95c65bdb85da6b77de66a3891fbeb69498501d306b236c7e4d08a69ea3. Format/repo/feature-memory0. Type256MiB heap OOM/SIGABRT SHAfa5212afdc77369695071132c762af1d75766f9aa9b991c404c29bf6797e04f7 is not TSdiagnostic;512MiB+192MiB retry admission14:45:58 HOLD(native109,838,336/CLI108,609,536<738,197,504bytes). No retry/lint/new whole quality or CI PASS claimed.
 - IF029 initial capacity checkpoint: B sampleSHAb206f4c68f64f16e36c477e005afd789f19cdefb5a5965720b42292ffe4d2560 contains9,314records/5,258,092bytes over9,256.480842seconds, maximum565B/record;6MiB leaves1,033,364bytes (about30.3minutes at observed rate). Historical full-five active4,315seconds is not Ubuntu runtime upper bound; retention remainder unknown. Preliminary read-only compact exploration measured149B maximum; actual implemented replay below measured153B. No whole-run capacity PASS follows from either measurement.
@@ -179,6 +192,10 @@ These checkboxes describe implementation/review readiness before effective-conte
 
 ### Cycle PR Set
 
+- IF030 prefreeze correction cycle: sourceC df6c24c14e5af29aeecfdfc91f30ceaba51ffc3a native finding6179380037 remains historical FAILED, with baseline PASS/Docker RUNNING as Root observed23:43UTC. Actual semantic correction/focused12/independent Review now closed before the next substantive head. Same branch/PR219/base3beb, no new Analyst cycle or role return. C2 is not yet assigned an invented hash or inherited checks; its own full current CI/native/all5 is mandatory before Architect FIRST then Analyst on identical published C2, followed by D own gates.
+
+- IF030 current-cycle update from Root GitHub freshness2026-10-14T23:43UTC: same ready OPEN/MERGEABLE PR219/branch, main=origin/main=base3beb624c0c7c615ab7159fdd3227f74f790df29f; actual C df6c24c14e5af29aeecfdfc91f30ceaba51ffc3a native FAILED/baseline PASS/Docker RUNNING at that observation. C freeze cannot be used for final-role validation. No new slice/PR/return count; future corrected substantive C2 requires its own all5/native before Architect FIRST then Analyst, followed by D own current gates.
+
 | Purpose | Branch | PR | Source head | Status | Final-validation inclusion |
 | --- | --- | --- | --- | --- | --- |
 | Full stage2 ticket quality and delivery | `codex/057-ticket-photo-quality` | [PR219](https://github.com/cucumberfalse/cabadrive/pull/219) | `67362f772c0cb2c7c886e3246e75ebcdd3bffb87` | B2 complete CI SUCCESS; actual READY/OPEN/MERGEABLE; B2 latest native/all5 SUCCESS at21:42:34UTC | Included, sole Analyst handoff slice |
@@ -188,6 +205,8 @@ These checkboxes describe implementation/review readiness before effective-conte
 - All substantive task/prose/roadmap/disposition/CyclePR evidence belongs in meaningful published C before final roles. C is not fabricated in this private packet. After substantive C is actually published, require complete current-C CI/native/all5 before final Architect FIRST then Analyst on that same C; B2 is not C checks. Append-only D requires its own current native Review/all5/evidence-only guard/expected-head merge afterward.
 
 ### Implementation Agent Feedback
+
+- IF-030 Architect disposition: resolved and complete. Actual48corrections/257true18false, all275old/current review bindings,12focused PASS0fail0skip/direct0 and independent changed-vector Reviewde23be083c63d42728d009a15356a66ffec10f903cbe8b55d40ae8258d409c8a findings[] close T014T/T014U. Original source-C native P2/failure and earlier disposition wording are retained verbatim in dated history. No pixel/AI/metric regeneration or production OCR. C2 own current native/all5, ordered final roles and D are separate mandatory terminal gates; this semantic closure does not certify those results.
 
 - IF-001 Architect disposition: accepted T005A separate backing/host gates and exact separately authorized resource remediation; no broad prune.
 - IF-002 Architect disposition: accepted T011A atomic per-release exact offline maps and genuine two-worker regression.
@@ -452,6 +471,40 @@ These checkboxes describe implementation/review readiness before effective-conte
 
 
 - [ ] T015 Publish one ready PR with actual evidence/rejected list and correct Codex trailers after preflight. Obtain current-head Review Agent/GitHub review and required checks; fix findings through assigned roles. Record exact cycle metadata and resolve every Implementation feedback via Architect before freeze.
+
+### Historical C Pre-IF030 Known-Issue Snapshot
+
+Previous section label: Known Issues.
+
+- No unresolved known issues.
+
+This exact prior no-unresolved marker belongs to B2-to-C consolidation before the native current-C finding; the active Known Issues section above governs IF030.
+
+### Historical IF030 Pending Semantic Snapshot
+
+Original active Known Issues text before actual semantic closure (native current-C finding remains a historical fact):
+
+Previous section label: Known Issues.
+
+- Pending known issue: IF030 current C df6c24c14e5af29aeecfdfc91f30ceaba51ffc3a native P2 exposes incomplete FR-004 text/sign classification; independent audit found12clear false negatives and individually observed additional ambiguous/signal/arrow regions among66false. Current corrected implementation/map bindings/tests and C2 native/all5 have not yet passed.
+- Architect disposition: correction accepted under T014T/T014U and plan IF030; current issue remains unresolved until actual governed275 evidence/independent Review and required new-head checks. B2 success is dated history, not a waiver or current-C acceptance.
+
+
+Original planning task lines and readiness/dispositions before correction/Review; preserved as dated pending history:
+
+- [ ] T014T IF030: apply the conservative FR-004 per-image rule and explicit66-entry map in plan.md:48previousfalse→true/18retainfalse with209true unchanged, subject independent map Review. Preserve all old pixel observations/identity/timestamps/status/fallback facts; add truthful new classification-audit identity/time/ambiguity notes. Rebind exact changed reviewSha256 journal records and produce a newly dated all275 governed classification/current-binding checkpoint; retain old journal-hash evidence as historical. Prove unchanged source/master/candidate/inference/model/policy/tool/status/fallback/derivative identities; no image/AI/metric regeneration or OCR scope.
+- [ ] T014U IF030: add meaningful focused governed-classification drift (including a freshly rebound digest) and stale-review-digest rejection before metric work, exact all275 binding/inventory checks and independent changed-vector Review under fresh resource admission. Reconcile current evidence/feedback/Known Issues and publish a new substantive C2 only on Orchestrator assignment. C2 own complete current native/all5 then ordered final roles and D gates remain terminal actions, not completed B2/C predicates.
+- IF030 current readiness override: T007/T015 and the44existing checked task lines are preserved as dated B2 implementation evidence, not current-C classification completeness. New T014T/T014U and the active known issue block final readiness until their actual closure and the new head's required gates. Original current-C native P2 remains recorded; final Architect/Analyst return counters stay0/0.
+- IF-030 Architect disposition: accepted T014T/T014U; conservative per-image text/sign scope includes incidental/uncertain text fields and traffic/functional symbols without OCR truth. Explicit66 map proposes48corrections/18retainfalse/209true unchanged; independently review it, correct exact review/journal bindings, preserve old facts/historical proof, add current275 checkpoint and meaningful drift/stale-digest tests. Current native P2 remains unresolved; new C2 own gates precede roles. No image/AI/metric regeneration.
+- IF-030 Architect disposition: accepted T014T/T014U for actual current-C native P2, supported by independent275-record/66-pair audit bce8d642…. Apply the conservative individually governed map with ambiguity notes and exact updated review/journal hashes; preserve original dated observation/status/pixel/evidence history. Add current275 checkpoint, meaningful semantic-drift-with-rebound-digest/stale-digest tests and independent changed-vector Review. Current issue pending; no pixel/model/OCR regeneration or final-role PASS.
+
+Semantic resolution above is based on actual correction/checkpoint/focused tests/independent Review before C2 publication. Pending future C2 checks are terminal gates, not an unresolved semantic issue. This snapshot cannot be read as a current issue or a successful current-C native rerun.
+
+### Historical IF030 Resolved-Disposition Wording
+
+The following exact former active bullet described completed semantic correction but mixed historical/negated wording with its disposition. The existing parser interprets its historical word pending and negated word open as unfinished feedback. Current concise disposition above preserves the same semantic closure; parser and product behavior are unchanged. Original publication parser failure/diagnostic remains dated history; this edit alone is not a parser or CI PASS.
+
+- IF-030 Architect disposition: resolved semantically before C2 freeze by actual48corrections/257true18false, all275old/current review bindings,12focused PASS0fail0skip/direct0 and independent changed-vector Reviewde23be083c63d42728d009a15356a66ffec10f903cbe8b55d40ae8258d409c8a findings[]. T014T/T014U complete; original current-C native P2/failure and pending snapshot preserved below. No pixel/AI/metric regeneration or new production OCR. C2 own current native/all5 remains a mandatory future terminal gate; it does not keep a fixed semantic issue open or cause postfreeze replacement prose.
 
 ## Final Validation Evidence
 

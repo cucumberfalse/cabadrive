@@ -3,7 +3,7 @@
   "reviewer": "Implementation Agent (Codex)",
   "reviewedAt": "2026-10-13T17:09:29.736Z",
   "method": "actual-source-candidate-pixel-inspection",
-  "textOrSign": false,
+  "textOrSign": true,
   "status": "accepted",
   "observations": [
     "Cyclist remains inside the separated bicycle lane at right, with same yellow curb, dashed line and wheel/pedalling posture. Crosswalk and pedestrians retain positions."
@@ -19,5 +19,17 @@
     "inferenceSha256": "89bd889822803c24866a56558b48e9f78a1765e2cbd302b4ee8150d8d3c24db9",
     "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
     "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  },
+  "classificationCorrection": {
+    "reviewer": "Implementation Agent (Codex)",
+    "reviewedAt": "2026-10-14T23:51:51.129Z",
+    "method": "IF030 independently governed classification correction with paired-image spot review",
+    "previousTextOrSign": false,
+    "previousReviewSha256": "154dd9bccecb3b5f12e0de8298029fd6c96a904e0785fb7bbcb22a21771867df",
+    "basis": "Visible storefront letter strokes and vehicle plate fields; exact wording uncertain.",
+    "scope": "Review-scope flag only; no OCR, exact glyph readability, pixel-quality recertification or new metric approval.",
+    "governedMapSha256": "12a63bed30d1576e727ace09ee73530fa68e798284feedc8f9903ecac61a98b1",
+    "independentAuditSha256": "bce8d6427e1d09d2562af7f88185a990622d1bb0c3da5fe2a0105be7c2f129d9",
+    "independentMapReviewSha256": "a6b68b37c0579202b6eee3cce6ea75582855fd3fcc9a7da21a8fe316243b95fe"
   }
 }

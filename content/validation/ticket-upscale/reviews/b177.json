@@ -6,7 +6,7 @@
   "candidateSha256": "5df16a8db4948152ced090d3b0d578fa2ba80364a37ff867837ffa334319feb7",
   "reviewer": "image_review",
   "method": "actual-source-candidate-pixel-inspection",
-  "textOrSign": false,
+  "textOrSign": true,
   "status": "accepted",
   "observations": [
     "Truck rear frame, upper apertures, road center dashes, shoulder and asphalt crack trajectory remain consistent; grain removed without lane/truck geometry change."
@@ -26,5 +26,17 @@
     "inferenceSha256": "619328b221d0a38dd721ae67007bc4c7878daca05c797c77eab6a0049c5eabd2",
     "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
     "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  },
+  "classificationCorrection": {
+    "reviewer": "Implementation Agent (Codex)",
+    "reviewedAt": "2026-10-14T23:51:51.129Z",
+    "method": "IF030 independently governed classification correction with paired-image spot review",
+    "previousTextOrSign": false,
+    "previousReviewSha256": "ef267c26f2938a5ae1cf3b482bc8e8a003e60972a6fe5b14dd81e53c5a68f5d0",
+    "basis": "Ambiguous upper truck-rear label/plate-like panel.",
+    "scope": "Review-scope flag only; no OCR, exact glyph readability, pixel-quality recertification or new metric approval.",
+    "governedMapSha256": "12a63bed30d1576e727ace09ee73530fa68e798284feedc8f9903ecac61a98b1",
+    "independentAuditSha256": "bce8d6427e1d09d2562af7f88185a990622d1bb0c3da5fe2a0105be7c2f129d9",
+    "independentMapReviewSha256": "a6b68b37c0579202b6eee3cce6ea75582855fd3fcc9a7da21a8fe316243b95fe"
   }
 }

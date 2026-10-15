@@ -3,7 +3,7 @@
   "reviewer": "Implementation Agent (Codex)",
   "reviewedAt": "2026-10-13T16:57:29.031Z",
   "method": "actual-source-candidate-pixel-inspection",
-  "textOrSign": false,
+  "textOrSign": true,
   "status": "accepted",
   "observations": [
     "Circled cyclist left arm stays extended horizontally to the left, with hand direction, helmet, backpack and riding position retained. Crossing stripe geometry and adjacent vehicles remain source-aligned."
@@ -19,5 +19,17 @@
     "inferenceSha256": "db197c0996910a2b2894d786c8a45fa65073cbbf78b1448675e1761e78d859bd",
     "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
     "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  },
+  "classificationCorrection": {
+    "reviewer": "Implementation Agent (Codex)",
+    "reviewedAt": "2026-10-14T23:51:51.129Z",
+    "method": "IF030 independently governed classification correction with paired-image spot review",
+    "previousTextOrSign": false,
+    "previousReviewSha256": "c67807c56212a3d54894e1ae08166aba66023aeba4db62737c5b5c592783aecf",
+    "basis": "Ambiguous small vehicle plate fields; arm gesture alone is not a sign.",
+    "scope": "Review-scope flag only; no OCR, exact glyph readability, pixel-quality recertification or new metric approval.",
+    "governedMapSha256": "12a63bed30d1576e727ace09ee73530fa68e798284feedc8f9903ecac61a98b1",
+    "independentAuditSha256": "bce8d6427e1d09d2562af7f88185a990622d1bb0c3da5fe2a0105be7c2f129d9",
+    "independentMapReviewSha256": "a6b68b37c0579202b6eee3cce6ea75582855fd3fcc9a7da21a8fe316243b95fe"
   }
 }

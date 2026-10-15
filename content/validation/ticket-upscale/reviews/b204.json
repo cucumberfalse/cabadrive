@@ -6,7 +6,7 @@
   "candidateSha256": "41f6ff720b4ec36726a34424c124b549674419fcba01f8fc048d6d362b261bae",
   "reviewer": "image_review",
   "method": "actual-source-candidate-pixel-inspection",
-  "textOrSign": false,
+  "textOrSign": true,
   "status": "accepted",
   "observations": [
     "Deflated tire contact bulge and flattened lower contour remain visible; wheel five-spoke geometry, body sill and tread relation preserved."
@@ -25,5 +25,17 @@
     "inferenceSha256": "b81216e9731454afff966a1f4d834ee90eaf210dc281aa51b45b2f666d25cd27",
     "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
     "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  },
+  "classificationCorrection": {
+    "reviewer": "Implementation Agent (Codex)",
+    "reviewedAt": "2026-10-14T23:51:51.129Z",
+    "method": "IF030 independently governed classification correction with paired-image spot review",
+    "previousTextOrSign": false,
+    "previousReviewSha256": "5339677a954e9273628196ed6d248bc3f9cb56e779e9372421874659db28c04b",
+    "basis": "Visible faint embossed sidewall markings as possible text; no reconstructed glyphs, consistent conservative treatment with b203.",
+    "scope": "Review-scope flag only; no OCR, exact glyph readability, pixel-quality recertification or new metric approval.",
+    "governedMapSha256": "12a63bed30d1576e727ace09ee73530fa68e798284feedc8f9903ecac61a98b1",
+    "independentAuditSha256": "bce8d6427e1d09d2562af7f88185a990622d1bb0c3da5fe2a0105be7c2f129d9",
+    "independentMapReviewSha256": "a6b68b37c0579202b6eee3cce6ea75582855fd3fcc9a7da21a8fe316243b95fe"
   }
 }

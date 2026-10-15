@@ -3,7 +3,7 @@
   "reviewer": "Implementation Agent (Codex)",
   "reviewedAt": "2026-10-13T17:12:43.031Z",
   "method": "actual-source-candidate-pixel-inspection",
-  "textOrSign": false,
+  "textOrSign": true,
   "status": "accepted",
   "observations": [
     "Pedestrian stays on the same island next to yellow bollards and planters; zebra stripes, turning road edge and approaching black car retain geometry. Tree textures are smoothed without relocating traffic cues."
@@ -19,5 +19,17 @@
     "inferenceSha256": "429dd9cca2a949a988466136d57b60b9a59b1d09f683bd33c0ca815078b69965",
     "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
     "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  },
+  "classificationCorrection": {
+    "reviewer": "Implementation Agent (Codex)",
+    "reviewedAt": "2026-10-14T23:51:51.129Z",
+    "method": "IF030 independently governed classification correction with paired-image spot review",
+    "previousTextOrSign": false,
+    "previousReviewSha256": "47d683d7c2e212e59092fccb92d46b1813e1380290d1ce4eadfd7ebf16eeeb23",
+    "basis": "Ambiguous distant vehicle plate fields; crossing geometry alone is not a sign.",
+    "scope": "Review-scope flag only; no OCR, exact glyph readability, pixel-quality recertification or new metric approval.",
+    "governedMapSha256": "12a63bed30d1576e727ace09ee73530fa68e798284feedc8f9903ecac61a98b1",
+    "independentAuditSha256": "bce8d6427e1d09d2562af7f88185a990622d1bb0c3da5fe2a0105be7c2f129d9",
+    "independentMapReviewSha256": "a6b68b37c0579202b6eee3cce6ea75582855fd3fcc9a7da21a8fe316243b95fe"
   }
 }

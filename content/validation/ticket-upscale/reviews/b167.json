@@ -6,7 +6,7 @@
   "candidateSha256": "250fd3b5577549d90bf78fa10e70303a43675495c88f74ffd478ce5598f99179",
   "reviewer": "image_review",
   "method": "actual-source-candidate-pixel-inspection",
-  "textOrSign": false,
+  "textOrSign": true,
   "status": "accepted",
   "observations": [
     "Red wagon parked oppositely remains same distance from curb; wheel spokes, doors/window divisions and dashed lane line retained."
@@ -25,5 +25,17 @@
     "inferenceSha256": "ba4532365cfa3fe8b969f4d0973a99b2e9bec11d024cb43863b09017a8cd3cab",
     "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
     "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  },
+  "classificationCorrection": {
+    "reviewer": "Implementation Agent (Codex)",
+    "reviewedAt": "2026-10-14T23:51:51.129Z",
+    "method": "IF030 independently governed classification correction with paired-image spot review",
+    "previousTextOrSign": false,
+    "previousReviewSha256": "d882162755c1b0bcf8c69b1e15b2568c28bc4015293afb5c7c95d986e884be1a",
+    "basis": "Ambiguous small doorway house-number/plaque field; no number transcription.",
+    "scope": "Review-scope flag only; no OCR, exact glyph readability, pixel-quality recertification or new metric approval.",
+    "governedMapSha256": "12a63bed30d1576e727ace09ee73530fa68e798284feedc8f9903ecac61a98b1",
+    "independentAuditSha256": "bce8d6427e1d09d2562af7f88185a990622d1bb0c3da5fe2a0105be7c2f129d9",
+    "independentMapReviewSha256": "a6b68b37c0579202b6eee3cce6ea75582855fd3fcc9a7da21a8fe316243b95fe"
   }
 }

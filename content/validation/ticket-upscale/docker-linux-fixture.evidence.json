@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "checkedAt": "2026-10-14T21:42:34.673157+00:00",
-  "status": "B2_IMPLEMENTATION_BASELINE_FULL_DOCKER_NATIVE_AND_ALL_FIVE_CHECKS_PASS_C_TERMINAL_GATES_PENDING",
+  "checkedAt": "2026-10-14T23:55:20.289673+00:00",
+  "status": "IF030_CLASSIFICATION_CORRECTED_FOCUSED_PASS_NEW_HEAD_GATES_RECORDED_SEPARATELY",
   "overallAcceptance": false,
   "historicalFocused": {
     "schemaVersion": 1,
@@ -240,7 +240,7 @@
     "attribution": "Unproved. Only aggregate minimum retained; variable collector loop cadence and stage samples do not locate or explain the minimum.",
     "historicalFunctionalProofInvalidated": false
   },
-  "remaining": "After actual substantive C publication: complete current-C Linux CI/native/all five required checks; final Architect FIRST then Analyst on the identical frozen C. Append-only final evidence D must receive all current-head checks/native review/evidence-only guard and expected-head finalizer before merge. Completed B2 checks do not substitute for C or D checks. No final-role or merge acceptance is claimed.",
+  "remaining": "IF030 semantic implementation/focused12 and independent semantic changed-vector Review are complete; final prefreeze Architect reconciliation and combined-vector binding precede C2 publication. C2 own complete current Linux baseline/Docker/native/all-five checks remain required before final Architect FIRST then Analyst on identical frozen C2. Append-only D retains its own current gates/evidence-only guard/expected-head finalizer before merge. No final-role or merge acceptance is claimed.",
   "currentWholeHost": {
     "at": "2026-10-14T08:17:16.278805+00:00",
     "status": "CURRENT_WHOLE_HOST_PASS",
@@ -1912,7 +1912,7 @@
       "sha256": "374c110d2111b3a7c5bdf983267a5efbdeb52c1303a1c2bd353fcedb7071a9b8"
     }
   },
-  "currentEvidenceInterpretation": "Exact B2 source67362 and measured merge0a156 completed baseline/full native-Linux Docker validation; ready transition, independent artifact Review, native no-major-issues outcome and all five required B2 checks are proven. Dated prior pending snapshots and original supervisor overallAcceptance:false remain historical facts. This substantive C evidence does not claim future C/D checks, final Architect/Analyst acceptance or merge. Historical local resource/memory HOLD, failed A/B attempts, VERIFY-only old orphan and reconciled push remain unchanged.",
+  "currentEvidenceInterpretation": "B2 complete baseline/full Docker/native/all-five remains dated accepted evidence. Subsequent C baseline passed but native found a genuine FR-004 classification P2; its Docker observation is dated pending, not complete acceptance. IF030 corrects independently governed review-scope metadata and exact review journal digests without changing pixels/status/fallback/inference/policy/tool/derivative identities. Focused12/12 passed. Independent semantic changed-vector Review completed with no actionable P0–P3: proof de23be083c63d42728d009a15356a66ffec10f903cbe8b55d40ae8258d409c8a binds prior packet0cb1a4fcc3ebfca210c87e57ac52b87937cb2b2327ed486e1972c88e20a1d4eb, not this subsequently reconciled evidence file. Architect prefreeze disposition and final combined-vector rebind are recorded separately. C2 must still obtain its own complete CI/native/all-five gates before ordered final roles; historical results do not certify a later head. Historical A/B failures, local resource/memory HOLD, VERIFY-only old orphan, publication failed assertion and independent reconciliation remain unchanged. Original overallAcceptance:false is preserved.",
   "historicalB2GateSnapshot": {
     "checkedAt": "2026-10-14T21:26:57.976440+00:00",
     "status": "B2_FULL_DOCKER_CONTRACT_AND_BASELINE_PASS_FINAL_FEATURE_GATES_PENDING",
@@ -1930,5 +1930,138 @@
     "currentEvidenceInterpretation": "B2 provides completed baseline/native-Linux Docker validation for exact source67362 and measured merge0a156. Actual ready transition and independent artifact Review are proven; native Review result remains unresolved. Historical local failures/HOLD/VERIFY-only old orphan, failed A/B CI and reconciled push remain immutable. Top overallAcceptance:false is preserved from the original supervisor/history, not recomputed into a current feature-acceptance flag.",
     "actualCiB2Pending": "Native current-B2 result/all5 and substantive C-vector Review/GO; afterward actual C CI/native/all5 then ordered C roles and D current gates.",
     "prReadyTransitionNativeReview": "RUNNING; no result claimed"
+  },
+  "historicalPreIF030Status": {
+    "checkedAt": "2026-10-14T21:42:34.673157+00:00",
+    "status": "B2_IMPLEMENTATION_BASELINE_FULL_DOCKER_NATIVE_AND_ALL_FIVE_CHECKS_PASS_C_TERMINAL_GATES_PENDING",
+    "remaining": "After actual substantive C publication: complete current-C Linux CI/native/all five required checks; final Architect FIRST then Analyst on the identical frozen C. Append-only final evidence D must receive all current-head checks/native review/evidence-only guard and expected-head finalizer before merge. Completed B2 checks do not substitute for C or D checks. No final-role or merge acceptance is claimed.",
+    "currentEvidenceInterpretation": "Exact B2 source67362 and measured merge0a156 completed baseline/full native-Linux Docker validation; ready transition, independent artifact Review, native no-major-issues outcome and all five required B2 checks are proven. Dated prior pending snapshots and original supervisor overallAcceptance:false remain historical facts. This substantive C evidence does not claim future C/D checks, final Architect/Analyst acceptance or merge. Historical local resource/memory HOLD, failed A/B attempts, VERIFY-only old orphan and reconciled push remain unchanged."
+  },
+  "actualCiC": {
+    "sourceCommit": "df6c24c14e5af29aeecfdfc91f30ceaba51ffc3a",
+    "measuredMergeCheckout": "3744f52d48bab1b3b75c418a4c34cf8977d1ff05",
+    "baseCommit": "3beb624c0c7c615ab7159fdd3227f74f790df29f",
+    "runId": 38643435434,
+    "runUrl": "https://github.com/cucumberfalse/cabadrive/actions/runs/38643435434",
+    "baseline": {
+      "jobId": 116124369023,
+      "conclusion": "success",
+      "unitTestsPassed": 848,
+      "browserTestsPassed": 181,
+      "browserTestsSkipped": 5,
+      "qualitySeconds": 28,
+      "observerWrapperTestsPassed": 81,
+      "python32ModuleExecutedByWholeWrapper": true,
+      "individual32CaseNamesPrinted": false,
+      "logBytes": 419322,
+      "logSha256": "1f249f33bb4a17148745529cfb9403ee086ce52ef579f762ef9afcaa5cafa3a4"
+    },
+    "native": {
+      "runId": 38643435459,
+      "jobId": 116124369797,
+      "conclusion": "failure",
+      "commentUrl": "https://github.com/cucumberfalse/cabadrive/pull/219#issuecomment-6179380037",
+      "finding": "Genuine b112 false-negative text/sign classification despite visible A/B/C labels and matching original observation; semantic issue, not invalidated merely by later head.",
+      "intakeSha256": "1c52deeeb35d20f4b870071f25fb47828df366f636b798746eac4e9b883bc043"
+    },
+    "docker": {
+      "jobId": 116124369090,
+      "statusAt": "2026-10-14T23:53:33Z",
+      "status": "in_progress",
+      "currentStep": "Observe complete Docker validation and production retry",
+      "completeAcceptance": false
+    },
+    "allFiveAccepted": false
+  },
+  "if030": {
+    "checkpointPath": "content/validation/ticket-upscale/classification-audit.json",
+    "checkpointSha256": "ac8975a48beb3c028a64364731358786750ab58b5554b622386540bdbea96dba",
+    "governedMapSha256": "12a63bed30d1576e727ace09ee73530fa68e798284feedc8f9903ecac61a98b1",
+    "independentAuditSha256": "bce8d6427e1d09d2562af7f88185a990622d1bb0c3da5fe2a0105be7c2f129d9",
+    "independentMapReviewSha256": "a6b68b37c0579202b6eee3cce6ea75582855fd3fcc9a7da21a8fe316243b95fe",
+    "priorJournalSha256": "47e7deb145ecd66454cfcc82aa190faca175b7e16648c34ea5eca89173cfffbc",
+    "currentJournalSha256": "f3afc193aea840d37dcc4b13dbaeab0ff5c504994ac31ec16c6ba1f77404f3c7",
+    "counts": {
+      "falseToTrue": 48,
+      "retainedFalse": 18,
+      "unchangedTrue": 209,
+      "currentTrue": 257,
+      "currentFalse": 18,
+      "accepted": 198,
+      "rejected": 77
+    },
+    "coverage": {
+      "reviewRecordsRead": 275,
+      "independentFreshPairedPreviouslyFalseReviews": 66,
+      "unchangedPriorTruePixelReviewsNotRepeated": 209,
+      "independentFreshControls": [
+        "b65",
+        "b222"
+      ],
+      "implementationPairedSpotReviewIds": [
+        "b61",
+        "b63",
+        "b64",
+        "b67",
+        "b111",
+        "b112",
+        "b114",
+        "b116",
+        "b213",
+        "b214",
+        "b215",
+        "b216",
+        "b217",
+        "b219"
+      ],
+      "freshAll275PixelReview": false,
+      "ocrPerformed": false,
+      "newPixelQualityOrMetricApproval": false
+    },
+    "historicalJournalProofs": [
+      {
+        "path": "content/validation/ticket-upscale/typed-record-proof.json",
+        "sha256": "d794c8437a773c468670cb9409460f4042ebb91d5c8abdde607ae5a3edcee52a",
+        "scope": "Unmodified dated proof of prior journal 47e7deb145ecd66454cfcc82aa190faca175b7e16648c34ea5eca89173cfffbc; not current classification certification"
+      },
+      {
+        "path": "content/validation/ticket-upscale/verification-results.json",
+        "sha256": "760bbf302483714793aef3986a63392cd93dbec3d6d510998b7472673af9d29d",
+        "scope": "Unmodified dated proof of prior journal 47e7deb145ecd66454cfcc82aa190faca175b7e16648c34ea5eca89173cfffbc; not current classification certification"
+      }
+    ],
+    "protectedJournalExcludingReviewDigestsSha256": "5eda856529dda74d55ac2c8fdb214233c90e7018b5475d6c84a30fb6e9d525c2",
+    "focusedValidation": {
+      "completedAt": "2026-10-14T23:54:32.399397+00:00",
+      "testFile": "tests/ticket-upscale.test.mjs",
+      "testFileSha256": "06870971ab14a0bcd3aa3f2eeb25d7659075761571cddfbd2b032aff8160a58b",
+      "tests": 12,
+      "passed": 12,
+      "failed": 0,
+      "skipped": 0,
+      "directExit": 0,
+      "durationMs": 443.172125,
+      "logSha256": "886b70df0239091545e268661f573337c8be4bb8437658bf3627b1947de0df77",
+      "resultSha256": "a301573fdb2ca4b9d13ca6649b54a9e814dece53fd5b146aac3d76f60d98fa8f",
+      "scope": "9 prior identity/fallback cases plus3 governed classification/current corpus/production stale-digest cases; no full preflight, metric or pixel regeneration."
+    },
+    "resourceAdmission": {
+      "sha256": "7435f916fc7dff58b2211affcb2979953d3713230a2715b418a80f9d596ba75d",
+      "ramForecastBytes": 268435456,
+      "fixtureAndProofDiskForecastBytes": 33554432,
+      "diskReserveBytes": 2147483648,
+      "minimumObservedHostFreeBytes": 6837166080,
+      "memoryPeakMeasured": false
+    },
+    "independentChangedVectorReview": "Recorded separately in governed workflow/task evidence; no self-referential checkpoint Review certification.",
+    "semanticIssueClosure": "Metadata/binding implementation and focused tests complete; Architect records independent Review and prefreeze semantic disposition separately.",
+    "futureCurrentC2AllFive": "PENDING",
+    "pixelMetricsRegenerated": false
+  },
+  "historicalIF030PreSemanticReviewSnapshot": {
+    "checkedAt": "2026-10-14T23:55:20.289673+00:00",
+    "archivedAt": "2026-10-14T23:58:59.278631+00:00",
+    "currentEvidenceInterpretation": "B2 complete baseline/full Docker/native/all-five remains dated accepted evidence. Subsequent C baseline passed but native found a genuine FR-004 classification P2; its Docker observation is dated pending, not complete acceptance. IF030 corrects independently governed review-scope metadata and exact review journal digests without changing pixels/status/fallback/inference/policy/tool/derivative identities. Focused12/12 passed; independent changed-vector Review and future C2 own complete gates remain pending. Historical A/B failures, local resource/memory HOLD, VERIFY-only old orphan, publication failed assertion and independent reconciliation remain unchanged. Original overallAcceptance:false is preserved.",
+    "remaining": "Complete independent IF030 changed-vector Review and prefreeze issue reconciliation, then publish substantive corrected C2. C2 must receive its own complete current Linux baseline/Docker/native/all-five checks before final Architect FIRST then Analyst on identical frozen C2. Append-only D retains its own current gates/evidence-only guard/expected-head finalizer before merge. No final-role or merge acceptance is claimed."
   }
 }

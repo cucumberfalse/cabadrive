@@ -532,3 +532,110 @@ After authenticated B2 evidence, complete all substantive task/disposition/known
 - Actual B2 native/all5 implementation gates completed: proofSHAc7d99fea829369ac026122dc8a41b9a643f8b9c54bb9c506129105f7b74c41ab/44,773bytes at21:42:34.673157UTC binds READY/OPEN/MERGEABLE PR219 head67362f772c0cb2c7c886e3246e75ebcdd3bffb87/base3beb624c0c7c615ab7159fdd3227f74f790df29f. Latest source-matched required checks allSUCCESS: baseline-checks115970107857, docker-validation115970108321, guard115970107525, AI Review116117615115, osv-scan115970107315. Native run38641429828/job116117615115 completed21:41:43UTC; chatgpt-codex-connector[bot] comment6179109146 reports no major issues and reviewed67362f772c; summary6179110109 completed21:41:09.505294Z. Inline comments0/API review objects0 are actual counts, not fabricated approval objects or exhaustive4025-path coverage. Historical draft-native SKIP115970110284 remains, with actual latest success selected by check-run ID. T015 implementation publication/readiness is complete; no final Architect/Analyst PASS or C/D check success is inferred.
 
 Current implementation tasks are complete or explicitly superseded with preserved historical outcomes. The active Known Issues section reports no unresolved issues after actual B2 native/all5 proof. This private full substantive vector still requires independent Review and Root application/publication assignment. It is not final Architect validation. C has no invented hash or inherited B2 checks: actual published C must obtain its own complete current CI/native/all5 before separately invoked ArchitectFIRST then Analyst; D repeats current gates. Original role fields/counts remain unchanged.
+
+
+## IF030 current-C native classification correction
+
+This is an architecture follow-up, not final Architect validation. Native current-C finding [6179380037](https://github.com/cucumberfalse/cabadrive/pull/219#issuecomment-6179380037) identifies a genuine FR-004 false negative: b112 contains prominent A/B/C labels while textOrSign=false and its own observation records those labels. Root fresh GitHub verification at2026-10-14T23:43UTC reports sole ready PR219 OPEN/MERGEABLE, sourceC df6c24c14e5af29aeecfdfc91f30ceaba51ffc3a, base/main/origin/main3beb624c0c7c615ab7159fdd3227f74f790df29f; C native FAILED, baseline PASS and Docker RUNNING at that observation. These are dated states, not a cancellation or a claim about later C outcomes. Previous B2 complete CI/native and earlier no-unresolved-issues snapshots remain historical evidence; they do not close IF030 or certify the corrected content. No final role has been invoked and counters remain0/0.
+
+Independent audit proof /private/tmp/cabadrive-057-if030-classification-audit-review-proof.json SHA bce8d6427e1d09d2562af7f88185a990622d1bb0c3da5fe2a0105be7c2f129d9 at2026-10-14T23:38:53.246866UTC reads and hash-binds all275 current-C review records. Prior classifications are209true/66false. The auditor actually viewed all66false source/final-PNG pairs in17paired sheets plus8enlarged crops and direct b65/b222 controls; prior actual corpus review and observations for209true are reused unchanged, not claimed as209new pixel views. The12clear findings b13,b17,b23,b35,b61,b69,b72,b77,b111,b112,b116,b119 are a confirmed subset, not a correction ceiling.
+
+### IF030 conservative classification rule
+
+textOrSign is a conservative review-scope flag, never a promise that text is readable or that a glyph has been recognized. true includes individually observed letters, numerals and text layouts, including incidental, occluded or untranscribable text; actual traffic-sign faces and their pictograms; traffic signals and painted directional/instructional arrows; functional safety pictograms. Individually observed plausible tiny plate, label, legend or sign/text fields also receive true with an explicit ambiguity/no-transcription note. Do not invent characters, words, signal state or sign meaning from uncertain pixels. Ordinary lane/crosswalk/curb geometry, an object or human gesture, a sign back without a face, or a decorative nonlanguage graphic alone does not qualify. false means actual review identified no qualifying or plausible region under this rule; it does not assert absence at arbitrary magnification. A separately present plausible plate/label can still qualify an image whose sign back or decoration does not. This clarifies existing FR-004 coverage without changing its visual-fidelity or ambiguous-detail requirement.
+
+The following individually reasoned disposition applies only to the66previously-false records; exact private routing map SHA12a63bed30d1576e727ace09ee73530fa68e798284feedc8f9903ecac61a98b1 preserves each source/master binding and original independent observation. Keep209previously-true flags unchanged. Proposed corrections48false→true and18retainedfalse yield257true/18false, contingent actual Implementation application and independent map/binding review. Independent follow-up paired crops additionally identify possible instrument-dial legends in b63 and rear-window glyph-like/decal forms in b213; these two ambiguous scope flags do not assert recognized text or a new quality verdict. Every ambiguous true remains explicitly uncertain; none is a new OCR or quality verdict.
+
+| Image | Governed textOrSign | Individual scope basis |
+| --- | --- | --- |
+| b1 | true | Ambiguous distant vehicle plate fields; tank emblem alone is not a text claim. |
+| b6 | true | Ambiguous printed/plate-like bag panel and background billboard; no glyph transcription. |
+| b12 | true | Ambiguous small vehicle plate fields; arm gesture alone is not a sign. |
+| b13 | true | Confirmed storefront letter strokes; incomplete wording remains ambiguous. |
+| b14 | true | Ambiguous storefront and vehicle plate fields; raised arm alone is not a sign. |
+| b16 | true | Visible storefront letter strokes and vehicle plate fields; exact wording uncertain. |
+| b17 | true | Confirmed numeral-like taxi-door badge; no exact number claim. |
+| b21 | true | Ambiguous distant vehicle plate fields; crossing geometry alone is not a sign. |
+| b23 | true | Actual yellow warning-sign face with directional pictogram. |
+| b35 | true | Visible numeral20 road-sign marking and storefront text; partial occlusion recorded. |
+| b36 | true | Visible shop-board text, traffic-signal equipment and painted directional arrows. |
+| b38 | false | No identified/plausible text/sign-bearing region in actual paired view; White square road-marking segments only; no text/sign face identified. |
+| b40 | true | Individually observed distant traffic-signal equipment; precise signal face/state remains ambiguous. |
+| b44 | true | Ambiguous distant overhead board faces and vehicle plate fields. |
+| b45 | true | Ambiguous distant boards and vehicle plate fields. |
+| b59 | false | No identified/plausible text/sign-bearing region in actual paired view; Driver earbud, glasses, interior; no explicit text/sign identified. |
+| b61 | true | Confirmed partially occluded awning letter strokes; no complete wording claim. |
+| b63 | true | Ambiguous possible instrument-dial numerical legends/markings behind steering wheel; no number or glyph transcription. |
+| b64 | true | Ambiguous tiny dashboard button/display marks as possible legends; no glyph claim. |
+| b67 | true | Actual green traffic signals plus storefront letters and foreground taxi plate. |
+| b68 | true | Actual illuminated green traffic signal; vest/background lettering remains ambiguous. |
+| b69 | true | Confirmed shirt letter strokes separated by harness; logo wording unresolved. |
+| b70 | true | Visible cursive storefront lettering and bus/vehicle text; no exact transcription. |
+| b72 | true | Actual orange warning-sign face with worker pictogram; consistent with b222. |
+| b77 | true | Actual orange construction-warning sign face with worker/tool pictogram. |
+| b79 | false | No identified/plausible text/sign-bearing region in actual paired view; Red curb and pavement; no explicit text/sign face identified. |
+| b80 | false | No identified/plausible text/sign-bearing region in actual paired view; Orange/red curb and pavement; no explicit text/sign face identified. |
+| b81 | false | No identified/plausible text/sign-bearing region in actual paired view; Yellow curb and white road paint; no explicit text/sign face identified. |
+| b111 | true | Large explicit A/B labels above respective vehicles. |
+| b112 | true | Large explicit A/B/C labels above vehicles; existing observation already records labels. |
+| b114 | true | Visible fine storefront lettering and vehicle plate fields; wording remains indistinct. |
+| b116 | true | Large explicit A/B labels above vehicles. |
+| b117 | true | Ambiguous tiny vehicle plate field; double-yellow line geometry alone is not a sign. |
+| b119 | true | Large explicit A/B/C labels above queued vehicles. |
+| b120 | false | No identified/plausible text/sign-bearing region in actual paired view; White dashed road line only; no explicit text/sign face identified. |
+| b122 | false | No identified/plausible text/sign-bearing region in actual paired view; Circled yellow/white center-line segments; no explicit text/sign face identified. |
+| b126 | true | Ambiguous small vehicle plate and remote pole-panel fields. |
+| b128 | true | Actual painted opposing directional arrows and illuminated green traffic signals. |
+| b129 | true | Actual illuminated traffic signals above crossing and right-side pole. |
+| b137 | true | Individually observed small upper truck-rear label/plate panel; wording uncertain. |
+| b148 | true | Ambiguous vehicle plate and small facade-plaque fields. |
+| b149 | true | Ambiguous vehicle plate field; reverse of circular sign alone does not establish a sign face. |
+| b155 | true | Individually observed roadside panel and storefront text; wording uncertain. |
+| b165 | false | No identified/plausible text/sign-bearing region in actual paired view; Rear wheel/curb close-up; no explicit text/sign identified. |
+| b166 | true | Ambiguous small door/intercom fields as possible legends; no text or number invented. |
+| b167 | true | Ambiguous small doorway house-number/plaque field; no number transcription. |
+| b174 | true | Actual large painted forward directional arrow on roadway. |
+| b177 | true | Ambiguous upper truck-rear label/plate-like panel. |
+| b184 | true | Actual lit business-sign area; exact contents remain unresolved. |
+| b186 | true | Ambiguous tiny lit background panels as possible sign/text fields. |
+| b188 | false | No identified/plausible text/sign-bearing region in actual paired view; Fog road; no legible text/sign face identified. |
+| b189 | false | No identified/plausible text/sign-bearing region in actual paired view; Fog road with headlights; no legible text/sign face identified. |
+| b191 | false | No identified/plausible text/sign-bearing region in actual paired view; Fog road with headlights; no legible text/sign face identified. |
+| b192 | false | No identified/plausible text/sign-bearing region in actual paired view; Fog road with headlights; no legible text/sign face identified. |
+| b193 | false | No identified/plausible text/sign-bearing region in actual paired view; Goats crossing mountain road; no explicit text/sign identified. |
+| b194 | false | No identified/plausible text/sign-bearing region in actual paired view; Foot/pedals close-up; no explicit text/sign identified. |
+| b199 | true | Actual functional engine-cap pictogram; tiny connector marks remain ambiguous. |
+| b204 | true | Visible faint embossed sidewall markings as possible text; no reconstructed glyphs, consistent conservative treatment with b203. |
+| b210 | true | Ambiguous distant vehicle plate field; fish-like decorative decal alone is not classified as text. |
+| b211 | true | Individually observed tiny printed seat fabric/trim mark as possible text; unreadable. |
+| b213 | true | Ambiguous pale rear-window glyph-like/decal forms; possible text region, no transcription or symbol meaning claimed. |
+| b214 | false | No identified/plausible text/sign-bearing region in actual paired view; Driver/headrest; no explicit text/sign identified. |
+| b215 | false | No identified/plausible text/sign-bearing region in actual paired view; Circled headrest; no explicit text/sign identified. |
+| b216 | true | Ambiguous tiny dashboard button markings as possible legends. |
+| b217 | false | No identified/plausible text/sign-bearing region in actual paired view; Belted occupants; shirt decorative graphic is visible, no readable text established. |
+| b219 | false | No identified/plausible text/sign-bearing region in actual paired view; Incorrect belt position; no explicit text/sign identified. |
+
+Independent scoped map Review accepted exact map12a63bed30d1576e727ace09ee73530fa68e798284feedc8f9903ecac61a98b1 with no remaining map finding, proofSHAa6b68b37c0579202b6eee3cce6ea75582855fd3fcc9a7da21a8fe316243b95fe. All66source/master bindings match the initial audit; b63/b213 follow-up crops support only conservative ambiguous inclusion. This is map Review, not Implementation/schema/CI/native or final-role closure.
+
+### IF030 implementation and evidence boundary
+
+Implementation applies only this individually governed classification correction and truthful new correction/audit metadata. Preserve original observations, review identities/timestamps, accepted/rejected decisions and fallback observations as dated facts. Record new classification-review identity/time and ambiguity basis separately rather than implying the old reviewer made this new correction at the old timestamp. If a fresh inspection discovers an actual reconstructed detail, return that new pixel defect for separate Architect disposition; do not silently alter status or pixels in this metadata task.
+
+For each changed review JSON, recompute the exact-byte reviewSha256 in content/image-metadata/ticket-upscale.journal.json. Keep the journal source/master/candidate/inference/policy/tool/dimensions/status/fallback identities exact. Produce a newly dated all275 classification/binding checkpoint with the governed expected boolean, independent per-image basis, exact current review hashes and journal identity; preserve the private independent proof through a public-safe provenance projection. The governed expected classification is curated from this map plus209unchanged flags, not regenerated from the actual flags being tested. Avoid circular identity dependencies. Existing typed-record-proof.json and verification-results.json original journalSha25647e7deb145ecd66454cfcc82aa190faca175b7e16648c34ea5eca89173cfffbc remain dated historical proofs; do not rewrite their original timestamps/results as current. Record their limitation and add distinct current evidence.
+
+No source JPG, PNG master, retained rejected candidate, inference/model/tool policy, accepted/rejected result, derivative payload or source pin changes are authorized by IF030. Verify those exact identities unchanged and all275 review/journal bindings/current governed flags complete. No new AI inference, image resampling, derivative generation or native metric rerun is justified by unchanged pixels. Ordinary unchanged CI build/validator commands still run their normal checks. No production OCR, observation-language parser or broad semantic runtime validator is needed.
+
+Meaningful focused regression must compare the current275 classification inventory against the separately governed expected map, including b112 and consistent controls b65/b222 and the signal/arrow/ambiguous versus ordinary-geometry boundaries. Prove a corrected labelled record changed back to false is rejected even if its journal review digest is freshly rebound; this is audited classification drift, not a Boolean-type test. Separately prove a review-byte change with its old journal digest is rejected before metric work. Preserve existing source/candidate/inference/fallback identity negatives. Read-only corpus hash/binding checks and focused tests are subject to actual resource admission; this disposition is not runtime GO.
+
+All substantive correction, tests, current evidence, Known Issues/feedback/task/Cycle PR reconciliation and independent changed-vector Review precede a new meaningful published C2. Current-C native finding and any still-running/finished C jobs remain history; no automatic cancellation or repeat is authorized here. C is ineligible for final-role validation because of the unresolved native finding. Actual C2 must obtain its own complete current baseline-checks/docker-validation/guard/AI Review/osv-scan, including native disposition, before separately invoked Architect FIRST then Analyst on identical full C2. Append-only D then needs its own current native/all5/evidence-only guard/expected-head finalizer/merge. Earlier B2/C results cannot substitute; final role markers/counts remain unchanged.
+
+
+### IF030 actual semantic closure before corrected-content freeze
+
+The preceding IF030 planning/pending state is preserved as dated history. Actual Implementation applied48individually governed corrections, retained18false and209priortrue, yielding257true/18false; all275previous/current review hashes are recorded in content/validation/ticket-upscale/classification-audit.json SHAac8975a48beb3c028a64364731358786750ab58b5554b622386540bdbea96dba. Original review observations/identity/timestamps/status/fallback remain intact; changed reviews add separately dated correction identity/basis. Exactly48raw reviewSha256 fields changed in journalf3afc193aea840d37dcc4b13dbaeab0ff5c504994ac31ec16c6ba1f77404f3c7; all other journal/source/master/candidate/inference/model/tool/policy/status/fallback/derivative identities remain unchanged. Independent current-C audit/map histories and old47e7deb journal proofs remain truthful dated evidence, not retimestamped current certificates. No source/master pixels, AI, resampling or native metrics were regenerated.
+
+Actual focused direct exit0 at2026-10-14T23:54:31.906482→23:54:32.399397UTC passed12/12,0failed/0skipped:9existing identity/fallback checks plus3new governed-classification/current-corpus/production-stale-digest cases. A labelled b112 flag changed back to false is rejected even after digest rebinding; a stale production b1 review digest is rejected before metric work. TestSHA06870971ab14a0bcd3aa3f2eeb25d7659075761571cddfbd2b032aff8160a58b/logSHA886b70df0239091545e268661f573337c8be4bb8437658bf3627b1947de0df77/resultSHAa301573fdb2ca4b9d13ca6649b54a9e814dece53fd5b146aac3d76f60d98fa8f are exact. Fresh256MiB admissionSHA7435f916fc7dff58b2211affcb2979953d3713230a2715b418a80f9d596ba75d preceded execution by32.042823s; observed host minimum6837166080bytes/proof94208within32MiB; RSS was not measured. This is not a full preflight/Docker/current-native run.
+
+Independent changed-vector Review proof /private/tmp/cabadrive-057-if030-changed-vector-review-proof.json SHAde23be083c63d42728d009a15356a66ffec10f903cbe8b55d40ae8258d409c8a/106532bytes reports findings[]/no actionable P0–P3, bound to preliminary54-file packet0cb1a4fcc3ebfca210c87e57ac52b87937cb2b2327ed486e1972c88e20a1d4eb (52Implementation files plus the2governance files before this closure). Review confirms all275old/current review bytes,48flag+separate-metadata changes/227other byte-identical reviews and exact protected journal except48review hashes. It does not self-certify this later governance delta: Orchestrator must bind/review the complete final combined vector before publication.
+
+These actual semantic correction, current bindings/checkpoint, focused negatives and independent Review close IF030 Known Issue/T014T/T014U BEFORE the corrected substantive C2 is published/frozen. Preserve original sourceC df6c24c14e5af29aeecfdfc91f30ceaba51ffc3a native P2 comment6179380037/FAILED result as history; this closure is not a successful current-C native rerun. C2 has no invented hash or inherited B2/C results. Its own complete current baseline-checks/docker-validation/guard/AI Review/osv-scan and native disposition remain mandatory terminal gates BEFORE separately invoked Architect FIRST then Analyst on identical actual published C2. After those gates, add only recognized append-only check/role evidence; no semantic Known Issues replacement or checkbox recursion is needed. A genuinely new finding reopens work and creates a new meaningful head normally. Append-only D then needs its own native/all5/evidence-only guard/expected-head finalizer/merge. No final validation was invoked and role return counters remain0/0; this closure grants no new runtime/Git/settings/cleanup action.

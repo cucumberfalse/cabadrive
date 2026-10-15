@@ -6,7 +6,7 @@
   "candidateSha256": "e22b8d78a0e78e6b4c40e0516b89f179bc60e157e03e9bf2a37571a40c9ee17a",
   "reviewer": "image_review",
   "method": "actual-source-candidate-pixel-inspection",
-  "textOrSign": false,
+  "textOrSign": true,
   "status": "accepted",
   "observations": [
     "Raised striped rail barriers, crossing street alignment, pedestrians and road cobble arcs remain positioned as original; texture softened without barrier/road geometry change."
@@ -25,5 +25,17 @@
     "inferenceSha256": "9bae9560d00ce9d797f3b45c759838bc1d9e1a7d61601b9d51f8442d631ca438",
     "policySha256": "46b56222567346a3560c460370feba981008ac3f462a8db5272f188dcbd7e63a",
     "toolsSha256": "ef6455d51e6135fa798de21033ccab2eb9e0a11874f65ec03b041ef32ecfff31"
+  },
+  "classificationCorrection": {
+    "reviewer": "Implementation Agent (Codex)",
+    "reviewedAt": "2026-10-14T23:51:51.129Z",
+    "method": "IF030 independently governed classification correction with paired-image spot review",
+    "previousTextOrSign": false,
+    "previousReviewSha256": "cd9aa1e2e21bdf0fb48c52b3a9f315ff9c84de47a4960abd34bde916fb9f6176",
+    "basis": "Individually observed roadside panel and storefront text; wording uncertain.",
+    "scope": "Review-scope flag only; no OCR, exact glyph readability, pixel-quality recertification or new metric approval.",
+    "governedMapSha256": "12a63bed30d1576e727ace09ee73530fa68e798284feedc8f9903ecac61a98b1",
+    "independentAuditSha256": "bce8d6427e1d09d2562af7f88185a990622d1bb0c3da5fe2a0105be7c2f129d9",
+    "independentMapReviewSha256": "a6b68b37c0579202b6eee3cce6ea75582855fd3fcc9a7da21a8fe316243b95fe"
   }
 }
