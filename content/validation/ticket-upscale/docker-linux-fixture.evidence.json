@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "checkedAt": "2026-10-15T01:11:36.603325+00:00",
-  "status": "IF031_IF032_FOCUSED_CORRECTIONS_PASS_CURRENT_HEAD_GATES_RECORDED_SEPARATELY",
+  "checkedAt": "2026-10-15T02:14:47.224151+00:00",
+  "status": "IF033_FOCUSED_FIXTURE_LIFETIME_PASS_CURRENT_HEAD_GATES_RECORDED_SEPARATELY",
   "overallAcceptance": false,
   "historicalFocused": {
     "schemaVersion": 1,
@@ -240,7 +240,7 @@
     "attribution": "Unproved. Only aggregate minimum retained; variable collector loop cadence and stage samples do not locate or explain the minimum.",
     "historicalFunctionalProofInvalidated": false
   },
-  "remaining": "IF031/IF032 focused runtime results are complete; independent changed-vector Review and Architect prefreeze semantic disposition precede a substantive C3 publication. C3 must obtain its own complete current baseline/Docker/native/all-five checks before ordered Architect FIRST then Analyst on identical frozen head. Append-only D retains its own current gates/evidence-only guard/expected-head finalizer before merge. No current C3, final-role or merge acceptance is claimed.",
+  "remaining": "IF033 focused full-module wrapper result is complete; independent changed-vector Review and Architect semantic disposition are recorded separately before meaningful C4 publication. C4 requires its own complete current baseline/Docker/native/all-five checks before ordered Architect FIRST then Analyst on the identical frozen head. Append-only D retains its own gates/evidence-only guard/expected-head finalizer before merge. No future head, final-role or merge acceptance is claimed.",
   "currentWholeHost": {
     "at": "2026-10-14T08:17:16.278805+00:00",
     "status": "CURRENT_WHOLE_HOST_PASS",
@@ -1912,7 +1912,7 @@
       "sha256": "374c110d2111b3a7c5bdf983267a5efbdeb52c1303a1c2bd353fcedb7071a9b8"
     }
   },
-  "currentEvidenceInterpretation": "B2 complete baseline/full Docker/native/all-five remains dated accepted evidence. C2 baseline passed, but its source-matched native review found genuine JPEG install-authority and scheduler-sensitive test P2 issues; that head does not satisfy terminal gates. IF031 narrows service-worker install admission to all authenticated current class-c JPEG widths and excludes the entire generic class-c tree, preserving retained cache-local maps. IF032 changes only test synchronization/controlled time, with production observer bytes unchanged. Targeted service-worker suites15/15 passed; the full34-case Python module passed through its existing Node wrapper after a separately admitted exact unsandboxed correction. The first sandbox run failed with explicit ps EPERM and is retained without a clean-PASS relabel. Changed-vector Review, Architect semantic disposition, new source publication, current Linux CI/native/all-five and final roles are separate recorded gates. All historical A/B/C failures, local HOLD, VERIFY-only recovery and publication reconciliation evidence remain unchanged. Original overallAcceptance:false is preserved.",
+  "currentEvidenceInterpretation": "B2 complete baseline/full Docker/native/all-five remains dated accepted evidence. C3 baseline succeeded, but current-source native review found a genuine residual-test descendant cleanup P2; C3 cannot support terminal acceptance. IF033 changes only the two residual fixtures and their focused lifetime regression: absolute atomic ready/completion controls, exact PID/group/start identity, cooperative release, ACK plus bounded actual terminal proof, finite self-expiry, preserved controls on unknown closure and unconditional sink closure. The existing wrapper passed and invoked the full35-case Python module; individual35 success lines were captured, not separately printed. Earlier wrapper direct0 remains actual command evidence, not a blanket fixture-closure claim: two exactly attributed leaked PIDs were separately removed, while twelve older ambiguous processes were preserved. Production observer, service worker and all275 corpus/pixel/provenance identities remain unchanged. Historical failures/HOLD/VERIFY-only/publication reconciliations and original overallAcceptance:false remain intact. Future source-matched checks/native/all-five and ordered roles/D remain independent gates.",
   "historicalB2GateSnapshot": {
     "checkedAt": "2026-10-14T21:26:57.976440+00:00",
     "status": "B2_FULL_DOCKER_CONTRACT_AND_BASELINE_PASS_FINAL_FEATURE_GATES_PENDING",
@@ -2067,7 +2067,7 @@
   "historicalPreIF031IF032Status": {
     "checkedAt": "2026-10-14T23:55:20.289673+00:00",
     "status": "IF030_CLASSIFICATION_CORRECTED_FOCUSED_PASS_NEW_HEAD_GATES_RECORDED_SEPARATELY",
-    "currentEvidenceInterpretation": "B2 complete baseline/full Docker/native/all-five remains dated accepted evidence. Subsequent C baseline passed but native found a genuine FR-004 classification P2; its Docker observation is dated pending, not complete acceptance. IF030 corrects independently governed review-scope metadata and exact review journal digests without changing pixels/status/fallback/inference/policy/tool/derivative identities. Focused12/12 passed. Independent semantic changed-vector Review completed with no actionable P0–P3: proof de23be083c63d42728d009a15356a66ffec10f903cbe8b55d40ae8258d409c8a binds prior packet0cb1a4fcc3ebfca210c87e57ac52b87937cb2b2327ed486e1972c88e20a1d4eb, not this subsequently reconciled evidence file. Architect prefreeze disposition and final combined-vector rebind are recorded separately. C2 must still obtain its own complete CI/native/all-five gates before ordered final roles; historical results do not certify a later head. Historical A/B failures, local resource/memory HOLD, VERIFY-only old orphan, publication failed assertion and independent reconciliation remain unchanged. Original overallAcceptance:false is preserved.",
+    "currentEvidenceInterpretation": "B2 complete baseline/full Docker/native/all-five remains dated accepted evidence. Subsequent C baseline passed but native found a genuine FR-004 classification P2; its Docker observation is dated pending, not complete acceptance. IF030 corrects independently governed review-scope metadata and exact review journal digests without changing pixels/status/fallback/inference/policy/tool/derivative identities. Focused12/12 passed. Independent semantic changed-vector Review completed with no actionable P0\u2013P3: proof de23be083c63d42728d009a15356a66ffec10f903cbe8b55d40ae8258d409c8a binds prior packet0cb1a4fcc3ebfca210c87e57ac52b87937cb2b2327ed486e1972c88e20a1d4eb, not this subsequently reconciled evidence file. Architect prefreeze disposition and final combined-vector rebind are recorded separately. C2 must still obtain its own complete CI/native/all-five gates before ordered final roles; historical results do not certify a later head. Historical A/B failures, local resource/memory HOLD, VERIFY-only old orphan, publication failed assertion and independent reconciliation remain unchanged. Original overallAcceptance:false is preserved.",
     "remaining": "IF030 semantic implementation/focused12 and independent semantic changed-vector Review are complete; final prefreeze Architect reconciliation and combined-vector binding precede C2 publication. C2 own complete current Linux baseline/Docker/native/all-five checks remain required before final Architect FIRST then Analyst on identical frozen C2. Append-only D retains its own current gates/evidence-only guard/expected-head finalizer before merge. No final-role or merge acceptance is claimed."
   },
   "actualCiC2": {
@@ -2201,5 +2201,106 @@
       "limitation": "Prospective aggregate RAM budget; no measured RSS/owned peak or attribution of foreign filesystem change."
     },
     "reviewAndCurrentHeadGates": "Recorded separately; no later-head CI/native/feature acceptance inferred."
+  },
+  "historicalPreIF033Status": {
+    "checkedAt": "2026-10-15T01:11:36.603325+00:00",
+    "status": "IF031_IF032_FOCUSED_CORRECTIONS_PASS_CURRENT_HEAD_GATES_RECORDED_SEPARATELY",
+    "remaining": "IF031/IF032 focused runtime results are complete; independent changed-vector Review and Architect prefreeze semantic disposition precede a substantive C3 publication. C3 must obtain its own complete current baseline/Docker/native/all-five checks before ordered Architect FIRST then Analyst on identical frozen head. Append-only D retains its own current gates/evidence-only guard/expected-head finalizer before merge. No current C3, final-role or merge acceptance is claimed.",
+    "currentEvidenceInterpretation": "B2 complete baseline/full Docker/native/all-five remains dated accepted evidence. C2 baseline passed, but its source-matched native review found genuine JPEG install-authority and scheduler-sensitive test P2 issues; that head does not satisfy terminal gates. IF031 narrows service-worker install admission to all authenticated current class-c JPEG widths and excludes the entire generic class-c tree, preserving retained cache-local maps. IF032 changes only test synchronization/controlled time, with production observer bytes unchanged. Targeted service-worker suites15/15 passed; the full34-case Python module passed through its existing Node wrapper after a separately admitted exact unsandboxed correction. The first sandbox run failed with explicit ps EPERM and is retained without a clean-PASS relabel. Changed-vector Review, Architect semantic disposition, new source publication, current Linux CI/native/all-five and final roles are separate recorded gates. All historical A/B/C failures, local HOLD, VERIFY-only recovery and publication reconciliation evidence remain unchanged. Original overallAcceptance:false is preserved."
+  },
+  "actualCiC3": {
+    "sourceHead": "0eedab731b55ce17d39bfce9bdc3de2c0e4c037e",
+    "ciRunId": 38664846057,
+    "baselineJobId": 116194293472,
+    "nativeRunId": 38664846183,
+    "nativeJobId": 116194293780,
+    "statusAt": "2026-10-15T02:07:35Z",
+    "baseline": "SUCCESS",
+    "native": "FAILURE",
+    "docker": "IN_PROGRESS",
+    "statusProof": {
+      "path": "/private/tmp/cabadrive-057-C3-ci-intake/status-20261015T020735Z.json",
+      "bytes": 7823,
+      "sha256": "01924045bd596ca29989a8bb5fb9e9bfb18019d3c6cc706d7c32497672bc262f"
+    },
+    "nativeFindingMetadata": {
+      "path": "/private/tmp/cabadrive-057-C3-ci-intake/native-failure-metadata.json",
+      "bytes": 16482,
+      "sha256": "85e11f7bda89b24d6b92eb6a889f26401b51cad99eb07dc5f6324ba39f5058f0"
+    },
+    "findingComment": "https://github.com/cucumberfalse/cabadrive/pull/219#issuecomment-6182255951",
+    "limitation": "Dated job metadata only; baseline terminal log and Docker terminal proof not downloaded by this update. No later completion inferred."
+  },
+  "if033": {
+    "checkedAt": "2026-10-15T02:14:47.224151+00:00",
+    "sourceParent": "0eedab731b55ce17d39bfce9bdc3de2c0e4c037e",
+    "files": [
+      {
+        "path": "tests/ci-docker-resources-cases.py",
+        "bytes": 60282,
+        "sha256": "3e22e5b3f4ea12e8071f636b6dd2189c484ad65f2cc44a0d0b55519f7e4b8489"
+      }
+    ],
+    "productionObserverSha256": "8ed008a60dbe1019cb50d87544947370d4e7091be8cee47612233b7f44f9bb55",
+    "scope": "Only ignored-interrupt/open-pipe and adjacent closed-pipe residual test fixtures, shared bounded cooperative lifetime helper and one combined real lifetime/isolation/missing-ACK regression. Early launcher exit and residual group/pipe/marker/down assertions remain real. No production observer/SW/corpus policy change or pixel/metric regeneration.",
+    "focused": {
+      "receipt": {
+        "path": "/private/tmp/cabadrive-057-if033-implementation/focused-result.json",
+        "bytes": 1456,
+        "sha256": "818e7c996dcbdc32acc19b687796df0be3d601e28e5b401d4cfb586d1b83f690"
+      },
+      "log": {
+        "path": "/private/tmp/cabadrive-057-if033-implementation/python-wrapper.log",
+        "bytes": 339,
+        "sha256": "ece01099e8600a9305e391da11f9bd382a4956ea01f9914dc625ce0870080de3"
+      },
+      "admission": {
+        "path": "/private/tmp/cabadrive-057-if033-implementation/admission-1.json",
+        "bytes": 2202,
+        "sha256": "493e76e278a4697d434fdde8263a3089a7f8ed986cca938101a1c34fce212b62"
+      },
+      "plan": {
+        "path": "/private/tmp/cabadrive-057-if033-implementation/focused-plan.json",
+        "bytes": 3620,
+        "sha256": "ff3f111b6caf31fcf71585b0a46b3b346b3e4052e5b54edac3fa722e6e98cd6c"
+      },
+      "exit": 0,
+      "wrapperTestsPassed": 1,
+      "wholePythonModuleAstCaseCount": 35,
+      "individualPythonSuccessLinesPrinted": false,
+      "startedAt": "2026-10-15T02:13:19.702414+00:00",
+      "completedAt": "2026-10-15T02:13:37.408288+00:00",
+      "allDirectChildrenWaitedEofGroupAbsent": true,
+      "newFixtureClosureAssertions": "Real delayed post-launcher ACK then terminal identity; missing ACK fails and preserves controls until independent child exit, early result failure and per-iteration unlaunched-state isolation; sinks close in nested finally.",
+      "resourceBounds": {
+        "ramForecastBytes": 268435456,
+        "incrementAndProofDiskBytes": 33554432,
+        "diskReserveBytes": 2147483648,
+        "admissionNativeFreeBytes": 628834304,
+        "admissionCliFreePlusSpecBytes": 629522432,
+        "admissionHostFreeBytes": 6797688832,
+        "minimumObservedHostFreeBytes": 6793273344,
+        "proofAllocatedBytes": 32768,
+        "memoryPeakBytes": null,
+        "limitation": "Prospective combined budget, not measured RSS/owned peak; no attribution of foreign free-space changes."
+      }
+    },
+    "priorExactOwnedCleanup": {
+      "receipt": {
+        "path": "/private/tmp/cabadrive-057-if033-cleanup-plan-usoaz1hg/cleanup-result.json",
+        "bytes": 4780,
+        "sha256": "c9318e17724d38c23238e539b6fd5ee94c17396b1bbec89da38e2bb7f8c330f8"
+      },
+      "exactPids": [
+        74150,
+        74282
+      ],
+      "eachSingleSignal": "SIGTERM",
+      "eachTerminalObservation": "absent",
+      "otherOlderAmbiguousProcessesPreserved": 12,
+      "filesystemCleanup": false,
+      "limitation": "Separate Root-authorized exact-two cleanup only; no all-leaks-removed or historical wrapper-fixture-closure claim."
+    },
+    "semanticReviewAndFutureHeadGates": "Recorded separately; no current C4 or final-role acceptance inferred."
   }
 }

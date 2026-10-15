@@ -9,6 +9,8 @@ import time
 import unittest
 import json
 import copy
+import shutil
+import subprocess
 from unittest.mock import patch
 
 spec = importlib.util.spec_from_file_location('resources', 'scripts/ci-docker-resources.py')
@@ -20,6 +22,78 @@ def row():
     return {'at': m.utc(), 'wall': time.time(), 'monotonic': time.monotonic(),
             'host': {'freeBytes': 64 * m.GIB}, 'backing': {'freeBytes': 64 * m.GIB},
             'memory': {'MemAvailable': 2 * m.GIB}, 'swapUsedBytes': 123}
+
+
+class ResidualFixture:
+    """Only the two deliberately residual fixtures use this cooperative lifetime."""
+    def __init__(self):
+        self.root = pathlib.Path(tempfile.mkdtemp(prefix='cabadrive-ci-residual-')).resolve()
+        self.token = os.urandom(16).hex()
+        self.launched = False
+        self.identity = None
+        self.terminal = False
+        self.ack_while_live = False
+
+    def payload(self, closed_pipes=False, acknowledge=True, lifetime=10):
+        return """import os,signal,time,pathlib,json
+root=pathlib.Path(%r);token=%r;deadline=time.monotonic()+%r
+signal.signal(signal.SIGINT,signal.SIG_IGN)
+if %r:os.close(1);os.close(2)
+identity={'pid':os.getpid(),'group':os.getpgrp(),'root':str(root),'token':token}
+def publish(name,value):
+ (root/(name+'.tmp')).write_text(json.dumps(value));os.replace(root/(name+'.tmp'),root/name)
+publish('ready',identity)
+while not (root/'release').exists() and time.monotonic()<deadline:time.sleep(.01)
+if (root/'release').exists() and %r:
+ publish('done',dict(identity,rootPresent=root.is_dir()))
+ while not (root/'exit-release').exists() and time.monotonic()<deadline:time.sleep(.01)
+""" % (str(self.root), self.token, lifetime, closed_pipes, acknowledge)
+
+    def bind(self, group=None, timeout=3):
+        until = time.monotonic() + timeout
+        while not (self.root/'ready').exists() and time.monotonic() < until: time.sleep(.01)
+        value = json.loads((self.root/'ready').read_text())
+        if set(value) != {'pid','group','root','token'} or value['root'] != str(self.root) or value['token'] != self.token:
+            raise AssertionError('unbound fixture ready identity: ' + str(self.root))
+        if type(value['pid']) is not int or type(value['group']) is not int or min(value['pid'],value['group']) <= 0 or value['group'] == os.getpgrp() or (group is not None and value['group'] != group):
+            raise AssertionError('foreign fixture process identity: ' + str(self.root))
+        members = m.group_members(value['group'])
+        actual = next((x for x in members if x['pid'] == value['pid']), None)
+        if actual is None or actual['state'].startswith('Z'):
+            raise AssertionError('fixture must be live when ownership is bound: ' + str(self.root))
+        self.identity = actual
+        return value
+
+    def live(self):
+        if self.identity is None: raise AssertionError('fixture PID identity unavailable')
+        current = next((x for x in m.group_members(self.identity['group']) if x['pid'] == self.identity['pid']), None)
+        key = 'startTicks' if 'startTicks' in self.identity else 'start'
+        return current is not None and current[key] == self.identity[key] and not current['state'].startswith('Z')
+
+    def finish(self, timeout=3):
+        if not self.launched:
+            shutil.rmtree(self.root)
+            return
+        if self.identity is None: self.bind(timeout=timeout)
+        (self.root/'release').write_text(self.token)
+        until = time.monotonic() + timeout
+        try:
+            while not (self.root/'done').exists() and time.monotonic() < until: time.sleep(.01)
+            if not (self.root/'done').exists():
+                raise AssertionError('fixture completion ACK missing; controls preserved: ' + str(self.root))
+            ack = json.loads((self.root/'done').read_text())
+            if ack != dict(pid=self.identity['pid'],group=self.identity['group'],root=str(self.root),token=self.token,rootPresent=True):
+                raise AssertionError('fixture completion ACK identity mismatch: ' + str(self.root))
+            self.ack_while_live = self.live()
+        finally:
+            # Even an invalid/missing ACK must not strand an exact owned payload.
+            (self.root/'exit-release').write_text(self.token)
+        while self.live() and time.monotonic() < until: time.sleep(.01)
+        self.terminal = not self.live()
+        if not self.terminal: raise AssertionError('fixture still live; controls preserved: ' + str(self.root))
+        try: os.waitpid(self.identity['pid'], os.WNOHANG)
+        except ChildProcessError: pass  # Non-child descendants are terminal-observed, not waitpid-reaped.
+        shutil.rmtree(self.root)
 
 
 class Cases(unittest.TestCase):
@@ -88,33 +162,34 @@ finally:
 
     def test_ignored_interrupt_open_pipe_marker_refusal_and_down_are_bounded_holds(self):
         for descendant,refused,down in [(False,False,False),(True,False,False),(False,True,False),(False,False,True)]:
-            with tempfile.TemporaryDirectory(prefix='cabadrive-ci-residual-') as directory:
-                root=pathlib.Path(directory);release=root/'release';ready=root/'ready'
-                payload="import os,signal,time,pathlib;signal.signal(signal.SIGINT,signal.SIG_IGN);pathlib.Path('ready').write_text(str(os.getpid()));\nwhile not pathlib.Path('release').exists():time.sleep(.01)"
-                command=[sys.executable,'-c',payload]
-                if descendant:
-                    command=[sys.executable,'-c',"import subprocess,sys;subprocess.Popen([sys.executable,'-c',"+repr(payload)+"])"]
-                log=m.BoundedFile(root/'log',65536);series=m.BoundedFile(root/'samples',65536)
-                def sample():
-                    until=time.monotonic()+3
-                    while not ready.exists() and time.monotonic()<until:time.sleep(.01)
-                    return row()
-                def check(_):
-                    if not descendant:raise ValueError('controlled reserve failure')
-                try:
-                    with contextlib.redirect_stdout(io.TextIOWrapper(io.BytesIO())), (patch.object(m.os,'replace',side_effect=PermissionError('injected marker refusal')) if refused else contextlib.nullcontext()):
-                        result=m.run_owned(command,root,log,series,sample,(lambda _:None) if down else check,{},stop_grace=.15,can_interrupt=not down,total_seconds=.2 if down else None)
-                    self.assertTrue(result['boundedClosureDeadlineExceeded'])
-                    self.assertFalse(result['allPipesDrainedAndChildWaited'])
-                    self.assertTrue(result['pipesOpen'])
-                    self.assertEqual(result['childStillAlive'],not descendant)
-                    self.assertEqual(result['ownSigintSent'],not (descendant or refused or down))
-                finally:
-                    release.write_text('release exact test-owned child without another signal')
-                    if 'result' in locals():
-                        try:os.waitpid(result['pid'],0)
-                        except ChildProcessError:pass
-                    log.file.close();series.file.close()
+            fixture=ResidualFixture();root=fixture.root;ready=root/'ready';result=None
+            command=[sys.executable,'-c',fixture.payload()]
+            if descendant:
+                command=[sys.executable,'-c',"import subprocess,sys;subprocess.Popen([sys.executable,'-c',"+repr(fixture.payload())+"])"]
+            log=m.BoundedFile(root/'log',65536);series=m.BoundedFile(root/'samples',65536)
+            def sample():
+                until=time.monotonic()+3
+                while not ready.exists() and time.monotonic()<until:time.sleep(.01)
+                return row()
+            def check(_):
+                if not descendant:raise ValueError('controlled reserve failure')
+            try:
+                fixture.launched=True
+                with contextlib.redirect_stdout(io.TextIOWrapper(io.BytesIO())), (patch.object(m.os,'replace',side_effect=PermissionError('injected marker refusal')) if refused else contextlib.nullcontext()):
+                    result=m.run_owned(command,root,log,series,sample,(lambda _:None) if down else check,{},stop_grace=.15,can_interrupt=not down,total_seconds=.2 if down else None)
+                fixture.bind(result['group'])
+                self.assertTrue(result['boundedClosureDeadlineExceeded'])
+                self.assertFalse(result['allPipesDrainedAndChildWaited'])
+                self.assertTrue(result['pipesOpen'])
+                self.assertEqual(result['childStillAlive'],not descendant)
+                self.assertEqual(result['ownSigintSent'],not (descendant or refused or down))
+                if descendant:self.assertNotEqual(fixture.identity['pid'],result['pid'])
+            finally:
+                try:fixture.finish()
+                finally:log.file.close();series.file.close()
+            self.assertTrue(fixture.terminal)
+            self.assertTrue(fixture.ack_while_live)
+            self.assertFalse(root.exists())
 
     def test_cap_and_short_write(self):
         with tempfile.TemporaryDirectory() as directory:
@@ -217,26 +292,75 @@ finally:
 
     def test_closed_pipe_descendant_is_not_group_closure(self):
         import json
-        with tempfile.TemporaryDirectory(prefix='cabadrive-ci-group-') as directory:
-            root=pathlib.Path(directory); release=root/'release'; done=root/'done'; foreign=root/'foreign'
-            foreign.write_text('unchanged')
-            payload="import os,time,pathlib;os.close(1);os.close(2);pathlib.Path('ready').write_text(str(os.getpid()));\nwhile not pathlib.Path('release').exists():time.sleep(.01)\npathlib.Path('done').write_text('done')"
-            code="import subprocess,sys,pathlib,time;subprocess.Popen([sys.executable,'-c',"+repr(payload)+"]);\nwhile not pathlib.Path('ready').exists():time.sleep(.01)"
-            log=m.BoundedFile(root/'log',65536);series=m.BoundedFile(root/'samples',65536)
-            try:
-                with contextlib.redirect_stdout(io.TextIOWrapper(io.BytesIO())):
-                    result=m.run_owned([sys.executable,'-c',code],root,log,series,row,lambda _:None,{})
-                self.assertTrue(result['allPipesDrainedAndChildWaited'])
-                self.assertFalse(result['allOwnedClosureProven'])
-                self.assertTrue(result['groupPresent']);self.assertTrue(result['groupClosureKnown'])
-                self.assertIn(int((root/'ready').read_text()),[x['pid'] for x in result['residualGroupMembers']])
-                self.assertFalse(result['ownSigintSent']);self.assertTrue(result['errors'])
-                self.assertEqual(foreign.read_text(),'unchanged')
-            finally:
-                release.write_text('release exact owned fixture')
-                until=time.monotonic()+3
-                while not done.exists() and time.monotonic()<until:time.sleep(.01)
-                self.assertTrue(done.exists());log.file.close();series.file.close()
+        fixture=ResidualFixture();root=fixture.root;foreign=root/'foreign';foreign.write_text('unchanged');result=None
+        payload=fixture.payload(closed_pipes=True)
+        code="import subprocess,sys,pathlib,time;subprocess.Popen([sys.executable,'-c',"+repr(payload)+"]);deadline=time.monotonic()+3;\nwhile not pathlib.Path("+repr(str(root/'ready'))+").exists() and time.monotonic()<deadline:time.sleep(.01)"
+        log=m.BoundedFile(root/'log',65536);series=m.BoundedFile(root/'samples',65536)
+        try:
+            fixture.launched=True
+            with contextlib.redirect_stdout(io.TextIOWrapper(io.BytesIO())):
+                result=m.run_owned([sys.executable,'-c',code],root,log,series,row,lambda _:None,{})
+            fixture.bind(result['group'])
+            self.assertTrue(result['allPipesDrainedAndChildWaited'])
+            self.assertFalse(result['allOwnedClosureProven'])
+            self.assertTrue(result['groupPresent']);self.assertTrue(result['groupClosureKnown'])
+            self.assertIn(fixture.identity['pid'],[x['pid'] for x in result['residualGroupMembers']])
+            self.assertNotEqual(fixture.identity['pid'],result['pid'])
+            self.assertFalse(result['ownSigintSent']);self.assertTrue(result['errors'])
+            self.assertEqual(foreign.read_text(),'unchanged')
+        finally:
+            try:fixture.finish()
+            finally:log.file.close();series.file.close()
+        self.assertTrue(fixture.terminal)
+        self.assertTrue(fixture.ack_while_live)
+        self.assertFalse(root.exists())
+
+    def test_residual_fixture_early_failure_isolation_and_missing_ack_preserve_controls(self):
+        first=ResidualFixture();second=ResidualFixture()
+        try:
+            self.assertIsNone(second.identity)
+            self.assertFalse(second.launched)
+            with self.assertRaisesRegex(RuntimeError,'before launch'):
+                try:raise RuntimeError('before launch/result/ready assignment')
+                finally:second.finish()
+            self.assertFalse(second.root.exists())
+            self.assertTrue(first.root.exists())
+            self.assertIsNone(first.identity)
+        finally:first.finish()
+        early=ResidualFixture();process=None
+        log=m.BoundedFile(early.root/'log',65536);series=m.BoundedFile(early.root/'samples',65536)
+        try:
+            with self.assertRaisesRegex(RuntimeError,'before result'):
+                try:
+                    process=subprocess.Popen([sys.executable,'-c',early.payload()],cwd=early.root,start_new_session=True)
+                    early.launched=True
+                    raise RuntimeError('before result/ready assignment')
+                finally:
+                    try:early.finish()
+                    finally:log.file.close();series.file.close()
+            self.assertTrue(early.terminal)
+            self.assertTrue(early.ack_while_live)
+            self.assertTrue(log.file.closed and series.file.closed)
+            self.assertFalse(early.root.exists())
+        finally:
+            if process is not None:process.wait(timeout=3)
+        fixture=ResidualFixture();process=None
+        try:
+            process=subprocess.Popen([sys.executable,'-c',fixture.payload(acknowledge=False,lifetime=1)],cwd=fixture.root,start_new_session=True)
+            fixture.launched=True;fixture.bind(process.pid)
+            with self.assertRaisesRegex(AssertionError,'ACK missing'):
+                fixture.finish(timeout=.1)
+            self.assertTrue(fixture.root.exists())
+            # The failed cleanup is not reclassified as success. Independently wait for
+            # this direct fixture child, then remove controls only after actual exit.
+            self.assertEqual(process.wait(timeout=3),0)
+            self.assertFalse(fixture.live())
+        finally:
+            if process is not None and process.poll() is None:
+                (fixture.root/'release').write_text(fixture.token)
+                (fixture.root/'exit-release').write_text(fixture.token)
+                process.wait(timeout=3)
+            if process is not None and process.poll() is not None:shutil.rmtree(fixture.root)
 
     def test_selector_failures_return_structured_hold_and_drain_large_finally(self):
         real=m.selectors.DefaultSelector
