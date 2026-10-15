@@ -285,35 +285,72 @@ finally:
                     self.assertEqual(foreign.read_text(),'unchanged')
                 finally:log.file.close();series.file.close()
 
-    def test_observed_slow_history_inspect_and_wait_and_reserve_refusal(self):
-        import json
+    def test_observed_history_and_inspect_have_intermediate_samples(self):
         with tempfile.TemporaryDirectory(prefix='cabadrive-query-observer-') as directory:
             root=pathlib.Path(directory);log=m.BoundedFile(root/'log',65536);series=m.BoundedFile(root/'samples',65536)
-            result={};calls=[]
-            def sample():calls.append(time.monotonic());return row()
+            result={};active=None;periodic=[];queries=[]
+            def sample():
+                if active is not None and (root/(active+'.ready')).exists():
+                    periodic.append(active)
+                    if periodic.count(active)>=2:(root/(active+'.release')).touch()
+                return row()
             observer=m.Observation(root,log,series,sample,lambda value:m.validate(value,0,123,m.GIB),result)
             try:
-                # Real owned query subprocesses stand in for read-only Docker CLI.
-                def delayed(value):return observer.query([sys.executable,'-c','import time;time.sleep(1.1);print('+repr(json.dumps(value))+')'])
+                def observed_query(name,value):
+                    nonlocal active
+                    active=name;queries.append(name)
+                    # The real owned process cannot finish until two observations
+                    # occur while it is active, rather than just before/after it.
+                    code="import pathlib,time,json; p=pathlib.Path("+repr(name)+"); pathlib.Path(str(p)+'.ready').touch(); end=time.monotonic()+20; " + "\nwhile not pathlib.Path(str(p)+'.release').exists():\n if time.monotonic()>end:raise RuntimeError('periodic observations missing')\n time.sleep(.01)\nprint("+repr(json.dumps(value))+")"
+                    try:return json.loads(observer.query([sys.executable,'-c',code],timeout=25))
+                    finally:active=None
                 history_calls=0
                 def history():
                     nonlocal history_calls
                     history_calls+=1
-                    return json.loads(delayed([{'ref':'default/default/current','status':'running' if history_calls==1 else 'completed'}]))
+                    return observed_query('history'+str(history_calls),[{'ref':'default/default/current','status':'running' if history_calls==1 else 'completed'}])
                 detail={'Ref':'current','Context':str(root),'Dockerfile':'Dockerfile','StartedAt':'2026-10-14T08:00:01+00:00','CompletedAt':'2026-10-14T08:01:00+00:00','Status':'completed'}
-                outcome=m.terminal_tasks([], '2026-10-14T08:00:00+00:00',root,'retention',True,history,lambda _:json.loads(delayed(detail)),sleep=lambda _:observer.wait(.3))
+                waits=[]
+                def controlled_wait(_):
+                    import types
+                    clock=[0.0];before=len(waits)
+                    def wait_sample():waits.append(round(clock[0],3));return row()
+                    def advance(seconds):clock[0]+=seconds
+                    with patch.object(m,'time',types.SimpleNamespace(monotonic=lambda:clock[0],sleep=advance)):
+                        waiting=m.Observation(root,log,series,wait_sample,lambda _:None,{})
+                        waiting.wait(.6)
+                    self.assertEqual(waits[before:],[0.0,.2,.4,.6])
+                outcome=m.terminal_tasks([], '2026-10-14T08:00:00+00:00',root,'retention',True,history,lambda _:observed_query('inspect'+str(history_calls),detail),sleep=controlled_wait)
                 self.assertEqual(outcome['observedCurrentRefs'],['default/default/current'])
-                self.assertGreaterEqual(len(calls),8)
-                self.assertLessEqual(max(b-a for a,b in zip(calls,calls[1:])),1.3)
-                started=time.monotonic()
-                def low_sample():
-                    value=row()
-                    if time.monotonic()-started>0.3:value['host']['freeBytes']=m.RESERVE-1
-                    return value
-                observer.sample=low_sample
-                with self.assertRaises(ValueError):delayed('must not admit another allocator')
-                self.assertTrue(result['failedQueryOutcomes'][-1]['ownSigintSent'])
-                self.assertTrue(result['failedQueryOutcomes'][-1]['allOwnedClosureProven'])
+                self.assertEqual(queries,['history1','history2','inspect2'])
+                for name in queries:self.assertGreaterEqual(periodic.count(name),2)
+                self.assertTrue(waits)
+            finally:log.file.close();series.file.close()
+
+    def test_observed_query_reserve_refusal_stops_real_owned_child(self):
+        with tempfile.TemporaryDirectory(prefix='cabadrive-query-reserve-') as directory:
+            root=pathlib.Path(directory);log=m.BoundedFile(root/'log',65536);series=m.BoundedFile(root/'samples',65536)
+            result={};ready=root/'ready';foreign=root/'foreign';foreign.write_text('unchanged')
+            def sample():
+                value=row()
+                if ready.exists():value['host']['freeBytes']=m.RESERVE-1
+                return value
+            observer=m.Observation(root,log,series,sample,lambda value:m.validate(value,0,123,m.GIB),result)
+            code="""import signal,pathlib,time,os
+def stop(*_):raise KeyboardInterrupt()
+signal.signal(signal.SIGINT,stop)
+try:
+ pathlib.Path('ready').touch()
+ while True:time.sleep(.01)
+finally:
+ assert (pathlib.Path(os.environ['CABADRIVE_CI_STOP_DIR'])/'stop.json').is_file()
+ pathlib.Path('finally').write_text('done')
+"""
+            try:
+                with self.assertRaises(ValueError):observer.query([sys.executable,'-c',code])
+                outcome=result['failedQueryOutcomes'][-1]
+                self.assertTrue(outcome['ownSigintSent']);self.assertTrue(outcome['allOwnedClosureProven'])
+                self.assertEqual((root/'finally').read_text(),'done');self.assertEqual(foreign.read_text(),'unchanged')
             finally:log.file.close();series.file.close()
 
     def test_fresh_admission_after_history_prevents_allocator_and_detects_gap(self):
@@ -613,6 +650,25 @@ class SeriesCases(unittest.TestCase):
                     with self.assertRaises(ValueError):series.append_sample(self.sample())
                     with self.assertRaises(ValueError):list(m.read_samples(io.BytesIO(pathlib.Path(real.name).read_bytes())))
                 finally:real.close()
+
+    def test_controlled_allowed_1787_gap_and_invalid_clock_rows_remain_recorded(self):
+        with tempfile.TemporaryDirectory() as directory:
+            series=m.SampleSeries(pathlib.Path(directory)/'series');result={};expected=[]
+            try:
+                for offset,invalid in [(0,False),(1.787,False),(7.788,True),(8,False),(7,True),(9,False)]:
+                    value=self.sample();value['wall']=1000+offset;value['monotonic']=100+len(expected)
+                    expected.append(value)
+                    if invalid:
+                        with self.assertRaisesRegex(ValueError,'wall sample gap/jump'):m.observe(lambda:value,lambda _:None,series,result)
+                    else:m.observe(lambda:value,lambda _:None,series,result)
+                with open(series.file.name,'rb') as source:stored=list(m.read_samples(source))
+                self.assertEqual(len(stored),len(expected))
+                for actual,wanted in zip(stored,expected):self.assert_exact(actual,wanted)
+                self.assertTrue(result['seriesObservation']['acceptanceHold'])
+                self.assertFalse(result['seriesObservation']['incomplete'])
+                self.assertEqual(result['seriesObservation']['failed'],2)
+                self.assertTrue(series.summary()['appendable'])
+            finally:series.file.close()
 
     def test_sample_gap_error_and_postappend_check_failure_are_explicit(self):
         with tempfile.TemporaryDirectory() as directory:

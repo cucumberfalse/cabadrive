@@ -15,15 +15,12 @@ export function isManualPageImageAsset(path) {
 }
 
 export function shouldInstallPrecacheAsset(path) {
-  return (
-    path !== "/sw.js" &&
-    !isManualPageImageAsset(path) &&
-    !/^\/content\/img\/c\/.*\.(avif|webp)$/.test(path)
-  );
+  return path !== "/sw.js" && !isManualPageImageAsset(path) && !path.startsWith("/content/img/c/");
 }
 
-export function ticketOfflineMap(manifest, dist) {
+function ticketOfflineInventory(manifest, dist) {
   const map = {};
+  const jpegAssets = [];
   const paths = new Set();
   for (const source of manifest.sources.filter((item) => item.class === "c")) {
     const jpeg = new Map();
@@ -48,6 +45,7 @@ export function ticketOfflineMap(manifest, dist) {
       if (variant.format === "jpeg") {
         if (jpeg.has(variant.width)) throw new Error("Duplicate ticket JPEG width");
         jpeg.set(variant.width, variant);
+        jpegAssets.push(`/${variant.path}`);
       }
     }
     for (const variant of source.variants.filter((item) => item.format !== "jpeg")) {
@@ -57,7 +55,11 @@ export function ticketOfflineMap(manifest, dist) {
       map[`/${variant.path}`] = `/${fallback.path}`;
     }
   }
-  return map;
+  return { map, jpegAssets };
+}
+
+export function ticketOfflineMap(manifest, dist) {
+  return ticketOfflineInventory(manifest, dist).map;
 }
 
 function walk(dir, dist) {
@@ -231,12 +233,13 @@ export function generateServiceWorker({
   timestamp = Date.now(),
   manifest,
 } = {}) {
-  const assets = collectInstallPrecacheAssets(dist);
   manifest ??=
     dist === defaultDist
       ? JSON.parse(readFileSync(join(root, "content/image-derivatives.manifest.json"), "utf8"))
       : { sources: [] };
-  const body = createServiceWorkerBody(assets, timestamp, ticketOfflineMap(manifest, dist));
+  const { map, jpegAssets } = ticketOfflineInventory(manifest, dist);
+  const assets = [...new Set([...collectInstallPrecacheAssets(dist), ...jpegAssets])].sort();
+  const body = createServiceWorkerBody(assets, timestamp, map);
   writeFileSync(join(dist, "sw.js"), body);
   return { assets, body };
 }

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "checkedAt": "2026-10-14T23:55:20.289673+00:00",
-  "status": "IF030_CLASSIFICATION_CORRECTED_FOCUSED_PASS_NEW_HEAD_GATES_RECORDED_SEPARATELY",
+  "checkedAt": "2026-10-15T01:11:36.603325+00:00",
+  "status": "IF031_IF032_FOCUSED_CORRECTIONS_PASS_CURRENT_HEAD_GATES_RECORDED_SEPARATELY",
   "overallAcceptance": false,
   "historicalFocused": {
     "schemaVersion": 1,
@@ -240,7 +240,7 @@
     "attribution": "Unproved. Only aggregate minimum retained; variable collector loop cadence and stage samples do not locate or explain the minimum.",
     "historicalFunctionalProofInvalidated": false
   },
-  "remaining": "IF030 semantic implementation/focused12 and independent semantic changed-vector Review are complete; final prefreeze Architect reconciliation and combined-vector binding precede C2 publication. C2 own complete current Linux baseline/Docker/native/all-five checks remain required before final Architect FIRST then Analyst on identical frozen C2. Append-only D retains its own current gates/evidence-only guard/expected-head finalizer before merge. No final-role or merge acceptance is claimed.",
+  "remaining": "IF031/IF032 focused runtime results are complete; independent changed-vector Review and Architect prefreeze semantic disposition precede a substantive C3 publication. C3 must obtain its own complete current baseline/Docker/native/all-five checks before ordered Architect FIRST then Analyst on identical frozen head. Append-only D retains its own current gates/evidence-only guard/expected-head finalizer before merge. No current C3, final-role or merge acceptance is claimed.",
   "currentWholeHost": {
     "at": "2026-10-14T08:17:16.278805+00:00",
     "status": "CURRENT_WHOLE_HOST_PASS",
@@ -1912,7 +1912,7 @@
       "sha256": "374c110d2111b3a7c5bdf983267a5efbdeb52c1303a1c2bd353fcedb7071a9b8"
     }
   },
-  "currentEvidenceInterpretation": "B2 complete baseline/full Docker/native/all-five remains dated accepted evidence. Subsequent C baseline passed but native found a genuine FR-004 classification P2; its Docker observation is dated pending, not complete acceptance. IF030 corrects independently governed review-scope metadata and exact review journal digests without changing pixels/status/fallback/inference/policy/tool/derivative identities. Focused12/12 passed. Independent semantic changed-vector Review completed with no actionable P0–P3: proof de23be083c63d42728d009a15356a66ffec10f903cbe8b55d40ae8258d409c8a binds prior packet0cb1a4fcc3ebfca210c87e57ac52b87937cb2b2327ed486e1972c88e20a1d4eb, not this subsequently reconciled evidence file. Architect prefreeze disposition and final combined-vector rebind are recorded separately. C2 must still obtain its own complete CI/native/all-five gates before ordered final roles; historical results do not certify a later head. Historical A/B failures, local resource/memory HOLD, VERIFY-only old orphan, publication failed assertion and independent reconciliation remain unchanged. Original overallAcceptance:false is preserved.",
+  "currentEvidenceInterpretation": "B2 complete baseline/full Docker/native/all-five remains dated accepted evidence. C2 baseline passed, but its source-matched native review found genuine JPEG install-authority and scheduler-sensitive test P2 issues; that head does not satisfy terminal gates. IF031 narrows service-worker install admission to all authenticated current class-c JPEG widths and excludes the entire generic class-c tree, preserving retained cache-local maps. IF032 changes only test synchronization/controlled time, with production observer bytes unchanged. Targeted service-worker suites15/15 passed; the full34-case Python module passed through its existing Node wrapper after a separately admitted exact unsandboxed correction. The first sandbox run failed with explicit ps EPERM and is retained without a clean-PASS relabel. Changed-vector Review, Architect semantic disposition, new source publication, current Linux CI/native/all-five and final roles are separate recorded gates. All historical A/B/C failures, local HOLD, VERIFY-only recovery and publication reconciliation evidence remain unchanged. Original overallAcceptance:false is preserved.",
   "historicalB2GateSnapshot": {
     "checkedAt": "2026-10-14T21:26:57.976440+00:00",
     "status": "B2_FULL_DOCKER_CONTRACT_AND_BASELINE_PASS_FINAL_FEATURE_GATES_PENDING",
@@ -2063,5 +2063,143 @@
     "archivedAt": "2026-10-14T23:58:59.278631+00:00",
     "currentEvidenceInterpretation": "B2 complete baseline/full Docker/native/all-five remains dated accepted evidence. Subsequent C baseline passed but native found a genuine FR-004 classification P2; its Docker observation is dated pending, not complete acceptance. IF030 corrects independently governed review-scope metadata and exact review journal digests without changing pixels/status/fallback/inference/policy/tool/derivative identities. Focused12/12 passed; independent changed-vector Review and future C2 own complete gates remain pending. Historical A/B failures, local resource/memory HOLD, VERIFY-only old orphan, publication failed assertion and independent reconciliation remain unchanged. Original overallAcceptance:false is preserved.",
     "remaining": "Complete independent IF030 changed-vector Review and prefreeze issue reconciliation, then publish substantive corrected C2. C2 must receive its own complete current Linux baseline/Docker/native/all-five checks before final Architect FIRST then Analyst on identical frozen C2. Append-only D retains its own current gates/evidence-only guard/expected-head finalizer before merge. No final-role or merge acceptance is claimed."
+  },
+  "historicalPreIF031IF032Status": {
+    "checkedAt": "2026-10-14T23:55:20.289673+00:00",
+    "status": "IF030_CLASSIFICATION_CORRECTED_FOCUSED_PASS_NEW_HEAD_GATES_RECORDED_SEPARATELY",
+    "currentEvidenceInterpretation": "B2 complete baseline/full Docker/native/all-five remains dated accepted evidence. Subsequent C baseline passed but native found a genuine FR-004 classification P2; its Docker observation is dated pending, not complete acceptance. IF030 corrects independently governed review-scope metadata and exact review journal digests without changing pixels/status/fallback/inference/policy/tool/derivative identities. Focused12/12 passed. Independent semantic changed-vector Review completed with no actionable P0–P3: proof de23be083c63d42728d009a15356a66ffec10f903cbe8b55d40ae8258d409c8a binds prior packet0cb1a4fcc3ebfca210c87e57ac52b87937cb2b2327ed486e1972c88e20a1d4eb, not this subsequently reconciled evidence file. Architect prefreeze disposition and final combined-vector rebind are recorded separately. C2 must still obtain its own complete CI/native/all-five gates before ordered final roles; historical results do not certify a later head. Historical A/B failures, local resource/memory HOLD, VERIFY-only old orphan, publication failed assertion and independent reconciliation remain unchanged. Original overallAcceptance:false is preserved.",
+    "remaining": "IF030 semantic implementation/focused12 and independent semantic changed-vector Review are complete; final prefreeze Architect reconciliation and combined-vector binding precede C2 publication. C2 own complete current Linux baseline/Docker/native/all-five checks remain required before final Architect FIRST then Analyst on identical frozen C2. Append-only D retains its own current gates/evidence-only guard/expected-head finalizer before merge. No final-role or merge acceptance is claimed."
+  },
+  "actualCiC2": {
+    "sourceSha": "6d36b7a8fe7676aaf6618b9e300fe9ca17739ad3",
+    "measuredMergeSha": "398293811eb9e220ecbba5f7a1881c8083231e09",
+    "mergeParents": [
+      "3beb624c0c7c615ab7159fdd3227f74f790df29f",
+      "6d36b7a8fe7676aaf6618b9e300fe9ca17739ad3"
+    ],
+    "baseline": {
+      "status": "SUCCESS",
+      "unitPassed": 851,
+      "unitFailed": 0,
+      "browserPassed": 181,
+      "browserSkipped": 5,
+      "qualitySeconds": 16,
+      "wholePrior32CasePythonModuleWrapperPassed": true,
+      "wrapperDurationMs": 9860.950103,
+      "summary": {
+        "path": "/private/tmp/cabadrive-057-C2-ci-intake/baseline-native-summary.json",
+        "bytes": 1595,
+        "sha256": "2f7a2c3f1ab6c6fd6eb89004825aa56cd002834d1f7002b7a51884096fd0d2e3"
+      }
+    },
+    "native": {
+      "status": "FAILURE",
+      "commentId": 6181499017,
+      "commentUrl": "https://github.com/cucumberfalse/cabadrive/pull/219#issuecomment-6181499017",
+      "issues": [
+        "P2 historical class-c JPEGs admitted to current install cache",
+        "P2 scheduler-sensitive 1.3-second test SLA"
+      ],
+      "metadata": {
+        "path": "/private/tmp/cabadrive-057-C2-ci-intake/native-failure-metadata.json",
+        "bytes": 21647,
+        "sha256": "beb9cea4f6976961451dc28e1b4e787d6e8cb46e9beb5d0bdf100bb4659d93cd"
+      }
+    },
+    "docker": {
+      "statusAtLatestSnapshot": "IN_PROGRESS",
+      "completionNotClaimed": true
+    }
+  },
+  "if031If032": {
+    "checkedAt": "2026-10-15T01:11:36.603325+00:00",
+    "sourceParent": "6d36b7a8fe7676aaf6618b9e300fe9ca17739ad3",
+    "files": [
+      {
+        "path": "scripts/generate-service-worker.mjs",
+        "bytes": 9632,
+        "sha256": "cbe93fa0f381d4177d22e866b8533cc3cf63c2d9bf61db0c5fa6cd94c30acb72"
+      },
+      {
+        "path": "tests/ticket-offline.test.mjs",
+        "bytes": 13976,
+        "sha256": "f747434d1d8fe76091e9655352c0781b6ad0230f11ed6f4a161e1287581ab5ed"
+      },
+      {
+        "path": "tests/ci-docker-resources-cases.py",
+        "bytes": 53899,
+        "sha256": "89791762d6b9345475c612f013d50a6d548b4add6791066299641ca07529df5d"
+      }
+    ],
+    "protectedProductionObserverSha256": "8ed008a60dbe1019cb50d87544947370d4e7091be8cee47612233b7f44f9bb55",
+    "pixelClassificationJournalRegeneration": false,
+    "serviceWorkerSuites": {
+      "passed": 15,
+      "failed": 0,
+      "exit": 0,
+      "log": {
+        "path": "/private/tmp/cabadrive-057-if031-if032-implementation/service-worker-focused.log",
+        "bytes": 3310,
+        "sha256": "15e5719a19d38aaf7ac4ea19e4c5dcaeeab150b4cc86a7ff6afbf3e4618ae4c1"
+      }
+    },
+    "sandboxAttempt": {
+      "receipt": {
+        "path": "/private/tmp/cabadrive-057-if031-if032-implementation/focused-result.json",
+        "bytes": 3725,
+        "sha256": "3cf2dc2a01ca8482a228b3053a66acd7928b83fa726e9e138c8259914bd7118a"
+      },
+      "wrapperLog": {
+        "path": "/private/tmp/cabadrive-057-if031-if032-implementation/python-wrapper.log",
+        "bytes": 17091,
+        "sha256": "c4be60099535cda07b5bc2ae6a7bd4eb45495c0356bbdadd2b6a8a9731c44b45"
+      },
+      "wrapperExit": 1,
+      "pythonCases": 34,
+      "passed": 25,
+      "failed": 7,
+      "errors": 2,
+      "observedExecutionLimitation": "ps PermissionError EPERM prevents group-closure evidence and causes dependent query/category assertions to fail; no code-defect inference or allPASS claim."
+    },
+    "unsandboxedExactWrapperCorrection": {
+      "receipt": {
+        "path": "/private/tmp/cabadrive-057-if031-if032-wrapper-unsandboxed/focused-result.json",
+        "bytes": 1803,
+        "sha256": "f82fa34bccbb0a4cb39df06854d71173a492b811f0a0a94ee8086b00cf53615b"
+      },
+      "log": {
+        "path": "/private/tmp/cabadrive-057-if031-if032-wrapper-unsandboxed/python-wrapper.log",
+        "bytes": 339,
+        "sha256": "4ab1dc9025968962b0da66351509ad2c7d7d5ba5cad1275baf6d49271e2f4c4a"
+      },
+      "exit": 0,
+      "wrapperTestsPassed": 1,
+      "wholePythonModuleCaseCount": 34,
+      "countExposure": "Full actual Python module invoked; successful Python details captured by existing wrapper, not separately printed34 PASS.",
+      "executionEnvironmentChange": "Only process-status sandbox restriction removed; same source and thresholds, ordinary child umask022."
+    },
+    "resourceBounds": {
+      "forecastRamBytes": 268435456,
+      "incrementAndProofDiskBytes": 33554432,
+      "diskReserveBytes": 2147483648,
+      "initialAdmission": {
+        "path": "/private/tmp/cabadrive-057-if031-if032-implementation/admission-1.json",
+        "bytes": 2201,
+        "sha256": "d6cc6bcf4c97026d3e67ce142da928fff0d1c608bc8ad57d7acc963baa5915ce"
+      },
+      "correctionAdmission": {
+        "path": "/private/tmp/cabadrive-057-if031-if032-wrapper-unsandboxed/admission-1.json",
+        "bytes": 2199,
+        "sha256": "f50b9a09c79025924fde4e93ba46eac9a6dd14ee42ddb3ebc1b678e88acd4620"
+      },
+      "minimumHostFreeBytesFirst": 6792728576,
+      "minimumHostFreeBytesCorrection": 6790844416,
+      "privateProofAllocatedBytesFirst": 114688,
+      "privateProofAllocatedBytesCorrection": 32768,
+      "allDirectChildrenWaitedEofGroupAbsent": true,
+      "memoryPeakBytes": null,
+      "limitation": "Prospective aggregate RAM budget; no measured RSS/owned peak or attribution of foreign filesystem change."
+    },
+    "reviewAndCurrentHeadGates": "Recorded separately; no later-head CI/native/feature acceptance inferred."
   }
 }
