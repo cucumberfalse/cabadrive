@@ -378,8 +378,10 @@ artifact. Missing or ambiguous proof runs full CI or fails the required job.
 `guard`, `AI Review`, and `osv-scan` remain independent required checks.
 
 The only short-route additions are exact bullet lines under already-existing
-`## Final Analyst Validation Notes` in `feature-request.md` and `### Final
-Validation Evidence` in `tasks.md`, with final punctuation. Allowed Analyst
+`## Final Analyst Validation Notes` in `feature-request.md` and `## Final
+Architect Validation Notes` in `tasks.md`, with final punctuation. The existing
+`### Final Validation Evidence` in `tasks.md` holds other process evidence;
+additions there do not select the short route. Allowed Analyst
 lines are `Analyst validation pass: passed`, `Final Analyst validation completed
 at: <UTC ISO time>`, `Analyst validated effective content head: <40-hex SHA>`,
 and `Analyst return count for this work cycle: <0–5>`. Allowed task lines are

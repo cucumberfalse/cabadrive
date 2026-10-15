@@ -62,9 +62,9 @@
 
 ### Final Validation Evidence
 
-Keep this section free of placeholder key/value lines before freezing the
-effective content head. Append role-owned passing evidence in the strict format
-documented in `docs_project/project/devops/ai-pr-workflow.md`; substantive
+Record other factual final process evidence here. Strict short-route Architect
+bullets belong under the existing `Final Architect Validation Notes` heading
+below, and Analyst bullets belong in `feature-request.md`. Substantive
 dispositions, task changes, and narrative evidence belong before the freeze and
 require full CI if added later. Orchestrator records the read-only current-head
 guard after the evidence commit without manufacturing a self-referential SHA.
@@ -80,3 +80,12 @@ guard after the evidence commit without manufacturing a self-referential SHA.
 ## Architect Dispositions
 
 - `[For each feedback item, record task/ticket created or explicit not-needed decision. Use "None" when there is no Implementation Agent feedback.]`
+
+## Final Architect Validation Notes
+
+Keep this heading in the file before freezing the effective content head. After
+a passing validation, append the exact effective-content SHA, pass, UTC ISO
+completion time, validated effective-content SHA, and return count as new bullet
+lines in the strict format documented in
+`docs_project/project/devops/ai-pr-workflow.md`. Record substantive gaps before
+the freeze; post-freeze changes to them require full CI and renewed validation.

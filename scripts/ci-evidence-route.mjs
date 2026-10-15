@@ -45,7 +45,7 @@ const evidenceSchemas = {
     ],
   },
   "tasks.md": {
-    heading: "### Final Validation Evidence",
+    heading: "## Final Architect Validation Notes",
     lines: [
       /^- Effective content head: ([0-9a-f]{40})\.$/,
       /^- Architect validation pass: passed\.$/,

@@ -10,6 +10,7 @@ import {
   requiredSteps,
   validatePriorRun,
 } from "../scripts/ci-evidence-route.mjs";
+import { evaluatePostEffectiveHeadDiff } from "../scripts/finalize-pr.mjs";
 
 const effectiveSha = "a".repeat(40);
 const headSha = "b".repeat(40);
@@ -22,7 +23,7 @@ const featureLines = [
   "- Analyst return count for this work cycle: 0.",
 ];
 const tasksBefore =
-  "# Tasks\n\n### Final Validation Evidence\n\nPending validation.\n\n### Cleanup Evidence\n\nNone.\n";
+  "# Tasks\n\n### Final Validation Evidence\n\nPending process evidence.\n\n### Cleanup Evidence\n\nNone.\n\n## Final Architect Validation Notes\n\nPending Architect validation.\n";
 const taskLines = [
   `- Effective content head: ${effectiveSha}.`,
   "- Architect validation pass: passed.",
@@ -33,10 +34,7 @@ const taskLines = [
 
 test("only schema-valid additions at the end of existing final sections qualify", () => {
   const featureAfter = featureBefore + featureLines.join("\n") + "\n";
-  const tasksAfter = tasksBefore.replace(
-    "### Cleanup Evidence",
-    taskLines.join("\n") + "\n### Cleanup Evidence",
-  );
+  const tasksAfter = tasksBefore + taskLines.join("\n") + "\n";
   assert.deepEqual(
     evidenceAddition(featureBefore, featureAfter, "feature-request.md", effectiveSha),
     featureLines,
@@ -60,6 +58,50 @@ test("only schema-valid additions at the end of existing final sections qualify"
   assert.equal(
     matchingValidationMarkers(featureAfter.replace("12:01:00Z", "12:00:00Z"), tasksAfter),
     null,
+  );
+});
+
+test("finalizer and CI classifier accept the same append-only role validation schema", () => {
+  const featurePath = "specs/999-ci-fixture";
+  const featureFile = `${featurePath}/feature-request.md`;
+  const tasksFile = `${featurePath}/tasks.md`;
+  const featureAfter = featureBefore + featureLines.join("\n") + "\n";
+  const tasksAfter = tasksBefore + taskLines.join("\n") + "\n";
+  const additionDiff = (path, before, lines) => {
+    const oldCount = before.trimEnd().split("\n").length;
+    return `diff --git a/${path} b/${path}\n--- a/${path}\n+++ b/${path}\n@@ -${oldCount},0 +${oldCount + 1},${lines.length} @@\n${lines.map((line) => `+${line}`).join("\n")}\n`;
+  };
+  const diff =
+    additionDiff(featureFile, featureBefore, featureLines) +
+    additionDiff(tasksFile, tasksBefore, taskLines);
+  const currentFiles = { [featureFile]: featureAfter, [tasksFile]: tasksAfter };
+
+  assert.deepEqual(
+    evidenceAddition(featureBefore, featureAfter, "feature-request.md", effectiveSha),
+    featureLines,
+  );
+  assert.deepEqual(evidenceAddition(tasksBefore, tasksAfter, "tasks.md", effectiveSha), taskLines);
+  assert.equal(matchingValidationMarkers(featureAfter, tasksAfter), effectiveSha);
+  assert.deepEqual(evaluatePostEffectiveHeadDiff(diff, currentFiles, featurePath, effectiveSha), {
+    postEffectiveHeadEvidenceOnly: true,
+    postEffectiveHeadInvalidChanges: [],
+  });
+
+  const oldTasksAfter = tasksBefore.replace(
+    "### Cleanup Evidence",
+    taskLines.join("\n") + "\n### Cleanup Evidence",
+  );
+  assert.equal(evidenceAddition(tasksBefore, oldTasksAfter, "tasks.md", effectiveSha), null);
+  const oldLocation = oldTasksAfter.split("\n").indexOf(taskLines[0]) + 1;
+  const oldDiff = `diff --git a/${tasksFile} b/${tasksFile}\n--- a/${tasksFile}\n+++ b/${tasksFile}\n@@ -${oldLocation - 1},0 +${oldLocation},${taskLines.length} @@\n${taskLines.map((line) => `+${line}`).join("\n")}\n`;
+  assert.equal(
+    evaluatePostEffectiveHeadDiff(
+      oldDiff,
+      { [tasksFile]: oldTasksAfter },
+      featurePath,
+      effectiveSha,
+    ).postEffectiveHeadEvidenceOnly,
+    false,
   );
 });
 
@@ -199,7 +241,7 @@ test("complete straight-line Git history accepts only evidence-only commits", ()
     });
     write(
       root + "tasks.md",
-      tasksBefore.replace("Pending validation.", "Changed substantive task."),
+      tasksBefore.replace("Pending Architect validation.", "Changed substantive task."),
     );
     git("add", ".");
     git("commit", "-qm", "semantic edit");
