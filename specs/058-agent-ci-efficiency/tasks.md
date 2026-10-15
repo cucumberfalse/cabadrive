@@ -36,13 +36,15 @@ T011–T015 are future published-head and final-role duties, not completed imple
 - Local `pnpm run preflight` stopped in `validate:images` because this new worktree has no `.cache/image-qa/install-receipt.json` or native QA binaries. The host had about 3.2 GiB free and no `rustup`; remote Linux CI installs pinned Rust/image QA before the full validation. No local Docker result is claimed.
 - Full local `pnpm run test` encountered unrelated macOS/Linux-resource and screenshot-port fixture failures and a long-running retention fixture; it was interrupted after about three minutes. The targeted classifier suite passed, and the full remote Linux test suite remains required.
 - Review found the initial classifier would allow Architect completion bullets under `Final Validation Evidence`, while the existing finalizer rejected the completion timestamp there. The role-owned heading and cross-check test now require a common accepted schema.
+- A full finalizer process-evidence test then showed its timestamp parser rejects a terminal period after canonical `Z`. The narrow role completion-time schema now ends exactly at `Z`; the finalizer remains unchanged.
 
 ### Decisions
 
 - Full CI is the safe default; short CI requires positive content and prior-run proof.
 - Required jobs run on every PR head; only heavy steps may be omitted on a proven evidence-only head.
 - The classifier executes from the trusted PR base, records a full-run artifact after the expensive baseline steps, and verifies GitHub run/job/step/artifact metadata before selecting a short route. This workflow-changing PR itself takes full CI.
-- Architect bullets are append-only under the existing `Final Architect Validation Notes` heading; `Final Validation Evidence` remains for other factual process evidence and does not select short CI.
+- Architect bullets are append-only under the existing `Final Architect Validation Notes` heading. One structured parent-head guard record under `Final Validation Evidence` and one structured cycle PR result under `Cycle PR Set` can also select short CI only after ordered role validation; other process evidence takes full CI.
+- The guard record binds the checked parent head and effective head to a reproducible SHA-256 of their exact Git diff. The cycle result binds the observed parent head, effective head, PR/ref, and UTC time. Both require completed role markers on the parent; Orchestrator still reruns the current-head guard immediately before merge.
 
 ### Known Issues
 
@@ -54,14 +56,17 @@ T011–T015 are future published-head and final-role duties, not completed imple
 - Ruby YAML parse of `.github/workflows/ci.yml` found both required jobs. `git diff --check`, `node --check` for the new script/test, `pnpm run quality:fast`, `pnpm run format:check`, and `pnpm run verify:quality-negative` passed. `pnpm run build:app` passed and generated the service worker.
 - `pnpm run preflight` and `pnpm run build` reached `validate:images` then stopped on the missing local native QA receipt. Full remote baseline/Docker checks are mandatory acceptance evidence. No local Docker claim.
 - Initial independent review reported no findings at implementation head `eb3a8635524493b715d711451752c5e462c34cd4`; a later review found the finalizer/classifier heading mismatch, fixed in this follow-up. The focused classifier/finalizer/quality suite passed 73 tests; `pnpm run quality:fast`, `pnpm run format:check`, syntax checks, and `git diff --check` passed. Remote CI, AI Review, and final role validation are pending.
+- `node --test tests/ci-evidence-route.test.mjs tests/finalize-pr.test.mjs tests/quality-tooling.test.mjs` passed 74 tests after the process-proof extension. The integration fixture confirms ordered role validation, current process memory, guard evidence, feedback disposition, acceptance evidence, and the finalizer's `E..current` diff guard. `pnpm run quality:fast`, `pnpm run format:check`, and `git diff --check` passed. Full remote CI and AI Review remain acceptance gates.
 
 ### Cycle PR Set
 
-- One slice: ready-for-review PR #220 (`codex/058-agent-ci-efficiency`), published at implementation head `eb3a8635524493b715d711451752c5e462c34cd4`; final-validation inclusion pending.
+- PR #220; branch: codex/058-agent-ci-efficiency; head SHA: ac9b649688c33f65a4c6e09cfbc8239420cb0c62; status: open and ready for review at that published implementation head; final-validation inclusion: planned for this sole PR.
 
 ### Final Validation Evidence
 
-Record other factual final process evidence here. The strict CI short route accepts only Architect and Analyst validation bullets under their role-owned headings; added prose or other process evidence takes full CI.
+Record other factual final process evidence here. The strict CI short route accepts only the structured parent-head guard line here, a structured cycle PR result under `Cycle PR Set`, and Architect/Analyst validation bullets under their role-owned headings; added prose or other process evidence takes full CI.
+
+- Limit escalation: none.
 
 ### Cleanup Evidence
 

@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import { execFileSync } from "node:child_process";
+import { createHash } from "node:crypto";
 import { mkdtempSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { dirname, join } from "node:path";
@@ -10,7 +11,11 @@ import {
   requiredSteps,
   validatePriorRun,
 } from "../scripts/ci-evidence-route.mjs";
-import { evaluatePostEffectiveHeadDiff } from "../scripts/finalize-pr.mjs";
+import {
+  evaluatePostEffectiveHeadDiff,
+  readProcessEvidence,
+  verifyPostEffectiveHeadChanges,
+} from "../scripts/finalize-pr.mjs";
 
 const effectiveSha = "a".repeat(40);
 const headSha = "b".repeat(40);
@@ -18,19 +23,26 @@ const baseSha = "c".repeat(40);
 const featureBefore = "# Request\n\n## Final Analyst Validation Notes\n\nPending validation.\n";
 const featureLines = [
   "- Analyst validation pass: passed.",
-  "- Final Analyst validation completed at: 2026-10-15T12:01:00Z.",
+  "- Final Analyst validation completed at: 2026-10-15T12:01:00Z",
   `- Analyst validated effective content head: ${effectiveSha}.`,
   "- Analyst return count for this work cycle: 0.",
 ];
 const tasksBefore =
-  "# Tasks\n\n### Final Validation Evidence\n\nPending process evidence.\n\n### Cleanup Evidence\n\nNone.\n\n## Final Architect Validation Notes\n\nPending Architect validation.\n";
+  "# Tasks\n\n## Process Memory\n\n### Dead Ends\n\n- None.\n\n### Decisions\n\n- Existing decision.\n\n### Known Issues\n\n- None.\n\n### Verification Evidence\n\n- node --test passed.\n\n### Cycle PR Set\n\n- PR #42; branch: codex/evidence; head SHA: cccccccccccccccccccccccccccccccccccccccc; status: open; final-validation inclusion: planned.\n\n### Final Validation Evidence\n\n- Limit escalation: none.\n\n### Cleanup Evidence\n\n- None.\n\n## Implementation Agent Feedback\n\n- None.\n\n## Final Architect Validation Notes\n\nPending Architect validation.\n";
 const taskLines = [
   `- Effective content head: ${effectiveSha}.`,
   "- Architect validation pass: passed.",
-  "- Final Architect validation completed at: 2026-10-15T12:00:00Z.",
+  "- Final Architect validation completed at: 2026-10-15T12:00:00Z",
   `- Architect validated effective content head: ${effectiveSha}.`,
   "- Architect return count for this work cycle: 0.",
 ];
+const diffDigest = "d".repeat(64);
+const cycleLine = `- PR #42; branch: codex/evidence; observed head SHA: ${headSha}; effective content head: ${effectiveSha}; status: final validation passed; observed at: 2026-10-15T12:02:00Z; final-validation inclusion: included.`;
+const guardLine = `- Current-PR-head read-only guard: checked head ${headSha} against effective content head ${effectiveSha} at 2026-10-15T12:02:00Z; evidence-only changes confirmed; proof: git-diff-sha256:${diffDigest}.`;
+const addCycleAndGuard = (tasks, cycle = cycleLine, guard = guardLine) =>
+  tasks
+    .replace("### Final Validation Evidence", `${cycle}\n### Final Validation Evidence`)
+    .replace("### Cleanup Evidence", `${guard}\n### Cleanup Evidence`);
 
 test("only schema-valid additions at the end of existing final sections qualify", () => {
   const featureAfter = featureBefore + featureLines.join("\n") + "\n";
@@ -47,6 +59,7 @@ test("only schema-valid additions at the end of existing final sections qualify"
     featureBefore + "- Customer intent: reviewed.\n",
     featureBefore + featureLines.join("\n").replace(effectiveSha, headSha) + "\n",
     featureBefore + featureLines.join("\n").replace("12:01:00Z", "99:99:99Z") + "\n",
+    featureBefore + featureLines.join("\n").replace("12:01:00Z", "12:01:00Z.") + "\n",
   ]) {
     assert.equal(evidenceAddition(featureBefore, bad, "feature-request.md", effectiveSha), null);
   }
@@ -103,6 +116,54 @@ test("finalizer and CI classifier accept the same append-only role validation sc
     ).postEffectiveHeadEvidenceOnly,
     false,
   );
+});
+
+test("only a bound cycle result and checked-parent guard may extend final process sections", () => {
+  const tasksWithRoles = tasksBefore + taskLines.join("\n") + "\n";
+  const context = { prNumber: 42, headRef: "codex/evidence", parentSha: headSha, diffDigest };
+  const withProcess = addCycleAndGuard(tasksWithRoles);
+  assert.deepEqual(
+    evidenceAddition(tasksWithRoles, withProcess, "tasks.md", effectiveSha, context),
+    [cycleLine, guardLine],
+  );
+  for (const invalid of [
+    addCycleAndGuard(tasksWithRoles, cycleLine.replace("#42", "#43")),
+    addCycleAndGuard(tasksWithRoles, cycleLine.replace("codex/evidence", "codex/other")),
+    addCycleAndGuard(tasksWithRoles, cycleLine.replace(effectiveSha, baseSha)),
+    addCycleAndGuard(tasksWithRoles, cycleLine.replace(headSha, baseSha)),
+    addCycleAndGuard(tasksWithRoles, cycleLine.replace("12:02:00Z", "99:99:99Z")),
+    addCycleAndGuard(tasksWithRoles, cycleLine.replace("final validation passed", "pending")),
+    addCycleAndGuard(tasksWithRoles, cycleLine, guardLine.replace(headSha, baseSha)),
+    addCycleAndGuard(tasksWithRoles, cycleLine, guardLine.replace(effectiveSha, baseSha)),
+    addCycleAndGuard(tasksWithRoles, cycleLine, guardLine.replace("12:02:00Z", "99:99:99Z")),
+    addCycleAndGuard(tasksWithRoles, cycleLine, guardLine.replace(diffDigest, baseSha)),
+    withProcess.replace("- node --test passed.", "- Changed task semantics."),
+    withProcess.replace("### Cleanup Evidence", "### New process heading\n### Cleanup Evidence"),
+    tasksWithRoles.replace("### Cleanup Evidence", `${cycleLine}\n### Cleanup Evidence`),
+  ]) {
+    assert.equal(
+      evidenceAddition(tasksWithRoles, invalid, "tasks.md", effectiveSha, context),
+      null,
+    );
+  }
+  const path = "specs/999-ci-fixture/tasks.md";
+  const featurePath = "specs/999-ci-fixture";
+  for (const line of [cycleLine, guardLine]) {
+    const current =
+      line === cycleLine
+        ? tasksWithRoles.replace(
+            "### Final Validation Evidence",
+            `${line}\n### Final Validation Evidence`,
+          )
+        : tasksWithRoles.replace("### Cleanup Evidence", `${line}\n### Cleanup Evidence`);
+    const location = current.split("\n").indexOf(line) + 1;
+    const diff = `diff --git a/${path} b/${path}\n--- a/${path}\n+++ b/${path}\n@@ -${location - 1},0 +${location},1 @@\n+${line}\n`;
+    assert.equal(
+      evaluatePostEffectiveHeadDiff(diff, { [path]: current }, featurePath, effectiveSha)
+        .postEffectiveHeadEvidenceOnly,
+      true,
+    );
+  }
 });
 
 test("full-run proof requires the same PR, base, workflow, jobs, and successful heavy steps", () => {
@@ -211,7 +272,7 @@ test("complete straight-line Git history accepts only evidence-only commits", ()
     writeFileSync(absolute, value);
   };
   const inspect = (effective, head) => {
-    const source = `import { changedEvidenceCommits } from ${JSON.stringify(moduleUrl)}; console.log(JSON.stringify(changedEvidenceCommits(process.argv[1], process.argv[2])));`;
+    const source = `import { changedEvidenceCommits } from ${JSON.stringify(moduleUrl)}; console.log(JSON.stringify(changedEvidenceCommits(process.argv[1], process.argv[2], { prNumber: 42, headRef: "codex/evidence" })));`;
     return JSON.parse(
       execFileSync(process.execPath, ["--input-type=module", "-e", source, effective, head], {
         cwd: directory,
@@ -219,6 +280,27 @@ test("complete straight-line Git history accepts only evidence-only commits", ()
       }),
     );
   };
+  const proofDigest = (effective, checked) =>
+    createHash("sha256")
+      .update(
+        execFileSync(
+          "git",
+          [
+            "diff",
+            "--binary",
+            "--no-ext-diff",
+            "--no-textconv",
+            "--no-color",
+            "--no-renames",
+            "--full-index",
+            effective,
+            checked,
+            "--",
+          ],
+          { cwd: directory },
+        ),
+      )
+      .digest("hex");
   try {
     git("init", "-q");
     git("config", "user.name", "CI Test");
@@ -241,7 +323,71 @@ test("complete straight-line Git history accepts only evidence-only commits", ()
     });
     write(
       root + "tasks.md",
-      tasksBefore.replace("Pending Architect validation.", "Changed substantive task."),
+      addCycleAndGuard(
+        tasksBefore,
+        cycleLine.replace(headSha, evidenceHead).replace(effectiveSha, effective),
+        guardLine
+          .replace(headSha, evidenceHead)
+          .replace(effectiveSha, effective)
+          .replace(diffDigest, proofDigest(effective, evidenceHead)),
+      ),
+    );
+    git("add", ".");
+    git("commit", "-qm", "premature process evidence");
+    assert.equal(inspect(effective, git("rev-parse", "HEAD")), null);
+    git("reset", "--hard", evidenceHead);
+    const architectEvidence =
+      tasksBefore + taskLines.join("\n").replaceAll(effectiveSha, effective) + "\n";
+    write(root + "tasks.md", architectEvidence);
+    git("add", ".");
+    git("commit", "-qm", "architect evidence");
+    const rolesHead = git("rev-parse", "HEAD");
+    const processEvidence = addCycleAndGuard(
+      architectEvidence,
+      cycleLine.replace(headSha, rolesHead).replace(effectiveSha, effective),
+      guardLine
+        .replace(headSha, rolesHead)
+        .replace(effectiveSha, effective)
+        .replace(diffDigest, proofDigest(effective, rolesHead)),
+    );
+    write(root + "tasks.md", processEvidence);
+    git("add", ".");
+    git("commit", "-qm", "guard and cycle evidence");
+    const processHead = git("rev-parse", "HEAD");
+    assert.deepEqual(inspect(effective, processHead), {
+      feature: "999-ci-fixture",
+      changedFiles: [root + "feature-request.md", root + "tasks.md"],
+    });
+    const process = readProcessEvidence(directory, "specs/999-ci-fixture", processHead);
+    assert.equal(process.finalArchitectValidation, true);
+    assert.equal(process.finalAnalystValidation, true);
+    assert.equal(process.finalValidationOrder, true);
+    assert.equal(process.acceptanceEvidence, true);
+    assert.equal(process.currentProcessMemory, true);
+    assert.equal(process.feedbackDisposition, true);
+    assert.equal(process.effectiveContentHeadValidation, true);
+    assert.equal(process.currentHeadGuardEvidence, true);
+    assert.equal(process.acceptedKnownIssueDecisionPending, false);
+    assert.equal(
+      verifyPostEffectiveHeadChanges(directory, "specs/999-ci-fixture", effective, processHead)
+        .postEffectiveHeadEvidenceOnly,
+      true,
+    );
+    const repeatedGuard = guardLine
+      .replace(headSha, processHead)
+      .replace(effectiveSha, effective)
+      .replace(diffDigest, proofDigest(effective, processHead));
+    write(
+      root + "tasks.md",
+      processEvidence.replace("### Cleanup Evidence", `${repeatedGuard}\n### Cleanup Evidence`),
+    );
+    git("add", ".");
+    git("commit", "-qm", "duplicate guard evidence");
+    assert.equal(inspect(effective, git("rev-parse", "HEAD")), null);
+    git("reset", "--hard", processHead);
+    write(
+      root + "tasks.md",
+      processEvidence.replace("Pending Architect validation.", "Changed substantive task."),
     );
     git("add", ".");
     git("commit", "-qm", "semantic edit");

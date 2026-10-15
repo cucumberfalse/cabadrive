@@ -64,10 +64,14 @@
 
 Record other factual final process evidence here. Strict short-route Architect
 bullets belong under the existing `Final Architect Validation Notes` heading
-below, and Analyst bullets belong in `feature-request.md`. Substantive
+below, and Analyst bullets belong in `feature-request.md`. After both roles
+pass, a structured guard line may record the already-checked parent head, exact
+effective-content SHA, UTC time, and Git diff SHA-256 proof here; one structured,
+timestamped cycle PR result may be appended under `Cycle PR Set`. Substantive
 dispositions, task changes, and narrative evidence belong before the freeze and
 require full CI if added later. Orchestrator records the read-only current-head
-guard after the evidence commit without manufacturing a self-referential SHA.
+guard after the evidence commit without manufacturing a self-referential SHA,
+then independently reruns it on the final head before merge.
 
 ### Cleanup Evidence
 
@@ -87,5 +91,6 @@ Keep this heading in the file before freezing the effective content head. After
 a passing validation, append the exact effective-content SHA, pass, UTC ISO
 completion time, validated effective-content SHA, and return count as new bullet
 lines in the strict format documented in
-`docs_project/project/devops/ai-pr-workflow.md`. Record substantive gaps before
+`docs_project/project/devops/ai-pr-workflow.md`. The completion-time bullet ends
+at canonical `Z` without a terminal period. Record substantive gaps before
 the freeze; post-freeze changes to them require full CI and renewed validation.

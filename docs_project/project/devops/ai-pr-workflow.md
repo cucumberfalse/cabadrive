@@ -379,17 +379,34 @@ artifact. Missing or ambiguous proof runs full CI or fails the required job.
 
 The only short-route additions are exact bullet lines under already-existing
 `## Final Analyst Validation Notes` in `feature-request.md` and `## Final
-Architect Validation Notes` in `tasks.md`, with final punctuation. The existing
-`### Final Validation Evidence` in `tasks.md` holds other process evidence;
-additions there do not select the short route. Allowed Analyst
+Architect Validation Notes` in `tasks.md`. After both
+roles pass, one fixed-format cycle result under `### Cycle PR Set` and one
+fixed-format checked-parent guard record under `### Final Validation Evidence`
+in `tasks.md` may also use the short route. Other additions in those sections
+do not select it. Allowed Analyst
 lines are `Analyst validation pass: passed`, `Final Analyst validation completed
 at: <UTC ISO time>`, `Analyst validated effective content head: <40-hex SHA>`,
 and `Analyst return count for this work cycle: <0–5>`. Allowed task lines are
 `Effective content head: <same SHA>`, `Architect validation pass: passed`,
 `Final Architect validation completed at: <UTC ISO time>`, `Architect validated
 effective content head: <same SHA>`, and `Architect return count for this work
-cycle: <0–10>`. Each line begins `- ` and ends `.`. All three SHA markers must
-agree; Architect time precedes Analyst time. Added prose, headings, task or
+cycle: <0–10>`. The cycle result is `PR #<number>; branch: <PR head ref>;
+observed head SHA: <checked parent SHA>; effective content head: <effective SHA>;
+status: final validation passed; observed at: <UTC ISO time>;
+final-validation inclusion: included`. The guard record is `Current-PR-head read-only guard:
+checked head <already-checked parent SHA> against effective content head
+<effective SHA> at <UTC ISO time>; evidence-only changes confirmed; proof:
+git-diff-sha256:<64-hex digest>`. Each line begins `- `. The two role completion-time
+bullets end at canonical `Z` with no terminal period so the existing finalizer
+can parse them; all other allowed bullets end `.`. The cycle PR/ref must match
+the current PR; both observed/checked heads must be the respective evidence
+commit's parent, with both role markers already present there. The effective
+SHA is an ancestor of the checked parent. The classifier recomputes the digest
+of `git diff --binary --no-ext-diff --no-textconv --no-color --no-renames
+--full-index <effective SHA> <checked parent SHA> --`. This
+record never substitutes for Orchestrator's external read-only guard on the
+final head immediately before merge. All three SHA markers must agree;
+Architect time precedes Analyst time. Added prose, headings, task or
 requirement changes, replacements, other files, merge commits, a changed base,
 or missing provenance force full CI. The short route prints JSON for the exact
 current head and runs a proof step in each required job. This CI shortcut is

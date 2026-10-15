@@ -35,25 +35,41 @@ export const requiredSteps = {
 };
 
 const evidenceSchemas = {
-  "feature-request.md": {
-    heading: "## Final Analyst Validation Notes",
-    lines: [
-      /^- Analyst validation pass: passed\.$/,
-      /^- Final Analyst validation completed at: (\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d(?:\.\d{1,3})?Z)\.$/,
-      /^- Analyst validated effective content head: ([0-9a-f]{40})\.$/,
-      /^- Analyst return count for this work cycle: ([0-5])\.$/,
-    ],
-  },
-  "tasks.md": {
-    heading: "## Final Architect Validation Notes",
-    lines: [
-      /^- Effective content head: ([0-9a-f]{40})\.$/,
-      /^- Architect validation pass: passed\.$/,
-      /^- Final Architect validation completed at: (\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d(?:\.\d{1,3})?Z)\.$/,
-      /^- Architect validated effective content head: ([0-9a-f]{40})\.$/,
-      /^- Architect return count for this work cycle: (10|[0-9])\.$/,
-    ],
-  },
+  "feature-request.md": [
+    {
+      heading: "## Final Analyst Validation Notes",
+      lines: [
+        /^- Analyst validation pass: passed\.$/,
+        /^- Final Analyst validation completed at: (\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d(?:\.\d{1,3})?Z)$/,
+        /^- Analyst validated effective content head: ([0-9a-f]{40})\.$/,
+        /^- Analyst return count for this work cycle: ([0-5])\.$/,
+      ],
+    },
+  ],
+  "tasks.md": [
+    {
+      heading: "### Cycle PR Set",
+      lines: [
+        /^- PR #(\d+); branch: ([A-Za-z0-9._/-]+); observed head SHA: ([0-9a-f]{40}); effective content head: ([0-9a-f]{40}); status: final validation passed; observed at: (\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d(?:\.\d{1,3})?Z); final-validation inclusion: included\.$/,
+      ],
+    },
+    {
+      heading: "### Final Validation Evidence",
+      lines: [
+        /^- Current-PR-head read-only guard: checked head ([0-9a-f]{40}) against effective content head ([0-9a-f]{40}) at (\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d(?:\.\d{1,3})?Z); evidence-only changes confirmed; proof: git-diff-sha256:([0-9a-f]{64})\.$/,
+      ],
+    },
+    {
+      heading: "## Final Architect Validation Notes",
+      lines: [
+        /^- Effective content head: ([0-9a-f]{40})\.$/,
+        /^- Architect validation pass: passed\.$/,
+        /^- Final Architect validation completed at: (\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d(?:\.\d{1,3})?Z)$/,
+        /^- Architect validated effective content head: ([0-9a-f]{40})\.$/,
+        /^- Architect return count for this work cycle: (10|[0-9])\.$/,
+      ],
+    },
+  ],
 };
 
 function validIso(value) {
@@ -62,12 +78,29 @@ function validIso(value) {
   return canonical === value || canonical.replace(/\.000Z$/, "Z") === value;
 }
 
-export function validEvidenceLine(filename, line, effectiveSha) {
-  const schema = evidenceSchemas[filename];
+export function validEvidenceLine(filename, heading, line, effectiveSha, context = {}) {
+  const schema = evidenceSchemas[filename]?.find((section) => section.heading === heading);
   if (!schema || !line.startsWith("- ")) return false;
   for (const pattern of schema.lines) {
     const match = line.match(pattern);
     if (!match) continue;
+    if (heading === "### Cycle PR Set") {
+      return (
+        match[1] === String(context.prNumber) &&
+        match[2] === context.headRef &&
+        match[3] === context.parentSha &&
+        match[4] === effectiveSha &&
+        validIso(match[5])
+      );
+    }
+    if (heading === "### Final Validation Evidence") {
+      return (
+        match[1] === context.parentSha &&
+        match[2] === effectiveSha &&
+        validIso(match[3]) &&
+        match[4] === context.diffDigest
+      );
+    }
     if (line.includes("completed at:")) return validIso(match[1]);
     if (line.includes("effective content head:")) return match[1] === effectiveSha;
     return true;
@@ -75,23 +108,51 @@ export function validEvidenceLine(filename, line, effectiveSha) {
   return false;
 }
 
-export function evidenceAddition(before, after, filename, effectiveSha) {
-  const schema = evidenceSchemas[filename];
-  if (!schema || !shaPattern.test(effectiveSha)) return null;
-  const headings = [...before.matchAll(/^#{1,6} .+$/gm)];
-  const own = headings.filter((match) => match[0] === schema.heading);
-  if (own.length !== 1) return null;
-  const next = headings.find((match) => match.index > own[0].index);
-  const boundary = next?.index ?? before.length;
-  const prefix = before.slice(0, boundary);
-  const suffix = before.slice(boundary);
-  if (!after.startsWith(prefix) || !after.endsWith(suffix)) return null;
-  const added = after.slice(prefix.length, after.length - suffix.length);
-  if (!added || !added.endsWith("\n") || added.includes("\r")) return null;
-  const lines = added.trimEnd().split("\n");
-  if (lines.length === 0 || lines.length > 8) return null;
-  if (!lines.every((line) => validEvidenceLine(filename, line, effectiveSha))) return null;
-  return lines;
+function markdownChunks(content) {
+  const headings = [...content.matchAll(/^#{1,6} .+$/gm)];
+  return [
+    { heading: null, text: content.slice(0, headings[0]?.index ?? content.length) },
+    ...headings.map((match, index) => ({
+      heading: match[0],
+      text: content.slice(match.index, headings[index + 1]?.index ?? content.length),
+    })),
+  ];
+}
+
+export function evidenceAddition(before, after, filename, effectiveSha, context = {}) {
+  const schemas = evidenceSchemas[filename];
+  if (!schemas || !shaPattern.test(effectiveSha)) return null;
+  const oldChunks = markdownChunks(before);
+  const newChunks = markdownChunks(after);
+  if (oldChunks.length !== newChunks.length) return null;
+  for (const schema of schemas) {
+    if (oldChunks.filter((chunk) => chunk.heading === schema.heading).length !== 1) return null;
+  }
+  const additions = [];
+  for (let index = 0; index < oldChunks.length; index += 1) {
+    const oldChunk = oldChunks[index];
+    const newChunk = newChunks[index];
+    if (oldChunk.heading !== newChunk.heading) return null;
+    const schema = schemas.find((section) => section.heading === oldChunk.heading);
+    if (!schema) {
+      if (oldChunk.text !== newChunk.text) return null;
+      continue;
+    }
+    if (!newChunk.text.startsWith(oldChunk.text)) return null;
+    const added = newChunk.text.slice(oldChunk.text.length);
+    if (!added) continue;
+    if (!added.endsWith("\n") || added.includes("\r")) return null;
+    const lines = added.trimEnd().split("\n");
+    if (lines.length > schema.lines.length || lines.some((line) => !line)) return null;
+    if (
+      !lines.every((line) =>
+        validEvidenceLine(filename, schema.heading, line, effectiveSha, context),
+      )
+    )
+      return null;
+    additions.push(...lines);
+  }
+  return additions.length ? additions : null;
 }
 
 function uniqueMarker(content, label) {
@@ -108,11 +169,9 @@ export function matchingValidationMarkers(featureRequest, tasks) {
   if ([...tasks.matchAll(/^- Architect validation pass: passed\.$/gm)].length !== 1) return null;
   if ([...featureRequest.matchAll(/^- Analyst validation pass: passed\.$/gm)].length !== 1)
     return null;
-  const architectTimes = [
-    ...tasks.matchAll(/^- Final Architect validation completed at: (.+)\.$/gm),
-  ];
+  const architectTimes = [...tasks.matchAll(/^- Final Architect validation completed at: (.+)$/gm)];
   const analystTimes = [
-    ...featureRequest.matchAll(/^- Final Analyst validation completed at: (.+)\.$/gm),
+    ...featureRequest.matchAll(/^- Final Analyst validation completed at: (.+)$/gm),
   ];
   if (architectTimes.length !== 1 || analystTimes.length !== 1) return null;
   const architectTime = architectTimes[0][1];
@@ -188,6 +247,26 @@ function gitFile(sha, path) {
   });
 }
 
+function gitEvidenceDigest(effectiveSha, checkedSha) {
+  const diff = execFileSync(
+    "git",
+    [
+      "diff",
+      "--binary",
+      "--no-ext-diff",
+      "--no-textconv",
+      "--no-color",
+      "--no-renames",
+      "--full-index",
+      effectiveSha,
+      checkedSha,
+      "--",
+    ],
+    { maxBuffer: 4 * 1024 * 1024 },
+  );
+  return createHash("sha256").update(diff).digest("hex");
+}
+
 function safeContext() {
   const event = JSON.parse(readFileSync(process.env.GITHUB_EVENT_PATH, "utf8"));
   const pr = event.pull_request;
@@ -225,13 +304,15 @@ export function controlUnchanged(baseSha, headSha) {
   return git("diff", "--name-only", baseSha, headSha, "--", ...paths) === "";
 }
 
-export function changedEvidenceCommits(effectiveSha, headSha) {
+export function changedEvidenceCommits(effectiveSha, headSha, context = {}) {
   const lineage = git("rev-list", "--reverse", "--parents", `${effectiveSha}..${headSha}`)
     .split("\n")
     .filter(Boolean);
   if (lineage.length < 1 || lineage.length > 20) return null;
   let parent = effectiveSha;
   let feature = null;
+  let guardCount = 0;
+  let cycleCount = 0;
   const changedFiles = new Set();
   for (const row of lineage) {
     const [sha, ...parents] = row.split(" ");
@@ -248,7 +329,27 @@ export function changedEvidenceCommits(effectiveSha, headSha) {
       feature = match[1];
       const before = gitFile(parent, path);
       const after = gitFile(sha, path);
-      if (!evidenceAddition(before, after, match[2] + ".md", effectiveSha)) return null;
+      const additions = evidenceAddition(before, after, match[2] + ".md", effectiveSha, {
+        ...context,
+        parentSha: parent,
+        diffDigest: gitEvidenceDigest(effectiveSha, parent),
+      });
+      if (!additions) return null;
+      guardCount += additions.filter((line) =>
+        line.startsWith("- Current-PR-head read-only guard:"),
+      ).length;
+      cycleCount += additions.filter((line) => /^- PR #\d+; branch:/.test(line)).length;
+      if (guardCount > 1 || cycleCount > 1) return null;
+      if (
+        additions.some((line) =>
+          /^- (?:Current-PR-head read-only guard|PR #\d+; branch:)/.test(line),
+        ) &&
+        matchingValidationMarkers(
+          gitFile(parent, `specs/${feature}/feature-request.md`),
+          gitFile(parent, `specs/${feature}/tasks.md`),
+        ) !== effectiveSha
+      )
+        return null;
       changedFiles.add(path);
     }
     parent = sha;
@@ -359,7 +460,7 @@ async function decide() {
     if (git("merge-base", "--is-ancestor", effectiveSha, context.headSha) !== "")
       return full("effective-head-not-ancestor");
     if (git("rev-parse", "--is-shallow-repository") !== "false") return full("incomplete-history");
-    const changed = changedEvidenceCommits(effectiveSha, context.headSha);
+    const changed = changedEvidenceCommits(effectiveSha, context.headSha, context);
     if (!changed || changed.feature !== feature)
       return full("non-evidence-change-after-effective-head");
     context.effectiveSha = effectiveSha;

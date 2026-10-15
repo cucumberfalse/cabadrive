@@ -78,6 +78,7 @@ Analyst validation after final Architect validation passes.
 
 Keep this section free of placeholder key/value lines before the effective
 content head is frozen. After a passing validation, append the pass, completion
-time, validated effective content SHA, and return count as new lines. Record
+time, validated effective content SHA, and return count as new lines. The
+completion-time bullet ends at canonical `Z` without a terminal period. Record
 gaps and customer-intent analysis before the effective content head is frozen;
 substantive post-freeze changes require full CI and renewed role validation.
