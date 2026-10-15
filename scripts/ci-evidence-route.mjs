@@ -161,6 +161,41 @@ function uniqueMarker(content, label) {
   return values.length === 1 ? values[0] : null;
 }
 
+function uniqueReturnCount(content, role, heading, limit) {
+  const sections = markdownChunks(content).filter((chunk) => chunk.heading === heading);
+  if (sections.length !== 1) return null;
+  const pattern = new RegExp(
+    `^- ${role} return count(?: for this work cycle)?: ([^\\r\\n]+)$`,
+    "gm",
+  );
+  const all = [...content.matchAll(pattern)];
+  const inSection = [...sections[0].text.matchAll(pattern)];
+  if (all.length !== 1 || inSection.length !== 1) return null;
+  const value = inSection[0][1];
+  if (!/^(?:0|[1-9]\d*)\.$/.test(value)) return null;
+  const count = Number(value.slice(0, -1));
+  return Number.isSafeInteger(count) && count <= limit ? count : null;
+}
+
+function architectValidationMarkers(tasks, effectiveSha) {
+  const section = markdownChunks(tasks).filter(
+    (chunk) => chunk.heading === "## Final Architect Validation Notes",
+  );
+  if (section.length !== 1) return false;
+  const content = section[0].text;
+  const architectTime = [
+    ...content.matchAll(/^- Final Architect validation completed at: (.+)$/gm),
+  ];
+  return (
+    uniqueMarker(tasks, "Effective content head") === effectiveSha &&
+    uniqueMarker(tasks, "Architect validated effective content head") === effectiveSha &&
+    [...content.matchAll(/^- Architect validation pass: passed\.$/gm)].length === 1 &&
+    architectTime.length === 1 &&
+    validIso(architectTime[0][1]) &&
+    uniqueReturnCount(tasks, "Architect", "## Final Architect Validation Notes", 10) !== null
+  );
+}
+
 export function matchingValidationMarkers(featureRequest, tasks) {
   const effectiveSha = uniqueMarker(tasks, "Effective content head");
   const architectSha = uniqueMarker(tasks, "Architect validated effective content head");
@@ -179,6 +214,10 @@ export function matchingValidationMarkers(featureRequest, tasks) {
   if (!architectTime || !analystTime || !validIso(architectTime) || !validIso(analystTime))
     return null;
   if (Date.parse(architectTime) >= Date.parse(analystTime)) return null;
+  if (uniqueReturnCount(tasks, "Architect", "## Final Architect Validation Notes", 10) === null)
+    return null;
+  if (uniqueReturnCount(featureRequest, "Analyst", "## Final Analyst Validation Notes", 5) === null)
+    return null;
   return effectiveSha;
 }
 
@@ -298,6 +337,13 @@ export function controlUnchanged(baseSha, headSha) {
     "AGENTS.md",
     "CLAUDE.md",
     ".specify/templates",
+    ".unicorn-hub/config.json",
+    "scripts/apply-branch-protection.mjs",
+    "scripts/finalize-pr.mjs",
+    "scripts/ai-review-gate.mjs",
+    "scripts/ai-review-helpers.mjs",
+    "scripts/resolve-pr-context.mjs",
+    "scripts/shared.mjs",
     "scripts/ci-evidence-route.mjs",
     "docs_project/project/devops/ai-pr-workflow.md",
   ];
@@ -329,6 +375,11 @@ export function changedEvidenceCommits(effectiveSha, headSha, context = {}) {
       feature = match[1];
       const before = gitFile(parent, path);
       const after = gitFile(sha, path);
+      if (
+        match[2] === "feature-request" &&
+        !architectValidationMarkers(gitFile(parent, `specs/${feature}/tasks.md`), effectiveSha)
+      )
+        return null;
       const additions = evidenceAddition(before, after, match[2] + ".md", effectiveSha, {
         ...context,
         parentSha: parent,

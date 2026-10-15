@@ -75,6 +75,53 @@ test("only schema-valid additions at the end of existing final sections qualify"
   );
 });
 
+test("short route requires one bounded return count in each role-owned section", () => {
+  const feature = featureBefore + featureLines.join("\n") + "\n";
+  const tasks = tasksBefore + taskLines.join("\n") + "\n";
+  for (const invalid of [
+    tasks.replace("- Architect return count for this work cycle: 0.\n", ""),
+    tasks.replace(
+      "- Architect return count for this work cycle: 0.",
+      "- Architect return count for this work cycle: 11.",
+    ),
+    tasks + "- Architect return count for this work cycle: 1.\n",
+    tasks.replace("## Final Architect Validation Notes", "## Other Notes"),
+    tasks
+      .replace("- Architect return count for this work cycle: 0.", "")
+      .replace(
+        "### Cleanup Evidence",
+        "- Architect return count for this work cycle: 0.\n### Cleanup Evidence",
+      ),
+  ]) {
+    assert.equal(matchingValidationMarkers(feature, invalid), null);
+  }
+  for (const invalid of [
+    feature.replace("- Analyst return count for this work cycle: 0.\n", ""),
+    feature.replace(
+      "- Analyst return count for this work cycle: 0.",
+      "- Analyst return count for this work cycle: 6.",
+    ),
+    feature + "- Analyst return count for this work cycle: 1.\n",
+    feature.replace("## Final Analyst Validation Notes", "## Other Notes"),
+  ]) {
+    assert.equal(matchingValidationMarkers(invalid, tasks), null);
+  }
+  assert.equal(matchingValidationMarkers(feature, tasks), effectiveSha);
+  assert.equal(
+    matchingValidationMarkers(
+      feature.replace(
+        "return count for this work cycle: 0.",
+        "return count for this work cycle: 5.",
+      ),
+      tasks.replace(
+        "return count for this work cycle: 0.",
+        "return count for this work cycle: 10.",
+      ),
+    ),
+    effectiveSha,
+  );
+});
+
 test("finalizer and CI classifier accept the same append-only role validation schema", () => {
   const featurePath = "specs/999-ci-fixture";
   const featureFile = `${featurePath}/feature-request.md`;
@@ -281,6 +328,15 @@ test("complete straight-line Git history accepts only evidence-only commits", ()
       }),
     );
   };
+  const inspectControl = (base, head) => {
+    const source = `import { controlUnchanged } from ${JSON.stringify(moduleUrl)}; console.log(controlUnchanged(process.argv[1], process.argv[2]));`;
+    return (
+      execFileSync(process.execPath, ["--input-type=module", "-e", source, base, head], {
+        cwd: directory,
+        encoding: "utf8",
+      }).trim() === "true"
+    );
+  };
   const proofDigest = (effective, checked) =>
     createHash("sha256")
       .update(
@@ -312,37 +368,58 @@ test("complete straight-line Git history accepts only evidence-only commits", ()
     git("add", ".");
     git("commit", "-qm", "effective content");
     const effective = git("rev-parse", "HEAD");
+    const architectEvidence =
+      tasksBefore + taskLines.join("\n").replaceAll(effectiveSha, effective) + "\n";
     const featureEvidence =
       featureBefore + featureLines.join("\n").replaceAll(effectiveSha, effective) + "\n";
+    write(root + "feature-request.md", featureEvidence);
+    git("add", ".");
+    git("commit", "-qm", "premature analyst evidence");
+    assert.equal(inspect(effective, git("rev-parse", "HEAD")), null);
+    write(root + "tasks.md", architectEvidence);
+    git("add", ".");
+    git("commit", "-qm", "architect after analyst");
+    assert.equal(matchingValidationMarkers(featureEvidence, architectEvidence), effective);
+    assert.equal(inspect(effective, git("rev-parse", "HEAD")), null);
+    git("reset", "--hard", effective);
+    write(root + "tasks.md", architectEvidence);
+    write(root + "feature-request.md", featureEvidence);
+    git("add", ".");
+    git("commit", "-qm", "simultaneous role evidence");
+    assert.equal(inspect(effective, git("rev-parse", "HEAD")), null);
+    git("reset", "--hard", effective);
+    write(root + "tasks.md", architectEvidence);
+    git("add", ".");
+    git("commit", "-qm", "architect evidence");
+    const architectHead = git("rev-parse", "HEAD");
+    assert.deepEqual(inspect(effective, architectHead), {
+      feature: "999-ci-fixture",
+      changedFiles: [root + "tasks.md"],
+    });
+    write(
+      root + "tasks.md",
+      addCycleAndGuard(
+        architectEvidence,
+        cycleLine.replace(headSha, architectHead).replace(effectiveSha, effective),
+        guardLine
+          .replace(headSha, architectHead)
+          .replace(effectiveSha, effective)
+          .replace(diffDigest, proofDigest(effective, architectHead)),
+      ),
+    );
+    git("add", ".");
+    git("commit", "-qm", "premature process evidence");
+    assert.equal(inspect(effective, git("rev-parse", "HEAD")), null);
+    git("reset", "--hard", architectHead);
     write(root + "feature-request.md", featureEvidence);
     git("add", ".");
     git("commit", "-qm", "analyst evidence");
     const evidenceHead = git("rev-parse", "HEAD");
     assert.deepEqual(inspect(effective, evidenceHead), {
       feature: "999-ci-fixture",
-      changedFiles: [root + "feature-request.md"],
+      changedFiles: [root + "feature-request.md", root + "tasks.md"],
     });
-    write(
-      root + "tasks.md",
-      addCycleAndGuard(
-        tasksBefore,
-        cycleLine.replace(headSha, evidenceHead).replace(effectiveSha, effective),
-        guardLine
-          .replace(headSha, evidenceHead)
-          .replace(effectiveSha, effective)
-          .replace(diffDigest, proofDigest(effective, evidenceHead)),
-      ),
-    );
-    git("add", ".");
-    git("commit", "-qm", "premature process evidence");
-    assert.equal(inspect(effective, git("rev-parse", "HEAD")), null);
-    git("reset", "--hard", evidenceHead);
-    const architectEvidence =
-      tasksBefore + taskLines.join("\n").replaceAll(effectiveSha, effective) + "\n";
-    write(root + "tasks.md", architectEvidence);
-    git("add", ".");
-    git("commit", "-qm", "architect evidence");
-    const rolesHead = git("rev-parse", "HEAD");
+    const rolesHead = evidenceHead;
     const processEvidence = addCycleAndGuard(
       architectEvidence,
       cycleLine.replace(headSha, rolesHead).replace(effectiveSha, effective),
@@ -422,10 +499,23 @@ test("complete straight-line Git history accepts only evidence-only commits", ()
     git("add", ".");
     git("commit", "-qm", "semantic edit");
     assert.equal(inspect(effective, git("rev-parse", "HEAD")), null);
-    write("AGENTS.md", "changed control\n");
-    git("add", ".");
-    git("commit", "-qm", "control edit");
-    assert.equal(inspect(effective, git("rev-parse", "HEAD")), null);
+    for (const controlPath of [
+      "AGENTS.md",
+      ".unicorn-hub/config.json",
+      "scripts/apply-branch-protection.mjs",
+      "scripts/finalize-pr.mjs",
+      "scripts/ai-review-gate.mjs",
+      "scripts/ai-review-helpers.mjs",
+      "scripts/resolve-pr-context.mjs",
+      "scripts/shared.mjs",
+    ]) {
+      git("reset", "--hard", processHead);
+      write(controlPath, "changed control\n");
+      git("add", ".");
+      git("commit", "-qm", `control edit ${controlPath}`);
+      assert.equal(inspectControl(effective, git("rev-parse", "HEAD")), false);
+      assert.equal(inspect(effective, git("rev-parse", "HEAD")), null);
+    }
   } finally {
     rmSync(directory, { recursive: true, force: true });
   }
