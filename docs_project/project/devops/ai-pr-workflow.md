@@ -466,3 +466,85 @@ summary, or other AI-written summary. Orchestrator completion evidence must name
 the current PR head and be backed by GitHub state plus local read-only checks
 such as feature-memory validation, repository checks, preflight, text-search
 evidence, and manual diff review appropriate to the feature.
+
+
+## Native Codex receipts and exact-head wakeup
+
+The required gate pins the full pull-request event head and checks live PR state
+before triggering, on every poll, and immediately before success. A new push,
+closed PR, or draft supersedes that run; the resolver never silently substitutes
+the later head. Administrative Codex requests name the full pinned SHA. The
+Orchestrator's human-account native request remains a distinct required action.
+
+Codex evidence comes only from configured trusted connector identities. A
+no-findings comment may use the legacy `Codex Review:` header or exactly one
+leading `<!-- codex-review-receipt:v1 -->` marker, followed by the explicit
+no-findings verdict and matching `**Reviewed commit:**` line. Existing explicit
+legacy `in head <sha>` and `Reviewed [<sha>]` forms remain supported. The exact observed native
+About Codex in GitHub details block is supported with whitespace and optional
+information-icon normalization; arbitrary footer prose is rejected. Missing or conflicting commits,
+duplicate/malformed markers, contradictory prose, and incomplete/negative results
+cannot approve. Short commits are resolved through GitHub's commit API to the full
+expected head; ambiguity fails closed. Timestamp-only comments cannot approve.
+Native formal reviews require a full matching `commit_id`; existing APPROVED and
+COMMENTED behavior remains subject to findings and severity checks.
+
+The latest applicable native result uses issue-comment `updated_at` and formal
+review `submitted_at`; tied positive/negative results fail closed. Every unresolved
+trusted inline finding blocks independently of later review requests or positive
+results, including P3/unknown-priority and previous-head findings. The gate reads
+all REST evidence pages and all review-thread pages. Thread roots determine
+resolution; replies do not become independent findings.
+
+`AI Review Wakeup` uses trusted default-branch workflow/scripts and the built-in
+Actions bot token for issue-comment and workflow-completion events. Formal and
+inline review events first run `AI Review Native Signal`, a minimal unprivileged
+workflow with no checkout, scripts, secrets, or write permissions. Its completion
+only wakes independent API reconciliation; its code/artifacts/logs are never
+privileged input or verdict evidence. This split supports fork review events whose
+PR-merge workflow token is read-only. A read-only trusted context job verifies
+the source workflow identity and PR association before the mutation job joins the
+shared per-PR serialized queue. If GitHub omits a fork run's PR array, repository,
+branch, and raw-head or live API merge-commit identity must identify exactly one
+current open PR; the verified raw head stays pinned through routing. Native signal run creation
+time is a scheduling freshness hint for an absent checkpoint, so formal
+dismissals and inline deletions are reevaluated even when REST timestamps do not
+change. It supplies no verdict; unchanged checkpoint hashes still deduplicate. These paths
+handle created/edited legacy, receipt, and structured summary comments; formal and
+inline review changes; and the existing gate's completion. Structured summaries, reactions, and `Completed` text cannot satisfy the gate.
+A strictly validated current-head structured code-review result with findings or
+an unfinished status vetoes an older/tied positive result. Explicit current-head
+unresolved findings in either summary slot remain blocking until cleared. The
+canonical completed false/false summary remains neutral. Malformed, duplicate, or
+conflicting newest native signals fail closed. The latest blocking current-head
+formal review vetoes issue receipts until corrected or dismissed. Workflow filters are coarse; runtime repeats event,
+trusted author, repository, backend, PR, and live full-head checks.
+
+Requeue targets the existing `AI Review` pull-request run for the exact PR/head,
+preserving the real required check association. Events and completion share one
+serialized per-PR queue. A versioned bot-authored issue comment stores scheduling
+state only: claimed/posting phase, head, run, source attempt, and a hash of trusted signal identities,
+bodies, timestamps, and thread resolution. Human lookalikes are ignored;
+malformed or duplicate trusted checkpoints fail closed. A claim is consumed only
+when GitHub confirms a later attempt started strictly after both the immutable
+server checkpoint time and signal time. Equal-second events get one conservative
+post-boundary evaluation. Active-run signals remain pending for the completion
+backstop. Unchanged duplicate events and that rerun's own completion converge;
+new negative/edit evidence can invalidate an earlier green result. API-uncertain
+reruns receive bounded reconciliation and an explicit error, without blind POST
+retries or treating scheduling state as a verdict. A crash in the initial claimed phase leaves a retryable claim. Before POST the
+router writes a fresh posting checkpoint and preserves its server timestamp. A
+crash between that write and HTTP submission has the same uncertainty as a lost
+response: later deliveries reconcile the API, then fail explicitly without a
+second POST until an authorized operator proves acceptance or definitive
+non-acceptance. GitHub rerun has no idempotency key for atomic state/POST recovery. Permissions/API failures remain
+visible workflow failures requiring authorized reconciliation.
+
+This workflow becomes effective after protected deployment to the default branch.
+A PR-only parser/router change cannot repair its own trusted-main gate. Manual
+main dispatch still executes main's parser and does not replace a PR-head required
+check. Bootstrap needs genuine current-head legacy/formal native evidence accepted
+by the existing gate, or independently reviewed protected rollout with sufficient
+authority. Fork push permission alone grants neither upstream rerun nor merge
+permission. No skip, synthetic check, unreviewed privileged script, impersonation,
+or branch-protection bypass is a rollout path.

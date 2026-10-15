@@ -1,0 +1,20 @@
+name: AI Review Native Signal
+
+on:
+  pull_request_review:
+    types: [submitted, edited, dismissed]
+  pull_request_review_comment:
+    types: [created, edited, deleted]
+
+# Native review events use the PR merge workflow, including for forks. This job
+# handles no credentials, code, artifacts, or verdicts. Its completion only wakes
+# the trusted default-branch router, which fetches evidence independently.
+permissions: {}
+
+jobs:
+  signal:
+    runs-on: ubuntu-latest
+    timeout-minutes: 1
+    steps:
+      - name: Wake trusted native review reconciliation
+        run: echo "Native review event received."

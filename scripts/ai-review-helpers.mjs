@@ -47,7 +47,7 @@ function extractShaLikeMarkers(body) {
 export function containsBlockingSeverity(body, agent) {
   const text = String(body || "");
   if (agent === "codex") {
-    return /\bP[0-2]\b/.test(text);
+    return /\bP[0-2]\b/i.test(text);
   }
   if (agent === "gemini") {
     return /\b(critical|high)\b/i.test(text);
@@ -60,35 +60,217 @@ export function extractCodexPriority(body) {
   return match ? Number(match[1]) : null;
 }
 
+export function codexCommentMarkers(body) {
+  return extractShaLikeMarkers(body);
+}
+
+export function isCodexWakeupComment(body) {
+  return /^(?:<!-- codex-review-receipt:|Codex Review:|<!-- codex-pull-request-review-summary|<!-- codex-review-state:)/i.test(
+    String(body || "").trim(),
+  );
+}
+
+export function classifyCodexStructuredSummary(comment, headSha, config = {}) {
+  if (!isTrustedReviewLogin(comment?.user?.login, "codex", config)) return { result: null };
+  const body = String(comment.body || "").trim();
+  if (!/codex-pull-request-review-summary|codex-review-state:/i.test(body)) return { result: null };
+  const invalid = { result: "fail" };
+  if (/Codex Review:|codex-review-receipt:/i.test(body)) return invalid;
+  if (
+    [...body.matchAll(/codex-pull-request-review-summary/gi)].length !== 1 ||
+    [...body.matchAll(/codex-review-state:/gi)].length !== 1
+  )
+    return invalid;
+  const match = body.match(
+    /^<!-- codex-pull-request-review-summary -->\s*<!-- codex-review-state:v1 (\{[^\n]+\}) -->/,
+  );
+  if (!match) return invalid;
+  // Native keys are plain ASCII. Reject escaped keys before JSON decoding can
+  // collapse duplicate aliases (for example \u0068as_any_findings).
+  if ([...match[1].matchAll(/"((?:[^"\\]|\\.)*)"\s*:/g)].some((entry) => entry[1].includes("\\")))
+    return invalid;
+  let state;
+  try {
+    state = JSON.parse(match[1]);
+  } catch {
+    return invalid;
+  }
+  const sameKeys = (object, keys) =>
+    object &&
+    typeof object === "object" &&
+    !Array.isArray(object) &&
+    Object.keys(object).sort().join() === keys.sort().join();
+  if (!sameKeys(state, ["code_review", "security_review"])) return invalid;
+  for (const section of Object.values(state)) {
+    if (!sameKeys(section, ["commit_sha", "has_any_findings", "has_unresolved_findings", "status"]))
+      return invalid;
+    if (section.commit_sha !== null && !/^[a-f0-9]{40}$/.test(section.commit_sha || ""))
+      return invalid;
+    if (
+      ![null, true, false].includes(section.has_any_findings) ||
+      ![null, true, false].includes(section.has_unresolved_findings) ||
+      (section.status !== null && (typeof section.status !== "string" || !section.status.trim()))
+    )
+      return invalid;
+    if (
+      section.status === "completed" &&
+      (typeof section.has_any_findings !== "boolean" ||
+        typeof section.has_unresolved_findings !== "boolean" ||
+        section.commit_sha === null)
+    )
+      return invalid;
+    if (section.has_unresolved_findings === true && section.has_any_findings !== true)
+      return invalid;
+    if (section.commit_sha === null && Object.values(section).some((value) => value !== null))
+      return invalid;
+  }
+  for (const key of [
+    "code_review",
+    "security_review",
+    "commit_sha",
+    "has_any_findings",
+    "has_unresolved_findings",
+    "status",
+  ]) {
+    const expected = key.endsWith("_review") ? 1 : 2;
+    if ([...match[1].matchAll(new RegExp(`"${key}"\\s*:`, "g"))].length !== expected)
+      return invalid;
+  }
+  const applicable = Object.values(state).filter((section) => section.commit_sha === headSha);
+  if (!applicable.length) return { result: null };
+  if (applicable.some((section) => section.has_unresolved_findings === true))
+    return { result: "fail", unresolved: true };
+  if (
+    /\bP[0-3]\b|review (?:is )?(?:still )?(?:pending|running|in progress|incomplete|failed)|(?:there are )?unresolved findings|found (?:several|an?|[0-9]+) issues/i.test(
+      body,
+    )
+  )
+    return invalid;
+  const code = state.code_review;
+  return {
+    result:
+      code.commit_sha === headSha &&
+      (code.status !== "completed" ||
+        code.has_any_findings !== false ||
+        code.has_unresolved_findings !== false)
+        ? "fail"
+        : null,
+  };
+}
+
+export function classifyCodexSummaryComment(comment, headSha, config = {}) {
+  if (!isTrustedReviewLogin(comment?.user?.login, "codex", config)) return null;
+  let body = String(comment?.body || "")
+    .replaceAll("\r\n", "\n")
+    .trim();
+  if (!isCodexWakeupComment(body)) return null;
+  // Structured summaries may wake the scheduler, but are never verdicts.
+  if (/codex-pull-request-review-summary|codex-review-state:/i.test(body)) {
+    return classifyCodexStructuredSummary(comment, headSha, config).result;
+  }
+  const fullSha = String(headSha || "").toLowerCase();
+  if (!/^[a-f0-9]{40}$/.test(fullSha)) return "fail";
+  const markers = extractShaLikeMarkers(body);
+  if (markers.length && markers.every((marker) => !fullSha.startsWith(marker))) return null;
+  if (markers.some((marker) => !fullSha.startsWith(marker))) return "fail";
+  if (/codex-review-receipt:/i.test(body)) {
+    if (!body.startsWith("<!-- codex-review-receipt:v1 -->\n\n")) return "fail";
+    body = body.slice("<!-- codex-review-receipt:v1 -->\n\n".length);
+    if (/codex-review-receipt:/i.test(body)) return "fail";
+  }
+  // Only the native About block is allowed after the verdict/commit pair.
+  const details = body.indexOf("<details>");
+  if (details !== -1) {
+    const footer = body.slice(details);
+    const nativeAbout = `<details> <summary>ℹ️ About Codex in GitHub</summary> <br/>
+[Your team has set up Codex to review pull requests in this repo](https://chatgpt.com/codex/cloud/settings/general). Reviews are triggered when you
+- Open a pull request for review
+- Mark a draft as ready
+- Comment "@codex review".
+If Codex has suggestions, it will comment; otherwise it will react with 👍.
+Codex can also answer questions or update the PR. Try commenting "@codex address that feedback".
+</details>`;
+    const normalizeAbout = (value) => value.replaceAll("ℹ️ ", "").replace(/\s+/g, " ").trim();
+    if (normalizeAbout(footer) !== normalizeAbout(nativeAbout)) return "fail";
+    body = body.slice(0, details).trim();
+  }
+  const verdict = "Codex Review:\\s*did(?:\\s+not|\\s*n['’]?t)\\s+find\\s+any\\s+major\\s+issues";
+  const sha = "([a-fA-F0-9]{7,40})";
+  const patterns = [
+    new RegExp(
+      "^" + verdict + "\\.?(?: :rocket:| 🚀)?\\s*\\n\\n\\*\\*Reviewed commit:\\*\\* `" + sha + "`$",
+      "i",
+    ),
+    new RegExp(`^${verdict} in head \\(?${sha}\\)?\\.$`, "i"),
+    new RegExp(`^${verdict}\\. Reviewed \\[${sha}\\]\\.$`, "i"),
+  ];
+  const match = patterns.map((pattern) => body.match(pattern)).find(Boolean);
+  return match && fullSha.startsWith(match[1].toLowerCase()) && markers.length === 1
+    ? "pass"
+    : "fail";
+}
+
 export function isAcceptableCodexSummaryComment(
   comment,
   headSha,
-  headCommittedAt = null,
+  _headCommittedAt = null,
   config = {},
 ) {
-  const body = String(comment?.body || "").trim();
-  const login = normalizeLogin(comment?.user?.login);
-  if (!isTrustedReviewLogin(login, "codex", config)) return false;
-  if (!/^Codex Review:/i.test(body)) return false;
-  if (!/did(?:\s+not|\s*n['’]?t)\s+find\s+any\s+major\s+issues/i.test(body)) return false;
+  void _headCommittedAt; // Retain the public call signature; timestamps are never evidence.
+  return classifyCodexSummaryComment(comment, headSha, config) === "pass";
+}
 
-  const fullSha = String(headSha || "").toLowerCase();
-  const markers = extractShaLikeMarkers(body);
-  if (markers.length > 0) {
-    return markers.every((marker) => fullSha.startsWith(marker));
-  }
-
-  const committedAt = Date.parse(headCommittedAt || "");
-  const createdAt = Date.parse(comment?.created_at || "");
-  return Number.isFinite(committedAt) && Number.isFinite(createdAt) && createdAt >= committedAt;
+export function latestCodexResult(reviews, reviewComments, comments, headSha, config = {}) {
+  // Any unresolved inline finding blocks, including P3 and findings on older heads.
+  if (reviewComments.some((comment) => isTrustedReviewLogin(comment.user?.login, "codex", config)))
+    return { result: "fail" };
+  if (
+    comments.some((comment) => classifyCodexStructuredSummary(comment, headSha, config).unresolved)
+  )
+    return { result: "fail" };
+  // An issue receipt cannot clear the latest blocking formal review.
+  if (latestCodexNativeReviewResult(reviews, reviewComments, headSha, config) === "fail")
+    return { result: "fail" };
+  const candidates = [
+    ...reviews.map((review) => ({
+      result: classifyCodexNativeReview(review, [], headSha, config),
+      timestamp: review.submitted_at,
+      id: review.id,
+      review,
+    })),
+    ...comments.map((comment) => ({
+      result: classifyCodexSummaryComment(comment, headSha, config),
+      timestamp: comment.updated_at || comment.created_at,
+      id: comment.id,
+      comment,
+    })),
+  ].filter((entry) => entry.result !== null);
+  // Conflicting same-second results fail closed regardless of endpoint order.
+  candidates.sort(
+    (left, right) =>
+      (Date.parse(right.timestamp) || 0) - (Date.parse(left.timestamp) || 0) ||
+      (left.result === "fail"
+        ? -1
+        : right.result === "fail"
+          ? 1
+          : Number(right.id) - Number(left.id)),
+  );
+  return candidates[0] || { result: null };
 }
 
 export function classifyCodexNativeReview(review, reviewComments = [], headSha, config = {}) {
   if (!review) return null;
-  if (review.commit_id && headSha && review.commit_id !== headSha) return null;
+  if (!/^[a-f0-9]{40}$/i.test(review.commit_id || "") || review.commit_id !== headSha) return null;
   const login = normalizeLogin(review.user?.login);
   if (!isTrustedReviewLogin(login, "codex", config)) return null;
-  if (containsBlockingSeverity(review.body, "codex")) return "fail";
+  if (review.state === "DISMISSED") return null;
+  if (
+    containsBlockingSeverity(review.body, "codex") ||
+    /review (?:is )?(?:still )?(?:pending|running|in progress)|changes requested|(?:found|unresolved) (?:an? |[0-9]+ )?(?:issues?|findings?)/i.test(
+      review.body || "",
+    )
+  )
+    return "fail";
 
   if (review.state === "APPROVED") return "pass";
   if (review.state === "CHANGES_REQUESTED") return "fail";
@@ -121,14 +303,20 @@ export function latestCodexNativeReviewResult(
       .filter((entry) => entry.result !== null)
       .sort(
         (left, right) =>
-          Date.parse(right.review.submitted_at || "") - Date.parse(left.review.submitted_at || ""),
+          (Date.parse(right.review.submitted_at || "") || 0) -
+            (Date.parse(left.review.submitted_at || "") || 0) ||
+          (left.result === "fail"
+            ? -1
+            : right.result === "fail"
+              ? 1
+              : Number(right.review.id) - Number(left.review.id)),
       )[0]?.result || null
   );
 }
 
 export function isAcceptableNativeReview(review, agent, headSha, config = {}) {
   if (!review) return false;
-  if (review.commit_id && headSha && review.commit_id !== headSha) return false;
+  if (!review.commit_id || review.commit_id !== headSha) return false;
   const login = normalizeLogin(review.user?.login);
   const body = review.body || "";
 

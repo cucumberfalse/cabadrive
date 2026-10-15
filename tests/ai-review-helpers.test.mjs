@@ -187,7 +187,7 @@ test("isAcceptableCodexSummaryComment rejects unknown-login evidence", () => {
   assert.equal(isAcceptableCodexSummaryComment(unknownComment, headSha), false);
 });
 
-test("isAcceptableCodexSummaryComment accepts fresh no-SHA summary by timestamp fallback", () => {
+test("isAcceptableCodexSummaryComment rejects no-SHA summary despite fresh timestamp", () => {
   const headSha = "83a6736a01246465a46c900ee21926cf594c1825";
   const comment = {
     body: "Codex Review: did not find any major issues in current head.",
@@ -195,11 +195,11 @@ test("isAcceptableCodexSummaryComment accepts fresh no-SHA summary by timestamp 
     created_at: "2026-05-08T15:24:18Z",
   };
 
-  assert.equal(isAcceptableCodexSummaryComment(comment, headSha, "2026-05-08T15:20:00Z"), true);
+  assert.equal(isAcceptableCodexSummaryComment(comment, headSha, "2026-05-08T15:20:00Z"), false);
   assert.equal(isAcceptableCodexSummaryComment(comment, headSha, "2026-05-08T15:30:00Z"), false);
 });
 
-test("isAcceptableCodexSummaryComment ignores hex-like word fragments before timestamp fallback", () => {
+test("isAcceptableCodexSummaryComment rejects hex-like word fragments without explicit commit identity", () => {
   const headSha = "83a6736a01246465a46c900ee21926cf594c1825";
   const comment = {
     body: "Codex Review: did not find any major issues. Feedback accepted; abc1234z is a label.",
@@ -207,7 +207,7 @@ test("isAcceptableCodexSummaryComment ignores hex-like word fragments before tim
     created_at: "2026-05-08T15:24:18Z",
   };
 
-  assert.equal(isAcceptableCodexSummaryComment(comment, headSha, "2026-05-08T15:20:00Z"), true);
+  assert.equal(isAcceptableCodexSummaryComment(comment, headSha, "2026-05-08T15:20:00Z"), false);
 });
 
 test("isAcceptableCodexSummaryComment still accepts standalone current marker with punctuation boundaries", () => {

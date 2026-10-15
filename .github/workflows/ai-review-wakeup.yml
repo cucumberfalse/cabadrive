@@ -1,0 +1,64 @@
+name: AI Review Wakeup
+
+on:
+  issue_comment:
+    types: [created, edited]
+  workflow_run:
+    workflows: [AI Review, AI Review Native Signal]
+    types: [completed]
+
+permissions:
+  contents: read
+  pull-requests: read
+  issues: write
+  actions: write
+
+jobs:
+  context:
+    permissions:
+      contents: read
+      pull-requests: read
+      actions: read
+    outputs:
+      pr_number: ${{ steps.pr.outputs.pr_number }}
+    if: |
+      github.event_name == 'workflow_run' ||
+      ((github.event.comment.user.login == 'chatgpt-codex-connector[bot]' || github.event.comment.user.login == 'chatgpt-codex-connector' ||
+        github.event.review.user.login == 'chatgpt-codex-connector[bot]' || github.event.review.user.login == 'chatgpt-codex-connector') &&
+       (github.event_name != 'issue_comment' || github.event.issue.pull_request) &&
+       (github.event_name != 'issue_comment' || contains(github.event.comment.body, 'Codex Review:') ||
+        contains(github.event.comment.body, '<!-- codex-review-receipt:') ||
+        contains(github.event.comment.body, '<!-- codex-pull-request-review-summary') ||
+        contains(github.event.comment.body, '<!-- codex-review-state:')))
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout trusted context resolver
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+          persist-credentials: false
+      - name: Resolve independently verified PR association
+        id: pr
+        run: node scripts/ai-review-wakeup.mjs --resolve-only
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+  wakeup:
+    needs: context
+    if: needs.context.outputs.pr_number != ''
+    concurrency:
+      group: ai-review-wakeup-${{ needs.context.outputs.pr_number }}
+      cancel-in-progress: false
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout trusted wakeup scripts
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+          persist-credentials: false
+      - name: Reconcile native review signal with exact-head gate
+        run: node scripts/ai-review-wakeup.mjs
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          AI_REVIEW_AGENT: ${{ vars.AI_REVIEW_AGENT }}

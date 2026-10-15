@@ -204,7 +204,7 @@ Agent selection is controlled by repository variables:
 
 Supported review backends:
 
-- `codex`: native GitHub PR review with `P0`-`P3` inline findings, or a no-findings `Codex Review:` summary comment that names the current head.
+- `codex`: trusted native GitHub PR review with an explicit matching full `commit_id`, or an explicit no-findings `Codex Review:` comment with a matching reviewed commit. Comments may start with exactly one `<!-- codex-review-receipt:v1 -->` prefix and include the native About Codex details block. Abbreviated commits must resolve uniquely to the immutable full head; timestamps never substitute for commit identity. Every unresolved trusted inline finding, including `P3` or unknown priority and older-head findings, blocks the gate. Structured `codex-pull-request-review-summary` / `codex-review-state:v1` comments never approve: a strict current-head negative/unfinished summary vetoes an older positive result, and explicit unresolved findings remain blocking until cleared. A clean completed summary is neutral. The latest blocking current-head formal review also vetoes issue receipts until corrected or dismissed.
 - `claude`: top-level comment containing `AI_REVIEW_AGENT`, `AI_REVIEW_SHA`, and `AI_REVIEW_OUTCOME: pass|advisory|block`.
 - `gemini`: native GitHub PR review from the configured app.
 
