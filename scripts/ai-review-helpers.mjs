@@ -66,9 +66,25 @@ export function isAcceptableCodexSummaryComment(
   headCommittedAt = null,
   config = {},
 ) {
-  const body = String(comment?.body || "").trim();
+  const rawBody = String(comment?.body || "");
+  const body = rawBody.trim();
   const login = normalizeLogin(comment?.user?.login);
   if (!isTrustedReviewLogin(login, "codex", config)) return false;
+  if (/codex-review-receipt:/i.test(rawBody)) {
+    if (!/^<!-- codex-review-receipt:v1 -->\r?\n\r?\nCodex Review:/i.test(rawBody)) return false;
+    const summary = rawBody.split(/\r?\n/)[2];
+    if (!/did(?:\s+not|\s*n['’]?t)\s+find\s+any\s+major\s+issues/i.test(summary)) return false;
+    if ([...rawBody.matchAll(/^\*\*Reviewed commit:\*\*/gm)].length !== 1) return false;
+    const reviewed = [
+      ...rawBody.matchAll(/^\*\*Reviewed commit:\*\*\s*`([A-Fa-f0-9]{7,40})`\s*$/gm),
+    ];
+    const fullSha = String(headSha || "").toLowerCase();
+    return (
+      reviewed.length === 1 &&
+      fullSha.startsWith(reviewed[0][1].toLowerCase()) &&
+      extractShaLikeMarkers(rawBody).every((marker) => fullSha.startsWith(marker))
+    );
+  }
   if (!/^Codex Review:/i.test(body)) return false;
   if (!/did(?:\s+not|\s*n['’]?t)\s+find\s+any\s+major\s+issues/i.test(body)) return false;
 

@@ -9,6 +9,7 @@ on:
 
 permissions:
   contents: read
+  actions: read
 
 jobs:
   baseline-checks:
@@ -18,10 +19,40 @@ jobs:
       - name: Checkout
         uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
 
+      - name: Classify final validation evidence
+        id: route
+        shell: bash
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          CI_ROUTE_FILE: ${{ runner.temp }}/ci-evidence-route/decision.json
+          PR_BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: |
+          # The trusted base supplies the policy. A PR adding or changing this
+          # classifier always runs the full suite.
+          if [ "$GITHUB_EVENT_NAME" != "pull_request" ] || [[ ! "$PR_BASE_SHA" =~ ^[0-9a-f]{40}$ ]]; then
+            echo "route=full" >> "$GITHUB_OUTPUT"
+          else
+            git fetch --no-tags origin "$PR_BASE_SHA"
+            if git cat-file -e "$PR_BASE_SHA:scripts/ci-evidence-route.mjs" 2>/dev/null; then
+              git show "$PR_BASE_SHA:scripts/ci-evidence-route.mjs" > "$RUNNER_TEMP/ci-evidence-route.mjs"
+              node "$RUNNER_TEMP/ci-evidence-route.mjs" --decide
+            else
+              echo "route=full" >> "$GITHUB_OUTPUT"
+            fi
+          fi
+
+      - name: Prove current evidence-only head
+        if: steps.route.outputs.route == 'short'
+        env:
+          CI_ROUTE_FILE: ${{ runner.temp }}/ci-evidence-route/decision.json
+        run: node "$RUNNER_TEMP/ci-evidence-route.mjs" --assert-short
+
       - name: Setup pnpm
+        if: steps.route.outputs.route != 'short'
         uses: pnpm/action-setup@b906affcce14559ad1aafd4ab0e942779e9f58b1 # v4
 
       - name: Detect pnpm lockfile
+        if: steps.route.outputs.route != 'short'
         id: lockfile
         shell: bash
         run: |
@@ -32,19 +63,20 @@ jobs:
           fi
 
       - name: Setup Node (with pnpm cache)
-        if: steps.lockfile.outputs.present == 'true'
+        if: steps.route.outputs.route != 'short' && steps.lockfile.outputs.present == 'true'
         uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: "20"
           cache: "pnpm"
 
       - name: Setup Node (without cache)
-        if: steps.lockfile.outputs.present != 'true'
+        if: steps.route.outputs.route != 'short' && steps.lockfile.outputs.present != 'true'
         uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: "20"
 
       - name: Install dependencies
+        if: steps.route.outputs.route != 'short'
         run: |
           if [ -f pnpm-lock.yaml ]; then
             pnpm install --frozen-lockfile
@@ -53,20 +85,25 @@ jobs:
           fi
 
       - name: Install pinned image QA compiler
+        if: steps.route.outputs.route != 'short'
         run: rustup toolchain install 1.85.1 --profile minimal
 
       - name: Setup pinned native image QA tools
+        if: steps.route.outputs.route != 'short'
         env:
           RUSTUP_TOOLCHAIN: "1.85.1"
         run: pnpm run setup:image-qa
 
       - name: Audit native image QA dependency locks
+        if: steps.route.outputs.route != 'short'
         run: pnpm run audit:image-qa
 
       - name: Run repository baseline
+        if: steps.route.outputs.route != 'short'
         run: pnpm run check:repo
 
       - name: Run typecheck and lint with budget
+        if: steps.route.outputs.route != 'short'
         env:
           QUALITY_FAST_BUDGET_SECONDS: "60"
           QUALITY_SOURCE_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
@@ -91,22 +128,44 @@ jobs:
           fi
 
       - name: Run format check
+        if: steps.route.outputs.route != 'short'
         run: pnpm run format:check
 
       - name: Run negative quality contracts
+        if: steps.route.outputs.route != 'short'
         run: pnpm run verify:quality-negative
 
       - name: Run tests if present
+        if: steps.route.outputs.route != 'short'
         run: pnpm run --if-present test
 
       - name: Run build if present
+        if: steps.route.outputs.route != 'short'
         run: pnpm run --if-present build
 
       - name: Install Playwright browser
+        if: steps.route.outputs.route != 'short'
         run: pnpm exec playwright install --with-deps chromium
 
       - name: Run browser smoke tests if present
+        if: steps.route.outputs.route != 'short'
         run: pnpm run --if-present test:e2e
+
+      - name: Record full CI provenance
+        if: steps.route.outputs.route != 'short' && github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
+        env:
+          CI_PROOF_DIR: ${{ runner.temp }}/ci-full-proof
+        run: node scripts/ci-evidence-route.mjs --record
+
+      - name: Upload full CI provenance
+        if: steps.route.outputs.route != 'short' && github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: ci-full-proof-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/ci-full-proof/full-run.json
+          if-no-files-found: error
+          retention-days: 14
+          compression-level: 6
 
   docker-validation:
     name: docker-validation
@@ -115,19 +174,48 @@ jobs:
       - name: Checkout
         uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
 
+      - name: Classify final validation evidence
+        id: route
+        shell: bash
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          CI_ROUTE_FILE: ${{ runner.temp }}/ci-evidence-route/decision.json
+          PR_BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: |
+          if [ "$GITHUB_EVENT_NAME" != "pull_request" ] || [[ ! "$PR_BASE_SHA" =~ ^[0-9a-f]{40}$ ]]; then
+            echo "route=full" >> "$GITHUB_OUTPUT"
+          else
+            git fetch --no-tags origin "$PR_BASE_SHA"
+            if git cat-file -e "$PR_BASE_SHA:scripts/ci-evidence-route.mjs" 2>/dev/null; then
+              git show "$PR_BASE_SHA:scripts/ci-evidence-route.mjs" > "$RUNNER_TEMP/ci-evidence-route.mjs"
+              node "$RUNNER_TEMP/ci-evidence-route.mjs" --decide
+            else
+              echo "route=full" >> "$GITHUB_OUTPUT"
+            fi
+          fi
+
+      - name: Prove current evidence-only head
+        if: steps.route.outputs.route == 'short'
+        env:
+          CI_ROUTE_FILE: ${{ runner.temp }}/ci-evidence-route/decision.json
+        run: node "$RUNNER_TEMP/ci-evidence-route.mjs" --assert-short
+
       # The lifecycle assertion starts a real browser to verify that the staged
       # service worker becomes the controller. Keep those test dependencies in
       # this job rather than weakening the Docker contract to an HTTP-only test.
       - name: Setup pnpm
+        if: steps.route.outputs.route != 'short'
         uses: pnpm/action-setup@b906affcce14559ad1aafd4ab0e942779e9f58b1 # v4
 
       - name: Setup Node
+        if: steps.route.outputs.route != 'short'
         uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: "20"
           cache: "pnpm"
 
       - name: Observe complete Docker validation and production retry
+        if: steps.route.outputs.route != 'short'
         id: docker-proof
         env:
           COMPOSE_PROJECT_NAME: cabadrive-ci-${{ github.run_id }}-${{ github.run_attempt }}
@@ -137,14 +225,14 @@ jobs:
         run: python3 scripts/ci-docker-resources.py
 
       - name: Verify actual Docker teardown
-        if: always() && steps.docker-proof.outputs.teardown-safe == 'true'
+        if: always() && steps.route.outputs.route != 'short' && steps.docker-proof.outputs.teardown-safe == 'true'
         env:
           COMPOSE_PROJECT_NAME: cabadrive-ci-${{ github.run_id }}-${{ github.run_attempt }}
           CABADRIVE_CI_PROOF: ${{ runner.temp }}/cabadrive-docker-proof
         run: python3 scripts/ci-docker-resources.py --verify-down
 
       - name: Upload bounded Docker production and resource proof
-        if: always()
+        if: always() && steps.route.outputs.route != 'short'
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
           name: docker-production-proof-${{ github.run_id }}-${{ github.run_attempt }}
