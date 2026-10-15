@@ -257,6 +257,22 @@ test("full-run proof requires the same PR, base, workflow, jobs, and successful 
   const artifact = { expired: false, workflow_run: { id: run.id, head_sha: effectiveSha } };
   const valid = { run, jobs, record, artifact, context, workflowDigest };
   assert.ok(validatePriorRun(valid));
+  for (const path of [
+    ".github/workflows/ci.yml@main",
+    ".github/workflows/ci.yml@codex/evidence",
+    ".github/workflows/ci.yml@refs/pull/42/merge",
+  ]) {
+    assert.ok(validatePriorRun({ ...valid, run: { ...run, path } }));
+  }
+  for (const path of [
+    ".github/workflows/ci.yml.evil@main",
+    ".github/workflows/other.yml@main",
+    ".github/workflows/ci.yml@",
+    ".github/workflows/ci.yml@main@other",
+    ".github/workflows/ci.yml@main other",
+  ]) {
+    assert.equal(validatePriorRun({ ...valid, run: { ...run, path } }), null);
+  }
   assert.equal(validatePriorRun({ ...valid, record: { ...record, baseSha: headSha } }), null);
   assert.equal(validatePriorRun({ ...valid, record: { ...record, prNumber: 43 } }), null);
   assert.equal(

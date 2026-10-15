@@ -231,7 +231,17 @@ export function validatePriorRun({ run, jobs, record, artifact, context, workflo
     run.repository?.full_name !== context.repository
   )
     return null;
-  if (run.path !== workflowPath || !Number.isInteger(run.workflow_id)) return null;
+  const qualifiedWorkflowPath = `${workflowPath}@`;
+  if (
+    (run.path !== workflowPath &&
+      !(
+        typeof run.path === "string" &&
+        run.path.startsWith(qualifiedWorkflowPath) &&
+        /^[A-Za-z0-9._/-]+$/.test(run.path.slice(qualifiedWorkflowPath.length))
+      )) ||
+    !Number.isInteger(run.workflow_id)
+  )
+    return null;
   if (
     artifact.expired ||
     artifact.workflow_run?.id !== run.id ||
