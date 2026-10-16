@@ -313,17 +313,33 @@ export async function routeReviewWakeup({
 }) {
   if (agent !== "codex") return "ignored-backend";
   const scheduled = eventName === "schedule";
+  const completion = eventName === "workflow_run";
+  // Copy the context-job pair before API awaits; it also determines the job's lock.
+  const pinnedPull =
+    scheduled || completion
+      ? { number: scheduledPull?.number, headSha: scheduledPull?.head_sha }
+      : null;
   if (
-    scheduled &&
+    pinnedPull &&
     (event.repository?.full_name !== repository ||
-      !Number.isSafeInteger(scheduledPull?.number) ||
-      scheduledPull.number <= 0 ||
-      !/^[a-f0-9]{40}$/.test(scheduledPull.head_sha || ""))
+      !Number.isSafeInteger(pinnedPull.number) ||
+      pinnedPull.number <= 0 ||
+      typeof pinnedPull.headSha !== "string" ||
+      !/^[a-f0-9]{40}$/.test(pinnedPull.headSha))
   )
-    throw new Error("Invalid pinned scheduled PR context.");
+    throw new Error(
+      completion
+        ? "Invalid pinned workflow completion context."
+        : "Invalid pinned scheduled PR context.",
+    );
   const context = scheduled
-    ? { number: scheduledPull.number, headSha: scheduledPull.head_sha }
+    ? pinnedPull
     : await resolveWakeupContext(api, eventName, event, repository, config);
+  if (
+    completion &&
+    (context?.number !== pinnedPull.number || context.headSha !== pinnedPull.headSha)
+  )
+    throw new Error("Workflow completion does not match the pinned PR/head context.");
   const number = context?.number;
   if (!number) return "ignored-event";
   const assertSourceContext = async () => {

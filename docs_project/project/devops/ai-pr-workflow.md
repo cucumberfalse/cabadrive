@@ -512,7 +512,12 @@ only wakes independent API reconciliation; its code/artifacts/logs are never
 privileged input or verdict evidence. This split supports fork review events whose
 PR-merge workflow token is read-only. A read-only trusted context job verifies
 the source workflow identity and PR association before the mutation job joins the
-shared per-PR serialized queue. Both API source-run actors (`actor` and
+shared per-PR serialized queue. For workflow completions, the mutation router
+requires that job's pinned PR number and full raw head, independently recomputes
+the API association, and requires both values to match before any checkpoint or
+rerun mutation. A queued job cannot adopt a replacement PR that reuses the same
+fork, branch, and commit under a different concurrency key; later source/head
+checks retain the original pair. Both API source-run actors (`actor` and
 `triggering_actor`) must match configured trusted Codex review logins. A public
 human event or human rerun of a bot-origin signal cannot supply native freshness;
 payload actor claims cannot replace the independently fetched API identities.

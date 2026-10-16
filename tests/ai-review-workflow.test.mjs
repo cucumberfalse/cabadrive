@@ -169,6 +169,7 @@ test("resolution schedules discover pinned PRs read-only and share direct-event 
   assert.match(wakeup, /schedule:\s*- cron: ["']\*\/15 \* \* \* \*["']/);
   assert.match(wakeup, /matrix:[\s\S]*fromJSON\(needs.context.outputs.pr_matrix\)/);
   assert.match(wakeup, /group: ai-review-wakeup-\$\{\{ matrix.pull.number \}\}/);
+  assert.match(wakeup, /AI_REVIEW_PR_NUMBER: \$\{\{ matrix.pull.number \}\}/);
   assert.match(wakeup, /AI_REVIEW_HEAD_SHA: \$\{\{ matrix.pull.head_sha \}\}/);
   assert.match(wakeup, /github.event_name == 'schedule'/);
   assert.doesNotMatch(wakeup, /pull_request_review_thread/);

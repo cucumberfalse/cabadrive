@@ -9,6 +9,7 @@ import {
   routeReviewWakeup,
   wakeupPrNumber,
   discoverWakeupPulls,
+  resolveWakeupPrNumber,
 } from "../scripts/ai-review-wakeup.mjs";
 
 const head = "2667f79cd7676ff331730cabf661d38dbbcddb0d";
@@ -354,6 +355,9 @@ function routerHarness({
       sleep: async (ms) => {
         current += ms;
       },
+      ...(extra.eventName === "workflow_run"
+        ? { scheduledPull: { number: 12, head_sha: head } }
+        : {}),
       ...extra,
     });
   return {
@@ -804,7 +808,15 @@ function actualForkGateHarness({ candidateChanges = [{}], runChange = {} } = {})
     repository: { full_name: actualRepository },
     issue: { number: 221, pull_request: {} },
   };
-  const route = (extra = {}) => h.route({ repository: actualRepository, event, ...extra });
+  const route = (extra = {}) =>
+    h.route({
+      repository: actualRepository,
+      event,
+      ...(extra.eventName === "workflow_run"
+        ? { scheduledPull: { number: 221, head_sha: actualHead } }
+        : {}),
+      ...extra,
+    });
   return { h, pull, route, actualRoot, actualHead, actualRepository };
 }
 test("actual fork AI Review target with an empty PR array reruns the exact raw head", async () => {
@@ -1823,5 +1835,108 @@ for (const blocker of [
         { ...chefComment, user: { login: "repo-owner" }, author_association: "OWNER" },
       ];
     assert.equal(await gate(gateApi(options), { headSha: chefHead }), false);
+  });
+}
+
+function completionMatrixHarness({ native = false, linked = false } = {}) {
+  const { h, event: nativeEvent } = nativeBridgeHarness({ association: linked });
+  h.run = { ...h.run, name: "AI Review", pull_requests: linked ? [{ number: 12 }] : [] };
+  let currentNumber = 12;
+  const currentPull = (number = currentNumber) =>
+    makePull({
+      number,
+      state: number === currentNumber ? "open" : "closed",
+      head: { sha: head, ref: "feature", repo: { full_name: "contributor/fork" } },
+    });
+  const writes = [];
+  const request = h.api.request;
+  const list = h.api.list;
+  h.api.request = (path, options = {}) => {
+    const pullNumber = path.match(/\/pulls\/(12|13)$/)?.[1];
+    if (pullNumber) return Promise.resolve(currentPull(Number(pullNumber)));
+    if (["POST", "PATCH"].includes(options.method) && path.includes("/issues/"))
+      writes.push({ path, body: options.body });
+    return request(path, options);
+  };
+  h.api.list = (path, key) =>
+    path.includes("/pulls?state=open&head=")
+      ? Promise.resolve([currentPull()])
+      : list(path.replace("/issues/13/", "/issues/12/").replace("/pulls/13/", "/pulls/12/"), key);
+  const event = native
+    ? nativeEvent
+    : {
+        action: "completed",
+        repository: { full_name: repository },
+        workflow_run: structuredClone(h.run),
+      };
+  const route = (pin = { number: 12, head_sha: head }) =>
+    h.route({ eventName: "workflow_run", event, scheduledPull: pin });
+  return {
+    h,
+    event,
+    route,
+    writes,
+    replacePull: () => {
+      currentNumber = 13;
+    },
+  };
+}
+
+for (const native of [false, true]) {
+  test(`completion matrix pin rejects A-keyed delivery after ${native ? "native" : "AI Review"} empty association moves to replacement B`, async () => {
+    const { h, event, route, writes, replacePull } = completionMatrixHarness({ native });
+    assert.equal(await resolveWakeupPrNumber(h.api, "workflow_run", event, repository), 12);
+    assert.equal(writes.length, 0);
+    replacePull();
+    await assert.rejects(route(), /pinned PR\/head/);
+    assert.deepEqual(writes, []);
+    assert.equal(h.mutations, 0);
+    assert.equal(h.checkpoint, null);
+    assert.equal(await route({ number: 13, head_sha: head }), "rerun-confirmed");
+    assert.equal(h.mutations, 1);
+    assert.equal(writes[0].path, `${root}/issues/13/comments`);
+    assert.ok(writes.every(({ path }) => !path.includes("/issues/12/")));
+  });
+  for (const pin of [
+    null,
+    {},
+    { head_sha: head },
+    { number: 12 },
+    { number: 0, head_sha: head },
+    { number: -1, head_sha: head },
+    { number: 12.5, head_sha: head },
+    { number: Number.MAX_SAFE_INTEGER + 1, head_sha: head },
+    { number: "12", head_sha: head },
+    { number: 12, head_sha: head.slice(0, 10) },
+    { number: 12, head_sha: "g".repeat(40) },
+    { number: 13, head_sha: head },
+    { number: 12, head_sha: other },
+  ])
+    test(`completion matrix pin rejects ${native ? "native" : "AI Review"} missing/malformed/mismatched pair ${JSON.stringify(pin)}`, async () => {
+      const { h, route, writes } = completionMatrixHarness({ native });
+      await assert.rejects(route(pin), /pinned .*context|pinned PR\/head/);
+      assert.deepEqual(writes, []);
+      assert.equal(h.mutations, 0);
+      assert.equal(h.checkpoint, null);
+    });
+  for (const linked of [false, true])
+    test(`completion matrix pin accepts independently verified ${native ? "native" : "AI Review"} ${linked ? "linked" : "empty"} association`, async () => {
+      const { h, route, writes } = completionMatrixHarness({ native, linked });
+      assert.equal(await route(), "rerun-confirmed");
+      assert.equal(h.mutations, 1);
+      assert.equal(writes[0].path, `${root}/issues/12/comments`);
+      assert.equal(await route(), "already-evaluated");
+      assert.equal(h.mutations, 1);
+    });
+  test(`completion matrix pin preserves A identity when ${native ? "native" : "AI Review"} source association changes before claim`, async () => {
+    const { h, route, writes, replacePull } = completionMatrixHarness({ native });
+    h.api.resolvedCommentIds = async () => {
+      replacePull();
+      return new Set();
+    };
+    await assert.rejects(route(), /source identity|superseded/);
+    assert.deepEqual(writes, []);
+    assert.equal(h.mutations, 0);
+    assert.equal(h.checkpoint, null);
   });
 }
