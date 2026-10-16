@@ -615,6 +615,18 @@ without rerunning; identical observations do nothing. This includes a strictly
 consumed rerun: before returning the unchanged-snapshot no-op, independently
 verify that actual new attempt's successful Codex gate and retain its own v2
 observation. Older acceptance or consumption alone cannot prove the new attempt.
+If the consumed attempt succeeded while transient evidence was present, then
+the old empty, neutral or blocking snapshot returns, reconcile that latest
+attempt's own native acceptance before any unchanged-snapshot return. Exact
+latest-attempt retained proof or the job/step/log proof below permits one real
+re-evaluation, bound to that attempt, its finite server acceptance time and the
+restored hash. Older history, generic success or unavailable latest proof is an
+explicit reconciliation blocker with no new checkpoint write or rerun POST.
+Retryable claims retain valid latest-attempt proof after log expiry. Current
+blocking evidence remains authoritative; history never clears it. An actual
+failed re-evaluation with unchanged evidence remains deduplicated. Unconsumed
+genuine negative mismatches retain their existing routing without a new log
+requirement.
 Observation failure stays explicit and retryable without a second rerun POST;
 uncertain posting still reconciles first. The retained proof permits later
 withdrawal even after that attempt's job logs expire. A prior accepted gate whose

@@ -618,13 +618,13 @@ export async function routeReviewWakeup({
   const alreadyConsumed = consumed(signal.checkpoint);
   let acceptance = null;
   // This happens only after any immutable POST has been positively settled.
-  // A consumed rerun can complete with fresh acceptance that must survive log expiry.
-  // Consumed absence stays a no-op; it cannot bootstrap another invalidation.
+  // A successful consumed rerun may have accepted transient evidence before the
+  // old absent/blocking hash returned. Only that latest attempt's native proof
+  // can authorize another evaluation; older history cannot establish convergence.
   if (
-    (!alreadyConsumed || signal.desired === "pass") &&
     run.status === "completed" &&
     run.conclusion === "success" &&
-    signal.desired !== "fail"
+    (signal.desired !== "fail" || alreadyConsumed)
   ) {
     const existing = applicableCheckpoint ? signal.checkpoint?.value.acceptance : null;
     if (
@@ -634,6 +634,8 @@ export async function routeReviewWakeup({
     )
       acceptance = existing;
     else acceptance = await acceptedGateHistory(api, run, headSha, signal.sources, now());
+    if (alreadyConsumed && signal.desired !== "pass" && !acceptance)
+      throw new Error("Latest successful native acceptance requires evidence reconciliation.");
     if (acceptance) {
       await assertSourceContext();
       await assertCurrentPull(api, number, headSha);
@@ -701,8 +703,8 @@ export async function routeReviewWakeup({
       signal.latest = Math.max(signal.latest || 0, Date.parse(acceptance.accepted_at));
     }
   }
-  if (alreadyConsumed) return "already-evaluated";
   const invalidatedAcceptance = acceptance && signal.desired !== "pass";
+  if (alreadyConsumed && !invalidatedAcceptance) return "already-evaluated";
   // Neutral summaries and an empty snapshot have the same lack of a verdict.
   // Neither delivery type nor an opaque settled claim proves native acceptance.
   if (signal.desired === null && !invalidatedAcceptance)

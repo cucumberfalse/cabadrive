@@ -246,7 +246,15 @@ attempt with current passing native evidence retains its own independently
 verified acceptance before the unchanged-snapshot no-op. This writes at most
 one observation, never another rerun; it preserves withdrawal history when the
 new attempt's logs later expire. Active, failed, skipped or unproven attempts do
-not acquire acceptance merely from consumption. Initial history requires the actual successful non-skipped Codex
+not acquire acceptance merely from consumption. If transient passing evidence
+disappears or a resolved root reopens, restoring an already consumed absent or
+blocking hash after an actual successful attempt, the router must reconcile
+that latest attempt's own native-gate proof. Valid exact-attempt retained history
+or job/step/log proof permits one real re-evaluation; older history or unavailable
+latest proof produces an explicit blocker with zero new scheduling mutation.
+The current finding remains blocking, and an actual failed re-evaluation deduplicates.
+Unconsumed negative mismatches keep their existing routing without a new log
+prerequisite. Initial history requires the actual successful non-skipped Codex
 gate step and a complete bounded job log with its exact full-head completion
 line. This history permits one real re-evaluation of empty or neutral-only
 current evidence; it never approves a review. Remaining genuine formal approval

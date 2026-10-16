@@ -1,5 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
+import { createHash } from "node:crypto";
 import { routeReviewWakeup } from "../scripts/ai-review-wakeup.mjs";
 import { createReviewApi } from "../scripts/ai-review-api.mjs";
 import { runReviewGate } from "../scripts/ai-review-gate.mjs";
@@ -1295,3 +1296,642 @@ for (const version of [1, 2])
     assert.equal(h.ledger.body, body);
     assert.equal(h.posts, 1);
   });
+
+// F27 uses actual gate evaluations between router deliveries. Gate diagnostics
+// are separate issue comments, never the scheduler's trusted checkpoint ledger.
+async function f27Gate(h, expected) {
+  const lines = [];
+  const api = {
+    ...h.api,
+    async request(path, options = {}) {
+      if (
+        options.method === "POST" &&
+        path.endsWith("/issues/12/comments") &&
+        JSON.parse(options.body).body.startsWith("AI Review gate failed.")
+      ) {
+        h.gateFailures = (h.gateFailures || 0) + 1;
+        return { id: 1000 + h.gateFailures };
+      }
+      return h.api.request(path, options);
+    },
+  };
+  assert.equal(
+    await runReviewGate({
+      api,
+      number: 12,
+      headSha: head,
+      runAttempt: h.run.run_attempt,
+      maxWaitMs: 0,
+      log: { log: (line) => lines.push(line), error() {}, warn() {} },
+    }),
+    expected,
+  );
+  return lines;
+}
+function f27Value(h) {
+  return JSON.parse(h.ledger.body.match(/v[12] (\{.*\}) -->$/)[1]);
+}
+function f27Hash(h) {
+  // Independently encode just the fixture's current trusted native inputs;
+  // edited-away receipt prose and the scheduler ledger are deliberately absent.
+  const signals = [
+    ...h.comments
+      .filter((c) => c.body.includes("<!-- codex-"))
+      .map((c) => ({
+        type: "comment",
+        id: c.id,
+        at: c.updated_at || c.created_at,
+        body: c.body,
+        login: c.user.login,
+      })),
+    ...h.inline.map((c) => ({
+      type: "inline",
+      id: c.id,
+      at: c.updated_at || c.created_at,
+      body: c.body,
+      resolved: h.resolved.has(c.in_reply_to_id || c.id),
+      login: c.user.login,
+    })),
+  ].sort((a, b) => `${a.type}:${a.id}`.localeCompare(`${b.type}:${b.id}`));
+  return createHash("sha256")
+    .update(JSON.stringify({ headSha: head, agent: "codex", signals }))
+    .digest("hex");
+}
+function f27AssertConsumed(h) {
+  const value = f27Value(h);
+  assert.equal(value.signal_hash, f27Hash(h), "restored snapshot must be exactly the old H");
+  assert.equal(value.source_attempt, 1);
+  assert.equal(h.run.run_attempt, 2);
+  assert.ok(Date.parse(h.run.run_started_at) > Date.parse(h.ledger.updated_at));
+  assert.ok(Date.parse(h.run.run_started_at) > Date.parse(value.signal_updated_at));
+  return value.signal_hash;
+}
+async function f27Lifecycle({
+  version = 2,
+  remainder = "empty",
+  negative = null,
+  action = "deleted",
+} = {}) {
+  const h = harness();
+  h.run.name = "AI Review";
+  h.comments = [comment()];
+  assert.equal((await f27Gate(h, true)).at(-1), `AI Review gate passed for codex on ${head}.`);
+  assert.equal(await h.route(), "observed-native-acceptance");
+  const rest = remainder === "neutral" ? [{ ...summary(), id: 45 }] : [];
+  if (negative) {
+    h.inline = [
+      {
+        id: 60,
+        user: bot,
+        body: negative === "P3" ? "[P3] Advisory" : "Unknown finding",
+        commit_id: negative === "older-head" ? "a".repeat(40) : head,
+        created_at: iso("10"),
+        updated_at: iso("10"),
+      },
+    ];
+  } else h.comments = rest;
+  await f27Gate(h, false);
+  assert.equal(await h.route(), "rerun-confirmed");
+  assert.equal(h.posts, 1);
+  let value = f27Value(h);
+  if (version === 1) {
+    for (const key of ["pr_number", "workflow_id", "agent", "acceptance"]) delete value[key];
+  } else if (!value.acceptance) {
+    Object.assign(value, {
+      pr_number: 12,
+      workflow_id: 7,
+      agent: "codex",
+      acceptance: {
+        attempt: 1,
+        job_id: 200,
+        started_at: iso("00"),
+        accepted_at: iso("04"),
+        sources: [{ id: 44, login: bot.login }],
+      },
+    });
+  }
+  h.ledger.body = `<!-- ai-review-wakeup:v${version} ${JSON.stringify(value)} -->`;
+  if (negative) h.resolved.add(60);
+  else
+    h.comments = [...rest, { ...comment(), id: 46, created_at: iso("31"), updated_at: iso("32") }];
+  const lines = await f27Gate(h, true);
+  h.run.status = "completed";
+  h.run.conclusion = "success";
+  h.jobs[0] = {
+    ...h.jobs[0],
+    id: 201,
+    run_attempt: 2,
+    started_at: iso("31"),
+    completed_at: iso("35"),
+    steps: [{ ...h.jobs[0].steps[0], started_at: iso("32"), completed_at: iso("34") }],
+  };
+  h.log = `2026-10-16T12:33:00.0000000Z ${lines.at(-1)}\r\n`;
+  h.advance(10 * 60 * 1000);
+  if (negative) h.resolved.delete(60);
+  else {
+    h.comments =
+      action === "edited"
+        ? [...rest, { ...comment("Withdrawn."), id: 46, updated_at: iso("36") }]
+        : rest;
+    const request = h.api.request;
+    h.api.request = async (path, options = {}) => {
+      if (path.endsWith("/issues/comments/46") && !options.method) {
+        if (action === "edited") return structuredClone(h.comments.find((c) => c.id === 46));
+        const error = new Error("Not Found");
+        error.status = 404;
+        throw error;
+      }
+      return request(path, options);
+    };
+  }
+  h.oldHash = f27AssertConsumed(h);
+  h.withdrawalOptions = {
+    eventName: "issue_comment",
+    event: {
+      ...h.event(action),
+      comment: {
+        ...comment(action === "edited" ? "Withdrawn." : receipt),
+        id: 46,
+        updated_at: action === "edited" ? iso("36") : iso("32"),
+      },
+    },
+  };
+  return h;
+}
+async function f27Converge(h, options) {
+  const before = h.writes;
+  assert.equal(await h.route(options), "rerun-confirmed");
+  const value = ledgerValue(h);
+  assert.equal(value.signal_hash, h.oldHash);
+  assert.equal(value.source_attempt, 2);
+  assert.equal(value.acceptance.attempt, 2);
+  assert.equal(value.acceptance.job_id, 201);
+  assert.equal(value.acceptance.accepted_at, iso("34"));
+  assert.ok(Date.parse(value.signal_updated_at) >= Date.parse(iso("34")));
+  assert.equal(h.writes, before + 2);
+  assert.equal(h.posts, 2);
+  assert.equal(await h.route(completionOptions()), "already-evaluated");
+  assert.equal(await h.route(), "already-evaluated");
+  await f27Gate(h, false);
+  h.run.status = "completed";
+  h.run.conclusion = "failure";
+  assert.equal(await h.route(completionOptions()), "already-evaluated");
+  assert.equal(await h.route(), "already-evaluated");
+  assert.equal(h.posts, 2);
+  assert.equal(h.writes, before + 2);
+}
+for (const version of [1, 2])
+  for (const mode of ["completion", "schedule"])
+    for (const action of ["edited", "deleted"])
+      for (const remainder of ["empty", "neutral"])
+        test(`F27 actual absence lifecycle v${version} ${mode} ${action}/${remainder}: repeated consumed H reconciles latest B`, async () => {
+          const h = await f27Lifecycle({ version, action, remainder });
+          await f27Converge(h, mode === "completion" ? completionOptions() : {});
+        });
+for (const version of [1, 2])
+  for (const mode of ["completion", "schedule"])
+    for (const negative of ["P3", "unknown", "older-head"])
+      test(`F27 actual reopened ${negative} root v${version} ${mode}: same REST data restores consumed negative H`, async () => {
+        const h = await f27Lifecycle({ version, negative });
+        await f27Converge(h, mode === "completion" ? completionOptions() : {});
+      });
+for (const outcome of ["absence", "negative"])
+  for (const version of [1, 2])
+    for (const mode of ["completion", "schedule"])
+      for (const [label, corrupt] of [
+        [
+          "expired latest log",
+          (h) => {
+            h.api.readJobLog = async () => {
+              throw new Error("Expired");
+            };
+          },
+        ],
+        [
+          "generic success",
+          (h) => {
+            h.log = "Build passed.\n";
+          },
+        ],
+        [
+          "skipped native step",
+          (h) => {
+            h.jobs[0].steps[0].conclusion = "skipped";
+          },
+        ],
+        [
+          "old attempt only",
+          (h) => {
+            h.jobs[0].run_attempt = 1;
+          },
+        ],
+        [
+          "missing jobs",
+          (h) => {
+            h.jobs = [];
+          },
+        ],
+      ])
+        test(`F27 consumed ${outcome} v${version} ${mode}: ${label} is an explicit blocker, never old-A acceptance`, async () => {
+          const h = await f27Lifecycle({ version, negative: outcome === "negative" ? "P3" : null });
+          corrupt(h);
+          const before = { writes: h.writes, posts: h.posts, body: h.ledger.body };
+          await assert.rejects(
+            h.route(mode === "completion" ? completionOptions() : {}),
+            /latest.*acceptance|acceptance.*reconcil/i,
+          );
+          assert.deepEqual({ writes: h.writes, posts: h.posts, body: h.ledger.body }, before);
+        });
+
+for (const outcome of ["absence", "negative"])
+  for (const mode of ["direct", "native-completion"])
+    test(`F27 ${outcome} ${mode} preserves exact delivery guards and converges`, async () => {
+      const h = await f27Lifecycle({ negative: outcome === "negative" ? "P3" : null });
+      const options =
+        mode === "native-completion"
+          ? nativeCompletionOptions(h)
+          : outcome === "negative"
+            ? consumedDelivery(h, "direct")
+            : h.withdrawalOptions;
+      await f27Converge(h, options);
+    });
+for (const outcome of ["absence", "negative"])
+  for (const version of [1, 2])
+    for (const phase of ["claimed", "posting"])
+      test(`F27 ${outcome} v${version} consumed ${phase} reconciles latest attempt`, async () => {
+        const h = await f27Lifecycle({
+          version,
+          negative: outcome === "negative" ? "unknown" : null,
+        });
+        const value = f27Value(h);
+        value.phase = phase;
+        h.ledger.body = `<!-- ai-review-wakeup:v${version} ${JSON.stringify(value)} -->`;
+        await f27Converge(h, {});
+      });
+for (const outcome of ["absence", "negative"])
+  for (const [label, corrupt] of [
+    [
+      "wrong head",
+      (h) => {
+        h.jobs[0].head_sha = "a".repeat(40);
+      },
+    ],
+    [
+      "wrong run",
+      (h) => {
+        h.jobs[0].run_id = 101;
+      },
+    ],
+    [
+      "wrong job",
+      (h) => {
+        h.jobs[0].name = "Bootstrap";
+      },
+    ],
+    [
+      "duplicate jobs",
+      (h) => {
+        h.jobs.push(structuredClone(h.jobs[0]));
+      },
+    ],
+    [
+      "wrong step",
+      (h) => {
+        h.jobs[0].steps[0].name = "Skipped native review";
+      },
+    ],
+    [
+      "duplicate steps",
+      (h) => {
+        h.jobs[0].steps.push(structuredClone(h.jobs[0].steps[0]));
+      },
+    ],
+    [
+      "wrong backend",
+      (h) => {
+        h.log = h.log.replace("for codex", "for claude");
+      },
+    ],
+    [
+      "wrong log head",
+      (h) => {
+        h.log = h.log.replace(head, "a".repeat(40));
+      },
+    ],
+    [
+      "duplicate outcome",
+      (h) => {
+        h.log += h.log;
+      },
+    ],
+    [
+      "malformed log time",
+      (h) => {
+        h.log = "not-a-time " + h.log;
+      },
+    ],
+    [
+      "oversized log",
+      (h) => {
+        h.log += "x".repeat(2 * 1024 * 1024);
+      },
+    ],
+    [
+      "future completion",
+      (h) => {
+        h.jobs[0].completed_at = "2099-01-01T00:00:00Z";
+      },
+    ],
+    [
+      "before attempt",
+      (h) => {
+        h.jobs[0].started_at = iso("01");
+      },
+    ],
+    [
+      "invalid step time",
+      (h) => {
+        h.jobs[0].steps[0].completed_at = "invalid";
+      },
+    ],
+    [
+      "before step log",
+      (h) => {
+        h.log = h.log.replace("12:33", "12:31");
+      },
+    ],
+    [
+      "unavailable jobs",
+      (h) => {
+        const list = h.api.list;
+        h.api.list = (path) => {
+          if (path.includes("/attempts/")) throw new Error("Unavailable");
+          return list(path);
+        };
+      },
+    ],
+  ])
+    test(`F27 restored ${outcome}: ${label} cannot prove latest acceptance`, async () => {
+      const h = await f27Lifecycle({ negative: outcome === "negative" ? "P3" : null });
+      corrupt(h);
+      const before = { body: h.ledger.body, writes: h.writes, posts: h.posts };
+      await assert.rejects(
+        h.route(),
+        /Latest successful native acceptance requires evidence reconciliation/,
+      );
+      assert.deepEqual({ body: h.ledger.body, writes: h.writes, posts: h.posts }, before);
+    });
+for (const outcome of ["absence", "negative"])
+  for (const state of ["active", "failure"])
+    test(`F27 restored ${outcome} ${state} stays deduplicated without log proof`, async () => {
+      const h = await f27Lifecycle({ negative: outcome === "negative" ? "P3" : null });
+      h.run.status = state === "active" ? "in_progress" : "completed";
+      h.run.conclusion = state === "active" ? null : "failure";
+      const before = { body: h.ledger.body, writes: h.writes, posts: h.posts };
+      h.reads.length = 0;
+      assert.equal(await h.route(), "already-evaluated");
+      assert.ok(!h.reads.some((path) => path.includes("/attempts/") || path.startsWith("log:")));
+      assert.deepEqual({ body: h.ledger.body, writes: h.writes, posts: h.posts }, before);
+    });
+for (const outcome of ["absence", "negative"])
+  for (const chronology of ["equal", "older", "missing", "invalid", "future"])
+    test(`F27 ${outcome}: uncertain posting ${chronology} settles before latest proof`, async () => {
+      const h = await f27Lifecycle({ negative: outcome === "negative" ? "P3" : null });
+      h.run.run_started_at =
+        chronology === "equal"
+          ? h.ledger.updated_at
+          : chronology === "older"
+            ? iso("00")
+            : chronology === "missing"
+              ? undefined
+              : chronology === "invalid"
+                ? "invalid"
+                : "2099-01-01T00:00:00Z";
+      const before = { body: h.ledger.body, writes: h.writes, posts: h.posts };
+      h.reads.length = 0;
+      await assert.rejects(h.route(), /uncertain/);
+      assert.ok(!h.reads.some((path) => path.includes("/attempts/") || path.startsWith("log:")));
+      assert.deepEqual({ body: h.ledger.body, writes: h.writes, posts: h.posts }, before);
+    });
+for (const outcome of ["absence", "negative"])
+  for (const mode of ["completion", "schedule"])
+    for (const boundary of ["claim-write", "before-posting"])
+      test(`F27 ${outcome} ${mode} ${boundary}: latest retained proof survives expiry and retries once`, async () => {
+        const h = await f27Lifecycle({ negative: outcome === "negative" ? "P3" : null });
+        const options = mode === "completion" ? completionOptions() : {};
+        let failed = false;
+        h.onRead = (_path, request = {}) => {
+          if (request.method === "PATCH") {
+            const next = JSON.parse(JSON.parse(request.body).body.match(/v2 (\{.*\}) -->$/)[1]);
+            if (
+              next.source_attempt === 2 &&
+              next.phase === (boundary === "claim-write" ? "claimed" : "posting") &&
+              !failed
+            ) {
+              failed = true;
+              throw new Error("Injected checkpoint write failure");
+            }
+          }
+        };
+        await assert.rejects(h.route(options), /Injected checkpoint/);
+        assert.equal(h.posts, 1);
+        h.onRead = () => {};
+        if (boundary === "claim-write") {
+          // No successful write retained B proof: read-only proof recovery still works.
+          assert.equal(f27Value(h).source_attempt, 1);
+          assert.equal(await h.route(options), "rerun-confirmed");
+        } else {
+          assert.equal(ledgerValue(h).phase, "claimed");
+          assert.equal(ledgerValue(h).acceptance.attempt, 2);
+          h.api.readJobLog = async () => {
+            throw new Error("Expired");
+          };
+          h.jobs = [];
+          h.reads.length = 0;
+          assert.equal(await h.route(options), "rerun-confirmed");
+          assert.ok(
+            !h.reads.some((path) => path.includes("/attempts/") || path.startsWith("log:")),
+          );
+        }
+        assert.equal(h.posts, 2);
+        h.run.status = "completed";
+        h.run.conclusion = "failure";
+        assert.equal(await h.route(options), "already-evaluated");
+        assert.equal(h.posts, 2);
+      });
+for (const outcome of ["absence", "negative"])
+  test(`F27 ${outcome}: network-uncertain C POST never replays or overwrites`, async () => {
+    const h = await f27Lifecycle({ negative: outcome === "negative" ? "P3" : null });
+    const request = h.api.request;
+    h.api.request = (path, options) => {
+      if (path.endsWith("/rerun")) {
+        h.posts++;
+        throw new Error("Unknown HTTP acceptance");
+      }
+      return request(path, options);
+    };
+    await assert.rejects(h.route(), /acceptance could not be confirmed/);
+    const before = { body: h.ledger.body, writes: h.writes, posts: h.posts };
+    assert.equal(ledgerValue(h).phase, "posting");
+    assert.equal(ledgerValue(h).source_attempt, 2);
+    await assert.rejects(h.route(completionOptions()), /uncertain/);
+    await assert.rejects(h.route(), /uncertain/);
+    assert.deepEqual({ body: h.ledger.body, writes: h.writes, posts: h.posts }, before);
+  });
+for (const outcome of ["absence", "negative"])
+  for (const boundary of [
+    "proof-head",
+    "proof-source",
+    "proof-attempt",
+    "claim-snapshot",
+    "posting-head",
+    "posting-attempt",
+    "post-snapshot",
+    "post-attempt",
+  ])
+    test(`F27 ${outcome}: ${boundary} race cannot rerun from stale proof`, async () => {
+      const h = await f27Lifecycle({ negative: outcome === "negative" ? "P3" : null });
+      let proofRead = false,
+        fired = false;
+      const readLog = h.api.readJobLog;
+      h.api.readJobLog = async (id) => {
+        const result = await readLog(id);
+        proofRead = true;
+        if (boundary === "proof-head") h.pull.head.sha = "a".repeat(40);
+        if (boundary === "proof-source") h.run.head_sha = "a".repeat(40);
+        if (boundary === "proof-attempt") h.run.run_attempt++;
+        return result;
+      };
+      h.onRead = (path, options = {}) => {
+        if (!proofRead || fired) return;
+        const value = f27Value(h);
+        if (boundary === "claim-snapshot" && path.endsWith("/issues/12/comments")) {
+          h.comments.push({ ...comment(), id: 47 });
+          fired = true;
+        }
+        if (
+          value.source_attempt === 2 &&
+          value.phase === "claimed" &&
+          path.endsWith("/pulls/12") &&
+          boundary === "posting-head"
+        ) {
+          h.pull.head.sha = "b".repeat(40);
+          fired = true;
+        }
+        if (
+          value.source_attempt === 2 &&
+          value.phase === "claimed" &&
+          path.endsWith("/runs/100") &&
+          boundary === "posting-attempt"
+        ) {
+          h.run.run_attempt++;
+          fired = true;
+        }
+        if (
+          value.source_attempt === 2 &&
+          value.phase === "posting" &&
+          !options.method &&
+          boundary === "post-snapshot" &&
+          path.endsWith("/issues/12/comments")
+        ) {
+          h.comments.push({ ...comment(), id: 47 });
+          fired = true;
+        }
+        if (
+          value.source_attempt === 2 &&
+          value.phase === "posting" &&
+          path.endsWith("/runs/100") &&
+          boundary === "post-attempt"
+        ) {
+          h.run.run_attempt++;
+          fired = true;
+        }
+      };
+      await assert.rejects(h.route(), /changed|immutable|current|rerun|exact-head|closed|invalid/i);
+      assert.equal(h.posts, 1);
+      if (boundary.startsWith("proof-") || boundary === "claim-snapshot")
+        assert.equal(f27Value(h).source_attempt, 1);
+    });
+
+for (const remainder of ["empty", "neutral"])
+  test(`F27 direct exact current edit with ${remainder} remainder invalidates latest attempt once`, async () => {
+    const h = await f27Lifecycle({ action: "edited", remainder });
+    await f27Converge(h, h.withdrawalOptions);
+  });
+for (const outcome of ["absence", "negative"])
+  for (const mode of ["direct", "native-completion"])
+    test(`F27 ${outcome} ${mode} unavailable latest proof is nonmutating`, async () => {
+      const h = await f27Lifecycle({ negative: outcome === "negative" ? "P3" : null });
+      h.api.readJobLog = async () => {
+        throw new Error("Unavailable");
+      };
+      const options =
+        mode === "native-completion"
+          ? nativeCompletionOptions(h)
+          : outcome === "negative"
+            ? consumedDelivery(h, "direct")
+            : h.withdrawalOptions;
+      const before = { body: h.ledger.body, writes: h.writes, posts: h.posts };
+      await assert.rejects(
+        h.route(options),
+        /Latest successful native acceptance requires evidence reconciliation/,
+      );
+      assert.deepEqual({ body: h.ledger.body, writes: h.writes, posts: h.posts }, before);
+    });
+for (const outcome of ["absence", "negative"])
+  for (const boundary of ["proof", "posting"])
+    test(`F27 ${outcome} native actor changes at ${boundary} boundary cannot mutate another source`, async () => {
+      const h = await f27Lifecycle({ negative: outcome === "negative" ? "P3" : null });
+      const options = nativeCompletionOptions(h);
+      const request = h.api.request;
+      let proofRead = false;
+      const readLog = h.api.readJobLog;
+      h.api.readJobLog = async (id) => {
+        const result = await readLog(id);
+        proofRead = true;
+        return result;
+      };
+      h.api.request = async (path, opts) => {
+        const result = await request(path, opts);
+        if (
+          path.endsWith("/runs/88") &&
+          proofRead &&
+          (boundary === "proof" || f27Value(h).source_attempt === 2)
+        )
+          result.triggering_actor = { login: "untrusted-user" };
+        return result;
+      };
+      const before = h.writes;
+      await assert.rejects(h.route(options), /actor provenance/);
+      assert.equal(h.posts, 1);
+      assert.equal(h.writes, before + (boundary === "proof" ? 0 : 1));
+    });
+for (const kind of ["head", "other-run"])
+  test(`F27 prior ${kind} uncertain posting must settle before latest success reconciliation`, async () => {
+    const h = await f27Lifecycle();
+    const value = f27Value(h);
+    if (kind === "head") value.head_sha = "a".repeat(40);
+    else value.run_id = 101;
+    setLedgerValue(h, value);
+    const before = { body: h.ledger.body, writes: h.writes, posts: h.posts };
+    const request = h.api.request;
+    h.api.request = async (path, options) =>
+      path.endsWith("/runs/101")
+        ? { ...h.run, id: 101, run_attempt: 1, run_started_at: iso("00") }
+        : request(path, options);
+    h.reads.length = 0;
+    await assert.rejects(h.route(), /Prior checkpoint|uncertain/);
+    assert.ok(!h.reads.some((path) => path.includes("/attempts/") || path.startsWith("log:")));
+    assert.deepEqual({ body: h.ledger.body, writes: h.writes, posts: h.posts }, before);
+  });
+test("F27 a remaining genuine formal positive records latest acceptance without absence rerun", async () => {
+  const h = await f27Lifecycle();
+  h.reviews = [
+    { id: 70, user: bot, commit_id: head, state: "APPROVED", body: "", submitted_at: iso("32") },
+  ];
+  assert.equal(await h.route(), "observed-native-acceptance");
+  assert.equal(ledgerValue(h).acceptance.attempt, 2);
+  assert.equal(h.posts, 1);
+  assert.equal(await h.route(), "already-observed");
+  assert.equal(h.posts, 1);
+});
