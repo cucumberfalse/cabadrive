@@ -11,6 +11,7 @@ import {
   isTrustedAssociation,
   isTrustedReviewLogin,
   latestCodexNativeReviewResult,
+  latestCodexResult,
   trustedReviewLoginsForAgent,
 } from "../scripts/ai-review-helpers.mjs";
 
@@ -290,4 +291,144 @@ test("latestCodexNativeReviewResult rejects unknown login even with trusted asso
   assert.equal(isTrustedAssociation(review.author_association), true);
   assert.equal(classifyCodexNativeReview(review, [], headSha), null);
   assert.equal(latestCodexNativeReviewResult([review], [], headSha), null);
+});
+
+test("F25 explicit P3-only formal finding is advisory", () => {
+  const head = "a".repeat(40);
+  const review = {
+    id: 1,
+    commit_id: head,
+    user: { login: "chatgpt-codex-connector[bot]" },
+    state: "COMMENTED",
+    body: "[P3] Found an issue",
+    submitted_at: "2026-10-16T12:00:00Z",
+  };
+  assert.equal(classifyCodexNativeReview(review, [], head), "pass");
+  assert.equal(latestCodexNativeReviewResult([review], [], head), "pass");
+});
+
+const p3Head = "a".repeat(40);
+const p3Formal = (extra = {}) => ({
+  id: 1,
+  commit_id: p3Head,
+  user: { login: "chatgpt-codex-connector[bot]" },
+  state: "COMMENTED",
+  body: "[P3] Found an issue",
+  submitted_at: "2026-10-16T12:00:00Z",
+  ...extra,
+});
+for (const body of [
+  "[P3] Found an issue.",
+  "[p3] found 2 findings",
+  "  [P3] Found an issue\r\n\r\n[P3] Found a finding!",
+  "[P3] Found an issue\n[P3] Found 2 issues.",
+])
+  test(`F25 bounded P3 advisory units ${JSON.stringify(body)}`, () =>
+    assert.equal(classifyCodexNativeReview(p3Formal({ body }), [], p3Head), "pass"));
+for (const body of [
+  ...["P0", "P1", "P2", "unknown", "P4"].map((p) => `[P3] Found an issue\n[${p}] Found an issue`),
+  "[P3] Found an issue\nFound an issue",
+  "[P3] Advisory\nFound an issue",
+  "Found an issue [P3]",
+  "[P3] Found an issue; [unknown] Found an issue",
+  "[P3] Found an issue with arbitrary trailing prose",
+  "[P3] Advice: Found an issue",
+  "[P3] Found an issue\nReview is still running.",
+  "[P3] Found an issue\nReview pending.",
+  "[P3] Found an issue\nReview incomplete.",
+  "[P3] Found an issue\nReview failed.",
+  "[P3] Found an issue\nThere are unresolved findings.",
+  "[P3] Found an issue\nChanges requested.",
+])
+  test(`F25 P3 marker cannot hide ${JSON.stringify(body)}`, () =>
+    assert.equal(classifyCodexNativeReview(p3Formal({ body }), [], p3Head), "fail"));
+for (const extra of [{ state: "CHANGES_REQUESTED" }, { state: "APPROVED" }])
+  test(`F25 advisory exception is COMMENTED-only ${extra.state}`, () =>
+    assert.equal(classifyCodexNativeReview(p3Formal(extra), [], p3Head), "fail"));
+for (const extra of [
+  { commit_id: null },
+  { commit_id: "b".repeat(40) },
+  { user: { login: "human" } },
+])
+  test(`F25 P3 advisory retains full-head/author trust ${JSON.stringify(extra)}`, () =>
+    assert.equal(classifyCodexNativeReview(p3Formal(extra), [], p3Head), null));
+test("F25 latest blocking formal, correction and dismissal keep their precedence", () => {
+  const advisory = p3Formal();
+  const block = p3Formal({ id: 2, submitted_at: "2026-10-16T12:01:00Z", body: "Found an issue" });
+  assert.equal(latestCodexNativeReviewResult([advisory, block], [], p3Head), "fail");
+  assert.equal(
+    latestCodexNativeReviewResult(
+      [advisory, { ...block, body: "[P3] Found an issue" }],
+      [],
+      p3Head,
+    ),
+    "pass",
+  );
+  assert.equal(
+    latestCodexNativeReviewResult([advisory, { ...block, state: "DISMISSED" }], [], p3Head),
+    "pass",
+  );
+});
+
+const f26Residuals = [
+  "Found another issue.",
+  "Found a remaining issue.",
+  "[Unknown] Found another finding.",
+];
+const f26Bodies = f26Residuals.flatMap((residual) => [
+  `[P3] Found an issue.\n${residual}`,
+  `${residual}\n[P3] Found an issue.`,
+  `\n[P3] Found an issue.\n\n${residual}\n`,
+  `[P3] Found an issue. ${residual}`,
+]);
+for (const body of f26Bodies) {
+  test(`F26 entire original mixed body retains classifier veto ${JSON.stringify(body)}`, () =>
+    assert.equal(classifyCodexNativeReview(p3Formal({ body }), [], p3Head), "fail"));
+  test(`F26 entire original mixed body retains latest formal veto ${JSON.stringify(body)}`, () =>
+    assert.equal(latestCodexNativeReviewResult([p3Formal({ body })], [], p3Head), "fail"));
+  test(`F26 newer issue receipt cannot clear residual formal veto ${JSON.stringify(body)}`, () => {
+    const receipt = {
+      id: 3,
+      user: p3Formal().user,
+      body: `<!-- codex-review-receipt:v1 -->\n\nCodex Review: Didn't find any major issues.\n\n**Reviewed commit:** \`${p3Head}\``,
+      created_at: "2026-10-16T12:02:00Z",
+      updated_at: "2026-10-16T12:02:00Z",
+    };
+    assert.equal(latestCodexResult([p3Formal({ body })], [], [receipt], p3Head).result, "fail");
+  });
+}
+
+for (const body of [
+  "[P3] Found an issue",
+  "\n\n [P3] Found an issue.\n\n",
+  "\t[p3] found 2 findings! \r\n\r\n[P3] Found a finding.\r\n",
+  "[P3] Found an issue\n[P3] Found 2 issues.",
+])
+  test(`F26 whole-body advisory normalization control ${JSON.stringify(body)}`, () =>
+    assert.equal(classifyCodexNativeReview(p3Formal({ body }), [], p3Head), "pass"));
+for (const body of [
+  "",
+  "Non-blocking review.",
+  "Found another issue.",
+  "Found a remaining issue.",
+  "[Unknown] Found another finding.",
+])
+  test(`F26 unrelated legacy standalone-body behavior unchanged ${JSON.stringify(body)}`, () =>
+    assert.equal(classifyCodexNativeReview(p3Formal({ body }), [], p3Head), "pass"));
+test("F26 original mixed formal veto clears only on genuine correction or dismissal", () => {
+  const old = p3Formal();
+  const latest = p3Formal({
+    id: 2,
+    submitted_at: "2026-10-16T12:01:00Z",
+    body: "[P3] Found an issue.\nFound another issue.",
+  });
+  assert.equal(latestCodexNativeReviewResult([old, latest], [], p3Head), "fail");
+  assert.equal(
+    latestCodexNativeReviewResult([old, { ...latest, body: "[P3] Found an issue." }], [], p3Head),
+    "pass",
+  );
+  assert.equal(
+    latestCodexNativeReviewResult([old, { ...latest, state: "DISMISSED" }], [], p3Head),
+    "pass",
+  );
 });

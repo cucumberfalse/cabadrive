@@ -615,10 +615,17 @@ export async function routeReviewWakeup({
     state.value.signal_hash === signal.hash &&
     confirmsCheckpointAttempt(run, state, now()) &&
     Date.parse(run.run_started_at) > signal.latest;
-  if (consumed(signal.checkpoint)) return "already-evaluated";
+  const alreadyConsumed = consumed(signal.checkpoint);
   let acceptance = null;
   // This happens only after any immutable POST has been positively settled.
-  if (run.status === "completed" && run.conclusion === "success" && signal.desired !== "fail") {
+  // A consumed rerun can complete with fresh acceptance that must survive log expiry.
+  // Consumed absence stays a no-op; it cannot bootstrap another invalidation.
+  if (
+    (!alreadyConsumed || signal.desired === "pass") &&
+    run.status === "completed" &&
+    run.conclusion === "success" &&
+    signal.desired !== "fail"
+  ) {
     const existing = applicableCheckpoint ? signal.checkpoint?.value.acceptance : null;
     if (
       existing?.attempt === run.run_attempt &&
@@ -694,6 +701,7 @@ export async function routeReviewWakeup({
       signal.latest = Math.max(signal.latest || 0, Date.parse(acceptance.accepted_at));
     }
   }
+  if (alreadyConsumed) return "already-evaluated";
   const invalidatedAcceptance = acceptance && signal.desired !== "pass";
   // Neutral summaries and an empty snapshot have the same lack of a verdict.
   // Neither delivery type nor an opaque settled claim proves native acceptance.

@@ -194,6 +194,15 @@ reviews require a full matching `commit_id`; the existing `APPROVED` and
 A current formal `CHANGES_REQUESTED`, or a formal review with blocking `P0`,
 `P1`, or `P2` content, vetoes issue receipts until the formal review is actually
 corrected or dismissed. Formal `P3` content alone does not introduce a new veto.
+The `COMMENTED` advisory exception requires the entire body to consist of one
+or more complete `[P3] Found an issue` lines (or the same bounded `Found` phrase
+with a numeric count or `finding(s)`, and optional terminal period/exclamation
+mark), plus layout whitespace. Multiple supported lines, case and CRLF
+normalization are supported. Any residual non-whitespace prose keeps the
+original complete body under existing vetoes; supported lines are never
+partially exempted from a mixed body. A P3 token elsewhere cannot hide unlabelled
+or unknown-priority findings. Explicit negative, unfinished or unresolved review
+state and mixed P0–P2 content still veto; actual unresolved P3 roots still block.
 
 A trusted issue comment can approve only with an explicit supported no-findings
 verdict and matching reviewed commit. Supported forms are the legacy
@@ -232,7 +241,12 @@ withdraw the last positive even when no native marker remains. The router checks
 configured original-author trust, comment/PR identity, current edit or actual API
 404, and the context job's immutable PR/full-head pair. A strict trusted-bot
 scheduling observation can retain proven prior Codex acceptance for that exact
-run/attempt. Initial history requires the actual successful non-skipped Codex
+run/attempt. After a rerun is strictly consumed, a genuinely successful new Codex
+attempt with current passing native evidence retains its own independently
+verified acceptance before the unchanged-snapshot no-op. This writes at most
+one observation, never another rerun; it preserves withdrawal history when the
+new attempt's logs later expire. Active, failed, skipped or unproven attempts do
+not acquire acceptance merely from consumption. Initial history requires the actual successful non-skipped Codex
 gate step and a complete bounded job log with its exact full-head completion
 line. This history permits one real re-evaluation of empty or neutral-only
 current evidence; it never approves a review. Remaining genuine formal approval

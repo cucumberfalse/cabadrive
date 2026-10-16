@@ -269,11 +269,23 @@ export function classifyCodexNativeReview(review, reviewComments = [], headSha, 
   const login = normalizeLogin(review.user?.login);
   if (!isTrustedReviewLogin(login, "codex", config)) return null;
   if (review.state === "DISMISSED") return null;
+  const body = review.body || "";
+  // The exception requires the entire body to contain only bounded P3 units.
+  // Any residual prose keeps the original body under all existing vetoes.
+  const advisoryRemainder = body.replace(
+    /^[ \t]*\[P3\][ \t]+found (?:an? |[0-9]+ )?(?:issues?|findings?)[.!]?[ \t]*$/gim,
+    "",
+  );
+  const findingBody =
+    review.state === "COMMENTED" && advisoryRemainder !== body && !advisoryRemainder.trim()
+      ? ""
+      : body;
   if (
-    containsBlockingSeverity(review.body, "codex") ||
-    /review (?:is )?(?:still )?(?:pending|running|in progress)|changes requested|(?:found|unresolved) (?:an? |[0-9]+ )?(?:issues?|findings?)/i.test(
-      review.body || "",
-    )
+    containsBlockingSeverity(body, "codex") ||
+    /review (?:is )?(?:still )?(?:pending|running|in progress|incomplete|failed)|changes requested|unresolved (?:an? |[0-9]+ )?(?:issues?|findings?)/i.test(
+      body,
+    ) ||
+    /found (?:an? |[0-9]+ )?(?:issues?|findings?)/i.test(findingBody)
   )
     return "fail";
 

@@ -1957,3 +1957,84 @@ test("fork association alone cannot schedule a stale receipt with no applicable 
   assert.equal(h.mutations, 0);
   assert.equal(h.checkpoint, null);
 });
+
+for (const resolved of [false, true])
+  test(`F25 actual gate exact P3 formal root ${resolved ? "resolved" : "unresolved"}`, async () => {
+    const body = "[P3] Found an issue";
+    const api = gateApi({
+      comments: [],
+      reviews: [makeReview({ body })],
+      inline: [{ id: 44, user, body, commit_id: head, pull_request_review_id: 3 }],
+      resolved: resolved ? [44] : [],
+    });
+    assert.equal(await gate(api), resolved);
+  });
+
+for (const priority of ["P3", "unknown"])
+  for (const commit_id of [head, other])
+    test(`F25 P3 formal advisory cannot hide unresolved ${priority}/${commit_id}`, async () =>
+      assert.equal(
+        await gate(
+          gateApi({
+            reviews: [makeReview({ body: "[P3] Found an issue" })],
+            inline: [
+              {
+                id: 44,
+                user,
+                body: `[${priority}] Found an issue`,
+                commit_id,
+                pull_request_review_id: 999,
+              },
+            ],
+          }),
+        ),
+        false,
+      ));
+for (const body of [
+  "[P3] Found an issue\n[P2] Regression",
+  "[P3] Found an issue\nFound an issue",
+  "[P3] Found an issue\nReview is still running.",
+  "[P3] Found an issue\nThere are unresolved findings.",
+])
+  test(`F25 actual gate preserves formal veto ${JSON.stringify(body)}`, async () =>
+    assert.equal(await gate(gateApi({ reviews: [makeReview({ body })] })), false));
+test("F25 corrected or dismissed latest formal permits actual resolved advisory", async () => {
+  const advisory = makeReview({ body: "[P3] Found an issue" });
+  const blocking = makeReview({
+    id: 4,
+    body: "Found an issue",
+    submitted_at: "2026-10-15T12:01:00Z",
+  });
+  assert.equal(await gate(gateApi({ reviews: [advisory, blocking] })), false);
+  assert.equal(
+    await gate(gateApi({ reviews: [advisory, { ...blocking, body: advisory.body }] })),
+    true,
+  );
+  assert.equal(
+    await gate(gateApi({ reviews: [advisory, { ...blocking, state: "DISMISSED" }] })),
+    true,
+  );
+});
+
+for (const residual of [
+  "Found another issue.",
+  "Found a remaining issue.",
+  "[Unknown] Found another finding.",
+])
+  for (const body of [
+    `[P3] Found an issue.\n${residual}`,
+    `${residual}\n[P3] Found an issue.`,
+    `\n[P3] Found an issue.\n\n${residual}\n`,
+    `[P3] Found an issue. ${residual}`,
+  ])
+    test(`F26 actual gate resolved P3 root preserves original mixed formal veto ${JSON.stringify(body)}`, async () => {
+      const api = gateApi({
+        comments: [makeComment({ updated_at: "2026-10-15T12:02:00Z" })],
+        reviews: [makeReview({ body })],
+        inline: [
+          { id: 44, user, body: "[P3] Found an issue", commit_id: head, pull_request_review_id: 3 },
+        ],
+        resolved: [44],
+      });
+      assert.equal(await gate(api), false);
+    });

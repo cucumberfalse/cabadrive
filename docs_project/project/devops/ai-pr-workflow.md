@@ -611,7 +611,13 @@ Codex acceptance history bound to the PR/full head, workflow/run/attempt, finite
 server times, and observed issue-comment identities where available. Version-1
 claims remain strictly parsed. After settling any uncertain posting, a successful
 actual Codex gate with a genuine current positive may write one observation
-without rerunning; identical observations do nothing. A prior accepted gate whose
+without rerunning; identical observations do nothing. This includes a strictly
+consumed rerun: before returning the unchanged-snapshot no-op, independently
+verify that actual new attempt's successful Codex gate and retain its own v2
+observation. Older acceptance or consumption alone cannot prove the new attempt.
+Observation failure stays explicit and retryable without a second rerun POST;
+uncertain posting still reconciles first. The retained proof permits later
+withdrawal even after that attempt's job logs expire. A prior accepted gate whose
 last permitted positive disappears can requeue once with a stable empty or
 neutral-only snapshot hash and finite historical server time. A remaining genuine
 formal positive needs no invalidation. The real gate independently evaluates the
@@ -634,6 +640,13 @@ after proof and at mutation boundaries. Skipped/bootstrap-only, failed, unrelate
 unavailable or ambiguous history cannot authorize absence requeues. Native Signal
 logs and artifacts remain untrusted; target-gate logs are scheduling history only,
 never native verdicts or executable input. Schedule time never becomes evidence.
+
+A resolved formal P3 advisory is non-blocking only under the bounded
+[review contract](review-contract.md#codex): the complete `COMMENTED` body must
+contain only supported P3 historical-finding lines and layout whitespace. Any
+residual prose retains checks of the original complete body, rather than a
+partially stripped remainder. All actual unresolved roots and explicit state,
+severity, full-head and author guards remain independent.
 
 This workflow becomes effective after protected deployment to the default branch.
 A PR-only parser/router change cannot repair its own trusted-main gate. Manual

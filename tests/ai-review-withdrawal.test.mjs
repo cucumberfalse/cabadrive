@@ -24,6 +24,7 @@ function harness() {
     comments: [],
     reviews: [],
     inline: [],
+    resolved: new Set(),
     ledger: null,
     writes: 0,
     posts: 0,
@@ -92,7 +93,7 @@ function harness() {
       return h.log;
     },
     async resolvedCommentIds() {
-      return new Set();
+      return new Set(h.resolved);
     },
     async request(path, options = {}) {
       h.reads.push(path);
@@ -131,6 +132,9 @@ function harness() {
       throw new Error(`Unexpected request ${path}`);
     },
   });
+  h.advance = (ms) => {
+    clock += ms;
+  };
   h.event = (action = "edited") => ({
     action,
     repository: { full_name: repo },
@@ -921,4 +925,373 @@ for (const mode of ["direct", "completion", "native-completion", "schedule"])
       assert.equal(await h.route(options), "rerun-confirmed");
       assert.equal(h.posts, 1);
     }
+  });
+
+async function consumedSuccessfulRerun(version = 1, phase = "posting") {
+  const h = harness();
+  h.run.name = "AI Review";
+  h.run.conclusion = "failure";
+  h.comments = [comment()];
+  assert.equal(await h.route(), "rerun-confirmed");
+  assert.equal(h.posts, 1);
+  const value = JSON.parse(h.ledger.body.match(/v1 (\{.*\}) -->$/)[1]);
+  value.phase = phase;
+  if (version === 2)
+    Object.assign(value, {
+      pr_number: 12,
+      workflow_id: 7,
+      agent: "codex",
+      acceptance: {
+        attempt: 1,
+        job_id: 200,
+        started_at: iso("00"),
+        accepted_at: iso("04"),
+        sources: [{ id: 44, login: bot.login }],
+      },
+    });
+  h.ledger.body = `<!-- ai-review-wakeup:v${version} ${JSON.stringify(value)} -->`;
+  h.run.status = "completed";
+  h.run.conclusion = "success";
+  h.jobs[0] = {
+    ...h.jobs[0],
+    id: 201,
+    run_attempt: 2,
+    started_at: iso("31"),
+    completed_at: iso("35"),
+    steps: [{ ...h.jobs[0].steps[0], started_at: iso("32"), completed_at: iso("34") }],
+  };
+  h.log = `2026-10-16T12:33:00.0000000Z AI Review gate passed for codex on ${head}.\r\n`;
+  h.advance(10 * 60 * 1000);
+  return h;
+}
+for (const version of [1, 2])
+  for (const mode of ["completion", "schedule"])
+    for (const action of ["edited", "deleted"])
+      for (const remainder of ["empty", "neutral"])
+        test(`F24 consumed v${version} ${mode}: retain new acceptance then ${action}/${remainder} after logs expire`, async () => {
+          const h = await consumedSuccessfulRerun(version);
+          const before = h.writes;
+          const options = mode === "completion" ? completionOptions() : {};
+          assert.equal(await h.route(options), "observed-native-acceptance");
+          const proof = ledgerValue(h);
+          assert.equal(proof.phase, "observed");
+          assert.equal(proof.source_attempt, 2);
+          assert.equal(proof.acceptance.attempt, 2);
+          assert.equal(proof.acceptance.job_id, 201);
+          assert.equal(proof.acceptance.accepted_at, iso("34"));
+          assert.equal(h.writes, before + 1);
+          assert.equal(h.posts, 1);
+          h.api.readJobLog = async () => {
+            throw new Error("Logs expired");
+          };
+          assert.equal(await h.route(options), "already-observed");
+          assert.equal(h.writes, before + 1);
+          h.comments = remainder === "empty" ? [] : [{ ...summary(), id: 45 }];
+          if (action === "edited") h.currentComment = comment("Withdrawn.");
+          assert.equal(
+            await h.route({ eventName: "issue_comment", event: h.event(action) }),
+            "rerun-confirmed",
+          );
+          const absence = ledgerValue(h);
+          assert.ok(Number.isFinite(Date.parse(absence.signal_updated_at)));
+          assert.equal(absence.acceptance.attempt, 2);
+          assert.equal(h.posts, 2);
+          h.run.status = "completed";
+          h.run.conclusion = "failure";
+          assert.equal(await h.route(completionOptions()), "already-evaluated");
+          assert.equal(await h.route(), "already-evaluated");
+          assert.equal(ledgerValue(h).signal_hash, absence.signal_hash);
+          assert.equal(h.posts, 2);
+        });
+
+test("F25 actual P3 thread resolution changes terminal native outcome once", async () => {
+  const h = harness();
+  h.run.conclusion = "failure";
+  h.reviews = [
+    {
+      id: 50,
+      user: bot,
+      commit_id: head,
+      state: "COMMENTED",
+      body: "[P3] Found an issue",
+      submitted_at: iso("10"),
+    },
+  ];
+  h.inline = [
+    {
+      id: 51,
+      user: bot,
+      commit_id: head,
+      pull_request_review_id: 50,
+      body: "[P3] Found an issue",
+      created_at: iso("10"),
+      updated_at: iso("10"),
+    },
+  ];
+  assert.equal(await h.route(), "matching-outcome");
+  assert.equal(h.writes + h.posts, 0);
+  h.resolved.add(51);
+  assert.equal(await h.route(), "rerun-confirmed");
+  assert.equal(h.posts, 1);
+  assert.equal(await h.route(), "already-evaluated");
+  assert.equal(h.posts, 1);
+});
+
+const consumedDelivery = (h, mode) =>
+  mode === "completion"
+    ? completionOptions()
+    : mode === "native-completion"
+      ? nativeCompletionOptions(h)
+      : mode === "direct"
+        ? {
+            eventName: "issue_comment",
+            event: {
+              action: "created",
+              repository: { full_name: repo },
+              issue: { number: 12, pull_request: {} },
+              comment: comment(),
+            },
+          }
+        : {};
+for (const version of [1, 2])
+  for (const phase of ["claimed", "posting"])
+    for (const mode of ["direct", "native-completion", "completion", "schedule"])
+      test(`F24 v${version} consumed ${phase} ${mode} records new attempt exactly once`, async () => {
+        const h = await consumedSuccessfulRerun(version, phase);
+        const before = h.writes;
+        const options = consumedDelivery(h, mode);
+        assert.equal(await h.route(options), "observed-native-acceptance");
+        assert.equal(ledgerValue(h).acceptance.attempt, 2);
+        assert.equal(ledgerValue(h).acceptance.job_id, 201);
+        assert.equal(await h.route(options), "already-observed");
+        assert.equal(h.writes, before + 1);
+        assert.equal(h.posts, 1);
+      });
+for (const version of [1, 2])
+  for (const mode of ["completion", "schedule"])
+    for (const [name, mutate] of [
+      [
+        "active",
+        (h) => {
+          h.run.status = "in_progress";
+          h.run.conclusion = null;
+        },
+      ],
+      [
+        "failed",
+        (h) => {
+          h.run.conclusion = "failure";
+        },
+      ],
+      [
+        "skipped",
+        (h) => {
+          h.jobs[0].steps[0].conclusion = "skipped";
+        },
+      ],
+      [
+        "generic success",
+        (h) => {
+          h.log = "Bootstrap success.\n";
+        },
+      ],
+      [
+        "wrong attempt",
+        (h) => {
+          h.jobs[0].run_attempt = 1;
+        },
+      ],
+      [
+        "old job chronology",
+        (h) => {
+          h.jobs[0].started_at = iso("01");
+        },
+      ],
+      [
+        "future job chronology",
+        (h) => {
+          h.jobs[0].completed_at = "2099-01-01T00:00:00Z";
+        },
+      ],
+      [
+        "unavailable log",
+        (h) => {
+          h.api.readJobLog = async () => {
+            throw new Error("Expired");
+          };
+        },
+      ],
+    ])
+      test(`F24 consumed v${version}/${mode}/${name} cannot acquire native acceptance`, async () => {
+        const h = await consumedSuccessfulRerun(version);
+        mutate(h);
+        const before = h.writes,
+          body = h.ledger.body;
+        const result = await h.route(consumedDelivery(h, mode));
+        assert.equal(result, "already-evaluated");
+        assert.equal(h.writes, before);
+        assert.equal(h.ledger.body, body);
+        assert.equal(h.posts, 1);
+      });
+for (const version of [1, 2])
+  for (const mode of ["completion", "schedule"])
+    for (const started of ["equal", "older", "invalid", "missing", "future"])
+      test(`F24 v${version}/${mode} unknown posting ${started} reconciles before observing`, async () => {
+        const h = await consumedSuccessfulRerun(version);
+        h.run.run_started_at =
+          started === "equal"
+            ? h.ledger.updated_at
+            : started === "older"
+              ? iso("00")
+              : started === "future"
+                ? "2099-01-01T00:00:00Z"
+                : started === "invalid"
+                  ? "invalid"
+                  : undefined;
+        const before = h.writes,
+          body = h.ledger.body;
+        await assert.rejects(h.route(consumedDelivery(h, mode)), /uncertain/);
+        assert.equal(h.writes, before);
+        assert.equal(h.ledger.body, body);
+        assert.equal(h.posts, 1);
+      });
+for (const mode of ["completion", "schedule"])
+  test(`F24 consumed ${mode} observation write error remains retryable without POST`, async () => {
+    const h = await consumedSuccessfulRerun(2);
+    const before = h.writes,
+      body = h.ledger.body;
+    const options = consumedDelivery(h, mode);
+    h.onRead = (_path, options = {}) => {
+      if (options.method === "PATCH") throw new Error("Observation write denied");
+    };
+    await assert.rejects(h.route(options), /Observation write denied/);
+    assert.equal(h.writes, before);
+    assert.equal(h.ledger.body, body);
+    assert.equal(h.posts, 1);
+    h.onRead = () => {};
+    assert.equal(await h.route(options), "observed-native-acceptance");
+    assert.equal(h.posts, 1);
+    assert.equal(h.writes, before + 1);
+  });
+for (const mode of ["completion", "schedule"])
+  for (const boundary of [
+    "history-head",
+    "history-attempt",
+    "source",
+    "snapshot",
+    "final-head",
+    "final-run",
+  ])
+    test(`F24 consumed ${mode} ${boundary} race rejects observation`, async () => {
+      const h = await consumedSuccessfulRerun(2);
+      const before = h.writes,
+        body = h.ledger.body;
+      let proofRead = false,
+        liveSnapshot = false;
+      const readLog = h.api.readJobLog;
+      h.api.readJobLog = async (id) => {
+        const log = await readLog(id);
+        proofRead = true;
+        if (boundary === "history-head") h.pull.head.sha = "a".repeat(40);
+        if (boundary === "history-attempt") h.run.run_attempt++;
+        if (boundary === "source") h.run.head_sha = "b".repeat(40);
+        return log;
+      };
+      h.onRead = (path) => {
+        if (!proofRead) return;
+        if (path.endsWith("/pulls/12") && liveSnapshot && boundary === "final-head")
+          h.pull.head.sha = "a".repeat(40);
+        if (path.endsWith("/runs/100") && liveSnapshot && boundary === "final-run")
+          h.run.status = "in_progress";
+        if (path.endsWith("/issues/12/comments")) {
+          liveSnapshot = true;
+          if (boundary === "snapshot") h.comments.push({ ...comment(), id: 45 });
+        }
+      };
+      await assert.rejects(h.route(consumedDelivery(h, mode)), /changed|head|superseded/i);
+      assert.equal(h.writes, before);
+      assert.equal(h.ledger.body, body);
+      assert.equal(h.posts, 1);
+    });
+
+for (const version of [1, 2])
+  test(`F24 consumed v${version} new genuine negative still schedules real reevaluation`, async () => {
+    const h = await consumedSuccessfulRerun(version);
+    h.reviews = [
+      {
+        id: 50,
+        commit_id: head,
+        user: bot,
+        state: "CHANGES_REQUESTED",
+        body: "",
+        submitted_at: iso("20"),
+      },
+    ];
+    const reads = h.reads.length;
+    assert.equal(await h.route(), "rerun-confirmed");
+    assert.equal(h.posts, 2);
+    assert.ok(
+      !h.reads.slice(reads).some((path) => path.includes("/attempts/") || path.startsWith("log:")),
+    );
+    assert.equal(await h.route(), "already-evaluated");
+    assert.equal(h.posts, 2);
+  });
+
+for (const residual of [
+  "Found another issue.",
+  "Found a remaining issue.",
+  "[Unknown] Found another finding.",
+])
+  for (const body of [
+    `[P3] Found an issue.\n${residual}`,
+    `${residual}\n[P3] Found an issue.`,
+    `\n[P3] Found an issue.\n\n${residual}\n`,
+    `[P3] Found an issue. ${residual}`,
+  ])
+    test(`F26 terminal success with resolved P3 mixed residual reevaluates once ${JSON.stringify(body)}`, async () => {
+      const h = harness();
+      h.reviews = [
+        { id: 50, user: bot, commit_id: head, state: "COMMENTED", body, submitted_at: iso("10") },
+      ];
+      h.comments = [{ ...comment(), updated_at: iso("20") }];
+      h.inline = [
+        {
+          id: 51,
+          user: bot,
+          commit_id: head,
+          pull_request_review_id: 50,
+          body: "[P3] Found an issue",
+          created_at: iso("10"),
+          updated_at: iso("10"),
+        },
+      ];
+      h.resolved.add(51);
+      assert.equal(await h.route(), "rerun-confirmed");
+      assert.equal(h.posts, 1);
+      h.run.status = "completed";
+      h.run.conclusion = "failure";
+      assert.equal(await h.route(), "already-evaluated");
+      assert.equal(h.posts, 1);
+    });
+
+for (const version of [1, 2])
+  test(`F26 mixed formal residual cannot overwrite uncertain v${version} posting`, async () => {
+    const h = await consumedSuccessfulRerun(version);
+    h.run.run_started_at = h.ledger.updated_at;
+    h.reviews = [
+      {
+        id: 50,
+        user: bot,
+        commit_id: head,
+        state: "COMMENTED",
+        body: "[P3] Found an issue.\nFound another issue.",
+        submitted_at: iso("10"),
+      },
+    ];
+    const before = h.writes,
+      body = h.ledger.body;
+    await assert.rejects(h.route(), /uncertain/);
+    assert.equal(h.writes, before);
+    assert.equal(h.ledger.body, body);
+    assert.equal(h.posts, 1);
   });
