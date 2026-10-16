@@ -539,7 +539,7 @@ through routing. Native signal run creation
 time is a scheduling freshness hint for an absent checkpoint, so formal
 dismissals and inline deletions are reevaluated even when REST timestamps do not
 change. It supplies no verdict; unchanged checkpoint hashes still deduplicate. These paths
-handle created/edited legacy, receipt, and structured summary comments; formal and
+handle created/edited/deleted legacy, receipt, and structured summary comments; formal and
 inline review changes; and the existing gate's completion. Structured summaries, reactions, and `Completed` text cannot satisfy the gate.
 A strictly validated current-head structured code-review result with findings or
 an unfinished status vetoes an older/tied positive result. Explicit current-head
@@ -548,7 +548,12 @@ canonical completed false/false summary remains neutral. Malformed, duplicate, o
 conflicting newest native signals fail closed. The latest blocking current-head
 formal review vetoes issue receipts until corrected or dismissed. Workflow filters are coarse; runtime repeats event,
 trusted author, repository, backend, PR, and live full-head checks.
-Issue-comment YAML filtering checks PR/body shape, so configured additional
+Created issue comments retain coarse PR/body-shape filtering. Edited/deleted PR
+comments reach runtime even after all native text is removed; original configured
+author trust and comment/PR identity are checked there. The context job verifies
+the current edit or actual API 404 (denial/failure is not deletion), pins the full
+head, and the mutation job enforces both matrix fields and repeats source/head
+checks. Event body and prior-body text are routing hints only. Configured additional
 trusted identities can reach the authoritative runtime check. Copied signal text
 from an untrusted author can start only the read-only context job.
 
@@ -588,7 +593,9 @@ Schedule time never refreshes evidence or the fingerprint.
 Without a checkpoint for the selected current head and run, an active gate waits
 for completion or the next schedule. A terminal gate is requeued only when its
 actual success/failure disagrees with the genuine native evaluator. Matching
-outcomes or absent native results cause no checkpoint write or rerun. A trusted
+outcomes or absent native results normally cause no checkpoint write or rerun.
+The bounded native-acceptance history exception below handles withdrawal of the
+last previously accepted positive. A trusted
 fail-closed native result can requeue a successful check for real evaluation;
 API/context uncertainty cannot establish a mismatch. Once an actual later attempt
 consumes the stable hash, unchanged schedules and that attempt's completion do
@@ -598,6 +605,35 @@ different run is not a current baseline. An uncertain old posting state must
 first be reconciled against its own immutable API run/attempt and strict server
 timestamps; lack of proof blocks replacement without another POST. Scheduling
 never resolves a finding, posts `@codex`, or manufactures a check result.
+
+The version-2 scheduling ledger adds a distinct `observed` phase and strict
+Codex acceptance history bound to the PR/full head, workflow/run/attempt, finite
+server times, and observed issue-comment identities where available. Version-1
+claims remain strictly parsed. After settling any uncertain posting, a successful
+actual Codex gate with a genuine current positive may write one observation
+without rerunning; identical observations do nothing. A prior accepted gate whose
+last permitted positive disappears can requeue once with a stable empty or
+neutral-only snapshot hash and finite historical server time. A remaining genuine
+formal positive needs no invalidation. The real gate independently evaluates the
+absence. Its actual later attempt must consume the immutable posting under the
+strict time/attempt guards; unchanged completion/schedule deliveries then converge.
+History never supplies positive evidence or resolves a finding.
+
+Without a verified observation, the router can bootstrap only from the exact
+eligible run/attempt's paginated jobs: exactly one expected AI Review job, exact
+run/head, successful completion, and its actual non-skipped
+`Route and validate selected native review` step. Coherent finite job/step server
+times and the whole job log's exact `AI Review gate passed for codex on <full-head>.`
+line are required. Only recognized GitHub timestamp prefixes and CRLF are
+normalized; duplicate/conflicting lines are rejected. The dedicated reader caps
+complete plaintext at 2 MiB, rejects partial/truncated/oversized responses,
+authenticates only the fixed GitHub API log endpoint, and follows a server HTTPS
+redirect without forwarding credentials. Raw logs, signed URLs and secrets are
+not retained in feature memory. Run/attempt, source and PR/head are revalidated
+after proof and at mutation boundaries. Skipped/bootstrap-only, failed, unrelated,
+unavailable or ambiguous history cannot authorize absence requeues. Native Signal
+logs and artifacts remain untrusted; target-gate logs are scheduling history only,
+never native verdicts or executable input. Schedule time never becomes evidence.
 
 This workflow becomes effective after protected deployment to the default branch.
 A PR-only parser/router change cannot repair its own trusted-main gate. Manual

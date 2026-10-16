@@ -8,6 +8,7 @@ import { readConfig } from "./shared.mjs";
 import { evaluateCodexReview } from "./ai-review-gate.mjs";
 
 const checkpointMarker = "<!-- ai-review-wakeup:v1 ";
+const historyMarker = "<!-- ai-review-wakeup:v2 ";
 const workflowPath = ".github/workflows/ai-review.yml";
 const isWorkflowBot = (comment) =>
   comment.user?.login === "github-actions[bot]" && comment.user?.type === "Bot";
@@ -27,7 +28,7 @@ export function wakeupPrNumber(eventName, event, repository, config = {}) {
     return run.pull_requests[0].number;
   }
   const kinds = {
-    issue_comment: ["created", "edited"],
+    issue_comment: ["created", "edited", "deleted"],
     pull_request_review: ["submitted", "edited", "dismissed"],
     pull_request_review_comment: ["created", "edited", "deleted"],
   };
@@ -35,23 +36,37 @@ export function wakeupPrNumber(eventName, event, repository, config = {}) {
   const signal = eventName === "pull_request_review" ? event.review : event.comment;
   if (!isTrustedReviewLogin(signal?.user?.login, "codex", config)) return null;
   if (eventName === "issue_comment")
-    return event.issue?.pull_request && isCodexWakeupComment(signal.body)
+    return event.issue?.pull_request &&
+      (isCodexWakeupComment(signal.body) || isReceiptWithdrawal(event))
       ? event.issue.number
       : null;
   return event.pull_request?.number || null;
 }
 
+function isReceiptWithdrawal(event) {
+  return (
+    (event.action === "edited" && isCodexWakeupComment(event.changes?.body?.from)) ||
+    (event.action === "deleted" && isCodexWakeupComment(event.comment?.body))
+  );
+}
+const positiveInteger = (value) => Number.isSafeInteger(value) && value > 0;
+const finiteTime = (value) => typeof value === "string" && Number.isFinite(Date.parse(value));
+const checkpointBody = (value) =>
+  `${value.acceptance ? historyMarker : checkpointMarker}${JSON.stringify(value)} -->`;
+
 function parseCheckpoint(comments) {
   const ledgers = comments.filter(
-    (comment) => isWorkflowBot(comment) && String(comment.body || "").startsWith(checkpointMarker),
+    (comment) =>
+      isWorkflowBot(comment) && String(comment.body || "").startsWith("<!-- ai-review-wakeup:"),
   );
   if (ledgers.length > 1)
     throw new Error("Duplicate trusted wakeup checkpoints; refusing ambiguous scheduling state.");
   if (!ledgers.length) return null;
   const comment = ledgers[0];
-  const match = comment.body.match(/^<!-- ai-review-wakeup:v1 (\{[^\n]+\}) -->$/);
+  const match = comment.body.match(/^<!-- ai-review-wakeup:v([12]) (\{[^\n]+\}) -->$/);
   if (!match) throw new Error("Malformed trusted wakeup checkpoint.");
-  const value = JSON.parse(match[1]);
+  const value = JSON.parse(match[2]);
+  const history = match[1] === "2";
   const keys = [
     "head_sha",
     "run_id",
@@ -60,6 +75,38 @@ function parseCheckpoint(comments) {
     "signal_updated_at",
     "phase",
   ];
+  if (history) keys.push("pr_number", "workflow_id", "agent", "acceptance");
+  const proof = value.acceptance;
+  if (
+    history &&
+    (JSON.stringify(value) !== match[2] ||
+      !positiveInteger(value.pr_number) ||
+      !positiveInteger(value.workflow_id) ||
+      value.agent !== "codex" ||
+      !proof ||
+      Object.keys(proof).sort().join() !==
+        ["attempt", "job_id", "started_at", "accepted_at", "sources"].sort().join() ||
+      !positiveInteger(proof.attempt) ||
+      proof.attempt > value.source_attempt ||
+      (value.phase === "observed" && proof.attempt !== value.source_attempt) ||
+      !positiveInteger(proof.job_id) ||
+      !finiteTime(proof.started_at) ||
+      !finiteTime(proof.accepted_at) ||
+      Date.parse(proof.accepted_at) < Date.parse(proof.started_at) ||
+      Date.parse(proof.accepted_at) > Date.parse(comment.updated_at) ||
+      Date.parse(value.signal_updated_at) < Date.parse(proof.accepted_at) ||
+      !Array.isArray(proof.sources) ||
+      proof.sources.some(
+        (source) =>
+          !source ||
+          Object.keys(source).sort().join() !== "id,login" ||
+          !positiveInteger(source.id) ||
+          typeof source.login !== "string" ||
+          !source.login,
+      ) ||
+      new Set(proof.sources.map((source) => source.id)).size !== proof.sources.length)
+  )
+    throw new Error("Invalid trusted acceptance history schema.");
   if (
     Object.keys(value).sort().join() !== keys.sort().join() ||
     !/^[a-f0-9]{40}$/.test(value.head_sha) ||
@@ -68,7 +115,9 @@ function parseCheckpoint(comments) {
     !Number.isSafeInteger(value.source_attempt) ||
     value.source_attempt <= 0 ||
     !/^[a-f0-9]{64}$/.test(value.signal_hash) ||
-    !["claimed", "posting"].includes(value.phase) ||
+    !(history ? ["observed", "claimed", "posting"] : ["claimed", "posting"]).includes(
+      value.phase,
+    ) ||
     !Number.isFinite(Date.parse(value.signal_updated_at)) ||
     !Number.isFinite(Date.parse(comment.updated_at))
   )
@@ -142,10 +191,89 @@ async function snapshot(api, number, headSha, config) {
     hash: createHash("sha256")
       .update(JSON.stringify({ headSha, agent: "codex", signals }))
       .digest("hex"),
-    latest: Math.max(...signals.map((signal) => Date.parse(signal.at))),
+    latest: signals.length ? Math.max(...signals.map((signal) => Date.parse(signal.at))) : null,
+    sources: signals
+      .filter((signal) => signal.type === "comment")
+      .map(({ id, login }) => ({ id, login })),
     count: signals.length,
     desired: await evaluateCodexReview(api, reviews, inline, comments, resolved, headSha, config),
   };
+}
+
+async function acceptedGateHistory(api, run, headSha, sources, observedAt) {
+  try {
+    const jobs = await api.list(
+      `${api.root}/actions/runs/${run.id}/attempts/${run.run_attempt}/jobs`,
+      "jobs",
+    );
+    const expected = jobs.filter((job) => job.name === "AI Review");
+    if (expected.length !== 1) return null;
+    const job = expected[0];
+    const steps = job.steps?.filter(
+      (step) => step.name === "Route and validate selected native review",
+    );
+    if (
+      !positiveInteger(job.id) ||
+      job.run_id !== run.id ||
+      job.head_sha !== headSha ||
+      job.status !== "completed" ||
+      job.conclusion !== "success" ||
+      steps?.length !== 1 ||
+      (job.run_attempt !== undefined && job.run_attempt !== run.run_attempt)
+    )
+      return null;
+    const step = steps[0];
+    const times = [
+      run.run_started_at,
+      job.started_at,
+      step.started_at,
+      step.completed_at,
+      job.completed_at,
+    ];
+    if (
+      step.status !== "completed" ||
+      step.conclusion !== "success" ||
+      !positiveInteger(step.number) ||
+      !times.every(finiteTime)
+    )
+      return null;
+    const chronology = times.map(Date.parse);
+    if (
+      chronology.some((time, index) => time > observedAt || (index && time < chronology[index - 1]))
+    )
+      return null;
+    const body = await api.readJobLog(job.id);
+    if (
+      typeof body !== "string" ||
+      Buffer.byteLength(body) > 2 * 1024 * 1024 ||
+      body.replace(/\r\n/g, "").includes("\r")
+    )
+      return null;
+    const outcomes = body
+      .replace(/\r\n/g, "\n")
+      .split("\n")
+      .filter((line) => /AI Review gate (?:passed|failed)/.test(line));
+    if (outcomes.length !== 1) return null;
+    const stamped = outcomes[0].match(/^(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3,7}Z) (.*)$/);
+    if (
+      stamped &&
+      (!Number.isFinite(Date.parse(stamped[1])) ||
+        Date.parse(stamped[1]) < chronology[2] ||
+        Date.parse(stamped[1]) > chronology[3])
+    )
+      return null;
+    if ((stamped ? stamped[2] : outcomes[0]) !== `AI Review gate passed for codex on ${headSha}.`)
+      return null;
+    return {
+      attempt: run.run_attempt,
+      job_id: job.id,
+      started_at: run.run_started_at,
+      accepted_at: step.completed_at,
+      sources,
+    };
+  } catch {
+    return null;
+  }
 }
 
 async function associatedRunPull(api, run, repository, { nativeSignal = false } = {}) {
@@ -273,7 +401,47 @@ async function completionContext(api, event, repository, config) {
 async function resolveWakeupContext(api, eventName, event, repository, config = {}) {
   if (eventName === "workflow_run") return completionContext(api, event, repository, config);
   const number = wakeupPrNumber(eventName, event, repository, config);
-  return number ? { number, headSha: event.pull_request?.head?.sha || null } : null;
+  if (!number) return null;
+  if (eventName === "issue_comment" && isReceiptWithdrawal(event)) {
+    const original = event.comment;
+    if (
+      !positiveInteger(number) ||
+      !positiveInteger(original?.id) ||
+      original.issue_url !== `https://api.github.com${api.root}/issues/${number}`
+    )
+      throw new Error("Invalid withdrawal comment identity.");
+    let current;
+    try {
+      current = await api.request(`${api.root}/issues/comments/${original.id}`);
+    } catch (error) {
+      if (event.action !== "deleted" || error.status !== 404) throw error;
+    }
+    if (event.action === "deleted" && current) throw new Error("Deleted receipt still exists.");
+    if (
+      event.action === "edited" &&
+      (!current ||
+        current.id !== original.id ||
+        current.issue_url !== original.issue_url ||
+        current.user?.login !== original.user.login ||
+        current.body !== original.body ||
+        current.updated_at !== original.updated_at ||
+        !finiteTime(current.updated_at))
+    )
+      throw new Error("Withdrawal edit identity or current state changed.");
+    const pull = await api.request(`${api.root}/pulls/${number}`);
+    await assertCurrentPull(api, number, pull.head?.sha);
+    return {
+      number,
+      headSha: pull.head.sha,
+      withdrawal: {
+        id: original.id,
+        login: original.user.login,
+        action: event.action,
+        updated_at: current?.updated_at || null,
+      },
+    };
+  }
+  return { number, headSha: event.pull_request?.head?.sha || null };
 }
 
 export async function resolveWakeupPrNumber(api, eventName, event, repository, config = {}) {
@@ -314,9 +482,10 @@ export async function routeReviewWakeup({
   if (agent !== "codex") return "ignored-backend";
   const scheduled = eventName === "schedule";
   const completion = eventName === "workflow_run";
+  const withdrawal = eventName === "issue_comment" && isReceiptWithdrawal(event);
   // Copy the context-job pair before API awaits; it also determines the job's lock.
   const pinnedPull =
-    scheduled || completion
+    scheduled || completion || withdrawal
       ? { number: scheduledPull?.number, headSha: scheduledPull?.head_sha }
       : null;
   if (
@@ -336,10 +505,10 @@ export async function routeReviewWakeup({
     ? pinnedPull
     : await resolveWakeupContext(api, eventName, event, repository, config);
   if (
-    completion &&
+    (completion || withdrawal) &&
     (context?.number !== pinnedPull.number || context.headSha !== pinnedPull.headSha)
   )
-    throw new Error("Workflow completion does not match the pinned PR/head context.");
+    throw new Error("Workflow completion or withdrawal does not match the pinned PR/head context.");
   const number = context?.number;
   if (!number) return "ignored-event";
   const assertSourceContext = async () => {
@@ -385,6 +554,12 @@ export async function routeReviewWakeup({
   let signal = await snapshot(api, number, headSha, config);
   const applicableCheckpoint =
     signal.checkpoint?.value.head_sha === headSha && signal.checkpoint.value.run_id === run.id;
+  if (
+    signal.checkpoint?.value.acceptance &&
+    (signal.checkpoint.value.pr_number !== number ||
+      signal.checkpoint.value.workflow_id !== workflow.id)
+  )
+    throw new Error("Acceptance history belongs to another PR or workflow.");
   if (applicableCheckpoint && signal.checkpoint.value.source_attempt > run.run_attempt)
     throw new Error("Checkpoint refers to an impossible future run attempt.");
   if (signal.checkpoint?.value.phase === "posting") {
@@ -441,8 +616,91 @@ export async function routeReviewWakeup({
     confirmsCheckpointAttempt(run, state, now()) &&
     Date.parse(run.run_started_at) > signal.latest;
   if (consumed(signal.checkpoint)) return "already-evaluated";
-  if (!signal.count) return "no-signal";
-  if (scheduled && !applicableCheckpoint) {
+  let acceptance = null;
+  // This happens only after any immutable POST has been positively settled.
+  if (run.status === "completed" && run.conclusion === "success" && signal.desired !== "fail") {
+    const existing = applicableCheckpoint ? signal.checkpoint?.value.acceptance : null;
+    if (
+      existing?.attempt === run.run_attempt &&
+      Date.parse(existing.started_at) === Date.parse(run.run_started_at) &&
+      Date.parse(existing.accepted_at) <= now()
+    )
+      acceptance = existing;
+    else acceptance = await acceptedGateHistory(api, run, headSha, signal.sources, now());
+    if (acceptance) {
+      await assertSourceContext();
+      await assertCurrentPull(api, number, headSha);
+      const provenRun = await api.request(`${api.root}/actions/runs/${run.id}`);
+      if (
+        !(await validRun(api, provenRun, number, headSha, repository, workflow.id)) ||
+        provenRun.run_attempt !== run.run_attempt ||
+        provenRun.status !== run.status ||
+        provenRun.conclusion !== run.conclusion ||
+        provenRun.run_started_at !== run.run_started_at
+      )
+        throw new Error("Native acceptance history attempt changed.");
+      if (signal.desired === "pass") {
+        if (
+          signal.checkpoint?.value.phase === "observed" &&
+          signal.checkpoint.value.signal_hash === signal.hash &&
+          existing === acceptance
+        )
+          return "already-observed";
+        const live = await snapshot(api, number, headSha, config);
+        if (
+          live.hash !== signal.hash ||
+          JSON.stringify(live.checkpoint) !== JSON.stringify(signal.checkpoint)
+        )
+          throw new Error("Native observation inputs changed.");
+        await assertSourceContext();
+        await assertCurrentPull(api, number, headSha);
+        const finalRun = await api.request(`${api.root}/actions/runs/${run.id}`);
+        if (
+          !(await validRun(api, finalRun, number, headSha, repository, workflow.id)) ||
+          finalRun.run_attempt !== run.run_attempt ||
+          finalRun.status !== "completed" ||
+          finalRun.conclusion !== "success" ||
+          finalRun.run_started_at !== run.run_started_at
+        )
+          throw new Error("Native observation run changed.");
+        const value = {
+          head_sha: headSha,
+          run_id: run.id,
+          source_attempt: run.run_attempt,
+          signal_hash: signal.hash,
+          signal_updated_at: new Date(
+            Math.max(signal.latest || 0, Date.parse(acceptance.accepted_at)),
+          ).toISOString(),
+          phase: "observed",
+          pr_number: number,
+          workflow_id: workflow.id,
+          agent: "codex",
+          acceptance,
+        };
+        const old = signal.checkpoint;
+        const written = await api.request(
+          old
+            ? `${api.root}/issues/comments/${old.comment.id}`
+            : `${api.root}/issues/${number}/comments`,
+          {
+            method: old ? "PATCH" : "POST",
+            body: JSON.stringify({ body: checkpointBody(value) }),
+          },
+        );
+        if (!isWorkflowBot(written))
+          throw new Error("Observation must be authored by the workflow bot.");
+        return "observed-native-acceptance";
+      }
+      signal.latest = Math.max(signal.latest || 0, Date.parse(acceptance.accepted_at));
+    }
+  }
+  const invalidatedAcceptance = acceptance && signal.desired !== "pass";
+  // Neutral summaries and an empty snapshot have the same lack of a verdict.
+  // Neither delivery type nor an opaque settled claim proves native acceptance.
+  if (signal.desired === null && !invalidatedAcceptance)
+    return signal.count ? "no-native-outcome" : "no-signal";
+  if (!signal.count && !invalidatedAcceptance) return "no-signal";
+  if (scheduled && !applicableCheckpoint && !invalidatedAcceptance) {
     if (run.status !== "completed") return "active-no-baseline";
     if (signal.desired === null) return "no-native-outcome";
     const actual =
@@ -451,6 +709,7 @@ export async function routeReviewWakeup({
   }
   if (
     !scheduled &&
+    !invalidatedAcceptance &&
     !applicableCheckpoint &&
     Math.max(signal.latest, context.wakeupAt || 0) < Date.parse(run.run_started_at)
   )
@@ -465,12 +724,20 @@ export async function routeReviewWakeup({
     // Only an unposted claim may retry an ambiguous timestamp boundary.
     if (run.status !== "completed") return "active-boundary-attempt";
   }
+  const matchesAcceptance = (candidate) =>
+    !acceptance ||
+    (candidate.run_attempt === acceptance.attempt &&
+      candidate.run_started_at === acceptance.started_at &&
+      candidate.status === "completed" &&
+      candidate.conclusion === "success");
   const old = signal.checkpoint;
   const sameClaim =
+    old?.value.phase !== "observed" &&
     old?.value.head_sha === headSha &&
     old.value.run_id === run.id &&
     old.value.source_attempt === run.run_attempt &&
-    old.value.signal_hash === signal.hash;
+    old.value.signal_hash === signal.hash &&
+    (!acceptance || JSON.stringify(old.value.acceptance) === JSON.stringify(acceptance));
   if (!sameClaim) {
     await assertSourceContext();
     await assertCurrentPull(api, number, headSha);
@@ -478,6 +745,7 @@ export async function routeReviewWakeup({
     const liveSignal = await snapshot(api, number, headSha, config);
     if (
       !(await validRun(api, liveRun, number, headSha, repository, workflow.id)) ||
+      !matchesAcceptance(liveRun) ||
       liveRun.run_attempt !== run.run_attempt ||
       liveRun.status !== run.status ||
       liveSignal.hash !== signal.hash ||
@@ -491,13 +759,16 @@ export async function routeReviewWakeup({
       signal_hash: signal.hash,
       signal_updated_at: new Date(signal.latest).toISOString(),
       phase: "claimed",
+      ...(acceptance
+        ? { pr_number: number, workflow_id: workflow.id, agent: "codex", acceptance }
+        : {}),
     };
     const path = old
       ? `${api.root}/issues/comments/${old.comment.id}`
       : `${api.root}/issues/${number}/comments`;
     const comment = await api.request(path, {
       method: old ? "PATCH" : "POST",
-      body: JSON.stringify({ body: `${checkpointMarker}${JSON.stringify(value)} -->` }),
+      body: JSON.stringify({ body: checkpointBody(value) }),
     });
     if (!isWorkflowBot(comment))
       throw new Error("Checkpoint must be authored by github-actions[bot], never a human token.");
@@ -510,6 +781,7 @@ export async function routeReviewWakeup({
   const claimSignal = await snapshot(api, number, headSha, config);
   if (
     !(await validRun(api, claimRun, number, headSha, repository, workflow.id)) ||
+    !matchesAcceptance(claimRun) ||
     claimRun.run_attempt !== run.run_attempt ||
     claimRun.status !== "completed" ||
     claimSignal.hash !== signal.hash ||
@@ -519,7 +791,7 @@ export async function routeReviewWakeup({
   const postingValue = { ...signal.checkpoint.value, phase: "posting" };
   const posting = await api.request(`${api.root}/issues/comments/${signal.checkpoint.comment.id}`, {
     method: "PATCH",
-    body: JSON.stringify({ body: `${checkpointMarker}${JSON.stringify(postingValue)} -->` }),
+    body: JSON.stringify({ body: checkpointBody(postingValue) }),
   });
   if (!isWorkflowBot(posting)) throw new Error("Posting checkpoint author changed.");
   signal = { ...signal, checkpoint: { comment: posting, value: postingValue } };
@@ -533,6 +805,7 @@ export async function routeReviewWakeup({
   const currentSignal = await snapshot(api, number, headSha, config);
   if (
     !(await validRun(api, currentRun, number, headSha, repository, workflow.id)) ||
+    !matchesAcceptance(currentRun) ||
     currentRun.run_attempt !== run.run_attempt ||
     currentRun.status !== "completed" ||
     currentSignal.hash !== signal.hash ||

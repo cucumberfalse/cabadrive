@@ -68,7 +68,68 @@ export function createReviewApi(token, repository, fetchImpl = fetch) {
     } while (cursor);
     return ids;
   }
-  return { root, request, list, resolvedCommentIds };
+  // Job logs are historical scheduling data. Never forward API credentials to
+  // the server-returned download host, or search an incomplete response.
+  async function readJobLog(jobId) {
+    if (!Number.isSafeInteger(jobId) || jobId <= 0) throw new Error("Invalid job log identity.");
+    let response;
+    try {
+      response = await fetchImpl(`https://api.github.com${root}/actions/jobs/${jobId}/logs`, {
+        redirect: "manual",
+        signal: AbortSignal.timeout(20000),
+        headers: {
+          authorization: `Bearer ${token}`,
+          accept: "application/vnd.github+json",
+          "x-github-api-version": "2022-11-28",
+        },
+      });
+      if (response.status === 302) {
+        const target = new URL(response.headers.get("location"));
+        if (target.protocol !== "https:" || target.username || target.password || target.hash)
+          throw new Error("Invalid redirect.");
+        response = await fetchImpl(target.href, {
+          redirect: "manual",
+          signal: AbortSignal.timeout(20000),
+        });
+      }
+      const limit = 2 * 1024 * 1024;
+      const length = response.headers.get("content-length");
+      if (
+        response.status !== 200 ||
+        response.headers.has("content-range") ||
+        (length !== null && (!/^\d+$/.test(length) || Number(length) > limit)) ||
+        !response.body
+      )
+        throw new Error("Incomplete log response.");
+      const reader = response.body.getReader();
+      const chunks = [];
+      let size = 0;
+      try {
+        for (;;) {
+          const { value, done } = await reader.read();
+          if (done) break;
+          size += value.byteLength;
+          if (size > limit) throw new Error("Oversized log.");
+          chunks.push(value);
+        }
+      } catch (error) {
+        await reader.cancel().catch(() => {});
+        throw error;
+      }
+      if (length !== null && size !== Number(length)) throw new Error("Truncated log.");
+      const bytes = new Uint8Array(size);
+      let offset = 0;
+      for (const chunk of chunks) {
+        bytes.set(chunk, offset);
+        offset += chunk.byteLength;
+      }
+      return new TextDecoder("utf-8", { fatal: true }).decode(bytes);
+    } catch {
+      // Do not expose signed download URLs, response bodies or credentials.
+      throw new Error("Complete bounded job log unavailable.");
+    }
+  }
+  return { root, request, list, resolvedCommentIds, readJobLog };
 }
 
 export async function assertCurrentPull(api, number, headSha) {

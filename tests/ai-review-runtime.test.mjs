@@ -411,7 +411,7 @@ test("router validates event kind/repository/backend/PR again", async () => {
     await h.route({ event: { ...h.event, repository: { full_name: "wrong/repo" } } }),
     "ignored-event",
   );
-  assert.equal(await h.route({ event: { ...h.event, action: "deleted" } }), "ignored-event");
+  assert.equal(await h.route({ event: { ...h.event, action: "unsupported" } }), "ignored-event");
   assert.equal(await h.route({ event: { ...h.event, issue: { number: 12 } } }), "ignored-event");
   assert.equal(h.mutations, 0);
 });
@@ -769,6 +769,10 @@ function actualForkGateHarness({ candidateChanges = [{}], runChange = {} } = {})
   const actualRepository = "cucumberfalse/cabadrive";
   const actualRoot = `/repos/${actualRepository}`;
   const actualHead = "fac64ec451c43530976a13de0eb014700e40e9aa";
+  // Association positives need genuine current-head evidence, not the generic
+  // harness's older-head receipt (which correctly has no applicable outcome).
+  h.comments[0] = makeComment({ body: receipt.replace(head.slice(0, 10), actualHead) });
+  h.event.comment = h.comments[0];
   const pull = makePull({
     number: 221,
     head: {
@@ -1267,10 +1271,15 @@ for (const action of ["created", "edited"])
           comment: makeComment({ body, user: { login: "CUSTOM-CODEX" } }),
         };
         h.comments[0] = event.comment;
-        assert.equal(await h.route({ event, config }), "rerun-confirmed");
+        const positive = body === receipt;
+        assert.equal(
+          await h.route({ event, config }),
+          positive ? "rerun-confirmed" : "no-native-outcome",
+        );
         const unknown = { ...event, comment: { ...event.comment, user: { login: "unknown" } } };
         assert.equal(await h.route({ event: unknown, config }), "ignored-event");
-        assert.equal(h.mutations, 1);
+        assert.equal(h.mutations, positive ? 1 : 0);
+        if (!positive) assert.equal(h.checkpoint, null);
       }
   });
 
@@ -1940,3 +1949,11 @@ for (const native of [false, true]) {
     assert.equal(h.checkpoint, null);
   });
 }
+
+test("fork association alone cannot schedule a stale receipt with no applicable native outcome", async () => {
+  const { h, route } = actualForkGateHarness();
+  h.comments[0] = makeComment();
+  assert.equal(await route(), "no-native-outcome");
+  assert.equal(h.mutations, 0);
+  assert.equal(h.checkpoint, null);
+});

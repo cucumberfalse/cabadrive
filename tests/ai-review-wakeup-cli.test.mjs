@@ -25,7 +25,7 @@ const matrixFields = Object.fromEntries(
 
 // Only the child CLI's API and clock are mocked. Its actual executable, environment
 // parsing, read-only matrix output, config, router and checkpoint lifecycle run.
-async function installApiFixture({ repository, head, number, native, resultPath }) {
+async function installApiFixture({ repository, head, number, native, withdrawal, resultPath }) {
   const { writeFileSync } = await import("node:fs");
   const root = `/repos/${repository}`;
   const at = "2026-10-15T12:00:00Z";
@@ -58,7 +58,7 @@ async function installApiFixture({ repository, head, number, native, resultPath 
     run_attempt: 1,
     run_started_at: "2026-10-15T11:59:00Z",
     status: "completed",
-    conclusion: "failure",
+    conclusion: withdrawal ? "success" : "failure",
   };
   const source = {
     ...run,
@@ -74,6 +74,7 @@ async function installApiFixture({ repository, head, number, native, resultPath 
   const comment = {
     id: 1,
     user,
+    issue_url: `https://api.github.com${root}/issues/${number}`,
     created_at: at,
     updated_at: at,
     body: `<!-- codex-review-receipt:v1 -->\n\nCodex Review: Didn't find any major issues.\n\n**Reviewed commit:** \`${head}\``,
@@ -105,11 +106,44 @@ async function installApiFixture({ repository, head, number, native, resultPath 
       return Response.json({ id: 8, name: source.name, path: source.path });
     if (native && path === `${root}/actions/runs/88`) return Response.json(source);
     if (path === `${root}/actions/runs/100`) return Response.json(run);
+    if (withdrawal && path === `${root}/actions/runs/100/attempts/1/jobs`)
+      return Response.json({
+        jobs: [
+          {
+            id: 200,
+            run_id: 100,
+            head_sha: head,
+            name: "AI Review",
+            status: "completed",
+            conclusion: "success",
+            started_at: "2026-10-15T11:59:01Z",
+            completed_at: "2026-10-15T11:59:30Z",
+            steps: [
+              {
+                name: "Route and validate selected native review",
+                number: 4,
+                status: "completed",
+                conclusion: "success",
+                started_at: "2026-10-15T11:59:02Z",
+                completed_at: "2026-10-15T11:59:20Z",
+              },
+            ],
+          },
+        ],
+      });
+    if (withdrawal && path === `${root}/actions/jobs/200/logs`)
+      return new Response(
+        `2026-10-15T11:59:10.0000000Z AI Review gate passed for codex on ${head}.\n`,
+      );
+    if (withdrawal && path === `${root}/issues/comments/1`)
+      return withdrawal === "deleted"
+        ? new Response("Not Found", { status: 404 })
+        : Response.json({ ...comment, body: "Withdrawn." });
     if (path === `${root}/actions/workflows/7/runs`) return Response.json({ workflow_runs: [run] });
     if ([`${root}/pulls/${number}/reviews`, `${root}/pulls/${number}/comments`].includes(path))
       return Response.json([]);
     if (path === `${root}/issues/${number}/comments` && method === "GET")
-      return Response.json([comment, ...(checkpoint ? [checkpoint] : [])]);
+      return Response.json([...(withdrawal ? [] : [comment]), ...(checkpoint ? [checkpoint] : [])]);
     if (
       (path === `${root}/issues/${number}/comments` && method === "POST") ||
       (path === `${root}/issues/comments/900` && method === "PATCH")
@@ -136,7 +170,7 @@ async function installApiFixture({ repository, head, number, native, resultPath 
   };
 }
 
-function runCli({ native = false, number = 12, pin, resolveOnly = false } = {}) {
+function runCli({ native = false, withdrawal = null, number = 12, pin, resolveOnly = false } = {}) {
   const directory = mkdtempSync(join(tmpdir(), "cabadrive-review-matrix-cli-"));
   try {
     const eventPath = join(directory, "event.json");
@@ -145,18 +179,35 @@ function runCli({ native = false, number = 12, pin, resolveOnly = false } = {}) 
     const preload = join(directory, "preload.mjs");
     writeFileSync(
       preload,
-      `await (${installApiFixture.toString()})(${JSON.stringify({ repository, head, number, native, resultPath })});\n`,
+      `await (${installApiFixture.toString()})(${JSON.stringify({ repository, head, number, native, withdrawal, resultPath })});\n`,
     );
     writeFileSync(
       eventPath,
-      JSON.stringify({
-        action: "completed",
-        repository: { full_name: repository },
-        workflow_run: {
-          id: native ? 88 : 100,
-          name: native ? "AI Review Native Signal" : "AI Review",
-        },
-      }),
+      JSON.stringify(
+        withdrawal
+          ? {
+              action: withdrawal,
+              repository: { full_name: repository },
+              issue: { number, pull_request: {} },
+              comment: {
+                id: 1,
+                user: { login: "chatgpt-codex-connector[bot]", type: "Bot" },
+                issue_url: `https://api.github.com/repos/${repository}/issues/${number}`,
+                created_at: "2026-10-15T12:00:00Z",
+                updated_at: "2026-10-15T12:00:00Z",
+                body: withdrawal === "deleted" ? "Codex Review: original receipt" : "Withdrawn.",
+              },
+              changes: { body: { from: "Codex Review: original receipt" } },
+            }
+          : {
+              action: "completed",
+              repository: { full_name: repository },
+              workflow_run: {
+                id: native ? 88 : 100,
+                name: native ? "AI Review Native Signal" : "AI Review",
+              },
+            },
+      ),
     );
     const env = {
       PATH: process.env.PATH,
@@ -164,7 +215,7 @@ function runCli({ native = false, number = 12, pin, resolveOnly = false } = {}) 
       LANG: "C.UTF-8",
       GITHUB_TOKEN: "fixture-token-not-a-credential",
       GITHUB_REPOSITORY: repository,
-      GITHUB_EVENT_NAME: "workflow_run",
+      GITHUB_EVENT_NAME: withdrawal ? "issue_comment" : "workflow_run",
       GITHUB_EVENT_PATH: eventPath,
       GITHUB_OUTPUT: outputPath,
       AI_REVIEW_AGENT: "codex",
@@ -230,4 +281,24 @@ for (const native of [false, true]) {
     assert.equal(current.status, 0, current.stderr);
     assert.equal(current.mutations[0].path, `/repos/${repository}/issues/13/comments`);
   });
+}
+
+for (const withdrawal of ["edited", "deleted"]) {
+  test(`actual CLI ${withdrawal} withdrawal resolver pins full head and mutation reevaluates absence`, () => {
+    const resolved = runCli({ withdrawal, resolveOnly: true });
+    assert.equal(resolved.status, 0, resolved.stderr);
+    assert.deepEqual(resolved.matrix, [{ number: 12, head_sha: head }]);
+    assert.deepEqual(resolved.mutations, []);
+    const delivered = runCli({ withdrawal, pin: resolved.matrix[0] });
+    assert.equal(delivered.status, 0, delivered.stderr);
+    assert.match(delivered.stdout, /rerun-confirmed/);
+    assert.equal(delivered.mutations.length, 3);
+  });
+  for (const pin of [undefined, { number: 13, head_sha: head }, { number: 12, head_sha: other }])
+    test(`actual CLI ${withdrawal} withdrawal rejects missing/mismatched pair ${JSON.stringify(pin)}`, () => {
+      const result = runCli({ withdrawal, pin });
+      assert.equal(result.status, 1);
+      assert.deepEqual(result.mutations, []);
+      assert.match(result.stderr, /pinned/);
+    });
 }

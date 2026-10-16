@@ -109,8 +109,8 @@ function workflowAllows(eventName, event) {
   );
 }
 
-test("actual wakeup workflow filter admits created/edited receipt, summary, and whitespace legacy", () => {
-  assert.match(wakeup, /issue_comment:\s*types: \[created, edited\]/);
+test("actual wakeup workflow filter admits created/edited/deleted receipt, summary, and whitespace legacy", () => {
+  assert.match(wakeup, /issue_comment:\s*types: \[created, edited, deleted\]/);
   for (const action of ["created", "edited"])
     for (const body of [
       "Codex Review: clean",
@@ -203,3 +203,15 @@ test("fork native signal bridge has no privileged execution or credentials", () 
   assert.match(wakeup, /run: node scripts\/ai-review-wakeup\.mjs --resolve-only/);
   assert.match(wakeup, /group: ai-review-wakeup-\$\{\{ matrix.pull.number \}\}/);
 });
+
+for (const action of ["edited", "deleted"])
+  test(`coarse issue filter admits ${action} withdrawal without native markers`, () => {
+    assert.equal(
+      workflowAllows("issue_comment", {
+        action,
+        issue: { pull_request: {} },
+        comment: { body: "Withdrawn.", user: { login: "unknown" } },
+      }),
+      true,
+    );
+  });

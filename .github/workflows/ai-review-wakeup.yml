@@ -2,7 +2,7 @@ name: AI Review Wakeup
 
 on:
   issue_comment:
-    types: [created, edited]
+    types: [created, edited, deleted]
   workflow_run:
     workflows: [AI Review, AI Review Native Signal]
     types: [completed]
@@ -28,7 +28,8 @@ jobs:
     if: |
       github.event_name == 'workflow_run' || github.event_name == 'schedule' ||
       (github.event_name == 'issue_comment' && github.event.issue.pull_request &&
-       (contains(github.event.comment.body, 'Codex Review:') ||
+       (github.event.action == 'edited' || github.event.action == 'deleted' ||
+        contains(github.event.comment.body, 'Codex Review:') ||
         contains(github.event.comment.body, '<!-- codex-review-receipt:') ||
         contains(github.event.comment.body, '<!-- codex-pull-request-review-summary') ||
         contains(github.event.comment.body, '<!-- codex-review-state:')))
