@@ -188,25 +188,73 @@ review logins with `trustedReviewLogins` or Codex-specific logins with
 `MEMBER`, or `COLLABORATOR` do not satisfy AI review login trust. Unknown
 logins remain rejected.
 
-Native Codex review evidence is current-head only. If the review commit does
-not match the current PR head, it is stale and does not satisfy the gate. A
-trusted current-head Codex review with blocking `P0`, `P1`, or `P2` content
-fails the gate; trusted current-head native review evidence without blocking
-findings may satisfy it under the Codex native review classifier.
+Positive Codex evidence must identify the immutable current PR head. Formal
+reviews require a full matching `commit_id`; the existing `APPROVED` and
+`COMMENTED` classifications remain subject to blocking severity and findings.
+A current formal `CHANGES_REQUESTED`, or a formal review with blocking `P0`,
+`P1`, or `P2` content, vetoes issue receipts until the formal review is actually
+corrected or dismissed. Formal `P3` content alone does not introduce a new veto.
+The `COMMENTED` advisory exception requires the entire body to consist of one
+or more complete `[P3] Found an issue` lines (or the same bounded `Found` phrase
+with a numeric count or `finding(s)`, and optional terminal period/exclamation
+mark), plus layout whitespace. Multiple supported lines, case and CRLF
+normalization are supported. Any residual non-whitespace prose keeps the
+original complete body under existing vetoes; supported lines are never
+partially exempted from a mixed body. A P3 token elsewhere cannot hide unlabelled
+or unknown-priority findings. Explicit negative, unfinished or unresolved review
+state and mixed P0–P2 content still veto; actual unresolved P3 roots still block.
 
-When Codex has no inline findings, a top-level `Codex Review:` summary comment
-can also satisfy the gate only when it is from a trusted Codex login and uses
-the no-major-issues wording recognized by the gate, such as `did not find any
-major issues` or the supported contraction variants. Summary evidence remains
-current-head only:
+A trusted issue comment can approve only with an explicit supported no-findings
+verdict and matching reviewed commit. Supported forms are the legacy
+`Codex Review:` header and exactly one leading
+`<!-- codex-review-receipt:v1 -->` marker. The bounded v1
+`**Reviewed commit:**` form accepts the observed ASCII ` Chef's kiss.` ending
+as an explicit alternative to the existing rocket ending. Legacy `in head <sha>`
+and `Reviewed [<sha>]` forms remain supported. Case and CRLF normalization are
+preserved. Only the canonical observed About Codex in GitHub details footer is
+permitted, with whitespace and optional information-icon normalization. Repeated,
+combined or modified endings, arbitrary additional prose, malformed/mixed or
+duplicate markers, conflicting commit markers, and negative or unfinished
+results cannot approve.
 
-- If the summary body contains one or more 7-40 character hexadecimal
-  SHA-like markers, every marker must be the full current head SHA or a prefix
-  of the current head SHA. Any non-current 7-40 character marker is rejected
-  before timestamp fallback.
-- If the summary body contains no SHA-like marker, it may satisfy the gate only
-  by timestamp fallback: the trusted summary comment must have been posted at
-  or after the current head commit timestamp.
+Every reviewed SHA must match the full current head. Abbreviated commit markers
+must resolve uniquely through GitHub's commit API to that exact full head;
+missing, foreign or ambiguous identity fails closed. Timestamps order results
+only: issue comments use `updated_at`, formal reviews use `submitted_at`, and a
+tied positive/negative result fails closed. A timestamp never substitutes for
+commit identity.
+
+Every actual unresolved trusted inline finding blocks independently of a newer
+request or positive result, including `P3`, unknown-priority and older-head
+findings. All evidence and review-thread pages are read. Thread roots determine
+resolution; replies are not separate findings. Structured
+`codex-pull-request-review-summary` / `codex-review-state:v1` comments never
+approve. Strict current-head findings or unfinished state veto older/tied
+positive results; explicit current-head unresolved flags block until cleared.
+A clean completed false/false summary is neutral. Malformed, duplicate or
+conflicting newest native signals fail closed. Valid explicitly other-head
+summaries are neutral; actual unresolved inline roots still block across heads.
+
+Trusted default-branch wakeups independently fetch current evidence and requeue
+the existing exact-head AI Review run when needed. Edited/deleted receipts can
+withdraw the last positive even when no native marker remains. The router checks
+configured original-author trust, comment/PR identity, current edit or actual API
+404, and the context job's immutable PR/full-head pair. A strict trusted-bot
+scheduling observation can retain proven prior Codex acceptance for that exact
+run/attempt. After a rerun is strictly consumed, a genuinely successful new Codex
+attempt with current passing native evidence retains its own independently
+verified acceptance before the unchanged-snapshot no-op. This writes at most
+one observation, never another rerun; it preserves withdrawal history when the
+new attempt's logs later expire. Active, failed, skipped or unproven attempts do
+not acquire acceptance merely from consumption. Initial history requires the actual successful non-skipped Codex
+gate step and a complete bounded job log with its exact full-head completion
+line. This history permits one real re-evaluation of empty or neutral-only
+current evidence; it never approves a review. Remaining genuine formal approval
+needs no invalidation. Failed, never-accepted or bootstrap-skipped runs and
+unavailable/ambiguous history cannot justify blind absence reruns. Uncertain
+posting states must settle through the existing strict actual-attempt/server-time
+proof before any observation or replacement. See the [workflow contract](ai-pr-workflow.md#native-codex-receipts-and-exact-head-wakeup)
+for bounded log access, serialization and deduplication.
 
 ## Claude
 
