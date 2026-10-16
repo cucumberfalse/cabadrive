@@ -1,6 +1,11 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { isAcceptableCodexSummaryComment } from "../scripts/ai-review-helpers.mjs";
+import { readFileSync } from "node:fs";
+import {
+  classifyCodexSummaryComment,
+  isAcceptableCodexSummaryComment,
+  latestCodexResult,
+} from "../scripts/ai-review-helpers.mjs";
 
 export const headSha = "2667f79cd7676ff331730cabf661d38dbbcddb0d";
 export const nativeReceipt = [
@@ -116,3 +121,95 @@ for (const text of [
     );
   });
 }
+
+const { headSha: chefHead, comment: chefComment } = JSON.parse(
+  readFileSync(new URL("./fixtures/codex-review-receipt-6206390117.json", import.meta.url), "utf8"),
+);
+const chefSuffix = " Chef's kiss.";
+
+test("observed Chef's kiss receipt 6206390117 preserves its complete native body", () => {
+  assert.equal(classifyCodexSummaryComment(chefComment, chefHead), "pass");
+  assert.equal(isAcceptableCodexSummaryComment(chefComment, chefHead), true);
+});
+
+test("latest result selects the observed Chef's kiss receipt over an older issue verdict", () => {
+  const older = {
+    ...chefComment,
+    id: 1,
+    body: chefComment.body.replace("Didn't find any major issues", "Found a P2 regression"),
+    created_at: "2026-10-16T01:00:00Z",
+    updated_at: "2026-10-16T01:00:00Z",
+  };
+  const result = latestCodexResult([], [], [older, chefComment], chefHead);
+  assert.equal(result.result, "pass");
+  assert.equal(result.comment.id, 6206390117);
+});
+
+for (const [name, body] of Object.entries({
+  "no suffix": chefComment.body.replace(chefSuffix, ""),
+  CRLF: chefComment.body.replaceAll("\n", "\r\n"),
+  "verdict case": chefComment.body.replace(
+    "Codex Review: Didn't find any major issues. Chef's kiss.",
+    "CODEX REVIEW: DIDN'T FIND ANY MAJOR ISSUES. CHEF'S KISS.",
+  ),
+})) {
+  test(`observed Chef's kiss receipt preserves ${name} handling`, () => {
+    assert.equal(isAcceptableCodexSummaryComment({ ...chefComment, body }, chefHead), true);
+  });
+}
+
+for (const [name, body] of Object.entries({
+  "modified suffix": chefComment.body.replace(chefSuffix, " Chef kiss."),
+  "non-ASCII suffix apostrophe": chefComment.body.replace(chefSuffix, " Chef’s kiss."),
+  "missing verdict period": chefComment.body.replace("issues. Chef", "issues Chef"),
+  "missing suffix period": chefComment.body.replace(chefSuffix, " Chef's kiss"),
+  "repeated suffix period": chefComment.body.replace(chefSuffix, " Chef's kiss.."),
+  "repeated suffix": chefComment.body.replace(chefSuffix, chefSuffix.repeat(2)),
+  "suffix before verdict": chefComment.body
+    .replace(chefSuffix, "")
+    .replace("Codex Review:", "Chef's kiss. Codex Review:"),
+  "suffix after commit": chefComment.body
+    .replace(chefSuffix, "")
+    .replace("`80fa2f6b75`", "`80fa2f6b75` Chef's kiss."),
+  "rocket then suffix": chefComment.body.replace(chefSuffix, ` :rocket:${chefSuffix}`),
+  "suffix then rocket": chefComment.body.replace(chefSuffix, `${chefSuffix} :rocket:`),
+  "emoji then suffix": chefComment.body.replace(chefSuffix, ` 🚀${chefSuffix}`),
+  "suffix then emoji": chefComment.body.replace(chefSuffix, `${chefSuffix} 🚀`),
+  "arbitrary prose": chefComment.body.replace(chefSuffix, `${chefSuffix} Everything looks good.`),
+  "negative prose": chefComment.body.replace(
+    chefSuffix,
+    `${chefSuffix} There are unresolved findings.`,
+  ),
+  "incomplete prose": chefComment.body.replace(
+    chefSuffix,
+    `${chefSuffix} Review is still running.`,
+  ),
+  "priority prose": chefComment.body.replace(chefSuffix, `${chefSuffix} [P2] Blocking regression.`),
+  "unprefixed suffix": chefComment.body.replace("<!-- codex-review-receipt:v1 -->\n\n", ""),
+  "wrong receipt version": chefComment.body.replace(":v1", ":v2"),
+  "malformed marker": chefComment.body.replace(
+    "<!-- codex-review-receipt:",
+    "<!- codex-review-receipt:",
+  ),
+  "duplicate receipt marker": chefComment.body.replace(
+    "\n\nCodex Review:",
+    "\n\n<!-- codex-review-receipt:v1 -->\n\nCodex Review:",
+  ),
+  "mixed summary marker": `${chefComment.body}\n<!-- codex-pull-request-review-summary -->`,
+  "wrong SHA": chefComment.body.replace("80fa2f6b75", "deadbeef00"),
+  "missing SHA": chefComment.body.replace("**Reviewed commit:** `80fa2f6b75`", ""),
+})) {
+  test(`observed Chef's kiss receipt rejects ${name}`, () => {
+    assert.equal(isAcceptableCodexSummaryComment({ ...chefComment, body }, chefHead), false);
+  });
+}
+
+test("observed Chef's kiss receipt copied by an owner remains untrusted", () => {
+  assert.equal(
+    isAcceptableCodexSummaryComment(
+      { ...chefComment, user: { login: "repo-owner" }, author_association: "OWNER" },
+      chefHead,
+    ),
+    false,
+  );
+});

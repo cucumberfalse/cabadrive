@@ -483,8 +483,12 @@ Invalid attempt metadata fails before triggering.
 Codex evidence comes only from configured trusted connector identities. A
 no-findings comment may use the legacy `Codex Review:` header or exactly one
 leading `<!-- codex-review-receipt:v1 -->` marker, followed by the explicit
-no-findings verdict and matching `**Reviewed commit:**` line. Existing explicit
-legacy `in head <sha>` and `Reviewed [<sha>]` forms remain supported. The exact observed native
+no-findings verdict and matching `**Reviewed commit:**` line. That v1 receipt
+form also accepts the observed ASCII ` Chef's kiss.` verdict ending as an
+explicit alternative to the existing rocket suffix. Verdict matching retains
+its case-insensitive and CRLF handling; misplaced, repeated, combined, or
+modified endings and additional prose are rejected. Existing explicit legacy
+`in head <sha>` and `Reviewed [<sha>]` forms remain supported. The exact observed native
 About Codex in GitHub details block is supported with whitespace and optional
 information-icon normalization; arbitrary footer prose is rejected. Missing or conflicting commits,
 duplicate/malformed markers, contradictory prose, and incomplete/negative results

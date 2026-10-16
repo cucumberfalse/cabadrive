@@ -173,7 +173,8 @@ export function classifyCodexSummaryComment(comment, headSha, config = {}) {
   const markers = extractShaLikeMarkers(body);
   if (markers.length && markers.every((marker) => !fullSha.startsWith(marker))) return null;
   if (markers.some((marker) => !fullSha.startsWith(marker))) return "fail";
-  if (/codex-review-receipt:/i.test(body)) {
+  const hasReceiptPrefix = /codex-review-receipt:/i.test(body);
+  if (hasReceiptPrefix) {
     if (!body.startsWith("<!-- codex-review-receipt:v1 -->\n\n")) return "fail";
     body = body.slice("<!-- codex-review-receipt:v1 -->\n\n".length);
     if (/codex-review-receipt:/i.test(body)) return "fail";
@@ -196,9 +197,13 @@ Codex can also answer questions or update the PR. Try commenting "@codex address
   }
   const verdict = "Codex Review:\\s*did(?:\\s+not|\\s*n['’]?t)\\s+find\\s+any\\s+major\\s+issues";
   const sha = "([a-fA-F0-9]{7,40})";
+  // The observed praise is a v1 receipt alternative, never arbitrary legacy prose.
+  const verdictEnding = hasReceiptPrefix
+    ? "(?:\\.?(?: :rocket:| 🚀)?|\\. Chef's kiss\\.)"
+    : "\\.?(?: :rocket:| 🚀)?";
   const patterns = [
     new RegExp(
-      "^" + verdict + "\\.?(?: :rocket:| 🚀)?\\s*\\n\\n\\*\\*Reviewed commit:\\*\\* `" + sha + "`$",
+      "^" + verdict + verdictEnding + "\\s*\\n\\n\\*\\*Reviewed commit:\\*\\* `" + sha + "`$",
       "i",
     ),
     new RegExp(`^${verdict} in head \\(?${sha}\\)?\\.$`, "i"),

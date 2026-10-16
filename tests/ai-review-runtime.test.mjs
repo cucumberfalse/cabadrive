@@ -1,5 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
 import { runReviewGate } from "../scripts/ai-review-gate.mjs";
 import { resolvePrContext } from "../scripts/resolve-pr-context.mjs";
 import { createReviewApi } from "../scripts/ai-review-api.mjs";
@@ -45,6 +46,7 @@ const makePull = (extra = {}) => ({
 const quiet = { log() {}, warn() {}, error() {} };
 
 function gateApi({
+  headSha = head,
   comments = [makeComment()],
   reviews = [],
   inline = [],
@@ -59,8 +61,9 @@ function gateApi({
     async request(path, options = {}) {
       const override = onRequest(path, options, ++pulls);
       if (override !== undefined) return override;
-      if (path === `${root}/pulls/12`) return makePull();
-      if (path.includes("/commits/")) return { sha: head };
+      if (path === `${root}/pulls/12`)
+        return makePull({ head: { ...makePull().head, sha: headSha } });
+      if (path.includes("/commits/")) return { sha: headSha };
       if (options.method === "POST") {
         posted.push(JSON.parse(options.body));
         return {};
@@ -1714,5 +1717,111 @@ for (const channel of ["direct", "completion", "schedule"]) {
     assert.equal(await deliverPosting(h, channel), "already-evaluated");
     assert.equal(h.run.run_attempt, 3);
     assert.equal(h.mutations, 1);
+  });
+}
+
+const { headSha: chefHead, comment: chefComment } = JSON.parse(
+  readFileSync(new URL("./fixtures/codex-review-receipt-6206390117.json", import.meta.url), "utf8"),
+);
+
+test("actual gate accepts observed Chef's kiss receipt only after unique short-SHA proof", async () => {
+  const requests = [];
+  const api = gateApi({
+    headSha: chefHead,
+    comments: [chefComment],
+    onRequest(path) {
+      requests.push(path);
+    },
+  });
+  assert.equal(await gate(api, { headSha: chefHead }), true);
+  assert.equal(requests.filter((path) => path === `${root}/commits/80fa2f6b75`).length, 1);
+  assert.equal(requests.filter((path) => path === `${root}/pulls/12`).length, 3);
+  assert.deepEqual(api.posted, []);
+});
+
+for (const proof of [
+  "wrong full SHA",
+  "missing SHA object",
+  "missing commit",
+  "ambiguous commit",
+]) {
+  test(`observed Chef's kiss gate rejects ${proof}`, async () => {
+    const api = gateApi({
+      headSha: chefHead,
+      comments: [chefComment],
+      onRequest(path) {
+        if (!path.includes("/commits/")) return;
+        if (proof === "wrong full SHA") return { sha: other };
+        if (proof === "missing SHA object") return {};
+        throw Object.assign(new Error(proof), { status: proof === "ambiguous commit" ? 422 : 404 });
+      },
+    });
+    assert.equal(await gate(api, { headSha: chefHead }), false);
+  });
+}
+
+for (const boundary of [1, 2, 3]) {
+  test(`observed Chef's kiss gate rejects a push at head guard ${boundary}`, async () => {
+    let reads = 0;
+    const api = gateApi({
+      headSha: chefHead,
+      comments: [chefComment],
+      onRequest(path) {
+        if (path === `${root}/pulls/12` && ++reads >= boundary)
+          return makePull({ head: { sha: other } });
+      },
+    });
+    await assert.rejects(gate(api, { headSha: chefHead }), /superseded/);
+    assert.deepEqual(api.posted, []);
+  });
+}
+
+for (const blocker of [
+  "unresolved older-head finding",
+  "blocking formal review",
+  "negative summary",
+  "newer negative receipt",
+  "untrusted receipt",
+]) {
+  test(`observed Chef's kiss gate preserves ${blocker} veto`, async () => {
+    const options = { headSha: chefHead, comments: [chefComment] };
+    if (blocker === "unresolved older-head finding")
+      options.inline = [{ id: 44, body: "[P3] Still unresolved", user, commit_id: other }];
+    if (blocker === "blocking formal review")
+      options.reviews = [makeReview({ commit_id: chefHead, state: "CHANGES_REQUESTED" })];
+    if (blocker === "negative summary") {
+      const state = {
+        code_review: {
+          commit_sha: chefHead,
+          has_any_findings: true,
+          has_unresolved_findings: true,
+          status: "completed",
+        },
+        security_review: {
+          commit_sha: null,
+          has_any_findings: null,
+          has_unresolved_findings: null,
+          status: null,
+        },
+      };
+      options.comments.push({
+        ...chefComment,
+        id: 2,
+        body: `<!-- codex-pull-request-review-summary -->\n<!-- codex-review-state:v1 ${JSON.stringify(state)} -->`,
+        updated_at: "2026-10-16T02:05:00Z",
+      });
+    }
+    if (blocker === "newer negative receipt")
+      options.comments.push({
+        ...chefComment,
+        id: 2,
+        body: chefComment.body.replace("Didn't find any major issues", "Found a P2 regression"),
+        updated_at: "2026-10-16T02:05:00Z",
+      });
+    if (blocker === "untrusted receipt")
+      options.comments = [
+        { ...chefComment, user: { login: "repo-owner" }, author_association: "OWNER" },
+      ];
+    assert.equal(await gate(gateApi(options), { headSha: chefHead }), false);
   });
 }
