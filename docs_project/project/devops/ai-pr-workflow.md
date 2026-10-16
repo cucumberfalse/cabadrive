@@ -550,9 +550,13 @@ state only: claimed/posting phase, head, run, source attempt, and a hash of trus
 bodies, timestamps, and thread resolution. Human lookalikes are ignored;
 malformed or duplicate trusted checkpoints fail closed. A claim is consumed only
 when GitHub confirms a later attempt started strictly after both the immutable
-server checkpoint time and signal time. Equal-second events get one conservative
-post-boundary evaluation. Active-run signals remain pending for the completion
-backstop. Unchanged duplicate events and that rerun's own completion converge;
+server checkpoint time and signal time. Only an unposted claim may wait past an
+equal-second boundary and retry. Every persisted posting state first requires
+bounded read-only reconciliation, even if the attempt advanced or the native
+snapshot changed. Missing, invalid, future, equal, or older start times leave that
+posting state unchanged and block another POST. Settling an earlier POST does not
+prove that a newer snapshot was evaluated. Active-run signals remain pending for
+the completion backstop. Unchanged duplicate events and that rerun's own completion converge;
 new negative/edit evidence can invalidate an earlier green result. API-uncertain
 reruns receive bounded reconciliation and an explicit error, without blind POST
 retries or treating scheduling state as a verdict. A crash in the initial claimed phase leaves a retryable claim. Before POST the

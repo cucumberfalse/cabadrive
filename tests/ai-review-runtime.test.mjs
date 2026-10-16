@@ -1563,3 +1563,156 @@ test("schedule revalidates resolution after the posting boundary before the reru
   await assert.rejects(schedule(h), /Scheduling inputs changed before rerun/);
   assert.equal(h.mutations, 0);
 });
+
+function deliverPosting(h, channel) {
+  if (channel === "schedule") return schedule(h);
+  if (channel === "completion")
+    return h.route({
+      eventName: "workflow_run",
+      event: {
+        action: "completed",
+        repository: { full_name: repository },
+        workflow_run: { ...h.run, name: "AI Review" },
+      },
+    });
+  return h.route();
+}
+
+const unprovenPostingStarts = {
+  "same second": at,
+  older: "2026-10-15T11:59:59Z",
+  missing: undefined,
+  invalid: "not a server timestamp",
+  future: "2099-10-15T12:00:01Z",
+};
+
+function observePostingWrites(h) {
+  const writes = [];
+  const request = h.api.request;
+  h.api.request = (path, options) => {
+    if (options?.method) writes.push({ path, method: options.method });
+    return request(path, options);
+  };
+  return writes;
+}
+
+for (const channel of ["direct", "completion", "schedule"])
+  for (const changed of [false, true])
+    for (const [chronology, started] of Object.entries(unprovenPostingStarts))
+      test(`advanced posting ${channel} preserves ${changed ? "changed" : "same"} snapshot with ${chronology} start`, async () => {
+        const h = routerHarness();
+        assert.equal(await h.route(), "rerun-confirmed");
+        h.run = { ...h.run, status: "completed", run_started_at: started };
+        if (changed)
+          h.comments[0].body = receipt.replace(
+            "Didn't find any major issues",
+            "Found P2 regression",
+          );
+        const before = structuredClone(h.checkpoint);
+        const writes = observePostingWrites(h);
+        for (let delivery = 0; delivery < 2; delivery += 1)
+          await assert.rejects(deliverPosting(h, channel), /acceptance remains uncertain/);
+        assert.deepEqual(h.checkpoint, before);
+        assert.deepEqual(writes, []);
+        assert.equal(h.mutations, 1);
+      });
+
+for (const channel of ["direct", "completion", "schedule"])
+  for (const oldHead of [head, other])
+    for (const [chronology, started] of Object.entries(unprovenPostingStarts))
+      test(`historical posting ${channel} preserves ${oldHead === head ? "other-run" : "prior-head"} ledger with ${chronology} start`, async () => {
+        const { h, prior } = await priorLedgerHarness({ oldHead });
+        prior.run_started_at = started;
+        h.comments[0].body = receipt.replace("Didn't find any major issues", "Found P2 regression");
+        const before = structuredClone(h.checkpoint);
+        const writes = observePostingWrites(h);
+        await assert.rejects(deliverPosting(h, channel), /acceptance remains uncertain/);
+        assert.deepEqual(h.checkpoint, before);
+        assert.deepEqual(writes, []);
+        assert.equal(h.mutations, 1);
+      });
+
+for (const channel of ["direct", "completion", "schedule"])
+  for (const changed of [false, true])
+    test(`strictly later posting ${channel} settles prior POST without consuming ${changed ? "new" : "duplicate"} snapshot`, async () => {
+      const h = routerHarness();
+      assert.equal(await h.route(), "rerun-confirmed");
+      h.run = { ...h.run, status: "completed" };
+      const before = structuredClone(h.checkpoint);
+      if (changed)
+        h.comments[0].body = receipt.replace("Didn't find any major issues", "Found P2 regression");
+      const writes = observePostingWrites(h);
+      assert.equal(
+        await deliverPosting(h, channel),
+        changed ? "rerun-confirmed" : "already-evaluated",
+      );
+      assert.equal(await deliverPosting(h, channel), "already-evaluated");
+      assert.equal(h.mutations, changed ? 2 : 1);
+      if (!changed) {
+        assert.deepEqual(h.checkpoint, before);
+        assert.deepEqual(writes, []);
+      }
+    });
+
+for (const channel of ["direct", "completion", "schedule"])
+  for (const ledger of ["current", "other-run", "prior-head"])
+    test(`posting ${channel} requires strict persisted signal chronology for ${ledger} ledger`, async () => {
+      let h;
+      let prior;
+      if (ledger === "current") {
+        h = routerHarness();
+        await h.route();
+        h.run = { ...h.run, status: "completed" };
+        prior = h.run;
+      } else
+        ({ h, prior } = await priorLedgerHarness({
+          oldHead: ledger === "prior-head" ? other : head,
+        }));
+      const value = JSON.parse(h.checkpoint.body.slice("<!-- ai-review-wakeup:v1 ".length, -4));
+      value.signal_updated_at = "2026-10-15T12:00:01Z";
+      h.checkpoint = {
+        ...h.checkpoint,
+        body: `<!-- ai-review-wakeup:v1 ${JSON.stringify(value)} -->`,
+      };
+      prior.run_started_at = value.signal_updated_at;
+      const before = structuredClone(h.checkpoint);
+      const writes = observePostingWrites(h);
+      await assert.rejects(deliverPosting(h, channel), /acceptance remains uncertain/);
+      assert.deepEqual(h.checkpoint, before);
+      assert.deepEqual(writes, []);
+      assert.equal(h.mutations, 1);
+    });
+
+for (const channel of ["direct", "completion", "schedule"]) {
+  test(`posting ${channel} reconciles delayed strict proof without any write`, async () => {
+    const h = routerHarness();
+    await h.route();
+    h.run = { ...h.run, status: "completed", run_started_at: at };
+    const before = structuredClone(h.checkpoint);
+    const writes = observePostingWrites(h);
+    const route = h.route;
+    let waits = 0;
+    h.route = (extra) =>
+      route({
+        ...extra,
+        sleep: async () => {
+          waits += 1;
+          h.run = { ...h.run, run_started_at: "2026-10-15T12:00:01Z" };
+        },
+      });
+    assert.equal(await deliverPosting(h, channel), "already-evaluated");
+    assert.equal(waits, 1);
+    assert.deepEqual(h.checkpoint, before);
+    assert.deepEqual(writes, []);
+    assert.equal(h.mutations, 1);
+  });
+  test(`unposted claimed ${channel} state can retry an advanced ambiguous boundary once`, async () => {
+    const h = routerHarness({ status: "in_progress" });
+    assert.equal(await h.route(), "pending-active-completion");
+    h.run = { ...h.run, run_attempt: 2, status: "completed", run_started_at: at };
+    assert.equal(await deliverPosting(h, channel), "rerun-confirmed");
+    assert.equal(await deliverPosting(h, channel), "already-evaluated");
+    assert.equal(h.run.run_attempt, 3);
+    assert.equal(h.mutations, 1);
+  });
+}

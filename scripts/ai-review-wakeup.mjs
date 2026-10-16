@@ -76,6 +76,19 @@ function parseCheckpoint(comments) {
   return { comment, value };
 }
 
+function confirmsCheckpointAttempt(run, checkpoint, observedAt) {
+  const started = Date.parse(run.run_started_at);
+  const posted = Date.parse(checkpoint.comment.updated_at);
+  const included = Date.parse(checkpoint.value.signal_updated_at);
+  return (
+    run.run_attempt > checkpoint.value.source_attempt &&
+    [started, posted, included, observedAt].every(Number.isFinite) &&
+    started <= observedAt &&
+    started > posted &&
+    started > included
+  );
+}
+
 async function snapshot(api, number, headSha, config) {
   const [comments, reviews, inline, resolved] = await Promise.all([
     api.list(`${api.root}/issues/${number}/comments`),
@@ -356,15 +369,27 @@ export async function routeReviewWakeup({
   let signal = await snapshot(api, number, headSha, config);
   const applicableCheckpoint =
     signal.checkpoint?.value.head_sha === headSha && signal.checkpoint.value.run_id === run.id;
-  if (!applicableCheckpoint && signal.checkpoint?.value.phase === "posting") {
+  if (applicableCheckpoint && signal.checkpoint.value.source_attempt > run.run_attempt)
+    throw new Error("Checkpoint refers to an impossible future run attempt.");
+  if (signal.checkpoint?.value.phase === "posting") {
     const prior = signal.checkpoint;
     let settled = false;
     for (let index = 0; index < 4; index += 1) {
       await assertCurrentPull(api, number, headSha);
       const previous = await api.request(`${api.root}/actions/runs/${prior.value.run_id}`);
+      if (applicableCheckpoint) {
+        if (
+          previous.id !== prior.value.run_id ||
+          !(await validRun(api, previous, number, headSha, repository, workflow.id))
+        )
+          throw new Error("Pending rerun identity changed.");
+        if (previous.run_attempt < prior.value.source_attempt)
+          throw new Error("Checkpoint refers to an impossible future run attempt.");
+        run = previous;
+      }
       // A historical run cannot match the live head after a push. This read-only
       // proof settles its old POST only; current mutations still use validRun.
-      if (
+      else if (
         previous.id !== prior.value.run_id ||
         previous.workflow_id !== workflow.id ||
         previous.path !== workflowPath ||
@@ -380,57 +405,26 @@ export async function routeReviewWakeup({
         previous.run_attempt < prior.value.source_attempt
       )
         throw new Error("Prior checkpoint run identity or attempt is invalid.");
-      settled =
-        previous.run_attempt > prior.value.source_attempt &&
-        Date.parse(previous.run_started_at) > Date.parse(prior.comment.updated_at) &&
-        Date.parse(previous.run_started_at) > Date.parse(prior.value.signal_updated_at);
+      settled = confirmsCheckpointAttempt(previous, prior, now());
       if (settled) break;
       if (index < 3) await sleep(5000 * (index + 1));
     }
     if (!settled)
       throw new Error(
-        "Prior checkpoint rerun acceptance remains uncertain; no overwrite or duplicate POST performed.",
+        "Prior rerun acceptance remains uncertain; no overwrite or duplicate POST performed.",
       );
   }
   // Dismissal/deletion can preserve old REST timestamps. The verified native
   // event run creation time is a freshness hint only for the first checkpoint.
   if (!applicableCheckpoint) signal.latest = Math.max(signal.latest, context.wakeupAt || 0);
-  if (
-    signal.checkpoint?.value.head_sha === headSha &&
-    signal.checkpoint.value.run_id === run.id &&
-    signal.checkpoint.value.source_attempt > run.run_attempt
-  )
-    throw new Error("Checkpoint refers to an impossible future run attempt.");
   const consumed = (state) =>
     state &&
     state.value.head_sha === headSha &&
     state.value.run_id === run.id &&
     state.value.signal_hash === signal.hash &&
-    run.run_attempt > state.value.source_attempt &&
-    Date.parse(run.run_started_at) > Date.parse(state.comment.updated_at) &&
+    confirmsCheckpointAttempt(run, state, now()) &&
     Date.parse(run.run_started_at) > signal.latest;
   if (consumed(signal.checkpoint)) return "already-evaluated";
-  if (
-    signal.checkpoint?.value.phase === "posting" &&
-    signal.checkpoint.value.head_sha === headSha &&
-    signal.checkpoint.value.run_id === run.id &&
-    run.run_attempt <= signal.checkpoint.value.source_attempt
-  ) {
-    // Even a newer signal cannot overwrite uncertainty about a previous POST.
-    for (let index = 0; index < 4; index += 1) {
-      await assertCurrentPull(api, number, headSha);
-      run = await api.request(`${api.root}/actions/runs/${run.id}`);
-      if (!(await validRun(api, run, number, headSha, repository, workflow.id)))
-        throw new Error("Pending rerun identity changed.");
-      if (run.run_attempt > signal.checkpoint.value.source_attempt) break;
-      if (index < 3) await sleep(5000 * (index + 1));
-    }
-    if (run.run_attempt <= signal.checkpoint.value.source_attempt)
-      throw new Error(
-        "Prior rerun acceptance remains uncertain; authorized API reconciliation is required, no duplicate POST performed.",
-      );
-    if (consumed(signal.checkpoint)) return "rerun-confirmed";
-  }
   if (!signal.count) return "no-signal";
   if (scheduled && !applicableCheckpoint) {
     if (run.status !== "completed") return "active-no-baseline";
@@ -446,12 +440,13 @@ export async function routeReviewWakeup({
   )
     return "older-than-attempt";
   if (
-    signal.checkpoint?.value.head_sha === headSha &&
+    signal.checkpoint?.value.phase === "claimed" &&
+    signal.checkpoint.value.head_sha === headSha &&
     signal.checkpoint.value.run_id === run.id &&
     signal.checkpoint.value.signal_hash === signal.hash &&
     run.run_attempt > signal.checkpoint.value.source_attempt
   ) {
-    // Equal-second starts cannot prove ordering. Claim one post-boundary attempt.
+    // Only an unposted claim may retry an ambiguous timestamp boundary.
     if (run.status !== "completed") return "active-boundary-attempt";
   }
   const old = signal.checkpoint;
@@ -493,20 +488,6 @@ export async function routeReviewWakeup({
     signal = { ...signal, checkpoint: { comment, value } };
   }
   if (run.status !== "completed") return "pending-active-completion";
-  if (signal.checkpoint.value.phase === "posting") {
-    // A previous POST may have been accepted. Reconcile without another POST.
-    for (let index = 0; index < 4; index += 1) {
-      await assertCurrentPull(api, number, headSha);
-      run = await api.request(`${api.root}/actions/runs/${run.id}`);
-      if (!(await validRun(api, run, number, headSha, repository, workflow.id)))
-        throw new Error("Pending rerun identity changed.");
-      if (consumed(signal.checkpoint)) return "rerun-confirmed";
-      if (index < 3) await sleep(5000 * (index + 1));
-    }
-    throw new Error(
-      "Prior rerun acceptance remains uncertain; authorized API reconciliation is required, no duplicate POST performed.",
-    );
-  }
   await assertCurrentPull(api, number, headSha);
   await assertSourceContext();
   const claimRun = await api.request(`${api.root}/actions/runs/${run.id}`);
@@ -542,8 +523,8 @@ export async function routeReviewWakeup({
     JSON.stringify(currentSignal.checkpoint) !== JSON.stringify(signal.checkpoint)
   )
     throw new Error("Scheduling inputs changed before rerun; no mutation performed.");
-  // A prior crash before POST leaves a retryable claim. An uncertain POST is
-  // reconciled here and never blindly repeated during the same invocation.
+  // Only this invocation submits the new posting claim. Later deliveries must
+  // prove its actual later attempt before replacing it or submitting another POST.
   let postError;
   try {
     await api.request(`${api.root}/actions/runs/${run.id}/rerun`, { method: "POST" });
