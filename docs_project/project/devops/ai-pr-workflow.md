@@ -541,8 +541,11 @@ dismissals and inline deletions are reevaluated even when REST timestamps do not
 change. It supplies no verdict; unchanged checkpoint hashes still deduplicate. These paths
 handle created/edited/deleted legacy, receipt, and structured summary comments; formal and
 inline review changes; and the existing gate's completion. Structured summaries, reactions, and `Completed` text cannot satisfy the gate.
-A strictly validated current-head structured code-review result with findings or
-an unfinished status vetoes an older/tied positive result. Explicit current-head
+A strictly validated applicable current-full-head result in either structured
+`code_review` or `security_review` with findings or an unfinished status vetoes
+an older/tied positive result. Canonically absent slots require no review; all
+applicable slots must be completed and clean for the summary to remain neutral.
+Explicit current-head
 unresolved findings in either summary slot remain blocking until cleared. The
 canonical completed false/false summary remains neutral. Malformed, duplicate, or
 conflicting newest native signals fail closed. The latest blocking current-head

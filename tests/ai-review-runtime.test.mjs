@@ -4,7 +4,11 @@ import { readFileSync } from "node:fs";
 import { runReviewGate } from "../scripts/ai-review-gate.mjs";
 import { resolvePrContext } from "../scripts/resolve-pr-context.mjs";
 import { createReviewApi } from "../scripts/ai-review-api.mjs";
-import { latestCodexResult } from "../scripts/ai-review-helpers.mjs";
+import {
+  classifyCodexStructuredSummary,
+  classifyCodexSummaryComment,
+  latestCodexResult,
+} from "../scripts/ai-review-helpers.mjs";
 import {
   routeReviewWakeup,
   wakeupPrNumber,
@@ -2038,3 +2042,322 @@ for (const residual of [
       });
       assert.equal(await gate(api), false);
     });
+
+// F28 fixtures exercise the supported native schema; they are not native API payloads.
+const f28Empty = () => ({
+  commit_sha: null,
+  has_any_findings: null,
+  has_unresolved_findings: null,
+  status: null,
+});
+const f28Clean = (commit_sha = head) => ({
+  commit_sha,
+  has_any_findings: false,
+  has_unresolved_findings: false,
+  status: "completed",
+});
+const f28Summary = (state, extra = {}) =>
+  makeComment({
+    id: 280,
+    created_at: "2020-01-01T00:00:00Z",
+    updated_at: "2026-10-15T12:01:00Z",
+    body: `<!-- codex-pull-request-review-summary -->\n<!-- codex-review-state:v1 ${JSON.stringify(state)} -->\n\n## Codex Review Summary`,
+    ...extra,
+  });
+const f28NegativeSections = [
+  ...["running", "pending", "in_progress", "failed", "incomplete", null, "vendor_waiting"].map(
+    (status) => ({ status, has_any_findings: null, has_unresolved_findings: null }),
+  ),
+  { status: "completed", has_any_findings: true, has_unresolved_findings: false },
+  { status: "completed", has_any_findings: true, has_unresolved_findings: true },
+];
+for (const slot of ["code_review", "security_review"])
+  for (const peer of ["clean", "absent", "other-head"])
+    for (const section of f28NegativeSections) {
+      const peerSlot = slot === "code_review" ? "security_review" : "code_review";
+      const state = {
+        [slot]: { commit_sha: head, ...section },
+        [peerSlot]: peer === "absent" ? f28Empty() : f28Clean(peer === "clean" ? head : other),
+      };
+      const label = `${slot} ${section.status}/${section.has_any_findings}/${section.has_unresolved_findings}, peer ${peer}`;
+      test(`F28 every applicable slot vetoes in classifier/latest: ${label}`, () => {
+        const summary = f28Summary(state);
+        assert.equal(classifyCodexStructuredSummary(summary, head).result, "fail");
+        assert.equal(classifyCodexSummaryComment(summary, head), "fail");
+        assert.equal(latestCodexResult([], [], [makeComment(), summary], head).result, "fail");
+      });
+      test(`F28 actual gate rejects older receipt for every applicable slot: ${label}`, async () => {
+        assert.equal(await gate(gateApi({ comments: [makeComment(), f28Summary(state)] })), false);
+      });
+    }
+
+for (const [label, state] of [
+  ["both absent", { code_review: f28Empty(), security_review: f28Empty() }],
+  ["both clean", { code_review: f28Clean(), security_review: f28Clean() }],
+  ["code clean security absent", { code_review: f28Clean(), security_review: f28Empty() }],
+  ["security clean code absent", { code_review: f28Empty(), security_review: f28Clean() }],
+  [
+    "code clean security other-head",
+    {
+      code_review: f28Clean(),
+      security_review: { ...f28Clean(other), has_any_findings: true, status: "failed" },
+    },
+  ],
+  [
+    "security clean code other-head",
+    {
+      code_review: { ...f28Clean(other), has_any_findings: true, status: "failed" },
+      security_review: f28Clean(),
+    },
+  ],
+  [
+    "both other-head",
+    {
+      code_review: f28Clean(other),
+      security_review: { ...f28Clean(other), status: "running", has_any_findings: true },
+    },
+  ],
+]) {
+  test(`F28 canonical neutral state never supplies approval: ${label}`, async () => {
+    const summary = f28Summary(state);
+    assert.equal(classifyCodexStructuredSummary(summary, head).result, null);
+    assert.equal(latestCodexResult([], [], [summary], head).result, null);
+    assert.equal(await gate(gateApi({ comments: [summary] })), false);
+    assert.equal(await gate(gateApi({ comments: [makeComment(), summary] })), true);
+  });
+}
+
+for (const slot of ["code_review", "security_review"]) {
+  for (const timing of ["newer", "tie", "old created edited after request"])
+    test(`F28 ${slot} unfinished ${timing} summary wins over receipt`, async () => {
+      const summary = f28Summary(
+        {
+          code_review: f28Clean(),
+          security_review: f28Clean(),
+          [slot]: { ...f28Clean(), status: "pending" },
+        },
+        timing === "tie" ? { updated_at: at } : {},
+      );
+      const comments = [makeComment(), summary];
+      if (timing === "old created edited after request")
+        comments.push(
+          makeComment({
+            id: 91,
+            user: { login: "owner" },
+            body: `@codex review ${head}`,
+            updated_at: "2026-10-15T12:00:30Z",
+          }),
+        );
+      assert.equal(latestCodexResult([], [], comments, head).result, "fail");
+      assert.equal(await gate(gateApi({ comments })), false);
+    });
+  test(`F28 explicit ${slot} unresolved survives later request/receipt until cleared`, async () => {
+    const state = {
+      code_review: f28Clean(),
+      security_review: f28Clean(),
+      [slot]: { ...f28Clean(), has_any_findings: true, has_unresolved_findings: true },
+    };
+    const comments = [
+      f28Summary(state),
+      makeComment({ updated_at: "2026-10-15T13:00:00Z" }),
+      makeComment({
+        id: 91,
+        body: `@codex review ${head}`,
+        user: { login: "owner" },
+        updated_at: "2026-10-15T13:01:00Z",
+      }),
+    ];
+    assert.equal(classifyCodexStructuredSummary(comments[0], head).unresolved, true);
+    assert.equal(await gate(gateApi({ comments })), false);
+    comments[0] = f28Summary({ ...state, [slot]: f28Clean() });
+    assert.equal(await gate(gateApi({ comments })), true);
+    assert.equal(
+      await gate(
+        gateApi({
+          comments,
+          inline: [{ id: 44, user, commit_id: other, body: "[P3] Actual root" }],
+        }),
+      ),
+      false,
+    );
+    assert.equal(
+      await gate(gateApi({ comments, reviews: [makeReview({ state: "CHANGES_REQUESTED" })] })),
+      false,
+    );
+  });
+  for (const [label, section] of [
+    ["short SHA", { commit_sha: head.slice(0, 10) }],
+    ["empty SHA", { commit_sha: "" }],
+    ["completed null any", { has_any_findings: null }],
+    ["completed null unresolved", { has_unresolved_findings: null }],
+    ["incoherent unresolved", { has_any_findings: false, has_unresolved_findings: true }],
+    ["string verdict", { has_any_findings: "false" }],
+    ["empty status", { status: "" }],
+    ["whitespace status", { status: " " }],
+    ["nonstring status", { status: false }],
+    ["absent commit nonnull state", { commit_sha: null, status: "pending" }],
+    ["extra key", { unexpected: false }],
+  ])
+    test(`F28 ${slot} schema stays strict: ${label}`, async () => {
+      const summary = f28Summary({
+        code_review: f28Clean(),
+        security_review: f28Clean(),
+        [slot]: { ...f28Clean(), ...section },
+      });
+      assert.equal(classifyCodexSummaryComment(summary, head), "fail");
+      assert.equal(await gate(gateApi({ comments: [makeComment(), summary] })), false);
+    });
+}
+for (const [label, mutate] of [
+  ["missing section", (body) => body.replace('"security_review":', '"not_security_review":')],
+  ["missing field", (body) => body.replace('"status":"completed"', '"not_status":"completed"')],
+  ["duplicate root", (body) => body.replace('"security_review":', '"code_review":')],
+  [
+    "duplicate field",
+    (body) =>
+      body.replace('"has_any_findings":false', '"has_any_findings":true,"has_any_findings":false'),
+  ],
+  [
+    "escaped duplicate key",
+    (body) =>
+      body.replace(
+        '"has_any_findings":false',
+        '"has_any_findings":true,"\\u0068as_any_findings":false',
+      ),
+  ],
+  ["extra root", (body) => body.replace('{"code_review":', '{"extra":null,"code_review":')],
+  ["duplicate marker", (body) => `${body}\n<!-- codex-review-state:v1 {} -->`],
+  ["mixed receipt", (body) => `${body}\n${receipt}`],
+  ["rendered negative", (body) => `${body}\n[P2] Actual finding`],
+])
+  test(`F28 summary schema/marker/rendered boundary: ${label}`, () => {
+    const summary = f28Summary({ code_review: f28Clean(), security_review: f28Clean() });
+    summary.body = mutate(summary.body);
+    assert.equal(classifyCodexSummaryComment(summary, head), "fail");
+    assert.equal(latestCodexResult([], [], [makeComment(), summary], head).result, "fail");
+  });
+
+test("F28 configured trust and explicit other-head applicability stay unchanged", async () => {
+  const summary = f28Summary({
+    code_review: f28Clean(),
+    security_review: { ...f28Clean(), status: "pending" },
+  });
+  summary.user = { login: "copied-bot" };
+  assert.equal(classifyCodexSummaryComment(summary, head), null);
+  assert.equal(await gate(gateApi({ comments: [makeComment(), summary] })), true);
+  const config = { trustedReviewLogins: ["copied-bot"] };
+  assert.equal(classifyCodexSummaryComment(summary, head, config), "fail");
+  assert.equal(await gate(gateApi({ comments: [makeComment(), summary] }), { config }), false);
+  const old = f28Summary({
+    code_review: f28Empty(),
+    security_review: {
+      ...f28Clean(other),
+      status: "failed",
+      has_any_findings: true,
+      has_unresolved_findings: true,
+    },
+  });
+  old.body += "\n[P2] Previous-head finding (resolved).";
+  assert.equal(classifyCodexSummaryComment(old, head), null);
+  assert.equal(await gate(gateApi({ comments: [makeComment(), old] })), true);
+});
+
+for (const action of ["created", "edited"])
+  for (const repeat of ["completion", "schedule"])
+    test(`F28 production router ${action} security finding reruns once then ${repeat} deduplicates`, async () => {
+      const h = routerHarness({ started: "2026-10-15T11:59:50Z" });
+      assert.equal(await gate(gateApi({ comments: h.comments })), true);
+      const list = h.api.list;
+      h.api.list = (path, ...args) =>
+        path.includes("/attempts/")
+          ? Promise.resolve([
+              {
+                id: 200,
+                run_id: 100,
+                head_sha: head,
+                name: "AI Review",
+                status: "completed",
+                conclusion: "success",
+                started_at: "2026-10-15T11:59:51Z",
+                completed_at: "2026-10-15T12:00:00.200Z",
+                steps: [
+                  {
+                    name: "Route and validate selected native review",
+                    number: 4,
+                    status: "completed",
+                    conclusion: "success",
+                    started_at: "2026-10-15T11:59:59Z",
+                    completed_at: "2026-10-15T12:00:00.100Z",
+                  },
+                ],
+              },
+            ])
+          : list(path, ...args);
+      h.api.readJobLog = async () => `AI Review gate passed for codex on ${head}.\n`;
+      const summary = f28Summary(
+        { code_review: f28Clean(), security_review: { ...f28Clean(), has_any_findings: true } },
+        { updated_at: "2026-10-15T12:00:00.250Z" },
+      );
+      h.comments.push(summary);
+      h.event.action = action;
+      h.event.comment = summary;
+      assert.equal(await h.route(), "rerun-confirmed");
+      assert.equal(h.mutations, 1);
+      assert.equal(await gate(gateApi({ comments: h.comments })), false);
+      h.run = { ...h.run, status: "completed", conclusion: "failure" };
+      const replay =
+        repeat === "schedule"
+          ? { eventName: "schedule", scheduledPull: { number: 12, head_sha: head } }
+          : {
+              eventName: "workflow_run",
+              event: {
+                action: "completed",
+                repository: { full_name: repository },
+                workflow_run: { ...h.run, name: "AI Review" },
+              },
+            };
+      assert.equal(await h.route(replay), "already-evaluated");
+      assert.equal(await h.route(replay), "already-evaluated");
+      assert.equal(h.mutations, 1);
+    });
+
+test("F28 active security summary defers until completion then actual failure converges", async () => {
+  const summary = f28Summary(
+    { code_review: f28Clean(), security_review: { ...f28Clean(), status: "running" } },
+    { updated_at: at },
+  );
+  const h = routerHarness({ status: "in_progress", comments: [makeComment(), summary] });
+  h.event.comment = summary;
+  assert.equal(await h.route(), "pending-active-completion");
+  assert.equal(h.mutations, 0);
+  assert.equal(await gate(gateApi({ comments: h.comments })), false);
+  h.run = { ...h.run, status: "completed", conclusion: "failure" };
+  const completion = () =>
+    h.route({
+      eventName: "workflow_run",
+      event: {
+        action: "completed",
+        repository: { full_name: repository },
+        workflow_run: { ...h.run, name: "AI Review" },
+      },
+    });
+  assert.equal(await completion(), "rerun-confirmed");
+  h.run = { ...h.run, status: "completed", conclusion: "failure" };
+  assert.equal(await completion(), "already-evaluated");
+  assert.equal(h.mutations, 1);
+});
+
+test("F28 changed security state cannot overwrite an uncertain posting", async () => {
+  const h = routerHarness({ postError: true, confirm: false });
+  await assert.rejects(h.route(), /could not be confirmed/);
+  const before = structuredClone(h.checkpoint);
+  h.comments.push(
+    f28Summary(
+      { code_review: f28Clean(), security_review: { ...f28Clean(), status: "pending" } },
+      { updated_at: at },
+    ),
+  );
+  await assert.rejects(h.route(), /Prior rerun acceptance remains uncertain/);
+  assert.deepEqual(h.checkpoint, before);
+  assert.equal(h.mutations, 1);
+});

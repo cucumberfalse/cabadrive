@@ -229,9 +229,11 @@ request or positive result, including `P3`, unknown-priority and older-head
 findings. All evidence and review-thread pages are read. Thread roots determine
 resolution; replies are not separate findings. Structured
 `codex-pull-request-review-summary` / `codex-review-state:v1` comments never
-approve. Strict current-head findings or unfinished state veto older/tied
-positive results; explicit current-head unresolved flags block until cleared.
-A clean completed false/false summary is neutral. Malformed, duplicate or
+approve. Every applicable current-full-head section (`code_review` and
+`security_review`) vetoes older/tied positive results when it has findings or
+an unfinished state; explicit current-head unresolved flags block until cleared.
+Canonically absent slots require no review. A summary with only clean completed
+false/false applicable sections is neutral. Malformed, duplicate or
 conflicting newest native signals fail closed. Valid explicitly other-head
 summaries are neutral; actual unresolved inline roots still block across heads.
 

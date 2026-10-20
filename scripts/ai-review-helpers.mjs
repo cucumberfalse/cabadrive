@@ -146,15 +146,15 @@ export function classifyCodexStructuredSummary(comment, headSha, config = {}) {
     )
   )
     return invalid;
-  const code = state.code_review;
   return {
-    result:
-      code.commit_sha === headSha &&
-      (code.status !== "completed" ||
-        code.has_any_findings !== false ||
-        code.has_unresolved_findings !== false)
-        ? "fail"
-        : null,
+    result: applicable.some(
+      (section) =>
+        section.status !== "completed" ||
+        section.has_any_findings !== false ||
+        section.has_unresolved_findings !== false,
+    )
+      ? "fail"
+      : null,
   };
 }
 
@@ -164,7 +164,7 @@ export function classifyCodexSummaryComment(comment, headSha, config = {}) {
     .replaceAll("\r\n", "\n")
     .trim();
   if (!isCodexWakeupComment(body)) return null;
-  // Structured summaries may wake the scheduler, but are never verdicts.
+  // Structured summaries may veto or wake the scheduler, but never approve.
   if (/codex-pull-request-review-summary|codex-review-state:/i.test(body)) {
     return classifyCodexStructuredSummary(comment, headSha, config).result;
   }
