@@ -232,8 +232,23 @@ resolution; replies are not separate findings. Structured
 approve. Every applicable current-full-head section (`code_review` and
 `security_review`) vetoes older/tied positive results when it has findings or
 an unfinished state; explicit current-head unresolved flags block until cleared.
-Canonically absent slots require no review. A summary with only clean completed
-false/false applicable sections is neutral. Malformed, duplicate or
+Canonically absent slots require no review. Clean completed false/false applicable
+sections remain neutral only when the rendered text has no contradiction.
+Bounded, case-insensitive `Found` claims veto clean JSON: singular/plural
+`issue`/`finding` with `a`, `an`, `another`, `one`, `some`, `several`, `multiple`, `remaining`, or
+a positive integer count (including zero-padded positive counts); `remaining`
+may also follow a determiner/count; `additional` may immediately follow `a`/`an`.
+Bare plural `Found issues` / `Found findings`
+also veto. Tokens allow whitespace, including tabs/line wraps, and require word
+boundaries; punctuation or an unknown priority label does not hide a claim.
+Exact zero/negated units (`Found 0 issues/findings`, `Found no issues/findings`,
+`No issues/findings found`) are neutral. `No unresolved issues/findings`, with
+optional `remain`, is neutral only as a complete unit bounded by the body,
+a line break, or `.`, `!`, `?`, `;` (surrounding whitespace allowed).
+Each neutral unit exempts only its own wording: a separate affirmative claim,
+unfinished/failed state, severity, unresolved flag/root or formal veto still
+blocks. Headings, the clean status table and canonical About footer are neutral;
+no such rendering supplies approval. Malformed, duplicate or
 conflicting newest native signals fail closed. Valid explicitly other-head
 summaries are neutral; actual unresolved inline roots still block across heads.
 

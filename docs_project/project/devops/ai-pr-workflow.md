@@ -544,7 +544,16 @@ inline review changes; and the existing gate's completion. Structured summaries,
 A strictly validated applicable current-full-head result in either structured
 `code_review` or `security_review` with findings or an unfinished status vetoes
 an older/tied positive result. Canonically absent slots require no review; all
-applicable slots must be completed and clean for the summary to remain neutral.
+applicable slots must be completed and clean, with consistent rendered prose,
+for the summary to remain neutral. Bounded case-insensitive `Found` claims about
+singular/plural issues or findings also veto clean JSON: explicit determiners,
+`another`/`one`/`some`/`several`/`multiple`/`remaining`, positive integer counts,
+`additional` immediately after `a`/`an`, optional `remaining` after a determiner/count,
+and bare plurals. Whitespace and an unknown
+priority label cannot hide them. Exact zero/no-findings/no-unresolved units
+remain neutral only for their own wording and never erase a separate claim or
+state/severity/unresolved veto; the [review contract](review-contract.md) defines
+the token/count and complete-unit boundaries. Neutral rendering never approves.
 Explicit current-head
 unresolved findings in either summary slot remain blocking until cleared. The
 canonical completed false/false summary remains neutral. Malformed, duplicate, or

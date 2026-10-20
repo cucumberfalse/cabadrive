@@ -70,6 +70,32 @@ export function isCodexWakeupComment(body) {
   );
 }
 
+function hasCodexSummaryContradiction(body) {
+  if (
+    /\bP[0-3]\b|review (?:is )?(?:still )?(?:pending|running|in progress|incomplete|failed)/i.test(
+      body,
+    ) ||
+    /\bfound\s+(?:(?:an?(?:\s+additional)?|another|one|some|several|multiple|0*[1-9][0-9]*)(?:\s+remaining)?\s+(?:issues?|findings?)|remaining\s+(?:issues?|findings?)|issues|findings)\b/i.test(
+      body,
+    )
+  )
+    return true;
+  // Only complete enumerated neutral units exempt their own unresolved wording.
+  // Keep the original body intact so a separate claim can never be hidden.
+  const neutralUnits = [
+    ...body.matchAll(
+      /(?:^|[.!?;\r\n])\s*no\s+unresolved\s+(?:issues|findings)(?:\s+remain)?[ \t]*(?=$|[.!?;\r\n])/gi,
+    ),
+  ];
+  return [...body.matchAll(/\bunresolved\s+findings\b/gi)].some(
+    (claim) =>
+      !neutralUnits.some(
+        (unit) =>
+          claim.index >= unit.index && claim.index + claim[0].length <= unit.index + unit[0].length,
+      ),
+  );
+}
+
 export function classifyCodexStructuredSummary(comment, headSha, config = {}) {
   if (!isTrustedReviewLogin(comment?.user?.login, "codex", config)) return { result: null };
   const body = String(comment.body || "").trim();
@@ -140,12 +166,7 @@ export function classifyCodexStructuredSummary(comment, headSha, config = {}) {
   if (!applicable.length) return { result: null };
   if (applicable.some((section) => section.has_unresolved_findings === true))
     return { result: "fail", unresolved: true };
-  if (
-    /\bP[0-3]\b|review (?:is )?(?:still )?(?:pending|running|in progress|incomplete|failed)|(?:there are )?unresolved findings|found (?:several|an?|[0-9]+) issues/i.test(
-      body,
-    )
-  )
-    return invalid;
+  if (hasCodexSummaryContradiction(body)) return invalid;
   return {
     result: applicable.some(
       (section) =>

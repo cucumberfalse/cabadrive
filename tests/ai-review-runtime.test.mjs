@@ -2361,3 +2361,537 @@ test("F28 changed security state cannot overwrite an uncertain posting", async (
   assert.deepEqual(h.checkpoint, before);
   assert.equal(h.mutations, 1);
 });
+
+// F29 rendering fixtures are private contract probes, not native API payloads.
+const f29Summary = (
+  rendering,
+  state = { code_review: f28Clean(), security_review: f28Clean() },
+  extra = {},
+) => {
+  const summary = f28Summary(state, extra);
+  summary.body += `\n\n${rendering}`;
+  return summary;
+};
+const f29Affirmative = [
+  "Found a finding",
+  "[Unknown] Found another finding",
+  "Found an issue",
+  "Found a remaining issue.",
+  "Found another remaining finding.",
+  "Found several issues.",
+  "Found several findings.",
+  "Found multiple findings.",
+  "Found multiple remaining issues.",
+  "Found remaining findings.",
+  "Found 1 issue.",
+  "Found 2 findings.",
+  "Found 25 remaining findings.",
+  "Found 01 remaining issues.",
+  "Found issues",
+  "Found findings",
+  "FOUND ANOTHER FINDING!",
+  "Found\tmultiple\tremaining\tissues.",
+  "Found\nseveral\nfindings.",
+  "Found no findings. Found another finding.",
+  "No findings found; [Unknown] Found several findings.",
+  "Found 0 issues\nFound a finding.",
+  "No unresolved findings remain. Found another remaining finding.",
+];
+const f29ActualReceiptBody = JSON.parse(
+  readFileSync(new URL("./fixtures/codex-review-receipt-6206390117.json", import.meta.url), "utf8"),
+).comment.body;
+const f29Neutral = [
+  "Found 0 issues",
+  "FOUND 0 ISSUES.",
+  "Found 0 findings",
+  "Found 000 issues.",
+  "Found no issues",
+  "Found no findings.",
+  "No issues found",
+  "No findings found.",
+  "No unresolved issues",
+  "No unresolved findings",
+  "No unresolved findings remain.",
+  "No unresolved issues remain.",
+  "No\tunresolved\tfindings.",
+  "No unresolved findings.\nFound 0 issues.",
+  "Findings\nCodex Review Summary",
+  "Found a findinghood.",
+  "## Codex Review Summary\n\n| Review | Status |\n| --- | --- |\n| Code review | Completed |\n| Security review | Completed |",
+  f29ActualReceiptBody.slice(f29ActualReceiptBody.indexOf("<details>")),
+];
+for (const [kind, renderings, expected] of [
+  ["affirmative", f29Affirmative, "fail"],
+  ["neutral", f29Neutral, null],
+])
+  for (const rendering of renderings)
+    for (const [label, state] of [
+      ["both current", { code_review: f28Clean(), security_review: f28Clean() }],
+      ["code with absent peer", { code_review: f28Clean(), security_review: f28Empty() }],
+      [
+        "security with other-head peer",
+        { code_review: f28Clean(other), security_review: f28Clean() },
+      ],
+    ]) {
+      test(`F29 ${kind} classifier/latest/actual gate ${label}: ${JSON.stringify(rendering)}`, async () => {
+        assert.equal(typeof rendering, "string");
+        const summary = f29Summary(rendering, state);
+        assert.equal(classifyCodexStructuredSummary(summary, head).result, expected);
+        assert.equal(classifyCodexSummaryComment(summary, head), expected);
+        assert.equal(
+          latestCodexResult([], [], [makeComment(), summary], head).result,
+          expected || "pass",
+        );
+        assert.equal(
+          await gate(gateApi({ comments: [makeComment(), summary] })),
+          expected !== "fail",
+        );
+        assert.equal(await gate(gateApi({ comments: [summary] })), false);
+      });
+    }
+
+for (const rendering of f29Affirmative.slice(0, 2))
+  for (const timing of ["newer", "tie", "edited after request", "later genuine receipt"])
+    test(`F29 rendered contradiction ordering ${timing}: ${rendering}`, async () => {
+      const summary = f29Summary(rendering, undefined, timing === "tie" ? { updated_at: at } : {});
+      const comments = [makeComment(), summary];
+      if (timing === "edited after request")
+        comments.push(
+          makeComment({
+            id: 90,
+            user: { login: "owner" },
+            body: `@codex review ${head}`,
+            updated_at: "2026-10-15T12:00:30Z",
+          }),
+        );
+      if (timing === "later genuine receipt")
+        comments.push(makeComment({ id: 91, updated_at: "2026-10-15T12:02:00Z" }));
+      const expected = timing === "later genuine receipt" ? "pass" : "fail";
+      assert.equal(latestCodexResult([], [], comments, head).result, expected);
+      assert.equal(await gate(gateApi({ comments })), expected === "pass");
+    });
+
+for (const rendering of ["Found 0 findings", "No unresolved findings remain."])
+  for (const blocker of [
+    "Found another finding.",
+    "Review is still running.",
+    "[P2] Regression.",
+    "There are unresolved findings.",
+    "Unresolved findings remain.",
+  ])
+    test(`F29 neutral unit cannot erase separate blocker: ${rendering} / ${blocker}`, async () => {
+      for (const body of [
+        `${rendering} ${blocker}`,
+        `${rendering}\n${blocker}`,
+        `${blocker}\n${rendering}`,
+      ]) {
+        const summary = f29Summary(body);
+        assert.equal(classifyCodexSummaryComment(summary, head), "fail");
+        assert.equal(await gate(gateApi({ comments: [makeComment(), summary] })), false);
+      }
+    });
+
+for (const rendering of ["No unresolved findings remain.", "Found 0 issues."])
+  for (const slot of ["code_review", "security_review"])
+    for (const section of [
+      { status: "running", has_any_findings: null, has_unresolved_findings: null },
+      { status: "completed", has_any_findings: true, has_unresolved_findings: false },
+      { status: "completed", has_any_findings: true, has_unresolved_findings: true },
+    ])
+      test(`F29 neutral rendering cannot clear ${slot} ${JSON.stringify(section)}`, async () => {
+        const summary = f29Summary(rendering, {
+          code_review: f28Clean(),
+          security_review: f28Clean(),
+          [slot]: { commit_sha: head, ...section },
+        });
+        const comments = [summary, makeComment({ updated_at: "2026-10-15T12:02:00Z" })];
+        assert.equal(classifyCodexSummaryComment(summary, head), "fail");
+        assert.equal(await gate(gateApi({ comments })), !section.has_unresolved_findings);
+      });
+
+test("F29 configured trust, other-head applicability and unique receipt proof remain mandatory", async () => {
+  const summary = f29Summary("[Unknown] Found another finding", undefined, {
+    user: { login: "configured-reviewer" },
+  });
+  assert.equal(classifyCodexSummaryComment(summary, head), null);
+  assert.equal(await gate(gateApi({ comments: [makeComment(), summary] })), true);
+  for (const config of [
+    { trustedReviewLogins: ["configured-reviewer"] },
+    { trustedReviewLoginsByAgent: { codex: ["configured-reviewer"] } },
+  ]) {
+    assert.equal(classifyCodexSummaryComment(summary, head, config), "fail");
+    assert.equal(await gate(gateApi({ comments: [makeComment(), summary] }), { config }), false);
+  }
+  const old = f29Summary("[P2] Found another finding", {
+    code_review: f28Clean(other),
+    security_review: f28Empty(),
+  });
+  assert.equal(classifyCodexSummaryComment(old, head), null);
+  assert.equal(await gate(gateApi({ comments: [makeComment(), old] })), true);
+  const neutral = f29Summary("Found 0 findings");
+  let shortProofCalls = 0;
+  assert.equal(
+    await gate(
+      gateApi({
+        comments: [makeComment(), neutral],
+        onRequest(path) {
+          if (path.includes("/commits/")) {
+            shortProofCalls += 1;
+            return { sha: other };
+          }
+        },
+      }),
+    ),
+    false,
+  );
+  assert.equal(shortProofCalls, 1);
+});
+
+for (const [label, change] of [
+  [
+    "missing full head",
+    (s) => {
+      s.code_review.commit_sha = head.slice(0, 10);
+    },
+  ],
+  [
+    "incoherent null slot",
+    (s) => {
+      s.security_review.commit_sha = null;
+    },
+  ],
+  [
+    "typed verdict",
+    (s) => {
+      s.security_review.has_any_findings = "false";
+    },
+  ],
+  [
+    "unknown field",
+    (s) => {
+      s.security_review.extra = false;
+    },
+  ],
+])
+  test(`F29 neutral wording cannot hide invalid schema: ${label}`, () => {
+    const state = { code_review: f28Clean(), security_review: f28Clean() };
+    change(state);
+    assert.equal(
+      classifyCodexSummaryComment(f29Summary("No unresolved findings", state), head),
+      "fail",
+    );
+  });
+
+for (const [label, change] of [
+  [
+    "duplicate key",
+    (s) => s.replace('"status":"completed"', '"status":"completed","status":"completed"'),
+  ],
+  ["escaped key", (s) => s.replace('"has_any_findings"', '"\\u0068as_any_findings"')],
+  ["mixed receipt", (s) => `${s}\n${receipt}`],
+  ["duplicate summary marker", (s) => `${s}\n<!-- codex-pull-request-review-summary -->`],
+])
+  test(`F29 neutral wording cannot hide malformed native encoding: ${label}`, () => {
+    const summary = f29Summary("Found 0 findings");
+    summary.body = change(summary.body);
+    assert.equal(classifyCodexSummaryComment(summary, head), "fail");
+  });
+
+for (const priority of ["P3", "Unknown"])
+  test(`F29 neutral prose preserves actual unresolved older-head ${priority} roots and latest formal veto`, async () => {
+    const comments = [makeComment(), f29Summary("No unresolved findings remain.")];
+    const inline = [
+      {
+        id: 44,
+        user,
+        body: `[${priority}] Found an issue`,
+        commit_id: other,
+        pull_request_review_id: 3,
+      },
+    ];
+    assert.equal(await gate(gateApi({ comments, inline })), false);
+    assert.equal(await gate(gateApi({ comments, inline, resolved: [44] })), true);
+    assert.equal(
+      await gate(
+        gateApi({
+          comments,
+          reviews: [
+            makeReview({ state: "CHANGES_REQUESTED", submitted_at: "2026-10-15T11:00:00Z" }),
+          ],
+        }),
+      ),
+      false,
+    );
+  });
+
+for (const action of ["created", "edited"])
+  for (const repeat of ["completion", "schedule"])
+    test(`F29 production router ${action} contradiction reruns once then ${repeat} deduplicates`, async () => {
+      const h = routerHarness({ started: "2026-10-15T11:59:50Z" });
+      assert.equal(await gate(gateApi({ comments: h.comments })), true);
+      const summary = f29Summary(
+        action === "created" ? "Found a finding" : "[Unknown] Found another finding",
+        undefined,
+        { updated_at: "2026-10-15T12:00:00.250Z" },
+      );
+      h.comments.push(summary);
+      h.event.action = action;
+      h.event.comment = summary;
+      assert.equal(await h.route(), "rerun-confirmed");
+      assert.equal(h.mutations, 1);
+      assert.equal(await gate(gateApi({ comments: h.comments })), false);
+      h.run = { ...h.run, status: "completed", conclusion: "failure" };
+      const replay =
+        repeat === "schedule"
+          ? { eventName: "schedule", scheduledPull: { number: 12, head_sha: head } }
+          : {
+              eventName: "workflow_run",
+              event: {
+                action: "completed",
+                repository: { full_name: repository },
+                workflow_run: { ...h.run, name: "AI Review" },
+              },
+            };
+      assert.equal(await h.route(replay), "already-evaluated");
+      assert.equal(await h.route(replay), "already-evaluated");
+      assert.equal(h.mutations, 1);
+    });
+
+for (const rendering of ["Found 0 issues", "No unresolved findings remain."])
+  test(`F29 neutral scheduled summary creates no failure-mismatch rerun: ${rendering}`, async () => {
+    const summary = f29Summary(rendering, undefined, { updated_at: at });
+    const h = routerHarness({ comments: [makeComment(), summary] });
+    await h.route({ eventName: "schedule", scheduledPull: { number: 12, head_sha: head } });
+    assert.equal(h.mutations, 0);
+    assert.equal(await gate(gateApi({ comments: h.comments })), true);
+  });
+
+test("F29 changed rendered contradiction cannot overwrite uncertain posting", async () => {
+  const h = routerHarness({ postError: true, confirm: false });
+  await assert.rejects(h.route(), /could not be confirmed/);
+  const before = structuredClone(h.checkpoint);
+  h.comments.push(f29Summary("Found another finding", undefined, { updated_at: at }));
+  await assert.rejects(h.route(), /Prior rerun acceptance remains uncertain/);
+  assert.deepEqual(h.checkpoint, before);
+  assert.equal(h.mutations, 1);
+});
+
+for (const rendering of [
+  "No unresolved findings remain. There are unresolved findings.",
+  "No unresolved findings because another check is pending.",
+  "[Unknown] No unresolved findings",
+  "No unresolved findings, Found another finding.",
+  "Found 0 remaining findings. Found 1 remaining issue.",
+  "Found no issues. [P3] Advisory.",
+])
+  test(`F29 complete neutral-unit boundary retains separate contradiction: ${rendering}`, async () => {
+    const summary = f29Summary(rendering);
+    assert.equal(classifyCodexSummaryComment(summary, head), "fail");
+    assert.equal(await gate(gateApi({ comments: [makeComment(), summary] })), false);
+  });
+
+test("F29 bounded neutral units tolerate layout without approving", async () => {
+  const summary = f29Summary(
+    "No\nunresolved\nfindings;\n  Found 0 remaining issues.\nNo unresolved findings remain.  ",
+  );
+  assert.equal(classifyCodexSummaryComment(summary, head), null);
+  assert.equal(await gate(gateApi({ comments: [makeComment(), summary] })), true);
+  assert.equal(await gate(gateApi({ comments: [summary] })), false);
+});
+
+// F29 follow-up retains the four missed independent replay rows and bounded grammar controls.
+const f29CoverageReported = [
+  "Found one finding",
+  "Found some findings",
+  "Found one issue",
+  "Found an additional finding",
+];
+const f29CoverageClaims = [
+  ...new Set([
+    ...f29CoverageReported,
+    ...["one", "some", "a additional", "an additional"].flatMap((determiner) =>
+      ["issue", "issues", "finding", "findings"].flatMap((noun) => [
+        `Found ${determiner} ${noun}`,
+        `Found ${determiner} remaining ${noun}`,
+      ]),
+    ),
+    "FOUND ONE FINDING!",
+    "[Unknown] Found some issues.",
+    "Found\tone\tremaining\tfinding.",
+    "Found\nsome\nfindings.",
+    "Found\tan\tadditional\tremaining\tissue.",
+    "Found\na\nadditional\nfindings.",
+  ]),
+];
+for (const [index, rendering] of f29CoverageClaims.entries())
+  test(`F29 coverage affirmative classifier/latest/actual gate: ${JSON.stringify(rendering)}`, async () => {
+    const states = [
+      { code_review: f28Clean(), security_review: f28Clean() },
+      { code_review: f28Clean(), security_review: f28Empty() },
+      { code_review: f28Clean(other), security_review: f28Clean() },
+    ];
+    const summary = f29Summary(rendering, states[index % states.length]);
+    assert.equal(classifyCodexStructuredSummary(summary, head).result, "fail");
+    assert.equal(classifyCodexSummaryComment(summary, head), "fail");
+    assert.equal(latestCodexResult([], [], [makeComment(), summary], head).result, "fail");
+    assert.equal(await gate(gateApi({ comments: [makeComment(), summary] })), false);
+    assert.equal(await gate(gateApi({ comments: [summary] })), false);
+  });
+
+for (const rendering of [
+  "one finding",
+  "some findings",
+  "an additional finding",
+  "Found oneness findings.",
+  "Found someone findings.",
+  "Found a additionally finding.",
+  "Found an additionality issue.",
+  "Found one findinghood.",
+  "Found some issuehood.",
+  "Unfound one finding.",
+  "Found additional findings.",
+  "Found two findings.",
+  "Found one, finding.",
+  "Found 0 findings. No findings found.",
+  "Found no issues. No unresolved findings remain.",
+  "No unresolved issues remain. Found no additional findings.",
+])
+  test(`F29 coverage neutral/token boundary never approves: ${rendering}`, async () => {
+    const summary = f29Summary(rendering);
+    assert.equal(classifyCodexSummaryComment(summary, head), null);
+    assert.equal(latestCodexResult([], [], [makeComment(), summary], head).result, "pass");
+    assert.equal(await gate(gateApi({ comments: [makeComment(), summary] })), true);
+    assert.equal(await gate(gateApi({ comments: [summary] })), false);
+  });
+
+for (const rendering of f29CoverageReported)
+  for (const neutral of ["Found 0 issues.", "Found no findings.", "No unresolved findings remain."])
+    test(`F29 coverage neutral unit retains separate claim: ${neutral} / ${rendering}`, async () => {
+      for (const body of [
+        `${neutral} ${rendering}`,
+        `${neutral}\n${rendering}`,
+        `${rendering}\n${neutral}`,
+      ]) {
+        const summary = f29Summary(body);
+        assert.equal(classifyCodexSummaryComment(summary, head), "fail");
+        assert.equal(await gate(gateApi({ comments: [makeComment(), summary] })), false);
+      }
+    });
+
+for (const rendering of f29CoverageReported)
+  for (const timing of ["newer", "tie", "edited after request"])
+    test(`F29 coverage ordering ${timing}: ${rendering}`, async () => {
+      const summary = f29Summary(rendering, undefined, timing === "tie" ? { updated_at: at } : {});
+      const comments = [makeComment(), summary];
+      if (timing === "edited after request")
+        comments.push(
+          makeComment({
+            id: 90,
+            user: { login: "owner" },
+            body: `@codex review ${head}`,
+            updated_at: "2026-10-15T12:00:30Z",
+          }),
+        );
+      assert.equal(latestCodexResult([], [], comments, head).result, "fail");
+      assert.equal(await gate(gateApi({ comments })), false);
+    });
+
+for (const rendering of f29CoverageReported)
+  for (const action of ["created", "edited"])
+    test(`F29 coverage production router ${action} fails once and converges: ${rendering}`, async () => {
+      const h = routerHarness({ started: "2026-10-15T11:59:50Z" });
+      assert.equal(await gate(gateApi({ comments: h.comments })), true);
+      const summary = f29Summary(rendering, undefined, {
+        updated_at: "2026-10-15T12:00:00.250Z",
+      });
+      h.comments.push(summary);
+      h.event.action = action;
+      h.event.comment = summary;
+      assert.equal(await h.route(), "rerun-confirmed");
+      assert.equal(h.mutations, 1);
+      assert.equal(await gate(gateApi({ comments: h.comments })), false);
+      h.run = { ...h.run, status: "completed", conclusion: "failure" };
+      for (const delivery of [
+        {
+          eventName: "workflow_run",
+          event: {
+            action: "completed",
+            repository: { full_name: repository },
+            workflow_run: { ...h.run, name: "AI Review" },
+          },
+        },
+        { eventName: "schedule", scheduledPull: { number: 12, head_sha: head } },
+      ]) {
+        assert.equal(await h.route(delivery), "already-evaluated");
+        assert.equal(await h.route(delivery), "already-evaluated");
+      }
+      assert.equal(h.mutations, 1);
+    });
+
+for (const rendering of f29CoverageReported)
+  test(`F29 coverage configured trust/head/schema policy remains: ${rendering}`, async () => {
+    const configured = f29Summary(rendering, undefined, { user: { login: "configured-reviewer" } });
+    assert.equal(classifyCodexSummaryComment(configured, head), null);
+    assert.equal(await gate(gateApi({ comments: [makeComment(), configured] })), true);
+    const config = { trustedReviewLoginsByAgent: { codex: ["configured-reviewer"] } };
+    assert.equal(classifyCodexSummaryComment(configured, head, config), "fail");
+    assert.equal(await gate(gateApi({ comments: [makeComment(), configured] }), { config }), false);
+    const old = f29Summary(rendering, {
+      code_review: f28Clean(other),
+      security_review: f28Empty(),
+    });
+    assert.equal(classifyCodexSummaryComment(old, head), null);
+    assert.equal(await gate(gateApi({ comments: [makeComment(), old] })), true);
+    for (const invalidHead of [null, head.slice(0, 10)]) {
+      const invalid = f29Summary(rendering, {
+        code_review: { ...f28Clean(), commit_sha: invalidHead },
+        security_review: f28Empty(),
+      });
+      assert.equal(classifyCodexSummaryComment(invalid, head), "fail");
+    }
+  });
+
+for (const rendering of ["Found one issuehood.", "Found no additional findings."])
+  test(`F29 coverage neutral controls preserve state/root/formal veto and no mismatch: ${rendering}`, async () => {
+    const neutral = f29Summary(rendering, undefined, { updated_at: at });
+    const h = routerHarness({ comments: [makeComment(), neutral] });
+    await h.route({ eventName: "schedule", scheduledPull: { number: 12, head_sha: head } });
+    assert.equal(h.mutations, 0);
+    for (const blocker of [
+      "Review is incomplete.",
+      "[P2] Regression.",
+      "Unresolved findings remain.",
+    ]) {
+      const summary = f29Summary(`${rendering}\n${blocker}`);
+      assert.equal(classifyCodexSummaryComment(summary, head), "fail");
+      assert.equal(await gate(gateApi({ comments: [makeComment(), summary] })), false);
+    }
+    assert.equal(
+      await gate(
+        gateApi({
+          comments: [makeComment(), neutral],
+          inline: [{ id: 44, user, body: "[Unknown] Still open", commit_id: other }],
+        }),
+      ),
+      false,
+    );
+    assert.equal(
+      await gate(
+        gateApi({
+          comments: [makeComment(), neutral],
+          reviews: [makeReview({ state: "CHANGES_REQUESTED" })],
+        }),
+      ),
+      false,
+    );
+  });
+
+test("F29 coverage new determiner cannot overwrite uncertain posting", async () => {
+  const h = routerHarness({ postError: true, confirm: false });
+  await assert.rejects(h.route(), /could not be confirmed/);
+  const before = structuredClone(h.checkpoint);
+  h.comments.push(f29Summary("Found an additional finding", undefined, { updated_at: at }));
+  await assert.rejects(h.route(), /Prior rerun acceptance remains uncertain/);
+  assert.deepEqual(h.checkpoint, before);
+  assert.equal(h.mutations, 1);
+});
