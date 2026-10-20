@@ -550,8 +550,10 @@ singular/plural issues or findings also veto clean JSON: explicit determiners,
 `another`/`one`/`some`/`several`/`multiple`/`remaining`, positive integer counts,
 `additional` immediately after `a`/`an`, optional `remaining` after a determiner/count,
 and bare plurals. Whitespace and an unknown
-priority label cannot hide them. Exact zero/no-findings/no-unresolved units
-remain neutral only for their own wording and never erase a separate claim or
+priority label cannot hide them. The same case/word/whitespace rules veto all four
+`unresolved issue/issues/finding/findings` forms. Exact zero/no-findings units and
+complete `No unresolved issue/issues/finding/findings` units (optional `remain`
+or `remains`) remain neutral only for their own wording and never erase a separate claim or
 state/severity/unresolved veto; the [review contract](review-contract.md) defines
 the token/count and complete-unit boundaries. Neutral rendering never approves.
 Explicit current-head

@@ -84,10 +84,10 @@ function hasCodexSummaryContradiction(body) {
   // Keep the original body intact so a separate claim can never be hidden.
   const neutralUnits = [
     ...body.matchAll(
-      /(?:^|[.!?;\r\n])\s*no\s+unresolved\s+(?:issues|findings)(?:\s+remain)?[ \t]*(?=$|[.!?;\r\n])/gi,
+      /(?:^|[.!?;\r\n])\s*no\s+unresolved\s+(?:issues?|findings?)(?:\s+remains?)?[ \t]*(?=$|[.!?;\r\n])/gi,
     ),
   ];
-  return [...body.matchAll(/\bunresolved\s+findings\b/gi)].some(
+  return [...body.matchAll(/\bunresolved\s+(?:issues?|findings?)\b/gi)].some(
     (claim) =>
       !neutralUnits.some(
         (unit) =>

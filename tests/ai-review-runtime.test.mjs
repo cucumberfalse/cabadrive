@@ -2895,3 +2895,229 @@ test("F29 coverage new determiner cannot overwrite uncertain posting", async () 
   assert.deepEqual(h.checkpoint, before);
   assert.equal(h.mutations, 1);
 });
+
+// F30 private rendered-summary probes retain all published F29 tests above.
+const f30Nouns = ["issue", "issues", "finding", "findings"];
+const f30States = [
+  ["both current", { code_review: f28Clean(), security_review: f28Clean() }],
+  ["code with absent peer", { code_review: f28Clean(), security_review: f28Empty() }],
+  ["code with other-head peer", { code_review: f28Clean(), security_review: f28Clean(other) }],
+  ["security with absent peer", { code_review: f28Empty(), security_review: f28Clean() }],
+  ["security with other-head peer", { code_review: f28Clean(other), security_review: f28Clean() }],
+];
+async function f30AssertRendering(rendering, expected, state) {
+  const summary = f29Summary(rendering, state);
+  assert.equal(classifyCodexStructuredSummary(summary, head).result, expected);
+  assert.equal(classifyCodexSummaryComment(summary, head), expected);
+  assert.equal(
+    latestCodexResult([], [], [makeComment(), summary], head).result,
+    expected || "pass",
+  );
+  assert.equal(await gate(gateApi({ comments: [makeComment(), summary] })), expected !== "fail");
+  assert.equal(await gate(gateApi({ comments: [summary] })), false);
+}
+for (const noun of f30Nouns)
+  for (const rendering of [
+    `unresolved ${noun}`,
+    `There is an unresolved ${noun}`,
+    `[Unknown] There are unresolved ${noun}.`,
+    `UNRESOLVED ${noun.toUpperCase()}!`,
+    `There are unresolved\t\n${noun}.`,
+  ])
+    for (const [label, state] of f30States)
+      test(`F30 unresolved classifier/latest/actual gate ${label}: ${JSON.stringify(rendering)}`, async () =>
+        f30AssertRendering(rendering, "fail", state));
+
+const f30Neutral = f30Nouns.flatMap((noun) => [
+  ...["", " remain", " remains"].flatMap((suffix) => [
+    `No unresolved ${noun}${suffix}`,
+    `No unresolved ${noun}${suffix}.`,
+    `\n  No unresolved ${noun}${suffix};\n`,
+  ]),
+  `NO UNRESOLVED ${noun.toUpperCase()} REMAINS!`,
+  `No\tunresolved\t${noun}\tremain?`,
+  `No\nunresolved\n${noun}\nremains.`,
+]);
+for (const rendering of f30Neutral)
+  test(`F30 complete neutral unit never approves: ${JSON.stringify(rendering)}`, async () =>
+    f30AssertRendering(rendering, null));
+
+for (const neutralNoun of f30Nouns)
+  for (const negativeNoun of f30Nouns)
+    test(`F30 own-span exception preserves separate ${neutralNoun}/${negativeNoun} contradiction`, async () => {
+      for (const rendering of [
+        `No unresolved ${neutralNoun}. There is an unresolved ${negativeNoun}.`,
+        `No unresolved ${neutralNoun}; unresolved ${negativeNoun}`,
+        `[Unknown] unresolved ${negativeNoun}\nNo unresolved ${neutralNoun} remains.`,
+        `No unresolved ${neutralNoun} remain.\n[Unknown] unresolved ${negativeNoun}`,
+      ])
+        await f30AssertRendering(rendering, "fail");
+    });
+
+for (const noun of f30Nouns)
+  for (const rendering of [
+    `No unresolved ${noun} because another check is pending.`,
+    `[Unknown] No unresolved ${noun}`,
+    `No unresolved ${noun} remains pending.`,
+    `No unresolved ${noun}, additional prose`,
+  ])
+    test(`F30 incomplete neutral unit retains actual claim: ${JSON.stringify(rendering)}`, async () =>
+      f30AssertRendering(rendering, "fail"));
+
+for (const noun of f30Nouns)
+  for (const rendering of [
+    `notunresolved ${noun}`,
+    `unresolvedly ${noun}`,
+    `unresolved ${noun}hood`,
+    `unresolved_${noun}`,
+  ])
+    test(`F30 token boundaries stay neutral: ${rendering}`, async () =>
+      f30AssertRendering(rendering, null));
+test("F30 clean header/status/JSON keys/About remain neutral", async () => {
+  for (const rendering of [
+    "## Codex Review Summary\n\n| Review | Status |\n| --- | --- |\n| Code review | Completed |",
+    f29ActualReceiptBody.slice(f29ActualReceiptBody.indexOf("<details>")),
+    "unresolved\nissues_status: completed",
+  ])
+    await f30AssertRendering(rendering, null);
+});
+
+for (const noun of f30Nouns)
+  for (const timing of ["newer", "tie", "edited after request"])
+    test(`F30 unresolved ${noun} preserves ${timing} ordering`, async () => {
+      const summary = f29Summary(
+        `There is an unresolved ${noun}`,
+        undefined,
+        timing === "tie" ? { updated_at: at } : {},
+      );
+      const comments = [makeComment(), summary];
+      if (timing === "edited after request")
+        comments.push(
+          makeComment({
+            id: 90,
+            user: { login: "owner" },
+            body: `@codex review ${head}`,
+            updated_at: "2026-10-15T12:00:30Z",
+          }),
+        );
+      assert.equal(latestCodexResult([], [], comments, head).result, "fail");
+      assert.equal(await gate(gateApi({ comments })), false);
+    });
+
+for (const noun of f30Nouns)
+  for (const slot of ["code_review", "security_review"])
+    test(`F30 neutral ${noun} cannot clear ${slot} or independent blockers`, async () => {
+      const rendering = `No unresolved ${noun} remains.`;
+      for (const section of [
+        { status: "running", has_any_findings: null, has_unresolved_findings: null },
+        { status: "completed", has_any_findings: true, has_unresolved_findings: false },
+        { status: "completed", has_any_findings: true, has_unresolved_findings: true },
+      ]) {
+        const summary = f29Summary(rendering, {
+          code_review: f28Clean(),
+          security_review: f28Clean(),
+          [slot]: { ...f28Clean(), ...section },
+        });
+        assert.equal(classifyCodexSummaryComment(summary, head), "fail");
+        assert.equal(await gate(gateApi({ comments: [makeComment(), summary] })), false);
+      }
+      for (const blocker of ["Review is still running.", "[P2] Regression.", "Found one issue."])
+        await f30AssertRendering(`${rendering}\n${blocker}`, "fail");
+      const comments = [makeComment(), f29Summary(rendering)];
+      const inline = [{ id: 44, user, body: "[P3] Advisory", commit_id: other }];
+      assert.equal(await gate(gateApi({ comments, inline })), false);
+      assert.equal(await gate(gateApi({ comments, inline, resolved: [44] })), true);
+      assert.equal(
+        await gate(gateApi({ comments, reviews: [makeReview({ state: "CHANGES_REQUESTED" })] })),
+        false,
+      );
+    });
+
+for (const noun of f30Nouns)
+  test(`F30 unresolved ${noun} preserves configured trust/head/schema/unique SHA`, async () => {
+    const rendering = `There is an unresolved ${noun}`;
+    const spoof = f29Summary(rendering, undefined, { user: { login: "configured-reviewer" } });
+    assert.equal(classifyCodexSummaryComment(spoof, head), null);
+    assert.equal(await gate(gateApi({ comments: [makeComment(), spoof] })), true);
+    const config = { trustedReviewLoginsByAgent: { codex: ["configured-reviewer"] } };
+    assert.equal(classifyCodexSummaryComment(spoof, head, config), "fail");
+    assert.equal(await gate(gateApi({ comments: [makeComment(), spoof] }), { config }), false);
+    const old = f29Summary(rendering, {
+      code_review: f28Clean(other),
+      security_review: f28Empty(),
+    });
+    assert.equal(classifyCodexSummaryComment(old, head), null);
+    assert.equal(await gate(gateApi({ comments: [makeComment(), old] })), true);
+    for (const invalidHead of [null, head.slice(0, 10)]) {
+      const invalid = f29Summary(`No unresolved ${noun} remains.`, {
+        code_review: { ...f28Clean(), commit_sha: invalidHead },
+        security_review: f28Empty(),
+      });
+      assert.equal(classifyCodexSummaryComment(invalid, head), "fail");
+    }
+    const neutral = f29Summary(`No unresolved ${noun} remains.`);
+    assert.equal(
+      await gate(
+        gateApi({
+          comments: [makeComment(), neutral],
+          onRequest(path) {
+            if (path.includes("/commits/"))
+              throw Object.assign(new Error("Ambiguous commit"), { status: 422 });
+          },
+        }),
+      ),
+      false,
+    );
+  });
+
+for (const noun of f30Nouns)
+  for (const action of ["created", "edited"])
+    test(`F30 production router ${action} unresolved ${noun} fails once and deduplicates`, async () => {
+      const h = routerHarness({ started: "2026-10-15T11:59:50Z" });
+      assert.equal(await gate(gateApi({ comments: h.comments })), true);
+      const summary = f29Summary(`There is an unresolved ${noun}`, undefined, {
+        updated_at: "2026-10-15T12:00:00.250Z",
+      });
+      h.comments.push(summary);
+      h.event.action = action;
+      h.event.comment = summary;
+      assert.equal(await h.route(), "rerun-confirmed");
+      assert.equal(h.mutations, 1);
+      assert.equal(await gate(gateApi({ comments: h.comments })), false);
+      h.run = { ...h.run, status: "completed", conclusion: "failure" };
+      for (const delivery of [
+        {
+          eventName: "workflow_run",
+          event: {
+            action: "completed",
+            repository: { full_name: repository },
+            workflow_run: { ...h.run, name: "AI Review" },
+          },
+        },
+        { eventName: "schedule", scheduledPull: { number: 12, head_sha: head } },
+      ]) {
+        assert.equal(await h.route(delivery), "already-evaluated");
+        assert.equal(await h.route(delivery), "already-evaluated");
+      }
+      assert.equal(h.mutations, 1);
+    });
+
+for (const noun of f30Nouns)
+  for (const suffix of ["", " remain", " remains"])
+    test(`F30 neutral ${noun}${suffix} does not create a mismatch rerun`, async () => {
+      const summary = f29Summary(`No unresolved ${noun}${suffix}.`, undefined, { updated_at: at });
+      const h = routerHarness({ comments: [makeComment(), summary] });
+      await h.route({ eventName: "schedule", scheduledPull: { number: 12, head_sha: head } });
+      assert.equal(h.mutations, 0);
+      assert.equal(await gate(gateApi({ comments: h.comments })), true);
+    });
+
+test("F30 unresolved issue change cannot overwrite uncertain posting", async () => {
+  const h = routerHarness({ postError: true, confirm: false });
+  await assert.rejects(h.route(), /could not be confirmed/);
+  const before = structuredClone(h.checkpoint);
+  h.comments.push(f29Summary("There is an unresolved issue", undefined, { updated_at: at }));
+  await assert.rejects(h.route(), /Prior rerun acceptance remains uncertain/);
+  assert.deepEqual(h.checkpoint, before);
+  assert.equal(h.mutations, 1);
+});

@@ -242,8 +242,11 @@ Bare plural `Found issues` / `Found findings`
 also veto. Tokens allow whitespace, including tabs/line wraps, and require word
 boundaries; punctuation or an unknown priority label does not hide a claim.
 Exact zero/negated units (`Found 0 issues/findings`, `Found no issues/findings`,
-`No issues/findings found`) are neutral. `No unresolved issues/findings`, with
-optional `remain`, is neutral only as a complete unit bounded by the body,
+`No issues/findings found`) are neutral. Unresolved prose vetoes clean JSON for
+all four case-insensitive forms: `unresolved issue`, `unresolved issues`,
+`unresolved finding`, `unresolved findings`, with the same word and whitespace
+boundaries. `No unresolved issue/issues/finding/findings`, with optional
+`remain` or `remains`, is neutral only as a complete unit bounded by the body,
 a line break, or `.`, `!`, `?`, `;` (surrounding whitespace allowed).
 Each neutral unit exempts only its own wording: a separate affirmative claim,
 unfinished/failed state, severity, unresolved flag/root or formal veto still
