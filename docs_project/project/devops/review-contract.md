@@ -208,8 +208,9 @@ A trusted issue comment can approve only with an explicit supported no-findings
 verdict and matching reviewed commit. Supported forms are the legacy
 `Codex Review:` header and exactly one leading
 `<!-- codex-review-receipt:v1 -->` marker. The bounded v1
-`**Reviewed commit:**` form accepts the observed ASCII ` Chef's kiss.` ending
-as an explicit alternative to the existing rocket ending. Legacy `in head <sha>`
+`**Reviewed commit:**` form accepts the observed ASCII `. Chef's kiss.` and
+`. More of your lovely PRs please.` endings as explicit alternatives to the
+existing base/rocket endings, never combined with another ending. Legacy `in head <sha>`
 and `Reviewed [<sha>]` forms remain supported. Case and CRLF normalization are
 preserved. Only the canonical observed About Codex in GitHub details footer is
 permitted, with whitespace and optional information-icon normalization. Repeated,

@@ -484,8 +484,9 @@ Codex evidence comes only from configured trusted connector identities. A
 no-findings comment may use the legacy `Codex Review:` header or exactly one
 leading `<!-- codex-review-receipt:v1 -->` marker, followed by the explicit
 no-findings verdict and matching `**Reviewed commit:**` line. That v1 receipt
-form also accepts the observed ASCII ` Chef's kiss.` verdict ending as an
-explicit alternative to the existing rocket suffix. Verdict matching retains
+form also accepts the observed ASCII `. Chef's kiss.` and
+`. More of your lovely PRs please.` verdict endings as explicit alternatives
+to the existing base/rocket endings, never combined with another ending. Verdict matching retains
 its case-insensitive and CRLF handling; misplaced, repeated, combined, or
 modified endings and additional prose are rejected. Existing explicit legacy
 `in head <sha>` and `Reviewed [<sha>]` forms remain supported. The exact observed native

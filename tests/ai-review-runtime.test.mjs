@@ -3121,3 +3121,339 @@ test("F30 unresolved issue change cannot overwrite uncertain posting", async () 
   assert.deepEqual(h.checkpoint, before);
   assert.equal(h.mutations, 1);
 });
+
+// F31: genuine receipt 6297970297 is unchanged; all mutations below are private unit fixtures.
+const f31ActualComment = {
+  id: 6297970297,
+  body: '<!-- codex-review-receipt:v1 -->\n\nCodex Review: Didn\'t find any major issues. More of your lovely PRs please.\n\n**Reviewed commit:** `e786b4028c`\n\n<details> <summary>ℹ️ About Codex in GitHub</summary>\n<br/>\n\n[Your team has set up Codex to review pull requests in this repo](https://chatgpt.com/codex/cloud/settings/general). Reviews are triggered when you\n- Open a pull request for review\n- Mark a draft as ready\n- Comment "@codex review".\n\nIf Codex has suggestions, it will comment; otherwise it will react with 👍.\n\n\n\n\nCodex can also answer questions or update the PR. Try commenting "@codex address that feedback".\n            \n</details>',
+  user: {
+    login: "chatgpt-codex-connector[bot]",
+    id: 199175422,
+    node_id: "BOT_kgDOC98s_g",
+    avatar_url: "https://avatars.githubusercontent.com/in/1144995?v=4",
+    gravatar_id: "",
+    url: "https://api.github.com/users/chatgpt-codex-connector%5Bbot%5D",
+    html_url: "https://github.com/apps/chatgpt-codex-connector",
+    followers_url: "https://api.github.com/users/chatgpt-codex-connector%5Bbot%5D/followers",
+    following_url:
+      "https://api.github.com/users/chatgpt-codex-connector%5Bbot%5D/following{/other_user}",
+    gists_url: "https://api.github.com/users/chatgpt-codex-connector%5Bbot%5D/gists{/gist_id}",
+    starred_url:
+      "https://api.github.com/users/chatgpt-codex-connector%5Bbot%5D/starred{/owner}{/repo}",
+    subscriptions_url:
+      "https://api.github.com/users/chatgpt-codex-connector%5Bbot%5D/subscriptions",
+    organizations_url: "https://api.github.com/users/chatgpt-codex-connector%5Bbot%5D/orgs",
+    repos_url: "https://api.github.com/users/chatgpt-codex-connector%5Bbot%5D/repos",
+    events_url: "https://api.github.com/users/chatgpt-codex-connector%5Bbot%5D/events{/privacy}",
+    received_events_url:
+      "https://api.github.com/users/chatgpt-codex-connector%5Bbot%5D/received_events",
+    type: "Bot",
+    user_view_type: "public",
+    site_admin: false,
+  },
+  created_at: "2026-10-20T18:18:44Z",
+  updated_at: "2026-10-20T18:18:44Z",
+  html_url: "https://github.com/cucumberfalse/cabadrive/pull/221#issuecomment-6297970297",
+  issue_url: "https://api.github.com/repos/cucumberfalse/cabadrive/issues/221",
+};
+const f31Head = "e786b4028c6b335512f758fc3fca6d17e8f6eafc";
+const f31Ending = ". More of your lovely PRs please.";
+const f31Comment = (body = f31ActualComment.body, extra = {}) => ({
+  ...f31ActualComment,
+  body,
+  ...extra,
+});
+const f31Body = (ending) => f31ActualComment.body.replace(f31Ending, ending);
+const f31Gate = (comments = [f31ActualComment], options = {}, gateOptions = {}) =>
+  gate(gateApi({ headSha: f31Head, comments, ...options }), { headSha: f31Head, ...gateOptions });
+
+test("F31 verbatim actual receipt binding and classifier", async () => {
+  const { createHash } = await import("node:crypto");
+  assert.equal(
+    createHash("sha256").update(f31ActualComment.body).digest("hex"),
+    "925ac8e73ef936400886297817df94a723dfc3f7e36d8644a403f6c7e65c719d",
+  );
+  assert.equal(f31ActualComment.id, 6297970297);
+  assert.equal(f31ActualComment.user.login, "chatgpt-codex-connector[bot]");
+  assert.equal(f31ActualComment.created_at, "2026-10-20T18:18:44Z");
+  assert.equal(f31ActualComment.updated_at, f31ActualComment.created_at);
+  assert.equal(classifyCodexSummaryComment(f31ActualComment, f31Head), "pass");
+});
+test("F31 verbatim actual receipt latest selection", () => {
+  assert.equal(latestCodexResult([], [], [f31ActualComment], f31Head).result, "pass");
+});
+test("F31 isolated actual-body gate requires the actual uniquely resolved short SHA", async () => {
+  const requests = [];
+  assert.equal(
+    await f31Gate(undefined, {
+      onRequest(path) {
+        requests.push(path);
+        if (path.endsWith("/commits/e786b4028c")) return { sha: f31Head };
+      },
+    }),
+    true,
+  );
+  assert.equal(requests.filter((path) => path.endsWith("/commits/e786b4028c")).length, 1);
+});
+
+const f31Positive = [
+  ["existing base", f31Body(".")],
+  ["existing textual rocket", f31Body(". :rocket:")],
+  ["existing emoji rocket", f31Body(". 🚀")],
+  ["existing Chef", f31Body(". Chef's kiss.")],
+  [
+    "case and CRLF",
+    f31ActualComment.body
+      .replace("More of your lovely PRs please.", "MORE OF YOUR LOVELY PRS PLEASE.")
+      .replaceAll("\n", "\r\n"),
+  ],
+  [
+    "outer and footer layout",
+    ` \n${f31ActualComment.body.replace("<details> <summary>", "<details>\n<summary>")}\n `,
+  ],
+  ["full current SHA", f31ActualComment.body.replace("`e786b4028c`", `\`${f31Head}\``)],
+  ["unique seven-digit SHA", f31ActualComment.body.replace("`e786b4028c`", "`e786b40`")],
+];
+for (const [label, body] of f31Positive)
+  test(`F31 positive unit variant preserves ${label}`, async () => {
+    assert.equal(classifyCodexSummaryComment(f31Comment(body), f31Head), "pass");
+    assert.equal(await f31Gate([f31Comment(body)]), true);
+  });
+
+const f31Invalid = [
+  ["changed adjective", f31Body(". More of your wonderful PRs please.")],
+  ["changed plural", f31Body(". More of your lovely PR please.")],
+  ["missing terminal period", f31Body(". More of your lovely PRs please")],
+  ["extra terminal punctuation", f31Body(`${f31Ending}.`)],
+  ["double internal space", f31Body(". More  of your lovely PRs please.")],
+  ["internal newline", f31Body(". More of your lovely\nPRs please.")],
+  ["repeated ending", f31Body(`${f31Ending} More of your lovely PRs please.`)],
+  ["combined Chef", f31Body(`${f31Ending} Chef's kiss.`)],
+  ["combined rocket", f31Body(`${f31Ending} 🚀`)],
+  ["rocket before ending", f31Body(`. :rocket:${f31Ending}`)],
+  ["duplicate verdict", f31Body(`${f31Ending} Codex Review: Didn't find any major issues.`)],
+  ["negative extra prose", f31Body(`${f31Ending} Found one issue.`)],
+  ["unfinished extra prose", f31Body(`${f31Ending} Review is still running.`)],
+  ["priority extra prose", f31Body(`${f31Ending} [P2] Regression.`)],
+  ["ending before verdict", f31Body(".").replace("Codex Review:", `${f31Ending} Codex Review:`)],
+  ["ending after commit", f31Body(".").replace("`e786b4028c`", `\`e786b4028c\`${f31Ending}`)],
+  ["ending in footer", f31Body(".").replace("</details>", `${f31Ending}</details>`)],
+  ["unprefixed form", f31ActualComment.body.replace("<!-- codex-review-receipt:v1 -->\n\n", "")],
+  ["duplicate marker", `<!-- codex-review-receipt:v1 -->\n\n${f31ActualComment.body}`],
+  ["wrong version", f31ActualComment.body.replace("receipt:v1", "receipt:v2")],
+  ["mixed summary marker", `${f31ActualComment.body}\n<!-- codex-review-state:v1 {} -->`],
+  [
+    "missing reviewed commit",
+    f31ActualComment.body.replace("**Reviewed commit:** `e786b4028c`", ""),
+  ],
+  [
+    "altered canonical footer",
+    f31ActualComment.body.replace(
+      "If Codex has suggestions, it will comment",
+      "If Codex has suggestions, it might comment",
+    ),
+  ],
+  [
+    "legacy inline head",
+    `Codex Review: Didn't find any major issues in head ${f31Head}.${f31Ending}`,
+  ],
+  [
+    "legacy Reviewed",
+    `Codex Review: Didn't find any major issues. Reviewed [${f31Head}].${f31Ending}`,
+  ],
+];
+for (const [label, body] of f31Invalid)
+  test(`F31 bounded ending rejects ${label}`, async () => {
+    assert.equal(classifyCodexSummaryComment(f31Comment(body), f31Head), "fail");
+    assert.equal(await f31Gate([f31Comment(body)]), false);
+  });
+
+test("F31 configured trust and untrusted copied body", async () => {
+  const copied = f31Comment(undefined, { user: { login: "configured-codex" } });
+  assert.equal(classifyCodexSummaryComment(copied, f31Head), null);
+  assert.equal(await f31Gate([copied]), false);
+  const config = { trustedReviewLoginsByAgent: { codex: ["configured-codex"] } };
+  assert.equal(classifyCodexSummaryComment(copied, f31Head, config), "pass");
+  assert.equal(await f31Gate([copied], {}, { config }), true);
+});
+for (const proof of ["foreign", "missing", "ambiguous"])
+  test(`F31 actual-body gate rejects ${proof} short-SHA API proof`, async () => {
+    assert.equal(
+      await f31Gate(undefined, {
+        onRequest(path) {
+          if (!path.includes("/commits/")) return;
+          if (proof === "foreign") return { sha: other };
+          if (proof === "missing") return {};
+          throw Object.assign(new Error("Ambiguous SHA"), { status: 422 });
+        },
+      }),
+      false,
+    );
+  });
+test("F31 foreign and mixed reviewed markers do not approve current head", async () => {
+  const foreign = f31Comment(f31ActualComment.body.replace("e786b4028c", other));
+  assert.equal(classifyCodexSummaryComment(foreign, f31Head), null);
+  assert.equal(await f31Gate([foreign]), false);
+  const mixed = f31Comment(`${f31ActualComment.body}\n${other}`);
+  assert.equal(classifyCodexSummaryComment(mixed, f31Head), "fail");
+  assert.equal(await f31Gate([mixed]), false);
+});
+for (const blocker of [
+  "formal",
+  "P3 root",
+  "unknown old root",
+  "code unfinished",
+  "security findings",
+  "rendered contradiction",
+  "newer negative",
+  "tied negative",
+])
+  test(`F31 actual-body gate preserves ${blocker}`, async () => {
+    const comments = [f31ActualComment];
+    const options = {};
+    if (blocker === "formal")
+      options.reviews = [makeReview({ commit_id: f31Head, state: "CHANGES_REQUESTED" })];
+    if (blocker.includes("root"))
+      options.inline = [
+        {
+          id: 44,
+          user,
+          body: blocker === "P3 root" ? "[P3] Advisory" : "[Unknown] Finding",
+          commit_id: other,
+        },
+      ];
+    if (blocker.includes("negative"))
+      comments.push(
+        f31Comment(f31Body(". Found one finding."), {
+          id: 2,
+          updated_at:
+            blocker === "tied negative" ? f31ActualComment.updated_at : "2026-10-20T18:19:00Z",
+        }),
+      );
+    if (["code unfinished", "security findings", "rendered contradiction"].includes(blocker)) {
+      const state = { code_review: f28Clean(f31Head), security_review: f28Clean(f31Head) };
+      if (blocker === "code unfinished")
+        state.code_review = {
+          ...state.code_review,
+          status: "running",
+          has_any_findings: null,
+          has_unresolved_findings: null,
+        };
+      if (blocker === "security findings")
+        state.security_review = {
+          ...state.security_review,
+          has_any_findings: true,
+          has_unresolved_findings: true,
+        };
+      comments.push(
+        f31Comment(
+          `<!-- codex-pull-request-review-summary -->\n<!-- codex-review-state:v1 ${JSON.stringify(state)} -->${blocker === "rendered contradiction" ? "\nThere is an unresolved issue." : ""}`,
+          { id: 2, updated_at: "2026-10-20T18:19:00Z" },
+        ),
+      );
+    }
+    assert.equal(
+      latestCodexResult(options.reviews || [], options.inline || [], comments, f31Head).result,
+      "fail",
+    );
+    assert.equal(await f31Gate(comments, options), false);
+  });
+test("F31 clean summary never approves without independent receipt", async () => {
+  const state = { code_review: f28Clean(f31Head), security_review: f28Empty() };
+  const summary = f31Comment(
+    `<!-- codex-pull-request-review-summary -->\n<!-- codex-review-state:v1 ${JSON.stringify(state)} -->`,
+    { id: 2 },
+  );
+  assert.equal(classifyCodexSummaryComment(summary, f31Head), null);
+  assert.equal(await f31Gate([summary]), false);
+  assert.equal(await f31Gate([summary, f31ActualComment]), true);
+});
+
+// Router fixtures preserve the ending while using the harness's explicitly constructed PR/head/time.
+const f31RouteComment = () =>
+  makeComment({
+    body: f31ActualComment.body.replaceAll("e786b4028c", head.slice(0, 10)),
+  });
+function f31SuccessfulAttempt(h) {
+  const started = h.run.run_started_at;
+  const accepted = new Date(Date.parse(started) + 100).toISOString();
+  const observed = new Date(Date.parse(started) + 1000).toISOString();
+  h.run = { ...h.run, status: "completed", conclusion: "success" };
+  const list = h.api.list;
+  h.api.list = (path, ...args) =>
+    path.includes("/attempts/")
+      ? Promise.resolve([
+          {
+            id: 200,
+            run_id: 100,
+            run_attempt: h.run.run_attempt,
+            head_sha: head,
+            name: "AI Review",
+            status: "completed",
+            conclusion: "success",
+            started_at: started,
+            completed_at: accepted,
+            steps: [
+              {
+                name: "Route and validate selected native review",
+                number: 4,
+                status: "completed",
+                conclusion: "success",
+                started_at: started,
+                completed_at: accepted,
+              },
+            ],
+          },
+        ])
+      : list(path, ...args);
+  h.api.readJobLog = async () => `AI Review gate passed for codex on ${head}.\n`;
+  const request = h.api.request;
+  h.api.request = async (path, options = {}) => {
+    const response = await request(path, options);
+    if (options.method === "POST" || options.method === "PATCH") {
+      response.updated_at = observed;
+      h.checkpoint = structuredClone(response);
+    }
+    return response;
+  };
+  const route = h.route;
+  h.route = (options = {}) => route({ now: () => Date.parse(observed), ...options });
+}
+for (const action of ["created", "edited"])
+  test(`F31 production ${action} receipt reruns once, passes evaluator and deduplicates`, async () => {
+    const comment = f31RouteComment();
+    const h = routerHarness({ comments: [comment] });
+    h.run = { ...h.run, conclusion: "failure" };
+    h.event.action = action;
+    h.event.comment = comment;
+    assert.equal(await h.route(), "rerun-confirmed");
+    assert.equal(await gate(gateApi({ comments: h.comments })), true);
+    assert.equal(await h.route(), "already-evaluated");
+    // This unit fixture supplies exact successful-attempt jobs/log chronology, never remote evidence.
+    f31SuccessfulAttempt(h);
+    assert.equal(await deliverPosting(h, "completion"), "observed-native-acceptance");
+    assert.equal(await deliverPosting(h, "schedule"), "already-observed");
+    assert.equal(await h.route(), "already-observed");
+    assert.equal(h.mutations, 1);
+  });
+test("F31 active receipt waits for completion before a single rerun", async () => {
+  const comment = f31RouteComment();
+  const h = routerHarness({ comments: [comment], status: "in_progress" });
+  h.event.comment = comment;
+  assert.equal(await h.route(), "pending-active-completion");
+  assert.equal(h.mutations, 0);
+  h.run = { ...h.run, status: "completed", conclusion: "failure" };
+  assert.equal(await deliverPosting(h, "completion"), "rerun-confirmed");
+  assert.equal(await gate(gateApi({ comments: h.comments })), true);
+  assert.equal(h.mutations, 1);
+});
+test("F31 new ending cannot bypass uncertain posting reconciliation", async () => {
+  const h = routerHarness({ postError: true, confirm: false });
+  await assert.rejects(h.route(), /could not be confirmed/);
+  const prior = structuredClone(h.checkpoint);
+  h.comments[0] = f31RouteComment();
+  h.event.comment = h.comments[0];
+  await assert.rejects(h.route(), /Prior rerun acceptance remains uncertain/);
+  assert.deepEqual(h.checkpoint, prior);
+  assert.equal(h.mutations, 1);
+});
