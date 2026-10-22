@@ -96,6 +96,24 @@ function hasCodexSummaryContradiction(body) {
   );
 }
 
+// Only the whole observed terminal summary advertisement is non-review text.
+// Schema/marker checks still inspect the original body before this scan.
+function codexSummaryReviewText(body) {
+  const details = body.indexOf("<details>");
+  if (details === -1) return body;
+  const nativeAbout = `<details> <summary>ℹ️ About Codex in GitHub</summary> <br/>
+[Your team has set up Codex to review pull requests in this repo](https://chatgpt.com/codex/cloud/settings/general). Reviews are triggered when you
+- Open a pull request for review
+- Mark a draft as ready
+- Comment "@codex review" or "@codex security review".
+Codex reacts with 👀 while any review is running, comments if it has suggestions, and reacts with 👍 once all reviews finish with no findings.
+</details>`;
+  const normalizeAbout = (value) => value.replaceAll("ℹ️ ", "").replace(/\s+/g, " ").trim();
+  return normalizeAbout(body.slice(details)) === normalizeAbout(nativeAbout)
+    ? body.slice(0, details)
+    : body;
+}
+
 export function classifyCodexStructuredSummary(comment, headSha, config = {}) {
   if (!isTrustedReviewLogin(comment?.user?.login, "codex", config)) return { result: null };
   const body = String(comment.body || "").trim();
@@ -166,7 +184,7 @@ export function classifyCodexStructuredSummary(comment, headSha, config = {}) {
   if (!applicable.length) return { result: null };
   if (applicable.some((section) => section.has_unresolved_findings === true))
     return { result: "fail", unresolved: true };
-  if (hasCodexSummaryContradiction(body)) return invalid;
+  if (hasCodexSummaryContradiction(codexSummaryReviewText(body))) return invalid;
   return {
     result: applicable.some(
       (section) =>
@@ -220,7 +238,7 @@ Codex can also answer questions or update the PR. Try commenting "@codex address
   const sha = "([a-fA-F0-9]{7,40})";
   // The observed praise is a v1 receipt alternative, never arbitrary legacy prose.
   const verdictEnding = hasReceiptPrefix
-    ? "(?:\\.?(?: :rocket:| 🚀)?|\\. Chef's kiss\\.|\\. More of your lovely PRs please\\.)"
+    ? "(?:\\.?(?: :rocket:| 🚀| :tada:)?|\\. Chef's kiss\\.|\\. More of your lovely PRs please\\.)"
     : "\\.?(?: :rocket:| 🚀)?";
   const patterns = [
     new RegExp(

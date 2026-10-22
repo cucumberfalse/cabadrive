@@ -486,7 +486,9 @@ leading `<!-- codex-review-receipt:v1 -->` marker, followed by the explicit
 no-findings verdict and matching `**Reviewed commit:**` line. That v1 receipt
 form also accepts the observed ASCII `. Chef's kiss.` and
 `. More of your lovely PRs please.` verdict endings as explicit alternatives
-to the existing base/rocket endings, never combined with another ending. Verdict matching retains
+to the existing base/rocket endings. This v1 Reviewed-commit form also accepts
+one observed `:tada:` decoration; it never combines endings or expands legacy
+forms. Verdict matching retains
 its case-insensitive and CRLF handling; misplaced, repeated, combined, or
 modified endings and additional prose are rejected. Existing explicit legacy
 `in head <sha>` and `Reviewed [<sha>]` forms remain supported. The exact observed native
@@ -556,7 +558,13 @@ priority label cannot hide them. The same case/word/whitespace rules veto all fo
 complete `No unresolved issue/issues/finding/findings` units (optional `remain`
 or `remains`) remain neutral only for their own wording and never erase a separate claim or
 state/severity/unresolved veto; the [review contract](review-contract.md) defines
-the token/count and complete-unit boundaries. Neutral rendering never approves.
+the token/count and complete-unit boundaries. Neutral rendering never approves. Only the exact whole terminal native summary
+About advertisement, including the security-review trigger and the fixed
+"while any review is running" explanation, is excluded from contradiction
+scanning with existing whitespace/optional information-icon normalization.
+Original full-body marker, schema, state and head checks still apply. Substantive
+review prose and unknown, modified, duplicate, nested, truncated or nonterminal
+blocks remain visible to all contradiction vetoes.
 Explicit current-head
 unresolved findings in either summary slot remain blocking until cleared. The
 canonical completed false/false summary remains neutral. Malformed, duplicate, or

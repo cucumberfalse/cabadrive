@@ -10,6 +10,8 @@ The single planned slice is `codex/native-review-compatibility` in `.claude/work
 
 In scope: supported native evidence classification and selection; strict author and commit attribution; unresolved findings; event resolution and head-race guards; actual created/edited workflow routing; completed and active gate requeue; regression tests; relevant durable workflow documentation; genuine native review; safe trusted-main rollout; complete role validation and protected merge when objectively possible.
 
+F-32 additionally permits the minimal Vite 6.4.3 to 6.4.4 security patch in `package.json` and `pnpm-lock.yaml` to resolve the actual required OSV blocker on this same PR. Retain the Vite 6 major and existing configuration, require renewed independent review/full preflight and genuine new-head remote/native acceptance, and reject unrelated dependency refreshes or scanner exemptions. The bounded disposition and verification requirements are in `plan.md` and T-18.
+
 Out of scope: CI-efficiency policy from #220, learner/runtime changes, alternate review-provider policy changes, branch protection relaxation, impersonation, direct main push, unrelated cleanup, and automation changes.
 
 ## Evidence contract
@@ -53,3 +55,8 @@ Negative scenarios include spoofed native text, unsupported/duplicate markers, c
 ## Review and final validation
 
 Review Agent checks actual code and workflow execution, adversarial evidence, safe rerun convergence, all head guards, trusted execution, complete feature memory, sibling preservation, and real validation evidence. Orchestrator owns native review requests and gate coordination. After implementation, checks, review, and dispositions appear complete, Architect validates the complete cycle PR set, tasks, feedback, architectural guidance, process memory, and customer intent; Analyst follows only after Architect passes. Return limits are 10 Architect / 5 Analyst. Any post-validation non-evidence change invalidates the prior validation. Cleanup is unassigned and the active worktree is preserved.
+
+
+### F-33 bounded observed-format clarification
+
+Within the same feature cycle, permit the actual single `:tada:` decoration only in the existing v1 Reviewed-commit receipt branch, and exclude only the exact whole recognized terminal native summary About advertisement from rendered contradiction scanning. Arbitrary shortcode/prose families, receipt-footer/legacy expansion, wildcard details stripping and positive approval from clean summaries remain forbidden. Original full-body schema/marker/head checks and substantive findings/unfinished/unresolved/formal vetoes remain. The actual-body fail-first, narrow tests and combined F-32/F-33 review/full-preflight requirements are specified in `plan.md` and T-19.

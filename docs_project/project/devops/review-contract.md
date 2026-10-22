@@ -210,7 +210,9 @@ verdict and matching reviewed commit. Supported forms are the legacy
 `<!-- codex-review-receipt:v1 -->` marker. The bounded v1
 `**Reviewed commit:**` form accepts the observed ASCII `. Chef's kiss.` and
 `. More of your lovely PRs please.` endings as explicit alternatives to the
-existing base/rocket endings, never combined with another ending. Legacy `in head <sha>`
+existing base/rocket endings. The v1 Reviewed-commit form also permits one
+observed `:tada:` decoration, never combined with another ending or added to
+legacy forms. Legacy `in head <sha>`
 and `Reviewed [<sha>]` forms remain supported. Case and CRLF normalization are
 preserved. Only the canonical observed About Codex in GitHub details footer is
 permitted, with whitespace and optional information-icon normalization. Repeated,
@@ -252,7 +254,13 @@ a line break, or `.`, `!`, `?`, `;` (surrounding whitespace allowed).
 Each neutral unit exempts only its own wording: a separate affirmative claim,
 unfinished/failed state, severity, unresolved flag/root or formal veto still
 blocks. Headings, the clean status table and canonical About footer are neutral;
-no such rendering supplies approval. Malformed, duplicate or
+no such rendering supplies approval. Only the exact whole terminal native summary
+About advertisement, including the security-review trigger and the fixed
+"while any review is running" explanation, is excluded from contradiction
+scanning with existing whitespace/optional information-icon normalization.
+Original full-body marker, schema, state and head checks still apply. Substantive
+review prose and unknown, modified, duplicate, nested, truncated or nonterminal
+blocks remain visible to all contradiction vetoes. Malformed, duplicate or
 conflicting newest native signals fail closed. Valid explicitly other-head
 summaries are neutral; actual unresolved inline roots still block across heads.
 
