@@ -60,3 +60,8 @@ Review Agent checks actual code and workflow execution, adversarial evidence, sa
 ### F-33 bounded observed-format clarification
 
 Within the same feature cycle, permit the actual single `:tada:` decoration only in the existing v1 Reviewed-commit receipt branch, and exclude only the exact whole recognized terminal native summary About advertisement from rendered contradiction scanning. Arbitrary shortcode/prose families, receipt-footer/legacy expansion, wildcard details stripping and positive approval from clean summaries remain forbidden. Original full-body schema/marker/head checks and substantive findings/unfinished/unresolved/formal vetoes remain. The actual-body fail-first, narrow tests and combined F-32/F-33 review/full-preflight requirements are specified in `plan.md` and T-19.
+
+
+### F-34 optional About-heading icon boundary
+
+The F-33 structured-summary footer exemption permits at most one optional observed information icon, strictly in the opening `About Codex in GitHub` summary heading. Whitespace/line-ending normalization remains supported. Do not globally remove icons, normalize duplicate icons into one, or erase icons anywhere else in the footer. Duplicated heading icons, injected paragraph/link/trigger icons and other modified blocks receive no exemption and retain their text for contradiction scanning. This narrows the existing exact-whole-terminal-footer rule; it changes no receipt grammar, schema/head/state validation, positive evidence, trust or scheduling policy. The genuine c8d P2 and findings/unresolved summary remain blocking until actual native resolution. Detailed same-cycle implementation and verification requirements are in the F-34 plan disposition and T-20.

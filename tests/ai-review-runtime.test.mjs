@@ -4019,3 +4019,94 @@ test("F33 created native pair reruns once, passes gate and deduplicates successf
   assert.equal(await h.route(), "already-observed");
   assert.equal(h.mutations, 1);
 });
+
+// F34: this finding-bearing native c8d summary stays verbatim. Clean variants below
+// are explicitly synthetic regression fixtures, never native acceptance evidence.
+const f34ActualHead = "c8d5a7b75c4584c0910bd64ed1405e9292038136";
+const f34ActualSummary = {
+  id: 6203835030,
+  body: '<!-- codex-pull-request-review-summary -->\n<!-- codex-review-state:v1 {"code_review":{"commit_sha":"c8d5a7b75c4584c0910bd64ed1405e9292038136","has_any_findings":true,"has_unresolved_findings":true,"status":"completed"},"security_review":{"commit_sha":null,"has_any_findings":null,"has_unresolved_findings":null,"status":null}} -->\n\n## Codex Review Summary\n\nThis comment shows the latest Codex review activity on this pull request.\n\n| Review | Status | Commit | Review trigger |\n| --- | --- | --- | --- |\n| 📝 **Code Review** | ✅ **Completed** <relative-time datetime="2026-10-22T22:43:59.358944Z">2026-10-22T22:43:59.358944Z</relative-time> | `c8d5a7b` | Manual request |\n\n\n\n<details> <summary>ℹ️ About Codex in GitHub</summary>\n<br/>\n\n[Your team has set up Codex to review pull requests in this repo](https://chatgpt.com/codex/cloud/settings/general). Reviews are triggered when you\n- Open a pull request for review\n- Mark a draft as ready\n- Comment "@codex review" or "@codex security review".\n\nCodex reacts with 👀 while any review is running, comments if it has suggestions, and reacts with 👍 once all reviews finish with no findings.\n\n</details>',
+  user: {
+    login: "chatgpt-codex-connector[bot]",
+    type: "Bot",
+  },
+  created_at: "2026-10-15T22:45:17Z",
+  updated_at: "2026-10-22T22:44:00Z",
+};
+const f34CleanBody = f34ActualSummary.body
+  .replaceAll(f34ActualHead, head)
+  .replace('"has_any_findings":true', '"has_any_findings":false')
+  .replace('"has_unresolved_findings":true', '"has_unresolved_findings":false');
+const f34CleanSummary = (body = f34CleanBody) =>
+  makeComment({
+    id: 34,
+    body,
+    updated_at: f34ActualSummary.updated_at,
+  });
+
+test("F34 actual c8d finding summary remains immutable and blocking", async () => {
+  const { createHash } = await import("node:crypto");
+  assert.equal(
+    createHash("sha256").update(f34ActualSummary.body).digest("hex"),
+    "637f6b332f1adc81bab8aec58da2b9e1a7b3dc4bd1a1f8b8b77f3ab80358fe97",
+  );
+  assert.deepEqual(classifyCodexStructuredSummary(f34ActualSummary, f34ActualHead), {
+    result: "fail",
+    unresolved: true,
+  });
+  assert.equal(
+    await gate(gateApi({ headSha: f34ActualHead, comments: [f34ActualSummary] }), {
+      headSha: f34ActualHead,
+    }),
+    false,
+  );
+});
+for (const [name, body] of [
+  ["single heading icon", f34CleanBody],
+  ["absent heading icon", f34CleanBody.replace("<summary>ℹ️ About", "<summary>About")],
+  [
+    "heading icon with whitespace and CRLF",
+    f34CleanBody
+      .replace("<details> <summary>ℹ️ About", "<details>\n\t<summary>ℹ️ \t About")
+      .replaceAll("\n", "\r\n"),
+  ],
+  [
+    "absent heading icon with whitespace and CRLF",
+    f34CleanBody
+      .replace("<details> <summary>ℹ️ About", "<details>\n\t<summary>About")
+      .replaceAll("\n", "\r\n"),
+  ],
+])
+  test(`F34 synthetic canonical footer accepts only ${name}`, async () => {
+    const summary = f34CleanSummary(body);
+    assert.deepEqual(classifyCodexStructuredSummary(summary, head), { result: null });
+    assert.equal(latestCodexResult([], [], [makeComment(), summary], head).result, "pass");
+    assert.equal(await gate(gateApi({ comments: [makeComment(), summary] })), true);
+    assert.equal(await gate(gateApi({ comments: [summary] })), false);
+  });
+for (const [name, body] of [
+  ["duplicated heading icon", f34CleanBody.replace("<summary>ℹ️ About", "<summary>ℹ️ ℹ️ About")],
+  ["prose icon", f34CleanBody.replace("Codex reacts with", "ℹ️ Codex reacts with")],
+  ["trigger icon", f34CleanBody.replace("- Open a pull request", "- ℹ️ Open a pull request")],
+  ["link icon", f34CleanBody.replace("[Your team", "[ℹ️ Your team")],
+  ["closing icon", f34CleanBody.replace("</details>", "ℹ️ </details>")],
+  [
+    "icon inside heading text",
+    f34CleanBody.replace("About Codex in GitHub", "About ℹ️ Codex in GitHub"),
+  ],
+  [
+    "two icons without heading icon",
+    f34CleanBody
+      .replace("<summary>ℹ️ About", "<summary>About")
+      .replace("Codex reacts with", "ℹ️ ℹ️ Codex reacts with"),
+  ],
+])
+  test(`F34 synthetic modified footer vetoes older receipt: ${name}`, async () => {
+    const summary = f34CleanSummary(body);
+    const actual = {
+      structured: classifyCodexStructuredSummary(summary, head),
+      latest: latestCodexResult([], [], [makeComment(), summary], head).result,
+      gate: await gate(gateApi({ comments: [makeComment(), summary] })),
+    };
+    assert.deepEqual(actual, { structured: { result: "fail" }, latest: "fail", gate: false });
+  });

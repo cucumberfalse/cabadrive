@@ -108,7 +108,14 @@ function codexSummaryReviewText(body) {
 - Comment "@codex review" or "@codex security review".
 Codex reacts with 👀 while any review is running, comments if it has suggestions, and reacts with 👍 once all reviews finish with no findings.
 </details>`;
-  const normalizeAbout = (value) => value.replaceAll("ℹ️ ", "").replace(/\s+/g, " ").trim();
+  const normalizeAbout = (value) =>
+    value
+      .replace(/\s+/g, " ")
+      .trim()
+      .replace(
+        /^<details> <summary>ℹ️ About Codex in GitHub<\/summary>/,
+        "<details> <summary>About Codex in GitHub</summary>",
+      );
   return normalizeAbout(body.slice(details)) === normalizeAbout(nativeAbout)
     ? body.slice(0, details)
     : body;

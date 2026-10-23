@@ -561,7 +561,10 @@ state/severity/unresolved veto; the [review contract](review-contract.md) define
 the token/count and complete-unit boundaries. Neutral rendering never approves. Only the exact whole terminal native summary
 About advertisement, including the security-review trigger and the fixed
 "while any review is running" explanation, is excluded from contradiction
-scanning with existing whitespace/optional information-icon normalization.
+scanning after whitespace normalization and removal of at most one optional
+information icon solely at the exact opening About summary heading. An absent
+heading icon is supported; duplicate heading icons or icons anywhere else never
+receive that exemption.
 Original full-body marker, schema, state and head checks still apply. Substantive
 review prose and unknown, modified, duplicate, nested, truncated or nonterminal
 blocks remain visible to all contradiction vetoes.
