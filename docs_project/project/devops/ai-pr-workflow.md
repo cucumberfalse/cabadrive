@@ -492,8 +492,10 @@ forms. Verdict matching retains
 its case-insensitive and CRLF handling; misplaced, repeated, combined, or
 modified endings and additional prose are rejected. Existing explicit legacy
 `in head <sha>` and `Reviewed [<sha>]` forms remain supported. The exact observed native
-About Codex in GitHub details block is supported with whitespace and optional
-information-icon normalization; arbitrary footer prose is rejected. Missing or conflicting commits,
+About Codex in GitHub details block is supported with whitespace and at most one
+optional information icon only at the opening About summary heading; an absent
+heading icon is also supported. Repeated heading icons or icons elsewhere in the
+footer are modified prose and are rejected. Missing or conflicting commits,
 duplicate/malformed markers, contradictory prose, and incomplete/negative results
 cannot approve. Short commits are resolved through GitHub's commit API to the full
 expected head; ambiguity fails closed. Timestamp-only comments cannot approve.
@@ -615,6 +617,12 @@ resolution/reopening changes, which do not emit a supported Actions review-threa
 event. It reads the same native evaluator as the gate, including short-SHA API
 proof, and hashes actual thread resolution with the native bodies/identities.
 Schedule time never refreshes evidence or the fingerprint.
+
+The resolve-only context path selects the configured backend before source
+resolution or scheduled discovery. A selected non-Codex backend emits an empty
+matrix and no PR target without reading Codex source provenance or making API
+lookups. Default or selected Codex retains every source, actor, workflow, PR and
+full-head validation before it can emit a target.
 
 Without a checkpoint for the selected current head and run, an active gate waits
 for completion or the next schedule. A terminal gate is requeued only when its

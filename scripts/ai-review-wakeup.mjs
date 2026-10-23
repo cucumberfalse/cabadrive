@@ -851,8 +851,9 @@ if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) 
     const api = createReviewApi(env.GITHUB_TOKEN, env.GITHUB_REPOSITORY);
     const event = JSON.parse(readFileSync(env.GITHUB_EVENT_PATH, "utf8"));
     if (process.argv.includes("--resolve-only")) {
+      const agent = (env.AI_REVIEW_AGENT || "codex").toLowerCase();
       const context =
-        env.GITHUB_EVENT_NAME === "schedule"
+        agent !== "codex" || env.GITHUB_EVENT_NAME === "schedule"
           ? null
           : await resolveWakeupContext(
               api,
@@ -862,7 +863,7 @@ if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) 
               readConfig(),
             );
       const targets =
-        (env.AI_REVIEW_AGENT || "codex").toLowerCase() !== "codex"
+        agent !== "codex"
           ? []
           : env.GITHUB_EVENT_NAME === "schedule"
             ? await discoverWakeupPulls(api, env.GITHUB_REPOSITORY)

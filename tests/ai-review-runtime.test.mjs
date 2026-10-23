@@ -4110,3 +4110,48 @@ for (const [name, body] of [
     };
     assert.deepEqual(actual, { structured: { result: "fail" }, latest: "fail", gate: false });
   });
+
+// F35: use the retained genuine F33 receipt unchanged. Only the footer mutations
+// below are synthetic regressions for the separate positive-receipt parser.
+const f35Receipt = (body = f33ActualReceipt.body, extra = {}) => ({
+  ...f33ActualReceipt,
+  body,
+  ...extra,
+});
+for (const [name, body] of [
+  ["single heading icon", f33ActualReceipt.body],
+  [
+    "absent heading icon with whitespace and CRLF",
+    f33ActualReceipt.body
+      .replace("<details> <summary>ℹ️ About", "<details>\n\t<summary>About")
+      .replaceAll("\n", "\r\n"),
+  ],
+])
+  test(`F35 canonical positive receipt accepts ${name}`, async () => {
+    const receipt = f35Receipt(body);
+    assert.equal(classifyCodexSummaryComment(receipt, f33Head), "pass");
+    assert.equal(latestCodexResult([], [], [receipt], f33Head).result, "pass");
+    assert.equal(await f33Gate([receipt]), true);
+  });
+for (const [name, body] of [
+  [
+    "duplicated heading icon",
+    f33ActualReceipt.body.replace("<summary>ℹ️ About", "<summary>ℹ️ ℹ️ About"),
+  ],
+  [
+    "injected prose icon",
+    f33ActualReceipt.body.replace("If Codex has suggestions", "ℹ️ If Codex has suggestions"),
+  ],
+  [
+    "injected trigger icon",
+    f33ActualReceipt.body.replace("- Open a pull request", "- ℹ️ Open a pull request"),
+  ],
+  ["injected link icon", f33ActualReceipt.body.replace("[Your team", "[ℹ️ Your team")],
+  ["injected closing icon", f33ActualReceipt.body.replace("</details>", "ℹ️ </details>")],
+])
+  test(`F35 modified newer receipt vetoes older valid receipt: ${name}`, async () => {
+    const modified = f35Receipt(body, { id: 35, updated_at: "2026-10-22T19:55:06Z" });
+    assert.equal(classifyCodexSummaryComment(modified, f33Head), "fail");
+    assert.equal(latestCodexResult([], [], [f33ActualReceipt, modified], f33Head).result, "fail");
+    assert.equal(await f33Gate([f33ActualReceipt, modified]), false);
+  });

@@ -25,7 +25,15 @@ const matrixFields = Object.fromEntries(
 
 // Only the child CLI's API and clock are mocked. Its actual executable, environment
 // parsing, read-only matrix output, config, router and checkpoint lifecycle run.
-async function installApiFixture({ repository, head, number, native, withdrawal, resultPath }) {
+async function installApiFixture({
+  repository,
+  head,
+  number,
+  native,
+  withdrawal,
+  sourceActor = "chatgpt-codex-connector[bot]",
+  resultPath,
+}) {
   const { writeFileSync } = await import("node:fs");
   const root = `/repos/${repository}`;
   const at = "2026-10-15T12:00:00Z";
@@ -68,8 +76,8 @@ async function installApiFixture({ repository, head, number, native, withdrawal,
     name: "AI Review Native Signal",
     event: "pull_request_review",
     created_at: at,
-    actor: user,
-    triggering_actor: user,
+    actor: { login: sourceActor, type: "Bot" },
+    triggering_actor: { login: sourceActor, type: "Bot" },
   };
   const comment = {
     id: 1,
@@ -170,16 +178,26 @@ async function installApiFixture({ repository, head, number, native, withdrawal,
   };
 }
 
-function runCli({ native = false, withdrawal = null, number = 12, pin, resolveOnly = false } = {}) {
+function runCli({
+  native = false,
+  withdrawal = null,
+  number = 12,
+  pin,
+  resolveOnly = false,
+  agent = "codex",
+  sourceActor = "chatgpt-codex-connector[bot]",
+  eventName = null,
+} = {}) {
   const directory = mkdtempSync(join(tmpdir(), "cabadrive-review-matrix-cli-"));
   try {
     const eventPath = join(directory, "event.json");
     const resultPath = join(directory, "result.json");
     const outputPath = join(directory, "output.txt");
     const preload = join(directory, "preload.mjs");
+    const selectedEventName = eventName || (withdrawal ? "issue_comment" : "workflow_run");
     writeFileSync(
       preload,
-      `await (${installApiFixture.toString()})(${JSON.stringify({ repository, head, number, native, withdrawal, resultPath })});\n`,
+      `await (${installApiFixture.toString()})(${JSON.stringify({ repository, head, number, native, withdrawal, sourceActor, resultPath })});\n`,
     );
     writeFileSync(
       eventPath,
@@ -199,14 +217,16 @@ function runCli({ native = false, withdrawal = null, number = 12, pin, resolveOn
               },
               changes: { body: { from: "Codex Review: original receipt" } },
             }
-          : {
-              action: "completed",
-              repository: { full_name: repository },
-              workflow_run: {
-                id: native ? 88 : 100,
-                name: native ? "AI Review Native Signal" : "AI Review",
+          : selectedEventName === "schedule"
+            ? { repository: { full_name: repository } }
+            : {
+                action: "completed",
+                repository: { full_name: repository },
+                workflow_run: {
+                  id: native ? 88 : 100,
+                  name: native ? "AI Review Native Signal" : "AI Review",
+                },
               },
-            },
       ),
     );
     const env = {
@@ -215,10 +235,10 @@ function runCli({ native = false, withdrawal = null, number = 12, pin, resolveOn
       LANG: "C.UTF-8",
       GITHUB_TOKEN: "fixture-token-not-a-credential",
       GITHUB_REPOSITORY: repository,
-      GITHUB_EVENT_NAME: withdrawal ? "issue_comment" : "workflow_run",
+      GITHUB_EVENT_NAME: selectedEventName,
       GITHUB_EVENT_PATH: eventPath,
       GITHUB_OUTPUT: outputPath,
-      AI_REVIEW_AGENT: "codex",
+      AI_REVIEW_AGENT: agent,
     };
     for (const [variable, field] of Object.entries(matrixFields))
       if (pin && Object.hasOwn(pin, field)) env[variable] = String(pin[field]);
@@ -229,11 +249,15 @@ function runCli({ native = false, withdrawal = null, number = 12, pin, resolveOn
     );
     assert.equal(result.error, undefined);
     const observed = JSON.parse(readFileSync(resultPath, "utf8"));
+    let output = null;
+    try {
+      output = readFileSync(outputPath, "utf8");
+    } catch {
+      output = null;
+    }
     const matrix =
-      resolveOnly && result.status === 0
-        ? JSON.parse(readFileSync(outputPath, "utf8").match(/^pr_matrix=(.+)$/m)[1])
-        : null;
-    return { ...result, ...observed, matrix };
+      resolveOnly && result.status === 0 ? JSON.parse(output.match(/^pr_matrix=(.+)$/m)[1]) : null;
+    return { ...result, ...observed, output, matrix };
   } finally {
     rmSync(directory, { recursive: true, force: true });
   }
@@ -302,3 +326,37 @@ for (const withdrawal of ["edited", "deleted"]) {
       assert.match(result.stderr, /pinned/);
     });
 }
+
+test("F36 actual resolve-only Gemini native-source fixture emits no target without API lookup", () => {
+  const resolved = runCli({
+    native: true,
+    resolveOnly: true,
+    agent: "gemini",
+    sourceActor: "gemini-code-assist[bot]",
+  });
+  assert.equal(resolved.status, 0, resolved.stderr);
+  assert.equal(resolved.output, "pr_number=\npr_matrix=[]\nhas_prs=false\n");
+  assert.deepEqual(resolved.matrix, []);
+  assert.deepEqual(resolved.requests, []);
+  assert.deepEqual(resolved.mutations, []);
+});
+test("F36 actual resolve-only Gemini schedule fixture skips discovery and all API lookup", () => {
+  const resolved = runCli({ resolveOnly: true, agent: "gemini", eventName: "schedule" });
+  assert.equal(resolved.status, 0, resolved.stderr);
+  assert.equal(resolved.output, "pr_number=\npr_matrix=[]\nhas_prs=false\n");
+  assert.deepEqual(resolved.matrix, []);
+  assert.deepEqual(resolved.requests, []);
+  assert.deepEqual(resolved.mutations, []);
+});
+test("F36 selected Codex keeps rejecting the same foreign native-source actor", () => {
+  const resolved = runCli({
+    native: true,
+    resolveOnly: true,
+    agent: "codex",
+    sourceActor: "gemini-code-assist[bot]",
+  });
+  assert.equal(resolved.status, 1);
+  assert.match(resolved.stderr, /Untrusted native source actor provenance/);
+  assert.deepEqual(resolved.mutations, []);
+  assert.ok(resolved.requests.some(({ path }) => path.endsWith("/actions/runs/88")));
+});

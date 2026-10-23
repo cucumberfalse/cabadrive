@@ -237,7 +237,14 @@ export function classifyCodexSummaryComment(comment, headSha, config = {}) {
 If Codex has suggestions, it will comment; otherwise it will react with 👍.
 Codex can also answer questions or update the PR. Try commenting "@codex address that feedback".
 </details>`;
-    const normalizeAbout = (value) => value.replaceAll("ℹ️ ", "").replace(/\s+/g, " ").trim();
+    const normalizeAbout = (value) =>
+      value
+        .replace(/\s+/g, " ")
+        .trim()
+        .replace(
+          /^<details> <summary>(?:ℹ️ )?About Codex in GitHub<\/summary>/,
+          "<details> <summary>About Codex in GitHub</summary>",
+        );
     if (normalizeAbout(footer) !== normalizeAbout(nativeAbout)) return "fail";
     body = body.slice(0, details).trim();
   }

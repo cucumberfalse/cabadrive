@@ -215,7 +215,9 @@ observed `:tada:` decoration, never combined with another ending or added to
 legacy forms. Legacy `in head <sha>`
 and `Reviewed [<sha>]` forms remain supported. Case and CRLF normalization are
 preserved. Only the canonical observed About Codex in GitHub details footer is
-permitted, with whitespace and optional information-icon normalization. Repeated,
+permitted, with whitespace and at most one optional information icon only at the
+opening About summary heading. An absent heading icon is supported; repeated
+heading icons or icons elsewhere are modified footer content. Repeated,
 combined or modified endings, arbitrary additional prose, malformed/mixed or
 duplicate markers, conflicting commit markers, and negative or unfinished
 results cannot approve.
@@ -295,6 +297,11 @@ unavailable/ambiguous history cannot justify blind absence reruns. Uncertain
 posting states must settle through the existing strict actual-attempt/server-time
 proof before any observation or replacement. See the [workflow contract](ai-pr-workflow.md#native-codex-receipts-and-exact-head-wakeup)
 for bounded log access, serialization and deduplication.
+
+Resolve-only wakeup context selection checks the configured backend first. A
+selected non-Codex backend emits no PR target and performs neither Codex source
+provenance lookup nor scheduled discovery; selected/default Codex keeps the full
+existing actor, workflow, PR and exact-head validation path.
 
 ## Claude
 
