@@ -211,7 +211,7 @@ verdict and matching reviewed commit. Supported forms are the legacy
 `**Reviewed commit:**` form accepts the observed ASCII `. Chef's kiss.` and
 `. More of your lovely PRs please.` endings as explicit alternatives to the
 existing base/rocket endings. The v1 Reviewed-commit form also permits one
-observed `:tada:` decoration, never combined with another ending or added to
+observed `:tada:` or `:+1:` decoration, never combined with another ending or added to
 legacy forms. Legacy `in head <sha>`
 and `Reviewed [<sha>]` forms remain supported. Case and CRLF normalization are
 preserved. Only the canonical observed About Codex in GitHub details footer is

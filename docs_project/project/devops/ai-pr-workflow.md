@@ -487,7 +487,7 @@ no-findings verdict and matching `**Reviewed commit:**` line. That v1 receipt
 form also accepts the observed ASCII `. Chef's kiss.` and
 `. More of your lovely PRs please.` verdict endings as explicit alternatives
 to the existing base/rocket endings. This v1 Reviewed-commit form also accepts
-one observed `:tada:` decoration; it never combines endings or expands legacy
+one observed `:tada:` or `:+1:` decoration; it never combines endings or expands legacy
 forms. Verdict matching retains
 its case-insensitive and CRLF handling; misplaced, repeated, combined, or
 modified endings and additional prose are rejected. Existing explicit legacy

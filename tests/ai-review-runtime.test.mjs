@@ -4118,6 +4118,56 @@ const f35Receipt = (body = f33ActualReceipt.body, extra = {}) => ({
   body,
   ...extra,
 });
+
+// F37: this constructs the byte-asserted actual receipt from the retained
+// canonical fixture; all variants after it are local boundary fixtures.
+const f37Head = "fe80844da92c9665752f3de8332a0920e1420f9b";
+const f37ActualReceipt = {
+  ...f33ActualReceipt,
+  id: 6356272035,
+  body: f33ActualReceipt.body.replace("333f164f77", "fe80844da9").replace(":tada:", ":+1:"),
+  created_at: "2026-10-23T02:56:00Z",
+  updated_at: "2026-10-23T02:56:00Z",
+};
+const f37Receipt = (body = f37ActualReceipt.body, extra = {}) => ({
+  ...f37ActualReceipt,
+  body,
+  ...extra,
+});
+const f37Gate = (comments = [f37ActualReceipt]) =>
+  gate(gateApi({ headSha: f37Head, comments }), { headSha: f37Head });
+
+test("F37 actual plus-one receipt binds classifier/latest/gate", async () => {
+  const { createHash } = await import("node:crypto");
+  assert.equal(
+    createHash("sha256").update(f37ActualReceipt.body).digest("hex"),
+    "e3be5881c735b7686f761db8637fda9353d4a5b581f1816fc7f970d7bcfd2607",
+  );
+  assert.equal(f37ActualReceipt.id, 6356272035);
+  assert.equal(classifyCodexSummaryComment(f37ActualReceipt, f37Head), "pass");
+  assert.equal(latestCodexResult([], [], [f37ActualReceipt], f37Head).result, "pass");
+  assert.equal(await f37Gate(), true);
+});
+for (const [name, body] of [
+  ["repeated", f37ActualReceipt.body.replace(":+1:", ":+1: :+1:")],
+  ["combined", f37ActualReceipt.body.replace(":+1:", ":+1: :tada:")],
+  ["extra prose", f37ActualReceipt.body.replace(":+1:", ":+1: approved")],
+  ["malformed plus", f37ActualReceipt.body.replace(":+1:", ":+1")],
+  ["numeric lookalike", f37ActualReceipt.body.replace(":+1:", ":+2:")],
+  ["negative", f37ActualReceipt.body.replace(":+1:", ":+1: Found an issue")],
+  ["unknown", f37ActualReceipt.body.replace(":+1:", ":other:")],
+  ["unicode alias", f37ActualReceipt.body.replace(":+1:", " 👍")],
+  ["shortcode alias", f37ActualReceipt.body.replace(":+1:", ":thumbsup:")],
+  [
+    "legacy without prefix",
+    f37ActualReceipt.body.replace("<!-- codex-review-receipt:v1 -->\n\n", ""),
+  ],
+])
+  test(`F37 plus-one rejects ${name}`, async () => {
+    const receipt = f37Receipt(body);
+    assert.equal(classifyCodexSummaryComment(receipt, f37Head), "fail");
+    assert.equal(await f37Gate([receipt]), false);
+  });
 for (const [name, body] of [
   ["single heading icon", f33ActualReceipt.body],
   [

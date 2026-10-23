@@ -252,7 +252,7 @@ Codex can also answer questions or update the PR. Try commenting "@codex address
   const sha = "([a-fA-F0-9]{7,40})";
   // The observed praise is a v1 receipt alternative, never arbitrary legacy prose.
   const verdictEnding = hasReceiptPrefix
-    ? "(?:\\.?(?: :rocket:| 🚀| :tada:)?|\\. Chef's kiss\\.|\\. More of your lovely PRs please\\.)"
+    ? "(?:\\.?(?: :rocket:| 🚀| :tada:| :\\+1:)?|\\. Chef's kiss\\.|\\. More of your lovely PRs please\\.)"
     : "\\.?(?: :rocket:| 🚀)?";
   const patterns = [
     new RegExp(

@@ -72,3 +72,8 @@ The F-33 structured-summary footer exemption permits at most one optional observ
 Extend the F-34 single optional About-heading icon boundary to the separate positive-receipt footer comparison: retain supported whitespace/CRLF and genuinely canonical receipts, but never remove duplicated heading icons or icons elsewhere. Modified receipt footers cannot approve. Preserve F-34 structured-summary behavior and all existing trust, marker, verdict, full/unique-short-SHA and finding controls.
 
 The Codex-specific wakeup resolver must honor the selected backend before any source-context resolution or scheduled discovery. A selected non-Codex backend emits an empty matrix/no PR target without checking that backend's actor against Codex provenance or making wakeup API reads/mutations. Selected/default Codex retains every existing provenance, identity and head check. This is an ignored-backend path, never review approval or a change to backend policy. The actual efb native findings remain blocking; F-35/F-36 scope and fail-first/full verification are specified in the plan and T-21/T-22.
+
+
+### F-37 bounded native plus-one decoration
+
+Permit exactly one optional observed ASCII `:+1:` decoration in the existing v1 receipt plus Reviewed-commit positive-verdict alternative, at the same bounded location as existing rocket/tada decorations. This changes no legacy/unprefixed grammar, arbitrary shortcode or emoji family, combined/repeated suffix, footer, verdict, trust, marker/SHA, summary or finding policy. Preserve the actual fe808 receipt verbatim for fail-first reproduction; a clean summary remains neutral. The narrow implementation/evidence requirements and new-head verification are in the F-37 plan and T-23.
