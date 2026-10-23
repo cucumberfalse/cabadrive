@@ -77,3 +77,8 @@ The Codex-specific wakeup resolver must honor the selected backend before any so
 ### F-37 bounded native plus-one decoration
 
 Permit exactly one optional observed ASCII `:+1:` decoration in the existing v1 receipt plus Reviewed-commit positive-verdict alternative, at the same bounded location as existing rocket/tada decorations. This changes no legacy/unprefixed grammar, arbitrary shortcode or emoji family, combined/repeated suffix, footer, verdict, trust, marker/SHA, summary or finding policy. Preserve the actual fe808 receipt verbatim for fail-first reproduction; a clean summary remains neutral. The narrow implementation/evidence requirements and new-head verification are in the F-37 plan and T-23.
+
+
+### F-38 bounded observed next-one ending
+
+Accept the exact observed ASCII `. Can't wait for the next one!` as one alternative ending of the existing v1 receipt plus Reviewed-commit positive form, retaining the inherited case policy. Its literal wording, apostrophe, internal spaces and terminal exclamation are bounded; do not generalize closing prose or combine it with another ending/decoration. This changes no legacy/unprefixed form, verdict, footer/icon normalization, author/marker/SHA/finding/summary or backend behavior. The actual f4adee body remains a verbatim fail-first fixture, with narrow review/full/new-head requirements in the F-38 plan and T-24.

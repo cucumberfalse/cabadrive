@@ -3926,6 +3926,7 @@ for (const [name, body] of [
     assert.equal(classifyCodexSummaryComment(comment, f33Head), "fail");
     assert.equal(await f33Gate([comment]), false);
   });
+
 test("F33 canonical summary footer preserves existing bounded layout normalization", () => {
   const comment = f33Comment(
     f33ActualSummary.body.replaceAll("ℹ️ ", "").replaceAll("\n", "\r\n"),
@@ -4168,6 +4169,56 @@ for (const [name, body] of [
     assert.equal(classifyCodexSummaryComment(receipt, f37Head), "fail");
     assert.equal(await f37Gate([receipt]), false);
   });
+
+// F38 retains the actual native f4adee receipt bytes through a bounded
+// substitution of the immediately preceding actual F37 receipt fixture.
+const f38Head = "f4adee29fd863811229091bab5e2b3f5213ad454";
+const f38Ending = ". Can't wait for the next one!";
+const f38ActualReceipt = {
+  ...f37ActualReceipt,
+  id: 6366161188,
+  body: f37ActualReceipt.body.replace("fe80844da9", "f4adee29fd").replace(". :+1:", f38Ending),
+  created_at: "2026-10-23T13:36:00Z",
+  updated_at: "2026-10-23T13:36:00Z",
+};
+const f38Receipt = (body, extra = {}) => ({ ...f38ActualReceipt, body, ...extra });
+const f38Gate = (comments = [f38ActualReceipt]) =>
+  gate(gateApi({ headSha: f38Head, comments }), { headSha: f38Head });
+
+test("F38 actual next-one receipt binds classifier/latest/gate", async () => {
+  const { createHash } = await import("node:crypto");
+  assert.equal(
+    createHash("sha256").update(f38ActualReceipt.body).digest("hex"),
+    "9ca13eb39a5f74894c4f06f2dbbf8ac4f6233c97cb35e62de02b0d6d823b8822",
+  );
+  assert.equal(classifyCodexSummaryComment(f38ActualReceipt, f38Head), "pass");
+  assert.equal(latestCodexResult([], [], [f38ActualReceipt], f38Head).result, "pass");
+  assert.equal(await f38Gate(), true);
+});
+
+for (const [name, body] of [
+  [
+    "missing terminal exclamation",
+    f38ActualReceipt.body.replace(f38Ending, ". Can't wait for the next one"),
+  ],
+  ["changed wording", f38ActualReceipt.body.replace("the next one", "another one")],
+  ["unicode apostrophe", f38ActualReceipt.body.replace("Can't", "Can’t")],
+  ["double internal space", f38ActualReceipt.body.replace("wait for", "wait  for")],
+  ["combined prose", f38ActualReceipt.body.replace(f38Ending, `${f38Ending} Chef's kiss.`)],
+  ["combined decoration", f38ActualReceipt.body.replace(f38Ending, `${f38Ending} :+1:`)],
+  ["repeated ending", f38ActualReceipt.body.replace(f38Ending, `${f38Ending}${f38Ending}`)],
+  ["negative prose", f38ActualReceipt.body.replace(f38Ending, `${f38Ending} Found an issue.`)],
+  [
+    "legacy without prefix",
+    f38ActualReceipt.body.replace("<!-- codex-review-receipt:v1 -->\n\n", ""),
+  ],
+])
+  test(`F38 next-one ending rejects ${name}`, async () => {
+    const receipt = f38Receipt(body);
+    assert.equal(classifyCodexSummaryComment(receipt, f38Head), "fail");
+    assert.equal(await f38Gate([receipt]), false);
+  });
+
 for (const [name, body] of [
   ["single heading icon", f33ActualReceipt.body],
   [

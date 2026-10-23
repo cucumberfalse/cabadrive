@@ -485,7 +485,7 @@ no-findings comment may use the legacy `Codex Review:` header or exactly one
 leading `<!-- codex-review-receipt:v1 -->` marker, followed by the explicit
 no-findings verdict and matching `**Reviewed commit:**` line. That v1 receipt
 form also accepts the observed ASCII `. Chef's kiss.` and
-`. More of your lovely PRs please.` verdict endings as explicit alternatives
+`. More of your lovely PRs please.` and `. Can't wait for the next one!` verdict endings as explicit alternatives
 to the existing base/rocket endings. This v1 Reviewed-commit form also accepts
 one observed `:tada:` or `:+1:` decoration; it never combines endings or expands legacy
 forms. Verdict matching retains

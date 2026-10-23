@@ -209,7 +209,7 @@ verdict and matching reviewed commit. Supported forms are the legacy
 `Codex Review:` header and exactly one leading
 `<!-- codex-review-receipt:v1 -->` marker. The bounded v1
 `**Reviewed commit:**` form accepts the observed ASCII `. Chef's kiss.` and
-`. More of your lovely PRs please.` endings as explicit alternatives to the
+`. More of your lovely PRs please.` and `. Can't wait for the next one!` endings as explicit alternatives to the
 existing base/rocket endings. The v1 Reviewed-commit form also permits one
 observed `:tada:` or `:+1:` decoration, never combined with another ending or added to
 legacy forms. Legacy `in head <sha>`
