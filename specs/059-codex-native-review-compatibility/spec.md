@@ -82,3 +82,13 @@ Permit exactly one optional observed ASCII `:+1:` decoration in the existing v1 
 ### F-38 bounded observed next-one ending
 
 Accept the exact observed ASCII `. Can't wait for the next one!` as one alternative ending of the existing v1 receipt plus Reviewed-commit positive form, retaining the inherited case policy. Its literal wording, apostrophe, internal spaces and terminal exclamation are bounded; do not generalize closing prose or combine it with another ending/decoration. This changes no legacy/unprefixed form, verdict, footer/icon normalization, author/marker/SHA/finding/summary or backend behavior. The actual f4adee body remains a verbatim fail-first fixture, with narrow review/full/new-head requirements in the F-38 plan and T-24.
+
+
+### F-39 required transitive Zod security refresh
+
+The actual required OSV failure permits a bounded same-cycle update of the existing transitive Zod4.4.3 resolution to exactly4.6.6, the minimum advisory-fixed version, with only necessary lockfile/peer-snapshot consequences. Prefer a generated lockfile-only update within the unchanged consumer ranges. A sole parent-scoped exact override is conditionally permitted only as the documented fallback in the F-39 plan; no direct Zod dependency, parent/toolchain upgrade, broad refresh, scanner exception or trust/review-policy change is authorized. Preserve native945cec failure honestly: no same-head duplicate trigger, no clean-result claim; publication of the genuinely changed dependency requires one new-head native cycle, all gates and existing finalization requirements.
+
+
+### F-40 image-readiness synchronization before geometry
+
+The actual F-39 recovery E2E failure permits one test-only synchronization correction: call the existing rendered-image readiness helper for the current question-card `.question-image-frame img` immediately before geometry evaluation in the overlay-bounds test. The helper must still require complete loading, positive natural dimensions and nonzero rendered bounds within its existing timeout. Keep every geometry assertion and product/image/runtime behavior unchanged; missing/broken assets still fail readiness. This does not approve the failed recovery or permit another unchanged retry. New-source review/focused/full requirements are in the F-40 plan and T-26.

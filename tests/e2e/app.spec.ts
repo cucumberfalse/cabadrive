@@ -1068,6 +1068,7 @@ test("image explanation overlay bounds follow the rendered bitmap when image hei
   const card = page.getByTestId("question-card");
   await page.locator(".answer").nth(firstQuestionWrongAnswerIndex).click();
   await expect(card.getByTestId("image-explanation-overlay")).toBeVisible();
+  await expectRenderedManualImage(card.locator(".question-image-frame img"), "question-overlay");
 
   const geometry = await card.evaluate((element) => {
     const image = element.querySelector(".question-image-frame img");
