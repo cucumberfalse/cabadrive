@@ -17,6 +17,39 @@ import { fileURLToPath } from "node:url";
 import test from "node:test";
 import { checkpointOptions, readCheckpoint } from "../scripts/docker-image-checkpoint.mjs";
 
+function requireCompletedDriver(result, diagnostic) {
+  assert.equal(result.error, undefined, diagnostic);
+  assert.equal(result.signal, null, diagnostic);
+  assert(Number.isInteger(result.status), diagnostic);
+  return result;
+}
+
+test("checkpoint subprocess completion guard rejects errors, signals and missing exits", () => {
+  for (const status of [0, 1]) {
+    const completed = { status, signal: null };
+    assert.equal(requireCompletedDriver(completed, "completed"), completed);
+  }
+  for (const incomplete of [
+    {
+      status: null,
+      signal: null,
+      error: Object.assign(new Error("timeout"), { code: "ETIMEDOUT" }),
+    },
+    { status: null, signal: null, error: Object.assign(new Error("spawn"), { code: "ENOENT" }) },
+    { status: 1, signal: null, error: new Error("spawn") },
+    { status: null, signal: "SIGTERM" },
+    { status: 1, signal: "SIGTERM" },
+    { status: null, signal: null },
+    { status: undefined, signal: null },
+    { status: 1 },
+  ]) {
+    assert.throws(() => requireCompletedDriver(incomplete, "incomplete checkpoint driver"), {
+      name: "AssertionError",
+      message: /incomplete checkpoint driver/,
+    });
+  }
+});
+
 // Command doubles exercise the actual driver's continuation and creator cleanup.
 // Their small synthetic inventories never constitute production Docker acceptance.
 function fixture() {
@@ -100,8 +133,9 @@ writeFileSync(path,JSON.stringify(state));process.exitCode=status;
     preload,
     "import fs from 'node:fs';import {syncBuiltinESMExports} from 'node:module';fs.statfsSync=()=>({bavail:8*1024**3,bsize:1});syncBuiltinESMExports();",
   );
-  const run = (...args) =>
-    spawnSync(
+  const run = (...args) => {
+    const started = performance.now();
+    const result = spawnSync(
       process.execPath,
       ["--import", preload, join(repository, "scripts/test-docker-image-pipeline.mjs"), ...args],
       {
@@ -116,6 +150,61 @@ writeFileSync(path,JSON.stringify(state));process.exitCode=status;
         },
       },
     );
+    const elapsedMs = Math.round(performance.now() - started);
+    let commandState;
+    try {
+      const snapshot = JSON.parse(readFileSync(statePath));
+      commandState = {
+        count: snapshot.commands.length,
+        recent: snapshot.commands
+          .slice(-6)
+          .map((command) => command.slice(0, 5).map((argument) => argument.slice(0, 160))),
+        imageCount: Object.keys(snapshot.images).length,
+        imageIds: Object.values(snapshot.images)
+          .slice(0, 8)
+          .map((image) => image.Id),
+      };
+    } catch (error) {
+      commandState = { error: error.message.slice(0, 256) };
+    }
+    let diagnosticFiles;
+    if (result.error || result.signal !== null || !Number.isInteger(result.status)) {
+      try {
+        const directory = mkdtempSync(join(tmpdir(), "cabadrive-checkpoint-diagnostic-"));
+        for (const [name, value] of [
+          ["stdout", result.stdout],
+          ["stderr", result.stderr],
+        ])
+          writeFileSync(join(directory, `${name}.log`), value ?? "", { mode: 0o600 });
+        diagnosticFiles = { directory };
+      } catch (error) {
+        diagnosticFiles = { error: error.message.slice(0, 256) };
+      }
+    }
+    const output = (value) => ({
+      bytes: Buffer.byteLength(value ?? ""),
+      tail: value?.slice(-1024),
+    });
+    const diagnostic = JSON.stringify({
+      elapsedMs,
+      status: result.status,
+      signal: result.signal,
+      error: result.error
+        ? {
+            code: result.error.code,
+            syscall: result.error.syscall?.slice(0, 160),
+            message: result.error.message.slice(0, 256),
+          }
+        : null,
+      stdout: output(result.stdout),
+      stderr: output(result.stderr),
+      commandState,
+      diagnosticFiles,
+    });
+    console.error(`Checkpoint driver completion: ${diagnostic}`);
+    requireCompletedDriver(result, diagnostic);
+    return { ...result, diagnostic };
+  };
   const state = () => JSON.parse(readFileSync(statePath));
   const changeState = (mutate) => {
     const value = state();
@@ -299,6 +388,8 @@ for (const mutation of [
       const result = f.run("--resume", partial.checkpoint);
       assert.notEqual(result.status, 0);
       assert.doesNotMatch(result.stdout, /"status":"PASS"/);
+      if (mutation === "candidate")
+        assert.match(result.stderr, /actual retained candidate changed/, result.diagnostic);
       // A changed live candidate is discovered after creator validation; teardown
       // then legitimately removes that creator, while all pre-adoption failures preserve it.
       if (mutation !== "candidate") {

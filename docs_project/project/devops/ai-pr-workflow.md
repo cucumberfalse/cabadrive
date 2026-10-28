@@ -413,9 +413,11 @@ executable coverage.
 
 The `AI Review` workflow validates the configured native review backend from the `AI_REVIEW_AGENT` repository variable. On same-repository pull request events with `AI_REVIEW_GITHUB_TOKEN` configured, it posts the selected backend trigger comment first, then polls for acceptable review evidence on the current PR head. Fork, read-only-token, or missing-review-token runs skip the automatic trigger and wait for existing or human-triggered review evidence. Manual `workflow_dispatch` runs keep the `trigger_mode` input so maintainers can choose `skip` when they only want to validate existing review evidence.
 
-If `AI_REVIEW_GITHUB_TOKEN` is configured as a repository Actions secret, the workflow uses it for review-gate API calls; otherwise it falls back to the built-in `github.token`.
+The separate `Request native review` job contains only static API code and uses `AI_REVIEW_GITHUB_TOKEN`, when configured, only to request a review. It never checks out or executes repository code. It checks the open, non-draft PR, upstream repository and immutable live head immediately before posting; dispatch triggering additionally requires the default-branch workflow/ref. POST permission denial warns and leaves evaluation active. Fork automatic requests and all reruns skip this job.
 
-The required gate executes scripts from the default branch so review validation is not controlled by pull request code.
+The single required `AI Review` job always evaluates after an intentionally skipped trigger and fails on a failed or invalid trigger dependency. Its token has only contents, pull-request and issue read permissions, and it never receives the custom secret. Checkout does not persist credentials; gate execution always uses `trigger_mode=skip`.
+
+The required gate normally executes scripts from the default branch. The narrowly scoped PR #221 rollout below uses one independently reviewed immutable validator instead; it never executes the mutable PR head as validator code.
 
 Before merge, the author should also confirm the SENAR done gate:
 
@@ -694,7 +696,7 @@ residual prose retains checks of the original complete body, rather than a
 partially stripped remainder. All actual unresolved roots and explicit state,
 severity, full-head and author guards remain independent.
 
-This workflow becomes effective after protected deployment to the default branch.
+Default-branch wakeup/router changes become effective after protected deployment to the default branch.
 A PR-only parser/router change cannot repair its own trusted-main gate. Manual
 main dispatch still executes main's parser and does not replace a PR-head required
 check. Bootstrap needs genuine current-head legacy/formal native evidence accepted
@@ -702,3 +704,21 @@ by the existing gate, or independently reviewed protected rollout with sufficien
 authority. Fork push permission alone grants neither upstream rerun nor merge
 permission. No skip, synthetic check, unreviewed privileged script, impersonation,
 or branch-protection bypass is a rollout path.
+
+For the native-receipt compatibility rollout only, upstream `cucumberfalse/cabadrive`
+PR #221 from `kiaquila/cabadrive:codex/native-review-compatibility` selects validator
+commit `af97cca5edb69a47ead5c5e9675da0677c8fed3d` from the upstream repository.
+The `pull_request` job publishes the real check for the current PR head while the
+read-only evaluator verifies the pinned checkout identity, repository and all six
+required modules/configuration files. A mismatched partial identity, wrong
+checkout or missing pinned file fails; the historical default-branch missing-file
+notice cannot approve this path. No install, custom credential, write permission,
+manual status or `pull_request_target` participates in the evaluator. Other PRs
+and manual dispatch retain default-branch validation.
+
+The validator pin is not a review of that SHA for a later candidate: a new PR
+head still requires genuine successful native evidence for its own full SHA and
+every required check. Native `unknown error`, incomplete/negative summary, old
+receipt or unresolved finding remains blocking. This PR-specific condition has
+no further use once #221 merges; changing its scope or pin requires another
+reviewed repository change.

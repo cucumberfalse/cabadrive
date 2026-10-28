@@ -303,6 +303,18 @@ selected non-Codex backend emits no PR target and performs neither Codex source
 provenance lookup nor scheduled discovery; selected/default Codex keeps the full
 existing actor, workflow, PR and exact-head validation path.
 
+The required `AI Review` evaluator uses a read-only built-in token and executes
+trusted default-branch scripts without persisted checkout credentials. Its
+separate static request job holds any custom review token and cannot execute
+repository code; skipping a request never skips evaluation, while a failed
+request dependency fails the gate. The sole PR #221 rollout exception uses the
+independently reviewed upstream validator
+`af97cca5edb69a47ead5c5e9675da0677c8fed3d` under the strict repository, fork, branch
+and file/checkout guards documented in the [workflow contract](ai-pr-workflow.md).
+This selects validation code only. All author, finding, freshness, exact-current-
+head and explicit-positive native-evidence requirements remain unchanged;
+backend errors never count as approval.
+
 ## Claude
 
 Top-level comment must start with:

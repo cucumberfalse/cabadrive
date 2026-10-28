@@ -13,52 +13,219 @@ on:
         required: false
         default: skip
 
-permissions:
-  contents: read
-  pull-requests: read
-  issues: write
+permissions: {}
 
 concurrency:
   group: ai-review-${{ github.event.pull_request.number || inputs.pr_number || github.ref }}
   cancel-in-progress: true
 
 jobs:
+  normal-trigger:
+    name: Request native review
+    if: |
+      github.run_attempt == 1 &&
+      (github.event_name == 'workflow_dispatch' ||
+       (github.event.pull_request.draft == false &&
+        github.event.pull_request.head.repo.full_name == github.repository &&
+        !(github.repository == 'cucumberfalse/cabadrive' && github.event.pull_request.number == 221)))
+    permissions:
+      contents: read
+      pull-requests: read
+      issues: write
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      # Static API code only: this job never checks out or executes repository code.
+      - name: Request selected native review
+        env:
+          GITHUB_TOKEN: ${{ secrets.AI_REVIEW_GITHUB_TOKEN || github.token }}
+          HAS_AI_REVIEW_GITHUB_TOKEN: ${{ secrets.AI_REVIEW_GITHUB_TOKEN != '' }}
+          SELECTED_AGENT: ${{ vars.AI_REVIEW_AGENT }}
+          REQUESTED_PR_NUMBER: ${{ inputs.pr_number }}
+          REQUESTED_TRIGGER_MODE: ${{ inputs.trigger_mode }}
+        run: |
+          node --input-type=module <<'NODE'
+          import { readFileSync } from "node:fs";
+          try {
+            const env = process.env;
+            const event = JSON.parse(readFileSync(env.GITHUB_EVENT_PATH, "utf8"));
+            const repository = env.GITHUB_REPOSITORY;
+            const selected = env.SELECTED_AGENT || "codex";
+            const dispatch = env.GITHUB_EVENT_NAME === "workflow_dispatch";
+            if (!/^[^/]+\/[^/]+$/.test(repository || "") || event.repository?.full_name !== repository)
+              throw new Error("Conflicting repository identity.");
+            if (!["codex", "claude", "gemini"].includes(selected))
+              throw new Error("Unsupported AI_REVIEW_AGENT.");
+            if (!/^[1-9][0-9]*$/.test(env.GITHUB_RUN_ATTEMPT || ""))
+              throw new Error("Invalid GITHUB_RUN_ATTEMPT.");
+            const number = dispatch ? Number(env.REQUESTED_PR_NUMBER) : event.pull_request?.number;
+            if (!Number.isSafeInteger(number) || number <= 0 ||
+                (dispatch && !/^[1-9][0-9]*$/.test(env.REQUESTED_PR_NUMBER || "")))
+              throw new Error("Invalid pull request number.");
+            const defaultBranch = event.repository.default_branch;
+            if (typeof defaultBranch !== "string" || !defaultBranch)
+              throw new Error("Missing trusted default branch.");
+            if (dispatch && (env.GITHUB_REF !== `refs/heads/${defaultBranch}` ||
+                env.GITHUB_WORKFLOW_REF !== `${repository}/.github/workflows/ai-review.yml@refs/heads/${defaultBranch}`))
+              throw new Error("Review triggering requires the trusted default-branch workflow/ref.");
+            const mode = dispatch ? (env.REQUESTED_TRIGGER_MODE || "skip") :
+              (event.pull_request?.head?.repo?.full_name === repository && env.HAS_AI_REVIEW_GITHUB_TOKEN === "true" ? "comment" : "skip");
+            if (!["skip", "comment"].includes(mode)) throw new Error("Unsupported review trigger mode.");
+            if (!dispatch && (event.pull_request?.state !== "open" || event.pull_request?.draft !== false ||
+                event.pull_request?.base?.repo?.full_name !== repository))
+              throw new Error("Invalid pull-request event association.");
+            const bootstrap = !dispatch && repository === "cucumberfalse/cabadrive" && number === 221;
+            if (env.GITHUB_RUN_ATTEMPT !== "1" || bootstrap || mode === "skip" ||
+                (!dispatch && event.pull_request?.head?.repo?.full_name !== repository)) {
+              console.log("Automatic native review request skipped; evaluator remains active.");
+            } else {
+              async function request(path, options = {}) {
+                const response = await fetch(`https://api.github.com/repos/${repository}${path}`, {
+                  ...options,
+                  headers: { authorization: `Bearer ${env.GITHUB_TOKEN}`, accept: "application/vnd.github+json",
+                    "x-github-api-version": "2022-11-28", "content-type": "application/json" },
+                });
+                if (!response.ok) {
+                  const error = new Error(`GitHub API returned ${response.status}.`);
+                  error.status = response.status;
+                  throw error;
+                }
+                return response.status === 204 ? null : response.json();
+              }
+              // Retain the original first-bootstrap absence behavior without executing repository code.
+              let available = true;
+              for (const path of ["scripts/resolve-pr-context.mjs", "scripts/ai-review-gate.mjs"]) {
+                try { await request(`/contents/${path}?ref=${encodeURIComponent(defaultBranch)}`); }
+                catch (error) { if (error.status !== 404) throw error; available = false; }
+              }
+              if (!available) console.log("Trusted default gate scripts are absent; no review request posted.");
+              else {
+                let expected = dispatch ? null : event.pull_request?.head?.sha;
+                if (!dispatch && !/^[a-f0-9]{40}$/i.test(expected || ""))
+                  throw new Error("Missing immutable event head.");
+                async function currentPull() {
+                  const pull = await request(`/pulls/${number}`);
+                  if (pull.number !== number || pull.state !== "open" || pull.draft !== false ||
+                      pull.base?.repo?.full_name !== repository || !pull.head?.repo?.full_name ||
+                      !/^[a-f0-9]{40}$/i.test(pull.head?.sha || "") ||
+                      (expected && pull.head.sha !== expected) ||
+                      (!dispatch && (pull.head.repo?.full_name !== event.pull_request.head.repo.full_name ||
+                        pull.head.ref !== event.pull_request.head.ref)))
+                    throw new Error("Pull request identity or live head changed.");
+                  return pull;
+                }
+                expected = (await currentPull()).head.sha;
+                await currentPull(); // Revalidate immediately before the only mutation.
+                const triggers = { codex: `@codex review ${expected}`, claude: "@claude review once", gemini: "/gemini review" };
+                try {
+                  await request(`/issues/${number}/comments`, { method: "POST", body: JSON.stringify({
+                    body: `${triggers[selected]}\n\n_Administrative AI Review trigger for ${expected}. Prefer a trusted human-authored trigger if the native backend ignores bot comments._`,
+                  }) });
+                } catch (error) {
+                  if (error.status !== 403) throw error;
+                  console.warn("Could not post AI Review trigger comment; waiting for existing or human-triggered review evidence instead.");
+                }
+              }
+            }
+          } catch (error) { console.error(error.message); process.exitCode = 1; }
+          NODE
+
   ai-review:
     name: AI Review
+    needs: normal-trigger
     if: |
-      github.event_name == 'workflow_dispatch' ||
-      github.event.pull_request.draft == false
+      always() &&
+      (github.event_name == 'workflow_dispatch' || github.event.pull_request.draft == false)
+    permissions:
+      contents: read
+      pull-requests: read
+      issues: read
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
+      - name: Select trusted validator context
+        id: validator
+        env:
+          TRIGGER_RESULT: ${{ needs.normal-trigger.result }}
+          SELECTED_AGENT: ${{ vars.AI_REVIEW_AGENT }}
+          REQUESTED_PR_NUMBER: ${{ inputs.pr_number }}
+          REQUESTED_TRIGGER_MODE: ${{ inputs.trigger_mode }}
+        run: |
+          node --input-type=module <<'NODE'
+          import { readFileSync, appendFileSync } from "node:fs";
+          try {
+            const env = process.env;
+            const event = JSON.parse(readFileSync(env.GITHUB_EVENT_PATH, "utf8"));
+            if (!["success", "skipped"].includes(env.TRIGGER_RESULT))
+              throw new Error("Native trigger dependency failed or has invalid state.");
+            if (!/^[1-9][0-9]*$/.test(env.GITHUB_RUN_ATTEMPT || ""))
+              throw new Error("Invalid GITHUB_RUN_ATTEMPT.");
+            const selected = env.SELECTED_AGENT || "codex";
+            if (!["codex", "claude", "gemini"].includes(selected)) throw new Error("Unsupported AI_REVIEW_AGENT.");
+            if (event.repository?.full_name !== env.GITHUB_REPOSITORY ||
+                !/^[^/]+\/[^/]+$/.test(env.GITHUB_REPOSITORY || "")) throw new Error("Conflicting repository identity.");
+            let bootstrap = false;
+            if (env.GITHUB_EVENT_NAME === "pull_request") {
+              const pull = event.pull_request;
+              if (!Number.isSafeInteger(pull?.number) || pull.number <= 0 ||
+                  !/^[a-f0-9]{40}$/i.test(pull.head?.sha || "") || pull.base?.repo?.full_name !== env.GITHUB_REPOSITORY ||
+                  !pull.head?.repo?.full_name) throw new Error("Invalid pull-request event identity.");
+              if (env.GITHUB_REPOSITORY === "cucumberfalse/cabadrive" && pull.number === 221) {
+                if (pull.head.repo.full_name !== "kiaquila/cabadrive" || pull.head.ref !== "codex/native-review-compatibility")
+                  throw new Error("Conflicting PR221 bootstrap identity.");
+                bootstrap = true;
+              }
+            } else if (env.GITHUB_EVENT_NAME === "workflow_dispatch") {
+              const number = Number(env.REQUESTED_PR_NUMBER);
+              if (!Number.isSafeInteger(number) || number <= 0 || !/^[1-9][0-9]*$/.test(env.REQUESTED_PR_NUMBER || "")) throw new Error("Invalid pull request number.");
+              if (!["skip", "comment"].includes(env.REQUESTED_TRIGGER_MODE || "skip")) throw new Error("Unsupported review trigger mode.");
+            } else throw new Error("Unsupported workflow event.");
+            const ref = bootstrap ? "af97cca5edb69a47ead5c5e9675da0677c8fed3d" : event.repository.default_branch;
+            if (typeof ref !== "string" || !ref || /[\r\n]/.test(ref)) throw new Error("Missing trusted validator ref.");
+            appendFileSync(env.GITHUB_OUTPUT, `bootstrap=${bootstrap}\nvalidator_repository=${bootstrap ? "cucumberfalse/cabadrive" : env.GITHUB_REPOSITORY}\nvalidator_ref=${ref}\nselected_agent=${selected}\n`);
+          } catch (error) { console.error(error.message); process.exitCode = 1; }
+          NODE
+
       - name: Checkout trusted gate scripts
         uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
         with:
-          ref: ${{ github.event.repository.default_branch }}
+          repository: ${{ steps.validator.outputs.validator_repository }}
+          ref: ${{ steps.validator.outputs.validator_ref }}
+          persist-credentials: false
 
       - name: Check trusted gate script availability
         id: gate_scripts
-        shell: bash
+        env:
+          BOOTSTRAP: ${{ steps.validator.outputs.bootstrap }}
+          VALIDATOR_REF: ${{ steps.validator.outputs.validator_ref }}
+          VALIDATOR_REPOSITORY: ${{ steps.validator.outputs.validator_repository }}
         run: |
-          set -euo pipefail
-          missing=()
-          for path in scripts/resolve-pr-context.mjs scripts/ai-review-gate.mjs; do
-            if [ ! -f "$path" ]; then
-              missing+=("$path")
-            fi
-          done
-          if [ "${#missing[@]}" -eq 0 ]; then
-            echo "available=true" >> "$GITHUB_OUTPUT"
-            echo "missing=" >> "$GITHUB_OUTPUT"
-          else
-            echo "available=false" >> "$GITHUB_OUTPUT"
-            echo "missing=$(IFS=,; echo "${missing[*]}")" >> "$GITHUB_OUTPUT"
-          fi
+          node --input-type=module <<'NODE'
+          import { existsSync, appendFileSync } from "node:fs";
+          import { execFileSync } from "node:child_process";
+          try {
+            if (!["true", "false"].includes(process.env.BOOTSTRAP)) throw new Error("Invalid validator bootstrap mode.");
+            const bootstrap = process.env.BOOTSTRAP === "true";
+            const pin = "af97cca5edb69a47ead5c5e9675da0677c8fed3d";
+            if (bootstrap && (process.env.VALIDATOR_REPOSITORY !== "cucumberfalse/cabadrive" ||
+                !/^https:\/\/github\.com\/cucumberfalse\/cabadrive(?:\.git)?$/.test(execFileSync("git", ["remote", "get-url", "origin"], { encoding: "utf8" }).trim()) ||
+                process.env.VALIDATOR_REF !== pin || execFileSync("git", ["rev-parse", "HEAD"], { encoding: "utf8" }).trim() !== pin))
+              throw new Error("Pinned validator checkout identity mismatch.");
+            const required = ["scripts/resolve-pr-context.mjs", "scripts/ai-review-gate.mjs"];
+            if (bootstrap) required.push("scripts/ai-review-helpers.mjs", "scripts/ai-review-api.mjs", "scripts/shared.mjs", ".unicorn-hub/config.json");
+            const missing = required.filter((path) => !existsSync(path));
+            if (bootstrap && missing.length) throw new Error(`Pinned validator files missing: ${missing.join(", ")}`);
+            appendFileSync(process.env.GITHUB_OUTPUT, `available=${missing.length === 0}\nmissing=${missing.join(",")}\n`);
+            console.log(`Trusted validator checkout: ${execFileSync("git", ["rev-parse", "HEAD"], { encoding: "utf8" }).trim()}; bootstrap=${bootstrap}.`);
+          } catch (error) { console.error(error.message); process.exitCode = 1; }
+          NODE
 
       - name: Bootstrap compatibility notice
         if: steps.gate_scripts.outputs.available != 'true'
+        env:
+          MISSING_GATE_SCRIPTS: ${{ steps.gate_scripts.outputs.missing }}
         run: |
-          echo "::notice::Skipping AI review gate because trusted scripts are not yet present on default branch: ${{ steps.gate_scripts.outputs.missing }}."
+          echo "::notice::Skipping AI review gate because trusted scripts are not yet present on default branch: $MISSING_GATE_SCRIPTS."
           echo "::notice::This is expected for the first bootstrap PR. After merge, AI Review runs normally."
 
       - name: Resolve PR context
@@ -66,62 +233,17 @@ jobs:
         id: pr
         run: node scripts/resolve-pr-context.mjs
         env:
-          GITHUB_TOKEN: ${{ secrets.AI_REVIEW_GITHUB_TOKEN || github.token }}
+          GITHUB_TOKEN: ${{ github.token }}
           AI_REVIEW_PR_NUMBER: ${{ inputs.pr_number }}
-
-      - name: Resolve selected review policy
-        if: steps.gate_scripts.outputs.available == 'true'
-        id: policy
-        shell: bash
-        env:
-          SELECTED_AGENT: ${{ vars.AI_REVIEW_AGENT }}
-          REQUESTED_TRIGGER_MODE: ${{ inputs.trigger_mode }}
-          EVENT_NAME: ${{ github.event_name }}
-          PR_HEAD_REPOSITORY: ${{ github.event.pull_request.head.repo.full_name || '' }}
-          REPOSITORY: ${{ github.repository }}
-          HAS_AI_REVIEW_GITHUB_TOKEN: ${{ secrets.AI_REVIEW_GITHUB_TOKEN != '' }}
-        run: |
-          set -euo pipefail
-          selected="${SELECTED_AGENT:-codex}"
-          selected="${selected:-codex}"
-          case "$selected" in
-            codex|claude|gemini) ;;
-            *)
-              echo "::error::Unsupported AI_REVIEW_AGENT value: '$selected'. Allowed: codex, claude, gemini."
-              exit 1
-              ;;
-          esac
-          if ! [[ "${GITHUB_RUN_ATTEMPT}" =~ ^[1-9][0-9]*$ ]]; then
-            echo "::error::Invalid GITHUB_RUN_ATTEMPT."
-            exit 1
-          fi
-          if [ "${GITHUB_RUN_ATTEMPT}" != "1" ]; then
-            trigger_mode="skip"
-          elif [ "${EVENT_NAME}" = "workflow_dispatch" ]; then
-            trigger_mode="${REQUESTED_TRIGGER_MODE:-skip}"
-          elif [ "${PR_HEAD_REPOSITORY}" = "${REPOSITORY}" ] && [ "${HAS_AI_REVIEW_GITHUB_TOKEN}" = "true" ]; then
-            trigger_mode="comment"
-          else
-            trigger_mode="skip"
-          fi
-          case "$trigger_mode" in
-            skip|comment) ;;
-            *)
-              echo "::error::Unsupported AI_REVIEW_TRIGGER_MODE value: '$trigger_mode'. Allowed: skip, comment."
-              exit 1
-              ;;
-          esac
-          echo "selected_agent=$selected" >> "$GITHUB_OUTPUT"
-          echo "trigger_mode=$trigger_mode" >> "$GITHUB_OUTPUT"
 
       - name: Route and validate selected native review
         if: steps.gate_scripts.outputs.available == 'true'
         run: node scripts/ai-review-gate.mjs
         env:
-          GITHUB_TOKEN: ${{ secrets.AI_REVIEW_GITHUB_TOKEN || github.token }}
-          AI_REVIEW_AGENT: ${{ steps.policy.outputs.selected_agent }}
+          GITHUB_TOKEN: ${{ github.token }}
+          AI_REVIEW_AGENT: ${{ steps.validator.outputs.selected_agent }}
           AI_REVIEW_PR_NUMBER: ${{ steps.pr.outputs.pr_number }}
           AI_REVIEW_HEAD_SHA: ${{ steps.pr.outputs.head_sha }}
-          AI_REVIEW_TRIGGER_MODE: ${{ steps.policy.outputs.trigger_mode }}
+          AI_REVIEW_TRIGGER_MODE: skip
           AI_REVIEW_WAIT_MS: "1200000"
           AI_REVIEW_POLL_MS: "15000"

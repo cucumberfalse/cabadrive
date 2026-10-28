@@ -1,9 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { readFileSync, mkdtempSync, rmSync } from "node:fs";
-import { spawnSync } from "node:child_process";
-import { tmpdir } from "node:os";
-import { join } from "node:path";
+import { readFileSync } from "node:fs";
 
 const workflow = readFileSync(
   new URL("../.github/workflows/ai-review.yml", import.meta.url),
@@ -11,62 +8,363 @@ const workflow = readFileSync(
 );
 const gate = readFileSync(new URL("../scripts/ai-review-gate.mjs", import.meta.url), "utf8");
 
-test("actual workflow policy keeps initial triggers and makes every rerun evaluation-only", () => {
-  const policy = workflow
-    .match(/name: Resolve selected review policy[\s\S]*?run: \|\n([\s\S]*?)\n {6}- name:/)[1]
-    .replace(/^ {10}/gm, "");
-  const dir = mkdtempSync(join(tmpdir(), "ai-review-policy-"));
-  try {
-    for (const EVENT_NAME of ["pull_request", "workflow_dispatch"])
-      for (const attempt of ["1", "2", "10", "0", "invalid"]) {
-        const output = join(dir, `${EVENT_NAME}-${attempt}`);
-        const result = spawnSync("bash", ["-c", policy], {
-          encoding: "utf8",
-          env: {
-            ...process.env,
-            SELECTED_AGENT: "codex",
-            REQUESTED_TRIGGER_MODE: "comment",
-            EVENT_NAME,
-            PR_HEAD_REPOSITORY: "owner/repo",
-            REPOSITORY: "owner/repo",
-            HAS_AI_REVIEW_GITHUB_TOKEN: "true",
-            GITHUB_RUN_ATTEMPT: attempt,
-            GITHUB_OUTPUT: output,
-          },
-        });
-        if (attempt === "0" || attempt === "invalid") assert.notEqual(result.status, 0);
-        else {
-          assert.equal(result.status, 0, result.stderr);
-          assert.match(
-            readFileSync(output, "utf8"),
-            new RegExp(`trigger_mode=${attempt === "1" ? "comment" : "skip"}`),
-          );
-        }
-      }
-  } finally {
-    rmSync(dir, { recursive: true });
+const validatorSha = "af97cca5edb69a47ead5c5e9675da0677c8fed3d";
+const candidateSha = "b".repeat(40);
+const upstream = "cucumberfalse/cabadrive";
+const fork = "kiaquila/cabadrive";
+const evaluator = workflow.split("  ai-review:\n")[1];
+
+function inlineScript(name) {
+  const step = workflow.split(`- name: ${name}\n`)[1]?.split(/\n {6}- name:/)[0];
+  const script = step?.match(/node --input-type=module <<'NODE'\n([\s\S]*?)\n {10}NODE/);
+  assert.ok(script, `Missing executable inline step ${name}`);
+  return script[1].replace(/^ {10}/gm, "").replace(/^import .*;\n/gm, "");
+}
+
+async function executeStep(name, env = {}, overrides = {}) {
+  const output = [];
+  const messages = [];
+  const process = { env, exitCode: 0 };
+  const run = new (Object.getPrototypeOf(async function () {}).constructor)(
+    "readFileSync",
+    "appendFileSync",
+    "existsSync",
+    "execFileSync",
+    "fetch",
+    "process",
+    "console",
+    inlineScript(name),
+  );
+  await run(
+    () => JSON.stringify(overrides.event || event()),
+    (_path, text) => output.push(text),
+    overrides.existsSync || (() => true),
+    overrides.execFileSync ||
+      ((_command, args) =>
+        args[0] === "remote" ? `https://github.com/${upstream}` : validatorSha + "\n"),
+    overrides.fetch ||
+      (() => {
+        throw new Error("Unexpected API access");
+      }),
+    process,
+    Object.fromEntries(["log", "warn", "error"].map((key) => [key, (text) => messages.push(text)])),
+  );
+  return { status: process.exitCode, output: output.join(""), messages: messages.join("\n") };
+}
+
+function event(number = 221, headRepository = fork) {
+  return {
+    repository: { full_name: upstream, default_branch: "main" },
+    pull_request: {
+      number,
+      state: "open",
+      draft: false,
+      head: {
+        sha: candidateSha,
+        ref: "codex/native-review-compatibility",
+        repo: { full_name: headRepository },
+      },
+      base: { repo: { full_name: upstream } },
+    },
+  };
+}
+function environment(extra = {}) {
+  return {
+    GITHUB_EVENT_PATH: "/event",
+    GITHUB_OUTPUT: "/output",
+    GITHUB_EVENT_NAME: "pull_request",
+    GITHUB_REPOSITORY: upstream,
+    GITHUB_RUN_ATTEMPT: "1",
+    GITHUB_REF: "refs/heads/main",
+    GITHUB_WORKFLOW_REF: `${upstream}/.github/workflows/ai-review.yml@refs/heads/main`,
+    TRIGGER_RESULT: "skipped",
+    SELECTED_AGENT: "codex",
+    ...extra,
+  };
+}
+
+test("F42 actual evaluator is uniquely read-only and never receives the custom review secret", () => {
+  assert.ok(evaluator, "Missing evaluator job");
+  assert.equal((workflow.match(/^ {4}name: AI Review$/gm) || []).length, 1);
+  assert.match(evaluator, /needs: normal-trigger/);
+  assert.match(evaluator, /always\(\)/);
+  assert.match(evaluator, /contents: read\n {6}pull-requests: read\n {6}issues: read/);
+  assert.doesNotMatch(
+    evaluator,
+    /secrets\.|issues: write|checks: write|statuses: write|pnpm|npm install/,
+  );
+  assert.match(evaluator, /persist-credentials: false/);
+  assert.match(evaluator, /AI_REVIEW_TRIGGER_MODE: skip/);
+  assert.match(evaluator, /GITHUB_TOKEN: \$\{\{ github.token \}\}/);
+  assert.match(evaluator, /name: Route and validate selected native review/);
+});
+
+test("F42 actual context pins only PR221 upstream fork while binding the new PR head", async () => {
+  const result = await executeStep(
+    "Select trusted validator context",
+    environment({ AI_REVIEW_VALIDATOR_REF: candidateSha }),
+  );
+  assert.equal(result.status, 0, result.messages);
+  assert.match(result.output, new RegExp(`validator_ref=${validatorSha}`));
+  assert.match(result.output, /validator_repository=cucumberfalse\/cabadrive/);
+  assert.match(result.output, /bootstrap=true/);
+  for (const [context, env] of [
+    [event(222), environment()],
+    [event(222, upstream), environment()],
+    [
+      (() => {
+        const other = event();
+        other.repository.full_name = "other/repo";
+        other.pull_request.base.repo.full_name = "other/repo";
+        return other;
+      })(),
+      environment({ GITHUB_REPOSITORY: "other/repo" }),
+    ],
+    [event(), environment({ GITHUB_EVENT_NAME: "workflow_dispatch", REQUESTED_PR_NUMBER: "221" })],
+  ]) {
+    const normal = await executeStep("Select trusted validator context", env, { event: context });
+    assert.equal(normal.status, 0, normal.messages);
+    assert.match(normal.output, /validator_ref=main/);
+    assert.match(normal.output, /bootstrap=false/);
+  }
+  const rerun = await executeStep(
+    "Select trusted validator context",
+    environment({ GITHUB_RUN_ATTEMPT: "2" }),
+  );
+  assert.equal(rerun.status, 0, rerun.messages);
+  assert.match(rerun.output, new RegExp(`validator_ref=${validatorSha}`));
+});
+
+test("F42 actual context fails malformed bootstrap identity and failed trigger dependencies", async () => {
+  const badContexts = [event(221, upstream), event(221, "other/repo"), event(), event(), event()];
+  badContexts[3].pull_request.head.ref = "untrusted";
+  badContexts[4].pull_request.number = 0;
+  badContexts[2].pull_request.head.sha = "abc";
+  for (const context of badContexts) {
+    const result = await executeStep("Select trusted validator context", environment(), {
+      event: context,
+    });
+    assert.notEqual(result.status, 0);
+  }
+  for (const extra of [
+    { TRIGGER_RESULT: "failure" },
+    { TRIGGER_RESULT: "cancelled" },
+    { TRIGGER_RESULT: "unknown" },
+    { GITHUB_RUN_ATTEMPT: "0" },
+    { GITHUB_RUN_ATTEMPT: "invalid" },
+    { SELECTED_AGENT: "unknown" },
+    { GITHUB_EVENT_NAME: "workflow_dispatch", REQUESTED_PR_NUMBER: "-1" },
+  ])
+    assert.notEqual(
+      (await executeStep("Select trusted validator context", environment(extra))).status,
+      0,
+    );
+  for (const TRIGGER_RESULT of ["success", "skipped"])
+    assert.equal(
+      (await executeStep("Select trusted validator context", environment({ TRIGGER_RESULT })))
+        .status,
+      0,
+    );
+});
+
+test("F42 pinned checkout identity and every transitive module fail closed", async () => {
+  const env = environment({
+    BOOTSTRAP: "true",
+    VALIDATOR_REF: validatorSha,
+    VALIDATOR_REPOSITORY: upstream,
+  });
+  assert.equal((await executeStep("Check trusted gate script availability", env)).status, 0);
+  assert.notEqual(
+    (
+      await executeStep("Check trusted gate script availability", env, {
+        execFileSync: (_command, args) =>
+          args[0] === "remote" ? `https://github.com/${upstream}` : candidateSha,
+      })
+    ).status,
+    0,
+  );
+  assert.notEqual(
+    (
+      await executeStep("Check trusted gate script availability", env, {
+        execFileSync: () => "https://github.com/other/repo",
+      })
+    ).status,
+    0,
+  );
+  for (const missing of [
+    "scripts/resolve-pr-context.mjs",
+    "scripts/ai-review-gate.mjs",
+    "scripts/ai-review-helpers.mjs",
+    "scripts/ai-review-api.mjs",
+    "scripts/shared.mjs",
+    ".unicorn-hub/config.json",
+  ]) {
+    const result = await executeStep("Check trusted gate script availability", env, {
+      existsSync: (path) => path !== missing,
+    });
+    assert.notEqual(result.status, 0, missing);
+  }
+  const ordinary = await executeStep(
+    "Check trusted gate script availability",
+    environment({ BOOTSTRAP: "false" }),
+    { existsSync: () => false },
+  );
+  assert.equal(ordinary.status, 0);
+  assert.match(ordinary.output, /available=false/);
+});
+
+const triggerJob = workflow.split("  normal-trigger:\n")[1]?.split("  ai-review:\n")[0];
+function triggerJobAllows(eventName, context, attempt = 1) {
+  const condition = triggerJob.match(/ {4}if: \|\n([\s\S]*?) {4}permissions:/)[1].trim();
+  return Boolean(
+    Function(
+      "github",
+      `return (${condition});`,
+    )({
+      event_name: eventName,
+      event: context,
+      repository: context.repository.full_name,
+      run_attempt: attempt,
+    }),
+  );
+}
+async function trigger(extra = {}, options = {}) {
+  const calls = [];
+  let pullCount = 0;
+  const context = options.event || event(222, upstream);
+  const result = await executeStep(
+    "Request selected native review",
+    environment({
+      HAS_AI_REVIEW_GITHUB_TOKEN: "true",
+      GITHUB_TOKEN: "test-token",
+      ...extra,
+    }),
+    {
+      event: context,
+      fetch: async (url, request) => {
+        calls.push({ url, ...request });
+        let payload = {};
+        let status = 200;
+        if (request.method === "POST") status = options.postStatus || 201;
+        else if (url.includes("/contents/")) status = options.contentStatus || 200;
+        else if (url.endsWith(`/pulls/${context.pull_request.number}`)) {
+          payload = structuredClone(context.pull_request);
+          pullCount += 1;
+          options.changePull?.(payload, pullCount);
+        } else throw new Error(`Unexpected API URL: ${url}`);
+        return { ok: status < 400, status, json: async () => payload };
+      },
+    },
+  );
+  return { ...result, calls, posts: calls.filter((call) => call.method === "POST") };
+}
+
+test("F42 trigger job never runs on bootstrap, fork automatic requests, or reruns", async () => {
+  assert.doesNotMatch(triggerJob, /uses:|checkout@|node scripts|npm|pnpm/);
+  assert.match(triggerJob, /issues: write/);
+  assert.match(triggerJob, /secrets.AI_REVIEW_GITHUB_TOKEN/);
+  for (const context of [event(), event(222)]) {
+    assert.equal(triggerJobAllows("pull_request", context), false);
+    const result = await trigger({}, { event: context });
+    assert.equal(result.status, 0, result.messages);
+    assert.equal(result.calls.length, 0);
+  }
+  assert.equal(triggerJobAllows("pull_request", event(222, upstream), 2), false);
+  assert.equal(triggerJobAllows("pull_request", event(222, upstream)), true);
+  assert.equal(triggerJobAllows("workflow_dispatch", event(222, upstream)), true);
+  assert.equal((await trigger({ GITHUB_RUN_ATTEMPT: "2" })).calls.length, 0);
+  assert.equal((await trigger({ HAS_AI_REVIEW_GITHUB_TOKEN: "false" })).calls.length, 0);
+});
+
+test("F42 static trigger retains all selected backends and read-only checks before POST", async () => {
+  for (const [SELECTED_AGENT, body] of [
+    ["codex", `@codex review ${candidateSha}`],
+    ["claude", "@claude review once"],
+    ["gemini", "/gemini review"],
+  ]) {
+    const result = await trigger({ SELECTED_AGENT });
+    assert.equal(result.status, 0, result.messages);
+    assert.equal(result.posts.length, 1);
+    assert.equal(result.calls.filter((call) => call.url.endsWith("/pulls/222")).length, 2);
+    assert.equal(result.calls.at(-1).method, "POST");
+    assert.ok(JSON.parse(result.posts[0].body).body.startsWith(body + "\n"));
+    assert.match(result.posts[0].url, /\/issues\/222\/comments$/);
+  }
+  const absent = await trigger({}, { contentStatus: 404 });
+  assert.equal(absent.status, 0, absent.messages);
+  assert.equal(absent.posts.length, 0);
+  assert.equal((await trigger({}, { contentStatus: 500 })).status, 1);
+});
+
+test("F42 static dispatch trigger accepts only trusted default workflow/ref and explicit modes", async () => {
+  const dispatch = {
+    GITHUB_EVENT_NAME: "workflow_dispatch",
+    REQUESTED_PR_NUMBER: "222",
+    REQUESTED_TRIGGER_MODE: "comment",
+  };
+  assert.equal((await trigger(dispatch)).posts.length, 1);
+  assert.equal((await trigger({ ...dispatch, REQUESTED_TRIGGER_MODE: "skip" })).calls.length, 0);
+  for (const extra of [
+    { GITHUB_REF: "refs/heads/untrusted" },
+    { GITHUB_WORKFLOW_REF: `${upstream}/.github/workflows/ai-review.yml@refs/heads/untrusted` },
+    { REQUESTED_TRIGGER_MODE: "invalid" },
+    { REQUESTED_PR_NUMBER: "-1" },
+    { REQUESTED_PR_NUMBER: "9007199254740992" },
+  ]) {
+    const result = await trigger({ ...dispatch, ...extra });
+    assert.notEqual(result.status, 0);
+    assert.equal(result.posts.length, 0);
   }
 });
 
-test("same-repository pull request AI Review runs trigger the selected backend before polling", () => {
-  assert.match(workflow, /ref:\s*\$\{\{\s*github\.event\.repository\.default_branch\s*\}\}/);
-  assert.match(workflow, /EVENT_NAME:\s*\$\{\{\s*github\.event_name\s*\}\}/);
-  assert.match(
-    workflow,
-    /GITHUB_TOKEN:\s*\$\{\{\s*secrets\.AI_REVIEW_GITHUB_TOKEN\s*\|\|\s*github\.token\s*\}\}/,
-  );
-  assert.match(
-    workflow,
-    /HAS_AI_REVIEW_GITHUB_TOKEN:\s*\$\{\{\s*secrets\.AI_REVIEW_GITHUB_TOKEN != ''\s*\}\}/,
-  );
-  assert.match(
-    workflow,
-    /PR_HEAD_REPOSITORY:\s*\$\{\{\s*github\.event\.pull_request\.head\.repo\.full_name\s*\|\|\s*''\s*\}\}/,
-  );
-  assert.match(
-    workflow,
-    /elif \[ "\$\{EVENT_NAME\}" = "workflow_dispatch" \]; then[\s\S]*trigger_mode="\$\{REQUESTED_TRIGGER_MODE:-skip\}"[\s\S]*elif \[ "\$\{PR_HEAD_REPOSITORY\}" = "\$\{REPOSITORY\}" \] && \[ "\$\{HAS_AI_REVIEW_GITHUB_TOKEN\}" = "true" \]; then[\s\S]*trigger_mode="comment"[\s\S]*else[\s\S]*trigger_mode="skip"[\s\S]*fi/,
-  );
+test("F42 static trigger fails live identity races before POST and handles only POST403 as warn-and-wait", async () => {
+  for (const change of [
+    (pull) => {
+      pull.head.sha = "c".repeat(40);
+    },
+    (pull) => {
+      pull.state = "closed";
+    },
+    (pull) => {
+      pull.draft = true;
+    },
+    (pull) => {
+      pull.base.repo.full_name = "other/repo";
+    },
+    (pull) => {
+      pull.head.repo.full_name = fork;
+    },
+    (pull) => {
+      pull.number = 223;
+    },
+    (pull) => {
+      pull.head.ref = "other";
+    },
+  ]) {
+    const result = await trigger(
+      {},
+      {
+        changePull: (pull, count) => {
+          if (count === 2) change(pull);
+        },
+      },
+    );
+    assert.equal(result.status, 1, result.messages);
+    assert.equal(result.posts.length, 0);
+  }
+  for (const extra of [
+    { SELECTED_AGENT: "unknown" },
+    { GITHUB_RUN_ATTEMPT: "0" },
+    { GITHUB_REPOSITORY: "other/repo" },
+  ]) {
+    const result = await trigger(extra);
+    assert.equal(result.status, 1);
+    assert.equal(result.posts.length, 0);
+  }
+  const denied = await trigger({}, { postStatus: 403 });
+  assert.equal(denied.status, 0, denied.messages);
+  assert.match(denied.messages, /waiting for existing or human-triggered/);
+  assert.equal((await trigger({}, { postStatus: 500 })).status, 1);
 });
 
 test("AI Review gate handles trigger comment permission denial without a stack trace", () => {
