@@ -76,10 +76,9 @@ If external research was not used, record why it was unnecessary or unsafe for t
 Append-only Analyst-owned section used only when Orchestrator invokes final
 Analyst validation after final Architect validation passes.
 
-- Analyst validation pass: `[date/ref/head SHA or "not yet invoked"]`
-- Analyst return count for this work cycle: `[0-5]`
-- Customer intent check: `[Whether final result matches desired outcome in spirit and letter using original request, clarified answers, assumptions, and acceptance expectations.]`
-- Gaps, if any: `[Analyst-owned note only; do not plan implementation here.]`
-- Architect disposition routing: `[Orchestrator must route any Analyst feedback to Architect for accept/task/ticket/dispose before follow-up development.]`
-- Analyst limit escalation: `[If another gap would exceed 5 returns, Analyst creates a new feature request in a separate latest-main branch/worktree and records the handoff.]`
-- Analyst boundary reminder: `[Do not edit Architect artifacts, code, reviews, commits, pushes, PRs, merge state, or files outside Analyst-owned intake/final-validation notes except the new feature request required by limit-exceeded escalation.]`
+Keep this section free of placeholder key/value lines before the effective
+content head is frozen. After a passing validation, append the pass, completion
+time, validated effective content SHA, and return count as new lines. The
+completion-time bullet ends at canonical `Z` without a terminal period. Record
+gaps and customer-intent analysis before the effective content head is frozen;
+substantive post-freeze changes require full CI and renewed role validation.

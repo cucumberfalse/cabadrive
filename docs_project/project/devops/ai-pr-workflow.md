@@ -357,6 +357,62 @@ back through role-appropriate follow-up or final validation.
 
 The active required-check list is `.unicorn-hub/config.json` (`requiredChecks`); installed defaults reflect the active profile. Stack-specific profiles that preserve existing target CI ship only `guard` and `AI Review` and expect the team to add the repository's real CI job names before applying branch protection.
 
+Orchestrator owns one status watch per PR/check group. Agents report their own
+completion or blocker; they do not duplicate periodic GitHub polls. Prefer a
+completion event or one bounded wait, then inspect status at a meaningful
+transition or explicit deadline. Back off while a run remains active; investigate
+or rerun a stuck or failed check at the deadline. A timeout does not imply
+success. The final exact-head check immediately before merge still covers all
+required checks, AI Review, review threads, conflicts, and process evidence.
+
+The `CI` workflow keeps `baseline-checks` and `docker-validation` as actual
+required jobs on every PR head. For ordinary changes they run every existing
+baseline, browser, and Docker step. A short route is possible only after a
+successful full `CI` run on the same PR's effective content head and an
+append-only final-validation evidence commit. The classifier is loaded from
+the trusted PR base; changing the workflow, agent controls, or classifier from
+that base forces full CI for the entire PR. It also requires identical current
+base SHA and workflow digest, complete Git ancestry, and GitHub API proof of
+the prior run, successful named jobs, every heavy step, and its bound provenance
+artifact. Missing or ambiguous proof runs full CI or fails the required job.
+`guard`, `AI Review`, and `osv-scan` remain independent required checks.
+
+The only short-route additions are exact bullet lines under already-existing
+`## Final Analyst Validation Notes` in `feature-request.md` and `## Final
+Architect Validation Notes` in `tasks.md`. After both
+roles pass, one fixed-format cycle result under `### Cycle PR Set` and one
+fixed-format checked-parent guard record under `### Final Validation Evidence`
+in `tasks.md` may also use the short route. Other additions in those sections
+do not select it. Allowed Analyst
+lines are `Analyst validation pass: passed`, `Final Analyst validation completed
+at: <UTC ISO time>`, `Analyst validated effective content head: <40-hex SHA>`,
+and `Analyst return count for this work cycle: <0–5>`. Allowed task lines are
+`Effective content head: <same SHA>`, `Architect validation pass: passed`,
+`Final Architect validation completed at: <UTC ISO time>`, `Architect validated
+effective content head: <same SHA>`, and `Architect return count for this work
+cycle: <0–10>`. The cycle result is `PR #<number>; branch: <PR head ref>;
+observed head SHA: <checked parent SHA>; effective content head: <effective SHA>;
+status: final validation passed; observed at: <UTC ISO time>;
+final-validation inclusion: included`. The guard record is `Current-PR-head read-only guard:
+checked head <already-checked parent SHA> against effective content head
+<effective SHA> at <UTC ISO time>; evidence-only changes confirmed; proof:
+git-diff-sha256:<64-hex digest>`. Each line begins `- `. The two role completion-time
+bullets end at canonical `Z` with no terminal period so the existing finalizer
+can parse them; all other allowed bullets end `.`. The cycle PR/ref must match
+the current PR; both observed/checked heads must be the respective evidence
+commit's parent, with both role markers already present there. The effective
+SHA is an ancestor of the checked parent. The classifier recomputes the digest
+of `git diff --binary --no-ext-diff --no-textconv --no-color --no-renames
+--full-index <effective SHA> <checked parent SHA> --`. This
+record never substitutes for Orchestrator's external read-only guard on the
+final head immediately before merge. All three SHA markers must agree;
+Architect time precedes Analyst time. Added prose, headings, task or
+requirement changes, replacements, other files, merge commits, a changed base,
+or missing provenance force full CI. The short route prints JSON for the exact
+current head and runs a proof step in each required job. This CI shortcut is
+stricter than the finalizer's broader read-only process-memory guard; passing
+the finalizer alone does not select short CI.
+
 PRs are merge-ready only when every required check is green on the current head,
 blocking review findings are resolved or outdated, required review conversations
 are resolved, docs/specs are updated, feature-memory feedback has Architect

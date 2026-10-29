@@ -1,0 +1,86 @@
+# Tasks: Agent and CI efficiency
+
+## Setup
+
+- [x] T001 Confirm Orchestrator assignment, feature memory, one worktree/branch/PR slice, verified `origin/main` base `9e17a059536586d8c2319f8cabcea9bcd288385d`, and parallel-work preservation warning; record status before editing.
+- [x] T002 Read intake, spec, plan, relevant agent rules, CI, required-check config, and finalizer; preserve all sibling work and process memory.
+
+## Implementation
+
+- [x] T003 Update agent rules and relevant templates with single-owner completion-driven/bounded monitoring, backoff, stuck-run handling, and exact-head recheck. Preserve role boundaries, AI Review, independent review, ordered validation, and merge gates.
+- [x] T004 Implement strict evidence-section and commit-by-commit classifier with full as default; pin/trust the policy, verify markers, ancestry, exact path/section/line schema, and reject semantic or ambiguous edits.
+- [x] T005 Add full-run provenance and GitHub API verification of same PR/repo/branch/effective head, base SHA, workflow identity, successful required jobs, and actually successful heavy steps; missing proof routes full or red.
+- [x] T006 Keep `baseline-checks` and `docker-validation` present on every current head. Route only expensive steps within jobs; preserve all existing full-path steps and unchanged independent `guard`, `AI Review`, and `osv-scan` behavior. Ensure this PR itself always selects full.
+- [x] T007 Add focused positive/negative matrix tests from the plan, including base drift, missing/failed/skipped provenance, malformed evidence, changed workflow/classifier, and current-head output.
+- [x] T008 Update durable process/CI documentation where behavior changes; record decisions, dead ends, known issues, and any Implementation Agent feedback for Architect disposition. Do not expand scope without disposition.
+
+## Verification and PR
+
+- [x] T009 Run focused local tests and applicable preflight, record commands/results; do not infer a local full Docker pass from remote results.
+- [x] T010 Publish ready-for-review PR with `Co-authored-by: Codex <codex@openai.com>` at end of description and commit trailer `Co-authored-by: OpenAI Codex <codex@openai.com>` for Codex-assisted commits.
+
+## Finalization Protocol
+
+T011–T015 are future published-head and final-role duties, not completed implementation tasks. Freeze these definitions before final validation; record actual outcomes as append-only evidence in the existing role and process sections, without later checkbox edits or premature success claims.
+
+- T011: Before freezing the effective content head, record only completed local/prepublication evidence and factual PR identity/status in `Verification Evidence` and `Cycle PR Set`. Commit that head, then verify full baseline/Docker steps, all five literal `SUCCESS` checks, AI Review, and resolved conversations on its exact SHA using GitHub records. A substantive fix creates a new content head and repeats these gates; later repository evidence must follow the strict append-only schema.
+- T012: Reconcile available pre-freeze task evidence, cycle PR identity, and feedback dispositions, then freeze the effective content head. After the exact-head remote gates pass, append its SHA through role-owned validation evidence; record any later PR status only as a factual schema-valid `Cycle PR Set` snapshot.
+- T013: On Orchestrator request, Architect validates the full cycle and appends pass, UTC time, effective-head marker, and return count under `Final Architect Validation Notes`; Analyst follows only after Architect passes and appends its corresponding lines in `feature-request.md`. A gap requiring substantive changes resets the effective head and ordered validation.
+- T014: Prove post-validation commits contain only permitted evidence, or repeat role-appropriate work and validation. Orchestrator runs the read-only current-head guard and rechecks checks, review, threads, conflicts, and process memory; only an actual schema-valid parent-head guard record may be appended under `Final Validation Evidence` for the short CI route. Other process changes take full CI and, when substantive, renewed role validation.
+- T015: Once exact-head merge readiness is true, wait at least two minutes, recheck every gate, restart the wait if state changed, merge through Orchestrator, and verify GitHub merged state. Report actual merge proof only after GitHub confirms it.
+
+## Process Memory
+
+### Dead Ends
+
+- Local `pnpm run preflight` stopped in `validate:images` because this new worktree has no `.cache/image-qa/install-receipt.json` or native QA binaries. The host had about 3.2 GiB free and no `rustup`; remote Linux CI installs pinned Rust/image QA before the full validation. No local Docker result is claimed.
+- Full local `pnpm run test` encountered unrelated macOS/Linux-resource and screenshot-port fixture failures and a long-running retention fixture; it was interrupted after about three minutes. The targeted classifier suite passed, and the full remote Linux test suite remains required.
+- Review found the initial classifier would allow Architect completion bullets under `Final Validation Evidence`, while the existing finalizer rejected the completion timestamp there. The role-owned heading and cross-check test now require a common accepted schema.
+- A full finalizer process-evidence test then showed its timestamp parser rejects a terminal period after canonical `Z`. The narrow role completion-time schema now ends exactly at `Z`; the finalizer remains unchanged.
+
+### Decisions
+
+- Full CI is the safe default; short CI requires positive content and prior-run proof.
+- Required jobs run on every PR head; only heavy steps may be omitted on a proven evidence-only head.
+- The classifier executes from the trusted PR base, records a full-run artifact after the expensive baseline steps, and verifies GitHub run/job/step/artifact metadata before selecting a short route. This workflow-changing PR itself takes full CI.
+- Architect bullets are append-only under the existing `Final Architect Validation Notes` heading. One structured parent-head guard record under `Final Validation Evidence` and one structured cycle PR result under `Cycle PR Set` can also select short CI only after ordered role validation; other process evidence takes full CI.
+- The guard record binds the checked parent head and effective head to a reproducible SHA-256 of their exact Git diff. The cycle result binds the observed parent head, effective head, PR/ref, and UTC time. Both require completed role markers on the parent; Orchestrator still reruns the current-head guard immediately before merge.
+
+### Known Issues
+
+- None.
+
+### Verification Evidence
+
+- `node --test tests/ci-evidence-route.test.mjs tests/quality-tooling.test.mjs`: 12 tests passed, including strict appended-line parsing, full-run provenance, active required jobs, and real Git commit-history classification.
+- Ruby YAML parse of `.github/workflows/ci.yml` found both required jobs. `git diff --check`, `node --check` for the new script/test, `pnpm run quality:fast`, `pnpm run format:check`, and `pnpm run verify:quality-negative` passed. `pnpm run build:app` passed and generated the service worker.
+- `pnpm run preflight` and `pnpm run build` reached `validate:images` then stopped on the missing local native QA receipt. Full remote baseline/Docker checks are mandatory acceptance evidence. No local Docker claim.
+- Initial independent review reported no findings at implementation head `eb3a8635524493b715d711451752c5e462c34cd4`; a later review found the finalizer/classifier heading mismatch, fixed in this follow-up. The focused classifier/finalizer/quality suite passed 73 tests; `pnpm run quality:fast`, `pnpm run format:check`, syntax checks, and `git diff --check` passed. Remote CI, AI Review, and final role validation are pending.
+- `node --test tests/ci-evidence-route.test.mjs tests/finalize-pr.test.mjs tests/quality-tooling.test.mjs` passed 74 tests after the process-proof extension. The integration fixture confirms ordered role validation, current process memory, guard evidence, feedback disposition, acceptance evidence, and the finalizer's `E..current` diff guard. `pnpm run quality:fast`, `pnpm run format:check`, and `git diff --check` passed. Full remote CI and AI Review remain acceptance gates.
+- AI Review found three substantive short-route gaps at earlier PR heads: return-count omission, required-check control edits, and Analyst-first commit order. The classifier now rejects those cases. The focused classifier/finalizer/quality suite passed 75 tests, including positive ordered commits and negative bypass cases; sequential `pnpm run quality:fast`, `pnpm run format:check`, and `git diff --check` passed. Exact-head remote CI and re-review remain pending.
+
+### Cycle PR Set
+
+- PR #220; branch: codex/058-agent-ci-efficiency; head SHA: ac9b649688c33f65a4c6e09cfbc8239420cb0c62; status: open and ready for review at that published implementation head; final-validation inclusion: planned for this sole PR.
+
+### Final Validation Evidence
+
+Record other factual final process evidence here. The strict CI short route accepts only the structured parent-head guard line here, a structured cycle PR result under `Cycle PR Set`, and Architect/Analyst validation bullets under their role-owned headings; added prose or other process evidence takes full CI.
+
+- Limit escalation: none.
+
+### Cleanup Evidence
+
+- No cleanup assigned. Preserve this and sibling worktrees until Orchestrator disposition.
+
+## Implementation Agent Feedback
+
+- None.
+
+## Architect Dispositions
+
+- None.
+
+## Final Architect Validation Notes
+
+Append only the schema-valid Architect validation bullets after the effective content head is frozen. Record substantive explanations before that freeze.

@@ -10,6 +10,7 @@
 - [ ] T006 If the request began read-only, record the transition point that made it repository-changing.
 - [ ] T007 If any direct edits started before routing or prerequisites, record stop/report/preserve/recovery disposition before continuing.
 - [ ] T008 Confirm Orchestrator provided any parallel-work warning and preserve existing dirty diffs, branches, commits, PRs, sibling feature folders, process memory, active worktrees, and ambiguous local paths.
+- [ ] Assign one Orchestrator owner for PR/check monitoring; use agent completion events or bounded waits with a deadline and backoff, and record only meaningful state changes. Recheck all exact-head gates immediately before merge.
 - [ ] T009 Record baseline checks before editing, including `git status --short --branch`.
 
 ## Implementation
@@ -61,17 +62,16 @@
 
 ### Final Validation Evidence
 
-- Architect validation: `[not yet invoked, pass details, or gap details]`
-- Architect return count: `[0-10]`
-- Analyst validation: `[not yet invoked, pass details, or Analyst-owned validation-note reference]`
-- Analyst return count: `[0-5]`
-- Effective content head: `[SHA validated by Architect and Analyst, or not yet validated]`
-- Architect validated effective content head: `[same 40-hex SHA, or not yet validated]`
-- Analyst validated effective content head: `[same 40-hex SHA, or not yet validated]`
-- Final-validation evidence-only commit: `[none, current-head SHA and evidence-only scope, or stale because non-evidence content changed]`
-- Current-PR-head read-only guard: `[pending, pass with current head and gate evidence, or failed and routed back through role-appropriate follow-up/final validation]`
-- Analyst feedback Architect disposition: `[none, accepted task/ticket, explicit dispose, or pending blocker]`
-- Limit escalation: `[none, Architect breach -> Orchestrator asks Analyst for new feature request, or Analyst creates new feature request in separate latest-main branch/worktree]`
+Record other factual final process evidence here. Strict short-route Architect
+bullets belong under the existing `Final Architect Validation Notes` heading
+below, and Analyst bullets belong in `feature-request.md`. After both roles
+pass, a structured guard line may record the already-checked parent head, exact
+effective-content SHA, UTC time, and Git diff SHA-256 proof here; one structured,
+timestamped cycle PR result may be appended under `Cycle PR Set`. Substantive
+dispositions, task changes, and narrative evidence belong before the freeze and
+require full CI if added later. Orchestrator records the read-only current-head
+guard after the evidence commit without manufacturing a self-referential SHA,
+then independently reruns it on the final head before merge.
 
 ### Cleanup Evidence
 
@@ -84,3 +84,13 @@
 ## Architect Dispositions
 
 - `[For each feedback item, record task/ticket created or explicit not-needed decision. Use "None" when there is no Implementation Agent feedback.]`
+
+## Final Architect Validation Notes
+
+Keep this heading in the file before freezing the effective content head. After
+a passing validation, append the exact effective-content SHA, pass, UTC ISO
+completion time, validated effective-content SHA, and return count as new bullet
+lines in the strict format documented in
+`docs_project/project/devops/ai-pr-workflow.md`. The completion-time bullet ends
+at canonical `Z` without a terminal period. Record substantive gaps before
+the freeze; post-freeze changes to them require full CI and renewed validation.
